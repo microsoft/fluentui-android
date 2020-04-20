@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!--Wrap the path in a group with a name for the object animator target-->
+    <group
+        android:name="root"
+        android:pivotX="12"
+        android:pivotY="12">
+        <path
+            android:fillColor="#00000000"
+            android:fillType="evenOdd"
+            android:pathData="M22,12C22,6.4772 17.5228,2 12,2C6.4772,2 2,6.4772 2,12L2,12C2,17.5228 6.4772,22 12,22C14.7761,22 17.2879,20.8688 19.0998,19.0422"
+            android:strokeWidth="3"
+            android:strokeColor="#8E8E8E"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetBottom="@dimen/fluentui_snackbar_background_inset"
+    android:insetLeft="@dimen/fluentui_snackbar_background_inset"
+    android:insetRight="@dimen/fluentui_snackbar_background_inset">
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/fluentui_snackbar_background_corner_radius"/>
+        <solid android:color="?attr/fluentuiSnackbarBackgroundAnnouncementColor"/>
+    </shape>
+</inset>

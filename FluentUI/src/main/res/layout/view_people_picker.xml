@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/people_picker_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/fluentui_people_picker_vertical_padding"
+    android:layout_marginBottom="@dimen/fluentui_people_picker_vertical_padding"
+    android:background="?attr/fluentuiPeoplePickerBackgroundColor"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/fluentui_people_picker_horizontal_padding"
+    android:paddingEnd="@dimen/fluentui_people_picker_horizontal_padding">
+
+    <TextView
+        android:id="@+id/people_picker_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fluentui_people_picker_label_margin_end"
+        android:labelFor="@id/people_picker_text_view"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/fluentui_min_touch_size"
+        android:textAppearance="@style/TextAppearance.FluentUI.PeoplePickerLabel"
+        tools:text="@string/people_picker_sample_label" />
+
+    <com.microsoft.fluentui.peoplepicker.PeoplePickerTextView
+        android:id="@+id/people_picker_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/fluentuiPeoplePickerTextViewBackgroundColor"
+        android:gravity="center_vertical"
+        android:dropDownWidth="match_parent"
+        android:dropDownVerticalOffset="@dimen/fluentui_people_picker_dropdown_vertical_offset"
+        android:imeOptions="flagNoExtractUi|actionDone"
+        android:minHeight="@dimen/fluentui_min_touch_size"
+        android:paddingTop="@dimen/fluentui_people_picker_text_view_padding"
+        android:paddingBottom="@dimen/fluentui_people_picker_text_view_padding"
+        android:popupBackground="@drawable/people_picker_popup_background"
+        android:popupElevation="@dimen/fluentui_people_picker_popup_elevation"
+        android:textAppearance="@style/TextAppearance.FluentUI.PeoplePickerText"
+        android:textColorHint="@android:color/transparent" />
+
+</LinearLayout>
