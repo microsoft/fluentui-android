@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="ListItemView">
+        <attr name="title" format="string" />
+        <attr name="subtitle" format="string" />
+        <attr name="footer" format="string" />
+        <attr name="titleMaxLines" format="integer" />
+        <attr name="subtitleMaxLines" format="integer" />
+        <attr name="footerMaxLines" format="integer" />
+        <attr name="titleTruncateAt" format="enum">
+            <enum name="start" value="0" />
+            <enum name="middle" value="1" />
+            <enum name="end" value="2" />
+            <enum name="marquee" value="3" />
+        </attr>
+        <attr name="subtitleTruncateAt" format="enum">
+            <enum name="start" value="0" />
+            <enum name="middle" value="1" />
+            <enum name="end" value="2" />
+            <enum name="marquee" value="3" />
+        </attr>
+        <attr name="footerTruncateAt" format="enum">
+            <enum name="start" value="0" />
+            <enum name="middle" value="1" />
+            <enum name="end" value="2" />
+            <enum name="marquee" value="3" />
+        </attr>
+        <attr name="layoutDensity" format="enum">
+            <enum name="regular" value="0" />
+            <enum name="dense" value="1" />
+        </attr>
+        <attr name="customViewSize" format="enum">
+            <enum name="small" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="large" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/bottom_navigation">
+        <item
+            android:id="@+id/action_photos"
+            android:title="@string/bottom_navigation_menu_item_photos"
+            android:icon="@drawable/ic_image_library_28_regular" />
+        <item
+            android:id="@+id/action_news"
+            android:title="@string/bottom_navigation_menu_item_news"
+            android:icon="@drawable/ic_news_28_regular" />
+        <item
+            android:id="@+id/action_alerts"
+            android:title="@string/bottom_navigation_menu_item_alerts"
+            android:icon="@drawable/ic_alert_28_regular" />
+        <item
+            android:id="@+id/action_calendar"
+            android:title="@string/bottom_navigation_menu_item_calendar"
+            android:icon="@drawable/ic_calendar_28_regular" />
+        <item
+            android:id="@+id/action_team"
+            android:title="@string/bottom_navigation_menu_item_team"
+            android:icon="@drawable/ic_people_team_28_regular" />
+    </group>
+
+</menu>

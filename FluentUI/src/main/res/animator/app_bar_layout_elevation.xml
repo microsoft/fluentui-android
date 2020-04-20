@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <objectAnimator
+            android:duration="@integer/fluentui_app_bar_layout_elevation_duration"
+            android:propertyName="elevation"
+            android:valueTo="@dimen/fluentui_app_bar_layout_elevation"
+            android:valueType="floatType" />
+    </item>
+</selector>

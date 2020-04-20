@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="AppBarLayout">
+        <attr name="scrollTargetViewId" format="integer" />
+        <attr name="scrollBehavior" format="enum">
+            <enum name="none" value="0" />
+            <enum name="collapseToolbar" value="1" />
+            <enum name="pin" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

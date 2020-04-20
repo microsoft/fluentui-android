@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--AppBarLayout-->
+    <item name="app_bar_layout_toggle_scroll_behavior_sub_header" type="id" />
+    <item name="app_bar_layout_toggle_scroll_behavior_button" type="id" />
+    <item name="app_bar_layout_toggle_navigation_icon_button" type="id" />
+    <item name="app_bar_layout_toggle_searchbar_type_button" type="id" />
+    <item name="app_bar_layout_toggle_theme_button" type="id" />
+    <item name="app_bar_layout_action_search" type="id" />
+
+    <!--BottomSheet-->
+    <item name="bottom_sheet_item_flag" type="id" />
+    <item name="bottom_sheet_item_reply" type="id" />
+    <item name="bottom_sheet_item_forward" type="id" />
+    <item name="bottom_sheet_item_delete" type="id" />
+    <item name="bottom_sheet_item_camera" type="id" />
+    <item name="bottom_sheet_item_gallery" type="id" />
+    <item name="bottom_sheet_item_videos" type="id" />
+    <item name="bottom_sheet_item_manage" type="id" />
+    <item name="bottom_sheet_item_clock" type="id" />
+    <item name="bottom_sheet_item_alarm" type="id" />
+    <item name="bottom_sheet_item_time_zone" type="id" />
+    <item name="bottom_sheet_item_double_line_header_delete" type="id" />
+    <item name="bottom_sheet_item_double_line_header_share" type="id" />
+    <item name="bottom_sheet_item_double_line_header_move" type="id" />
+    <item name="bottom_sheet_item_double_line_header_info" type="id" />
+
+    <!--PopupMenu-->
+    <item name="popup_menu_item_share" type="id" />
+    <item name="popup_menu_item_follow" type="id" />
+    <item name="popup_menu_item_invite_people" type="id" />
+    <item name="popup_menu_item_refresh_page" type="id" />
+    <item name="popup_menu_item_open_in_browser" type="id" />
+    <item name="popup_menu_item_all_news" type="id" />
+    <item name="popup_menu_item_saved_news" type="id" />
+    <item name="popup_menu_item_news_from_sites" type="id" />
+    <item name="popup_menu_item_contoso_travel" type="id" />
+    <item name="popup_menu_item_notify_outside" type="id" />
+    <item name="popup_menu_item_notify_inactive" type="id" />
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <attr name="numberPickerStyle" format="reference" />
+
+    <declare-styleable name="NumberPicker">
+        <!-- Color for the solid color background if such for optimized rendering. -->
+        <attr name="solidColor" format="color|reference" />
+        <!-- The divider for making the selection area. -->
+        <attr name="selectionDivider" format="reference" />
+        <!-- The height of the selection divider. -->
+        <attr name="selectionDividerHeight" format="dimension" />
+        <!-- The distance between the two selection dividers. -->
+        <attr name="selectionDividersDistance" format="dimension" />
+        <!-- The min height of the NumberPicker. -->
+        <attr name="internalMinHeight" format="dimension" />
+        <!-- The max height of the NumberPicker. -->
+        <attr name="internalMaxHeight" format="dimension" />
+        <!-- The min width of the NumberPicker. -->
+        <attr name="internalMinWidth" format="dimension" />
+        <!-- The max width of the NumberPicker. -->
+        <attr name="internalMaxWidth" format="dimension" />
+        <!-- The layout of the number picker. -->
+        <attr name="internalLayout" format="reference" />
+        <!-- The drawable for pressed virtual (increment/decrement) buttons. -->
+        <attr name="virtualButtonPressedDrawable" format="reference"/>
+        <!-- If true then the selector wheel is hidden until the picker has focus. -->
+        <attr name="hideWheelUntilFocused" format="boolean"/>
+        <attr name="numberPickerTextColor" format="color|reference"/>
+        <attr name="numberPickerSelectedTextColor" format="color|reference"/>
+        <attr name="selectorWheelItemCount" format="integer" />
+        <attr name="textAlign" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.microsoft.fluentuidemo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--Launch Screen: We use AppTheme.Launcher for the theme instead of AppTheme in order to load the app with a launch screen-->
+        <activity
+            android:name="com.microsoft.fluentuidemo.DemoListActivity"
+            android:label="@string/app_title"
+            android:theme="@style/AppTheme.Launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Demo activities -->
+        <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.PersonaChipViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.PersonaListViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.PersonaViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.TypographyActivity" />
+
+    </application>
+
+</manifest>
