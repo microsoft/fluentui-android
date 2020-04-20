@@ -1,8 +1,5 @@
 pool:
-  name: Hosted Mac Internal
-  demands:
-  - java
-  - JDK
+  vmImage: 'macos-latest'
 
 steps:
 - task: Gradle@2
