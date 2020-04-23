@@ -17,7 +17,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
-        versionName '0.1.0'
+        versionName '0.0.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -72,7 +72,7 @@ task sourceJar(type: Jar) {
 publishing {
     repositories {
         maven {
-            url 'https://office.pkgs.visualstudio.com/Hackathon/_packaging/fluent-ui-test/maven/v1'
+            url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
             credentials {
                 username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
                 password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
