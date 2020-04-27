@@ -7,7 +7,7 @@ steps:
   inputs:
     gradleWrapperFile: 'gradlew'
     tasks: 'build publish'
-    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PmavenUserName=$(vstsUserName) -PmavenPassword=$(vstsPassword'
+    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PmavenUserName=$(vstsUserName) -PmavenPassword=$(vstsPassword)'
 
 - task: AndroidSigning@2
   displayName: 'Signing and aligning APK file(s) **/*.apk'
