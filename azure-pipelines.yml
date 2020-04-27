@@ -1,0 +1,27 @@
+pool:
+  vmImage: 'macos-latest'
+  demands:
+  - java
+  - JDK
+
+steps:
+- task: Gradle@2
+  displayName: 'gradlew bintrayUpload'
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'bintrayUpload'
+    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PbintrayUser=$(bintrayUser) -PbintrayKey=$(bintrayKey)'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: |
+     **/*.aar
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Build'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: Build
