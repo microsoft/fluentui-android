@@ -10,8 +10,10 @@ import android.support.annotation.StyleRes
 import android.support.v7.widget.RecyclerView
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.bottomsheet.BottomSheetItem.Companion.NO_ID
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.createImageView
 
@@ -53,7 +55,9 @@ internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         fun setBottomSheetItem(item: BottomSheetItem) {
-            listItemView.customView = context.createImageView(item.imageId, item.getImageTint(context))
+            if (item.imageId != NO_ID) {
+                listItemView.customView = context.createImageView(item.imageId, item.getImageTint(context))
+            }
             listItemView.title = item.title
             listItemView.subtitle = item.subtitle
             listItemView.setTag(R.id.fluentui_bottom_sheet_item_divider, item.useDivider)
