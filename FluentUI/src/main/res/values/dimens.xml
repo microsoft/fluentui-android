@@ -27,6 +27,11 @@
     <dimen name="fluentui_button_borderless_padding_horizontal">8dp</dimen>
     <dimen name="fluentui_button_corner_radius">@dimen/fluentui_corner_radius_2</dimen>
     <dimen name="fluentui_button_min_height">36dp</dimen>
+    <dimen name="fluentui_button_large_padding_horizontal">8dp</dimen>
+    <dimen name="fluentui_button_large_padding_vertical">16dp</dimen>
+    <dimen name="fluentui_button_large_min_height">48dp</dimen>
+    <dimen name="fluentui_button_outlined_padding_vertical">7dp</dimen>
+    <dimen name="fluentui_button_outlined_min_height">30dp</dimen>
 
     <!--CalendarView-->
     <dimen name="fluentui_calendar_week_day_font_size">16sp</dimen>

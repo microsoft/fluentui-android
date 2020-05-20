@@ -21,7 +21,7 @@
     <style name="Widget.FluentUI.BottomNavigation.Unlabeled">
         <item name="labelVisibilityMode">unlabeled</item>
     </style>
-    
+
     <!--Button-->
     <style name="Widget.FluentUI.Button" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_background</item>
@@ -42,6 +42,29 @@
         <item name="android:paddingTop">@dimen/fluentui_button_padding_vertical</item>
         <item name="android:paddingBottom">@dimen/fluentui_button_padding_vertical</item>
         <item name="android:minHeight">@dimen/fluentui_button_min_height</item>
+    </style>
+
+    <!--Large Buttons -->
+    <style name="Widget.FluentUI.Button.Large" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button</item>
+        <item name="android:paddingStart">@dimen/fluentui_button_large_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/fluentui_button_large_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/fluentui_button_large_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/fluentui_button_large_padding_vertical</item>
+        <item name="android:minHeight">@dimen/fluentui_button_large_min_height</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
+    </style>
+
+    <!--outlined Buttons -->
+    <style name="Widget.FluentUI.Button.Outlined" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:background">@drawable/button_outlined</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button.Borderless</item>
+        <item name="android:paddingStart">@dimen/fluentui_button_borderless_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/fluentui_button_borderless_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/fluentui_button_outlined_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/fluentui_button_outlined_padding_vertical</item>
+        <item name="android:minHeight">@dimen/fluentui_button_outlined_min_height</item>
     </style>
 
     <!--Compound Buttons-->

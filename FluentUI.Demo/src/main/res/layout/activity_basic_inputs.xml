@@ -53,4 +53,30 @@
         android:enabled="false"
         android:text="@string/button_borderless_disabled" />
 
+    <com.microsoft.fluentui.widget.Button
+        style="@style/Widget.FluentUI.Button.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_large" />
+
+    <com.microsoft.fluentui.widget.Button
+        style="@style/Widget.FluentUI.Button.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/button_large_disabled" />
+
+    <com.microsoft.fluentui.widget.Button
+        style="@style/Widget.FluentUI.Button.Outlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_outlined" />
+
+    <com.microsoft.fluentui.widget.Button
+        style="@style/Widget.FluentUI.Button.Outlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/button_outlined_disabled" />
+
 </LinearLayout>
