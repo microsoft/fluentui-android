@@ -108,10 +108,6 @@
     <string name="button_disabled">Disabled Button</string>
     <string name="button_borderless">Borderless Button</string>
     <string name="button_borderless_disabled">Borderless Disabled Button</string>
-    <string name="button_large">Large Button</string>
-    <string name="button_large_disabled">Large Disabled Button</string>
-    <string name="button_outlined">Outlined Button</string>
-    <string name="button_outlined_disabled">Outlined Disabled Button</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Choose a date</string>
