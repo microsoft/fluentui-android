@@ -73,6 +73,9 @@
     <style name="TextAppearance.FluentUI.Button.Borderless">
         <item name="android:textColor">@color/button_text_borderless</item>
     </style>
+    <style name="TextAppearance.FluentUI.Button.Outlined">
+        <item name="android:textColor">@color/button_text_outlined</item>
+    </style>
 
     <!--Calendar-->
     <!--calendar_week_day_text_selector sets the colors for these-->
