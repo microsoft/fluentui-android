@@ -278,6 +278,12 @@
     <string name="circular_progress_large">Large</string>
     <string name="circular_progress_large_size">44dp</string>
 
+    <string name="linear_progress">Linear Progress</string>
+    <string name="linear_progress_size">4dp</string>
+    <string name="linear_progress_indeterminate_label">Indeterminate</string>
+    <string name="linear_progress_determinate_label">Determinate</string>
+
+
     <!--Shared-->
     <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.

@@ -194,4 +194,81 @@
 
     </TableLayout>
 
+    <TextView
+        style="@style/TextAppearance.FluentUI.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
+        android:text="@string/linear_progress" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:background="@drawable/ms_row_divider" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!--Linear: Indeterminate-->
+        <TableRow>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/progress_bar_linear"
+                style="@style/TextAppearance.DemoDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/linear_progress_indeterminate_label" />
+
+            <TextView
+                android:id="@+id/progress_bar_linear_size"
+                style="@style/TextAppearance.DemoDescription.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/linear_progress_size" />
+        </LinearLayout>
+
+        <com.microsoft.fluentui.widget.ProgressBar
+            android:layout_width="250dp"
+            android:layout_height="4dp"
+            android:layout_margin="20dp"
+            style="@style/Widget.FluentUI.LinearProgress.Indeterminate"
+            />
+        </TableRow>
+        <TableRow>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/progress_bar_linear_determinate_text"
+                    style="@style/TextAppearance.DemoDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linear_progress_determinate_label" />
+
+                <TextView
+                    android:id="@+id/progress_bar_linear_determinate_size"
+                    style="@style/TextAppearance.DemoDescription.Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linear_progress_size" />
+            </LinearLayout>
+
+            <com.microsoft.fluentui.widget.ProgressBar
+                android:id="@+id/progress_bar_linear_determinate"
+                android:max="100"
+                android:progress="1"
+                android:layout_width="250dp"
+                android:layout_height="4dp"
+                android:layout_margin="20dp"
+                style="@style/Widget.FluentUI.LinearProgress.Determinate"
+                />
+
+        </TableRow>
+    </TableLayout>
 </LinearLayout>
