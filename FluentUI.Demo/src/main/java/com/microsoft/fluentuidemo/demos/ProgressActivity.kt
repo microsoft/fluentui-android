@@ -5,12 +5,8 @@
 
 package com.microsoft.fluentuidemo.demos
 
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.support.annotation.RequiresApi
-import android.util.Log
-import android.view.View
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_progress.*
@@ -19,7 +15,6 @@ class ProgressActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_progress
 
-    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_progress)
