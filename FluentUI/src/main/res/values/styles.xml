@@ -159,17 +159,16 @@
     </style>
 
     <!--Progress: Linear-->
-    <style name="Widget.FluentUI.LinearProgress.Indeterminate" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+    <style name="Widget.FluentUI.LinearProgress.Indeterminate" parent="@style/Widget.FluentUI.LinearProgress.Determinate">
         <item name="android:indeterminate">true</item>
-        <item name="android:indeterminateDrawable">@drawable/anim_progress_linear_indeterminate</item>
-        <item name="android:minHeight">@dimen/fluentui_progress_linear_max_height</item>
-        <item name="android:maxHeight">@dimen/fluentui_progress_linear_max_height</item>
+        <item name="android:minHeight">@dimen/flunetui_progress_linear_indeterminate_height</item>
+        <item name="android:maxHeight">@dimen/flunetui_progress_linear_indeterminate_height</item>
     </style>
     <style name="Widget.FluentUI.LinearProgress.Determinate" parent="Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:indeterminate">false</item>
         <item name="android:progressDrawable">@drawable/ms_ic_progress_linear_determinate</item>
-        <item name="android:minHeight">@dimen/fluentui_progress_linear_max_height</item>
-        <item name="maxButtonHeight">@dimen/fluentui_progress_linear_max_height</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_linear_determinate_height</item>
+        <item name="maxButtonHeight">@dimen/fluentui_progress_linear_determinate_height</item>
     </style>
 
 
