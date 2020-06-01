@@ -20,18 +20,19 @@ class ProgressActivity : DemoActivity() {
         setContentView(R.layout.activity_progress)
 
         var progressStatus = 0
-        var handler : Handler? = null
+        val handler = Handler()
 
-        // Updates Linear Determinate Progress
-        handler = Handler(Handler.Callback {
-            progressStatus++
-            if(progressStatus == 100) {
-                progressStatus = 0
+        // Updates linear determinate progress
+        Thread {
+            while(progressStatus<100){
+                progressStatus++
+                handler.post {
+                    progress_bar_linear_determinate.progress = progressStatus
+                }
+                Thread.sleep(100)
+                if(progressStatus == 100)
+                    progressStatus = 0
             }
-            progress_bar_linear_determinate.progress = progressStatus
-            handler?.sendEmptyMessageDelayed(0, 100)
-            true
-        })
-        handler?.sendEmptyMessage(0)
+        }.start()
     }
 }
