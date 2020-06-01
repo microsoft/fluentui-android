@@ -1,0 +1,31 @@
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+- task: Gradle@2
+  displayName: 'gradlew build'
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build'
+    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+
+- task: AndroidSigning@2
+  displayName: 'Signing and aligning APK file(s) **/*.apk'
+  inputs:
+    jarsign: false
+    zipalign: false
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: |
+     **/*.apk
+     **/*.aar
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Build'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: Build
