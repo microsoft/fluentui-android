@@ -10,6 +10,6 @@
     android:viewportHeight="4">
   <path
       android:pathData="M0,0H75V4H0V0Z"
-      android:fillColor="@color/fluentui_communication_blue"
+      android:fillColor="?attr/fluentuiProgressPrimaryColor"
       android:fillType="evenOdd"/>
 </vector>
