@@ -11,7 +11,7 @@
   <path
       android:pathData="M0,0H75V4H0V0Z"
       android:strokeAlpha="0.25"
-      android:fillColor="?attr/fluentuiProgressPrimaryColor"
+      android:fillColor="?attr/fluentuiProgressBackgroundColor"
       android:fillType="evenOdd"
-      android:fillAlpha="0.25"/>
+      android:fillAlpha="1.0"/>
 </vector>

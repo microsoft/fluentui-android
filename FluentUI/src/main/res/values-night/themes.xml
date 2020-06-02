@@ -80,6 +80,8 @@
         <item name="fluentuiPopupMenuItemTitleColor">@color/fluentui_gray_100</item>
         <item name="fluentuiPopupMenuItemCheckBackgroundRippleColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
 
+        <!--Progress-->
+        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_900</item>
         <!--Searchbar-->
         <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">@color/fluentui_gray_700</item>
