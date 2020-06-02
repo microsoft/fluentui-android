@@ -29,7 +29,7 @@ class ProgressActivity : DemoActivity() {
                 handler.post {
                     progress_bar_linear_determinate.progress = progressStatus
                 }
-                Thread.sleep(100)
+                Thread.sleep(20)
                 if(progressStatus == 100)
                     progressStatus = 0
             }
