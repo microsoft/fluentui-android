@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:height="4dp"
+    android:height="@dimen/fluentui_progress_linear_height"
     android:width="75dp"
     android:viewportHeight="4"
     android:viewportWidth="75" >
