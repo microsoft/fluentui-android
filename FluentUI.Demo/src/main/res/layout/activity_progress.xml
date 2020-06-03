@@ -213,7 +213,7 @@
 
             <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="@dimen/linear_progress_width"
+                android:layout_width="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -237,7 +237,7 @@
                 android:id="@+id/progress_bar_linear_indeterminate"
                 style="@style/Widget.FluentUI.LinearProgress.Indeterminate"
                 android:layout_height="wrap_content"
-                android:layout_width="@dimen/linear_progress_width"
+                android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_margin="@dimen/linear_progress_margin"
                 />
@@ -252,7 +252,7 @@
 
             <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="@dimen/linear_progress_width"
+                android:layout_width="0dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:orientation="vertical">
@@ -276,7 +276,7 @@
                 android:id="@+id/progress_bar_linear_determinate"
                 style="@style/Widget.FluentUI.LinearProgress.Determinate"
                 android:layout_height="wrap_content"
-                android:layout_width="@dimen/linear_progress_width"
+                android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_margin="@dimen/linear_progress_margin"
                 />
