@@ -176,6 +176,22 @@
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
 
+    <!--Progress: Linear-->
+    <style name="Widget.FluentUI.LinearProgress" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/ms_ic_progress_linear_determinate</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_linear_indeterminate</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_linear_height</item>
+        <item name="android:maxHeight">@dimen/fluentui_progress_linear_height</item>
+    </style>
+    <style name="Widget.FluentUI.LinearProgress.Determinate" parent="Widget.FluentUI.LinearProgress">
+        <item name="android:indeterminate">false</item>
+    </style>
+    <style name="Widget.FluentUI.LinearProgress.Indeterminate" parent="Widget.FluentUI.LinearProgress">
+        <item name="android:indeterminate">true</item>
+    </style>
+
+
     <!--Searchbar-->
     <style name="Widget.FluentUI.SearchView" parent="Widget.AppCompat.SearchView">
         <item name="colorControlActivated">?attr/fluentuiSearchbarSearchViewCursorColor</item>

@@ -157,6 +157,7 @@
 
     <!--Progress-->
     <attr name="fluentuiProgressPrimaryColor" format="reference|color"/>
+    <attr name="fluentuiProgressBackgroundColor" format="reference|color"/>
 
     <!--Searchbar-->
     <attr name="fluentuiSearchbarBackgroundColor" format="reference|color"/>

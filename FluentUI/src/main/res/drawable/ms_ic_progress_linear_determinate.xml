@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@android:id/background"
+        android:drawable="@drawable/ms_ic_progress_linear_background" />
+
+    <item android:id="@android:id/progress">
+        <scale android:scaleWidth="100%"
+            android:drawable="@drawable/ms_ic_progress_linear_vector" />
+    </item>
+
+</layer-list>

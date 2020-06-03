@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="@dimen/fluentui_progress_linear_height"
+    android:width="75dp"
+    android:viewportHeight="4"
+    android:viewportWidth="75" >
+    <group
+        android:name="progress_group"
+        >
+        <path
+            android:name="background_track"
+            android:pathData="M 0,0 h 100 v 4 h -100 Z"
+            android:fillColor="?attr/fluentuiProgressBackgroundColor"
+            android:fillAlpha="1.0"
+            />
+        <group
+            android:name="progress_indeterminate"
+            android:translateX="-40" >
+            <path
+                android:pathData="M 0,0 h 40 v 4 h -40 Z"
+                android:fillColor="?attr/fluentuiProgressPrimaryColor" />
+        </group>
+    </group>
+
+</vector>
