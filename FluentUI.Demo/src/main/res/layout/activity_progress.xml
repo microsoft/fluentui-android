@@ -238,7 +238,7 @@
                 style="@style/Widget.FluentUI.LinearProgress.Indeterminate"
                 android:layout_height="wrap_content"
                 android:layout_width="@dimen/linear_progress_width"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_margin="@dimen/linear_progress_margin"
                 />
 
@@ -277,7 +277,7 @@
                 style="@style/Widget.FluentUI.LinearProgress.Determinate"
                 android:layout_height="wrap_content"
                 android:layout_width="@dimen/linear_progress_width"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_margin="@dimen/linear_progress_margin"
                 />
 
