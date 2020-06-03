@@ -37,8 +37,9 @@
     <!--Margin top is used to space the circular progress indicators evenly-->
     <dimen name="circular_progress_margin_top_medium">18dp</dimen>
     <dimen name="circular_progress_margin_top_small">8dp</dimen>
-    <!--Linear Progress Margin-->
+    <!--Linear Progress-->
     <dimen name="linear_progress_margin">20dp</dimen>
+    <dimen name="linear_progress_width">0dp</dimen>
 
     <!--Shared-->
     <dimen name="demo_headline_divider_height">@dimen/fluentui_divider_height</dimen>

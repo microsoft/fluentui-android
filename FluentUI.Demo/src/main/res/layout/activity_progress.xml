@@ -213,14 +213,15 @@
 
             <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/linear_progress_width"
                 android:layout_gravity="center_vertical"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/progress_bar_linear"
                     style="@style/TextAppearance.DemoDescription"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/linear_progress_indeterminate_label" />
 
@@ -235,8 +236,9 @@
             <com.microsoft.fluentui.widget.ProgressBar
                 android:id="@+id/progress_bar_linear_indeterminate"
                 style="@style/Widget.FluentUI.LinearProgress.Indeterminate"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_width="@dimen/linear_progress_width"
+                android:layout_weight="1"
                 android:layout_margin="@dimen/linear_progress_margin"
                 />
 
@@ -250,14 +252,15 @@
 
             <LinearLayout
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/linear_progress_width"
                 android:layout_gravity="center_vertical"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/progress_bar_linear_determinate_text"
                     style="@style/TextAppearance.DemoDescription"
-                    android:layout_width="110dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/linear_progress_determinate_label" />
 
@@ -272,9 +275,9 @@
             <com.microsoft.fluentui.widget.ProgressBar
                 android:id="@+id/progress_bar_linear_determinate"
                 style="@style/Widget.FluentUI.LinearProgress.Determinate"
-                android:indeterminate="false"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_width="@dimen/linear_progress_width"
+                android:layout_weight="1"
                 android:layout_margin="@dimen/linear_progress_margin"
                 />
 
