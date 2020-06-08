@@ -25,4 +25,18 @@
         android:layout_height="wrap_content"
         android:text="@string/drawer_dialog_button" />
 
+    <Button
+        android:id="@+id/show_left_dialog_button"
+        android:layout_marginTop="400dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_left_dialog_button" />
+
+    <Button
+        android:id="@+id/show_right_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_right_dialog_button" />
+
 </LinearLayout>

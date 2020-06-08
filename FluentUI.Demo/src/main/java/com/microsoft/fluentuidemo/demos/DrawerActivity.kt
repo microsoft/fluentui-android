@@ -36,6 +36,20 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
             drawerDialogDemo?.setContentView(R.layout.demo_drawer_content)
             drawerDialogDemo?.show()
         }
+
+        show_left_dialog_button.setOnClickListener{
+            drawerDialogDemo = DrawerDialog(this,DrawerDialog.BehaviorType.LEFT)
+            drawerDialogDemo?.onDrawerContentCreatedListener = this
+            drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
+            drawerDialogDemo?.show()
+        }
+
+        show_right_dialog_button.setOnClickListener{
+            drawerDialogDemo = DrawerDialog(this,DrawerDialog.BehaviorType.RIGHT)
+            drawerDialogDemo?.onDrawerContentCreatedListener = this
+            drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
+            drawerDialogDemo?.show()
+        }
     }
 
     override fun onDestroy() {

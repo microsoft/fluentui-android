@@ -218,4 +218,7 @@
     <string name="tooltip_accessibility_dismiss_action">dismiss</string>
     <!--Announcement when Tooltip is dismissed-->
     <string name="tooltip_accessibility_dismiss_announcement">Tooltip dismissed</string>
+
+    <!--SideSheetBehavior Address-->
+    <string name="side_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.SideSheetBehavior</string>
 </resources>

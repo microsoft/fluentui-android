@@ -139,6 +139,8 @@
     <!--Drawer-->
     <string name="drawer_button">Show drawer</string>
     <string name="drawer_dialog_button">Show drawer dialog</string>
+    <string name="drawer_right_dialog_button">Show right drawer</string>
+    <string name="drawer_left_dialog_button">Show left drawer</string>
 
     <!--ListItem-->
     <string name="list_item_title">Title, primary text</string>

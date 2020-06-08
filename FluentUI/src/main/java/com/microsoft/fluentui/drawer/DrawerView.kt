@@ -6,6 +6,7 @@
 package com.microsoft.fluentui.drawer
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Path
 import android.graphics.RectF
@@ -18,7 +19,17 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
         private const val RADII_SIZE = 8
     }
 
+    enum class BehaviorType {
+        BOTTOM, TOP, RIGHT, LEFT
+    }
+
     private val clipPath = Path()
+    var behaviorType: BehaviorType
+
+    init {
+        var a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.Drawer_Dialog_Layout)
+        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.Drawer_Dialog_Layout_behavior_type) ?: "BOTTOM")
+    }
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
         super.onSizeChanged(width, height, oldWidth, oldHeight)
@@ -34,23 +45,30 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
 
     private fun updateClipPath(width: Float, height: Float) {
         val cornerRadius = resources.getDimension(R.dimen.fluentui_drawer_corner_radius)
-        val radii = FloatArray(RADII_SIZE)
+        val radii = FloatArray(RADII_SIZE){0f}
 
-        // top left corner
-        radii[0] = cornerRadius
-        radii[1] = cornerRadius
+        when(behaviorType) {
+            BehaviorType.BOTTOM -> {
+                // top left corner
+                radii[0] = cornerRadius
+                radii[1] = cornerRadius
 
-        // top right corner
-        radii[2] = cornerRadius
-        radii[3] = cornerRadius
+                // top right corner
+                radii[2] = cornerRadius
+                radii[3] = cornerRadius
+            }
+            BehaviorType.TOP -> {
+                // bottom right corner
+                radii[4] = cornerRadius
+                radii[5] = cornerRadius
 
-        // bottom right corner
-        radii[4] = 0f
-        radii[5] = 0f
-
-        // bottom left corner
-        radii[6] = 0f
-        radii[7] = 0f
+                // bottom left corner
+                radii[6] = cornerRadius
+                radii[7] = cornerRadius
+            }
+            else -> {
+            }
+        }
 
         clipPath.reset()
         clipPath.addRoundRect(RectF(0f, 0f, width, height), radii, Path.Direction.CW)

@@ -191,4 +191,11 @@
     <!--Tooltip-->
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
+
+
+    <!--DrawerDialog-->
+    <declare-styleable name="Drawer_Dialog_Layout">
+        <attr format="dimension" name="behavior_peekWidth"/>
+        <attr format="string" name="behavior_type"/>
+    </declare-styleable>
 </resources>
