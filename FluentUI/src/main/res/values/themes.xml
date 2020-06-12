@@ -84,6 +84,14 @@
         <item name="fluentuiButtonBorderlessTextDisabledColor">@color/fluentui_gray_300</item>
         <item name="fluentuiButtonBorderlessTextPressedColor">?attr/fluentuiButtonBorderlessTextDefaultColor</item>
 
+        <!--Button Outlined-->
+        <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_300</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_tint_20</item>
+        <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_30</item>
+        <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_50</item>
+
         <!--Compound Buttons-->
         <item name="fluentuiCompoundButtonTintDefaultColor">?attr/fluentuiForegroundSecondaryIconColor</item>
         <item name="fluentuiCompoundButtonTintCheckedColor">?attr/fluentuiForegroundSelectedColor</item>
@@ -167,6 +175,7 @@
 
         <!--Progress-->
         <item name="fluentuiProgressPrimaryColor">?attr/colorPrimary</item>
+        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_100</item>
 
         <!--Searchbar-->
         <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>

@@ -3,7 +3,6 @@
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -193,5 +192,95 @@
         </TableRow>
 
     </TableLayout>
+
+    <TextView
+        style="@style/TextAppearance.FluentUI.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
+        android:text="@string/linear_progress" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:background="@drawable/ms_row_divider" />
+
+    <!--Linear: Indeterminate-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/progress_bar_linear"
+                    style="@style/TextAppearance.DemoDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linear_progress_indeterminate_label" />
+
+                <TextView
+                    android:id="@+id/progress_bar_linear_size"
+                    style="@style/TextAppearance.DemoDescription.Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linear_progress_size" />
+            </LinearLayout>
+
+            <com.microsoft.fluentui.widget.ProgressBar
+                android:id="@+id/progress_bar_linear_indeterminate"
+                style="@style/Widget.FluentUI.LinearProgress.Indeterminate"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_margin="@dimen/linear_progress_margin"
+                />
+
+        </LinearLayout>
+
+    <!--Linear: Determinate -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/progress_bar_linear_determinate_text"
+                    style="@style/TextAppearance.DemoDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linear_progress_determinate_label" />
+
+                <TextView
+                    android:id="@+id/progress_bar_linear_determinate_size"
+                    style="@style/TextAppearance.DemoDescription.Label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linear_progress_size" />
+            </LinearLayout>
+
+            <com.microsoft.fluentui.widget.ProgressBar
+                android:id="@+id/progress_bar_linear_determinate"
+                style="@style/Widget.FluentUI.LinearProgress.Determinate"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_margin="@dimen/linear_progress_margin"
+                />
+
+        </LinearLayout>
 
 </LinearLayout>

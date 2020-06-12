@@ -108,6 +108,10 @@
     <string name="button_disabled">Disabled Button</string>
     <string name="button_borderless">Borderless Button</string>
     <string name="button_borderless_disabled">Borderless Disabled Button</string>
+    <string name="button_large">Large Button</string>
+    <string name="button_large_disabled">Large Disabled Button</string>
+    <string name="button_outlined">Outlined Button</string>
+    <string name="button_outlined_disabled">Outlined Disabled Button</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Choose a date</string>
@@ -277,6 +281,12 @@
     <string name="circular_progress_medium_size">36dp</string>
     <string name="circular_progress_large">Large</string>
     <string name="circular_progress_large_size">44dp</string>
+
+    <string name="linear_progress">Linear Progress</string>
+    <string name="linear_progress_size">4dp</string>
+    <string name="linear_progress_indeterminate_label">Indeterminate</string>
+    <string name="linear_progress_determinate_label">Determinate</string>
+
 
     <!--Shared-->
     <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,

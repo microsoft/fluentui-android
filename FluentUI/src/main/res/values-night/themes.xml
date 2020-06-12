@@ -44,6 +44,14 @@
         <item name="fluentuiButtonBorderlessTextDisabledColor">@color/fluentui_gray_500</item>
         <item name="fluentuiButtonBorderlessTextPressedColor">?attr/colorPrimaryDark</item>
 
+        <!--Button Outlined-->
+        <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_tint_20</item>
+        <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_40</item>
+        <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_800</item>
+
         <!--CalendarView-->
         <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
@@ -80,6 +88,8 @@
         <item name="fluentuiPopupMenuItemTitleColor">@color/fluentui_gray_100</item>
         <item name="fluentuiPopupMenuItemCheckBackgroundRippleColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
 
+        <!--Progress-->
+        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_900</item>
         <!--Searchbar-->
         <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">@color/fluentui_gray_700</item>

@@ -22,6 +22,7 @@
     <color name="fluentui_communication_shade_20">#005A9E</color>
     <color name="fluentui_communication_blue">#0078D4</color>
     <color name="fluentui_communication_tint_20">#C7E0F4</color>
+    <color name="fluentui_communication_tint_30">#DEECF9</color>
     <color name="fluentui_communication_tint_40">#EFF6FC</color>
 
     <!--Neutral Colors-->
