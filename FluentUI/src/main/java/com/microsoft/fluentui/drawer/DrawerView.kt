@@ -27,8 +27,9 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     var behaviorType: BehaviorType
 
     init {
-        var a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.Drawer_Dialog_Layout)
-        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.Drawer_Dialog_Layout_behavior_type) ?: "BOTTOM")
+        var a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
+        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "BOTTOM")
+        a.recycle()
     }
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {

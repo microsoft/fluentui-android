@@ -88,18 +88,15 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     var behaviorType: BehaviorType = BehaviorType.LEFT
 
     constructor(context: Context, attrs: AttributeSet? = null): super(context, attrs) {
-        var a:TypedArray = context.obtainStyledAttributes(attrs, R.styleable.BottomSheetBehavior_Layout)
+        var a:TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
         setFitToContents(a.getBoolean(
-                R.styleable.BottomSheetBehavior_Layout_behavior_fitToContents, true))
+                R.styleable.SheetBehaviorLayout_behaviorFitToContents, true))
         hideable = a.getBoolean(
-                R.styleable.BottomSheetBehavior_Layout_behavior_hideable, false)
+                R.styleable.SheetBehaviorLayout_behaviorHideable, false)
         skipCollapsed = a.getBoolean(
-                R.styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed, false)
-        a.recycle()
-
-        a = context.obtainStyledAttributes(attrs, R.styleable.Drawer_Dialog_Layout)
-        peekWidth = a.getDimensionPixelSize(R.styleable.Drawer_Dialog_Layout_behavior_peekWidth, 0)
-        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.Drawer_Dialog_Layout_behavior_type) ?: "RIGHT")
+                R.styleable.SheetBehaviorLayout_behaviorSkipCollapsed, false)
+        peekWidth = a.getDimensionPixelSize(R.styleable.SheetBehaviorLayout_behaviorPeekWidth, 0)
+        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "RIGHT")
         a.recycle()
 
         val configuration: ViewConfiguration = ViewConfiguration.get(context)

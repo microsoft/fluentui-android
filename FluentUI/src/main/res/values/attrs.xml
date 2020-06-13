@@ -193,9 +193,13 @@
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
 
 
-    <!--DrawerDialog-->
-    <declare-styleable name="Drawer_Dialog_Layout">
-        <attr format="dimension" name="behavior_peekWidth"/>
-        <attr format="string" name="behavior_type"/>
+    <!-- SheetBehavior-->
+    <declare-styleable name="SheetBehaviorLayout">
+        <attr format="string" name="behaviorType"/>
+        <attr format="dimension" name="behaviorPeekHeight"/>
+        <attr format="dimension" name="behaviorPeekWidth" />
+        <attr format="boolean" name="behaviorHideable"/>
+        <attr format="boolean" name="behaviorSkipCollapsed"/>
+        <attr format="boolean" name="behaviorFitToContents"/>
     </declare-styleable>
 </resources>
