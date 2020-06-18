@@ -15,13 +15,11 @@ import android.support.v4.view.ViewCompat
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.Surface
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
-import com.microsoft.device.dualscreen.layout.ScreenHelper
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.*
@@ -61,11 +59,8 @@ class Tooltip {
 
     private var contentWidth: Int = 0
     private var contentHeight: Int = 0
-    private var isDeviceSurfaceDuo: Boolean = false
-    private var isDualScreenMode: Boolean = false
-    private var rotation: Int = 0
-    private var hinge: Rect? = null
-    private var screenRect: List<Rect>? = null
+
+    private val duoSupport: DuoSupportUtils
 
     constructor(context: Context) {
         this.context = context
@@ -90,25 +85,9 @@ class Tooltip {
             contentView = tooltipView
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
-    }
 
-    private fun loadDuoSupport(){
-        val currentActivity = context.activity as Activity
-        if(ScreenHelper.isDeviceSurfaceDuo(currentActivity)){
-            isDeviceSurfaceDuo = true
-            isDualScreenMode = ScreenHelper.isDualMode(currentActivity)
-            rotation = ScreenHelper.getCurrentRotation(currentActivity)
-            hinge = ScreenHelper.getHinge(currentActivity)
-            screenRect = ScreenHelper.getScreenRectangles(currentActivity)
-        }
+        duoSupport = DuoSupportUtils(context.activity as Activity)
     }
-
-    private fun isDeviceHorizontal(): Boolean{
-        val horizantalMode = rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180
-        return isDualScreenMode && horizantalMode
-    }
-
-    private fun moreOnLeft(anchor: Rect): Boolean = (hinge!!.left - anchor.left) >= (anchor.right - hinge!!.right)
 
     private fun hideAllArrows(){
         arrowUpView.visibility = View.GONE
@@ -133,18 +112,15 @@ class Tooltip {
         val anchorRect = Rect(screenPos[0], screenPos[1], screenPos[0] + anchor.width, screenPos[1] + anchor.height)
 
         measureContentSize()
-        loadDuoSupport()
 
         setPositionX(anchorRect.centerX(), if (anchor.layoutIsRtl) -config.offsetX else config.offsetX)
         setPositionY(anchorRect, config.offsetY, config.touchDismissLocation)
 
-        if (isDualScreenMode && isDeviceHorizontal()){
-            if (anchorRect.intersect(hinge!!)){
-                if(moreOnLeft(anchorRect))
+        if (duoSupport.isDualScreenMode && duoSupport.isDeviceHorizontal && duoSupport.intersectHinge(anchorRect)){
+                if(duoSupport.moreOnLeft(anchor))
                     positionX -= contentWidth / 2 + 44
                 else
                     positionX += contentWidth / 2 + 44
-            }
         }
 
         initTooltipArrow(anchorRect, anchor.layoutIsRtl, config.offsetX)
@@ -202,7 +178,7 @@ class Tooltip {
         val secondScreen = anchor.bottom > displayHeight
         positionY = if (secondScreen) anchor.bottom - displayHeight - 84
                     else anchor.bottom
-        isAboveAnchor = if (isDeviceSurfaceDuo) positionY + contentHeight + margin > displayHeight
+        isAboveAnchor = if (duoSupport.isDeviceSurfaceDuo) positionY + contentHeight + margin > displayHeight
                         else positionY + contentHeight + margin - context.statusBarHeight > displayHeight
         if (isAboveAnchor) {
             positionY = if(secondScreen) anchor.top - contentHeight - offsetY - displayHeight - 84
@@ -249,8 +225,8 @@ class Tooltip {
         // The offset calculation places the tooltip arrow in the correct position in reference to its anchor.
         val offset = if (isRTL)
             positionX + contentWidth - anchorCenterX - tooltipArrowWidth
-        else if(isDualScreenMode && anchorRect.intersect(hinge!!)) {
-            if(moreOnLeft(anchorRect))
+        else if(duoSupport.isDualScreenMode && duoSupport.intersectHinge(anchorRect)) {
+            if(duoSupport.moreOnLeft(anchorRect))
                 anchorCenterX - positionX - tooltipArrowWidth - contentWidth / 4
             else
                 anchorCenterX - positionX - tooltipArrowWidth - contentWidth / 4
@@ -258,7 +234,7 @@ class Tooltip {
         else
             (anchorCenterX - positionX - tooltipArrowWidth)
 
-        val layoutParams = toolTipArrow.getLayoutParams() as LinearLayout.LayoutParams
+        val layoutParams = toolTipArrow.layoutParams as LinearLayout.LayoutParams
         layoutParams.gravity = Gravity.START
         layoutParams.marginStart = offset + offsetX
     }
