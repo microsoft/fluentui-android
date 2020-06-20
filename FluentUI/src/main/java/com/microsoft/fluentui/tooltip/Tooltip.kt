@@ -200,19 +200,22 @@ class Tooltip {
 
     private fun initTooltipArrow(anchorRect: Rect, isRTL: Boolean, offsetX: Int) {
         hideAllArrows()
+
         toolTipArrow =
-            if (isAboveAnchor && !isSideAnchor) arrowDownView
-            else if (!isAboveAnchor && !isSideAnchor) arrowUpView
-            else if (!isAboveAnchor) arrowLeftView
+            if (isAboveAnchor  && !isSideAnchor) arrowDownView else
+            if (!isAboveAnchor && !isSideAnchor) arrowUpView   else
+            if (!isAboveAnchor) arrowLeftView
             else arrowRightView
+
         toolTipArrow.visibility = View.VISIBLE
 
         val tooltipArrowWidth = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_arrow_height)
+
         // In RTL scenario "x" axis is still left to right with 0 being at the left most edge of the display.
         // The offset calculation places the tooltip arrow in the correct position in reference to its anchor.
         val layoutParams = toolTipArrow.layoutParams as LinearLayout.LayoutParams
         val cornerRadius = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_radius)
-        if(!isSideAnchor){
+        if(!isSideAnchor){ // Normal Top/Bottom arrow
             val offset = if (isRTL)
                 positionX + contentWidth - anchorRect.centerX() - tooltipArrowWidth
             else
@@ -220,7 +223,7 @@ class Tooltip {
             layoutParams.gravity = Gravity.START
             layoutParams.marginStart = offset + offsetX
         }
-        else{
+        else{// Edge Case Left/Right arrow
             layoutParams.gravity = Gravity.TOP
             var topMargin = anchorRect.centerY() - positionY - tooltipArrowWidth
             if(positionY + contentHeight >= displayHeight) topMargin -= cornerRadius
@@ -231,36 +234,53 @@ class Tooltip {
     private fun checkEdgeCase(anchorRect: Rect, isRTL: Boolean, config: Config) {
         // It is used to check if the set positionX leads to a cut in the tooltip arrow wrt display size.
         // If the tooltip or the triangular arrow will get cut then the tooltip is readjusted with a side arrow.
-        isAboveAnchor = false
+        isAboveAnchor = false // Enables left arrow
+
         val layoutParams = toolTipArrow.layoutParams as LinearLayout.LayoutParams
         val upArrowWidth = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_arrow_width)
         val cornerRadius = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_radius)
         val startPosition = positionX + layoutParams.marginStart
         val rightEdge = startPosition + upArrowWidth + cornerRadius + margin > displayWidth
         val leftEdge = startPosition - upArrowWidth - cornerRadius - margin - context.softNavBarOffsetX < 0
-        if (leftEdge ) {
-            isSideAnchor = true
+
+        if (leftEdge ) { // checks if the arrow is cut by the left edge of the screen and sets positionX to the left of the anchor with proper width.
             positionX = anchorRect.right
         }
-        if (rightEdge) {
-            isSideAnchor = true
-            isAboveAnchor = true
+
+        if (rightEdge) { // checks if the arrow is cut by the right edge of the screen and sets positionX to the left of the anchor with proper width.
+            isAboveAnchor = true // Enables right arrow
             positionX = anchorRect.left - contentWidth - upArrowWidth / 2
         }
-        if(leftEdge || rightEdge){
-            contentHeight -= upArrowWidth / 2
-            contentWidth += upArrowWidth / 2
+
+        if(leftEdge || rightEdge){ // Common changes when the arrow is cut by the display edges.
             val topBarHeight = context.activity!!.supportActionBar?.height ?: 0
+            isSideAnchor = true // Enables side arrow
+
+            // As the arrow on top/bottom is hidden, content height decreases
+            contentHeight -= upArrowWidth / 2
+
+            // As the arrow on left/right is visible, content width increases
+            contentWidth += upArrowWidth / 2
+
             positionY =
-                    if (anchorRect.centerY() + contentHeight/2 + margin < displayHeight && anchorRect.centerY() - contentHeight / 2 - margin > topBarHeight + context.statusBarHeight)
-                        anchorRect.centerY() - contentHeight / 2
-                    else if (anchorRect.top + contentHeight < displayHeight)
-                        anchorRect.top
-                    else anchorRect.bottom - contentHeight
+                // Sets positionY such that the tooltip is symmetric about the anchor if there is enough space above and below the anchor
+                if (anchorRect.centerY() + contentHeight/2 + margin < displayHeight && anchorRect.centerY() - contentHeight / 2 - margin > topBarHeight + context.statusBarHeight)
+                    anchorRect.centerY() - contentHeight / 2
+
+                // Otherwise sets positionY as the top of the anchor if enough space is available below for the content
+                else if (anchorRect.top + contentHeight < displayHeight)
+                    anchorRect.top
+
+                // Otherwise sets positionY such that the content ends at the bottom of anchor
+                else anchorRect.bottom - contentHeight
+
+            // Readjusts positionY if it crosses AppBar on the top
             if (positionY < topBarHeight + context.statusBarHeight)
                 positionY = topBarHeight + margin + context.statusBarHeight
             if (config.touchDismissLocation == TouchDismissLocation.INSIDE)
                 positionY -= context.statusBarHeight
+
+            // Reinitialize tooltip with side arrow
             initTooltipArrow(anchorRect, isRTL, config.offsetX)
             if (config.touchDismissLocation == TouchDismissLocation.INSIDE)
                 (toolTipArrow.layoutParams as LinearLayout.LayoutParams).topMargin -= context.statusBarHeight
