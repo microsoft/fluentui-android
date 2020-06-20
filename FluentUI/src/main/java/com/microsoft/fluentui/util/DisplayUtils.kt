@@ -46,6 +46,9 @@ val Context.softNavBarOffsetX: Int
             0
     }
 
+val Context.deviceRotation: Int
+    get() = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.rotation
+
 fun Context.getSystemDimension(dimensionId: String): Int {
     val resourceId = resources.getIdentifier(dimensionId, DIMEN_STRING, ANDROID_STRING)
     return if (resourceId > 0) resources.getDimensionPixelSize(resourceId) else 0
