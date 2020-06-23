@@ -13,32 +13,24 @@ import com.microsoft.device.dualscreen.layout.ScreenHelper
  * the required values.
  */
 class DuoSupportUtils {
-    var isDeviceSurfaceDuo: Boolean = false
-    var isDualScreenMode: Boolean = false
-    var rotation: Int = 0
-    var hinge: Rect? = null
-    var screenRect: List<Rect>? = null
-    var isDeviceHorizontal: Boolean = true
+    val isDeviceSurfaceDuo: Boolean
+        get() = ScreenHelper.isDeviceSurfaceDuo(currentActivity)
+    val isDualScreenMode: Boolean
+        get() = ScreenHelper.isDualMode(currentActivity) && isDeviceSurfaceDuo
+    val rotation: Int
+        get() = ScreenHelper.getCurrentRotation(currentActivity)
+    val hinge: Rect?
+        get() = ScreenHelper.getHinge(currentActivity)
+    val screenRect: List<Rect>?
+        get() = ScreenHelper.getScreenRectangles(currentActivity)
+    val isDeviceHorizontal: Boolean
+        get() = (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180) && isDeviceSurfaceDuo
 
     private val currentActivity: Activity
 
     constructor(activity: Activity) {
         currentActivity = activity
-        loadDuoSupport()
     }
-
-    private fun loadDuoSupport() {
-        if (ScreenHelper.isDeviceSurfaceDuo(currentActivity)) {
-            isDeviceSurfaceDuo = true
-            isDualScreenMode = ScreenHelper.isDualMode(currentActivity)
-            rotation = ScreenHelper.getCurrentRotation(currentActivity)
-            hinge = ScreenHelper.getHinge(currentActivity)
-            screenRect = ScreenHelper.getScreenRectangles(currentActivity)
-            checkDeviceHorizontal()
-        }
-    }
-
-    private fun checkDeviceHorizontal(): Boolean = (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180)
 
     private fun getRect(view: View): Rect {
         val screenPos = IntArray(2)
@@ -50,13 +42,21 @@ class DuoSupportUtils {
      * Use [moreOnLeft] to check if a given [View] or [Rect] is more to the left of the Surface Duo hinge or is more to the right.
      * @return true if the View or Rect is more on left of the hinge, false otherwise. (false implies more to the right of the hinge)
      */
-    fun moreOnLeft(anchorRect: Rect) = (hinge!!.left - anchorRect.left) >= (anchorRect.right - hinge!!.right)
-    fun moreOnLeft(anchor: View) = moreOnLeft(getRect(anchor))
+    fun moreOnLeft(rect: Rect) = isDeviceHorizontal && ((hinge!!.left - rect.left) >= (rect.right - hinge!!.right))
+    fun moreOnLeft(view: View) = moreOnLeft(getRect(view))
+
 
     /**
-     * Use [intersectHinge] to check if a given [View] or [Rect] intersects with the Surface Duo hinge
+     * Use [moreOnTop] to check if a given [View] or [Rect] is more on the top of Surface Duo hinge or is more on the bottom.
+     * @return true if the View or Rect
+     */
+    fun moreOnTop(rect: Rect) = !isDeviceHorizontal && ((hinge!!.top - rect.top) >= (rect.bottom - hinge!!.bottom))
+    fun moreOnTop(view: View) = moreOnTop(getRect(view))
+
+    /**
+     * Use [intersectHinge] to check if a given [View] or [Rect] intersects with the Surface Duo hinge.
      * @return true if the View or Rect intersects with the hinge, false otherwise.
      */
-    fun intersectHinge(anchorRect: Rect) = hinge!!.intersect(anchorRect)
+    fun intersectHinge(anchorRect: Rect) = isDeviceSurfaceDuo && hinge!!.intersect(anchorRect)
     fun intersectHinge(anchor: View) = intersectHinge(getRect(anchor))
 }
