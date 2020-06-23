@@ -158,11 +158,6 @@ open class AvatarView : AppCompatImageView {
         super.setImageDrawable(BitmapDrawable(resources, bitmap))
     }
 
-    override fun setImageResource(resId: Int) {
-        val bitmap = BitmapFactory.decodeResource(resources, resId)
-        setImageBitmap(bitmap)
-    }
-
     override fun setImageURI(uri: Uri?) {
         if (uri == null)
             return
