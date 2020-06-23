@@ -245,6 +245,8 @@ class Tooltip {
         else{// Edge Case Left/Right arrow
             layoutParams.gravity = Gravity.TOP
             var topMargin = anchorRect.centerY() - positionY - tooltipArrowWidth
+            val secondScreen = anchorRect.top > displayHeight
+            topMargin -= if (secondScreen) displayHeight else 0
             if(positionY + contentHeight >= displayHeight) topMargin -= cornerRadius
             layoutParams.topMargin = topMargin
         }
@@ -261,7 +263,7 @@ class Tooltip {
         val startPosition = positionX + layoutParams.marginStart
         val topBarHeight = context.statusBarHeight + ( context.activity?.supportActionBar?.height ?: 0 )
         val doesNotFitAboveOrBelow = (positionY < topBarHeight) || (positionY + contentHeight > displayHeight)
-        val rightSpace = displayWidth - anchorRect.right
+        val rightSpace = displayWidth - anchorRect.right - context.softNavBarOffsetX
         val rightEdge = ( startPosition + upArrowWidth + cornerRadius + margin > displayWidth ) || (doesNotFitAboveOrBelow && anchorRect.left > rightSpace)
         val leftEdge = ( startPosition - upArrowWidth - cornerRadius - margin - context.softNavBarOffsetX < 0 ) || (doesNotFitAboveOrBelow && anchorRect.left < rightSpace)
 
@@ -338,6 +340,9 @@ class Tooltip {
 
                 // Otherwise sets positionY such that the content ends at the bottom of anchor
                 else anchorRect.bottom - contentHeight
+
+        val secondScreen = anchorRect.top > displayHeight
+        positionY -= if (secondScreen) displayHeight else 0
 
         // Readjusts positionY if it crosses AppBar on the top
         if (positionY < topBarHeight + context.statusBarHeight)
