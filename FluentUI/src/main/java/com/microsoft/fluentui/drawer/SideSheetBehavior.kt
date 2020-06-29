@@ -70,7 +70,6 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     var skipCollapsed: Boolean = false
     var peekWidth: Int = 0
     private var state: Int = STATE_COLLAPSED
-        get() = field
 
     private var viewDragHelper: ViewDragHelper? = null
     private var maximumVelocity: Float? = null
@@ -88,7 +87,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     var behaviorType: BehaviorType = BehaviorType.LEFT
 
     constructor(context: Context, attrs: AttributeSet? = null): super(context, attrs) {
-        var a:TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
+        val a:TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
         setFitToContents(a.getBoolean(
                 R.styleable.SheetBehaviorLayout_behaviorFitToContents, true))
         hideable = a.getBoolean(
@@ -434,6 +433,10 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         }
     }
 
+    fun getState(): Int {
+        return this.state
+    }
+
     private fun calculateCollapsedOffset() {
         collapsedOffset = when(behaviorType) {
             BehaviorType.RIGHT -> {
@@ -471,7 +474,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         if(state == st)
             return
         state = st
-        var sideSheet: View? = viewRef?.get() as View
+        val sideSheet: View? = viewRef?.get() as View
 
         if(sideSheet != null && callback != null) {
             callback!!.onStateChanged(sideSheet, state)
@@ -804,7 +807,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
             STATE_EXPANDED -> { left = getExpandedOffset() }
             else -> {
                 if(!hideable || state != STATE_HIDDEN) {
-                    throw IllegalArgumentException("Illegal state argument: " + st)
+                    throw IllegalArgumentException("Illegal state argument: $st")
                 }
 
                 left = when(behaviorType) {

@@ -30,26 +30,20 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
             drawerDemo.show(supportFragmentManager, null)
         }
 
-        show_drawer_dialog_button.setOnClickListener {
-            drawerDialogDemo = DrawerDialog(this)
-            drawerDialogDemo?.onDrawerContentCreatedListener = this
-            drawerDialogDemo?.setContentView(R.layout.demo_drawer_content)
-            drawerDialogDemo?.show()
-        }
+        show_drawer_dialog_button.setOnClickListener(this::clickListener)
+        show_left_dialog_button.setOnClickListener(this::clickListener)
+        show_right_dialog_button.setOnClickListener(this::clickListener)
+    }
 
-        show_left_dialog_button.setOnClickListener{
-            drawerDialogDemo = DrawerDialog(this,DrawerDialog.BehaviorType.LEFT)
-            drawerDialogDemo?.onDrawerContentCreatedListener = this
-            drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
-            drawerDialogDemo?.show()
+    private fun clickListener(v:View) {
+        when(v.id) {
+            R.id.show_drawer_dialog_button-> { drawerDialogDemo = DrawerDialog(this) }
+            R.id.show_left_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.LEFT) }
+            R.id.show_right_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.RIGHT) }
         }
-
-        show_right_dialog_button.setOnClickListener{
-            drawerDialogDemo = DrawerDialog(this,DrawerDialog.BehaviorType.RIGHT)
-            drawerDialogDemo?.onDrawerContentCreatedListener = this
-            drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
-            drawerDialogDemo?.show()
-        }
+        drawerDialogDemo?.onDrawerContentCreatedListener = this
+        drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
+        drawerDialogDemo?.show()
     }
 
     override fun onDestroy() {

@@ -6,13 +6,11 @@
 package com.microsoft.fluentui.drawer
 
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
 import android.support.annotation.StyleRes
 import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.CoordinatorLayout
 import android.support.v7.app.AppCompatDialog
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.R
@@ -21,7 +19,6 @@ import com.microsoft.fluentui.util.displaySize
 import com.microsoft.fluentui.util.statusBarHeight
 import kotlinx.android.synthetic.main.dialog_drawer.*
 import kotlinx.android.synthetic.main.dialog_drawer.view.*
-import java.lang.reflect.Array.get
 
 /**
  * [DrawerDialog] is used for displaying a modal dialog in the form of an expanding and collapsing bottom sheet

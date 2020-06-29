@@ -27,7 +27,7 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     var behaviorType: BehaviorType
 
     init {
-        var a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
+        val a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
         behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "BOTTOM")
         a.recycle()
     }
