@@ -681,6 +681,10 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 if (isPersonaChipClickable(touchedPersonaSpan.token))
                     personaChipClickListener?.onClick(touchedPersonaSpan.token)
                 touchedPersonaSpan.onClick()
+            } else if (isFocused) {
+                post {
+                    context.inputMethodManager.showSoftInput(this@PeoplePickerTextView, InputMethodManager.SHOW_IMPLICIT)
+                }
             }
 
             if (!isFocused)

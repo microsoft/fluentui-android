@@ -31,6 +31,9 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
         }
 
         show_drawer_dialog_button.setOnClickListener(this::clickListener)
+        show_no_fade_bottom_dialog_button.setOnClickListener(this::clickListener)
+        show_top_dialog_button.setOnClickListener(this::clickListener)
+        show_no_fade_top_dialog_button.setOnClickListener(this::clickListener)
         show_left_dialog_button.setOnClickListener(this::clickListener)
         show_right_dialog_button.setOnClickListener(this::clickListener)
     }
@@ -38,11 +41,18 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
     private fun clickListener(v:View) {
         when(v.id) {
             R.id.show_drawer_dialog_button-> { drawerDialogDemo = DrawerDialog(this) }
+            R.id.show_no_fade_bottom_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.BOTTOM, 0.0f) }
+            R.id.show_top_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.TOP) }
+            R.id.show_no_fade_top_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.TOP, 0.0f) }
             R.id.show_left_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.LEFT) }
             R.id.show_right_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.RIGHT) }
         }
         drawerDialogDemo?.onDrawerContentCreatedListener = this
-        drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
+
+        if(v.id == R.id.show_left_dialog_button || v.id == R.id.show_right_dialog_button)
+            drawerDialogDemo?.setContentView(R.layout.demo_side_drawer_content)
+        else
+            drawerDialogDemo?.setContentView(R.layout.demo_drawer_content)
         drawerDialogDemo?.show()
     }
 

@@ -139,6 +139,9 @@
     <!--Drawer-->
     <string name="drawer_button">Show drawer</string>
     <string name="drawer_dialog_button">Show drawer dialog</string>
+    <string name="drawer_top_dialog_button">Show top drawer</string>
+    <string name="no_fade_bottom_dialog_button">No fade bottom dialog</string>
+    <string name="no_fade_top_dialog_button">No fade top dialog</string>
     <string name="drawer_right_dialog_button">Show right drawer</string>
     <string name="drawer_left_dialog_button">Show left drawer</string>
 

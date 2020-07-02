@@ -9,15 +9,17 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.math.MathUtils
 import android.support.v4.view.AbsSavedState
 import android.support.v4.view.ViewCompat
 import android.support.v4.widget.ViewDragHelper
 import android.util.AttributeSet
-import android.util.Log
-import android.view.*
+import android.view.MotionEvent
+import android.view.VelocityTracker
+import android.view.View
+import android.view.ViewConfiguration
+import android.view.ViewGroup
 import com.microsoft.fluentui.R
 import java.lang.ref.WeakReference
 import kotlin.math.abs
@@ -56,7 +58,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
             }
         }
 
-        abstract class SideSheetCallback: BottomSheetBehavior.BottomSheetCallback()
+        abstract class SideSheetCallback: TopSheetBehavior.Companion.TopSheetCallback()
     }
 
     private var initialX: Int = 0
