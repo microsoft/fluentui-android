@@ -47,7 +47,7 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
         val bundle = savedInstanceState ?: arguments
         contentLayoutId = bundle?.getInt(CONTENT_LAYOUT_ID) ?: 0
 
-        val drawerDialog = DrawerDialog(context!!, theme)
+        val drawerDialog = DrawerDialog(context!!, DrawerDialog.BehaviorType.BOTTOM, theme)
         drawerDialog.onDrawerContentCreatedListener = this
         drawerDialog.setContentView(contentLayoutId)
         return drawerDialog

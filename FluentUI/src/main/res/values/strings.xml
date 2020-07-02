@@ -218,4 +218,7 @@
     <string name="tooltip_accessibility_dismiss_action">dismiss</string>
     <!--Announcement when Tooltip is dismissed-->
     <string name="tooltip_accessibility_dismiss_announcement">Tooltip dismissed</string>
+
+    <!--TopSheetBehavior Address-->
+    <string name="top_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.TopSheetBehavior</string>
 </resources>
