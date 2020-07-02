@@ -38,7 +38,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
 
     private var sheetBehavior: CoordinatorLayout.Behavior<View>? = null
 
-    private val sheetCallback = object : SideSheetBehavior.Companion.SideSheetCallback() {
+    private val sheetCallback = object : CustomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             // No op
         }
@@ -176,3 +176,5 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
 interface OnDrawerContentCreatedListener {
     fun onDrawerContentCreated(drawerContents: View)
 }
+
+abstract class CustomSheetCallback: BottomSheetBehavior.BottomSheetCallback()

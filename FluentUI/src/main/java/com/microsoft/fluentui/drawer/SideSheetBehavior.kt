@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.os.Parcel
 import android.os.Parcelable
+import android.support.design.widget.BottomSheetBehavior
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.math.MathUtils
 import android.support.v4.view.AbsSavedState
@@ -57,8 +58,6 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
                 }
             }
         }
-
-        abstract class SideSheetCallback: TopSheetBehavior.Companion.TopSheetCallback()
     }
 
     private var initialX: Int = 0
@@ -79,7 +78,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     private var nestedScrollingChildRef: WeakReference<View>? = null
     private var velocityTracker: VelocityTracker? = null
     private var touchingScrollingChild: Boolean? = null
-    private var callback: SideSheetCallback? = null
+    private var callback: CustomSheetCallback? = null
 
 
     private var fitToContents: Boolean = true
@@ -468,7 +467,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         return hideable
     }
 
-    fun setSideSheetCallBack(callback: SideSheetCallback)  {
+    fun setSideSheetCallBack(callback: CustomSheetCallback)  {
         this.callback = callback
     }
 
