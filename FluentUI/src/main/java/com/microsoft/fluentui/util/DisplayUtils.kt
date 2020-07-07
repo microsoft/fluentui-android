@@ -6,6 +6,7 @@
 package com.microsoft.fluentui.util
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Point
 import android.graphics.Rect
 import android.support.v4.view.ViewCompat
@@ -96,3 +97,9 @@ val View.isVisibleOnScreen: Boolean
         getHitRect(viewBounds)
         return getLocalVisibleRect(viewBounds)
     }
+
+val Context.isLandscape: Boolean
+    get() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+val Context.isPortrait: Boolean
+    get() = resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT

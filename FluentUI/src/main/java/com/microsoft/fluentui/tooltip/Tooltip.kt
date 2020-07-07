@@ -60,7 +60,6 @@ class Tooltip {
     private var contentWidth: Int = 0
     private var contentHeight: Int = 0
 
-    private val duoSupport: DuoSupportUtils
     private val displayWidth: Int
     private val displayHeight: Int
     private var requireReadjustment = false
@@ -93,7 +92,6 @@ class Tooltip {
 
         displayWidth = context.displaySize.x
         displayHeight = context.displaySize.y
-        duoSupport = DuoSupportUtils(context.activity as Activity)
     }
 
     private fun hideAllArrows(){
@@ -164,7 +162,7 @@ class Tooltip {
 
         // Duo Second Screen Support
         val secondScreen = anchorCenter > displayWidth
-        if (secondScreen) positionX -= displayWidth + 84
+        if (secondScreen) positionX -= displayWidth + DuoSupportUtils.DUO_HINGE_WIDTH
 
         // Navigation Bar in Nougat+ can appear on the left on phones at 270 rotation and adds
         // its height to the left of the display creating an offset that needs to be corrected to get
@@ -184,13 +182,13 @@ class Tooltip {
 
         // Duo Second Screen Support
         val secondScreen = anchor.bottom > displayHeight
-        if(secondScreen) positionY -= displayHeight + 84
+        if(secondScreen) positionY -= displayHeight + DuoSupportUtils.DUO_HINGE_WIDTH
 
-        isAboveAnchor = if (duoSupport.isDeviceSurfaceDuo) positionY + contentHeight + margin > displayHeight
+        isAboveAnchor = if (DuoSupportUtils.isDeviceSurfaceDuo(context as Activity)) positionY + contentHeight + margin > displayHeight
                         else positionY + contentHeight + margin - context.statusBarHeight > displayHeight
         if (isAboveAnchor) {
             positionY = anchor.top - contentHeight - offsetY
-            if(secondScreen) positionY -= displayHeight + 84
+            if(secondScreen) positionY -= displayHeight + DuoSupportUtils.DUO_HINGE_WIDTH
         }
 
         if (dismissLocation == TouchDismissLocation.INSIDE)
@@ -232,7 +230,7 @@ class Tooltip {
         val layoutParams = toolTipArrow.layoutParams as LinearLayout.LayoutParams
         val cornerRadius = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_radius)
         if(!isSideAnchor){ // Normal Top/Bottom arrow
-            val anchorCenterX = if (anchorRect.centerX() > displayWidth) anchorRect.centerX() - displayWidth - 84
+            val anchorCenterX = if (anchorRect.centerX() > displayWidth) anchorRect.centerX() - displayWidth - DuoSupportUtils.DUO_HINGE_WIDTH
                                      else anchorRect.centerX()
 
             val offset = if (isRTL)
@@ -271,13 +269,13 @@ class Tooltip {
         val secondScreen = anchorRect.left > displayWidth
         if (leftEdge ) { // checks if the arrow is cut by the left edge of the screen and sets positionX to the left of the anchor with proper width.
             positionX = anchorRect.right
-            if (secondScreen) positionX -= displayWidth + 84
+            if (secondScreen) positionX -= displayWidth + DuoSupportUtils.DUO_HINGE_WIDTH
         }
 
         if (rightEdge) { // checks if the arrow is cut by the right edge of the screen and sets positionX to the left of the anchor with proper width.
             isAboveAnchor = true // Enables right arrow
             positionX = anchorRect.left - contentWidth - upArrowWidth / 2
-            if (secondScreen) positionX -= displayWidth + 84
+            if (secondScreen) positionX -= displayWidth + DuoSupportUtils.DUO_HINGE_WIDTH
         }
 
         if(leftEdge || rightEdge)
@@ -287,13 +285,13 @@ class Tooltip {
     private fun hingeSupport(anchorRect: Rect, dismissLocation: TouchDismissLocation) {
         val upArrowWidth = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_arrow_width)
         val tooltipRect = Rect(positionX, positionY, positionX + contentWidth, positionY + contentHeight - upArrowWidth / 2)
-        val anchorIntersects = duoSupport.intersectHinge(anchorRect)
-        val tooltipIntersects = duoSupport.intersectHinge(tooltipRect)
+        val anchorIntersects = DuoSupportUtils.intersectHinge(context, anchorRect)
+        val tooltipIntersects = DuoSupportUtils.intersectHinge(context, tooltipRect)
 
         if (anchorIntersects || tooltipIntersects){
-            if (duoSupport.isDeviceHorizontal){
+            if (DuoSupportUtils.isWindowDoublePortrait(context)){
                 isAboveAnchor = false // Enables left arrow
-                if (duoSupport.moreOnLeft(anchorRect)) {
+                if (DuoSupportUtils.moreOnLeft(context, anchorRect)) {
                     isAboveAnchor = true // Enables right arrow
                     positionX = anchorRect.left - contentWidth - upArrowWidth / 2
                 }
@@ -352,11 +350,11 @@ class Tooltip {
 
         // Readjustment for Duo hinge
         val tooltipRect = Rect(positionX, positionY, positionX + contentWidth, positionY + contentHeight)
-        if (duoSupport.intersectHinge(tooltipRect)){
-            positionY = if (duoSupport.moreOnTop(anchorRect)){
-                duoSupport.hinge!!.top - contentHeight - margin + cornerRadius
+        if (DuoSupportUtils.intersectHinge(context, tooltipRect)){
+            positionY = if (DuoSupportUtils.moreOnTop(context, anchorRect)){
+                DuoSupportUtils.getHinge(context as Activity)!!.top - contentHeight - margin + cornerRadius
             } else {
-                duoSupport.hinge!!.bottom + margin - cornerRadius
+                DuoSupportUtils.getHinge(context as Activity)!!.bottom + margin - cornerRadius
             }
             isAboveAnchor = tooltipRect.left < anchorRect.left
         }
