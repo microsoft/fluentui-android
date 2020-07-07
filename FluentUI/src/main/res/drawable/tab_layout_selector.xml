@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- drawable for selected tab -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/fluentui_tab_radius"/>
+            <solid
+                android:color="?attr/fluentuiTabSelectedBackgroundColor"/>
+        </shape>
+
+    </item>
+    <!-- drawable for unselected tab -->
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <corners
+                android:radius="@dimen/fluentui_tab_radius"/>
+            <solid
+                android:color="?attr/fluentuiTabUnselectedBackgroundColor" />
+        </shape>
+    </item>
+
+</selector>

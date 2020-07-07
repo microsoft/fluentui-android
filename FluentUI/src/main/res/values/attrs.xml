@@ -177,10 +177,17 @@
     <attr name="fluentuiSnackbarActionTextColor" format="reference|color"/>
     <attr name="fluentuiSnackbarActionTextAnnouncementColor" format="reference|color"/>
 
+    <!--Dialog TabLayout-->
+    <attr name="fluentuiDialogTabTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabIndicatorColor" format="reference|color"/>
+
     <!--TabLayout-->
     <attr name="fluentuiTabTextColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
-    <attr name="fluentuiTabIndicatorColor" format="reference|color"/>
+    <attr name="fluentuiTabBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
 
     <!--Toolbar-->
     <attr name="fluentuiToolbarBackgroundColor" format="reference|color"/>

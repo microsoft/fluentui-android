@@ -196,9 +196,16 @@
         <item name="fluentuiSnackbarActionTextAnnouncementColor">?attr/fluentuiForegroundOnPrimaryColor</item>
 
         <!--TabLayout-->
-        <item name="fluentuiTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
-        <item name="fluentuiTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
+        <item name="fluentuiDialogTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
+        <item name="fluentuiDialogTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
+
+        <!--TabLayout-->
+        <item name="fluentuiTabTextColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiTabSelectedTextColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiTabBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiTabUnselectedBackgroundColor">@color/fluentui_communication_shade_10</item>
+        <item name="fluentuiTabSelectedBackgroundColor">?attr/fluentuiBackgroundColor</item>
 
         <!--Toolbar-->
         <item name="fluentuiToolbarBackgroundColor">?attr/colorPrimary</item>
