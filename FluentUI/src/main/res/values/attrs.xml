@@ -191,11 +191,13 @@
     <!--Tooltip-->
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
-    
+
+
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">
         <attr format="string" name="behaviorType"/>
         <attr format="dimension" name="behaviorPeekHeight"/>
+        <attr format="dimension" name="behaviorPeekWidth" />
         <attr format="boolean" name="behaviorHideable"/>
         <attr format="boolean" name="behaviorSkipCollapsed"/>
         <attr format="boolean" name="behaviorFitToContents"/>

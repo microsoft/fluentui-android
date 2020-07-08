@@ -6,7 +6,6 @@
 package com.microsoft.fluentui.drawer
 
 import android.content.Context
-import android.os.Bundle
 import android.os.Handler
 import android.support.annotation.StyleRes
 import android.support.design.widget.BottomSheetBehavior
@@ -21,7 +20,6 @@ import com.microsoft.fluentui.util.displaySize
 import com.microsoft.fluentui.util.statusBarHeight
 import kotlinx.android.synthetic.main.dialog_drawer.*
 import kotlinx.android.synthetic.main.dialog_drawer.view.*
-import java.lang.reflect.Array.get
 
 /**
  * [DrawerDialog] is used for displaying a modal dialog in the form of an expanding and collapsing sheet
@@ -33,18 +31,14 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     }
 
     enum class BehaviorType {
-        BOTTOM,TOP
+        BOTTOM,TOP, LEFT, RIGHT
     }
-
-    /**
-     * This field contains dim value of background[0.0 -> no fade, 0.5-> dim, 1.0->opaque]
-     */
 
     var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
 
     private var sheetBehavior: CoordinatorLayout.Behavior<View>? = null
 
-    private val sheetCallback = object : TopSheetBehavior.Companion.TopSheetCallback() {
+    private val sheetCallback = object : CustomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             // No op
         }
@@ -58,11 +52,15 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     private var isExpanded: Boolean = false
     protected val container: View
     private var dimValue = 0.5f
+    /**
+     * This field contains dim value of background[0.0 -> no fade, 0.5-> dim, 1.0->opaque]
+     * */
 
     init {
         this.container = when(behaviorType){
             BehaviorType.BOTTOM -> layoutInflater.inflate(R.layout.dialog_drawer,null)
             BehaviorType.TOP -> layoutInflater.inflate(R.layout.dialog_top_drawer,null)
+            BehaviorType.RIGHT, BehaviorType.LEFT -> layoutInflater.inflate(R.layout.dialog_side_drawer, null)
         }
         container.setOnClickListener {
             collapse()
@@ -80,6 +78,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         sheetBehavior = when (behaviorType) {
             BehaviorType.BOTTOM -> BottomSheetBehavior.from(container.drawer as View)
             BehaviorType.TOP -> TopSheetBehavior.from(container.drawer as View)
+            BehaviorType.RIGHT, BehaviorType.LEFT -> SideSheetBehavior.from(container.drawer as View)
         }
     }
 
@@ -89,6 +88,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         sheetBehavior = when (behaviorType) {
             BehaviorType.BOTTOM -> BottomSheetBehavior.from(container.drawer as View)
             BehaviorType.TOP -> TopSheetBehavior.from(container.drawer as View)
+            BehaviorType.RIGHT, BehaviorType.LEFT -> SideSheetBehavior.from(container.drawer as View)
         }
     }
 
@@ -109,6 +109,13 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         when(sheetBehavior){
             is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).setBottomSheetCallback(sheetCallback)
             is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setTopSheetCallback(sheetCallback)
+            is SideSheetBehavior -> {
+                (sheetBehavior as SideSheetBehavior<View>).setSideSheetCallBack(sheetCallback)
+                (sheetBehavior as SideSheetBehavior<View>).behaviorType = when(behaviorType) {
+                    BehaviorType.RIGHT -> SideSheetBehavior.Companion.BehaviorType.RIGHT
+                    else -> SideSheetBehavior.Companion.BehaviorType.LEFT
+                }
+            }
         }
     }
 
@@ -123,6 +130,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         when(sheetBehavior){
             is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_COLLAPSED
             is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_COLLAPSED)
+            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_COLLAPSED)
         }
         super.dismiss()
     }
@@ -135,6 +143,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         when(sheetBehavior){
             is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_EXPANDED
             is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_EXPANDED)
+            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_EXPANDED)
         }
         isExpanded = true
     }
@@ -153,6 +162,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         when(sheetBehavior){
             is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_COLLAPSED
             is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_COLLAPSED)
+            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_COLLAPSED)
         }
     }
 
@@ -166,3 +176,5 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
 interface OnDrawerContentCreatedListener {
     fun onDrawerContentCreated(drawerContents: View)
 }
+
+abstract class CustomSheetCallback: BottomSheetBehavior.BottomSheetCallback()
