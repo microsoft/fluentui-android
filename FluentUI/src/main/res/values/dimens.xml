@@ -25,6 +25,10 @@
     <!--BottomSheet-->
     <dimen name="fluentui_bottom_sheet_bottom_padding">8dp</dimen>
 
+    <!--BottomNavigation-->
+    <dimen name="fluentui_bottom_navigation_icon_labeled">24dp</dimen>
+    <dimen name="fluentui_bottom_navigation_icon_unlabeled">28dp</dimen>
+
     <!--Button-->
     <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>
     <dimen name="fluentui_button_base_padding_vertical">8.5dp</dimen>
