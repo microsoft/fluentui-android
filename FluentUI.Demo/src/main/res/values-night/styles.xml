@@ -23,4 +23,9 @@
     <!--Tooltip Demo-->
     <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button.Borderless" />
 
+    <!--Demo font-->
+    <style name="TextAppearance.Label" parent="@style/TextAppearance.FluentUI.Body1">
+        <item name="android:textColor">@color/fluentui_white</item>
+    </style>
+
 </resources>

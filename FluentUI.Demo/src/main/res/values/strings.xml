@@ -11,6 +11,16 @@
     <string name="app_name">Fluent UI Demo</string>
     <string name="app_title">Fluent UI</string>
 
+    <!--ActionBar-->
+    <string name="actionbar_start_button">Start Demo</string>
+    <string name="actionbar_carousel_radio_label">Carousel</string>
+    <string name="actionbar_icon_radio_label">Icon</string>
+    <string name="actionbar_basic_radio_label">Basic</string>
+    <string name="actionbar_type_heading">ActionBar Type</string>
+    <string name="actionbar_position_bottom_radio_label">Bottom</string>
+    <string name="actionbar_position_top_radio_label">Top</string>
+    <string name="actionbar_position_heading">ActionBar Position</string>
+
     <!--AppBar-->
     <string name="app_bar_layout_navigation_icon_clicked">Navigation icon clicked.</string>
     <string name="app_bar_layout_menu_flag">Flag</string>

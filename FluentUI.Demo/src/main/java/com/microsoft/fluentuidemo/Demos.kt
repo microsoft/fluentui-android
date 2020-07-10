@@ -5,10 +5,12 @@
 
 package com.microsoft.fluentuidemo
 
+import com.microsoft.fluentui.actionbar.ActionBarLayout
 import com.microsoft.fluentuidemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass
 
+const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
 const val BASIC_INPUTS = "Basic Inputs"
@@ -30,6 +32,7 @@ const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
+    Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
