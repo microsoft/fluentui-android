@@ -185,6 +185,14 @@
         <item quantity="other">%1$s recipients</item>
     </plurals>
 
+    <!--Persistent BottomSheet-->
+    <string name="persistent_bottom_sheet_button">Show Persistent BottomSheet</string>
+    <string name="new_view">This is New View</string>
+    <string name="add_view_button">Add View</string>
+    <string name="remove_view_button">Remove View</string>
+    <string name="increase_peek_height_button">Increase Peekheight</string>
+    <string name="decrease_peek_height_button">Decrease Peekheight</string>
+
     <!--Persona-->
     <string name="persona_email_allan_munger">amunger@microsoft.com</string>
     <string name="persona_email_amanda_brady">abrady@microsoft.com</string>

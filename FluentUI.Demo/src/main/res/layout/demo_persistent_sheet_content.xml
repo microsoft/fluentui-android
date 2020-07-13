@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<com.microsoft.fluentui.drawer.DrawerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/fluentuiDrawerBackgroundColor"
+    android:clipToPadding="true"
+    android:orientation="vertical"
+    app:behaviorType="BOTTOM">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
+        android:layout_marginTop="@dimen/fluentui_drawer_handle_vertical_margin"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_drawer_handle"
+        android:tint="?attr/fluentuiDrawerHandleColor" />
+
+    <LinearLayout
+        android:id="@+id/demo_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/update_view_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/add_view_button"/>
+
+        <Button
+            android:id="@+id/change_peek_height_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/increase_peek_height_button"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/demo_headline_divider_height"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:background="@drawable/ms_row_divider" />
+
+        <com.microsoft.fluentui.persona.PersonaListView
+            android:id="@+id/drawer_demo_persona_list"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/drawer_persona_list_height"
+            android:layout_marginTop="@dimen/default_layout_margin"/>
+
+    </LinearLayout>
+
+</com.microsoft.fluentui.drawer.DrawerView>

@@ -65,4 +65,7 @@
         <item>#69797E</item>
     </array>
 
+    <color name="fluentui_transparent">#00000000</color>
+    <color name="fluentui_dim_background_color">#50000000</color>
+
 </resources>
