@@ -6,12 +6,12 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.ViewGroup
+import com.microsoft.fluentui.tablayout.TabLayout
 import com.microsoft.fluentui.tablayout.TabLayout.TabType.*
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -24,11 +24,13 @@ class TabLayoutActivity : DemoActivity() {
     private lateinit var viewPager: ViewPager
     private var adapter: TabPagerAdapter? = null
     private lateinit var tabLayout:TabLayout
+    private lateinit var googleTabLayout:android.support.design.widget.TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        
-        tabLayout = demo_tab_layout.getTabLayout()
+
+        tabLayout = findViewById(R.id.demo_tab_layout)
+        googleTabLayout = tabLayout.getTabLayout()
         viewPager = findViewById(R.id.view_pager)
         adapter = TabPagerAdapter()
         adapter!!.setData(createPageList())
@@ -44,9 +46,9 @@ class TabLayoutActivity : DemoActivity() {
     }
 
     private fun clickListener(v:View) {
-        tabLayout.removeAllTabs()
-        tabLayout.setupWithViewPager(null)
-        demo_tab_layout.setTabType(STANDARD)
+        googleTabLayout.removeAllTabs()
+        googleTabLayout.setupWithViewPager(null)
+        tabLayout.setTabType(STANDARD)
 
         var numTabs = 0
 
@@ -55,20 +57,20 @@ class TabLayoutActivity : DemoActivity() {
             R.id.show_tab_standard_three_segment -> { numTabs = 3 }
             R.id.show_tab_standard_four_segment -> { numTabs = 4 }
             R.id.show_tab_switch -> { numTabs = 2
-                demo_tab_layout.setTabType(SWITCH)
+                tabLayout.setTabType(SWITCH)
             }
             R.id.show_tab_pills -> { numTabs = 6
-                demo_tab_layout.setTabType(PILLS)
+                tabLayout.setTabType(PILLS)
             }
             R.id.show_tab_standard_with_pager -> {
-                demo_tab_layout.setPager(viewPager)
+                googleTabLayout.setupWithViewPager(viewPager)
             }
         }
 
         for(i in 0 until numTabs) {
-            tabLayout.addTab(tabLayout.newTab().setText("Label"))
+            googleTabLayout.addTab(googleTabLayout.newTab().setText("Label"))
         }
-        demo_tab_layout.updateTemplate()
+        tabLayout.updateTemplate()
     }
 
     private fun createPageTitleList(): List<String> {

@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.view.TemplateView
 
 /**
@@ -35,7 +36,7 @@ class TabLayout:TemplateView {
     private lateinit var tabLayout:TabLayout
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr) {
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.TabLayout)
         val tabTypeOrdinal = styledAttributes.getInt(R.styleable.TabLayout_tabType, TabType.STANDARD.ordinal)
         tabType = TabType.values()[tabTypeOrdinal]
@@ -97,13 +98,6 @@ class TabLayout:TemplateView {
     fun setTabType(tabType: TabType) {
         this.tabType = tabType
         updateTemplate()
-    }
-    /**
-     * This function sets the viewPager for the [tabLayout]
-     */
-    fun setPager(viewPager:ViewPager) {
-        this.viewPager = viewPager
-        tabLayout.setupWithViewPager(this.viewPager)
     }
     /**
      * This function returns the Android Design Support Library [tabLayout] attached to the given template which could be used to setIcons, setViews etc.
