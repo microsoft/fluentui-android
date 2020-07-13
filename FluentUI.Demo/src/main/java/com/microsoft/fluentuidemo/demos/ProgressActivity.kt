@@ -17,7 +17,6 @@ class ProgressActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_progress)
 
         var progressStatus = 0
         val handler = Handler()

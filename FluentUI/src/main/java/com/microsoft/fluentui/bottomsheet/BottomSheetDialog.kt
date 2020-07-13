@@ -28,7 +28,7 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
     private var clickedItem: BottomSheetItem? = null
 
     @JvmOverloads
-    constructor(context: Context, items: ArrayList<BottomSheetItem>, headerItem: BottomSheetItem? = null, @StyleRes theme: Int = 0) : super(context, theme) {
+    constructor(context: Context, items: ArrayList<BottomSheetItem>, headerItem: BottomSheetItem? = null, @StyleRes theme: Int = 0) : super(context, BehaviorType.BOTTOM, theme) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
 
         val view = layoutInflater.inflate(R.layout.view_bottom_sheet, container.drawer_content, false)

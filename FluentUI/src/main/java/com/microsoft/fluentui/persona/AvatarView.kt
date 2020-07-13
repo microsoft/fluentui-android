@@ -77,7 +77,10 @@ open class AvatarView : AppCompatImageView {
     var avatarImageResourceId: Int? = null
         set(value) {
             field = value
-            value?.let { setImageResource(it) }
+            value?.let {
+                if( it != -1)
+                    setImageResource(it)
+            }
         }
     var avatarImageUri: Uri? = null
         set(value) {
@@ -156,11 +159,6 @@ open class AvatarView : AppCompatImageView {
             return
 
         super.setImageDrawable(BitmapDrawable(resources, bitmap))
-    }
-
-    override fun setImageResource(resId: Int) {
-        val bitmap = BitmapFactory.decodeResource(resources, resId)
-        setImageBitmap(bitmap)
     }
 
     override fun setImageURI(uri: Uri?) {

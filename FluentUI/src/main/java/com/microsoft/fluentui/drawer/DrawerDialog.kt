@@ -6,34 +6,47 @@
 package com.microsoft.fluentui.drawer
 
 import android.content.Context
+import android.graphics.Point
 import android.os.Handler
 import android.support.annotation.StyleRes
 import android.support.design.widget.BottomSheetBehavior
+import android.support.v7.app.ActionBar
+import android.support.design.widget.CoordinatorLayout
 import android.support.v7.app.AppCompatDialog
+import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.displaySize
 import com.microsoft.fluentui.util.statusBarHeight
 import kotlinx.android.synthetic.main.dialog_drawer.*
 import kotlinx.android.synthetic.main.dialog_drawer.view.*
 
 /**
- * [DrawerDialog] is used for displaying a modal dialog in the form of an expanding and collapsing bottom sheet
+ * [DrawerDialog] is used for displaying a modal dialog in the form of an expanding and collapsing sheet
  * to which content is added.
  */
-open class DrawerDialog : AppCompatDialog {
+open class DrawerDialog @JvmOverloads constructor(context: Context, val behaviorType: BehaviorType = BehaviorType.BOTTOM, @StyleRes theme: Int = 0) : AppCompatDialog(FluentUIContextThemeWrapper(context), if (theme == 0) R.style.Drawer_FluentUI else theme) {
     companion object {
         private const val DISMISS_THRESHOLD = 0.005f
     }
 
+    enum class BehaviorType {
+        BOTTOM,TOP, LEFT, RIGHT
+    }
+
+    enum class TitleBehavior {
+        DEFAULT, HIDE_TITLE, BELOW_TITLE
+    }
+
     var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
 
-    private val bottomSheetBehavior: BottomSheetBehavior<View>
-        get() = BottomSheetBehavior.from(drawer as View)
+    private var sheetBehavior: CoordinatorLayout.Behavior<View>? = null
 
-    private val bottomSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
+    private val sheetCallback = object : CustomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             // No op
         }
@@ -45,24 +58,53 @@ open class DrawerDialog : AppCompatDialog {
     }
 
     private var isExpanded: Boolean = false
-    protected val container: View = layoutInflater.inflate(R.layout.dialog_drawer, null)
+    protected val container: View
 
-    @JvmOverloads
-    constructor(context: Context, @StyleRes theme: Int = 0) : super(FluentUIContextThemeWrapper(context), if (theme == 0) R.style.Drawer_FluentUI else theme) {
+    /**
+     * This field [dimValue] contains dim value of background[0.0 -> no fade, 0.5-> dim, 1.0->opaque]
+     * This field [anchorView] contains the anchor view  below which the dialog will appear
+     * This field [titleBehavior] stores whether the dialog should  be below title bar or hide titler bar.
+     * */
+    private var dimValue = 0.5f
+    private var anchorView: View? = null
+    private var titleBehavior: TitleBehavior = TitleBehavior.DEFAULT
+
+    init {
+        this.container = when(behaviorType){
+            BehaviorType.BOTTOM -> layoutInflater.inflate(R.layout.dialog_drawer,null)
+            BehaviorType.TOP -> layoutInflater.inflate(R.layout.dialog_top_drawer,null)
+            BehaviorType.RIGHT, BehaviorType.LEFT -> layoutInflater.inflate(R.layout.dialog_side_drawer, null)
+        }
         container.setOnClickListener {
             collapse()
         }
+    }
+
+    constructor(context: Context, behaviorType: BehaviorType=BehaviorType.BOTTOM, dimValue: Float=0.5f, anchorView:View?=null, titleBehavior: TitleBehavior=TitleBehavior.DEFAULT, @StyleRes theme: Int = 0) : this(context, behaviorType, theme) {
+        this.dimValue = dimValue
+        this.anchorView = anchorView
+        this.titleBehavior = titleBehavior
     }
 
     override fun setContentView(layoutResID: Int) {
         val content = layoutInflater.inflate(layoutResID, container.drawer_content, false)
         setContentView(content)
         onDrawerContentCreatedListener?.onDrawerContentCreated(content)
+        sheetBehavior = when (behaviorType) {
+            BehaviorType.BOTTOM -> BottomSheetBehavior.from(container.drawer as View)
+            BehaviorType.TOP -> TopSheetBehavior.from(container.drawer as View)
+            BehaviorType.RIGHT, BehaviorType.LEFT -> SideSheetBehavior.from(container.drawer as View)
+        }
     }
 
     override fun setContentView(view: View) {
         container.drawer_content.removeAllViews()
         container.drawer_content.addView(view)
+        sheetBehavior = when (behaviorType) {
+            BehaviorType.BOTTOM -> BottomSheetBehavior.from(container.drawer as View)
+            BehaviorType.TOP -> TopSheetBehavior.from(container.drawer as View)
+            BehaviorType.RIGHT, BehaviorType.LEFT -> SideSheetBehavior.from(container.drawer as View)
+        }
     }
 
     override fun show() {
@@ -73,9 +115,50 @@ open class DrawerDialog : AppCompatDialog {
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        var topMargin = 0
+
+        if(anchorView != null || titleBehavior != TitleBehavior.DEFAULT)
+            supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
+
+        if(anchorView != null) {
+            val screenPos = IntArray(2)
+            anchorView?.getLocationOnScreen(screenPos)
+            topMargin= screenPos[1]+anchorView!!.height
+        }
+        else {
+            when(titleBehavior) {
+                TitleBehavior.HIDE_TITLE -> {
+                    topMargin = context.statusBarHeight
+                }
+                TitleBehavior.BELOW_TITLE -> {
+                    val actionBar:ActionBar? = context.activity?.supportActionBar
+                    if(actionBar != null)
+                        topMargin = context.statusBarHeight+ actionBar.height
+                }
+                TitleBehavior.DEFAULT -> { }
+            }
+        }
+
+        val displaySize: Point = context.displaySize
+        val layoutParams: WindowManager.LayoutParams? = window?.attributes
+        layoutParams?.gravity = Gravity.TOP
+        layoutParams?.y = topMargin
+        layoutParams?.dimAmount = this.dimValue
+        window?.attributes = layoutParams
+        window?.setLayout(displaySize.x, displaySize.y-topMargin)
+
         super.setContentView(container)
-        bottomSheetBehavior.setBottomSheetCallback(bottomSheetCallback)
+        when(sheetBehavior){
+            is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).setBottomSheetCallback(sheetCallback)
+            is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setTopSheetCallback(sheetCallback)
+            is SideSheetBehavior -> {
+                (sheetBehavior as SideSheetBehavior<View>).setSideSheetCallBack(sheetCallback)
+                (sheetBehavior as SideSheetBehavior<View>).behaviorType = when(behaviorType) {
+                    BehaviorType.RIGHT -> SideSheetBehavior.Companion.BehaviorType.RIGHT
+                    else -> SideSheetBehavior.Companion.BehaviorType.LEFT
+                }
+            }
+        }
     }
 
     override fun onBackPressed() {
@@ -86,7 +169,11 @@ open class DrawerDialog : AppCompatDialog {
         isExpanded = false
         // Dismiss may be called by external objects so state is set to STATE_COLLAPSED in order for
         // the drawer to animate up
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        when(sheetBehavior){
+            is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_COLLAPSED
+            is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_COLLAPSED)
+            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_COLLAPSED)
+        }
         super.dismiss()
     }
 
@@ -94,26 +181,31 @@ open class DrawerDialog : AppCompatDialog {
         // For persistent instances calling requestLayout fixes incorrect positioning of the drawer
         // after rotation from landscape to portrait
         drawer.requestLayout()
-        updateHeight()
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        when(sheetBehavior){
+            is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_EXPANDED
+            is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_EXPANDED)
+            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_EXPANDED)
+        }
         isExpanded = true
     }
 
-    // Make sure dialog is not under status bar and is fully visible
-    private fun updateHeight() {
-        val maxHeight = context.displaySize.y - context.statusBarHeight
-        if (drawer.height > maxHeight) {
-            val layoutParams = drawer.layoutParams
-            layoutParams.height = maxHeight
-            drawer.layoutParams = layoutParams
+    protected fun collapse() {
+        when(sheetBehavior){
+            is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_COLLAPSED
+            is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_COLLAPSED)
+            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_COLLAPSED)
         }
     }
 
-    protected fun collapse() {
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    // external method to set dimValue
+    fun setFade(x: Float) {
+        this.dimValue = x
+        this.onAttachedToWindow()
     }
 }
 
 interface OnDrawerContentCreatedListener {
     fun onDrawerContentCreated(drawerContents: View)
 }
+
+abstract class CustomSheetCallback: BottomSheetBehavior.BottomSheetCallback()
