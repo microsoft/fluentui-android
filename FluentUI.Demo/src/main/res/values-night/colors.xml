@@ -10,4 +10,7 @@
     <color name="template_view_cell_horizontal_background">@color/fluentui_gray_700</color>
     <color name="template_view_cell_vertical_background">@color/fluentui_gray_900</color>
 
+    <!--ActionBarLayout-->
+    <color name="action_bar_radio_labels">@color/fluentui_white</color>
+
 </resources>

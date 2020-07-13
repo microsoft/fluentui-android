@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:showDividers="middle">
+
+    <LinearLayout
+        android:id="@+id/postion_selection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fluentui_content_inset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            style="@style/TextAppearance.FluentUI.Heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/actionbar_position_heading" />
+
+        <RadioGroup
+            android:id="@+id/action_bar_position_rgroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/action_bar_position_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels"
+                android:text="@string/actionbar_position_top_radio_label" />
+
+            <RadioButton
+                android:id="@+id/action_bar_position_bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels"
+                android:text="@string/actionbar_position_bottom_radio_label" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/type_selection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fluentui_content_inset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postion_selection">
+
+        <TextView
+            style="@style/TextAppearance.FluentUI.Heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/actionbar_type_heading" />
+
+        <RadioGroup
+            android:id="@+id/action_bar_type_rgroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/action_bar_type_basic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels"
+                android:text="@string/actionbar_basic_radio_label" />
+
+            <RadioButton
+                android:id="@+id/action_bar_type_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels"
+                android:text="@string/actionbar_icon_radio_label" />
+
+            <RadioButton
+                android:id="@+id/action_bar_type_carousel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels"
+                android:text="@string/actionbar_carousel_radio_label" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:padding="@dimen/fluentui_content_inset"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/type_selection">
+
+        <com.microsoft.fluentui.widget.Button
+            android:id="@+id/start_demo_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/actionbar_start_button" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

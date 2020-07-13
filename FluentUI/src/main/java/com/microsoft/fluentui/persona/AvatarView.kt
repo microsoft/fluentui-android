@@ -77,7 +77,10 @@ open class AvatarView : AppCompatImageView {
     var avatarImageResourceId: Int? = null
         set(value) {
             field = value
-            value?.let { setImageResource(it) }
+            value?.let {
+                if( it != -1)
+                    setImageResource(it)
+            }
         }
     var avatarImageUri: Uri? = null
         set(value) {
