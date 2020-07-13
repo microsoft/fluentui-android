@@ -26,7 +26,7 @@
     <!--Drawer-->
     <dimen name="drawer_persona_list_height">400dp</dimen>
     <dimen name="drawer_persona_list_width">300dp</dimen>
-    <dimen name="drawer_button_top_margin">250dp</dimen>
+    <dimen name="drawer_button_top_margin">180dp</dimen>
 
     <!--Launch Screen-->
     <dimen name="fluentui_launch_logo_bottom_spacing">53dp</dimen>

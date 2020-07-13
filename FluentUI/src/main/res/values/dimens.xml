@@ -5,6 +5,10 @@
   -->
 
 <resources>
+    <!--ActionBarLayout-->
+    <dimen name="fluentui_action_bar_layout_height">48dp</dimen>
+    <dimen name="fluentui_action_bar_layout_button_width">50dp</dimen>
+
     <!--AppBarLayout-->
     <dimen name="fluentui_app_bar_layout_elevation">0dp</dimen>
     <dimen name="fluentui_app_bar_layout_elevation_scroll">4dp</dimen>
@@ -20,6 +24,10 @@
 
     <!--BottomSheet-->
     <dimen name="fluentui_bottom_sheet_bottom_padding">8dp</dimen>
+
+    <!--BottomNavigation-->
+    <dimen name="fluentui_bottom_navigation_icon_labeled">24dp</dimen>
+    <dimen name="fluentui_bottom_navigation_icon_unlabeled">28dp</dimen>
 
     <!--Button-->
     <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>

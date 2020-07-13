@@ -17,4 +17,7 @@
     <color name="template_view_cell_horizontal_background">@color/fluentui_communication_tint_40</color>
     <color name="template_view_cell_vertical_background">@color/fluentui_gray_50</color>
 
+    <!--ActionBarLayout-->
+    <color name="action_bar_radio_labels">@color/fluentui_black</color>
+
 </resources>

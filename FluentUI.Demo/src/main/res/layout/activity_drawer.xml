@@ -33,19 +33,26 @@
         android:text="@string/no_fade_bottom_dialog_button" />
 
     <Button
-        android:id="@+id/show_left_dialog_button"
+        android:id="@+id/show_anchor_view_top_dialog_button"
         android:layout_marginTop="@dimen/drawer_button_top_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/drawer_left_dialog_button" />
+        android:text="@string/anchor_view_top_dialog_button" />
+
 
     <Button
-        android:id="@+id/show_right_dialog_button"
+        android:id="@+id/show_no_title_top_dialog_button"
         android:layout_marginTop="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/drawer_right_dialog_button" />
+        android:text="@string/no_title_top_dialog_button" />
 
+    <Button
+        android:id="@+id/show_below_title_top_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/below_title_top_dialog_button" />
 
     <Button
         android:id="@+id/show_top_dialog_button"
@@ -61,4 +68,17 @@
         android:layout_height="wrap_content"
         android:text="@string/no_fade_top_dialog_button" />
 
+    <Button
+        android:id="@+id/show_left_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_left_dialog_button" />
+
+    <Button
+        android:id="@+id/show_right_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_right_dialog_button" />
 </LinearLayout>

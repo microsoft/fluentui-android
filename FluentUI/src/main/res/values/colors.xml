@@ -68,4 +68,8 @@
     <color name="fluentui_transparent">#00000000</color>
     <color name="fluentui_dim_background_color">#50000000</color>
 
+    <!--ActionBarLayout-->
+    <color name="fluentui_action_bar_indicator_background">@color/fluentui_communication_tint_20</color>
+    <color name="fluentui_action_bar_carousel_background">@color/fluentui_communication_blue</color>
+
 </resources>
