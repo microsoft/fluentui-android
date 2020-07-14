@@ -43,29 +43,40 @@ class PersistentBottomSheetActivity : DemoActivity(), OnDrawerContentCreatedList
                 view.text = getString(R.string.new_view)
                 view.height = 200
                 view.gravity = Gravity.CENTER
-                persistentBottomSheetDemo.addView(demo_bottom_sheet, view, 1)
+                persistentBottomSheetDemo.addView(view, 1, demo_bottom_sheet)
                 update_view_button.text = getString(R.string.remove_view_button)
             }
             else {
-                persistentBottomSheetDemo.removeView(demo_bottom_sheet, view)
+                persistentBottomSheetDemo.removeView(view, demo_bottom_sheet)
                 update_view_button.text = getString(R.string.add_view_button)
             }
         }
 
         change_peek_height_button.setOnClickListener {
             if(isBack) {
-                persistentBottomSheetDemo.incrementHeight(-400)
+                persistentBottomSheetDemo.changePeekHeight(-400)
                 change_peek_height_button.text=getString(R.string.increase_peek_height_button)
             }
             else {
-                persistentBottomSheetDemo.incrementHeight(400)
+                persistentBottomSheetDemo.changePeekHeight(400)
                 change_peek_height_button.text=getString(R.string.decrease_peek_height_button)
             }
             isBack = !isBack
         }
 
         show_persistent_bottom_sheet_button.setOnClickListener {
-            persistentBottomSheetDemo.getSheetBehavior()!!.state = BottomSheetBehavior.STATE_EXPANDED
+            persistentBottomSheetDemo.getSheetBehavior().state = BottomSheetBehavior.STATE_EXPANDED
+        }
+
+        collapse_persistent_bottom_sheet_button.setOnClickListener {
+            if(persistentBottomSheetDemo.getSheetBehavior().peekHeight == 0) {
+                persistentBottomSheetDemo.showPersistentSheet()
+                collapse_persistent_bottom_sheet_button.text = getString(R.string.collapse_persistent_sheet_button)
+            }
+            else {
+                persistentBottomSheetDemo.collapsePersistentSheet()
+                collapse_persistent_bottom_sheet_button.text = getString(R.string.show_persistent_sheet_button)
+            }
         }
     }
 

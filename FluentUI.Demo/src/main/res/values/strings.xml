@@ -199,7 +199,9 @@
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="persistent_bottom_sheet_button">Show Persistent BottomSheet</string>
+    <string name="expand_bottom_sheet_button">Expand Persistent BottomSheet</string>
+    <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
+    <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
     <string name="new_view">This is New View</string>
     <string name="add_view_button">Add View</string>
     <string name="remove_view_button">Remove View</string>
