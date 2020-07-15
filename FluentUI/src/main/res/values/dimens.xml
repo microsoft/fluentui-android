@@ -191,6 +191,7 @@
     <dimen name="fluentui_tab_padding_vertical">8dp</dimen>
     <dimen name="fluentui_tab_radius">20dp</dimen>
     <dimen name="fluentui_tab_indicator_height">0dp</dimen>
+    <dimen name="fluentui_tab_margin">8dp</dimen>
 
     <!--Toolbar-->
     <dimen name="fluentui_toolbar_navigation_icon_container_size">@dimen/fluentui_min_touch_size</dimen>

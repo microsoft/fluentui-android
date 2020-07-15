@@ -87,7 +87,7 @@ class TabLayout:TemplateView {
         for (i in 0 until tabLayout.tabCount - 1) {
             val tab: View = (tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
             val layoutParams = tab.layoutParams as LinearLayout.LayoutParams
-            layoutParams.rightMargin = 8.toPx(context)
+            layoutParams.rightMargin = resources.getDimension(R.dimen.fluentui_tab_margin).toInt()
             tab.layoutParams = layoutParams
             tabLayout.requestLayout()
         }
@@ -105,6 +105,4 @@ class TabLayout:TemplateView {
     fun getTabLayout(): TabLayout {
        return this.tabLayout
     }
-
-    private fun Int.toPx(context: Context): Int = (this * context.resources.displayMetrics.density).toInt()
 }
