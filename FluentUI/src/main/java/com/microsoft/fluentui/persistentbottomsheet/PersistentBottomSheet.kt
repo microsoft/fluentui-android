@@ -10,6 +10,7 @@ import android.graphics.Rect
 import android.os.Build
 import android.support.annotation.ColorInt
 import android.support.design.widget.BottomSheetBehavior
+import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.ColorUtils
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
@@ -38,7 +39,7 @@ class PersistentBottomSheet: TemplateView {
     lateinit var persistentSheetContainer: LinearLayout
     var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
 
-    private var colorBackground = if(Build.VERSION.SDK_INT >=  23) context.getColor(R.color.fluentui_black) else context.resources.getColor(R.color.fluentui_black)
+    private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
     private var shouldInterceptTouch = false
     private var defaultPeekHeight = 0
     private var isDrawerHandleVisible = true
@@ -141,7 +142,8 @@ class PersistentBottomSheet: TemplateView {
     fun removeViewAt(index:Int, parentViewGroup: ViewGroup) {
         val childHeight = parentViewGroup.getChildAt(index).height
         parentViewGroup.removeViewAt(index)
-        changePeekHeight(-childHeight)
+        if(persistentSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
+            changePeekHeight(-childHeight)
     }
 
     override fun removeView(child: View) {
@@ -151,7 +153,8 @@ class PersistentBottomSheet: TemplateView {
     fun removeView(child:View, parentViewGroup: ViewGroup) {
         val childHeight = child.height
         parentViewGroup.removeView(child)
-        changePeekHeight(-childHeight)
+        if(persistentSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED)
+            changePeekHeight(-childHeight)
     }
 
     fun collapsePersistentSheet() {

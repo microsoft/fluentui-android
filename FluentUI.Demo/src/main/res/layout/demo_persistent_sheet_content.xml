@@ -11,19 +11,11 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/update_view_button"
+    <com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
+        android:id="@+id/sheet_horizontal_item_list_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_layout_margin"
-        android:text="@string/add_view_button" />
-
-    <Button
-        android:id="@+id/change_peek_height_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_layout_margin"
-        android:text="@string/increase_peek_height_button" />
+        android:layout_marginTop="@dimen/default_layout_margin"/>
 
     <View
         android:layout_width="match_parent"
@@ -31,10 +23,29 @@
         android:layout_marginTop="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider" />
 
-    <com.microsoft.fluentui.persona.PersonaListView
-        android:id="@+id/drawer_demo_persona_list"
+    <com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
+        android:id="@+id/sheet_horizontal_item_list_2"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_persona_list_height"
-        android:layout_marginTop="@dimen/default_layout_margin" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sheet_horizontal_item_list_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:background="@drawable/ms_row_divider" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sheet_vertical_item_list_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/fluentui_bottom_sheet_bottom_padding"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 </LinearLayout>

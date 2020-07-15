@@ -40,6 +40,6 @@
         android:id="@+id/demo_persistent_sheet"
         android:layout_alignParentBottom="true"
         app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
-        app:isDrawerHandleVisible="false"/>
+        app:isDrawerHandleVisible="true"/>
 
 </RelativeLayout>

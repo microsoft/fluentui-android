@@ -203,10 +203,19 @@
     <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
     <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
     <string name="new_view">This is New View</string>
-    <string name="add_view_button">Add View</string>
-    <string name="remove_view_button">Remove View</string>
-    <string name="increase_peek_height_button">Increase Peekheight</string>
-    <string name="decrease_peek_height_button">Decrease Peekheight</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>
+    <string name="persistent_sheet_item_create_new_folder_title">New Folder</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">New Folder item clicked</string>
+    <string name="persistent_sheet_item_edit_title">Edit</string>
+    <string name="persistent_sheet_item_edit_toast">Edit item clicked</string>
+    <string name="persistent_sheet_item_save_title">Save</string>
+    <string name="persistent_sheet_item_save_toast">Save item clicked</string>
+    <string name="persistent_sheet_item_zoom_in_title">Zoom In</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Zoom In item clicked</string>
+    <string name="persistent_sheet_item_zoom_out_title">Zoom Out</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Zoom Out item clicked</string>
 
     <!--Persona-->
     <string name="persona_email_allan_munger">amunger@microsoft.com</string>
