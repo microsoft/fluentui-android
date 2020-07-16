@@ -49,6 +49,12 @@ class SheetHorizontalItemList: TemplateView, ListItem.OnClickListener {
     override fun onSheetItemClick(item: ListItem) {
         onSheetItemClickListener?.onSheetItemClick(item)
     }
+
+    fun setTextAppearance(resId:Int) {
+        for(i in 0 until itemListContainer.childCount) {
+            (itemListContainer.getChildAt(i) as SheetHorizontalItemView).updateTextAppearanceResId(resId)
+        }
+    }
 }
 
 class ListItem(val id:Int = -1, @DrawableRes val drawable: Int, val title:String) {

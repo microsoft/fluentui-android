@@ -6,6 +6,8 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
+import android.support.design.resources.TextAppearance
+import android.support.v4.widget.TextViewCompat
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +25,7 @@ class SheetHorizontalItemView: TemplateView {
     var title: String = ""
     var customView: View? = null
     var listItem: ListItem? = null
+    var textAppearanceResId: Int = R.style.TextAppearance_FluentUI_ListItemSubtitle
 
     override val templateId: Int
         get() = R.layout.view_sheet_horizontal_item_view
@@ -44,6 +47,7 @@ class SheetHorizontalItemView: TemplateView {
         mainContainer = findViewInTemplateById(R.id.main_container)!!
         updateTitleView()
         updateCustomView()
+        updateTextAppearance()
 
         if(listItem != null)
             mainContainer.setOnClickListener {
@@ -68,5 +72,16 @@ class SheetHorizontalItemView: TemplateView {
         this.customView = customView
         updateTitleView()
         updateCustomView()
+    }
+
+    fun updateTextAppearanceResId(resId: Int) {
+        textAppearanceResId = resId
+        updateTextAppearance()
+    }
+
+    fun updateTextAppearance() {
+        if(this::sheetItemTitle.isInitialized) {
+            sheetItemTitle.let { TextViewCompat.setTextAppearance(it, textAppearanceResId) }
+        }
     }
 }

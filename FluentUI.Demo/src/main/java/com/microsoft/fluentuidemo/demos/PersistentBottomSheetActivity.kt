@@ -50,6 +50,7 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
                         getString(R.string.persistent_sheet_item_change_collapsed_height))
         ))
         sheet_horizontal_item_list_1.onSheetItemClickListener = this
+        sheet_horizontal_item_list_1.setTextAppearance(R.style.TextAppearance_FluentUI_ListItemTitle)
 
         sheet_horizontal_item_list_2.updateTemplate( arrayListOf(
                 ListItem(

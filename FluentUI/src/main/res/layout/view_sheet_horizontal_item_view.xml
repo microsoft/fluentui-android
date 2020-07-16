@@ -19,7 +19,7 @@
         android:orientation="vertical" />
 
     <TextView
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/fluentui_persistent_bottomsheet_item_view_margin"
         android:id="@+id/sheet_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
