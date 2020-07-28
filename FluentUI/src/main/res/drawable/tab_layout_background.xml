@@ -12,6 +12,6 @@
 
     <!-- TabLayout background color -->
     <solid
-        android:color="?attr/fluentuiTabUnselectedBackgroundColor"/>
+        android:color="?attr/fluentuiDialogTabSelectedBackgroundColor"/>
 
 </shape>

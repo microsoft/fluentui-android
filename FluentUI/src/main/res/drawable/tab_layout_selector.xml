@@ -12,7 +12,7 @@
             <corners
                 android:radius="@dimen/fluentui_tab_radius"/>
             <solid
-                android:color="?attr/fluentuiTabSelectedBackgroundColor"/>
+                android:color="?attr/fluentuiDialogTabSelectedBackgroundColor"/>
         </shape>
 
     </item>
@@ -22,7 +22,7 @@
             <corners
                 android:radius="@dimen/fluentui_tab_radius"/>
             <solid
-                android:color="?attr/fluentuiTabUnselectedBackgroundColor" />
+                android:color="?attr/fluentuiDialogTabUnselectedBackgroundColor" />
         </shape>
     </item>
 

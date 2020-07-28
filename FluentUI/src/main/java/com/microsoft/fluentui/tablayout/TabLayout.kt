@@ -44,7 +44,7 @@ class TabLayout:TemplateView {
     }
 
     override val templateId: Int
-        get() = R.layout.view_tab
+        get() = R.layout.view_tab_layout
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()

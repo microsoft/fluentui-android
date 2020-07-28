@@ -23,18 +23,18 @@ class TabLayoutActivity : DemoActivity() {
 
     private lateinit var viewPager: ViewPager
     private var adapter: TabPagerAdapter? = null
-    private lateinit var tabLayout:TabLayout
-    private lateinit var googleTabLayout:android.support.design.widget.TabLayout
+    private lateinit var demoTabLayout: TabLayout
+    private lateinit var tabLayout: android.support.design.widget.TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        tabLayout = findViewById(R.id.demo_tab_layout)
-        googleTabLayout = tabLayout.getTabLayout()
+        demoTabLayout = findViewById(R.id.demo_tab_layout)
+        tabLayout = demoTabLayout.getTabLayout()
         viewPager = findViewById(R.id.view_pager)
         adapter = TabPagerAdapter()
-        adapter!!.setData(createPageList())
-        adapter!!.setTitle(createPageTitleList())
+        adapter?.setData(createPageList())
+        adapter?.setTitle(createPageTitleList())
         viewPager.adapter = adapter
 
         show_tab_standard_two_segment.setOnClickListener(this::clickListener)
@@ -46,9 +46,9 @@ class TabLayoutActivity : DemoActivity() {
     }
 
     private fun clickListener(v:View) {
-        googleTabLayout.removeAllTabs()
-        googleTabLayout.setupWithViewPager(null)
-        tabLayout.setTabType(STANDARD)
+        tabLayout.removeAllTabs()
+        tabLayout.setupWithViewPager(null)
+        demoTabLayout.setTabType(STANDARD)
 
         var numTabs = 0
 
@@ -57,36 +57,34 @@ class TabLayoutActivity : DemoActivity() {
             R.id.show_tab_standard_three_segment -> { numTabs = 3 }
             R.id.show_tab_standard_four_segment -> { numTabs = 4 }
             R.id.show_tab_switch -> { numTabs = 2
-                tabLayout.setTabType(SWITCH)
+                demoTabLayout.setTabType(SWITCH)
             }
             R.id.show_tab_pills -> { numTabs = 6
-                tabLayout.setTabType(PILLS)
+                demoTabLayout.setTabType(PILLS)
             }
             R.id.show_tab_standard_with_pager -> {
-                googleTabLayout.setupWithViewPager(viewPager)
+                tabLayout.setupWithViewPager(viewPager)
             }
         }
 
         for(i in 0 until numTabs) {
-            googleTabLayout.addTab(googleTabLayout.newTab().setText("Label"))
+            tabLayout.addTab(tabLayout.newTab().setText("Label"))
         }
-        tabLayout.updateTemplate()
+        demoTabLayout.updateTemplate()
     }
 
     private fun createPageTitleList(): List<String> {
-        val titleList: MutableList<String> = ArrayList()
-        titleList.add("Page 1")
-        titleList.add("Page 2")
-        titleList.add("Page 3")
-        return titleList
+        return listOf("Page 1","Page 2","Page 3")
     }
+
     private fun createPageList(): List<View> {
-        val pageList: MutableList<View> = ArrayList()
-        pageList.add(createPageView(ContextCompat.getColor(applicationContext, R.color.fluentui_communication_tint_40)))
-        pageList.add(createPageView(ContextCompat.getColor(applicationContext, R.color.fluentui_communication_tint_30)))
-        pageList.add(createPageView(ContextCompat.getColor(applicationContext, R.color.fluentui_communication_tint_20)))
-        return pageList
+        return listOf(
+                    createPageView(ContextCompat.getColor(this, R.color.fluentui_communication_tint_40)),
+                    createPageView(ContextCompat.getColor(this, R.color.fluentui_communication_tint_30)),
+                    createPageView(ContextCompat.getColor(this, R.color.fluentui_communication_tint_20))
+                )
     }
+
     private fun createPageView(color: Int): View {
         val view = View(this)
         view.setBackgroundColor(color)
@@ -101,26 +99,33 @@ class TabLayoutActivity : DemoActivity() {
             this.viewList = ArrayList()
             this.viewTitleList = ArrayList()
         }
+
         override fun instantiateItem(collection: ViewGroup, position:Int):Any {
             val view = viewList.get(position)
             collection.addView(view)
             return view
         }
+
         override fun destroyItem(collection: ViewGroup, position:Int, view:Any) {
             collection.removeView(view as View)
         }
+
         override fun isViewFromObject(view:View, obj :Any):Boolean {
             return view === obj
         }
+
         override fun getCount(): Int {
             return viewList.size
         }
+
         override fun getPageTitle(position: Int): CharSequence? {
             return viewTitleList[position]
         }
+
         fun setData(list: List<View>){
             viewList = list
         }
+
         fun setTitle(list: List<String>) {
             viewTitleList = list
         }
