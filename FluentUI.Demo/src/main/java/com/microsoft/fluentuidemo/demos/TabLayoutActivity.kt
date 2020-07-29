@@ -79,29 +79,24 @@ class TabLayoutActivity : DemoActivity() {
 
     private fun createPageList(): List<View> {
         return listOf(
-                    createPageView(ContextCompat.getColor(this, R.color.fluentui_communication_tint_40)),
-                    createPageView(ContextCompat.getColor(this, R.color.fluentui_communication_tint_30)),
-                    createPageView(ContextCompat.getColor(this, R.color.fluentui_communication_tint_20))
+                    createPageView(R.color.fluentui_communication_tint_40),
+                    createPageView(R.color.fluentui_communication_tint_30),
+                    createPageView(R.color.fluentui_communication_tint_20)
                 )
     }
 
     private fun createPageView(color: Int): View {
         val view = View(this)
-        view.setBackgroundColor(color)
+        view.setBackgroundColor(ContextCompat.getColor(this, color))
         return view
     }
 
     class TabPagerAdapter: PagerAdapter() {
-        private var viewList:List<View>
-        private var viewTitleList:List<String>
-
-        init{
-            this.viewList = ArrayList()
-            this.viewTitleList = ArrayList()
-        }
+        private var viewList:List<View> = ArrayList()
+        private var viewTitleList:List<String> = ArrayList()
 
         override fun instantiateItem(collection: ViewGroup, position:Int):Any {
-            val view = viewList.get(position)
+            val view = viewList[position]
             collection.addView(view)
             return view
         }

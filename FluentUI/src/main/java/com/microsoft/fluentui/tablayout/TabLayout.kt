@@ -7,7 +7,6 @@ package com.microsoft.fluentui.tablayout
 
 import android.content.Context
 import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -20,20 +19,16 @@ import com.microsoft.fluentui.view.TemplateView
  * [TabLayout] is used for loading a template of fluentUI TabLayout.
  * The template uses already existing Android Design Support Library  [TabLayout].
  */
-class TabLayout:TemplateView {
+class TabLayout : TemplateView {
 
     enum class TabType {
         STANDARD, SWITCH, PILLS
     }
 
-    /**
-     * This [tabType] stores the type of TabLayout. It supports [TabType.STANDARD], [TabType.SWITCH], [TabType.PILLS]
-     * This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template.
-     * This [viewPager] stores viewpager attached to the [TabLayout]
-     */
-    lateinit var viewPager:ViewPager
-    private var tabType:TabType
-    private lateinit var tabLayout:TabLayout
+    /*This [tabType] stores the type of TabLayout. It supports [TabType.STANDARD], [TabType.SWITCH], [TabType.PILLS]*/
+    private var tabType: TabType? = null
+    /*This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template.*/
+    private lateinit var tabLayout: TabLayout
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr) {
@@ -84,25 +79,22 @@ class TabLayout:TemplateView {
      * Function to update the right margin for the tabs in [tabLayout]. Used for [TabType.STANDARD]
      */
     private fun updateMargin() {
+        var viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount - 1) {
-            val tab: View = (tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
+            val tab: View = viewGroup.getChildAt(i)
             val layoutParams = tab.layoutParams as LinearLayout.LayoutParams
             layoutParams.rightMargin = resources.getDimension(R.dimen.fluentui_tab_margin).toInt()
             tab.layoutParams = layoutParams
-            tabLayout.requestLayout()
         }
+        tabLayout.requestLayout()
     }
-    /**
-     * External function to set the [tabType]
-     */
+
     fun setTabType(tabType: TabType) {
         this.tabType = tabType
         updateTemplate()
     }
-    /**
-     * This function returns the Android Design Support Library [tabLayout] attached to the given template which could be used to setIcons, setViews etc.
-     */
+
     fun getTabLayout(): TabLayout {
-       return this.tabLayout
+        return this.tabLayout
     }
 }
