@@ -16,9 +16,8 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.view.TemplateView
 
 /**
- * [TabLayout] is used for loading a template of fluentUI TabLayout.
- * The template uses already existing Android Design Support Library  [TabLayout].
- */
+ * [TabLayout] is used for loading a Template of fluentUI TabLayout.
+ * The template uses already existing Android Design Support Library [TabLayout].*/
 class TabLayout : TemplateView {
 
     enum class TabType {
@@ -47,8 +46,7 @@ class TabLayout : TemplateView {
     }
 
     /**
-     * This function updates the given template on the basics of [tabType].
-     */
+     * This function updates the given template on the basics of [tabType].*/
     fun updateTemplate() {
         when(tabType) {
             TabType.STANDARD -> {
@@ -76,8 +74,8 @@ class TabLayout : TemplateView {
     }
 
     /**
-     * Function to update the right margin for the tabs in [tabLayout]. Used for [TabType.STANDARD]
-     */
+     * Updates the right margin for the tabs in [tabLayout]. Used for [TabType.STANDARD]
+     * */
     private fun updateMargin() {
         var viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount - 1) {
