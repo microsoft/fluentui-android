@@ -76,7 +76,7 @@ class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
     private var nestedScrollingChildRef: WeakReference<View>? = null
     private var velocityTracker: VelocityTracker? = null
     private var touchingScrollingChild: Boolean? = null
-    private var callback: TopSheetCallback? = null
+    private var callback: CustomSheetCallback? = null
 
     private var peekHeight: Int = -1
     private var peekHeightAuto: Boolean = false
@@ -387,7 +387,7 @@ class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
         }
     }
 
-    fun setTopSheetCallback(callback: TopSheetCallback) {
+    fun setTopSheetCallback(callback: CustomSheetCallback) {
         this.callback = callback
     }
 

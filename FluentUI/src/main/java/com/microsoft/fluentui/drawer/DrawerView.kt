@@ -21,11 +21,11 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     }
 
     enum class BehaviorType {
-        BOTTOM, TOP
+        BOTTOM, TOP, RIGHT, LEFT
     }
 
     private val clipPath = Path()
-    var behaviorType : BehaviorType
+    var behaviorType: BehaviorType
 
     init {
         val a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
@@ -47,41 +47,29 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
 
     private fun updateClipPath(width: Float, height: Float) {
         val cornerRadius = resources.getDimension(R.dimen.fluentui_drawer_corner_radius)
-        val radii = FloatArray(RADII_SIZE)
+        val radii = FloatArray(RADII_SIZE){0f}
 
-        if(behaviorType == BehaviorType.BOTTOM) {
-            // top left corner
-            radii[0] = cornerRadius
-            radii[1] = cornerRadius
+        when(behaviorType) {
+            BehaviorType.BOTTOM -> {
+                // top left corner
+                radii[0] = cornerRadius
+                radii[1] = cornerRadius
 
-            // top right corner
-            radii[2] = cornerRadius
-            radii[3] = cornerRadius
+                // top right corner
+                radii[2] = cornerRadius
+                radii[3] = cornerRadius
+            }
+            BehaviorType.TOP -> {
+                // bottom right corner
+                radii[4] = cornerRadius
+                radii[5] = cornerRadius
 
-            // bottom right corner
-            radii[4] = 0f
-            radii[5] = 0f
-
-            // bottom left corner
-            radii[6] = 0f
-            radii[7] = 0f
-        }
-        else {
-            // top left corner
-            radii[0] = 0f
-            radii[1] = 0f
-
-            // top right corner
-            radii[2] = 0f
-            radii[3] = 0f
-
-            // bottom right corner
-            radii[4] = cornerRadius
-            radii[5] = cornerRadius
-
-            // bottom left corner
-            radii[6] = cornerRadius
-            radii[7] = cornerRadius
+                // bottom left corner
+                radii[6] = cornerRadius
+                radii[7] = cornerRadius
+            }
+            else -> {
+            }
         }
 
         clipPath.reset()

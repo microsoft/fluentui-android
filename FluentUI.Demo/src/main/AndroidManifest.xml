@@ -27,6 +27,7 @@
         </activity>
 
         <!-- Demo activities -->
+        <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
@@ -49,6 +50,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TypographyActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.actionbar.ActionBarDemoActivity"/>
 
     </application>
 
