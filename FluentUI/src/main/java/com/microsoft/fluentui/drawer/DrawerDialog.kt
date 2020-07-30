@@ -48,7 +48,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
 
     private val sheetCallback = object : CustomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
-            if(newState == 4) // when state is STATE_COLLAPSED
+            if(newState == BottomSheetBehavior.STATE_COLLAPSED) // when state is STATE_COLLAPSED
                 dismissDialog()
         }
 
