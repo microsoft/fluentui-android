@@ -12,7 +12,6 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.support.v7.widget.LinearLayoutCompat
 import android.util.AttributeSet
-import android.util.Log
 import com.microsoft.fluentui.R
 
 internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutCompat(context, attrs) {

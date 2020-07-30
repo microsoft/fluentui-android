@@ -24,7 +24,6 @@ import com.microsoft.fluentui.util.displaySize
 import com.microsoft.fluentui.util.statusBarHeight
 import kotlinx.android.synthetic.main.dialog_drawer.*
 import kotlinx.android.synthetic.main.dialog_drawer.view.*
-import java.lang.reflect.Array.get
 
 /**
  * [DrawerDialog] is used for displaying a modal dialog in the form of an expanding and collapsing sheet

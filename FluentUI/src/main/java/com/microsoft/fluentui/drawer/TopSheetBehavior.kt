@@ -54,8 +54,6 @@ class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
                 }
             }
         }
-
-        abstract class TopSheetCallback: BottomSheetBehavior.BottomSheetCallback()
     }
 
     private var initialY: Int = 0
