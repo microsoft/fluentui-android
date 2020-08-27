@@ -195,7 +195,7 @@
         <item name="fluentuiSnackbarActionTextColor">?attr/fluentuiColorPrimaryLight</item>
         <item name="fluentuiSnackbarActionTextAnnouncementColor">?attr/fluentuiForegroundOnPrimaryColor</item>
 
-        <!--TabLayout-->
+        <!--TabLayout Dialog-->
         <item name="fluentuiDialogTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiDialogTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
