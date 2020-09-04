@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FluentUI.Core.iml" filepath="$PROJECT_DIR$/FluentUI.Core.iml" group="fluentui-android/FluentUI.Core" />
+      <module fileurl="file://$PROJECT_DIR$/../FluentUI.Demo/FluentUI.Demo.iml" filepath="$PROJECT_DIR$/../FluentUI.Demo/FluentUI.Demo.iml" group="fluentui-android/FluentUI.Demo" />
+      <module fileurl="file://$PROJECT_DIR$/../fluentui-android.iml" filepath="$PROJECT_DIR$/../fluentui-android.iml" group="fluentui-android" />
+    </modules>
+  </component>
+</project>

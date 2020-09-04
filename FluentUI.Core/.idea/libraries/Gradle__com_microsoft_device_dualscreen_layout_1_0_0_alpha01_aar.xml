@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.microsoft.device:dualscreen-layout:1.0.0-alpha01@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dualscreen-layout-1.0.0-alpha01.aar/0ae06f1616eb1ed279e9bc08cfb0ea69/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/dualscreen-layout-1.0.0-alpha01.aar/0ae06f1616eb1ed279e9bc08cfb0ea69/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

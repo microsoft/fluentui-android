@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--BottomNavigation-->
+
+    <!--Base Button-->
+    <style name="Widget.FluentUI.BaseButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button</item>
+        <item name="android:paddingStart">@dimen/fluentui_button_base_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/fluentui_button_base_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/fluentui_button_base_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/fluentui_button_base_padding_vertical</item>
+        <item name="android:minHeight">@dimen/fluentui_button_min_height</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
+    </style>
+
+    <!--Primary Button-->
+    <style name="Widget.FluentUI.Button" parent="Widget.FluentUI.BaseButton">
+        <item name="android:paddingStart">@dimen/fluentui_button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/fluentui_button_padding_horizontal</item>
+    </style>
+
+    <!--We use Borderless button style as the parent to avoid drop shadow issues in some APIs.-->
+
+    <!--Large Buttons -->
+
+    <!--Outlined Buttons -->
+
+    <!--Compound Buttons-->
+    <style name="Widget.FluentUI.RadioButton" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:buttonTint">@color/compound_button_tint</item>
+    </style>
+    <style name="Widget.FluentUI.CheckBox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/compound_button_tint</item>
+    </style>
+
+    <!--DateTimePickerDialog-->
+
+    <!--Dialog-->
+
+    <!--Drawer-->
+
+    <!--NumberPicker-->
+
+    <!--Progress: Circular-->
+
+    <!--Progress: Linear-->
+
+
+    <!--Searchbar-->
+
+    <!--Toolbar-->
+    <!--We use Widget.AppCompat.Toolbar instead of a ThemeOverlay to maintain Android's default Toolbar styling.-->
+    <style name="Base.Widget.FluentUI.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/fluentuiToolbarBackgroundColor</item>
+        <item name="titleTextAppearance">@style/TextAppearance.FluentUI.ToolbarTitle</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.FluentUI.ToolbarSubtitle</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+    <style name="Widget.FluentUI.Toolbar" parent="@style/Base.Widget.FluentUI.Toolbar" />
+    <style name="Widget.FluentUI.Toolbar.OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?attr/fluentuiToolbarIconColor</item>
+    </style>
+
+</resources>

@@ -1,1 +1,1 @@
-include ':FluentUI.Demo', ':FluentUI'
+include ':FluentUI.Demo', ':FluentUI.Core'
