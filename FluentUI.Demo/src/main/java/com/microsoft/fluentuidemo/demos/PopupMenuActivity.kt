@@ -64,7 +64,8 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
             PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow)),
             PopupMenuItem(R.id.popup_menu_item_invite_people, getString(R.string.popup_menu_item_invite_people)),
             PopupMenuItem(R.id.popup_menu_item_refresh_page, getString(R.string.popup_menu_item_refresh_page)),
-            PopupMenuItem(R.id.popup_menu_item_open_in_browser, getString(R.string.popup_menu_item_open_in_browser))
+            PopupMenuItem(R.id.popup_menu_item_open_in_browser, getString(R.string.popup_menu_item_open_in_browser)),
+            PopupMenuItem(R.id.popup_menu_item_multiline, getString(R.string.popup_menu_item_multiline))
         )
 
         val onPopupMenuItemClickListener = object : PopupMenuItem.OnClickListener {
