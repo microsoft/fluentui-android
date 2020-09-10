@@ -19,16 +19,23 @@ import com.microsoft.fluentui.view.TemplateView
  * [TabLayout] is used for loading a Template of fluentUI TabLayout.
  * The template uses already existing Android Design Support Library [TabLayout].*/
 class TabLayout : TemplateView {
-
     enum class TabType {
         STANDARD, SWITCH, PILLS
     }
+
     /*This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template.*/
     var tabLayout: TabLayout? = null
         private set
 
     /*This [tabType] stores the type of TabLayout. It supports [TabType.STANDARD], [TabType.SWITCH], [TabType.PILLS]*/
-    private var tabType: TabType? = null
+    var tabType: TabType? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTemplate()
+        }
+
     private var tabLayoutContainer: ViewGroup? = null
 
     @JvmOverloads
@@ -94,10 +101,5 @@ class TabLayout : TemplateView {
             tab.layoutParams = layoutParams
         }
         tabLayout.requestLayout()
-    }
-
-    fun setTabType(tabType: TabType) {
-        this.tabType = tabType
-        updateTemplate()
     }
 }

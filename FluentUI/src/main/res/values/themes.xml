@@ -203,8 +203,9 @@
         <!--TabLayout-->
         <item name="fluentuiTabTextColor">?attr/fluentuiBackgroundColor</item>
         <item name="fluentuiTabSelectedTextColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiTabBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiTabUnselectedBackgroundColor">@color/fluentui_communication_shade_10</item>
+        <item name="fluentuiTabContainerBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiTabBackgroundColor">@color/fluentui_communication_shade_10</item>
+        <item name="fluentuiTabUnselectedBackgroundColor">?attr/fluentuiTabBackgroundColor</item>
         <item name="fluentuiTabSelectedBackgroundColor">?attr/fluentuiBackgroundColor</item>
 
         <!--Toolbar-->

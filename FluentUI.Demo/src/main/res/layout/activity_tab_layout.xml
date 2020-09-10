@@ -24,7 +24,7 @@
     <Button
         android:id="@+id/show_tab_standard_two_segment"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginLeft="@dimen/fluentui_content_inset"
+        android:layout_marginStart="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tab_standard_two_segment" />
@@ -32,7 +32,7 @@
     <Button
         android:id="@+id/show_tab_standard_three_segment"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginLeft="@dimen/fluentui_content_inset"
+        android:layout_marginStart="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tab_standard_three_segment" />
@@ -40,7 +40,7 @@
     <Button
         android:id="@+id/show_tab_standard_four_segment"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginLeft="@dimen/fluentui_content_inset"
+        android:layout_marginStart="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tab_standard_four_segment" />
@@ -48,7 +48,7 @@
     <Button
         android:id="@+id/show_tab_standard_with_pager"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginLeft="@dimen/fluentui_content_inset"
+        android:layout_marginStart="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tab_standard_with_pager" />
@@ -56,7 +56,7 @@
     <Button
         android:id="@+id/show_tab_switch"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginLeft="@dimen/fluentui_content_inset"
+        android:layout_marginStart="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tab_switch" />
@@ -64,7 +64,7 @@
     <Button
         android:id="@+id/show_tab_pills"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginLeft="@dimen/fluentui_content_inset"
+        android:layout_marginStart="@dimen/fluentui_content_inset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tab_pills" />

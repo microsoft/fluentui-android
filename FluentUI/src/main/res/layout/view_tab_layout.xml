@@ -9,7 +9,7 @@
     android:id="@+id/tab_layout_container"
     android:layout_width="match_parent"
     android:layout_height="@dimen/fluentui_tab_height"
-    android:background="?attr/fluentuiTabBackgroundColor">
+    android:background="?attr/fluentuiTabContainerBackgroundColor">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"

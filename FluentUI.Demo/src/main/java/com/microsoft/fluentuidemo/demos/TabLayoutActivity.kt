@@ -48,7 +48,7 @@ class TabLayoutActivity : DemoActivity() {
     private fun clickListener(v: View) {
         tabLayout.removeAllTabs()
         tabLayout.setupWithViewPager(null)
-        demoTabLayout.setTabType(STANDARD)
+        demoTabLayout.tabType = STANDARD
 
         var numTabs = 0
 
@@ -64,11 +64,11 @@ class TabLayoutActivity : DemoActivity() {
             }
             R.id.show_tab_switch -> {
                 numTabs = 2
-                demoTabLayout.setTabType(SWITCH)
+                demoTabLayout.tabType = SWITCH
             }
             R.id.show_tab_pills -> {
                 numTabs = 6
-                demoTabLayout.setTabType(PILLS)
+                demoTabLayout.tabType = PILLS
             }
             R.id.show_tab_standard_with_pager -> {
                 tabLayout.setupWithViewPager(viewPager)

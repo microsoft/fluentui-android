@@ -185,6 +185,7 @@
     <!--TabLayout-->
     <attr name="fluentuiTabTextColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
+    <attr name="fluentuiTabContainerBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTabBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
