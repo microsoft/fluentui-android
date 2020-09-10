@@ -21,7 +21,6 @@ import com.microsoft.fluentui.R.id.*
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.ThemeUtil
-import com.microsoft.fluentui.util.activity
 import kotlinx.android.synthetic.main.view_snackbar.view.*
 
 /**
@@ -112,8 +111,6 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private var customViewSize: CustomViewSize = CustomViewSize.SMALL
     private var style: Style = Style.REGULAR
-    private var singleScreenDisplayPixels = 0
-    private var screenPos = IntArray(2)
 
     private val customViewVerticalMargin: Int
         get() {
@@ -131,7 +128,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
         updateBackground()
-        singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
+        val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
 
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
         if (content.parent is FrameLayout) {
@@ -143,7 +140,6 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             }
             content.layoutParams = lp
         }
-
     }
 
     /**
