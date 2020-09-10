@@ -23,11 +23,13 @@ class TabLayout : TemplateView {
     enum class TabType {
         STANDARD, SWITCH, PILLS
     }
+    /*This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template.*/
+    var tabLayout: TabLayout? = null
+        private set
 
     /*This [tabType] stores the type of TabLayout. It supports [TabType.STANDARD], [TabType.SWITCH], [TabType.PILLS]*/
     private var tabType: TabType? = null
-    /*This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template.*/
-    private lateinit var tabLayout: TabLayout
+    private var tabLayoutContainer: ViewGroup? = null
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr) {
@@ -42,13 +44,17 @@ class TabLayout : TemplateView {
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
-        tabLayout = findViewInTemplateById(R.id.tab_layout)!!
+        tabLayoutContainer = findViewInTemplateById(R.id.tab_layout_container)
+        tabLayout = findViewInTemplateById(R.id.tab_layout)
     }
 
     /**
      * This function updates the given template on the basics of [tabType].*/
     fun updateTemplate() {
-        when(tabType) {
+        val tabLayout = tabLayout ?: return
+        var paddingHorizontal = resources.getDimension(R.dimen.fluentui_tab_padding_horizontal).toInt()
+        val paddingVertical = resources.getDimension(R.dimen.fluentui_tab_padding_vertical).toInt()
+        when (tabType) {
             TabType.STANDARD -> {
                 tabLayout.tabMode = TabLayout.MODE_FIXED
                 tabLayout.layoutParams.width = LayoutParams.MATCH_PARENT
@@ -64,8 +70,10 @@ class TabLayout : TemplateView {
                 tabLayout.layoutParams.width = LayoutParams.MATCH_PARENT
                 tabLayout.setBackgroundResource(0)
                 updateMargin()
+                paddingHorizontal = 0
             }
         }
+        tabLayoutContainer?.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical)
     }
 
     override fun onAttachedToWindow() {
@@ -74,10 +82,11 @@ class TabLayout : TemplateView {
     }
 
     /**
-     * Updates the right margin for the tabs in [tabLayout]. Used for [TabType.STANDARD]
+     * Updates the right margin for the tabs in [tabLayout]. Used for [TabType.PILLS]
      * */
     private fun updateMargin() {
-        var viewGroup = tabLayout.getChildAt(0) as ViewGroup
+        val tabLayout = tabLayout ?: return
+        val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount - 1) {
             val tab: View = viewGroup.getChildAt(i)
             val layoutParams = tab.layoutParams as LinearLayout.LayoutParams
@@ -90,9 +99,5 @@ class TabLayout : TemplateView {
     fun setTabType(tabType: TabType) {
         this.tabType = tabType
         updateTemplate()
-    }
-
-    fun getTabLayout(): TabLayout {
-        return this.tabLayout
     }
 }

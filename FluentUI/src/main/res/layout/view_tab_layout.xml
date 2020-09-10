@@ -6,15 +6,14 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab_layout_container"
     android:layout_width="match_parent"
     android:layout_height="@dimen/fluentui_tab_height"
-    android:paddingHorizontal="@dimen/fluentui_tab_padding_horizontal"
-    android:paddingVertical="@dimen/fluentui_tab_padding_vertical"
-    android:background="?attr/fluentuiDialogTabSelectedBackgroundColor">
+    android:background="?attr/fluentuiTabBackgroundColor">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
+        app:tabContentStart="@dimen/fluentui_tab_content_start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:tabMode="fixed"

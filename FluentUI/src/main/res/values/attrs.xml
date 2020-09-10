@@ -185,9 +185,9 @@
     <!--TabLayout-->
     <attr name="fluentuiTabTextColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
-    <attr name="fluentuiDialogTabBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiDialogTabUnselectedBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiDialogTabSelectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
 
     <!--Toolbar-->
     <attr name="fluentuiToolbarBackgroundColor" format="reference|color"/>
@@ -198,7 +198,6 @@
     <!--Tooltip-->
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
-
 
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">

@@ -30,7 +30,7 @@ class TabLayoutActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         demoTabLayout = findViewById(R.id.demo_tab_layout)
-        tabLayout = demoTabLayout.getTabLayout()
+        tabLayout = demoTabLayout.tabLayout ?: return
         viewPager = findViewById(R.id.view_pager)
         adapter = TabPagerAdapter()
         adapter?.setData(createPageList())
@@ -45,21 +45,29 @@ class TabLayoutActivity : DemoActivity() {
         show_tab_pills.setOnClickListener(this::clickListener)
     }
 
-    private fun clickListener(v:View) {
+    private fun clickListener(v: View) {
         tabLayout.removeAllTabs()
         tabLayout.setupWithViewPager(null)
         demoTabLayout.setTabType(STANDARD)
 
         var numTabs = 0
 
-        when(v.id) {
-            R.id.show_tab_standard_two_segment -> { numTabs = 2 }
-            R.id.show_tab_standard_three_segment -> { numTabs = 3 }
-            R.id.show_tab_standard_four_segment -> { numTabs = 4 }
-            R.id.show_tab_switch -> { numTabs = 2
+        when (v.id) {
+            R.id.show_tab_standard_two_segment -> {
+                numTabs = 2
+            }
+            R.id.show_tab_standard_three_segment -> {
+                numTabs = 3
+            }
+            R.id.show_tab_standard_four_segment -> {
+                numTabs = 4
+            }
+            R.id.show_tab_switch -> {
+                numTabs = 2
                 demoTabLayout.setTabType(SWITCH)
             }
-            R.id.show_tab_pills -> { numTabs = 6
+            R.id.show_tab_pills -> {
+                numTabs = 6
                 demoTabLayout.setTabType(PILLS)
             }
             R.id.show_tab_standard_with_pager -> {
@@ -67,22 +75,22 @@ class TabLayoutActivity : DemoActivity() {
             }
         }
 
-        for(i in 0 until numTabs) {
+        for (i in 0 until numTabs) {
             tabLayout.addTab(tabLayout.newTab().setText("Label"))
         }
         demoTabLayout.updateTemplate()
     }
 
     private fun createPageTitleList(): List<String> {
-        return listOf("Page 1","Page 2","Page 3")
+        return listOf("Page 1", "Page 2", "Page 3")
     }
 
     private fun createPageList(): List<View> {
         return listOf(
-                    createPageView(R.color.fluentui_communication_tint_40),
-                    createPageView(R.color.fluentui_communication_tint_30),
-                    createPageView(R.color.fluentui_communication_tint_20)
-                )
+            createPageView(R.color.fluentui_communication_tint_40),
+            createPageView(R.color.fluentui_communication_tint_30),
+            createPageView(R.color.fluentui_communication_tint_20)
+        )
     }
 
     private fun createPageView(color: Int): View {
@@ -91,21 +99,21 @@ class TabLayoutActivity : DemoActivity() {
         return view
     }
 
-    class TabPagerAdapter: PagerAdapter() {
-        private var viewList:List<View> = ArrayList()
-        private var viewTitleList:List<String> = ArrayList()
+    class TabPagerAdapter : PagerAdapter() {
+        private var viewList: List<View> = ArrayList()
+        private var viewTitleList: List<String> = ArrayList()
 
-        override fun instantiateItem(collection: ViewGroup, position:Int):Any {
+        override fun instantiateItem(collection: ViewGroup, position: Int): Any {
             val view = viewList[position]
             collection.addView(view)
             return view
         }
 
-        override fun destroyItem(collection: ViewGroup, position:Int, view:Any) {
+        override fun destroyItem(collection: ViewGroup, position: Int, view: Any) {
             collection.removeView(view as View)
         }
 
-        override fun isViewFromObject(view:View, obj :Any):Boolean {
+        override fun isViewFromObject(view: View, obj: Any): Boolean {
             return view === obj
         }
 
@@ -117,7 +125,7 @@ class TabLayoutActivity : DemoActivity() {
             return viewTitleList[position]
         }
 
-        fun setData(list: List<View>){
+        fun setData(list: List<View>) {
             viewList = list
         }
 
