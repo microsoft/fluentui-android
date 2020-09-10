@@ -21,7 +21,6 @@ import com.microsoft.fluentui.R.id.*
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.ThemeUtil
-import com.microsoft.fluentui.util.activity
 import kotlinx.android.synthetic.main.view_snackbar.view.*
 
 /**
