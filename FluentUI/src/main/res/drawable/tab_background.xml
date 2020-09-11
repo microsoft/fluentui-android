@@ -4,14 +4,9 @@
   ~ Licensed under the MIT License.
   -->
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
     <corners
         android:radius="@dimen/fluentui_tab_radius"/>
-
-    <!-- TabLayout background color -->
     <solid
-        android:color="?attr/fluentuiTabLayoutBackgroundColor"/>
-
+        android:color="?attr/fluentuiTabSelectedBackgroundColor"/>
 </shape>

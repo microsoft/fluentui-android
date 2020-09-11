@@ -348,9 +348,9 @@
     <string name="tab_standard_two_segment">Standard Tab 2-Segment</string>
     <string name="tab_standard_three_segment">Standard Tab 3-Segment</string>
     <string name="tab_standard_four_segment">Standard Tab 4-Segment</string>
-    <string name="tab_standard_with_pager">Standard Tab with Pager </string>
-    <string name="tab_switch"> Switch Tab</string>
-    <string name="tab_pills"> Pills Tab </string>
+    <string name="tab_standard_with_pager">Standard Tab with Pager</string>
+    <string name="tab_switch">Switch Tab</string>
+    <string name="tab_pills">Pills Tab </string>
 
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>

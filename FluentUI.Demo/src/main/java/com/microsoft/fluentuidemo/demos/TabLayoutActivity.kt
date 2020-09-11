@@ -48,37 +48,37 @@ class TabLayoutActivity : DemoActivity() {
     private fun clickListener(v: View) {
         tabLayout.removeAllTabs()
         tabLayout.setupWithViewPager(null)
-        demoTabLayout.tabType = STANDARD
 
-        var numTabs = 0
-
+        var tabType: TabLayout.TabType = STANDARD
         when (v.id) {
             R.id.show_tab_standard_two_segment -> {
-                numTabs = 2
+                setTabs(2)
             }
             R.id.show_tab_standard_three_segment -> {
-                numTabs = 3
+                setTabs(3)
             }
             R.id.show_tab_standard_four_segment -> {
-                numTabs = 4
+                setTabs(4)
             }
             R.id.show_tab_switch -> {
-                numTabs = 2
-                demoTabLayout.tabType = SWITCH
+                setTabs(2)
+                tabType = SWITCH
             }
             R.id.show_tab_pills -> {
-                numTabs = 6
-                demoTabLayout.tabType = PILLS
+                setTabs(6)
+                tabType = PILLS
             }
             R.id.show_tab_standard_with_pager -> {
                 tabLayout.setupWithViewPager(viewPager)
             }
         }
+        demoTabLayout.tabType = tabType
+    }
 
+    private fun setTabs(numTabs: Int) {
         for (i in 0 until numTabs) {
             tabLayout.addTab(tabLayout.newTab().setText("Label"))
         }
-        demoTabLayout.updateTemplate()
     }
 
     private fun createPageTitleList(): List<String> {
@@ -113,17 +113,11 @@ class TabLayoutActivity : DemoActivity() {
             collection.removeView(view as View)
         }
 
-        override fun isViewFromObject(view: View, obj: Any): Boolean {
-            return view === obj
-        }
+        override fun isViewFromObject(view: View, obj: Any): Boolean = view === obj
 
-        override fun getCount(): Int {
-            return viewList.size
-        }
+        override fun getCount(): Int = viewList.size
 
-        override fun getPageTitle(position: Int): CharSequence? {
-            return viewTitleList[position]
-        }
+        override fun getPageTitle(position: Int): CharSequence? = viewTitleList[position]
 
         fun setData(list: List<View>) {
             viewList = list

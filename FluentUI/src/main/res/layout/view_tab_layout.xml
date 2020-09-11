@@ -8,8 +8,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tab_layout_container"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/fluentui_tab_height"
-    android:background="?attr/fluentuiTabContainerBackgroundColor">
+    android:layout_height="@dimen/fluentui_tab_height">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
@@ -21,7 +20,6 @@
         app:tabIndicatorHeight="@dimen/fluentui_tab_indicator_height"
         app:tabGravity="fill"
         app:tabMaxWidth="0dp"
-        app:tabTextAppearance="@style/TextAppearance.FluentUI.Tab"
-        app:tabBackground="@drawable/tab_layout_selector" />
+        app:tabTextAppearance="?attr/fluentuiTabTextAppearance" />
 
 </LinearLayout>
