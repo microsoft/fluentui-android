@@ -27,7 +27,10 @@ class TabLayout : TemplateView {
         STANDARD, SWITCH, PILLS
     }
 
-    /* This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template. */
+    /**
+     *  This [tabLayout] stores the Android Design Support Library [TabLayout] attached to the given template.
+     *  This can be accessed after [TabLayout] has been added to the window if created programmatically.
+     *  */
     var tabLayout: TabLayout? = null
         private set
 
