@@ -1,3 +1,4 @@
-include ':FluentUI.Core'
-include ':FluentUI.PersistentBottomSheet'
 include ':FluentUI.Demo.PersistentBottomSheet'
+include ':FluentUI.PersistentBottomSheet'
+include ':FluentUI.Core'
+
