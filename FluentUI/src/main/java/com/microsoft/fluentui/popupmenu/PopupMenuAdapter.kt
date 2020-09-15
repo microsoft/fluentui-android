@@ -68,8 +68,8 @@ internal class PopupMenuAdapter : BaseAdapter {
             itemView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
             maxWidth = max(maxWidth, itemView.measuredWidth)
             if(DuoSupportUtils.isWindowDoublePortrait(context)){
-                val singleScreenDisplaPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
-                maxWidth = min(maxWidth,singleScreenDisplaPixels-DuoSupportUtils.DUO_HINGE_WIDTH)
+                val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
+                maxWidth = min(maxWidth,singleScreenDisplayPixels-DuoSupportUtils.DUO_HINGE_WIDTH)
             }
         }
 

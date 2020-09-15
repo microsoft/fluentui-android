@@ -34,6 +34,7 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         no_check.setOnClickListener(this)
+        no_check2.setOnClickListener(this)
         single_check.setOnClickListener(this)
         all_check.setOnClickListener(this)
 
@@ -53,6 +54,7 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
     override fun onClick(anchorView: View) {
         when (anchorView) {
             no_check -> showPopupNoCheck(anchorView)
+            no_check2 -> showPopupSingleCheck(anchorView)
             single_check -> showPopupSingleCheck(anchorView)
             all_check -> showPopupAllCheck(anchorView)
         }
