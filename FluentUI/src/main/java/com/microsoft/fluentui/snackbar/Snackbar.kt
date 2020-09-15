@@ -136,7 +136,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             lp.bottomMargin = context.resources.getDimension(R.dimen.fluentui_snackbar_background_inset).toInt()
             if(DuoSupportUtils.isWindowDoublePortrait(context)) {
                 lp.width = singleScreenDisplayPixels
-                lp.leftMargin = singleScreenDisplayPixels+context.resources.getDimension(R.dimen.fluentui_snackbar_custom_view_margin_start).toInt()
+                lp.rightMargin = singleScreenDisplayPixels + context.resources.getDimension(R.dimen.fluentui_snackbar_custom_view_margin_start).toInt()
             }
             content.layoutParams = lp
         }
