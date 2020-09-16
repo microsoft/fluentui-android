@@ -29,6 +29,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_layout_margin"/>
 
+    <com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
+        android:id="@+id/sheet_horizontal_item_list_25"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/sheet_horizontal_item_list_3"
         android:layout_width="match_parent"
