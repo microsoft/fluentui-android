@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
+import com.microsoft.fluentui.bottomsheet.BottomSheetItem.*
 import com.microsoft.fluentui.bottomsheet.BottomSheetItemDivider
 import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 
@@ -32,7 +33,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
 
         contentParam.listener?.apply {
             val listener = this
-            verticalItemAdapter.onBottomSheetItemClickListener = object : BottomSheetItem.OnClickListener {
+            verticalItemAdapter.onBottomSheetItemClickListener = object : OnClickListener {
                 override fun onBottomSheetItemClick(item: BottomSheetItem) {
                     listener.onSheetItemClick(SheetItem(item.id, item.imageId, item.title, item.customImage))
                 }
@@ -50,7 +51,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         return itemTypeList.verticalItemSheet.filter {
             it.id != 0
         }.map {
-            BottomSheetItem(it.id, it.drawable, it.title, customImage = it.customImage,
+            BottomSheetItem(it.id, it.drawable, it.title, customImage = it.customImage, imageTintType = ImageTintType.NONE,
                     titleStyleId = itemLayoutParam.verticalItemTextAppearance, subtitleStyleId = itemLayoutParam.verticalSubTextAppearance)
         }
     }

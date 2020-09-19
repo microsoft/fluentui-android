@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         style="@style/TextAppearance.FluentUI.PersistentBottomSheetHorizontalItem"
+        android:layout_marginTop="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_margin_top"
         android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical"
         android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical"
         tools:text="Title" />
