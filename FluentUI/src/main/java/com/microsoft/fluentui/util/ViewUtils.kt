@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
+import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
 
 /**
  * Adds a given [view] to a [ViewGroup]. Especially useful when you need a custom view in a control.
@@ -83,3 +84,15 @@ val Context.activity: AppCompatActivity?
 
         return null
     }
+
+fun SheetHorizontalItemList.getMaxItemInRow(defaultMax: Int, minItemWidth: Int): Int {
+    val displayMetrics = context.resources.displayMetrics
+    val screenWidthPixel = displayMetrics.widthPixels
+
+    var maxItemsInRow = screenWidthPixel / minItemWidth
+    if (maxItemsInRow > defaultMax) {
+        maxItemsInRow = defaultMax
+    }
+    return maxItemsInRow
+
+}

@@ -32,10 +32,17 @@
             android:src="@drawable/ic_drawer_handle"
             android:tint="?attr/fluentuiDrawerHandleColor" />
 
-        <LinearLayout
-            android:id="@+id/persistent_sheet_container"
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/scroll_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/persistent_sheet_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:orientation="vertical" />
+        </android.support.v4.widget.NestedScrollView>
     </com.microsoft.fluentui.drawer.DrawerView>
 </android.support.design.widget.CoordinatorLayout>

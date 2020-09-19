@@ -203,6 +203,8 @@
     <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
     <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
     <string name="new_view">This is New View</string>
+    <string name="switch_to_default_content">Switch to default Content</string>
+    <string name="switch_to_custom_content">Switch to custom Content</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>

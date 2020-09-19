@@ -10,6 +10,8 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
+import android.support.annotation.StyleRes
+import android.widget.ImageView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.ThemeUtil
 
@@ -35,6 +37,11 @@ class BottomSheetItem : Parcelable {
     @ColorInt
     val imageTint: Int
     val imageTintType: ImageTintType
+    val customImage: ImageView?
+    @StyleRes
+    val titleStyleId: Int
+    @StyleRes
+    val subtitleStyleId: Int
 
     @JvmOverloads
     constructor(
@@ -44,7 +51,10 @@ class BottomSheetItem : Parcelable {
         subtitle: String = "",
         useDivider: Boolean = false,
         @ColorInt imageTint: Int = 0,
-        imageTintType: ImageTintType = ImageTintType.DEFAULT
+        imageTintType: ImageTintType = ImageTintType.DEFAULT,
+        customImage: ImageView? = null,
+        @StyleRes titleStyleId : Int = 0,
+        @StyleRes subtitleStyleId: Int = 0
     ) {
         this.id = id
         this.imageId = imageId
@@ -53,6 +63,9 @@ class BottomSheetItem : Parcelable {
         this.useDivider = useDivider
         this.imageTint = imageTint
         this.imageTintType = imageTintType
+        this.customImage = customImage
+        this.titleStyleId = titleStyleId
+        this.subtitleStyleId = subtitleStyleId
     }
 
     private constructor(parcel: Parcel) : this(

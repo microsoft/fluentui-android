@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
@@ -9,21 +8,21 @@
     android:id="@+id/main_container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    android:paddingStart="@dimen/fluentui_persistent_bottomsheet_item_padding_horizontal"
+    android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_item_padding_horizontal"
+    android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_item_paddingTop">
 
-    <LinearLayout
-        android:id="@+id/sheet_item_view_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
 
     <TextView
-        android:layout_marginTop="@dimen/fluentui_persistent_bottomsheet_item_view_margin"
         android:id="@+id/sheet_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.FluentUI.ListItemSubtitle"
+        android:gravity="center"
+        style="@style/TextAppearance.FluentUI.PersistentBottomSheetHorizontalItem"
+        android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical"
+        android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical"
         tools:text="Title" />
 
 </LinearLayout>

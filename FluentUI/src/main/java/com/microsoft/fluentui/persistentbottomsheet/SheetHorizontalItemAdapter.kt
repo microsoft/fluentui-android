@@ -18,19 +18,9 @@ import com.microsoft.fluentui.util.createImageView
 /**
  * [SheetHorizontalItemAdapter] is used for horizontal list in bottomSheet
  */
-class SheetHorizontalItemAdapter  : RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    var onSheetItemClickListener: ListItem.OnClickListener? = null
-    private val items: ArrayList<ListItem>
-    private val themeId: Int
-    private val context: Context
-    private val marginBetweenView:Int
-
-    constructor(context: Context, items: ArrayList<ListItem>,  @StyleRes themeId: Int=0, marginBetweenView:Int=0) {
-        this.items = items
-        this.themeId = themeId
-        this.context = context
-        this.marginBetweenView = marginBetweenView
-    }
+class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = 0, private val marginBetweenView: Int = 0) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
+    private val mItems: ArrayList<SheetItem> = items
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var inflater = LayoutInflater.from(parent.context)
@@ -45,23 +35,19 @@ class SheetHorizontalItemAdapter  : RecyclerView.Adapter<RecyclerView.ViewHolder
         return PersistentSheetItemViewHolder(itemView as SheetHorizontalItemView)
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = mItems.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as? PersistentSheetItemViewHolder)?.setBottomSheetItem(items[position])
+        (holder as? PersistentSheetItemViewHolder)?.setBottomSheetItem(mItems[position])
     }
 
-    private inner class PersistentSheetItemViewHolder : RecyclerView.ViewHolder {
-        private val listItemView: SheetHorizontalItemView
+    private inner class PersistentSheetItemViewHolder(itemView: SheetHorizontalItemView) : RecyclerView.ViewHolder(itemView) {
+        private val listItemView: SheetHorizontalItemView = itemView
 
-        constructor(itemView: SheetHorizontalItemView) : super(itemView) {
-            listItemView = itemView
-        }
-
-        fun setBottomSheetItem(item: ListItem) {
+        fun setBottomSheetItem(item: SheetItem) {
             listItemView.update(item.title, context.createImageView(item.drawable))
             listItemView.setOnClickListener {
-                onSheetItemClickListener?.onSheetItemClick(item)
+                mOnSheetItemClickListener?.onSheetItemClick(item)
             }
         }
     }
