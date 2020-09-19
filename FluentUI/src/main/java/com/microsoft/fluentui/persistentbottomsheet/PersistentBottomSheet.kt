@@ -21,9 +21,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.drawer.OnDrawerContentCreatedListener
-import com.microsoft.fluentui.persistentbottomsheet.sheetItem.ISheetItemClickListener
-import com.microsoft.fluentui.persistentbottomsheet.sheetItem.PersistentBottomSheetContentViewProvider
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
+import com.microsoft.fluentui.persistentbottomsheet.sheetItem.PersistentBottomSheetContentViewProvider
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.view.TemplateView
 import kotlinx.android.synthetic.main.view_persistent_sheet.view.*

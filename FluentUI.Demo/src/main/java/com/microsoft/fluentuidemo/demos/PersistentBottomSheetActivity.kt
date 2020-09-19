@@ -6,17 +6,15 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
-import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 import com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
 import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemAdapter
-import com.microsoft.fluentui.persistentbottomsheet.sheetItem.ISheetItemClickListener
+import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -24,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_persistent_bottom_sheet.*
 import kotlinx.android.synthetic.main.demo_persistent_sheet_content.*
 
-class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener, BottomSheetItem.OnClickListener, ISheetItemClickListener {
+class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener, BottomSheetItem.OnClickListener {
 
     override val contentLayoutId: Int
         get() = R.layout.activity_persistent_bottom_sheet
@@ -256,15 +254,6 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
     }
 
     override fun onBottomSheetItemClick(item: BottomSheetItem) {
-        when(item.id) {
-            R.id.bottom_sheet_item_camera -> showSnackbar(resources.getString(R.string.bottom_sheet_item_camera_toast))
-            R.id.bottom_sheet_item_gallery -> showSnackbar(resources.getString(R.string.bottom_sheet_item_gallery_toast))
-            R.id.bottom_sheet_item_videos -> showSnackbar(resources.getString(R.string.bottom_sheet_item_videos_toast))
-            R.id.bottom_sheet_item_manage -> showSnackbar(resources.getString(R.string.bottom_sheet_item_manage_toast))
-        }
-    }
-
-    override fun onSheetItemClicked(item: SheetItem) {
         when(item.id) {
             R.id.bottom_sheet_item_camera -> showSnackbar(resources.getString(R.string.bottom_sheet_item_camera_toast))
             R.id.bottom_sheet_item_gallery -> showSnackbar(resources.getString(R.string.bottom_sheet_item_gallery_toast))
