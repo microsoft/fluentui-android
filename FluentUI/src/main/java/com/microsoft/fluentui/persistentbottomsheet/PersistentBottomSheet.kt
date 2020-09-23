@@ -9,6 +9,7 @@ import android.content.Context
 import android.graphics.Rect
 import android.support.annotation.ColorRes
 import android.support.annotation.LayoutRes
+import android.support.annotation.RestrictTo
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.ColorUtils
@@ -31,7 +32,7 @@ import kotlinx.android.synthetic.main.view_persistent_sheet.view.*
 /**
  * [PersistentBottomSheet] is used to display a bottomSheet with a persistent collapsed state of some peekHeight
  */
-class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : TemplateView(FluentUIContextThemeWrapper(context), attrs, defStyleAttr) {
+class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : TemplateView(FluentUIContextThemeWrapper(context), attrs, defStyleAttr), SheetItem.OnClickListener {
 
     companion object {
         private const val FADE_OUT_THRESHOLD = 160
@@ -44,7 +45,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
     private var contentViewProvider: PersistentBottomSheetContentViewProvider? = null
     private val mItemLayoutParam: BottomSheetParam.ItemLayoutParam
-
+    private var sheetItemClickListener: SheetItem.OnClickListener? = null
 
     private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
     private var shouldInterceptTouch = false
@@ -105,6 +106,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     }
 
     private fun createSheetContent(contentParam: BottomSheetParam.ContentParam) {
+        contentParam.listener = this
         this.contentViewProvider = PersistentBottomSheetContentViewProvider(context, contentParam)
         updateSheetContent()
     }
@@ -147,7 +149,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         return super.onTouchEvent(event)
     }
 
-    fun getSheetBehavior(): BottomSheetBehavior<View> {
+    internal fun getSheetBehavior(): BottomSheetBehavior<View> {
         return persistentSheetBehavior
     }
 
@@ -155,6 +157,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         addView(child, index, persistentSheetContainer)
     }
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     fun addView(child: View, index: Int = 0, parentViewGroup: ViewGroup) {
         parentViewGroup.addView(child, index)
         child.post {
@@ -162,10 +165,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         }
     }
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     override fun removeViewAt(index: Int) {
         removeViewAt(index, persistentSheetContainer)
     }
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     private fun removeViewAt(index: Int, parentViewGroup: ViewGroup) {
         val childHeight = parentViewGroup.getChildAt(index).height
         parentViewGroup.removeViewAt(index)
@@ -173,10 +178,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             changePeekHeight(-childHeight)
     }
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     override fun removeView(child: View) {
         removeView(child, persistentSheetContainer)
     }
 
+    @RestrictTo(RestrictTo.Scope.LIBRARY)
     fun removeView(child: View, parentViewGroup: ViewGroup) {
         val childHeight = child.height
         parentViewGroup.removeView(child)
@@ -194,6 +201,18 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun expand() {
         getSheetBehavior().state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
+    fun getPeekHeight(): Int {
+        return getSheetBehavior().peekHeight
+    }
+
+    fun setItemClickListener(itemClickListener: SheetItem.OnClickListener) {
+        sheetItemClickListener = itemClickListener
+    }
+
+    override fun onSheetItemClick(item: SheetItem) {
+        sheetItemClickListener?.onSheetItemClick(item)
     }
 
     class DefaultContentBuilder(val context: Context) {
@@ -219,10 +238,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             return this
         }
 
-        fun setItemClickListener(listener: SheetItem.OnClickListener): DefaultContentBuilder {
-            contentParam.listener = listener
-            return this
-        }
 
         fun setCustomSheetContent(@LayoutRes layoutResId: Int): DefaultContentBuilder {
             contentParam.listOfItemList.clear()

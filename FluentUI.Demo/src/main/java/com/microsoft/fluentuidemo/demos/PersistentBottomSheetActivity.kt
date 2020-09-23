@@ -176,7 +176,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         }
 
         collapse_persistent_bottom_sheet_button.setOnClickListener {
-            if(currentSheet.getSheetBehavior().peekHeight == 0) {
+            if(currentSheet.getPeekHeight() == 0) {
                 currentSheet.showPersistentSheet()
                 collapse_persistent_bottom_sheet_button.text = getString(R.string.collapse_persistent_sheet_button)
             }
@@ -204,6 +204,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
     private fun showDefaultBottomSheet() {
 
+        defaultPersistentBottomSheet.setItemClickListener(this)
         PersistentBottomSheet.DefaultContentBuilder(this)
                 .addHorizontalItemList(mHorizontalSheet, true)
                 .addDivider()
@@ -211,7 +212,6 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                 .addDivider()
                 .addVerticalItemList(mHorizontalSheet, getString(R.string.fluentui_bottom_sheet_header))
                 .addVerticalItemList(mHorizontalSheet,getString(R.string.fluentui_bottom_sheet_header))
-                .setItemClickListener(this)
                 .buildWith(defaultPersistentBottomSheet)
 
     }
