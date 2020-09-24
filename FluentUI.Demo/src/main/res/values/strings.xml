@@ -298,6 +298,8 @@
     <string name="popup_menu_item_invite_people">Invite people</string>
     <string name="popup_menu_item_refresh_page">Refresh page</string>
     <string name="popup_menu_item_open_in_browser">Open in browser</string>
+    <string name="popup_menu_item_multiline">This is a multiline Popup Menu. Max lines are set to two, the rest of the text will truncate.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="popup_menu_item_all_news">All news</string>
     <string name="popup_menu_item_saved_news">Saved news</string>
     <string name="popup_menu_item_news_from_sites">News from sites</string>
@@ -306,6 +308,7 @@
     <string name="popup_menu_item_notify_inactive">Notify when inactive on desktop</string>
     <string name="popup_menu_item_clicked">You clicked on the item:</string>
     <string name="popup_menu_simple">Simple menu</string>
+    <string name="popup_menu_simple_duo">Duo</string>
     <string name="popup_menu_single_check">Menu with one selectable item and a divider</string>
     <string name="popup_menu_all_check">Menu with all selectable items, icons, and long text</string>
     <string name="popup_menu_show">Show</string>

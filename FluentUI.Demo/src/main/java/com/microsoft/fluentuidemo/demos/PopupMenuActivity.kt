@@ -10,6 +10,7 @@ import android.view.View
 import com.microsoft.fluentui.popupmenu.PopupMenu
 import com.microsoft.fluentui.popupmenu.PopupMenuItem
 import com.microsoft.fluentui.snackbar.Snackbar
+import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -34,6 +35,8 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         no_check.setOnClickListener(this)
+        if(DuoSupportUtils.isDualScreenMode(this))
+            no_check2.setOnClickListener(this)
         single_check.setOnClickListener(this)
         all_check.setOnClickListener(this)
 
@@ -51,10 +54,20 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
     }
 
     override fun onClick(anchorView: View) {
-        when (anchorView) {
-            no_check -> showPopupNoCheck(anchorView)
-            single_check -> showPopupSingleCheck(anchorView)
-            all_check -> showPopupAllCheck(anchorView)
+        if(DuoSupportUtils.isDualScreenMode(this)) {
+            when (anchorView) {
+                no_check -> showPopupNoCheck(anchorView)
+                no_check2 -> showPopupNoCheck(anchorView)
+                single_check -> showPopupSingleCheck(anchorView)
+                all_check -> showPopupAllCheck(anchorView)
+            }
+        }
+        else{
+            when(anchorView) {
+                no_check -> showPopupNoCheck(anchorView)
+                single_check -> showPopupSingleCheck(anchorView)
+                all_check -> showPopupAllCheck(anchorView)
+            }
         }
     }
 
@@ -64,7 +77,8 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
             PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow)),
             PopupMenuItem(R.id.popup_menu_item_invite_people, getString(R.string.popup_menu_item_invite_people)),
             PopupMenuItem(R.id.popup_menu_item_refresh_page, getString(R.string.popup_menu_item_refresh_page)),
-            PopupMenuItem(R.id.popup_menu_item_open_in_browser, getString(R.string.popup_menu_item_open_in_browser))
+            PopupMenuItem(R.id.popup_menu_item_open_in_browser, getString(R.string.popup_menu_item_open_in_browser)),
+            PopupMenuItem(R.id.popup_menu_item_multiline, getString(R.string.popup_menu_item_multiline))
         )
 
         val onPopupMenuItemClickListener = object : PopupMenuItem.OnClickListener {

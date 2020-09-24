@@ -46,6 +46,10 @@
     <!--Linear Progress-->
     <dimen name="linear_progress_margin">20dp</dimen>
 
+    <!--PopupMenu-->
+    <dimen name="default_layout_margin_start_duo">@dimen/fluentui_popup_menu_duo_margin_start</dimen>>
+    <dimen name="default_layout_margin_top_duo">@dimen/fluentui_popup_menu_duo_margin_top</dimen>>
+
     <!--Shared-->
     <dimen name="demo_headline_divider_height">@dimen/fluentui_divider_height</dimen>
     <dimen name="demo_headline_padding_bottom">4dp</dimen>
