@@ -9,10 +9,8 @@
         <attr name="peekHeight" format="dimension" />
         <!--  Determines whether to keep the default drawer handle or not -->
         <attr name="isDrawerHandleVisible" format="boolean" />
-        <!--item width in horizontal laid out item should not go below this-->
-        <attr name="horizontalItemMinWidth" format="dimension" />
-        <!-- max horizontal Item in row allowed-->
-        <attr name="maxItemInRow" format="integer" />
+        <!--  horizontal Item in a row-->
+        <attr name="ItemsInRow" format="integer" />
         <!-- horizontal item text style-->
         <attr name="horizontalItemTextAppearance" format="reference" />
         <!-- vertical item text style-->

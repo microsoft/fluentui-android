@@ -25,17 +25,15 @@ internal class PersistentBottomSheetContentViewProvider(private val context: Con
 
     companion object {
 
-        internal fun getProvider(context: Context, itemList: BottomSheetParam.ItemTypeList): IViewProvider {
-            if (itemList is BottomSheetParam.HorizontalItemList) {
-                return HorizontalViewProvider(context)
+        internal fun getProvider(context: Context, itemTypeList: BottomSheetParam.ItemTypeList): IViewProvider {
+            return when (itemTypeList) {
+                is BottomSheetParam.HorizontalItemList -> HorizontalViewProvider(context)
+                is BottomSheetParam.HorizontalGridItemList -> HorizontalGridProvider(context)
+                is BottomSheetParam.DividerItemType -> DividerViewProvider(context)
+                is BottomSheetParam.VerticalItemList -> VerticalViewProvider(context)
+                else -> throw UnsupportedOperationException("Type of item is not supported for : " + itemTypeList.javaClass.canonicalName)
             }
-            if (itemList is BottomSheetParam.VerticalItemList) {
-                return VerticalViewProvider(context)
-            }
-            if (itemList is BottomSheetParam.DividerItemType) {
-                return DividerViewProvider(context)
-            }
-            throw UnsupportedOperationException("Type of item is not supported for : " + itemList.javaClass.canonicalName)
+
         }
 
     }

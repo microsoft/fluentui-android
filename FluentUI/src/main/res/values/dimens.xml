@@ -121,7 +121,7 @@
     <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical">4dp</dimen>
     <dimen name="fluentui_persistent_bottomsheet_horizontal_item_paddingTop">10dp</dimen>
     <dimen name="fluentui_persistent_bottomsheet_divider_margin_vertical">6dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_content_offset">16dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_content_offset">8dp</dimen>
     <dimen name="fluentui_persistent_bottomsheet_item_padding_horizontal">2dp</dimen>
     <dimen name="fluentui_persistent_bottomsheet_header_marginTop">13dp</dimen>
     <dimen name="fluentui_persistent_bottomsheet_header_marginBottom">6dp</dimen>

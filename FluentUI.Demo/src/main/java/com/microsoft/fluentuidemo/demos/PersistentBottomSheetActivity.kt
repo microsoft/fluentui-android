@@ -100,7 +100,11 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                 SheetItem(
                         R.id.bottom_sheet_item_delete,
                         R.drawable.ic_delete_24_regular,
-                        getString(R.string.bottom_sheet_item_delete_title))
+                        getString(R.string.bottom_sheet_item_delete_title)),
+                SheetItem(
+                        R.id.persistent_sheet_item_create_new_folder,
+                        R.drawable.ic_create_new_folder_24_filled,
+                        getString(R.string.persistent_sheet_item_create_new_folder_title))
         )
 
 
@@ -206,9 +210,9 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
         defaultPersistentBottomSheet.setItemClickListener(this)
         PersistentBottomSheet.DefaultContentBuilder(this)
-                .addHorizontalItemList(mHorizontalSheet, true)
-                .addDivider()
                 .addHorizontalItemList(mHorizontalSheet2)
+                .addDivider()
+                .addHorizontalGridItemList(mHorizontalSheet)
                 .addDivider()
                 .addVerticalItemList(mHorizontalSheet, getString(R.string.fluentui_bottom_sheet_header))
                 .addVerticalItemList(mHorizontalSheet,getString(R.string.fluentui_bottom_sheet_header))

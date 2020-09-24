@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
-import com.microsoft.fluentui.util.getMaxItemInRow
 import com.microsoft.fluentui.view.TemplateView
 import kotlin.math.ceil
 
@@ -21,7 +20,7 @@ import kotlin.math.ceil
 /**
 * [SheetHorizontalItemList] is used to display a list of menu items in a horizontal fixed list
 */
-class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
+open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : TemplateView(context, attrs, defStyleAttr), SheetItem.OnClickListener {
     private lateinit var mItemSheet:List<SheetItem>
     private lateinit var itemListContainer:ViewGroup
@@ -31,7 +30,6 @@ class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs:
 
     init {
         itemLayoutParam = BottomSheetParam.HorizontalItemLayoutParam(
-                context.resources.getDimensionPixelSize(R.dimen.fluentui_bottomsheet_horizontalItem_min_width),
                 context.resources.getInteger(R.integer.fluentui_persistent_bottomsheet_max_item_row),
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHorizontalItem,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHeading)
@@ -56,7 +54,7 @@ class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs:
         itemListContainer.removeAllViews()
 
 
-        val columnCount = getMaxItemInRow(itemLayoutParam.maxItemInRow, itemLayoutParam.horizontalItemMinWidth)
+        val columnCount = itemLayoutParam.itemsInRow
         val rowCount = ceil(size.toDouble()/columnCount).toInt()
 
         var index = 0
@@ -83,10 +81,9 @@ class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs:
         return itemView
     }
 
-    private fun getRowWrapper(columnCount: Int): LinearLayout {
+    protected open fun getRowWrapper(columnCount: Int): LinearLayout {
         val listContainer = LinearLayout(context)
         listContainer.orientation = LinearLayout.HORIZONTAL
-        listContainer.weightSum = columnCount.toFloat()
         listContainer.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         return listContainer
     }

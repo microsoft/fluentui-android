@@ -56,18 +56,16 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.PersistentBottomSheet)
         isDrawerHandleVisible = attributes.getBoolean(R.styleable.PersistentBottomSheet_isDrawerHandleVisible, true)
         val defaultPeekHeight = attributes.getDimensionPixelSize(R.styleable.PersistentBottomSheet_peekHeight, 0)
-        val horizontalItemMinWidth = attributes.getDimensionPixelSize(R.styleable.PersistentBottomSheet_horizontalItemMinWidth,
-                resources.getDimensionPixelSize(R.dimen.fluentui_bottomsheet_horizontalItem_min_width))
-        val maxItemInRow = attributes.getInteger(R.styleable.PersistentBottomSheet_maxItemInRow, R.integer.fluentui_persistent_bottomsheet_max_item_row)
+        val itemsInRow = attributes.getInteger(R.styleable.PersistentBottomSheet_ItemsInRow, R.integer.fluentui_persistent_bottomsheet_max_item_row)
         val horizontalItemTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_horizontalItemTextAppearance,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHorizontalItem)
         val verticalItemTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_verticalItemTextAppearance,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheet_Item)
-        val verticalSubTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_verticalItemTextAppearance, 0)
-        val headerTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_verticalItemTextAppearance,
+        val verticalSubTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_verticalItemSubTextAppearance, 0)
+        val headerTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_headerTextAppearance,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHeading)
 
-        mItemLayoutParam = BottomSheetParam.ItemLayoutParam(defaultPeekHeight, horizontalItemMinWidth, maxItemInRow,
+        mItemLayoutParam = BottomSheetParam.ItemLayoutParam(defaultPeekHeight, itemsInRow,
                 horizontalItemTextStyle, verticalItemTextStyle, verticalSubTextStyle, headerTextStyle)
         attributes.recycle()
     }
@@ -220,18 +218,57 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         private val contentParam: BottomSheetParam.ContentParam = BottomSheetParam.ContentParam(ArrayList(),
                 context.resources.getDimensionPixelSize(R.dimen.fluentui_divider_height))
 
-        fun addHorizontalItemList(itemSheet: List<SheetItem>, multiline: Boolean = true, header: String? = null): DefaultContentBuilder {
+        /**
+         * This will be used to add a horizontal view which
+         * has a fixed (defined in *itemInRow* - property) grid size of items and it populates them in each line
+         * equally spaced
+         *
+         *  ex.  in a list and itemsInRow count is 5
+         *   if(** is a view) then will be shown like
+         *
+         *    5 items -->    | **   **   **   **   **   ** |
+         *
+         *    4 items -->    |   **     **     **    **    |
+         *
+         *    8 items -->  | **   **   **   **   **   ** |
+         *                 |     **      **       **     |
+         *
+         *
+         */
+        fun addHorizontalItemList(itemSheet: List<SheetItem>, header: String? = null): DefaultContentBuilder {
             assertIfCustomIdSet()
-            contentParam.add(BottomSheetParam.HorizontalItemList(itemSheet, multiline, header))
+            contentParam.add(BottomSheetParam.HorizontalItemList(itemSheet, header))
             return this
         }
 
+        /**
+         * This will be used to add a horizontal view which
+         * has a fixed(defined in *itemInRow* - property) grid size of items and it populates them from start to end.
+         *   ex.  8 items in a grid when itemsinRow count is 5
+         *   if(** is a view) then will be shown like
+         *
+         *        **  **  **  **  **  **
+         *        **  **  **
+         *
+         */
+        fun addHorizontalGridItemList(itemSheet: List<SheetItem>, header: String? = null): DefaultContentBuilder {
+            assertIfCustomIdSet()
+            contentParam.add(BottomSheetParam.HorizontalGridItemList(itemSheet, header))
+            return this
+        }
+
+        /**
+         * add items vertically in a groups
+         */
         fun addVerticalItemList(itemSheet: List<SheetItem>, header: String? = null): DefaultContentBuilder {
             assertIfCustomIdSet()
             contentParam.add(BottomSheetParam.VerticalItemList(itemSheet, header))
             return this
         }
 
+        /**
+         * adds a divider
+         */
         fun addDivider(pixelHeight: Int = context.resources.getDimensionPixelSize(R.dimen.fluentui_divider_height), @ColorRes color: Int = 0): DefaultContentBuilder {
             assertIfCustomIdSet()
             contentParam.add(BottomSheetParam.DividerItemType(pixelHeight, color))
@@ -252,7 +289,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
         private fun assertIfCustomIdSet() {
             if (contentParam.layoutResId != null) {
-                throw IllegalStateException(" custom resource Id is set you can not use default items over it${contentParam.layoutResId}")
+                throw IllegalStateException(" custom resource Id is set you can not use default items with it${contentParam.layoutResId}")
             }
         }
     }

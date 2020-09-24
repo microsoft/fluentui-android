@@ -57,7 +57,7 @@
         android:layout_alignParentBottom="true"
         android:visibility="gone"
         app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
-        app:maxItemInRow="6"
+        app:ItemsInRow="5"
         app:isDrawerHandleVisible="true"/>
 
 </RelativeLayout>

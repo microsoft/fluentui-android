@@ -5,29 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.microsoft.fluentui.R
-import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
+import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalGridItemList
 
 /**
  * A horizontal grid view provider returns a horizontal view which
- * has a fix grid size of items and it populates them in each line
- * equally spaced
- *
- *  ex.  8 items in a list and itemsInRow count is 5
+ * has a fix grid size of items and it populates them from start to end.
+ *   ex.  8 items in a grid when itemsinRow count is 5
  *   if(** is a view) then will be shown like
  *
  *        **  **  **  **  **  **
- *           **     **     **
+ *        **  **  **
  *
  */
-internal class HorizontalViewProvider(val context: Context) : IViewProvider {
+internal class HorizontalGridProvider(val context: Context) : IViewProvider {
 
     override fun getContentView(itemTypeList: BottomSheetParam.ItemTypeList,
                                 itemLayoutParam: BottomSheetParam.ItemLayoutParam,
                                 contentParam: BottomSheetParam.ContentParam): View {
-        val list = itemTypeList as BottomSheetParam.HorizontalItemList
-        val view = LayoutInflater.from(context).inflate(R.layout.horizontal_bottomsheet_content, null)
+        val list = itemTypeList as BottomSheetParam.HorizontalGridItemList
+        val view = LayoutInflater.from(context).inflate(R.layout.persistent_bottomsheet_horizontal_grid, null)
         val headerText = view.findViewById<TextView>(R.id.header_text)
-        val horizontalListView = view.findViewById<SheetHorizontalItemList>(R.id.horizontal_list)
+        val horizontalGridView = view.findViewById<SheetHorizontalGridItemList>(R.id.horizontal_grid)
 
         if (itemTypeList.header.isNullOrEmpty()) {
             headerText.visibility = View.GONE
@@ -35,12 +33,13 @@ internal class HorizontalViewProvider(val context: Context) : IViewProvider {
             headerText.visibility = View.VISIBLE
             headerText.text = itemTypeList.header
         }
-        horizontalListView.createHorizontalItemLayout(list.horizontalItemSheet,
+        horizontalGridView.createHorizontalItemLayout(list.horizontalItemSheet,
                 BottomSheetParam.HorizontalItemLayoutParam(
                         itemLayoutParam.itemInRow,
                         itemLayoutParam.horizontalTextAppearance,
                         itemLayoutParam.headerTextAppearance))
-        horizontalListView.sheetItemClickListener = contentParam.listener
+        horizontalGridView.sheetItemClickListener = contentParam.listener
         return view
+
     }
 }

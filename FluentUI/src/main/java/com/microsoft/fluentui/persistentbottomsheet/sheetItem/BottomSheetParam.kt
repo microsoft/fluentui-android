@@ -20,15 +20,13 @@ class BottomSheetParam {
 
 
     internal data class ItemLayoutParam(val defaultPeekHeight: Int,
-                                        val horizontalItemMinWidth: Int,
-                                        val maxItemInRow: Int,
+                                        val itemInRow: Int,
                                         @StyleRes val horizontalTextAppearance: Int,
                                         @StyleRes val verticalItemTextAppearance: Int,
                                         @StyleRes val verticalSubTextAppearance: Int,
                                         @StyleRes val headerTextAppearance: Int)
 
-    data class HorizontalItemLayoutParam(val horizontalItemMinWidth: Int,
-                                         val maxItemInRow: Int,
+    data class HorizontalItemLayoutParam(val itemsInRow: Int,
                                          @StyleRes val horizontalTextAppearance: Int,
                                          @StyleRes val headerTextAppearance: Int)
 
@@ -40,7 +38,12 @@ class BottomSheetParam {
     internal interface ItemTypeList
 
     // data class for list of horizontal Items
-    internal data class HorizontalItemList(val horizontalItemSheet: List<SheetItem>, val multiline: Boolean, val header: String?) : ItemTypeList
+    internal data class HorizontalItemList(val horizontalItemSheet: List<SheetItem>, val header: String?) : ItemTypeList{
+        val count = horizontalItemSheet.size
+    }
+
+    // data class for list of horizontal  grid Items
+    internal data class HorizontalGridItemList(val horizontalItemSheet: List<SheetItem>, val header: String?) : ItemTypeList
 
     // data class for list of vertical Items
     internal data class VerticalItemList(val verticalItemSheet: List<SheetItem>, val header: String?) : ItemTypeList

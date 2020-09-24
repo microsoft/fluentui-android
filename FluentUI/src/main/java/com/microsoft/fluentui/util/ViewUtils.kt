@@ -84,15 +84,3 @@ val Context.activity: AppCompatActivity?
 
         return null
     }
-
-fun SheetHorizontalItemList.getMaxItemInRow(defaultMax: Int, minItemWidth: Int): Int {
-    val displayMetrics = context.resources.displayMetrics
-    val screenWidthPixel = displayMetrics.widthPixels
-
-    var maxItemsInRow = screenWidthPixel / minItemWidth
-    if (maxItemsInRow > defaultMax) {
-        maxItemsInRow = defaultMax
-    }
-    return maxItemsInRow
-
-}
