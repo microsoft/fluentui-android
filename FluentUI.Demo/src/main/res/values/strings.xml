@@ -216,6 +216,8 @@
     <string name="persistent_sheet_item_zoom_in_toast"> Zoom In item clicked</string>
     <string name="persistent_sheet_item_zoom_out_title">Zoom Out</string>
     <string name="persistent_sheet_item_zoom_out_toast">Zoom Out item clicked</string>
+    <string name="persistent_sheet_item_cancel_title">Cancel</string>
+    <string name="persistent_sheet_item_cancel_toast">Cancel clicked</string>
 
     <!--Persona-->
     <string name="persona_email_allan_munger">amunger@microsoft.com</string>

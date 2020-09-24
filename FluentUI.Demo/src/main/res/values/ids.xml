@@ -36,6 +36,7 @@
     <item name="persistent_sheet_item_save" type="id"/>
     <item name="persistent_sheet_item_zoom_in" type="id"/>
     <item name="persistent_sheet_item_zoom_out" type="id"/>
+    <item name="persistent_sheet_item_cancel" type="id"/>
     <item name="persistent_sheet_item_add_view" type="id"/>
     <item name="persistent_sheet_item_change_height_button" type="id"/>
 

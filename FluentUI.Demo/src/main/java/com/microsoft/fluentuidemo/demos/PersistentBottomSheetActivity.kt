@@ -14,8 +14,8 @@ import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
 import com.microsoft.fluentui.persistentbottomsheet.ListItem
 import com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
-import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemAdapter
 import com.microsoft.fluentui.snackbar.Snackbar
+import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -72,33 +72,35 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
         ))
         sheet_horizontal_item_list_2.onSheetItemClickListener = this
 
-        val marginBetweenView = resources.getDimension(R.dimen.fluentui_persistent_horizontal_item_right_margin).toInt()
-        val horizontalListAdapter  = SheetHorizontalItemAdapter(this,
-                arrayListOf(
-                        ListItem(
-                                R.id.persistent_sheet_item_create_new_folder,
-                                R.drawable.ic_create_new_folder_24_filled,
-                                getString(R.string.persistent_sheet_item_create_new_folder_title)),
-                        ListItem(
-                                R.id.persistent_sheet_item_edit,
-                                R.drawable.ic_edit_24_filled,
-                                getString(R.string.persistent_sheet_item_edit_title)),
-                        ListItem(
-                                R.id.persistent_sheet_item_save,
-                                R.drawable.ic_save_24_filled,
-                                getString(R.string.persistent_sheet_item_save_title)),
-                        ListItem(
-                                R.id.persistent_sheet_item_zoom_in,
-                                R.drawable.ic_zoom_in_24_filled,
-                                getString(R.string.persistent_sheet_item_zoom_in_title)),
-                        ListItem(
-                                R.id.persistent_sheet_item_zoom_out,
-                                R.drawable.ic_zoom_out_24_filled,
-                                getString(R.string.persistent_sheet_item_zoom_out_title))
-                ),0, marginBetweenView)
-        horizontalListAdapter.onSheetItemClickListener = this
+        sheet_horizontal_item_list_25.updateTemplate( arrayListOf(
+                ListItem(
+                        R.id.persistent_sheet_item_create_new_folder,
+                        R.drawable.ic_create_new_folder_24_filled,
+                        getString(R.string.persistent_sheet_item_create_new_folder_title)),
+                ListItem(
+                        R.id.persistent_sheet_item_edit,
+                        R.drawable.ic_edit_24_filled,
+                        getString(R.string.persistent_sheet_item_edit_title)),
+                ListItem(
+                        R.id.persistent_sheet_item_save,
+                        R.drawable.ic_save_24_filled,
+                        getString(R.string.persistent_sheet_item_save_title)),
+                ListItem(
+                        R.id.persistent_sheet_item_zoom_in,
+                        R.drawable.ic_zoom_in_24_filled,
+                        getString(R.string.persistent_sheet_item_zoom_in_title)),
+                ListItem(
+                        R.id.persistent_sheet_item_zoom_out,
+                        R.drawable.ic_zoom_out_24_filled,
+                        getString(R.string.persistent_sheet_item_zoom_out_title)),
+                ListItem(
+                        R.id.persistent_sheet_item_cancel,
+                        R.drawable.ic_zoom_out_24_filled,
+                        getString(R.string.persistent_sheet_item_cancel_title))
+        ))
+        sheet_horizontal_item_list_2.onSheetItemClickListener = this
         sheet_horizontal_item_list_3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        sheet_horizontal_item_list_3.adapter = horizontalListAdapter
+
 
 
         val verticalListAdapter =  BottomSheetAdapter(this,
@@ -154,6 +156,9 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
                     view =  TextView(this)
                     view.text = getString(R.string.new_view)
                     view.height = 200
+                    if(DuoSupportUtils.isWindowDoublePortrait(this)) {
+                        view.x -= DuoSupportUtils.getSingleScreenWidthPixels(this)/2
+                    }
                     view.gravity = Gravity.CENTER
                     persistentBottomSheetDemo.addView(view, 1, demo_bottom_sheet)
                 }
