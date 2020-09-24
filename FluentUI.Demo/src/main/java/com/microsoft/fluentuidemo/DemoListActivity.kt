@@ -18,6 +18,7 @@ import android.widget.LinearLayout
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentui.util.DuoSupportUtils
 import kotlinx.android.synthetic.main.activity_demo_list.*
 
 /**
@@ -52,13 +53,18 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         app_bar.accessoryView = searchbar
     }
 
+    fun getDemos() : ArrayList<Demo> {
+        return if(DuoSupportUtils.isDualScreenMode(this)) DUO_DEMOS else DEMOS
+    }
+
     override fun onQueryTextSubmit(query: String): Boolean {
         return false
     }
 
     override fun onQueryTextChange(query: String): Boolean {
         val userInput = query.toLowerCase()
-        val filteredDemoList = DEMOS.filter { it.title.toLowerCase().contains(userInput) }
+        val demoList:ArrayList<Demo> = if(DuoSupportUtils.isDualScreenMode(this)) DUO_DEMOS else DEMOS
+        val filteredDemoList = demoList.filter { it.title.toLowerCase().contains(userInput) }
 
         searchbar.showSearchProgress = true
 
@@ -66,17 +72,11 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             (demo_list.adapter as DemoListAdapter).demos = filteredDemoList as ArrayList<Demo>
             searchbar.showSearchProgress = false
         }, 500)
-
         return true
     }
 
-    private class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
-        var demos = DEMOS
-            set(value) {
-                field = value
-                notifyDataSetChanged()
-            }
-
+    private inner class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
+        var demos: ArrayList<Demo> = getDemos()
         private val onClickListener = View.OnClickListener { view ->
             val demo = view.tag as Demo
             val intent = Intent(view.context, demo.demoClass.java)
@@ -101,7 +101,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         }
 
-        private class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val listItem: ListItemView = view as ListItemView
         }
     }
