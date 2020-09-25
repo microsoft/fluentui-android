@@ -205,6 +205,10 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         return getSheetBehavior().peekHeight
     }
 
+    fun getBottomSheetBehaviour(): BottomSheetBehavior<View> {
+        return getSheetBehavior()
+    }
+
     fun setItemClickListener(itemClickListener: SheetItem.OnClickListener) {
         sheetItemClickListener = itemClickListener
     }

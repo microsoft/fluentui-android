@@ -16,8 +16,9 @@ import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentui.view.TemplateView
 
 class SheetHorizontalItemView: TemplateView {
-    lateinit var sheetItemTitle:TextView
-    lateinit var mainContainer:ViewGroup
+    private lateinit var sheetItemTitle:TextView
+    private lateinit var mainContainer:ViewGroup
+    private lateinit var imageContainer: ViewGroup
 
     var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
     var title: String = ""
@@ -46,6 +47,7 @@ class SheetHorizontalItemView: TemplateView {
 
         sheetItemTitle = findViewInTemplateById(R.id.sheet_item_title)!!
         mainContainer = findViewInTemplateById(R.id.main_container)!!
+        imageContainer = findViewInTemplateById(R.id.sheet_item_view_container)!!
         updateTitleView()
         updateCustomView()
         updateTextAppearance()
@@ -64,7 +66,7 @@ class SheetHorizontalItemView: TemplateView {
 
     private fun updateCustomView() {
         if (customView != null)
-            mainContainer.addView(customView, 0)
+            imageContainer.addView(customView)
     }
 
     fun update(title:String, customView:View) {

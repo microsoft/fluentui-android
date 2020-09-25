@@ -127,6 +127,8 @@
     <dimen name="fluentui_persistent_bottomsheet_header_marginBottom">6dp</dimen>
     <dimen name="fluentui_persistent_bottomsheet_vertical_list_delta_offset">10dp</dimen>
     <dimen name="fluentui_bottomsheet_horizontalItem_min_width">64dp</dimen>
+    <dimen name="fluentui_persistentbottomsheet_elevation">24dp</dimen>
+    <dimen name="fluentui_persistentbottomsheet_corner_radius">16dp</dimen>
 
     <!--Persona-->
     <dimen name="fluentui_persona_horizontal_spacing">@dimen/fluentui_list_item_spacing</dimen>

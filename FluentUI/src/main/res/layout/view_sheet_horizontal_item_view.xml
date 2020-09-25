@@ -14,6 +14,11 @@
     android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_item_padding_horizontal"
     android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_item_paddingTop">
 
+    <LinearLayout
+        android:id="@+id/sheet_item_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 
     <TextView
         android:id="@+id/sheet_item_title"

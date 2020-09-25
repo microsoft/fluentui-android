@@ -17,8 +17,10 @@
         android:layout_height="wrap_content"
         android:background="?attr/fluentuiDrawerBackgroundColor"
         android:clipToPadding="true"
+        android:elevation="@dimen/fluentui_persistentbottomsheet_elevation"
         android:orientation="vertical"
         app:behaviorType="BOTTOM"
+        app:cornerRadius="@dimen/fluentui_persistentbottomsheet_corner_radius"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <ImageView
