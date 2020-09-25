@@ -27,6 +27,7 @@ import kotlinx.android.synthetic.main.activity_demo_list.*
  */
 class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var searchbar: Searchbar
+    var dualScreenMode = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Launch Screen: Setting the theme here removes the launch screen, which was added to this activity
@@ -34,6 +35,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setTheme(R.style.AppTheme)
 
         super.onCreate(savedInstanceState)
+        dualScreenMode = DuoSupportUtils.isDualScreenMode(this)
 
         setContentView(R.layout.activity_demo_list)
 
@@ -53,17 +55,13 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         app_bar.accessoryView = searchbar
     }
 
-    fun getDemos() : ArrayList<Demo> {
-        return if(DuoSupportUtils.isDualScreenMode(this)) DUO_DEMOS else DEMOS
-    }
-
     override fun onQueryTextSubmit(query: String): Boolean {
         return false
     }
 
     override fun onQueryTextChange(query: String): Boolean {
         val userInput = query.toLowerCase()
-        val demoList:ArrayList<Demo> = if(DuoSupportUtils.isDualScreenMode(this)) DUO_DEMOS else DEMOS
+        val demoList: ArrayList<Demo> = if(dualScreenMode) DUO_DEMOS else DEMOS
         val filteredDemoList = demoList.filter { it.title.toLowerCase().contains(userInput) }
 
         searchbar.showSearchProgress = true
@@ -76,7 +74,11 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     private inner class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
-        var demos: ArrayList<Demo> = getDemos()
+        var demos = if(dualScreenMode) DUO_DEMOS else DEMOS
+            set(value) {
+                field = value
+                notifyDataSetChanged()
+            }
         private val onClickListener = View.OnClickListener { view ->
             val demo = view.tag as Demo
             val intent = Intent(view.context, demo.demoClass.java)
