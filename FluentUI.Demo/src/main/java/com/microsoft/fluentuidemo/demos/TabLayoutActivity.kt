@@ -8,7 +8,6 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.tablayout.TabLayout
@@ -21,21 +20,17 @@ class TabLayoutActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_tab_layout
 
-    private lateinit var viewPager: ViewPager
     private var adapter: TabPagerAdapter? = null
-    private lateinit var demoTabLayout: TabLayout
     private lateinit var tabLayout: android.support.design.widget.TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        demoTabLayout = findViewById(R.id.demo_tab_layout)
-        tabLayout = demoTabLayout.tabLayout ?: return
-        viewPager = findViewById(R.id.view_pager)
+        tabLayout = demo_tab_layout.tabLayout ?: return
         adapter = TabPagerAdapter()
         adapter?.setData(createPageList())
         adapter?.setTitle(createPageTitleList())
-        viewPager.adapter = adapter
+        view_pager.adapter = adapter
 
         show_tab_standard_two_segment.setOnClickListener(this::clickListener)
         show_tab_standard_three_segment.setOnClickListener(this::clickListener)
@@ -69,10 +64,10 @@ class TabLayoutActivity : DemoActivity() {
                 tabType = PILLS
             }
             R.id.show_tab_standard_with_pager -> {
-                tabLayout.setupWithViewPager(viewPager)
+                tabLayout.setupWithViewPager(view_pager)
             }
         }
-        demoTabLayout.tabType = tabType
+        demo_tab_layout.tabType = tabType
     }
 
     private fun setTabs(numTabs: Int) {
