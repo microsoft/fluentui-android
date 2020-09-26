@@ -6,6 +6,7 @@
 
 <resources>
     <dimen name="default_layout_margin">@dimen/fluentui_content_inset</dimen>
+    <dimen name="default_wide_menu_margin">300dp</dimen>
     <dimen name="default_view_margin">8dp</dimen>
     <dimen name="cell_horizontal_spacing">8dp</dimen>
     <dimen name="cell_vertical_spacing">2dp</dimen>

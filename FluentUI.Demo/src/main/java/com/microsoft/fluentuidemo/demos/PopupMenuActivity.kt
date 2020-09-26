@@ -35,8 +35,7 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         no_check.setOnClickListener(this)
-        if(DuoSupportUtils.isDualScreenMode(this))
-            no_check2.setOnClickListener(this)
+        no_check2.setOnClickListener(this)
         single_check.setOnClickListener(this)
         all_check.setOnClickListener(this)
 
@@ -54,20 +53,11 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
     }
 
     override fun onClick(anchorView: View) {
-        if(DuoSupportUtils.isDualScreenMode(this)) {
-            when (anchorView) {
-                no_check -> showPopupNoCheck(anchorView)
-                no_check2 -> showPopupNoCheck(anchorView)
-                single_check -> showPopupSingleCheck(anchorView)
-                all_check -> showPopupAllCheck(anchorView)
-            }
-        }
-        else{
-            when(anchorView) {
-                no_check -> showPopupNoCheck(anchorView)
-                single_check -> showPopupSingleCheck(anchorView)
-                all_check -> showPopupAllCheck(anchorView)
-            }
+        when (anchorView) {
+            no_check -> showPopupNoCheck(anchorView)
+            no_check2 -> showPopupNoCheck(anchorView)
+            single_check -> showPopupSingleCheck(anchorView)
+            all_check -> showPopupAllCheck(anchorView)
         }
     }
 
