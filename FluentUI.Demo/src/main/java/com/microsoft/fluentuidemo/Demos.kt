@@ -57,17 +57,12 @@ val DEMOS = arrayListOf(
 
 val DUO_DEMOS = arrayListOf(
         Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
-        Demo(AVATAR_VIEW, AvatarViewActivity::class),
-        Demo(BASIC_INPUTS, BasicInputsActivity::class),
         Demo(BOTTOM_SHEET, BottomSheetActivity::class),
         Demo(DRAWER, DrawerActivity::class),
-        Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
         Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
         Demo(POPUP_MENU, PopupMenuActivity::class),
-        Demo(PROGRESS, ProgressActivity::class),
         Demo(SNACKBAR, SnackbarActivity::class),
-        Demo(TOOLTIP, TooltipActivity::class),
-        Demo(TYPOGRAPHY, TypographyActivity::class)
+        Demo(TOOLTIP, TooltipActivity::class)
 )
 
 data class Demo(val title: String, val demoClass: KClass<out DemoActivity>) {
