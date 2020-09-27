@@ -363,6 +363,14 @@
     <string name="cell_example_title">Title: Cell</string>
     <string name="cell_example_description">Description: Tap to change orientation</string>
 
+    <!--TabLayout-->
+    <string name="tab_standard_two_segment">Standard Tab 2-Segment</string>
+    <string name="tab_standard_three_segment">Standard Tab 3-Segment</string>
+    <string name="tab_standard_four_segment">Standard Tab 4-Segment</string>
+    <string name="tab_standard_with_pager">Standard Tab with Pager</string>
+    <string name="tab_switch">Switch Tab</string>
+    <string name="tab_pills">Pills Tab </string>
+
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>
     <string name="tooltip_center_button">Tap for Dismiss Inside Tooltip</string>

@@ -90,10 +90,10 @@
     <style name="Widget.FluentUI.Dialog.TabLayout" parent="Widget.Design.TabLayout">
         <item name="tabGravity">center</item>
         <item name="tabMode">scrollable</item>
-        <item name="tabTextAppearance">@style/TextAppearance.FluentUI.Tab.Light</item>
+        <item name="tabTextAppearance">@style/TextAppearance.FluentUI.Dialog.Tab.Light</item>
         <item name="tabMinWidth">90dp</item>
-        <item name="tabSelectedTextColor">?attr/fluentuiTabSelectedTextColor</item>
-        <item name="tabIndicatorColor">?attr/fluentuiTabIndicatorColor</item>
+        <item name="tabSelectedTextColor">?attr/fluentuiDialogTabSelectedTextColor</item>
+        <item name="tabIndicatorColor">?attr/fluentuiDialogTabIndicatorColor</item>
         <item name="android:background">?attr/fluentuiDialogTabLayoutBackgroundColor</item>
         <item name="tabRippleColor">?fluentuiBackgroundPressedColor</item>
     </style>
