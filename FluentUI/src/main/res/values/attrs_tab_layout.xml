@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="TabLayout">
+        <attr name="tabType" format="enum">
+            <enum name="Standard" value="0" />
+            <enum name="Switch" value="1" />
+            <enum name="Pills" value="2" />
+        </attr>
+        <attr name="containerBackgroundColor" format="color" />
+        <attr name="tabsBackgroundColor" format="color" />
+        <attr name="tabSelectedBackgroundColor" format="color" />
+        <attr name="tabUnselectedBackgroundColor" format="color" />
+        <attr name="tabSelectedTextColor" format="color" />
+        <attr name="tabUnselectedTextColor" format="color" />
+    </declare-styleable>
+</resources>
