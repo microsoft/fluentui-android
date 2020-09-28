@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_layout_margin">@dimen/fluentui_content_inset</dimen>
+    <!--Shared-->
+    <dimen name="demo_headline_divider_height">@dimen/fluentui_divider_height</dimen>
+    <dimen name="demo_headline_padding_bottom">4dp</dimen>
+
+    <!--Persistent BottomSheet-->
+    <dimen name="fluentui_persistent_bottom_sheet_peek_height">110dp</dimen>
+    <dimen name="fluentui_persistent_horizontal_item_right_margin">35dp</dimen>
+</resources>

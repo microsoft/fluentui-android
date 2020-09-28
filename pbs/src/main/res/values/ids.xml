@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--BottomSheet-->
+    <item name="bottom_sheet_item_flag" type="id" />
+    <item name="bottom_sheet_item_reply" type="id" />
+    <item name="bottom_sheet_item_forward" type="id" />
+    <item name="bottom_sheet_item_delete" type="id" />
+    <item name="bottom_sheet_item_camera" type="id" />
+    <item name="bottom_sheet_item_gallery" type="id" />
+    <item name="bottom_sheet_item_videos" type="id" />
+    <item name="bottom_sheet_item_manage" type="id" />
+    <item name="bottom_sheet_item_clock" type="id" />
+    <item name="bottom_sheet_item_alarm" type="id" />
+    <item name="bottom_sheet_item_time_zone" type="id" />
+    <item name="bottom_sheet_item_double_line_header_delete" type="id" />
+    <item name="bottom_sheet_item_double_line_header_share" type="id" />
+    <item name="bottom_sheet_item_double_line_header_move" type="id" />
+    <item name="bottom_sheet_item_double_line_header_info" type="id" />
+    <!--Persistent BottomSheet-->
+    <item name="persistent_sheet_item_create_new_folder" type="id"/>
+    <item name="persistent_sheet_item_edit" type="id"/>
+    <item name="persistent_sheet_item_save" type="id"/>
+    <item name="persistent_sheet_item_zoom_in" type="id"/>
+    <item name="persistent_sheet_item_zoom_out" type="id"/>
+    <item name="persistent_sheet_item_add_view" type="id"/>
+    <item name="persistent_sheet_item_change_height_button" type="id"/>
+</resources>

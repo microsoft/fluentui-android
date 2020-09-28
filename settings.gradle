@@ -1,1 +1,3 @@
 include ':FluentUI.Demo', ':FluentUI.Core'
+include ':fluentui_persistentbottomsheet'
+include ':pbs'

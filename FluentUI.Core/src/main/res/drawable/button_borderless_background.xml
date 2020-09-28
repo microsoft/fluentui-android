@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="?attr/fluentuiButtonBorderlessBackgroundDisabledColor"/>
+            <corners android:radius="@dimen/fluentui_button_corner_radius" />
+        </shape>
+    </item>
+    <item>
+        <ripple android:color="?attr/fluentuiButtonBorderlessBackgroundPressedColor">
+            <item android:id="@android:id/mask" android:drawable="@android:color/white" />
+            <item>
+                <shape>
+                    <solid android:color="?attr/fluentuiButtonBorderlessBackgroundDefaultColor"/>
+                    <corners android:radius="@dimen/fluentui_button_corner_radius" />
+                </shape>
+            </item>
+        </ripple>
+    </item>
+</selector>

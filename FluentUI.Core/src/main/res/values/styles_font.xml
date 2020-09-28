@@ -10,9 +10,39 @@
 
     <style name="TextAppearance.FluentUI" parent="TextAppearance.AppCompat" />
 
+    <style name="TextAppearance.FluentUI.Headline">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">"sans-serif-light"</item>
+    </style>
+
     <style name="TextAppearance.FluentUI.Title1">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Title2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Heading">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.SubHeading1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.SubHeading2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
     </style>
 
     <style name="TextAppearance.FluentUI.Body2">
@@ -27,30 +57,17 @@
 
     <!-- *** FluentUI Semantic Styles *** -->
 
-    <!--BottomNavigation-->
-
-    <!--Button-->
+      <!--Button-->
     <style name="TextAppearance.FluentUI.Button" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">@color/button_text</item>
         <item name="android:textAllCaps">true</item>
     </style>
-
-    <!--Calendar-->
-    <!--calendar_week_day_text_selector sets the colors for these-->
-
-    <!--ListItem-->
-
-    <!--ListSubHeader-->
-
-    <!--NumberPicker-->
-
-    <!--PeoplePicker-->
-
-    <!--PopupMenu-->
-
-    <!--Snackbar-->
-
-    <!--TabLayout-->
+    <style name="TextAppearance.FluentUI.Button.Borderless">
+        <item name="android:textColor">@color/button_text_borderless</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Outlined">
+        <item name="android:textColor">@color/button_text_outlined</item>
+    </style>
 
     <!--Toolbar-->
     <style name="TextAppearance.FluentUI.ToolbarTitle" parent="TextAppearance.FluentUI.Title1">
@@ -59,7 +76,5 @@
     <style name="TextAppearance.FluentUI.ToolbarSubtitle" parent="TextAppearance.FluentUI.Caption">
         <item name="android:textColor">?attr/fluentuiToolbarSubtitleTextColor</item>
     </style>
-
-    <!--Tooltip-->
 
 </resources>

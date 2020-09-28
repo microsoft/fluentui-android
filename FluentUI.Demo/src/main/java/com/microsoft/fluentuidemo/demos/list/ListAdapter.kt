@@ -8,13 +8,13 @@ package com.microsoft.fluentuidemo.demos.list
 import android.content.Context
 import android.support.v7.widget.AppCompatButton
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
-import com.microsoft.fluentui.listitem.ListItemView
-import com.microsoft.fluentui.listitem.ListSubHeaderView
-import com.microsoft.fluentui.snackbar.Snackbar
+import com.microsoft.fluentui.persistentbottomsheet.listitem.ListItemView
+import com.microsoft.fluentui.persistentbottomsheet.listitem.ListSubHeaderView
 import com.microsoft.fluentuidemo.R
 import java.util.*
 
@@ -92,7 +92,8 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
         constructor(view: ListItemView) : super(view) {
             listItemView = view
             listItemView.setOnClickListener {
-                Snackbar.make(listItemView, context.resources.getString(R.string.list_item_click), Snackbar.LENGTH_SHORT).show()
+                //Snackbar.make(listItemView, context.resources.getString(R.string.list_item_click), Snackbar.LENGTH_SHORT).show()
+                Log.d("debug",context.resources.getString(R.string.list_item_click))
             }
         }
 

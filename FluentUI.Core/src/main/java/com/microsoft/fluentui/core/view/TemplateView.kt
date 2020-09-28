@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.core.theming.FluentUIContextThemeWrapper
 
+
 /**
  * [TemplateView] is an abstract class designed for building views that have their UI defined in one or more layout files.
  * These layout files are called templates. Once template is loaded it's added to the view as the only child.

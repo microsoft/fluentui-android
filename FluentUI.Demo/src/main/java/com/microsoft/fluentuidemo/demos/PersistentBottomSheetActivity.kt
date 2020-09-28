@@ -8,14 +8,15 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Gravity
 import android.widget.TextView
-import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
-import com.microsoft.fluentui.bottomsheet.BottomSheetItem
+import com.microsoft.fluentui.persistentbottomsheet.bottomsheet.BottomSheetAdapter
+import com.microsoft.fluentui.persistentbottomsheet.bottomsheet.BottomSheetItem
 import com.microsoft.fluentui.persistentbottomsheet.ListItem
 import com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
 import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemAdapter
-import com.microsoft.fluentui.snackbar.Snackbar
+//import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -35,7 +36,6 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         persistentBottomSheetDemo = findViewById(R.id.demo_persistent_sheet)
         persistentBottomSheetDemo.addSheetContent(R.layout.demo_persistent_sheet_content)
 
@@ -194,6 +194,6 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
     }
 
     private fun showSnackbar(message: String) {
-        Snackbar.make(root_view, message).show()
+        Log.e("MG",message);
     }
 }

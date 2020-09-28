@@ -27,6 +27,7 @@
 
     <!--Neutral Colors-->
     <color name="fluentui_black">#000000</color>
+    <color name="fluentui_gray_950">#141414</color>
     <color name="fluentui_gray_900">#212121</color>
     <color name="fluentui_gray_800">#292929</color>
     <color name="fluentui_gray_700">#303030</color>
@@ -34,15 +35,12 @@
     <color name="fluentui_gray_500">#6E6E6E</color>
     <color name="fluentui_gray_400">#919191</color>
     <color name="fluentui_gray_300">#ACACAC</color>
+    <color name="fluentui_gray_200">#C8C8C8</color>
     <color name="fluentui_gray_100">#E1E1E1</color>
     <color name="fluentui_gray_50">#F1F1F1</color>
     <color name="fluentui_gray_25">#F8F8F8</color>
     <color name="fluentui_white">#FFFFFF</color>
 
     <!-- *** Semantic Colors *** -->
-
-    <!--Avatar-->
-
-    <!--ActionBarLayout-->
-
-</resources>
+    <color name="fluentui_transparent">#00000000</color>
+ </resources>

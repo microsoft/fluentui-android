@@ -24,6 +24,21 @@
         <item name="colorAccent">#d83b01</item>
     </style>
 
+    <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent="">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">?attr/fluentuiBackgroundColor</item>
+        <item name="android:background">@null</item>
+        <item name="android:statusBarColor">?attr/fluentuiBackgroundColor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+
+        <!--Toolbar-->
+        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundColor</item>
+        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundColor</item>
+        <item name="fluentuiToolbarIconColor">@color/fluentui_gray_500</item>
+    </style>
+
     <style name="Base.AppTheme.Neutral" parent="ThemeOverlay.FluentUI.NeutralAppBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

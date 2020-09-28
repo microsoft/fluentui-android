@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#212121"
+        android:fillType="nonZero"
+        android:pathData="M9.2773,16.2211C9.57,16.5142 9.5697,16.9891 9.2766,17.2818C8.9835,17.5745 8.5086,17.5742 8.2159,17.2811L3.2193,12.2776C2.9268,11.9847 2.9269,11.5101 3.2196,11.2174L8.2162,6.2197C8.5091,5.9268 8.984,5.9268 9.2769,6.2196C9.5698,6.5125 9.5699,6.9874 9.277,7.2803L5.557,11L13.3988,11C14.9936,11 16.2099,11.242 17.2878,11.7645L17.5342,11.89C18.6427,12.4829 19.5171,13.3573 20.11,14.4658C20.7194,15.6053 21,16.8837 21,18.6012C21,19.0154 20.6642,19.3512 20.25,19.3512C19.8358,19.3512 19.5,19.0154 19.5,18.6012C19.5,17.1174 19.2723,16.0802 18.7872,15.1732C18.3342,14.3261 17.6739,13.6658 16.8268,13.2128C15.9895,12.765 15.0414,12.5365 13.7334,12.5041L13.3988,12.5L5.562,12.5L9.2773,16.2211Z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector>

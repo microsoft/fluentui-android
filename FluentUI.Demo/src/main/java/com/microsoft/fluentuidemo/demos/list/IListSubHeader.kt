@@ -6,7 +6,7 @@
 package com.microsoft.fluentuidemo.demos.list
 
 import android.view.View
-import com.microsoft.fluentui.listitem.ListSubHeaderView
+import com.microsoft.fluentui.persistentbottomsheet.listitem.ListSubHeaderView
 
 /**
  * This defines data associated with [ListSubHeaderView]s.

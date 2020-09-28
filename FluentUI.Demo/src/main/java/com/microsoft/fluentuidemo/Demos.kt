@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentuidemo
 
+import com.microsoft.fluentui.actionbar.ActionBarLayout
 import com.microsoft.fluentuidemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass

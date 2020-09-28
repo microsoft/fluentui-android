@@ -5,64 +5,22 @@
   -->
 
 <resources>
-    <!--ActionBarLayout-->
-
-    <!--AppBarLayout-->
-
-    <!--Avatar-->
-
-    <!--BottomSheet-->
-
-    <!--BottomNavigation-->
-
-    <!--Button-->
+     <!--Button-->
     <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>
     <dimen name="fluentui_button_base_padding_vertical">8.5dp</dimen>
     <dimen name="fluentui_button_min_height">36dp</dimen>
     <dimen name="fluentui_button_padding_horizontal">@dimen/fluentui_content_inset</dimen>
     <dimen name="fluentui_button_corner_radius">@dimen/fluentui_corner_radius_2</dimen>
-
-    <!--CalendarView-->
-
-    <!--DatePickerFragment-->
-
-    <!--DateTimePicker-->
-
-    <!--Dialog-->
-
-    <!--Drawer-->
-
-    <!--ListItem-->
-    <!--Custom view sizes-->
-    <!--List item margins and spacing-->
-
-    <!--ListSubHeader-->
-
-    <!--PeoplePicker-->
-    <!--30dp is an approximation of how much space 3 digits take up for the count span-->
-
-    <!--Persistent BottomSheet-->
-
-    <!--Persona-->
-
-    <!--PersonaChip-->
-
-    <!--PopupMenu-->
-
-    <!--Progress: Circular-->
-
-    <!--Progress: Linear-->
-
-    <!--Searchbar-->
-    <!--This 1dp padding difference helps make room for the cursor and keep the hint aligned between focus states.-->
-
-    <!--Shared-->
+    <dimen name="fluentui_button_large_padding_vertical">16dp</dimen>
+    <dimen name="fluentui_button_large_min_height">48dp</dimen>
+    <dimen name="fluentui_button_outlined_min_height">30dp</dimen>
+    <dimen name="fluentui_button_outlined_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_button_outlined_stroke_width">1dp</dimen>
+     <!--Shared-->
+    <dimen name="fluentui_divider_height">.5dp</dimen>
     <dimen name="fluentui_corner_radius_2">2dp</dimen>
+    <dimen name="fluentui_corner_radius_4">4dp</dimen>
+    <dimen name="fluentui_corner_radius_8">8dp</dimen>
+    <dimen name="fluentui_min_touch_size">48dp</dimen>
     <dimen name="fluentui_content_inset">16dp</dimen>
-
-    <!-- Snackbar -->
-
-    <!--Toolbar-->
-
-    <!--Tooltip-->
 </resources>

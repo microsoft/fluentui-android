@@ -4,4 +4,14 @@
   ~ Licensed under the MIT License.
   -->
 
-<resources></resources>
+<resources>
+    <array name="weekday_initial">
+        <item>@string/monday_initial</item>
+        <item>@string/tuesday_initial</item>
+        <item>@string/wednesday_initial</item>
+        <item>@string/thursday_initial</item>
+        <item>@string/friday_initial</item>
+        <item>@string/saturday_initial</item>
+        <item>@string/sunday_initial</item>
+    </array>
+</resources>

@@ -7,7 +7,7 @@ package com.microsoft.fluentuidemo.demos.list
 
 import android.text.TextUtils
 import android.view.View
-import com.microsoft.fluentui.listitem.ListItemView
+import com.microsoft.fluentui.persistentbottomsheet.listitem.ListItemView
 
 /**
  * This defines data associated with [ListItemView]s.

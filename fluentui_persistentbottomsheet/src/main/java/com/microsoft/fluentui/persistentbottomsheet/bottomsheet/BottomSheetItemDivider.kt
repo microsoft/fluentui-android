@@ -1,0 +1,49 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+package com.microsoft.fluentui.persistentbottomsheet.bottomsheet
+
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Rect
+import android.support.v7.widget.RecyclerView
+import android.view.View
+import com.microsoft.fluentui.persistentbottomsheet.R
+import com.microsoft.fluentui.persistentbottomsheet.listitem.ListItemView
+import com.microsoft.fluentui.core.util.ThemeUtil
+import com.microsoft.fluentui.persistentbottomsheet.view.BaseDividerItemDecoration
+
+internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecoration(context, HORIZONTAL) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+        val useDivider = view.getTag(R.id.fluentui_bottom_sheet_item_divider) as? Boolean ?: false
+        if (useDivider)
+            outRect.set(0, dividerHeight.toInt() + subHeaderDividerPadding.toInt() * 2, 0, 0)
+        else
+            outRect.setEmpty()
+    }
+
+    override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+        for (index in 0 until parent.childCount) {
+            val itemView = parent.getChildAt(index)
+            if (itemView is ListItemView) {
+                val useDivider = itemView.getTag(R.id.fluentui_bottom_sheet_item_divider) as Boolean
+                if (useDivider) {
+                    val left =  itemView.left.toFloat()
+                    val right = itemView.right.toFloat()
+                    drawTopSpacer(canvas, itemView, left, right)
+                    drawDivider(
+                        canvas,
+                        itemView,
+                        left,
+                        right,
+                        true,
+                        ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiBottomSheetDividerColor)
+                    )
+                    drawBottomSpacer(canvas, itemView, left, right)
+                }
+            }
+        }
+    }
+}
