@@ -45,7 +45,6 @@ val DEMOS = arrayListOf(
     Demo(DRAWER, DrawerActivity::class),
     Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
     Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
-    Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
     Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
     Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
     Demo(PERSONA_VIEW, PersonaViewActivity::class),

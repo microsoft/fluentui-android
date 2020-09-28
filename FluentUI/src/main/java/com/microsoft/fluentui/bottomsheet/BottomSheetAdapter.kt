@@ -17,7 +17,7 @@ import com.microsoft.fluentui.bottomsheet.BottomSheetItem.Companion.NO_ID
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.createImageView
 
-class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
+internal class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     var onBottomSheetItemClickListener: BottomSheetItem.OnClickListener? = null
 
     private val context: Context
