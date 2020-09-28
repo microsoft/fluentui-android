@@ -47,6 +47,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.TabLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TypographyActivity" />
