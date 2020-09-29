@@ -109,10 +109,10 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 }
 
-class SheetItem(val id: Int = NO_ID, @DrawableRes val drawable: Int, val title: String = "", val bitmap: Bitmap? = null) {
+class SheetItem(val id: Int, @DrawableRes val drawable: Int, val title: String = "", val bitmap: Bitmap? = null) {
 
     // just a  convinient constructor
-    constructor(id: Int = -1, bitmap: Bitmap, title: String = "") : this(id, NO_ID, title, bitmap)
+    constructor(id: Int, bitmap: Bitmap, title: String = "") : this(id, NO_ID, title, bitmap)
 
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)
