@@ -79,6 +79,7 @@
     <string name="bottom_sheet_item_forward_toast">Forward item clicked</string>
     <string name="bottom_sheet_item_delete_title">Delete</string>
     <string name="bottom_sheet_item_delete_toast">Delete item clicked</string>
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
     <string name="bottom_sheet_item_camera_title">Camera</string>
     <string name="bottom_sheet_item_camera_subtitle">Take a photo</string>

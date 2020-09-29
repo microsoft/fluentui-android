@@ -5,6 +5,8 @@
 
 package com.microsoft.fluentuidemo.demos
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
@@ -30,11 +32,11 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
-    lateinit var persistentBottomSheetDemo: PersistentBottomSheet
+    private lateinit var persistentBottomSheetDemo: PersistentBottomSheet
     private lateinit var defaultPersistentBottomSheet :PersistentBottomSheet
     private lateinit var currentSheet :PersistentBottomSheet
     private var isBack:Boolean = false
-    lateinit var view:TextView
+    private lateinit var view:TextView
     private lateinit var mHorizontalSheet:List<SheetItem>
     private lateinit var mHorizontalSheet2:List<SheetItem>
 
@@ -51,6 +53,13 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
         mHorizontalSheet = arrayListOf(
                 SheetItem(
+                        R.id.bottom_sheet_item_flag,
+                        R.drawable.ic_fluent_flag_24_regular,
+                        getString(R.string.bottom_sheet_item_flag_title)),
+                SheetItem(R.id.bottom_sheet_item_alarm,
+                        dummyBitmap(),
+                        getString(R.string.bottom_sheet_item_custom_image)),
+                SheetItem(
                         R.id.persistent_sheet_item_add_view,
                         R.drawable.ic_add_circle_28_fill,
                         getString(R.string.persistent_sheet_item_add_remove_view)),
@@ -58,10 +67,6 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                         R.id.persistent_sheet_item_change_height_button,
                         R.drawable.ic_vertical_align_center_28_fill,
                         getString(R.string.persistent_sheet_item_change_collapsed_height)),
-                SheetItem(
-                        R.id.bottom_sheet_item_flag,
-                        R.drawable.ic_fluent_flag_24_regular,
-                        getString(R.string.bottom_sheet_item_flag_title)),
                 SheetItem(
                         R.id.bottom_sheet_item_reply,
                         R.drawable.ic_fluent_reply_24_regular,
@@ -268,5 +273,12 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
     private fun showSnackbar(message: String) {
         Snackbar.make(root_view, message).show()
+    }
+
+    private fun dummyBitmap(): Bitmap {
+        val option = BitmapFactory.Options()
+        option.outHeight = resources.getDimensionPixelSize(R.dimen.image_size)
+        option.outWidth = resources.getDimensionPixelSize(R.dimen.image_size)
+        return Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.avatar_allan_munger), option.outWidth, option.outHeight, false)
     }
 }

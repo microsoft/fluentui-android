@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem.*
 import com.microsoft.fluentui.bottomsheet.BottomSheetItemDivider
@@ -29,17 +30,16 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
             headerText.text = itemTypeList.header
         }
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val verticalItemAdapter = PersistentBottomSheetAdapter(context, getVerticalItemList(verticalItemList, itemLayoutParam), 0)
+        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList, itemLayoutParam), 0)
 
         contentParam.listener?.apply {
             val listener = this
             verticalItemAdapter.onBottomSheetItemClickListener = object : OnClickListener {
                 override fun onBottomSheetItemClick(item: BottomSheetItem) {
-                    listener.onSheetItemClick(SheetItem(item.id, item.imageId, item.title, item.customImage))
+                    listener.onSheetItemClick(SheetItem(item.id, item.imageId, item.title, item.customBitmap))
                 }
             }
         }
-
 
         recyclerView.adapter = verticalItemAdapter
         recyclerView.addItemDecoration(BottomSheetItemDivider(context))
@@ -51,8 +51,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         return itemTypeList.verticalItemSheet.filter {
             it.id != 0
         }.map {
-            BottomSheetItem(it.id, it.drawable, it.title, customImage = it.customImage, imageTintType = ImageTintType.NONE,
-                    titleStyleId = itemLayoutParam.verticalItemTextAppearance, subtitleStyleId = itemLayoutParam.verticalSubTextAppearance)
+            BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTintType = ImageTintType.NONE)
         }
     }
 

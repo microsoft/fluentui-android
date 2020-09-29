@@ -39,12 +39,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     }
 
 
-    lateinit var persistentSheetBehavior: BottomSheetBehavior<View>
+    private lateinit var persistentSheetBehavior: BottomSheetBehavior<View>
     private lateinit var persistentSheet: ViewGroup
     private lateinit var persistentSheetContainer: LinearLayout
     private var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
     private var contentViewProvider: PersistentBottomSheetContentViewProvider? = null
-    private val mItemLayoutParam: BottomSheetParam.ItemLayoutParam
+    private val itemLayoutParam: BottomSheetParam.ItemLayoutParam
     private var sheetItemClickListener: SheetItem.OnClickListener? = null
 
     private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
@@ -65,7 +65,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         val headerTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_headerTextAppearance,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHeading)
 
-        mItemLayoutParam = BottomSheetParam.ItemLayoutParam(defaultPeekHeight, itemsInRow,
+        itemLayoutParam = BottomSheetParam.ItemLayoutParam(defaultPeekHeight, itemsInRow,
                 horizontalItemTextStyle, verticalItemTextStyle, verticalSubTextStyle, headerTextStyle)
         attributes.recycle()
     }
@@ -73,7 +73,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private val persistentSheetCallback = object : BottomSheetBehavior.BottomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                persistentSheetBehavior.peekHeight = mItemLayoutParam.defaultPeekHeight
+                persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
             }
             if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                 scroll_container.smoothScrollTo(0, 0)
@@ -94,7 +94,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheetContainer = findViewInTemplateById(R.id.persistent_sheet_container)!!
         persistentSheetBehavior = BottomSheetBehavior.from(persistentSheet)
         persistentSheetBehavior.setBottomSheetCallback(persistentSheetCallback)
-        persistentSheetBehavior.peekHeight = mItemLayoutParam.defaultPeekHeight
+        persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
 
         if (!isDrawerHandleVisible)
             sheet_drawer_handle.visibility = View.GONE
@@ -112,7 +112,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private fun updateSheetContent() {
         persistentSheetContainer.removeAllViews()
         contentViewProvider?.apply {
-            val contentView = this.getSheetContentView(persistentSheetContainer, mItemLayoutParam)
+            val contentView = this.getSheetContentView(persistentSheetContainer, itemLayoutParam)
             onDrawerContentCreatedListener?.onDrawerContentCreated(contentView)
         }
     }
@@ -194,7 +194,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     }
 
     fun showPersistentSheet() {
-        changePeekHeight(-persistentSheetBehavior.peekHeight + mItemLayoutParam.defaultPeekHeight)
+        changePeekHeight(-persistentSheetBehavior.peekHeight + itemLayoutParam.defaultPeekHeight)
     }
 
     fun expand() {

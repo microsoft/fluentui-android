@@ -20,11 +20,12 @@ class SheetHorizontalItemView: TemplateView {
     private lateinit var mainContainer:ViewGroup
     private lateinit var imageContainer: ViewGroup
 
-    var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
-    var title: String = ""
-    var customView: View? = null
-    var mSheetItem: SheetItem? = null
-    var textAppearanceResId: Int = R.style.TextAppearance_FluentUI_ListItemSubtitle
+    private var title: String = ""
+    private var customView: View? = null
+    private var mSheetItem: SheetItem? = null
+    private var textAppearanceResId: Int = R.style.TextAppearance_FluentUI_ListItemSubtitle
+
+    var onSheetItemClickListener: SheetItem.OnClickListener? = null
 
     override val templateId: Int
         get() = R.layout.view_sheet_horizontal_item_view
@@ -35,8 +36,8 @@ class SheetHorizontalItemView: TemplateView {
     constructor(context: Context, sheetItem: SheetItem, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         this.mSheetItem = sheetItem
         this.title = sheetItem.title
-        if (sheetItem.customImage != null) {
-            this.customView = sheetItem.customImage
+        if (sheetItem.bitmap != null) {
+            this.customView = context.createImageView(sheetItem.bitmap)
         } else {
             this.customView = context.createImageView(sheetItem.drawable)
         }
@@ -54,7 +55,7 @@ class SheetHorizontalItemView: TemplateView {
 
         if(mSheetItem != null)
             mainContainer.setOnClickListener {
-                mOnSheetItemClickListener?.onSheetItemClick(mSheetItem!!)
+                onSheetItemClickListener?.onSheetItemClick(mSheetItem!!)
             }
         mainContainer.setBackgroundResource(R.drawable.bottom_sheet_item_ripple_background)
     }

@@ -6,10 +6,11 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.support.annotation.DrawableRes
 import android.util.AttributeSet
+import android.view.View.NO_ID
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
@@ -22,7 +23,7 @@ import kotlin.math.ceil
 */
 open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
     : TemplateView(context, attrs, defStyleAttr), SheetItem.OnClickListener {
-    private lateinit var mItemSheet:List<SheetItem>
+    private lateinit var itemSheet:List<SheetItem>
     private lateinit var itemListContainer:ViewGroup
     private var itemLayoutParam: BottomSheetParam.HorizontalItemLayoutParam
 
@@ -39,8 +40,8 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
         get() = R.layout.view_sheet_horizontal_item_list
 
     fun createHorizontalItemLayout(sheet: List<SheetItem>, itemLayoutParam: BottomSheetParam.HorizontalItemLayoutParam? = null) {
-        this.mItemSheet = sheet
-        val size = mItemSheet.size
+        this.itemSheet = sheet
+        val size = itemSheet.size
 
         if (itemLayoutParam != null) {
             this.itemLayoutParam = itemLayoutParam
@@ -74,10 +75,10 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 
     private fun getColumnItem(index: Int): SheetHorizontalItemView {
-        val itemView = SheetHorizontalItemView(context, mItemSheet[index])
+        val itemView = SheetHorizontalItemView(context, itemSheet[index])
         itemView.updateTextAppearanceResId(itemLayoutParam.horizontalTextAppearance)
         itemView.layoutParams = LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f)
-        itemView.mOnSheetItemClickListener = this
+        itemView.onSheetItemClickListener = this
         return itemView
     }
 
@@ -108,7 +109,11 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 }
 
-class SheetItem(val id: Int = -1, @DrawableRes val drawable: Int, val title: String, val customImage: ImageView? = null) {
+class SheetItem(val id: Int = NO_ID, @DrawableRes val drawable: Int, val title: String = "", val bitmap: Bitmap? = null) {
+
+    // just a  convinient constructor
+    constructor(id: Int = -1, bitmap: Bitmap, title: String = "") : this(id, NO_ID, title, bitmap)
+
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)
     }

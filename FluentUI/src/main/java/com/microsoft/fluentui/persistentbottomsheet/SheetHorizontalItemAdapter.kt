@@ -45,7 +45,11 @@ class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<
         private val listItemView: SheetHorizontalItemView = itemView
 
         fun setBottomSheetItem(item: SheetItem) {
-            listItemView.update(item.title, context.createImageView(item.drawable))
+            if (item.bitmap != null) {
+                listItemView.update(item.title, context.createImageView(item.bitmap))
+            } else {
+                listItemView.update(item.title, context.createImageView(item.drawable))
+            }
             listItemView.setOnClickListener {
                 mOnSheetItemClickListener?.onSheetItemClick(item)
             }
