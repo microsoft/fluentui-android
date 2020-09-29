@@ -145,16 +145,11 @@
         <item name="android:textColor">?attr/fluentuiSnackbarTextColor</item>
     </style>
 
-    <!--Dialog TabLayout-->
-    <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>
+    <!--TabLayout-->
+    <style name="TextAppearance.FluentUI.Tab.Light" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">?attr/fluentuiTabTextColor</item>
         <item name="textAllCaps">true</item>
         <item name="android:textAllCaps">true</item>
-    </style>
-
-    <!--TabLayout-->
-    <style name="TextAppearance.FluentUI.Tab" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">@color/tab_layout_item</item>
     </style>
 
     <!--Toolbar-->

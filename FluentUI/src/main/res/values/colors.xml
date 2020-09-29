@@ -20,7 +20,6 @@
     <!--Communication Colors-->
     <color name="fluentui_communication_shade_30">#004578</color>
     <color name="fluentui_communication_shade_20">#005A9E</color>
-    <color name="fluentui_communication_shade_10">#106EBE</color>
     <color name="fluentui_communication_blue">#0078D4</color>
     <color name="fluentui_communication_tint_20">#C7E0F4</color>
     <color name="fluentui_communication_tint_30">#DEECF9</color>
@@ -65,6 +64,8 @@
         <item>#567C73</item>
         <item>#69797E</item>
     </array>
+
+    <color name="fluentui_transparent">#00000000</color>
 
     <!--ActionBarLayout-->
     <color name="fluentui_action_bar_indicator_background">@color/fluentui_communication_tint_20</color>

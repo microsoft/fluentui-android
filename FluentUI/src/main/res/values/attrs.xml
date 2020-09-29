@@ -177,19 +177,10 @@
     <attr name="fluentuiSnackbarActionTextColor" format="reference|color"/>
     <attr name="fluentuiSnackbarActionTextAnnouncementColor" format="reference|color"/>
 
-    <!--Dialog TabLayout-->
-    <attr name="fluentuiDialogTabTextColor" format="reference|color"/>
-    <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
-    <attr name="fluentuiDialogTabIndicatorColor" format="reference|color"/>
-
     <!--TabLayout-->
-    <attr name="fluentuiTabLayoutContainerBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiTabLayoutBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabTextColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
-    <attr name="fluentuiTabUnselectedTextColor" format="reference|color"/>
-    <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiTabTextAppearance" format="reference" />
+    <attr name="fluentuiTabIndicatorColor" format="reference|color"/>
 
     <!--Toolbar-->
     <attr name="fluentuiToolbarBackgroundColor" format="reference|color"/>
@@ -200,6 +191,7 @@
     <!--Tooltip-->
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
+
 
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">

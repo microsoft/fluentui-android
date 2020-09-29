@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".demos.PersistentBottomSheetActivity">
+
+    <LinearLayout
+        android:id="@+id/demo_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/default_layout_margin"
+        android:background="@color/fluentui_communication_tint_20"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/show_persistent_bottom_sheet_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/expand_bottom_sheet_button" />
+
+        <Button
+            android:id="@+id/collapse_persistent_bottom_sheet_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/collapse_persistent_sheet_button" />
+    </LinearLayout>
+
+    <com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/demo_persistent_sheet"
+        android:layout_alignParentBottom="true"
+        app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
+        app:isDrawerHandleVisible="true"/>
+
+</RelativeLayout>

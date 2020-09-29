@@ -32,6 +32,10 @@
     <dimen name="fluentui_launch_logo_bottom_spacing">53dp</dimen>
     <dimen name="fluentui_launch_microsoft_logo_bottom_spacing">32dp</dimen>
 
+    <!--Persistent BottomSheet-->
+    <dimen name="fluentui_persistent_bottom_sheet_peek_height">110dp</dimen>
+    <dimen name="fluentui_persistent_horizontal_item_right_margin">35dp</dimen>
+
     <!--Progress-->
     <dimen name="circular_progress_text_area_min_height">48dp</dimen>
     <dimen name="circular_progress_text_area_spacing">36dp</dimen>
@@ -49,9 +53,6 @@
     <!--Shared-->
     <dimen name="demo_headline_divider_height">@dimen/fluentui_divider_height</dimen>
     <dimen name="demo_headline_padding_bottom">4dp</dimen>
-
-    <!--TabLayout-->
-    <dimen name="tab_layout_pager_height">250dp</dimen>
 
     <!--Tooltip-->
     <dimen name="tooltip_example_offset_x">10dp</dimen>
