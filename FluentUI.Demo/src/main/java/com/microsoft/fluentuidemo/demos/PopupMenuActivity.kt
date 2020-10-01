@@ -10,7 +10,6 @@ import android.view.View
 import com.microsoft.fluentui.popupmenu.PopupMenu
 import com.microsoft.fluentui.popupmenu.PopupMenuItem
 import com.microsoft.fluentui.snackbar.Snackbar
-import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
