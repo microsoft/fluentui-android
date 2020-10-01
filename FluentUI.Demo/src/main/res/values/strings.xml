@@ -306,7 +306,7 @@
     <string name="popup_menu_item_notify_inactive">Notify when inactive on desktop</string>
     <string name="popup_menu_item_clicked">You clicked on the item:</string>
     <string name="popup_menu_simple">Simple menu</string>
-    <string name="popup_menu_simple_duo">Duo</string>
+    <string name="popup_menu_simple_duo">Simple menu2</string>
     <string name="popup_menu_single_check">Menu with one selectable item and a divider</string>
     <string name="popup_menu_all_check">Menu with all selectable items, icons, and long text</string>
     <string name="popup_menu_show">Show</string>
