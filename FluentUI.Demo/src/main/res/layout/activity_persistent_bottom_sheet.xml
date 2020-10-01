@@ -34,11 +34,11 @@
             android:text="@string/collapse_persistent_sheet_button" />
 
         <Button
-            android:id="@+id/switch_bottom_sheet"
+            android:id="@+id/toggle_bottom_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
-            android:text="@string/switch_to_default_content" />
+            android:text="@string/toggle_sheet_content" />
 
     </LinearLayout>
 
