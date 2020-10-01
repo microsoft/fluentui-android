@@ -20,7 +20,6 @@ const val DATE_TIME_PICKER = "DateTimePicker"
 const val DRAWER = "Drawer"
 const val LIST_ITEM_VIEW = "ListItemView"
 const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
-const val PERSISTENT_BOTTOM_SHEET = "PersistentBottomSheet"
 const val PERSONA_CHIP_VIEW = "PersonaChipView"
 const val PERSONA_LIST_VIEW = "PersonaListView"
 const val PERSONA_VIEW = "PersonaView"
@@ -43,7 +42,6 @@ val DEMOS = arrayListOf(
     Demo(DRAWER, DrawerActivity::class),
     Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
     Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
-    Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
     Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
     Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
     Demo(PERSONA_VIEW, PersonaViewActivity::class),
@@ -59,7 +57,6 @@ val DUO_DEMOS = arrayListOf(
         Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
         Demo(BOTTOM_SHEET, BottomSheetActivity::class),
         Demo(DRAWER, DrawerActivity::class),
-        Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
         Demo(POPUP_MENU, PopupMenuActivity::class),
         Demo(SNACKBAR, SnackbarActivity::class),
         Demo(TOOLTIP, TooltipActivity::class)

@@ -198,27 +198,6 @@
         <item quantity="other">%1$s recipients</item>
     </plurals>
 
-    <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Expand Persistent BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
-    <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
-    <string name="new_view">This is New View</string>
-    <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>
-    <string name="persistent_sheet_item_create_new_folder_title">New Folder</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">New Folder item clicked</string>
-    <string name="persistent_sheet_item_edit_title">Edit</string>
-    <string name="persistent_sheet_item_edit_toast">Edit item clicked</string>
-    <string name="persistent_sheet_item_save_title">Save</string>
-    <string name="persistent_sheet_item_save_toast">Save item clicked</string>
-    <string name="persistent_sheet_item_zoom_in_title">Zoom In</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Zoom In item clicked</string>
-    <string name="persistent_sheet_item_zoom_out_title">Zoom Out</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Zoom Out item clicked</string>
-    <string name="persistent_sheet_item_cancel_title">Cancel</string>
-    <string name="persistent_sheet_item_cancel_toast">Cancel clicked</string>
-
     <!--Persona-->
     <string name="persona_email_allan_munger">amunger@microsoft.com</string>
     <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
