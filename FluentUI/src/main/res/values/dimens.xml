@@ -199,6 +199,15 @@
     <dimen name="fluentui_snackbar_custom_view_margin_vertical_small">12dp</dimen>
     <dimen name="fluentui_snackbar_custom_view_margin_vertical_announcement">16dp</dimen>
 
+    <!-- TabLayout -->
+    <dimen name="fluentui_tab_height">48dp</dimen>
+    <dimen name="fluentui_tab_padding_horizontal">16dp</dimen>
+    <dimen name="fluentui_tab_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_tab_content_start">32dp</dimen>
+    <dimen name="fluentui_tab_radius">20dp</dimen>
+    <dimen name="fluentui_tab_indicator_height">0dp</dimen>
+    <dimen name="fluentui_tab_margin">8dp</dimen>
+
     <!--Toolbar-->
     <dimen name="fluentui_toolbar_navigation_icon_container_size">@dimen/fluentui_min_touch_size</dimen>
     <dimen name="fluentui_toolbar_padding_start">16dp</dimen>
