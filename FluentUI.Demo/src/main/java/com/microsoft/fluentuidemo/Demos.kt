@@ -28,6 +28,7 @@ const val PERSONA_VIEW = "PersonaView"
 const val POPUP_MENU = "PopupMenu"
 const val PROGRESS = "Progress"
 const val SNACKBAR = "Snackbar"
+const val TAB_LAYOUT = "TabLayout"
 const val TEMPLATE_VIEW = "TemplateView"
 const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
@@ -51,6 +52,7 @@ val DEMOS = arrayListOf(
     Demo(POPUP_MENU, PopupMenuActivity::class),
     Demo(PROGRESS, ProgressActivity::class),
     Demo(SNACKBAR, SnackbarActivity::class),
+    Demo(TAB_LAYOUT, TabLayoutActivity::class),
     Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
     Demo(TOOLTIP, TooltipActivity::class),
     Demo(TYPOGRAPHY, TypographyActivity::class)
