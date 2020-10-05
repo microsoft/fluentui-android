@@ -202,6 +202,28 @@ open class ListItemView : TemplateView {
         }
 
     /**
+     * Determines the list item view vertical padding density.
+     */
+    var titleStyleRes: Int = 0
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTextAppearance()
+        }
+
+    /**
+     * Determines the list item view vertical padding density.
+     */
+    var subTitleStyleRes: Int = 0
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTextAppearance()
+        }
+
+    /**
      * Sets the background color or drawable resource.
      * The default drawable has a ripple animation for selection state.
      */
@@ -332,6 +354,16 @@ open class ListItemView : TemplateView {
             titleView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_FluentUI_ListItemTitle) }
             subtitleView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_FluentUI_ListItemSubtitle) }
             footerView?.let { TextViewCompat.setTextAppearance(it, R.style.TextAppearance_FluentUI_ListItemFooter) }
+        }
+        setCustomTextStyle()
+    }
+
+    private fun setCustomTextStyle() {
+        if (titleStyleRes != 0) {
+            titleView?.let { TextViewCompat.setTextAppearance(it, titleStyleRes) }
+        }
+        if (subTitleStyleRes != 0) {
+            subtitleView?.let { TextViewCompat.setTextAppearance(it, subTitleStyleRes) }
         }
     }
 

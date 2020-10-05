@@ -231,4 +231,6 @@
     <string name="fluentui_action_bar_default_right_action">Next</string>
     <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
     <string name="fluentui_action_bar_default_final_action">Start</string>
+
+    <string name="fluentui_bottom_sheet_header">BottomSheet Heading</string>
 </resources>

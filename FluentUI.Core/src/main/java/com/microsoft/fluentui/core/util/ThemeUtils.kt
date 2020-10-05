@@ -148,6 +148,6 @@ object ThemeUtil {
 
 fun Context.getTintedDrawable(@DrawableRes drawableId: Int, @ColorInt tint: Int): Drawable? {
     val drawable = ContextCompat.getDrawable(this, drawableId) ?: return null
-    drawable.setTint(tint)
+    drawable.mutate().setTint(tint)
     return drawable
 }

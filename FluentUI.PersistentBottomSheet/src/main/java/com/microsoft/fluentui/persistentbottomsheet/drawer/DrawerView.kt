@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.persistentbottomsheet.drawer
+package com.microsoft.fluentui.drawer
 
 import android.content.Context
 import android.content.res.TypedArray
@@ -12,8 +12,7 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.support.v7.widget.LinearLayoutCompat
 import android.util.AttributeSet
-import android.util.Log
-import com.microsoft.fluentui.persistentbottomsheet.R
+import com.microsoft.fluentui.R
 
 internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutCompat(context, attrs) {
     companion object {
@@ -26,15 +25,15 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
 
     private val clipPath = Path()
     var behaviorType: BehaviorType
+    val cornerRadius :Float
 
     init {
-        Log.e("MG","Inside init of drawer view")
         val a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
-        Log.e("MG","Extracted typed array = " + a.indexCount)
         behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "BOTTOM")
-        Log.e("MG","Got behavior type");
+        val drawerTypedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawerView)
+        cornerRadius = drawerTypedArray.getDimension(R.styleable.DrawerView_cornerRadius, resources.getDimension(R.dimen.fluentui_drawer_corner_radius))
+        drawerTypedArray.recycle()
         a.recycle()
-        Log.e("MG","Recycle done");
     }
 
     override fun onSizeChanged(width: Int, height: Int, oldWidth: Int, oldHeight: Int) {
@@ -50,7 +49,7 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     }
 
     private fun updateClipPath(width: Float, height: Float) {
-        val cornerRadius = resources.getDimension(R.dimen.fluentui_drawer_corner_radius)
+
         val radii = FloatArray(RADII_SIZE){0f}
 
         when(behaviorType) {

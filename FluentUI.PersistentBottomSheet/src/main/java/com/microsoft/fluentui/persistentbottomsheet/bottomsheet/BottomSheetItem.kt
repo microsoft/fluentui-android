@@ -3,15 +3,17 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.persistentbottomsheet.bottomsheet
+package com.microsoft.fluentui.bottomsheet
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
-import com.microsoft.fluentui.persistentbottomsheet.R
-import com.microsoft.fluentui.core.util.ThemeUtil
+import android.view.View
+import com.microsoft.fluentui.R
+import com.microsoft.fluentui.util.ThemeUtil
 
 class BottomSheetItem : Parcelable {
     interface OnClickListener {
@@ -35,6 +37,7 @@ class BottomSheetItem : Parcelable {
     @ColorInt
     val imageTint: Int
     val imageTintType: ImageTintType
+    val customBitmap: Bitmap?
 
     @JvmOverloads
     constructor(
@@ -44,7 +47,8 @@ class BottomSheetItem : Parcelable {
         subtitle: String = "",
         useDivider: Boolean = false,
         @ColorInt imageTint: Int = 0,
-        imageTintType: ImageTintType = ImageTintType.DEFAULT
+        imageTintType: ImageTintType = ImageTintType.DEFAULT,
+        customBitmap: Bitmap? = null
     ) {
         this.id = id
         this.imageId = imageId
@@ -53,6 +57,7 @@ class BottomSheetItem : Parcelable {
         this.useDivider = useDivider
         this.imageTint = imageTint
         this.imageTintType = imageTintType
+        this.customBitmap = customBitmap
     }
 
     private constructor(parcel: Parcel) : this(
@@ -62,7 +67,8 @@ class BottomSheetItem : Parcelable {
         subtitle = parcel.readString() ?: "",
         useDivider = parcel.readInt() == 1,
         imageTint = parcel.readInt(),
-        imageTintType = ImageTintType.values()[parcel.readInt()]
+        imageTintType = ImageTintType.values()[parcel.readInt()],
+        customBitmap = parcel.readParcelable(Bitmap::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -73,12 +79,13 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(if (useDivider) 1 else 0)
         parcel.writeInt(imageTint)
         parcel.writeInt(imageTintType.ordinal)
+        parcel.writeValue(customBitmap)
     }
 
     override fun describeContents(): Int = 0
 
     companion object {
-        const val NO_ID = -1
+        const val NO_ID = View.NO_ID
 
         @JvmField
         val CREATOR = object : Parcelable.Creator<BottomSheetItem> {
