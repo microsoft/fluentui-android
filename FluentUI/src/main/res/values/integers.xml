@@ -29,4 +29,6 @@
     <!--Tooltip-->
     <!--layout alpha values only accept integer resources despite the fact that these values are floats-->
     <item name="fluentui_tooltip_background_alpha" type="integer" format="float">0.95</item>
+
+    <integer name="fluentui_persistent_bottomsheet_max_item_row">5</integer>
 </resources>
