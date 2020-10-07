@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/fluentui_persistent_bottomsheet_content_offset"
+    android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_content_offset">
+
+    <TextView
+        android:id="@+id/header_text"
+        style="@style/TextAppearance.FluentUI.PersistentBottomSheetHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalGridItemList
+        android:id="@+id/horizontal_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

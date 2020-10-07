@@ -38,6 +38,7 @@
     <color name="fluentui_gray_300">#ACACAC</color>
     <color name="fluentui_gray_200">#C8C8C8</color>
     <color name="fluentui_gray_100">#E1E1E1</color>
+    <color name="fluentui_gray_56">#777777</color>
     <color name="fluentui_gray_50">#F1F1F1</color>
     <color name="fluentui_gray_25">#F8F8F8</color>
     <color name="fluentui_white">#FFFFFF</color>
@@ -65,6 +66,8 @@
         <item>#567C73</item>
         <item>#69797E</item>
     </array>
+
+    <color name="fluentui_transparent">#00000000</color>
 
     <!--ActionBarLayout-->
     <color name="fluentui_action_bar_indicator_background">@color/fluentui_communication_tint_20</color>

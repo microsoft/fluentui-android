@@ -201,6 +201,11 @@
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
 
+    <!--Persistent bottomsheet-->
+    <attr name="fluentuiPersistentBottomSheetHeadingColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetItemColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetHorizontalItemColor" format="reference|color"/>
+
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">
         <attr format="string" name="behaviorType"/>
