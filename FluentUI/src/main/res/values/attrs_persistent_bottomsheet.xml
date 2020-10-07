@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="PersistentBottomSheet">
+        <!-- The min height of the BottomSheet -->
+        <attr name="peekHeight" format="dimension" />
+        <!--  Determines whether to keep the default drawer handle or not -->
+        <attr name="isDrawerHandleVisible" format="boolean" />
+        <!--  horizontal Item in a row-->
+        <attr name="ItemsInRow" format="integer" />
+        <!-- horizontal item text style-->
+        <attr name="horizontalItemTextAppearance" format="reference" />
+        <!-- vertical item text style-->
+        <attr name="verticalItemTextAppearance" format="reference" />
+        <!-- vertical item subtitle style-->
+        <attr name="verticalItemSubTextAppearance" format="reference" />
+        <!--header text style-->
+        <attr name="headerTextAppearance" format="reference" />
+    </declare-styleable>
+</resources>

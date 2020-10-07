@@ -4,6 +4,14 @@
 
 Fluent UI for Android is a native library that provides the Office UI experience for the Android platform. It contains information about colors and typography, as well as custom controls and customizations for platform controls, all from the official Fluent design language used in Office and Office 365 products.
 
+
+### Build status (master branch)
+
+| Build Service   | Status                                                                                                                                                                                                                                                           |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| App Center      | [![Build status](https://build.appcenter.ms/v0.1/apps/7acc51be-c1e6-4351-8fa4-c4536fd42dd8/branches/master/badge)](https://appcenter.ms)                                                                                                                         |
+| Azure Pipelines | [![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android/fluentui-android-build?branchName=refs%2Fpull%2F3249%2Fmerge)](https://dev.azure.com/microsoftdesign/fluentui-native/_build/latest?definitionId=145&branchName=master) |
+
 ## Contents
 
 - [Colors and typography](#colors-and-typography)
@@ -59,8 +67,20 @@ dependencies {
     ...
 }
 ```
-
 - Make sure you replace `$version` with the latest version of FluentUI.
+
+#### a) Develop for Surface-Duo:
+- Please also add the following lines to your repositories section in your gradle script:
+```gradle
+maven {
+    url "https://pkgs.dev.azure.com/MicrosoftDeviceSDK/DuoSDK-Public/_packaging/Duo-SDK-Feed/maven/v1"
+}
+```
+- Also add the SDK dependency to the module-level build.gradle file(current version may be  different
+from what's shown here):
+```gradle
+implementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
+```
 
 ### 2. Using Maven
 
