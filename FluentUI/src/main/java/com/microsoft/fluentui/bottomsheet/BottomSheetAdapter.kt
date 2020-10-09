@@ -21,13 +21,21 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     var onBottomSheetItemClickListener: BottomSheetItem.OnClickListener? = null
 
     private val context: Context
-    private val items: ArrayList<BottomSheetItem>
+    private val items: List<BottomSheetItem>
     private val themeId: Int
+    @StyleRes private val textAppearance: Int
+    @StyleRes private val subTextAppearance: Int
 
-    constructor(context: Context, items: ArrayList<BottomSheetItem>, @StyleRes themeId: Int) {
+    constructor(context: Context,
+                items: List<BottomSheetItem>,
+                @StyleRes themeId: Int,
+                @StyleRes textAppearance: Int = 0,
+                @StyleRes subTextAppearance: Int = 0) {
         this.context = context
         this.items = items
         this.themeId = themeId
+        this.textAppearance = textAppearance
+        this.subTextAppearance = subTextAppearance
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,15 +63,22 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         fun setBottomSheetItem(item: BottomSheetItem) {
-            if (item.imageId != NO_ID) {
-                listItemView.customView = context.createImageView(item.imageId, item.getImageTint(context))
-            }
             listItemView.title = item.title
             listItemView.subtitle = item.subtitle
             listItemView.setTag(R.id.fluentui_bottom_sheet_item_divider, item.useDivider)
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
             listItemView.background = R.drawable.bottom_sheet_item_ripple_background
-
+            if (textAppearance != 0) {
+                listItemView.titleStyleRes = textAppearance
+            }
+            if (subTextAppearance != 0) {
+                listItemView.subTitleStyleRes = subTextAppearance
+            }
+            if (item.customBitmap != null) {
+                listItemView.customView = context.createImageView(item.customBitmap)
+            } else if (item.imageId != NO_ID) {
+                listItemView.customView = context.createImageView(item.imageId, item.getImageTint(context))
+            }
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
             }
