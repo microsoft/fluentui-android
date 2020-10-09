@@ -79,6 +79,7 @@
     <string name="bottom_sheet_item_forward_toast">Forward item clicked</string>
     <string name="bottom_sheet_item_delete_title">Delete</string>
     <string name="bottom_sheet_item_delete_toast">Delete item clicked</string>
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
     <string name="bottom_sheet_item_camera_title">Camera</string>
     <string name="bottom_sheet_item_camera_subtitle">Take a photo</string>
@@ -203,6 +204,8 @@
     <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
     <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
     <string name="new_view">This is New View</string>
+    <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
+    <string name="switch_to_custom_content">Switch to custom Content</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>
@@ -365,6 +368,14 @@
     <string name="regular_list">Regular List</string>
     <string name="cell_example_title">Title: Cell</string>
     <string name="cell_example_description">Description: Tap to change orientation</string>
+
+    <!--TabLayout-->
+    <string name="tab_standard_two_segment">Standard Tab 2-Segment</string>
+    <string name="tab_standard_three_segment">Standard Tab 3-Segment</string>
+    <string name="tab_standard_four_segment">Standard Tab 4-Segment</string>
+    <string name="tab_standard_with_pager">Standard Tab with Pager</string>
+    <string name="tab_switch">Switch Tab</string>
+    <string name="tab_pills">Pills Tab </string>
 
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>

@@ -145,11 +145,16 @@
         <item name="android:textColor">?attr/fluentuiSnackbarTextColor</item>
     </style>
 
-    <!--TabLayout-->
-    <style name="TextAppearance.FluentUI.Tab.Light" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">?attr/fluentuiTabTextColor</item>
+    <!--Dialog TabLayout-->
+    <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>
         <item name="textAllCaps">true</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <!--TabLayout-->
+    <style name="TextAppearance.FluentUI.Tab" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@color/tab_layout_item</item>
     </style>
 
     <!--Toolbar-->
@@ -163,6 +168,32 @@
     <!--Tooltip-->
     <style name="TextAppearance.FluentUI.Tooltip" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">?attr/fluentuiTooltipTextColor</item>
+    </style>
+
+
+    <style name="TextAppearance.FluentUI.PersistentBottomSheetHeading">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHeadingColor</item>
+        <item name="android:layout_marginTop">@dimen/fluentui_persistent_bottomsheet_header_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/fluentui_persistent_bottomsheet_header_marginBottom</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.PersistentBottomSheet_Item">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetItemColor</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.PersistentBottomSheetHorizontalItem">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHorizontalItemColor</item>
     </style>
 
 </resources>

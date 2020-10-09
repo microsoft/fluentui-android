@@ -5,16 +5,18 @@
 
 package com.microsoft.fluentuidemo.demos
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Gravity
+import android.view.View
 import android.widget.TextView
 import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
-import com.microsoft.fluentui.persistentbottomsheet.ListItem
 import com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
 import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemAdapter
+import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -22,81 +24,128 @@ import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_persistent_bottom_sheet.*
 import kotlinx.android.synthetic.main.demo_persistent_sheet_content.*
 
-class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, BottomSheetItem.OnClickListener {
+class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener, BottomSheetItem.OnClickListener {
+
     override val contentLayoutId: Int
         get() = R.layout.activity_persistent_bottom_sheet
 
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
-    lateinit var persistentBottomSheetDemo: PersistentBottomSheet
-    var isBack:Boolean = false
-    lateinit var view:TextView
+    private lateinit var persistentBottomSheetDemo: PersistentBottomSheet
+    private lateinit var defaultPersistentBottomSheet :PersistentBottomSheet
+    private lateinit var currentSheet :PersistentBottomSheet
+    private var isBack:Boolean = false
+    private lateinit var view:TextView
+    private lateinit var mHorizontalSheet:List<SheetItem>
+    private lateinit var mHorizontalSheet2:List<SheetItem>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         persistentBottomSheetDemo = findViewById(R.id.demo_persistent_sheet)
-        persistentBottomSheetDemo.addSheetContent(R.layout.demo_persistent_sheet_content)
+        defaultPersistentBottomSheet = findViewById(R.id.default_persistent_sheet)
 
-        sheet_horizontal_item_list_1.updateTemplate( arrayListOf(
-                ListItem(
-                        R.id.persistent_sheet_item_add_view,
-                        R.drawable.ic_add_circle_28_fill,
-                        getString(R.string.persistent_sheet_item_add_remove_view)),
-                ListItem(
-                        R.id.persistent_sheet_item_change_height_button,
-                        R.drawable.ic_vertical_align_center_28_fill,
-                        getString(R.string.persistent_sheet_item_change_collapsed_height))
-        ))
-        sheet_horizontal_item_list_1.onSheetItemClickListener = this
-        sheet_horizontal_item_list_1.setTextAppearance(R.style.TextAppearance_FluentUI_ListItemTitle)
+        PersistentBottomSheet.DefaultContentBuilder(this)
+                .setCustomSheetContent(R.layout.demo_persistent_sheet_content)
+                .buildWith(persistentBottomSheetDemo)
 
-        sheet_horizontal_item_list_2.updateTemplate( arrayListOf(
-                ListItem(
+        mHorizontalSheet = arrayListOf(
+                SheetItem(
                         R.id.bottom_sheet_item_flag,
                         R.drawable.ic_fluent_flag_24_regular,
                         getString(R.string.bottom_sheet_item_flag_title)),
-                ListItem(
+                SheetItem(R.id.bottom_sheet_item_alarm,
+                        dummyBitmap(),
+                        getString(R.string.bottom_sheet_item_custom_image)),
+                SheetItem(
+                        R.id.persistent_sheet_item_add_view,
+                        R.drawable.ic_add_circle_28_fill,
+                        getString(R.string.persistent_sheet_item_add_remove_view)),
+                SheetItem(
+                        R.id.persistent_sheet_item_change_height_button,
+                        R.drawable.ic_vertical_align_center_28_fill,
+                        getString(R.string.persistent_sheet_item_change_collapsed_height)),
+                SheetItem(
                         R.id.bottom_sheet_item_reply,
                         R.drawable.ic_fluent_reply_24_regular,
                         getString(R.string.bottom_sheet_item_reply_title)),
-                ListItem(
+                SheetItem(
                         R.id.bottom_sheet_item_forward,
                         R.drawable.ic_fluent_forward_24_regular,
                         getString(R.string.bottom_sheet_item_forward_title)),
-                ListItem(
+                SheetItem(
+                        R.id.bottom_sheet_item_delete,
+                        R.drawable.ic_delete_24_regular,
+                        getString(R.string.bottom_sheet_item_delete_title)),
+                SheetItem(
+                        R.id.bottom_sheet_item_delete,
+                        R.drawable.ic_delete_24_regular,
+                        getString(R.string.bottom_sheet_item_delete_title)),
+                SheetItem(
                         R.id.bottom_sheet_item_delete,
                         R.drawable.ic_delete_24_regular,
                         getString(R.string.bottom_sheet_item_delete_title))
-        ))
-        sheet_horizontal_item_list_2.onSheetItemClickListener = this
+        )
+
+        mHorizontalSheet2 = arrayListOf(
+                SheetItem(
+                        R.id.bottom_sheet_item_flag,
+                        R.drawable.ic_fluent_flag_24_regular,
+                        getString(R.string.bottom_sheet_item_flag_title)),
+                SheetItem(
+                        R.id.bottom_sheet_item_reply,
+                        R.drawable.ic_fluent_reply_24_regular,
+                        getString(R.string.bottom_sheet_item_reply_title)),
+                SheetItem(
+                        R.id.bottom_sheet_item_forward,
+                        R.drawable.ic_fluent_forward_24_regular,
+                        getString(R.string.bottom_sheet_item_forward_title)),
+                SheetItem(
+                        R.id.bottom_sheet_item_delete,
+                        R.drawable.ic_delete_24_regular,
+                        getString(R.string.bottom_sheet_item_delete_title)),
+                SheetItem(
+                        R.id.persistent_sheet_item_create_new_folder,
+                        R.drawable.ic_create_new_folder_24_filled,
+                        getString(R.string.persistent_sheet_item_create_new_folder_title))
+        )
+
+
+        sheet_horizontal_item_list_1.createHorizontalItemLayout(mHorizontalSheet)
+        sheet_horizontal_item_list_1.sheetItemClickListener = this
+        sheet_horizontal_item_list_1.setTextAppearance(R.style.TextAppearance_FluentUI_ListItemTitle)
+
+        sheet_horizontal_item_list_2.createHorizontalItemLayout(mHorizontalSheet2)
+        sheet_horizontal_item_list_2.sheetItemClickListener = this
+        sheet_horizontal_item_list_2.setTextAppearance(R.style.TextAppearance_FluentUI_ListItemTitle)
 
         val marginBetweenView = resources.getDimension(R.dimen.fluentui_persistent_horizontal_item_right_margin).toInt()
         val horizontalListAdapter  = SheetHorizontalItemAdapter(this,
                 arrayListOf(
-                        ListItem(
+                        SheetItem(
                                 R.id.persistent_sheet_item_create_new_folder,
                                 R.drawable.ic_create_new_folder_24_filled,
                                 getString(R.string.persistent_sheet_item_create_new_folder_title)),
-                        ListItem(
+                        SheetItem(
                                 R.id.persistent_sheet_item_edit,
                                 R.drawable.ic_edit_24_filled,
                                 getString(R.string.persistent_sheet_item_edit_title)),
-                        ListItem(
+                        SheetItem(
                                 R.id.persistent_sheet_item_save,
                                 R.drawable.ic_save_24_filled,
                                 getString(R.string.persistent_sheet_item_save_title)),
-                        ListItem(
+                        SheetItem(
                                 R.id.persistent_sheet_item_zoom_in,
                                 R.drawable.ic_zoom_in_24_filled,
                                 getString(R.string.persistent_sheet_item_zoom_in_title)),
-                        ListItem(
+                        SheetItem(
                                 R.id.persistent_sheet_item_zoom_out,
                                 R.drawable.ic_zoom_out_24_filled,
                                 getString(R.string.persistent_sheet_item_zoom_out_title))
                 ),0, marginBetweenView)
-        horizontalListAdapter.onSheetItemClickListener = this
+        horizontalListAdapter.mOnSheetItemClickListener = this
         sheet_horizontal_item_list_3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         sheet_horizontal_item_list_3.adapter = horizontalListAdapter
 
@@ -131,23 +180,53 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
         verticalListAdapter.onBottomSheetItemClickListener = this
         sheet_vertical_item_list_1.adapter = verticalListAdapter
 
+        showDefaultBottomSheet()
+
         show_persistent_bottom_sheet_button.setOnClickListener {
-            persistentBottomSheetDemo.getSheetBehavior().state = BottomSheetBehavior.STATE_EXPANDED
+            currentSheet.expand()
         }
 
         collapse_persistent_bottom_sheet_button.setOnClickListener {
-            if(persistentBottomSheetDemo.getSheetBehavior().peekHeight == 0) {
-                persistentBottomSheetDemo.showPersistentSheet()
+            if(currentSheet.getPeekHeight() == 0) {
+                currentSheet.showPersistentSheet()
                 collapse_persistent_bottom_sheet_button.text = getString(R.string.collapse_persistent_sheet_button)
             }
             else {
-                persistentBottomSheetDemo.collapsePersistentSheet()
+                currentSheet.collapsePersistentSheet()
                 collapse_persistent_bottom_sheet_button.text = getString(R.string.show_persistent_sheet_button)
             }
         }
+
+        toggle_bottom_sheet.setOnClickListener {
+            if (defaultPersistentBottomSheet.visibility == View.GONE) {
+                currentSheet = defaultPersistentBottomSheet
+                persistentBottomSheetDemo.visibility = View.GONE
+            } else {
+                currentSheet = persistentBottomSheetDemo
+                defaultPersistentBottomSheet.visibility = View.GONE
+            }
+            currentSheet.visibility = View.VISIBLE
+        }
+
+        //initially
+        currentSheet = persistentBottomSheetDemo
     }
 
-    override fun onSheetItemClick(item: ListItem){
+    private fun showDefaultBottomSheet() {
+
+        defaultPersistentBottomSheet.setItemClickListener(this)
+        PersistentBottomSheet.DefaultContentBuilder(this)
+                .addHorizontalItemList(mHorizontalSheet2)
+                .addDivider()
+                .addHorizontalGridItemList(mHorizontalSheet)
+                .addDivider()
+                .addVerticalItemList(mHorizontalSheet, getString(R.string.fluentui_bottom_sheet_header))
+                .addVerticalItemList(mHorizontalSheet,getString(R.string.fluentui_bottom_sheet_header))
+                .buildWith(defaultPersistentBottomSheet)
+
+    }
+
+    override fun onSheetItemClick(item: SheetItem){
         when(item.id) {
             R.id.persistent_sheet_item_add_view -> {
                 if(!this::view.isInitialized || view.parent == null) {
@@ -195,5 +274,12 @@ class PersistentBottomSheetActivity : DemoActivity(), ListItem.OnClickListener, 
 
     private fun showSnackbar(message: String) {
         Snackbar.make(root_view, message).show()
+    }
+
+    private fun dummyBitmap(): Bitmap {
+        val option = BitmapFactory.Options()
+        option.outHeight = resources.getDimensionPixelSize(R.dimen.image_size)
+        option.outWidth = resources.getDimensionPixelSize(R.dimen.image_size)
+        return Bitmap.createScaledBitmap(BitmapFactory.decodeResource(resources, R.drawable.avatar_allan_munger), option.outWidth, option.outHeight, false)
     }
 }
