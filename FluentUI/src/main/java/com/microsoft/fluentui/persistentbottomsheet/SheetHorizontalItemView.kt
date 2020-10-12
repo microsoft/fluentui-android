@@ -6,7 +6,6 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
-import android.support.design.resources.TextAppearance
 import android.support.v4.widget.TextViewCompat
 import android.util.AttributeSet
 import android.view.View
@@ -17,15 +16,16 @@ import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentui.view.TemplateView
 
 class SheetHorizontalItemView: TemplateView {
-    lateinit var sheetItemViewContainer: ViewGroup
-    lateinit var sheetItemTitle:TextView
-    lateinit var mainContainer:View
+    private lateinit var sheetItemTitle:TextView
+    private lateinit var mainContainer:ViewGroup
+    private lateinit var imageContainer: ViewGroup
 
-    var onSheetItemClickListener: ListItem.OnClickListener? = null
-    var title: String = ""
-    var customView: View? = null
-    var listItem: ListItem? = null
-    var textAppearanceResId: Int = R.style.TextAppearance_FluentUI_ListItemSubtitle
+    private var title: String = ""
+    private var customView: View? = null
+    private var mSheetItem: SheetItem? = null
+    private var textAppearanceResId: Int = R.style.TextAppearance_FluentUI_ListItemSubtitle
+
+    var onSheetItemClickListener: SheetItem.OnClickListener? = null
 
     override val templateId: Int
         get() = R.layout.view_sheet_horizontal_item_view
@@ -33,38 +33,41 @@ class SheetHorizontalItemView: TemplateView {
     @JvmOverloads
     constructor(context: Context,  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
 
-    constructor(context: Context, listItem: ListItem,  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        this.listItem = listItem
-        this.title = listItem.title
-        this.customView = context.createImageView(listItem.drawable)
+    constructor(context: Context, sheetItem: SheetItem, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+        this.mSheetItem = sheetItem
+        this.title = sheetItem.title
+        if (sheetItem.bitmap != null) {
+            this.customView = context.createImageView(sheetItem.bitmap)
+        } else {
+            this.customView = context.createImageView(sheetItem.drawable)
+        }
     }
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
 
-        sheetItemViewContainer = findViewInTemplateById(R.id.sheet_item_view_container)!!
         sheetItemTitle = findViewInTemplateById(R.id.sheet_item_title)!!
         mainContainer = findViewInTemplateById(R.id.main_container)!!
+        imageContainer = findViewInTemplateById(R.id.sheet_item_view_container)!!
         updateTitleView()
         updateCustomView()
         updateTextAppearance()
 
-        if(listItem != null)
+        if(mSheetItem != null)
             mainContainer.setOnClickListener {
-                onSheetItemClickListener?.onSheetItemClick(listItem!!)
+                onSheetItemClickListener?.onSheetItemClick(mSheetItem!!)
             }
         mainContainer.setBackgroundResource(R.drawable.bottom_sheet_item_ripple_background)
     }
 
-    fun updateTitleView() {
+    private fun updateTitleView() {
         sheetItemTitle.text = title
         sheetItemTitle.visibility = if (title.isNotEmpty()) View.VISIBLE else View.GONE
     }
 
-    fun updateCustomView() {
-        sheetItemViewContainer.removeAllViews()
-        if(customView != null)
-            sheetItemViewContainer.addView(customView)
+    private fun updateCustomView() {
+        if (customView != null)
+            imageContainer.addView(customView)
     }
 
     fun update(title:String, customView:View) {
@@ -79,7 +82,7 @@ class SheetHorizontalItemView: TemplateView {
         updateTextAppearance()
     }
 
-    fun updateTextAppearance() {
+    private fun updateTextAppearance() {
         if(this::sheetItemTitle.isInitialized) {
             sheetItemTitle.let { TextViewCompat.setTextAppearance(it, textAppearanceResId) }
         }

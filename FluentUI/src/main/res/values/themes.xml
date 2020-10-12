@@ -209,6 +209,11 @@
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+
+        <!--BottomSheet-->
+        <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetItemColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundColor</item>
     </style>
 
     <!--

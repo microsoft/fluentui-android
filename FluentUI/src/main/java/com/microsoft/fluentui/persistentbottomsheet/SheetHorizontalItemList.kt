@@ -6,59 +6,115 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.support.annotation.DrawableRes
 import android.util.AttributeSet
+import android.view.View.NO_ID
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
 import com.microsoft.fluentui.view.TemplateView
+import kotlin.math.ceil
+
 
 /**
 * [SheetHorizontalItemList] is used to display a list of menu items in a horizontal fixed list
 */
-class SheetHorizontalItemList: TemplateView, ListItem.OnClickListener {
-    lateinit var itemList:ArrayList<ListItem>
-    lateinit var itemListContainer:ViewGroup
+open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
+    : TemplateView(context, attrs, defStyleAttr), SheetItem.OnClickListener {
+    private lateinit var itemSheet:List<SheetItem>
+    private lateinit var itemListContainer:ViewGroup
+    private var itemLayoutParam: BottomSheetParam.HorizontalItemLayoutParam
 
-    var onSheetItemClickListener: ListItem.OnClickListener? = null
+    var sheetItemClickListener: SheetItem.OnClickListener? = null
+
+    init {
+        itemLayoutParam = BottomSheetParam.HorizontalItemLayoutParam(
+                context.resources.getInteger(R.integer.fluentui_persistent_bottomsheet_max_item_row),
+                R.style.TextAppearance_FluentUI_PersistentBottomSheetHorizontalItem,
+                R.style.TextAppearance_FluentUI_PersistentBottomSheetHeading)
+    }
 
     override val templateId: Int
         get() = R.layout.view_sheet_horizontal_item_list
 
-    @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
+    fun createHorizontalItemLayout(sheet: List<SheetItem>, itemLayoutParam: BottomSheetParam.HorizontalItemLayoutParam? = null) {
+        this.itemSheet = sheet
+        val size = itemSheet.size
 
-    fun updateTemplate(list: ArrayList<ListItem>) {
-        this.itemList = list
-        val size = itemList.size
+        if (itemLayoutParam != null) {
+            this.itemLayoutParam = itemLayoutParam
+        }
 
+        createHorizontalView(size)
+        setTextAppearance(this.itemLayoutParam.horizontalTextAppearance)
+    }
+
+    private fun createHorizontalView(size:Int) {
         itemListContainer.removeAllViews()
-        for(i in 0 until size) {
-            val itemView = SheetHorizontalItemView(context, itemList[i])
-            itemView.layoutParams = LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 1.0f)
-            itemView.onSheetItemClickListener = this
-            itemListContainer.addView(itemView)
+
+
+        val columnCount = itemLayoutParam.itemsInRow
+        val rowCount = ceil(size.toDouble()/columnCount).toInt()
+
+        var index = 0
+
+        for (row in 0 until rowCount) {
+            val rowWrapper = getRowWrapper(columnCount)
+            for (column in 0 until columnCount) {
+                if (index >= size) {
+                    itemListContainer.addView(rowWrapper)
+                    return
+                }
+                val itemView = getColumnItem(index++)
+                rowWrapper.addView(itemView)
+            }
+            itemListContainer.addView(rowWrapper)
         }
     }
+
+    private fun getColumnItem(index: Int): SheetHorizontalItemView {
+        val itemView = SheetHorizontalItemView(context, itemSheet[index])
+        itemView.updateTextAppearanceResId(itemLayoutParam.horizontalTextAppearance)
+        itemView.layoutParams = LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f)
+        itemView.onSheetItemClickListener = this
+        return itemView
+    }
+
+    protected open fun getRowWrapper(columnCount: Int): LinearLayout {
+        val listContainer = LinearLayout(context)
+        listContainer.orientation = LinearLayout.HORIZONTAL
+        listContainer.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+        return listContainer
+    }
+
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
         itemListContainer = findViewInTemplateById(R.id.sheet_item_list)!!
     }
 
-    override fun onSheetItemClick(item: ListItem) {
-        onSheetItemClickListener?.onSheetItemClick(item)
+    override fun onSheetItemClick(item: SheetItem) {
+        sheetItemClickListener?.onSheetItemClick(item)
     }
 
-    fun setTextAppearance(resId:Int) {
-        for(i in 0 until itemListContainer.childCount) {
-            (itemListContainer.getChildAt(i) as SheetHorizontalItemView).updateTextAppearanceResId(resId)
+    fun setTextAppearance(resId: Int) {
+        for (i in 0 until itemListContainer.childCount) {
+            val wrapperLayout = itemListContainer.getChildAt(i) as ViewGroup
+            for (index in 0 until wrapperLayout.childCount) {
+                (wrapperLayout.getChildAt(index) as SheetHorizontalItemView).updateTextAppearanceResId(resId)
+            }
         }
     }
 }
 
-class ListItem(val id:Int = -1, @DrawableRes val drawable: Int, val title:String) {
+class SheetItem(val id: Int, @DrawableRes val drawable: Int, val title: String = "", val bitmap: Bitmap? = null) {
+
+    // just a  convenient constructor
+    constructor(id: Int, bitmap: Bitmap, title: String = "") : this(id, NO_ID, title, bitmap)
+
     interface OnClickListener {
-        fun onSheetItemClick(item: ListItem)
+        fun onSheetItemClick(item: SheetItem)
     }
 }
