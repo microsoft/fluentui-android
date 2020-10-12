@@ -123,7 +123,6 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
                     CustomViewSize.MEDIUM ->
                         R.dimen.fluentui_snackbar_custom_view_margin_vertical_medium
                 }
-
             return context.resources.getDimension(marginResourceId).toInt()
         }
 

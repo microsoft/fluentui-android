@@ -33,7 +33,6 @@
     <attr name="fluentuiBackgroundSecondary20Color" format="reference|color"/>
 
     <!--Transparent Foregrounds-->
-    <!--Transparent Foregrounds-->
     <attr name="fluentuiForegroundOnPrimary80Color" format="reference|color"/>
     <attr name="fluentuiForegroundOnPrimary70Color" format="reference|color"/>
 
