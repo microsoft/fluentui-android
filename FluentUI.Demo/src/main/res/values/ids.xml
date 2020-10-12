@@ -45,6 +45,7 @@
     <item name="popup_menu_item_invite_people" type="id" />
     <item name="popup_menu_item_refresh_page" type="id" />
     <item name="popup_menu_item_open_in_browser" type="id" />
+    <item name="popup_menu_item_multiline" type="id" />
     <item name="popup_menu_item_all_news" type="id" />
     <item name="popup_menu_item_saved_news" type="id" />
     <item name="popup_menu_item_news_from_sites" type="id" />
