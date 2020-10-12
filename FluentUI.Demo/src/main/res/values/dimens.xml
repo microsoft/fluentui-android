@@ -60,4 +60,7 @@
 
     <!--TemplateView-->
     <dimen name="template_view_list_height">500dp</dimen>
+
+    <!--image dimen-->
+    <dimen name="image_size">24dp</dimen>
 </resources>
