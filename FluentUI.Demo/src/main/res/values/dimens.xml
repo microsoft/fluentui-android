@@ -54,6 +54,9 @@
     <dimen name="demo_headline_divider_height">@dimen/fluentui_divider_height</dimen>
     <dimen name="demo_headline_padding_bottom">4dp</dimen>
 
+    <!--TabLayout-->
+    <dimen name="tab_layout_pager_height">250dp</dimen>
+
     <!--Tooltip-->
     <dimen name="tooltip_example_offset_x">10dp</dimen>
     <dimen name="tooltip_example_offset_y">10dp</dimen>
