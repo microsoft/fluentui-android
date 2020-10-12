@@ -22,24 +22,10 @@
     <dimen name="fluentui_avatar_size_xxlarge">64dp</dimen>
     <dimen name="fluentui_avatar_square_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
 
-    <!--BottomSheet-->
-    <dimen name="fluentui_bottom_sheet_bottom_padding">8dp</dimen>
 
     <!--BottomNavigation-->
     <dimen name="fluentui_bottom_navigation_icon_labeled">24dp</dimen>
     <dimen name="fluentui_bottom_navigation_icon_unlabeled">28dp</dimen>
-
-    <!--Button-->
-    <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>
-    <dimen name="fluentui_button_base_padding_vertical">8.5dp</dimen>
-    <dimen name="fluentui_button_min_height">36dp</dimen>
-    <dimen name="fluentui_button_padding_horizontal">@dimen/fluentui_content_inset</dimen>
-    <dimen name="fluentui_button_corner_radius">@dimen/fluentui_corner_radius_2</dimen>
-    <dimen name="fluentui_button_large_padding_vertical">16dp</dimen>
-    <dimen name="fluentui_button_large_min_height">48dp</dimen>
-    <dimen name="fluentui_button_outlined_min_height">30dp</dimen>
-    <dimen name="fluentui_button_outlined_padding_vertical">8dp</dimen>
-    <dimen name="fluentui_button_outlined_stroke_width">1dp</dimen>
 
     <!--CalendarView-->
     <dimen name="fluentui_calendar_week_day_font_size">16sp</dimen>
@@ -69,38 +55,6 @@
     <dimen name="fluentui_dialog_insets">@dimen/fluentui_content_inset</dimen>
     <dimen name="fluentui_resizable_dialog_card_elevation">2dp</dimen>
 
-    <!--Drawer-->
-    <dimen name="fluentui_drawer_corner_radius">@dimen/fluentui_corner_radius_8</dimen>
-    <dimen name="fluentui_drawer_peek_height">0dp</dimen>
-    <dimen name="fluentui_drawer_peek_width">0dp</dimen>
-    <dimen name="fluentui_drawer_elevation">5dp</dimen>
-    <dimen name="fluentui_drawer_handle_vertical_margin">8dp</dimen>
-
-    <!--ListItem-->
-    <dimen name="fluentui_list_item_min_height">48dp</dimen>
-    <dimen name="fluentui_list_item_text_area_inset_custom_view">72dp</dimen>
-    <dimen name="fluentui_list_item_text_area_inset_custom_view_large_header">96dp</dimen>
-    <!--Custom view sizes-->
-    <dimen name="fluentui_list_item_custom_view_size_small">24dp</dimen>
-    <dimen name="fluentui_list_item_custom_view_size_medium">40dp</dimen>
-    <dimen name="fluentui_list_item_custom_view_size_large">64dp</dimen>
-    <!--List item margins and spacing-->
-    <dimen name="fluentui_list_item_vertical_margin_text_one_line">13dp</dimen>
-    <dimen name="fluentui_list_item_vertical_margin_text_two_line">15dp</dimen>
-    <dimen name="fluentui_list_item_vertical_margin_text_two_line_compact">11dp</dimen>
-    <dimen name="fluentui_list_item_vertical_margin_text_three_line">14dp</dimen>
-    <dimen name="fluentui_list_item_vertical_margin_large_header">12dp</dimen>
-    <dimen name="fluentui_list_item_vertical_margin_custom_view_minimum">8dp</dimen>
-    <dimen name="fluentui_list_item_horizontal_margin_regular">@dimen/fluentui_content_inset</dimen>
-    <dimen name="fluentui_list_item_margin_end_custom_view_small">16dp</dimen>
-    <dimen name="fluentui_list_item_text_vertical_spacing">2dp</dimen>
-    <dimen name="fluentui_list_item_spacing">16dp</dimen>
-    <dimen name="fluentui_list_item_horizontal_spacing_custom_accessory_view_start">8dp</dimen>
-
-    <!--ListSubHeader-->
-    <dimen name="fluentui_list_sub_header_divider_padding">8dp</dimen>
-    <dimen name="fluentui_list_sub_header_height">48dp</dimen>
-
     <!--PeoplePicker-->
     <dimen name="fluentui_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
     <!--30dp is an approximation of how much space 3 digits take up for the count span-->
@@ -116,19 +70,6 @@
     <dimen name="fluentui_people_picker_label_margin_end">8dp</dimen>
     <dimen name="fluentui_people_picker_vertical_padding">12dp</dimen>
 
-    <!--Persistent BottomSheet-->
-    <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_margin_top">3dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical">4dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_horizontal_item_paddingTop">10dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_divider_margin_vertical">6dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_content_offset">8dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_item_padding_horizontal">2dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_header_marginTop">13dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_header_marginBottom">6dp</dimen>
-    <dimen name="fluentui_persistent_bottomsheet_vertical_list_delta_offset">10dp</dimen>
-    <dimen name="fluentui_bottomsheet_horizontalItem_min_width">64dp</dimen>
-    <dimen name="fluentui_persistentbottomsheet_elevation">24dp</dimen>
-    <dimen name="fluentui_persistentbottomsheet_corner_radius">16dp</dimen>
 
     <!--Persona-->
     <dimen name="fluentui_persona_horizontal_spacing">@dimen/fluentui_list_item_spacing</dimen>

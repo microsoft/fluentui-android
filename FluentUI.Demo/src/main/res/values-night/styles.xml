@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Base.AppTheme">
+        <item name="android:statusBarColor">?attr/fluentuiBackgroundSecondaryColor</item>
+    </style>
+
+    <style name="AppTheme.Neutral" parent="Base.AppTheme.Neutral">
+        <item name="android:statusBarColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+    </style>
+
+    <!--Launch Screen: This theme sets the launch screen for the app-->
+    <style name="AppTheme.Launcher" parent="Base.AppTheme.Launcher">
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+    </style>
+
+    <!--Tooltip Demo-->
+    <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button.Borderless" />
+
+    <!--Demo font-->
+    <style name="TextAppearance.Label" parent="@style/TextAppearance.FluentUI.Body1">
+        <item name="android:textColor">@color/fluentui_white</item>
+    </style>
+
+</resources>

@@ -19,7 +19,6 @@ import android.widget.TextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.R.id.*
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
-import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.ThemeUtil
 import kotlinx.android.synthetic.main.view_snackbar.view.*
 
@@ -31,6 +30,9 @@ import kotlinx.android.synthetic.main.view_snackbar.view.*
  * To use a Snackbar with a FAB, it is recommended that your parent layout be a CoordinatorLayout.
  */
 class Snackbar : BaseTransientBottomBar<Snackbar> {
+
+    private val fluentContext:Context
+
     companion object {
         const val LENGTH_INDEFINITE: Int = BaseTransientBottomBar.LENGTH_INDEFINITE
         const val LENGTH_SHORT: Int = BaseTransientBottomBar.LENGTH_SHORT
@@ -43,7 +45,9 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
             // Need the theme wrapper to avoid crashing in Dark theme.
-            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context)).inflate(R.layout.view_snackbar, parent, false)
+            var inflater = LayoutInflater.from(parent.context)
+            inflater = inflater.cloneInContext(FluentUIContextThemeWrapper(parent.context,R.style.Theme_FluentUI))
+            val content = inflater.inflate(R.layout.view_snackbar, parent, false)
             val snackbar = Snackbar(parent, content, ContentViewCallback(content))
             snackbar.duration = duration
             snackbar.setStyle(style)
@@ -123,21 +127,18 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
                     CustomViewSize.MEDIUM ->
                         R.dimen.fluentui_snackbar_custom_view_margin_vertical_medium
                 }
-            return context.resources.getDimension(marginResourceId).toInt()
+
+            return fluentContext.resources.getDimension(marginResourceId).toInt()
         }
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
+        fluentContext = FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI)
         updateBackground()
-        val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
 
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
         if (content.parent is FrameLayout) {
             val lp = content.layoutParams as FrameLayout.LayoutParams
             lp.bottomMargin = context.resources.getDimension(R.dimen.fluentui_snackbar_background_inset).toInt()
-            if(DuoSupportUtils.isWindowDoublePortrait(context)) {
-                lp.width = singleScreenDisplayPixels
-                lp.rightMargin = singleScreenDisplayPixels + context.resources.getDimension(R.dimen.fluentui_snackbar_custom_view_margin_start).toInt()
-            }
             content.layoutParams = lp
         }
     }
@@ -202,7 +203,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     private fun updateCustomViewLayoutParams() {
-        val size = customViewSize.getDimension(context)
+        val size = customViewSize.getDimension(fluentContext)
         val lp = RelativeLayout.LayoutParams(size, size)
         lp.addRule(RelativeLayout.CENTER_VERTICAL)
         lp.marginStart = context.resources.getDimension(R.dimen.fluentui_snackbar_custom_view_margin_start).toInt()
@@ -211,8 +212,8 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private fun updateBackground() {
         when (style) {
-            Style.REGULAR -> view.background = ContextCompat.getDrawable(context, R.drawable.snackbar_background)
-            Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(context, R.drawable.snackbar_background_announcement)
+            Style.REGULAR -> view.background = ContextCompat.getDrawable(fluentContext, R.drawable.snackbar_background)
+            Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(fluentContext, R.drawable.snackbar_background_announcement)
         }
     }
 
@@ -223,11 +224,11 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
         when (style) {
             Style.REGULAR -> {
-                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiSnackbarActionTextColor))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(fluentContext, R.attr.fluentuiSnackbarActionTextColor))
                 customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
             Style.ANNOUNCEMENT -> {
-                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiSnackbarActionTextAnnouncementColor))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(fluentContext, R.attr.fluentuiSnackbarActionTextAnnouncementColor))
                 customViewLayoutParams?.removeRule(RelativeLayout.CENTER_VERTICAL)
             }
         }
@@ -238,12 +239,12 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     private fun layoutTextAndActionButton() {
-        val contentInset = context.resources.getDimension(R.dimen.fluentui_snackbar_content_inset).toInt()
+        val contentInset = fluentContext.resources.getDimension(R.dimen.fluentui_snackbar_content_inset).toInt()
         val textLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         val buttonLayoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
 
         val textWidth = actionButtonView.paint.measureText(actionButtonView.text.toString())
-        if (textWidth > context.resources.getDimension(R.dimen.fluentui_snackbar_action_text_wrapping_width) || style == Style.ANNOUNCEMENT) {
+        if (textWidth > fluentContext.resources.getDimension(R.dimen.fluentui_snackbar_action_text_wrapping_width) || style == Style.ANNOUNCEMENT) {
             // Action button moves to the bottom of the root view
             textLayoutParams.removeRule(RelativeLayout.START_OF)
             textLayoutParams.removeRule(RelativeLayout.CENTER_VERTICAL)
@@ -259,10 +260,10 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
                 textLayoutParams.marginEnd = contentInset
             buttonLayoutParams.removeRule(RelativeLayout.BELOW)
             actionButtonView.setPaddingRelative(
-                context.resources.getDimension(R.dimen.fluentui_snackbar_action_spacing).toInt(),
-                contentInset,
-                contentInset,
-                contentInset
+                    fluentContext.resources.getDimension(R.dimen.fluentui_snackbar_action_spacing).toInt(),
+                    contentInset,
+                    contentInset,
+                    contentInset
             )
         }
 

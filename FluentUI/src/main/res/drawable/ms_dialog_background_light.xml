@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetBottom="@dimen/fluentui_dialog_insets"
+    android:insetLeft="@dimen/fluentui_dialog_insets"
+    android:insetRight="@dimen/fluentui_dialog_insets"
+    android:insetTop="@dimen/fluentui_dialog_insets"
+    android:drawable="@drawable/ms_dialog_background_light_no_insets">
+</inset>

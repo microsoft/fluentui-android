@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!--TemplateView-->
+    <color name="template_view_cell_horizontal_background">@color/fluentui_gray_700</color>
+    <color name="template_view_cell_vertical_background">@color/fluentui_gray_900</color>
+
+    <!--ActionBarLayout-->
+    <color name="action_bar_radio_labels">@color/fluentui_white</color>
+
+</resources>

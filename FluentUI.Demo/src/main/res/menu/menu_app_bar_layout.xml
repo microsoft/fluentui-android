@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/app_bar_menu">
+        <item
+            android:id="@+id/action_flag"
+            android:icon="@drawable/ic_flag_24_filled"
+            android:orderInCategory="1"
+            android:title="@string/app_bar_layout_menu_flag"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/action_settings"
+            android:orderInCategory="1"
+            android:title="@string/app_bar_layout_menu_settings"
+            app:showAsAction="never" />
+    </group>
+
+</menu>

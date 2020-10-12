@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="ActionBarLayout">
+        <attr name="type" format="enum">
+            <enum name="basic" value="0"/>
+            <enum name="icon" value="1"/>
+            <enum name="carousel" value="2"/>
+        </attr>
+        <attr name="viewPager" format="reference"/>
+    </declare-styleable>
+</resources>

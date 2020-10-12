@@ -65,17 +65,6 @@
         <item name="android:textColor">?attr/fluentuiBottomNavigationForegroundActiveColor</item>
     </style>
 
-    <!--Button-->
-    <style name="TextAppearance.FluentUI.Button" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">@color/button_text</item>
-        <item name="android:textAllCaps">true</item>
-    </style>
-    <style name="TextAppearance.FluentUI.Button.Borderless">
-        <item name="android:textColor">@color/button_text_borderless</item>
-    </style>
-    <style name="TextAppearance.FluentUI.Button.Outlined">
-        <item name="android:textColor">@color/button_text_outlined</item>
-    </style>
 
     <!--Calendar-->
     <!--calendar_week_day_text_selector sets the colors for these-->
@@ -87,38 +76,6 @@
     </style>
     <style name="TextAppearance.FluentUI.WeekDayHeader" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">@null</item>
-    </style>
-
-    <!--ListItem-->
-    <style name="TextAppearance.FluentUI.ListItemTitle" parent="TextAppearance.FluentUI.SubHeading1">
-        <item name="android:textColor">?attr/fluentuiListItemTitleColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListItemSubtitle" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiListItemSubtitleColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListItemFooter" parent="TextAppearance.FluentUI.Caption">
-        <item name="android:textColor">?attr/fluentuiListItemFooterColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListItemTitle.LargeHeader" parent="TextAppearance.FluentUI.Title1">
-        <item name="android:textColor">?attr/fluentuiListItemTitleColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListItemSubtitle.LargeHeader">
-        <item name="android:textColor">?attr/fluentuiListItemSubtitleLargeHeaderColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListItemFooter.LargeHeader" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiListItemFooterColor</item>
-    </style>
-
-    <!--ListSubHeader-->
-    <style name="TextAppearance.FluentUI.ListSubHeaderTitle" parent="TextAppearance.FluentUI.Body2" />
-    <style name="TextAppearance.FluentUI.ListSubHeaderTitle.Primary">
-        <item name="android:textColor">?attr/fluentuiListSubHeaderTitlePrimaryColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListSubHeaderTitle.Secondary">
-        <item name="android:textColor">?attr/fluentuiListSubHeaderTitleSecondaryColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ListSubHeaderTitle.Tertiary">
-        <item name="android:textColor">?attr/fluentuiListSubHeaderTitleTertiaryColor</item>
     </style>
 
     <!--NumberPicker-->
@@ -147,7 +104,7 @@
 
     <!--Dialog TabLayout-->
     <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>
+        <item name="android:textColor">?attr/fluentuiDialogTabLayoutBackgroundColor</item>
         <item name="textAllCaps">true</item>
         <item name="android:textAllCaps">true</item>
     </style>
@@ -157,43 +114,9 @@
         <item name="android:textColor">@color/tab_layout_item</item>
     </style>
 
-    <!--Toolbar-->
-    <style name="TextAppearance.FluentUI.ToolbarTitle" parent="TextAppearance.FluentUI.Title1">
-        <item name="android:textColor">?attr/fluentuiToolbarTitleTextColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ToolbarSubtitle" parent="TextAppearance.FluentUI.Caption">
-        <item name="android:textColor">?attr/fluentuiToolbarSubtitleTextColor</item>
-    </style>
-
     <!--Tooltip-->
     <style name="TextAppearance.FluentUI.Tooltip" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">?attr/fluentuiTooltipTextColor</item>
-    </style>
-
-
-    <style name="TextAppearance.FluentUI.PersistentBottomSheetHeading">
-        <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">"sans-serif"</item>
-        <item name="android:letterSpacing">-0.01</item>
-        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHeadingColor</item>
-        <item name="android:layout_marginTop">@dimen/fluentui_persistent_bottomsheet_header_marginTop</item>
-        <item name="android:layout_marginBottom">@dimen/fluentui_persistent_bottomsheet_header_marginBottom</item>
-    </style>
-
-    <style name="TextAppearance.FluentUI.PersistentBottomSheet_Item">
-        <item name="android:textSize">16sp</item>
-        <item name="android:fontFamily">"sans-serif"</item>
-        <item name="android:letterSpacing">-0.02</item>
-        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetItemColor</item>
-    </style>
-
-    <style name="TextAppearance.FluentUI.PersistentBottomSheetHorizontalItem">
-        <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">"sans-serif"</item>
-        <item name="android:letterSpacing">-0.01</item>
-        <item name="android:maxLines">2</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHorizontalItemColor</item>
     </style>
 
 </resources>

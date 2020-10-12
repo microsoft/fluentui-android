@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="75dp"
+    android:height="@dimen/fluentui_progress_linear_height"
+    android:viewportWidth="75"
+    android:viewportHeight="4">
+  <path
+      android:pathData="M0,0H75V4H0V0Z"
+      android:fillColor="?attr/fluentuiProgressBackgroundColor"
+      android:fillType="evenOdd"/>
+</vector>

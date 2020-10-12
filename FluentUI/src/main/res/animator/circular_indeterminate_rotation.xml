@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="@integer/fluentui_anim_indeterminate_duration"
+    android:interpolator="@android:anim/linear_interpolator"
+    android:propertyName="rotation"
+    android:repeatCount="-1"
+    android:valueFrom="0"
+    android:valueTo="@dimen/fluentui_progress_circular_anim_value_to"
+    android:valueType="floatType" />

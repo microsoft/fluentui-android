@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<com.microsoft.fluentui.listitem.ListItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:customViewSize="small"
+    app:layoutDensity="dense"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />

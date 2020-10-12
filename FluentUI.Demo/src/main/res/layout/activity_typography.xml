@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/default_layout_margin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/headline"
+        android:textAppearance="@style/TextAppearance.FluentUI.Headline"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/title_1"
+        android:textAppearance="@style/TextAppearance.FluentUI.Title1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/title_2"
+        android:textAppearance="@style/TextAppearance.FluentUI.Title2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/heading"
+        android:textAppearance="@style/TextAppearance.FluentUI.Heading"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/subheading_1"
+        android:textAppearance="@style/TextAppearance.FluentUI.SubHeading1"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/subheading_2"
+        android:textAppearance="@style/TextAppearance.FluentUI.SubHeading2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/body_1"
+        android:textAppearance="@style/TextAppearance.FluentUI.Body1"/>
+
+    <TextView
+        android:id="@+id/typography_example_body_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/body_2"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:text="@string/caption"
+        android:textAppearance="@style/TextAppearance.FluentUI.Caption"
+        android:textColor="@android:color/black"/>
+
+</LinearLayout>

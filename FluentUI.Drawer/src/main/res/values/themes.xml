@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.FluentUI.Drawer.Base" parent="Base.Theme.FluentUI">
+        <!--BottomSheet-->
+        <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetItemColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundColor</item>
+
+        <!--BottomSheet-->
+        <item name="fluentuiBottomSheetBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiBottomSheetBackgroundPressedColor">?attr/fluentuiBackgroundPressedColor</item>
+        <item name="fluentuiBottomSheetIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
+        <item name="fluentuiBottomSheetDividerColor">?attr/fluentuiDividerColor</item>
+
+        <!--Drawer-->
+        <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiDrawerHandleColor">?attr/fluentuiBackgroundPressedColor</item>
+
+    </style>
+
+    <style name="Theme.FluentUI.Drawer" parent="Theme.FluentUI.Drawer.Base"/>
+</resources>

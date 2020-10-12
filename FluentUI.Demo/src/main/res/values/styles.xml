@@ -6,7 +6,7 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.AppTheme" parent="Theme.FluentUI">
+    <style name="Base.AppTheme" parent="Base.Theme.FluentUI">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">?attr/fluentuiBackgroundColor</item>
@@ -77,15 +77,5 @@
 
     <!--Tooltip Demo-->
     <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button" />
-
-    <!--TabLayout Demo-->
-    <style name="FluentUI.TabLayout" parent="">
-        <item name="containerBackgroundColor">?attr/fluentuiTabLayoutContainerBackgroundColor</item>
-        <item name="tabsBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
-        <item name="tabSelectedBackgroundColor">?attr/fluentuiTabSelectedBackgroundColor</item>
-        <item name="tabUnselectedBackgroundColor">?attr/fluentuiTabUnselectedBackgroundColor</item>
-        <item name="tabSelectedTextColor">?attr/fluentuiTabSelectedTextColor</item>
-        <item name="tabUnselectedTextColor">?attr/fluentuiTabUnselectedTextColor</item>
-    </style>
 
 </resources>

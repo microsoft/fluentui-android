@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".demos.PopupMenuActivity">
+
+    <TextView
+        android:id="@+id/no_check_text"
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:text="@string/popup_menu_simple"
+        android:textAppearance="@style/TextAppearance.DemoDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/no_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginTop="@dimen/default_view_margin"
+        android:text="@string/popup_menu_show"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_check_text" />
+
+    <TextView
+        android:id="@+id/single_check_text"
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginTop="@dimen/default_view_margin"
+        android:text="@string/popup_menu_single_check"
+        android:textAppearance="@style/TextAppearance.DemoDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_check" />
+
+    <Button
+        android:id="@+id/single_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginTop="@dimen/default_view_margin"
+        android:text="@string/popup_menu_show"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/single_check_text" />
+
+    <TextView
+        android:id="@+id/all_check_text"
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginTop="@dimen/default_view_margin"
+        android:layout_marginBottom="@dimen/default_view_margin"
+        android:text="@string/popup_menu_all_check"
+        android:textAppearance="@style/TextAppearance.DemoDescription"
+        app:layout_constraintBottom_toTopOf="@+id/all_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/single_check"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/all_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginBottom="@dimen/default_layout_margin"
+        android:text="@string/popup_menu_show"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
