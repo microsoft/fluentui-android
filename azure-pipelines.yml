@@ -5,13 +5,14 @@ pool:
   - JDK
 
 steps:
+
 - task: Gradle@2
-  displayName: 'gradlew bintrayUpload'
   inputs:
     gradleWrapperFile: 'gradlew'
-    tasks: 'bintrayUpload'
-    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PbintrayUser=$(bintrayUser) -PbintrayKey=$(bintrayKey)'
-
+    tasks: 'build'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
+    
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
@@ -19,9 +20,3 @@ steps:
     Contents: |
      **/*.aar
     TargetFolder: '$(build.artifactstagingdirectory)'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: Build'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-    ArtifactName: Build
