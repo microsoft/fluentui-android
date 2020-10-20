@@ -78,7 +78,7 @@
         <item name="fluentuiTabLayoutContainerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTabLayoutBackgroundColor">@color/fluentui_gray_950</item>
         <item name="fluentuiTabSelectedBackgroundColor">@color/fluentui_gray_600</item>
-
+        
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>

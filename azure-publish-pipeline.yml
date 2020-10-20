@@ -1,0 +1,26 @@
+pool:
+   vmImage: 'macos-latest'
+   demands:
+   - java	
+   - JDK
+
+steps:
+
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: '5.7.0'
+    checkLatest: true
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.nuspec'
+    versioningScheme: 'off'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '53b9d6eb-b51d-4f1a-9f32-07d598f2aac7'
+    verbosityPush: 'Normal'

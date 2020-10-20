@@ -11,12 +11,36 @@
     android:layout_height="match_parent"
     tools:context=".demos.PopupMenuActivity">
 
+    <Button
+        android:id="@+id/no_check2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin_start_duo"
+        android:layout_marginEnd="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin_top_duo"
+        android:text="@string/popup_menu_show"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/no_check_text" />
+
+    <TextView
+        android:id="@+id/no_check_text2"
+        style="@style/Widget.DemoSubHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_layout_margin_start_duo"
+        android:layout_marginEnd="@dimen/default_view_margin"
+        android:layout_marginTop="@dimen/default_layout_margin_top_duo"
+        android:text="@string/popup_menu_simple_duo"
+        android:textAppearance="@style/TextAppearance.DemoDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        
     <TextView
         android:id="@+id/no_check_text"
         style="@style/Widget.DemoSubHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginStart="@dimen/default_wide_menu_margin"
         android:text="@string/popup_menu_simple"
         android:textAppearance="@style/TextAppearance.DemoDescription"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +50,7 @@
         android:id="@+id/no_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/default_layout_margin"
+        android:layout_marginStart="@dimen/default_wide_menu_margin"
         android:layout_marginTop="@dimen/default_view_margin"
         android:text="@string/popup_menu_show"
         app:layout_constraintStart_toStartOf="parent"

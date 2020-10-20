@@ -87,6 +87,8 @@
     <dimen name="fluentui_popup_menu_item_min_height">42dp</dimen>
     <dimen name="fluentui_popup_menu_item_min_width_no_icon">132dp</dimen>
     <dimen name="fluentui_popup_menu_item_min_width_icon">172dp</dimen>
+    <dimen name="fluentui_popup_menu_duo_margin_start">600dp</dimen>
+    <dimen name="fluentui_popup_menu_duo_margin_top">268dp</dimen>
 
     <!--Progress: Circular-->
     <dimen name="fluentui_progress_circular_xsmall">20dp</dimen>
