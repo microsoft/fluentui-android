@@ -408,6 +408,10 @@ class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
         }
     }
 
+    fun getState(): Int {
+        return this.state
+    }
+
     private fun calculateCollapsedOffset() {
         if(viewRef == null)
             return

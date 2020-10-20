@@ -78,4 +78,14 @@
     <!--Tooltip Demo-->
     <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button" />
 
+    <!--TabLayout Demo-->
+    <style name="FluentUI.TabLayout" parent="">
+        <item name="containerBackgroundColor">?attr/fluentuiTabLayoutContainerBackgroundColor</item>
+        <item name="tabsBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
+        <item name="tabSelectedBackgroundColor">?attr/fluentuiTabSelectedBackgroundColor</item>
+        <item name="tabUnselectedBackgroundColor">?attr/fluentuiTabUnselectedBackgroundColor</item>
+        <item name="tabSelectedTextColor">?attr/fluentuiTabSelectedTextColor</item>
+        <item name="tabUnselectedTextColor">?attr/fluentuiTabUnselectedTextColor</item>
+    </style>
+
 </resources>

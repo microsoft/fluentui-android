@@ -1,0 +1,16 @@
+# pipeline for syncing AzDo develop branch to github develop
+
+trigger:
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- bash: |
+   git checkout develop
+   
+   git remote add github https://$(githubUser):$(githubPassword)@github.com/microsoft/fluentui-android
+   
+   git push --tags github develop:develop --force
+  displayName: 'Push changes to GitHub develop'

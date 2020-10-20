@@ -116,6 +116,20 @@
     <dimen name="fluentui_people_picker_label_margin_end">8dp</dimen>
     <dimen name="fluentui_people_picker_vertical_padding">12dp</dimen>
 
+    <!--Persistent BottomSheet-->
+    <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_margin_top">3dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical">4dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_horizontal_item_paddingTop">10dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_divider_margin_vertical">6dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_content_offset">8dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_item_padding_horizontal">2dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_header_marginTop">13dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_header_marginBottom">6dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_vertical_list_delta_offset">10dp</dimen>
+    <dimen name="fluentui_bottomsheet_horizontalItem_min_width">64dp</dimen>
+    <dimen name="fluentui_persistentbottomsheet_elevation">24dp</dimen>
+    <dimen name="fluentui_persistentbottomsheet_corner_radius">16dp</dimen>
+
     <!--Persona-->
     <dimen name="fluentui_persona_horizontal_spacing">@dimen/fluentui_list_item_spacing</dimen>
     <dimen name="fluentui_persona_horizontal_padding">@dimen/fluentui_list_item_horizontal_margin_regular</dimen>
@@ -132,6 +146,8 @@
     <dimen name="fluentui_popup_menu_item_min_height">42dp</dimen>
     <dimen name="fluentui_popup_menu_item_min_width_no_icon">132dp</dimen>
     <dimen name="fluentui_popup_menu_item_min_width_icon">172dp</dimen>
+    <dimen name="fluentui_popup_menu_duo_margin_start">600dp</dimen>
+    <dimen name="fluentui_popup_menu_duo_margin_top">268dp</dimen>
 
     <!--Progress: Circular-->
     <dimen name="fluentui_progress_circular_xsmall">20dp</dimen>
@@ -184,6 +200,15 @@
     <dimen name="fluentui_snackbar_custom_view_margin_vertical_medium">8dp</dimen>
     <dimen name="fluentui_snackbar_custom_view_margin_vertical_small">12dp</dimen>
     <dimen name="fluentui_snackbar_custom_view_margin_vertical_announcement">16dp</dimen>
+
+    <!-- TabLayout -->
+    <dimen name="fluentui_tab_height">48dp</dimen>
+    <dimen name="fluentui_tab_padding_horizontal">16dp</dimen>
+    <dimen name="fluentui_tab_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_tab_content_start">32dp</dimen>
+    <dimen name="fluentui_tab_radius">20dp</dimen>
+    <dimen name="fluentui_tab_indicator_height">0dp</dimen>
+    <dimen name="fluentui_tab_margin">8dp</dimen>
 
     <!--Toolbar-->
     <dimen name="fluentui_toolbar_navigation_icon_container_size">@dimen/fluentui_min_touch_size</dimen>
