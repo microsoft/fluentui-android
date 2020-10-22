@@ -16,6 +16,8 @@
         android:id="@+id/persona_chip_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
         app:avatarSize="xsmall" />
 
@@ -32,6 +34,8 @@
         android:id="@+id/persona_chip_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.FluentUI.Body1"
