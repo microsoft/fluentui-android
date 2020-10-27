@@ -21,6 +21,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.appbarlayout.AppBarLayout
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.inputMethodManager
 import com.microsoft.fluentui.util.isVisible
@@ -105,7 +106,8 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     var onCloseListener: SearchView.OnCloseListener? = null
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
+            super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr)
 
     /**
      * Sets the query text for the search view.

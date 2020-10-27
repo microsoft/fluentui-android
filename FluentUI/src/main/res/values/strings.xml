@@ -7,7 +7,6 @@
 <resources>
     <!-- *** CalendarView *** -->
 
-    <string name="date_at_time">%1$s at %2$s</string>
     <string name="date_time">%1$s, %2$s</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>

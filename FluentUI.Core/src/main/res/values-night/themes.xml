@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!--
+        All dark theme specific semantic colors should be defined here.
+        Light theme semantic colors should be defined in themes.xml as the default.
+    -->
+    <style name="Base.Theme.FluentUI" parent="Base.Theme.FluentUI.Internal">
+        <item name="android:textColorPrimary">@color/fluentui_white</item>
+
+        <!--Backgrounds-->
+        <item name="fluentuiBackgroundColor">@color/fluentui_black</item>
+        <item name="fluentuiBackgroundPressedColor">@color/fluentui_gray_900</item>
+
+        <!--Foregrounds-->
+        <item name="fluentuiForegroundColor">@color/fluentui_white</item>
+        <item name="fluentuiForegroundOnPrimaryColor">@color/fluentui_black</item>
+        <item name="fluentuiDividerColor">@color/fluentui_gray_800</item>
+
+        <!--Button-->
+        <item name="fluentuiButtonBackgroundDisabledColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiButtonBackgroundPressedColor">?attr/fluentuiColorPrimaryDarker</item>
+        <item name="fluentuiButtonTextDisabledColor">?attr/colorPrimaryDark</item>
+
+        <!--ButtonBorderless-->
+        <item name="fluentuiButtonBorderlessBackgroundPressedColor">@android:color/transparent</item>
+        <item name="fluentuiButtonBorderlessTextDisabledColor">@color/fluentui_gray_500</item>
+        <item name="fluentuiButtonBorderlessTextPressedColor">?attr/colorPrimaryDark</item>
+
+        <!--Button Outlined-->
+        <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_tint_20</item>
+        <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_40</item>
+        <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_800</item>
+
+        <!--Toolbar-->
+        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+
+    </style>
+
+</resources>

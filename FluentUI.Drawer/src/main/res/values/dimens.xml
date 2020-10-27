@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Drawer-->
+    <dimen name="fluentui_drawer_corner_radius">@dimen/fluentui_corner_radius_8</dimen>
+    <dimen name="fluentui_drawer_peek_height">0dp</dimen>
+    <dimen name="fluentui_drawer_peek_width">0dp</dimen>
+    <dimen name="fluentui_drawer_elevation">5dp</dimen>
+    <dimen name="fluentui_drawer_handle_vertical_margin">8dp</dimen>
+    <!--Persistent BottomSheet-->
+    <dimen name="fluentui_persistent_bottomsheet_item_view_margin">12dp</dimen>
+    <!--BottomSheet-->
+    <dimen name="fluentui_bottom_sheet_bottom_padding">8dp</dimen>
+
+    <!--Persistent BottomSheet-->
+    <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_margin_top">3dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical">4dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_horizontal_item_paddingTop">10dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_divider_margin_vertical">6dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_content_offset">8dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_item_padding_horizontal">2dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_header_marginTop">13dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_header_marginBottom">6dp</dimen>
+    <dimen name="fluentui_persistent_bottomsheet_vertical_list_delta_offset">10dp</dimen>
+    <dimen name="fluentui_bottomsheet_horizontalItem_min_width">64dp</dimen>
+    <dimen name="fluentui_persistentbottomsheet_elevation">24dp</dimen>
+    <dimen name="fluentui_persistentbottomsheet_corner_radius">16dp</dimen>
+
+</resources>

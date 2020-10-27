@@ -16,6 +16,7 @@ import android.widget.TextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
@@ -222,7 +223,8 @@ class PeoplePickerView : TemplateView {
     }
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
+            : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PeoplePickerView)
 
         label = styledAttrs.getString(R.styleable.PeoplePickerView_label) ?: ""

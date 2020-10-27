@@ -17,9 +17,10 @@ import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.TextView
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
-import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.view.TemplateView
+import com.microsoft.fluentui.util.isVisible
 import kotlinx.android.synthetic.main.view_persona_chip.view.*
 
 class PersonaChipView : TemplateView {
@@ -88,7 +89,8 @@ class PersonaChipView : TemplateView {
     var listener: Listener? = null
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
+            : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr) {
         if (attrs == null)
             return
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaChipView)

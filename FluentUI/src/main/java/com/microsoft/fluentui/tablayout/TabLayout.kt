@@ -50,27 +50,28 @@ class TabLayout : TemplateView {
     private val tabUnselectedTextColor: Int
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr) {
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.TabLayout)
         val tabTypeOrdinal = styledAttributes.getInt(R.styleable.TabLayout_tabType, TabType.STANDARD.ordinal)
+        val fluentContext = FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI)
         containerBackgroundColor = styledAttributes.getColor(
             R.styleable.TabLayout_containerBackgroundColor,
-            ThemeUtil.getColor(context, R.attr.fluentuiTabLayoutContainerBackgroundColor))
+            ThemeUtil.getColor(fluentContext, R.attr.fluentuiTabLayoutContainerBackgroundColor))
         tabsBackgroundColor = styledAttributes.getColor(
             R.styleable.TabLayout_tabsBackgroundColor,
-            ThemeUtil.getColor(context, R.attr.fluentuiTabLayoutBackgroundColor))
+            ThemeUtil.getColor(fluentContext, R.attr.fluentuiTabLayoutBackgroundColor))
         selectedTabBackgroundColor = styledAttributes.getColor(
             R.styleable.TabLayout_tabSelectedBackgroundColor,
-            ThemeUtil.getColor(context, R.attr.fluentuiTabSelectedBackgroundColor))
+            ThemeUtil.getColor(fluentContext, R.attr.fluentuiTabSelectedBackgroundColor))
         unselectedTabBackgroundColor = styledAttributes.getColor(
             R.styleable.TabLayout_tabUnselectedBackgroundColor,
-            ThemeUtil.getColor(context, R.attr.fluentuiTabUnselectedBackgroundColor))
+            ThemeUtil.getColor(fluentContext, R.attr.fluentuiTabUnselectedBackgroundColor))
         tabSelectedTextColor = styledAttributes.getColor(
             R.styleable.TabLayout_tabSelectedTextColor,
-            ThemeUtil.getColor(context, R.attr.fluentuiTabSelectedTextColor))
+            ThemeUtil.getColor(fluentContext, R.attr.fluentuiTabSelectedTextColor))
         tabUnselectedTextColor = styledAttributes.getColor(
             R.styleable.TabLayout_tabUnselectedTextColor,
-            ThemeUtil.getColor(context, R.attr.fluentuiTabUnselectedTextColor))
+            ThemeUtil.getColor(fluentContext, R.attr.fluentuiTabUnselectedTextColor))
         tabType = TabType.values()[tabTypeOrdinal]
         styledAttributes.recycle()
     }

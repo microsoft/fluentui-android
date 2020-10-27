@@ -129,7 +129,7 @@ In XML:
 
 ## Demo app
 
-Included in this repository is a demo of currently implemented controls. A full list of implemented controls available in the demo can be found here:  [Demos](FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos).
+Included in this repository is a demo of currently implemented controls. A full list of implemented controls available in the demo can be found here:  [Demos](Fluentui_Demo/src/main/java/com/microsoft/fluentuidemo/demos).
 
 To see samples of all of our implemented controls and design language, run the [FluentUI.Demo](FluentUI.Demo) module in Android Studio.
 

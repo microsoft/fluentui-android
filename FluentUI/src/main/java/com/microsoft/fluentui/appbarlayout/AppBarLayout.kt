@@ -18,13 +18,15 @@ import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.appbarlayout.AppBarLayout.ScrollBehavior
-import com.microsoft.fluentui.search.Searchbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
-import com.microsoft.fluentui.toolbar.Toolbar
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.activity
+import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentui.toolbar.Toolbar
 import kotlin.math.abs
 
 /**
@@ -121,9 +123,9 @@ class AppBarLayout : AppBarLayout {
         }
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(context), attrs) {
+    constructor(context: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs) {
         setupToolbar(context)
-        setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiAppBarLayoutBackgroundColor))
+        setBackgroundColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), R.attr.fluentuiAppBarLayoutBackgroundColor))
 
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.AppBarLayout)
         scrollTargetViewId = styledAttributes.getResourceId(R.styleable.AppBarLayout_scrollTargetViewId, View.NO_ID)

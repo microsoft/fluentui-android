@@ -10,5 +10,4 @@
     <item name="fluentui_number_picker_increment" type="id" />
     <item name="fluentui_number_picker_decrement" type="id" />
     <item name="fluentui_snackbar_custom_view" type="id" />
-    <item name="fluentui_bottom_sheet_item_divider" type="id" />
 </resources>

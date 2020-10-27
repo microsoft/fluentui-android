@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--ListItemView-->
+    <attr name="fluentuiListItemBackgroundColor" format="reference|color" />
+    <attr name="fluentuiListItemTitleColor" format="reference|color" />
+    <attr name="fluentuiListItemSubtitleColor" format="reference|color" />
+    <attr name="fluentuiListItemSubtitleLargeHeaderColor" format="reference|color" />
+    <attr name="fluentuiListItemFooterColor" format="reference|color" />
+    <attr name="fluentuiListItemRippleColor" format="reference|color" />
+
+    <!--ListSubHeader-->
+    <attr name="fluentuiListSubHeaderTitlePrimaryColor" format="reference|color" />
+    <attr name="fluentuiListSubHeaderTitleSecondaryColor" format="reference|color" />
+    <attr name="fluentuiListSubHeaderTitleTertiaryColor" format="reference|color" />
+
+    <!--Button-->
+    <attr name="fluentuiButtonBackgroundDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonBackgroundDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiButtonTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonTextDisabledColor" format="reference|color"/>
+
+    <!--Button Borderless-->
+    <attr name="fluentuiButtonBorderlessBackgroundDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessBackgroundDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessTextDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessTextPressedColor" format="reference|color"/>
+
+    <!--Button Outlined-->
+    <attr name="fluentuiButtonOutlinedTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonOutlinedTextDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonOutlinedTextPressedColor" format="reference|color"/>
+    <attr name="fluentuiButtonOutlinedStrokeDefaultColor" format="reference|color"/>
+    <attr name="FluentuiButtonOutlinedStrokeDisabledColor" format="reference|color"/>
+    <attr name="FluentuiButtonOutlinedStrokePressedColor" format="reference|color"/>
+
+    <!--Compound Buttons-->
+    <attr name="fluentuiCompoundButtonTintDefaultColor" format="reference|color" />
+    <attr name="fluentuiCompoundButtonTintCheckedColor" format="reference|color" />
+
+</resources>

@@ -180,8 +180,6 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         verticalListAdapter.onBottomSheetItemClickListener = this
         sheet_vertical_item_list_1.adapter = verticalListAdapter
 
-        showDefaultBottomSheet()
-
         show_persistent_bottom_sheet_button.setOnClickListener {
             currentSheet.expand()
         }
@@ -201,6 +199,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
             if (defaultPersistentBottomSheet.visibility == View.GONE) {
                 currentSheet = defaultPersistentBottomSheet
                 persistentBottomSheetDemo.visibility = View.GONE
+                showDefaultBottomSheet()
             } else {
                 currentSheet = persistentBottomSheetDemo
                 defaultPersistentBottomSheet.visibility = View.GONE

@@ -36,7 +36,7 @@
 
     </LinearLayout>
 
-    <com.microsoft.fluentui.view.WrapContentViewPager
+    <com.microsoft.fluentui.datetimepicker.WrapContentViewPager
         android:id="@+id/view_pager"
         android:background="?attr/fluentuiDialogBackgroundColor"
         android:importantForAccessibility="no"

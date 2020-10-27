@@ -66,7 +66,7 @@ object DateStringUtils {
      */
     @JvmStatic
     fun formatDateAbbrevAll(context: Context, date: TemporalAccessor): String =
-        formatDateAbbrevAll(context, date.epochMillis)
+            formatDateAbbrevAll(context, date.epochMillis)
 
     /**
      * @see .formatDateAbbrevAll

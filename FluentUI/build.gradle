@@ -1,123 +1,51 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved.
- * Licensed under the MIT License.
- */
-
 apply plugin: 'com.android.library'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
-
 android {
-    compileSdkVersion 28
+    compileSdkVersion constants.compileSdkVersion
+
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 6
-        versionName '0.0.6'
+        minSdkVersion constants.minSdkVersion
+        targetSdkVersion constants.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
         vectorDrawables.useSupportLibrary = true
     }
-    lintOptions {
-        abortOnError false
-    }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
-    productFlavors {
-    }
-}
 
-gradle.taskGraph.whenReady { taskGraph ->
-    taskGraph.allTasks.forEach {
-        if (it.name.contains("ReleaseUnitTest")) {
-            it.enabled = false
-        }
-    }
-}
-
-repositories {
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:exifinterface:28.0.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
-    implementation 'com.android.support:cardview-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':FluentUI.Core')
+
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
     implementation 'com.splitwise:tokenautocomplete:2.0.8'
-    implementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:4.0-alpha-3'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-}
 
-task sourceJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier "sources"
-}
+    implementation "com.android.support:appcompat-v7:$supportVersion"
+    implementation "com.android.support:exifinterface:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+    implementation "com.android.support:cardview-v7:$supportVersion"
+    implementation "com.android.support:design:$supportVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.microsoft.device:dualscreen-layout:$duoVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
 
-publishing {
-    repositories {
-        maven {
-            url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
-            credentials {
-                username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
-                password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
-            }
-        }
-    }
-    publications {
-        FluentUI(MavenPublication) {
-            groupId 'com.microsoft.fluentui'
-            artifactId "FluentUIAndroid"
-            version = android.defaultConfig.versionName
-            artifact(sourceJar)
-            artifact(bundleReleaseAar)
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-                // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.implementation.allDependencies.each {
-                    if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', it.group)
-                        dependencyNode.appendNode('artifactId', it.name)
-                        dependencyNode.appendNode('version', it.version)
-                    }
-                }
-            }
-        }
-    }
-}
+    //test implementations
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.robolectric:robolectric:$roboelectricVersion"
 
-bintray {
-    user = project.hasProperty('bintrayUser') ? "$bintrayUser" : ""
-    key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
-    publications = ['FluentUI']
-    publish = true
-    pkg {
-        repo = 'generic'
-        name = 'fluentui-android'
-        version {
-            name = android.defaultConfig.versionName
-            vcsTag = android.defaultConfig.versionName
-        }
-    }
+    // android test
+    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
 }

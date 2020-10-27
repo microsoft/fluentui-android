@@ -10,9 +10,9 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatDialogFragment
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.*
 import com.microsoft.fluentui.util.DateTimeUtils
 import com.microsoft.fluentui.util.isAccessibilityEnabled
+import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.*
 import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
 

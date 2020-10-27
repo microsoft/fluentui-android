@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.util
 
+import android.support.annotation.RestrictTo
 import org.threeten.bp.*
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.DateTimeParseException
@@ -12,6 +13,7 @@ import org.threeten.bp.format.DateTimeParseException
 /**
  * [DateTimeUtils] contains helper methods for manipulating and parsing dates
  */
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 object DateTimeUtils {
     /**
      * It's unsafe to directly call DateTime.parse for a given date due to DST changes.

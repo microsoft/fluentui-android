@@ -13,10 +13,6 @@
     <integer name="fluentui_anim_indeterminate_duration">1000</integer>
     <integer name="fluentui_anim_indeterminate_linear_duration">2000</integer>
 
-    <!--Drawer-->
-    <integer name="fluentui_drawer_fade_in_milliseconds" type="integer">100</integer>
-    <integer name="fluentui_drawer_fade_out_milliseconds" type="integer">50</integer>
-
     <!--NumberPicker-->
     <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">7</integer>
 
@@ -33,5 +29,4 @@
     <!--layout alpha values only accept integer resources despite the fact that these values are floats-->
     <item name="fluentui_tooltip_background_alpha" type="integer" format="float">0.95</item>
 
-    <integer name="fluentui_persistent_bottomsheet_max_item_row">5</integer>
 </resources>

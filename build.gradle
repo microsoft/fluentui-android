@@ -17,6 +17,26 @@ buildscript {
 }
 
 allprojects {
+
+    project.ext {
+        constants = [
+                minSdkVersion: 21,
+                targetSdkVersion: 28,
+                compileSdkVersion: 28,
+        ]
+
+        buildToolVersion          =    '29.0.3'
+        kotlin_version            =    '1.2.60'
+        supportVersion            =    '28.0.0'
+        junitVersion              =    '4.12'
+        testRunnerVersion         =    '1.0.2'
+        espressoVersion           =    '3.0.2'
+        roboelectricVersion       =    '4.4'
+        constraintLayoutVersion   =    '2.0.1'
+        duoVersion                =    '1.0.0-alpha01'
+
+    }
+
     repositories {
         google()
         jcenter()

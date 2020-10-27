@@ -8,6 +8,7 @@ package com.microsoft.fluentui.widget
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ProgressBar
+import com.microsoft.fluentui.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 /**
@@ -17,5 +18,5 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 class ProgressBar : ProgressBar {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0)
-        : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr, defStyleRes)
+        : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr, defStyleRes)
 }

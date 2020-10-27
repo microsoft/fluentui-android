@@ -29,7 +29,6 @@ import com.microsoft.fluentui.R
 
 import com.microsoft.fluentui.util.ColorProperty
 import com.microsoft.fluentui.util.DateTimeUtils
-import com.microsoft.fluentui.view.MSRecyclerView
 import org.threeten.bp.Duration
 import org.threeten.bp.LocalDate
 import org.threeten.bp.Month
