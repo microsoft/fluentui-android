@@ -5,6 +5,7 @@
 
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/persistent_bottom_sheet_outlined"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,11 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/fluentui_drawer_handle_vertical_margin"
-            android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
-            android:importantForAccessibility="no"
+            android:paddingTop="@dimen/fluentui_drawer_handle_vertical_margin"
+            android:paddingBottom="@dimen/fluentui_drawer_handle_vertical_margin"
+            android:paddingStart="@dimen/fluentui_drawer_handle_horizontal_margin"
+            android:contentDescription=" "
+            android:paddingEnd="@dimen/fluentui_drawer_handle_horizontal_margin"
             android:src="@drawable/ic_drawer_handle"
-            android:tint="?attr/fluentuiDrawerHandleColor" />
+            android:tint="?attr/fluentuiDrawerHandleColor"
+            tools:ignore="HardcodedText" />
 
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/scroll_container"
@@ -43,6 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"
+                android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_content_padding_vertical"
                 android:orientation="vertical" />
         </android.support.v4.widget.NestedScrollView>
     </com.microsoft.fluentui.drawer.DrawerView>

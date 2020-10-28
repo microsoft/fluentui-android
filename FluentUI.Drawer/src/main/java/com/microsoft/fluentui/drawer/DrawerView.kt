@@ -12,7 +12,6 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.support.v7.widget.LinearLayoutCompat
 import android.util.AttributeSet
-import com.microsoft.fluentui.drawer.R
 
 internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutCompat(context, attrs) {
     companion object {
@@ -24,12 +23,13 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     }
 
     private val clipPath = Path()
+    private var cornerRadius: Float
     var behaviorType: BehaviorType
-    val cornerRadius :Float
 
     init {
         val a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
-        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "BOTTOM")
+        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType)
+                ?: "BOTTOM")
         val drawerTypedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawerView)
         cornerRadius = drawerTypedArray.getDimension(R.styleable.DrawerView_cornerRadius, resources.getDimension(R.dimen.fluentui_drawer_corner_radius))
         drawerTypedArray.recycle()
@@ -48,11 +48,16 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
         canvas.restoreToCount(save)
     }
 
+    fun setCornerRadius(radius: Float) {
+        cornerRadius = radius
+        invalidate()
+    }
+
     private fun updateClipPath(width: Float, height: Float) {
 
-        val radii = FloatArray(RADII_SIZE){0f}
+        val radii = FloatArray(RADII_SIZE) { 0f }
 
-        when(behaviorType) {
+        when (behaviorType) {
             BehaviorType.BOTTOM -> {
                 // top left corner
                 radii[0] = cornerRadius

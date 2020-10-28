@@ -14,8 +14,7 @@
     <com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
         android:id="@+id/sheet_horizontal_item_list_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_layout_margin"/>
+        android:layout_height="wrap_content" />
 
     <View
         android:layout_width="match_parent"

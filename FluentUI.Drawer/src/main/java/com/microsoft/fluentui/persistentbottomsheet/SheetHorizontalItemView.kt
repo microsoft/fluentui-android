@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.persistentbottomsheet
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v4.widget.TextViewCompat
 import android.util.AttributeSet
@@ -33,13 +34,14 @@ class SheetHorizontalItemView: TemplateView {
     @JvmOverloads
     constructor(context: Context,  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
 
+    @SuppressLint("ResourceType")
     constructor(context: Context, sheetItem: SheetItem, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         this.mSheetItem = sheetItem
         this.title = sheetItem.title
         if (sheetItem.bitmap != null) {
             this.customView = context.createImageView(sheetItem.bitmap)
         } else {
-            this.customView = context.createImageView(sheetItem.drawable)
+            this.customView = context.createImageView(sheetItem.drawable, sheetItem.tint)
         }
     }
 

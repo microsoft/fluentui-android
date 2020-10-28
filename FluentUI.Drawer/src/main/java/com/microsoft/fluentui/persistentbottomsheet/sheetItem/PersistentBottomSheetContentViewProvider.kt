@@ -3,25 +3,31 @@ package com.microsoft.fluentui.persistentbottomsheet.sheetItem
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 
 internal class PersistentBottomSheetContentViewProvider(private val context: Context,
                                                         private val contentParam: BottomSheetParam.ContentParam) {
 
-    fun getSheetContentView(container: LinearLayout, itemLayoutParam: BottomSheetParam.ItemLayoutParam): View {
+    fun getSheetContentView(container: LinearLayout, itemLayoutParam: BottomSheetParam.ItemLayoutParam): SheetContainerInfo {
         if (contentParam.layoutResId != null) {
             val view = LayoutInflater.from(context).inflate(contentParam.layoutResId!!, container, false)
             container.addView(view)
-            return container
+            return SheetContainerInfo(container, false)
         }
         if (contentParam.listOfItemList.isEmpty()) {
-            return container
+            return SheetContainerInfo(container, false)
         }
-        contentParam.listOfItemList.forEach {
-            container.addView(getProvider(context, it).getContentView(it,itemLayoutParam,contentParam))
+        var isSingleLineItem = false
+        contentParam.listOfItemList.forEachIndexed { index, it ->
+            val provider = getProvider(context, it)
+            container.addView(provider.getContentView(it, itemLayoutParam, contentParam))
+            isSingleLineItem = index == 0 && provider.isSingleLineContent(it, itemLayoutParam, contentParam)
         }
-        return container
+        return SheetContainerInfo(container, isSingleLineItem)
     }
+
+    data class SheetContainerInfo(val Container: ViewGroup, val isSingleLineItem: Boolean)
 
     companion object {
 
@@ -44,4 +50,10 @@ internal interface IViewProvider {
     fun getContentView(itemTypeList: BottomSheetParam.ItemTypeList,
                        itemLayoutParam: BottomSheetParam.ItemLayoutParam,
                        contentParam: BottomSheetParam.ContentParam): View
+
+    fun isSingleLineContent(itemTypeList: BottomSheetParam.ItemTypeList,
+                            itemLayoutParam: BottomSheetParam.ItemLayoutParam,
+                            contentParam: BottomSheetParam.ContentParam): Boolean {
+        return false
+    }
 }
