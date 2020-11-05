@@ -185,10 +185,29 @@ internal class CalendarDayView: AppCompatButton, Checkable {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, widthMeasureSpec)
+        val desiredWidth = suggestedMinimumWidth + paddingLeft + paddingRight
+        val desiredHeight = suggestedMinimumHeight + paddingTop + paddingBottom
+
+        setMeasuredDimension(measureDimension(desiredWidth, widthMeasureSpec),
+                measureDimension(desiredHeight, heightMeasureSpec))
         todayBackgroundDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
         selectedDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
         _foregroundDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
+    }
+
+    private fun measureDimension(desiredSize: Int, measureSpec: Int): Int {
+        var result: Int
+        val specMode = MeasureSpec.getMode(measureSpec)
+        val specSize = MeasureSpec.getSize(measureSpec)
+        if (specMode == MeasureSpec.EXACTLY) {
+            result = specSize
+        } else {
+            result = desiredSize
+            if (specMode == MeasureSpec.AT_MOST) {
+                result = Math.min(result, specSize)
+            }
+        }
+        return result
     }
 
     override fun onDraw(canvas: Canvas) {

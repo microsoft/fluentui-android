@@ -10,6 +10,7 @@ import android.support.design.widget.BaseTransientBottomBar
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatButton
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +22,7 @@ import com.microsoft.fluentui.R.id.*
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.ThemeUtil
+import com.microsoft.fluentui.util.activity
 import kotlinx.android.synthetic.main.view_snackbar.view.*
 
 /**
@@ -128,18 +130,58 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
         updateBackground()
-        val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
-
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
         if (content.parent is FrameLayout) {
             val lp = content.layoutParams as FrameLayout.LayoutParams
             lp.bottomMargin = context.resources.getDimension(R.dimen.fluentui_snackbar_background_inset).toInt()
-            if(DuoSupportUtils.isWindowDoublePortrait(context)) {
-                lp.width = singleScreenDisplayPixels
-                lp.rightMargin = singleScreenDisplayPixels + context.resources.getDimension(R.dimen.fluentui_snackbar_custom_view_margin_start).toInt()
+            context.activity?.let {
+                if(DuoSupportUtils.isWindowDoublePortrait(it)) {
+                    val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(it)
+                    val snackbarLP  = getView().layoutParams
+                    snackbarLP.width = singleScreenDisplayPixels
+                    getView().layoutParams = snackbarLP
+                    alignLeft(parent)
+                }
             }
             content.layoutParams = lp
         }
+    }
+
+    /**
+     * This is adapted from android.support.design.widget.Snackbar
+     * It ensures we can use Snackbars in complex ViewGroups like RecyclerView.
+     */
+    private fun alignLeft(view: View) {
+        var currentView: View? = view
+        var fallbackParent: ViewGroup? = null
+
+        do {
+            if (currentView is CoordinatorLayout) {
+                // We've found a CoordinatorLayout, use it
+                val params = getView().layoutParams as CoordinatorLayout.LayoutParams
+                params.gravity = Gravity.BOTTOM
+                getView().layoutParams = params
+                return
+            }
+
+            if (currentView is FrameLayout)
+                if (currentView.id == android.R.id.content) {
+                    // If we've hit the decor content view, then we didn't find a CoL in the
+                    // hierarchy, so use it.
+                    val params = getView().layoutParams as FrameLayout.LayoutParams
+                    params.gravity = Gravity.BOTTOM
+                    view.layoutParams = params
+                    return
+                } else
+                // It's not the content view but we'll use it as our fallback
+                    fallbackParent = currentView
+
+            // Else, we will loop and crawl up the view hierarchy and try to find a parent
+            currentView = currentView?.parent as? View
+        } while (currentView != null)
+
+        // If we reach here then we didn't find a CoL or a suitable content view so we'll fallback
+        return
     }
 
     /**

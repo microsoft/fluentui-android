@@ -70,6 +70,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     private var firstDayOfWeek: DayOfWeek? = null
     private var dayCount: Int
+    private var viewHeight: Int = 0
 
     constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) {
         this.context = context
@@ -124,7 +125,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarDayViewHolder {
         val dayView = CalendarDayView(parent.context, config)
-        dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, viewHeight)
         dayView.setOnClickListener(this)
         ViewCompat.setAccessibilityDelegate(dayView, dayViewAccessibilityDelegate)
         return CalendarDayViewHolder(dayView)
@@ -169,6 +170,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
             dayOfWeek = dayOfWeek.plus(1)
             ++i
         }
+    }
+
+    fun setViewHeight(rowHeight: Int) {
+        viewHeight = rowHeight
     }
 
     /**

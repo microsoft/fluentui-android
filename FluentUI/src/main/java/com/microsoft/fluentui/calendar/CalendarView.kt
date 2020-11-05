@@ -34,6 +34,7 @@ import org.threeten.bp.*
 class CalendarView : LinearLayout, OnDateSelectedListener {
     companion object {
         const val DAYS_IN_WEEK = 7
+        const val WEEK_MID = 3
         private const val VIEW_MODE_CHANGE_ANIMATION_DURATION = 300L
         private const val HEIGHT = "height"
     }
@@ -184,7 +185,7 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         val viewWidth = MeasureSpec.getSize(widthMeasureSpec)
         rowHeight = viewWidth / DAYS_IN_WEEK
         widthMeasureSpec = MeasureSpec.makeMeasureSpec(rowHeight * DAYS_IN_WEEK, View.MeasureSpec.EXACTLY)
-
+        weeksView.setRowHeight(rowHeight)
         resizeAnimator?.let {
             if (it.isRunning) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec)
