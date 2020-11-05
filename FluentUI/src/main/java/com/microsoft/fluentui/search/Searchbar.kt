@@ -5,10 +5,8 @@
 
 package com.microsoft.fluentui.search
 
-import android.app.Activity
 import android.app.SearchableInfo
 import android.content.Context
-import android.content.ContextWrapper
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatImageView
 import android.support.v7.widget.SearchView
@@ -24,6 +22,7 @@ import com.microsoft.fluentui.appbarlayout.AppBarLayout
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.inputMethodManager
 import com.microsoft.fluentui.util.isVisible
+import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.toggleKeyboardVisibility
 import com.microsoft.fluentui.view.TemplateView
 import com.microsoft.fluentui.widget.ProgressBar
@@ -156,7 +155,9 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         searchView = findViewInTemplateById(R.id.search_view)
         searchCloseButton = findViewInTemplateById(R.id.search_close)
         searchProgress = findViewInTemplateById(R.id.search_progress)
-        singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(getActivityContext()!!)
+        context.activity?.let {
+            singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(it)
+        }
 
         // Hide the default search view close button from TalkBack and get rid of the space it takes up.
         val closeButton = searchView?.findViewById<AppCompatImageView>(R.id.search_close_btn)
@@ -181,16 +182,6 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         if (screenPos[0] + viewWidth > singleScreenDisplayPixels)
             widthMeasureSpec = MeasureSpec.makeMeasureSpec(singleScreenDisplayPixels - screenPos[0], MeasureSpec.EXACTLY)
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-    }
-
-    private fun getActivityContext(): Context?{
-        var context = context
-        while (context is ContextWrapper){
-            if (context is Activity)
-                return context
-            context = context.baseContext
-        }
-        return null
     }
 
     private fun updateViews() {

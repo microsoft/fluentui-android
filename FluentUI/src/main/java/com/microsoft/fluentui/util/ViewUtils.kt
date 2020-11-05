@@ -8,7 +8,6 @@ package com.microsoft.fluentui.util
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
-import android.graphics.drawable.Icon
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
