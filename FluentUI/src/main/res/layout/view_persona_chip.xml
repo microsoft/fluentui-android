@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
-        android:contentDescription="TODO" android:src="@drawable/ms_ic_dismiss_20_filled"
+        android:contentDescription="CLOSE" android:src="@drawable/ms_ic_dismiss_20_filled"
         android:tint="?attr/fluentuiPersonaChipForegroundActiveColor"
         android:tintMode="src_in" />
 
