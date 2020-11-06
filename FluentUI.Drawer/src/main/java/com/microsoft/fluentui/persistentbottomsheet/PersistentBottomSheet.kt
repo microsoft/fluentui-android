@@ -123,7 +123,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private fun configureBottomSheetDrawerHandle(sheetContainerInfo: PersistentBottomSheetContentViewProvider.SheetContainerInfo) {
         if (sheetContainerInfo.isSingleLineItem) {
             setDrawerHandleVisibility(View.GONE)
-            persistentSheet.setCornerRadius(0f)
             persistentSheetContainer.setPadding(persistentSheetContainer.paddingLeft,
                     resources.getDimensionPixelSize(R.dimen.fluentui_persistent_bottomsheet_content_padding_vertical),
                     persistentSheetContainer.paddingRight,
@@ -131,7 +130,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             return
         }
         setDrawerHandleVisibility(View.VISIBLE)
-        persistentSheet.setCornerRadius(resources.getDimension(R.dimen.fluentui_persistentbottomsheet_corner_radius))
         persistentSheetContainer.setPadding(persistentSheetContainer.paddingLeft,
                 0,
                 persistentSheetContainer.paddingRight,
