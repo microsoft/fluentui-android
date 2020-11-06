@@ -291,6 +291,7 @@
     <string name="persona_chip_example_error">Error Persona Chip</string>
     <string name="persona_chip_example_no_icon">Persona Chip with no close icon</string>
     <string name="persona_chip_example_basic">Basic Persona Chip</string>
+    <string name="persona_chip_selected">You selected a Persona Chip</string>
     <string name="persona_chip_example_click">You clicked on a selected Persona Chip.</string>
 
     <!--PopupMenu-->
