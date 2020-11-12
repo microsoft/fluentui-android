@@ -37,12 +37,14 @@ android {
         development {
             dimension 'distribution'
         }
+        /*
         dogfood {
             dimension 'distribution'
             applicationIdSuffix '.df'
             signingConfig signingConfigs.dogfood
             buildConfigField "String", "APP_CENTER_SECRET", project.hasProperty("appCenterSecret") ? "\"$appCenterSecret\"" : ""
         }
+        */
     }
 }
 
@@ -74,9 +76,11 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
 
+/*
     // App Center
     def appCenterSdkVersion = '1.8.0'
     dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+    */
 }

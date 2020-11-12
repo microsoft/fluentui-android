@@ -34,6 +34,7 @@ allprojects {
         roboelectricVersion       =    '4.4'
         constraintLayoutVersion   =    '2.0.1'
         duoVersion                =    '1.0.0-alpha01'
+        universalPkgDir           =     "universal"
 
     }
 
@@ -46,6 +47,19 @@ allprojects {
     }
 }
 
+task makeUniversalPkg(type: Copy){
+    from('.')
+    include('**/*.aar')
+    exclude('**/FluentUI-release.aar')
+    exclude('universal')
+    into("$rootDir/$universalPkgDir/libs")
+    includeEmptyDirs = false
+    eachFile {
+        path = name
+    }
+    rename '(.+)-release', '$1'
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
+    delete "$universalPkgDir"
 }
