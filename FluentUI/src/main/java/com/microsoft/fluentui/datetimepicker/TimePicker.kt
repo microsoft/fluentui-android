@@ -6,9 +6,9 @@
 package com.microsoft.fluentui.datetimepicker
 
 import android.content.Context
-import android.support.design.widget.TabLayout
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
+import com.google.android.material.tabs.TabLayout
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
 import android.text.format.DateFormat
 import android.util.AttributeSet
 import android.view.LayoutInflater

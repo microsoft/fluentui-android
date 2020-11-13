@@ -8,11 +8,11 @@ package com.microsoft.fluentui.calendar
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v4.util.SimpleArrayMap
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
-import android.support.v7.widget.RecyclerView
+import androidx.collection.SimpleArrayMap
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.R

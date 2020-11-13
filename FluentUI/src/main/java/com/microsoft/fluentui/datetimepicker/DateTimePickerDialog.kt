@@ -10,10 +10,10 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.LayoutTransition
 import android.content.Context
 import android.graphics.Rect
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatDialog
-import android.support.v7.widget.Toolbar
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatDialog
+import androidx.appcompat.widget.Toolbar
 import android.view.*
 import android.view.accessibility.AccessibilityEvent
 import com.jakewharton.threetenabp.AndroidThreeTen

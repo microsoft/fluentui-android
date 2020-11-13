@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.bottomsheet
 
 import android.content.Context
-import android.support.annotation.StyleRes
+import androidx.annotation.StyleRes
 import android.view.View
 import android.view.Window
 import com.microsoft.fluentui.R

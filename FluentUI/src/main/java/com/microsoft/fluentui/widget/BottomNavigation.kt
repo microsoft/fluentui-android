@@ -6,8 +6,8 @@
 package com.microsoft.fluentui.widget
 
 import android.content.Context
-import android.support.design.bottomnavigation.LabelVisibilityMode
-import android.support.design.widget.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.util.AttributeSet
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper

@@ -6,8 +6,8 @@
 package com.microsoft.fluentui.listitem
 
 import android.content.Context
-import android.support.annotation.ColorInt
-import android.support.v4.widget.TextViewCompat
+import androidx.annotation.ColorInt
+import androidx.core.widget.TextViewCompat
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View

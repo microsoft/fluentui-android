@@ -6,8 +6,8 @@
 package com.microsoft.fluentui.popupmenu
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.ListPopupWindow
+import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.ListPopupWindow
 import android.view.View
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.ItemCheckableBehavior

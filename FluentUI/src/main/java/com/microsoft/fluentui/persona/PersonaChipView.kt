@@ -10,8 +10,8 @@ import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.support.annotation.AttrRes
-import android.support.v4.content.ContextCompat
+import androidx.annotation.AttrRes
+import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.widget.ImageView

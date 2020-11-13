@@ -7,12 +7,12 @@ package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
 import android.graphics.Rect
-import android.support.annotation.ColorRes
-import android.support.annotation.LayoutRes
-import android.support.annotation.RestrictTo
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.ColorUtils
+import androidx.annotation.ColorRes
+import androidx.annotation.LayoutRes
+import androidx.annotation.RestrictTo
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet

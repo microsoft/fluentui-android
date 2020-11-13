@@ -7,7 +7,7 @@ package com.microsoft.fluentui.theming
 
 import android.content.Context
 import android.content.res.Resources
-import android.support.v7.view.ContextThemeWrapper
+import androidx.appcompat.view.ContextThemeWrapper
 import com.microsoft.fluentui.R
 
 class FluentUIContextThemeWrapper(base: Context) : ContextThemeWrapper(base, R.style.Theme_FluentUI) {

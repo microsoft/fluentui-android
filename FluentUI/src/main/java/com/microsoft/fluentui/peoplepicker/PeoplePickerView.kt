@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.peoplepicker
 
 import android.content.Context
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View.OnClickListener
 import android.view.ViewGroup

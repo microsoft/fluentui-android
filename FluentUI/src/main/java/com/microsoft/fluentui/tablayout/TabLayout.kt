@@ -7,9 +7,9 @@ package com.microsoft.fluentui.tablayout
 
 import android.content.Context
 import android.graphics.drawable.StateListDrawable
-import android.support.design.widget.TabLayout
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.drawable.DrawableCompat
+import com.google.android.material.tabs.TabLayout
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup

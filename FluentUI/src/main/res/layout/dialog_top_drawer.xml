@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_container"
     android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         app:behaviorType="TOP">
 
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -49,6 +49,6 @@
                 android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
                 app:layout_constraintBottom_toTopOf="@id/drawer_handle" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </com.microsoft.fluentui.drawer.DrawerView>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

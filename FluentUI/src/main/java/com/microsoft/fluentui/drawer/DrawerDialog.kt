@@ -8,11 +8,11 @@ package com.microsoft.fluentui.drawer
 import android.content.Context
 import android.graphics.Point
 import android.os.Handler
-import android.support.annotation.StyleRes
-import android.support.design.widget.BottomSheetBehavior
-import android.support.v7.app.ActionBar
-import android.support.design.widget.CoordinatorLayout
-import android.support.v7.app.AppCompatDialog
+import androidx.annotation.StyleRes
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import androidx.appcompat.app.ActionBar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.appcompat.app.AppCompatDialog
 import android.view.Gravity
 import android.view.View
 import android.view.Window

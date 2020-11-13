@@ -8,13 +8,13 @@ package com.microsoft.fluentui.appbarlayout
 import android.animation.AnimatorInflater
 import android.content.Context
 import android.os.Build
-import android.support.annotation.IdRes
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.AppBarLayout.LayoutParams.*
-import android.support.design.widget.AppBarLayout.OnOffsetChangedListener
-import android.support.design.widget.CoordinatorLayout
-import android.support.v4.widget.NestedScrollView
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.IdRes
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.LayoutParams.*
+import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -149,7 +149,8 @@ class AppBarLayout : AppBarLayout {
         val firstSibling = parent.getChildAt(firstSiblingIndex)
         val scrollTargetViewWithId = parent.findViewById<View>(scrollTargetViewId)
 
-        return scrollTargetViewWithId ?: firstSibling as? RecyclerView ?: firstSibling as? NestedScrollView
+        return scrollTargetViewWithId ?: firstSibling as? RecyclerView
+        ?: firstSibling as? NestedScrollView
     }
 
     private fun setStateListAnimator(lift: Boolean) {
@@ -203,12 +204,12 @@ class AppBarLayout : AppBarLayout {
 
     private inner class Behavior : AppBarLayout.Behavior () {
         override fun onStartNestedScroll(
-            parent: CoordinatorLayout,
-            child: AppBarLayout,
-            directTargetChild: View,
-            target: View,
-            nestedScrollAxes: Int,
-            type: Int
+                parent: CoordinatorLayout,
+                child: AppBarLayout,
+                directTargetChild: View,
+                target: View,
+                nestedScrollAxes: Int,
+                type: Int
         ): Boolean {
             val superResult = super.onStartNestedScroll(parent, child, directTargetChild, target, nestedScrollAxes, type)
             // Using a listener for RecyclerViews instead to get a more accurate y position.
@@ -220,14 +221,14 @@ class AppBarLayout : AppBarLayout {
         }
 
         override fun onNestedScroll(
-            coordinatorLayout: CoordinatorLayout,
-            child: AppBarLayout,
-            target: View,
-            dxConsumed: Int,
-            dyConsumed: Int,
-            dxUnconsumed: Int,
-            dyUnconsumed: Int,
-            type: Int
+                coordinatorLayout: CoordinatorLayout,
+                child: AppBarLayout,
+                target: View,
+                dxConsumed: Int,
+                dyConsumed: Int,
+                dxUnconsumed: Int,
+                dyUnconsumed: Int,
+                type: Int
         ) {
             super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed, type)
             setStateListAnimator(target.scrollY != 0)

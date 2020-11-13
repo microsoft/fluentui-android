@@ -8,8 +8,8 @@ package com.microsoft.fluentui.persona
 import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.Drawable
-import android.support.annotation.ColorInt
-import android.support.annotation.IntRange
+import androidx.annotation.ColorInt
+import androidx.annotation.IntRange
 import android.text.*
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.ThemeUtil
