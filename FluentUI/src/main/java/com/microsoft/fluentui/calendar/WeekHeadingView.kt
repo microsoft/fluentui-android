@@ -56,14 +56,14 @@ internal class WeekHeadingView : LinearLayout {
                     if (DuoSupportUtils.intersectHinge(it, this)) {
                         when {
                             currentDay < WEEK_MID -> {
-                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (context.displaySize.x - DuoSupportUtils.getHingeWidth(it)) / 6.0f))
+                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHalfScreenWidth(it) / DuoSupportUtils.COLUMNS_IN_START_DUO_MODE).toFloat()))
                             }
                             currentDay == WEEK_MID -> {
-                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (context.displaySize.x - DuoSupportUtils.getHingeWidth(it)) / 6.0f))
+                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHalfScreenWidth(it) / DuoSupportUtils.COLUMNS_IN_START_DUO_MODE).toFloat()))
                                 addView(View(context), LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHingeWidth(it).toFloat())))
                             }
                             else -> {
-                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (context.displaySize.x - DuoSupportUtils.getHingeWidth(it)) / 8.0f))
+                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHalfScreenWidth(it) / DuoSupportUtils.COLUMNS_IN_END_DUO_MODE).toFloat()))
 
                             }
                         }

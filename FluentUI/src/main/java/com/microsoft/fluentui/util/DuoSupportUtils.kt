@@ -13,6 +13,8 @@ import java.lang.Exception
  */
 object DuoSupportUtils {
     const val DUO_HINGE_WIDTH = 84
+    const val COLUMNS_IN_START_DUO_MODE = 3
+    const val COLUMNS_IN_END_DUO_MODE = 4
 
     @JvmStatic
     fun isDeviceSurfaceDuo(activity: AppCompatActivity) = ScreenHelper.isDeviceSurfaceDuo(activity)
@@ -96,16 +98,25 @@ object DuoSupportUtils {
             getHinge(activity)!!.height()
     }
 
+    /**
+     * Returns the width of hinge/display mask.
+     */
+    @JvmStatic
+    fun getHalfScreenWidth(activity: AppCompatActivity): Int {
+        if (!isDeviceSurfaceDuo(activity)) return activity.baseContext.displaySize.x/2
+        return (activity.baseContext.displaySize.x - getHingeWidth(activity))/2
+    }
+
     fun getSpanSizeLookup(activity: AppCompatActivity): GridLayoutManager.SpanSizeLookup {
-        val span: Int = (activity.displaySize.x - getHingeWidth(activity)) / 6
-        val spanMid: Int = (activity.displaySize.x - getHingeWidth(activity)) / 6 + getHingeWidth(activity)
-        val spanEnd: Int = (activity.displaySize.x - getHingeWidth(activity)) / 8
+        val span: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE
+        val spanMid: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE + getHingeWidth(activity)
+        val spanEnd: Int = getHalfScreenWidth(activity) / COLUMNS_IN_END_DUO_MODE
 
         return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                if (position % 7 < 2) {
+                if (position % (COLUMNS_IN_START_DUO_MODE+ COLUMNS_IN_END_DUO_MODE) < 2) {
                     return span
-                } else if (position % 7 == 2) {
+                } else if (position % (COLUMNS_IN_START_DUO_MODE+ COLUMNS_IN_END_DUO_MODE) == 2) {
                     return spanMid
                 } else {
                     return spanEnd
