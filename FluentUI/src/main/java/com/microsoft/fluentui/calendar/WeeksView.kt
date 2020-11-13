@@ -201,13 +201,22 @@ internal class WeeksView : MSRecyclerView {
 
             context.activity?.let {
                 if (DuoSupportUtils.isDualScreenMode(it)) {
+                    // For duo mode we show month name both on left and right screen
+                    // This shows on start 1/4th screen position
                     canvas.drawText(text,
                             (measuredWidth/4 - textBounds.width()/2).toFloat(),
                             (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
                             paint
                     )
+                    // This shows on 3/4th screen position
+                    canvas.drawText(text,
+                            ((3*measuredWidth)/4 - textBounds.width()/2).toFloat(),
+                            (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
+                            paint
+                    )
                 }
                 else {
+                    // Show on 1/2 screen position
                     canvas.drawText(text,
                             ((measuredWidth - textBounds.width()) / 2).toFloat(),
                             (((monthDescriptor.bottom + monthDescriptor.top)- textBounds.height()) / 2).toFloat(),
@@ -336,7 +345,7 @@ internal class WeeksView : MSRecyclerView {
 
     private class HingeItemDecoration internal constructor(private val mMaskSize: Int) : ItemDecoration() {
         override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: State) {
-            val rightOffset = if (parent.getChildAdapterPosition(view) % 7 == 2) {
+            val rightOffset = if (parent.getChildAdapterPosition(view) % DAYS_IN_WEEK == 2) {
                 mMaskSize
             } else {
                 0
