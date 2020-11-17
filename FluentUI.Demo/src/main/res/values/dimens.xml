@@ -6,6 +6,7 @@
 
 <resources>
     <dimen name="default_layout_margin">@dimen/fluentui_content_inset</dimen>
+    <dimen name="default_wide_menu_margin">300dp</dimen>
     <dimen name="default_view_margin">8dp</dimen>
     <dimen name="cell_horizontal_spacing">8dp</dimen>
     <dimen name="cell_vertical_spacing">2dp</dimen>
@@ -45,6 +46,10 @@
     <dimen name="circular_progress_margin_top_small">8dp</dimen>
     <!--Linear Progress-->
     <dimen name="linear_progress_margin">20dp</dimen>
+
+    <!--PopupMenu-->
+    <dimen name="default_layout_margin_start_duo">@dimen/fluentui_popup_menu_duo_margin_start</dimen>>
+    <dimen name="default_layout_margin_top_duo">@dimen/fluentui_popup_menu_duo_margin_top</dimen>>
 
     <!--Shared-->
     <dimen name="demo_headline_divider_height">@dimen/fluentui_divider_height</dimen>
