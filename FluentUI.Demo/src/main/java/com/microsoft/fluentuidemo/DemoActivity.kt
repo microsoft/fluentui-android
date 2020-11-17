@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import com.microsoft.fluentui.util.DuoSupportUtils
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import java.util.*
 
@@ -33,7 +34,13 @@ abstract class DemoActivity : AppCompatActivity() {
 
         // Set demo title
         val demoID = intent.getSerializableExtra(DEMO_ID) as UUID
-        val demo = DEMOS.find { it.id == demoID }
+        var demo: Demo?
+        if(DuoSupportUtils.isDualScreenMode(this)){
+            demo = DUO_DEMOS.find{ it.id == demoID }
+        }
+        else{
+            demo = DEMOS.find{ it.id == demoID }
+        }
         title = demo?.title
 
         // Load content and place it in the requested container
