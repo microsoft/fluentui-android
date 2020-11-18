@@ -102,7 +102,7 @@ internal class WeeksView : MSRecyclerView {
     private lateinit var onDateSelectedListener: OnDateSelectedListener
     private lateinit var paint: TextPaint
 
-    constructor(context: Context, config: CalendarView.Config, rowHeight: Int, onDateSelectedListener: OnDateSelectedListener) : super(context) {
+    constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) : super(context) {
         this.config = config
         this.onDateSelectedListener = onDateSelectedListener
         setWillNotDraw(false)
@@ -113,7 +113,7 @@ internal class WeeksView : MSRecyclerView {
             addItemDecoration(divider)
         }
 
-        pickerAdapter = CalendarAdapter(context, config, rowHeight, this.onDateSelectedListener)
+        pickerAdapter = CalendarAdapter(context, config, this.onDateSelectedListener)
         adapter = pickerAdapter
 
         setHasFixedSize(true)
@@ -319,6 +319,10 @@ internal class WeeksView : MSRecyclerView {
         overlayTransitionAnimator.duration = OVERLAY_TRANSITION_DURATION
         overlayTransitionAnimator.addListener(hidingOverlayAnimationListener)
         overlayTransitionAnimator.start()
+    }
+
+    fun setRowHeight(rowHeight: Int) {
+        pickerAdapter.setViewHeight(rowHeight)
     }
 
     private class MonthDescriptor {
