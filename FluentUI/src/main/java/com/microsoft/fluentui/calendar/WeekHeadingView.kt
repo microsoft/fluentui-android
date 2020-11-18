@@ -14,7 +14,11 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.calendar.CalendarView.Companion.WEEK_MID
 import com.microsoft.fluentui.managers.PreferencesManager
+import com.microsoft.fluentui.util.DuoSupportUtils
+import com.microsoft.fluentui.util.activity
+import com.microsoft.fluentui.util.displaySize
 import org.threeten.bp.DayOfWeek
 
 /**
@@ -36,7 +40,7 @@ internal class WeekHeadingView : LinearLayout {
         val weekendHeadingColor = config.weekendHeadingTextColor
 
         val strDayOfWeek = resources.getStringArray(R.array.weekday_initial)
-        for (i in 1..CalendarView.DAYS_IN_WEEK) {
+        for (currentDay in 1..CalendarView.DAYS_IN_WEEK) {
             val textView = TextView(context)
             TextViewCompat.setTextAppearance(textView, headingTextAppearance)
             textView.text = strDayOfWeek[dayOfWeek.value - 1]
@@ -47,7 +51,27 @@ internal class WeekHeadingView : LinearLayout {
                 textView.setTextColor(weekDayHeadingColor)
 
             textView.gravity = Gravity.CENTER
-            addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f))
+            post {
+                context.activity?.let {
+                    if (DuoSupportUtils.intersectHinge(it, this)) {
+                        when {
+                            currentDay < WEEK_MID -> {
+                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHalfScreenWidth(it) / DuoSupportUtils.COLUMNS_IN_START_DUO_MODE).toFloat()))
+                            }
+                            currentDay == WEEK_MID -> {
+                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHalfScreenWidth(it) / DuoSupportUtils.COLUMNS_IN_START_DUO_MODE).toFloat()))
+                                addView(View(context), LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHingeWidth(it).toFloat())))
+                            }
+                            else -> {
+                                addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, (DuoSupportUtils.getHalfScreenWidth(it) / DuoSupportUtils.COLUMNS_IN_END_DUO_MODE).toFloat()))
+
+                            }
+                        }
+                    } else {
+                        addView(textView, LayoutParams(0, LayoutParams.MATCH_PARENT, 1.0f))
+                    }
+                }
+            }
 
             dayOfWeek = dayOfWeek.plus(1)
         }

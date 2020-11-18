@@ -185,7 +185,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, widthMeasureSpec)
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         todayBackgroundDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
         selectedDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
         _foregroundDrawable?.setBounds(0, 0, measuredWidth, measuredHeight)
