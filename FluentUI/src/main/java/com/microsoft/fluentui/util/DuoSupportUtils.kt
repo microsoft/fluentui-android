@@ -1,8 +1,8 @@
 package com.microsoft.fluentui.util
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import com.microsoft.device.dualscreen.layout.ScreenHelper
@@ -17,25 +17,25 @@ object DuoSupportUtils {
     const val COLUMNS_IN_END_DUO_MODE = 4
 
     @JvmStatic
-    fun isDeviceSurfaceDuo(activity: AppCompatActivity) = ScreenHelper.isDeviceSurfaceDuo(activity)
+    fun isDeviceSurfaceDuo(activity: Activity) = ScreenHelper.isDeviceSurfaceDuo(activity)
 
     @JvmStatic
-    fun isDualScreenMode(activity: AppCompatActivity) = ScreenHelper.isDualMode(activity)
+    fun isDualScreenMode(activity: Activity) = ScreenHelper.isDualMode(activity)
 
     @JvmStatic
-    fun getRotation(activity: AppCompatActivity) = ScreenHelper.getCurrentRotation(activity)
+    fun getRotation(activity: Activity) = ScreenHelper.getCurrentRotation(activity)
 
     @JvmStatic
-    fun getHinge(activity: AppCompatActivity) = ScreenHelper.getHinge(activity)
+    fun getHinge(activity: Activity) = ScreenHelper.getHinge(activity)
 
     @JvmStatic
-    fun getScreenRectangles(activity: AppCompatActivity) = ScreenHelper.getScreenRectangles(activity)
+    fun getScreenRectangles(activity: Activity) = ScreenHelper.getScreenRectangles(activity)
 
     /**
      * Use [isWindowDoublePortrait] to check if the device is in landscape mode and app is spanned.
      */
     @JvmStatic
-    fun isWindowDoublePortrait(activity: AppCompatActivity): Boolean {
+    fun isWindowDoublePortrait(activity: Activity): Boolean {
         return activity.isLandscape && isDualScreenMode(activity)
     }
 
@@ -43,7 +43,7 @@ object DuoSupportUtils {
      * Use [isWindowDoubleLandscape] to check if the device is in portrait mode and app is spanned.
      */
     @JvmStatic
-    fun isWindowDoubleLandscape(activity: AppCompatActivity): Boolean {
+    fun isWindowDoubleLandscape(activity: Activity): Boolean {
         return activity.isPortrait && isDualScreenMode(activity)
     }
 
@@ -58,10 +58,10 @@ object DuoSupportUtils {
      * @return true if the View or Rect is more on left of the hinge, false otherwise. (false implies more to the right of the hinge)
      */
     @JvmStatic
-    fun moreOnLeft(activity: AppCompatActivity, rect: Rect) = isWindowDoublePortrait(activity) && ((getHinge(activity)!!.left - rect.left) >= (rect.right - getHinge(activity)!!.right))
+    fun moreOnLeft(activity: Activity, rect: Rect) = isWindowDoublePortrait(activity) && ((getHinge(activity)!!.left - rect.left) >= (rect.right - getHinge(activity)!!.right))
 
     @JvmStatic
-    fun moreOnLeft(activity: AppCompatActivity, view: View) = moreOnLeft(activity, getRect(view))
+    fun moreOnLeft(activity: Activity, view: View) = moreOnLeft(activity, getRect(view))
 
 
     /**
@@ -69,28 +69,28 @@ object DuoSupportUtils {
      * @return true if the View or Rect is more on top of the hinge, false otherwise. (false implies more on the bottom of the hinge)
      */
     @JvmStatic
-    fun moreOnTop(activity: AppCompatActivity, rect: Rect) = isWindowDoubleLandscape(activity) && ((getHinge(activity)!!.top - rect.top) >= (rect.bottom - getHinge(activity)!!.bottom))
+    fun moreOnTop(activity: Activity, rect: Rect) = isWindowDoubleLandscape(activity) && ((getHinge(activity)!!.top - rect.top) >= (rect.bottom - getHinge(activity)!!.bottom))
 
     @JvmStatic
-    fun moreOnTop(activity: AppCompatActivity, view: View) = moreOnTop(activity, getRect(view))
+    fun moreOnTop(activity: Activity, view: View) = moreOnTop(activity, getRect(view))
 
     /**
      * Use [intersectHinge] to check if a given [View] or [Rect] intersects with the Surface Duo hinge.
      * @return true if the View or Rect intersects with the hinge, false otherwise.
      */
     @JvmStatic
-    fun intersectHinge(activity: AppCompatActivity, anchorRect: Rect): Boolean {
+    fun intersectHinge(activity: Activity, anchorRect: Rect): Boolean {
         return isDeviceSurfaceDuo(activity) && getHinge(activity)!!.intersect(anchorRect)
     }
 
     @JvmStatic
-    fun intersectHinge(activity: AppCompatActivity, anchor: View) = intersectHinge(activity, getRect(anchor))
+    fun intersectHinge(activity: Activity, anchor: View) = intersectHinge(activity, getRect(anchor))
 
     /**
      * Returns the width of hinge/display mask.
      */
     @JvmStatic
-    fun getHingeWidth(activity: AppCompatActivity): Int {
+    fun getHingeWidth(activity: Activity): Int {
         if (!isDeviceSurfaceDuo(activity)) return 0
         return if (activity.isLandscape)
             getHinge(activity)!!.width()
@@ -102,12 +102,12 @@ object DuoSupportUtils {
      * Returns the width of hinge/display mask.
      */
     @JvmStatic
-    fun getHalfScreenWidth(activity: AppCompatActivity): Int {
+    fun getHalfScreenWidth(activity: Activity): Int {
         if (!isDeviceSurfaceDuo(activity)) return activity.baseContext.displaySize.x/2
         return (activity.baseContext.displaySize.x - getHingeWidth(activity))/2
     }
 
-    fun getSpanSizeLookup(activity: AppCompatActivity): GridLayoutManager.SpanSizeLookup {
+    fun getSpanSizeLookup(activity: Activity): GridLayoutManager.SpanSizeLookup {
         val span: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE
         val spanMid: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE + getHingeWidth(activity)
         val spanEnd: Int = getHalfScreenWidth(activity) / COLUMNS_IN_END_DUO_MODE
@@ -129,7 +129,7 @@ object DuoSupportUtils {
      * Use [getSingleScreenWidthPixels] to get the pixels of a single screen on Surface Duo device
      */
     @JvmStatic
-    fun getSingleScreenWidthPixels(activity: AppCompatActivity) = if (isWindowDoublePortrait(activity)) (activity.displaySize.x - getHingeWidth(activity)) / 2 else activity.displaySize.x
+    fun getSingleScreenWidthPixels(activity: Activity) = if (isWindowDoublePortrait(activity)) (activity.displaySize.x - getHingeWidth(activity)) / 2 else activity.displaySize.x
 
     /**
      * Exception thrown when the [Context] is not activity context.
