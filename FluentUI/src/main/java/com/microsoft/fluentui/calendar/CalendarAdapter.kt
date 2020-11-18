@@ -70,11 +70,13 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     private var firstDayOfWeek: DayOfWeek? = null
     private var dayCount: Int
+    private var viewHeight: Int = 0
 
-    constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) {
+    constructor(context: Context, config: CalendarView.Config, viewHeight: Int, onDateSelectedListener: OnDateSelectedListener) {
         this.context = context
         this.config = config
         this.onDateSelectedListener = onDateSelectedListener
+        this.viewHeight = viewHeight
 
         selectionDrawableCircle = CalendarDaySelectionDrawable(this.context, Mode.SINGLE)
         selectionDrawableStart = CalendarDaySelectionDrawable(this.context, Mode.START)
@@ -124,7 +126,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarDayViewHolder {
         val dayView = CalendarDayView(parent.context, config)
-        dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, viewHeight)
         dayView.setOnClickListener(this)
         ViewCompat.setAccessibilityDelegate(dayView, dayViewAccessibilityDelegate)
         return CalendarDayViewHolder(dayView)
