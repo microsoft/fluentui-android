@@ -185,7 +185,6 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         val viewWidth = MeasureSpec.getSize(widthMeasureSpec)
         rowHeight = viewWidth / DAYS_IN_WEEK
         widthMeasureSpec = MeasureSpec.makeMeasureSpec(rowHeight * DAYS_IN_WEEK, View.MeasureSpec.EXACTLY)
-        weeksView.setRowHeight(rowHeight)
         resizeAnimator?.let {
             if (it.isRunning) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec)
@@ -216,20 +215,22 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         weekHeading = WeekHeadingView(context, config)
         addView(weekHeading)
 
-        weeksView = WeeksView(context, config, this)
-        weeksView.isSnappingEnabled = true
-        weeksView.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
-        addView(weeksView)
+        post {
+            // RowHeight will be calculated after onmeasure only and hence calling this in post
+            weeksView = WeeksView(context, config, rowHeight, this)
+            weeksView.isSnappingEnabled = true
+            weeksView.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+            addView(weeksView)
+            weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    if (canExpand())
+                        displayMode = DisplayMode.FULL_MODE
+                }
+            })
+        }
 
         dividerDrawable = ContextCompat.getDrawable(context, R.drawable.ms_row_divider)
         showDividers = SHOW_DIVIDER_MIDDLE
-
-        weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (canExpand())
-                    displayMode = DisplayMode.FULL_MODE
-            }
-        })
     }
 
     /**
