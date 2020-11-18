@@ -72,11 +72,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
     private var dayCount: Int
     private var viewHeight: Int = 0
 
-    constructor(context: Context, config: CalendarView.Config, viewHeight: Int, onDateSelectedListener: OnDateSelectedListener) {
+    constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) {
         this.context = context
         this.config = config
         this.onDateSelectedListener = onDateSelectedListener
-        this.viewHeight = viewHeight
 
         selectionDrawableCircle = CalendarDaySelectionDrawable(this.context, Mode.SINGLE)
         selectionDrawableStart = CalendarDaySelectionDrawable(this.context, Mode.START)
@@ -171,6 +170,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
             dayOfWeek = dayOfWeek.plus(1)
             ++i
         }
+    }
+
+    fun setViewHeight(viewHeight: Int) {
+        this.viewHeight = viewHeight
     }
 
     /**
