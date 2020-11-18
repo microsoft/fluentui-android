@@ -12,6 +12,7 @@ import android.widget.BaseAdapter
 import android.widget.ListView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.DuoSupportUtils
+import com.microsoft.fluentui.util.activity
 import kotlin.math.max
 import kotlin.math.min
 
@@ -67,9 +68,11 @@ internal class PopupMenuAdapter : BaseAdapter {
 
             itemView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED)
             maxWidth = max(maxWidth, itemView.measuredWidth)
-            if(DuoSupportUtils.isWindowDoublePortrait(context)){
-                val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(context)
-                maxWidth = min(maxWidth,singleScreenDisplayPixels-DuoSupportUtils.DUO_HINGE_WIDTH)
+            context.activity?.let {
+                if (DuoSupportUtils.isWindowDoublePortrait(it)) {
+                    val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(it)
+                    maxWidth = min(maxWidth, singleScreenDisplayPixels - DuoSupportUtils.DUO_HINGE_WIDTH)
+                }
             }
         }
 
