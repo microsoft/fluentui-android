@@ -20,7 +20,10 @@ class PersonaChipViewActivity : DemoActivity() {
         get() = R.layout.activity_persona_chip_view
 
     private val personaChipViewListener = object : PersonaChipView.Listener {
-        override fun onSelected(selected: Boolean) { }
+        override fun onSelected(selected: Boolean) {
+            if(selected)
+                Snackbar.make(root_view, getString(R.string.persona_chip_selected), Snackbar.LENGTH_SHORT).show()
+        }
 
         override fun onClicked() {
             Snackbar.make(root_view, getString(R.string.persona_chip_example_click), Snackbar.LENGTH_SHORT).show()
