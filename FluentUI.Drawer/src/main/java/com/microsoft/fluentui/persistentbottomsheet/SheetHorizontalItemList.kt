@@ -7,6 +7,7 @@ package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 import android.util.AttributeSet
 import android.view.View.NO_ID
@@ -109,11 +110,10 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 }
 
-class SheetItem (val id: Int, @DrawableRes val drawable: Int, val title: String = "", val bitmap: Bitmap? = null) {
+class SheetItem(val id: Int, val title: String = "", @DrawableRes val drawable: Int, @ColorInt val tint: Int? = null, val bitmap: Bitmap? = null) {
 
     // just a  convenient constructor
-    @JvmOverloads
-    constructor(id: Int, bitmap: Bitmap, title: String = "") : this(id, NO_ID, title, bitmap)
+    constructor(id: Int, title: String = "", bitmap: Bitmap) : this(id, title, NO_ID, null, bitmap)
 
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)

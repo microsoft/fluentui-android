@@ -20,6 +20,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import com.microsoft.fluentui.drawer.DrawerView
 import com.microsoft.fluentui.drawer.OnDrawerContentCreatedListener
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
@@ -41,7 +42,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
 
     private lateinit var persistentSheetBehavior: BottomSheetBehavior<View>
-    private lateinit var persistentSheet: ViewGroup
+    private lateinit var persistentSheet: DrawerView
     private lateinit var persistentSheetContainer: LinearLayout
     private var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
     private var contentViewProvider: PersistentBottomSheetContentViewProvider? = null
@@ -113,9 +114,40 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private fun updateSheetContent() {
         persistentSheetContainer.removeAllViews()
         contentViewProvider?.apply {
-            val contentView = this.getSheetContentView(persistentSheetContainer, itemLayoutParam)
-            onDrawerContentCreatedListener?.onDrawerContentCreated(contentView)
+            val sheetContainerInfo = this.getSheetContentView(persistentSheetContainer, itemLayoutParam)
+            onDrawerContentCreatedListener?.onDrawerContentCreated(sheetContainerInfo.Container)
+            configureBottomSheetDrawerHandle(sheetContainerInfo)
         }
+    }
+
+    private fun configureBottomSheetDrawerHandle(sheetContainerInfo: PersistentBottomSheetContentViewProvider.SheetContainerInfo) {
+        if (sheetContainerInfo.isSingleLineItem) {
+            setDrawerHandleVisibility(View.GONE)
+            persistentSheetContainer.setPadding(persistentSheetContainer.paddingLeft,
+                    resources.getDimensionPixelSize(R.dimen.fluentui_persistent_bottomsheet_content_padding_vertical),
+                    persistentSheetContainer.paddingRight,
+                    persistentSheetContainer.paddingBottom)
+            return
+        }
+        setDrawerHandleVisibility(View.VISIBLE)
+        persistentSheetContainer.setPadding(persistentSheetContainer.paddingLeft,
+                0,
+                persistentSheetContainer.paddingRight,
+                persistentSheetContainer.paddingBottom)
+        sheet_drawer_handle.setOnClickListener {
+            when {
+                persistentSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED -> expand()
+                persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED -> collapse()
+                else -> {
+                    // it's in transition state do nothing
+                }
+            }
+        }
+    }
+
+    fun setDrawerHandleVisibility(visibility: Int) {
+        isDrawerHandleVisible = View.VISIBLE == visibility
+        sheet_drawer_handle.visibility = visibility
     }
 
 
@@ -190,7 +222,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             changePeekHeight(-childHeight)
     }
 
-    fun collapsePersistentSheet() {
+    fun hidePersistentSheet() {
         changePeekHeight(-persistentSheetBehavior.peekHeight)
     }
 
@@ -198,8 +230,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         changePeekHeight(-persistentSheetBehavior.peekHeight + itemLayoutParam.defaultPeekHeight)
     }
 
+    fun collapse() {
+        persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+    }
+
     fun expand() {
-        getSheetBehavior().state = BottomSheetBehavior.STATE_EXPANDED
+        persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     fun getPeekHeight(): Int {
@@ -240,6 +276,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
          *
          *
          */
+        @JvmOverloads
         fun addHorizontalItemList(itemSheet: List<SheetItem>, header: String? = null): DefaultContentBuilder {
             assertIfCustomIdSet()
             contentParam.add(BottomSheetParam.HorizontalItemList(itemSheet, header))
@@ -256,6 +293,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
          *        **  **  **
          *
          */
+        @JvmOverloads
         fun addHorizontalGridItemList(itemSheet: List<SheetItem>, header: String? = null): DefaultContentBuilder {
             assertIfCustomIdSet()
             contentParam.add(BottomSheetParam.HorizontalGridItemList(itemSheet, header))
@@ -265,6 +303,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         /**
          * add items vertically in a groups
          */
+        @JvmOverloads
         fun addVerticalItemList(itemSheet: List<SheetItem>, header: String? = null): DefaultContentBuilder {
             assertIfCustomIdSet()
             contentParam.add(BottomSheetParam.VerticalItemList(itemSheet, header))
@@ -274,6 +313,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         /**
          * adds a divider
          */
+        @JvmOverloads
         fun addDivider(pixelHeight: Int = context.resources.getDimensionPixelSize(R.dimen.fluentui_divider_height), @ColorRes color: Int = 0): DefaultContentBuilder {
             assertIfCustomIdSet()
             contentParam.add(BottomSheetParam.DividerItemType(pixelHeight, color))

@@ -36,7 +36,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
             val listener = this
             verticalItemAdapter.onBottomSheetItemClickListener = object : OnClickListener {
                 override fun onBottomSheetItemClick(item: BottomSheetItem) {
-                    listener.onSheetItemClick(SheetItem(item.id, item.imageId, item.title, item.customBitmap))
+                    listener.onSheetItemClick(SheetItem(item.id, item.title, item.imageId, item.imageTint, item.customBitmap))
                 }
             }
         }
@@ -51,8 +51,19 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         return itemTypeList.verticalItemSheet.filter {
             it.id != 0
         }.map {
-            BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTintType = ImageTintType.NONE)
+            if (it.tint!=null) {
+                BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTint = it.tint, imageTintType = ImageTintType.CUSTOM)
+            }else{
+                BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTintType = ImageTintType.NONE)
+            }
         }
+    }
+
+    override fun isSingleLineContent(itemTypeList: BottomSheetParam.ItemTypeList,
+                                     itemLayoutParam: BottomSheetParam.ItemLayoutParam,
+                                     contentParam: BottomSheetParam.ContentParam): Boolean {
+        val verticalItemList = itemTypeList as BottomSheetParam.VerticalItemList
+        return verticalItemList.verticalItemSheet.size == 1
     }
 
 

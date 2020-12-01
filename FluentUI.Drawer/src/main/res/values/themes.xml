@@ -5,7 +5,7 @@
         <!--BottomSheet-->
         <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPersistentBottomSheetItemColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundColor</item>
+        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundSecondaryColor</item>
 
         <!--BottomSheet-->
         <item name="fluentuiBottomSheetBackgroundColor">?attr/fluentuiBackgroundColor</item>
@@ -15,7 +15,7 @@
 
         <!--Drawer-->
         <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiDrawerHandleColor">?attr/fluentuiBackgroundPressedColor</item>
+        <item name="fluentuiDrawerHandleColor">?attr/fluentuiForegroundSecondaryIconColor</item>
 
     </style>
 

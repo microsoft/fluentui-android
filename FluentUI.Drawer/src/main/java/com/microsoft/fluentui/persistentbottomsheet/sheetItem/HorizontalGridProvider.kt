@@ -42,4 +42,12 @@ internal class HorizontalGridProvider(val context: Context) : IViewProvider {
         return view
 
     }
+
+    override fun isSingleLineContent(itemTypeList: BottomSheetParam.ItemTypeList,
+                                     itemLayoutParam: BottomSheetParam.ItemLayoutParam,
+                                     contentParam: BottomSheetParam.ContentParam): Boolean {
+        val list = itemTypeList as BottomSheetParam.HorizontalGridItemList
+        return list.horizontalItemSheet.size <= itemLayoutParam.itemInRow
+    }
+
 }

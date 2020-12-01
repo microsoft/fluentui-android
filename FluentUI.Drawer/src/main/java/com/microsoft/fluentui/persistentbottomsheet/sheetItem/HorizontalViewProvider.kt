@@ -43,4 +43,11 @@ internal class HorizontalViewProvider(val context: Context) : IViewProvider {
         horizontalListView.sheetItemClickListener = contentParam.listener
         return view
     }
+
+    override fun isSingleLineContent(itemTypeList: BottomSheetParam.ItemTypeList,
+                                     itemLayoutParam: BottomSheetParam.ItemLayoutParam,
+                                     contentParam: BottomSheetParam.ContentParam): Boolean {
+        val list = itemTypeList as BottomSheetParam.HorizontalItemList
+        return list.horizontalItemSheet.size <= itemLayoutParam.itemInRow
+    }
 }

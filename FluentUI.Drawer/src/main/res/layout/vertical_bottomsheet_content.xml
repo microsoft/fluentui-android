@@ -9,8 +9,7 @@
         style="@style/TextAppearance.FluentUI.PersistentBottomSheetHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/fluentui_persistent_bottomsheet_content_offset"
-        android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_content_offset" />
+        android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_header_content_offset" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/vertical_list"

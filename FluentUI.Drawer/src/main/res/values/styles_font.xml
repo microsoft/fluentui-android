@@ -3,11 +3,12 @@
 
     <style name="TextAppearance.FluentUI.PersistentBottomSheetHeading">
         <item name="android:textSize">14sp</item>
-        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHeadingColor</item>
         <item name="android:layout_marginTop">@dimen/fluentui_persistent_bottomsheet_header_marginTop</item>
         <item name="android:layout_marginBottom">@dimen/fluentui_persistent_bottomsheet_header_marginBottom</item>
+        <item name="android:layout_marginStart">@dimen/fluentui_persistent_bottomsheet_header_content_offset</item>
     </style>
 
     <style name="TextAppearance.FluentUI.PersistentBottomSheet_Item">
