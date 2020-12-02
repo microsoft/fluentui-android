@@ -9,14 +9,30 @@ steps:
 - task: Gradle@2
   inputs:
     gradleWrapperFile: 'gradlew'
-    tasks: 'build'
+    tasks: 'assembleRelease makeUniversalPkg'
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
     sonarQubeRunAnalysis: false
+    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
     
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: |
-     **/*.aar
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    SourceFolder: '$(system.defaultworkingdirectory)/universal'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)/outputs'
+    CleanTargetFolder: true
+    OverWrite: true
+    preserveTimestamp: true
+
+- task: UniversalPackages@0
+  inputs:
+    command: 'publish'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: 'OS/Office'
+    vstsFeedPackagePublish: 'fluentuiandroid'
+    versionOption: 'patch'
+    packagePublishDescription: 'Fluent Universal Package'
+    publishedPackageVar: 'fluent package'
