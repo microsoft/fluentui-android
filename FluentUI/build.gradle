@@ -15,6 +15,10 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
         vectorDrawables.useSupportLibrary = true
     }
+    
+    lintOptions {
+        abortOnError false
+    }
 
     buildTypes {
         release {
