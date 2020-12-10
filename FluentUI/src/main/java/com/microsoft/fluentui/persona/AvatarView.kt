@@ -21,6 +21,10 @@ enum class AvatarStyle {
     CIRCLE, SQUARE
 }
 
+enum class AvatarBorderStyle {
+    NO_BORDER, RING
+}
+
 /**
  * [AvatarView] is a custom ImageView that displays the initials of a person on top of a colored circular
  * background. The initials are extracted from their name or email. The color of the circular
@@ -30,6 +34,7 @@ open class AvatarView : AppCompatImageView {
     companion object {
         internal val DEFAULT_AVATAR_SIZE = AvatarSize.LARGE
         internal val DEFAULT_AVATAR_STYLE = AvatarStyle.CIRCLE
+        internal val DEFAULT_AVATAR_BORDER_STYLE = AvatarBorderStyle.NO_BORDER
     }
 
     @JvmOverloads
@@ -37,11 +42,13 @@ open class AvatarView : AppCompatImageView {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarView)
         val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, DEFAULT_AVATAR_SIZE.ordinal)
         val avatarStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarStyle, DEFAULT_AVATAR_STYLE.ordinal)
+        val avatarBorderStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarBorderStyle, DEFAULT_AVATAR_BORDER_STYLE.ordinal)
 
         name = styledAttrs.getString(R.styleable.AvatarView_name) ?: ""
         email = styledAttrs.getString(R.styleable.AvatarView_email) ?: ""
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
         avatarStyle = AvatarStyle.values()[avatarStyleOrdinal]
+        avatarBorderStyle = AvatarBorderStyle.values()[avatarBorderStyleOrdinal]
 
         val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_avatarImageDrawable, 0)
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
@@ -115,14 +122,36 @@ open class AvatarView : AppCompatImageView {
             field = value
             invalidate()
         }
+    /**
+     * Defines the [AvatarBorderStyle] applied to the avatar.
+     */
+    var avatarBorderStyle: AvatarBorderStyle = DEFAULT_AVATAR_BORDER_STYLE
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            invalidate()
+        }
+
+    /**
+     * Defines the [AvatarIsOverFlow] applied to the avatar.
+     */
+    var avatarIsOverFlow: Boolean = false
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            initials.setInfo(name, email, avatarBackgroundColor, true)
+            invalidate()
+        }
 
     private val initials = InitialsDrawable(context)
-    private val avatarDisplaySize: Int
-        get() = avatarSize.getDisplayValue(context)
     private val path: Path = Path()
 
     override fun draw(canvas: Canvas) {
-        val avatarBoundsRect = Rect(0, 0, avatarDisplaySize, avatarDisplaySize)
+        val avatarBoundsRect = Rect(getViewBorderSize(), getViewBorderSize(), getViewSize()-getViewBorderSize(), getViewSize()-getViewBorderSize())
 
         initials.avatarStyle = avatarStyle
         initials.bounds = avatarBoundsRect
@@ -132,10 +161,10 @@ open class AvatarView : AppCompatImageView {
         when (avatarStyle) {
             AvatarStyle.CIRCLE ->
                 path.addCircle(
-                    avatarBoundsRect.width() / 2f,
-                    avatarBoundsRect.height() / 2f,
-                    avatarBoundsRect.width() / 2f,
-                    Path.Direction.CW
+                        getViewSize() / 2f,
+                        getViewSize() / 2f,
+                        getViewSize() / 2f,
+                        Path.Direction.CW
                 )
             AvatarStyle.SQUARE -> {
                 val cornerRadius = resources.getDimension(R.dimen.fluentui_avatar_square_corner_radius)
@@ -145,6 +174,50 @@ open class AvatarView : AppCompatImageView {
         canvas.clipPath(path)
 
         super.draw(canvas)
+        checkAndAddRing(canvas)
+    }
+
+    private fun checkAndAddRing(canvas: Canvas) {
+        if (avatarBorderStyle == AvatarBorderStyle.RING && avatarStyle == AvatarStyle.CIRCLE) {
+            path.reset()
+            // Create Path to add the main border in mid of ring
+            path.addCircle(
+                    getViewSize() / 2f,
+                    getViewSize() / 2f,
+                    getViewSize() / 2f - 3 * getViewBorderSize() / 4f,
+                    Path.Direction.CW
+            )
+            val paint = Paint()
+            paint.style = Paint.Style.STROKE
+            if (avatarIsOverFlow) {
+                paint.color = ContextCompat.getColor(context, R.color.fluentui_avatar_border_background)
+            }
+            else {
+                paint.color = avatarBackgroundColor ?: initials.initialsBackgroundColor
+            }
+            paint.strokeWidth = getViewBorderSize() / 2f
+            paint.isAntiAlias = true
+            canvas.drawPath(path, paint)
+            path.reset()
+            // Create path to add inner ring
+            paint.color = ContextCompat.getColor(context, R.color.fluentui_avatar_ring_background)
+            path.addCircle(
+                    getViewSize() / 2f,
+                    getViewSize() / 2f,
+                    getViewSize() / 2f - 5 * getViewBorderSize() / 4f,
+                    Path.Direction.CW
+            )
+            canvas.drawPath(path, paint)
+            path.reset()
+            // Create path to add exterior ring
+            path.addCircle(
+                    getViewSize() / 2f,
+                    getViewSize() / 2f,
+                    getViewSize() / 2f - getViewBorderSize() / 4f,
+                    Path.Direction.CW
+            )
+            canvas.drawPath(path, paint)
+        }
     }
 
     override fun setImageDrawable(drawable: Drawable?) {
@@ -175,16 +248,33 @@ open class AvatarView : AppCompatImageView {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         setMeasuredDimension(
-            resolveSizeAndState(avatarDisplaySize, widthMeasureSpec, 0),
-            resolveSizeAndState(avatarDisplaySize, heightMeasureSpec, 0)
+            resolveSizeAndState(getViewSize(), widthMeasureSpec, 0),
+            resolveSizeAndState(getViewSize(), heightMeasureSpec, 0)
         )
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        layoutParams.width = avatarDisplaySize
-        layoutParams.height = avatarDisplaySize
+        layoutParams.width = getViewSize()
+        layoutParams.height = getViewSize()
 
         super.onSizeChanged(w, h, oldw, oldh)
+    }
+
+    /**
+     * returns the [AvatarViewSize] including the border width
+     */
+    fun getViewSize(): Int {
+        return avatarSize.getDisplayValue(context) + 2*getViewBorderSize()
+    }
+
+    private fun getViewBorderSize(): Int {
+        return when (avatarBorderStyle) {
+            AvatarBorderStyle.NO_BORDER -> 0
+            AvatarBorderStyle.RING -> when (avatarSize) {
+                AvatarSize.XXLARGE -> context.resources.getDimension(R.dimen.fluentui_avatar_border_size_xxlarge).toInt()
+                else -> context.resources.getDimension(R.dimen.fluentui_avatar_border_size).toInt()
+            }
+        }
     }
 }
 

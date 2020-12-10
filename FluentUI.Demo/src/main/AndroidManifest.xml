@@ -30,6 +30,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.AvatarGroupViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
