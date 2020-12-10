@@ -24,7 +24,7 @@ enum class AvatarSize(private val id: Int) {
      * This method uses [context] to convert the [id] resource into an int that becomes
      * AvatarView's layout width and height
      */
-    fun getDisplayValue(context: Context): Int {
+    internal fun getDisplayValue(context: Context): Int {
         return context.resources.getDimension(id).toInt()
     }
 }
