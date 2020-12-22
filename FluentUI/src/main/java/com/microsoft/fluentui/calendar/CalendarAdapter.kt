@@ -153,6 +153,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     override fun onClick(v: View) {
         onDateSelectedListener.onDateSelected((v as CalendarDayView).date.getLocalDateToZonedDateTime)
+        v.announceForAccessibility(v.contentDescription.toString()+context.getString(R.string.calendar_adapter_accessibility_item_selected))
     }
 
     private fun updateDayIndicesAndHeading() {
