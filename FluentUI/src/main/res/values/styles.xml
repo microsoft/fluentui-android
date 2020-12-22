@@ -185,10 +185,12 @@
         <item name="android:maxHeight">@dimen/fluentui_progress_linear_height</item>
     </style>
     <style name="Widget.FluentUI.LinearProgress.Determinate" parent="Widget.FluentUI.LinearProgress">
+        <item name="android:contentDescription">@string/progress_linear_content_description_determinate</item>
         <item name="android:indeterminate">false</item>
     </style>
     <style name="Widget.FluentUI.LinearProgress.Indeterminate" parent="Widget.FluentUI.LinearProgress">
         <item name="android:indeterminate">true</item>
+        <item name="android:contentDescription">@string/progress_linear_content_description_indeterminate</item>
     </style>
 
 
