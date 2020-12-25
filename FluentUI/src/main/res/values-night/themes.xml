@@ -60,6 +60,14 @@
         <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundColor</item>
         <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_600</item>
 
+        <!--ContextualCommandBar-->
+        <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_900</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorSelected">#0086F0</item>
+        <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_100</item>
+        <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_400</item>
+        <item name="fluentuiContextualCommandBarIconTintSelected">@color/fluentui_black</item>
+
         <!--Dialog-->
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiDialogCloseIconColor">?attr/colorPrimary</item>

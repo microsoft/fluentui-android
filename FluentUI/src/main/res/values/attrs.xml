@@ -85,6 +85,15 @@
     <attr name="fluentuiCalendarOtherMonthBackgroundColor" format="reference|color"/>
     <attr name="fluentuiCalendarSelectedColor" format="reference|color"/>
     <attr name="fluentuiCalendarDayTodayBackgroundColor" format="reference|color"/>
+
+    <!--ContextualCommandBar-->
+    <attr name="fluentuiContextualCommandBarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarBackgroundColorPressed" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarBackgroundColorSelected" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTint" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTintDisabled" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTintSelected" format="reference|color"/>
+
     <!--day selector-->
     <attr name="fluentuiCalendarDayTextActiveColor" format="reference|color"/>
     <attr name="fluentuiCalendarDayTextActiveCheckedColor" format="reference|color"/>

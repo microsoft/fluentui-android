@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="ContextualCommandBar2">
+        <attr name="itemBackground" format="reference" />
+        <attr name="groupSpace" format="dimension" />
+        <attr name="itemSpace" format="dimension" />
+    </declare-styleable>
+</resources>

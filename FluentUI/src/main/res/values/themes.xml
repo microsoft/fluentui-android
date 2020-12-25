@@ -106,6 +106,15 @@
         <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_25</item>
         <item name="fluentuiCalendarSelectedColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiColorPrimaryLighter</item>
+
+        <!--ContextualCommandBar-->
+        <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_50</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_100</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorSelected">#eff6fc</item>
+        <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_900</item>
+        <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_300</item>
+        <item name="fluentuiContextualCommandBarIconTintSelected">#0078D4</item>
+
         <!--day selector-->
         <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiCalendarDayTextActiveCheckedColor">?attr/fluentuiForegroundOnPrimaryColor</item>

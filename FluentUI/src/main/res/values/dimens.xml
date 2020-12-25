@@ -50,6 +50,12 @@
     <dimen name="fluentui_calendar_weeks_max_width">336dp</dimen>
     <dimen name="fluentui_calendar_day_selection_size">36dp</dimen>
 
+    <!--ContextualCommandBar-->
+    <dimen name="fluentui_contextual_command_bar_default_group_space">16dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_space">2dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_padding">6dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_corner_radius">8dp</dimen>
+
     <!--DatePickerFragment-->
     <dimen name="fluentui_date_picker_fragment_title_horizontal_margin">24dp</dimen>
     <dimen name="fluentui_date_picker_fragment_title_vertical_margin">10dp</dimen>
