@@ -86,6 +86,7 @@ class ContextualCommandBar @JvmOverloads constructor(
                     setPaddingRelative(itemPadding, itemPadding, itemPadding, itemPadding)
                     isSelected = item.selected && item.enabled
                     isEnabled = item.enabled
+                    contentDescription = item.contentDescription
                 }
 
                 itemView.setOnClickListener {
