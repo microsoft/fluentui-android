@@ -84,9 +84,9 @@ class ContextualCommandBar @JvmOverloads constructor(
             for ((idx, item) in items.withIndex()) {
                 val itemView = ImageView(context).apply {
                     setPaddingRelative(itemPadding, itemPadding, itemPadding, itemPadding)
-                    isSelected = item.selected && item.enabled
-                    isEnabled = item.enabled
-                    contentDescription = item.contentDescription
+                    isSelected = item.isSelected() && item.isEnabled()
+                    isEnabled = item.isEnabled()
+                    contentDescription = item.getContentDescription()
                 }
 
                 itemView.setOnClickListener {

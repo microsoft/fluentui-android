@@ -4,15 +4,12 @@ import android.support.annotation.DrawableRes
 
 interface CommandItem {
 
-    val enabled: Boolean
-        get() = true
-
-    val selected: Boolean
-        get() = false
-
-    val contentDescription: String?
-        get() = null
-
     @DrawableRes
     fun getIcon(): Int
+
+    fun getContentDescription(): String? = null
+
+    fun isEnabled(): Boolean = true
+
+    fun isSelected(): Boolean = false
 }
