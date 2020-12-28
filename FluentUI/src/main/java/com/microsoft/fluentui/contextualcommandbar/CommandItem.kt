@@ -10,6 +10,9 @@ interface CommandItem {
     val selected: Boolean
         get() = false
 
+    val contentDescription: String?
+        get() = null
+
     @DrawableRes
     fun getIcon(): Int
 }
