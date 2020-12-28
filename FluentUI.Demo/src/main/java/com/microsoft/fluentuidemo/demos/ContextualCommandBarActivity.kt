@@ -9,7 +9,8 @@ import com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.contextualcommandbar.DefaultCommandItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_default
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_with_dismiss
 
 class ContextualCommandBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -46,10 +47,27 @@ class ContextualCommandBarActivity : DemoActivity() {
                 .addItem(DefaultCommandItem(R.drawable.ic_fluent_link_24_regular, "Link", false))
         )
 
-        contextual_command_bar.setItemGroups(itemGroups)
-        contextual_command_bar.itemClickListener = object : ContextualCommandBar.OnItemClickListener {
-            override fun onItemClick(item: CommandItem, view: View) {
-                Toast.makeText(this@ContextualCommandBarActivity, "Click ${item.getContentDescription()}", Toast.LENGTH_SHORT).show()
+        with(contextual_command_bar_default) {
+            setItemGroups(itemGroups)
+            showDismiss = false
+            itemClickListener = object : ContextualCommandBar.OnItemClickListener {
+                override fun onItemClick(item: CommandItem, view: View) {
+                    Toast.makeText(this@ContextualCommandBarActivity, "Click ${item.getContentDescription()}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        with(contextual_command_bar_with_dismiss) {
+            setItemGroups(itemGroups)
+            showDismiss = true
+            dismissIcon = R.drawable.ic_fluent_keyboard_dock_24_regular
+            dismissListener = {
+                Toast.makeText(this@ContextualCommandBarActivity, "Dismiss", Toast.LENGTH_SHORT).show()
+            }
+            itemClickListener = object : ContextualCommandBar.OnItemClickListener {
+                override fun onItemClick(item: CommandItem, view: View) {
+                    Toast.makeText(this@ContextualCommandBarActivity, "Click ${item.getContentDescription()}", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

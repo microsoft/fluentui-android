@@ -70,6 +70,11 @@
     <string name="bottom_sheet_with_single_line_header">Show with single line header</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Show with double line header and dividers</string>
     <string name="bottom_sheet_dialog_button">Show</string>
+
+    <!--ContextualCommandBar-->
+    <string name="contextual_command_bar_style_default">Default</string>
+    <string name="contextual_command_bar_style_with_dismiss_button">With dismiss</string>
+
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>
     <string name="bottom_sheet_item_flag_toast">Flag item clicked</string>

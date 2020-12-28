@@ -67,6 +67,8 @@
         <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_100</item>
         <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_400</item>
         <item name="fluentuiContextualCommandBarIconTintSelected">@color/fluentui_black</item>
+        <item name="fluentuiContextualCommandBarDismissBackgroundColor">#000000</item>
+        <item name="fluentuiContextualCommandBarDismissIconTintColor">@color/fluentui_gray_100</item>
 
         <!--Dialog-->
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>

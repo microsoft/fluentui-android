@@ -93,6 +93,8 @@
     <attr name="fluentuiContextualCommandBarIconTint" format="reference|color"/>
     <attr name="fluentuiContextualCommandBarIconTintDisabled" format="reference|color"/>
     <attr name="fluentuiContextualCommandBarIconTintSelected" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarDismissBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarDismissIconTintColor" format="reference|color"/>
 
     <!--day selector-->
     <attr name="fluentuiCalendarDayTextActiveColor" format="reference|color"/>
