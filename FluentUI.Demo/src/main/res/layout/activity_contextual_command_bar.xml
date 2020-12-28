@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/fluentui_content_inset"
     tools:context=".demos.ContextualCommandBarActivity">
 
+    <TextView
+        style="@style/TextAppearance.DemoDescription.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/demo_headline_padding_bottom"
+        android:text="@string/contextual_command_bar_style_default" />
+
     <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
-        android:id="@+id/contextual_command_bar"
+        android:id="@+id/contextual_command_bar_default"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <TextView
+        style="@style/TextAppearance.DemoDescription.Label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_marginBottom="@dimen/demo_headline_padding_bottom"
+        android:text="@string/contextual_command_bar_style_with_dismiss_button" />
+
+    <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
+        android:id="@+id/contextual_command_bar_with_dismiss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
