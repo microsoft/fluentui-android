@@ -10,10 +10,10 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
@@ -22,7 +22,7 @@ class ContextualCommandBar @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
-) : RelativeLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     private var horizontalScrollView = HorizontalScrollView(context)
     private var commandContainer = LinearLayout(context)
@@ -64,7 +64,7 @@ class ContextualCommandBar @JvmOverloads constructor(
 
         with(commandContainer) {
             orientation = LinearLayout.HORIZONTAL
-            gravity = Gravity.CENTER_VERTICAL
+            gravity = Gravity.CENTER
         }
 
         with(horizontalScrollView) {
@@ -118,7 +118,7 @@ class ContextualCommandBar @JvmOverloads constructor(
         (dismissButtonContainer!!.layoutParams as LayoutParams).apply {
             height = ViewGroup.LayoutParams.MATCH_PARENT
             width = ViewGroup.LayoutParams.WRAP_CONTENT
-            addRule(ALIGN_PARENT_END)
+            gravity = Gravity.END
         }
 
         // Dismiss gradient gap
