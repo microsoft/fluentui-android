@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
     android:padding="@dimen/fluentui_content_inset"
     tools:context=".demos.ContextualCommandBarActivity">
 
     <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
         android:id="@+id/contextual_command_bar_default"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/fluentui_content_inset" />
 
@@ -29,7 +30,7 @@
 
     <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
         android:id="@+id/contextual_command_bar_with_dismiss"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/fluentui_content_inset" />
 
