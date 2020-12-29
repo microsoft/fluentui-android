@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="@dimen/fluentui_content_inset"
     tools:context=".demos.ContextualCommandBarActivity">
 
@@ -26,7 +26,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/fluentui_button_outlined_stroke_width"
-        android:background="@color/fluentui_gray_50" />
+        android:background="@color/fluentui_gray_100" />
 
     <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
         android:id="@+id/contextual_command_bar_with_dismiss"
