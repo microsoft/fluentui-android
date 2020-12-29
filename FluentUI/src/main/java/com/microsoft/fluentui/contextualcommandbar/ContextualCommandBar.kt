@@ -181,17 +181,20 @@ class ContextualCommandBar @JvmOverloads constructor(
 
     fun setItemGroups(itemGroups: List<CommandItemGroup>) {
         commandContainer.removeAllViews()
-        setDividerSpace(commandContainer, groupSpace)
 
-        for (itemGroup in itemGroups) {
+        for ((groupIdx, itemGroup) in itemGroups.withIndex()) {
             val items = itemGroup.items
             if (items.isEmpty()) {
                 continue
             }
 
             val groupContainer = LinearLayout(context)
-            setDividerSpace(groupContainer, itemSpace)
             commandContainer.addView(groupContainer)
+            if (groupIdx != itemGroups.size - 1) {
+                (groupContainer.layoutParams as LinearLayout.LayoutParams).apply {
+                    marginEnd = groupSpace
+                }
+            }
 
             for ((idx, item) in items.withIndex()) {
                 val itemView = ImageView(context).apply {
@@ -202,10 +205,10 @@ class ContextualCommandBar @JvmOverloads constructor(
                             itemPaddingVertical
                     )
                     setImageResource(item.getIcon())
-
                     isSelected = item.isSelected() && item.isEnabled()
                     isEnabled = item.isEnabled()
                     contentDescription = item.getContentDescription()
+
                     background = when {
                         items.size == 1 -> {
                             ContextCompat.getDrawable(
@@ -243,16 +246,13 @@ class ContextualCommandBar @JvmOverloads constructor(
                 }
 
                 groupContainer.addView(itemView)
-            }
-        }
-    }
 
-    private fun setDividerSpace(container: LinearLayout, space: Int) {
-        with(container) {
-            dividerDrawable = GradientDrawable().apply {
-                setSize(space, 0)
+                if (idx != items.size - 1) {
+                    (itemView.layoutParams as LinearLayout.LayoutParams).apply {
+                        marginEnd = itemSpace
+                    }
+                }
             }
-            showDividers = LinearLayout.SHOW_DIVIDER_MIDDLE
         }
     }
 
