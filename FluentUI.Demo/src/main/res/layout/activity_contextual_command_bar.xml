@@ -7,29 +7,39 @@
     android:padding="@dimen/fluentui_content_inset"
     tools:context=".demos.ContextualCommandBarActivity">
 
-    <TextView
-        style="@style/TextAppearance.DemoDescription.Label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/demo_headline_padding_bottom"
-        android:text="@string/contextual_command_bar_style_default" />
-
     <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
         android:id="@+id/contextual_command_bar_default"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fluentui_content_inset" />
 
     <TextView
-        style="@style/TextAppearance.DemoDescription.Label"
-        android:layout_width="wrap_content"
+        style="@style/TextAppearance.DemoListItemSubtitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginBottom="@dimen/demo_headline_padding_bottom"
-        android:text="@string/contextual_command_bar_style_with_dismiss_button" />
+        android:layout_marginBottom="@dimen/fluentui_content_inset"
+        android:gravity="center"
+        android:text="@string/contextual_command_bar_style_default" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fluentui_button_outlined_stroke_width"
+        android:background="@color/fluentui_gray_50" />
 
     <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
         android:id="@+id/contextual_command_bar_with_dismiss"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fluentui_content_inset" />
+
+    <TextView
+        style="@style/TextAppearance.DemoListItemSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_marginBottom="@dimen/fluentui_content_inset"
+        android:gravity="center"
+        android:text="@string/contextual_command_bar_style_with_dismiss_button" />
 
 </LinearLayout>
