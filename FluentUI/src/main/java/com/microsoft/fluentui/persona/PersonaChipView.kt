@@ -204,16 +204,20 @@ class PersonaChipView : TemplateView {
 
     override fun onInitializeAccessibilityNodeInfo(info: AccessibilityNodeInfo?) {
         super.onInitializeAccessibilityNodeInfo(info)
-        info?.isEnabled = isEnabled
-        info?.isCheckable = true
-        info?.isChecked = isSelected
-        info?.text = name
+        info?.apply {
+            isEnabled = isEnabled
+            isCheckable = true
+            isChecked = isSelected
+            text = name
+        }
     }
 
     override fun onInitializeAccessibilityEvent(event: AccessibilityEvent?) {
         super.onInitializeAccessibilityEvent(event)
-        event?.isEnabled = isEnabled
-        event?.isChecked = isSelected
+        event?.apply {
+            isEnabled = isEnabled
+            isChecked = isSelected
+        }
     }
 
     override fun onPopulateAccessibilityEvent(event: AccessibilityEvent?) {
