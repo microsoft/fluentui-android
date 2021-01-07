@@ -32,6 +32,10 @@ open class AvatarGroupView : FrameLayout {
     }
 
     private var avatarList: List<IAvatar> = ArrayList()
+    var listener: Listener? = null
+    private val clickListener = OnClickListener {
+        listener?.onAvatarClicked(it.tag as Int)
+    }
 
     var maxDisplayedAvatars: Int = DEFAULT_AVATAR_ALLOWED
         set(value) {
@@ -85,6 +89,8 @@ open class AvatarGroupView : FrameLayout {
             avatarView.avatarSize = avatarSize
             avatarView.avatarStyle = AvatarStyle.CIRCLE
             avatarView.id = View.generateViewId()
+            avatarView.tag = index
+            avatarView.setOnClickListener(clickListener)
             val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             when(avatarGroupStyle) {
                 AvatarGroupStyle.PILE -> {
@@ -109,6 +115,9 @@ open class AvatarGroupView : FrameLayout {
         avatarView.avatarIsOverFlow = true
         avatarView.avatarStyle = AvatarStyle.CIRCLE
         avatarView.id = View.generateViewId()
+        avatarView.setOnClickListener {
+            listener?.onOverFlowClicked()
+        }
         val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         when (avatarGroupStyle) {
             AvatarGroupStyle.STACK -> {
@@ -146,4 +155,8 @@ open class AvatarGroupView : FrameLayout {
         }.toInt()
     }
 
+    interface Listener {
+        fun onAvatarClicked(index: Int)
+        fun onOverFlowClicked()
+    }
 }

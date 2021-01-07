@@ -12,6 +12,7 @@ import com.microsoft.fluentui.persona.AvatarGroupView
 import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.popupmenu.PopupMenu
 import com.microsoft.fluentui.popupmenu.PopupMenuItem
+import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.util.createAvatarList
@@ -19,6 +20,7 @@ import com.microsoft.fluentuidemo.util.createAvatarNameList
 import com.microsoft.fluentuidemo.util.createImageAvatarList
 import com.microsoft.fluentuidemo.util.createSmallAvatarList
 import kotlinx.android.synthetic.main.activity_avatar_group_view.*
+import kotlinx.android.synthetic.main.activity_demo_detail.root_view
 
 class AvatarGroupViewActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -46,6 +48,14 @@ class AvatarGroupViewActivity : DemoActivity() {
         avatarGroupView.avatarGroupStyle = AvatarGroupStyle.STACK
         avatarGroupView.avatarSize = AvatarSize.SMALL
         avatarGroupView.setAvatars(createAvatarList(this))
+        avatarGroupView.listener = object : AvatarGroupView.Listener {
+            override fun onAvatarClicked(index: Int) {
+                Snackbar.make(root_view, String.format(getString(R.string.avatar_group_avatar_clicked), index), Snackbar.LENGTH_SHORT).show()
+            }
+            override fun onOverFlowClicked() {
+                Snackbar.make(root_view, getString(R.string.avatar_group_overflow_clicked), Snackbar.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun createFacePileFromCode(avatarGroupView: AvatarGroupView) {
