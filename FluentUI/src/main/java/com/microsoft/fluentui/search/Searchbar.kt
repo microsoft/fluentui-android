@@ -212,6 +212,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
         searchCloseButton?.setOnClickListener {
             setQuery("", false)
+            announceForAccessibility(queryHint+context.getString(R.string.searchbar_accessibility_cleared_announcement))
         }
     }
 

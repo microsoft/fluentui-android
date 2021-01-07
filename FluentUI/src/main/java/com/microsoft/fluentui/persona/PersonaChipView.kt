@@ -14,6 +14,9 @@ import android.support.annotation.AttrRes
 import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityNodeInfo
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import com.microsoft.fluentui.R
@@ -101,6 +104,7 @@ class PersonaChipView : TemplateView {
             avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaChipView_avatarImageDrawable)
 
         styledAttrs.recycle()
+        contentDescription = name
     }
 
     // Template
@@ -170,6 +174,7 @@ class PersonaChipView : TemplateView {
         val showCloseIcon = showCloseIconWhenSelected && isSelected
         closeIcon?.isVisible = showCloseIcon
         avatarView?.isVisible = !showCloseIcon
+        isFocusable = true
     }
 
     private fun updateViews() {
@@ -191,6 +196,33 @@ class PersonaChipView : TemplateView {
             updateStyles(R.drawable.persona_chip_background_error, R.attr.fluentuiPersonaChipTextErrorColor)
         else
             updateStyles(R.drawable.persona_chip_background_normal, R.attr.fluentuiPersonaChipTextNormalColor)
+    }
+
+    override fun getAccessibilityClassName(): CharSequence {
+        return CheckBox::class.java.name
+    }
+
+    override fun onInitializeAccessibilityNodeInfo(info: AccessibilityNodeInfo?) {
+        super.onInitializeAccessibilityNodeInfo(info)
+        info?.apply {
+            isEnabled = isEnabled
+            isCheckable = true
+            isChecked = isSelected
+            text = name
+        }
+    }
+
+    override fun onInitializeAccessibilityEvent(event: AccessibilityEvent?) {
+        super.onInitializeAccessibilityEvent(event)
+        event?.apply {
+            isEnabled = isEnabled
+            isChecked = isSelected
+        }
+    }
+
+    override fun onPopulateAccessibilityEvent(event: AccessibilityEvent?) {
+        super.onPopulateAccessibilityEvent(event)
+        event?.text?.add(name)
     }
 
     private fun updateStyles(backgroundDrawableId: Int, @AttrRes defaultTextColor: Int) {
