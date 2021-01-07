@@ -24,7 +24,7 @@
             android:layout_height="@dimen/fluentui_popup_menu_item_icon_size"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="@dimen/fluentui_popup_menu_item_margin_horizontal"
-            android:contentDescription="TODO" android:visibility="gone"/>
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/title"
