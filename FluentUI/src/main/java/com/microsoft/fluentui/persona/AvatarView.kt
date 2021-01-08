@@ -180,7 +180,18 @@ open class AvatarView : AppCompatImageView {
     private fun checkAndAddRing(canvas: Canvas) {
         if (avatarBorderStyle == AvatarBorderStyle.RING && avatarStyle == AvatarStyle.CIRCLE) {
             path.reset()
-            // Create Path to add the main border in mid of ring
+            /*
+             * There are total 3  rings, 2  outside of  avatar and 1 on top of avatar, thereby
+             * hiding some of the view/image.
+             * stroke size for each ring will be half of border size(1/2)
+             */
+
+            /*
+             * Create Path to add the main border in mid of ring
+             * To create middle ring. We do -3/4 of border size because, 1/2  will be center of
+             * 2 outer rings and we want to create border  of  width bordersize/2. so, it should
+             * be at the center of middle which is 1/2+1/4 = 3/4
+             */
             path.addCircle(
                     getViewSize() / 2f,
                     getViewSize() / 2f,
@@ -199,7 +210,12 @@ open class AvatarView : AppCompatImageView {
             paint.isAntiAlias = true
             canvas.drawPath(path, paint)
             path.reset()
-            // Create path to add inner ring
+            /*
+            * Create path to add inner ring
+            * To create middle ring. We do -5/4 of border size because, border should start
+            * from innermost ring  and as stroke is of  width bordersize/2. so, it should
+            * be at the center of innermost which is 1+1/4 = 5/4
+            */
             paint.color = ContextCompat.getColor(context, R.color.fluentui_avatar_ring_background)
             path.addCircle(
                     getViewSize() / 2f,
@@ -209,7 +225,12 @@ open class AvatarView : AppCompatImageView {
             )
             canvas.drawPath(path, paint)
             path.reset()
-            // Create path to add exterior ring
+            /*
+            * Create path to add outermost ring
+            * We do -1/4 of border size because, border should start from
+            * outermost ring  and as stroke is of  width bordersize/2. so, it should
+            * be at the center of outermost which is 1/4
+            */
             path.addCircle(
                     getViewSize() / 2f,
                     getViewSize() / 2f,

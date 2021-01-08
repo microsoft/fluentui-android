@@ -32,7 +32,6 @@ open class AvatarGroupView : FrameLayout {
     }
 
     private var avatarList: List<IAvatar> = ArrayList()
-    var listener: Listener? = null
     private val clickListener = OnClickListener {
         listener?.onAvatarClicked(it.tag as Int)
     }
@@ -44,6 +43,14 @@ open class AvatarGroupView : FrameLayout {
 
             field = value
             updateView()
+        }
+
+    var listener: Listener? = null
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
         }
 
     /**
@@ -107,9 +114,9 @@ open class AvatarGroupView : FrameLayout {
         }
     }
 
-    private fun addOverFlowView(i: Int) {
+    private fun addOverFlowView(overflowCount: Int) {
         val avatarView = AvatarView(context)
-        avatarView.name = i.toString()
+        avatarView.name = overflowCount.toString()
         avatarView.avatarBackgroundColor = ContextCompat.getColor(context, R.color.fluentui_avatar_overflow_background)
         avatarView.avatarSize = avatarSize
         avatarView.avatarIsOverFlow = true
@@ -122,11 +129,11 @@ open class AvatarGroupView : FrameLayout {
         when (avatarGroupStyle) {
             AvatarGroupStyle.STACK -> {
                 avatarView.avatarBorderStyle = AvatarBorderStyle.RING
-                layoutParams.marginStart = (avatarList.size - i) * (avatarView.getViewSize() / 2 + getStackSpacing())
+                layoutParams.marginStart = (avatarList.size - overflowCount) * (avatarView.getViewSize() / 2 + getStackSpacing())
             }
             AvatarGroupStyle.PILE -> {
                 avatarView.avatarBorderStyle = AvatarBorderStyle.NO_BORDER
-                layoutParams.marginStart = (avatarList.size - i) * (avatarView.getViewSize() + getPileSpacing())
+                layoutParams.marginStart = (avatarList.size - overflowCount) * (avatarView.getViewSize() + getPileSpacing())
             }
         }
         avatarView.layoutParams = layoutParams
