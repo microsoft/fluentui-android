@@ -1,0 +1,83 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+task generateFromFiles(type: JavaExec) {
+    group = 'fluentui'
+    description = 'Generate all Stardust resources and source files for the given stylesheet files'
+
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.msft.stardust.MainKt"
+    args 'generate'
+
+    doFirst {
+        if (project.hasProperty("regular") && project.hasProperty("dark")) {
+            args regular
+            args dark
+        } else {
+            println "Usage: -Pregular=[pathToRegularStylesheetFile] -Pdark=[pathToDarkStylesheetFile]"
+            throw new ProjectConfigurationException("Stardust", new Exception("No stylesheet files specified"))
+        }
+    }
+}
+
+task generateAll(type: JavaExec) {
+    group = 'stardust'
+    description = 'Generate all Stardust resources and source files for all stylesheets'
+
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.msft.stardust.MainKt"
+    args 'generate'
+}
+
+task generateFlavor() {
+    group = 'stardust'
+    description = 'Generate all Stardust resources and source files, flavor is passed as argument for the task [teams|skype|groupme]'
+    if (project.hasProperty("flavor")) {
+        switch (flavor) {
+            case "teams":
+                dependsOn 'generateTeams'
+                break
+            case "skype":
+                dependsOn 'generateSkype'
+                break
+            case "groupme":
+                dependsOn 'generateGroupme'
+                break
+        }
+    }
+
+    doFirst {
+        if (!project.hasProperty("flavor")) {
+            println "Usage: -Pflavor=[teams|skype]"
+            throw new ProjectConfigurationException("Stardust", new Exception("No flavor specified"))
+        }
+    }
+}
+
+task generateTeams(type: JavaExec) {
+    group = 'stardust'
+    description = 'Generate all Stardust resources and source files for Teams'
+
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.msft.stardust.MainKt"
+    args 'generate'
+    args '../MergedStylesheets/TeamsStyle.yml'
+    args '../MergedStylesheets/TeamsDarkStyle.yml'
+}
+
+task starduster(type: JavaExec) {
+    group = 'stardust'
+    description = 'Remove all auto-generated resources and source files'
+
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.msft.stardust.MainKt"
+    args 'clean'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'org.yaml:snakeyaml:1.23'
+    testImplementation 'junit:junit:4.12'
+}

@@ -105,7 +105,7 @@ class TabLayout : TemplateView {
                 setTabLayoutBackground()
             }
             TabType.SWITCH -> {
-                tabLayout.tabMode = TabLayout.MODE_FIXED
+                tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
                 tabLayout.layoutParams.width = LayoutParams.WRAP_CONTENT
                 setTabLayoutBackground()
             }
