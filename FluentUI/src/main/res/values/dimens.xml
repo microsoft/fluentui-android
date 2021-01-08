@@ -21,6 +21,20 @@
     <dimen name="fluentui_avatar_size_xlarge">52dp</dimen>
     <dimen name="fluentui_avatar_size_xxlarge">64dp</dimen>
     <dimen name="fluentui_avatar_square_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
+    <dimen name="fluentui_avatar_border_size">4dp</dimen>
+    <dimen name="fluentui_avatar_border_size_xxlarge">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xsmall">4dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_small">6dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_medium">6dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_large">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xlarge">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xxlarge">10dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xsmall">6dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_small">8dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_medium">8dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_large">12dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xlarge">14dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xxlarge">16dp</dimen>
 
     <!--BottomSheet-->
     <dimen name="fluentui_bottom_sheet_bottom_padding">8dp</dimen>
