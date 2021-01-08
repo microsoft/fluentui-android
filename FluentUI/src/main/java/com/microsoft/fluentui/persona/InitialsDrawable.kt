@@ -10,6 +10,7 @@ import android.graphics.*
 import android.graphics.drawable.Drawable
 import android.support.annotation.ColorInt
 import android.support.annotation.IntRange
+import android.support.v4.content.ContextCompat
 import android.text.*
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.ThemeUtil
@@ -57,13 +58,13 @@ internal class InitialsDrawable : Drawable {
     }
 
     var avatarStyle: AvatarStyle = AvatarStyle.SQUARE
+    var initialsBackgroundColor: Int = 0
 
     private val context: Context
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val path: Path = Path()
     private val textPaint: TextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private var initials: String? = null
-    private var initialsBackgroundColor: Int = 0
     private var initialsLayout: Layout? = null
 
     constructor(context: Context) : super() {
@@ -84,7 +85,7 @@ internal class InitialsDrawable : Drawable {
 
         when (avatarStyle) {
             AvatarStyle.CIRCLE ->
-                path.addCircle(width / 2f, height / 2f, width / 2f, Path.Direction.CW)
+                path.addCircle(width / 2f+bounds.left, height / 2f+bounds.top, width/2f, Path.Direction.CW)
             AvatarStyle.SQUARE -> {
                 val cornerRadius = context.resources.getDimension(R.dimen.fluentui_avatar_square_corner_radius)
                 path.addRoundRect(RectF(bounds), cornerRadius, cornerRadius, Path.Direction.CW)
@@ -98,7 +99,7 @@ internal class InitialsDrawable : Drawable {
 
         initialsLayout?.let {
             canvas.save()
-            canvas.translate(0f, (height - it.height) / 2f)
+            canvas.translate(0f+bounds.left, (height - it.height) / 2f+bounds.top)
             it.draw(canvas)
             canvas.restore()
         }
@@ -140,9 +141,15 @@ internal class InitialsDrawable : Drawable {
     /**
      * Uses [name] and [email] to generate initials
      */
-    fun setInfo(name: String, email: String, @ColorInt customBackgroundColor: Int? = null) {
+    fun setInfo(name: String, email: String, @ColorInt customBackgroundColor: Int? = null, isOverFlow: Boolean = false) {
         val initialsBackgroundColor = customBackgroundColor ?: getInitialsBackgroundColor(backgroundColors, name, email)
-        initials = getInitials(name, email)
+        if (isOverFlow) {
+            initials = name
+            textPaint.color = ContextCompat.getColor(context, R.color.fluentui_avatar_overflow_text_color)
+        }
+        else {
+            initials = getInitials(name, email)
+        }
         this.initialsBackgroundColor = initialsBackgroundColor
         invalidateSelf()
     }

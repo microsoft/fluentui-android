@@ -85,7 +85,7 @@ class Toolbar : Toolbar {
         avatarView.setAvatar(avatar)
         avatarView.avatarSize = AVATAR_SIZE
 
-        val avatarDisplayValue = avatarView.avatarSize.getDisplayValue(context)
+        val avatarDisplayValue = avatarView.getViewSize()
         val avatarBitmap = Bitmap.createBitmap(avatarDisplayValue, avatarDisplayValue, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(avatarBitmap)
 
