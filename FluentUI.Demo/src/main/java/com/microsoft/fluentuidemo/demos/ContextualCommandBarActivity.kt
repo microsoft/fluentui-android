@@ -49,7 +49,6 @@ class ContextualCommandBarActivity : DemoActivity() {
 
         with(contextual_command_bar_default) {
             setItemGroups(itemGroups)
-            showDismiss = false
             itemClickListener = object : ContextualCommandBar.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(this@ContextualCommandBarActivity, "Click ${item.getContentDescription()}", Toast.LENGTH_SHORT).show()

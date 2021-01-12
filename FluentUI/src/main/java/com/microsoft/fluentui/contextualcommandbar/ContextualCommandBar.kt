@@ -2,7 +2,6 @@ package com.microsoft.fluentui.contextualcommandbar
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.drawable.GradientDrawable
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.content.res.AppCompatResources
@@ -24,22 +23,23 @@ class ContextualCommandBar @JvmOverloads constructor(
         defStyleAttr: Int = 0
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
-    private var horizontalScrollView = HorizontalScrollView(context)
-    private var commandContainer = LinearLayout(context)
-
-    // Layout configuration
+    // Layout configurations
     private var groupSpace = 0
     private var itemSpace = 0
     private var itemPaddingVertical = 0
     private var itemPaddingHorizontal = 0
 
-    // Dismiss button configuration
+    private var horizontalScrollView = HorizontalScrollView(context)
+    private var commandContainer = LinearLayout(context)
+    private var dismissButton: ImageView? = null
+    private var dismissButtonContainer: LinearLayout? = null
+
+    // Dismiss button configurations
     var showDismiss = false
         set(value) {
             field = value
             setDismissButtonVisible(value)
         }
-
     @DrawableRes
     var dismissIcon: Int = 0
         set(value) {
@@ -50,15 +50,12 @@ class ContextualCommandBar @JvmOverloads constructor(
             field = value
             dismissButton?.setImageResource(dismissIcon)
         }
-    private var dismissButton: ImageView? = null
-    private var dismissButtonContainer: LinearLayout? = null
 
     var dismissListener: (() -> Unit)? = null
     var itemClickListener: OnItemClickListener? = null
 
     init {
         removeAllViews()
-        horizontalScrollView.removeAllViews()
         addView(horizontalScrollView)
         horizontalScrollView.addView(commandContainer)
 
@@ -75,22 +72,22 @@ class ContextualCommandBar @JvmOverloads constructor(
         attrs?.let {
             val styledAttributes = context.theme.obtainStyledAttributes(
                     it,
-                    R.styleable.ContextualCommandBar2,
+                    R.styleable.ContextualCommandBar,
                     0,
                     0
             )
 
             try {
                 groupSpace = styledAttributes.getDimensionPixelSize(
-                        R.styleable.ContextualCommandBar2_groupSpace,
+                        R.styleable.ContextualCommandBar_groupSpace,
                         resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
                 )
                 itemSpace = styledAttributes.getDimensionPixelSize(
-                        R.styleable.ContextualCommandBar2_itemSpace,
+                        R.styleable.ContextualCommandBar_itemSpace,
                         resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
                 )
                 showDismiss = styledAttributes.getBoolean(
-                        R.styleable.ContextualCommandBar2_showDismiss,
+                        R.styleable.ContextualCommandBar_showDismiss,
                         false
                 )
             } finally {
@@ -105,8 +102,7 @@ class ContextualCommandBar @JvmOverloads constructor(
             )
         }
 
-        // Initialize dismiss button
-        addDismissButton()
+        setDismissButtonVisible(showDismiss)
     }
 
     private fun addDismissButton() {
@@ -135,6 +131,12 @@ class ContextualCommandBar @JvmOverloads constructor(
         }
 
         // Dismiss button
+        itemPaddingVertical = resources.getDimensionPixelSize(
+                R.dimen.fluentui_contextual_command_bar_default_item_padding_vertical
+        )
+        itemPaddingHorizontal = resources.getDimensionPixelSize(
+                R.dimen.fluentui_contextual_command_bar_default_item_padding_horizontal
+        )
         dismissButton = ImageView(context).apply {
             setPaddingRelative(
                     itemPaddingHorizontal,
@@ -164,10 +166,13 @@ class ContextualCommandBar @JvmOverloads constructor(
         }
 
         bringChildToFront(dismissButtonContainer)
-        setDismissButtonVisible(showDismiss)
     }
 
     private fun setDismissButtonVisible(visible: Boolean) {
+        if (visible && dismissButton == null) {
+            addDismissButton()
+        }
+
         val paddingEnd = if (visible) {
             resources.getDimensionPixelSize(
                     R.dimen.fluentui_contextual_command_bar_dismiss_button_width
@@ -196,61 +201,65 @@ class ContextualCommandBar @JvmOverloads constructor(
                 }
             }
 
-            for ((idx, item) in items.withIndex()) {
-                val itemView = ImageView(context).apply {
-                    setPaddingRelative(
-                            itemPaddingHorizontal,
-                            itemPaddingVertical,
-                            itemPaddingHorizontal,
-                            itemPaddingVertical
-                    )
-                    setImageResource(item.getIcon())
-                    isSelected = item.isSelected() && item.isEnabled()
-                    isEnabled = item.isEnabled()
-                    contentDescription = item.getContentDescription()
+            addItemViewsToGroup(items, groupContainer)
+        }
+    }
 
-                    background = when {
-                        items.size == 1 -> {
-                            ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.contextual_command_bar_single_item_background
-                            )
-                        }
-                        idx == 0 -> {
-                            ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.contextual_command_bar_start_item_background
-                            )
-                        }
-                        idx == items.size - 1 -> {
-                            ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.contextual_command_bar_end_item_background
-                            )
-                        }
-                        else -> {
-                            ContextCompat.getDrawable(
-                                    context,
-                                    R.drawable.contextual_command_bar_middle_item_background
-                            )
-                        }
+    private fun addItemViewsToGroup(items: List<CommandItem>, groupContainer: ViewGroup) {
+        for ((idx, item) in items.withIndex()) {
+            val itemView = ImageView(context).apply {
+                setPaddingRelative(
+                        itemPaddingHorizontal,
+                        itemPaddingVertical,
+                        itemPaddingHorizontal,
+                        itemPaddingVertical
+                )
+                setImageResource(item.getIcon())
+                isSelected = item.isSelected() && item.isEnabled()
+                isEnabled = item.isEnabled()
+                contentDescription = item.getContentDescription()
+
+                background = when {
+                    items.size == 1 -> {
+                        ContextCompat.getDrawable(
+                                context,
+                                R.drawable.contextual_command_bar_single_item_background
+                        )
                     }
-                    imageTintList = AppCompatResources.getColorStateList(
-                            context,
-                            R.color.contextual_command_bar_icon_tint
-                    )
-
-                    setOnClickListener {
-                        itemClickListener?.onItemClick(item, it)
+                    idx == 0 -> {
+                        ContextCompat.getDrawable(
+                                context,
+                                R.drawable.contextual_command_bar_start_item_background
+                        )
+                    }
+                    idx == items.size - 1 -> {
+                        ContextCompat.getDrawable(
+                                context,
+                                R.drawable.contextual_command_bar_end_item_background
+                        )
+                    }
+                    else -> {
+                        ContextCompat.getDrawable(
+                                context,
+                                R.drawable.contextual_command_bar_middle_item_background
+                        )
                     }
                 }
+                imageTintList = AppCompatResources.getColorStateList(
+                        context,
+                        R.color.contextual_command_bar_icon_tint
+                )
 
-                groupContainer.addView(itemView)
+                setOnClickListener {
+                    itemClickListener?.onItemClick(item, it)
+                }
+            }
 
-                if (idx != items.size - 1) {
-                    (itemView.layoutParams as LinearLayout.LayoutParams).apply {
-                        marginEnd = itemSpace
-                    }
+            groupContainer.addView(itemView)
+
+            if (idx != items.size - 1) {
+                (itemView.layoutParams as LinearLayout.LayoutParams).apply {
+                    marginEnd = itemSpace
                 }
             }
         }
