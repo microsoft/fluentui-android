@@ -48,6 +48,7 @@ class ContextualCommandBar @JvmOverloads constructor(
             }
 
             field = value
+            setDismissButtonVisible(showDismiss)
             dismissButton?.setImageResource(dismissIcon)
         }
 
@@ -169,6 +170,10 @@ class ContextualCommandBar @JvmOverloads constructor(
     }
 
     private fun setDismissButtonVisible(visible: Boolean) {
+        if (dismissIcon == 0) {
+            // Skip if there is no icon
+            return
+        }
         if (visible && dismissButton == null) {
             addDismissButton()
         }
