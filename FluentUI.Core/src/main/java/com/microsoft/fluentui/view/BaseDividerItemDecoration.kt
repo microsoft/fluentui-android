@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.list
+package com.microsoft.fluentui.view
 
 import android.content.Context
 import android.graphics.Canvas
@@ -11,6 +11,7 @@ import android.graphics.Paint
 import android.support.annotation.ColorInt
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
+
 import android.view.View
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper

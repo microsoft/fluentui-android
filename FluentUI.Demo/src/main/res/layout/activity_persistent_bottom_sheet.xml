@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/default_layout_margin"
-        android:background="?attr/fluentuiBackgroundColor"
+        android:background="?attr/fluentuiBottomSheetBackgroundColor"
         android:orientation="vertical">
 
         <Button

@@ -5,5 +5,8 @@
   -->
 
 <resources>
-
+    <!--Toolbar-->
+    <style name="Widget.FluentUI.Toolbar" parent="@style/Base.Widget.FluentUI.Toolbar">
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
+    </style>
 </resources>

@@ -82,6 +82,12 @@
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
+
+        <!--Toolbar-->
+        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
     </style>
 
     <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent="">

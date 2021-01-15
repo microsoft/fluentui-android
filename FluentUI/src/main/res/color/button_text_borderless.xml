@@ -8,4 +8,5 @@
     <item android:color="?attr/fluentuiButtonBorderlessTextDisabledColor" android:state_enabled="false" />
     <item android:color="?attr/fluentuiButtonBorderlessTextPressedColor" android:state_pressed="true" />
     <item android:color="?attr/fluentuiButtonBorderlessTextDefaultColor" />
+
 </selector>

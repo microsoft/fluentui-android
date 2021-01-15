@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">M</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">T</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">W</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">T</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">F</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">S</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">S</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Go to next week</string>
+    <string name="accessibility_goto_previous_week">Go to previous week</string>
+    <string name="accessibility_today">today</string>
+    <string name="accessibility_selected">Selected</string>
+
+    <!-- *** Shared *** -->
+
+    <string name="done">Done</string>
+
     <!--SheetBehavior Address-->
     <string name="side_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.SideSheetBehavior</string>
     <string name="top_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.TopSheetBehavior</string>

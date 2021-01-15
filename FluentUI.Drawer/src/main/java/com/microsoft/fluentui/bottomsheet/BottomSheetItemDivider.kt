@@ -12,7 +12,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.util.ThemeUtil
-import com.microsoft.fluentui.list.BaseDividerItemDecoration
+import com.microsoft.fluentui.view.BaseDividerItemDecoration
 import com.microsoft.fluentui.listitem.ListItemView
 
 internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecoration(context, HORIZONTAL) {

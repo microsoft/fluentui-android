@@ -14,7 +14,8 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.core.R
+import com.microsoft.fluentui.listitem.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.setContentAndUpdateVisibility
 import com.microsoft.fluentui.view.TemplateView
@@ -98,7 +99,7 @@ class ListSubHeaderView : TemplateView {
     private var customAccessoryViewOriginalPaddingBottom: Int = 0
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ListItem), attrs, defStyleAttr) {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ListSubHeaderView)
 

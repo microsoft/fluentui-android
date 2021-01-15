@@ -120,6 +120,47 @@
         <item name="fluentuiTooltipBackgroundColor">?fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTooltipTextColor">?fluentuiForegroundOnSecondaryColor</item>
 
+        <!--buttons and check boxes-->
+        <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
+        <item name="checkboxStyle">@style/Widget.FluentUI.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.FluentUI.RadioButton</item>
+
+
+        <!--Button-->
+        <item name="fluentuiButtonBackgroundDefaultColor">?fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiButtonBackgroundDisabledColor">@color/fluentui_gray_50</item>
+        <item name="fluentuiButtonBackgroundPressedColor">?colorControlHighlight</item>
+        <item name="fluentuiButtonTextDefaultColor">?fluentuiForegroundOnPrimaryColor</item>
+        <item name="fluentuiButtonTextDisabledColor">@color/fluentui_gray_300</item>
+
+        <!--Button Borderless-->
+        <item name="fluentuiButtonBorderlessBackgroundDefaultColor">@android:color/transparent</item>
+        <item name="fluentuiButtonBorderlessBackgroundDisabledColor">@android:color/transparent</item>
+        <item name="fluentuiButtonBorderlessBackgroundPressedColor">?colorControlHighlight</item>
+        <item name="fluentuiButtonBorderlessTextDefaultColor">?colorPrimary</item>
+        <item name="fluentuiButtonBorderlessTextDisabledColor">@color/fluentui_gray_300</item>
+        <item name="fluentuiButtonBorderlessTextPressedColor">?colorPrimary</item>
+
+        <!--Button Outlined-->
+        <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_300</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_tint_20</item>
+        <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_30</item>
+        <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_50</item>
+
+        <!-- toolbar-->
+        <item name="toolbarStyle">@style/Widget.FluentUI.Toolbar</item>
+        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_left_24_filled_toolbar</item>
+
+        <!--Toolbar-->
+        <item name="fluentuiToolbarBackgroundColor">?colorPrimary</item>
+        <item name="fluentuiToolbarTitleTextColor">?fluentuiForegroundOnPrimaryColor</item>
+        <item name="fluentuiToolbarSubtitleTextColor">?fluentuiForegroundOnPrimaryColor</item>
+        <item name="fluentuiToolbarIconColor">?fluentuiForegroundOnPrimaryColor</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.FluentUI.Toolbar.OverflowButtonStyle</item>
+
+
     </style>
 
     <style name="Theme.FluentUI" parent="Theme.FluentUI.Components" />

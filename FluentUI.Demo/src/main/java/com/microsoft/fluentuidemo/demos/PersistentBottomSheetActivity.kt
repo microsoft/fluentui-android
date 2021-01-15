@@ -34,6 +34,9 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
+    override val defaultTheme: Int
+        get() = R.style.Theme_FluentUI_Drawer
+
     private lateinit var persistentBottomSheetDemo: PersistentBottomSheet
     private lateinit var defaultPersistentBottomSheet: PersistentBottomSheet
     private lateinit var currentSheet: PersistentBottomSheet

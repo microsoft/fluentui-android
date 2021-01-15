@@ -22,6 +22,17 @@
     <dimen name="fluentui_avatar_size_xxlarge">64dp</dimen>
     <dimen name="fluentui_avatar_square_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
 
+    <!--Button-->
+    <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>
+    <dimen name="fluentui_button_base_padding_vertical">8.5dp</dimen>
+    <dimen name="fluentui_button_min_height">36dp</dimen>
+    <dimen name="fluentui_button_padding_horizontal">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_button_corner_radius">@dimen/fluentui_corner_radius_2</dimen>
+    <dimen name="fluentui_button_large_padding_vertical">16dp</dimen>
+    <dimen name="fluentui_button_large_min_height">48dp</dimen>
+    <dimen name="fluentui_button_outlined_min_height">30dp</dimen>
+    <dimen name="fluentui_button_outlined_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_button_outlined_stroke_width">1dp</dimen>
 
     <!--BottomNavigation-->
     <dimen name="fluentui_bottom_navigation_icon_labeled">24dp</dimen>

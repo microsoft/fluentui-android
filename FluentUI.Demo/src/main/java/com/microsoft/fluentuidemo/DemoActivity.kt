@@ -9,16 +9,20 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.LayoutRes
 import android.support.v7.app.AppCompatActivity
+import android.view.LayoutInflater
 import android.view.MenuItem
 import com.microsoft.fluentui.util.DuoSupportUtils
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import java.util.*
 
-abstract class DemoActivity : AppCompatActivity() {
+abstract class DemoActivity() : AppCompatActivity() {
+
     companion object {
         const val DEMO_ID = "demo_id"
     }
 
+    protected open val defaultTheme: Int
+        get() = R.style.AppTheme
     protected abstract val contentLayoutId: Int
         @LayoutRes get
     protected open val contentNeedsScrollableContainer: Boolean
@@ -45,7 +49,10 @@ abstract class DemoActivity : AppCompatActivity() {
 
         // Load content and place it in the requested container
         val container = if (contentNeedsScrollableContainer) demo_detail_scrollable_container else demo_detail_container
-        layoutInflater.inflate(contentLayoutId, container, true)
+        //baseContext.setTheme(defaultTheme);
+        applicationContext.setTheme(defaultTheme)
+        LayoutInflater.from(applicationContext).inflate(contentLayoutId, container, true)
+        //layoutInflater.inflate(contentLayoutId, container, true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

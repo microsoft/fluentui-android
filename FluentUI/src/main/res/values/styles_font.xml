@@ -119,4 +119,24 @@
         <item name="android:textColor">?attr/fluentuiTooltipTextColor</item>
     </style>
 
+
+    <!--Button-->
+    <style name="TextAppearance.FluentUI.Button" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Borderless">
+        <item name="android:textColor">@color/button_text_borderless</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Outlined">
+        <item name="android:textColor">@color/button_text_outlined</item>
+    </style>
+
+    <!--Toolbar-->
+    <style name="TextAppearance.FluentUI.ToolbarTitle" parent="TextAppearance.FluentUI.Title1">
+        <item name="android:textColor">?attr/fluentuiToolbarTitleTextColor</item>
+    </style>
+    <style name="TextAppearance.FluentUI.ToolbarSubtitle" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiToolbarSubtitleTextColor</item>
+    </style>
 </resources>
