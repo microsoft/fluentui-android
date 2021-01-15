@@ -31,7 +31,7 @@ steps:
     command: 'publish'
     publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
     feedsToUsePublish: 'internal'
-    vstsFeedPublish: 'OS/Office'
+    vstsFeedPublish: 'Office'
     vstsFeedPackagePublish: 'fluentuiandroid'
     versionOption: 'patch'
     packagePublishDescription: 'Fluent Universal Package'
