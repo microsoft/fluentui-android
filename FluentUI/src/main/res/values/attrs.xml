@@ -127,15 +127,6 @@
         <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
         <attr name="fluentuiDialogTabIndicatorColor" format="reference|color"/>
 
-        <!--TabLayout-->
-        <attr name="fluentuiTabLayoutContainerBackgroundColor" format="reference|color"/>
-        <attr name="fluentuiTabLayoutBackgroundColor" format="reference|color"/>
-        <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
-        <attr name="fluentuiTabUnselectedTextColor" format="reference|color"/>
-        <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
-        <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
-        <attr name="fluentuiTabTextAppearance" format="reference" />
-
         <!--Tooltip-->
         <attr name="fluentuiTooltipBackgroundColor" format="reference|color" />
         <attr name="fluentuiTooltipTextColor" format="reference|color" />

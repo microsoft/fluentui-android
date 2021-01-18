@@ -211,14 +211,7 @@
         <item name="android:maxWidth">@dimen/fluentui_searchbar_progress_size</item>
     </style>
 
-    <style name="FluentUI.TabLayout" parent="">
-        <item name="containerBackgroundColor">?attr/fluentuiTabLayoutContainerBackgroundColor</item>
-        <item name="tabsBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
-        <item name="tabSelectedBackgroundColor">?attr/fluentuiTabSelectedBackgroundColor</item>
-        <item name="tabUnselectedBackgroundColor">?attr/fluentuiTabUnselectedBackgroundColor</item>
-        <item name="tabSelectedTextColor">?attr/fluentuiTabSelectedTextColor</item>
-        <item name="tabUnselectedTextColor">?attr/fluentuiTabUnselectedTextColor</item>
-    </style>
+
 
 </resources>
 

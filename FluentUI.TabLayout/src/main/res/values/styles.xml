@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FluentUI.TabLayout" parent="">
+        <item name="containerBackgroundColor">?attr/fluentuiTabLayoutContainerBackgroundColor</item>
+        <item name="tabsBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
+        <item name="tabSelectedBackgroundColor">?attr/fluentuiTabSelectedBackgroundColor</item>
+        <item name="tabUnselectedBackgroundColor">?attr/fluentuiTabUnselectedBackgroundColor</item>
+        <item name="tabSelectedTextColor">?attr/fluentuiTabSelectedTextColor</item>
+        <item name="tabUnselectedTextColor">?attr/fluentuiTabUnselectedTextColor</item>
+    </style>
+</resources>

@@ -20,7 +20,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -51,6 +52,7 @@ dependencies {
     implementation project(':FluentUI.Core')
     implementation project(':FluentUI.ListItem')
     implementation project(':FluentUI.Drawer')
+    implementation project(':FluentUI.TabLayout')
     implementation project(':FluentUI')
 
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'

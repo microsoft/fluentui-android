@@ -1,3 +1,4 @@
 include ':FluentUI.Core', ':FluentUI.ListItem', ':FluentUI.Drawer'
 include ':FluentUI'
 include ':FluentUI.Demo'
+include ':FluentUI.TabLayout'

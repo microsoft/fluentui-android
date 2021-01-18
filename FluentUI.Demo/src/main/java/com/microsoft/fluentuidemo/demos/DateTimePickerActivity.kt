@@ -56,6 +56,9 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
     override val contentLayoutId: Int
         get() = R.layout.activity_date_time_picker
 
+    override val defaultTheme: Int
+        get() = R.style.Theme_FluentUI_Components
+
     private var dateTimePickerDialog: DateTimePickerDialog? = null
 
     // Date and time

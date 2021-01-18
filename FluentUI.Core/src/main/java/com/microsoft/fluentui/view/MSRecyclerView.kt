@@ -26,7 +26,7 @@ import android.view.ViewConfiguration
  * Note: The crazy math part has been taken from Android framework Scroller.java and modified
  * to match our needs.
  */
-open class MSRecyclerView : RecyclerView {
+internal class MSRecyclerView : RecyclerView {
     companion object {
         // This is going to be multiplied by the density of the device
         private const val MAX_SCROLL_VELOCITY = 3500

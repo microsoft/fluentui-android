@@ -107,15 +107,6 @@
         <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiDialogTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
 
-        <!--TabLayout-->
-        <item name="fluentuiTabSelectedTextColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiTabUnselectedTextColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiTabLayoutContainerBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiTabLayoutBackgroundColor">@color/fluentui_communication_shade_10</item>
-        <item name="fluentuiTabSelectedBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiTabUnselectedBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
-        <item name="fluentuiTabTextAppearance">@style/TextAppearance.FluentUI.Tab</item>
-
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTooltipTextColor">?fluentuiForegroundOnSecondaryColor</item>

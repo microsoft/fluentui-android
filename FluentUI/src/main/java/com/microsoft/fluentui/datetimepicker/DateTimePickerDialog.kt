@@ -145,7 +145,7 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
         dateTime: ZonedDateTime = ZonedDateTime.now(),
         duration: Duration = Duration.ZERO
     ) : super(context, R.style.Dialog_FluentUI) {
-        fluentuiContext = FluentUIContextThemeWrapper(context)
+        fluentuiContext = FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Components)
 
         this.dateRangeMode = dateRangeMode
         this.dateTime = dateTime
