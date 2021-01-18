@@ -1,11 +1,11 @@
-package com.msft.stardust
+package microsoft.fluentui.generator
 
-import com.msft.stardust.model.Attribute
-import com.msft.stardust.model.AttributeType
-import com.msft.stardust.model.global_getResourceType
-import com.msft.stardust.model.resources.Resource
-import com.msft.stardust.model.resources.ResourceType
-import com.msft.stardust.model.resources.STRING_PATTERN
+import microsoft.fluentui.generator.model.Attribute
+import microsoft.fluentui.generator.model.AttributeType
+import microsoft.fluentui.generator.model.global_getResourceType
+import microsoft.fluentui.generator.model.resources.Resource
+import microsoft.fluentui.generator.model.resources.ResourceType
+import microsoft.fluentui.generator.model.resources.STRING_PATTERN
 import java.io.File
 import java.util.*
 

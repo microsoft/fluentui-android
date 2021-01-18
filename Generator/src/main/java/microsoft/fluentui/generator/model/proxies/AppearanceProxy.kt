@@ -1,6 +1,6 @@
-package com.msft.stardust.model.proxies
+package microsoft.fluentui.generator.model.proxies
 
-import com.msft.stardust.model.resources.Resource
+import microsoft.fluentui.generator.model.resources.Resource
 
 abstract class AppearanceProxy {
     /**

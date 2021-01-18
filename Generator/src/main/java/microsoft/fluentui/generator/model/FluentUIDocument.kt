@@ -1,16 +1,16 @@
-package com.msft.stardust.model
+package microsoft.fluentui.generator.model
 
-import com.msft.stardust.AP_PREFIX
-import com.msft.stardust.EXTENSION_TAG
-import com.msft.stardust.isValidAPKey
-import com.msft.stardust.isValidAnimatorKey
-import com.msft.stardust.model.resources.generateAnimators
+import microsoft.fluentui.generator.AP_PREFIX
+import microsoft.fluentui.generator.EXTENSION_TAG
+import microsoft.fluentui.generator.isValidAPKey
+import microsoft.fluentui.generator.isValidAnimatorKey
+import microsoft.fluentui.generator.model.resources.generateAnimators
 import java.util.*
 import kotlin.collections.LinkedHashMap
 
 private val TYPOGRAPHY_KEYS = listOf("Typography")
 
-class StardustDocument: LinkedHashMap<String, LinkedHashMap<String, Any>>() {
+class FluentUIDocument: LinkedHashMap<String, LinkedHashMap<String, Any>>() {
     private val typographyGenerator = TypographyGenerator()
     private val enumGenerator = EnumGenerator()
     private val genericGenerator = GenericResourceGenerator()

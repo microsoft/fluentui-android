@@ -1,9 +1,13 @@
-package com.msft.stardust
+package microsoft.fluentui.generator
 
-import com.msft.stardust.model.Attribute
-import com.msft.stardust.model.AttributeType
-import com.msft.stardust.model.resources.Resource
-import com.msft.stardust.model.resources.ResourceType
+import microsoft.fluentui.generator.autoResolveReference
+import microsoft.fluentui.generator.isValidColor
+import microsoft.fluentui.generator.model.Attribute
+import microsoft.fluentui.generator.model.AttributeType
+import microsoft.fluentui.generator.model.resources.Resource
+import microsoft.fluentui.generator.model.resources.ResourceType
+import microsoft.fluentui.generator.prependCamelCase
+import microsoft.fluentui.generator.toAttributesList
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before

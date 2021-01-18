@@ -1,4 +1,4 @@
-package com.msft.stardust.model.proxies
+package microsoft.fluentui.generator.model.proxies
 
 class AppearanceProxyResourceOnly(override val viewName: String) : AppearanceProxy() {
 

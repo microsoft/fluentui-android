@@ -1,6 +1,6 @@
-package com.msft.stardust
+package microsoft.fluentui.generator
 
-const val ATTRIBUTE_PREFIX = "stardust_"
+const val ATTRIBUTE_PREFIX = "fluentUI_"
 const val ANIMATOR_PREFIX = "AN_"
 const val AP_PREFIX = "AP_"
 const val EXTENSION_TAG = " extends "

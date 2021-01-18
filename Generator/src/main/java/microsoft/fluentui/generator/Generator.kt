@@ -1,8 +1,8 @@
-package com.msft.stardust
+package microsoft.fluentui.generator
 
-import com.msft.stardust.model.StardustDocument
-import com.msft.stardust.model.clearBindingMappingFile
-import com.msft.stardust.model.resources.clearInterpolatorsFile
+import microsoft.fluentui.generator.model.FluentUIDocument
+import microsoft.fluentui.generator.model.clearBindingMappingFile
+import microsoft.fluentui.generator.model.resources.clearInterpolatorsFile
 import org.yaml.snakeyaml.Yaml
 import java.io.File
 import java.io.FileInputStream
@@ -57,8 +57,8 @@ class Generator {
         documents.forEach {
             try {
                 println("\n[${it.path}]")
-                val doc: StardustDocument? =
-                    Yaml().loadAs(FileInputStream(it.path), StardustDocument::class.java)
+                val doc: FluentUIDocument? =
+                    Yaml().loadAs(FileInputStream(it.path), FluentUIDocument::class.java)
 
                 if (doc == null) {
                     printWarning("parsing failed, file empty?")

@@ -1,9 +1,9 @@
-package com.msft.stardust.model
+package microsoft.fluentui.generator.model
 
-import com.msft.stardust.AP_PREFIX
-import com.msft.stardust.EXTENSION_TAG
-import com.msft.stardust.*
-import com.msft.stardust.model.proxies.*
+import microsoft.fluentui.generator.*
+import microsoft.fluentui.generator.model.proxies.AppearanceProxyResourceOnly
+import microsoft.fluentui.generator.model.proxies.Avatar
+import microsoft.fluentui.generator.model.proxies.Button
 import java.io.File
 
 val appearanceProxies = listOf(
@@ -16,7 +16,7 @@ val appearanceProxies = listOf(
 
 val resourceOnlyAppearanceProxies = listOf<String>()
 
-fun generateAppearanceProxies(document: StardustDocument) {
+fun generateAppearanceProxies(document: FluentUIDocument) {
     document.forEach { rootNode ->
         if (rootNode.key.isValidAPKey()) {
             val apRawName = rootNode.key.substringAfter(AP_PREFIX)
@@ -31,11 +31,11 @@ fun generateAppearanceProxies(document: StardustDocument) {
             val parentParameters =
                 if (apParentName != null) getParentParameters(document, apRawName, LinkedHashMap()) else null
 
-            val baseResourceProxyPath = global_projectSourcePath.plus("main/java/com/microsoft/stardust/resourceProxies/")
+            val baseResourceProxyPath = global_projectSourcePath.plus("main/java/microsoft/fluentui/generator/resourceProxies/")
             val genericProxyPath = baseResourceProxyPath + "GenericProxy.kt"
             File(genericProxyPath).apply {
                 parentFile.mkdirs()
-                writeText("package com.microsoft.stardust.resourceProxies\n" +
+                writeText("package microsoft.fluentui.generator.resourceProxies\n" +
                         "import android.content.Context\n" +
                         "import android.content.res.Resources\n" +
                         "open class GenericProxy(context: Context, resources: Resources)")
@@ -51,7 +51,7 @@ fun generateAppearanceProxies(document: StardustDocument) {
     }
 }
 
-fun getParentParameters(document: StardustDocument, apRawName: String, list: LinkedHashMap<String, Any>): LinkedHashMap<String, Any>? {
+fun getParentParameters(document: FluentUIDocument, apRawName: String, list: LinkedHashMap<String, Any>): LinkedHashMap<String, Any>? {
     val apParentName = if (apRawName.contains(EXTENSION_TAG)) apRawName.substringAfter(EXTENSION_TAG) else apRawName
 
     // TODO: we could probably optimize this

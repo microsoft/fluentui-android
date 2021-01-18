@@ -1,11 +1,11 @@
-package com.msft.stardust
+package microsoft.fluentui.generator
 
 import java.io.File
 
-const val YAML_PATH = "../../../MergedStylesheets"
+const val YAML_PATH = "../FluentUI/FluentUIStyleSheets"
 const val YAML_STYLESHEET_SUFFIX = "Style.yml"
 
-var global_projectRoot = "../Library"
+var global_projectRoot = "../FluentUI"
     set(value) {
         field = value
         global_projectSourcePath = "$global_projectRoot/generatedSrc/"
@@ -38,7 +38,7 @@ fun main(args: Array<String>) {
                 }
             }
         }
-        args[0] == "clean" -> { starduster() }
+        args[0] == "clean" -> { cleaner() }
         else -> printError("Unknown argument: ${args[0]}")
     }
 }
@@ -75,7 +75,7 @@ fun getLocalStyleSheetList(): List<StylesheetDocument> {
 }
 
 fun upgradeGradleFlavors() {
-    val generatedFolder = File("${global_projectRoot}/generatedSrc")
+    val generatedFolder = File("$global_projectRoot/generatedSrc")
     val flavorsFile = File(generatedFolder, "flavors.gradle")
 
     if (!generatedFolder.exists() || !flavorsFile.exists()) {

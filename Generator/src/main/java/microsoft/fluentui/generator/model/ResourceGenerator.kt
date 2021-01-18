@@ -1,10 +1,10 @@
-package com.msft.stardust.model
+package microsoft.fluentui.generator.model
 
-import com.msft.stardust.global_flavorPath
-import com.msft.stardust.model.resources.Resource
-import com.msft.stardust.model.resources.ResourceType
-import com.msft.stardust.model.resources.generateResources
-import com.msft.stardust.printWarning
+import microsoft.fluentui.generator.global_flavorPath
+import microsoft.fluentui.generator.model.resources.Resource
+import microsoft.fluentui.generator.model.resources.ResourceType
+import microsoft.fluentui.generator.model.resources.generateResources
+import microsoft.fluentui.generator.printWarning
 import java.util.*
 
 abstract class ResourceGenerator(protected val name: String) {

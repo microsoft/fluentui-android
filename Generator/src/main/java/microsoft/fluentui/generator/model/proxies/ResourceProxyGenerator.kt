@@ -1,7 +1,9 @@
-package com.msft.stardust.model.proxies
+package microsoft.fluentui.generator.model.proxies
 
-import com.msft.stardust.*
-import com.msft.stardust.model.resources.*
+import microsoft.fluentui.generator.global_projectSourcePath
+import microsoft.fluentui.generator.model.resources.Resource
+import microsoft.fluentui.generator.model.resources.generateComponentProxyFile
+import microsoft.fluentui.generator.model.resources.parseResourceCodeWrapper
 
 
 class ResourceProxyGenerator(
@@ -11,7 +13,7 @@ class ResourceProxyGenerator(
     private val parentName: String?,
     private val parentParameters: LinkedHashMap<String, Any>?
 ) {
-    private val baseResourceProxyPath = global_projectSourcePath.plus("main/java/com/microsoft/stardust/resourceProxies/")
+    private val baseResourceProxyPath = global_projectSourcePath.plus("main/java/microsoft/fluentui/generator/resourceProxies/")
     private val customResources = mutableListOf<Resource>()
 
     fun generateAll() {

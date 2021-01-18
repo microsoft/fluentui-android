@@ -1,9 +1,9 @@
-package com.msft.stardust.model.proxies
+package microsoft.fluentui.generator.model.proxies
 
-import com.msft.stardust.DocumentType
-import com.msft.stardust.global_documentType
-import com.msft.stardust.model.AttributeType
-import com.msft.stardust.model.resources.*
+import microsoft.fluentui.generator.DocumentType
+import microsoft.fluentui.generator.global_documentType
+import microsoft.fluentui.generator.model.AttributeType
+import microsoft.fluentui.generator.model.resources.*
 
 class Button(val type: Type = Type.Default()) : AppearanceProxy() {
 

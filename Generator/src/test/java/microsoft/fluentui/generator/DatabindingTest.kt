@@ -1,6 +1,7 @@
-package com.msft.stardust
+package microsoft.fluentui.generator
 
-import com.msft.stardust.model.bindingMethodsFilePath
+import microsoft.fluentui.generator.testProjectPath
+import microsoft.fluentui.generator.model.bindingMethodsFilePath
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -25,7 +26,7 @@ class DatabindingTest {
     @Test
     fun `Binding methods properties`() {
         Generator().apply {
-            add(StylesheetDocument("${YAML_PATH}/GenericStyle.yml", DocumentType.ROOT))
+            add(StylesheetDocument("$YAML_PATH/GenericStyle.yml", DocumentType.ROOT))
             generate()
         }
 
@@ -37,11 +38,11 @@ class DatabindingTest {
 
             Regex("type = (.*)::class, attribute = \"(.*)\", method = \"(.*)\"").findAll(content).forEach {
                 val className = it.groupValues[1] + ".kt"
-                val stardustAttributeName = it.groupValues[2]
+                val fluentUIAttributeName = it.groupValues[2]
                 var propertyName = it.groupValues[3].substringAfter("set")
 
                 // Booleans are handled by databinding's reflection logic as "setValue" / "isValue"
-                if (stardustAttributeName.substringBefore(propertyName).toLowerCase().endsWith("is"))
+                if (fluentUIAttributeName.substringBefore(propertyName).toLowerCase().endsWith("is"))
                     propertyName = "is${propertyName}"
 
                 propertiesMap[className] = (propertiesMap[className] ?: mutableListOf()).apply {

@@ -1,4 +1,6 @@
-package com.msft.stardust.model.proxies
+package microsoft.fluentui.generator.model.proxies
+
+
 
 class Avatar() : AppearanceProxy() {
 

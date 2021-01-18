@@ -1,6 +1,6 @@
-package com.msft.stardust.model.resources
+package microsoft.fluentui.generator.model.resources
 
-import com.msft.stardust.*
+import microsoft.fluentui.generator.*
 
 fun generateColorSelector(name: String, values: ArrayList<*>, legacyOnly: Boolean = false) {
     intGenerateColorSelector(values, false).writeToResourceFile(global_flavorPath.plus("res/color${global_documentType.identifierString()}/$name.xml".toLowerCase()), "Color selector")

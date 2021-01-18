@@ -1,12 +1,13 @@
-package com.msft.stardust.model
+package microsoft.fluentui.generator.model
 
-import com.msft.stardust.*
+import microsoft.fluentui.generator.*
+import microsoft.fluentui.generator.toJavaEnumValueName
 import java.io.File
 import java.util.*
 import kotlin.collections.HashMap
 import kotlin.collections.HashSet
 
-class StardustIconDocument: LinkedHashMap<String, LinkedHashMap<String, Any>>() {
+class FluentUIIconDocument: LinkedHashMap<String, LinkedHashMap<String, Any>>() {
 
     private val iconSizeMap = HashMap<String, Int>()
     private val iconDefaults = HashMap<String, String>()

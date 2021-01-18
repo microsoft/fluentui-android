@@ -1,13 +1,13 @@
-package com.msft.stardust.model.proxies
+package microsoft.fluentui.generator.model.proxies
 
-import com.msft.stardust.ATTRIBUTE_PREFIX
-import com.msft.stardust.DocumentType
-import com.msft.stardust.global_documentType
-import com.msft.stardust.global_flavorPath
-import com.msft.stardust.model.*
-import com.msft.stardust.model.resources.Resource
-import com.msft.stardust.model.resources.generateResources
-import com.msft.stardust.model.resources.parseResource
+import microsoft.fluentui.generator.ATTRIBUTE_PREFIX
+import microsoft.fluentui.generator.DocumentType
+import microsoft.fluentui.generator.global_documentType
+import microsoft.fluentui.generator.global_flavorPath
+import microsoft.fluentui.generator.model.*
+import microsoft.fluentui.generator.model.resources.Resource
+import microsoft.fluentui.generator.model.resources.generateResources
+import microsoft.fluentui.generator.model.resources.parseResource
 
 data class CustomAttribute(val name: String,
                            val type: AttributeType,
@@ -42,7 +42,7 @@ class AppearanceProxyGenerator(
                     }
                 }.capitalize()
 
-        bindingMapping["${ATTRIBUTE_PREFIX}${customAttribute.name}"] = bindingMethodName
+        bindingMapping["$ATTRIBUTE_PREFIX${customAttribute.name}"] = bindingMethodName
     }
 
     fun addAttribute(attribute: Attribute) {

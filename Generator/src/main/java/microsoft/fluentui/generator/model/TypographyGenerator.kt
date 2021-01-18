@@ -1,6 +1,6 @@
-package com.msft.stardust.model
+package microsoft.fluentui.generator.model
 
-import com.msft.stardust.model.resources.*
+import microsoft.fluentui.generator.model.resources.*
 import java.util.*
 
 private const val TEXT_STYLES_KEY = "textStyles"
