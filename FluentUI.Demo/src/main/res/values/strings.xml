@@ -75,6 +75,8 @@
     <string name="contextual_command_bar_style_default">Default</string>
     <string name="contextual_command_bar_style_with_dismiss_button">With dismiss</string>
     <string name="contextual_command_bar_style_with_dismiss_button_rtl">With dismiss RTL</string>
+    <string name="contextual_command_prompt_click_item">Click %s</string>
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
 
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>

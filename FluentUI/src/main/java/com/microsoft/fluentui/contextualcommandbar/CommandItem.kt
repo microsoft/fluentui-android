@@ -4,6 +4,8 @@ import android.support.annotation.DrawableRes
 
 interface CommandItem {
 
+    fun getId(): String? = null
+
     @DrawableRes
     fun getIcon(): Int
 
