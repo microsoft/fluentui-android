@@ -51,7 +51,11 @@ class ContextualCommandBarActivity : DemoActivity() {
             setItemGroups(itemGroups)
             itemClickListener = object : ContextualCommandBar.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
-                    Toast.makeText(this@ContextualCommandBarActivity, "Click ${item.getContentDescription()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                            this@ContextualCommandBarActivity,
+                            getString(R.string.contextual_command_prompt_click_item, item.getContentDescription()),
+                            Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
@@ -61,11 +65,19 @@ class ContextualCommandBarActivity : DemoActivity() {
             showDismiss = true
             dismissIcon = R.drawable.ic_fluent_keyboard_dock_24_regular
             dismissListener = {
-                Toast.makeText(this@ContextualCommandBarActivity, "Dismiss", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                        this@ContextualCommandBarActivity,
+                        getString(R.string.contextual_command_prompt_click_dismiss),
+                        Toast.LENGTH_SHORT
+                ).show()
             }
             itemClickListener = object : ContextualCommandBar.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
-                    Toast.makeText(this@ContextualCommandBarActivity, "Click ${item.getContentDescription()}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                            this@ContextualCommandBarActivity,
+                            getString(R.string.contextual_command_prompt_click_item, item.getContentDescription()),
+                            Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }
