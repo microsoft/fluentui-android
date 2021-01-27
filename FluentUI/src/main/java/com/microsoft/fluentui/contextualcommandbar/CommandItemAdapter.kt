@@ -58,7 +58,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
         val viewType = getItemViewType(position)
         val viewHolder = vh as ViewHolder
         val commandItem = flattenCommandItems[position]
-        val isItemSelected = commandItem.isEnabled() && commandItem.isSelected()
+        val isItemSelected = commandItem.isSelected()
         val isItemEnabled = commandItem.isEnabled()
         val label = commandItem.getLabel()
         val icon = commandItem.getIcon()
