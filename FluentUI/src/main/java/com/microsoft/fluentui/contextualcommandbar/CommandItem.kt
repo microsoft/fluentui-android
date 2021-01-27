@@ -16,11 +16,7 @@ interface CommandItem {
 
     fun getLabel(): String? = null
 
-    fun setEnabled(enabled: Boolean)
-
     fun isEnabled(): Boolean = true
-
-    fun setSelected(selected: Boolean)
 
     fun isSelected(): Boolean = false
 }

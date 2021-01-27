@@ -14,7 +14,7 @@ open class DefaultCommandItem(
         private var selected: Boolean = false
 ) : CommandItem {
 
-    override fun setEnabled(enabled: Boolean) {
+    fun setEnabled(enabled: Boolean) {
         this.enabled = enabled
     }
 
@@ -22,7 +22,7 @@ open class DefaultCommandItem(
         return enabled
     }
 
-    override fun setSelected(selected: Boolean) {
+    fun setSelected(selected: Boolean) {
         this.selected = selected
     }
 

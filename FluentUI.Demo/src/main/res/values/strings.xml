@@ -79,6 +79,7 @@
     <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
     <string name="contextual_command_insert_item">Insert Item</string>
     <string name="contextual_command_update_item">Update Item</string>
+    <string name="contextual_command_accessibility_dismiss">Dismiss</string>
     <string name="contextual_command_accessibility_add">Add</string>
     <string name="contextual_command_accessibility_mention">Add</string>
     <string name="contextual_command_accessibility_bold">Bold</string>

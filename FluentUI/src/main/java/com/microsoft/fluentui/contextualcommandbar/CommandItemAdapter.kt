@@ -18,8 +18,12 @@ import com.microsoft.fluentui.util.isVisible
 
 class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var itemSpace = context.resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
-    private var groupSpace = context.resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
+    private var itemSpace = context.resources.getDimensionPixelSize(
+            R.dimen.fluentui_contextual_command_bar_default_item_space
+    )
+    private var groupSpace = context.resources.getDimensionPixelSize(
+            R.dimen.fluentui_contextual_command_bar_default_group_space
+    )
 
     private var flattenCommandItems = arrayListOf<CommandItem>()
     var commandItemGroups = arrayListOf<CommandItemGroup>()
