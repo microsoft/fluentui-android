@@ -79,6 +79,17 @@
     <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
     <string name="contextual_command_insert_item">Insert Item</string>
     <string name="contextual_command_update_item">Update Item</string>
+    <string name="contextual_command_accessibility_add">Add</string>
+    <string name="contextual_command_accessibility_mention">Add</string>
+    <string name="contextual_command_accessibility_bold">Bold</string>
+    <string name="contextual_command_accessibility_italic">Italic</string>
+    <string name="contextual_command_accessibility_underline">Underline</string>
+    <string name="contextual_command_accessibility_strikethrough">Strikethrough</string>
+    <string name="contextual_command_accessibility_undo">Undo</string>
+    <string name="contextual_command_accessibility_redo">Redo</string>
+    <string name="contextual_command_accessibility_bullet">Bullet</string>
+    <string name="contextual_command_accessibility_list">List</string>
+    <string name="contextual_command_accessibility_link">Link</string>
 
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>

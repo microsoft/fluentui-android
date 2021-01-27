@@ -29,29 +29,66 @@ class ContextualCommandBarActivity : DemoActivity() {
         val itemGroups = arrayListOf<CommandItemGroup>()
 
         itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_add_24_regular, "Add"))
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_mention_24_regular, "Mention", enabled = false))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_add_24_regular,
+                        getString(R.string.contextual_command_accessibility_add)
+                ))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_mention_24_regular,
+                        getString(R.string.contextual_command_accessibility_mention),
+                        enabled = false
+                ))
         )
 
         itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_text_bold_24_filled, "Bold", selected = true))
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_text_italic_24_regular, "Italic"))
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_text_underline_24_regular, "Underline"))
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_text_strikethrough_24_regular, "Strikethrough"))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_text_bold_24_filled,
+                        getString(R.string.contextual_command_accessibility_bold),
+                        selected = true
+                ))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_text_italic_24_regular,
+                        getString(R.string.contextual_command_accessibility_italic)
+                ))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_text_underline_24_regular,
+                        getString(R.string.contextual_command_accessibility_underline)
+                ))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_text_strikethrough_24_regular,
+                        getString(R.string.contextual_command_accessibility_strikethrough)
+                ))
         )
 
         itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_arrow_undo_24_regular, "Undo", selected = true))
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_arrow_redo_24_regular, "Redo"))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_arrow_undo_24_regular,
+                        getString(R.string.contextual_command_accessibility_undo),
+                        selected = true
+                ))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_arrow_redo_24_regular,
+                        getString(R.string.contextual_command_accessibility_redo)
+                ))
         )
 
         itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_text_bullet_list_24_regular, "Bullet"))
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_text_number_list_ltr_24_regular, "List"))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_text_bullet_list_24_regular,
+                        getString(R.string.contextual_command_accessibility_bullet)
+                ))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_text_number_list_ltr_24_regular,
+                        getString(R.string.contextual_command_accessibility_list)
+                ))
         )
 
         itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(R.drawable.ic_fluent_link_24_regular, "Link", false))
+                .addItem(DefaultCommandItem(
+                        R.drawable.ic_fluent_link_24_regular,
+                        getString(R.string.contextual_command_accessibility_link),
+                        false
+                ))
         )
 
         with(contextual_command_bar_default) {
@@ -91,8 +128,16 @@ class ContextualCommandBarActivity : DemoActivity() {
 
         insert_item.setOnClickListener {
             contextual_command_bar_default.addItemGroup(CommandItemGroup()
-                    .addItem(DefaultCommandItem(R.drawable.ic_fluent_add_24_regular, "Add2"))
-                    .addItem(DefaultCommandItem(R.drawable.ic_fluent_mention_24_regular, "Mention2", enabled = false)))
+                    .addItem(DefaultCommandItem(
+                            R.drawable.ic_fluent_add_24_regular,
+                            getString(R.string.contextual_command_accessibility_add)
+                    ))
+                    .addItem(DefaultCommandItem(
+                            R.drawable.ic_fluent_mention_24_regular,
+                            getString(R.string.contextual_command_accessibility_mention),
+                            enabled = false
+                    ))
+            )
         }
 
         update_item.setOnClickListener {
