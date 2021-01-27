@@ -3,14 +3,22 @@ package com.microsoft.fluentui.contextualcommandbar
 import android.support.annotation.DrawableRes
 
 open class DefaultCommandItem(
-        @DrawableRes private val icon: Int,
-        private val description: String? = null,
-        private val enabled: Boolean = true,
-        private val selected: Boolean = false
+        @DrawableRes private var icon: Int,
+        private var description: String? = null,
+        private var enabled: Boolean = true,
+        private var selected: Boolean = false
 ) : CommandItem {
+
+    override fun setEnabled(enabled: Boolean) {
+        this.enabled = enabled
+    }
 
     override fun isEnabled(): Boolean {
         return enabled
+    }
+
+    override fun setSelected(selected: Boolean) {
+        this.selected = selected
     }
 
     override fun isSelected(): Boolean {
