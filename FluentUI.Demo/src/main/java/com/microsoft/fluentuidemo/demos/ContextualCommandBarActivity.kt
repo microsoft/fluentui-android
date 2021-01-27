@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.microsoft.fluentui.contextualcommandbar.CommandItem
 import com.microsoft.fluentui.contextualcommandbar.CommandItemAdapter
 import com.microsoft.fluentui.contextualcommandbar.CommandItemGroup
+import com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.contextualcommandbar.DefaultCommandItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -104,15 +105,19 @@ class ContextualCommandBarActivity : DemoActivity() {
 
         with(contextual_command_bar_with_dismiss) {
             setItemGroups(itemGroups)
-            showDismiss = true
-            dismissIcon = R.drawable.ic_fluent_keyboard_dock_24_regular
-            dismissListener = {
-                Toast.makeText(
-                        this@ContextualCommandBarActivity,
-                        getString(R.string.contextual_command_prompt_click_dismiss),
-                        Toast.LENGTH_SHORT
-                ).show()
-            }
+            dismissCommandItem = ContextualCommandBar.DismissCommandItem(
+                    icon = R.drawable.ic_fluent_keyboard_dock_24_regular,
+                    label = getString(R.string.contextual_command_accessibility_dismiss),
+                    visible = true,
+                    gravity = ContextualCommandBar.DismissItemGravity.START,
+                    dismissListener = {
+                        Toast.makeText(
+                                this@ContextualCommandBarActivity,
+                                getString(R.string.contextual_command_prompt_click_dismiss),
+                                Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            )
             setItemOnClickListener(object : CommandItemAdapter.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
@@ -139,9 +144,9 @@ class ContextualCommandBarActivity : DemoActivity() {
         }
 
         update_item.setOnClickListener {
-            itemGroups[0].items[0].setEnabled(false)
-            itemGroups[0].items[1].setEnabled(true)
-            itemGroups[0].items[1].setSelected(true)
+            (itemGroups[0].items[0] as DefaultCommandItem).setEnabled(false)
+            (itemGroups[0].items[1] as DefaultCommandItem).setEnabled(true)
+            (itemGroups[0].items[1] as DefaultCommandItem).setSelected(true)
             contextual_command_bar_default.notifyDataSetChanged()
         }
     }
