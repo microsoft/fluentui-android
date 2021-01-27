@@ -12,9 +12,9 @@ interface CommandItem {
     fun getId(): String? = null
 
     @DrawableRes
-    fun getIcon(): Int
+    fun getIcon(): Int = 0
 
-    fun getContentDescription(): String? = null
+    fun getLabel(): String? = null
 
     fun setEnabled(enabled: Boolean)
 

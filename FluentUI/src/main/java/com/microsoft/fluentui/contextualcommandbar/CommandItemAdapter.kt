@@ -7,20 +7,19 @@ package com.microsoft.fluentui.contextualcommandbar
 
 import android.content.Context
 import android.support.v4.content.ContextCompat
-import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
+import android.widget.TextView
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.util.isVisible
 
 class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var itemSpace = context.resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
     private var groupSpace = context.resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
-    private var itemPaddingVertical = context.resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_padding_vertical)
-    private var itemPaddingHorizontal = context.resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_padding_horizontal)
 
     private var flattenCommandItems = arrayListOf<CommandItem>()
     var commandItemGroups = arrayListOf<CommandItemGroup>()
@@ -46,33 +45,50 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolder(ImageView(parent.context))
+        return ViewHolder(LayoutInflater
+                .from(parent.context)
+                .inflate(R.layout.view_command_item, parent, false))
     }
 
     override fun onBindViewHolder(vh: RecyclerView.ViewHolder, position: Int) {
         val viewType = getItemViewType(position)
         val viewHolder = vh as ViewHolder
         val commandItem = flattenCommandItems[position]
+        val isItemSelected = commandItem.isEnabled() && commandItem.isSelected()
+        val isItemEnabled = commandItem.isEnabled()
+        val label = commandItem.getLabel()
+        val icon = commandItem.getIcon()
+        if (icon != 0) {
+            // Using icon as primary
+            viewHolder.label.isVisible = false
+            with(viewHolder.icon) {
+                isVisible = true
+                setImageResource(icon)
+                contentDescription = label
+                isEnabled = isItemEnabled
+                isSelected = isItemSelected
+            }
 
-        with(viewHolder.item) {
-            setImageResource(commandItem.getIcon())
-            setPaddingRelative(
-                    itemPaddingHorizontal,
-                    itemPaddingVertical,
-                    itemPaddingHorizontal,
-                    itemPaddingVertical
-            )
+        } else if (!label.isNullOrEmpty()) {
+            viewHolder.icon.isVisible = false
+            with(viewHolder.label) {
+                isVisible = true
+                text = label
+                contentDescription = label
+                isEnabled = isItemEnabled
+                isSelected = isItemSelected
+            }
+        } else {
+            // Return if no icon and label
+            return
+        }
 
-            imageTintList = AppCompatResources.getColorStateList(
-                    context,
-                    R.color.contextual_command_bar_icon_tint
-            )
-            isSelected = commandItem.isSelected() && commandItem.isEnabled()
-            isEnabled = commandItem.isEnabled()
-            contentDescription = commandItem.getContentDescription()
+        with(viewHolder.itemView) {
+            isEnabled = isItemEnabled
+            isSelected = isItemSelected
             when (viewType) {
                 VIEW_TYPE_GROUP_CENTER_ITEM -> {
-                    layoutParams = RecyclerView.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
+                    (layoutParams as RecyclerView.LayoutParams).apply {
                         marginEnd = itemSpace
                     }
 
@@ -83,7 +99,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
                 }
 
                 VIEW_TYPE_GROUP_START_ITEM -> {
-                    layoutParams = RecyclerView.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
+                    (layoutParams as RecyclerView.LayoutParams).apply {
                         marginEnd = itemSpace
                     }
                     background = ContextCompat.getDrawable(
@@ -93,8 +109,8 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
                 }
 
                 VIEW_TYPE_GROUP_END_ITEM -> {
-                    layoutParams = RecyclerView.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
-                        marginEnd =  if (position == flattenCommandItems.size - 1) 0 else groupSpace
+                    (layoutParams as RecyclerView.LayoutParams).apply {
+                        marginEnd = if (position == flattenCommandItems.size - 1) 0 else groupSpace
                     }
 
                     background = ContextCompat.getDrawable(
@@ -104,8 +120,8 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
                 }
 
                 VIEW_TYPE_GROUP_SINGLE_ITEM -> {
-                    layoutParams = RecyclerView.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
-                        marginEnd =  if (position == flattenCommandItems.size - 1) 0 else groupSpace
+                    (layoutParams as RecyclerView.LayoutParams).apply {
+                        marginEnd = if (position == flattenCommandItems.size - 1) 0 else groupSpace
                     }
                     background = ContextCompat.getDrawable(
                             context,
@@ -113,10 +129,9 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
                     )
                 }
             }
-        }
-
-        viewHolder.itemView.setOnClickListener {
-            itemClickListener?.onItemClick(commandItem, viewHolder.itemView)
+            setOnClickListener {
+                itemClickListener?.onItemClick(commandItem, viewHolder.itemView)
+            }
         }
     }
 
@@ -160,7 +175,8 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
     }
 
     private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val item: ImageView = itemView as ImageView
+        val icon: ImageView = itemView.findViewById(R.id.contextual_command_item_icon)
+        val label: TextView = itemView.findViewById(R.id.contextual_command_item_label)
     }
 
     interface OnItemClickListener {
