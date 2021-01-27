@@ -8,8 +8,8 @@ package com.microsoft.fluentui.contextualcommandbar
 import android.support.annotation.DrawableRes
 
 open class DefaultCommandItem(
-        @DrawableRes private var icon: Int,
-        private var description: String? = null,
+        @DrawableRes private var icon: Int = 0,
+        private var label: String? = null,
         private var enabled: Boolean = true,
         private var selected: Boolean = false
 ) : CommandItem {
@@ -30,8 +30,8 @@ open class DefaultCommandItem(
         return selected
     }
 
-    override fun getContentDescription(): String? {
-        return description
+    override fun getLabel(): String? {
+        return label
     }
 
     override fun getIcon(): Int {
