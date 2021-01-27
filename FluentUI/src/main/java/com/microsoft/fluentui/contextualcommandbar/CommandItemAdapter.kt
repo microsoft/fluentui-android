@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
 package com.microsoft.fluentui.contextualcommandbar
 
 import android.content.Context
@@ -64,6 +69,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
             )
             isSelected = commandItem.isSelected() && commandItem.isEnabled()
             isEnabled = commandItem.isEnabled()
+            contentDescription = commandItem.getContentDescription()
             when (viewType) {
                 VIEW_TYPE_GROUP_CENTER_ITEM -> {
                     layoutParams = RecyclerView.LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply {
@@ -72,7 +78,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
 
                     background = ContextCompat.getDrawable(
                             context,
-                            R.drawable.contextual_command_bar_middle_item_background
+                            R.drawable.contextual_command_bar_center_item_background
                     )
                 }
 
