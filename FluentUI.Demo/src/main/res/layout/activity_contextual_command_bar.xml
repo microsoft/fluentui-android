@@ -43,4 +43,24 @@
         android:gravity="center"
         android:text="@string/contextual_command_bar_style_with_dismiss_button" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <com.microsoft.fluentui.widget.Button
+            android:id="@+id/insert_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/contextual_command_insert_item" />
+
+        <com.microsoft.fluentui.widget.Button
+            android:id="@+id/update_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fluentui_content_inset"
+            android:text="@string/contextual_command_update_item" />
+    </LinearLayout>
+
+
 </LinearLayout>

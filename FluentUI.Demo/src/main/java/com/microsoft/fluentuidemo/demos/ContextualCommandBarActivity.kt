@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.microsoft.fluentui.contextualcommandbar.CommandItem
+import com.microsoft.fluentui.contextualcommandbar.CommandItemAdapter
 import com.microsoft.fluentui.contextualcommandbar.CommandItemGroup
-import com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.contextualcommandbar.DefaultCommandItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_default
 import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_with_dismiss
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.insert_item
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.update_item
 
 class ContextualCommandBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -49,7 +51,7 @@ class ContextualCommandBarActivity : DemoActivity() {
 
         with(contextual_command_bar_default) {
             setItemGroups(itemGroups)
-            itemClickListener = object : ContextualCommandBar.OnItemClickListener {
+            setItemOnClickListener(object : CommandItemAdapter.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
                             this@ContextualCommandBarActivity,
@@ -57,7 +59,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                             Toast.LENGTH_SHORT
                     ).show()
                 }
-            }
+            })
         }
 
         with(contextual_command_bar_with_dismiss) {
@@ -71,7 +73,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                         Toast.LENGTH_SHORT
                 ).show()
             }
-            itemClickListener = object : ContextualCommandBar.OnItemClickListener {
+            setItemOnClickListener(object : CommandItemAdapter.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
                             this@ContextualCommandBarActivity,
@@ -79,7 +81,20 @@ class ContextualCommandBarActivity : DemoActivity() {
                             Toast.LENGTH_SHORT
                     ).show()
                 }
-            }
+            })
+        }
+
+        insert_item.setOnClickListener {
+            contextual_command_bar_default.addItemGroup(CommandItemGroup()
+                    .addItem(DefaultCommandItem(R.drawable.ic_fluent_add_24_regular, "Add2"))
+                    .addItem(DefaultCommandItem(R.drawable.ic_fluent_mention_24_regular, "Mention2", enabled = false)))
+        }
+
+        update_item.setOnClickListener {
+            itemGroups[0].items[0].setEnabled(false)
+            itemGroups[0].items[1].setEnabled(true)
+            itemGroups[0].items[1].setSelected(true)
+            contextual_command_bar_default.notifyDataSetChanged()
         }
     }
 }

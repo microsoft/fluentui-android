@@ -110,10 +110,10 @@
         <!--ContextualCommandBar-->
         <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_50</item>
         <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_100</item>
-        <item name="fluentuiContextualCommandBarBackgroundColorSelected">#eff6fc</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorSelected">@color/fluentui_communication_tint_40</item>
         <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_900</item>
         <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_300</item>
-        <item name="fluentuiContextualCommandBarIconTintSelected">#0078D4</item>
+        <item name="fluentuiContextualCommandBarIconTintSelected">@color/fluentui_communication_blue</item>
         <item name="fluentuiContextualCommandBarDismissBackgroundColor">#FFFFFF</item>
         <item name="fluentuiContextualCommandBarDismissIconTintColor">@color/fluentui_gray_900</item>
 
