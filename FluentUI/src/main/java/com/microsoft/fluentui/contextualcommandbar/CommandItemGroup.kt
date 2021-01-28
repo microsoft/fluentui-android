@@ -7,6 +7,9 @@ package com.microsoft.fluentui.contextualcommandbar
 
 class CommandItemGroup {
 
+    /**
+     * The identifier of this item group.
+     */
     var id: String? = null
 
     var items = arrayListOf<CommandItem>()

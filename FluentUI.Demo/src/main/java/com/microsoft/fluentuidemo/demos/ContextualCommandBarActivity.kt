@@ -32,11 +32,11 @@ class ContextualCommandBarActivity : DemoActivity() {
         itemGroups.add(CommandItemGroup()
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_add_24_regular,
-                        getString(R.string.contextual_command_accessibility_add)
+                        contentDescription = getString(R.string.contextual_command_accessibility_add)
                 ))
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_mention_24_regular,
-                        getString(R.string.contextual_command_accessibility_mention),
+                        contentDescription = getString(R.string.contextual_command_accessibility_mention),
                         enabled = false
                 ))
         )
@@ -48,45 +48,45 @@ class ContextualCommandBarActivity : DemoActivity() {
                 ))
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_text_italic_24_regular,
-                        getString(R.string.contextual_command_accessibility_italic)
+                        contentDescription = getString(R.string.contextual_command_accessibility_italic)
                 ))
                 .addItem(DefaultCommandItem(
                         label = getString(R.string.contextual_command_accessibility_underline)
                 ))
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_text_strikethrough_24_regular,
-                        getString(R.string.contextual_command_accessibility_strikethrough)
+                        contentDescription = getString(R.string.contextual_command_accessibility_strikethrough)
                 ))
         )
 
         itemGroups.add(CommandItemGroup()
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_arrow_undo_24_regular,
-                        getString(R.string.contextual_command_accessibility_undo),
+                        contentDescription = getString(R.string.contextual_command_accessibility_undo),
                         selected = true
                 ))
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_arrow_redo_24_regular,
-                        getString(R.string.contextual_command_accessibility_redo)
+                        contentDescription = getString(R.string.contextual_command_accessibility_redo)
                 ))
         )
 
         itemGroups.add(CommandItemGroup()
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_text_bullet_list_24_regular,
-                        getString(R.string.contextual_command_accessibility_bullet)
+                        contentDescription = getString(R.string.contextual_command_accessibility_bullet)
                 ))
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_text_number_list_ltr_24_regular,
-                        getString(R.string.contextual_command_accessibility_list)
+                        contentDescription = getString(R.string.contextual_command_accessibility_list)
                 ))
         )
 
         itemGroups.add(CommandItemGroup()
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_link_24_regular,
-                        getString(R.string.contextual_command_accessibility_link),
-                        false
+                        contentDescription = getString(R.string.contextual_command_accessibility_link),
+                        selected = true
                 ))
         )
 
@@ -107,9 +107,9 @@ class ContextualCommandBarActivity : DemoActivity() {
             setItemGroups(itemGroups)
             dismissCommandItem = ContextualCommandBar.DismissCommandItem(
                     icon = R.drawable.ic_fluent_keyboard_dock_24_regular,
-                    label = getString(R.string.contextual_command_accessibility_dismiss),
+                    contentDescription = getString(R.string.contextual_command_accessibility_dismiss),
                     visible = true,
-                    gravity = ContextualCommandBar.DismissItemGravity.START,
+                    position = ContextualCommandBar.DismissItemPosition.START,
                     dismissListener = {
                         Toast.makeText(
                                 this@ContextualCommandBarActivity,

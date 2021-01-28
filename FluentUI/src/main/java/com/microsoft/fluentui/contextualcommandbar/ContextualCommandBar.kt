@@ -49,7 +49,7 @@ class ContextualCommandBar @JvmOverloads constructor(
             return
         }
         val dismissItemVisible = dismissCommandItem!!.visible
-        val dismissItemGravity = dismissCommandItem!!.gravity
+        val dismissItemGravity = dismissCommandItem!!.position
 
         var dismissButton: ImageView? = null
         var dismissButtonDivider: View? = null
@@ -65,19 +65,19 @@ class ContextualCommandBar @JvmOverloads constructor(
             height = MATCH_PARENT
             width = WRAP_CONTENT
 
-            gravity = when (dismissCommandItem!!.gravity) {
-                DismissItemGravity.START -> Gravity.START
-                DismissItemGravity.END -> Gravity.END
+            gravity = when (dismissCommandItem!!.position) {
+                DismissItemPosition.START -> Gravity.START
+                DismissItemPosition.END -> Gravity.END
             }
         }
-        if (dismissItemGravity == DismissItemGravity.START) {
+        if (dismissItemGravity == DismissItemPosition.START) {
             dismissButtonDivider!!.setBackgroundResource(
                     R.drawable.contextual_command_bar_dismiss_button_divider_start_background
             )
             dismissButtonContainer!!.removeAllViews()
             dismissButtonContainer!!.addView(dismissButton)
             dismissButtonContainer!!.addView(dismissButtonDivider)
-        } else if (dismissItemGravity == DismissItemGravity.END) {
+        } else if (dismissItemGravity == DismissItemPosition.END) {
             dismissButtonDivider!!.setBackgroundResource(
                     R.drawable.contextual_command_bar_dismiss_button_divider_end_background
             )
@@ -87,7 +87,7 @@ class ContextualCommandBar @JvmOverloads constructor(
         }
 
         dismissButton!!.setImageResource(icon)
-        dismissButton.contentDescription = dismissCommandItem!!.getLabel()
+        dismissButton.contentDescription = dismissCommandItem!!.getContentDescription()
         dismissButtonContainer!!.isVisible = dismissItemVisible
         dismissButtonContainer!!.setOnClickListener {
             dismissCommandItem!!.dismissListener?.invoke()
@@ -102,9 +102,9 @@ class ContextualCommandBar @JvmOverloads constructor(
             )
         } else 0
         commandItemRecyclerView?.setPaddingRelative(
-                if (dismissItemGravity == DismissItemGravity.START) dismissButtonPlaceholder else 0,
+                if (dismissItemGravity == DismissItemPosition.START) dismissButtonPlaceholder else 0,
                 0,
-                if (dismissItemGravity == DismissItemGravity.END) dismissButtonPlaceholder else 0,
+                if (dismissItemGravity == DismissItemPosition.END) dismissButtonPlaceholder else 0,
                 0)
         commandItemRecyclerView?.clipToPadding = false
         bringChildToFront(dismissButtonContainer)
@@ -143,9 +143,9 @@ class ContextualCommandBar @JvmOverloads constructor(
 
     class DismissCommandItem(
             @DrawableRes private var icon: Int = 0,
-            private var label: String? = null,
+            private var contentDescription: String? = null,
             var visible: Boolean = true,
-            var gravity: DismissItemGravity = DismissItemGravity.END,
+            var position: DismissItemPosition = DismissItemPosition.END,
             var dismissListener: (() -> Unit)? = null
     ) : CommandItem {
 
@@ -153,12 +153,12 @@ class ContextualCommandBar @JvmOverloads constructor(
             return icon
         }
 
-        override fun getLabel(): String? {
-            return label
+        override fun getContentDescription(): String? {
+            return contentDescription
         }
     }
 
-    enum class DismissItemGravity {
+    enum class DismissItemPosition {
         START, END
     }
 }

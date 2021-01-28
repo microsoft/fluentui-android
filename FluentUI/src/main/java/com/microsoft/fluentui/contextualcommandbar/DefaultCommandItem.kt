@@ -10,6 +10,7 @@ import android.support.annotation.DrawableRes
 open class DefaultCommandItem(
         @DrawableRes private var icon: Int = 0,
         private var label: String? = null,
+        private var contentDescription: String? = null,
         private var enabled: Boolean = true,
         private var selected: Boolean = false
 ) : CommandItem {
@@ -36,5 +37,9 @@ open class DefaultCommandItem(
 
     override fun getIcon(): Int {
         return icon
+    }
+
+    override fun getContentDescription(): String? {
+        return contentDescription
     }
 }
