@@ -44,6 +44,7 @@ class ContextualCommandBarActivity : DemoActivity() {
         itemGroups.add(CommandItemGroup()
                 .addItem(DefaultCommandItem(
                         label = getString(R.string.contextual_command_accessibility_bold),
+                        contentDescription = getString(R.string.contextual_command_accessibility_bold),
                         selected = true
                 ))
                 .addItem(DefaultCommandItem(
@@ -51,7 +52,8 @@ class ContextualCommandBarActivity : DemoActivity() {
                         contentDescription = getString(R.string.contextual_command_accessibility_italic)
                 ))
                 .addItem(DefaultCommandItem(
-                        label = getString(R.string.contextual_command_accessibility_underline)
+                        label = getString(R.string.contextual_command_accessibility_underline),
+                        contentDescription = getString(R.string.contextual_command_accessibility_underline)
                 ))
                 .addItem(DefaultCommandItem(
                         R.drawable.ic_fluent_text_strikethrough_24_regular,
@@ -96,7 +98,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
                             this@ContextualCommandBarActivity,
-                            getString(R.string.contextual_command_prompt_click_item, item.getLabel()),
+                            getString(R.string.contextual_command_prompt_click_item, item.getContentDescription()),
                             Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -122,7 +124,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
                             this@ContextualCommandBarActivity,
-                            getString(R.string.contextual_command_prompt_click_item, item.getLabel()),
+                            getString(R.string.contextual_command_prompt_click_item, item.getContentDescription()),
                             Toast.LENGTH_SHORT
                     ).show()
                 }
