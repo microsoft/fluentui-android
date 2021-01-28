@@ -42,74 +42,6 @@ class ContextualCommandBar @JvmOverloads constructor(
         commandItemAdapter?.itemClickListener = listener
     }
 
-    private fun updateDismissButton() {
-        dismissCommandItem ?: return
-        val icon = dismissCommandItem!!.getIcon()
-        if (icon == 0) {
-            return
-        }
-        val dismissItemVisible = dismissCommandItem!!.visible
-        val dismissItemGravity = dismissCommandItem!!.position
-
-        var dismissButton: ImageView? = null
-        var dismissButtonDivider: View? = null
-
-        if (dismissButtonContainer == null) {
-            dismissButtonContainer = LayoutInflater.from(context)
-                    .inflate(R.layout.view_dismiss_command_item, null) as ViewGroup
-            addView(dismissButtonContainer)
-        }
-        dismissButton = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_button)
-        dismissButtonDivider = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_divider)
-        (dismissButtonContainer!!.layoutParams as LayoutParams).apply {
-            height = MATCH_PARENT
-            width = WRAP_CONTENT
-
-            gravity = when (dismissCommandItem!!.position) {
-                DismissItemPosition.START -> Gravity.START
-                DismissItemPosition.END -> Gravity.END
-            }
-        }
-        if (dismissItemGravity == DismissItemPosition.START) {
-            dismissButtonDivider!!.setBackgroundResource(
-                    R.drawable.contextual_command_bar_dismiss_button_divider_start_background
-            )
-            dismissButtonContainer!!.removeAllViews()
-            dismissButtonContainer!!.addView(dismissButton)
-            dismissButtonContainer!!.addView(dismissButtonDivider)
-        } else if (dismissItemGravity == DismissItemPosition.END) {
-            dismissButtonDivider!!.setBackgroundResource(
-                    R.drawable.contextual_command_bar_dismiss_button_divider_end_background
-            )
-            dismissButtonContainer!!.removeAllViews()
-            dismissButtonContainer!!.addView(dismissButtonDivider)
-            dismissButtonContainer!!.addView(dismissButton)
-        }
-
-        dismissButton!!.setImageResource(icon)
-        dismissButton.contentDescription = dismissCommandItem!!.getContentDescription()
-        dismissButtonContainer!!.isVisible = dismissItemVisible
-        dismissButtonContainer!!.setOnClickListener {
-            dismissCommandItem!!.dismissListener?.invoke()
-        }
-
-        // Adjust RecyclerView's position to adapt dismiss button
-        val dismissButtonPlaceholder = if (dismissItemVisible) {
-            resources.getDimensionPixelSize(
-                    R.dimen.fluentui_contextual_command_bar_dismiss_button_width
-            ) + resources.getDimensionPixelSize(
-                    R.dimen.fluentui_contextual_command_bar_dismiss_gap_width
-            )
-        } else 0
-        commandItemRecyclerView?.setPaddingRelative(
-                if (dismissItemGravity == DismissItemPosition.START) dismissButtonPlaceholder else 0,
-                0,
-                if (dismissItemGravity == DismissItemPosition.END) dismissButtonPlaceholder else 0,
-                0)
-        commandItemRecyclerView?.clipToPadding = false
-        bringChildToFront(dismissButtonContainer)
-    }
-
     private fun initializeCommandItemRecyclerViewIfNeed() {
         if (commandItemRecyclerView != null) {
             return
@@ -141,6 +73,71 @@ class ContextualCommandBar @JvmOverloads constructor(
     fun notifyDataSetChanged() {
         commandItemAdapter?.notifyDataSetChanged()
         updateDismissButton()
+    }
+
+    private fun updateDismissButton() {
+        dismissCommandItem ?: return
+        val icon = dismissCommandItem!!.getIcon()
+        if (icon == 0) {
+            return
+        }
+        val dismissItemVisible = dismissCommandItem!!.visible
+        val dismissItemGravity = dismissCommandItem!!.position
+
+        if (dismissButtonContainer == null) {
+            dismissButtonContainer = LayoutInflater.from(context)
+                    .inflate(R.layout.view_dismiss_command_item, null) as ViewGroup
+            addView(dismissButtonContainer)
+        }
+        val dismissButton: ImageView = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_button)
+        val dismissButtonDivider: View = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_divider)
+        (dismissButtonContainer!!.layoutParams as LayoutParams).apply {
+            height = MATCH_PARENT
+            width = WRAP_CONTENT
+
+            gravity = when (dismissCommandItem!!.position) {
+                DismissItemPosition.START -> Gravity.START
+                DismissItemPosition.END -> Gravity.END
+            }
+        }
+        if (dismissItemGravity == DismissItemPosition.START) {
+            dismissButtonDivider.setBackgroundResource(
+                    R.drawable.contextual_command_bar_dismiss_button_divider_start_background
+            )
+            dismissButtonContainer!!.removeAllViews()
+            dismissButtonContainer!!.addView(dismissButton)
+            dismissButtonContainer!!.addView(dismissButtonDivider)
+        } else if (dismissItemGravity == DismissItemPosition.END) {
+            dismissButtonDivider.setBackgroundResource(
+                    R.drawable.contextual_command_bar_dismiss_button_divider_end_background
+            )
+            dismissButtonContainer!!.removeAllViews()
+            dismissButtonContainer!!.addView(dismissButtonDivider)
+            dismissButtonContainer!!.addView(dismissButton)
+        }
+
+        dismissButton.setImageResource(icon)
+        dismissButton.contentDescription = dismissCommandItem!!.getContentDescription()
+        dismissButtonContainer!!.isVisible = dismissItemVisible
+        dismissButtonContainer!!.setOnClickListener {
+            dismissCommandItem!!.dismissListener?.invoke()
+        }
+
+        // Adjust RecyclerView's position to adapt dismiss button
+        val dismissButtonPlaceholder = if (dismissItemVisible) {
+            resources.getDimensionPixelSize(
+                    R.dimen.fluentui_contextual_command_bar_dismiss_button_width
+            ) + resources.getDimensionPixelSize(
+                    R.dimen.fluentui_contextual_command_bar_dismiss_gap_width
+            )
+        } else 0
+        commandItemRecyclerView?.setPaddingRelative(
+                if (dismissItemGravity == DismissItemPosition.START) dismissButtonPlaceholder else 0,
+                0,
+                if (dismissItemGravity == DismissItemPosition.END) dismissButtonPlaceholder else 0,
+                0)
+        commandItemRecyclerView?.clipToPadding = false
+        bringChildToFront(dismissButtonContainer)
     }
 
     class DismissCommandItem(
