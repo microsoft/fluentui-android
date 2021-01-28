@@ -115,10 +115,12 @@ class ContextualCommandBar @JvmOverloads constructor(
             return
         }
 
-        commandItemRecyclerView = RecyclerView(context)
         commandItemAdapter = CommandItemAdapter(context)
-        commandItemRecyclerView?.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        commandItemRecyclerView?.adapter = commandItemAdapter
+        commandItemRecyclerView = RecyclerView(context).apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = commandItemAdapter
+            overScrollMode = View.OVER_SCROLL_NEVER
+        }
         addView(commandItemRecyclerView)
     }
 
