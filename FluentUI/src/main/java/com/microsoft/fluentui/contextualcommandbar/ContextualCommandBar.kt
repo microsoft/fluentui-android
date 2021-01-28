@@ -58,9 +58,9 @@ class ContextualCommandBar @JvmOverloads constructor(
             dismissButtonContainer = LayoutInflater.from(context)
                     .inflate(R.layout.view_dismiss_command_item, null) as ViewGroup
             addView(dismissButtonContainer)
-            dismissButton = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_button)
-            dismissButtonDivider = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_divider)
         }
+        dismissButton = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_button)
+        dismissButtonDivider = dismissButtonContainer!!.findViewById(R.id.dismiss_command_item_divider)
         (dismissButtonContainer!!.layoutParams as LayoutParams).apply {
             height = MATCH_PARENT
             width = WRAP_CONTENT
