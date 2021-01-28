@@ -15,7 +15,7 @@ abstract class AppearanceProxy {
     open val viewName: String
         get() = stylesheetName
 
-    internal var ignoreDataBindingMethods: Boolean = false
+    internal var ignoreDataBindingMethods: Boolean = true
 
     open fun generate(
         apName: String,
@@ -27,6 +27,7 @@ abstract class AppearanceProxy {
 
         AppearanceProxyGenerator(viewName, ap, ignoreDataBindingMethods).apply {
             setupGeneratorParameters(ap)
+            setupStyles(ap, parentName)
             setupCustomAttributes().forEach { addCustomAttribute(it) }
             setupCustomResources(ap).forEach { addCustomResource(it) }
             generateAll()
@@ -38,6 +39,10 @@ abstract class AppearanceProxy {
     }
 
     protected open fun setupGeneratorParameters(parameters: LinkedHashMap<String, Any>) {
+        // nothing to do usually
+    }
+
+    protected open fun setupStyles(parameters: LinkedHashMap<String, Any>, parentName: String?) {
         // nothing to do usually
     }
 

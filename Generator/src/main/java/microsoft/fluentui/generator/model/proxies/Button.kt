@@ -63,6 +63,42 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
         }
     }
 
+    override fun setupStyles(parameters: LinkedHashMap<String, Any>, parentName: String?) {
+        val parentViewName = "Widget.AppCompat.Button"
+        val name = viewName.toLowerCase()
+
+        if (global_documentType == DocumentType.ROOT) {
+            val styles = ArrayList<Style>()
+            listOf("small", "medium", "large").forEach { apStyle ->
+                // Generate background shapes
+                mutableMapOf<StyleKeys, String>().let { attributes ->
+                    parameters["padding"]?.let {
+                        attributes[StyleKeys.PADDING] = "@dimen/${name}_padding_${apStyle}"
+                    }
+                    parameters["backgroundColor"]?.let {
+                        attributes[StyleKeys.BACKGROUND] = "@drawable/${name}_${apStyle}background"
+                    }
+                    parameters["textColor"]?.let {
+                        attributes[StyleKeys.TEXT_COLOR] = "@color/${name}_textcolor"
+                    }
+                    parameters["textFont"]?.let {
+                        attributes[StyleKeys.TEXT_APPEARANCE] = "@style/${name}_textFont_${apStyle}"
+                    }
+
+                    styles.add(
+                            Style(
+                                    "Widget.FluentUI." + name + "." + apStyle,
+                                    parentViewName,
+                                    attributes,
+                                    false
+                            )
+                    )
+                }
+            }
+            generateStyles("${name}", styles)
+        }
+    }
+
     override fun setupCustomAttributes(): List<CustomAttribute> {
         val attrsList = mutableListOf<CustomAttribute>()
         if (type is Type.Default) {

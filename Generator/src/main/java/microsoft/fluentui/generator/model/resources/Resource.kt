@@ -281,8 +281,8 @@ fun createGenericImports(): String {
     return "\nimport android.content.Context\n" +
             "import android.util.TypedValue\n" +
             "import android.content.res.Resources\n" +
-            "import androidx.core.content.ContextCompat\n" +
-            "import microsoft.fluentui.generator.R\n"
+            "import android.support.v4.content.ContextCompat\n" +
+            "import com.microsoft.fluentui.R\n"
 }
 
 // Parsing functions

@@ -69,6 +69,7 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
                                             stylesList.add(
                                                 Style(
                                                     "${name}_${entry.key}_${fontDefinition.key}".decapitalize(),
+                                                    null,
                                                     stylesKeys,
                                                     false
                                                 )
@@ -83,6 +84,7 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
                                                 stylesList.add(
                                                     Style(
                                                         "${name}_${entry.key}_${fontDefinition.key}".decapitalize(),
+                                                        null,
                                                         stylesKeys,
                                                         false
                                                     )
@@ -105,6 +107,7 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
                             stylesList.add(
                                 Style(
                                     "${name}_${entry.key}".decapitalize(),
+                                    null,
                                     stylesKeys,
                                     false
                                 )

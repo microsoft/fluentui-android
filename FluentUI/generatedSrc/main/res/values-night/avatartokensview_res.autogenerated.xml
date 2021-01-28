@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<color name="avatartokensview_backgroundDefaultColor">@color/colors_Brand_primary</color>
+	<color name="avatartokensview_foregroundDefaultColor">@color/icon_accentColor</color>
+</resources>

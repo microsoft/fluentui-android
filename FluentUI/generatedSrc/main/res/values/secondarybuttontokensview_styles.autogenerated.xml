@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="Widget.FluentUI.secondarybuttontokensview.small" parent="Widget.AppCompat.Button">
+		<item name="android:padding">@dimen/secondarybuttontokensview_padding_small</item>
+		<item name="android:background">@drawable/secondarybuttontokensview_smallbackground</item>
+		<item name="android:textColor">@color/secondarybuttontokensview_textcolor</item>
+		<item name="android:textAppearance">@style/secondarybuttontokensview_textFont_small</item>
+	</style>
+
+	<style name="Widget.FluentUI.secondarybuttontokensview.medium" parent="Widget.AppCompat.Button">
+		<item name="android:padding">@dimen/secondarybuttontokensview_padding_medium</item>
+		<item name="android:background">@drawable/secondarybuttontokensview_mediumbackground</item>
+		<item name="android:textColor">@color/secondarybuttontokensview_textcolor</item>
+		<item name="android:textAppearance">@style/secondarybuttontokensview_textFont_medium</item>
+	</style>
+
+	<style name="Widget.FluentUI.secondarybuttontokensview.large" parent="Widget.AppCompat.Button">
+		<item name="android:padding">@dimen/secondarybuttontokensview_padding_large</item>
+		<item name="android:background">@drawable/secondarybuttontokensview_largebackground</item>
+		<item name="android:textColor">@color/secondarybuttontokensview_textcolor</item>
+		<item name="android:textAppearance">@style/secondarybuttontokensview_textFont_large</item>
+	</style>
+</resources>

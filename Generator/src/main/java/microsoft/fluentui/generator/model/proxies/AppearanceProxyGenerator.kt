@@ -17,7 +17,7 @@ data class CustomAttribute(val name: String,
 class AppearanceProxyGenerator(
     private val viewName: String,
     private val parameters: LinkedHashMap<String, Any> = LinkedHashMap(),
-    private val ignoreDataBindingMethods: Boolean = false
+    private val ignoreDataBindingMethods: Boolean = true
 ) {
     private val customAttributes = mutableListOf<Attribute>()
     private val bindingMapping = mutableMapOf<String, String>()

@@ -15,7 +15,7 @@
         <item name="colorPrimaryDark">@color/fluentui_communication_shade_20</item>
         <item name="colorAccent">@color/fluentui_communication_blue</item>
         <item name="android:textColorPrimary">@color/fluentui_gray_900</item>
-        <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
+        <item name="buttonStyle">@style/Widget.FluentUI.primarybuttontokensview.medium</item>
         <item name="toolbarStyle">@style/Widget.FluentUI.Toolbar</item>
         <item name="actionOverflowButtonStyle">@style/Widget.FluentUI.Toolbar.OverflowButtonStyle</item>
         <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_left_24_filled_toolbar</item>

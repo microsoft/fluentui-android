@@ -76,7 +76,7 @@
     </style>
 
     <!--Tooltip Demo-->
-    <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button" />
+    <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.primarybuttontokensview.medium" />
 
     <!--TabLayout Demo-->
     <style name="FluentUI.TabLayout" parent="">

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<color name="colors_Brand_primary">#0086F0</color>
+	<color name="colors_Brand_shade10">#1890F1</color>
+	<color name="colors_Brand_shade20">#3AA0F3</color>
+	<color name="colors_Brand_shade30">#6CB8F6</color>
+	<color name="colors_Brand_tint10">#0078D4</color>
+	<color name="colors_Brand_tint20">#004C87</color>
+	<color name="colors_Brand_tint30">#043862</color>
+	<color name="colors_Brand_tint40">#092C47</color>
+	<color name="colors_Background_neutral1">@color/colors_Neutral_black</color>
+	<color name="colors_Background_neutral2">@color/colors_Neutral_grey4</color>
+	<color name="colors_Background_neutral3">@color/colors_Neutral_grey8</color>
+	<color name="colors_Background_neutral4">@color/colors_Neutral_grey16</color>
+	<color name="colors_Background_neutral5">@color/colors_Neutral_grey36</color>
+	<color name="colors_Background_neutralDisabled">@color/colors_Neutral_grey84</color>
+	<color name="colors_Background_brandRest">@color/colors_Brand_primary</color>
+	<color name="colors_Background_brandHover">@color/colors_Brand_shade10</color>
+	<color name="colors_Background_brandPressed">@color/colors_Brand_shade30</color>
+	<color name="colors_Background_brandSelected">@color/colors_Brand_shade20</color>
+	<color name="colors_Background_brandDisabled">@color/colors_Neutral_grey84</color>
+	<color name="colors_Foreground_neutral1">@color/colors_Neutral_white</color>
+	<color name="colors_Foreground_neutral2">@color/colors_Neutral_grey84</color>
+	<color name="colors_Foreground_neutral3">@color/colors_Neutral_grey68</color>
+	<color name="colors_Foreground_neutral4">@color/colors_Neutral_grey52</color>
+	<color name="colors_Foreground_neutralDisabled">@color/colors_Neutral_grey36</color>
+	<color name="colors_Foreground_neutralInverted">@color/colors_Neutral_black</color>
+	<color name="colors_Foreground_brandRest">@color/colors_Brand_primary</color>
+	<color name="colors_Foreground_brandHover">@color/colors_Brand_shade10</color>
+	<color name="colors_Foreground_brandPressed">@color/colors_Brand_shade30</color>
+	<color name="colors_Foreground_brandSelected">@color/colors_Brand_shade20</color>
+	<color name="colors_Foreground_brandDisabled">@color/colors_Neutral_grey36</color>
+	<color name="colors_Stroke_neutral1">@color/colors_Neutral_grey24</color>
+	<color name="colors_Stroke_neutral2">@color/colors_Neutral_grey32</color>
+	<color name="colors_Stroke_neutral3">@color/colors_Neutral_grey40</color>
+	<color name="colors_Stroke_neutralDisabled">@color/colors_Neutral_grey32</color>
+	<color name="colors_Stroke_neutralAccessible">@color/colors_Neutral_grey68</color>
+	<color name="colors_Stroke_brandRest">@color/colors_Brand_primary</color>
+	<color name="colors_Stroke_brandHover">@color/colors_Brand_shade10</color>
+	<color name="colors_Stroke_brandPressed">@color/colors_Brand_shade30</color>
+	<color name="colors_Stroke_brandSelected">@color/colors_Brand_shade20</color>
+	<color name="colors_Stroke_brandDisabled">@color/colors_Neutral_grey84</color>
+	<color name="icon_accentColor">@color/colors_Neutral_black</color>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+	<shape 
+		xmlns:android="http://schemas.android.com/apk/res/android" 
+		android:shape="@integer/secondarybuttontokensview_backgroundShape">
+		<solid android:color="@color/secondarybuttontokensview_backgroundcolor"/>
+		<stroke android:width="@dimen/secondarybuttontokensview_borderSize_large" android:color="@color/secondarybuttontokensview_bordercolor"/>
+		<corners android:radius="@dimen/secondarybuttontokensview_borderRadius_large"/>
+	</shape>

@@ -21,7 +21,7 @@
     </style>
 
     <!--Tooltip Demo-->
-    <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button.Borderless" />
+    <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.ghostbuttontokensview.medium" />
 
     <!--Demo font-->
     <style name="TextAppearance.Label" parent="@style/TextAppearance.FluentUI.Body1">

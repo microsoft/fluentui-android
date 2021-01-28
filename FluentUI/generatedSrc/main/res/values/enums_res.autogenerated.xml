@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<integer name="buttonSize_small">0</integer>
+	<integer name="buttonSize_medium">1</integer>
+	<integer name="buttonSize_large">2</integer>
+	<integer name="buttonStyle_primary">0</integer>
+	<integer name="buttonStyle_secondary">1</integer>
+	<integer name="buttonStyle_ghost">2</integer>
+</resources>

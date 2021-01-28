@@ -13,7 +13,7 @@ enum class StyleKeys(val androidKey: String) {
     TEXT_APPEARANCE("textAppearance")
 }
 
-data class Style(val name: String, val values: Map<StyleKeys, String>, val includeTint: Boolean = true)
+data class Style(val name: String, val parentName: String?, val values: Map<StyleKeys, String>, val includeTint: Boolean = true)
 
 
 fun generateStyles(name:String, styles: List<Style>) {
@@ -22,7 +22,12 @@ fun generateStyles(name:String, styles: List<Style>) {
         append("<resources xmlns:android=\"http://schemas.android.com/apk/res/android\">\n")
 
         styles.forEach { style ->
-            append("\n\t<style name=\"${style.name}\">\n")
+            if (style.parentName != null) {
+                append("\n\t<style name=\"${style.name}\" parent=\"${style.parentName}\">\n")
+            }
+            else {
+                append("\n\t<style name=\"${style.name}\">\n")
+            }
             style.values.forEach {
                 append("\t\t<item name=\"android:${it.key.androidKey}\">${it.value}</item>\n")
             }

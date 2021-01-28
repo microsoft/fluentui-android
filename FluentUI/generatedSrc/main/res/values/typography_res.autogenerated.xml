@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<dimen name="font_size_subheadline">14sp</dimen>
+	<dimen name="font_size_footnote">12sp</dimen>
+</resources>

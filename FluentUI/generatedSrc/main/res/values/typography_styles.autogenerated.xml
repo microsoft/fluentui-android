@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="typography_subheadline">
+		<item name="android:textSize">@dimen/font_size_subheadline</item>
+		<item name="android:textStyle">normal</item>
+	</style>
+
+	<style name="typography_footnote">
+		<item name="android:textSize">@dimen/font_size_footnote</item>
+		<item name="android:textStyle">normal</item>
+	</style>
+</resources>
