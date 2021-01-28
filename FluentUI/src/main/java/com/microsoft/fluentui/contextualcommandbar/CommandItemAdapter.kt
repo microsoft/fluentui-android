@@ -35,17 +35,17 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
 
     var itemClickListener: OnItemClickListener? = null
 
+    fun addItemGroup(itemGroup: CommandItemGroup) {
+        commandItemGroups.add(itemGroup)
+
+        flatItemGroup()
+    }
+
     private fun flatItemGroup() {
         flattenCommandItems.clear()
         commandItemGroups.forEach {
             flattenCommandItems.addAll(it.items)
         }
-    }
-
-    fun addItemGroup(itemGroup: CommandItemGroup) {
-        commandItemGroups.add(itemGroup)
-
-        flatItemGroup()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -62,13 +62,14 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
         val isItemEnabled = commandItem.isEnabled()
         val label = commandItem.getLabel()
         val icon = commandItem.getIcon()
+        val description = commandItem.getContentDescription()
         if (icon != 0) {
             // Using icon as primary
             viewHolder.label.isVisible = false
             with(viewHolder.icon) {
                 isVisible = true
                 setImageResource(icon)
-                contentDescription = label
+                contentDescription = description
                 isEnabled = isItemEnabled
                 isSelected = isItemSelected
             }
@@ -78,7 +79,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
             with(viewHolder.label) {
                 isVisible = true
                 text = label
-                contentDescription = label
+                contentDescription = description
                 isEnabled = isItemEnabled
                 isSelected = isItemSelected
             }
@@ -174,9 +175,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
         return super.getItemViewType(position)
     }
 
-    override fun getItemCount(): Int {
-        return flattenCommandItems.size
-    }
+    override fun getItemCount(): Int = flattenCommandItems.size
 
     private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val icon: ImageView = itemView.findViewById(R.id.contextual_command_item_icon)
