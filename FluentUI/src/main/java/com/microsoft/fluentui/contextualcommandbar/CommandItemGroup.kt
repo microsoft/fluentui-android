@@ -12,6 +12,9 @@ class CommandItemGroup {
      */
     var id: String? = null
 
+    /**
+     * [CommandItem]s contained in this group
+     */
     var items = arrayListOf<CommandItem>()
 
     fun addItem(item: CommandItem?): CommandItemGroup {

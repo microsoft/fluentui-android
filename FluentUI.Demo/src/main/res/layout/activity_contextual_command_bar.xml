@@ -19,53 +19,132 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/fluentui_content_inset" />
 
-    <TextView
-        style="@style/TextAppearance.DemoListItemSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginBottom="@dimen/fluentui_content_inset"
-        android:gravity="center"
-        android:text="@string/contextual_command_bar_style_default" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/fluentui_button_outlined_stroke_width"
-        android:background="@color/fluentui_gray_100" />
-
-    <com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
-        android:id="@+id/contextual_command_bar_with_dismiss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fluentui_content_inset" />
-
-    <TextView
-        style="@style/TextAppearance.DemoListItemSubtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/fluentui_content_inset"
-        android:layout_marginBottom="@dimen/fluentui_content_inset"
-        android:gravity="center"
-        android:text="@string/contextual_command_bar_style_with_dismiss_button" />
-
+    <!--Playground-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:orientation="vertical">
 
-        <com.microsoft.fluentui.widget.Button
-            android:id="@+id/insert_item"
+        <!--Item Updating-->
+        <TextView
+            style="@style/TextAppearance.DemoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/contextual_command_insert_item" />
+            android:text="@string/contextual_command_bar_item_update_title" />
 
-        <com.microsoft.fluentui.widget.Button
-            android:id="@+id/update_item"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_view_margin">
+
+            <com.microsoft.fluentui.widget.Button
+                android:id="@+id/insert_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/contextual_command_insert_item" />
+
+            <com.microsoft.fluentui.widget.Button
+                android:id="@+id/update_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fluentui_content_inset"
+                android:text="@string/contextual_command_update_item" />
+        </LinearLayout>
+
+        <!--Spacing-->
+        <TextView
+            style="@style/TextAppearance.DemoTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/fluentui_content_inset"
-            android:text="@string/contextual_command_update_item" />
+            android:layout_marginTop="@dimen/fluentui_content_inset"
+            android:text="@string/contextual_command_bar_space_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fluentui_content_inset"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextAppearance.DemoListItemSubtitle"
+                android:layout_width="@dimen/contextual_command_bar_space_title_width"
+                android:layout_height="wrap_content"
+                android:text="@string/contextual_command_bar_group_space_title" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/contextual_command_bar_group_space_seekbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/contextual_command_bar_group_space_value"
+                style="@style/TextAppearance.DemoListItemSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fluentui_content_inset"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextAppearance.DemoListItemSubtitle"
+                android:layout_width="@dimen/contextual_command_bar_space_title_width"
+                android:layout_height="wrap_content"
+                android:text="@string/contextual_command_bar_item_space_title" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/contextual_command_bar_item_space_seekbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/contextual_command_bar_item_space_value"
+                style="@style/TextAppearance.DemoListItemSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!--Dismiss-->
+        <TextView
+            style="@style/TextAppearance.DemoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fluentui_content_inset"
+            android:text="@string/contextual_command_bar_dismiss_position" />
+
+        <RadioGroup
+            android:id="@+id/contextual_command_bar_dismiss_position_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/contextual_command_bar_dismiss_position_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:text="@string/contextual_command_bar_dismiss_position_start"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels" />
+
+            <RadioButton
+                android:id="@+id/contextual_command_bar_dismiss_position_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fluentui_content_inset"
+                android:text="@string/contextual_command_bar_dismiss_position_end"
+                android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+                android:textColor="@color/action_bar_radio_labels" />
+
+        </RadioGroup>
     </LinearLayout>
-
-
 </LinearLayout>

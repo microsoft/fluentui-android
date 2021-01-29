@@ -5,7 +5,6 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
-import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -16,14 +15,9 @@ import android.widget.TextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.isVisible
 
-class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-    private var itemSpace = context.resources.getDimensionPixelSize(
-            R.dimen.fluentui_contextual_command_bar_default_item_space
-    )
-    private var groupSpace = context.resources.getDimensionPixelSize(
-            R.dimen.fluentui_contextual_command_bar_default_group_space
-    )
+internal class CommandItemAdapter(
+        private var options: CommandListOptions
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var flattenCommandItems = arrayListOf<CommandItem>()
     var commandItemGroups = arrayListOf<CommandItemGroup>()
@@ -33,12 +27,20 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
             flatItemGroup()
         }
 
-    var itemClickListener: OnItemClickListener? = null
+    var itemClickListener: CommandItem.OnItemClickListener? = null
 
     fun addItemGroup(itemGroup: CommandItemGroup) {
         commandItemGroups.add(itemGroup)
 
         flatItemGroup()
+    }
+
+    fun setGroupSpace(space: Int) {
+        options.groupSpace = space
+    }
+
+    fun setItemSpace(space: Int) {
+        options.itemSpace = space
     }
 
     private fun flatItemGroup() {
@@ -64,7 +66,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
         val icon = commandItem.getIcon()
         val description = commandItem.getContentDescription()
         if (icon != 0) {
-            // Using icon as primary
+            // Using icon as primary display content
             viewHolder.label.isVisible = false
             with(viewHolder.icon) {
                 isVisible = true
@@ -88,13 +90,14 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
             return
         }
 
+        // Update the UI of command item
         with(viewHolder.itemView) {
             isEnabled = isItemEnabled
             isSelected = isItemSelected
             when (viewType) {
                 VIEW_TYPE_GROUP_CENTER_ITEM -> {
                     (layoutParams as RecyclerView.LayoutParams).apply {
-                        marginEnd = itemSpace
+                        marginEnd = options.itemSpace
                     }
 
                     background = ContextCompat.getDrawable(
@@ -105,7 +108,7 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
 
                 VIEW_TYPE_GROUP_START_ITEM -> {
                     (layoutParams as RecyclerView.LayoutParams).apply {
-                        marginEnd = itemSpace
+                        marginEnd = options.itemSpace
                     }
                     background = ContextCompat.getDrawable(
                             context,
@@ -115,7 +118,8 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
 
                 VIEW_TYPE_GROUP_END_ITEM -> {
                     (layoutParams as RecyclerView.LayoutParams).apply {
-                        marginEnd = if (position == flattenCommandItems.size - 1) 0 else groupSpace
+                        marginEnd = if (position == flattenCommandItems.size - 1) 0
+                        else options.groupSpace
                     }
 
                     background = ContextCompat.getDrawable(
@@ -126,7 +130,8 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
 
                 VIEW_TYPE_GROUP_SINGLE_ITEM -> {
                     (layoutParams as RecyclerView.LayoutParams).apply {
-                        marginEnd = if (position == flattenCommandItems.size - 1) 0 else groupSpace
+                        marginEnd = if (position == flattenCommandItems.size - 1) 0
+                        else options.groupSpace
                     }
                     background = ContextCompat.getDrawable(
                             context,
@@ -182,9 +187,10 @@ class CommandItemAdapter(val context: Context) : RecyclerView.Adapter<RecyclerVi
         val label: TextView = itemView.findViewById(R.id.contextual_command_item_label)
     }
 
-    interface OnItemClickListener {
-        fun onItemClick(item: CommandItem, view: View)
-    }
+    data class CommandListOptions(
+            var groupSpace: Int,
+            var itemSpace: Int
+    )
 
     companion object {
         const val VIEW_TYPE_GROUP_CENTER_ITEM = 0

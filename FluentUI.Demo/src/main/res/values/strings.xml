@@ -91,6 +91,14 @@
     <string name="contextual_command_accessibility_bullet">Bullet</string>
     <string name="contextual_command_accessibility_list">List</string>
     <string name="contextual_command_accessibility_link">Link</string>
+    <string name="contextual_command_bar_item_update_title">Item Updating</string>
+    <string name="contextual_command_bar_space_title">Spacing</string>
+    <string name="contextual_command_bar_dismiss_position">Dismiss Position</string>
+    <string name="contextual_command_bar_dismiss_position_start">START</string>
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_group_space_title">Group space</string>
+    <string name="contextual_command_bar_item_space_title">Item space</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>

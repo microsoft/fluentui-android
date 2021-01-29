@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="ContextualCommandBar">
+        <attr name="itemSpace" format="dimension"/>
+        <attr name="groupSpace" format="dimension"/>
+    </declare-styleable>
+</resources>

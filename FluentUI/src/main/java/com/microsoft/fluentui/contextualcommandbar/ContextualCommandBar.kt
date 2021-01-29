@@ -6,6 +6,7 @@
 package com.microsoft.fluentui.contextualcommandbar
 
 import android.content.Context
+import android.support.annotation.Dimension
 import android.support.annotation.DrawableRes
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -28,8 +29,8 @@ class ContextualCommandBar @JvmOverloads constructor(
 ) : FrameLayout(context, attrs, defStyleAttr) {
 
     private var dismissButtonContainer: ViewGroup? = null
-    private var commandItemAdapter: CommandItemAdapter? = null
-    private var commandItemRecyclerView: RecyclerView? = null
+    private var commandItemAdapter: CommandItemAdapter
+    private var commandItemRecyclerView: RecyclerView
 
     var dismissCommandItem: DismissCommandItem? = null
         set(value) {
@@ -38,16 +39,34 @@ class ContextualCommandBar @JvmOverloads constructor(
             updateDismissButton()
         }
 
-    fun setItemOnClickListener(listener: CommandItemAdapter.OnItemClickListener) {
-        commandItemAdapter?.itemClickListener = listener
-    }
+    init {
+        var groupSpace = resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
+        var itemSpace = resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
+        attrs?.let {
+            val styledAttributes = context.theme.obtainStyledAttributes(
+                    it,
+                    R.styleable.ContextualCommandBar,
+                    0,
+                    0
+            )
 
-    private fun initializeCommandItemRecyclerViewIfNeed() {
-        if (commandItemRecyclerView != null) {
-            return
+            try {
+                groupSpace = styledAttributes.getDimensionPixelSize(
+                        R.styleable.ContextualCommandBar_groupSpace,
+                        resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
+                )
+                itemSpace = styledAttributes.getDimensionPixelSize(
+                        R.styleable.ContextualCommandBar_itemSpace,
+                        resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
+                )
+            } finally {
+                styledAttributes.recycle()
+            }
         }
 
-        commandItemAdapter = CommandItemAdapter(context)
+        commandItemAdapter = CommandItemAdapter(
+                CommandItemAdapter.CommandListOptions(groupSpace, itemSpace)
+        )
         commandItemRecyclerView = RecyclerView(context).apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = commandItemAdapter
@@ -56,22 +75,50 @@ class ContextualCommandBar @JvmOverloads constructor(
         addView(commandItemRecyclerView)
     }
 
-    fun setItemGroups(itemGroups: ArrayList<CommandItemGroup>) {
-        initializeCommandItemRecyclerViewIfNeed()
+    fun setItemOnClickListener(listener: CommandItem.OnItemClickListener) {
+        commandItemAdapter.itemClickListener = listener
+    }
 
-        commandItemAdapter?.commandItemGroups = itemGroups
-        commandItemAdapter?.notifyDataSetChanged()
+    fun setItemGroups(itemGroups: ArrayList<CommandItemGroup>) {
+        commandItemAdapter.commandItemGroups = itemGroups
+        commandItemAdapter.notifyDataSetChanged()
     }
 
     fun addItemGroup(itemGroup: CommandItemGroup) {
-        initializeCommandItemRecyclerViewIfNeed()
-
-        commandItemAdapter?.addItemGroup(itemGroup)
-        commandItemAdapter?.notifyDataSetChanged()
+        commandItemAdapter.addItemGroup(itemGroup)
+        commandItemAdapter.notifyDataSetChanged()
     }
 
+    /**
+     * Set the space between each [CommandItemGroup]
+     */
+    fun setCommandGroupSpace(@Dimension(unit = Dimension.PX) space: Int) {
+        commandItemAdapter.setGroupSpace(space)
+        commandItemAdapter.notifyDataSetChanged()
+    }
+
+    /**
+     * Set the space between each [CommandItem]
+     */
+    fun setCommandItemSpace(@Dimension(unit = Dimension.PX) space: Int) {
+        commandItemAdapter.setItemSpace(space)
+        commandItemAdapter.notifyDataSetChanged()
+    }
+
+    /**
+     * Set dismiss button position, see [DismissItemPosition]
+     */
+    fun setDismissButtonPosition(position: DismissItemPosition) {
+        dismissCommandItem?.position = position
+        updateDismissButton()
+    }
+
+    /**
+     * Notify any registered observers that the data set has changed, including
+     * Command item list and dismiss button
+     */
     fun notifyDataSetChanged() {
-        commandItemAdapter?.notifyDataSetChanged()
+        commandItemAdapter.notifyDataSetChanged()
         updateDismissButton()
     }
 
@@ -100,6 +147,8 @@ class ContextualCommandBar @JvmOverloads constructor(
                 DismissItemPosition.END -> Gravity.END
             }
         }
+
+        // Set the position of DismissItemPosition
         if (dismissItemGravity == DismissItemPosition.START) {
             dismissButtonDivider.setBackgroundResource(
                     R.drawable.contextual_command_bar_dismiss_button_divider_start_background
@@ -131,12 +180,14 @@ class ContextualCommandBar @JvmOverloads constructor(
                     R.dimen.fluentui_contextual_command_bar_dismiss_gap_width
             )
         } else 0
-        commandItemRecyclerView?.setPaddingRelative(
+        commandItemRecyclerView.setPaddingRelative(
                 if (dismissItemGravity == DismissItemPosition.START) dismissButtonPlaceholder else 0,
                 0,
                 if (dismissItemGravity == DismissItemPosition.END) dismissButtonPlaceholder else 0,
                 0)
-        commandItemRecyclerView?.clipToPadding = false
+        commandItemRecyclerView.clipToPadding = false
+
+        // Bring this dismiss button on the front of command list
         bringChildToFront(dismissButtonContainer)
     }
 
