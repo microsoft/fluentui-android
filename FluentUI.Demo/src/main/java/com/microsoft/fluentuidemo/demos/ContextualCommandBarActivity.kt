@@ -6,17 +6,23 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
+import android.widget.SeekBar
 import android.widget.Toast
 import com.microsoft.fluentui.contextualcommandbar.CommandItem
-import com.microsoft.fluentui.contextualcommandbar.CommandItemAdapter
 import com.microsoft.fluentui.contextualcommandbar.CommandItemGroup
 import com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.contextualcommandbar.DefaultCommandItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_default
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_with_dismiss
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_dismiss_position_end
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_dismiss_position_group
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_group_space_seekbar
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_group_space_value
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_item_space_seekbar
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_item_space_value
 import kotlinx.android.synthetic.main.activity_contextual_command_bar.insert_item
 import kotlinx.android.synthetic.main.activity_contextual_command_bar.update_item
 
@@ -94,7 +100,7 @@ class ContextualCommandBarActivity : DemoActivity() {
 
         with(contextual_command_bar_default) {
             setItemGroups(itemGroups)
-            setItemOnClickListener(object : CommandItemAdapter.OnItemClickListener {
+            setItemOnClickListener(object : CommandItem.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
                             this@ContextualCommandBarActivity,
@@ -103,10 +109,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                     ).show()
                 }
             })
-        }
 
-        with(contextual_command_bar_with_dismiss) {
-            setItemGroups(itemGroups)
             dismissCommandItem = ContextualCommandBar.DismissCommandItem(
                     icon = R.drawable.ic_fluent_keyboard_dock_24_regular,
                     contentDescription = getString(R.string.contextual_command_accessibility_dismiss),
@@ -120,17 +123,9 @@ class ContextualCommandBarActivity : DemoActivity() {
                         ).show()
                     }
             )
-            setItemOnClickListener(object : CommandItemAdapter.OnItemClickListener {
-                override fun onItemClick(item: CommandItem, view: View) {
-                    Toast.makeText(
-                            this@ContextualCommandBarActivity,
-                            getString(R.string.contextual_command_prompt_click_item, item.getContentDescription()),
-                            Toast.LENGTH_SHORT
-                    ).show()
-                }
-            })
         }
 
+        // Item update
         insert_item.setOnClickListener {
             contextual_command_bar_default.addItemGroup(CommandItemGroup()
                     .addItem(DefaultCommandItem(
@@ -144,12 +139,71 @@ class ContextualCommandBarActivity : DemoActivity() {
                     ))
             )
         }
-
         update_item.setOnClickListener {
             (itemGroups[0].items[0] as DefaultCommandItem).setEnabled(false)
             (itemGroups[0].items[1] as DefaultCommandItem).setEnabled(true)
             (itemGroups[0].items[1] as DefaultCommandItem).setSelected(true)
             contextual_command_bar_default.notifyDataSetChanged()
         }
+
+        // Spacing setting
+        contextual_command_bar_group_space_seekbar.setOnSeekBarChangeListener(
+                object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                        contextual_command_bar_group_space_value.text =
+                                resources.getString(R.string.contextual_command_bar_space_value, progress)
+
+                        if (!fromUser) {
+                            return
+                        }
+
+                        contextual_command_bar_default.setCommandGroupSpace(TypedValue.applyDimension(
+                                TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
+                                resources.displayMetrics).toInt())
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                })
+        contextual_command_bar_item_space_seekbar.setOnSeekBarChangeListener(
+                object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                        contextual_command_bar_item_space_value.text =
+                                resources.getString(R.string.contextual_command_bar_space_value, progress)
+
+                        if (!fromUser) {
+                            return
+                        }
+
+                        contextual_command_bar_default.setCommandItemSpace(TypedValue.applyDimension(
+                                TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
+                                resources.displayMetrics).toInt())
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                    }
+
+                })
+        contextual_command_bar_group_space_seekbar.progress = 16
+        contextual_command_bar_item_space_seekbar.progress = 2
+
+        // Dismiss button setting
+        contextual_command_bar_dismiss_position_group.setOnCheckedChangeListener { _, checkedId ->
+            contextual_command_bar_default.setDismissButtonPosition(
+                    when (checkedId) {
+                        R.id.contextual_command_bar_dismiss_position_start -> ContextualCommandBar.DismissItemPosition.START
+                        R.id.contextual_command_bar_dismiss_position_end -> ContextualCommandBar.DismissItemPosition.END
+                        else -> ContextualCommandBar.DismissItemPosition.END
+                    }
+            )
+        }
+        contextual_command_bar_dismiss_position_end.isChecked = true
     }
 }

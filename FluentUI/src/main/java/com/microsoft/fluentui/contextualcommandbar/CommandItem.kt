@@ -6,8 +6,13 @@
 package com.microsoft.fluentui.contextualcommandbar
 
 import android.support.annotation.DrawableRes
+import android.view.View
 
 interface CommandItem {
+
+    interface OnItemClickListener {
+        fun onItemClick(item: CommandItem, view: View)
+    }
 
     /**
      * The identifier of this item.
