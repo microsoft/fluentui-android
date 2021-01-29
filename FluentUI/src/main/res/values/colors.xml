@@ -66,6 +66,10 @@
         <item>#567C73</item>
         <item>#69797E</item>
     </array>
+    <color name="fluentui_avatar_ring_background">@color/fluentui_white</color>
+    <color name="fluentui_avatar_border_background">@color/fluentui_gray_200</color>
+    <color name="fluentui_avatar_overflow_text_color">@color/fluentui_gray_500</color>
+    <color name="fluentui_avatar_overflow_background">@color/fluentui_gray_25</color>
 
     <color name="fluentui_transparent">#00000000</color>
 

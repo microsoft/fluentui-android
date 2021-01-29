@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/default_layout_margin"
+    tools:context=".demos.AvatarViewActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/TextAppearance.FluentUI.Headline"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_group_max_displayed_avatar"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/max_displayed_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:background="@drawable/ms_row_divider" />
+    <!--Stack-->
+
+    <TextView
+        style="@style/TextAppearance.FluentUI.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
+        android:text="@string/avatar_group_face_stack" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_stack_example_xxlarge_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_xxlarge"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+    <com.microsoft.fluentui.persona.AvatarGroupView
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_weight="4"
+        android:id="@+id/avatar_face_stack_example_xxlarge_photo"
+        android:layout_gravity="start"
+        android:layout_marginEnd="@dimen/default_layout_margin"
+        app:avatarGroupStyle="stack"
+        app:maxDisplayedAvatars="4"
+        app:avatarSize="xxlarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_stack_example_xlarge_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_xlarge"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_stack_example_xlarge_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="stack"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="xlarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_stack_example_large_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_large"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_stack_example_large_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="stack"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="large" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_stack_example_medium_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_medium"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_stack_example_medium_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="stack"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="medium" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_stack_example_small_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_small"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_stack_example_small_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_stack_example_xsmall_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_xsmall"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_stack_example_xsmall_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="stack"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="xsmall" />
+    </LinearLayout>
+
+    <!--Square-->
+
+    <TextView
+        style="@style/TextAppearance.FluentUI.Headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:paddingBottom="@dimen/demo_headline_padding_bottom"
+        android:text="@string/avatar_group_face_pile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_pile_example_xxlarge_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_xxlarge"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_pile_example_xxlarge_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="pile"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="xxlarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_pile_example_xlarge_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_xlarge"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_pile_example_xlarge_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="pile"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="xlarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_pile_example_large_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_large"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_pile_example_large_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="pile"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="large" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_pile_example_medium_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_medium"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_pile_example_medium_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="pile"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="medium" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_pile_example_small_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_small"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_pile_example_small_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="pile"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="small" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/default_layout_margin"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/avatar_face_pile_example_xsmall_size"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_size_xsmall"
+            android:textAppearance="@style/TextAppearance.DemoDescription" />
+
+        <com.microsoft.fluentui.persona.AvatarGroupView
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:id="@+id/avatar_face_pile_example_xsmall_photo"
+            android:layout_gravity="start"
+            android:layout_marginEnd="@dimen/default_layout_margin"
+            app:avatarGroupStyle="pile"
+            app:maxDisplayedAvatars="4"
+            app:avatarSize="xsmall" />
+    </LinearLayout>
+
+</LinearLayout>

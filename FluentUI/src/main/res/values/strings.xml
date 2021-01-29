@@ -193,10 +193,22 @@
     <!--Describes the state of a menu item that is not checked.-->
     <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
 
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">selected</string>
+
+
     <!-- *** Progress *** -->
 
-    <!--Describes a progress indicator that spins indefinitely.-->
-    <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
+    <!--Describes a Circular progress indicator that spins indefinitely.-->
+    <string name="progress_circular_content_description_indeterminate">Indeterminate Circular</string>
+
+    <!--Describes a Linear progress indicator that animates indefinitely.-->
+    <string name="progress_linear_content_description_indeterminate">Indeterminate Linear</string>
+    <!--Describes a Linear progress indicator that animates.-->
+    <string name="progress_linear_content_description_determinate">Determinate Linear</string>
 
     <!-- *** Searchbar *** -->
 
@@ -218,6 +230,8 @@
     <string name="tooltip_accessibility_dismiss_action">dismiss</string>
     <!--Announcement when Tooltip is dismissed-->
     <string name="tooltip_accessibility_dismiss_announcement">Tooltip dismissed</string>
+    <!--Announcement when SearchBar is cleared-->
+    <string name="searchbar_accessibility_cleared_announcement">edit field cleared</string>
 
     <!--SheetBehavior Address-->
     <string name="side_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.SideSheetBehavior</string>
