@@ -1,0 +1,10 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+project.ext.fluentui_core_versionid='0.0.1'
+project.ext.fluentui_listitem_versionid='0.0.1'
+project.ext.fluentui_tablayout_versionid='0.0.1'
+project.ext.fluentui_drawer_versionid='0.0.1'
+project.ext.fluentui_others_versionid='0.0.1'
+project.ext.FluentUI_versionid='0.0.11'

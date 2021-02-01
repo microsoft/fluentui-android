@@ -37,12 +37,14 @@ class ListItemViewActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_list_item_view
 
+    override val defaultTheme: Int
+        get() = R.style.Theme_FluentUI_ListItem
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setTheme(defaultTheme)
         app_bar.scrollTargetViewId = R.id.list_example
 
         val listAdapter = ListAdapter(this)

@@ -20,12 +20,13 @@ class TabLayoutActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_tab_layout
 
+    override val defaultTheme: Int
+        get() = R.style.Theme_FluentUI_TabLayout
     private var adapter: TabPagerAdapter? = null
     private lateinit var tabLayout: android.support.design.widget.TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         tabLayout = demo_tab_layout.tabLayout ?: return
         adapter = TabPagerAdapter()
         adapter?.setData(createPageList())
