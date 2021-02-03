@@ -15,9 +15,14 @@ interface CommandItem {
     }
 
     /**
-     * The identifier of this item.
+     * The identifier of command item.
      */
-    fun getId(): String? = null
+    fun getId(): Int? = null
+
+    /**
+     * The tag of command item.
+     */
+    fun getTag(): String? = null
 
     /**
      * The primary content displayed on the CommandItem
