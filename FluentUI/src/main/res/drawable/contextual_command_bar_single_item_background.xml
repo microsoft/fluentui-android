@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/fluentuiContextualCommandBarBackgroundColorPressed">
+
+    <item>
+        <selector>
+            <item android:state_selected="true">
+                <shape android:shape="rectangle">
+                    <solid android:color="?attr/fluentuiContextualCommandBarBackgroundColorSelected" />
+                    <corners android:radius="@dimen/fluentui_contextual_command_bar_default_corner_radius" />
+                </shape>
+            </item>
+
+            <item>
+                <shape android:shape="rectangle">
+                    <solid android:color="?attr/fluentuiContextualCommandBarBackgroundColor" />
+                    <corners android:radius="@dimen/fluentui_contextual_command_bar_default_corner_radius" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

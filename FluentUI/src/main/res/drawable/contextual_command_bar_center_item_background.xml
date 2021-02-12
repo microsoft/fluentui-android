@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/fluentuiContextualCommandBarBackgroundColorPressed">
+
+    <item>
+        <selector>
+            <item android:state_selected="true">
+                <color android:color="?attr/fluentuiContextualCommandBarBackgroundColorSelected" />
+            </item>
+
+            <item>
+                <color android:color="?attr/fluentuiContextualCommandBarBackgroundColor" />
+            </item>
+        </selector>
+    </item>
+</ripple>
