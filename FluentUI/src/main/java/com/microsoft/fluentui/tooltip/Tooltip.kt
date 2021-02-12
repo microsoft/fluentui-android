@@ -5,7 +5,6 @@
 
 package com.microsoft.fluentui.tooltip
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Rect
@@ -184,8 +183,10 @@ class Tooltip {
         val secondScreen = anchor.bottom > displayHeight
         if(secondScreen) positionY -= displayHeight + DuoSupportUtils.DUO_HINGE_WIDTH
 
-        isAboveAnchor = if (DuoSupportUtils.isDeviceSurfaceDuo(context as Activity)) positionY + contentHeight + margin > displayHeight
-                        else positionY + contentHeight + margin - context.statusBarHeight > displayHeight
+        isAboveAnchor = context.activity?.let {
+            if (DuoSupportUtils.isDeviceSurfaceDuo(it)) positionY + contentHeight + margin > displayHeight
+            else positionY + contentHeight + margin - context.statusBarHeight > displayHeight
+        } ?: false
         if (isAboveAnchor) {
             positionY = anchor.top - contentHeight - offsetY
             if(secondScreen) positionY -= displayHeight + DuoSupportUtils.DUO_HINGE_WIDTH
@@ -283,32 +284,32 @@ class Tooltip {
     }
 
     private fun hingeSupport(anchorRect: Rect, dismissLocation: TouchDismissLocation) {
-        val upArrowWidth = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_arrow_width)
-        val tooltipRect = Rect(positionX, positionY, positionX + contentWidth, positionY + contentHeight - upArrowWidth / 2)
-        val anchorIntersects = DuoSupportUtils.intersectHinge(context, anchorRect)
-        val tooltipIntersects = DuoSupportUtils.intersectHinge(context, tooltipRect)
+        context.activity?.let {
+            val upArrowWidth = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_arrow_width)
+            val tooltipRect = Rect(positionX, positionY, positionX + contentWidth, positionY + contentHeight - upArrowWidth / 2)
+            val anchorIntersects = DuoSupportUtils.intersectHinge(it, anchorRect)
+            val tooltipIntersects = DuoSupportUtils.intersectHinge(it, tooltipRect)
 
-        if (anchorIntersects || tooltipIntersects){
-            if (DuoSupportUtils.isWindowDoublePortrait(context)){
-                isAboveAnchor = false // Enables left arrow
-                if (DuoSupportUtils.moreOnLeft(context, anchorRect)) {
-                    isAboveAnchor = true // Enables right arrow
-                    positionX = anchorRect.left - contentWidth - upArrowWidth / 2
-                }
-                else {
-                    positionX = anchorRect.right
-                }
-                requireReadjustment = true
-            }
-            else { // Device is in vertical orientation
-                // Usually the tooltip will occur below the anchor, so the tooltip will intersect only in case its in top screen
-                // In such case, we make tooltip on the top of the anchor.
-                if (tooltipIntersects) {
-                    isAboveAnchor = true
-                    isSideAnchor = false
-                    positionY = anchorRect.top - contentHeight
-                    if (dismissLocation == TouchDismissLocation.INSIDE) positionY -= context.statusBarHeight
-                    requireReinit = true
+            if (anchorIntersects || tooltipIntersects) {
+                if (DuoSupportUtils.isWindowDoublePortrait(it)) {
+                    isAboveAnchor = false // Enables left arrow
+                    if (DuoSupportUtils.moreOnLeft(it, anchorRect)) {
+                        isAboveAnchor = true // Enables right arrow
+                        positionX = anchorRect.left - contentWidth - upArrowWidth / 2
+                    } else {
+                        positionX = anchorRect.right
+                    }
+                    requireReadjustment = true
+                } else { // Device is in vertical orientation
+                    // Usually the tooltip will occur below the anchor, so the tooltip will intersect only in case its in top screen
+                    // In such case, we make tooltip on the top of the anchor.
+                    if (tooltipIntersects) {
+                        isAboveAnchor = true
+                        isSideAnchor = false
+                        positionY = anchorRect.top - contentHeight
+                        if (dismissLocation == TouchDismissLocation.INSIDE) positionY -= context.statusBarHeight
+                        requireReinit = true
+                    }
                 }
             }
         }
@@ -350,13 +351,15 @@ class Tooltip {
 
         // Readjustment for Duo hinge
         val tooltipRect = Rect(positionX, positionY, positionX + contentWidth, positionY + contentHeight)
-        if (DuoSupportUtils.intersectHinge(context, tooltipRect)){
-            positionY = if (DuoSupportUtils.moreOnTop(context, anchorRect)){
-                DuoSupportUtils.getHinge(context as Activity)!!.top - contentHeight - margin + cornerRadius
-            } else {
-                DuoSupportUtils.getHinge(context as Activity)!!.bottom + margin - cornerRadius
+        context.activity?.let {
+            if (DuoSupportUtils.intersectHinge(it, tooltipRect)) {
+                positionY = if (DuoSupportUtils.moreOnTop(it, anchorRect)) {
+                    DuoSupportUtils.getHinge(it)!!.top - contentHeight - margin + cornerRadius
+                } else {
+                    DuoSupportUtils.getHinge(it)!!.bottom + margin - cornerRadius
+                }
+                isAboveAnchor = tooltipRect.left < anchorRect.left
             }
-            isAboveAnchor = tooltipRect.left < anchorRect.left
         }
 
         // Reinitialize tooltip with side arrow

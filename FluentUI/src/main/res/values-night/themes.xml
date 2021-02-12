@@ -60,6 +60,16 @@
         <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundColor</item>
         <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_600</item>
 
+        <!--ContextualCommandBar-->
+        <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_900</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorSelected">@color/fluentui_communication_blue</item>
+        <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_100</item>
+        <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_400</item>
+        <item name="fluentuiContextualCommandBarIconTintSelected">@color/fluentui_black</item>
+        <item name="fluentuiContextualCommandBarDismissBackgroundColor">@color/fluentui_black</item>
+        <item name="fluentuiContextualCommandBarDismissIconTintColor">@color/fluentui_gray_100</item>
+
         <!--Dialog-->
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiDialogCloseIconColor">?attr/colorPrimary</item>
@@ -103,6 +113,13 @@
         <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
         <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
 
+        <!--TabLayout-->
+        <item name="fluentuiTabSelectedTextColor">@color/fluentui_white</item>
+        <item name="fluentuiTabUnselectedTextColor">@color/fluentui_gray_100</item>
+        <item name="fluentuiTabLayoutContainerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiTabLayoutBackgroundColor">@color/fluentui_gray_950</item>
+        <item name="fluentuiTabSelectedBackgroundColor">@color/fluentui_gray_600</item>
+        
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>

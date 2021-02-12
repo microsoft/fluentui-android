@@ -18,6 +18,10 @@
             <enum name="circle" value="0" />
             <enum name="square" value="1" />
         </attr>
+        <attr name="avatarBorderStyle" format="enum">
+            <enum name="no_border" value="0" />
+            <enum name="ring" value="1" />
+        </attr>
         <attr name="name" />
         <attr name="email" />
         <attr name="avatarBackgroundColor" format="reference" />

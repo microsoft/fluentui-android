@@ -85,6 +85,17 @@
     <attr name="fluentuiCalendarOtherMonthBackgroundColor" format="reference|color"/>
     <attr name="fluentuiCalendarSelectedColor" format="reference|color"/>
     <attr name="fluentuiCalendarDayTodayBackgroundColor" format="reference|color"/>
+
+    <!--ContextualCommandBar-->
+    <attr name="fluentuiContextualCommandBarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarBackgroundColorPressed" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarBackgroundColorSelected" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTint" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTintDisabled" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTintSelected" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarDismissBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarDismissIconTintColor" format="reference|color"/>
+
     <!--day selector-->
     <attr name="fluentuiCalendarDayTextActiveColor" format="reference|color"/>
     <attr name="fluentuiCalendarDayTextActiveCheckedColor" format="reference|color"/>
@@ -177,10 +188,19 @@
     <attr name="fluentuiSnackbarActionTextColor" format="reference|color"/>
     <attr name="fluentuiSnackbarActionTextAnnouncementColor" format="reference|color"/>
 
+    <!--Dialog TabLayout-->
+    <attr name="fluentuiDialogTabTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabIndicatorColor" format="reference|color"/>
+
     <!--TabLayout-->
-    <attr name="fluentuiTabTextColor" format="reference|color"/>
+    <attr name="fluentuiTabLayoutContainerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabLayoutBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
-    <attr name="fluentuiTabIndicatorColor" format="reference|color"/>
+    <attr name="fluentuiTabUnselectedTextColor" format="reference|color"/>
+    <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabTextAppearance" format="reference" />
 
     <!--Toolbar-->
     <attr name="fluentuiToolbarBackgroundColor" format="reference|color"/>
@@ -192,6 +212,10 @@
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
 
+    <!--Persistent bottomsheet-->
+    <attr name="fluentuiPersistentBottomSheetHeadingColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetItemColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetHorizontalItemColor" format="reference|color"/>
 
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">

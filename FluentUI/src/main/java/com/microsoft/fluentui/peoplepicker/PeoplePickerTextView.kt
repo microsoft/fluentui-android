@@ -27,9 +27,11 @@ import android.view.DragEvent
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import android.widget.MultiAutoCompleteTextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.peoplepicker.PeoplePickerView.PersonaChipClickListener
@@ -39,6 +41,9 @@ import com.microsoft.fluentui.persona.setPersona
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTextSize
 import com.microsoft.fluentui.util.inputMethodManager
+import com.microsoft.fluentui.util.activity
+import com.microsoft.fluentui.util.displaySize
+import com.microsoft.fluentui.util.DuoSupportUtils
 import com.tokenautocomplete.CountSpan
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
@@ -162,6 +167,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     private var shouldAnnouncePersonaAddition: Boolean = false
     private var shouldAnnouncePersonaRemoval: Boolean = true
     private var searchConstraint: CharSequence = ""
+    private var lastSpan: TokenImageSpan? = null
 
     init {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
@@ -199,6 +205,16 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         return view
     }
 
+    private fun getViewForObjectWithSpace(`object`: IPersona, marginStart: Int): View {
+        val view = getViewForObject(`object`)
+        val layout = LinearLayout(context)
+        val layoutParam: LinearLayout.LayoutParams = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        layoutParam.marginStart = marginStart
+        view.layoutParams = layoutParam
+        layout.addView(view, layoutParam)
+        return layout
+    }
+
     override fun defaultObject(completionText: String): IPersona? {
         if (completionText.isEmpty() || !isEmailValid(completionText))
             return null
@@ -209,7 +225,8 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     override fun buildSpanForObject(obj: IPersona): TokenImageSpan {
         // This ensures that persona spans will be short enough to leave room for the count span.
         val countSpanWidth = resources.getDimension(R.dimen.fluentui_people_picker_count_span_width).toInt()
-        return TokenImageSpan(getViewForObject(obj), obj, maxTextWidth().toInt() - countSpanWidth)
+        lastSpan = TokenImageSpan(getViewForObject(obj), obj, maxTextWidth().toInt() - countSpanWidth)
+        return lastSpan as TokenImageSpan
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
@@ -270,6 +287,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         shouldAnnouncePersonaAddition = true
         super.replaceText(text)
+        context.activity?.let {
+            if (DuoSupportUtils.isDualScreenMode(it) && lastSpan != null) {
+                checkForIntersectionWithHinge(lastSpan!!)
+            }
+        }
     }
 
     override fun canDeleteSelection(beforeLength: Int): Boolean {
@@ -411,6 +433,35 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         val personaSpan = buildSpanForObject(persona)
         text.insert(offset, spannableStringBuilder)
         text.setSpan(personaSpan, offset, offset + spannableStringBuilder.length - 1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        context.activity?.let {
+            if (DuoSupportUtils.isDualScreenMode(it)) {
+                checkForIntersectionWithHinge(personaSpan)
+            }
+        }
+    }
+
+    private fun checkForIntersectionWithHinge(tokenImageSpan: TokenImageSpan) {
+        if (layout == null) {
+            return
+        }
+        val spanStart = text.getSpanStart(tokenImageSpan)
+        val spanEnd = text.getSpanEnd(tokenImageSpan)
+        val personaBound = calculateBounds(spanStart, spanEnd, 0)
+        val parentTextViewLocation = intArrayOf(0, 0)
+        getLocationInWindow(parentTextViewLocation)
+        personaBound.left += parentTextViewLocation[0]
+        personaBound.right += parentTextViewLocation[0]
+        personaBound.top += parentTextViewLocation[1]
+        personaBound.bottom += parentTextViewLocation[1]
+        context.activity?.let {
+            if (DuoSupportUtils.intersectHinge(it, personaBound)) {
+                text.removeSpan(tokenImageSpan)
+                val spanWithEmptySpace = getViewForObjectWithSpace(tokenImageSpan.token, (context.displaySize.x + DuoSupportUtils.getHingeWidth((it))) / 2 - personaBound.left + resources.getDimension(R.dimen.fluentui_people_picker_horizontal_margin).toInt())
+                val countSpanWidth = resources.getDimension(R.dimen.fluentui_people_picker_count_span_width).toInt() + DuoSupportUtils.getHingeWidth(it)
+
+                text.setSpan(TokenImageSpan(spanWithEmptySpace, tokenImageSpan.token, maxTextWidth().toInt() - countSpanWidth), spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
+        }
     }
 
     // Persona spans don't always fit their new space so we rebuild the spans in available space.
@@ -425,6 +476,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             val spanEnd = text.getSpanEnd(personaSpan)
             text.removeSpan(personaSpan)
             text.setSpan(rebuiltSpan, spanStart, spanEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            context.activity?.let {
+                if (DuoSupportUtils.isDualScreenMode(it)) {
+                    checkForIntersectionWithHinge(rebuiltSpan)
+                }
+            }
         }
     }
 

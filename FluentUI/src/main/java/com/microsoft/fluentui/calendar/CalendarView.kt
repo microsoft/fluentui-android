@@ -34,6 +34,7 @@ import org.threeten.bp.*
 class CalendarView : LinearLayout, OnDateSelectedListener {
     companion object {
         const val DAYS_IN_WEEK = 7
+        const val WEEK_MID = 3
         private const val VIEW_MODE_CHANGE_ANIMATION_DURATION = 300L
         private const val HEIGHT = "height"
     }
@@ -183,8 +184,8 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         var widthMeasureSpec = widthMeasureSpec
         val viewWidth = MeasureSpec.getSize(widthMeasureSpec)
         rowHeight = viewWidth / DAYS_IN_WEEK
+        weeksView.setRowHeight(rowHeight)
         widthMeasureSpec = MeasureSpec.makeMeasureSpec(rowHeight * DAYS_IN_WEEK, View.MeasureSpec.EXACTLY)
-
         resizeAnimator?.let {
             if (it.isRunning) {
                 super.onMeasure(widthMeasureSpec, heightMeasureSpec)
@@ -219,16 +220,15 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         weeksView.isSnappingEnabled = true
         weeksView.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
         addView(weeksView)
-
-        dividerDrawable = ContextCompat.getDrawable(context, R.drawable.ms_row_divider)
-        showDividers = SHOW_DIVIDER_MIDDLE
-
         weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 if (canExpand())
                     displayMode = DisplayMode.FULL_MODE
             }
         })
+
+        dividerDrawable = ContextCompat.getDrawable(context, R.drawable.ms_row_divider)
+        showDividers = SHOW_DIVIDER_MIDDLE
     }
 
     /**

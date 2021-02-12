@@ -106,6 +106,17 @@
         <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_25</item>
         <item name="fluentuiCalendarSelectedColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiColorPrimaryLighter</item>
+
+        <!--ContextualCommandBar-->
+        <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_50</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_100</item>
+        <item name="fluentuiContextualCommandBarBackgroundColorSelected">@color/fluentui_communication_tint_40</item>
+        <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_900</item>
+        <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_300</item>
+        <item name="fluentuiContextualCommandBarIconTintSelected">@color/fluentui_communication_blue</item>
+        <item name="fluentuiContextualCommandBarDismissBackgroundColor">#FFFFFF</item>
+        <item name="fluentuiContextualCommandBarDismissIconTintColor">@color/fluentui_gray_900</item>
+
         <!--day selector-->
         <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiCalendarDayTextActiveCheckedColor">?attr/fluentuiForegroundOnPrimaryColor</item>
@@ -195,11 +206,19 @@
         <item name="fluentuiSnackbarActionTextColor">?attr/fluentuiColorPrimaryLight</item>
         <item name="fluentuiSnackbarActionTextAnnouncementColor">?attr/fluentuiForegroundOnPrimaryColor</item>
 
-        <!--TabLayout-->
-        <item name="fluentuiTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
-        <item name="fluentuiTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
+        <!--TabLayout Dialog-->
+        <item name="fluentuiDialogTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
+        <item name="fluentuiDialogTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
 
+        <!--TabLayout-->
+        <item name="fluentuiTabSelectedTextColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiTabUnselectedTextColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiTabLayoutContainerBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiTabLayoutBackgroundColor">@color/fluentui_communication_shade_10</item>
+        <item name="fluentuiTabSelectedBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiTabUnselectedBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
+        <item name="fluentuiTabTextAppearance">@style/TextAppearance.FluentUI.Tab</item>
         <!--Toolbar-->
         <item name="fluentuiToolbarBackgroundColor">?attr/colorPrimary</item>
         <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
@@ -209,6 +228,11 @@
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+
+        <!--BottomSheet-->
+        <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetItemColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundColor</item>
     </style>
 
     <!--

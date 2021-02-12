@@ -48,7 +48,8 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
 
     private val sheetCallback = object : CustomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
-            // No op
+            if(newState == BottomSheetBehavior.STATE_COLLAPSED) // when state is STATE_COLLAPSED
+                dismissDialog()
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -170,10 +171,25 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         // Dismiss may be called by external objects so state is set to STATE_COLLAPSED in order for
         // the drawer to animate up
         when(sheetBehavior){
-            is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_COLLAPSED
-            is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_COLLAPSED)
-            is SideSheetBehavior -> (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_COLLAPSED)
+            is BottomSheetBehavior -> {
+                (sheetBehavior as BottomSheetBehavior<View>).state = BottomSheetBehavior.STATE_COLLAPSED
+                if((sheetBehavior as BottomSheetBehavior<View>).state == BottomSheetBehavior.STATE_COLLAPSED)
+                    dismissDialog()
+            }
+            is TopSheetBehavior -> {
+                (sheetBehavior as TopSheetBehavior<View>).setStateOuter(TopSheetBehavior.STATE_COLLAPSED)
+                if((sheetBehavior as TopSheetBehavior<View>).getState() == TopSheetBehavior.STATE_COLLAPSED)
+                    dismissDialog()
+            }
+            is SideSheetBehavior -> {
+                (sheetBehavior as SideSheetBehavior<View>).setStateOuter(SideSheetBehavior.STATE_COLLAPSED)
+                if((sheetBehavior as SideSheetBehavior<View>).getState() == SideSheetBehavior.STATE_COLLAPSED)
+                    dismissDialog()
+            }
         }
+    }
+
+    fun dismissDialog() {
         super.dismiss()
     }
 

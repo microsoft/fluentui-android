@@ -15,7 +15,7 @@
         android:layout_width="@dimen/fluentui_tooltip_arrow_width"
         android:layout_height="@dimen/fluentui_tooltip_arrow_height"
         android:alpha="@integer/fluentui_tooltip_background_alpha"
-        android:contentDescription="TODO" android:src="@drawable/ms_icon_tooltip_arrow" />
+        android:src="@drawable/ms_icon_tooltip_arrow" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -29,7 +29,6 @@
             android:layout_height="@dimen/fluentui_tooltip_arrow_width"
             android:visibility="gone"
             tools:visibility="visible"
-            android:contentDescription="TODO"
             android:alpha="@integer/fluentui_tooltip_background_alpha"
             android:src="@drawable/ms_icon_tooltip_side_arrow" />
 
@@ -40,7 +39,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:contentDescription="TODO" android:src="@drawable/tooltip_background"
+                android:src="@drawable/tooltip_background"
                 android:layout_alignStart="@id/tooltip_text"
                 android:layout_alignTop="@id/tooltip_text"
                 android:layout_alignEnd="@id/tooltip_text"
@@ -67,7 +66,7 @@
             android:layout_height="@dimen/fluentui_tooltip_arrow_width"
             android:visibility="gone"
             tools:visibility="visible"
-            android:contentDescription="TODO" android:rotation="180"
+            android:rotation="180"
             android:alpha="@integer/fluentui_tooltip_background_alpha"
             android:src="@drawable/ms_icon_tooltip_side_arrow" />
 
@@ -79,7 +78,7 @@
         android:layout_height="@dimen/fluentui_tooltip_arrow_height"
         android:visibility="gone"
         tools:visibility="visible"
-        android:contentDescription="TODO" android:rotation="180"
+        android:rotation="180"
         android:alpha="@integer/fluentui_tooltip_background_alpha"
         android:src="@drawable/ms_icon_tooltip_arrow" />
 

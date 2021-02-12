@@ -7,6 +7,7 @@ package com.microsoft.fluentui.util
 
 import android.content.Context
 import android.content.ContextWrapper
+import android.graphics.Bitmap
 import android.support.annotation.ColorInt
 import android.support.annotation.DrawableRes
 import android.support.v4.content.ContextCompat
@@ -51,6 +52,16 @@ fun Context.createImageView(@DrawableRes imageId: Int, @ColorInt imageTint: Int?
 
     val imageView = ImageView(this)
     imageView.setImageDrawable(drawable)
+    return imageView
+}
+
+/**
+ * Returns an ImageView containing a Drawable.
+ * @param bitmap - expected a compressed bitmap which consumer wants to show
+ */
+fun Context.createImageView(bitmap: Bitmap): ImageView {
+    val imageView = ImageView(this)
+    imageView.setImageBitmap(bitmap)
     return imageView
 }
 

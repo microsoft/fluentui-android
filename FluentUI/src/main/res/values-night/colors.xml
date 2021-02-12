@@ -13,9 +13,15 @@
     <color name="fluentui_communication_tint_20">#3AA0F3</color>
     <color name="fluentui_communication_tint_40">#092C47</color>
 
-
     <!--ActionBarLayout-->
     <color name="fluentui_action_bar_indicator_background">@color/fluentui_gray_300</color>
     <color name="fluentui_action_bar_carousel_background">@color/fluentui_gray_900</color>
+
+    <!--AvatarView-->
+    <color name="fluentui_avatar_ring_background">@color/fluentui_black</color>
+    <color name="fluentui_avatar_border_background">@color/fluentui_gray_500</color>
+    <color name="fluentui_avatar_overflow_text_color">@color/fluentui_gray_25</color>
+    <color name="fluentui_avatar_overflow_background">@color/fluentui_gray_600</color>
+
 
 </resources>

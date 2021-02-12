@@ -25,10 +25,14 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
 
     private val clipPath = Path()
     var behaviorType: BehaviorType
+    val cornerRadius :Float
 
     init {
         val a: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
         behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "BOTTOM")
+        val drawerTypedArray = context.obtainStyledAttributes(attrs, R.styleable.DrawerView)
+        cornerRadius = drawerTypedArray.getDimension(R.styleable.DrawerView_cornerRadius, resources.getDimension(R.dimen.fluentui_drawer_corner_radius))
+        drawerTypedArray.recycle()
         a.recycle()
     }
 
@@ -45,7 +49,7 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
     }
 
     private fun updateClipPath(width: Float, height: Float) {
-        val cornerRadius = resources.getDimension(R.dimen.fluentui_drawer_corner_radius)
+
         val radii = FloatArray(RADII_SIZE){0f}
 
         when(behaviorType) {

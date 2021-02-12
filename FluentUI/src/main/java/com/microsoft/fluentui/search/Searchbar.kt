@@ -19,8 +19,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.appbarlayout.AppBarLayout
+import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.inputMethodManager
 import com.microsoft.fluentui.util.isVisible
+import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.toggleKeyboardVisibility
 import com.microsoft.fluentui.view.TemplateView
 import com.microsoft.fluentui.widget.ProgressBar
@@ -140,6 +142,8 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     private var searchView: SearchView? = null
     private var searchCloseButton: ImageButton? = null
     private var searchProgress: ProgressBar? = null
+    private var singleScreenDisplayPixels = 0
+    private var screenPos = IntArray(2)
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
@@ -151,6 +155,9 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         searchView = findViewInTemplateById(R.id.search_view)
         searchCloseButton = findViewInTemplateById(R.id.search_close)
         searchProgress = findViewInTemplateById(R.id.search_progress)
+        context.activity?.let {
+            singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(it)
+        }
 
         // Hide the default search view close button from TalkBack and get rid of the space it takes up.
         val closeButton = searchView?.findViewById<AppCompatImageView>(R.id.search_close_btn)
@@ -160,6 +167,21 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         updateViews()
         setupListeners()
         setUnfocusedState()
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        var widthMeasureSpec = widthMeasureSpec
+        val viewWidth = MeasureSpec.getSize(widthMeasureSpec)
+        this.getLocationOnScreen(screenPos)
+
+        // Adjust x coordinate for second screen on Duo
+        if (screenPos[0] > singleScreenDisplayPixels)
+            screenPos[0] -= singleScreenDisplayPixels + DuoSupportUtils.DUO_HINGE_WIDTH
+
+        // Adjust for hinge
+        if (screenPos[0] + viewWidth > singleScreenDisplayPixels)
+            widthMeasureSpec = MeasureSpec.makeMeasureSpec(singleScreenDisplayPixels - screenPos[0], MeasureSpec.EXACTLY)
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
     private fun updateViews() {
@@ -190,6 +212,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
         searchCloseButton?.setOnClickListener {
             setQuery("", false)
+            announceForAccessibility(queryHint+context.getString(R.string.searchbar_accessibility_cleared_announcement))
         }
     }
 

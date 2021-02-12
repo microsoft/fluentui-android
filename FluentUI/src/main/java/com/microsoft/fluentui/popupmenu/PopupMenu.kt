@@ -8,10 +8,13 @@ package com.microsoft.fluentui.popupmenu
 import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.ListPopupWindow
+import android.view.KeyEvent
 import android.view.View
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.ItemCheckableBehavior
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.util.DuoSupportUtils
+import com.microsoft.fluentui.util.activity
 
 /**
  * [PopupMenu] is a transient UI that displays a list of options. The popup appears from a view that
@@ -73,6 +76,12 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
 
         isModal = true
         width = adapter.calculateWidth()
+        context.activity?.let {
+            if (DuoSupportUtils.isWindowDoublePortrait(it) && anchorView.x < DuoSupportUtils.getSingleScreenWidthPixels(it) &&
+                    anchorView.x + width > DuoSupportUtils.getSingleScreenWidthPixels(it)) {
+                width = DuoSupportUtils.getSingleScreenWidthPixels(it) - anchorView.x.toInt()
+            }
+        }
     }
 
     override fun onPopupMenuItemClicked(popupMenuItem: PopupMenuItem) {
@@ -100,5 +109,22 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
         }
 
         adapter.notifyDataSetChanged()
+    }
+
+    override fun show() {
+        super.show()
+        listView?.apply {
+            isFocusableInTouchMode = true
+            setOnKeyListener { _, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    selectedView?.performClick()
+                    return@setOnKeyListener true
+                } else if (keyCode == KeyEvent.KEYCODE_ESCAPE) {
+                    dismiss()
+                    return@setOnKeyListener true
+                }
+                return@setOnKeyListener onKeyDown(keyCode, event)
+            }
+        }
     }
 }

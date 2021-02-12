@@ -21,6 +21,7 @@ import com.microsoft.fluentui.managers.PreferencesManager
 import com.microsoft.fluentui.util.DateTimeUtils
 import org.threeten.bp.*
 import org.threeten.bp.temporal.ChronoUnit
+import java.lang.StringBuilder
 import java.util.concurrent.TimeUnit
 
 /**
@@ -70,6 +71,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     private var firstDayOfWeek: DayOfWeek? = null
     private var dayCount: Int
+    private var viewHeight: Int = 0
 
     constructor(context: Context, config: CalendarView.Config, onDateSelectedListener: OnDateSelectedListener) {
         this.context = context
@@ -124,7 +126,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarDayViewHolder {
         val dayView = CalendarDayView(parent.context, config)
-        dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        dayView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, viewHeight)
         dayView.setOnClickListener(this)
         ViewCompat.setAccessibilityDelegate(dayView, dayViewAccessibilityDelegate)
         return CalendarDayViewHolder(dayView)
@@ -152,6 +154,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     override fun onClick(v: View) {
         onDateSelectedListener.onDateSelected((v as CalendarDayView).date.getLocalDateToZonedDateTime)
+        v.announceForAccessibility(StringBuilder(v.contentDescription).append(" ").append(context.getString(R.string.calendar_adapter_accessibility_item_selected)))
     }
 
     private fun updateDayIndicesAndHeading() {
@@ -169,6 +172,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
             dayOfWeek = dayOfWeek.plus(1)
             ++i
         }
+    }
+
+    fun setViewHeight(viewHeight: Int) {
+        this.viewHeight = viewHeight
     }
 
     /**
