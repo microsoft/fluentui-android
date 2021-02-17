@@ -151,5 +151,4 @@
     <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTooltipTextColor" format="reference|color"/>
 
-
 </resources>

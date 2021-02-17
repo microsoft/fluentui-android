@@ -130,7 +130,7 @@ object ThemeUtil {
         }
     }
 
-     private fun getThemeName(context: Context): String? {
+    private fun getThemeName(context: Context): String? {
         try {
             val wrapper = Context::class.java
             val method = wrapper.getMethod("getThemeResId")

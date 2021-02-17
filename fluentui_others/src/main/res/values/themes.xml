@@ -11,7 +11,6 @@
         If they have a different semantic color for dark theme, define that color in "themes.xml (night)" as well.
     -->
     <style name="Theme.FluentUI.Components" parent="Base.Theme.FluentUI">
-
         <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
         <item name="toolbarStyle">@style/Widget.FluentUI.Toolbar</item>
         <item name="actionOverflowButtonStyle">@style/Widget.FluentUI.Toolbar.OverflowButtonStyle</item>
@@ -164,7 +163,6 @@
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-
 
     </style>
 

@@ -25,22 +25,18 @@ android {
         }
     }
     signingConfigs {
-
         dogfood {
             keyAlias 'Dogfood'
             keyPassword = project.hasProperty("signingKeyPassword") ? "$signingKeyPassword" : ""
             storeFile file('keystore.jks')
             storePassword = project.hasProperty("signingKeyStorePassword") ? "$signingKeyStorePassword" : ""
         }
-
-        
     }
     flavorDimensions 'distribution'
     productFlavors {
         development {
             dimension 'distribution'
         }
-
         dogfood {
             dimension 'distribution'
             applicationIdSuffix '.df'
@@ -71,12 +67,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'
     // App Center
-
     def appCenterSdkVersion = '1.8.0'
     dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
-
-
-
 }

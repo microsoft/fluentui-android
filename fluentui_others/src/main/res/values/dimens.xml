@@ -106,8 +106,6 @@
     <dimen name="fluentui_people_picker_label_margin_end">8dp</dimen>
     <dimen name="fluentui_people_picker_vertical_padding">12dp</dimen>
 
-
-
     <!--Persona-->
     <dimen name="fluentui_persona_horizontal_spacing">@dimen/fluentui_list_item_spacing</dimen>
     <dimen name="fluentui_persona_horizontal_padding">@dimen/fluentui_list_item_horizontal_margin_regular</dimen>

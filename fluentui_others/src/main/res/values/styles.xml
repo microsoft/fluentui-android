@@ -7,7 +7,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <!--BottomNavigation-->
     <style name="Widget.FluentUI.BottomNavigation" parent="Widget.Design.BottomNavigationView">
         <item name="android:layout_gravity">bottom</item>

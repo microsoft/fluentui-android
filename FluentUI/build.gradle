@@ -13,8 +13,6 @@ apply from: '../config.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
-
-
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
@@ -23,7 +21,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -87,7 +84,6 @@ project.afterEvaluate {
     }
 }
 
-
 bintray {
     user = project.hasProperty('bintrayUser') ? "$bintrayUser" : ""
     key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
@@ -102,5 +98,3 @@ bintray {
         }
     }
 }
-
-
