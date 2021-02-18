@@ -14,7 +14,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.microsoft.fluentui.tablayout.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.view.TemplateView
@@ -49,11 +48,12 @@ class TabLayout : TemplateView {
     private val tabSelectedTextColor: Int
     private val tabUnselectedTextColor: Int
 
+
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_TabLayout), attrs, defStyleAttr) {
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.TabLayout)
         val tabTypeOrdinal = styledAttributes.getInt(R.styleable.TabLayout_tabType, TabType.STANDARD.ordinal)
-
+        context.setTheme(R.style.Theme_FluentUI_TabLayout)
         containerBackgroundColor = styledAttributes.getColor(
             R.styleable.TabLayout_containerBackgroundColor,
             ThemeUtil.getColor(context, R.attr.fluentuiTabLayoutContainerBackgroundColor))

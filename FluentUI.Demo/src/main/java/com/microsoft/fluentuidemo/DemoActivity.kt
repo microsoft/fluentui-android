@@ -20,8 +20,6 @@ abstract class DemoActivity : AppCompatActivity() {
     companion object {
         const val DEMO_ID = "demo_id"
     }
-    protected open val defaultTheme: Int
-        get() = R.style.AppTheme
     protected abstract val contentLayoutId: Int
         @LayoutRes get
     protected open val contentNeedsScrollableContainer: Boolean
@@ -48,7 +46,7 @@ abstract class DemoActivity : AppCompatActivity() {
 
         // Load content and place it in the requested container
         val container = if (contentNeedsScrollableContainer) demo_detail_scrollable_container else demo_detail_container
-        layoutInflater.cloneInContext(FluentUIContextThemeWrapper(applicationContext,defaultTheme)).inflate(contentLayoutId, container, true)
+        layoutInflater.inflate(contentLayoutId, container, true)
 
     }
 

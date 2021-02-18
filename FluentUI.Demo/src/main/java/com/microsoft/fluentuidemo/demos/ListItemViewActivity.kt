@@ -37,14 +37,11 @@ class ListItemViewActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_list_item_view
 
-    override val defaultTheme: Int
-        get() = R.style.Theme_FluentUI_ListItem
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(defaultTheme)
         app_bar.scrollTargetViewId = R.id.list_example
 
         val listAdapter = ListAdapter(this)
@@ -334,7 +331,7 @@ class ListItemViewActivity : DemoActivity() {
         if (useCustomAccessoryView) {
             val customTextView = TextView(this)
             customTextView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
-            TextViewCompat.setTextAppearance(customTextView, R.style.TextAppearance_FluentUI_ListSubHeaderTitle_Tertiary)
+            TextViewCompat.setTextAppearance(customTextView, R.style.FluentUIDemo_ListItemSubHeaderTitle)
             customTextView.setOnClickListener {
                 Snackbar.make(
                     it,

@@ -30,7 +30,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
             headerText.text = itemTypeList.header
         }
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList, itemLayoutParam), R.style.Base_Theme_FluentUI)
+        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList, itemLayoutParam), R.style.Theme_FluentUI_Drawer)
 
         contentParam.listener?.apply {
             val listener = this
