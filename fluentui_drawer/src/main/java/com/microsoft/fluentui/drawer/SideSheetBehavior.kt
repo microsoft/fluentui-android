@@ -97,7 +97,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "RIGHT")
         a.recycle()
 
-         val configuration: ViewConfiguration = ViewConfiguration.get(context)
+        val configuration: ViewConfiguration = ViewConfiguration.get(context)
         maximumVelocity = (configuration.scaledMaximumFlingVelocity).toFloat()
     }
 

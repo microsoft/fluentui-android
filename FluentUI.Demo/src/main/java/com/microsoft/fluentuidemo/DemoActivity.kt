@@ -47,7 +47,6 @@ abstract class DemoActivity : AppCompatActivity() {
         // Load content and place it in the requested container
         val container = if (contentNeedsScrollableContainer) demo_detail_scrollable_container else demo_detail_container
         layoutInflater.inflate(contentLayoutId, container, true)
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

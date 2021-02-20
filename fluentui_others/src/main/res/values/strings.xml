@@ -36,21 +36,16 @@
     <string name="accessibility_selected">Selected</string>
 
     <!-- *** Shared *** -->
-
     <string name="done">Done</string>
 
-
     <!-- *** CalendarView *** -->
-
     <string name="date_at_time">%1$s at %2$s</string>
     <string name="date_time">%1$s, %2$s</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
     <string name="yesterday">Yesterday</string>
 
-
     <!-- *** TimePicker *** -->
-
     <!--date picker tab title for start time range-->
     <string name="date_time_picker_start_time">Start time</string>
     <!--date picker tab title for end time range-->
