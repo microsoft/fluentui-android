@@ -12,7 +12,6 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 /**
  * [TemplateView] is an abstract class designed for building views that have their UI defined in one or more layout files.
@@ -38,8 +37,7 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
  */
 abstract class TemplateView : ViewGroup {
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr)
-
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
     override fun addView(child: View) {
         throw UnsupportedOperationException("addView(View) is not supported in TemplateView")
     }

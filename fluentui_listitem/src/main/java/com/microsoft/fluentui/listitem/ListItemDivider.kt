@@ -11,7 +11,6 @@ import android.graphics.Rect
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.view.BaseDividerItemDecoration
 import kotlin.math.ceil
 
@@ -23,7 +22,7 @@ import kotlin.math.ceil
  * If your view has multiple [ListSubHeaderView]s, this class draws a section divider with no inset
  * between the last list item view in the section and next section's sub header view.
  */
-class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecoration(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ListItem), orientation) {
+class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecoration(context, orientation) {
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val viewPosition = parent.getChildAdapterPosition(view)
         val previousView = parent.getChildAt(viewPosition - 1)
