@@ -9,7 +9,6 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AppCompatDialogFragment
-import java.util.*
 
 /**
  * [BottomSheet] is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
