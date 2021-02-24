@@ -8,6 +8,7 @@ package com.microsoft.fluentui.view
 import android.content.Context
 import android.hardware.SensorManager
 import android.os.SystemClock
+import android.support.annotation.RestrictTo
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
@@ -26,6 +27,7 @@ import android.view.ViewConfiguration
  * Note: The crazy math part has been taken from Android framework Scroller.java and modified
  * to match our needs.
  */
+@RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
 open class MSRecyclerView : RecyclerView {
     companion object {
         // This is going to be multiplied by the density of the device

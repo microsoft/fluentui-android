@@ -42,43 +42,41 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:recyclerview-v7:$supportVersion"
     implementation "com.android.support:design:$supportVersion"
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
 }
 task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier "sources"
 }
 
-project.afterEvaluate {
-    publishing {
+publishing {
 
-        publications {
-            FluentUI(MavenPublication) {
-                groupId 'com.microsoft.fluentui'
-                artifactId "fluentui_drawer"
-                version = android.defaultConfig.versionName
-                artifact(sourceJar)
-                artifact(bundleReleaseAar)
-                pom.withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
-                    // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                    configurations.implementation.allDependencies.each {
-                        if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
-                            def dependencyNode = dependenciesNode.appendNode('dependency')
-                            if (it.group.equals('fluentui-android')) {
-                                dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
-                                dependencyNode.appendNode('artifactId', it.name)
-                                def artifactName = it.name.replaceAll('-','_')+'_versionid'
-                                dependencyNode.appendNode('version', getProperty(artifactName).toString())
-                            } else {
-                                dependencyNode.appendNode('groupId', it.group)
-                                dependencyNode.appendNode('artifactId', it.name)
-                                dependencyNode.appendNode('version', it.version)
-                            }
-
+    publications {
+        FluentUI(MavenPublication) {
+            groupId 'com.microsoft.fluentui'
+            artifactId "fluentui_drawer"
+            version = android.defaultConfig.versionName
+            artifact(sourceJar)
+            artifact(bundleReleaseAar)
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                configurations.implementation.allDependencies.each {
+                    if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        if (it.group.equals('fluentui-android')) {
+                            dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
+                            dependencyNode.appendNode('artifactId', it.name)
+                            def artifactName = it.name.replaceAll('-','_')+'_versionid'
+                            dependencyNode.appendNode('version', getProperty(artifactName).toString())
+                        } else {
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
                         }
+
                     }
                 }
             }
