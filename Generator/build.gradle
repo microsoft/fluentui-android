@@ -1,31 +1,12 @@
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 
-task generateFromFiles(type: JavaExec) {
-    group = 'fluentui'
-    description = 'Generate all FluentUI resources and source files for the given stylesheet files'
-
-    classpath sourceSets.main.runtimeClasspath
-    main = "microsoft.fluentui.generator.MainKt"
-    args 'generate'
-
-    doFirst {
-        if (project.hasProperty("regular") && project.hasProperty("dark")) {
-            args regular
-            args dark
-        } else {
-            println "Usage: -Pregular=[pathToRegularStylesheetFile] -Pdark=[pathToDarkStylesheetFile]"
-            throw new ProjectConfigurationException("FluentUI", new Exception("No stylesheet files specified"))
-        }
-    }
-}
-
 task generateAll(type: JavaExec) {
     group = 'fluentui'
     description = 'Generate all FluenUI resources and source files for all stylesheets'
 
     classpath sourceSets.main.runtimeClasspath
-    main = "microsoft.fluentui.generator.MainKt"
+    main = "com.microsoft.fluentui.generator.MainKt"
     args 'generate'
 }
 
@@ -34,7 +15,7 @@ task cleaner(type: JavaExec) {
     description = 'Remove all auto-generated resources and source files'
 
     classpath sourceSets.main.runtimeClasspath
-    main = "microsoft.fluentui.generator.MainKt"
+    main = "com.microsoft.fluentui.generator.MainKt"
     args 'clean'
 }
 
