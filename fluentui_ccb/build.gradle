@@ -13,14 +13,17 @@ apply from: '../config.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
+
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 13
-        versionName project.ext.FluentUI_versionid
+        versionCode 1
+        versionName project.ext.fluentui_ccb_versionid
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -33,14 +36,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':fluentui_core')
-    implementation project(':fluentui_listitem')
-    implementation project(':fluentui_drawer')
-    implementation project(':fluentui_tablayout')
-    implementation project(':fluentui_ccb')
-    implementation project(':fluentui_others')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:design:$supportVersion"
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
@@ -50,6 +49,7 @@ task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier "sources"
 }
+
 
 publishing {
     repositories {
@@ -64,7 +64,7 @@ publishing {
     publications {
         FluentUI(MavenPublication) {
             groupId 'com.microsoft.fluentui'
-            artifactId "FluentUIAndroid"
+            artifactId "fluentui_ccb"
             version = android.defaultConfig.versionName
             artifact(sourceJar)
             artifact(bundleReleaseAar)
@@ -74,7 +74,7 @@ publishing {
                 configurations.implementation.allDependencies.each {
                     if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
                         def dependencyNode = dependenciesNode.appendNode('dependency')
-                        if (it instanceof ProjectDependency) {
+                        if (it.group.equals('fluentui-android')) {
                             dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
                             dependencyNode.appendNode('artifactId', it.name)
                             def artifactName = it.name.replaceAll('-','_')+'_versionid'
@@ -92,6 +92,7 @@ publishing {
     }
 }
 
+
 bintray {
     user = project.hasProperty('bintrayUser') ? "$bintrayUser" : ""
     key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
@@ -99,10 +100,11 @@ bintray {
     publish = true
     pkg {
         repo = 'generic'
-        name = 'fluentui-android'
+        name = 'fluentui_ccb'
         version {
             name = android.defaultConfig.versionName
             vcsTag = android.defaultConfig.versionName
         }
     }
 }
+

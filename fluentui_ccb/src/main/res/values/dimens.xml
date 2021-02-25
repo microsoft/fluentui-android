@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--ContextualCommandBar-->
+    <dimen name="fluentui_contextual_command_bar_default_group_space">16dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_space">2dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_padding_horizontal">10dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_corner_radius">8dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_dismiss_gap_width">8dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_dismiss_button_width">48dp</dimen>
+</resources>
