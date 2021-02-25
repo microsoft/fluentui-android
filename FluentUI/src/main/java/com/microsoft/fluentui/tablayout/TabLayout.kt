@@ -96,7 +96,8 @@ class TabLayout : TemplateView {
      * */
     fun updateTemplate() {
         val tabLayout = tabLayout ?: return
-        var paddingHorizontal = resources.getDimension(R.dimen.fluentui_tab_padding_horizontal).toInt()
+        val paddingHorizontalLeft = resources.getDimension(R.dimen.fluentui_tab_padding_horizontal).toInt()
+        var paddingHorizontalRight = resources.getDimension(R.dimen.fluentui_tab_padding_horizontal).toInt()
         val paddingVertical = resources.getDimension(R.dimen.fluentui_tab_padding_vertical).toInt()
         when (tabType) {
             TabType.STANDARD -> {
@@ -105,7 +106,7 @@ class TabLayout : TemplateView {
                 setTabLayoutBackground()
             }
             TabType.SWITCH -> {
-                tabLayout.tabMode = TabLayout.MODE_FIXED
+                tabLayout.tabMode = TabLayout.MODE_SCROLLABLE
                 tabLayout.layoutParams.width = LayoutParams.WRAP_CONTENT
                 setTabLayoutBackground()
             }
@@ -114,10 +115,10 @@ class TabLayout : TemplateView {
                 tabLayout.layoutParams.width = LayoutParams.MATCH_PARENT
                 tabLayout.setBackgroundResource(0)
                 updateMargin()
-                paddingHorizontal = 0
+                paddingHorizontalRight = 0
             }
         }
-        tabLayoutContainer?.setPadding(paddingHorizontal, paddingVertical, paddingHorizontal, paddingVertical)
+        tabLayoutContainer?.setPadding(paddingHorizontalLeft, paddingVertical, paddingHorizontalRight, paddingVertical)
         setSelectorColors()
         setTextAppearance()
     }

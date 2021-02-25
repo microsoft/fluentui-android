@@ -12,10 +12,12 @@ import kotlin.reflect.KClass
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
+const val AVATAR_GROUP_VIEW = "AvatarGroupView"
 const val BASIC_INPUTS = "Basic Inputs"
 const val BOTTOM_NAVIGATION = "BottomNavigation"
 const val BOTTOM_SHEET = "BottomSheet"
 const val CALENDAR_VIEW = "CalendarView"
+const val CONTEXTUAL_COMMAND_BAR = "ContextualCommandBar"
 const val DATE_TIME_PICKER = "DateTimePicker"
 const val DRAWER = "Drawer"
 const val LIST_ITEM_VIEW = "ListItemView"
@@ -36,10 +38,12 @@ val DEMOS = arrayListOf(
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
+    Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
     Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),
+    Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
     Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
     Demo(DRAWER, DrawerActivity::class),
     Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),

@@ -21,6 +21,7 @@ import com.microsoft.fluentui.managers.PreferencesManager
 import com.microsoft.fluentui.util.DateTimeUtils
 import org.threeten.bp.*
 import org.threeten.bp.temporal.ChronoUnit
+import java.lang.StringBuilder
 import java.util.concurrent.TimeUnit
 
 /**
@@ -153,6 +154,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
 
     override fun onClick(v: View) {
         onDateSelectedListener.onDateSelected((v as CalendarDayView).date.getLocalDateToZonedDateTime)
+        v.announceForAccessibility(StringBuilder(v.contentDescription).append(" ").append(context.getString(R.string.calendar_adapter_accessibility_item_selected)))
     }
 
     private fun updateDayIndicesAndHeading() {

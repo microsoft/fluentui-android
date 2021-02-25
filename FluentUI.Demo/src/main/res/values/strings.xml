@@ -51,6 +51,13 @@
     <string name="avatar_size_small">Small</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
+    <!--AvatarGroupView-->
+    <string name="avatar_group_max_displayed_avatar">Max Displayed Avatar</string>
+    <string name="avatar_group_face_stack">Face Stack</string>
+    <string name="avatar_group_face_pile">Face Pile</string>
+    <string name="avatar_group_overflow_clicked">Overflow clicked</string>
+    <string name="avatar_group_avatar_clicked">AvatarView at index %d clicked</string>
+
     <!--BottomNavigation-->
     <string name="bottom_navigation_menu_item_photos">Photos</string>
     <string name="bottom_navigation_menu_item_news">News</string>
@@ -70,6 +77,36 @@
     <string name="bottom_sheet_with_single_line_header">Show with single line header</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Show with double line header and dividers</string>
     <string name="bottom_sheet_dialog_button">Show</string>
+
+    <!--ContextualCommandBar-->
+    <string name="contextual_command_bar_style_default">Default</string>
+    <string name="contextual_command_bar_style_with_dismiss_button">With dismiss</string>
+    <string name="contextual_command_bar_style_with_dismiss_button_rtl">With dismiss RTL</string>
+    <string name="contextual_command_prompt_click_item">Click %s</string>
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_insert_item">Insert Item</string>
+    <string name="contextual_command_update_item">Update Item</string>
+    <string name="contextual_command_accessibility_dismiss">Dismiss</string>
+    <string name="contextual_command_accessibility_add">Add</string>
+    <string name="contextual_command_accessibility_mention">Mention</string>
+    <string name="contextual_command_accessibility_bold">Bold</string>
+    <string name="contextual_command_accessibility_italic">Italic</string>
+    <string name="contextual_command_accessibility_underline">Underline</string>
+    <string name="contextual_command_accessibility_strikethrough">Strikethrough</string>
+    <string name="contextual_command_accessibility_undo">Undo</string>
+    <string name="contextual_command_accessibility_redo">Redo</string>
+    <string name="contextual_command_accessibility_bullet">Bullet</string>
+    <string name="contextual_command_accessibility_list">List</string>
+    <string name="contextual_command_accessibility_link">Link</string>
+    <string name="contextual_command_bar_item_update_title">Item Updating</string>
+    <string name="contextual_command_bar_space_title">Spacing</string>
+    <string name="contextual_command_bar_dismiss_position">Dismiss Position</string>
+    <string name="contextual_command_bar_dismiss_position_start">START</string>
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_group_space_title">Group space</string>
+    <string name="contextual_command_bar_item_space_title">Item space</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>
     <string name="bottom_sheet_item_flag_toast">Flag item clicked</string>

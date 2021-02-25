@@ -21,6 +21,20 @@
     <dimen name="fluentui_avatar_size_xlarge">52dp</dimen>
     <dimen name="fluentui_avatar_size_xxlarge">64dp</dimen>
     <dimen name="fluentui_avatar_square_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
+    <dimen name="fluentui_avatar_border_size">4dp</dimen>
+    <dimen name="fluentui_avatar_border_size_xxlarge">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xsmall">4dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_small">6dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_medium">6dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_large">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xlarge">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xxlarge">10dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xsmall">6dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_small">8dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_medium">8dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_large">12dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xlarge">14dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xxlarge">16dp</dimen>
 
     <!--BottomSheet-->
     <dimen name="fluentui_bottom_sheet_bottom_padding">8dp</dimen>
@@ -49,6 +63,15 @@
     <dimen name="fluentui_calendar_month_overlay_text_size">20sp</dimen>
     <dimen name="fluentui_calendar_weeks_max_width">336dp</dimen>
     <dimen name="fluentui_calendar_day_selection_size">36dp</dimen>
+
+    <!--ContextualCommandBar-->
+    <dimen name="fluentui_contextual_command_bar_default_group_space">16dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_space">2dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_item_padding_horizontal">10dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_default_corner_radius">8dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_dismiss_gap_width">8dp</dimen>
+    <dimen name="fluentui_contextual_command_bar_dismiss_button_width">48dp</dimen>
 
     <!--DatePickerFragment-->
     <dimen name="fluentui_date_picker_fragment_title_horizontal_margin">24dp</dimen>
