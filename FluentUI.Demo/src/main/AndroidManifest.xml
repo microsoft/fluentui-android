@@ -56,6 +56,9 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.TypographyActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.actionbar.ActionBarDemoActivity"/>
 
+        <!-- Vnext Demos Activity -->
+        <activity android:name="com.microsoft.fluentuidemo.vNextDemos.BasicInputsActivity" />
+
     </application>
 
 </manifest>
