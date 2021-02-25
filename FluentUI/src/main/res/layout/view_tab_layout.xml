@@ -12,7 +12,6 @@
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
-        app:tabContentStart="@dimen/fluentui_tab_content_start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:tabMode="fixed"

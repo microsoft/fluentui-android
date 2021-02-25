@@ -35,6 +35,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.ContextualCommandBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
