@@ -42,6 +42,7 @@ class ListItemViewActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         app_bar.scrollTargetViewId = R.id.list_example
 
         val listAdapter = ListAdapter(this)

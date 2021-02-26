@@ -94,7 +94,7 @@
         <item name="fluentuiDialogTabLayoutBackgroundColor">?attr/fluentuiDialogBackgroundColor</item>
 
 
-         <!--NumberPicker-->
+        <!--NumberPicker-->
         <item name="fluentuiNumberPickerBackgroundColor">?attr/fluentuiBackgroundColor</item>
         <item name="fluentuiNumberPickerDefaultTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiNumberPickerSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>

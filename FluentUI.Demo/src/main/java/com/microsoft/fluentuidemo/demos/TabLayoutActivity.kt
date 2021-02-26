@@ -25,6 +25,7 @@ class TabLayoutActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         tabLayout = demo_tab_layout.tabLayout ?: return
         adapter = TabPagerAdapter()
         adapter?.setData(createPageList())

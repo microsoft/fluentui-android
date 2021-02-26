@@ -57,7 +57,7 @@ internal class DrawerView(context: Context, attrs: AttributeSet) : LinearLayoutC
 
         val radii = FloatArray(RADII_SIZE) { 0f }
 
-        when (behaviorType) {
+        when(behaviorType) {
             BehaviorType.BOTTOM -> {
                 // top left corner
                 radii[0] = cornerRadius

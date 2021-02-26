@@ -12,5 +12,4 @@
     <dimen name="fluentui_tab_radius">20dp</dimen>
     <dimen name="fluentui_tab_indicator_height">0dp</dimen>
     <dimen name="fluentui_tab_margin">8dp</dimen>
-
 </resources>

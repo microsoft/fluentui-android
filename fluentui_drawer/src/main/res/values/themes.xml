@@ -25,7 +25,6 @@
         <!-- Bottomsheet Horizontal ListItem -->
         <item name="fluentuiHorizontalListItemTitleColor">?attr/fluentuiForegroundSecondaryColor</item>
 
-
     </style>
 
     <style name="Theme.FluentUI.Drawer" parent="Theme.FluentUI.Drawer.Base"/>

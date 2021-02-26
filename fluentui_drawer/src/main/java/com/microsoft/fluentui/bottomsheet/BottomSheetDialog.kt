@@ -33,7 +33,6 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
 
         val view = layoutInflater.inflate(R.layout.view_bottom_sheet, container.drawer_content, false)
 
-
         val adapter = BottomSheetAdapter(this.context, items, theme)
         adapter.onBottomSheetItemClickListener = this
         view.bottom_sheet_items.adapter = adapter

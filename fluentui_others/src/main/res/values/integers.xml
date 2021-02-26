@@ -13,7 +13,7 @@
     <integer name="fluentui_anim_indeterminate_duration">1000</integer>
     <integer name="fluentui_anim_indeterminate_linear_duration">2000</integer>
 
-   <!--NumberPicker-->
+    <!--NumberPicker-->
     <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">7</integer>
 
 

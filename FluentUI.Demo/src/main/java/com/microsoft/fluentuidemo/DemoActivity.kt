@@ -18,6 +18,7 @@ abstract class DemoActivity : AppCompatActivity() {
     companion object {
         const val DEMO_ID = "demo_id"
     }
+
     protected abstract val contentLayoutId: Int
         @LayoutRes get
     protected open val contentNeedsScrollableContainer: Boolean

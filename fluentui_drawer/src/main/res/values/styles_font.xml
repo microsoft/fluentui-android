@@ -32,10 +32,7 @@
     </style>
 
    <style name="TextAppearance.FluentUI.HorizontalListItemTitle" parent="TextAppearance.FluentUI.Body1">
-
         <item name="android:textColor">?attr/fluentuiHorizontalListItemTitleColor</item>
     </style>
-
-
 
 </resources>

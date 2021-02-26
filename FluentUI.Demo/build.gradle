@@ -43,7 +43,7 @@ android {
             signingConfig signingConfigs.dogfood
             buildConfigField "String", "APP_CENTER_SECRET", project.hasProperty("appCenterSecret") ? "\"$appCenterSecret\"" : ""
         }
-     }
+    }
 }
 
 dependencies {

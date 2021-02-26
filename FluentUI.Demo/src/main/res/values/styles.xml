@@ -91,4 +91,5 @@
     <style name="FluentUIDemo.ListItemSubHeaderTitle" parent="">
         <item name="android:textColor">?attr/fluentuiForegroundSecondaryColor</item>
     </style>
+
 </resources>

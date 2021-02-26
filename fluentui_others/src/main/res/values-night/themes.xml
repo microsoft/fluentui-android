@@ -57,9 +57,6 @@
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiDialogCloseIconColor">?attr/colorPrimary</item>
 
-         <!--ListItemView-->
-        <item name="fluentuiListItemTitleColor">@color/fluentui_gray_100</item>
-
         <!--NumberPicker-->
         <item name="fluentuiNumberPickerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
 

@@ -5,7 +5,7 @@
   -->
 
 <resources>
-
     <!--NumberPicker-->
     <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">3</integer>
+
 </resources>

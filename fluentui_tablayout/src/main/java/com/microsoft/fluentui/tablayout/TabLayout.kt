@@ -48,11 +48,17 @@ class TabLayout : TemplateView {
     private val tabSelectedTextColor: Int
     private val tabUnselectedTextColor: Int
 
-
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_TabLayout), attrs, defStyleAttr) {
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.TabLayout)
         val tabTypeOrdinal = styledAttributes.getInt(R.styleable.TabLayout_tabType, TabType.STANDARD.ordinal)
+        /**
+         * Use this.context while accessing themed attributes within a constructor
+         * As here, the object is still not initialized, just [context] will refer
+         * to the constructor parameter with same name, which typically contains
+         * theme of the calling app, and TabLayout attributes may not be resolved
+         * in that theme
+         **/
         containerBackgroundColor = styledAttributes.getColor(
             R.styleable.TabLayout_containerBackgroundColor,
             ThemeUtil.getColor(this.context, R.attr.fluentuiTabLayoutContainerBackgroundColor))
