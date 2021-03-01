@@ -191,6 +191,17 @@ open class ListItemView : TemplateView {
         }
 
     /**
+     * This view will be displayed at the end of subtitle view.
+     */
+    var customSecondarySubtitleView: View? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTemplate()
+        }
+
+    /**
      * Determines the list item view vertical padding density.
      */
     var layoutDensity: LayoutDensity = DEFAULT_LAYOUT_DENSITY
@@ -313,6 +324,7 @@ open class ListItemView : TemplateView {
     private var container: LinearLayout? = null
     private var customViewContainer: RelativeLayout? = null
     private var customAccessoryViewContainer: RelativeLayout? = null
+    private var customSecondarySubtitleViewContainer: RelativeLayout? = null
     private var textViewContainer: LinearLayout? = null
 
     override fun onTemplateLoaded() {
@@ -325,6 +337,7 @@ open class ListItemView : TemplateView {
         container = findViewInTemplateById(R.id.list_item)
         customViewContainer = findViewInTemplateById(R.id.list_item_custom_view_container)
         customAccessoryViewContainer = findViewInTemplateById(R.id.list_item_custom_accessory_view_container)
+        customSecondarySubtitleViewContainer = findViewInTemplateById(R.id.list_item_custom_secondary_subtitle_view_container)
         textViewContainer = findViewInTemplateById(R.id.list_item_text_view_container)
 
         updateTemplate()
@@ -341,6 +354,7 @@ open class ListItemView : TemplateView {
 
         customViewContainer?.setContentAndUpdateVisibility(customView, ::updateCustomViewLayout)
         customAccessoryViewContainer?.setContentAndUpdateVisibility(customAccessoryView)
+        customSecondarySubtitleViewContainer?.setContentAndUpdateVisibility(customSecondarySubtitleView)
 
         setBackgroundResource(background)
     }

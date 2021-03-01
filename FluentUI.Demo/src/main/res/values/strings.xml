@@ -199,10 +199,12 @@
     <!--ListItem-->
     <string name="list_item_title">Title, primary text</string>
     <string name="list_item_subtitle">Subtitle, secondary text</string>
+    <string name="list_item_secondary_subtitle">Custom subtitle text</string>
     <string name="list_item_footer">Footer, tertiary text</string>
     <string name="list_item_sub_header_single_line">Single-line list with gray sub header text</string>
     <string name="list_item_sub_header_two_line">Two-line list</string>
     <string name="list_item_sub_header_two_line_dense">Two-line list with dense spacing</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Two line list with custom secondary subtitle view</string>
     <string name="list_item_sub_header_three_line">Three-line list with black sub header text</string>
     <string name="list_item_sub_header_no_custom_views">List items with no custom views</string>
     <string name="list_item_sub_header_large_header">List items with large custom views</string>
