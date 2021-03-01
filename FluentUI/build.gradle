@@ -51,7 +51,15 @@ task sourceJar(type: Jar) {
 }
 
 publishing {
-
+    repositories {
+        maven {
+            url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+            credentials {
+                username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+            }
+        }
+    }
     publications {
         FluentUI(MavenPublication) {
             groupId 'com.microsoft.fluentui'
