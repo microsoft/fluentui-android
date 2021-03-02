@@ -33,6 +33,8 @@ allprojects {
         roboelectricVersion       =    '4.4'
         constraintLayoutVersion   =    '2.0.1'
         duoVersion                =    '1.0.0-alpha01'
+        tokenautocompleteVersion  =    '2.0.8'
+        threetenabpVersion        =    '1.1.0'
         universalPkgDir           =     "universal"
 
     }
