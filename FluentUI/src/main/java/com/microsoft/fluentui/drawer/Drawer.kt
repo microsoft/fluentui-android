@@ -38,7 +38,7 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
     }
 
     interface OnDismissListener {
-        fun onDrawerDismissListener()
+        fun onDrawerDismiss()
     }
 
     private var contentLayoutId: Int = 0
@@ -60,8 +60,8 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
 
     override fun onDismiss(dialog: DialogInterface?) {
         super.onDismiss(dialog)
-        (parentFragment as? OnDismissListener)?.onDrawerDismissListener()
-        (activity as? OnDismissListener)?.onDrawerDismissListener()
+        (parentFragment as? OnDismissListener)?.onDrawerDismiss()
+        (activity as? OnDismissListener)?.onDrawerDismiss()
     }
 
     override fun onDrawerContentCreated(drawerContents: View) {
