@@ -19,5 +19,7 @@
 
     <!--ActionBarLayout-->
     <color name="action_bar_radio_labels">@color/fluentui_black</color>
+    <!--Botttomsheet tint-->
+    <color name="bottomsheet_horizontal_icon_tint">@color/fluentui_gray_500</color>
 
 </resources>

@@ -245,6 +245,7 @@
     <string name="new_view">This is New View</string>
     <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
     <string name="switch_to_custom_content">Switch to custom Content</string>
+    <string name="one_line_content">One Line Bottomsheet Content</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>
