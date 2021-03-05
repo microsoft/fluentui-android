@@ -10,6 +10,7 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
+apply from: '../config.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
@@ -17,7 +18,7 @@ android {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
         versionCode 1
-        versionName '0.0.1'
+        versionName project.ext.fluentui_core_versionid
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

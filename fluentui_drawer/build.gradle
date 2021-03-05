@@ -18,7 +18,7 @@ android {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
         versionCode 1
-        versionName "0.0.1"
+        versionName project.ext.fluentui_drawer_versionid
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
