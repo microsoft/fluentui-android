@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+/*
+ * The version id mentioned here will be used for pom file generation for publication
+ * Whenever a module code is changed the version id of the module and all modules
+ * which are dependent on it should be incremented
+ * E.g If a change is made in fluentui_listitem and its current version is 0.0.2
+ * and fluentui_drawer' current version is 0.0.2, both fluentui_listitem and
+ * fluentui_drawer and FluentUI should increment their respective version ids
+  */
+project.ext.fluentui_core_versionid='0.0.1'
+project.ext.fluentui_listitem_versionid='0.0.1'
+project.ext.fluentui_tablayout_versionid='0.0.1'
+project.ext.fluentui_drawer_versionid='0.0.1'
+project.ext.fluentui_others_versionid='0.0.1'
+project.ext.FluentUI_versionid='0.0.12'

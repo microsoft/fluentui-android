@@ -332,7 +332,7 @@ class ListItemViewActivity : DemoActivity() {
         if (useCustomAccessoryView) {
             val customTextView = TextView(this)
             customTextView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
-            TextViewCompat.setTextAppearance(customTextView, R.style.TextAppearance_FluentUI_ListSubHeaderTitle_Tertiary)
+            TextViewCompat.setTextAppearance(customTextView, R.style.FluentUIDemo_ListItemSubHeaderTitle)
             customTextView.setOnClickListener {
                 Snackbar.make(
                     it,

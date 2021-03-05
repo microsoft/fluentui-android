@@ -12,7 +12,7 @@
 
     <com.microsoft.fluentui.tablayout.TabLayout
         android:id="@+id/demo_tab_layout"
-        style="@style/FluentUI.TabLayout"
+        style="@style/FluentUIDemo.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabType="Standard"/>

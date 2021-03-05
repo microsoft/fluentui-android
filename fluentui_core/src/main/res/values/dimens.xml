@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- List SubHeader Base Divider -->
+    <dimen name="fluentui_list_sub_header_divider_padding">8dp</dimen>
+    <!--Shared-->
+    <dimen name="fluentui_divider_height">.5dp</dimen>
+    <dimen name="fluentui_corner_radius_2">2dp</dimen>
+    <dimen name="fluentui_corner_radius_4">4dp</dimen>
+    <dimen name="fluentui_corner_radius_8">8dp</dimen>
+    <dimen name="fluentui_min_touch_size">48dp</dimen>
+    <dimen name="fluentui_content_inset">16dp</dimen>
+</resources>

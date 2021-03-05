@@ -40,6 +40,13 @@
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/toggle_sheet_content" />
 
+        <Button
+            android:id="@+id/set_one_line_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/one_line_content" />
+
     </LinearLayout>
 
     <com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
