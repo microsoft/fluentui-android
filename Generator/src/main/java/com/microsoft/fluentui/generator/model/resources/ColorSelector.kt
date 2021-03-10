@@ -44,7 +44,7 @@ private val selectorKeys = listOf("rest", "hover", "pressed", "selected", "disab
 fun isColorSelector(node: Any): Boolean {
     var isSelector = false
     if (node is ArrayList<*>) {
-        if (node.size == 5) {
+        // if (node.size == 5) { check not needed as the color selector can miss few of the states
             isSelector = true
             node.forEach {
                 if (it is LinkedHashMap<*, *>) {
@@ -54,7 +54,7 @@ fun isColorSelector(node: Any): Boolean {
                         isSelector = false
                 }
             }
-        }
+        //}
     }
     return isSelector
 }

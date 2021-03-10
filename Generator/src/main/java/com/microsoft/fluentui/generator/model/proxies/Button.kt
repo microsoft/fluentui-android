@@ -36,10 +36,10 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
                 // Generate background shapes
                 mutableMapOf<ShapeKeys, String>().let { attributes ->
                     parameters["backgroundColor"]?.let {
-                        attributes[ShapeKeys.BACKGROUND_COLOR] = "${apNameLowerCase}_backgroundColor"
+                        attributes[ShapeKeys.BACKGROUND_COLOR] = "${apNameLowerCase}_backgroundcolor"
                     }
                     parameters["borderColor"]?.let {
-                        attributes[ShapeKeys.STROKE_COLOR] = "${apNameLowerCase}_borderColor"
+                        attributes[ShapeKeys.STROKE_COLOR] = "${apNameLowerCase}_bordercolor"
                     }
                     parameters["borderSize"]?.let {
                         attributes[ShapeKeys.STROKE_WIDTH] = "${apNameLowerCase}_borderSize_${apStyle}"
@@ -72,8 +72,17 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
             listOf("small", "medium", "large").forEach { apStyle ->
                 // Generate background shapes
                 mutableMapOf<StyleKeys, String>().let { attributes ->
-                    parameters["padding"]?.let {
-                        attributes[StyleKeys.PADDING] = "@dimen/${name}_padding_${apStyle}"
+                    parameters["paddingHorizontal"]?.let {
+                        attributes[StyleKeys.PADDING_START] = "@dimen/${name}_paddingHorizontal_${apStyle}"
+                    }
+                    parameters["paddingHorizontal"]?.let {
+                        attributes[StyleKeys.PADDING_END] = "@dimen/${name}_paddingHorizontal_${apStyle}"
+                    }
+                    parameters["paddingVertical"]?.let {
+                        attributes[StyleKeys.PADDING_TOP] = "@dimen/${name}_paddingVertical_${apStyle}"
+                    }
+                    parameters["paddingVertical"]?.let {
+                        attributes[StyleKeys.PADDING_BOTTOM] = "@dimen/${name}_paddingVertical_${apStyle}"
                     }
                     parameters["backgroundColor"]?.let {
                         attributes[StyleKeys.BACKGROUND] = "@drawable/${name}_${apStyle}background"
@@ -84,6 +93,8 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
                     parameters["textFont"]?.let {
                         attributes[StyleKeys.TEXT_APPEARANCE] = "@style/${name}_textFont_${apStyle}"
                     }
+                    attributes[StyleKeys.MIN_HEIGHT] = "0dp"
+                    attributes[StyleKeys.MIN_WIDTH] = "0dp"
 
                     styles.add(
                             Style(

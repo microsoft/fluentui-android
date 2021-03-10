@@ -10,8 +10,7 @@ val appearanceProxies = listOf(
     Button(Button.Type.Default()),
     Button(Button.Type.Primary()),
     Button(Button.Type.Secondary()),
-    Button(Button.Type.Ghost()),
-    Avatar()
+    Button(Button.Type.Ghost())
 )
 
 val resourceOnlyAppearanceProxies = listOf<String>()

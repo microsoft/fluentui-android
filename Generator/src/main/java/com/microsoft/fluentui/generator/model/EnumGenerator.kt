@@ -5,7 +5,7 @@ import com.microsoft.fluentui.generator.model.resources.ResourceType
 import com.microsoft.fluentui.generator.model.resources.STRING_PATTERN
 import java.util.*
 
-private const val ENUM_PATTERN = "^EnumDef\\(.*\\)\$"
+const val ENUM_PATTERN = "^EnumDef\\(.*\\)\$"
 private const val MASK_PATTERN = "^OptionDef\\(.*\\)\$"
 
 class EnumGenerator : ResourceGenerator("enums") {

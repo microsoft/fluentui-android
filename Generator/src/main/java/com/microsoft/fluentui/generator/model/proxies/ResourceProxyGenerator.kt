@@ -3,6 +3,7 @@ package com.microsoft.fluentui.generator.model.proxies
 import com.microsoft.fluentui.generator.global_projectSourcePath
 import com.microsoft.fluentui.generator.model.resources.Resource
 import com.microsoft.fluentui.generator.model.resources.generateComponentProxyFile
+import com.microsoft.fluentui.generator.model.resources.generateProxyFile
 import com.microsoft.fluentui.generator.model.resources.parseResourceCodeWrapper
 
 
@@ -24,5 +25,9 @@ class ResourceProxyGenerator(
         parameters.forEach { parseResourceCodeWrapper(resourceList, it.key, it.value) }
         val resourceProxyPath = "$baseResourceProxyPath$stylesheetName" +"Proxy.kt"
         generateComponentProxyFile(resourceProxyPath, stylesheetName, viewName, resourceList, parentName, parentParameters)
+        if(parentName == null){
+            val resourceTokenSystemPath = "$baseResourceProxyPath$stylesheetName" +"System.kt"
+            generateProxyFile(resourceTokenSystemPath, stylesheetName, viewName, parameters)
+        }
     }
 }

@@ -128,6 +128,8 @@ fun String.isValidMetricRef() = startsWith("\$Metric")
         || startsWith("\$Spacing")
         || startsWith("\$Border")
         || startsWith("\$Icon")
+        || startsWith("\$Shadow")
+        || startsWith("\$Opacity")
 fun String.isValidEnum() = startsWith("Enum(")
 fun String.isValidMask() = startsWith("Option(")
 fun String.isValidTimingFunction() = startsWith("TimingFunction(")
@@ -142,6 +144,11 @@ fun String.isValidProgrammaticDimension() = startsWith("R.dimen.")
 
 fun printWarning(message: String) { println("WARNING: $message"); global_warningsCount++ }
 fun printError(message: String) { println("ERROR: $message"); global_errorsCount++ }
+
+fun String.camelize() =
+    this[0].toLowerCase()+this.substring(1,this.length)
+fun String.capitalFirst() =
+        this[0].toUpperCase()+this.substring(1,this.length)
 
 fun String.enumClassName() =
     this.substringAfterLast(".")

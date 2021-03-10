@@ -37,7 +37,7 @@ class FluentUIDocument: LinkedHashMap<String, LinkedHashMap<String, Any>>() {
                         apRawName
                     }
                     TypographyGenerator(
-                        apName.plus("_typography").toLowerCase(Locale.ENGLISH)
+                        apName.plus("view_typography").toLowerCase(Locale.ENGLISH)
                     ).also {
                         generatorsList.add(it)
                         it.parse(rootKey, rootValues)

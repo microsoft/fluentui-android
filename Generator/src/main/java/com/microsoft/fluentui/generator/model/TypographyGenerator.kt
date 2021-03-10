@@ -6,18 +6,19 @@ import java.util.*
 private const val TEXT_STYLES_KEY = "textStyles"
 
 // FIXME: Update font styles for fluent.
-enum class TextStyles(val fontWeight: String, val fontSize: Int) {
-    LARGE_TITLE("normal", 34),
-    TITLE1("normal", 28),
-    TITLE2("normal", 22),
-    TITLE3("normal", 20),
-    HEADLINE("bold", 20),
-    SUBHEADLINE("semibold", 14),
-    BODY("normal", 14),
-    CALLOUT("normal", 14),
-    FOOTNOTE("normal", 12),
-    CAPTION1("normal", 12),
-    CAPTION2("normal", 11);
+enum class TextStyles(val fontWeight: Int, val fontSize: Int, val fontFamily: String) {
+    DISPLAY(400,60,"sans-serif"),
+    LARGE_TITLE(400, 34, "sans-serif"),
+    TITLE1(400, 24,"sans-serif"),
+    TITLE2(500, 20,"sans-serif-medium"),
+    TITLE3(500, 18,"sans-serif-medium"),
+    BODY1(400, 16,"sans-serif"),
+    BODY1_STRONG(500, 16,"sans-serif-medium"),
+    BODY2(400, 14,"sans-serif"),
+    BODY2_STRONG(500, 14,"sans-serif-medium"),
+    CAPTION1(400, 13, "sans-serif"),
+    CAPTION1_STRONG(500, 13, "sans-serif-medium"),
+    CAPTION2(400, 12,"sans-serif");
 
     companion object {
         fun getStyleByName(name: String): TextStyles? = valueOf(name.toUpperCase())
@@ -62,10 +63,8 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
                                             val stylesKeys = mutableMapOf<StyleKeys, String>()
                                             stylesKeys[StyleKeys.TEXT_SIZE] =
                                                 "@dimen/font_size_${fontDefinition.key}"
-                                            stylesKeys[StyleKeys.TEXT_STYLE] = convertTextStyle(
-                                                TextStyles.getStyleByName(fontDefinition.key.toString())?.fontWeight
-                                                    ?: "normal"
-                                            )
+                                            stylesKeys[StyleKeys.FONT_FAMILY] = "\"${TextStyles.getStyleByName(fontDefinition.key.toString())?.fontFamily}\""
+                                            stylesKeys[StyleKeys.FONT_WEIGHT] = "${TextStyles.getStyleByName(fontDefinition.key.toString())?.fontWeight}"
                                             stylesList.add(
                                                 Style(
                                                     "${name}_${entry.key}_${fontDefinition.key}".decapitalize(),
@@ -101,9 +100,9 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
                         if (Regex(FONT_PATTERN).matches(value.toString())) {
                             val stylesKeys = mutableMapOf<StyleKeys, String>()
                             stylesKeys[StyleKeys.TEXT_SIZE] = "@dimen/font_size_${entry.key}"
-                            stylesKeys[StyleKeys.TEXT_STYLE] = convertTextStyle(
-                                TextStyles.getStyleByName(entry.key)?.fontWeight ?: "normal"
-                            )
+                            stylesKeys[StyleKeys.FONT_FAMILY] =
+                                "\"${TextStyles.getStyleByName(entry.key)?.fontFamily}\""
+                            stylesKeys[StyleKeys.FONT_WEIGHT] = "${TextStyles.getStyleByName(entry.key)?.fontWeight}"
                             stylesList.add(
                                 Style(
                                     "${name}_${entry.key}".decapitalize(),
@@ -117,6 +116,7 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
             }
             if (stylesList.isNotEmpty()) {
                 generateStyles(name, stylesList)
+                generateStyles(name,stylesList,true)
             }
         }
     }

@@ -77,35 +77,4 @@
     <color name="fluentui_action_bar_indicator_background">@color/fluentui_communication_tint_20</color>
     <color name="fluentui_action_bar_carousel_background">@color/fluentui_communication_blue</color>
 
-    <!-- TODO Hard coded colors to support NamedColor references in yml stylesheets. -->
-        <color name="fluent_presenceavailable">#000000</color>
-        <color name="fluent_presenceaway">#000000</color>
-        <color name="fluent_presenceblocked">#000000</color>
-        <color name="fluent_presencebusy">#000000</color>
-        <color name="fluent_presencednd">#000000</color>
-        <color name="fluent_presenceoffline">#000000</color>
-        <color name="fluent_presenceoof">#000000</color>
-        <color name="fluent_presenceunknown">#000000</color>
-        <color name="fluent_cyanblue10">#000000</color>
-        <color name="fluent_cyanblue20">#000000</color>
-        <color name="fluent_red10">#000000</color>
-        <color name="fluent_red20">#000000</color>
-        <color name="fluent_magenta10">#000000</color>
-        <color name="fluent_magenta20">#000000</color>
-        <color name="fluent_green10">#000000</color>
-        <color name="fluent_green20">#000000</color>
-        <color name="fluent_magentapink10">#000000</color>
-        <color name="fluent_orange20">#000000</color>
-        <color name="fluent_orange30">#000000</color>
-        <color name="fluent_cyan20">#000000</color>
-        <color name="fluent_cyan30">#000000</color>
-        <color name="fluent_orangeyellow20">#000000</color>
-        <color name="fluent_blue10">#000000</color>
-        <color name="fluent_gray20">#000000</color>
-        <color name="fluent_gray30">#000000</color>
-        <color name="fluent_gray40">#000000</color>
-        <color name="fluent_bluemagenta20">#000000</color>
-        <color name="fluent_bluemagenta30">#000000</color>
-        <color name="fluent_pinkred10">#000000</color>
-
 </resources>
