@@ -101,6 +101,7 @@ bintray {
     pkg {
         repo = 'generic'
         name = 'fluentui_listitem'
+        override = true
         version {
             name = android.defaultConfig.versionName
             vcsTag = android.defaultConfig.versionName

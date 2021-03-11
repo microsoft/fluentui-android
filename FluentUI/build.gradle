@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 13
+        versionCode 14
         versionName project.ext.FluentUI_versionid
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -97,6 +97,7 @@ bintray {
     key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
     publications = ['FluentUI']
     publish = true
+    override = true
     pkg {
         repo = 'generic'
         name = 'fluentui-android'
