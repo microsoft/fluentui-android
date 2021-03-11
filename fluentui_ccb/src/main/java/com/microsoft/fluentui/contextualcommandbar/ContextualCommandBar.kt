@@ -24,10 +24,10 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.isVisible
 
 class ContextualCommandBar @JvmOverloads constructor(
-        context: Context,
+        appContext: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
-) : FrameLayout(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ContextualCommandBar), attrs, defStyleAttr) {
+) : FrameLayout(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_ContextualCommandBar), attrs, defStyleAttr) {
 
     private var dismissButtonContainer: ViewGroup? = null
     private var commandItemAdapter: CommandItemAdapter
@@ -44,7 +44,7 @@ class ContextualCommandBar @JvmOverloads constructor(
         var groupSpace = resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
         var itemSpace = resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
         attrs?.let {
-            val styledAttributes = context.theme.obtainStyledAttributes(
+            val styledAttributes = appContext.theme.obtainStyledAttributes(
                     it,
                     R.styleable.ContextualCommandBar,
                     0,
@@ -68,8 +68,8 @@ class ContextualCommandBar @JvmOverloads constructor(
         commandItemAdapter = CommandItemAdapter(
                 CommandItemAdapter.CommandListOptions(groupSpace, itemSpace)
         )
-        commandItemRecyclerView = RecyclerView(this.context).apply {
-            layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+        commandItemRecyclerView = RecyclerView(context).apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             adapter = commandItemAdapter
             overScrollMode = View.OVER_SCROLL_NEVER
         }
