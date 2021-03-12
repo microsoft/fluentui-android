@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 12
+        versionCode 14
         versionName project.ext.FluentUI_versionid
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -36,6 +36,7 @@ dependencies {
     implementation project(':fluentui_listitem')
     implementation project(':fluentui_drawer')
     implementation project(':fluentui_tablayout')
+    implementation project(':fluentui_ccb')
     implementation project(':fluentui_others')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.android.support:appcompat-v7:$supportVersion"
@@ -96,6 +97,7 @@ bintray {
     key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
     publications = ['FluentUI']
     publish = true
+    override = true
     pkg {
         repo = 'generic'
         name = 'fluentui-android'
