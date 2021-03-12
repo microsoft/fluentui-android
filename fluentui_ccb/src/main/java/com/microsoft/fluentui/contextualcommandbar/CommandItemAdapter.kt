@@ -12,7 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.ccb.R
 import com.microsoft.fluentui.util.isVisible
 
 internal class CommandItemAdapter(

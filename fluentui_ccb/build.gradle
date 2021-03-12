@@ -18,7 +18,7 @@ android {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
         versionCode 1
-        versionName project.ext.fluentui_listitem_versionid
+        versionName project.ext.fluentui_ccb_versionid
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -64,7 +64,7 @@ publishing {
     publications {
         FluentUI(MavenPublication) {
             groupId 'com.microsoft.fluentui'
-            artifactId "fluentui_listitem"
+            artifactId "fluentui_ccb"
             version = android.defaultConfig.versionName
             artifact(sourceJar)
             artifact(bundleReleaseAar)
@@ -98,10 +98,10 @@ bintray {
     key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
     publications = ['FluentUI']
     publish = true
+    override = true
     pkg {
         repo = 'generic'
-        name = 'fluentui_listitem'
-        override = true
+        name = 'fluentui_ccb'
         version {
             name = android.defaultConfig.versionName
             vcsTag = android.defaultConfig.versionName

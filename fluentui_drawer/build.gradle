@@ -99,6 +99,7 @@ bintray {
     key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
     publications = ['FluentUI']
     publish = true
+    override = true
     pkg {
         repo = 'generic'
         name = 'fluentui_drawer'

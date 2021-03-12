@@ -19,14 +19,15 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.FrameLayout
 import android.widget.ImageView
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.ccb.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.isVisible
 
 class ContextualCommandBar @JvmOverloads constructor(
-        context: Context,
+        appContext: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_ContextualCommandBar), attrs, defStyleAttr) {
 
     private var dismissButtonContainer: ViewGroup? = null
     private var commandItemAdapter: CommandItemAdapter
@@ -43,7 +44,7 @@ class ContextualCommandBar @JvmOverloads constructor(
         var groupSpace = resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
         var itemSpace = resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
         attrs?.let {
-            val styledAttributes = context.theme.obtainStyledAttributes(
+            val styledAttributes = appContext.theme.obtainStyledAttributes(
                     it,
                     R.styleable.ContextualCommandBar,
                     0,
