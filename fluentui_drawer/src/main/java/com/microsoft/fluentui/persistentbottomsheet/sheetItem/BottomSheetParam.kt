@@ -2,6 +2,7 @@ package com.microsoft.fluentui.persistentbottomsheet.sheetItem
 
 import android.support.annotation.ColorRes
 import android.support.annotation.StyleRes
+import android.view.View
 import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 
 /**
@@ -12,7 +13,8 @@ class BottomSheetParam {
     internal data class ContentParam(val listOfItemList: ArrayList<ItemTypeList>,
                                      val dividerHeight: Int,
                                      var listener: SheetItem.OnClickListener? = null,
-                                     var layoutResId: Int? = null) {
+                                     var layoutResId: Int? = null,
+                                     var childContent: View? = null) {
         fun add(itemTypeList: ItemTypeList) {
             listOfItemList.add(itemTypeList)
         }

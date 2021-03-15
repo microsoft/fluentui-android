@@ -15,6 +15,10 @@ internal class PersistentBottomSheetContentViewProvider(private val context: Con
             container.addView(view)
             return SheetContainerInfo(container, false)
         }
+        if (contentParam.childContent != null) {
+            container.addView(contentParam.childContent)
+            return SheetContainerInfo(container, false)
+        }
         if (contentParam.listOfItemList.isEmpty()) {
             return SheetContainerInfo(container, false)
         }
