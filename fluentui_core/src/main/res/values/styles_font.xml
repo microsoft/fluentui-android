@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- *** FluentUI Theme *** -->
+
+    <style name="TextAppearance.FluentUI" parent="TextAppearance.AppCompat" />
+
+    <style name="TextAppearance.FluentUI.Headline">
+        <item name="android:textSize">28sp</item>
+        <item name="android:fontFamily">"sans-serif-light"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Title1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Title2">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Heading">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.SubHeading1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.SubHeading2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Body1">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+    </style>
+</resources>

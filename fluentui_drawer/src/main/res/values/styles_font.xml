@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+
+    <style name="TextAppearance.FluentUI.PersistentBottomSheetHeading">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHeadingColor</item>
+        <item name="android:layout_marginTop">@dimen/fluentui_persistent_bottomsheet_header_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/fluentui_persistent_bottomsheet_header_marginBottom</item>
+        <item name="android:layout_marginStart">@dimen/fluentui_persistent_bottomsheet_header_content_offset</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.PersistentBottomSheet_Item">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetItemColor</item>
+    </style>
+
+    <style name="TextAppearance.FluentUI.PersistentBottomSheetHorizontalItem">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">"sans-serif"</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHorizontalItemColor</item>
+    </style>
+
+   <style name="TextAppearance.FluentUI.HorizontalListItemTitle" parent="TextAppearance.FluentUI.Body1">
+        <item name="android:textColor">?attr/fluentuiHorizontalListItemTitleColor</item>
+    </style>
+
+</resources>

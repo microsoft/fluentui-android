@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="AvatarView">
+        <attr name="avatarSize" format="enum">
+            <enum name="xsmall" value="0" />
+            <enum name="small" value="1" />
+            <enum name="medium" value="2" />
+            <enum name="large" value="3" />
+            <enum name="xlarge" value="4" />
+            <enum name="xxlarge" value="5" />
+        </attr>
+        <attr name="avatarStyle" format="enum">
+            <enum name="circle" value="0" />
+            <enum name="square" value="1" />
+        </attr>
+        <attr name="avatarBorderStyle" format="enum">
+            <enum name="no_border" value="0" />
+            <enum name="ring" value="1" />
+        </attr>
+        <attr name="name" />
+        <attr name="email" />
+        <attr name="avatarBackgroundColor" format="reference" />
+        <attr name="avatarImageDrawable" format="reference" />
+    </declare-styleable>
+</resources>

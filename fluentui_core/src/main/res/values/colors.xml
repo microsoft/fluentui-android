@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!--Deprecated: Replace these colors in your app with the new semantic theme attributes or the "Neutral Colors" below.-->
+    <!--<color name="fluentui_light_gray">@color/fluentui_gray_300</color>-->
+    <!--<color name="fluentui_gray">@color/fluentui_gray_400</color>-->
+    <!--<color name="fluentui_dark_gray">@color/fluentui_gray_500</color>-->
+    <!--<color name="fluentui_background_gray">@color/fluentui_gray_50</color>-->
+    <!--<color name="fluentui_background_light_gray">@color/fluentui_gray_25</color>-->
+    <!--<color name="fluentui_border_gray">@color/fluentui_gray_200</color>-->
+    <!--<color name="fluentui_border_light_gray">@color/fluentui_gray_100</color>-->
+
+    <!-- *** Physical Colors *** -->
+
+    <!--Communication Colors-->
+    <color name="fluentui_communication_shade_30">#004578</color>
+    <color name="fluentui_communication_shade_20">#005A9E</color>
+    <color name="fluentui_communication_shade_10">#106EBE</color>
+    <color name="fluentui_communication_blue">#0078D4</color>
+    <color name="fluentui_communication_tint_20">#C7E0F4</color>
+    <color name="fluentui_communication_tint_30">#DEECF9</color>
+    <color name="fluentui_communication_tint_40">#EFF6FC</color>
+
+    <!--Neutral Colors-->
+    <color name="fluentui_black">#000000</color>
+    <color name="fluentui_gray_950">#141414</color>
+    <color name="fluentui_gray_900">#212121</color>
+    <color name="fluentui_gray_800">#292929</color>
+    <color name="fluentui_gray_700">#303030</color>
+    <color name="fluentui_gray_600">#404040</color>
+    <color name="fluentui_gray_500">#6E6E6E</color>
+    <color name="fluentui_gray_400">#919191</color>
+    <color name="fluentui_gray_300">#ACACAC</color>
+    <color name="fluentui_gray_200">#C8C8C8</color>
+    <color name="fluentui_gray_100">#E1E1E1</color>
+    <color name="fluentui_gray_56">#777777</color>
+    <color name="fluentui_gray_50">#F1F1F1</color>
+    <color name="fluentui_gray_25">#F8F8F8</color>
+    <color name="fluentui_white">#FFFFFF</color>
+
+    <!-- *** Semantic Colors *** -->
+    <color name="fluentui_transparent">#00000000</color>
+</resources>

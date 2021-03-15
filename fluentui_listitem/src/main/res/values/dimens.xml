@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--ListItem-->
+    <dimen name="fluentui_list_item_min_height">48dp</dimen>
+    <dimen name="fluentui_list_item_text_area_inset_custom_view">72dp</dimen>
+    <dimen name="fluentui_list_item_text_area_inset_custom_view_large_header">96dp</dimen>
+    <!--ListItem Custom view sizes-->
+    <dimen name="fluentui_list_item_custom_view_size_small">24dp</dimen>
+    <dimen name="fluentui_list_item_custom_view_size_medium">40dp</dimen>
+    <dimen name="fluentui_list_item_custom_view_size_large">64dp</dimen>
+    <!--List item margins and spacing-->
+    <dimen name="fluentui_list_item_vertical_margin_text_one_line">13dp</dimen>
+    <dimen name="fluentui_list_item_vertical_margin_text_two_line">15dp</dimen>
+    <dimen name="fluentui_list_item_vertical_margin_text_two_line_compact">11dp</dimen>
+    <dimen name="fluentui_list_item_vertical_margin_text_three_line">14dp</dimen>
+    <dimen name="fluentui_list_item_vertical_margin_large_header">12dp</dimen>
+    <dimen name="fluentui_list_item_vertical_margin_custom_view_minimum">8dp</dimen>
+    <dimen name="fluentui_list_item_horizontal_margin_regular">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_list_item_margin_end_custom_view_small">16dp</dimen>
+    <dimen name="fluentui_list_item_text_vertical_spacing">2dp</dimen>
+    <dimen name="fluentui_list_item_spacing">16dp</dimen>
+    <dimen name="fluentui_list_item_horizontal_spacing_custom_accessory_view_start">8dp</dimen>
+
+    <!--ListSubHeader-->
+    <dimen name="fluentui_list_sub_header_height">48dp</dimen>
+</resources>

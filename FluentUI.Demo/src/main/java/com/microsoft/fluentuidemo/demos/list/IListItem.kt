@@ -27,6 +27,7 @@ interface IListItem : IBaseListItem {
     var customView: View?
     var customViewSize: ListItemView.CustomViewSize
     var customAccessoryView: View?
+    var customSecondarySubtitleView: View?
 
     var layoutDensity: ListItemView.LayoutDensity
 }
@@ -46,6 +47,7 @@ data class ListItem(override var title: String = "") : IListItem {
     override var customView: View? = null
     override var customViewSize: ListItemView.CustomViewSize = ListItemView.DEFAULT_CUSTOM_VIEW_SIZE
     override var customAccessoryView: View? = null
+    override var customSecondarySubtitleView: View? = null
 
     override var layoutDensity: ListItemView.LayoutDensity = ListItemView.DEFAULT_LAYOUT_DENSITY
 }

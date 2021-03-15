@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <style name="Base.Theme.FluentUI.Internal" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="colorPrimary">@color/fluentui_communication_blue</item>
+    <item name="colorPrimaryDark">@color/fluentui_communication_shade_20</item>
+    <item name="colorAccent">@color/fluentui_communication_blue</item>
+    <item name="android:textColorPrimary">@color/fluentui_gray_900</item>
+
+
+    <!-- *** Theme Semantic Colors *** -->
+
+    <item name="fluentuiColorPrimaryDarker">@color/fluentui_communication_shade_30</item>
+    <item name="fluentuiColorPrimaryLight">@color/fluentui_communication_tint_20</item>
+    <item name="fluentuiColorPrimaryLighter">@color/fluentui_communication_tint_40</item>
+
+    <!-- *** Base Semantic Colors *** -->
+
+    <!--Backgrounds-->
+    <item name="fluentuiBackgroundColor">@color/fluentui_white</item>
+    <item name="fluentuiBackgroundPressedColor">@color/fluentui_gray_100</item>
+    <item name="fluentuiBackgroundPrimaryColor">?attr/colorPrimary</item>
+    <item name="fluentuiBackgroundSecondaryColor">@color/fluentui_gray_900</item>
+    <item name="fluentuiBackgroundSecondaryPressedColor">@color/fluentui_gray_500</item>
+
+    <!--Backgrounds, Transparent-->
+    <item name="fluentuiBackgroundSecondary20Color">#33000000</item>
+
+    <!--Foregrounds-->
+    <item name="fluentuiForegroundColor">@color/fluentui_gray_900</item>
+    <item name="fluentuiForegroundSelectedColor">?attr/colorPrimary</item>
+    <item name="fluentuiForegroundSecondaryColor">@color/fluentui_gray_500</item>
+    <item name="fluentuiForegroundSecondaryIconColor">@color/fluentui_gray_400</item>
+    <item name="fluentuiForegroundOnPrimaryColor">@color/fluentui_white</item>
+    <item name="fluentuiForegroundOnSecondaryColor">@color/fluentui_white</item>
+    <item name="fluentuiDividerColor">@color/fluentui_gray_100</item>
+
+    <!--Foregrounds, Transparent-->
+    <item name="fluentuiForegroundOnPrimary80Color">#CCFFFFFF</item>
+    <item name="fluentuiForegroundOnPrimary70Color">#B3FFFFFF</item>
+    </style>
+
+    <!--
+      All light theme semantic colors should be defined in the base theme as the default.
+      Dark theme specific semantic colors should be defined in "themes.xml (night)".
+     -->
+    <style name="Base.Theme.FluentUI" parent="Base.Theme.FluentUI.Internal"/>
+
+    <!--
+        This theme overlay targets only the attributes needed for a neutral AppBarLayout with a white background.
+        Use as the theme attribute in an AppBarLayout or in a ContextThemeWrapper for AppBarLayout, Searchbar, or Toolbar.
+    -->
+    <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent=""/>
+
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- persistent bottom sheet number of icons in row-->
+    <integer name="fluentui_persistent_bottomsheet_max_item_row">7</integer>
+</resources>

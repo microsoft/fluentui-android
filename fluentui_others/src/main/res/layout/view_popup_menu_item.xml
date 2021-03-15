@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_menu_item_ripple_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/fluentui_popup_menu_item_min_height"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/fluentui_popup_menu_item_margin_horizontal"
+        android:paddingEnd="@dimen/fluentui_popup_menu_item_margin_horizontal">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/fluentui_popup_menu_item_icon_size"
+            android:layout_height="@dimen/fluentui_popup_menu_item_icon_size"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/fluentui_popup_menu_item_margin_horizontal"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance.FluentUI.PopupMenuTitle" />
+
+        <RadioButton
+            android:id="@+id/radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/fluentui_popup_menu_item_margin_horizontal"
+            android:background="@drawable/popup_menu_item_check_background"
+            android:importantForAccessibility="no"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/check_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/fluentui_popup_menu_item_margin_horizontal"
+            android:background="@drawable/popup_menu_item_check_background"
+            android:importantForAccessibility="no"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fluentui_divider_height"
+        android:background="@drawable/ms_row_divider"
+        android:visibility="gone"/>
+
+</LinearLayout>
