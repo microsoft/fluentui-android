@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--SheetBehavior Address-->
+    <string name="side_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.SideSheetBehavior</string>
+    <string name="top_sheet_behavior" translatablet="false" translatable="false">com.microsoft.fluentui.drawer.TopSheetBehavior</string>
+</resources>

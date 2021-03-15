@@ -51,6 +51,13 @@
     <string name="avatar_size_small">Small</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
+    <!--AvatarGroupView-->
+    <string name="avatar_group_max_displayed_avatar">Max Displayed Avatar</string>
+    <string name="avatar_group_face_stack">Face Stack</string>
+    <string name="avatar_group_face_pile">Face Pile</string>
+    <string name="avatar_group_overflow_clicked">Overflow clicked</string>
+    <string name="avatar_group_avatar_clicked">AvatarView at index %d clicked</string>
+
     <!--BottomNavigation-->
     <string name="bottom_navigation_menu_item_photos">Photos</string>
     <string name="bottom_navigation_menu_item_news">News</string>
@@ -70,6 +77,36 @@
     <string name="bottom_sheet_with_single_line_header">Show with single line header</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Show with double line header and dividers</string>
     <string name="bottom_sheet_dialog_button">Show</string>
+
+    <!--ContextualCommandBar-->
+    <string name="contextual_command_bar_style_default">Default</string>
+    <string name="contextual_command_bar_style_with_dismiss_button">With dismiss</string>
+    <string name="contextual_command_bar_style_with_dismiss_button_rtl">With dismiss RTL</string>
+    <string name="contextual_command_prompt_click_item">Click %s</string>
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_insert_item">Insert Item</string>
+    <string name="contextual_command_update_item">Update Item</string>
+    <string name="contextual_command_accessibility_dismiss">Dismiss</string>
+    <string name="contextual_command_accessibility_add">Add</string>
+    <string name="contextual_command_accessibility_mention">Mention</string>
+    <string name="contextual_command_accessibility_bold">Bold</string>
+    <string name="contextual_command_accessibility_italic">Italic</string>
+    <string name="contextual_command_accessibility_underline">Underline</string>
+    <string name="contextual_command_accessibility_strikethrough">Strikethrough</string>
+    <string name="contextual_command_accessibility_undo">Undo</string>
+    <string name="contextual_command_accessibility_redo">Redo</string>
+    <string name="contextual_command_accessibility_bullet">Bullet</string>
+    <string name="contextual_command_accessibility_list">List</string>
+    <string name="contextual_command_accessibility_link">Link</string>
+    <string name="contextual_command_bar_item_update_title">Item Updating</string>
+    <string name="contextual_command_bar_space_title">Spacing</string>
+    <string name="contextual_command_bar_dismiss_position">Dismiss Position</string>
+    <string name="contextual_command_bar_dismiss_position_start">START</string>
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_group_space_title">Group space</string>
+    <string name="contextual_command_bar_item_space_title">Item space</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
     <!--Single line items-->
     <string name="bottom_sheet_item_flag_title">Flag</string>
     <string name="bottom_sheet_item_flag_toast">Flag item clicked</string>
@@ -162,10 +199,12 @@
     <!--ListItem-->
     <string name="list_item_title">Title, primary text</string>
     <string name="list_item_subtitle">Subtitle, secondary text</string>
+    <string name="list_item_secondary_subtitle">Custom subtitle text</string>
     <string name="list_item_footer">Footer, tertiary text</string>
     <string name="list_item_sub_header_single_line">Single-line list with gray sub header text</string>
     <string name="list_item_sub_header_two_line">Two-line list</string>
     <string name="list_item_sub_header_two_line_dense">Two-line list with dense spacing</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Two line list with custom secondary subtitle view</string>
     <string name="list_item_sub_header_three_line">Three-line list with black sub header text</string>
     <string name="list_item_sub_header_no_custom_views">List items with no custom views</string>
     <string name="list_item_sub_header_large_header">List items with large custom views</string>
@@ -206,6 +245,7 @@
     <string name="new_view">This is New View</string>
     <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
     <string name="switch_to_custom_content">Switch to custom Content</string>
+    <string name="one_line_content">One Line Bottomsheet Content</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>
@@ -299,6 +339,8 @@
     <string name="popup_menu_item_invite_people">Invite people</string>
     <string name="popup_menu_item_refresh_page">Refresh page</string>
     <string name="popup_menu_item_open_in_browser">Open in browser</string>
+    <string name="popup_menu_item_multiline">This is a multiline Popup Menu. Max lines are set to two, the rest of the text will truncate.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="popup_menu_item_all_news">All news</string>
     <string name="popup_menu_item_saved_news">Saved news</string>
     <string name="popup_menu_item_news_from_sites">News from sites</string>
@@ -307,6 +349,7 @@
     <string name="popup_menu_item_notify_inactive">Notify when inactive on desktop</string>
     <string name="popup_menu_item_clicked">You clicked on the item:</string>
     <string name="popup_menu_simple">Simple menu</string>
+    <string name="popup_menu_simple_duo">Simple menu2</string>
     <string name="popup_menu_single_check">Menu with one selectable item and a divider</string>
     <string name="popup_menu_all_check">Menu with all selectable items, icons, and long text</string>
     <string name="popup_menu_show">Show</string>

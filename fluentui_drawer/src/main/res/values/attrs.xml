@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--BottomSheet-->
+    <attr name="fluentuiBottomSheetBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiBottomSheetBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiBottomSheetIconColor" format="reference|color"/>
+    <attr name="fluentuiBottomSheetDividerColor" format="reference|color"/>
+    <!--Drawer-->
+    <attr name="fluentuiDrawerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiDrawerHandleColor" format="reference|color"/>
+
+
+    <!--Persistent bottomsheet-->
+    <attr name="fluentuiPersistentBottomSheetHeadingColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetItemColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetHorizontalItemColor" format="reference|color"/>
+
+    <!-- Bottomsheet Horizontal ListItem -->
+    <attr name="fluentuiHorizontalListItemTitleColor" format="reference|color"/>
+
+    <!-- SheetBehavior-->
+    <declare-styleable name="SheetBehaviorLayout">
+        <attr format="string" name="behaviorType"/>
+        <attr format="dimension" name="behaviorPeekHeight"/>
+        <attr format="dimension" name="behaviorPeekWidth" />
+        <attr format="boolean" name="behaviorHideable"/>
+        <attr format="boolean" name="behaviorSkipCollapsed"/>
+        <attr format="boolean" name="behaviorFitToContents"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--NumberPicker-->
+    <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">3</integer>
+
+</resources>

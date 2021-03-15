@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- TabLayout -->
+    <dimen name="fluentui_tab_height">48dp</dimen>
+    <dimen name="fluentui_tab_padding_horizontal">16dp</dimen>
+    <dimen name="fluentui_tab_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_tab_content_start">32dp</dimen>
+    <dimen name="fluentui_tab_radius">20dp</dimen>
+    <dimen name="fluentui_tab_indicator_height">0dp</dimen>
+    <dimen name="fluentui_tab_margin">8dp</dimen>
+</resources>

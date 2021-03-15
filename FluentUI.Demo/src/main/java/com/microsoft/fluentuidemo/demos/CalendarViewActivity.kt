@@ -6,8 +6,10 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.View.TEXT_ALIGNMENT_TEXT_START
 import com.microsoft.fluentui.calendar.OnDateSelectedListener
 import com.microsoft.fluentui.util.DateStringUtils
+import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_calendar_view.*
@@ -30,6 +32,9 @@ class CalendarViewActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if (DuoSupportUtils.isDualScreenMode(this)) {
+            example_date_title.textAlignment = TEXT_ALIGNMENT_TEXT_START
+        }
         calendar_view.onDateSelectedListener = object : OnDateSelectedListener {
             override fun onDateSelected(date: ZonedDateTime) {
                 setExampleDate(date)

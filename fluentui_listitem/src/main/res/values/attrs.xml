@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--ListItemView-->
+    <attr name="fluentuiListItemBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiListItemTitleColor" format="reference|color"/>
+    <attr name="fluentuiListItemSubtitleColor" format="reference|color"/>
+    <attr name="fluentuiListItemSubtitleLargeHeaderColor" format="reference|color"/>
+    <attr name="fluentuiListItemFooterColor" format="reference|color"/>
+    <attr name="fluentuiListItemRippleColor" format="reference|color"/>
+
+    <!--ListSubHeader-->
+    <attr name="fluentuiListSubHeaderTitlePrimaryColor" format="reference|color"/>
+    <attr name="fluentuiListSubHeaderTitleSecondaryColor" format="reference|color"/>
+    <attr name="fluentuiListSubHeaderTitleTertiaryColor" format="reference|color"/>
+</resources>
