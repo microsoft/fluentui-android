@@ -83,7 +83,8 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            persistent_bottom_sheet_outlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, (slideOffset * FADE_OUT_THRESHOLD).toInt()))
+            val colorOffset = slideOffset.coerceIn(0f,255f)
+            persistent_bottom_sheet_outlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, (colorOffset * FADE_OUT_THRESHOLD).toInt()))
         }
 
     }
@@ -95,6 +96,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheet = findViewInTemplateById(R.id.persistent_bottom_sheet)!!
         persistentSheetContainer = findViewInTemplateById(R.id.persistent_sheet_container)!!
         persistentSheetBehavior = BottomSheetBehavior.from(persistentSheet)
+        persistentSheetBehavior.isHideable = true
         persistentSheetBehavior.setBottomSheetCallback(persistentSheetCallback)
         persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
 
@@ -222,10 +224,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             changePeekHeight(-childHeight)
     }
 
+    @Deprecated("use hide() method instead")
     fun hidePersistentSheet() {
         changePeekHeight(-persistentSheetBehavior.peekHeight)
     }
 
+    @Deprecated("use show() method instead")
     fun showPersistentSheet() {
         changePeekHeight(-persistentSheetBehavior.peekHeight + itemLayoutParam.defaultPeekHeight)
     }
@@ -236,6 +240,18 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun expand() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+    }
+
+    fun hide(){
+        persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+    }
+
+    fun show(expanded: Boolean = false) {
+        if (expanded) {
+            persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        } else {
+            persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
     }
 
     fun getPeekHeight(): Int {
@@ -324,6 +340,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         fun setCustomSheetContent(@LayoutRes layoutResId: Int): DefaultContentBuilder {
             contentParam.listOfItemList.clear()
             contentParam.layoutResId = layoutResId
+            return this
+        }
+
+        fun setCustomSheetContent(child: View): DefaultContentBuilder {
+            contentParam.listOfItemList.clear()
+            contentParam.childContent = child
             return this
         }
 
