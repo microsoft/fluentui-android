@@ -26,6 +26,7 @@ class FluentUITest {
     @Test
     fun `Flavors folder structure`() {
         testFlavors(listOf("main"))
+        // FIXME test for different modules as we consume modularization
         testFlavors(listOf("main", "skype", "teams"))
     }
 

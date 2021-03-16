@@ -590,12 +590,28 @@ fun parseResource(resourceList: MutableList<Resource>, resKey: String, values: A
                     values.forEachIndexed { i, v ->
                         parseResource(arrayResources, resKey, v, i)
                     }
-
+                    val nightResources:MutableList<Resource> = mutableListOf()
+                    val lightResources: MutableList<Resource> = mutableListOf()
+                    for( resources in arrayResources) {
+                        if (resources.forNightTheme) {
+                            nightResources.add(resources)
+                        }
+                        else {
+                            lightResources.add(resources)
+                        }
+                    }
                     resourceList.add(Resource(
                         resKey,
                         "",
                         ResourceType.TYPED_ARRAY,
-                        arrayResources
+                        lightResources
+                    ))
+                    resourceList.add(Resource(
+                            resKey,
+                            "",
+                            ResourceType.TYPED_ARRAY,
+                            nightResources,
+                            true
                     ))
                 } else {
                     values.forEach { v -> parseResource(resourceList, resKey, v) }

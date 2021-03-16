@@ -44,17 +44,15 @@ private val selectorKeys = listOf("rest", "hover", "pressed", "selected", "disab
 fun isColorSelector(node: Any): Boolean {
     var isSelector = false
     if (node is ArrayList<*>) {
-        // if (node.size == 5) { check not needed as the color selector can miss few of the states
-            isSelector = true
-            node.forEach {
-                if (it is LinkedHashMap<*, *>) {
-                    if (!selectorKeys.contains(it.keys.single()) ||
+        isSelector = true
+        node.forEach {
+            if (it is LinkedHashMap<*, *>) {
+                if (!selectorKeys.contains(it.keys.single()) ||
                         !it.values.single().toString().autoResolveReference().isValidColor()
-                    )
-                        isSelector = false
-                }
+                )
+                    isSelector = false
             }
-        //}
+        }
     }
     return isSelector
 }

@@ -13,8 +13,6 @@ var global_documentsCount = 0
 var global_resourceCount = 0
 var global_enumsCount = 0
 var global_bindingMethodsCount = 0
-var global_fontsCount = 0
-var global_iconsCount = 0
 var global_errorsCount = 0
 var global_warningsCount = 0
 
@@ -84,8 +82,6 @@ class Generator {
                     " - $global_resourceCount resource files\n" +
                     " - $global_enumsCount enums\n" +
                     " - $global_bindingMethodsCount binding methods\n" +
-                    " - $global_fontsCount font files\n" +
-                    " - $global_iconsCount icons\n" +
                     " - $global_errorsCount errors\n" +
                     " - $global_warningsCount warnings\n"
         )

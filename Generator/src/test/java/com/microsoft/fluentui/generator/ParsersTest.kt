@@ -136,21 +136,45 @@ class ParsersTest {
                 )
             ), mutableListOf(), "name", "Option(OptionName.OptionValue)"
         )
+
+        testParseTypedPrimitive(
+                listOf(
+                        Resource(
+                                "name",
+                                "",
+                                ResourceType.TYPED_ARRAY,
+                                listOf(
+                                        Resource("name0",
+                                                "@color/colors_DarkRed_tint40",
+                                                ResourceType.COLOR),
+                                        Resource("name1",
+                                                "@color/colors_Cranberry_tint40",
+                                                ResourceType.COLOR)
+                                )
+                        ),
+                        Resource(
+                                "name",
+                                "",
+                                ResourceType.TYPED_ARRAY,
+                                listOf(
+                                        Resource("name0",
+                                                "@color/colors_DarkRed_shade30",
+                                                ResourceType.COLOR,
+                                                forNightTheme = true),
+                                        Resource("name1",
+                                                "@color/colors_Cranberry_shade30",
+                                                ResourceType.COLOR,
+                                                forNightTheme = true)
+                                ),
+                                true
+                        )
+                ), mutableListOf(), "name", ArrayList<String>().apply {
+            add("FluentUIColor(light: \$Colors.DarkRed.tint40, dark: \$Colors.DarkRed.shade30)")
+            add("FluentUIColor(light: \$Colors.Cranberry.tint40, dark: \$Colors.Cranberry.shade30)")
+        }
+        )
+
     }
-
-
-    @Test
-    fun `Generate initials`() {
-        Assert.assertEquals(null, generateInitials(""))
-        Assert.assertEquals("J", generateInitials("john"))
-        Assert.assertEquals("JD", generateInitials("john doe"))
-        Assert.assertEquals("JD", generateInitials("John Doe"))
-        Assert.assertEquals("JD", generateInitials("john A B doe"))
-        Assert.assertEquals("JD", generateInitials("John Doe (Software Engineer)"))
-        Assert.assertEquals("JD", generateInitials("John Doe {Software Engineer}"))
-        Assert.assertEquals("JD", generateInitials("John Doe [Software Engineer]"))
-    }
-
 
     private fun testParseTypedPrimitive(expected: List<Resource>, resourceList: MutableList<Resource>, resKey: String, values: Any?) {
         parseResource(resourceList, resKey, values)
@@ -158,16 +182,4 @@ class ParsersTest {
         if (expected.isNotEmpty()) Assert.assertTrue(resourceList.containsAll(expected))
         else Assert.assertTrue(resourceList.isEmpty())
     }
-
-    // This is annoying, the actual function is in the AvatarView template so there's no way to access it
-    // from the tests... we'll figure it out
-    private fun generateInitials(name: String?): String? = if (name != null && name.isNotBlank()) {
-        val words = name.replace("[(,{,\\[].*[),},\\]]".toRegex(), "").trim().split(" ")
-
-        when (words.size) {
-            0 -> null
-            1 -> words.first()[0]
-            else -> words.first()[0].plus(words.last()[0].toString())
-        }?.toString()!!.toUpperCase()
-    } else null
 }

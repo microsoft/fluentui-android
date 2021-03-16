@@ -155,7 +155,7 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
         }
     }
 
-    // FIXME: Fix font weights
+    // FIXME: Fix font weights when used with generic style, will be fixed with avatar
     companion object {
         fun convertTextStyle(style: String) = when (style) {
             "bold" -> "bold"
