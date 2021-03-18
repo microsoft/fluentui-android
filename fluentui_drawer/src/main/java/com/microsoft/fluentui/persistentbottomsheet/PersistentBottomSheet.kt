@@ -48,6 +48,8 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var contentViewProvider: PersistentBottomSheetContentViewProvider? = null
     private val itemLayoutParam: BottomSheetParam.ItemLayoutParam
     private var sheetItemClickListener: SheetItem.OnClickListener? = null
+    private var collapsedStateDrawerHandleContentDescription : String? = null
+    private var expandedStateDrawerHandleContentDescription : String? = null
 
     private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
     private var shouldInterceptTouch = false
@@ -80,6 +82,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                 scroll_container.smoothScrollTo(0, 0)
             }
+            setDrawerHandleContentDescription(collapsedStateDrawerHandleContentDescription,expandedStateDrawerHandleContentDescription)
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -251,6 +254,27 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         } else {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+    }
+
+
+    /**
+     * Way to set content-description can be handled in better way
+     *
+     * public api call to set content description if it changes based on states.
+     */
+    fun setDrawerHandleContentDescription(collapsedStateDescription: String?, expandedStateDescription: String?) {
+        collapsedStateDrawerHandleContentDescription = collapsedStateDescription
+        expandedStateDrawerHandleContentDescription = expandedStateDescription
+
+        var currentStateContentDescription:String? = null
+        if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
+            currentStateContentDescription =  collapsedStateDescription
+        } else if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            currentStateContentDescription =  expandedStateDescription
+        }
+        currentStateContentDescription?.apply{
+            sheet_drawer_handle.contentDescription = this
         }
     }
 
