@@ -11,9 +11,11 @@ import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewTreeObserver
+import android.widget.ScrollView
 import android.widget.TextView
 import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
@@ -21,7 +23,6 @@ import com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
 import com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemAdapter
 import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 import com.microsoft.fluentui.snackbar.Snackbar
-import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -38,7 +39,9 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
     private lateinit var persistentBottomSheetDemo: PersistentBottomSheet
     private lateinit var defaultPersistentBottomSheet: PersistentBottomSheet
+    private lateinit var defaultPersistentBottomSheetContent: View
     private lateinit var currentSheet: PersistentBottomSheet
+    private lateinit var scrollView: ScrollView
     private var isBack: Boolean = false
     private lateinit var view: TextView
     private lateinit var mHorizontalSheet: List<SheetItem>
@@ -49,11 +52,14 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         super.onCreate(savedInstanceState)
         persistentBottomSheetDemo = findViewById(R.id.demo_persistent_sheet)
         defaultPersistentBottomSheet = findViewById(R.id.default_persistent_sheet)
+        scrollView = findViewById(R.id.scroll_container)
+        defaultPersistentBottomSheetContent = LayoutInflater.from(this).inflate(R.layout.demo_persistent_sheet_content, null)
 
         PersistentBottomSheet.DefaultContentBuilder(this)
-                .setCustomSheetContent(R.layout.demo_persistent_sheet_content)
+                .setCustomSheetContent(defaultPersistentBottomSheetContent)
                 .buildWith(persistentBottomSheetDemo)
-
+        persistentBottomSheetDemo.setDrawerHandleContentDescription(getString(R.string.drawer_content_desc_collapse_state),
+                getString(R.string.drawer_content_desc_expand_state))
         mHorizontalSheet = arrayListOf(
                 SheetItem(
                         R.id.bottom_sheet_item_flag,
@@ -215,11 +221,11 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         }
 
         collapse_persistent_bottom_sheet_button.setOnClickListener {
-            if (currentSheet.getPeekHeight() == 0) {
-                currentSheet.showPersistentSheet()
+            if (currentSheet.getBottomSheetBehaviour().state == BottomSheetBehavior.STATE_HIDDEN) {
+                currentSheet.show()
                 collapse_persistent_bottom_sheet_button.text = getString(R.string.collapse_persistent_sheet_button)
             } else {
-                currentSheet.hidePersistentSheet()
+                currentSheet.hide()
                 collapse_persistent_bottom_sheet_button.text = getString(R.string.show_persistent_sheet_button)
             }
         }
@@ -250,6 +256,31 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         //initially
         currentSheet = persistentBottomSheetDemo
         set_one_line_content.visibility = View.GONE
+
+        // scroll behaviour example
+        scrollView.viewTreeObserver.addOnScrollChangedListener(ViewTreeObserver.OnScrollChangedListener {
+            val scrollY: Int = scrollView.scrollY
+            toggleBottomSheetVisibility(scrollY);
+        })
+        currentSheet.getBottomSheetBehaviour().isHideable = true
+    }
+
+    private fun toggleBottomSheetVisibility(scrollY: Int) {
+        if (scrollY > scrollView.maxScrollAmount / 2) {
+            showHideBottomSheet(false)
+        } else {
+            showHideBottomSheet(true)
+        }
+    }
+
+    private fun showHideBottomSheet(show: Boolean) {
+        if (show && currentSheet.getBottomSheetBehaviour().state == BottomSheetBehavior.STATE_HIDDEN) {
+            currentSheet.show()
+            collapse_persistent_bottom_sheet_button.text = getString(R.string.collapse_persistent_sheet_button)
+        } else if (!show) {
+            currentSheet.hide()
+            collapse_persistent_bottom_sheet_button.text = getString(R.string.show_persistent_sheet_button)
+        }
     }
 
     private fun showDefaultBottomSheet() {

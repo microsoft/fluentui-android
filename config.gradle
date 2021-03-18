@@ -14,7 +14,7 @@
 project.ext.fluentui_core_versionid='0.0.4'
 project.ext.fluentui_listitem_versionid='0.0.4'
 project.ext.fluentui_tablayout_versionid='0.0.4'
-project.ext.fluentui_drawer_versionid='0.0.4'
+project.ext.fluentui_drawer_versionid='0.0.5'
 project.ext.fluentui_ccb_versionid='0.0.4'
 project.ext.fluentui_others_versionid='0.0.4'
 project.ext.FluentUI_versionid='0.0.14'
