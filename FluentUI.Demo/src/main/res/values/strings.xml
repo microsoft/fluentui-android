@@ -77,6 +77,39 @@
     <string name="bottom_sheet_with_single_line_header">Show with single line header</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Show with double line header and dividers</string>
     <string name="bottom_sheet_dialog_button">Show</string>
+    <string name="drawer_content_desc_collapse_state">Expand</string>
+    <string name="drawer_content_desc_expand_state">Minimize</string>
+    <string name="large_scrollable_text" translatable="false" >Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+    </string>
 
     <!--ContextualCommandBar-->
     <string name="contextual_command_bar_style_default">Default</string>
@@ -240,7 +273,7 @@
 
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Expand Persistent BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent BottomSheet</string>
     <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
     <string name="new_view">This is New View</string>
     <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>

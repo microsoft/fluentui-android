@@ -111,9 +111,11 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 }
 
-class SheetItem(val id: Int, val title: String = "", @DrawableRes val drawable: Int, @ColorInt val tint: Int? = null, val bitmap: Bitmap? = null) {
+
+class SheetItem @JvmOverloads constructor(val id: Int, val title: String = "", @DrawableRes val drawable: Int, @ColorInt val tint: Int? = null, val bitmap: Bitmap? = null) {
 
     // just a  convenient constructor
+    @JvmOverloads
     constructor(id: Int, title: String = "", bitmap: Bitmap) : this(id, title, NO_ID, null, bitmap)
 
     interface OnClickListener {
