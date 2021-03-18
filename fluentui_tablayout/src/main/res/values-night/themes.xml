@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <style name="Theme.FluentUI.TabLayout" parent="Theme.FluentUI.TabLayout.Base">
+    <!--TabLayout-->
+    <item name="fluentuiTabSelectedTextColor">@color/fluentui_white</item>
+    <item name="fluentuiTabUnselectedTextColor">@color/fluentui_gray_100</item>
+    <item name="fluentuiTabLayoutContainerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+    <item name="fluentuiTabLayoutBackgroundColor">@color/fluentui_gray_950</item>
+    <item name="fluentuiTabSelectedBackgroundColor">@color/fluentui_gray_600</item>
+    </style>
+</resources>

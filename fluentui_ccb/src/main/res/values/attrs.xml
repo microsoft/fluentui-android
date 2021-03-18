@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--ContextualCommandBar-->
+    <attr name="fluentuiContextualCommandBarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarBackgroundColorPressed" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarBackgroundColorSelected" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTint" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTintDisabled" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarIconTintSelected" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarDismissBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiContextualCommandBarDismissIconTintColor" format="reference|color"/>
+</resources>

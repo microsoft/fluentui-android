@@ -79,13 +79,17 @@
     <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button" />
 
     <!--TabLayout Demo-->
-    <style name="FluentUI.TabLayout" parent="">
-        <item name="containerBackgroundColor">?attr/fluentuiTabLayoutContainerBackgroundColor</item>
-        <item name="tabsBackgroundColor">?attr/fluentuiTabLayoutBackgroundColor</item>
-        <item name="tabSelectedBackgroundColor">?attr/fluentuiTabSelectedBackgroundColor</item>
-        <item name="tabUnselectedBackgroundColor">?attr/fluentuiTabUnselectedBackgroundColor</item>
-        <item name="tabSelectedTextColor">?attr/fluentuiTabSelectedTextColor</item>
-        <item name="tabUnselectedTextColor">?attr/fluentuiTabUnselectedTextColor</item>
+    <style name="FluentUIDemo.TabLayout" parent="">
+        <item name="containerBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="tabsBackgroundColor">@color/fluentui_communication_shade_10</item>
+        <item name="tabSelectedBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="tabUnselectedBackgroundColor">@color/fluentui_communication_shade_10</item>
+        <item name="tabSelectedTextColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="tabUnselectedTextColor">?attr/fluentuiBackgroundColor</item>
+    </style>
+    <!-- ListItem Demo -->
+    <style name="FluentUIDemo.ListItemSubHeaderTitle" parent="">
+        <item name="android:textColor">?attr/fluentuiForegroundSecondaryColor</item>
     </style>
 
 </resources>

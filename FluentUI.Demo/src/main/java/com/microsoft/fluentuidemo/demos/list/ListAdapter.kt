@@ -149,6 +149,7 @@ fun ListItemView.setListItem(listItem: IListItem) {
     customView = listItem.customView
     customViewSize = listItem.customViewSize
     customAccessoryView = listItem.customAccessoryView
+    customSecondarySubtitleView = listItem.customSecondarySubtitleView
 
     layoutDensity = listItem.layoutDensity
 }
