@@ -19,6 +19,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityEvent
 import android.widget.LinearLayout
 import com.microsoft.fluentui.drawer.DrawerView
 import com.microsoft.fluentui.drawer.OnDrawerContentCreatedListener
@@ -135,14 +136,15 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             return
         }
         setDrawerHandleVisibility(View.VISIBLE)
+        setDrawerHandleContentDescription(collapsedStateDrawerHandleContentDescription, expandedStateDrawerHandleContentDescription)
         persistentSheetContainer.setPadding(persistentSheetContainer.paddingLeft,
                 0,
                 persistentSheetContainer.paddingRight,
                 persistentSheetContainer.paddingBottom)
         sheet_drawer_handle.setOnClickListener {
-            when {
-                persistentSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED -> expand()
-                persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED -> collapse()
+            when (persistentSheetBehavior.state) {
+                BottomSheetBehavior.STATE_COLLAPSED -> expand()
+                BottomSheetBehavior.STATE_EXPANDED -> collapse()
                 else -> {
                     // it's in transition state do nothing
                 }
@@ -267,14 +269,23 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         collapsedStateDrawerHandleContentDescription = collapsedStateDescription
         expandedStateDrawerHandleContentDescription = expandedStateDescription
 
-        var currentStateContentDescription:String? = null
-        if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
-            currentStateContentDescription =  collapsedStateDescription
-        } else if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            currentStateContentDescription =  expandedStateDescription
+        val currentStateContentDescription: String?
+        sheet_drawer_handle?.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
+        when (persistentSheetBehavior.state) {
+            BottomSheetBehavior.STATE_COLLAPSED -> {
+                currentStateContentDescription =  collapsedStateDescription
+            }
+            BottomSheetBehavior.STATE_EXPANDED -> {
+                currentStateContentDescription =  expandedStateDescription
+            }
+            else -> {
+                sheet_drawer_handle?.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+                return
+            }
         }
         currentStateContentDescription?.apply{
-            sheet_drawer_handle.contentDescription = this
+            sheet_drawer_handle?.contentDescription = this
+            sheet_drawer_handle?.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
         }
     }
 
