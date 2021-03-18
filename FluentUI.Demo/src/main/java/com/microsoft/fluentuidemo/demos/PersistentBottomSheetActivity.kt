@@ -58,7 +58,8 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         PersistentBottomSheet.DefaultContentBuilder(this)
                 .setCustomSheetContent(defaultPersistentBottomSheetContent)
                 .buildWith(persistentBottomSheetDemo)
-
+        persistentBottomSheetDemo.setDrawerHandleContentDescription(getString(R.string.drawer_content_desc_collapse_state),
+                getString(R.string.drawer_content_desc_expand_state))
         mHorizontalSheet = arrayListOf(
                 SheetItem(
                         R.id.bottom_sheet_item_flag,
