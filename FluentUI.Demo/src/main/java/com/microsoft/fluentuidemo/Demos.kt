@@ -14,6 +14,7 @@ const val APP_BAR_LAYOUT = "AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
 const val AVATAR_GROUP_VIEW = "AvatarGroupView"
 const val BASIC_INPUTS = "Basic Inputs"
+const val V_NEXT_BASIC_INPUTS = "VNext Basic Inputs"
 const val BOTTOM_NAVIGATION = "BottomNavigation"
 const val BOTTOM_SHEET = "BottomSheet"
 const val CALENDAR_VIEW = "CalendarView"
@@ -40,6 +41,7 @@ val DEMOS = arrayListOf(
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
     Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
+    Demo(V_NEXT_BASIC_INPUTS, com.microsoft.fluentuidemo.vNextDemos.BasicInputsActivity::class),
     Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),

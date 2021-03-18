@@ -1,0 +1,28 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+task generateAll(type: JavaExec) {
+    group = 'fluentui'
+    description = 'Generate all FluenUI resources and source files for all stylesheets'
+
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.microsoft.fluentui.generator.MainKt"
+    args 'generate'
+}
+
+task cleaner(type: JavaExec) {
+    group = 'fluentui'
+    description = 'Remove all auto-generated resources and source files'
+
+    classpath sourceSets.main.runtimeClasspath
+    main = "com.microsoft.fluentui.generator.MainKt"
+    args 'clean'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'org.yaml:snakeyaml:1.23'
+    testImplementation 'junit:junit:4.12'
+}
