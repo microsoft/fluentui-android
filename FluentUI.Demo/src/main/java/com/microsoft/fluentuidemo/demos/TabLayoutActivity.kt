@@ -94,7 +94,7 @@ class TabLayoutActivity : DemoActivity() {
         return view
     }
 
-    class TabPagerAdapter : androidx.viewpager.widget.PagerAdapter() {
+    class TabPagerAdapter : PagerAdapter() {
         private var viewList: List<View> = ArrayList()
         private var viewTitleList: List<String> = ArrayList()
 

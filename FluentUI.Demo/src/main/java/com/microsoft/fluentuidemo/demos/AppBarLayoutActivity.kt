@@ -299,7 +299,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     private fun setupList() {
         adapter.listItems = createList()
         app_bar_layout_list.adapter = adapter
-        app_bar_layout_list.addItemDecoration(ListItemDivider(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
+        app_bar_layout_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
     }
 
     private fun createList(): ArrayList<IBaseListItem> {

@@ -16,7 +16,7 @@ import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.createImageView
 
-class BottomSheetAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder> {
+class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     var onBottomSheetItemClickListener: BottomSheetItem.OnClickListener? = null
 
     private val context: Context
@@ -37,7 +37,7 @@ class BottomSheetAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<and
         this.subTextAppearance = subTextAppearance
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var inflater = LayoutInflater.from(parent.context)
         if (themeId != 0) {
             val contextThemeWrapper = ContextThemeWrapper(parent.context, themeId)
@@ -48,13 +48,13 @@ class BottomSheetAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<and
         return BottomSheetItemViewHolder(itemView as ListItemView)
     }
 
-    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? BottomSheetItemViewHolder)?.setBottomSheetItem(items[position])
     }
 
     override fun getItemCount(): Int = items.size
 
-    private inner class BottomSheetItemViewHolder : androidx.recyclerview.widget.RecyclerView.ViewHolder {
+    private inner class BottomSheetItemViewHolder : RecyclerView.ViewHolder {
         private val listItemView: ListItemView
 
         constructor(itemView: ListItemView) : super(itemView) {

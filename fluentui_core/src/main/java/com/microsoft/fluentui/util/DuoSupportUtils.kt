@@ -107,12 +107,12 @@ object DuoSupportUtils {
         return (activity.baseContext.displaySize.x - getHingeWidth(activity))/2
     }
 
-    fun getSpanSizeLookup(activity: Activity): androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup {
+    fun getSpanSizeLookup(activity: Activity): GridLayoutManager.SpanSizeLookup {
         val span: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE
         val spanMid: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE + getHingeWidth(activity)
         val spanEnd: Int = getHalfScreenWidth(activity) / COLUMNS_IN_END_DUO_MODE
 
-        return object : androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup() {
+        return object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 if (position % (COLUMNS_IN_START_DUO_MODE+ COLUMNS_IN_END_DUO_MODE) < 2) {
                     return span
