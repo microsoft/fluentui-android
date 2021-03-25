@@ -10,8 +10,8 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.res.ColorStateList
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.util.Property
 import android.view.View
@@ -220,8 +220,8 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
         weeksView.isSnappingEnabled = true
         weeksView.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
         addView(weeksView)
-        weeksView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+        weeksView.addOnScrollListener(object : androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: androidx.recyclerview.widget.RecyclerView, dx: Int, dy: Int) {
                 if (canExpand())
                     displayMode = DisplayMode.FULL_MODE
             }

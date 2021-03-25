@@ -5,8 +5,8 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +17,7 @@ import com.microsoft.fluentui.util.isVisible
 
 internal class CommandItemAdapter(
         private var options: CommandListOptions
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
 
     private var flattenCommandItems = arrayListOf<CommandItem>()
     var commandItemGroups = arrayListOf<CommandItemGroup>()
@@ -50,13 +50,13 @@ internal class CommandItemAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater
                 .from(parent.context)
                 .inflate(R.layout.view_command_item, parent, false))
     }
 
-    override fun onBindViewHolder(vh: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(vh: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val viewType = getItemViewType(position)
         val viewHolder = vh as ViewHolder
         val commandItem = flattenCommandItems[position]
@@ -96,7 +96,7 @@ internal class CommandItemAdapter(
             isSelected = isItemSelected
             when (viewType) {
                 VIEW_TYPE_GROUP_CENTER_ITEM -> {
-                    (layoutParams as RecyclerView.LayoutParams).apply {
+                    (layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams).apply {
                         marginEnd = options.itemSpace
                     }
 
@@ -107,7 +107,7 @@ internal class CommandItemAdapter(
                 }
 
                 VIEW_TYPE_GROUP_START_ITEM -> {
-                    (layoutParams as RecyclerView.LayoutParams).apply {
+                    (layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams).apply {
                         marginEnd = options.itemSpace
                     }
                     background = ContextCompat.getDrawable(
@@ -117,7 +117,7 @@ internal class CommandItemAdapter(
                 }
 
                 VIEW_TYPE_GROUP_END_ITEM -> {
-                    (layoutParams as RecyclerView.LayoutParams).apply {
+                    (layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams).apply {
                         marginEnd = if (position == flattenCommandItems.size - 1) 0
                         else options.groupSpace
                     }
@@ -129,7 +129,7 @@ internal class CommandItemAdapter(
                 }
 
                 VIEW_TYPE_GROUP_SINGLE_ITEM -> {
-                    (layoutParams as RecyclerView.LayoutParams).apply {
+                    (layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams).apply {
                         marginEnd = if (position == flattenCommandItems.size - 1) 0
                         else options.groupSpace
                     }
@@ -182,7 +182,7 @@ internal class CommandItemAdapter(
 
     override fun getItemCount(): Int = flattenCommandItems.size
 
-    private class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private class ViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         val icon: ImageView = itemView.findViewById(R.id.contextual_command_item_icon)
         val label: TextView = itemView.findViewById(R.id.contextual_command_item_label)
     }

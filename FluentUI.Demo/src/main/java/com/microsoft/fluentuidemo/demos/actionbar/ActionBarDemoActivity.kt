@@ -1,8 +1,8 @@
 package com.microsoft.fluentuidemo.demos.actionbar
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.PagerAdapter
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.PagerAdapter
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -54,7 +54,7 @@ class ActionBarDemoActivity: DemoActivity() {
         return view
     }
 
-    class DummyPagerAdapter: PagerAdapter() {
+    class DummyPagerAdapter: androidx.viewpager.widget.PagerAdapter() {
         private var viewList:List<View>
 
         init{

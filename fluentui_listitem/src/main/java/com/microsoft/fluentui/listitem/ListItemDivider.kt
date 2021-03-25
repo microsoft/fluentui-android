@@ -8,8 +8,8 @@ package com.microsoft.fluentui.listitem
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.microsoft.fluentui.view.BaseDividerItemDecoration
 import kotlin.math.ceil
@@ -23,7 +23,7 @@ import kotlin.math.ceil
  * between the last list item view in the section and next section's sub header view.
  */
 class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecoration(context, orientation) {
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         val viewPosition = parent.getChildAdapterPosition(view)
         val previousView = parent.getChildAt(viewPosition - 1)
 
@@ -37,7 +37,7 @@ class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecor
         outRect.bottom = 0
     }
 
-    override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    override fun onDraw(canvas: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         for (listItemIndex in 1 until parent.childCount) {
             val itemView = parent.getChildAt(listItemIndex)
             val listItemView = itemView as? ListItemView

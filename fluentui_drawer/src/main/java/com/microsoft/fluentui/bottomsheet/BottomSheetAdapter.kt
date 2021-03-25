@@ -6,8 +6,8 @@
 package com.microsoft.fluentui.bottomsheet
 
 import android.content.Context
-import android.support.annotation.StyleRes
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.StyleRes
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.createImageView
 
-class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
+class BottomSheetAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder> {
     var onBottomSheetItemClickListener: BottomSheetItem.OnClickListener? = null
 
     private val context: Context
@@ -37,7 +37,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.subTextAppearance = subTextAppearance
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         var inflater = LayoutInflater.from(parent.context)
         if (themeId != 0) {
             val contextThemeWrapper = ContextThemeWrapper(parent.context, themeId)
@@ -48,13 +48,13 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return BottomSheetItemViewHolder(itemView as ListItemView)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         (holder as? BottomSheetItemViewHolder)?.setBottomSheetItem(items[position])
     }
 
     override fun getItemCount(): Int = items.size
 
-    private inner class BottomSheetItemViewHolder : RecyclerView.ViewHolder {
+    private inner class BottomSheetItemViewHolder : androidx.recyclerview.widget.RecyclerView.ViewHolder {
         private val listItemView: ListItemView
 
         constructor(itemView: ListItemView) : super(itemView) {

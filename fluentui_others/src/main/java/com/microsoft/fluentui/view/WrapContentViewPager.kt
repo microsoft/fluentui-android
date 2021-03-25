@@ -8,7 +8,7 @@ package com.microsoft.fluentui.view
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.util.Property
 import android.view.View
@@ -17,7 +17,7 @@ import android.view.ViewGroup
 /**
  * [WrapContentViewPager] sets and handles changes to the layout height property of ViewPager content
  */
-class WrapContentViewPager : ViewPager {
+class WrapContentViewPager : androidx.viewpager.widget.ViewPager {
     companion object {
         private val heightProperty = object : Property<View, Int>(Int::class.java, "height") {
             override fun set(`object`: View, value: Int?) {

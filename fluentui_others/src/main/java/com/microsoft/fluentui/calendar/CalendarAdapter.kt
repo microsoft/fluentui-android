@@ -8,11 +8,11 @@ package com.microsoft.fluentui.calendar
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v4.util.SimpleArrayMap
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
-import android.support.v7.widget.RecyclerView
+import androidx.collection.SimpleArrayMap
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.R
@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit
 /**
  * [CalendarAdapter] is the adapter for the [CalendarView]
  */
-internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHolder>, View.OnClickListener {
+internal class CalendarAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<CalendarAdapter.CalendarDayViewHolder>, View.OnClickListener {
     companion object {
         private const val MONTH_LIMIT = 1200L
         private val DAY_IN_SECONDS = TimeUnit.DAYS.toSeconds(1).toInt()
@@ -54,8 +54,10 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
     private val LocalDate.getLocalDateToZonedDateTime: ZonedDateTime
         get() = ZonedDateTime.of(this, LocalTime.MIDNIGHT, ZoneId.systemDefault())
 
-    private val firstDayOfWeekIndices = SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
-    private val lastDayOfWeekIndices = SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
+    private val firstDayOfWeekIndices =
+        androidx.collection.SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
+    private val lastDayOfWeekIndices =
+        androidx.collection.SimpleArrayMap<DayOfWeek, Int>(DayOfWeek.values().size)
 
     private val context: Context
     private val config: CalendarView.Config
@@ -181,7 +183,7 @@ internal class CalendarAdapter : RecyclerView.Adapter<CalendarAdapter.CalendarDa
     /**
      * ViewHolder for the [CalendarDayView]
      */
-    inner class CalendarDayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class CalendarDayViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
         /**
          * Sets and gets the selected date in the [CalendarDayView]
          */

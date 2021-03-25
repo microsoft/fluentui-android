@@ -8,7 +8,7 @@ package com.microsoft.fluentui.bottomsheet
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.util.ThemeUtil
@@ -17,7 +17,7 @@ import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecoration(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), HORIZONTAL) {
-    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         val useDivider = view.getTag(R.id.fluentui_bottom_sheet_item_divider) as? Boolean ?: false
         if (useDivider)
             outRect.set(0, dividerHeight.toInt() + subHeaderDividerPadding.toInt() * 2, 0, 0)
@@ -25,7 +25,7 @@ internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecorat
             outRect.setEmpty()
     }
 
-    override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
+    override fun onDraw(canvas: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
         for (index in 0 until parent.childCount) {
             val itemView = parent.getChildAt(index)
             if (itemView is ListItemView) {

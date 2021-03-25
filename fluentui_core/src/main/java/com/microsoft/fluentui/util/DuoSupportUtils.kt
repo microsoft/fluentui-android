@@ -3,7 +3,7 @@ package com.microsoft.fluentui.util
 import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import com.microsoft.device.dualscreen.layout.ScreenHelper
 import java.lang.Exception
@@ -107,12 +107,12 @@ object DuoSupportUtils {
         return (activity.baseContext.displaySize.x - getHingeWidth(activity))/2
     }
 
-    fun getSpanSizeLookup(activity: Activity): GridLayoutManager.SpanSizeLookup {
+    fun getSpanSizeLookup(activity: Activity): androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup {
         val span: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE
         val spanMid: Int = getHalfScreenWidth(activity) / COLUMNS_IN_START_DUO_MODE + getHingeWidth(activity)
         val spanEnd: Int = getHalfScreenWidth(activity) / COLUMNS_IN_END_DUO_MODE
 
-        return object : GridLayoutManager.SpanSizeLookup() {
+        return object : androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
                 if (position % (COLUMNS_IN_START_DUO_MODE+ COLUMNS_IN_END_DUO_MODE) < 2) {
                     return span

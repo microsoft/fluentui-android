@@ -7,8 +7,8 @@ package com.microsoft.fluentuidemo.demos
 
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.DividerItemDecoration
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import android.view.ContextThemeWrapper
 import android.view.Menu
 import android.view.MenuItem
@@ -128,16 +128,16 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         updateSearchbar()
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
         searchbarQuery = searchbar.query.toString()
 
-        outState?.putInt(SCROLL_BEHAVIOR, scrollBehavior.ordinal)
-        outState?.putInt(NAVIGATION_ICON_TYPE, navigationIconType.ordinal)
-        outState?.putBoolean(SEARCHBAR_IS_ACTION_MENU_VIEW, searchbarIsActionMenuView)
-        outState?.putBoolean(SEARCHBAR_HAS_FOCUS, searchbarHasFocus)
-        outState?.putString(SEARCHBAR_QUERY, searchbarQuery)
+        outState.putInt(SCROLL_BEHAVIOR, scrollBehavior.ordinal)
+        outState.putInt(NAVIGATION_ICON_TYPE, navigationIconType.ordinal)
+        outState.putBoolean(SEARCHBAR_IS_ACTION_MENU_VIEW, searchbarIsActionMenuView)
+        outState.putBoolean(SEARCHBAR_HAS_FOCUS, searchbarHasFocus)
+        outState.putString(SEARCHBAR_QUERY, searchbarQuery)
     }
 
     override fun onClick(view: View) {
@@ -299,7 +299,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     private fun setupList() {
         adapter.listItems = createList()
         app_bar_layout_list.adapter = adapter
-        app_bar_layout_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
+        app_bar_layout_list.addItemDecoration(ListItemDivider(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
     }
 
     private fun createList(): ArrayList<IBaseListItem> {

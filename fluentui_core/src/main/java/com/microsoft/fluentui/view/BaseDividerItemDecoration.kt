@@ -8,15 +8,16 @@ package com.microsoft.fluentui.view
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.support.annotation.ColorInt
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.DividerItemDecoration
+import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import android.view.View
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 
-open class BaseDividerItemDecoration : DividerItemDecoration {
+open class BaseDividerItemDecoration :
+    androidx.recyclerview.widget.DividerItemDecoration {
     protected var fluentuiContext: Context
     protected val dividerHeight: Float
     protected val subHeaderDividerPadding: Float

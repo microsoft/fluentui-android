@@ -7,8 +7,8 @@ package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import android.util.AttributeSet
 import android.view.View.NO_ID
 import android.view.ViewGroup

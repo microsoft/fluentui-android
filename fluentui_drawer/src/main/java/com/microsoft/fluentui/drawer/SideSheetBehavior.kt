@@ -9,17 +9,17 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.design.widget.CoordinatorLayout
-import android.support.v4.math.MathUtils
-import android.support.v4.view.AbsSavedState
-import android.support.v4.view.ViewCompat
-import android.support.v4.widget.ViewDragHelper
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.math.MathUtils
+import androidx.core.view.ViewCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.ViewGroup
+import com.google.android.material.bottomsheet.BottomSheetBehavior.*
+import com.microsoft.fluentui.drawer.SideSheetBehavior.SavedState
 import java.lang.ref.WeakReference
 import kotlin.math.abs
 import kotlin.math.max
@@ -27,12 +27,6 @@ import kotlin.math.min
 
 class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     companion object {
-        const val STATE_DRAGGING = 1
-        const val STATE_SETTLING = 2
-        const val STATE_EXPANDED = 3
-        const val STATE_COLLAPSED = 4
-        const val STATE_HIDDEN = 5
-        const val STATE_HALF_EXPANDED = 6
         const val HIDE_THRESHOLD = 0.5F
         const val HIDE_FRICTION = 0.1F
 
@@ -70,7 +64,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     var peekWidth: Int = 0
     private var state: Int = STATE_COLLAPSED
 
-    private var viewDragHelper: ViewDragHelper? = null
+    private var viewDragHelper: androidx.customview.widget.ViewDragHelper? = null
     private var maximumVelocity: Float? = null
     private var viewRef: WeakReference<V>? = null
     private var nestedScrollingChildRef: WeakReference<View>? = null
@@ -101,11 +95,11 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         maximumVelocity = (configuration.scaledMaximumFlingVelocity).toFloat()
     }
 
-    override fun onSaveInstanceState(parent: CoordinatorLayout, child: V): Parcelable? {
+    override fun onSaveInstanceState(parent: androidx.coordinatorlayout.widget.CoordinatorLayout, child: V): Parcelable? {
         return SavedState(super.onSaveInstanceState(parent, child)!!, state)
     }
 
-    override fun onRestoreInstanceState(parent: CoordinatorLayout, child: V, state: Parcelable) {
+    override fun onRestoreInstanceState(parent: androidx.coordinatorlayout.widget.CoordinatorLayout, child: V, state: Parcelable) {
         val ss : SavedState = state as SavedState
         super.onRestoreInstanceState(parent, child, ss.superState!!)
 
@@ -145,7 +139,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         }
 
         if(viewDragHelper == null) {
-            viewDragHelper = ViewDragHelper.create(parent, dragCallback);
+            viewDragHelper = androidx.customview.widget.ViewDragHelper.create(parent, dragCallback);
         }
         nestedScrollingChildRef = if(findScrollingChild(child) != null) WeakReference(this.findScrollingChild(child)!!) else null
         return true
@@ -302,7 +296,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         }
     }
 
-    override fun onStopNestedScroll(coordinatorLayout: CoordinatorLayout, child: V, target: View, type: Int) {
+    override fun onStopNestedScroll(coordinatorLayout: androidx.coordinatorlayout.widget.CoordinatorLayout, child: V, target: View, type: Int) {
         if(child.left == getExpandedOffset()) {
             setStateInternal(STATE_EXPANDED)
         }
@@ -416,7 +410,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         }
     }
 
-    override fun onNestedFling(coordinatorLayout: CoordinatorLayout, child: V, target: View, velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
+    override fun onNestedFling(coordinatorLayout: androidx.coordinatorlayout.widget.CoordinatorLayout, child: V, target: View, velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
         return target == nestedScrollingChildRef?.get() && (state != STATE_EXPANDED ||
                 super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY))
     }
@@ -481,7 +475,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     }
 
     private fun reset() {
-        activePointerID = ViewDragHelper.INVALID_POINTER
+        activePointerID = androidx.customview.widget.ViewDragHelper.INVALID_POINTER
         if (velocityTracker != null) {
             velocityTracker!!.recycle()
             velocityTracker = null
@@ -531,7 +525,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         return null
     }
 
-    private val dragCallback: ViewDragHelper.Callback = object : ViewDragHelper.Callback() {
+    private val dragCallback: androidx.customview.widget.ViewDragHelper.Callback = object : androidx.customview.widget.ViewDragHelper.Callback() {
         override fun tryCaptureView(child: View, pointerID: Int): Boolean {
             if (state == STATE_DRAGGING) {
                 return false
@@ -557,7 +551,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
         }
 
         override fun onViewDragStateChanged(st: Int) {
-            if (st == ViewDragHelper.STATE_DRAGGING) {
+            if (st == androidx.customview.widget.ViewDragHelper.STATE_DRAGGING) {
                 setStateInternal(STATE_DRAGGING)
             }
         }
@@ -757,7 +751,7 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
             }
     }
 
-    internal class SavedState : AbsSavedState {
+    internal class SavedState : androidx.customview.view.AbsSavedState {
         val state: Int
 
         constructor(parcel: Parcel, loader: ClassLoader?) : super(parcel, loader) {

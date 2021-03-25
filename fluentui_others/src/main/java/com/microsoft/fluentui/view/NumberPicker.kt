@@ -30,13 +30,13 @@ import android.graphics.Rect
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.annotation.IntDef
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
-import android.support.v4.widget.ExploreByTouchHelper
-import android.support.v4.widget.TextViewCompat
-import android.support.v7.widget.AppCompatButton
-import android.support.v7.widget.AppCompatTextView
+import androidx.annotation.IntDef
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.customview.widget.ExploreByTouchHelper
+import androidx.core.widget.TextViewCompat
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatTextView
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.SparseArray
@@ -1805,7 +1805,7 @@ internal class NumberPicker : LinearLayout {
 
     // Accessibility
 
-    private inner class NumberPickerTouchHelper(host: View): ExploreByTouchHelper(host) {
+    private inner class NumberPickerTouchHelper(host: View): androidx.customview.widget.ExploreByTouchHelper(host) {
         private val numberPickerBounds = Rect(0, 0, width, height)
         private var decrementBounds = Rect()
         private var incrementBounds = Rect()

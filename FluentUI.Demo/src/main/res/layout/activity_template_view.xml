@@ -55,7 +55,7 @@
                 android:textAppearance="@style/TextAppearance.DemoDescription"
                 android:text="@string/template_list" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/template_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/template_view_list_height"
@@ -88,7 +88,7 @@
                 android:textAppearance="@style/TextAppearance.DemoDescription"
                 android:text="@string/regular_list" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/regular_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/template_view_list_height"

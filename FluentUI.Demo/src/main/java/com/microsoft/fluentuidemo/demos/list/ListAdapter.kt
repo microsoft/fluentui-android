@@ -6,8 +6,8 @@
 package com.microsoft.fluentuidemo.demos.list
 
 import android.content.Context
-import android.support.v7.widget.AppCompatButton
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.widget.AppCompatButton
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
@@ -18,14 +18,14 @@ import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.R
 import java.util.*
 
-class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListAdapter(private val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
     private enum class ViewType {
         SUB_HEADER, ITEM, BUTTON_ITEM
     }
 
     var listItems = ArrayList<IBaseListItem>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewTypeOrdinal: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewTypeOrdinal: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
         val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
         return when (ViewType.values()[viewTypeOrdinal]) {
             ViewType.SUB_HEADER -> {
@@ -58,7 +58,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
         val listItem = listItems[position]
 
         if (listItem is IListSubHeader)
@@ -71,7 +71,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
             (holder as? ButtonItemViewHolder)?.setButtonItem(listItem)
     }
 
-    override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
+    override fun onViewRecycled(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder) {
         super.onViewRecycled(holder)
         (holder as? ListItemViewHolder)?.clearCustomViews()
     }
@@ -86,7 +86,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
         }
     }
 
-    private inner class ListItemViewHolder : RecyclerView.ViewHolder {
+    private inner class ListItemViewHolder : androidx.recyclerview.widget.RecyclerView.ViewHolder {
         private val listItemView: ListItemView
 
         constructor(view: ListItemView) : super(view) {
@@ -106,7 +106,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
         }
     }
 
-    private class ListSubHeaderViewHolder : RecyclerView.ViewHolder {
+    private class ListSubHeaderViewHolder : androidx.recyclerview.widget.RecyclerView.ViewHolder {
         private val listSubHeaderView: ListSubHeaderView
 
         constructor(view: ListSubHeaderView) : super(view) {
@@ -118,7 +118,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
         }
     }
 
-    private inner class ButtonItemViewHolder : RecyclerView.ViewHolder {
+    private inner class ButtonItemViewHolder : androidx.recyclerview.widget.RecyclerView.ViewHolder {
         private var button: Button? = null
 
         constructor(view: FrameLayout) : super(view) {

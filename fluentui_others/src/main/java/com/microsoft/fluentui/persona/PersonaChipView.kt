@@ -10,8 +10,8 @@ import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.support.annotation.AttrRes
-import android.support.v4.content.ContextCompat
+import androidx.annotation.AttrRes
+import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.accessibility.AccessibilityEvent
@@ -20,10 +20,10 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.databinding.ViewPersonaChipBinding
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.view.TemplateView
-import kotlinx.android.synthetic.main.view_persona_chip.view.*
 
 class PersonaChipView : TemplateView {
     companion object {
@@ -116,9 +116,9 @@ class PersonaChipView : TemplateView {
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
-        textView = persona_chip_text
-        avatarView = persona_chip_avatar
-        closeIcon = persona_chip_close
+        textView = findViewInTemplateById(R.id.persona_chip_text)
+        avatarView = findViewInTemplateById(R.id.persona_chip_avatar)
+        closeIcon = findViewInTemplateById(R.id.persona_chip_close)
         updateState()
         updateViews()
     }

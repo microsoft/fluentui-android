@@ -6,8 +6,8 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.PagerAdapter
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 import com.microsoft.fluentui.tablayout.TabLayout
@@ -21,7 +21,7 @@ class TabLayoutActivity : DemoActivity() {
         get() = R.layout.activity_tab_layout
 
     private var adapter: TabPagerAdapter? = null
-    private lateinit var tabLayout: android.support.design.widget.TabLayout
+    private lateinit var tabLayout: com.google.android.material.tabs.TabLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +94,7 @@ class TabLayoutActivity : DemoActivity() {
         return view
     }
 
-    class TabPagerAdapter : PagerAdapter() {
+    class TabPagerAdapter : androidx.viewpager.widget.PagerAdapter() {
         private var viewList: List<View> = ArrayList()
         private var viewTitleList: List<String> = ArrayList()
 

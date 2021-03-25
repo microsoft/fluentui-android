@@ -7,7 +7,7 @@ package com.microsoft.fluentui.peoplepicker
 
 import android.content.Context
 import android.graphics.drawable.InsetDrawable
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.Gravity.CENTER
 import android.view.Gravity.START
 import android.view.LayoutInflater
@@ -15,11 +15,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.databinding.PeoplePickerSearchDirectoryBinding
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.persona.*
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.activity
-import kotlinx.android.synthetic.main.people_picker_search_directory.view.*
 import java.util.*
 
 /**
@@ -44,7 +44,7 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
     var isSearchingDirectory: Boolean = false
         set(value) {
             field = value
-            searchDirectoryView?.isEnabled = !value
+            searchDirectoryBinding?.root?.isEnabled = !value
             updateSearchDirectoryText()
         }
 
@@ -60,15 +60,15 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
             // This hides the last divider
             value.overscrollFooter = ContextCompat.getDrawable(context, android.R.color.transparent)
         }
-    private var searchDirectoryView: View? = null
+    private var searchDirectoryBinding: PeoplePickerSearchDirectoryBinding? = null
         set(value) {
             field = value
-            searchDirectoryView?.post {
+            searchDirectoryBinding?.root?.post {
                 // We set this in a post so that the we get the correct instance of the text view.
                 // This assumes that the first view is the correct view.
-                searchDirectoryTextView = value?.people_picker_search_directory_text
+                searchDirectoryTextView = value?.peoplePickerSearchDirectoryText
             }
-            value?.setOnClickListener(onSearchDirectoryButtonClicked)
+            value?.root?.setOnClickListener(onSearchDirectoryButtonClicked)
         }
     private var searchDirectoryTextView: TextView? = null
         set(value) {
@@ -123,12 +123,12 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
     private fun getSearchDirectoryView(convertView: View?, parent: ViewGroup?): View {
         // Need to use the convertView, otherwise accessibility focus breaks. Also more efficient.
         val view = convertView ?: LayoutInflater.from(context).inflate(R.layout.people_picker_search_directory, parent, false)
+        searchDirectoryBinding = PeoplePickerSearchDirectoryBinding.bind(view)
         convertView?.context?.activity?.let {
             if (DuoSupportUtils.isDualScreenMode(it)) {
-                view.people_picker_search_directory_text.gravity = START or CENTER
+                searchDirectoryBinding?.peoplePickerSearchDirectoryText?.gravity = START or CENTER
             }
         }
-        searchDirectoryView = view
         return view
     }
 

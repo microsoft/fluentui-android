@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.persona
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -15,7 +15,7 @@ import java.util.*
 /**
  * This adapter controls data binding and ViewHolders for [PersonaListView].
  */
-internal class PersonaListAdapter(private val context: Context) : RecyclerView.Adapter<PersonaListAdapter.ViewHolder>() {
+internal class PersonaListAdapter(private val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<PersonaListAdapter.ViewHolder>() {
     /**
      * [PersonaListView.OnItemClickedListener] for when a list item is clicked
      */
@@ -45,7 +45,7 @@ internal class PersonaListAdapter(private val context: Context) : RecyclerView.A
         onItemClickedListener?.onItemClicked(persona)
     }
 
-    inner class ViewHolder : RecyclerView.ViewHolder, View.OnClickListener {
+    inner class ViewHolder : androidx.recyclerview.widget.RecyclerView.ViewHolder, View.OnClickListener {
         private val personaView: PersonaView
         private lateinit var persona: IPersona
 

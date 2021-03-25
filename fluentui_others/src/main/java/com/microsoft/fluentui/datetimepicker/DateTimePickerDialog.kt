@@ -10,22 +10,22 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.LayoutTransition
 import android.content.Context
 import android.graphics.Rect
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatDialog
-import android.support.v7.widget.Toolbar
+import androidx.appcompat.app.AppCompatDialog
+import androidx.appcompat.widget.Toolbar
 import android.view.*
 import android.view.accessibility.AccessibilityEvent
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.calendar.CalendarView
 import com.microsoft.fluentui.calendar.OnDateSelectedListener
+import com.microsoft.fluentui.databinding.DialogDateTimePickerBinding
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.*
-import kotlinx.android.synthetic.main.dialog_date_time_picker.*
-import kotlinx.android.synthetic.main.dialog_resizable.*
 import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
+import com.microsoft.fluentui.databinding.DialogResizableBinding
 
 // TODO consider merging PickerMode and DateRangeMode since not all combinations will work
 /**
@@ -61,7 +61,7 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
      * Returns the selected [PickerTab] tab.
      */
     val pickerTab: PickerTab?
-        get() = if (tabs.selectedTabPosition == -1) null else PickerTab.values()[tabs.selectedTabPosition]
+        get() = if (dialogContainerBinding.tabs.selectedTabPosition == -1) null else PickerTab.values()[dialogContainerBinding.tabs.selectedTabPosition]
     /**
      * Returns the selected [DateTimeRangeTab] tab.
      */
@@ -94,16 +94,16 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
             val calendarView = pagerAdapter.calendarView
             val timePicker = pagerAdapter.timePicker
             if (position == displayMode.dateTabIndex && calendarView != null) {
-                view_pager.currentObject = calendarView
+                dialogContainerBinding.viewPager.currentObject = calendarView
                 // We're switching from the tall time picker to the short date picker. Layout transition
                 // leaves blank white area below date picker. So manual animation is used here instead to avoid this.
                 enableLayoutTransition(false)
-                view_pager.smoothlyResize(calendarView.fullModeHeight, animatorListener)
+                dialogContainerBinding.viewPager.smoothlyResize(calendarView.fullModeHeight, animatorListener)
             } else if (position == displayMode.dateTimeTabIndex && timePicker != null) {
-                view_pager.currentObject = timePicker
+                dialogContainerBinding.viewPager.currentObject = timePicker
                 calendarView?.setDisplayMode(CalendarView.DisplayMode.LENGTHY_MODE, true)
                 enableLayoutTransition(true)
-                view_pager.shouldWrapContent = true
+                dialogContainerBinding.viewPager.shouldWrapContent = true
             }
         }
     }
@@ -114,7 +114,8 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
     private val layoutTransition = LayoutTransition()
     private var dateTime: ZonedDateTime
     private var duration: Duration
-    private lateinit var dialog: View
+    private lateinit var dialogBinding: DialogResizableBinding
+    private lateinit var dialogContainerBinding: DialogDateTimePickerBinding
     private lateinit var pagerAdapter: DateTimePagerAdapter
 
     init {
@@ -156,24 +157,24 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
     }
 
     private fun enableLayoutTransition(enabled: Boolean) {
-        (dialog as ViewGroup).layoutTransition = if (enabled) layoutTransition else null
+        (dialogBinding.root as ViewGroup).layoutTransition = if (enabled) layoutTransition else null
     }
 
     private fun initDialog() {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog = View.inflate(context, R.layout.dialog_resizable, null)
+        dialogBinding = DialogResizableBinding.inflate(LayoutInflater.from(fluentuiContext))
 
         // Resize animation
         layoutTransition.enableTransitionType(LayoutTransition.CHANGING)
         enableLayoutTransition(true)
 
         // Dismiss after tapping outside the dialog
-        dialog.setOnTouchListener(object : View.OnTouchListener {
+        (dialogBinding.root as View).setOnTouchListener(object : View.OnTouchListener {
             private val rect = Rect()
 
             override fun onTouch(v: View, event: MotionEvent): Boolean {
-                dialog.performClick()
-                card_view_container.getHitRect(rect)
+                dialogBinding.root.performClick()
+                dialogBinding.cardViewContainer.getHitRect(rect)
                 if (!rect.contains(event.x.toInt(), event.y.toInt())) {
                     cancel()
                     return true
@@ -182,34 +183,34 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
             }
         })
 
-        setContentView(dialog)
+        setContentView(dialogBinding.root)
     }
 
     private fun initDialogContents() {
-        LayoutInflater.from(fluentuiContext).inflate(R.layout.dialog_date_time_picker, card_view_container, true)
+        dialogContainerBinding = DialogDateTimePickerBinding.inflate(LayoutInflater.from(fluentuiContext), dialogBinding.cardViewContainer, true)
 
-        toolbar.inflateMenu(R.menu.menu_time_picker)
-        toolbar.setOnMenuItemClickListener(this)
+        dialogContainerBinding.toolbar.inflateMenu(R.menu.menu_time_picker)
+        dialogContainerBinding.toolbar.setOnMenuItemClickListener(this)
 
         val closeIconColor = ThemeUtil.getColor(fluentuiContext, R.attr.fluentuiDialogCloseIconColor)
-        toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_dismiss_24_filled, closeIconColor)
-        toolbar.navigationContentDescription = context.resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
-        toolbar.setNavigationOnClickListener { cancel() }
+        dialogContainerBinding.toolbar.navigationIcon = context.getTintedDrawable(R.drawable.ms_ic_dismiss_24_filled, closeIconColor)
+        dialogContainerBinding.toolbar.navigationContentDescription = context.resources.getString(R.string.date_time_picker_accessibility_close_dialog_button)
+        dialogContainerBinding.toolbar.setNavigationOnClickListener { cancel() }
 
         val doneIconColor = ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiDateTimePickerToolbarIconColor)
-        toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_checkmark_24_filled, doneIconColor)
+        dialogContainerBinding.toolbar.menu.findItem(R.id.action_done).icon = context.getTintedDrawable(R.drawable.ms_ic_checkmark_24_filled, doneIconColor)
 
         pagerAdapter = DateTimePagerAdapter()
-        view_pager.adapter = pagerAdapter
-        view_pager.addOnPageChangeListener(pageChangeListener)
+        dialogContainerBinding.viewPager.adapter = pagerAdapter
+        dialogContainerBinding.viewPager.addOnPageChangeListener(pageChangeListener)
 
         if (displayMode == DisplayMode.TIME_DATE)
-            view_pager.currentItem = displayMode.dateTimeTabIndex
+            dialogContainerBinding.viewPager.currentItem = displayMode.dateTimeTabIndex
 
         if (pagerAdapter.count < 2)
-            tab_container.visibility = View.GONE
+            dialogContainerBinding.tabContainer.visibility = View.GONE
         else
-            tabs.setupWithViewPager(view_pager)
+            dialogContainerBinding.tabs.setupWithViewPager(dialogContainerBinding.viewPager)
 
         updateTitles()
     }
@@ -310,38 +311,38 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
     private fun updateTitles() {
         when (displayMode) {
             DisplayMode.DATE -> {
-                toolbar.title = if (dateRangeMode == DateRangeMode.START)
+                dialogContainerBinding.toolbar.title = if (dateRangeMode == DateRangeMode.START)
                     DateStringUtils.formatDateAbbrevAll(context, dateTime)
                 else
                     DateStringUtils.formatDateAbbrevAll(context, dateTime.plus(duration))
             }
             DisplayMode.ACCESSIBLE_DATE -> {
-                toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
+                dialogContainerBinding.toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
                     context.resources.getString(R.string.date_time_picker_choose_date)
                 else
                     DateStringUtils.formatMonthDayYear(context, dateTime.plus(duration))
             }
             DisplayMode.TIME, DisplayMode.ACCESSIBLE_DATE_TIME -> {
-                toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
+                dialogContainerBinding.toolbar.title = if (dateRangeMode != DateRangeMode.NONE)
                     context.resources.getString(R.string.date_time_picker_choose_time)
                 else
                     DateStringUtils.formatAbbrevDateTime(context, dateTime.plus(duration))
             }
             else -> {
-                val currentTab = view_pager.currentItem
-                toolbar.setTitle(if (currentTab == displayMode.dateTabIndex) R.string.date_time_picker_choose_date else R.string.date_time_picker_choose_time)
+                val currentTab = dialogContainerBinding.viewPager.currentItem
+                dialogContainerBinding.toolbar.setTitle(if (currentTab == displayMode.dateTabIndex) R.string.date_time_picker_choose_date else R.string.date_time_picker_choose_time)
 
                 val tabDate = if (dateTimeRangeTab == DateTimeRangeTab.END) dateTime.plus(duration) else dateTime
 
                 // Set tab titles
                 if (displayMode.dateTabIndex != -1)
-                    tabs.getTabAt(displayMode.dateTabIndex)?.text = DateStringUtils.formatDateWithWeekDay(
+                    dialogContainerBinding.tabs.getTabAt(displayMode.dateTabIndex)?.text = DateStringUtils.formatDateWithWeekDay(
                         context,
                         if (currentTab == displayMode.dateTabIndex) dateTime else tabDate
                     )
 
                 if (displayMode.dateTimeTabIndex != -1)
-                    tabs.getTabAt(displayMode.dateTimeTabIndex)?.text = DateStringUtils.formatAbbrevTime(context, tabDate)
+                    dialogContainerBinding.tabs.getTabAt(displayMode.dateTimeTabIndex)?.text = DateStringUtils.formatAbbrevTime(context, tabDate)
             }
         }
     }
@@ -359,8 +360,8 @@ class DateTimePickerDialog : AppCompatDialog, Toolbar.OnMenuItemClickListener, O
             else
                 initTimePicker()
 
-            if (position == view_pager.currentItem)
-                view_pager.currentObject = view
+            if (position == dialogContainerBinding.viewPager.currentItem)
+                dialogContainerBinding.viewPager.currentObject = view
 
             container.addView(view)
 

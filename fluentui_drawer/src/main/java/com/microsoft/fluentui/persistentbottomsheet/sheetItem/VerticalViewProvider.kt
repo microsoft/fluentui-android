@@ -1,8 +1,8 @@
 package com.microsoft.fluentui.persistentbottomsheet.sheetItem
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
@@ -21,7 +21,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         val verticalItemList = itemTypeList as BottomSheetParam.VerticalItemList
         val view = LayoutInflater.from(context).inflate(R.layout.vertical_bottomsheet_content, null)
         val headerText = view.findViewById<TextView>(R.id.header_text)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.vertical_list)
+        val recyclerView = view.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.vertical_list)
 
         if (itemTypeList.header.isNullOrEmpty()) {
             headerText.visibility = View.GONE
@@ -29,7 +29,8 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
             headerText.visibility = View.VISIBLE
             headerText.text = itemTypeList.header
         }
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager =
+            androidx.recyclerview.widget.LinearLayoutManager(context)
         val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList, itemLayoutParam), R.style.Theme_FluentUI_Drawer)
 
         contentParam.listener?.apply {

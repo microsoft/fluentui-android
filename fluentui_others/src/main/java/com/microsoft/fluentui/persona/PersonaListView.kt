@@ -6,9 +6,9 @@
 package com.microsoft.fluentui.persona
 
 import android.content.Context
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import com.microsoft.fluentui.listitem.ListItemDivider
 import java.util.*
@@ -17,7 +17,7 @@ import java.util.*
  * This is a custom [RecyclerView] with a set adapter and layoutManager. It provides an interface for the list data and onItemClickedListener and
  * adds a custom [DividerItemDecoration] to each row.
  */
-class PersonaListView : RecyclerView {
+class PersonaListView : androidx.recyclerview.widget.RecyclerView {
     /**
      * [personas] contains the collection of Personas that the adapter binds to the ViewHolder.
      */
@@ -41,8 +41,8 @@ class PersonaListView : RecyclerView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         adapter = personaListAdapter
-        layoutManager = LinearLayoutManager(context)
-        addItemDecoration(ListItemDivider(context, DividerItemDecoration.VERTICAL))
+        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
+        addItemDecoration(ListItemDivider(context, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
     }
 
     interface OnItemClickedListener {

@@ -13,13 +13,13 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.Typeface
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.ColorUtils
-import android.support.v4.util.Pools
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import androidx.core.util.Pools
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.text.TextPaint
 import android.text.format.DateUtils
 import android.text.format.DateUtils.FORMAT_NO_MONTH_DAY
@@ -74,7 +74,7 @@ internal class WeeksView : MSRecyclerView {
         get() = pickerAdapter.selectedDate
 
     val firstVisibleItemPosition: Int
-        get() = (layoutManager as GridLayoutManager).findFirstVisibleItemPosition()
+        get() = (layoutManager as androidx.recyclerview.widget.GridLayoutManager).findFirstVisibleItemPosition()
 
     private lateinit var config: CalendarView.Config
 
@@ -108,7 +108,10 @@ internal class WeeksView : MSRecyclerView {
         setWillNotDraw(false)
 
         ContextCompat.getDrawable(context, R.drawable.ms_row_divider)?.let {
-            val divider = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+            val divider = androidx.recyclerview.widget.DividerItemDecoration(
+                context,
+                androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+            )
             divider.setDrawable(it)
             addItemDecoration(divider)
         }
@@ -117,14 +120,19 @@ internal class WeeksView : MSRecyclerView {
         adapter = pickerAdapter
 
         setHasFixedSize(true)
-        layoutManager = GridLayoutManager(context, DAYS_IN_WEEK, LinearLayoutManager.VERTICAL, false)
+        layoutManager = androidx.recyclerview.widget.GridLayoutManager(
+            context,
+            DAYS_IN_WEEK,
+            androidx.recyclerview.widget.LinearLayoutManager.VERTICAL,
+            false
+        )
         layoutManager?.scrollToPosition(pickerAdapter.todayPosition)
         post {
             context.activity?.let {
                 if (DuoSupportUtils.intersectHinge(it, this)) {
-                    (layoutManager as GridLayoutManager).spanCount = context.displaySize.x
+                    (layoutManager as androidx.recyclerview.widget.GridLayoutManager).spanCount = context.displaySize.x
                     addItemDecoration(HingeItemDecoration(DuoSupportUtils.getHingeWidth(it)))
-                    (layoutManager as GridLayoutManager).spanSizeLookup = DuoSupportUtils.getSpanSizeLookup(it)
+                    (layoutManager as androidx.recyclerview.widget.GridLayoutManager).spanSizeLookup = DuoSupportUtils.getSpanSizeLookup(it)
                 }
             }
         }
@@ -155,7 +163,7 @@ internal class WeeksView : MSRecyclerView {
         val firstVisiblePosition = firstVisibleItemPosition
         val lastVisiblePosition = firstVisiblePosition + CalendarView.DAYS_IN_WEEK * visibleRows
 
-        if (RecyclerView.NO_POSITION == firstVisiblePosition || datePosition < firstVisiblePosition || DateTimeUtils.isSameDay(date, ZonedDateTime.now())) {
+        if (androidx.recyclerview.widget.RecyclerView.NO_POSITION == firstVisiblePosition || datePosition < firstVisiblePosition || DateTimeUtils.isSameDay(date, ZonedDateTime.now())) {
             scrollToPositionWithOffset(datePosition, 0)
         } else if (datePosition >= lastVisiblePosition) {
             val offset = (visibleRows - 1) * (rowHeight + dividerHeight)
@@ -164,7 +172,7 @@ internal class WeeksView : MSRecyclerView {
     }
 
     fun scrollToPositionWithOffset(position: Int, offset: Int) {
-        (layoutManager as GridLayoutManager).scrollToPositionWithOffset(position, offset)
+        (layoutManager as androidx.recyclerview.widget.GridLayoutManager).scrollToPositionWithOffset(position, offset)
     }
 
     fun setSelectedDateRange(localDate: LocalDate?, duration: Duration) {
@@ -174,8 +182,8 @@ internal class WeeksView : MSRecyclerView {
     override fun onScrollStateChanged(state: Int) {
         super.onScrollStateChanged(state)
         when (state) {
-            RecyclerView.SCROLL_STATE_DRAGGING -> showOverlay()
-            RecyclerView.SCROLL_STATE_IDLE -> hideOverlay()
+            androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING -> showOverlay()
+            androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE -> hideOverlay()
         }
     }
 
@@ -273,7 +281,7 @@ internal class WeeksView : MSRecyclerView {
     }
 
     private fun rowToScreenPosition(rowPosition: Int): Int {
-        val glm = layoutManager as GridLayoutManager
+        val glm = layoutManager as androidx.recyclerview.widget.GridLayoutManager
         val firstVisibleRowPosition = glm.findFirstVisibleItemPosition() / DAYS_IN_WEEK
         val view = getChildAt(0)
         val rowHeight = view.measuredHeight
@@ -344,7 +352,7 @@ internal class WeeksView : MSRecyclerView {
     }
 
     private class HingeItemDecoration internal constructor(private val mMaskSize: Int) : ItemDecoration() {
-        override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: State) {
+        override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: State) {
             val rightOffset = if (parent.getChildAdapterPosition(view) % DAYS_IN_WEEK == 2) {
                 mMaskSize
             } else {
