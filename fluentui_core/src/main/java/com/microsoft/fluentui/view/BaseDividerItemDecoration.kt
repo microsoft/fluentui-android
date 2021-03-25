@@ -16,8 +16,7 @@ import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 
-open class BaseDividerItemDecoration :
-    androidx.recyclerview.widget.DividerItemDecoration {
+open class BaseDividerItemDecoration : DividerItemDecoration {
     protected var fluentuiContext: Context
     protected val dividerHeight: Float
     protected val subHeaderDividerPadding: Float

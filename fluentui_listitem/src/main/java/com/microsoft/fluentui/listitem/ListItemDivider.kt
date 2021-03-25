@@ -23,7 +23,7 @@ import kotlin.math.ceil
  * between the last list item view in the section and next section's sub header view.
  */
 class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecoration(context, orientation) {
-    override fun getItemOffsets(outRect: Rect, view: View, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
+    override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val viewPosition = parent.getChildAdapterPosition(view)
         val previousView = parent.getChildAt(viewPosition - 1)
 
@@ -37,7 +37,7 @@ class ListItemDivider(context: Context, orientation: Int) : BaseDividerItemDecor
         outRect.bottom = 0
     }
 
-    override fun onDraw(canvas: Canvas, parent: androidx.recyclerview.widget.RecyclerView, state: androidx.recyclerview.widget.RecyclerView.State) {
+    override fun onDraw(canvas: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         for (listItemIndex in 1 until parent.childCount) {
             val itemView = parent.getChildAt(listItemIndex)
             val listItemView = itemView as? ListItemView

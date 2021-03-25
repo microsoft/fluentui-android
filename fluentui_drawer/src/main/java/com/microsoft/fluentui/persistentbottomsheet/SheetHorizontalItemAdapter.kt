@@ -18,11 +18,11 @@ import com.microsoft.fluentui.util.createImageView
 /**
  * [SheetHorizontalItemAdapter] is used for horizontal list in bottomSheet
  */
-class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
+class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
     private val mItems: ArrayList<SheetItem> = items
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): androidx.recyclerview.widget.RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         var inflater = LayoutInflater.from(parent.context)
         if (themeId != 0) {
             val contextThemeWrapper = ContextThemeWrapper(parent.context, themeId)
@@ -37,11 +37,11 @@ class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<
 
     override fun getItemCount(): Int = mItems.size
 
-    override fun onBindViewHolder(holder: androidx.recyclerview.widget.RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? PersistentSheetItemViewHolder)?.setBottomSheetItem(mItems[position])
     }
 
-    private inner class PersistentSheetItemViewHolder(itemView: SheetHorizontalItemView) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
+    private inner class PersistentSheetItemViewHolder(itemView: SheetHorizontalItemView) : RecyclerView.ViewHolder(itemView) {
         private val listItemView: SheetHorizontalItemView = itemView
 
         fun setBottomSheetItem(item: SheetItem) {

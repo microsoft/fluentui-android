@@ -31,7 +31,7 @@ class ContextualCommandBar @JvmOverloads constructor(
 
     private var dismissButtonContainer: ViewGroup? = null
     private var commandItemAdapter: CommandItemAdapter
-    private var commandItemRecyclerView: androidx.recyclerview.widget.RecyclerView
+    private var commandItemRecyclerView: RecyclerView
 
     var dismissCommandItem: DismissCommandItem? = null
         set(value) {
@@ -68,12 +68,12 @@ class ContextualCommandBar @JvmOverloads constructor(
         commandItemAdapter = CommandItemAdapter(
                 CommandItemAdapter.CommandListOptions(groupSpace, itemSpace)
         )
-        commandItemRecyclerView = androidx.recyclerview.widget.RecyclerView(
+        commandItemRecyclerView = RecyclerView(
             context
         ).apply {
-            layoutManager = androidx.recyclerview.widget.LinearLayoutManager(
+            layoutManager = LinearLayoutManager(
                 context,
-                androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
+                LinearLayoutManager.HORIZONTAL,
                 false
             )
             adapter = commandItemAdapter
