@@ -27,7 +27,7 @@ Fluent UI for Android is a native library that provides the Office UI experience
 
 Fluent UI for Android provides colors and typography based on the Fluent design language.
 
-In version 0.0.12, as a part of modularization, the colors and typographies have been moved to respective modules
+In version 0.0.14, as a part of modularization, the colors and typographies have been moved to respective modules
 Please refer to [Modularization](#Modularization) section for more details
 
 ## Controls
@@ -78,7 +78,7 @@ dependencies {
 }
 ```
 - Make sure you replace `$version` with the latest version of FluentUI.
-- From version 0.0.12, individual modules can also be used by applications as per need. E.g
+- From version 0.0.14, individual modules can also be used by applications as per need. E.g
   To use just BottomSheet control which is part of fluentui_drawer module, following block can be added to build.gradle
 
  ```gradle
@@ -172,7 +172,7 @@ Included in this repository is a demo of currently implemented controls. A full 
 To see samples of all of our implemented controls and design language, run the [FluentUI.Demo](FluentUI.Demo) module in Android Studio.
 
 ## Modularization
-Starting from version 0.0.12, Fluent UI has been split into multiple modules by grouping related controls together. The main objective of this is to reduce the size impact of library on the applications which want to use only specific controls from Fluent UI
+Starting from version 0.0.14, Fluent UI has been split into multiple modules by grouping related controls together. The main objective of this is to reduce the size impact of library on the applications which want to use only specific controls from Fluent UI
 
 The list of modules and their respective controls is as follows
 
@@ -201,7 +201,7 @@ For now these controls can be found in fluentui_others module
 ## Contributing
 
 Post bug reports, feature requests, and questions in [Issues](https://github.com/microsoft/fluentui-android/issues).
-Contributions to any specific controls should be done in respective modules. Refer [Modularization](##modularization) section for more details
+Contributions to any specific controls should be done in respective modules. Refer [Modularization](#Modularization) section for more details
 
 ## Changelog
 
