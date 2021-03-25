@@ -1805,7 +1805,7 @@ internal class NumberPicker : LinearLayout {
 
     // Accessibility
 
-    private inner class NumberPickerTouchHelper(host: View): androidx.customview.widget.ExploreByTouchHelper(host) {
+    private inner class NumberPickerTouchHelper(host: View): ExploreByTouchHelper(host) {
         private val numberPickerBounds = Rect(0, 0, width, height)
         private var decrementBounds = Rect()
         private var incrementBounds = Rect()

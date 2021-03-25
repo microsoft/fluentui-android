@@ -63,7 +63,7 @@ class Snackbar :
             var fallbackParent: ViewGroup? = null
 
             do {
-                if (currentView is androidx.coordinatorlayout.widget.CoordinatorLayout)
+                if (currentView is CoordinatorLayout)
                     // We've found a CoordinatorLayout, use it
                     return currentView
 
@@ -162,9 +162,9 @@ class Snackbar :
         var fallbackParent: ViewGroup? = null
 
         do {
-            if (currentView is androidx.coordinatorlayout.widget.CoordinatorLayout) {
+            if (currentView is CoordinatorLayout) {
                 // We've found a CoordinatorLayout, use it
-                val params = getView().layoutParams as androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams
+                val params = getView().layoutParams as CoordinatorLayout.LayoutParams
                 params.gravity = Gravity.BOTTOM
                 getView().layoutParams = params
                 return

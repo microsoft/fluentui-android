@@ -845,7 +845,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             hint = valueHint
     }
 
-    private inner class AccessibilityTouchHelper(host: View) : androidx.customview.widget.ExploreByTouchHelper(host) {
+    private inner class AccessibilityTouchHelper(host: View) : ExploreByTouchHelper(host) {
         // Host
 
         val peoplePickerTextViewBounds = Rect(0, 0, width, height)
@@ -895,7 +895,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         override fun getVirtualViewAt(x: Float, y: Float): Int {
             if (objects == null || objects.size == 0)
-                return androidx.customview.widget.ExploreByTouchHelper.INVALID_ID
+                return INVALID_ID
 
             val offset = getOffsetForPosition(x, y)
             if (offset != -1) {
@@ -906,11 +906,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                     return objects.size
                 else if (peoplePickerTextViewBounds.contains(x.toInt(), y.toInt())) {
                     sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
-                    return androidx.customview.widget.ExploreByTouchHelper.HOST_ID
+                    return HOST_ID
                 }
             }
 
-            return androidx.customview.widget.ExploreByTouchHelper.INVALID_ID
+            return INVALID_ID
         }
 
         override fun getVisibleVirtualViews(virtualViewIds: MutableList<Int>) {

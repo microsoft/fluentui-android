@@ -54,7 +54,7 @@ class ActionBarDemoActivity: DemoActivity() {
         return view
     }
 
-    class DummyPagerAdapter: androidx.viewpager.widget.PagerAdapter() {
+    class DummyPagerAdapter: PagerAdapter() {
         private var viewList:List<View>
 
         init{

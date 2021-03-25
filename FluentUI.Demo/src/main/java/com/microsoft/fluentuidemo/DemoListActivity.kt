@@ -42,7 +42,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         setupAppBar()
 
         demo_list.adapter = DemoListAdapter()
-        demo_list.addItemDecoration(ListItemDivider(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
+        demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
         Initializer.init(application)
     }
@@ -73,7 +73,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         return true
     }
 
-    private inner class DemoListAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
+    private inner class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
         var demos = if(dualScreenMode) DUO_DEMOS else DEMOS
             set(value) {
                 field = value
@@ -103,7 +103,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
             }
         }
 
-        private inner class ViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
+        private inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val listItem: ListItemView = view as ListItemView
         }
     }

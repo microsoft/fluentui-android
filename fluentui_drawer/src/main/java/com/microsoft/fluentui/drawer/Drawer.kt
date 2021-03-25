@@ -20,7 +20,7 @@ import android.view.View
  */
 open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
     companion object {
-        const val STYLE = androidx.fragment.app.DialogFragment.STYLE_NO_TITLE
+        const val STYLE = DialogFragment.STYLE_NO_TITLE
         private const val CONTENT_LAYOUT_ID = "contentLayoutId"
 
         /**

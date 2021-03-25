@@ -28,7 +28,7 @@ import android.view.ViewConfiguration
  * to match our needs.
  */
 @RestrictTo(RestrictTo.Scope.LIBRARY_GROUP)
-open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
+open class MSRecyclerView : RecyclerView {
     companion object {
         // This is going to be multiplied by the density of the device
         private const val MAX_SCROLL_VELOCITY = 3500
@@ -40,13 +40,13 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
 
         private val DECELERATION_RATE = (Math.log(0.78) / Math.log(0.9)).toFloat()
 
-        private fun androidx.recyclerview.widget.LinearLayoutManager.getChildStartOffset(childView: View): Int =
+        private fun LinearLayoutManager.getChildStartOffset(childView: View): Int =
             if (orientation == HORIZONTAL)
                 childView.left - getLeftDecorationWidth(childView)
             else
                 childView.top - getTopDecorationHeight(childView)
 
-        private fun androidx.recyclerview.widget.LinearLayoutManager.getChildSize(childView: View): Int =
+        private fun LinearLayoutManager.getChildSize(childView: View): Int =
             if (orientation == HORIZONTAL)
                 childView.width + getLeftDecorationWidth(childView) + getRightDecorationWidth(childView)
             else
@@ -54,11 +54,11 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
 
 
         private val ITEM_VIEWS_TOUCH_INPUTS_BLOCKER = object : OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: androidx.recyclerview.widget.RecyclerView, e: MotionEvent): Boolean {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                 return true
             }
 
-            override fun onTouchEvent(rv: androidx.recyclerview.widget.RecyclerView, e: MotionEvent) { }
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) { }
 
             override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) { }
         }
@@ -177,7 +177,7 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
         if (!isSnappingEnabled || !hasFixedSize())
             return
 
-        val linearLayoutManager = layoutManager as? androidx.recyclerview.widget.LinearLayoutManager
+        val linearLayoutManager = layoutManager as? LinearLayoutManager
             ?: return
 
         if (SCROLL_STATE_IDLE == state && !flingRequested) {
@@ -190,7 +190,7 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
             var dx = 0
             var dy = 0
 
-            if (androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL == linearLayoutManager.orientation) {
+            if (LinearLayoutManager.HORIZONTAL == linearLayoutManager.orientation) {
                 val right = firstView.right
                 dx = if (right > firstView.width / 2) firstView.left else right
             } else {
@@ -210,7 +210,7 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
         if (!isSnappingEnabled || !hasFixedSize())
             return super.fling(velocityX, velocityY)
 
-        val linearLayoutManager = layoutManager as? androidx.recyclerview.widget.LinearLayoutManager
+        val linearLayoutManager = layoutManager as? LinearLayoutManager
             ?: return super.fling(velocityX, velocityY)
 
         if (isLayoutFrozen)
@@ -248,7 +248,7 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
     }
 
     private fun flingAndSnap(velocityX: Int, velocityY: Int) {
-        val linearLayoutManager = layoutManager as androidx.recyclerview.widget.LinearLayoutManager
+        val linearLayoutManager = layoutManager as LinearLayoutManager
         val firstViewPosition = linearLayoutManager.findFirstVisibleItemPosition()
         if (firstViewPosition == NO_POSITION)
             return
@@ -259,7 +259,7 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
         var dx = 0
         var dy = 0
 
-        if (androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL == linearLayoutManager.orientation) {
+        if (LinearLayoutManager.HORIZONTAL == linearLayoutManager.orientation) {
             val coeffX = if (velocity == 0f) 1.0f else velocityX / velocity
             val adjustedDistanceX = Math.abs(Math.round(totalDistance * coeffX).toInt())
             val viewWidth = firstView.width +
@@ -306,12 +306,12 @@ open class MSRecyclerView : androidx.recyclerview.widget.RecyclerView {
     }
 
     private fun trackScrollVelocity() {
-        layoutManager as? androidx.recyclerview.widget.LinearLayoutManager ?: return
+        layoutManager as? LinearLayoutManager ?: return
 
         if (!enableScrollVelocityTracking)
             return
 
-        val linearLayoutManager = layoutManager as androidx.recyclerview.widget.LinearLayoutManager
+        val linearLayoutManager = layoutManager as LinearLayoutManager
 
         val firstPosition = linearLayoutManager.findFirstVisibleItemPosition()
         if (NO_POSITION == firstPosition)

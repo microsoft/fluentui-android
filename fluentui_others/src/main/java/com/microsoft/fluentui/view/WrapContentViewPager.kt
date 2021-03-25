@@ -17,7 +17,7 @@ import android.view.ViewGroup
 /**
  * [WrapContentViewPager] sets and handles changes to the layout height property of ViewPager content
  */
-class WrapContentViewPager : androidx.viewpager.widget.ViewPager {
+class WrapContentViewPager : ViewPager {
     companion object {
         private val heightProperty = object : Property<View, Int>(Int::class.java, "height") {
             override fun set(`object`: View, value: Int?) {

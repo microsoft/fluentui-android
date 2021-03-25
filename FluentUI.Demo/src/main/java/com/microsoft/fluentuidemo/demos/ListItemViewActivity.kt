@@ -49,7 +49,7 @@ class ListItemViewActivity : DemoActivity() {
         listAdapter.listItems = createList()
 
         list_example.adapter = listAdapter
-        list_example.addItemDecoration(ListItemDivider(this, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
+        list_example.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
     }
 
     private fun createList(): ArrayList<IBaseListItem> {

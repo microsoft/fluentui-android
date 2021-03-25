@@ -36,12 +36,12 @@ class TemplateViewActivity : DemoActivity() {
 
         template_list_view.adapter = TemplateListViewAdapter()
         template_list_view.layoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(this)
+            LinearLayoutManager(this)
         template_list_view.setHasFixedSize(true)
 
         regular_list_view.adapter = RegularListViewAdapter()
         regular_list_view.layoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(this)
+            LinearLayoutManager(this)
         regular_list_view.setHasFixedSize(true)
 
         calculate_cells_button.setOnClickListener {
@@ -90,7 +90,7 @@ class TemplateViewActivity : DemoActivity() {
 
     // Template list view adapter
 
-    private class TemplateListViewAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<TemplateListViewAdapter.ViewHolder>() {
+    private class TemplateListViewAdapter : RecyclerView.Adapter<TemplateListViewAdapter.ViewHolder>() {
         override fun getItemCount(): Int = LIST_ITEM_COUNT
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -107,12 +107,12 @@ class TemplateViewActivity : DemoActivity() {
             }
         }
 
-        class ViewHolder(val cell: Cell) : androidx.recyclerview.widget.RecyclerView.ViewHolder(cell)
+        class ViewHolder(val cell: Cell) : RecyclerView.ViewHolder(cell)
     }
 
     // Regular list view adapter
 
-    private class RegularListViewAdapter : androidx.recyclerview.widget.RecyclerView.Adapter<RegularListViewAdapter.ViewHolder>() {
+    private class RegularListViewAdapter : RecyclerView.Adapter<RegularListViewAdapter.ViewHolder>() {
         override fun getItemCount(): Int = LIST_ITEM_COUNT
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -128,7 +128,7 @@ class TemplateViewActivity : DemoActivity() {
             }
         }
 
-        class ViewHolder(cell: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(cell) {
+        class ViewHolder(cell: View) : RecyclerView.ViewHolder(cell) {
             val titleView: TextView = cell.cell_title
             val descriptionView: TextView = cell.cell_description
         }

@@ -17,7 +17,7 @@ import java.util.*
  * This is a custom [RecyclerView] with a set adapter and layoutManager. It provides an interface for the list data and onItemClickedListener and
  * adds a custom [DividerItemDecoration] to each row.
  */
-class PersonaListView : androidx.recyclerview.widget.RecyclerView {
+class PersonaListView : RecyclerView {
     /**
      * [personas] contains the collection of Personas that the adapter binds to the ViewHolder.
      */
@@ -41,8 +41,8 @@ class PersonaListView : androidx.recyclerview.widget.RecyclerView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         adapter = personaListAdapter
-        layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
-        addItemDecoration(ListItemDivider(context, androidx.recyclerview.widget.DividerItemDecoration.VERTICAL))
+        layoutManager = LinearLayoutManager(context)
+        addItemDecoration(ListItemDivider(context, DividerItemDecoration.VERTICAL))
     }
 
     interface OnItemClickedListener {
