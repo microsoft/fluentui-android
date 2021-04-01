@@ -63,3 +63,5 @@ freeline_project_description.json
 
 # Generated Files
 FluentUI/generatedSrc
+fluentui_core/generatedSrc
+fluentui_others/generatedSrc

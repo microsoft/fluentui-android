@@ -529,7 +529,7 @@ fun createGenericImports(): String {
             "import android.content.res.Resources\n" +
             "import com.microsoft.fluentui.generator.*\n" +
             "import android.content.res.TypedArray\n" +
-            "import android.support.v4.content.ContextCompat\n" +
+            "import androidx.core.content.ContextCompat\n" +
             "import com.microsoft.fluentui.R\n"
 }
 

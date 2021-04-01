@@ -1,9 +1,6 @@
 package com.microsoft.fluentui.generator.model.proxies
 
-import com.microsoft.fluentui.generator.ATTRIBUTE_PREFIX
-import com.microsoft.fluentui.generator.DocumentType
-import com.microsoft.fluentui.generator.global_documentType
-import com.microsoft.fluentui.generator.global_flavorPath
+import com.microsoft.fluentui.generator.*
 import com.microsoft.fluentui.generator.model.*
 import com.microsoft.fluentui.generator.model.resources.Resource
 import com.microsoft.fluentui.generator.model.resources.generateResources
@@ -53,21 +50,21 @@ class AppearanceProxyGenerator(
         customResources.add(resource)
     }
 
-    fun generateAll() {
-        generateResourcesOnly()
+    fun generateAll(sourcePath: String) {
+        generateResourcesOnly(sourcePath)
         // Generate source files and parameters only for the root document
         if (global_documentType == DocumentType.ROOT) {
-            generateAttributes(global_flavorPath, viewName, customAttributes)
+            generateAttributes(sourcePath.plus(global_flavorMidPath), viewName, customAttributes)
             if (!ignoreDataBindingMethods) addBindingMethods(viewName, bindingMapping)
         }
     }
 
-    fun generateResourcesOnly() {
+    fun generateResourcesOnly(sourcePath: String) {
         val resourceList = mutableListOf<Resource>()
         resourceList.addAll(customResources)
 
         // Parse all resources
         parameters.forEach { parseResource(resourceList, it.key, it.value) }
-        generateResources(global_flavorPath, viewName.toLowerCase(), resourceList, prependNameToResourceName = true)
+        generateResources(sourcePath.plus(global_flavorMidPath), viewName.toLowerCase(), resourceList, prependNameToResourceName = true)
     }
 }
