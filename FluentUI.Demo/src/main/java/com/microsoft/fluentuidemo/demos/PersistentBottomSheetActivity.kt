@@ -182,12 +182,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                         )
                 ), R.style.Drawer_FluentUI, marginBetweenView)
         horizontalListAdapter.mOnSheetItemClickListener = this
-        sheet_horizontal_item_list_3.layoutManager =
-            androidx.recyclerview.widget.LinearLayoutManager(
-                this,
-                androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL,
-                false
-            )
+        sheet_horizontal_item_list_3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         sheet_horizontal_item_list_3.adapter = horizontalListAdapter
 
 
