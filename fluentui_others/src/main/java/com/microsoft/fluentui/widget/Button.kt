@@ -18,5 +18,5 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 class Button : AppCompatButton {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.buttonStyle)
-        : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr)
+        : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 }

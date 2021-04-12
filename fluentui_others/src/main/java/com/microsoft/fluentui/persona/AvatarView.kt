@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 enum class AvatarStyle {
     CIRCLE, SQUARE
@@ -38,7 +39,7 @@ open class AvatarView : AppCompatImageView {
     }
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarView)
         val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, DEFAULT_AVATAR_SIZE.ordinal)
         val avatarStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarStyle, DEFAULT_AVATAR_STYLE.ordinal)
