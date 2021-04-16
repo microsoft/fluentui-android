@@ -59,7 +59,6 @@
             android:id="@+id/action_bar_right_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="TODO"
             android:src="@drawable/ms_ic_next_icon_12_filled" />
     </LinearLayout>
 

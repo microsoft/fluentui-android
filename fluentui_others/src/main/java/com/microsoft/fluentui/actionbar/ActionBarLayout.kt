@@ -75,6 +75,7 @@ class ActionBarLayout @JvmOverloads constructor(context: Context, attrs: Attribu
     private fun carouselMode() {
         action_bar_right_icon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ms_ic_arrow_left_24_filled))
         action_bar_right_icon.rotation = 180f
+        action_bar_right_icon.contentDescription = resources.getString(R.string.action_bar_accessibility_right_icon_description)
         action_bar_right_icon.setColorFilter(ContextCompat.getColor(context, R.color.fluentui_white))
         action_bar_left_action.setTextColor(ContextCompat.getColor(context, R.color.fluentui_white))
         action_bar_container_layout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.fluentui_action_bar_carousel_background))
