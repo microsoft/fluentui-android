@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/background_view"
+    android:orientation="vertical"
+    android:padding="@dimen/default_layout_margin"
+    tools:context=".vNextDemos.AvatarViewDemoActivity">
+
+    <!--Circle-->
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/change_background"
+        android:layout_width="wrap_content"
+        android:text="@string/avatar_view_change_background"
+        style="@style/TextAppearance.FluentUI.Heading"
+        android:switchPadding="40dp"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/use_transparency"
+        android:layout_width="wrap_content"
+        android:text="@string/avatar_view_use_transparency"
+        android:switchPadding="40dp"
+        style="@style/TextAppearance.FluentUI.Heading"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/show_presence"
+        android:layout_width="wrap_content"
+        android:text="@string/avatar_view_show_presence"
+        android:switchPadding="40dp"
+        style="@style/TextAppearance.FluentUI.Heading"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/is_oof"
+        android:layout_width="wrap_content"
+        android:text="@string/avatar_view_show_oof"
+        android:switchPadding="40dp"
+        style="@style/TextAppearance.FluentUI.Heading"
+        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/show_rings"
+        android:layout_width="wrap_content"
+        android:text="@string/avatar_view_show_rings"
+        android:switchPadding="40dp"
+        style="@style/TextAppearance.FluentUI.Heading"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

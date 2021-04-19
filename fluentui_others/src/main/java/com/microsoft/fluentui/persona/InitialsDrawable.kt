@@ -44,7 +44,7 @@ internal class InitialsDrawable : Drawable {
                 }
 
             if (initials.isEmpty())
-                initials = if (email.length > 1) email.substring(0, 1) else DEFAULT_SYMBOL_HEADER.toString()
+                initials = if (email.length > 1) email.substring(0, 1) else ""
 
             return initials.toUpperCase(Locale.getDefault())
         }

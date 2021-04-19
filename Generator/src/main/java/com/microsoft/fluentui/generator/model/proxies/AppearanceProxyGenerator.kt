@@ -50,7 +50,7 @@ class AppearanceProxyGenerator(
         customResources.add(resource)
     }
 
-    fun generateAll(sourcePath: String) {
+    fun generateAll(sourcePath: String, importPath: String) {
         generateResourcesOnly(sourcePath)
         // Generate source files and parameters only for the root document
         if (global_documentType == DocumentType.ROOT) {

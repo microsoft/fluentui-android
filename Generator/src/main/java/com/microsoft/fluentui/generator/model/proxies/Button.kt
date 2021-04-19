@@ -23,7 +23,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
     override val sourcePath: String
         get() = "../fluentui_others"
 
-    override fun setupGeneratorParameters(parameters: LinkedHashMap<String, Any>) {
+    override fun setupGeneratorParameters(parameters: LinkedHashMap<String, Any>) :List<Resource> {
         val apNameLowerCase = viewName.toLowerCase()
 
         // Generate all color selectors
@@ -33,6 +33,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
             }
         }
 
+        val drawables: ArrayList<Resource> = ArrayList()
         // Generate Shapes and Styles only for the parent, children stylesheet will simply override the resources values
         if (global_documentType == DocumentType.ROOT) {
             listOf("small", "medium", "large").forEach { apStyle ->
@@ -56,6 +57,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
                     attributes[ShapeKeys.RIPPLE_COLOR] = "@color/${apNameLowerCase}_backgroundColor_pressed"
 
                     generateShape(sourcePath.plus(global_flavorMidPath),"${apNameLowerCase}_${apStyle}background", attributes)
+                    drawables.add(Resource("background_${apStyle}","R.drawable.${apNameLowerCase}_${apStyle}background", ResourceType.DRAWABLE))
                 }
             }
         }
@@ -64,6 +66,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
         if (parameters["rounded"] == true) {
             parameters["cornerRadius"] = "999dp"
         }
+        return drawables
     }
 
     override fun setupStyles(parameters: LinkedHashMap<String, Any>, parentName: String?) {

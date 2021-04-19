@@ -1,16 +1,20 @@
 package com.microsoft.fluentui.generator.model
 
 import com.microsoft.fluentui.generator.*
-import com.microsoft.fluentui.generator.model.proxies.AppearanceProxyResourceOnly
-import com.microsoft.fluentui.generator.model.proxies.Avatar
-import com.microsoft.fluentui.generator.model.proxies.Button
+import com.microsoft.fluentui.generator.model.proxies.*
 import java.io.File
 
 val appearanceProxies = listOf(
-    Button(Button.Type.Default()),
-    Button(Button.Type.Primary()),
-    Button(Button.Type.Secondary()),
-    Button(Button.Type.Ghost())
+        Button(Button.Type.Default()),
+        Button(Button.Type.Primary()),
+        Button(Button.Type.Secondary()),
+        Button(Button.Type.Ghost()),
+        Avatar(),
+        Avatar(Avatar.Type.Accent()),
+        Avatar(Avatar.Type.Group()),
+        Avatar(Avatar.Type.Outlined()),
+        Avatar(Avatar.Type.OutlinedPrimary()),
+        Avatar(Avatar.Type.Overflow()),
 )
 
 val resourceOnlyAppearanceProxies = listOf<String>()
