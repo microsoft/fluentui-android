@@ -98,6 +98,4 @@
   <string name="searchbar_back">Voltar</string>
   <string name="searchbar_query_hint_default">Pesquisar</string>
   <string name="done">Concluído</string>
-  <string name="tooltip_accessibility_dismiss_action">ignorar</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Dica de ferramenta ignorada</string>
 </resources>

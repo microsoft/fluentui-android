@@ -98,6 +98,4 @@
   <string name="searchbar_back">Volver</string>
   <string name="searchbar_query_hint_default">Buscar</string>
   <string name="done">Listo</string>
-  <string name="tooltip_accessibility_dismiss_action">descartar</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Información sobre herramientas descartada</string>
 </resources>

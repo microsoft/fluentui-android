@@ -98,6 +98,4 @@
   <string name="searchbar_back">பின்</string>
   <string name="searchbar_query_hint_default">தேடவும்</string>
   <string name="done">முடிந்தது</string>
-  <string name="tooltip_accessibility_dismiss_action">நிராகரி</string>
-  <string name="tooltip_accessibility_dismiss_announcement">கருவிக் குறிப்பு நிராகரிக்கப்பட்டது</string>
 </resources>

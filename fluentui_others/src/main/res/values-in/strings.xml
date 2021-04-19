@@ -96,6 +96,4 @@
   <string name="searchbar_back">Kembali</string>
   <string name="searchbar_query_hint_default">Cari</string>
   <string name="done">Selesai</string>
-  <string name="tooltip_accessibility_dismiss_action">tutup</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Tooltip ditutup</string>
 </resources>

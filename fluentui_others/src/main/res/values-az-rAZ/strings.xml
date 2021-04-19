@@ -98,6 +98,4 @@
   <string name="searchbar_back">Geri</string>
   <string name="searchbar_query_hint_default">Axtarış</string>
   <string name="done">Hazırdır</string>
-  <string name="tooltip_accessibility_dismiss_action">rədd et</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Alət izahı rədd edilib</string>
 </resources>
