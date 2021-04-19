@@ -236,14 +236,18 @@
     <!-- *** ActionBar *** -->
 
     <!--Content description for default left action in the action bar layout.-->
-    <string name="fluentui_action_bar_default_left_action">Skip</string>
+    <string name="action_bar_default_left_action">Skip</string>
     <!--Content description for default right action in the action bar layout.-->
-    <string name="fluentui_action_bar_default_right_action">Next</string>
+    <string name="action_bar_default_right_action">Next</string>
     <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
-    <string name="fluentui_action_bar_default_final_action">Start</string>
+    <string name="action_bar_default_final_action">Start</string>
+    <!--Content description default right icon-->
+    <string name="action_bar_right_icon_description">Next</string>
     <!--accessibiltiy-->
-    <!--Announcement when the next icon is in focus-->
-    <string name="action_bar_accessibility_right_icon_description">Next</string>
+    <!--Announcement when page is scrolled-->
+    <string name="action_bar_accessibility_page_announcement">Slider page %d of %d</string>
+    <!--Announcement when actionbarlayout opens or when Skip is pressed-->
+    <string name="action_bar_accessibility_viewpager_description">Multi-page view. Slider page %d of %d</string>
 
     <string name="fluentui_bottom_sheet_header">BottomSheet Heading</string>
 </resources>
