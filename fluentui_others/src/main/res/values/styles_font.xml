@@ -60,11 +60,6 @@
     <!--PopupMenu-->
     <style name="TextAppearance.FluentUI.PopupMenuTitle" parent="TextAppearance.FluentUI.Body1" />
 
-    <!--Snackbar-->
-    <style name="TextAppearance.FluentUI.SnackbarText" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiSnackbarTextColor</item>
-    </style>
-
     <!--Dialog TabLayout-->
     <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>
@@ -78,11 +73,6 @@
     </style>
     <style name="TextAppearance.FluentUI.ToolbarSubtitle" parent="TextAppearance.FluentUI.Caption">
         <item name="android:textColor">?attr/fluentuiToolbarSubtitleTextColor</item>
-    </style>
-
-    <!--Tooltip-->
-    <style name="TextAppearance.FluentUI.Tooltip" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">?attr/fluentuiTooltipTextColor</item>
     </style>
 
 </resources>

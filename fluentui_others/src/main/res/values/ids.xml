@@ -9,5 +9,4 @@
     <item name="fluentui_calendar_view_action_goto_next_week" type="id" />
     <item name="fluentui_number_picker_increment" type="id" />
     <item name="fluentui_number_picker_decrement" type="id" />
-    <item name="fluentui_snackbar_custom_view" type="id" />
 </resources>

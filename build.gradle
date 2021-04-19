@@ -60,6 +60,16 @@ task makeUniversalPkg(type: Copy) {
     rename '(.+)-release', '$1'
 }
 
+task copyDependencies(type: Copy){
+    from('.')
+    include('deps/*')
+    into("$rootDir/$universalPkgDir/deps")
+    includeEmptyDirs = false
+    eachFile {
+        path = name
+    }
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
