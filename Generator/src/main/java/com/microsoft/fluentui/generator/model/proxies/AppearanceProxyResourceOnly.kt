@@ -23,7 +23,7 @@ class AppearanceProxyResourceOnly(override val viewName: String) : AppearancePro
         }
 
         ResourceProxyGenerator(apName, viewName, parameters, parentName, parentParameters).apply {
-            generateAll(sourcePath)
+            generateAll(sourcePath, importPath, null)
         }
     }
 }
