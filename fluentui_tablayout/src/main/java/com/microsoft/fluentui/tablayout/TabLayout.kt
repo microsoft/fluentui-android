@@ -125,7 +125,7 @@ class TabLayout : TemplateView {
             }
         }
         tabLayoutContainer?.setPadding(paddingHorizontalLeft, paddingVertical, paddingHorizontalRight, paddingVertical)
-        setSelectorColors()
+        setSelectorProperties()
         setTextAppearance()
     }
 
@@ -157,11 +157,13 @@ class TabLayout : TemplateView {
         tabLayout.setTabTextColors(tabUnselectedTextColor, tabSelectedTextColor)
     }
 
-    private fun setSelectorColors() {
+    private fun setSelectorProperties() {
         val tabLayout = tabLayout ?: return
         val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount) {
             val tab: View = viewGroup.getChildAt(i)
+            val tabView = tabLayout.getTabAt(i)
+            tabView?.contentDescription = tabView?.text?.toString() + context.getString(R.string.tab_content_description, (i + 1), tabLayout.tabCount)
             tab.background = getStateListDrawable()
         }
     }

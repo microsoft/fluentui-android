@@ -16,6 +16,7 @@ import android.support.v4.graphics.ColorUtils
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet
+import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -181,6 +182,14 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         return super.onInterceptTouchEvent(ev)
     }
 
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        if (event?.keyCode == KeyEvent.KEYCODE_ESCAPE) {
+            event.dispatch(this, null, null)
+            return true
+        }
+        return super.dispatchKeyEvent(event)
+    }
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         if (shouldInterceptTouch)
             return true
@@ -241,10 +250,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun collapse() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        sheet_drawer_handle.requestFocus()
     }
 
     fun expand() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        sheet_drawer_handle.requestFocus()
     }
 
     fun hide(){
@@ -394,6 +405,15 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
                 throw IllegalStateException(" custom resource Id is set you can not use default items with it${contentParam.layoutResId}")
             }
         }
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_ESCAPE
+                && persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+            collapse()
+            return true
+        }
+        return super.onKeyUp(keyCode, event)
     }
 
 }
