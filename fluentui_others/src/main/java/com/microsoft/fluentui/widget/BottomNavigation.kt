@@ -22,7 +22,7 @@ class BottomNavigationView : BottomNavigationView {
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-        : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr)
+        : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 
     override fun setLabelVisibilityMode(labelVisibilityMode: Int) {
         // The super call in the constructor runs setLabelVisibilityMode() before the constructor.
