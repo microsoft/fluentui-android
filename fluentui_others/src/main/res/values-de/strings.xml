@@ -98,6 +98,4 @@
   <string name="searchbar_back">Zurück</string>
   <string name="searchbar_query_hint_default">Suchen</string>
   <string name="done">Fertig</string>
-  <string name="tooltip_accessibility_dismiss_action">schließen</string>
-  <string name="tooltip_accessibility_dismiss_announcement">QuickInfo geschlossen.</string>
 </resources>

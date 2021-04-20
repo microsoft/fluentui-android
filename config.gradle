@@ -11,10 +11,11 @@
  * and fluentui_drawer' current version is 0.0.2, both fluentui_listitem and
  * fluentui_drawer and FluentUI should increment their respective version ids
   */
-project.ext.fluentui_core_versionid='0.0.4'
-project.ext.fluentui_listitem_versionid='0.0.4'
-project.ext.fluentui_tablayout_versionid='0.0.4'
-project.ext.fluentui_drawer_versionid='0.0.5'
-project.ext.fluentui_ccb_versionid='0.0.4'
-project.ext.fluentui_others_versionid='0.0.4'
-project.ext.FluentUI_versionid='0.0.14'
+project.ext.fluentui_core_versionid='0.0.5'
+project.ext.fluentui_listitem_versionid='0.0.5'
+project.ext.fluentui_tablayout_versionid='0.0.5'
+project.ext.fluentui_drawer_versionid='0.0.6'
+project.ext.fluentui_ccb_versionid='0.0.5'
+project.ext.fluentui_others_versionid='0.0.5'
+project.ext.fluentui_transients_versionid='0.0.5'
+project.ext.FluentUI_versionid='0.0.15'

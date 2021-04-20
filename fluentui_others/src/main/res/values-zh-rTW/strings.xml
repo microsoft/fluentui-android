@@ -96,6 +96,4 @@
   <string name="searchbar_back">返回</string>
   <string name="searchbar_query_hint_default">搜尋</string>
   <string name="done">完成</string>
-  <string name="tooltip_accessibility_dismiss_action">關閉</string>
-  <string name="tooltip_accessibility_dismiss_announcement">工具提示已關閉</string>
 </resources>
