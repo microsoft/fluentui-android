@@ -98,6 +98,4 @@
   <string name="searchbar_back">Atzera</string>
   <string name="searchbar_query_hint_default">Bilatu</string>
   <string name="done">Eginda</string>
-  <string name="tooltip_accessibility_dismiss_action">baztertu</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Baztertu da argibidea</string>
 </resources>

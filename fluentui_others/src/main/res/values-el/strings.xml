@@ -98,6 +98,4 @@
   <string name="searchbar_back">Πίσω</string>
   <string name="searchbar_query_hint_default">Αναζήτηση</string>
   <string name="done">Τέλος</string>
-  <string name="tooltip_accessibility_dismiss_action">κλείσιμο</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Η συμβουλή εργαλείου έκλεισε</string>
 </resources>

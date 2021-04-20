@@ -98,6 +98,4 @@
   <string name="searchbar_back">Til baka</string>
   <string name="searchbar_query_hint_default">Leita</string>
   <string name="done">Lokið</string>
-  <string name="tooltip_accessibility_dismiss_action">hafna</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Ábendingu hafnað</string>
 </resources>

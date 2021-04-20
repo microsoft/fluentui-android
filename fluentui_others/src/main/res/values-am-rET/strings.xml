@@ -98,6 +98,4 @@
   <string name="searchbar_back">ተመለስ</string>
   <string name="searchbar_query_hint_default">ፍለጋ</string>
   <string name="done">ተከናውኗል</string>
-  <string name="tooltip_accessibility_dismiss_action">አሰናብት</string>
-  <string name="tooltip_accessibility_dismiss_announcement">የመሳሪያ መግለጫ ተሰናብቷል</string>
 </resources>

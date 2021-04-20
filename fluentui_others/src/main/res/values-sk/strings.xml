@@ -102,6 +102,4 @@
   <string name="searchbar_back">Dozadu</string>
   <string name="searchbar_query_hint_default">Hľadať</string>
   <string name="done">Hotovo</string>
-  <string name="tooltip_accessibility_dismiss_action">zrušiť</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Zrušil sa popis</string>
 </resources>

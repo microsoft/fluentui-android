@@ -98,6 +98,4 @@
   <string name="searchbar_back">Tagasi</string>
   <string name="searchbar_query_hint_default">Otsing</string>
   <string name="done">Valmis</string>
-  <string name="tooltip_accessibility_dismiss_action">sule</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Kohtspikker on suletud</string>
 </resources>

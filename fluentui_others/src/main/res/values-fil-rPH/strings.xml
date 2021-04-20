@@ -98,6 +98,4 @@
   <string name="searchbar_back">Bumalik</string>
   <string name="searchbar_query_hint_default">Maghanap</string>
   <string name="done">Tapos na</string>
-  <string name="tooltip_accessibility_dismiss_action">alisin</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Inalis ang tooltip</string>
 </resources>

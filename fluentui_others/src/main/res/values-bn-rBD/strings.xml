@@ -98,6 +98,4 @@
   <string name="searchbar_back">ফিরে যান</string>
   <string name="searchbar_query_hint_default">সন্ধান করুন</string>
   <string name="done">সম্পন্ন</string>
-  <string name="tooltip_accessibility_dismiss_action">বাতিল করুন</string>
-  <string name="tooltip_accessibility_dismiss_announcement">টুলটিপ খারিজ করা হয়েছে</string>
 </resources>

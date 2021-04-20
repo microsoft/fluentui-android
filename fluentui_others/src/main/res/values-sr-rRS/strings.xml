@@ -100,6 +100,4 @@
   <string name="searchbar_back">Назад</string>
   <string name="searchbar_query_hint_default">Претрага</string>
   <string name="done">Готово</string>
-  <string name="tooltip_accessibility_dismiss_action">одбаци</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Опис алатке је одбачен</string>
 </resources>

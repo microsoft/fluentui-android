@@ -98,6 +98,4 @@
   <string name="searchbar_back">പിന്നിലേക്ക്</string>
   <string name="searchbar_query_hint_default">തിരയുക</string>
   <string name="done">ചെയ്‌തു</string>
-  <string name="tooltip_accessibility_dismiss_action">നിരാകരിക്കുക</string>
-  <string name="tooltip_accessibility_dismiss_announcement">ഉപകരണടിപ്പ് നിരാകരിച്ചു</string>
 </resources>
