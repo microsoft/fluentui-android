@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.view_action_bar.view.*
 import java.lang.Exception
 import java.lang.IllegalStateException
 
-class ActionBarLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : TemplateView(FluentUIContextThemeWrapper(context), attrs) {
+class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: AttributeSet? = null) : TemplateView(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs) {
     companion object {
         private val DEFAULT_TYPE = Type.BASIC
     }

@@ -45,7 +45,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
             // Need the theme wrapper to avoid crashing in Dark theme.
-            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context)).inflate(R.layout.view_snackbar, parent, false)
+            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context,R.style.Theme_FluentUI_Components)).inflate(R.layout.view_snackbar, parent, false)
             val snackbar = Snackbar(parent, content, ContentViewCallback(content))
             snackbar.duration = duration
             snackbar.setStyle(style)

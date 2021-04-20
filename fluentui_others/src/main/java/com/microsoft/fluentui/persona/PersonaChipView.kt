@@ -20,6 +20,7 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.view.TemplateView
@@ -91,7 +92,7 @@ class PersonaChipView : TemplateView {
     var listener: Listener? = null
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
         if (attrs == null)
             return
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaChipView)
