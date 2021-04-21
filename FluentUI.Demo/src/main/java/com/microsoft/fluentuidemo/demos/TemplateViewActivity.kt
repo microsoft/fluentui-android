@@ -6,8 +6,8 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,11 +35,13 @@ class TemplateViewActivity : DemoActivity() {
         vertical_cell.setOnClickListener { onCellClicked(it as Cell) }
 
         template_list_view.adapter = TemplateListViewAdapter()
-        template_list_view.layoutManager = LinearLayoutManager(this)
+        template_list_view.layoutManager =
+            LinearLayoutManager(this)
         template_list_view.setHasFixedSize(true)
 
         regular_list_view.adapter = RegularListViewAdapter()
-        regular_list_view.layoutManager = LinearLayoutManager(this)
+        regular_list_view.layoutManager =
+            LinearLayoutManager(this)
         regular_list_view.setHasFixedSize(true)
 
         calculate_cells_button.setOnClickListener {

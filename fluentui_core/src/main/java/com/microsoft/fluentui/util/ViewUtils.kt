@@ -8,10 +8,10 @@ package com.microsoft.fluentui.util
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager

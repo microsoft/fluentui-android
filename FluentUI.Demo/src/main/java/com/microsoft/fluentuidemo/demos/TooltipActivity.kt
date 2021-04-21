@@ -78,10 +78,10 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState?.putInt(BUTTON_ID, buttonId)
+        outState.putInt(BUTTON_ID, buttonId)
     }
 
     override fun onPause() {

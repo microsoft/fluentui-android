@@ -7,10 +7,10 @@ package com.microsoft.fluentui.popupmenu
 
 import android.content.Context
 import android.graphics.PorterDuff
-import android.support.annotation.DrawableRes
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.annotation.DrawableRes
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View

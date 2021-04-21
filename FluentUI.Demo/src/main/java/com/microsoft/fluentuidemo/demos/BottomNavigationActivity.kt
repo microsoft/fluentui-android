@@ -6,7 +6,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.support.design.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_bottom_navigation.*

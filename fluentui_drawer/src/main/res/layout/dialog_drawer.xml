@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_container"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_drawer_handle"
-            android:tint="?attr/fluentuiDrawerHandleColor"
+            app:tint="?attr/fluentuiDrawerHandleColor"
             android:layout_marginTop="@dimen/fluentui_drawer_handle_vertical_margin"
             android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
             android:layout_gravity="center"
@@ -42,4 +42,4 @@
 
     </com.microsoft.fluentui.drawer.DrawerView>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

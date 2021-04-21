@@ -5,7 +5,7 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 
 open class DefaultCommandItem(
         @DrawableRes private var icon: Int = 0,

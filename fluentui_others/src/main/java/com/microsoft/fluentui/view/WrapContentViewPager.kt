@@ -8,7 +8,7 @@ package com.microsoft.fluentui.view
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.util.Property
 import android.view.View

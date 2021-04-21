@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_layout_margin"/>
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sheet_horizontal_item_list_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,11 +41,11 @@
         android:layout_marginTop="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider" />
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/sheet_vertical_item_list_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/fluentui_bottom_sheet_bottom_padding"
         android:layout_marginTop="@dimen/default_layout_margin"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 </LinearLayout>

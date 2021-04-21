@@ -9,9 +9,9 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -21,8 +21,8 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import com.microsoft.fluentui.transients.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.transients.databinding.ViewTooltipBinding
 import com.microsoft.fluentui.util.*
-import kotlinx.android.synthetic.main.view_tooltip.view.*
 
 /**
  * Tooltips contain brief helper text shown next to a view that anchors it.
@@ -71,11 +71,12 @@ class Tooltip {
         // Need the theme wrapper to avoid crashing in Dark theme.
         // TODO Change to inflate(R.layout.view_tooltip, parent, false) and refactor dismiss inside listener accordingly.
         tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip, null)
-        textView = tooltipView.tooltip_text
-        arrowUpView = tooltipView.tooltip_arrow_up
-        arrowDownView = tooltipView.tooltip_arrow_down
-        arrowLeftView = tooltipView.tooltip_arrow_left
-        arrowRightView = tooltipView.tooltip_arrow_right
+        val bindig = ViewTooltipBinding.bind(tooltipView)
+        textView = bindig.tooltipText
+        arrowUpView = bindig.tooltipArrowUp
+        arrowDownView = bindig.tooltipArrowDown
+        arrowLeftView = bindig.tooltipArrowLeft
+        arrowRightView = bindig.tooltipArrowRight
 
         margin = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_margin)
 

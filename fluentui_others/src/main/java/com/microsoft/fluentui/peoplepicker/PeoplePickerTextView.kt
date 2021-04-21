@@ -13,9 +13,9 @@ import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
-import android.support.v4.widget.ExploreByTouchHelper
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.customview.widget.ExploreByTouchHelper
 import android.text.*
 import android.text.method.MovementMethod
 import android.text.style.TextAppearanceSpan
@@ -895,7 +895,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         override fun getVirtualViewAt(x: Float, y: Float): Int {
             if (objects == null || objects.size == 0)
-                return ExploreByTouchHelper.INVALID_ID
+                return INVALID_ID
 
             val offset = getOffsetForPosition(x, y)
             if (offset != -1) {
@@ -906,11 +906,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                     return objects.size
                 else if (peoplePickerTextViewBounds.contains(x.toInt(), y.toInt())) {
                     sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_ACCESSIBILITY_FOCUSED)
-                    return ExploreByTouchHelper.HOST_ID
+                    return HOST_ID
                 }
             }
 
-            return ExploreByTouchHelper.INVALID_ID
+            return INVALID_ID
         }
 
         override fun getVisibleVirtualViews(virtualViewIds: MutableList<Int>) {
