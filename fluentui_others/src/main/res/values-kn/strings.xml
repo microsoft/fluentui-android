@@ -98,6 +98,4 @@
   <string name="searchbar_back">ಹಿಂದೆ</string>
   <string name="searchbar_query_hint_default">ಶೋಧಿಸಿ</string>
   <string name="done">ಮುಗಿದಿದೆ</string>
-  <string name="tooltip_accessibility_dismiss_action">ವಜಾಗೊಳಿಸು</string>
-  <string name="tooltip_accessibility_dismiss_announcement">ಪರಿಕರಸೂಚಿಯನ್ನು ವಜಾಗೊಳಿಸಲಾಗಿದೆ</string>
 </resources>

@@ -102,6 +102,4 @@
   <string name="searchbar_back">Nazaj</string>
   <string name="searchbar_query_hint_default">Iskanje</string>
   <string name="done">Dokončano</string>
-  <string name="tooltip_accessibility_dismiss_action">opusti</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Opis orodja je opuščen</string>
 </resources>

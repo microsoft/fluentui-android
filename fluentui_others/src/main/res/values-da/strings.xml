@@ -98,6 +98,4 @@
   <string name="searchbar_back">Tilbage</string>
   <string name="searchbar_query_hint_default">Søg</string>
   <string name="done">Udført</string>
-  <string name="tooltip_accessibility_dismiss_action">afvis</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Værktøjstip er afvist</string>
 </resources>

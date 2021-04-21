@@ -113,11 +113,11 @@ internal class CalendarDayView: AppCompatButton, Checkable {
      * @param [calendarConfig] Config passes CalendarView attributes
      * @constructor creates an instance of a CalendarDayView
      */
-    constructor(context: Context, calendarConfig: CalendarView.Config) : super(FluentUIContextThemeWrapper(context)) {
+    constructor(appContext: Context, calendarConfig: CalendarView.Config) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components)) {
         config = calendarConfig
         setWillNotDraw(false)
 
-        todayBackgroundDrawable = ContextCompat.getDrawable(this.context, R.drawable.calendar_background_today)
+        todayBackgroundDrawable = ContextCompat.getDrawable(context, R.drawable.calendar_background_today)
 
         paint.isAntiAlias = true
 
@@ -134,7 +134,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, config.calendarDayTextSize.toFloat())
         isAllCaps = false
 
-        _foregroundDrawable = ContextCompat.getDrawable(this.context, R.drawable.ms_ripple_transparent_background)
+        _foregroundDrawable = ContextCompat.getDrawable(context, R.drawable.ms_ripple_transparent_background)
 
         setPadding(0, 0, 0, 0)
     }

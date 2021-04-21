@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 1
+        versionCode project.ext.fluentui_core_version_code
         versionName project.ext.fluentui_core_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true

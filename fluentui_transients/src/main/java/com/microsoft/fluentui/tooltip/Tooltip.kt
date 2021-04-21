@@ -19,9 +19,9 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.databinding.ViewTooltipBinding
+import com.microsoft.fluentui.transients.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.transients.databinding.ViewTooltipBinding
 import com.microsoft.fluentui.util.*
 
 /**
@@ -70,7 +70,7 @@ class Tooltip {
 
         // Need the theme wrapper to avoid crashing in Dark theme.
         // TODO Change to inflate(R.layout.view_tooltip, parent, false) and refactor dismiss inside listener accordingly.
-        tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context)).inflate(R.layout.view_tooltip, null)
+        tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip, null)
         val bindig = ViewTooltipBinding.bind(tooltipView)
         textView = bindig.tooltipText
         arrowUpView = bindig.tooltipArrowUp

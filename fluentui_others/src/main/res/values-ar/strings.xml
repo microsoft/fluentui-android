@@ -106,6 +106,4 @@
   <string name="searchbar_back">رجوع</string>
   <string name="searchbar_query_hint_default">بحث</string>
   <string name="done">تم</string>
-  <string name="tooltip_accessibility_dismiss_action">تجاهل</string>
-  <string name="tooltip_accessibility_dismiss_announcement">تم تجاهل تعريف الأدوات</string>
 </resources>

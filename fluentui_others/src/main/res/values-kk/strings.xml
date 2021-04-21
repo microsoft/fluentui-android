@@ -98,6 +98,4 @@
   <string name="searchbar_back">Артқа</string>
   <string name="searchbar_query_hint_default">Іздеу</string>
   <string name="done">Дайын</string>
-  <string name="tooltip_accessibility_dismiss_action">жабу</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Сөзкөмек жабылды</string>
 </resources>

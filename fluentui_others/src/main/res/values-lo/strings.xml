@@ -96,6 +96,4 @@
   <string name="searchbar_back">ກັບຄືນ</string>
   <string name="searchbar_query_hint_default">ຊອກຫາ</string>
   <string name="done">ແລ້ວໆ</string>
-  <string name="tooltip_accessibility_dismiss_action">ປິດໄວ້</string>
-  <string name="tooltip_accessibility_dismiss_announcement">ປິດເຄັດລັບເຄື່ອງມືໄວ້</string>
 </resources>

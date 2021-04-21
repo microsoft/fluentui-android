@@ -100,6 +100,4 @@
   <string name="searchbar_back">Atpakaļ</string>
   <string name="searchbar_query_hint_default">Meklēt</string>
   <string name="done">Gatavs</string>
-  <string name="tooltip_accessibility_dismiss_action">nerādīt</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Rīka padoms aizvērts</string>
 </resources>

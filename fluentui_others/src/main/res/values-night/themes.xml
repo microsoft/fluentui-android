@@ -79,9 +79,6 @@
         <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
         <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
 
-        <!--Tooltip-->
-        <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
     </style>
 
     <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent="">

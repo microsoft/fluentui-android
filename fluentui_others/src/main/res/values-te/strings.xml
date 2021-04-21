@@ -98,6 +98,4 @@
   <string name="searchbar_back">వెనుకకు</string>
   <string name="searchbar_query_hint_default">శోధన</string>
   <string name="done">పూర్తయింది</string>
-  <string name="tooltip_accessibility_dismiss_action">విస్మరించు</string>
-  <string name="tooltip_accessibility_dismiss_announcement">టూల్‌టిప్ విస్మరించబడింది</string>
 </resources>

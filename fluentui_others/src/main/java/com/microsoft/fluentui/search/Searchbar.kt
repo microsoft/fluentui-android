@@ -105,7 +105,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     var onCloseListener: SearchView.OnCloseListener? = null
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 
     /**
      * Sets the query text for the search view.

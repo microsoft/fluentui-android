@@ -96,6 +96,4 @@
   <string name="searchbar_back">Quay lại</string>
   <string name="searchbar_query_hint_default">Tìm kiếm</string>
   <string name="done">Đã xong</string>
-  <string name="tooltip_accessibility_dismiss_action">bỏ</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Đã bỏ mách nước</string>
 </resources>

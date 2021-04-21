@@ -18,7 +18,7 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 1
+        versionCode project.ext.fluentui_drawer_version_code
         versionName project.ext.fluentui_drawer_versionid
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'

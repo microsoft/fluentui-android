@@ -102,6 +102,4 @@
   <string name="searchbar_back">Atgal</string>
   <string name="searchbar_query_hint_default">Ieška</string>
   <string name="done">Atlikta</string>
-  <string name="tooltip_accessibility_dismiss_action">išjungti</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Patarimas atmestas</string>
 </resources>

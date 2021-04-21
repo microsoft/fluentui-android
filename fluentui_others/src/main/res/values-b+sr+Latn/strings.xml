@@ -100,6 +100,4 @@
   <string name="searchbar_back">Nazad</string>
   <string name="searchbar_query_hint_default">Pretraga</string>
   <string name="done">Gotovo</string>
-  <string name="tooltip_accessibility_dismiss_action">odbaci</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Opis alatke je odbačen</string>
 </resources>

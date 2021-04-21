@@ -21,6 +21,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.Companion.DEFAULT_ITEM_CHECKABLE_BEHAVIOR
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.view.TemplateView
@@ -59,7 +60,7 @@ internal class PopupMenuItemView : TemplateView {
     private var showCheckBox: Boolean = false
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 
     fun setMenuItem(popupMenuItem: PopupMenuItem) {
         title = popupMenuItem.title
