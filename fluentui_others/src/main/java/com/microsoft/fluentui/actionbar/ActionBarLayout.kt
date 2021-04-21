@@ -2,17 +2,17 @@ package com.microsoft.fluentui.actionbar
 
 import android.content.Context
 import android.content.res.ColorStateList
-import androidx.core.content.ContextCompat
-import androidx.viewpager.widget.ViewPager
 import android.util.AttributeSet
 import android.view.View
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.ViewPager
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.view.TemplateView
-import java.lang.Exception
-import java.lang.IllegalStateException
+
 
 class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: AttributeSet? = null) : TemplateView(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs) {
     companion object {
@@ -35,6 +35,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     private var rightAction: () -> Unit = { viewPager.currentItem = ++currentPosition }
     private var leftAction:  () -> Unit = { viewPager.currentItem = itemCount - 1 }
     private var launchMainScreen: () -> Unit = fun() {}
+    private var viewpagerAccessibilityDelegate: AccessibilityDelegate = defaultViewpagerAccessibilityDelegate()
     private lateinit var rightActionIcon: ImageView
     private lateinit var rightActionText: TextView
     private lateinit var rightActionContainer: View
@@ -47,7 +48,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
         viewPagerAttr = styledAttributes.getResourceId(R.styleable.ActionBarLayout_viewPager, View.NO_ID)
         typeAttr = Type.values()[styledAttributes.getInt(R.styleable.ActionBarLayout_type, DEFAULT_TYPE.ordinal)]
         styledAttributes.recycle()
-        finalPageString = context.getString(R.string.fluentui_action_bar_default_final_action)
+        finalPageString = context.getString(R.string.action_bar_default_final_action)
     }
 
     override fun onAttachedToWindow() {
@@ -94,6 +95,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     private fun carouselMode() {
         rightActionIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ms_ic_arrow_left_24_filled))
         rightActionIcon.rotation = 180f
+        rightActionIcon.contentDescription = resources.getString(R.string.action_bar_right_icon_description)
         rightActionIcon.setColorFilter(ContextCompat.getColor(context, R.color.fluentui_white))
         leftActionText.setTextColor(ContextCompat.getColor(context, R.color.fluentui_white))
         actionBarCarouselLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.fluentui_action_bar_carousel_background))
@@ -111,8 +113,10 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
         } catch (e: KotlinNullPointerException) {
             throw NoAdapterFoundError("No Adapter found for the current view pager")
         }
+        viewPager.setAccessibilityDelegate(viewpagerAccessibilityDelegate)
         actionBarCarousel.setItemCount(itemCount)
         actionBarCarousel.setCurrentPosition(0)
+
         updateButtons()
     }
 
@@ -133,17 +137,21 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
                 currentPosition = position
                 if (currentPosition < itemCount - 1) {
                     setViewVisibility(leftActionText, View.VISIBLE)
-                    setRightActionText(context.getString(R.string.fluentui_action_bar_default_right_action))
+                    setRightActionText(context.getString(R.string.action_bar_default_right_action))
                     resetActions()
                 } else{
                     setViewVisibility(leftActionText, View.INVISIBLE)
                     setRightActionText(finalPageString)
                     updateRightAction(launchMainScreen)
                 }
-
+                announcePageForAccessibility()
             }
         })
         resetActions()
+    }
+
+    private fun announcePageForAccessibility() {
+        announceForAccessibility(resources.getString(R.string.action_bar_accessibility_page_announcement, currentPosition+1, itemCount))
     }
 
     /**
@@ -238,4 +246,19 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
      * This error is thrown when the Adapter is not set for the given ViewPager.
      */
     class NoAdapterFoundError(message: String) : Exception(message)
+
+    // Accessibility
+    private inner class defaultViewpagerAccessibilityDelegate() : AccessibilityDelegate() {
+        override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+            super.onInitializeAccessibilityNodeInfo(host, info)
+            info?.contentDescription = resources.getString(R.string.action_bar_accessibility_viewpager_description, currentPosition+1, itemCount)
+        }
+    }
+
+    /**
+     * This function is used to set viewpagerAccessibilityDelegate programmatically
+     */
+    fun setViewpagerAccessibilityDelegate(accessibilityDelegate: AccessibilityDelegate) {
+        this.viewpagerAccessibilityDelegate = accessibilityDelegate
+    }
 }
