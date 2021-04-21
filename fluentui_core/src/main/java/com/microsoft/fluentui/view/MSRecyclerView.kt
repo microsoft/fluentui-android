@@ -8,9 +8,9 @@ package com.microsoft.fluentui.view
 import android.content.Context
 import android.hardware.SensorManager
 import android.os.SystemClock
-import android.support.annotation.RestrictTo
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.RestrictTo
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -177,7 +177,8 @@ open class MSRecyclerView : RecyclerView {
         if (!isSnappingEnabled || !hasFixedSize())
             return
 
-        val linearLayoutManager = layoutManager as? LinearLayoutManager ?: return
+        val linearLayoutManager = layoutManager as? LinearLayoutManager
+            ?: return
 
         if (SCROLL_STATE_IDLE == state && !flingRequested) {
             val firstPosition = linearLayoutManager.findFirstVisibleItemPosition()
@@ -209,7 +210,8 @@ open class MSRecyclerView : RecyclerView {
         if (!isSnappingEnabled || !hasFixedSize())
             return super.fling(velocityX, velocityY)
 
-        val linearLayoutManager = layoutManager as? LinearLayoutManager ?: return super.fling(velocityX, velocityY)
+        val linearLayoutManager = layoutManager as? LinearLayoutManager
+            ?: return super.fling(velocityX, velocityY)
 
         if (isLayoutFrozen)
             return false

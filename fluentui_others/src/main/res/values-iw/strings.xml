@@ -102,6 +102,4 @@
   <string name="searchbar_back">הקודם</string>
   <string name="searchbar_query_hint_default">חיפוש</string>
   <string name="done">בוצע</string>
-  <string name="tooltip_accessibility_dismiss_action">בטל</string>
-  <string name="tooltip_accessibility_dismiss_announcement">תיאור הכלי נסגר</string>
 </resources>

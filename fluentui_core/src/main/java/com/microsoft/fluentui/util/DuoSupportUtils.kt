@@ -3,7 +3,7 @@ package com.microsoft.fluentui.util
 import android.app.Activity
 import android.content.Context
 import android.graphics.Rect
-import android.support.v7.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import android.view.View
 import com.microsoft.device.dualscreen.layout.ScreenHelper
 import java.lang.Exception

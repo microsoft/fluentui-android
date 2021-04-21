@@ -103,7 +103,7 @@ class PersonaView : ListItemView {
     private val avatarView = AvatarView(context)
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(appContext, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaView)
         name = styledAttrs.getString(R.styleable.PersonaView_name) ?: ""
         email = styledAttrs.getString(R.styleable.PersonaView_email) ?: ""

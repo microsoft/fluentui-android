@@ -8,13 +8,13 @@ package com.microsoft.fluentui.appbarlayout
 import android.animation.AnimatorInflater
 import android.content.Context
 import android.os.Build
-import android.support.annotation.IdRes
-import android.support.design.widget.AppBarLayout
-import android.support.design.widget.AppBarLayout.LayoutParams.*
-import android.support.design.widget.AppBarLayout.OnOffsetChangedListener
-import android.support.design.widget.CoordinatorLayout
-import android.support.v4.widget.NestedScrollView
-import android.support.v7.widget.RecyclerView
+import androidx.annotation.IdRes
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.LayoutParams.*
+import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.widget.NestedScrollView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
@@ -121,7 +121,7 @@ class AppBarLayout : AppBarLayout {
         }
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(context), attrs) {
+    constructor(appContext: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs) {
         setupToolbar(context)
         setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiAppBarLayoutBackgroundColor))
 
@@ -149,7 +149,8 @@ class AppBarLayout : AppBarLayout {
         val firstSibling = parent.getChildAt(firstSiblingIndex)
         val scrollTargetViewWithId = parent.findViewById<View>(scrollTargetViewId)
 
-        return scrollTargetViewWithId ?: firstSibling as? RecyclerView ?: firstSibling as? NestedScrollView
+        return scrollTargetViewWithId ?: firstSibling as? RecyclerView
+        ?: firstSibling as? NestedScrollView
     }
 
     private fun setStateListAnimator(lift: Boolean) {

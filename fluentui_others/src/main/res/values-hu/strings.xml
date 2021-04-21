@@ -98,6 +98,4 @@
   <string name="searchbar_back">Vissza</string>
   <string name="searchbar_query_hint_default">Keresés</string>
   <string name="done">Kész</string>
-  <string name="tooltip_accessibility_dismiss_action">bezárás</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Elemleírás bezárva</string>
 </resources>

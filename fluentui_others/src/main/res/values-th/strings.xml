@@ -96,6 +96,4 @@
   <string name="searchbar_back">ย้อนกลับ</string>
   <string name="searchbar_query_hint_default">ค้นหา</string>
   <string name="done">เสร็จสิ้น</string>
-  <string name="tooltip_accessibility_dismiss_action">ปิด</string>
-  <string name="tooltip_accessibility_dismiss_announcement">ปิดคำแนะนำเครื่องมือแล้ว</string>
 </resources>

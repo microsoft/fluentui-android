@@ -5,7 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.persona.IAvatar
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona

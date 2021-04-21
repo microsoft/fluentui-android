@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--Snackbar-->
+    <integer name="fluentui_snackbar_max_lines">2</integer>
+
+    <!--Tooltip-->
+    <!--layout alpha values only accept integer resources despite the fact that these values are floats-->
+    <item name="fluentui_tooltip_background_alpha" type="integer" format="float">0.95</item>
+</resources>

@@ -102,6 +102,4 @@
   <string name="searchbar_back">Назад</string>
   <string name="searchbar_query_hint_default">Поиск</string>
   <string name="done">Готово</string>
-  <string name="tooltip_accessibility_dismiss_action">закрыть</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Подсказка закрыта</string>
 </resources>

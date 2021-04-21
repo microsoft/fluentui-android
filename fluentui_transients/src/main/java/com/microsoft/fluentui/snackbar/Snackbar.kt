@@ -6,10 +6,10 @@
 package com.microsoft.fluentui.snackbar
 
 import android.content.Context
-import android.support.design.widget.BaseTransientBottomBar
-import android.support.design.widget.CoordinatorLayout
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.AppCompatButton
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.AppCompatButton
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -17,13 +17,13 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.R.id.*
+import com.microsoft.fluentui.transients.R
+import com.microsoft.fluentui.transients.R.id.*
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.transients.databinding.ViewSnackbarBinding
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.activity
-import kotlinx.android.synthetic.main.view_snackbar.view.*
 
 /**
  * Snackbars provide lightweight feedback about an operation by showing a brief message at the bottom of the screen.
@@ -45,7 +45,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
             // Need the theme wrapper to avoid crashing in Dark theme.
-            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context)).inflate(R.layout.view_snackbar, parent, false)
+            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_snackbar, parent, false)
             val snackbar = Snackbar(parent, content, ContentViewCallback(content))
             snackbar.duration = duration
             snackbar.setStyle(style)
@@ -106,10 +106,10 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         REGULAR, ANNOUNCEMENT
     }
 
-    private val snackbarContainer: RelativeLayout = view.snackbar_container
+    private val snackbarContainer: RelativeLayout
     private var customView: View? = null
-    private val textView: TextView = view.snackbar_text
-    private val actionButtonView: AppCompatButton = view.snackbar_action
+    private val textView: TextView
+    private val actionButtonView: AppCompatButton
 
     private var customViewSize: CustomViewSize = CustomViewSize.SMALL
     private var style: Style = Style.REGULAR
@@ -129,6 +129,11 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         }
 
     private constructor(parent: ViewGroup, content: View, contentViewCallback: ContentViewCallback) : super(parent, content, contentViewCallback) {
+        val binding = ViewSnackbarBinding.bind(content)
+        textView = binding.snackbarText
+        snackbarContainer = binding.snackbarContainer
+        actionButtonView = binding.snackbarAction
+
         updateBackground()
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
         if (content.parent is FrameLayout) {
@@ -253,8 +258,8 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
     private fun updateBackground() {
         when (style) {
-            Style.REGULAR -> view.background = ContextCompat.getDrawable(context, R.drawable.snackbar_background)
-            Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(context, R.drawable.snackbar_background_announcement)
+            Style.REGULAR -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background)
+            Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_announcement)
         }
     }
 
@@ -265,11 +270,11 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
 
         when (style) {
             Style.REGULAR -> {
-                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiSnackbarActionTextColor))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextColor))
                 customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
             Style.ANNOUNCEMENT -> {
-                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiSnackbarActionTextAnnouncementColor))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextAnnouncementColor))
                 customViewLayoutParams?.removeRule(RelativeLayout.CENTER_VERTICAL)
             }
         }
@@ -324,25 +329,26 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
     }
 
     private class ContentViewCallback(private val content: View) : BaseTransientBottomBar.ContentViewCallback {
+        val viewBinding = ViewSnackbarBinding.bind(content)
         override fun animateContentIn(delay: Int, duration: Int) {
             // These animations are from the Android Snackbar
-            content.snackbar_text.alpha = 0f
-            content.snackbar_text.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+            viewBinding.snackbarText.alpha = 0f
+            viewBinding.snackbarText.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
 
-            if (content.snackbar_action.visibility == View.VISIBLE) {
-                content.snackbar_action.alpha = 0f
-                content.snackbar_action.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+            if (viewBinding.snackbarAction.visibility == View.VISIBLE) {
+                viewBinding.snackbarAction.alpha = 0f
+                viewBinding.snackbarAction.animate().alpha(1f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
             }
         }
 
         override fun animateContentOut(delay: Int, duration: Int) {
             // These animations are from the Android Snackbar
-            content.snackbar_text.alpha = 1f
-            content.snackbar_text.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+            viewBinding.snackbarText.alpha = 1f
+            viewBinding.snackbarText.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
 
-            if (content.snackbar_action.visibility == View.VISIBLE) {
-                content.snackbar_action.alpha = 1f
-                content.snackbar_action.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
+            if (viewBinding.snackbarAction.visibility == View.VISIBLE) {
+                viewBinding.snackbarAction.alpha = 1f
+                viewBinding.snackbarAction.animate().alpha(0f).setDuration(duration.toLong()).setStartDelay(delay.toLong()).start()
             }
         }
     }

@@ -222,13 +222,7 @@
     <string name="searchbar_query_hint_default">Search</string>
 
 
-    <!-- *** Tooltip *** -->
 
-    <!--accessibility-->
-    <!--Announces action used to dismiss tooltip and is combined with system default "Double tap to"-->
-    <string name="tooltip_accessibility_dismiss_action">dismiss</string>
-    <!--Announcement when Tooltip is dismissed-->
-    <string name="tooltip_accessibility_dismiss_announcement">Tooltip dismissed</string>
     <!--Announcement when SearchBar is cleared-->
     <string name="searchbar_accessibility_cleared_announcement">edit field cleared</string>
 

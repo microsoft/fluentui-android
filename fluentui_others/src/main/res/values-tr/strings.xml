@@ -98,6 +98,4 @@
   <string name="searchbar_back">Geri</string>
   <string name="searchbar_query_hint_default">Ara</string>
   <string name="done">Bitti</string>
-  <string name="tooltip_accessibility_dismiss_action">kapat</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Araç ipucu kapatıldı</string>
 </resources>

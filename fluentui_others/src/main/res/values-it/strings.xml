@@ -98,6 +98,4 @@
   <string name="searchbar_back">Indietro</string>
   <string name="searchbar_query_hint_default">Cerca</string>
   <string name="done">Fatto</string>
-  <string name="tooltip_accessibility_dismiss_action">Ignora</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Descrizione comando ignorata</string>
 </resources>

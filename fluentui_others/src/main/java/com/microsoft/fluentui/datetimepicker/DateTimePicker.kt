@@ -8,7 +8,7 @@ package com.microsoft.fluentui.datetimepicker
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatDialogFragment
+import androidx.appcompat.app.AppCompatDialogFragment
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.*
 import com.microsoft.fluentui.util.DateTimeUtils

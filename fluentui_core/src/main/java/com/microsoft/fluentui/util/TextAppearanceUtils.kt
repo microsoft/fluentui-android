@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.util
 
 import android.content.Context
-import android.support.annotation.StyleRes
+import androidx.annotation.StyleRes
 
 fun Context.getTextSize(@StyleRes textAppearanceResourceId: Int): Float {
     val textAttributes = obtainStyledAttributes(textAppearanceResourceId, intArrayOf(android.R.attr.textSize))
