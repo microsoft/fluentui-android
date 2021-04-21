@@ -7,7 +7,7 @@ package com.microsoft.fluentui.popupmenu
 
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 
 /**
  * [id] is the unique identifier for this item.

@@ -6,9 +6,9 @@
 package com.microsoft.fluentui.datetimepicker
 
 import android.content.Context
-import android.support.design.widget.TabLayout
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
+import com.google.android.material.tabs.TabLayout
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
 import android.text.format.DateFormat
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -16,12 +16,12 @@ import android.view.View
 import android.view.accessibility.AccessibilityEvent
 import android.widget.LinearLayout
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.databinding.ViewTimePickerBinding
 import com.microsoft.fluentui.datetimepicker.TimePicker.PickerMode
 import com.microsoft.fluentui.managers.PreferencesManager
 import com.microsoft.fluentui.util.DateStringUtils
 import com.microsoft.fluentui.util.DateTimeUtils
 import com.microsoft.fluentui.view.NumberPicker
-import kotlinx.android.synthetic.main.view_time_picker.view.*
 import org.threeten.bp.*
 import org.threeten.bp.temporal.ChronoUnit
 import java.text.DateFormatSymbols
@@ -55,7 +55,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     }
 
     val selectedTab: DateTimeRangeTab
-        get() = DateTimeRangeTab.values()[start_end_tabs.selectedTabPosition]
+        get() = DateTimeRangeTab.values()[timePickerBinding.startEndTabs.selectedTabPosition]
 
     var timeSlot: TimeSlot = TimeSlot(ZonedDateTime.now(), Duration.ZERO)
         get() {
@@ -105,8 +105,8 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     private var shouldAnnounceHints: Boolean = true
 
     private val shouldToggleAmPmPeriod: Boolean
-        get() = lastSelectedHour == HOUR_BEFORE_PERIOD_CHANGE && hour_picker.value == MAX_HOURS_12_CLOCK ||
-            lastSelectedHour == MAX_HOURS_12_CLOCK && hour_picker.value == HOUR_BEFORE_PERIOD_CHANGE
+        get() = lastSelectedHour == HOUR_BEFORE_PERIOD_CHANGE && timePickerBinding.hourPicker.value == MAX_HOURS_12_CLOCK ||
+            lastSelectedHour == MAX_HOURS_12_CLOCK && timePickerBinding.hourPicker.value == HOUR_BEFORE_PERIOD_CHANGE
 
     private val onTabSelectedListener = object : TabLayout.OnTabSelectedListener {
         override fun onTabSelected(tab: TabLayout.Tab) {
@@ -119,13 +119,14 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
 
         override fun onTabReselected(tab: TabLayout.Tab) { }
     }
+    private val timePickerBinding: ViewTimePickerBinding
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
-        LayoutInflater.from(context).inflate(R.layout.view_time_picker, this, true)
+        timePickerBinding = ViewTimePickerBinding.inflate(LayoutInflater.from(context), this, true)
         is24Hour = DateFormat.is24HourFormat(context)
 
-        with(start_end_tabs) {
+        with(timePickerBinding.startEndTabs) {
             addTab(newTab())
             addTab(newTab())
             addOnTabSelectedListener(onTabSelectedListener)
@@ -140,9 +141,9 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
      */
     fun selectTab(dateTimeRangeTab: DateTimeRangeTab) {
         if (dateTimeRangeTab == DateTimeRangeTab.NONE) {
-            start_end_tabs.visibility = View.GONE
+            timePickerBinding.startEndTabs.visibility = View.GONE
         } else {
-            with(start_end_tabs) {
+            with(timePickerBinding.startEndTabs) {
                 removeOnTabSelectedListener(onTabSelectedListener)
                 getTabAt(dateTimeRangeTab.ordinal)?.select()
                 addOnTabSelectedListener(onTabSelectedListener)
@@ -207,19 +208,19 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
         }
     }
 
-    private fun getTab(dateTimeRangeTab: DateTimeRangeTab): TabLayout.Tab? = start_end_tabs.getTabAt(dateTimeRangeTab.ordinal)
+    private fun getTab(dateTimeRangeTab: DateTimeRangeTab): TabLayout.Tab? = timePickerBinding.startEndTabs.getTabAt(dateTimeRangeTab.ordinal)
 
     // Date Time NumberPickers
 
     private val dateTimePickerValue: ZonedDateTime
         get() {
             val now = ZonedDateTime.now().truncatedTo(ChronoUnit.MINUTES)
-            val dayDiff = date_picker.value - daysBack
-            var hour = hour_picker.value
-            val minute = minute_picker.value
+            val dayDiff = timePickerBinding.datePicker.value - daysBack
+            var hour = timePickerBinding.hourPicker.value
+            val minute = timePickerBinding.minutePicker.value
 
             if (!is24Hour) {
-                val isMorning = period_picker.value == 0
+                val isMorning = timePickerBinding.periodPicker.value == 0
                 val periodStartHour = if (isMorning) 0 else MAX_HOURS_12_CLOCK
                 if (hour == MAX_HOURS_12_CLOCK)
                     hour = periodStartHour
@@ -236,14 +237,14 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
         getTab(DateTimeRangeTab.START)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_start_time)
         getTab(DateTimeRangeTab.END)?.contentDescription = resources.getString(R.string.date_time_picker_accessiblility_end_time)
 
-        date_time_pickers.visibility = View.VISIBLE
+        timePickerBinding.dateTimePickers.visibility = View.VISIBLE
 
         initDatePicker()
         initHourPicker()
         initMinutePicker()
         initPeriodPicker()
 
-        setNumberPickerGroupAccessibilityFocusChangeListener(date_time_pickers)
+        setNumberPickerGroupAccessibilityFocusChangeListener(timePickerBinding.dateTimePickers)
     }
 
     private fun initDatePicker() {
@@ -257,7 +258,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
         daysBack = ChronoUnit.DAYS.between(minWindowRange, today).toInt()
         daysForward = ChronoUnit.DAYS.between(today, maxWindowRange).toInt()
 
-        with(date_picker) {
+        with(timePickerBinding.datePicker) {
             minValue = 0
             maxValue = daysBack + daysForward
             value = daysBack
@@ -271,7 +272,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     }
 
     private fun initHourPicker() {
-        with(hour_picker) {
+        with(timePickerBinding.hourPicker) {
             minValue = if (is24Hour) MIN_HOURS_24_CLOCK else MIN_HOURS_12_CLOCK
             maxValue = if (is24Hour) MAX_HOURS_24_CLOCK else MAX_HOURS_12_CLOCK
             virtualIncrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_increment_hour_button)
@@ -283,7 +284,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     }
 
     private fun initMinutePicker() {
-        with(minute_picker) {
+        with(timePickerBinding.minutePicker) {
             minValue = MIN_MINUTES
             maxValue = MAX_MINUTES
             virtualIncrementButtonDescription = resources.getString(R.string.date_time_picker_accessibility_increment_minute_button)
@@ -296,7 +297,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     }
 
     private fun initPeriodPicker() {
-        with(period_picker) {
+        with(timePickerBinding.periodPicker) {
             minValue = MIN_PERIOD
             maxValue = MAX_PERIOD
             displayedValues = DateStringUtils.amPmStrings
@@ -317,17 +318,17 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
         val ampmValue = if (time.hour < 12) 0 else 1
 
         if (animate) {
-            date_picker.quicklyAnimateValueTo(dateValue)
-            hour_picker.animateValueTo(hourValue)
-            minute_picker.quicklyAnimateValueTo(minuteValue)
+            timePickerBinding.datePicker.quicklyAnimateValueTo(dateValue)
+            timePickerBinding.hourPicker.animateValueTo(hourValue)
+            timePickerBinding.minutePicker.quicklyAnimateValueTo(minuteValue)
             if (!is24Hour)
-                period_picker.animateValueTo(ampmValue)
+                timePickerBinding.periodPicker.animateValueTo(ampmValue)
         } else {
-            date_picker.value = dateValue
-            hour_picker.value = hourValue
-            minute_picker.value = minuteValue
+            timePickerBinding.datePicker.value = dateValue
+            timePickerBinding.hourPicker.value = hourValue
+            timePickerBinding.minutePicker.value = minuteValue
             if (!is24Hour)
-                period_picker.value = ampmValue
+                timePickerBinding.periodPicker.value = ampmValue
         }
 
         lastSelectedHour = hourValue
@@ -336,18 +337,18 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
 
     private fun updateAmPmPeriod() {
         if (shouldToggleAmPmPeriod) {
-            val periodValue = AmPmPeriod.values()[period_picker.value]
+            val periodValue = AmPmPeriod.values()[timePickerBinding.periodPicker.value]
             val period = if (periodValue == AmPmPeriod.AM) AmPmPeriod.PM else AmPmPeriod.AM
-            period_picker.animateValueTo(period.ordinal)
+            timePickerBinding.periodPicker.animateValueTo(period.ordinal)
         }
 
-        lastSelectedHour = hour_picker.value
+        lastSelectedHour = timePickerBinding.hourPicker.value
     }
 
     // Date NumberPickers
 
     private val datePickerValue: ZonedDateTime
-        get() = ZonedDateTime.now().withYear(year_picker.value).withMonth(month_picker.value).withDayOfMonth(day_picker.value)
+        get() = ZonedDateTime.now().withYear(timePickerBinding.yearPicker.value).withMonth(timePickerBinding.monthPicker.value).withDayOfMonth(timePickerBinding.dayPicker.value)
 
     private fun initDateNumberPickers() {
         getTab(DateTimeRangeTab.START)?.setText(R.string.date_time_picker_start_date)
@@ -355,18 +356,18 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
         getTab(DateTimeRangeTab.START)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_start_date)
         getTab(DateTimeRangeTab.END)?.contentDescription = resources.getString(R.string.date_picker_accessiblility_end_date)
 
-        date_pickers.visibility = View.VISIBLE
+        timePickerBinding.datePickers.visibility = View.VISIBLE
 
         initMonthPicker()
         initDayPicker()
         initYearPicker()
 
-        setNumberPickerGroupAccessibilityFocusChangeListener(date_pickers)
+        setNumberPickerGroupAccessibilityFocusChangeListener(timePickerBinding.datePickers)
     }
 
     private fun initMonthPicker() {
         val months = DateFormatSymbols().months
-        with(month_picker) {
+        with(timePickerBinding.monthPicker) {
             minValue = MIN_MONTHS
             maxValue = months.size
             displayedValues = months
@@ -381,7 +382,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     private fun initDayPicker() {
         // set default min and max
         updateDaysPerMonth(ZonedDateTime.now())
-        with(day_picker) {
+        with(timePickerBinding.dayPicker) {
             virtualIncrementButtonDescription = resources.getString(R.string.date_picker_accessibility_increment_day_button)
             virtualDecrementButtonDescription = resources.getString(R.string.date_picker_accessibility_decrement_day_button)
             virtualIncrementClickActionAnnouncement = resources.getString(R.string.date_picker_accessibility_next_day_click_action)
@@ -392,7 +393,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
 
     private fun initYearPicker() {
         val today = LocalDate.now()
-        with(year_picker) {
+        with(timePickerBinding.yearPicker) {
             minValue = today.minusMonths(MONTH_LIMIT).year
             maxValue = today.plusMonths(MONTH_LIMIT).year
             wrapSelectorWheel = false
@@ -408,13 +409,13 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
         val time = if (showEndTime) dateTime.plus(duration) else dateTime
 
         if (animate) {
-            month_picker.quicklyAnimateValueTo(time.monthValue)
-            year_picker.animateValueTo(time.year)
-            day_picker.quicklyAnimateValueTo(time.dayOfMonth)
+            timePickerBinding.monthPicker.quicklyAnimateValueTo(time.monthValue)
+            timePickerBinding.yearPicker.animateValueTo(time.year)
+            timePickerBinding.dayPicker.quicklyAnimateValueTo(time.dayOfMonth)
         } else {
-            month_picker.value = time.monthValue
-            year_picker.value = time.year
-            day_picker.value = time.dayOfMonth
+            timePickerBinding.monthPicker.value = time.monthValue
+            timePickerBinding.yearPicker.value = time.year
+            timePickerBinding.dayPicker.value = time.dayOfMonth
         }
 
         updateDaysPerMonth(time)
@@ -424,7 +425,7 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     private fun updateDaysPerMonth(time: ZonedDateTime) {
         val time = if (selectedTab == DateTimeRangeTab.END) time.plus(duration) else time
         val yearMonth = YearMonth.of(time.year, time.month)
-        with(day_picker) {
+        with(timePickerBinding.dayPicker) {
             minValue = MIN_DAYS
             maxValue = yearMonth.lengthOfMonth()
         }
@@ -433,10 +434,10 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     // Accessibility
 
     private fun updateRangeContentDescription() {
-        if (start_end_tabs.visibility == View.VISIBLE)
+        if (timePickerBinding.startEndTabs.visibility == View.VISIBLE)
             when (pickerMode) {
-                PickerMode.DATE -> date_pickers.contentDescription = getAccessibilityDescription(true)
-                PickerMode.DATE_TIME -> date_time_pickers.contentDescription = getAccessibilityDescription(false)
+                PickerMode.DATE -> timePickerBinding.datePicker.contentDescription = getAccessibilityDescription(true)
+                PickerMode.DATE_TIME -> timePickerBinding.dateTimePickers.contentDescription = getAccessibilityDescription(false)
             }
     }
 
@@ -460,10 +461,10 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
 
     private fun announceNumberPickerValue(picker: NumberPicker) {
         val timePeriod = when(picker.id) {
-            R.id.date_picker -> getDate(date_picker.value, dateTimePickerValue)
+            R.id.date_picker -> getDate(timePickerBinding.datePicker.value, dateTimePickerValue)
             R.id.hour_picker -> "${getHour(dateTimePickerValue)}"
             R.id.minute_picker -> "${dateTimePickerValue.minute}"
-            R.id.period_picker -> DateStringUtils.amPmStrings[period_picker.value]
+            R.id.period_picker -> DateStringUtils.amPmStrings[timePickerBinding.periodPicker.value]
             R.id.month_picker -> "${datePickerValue.month}"
             R.id.day_picker -> "${datePickerValue.dayOfMonth}"
             R.id.year_picker -> "${datePickerValue.year}"
@@ -474,18 +475,18 @@ internal class TimePicker : LinearLayout, NumberPicker.OnValueChangeListener {
     }
 
     private fun updateDateTimePickerHints() {
-        setVirtualButtonHint(date_picker, getDate(date_picker.value, dateTimePickerValue))
-        setVirtualButtonHint(hour_picker, "${getHour(dateTimePickerValue)}")
-        setVirtualButtonHint(minute_picker, "${dateTimePickerValue.minute}")
+        setVirtualButtonHint(timePickerBinding.datePicker, getDate(timePickerBinding.datePicker.value, dateTimePickerValue))
+        setVirtualButtonHint(timePickerBinding.hourPicker, "${getHour(dateTimePickerValue)}")
+        setVirtualButtonHint(timePickerBinding.minutePicker, "${dateTimePickerValue.minute}")
 
-        val periodValue = DateStringUtils.amPmStrings[period_picker.value]
-        period_picker.virtualToggleHint = getSelectedValueString(periodValue)
+        val periodValue = DateStringUtils.amPmStrings[timePickerBinding.periodPicker.value]
+        timePickerBinding.periodPicker.virtualToggleHint = getSelectedValueString(periodValue)
     }
 
     private fun updateDatePickerHints() {
-        setVirtualButtonHint(month_picker,"${datePickerValue.month}")
-        setVirtualButtonHint(day_picker, "${datePickerValue.dayOfMonth}")
-        setVirtualButtonHint(year_picker, "${datePickerValue.year}")
+        setVirtualButtonHint(timePickerBinding.monthPicker,"${datePickerValue.month}")
+        setVirtualButtonHint(timePickerBinding.dayPicker, "${datePickerValue.dayOfMonth}")
+        setVirtualButtonHint(timePickerBinding.yearPicker, "${datePickerValue.year}")
     }
 
     private fun setVirtualButtonHint(picker: NumberPicker, value: String) {

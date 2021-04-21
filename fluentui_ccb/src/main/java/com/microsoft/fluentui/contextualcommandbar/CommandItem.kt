@@ -5,7 +5,7 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
-import android.support.annotation.DrawableRes
+import androidx.annotation.DrawableRes
 import android.view.View
 
 interface CommandItem {

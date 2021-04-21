@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.bottomsheet
 
 import android.content.Context
-import android.support.annotation.StyleRes
+import androidx.annotation.StyleRes
 import android.view.View
 import android.view.Window
 import com.microsoft.fluentui.util.ThemeUtil
@@ -15,9 +15,8 @@ import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.listitem.ListSubHeaderView
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.drawer.DrawerDialog
+import com.microsoft.fluentui.drawer.databinding.ViewBottomSheetBinding
 import com.microsoft.fluentui.util.isVisible
-import kotlinx.android.synthetic.main.dialog_drawer.view.*
-import kotlinx.android.synthetic.main.view_bottom_sheet.view.*
 
 /**
  * [BottomSheetDialog] is used to display a list of menu items in a modal dialog.
@@ -31,20 +30,20 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
     constructor(context: Context, items: ArrayList<BottomSheetItem>, headerItem: BottomSheetItem? = null, @StyleRes theme: Int = 0) : super(context, BehaviorType.BOTTOM, theme) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
 
-        val view = layoutInflater.inflate(R.layout.view_bottom_sheet, container.drawer_content, false)
+        val binding = ViewBottomSheetBinding.inflate(layoutInflater, drawerContent, false)
 
         val adapter = BottomSheetAdapter(this.context, items, theme)
         adapter.onBottomSheetItemClickListener = this
-        view.bottom_sheet_items.adapter = adapter
-        view.bottom_sheet_items.addItemDecoration(BottomSheetItemDivider(context))
+        binding.bottomSheetItems.adapter = adapter
+        binding.bottomSheetItems.addItemDecoration(BottomSheetItemDivider(context))
 
         headerItem?.let {
-            view.bottom_sheet_header_content.addView(createHeader(it))
-            view.bottom_sheet_header_content.visibility = View.VISIBLE
-            view.bottom_sheet_header_divider.isVisible = !isSingleLineHeader(it)
+            binding.bottomSheetHeaderContent.addView(createHeader(it))
+            binding.bottomSheetHeaderContent.visibility = View.VISIBLE
+            binding.bottomSheetHeaderDivider.isVisible = !isSingleLineHeader(it)
         }
 
-        setContentView(view)
+        setContentView(binding.root)
     }
 
     private fun createHeader(headerItem: BottomSheetItem): View {

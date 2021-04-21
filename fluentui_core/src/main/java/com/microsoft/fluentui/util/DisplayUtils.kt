@@ -9,7 +9,7 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Point
 import android.graphics.Rect
-import android.support.v4.view.ViewCompat
+import androidx.core.view.ViewCompat
 import android.view.Surface
 import android.view.View
 import android.view.WindowManager
