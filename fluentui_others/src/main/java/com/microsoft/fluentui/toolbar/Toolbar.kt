@@ -66,6 +66,7 @@ class Toolbar : Toolbar {
     }
 
     private fun updateStylesAndIcon(nativeBackButtonUsed: Boolean = false) {
+        touchscreenBlocksFocus = false
         if (navigationIcon == null && !nativeBackButtonUsed) {
             setPaddingRelative(context.resources.getDimension(R.dimen.fluentui_toolbar_padding_start).toInt(), 0, 0, 0)
             titleMarginStart = context.resources.getDimension(R.dimen.fluentui_toolbar_title_margin_start).toInt()
