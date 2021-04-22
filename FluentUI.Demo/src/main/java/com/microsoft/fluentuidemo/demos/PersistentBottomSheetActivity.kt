@@ -242,6 +242,8 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                 set_one_line_content.visibility = View.GONE
             }
             currentSheet.visibility = View.VISIBLE
+            currentSheet.setDrawerHandleContentDescription(getString(R.string.drawer_content_desc_collapse_state),
+                    getString(R.string.drawer_content_desc_expand_state))
         }
 
         set_one_line_content.setOnClickListener {

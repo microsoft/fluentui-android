@@ -172,6 +172,7 @@ class TabLayout : TemplateView {
                    super.onInitializeAccessibilityNodeInfo(host, info)
                    info?.apply {
                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                           // after androidx this is getting repeated in content description
                            tooltipText = ""
                        }
                        val infoCompat = AccessibilityNodeInfoCompat.wrap(info)
