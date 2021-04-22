@@ -98,6 +98,4 @@
   <string name="searchbar_back">Back</string>
   <string name="searchbar_query_hint_default">Search</string>
   <string name="done">Done</string>
-  <string name="tooltip_accessibility_dismiss_action">dismiss</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Tooltip dismissed</string>
 </resources>

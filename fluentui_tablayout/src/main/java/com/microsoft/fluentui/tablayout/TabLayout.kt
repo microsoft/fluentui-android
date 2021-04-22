@@ -7,13 +7,17 @@ package com.microsoft.fluentui.tablayout
 
 import android.content.Context
 import android.graphics.drawable.StateListDrawable
-import android.support.design.widget.TabLayout
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.drawable.DrawableCompat
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.*
+import com.google.android.material.tabs.TabLayout
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.view.TemplateView
@@ -136,7 +140,7 @@ class TabLayout : TemplateView {
         val tabLayout = tabLayout ?: return
         val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount - 1) {
-            val tab: View = viewGroup.getChildAt(i)
+            val tab: View = viewGroup.getChildAt(i) as TabLayout.TabView
             tab.layoutParams = (tab.layoutParams as LinearLayout.LayoutParams).apply {
                 rightMargin = resources.getDimension(R.dimen.fluentui_tab_margin).toInt()
             }
@@ -161,9 +165,32 @@ class TabLayout : TemplateView {
         val tabLayout = tabLayout ?: return
         val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount) {
-            val tab: View = viewGroup.getChildAt(i)
-            val tabView = tabLayout.getTabAt(i)
-            tabView?.contentDescription = tabView?.text?.toString() + context.getString(R.string.tab_content_description, (i + 1), tabLayout.tabCount)
+            val tab: TabLayout.TabView = viewGroup.getChildAt(i) as TabLayout.TabView
+            tab.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
+           tab.setAccessibilityDelegate(object : AccessibilityDelegate() {
+               override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+                   super.onInitializeAccessibilityNodeInfo(host, info)
+                   info?.apply {
+                       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                           tooltipText = ""
+                       }
+                       val infoCompat = AccessibilityNodeInfoCompat.wrap(info)
+                       infoCompat.setCollectionItemInfo(
+                               CollectionItemInfoCompat.obtain( /* rowIndex= */
+                                       0,  /* rowSpan= */
+                                       1,  /* columnIndex= */
+                                       tab.tab!!.position,  /* columnSpan= */
+                                       1,  /* heading= */
+                                       tab.tab!!.position ==0,  /* selected= */
+                                       isSelected))
+                       if (isSelected) {
+                           infoCompat.isClickable = false
+                           infoCompat.removeAction(AccessibilityActionCompat.ACTION_CLICK)
+                       }
+                       infoCompat.roleDescription = resources.getString(R.string.item_view_role_description)
+                   }
+               }
+           })
             tab.background = getStateListDrawable()
         }
     }

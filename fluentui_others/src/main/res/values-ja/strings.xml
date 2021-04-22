@@ -96,6 +96,4 @@
   <string name="searchbar_back">戻る</string>
   <string name="searchbar_query_hint_default">検索</string>
   <string name="done">完了</string>
-  <string name="tooltip_accessibility_dismiss_action">閉じる</string>
-  <string name="tooltip_accessibility_dismiss_announcement">ツールヒントを閉じました</string>
 </resources>

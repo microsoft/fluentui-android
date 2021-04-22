@@ -98,6 +98,4 @@
   <string name="searchbar_back">Edellinen</string>
   <string name="searchbar_query_hint_default">Hae</string>
   <string name="done">Valmis</string>
-  <string name="tooltip_accessibility_dismiss_action">hylkää</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Työkaluvihje hylätty</string>
 </resources>

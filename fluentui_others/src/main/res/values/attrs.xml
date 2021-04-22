@@ -119,13 +119,6 @@
     <attr name="fluentuiSearchbarProgressColor" format="reference|color"/>
     <attr name="fluentuiSearchbarCloseIconColor" format="reference|color"/>
 
-    <!--Snackbar-->
-    <attr name="fluentuiSnackbarBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiSnackbarBackgroundAnnouncementColor" format="reference|color"/>
-    <attr name="fluentuiSnackbarTextColor" format="reference|color"/>
-    <attr name="fluentuiSnackbarActionTextColor" format="reference|color"/>
-    <attr name="fluentuiSnackbarActionTextAnnouncementColor" format="reference|color"/>
-
     <!--Dialog TabLayout-->
     <attr name="fluentuiDialogTabTextColor" format="reference|color"/>
     <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
@@ -136,9 +129,5 @@
     <attr name="fluentuiToolbarTitleTextColor" format="reference|color"/>
     <attr name="fluentuiToolbarSubtitleTextColor" format="reference|color"/>
     <attr name="fluentuiToolbarIconColor" format="reference|color"/>
-
-    <!--Tooltip-->
-    <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiTooltipTextColor" format="reference|color"/>
 
 </resources>

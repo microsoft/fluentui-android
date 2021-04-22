@@ -96,6 +96,4 @@
   <string name="searchbar_back">ថយក្រោយ</string>
   <string name="searchbar_query_hint_default">ស្វែងរក</string>
   <string name="done">រួចរាល់</string>
-  <string name="tooltip_accessibility_dismiss_action">បោះបង់</string>
-  <string name="tooltip_accessibility_dismiss_announcement">ព័ត៌មានជំនួយឧបករណ៍ត្រូវបានបោះបង់</string>
 </resources>

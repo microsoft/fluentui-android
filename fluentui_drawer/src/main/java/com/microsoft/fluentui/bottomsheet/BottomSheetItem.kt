@@ -9,8 +9,8 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.os.Parcel
 import android.os.Parcelable
-import android.support.annotation.ColorInt
-import android.support.annotation.DrawableRes
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import android.view.View
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.util.ThemeUtil

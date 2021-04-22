@@ -13,13 +13,13 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
 import android.graphics.Typeface
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.ColorUtils
-import android.support.v4.util.Pools
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.ColorUtils
+import androidx.core.util.Pools
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.text.TextPaint
 import android.text.format.DateUtils
 import android.text.format.DateUtils.FORMAT_NO_MONTH_DAY
@@ -155,7 +155,7 @@ internal class WeeksView : MSRecyclerView {
         val firstVisiblePosition = firstVisibleItemPosition
         val lastVisiblePosition = firstVisiblePosition + CalendarView.DAYS_IN_WEEK * visibleRows
 
-        if (RecyclerView.NO_POSITION == firstVisiblePosition || datePosition < firstVisiblePosition || DateTimeUtils.isSameDay(date, ZonedDateTime.now())) {
+        if (NO_POSITION == firstVisiblePosition || datePosition < firstVisiblePosition || DateTimeUtils.isSameDay(date, ZonedDateTime.now())) {
             scrollToPositionWithOffset(datePosition, 0)
         } else if (datePosition >= lastVisiblePosition) {
             val offset = (visibleRows - 1) * (rowHeight + dividerHeight)
@@ -174,8 +174,8 @@ internal class WeeksView : MSRecyclerView {
     override fun onScrollStateChanged(state: Int) {
         super.onScrollStateChanged(state)
         when (state) {
-            RecyclerView.SCROLL_STATE_DRAGGING -> showOverlay()
-            RecyclerView.SCROLL_STATE_IDLE -> hideOverlay()
+            SCROLL_STATE_DRAGGING -> showOverlay()
+            SCROLL_STATE_IDLE -> hideOverlay()
         }
     }
 

@@ -20,7 +20,7 @@
         android:maxLines="@integer/fluentui_snackbar_max_lines"
         android:textAppearance="@style/TextAppearance.FluentUI.SnackbarText" />
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/snackbar_action"
         style="?attr/borderlessButtonStyle"
         android:layout_width="wrap_content"

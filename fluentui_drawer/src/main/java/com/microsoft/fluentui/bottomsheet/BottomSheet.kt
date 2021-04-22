@@ -8,7 +8,7 @@ package com.microsoft.fluentui.bottomsheet
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.v7.app.AppCompatDialogFragment
+import androidx.appcompat.app.AppCompatDialogFragment
 
 /**
  * [BottomSheet] is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
@@ -66,7 +66,7 @@ class BottomSheet : AppCompatDialogFragment(), BottomSheetItem.OnClickListener {
 
     // According to Android documentation, DialogFragment owns the Dialog setOnDismissListener callback so this
     // can't be set on the Dialog. Instead onDismiss(android.content.DialogInterface) must be overridden.
-    override fun onDismiss(dialog: DialogInterface?) {
+    override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         clickedItem?.let {
             (parentFragment as? BottomSheetItem.OnClickListener)?.onBottomSheetItemClick(it)

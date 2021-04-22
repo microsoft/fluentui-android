@@ -8,7 +8,7 @@ package com.microsoft.fluentui.bottomsheet
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Rect
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.util.ThemeUtil

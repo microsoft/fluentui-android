@@ -6,8 +6,8 @@
 package com.microsoft.fluentui.widget
 
 import android.content.Context
-import android.support.design.bottomnavigation.LabelVisibilityMode
-import android.support.design.widget.BottomNavigationView
+import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.util.AttributeSet
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -16,13 +16,14 @@ import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
  * Use this [BottomNavigationView] to get access to the FluentUI theme attribute default values via [FluentUIContextThemeWrapper]
  * without needing to extend Theme.FluentUI in your app's theme.
  */
-class BottomNavigationView : BottomNavigationView {
+class BottomNavigationView :
+    BottomNavigationView {
     private var userIconSize = 0
     private var defaultIconSize = 0
 
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-        : super(FluentUIContextThemeWrapper(context), attrs, defStyleAttr)
+        : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 
     override fun setLabelVisibilityMode(labelVisibilityMode: Int) {
         // The super call in the constructor runs setLabelVisibilityMode() before the constructor.

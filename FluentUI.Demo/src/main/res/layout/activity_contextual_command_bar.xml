@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/contextual_command_bar_group_space_title" />
 
-            <android.support.v7.widget.AppCompatSeekBar
+            <androidx.appcompat.widget.AppCompatSeekBar
                 android:id="@+id/contextual_command_bar_group_space_seekbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/contextual_command_bar_item_space_title" />
 
-            <android.support.v7.widget.AppCompatSeekBar
+            <androidx.appcompat.widget.AppCompatSeekBar
                 android:id="@+id/contextual_command_bar_item_space_seekbar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

@@ -10,29 +10,24 @@ import android.content.res.TypedArray
 import android.os.Parcel
 import android.os.Parcelable
 import android.os.Parcelable.ClassLoaderCreator
-import android.support.design.widget.CoordinatorLayout
-import android.support.v4.math.MathUtils
-import android.support.v4.view.AbsSavedState
-import android.support.v4.view.ViewCompat
-import android.support.v4.widget.ViewDragHelper
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.math.MathUtils
+import androidx.core.view.ViewCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
 import android.view.ViewConfiguration
 import android.view.ViewGroup
+import androidx.customview.view.AbsSavedState
+import androidx.customview.widget.ViewDragHelper
+import com.google.android.material.bottomsheet.BottomSheetBehavior.*
 import java.lang.ref.WeakReference
 import kotlin.math.abs
 import kotlin.math.min
 
 class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
     companion object {
-        const val STATE_DRAGGING = 1
-        const val STATE_SETTLING = 2
-        const val STATE_EXPANDED = 3
-        const val STATE_COLLAPSED = 4
-        const val STATE_HIDDEN = 5
-        const val STATE_HALF_EXPANDED = 6
         const val HIDE_THRESHOLD = 0.5F
         const val HIDE_FRICTION = 0.1F
 
@@ -339,7 +334,7 @@ class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
     }
 
     override fun onNestedPreFling(coordinatorLayout: CoordinatorLayout, child: V,
-                                         target: View, velocityX: Float, velocityY: Float): Boolean {
+                                  target: View, velocityX: Float, velocityY: Float): Boolean {
         return target == nestedScrollingChildRef!!.get() && (state != STATE_EXPANDED ||
                 super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY))
     }

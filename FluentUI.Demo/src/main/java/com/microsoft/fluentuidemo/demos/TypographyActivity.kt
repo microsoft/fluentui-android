@@ -6,7 +6,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.support.v4.widget.TextViewCompat
+import androidx.core.widget.TextViewCompat
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_typography.*

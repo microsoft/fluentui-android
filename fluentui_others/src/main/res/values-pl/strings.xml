@@ -102,6 +102,4 @@
   <string name="searchbar_back">Wstecz</string>
   <string name="searchbar_query_hint_default">Wyszukaj</string>
   <string name="done">Gotowe</string>
-  <string name="tooltip_accessibility_dismiss_action">odrzuć</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Odrzucono etykietkę narzędzia</string>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/action_bar_container_layout"
     android:layout_width="match_parent"
     android:layout_height="@dimen/fluentui_action_bar_layout_height"
@@ -16,7 +15,7 @@
         android:clickable="true"
         android:focusable="true"
         android:minWidth="@dimen/fluentui_action_bar_layout_height"
-        android:text="@string/fluentui_action_bar_default_left_action"
+        android:text="@string/action_bar_default_left_action"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="@color/fluentui_gray_500" />
 
@@ -51,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="3dp"
-            android:text="@string/fluentui_action_bar_default_right_action"
+            android:text="@string/action_bar_default_right_action"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/fluentui_communication_blue" />
 
@@ -59,7 +58,6 @@
             android:id="@+id/action_bar_right_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="TODO"
             android:src="@drawable/ms_ic_next_icon_12_filled" />
     </LinearLayout>
 

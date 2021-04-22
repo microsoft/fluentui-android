@@ -4,7 +4,6 @@
  */
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
@@ -18,10 +17,10 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 1
+        versionCode project.ext.fluentui_tablayout_version_code
         versionName project.ext.fluentui_tablayout_versionid
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
 
@@ -38,11 +37,11 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':fluentui_core')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:design:$supportVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
     testImplementation "junit:junit:$junitVersion"
-    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 
 task sourceJar(type: Jar) {
@@ -50,41 +49,42 @@ task sourceJar(type: Jar) {
     classifier "sources"
 }
 
-
-publishing {
-    repositories {
-        maven {
-            url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
-            credentials {
-                username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
-                password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+project.afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+                credentials {
+                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                }
             }
         }
-    }
-    publications {
-        FluentUI(MavenPublication) {
-            groupId 'com.microsoft.fluentui'
-            artifactId "fluentui_tablayout"
-            version = android.defaultConfig.versionName
-            artifact(sourceJar)
-            artifact(bundleReleaseAar)
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-                // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.implementation.allDependencies.each {
-                    if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        if (it instanceof ProjectDependency) {
-                            dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
-                            dependencyNode.appendNode('artifactId', it.name)
-                            def artifactName = it.name.replaceAll('-','_')+'_versionid'
-                            dependencyNode.appendNode('version', getProperty(artifactName).toString())
-                        } else {
-                            dependencyNode.appendNode('groupId', it.group)
-                            dependencyNode.appendNode('artifactId', it.name)
-                            dependencyNode.appendNode('version', it.version)
-                        }
+        publications {
+            FluentUI(MavenPublication) {
+                groupId 'com.microsoft.fluentui'
+                artifactId "fluentui_tablayout"
+                version = android.defaultConfig.versionName
+                artifact(sourceJar)
+                artifact(bundleReleaseAar)
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                    configurations.implementation.allDependencies.each {
+                        if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            if (it instanceof ProjectDependency) {
+                                dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
+                                dependencyNode.appendNode('artifactId', it.name)
+                                def artifactName = it.name.replaceAll('-', '_') + '_versionid'
+                                dependencyNode.appendNode('version', getProperty(artifactName).toString())
+                            } else {
+                                dependencyNode.appendNode('groupId', it.group)
+                                dependencyNode.appendNode('artifactId', it.name)
+                                dependencyNode.appendNode('version', it.version)
+                            }
 
+                        }
                     }
                 }
             }

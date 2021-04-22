@@ -44,11 +44,11 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState?.putInt(SINGLE_CHECKED_ITEM_ID, singleCheckedItemId)
-        outState?.putParcelableArrayList(ALL_CHECKED_ITEMS, allCheckedItems)
+        outState.putInt(SINGLE_CHECKED_ITEM_ID, singleCheckedItemId)
+        outState.putParcelableArrayList(ALL_CHECKED_ITEMS, allCheckedItems)
     }
 
     override fun onClick(anchorView: View) {

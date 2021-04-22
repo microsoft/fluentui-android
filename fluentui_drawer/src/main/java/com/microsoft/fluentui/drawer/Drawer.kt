@@ -8,9 +8,9 @@ package com.microsoft.fluentui.drawer
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v4.app.DialogFragment
-import android.support.v7.app.AppCompatDialogFragment
+import androidx.annotation.LayoutRes
+import androidx.fragment.app.DialogFragment
+import androidx.appcompat.app.AppCompatDialogFragment
 import android.view.View
 
 // TODO investigate why over scroll "bow" animation is not showing and fix
@@ -58,7 +58,7 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
         outState.putInt(CONTENT_LAYOUT_ID, contentLayoutId)
     }
 
-    override fun onDismiss(dialog: DialogInterface?) {
+    override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         (parentFragment as? OnDismissListener)?.onDrawerDismissListener()
         (activity as? OnDismissListener)?.onDrawerDismissListener()
