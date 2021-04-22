@@ -12,5 +12,6 @@
 
     <!--ActionBarLayout-->
     <color name="action_bar_radio_labels">@color/fluentui_white</color>
-
+    <!--Tooltip custom color-->
+    <color name="tooltip_custom_color">@color/design_default_color_error</color>
 </resources>

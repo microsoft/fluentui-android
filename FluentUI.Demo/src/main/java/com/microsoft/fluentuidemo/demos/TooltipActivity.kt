@@ -8,6 +8,7 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.ViewTreeObserver
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.tooltip.Tooltip
 import com.microsoft.fluentuidemo.DemoActivity
@@ -43,7 +44,16 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         TooltipType.values().forEach { type ->
             findViewById<Button>(type.buttonId).setOnClickListener {
                 val config = Tooltip.Config(getDimen(type.offsetXId), getDimen(type.offsetYId))
-                tooltip = Tooltip(this).show(it, resources.getString(type.messageId), config)
+                tooltip = Tooltip(this)
+                if (it.id == R.id.tooltip_anchor_top_start) {
+                    tooltip?.setCustomBackgroundColor(
+                        ContextCompat.getColor(
+                            baseContext,
+                            R.color.tooltip_custom_color
+                        )
+                    )
+                }
+                tooltip?.show(it, resources.getString(type.messageId), config)
                 buttonId = it.id
             }
         }
