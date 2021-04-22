@@ -144,8 +144,29 @@ class TabLayout : TemplateView {
             tab.layoutParams = (tab.layoutParams as LinearLayout.LayoutParams).apply {
                 rightMargin = resources.getDimension(R.dimen.fluentui_tab_margin).toInt()
             }
+            setTabAccessibility(tabLayout, i, tab as TabLayout.TabView)
         }
         tabLayout.requestLayout()
+    }
+
+    /**
+     * sets accessibility config here for tab layout.
+     * This has couple of APi level issues so we handle only for anadroid 9 and below
+     * for android 10 & above things should run fine by default
+     */
+    private fun setTabAccessibility(tabLayout: TabLayout, i: Int, tabView: TabLayout.TabView) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            val tab = tabLayout.getTabAt(i)
+            tab?.contentDescription = tab?.text?.toString() + context.getString(R.string.tab_content_description, (i + 1), tabLayout.tabCount)
+            tabView.setAccessibilityDelegate(object : AccessibilityDelegate() {
+                override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+                    super.onInitializeAccessibilityNodeInfo(host, info)
+                    if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P) {
+                        info?.tooltipText = ""
+                    }
+                }
+            })
+        }
     }
 
     private fun setTabLayoutBackground() {
@@ -167,31 +188,6 @@ class TabLayout : TemplateView {
         for (i in 0 until tabLayout.tabCount) {
             val tab: TabLayout.TabView = viewGroup.getChildAt(i) as TabLayout.TabView
             tab.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
-           tab.setAccessibilityDelegate(object : AccessibilityDelegate() {
-               override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
-                   super.onInitializeAccessibilityNodeInfo(host, info)
-                   info?.apply {
-                       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                           // after androidx this is getting repeated in content description
-                           tooltipText = ""
-                       }
-                       val infoCompat = AccessibilityNodeInfoCompat.wrap(info)
-                       infoCompat.setCollectionItemInfo(
-                               CollectionItemInfoCompat.obtain( /* rowIndex= */
-                                       0,  /* rowSpan= */
-                                       1,  /* columnIndex= */
-                                       tab.tab!!.position,  /* columnSpan= */
-                                       1,  /* heading= */
-                                       tab.tab!!.position ==0,  /* selected= */
-                                       isSelected))
-                       if (isSelected) {
-                           infoCompat.isClickable = false
-                           infoCompat.removeAction(AccessibilityActionCompat.ACTION_CLICK)
-                       }
-                       infoCompat.roleDescription = resources.getString(R.string.item_view_role_description)
-                   }
-               }
-           })
             tab.background = getStateListDrawable()
         }
     }
