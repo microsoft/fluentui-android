@@ -72,7 +72,7 @@ class TabLayoutActivity : DemoActivity() {
 
     private fun setTabs(numTabs: Int) {
         for (i in 0 until numTabs) {
-            tabLayout.addTab(tabLayout.newTab().setText("Label"))
+            tabLayout.addTab(tabLayout.newTab().setText("Label "+(i+1)))
         }
     }
 

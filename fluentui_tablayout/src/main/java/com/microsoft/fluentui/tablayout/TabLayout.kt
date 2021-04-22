@@ -7,13 +7,17 @@ package com.microsoft.fluentui.tablayout
 
 import android.content.Context
 import android.graphics.drawable.StateListDrawable
-import com.google.android.material.tabs.TabLayout
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.*
+import com.google.android.material.tabs.TabLayout
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.view.TemplateView
@@ -125,7 +129,7 @@ class TabLayout : TemplateView {
             }
         }
         tabLayoutContainer?.setPadding(paddingHorizontalLeft, paddingVertical, paddingHorizontalRight, paddingVertical)
-        setSelectorColors()
+        setSelectorProperties()
         setTextAppearance()
     }
 
@@ -136,12 +140,33 @@ class TabLayout : TemplateView {
         val tabLayout = tabLayout ?: return
         val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount - 1) {
-            val tab: View = viewGroup.getChildAt(i)
+            val tab: View = viewGroup.getChildAt(i) as TabLayout.TabView
             tab.layoutParams = (tab.layoutParams as LinearLayout.LayoutParams).apply {
                 rightMargin = resources.getDimension(R.dimen.fluentui_tab_margin).toInt()
             }
+            setTabAccessibility(tabLayout, i, tab as TabLayout.TabView)
         }
         tabLayout.requestLayout()
+    }
+
+    /**
+     * sets accessibility config here for tab layout.
+     * This has couple of APi level issues so we handle only for anadroid 9 and below
+     * for android 10 & above things should run fine by default
+     */
+    private fun setTabAccessibility(tabLayout: TabLayout, i: Int, tabView: TabLayout.TabView) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.P) {
+            val tab = tabLayout.getTabAt(i)
+            tab?.contentDescription = tab?.text?.toString() + context.getString(R.string.tab_content_description, (i + 1), tabLayout.tabCount)
+            tabView.setAccessibilityDelegate(object : AccessibilityDelegate() {
+                override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+                    super.onInitializeAccessibilityNodeInfo(host, info)
+                    if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P) {
+                        info?.tooltipText = ""
+                    }
+                }
+            })
+        }
     }
 
     private fun setTabLayoutBackground() {
@@ -157,11 +182,12 @@ class TabLayout : TemplateView {
         tabLayout.setTabTextColors(tabUnselectedTextColor, tabSelectedTextColor)
     }
 
-    private fun setSelectorColors() {
+    private fun setSelectorProperties() {
         val tabLayout = tabLayout ?: return
         val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount) {
-            val tab: View = viewGroup.getChildAt(i)
+            val tab: TabLayout.TabView = viewGroup.getChildAt(i) as TabLayout.TabView
+            tab.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
             tab.background = getStateListDrawable()
         }
     }
