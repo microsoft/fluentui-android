@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/persistent_bottom_sheet_outlined"
@@ -35,10 +35,10 @@
             android:contentDescription=" "
             android:paddingEnd="@dimen/fluentui_drawer_handle_horizontal_margin"
             android:src="@drawable/ic_drawer_handle"
-            android:tint="?attr/fluentuiDrawerHandleColor"
+            app:tint="?attr/fluentuiDrawerHandleColor"
             tools:ignore="HardcodedText" />
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -50,6 +50,6 @@
                 android:clipChildren="false"
                 android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_content_padding_vertical"
                 android:orientation="vertical" />
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     </com.microsoft.fluentui.drawer.DrawerView>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

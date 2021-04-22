@@ -102,6 +102,4 @@
   <string name="searchbar_back">Zpět</string>
   <string name="searchbar_query_hint_default">Hledat</string>
   <string name="done">Hotovo</string>
-  <string name="tooltip_accessibility_dismiss_action">zavřít</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Popis ovládacího prvku byl zavřen.</string>
 </resources>

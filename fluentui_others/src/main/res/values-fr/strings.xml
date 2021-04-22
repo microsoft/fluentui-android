@@ -98,6 +98,4 @@
   <string name="searchbar_back">Précédent</string>
   <string name="searchbar_query_hint_default">Rechercher</string>
   <string name="done">OK</string>
-  <string name="tooltip_accessibility_dismiss_action">ignorer</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Info-bulle fermée</string>
 </resources>

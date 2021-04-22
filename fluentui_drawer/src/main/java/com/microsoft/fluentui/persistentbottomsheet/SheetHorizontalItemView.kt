@@ -7,7 +7,7 @@ package com.microsoft.fluentui.persistentbottomsheet
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.support.v4.widget.TextViewCompat
+import androidx.core.widget.TextViewCompat
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup

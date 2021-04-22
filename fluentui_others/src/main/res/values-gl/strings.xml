@@ -98,6 +98,4 @@
   <string name="searchbar_back">Atrás</string>
   <string name="searchbar_query_hint_default">Buscar</string>
   <string name="done">Feito</string>
-  <string name="tooltip_accessibility_dismiss_action">rexeitar</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Información sobre ferramentas rexeitada</string>
 </resources>

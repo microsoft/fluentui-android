@@ -98,6 +98,4 @@
   <string name="searchbar_back">Nyuma</string>
   <string name="searchbar_query_hint_default">Utafutaji</string>
   <string name="done">Imekamilika</string>
-  <string name="tooltip_accessibility_dismiss_action">ondosha</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Kidokezozana kimeondoshwa</string>
 </resources>

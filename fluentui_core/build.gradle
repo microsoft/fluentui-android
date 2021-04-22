@@ -6,7 +6,6 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
@@ -17,9 +16,9 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode 1
+        versionCode project.ext.fluentui_core_version_code
         versionName project.ext.fluentui_core_versionid
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
     }
     lintOptions {
@@ -54,20 +53,20 @@ repositories {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$supportVersion"
-    implementation "com.android.support:exifinterface:$supportVersion"
-    implementation "com.android.support:recyclerview-v7:$supportVersion"
-    implementation "com.android.support:cardview-v7:$supportVersion"
-    implementation "com.android.support:design:$supportVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "com.google.android.material:material:$materialVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.microsoft.device:dualscreen-layout:$duoVersion"
-    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.robolectric:robolectric:$roboelectricVersion"
 
-    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 
 task sourceJar(type: Jar) {
@@ -75,41 +74,42 @@ task sourceJar(type: Jar) {
     classifier "sources"
 }
 
-
-publishing {
-    repositories {
-        maven {
-            url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
-            credentials {
-                username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
-                password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+project.afterEvaluate {
+    publishing {
+        repositories {
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+                credentials {
+                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                }
             }
         }
-    }
-    publications {
-        FluentUI(MavenPublication) {
-            groupId 'com.microsoft.fluentui'
-            artifactId "fluentui_core"
-            version = android.defaultConfig.versionName
-            artifact(sourceJar)
-            artifact(bundleReleaseAar)
-            pom.withXml {
-                def dependenciesNode = asNode().appendNode('dependencies')
-                // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                configurations.implementation.allDependencies.each {
-                    if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        if (it instanceof ProjectDependency) {
-                            dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
-                            dependencyNode.appendNode('artifactId', it.name)
-                            def artifactName = it.name.replaceAll('-','_')+'_versionid'
-                            dependencyNode.appendNode('version', getProperty(artifactName).toString())
-                        } else {
-                            dependencyNode.appendNode('groupId', it.group)
-                            dependencyNode.appendNode('artifactId', it.name)
-                            dependencyNode.appendNode('version', it.version)
-                        }
+        publications {
+            FluentUI(MavenPublication) {
+                groupId 'com.microsoft.fluentui'
+                artifactId "fluentui_core"
+                version = android.defaultConfig.versionName
+                artifact(sourceJar)
+                artifact(bundleReleaseAar)
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                    configurations.implementation.allDependencies.each {
+                        if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            if (it instanceof ProjectDependency) {
+                                dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
+                                dependencyNode.appendNode('artifactId', it.name)
+                                def artifactName = it.name.replaceAll('-', '_') + '_versionid'
+                                dependencyNode.appendNode('version', getProperty(artifactName).toString())
+                            } else {
+                                dependencyNode.appendNode('groupId', it.group)
+                                dependencyNode.appendNode('artifactId', it.name)
+                                dependencyNode.appendNode('version', it.version)
+                            }
 
+                        }
                     }
                 }
             }

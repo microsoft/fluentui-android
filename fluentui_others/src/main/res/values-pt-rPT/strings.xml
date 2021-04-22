@@ -98,6 +98,4 @@
   <string name="searchbar_back">Anterior</string>
   <string name="searchbar_query_hint_default">Procurar</string>
   <string name="done">Concluído</string>
-  <string name="tooltip_accessibility_dismiss_action">dispensar</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Descrição dispensada</string>
 </resources>

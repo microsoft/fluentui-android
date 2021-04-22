@@ -96,6 +96,4 @@
   <string name="searchbar_back">뒤로</string>
   <string name="searchbar_query_hint_default">검색</string>
   <string name="done">완료</string>
-  <string name="tooltip_accessibility_dismiss_action">해제</string>
-  <string name="tooltip_accessibility_dismiss_announcement">도구 설명 해제</string>
 </resources>

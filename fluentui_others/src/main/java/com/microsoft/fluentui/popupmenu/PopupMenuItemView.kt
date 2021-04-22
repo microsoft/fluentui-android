@@ -7,10 +7,10 @@ package com.microsoft.fluentui.popupmenu
 
 import android.content.Context
 import android.graphics.PorterDuff
-import android.support.annotation.DrawableRes
-import android.support.v4.view.AccessibilityDelegateCompat
-import android.support.v4.view.ViewCompat
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.annotation.DrawableRes
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
@@ -21,6 +21,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.Companion.DEFAULT_ITEM_CHECKABLE_BEHAVIOR
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.view.TemplateView
@@ -59,7 +60,7 @@ internal class PopupMenuItemView : TemplateView {
     private var showCheckBox: Boolean = false
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 
     fun setMenuItem(popupMenuItem: PopupMenuItem) {
         title = popupMenuItem.title

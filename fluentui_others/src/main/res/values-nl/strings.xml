@@ -98,6 +98,4 @@
   <string name="searchbar_back">Terug</string>
   <string name="searchbar_query_hint_default">Zoeken</string>
   <string name="done">Gereed</string>
-  <string name="tooltip_accessibility_dismiss_action">sluiten</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Knopinfo is gesloten</string>
 </resources>

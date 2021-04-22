@@ -98,6 +98,4 @@
   <string name="searchbar_back">Prapa</string>
   <string name="searchbar_query_hint_default">Kërko</string>
   <string name="done">U krye</string>
-  <string name="tooltip_accessibility_dismiss_action">hiq</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Këshilla u hoq</string>
 </resources>

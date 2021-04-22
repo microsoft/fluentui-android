@@ -7,9 +7,9 @@ package com.microsoft.fluentui.search
 
 import android.app.SearchableInfo
 import android.content.Context
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.AppCompatImageView
-import android.support.v7.widget.SearchView
+import androidx.core.content.ContextCompat
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.SearchView
 import android.util.AttributeSet
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -105,7 +105,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     var onCloseListener: SearchView.OnCloseListener? = null
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI), attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
 
     /**
      * Sets the query text for the search view.

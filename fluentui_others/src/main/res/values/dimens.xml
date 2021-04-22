@@ -146,20 +146,6 @@
     <dimen name="fluentui_searchbar_with_back_button_search_view_text_padding_start">7dp</dimen>
     <dimen name="fluentui_searchbar_progress_size">28dp</dimen>
 
-    <!-- Snackbar -->
-    <dimen name="fluentui_snackbar_action_min_size">0dp</dimen>
-    <dimen name="fluentui_snackbar_action_spacing">7dp</dimen>
-    <dimen name="fluentui_snackbar_action_text_wrapping_width">100dp</dimen>
-    <dimen name="fluentui_snackbar_background_inset">8dp</dimen>
-    <dimen name="fluentui_snackbar_background_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
-    <dimen name="fluentui_snackbar_content_inset">@dimen/fluentui_content_inset</dimen>
-    <dimen name="fluentui_snackbar_custom_view_size_small">24dp</dimen>
-    <dimen name="fluentui_snackbar_custom_view_size_medium">32dp</dimen>
-    <dimen name="fluentui_snackbar_custom_view_margin_start">@dimen/fluentui_snackbar_content_inset</dimen>
-    <dimen name="fluentui_snackbar_custom_view_margin_vertical_medium">8dp</dimen>
-    <dimen name="fluentui_snackbar_custom_view_margin_vertical_small">12dp</dimen>
-    <dimen name="fluentui_snackbar_custom_view_margin_vertical_announcement">16dp</dimen>
-
     <!--Toolbar-->
     <dimen name="fluentui_toolbar_navigation_icon_container_size">@dimen/fluentui_min_touch_size</dimen>
     <dimen name="fluentui_toolbar_padding_start">16dp</dimen>
@@ -167,13 +153,4 @@
     <dimen name="fluentui_toolbar_title_margin_start">0dp</dimen>
     <dimen name="fluentui_toolbar_title_margin_start_with_avatar">16dp</dimen>
 
-    <!--Tooltip-->
-    <dimen name="fluentui_tooltip_max_width">176dp</dimen>
-    <dimen name="fluentui_tooltip_arrow_width">20dp</dimen>
-    <dimen name="fluentui_tooltip_arrow_height">10dp</dimen>
-    <dimen name="fluentui_tooltip_margin">8dp</dimen>
-    <dimen name="fluentui_tooltip_padding_vertical">8dp</dimen>
-    <dimen name="fluentui_tooltip_padding_horizontal">12dp</dimen>
-    <dimen name="fluentui_tooltip_radius">@dimen/fluentui_corner_radius_4</dimen>
-    <dimen name="fluentui_tooltip_background_padding">2dp</dimen>
 </resources>
