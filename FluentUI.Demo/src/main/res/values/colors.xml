@@ -21,5 +21,7 @@
     <color name="action_bar_radio_labels">@color/fluentui_black</color>
     <!--Botttomsheet tint-->
     <color name="bottomsheet_horizontal_icon_tint">@color/fluentui_gray_500</color>
+    <!--Tooltip custom color-->
+    <color name="tooltip_custom_color">@color/design_default_color_primary</color>
 
 </resources>

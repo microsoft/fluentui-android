@@ -6,9 +6,11 @@
 package com.microsoft.fluentui.tooltip
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
@@ -19,6 +21,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import com.microsoft.fluentui.transients.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.transients.databinding.ViewTooltipBinding
@@ -48,6 +54,7 @@ class Tooltip {
     private val arrowDownView: ImageView
     private val arrowLeftView: ImageView
     private val arrowRightView: ImageView
+    private val tooltipBackGround: View
 
     private var isAboveAnchor: Boolean = false
     private var isSideAnchor: Boolean = false
@@ -77,6 +84,7 @@ class Tooltip {
         arrowDownView = bindig.tooltipArrowDown
         arrowLeftView = bindig.tooltipArrowLeft
         arrowRightView = bindig.tooltipArrowRight
+        tooltipBackGround = bindig.tooltipBackground
 
         margin = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_margin)
 
@@ -138,6 +146,21 @@ class Tooltip {
         }
 
         return this
+    }
+
+    @ColorInt
+    fun setCustomBackgroundColor(color: Int) {
+        tooltipBackGround.background = null
+        tooltipBackGround.setBackgroundColor(color)
+        ImageViewCompat.setImageTintList(arrowUpView, ColorStateList.valueOf(color))
+        ImageViewCompat.setImageTintList(arrowDownView, ColorStateList.valueOf(color))
+        ImageViewCompat.setImageTintList(arrowLeftView, ColorStateList.valueOf(color))
+        ImageViewCompat.setImageTintList(arrowRightView, ColorStateList.valueOf(color))
+    }
+
+    @DrawableRes
+    fun setCustomBackground(drawable : Int) {
+        tooltipBackGround.background = ContextCompat.getDrawable(context, drawable)
     }
 
     fun dismiss() {
@@ -265,7 +288,7 @@ class Tooltip {
         val doesNotFitAboveOrBelow = (positionY < topBarHeight) || (positionY + contentHeight > displayHeight)
         val rightSpace = displayWidth - anchorRect.right - context.softNavBarOffsetX
         val rightEdge = ( startPosition + upArrowWidth + cornerRadius + margin > displayWidth ) || (doesNotFitAboveOrBelow && anchorRect.left > rightSpace)
-        val leftEdge = ( startPosition - upArrowWidth - cornerRadius - margin - context.softNavBarOffsetX < 0 ) || (doesNotFitAboveOrBelow && anchorRect.left < rightSpace)
+        val leftEdge = ( startPosition - cornerRadius - margin - context.softNavBarOffsetX < 0 ) || (doesNotFitAboveOrBelow && anchorRect.left < rightSpace)
 
         // Duo Support
         val secondScreen = anchorRect.left > displayWidth

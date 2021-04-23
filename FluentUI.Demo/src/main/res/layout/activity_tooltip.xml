@@ -16,7 +16,7 @@
         style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tooltip_button"
+        android:text="@string/tooltip_custom_button"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
