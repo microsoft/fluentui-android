@@ -50,6 +50,7 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isAccessibilityEnabled
@@ -811,6 +812,7 @@ internal class NumberPicker : LinearLayout {
         }
 
         isFocusableInTouchMode = true
+        background = ContextCompat.getDrawable(context, R.drawable.ms_ripple_transparent_background)
         ViewCompat.setAccessibilityDelegate(this, accessibilityTouchHelper)
     }
 
