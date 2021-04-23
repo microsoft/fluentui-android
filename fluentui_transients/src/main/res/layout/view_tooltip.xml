@@ -36,10 +36,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <View
+                android:id="@+id/tooltip_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/tooltip_background"
+                android:background="@drawable/tooltip_background"
                 android:layout_alignStart="@id/tooltip_text"
                 android:layout_alignTop="@id/tooltip_text"
                 android:layout_alignEnd="@id/tooltip_text"

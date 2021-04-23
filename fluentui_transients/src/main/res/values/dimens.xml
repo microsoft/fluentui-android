@@ -20,10 +20,10 @@
     <dimen name="fluentui_snackbar_custom_view_margin_vertical_announcement">16dp</dimen>
 
     <!--Tooltip-->
-    <dimen name="fluentui_tooltip_max_width">176dp</dimen>
-    <dimen name="fluentui_tooltip_arrow_width">20dp</dimen>
-    <dimen name="fluentui_tooltip_arrow_height">10dp</dimen>
-    <dimen name="fluentui_tooltip_margin">8dp</dimen>
+    <dimen name="fluentui_tooltip_max_width">300dp</dimen>
+    <dimen name="fluentui_tooltip_arrow_width">14dp</dimen>
+    <dimen name="fluentui_tooltip_arrow_height">7dp</dimen>
+    <dimen name="fluentui_tooltip_margin">2dp</dimen>
     <dimen name="fluentui_tooltip_padding_vertical">8dp</dimen>
     <dimen name="fluentui_tooltip_padding_horizontal">12dp</dimen>
     <dimen name="fluentui_tooltip_radius">@dimen/fluentui_corner_radius_4</dimen>
