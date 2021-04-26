@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Snackbar-->
+    <style name="TextAppearance.FluentUI.SnackbarText" parent="TextAppearance.FluentUI.Body1">
+        <item name="android:textColor">?attr/fluentuiSnackbarTextColor</item>
+    </style>
+
+    <!--Tooltip-->
+    <style name="TextAppearance.FluentUI.Tooltip" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">?attr/fluentuiTooltipTextColor</item>
+    </style>
+</resources>

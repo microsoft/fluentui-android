@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.microsoft.fluentui.R
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 
 enum class AvatarGroupStyle {
@@ -20,7 +21,7 @@ open class AvatarGroupView : FrameLayout {
     }
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarGroupView)
         val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
         val avatarGroupStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_avatarGroupStyle, DEFAULT_AVATAR_GROUP_STYLE.ordinal)

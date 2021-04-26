@@ -17,10 +17,10 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.R.id.*
-import com.microsoft.fluentui.databinding.ViewSnackbarBinding
+import com.microsoft.fluentui.transients.R
+import com.microsoft.fluentui.transients.R.id.*
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.transients.databinding.ViewSnackbarBinding
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.activity
@@ -32,8 +32,7 @@ import com.microsoft.fluentui.util.activity
  *
  * To use a Snackbar with a FAB, it is recommended that your parent layout be a CoordinatorLayout.
  */
-class Snackbar :
-    BaseTransientBottomBar<Snackbar> {
+class Snackbar : BaseTransientBottomBar<Snackbar> {
     companion object {
         const val LENGTH_INDEFINITE: Int = BaseTransientBottomBar.LENGTH_INDEFINITE
         const val LENGTH_SHORT: Int = BaseTransientBottomBar.LENGTH_SHORT
@@ -46,7 +45,7 @@ class Snackbar :
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
             // Need the theme wrapper to avoid crashing in Dark theme.
-            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context)).inflate(R.layout.view_snackbar, parent, false)
+            val content = LayoutInflater.from(FluentUIContextThemeWrapper(parent.context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_snackbar, parent, false)
             val snackbar = Snackbar(parent, content, ContentViewCallback(content))
             snackbar.duration = duration
             snackbar.setStyle(style)
@@ -259,8 +258,8 @@ class Snackbar :
 
     private fun updateBackground() {
         when (style) {
-            Style.REGULAR -> view.background = ContextCompat.getDrawable(context, R.drawable.snackbar_background)
-            Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(context, R.drawable.snackbar_background_announcement)
+            Style.REGULAR -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background)
+            Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_announcement)
         }
     }
 
@@ -271,11 +270,11 @@ class Snackbar :
 
         when (style) {
             Style.REGULAR -> {
-                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiSnackbarActionTextColor))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextColor))
                 customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
             Style.ANNOUNCEMENT -> {
-                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiSnackbarActionTextAnnouncementColor))
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextAnnouncementColor))
                 customViewLayoutParams?.removeRule(RelativeLayout.CENTER_VERTICAL)
             }
         }

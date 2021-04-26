@@ -1,3 +1,4 @@
+include ':fluentui_transients'
 include ':FluentUI.Demo'
 include ':fluentui_core'
 include ':fluentui_listitem'

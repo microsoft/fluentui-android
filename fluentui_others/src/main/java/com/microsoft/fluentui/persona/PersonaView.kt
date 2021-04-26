@@ -7,11 +7,14 @@ package com.microsoft.fluentui.persona
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Rect
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.AttributeSet
+import android.view.accessibility.AccessibilityEvent
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.listitem.ListItemView
+import com.microsoft.fluentui.util.isVisibleOnScreen
 
 /**
  * [PersonaView] is comprised of an [AvatarView] and three TextViews, all single line by default.
@@ -22,6 +25,7 @@ import com.microsoft.fluentui.listitem.ListItemView
 class PersonaView : ListItemView {
     companion object {
         val personaAvatarSizes = arrayOf(AvatarSize.SMALL, AvatarSize.LARGE, AvatarSize.XXLARGE)
+        const val FOCUS_DELAY = 100L
 
         internal data class Spacing(val cellPadding: Int, val insetLeft: Int)
 
@@ -103,7 +107,7 @@ class PersonaView : ListItemView {
     private val avatarView = AvatarView(context)
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(appContext, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaView)
         name = styledAttrs.getString(R.styleable.PersonaView_name) ?: ""
         email = styledAttrs.getString(R.styleable.PersonaView_email) ?: ""
@@ -144,6 +148,17 @@ class PersonaView : ListItemView {
             AvatarSize.SMALL -> CustomViewSize.SMALL
             AvatarSize.LARGE -> CustomViewSize.MEDIUM
             else -> CustomViewSize.LARGE
+        }
+    }
+
+    override fun onFocusChanged(gainFocus: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
+        super.onFocusChanged(gainFocus, direction, previouslyFocusedRect)
+        if (!isVisibleOnScreen && gainFocus) {
+            postDelayed({
+                if (isFocused) {
+                    sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+                }
+            }, FOCUS_DELAY)
         }
     }
 }

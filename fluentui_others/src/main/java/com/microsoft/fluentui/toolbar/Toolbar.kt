@@ -41,7 +41,7 @@ class Toolbar : Toolbar {
         }
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context), attrs, R.attr.toolbarStyle) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, R.attr.toolbarStyle) {
         // minHeight can't be set in theme or it will also set title height. Having minHeight helps center option menu icons.
         val styledAttributes = context.theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
         val actionBarSize = styledAttributes.getDimensionPixelSize(0, -1)
@@ -66,6 +66,7 @@ class Toolbar : Toolbar {
     }
 
     private fun updateStylesAndIcon(nativeBackButtonUsed: Boolean = false) {
+        touchscreenBlocksFocus = false
         if (navigationIcon == null && !nativeBackButtonUsed) {
             setPaddingRelative(context.resources.getDimension(R.dimen.fluentui_toolbar_padding_start).toInt(), 0, 0, 0)
             titleMarginStart = context.resources.getDimension(R.dimen.fluentui_toolbar_title_margin_start).toInt()

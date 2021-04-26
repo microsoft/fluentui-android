@@ -121,7 +121,7 @@ class AppBarLayout : AppBarLayout {
         }
     }
 
-    constructor(context: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(context), attrs) {
+    constructor(appContext: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs) {
         setupToolbar(context)
         setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiAppBarLayoutBackgroundColor))
 
@@ -141,6 +141,7 @@ class AppBarLayout : AppBarLayout {
         super.onAttachedToWindow()
         scrollTargetView = getOnScrollTargetView()
         updateViewsWithScrollBehavior()
+        touchscreenBlocksFocus = false
     }
 
     private fun getOnScrollTargetView(): View? {

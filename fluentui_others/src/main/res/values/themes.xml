@@ -132,13 +132,6 @@
         <item name="fluentuiSearchbarProgressColor">?attr/fluentuiForegroundOnPrimary70Color</item>
         <item name="fluentuiSearchbarCloseIconColor">?attr/fluentuiForegroundOnPrimary70Color</item>
 
-        <!--Snackbar-->
-        <item name="fluentuiSnackbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiSnackbarBackgroundAnnouncementColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiSnackbarTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-        <item name="fluentuiSnackbarActionTextColor">?attr/fluentuiColorPrimaryLight</item>
-        <item name="fluentuiSnackbarActionTextAnnouncementColor">?attr/fluentuiForegroundOnPrimaryColor</item>
-
         <!--TabLayout Dialog-->
         <item name="fluentuiDialogTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
@@ -149,10 +142,6 @@
         <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
         <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
         <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnPrimaryColor</item>
-
-        <!--Tooltip-->
-        <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
 
     </style>
 

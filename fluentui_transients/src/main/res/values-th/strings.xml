@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="tooltip_accessibility_dismiss_action">ปิด</string>
+  <string name="tooltip_accessibility_dismiss_announcement">ปิดคำแนะนำเครื่องมือแล้ว</string>
+</resources>

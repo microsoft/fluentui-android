@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="tooltip_accessibility_dismiss_action">បោះបង់</string>
+  <string name="tooltip_accessibility_dismiss_announcement">ព័ត៌មានជំនួយឧបករណ៍ត្រូវបានបោះបង់</string>
+</resources>

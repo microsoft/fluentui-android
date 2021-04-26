@@ -32,8 +32,6 @@ allprojects {
         recyclerViewVersion       =    '1.1.0'
         junitVersion              =    '4.12'
         extJunitVersion           =    '1.1.2'
-        testRunnerVersion         =    '1.0.2'
-        testRunnerVersion         =    '1.0.2'
         espressoVersion           =    '3.3.0'
         roboelectricVersion       =    '4.4'
         constraintLayoutVersion   =    '2.0.4'

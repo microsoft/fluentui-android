@@ -100,6 +100,4 @@
   <string name="searchbar_back">Înapoi</string>
   <string name="searchbar_query_hint_default">Căutare</string>
   <string name="done">Gata</string>
-  <string name="tooltip_accessibility_dismiss_action">îndepărtare</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Sfat ecran îndepărtat</string>
 </resources>
