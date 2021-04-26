@@ -5,7 +5,7 @@ import java.io.File
 const val YAML_PATH = "../FluentUI/FluentUIStyleSheets"
 const val YAML_STYLESHEET_SUFFIX = "Style.yml"
 
-var global_projectRoot = "../FluentUI"
+var global_projectRoot = "../fluentui_core"
     set(value) {
         field = value
         global_projectSourcePath = "$global_projectRoot/generatedSrc/"
@@ -15,6 +15,8 @@ var global_projectSourcePath: String = "$global_projectRoot/generatedSrc/"
 lateinit var global_flavorName: String
     private set
 lateinit var global_flavorPath: String
+    private set
+lateinit var global_flavorMidPath: String
     private set
 
 fun main(args: Array<String>) {
@@ -47,7 +49,7 @@ fun main(args: Array<String>) {
 fun configFlavor(name: String) {
     global_flavorName = name
     global_flavorPath = global_projectSourcePath.plus(global_flavorName).plus("/")
-    if (name != "main") upgradeGradleFlavors()
+    global_flavorMidPath = "/generatedSrc/".plus(global_flavorName).plus("/")
 }
 
 fun getLocalStyleSheetList(): List<StylesheetDocument> {
@@ -72,29 +74,4 @@ fun getLocalStyleSheetList(): List<StylesheetDocument> {
     } ?: printError("No stylesheet files found!")
 
     return docs
-}
-
-fun upgradeGradleFlavors() {
-    val generatedFolder = File("$global_projectRoot/generatedSrc")
-    val flavorsFile = File(generatedFolder, "flavors.gradle")
-
-    if (!generatedFolder.exists() || !flavorsFile.exists()) {
-        generatedFolder.mkdirs()
-        flavorsFile.createNewFile()
-        flavorsFile.writeText("android.productFlavors {\n    }")
-    }
-    val buildFileContent = flavorsFile.readText()
-    Regex("android.productFlavors \\{([^}]*)}").run {
-        find(buildFileContent)?.value?.let { flavorsString ->
-            if (!flavorsString.contains(global_flavorName)) {
-                replace(
-                    buildFileContent,
-                    flavorsString.replace("}", "    $global_flavorName\n    }")
-                )
-            } else null
-        }
-    }?.also {
-        flavorsFile.writeText(it)
-        print("> Flavor \"$global_flavorName\" added to flavors.gradle")
-    }
 }

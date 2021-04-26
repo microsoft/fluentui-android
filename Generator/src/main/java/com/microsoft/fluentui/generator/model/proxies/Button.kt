@@ -2,6 +2,7 @@ package com.microsoft.fluentui.generator.model.proxies
 
 import com.microsoft.fluentui.generator.DocumentType
 import com.microsoft.fluentui.generator.global_documentType
+import com.microsoft.fluentui.generator.global_flavorMidPath
 import com.microsoft.fluentui.generator.model.AttributeType
 import com.microsoft.fluentui.generator.model.resources.*
 
@@ -19,6 +20,8 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
 
     override val viewName: String
         get() = super.viewName + "View"
+    override val sourcePath: String
+        get() = "../fluentui_others"
 
     override fun setupGeneratorParameters(parameters: LinkedHashMap<String, Any>) {
         val apNameLowerCase = viewName.toLowerCase()
@@ -26,7 +29,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
         // Generate all color selectors
         parameters.forEach {
             if (isColorSelector(it.value)) {
-                generateColorSelector(apNameLowerCase + "_" + it.key, it.value as ArrayList<*>)
+                generateColorSelector(sourcePath.plus(global_flavorMidPath),apNameLowerCase + "_" + it.key, it.value as ArrayList<*>)
             }
         }
 
@@ -52,7 +55,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
                     // FIXME: Ripple for transparent buttons?
                     attributes[ShapeKeys.RIPPLE_COLOR] = "@color/${apNameLowerCase}_backgroundColor_pressed"
 
-                    generateShape("${apNameLowerCase}_${apStyle}background", attributes)
+                    generateShape(sourcePath.plus(global_flavorMidPath),"${apNameLowerCase}_${apStyle}background", attributes)
                 }
             }
         }
@@ -106,7 +109,7 @@ class Button(val type: Type = Type.Default()) : AppearanceProxy() {
                     )
                 }
             }
-            generateStyles("${name}", styles)
+            generateStyles(sourcePath.plus(global_flavorMidPath),"${name}", styles)
         }
     }
 

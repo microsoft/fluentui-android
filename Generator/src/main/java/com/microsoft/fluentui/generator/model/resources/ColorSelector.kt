@@ -2,11 +2,11 @@ package com.microsoft.fluentui.generator.model.resources
 
 import com.microsoft.fluentui.generator.*
 
-fun generateColorSelector(name: String, values: ArrayList<*>, legacyOnly: Boolean = false) {
-    intGenerateColorSelector(values, false).writeToResourceFile(global_flavorPath.plus("res/color${global_documentType.identifierString()}/$name.xml".toLowerCase()), "Color selector")
+fun generateColorSelector(sourcePath: String, name: String, values: ArrayList<*>, legacyOnly: Boolean = false) {
+    intGenerateColorSelector(values, false).writeToResourceFile(sourcePath.plus("res/color${global_documentType.identifierString()}/$name.xml".toLowerCase()), "Color selector")
     if (name.toLowerCase().contains("backgroundcolor") && !legacyOnly) {
         intGenerateColorSelector(values, true).writeToResourceFile(
-            global_flavorPath.plus("res/color${global_documentType.identifierString()}-v21/$name.xml".toLowerCase()),
+            sourcePath.plus("res/color${global_documentType.identifierString()}-v21/$name.xml".toLowerCase()),
             "Color selector"
         )
     }

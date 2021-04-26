@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+
+    <style name="Theme.FluentUI.Drawer" parent="Theme.FluentUI.Drawer.Base">
+        <!--Drawer-->
+        <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiDrawerHandleColor">@color/fluentui_gray_500</item>
+        <item name="fluentuiPersistentBottomSheetHeadingColor">@color/fluentui_gray_400</item>
+        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">@color/fluentui_gray_400</item>
+        <!--BottomSheet-->
+        <item name="fluentuiBottomSheetBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiBottomSheetBackgroundPressedColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
+        <item name="fluentuiBottomSheetDividerColor">@color/fluentui_gray_700</item>
+        <!-- Bottomsheet Horizontal ListItem -->
+        <item name="fluentuiHorizontalListItemTitleColor">?attr/fluentuiForegroundSecondaryColor</item>
+    </style>
+</resources>

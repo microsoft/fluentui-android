@@ -8,12 +8,13 @@ package com.microsoft.fluentuidemo.demos
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.widget.TextViewCompat
-import android.support.v7.widget.DividerItemDecoration
+import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListItemView
@@ -136,6 +137,39 @@ class ListItemViewActivity : DemoActivity() {
                     customViewSize = ListItemView.CustomViewSize.MEDIUM,
                     customAccessoryView = createExampleTextView(),
                     layoutDensity = ListItemView.LayoutDensity.COMPACT
+                )
+            )
+        )
+
+        val twoLineCustomSecondarySubtitleSection = createSection(
+            createListSubHeader(getString(R.string.list_item_sub_header_two_line_custom_secondary_subtitle)),
+            arrayListOf(
+                createListItem(
+                        getString(R.string.list_item_title),
+                        getString(R.string.list_item_subtitle),
+                        customView = createExampleCustomView(smallIcon),
+                        customViewSize = ListItemView.CustomViewSize.SMALL,
+                        customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
+                        layoutDensity = ListItemView.LayoutDensity.COMPACT
+                ),
+                createListItem(
+                        getString(R.string.list_item_title),
+                        getString(R.string.list_item_subtitle),
+                        customView = createExampleCustomView(smallIcon),
+                        customViewSize = ListItemView.CustomViewSize.SMALL,
+                        customAccessoryView = createExampleCustomView(overflowIcon),
+                        customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
+                        addCustomAccessoryViewClick = true,
+                        layoutDensity = ListItemView.LayoutDensity.COMPACT
+                ),
+                createListItem(
+                        getString(R.string.list_item_title),
+                        getString(R.string.list_item_subtitle),
+                        customView = createExampleAvatarView(R.drawable.avatar_wanda_howard),
+                        customViewSize = ListItemView.CustomViewSize.MEDIUM,
+                        customAccessoryView = createExampleTextView(),
+                        customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
+                        layoutDensity = ListItemView.LayoutDensity.COMPACT
                 )
             )
         )
@@ -276,7 +310,7 @@ class ListItemViewActivity : DemoActivity() {
             )
         )
 
-        val twoLineListSections = twoLineSection + twoLineDenseSection
+        val twoLineListSections = twoLineSection + twoLineDenseSection + twoLineCustomSecondarySubtitleSection
         val layoutVariantSections = noCustomViewSection + largeHeaderSection + truncationSection + wrappingSection
         return (singleLineSection + twoLineListSections + threeLineSection + layoutVariantSections) as ArrayList<IBaseListItem>
     }
@@ -298,7 +332,7 @@ class ListItemViewActivity : DemoActivity() {
         if (useCustomAccessoryView) {
             val customTextView = TextView(this)
             customTextView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
-            TextViewCompat.setTextAppearance(customTextView, R.style.TextAppearance_FluentUI_ListSubHeaderTitle_Tertiary)
+            TextViewCompat.setTextAppearance(customTextView, R.style.FluentUIDemo_ListItemSubHeaderTitle)
             customTextView.setOnClickListener {
                 Snackbar.make(
                     it,
@@ -319,6 +353,7 @@ class ListItemViewActivity : DemoActivity() {
         customView: View? = null,
         customViewSize: ListItemView.CustomViewSize = DEFAULT_CUSTOM_VIEW_SIZE,
         customAccessoryView: View? = null,
+        customSecondarySubtitleView: View? = null,
         addCustomAccessoryViewClick: Boolean = false,
         layoutDensity: ListItemView.LayoutDensity = DEFAULT_LAYOUT_DENSITY,
         wrap: Boolean = false
@@ -331,6 +366,7 @@ class ListItemViewActivity : DemoActivity() {
         item.customAccessoryView = customAccessoryView
         item.customView = customView
         item.customViewSize = customViewSize
+        item.customSecondarySubtitleView = customSecondarySubtitleView
 
         if (wrap) {
             item.titleMaxLines = 4
@@ -375,5 +411,19 @@ class ListItemViewActivity : DemoActivity() {
         if (avatarNameStringId != -1)
             avatarView.name = getString(avatarNameStringId)
         return avatarView
+    }
+
+    private fun createExampleCustomSecondarySubtitleView(): LinearLayout {
+        val dotTextView = TextView(this)
+        dotTextView.text = " . "
+
+        val secondarySubtitleTextView = TextView(this)
+        TextViewCompat.setTextAppearance(secondarySubtitleTextView, R.style.TextAppearance_DemoListItemSubtitle)
+        secondarySubtitleTextView.text = getString(R.string.list_item_secondary_subtitle)
+
+        val linearLayout = LinearLayout(this)
+        linearLayout.addView(dotTextView)
+        linearLayout.addView(secondarySubtitleTextView)
+        return linearLayout
     }
 }

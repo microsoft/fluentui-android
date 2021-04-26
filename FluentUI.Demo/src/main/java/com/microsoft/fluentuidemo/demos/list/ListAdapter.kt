@@ -6,8 +6,8 @@
 package com.microsoft.fluentuidemo.demos.list
 
 import android.content.Context
-import android.support.v7.widget.AppCompatButton
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.widget.AppCompatButton
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
@@ -149,6 +149,7 @@ fun ListItemView.setListItem(listItem: IListItem) {
     customView = listItem.customView
     customViewSize = listItem.customViewSize
     customAccessoryView = listItem.customAccessoryView
+    customSecondarySubtitleView = listItem.customSecondarySubtitleView
 
     layoutDensity = listItem.layoutDensity
 }

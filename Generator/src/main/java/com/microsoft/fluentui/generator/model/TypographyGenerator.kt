@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.generator.model
 
+import com.microsoft.fluentui.generator.global_flavorPath
 import com.microsoft.fluentui.generator.model.resources.*
 import java.util.*
 
@@ -115,8 +116,8 @@ class TypographyGenerator(name: String? = null) : ResourceGenerator(name ?: "typ
                 }
             }
             if (stylesList.isNotEmpty()) {
-                generateStyles(name, stylesList)
-                generateStyles(name,stylesList,true)
+                generateStyles(global_flavorPath, name, stylesList)
+                generateStyles(global_flavorPath, name,stylesList,true)
             }
         }
     }

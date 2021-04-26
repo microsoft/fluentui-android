@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.generator.model.proxies
 
+import com.microsoft.fluentui.generator.global_flavorMidPath
 import com.microsoft.fluentui.generator.global_projectSourcePath
 import com.microsoft.fluentui.generator.model.resources.Resource
 import com.microsoft.fluentui.generator.model.resources.generateComponentProxyFile
@@ -14,19 +15,19 @@ class ResourceProxyGenerator(
     private val parentName: String?,
     private val parentParameters: LinkedHashMap<String, Any>?
 ) {
-    private val baseResourceProxyPath = global_projectSourcePath.plus("main/java/com/microsoft/fluentui/generator/resourceProxies/")
+    private val baseResourceProxyPath = "java/com/microsoft/fluentui/generator/resourceProxies/"
     private val customResources = mutableListOf<Resource>()
 
-    fun generateAll() {
+    fun generateAll(sourcePath: String) {
         val resourceList = mutableListOf<Resource>()
         resourceList.addAll(customResources)
 
         // Parse all resources
         parameters.forEach { parseResourceCodeWrapper(resourceList, it.key, it.value) }
-        val resourceProxyPath = "$baseResourceProxyPath$stylesheetName" +"Proxy.kt"
+        val resourceProxyPath = "$sourcePath$global_flavorMidPath$baseResourceProxyPath$stylesheetName" +"Proxy.kt"
         generateComponentProxyFile(resourceProxyPath, stylesheetName, viewName, resourceList, parentName, parentParameters)
         if(parentName == null){
-            val resourceTokenSystemPath = "$baseResourceProxyPath$stylesheetName" +"System.kt"
+            val resourceTokenSystemPath = "$sourcePath$global_flavorMidPath$baseResourceProxyPath$stylesheetName" +"System.kt"
             generateTokenSystemFile(resourceTokenSystemPath, stylesheetName, viewName, parameters)
         }
     }

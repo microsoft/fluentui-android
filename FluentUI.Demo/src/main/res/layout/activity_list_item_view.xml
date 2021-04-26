@@ -4,12 +4,12 @@
   ~ Licensed under the MIT License.
   -->
 
-<android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/list_example"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/fluentuiListItemBackgroundColor"
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+    android:background="?attr/fluentuiBackgroundColor"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     tools:context=".demos.ListItemViewActivity" />

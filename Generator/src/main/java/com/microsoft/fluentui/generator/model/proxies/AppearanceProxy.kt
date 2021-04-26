@@ -15,6 +15,8 @@ abstract class AppearanceProxy {
     open val viewName: String
         get() = stylesheetName
 
+    abstract val sourcePath: String
+
     internal var ignoreDataBindingMethods: Boolean = true
 
     open fun generate(
@@ -30,11 +32,11 @@ abstract class AppearanceProxy {
             setupStyles(ap, parentName)
             setupCustomAttributes().forEach { addCustomAttribute(it) }
             setupCustomResources(ap).forEach { addCustomResource(it) }
-            generateAll()
+            generateAll(sourcePath)
         }
 
         ResourceProxyGenerator(apName, viewName, parameters, parentName, parentParameters).apply {
-            generateAll()
+            generateAll(sourcePath)
         }
     }
 

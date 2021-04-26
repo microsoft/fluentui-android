@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--AppBarLayout-->
+    <integer name="fluentui_app_bar_layout_elevation_duration">500</integer>
+    <integer name="fluentui_app_bar_layout_elevation_scroll_duration">0</integer>
+
+    <!--Animation-->
+    <integer name="fluentui_anim_indeterminate_duration">1000</integer>
+    <integer name="fluentui_anim_indeterminate_linear_duration">2000</integer>
+
+    <!--NumberPicker-->
+    <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">7</integer>
+
+
+    <!--PeoplePicker-->
+    <integer name="fluentui_people_picker_search_directory_max_lines">2</integer>
+
+</resources>

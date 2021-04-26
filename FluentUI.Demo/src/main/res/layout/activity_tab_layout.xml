@@ -12,12 +12,12 @@
 
     <com.microsoft.fluentui.tablayout.TabLayout
         android:id="@+id/demo_tab_layout"
-        style="@style/FluentUI.TabLayout"
+        style="@style/FluentUIDemo.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabType="Standard"/>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tab_layout_pager_height"/>

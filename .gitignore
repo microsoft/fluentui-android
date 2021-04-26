@@ -34,7 +34,7 @@ captures/
 
 # IntelliJ
 *.iml
-.idea/*
+.idea/
 
 .DS_Store
 
@@ -55,11 +55,13 @@ freeline/
 freeline_project_description.json
 
 # fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots
-fastlane/test_output
-fastlane/readme.md
+*/fastlane/report.xml
+*/fastlane/Preview.html
+*/fastlane/screenshots
+*/fastlane/test_output
+*/fastlane/readme.md
 
 # Generated Files
 FluentUI/generatedSrc
+fluentui_core/generatedSrc
+fluentui_others/generatedSrc

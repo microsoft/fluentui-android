@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/DateTimePickerDialog.Toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/fluentui_date_time_picker_toolbar_elevation"
+        app:titleTextColor="?attr/fluentuiDateTimePickerToolbarTitleTextColor"
+        android:background="?attr/fluentuiDateTimePickerDialogBackgroundColor"/>
+
+    <LinearLayout
+        android:id="@+id/tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:elevation="@dimen/fluentui_date_time_picker_toolbar_elevation"
+        android:background="?attr/fluentuiDateTimePickerDialogBackgroundColor">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            style="@style/Widget.FluentUI.Dialog.TabLayout"/>
+
+    </LinearLayout>
+
+    <com.microsoft.fluentui.view.WrapContentViewPager
+        android:id="@+id/view_pager"
+        android:background="?attr/fluentuiDialogBackgroundColor"
+        android:importantForAccessibility="no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

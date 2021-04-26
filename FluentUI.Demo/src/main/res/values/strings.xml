@@ -77,6 +77,39 @@
     <string name="bottom_sheet_with_single_line_header">Show with single line header</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Show with double line header and dividers</string>
     <string name="bottom_sheet_dialog_button">Show</string>
+    <string name="drawer_content_desc_collapse_state">Expand</string>
+    <string name="drawer_content_desc_expand_state">Minimize</string>
+    <string name="large_scrollable_text" translatable="false" >Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+        Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+    </string>
 
     <!--ContextualCommandBar-->
     <string name="contextual_command_bar_style_default">Default</string>
@@ -199,10 +232,12 @@
     <!--ListItem-->
     <string name="list_item_title">Title, primary text</string>
     <string name="list_item_subtitle">Subtitle, secondary text</string>
+    <string name="list_item_secondary_subtitle">Custom subtitle text</string>
     <string name="list_item_footer">Footer, tertiary text</string>
     <string name="list_item_sub_header_single_line">Single-line list with gray sub header text</string>
     <string name="list_item_sub_header_two_line">Two-line list</string>
     <string name="list_item_sub_header_two_line_dense">Two-line list with dense spacing</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Two line list with custom secondary subtitle view</string>
     <string name="list_item_sub_header_three_line">Three-line list with black sub header text</string>
     <string name="list_item_sub_header_no_custom_views">List items with no custom views</string>
     <string name="list_item_sub_header_large_header">List items with large custom views</string>
@@ -238,11 +273,12 @@
 
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Expand Persistent BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> Collapse Persistent BottomSheet</string>
+    <string name="collapse_persistent_sheet_button"> Hide Persistent BottomSheet</string>
     <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
     <string name="new_view">This is New View</string>
     <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
     <string name="switch_to_custom_content">Switch to custom Content</string>
+    <string name="one_line_content">One Line Bottomsheet Content</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Change Collapsed Height</string>
@@ -416,8 +452,9 @@
 
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>
+    <string name="tooltip_custom_button">Tap Custom Color Tooltip</string>
     <string name="tooltip_center_button">Tap for Dismiss Inside Tooltip</string>
-    <string name="tooltip_top_start_message">Top Start Tooltip</string>
+    <string name="tooltip_top_start_message">Top Custom Color Tooltip</string>
     <string name="tooltip_top_end_message">Top End Tooltip with 10dp offsetX</string>
     <string name="tooltip_bottom_start_message">Bottom Start Tooltip</string>
     <string name="tooltip_bottom_end_message">Bottom End Tooltip with 10dp offsetY</string>
