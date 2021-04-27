@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat
 import androidx.appcompat.widget.ListPopupWindow
 import android.view.KeyEvent
 import android.view.View
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.menus.R
 import com.microsoft.fluentui.popupmenu.PopupMenu.ItemCheckableBehavior
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
@@ -63,7 +63,7 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
         anchorView: View,
         items: ArrayList<PopupMenuItem>,
         itemCheckableBehavior: ItemCheckableBehavior = DEFAULT_ITEM_CHECKABLE_BEHAVIOR
-    ) : super(FluentUIContextThemeWrapper(context)) {
+    ) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Menus)) {
         this.context = context
         this.anchorView = anchorView
         this.items = items
@@ -72,7 +72,7 @@ class PopupMenu : ListPopupWindow, PopupMenuItem.OnClickListener {
         adapter = PopupMenuAdapter(context, items, itemCheckableBehavior, this)
         setAdapter(adapter)
 
-        setBackgroundDrawable(ContextCompat.getDrawable(FluentUIContextThemeWrapper(context), R.drawable.popup_menu_background))
+        setBackgroundDrawable(ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Menus), R.drawable.popup_menu_background))
 
         isModal = true
         width = adapter.calculateWidth()
