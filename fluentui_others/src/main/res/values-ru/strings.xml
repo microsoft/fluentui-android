@@ -88,15 +88,6 @@
     <item quantity="other">%s человек</item>
   </plurals>
   <string name="persona_title_placeholder">Без имени</string>
-  <string name="popup_menu_accessibility_item_toggle">переключить</string>
-  <string name="popup_menu_accessibility_item_select">выбрать</string>
-  <string name="popup_menu_accessibility_item_click_selected">Выбран пункт \"%s\"</string>
-  <string name="popup_menu_accessibility_item_click_checked">Флажок \"%s\" установлен</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Флажок \"%s\" снят</string>
-  <string name="popup_menu_accessibility_item_radio_button">переключатель</string>
-  <string name="popup_menu_accessibility_item_check_box">флажок</string>
-  <string name="popup_menu_accessibility_item_state_checked">установлен</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">снят</string>
   <string name="progress_circular_content_description_indeterminate">Не определено</string>
   <string name="searchbar_clear_search">Очистить поисковый запрос</string>
   <string name="searchbar_back">Назад</string>

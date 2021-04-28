@@ -84,15 +84,6 @@
     <item quantity="other">%s kishi</item>
   </plurals>
   <string name="persona_title_placeholder">Nomsiz</string>
-  <string name="popup_menu_accessibility_item_toggle">almashtirish</string>
-  <string name="popup_menu_accessibility_item_select">belgilash</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s tanlangan</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s belgilandi</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s bekor qilindi</string>
-  <string name="popup_menu_accessibility_item_radio_button">radio tugma</string>
-  <string name="popup_menu_accessibility_item_check_box">belgilash qutisi</string>
-  <string name="popup_menu_accessibility_item_state_checked">belgilangan</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">belgilanmagan</string>
   <string name="progress_circular_content_description_indeterminate">Noaniq</string>
   <string name="searchbar_clear_search">Qidiruvni tozalash</string>
   <string name="searchbar_back">Orqaga</string>

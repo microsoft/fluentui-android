@@ -84,15 +84,6 @@
     <item quantity="other">%s personen</item>
   </plurals>
   <string name="persona_title_placeholder">Geen naam</string>
-  <string name="popup_menu_accessibility_item_toggle">in-/uitschakelen</string>
-  <string name="popup_menu_accessibility_item_select">selecteren</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s geselecteerd</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s ingeschakeld</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s uitgeschakeld</string>
-  <string name="popup_menu_accessibility_item_radio_button">keuzerondje</string>
-  <string name="popup_menu_accessibility_item_check_box">selectievakje</string>
-  <string name="popup_menu_accessibility_item_state_checked">ingeschakeld</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">uitgeschakeld</string>
   <string name="progress_circular_content_description_indeterminate">Onbepaald</string>
   <string name="searchbar_clear_search">Zoekopdracht wissen</string>
   <string name="searchbar_back">Terug</string>

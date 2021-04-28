@@ -82,15 +82,6 @@
     <item quantity="other">%s 个人</item>
   </plurals>
   <string name="persona_title_placeholder">无姓名</string>
-  <string name="popup_menu_accessibility_item_toggle">切换</string>
-  <string name="popup_menu_accessibility_item_select">选择</string>
-  <string name="popup_menu_accessibility_item_click_selected">已选择 %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">已选择 %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">已取消选择 %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">单选按钮</string>
-  <string name="popup_menu_accessibility_item_check_box">复选框</string>
-  <string name="popup_menu_accessibility_item_state_checked">已选择</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">未选中</string>
   <string name="progress_circular_content_description_indeterminate">不确定</string>
   <string name="searchbar_clear_search">清除搜索</string>
   <string name="searchbar_back">返回</string>

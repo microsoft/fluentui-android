@@ -92,15 +92,6 @@
     <item quantity="other">%s من الأشخاص</item>
   </plurals>
   <string name="persona_title_placeholder">لا يوجد اسم</string>
-  <string name="popup_menu_accessibility_item_toggle">تبديل</string>
-  <string name="popup_menu_accessibility_item_select">تحديد</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s محدد</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s تم اختياره</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s لم يتم اختياره</string>
-  <string name="popup_menu_accessibility_item_radio_button">زر تبادلي</string>
-  <string name="popup_menu_accessibility_item_check_box">خانة اختيار</string>
-  <string name="popup_menu_accessibility_item_state_checked">تم اختياره</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">لم يتم اختياره</string>
   <string name="progress_circular_content_description_indeterminate">غير محدد</string>
   <string name="searchbar_clear_search">مسح البحث</string>
   <string name="searchbar_back">رجوع</string>

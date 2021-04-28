@@ -86,15 +86,6 @@
     <item quantity="other">%s људи</item>
   </plurals>
   <string name="persona_title_placeholder">Нема имена</string>
-  <string name="popup_menu_accessibility_item_toggle">прекидач</string>
-  <string name="popup_menu_accessibility_item_select">изаберите</string>
-  <string name="popup_menu_accessibility_item_click_selected">Изабрано: %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">Потврђен је избор ставке %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Опозван је избор ставке %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">радио дугме</string>
-  <string name="popup_menu_accessibility_item_check_box">поље за потврду</string>
-  <string name="popup_menu_accessibility_item_state_checked">потврђен избор</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">није потврђен избор</string>
   <string name="progress_circular_content_description_indeterminate">Неодређено</string>
   <string name="searchbar_clear_search">Обриши претрагу</string>
   <string name="searchbar_back">Назад</string>
