@@ -50,7 +50,7 @@ class DrawerActivity : DemoActivity(), OnDrawerContentCreatedListener {
             R.id.show_anchor_view_top_dialog_button-> { drawerDialogDemo = DrawerDialog(this,DrawerDialog.BehaviorType.TOP, anchorView = findViewById<View>(R.id.show_anchor_view_top_dialog_button)) }
             R.id.show_no_title_top_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.TOP, titleBehavior = DrawerDialog.TitleBehavior.HIDE_TITLE ) }
             R.id.show_below_title_top_dialog_button-> { drawerDialogDemo = DrawerDialog(this,DrawerDialog.BehaviorType.TOP,  titleBehavior =DrawerDialog.TitleBehavior.BELOW_TITLE) }
-            R.id.show_left_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.LEFT) }
+            R.id.show_left_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.LEFT, titleBehavior = DrawerDialog.TitleBehavior.HIDE_TITLE) }
             R.id.show_right_dialog_button-> { drawerDialogDemo = DrawerDialog(this, DrawerDialog.BehaviorType.RIGHT) }
         }
         drawerDialogDemo?.onDrawerContentCreatedListener = this

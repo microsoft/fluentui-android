@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/default_layout_margin">
+
+    <Button
+        android:id="@+id/show_left_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_button_left_full_empty" />
+    <Button
+        android:id="@+id/show_left_dialog_leftnav_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_button_left_full_content" />
+
+    <Button
+        android:id="@+id/show_left_status_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_button_left_below_status_empty" />
+    <Button
+        android:id="@+id/show_left_toolbar_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_button_left_below_toolbar_content" />
+
+    <Button
+        android:id="@+id/show_right_dialog_button"
+        android:layout_marginTop="@dimen/fluentui_content_inset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drawer_button_right_full_empty" />
+</LinearLayout>
