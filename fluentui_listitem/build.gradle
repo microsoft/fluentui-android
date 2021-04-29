@@ -22,12 +22,20 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
+    buildFeatures {
+        viewBinding true
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    sourceSets {
+        main.java.srcDirs += 'generatedSrc/main/java'
+        main.res.srcDirs += 'generatedSrc/main/res'
+        main.assets.srcDirs += 'generatedSrc/main/assets'
     }
 
 }
@@ -41,6 +49,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 

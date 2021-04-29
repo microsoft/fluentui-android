@@ -59,6 +59,7 @@
         <!-- Vnext Demos Activity -->
         <activity android:name="com.microsoft.fluentuidemo.vNextDemos.BasicInputsDemoActivity" />
         <activity android:name="com.microsoft.fluentuidemo.vNextDemos.AvatarViewDemoActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.vNextDemos.list.ListDemoActivity" />
 
     </application>
 

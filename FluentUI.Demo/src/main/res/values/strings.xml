@@ -264,6 +264,17 @@
     <string name="list_item_click_custom_accessory_view">You clicked on the custom accessory view.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">You clicked on the sub header custom accessory view.</string>
 
+    <!--ListItem V-Next-->
+    <string name="list_header_no_custom_base_style">Single Line, no CustomView base style</string>
+    <string name="list_item_custom_title">Custom Title Style</string>
+    <string name="list_item_custom_padding">Title, Custom Padding</string>
+    <string name="list_item_custom_button">Title, Custom Button</string>
+    <string name="list_header_custom_view_accent_style">Single Line, Small CustomView accent style</string>
+    <string name="list_header_medium_custom_view_action">Single Line, Medium CustomView with action</string>
+    <string name="list_header_large_custom_view_custom">Single Line, Large CustomView with custom view</string>
+    <string name="list_header_two_line_accent">Two Line Accent style</string>
+
+
     <!--PeoplePicker-->
     <string name="people_picker_select_example">Select</string>
     <string name="people_picker_select_deselect_example">SelectDeselect</string>
