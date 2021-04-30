@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">прекидач</string>
+  <string name="popup_menu_accessibility_item_select">изаберите</string>
+  <string name="popup_menu_accessibility_item_click_selected">Изабрано: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Потврђен је избор ставке %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Опозван је избор ставке %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">радио дугме</string>
+  <string name="popup_menu_accessibility_item_check_box">поље за потврду</string>
+  <string name="popup_menu_accessibility_item_state_checked">потврђен избор</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">није потврђен избор</string>
+ </resources>

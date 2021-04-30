@@ -88,15 +88,6 @@
     <item quantity="other">%s lidí</item>
   </plurals>
   <string name="persona_title_placeholder">Beze jména</string>
-  <string name="popup_menu_accessibility_item_toggle">přepnout</string>
-  <string name="popup_menu_accessibility_item_select">vybrat</string>
-  <string name="popup_menu_accessibility_item_click_selected">Vybráno: %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">Zaškrtnuto: %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Zaškrtnutí zrušeno u: %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">přepínač</string>
-  <string name="popup_menu_accessibility_item_check_box">zaškrtávací políčko</string>
-  <string name="popup_menu_accessibility_item_state_checked">zaškrtnuto</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">nezaškrtnuto</string>
   <string name="progress_circular_content_description_indeterminate">Neurčitý</string>
   <string name="searchbar_clear_search">Vymazat hledání</string>
   <string name="searchbar_back">Zpět</string>

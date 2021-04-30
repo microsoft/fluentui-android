@@ -10,7 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ListView
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.menus.R
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.activity
 import kotlin.math.max

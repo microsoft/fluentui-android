@@ -97,13 +97,6 @@
     <attr name="fluentuiPersonaChipTextErrorColor" format="reference|color"/>
     <attr name="fluentuiPersonaChipTextDisabledColor" format="reference|color"/>
 
-    <!--PopupMenu-->
-    <attr name="fluentuiPopupMenuBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuBackgroundPressedColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuItemTitleColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuItemForegroundSelectedColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuItemCheckBackgroundRippleColor" format="reference|color"/>
-
     <!--Progress-->
     <attr name="fluentuiProgressPrimaryColor" format="reference|color"/>
     <attr name="fluentuiProgressBackgroundColor" format="reference|color"/>

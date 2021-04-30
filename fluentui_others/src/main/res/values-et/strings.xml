@@ -84,15 +84,6 @@
     <item quantity="other">%s inimest</item>
   </plurals>
   <string name="persona_title_placeholder">Nimetu</string>
-  <string name="popup_menu_accessibility_item_toggle">lüliti</string>
-  <string name="popup_menu_accessibility_item_select">vali</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s on valitud</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s on märgitud</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s on märkimata</string>
-  <string name="popup_menu_accessibility_item_radio_button">raadionupp</string>
-  <string name="popup_menu_accessibility_item_check_box">märkeruut</string>
-  <string name="popup_menu_accessibility_item_state_checked">märgitud</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">märkimata</string>
   <string name="progress_circular_content_description_indeterminate">Määramata</string>
   <string name="searchbar_clear_search">Tühjenda otsing</string>
   <string name="searchbar_back">Tagasi</string>

@@ -84,15 +84,6 @@
     <item quantity="other">%s نفر</item>
   </plurals>
   <string name="persona_title_placeholder">بدون نام</string>
-  <string name="popup_menu_accessibility_item_toggle">کلید</string>
-  <string name="popup_menu_accessibility_item_select">انتخاب</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s انتخاب شد</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s علامت زده شد</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">علامت %s برداشته شد</string>
-  <string name="popup_menu_accessibility_item_radio_button">دکمه رادیویی</string>
-  <string name="popup_menu_accessibility_item_check_box">کادر انتخاب</string>
-  <string name="popup_menu_accessibility_item_state_checked">علامت‌دار</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">بدون علامت</string>
   <string name="progress_circular_content_description_indeterminate">نامشخص</string>
   <string name="searchbar_clear_search">پاک کردن جستجو</string>
   <string name="searchbar_back">بازگشت</string>

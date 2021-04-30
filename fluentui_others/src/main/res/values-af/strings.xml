@@ -84,15 +84,6 @@
     <item quantity="other">%s mense</item>
   </plurals>
   <string name="persona_title_placeholder">Geen naam nie</string>
-  <string name="popup_menu_accessibility_item_toggle">wissel</string>
-  <string name="popup_menu_accessibility_item_select">kies</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s gekies</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s gemerk</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s ongemerk</string>
-  <string name="popup_menu_accessibility_item_radio_button">radioknoppie</string>
-  <string name="popup_menu_accessibility_item_check_box">merkblokkie</string>
-  <string name="popup_menu_accessibility_item_state_checked">gemerk</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ongemerk</string>
   <string name="progress_circular_content_description_indeterminate">Onbepaald</string>
   <string name="searchbar_clear_search">Maak soektog skoon</string>
   <string name="searchbar_back">Terug</string>

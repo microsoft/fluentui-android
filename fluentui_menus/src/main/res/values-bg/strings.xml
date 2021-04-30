@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">превключване</string>
+  <string name="popup_menu_accessibility_item_select">избор</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s е избрано</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s е отметнато</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s е неотметнато</string>
+  <string name="popup_menu_accessibility_item_radio_button">бутон за избор</string>
+  <string name="popup_menu_accessibility_item_check_box">квадратче за отметка</string>
+  <string name="popup_menu_accessibility_item_state_checked">отметнато</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">не е отметнато</string>
+</resources>

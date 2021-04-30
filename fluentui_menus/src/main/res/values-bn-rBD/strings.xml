@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">টগল</string>
+  <string name="popup_menu_accessibility_item_select">নির্বাচন করুন</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s নির্বাচিত</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s টিক চিহ্ন দেওয়া হয়েছে</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s টিক চিহ্ন মুক্ত করা হয়েছে</string>
+  <string name="popup_menu_accessibility_item_radio_button">রেডিও বোতাম</string>
+  <string name="popup_menu_accessibility_item_check_box">চেকবাক্স</string>
+  <string name="popup_menu_accessibility_item_state_checked">টিক চিহ্ন দেওয়া হয়েছে</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">টিক চিহ্ন দেওয়া হয়নি</string>
+</resources>

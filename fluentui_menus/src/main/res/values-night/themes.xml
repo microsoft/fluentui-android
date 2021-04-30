@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <style name="Theme.FluentUI.Menus" parent="Theme.FluentUI.Menus.Base">
+    <!--PopupMenu-->
+    <item name="fluentuiPopupMenuBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+    <item name="fluentuiPopupMenuBackgroundPressedColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
+    <item name="fluentuiPopupMenuItemTitleColor">@color/fluentui_gray_100</item>
+    <item name="fluentuiPopupMenuItemCheckBackgroundRippleColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
+    </style>
+</resources>

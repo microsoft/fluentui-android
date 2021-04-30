@@ -84,15 +84,6 @@
     <item quantity="other">%s адам</item>
   </plurals>
   <string name="persona_title_placeholder">Аты жоқ</string>
-  <string name="popup_menu_accessibility_item_toggle">ауыстырып-қосу</string>
-  <string name="popup_menu_accessibility_item_select">таңдау</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s мәні таңдалды</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s құсбелгі қойылды</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">\"%s\" құсбелгісі алынды</string>
-  <string name="popup_menu_accessibility_item_radio_button">айырып-қосқыш</string>
-  <string name="popup_menu_accessibility_item_check_box">құсбелгі</string>
-  <string name="popup_menu_accessibility_item_state_checked">құсбелгі қойылды</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">құсбелгі қойылмаған</string>
   <string name="progress_circular_content_description_indeterminate">Анықталмаған</string>
   <string name="searchbar_clear_search">Іздеу нәтижелерін тазарту</string>
   <string name="searchbar_back">Артқа</string>

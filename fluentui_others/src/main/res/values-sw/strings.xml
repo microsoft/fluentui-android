@@ -84,15 +84,6 @@
     <item quantity="other">Watu %s</item>
   </plurals>
   <string name="persona_title_placeholder">Hakuna jina</string>
-  <string name="popup_menu_accessibility_item_toggle">kibanio</string>
-  <string name="popup_menu_accessibility_item_select">teua</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s imeteuliwa</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s imeteuliwa</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s haijateuliwa</string>
-  <string name="popup_menu_accessibility_item_radio_button">kitufe ch redio</string>
-  <string name="popup_menu_accessibility_item_check_box">kisanduku tiki</string>
-  <string name="popup_menu_accessibility_item_state_checked">imeteuliwa</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">haijateuliwa</string>
   <string name="progress_circular_content_description_indeterminate">Sio bainifu</string>
   <string name="searchbar_clear_search">Futa utafutaji</string>
   <string name="searchbar_back">Nyuma</string>

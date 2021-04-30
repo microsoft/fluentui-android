@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">veksleknapp</string>
+  <string name="popup_menu_accessibility_item_select">velg</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s valgt</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s merket</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ikke avmerket</string>
+  <string name="popup_menu_accessibility_item_radio_button">radioknapp</string>
+  <string name="popup_menu_accessibility_item_check_box">avmerkingsboks</string>
+  <string name="popup_menu_accessibility_item_state_checked">avmerket</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ikke avmerket</string>
+</resources>
