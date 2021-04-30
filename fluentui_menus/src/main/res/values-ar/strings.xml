@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">تبديل</string>
+  <string name="popup_menu_accessibility_item_select">تحديد</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s محدد</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s تم اختياره</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s لم يتم اختياره</string>
+  <string name="popup_menu_accessibility_item_radio_button">زر تبادلي</string>
+  <string name="popup_menu_accessibility_item_check_box">خانة اختيار</string>
+  <string name="popup_menu_accessibility_item_state_checked">تم اختياره</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">لم يتم اختياره</string>
+</resources>

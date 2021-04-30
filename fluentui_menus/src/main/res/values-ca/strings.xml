@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">commutador</string>
+  <string name="popup_menu_accessibility_item_select">selecciona</string>
+  <string name="popup_menu_accessibility_item_click_selected">S\'ha seleccionat: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">S\'ha marcat: %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">S\'ha desmarcat: %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">botó d\'opció</string>
+  <string name="popup_menu_accessibility_item_check_box">casella de selecció</string>
+  <string name="popup_menu_accessibility_item_state_checked">s\'ha marcat</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">no s\'ha marcat</string>
+</resources>

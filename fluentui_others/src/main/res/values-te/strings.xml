@@ -84,15 +84,6 @@
     <item quantity="other">%s మంది వ్యక్తులు</item>
   </plurals>
   <string name="persona_title_placeholder">పేరు లేదు</string>
-  <string name="popup_menu_accessibility_item_toggle">టోగుల్</string>
-  <string name="popup_menu_accessibility_item_select">ఎంచుకోండి</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s ఎంచుకున్నారు</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s ఎంచుకున్నారు</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s ఎంపిక తీసివేసారు</string>
-  <string name="popup_menu_accessibility_item_radio_button">రేడియో బటన్</string>
-  <string name="popup_menu_accessibility_item_check_box">ఎంపిక పెట్టె</string>
-  <string name="popup_menu_accessibility_item_state_checked">ఎంచుకున్నారు</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ఎంపిక తీసివేసారు</string>
   <string name="progress_circular_content_description_indeterminate">మధ్యంతరం</string>
   <string name="searchbar_clear_search">శోధనను క్లియర్ చేయి</string>
   <string name="searchbar_back">వెనుకకు</string>

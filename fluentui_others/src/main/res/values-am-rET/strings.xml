@@ -84,15 +84,6 @@
     <item quantity="other">%s ሰዎች</item>
   </plurals>
   <string name="persona_title_placeholder">ስም የለም</string>
-  <string name="popup_menu_accessibility_item_toggle">ቀይር</string>
-  <string name="popup_menu_accessibility_item_select">ይምረጡ</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s ተመርጧል</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s ተመርጧል</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s አልተመረጠም</string>
-  <string name="popup_menu_accessibility_item_radio_button">የሬዲዮ አዝራር</string>
-  <string name="popup_menu_accessibility_item_check_box">አመልካች ሳጥን</string>
-  <string name="popup_menu_accessibility_item_state_checked">የተመረጠ</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">አልተመረጠም</string>
   <string name="progress_circular_content_description_indeterminate">መታወቅ የማይችል</string>
   <string name="searchbar_clear_search">ፍለጋን አጽዳ</string>
   <string name="searchbar_back">ተመለስ</string>

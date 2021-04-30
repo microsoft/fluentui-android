@@ -84,15 +84,6 @@
     <item quantity="other">%s pessoas</item>
   </plurals>
   <string name="persona_title_placeholder">Sem nome</string>
-  <string name="popup_menu_accessibility_item_toggle">alternar</string>
-  <string name="popup_menu_accessibility_item_select">selecionar</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s selecionado</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s marcado</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s desmarcado</string>
-  <string name="popup_menu_accessibility_item_radio_button">botão de opção</string>
-  <string name="popup_menu_accessibility_item_check_box">caixa de seleção</string>
-  <string name="popup_menu_accessibility_item_state_checked">marcado</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">desmarcado</string>
   <string name="progress_circular_content_description_indeterminate">Indeterminado</string>
   <string name="searchbar_clear_search">Limpar pesquisa</string>
   <string name="searchbar_back">Voltar</string>

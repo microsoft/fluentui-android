@@ -82,15 +82,6 @@
     <item quantity="other">%s 人</item>
   </plurals>
   <string name="persona_title_placeholder">沒有名稱</string>
-  <string name="popup_menu_accessibility_item_toggle">切換</string>
-  <string name="popup_menu_accessibility_item_select">選取</string>
-  <string name="popup_menu_accessibility_item_click_selected">已選取 %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">已選取 %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">未選取 %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">選項按鈕</string>
-  <string name="popup_menu_accessibility_item_check_box">核取方塊</string>
-  <string name="popup_menu_accessibility_item_state_checked">已選取</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">未選取</string>
   <string name="progress_circular_content_description_indeterminate">不確定</string>
   <string name="searchbar_clear_search">清除搜尋</string>
   <string name="searchbar_back">返回</string>
