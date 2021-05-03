@@ -16,5 +16,12 @@
     <color name="fluentui_avatar_overflow_text_color">@color/fluentui_gray_25</color>
     <color name="fluentui_avatar_overflow_background">@color/fluentui_gray_600</color>
 
-
+    <color name="fluent_presence_available">#92C353</color>
+    <color name="fluent_presence_away">#F8D22A</color>
+    <color name="fluent_presence_oof">#E959D9</color>
+    <color name="fluent_presence_blocked">#D74553</color>
+    <color name="fluent_presence_busy">#D74553</color>
+    <color name="fluent_presence_dnd">#D74553</color>
+    <color name="fluent_presence_offline">#979593</color>
+    <color name="fluent_presence_unknown">#979593</color>
 </resources>

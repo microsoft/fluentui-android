@@ -394,8 +394,10 @@ OutlinedPrimaryAvatarTokens extends AvatarTokens:
 OverflowAvatarTokens extends AvatarTokens:
   backgroundDefaultColor: $Colors.Background.neutral4
   foregroundDefaultColor: $Colors.Foreground.neutral3
+  textColor: $Colors.Foreground.neutral3
   ringDefaultColor: $Colors.Background.neutralDisabled
 
+#FIXME: Naming and enums differ from iOS
 AP_ButtonTokens:
   ButtonSize: EnumDef(small, medium, large)
   ButtonStyle: EnumDef(primary, secondary, ghost)
@@ -456,8 +458,12 @@ AccentListHeaderTokens extends ListHeaderTokens:
 
 
 AP_DrawerTokens:
-  backgroundClearColor: $Colors.Neutral.clear
+  DrawerType: EnumDef(leftNav, rightNav)
+  DrawerBehavior: EnumDef(full, belowStatus, belowToolbar, anchored)
+  backgroundColor: "FluentUIColor(light: $Colors.Neutral.white, dark: $Colors.Neutral.grey16)"
   backgroundDimmedColor: $Colors.Elevation.highElevation
+  elevation: 8pt
+  corners: [ topLeft: 0pt, topRight: 0pt, bottomLeft: 0pt, bottomRight: 0pt]
   shadow1Color: $Shadow.shadow28.color1
   shadow1Blur: $Shadow.shadow28.blur1
   shadow1OffsetX: $Shadow.shadow28.x1

@@ -51,6 +51,18 @@
     <string name="avatar_size_small">Small</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
+    <!--AvatarView V-Next-->
+    <string name="avatar_view_change_background">Change Background</string>
+    <string name="avatar_view_use_transparency">Use Transparency</string>
+    <string name="avatar_view_show_presence">Show Presence</string>
+    <string name="avatar_view_show_oof">Show Out of Office</string>
+    <string name="avatar_view_show_rings">Show Rings</string>
+    <string name="avatar_default_style">Default Style</string>
+    <string name="avatar_group_style">Group Style</string>
+    <string name="avatar_overview_style">Overview Style</string>
+    <string name="avatar_outline_style">Fallback(Outline Style and Outlined Primary style)</string>
+    <string name="avatar_fallback_accent_style">Fallback(Default Style and accent style)</string>
+
     <!--AvatarGroupView-->
     <string name="avatar_group_max_displayed_avatar">Max Displayed Avatar</string>
     <string name="avatar_group_face_stack">Face Stack</string>
