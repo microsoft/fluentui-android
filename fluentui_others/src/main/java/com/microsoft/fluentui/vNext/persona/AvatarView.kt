@@ -17,6 +17,7 @@ import com.microsoft.fluentui.generator.AvatarSize
 import com.microsoft.fluentui.generator.AvatarStyle
 import com.microsoft.fluentui.generator.resourceProxies.AvatarTokensSystem
 import com.microsoft.fluentui.persona.InitialsDrawable
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.FieldUpdateListener
 import com.microsoft.fluentui.util.ThemeUtil
 import java.lang.Math.pow
@@ -62,7 +63,7 @@ open class AvatarView : AppCompatImageView {
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
         tokenSystem = AvatarTokensSystem(context, resources)
         avatar = Avatar()
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarTokensView)
