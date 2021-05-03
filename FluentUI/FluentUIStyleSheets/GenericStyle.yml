@@ -406,12 +406,12 @@ AP_ButtonTokens:
   borderRadius: [ small: $Border.radius.medium, medium: $Border.radius.large, large: $Border.radius.xlarge ]
   borderSize: [ small: $Border.size.none, medium: $Border.size.none, large: $Border.size.none ]
   iconColor: [ rest: $Colors.Foreground.brandRest, hover: $Colors.Foreground.brandHover, pressed: $Colors.Foreground.brandPressed, selected: $Colors.Foreground.brandSelected, disabled: $Colors.Foreground.brandDisabled ]
-  iconSize: [ small: $Icon.size.xSmall, medium: $Icon.size.small, large: $Icon.size.small ]
-  interspace: [ small: $Spacing.xxSmall, medium: $Spacing.xSmall, large: $Spacing.xSmall ]
+  iconSize: [ small: $Icon.size.small, medium: $Icon.size.medium, large: $Icon.size.large ]
+  interspace: [ small: $Spacing.xxSmall, medium: $Spacing.small, large: $Spacing.large ]
   paddingHorizontal: [ small: $Spacing.xSmall, medium: $Spacing.small, large: $Spacing.large ]
-  paddingVertical: [ small: 2pt, medium: 10pt, large: 14pt ]
+  paddingVertical: [ small: 6pt, medium: 10pt, large: 14pt ]
   textColor: [ rest: $Colors.Foreground.brandRest, hover: $Colors.Foreground.brandHover, pressed: $Colors.Foreground.brandPressed, selected: $Colors.Foreground.brandSelected, disabled: $Colors.Foreground.brandDisabled ]
-  textFont: [ small: $Typography.caption1_strong, medium: $Typography.caption1_strong, large: $Typography.body1_strong ]
+  textFont: [ small: $Typography.caption2, medium: $Typography.caption1_strong, large: $Typography.body1_strong ]
 
 PrimaryButtonTokens extends ButtonTokens:
   backgroundColor: [ rest: $Colors.Background.brandRest, hover: $Colors.Background.brandHover, pressed: $Colors.Background.brandPressed, selected: $Colors.Background.brandSelected, disabled: $Colors.Background.brandDisabled ]
