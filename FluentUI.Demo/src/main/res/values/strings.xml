@@ -20,6 +20,8 @@
     <string name="actionbar_position_bottom_radio_label">Bottom</string>
     <string name="actionbar_position_top_radio_label">Top</string>
     <string name="actionbar_position_heading">ActionBar Position</string>
+    <string name="actionbar_accessibility_position_radiogroup_description">Actionbar Position, Radiogroup</string>
+    <string name="actionbar_accessibility_type_radiogroup_description">Actionbar Type, Radiogroup</string>
 
     <!--AppBar-->
     <string name="app_bar_layout_navigation_icon_clicked">Navigation icon clicked.</string>

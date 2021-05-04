@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/fluentui_content_inset"
+        android:focusable="true"
+        android:contentDescription="@string/actionbar_accessibility_position_radiogroup_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -58,6 +60,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/fluentui_content_inset"
+        android:focusable="true"
+        android:contentDescription="@string/actionbar_accessibility_type_radiogroup_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postion_selection">
