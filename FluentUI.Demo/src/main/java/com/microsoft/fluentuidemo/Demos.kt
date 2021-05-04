@@ -8,6 +8,7 @@ package com.microsoft.fluentuidemo
 import com.microsoft.fluentuidemo.demos.*
 import com.microsoft.fluentuidemo.vNextDemos.AvatarViewDemoActivity
 import com.microsoft.fluentuidemo.vNextDemos.BasicInputsDemoActivity
+import com.microsoft.fluentuidemo.vNextDemos.list.ListDemoActivity
 import java.util.*
 import kotlin.reflect.KClass
 
@@ -55,6 +56,7 @@ val DEMOS = arrayListOf(
     Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
     Demo(DRAWER, DrawerActivity::class),
     Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
+    Demo(V_NEXT_LIST_ITEM_VIEW, ListDemoActivity::class),
     Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
     Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
     Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),

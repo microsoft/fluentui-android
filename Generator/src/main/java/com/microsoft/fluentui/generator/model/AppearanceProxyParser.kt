@@ -5,16 +5,19 @@ import com.microsoft.fluentui.generator.model.proxies.*
 import java.io.File
 
 val appearanceProxies = listOf(
-        Button(Button.Type.Default()),
-        Button(Button.Type.Primary()),
-        Button(Button.Type.Secondary()),
-        Button(Button.Type.Ghost()),
-        Avatar(),
-        Avatar(Avatar.Type.Accent()),
-        Avatar(Avatar.Type.Group()),
-        Avatar(Avatar.Type.Outlined()),
-        Avatar(Avatar.Type.OutlinedPrimary()),
-        Avatar(Avatar.Type.Overflow()),
+    Button(Button.Type.Default()),
+    Button(Button.Type.Primary()),
+    Button(Button.Type.Secondary()),
+    Button(Button.Type.Ghost()),
+    Avatar(),
+    Avatar(Avatar.Type.Accent()),
+    Avatar(Avatar.Type.Group()),
+    Avatar(Avatar.Type.Outlined()),
+    Avatar(Avatar.Type.OutlinedPrimary()),
+    Avatar(Avatar.Type.Overflow()),
+    ListCell(),
+    ListHeader(ListHeader.Type.Default()),
+    ListHeader(ListHeader.Type.Accent())
 )
 
 val resourceOnlyAppearanceProxies = listOf<String>()
