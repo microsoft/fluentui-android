@@ -23,12 +23,17 @@ class BottomNavigationActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         toggle_label_button.setOnClickListener {
+            var labelsState: String = ""
             // You can also achieve unlabeled items via @style/Widget.FluentUI.BottomNavigation.Unlabeled
-            bottom_navigation.labelVisibilityMode =
-                if (bottom_navigation.labelVisibilityMode == LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED)
-                    LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-                else
-                    LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
+            if (bottom_navigation.labelVisibilityMode == LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED){
+                bottom_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+                labelsState = "ON"
+            }
+            else {
+                bottom_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
+                labelsState = "OFF"
+            }
+            it.announceForAccessibility(resources.getString(R.string.bottom_navigation_accessibility_labels_state,  labelsState))
         }
 
         three_menu_items_button.setOnClickListener {

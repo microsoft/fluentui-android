@@ -186,6 +186,8 @@
     <string name="bottom_sheet_item_alarm_toast">Alarm item clicked</string>
     <string name="bottom_sheet_item_time_zone_title">Time zone</string>
     <string name="bottom_sheet_item_time_zone_toast">Time zone item clicked</string>
+    <!--accessibility-->
+    <string name="bottom_navigation_accessibility_labels_state">Labels are %s</string>
 
     <!--Button-->
     <string name="button">Button</string>
