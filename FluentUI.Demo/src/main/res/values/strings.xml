@@ -10,6 +10,7 @@
     <!--App-->
     <string name="app_name">Fluent UI Demo</string>
     <string name="app_title">Fluent UI</string>
+    <string name="app_accessibility_selected">Selected %s</string>
 
     <!--ActionBar-->
     <string name="actionbar_start_button">Start Demo</string>
