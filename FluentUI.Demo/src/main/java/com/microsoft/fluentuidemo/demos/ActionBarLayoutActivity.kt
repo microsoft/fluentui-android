@@ -2,8 +2,11 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.microsoft.fluentui.actionbar.ActionBarLayout
 import com.microsoft.fluentui.snackbar.Snackbar
+import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentuidemo.Demo
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -17,10 +20,19 @@ class ActionBarLayoutActivity: DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(isAccessibilityEnabled){
+            label_actionbar_position.isFocusable = true
+            label_actionbar_type.isFocusable = true
+        }
+        else {
+            label_actionbar_position.isFocusable = false
+            label_actionbar_type.isFocusable = false
+        }
+
         start_demo_btn.setOnClickListener{
             var position = action_bar_position_rgroup.checkedRadioButtonId
             var type = action_bar_type_rgroup.checkedRadioButtonId
-
             if(position == -1 || type == -1){
                 Snackbar.make(root_view,"Please select position and type", Snackbar.LENGTH_SHORT).show()
             }

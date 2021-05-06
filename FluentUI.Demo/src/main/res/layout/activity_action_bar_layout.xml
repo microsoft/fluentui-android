@@ -12,13 +12,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/fluentui_content_inset"
-        android:focusable="true"
-        android:contentDescription="@string/actionbar_accessibility_position_radiogroup_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/label_actionbar_position"
             style="@style/TextAppearance.FluentUI.Heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,13 +59,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/fluentui_content_inset"
-        android:focusable="true"
-        android:contentDescription="@string/actionbar_accessibility_type_radiogroup_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postion_selection">
 
         <TextView
+            android:id="@+id/label_actionbar_type"
             style="@style/TextAppearance.FluentUI.Heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
