@@ -2,8 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.TextView
 import com.microsoft.fluentui.actionbar.ActionBarLayout
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.util.isAccessibilityEnabled
