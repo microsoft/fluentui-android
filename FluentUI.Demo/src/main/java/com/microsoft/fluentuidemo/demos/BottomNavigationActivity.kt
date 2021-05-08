@@ -27,11 +27,11 @@ class BottomNavigationActivity : DemoActivity() {
             // You can also achieve unlabeled items via @style/Widget.FluentUI.BottomNavigation.Unlabeled
             if (bottom_navigation.labelVisibilityMode == LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED){
                 bottom_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-                labelsState = "ON"
+                labelsState = "On"
             }
             else {
                 bottom_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
-                labelsState = "OFF"
+                labelsState = "Off"
             }
             it.announceForAccessibility(resources.getString(R.string.bottom_navigation_accessibility_labels_state,  labelsState))
         }
