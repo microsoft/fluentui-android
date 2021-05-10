@@ -241,6 +241,17 @@
     <string name="drawer_right_dialog_button">Show right drawer</string>
     <string name="drawer_left_dialog_button">Show left drawer</string>
 
+    <!--Drawer V-Next-->
+    <string name="drawer_button_left_full_empty">Show Full Left Drawer, Empty</string>
+    <string name="drawer_button_left_full_content">Show Full Left Drawer, with content</string>
+    <string name="drawer_button_left_below_status_empty">Show below Status Left Drawer, Empty</string>
+    <string name="drawer_button_left_below_toolbar_content">Show below Toolbar Left Drawer, with content</string>
+    <string name="drawer_button_right_full_empty">Show Full Right Drawer, Empty</string>
+    <string name="drawer_demo_available_string">Available</string>
+    <string name="drawer_demo_notification_string">Notification</string>
+    <string name="drawer_demo_settings_string">Settings</string>
+    <string name="drawer_demo_status_string">Set Status</string>
+
     <!--ListItem-->
     <string name="list_item_title">Title, primary text</string>
     <string name="list_item_subtitle">Subtitle, secondary text</string>

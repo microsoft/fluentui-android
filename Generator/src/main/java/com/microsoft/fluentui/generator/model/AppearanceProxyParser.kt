@@ -17,7 +17,8 @@ val appearanceProxies = listOf(
     Avatar(Avatar.Type.Overflow()),
     ListCell(),
     ListHeader(ListHeader.Type.Default()),
-    ListHeader(ListHeader.Type.Accent())
+    ListHeader(ListHeader.Type.Accent()),
+    Drawer()
 )
 
 val resourceOnlyAppearanceProxies = listOf<String>()

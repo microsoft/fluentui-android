@@ -60,6 +60,7 @@
         <activity android:name="com.microsoft.fluentuidemo.vNextDemos.BasicInputsDemoActivity" />
         <activity android:name="com.microsoft.fluentuidemo.vNextDemos.AvatarViewDemoActivity" />
         <activity android:name="com.microsoft.fluentuidemo.vNextDemos.list.ListDemoActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.vNextDemos.DrawerDemoActivity" />
 
     </application>
 
