@@ -84,15 +84,6 @@
     <item quantity="other">%s άτομα</item>
   </plurals>
   <string name="persona_title_placeholder">Χωρίς όνομα</string>
-  <string name="popup_menu_accessibility_item_toggle">εναλλαγή</string>
-  <string name="popup_menu_accessibility_item_select">επιλογή</string>
-  <string name="popup_menu_accessibility_item_click_selected">Επιλεγμένο: %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">Επιλέχθηκε: %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Μη επιλεγμένο: %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">κουμπί επιλογής</string>
-  <string name="popup_menu_accessibility_item_check_box">πλαίσιο ελέγχου</string>
-  <string name="popup_menu_accessibility_item_state_checked">επιλεγμένο</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">μη επιλεγμένο</string>
   <string name="progress_circular_content_description_indeterminate">Ακαθόριστο</string>
   <string name="searchbar_clear_search">Απαλοιφή αναζήτησης</string>
   <string name="searchbar_back">Πίσω</string>

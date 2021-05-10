@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">bật/tắt</string>
+  <string name="popup_menu_accessibility_item_select">chọn</string>
+  <string name="popup_menu_accessibility_item_click_selected">Đã chọn %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Đã chọn %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Đã bỏ chọn %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">nút chọn một</string>
+  <string name="popup_menu_accessibility_item_check_box">hộp kiểm</string>
+  <string name="popup_menu_accessibility_item_state_checked">đã chọn</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">chưa được chọn</string>
+ </resources>

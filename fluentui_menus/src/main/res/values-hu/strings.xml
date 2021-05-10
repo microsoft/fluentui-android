@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">Kapcsoló</string>
+  <string name="popup_menu_accessibility_item_select">Bejelölés</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s bejelölve</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s menüelem bejelölve</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s menüelem jelölése törölve</string>
+  <string name="popup_menu_accessibility_item_radio_button">Választógomb</string>
+  <string name="popup_menu_accessibility_item_check_box">Jelölőnégyzet</string>
+  <string name="popup_menu_accessibility_item_state_checked">Bejelölve</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">Nincs bejelölve</string>
+</resources>

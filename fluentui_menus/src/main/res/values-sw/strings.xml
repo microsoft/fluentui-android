@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">kibanio</string>
+  <string name="popup_menu_accessibility_item_select">teua</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s imeteuliwa</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s imeteuliwa</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s haijateuliwa</string>
+  <string name="popup_menu_accessibility_item_radio_button">kitufe ch redio</string>
+  <string name="popup_menu_accessibility_item_check_box">kisanduku tiki</string>
+  <string name="popup_menu_accessibility_item_state_checked">imeteuliwa</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">haijateuliwa</string>
+ </resources>

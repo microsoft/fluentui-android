@@ -82,15 +82,6 @@
     <item quantity="other">%s individu</item>
   </plurals>
   <string name="persona_title_placeholder">Tiada nama</string>
-  <string name="popup_menu_accessibility_item_toggle">togol</string>
-  <string name="popup_menu_accessibility_item_select">pilih</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s dipilih</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s telah ditandakan</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s telah dinyahtanda</string>
-  <string name="popup_menu_accessibility_item_radio_button">butang radio</string>
-  <string name="popup_menu_accessibility_item_check_box">kotak semak</string>
-  <string name="popup_menu_accessibility_item_state_checked">ditandakan</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">tidak ditanda</string>
   <string name="progress_circular_content_description_indeterminate">Tidak dapat ditentukan</string>
   <string name="searchbar_clear_search">Kosongkan carian</string>
   <string name="searchbar_back">Ke belakang</string>

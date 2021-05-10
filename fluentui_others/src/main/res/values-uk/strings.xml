@@ -88,15 +88,6 @@
     <item quantity="other">%s осіб</item>
   </plurals>
   <string name="persona_title_placeholder">Без імені</string>
-  <string name="popup_menu_accessibility_item_toggle">перемкнути</string>
-  <string name="popup_menu_accessibility_item_select">вибрати</string>
-  <string name="popup_menu_accessibility_item_click_selected">Вибрано \"%s\"</string>
-  <string name="popup_menu_accessibility_item_click_checked">Прапорець \"%s\" установлено</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Прапорець \"%s\" знято</string>
-  <string name="popup_menu_accessibility_item_radio_button">перемикач</string>
-  <string name="popup_menu_accessibility_item_check_box">прапорець</string>
-  <string name="popup_menu_accessibility_item_state_checked">установлено</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">не встановлено</string>
   <string name="progress_circular_content_description_indeterminate">Не визначено</string>
   <string name="searchbar_clear_search">Очистити пошук</string>
   <string name="searchbar_back">Назад</string>

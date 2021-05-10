@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">almashtirish</string>
+  <string name="popup_menu_accessibility_item_select">belgilash</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s tanlangan</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s belgilandi</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s bekor qilindi</string>
+  <string name="popup_menu_accessibility_item_radio_button">radio tugma</string>
+  <string name="popup_menu_accessibility_item_check_box">belgilash qutisi</string>
+  <string name="popup_menu_accessibility_item_state_checked">belgilangan</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">belgilanmagan</string>
+</resources>

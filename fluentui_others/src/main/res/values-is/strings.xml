@@ -84,15 +84,6 @@
     <item quantity="other">%s aðilar</item>
   </plurals>
   <string name="persona_title_placeholder">Ekkert nafn</string>
-  <string name="popup_menu_accessibility_item_toggle">skipta milli</string>
-  <string name="popup_menu_accessibility_item_select">velja</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s valið</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s merkt</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s ómerkt</string>
-  <string name="popup_menu_accessibility_item_radio_button">valhringur</string>
-  <string name="popup_menu_accessibility_item_check_box">gátreitur</string>
-  <string name="popup_menu_accessibility_item_state_checked">merkt</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ómerkt</string>
   <string name="progress_circular_content_description_indeterminate">Óljóst</string>
   <string name="searchbar_clear_search">Hreinsa leit</string>
   <string name="searchbar_back">Til baka</string>

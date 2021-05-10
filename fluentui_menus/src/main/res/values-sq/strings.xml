@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ndrysho gjendjen</string>
+  <string name="popup_menu_accessibility_item_select">përzgjidh</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s u përzgjodh</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s e zgjedhur</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s e pazgjedhur</string>
+  <string name="popup_menu_accessibility_item_radio_button">buton radioje</string>
+  <string name="popup_menu_accessibility_item_check_box">kuti zgjedhjeje</string>
+  <string name="popup_menu_accessibility_item_state_checked">e zgjedhur</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nuk është zgjedhur</string>
+</resources>

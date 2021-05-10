@@ -58,12 +58,6 @@
         <item name="fluentuiPersonaChipTextNormalColor">@color/fluentui_gray_100</item>
         <item name="fluentuiPersonaChipTextErrorColor">#FF474C</item>
 
-        <!--PopupMenu-->
-        <item name="fluentuiPopupMenuBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiPopupMenuBackgroundPressedColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
-        <item name="fluentuiPopupMenuItemTitleColor">@color/fluentui_gray_100</item>
-        <item name="fluentuiPopupMenuItemCheckBackgroundRippleColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
-
         <!--Progress-->
         <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_900</item>
         <!--Searchbar-->

@@ -57,9 +57,6 @@
     </style>
     <style name="TextAppearance.FluentUI.PeoplePickerSearchDirectoryButton" parent="TextAppearance.FluentUI.Button.Borderless" />
 
-    <!--PopupMenu-->
-    <style name="TextAppearance.FluentUI.PopupMenuTitle" parent="TextAppearance.FluentUI.Body1" />
-
     <!--Dialog TabLayout-->
     <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>

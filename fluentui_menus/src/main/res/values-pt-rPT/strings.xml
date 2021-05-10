@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">alternar</string>
+  <string name="popup_menu_accessibility_item_select">selecionar</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s selecionado</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s selecionado</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s desselecionado</string>
+  <string name="popup_menu_accessibility_item_radio_button">botão de opção</string>
+  <string name="popup_menu_accessibility_item_check_box">caixa de verificação</string>
+  <string name="popup_menu_accessibility_item_state_checked">selecionado</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">não selecionado</string>
+</resources>
