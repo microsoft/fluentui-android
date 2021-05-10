@@ -167,6 +167,7 @@ class AppBarLayout : AppBarLayout {
         toolbar = Toolbar(context)
         addView(toolbar)
         context.activity?.setSupportActionBar(toolbar)
+        touchscreenBlocksFocus = false
     }
 
     private fun updateViewsWithScrollBehavior() {
