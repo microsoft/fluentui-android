@@ -15,8 +15,6 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.*
 import com.google.android.material.tabs.TabLayout
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
@@ -41,7 +39,7 @@ class TabLayout : TemplateView {
     var tabType: TabType? = null
         set(value) {
             field = value
-            updateTemplate()
+            updateTemplate(true)
         }
 
     private var tabLayoutContainer: ViewGroup? = null
@@ -104,7 +102,7 @@ class TabLayout : TemplateView {
      * Updates the given template based on the [tabType]. For [TabType.PILLS], this method must be called
      * to set the appropriate margins if the [tabType] is set before the Tabs have been added.
      * */
-    fun updateTemplate() {
+    fun updateTemplate(explicit:Boolean = false) {
         val tabLayout = tabLayout ?: return
         val paddingHorizontalLeft = resources.getDimension(R.dimen.fluentui_tab_padding_horizontal).toInt()
         var paddingHorizontalRight = resources.getDimension(R.dimen.fluentui_tab_padding_horizontal).toInt()
@@ -129,7 +127,7 @@ class TabLayout : TemplateView {
             }
         }
         tabLayoutContainer?.setPadding(paddingHorizontalLeft, paddingVertical, paddingHorizontalRight, paddingVertical)
-        setSelectorProperties()
+        setSelectorProperties(explicit)
         setTextAppearance()
     }
 
@@ -144,9 +142,7 @@ class TabLayout : TemplateView {
             tab.layoutParams = (tab.layoutParams as LinearLayout.LayoutParams).apply {
                 rightMargin = resources.getDimension(R.dimen.fluentui_tab_margin).toInt()
             }
-            setTabAccessibility(tabLayout, i, tab as TabLayout.TabView)
         }
-        tabLayout.requestLayout()
     }
 
     /**
@@ -182,13 +178,17 @@ class TabLayout : TemplateView {
         tabLayout.setTabTextColors(tabUnselectedTextColor, tabSelectedTextColor)
     }
 
-    private fun setSelectorProperties() {
+    private fun setSelectorProperties(explicit: Boolean= false) {
         val tabLayout = tabLayout ?: return
         val viewGroup = tabLayout.getChildAt(0) as ViewGroup
         for (i in 0 until tabLayout.tabCount) {
             val tab: TabLayout.TabView = viewGroup.getChildAt(i) as TabLayout.TabView
             tab.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
             tab.background = getStateListDrawable()
+            setTabAccessibility(tabLayout, i, tab)
+        }
+        if (explicit) {
+            tabLayout.requestFocus()
         }
     }
 

@@ -47,6 +47,11 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             if(newState == BottomSheetBehavior.STATE_COLLAPSED) // when state is STATE_COLLAPSED
                 dismissDialog()
+            if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                if (drawerContent.childCount > 0) {
+                    drawerContent.getChildAt(0)?.requestFocus()
+                }
+            }
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {

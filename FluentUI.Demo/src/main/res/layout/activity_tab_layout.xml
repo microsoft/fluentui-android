@@ -15,6 +15,7 @@
         style="@style/FluentUIDemo.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:tabType="Standard"/>
 
     <androidx.viewpager.widget.ViewPager
