@@ -251,6 +251,7 @@
     <string name="list_item_click">You clicked on the list item.</string>
     <string name="list_item_click_custom_accessory_view">You clicked on the custom accessory view.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">You clicked on the sub header custom accessory view.</string>
+    <string name="list_item_more_options">More options</string>
 
     <!--PeoplePicker-->
     <string name="people_picker_select_example">Select</string>
