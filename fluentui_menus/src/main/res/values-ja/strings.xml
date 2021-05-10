@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">切り替え</string>
+  <string name="popup_menu_accessibility_item_select">選択</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s を選択しました</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s をオンにしました</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s をオフにしました</string>
+  <string name="popup_menu_accessibility_item_radio_button">ラジオ ボタン</string>
+  <string name="popup_menu_accessibility_item_check_box">チェックボックス</string>
+  <string name="popup_menu_accessibility_item_state_checked">オン</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">オフ</string>
+</resources>

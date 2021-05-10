@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">i-toggle</string>
+  <string name="popup_menu_accessibility_item_select">pumili</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s ang napili</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ang na-check</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ang na-uncheck</string>
+  <string name="popup_menu_accessibility_item_radio_button">button ng radyo</string>
+  <string name="popup_menu_accessibility_item_check_box">checkbox</string>
+  <string name="popup_menu_accessibility_item_state_checked">naka-check</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">hindi naka-check</string>
+</resources>

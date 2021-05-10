@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ടോഗിൾ</string>
+  <string name="popup_menu_accessibility_item_select">തിരഞ്ഞെടുക്കുക</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s തിരഞ്ഞെടുത്തു</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ചെക്കുചെയ്‌തു</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s അൺചെക്കുചെയ്‌തു</string>
+  <string name="popup_menu_accessibility_item_radio_button">റേഡിയോ ബട്ടണ്‍</string>
+  <string name="popup_menu_accessibility_item_check_box">ചെക്ക്ബോക്സ്</string>
+  <string name="popup_menu_accessibility_item_state_checked">ചെക്കുചെയ്‌തത്</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ചെക്കുചെയ്യാത്തത്</string>
+</resources>

@@ -15,8 +15,8 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 15
-        versionName '0.0.15'
+        versionCode 16
+        versionName '0.0.16'
     }
     buildTypes {
         release {
@@ -62,6 +62,7 @@ dependencies {
     implementation project(':fluentui_tablayout')
     implementation project(':fluentui_ccb')
     implementation project(':fluentui_transients')
+    implementation project(':fluentui_menus')
     implementation project(':fluentui_others')
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.bumptech.glide:glide:4.8.0'

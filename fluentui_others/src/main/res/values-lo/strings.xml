@@ -82,15 +82,6 @@
     <item quantity="other">%s ຄົນ</item>
   </plurals>
   <string name="persona_title_placeholder">ບໍ່ມີຊື່</string>
-  <string name="popup_menu_accessibility_item_toggle">ປິດ/ເປີດ</string>
-  <string name="popup_menu_accessibility_item_select">ເລືອກ</string>
-  <string name="popup_menu_accessibility_item_click_selected">ເລືອກ %s ແລ້ວ</string>
-  <string name="popup_menu_accessibility_item_click_checked">ໝາຍ %s ແລ້ວ</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">ເຊົາໝາຍ %s ແລ້ວ</string>
-  <string name="popup_menu_accessibility_item_radio_button">ປຸ່ມວິທະຍຸ</string>
-  <string name="popup_menu_accessibility_item_check_box">ປ່ອງໝາຍ</string>
-  <string name="popup_menu_accessibility_item_state_checked">ໝາຍແລ້ວ</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ບໍ່ໄດ້ໝາຍແລ້ວ</string>
   <string name="progress_circular_content_description_indeterminate">ບໍ່ຊັດເຈນ</string>
   <string name="searchbar_clear_search">ລຶບລ້າງການຊອກຫາ</string>
   <string name="searchbar_back">ກັບຄືນ</string>

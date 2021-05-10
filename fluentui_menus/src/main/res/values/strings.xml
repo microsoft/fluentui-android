@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- *** PopupMenu *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to toggle radio button and checkbox checked states.-->
+    <string name="popup_menu_accessibility_item_toggle">toggle</string>
+    <!--Describes the action used to select a menu item.-->
+    <string name="popup_menu_accessibility_item_select">select</string>
+    <!--Announces which menu item has been selected.-->
+    <string name="popup_menu_accessibility_item_click_selected">%s selected</string>
+    <!--Announces which menu item has been checked.-->
+    <string name="popup_menu_accessibility_item_click_checked">%s checked</string>
+    <!--Announces which menu item has been unchecked.-->
+    <string name="popup_menu_accessibility_item_click_unchecked">%s unchecked</string>
+    <!--Describes the radio button control.-->
+    <string name="popup_menu_accessibility_item_radio_button">radio button</string>
+    <!--Describes the check box control.-->
+    <string name="popup_menu_accessibility_item_check_box">checkbox</string>
+    <!--Describes the state of a menu item that is checked.-->
+    <string name="popup_menu_accessibility_item_state_checked">checked</string>
+    <!--Describes the state of a menu item that is not checked.-->
+    <string name="popup_menu_accessibility_item_state_not_checked">not checked</string>
+
+</resources>

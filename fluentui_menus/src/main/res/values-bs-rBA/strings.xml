@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">prebacivanje</string>
+  <string name="popup_menu_accessibility_item_select">izaberite</string>
+  <string name="popup_menu_accessibility_item_click_selected">Izabrano: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Potvrđen je izbor stavke %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Opozvan je izbor stavke %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">radio dugme</string>
+  <string name="popup_menu_accessibility_item_check_box">okvir za potvrdu</string>
+  <string name="popup_menu_accessibility_item_state_checked">označeno</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nije označeno</string>
+</resources>

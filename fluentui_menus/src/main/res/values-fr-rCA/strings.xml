@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">activer/désactiver</string>
+  <string name="popup_menu_accessibility_item_select">sélectionner</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s sélectionné</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s coché</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s décoché</string>
+  <string name="popup_menu_accessibility_item_radio_button">case d’option</string>
+  <string name="popup_menu_accessibility_item_check_box">case à cocher</string>
+  <string name="popup_menu_accessibility_item_state_checked">coché</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">non coché</string>
+</resources>
