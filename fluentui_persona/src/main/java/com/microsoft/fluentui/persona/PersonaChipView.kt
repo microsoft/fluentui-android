@@ -19,8 +19,8 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.databinding.ViewPersonaChipBinding
+import com.microsoft.fluentui.persona.R
+import com.microsoft.fluentui.persona.databinding.ViewPersonaChipBinding
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
@@ -92,7 +92,7 @@ class PersonaChipView : TemplateView {
     var listener: Listener? = null
 
     @JvmOverloads
-    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Persona), attrs, defStyleAttr) {
         if (attrs == null)
             return
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaChipView)

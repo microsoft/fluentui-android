@@ -12,7 +12,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.accessibility.AccessibilityEvent
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.isVisibleOnScreen
 
@@ -27,9 +27,9 @@ class PersonaView : ListItemView {
         val personaAvatarSizes = arrayOf(AvatarSize.SMALL, AvatarSize.LARGE, AvatarSize.XXLARGE)
         const val FOCUS_DELAY = 100L
 
-        internal data class Spacing(val cellPadding: Int, val insetLeft: Int)
+        data class Spacing(val cellPadding: Int, val insetLeft: Int)
 
-        internal fun getSpacing(context: Context, avatarSize: AvatarSize): Spacing {
+        fun getSpacing(context: Context, avatarSize: AvatarSize): Spacing {
             val avatarDisplaySize = avatarSize.getDisplayValue(context)
             val spacingRight = context.resources.getDimension(R.dimen.fluentui_persona_horizontal_spacing)
             val cellPadding = context.resources.getDimension(R.dimen.fluentui_persona_horizontal_padding).toInt()

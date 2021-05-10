@@ -6,7 +6,7 @@
 package com.microsoft.fluentui.persona
 
 import android.content.Context
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.persona.R
 
 /**
  * The [id] passed to this enum class references a dimens resource that [getDisplayValue] converts into an int.

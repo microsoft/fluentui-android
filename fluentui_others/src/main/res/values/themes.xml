@@ -98,18 +98,6 @@
         <item name="fluentuiPeoplePickerLabelTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPeoplePickerCountSpanTextColor">?attr/fluentuiForegroundSecondaryColor</item>
 
-        <!--Persona Chip-->
-        <!--TODO add hex values to the colors file when they get added to the toolkit-->
-        <item name="fluentuiPersonaChipBackgroundNormalColor">@color/fluentui_gray_50</item>
-        <item name="fluentuiPersonaChipBackgroundActiveColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiPersonaChipBackgroundErrorColor">#FFF3F4</item>
-        <item name="fluentuiPersonaChipBackgroundErrorActiveColor">#E8484C</item>
-        <item name="fluentuiPersonaChipBackgroundPressedColor">#0D000000</item>
-        <item name="fluentuiPersonaChipTextNormalColor">@color/fluentui_gray_900</item>
-        <item name="fluentuiPersonaChipForegroundActiveColor">?attr/fluentuiForegroundOnPrimaryColor</item>
-        <item name="fluentuiPersonaChipTextErrorColor">#E63237</item>
-        <item name="fluentuiPersonaChipTextDisabledColor">@color/fluentui_gray_400</item>
-
         <!--Progress-->
         <item name="fluentuiProgressPrimaryColor">?attr/colorPrimary</item>
         <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_100</item>

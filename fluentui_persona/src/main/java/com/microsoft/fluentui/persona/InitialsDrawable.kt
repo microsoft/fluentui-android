@@ -12,7 +12,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.IntRange
 import androidx.core.content.ContextCompat
 import android.text.*
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.util.ThemeUtil
 import java.util.*
 
