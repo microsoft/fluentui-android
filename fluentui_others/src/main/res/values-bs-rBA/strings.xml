@@ -85,7 +85,6 @@
     <item quantity="few">%s osobe</item>
     <item quantity="other">%s osobe</item>
   </plurals>
-  <string name="persona_title_placeholder">Bez imena</string>
   <string name="progress_circular_content_description_indeterminate">Neodređeno</string>
   <string name="searchbar_clear_search">Obriši pretragu</string>
   <string name="searchbar_back">Nazad</string>

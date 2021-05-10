@@ -83,7 +83,6 @@
     <item quantity="one">%s వ్యక్తి</item>
     <item quantity="other">%s మంది వ్యక్తులు</item>
   </plurals>
-  <string name="persona_title_placeholder">పేరు లేదు</string>
   <string name="progress_circular_content_description_indeterminate">మధ్యంతరం</string>
   <string name="searchbar_clear_search">శోధనను క్లియర్ చేయి</string>
   <string name="searchbar_back">వెనుకకు</string>

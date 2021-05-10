@@ -83,7 +83,6 @@
     <item quantity="one">%s വ്യക്തി</item>
     <item quantity="other">%s ആളുകൾ</item>
   </plurals>
-  <string name="persona_title_placeholder">പേരില്ല</string>
   <string name="progress_circular_content_description_indeterminate">അനിശ്ചിതമായ</string>
   <string name="searchbar_clear_search">തിരയൽ മായ്‌ക്കുക</string>
   <string name="searchbar_back">പിന്നിലേക്ക്</string>

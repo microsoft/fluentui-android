@@ -81,7 +81,6 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s คน</item>
   </plurals>
-  <string name="persona_title_placeholder">ไม่มีชื่อ</string>
   <string name="progress_circular_content_description_indeterminate">ไม่ทราบแน่ชัด</string>
   <string name="searchbar_clear_search">ล้างการค้นหา</string>
   <string name="searchbar_back">ย้อนกลับ</string>

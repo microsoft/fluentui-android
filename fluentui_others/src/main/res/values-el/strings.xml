@@ -83,7 +83,6 @@
     <item quantity="one">%s άτομο</item>
     <item quantity="other">%s άτομα</item>
   </plurals>
-  <string name="persona_title_placeholder">Χωρίς όνομα</string>
   <string name="progress_circular_content_description_indeterminate">Ακαθόριστο</string>
   <string name="searchbar_clear_search">Απαλοιφή αναζήτησης</string>
   <string name="searchbar_back">Πίσω</string>

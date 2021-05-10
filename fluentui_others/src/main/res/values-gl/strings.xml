@@ -83,7 +83,6 @@
     <item quantity="one">%s persoa</item>
     <item quantity="other">%s persoas</item>
   </plurals>
-  <string name="persona_title_placeholder">Sen nome</string>
   <string name="progress_circular_content_description_indeterminate">Indeterminado</string>
   <string name="searchbar_clear_search">Limpar a busca</string>
   <string name="searchbar_back">Atrás</string>
