@@ -141,7 +141,6 @@ class AppBarLayout : AppBarLayout {
         super.onAttachedToWindow()
         scrollTargetView = getOnScrollTargetView()
         updateViewsWithScrollBehavior()
-        touchscreenBlocksFocus = false
     }
 
     private fun getOnScrollTargetView(): View? {
