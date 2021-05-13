@@ -8,13 +8,14 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 
 import android.util.AttributeSet
+import android.view.Gravity
 import androidx.appcompat.widget.AppCompatButton
 import com.microsoft.fluentui.R
 import com.microsoft.fluentui.generator.ButtonSize
 import com.microsoft.fluentui.generator.ButtonStyle
 import com.microsoft.fluentui.generator.resourceProxies.ButtonTokensSystem
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.FieldUpdateListener
-import com.microsoft.fluentui.vNext.persona.AvatarView
 
 /**
  * [ButtonView] is a custom AppCompatButton that uses token system to set predefined button style
@@ -30,7 +31,7 @@ open class ButtonView : AppCompatButton {
     private val tokenSystem: ButtonTokensSystem
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
         tokenSystem = ButtonTokensSystem(context, resources)
         button = Button()
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ButtonTokensView)
@@ -42,6 +43,8 @@ open class ButtonView : AppCompatButton {
         val buttonIconResourceId = styledAttrs.getResourceId(R.styleable.ButtonTokensView_fluentUI_buttonIcon, 0)
         if (buttonIconResourceId > 0 && resources.getResourceTypeName(buttonIconResourceId) == "drawable")
             button.buttonIconDrawable = styledAttrs.getDrawable(R.styleable.ButtonTokensView_fluentUI_buttonIcon)
+
+        gravity = Gravity.CENTER_VERTICAL
 
         styledAttrs.recycle()
         setValues()
