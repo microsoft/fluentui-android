@@ -1,0 +1,127 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+ext["signing.keyId"] = ''
+ext["signing.password"] = ''
+ext["signing.secretKeyRingFile"] = ''
+ext["ossrhUsername"] = ''
+ext["ossrhPassword"] = ''
+ext["sonatypeStagingProfileId"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        ext[name] = value
+    }
+} else {
+    ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
+    ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
+    ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
+    ext["ossrhUsername"] = project.hasProperty('OSSRHUsername') ? "$OSSRHUsername" : ''
+    ext["ossrhPassword"] = project.hasProperty('OSSRHPassword') ? "$OSSRHPassword" : ''
+    ext["sonatypeStagingProfileId"] = project.hasProperty('SonatypeStagingProfileID') ? "$SonatypeStagingProfileID" : ''
+}
+
+
+project.ext.bintrayPublishFunc = { bintrayContext, aarName ->
+    bintrayContext.user = project.hasProperty('bintrayUser') ? "$bintrayUser" : ""
+    bintrayContext.key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
+    bintrayContext.publications = ['FluentUI']
+    bintrayContext.publish = true
+    bintrayContext.override = true
+    bintrayContext.pkg {
+        repo = 'generic'
+        name = aarName
+        version {
+            name = android.defaultConfig.versionName
+            vcsTag = android.defaultConfig.versionName
+        }
+    }
+}
+
+project.ext.publishingFunc = { artifactIdName ->
+    publishing {
+        repositories {
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+                credentials {
+                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                }
+            }
+            maven {
+                name = "sonatype"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username ossrhUsername
+                    password ossrhPassword
+                }
+            }
+        }
+        publications {
+            FluentUI(MavenPublication) {
+                groupId 'com.microsoft.fluentui'
+                artifactId artifactIdName
+                version = android.defaultConfig.versionName
+                artifact(sourceJar)
+                artifact(bundleReleaseAar)
+                pom {
+                    name = artifactIdName
+                    description = 'Fluent UI Android library'
+                    url = 'https://github.com/microsoft/fluentui-android'
+                    licenses {
+                        license {
+                            name = 'MIT License'
+                            url = 'https://github.com/microsoft/fluentui-android/blob/master/LICENSE'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = 'fluent-ui-android'
+                            name = 'Microsoft Inc.'
+                            email = 'fluentuinativeowners@microsoft.com'
+                        }
+                    }
+                    scm {
+                        connection = 'scm:git:github.com/microsoft/fluentui-android.git'
+                        developerConnection = 'scm:git:ssh://github.com/microsoft/fluentui-android.git'
+                        url = 'https://github.com/microsoft/fluentui-android/tree/main'
+                    }
+                    withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                        configurations.implementation.allDependencies.each {
+                            if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
+                                def dependencyNode = dependenciesNode.appendNode('dependency')
+                                if (it instanceof ProjectDependency) {
+                                    dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    def artifactName = it.name.replaceAll('-', '_') + '_versionid'
+                                    dependencyNode.appendNode('version', getProperty(artifactName).toString())
+                                } else {
+                                    dependencyNode.appendNode('groupId', it.group)
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    dependencyNode.appendNode('version', it.version)
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+nexusStaging {
+    packageGroup = 'com.microsoft.fluentui'
+    stagingProfileId = sonatypeStagingProfileId
+    username = ossrhUsername
+    password = ossrhPassword
+}
+
+signing {
+    sign publishing.publications
+}
