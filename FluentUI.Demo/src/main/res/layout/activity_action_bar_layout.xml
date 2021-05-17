@@ -17,7 +17,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/label_actionbar_position"
             style="@style/TextAppearance.FluentUI.Heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:contentDescription="@string/actionbar_position_heading"
             android:orientation="horizontal">
 
             <RadioButton
@@ -64,7 +64,6 @@
         app:layout_constraintTop_toBottomOf="@+id/postion_selection">
 
         <TextView
-            android:id="@+id/label_actionbar_type"
             style="@style/TextAppearance.FluentUI.Heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:contentDescription="@string/actionbar_type_heading"
             android:orientation="horizontal">
 
             <RadioButton

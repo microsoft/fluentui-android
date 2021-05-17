@@ -19,15 +19,6 @@ class ActionBarLayoutActivity: DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(isAccessibilityEnabled){
-            label_actionbar_position.isFocusable = true
-            label_actionbar_type.isFocusable = true
-        }
-        else {
-            label_actionbar_position.isFocusable = false
-            label_actionbar_type.isFocusable = false
-        }
-
         start_demo_btn.setOnClickListener{
             var position = action_bar_position_rgroup.checkedRadioButtonId
             var type = action_bar_type_rgroup.checkedRadioButtonId
