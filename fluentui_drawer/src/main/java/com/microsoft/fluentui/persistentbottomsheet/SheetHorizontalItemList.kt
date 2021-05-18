@@ -7,12 +7,15 @@ package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
 import android.graphics.Bitmap
-import androidx.annotation.ColorInt
-import androidx.annotation.DrawableRes
 import android.util.AttributeSet
+import android.view.View
 import android.view.View.NO_ID
 import android.view.ViewGroup
+import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.LinearLayout
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat.SELECTION_MODE_SINGLE
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -27,6 +30,8 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     : TemplateView(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), attrs, defStyleAttr), SheetItem.OnClickListener {
     private lateinit var itemSheet:List<SheetItem>
     private lateinit var itemListContainer:ViewGroup
+    private var rowCount: Int = 0
+    private var columnCount: Int = 0
     private var itemLayoutParam: BottomSheetParam.HorizontalItemLayoutParam
 
     var sheetItemClickListener: SheetItem.OnClickListener? = null
@@ -53,14 +58,16 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
         setTextAppearance(this.itemLayoutParam.horizontalTextAppearance)
     }
 
-    private fun createHorizontalView(size:Int) {
+    private fun createHorizontalView(size: Int) {
         itemListContainer.removeAllViews()
 
 
-        val columnCount = itemLayoutParam.itemsInRow
-        val rowCount = ceil(size.toDouble()/columnCount).toInt()
+        columnCount = itemLayoutParam.itemsInRow
+        rowCount = ceil(size.toDouble() / columnCount).toInt()
 
         var index = 0
+
+        setCollectionAccessibility(size)
 
         for (row in 0 until rowCount) {
             val rowWrapper = getRowWrapper(columnCount)
@@ -74,6 +81,23 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
             }
             itemListContainer.addView(rowWrapper)
         }
+    }
+
+    /**
+     * sets collection accessibility for list or Grid
+     */
+    private fun setCollectionAccessibility(size: Int) {
+        itemListContainer.setAccessibilityDelegate(object : AccessibilityDelegate() {
+            override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                val collectionInfo = AccessibilityNodeInfo.CollectionInfo
+                        .obtain(rowCount,
+                                minOf(columnCount, size),
+                                false,
+                                SELECTION_MODE_SINGLE)
+                info?.collectionInfo = collectionInfo
+            }
+        })
     }
 
     private fun getColumnItem(index: Int): SheetHorizontalItemView {
