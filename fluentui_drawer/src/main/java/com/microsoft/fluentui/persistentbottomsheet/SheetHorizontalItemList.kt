@@ -11,11 +11,13 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.View.NO_ID
 import android.view.ViewGroup
-import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
-import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat.SELECTION_MODE_SINGLE
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat.CollectionInfoCompat.SELECTION_MODE_NONE
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -67,7 +69,7 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
 
         var index = 0
 
-        setCollectionAccessibility(size)
+        setCollectionAccessibility(itemListContainer,size)
 
         for (row in 0 until rowCount) {
             val rowWrapper = getRowWrapper(columnCount)
@@ -76,7 +78,7 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
                     itemListContainer.addView(rowWrapper)
                     return
                 }
-                val itemView = getColumnItem(index++)
+                val itemView = getColumnItem(row, index++)
                 rowWrapper.addView(itemView)
             }
             itemListContainer.addView(rowWrapper)
@@ -86,25 +88,50 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     /**
      * sets collection accessibility for list or Grid
      */
-    private fun setCollectionAccessibility(size: Int) {
-        itemListContainer.setAccessibilityDelegate(object : AccessibilityDelegate() {
-            override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+    private fun setCollectionAccessibility(view: ViewGroup, size: Int) {
+        ViewCompat.setAccessibilityDelegate(view, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfoCompat?) {
                 super.onInitializeAccessibilityNodeInfo(host, info)
-                val collectionInfo = AccessibilityNodeInfo.CollectionInfo
+                val collectionInfo = AccessibilityNodeInfoCompat.CollectionInfoCompat
                         .obtain(rowCount,
                                 minOf(columnCount, size),
                                 false,
-                                SELECTION_MODE_SINGLE)
-                info?.collectionInfo = collectionInfo
+                                SELECTION_MODE_NONE)
+                info?.setCollectionInfo(collectionInfo)
             }
         })
     }
 
-    private fun getColumnItem(index: Int): SheetHorizontalItemView {
+    /**
+     * set collection item info of the children
+     * for accessibility
+     */
+    private fun setChildAccessibilityCollectionItemInfo(container: View, rowIndex: Int, columnIndex: Int) {
+        ViewCompat.setAccessibilityDelegate(container, object : AccessibilityDelegateCompat() {
+            override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfoCompat?) {
+                super.onInitializeAccessibilityNodeInfo(host, info)
+                info?.setCollectionItemInfo(AccessibilityNodeInfoCompat.CollectionItemInfoCompat.obtain(
+                        rowIndex,
+                        /*row span*/1,
+                        columnIndex,
+                        /*column span*/1,
+                        /*heading*/false,
+                        /*selected*/false
+                ))
+            }
+        })
+    }
+
+    private fun getColumnItem(rowIndex: Int, index: Int): SheetHorizontalItemView {
         val itemView = SheetHorizontalItemView(context, itemSheet[index])
         itemView.updateTextAppearanceResId(itemLayoutParam.horizontalTextAppearance)
         itemView.layoutParams = LinearLayout.LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f)
         itemView.onSheetItemClickListener = this
+        itemView.addTemplateLoadListener(object : SheetHorizontalItemView.ChildItemInteractionListener {
+            override fun onChildTemplateLoaded(container: View) {
+                setChildAccessibilityCollectionItemInfo(container,rowIndex, index)
+            }
+        })
         return itemView
     }
 
