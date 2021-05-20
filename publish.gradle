@@ -52,25 +52,25 @@ project.ext.publishingFunc = { artifactIdName ->
                 artifact(bundleReleaseAar)
                 pom {
                     name = artifactIdName
-                    description = 'Fluent UI Android library'
-                    url = 'https://github.com/microsoft/fluentui-android'
+                    description = 'Fluent UI Android, Module : '.concat(artifactIdName)
+                    url = project.ext.github_url
                     licenses {
                         license {
-                            name = 'MIT License'
-                            url = 'https://github.com/microsoft/fluentui-android/blob/master/LICENSE'
+                            name = project.ext.license_type
+                            url = project.ext.license_url
                         }
                     }
                     developers {
                         developer {
-                            id = 'fluent-ui-android'
-                            name = 'Microsoft Inc.'
-                            email = 'fluentuinativeowners@microsoft.com'
+                            id = project.ext.developer_id
+                            name = project.ext.developer_name
+                            email = project.ext.developer_email
                         }
                     }
                     scm {
-                        connection = 'scm:git:github.com/microsoft/fluentui-android.git'
-                        developerConnection = 'scm:git:ssh://github.com/microsoft/fluentui-android.git'
-                        url = 'https://github.com/microsoft/fluentui-android/tree/main'
+                        connection = project.ext.scm_connection
+                        developerConnection = project.ext.scm_dev_connection
+                        url = project.ext.scm_url
                     }
                     withXml {
                         def dependenciesNode = asNode().appendNode('dependencies')
