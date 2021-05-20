@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import com.microsoft.fluentui.actionbar.ActionBarLayout
 import com.microsoft.fluentui.snackbar.Snackbar
-import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentuidemo.Demo
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
