@@ -5,9 +5,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
-
 apply from: '../config.gradle'
 apply from: '../publish.gradle'
 
@@ -53,9 +50,5 @@ task sourceJar(type: Jar) {
 
 project.afterEvaluate {
     project.ext.publishingFunc('FluentUIAndroid')
-}
-
-bintray {
-    project.ext.bintrayPublishFunc(bintray, 'fluentui-android')
 }
 

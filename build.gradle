@@ -14,7 +14,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:4.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
         classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:$nexus_plugin_version"
     }
 }
