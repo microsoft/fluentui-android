@@ -5,10 +5,8 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
-
 apply from: '../config.gradle'
+apply from: '../publish.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
@@ -51,60 +49,6 @@ task sourceJar(type: Jar) {
 }
 
 project.afterEvaluate {
-    publishing {
-        repositories {
-            maven {
-                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
-                credentials {
-                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
-                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
-                }
-            }
-        }
-        publications {
-            FluentUI(MavenPublication) {
-                groupId 'com.microsoft.fluentui'
-                artifactId "FluentUIAndroid"
-                version = android.defaultConfig.versionName
-                artifact(sourceJar)
-                artifact(bundleReleaseAar)
-                pom.withXml {
-                    def dependenciesNode = asNode().appendNode('dependencies')
-                    // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                    configurations.implementation.allDependencies.each {
-                        if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
-                            def dependencyNode = dependenciesNode.appendNode('dependency')
-                            if (it instanceof ProjectDependency) {
-                                dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
-                                dependencyNode.appendNode('artifactId', it.name)
-                                def artifactName = it.name.replaceAll('-', '_') + '_versionid'
-                                dependencyNode.appendNode('version', getProperty(artifactName).toString())
-                            } else {
-                                dependencyNode.appendNode('groupId', it.group)
-                                dependencyNode.appendNode('artifactId', it.name)
-                                dependencyNode.appendNode('version', it.version)
-                            }
-
-                        }
-                    }
-                }
-            }
-        }
-    }
+    project.ext.publishingFunc('FluentUIAndroid')
 }
 
-bintray {
-    user = project.hasProperty('bintrayUser') ? "$bintrayUser" : ""
-    key = project.hasProperty('bintrayKey') ? "$bintrayKey" : ""
-    publications = ['FluentUI']
-    publish = true
-    override = true
-    pkg {
-        repo = 'generic'
-        name = 'fluentui-android'
-        version {
-            name = android.defaultConfig.versionName
-            vcsTag = android.defaultConfig.versionName
-        }
-    }
-}

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
         android:src="@drawable/ms_ic_dismiss_20_filled"
-        android:tint="?attr/fluentuiPersonaChipForegroundActiveColor"
+        app:tint="?attr/fluentuiPersonaChipForegroundActiveColor"
         android:tintMode="src_in" />
 
     <TextView
