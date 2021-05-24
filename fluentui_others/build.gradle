@@ -52,6 +52,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':fluentui_core')
     implementation project(':fluentui_listitem')
+    implementation project(':fluentui_persona')
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"

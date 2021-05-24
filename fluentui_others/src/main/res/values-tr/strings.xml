@@ -83,7 +83,6 @@
     <item quantity="one">%s kişi</item>
     <item quantity="other">%s kişi</item>
   </plurals>
-  <string name="persona_title_placeholder">Adsız</string>
   <string name="progress_circular_content_description_indeterminate">Belirsiz</string>
   <string name="searchbar_clear_search">Aramayı temizle</string>
   <string name="searchbar_back">Geri</string>

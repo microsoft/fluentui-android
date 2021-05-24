@@ -85,7 +85,6 @@
     <item quantity="few">%s persoane</item>
     <item quantity="other">%s persoane</item>
   </plurals>
-  <string name="persona_title_placeholder">Fără nume</string>
   <string name="progress_circular_content_description_indeterminate">Nedeterminat</string>
   <string name="searchbar_clear_search">Goliți căutarea</string>
   <string name="searchbar_back">Înapoi</string>

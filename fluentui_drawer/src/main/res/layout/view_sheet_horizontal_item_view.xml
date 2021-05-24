@@ -9,6 +9,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:importantForAccessibility="yes"
     android:orientation="vertical"
     android:paddingStart="@dimen/fluentui_persistent_bottomsheet_horizontalitem_padding_horizontal"
     android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_item_paddingTop"
@@ -19,6 +20,7 @@
         android:id="@+id/sheet_item_view_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:importantForAccessibility="noHideDescendants"
         android:orientation="vertical" />
 
     <TextView

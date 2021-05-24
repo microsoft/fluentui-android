@@ -81,7 +81,6 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s người</item>
   </plurals>
-  <string name="persona_title_placeholder">Không có tên</string>
   <string name="progress_circular_content_description_indeterminate">Vô hạn định</string>
   <string name="searchbar_clear_search">Xóa tìm kiếm</string>
   <string name="searchbar_back">Quay lại</string>
