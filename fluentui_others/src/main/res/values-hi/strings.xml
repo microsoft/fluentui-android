@@ -83,7 +83,6 @@
     <item quantity="one">%s व्यक्ति</item>
     <item quantity="other">%s लोग</item>
   </plurals>
-  <string name="persona_title_placeholder">कोई नाम नहीं</string>
   <string name="progress_circular_content_description_indeterminate">अस्पष्ट</string>
   <string name="searchbar_clear_search">खोज साफ़ करें</string>
   <string name="searchbar_back">वापस जाएँ</string>

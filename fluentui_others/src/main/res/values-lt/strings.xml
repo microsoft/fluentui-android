@@ -87,7 +87,6 @@
     <item quantity="many">Žmonių: %s</item>
     <item quantity="other">Žmonių: %s</item>
   </plurals>
-  <string name="persona_title_placeholder">Nėra vardo</string>
   <string name="progress_circular_content_description_indeterminate">Neapibrėžtas</string>
   <string name="searchbar_clear_search">Valyti iešką</string>
   <string name="searchbar_back">Atgal</string>

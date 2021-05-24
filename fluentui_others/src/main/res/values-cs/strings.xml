@@ -87,7 +87,6 @@
     <item quantity="many">%s lidí</item>
     <item quantity="other">%s lidí</item>
   </plurals>
-  <string name="persona_title_placeholder">Beze jména</string>
   <string name="progress_circular_content_description_indeterminate">Neurčitý</string>
   <string name="searchbar_clear_search">Vymazat hledání</string>
   <string name="searchbar_back">Zpět</string>

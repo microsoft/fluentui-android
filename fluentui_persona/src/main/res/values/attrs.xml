@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--PersonaChip-->
+    <attr name="fluentuiPersonaChipBackgroundNormalColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipBackgroundActiveColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipBackgroundErrorColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipBackgroundErrorActiveColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipTextNormalColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipForegroundActiveColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipTextErrorColor" format="reference|color"/>
+    <attr name="fluentuiPersonaChipTextDisabledColor" format="reference|color"/>
+</resources>

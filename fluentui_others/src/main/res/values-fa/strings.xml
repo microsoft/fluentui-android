@@ -83,7 +83,6 @@
     <item quantity="one">%s نفر</item>
     <item quantity="other">%s نفر</item>
   </plurals>
-  <string name="persona_title_placeholder">بدون نام</string>
   <string name="progress_circular_content_description_indeterminate">نامشخص</string>
   <string name="searchbar_clear_search">پاک کردن جستجو</string>
   <string name="searchbar_back">بازگشت</string>

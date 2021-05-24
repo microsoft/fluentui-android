@@ -85,7 +85,6 @@
     <item quantity="few">%s људи</item>
     <item quantity="other">%s људи</item>
   </plurals>
-  <string name="persona_title_placeholder">Нема имена</string>
   <string name="progress_circular_content_description_indeterminate">Неодређено</string>
   <string name="searchbar_clear_search">Обриши претрагу</string>
   <string name="searchbar_back">Назад</string>

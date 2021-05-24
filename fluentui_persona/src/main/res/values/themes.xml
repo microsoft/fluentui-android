@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <style name="Theme.FluentUI.Persona.Base" parent="Base.Theme.FluentUI">
+    <!--Persona Chip-->
+    <!--TODO add hex values to the colors file when they get added to the toolkit-->
+    <item name="fluentuiPersonaChipBackgroundNormalColor">@color/fluentui_gray_50</item>
+    <item name="fluentuiPersonaChipBackgroundActiveColor">?attr/fluentuiBackgroundPrimaryColor</item>
+    <item name="fluentuiPersonaChipBackgroundErrorColor">#FFF3F4</item>
+    <item name="fluentuiPersonaChipBackgroundErrorActiveColor">#E8484C</item>
+    <item name="fluentuiPersonaChipBackgroundPressedColor">#0D000000</item>
+    <item name="fluentuiPersonaChipTextNormalColor">@color/fluentui_gray_900</item>
+    <item name="fluentuiPersonaChipForegroundActiveColor">?attr/fluentuiForegroundOnPrimaryColor</item>
+    <item name="fluentuiPersonaChipTextErrorColor">#E63237</item>
+    <item name="fluentuiPersonaChipTextDisabledColor">@color/fluentui_gray_400</item>
+    </style>
+
+    <style name="Theme.FluentUI.Persona" parent="Theme.FluentUI.Persona.Base"/>
+
+</resources>
