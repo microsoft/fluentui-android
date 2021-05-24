@@ -1,0 +1,110 @@
+apply plugin: 'maven-publish'
+apply plugin: 'signing'
+
+ext["signing.keyId"] = ''
+ext["signing.password"] = ''
+ext["signing.secretKeyRingFile"] = ''
+ext["ossrhUsername"] = ''
+ext["ossrhPassword"] = ''
+ext["sonatypeStagingProfileId"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        ext[name] = value
+    }
+} else {
+    ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
+    ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
+    ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
+    ext["ossrhUsername"] = project.hasProperty('OSSRHUsername') ? "$OSSRHUsername" : ''
+    ext["ossrhPassword"] = project.hasProperty('OSSRHPassword') ? "$OSSRHPassword" : ''
+    ext["sonatypeStagingProfileId"] = project.hasProperty('SonatypeStagingProfileID') ? "$SonatypeStagingProfileID" : ''
+}
+
+project.ext.publishingFunc = { artifactIdName ->
+    publishing {
+        repositories {
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+                credentials {
+                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                }
+            }
+            maven {
+                name = "sonatype"
+                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                credentials {
+                    username ossrhUsername
+                    password ossrhPassword
+                }
+            }
+        }
+        publications {
+            FluentUI(MavenPublication) {
+                groupId 'com.microsoft.fluentui'
+                artifactId artifactIdName
+                version = android.defaultConfig.versionName
+                artifact(sourceJar)
+                artifact(bundleReleaseAar)
+                pom {
+                    name = artifactIdName
+                    description = 'Fluent UI Android, Module : '.concat(artifactIdName)
+                    url = project.ext.github_url
+                    licenses {
+                        license {
+                            name = project.ext.license_type
+                            url = project.ext.license_url
+                        }
+                    }
+                    developers {
+                        developer {
+                            id = project.ext.developer_id
+                            name = project.ext.developer_name
+                            email = project.ext.developer_email
+                        }
+                    }
+                    scm {
+                        connection = project.ext.scm_connection
+                        developerConnection = project.ext.scm_dev_connection
+                        url = project.ext.scm_url
+                    }
+                    withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
+                        configurations.implementation.allDependencies.each {
+                            if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
+                                def dependencyNode = dependenciesNode.appendNode('dependency')
+                                if (it instanceof ProjectDependency) {
+                                    dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    def artifactName = it.name.replaceAll('-', '_') + '_versionid'
+                                    dependencyNode.appendNode('version', getProperty(artifactName).toString())
+                                } else {
+                                    dependencyNode.appendNode('groupId', it.group)
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    dependencyNode.appendNode('version', it.version)
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+nexusStaging {
+    packageGroup = 'com.microsoft.fluentui'
+    stagingProfileId = sonatypeStagingProfileId
+    username = ossrhUsername
+    password = ossrhPassword
+}
+
+signing {
+    sign publishing.publications
+}
