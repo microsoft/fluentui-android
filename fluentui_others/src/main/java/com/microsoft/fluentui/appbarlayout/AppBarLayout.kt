@@ -141,7 +141,6 @@ class AppBarLayout : AppBarLayout {
         super.onAttachedToWindow()
         scrollTargetView = getOnScrollTargetView()
         updateViewsWithScrollBehavior()
-        touchscreenBlocksFocus = false
     }
 
     private fun getOnScrollTargetView(): View? {
@@ -168,6 +167,7 @@ class AppBarLayout : AppBarLayout {
         toolbar = Toolbar(context)
         addView(toolbar)
         context.activity?.setSupportActionBar(toolbar)
+        touchscreenBlocksFocus = false
     }
 
     private fun updateViewsWithScrollBehavior() {

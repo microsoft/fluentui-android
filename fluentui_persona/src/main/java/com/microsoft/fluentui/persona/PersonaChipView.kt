@@ -13,6 +13,7 @@ import android.net.Uri
 import androidx.annotation.AttrRes
 import androidx.core.content.ContextCompat
 import android.util.AttributeSet
+import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
@@ -155,6 +156,18 @@ class PersonaChipView : TemplateView {
                 return true
             }
             else -> return false
+        }
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+        return when (keyCode) {
+            KeyEvent.KEYCODE_ENTER -> {
+                performClick()
+                isSelected = !isSelected
+                true
+            }
+            else ->
+                super.onKeyUp(keyCode, event)
         }
     }
 

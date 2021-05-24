@@ -394,6 +394,7 @@ class ListItemViewActivity : DemoActivity() {
     private fun createExampleCustomView(drawable: Drawable?): ImageView {
         val imageView = ImageView(this)
         imageView.setImageDrawable(drawable)
+        imageView.contentDescription = getString(R.string.list_item_more_options)
         return imageView
     }
 

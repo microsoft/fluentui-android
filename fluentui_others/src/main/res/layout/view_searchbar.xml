@@ -24,7 +24,6 @@
         android:layout_marginBottom="@dimen/fluentui_searchbar_search_view_container_margin_vertical"
         android:focusableInTouchMode="true"
         android:gravity="center_vertical"
-        android:importantForAccessibility="no"
         android:orientation="horizontal">
 
         <ImageButton
@@ -43,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="@dimen/fluentui_searchbar_search_icon_padding_start"
-            android:contentDescription="TODO" android:paddingEnd="@dimen/fluentui_searchbar_search_icon_padding_end"
+            android:paddingEnd="@dimen/fluentui_searchbar_search_icon_padding_end"
             android:src="@drawable/ms_ic_search_24_filled"
             android:tint="?attr/fluentuiSearchbarSearchIconColor"
             android:tintMode="src_in"/>
