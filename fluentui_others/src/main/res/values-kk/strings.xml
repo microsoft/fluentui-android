@@ -83,7 +83,6 @@
     <item quantity="one">%s адам</item>
     <item quantity="other">%s адам</item>
   </plurals>
-  <string name="persona_title_placeholder">Аты жоқ</string>
   <string name="progress_circular_content_description_indeterminate">Анықталмаған</string>
   <string name="searchbar_clear_search">Іздеу нәтижелерін тазарту</string>
   <string name="searchbar_back">Артқа</string>

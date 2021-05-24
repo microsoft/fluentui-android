@@ -83,7 +83,6 @@
     <item quantity="one">%s pertsona</item>
     <item quantity="other">%s pertsona</item>
   </plurals>
-  <string name="persona_title_placeholder">Izengabea</string>
   <string name="progress_circular_content_description_indeterminate">Zehaztugabea</string>
   <string name="searchbar_clear_search">Garbitu bilaketa</string>
   <string name="searchbar_back">Atzera</string>

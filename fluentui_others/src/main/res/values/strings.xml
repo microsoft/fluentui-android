@@ -169,11 +169,6 @@
         <item quantity="other">%s people</item>
     </plurals>
 
-    <!-- *** Persona *** -->
-
-    <string name="persona_title_placeholder">No name</string>
-
-
     <!-- *** Calendar *** -->
 
     <!--accessibility-->

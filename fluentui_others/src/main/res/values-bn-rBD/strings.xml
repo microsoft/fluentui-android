@@ -83,7 +83,6 @@
     <item quantity="one">%s জন ব্যক্তি</item>
     <item quantity="other">%s জন লোক</item>
   </plurals>
-  <string name="persona_title_placeholder">নাম নেই</string>
   <string name="progress_circular_content_description_indeterminate">অনির্দিষ্ট</string>
   <string name="searchbar_clear_search">সন্ধান সাফ করুন</string>
   <string name="searchbar_back">ফিরে যান</string>

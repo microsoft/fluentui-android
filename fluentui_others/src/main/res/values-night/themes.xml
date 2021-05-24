@@ -50,14 +50,6 @@
         <!--NumberPicker-->
         <item name="fluentuiNumberPickerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
 
-        <!--Persona Chip-->
-        <!--TODO add hex values to the colors file when they get added to the toolkit-->
-        <item name="fluentuiPersonaChipBackgroundNormalColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiPersonaChipBackgroundErrorColor">#4DFF474C</item>
-        <item name="fluentuiPersonaChipBackgroundErrorActiveColor">#FF474C</item>
-        <item name="fluentuiPersonaChipTextNormalColor">@color/fluentui_gray_100</item>
-        <item name="fluentuiPersonaChipTextErrorColor">#FF474C</item>
-
         <!--Progress-->
         <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_900</item>
         <!--Searchbar-->

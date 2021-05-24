@@ -83,7 +83,6 @@
     <item quantity="one">%s лице</item>
     <item quantity="other">%s луѓе</item>
   </plurals>
-  <string name="persona_title_placeholder">Без име</string>
   <string name="progress_circular_content_description_indeterminate">Неодредено</string>
   <string name="searchbar_clear_search">Исчисти го пребарувањето</string>
   <string name="searchbar_back">Назад</string>

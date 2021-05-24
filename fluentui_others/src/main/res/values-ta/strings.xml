@@ -83,7 +83,6 @@
     <item quantity="one">%s நபர்</item>
     <item quantity="other">%s நபர்கள்</item>
   </plurals>
-  <string name="persona_title_placeholder">பெயர் இல்லை</string>
   <string name="progress_circular_content_description_indeterminate">தீர்மானிக்கப்படவில்லை</string>
   <string name="searchbar_clear_search">தேடலை அழிக்கும்</string>
   <string name="searchbar_back">பின்</string>
