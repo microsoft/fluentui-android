@@ -5,6 +5,8 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:divider="@drawable/demo_divider"
@@ -22,29 +24,104 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/demo_headline_divider_height"
-        android:layout_marginBottom="@dimen/default_layout_margin"
         android:background="@drawable/ms_row_divider" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.microsoft.fluentui.vNext.Button
+        <com.microsoft.fluentui.vNext.widget.ButtonView
             android:id="@+id/primary_button_small"
-            style="@style/Widget.FluentUI.primarybuttontokensview.small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button" />
+            android:text="My button1"
+            app:fluentUI_buttonSize="small"
+            android:layout_marginTop="20dp"/>
 
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/primary_button_small_disabled"
-            style="@style/Widget.FluentUI.primarybuttontokensview.small"
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/primary_button_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:enabled="false"
-            android:text="@string/button_disabled" />
+            android:text="My button2"
+            app:fluentUI_buttonSize="medium"
+            android:layout_marginTop="20dp"/>
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/primary_button_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button3"
+            app:fluentUI_buttonSize="large"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/secondary_button_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button1"
+            app:fluentUI_buttonSize="small"
+            app:fluentUI_buttonStyle="secondary"
+            android:layout_marginTop="20dp"/>
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/secondary_button_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button2"
+            app:fluentUI_buttonSize="medium"
+            app:fluentUI_buttonStyle="secondary"
+            android:layout_marginTop="20dp"/>
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/secondary_button_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button3"
+            app:fluentUI_buttonSize="large"
+            app:fluentUI_buttonStyle="secondary"
+            android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/ghost_button_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button1"
+            app:fluentUI_buttonSize="small"
+            app:fluentUI_buttonStyle="ghost"
+            android:layout_marginTop="20dp"/>
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/ghost_button_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button2"
+            app:fluentUI_buttonSize="medium"
+            app:fluentUI_buttonStyle="ghost"
+            android:layout_marginTop="20dp"/>
+
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/ghost_button_large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My button3"
+            app:fluentUI_buttonSize="large"
+            app:fluentUI_buttonStyle="ghost"
+            android:layout_marginTop="20dp"/>
 
     </LinearLayout>
 
@@ -52,178 +129,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/primary_button"
-            style="@style/Widget.FluentUI.primarybuttontokensview.medium"
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/icon_button_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button" />
+            android:text="My button1"
+            app:fluentUI_buttonSize="small"
+            app:fluentUI_buttonIcon="@drawable/avatar_amanda_brady"
+            android:layout_marginTop="20dp"/>
 
-        <com.microsoft.fluentui.vNext.Button
-            style="@style/Widget.FluentUI.primarybuttontokensview.medium"
-            android:id="@+id/primary_button_disabled"
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/icon_button_medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:enabled="false"
-            android:text="@string/button_disabled" />
+            android:text="My button2"
+            app:fluentUI_buttonSize="medium"
+            app:fluentUI_buttonStyle="secondary"
+            app:fluentUI_buttonIcon="@drawable/avatar_amanda_brady"
+            android:layout_marginTop="20dp"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/primary_button_large"
-            style="@style/Widget.FluentUI.primarybuttontokensview.large"
+        <com.microsoft.fluentui.vNext.widget.ButtonView
+            android:id="@+id/icon_button_large"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_large" />
+            android:text="My button3"
+            app:fluentUI_buttonSize="large"
+            app:fluentUI_buttonStyle="ghost"
+            app:fluentUI_buttonIcon="@drawable/avatar_amanda_brady"
+            android:layout_marginTop="20dp"/>
 
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/primary_button_large_disabled"
-            style="@style/Widget.FluentUI.primarybuttontokensview.large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_large_disabled" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/secondary_button_small"
-            style="@style/Widget.FluentUI.secondarybuttontokensview.small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_outlined" />
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/secondary_button_small_disabled"
-            style="@style/Widget.FluentUI.secondarybuttontokensview.small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_outlined_disabled" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/secondary_button"
-            style="@style/Widget.FluentUI.secondarybuttontokensview.medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_outlined" />
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/secondary_button_disabled"
-            style="@style/Widget.FluentUI.secondarybuttontokensview.medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_outlined_disabled" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/secondary_button_large"
-            style="@style/Widget.FluentUI.secondarybuttontokensview.large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_outlined" />
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/secondary_button_large_disabled"
-            style="@style/Widget.FluentUI.secondarybuttontokensview.large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_outlined_disabled" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/ghost_button_small"
-            style="@style/Widget.FluentUI.ghostbuttontokensview.small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_borderless" />
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/ghost_button_small_disabled"
-            style="@style/Widget.FluentUI.ghostbuttontokensview.small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_borderless_disabled" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/ghost_button"
-            style="@style/Widget.FluentUI.ghostbuttontokensview.medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_borderless" />
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/ghost_button_disabled"
-            style="@style/Widget.FluentUI.ghostbuttontokensview.medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_borderless_disabled" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/ghost_button_large"
-            style="@style/Widget.FluentUI.ghostbuttontokensview.large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_borderless" />
-
-        <com.microsoft.fluentui.vNext.Button
-            android:id="@+id/ghost_button_large_disabled"
-            style="@style/Widget.FluentUI.ghostbuttontokensview.large"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:enabled="false"
-            android:text="@string/button_borderless_disabled" />
     </LinearLayout>
 
 </LinearLayout>
