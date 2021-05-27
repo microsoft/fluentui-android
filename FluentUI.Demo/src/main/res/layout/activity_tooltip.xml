@@ -11,7 +11,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/default_layout_margin">
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/tooltip_anchor_top_start"
         style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/tooltip_anchor_top_end"
         style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/tooltip_anchor_bottom_start"
         style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/tooltip_anchor_bottom_end"
         style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/tooltip_anchor_center"
         style="@style/Demo.Tooltip.Button"
         android:layout_width="wrap_content"

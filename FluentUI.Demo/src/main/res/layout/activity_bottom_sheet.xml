@@ -28,25 +28,25 @@
         android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/show_with_single_line_items_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bottom_sheet_with_single_line_items" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/show_with_double_line_items_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bottom_sheet_with_double_line_items" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/show_with_single_line_items_and_header_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/bottom_sheet_with_single_line_header" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/show_with_double_line_items_and_two_line_header_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:layout_height="@dimen/demo_headline_divider_height"
         android:background="@drawable/ms_row_divider" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/show_bottom_sheet_dialog_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

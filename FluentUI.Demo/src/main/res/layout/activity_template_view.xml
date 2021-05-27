@@ -62,7 +62,7 @@
                 android:layout_marginTop="@dimen/cell_vertical_spacing"
                 android:scrollbars="vertical" />
 
-            <Button
+            <com.microsoft.fluentui.widget.Button
                 android:id="@+id/calculate_cells_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                 android:layout_marginTop="@dimen/cell_vertical_spacing"
                 android:scrollbars="vertical" />
 
-            <Button
+            <com.microsoft.fluentui.widget.Button
                 android:id="@+id/calculate_layouts_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

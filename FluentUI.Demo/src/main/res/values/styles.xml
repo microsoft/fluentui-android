@@ -6,10 +6,112 @@
 
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.AppTheme" parent="Theme.FluentUI">
+    <!-- Example theme with Android parent theme, you will have to override styles and attrs -->
+    <style name="Base.AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/fluentui_communication_blue</item>
+        <item name="colorPrimaryDark">@color/fluentui_communication_shade_20</item>
+        <item name="colorAccent">@color/fluentui_communication_blue</item>
+        <item name="android:textColorPrimary">@color/fluentui_gray_900</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">?attr/fluentuiBackgroundColor</item>
+        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_left_24_filled_toolbar</item>
+        <item name="android:windowBackground">@color/fluentui_white</item>
+        <!--Launch Screen: Remove the background that was set in the launch screen theme-->
+        <item name="android:background">@null</item>
+        <item name="android:statusBarColor">?android:colorPrimary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+
+
+        <!-- If you decide to use any of the attributes defined in Fluent Library in the demo app ,
+             then those attrs should be defined in your theme or they should be wrapped in
+             FluentUIContextWrapper if using programmatically -->
+        <item name="fluentuiBackgroundColor">@color/fluentui_white</item>
+        <item name="fluentuiForegroundColor">@color/fluentui_gray_900</item>
+        <item name="fluentuiForegroundSecondaryColor">@color/fluentui_gray_500</item>
+
+
+        <!-- Some of the Styles like Toolbar, Button, BottomNavigation or any other style supported
+             by android can be directly set in the Theme. These can be used in 3 ways -
+
+             1) Define your own custom style - Recommended for cases when you are not using the
+                    components provided by Fluent library. for example if you want to use your own
+                    buttons throughout the app and not FluentUI.Widget.Button. Also, if you decide
+                    to use Fluent UI Components then you can set the style directly in XML file.
+             2) Use Style Defined in Library - Recommended for cases when you use Fluent UI
+                     component throughout the app. It will directly pick the attrs defined in the
+                     styles and hence you do not need to declare them. But if in case you want some
+                     attrs to be overridden you can easily do by re-declaring them. For example
+                     <item name="fluentuiToolbarTitleTextColor">#ff0000</item> will change the
+                     toolbar title color to red given you have set the style
+             3) Use Style Defined in Library but using your own Widget - Not Recommended. But still
+                    if you decide to do this.
+                    Example - You have set Fluent Library Style
+                    <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
+                    But in app you are not using FluentUI.Widget.Button and directly consuming
+                    Button provided by android. So, you will face inconsistencies in color and
+                    other attributes. To not face inconsistencies you will have to declare the
+                    attrs defined in Library again.
+                    <item name="fluentuiButtonBackgroundDefaultColor">your_color</item>
+                    <item name="fluentuiButtonBackgroundDisabledColor">your_color</item>
+                    for more attributes you can check themes.xml file and get list of attributes
+                    that you need to override
+             -->
+        <item name="toolbarStyle">@style/Widget.FluentUI.Toolbar</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.FluentUI.Toolbar.OverflowButtonStyle</item>
+        <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
+        <!-- We are declaring some attributes here as commented.
+             This is to showcase what might happen if case 3 mentioned above is followed and you have
+             not declared these. You can un-comment these to check correct output too.
+             To test just use Android Button anywhere in the app and do not apply fluent button
+             style to it
+
+             <item name="fluentuiButtonBackgroundDefaultColor">@color/fluentui_communication_blue</item>
+             <item name="fluentuiButtonTextDefaultColor">#ffffff</item>
+             -->
+
+        <!-- Some of the styles does not exist as components yet for example Radio Button or
+             checkboxes but we do provide styles for these and hence the attributes for these
+             will not be picked by our theme wrapper if it is not a fluent theme. So, in such
+             cases attrs values must be set and they will not pick the default ones for example
+             it is kind of mandatory to set fluentuiCompoundButtonTintDefaultColor and
+             fluentuiCompoundButtonTintCheckedColor -->
+        <item name="checkboxStyle">@style/Widget.FluentUI.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.FluentUI.RadioButton</item>
+        <item name="fluentuiCompoundButtonTintDefaultColor">@color/fluentui_gray_400</item>
+        <item name="fluentuiCompoundButtonTintCheckedColor">@color/fluentui_communication_blue</item>
+
+        <!-- We are setting this value becuase it is being used in AppbarlayoutActivity. You can
+             skip this, if you wrap the context with Fluent theme where this attr is declared -->
+        <item name="fluentuiToolbarIconColor">@color/fluentui_white</item>
+
+    </style>
+
+    <!-- Example theme with Fluent Base theme, you will have to override styles, attrs will be
+         directly picked -->
+    <style name="Base.AppTheme.FluentCore" parent="Base.Theme.FluentUI">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_left_24_filled_toolbar</item>
+        <item name="android:windowBackground">@color/fluentui_white</item>
+        <!--Launch Screen: Remove the background that was set in the launch screen theme-->
+        <item name="android:background">@null</item>
+        <item name="android:statusBarColor">?android:colorPrimary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <item name="toolbarStyle">@style/Widget.FluentUI.Toolbar</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.FluentUI.Toolbar.OverflowButtonStyle</item>
+        <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
+        <item name="checkboxStyle">@style/Widget.FluentUI.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.FluentUI.RadioButton</item>
+        <item name="fluentuiCompoundButtonTintDefaultColor">@color/fluentui_gray_400</item>
+        <item name="fluentuiCompoundButtonTintCheckedColor">@color/fluentui_communication_blue</item>
+    </style>
+
+    <!-- Example theme with Fluent Others theme, you will not have to only look for what rest of the
+         modules have set. Majorly everything is set for you in Others theme-->
+    <style name="Base.AppTheme.FluentOthers" parent="Theme.FluentUI">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/fluentui_white</item>
         <!--Launch Screen: Remove the background that was set in the launch screen theme-->
         <item name="android:background">@null</item>
         <item name="android:statusBarColor">?android:colorPrimary</item>
@@ -53,14 +155,18 @@
     </style>
 
     <!--Demo font-->
+    <!-- We should not be using attrs here, we should use colors directly
+         Even then if we decide to use attrs, then those attrs should be defined in the theme
+         For example fluentuiForegroundColor and colorPrimary are defined in Base.AppTheme -->
+
     <style name="TextAppearance.DemoListItem" parent="@style/TextAppearance.FluentUI.SubHeading1">
         <item name="android:textColor">?attr/fluentuiForegroundColor</item>
     </style>
     <style name="TextAppearance.ListItemValue" parent="@style/TextAppearance.FluentUI.SubHeading1">
-        <item name="android:textColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="android:textColor">@color/fluentui_gray_500</item>
     </style>
     <style name="TextAppearance.DemoListItemSubtitle" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="android:textColor">@color/fluentui_gray_500</item>
     </style>
     <style name="TextAppearance.DemoSubHeader" parent="@style/TextAppearance.FluentUI.Body2">
         <item name="android:textColor">?attr/colorPrimary</item>
@@ -69,16 +175,17 @@
         <item name="android:textColor">?attr/fluentuiForegroundColor</item>
     </style>
     <style name="TextAppearance.DemoDescription.Label" parent="@style/TextAppearance.FluentUI.SubHeading1">
-        <item name="android:textColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="android:textColor">@color/fluentui_gray_500</item>
     </style>
     <style name="TextAppearance.DemoTitle" parent="@style/TextAppearance.FluentUI.Title1">
         <item name="android:textColor">?attr/fluentuiForegroundColor</item>
     </style>
 
-    <!--Tooltip Demo-->
+    <!-- Tooltip Demo-->
     <style name="Demo.Tooltip.Button" parent="Widget.FluentUI.Button" />
 
-    <!--TabLayout Demo-->
+    <!-- TabLayout Demo, for this style to be used you should declare attrs used or directly use
+         color values -->
     <style name="FluentUIDemo.TabLayout" parent="">
         <item name="containerBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="tabsBackgroundColor">@color/fluentui_communication_shade_10</item>
