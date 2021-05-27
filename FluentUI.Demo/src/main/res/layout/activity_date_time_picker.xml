@@ -43,20 +43,20 @@
         android:layout_height="wrap_content"
         android:text="@string/date_time_picker_date_picked_default" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/date_picker_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/date_time_picker_date_button" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/date_time_picker_date_selected_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_view_margin"
         android:text="@string/date_time_picker_calendar_date_time_button" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/date_time_picker_time_selected_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,13 +121,13 @@
         android:orientation="horizontal"
         android:layout_marginBottom="@dimen/default_layout_margin">
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/date_range_start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/date_time_picker_date_start_button" />
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/date_range_end_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
         android:orientation="horizontal"
         android:layout_marginBottom="@dimen/default_layout_margin">
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/date_time_range_start_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
