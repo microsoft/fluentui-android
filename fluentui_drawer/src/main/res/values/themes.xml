@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+
+    <style name="Theme.FluentUI.Drawer.Base" parent="Base.Theme.FluentUI" >
+
+        <!--Persistent BottomSheet-->
+        <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetItemColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundSecondaryColor</item>
+
+        <!--BottomSheet-->
+        <item name="fluentuiBottomSheetBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiBottomSheetBackgroundPressedColor">?attr/fluentuiBackgroundPressedColor</item>
+        <item name="fluentuiBottomSheetIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
+        <item name="fluentuiBottomSheetDividerColor">?attr/fluentuiDividerColor</item>
+
+        <!--Drawer-->
+        <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundColor</item>
+        <item name="fluentuiDrawerHandleColor">?attr/fluentuiForegroundSecondaryIconColor</item>
+
+        <!-- Bottomsheet Horizontal ListItem -->
+        <item name="fluentuiHorizontalListItemTitleColor">?attr/fluentuiForegroundSecondaryColor</item>
+
+    </style>
+
+    <style name="Theme.FluentUI.Drawer" parent="Theme.FluentUI.Drawer.Base"/>
+</resources>

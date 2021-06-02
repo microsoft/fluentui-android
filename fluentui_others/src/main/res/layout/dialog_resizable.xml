@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/fluentui_dialog_insets"
+        android:background="@drawable/ms_dialog_background_light"
+        card_view:cardCornerRadius="@dimen/fluentui_corner_radius_4"
+        card_view:cardElevation="@dimen/fluentui_resizable_dialog_card_elevation"
+        card_view:cardUseCompatPadding="true" />
+
+</FrameLayout>

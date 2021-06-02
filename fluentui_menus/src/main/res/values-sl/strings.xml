@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">preklopi</string>
+  <string name="popup_menu_accessibility_item_select">izberi</string>
+  <string name="popup_menu_accessibility_item_click_selected">Izbran element %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Potrjen element %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Preklicana potrditev elementa %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">izbirni gumb</string>
+  <string name="popup_menu_accessibility_item_check_box">potrditveno polje</string>
+  <string name="popup_menu_accessibility_item_state_checked">potrjeno</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ni potrjeno</string>
+</resources>

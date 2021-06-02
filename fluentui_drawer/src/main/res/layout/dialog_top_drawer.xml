@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.microsoft.fluentui.drawer.DrawerView
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/fluentuiDrawerBackgroundColor"
+        android:clipToPadding="true"
+        android:elevation="@dimen/fluentui_drawer_elevation"
+        android:orientation="vertical"
+        app:layout_behavior="@string/top_sheet_behavior"
+        app:behaviorHideable="false"
+        app:behaviorPeekHeight="@dimen/fluentui_drawer_peek_height"
+        app:behaviorType="TOP">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/drawer_handle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
+                android:src="@drawable/ic_drawer_handle"
+                app:tint="?attr/fluentuiDrawerHandleColor"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:importantForAccessibility="no"/>
+
+            <LinearLayout
+                android:id="@+id/drawer_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
+                app:layout_constraintBottom_toTopOf="@id/drawer_handle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.microsoft.fluentui.drawer.DrawerView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

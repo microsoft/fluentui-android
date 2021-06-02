@@ -14,33 +14,60 @@
     <LinearLayout
         android:id="@+id/demo_main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="@dimen/default_layout_margin"
         android:background="?attr/fluentuiBackgroundColor"
         android:orientation="vertical">
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/show_persistent_bottom_sheet_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/expand_bottom_sheet_button" />
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/collapse_persistent_bottom_sheet_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/collapse_persistent_sheet_button" />
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/toggle_bottom_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/toggle_sheet_content" />
 
+        <com.microsoft.fluentui.widget.Button
+            android:id="@+id/set_one_line_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/one_line_content" />
+
     </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/demo_main_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/large_scrollable_text"
+                android:textColor="@color/fluentui_black" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
         android:layout_width="match_parent"

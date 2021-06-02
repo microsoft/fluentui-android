@@ -1,0 +1,79 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+apply from: '../config.gradle'
+apply from: '../publish.gradle'
+
+android {
+    compileSdkVersion constants.compileSdkVersion
+    defaultConfig {
+        minSdkVersion constants.minSdkVersion
+        targetSdkVersion constants.targetSdkVersion
+        versionCode project.ext.fluentui_others_version_code
+        versionName project.ext.fluentui_others_versionid
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    productFlavors {
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    taskGraph.allTasks.forEach {
+        if (it.name.contains("ReleaseUnitTest")) {
+            it.enabled = false
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':fluentui_core')
+    implementation project(':fluentui_listitem')
+    implementation project(':fluentui_persona')
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.jakewharton.threetenabp:threetenabp:$threetenabpVersion"
+    implementation "com.splitwise:tokenautocomplete:$tokenautocompleteVersion"
+    implementation "com.microsoft.device:dualscreen-layout:$duoVersion"
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+project.afterEvaluate {
+    project.ext.publishingFunc('fluentui_others')
+}
+
+

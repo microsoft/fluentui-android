@@ -17,10 +17,10 @@ class ActionBarLayoutActivity: DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         start_demo_btn.setOnClickListener{
             var position = action_bar_position_rgroup.checkedRadioButtonId
             var type = action_bar_type_rgroup.checkedRadioButtonId
-
             if(position == -1 || type == -1){
                 Snackbar.make(root_view,"Please select position and type", Snackbar.LENGTH_SHORT).show()
             }

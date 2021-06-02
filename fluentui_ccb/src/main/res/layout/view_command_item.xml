@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/fluentui_contextual_command_bar_default_item_padding_horizontal"
+    android:paddingTop="@dimen/fluentui_contextual_command_bar_default_item_padding_vertical"
+    android:paddingEnd="@dimen/fluentui_contextual_command_bar_default_item_padding_horizontal"
+    android:paddingBottom="@dimen/fluentui_contextual_command_bar_default_item_padding_vertical">
+
+    <ImageView
+        android:id="@+id/contextual_command_item_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        app:tint="@color/contextual_command_bar_icon_tint" />
+
+    <TextView
+        android:id="@+id/contextual_command_item_label"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/contextual_command_bar_icon_tint" />
+</FrameLayout>

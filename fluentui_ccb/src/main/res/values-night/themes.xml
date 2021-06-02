@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--ContextualCommandBar-->
+    <style name="Theme.FluentUI.ContextualCommandBar" parent="Theme.FluentUI.ContextualCommandBar.Base">
+
+    <item name="fluentuiContextualCommandBarBackgroundColor">@color/fluentui_gray_600</item>
+    <item name="fluentuiContextualCommandBarBackgroundColorPressed">@color/fluentui_gray_900</item>
+    <item name="fluentuiContextualCommandBarBackgroundColorSelected">@color/fluentui_communication_blue</item>
+    <item name="fluentuiContextualCommandBarIconTint">@color/fluentui_gray_100</item>
+    <item name="fluentuiContextualCommandBarIconTintDisabled">@color/fluentui_gray_400</item>
+    <item name="fluentuiContextualCommandBarIconTintSelected">@color/fluentui_black</item>
+    <item name="fluentuiContextualCommandBarDismissBackgroundColor">@color/fluentui_black</item>
+    <item name="fluentuiContextualCommandBarDismissIconTintColor">@color/fluentui_gray_100</item>
+
+    </style>
+</resources>

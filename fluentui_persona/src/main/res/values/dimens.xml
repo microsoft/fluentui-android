@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--Avatar-->
+    <dimen name="fluentui_avatar_size_xsmall">20dp</dimen>
+    <dimen name="fluentui_avatar_size_small">24dp</dimen>
+    <dimen name="fluentui_avatar_size_medium">32dp</dimen>
+    <dimen name="fluentui_avatar_size_large">40dp</dimen>
+    <dimen name="fluentui_avatar_size_xlarge">52dp</dimen>
+    <dimen name="fluentui_avatar_size_xxlarge">64dp</dimen>
+    <dimen name="fluentui_avatar_square_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
+    <dimen name="fluentui_avatar_border_size">4dp</dimen>
+    <dimen name="fluentui_avatar_border_size_xxlarge">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xsmall">4dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_small">6dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_medium">6dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_large">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xlarge">8dp</dimen>
+    <dimen name="fluentui_avatar_pile_space_xxlarge">10dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xsmall">6dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_small">8dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_medium">8dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_large">12dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xlarge">14dp</dimen>
+    <dimen name="fluentui_avatar_stack_space_xxlarge">16dp</dimen>
+    <!--Persona-->
+    <dimen name="fluentui_persona_horizontal_spacing">@dimen/fluentui_list_item_spacing</dimen>
+    <dimen name="fluentui_persona_horizontal_padding">@dimen/fluentui_list_item_horizontal_margin_regular</dimen>
+
+    <!--PersonaChip-->
+    <dimen name="fluentui_persona_chip_height">32dp</dimen>
+    <dimen name="fluentui_persona_chip_padding">6dp</dimen>
+    <dimen name="fluentui_persona_chip_spacing">6dp</dimen>
+</resources>

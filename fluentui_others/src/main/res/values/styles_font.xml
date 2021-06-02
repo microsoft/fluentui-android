@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+     <!-- *** FluentUI Semantic Styles *** -->
+
+    <!--BottomNavigation-->
+    <style name="TextAppearance.FluentUI.BottomNavigation.Inactive" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiBottomNavigationForegroundInactiveColor</item>
+    </style>
+    <style name="TextAppearance.FluentUI.BottomNavigation.Active" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiBottomNavigationForegroundActiveColor</item>
+    </style>
+
+    <!--Button-->
+    <style name="TextAppearance.FluentUI.Button" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Borderless">
+        <item name="android:textColor">@color/button_text_borderless</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Outlined">
+        <item name="android:textColor">@color/button_text_outlined</item>
+    </style>
+
+    <!--Calendar-->
+    <!--calendar_week_day_text_selector sets the colors for these-->
+    <style name="TextAppearance.FluentUI.CalendarDay" parent="TextAppearance.FluentUI.SubHeading1">
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.FluentUI.CalendarDay2" parent="TextAppearance.FluentUI.SubHeading2">
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.FluentUI.WeekDayHeader" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@null</item>
+    </style>
+
+
+    <!--NumberPicker-->
+    <style name="TextAppearance.FluentUI.NumberPicker" parent="TextAppearance.FluentUI.Heading"/>
+    <style name="TextAppearance.FluentUI.NumberPicker.Selected">
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <!--PeoplePicker-->
+    <style name="TextAppearance.FluentUI.PeoplePickerLabel" parent="TextAppearance.FluentUI.SubHeading1">
+        <item name="android:textColor">?attr/fluentuiPeoplePickerLabelTextColor</item>
+    </style>
+    <style name="TextAppearance.FluentUI.PeoplePickerText" parent="TextAppearance.FluentUI.Heading" />
+    <style name="TextAppearance.FluentUI.PeoplePickerCountSpan" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiPeoplePickerCountSpanTextColor</item>
+    </style>
+    <style name="TextAppearance.FluentUI.PeoplePickerSearchDirectoryButton" parent="TextAppearance.FluentUI.Button.Borderless" />
+
+    <!--Dialog TabLayout-->
+    <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+      <!--Toolbar-->
+    <style name="TextAppearance.FluentUI.ToolbarTitle" parent="TextAppearance.FluentUI.Title1">
+        <item name="android:textColor">?attr/fluentuiToolbarTitleTextColor</item>
+    </style>
+    <style name="TextAppearance.FluentUI.ToolbarSubtitle" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiToolbarSubtitleTextColor</item>
+    </style>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">skipta milli</string>
+  <string name="popup_menu_accessibility_item_select">velja</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s valið</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s merkt</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ómerkt</string>
+  <string name="popup_menu_accessibility_item_radio_button">valhringur</string>
+  <string name="popup_menu_accessibility_item_check_box">gátreitur</string>
+  <string name="popup_menu_accessibility_item_state_checked">merkt</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ómerkt</string>
+</resources>

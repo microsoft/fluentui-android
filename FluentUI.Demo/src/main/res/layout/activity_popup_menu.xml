@@ -4,14 +4,14 @@
   ~ Licensed under the MIT License.
   -->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".demos.PopupMenuActivity">
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/no_check2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/no_check_text" />
 
-    <TextView
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/no_check_text2"
         style="@style/Widget.DemoSubHeader"
         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/no_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/no_check" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/single_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/single_check"
         app:layout_constraintVertical_bias="1.0" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/all_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -103,4 +103,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

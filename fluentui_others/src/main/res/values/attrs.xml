@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** Semantic Colors *** -->
+
+    <!--AppBarLayout-->
+    <attr name="fluentuiAppBarLayoutBackgroundColor" format="reference|color"/>
+
+    <!--BottomNavigation-->
+    <attr name="fluentuiBottomNavigationBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiBottomNavigationForegroundActiveColor" format="reference|color"/>
+    <attr name="fluentuiBottomNavigationForegroundInactiveColor" format="reference|color"/>
+
+
+    <!--Button-->
+    <attr name="fluentuiButtonBackgroundDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonBackgroundDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiButtonTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonTextDisabledColor" format="reference|color"/>
+
+    <!--Button Borderless-->
+    <attr name="fluentuiButtonBorderlessBackgroundDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessBackgroundDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessTextDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonBorderlessTextPressedColor" format="reference|color"/>
+
+    <!--Button Outlined-->
+    <attr name="fluentuiButtonOutlinedTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiButtonOutlinedTextDisabledColor" format="reference|color"/>
+    <attr name="fluentuiButtonOutlinedTextPressedColor" format="reference|color"/>
+    <attr name="fluentuiButtonOutlinedStrokeDefaultColor" format="reference|color"/>
+    <attr name="FluentuiButtonOutlinedStrokeDisabledColor" format="reference|color"/>
+    <attr name="FluentuiButtonOutlinedStrokePressedColor" format="reference|color"/>
+
+    <!--CalendarView-->
+    <attr name="fluentuiCalendarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarWeekHeadingBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarWeekHeadingWeekDayTextColor" format="reference|color"/>
+    <attr name="fluentuiCalendarWeekHeadingWeekendTextColor" format="reference|color"/>
+    <attr name="fluentuiCalendarMonthOverlayBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarMonthOverlayTextColor" format="reference|color"/>
+    <attr name="fluentuiCalendarOtherMonthBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarSelectedColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTodayBackgroundColor" format="reference|color"/>
+
+    <!--day selector-->
+    <attr name="fluentuiCalendarDayTextActiveColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTextActiveCheckedColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTextInactiveCheckedColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTextDefaultColor" format="reference|color"/>
+
+    <!--Compound Buttons-->
+    <attr name="fluentuiCompoundButtonTintDefaultColor" format="reference|color"/>
+    <attr name="fluentuiCompoundButtonTintCheckedColor" format="reference|color"/>
+
+    <!--DateTimePicker-->
+    <attr name="fluentuiDateTimePickerToolbarTitleTextColor" format="reference|color"/>
+    <attr name="fluentuiDateTimePickerTabTextColor" format="reference|color"/>
+    <attr name="fluentuiDateTimePickerDialogBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiDateTimePickerToolbarIconColor" format="reference|color"/>
+
+    <!--Dialog-->
+    <attr name="fluentuiDialogBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiDialogCloseIconColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabLayoutBackgroundColor" format="reference|color"/>
+
+    <!--NumberPicker-->
+    <attr name="fluentuiNumberPickerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiNumberPickerDefaultTextColor" format="reference|color"/>
+    <attr name="fluentuiNumberPickerSelectedTextColor" format="reference|color"/>
+
+    <!--PeoplePicker-->
+    <attr name="fluentuiPeoplePickerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerPopupBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerTextViewBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerTextViewDragBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerHintTextColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerLabelTextColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerCountSpanTextColor" format="reference|color"/>
+
+    <!--Progress-->
+    <attr name="fluentuiProgressPrimaryColor" format="reference|color"/>
+    <attr name="fluentuiProgressBackgroundColor" format="reference|color"/>
+
+    <!--Searchbar-->
+    <attr name="fluentuiSearchbarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewContainerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarBackButtonColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchIconColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewTextColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewTextHintColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewCursorColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarProgressColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarCloseIconColor" format="reference|color"/>
+
+    <!--Dialog TabLayout-->
+    <attr name="fluentuiDialogTabTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabIndicatorColor" format="reference|color"/>
+
+    <!--Toolbar-->
+    <attr name="fluentuiToolbarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiToolbarTitleTextColor" format="reference|color"/>
+    <attr name="fluentuiToolbarSubtitleTextColor" format="reference|color"/>
+    <attr name="fluentuiToolbarIconColor" format="reference|color"/>
+
+</resources>

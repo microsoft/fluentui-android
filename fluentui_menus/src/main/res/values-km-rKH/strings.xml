@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">បិទបើក</string>
+  <string name="popup_menu_accessibility_item_select">ជ្រើសរើស</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s ត្រូវបានជ្រើសរើស</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ត្រូវបានធីក</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ត្រូវបានដោះធីក</string>
+  <string name="popup_menu_accessibility_item_radio_button">ប៊ូតុងជម្រើសមូល</string>
+  <string name="popup_menu_accessibility_item_check_box">ប្រអប់ធីក</string>
+  <string name="popup_menu_accessibility_item_state_checked">បានធីក</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">មិនបានធីក</string>
+</resources>

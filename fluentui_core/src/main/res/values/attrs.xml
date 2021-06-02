@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- *** Theme Semantic Colors *** -->
+
+    <attr name="fluentuiColorPrimaryDarker" format="reference|color"/>
+    <attr name="fluentuiColorPrimaryLight" format="reference|color"/>
+    <attr name="fluentuiColorPrimaryLighter" format="reference|color"/>
+
+    <!-- *** Base Semantic Colors *** -->
+
+    <!--Backgrounds-->
+    <attr name="fluentuiBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiBackgroundPressedColor" format="reference|color"/>
+    <attr name="fluentuiBackgroundPrimaryColor" format="reference|color"/>
+    <attr name="fluentuiBackgroundSecondaryColor" format="reference|color"/>
+    <attr name="fluentuiBackgroundSecondaryPressedColor" format="reference|color"/>
+
+    <!--Foregrounds-->
+    <attr name="fluentuiForegroundColor" format="reference|color"/>
+    <attr name="fluentuiForegroundSelectedColor" format="reference|color"/>
+    <attr name="fluentuiForegroundSecondaryColor" format="reference|color"/>
+    <attr name="fluentuiForegroundSecondaryIconColor" format="reference|color"/>
+    <attr name="fluentuiForegroundOnPrimaryColor" format="reference|color"/>
+    <attr name="fluentuiForegroundOnSecondaryColor" format="reference|color"/>
+    <attr name="fluentuiDividerColor" format="reference|color"/>
+
+    <!--Transparent Backgrounds-->
+    <attr name="fluentuiBackgroundSecondary20Color" format="reference|color"/>
+
+    <!--Transparent Foregrounds-->
+    <attr name="fluentuiForegroundOnPrimary80Color" format="reference|color"/>
+    <attr name="fluentuiForegroundOnPrimary70Color" format="reference|color"/>
+</resources>

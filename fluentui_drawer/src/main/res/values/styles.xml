@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Drawer-->
+    <style name="Drawer.FluentUI" parent="@style/Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Drawer.FluentUI.Animation</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+    <style name="Drawer.FluentUI.Animation">
+        <item name="android:windowEnterAnimation">@anim/drawer_background_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/drawer_background_fade_out</item>
+    </style>
+</resources>

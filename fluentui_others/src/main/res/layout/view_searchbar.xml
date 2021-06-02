@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/fluentuiSearchbarBackgroundColor"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/fluentui_searchbar_padding_bottom">
+
+    <LinearLayout
+        android:id="@+id/search_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fluentui_searchbar_search_view_height"
+        android:layout_marginStart="@dimen/fluentui_searchbar_search_view_container_search_icon_margin_start"
+        android:layout_marginTop="@dimen/fluentui_searchbar_search_view_container_margin_vertical"
+        android:layout_marginEnd="@dimen/fluentui_searchbar_search_view_container_margin_end"
+        android:layout_marginBottom="@dimen/fluentui_searchbar_search_view_container_margin_vertical"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/search_back_button"
+            style="?actionButtonStyle"
+            android:layout_width="@dimen/fluentui_min_touch_size"
+            android:layout_height="@dimen/fluentui_min_touch_size"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@string/searchbar_back"
+            android:minWidth="0dp"
+            android:src="@drawable/ms_ic_arrow_left_24_filled"
+            app:tint="?attr/fluentuiSearchbarBackButtonColor" />
+
+        <ImageView
+            android:id="@+id/search_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/fluentui_searchbar_search_icon_padding_start"
+            android:paddingEnd="@dimen/fluentui_searchbar_search_icon_padding_end"
+            android:src="@drawable/ms_ic_search_24_filled"
+            app:tint="?attr/fluentuiSearchbarSearchIconColor"
+            android:tintMode="src_in"/>
+
+        <!--Using theme instead of style to pick up colorControlActivated and textColorHint, etc.-->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/fluentui_searchbar_search_view_height"
+            android:layout_weight="1"
+            android:background="@null"
+            android:imeOptions="actionSearch|flagNoExtractUi|flagNoFullscreen"
+            android:theme="@style/Widget.FluentUI.SearchView"
+            app:closeIcon="@null"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:searchIcon="@null" />
+
+        <FrameLayout
+            android:layout_width="@dimen/fluentui_min_touch_size"
+            android:layout_height="@dimen/fluentui_min_touch_size">
+
+            <com.microsoft.fluentui.widget.ProgressBar
+                android:id="@+id/search_progress"
+                style="@style/Widget.FluentUI.CircularProgress.XSmall.Search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/search_close"
+                style="?actionButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/searchbar_clear_search"
+                android:src="@drawable/ms_ic_dismiss_circle_24_filled"
+                android:tint="?attr/fluentuiSearchbarCloseIconColor"
+                android:tintMode="src_in"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
