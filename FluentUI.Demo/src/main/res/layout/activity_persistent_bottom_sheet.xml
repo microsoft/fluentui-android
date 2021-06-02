@@ -19,28 +19,28 @@
         android:background="?attr/fluentuiBackgroundColor"
         android:orientation="vertical">
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/show_persistent_bottom_sheet_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/expand_bottom_sheet_button" />
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/collapse_persistent_bottom_sheet_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/collapse_persistent_sheet_button" />
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/toggle_bottom_sheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/toggle_sheet_content" />
 
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/set_one_line_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

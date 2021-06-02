@@ -200,7 +200,6 @@
         <item name="android:maxHeight">@dimen/fluentui_searchbar_progress_size</item>
         <item name="android:maxWidth">@dimen/fluentui_searchbar_progress_size</item>
     </style>
-
     <!--Toolbar-->
     <!--We use Widget.AppCompat.Toolbar instead of a ThemeOverlay to maintain Android's default Toolbar styling.-->
     <style name="Base.Widget.FluentUI.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
