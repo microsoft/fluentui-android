@@ -35,8 +35,9 @@
 
              1) Define your own custom style - Recommended for cases when you are not using the
                     components provided by Fluent library. for example if you want to use your own
-                    buttons throughout the app and not FluentUI.Widget.Button. Also, if you decide
-                    to use Fluent UI Components then you can set the style directly in XML file.
+                    buttons throughout the app and not FluentUI.Widget.Button.
+                    Even then, if you decide to use Fluent UI Components then you can set the style
+                    directly in Layout's XML file.
              2) Use Style Defined in Library - Recommended for cases when you use Fluent UI
                      component throughout the app. It will directly pick the attrs defined in the
                      styles and hence you do not need to declare them. But if in case you want some
