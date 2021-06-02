@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tab_layout_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fluentui_tab_height">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tabMode="fixed"
+        app:tabRippleColor="@null"
+        app:tabIndicatorHeight="@dimen/fluentui_tab_indicator_height"
+        app:tabGravity="fill"
+        app:tabMaxWidth="0dp"
+        app:tabTextAppearance="?attr/fluentuiTabTextAppearance" />
+
+</LinearLayout>

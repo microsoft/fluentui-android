@@ -1,0 +1,39 @@
+pool:
+  vmImage: 'macos-latest'
+  demands:
+    - java
+    - JDK
+
+steps:
+
+  - task: Gradle@2
+    inputs:
+      gradleWrapperFile: 'gradlew'
+      tasks: 'assembleRelease makeUniversalPkg'
+      publishJUnitResults: true
+      testResultsFiles: '**/TEST-*.xml'
+      javaHomeOption: 'JDKVersion'
+      sonarQubeRunAnalysis: false
+      options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(system.defaultworkingdirectory)/universal'
+      Contents: '**'
+      TargetFolder: '$(build.artifactstagingdirectory)/outputs'
+      CleanTargetFolder: true
+      OverWrite: true
+      preserveTimestamp: true
+
+  - task: UniversalPackages@0
+    inputs:
+      command: 'publish'
+      publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
+      feedsToUsePublish: 'internal'
+      vstsFeedPublish: 'Office'
+      vstsFeedPackagePublish: 'fluentuiandroid'
+      versionOption: 'custom'
+      versionPublish: '0.0.17'
+      packagePublishDescription: 'Fluent Universal Package'
+      publishedPackageVar: 'fluent package'

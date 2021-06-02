@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/ms_row_divider"
+    android:background="?attr/fluentuiNumberPickerBackgroundColor"
+    android:orientation="vertical"
+    android:showDividers="middle|end">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/start_end_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        style="@style/Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" />
+
+    <LinearLayout
+        android:id="@+id/date_time_pickers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:padding="@dimen/fluentui_date_time_picker_padding">
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/date_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:internalMinWidth="@dimen/fluentui_date_time_picker_date_internal_min_width" />
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/hour_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/minute_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/period_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/date_pickers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:padding="@dimen/fluentui_date_time_picker_padding">
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/month_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:internalMinWidth="@dimen/fluentui_date_time_picker_month_internal_min_width" />
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/day_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.microsoft.fluentui.view.NumberPicker
+            android:id="@+id/year_picker"
+            style="@style/Widget.FluentUI.NumberPicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:internalMinWidth="@dimen/fluentui_date_time_picker_year_internal_min_width" />
+
+    </LinearLayout>
+
+</LinearLayout>

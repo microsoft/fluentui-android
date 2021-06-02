@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">M</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">T</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">W</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">T</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">F</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">S</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">S</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Go to next week</string>
+    <string name="accessibility_goto_previous_week">Go to previous week</string>
+    <string name="accessibility_today">today</string>
+    <string name="accessibility_selected">Selected</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Done</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_at_time">%1$s at %2$s</string>
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="yesterday">Yesterday</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Start time</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">End time</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Start date</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">End date</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Choose Time</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Choose Date</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Date Time Picker</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Date Picker</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Date Time Picker Range</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Date Picker Range</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Start time tab</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">End time tab</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Start date tab</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">End date tab</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Close dialog</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Increment month</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">select next month</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Decrement month</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">select previous month</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Increment day</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">select next day</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Decrement day</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">select previous day</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Increment year</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">select next year</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Decrement year</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">select previous year</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Increment date</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">select next date</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Decrement date</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">select previous date</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Increment hour</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">select next hour</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Decrement hour</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">select previous hour</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Increment minute</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">select next minute</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Decrement minute</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">select previous minute</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Toggle AM PM period</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">toggle AM PM period</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s selected</string>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Label</string>
+    <string name="people_picker_search_directory">Search Directory</string>
+    <string name="people_picker_search_progress">Searching…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
+    <string name="people_picker_accessibility_persona_added">%s added</string>
+    <string name="people_picker_accessibility_persona_removed">%s removed</string>
+    <string name="people_picker_accessibility_replaced">%s replaced,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Click</string>
+    <string name="people_picker_accessibility_delete_persona">Delete</string>
+    <string name="people_picker_accessibility_deselect_persona">Deselect</string>
+    <string name="people_picker_accessibility_select_persona">Select</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Clicked %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Deselected %s</string>
+    <string name="people_picker_accessibility_selected_persona">Selected %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, Activation will deselect</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Activation will delete</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Activation will click</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Suggestions list opened with %s person</item>
+        <item quantity="other">Suggestions list opened with %s people</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s person</item>
+        <item quantity="other">%s people</item>
+    </plurals>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">selected</string>
+
+
+    <!-- *** Progress *** -->
+
+    <!--Describes a Circular progress indicator that spins indefinitely.-->
+    <string name="progress_circular_content_description_indeterminate">Indeterminate Circular</string>
+
+    <!--Describes a Linear progress indicator that animates indefinitely.-->
+    <string name="progress_linear_content_description_indeterminate">Indeterminate Linear</string>
+    <!--Describes a Linear progress indicator that animates.-->
+    <string name="progress_linear_content_description_determinate">Determinate Linear</string>
+
+    <!-- *** Searchbar *** -->
+
+    <!--Content description for the button that clears the query text entered in the search field.-->
+    <string name="searchbar_clear_search">Clear search</string>
+    <!--Content description for the button that navigates out of the search experience back to a previous state.-->
+    <string name="searchbar_back">Back</string>
+    <!--Hint for the search field.-->
+    <string name="searchbar_query_hint_default">Search</string>
+
+
+
+    <!--Announcement when SearchBar is cleared-->
+    <string name="searchbar_accessibility_cleared_announcement">edit field cleared</string>
+
+
+    <!-- *** ActionBar *** -->
+
+    <!--Content description for default left action in the action bar layout.-->
+    <string name="action_bar_default_left_action">Skip</string>
+    <!--Content description for default right action in the action bar layout.-->
+    <string name="action_bar_default_right_action">Next</string>
+    <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
+    <string name="action_bar_default_final_action">Start</string>
+    <!--Content description default right icon-->
+    <string name="action_bar_right_icon_description">Next</string>
+    <!--accessibiltiy-->
+    <!--Announcement when page is scrolled-->
+    <string name="action_bar_accessibility_page_announcement">Slider page %d of %d</string>
+    <!--Announcement when actionbarlayout opens or when Skip is pressed-->
+    <string name="action_bar_accessibility_viewpager_description">Multi-page view. Slider page %d of %d</string>
+
+    <string name="fluentui_bottom_sheet_header">BottomSheet Heading</string>
+</resources>

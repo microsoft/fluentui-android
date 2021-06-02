@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:baselineAligned="true"
+    android:minHeight="@dimen/fluentui_list_item_min_height"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/fluentui_list_item_horizontal_margin_regular">
+
+    <RelativeLayout
+        android:id="@+id/list_item_custom_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/list_item_text_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:textDirection="locale">
+
+        <TextView
+            android:id="@+id/list_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.FluentUI.ListItemTitle"
+            tools:text="Title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/list_item_subtitle_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fluentui_list_item_text_vertical_spacing">
+
+            <TextView
+                android:id="@+id/list_item_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.FluentUI.ListItemSubtitle"
+                app:layout_constraintTop_toTopOf="@+id/list_item_subtitle_view_container"
+                app:layout_constraintStart_toStartOf="@+id/list_item_subtitle_view_container"
+                app:layout_constraintBottom_toBottomOf="@+id/list_item_subtitle_view_container"
+                app:layout_constraintEnd_toStartOf="@+id/list_item_custom_secondary_subtitle_view_container"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constrainedWidth="true"
+                tools:text="Subtitle"
+                tools:visibility="visible"/>
+
+            <RelativeLayout
+                android:id="@+id/list_item_custom_secondary_subtitle_view_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/list_item_subtitle"
+                app:layout_constraintEnd_toEndOf="@+id/list_item_subtitle_view_container"
+                app:layout_constraintTop_toTopOf="@+id/list_item_subtitle_view_container"
+                app:layout_constraintBottom_toBottomOf="@+id/list_item_subtitle_view_container"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/list_item_footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fluentui_list_item_text_vertical_spacing"
+            android:textAppearance="@style/TextAppearance.FluentUI.ListItemFooter"
+            tools:text="Footer"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/list_item_custom_accessory_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"/>
+
+</LinearLayout>

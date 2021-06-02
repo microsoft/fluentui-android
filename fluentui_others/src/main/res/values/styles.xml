@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!--BottomNavigation-->
+    <style name="Widget.FluentUI.BottomNavigation" parent="Widget.Design.BottomNavigationView">
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">?attr/fluentuiBottomNavigationBackgroundColor</item>
+        <item name="itemBackground">@drawable/ms_ripple_transparent_background_borderless</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.FluentUI.BottomNavigation.Active</item>
+        <item name="itemTextAppearanceInactive">@style/TextAppearance.FluentUI.BottomNavigation.Inactive</item>
+        <item name="itemIconTint">@color/bottom_navigation_icon_tint</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+    <style name="Widget.FluentUI.BottomNavigation.Unlabeled">
+        <item name="labelVisibilityMode">unlabeled</item>
+    </style>
+
+    <!--Base Button-->
+    <style name="Widget.FluentUI.BaseButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button</item>
+        <item name="android:paddingStart">@dimen/fluentui_button_base_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/fluentui_button_base_padding_horizontal</item>
+        <item name="android:paddingTop">@dimen/fluentui_button_base_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/fluentui_button_base_padding_vertical</item>
+        <item name="android:minHeight">@dimen/fluentui_button_min_height</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
+    </style>
+
+    <!--Primary Button-->
+    <style name="Widget.FluentUI.Button" parent="Widget.FluentUI.BaseButton">
+        <item name="android:paddingStart">@dimen/fluentui_button_padding_horizontal</item>
+        <item name="android:paddingEnd">@dimen/fluentui_button_padding_horizontal</item>
+    </style>
+
+    <!--We use Borderless button style as the parent to avoid drop shadow issues in some APIs.-->
+    <style name="Widget.FluentUI.Button.Borderless" parent="Widget.FluentUI.BaseButton">
+        <item name="android:background">@drawable/button_borderless_background</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button.Borderless</item>
+    </style>
+
+    <!--Large Buttons -->
+    <style name="Widget.FluentUI.Button.Large" parent="Widget.FluentUI.BaseButton">
+        <item name="android:paddingTop">@dimen/fluentui_button_large_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/fluentui_button_large_padding_vertical</item>
+        <item name="android:minHeight">@dimen/fluentui_button_large_min_height</item>
+    </style>
+
+    <!--Outlined Buttons -->
+    <style name="Widget.FluentUI.Button.Outlined" parent="Widget.FluentUI.BaseButton">
+        <item name="android:background">@drawable/button_outlined</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button.Outlined</item>
+        <item name="android:paddingTop">@dimen/fluentui_button_outlined_padding_vertical</item>
+        <item name="android:paddingBottom">@dimen/fluentui_button_outlined_padding_vertical</item>
+        <item name="android:minHeight">@dimen/fluentui_button_outlined_min_height</item>
+    </style>
+
+    <!--Compound Buttons-->
+    <style name="Widget.FluentUI.RadioButton" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:buttonTint">@color/compound_button_tint</item>
+    </style>
+    <style name="Widget.FluentUI.CheckBox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/compound_button_tint</item>
+    </style>
+
+    <!--DateTimePickerDialog-->
+    <style name="DateTimePickerDialog.Toolbar" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorControlHighlight">?attr/fluentuiBackgroundPressedColor</item>
+    </style>
+    <style name="Base.Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" parent="Widget.FluentUI.Dialog.TabLayout">
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+    </style>
+    <style name="Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" parent="Base.Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" />
+
+    <!--Dialog-->
+    <style name="Dialog.FluentUI" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackground">?attr/fluentuiDialogBackgroundColor</item>
+        <item name="android:colorBackgroundCacheHint">?attr/fluentuiDialogBackgroundColor</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Title1</item>
+    </style>
+    <style name="Widget.FluentUI.Dialog.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabGravity">center</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabTextAppearance">@style/TextAppearance.FluentUI.Dialog.Tab.Light</item>
+        <item name="tabMinWidth">90dp</item>
+        <item name="tabSelectedTextColor">?attr/fluentuiDialogTabSelectedTextColor</item>
+        <item name="tabIndicatorColor">?attr/fluentuiDialogTabIndicatorColor</item>
+        <item name="android:background">?attr/fluentuiDialogTabLayoutBackgroundColor</item>
+        <item name="tabRippleColor">?fluentuiBackgroundPressedColor</item>
+    </style>
+
+    <!--NumberPicker-->
+    <style name="Widget.FluentUI.NumberPicker">
+        <item name="android:orientation">vertical</item>
+        <item name="android:requiresFadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">@dimen/fluentui_date_time_picker_fading_edge_length</item>
+        <item name="solidColor">@android:color/transparent</item>
+        <item name="internalMinWidth">@dimen/fluentui_date_time_picker_internal_min_width</item>
+        <item name="internalMaxHeight">@dimen/fluentui_date_time_picker_max_height</item>
+        <item name="selectorWheelItemCount">@integer/fluentui_number_picker_selector_wheel_item_count</item>
+        <item name="textAlign">center</item>
+        <item name="android:paddingRight">@dimen/fluentui_date_time_picker_padding_right</item>
+    </style>
+
+    <!--Progress: Circular-->
+    <style name="Widget.FluentUI.CircularProgress.XSmall" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_xsmall</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_circular_xsmall</item>
+        <item name="android:minWidth">@dimen/fluentui_progress_circular_xsmall</item>
+        <item name="android:maxHeight">@dimen/fluentui_progress_circular_xsmall</item>
+        <item name="android:maxWidth">@dimen/fluentui_progress_circular_xsmall</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.Small" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_small</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_circular_small</item>
+        <item name="android:minWidth">@dimen/fluentui_progress_circular_small</item>
+        <item name="android:maxHeight">@dimen/fluentui_progress_circular_small</item>
+        <item name="android:maxWidth">@dimen/fluentui_progress_circular_small</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.Medium" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_medium</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_circular_medium</item>
+        <item name="android:minWidth">@dimen/fluentui_progress_circular_medium</item>
+        <item name="android:maxHeight">@dimen/fluentui_progress_circular_medium</item>
+        <item name="android:maxWidth">@dimen/fluentui_progress_circular_medium</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.Large" parent="@style/Widget.AppCompat.ProgressBar">
+        <item name="android:contentDescription">@string/progress_circular_content_description_indeterminate</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_circular_gray_large</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_circular_large</item>
+        <item name="android:minWidth">@dimen/fluentui_progress_circular_large</item>
+        <item name="android:maxHeight">@dimen/fluentui_progress_circular_large</item>
+        <item name="android:maxWidth">@dimen/fluentui_progress_circular_large</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.XSmall.Primary">
+        <item name="android:indeterminateTint">?attr/fluentuiProgressPrimaryColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.Small.Primary">
+        <item name="android:indeterminateTint">?attr/fluentuiProgressPrimaryColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.Medium.Primary">
+        <item name="android:indeterminateTint">?attr/fluentuiProgressPrimaryColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.Large.Primary">
+        <item name="android:indeterminateTint">?attr/fluentuiProgressPrimaryColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
+
+    <!--Progress: Linear-->
+    <style name="Widget.FluentUI.LinearProgress" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/ms_ic_progress_linear_determinate</item>
+        <item name="android:indeterminateDrawable">@drawable/anim_progress_linear_indeterminate</item>
+        <item name="android:minHeight">@dimen/fluentui_progress_linear_height</item>
+        <item name="android:maxHeight">@dimen/fluentui_progress_linear_height</item>
+    </style>
+
+    <style name="Widget.FluentUI.LinearProgress.Determinate" parent="Widget.FluentUI.LinearProgress">
+        <item name="android:contentDescription">
+            @string/progress_linear_content_description_determinate
+        </item>
+        <item name="android:indeterminate">false</item>
+    </style>
+    <style name="Widget.FluentUI.LinearProgress.Indeterminate" parent="Widget.FluentUI.LinearProgress">
+        <item name="android:indeterminate">true</item>
+        <item name="android:contentDescription">@string/progress_linear_content_description_indeterminate</item>
+    </style>
+
+
+    <!--Searchbar-->
+    <style name="Widget.FluentUI.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="colorControlActivated">?attr/fluentuiSearchbarSearchViewCursorColor</item>
+        <item name="android:textColorHint">?attr/fluentuiSearchbarSearchViewTextHintColor</item>
+        <item name="android:editTextColor">?attr/fluentuiSearchbarSearchViewTextColor</item>
+        <item name="android:textSize">@dimen/fluentui_searchbar_search_view_text_size</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.XSmall.Search">
+        <item name="android:indeterminateTint">?attr/fluentuiSearchbarProgressColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+        <item name="android:minHeight">@dimen/fluentui_searchbar_progress_size</item>
+        <item name="android:minWidth">@dimen/fluentui_searchbar_progress_size</item>
+        <item name="android:maxHeight">@dimen/fluentui_searchbar_progress_size</item>
+        <item name="android:maxWidth">@dimen/fluentui_searchbar_progress_size</item>
+    </style>
+    <!--Toolbar-->
+    <!--We use Widget.AppCompat.Toolbar instead of a ThemeOverlay to maintain Android's default Toolbar styling.-->
+    <style name="Base.Widget.FluentUI.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/fluentuiToolbarBackgroundColor</item>
+        <item name="titleTextAppearance">@style/TextAppearance.FluentUI.ToolbarTitle</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.FluentUI.ToolbarSubtitle</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+    <style name="Widget.FluentUI.Toolbar" parent="@style/Base.Widget.FluentUI.Toolbar" />
+    <style name="Widget.FluentUI.Toolbar.OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?attr/fluentuiToolbarIconColor</item>
+    </style>
+
+</resources>

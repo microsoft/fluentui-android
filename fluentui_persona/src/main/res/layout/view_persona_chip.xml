@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/fluentui_persona_chip_height"
+    android:orientation="horizontal"
+    android:padding="@dimen/fluentui_persona_chip_padding">
+
+    <com.microsoft.fluentui.persona.AvatarView
+        android:id="@+id/persona_chip_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
+        app:avatarSize="xsmall" />
+
+    <ImageView
+        android:id="@+id/persona_chip_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
+        android:src="@drawable/ms_ic_dismiss_20_filled"
+        app:tint="?attr/fluentuiPersonaChipForegroundActiveColor"
+        android:tintMode="src_in" />
+
+    <TextView
+        android:id="@+id/persona_chip_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:importantForAccessibility="no"
+        android:textAppearance="@style/TextAppearance.FluentUI.Body1"
+        tools:text="@tools:sample/full_names" />
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--TabLayout-->
+    <style name="TextAppearance.FluentUI.Tab" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@color/tab_layout_item</item>
+    </style>
+</resources>

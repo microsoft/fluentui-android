@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.microsoft.fluentui.drawer.DrawerView
+        android:id="@+id/drawer"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:elevation="@dimen/fluentui_drawer_elevation"
+        android:background="?attr/fluentuiDrawerBackgroundColor"
+        android:clipToPadding="true"
+        app:behaviorHideable="true"
+        app:behaviorPeekWidth="@dimen/fluentui_drawer_peek_width"
+        app:behaviorType="RIGHT"
+        app:layout_behavior="@string/side_sheet_behavior">
+
+        <LinearLayout
+            android:id="@+id/drawer_content"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+    </com.microsoft.fluentui.drawer.DrawerView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

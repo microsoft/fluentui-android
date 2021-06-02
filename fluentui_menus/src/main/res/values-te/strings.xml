@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">టోగుల్</string>
+  <string name="popup_menu_accessibility_item_select">ఎంచుకోండి</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s ఎంచుకున్నారు</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ఎంచుకున్నారు</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ఎంపిక తీసివేసారు</string>
+  <string name="popup_menu_accessibility_item_radio_button">రేడియో బటన్</string>
+  <string name="popup_menu_accessibility_item_check_box">ఎంపిక పెట్టె</string>
+  <string name="popup_menu_accessibility_item_state_checked">ఎంచుకున్నారు</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ఎంపిక తీసివేసారు</string>
+</resources>

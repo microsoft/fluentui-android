@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">přepnout</string>
+  <string name="popup_menu_accessibility_item_select">vybrat</string>
+  <string name="popup_menu_accessibility_item_click_selected">Vybráno: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Zaškrtnuto: %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Zaškrtnutí zrušeno u: %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">přepínač</string>
+  <string name="popup_menu_accessibility_item_check_box">zaškrtávací políčko</string>
+  <string name="popup_menu_accessibility_item_state_checked">zaškrtnuto</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nezaškrtnuto</string>
+</resources>

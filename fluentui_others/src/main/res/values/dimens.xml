@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--ActionBarLayout-->
+    <dimen name="fluentui_action_bar_layout_height">48dp</dimen>
+    <dimen name="fluentui_action_bar_layout_button_width">50dp</dimen>
+
+    <!--AppBarLayout-->
+    <dimen name="fluentui_app_bar_layout_elevation">0dp</dimen>
+    <dimen name="fluentui_app_bar_layout_elevation_scroll">4dp</dimen>
+
+    <!--BottomNavigation-->
+    <dimen name="fluentui_bottom_navigation_icon_labeled">24dp</dimen>
+    <dimen name="fluentui_bottom_navigation_icon_unlabeled">28dp</dimen>
+
+    <!--Button-->
+    <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>
+    <dimen name="fluentui_button_base_padding_vertical">8.5dp</dimen>
+    <dimen name="fluentui_button_min_height">36dp</dimen>
+    <dimen name="fluentui_button_padding_horizontal">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_button_corner_radius">@dimen/fluentui_corner_radius_2</dimen>
+    <dimen name="fluentui_button_large_padding_vertical">16dp</dimen>
+    <dimen name="fluentui_button_large_min_height">48dp</dimen>
+    <dimen name="fluentui_button_outlined_min_height">30dp</dimen>
+    <dimen name="fluentui_button_outlined_padding_vertical">8dp</dimen>
+    <dimen name="fluentui_button_outlined_stroke_width">1dp</dimen>
+
+    <!--CalendarView-->
+    <dimen name="fluentui_calendar_week_day_font_size">16sp</dimen>
+    <dimen name="fluentui_calendar_month_year_font_size">12sp</dimen>
+    <dimen name="fluentui_calendar_week_heading_height">28dp</dimen>
+    <dimen name="fluentui_calendar_week_heading_text_size">12sp</dimen>
+    <dimen name="fluentui_calendar_month_overlay_text_size">20sp</dimen>
+    <dimen name="fluentui_calendar_weeks_max_width">336dp</dimen>
+    <dimen name="fluentui_calendar_day_selection_size">36dp</dimen>
+
+    <!--DatePickerFragment-->
+    <dimen name="fluentui_date_picker_fragment_title_horizontal_margin">24dp</dimen>
+    <dimen name="fluentui_date_picker_fragment_title_vertical_margin">10dp</dimen>
+
+    <!--DateTimePicker-->
+    <dimen name="fluentui_date_time_picker_padding">16dp</dimen>
+    <dimen name="fluentui_date_time_picker_date_internal_min_width">160dp</dimen>
+    <dimen name="fluentui_date_time_picker_month_internal_min_width">100dp</dimen>
+    <dimen name="fluentui_date_time_picker_year_internal_min_width">80dp</dimen>
+    <dimen name="fluentui_date_time_picker_fading_edge_length">100dp</dimen>
+    <dimen name="fluentui_date_time_picker_internal_min_width">48dp</dimen>
+    <dimen name="fluentui_date_time_picker_max_height">336dp</dimen>
+    <dimen name="fluentui_date_time_picker_padding_right">8dp</dimen>
+    <dimen name="fluentui_date_time_picker_toolbar_elevation">4dp</dimen>
+
+    <!--Dialog-->
+    <dimen name="fluentui_dialog_insets">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_resizable_dialog_card_elevation">2dp</dimen>
+
+    <!--PeoplePicker-->
+    <dimen name="fluentui_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
+    <!--30dp is an approximation of how much space 3 digits take up for the count span-->
+    <dimen name="fluentui_people_picker_count_span_width">30dp</dimen>
+    <dimen name="fluentui_people_picker_dropdown_vertical_offset">0dp</dimen>
+    <dimen name="fluentui_people_picker_popup_elevation">0dp</dimen>
+    <dimen name="fluentui_people_picker_search_directory_min_height">56dp</dimen>
+    <dimen name="fluentui_people_picker_search_directory_padding_horizontal">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_people_picker_search_directory_padding_vertical">12dp</dimen>
+    <dimen name="fluentui_people_picker_text_view_padding">6dp</dimen>
+    <dimen name="fluentui_people_picker_persona_chip_vertical_spacing">4dp</dimen>
+    <dimen name="fluentui_people_picker_horizontal_padding">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_people_picker_horizontal_margin">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_people_picker_label_margin_end">8dp</dimen>
+    <dimen name="fluentui_people_picker_vertical_padding">12dp</dimen>
+
+    <!--Progress: Circular-->
+    <dimen name="fluentui_progress_circular_xsmall">20dp</dimen>
+    <dimen name="fluentui_progress_circular_small">24dp</dimen>
+    <dimen name="fluentui_progress_circular_medium">36dp</dimen>
+    <dimen name="fluentui_progress_circular_large">44dp</dimen>
+    <dimen name="fluentui_progress_circular_anim_value_to">360</dimen>
+    <dimen name="fluentui_progress_circular_anim_pivot">50%</dimen>
+
+    <!--Progress: Linear-->
+    <dimen name="fluentui_progress_linear_height">4dp</dimen>
+
+    <!--Searchbar-->
+    <dimen name="fluentui_searchbar_padding_bottom">3dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_margin_vertical">8dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_margin_end">16dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_search_icon_margin_start">16dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_back_button_margin_start">12dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_with_icons_margin_end">4dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_corner_radius">6dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_height">34dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_text_size">16sp</dimen>
+    <dimen name="fluentui_searchbar_search_view_margin_start">12dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_action_view_margin_start">0dp</dimen>
+    <dimen name="fluentui_searchbar_search_icon_padding_start">16dp</dimen>
+    <dimen name="fluentui_searchbar_search_icon_padding_end">8dp</dimen>
+    <dimen name="fluentui_searchbar_with_search_icon_search_view_text_padding_start">8dp</dimen>
+    <!--This 1dp padding difference helps make room for the cursor and keep the hint aligned between focus states.-->
+    <dimen name="fluentui_searchbar_with_back_button_search_view_text_padding_start">7dp</dimen>
+    <dimen name="fluentui_searchbar_progress_size">28dp</dimen>
+
+    <!--Toolbar-->
+    <dimen name="fluentui_toolbar_navigation_icon_container_size">@dimen/fluentui_min_touch_size</dimen>
+    <dimen name="fluentui_toolbar_padding_start">16dp</dimen>
+    <dimen name="fluentui_toolbar_padding_start_with_avatar">8dp</dimen>
+    <dimen name="fluentui_toolbar_title_margin_start">0dp</dimen>
+    <dimen name="fluentui_toolbar_title_margin_start_with_avatar">16dp</dimen>
+
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <View
+        android:id="@+id/dismiss_command_item_divider"
+        android:layout_width="@dimen/fluentui_contextual_command_bar_dismiss_gap_width"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/dismiss_command_item_button"
+        android:layout_width="@dimen/fluentui_contextual_command_bar_dismiss_button_width"
+        android:layout_height="match_parent"
+        android:background="?attr/fluentuiContextualCommandBarDismissBackgroundColor"
+        android:paddingStart="@dimen/fluentui_contextual_command_bar_default_item_padding_horizontal"
+        android:paddingTop="@dimen/fluentui_contextual_command_bar_default_item_padding_vertical"
+        android:paddingEnd="@dimen/fluentui_contextual_command_bar_default_item_padding_horizontal"
+        android:paddingBottom="@dimen/fluentui_contextual_command_bar_default_item_padding_vertical"
+        app:tint="?attr/fluentuiContextualCommandBarDismissIconTintColor" />
+</LinearLayout>

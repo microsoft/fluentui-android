@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">wissel</string>
+  <string name="popup_menu_accessibility_item_select">kies</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s gekies</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s gemerk</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ongemerk</string>
+  <string name="popup_menu_accessibility_item_radio_button">radioknoppie</string>
+  <string name="popup_menu_accessibility_item_check_box">merkblokkie</string>
+  <string name="popup_menu_accessibility_item_state_checked">gemerk</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ongemerk</string>
+</resources>

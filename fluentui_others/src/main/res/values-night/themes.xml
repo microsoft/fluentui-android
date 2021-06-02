@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!--
+        All dark theme specific semantic colors should be defined here.
+        Light theme semantic colors should be defined in themes.xml as the default.
+    -->
+    <style name="Theme.FluentUI" parent="Theme.FluentUI.Components">
+        <!-- *** Semantic Colors *** -->
+
+        <!--AppBarLayout-->
+        <item name="fluentuiAppBarLayoutBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+
+
+        <!--Button-->
+        <item name="fluentuiButtonBackgroundDisabledColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiButtonBackgroundPressedColor">?attr/fluentuiColorPrimaryDarker</item>
+        <item name="fluentuiButtonTextDisabledColor">?attr/colorPrimaryDark</item>
+
+        <!--ButtonBorderless-->
+        <item name="fluentuiButtonBorderlessBackgroundPressedColor">@android:color/transparent</item>
+        <item name="fluentuiButtonBorderlessTextDisabledColor">@color/fluentui_gray_500</item>
+        <item name="fluentuiButtonBorderlessTextPressedColor">?attr/colorPrimaryDark</item>
+
+        <!--Button Outlined-->
+        <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_tint_20</item>
+        <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_40</item>
+        <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_800</item>
+
+        <!--CalendarView-->
+        <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_700</item>
+        <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundColor</item>
+        <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_600</item>
+
+        <!--Dialog-->
+        <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiDialogCloseIconColor">?attr/colorPrimary</item>
+
+        <!--NumberPicker-->
+        <item name="fluentuiNumberPickerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+
+        <!--Progress-->
+        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_900</item>
+        <!--Searchbar-->
+        <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">@color/fluentui_gray_700</item>
+        <item name="fluentuiSearchbarSearchViewTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiSearchbarBackButtonColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiSearchbarSearchViewCursorColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+
+        <!--Toolbar-->
+        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+
+    </style>
+
+    <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent="">
+        <!--AppBarLayout-->
+        <item name="fluentuiAppBarLayoutBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+
+        <!--Searchbar-->
+        <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">@color/fluentui_gray_700</item>
+        <item name="fluentuiSearchbarSearchViewTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiSearchbarBackButtonColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiSearchbarSearchViewCursorColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+
+        <!--Toolbar-->
+        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+    </style>
+
+</resources>

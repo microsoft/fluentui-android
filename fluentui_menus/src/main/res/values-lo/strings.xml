@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ປິດ/ເປີດ</string>
+  <string name="popup_menu_accessibility_item_select">ເລືອກ</string>
+  <string name="popup_menu_accessibility_item_click_selected">ເລືອກ %s ແລ້ວ</string>
+  <string name="popup_menu_accessibility_item_click_checked">ໝາຍ %s ແລ້ວ</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">ເຊົາໝາຍ %s ແລ້ວ</string>
+  <string name="popup_menu_accessibility_item_radio_button">ປຸ່ມວິທະຍຸ</string>
+  <string name="popup_menu_accessibility_item_check_box">ປ່ອງໝາຍ</string>
+  <string name="popup_menu_accessibility_item_state_checked">ໝາຍແລ້ວ</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ບໍ່ໄດ້ໝາຍແລ້ວ</string>
+</resources>
