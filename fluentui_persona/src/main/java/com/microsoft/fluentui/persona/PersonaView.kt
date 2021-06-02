@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.AttributeSet
 import android.view.accessibility.AccessibilityEvent
+import androidx.annotation.ColorInt
 import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.isVisibleOnScreen
@@ -103,6 +104,14 @@ class PersonaView : ListItemView {
             field = value
             updateViews()
         }
+    @ColorInt
+    var avatarBackgroundColor: Int? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
 
     private val avatarView = AvatarView(context)
 
@@ -141,6 +150,7 @@ class PersonaView : ListItemView {
         avatarView.avatarImageDrawable = avatarImageDrawable
         avatarView.avatarImageBitmap = avatarImageBitmap
         avatarView.avatarImageUri = avatarImageUri
+        avatarView.avatarBackgroundColor = avatarBackgroundColor
 
         customView = avatarView
 
@@ -172,4 +182,5 @@ fun PersonaView.setPersona(persona: IPersona) {
     avatarImageDrawable = persona.avatarImageDrawable
     avatarImageResourceId = persona.avatarImageResourceId
     avatarImageUri = persona.avatarImageUri
+    avatarBackgroundColor = persona.avatarBackgroundColor
 }
