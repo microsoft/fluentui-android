@@ -20,6 +20,7 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.ColorInt
 import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.persona.databinding.ViewPersonaChipBinding
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -65,6 +66,14 @@ class PersonaChipView : TemplateView {
             updateViews()
         }
     var avatarImageUri: Uri? = null
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+    @ColorInt
+    var avatarBackgroundColor: Int? = null
         set(value) {
             if (field == value)
                 return
@@ -204,6 +213,7 @@ class PersonaChipView : TemplateView {
             avatarImageDrawable = this@PersonaChipView.avatarImageDrawable
             avatarImageBitmap = this@PersonaChipView.avatarImageBitmap
             avatarImageUri = this@PersonaChipView.avatarImageUri
+            avatarBackgroundColor  = this@PersonaChipView.avatarBackgroundColor
         }
 
         if (hasError)
@@ -273,4 +283,5 @@ fun PersonaChipView.setPersona(persona: IPersona) {
     avatarImageDrawable = persona.avatarImageDrawable
     avatarImageResourceId = persona.avatarImageResourceId
     avatarImageUri = persona.avatarImageUri
+    avatarBackgroundColor = persona.avatarBackgroundColor
 }
