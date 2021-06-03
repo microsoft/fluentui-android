@@ -23,17 +23,23 @@ class BottomNavigationActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         toggle_label_button.setOnClickListener {
+            var labelsState: String = ""
             // You can also achieve unlabeled items via @style/Widget.FluentUI.BottomNavigation.Unlabeled
-            bottom_navigation.labelVisibilityMode =
-                if (bottom_navigation.labelVisibilityMode == LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED)
-                    LabelVisibilityMode.LABEL_VISIBILITY_LABELED
-                else
-                    LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
+            if (bottom_navigation.labelVisibilityMode == LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED){
+                bottom_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+                labelsState = "On"
+            }
+            else {
+                bottom_navigation.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_UNLABELED
+                labelsState = "Off"
+            }
+            it.announceForAccessibility(resources.getString(R.string.bottom_navigation_accessibility_labels_state,  labelsState))
         }
 
         three_menu_items_button.setOnClickListener {
             bottom_navigation.menu.removeItem(R.id.action_calendar)
             bottom_navigation.menu.removeItem(R.id.action_team)
+            it.announceForAccessibility(resources.getString(R.string.app_accessibility_selected, resources.getString(R.string.bottom_navigation_three_menu_items_button)))
         }
 
         four_menu_items_button.setOnClickListener {
@@ -46,6 +52,7 @@ class BottomNavigationActivity : DemoActivity() {
                 3,
                 resources.getString(R.string.bottom_navigation_menu_item_calendar)
             ).setIcon(R.drawable.ic_calendar_28_regular)
+            it.announceForAccessibility(resources.getString(R.string.app_accessibility_selected, resources.getString(R.string.bottom_navigation_four_menu_items_button)))
         }
 
         five_menu_items_button.setOnClickListener {
@@ -64,6 +71,7 @@ class BottomNavigationActivity : DemoActivity() {
                 4,
                 resources.getString(R.string.bottom_navigation_menu_item_team)
             ).setIcon(R.drawable.ic_people_team_28_regular)
+            it.announceForAccessibility(resources.getString(R.string.app_accessibility_selected, resources.getString(R.string.bottom_navigation_five_menu_items_button)))
         }
     }
 }
