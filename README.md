@@ -10,13 +10,13 @@ Fluent UI for Android is a native library that provides the Office UI experience
 | Build Service   | Status                                                                                                                                                                                                                                                           |
 | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | App Center      | [![Build status](https://build.appcenter.ms/v0.1/apps/7acc51be-c1e6-4351-8fa4-c4536fd42dd8/branches/master/badge)](https://appcenter.ms)                                                                                                                         |
-| Azure Pipelines | [![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android/fluentui-android-build?branchName=refs%2Fpull%2F3249%2Fmerge)](https://dev.azure.com/microsoftdesign/fluentui-native/_build/latest?definitionId=145&branchName=master) |
+| Azure Pipelines | [![Build Status](https://dev.azure.com/microsoftdesign/fluentui-native/_apis/build/status/fluentui-android-CI-maven-publish)]
 
 ## Contents
 
 - [Colors and typography](#colors-and-typography)
 - [Controls](#controls)
-- [Modularization](#Modularization)
+- [Modularization](#modularization)
 - [Install and use Fluent UI](#install-and-use-fluent-ui)
 - [Demo app](#demo-app)
 - [Contributing](#contributing)
@@ -28,7 +28,7 @@ Fluent UI for Android is a native library that provides the Office UI experience
 Fluent UI for Android provides colors and typography based on the Fluent design language.
 
 In version 0.0.12, as a part of modularization, the colors and typographies have been moved to respective modules
-Please refer to [Modularization](#Modularization) section for more details
+Please refer to [Modularization](#modularization) section for more details
 
 ## Controls
 
@@ -38,6 +38,7 @@ Some of the controls available include:
 - [Action Bar](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [App Bar](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [AvatarView](fluentui_others/src/main/java/com/microsoft/fluentui)
+- [AvatarGroupView](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [BottomSheet](fluentui_drawer/src/main/java/com/microsoft/fluentui)
 - [Bottom Navigation](fluentui_others/src/main/java/com/microsoft/fluentui)
 - [Button styles](fluentui_others/src/main/java/com/microsoft/fluentui)
@@ -67,7 +68,9 @@ API 21+
 
 ### 1. Using Gradle
 
-- Our library is published through JCenter, so make sure the `jcenter()` repository has been added to your project level build.gradle file (which usually is automatic).
+- Our library is now published using MavenCentral, so make sure the `mavenCentral()` repository has been added to your project level build.gradle file if you want to consume versions `>= 0.0.17`.
+
+- If you are still using older versions you can consume `jcenter()` too. Please note it will only work for versions `<=0.0.16`
 
 - Inside the dependency block in your build.gradle, add this line for the FluentUI library:
 ```gradle
@@ -90,7 +93,7 @@ dependencies {
  ```
  Replace `${version}` with the latest version of fluentui_drawer
  
- More information about contents of each module can be found in [Modularization](#Modularization) section
+ More information about contents of each module can be found in [Modularization](#modularization) section
 
 
 #### a) Develop for Surface-Duo:
@@ -129,7 +132,7 @@ implementation "com.microsoft.device:dualscreen-layout:1.0.0-alpha01"
 
  Replace `${version}` with the latest version of fluentui_drawer
 
- Check [Modularization](#Modularization) for details of every module. 
+ Check [Modularization](#modularization) for details of every module.
 
 ### 3. Manual installation
 
@@ -186,12 +189,12 @@ The list of modules and their respective controls is as follows
 |fluentui_bottomnavigation*|Bottom Navigation|
 |fluentui_buttons*| Buttons|
 |fluentui_datetime*|Calendar, DateTime Picker|
-|fluentui_menus*|Pop up Menu|
+|fluentui_menus|Pop up Menu|
 |fluentui_peoplepicker*|PeoplePickerView|
-|fluentui_persona*|AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView|
+|fluentui_persona|AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView|
 |fluentui_progress*|Linear Progress Bar, Circular Progress Bar|
 |fluentui_topappbars*|Toolbar, AppBar Layout, SearchBar|
-|fluentui_transients*|Snackbar, Tooltip|
+|fluentui_transients|Snackbar, Tooltip|
 |fluentui_viewpager*|View Pager|
 
 *These controls are not yet available in modular form as modularization process is ongoing.
@@ -201,7 +204,7 @@ For now these controls can be found in fluentui_others module
 ## Contributing
 
 Post bug reports, feature requests, and questions in [Issues](https://github.com/microsoft/fluentui-android/issues).
-Contributions to any specific controls should be done in respective modules. Refer [Modularization](##modularization) section for more details
+Contributions to any specific controls should be done in respective modules. Refer [Modularization](#modularization) section for more details
 
 ## Changelog
 
