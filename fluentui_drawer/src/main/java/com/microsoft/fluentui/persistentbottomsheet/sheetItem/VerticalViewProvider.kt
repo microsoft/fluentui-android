@@ -11,7 +11,6 @@ import com.microsoft.fluentui.bottomsheet.BottomSheetAdapter
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem.*
 import com.microsoft.fluentui.bottomsheet.BottomSheetItemDivider
-import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 
 internal class VerticalViewProvider(val context: Context) : IViewProvider {
 
@@ -31,13 +30,16 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         }
         recyclerView.layoutManager =
             LinearLayoutManager(context)
-        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList, itemLayoutParam), R.style.Theme_FluentUI_Drawer)
+        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList), R.style.Theme_FluentUI_Drawer)
 
         contentParam.listener?.apply {
             val listener = this
             verticalItemAdapter.onBottomSheetItemClickListener = object : OnClickListener {
                 override fun onBottomSheetItemClick(item: BottomSheetItem) {
-                    listener.onSheetItemClick(SheetItem(item.id, item.title, item.imageId, item.imageTint, item.customBitmap))
+                    val originalItem = verticalItemList.verticalItemSheet.find {
+                        it.id == item.id && it.title == item.title
+                    } ?: throw IllegalStateException("Sheet Item data has been changed and refresh was not called")
+                    listener.onSheetItemClick(originalItem)
                 }
             }
         }
@@ -47,17 +49,23 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         return view
     }
 
-    private fun getVerticalItemList(itemTypeList: BottomSheetParam.VerticalItemList,
-                                    itemLayoutParam: BottomSheetParam.ItemLayoutParam): List<BottomSheetItem> {
+    override fun updateComponentView(itemTypeList: BottomSheetParam.ItemTypeList, view: View) {
+        val recyclerView = view.findViewById<RecyclerView>(R.id.vertical_list)
+        val adapter = recyclerView.adapter as BottomSheetAdapter
+        val newDataList = getVerticalItemList(itemTypeList as BottomSheetParam.VerticalItemList)
+        adapter.updateDataList(newDataList)
+    }
+
+    private fun getVerticalItemList(itemTypeList: BottomSheetParam.VerticalItemList): MutableList<BottomSheetItem> {
         return itemTypeList.verticalItemSheet.filter {
             it.id != 0
         }.map {
             if (it.tint!=null) {
-                BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTint = it.tint, imageTintType = ImageTintType.CUSTOM)
+                BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTint = it.tint!!, imageTintType = ImageTintType.CUSTOM)
             }else{
                 BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTintType = ImageTintType.NONE)
             }
-        }
+        }.toMutableList()
     }
 
     override fun isSingleLineContent(itemTypeList: BottomSheetParam.ItemTypeList,
