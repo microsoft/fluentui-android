@@ -83,6 +83,35 @@ class BottomSheetItem : Parcelable {
     }
 
     override fun describeContents(): Int = 0
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as BottomSheetItem
+
+        if (id != other.id) return false
+        if (imageId != other.imageId) return false
+        if (title != other.title) return false
+        if (subtitle != other.subtitle) return false
+        if (useDivider != other.useDivider) return false
+        if (imageTint != other.imageTint) return false
+        if (imageTintType != other.imageTintType) return false
+        if (customBitmap != other.customBitmap) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id
+        result = 31 * result + imageId
+        result = 31 * result + title.hashCode()
+        result = 31 * result + subtitle.hashCode()
+        result = 31 * result + useDivider.hashCode()
+        result = 31 * result + imageTint
+        result = 31 * result + imageTintType.hashCode()
+        result = 31 * result + (customBitmap?.hashCode() ?: 0)
+        return result
+    }
 
     companion object {
         const val NO_ID = View.NO_ID

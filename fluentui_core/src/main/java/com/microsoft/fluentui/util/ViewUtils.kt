@@ -8,6 +8,7 @@ package com.microsoft.fluentui.util
 import android.content.Context
 import android.content.ContextWrapper
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
@@ -45,14 +46,18 @@ fun ViewGroup.setContentAndUpdateVisibility(view: View?, updateLayout: (() -> Un
  * @param imageTint a color integer that will be applied as tint to the drawable. Default is transparent.
  */
 fun Context.createImageView(@DrawableRes imageId: Int, @ColorInt imageTint: Int? = null): ImageView {
-    val drawable = if (imageTint != null)
-        getTintedDrawable(imageId, imageTint)
-    else
-        ContextCompat.getDrawable(this, imageId)
+    val drawable = getImageDrawable(imageTint, imageId)
 
     val imageView = ImageView(this)
     imageView.setImageDrawable(drawable)
     return imageView
+}
+
+fun Context.getImageDrawable(imageTint: Int?, imageId: Int): Drawable? {
+    return if (imageTint != null)
+        getTintedDrawable(imageId, imageTint)
+    else
+        ContextCompat.getDrawable(this, imageId)
 }
 
 /**

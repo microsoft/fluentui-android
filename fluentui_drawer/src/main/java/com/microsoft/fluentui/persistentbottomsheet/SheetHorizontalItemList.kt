@@ -60,6 +60,83 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
         setTextAppearance(this.itemLayoutParam.horizontalTextAppearance)
     }
 
+    /**
+     * public api to refresh horizontal views
+     * this is a best effort based API it checks and
+     * updates items which are required to be updated.
+     * Also it adds oonly neccessary new view or remoove just extra view
+     */
+    fun refreshHorizontalItems(itemSheet: List<SheetItem>) {
+        if (this.itemSheet.size != itemSheet.size) {
+            addRemoveExtraSize(itemSheet.size - this.itemSheet.size)
+            this.itemSheet = itemSheet
+            updateAllItems(itemSheet)
+            return
+        } else {
+            val oldSheetItems = this.itemSheet
+            this.itemSheet = itemSheet
+            for (index in itemSheet.indices) {
+                if (oldSheetItems[index] != this.itemSheet[index]) {
+                    updateItem(index)
+                }
+            }
+        }
+    }
+
+
+    private fun addRemoveExtraSize(size: Int) {
+        if (size > 0) {
+            addPlaceHolderItems(size)
+        } else if (size < 0) {
+            removeExtraItems(size)
+        }
+    }
+
+    private fun updateAllItems(newSheetItems: List<SheetItem>) {
+        for (index in newSheetItems.indices){
+            updateItem(index)
+        }
+    }
+
+    private fun updateItem(sheetIndex: Int) {
+        val rowColumnPair = getRowColumn(sheetIndex)
+        val rowWrapper = itemListContainer.getChildAt(rowColumnPair.first) as ViewGroup
+        (rowWrapper.getChildAt(rowColumnPair.second) as SheetHorizontalItemView).update(itemSheet[sheetIndex])
+    }
+
+    private fun addPlaceHolderItems(size: Int) {
+        var rowWrapper = itemListContainer.getChildAt(itemListContainer.childCount - 1) as ViewGroup
+        var counter = 0
+        while (counter++ < size) {
+            if (rowWrapper.childCount == columnCount) {
+                rowWrapper = getRowWrapper(columnCount)
+                itemListContainer.addView(rowWrapper)
+            }
+            rowWrapper.addView(getColumnItem(itemListContainer.childCount - 1, 0))
+        }
+        rowCount = itemListContainer.childCount
+    }
+
+    private fun removeExtraItems(size: Int) {
+        var rowWrapper = itemListContainer.getChildAt(itemListContainer.childCount - 1) as ViewGroup
+        var counter = size
+        while (counter++ < 0) {
+            if (rowWrapper.childCount == 0) {
+                // delete from previous row
+                val previousRowWrapper = itemListContainer.getChildAt(itemListContainer.indexOfChild(rowWrapper) - 1) as ViewGroup
+                // remove  row which is exhausted
+                itemListContainer.removeView(rowWrapper)
+                rowWrapper = previousRowWrapper
+            }
+            rowWrapper.removeView(rowWrapper.getChildAt(rowWrapper.childCount - 1))
+        }
+        rowCount = itemListContainer.childCount
+    }
+
+    private fun getRowColumn(index: Int): Pair<Int, Int> {
+        return Pair(index / columnCount, index % columnCount)
+    }
+
     private fun createHorizontalView(size: Int) {
         itemListContainer.removeAllViews()
 
@@ -163,7 +240,7 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
 }
 
 
-class SheetItem @JvmOverloads constructor(val id: Int, val title: String = "", @DrawableRes val drawable: Int, @ColorInt val tint: Int? = null, val bitmap: Bitmap? = null) {
+class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null) {
 
     // just a  convenient constructor
     @JvmOverloads
@@ -171,5 +248,29 @@ class SheetItem @JvmOverloads constructor(val id: Int, val title: String = "", @
 
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as SheetItem
+
+        if (id != other.id) return false
+        if (title != other.title) return false
+        if (drawable != other.drawable) return false
+        if (tint != other.tint) return false
+        if (bitmap != other.bitmap) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id
+        result = 31 * result + title.hashCode()
+        result = 31 * result + drawable
+        result = 31 * result + (tint ?: 0)
+        result = 31 * result + (bitmap?.hashCode() ?: 0)
+        return result
     }
 }
