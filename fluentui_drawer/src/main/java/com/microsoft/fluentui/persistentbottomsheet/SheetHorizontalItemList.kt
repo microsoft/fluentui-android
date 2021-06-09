@@ -84,6 +84,9 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 
 
+    /**
+     * add / remove extra items of size @param - size - if > 0 add else <0 remove
+     */
     private fun addRemoveExtraSize(size: Int) {
         if (size > 0) {
             addPlaceHolderItems(size)
@@ -104,16 +107,24 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
         (rowWrapper.getChildAt(rowColumnPair.second) as SheetHorizontalItemView).update(itemSheet[sheetIndex])
     }
 
+    /**
+     * adds place holder views when more items to be added via update.
+     * This needs a follow up call to update items afterwards
+     */
     private fun addPlaceHolderItems(size: Int) {
         var rowWrapper = itemListContainer.getChildAt(itemListContainer.childCount - 1) as ViewGroup
         var counter = 0
         while (counter++ < size) {
             if (rowWrapper.childCount == columnCount) {
+                // when child in a row reaches column count(which is max)
+                // add a new row to the upper container first
                 rowWrapper = getRowWrapper(columnCount)
                 itemListContainer.addView(rowWrapper)
             }
+            // adds a view in row
             rowWrapper.addView(getColumnItem(itemListContainer.childCount - 1, 0))
         }
+        // update row count
         rowCount = itemListContainer.childCount
     }
 
@@ -130,6 +141,11 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
             }
             rowWrapper.removeView(rowWrapper.getChildAt(rowWrapper.childCount - 1))
         }
+        // if at the end of removing children row does not have any child remove it
+        if (rowWrapper.childCount == 0) {
+            itemListContainer.removeView(rowWrapper)
+        }
+        // update row count
         rowCount = itemListContainer.childCount
     }
 
