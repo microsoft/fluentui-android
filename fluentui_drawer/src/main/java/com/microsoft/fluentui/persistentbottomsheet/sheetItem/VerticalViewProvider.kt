@@ -60,9 +60,9 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         return itemTypeList.verticalItemSheet.filter {
             it.id != 0
         }.map {
-            if (it.tint!=null) {
+            if (it.tint != null) {
                 BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTint = it.tint!!, imageTintType = ImageTintType.CUSTOM)
-            }else{
+            } else {
                 BottomSheetItem(it.id, it.drawable, it.title, customBitmap = it.bitmap, imageTintType = ImageTintType.NONE)
             }
         }.toMutableList()
