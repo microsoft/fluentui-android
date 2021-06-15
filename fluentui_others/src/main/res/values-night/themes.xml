@@ -31,7 +31,7 @@
         <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
         <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
         <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_600</item>
-        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_blue</item>
         <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_40</item>
         <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_800</item>
 

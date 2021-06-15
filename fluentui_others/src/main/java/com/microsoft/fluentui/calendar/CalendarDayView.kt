@@ -134,7 +134,7 @@ internal class CalendarDayView: AppCompatButton, Checkable {
         setTextSize(TypedValue.COMPLEX_UNIT_PX, config.calendarDayTextSize.toFloat())
         isAllCaps = false
 
-        _foregroundDrawable = ContextCompat.getDrawable(context, R.drawable.ms_ripple_transparent_background)
+        _foregroundDrawable = ContextCompat.getDrawable(context, R.drawable.calendar_day_background)
 
         setPadding(0, 0, 0, 0)
     }
