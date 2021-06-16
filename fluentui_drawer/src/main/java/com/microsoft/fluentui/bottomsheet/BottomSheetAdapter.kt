@@ -6,11 +6,12 @@
 package com.microsoft.fluentui.bottomsheet
 
 import android.content.Context
-import androidx.annotation.StyleRes
-import androidx.recyclerview.widget.RecyclerView
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.StyleRes
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem.Companion.NO_ID
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.listitem.ListItemView
@@ -20,13 +21,13 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     var onBottomSheetItemClickListener: BottomSheetItem.OnClickListener? = null
 
     private val context: Context
-    private val items: List<BottomSheetItem>
+    private val items: MutableList<BottomSheetItem>
     private val themeId: Int
     @StyleRes private val textAppearance: Int
     @StyleRes private val subTextAppearance: Int
 
     constructor(context: Context,
-                items: List<BottomSheetItem>,
+                items: MutableList<BottomSheetItem>,
                 @StyleRes themeId: Int,
                 @StyleRes textAppearance: Int = 0,
                 @StyleRes subTextAppearance: Int = 0) {
@@ -50,6 +51,16 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         (holder as? BottomSheetItemViewHolder)?.setBottomSheetItem(items[position])
+    }
+
+    /**
+     * updates data in this adapter with help of diff utils
+     */
+    fun updateDataList(newDataList:MutableList<BottomSheetItem>){
+        val result = DiffUtil.calculateDiff(SheetItemsDiffCallback(items, newDataList))
+        items.clear()
+        items.addAll(newDataList)
+        result.dispatchUpdatesTo(this)
     }
 
     override fun getItemCount(): Int = items.size
@@ -82,5 +93,31 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
             }
         }
+    }
+
+    /**
+     * class compares old and new list
+     * considers items same when id is matched
+     * considers item's content same when each property is matched in BottomSheet
+     * see equals method of BottomSheet
+     */
+    class SheetItemsDiffCallback(private val oldList:List<BottomSheetItem>, private val newList:List<BottomSheetItem>) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int {
+            return oldList.size
+        }
+
+        override fun getNewListSize(): Int {
+            return newList.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+
     }
 }

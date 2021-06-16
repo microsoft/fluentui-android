@@ -10,11 +10,13 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.TextViewCompat
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.createImageView
+import com.microsoft.fluentui.util.getImageDrawable
 import com.microsoft.fluentui.view.TemplateView
 
 
@@ -42,7 +44,7 @@ class SheetHorizontalItemView: TemplateView {
         this.mSheetItem = sheetItem
         this.title = sheetItem.title
         if (sheetItem.bitmap != null) {
-            this.customView = context.createImageView(sheetItem.bitmap)
+            this.customView = context.createImageView(sheetItem.bitmap!!)
         } else {
             this.customView = context.createImageView(sheetItem.drawable, sheetItem.tint)
         }
@@ -79,8 +81,9 @@ class SheetHorizontalItemView: TemplateView {
     }
 
     private fun updateCustomView() {
-        if (customView != null)
+        if (customView != null) {
             imageContainer.addView(customView)
+        }
     }
 
     fun update(title:String, customView:View) {
@@ -88,6 +91,17 @@ class SheetHorizontalItemView: TemplateView {
         this.customView = customView
         updateTitleView()
         updateCustomView()
+    }
+
+    fun update(sheetItem: SheetItem) {
+        this.mSheetItem = sheetItem
+        this.title = sheetItem.title
+        if (sheetItem.bitmap != null) {
+            (customView as ImageView).setImageBitmap(sheetItem.bitmap)
+        } else {
+            (customView as ImageView).setImageDrawable(context.getImageDrawable(sheetItem.tint, sheetItem.drawable))
+        }
+        updateTitleView()
     }
 
     fun updateTextAppearanceResId(resId: Int) {
