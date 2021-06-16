@@ -29,4 +29,9 @@ internal class DividerViewProvider(val context: Context) : IViewProvider {
         return view
     }
 
+    override fun updateComponentView(itemTypeList: BottomSheetParam.ItemTypeList, view: View) {
+        // Does nothing , can't update divider settings
+        return
+    }
+
 }
