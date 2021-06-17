@@ -25,10 +25,40 @@ internal class PersistentBottomSheetContentViewProvider(private val context: Con
         var isSingleLineItem = false
         contentParam.listOfItemList.forEachIndexed { index, it ->
             val provider = getProvider(context, it)
-            container.addView(provider.getContentView(it, itemLayoutParam, contentParam))
+            val partContainer = provider.getContentView(it, itemLayoutParam, contentParam)
+            container.addView(partContainer)
             isSingleLineItem = index == 0 && provider.isSingleLineContent(it, itemLayoutParam, contentParam)
         }
         return SheetContainerInfo(container, isSingleLineItem)
+    }
+
+    /**
+     * method iterates over available components in bottomsheets
+     * and checks which compoenent needs a change
+     */
+    fun updateSheetContentView(sheetContainer: SheetContainerInfo?, componentIndex: Int = -1) {
+        if (contentParam.layoutResId != null || contentParam.childContent != null) {
+            return
+        }
+        if (componentIndex != -1) {
+            updateComponent(sheetContainer, componentIndex)
+        } else {
+            contentParam.listOfItemList.forEachIndexed { index, it ->
+                updateComponent(sheetContainer, index)
+            }
+        }
+    }
+
+    /**
+     * ask particular viewprovider too check and update if required
+     */
+    private fun updateComponent(sheetContainer: SheetContainerInfo?, componentIndex: Int) {
+        val component = sheetContainer?.Container?.getChildAt(componentIndex)
+        component?.apply {
+            val itemTypeList = contentParam.listOfItemList[componentIndex]
+            val provider = getProvider(component.context, itemTypeList)
+            provider.updateComponentView(itemTypeList, this)
+        }
     }
 
     data class SheetContainerInfo(val Container: ViewGroup, val isSingleLineItem: Boolean)
@@ -54,6 +84,8 @@ internal interface IViewProvider {
     fun getContentView(itemTypeList: BottomSheetParam.ItemTypeList,
                        itemLayoutParam: BottomSheetParam.ItemLayoutParam,
                        contentParam: BottomSheetParam.ContentParam): View
+
+    fun updateComponentView(itemTypeList: BottomSheetParam.ItemTypeList, view: View);
 
     fun isSingleLineContent(itemTypeList: BottomSheetParam.ItemTypeList,
                             itemLayoutParam: BottomSheetParam.ItemLayoutParam,
