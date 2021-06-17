@@ -20,4 +20,5 @@ interface IAvatar {
     var avatarImageResourceId: Int?
     var avatarImageUri: Uri?
     var avatarBackgroundColor: Int?
+    var avatarContentDescriptionLabel: String
 }

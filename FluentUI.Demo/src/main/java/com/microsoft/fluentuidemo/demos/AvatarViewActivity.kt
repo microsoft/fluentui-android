@@ -62,6 +62,7 @@ class AvatarViewActivity : DemoActivity() {
         avatarView.avatarSize = AvatarSize.XXLARGE
         avatarView.name = getString(R.string.persona_name_mauricio_august)
         avatarView.email = getString(R.string.persona_email_mauricio_august)
+        avatarView.avatarContentDescriptionLabel  =  getString(R.string.persona_name_mauricio_august)
         avatar_circle_example_xxlarge.addView(avatarView)
     }
 }

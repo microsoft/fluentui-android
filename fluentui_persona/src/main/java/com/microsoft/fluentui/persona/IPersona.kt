@@ -23,4 +23,5 @@ data class Persona(override var name: String = "", override var email: String = 
     override var avatarImageResourceId: Int? = null
     override var avatarImageUri: Uri? = null
     override var avatarBackgroundColor: Int? = null
+    override var avatarContentDescriptionLabel: String =""
 }

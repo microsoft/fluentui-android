@@ -98,7 +98,9 @@ open class AvatarGroupView : FrameLayout {
             avatarView.avatarStyle = AvatarStyle.CIRCLE
             avatarView.id = View.generateViewId()
             avatarView.tag = index
-            avatarView.setOnClickListener(clickListener)
+            if(listener != null) {
+                avatarView.setOnClickListener(clickListener)
+            }
             val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             when(avatarGroupStyle) {
                 AvatarGroupStyle.PILE -> {
@@ -123,8 +125,10 @@ open class AvatarGroupView : FrameLayout {
         avatarView.avatarIsOverFlow = true
         avatarView.avatarStyle = AvatarStyle.CIRCLE
         avatarView.id = View.generateViewId()
-        avatarView.setOnClickListener {
-            listener?.onOverFlowClicked()
+        if(listener  != null) {
+            avatarView.setOnClickListener {
+                listener?.onOverFlowClicked()
+            }
         }
         val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         when (avatarGroupStyle) {

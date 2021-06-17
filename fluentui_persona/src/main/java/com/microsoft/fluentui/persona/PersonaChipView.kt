@@ -21,8 +21,6 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.ColorInt
-import com.microsoft.fluentui.persona.R
-import com.microsoft.fluentui.persona.databinding.ViewPersonaChipBinding
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.isVisible
@@ -79,6 +77,17 @@ class PersonaChipView : TemplateView {
                 return
             field = value
             updateViews()
+        }
+
+    var avatarContentDescriptionLabel: String = ""
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            avatarView?.apply {
+                avatarContentDescriptionLabel = this@PersonaChipView.avatarContentDescriptionLabel
+                isFocusable = true
+            }
         }
     /**
      * Flag for setting the chip's error state
@@ -214,6 +223,10 @@ class PersonaChipView : TemplateView {
             avatarImageBitmap = this@PersonaChipView.avatarImageBitmap
             avatarImageUri = this@PersonaChipView.avatarImageUri
             avatarBackgroundColor  = this@PersonaChipView.avatarBackgroundColor
+            if(this@PersonaChipView.avatarContentDescriptionLabel.isNotEmpty()) {
+                avatarContentDescriptionLabel = this@PersonaChipView.avatarContentDescriptionLabel
+                isFocusable = true
+            }
         }
 
         if (hasError)
@@ -284,4 +297,5 @@ fun PersonaChipView.setPersona(persona: IPersona) {
     avatarImageResourceId = persona.avatarImageResourceId
     avatarImageUri = persona.avatarImageUri
     avatarBackgroundColor = persona.avatarBackgroundColor
+    avatarContentDescriptionLabel = persona.avatarContentDescriptionLabel
 }

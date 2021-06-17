@@ -15,7 +15,6 @@ import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.appcompat.widget.AppCompatImageView
 import android.util.AttributeSet
-import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 enum class AvatarStyle {
@@ -146,6 +145,20 @@ open class AvatarView : AppCompatImageView {
             field = value
             initials.setInfo(name, email, avatarBackgroundColor, true)
             invalidate()
+        }
+
+    /**
+     * Defines the [AvatarIsOverFlow] applied to the avatar.
+     */
+    var avatarContentDescriptionLabel: String = ""
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            if(avatarContentDescriptionLabel.isNotEmpty()) {
+                contentDescription = avatarContentDescriptionLabel
+            }
         }
 
     private val initials = InitialsDrawable(context)
@@ -308,4 +321,5 @@ fun AvatarView.setAvatar(avatar: IAvatar) {
     avatarImageResourceId = avatar.avatarImageResourceId
     avatarImageUri = avatar.avatarImageUri
     avatarBackgroundColor = avatar.avatarBackgroundColor
+    avatarContentDescriptionLabel  = avatar.avatarContentDescriptionLabel
 }

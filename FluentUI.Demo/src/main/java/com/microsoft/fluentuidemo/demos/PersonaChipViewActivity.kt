@@ -42,6 +42,7 @@ class PersonaChipViewActivity : DemoActivity() {
         personaChipView.name = resources.getString(R.string.persona_name_kat_larsson)
         personaChipView.email = resources.getString(R.string.persona_email_kat_larsson)
         personaChipView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        personaChipView.avatarContentDescriptionLabel = resources.getString(R.string.persona_name_kat_larsson)
         persona_chip_layout.addView(personaChipView)
     }
 }

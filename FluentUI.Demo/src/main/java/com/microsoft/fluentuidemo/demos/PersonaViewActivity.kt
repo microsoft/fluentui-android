@@ -30,6 +30,7 @@ class PersonaViewActivity : DemoActivity() {
         personaView.avatarSize = AvatarSize.SMALL
         personaView.name = resources.getString(R.string.persona_name_mauricio_august)
         personaView.email = resources.getString(R.string.persona_email_mauricio_august)
+        personaView.avatarContentDescriptionLabel = resources.getString(R.string.persona_name_mauricio_august)
         personaView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         persona_layout.addView(personaView)
     }

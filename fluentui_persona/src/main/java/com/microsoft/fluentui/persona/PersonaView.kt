@@ -113,6 +113,17 @@ class PersonaView : ListItemView {
             updateViews()
         }
 
+    var avatarContentDescriptionLabel: String = ""
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            avatarView?.apply {
+                avatarContentDescriptionLabel = this@PersonaView.avatarContentDescriptionLabel
+                isFocusable = true
+            }
+        }
+
     private val avatarView = AvatarView(context)
 
     @JvmOverloads
@@ -151,6 +162,7 @@ class PersonaView : ListItemView {
         avatarView.avatarImageBitmap = avatarImageBitmap
         avatarView.avatarImageUri = avatarImageUri
         avatarView.avatarBackgroundColor = avatarBackgroundColor
+        avatarView.avatarContentDescriptionLabel  = avatarContentDescriptionLabel
 
         customView = avatarView
 
@@ -183,4 +195,5 @@ fun PersonaView.setPersona(persona: IPersona) {
     avatarImageResourceId = persona.avatarImageResourceId
     avatarImageUri = persona.avatarImageUri
     avatarBackgroundColor = persona.avatarBackgroundColor
+    avatarContentDescriptionLabel = persona.avatarContentDescriptionLabel
 }
