@@ -34,6 +34,9 @@ dependencies {
     implementation project(':fluentui_drawer')
     implementation project(':fluentui_tablayout')
     implementation project(':fluentui_ccb')
+    implementation project(':fluentui_transients')
+    implementation project(':fluentui_menus')
+    implementation project(':fluentui_persona')
     implementation project(':fluentui_others')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
