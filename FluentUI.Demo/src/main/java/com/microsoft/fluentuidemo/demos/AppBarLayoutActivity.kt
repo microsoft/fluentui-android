@@ -7,6 +7,8 @@ package com.microsoft.fluentuidemo.demos
 
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import android.view.ContextThemeWrapper
@@ -142,6 +144,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
+        val viewId = view.id
         when(view.id) {
             R.id.app_bar_layout_toggle_scroll_behavior_button -> {
                 scrollBehavior = when (scrollBehavior) {
@@ -168,6 +171,11 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
                 recreate()
             }
         }
+        Handler(Looper.getMainLooper()).post{
+            // for setting keyboard focus
+            findViewById<View>(viewId).requestFocus()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
