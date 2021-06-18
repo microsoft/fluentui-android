@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">düğme</string>
+  <string name="popup_menu_accessibility_item_select">seçme</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s seçildi</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s işaretlendi</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s işareti kaldırıldı</string>
+  <string name="popup_menu_accessibility_item_radio_button">radyo düğmesi</string>
+  <string name="popup_menu_accessibility_item_check_box">onay kutusu</string>
+  <string name="popup_menu_accessibility_item_state_checked">işaretli</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">işaretli değil</string>
+</resources>

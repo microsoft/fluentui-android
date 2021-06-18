@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">interruttore</string>
+  <string name="popup_menu_accessibility_item_select">seleziona</string>
+  <string name="popup_menu_accessibility_item_click_selected">L\'elemento %s è stato selezionato</string>
+  <string name="popup_menu_accessibility_item_click_checked">L\'elemento %s è stato selezionato</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">L\'elemento %s è stato deselezionato</string>
+  <string name="popup_menu_accessibility_item_radio_button">pulsante di opzione</string>
+  <string name="popup_menu_accessibility_item_check_box">casella di controllo</string>
+  <string name="popup_menu_accessibility_item_state_checked">selezionato</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">deselezionato</string>
+</resources>

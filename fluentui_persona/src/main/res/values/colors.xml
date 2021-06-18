@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--Avatar-->
+    <array name="fluentui_avatar_background_colors">
+        <item>#750B1C</item>
+        <item>#A4262C</item>
+        <item>#D13438</item>
+        <item>#CA5010</item>
+        <item>#986F0B</item>
+        <item>#498205</item>
+        <item>#005E50</item>
+        <item>#038387</item>
+        <item>#0078D4</item>
+        <item>#004E8C</item>
+        <item>#4F6BED</item>
+        <item>#373277</item>
+        <item>#881798</item>
+        <item>#C239B3</item>
+        <item>#E3008C</item>
+        <item>#603D30</item>
+        <item>#567C73</item>
+        <item>#69797E</item>
+    </array>
+    <color name="fluentui_avatar_ring_background">@color/fluentui_white</color>
+    <color name="fluentui_avatar_border_background">@color/fluentui_gray_200</color>
+    <color name="fluentui_avatar_overflow_text_color">@color/fluentui_gray_500</color>
+    <color name="fluentui_avatar_overflow_background">@color/fluentui_gray_25</color>
+</resources>

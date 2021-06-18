@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">uključi/isključi</string>
+  <string name="popup_menu_accessibility_item_select">odaberi</string>
+  <string name="popup_menu_accessibility_item_click_selected">Odabrano: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Potvrđeno: %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Poništeno: %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">izborni gumb</string>
+  <string name="popup_menu_accessibility_item_check_box">potvrdni okvir</string>
+  <string name="popup_menu_accessibility_item_state_checked">potvrđeno</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nepotvrđeno</string>
+</resources>

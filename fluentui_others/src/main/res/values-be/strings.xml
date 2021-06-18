@@ -87,16 +87,6 @@
     <item quantity="many">%s карыстальнікаў</item>
     <item quantity="other">%s карыстальнікаў</item>
   </plurals>
-  <string name="persona_title_placeholder">Без імені</string>
-  <string name="popup_menu_accessibility_item_toggle">пераключальнік</string>
-  <string name="popup_menu_accessibility_item_select">вылучыць</string>
-  <string name="popup_menu_accessibility_item_click_selected">Вылучана %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">Праверана %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Неправерана %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">кнопка радыё</string>
-  <string name="popup_menu_accessibility_item_check_box">сцяжок</string>
-  <string name="popup_menu_accessibility_item_state_checked">пазначана</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">не пазначана</string>
   <string name="progress_circular_content_description_indeterminate">Не вызначана</string>
   <string name="searchbar_clear_search">Ачысціць поле пошуку</string>
   <string name="searchbar_back">Назад</string>

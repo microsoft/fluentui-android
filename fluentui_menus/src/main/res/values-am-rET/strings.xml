@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ቀይር</string>
+  <string name="popup_menu_accessibility_item_select">ይምረጡ</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s ተመርጧል</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ተመርጧል</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s አልተመረጠም</string>
+  <string name="popup_menu_accessibility_item_radio_button">የሬዲዮ አዝራር</string>
+  <string name="popup_menu_accessibility_item_check_box">አመልካች ሳጥን</string>
+  <string name="popup_menu_accessibility_item_state_checked">የተመረጠ</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">አልተመረጠም</string>
+</resources>

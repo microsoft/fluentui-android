@@ -148,8 +148,7 @@ class Tooltip {
         return this
     }
 
-    @ColorInt
-    fun setCustomBackgroundColor(color: Int) {
+    fun setCustomBackgroundColor(@ColorInt color: Int) {
         tooltipBackGround.background = null
         tooltipBackGround.setBackgroundColor(color)
         ImageViewCompat.setImageTintList(arrowUpView, ColorStateList.valueOf(color))
@@ -158,8 +157,7 @@ class Tooltip {
         ImageViewCompat.setImageTintList(arrowRightView, ColorStateList.valueOf(color))
     }
 
-    @DrawableRes
-    fun setCustomBackground(drawable : Int) {
+    fun setCustomBackground(@DrawableRes drawable : Int) {
         tooltipBackGround.background = ContextCompat.getDrawable(context, drawable)
     }
 

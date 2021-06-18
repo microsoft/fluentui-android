@@ -83,16 +83,6 @@
     <item quantity="one">%s person</item>
     <item quantity="other">%s personar</item>
   </plurals>
-  <string name="persona_title_placeholder">Utan namn</string>
-  <string name="popup_menu_accessibility_item_toggle">aktivere/deaktivere</string>
-  <string name="popup_menu_accessibility_item_select">vel</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s valt</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s merkt</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s ikkje merkt</string>
-  <string name="popup_menu_accessibility_item_radio_button">alternativknapp</string>
-  <string name="popup_menu_accessibility_item_check_box">Avmerkingsboks</string>
-  <string name="popup_menu_accessibility_item_state_checked">kontrollert</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ikkje merkt av</string>
   <string name="progress_circular_content_description_indeterminate">Ubestemmeleg</string>
   <string name="searchbar_clear_search">Fjern søk</string>
   <string name="searchbar_back">Tilbake</string>

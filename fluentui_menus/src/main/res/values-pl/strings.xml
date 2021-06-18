@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">przełącznik</string>
+  <string name="popup_menu_accessibility_item_select">wybierz</string>
+  <string name="popup_menu_accessibility_item_click_selected">Wybrano: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Zaznaczono: %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Nie zaznaczono: %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">przycisk radiowy</string>
+  <string name="popup_menu_accessibility_item_check_box">pole wyboru</string>
+  <string name="popup_menu_accessibility_item_state_checked">zaznaczone</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">niezaznaczone</string>
+</resources>

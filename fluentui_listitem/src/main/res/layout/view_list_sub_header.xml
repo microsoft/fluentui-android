@@ -10,6 +10,8 @@
     android:layout_height="@dimen/fluentui_list_sub_header_height"
     android:baselineAligned="true"
     android:gravity="center_vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="horizontal"
     android:paddingStart="@dimen/fluentui_list_item_horizontal_margin_regular">
 

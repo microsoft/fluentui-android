@@ -13,28 +13,28 @@
     android:divider="@drawable/demo_divider"
     android:orientation="vertical">
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/toggle_label_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_layout_margin"
         android:text="@string/bottom_navigation_toggle_labels_button" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/three_menu_items_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_layout_margin"
         android:text="@string/bottom_navigation_three_menu_items_button" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/four_menu_items_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_layout_margin"
         android:text="@string/bottom_navigation_four_menu_items_button" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/five_menu_items_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

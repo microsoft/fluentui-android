@@ -52,6 +52,7 @@ class TemplateViewActivity : DemoActivity() {
             })
             println("Cell.M&L: $t")
             calculate_cells_button.text = getString(R.string.calculate_cells) + " = $t ms"
+            calculate_cells_button.announceForAccessibility(" took $t ms to load")
         }
 
         calculate_layouts_button.setOnClickListener {
@@ -64,6 +65,7 @@ class TemplateViewActivity : DemoActivity() {
             })
             println("Layout.M&L: $t")
             calculate_layouts_button.text = getString(R.string.calculate_layouts) + " = $t ms"
+            calculate_layouts_button.announceForAccessibility(" took $t ms to load")
         }
     }
 

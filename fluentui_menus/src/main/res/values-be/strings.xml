@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">пераключальнік</string>
+  <string name="popup_menu_accessibility_item_select">вылучыць</string>
+  <string name="popup_menu_accessibility_item_click_selected">Вылучана %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">Праверана %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Неправерана %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">кнопка радыё</string>
+  <string name="popup_menu_accessibility_item_check_box">сцяжок</string>
+  <string name="popup_menu_accessibility_item_state_checked">пазначана</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">не пазначана</string>
+</resources>

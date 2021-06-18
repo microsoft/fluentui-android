@@ -18,6 +18,7 @@ import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListSubHeaderView
 import com.microsoft.fluentui.search.Searchbar
 import com.microsoft.fluentui.snackbar.Snackbar
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTintedDrawable
 import com.microsoft.fluentuidemo.DemoActivity
@@ -232,7 +233,12 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             }
             NavigationIconType.BACK_ICON -> {
                 val backArrow = ContextCompat.getDrawable(this, R.drawable.ms_ic_arrow_left_24_filled)
-                backArrow?.setTint(ThemeUtil.getThemeAttrColor(this, R.attr.fluentuiToolbarIconColor))
+                /*
+                 Wrapping this by FluentUIContext so that we need not declare this attr in Theme,
+                 In case our theme is not extending Fluent Theme.
+                 But if declare this attr in theme then no context wrapping is required
+                 */
+                backArrow?.setTint(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(this, R.style.Theme_FluentUI_Components), R.attr.fluentuiToolbarIconColor))
                 app_bar.toolbar.navigationIcon = backArrow
                 app_bar.toolbar.setNavigationOnClickListener {
                     onBackPressed()

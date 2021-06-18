@@ -10,6 +10,7 @@
     <!--App-->
     <string name="app_name">Fluent UI Demo</string>
     <string name="app_title">Fluent UI</string>
+    <string name="app_accessibility_selected">Selected %s</string>
 
     <!--ActionBar-->
     <string name="actionbar_start_button">Start Demo</string>
@@ -80,6 +81,8 @@
     <string name="bottom_navigation_three_menu_items_button">Show three menu items</string>
     <string name="bottom_navigation_four_menu_items_button">Show four menu items</string>
     <string name="bottom_navigation_five_menu_items_button">Show five menu items</string>
+    <!--accessibility-->
+    <string name="bottom_navigation_accessibility_labels_state">Labels are %s</string>
 
     <!--BottomSheet-->
     <string name="bottom_sheet">BottomSheet</string>
@@ -274,6 +277,7 @@
     <string name="list_item_click">You clicked on the list item.</string>
     <string name="list_item_click_custom_accessory_view">You clicked on the custom accessory view.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">You clicked on the sub header custom accessory view.</string>
+    <string name="list_item_more_options">More options</string>
 
     <!--ListItem V-Next-->
     <string name="list_header_no_custom_base_style">Single Line, no CustomView base style</string>

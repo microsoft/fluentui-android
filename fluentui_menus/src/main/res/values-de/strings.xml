@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">Umschalten</string>
+  <string name="popup_menu_accessibility_item_select">Auswählen</string>
+  <string name="popup_menu_accessibility_item_click_selected">\"%s\" ausgewählt</string>
+  <string name="popup_menu_accessibility_item_click_checked">\"%s\" aktiviert</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">\"%s\" deaktiviert</string>
+  <string name="popup_menu_accessibility_item_radio_button">Optionsfeld</string>
+  <string name="popup_menu_accessibility_item_check_box">Kontrollkästchen</string>
+  <string name="popup_menu_accessibility_item_state_checked">Aktiviert</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">Deaktiviert</string>
+</resources>
