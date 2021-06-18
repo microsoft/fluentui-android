@@ -148,7 +148,7 @@ open class AvatarView : AppCompatImageView {
         }
 
     /**
-     * Defines the [AvatarIsOverFlow] applied to the avatar.
+     * Defines the [ContentDescription] applied to the avatar.
      */
     var avatarContentDescriptionLabel: String = ""
         set(value) {

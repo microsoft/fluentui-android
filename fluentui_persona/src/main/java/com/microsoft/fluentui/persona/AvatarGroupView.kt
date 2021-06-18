@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 
@@ -33,8 +32,12 @@ open class AvatarGroupView : FrameLayout {
     }
 
     private var avatarList: List<IAvatar> = ArrayList()
+    private var overflowAvatar: AvatarView? = null
     private val clickListener = OnClickListener {
         listener?.onAvatarClicked(it.tag as Int)
+    }
+    private val overflowClickListener = OnClickListener {
+        listener?.onOverFlowClicked()
     }
 
     var maxDisplayedAvatars: Int = DEFAULT_AVATAR_ALLOWED
@@ -52,6 +55,10 @@ open class AvatarGroupView : FrameLayout {
                 return
 
             field = value
+            for (child in 0 until childCount) {
+                getChildAt(child).setOnClickListener(clickListener)
+            }
+            overflowAvatar?.setOnClickListener(overflowClickListener)
         }
 
     /**
@@ -78,13 +85,31 @@ open class AvatarGroupView : FrameLayout {
             updateView()
         }
 
+    /**
+     * Defines the ContentDescription which will be applied to the overflow Avatar if it exists
+     */
+    private var overflowContentDescription: String = ""
+
     fun setAvatars(avatarList: List<IAvatar>) {
         this.avatarList = avatarList
         updateView()
     }
 
+    /*
+        Either we can pass "customString" or "formattedString %s",
+        Please note only %s will work here. As we get the overflow icon's count from the name of
+        Avatar
+     */
+    fun setOverflowContentDescription(formatterContentDescription: String) {
+        overflowContentDescription = formatterContentDescription
+        overflowAvatar?.apply {
+            avatarContentDescriptionLabel = String.format(overflowContentDescription, name)
+        }
+    }
+
     private fun updateView() {
         removeAllViews()
+        overflowAvatar = null
         for ((index, avatar) in avatarList.withIndex()) {
             if (index >= maxDisplayedAvatars) {
                 if (avatarList.size > maxDisplayedAvatars) {
@@ -126,9 +151,7 @@ open class AvatarGroupView : FrameLayout {
         avatarView.avatarStyle = AvatarStyle.CIRCLE
         avatarView.id = View.generateViewId()
         if(listener  != null) {
-            avatarView.setOnClickListener {
-                listener?.onOverFlowClicked()
-            }
+            avatarView.setOnClickListener(overflowClickListener)
         }
         val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         when (avatarGroupStyle) {
@@ -142,6 +165,8 @@ open class AvatarGroupView : FrameLayout {
             }
         }
         avatarView.layoutParams = layoutParams
+        overflowAvatar = avatarView
+        setOverflowContentDescription(overflowContentDescription)
         addView(avatarView)
     }
 
