@@ -37,12 +37,13 @@ class PersonaChipViewActivity : DemoActivity() {
     }
 
     private fun createDisabledPersonaChip() {
+        val personaName = resources.getString(R.string.persona_name_kat_larsson)
         val personaChipView = PersonaChipView(this)
         personaChipView.isEnabled = false
-        personaChipView.name = resources.getString(R.string.persona_name_kat_larsson)
+        personaChipView.name = personaName
         personaChipView.email = resources.getString(R.string.persona_email_kat_larsson)
         personaChipView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        personaChipView.avatarContentDescriptionLabel = resources.getString(R.string.persona_name_kat_larsson)
+        personaChipView.avatarContentDescriptionLabel = personaName
         persona_chip_layout.addView(personaChipView)
     }
 }

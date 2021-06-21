@@ -26,11 +26,12 @@ class PersonaViewActivity : DemoActivity() {
     }
 
     private fun createNewPersonaFromCode() {
+        val personaName = resources.getString(R.string.persona_name_mauricio_august)
         val personaView = PersonaView(this)
         personaView.avatarSize = AvatarSize.SMALL
-        personaView.name = resources.getString(R.string.persona_name_mauricio_august)
+        personaView.name = personaName
         personaView.email = resources.getString(R.string.persona_email_mauricio_august)
-        personaView.avatarContentDescriptionLabel = resources.getString(R.string.persona_name_mauricio_august)
+        personaView.avatarContentDescriptionLabel = personaName
         personaView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         persona_layout.addView(personaView)
     }
