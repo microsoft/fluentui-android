@@ -7,11 +7,11 @@ package com.microsoft.fluentui.persistentbottomsheet
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.core.widget.TextViewCompat
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.widget.TextViewCompat
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.createImageView
@@ -22,6 +22,7 @@ class SheetHorizontalItemView: TemplateView {
     private lateinit var sheetItemTitle:TextView
     private lateinit var mainContainer:ViewGroup
     private lateinit var imageContainer: ViewGroup
+    private var listener: ChildItemInteractionListener? = null
 
     private var title: String = ""
     private var customView: View? = null
@@ -62,11 +63,19 @@ class SheetHorizontalItemView: TemplateView {
                 onSheetItemClickListener?.onSheetItemClick(mSheetItem!!)
             }
         mainContainer.setBackgroundResource(R.drawable.bottom_sheet_item_ripple_background)
+        listener?.onChildTemplateLoaded(mainContainer)
     }
 
     private fun updateTitleView() {
         sheetItemTitle.text = title
-        sheetItemTitle.visibility = if (title.isNotEmpty()) View.VISIBLE else View.GONE
+        if (title.isNotEmpty()){
+            sheetItemTitle.visibility =  View.VISIBLE
+            mainContainer.contentDescription = sheetItemTitle.text
+        } else{
+            sheetItemTitle.visibility = View.GONE
+            mainContainer.contentDescription = customView?.contentDescription
+        }
+        sheetItemTitle.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
     }
 
     private fun updateCustomView() {
@@ -91,5 +100,19 @@ class SheetHorizontalItemView: TemplateView {
             sheetItemTitle.let {
                 TextViewCompat.setTextAppearance(it, textAppearanceResId) }
         }
+    }
+
+    /**
+     * parent can set a listener to know if child is loaded/inflated or not
+     */
+    fun addTemplateLoadListener(listener:ChildItemInteractionListener){
+        this.listener = listener
+    }
+
+    /**
+     * interface for parent to interact with this child
+     */
+    interface ChildItemInteractionListener{
+        fun onChildTemplateLoaded(container:View)
     }
 }

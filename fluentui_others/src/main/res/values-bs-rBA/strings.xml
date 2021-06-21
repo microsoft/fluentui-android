@@ -85,16 +85,6 @@
     <item quantity="few">%s osobe</item>
     <item quantity="other">%s osobe</item>
   </plurals>
-  <string name="persona_title_placeholder">Bez imena</string>
-  <string name="popup_menu_accessibility_item_toggle">prebacivanje</string>
-  <string name="popup_menu_accessibility_item_select">izaberite</string>
-  <string name="popup_menu_accessibility_item_click_selected">Izabrano: %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">Potvrđen je izbor stavke %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">Opozvan je izbor stavke %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">radio dugme</string>
-  <string name="popup_menu_accessibility_item_check_box">okvir za potvrdu</string>
-  <string name="popup_menu_accessibility_item_state_checked">označeno</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">nije označeno</string>
   <string name="progress_circular_content_description_indeterminate">Neodređeno</string>
   <string name="searchbar_clear_search">Obriši pretragu</string>
   <string name="searchbar_back">Nazad</string>

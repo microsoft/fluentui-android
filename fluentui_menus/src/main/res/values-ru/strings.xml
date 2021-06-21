@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">переключить</string>
+  <string name="popup_menu_accessibility_item_select">выбрать</string>
+  <string name="popup_menu_accessibility_item_click_selected">Выбран пункт \"%s\"</string>
+  <string name="popup_menu_accessibility_item_click_checked">Флажок \"%s\" установлен</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">Флажок \"%s\" снят</string>
+  <string name="popup_menu_accessibility_item_radio_button">переключатель</string>
+  <string name="popup_menu_accessibility_item_check_box">флажок</string>
+  <string name="popup_menu_accessibility_item_state_checked">установлен</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">снят</string>
+</resources>

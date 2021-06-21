@@ -83,16 +83,6 @@
     <item quantity="one">%s pertsona</item>
     <item quantity="other">%s pertsona</item>
   </plurals>
-  <string name="persona_title_placeholder">Izengabea</string>
-  <string name="popup_menu_accessibility_item_toggle">aldatu</string>
-  <string name="popup_menu_accessibility_item_select">hautatu</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s hautatu da</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s markatu da</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s desmarkatu da</string>
-  <string name="popup_menu_accessibility_item_radio_button">aukera-botoia</string>
-  <string name="popup_menu_accessibility_item_check_box">kontrol-laukia</string>
-  <string name="popup_menu_accessibility_item_state_checked">markatuta</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">markatu gabe</string>
   <string name="progress_circular_content_description_indeterminate">Zehaztugabea</string>
   <string name="searchbar_clear_search">Garbitu bilaketa</string>
   <string name="searchbar_back">Atzera</string>

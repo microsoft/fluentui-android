@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">切換</string>
+  <string name="popup_menu_accessibility_item_select">選取</string>
+  <string name="popup_menu_accessibility_item_click_selected">已選取 %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">已選取 %s</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">未選取 %s</string>
+  <string name="popup_menu_accessibility_item_radio_button">選項按鈕</string>
+  <string name="popup_menu_accessibility_item_check_box">核取方塊</string>
+  <string name="popup_menu_accessibility_item_state_checked">已選取</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">未選取</string>
+</resources>

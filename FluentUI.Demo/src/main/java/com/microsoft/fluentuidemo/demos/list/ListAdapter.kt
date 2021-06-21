@@ -9,12 +9,12 @@ import android.content.Context
 import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.listitem.ListSubHeaderView
 import com.microsoft.fluentui.snackbar.Snackbar
+import com.microsoft.fluentui.widget.Button
 import com.microsoft.fluentuidemo.R
 import java.util.*
 
@@ -42,7 +42,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
                 val buttonItemView = FrameLayout(context)
                 buttonItemView.layoutParams = lp
 
-                val button = AppCompatButton(context)
+                val button = Button(context)
                 button.layoutParams = FrameLayout.LayoutParams(
                     FrameLayout.LayoutParams.WRAP_CONTENT,
                     context.resources.getDimension(R.dimen.fluentui_button_min_height).toInt()
@@ -122,7 +122,7 @@ class ListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerV
         private var button: Button? = null
 
         constructor(view: FrameLayout) : super(view) {
-            button = view.getChildAt(0) as? AppCompatButton ?: return
+            button = view.getChildAt(0) as? Button ?: return
         }
 
         fun setButtonItem(buttonItem: IButtonItem) {

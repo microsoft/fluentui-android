@@ -83,16 +83,6 @@
     <item quantity="one">%s persona</item>
     <item quantity="other">%s personas</item>
   </plurals>
-  <string name="persona_title_placeholder">Sin nombre</string>
-  <string name="popup_menu_accessibility_item_toggle">activar o desactivar</string>
-  <string name="popup_menu_accessibility_item_select">seleccionar</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s seleccionada</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s marcada</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s desmarcada</string>
-  <string name="popup_menu_accessibility_item_radio_button">botón de selección</string>
-  <string name="popup_menu_accessibility_item_check_box">casilla</string>
-  <string name="popup_menu_accessibility_item_state_checked">marcada</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">no se marcó</string>
   <string name="progress_circular_content_description_indeterminate">Indeterminado</string>
   <string name="searchbar_clear_search">Borrar búsqueda</string>
   <string name="searchbar_back">Volver</string>

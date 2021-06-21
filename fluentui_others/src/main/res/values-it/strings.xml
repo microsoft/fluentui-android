@@ -83,16 +83,6 @@
     <item quantity="one">%s persona</item>
     <item quantity="other">%s persone</item>
   </plurals>
-  <string name="persona_title_placeholder">Nessun nome</string>
-  <string name="popup_menu_accessibility_item_toggle">interruttore</string>
-  <string name="popup_menu_accessibility_item_select">seleziona</string>
-  <string name="popup_menu_accessibility_item_click_selected">L\'elemento %s è stato selezionato</string>
-  <string name="popup_menu_accessibility_item_click_checked">L\'elemento %s è stato selezionato</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">L\'elemento %s è stato deselezionato</string>
-  <string name="popup_menu_accessibility_item_radio_button">pulsante di opzione</string>
-  <string name="popup_menu_accessibility_item_check_box">casella di controllo</string>
-  <string name="popup_menu_accessibility_item_state_checked">selezionato</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">deselezionato</string>
   <string name="progress_circular_content_description_indeterminate">Indeterminato</string>
   <string name="searchbar_clear_search">Cancella ricerca</string>
   <string name="searchbar_back">Indietro</string>

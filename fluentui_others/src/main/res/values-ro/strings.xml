@@ -85,16 +85,6 @@
     <item quantity="few">%s persoane</item>
     <item quantity="other">%s persoane</item>
   </plurals>
-  <string name="persona_title_placeholder">Fără nume</string>
-  <string name="popup_menu_accessibility_item_toggle">comutator</string>
-  <string name="popup_menu_accessibility_item_select">selectare</string>
-  <string name="popup_menu_accessibility_item_click_selected">S-a selectat %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">S-a bifat %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">S-a debifat %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">buton radio</string>
-  <string name="popup_menu_accessibility_item_check_box">casetă de selectare</string>
-  <string name="popup_menu_accessibility_item_state_checked">bifat</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">debifat</string>
   <string name="progress_circular_content_description_indeterminate">Nedeterminat</string>
   <string name="searchbar_clear_search">Goliți căutarea</string>
   <string name="searchbar_back">Înapoi</string>

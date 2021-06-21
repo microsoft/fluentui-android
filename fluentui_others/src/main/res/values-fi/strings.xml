@@ -83,16 +83,6 @@
     <item quantity="one">%s henkilö</item>
     <item quantity="other">%s henkilöä</item>
   </plurals>
-  <string name="persona_title_placeholder">Ei nimeä</string>
-  <string name="popup_menu_accessibility_item_toggle">vaihda</string>
-  <string name="popup_menu_accessibility_item_select">valitse</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s valittu</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s valittu</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s ei valittu</string>
-  <string name="popup_menu_accessibility_item_radio_button">valintapainike</string>
-  <string name="popup_menu_accessibility_item_check_box">valintaruutu</string>
-  <string name="popup_menu_accessibility_item_state_checked">valittu</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ei valittu</string>
   <string name="progress_circular_content_description_indeterminate">Määrittelemätön</string>
   <string name="searchbar_clear_search">Tyhjennä haku</string>
   <string name="searchbar_back">Edellinen</string>

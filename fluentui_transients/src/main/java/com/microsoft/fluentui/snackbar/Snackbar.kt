@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.snackbar
 
+import android.annotation.SuppressLint
 import android.content.Context
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -41,6 +42,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         /**
          * Use [make] to create your Snackbar and attach it to a given [view]'s parent.
          */
+        @SuppressLint("WrongConstant")
         fun make(view: View, text: CharSequence, duration: Int = LENGTH_SHORT, style: Style = Style.REGULAR): Snackbar {
             val parent = findSuitableParent(view) ?:
                 throw IllegalArgumentException("No suitable parent found from the given view. Please provide a valid view.")
@@ -256,6 +258,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         customView?.layoutParams = lp
     }
 
+    @SuppressLint("RestrictedApi")
     private fun updateBackground() {
         when (style) {
             Style.REGULAR -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background)

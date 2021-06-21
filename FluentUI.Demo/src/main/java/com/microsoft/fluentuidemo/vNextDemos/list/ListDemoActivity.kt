@@ -16,11 +16,11 @@ import com.microsoft.fluentui.generator.ListHeaderStyle
 import com.microsoft.fluentui.generator.ListLeadingViewSize
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
-import com.microsoft.fluentui.vNext.Button
 import com.microsoft.fluentui.vNext.listitem.IBaseListItem
 import com.microsoft.fluentui.vNext.listitem.ListItem
 import com.microsoft.fluentui.vNext.listitem.ListSubHeaderItem
 import com.microsoft.fluentui.vNext.persona.AvatarView
+import com.microsoft.fluentui.vNext.widget.ButtonView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -264,7 +264,7 @@ class ListDemoActivity : DemoActivity() {
 
         if (useCustomAccessoryView) {
             val newContext = FluentUIContextThemeWrapper(baseContext, R.style.Widget_FluentUI_secondarybuttontokensview_small)
-            val textCustomAccessoryView = Button(newContext)
+            val textCustomAccessoryView = ButtonView(newContext)
             textCustomAccessoryView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
             textCustomAccessoryView.setOnClickListener {
                 Snackbar.make(

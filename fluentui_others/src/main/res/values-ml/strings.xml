@@ -83,16 +83,6 @@
     <item quantity="one">%s വ്യക്തി</item>
     <item quantity="other">%s ആളുകൾ</item>
   </plurals>
-  <string name="persona_title_placeholder">പേരില്ല</string>
-  <string name="popup_menu_accessibility_item_toggle">ടോഗിൾ</string>
-  <string name="popup_menu_accessibility_item_select">തിരഞ്ഞെടുക്കുക</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s തിരഞ്ഞെടുത്തു</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s ചെക്കുചെയ്‌തു</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s അൺചെക്കുചെയ്‌തു</string>
-  <string name="popup_menu_accessibility_item_radio_button">റേഡിയോ ബട്ടണ്‍</string>
-  <string name="popup_menu_accessibility_item_check_box">ചെക്ക്ബോക്സ്</string>
-  <string name="popup_menu_accessibility_item_state_checked">ചെക്കുചെയ്‌തത്</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">ചെക്കുചെയ്യാത്തത്</string>
   <string name="progress_circular_content_description_indeterminate">അനിശ്ചിതമായ</string>
   <string name="searchbar_clear_search">തിരയൽ മായ്‌ക്കുക</string>
   <string name="searchbar_back">പിന്നിലേക്ക്</string>

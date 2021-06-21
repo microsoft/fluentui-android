@@ -1,3 +1,5 @@
+include ':fluentui_persona'
+include ':fluentui_menus'
 include ':fluentui_transients'
 include ':FluentUI.Demo'
 include ':fluentui_core'

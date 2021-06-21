@@ -9,4 +9,6 @@
     android:id="@+id/app_bar_layout_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:importantForAccessibility="no"
+    android:background="?attr/fluentuiBackgroundColor"
     app:layoutManager="LinearLayoutManager" />

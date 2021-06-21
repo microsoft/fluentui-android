@@ -87,16 +87,6 @@
     <item quantity="many">%s אנשים</item>
     <item quantity="other">%s אנשים</item>
   </plurals>
-  <string name="persona_title_placeholder">ללא שם</string>
-  <string name="popup_menu_accessibility_item_toggle">החלף מצב</string>
-  <string name="popup_menu_accessibility_item_select">בחר</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s נבחר</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s סומן</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">הסימון של %s בוטל</string>
-  <string name="popup_menu_accessibility_item_radio_button">‫לחצן אפשרויות</string>
-  <string name="popup_menu_accessibility_item_check_box">תיבת סימון</string>
-  <string name="popup_menu_accessibility_item_state_checked">מסומן</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">לא מסומן</string>
   <string name="progress_circular_content_description_indeterminate">לא מוגדר</string>
   <string name="searchbar_clear_search">נקה חיפוש</string>
   <string name="searchbar_back">הקודם</string>

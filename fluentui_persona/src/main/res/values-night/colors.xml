@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--AvatarView-->
+    <color name="fluentui_avatar_ring_background">@color/fluentui_black</color>
+    <color name="fluentui_avatar_border_background">@color/fluentui_gray_500</color>
+    <color name="fluentui_avatar_overflow_text_color">@color/fluentui_gray_25</color>
+    <color name="fluentui_avatar_overflow_background">@color/fluentui_gray_600</color>
+</resources>

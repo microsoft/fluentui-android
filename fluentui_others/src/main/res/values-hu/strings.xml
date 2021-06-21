@@ -83,16 +83,6 @@
     <item quantity="one">%s személy</item>
     <item quantity="other">%s személy</item>
   </plurals>
-  <string name="persona_title_placeholder">Névtelen</string>
-  <string name="popup_menu_accessibility_item_toggle">Kapcsoló</string>
-  <string name="popup_menu_accessibility_item_select">Bejelölés</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s bejelölve</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s menüelem bejelölve</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s menüelem jelölése törölve</string>
-  <string name="popup_menu_accessibility_item_radio_button">Választógomb</string>
-  <string name="popup_menu_accessibility_item_check_box">Jelölőnégyzet</string>
-  <string name="popup_menu_accessibility_item_state_checked">Bejelölve</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">Nincs bejelölve</string>
   <string name="progress_circular_content_description_indeterminate">Nem meghatározott</string>
   <string name="searchbar_clear_search">Találatok törlése</string>
   <string name="searchbar_back">Vissza</string>

@@ -19,6 +19,7 @@ import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
+import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentui.view.TemplateView
 import com.tokenautocomplete.TokenCompleteTextView
 import kotlin.math.max
@@ -292,6 +293,14 @@ class PeoplePickerView : TemplateView {
         peoplePickerTextViewAdapter?.showSearchDirectoryButton = showSearchDirectoryButton
 
         updateHintVisibility()
+        if (context.isAccessibilityEnabled) {
+            labelTextView?.isFocusable = true
+            labelTextView?.isFocusableInTouchMode = true
+        }
+        else {
+            labelTextView?.isFocusable = false
+            labelTextView?.isFocusableInTouchMode = false
+        }
     }
 
     private fun updateHintVisibility() {
@@ -363,7 +372,7 @@ class PeoplePickerView : TemplateView {
             } else {
                 val personas = results.values as ArrayList<IPersona>
                 view.peoplePickerTextViewAdapter?.personas = personas
-                if (constraint != null && countSpanStart == -1)
+                if (constraint != null && constraint.isNotEmpty() && countSpanStart == -1)
                     view.announceForAccessibility(accessibilityTextProvider?.getPersonaSuggestionsOpenedText(personas))
             }
         }

@@ -41,6 +41,7 @@ class TabLayoutActivity : DemoActivity() {
     }
 
     private fun clickListener(v: View) {
+        demo_tab_layout.visibility = View.VISIBLE
         tabLayout.removeAllTabs()
         tabLayout.setupWithViewPager(null)
 

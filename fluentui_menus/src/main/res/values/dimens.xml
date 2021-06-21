@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--PopupMenu-->
+    <dimen name="fluentui_popup_menu_corner_radius">@dimen/fluentui_corner_radius_4</dimen>
+    <dimen name="fluentui_popup_menu_item_icon_size">24dp</dimen>
+    <dimen name="fluentui_popup_menu_item_margin_horizontal">8dp</dimen>
+    <dimen name="fluentui_popup_menu_item_min_height">42dp</dimen>
+    <dimen name="fluentui_popup_menu_item_min_width_no_icon">132dp</dimen>
+    <dimen name="fluentui_popup_menu_item_min_width_icon">172dp</dimen>
+    <dimen name="fluentui_popup_menu_duo_margin_start">600dp</dimen>
+    <dimen name="fluentui_popup_menu_duo_margin_top">268dp</dimen>
+</resources>

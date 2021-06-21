@@ -18,7 +18,7 @@ import com.microsoft.fluentui.util.createImageView
 /**
  * [SheetHorizontalItemAdapter] is used for horizontal list in bottomSheet
  */
-class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0) : androidx.recyclerview.widget.RecyclerView.Adapter<androidx.recyclerview.widget.RecyclerView.ViewHolder>() {
+class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
     private val mItems: ArrayList<SheetItem> = items
 

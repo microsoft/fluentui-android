@@ -86,24 +86,6 @@
     <attr name="fluentuiPeoplePickerLabelTextColor" format="reference|color"/>
     <attr name="fluentuiPeoplePickerCountSpanTextColor" format="reference|color"/>
 
-    <!--PersonaChip-->
-    <attr name="fluentuiPersonaChipBackgroundNormalColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipBackgroundActiveColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipBackgroundErrorColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipBackgroundErrorActiveColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipBackgroundPressedColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipTextNormalColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipForegroundActiveColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipTextErrorColor" format="reference|color"/>
-    <attr name="fluentuiPersonaChipTextDisabledColor" format="reference|color"/>
-
-    <!--PopupMenu-->
-    <attr name="fluentuiPopupMenuBackgroundColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuBackgroundPressedColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuItemTitleColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuItemForegroundSelectedColor" format="reference|color"/>
-    <attr name="fluentuiPopupMenuItemCheckBackgroundRippleColor" format="reference|color"/>
-
     <!--Progress-->
     <attr name="fluentuiProgressPrimaryColor" format="reference|color"/>
     <attr name="fluentuiProgressBackgroundColor" format="reference|color"/>

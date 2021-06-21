@@ -83,16 +83,6 @@
     <item quantity="one">%s நபர்</item>
     <item quantity="other">%s நபர்கள்</item>
   </plurals>
-  <string name="persona_title_placeholder">பெயர் இல்லை</string>
-  <string name="popup_menu_accessibility_item_toggle">நிலைமாற்று</string>
-  <string name="popup_menu_accessibility_item_select">தேர்ந்தெடுக்கவும்</string>
-  <string name="popup_menu_accessibility_item_click_selected">%s தேர்ந்தெடுக்கப்பட்டது</string>
-  <string name="popup_menu_accessibility_item_click_checked">%s தேர்வுசெய்யப்பட்டது</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">%s தேர்வுநீக்கப்பட்டது</string>
-  <string name="popup_menu_accessibility_item_radio_button">ரேடியோ பொத்தான்</string>
-  <string name="popup_menu_accessibility_item_check_box">தேர்வுப்பெட்டி</string>
-  <string name="popup_menu_accessibility_item_state_checked">தேர்வுசெய்யப்பட்டது</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">தேர்வுசெய்யப்படவில்லை</string>
   <string name="progress_circular_content_description_indeterminate">தீர்மானிக்கப்படவில்லை</string>
   <string name="searchbar_clear_search">தேடலை அழிக்கும்</string>
   <string name="searchbar_back">பின்</string>

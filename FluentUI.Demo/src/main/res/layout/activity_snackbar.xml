@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_single_line" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_single_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_single_line_action" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_single_line_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_single_line_custom_view" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_single_line_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_single_line_action_custom_view" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_single_line_action_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_multiline" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_multiline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_multiline_action" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_multiline_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_multiline_custom_view" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_multiline_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_multiline_action_custom_view" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_multiline_action_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_multiline_action_long" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_multiline_long_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
         android:layout_height="wrap_content"
         android:text="@string/snackbar_description_announcement" />
 
-    <Button
+    <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_announcement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

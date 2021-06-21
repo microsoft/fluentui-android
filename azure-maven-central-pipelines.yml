@@ -1,0 +1,42 @@
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+- task: Bash@3
+  displayName: 'Base64 decodes and pipes the GPG key content into the secret file'
+  env:
+    GPG_KEY_CONTENT: $(gpgContent)
+    SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+      ls
+- task: Gradle@2
+  displayName: 'gradlew build publish'
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build publish'
+    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
+
+- task: AndroidSigning@2
+  displayName: 'Signing and aligning APK file(s) **/*.apk'
+  inputs:
+    jarsign: false
+    zipalign: false
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: |
+     **/*.apk
+     **/*.aar
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: Build'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: Build
