@@ -26,7 +26,7 @@ import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.toggleKeyboardVisibility
 import com.microsoft.fluentui.view.TemplateView
-import com.microsoft.fluentui.widget.ProgressBar
+import com.microsoft.fluentui.progress.ProgressBar
 
 /**
  * [Searchbar] provides a [SearchView] with a search icon, back button, close icon,
@@ -142,7 +142,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     private var searchBackButton: ImageButton? = null
     private var searchView: SearchView? = null
     private var searchCloseButton: ImageButton? = null
-    private var searchProgress: ProgressBar? = null
+    private var searchProgress: com.microsoft.fluentui.progress.ProgressBar? = null
     private var singleScreenDisplayPixels = 0
     private var screenPos = IntArray(2)
 

@@ -175,17 +175,6 @@
     <!--Describes the action used to select calendar item-->
     <string name="calendar_adapter_accessibility_item_selected">selected</string>
 
-
-    <!-- *** Progress *** -->
-
-    <!--Describes a Circular progress indicator that spins indefinitely.-->
-    <string name="progress_circular_content_description_indeterminate">Indeterminate Circular</string>
-
-    <!--Describes a Linear progress indicator that animates indefinitely.-->
-    <string name="progress_linear_content_description_indeterminate">Indeterminate Linear</string>
-    <!--Describes a Linear progress indicator that animates.-->
-    <string name="progress_linear_content_description_determinate">Determinate Linear</string>
-
     <!-- *** Searchbar *** -->
 
     <!--Content description for the button that clears the query text entered in the search field.-->

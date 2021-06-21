@@ -65,7 +65,7 @@
             android:layout_width="@dimen/fluentui_min_touch_size"
             android:layout_height="@dimen/fluentui_min_touch_size">
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/search_progress"
                 style="@style/Widget.FluentUI.CircularProgress.XSmall.Search"
                 android:layout_width="wrap_content"

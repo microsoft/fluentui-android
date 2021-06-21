@@ -19,11 +19,11 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_transients_version_code
-        versionName project.ext.fluentui_transients_versionid
+        versionCode project.ext.fluentui_progress_version_code
+        versionName project.ext.fluentui_progress_versionid
 
-        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        consumerProguardFiles 'consumer-rules.pro'
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -32,7 +32,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
@@ -51,5 +50,5 @@ task sourceJar(type: Jar) {
 }
 
 project.afterEvaluate {
-    project.ext.publishingFunc('fluentui_transients')
+    project.ext.publishingFunc('fluentui_progress')
 }

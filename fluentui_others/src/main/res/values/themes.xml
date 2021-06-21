@@ -98,10 +98,6 @@
         <item name="fluentuiPeoplePickerLabelTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPeoplePickerCountSpanTextColor">?attr/fluentuiForegroundSecondaryColor</item>
 
-        <!--Progress-->
-        <item name="fluentuiProgressPrimaryColor">?attr/colorPrimary</item>
-        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_100</item>
-
         <!--Searchbar-->
         <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">?attr/fluentuiBackgroundSecondary20Color</item>

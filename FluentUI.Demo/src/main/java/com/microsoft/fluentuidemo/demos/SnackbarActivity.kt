@@ -14,7 +14,7 @@ import android.view.View
 import android.widget.ImageView
 import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.persona.AvatarView
-import com.microsoft.fluentui.widget.ProgressBar
+import com.microsoft.fluentui.progress.ProgressBar
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentuidemo.DemoActivity
@@ -62,7 +62,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                 Snackbar.make(root_view, getString(R.string.snackbar_single_line)).show()
 
             R.id.btn_snackbar_single_line_custom_view -> {
-                val circularProgress = ProgressBar(this, null, 0, R.style.Widget_FluentUI_CircularProgress_Small)
+                val circularProgress = com.microsoft.fluentui.progress.ProgressBar(this, null, 0, R.style.Widget_FluentUI_CircularProgress_Small)
                 circularProgress.indeterminateDrawable.setColorFilter(
                     ContextCompat.getColor(this, R.color.snackbar_circular_progress_drawable),
                     PorterDuff.Mode.SRC_IN

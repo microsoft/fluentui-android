@@ -9,10 +9,6 @@
     <integer name="fluentui_app_bar_layout_elevation_duration">500</integer>
     <integer name="fluentui_app_bar_layout_elevation_scroll_duration">0</integer>
 
-    <!--Animation-->
-    <integer name="fluentui_anim_indeterminate_duration">1000</integer>
-    <integer name="fluentui_anim_indeterminate_linear_duration">2000</integer>
-
     <!--NumberPicker-->
     <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">7</integer>
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <style name="Theme.FluentUI.Progress.Base" parent="Base.Theme.FluentUI">
+        <!--Progress-->
+        <item name="fluentuiProgressPrimaryColor">?attr/colorPrimary</item>
+        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_100</item>
+    </style>
+    <style name="Theme.FluentUI.Progress" parent="Theme.FluentUI.Progress.Base"/>
+</resources>

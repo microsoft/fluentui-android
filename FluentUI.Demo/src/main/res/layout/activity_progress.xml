@@ -58,13 +58,13 @@
 
             </LinearLayout>
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_large"
                 style="@style/Widget.FluentUI.CircularProgress.Large"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_large_primary"
                 style="@style/Widget.FluentUI.CircularProgress.Large.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -98,13 +98,13 @@
 
             </LinearLayout>
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_medium"
                 style="@style/Widget.FluentUI.CircularProgress.Medium"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_medium_primary"
                 style="@style/Widget.FluentUI.CircularProgress.Medium.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -138,13 +138,13 @@
 
             </LinearLayout>
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar"
                 style="@style/Widget.FluentUI.CircularProgress.Small"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_small_primary"
                 style="@style/Widget.FluentUI.CircularProgress.Small.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -178,13 +178,13 @@
 
             </LinearLayout>
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_xsmall"
                 style="@style/Widget.FluentUI.CircularProgress.XSmall"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginEnd="@dimen/circular_progress_spacing" />
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_xsmall_primary"
                 style="@style/Widget.FluentUI.CircularProgress.XSmall.Primary"
                 android:layout_gravity="start|center_vertical" />
@@ -233,7 +233,7 @@
                     android:text="@string/linear_progress_size" />
             </LinearLayout>
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_linear_indeterminate"
                 style="@style/Widget.FluentUI.LinearProgress.Indeterminate"
                 android:layout_height="wrap_content"
@@ -272,7 +272,7 @@
                     android:text="@string/linear_progress_size" />
             </LinearLayout>
 
-            <com.microsoft.fluentui.widget.ProgressBar
+            <com.microsoft.fluentui.progress.ProgressBar
                 android:id="@+id/progress_bar_linear_determinate"
                 style="@style/Widget.FluentUI.LinearProgress.Determinate"
                 android:layout_height="wrap_content"
