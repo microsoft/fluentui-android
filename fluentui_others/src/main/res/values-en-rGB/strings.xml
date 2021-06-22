@@ -83,7 +83,6 @@
     <item quantity="one">%s person</item>
     <item quantity="other">%s people</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="searchbar_clear_search">Clear search</string>
   <string name="searchbar_back">Back</string>
   <string name="searchbar_query_hint_default">Search</string>

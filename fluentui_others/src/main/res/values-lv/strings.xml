@@ -85,7 +85,6 @@
     <item quantity="one">%s persona</item>
     <item quantity="other">%s personas</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Nenoteikts</string>
   <string name="searchbar_clear_search">Notīrīt meklēšanu</string>
   <string name="searchbar_back">Atpakaļ</string>
   <string name="searchbar_query_hint_default">Meklēt</string>

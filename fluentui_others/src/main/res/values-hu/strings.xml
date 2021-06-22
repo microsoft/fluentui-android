@@ -83,7 +83,6 @@
     <item quantity="one">%s személy</item>
     <item quantity="other">%s személy</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Nem meghatározott</string>
   <string name="searchbar_clear_search">Találatok törlése</string>
   <string name="searchbar_back">Vissza</string>
   <string name="searchbar_query_hint_default">Keresés</string>

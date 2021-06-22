@@ -21,8 +21,8 @@ android {
         targetSdkVersion constants.targetSdkVersion
         versionCode project.ext.fluentui_progress_version_code
         versionName project.ext.fluentui_progress_versionid
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
         consumerProguardFiles "consumer-rules.pro"
     }
 

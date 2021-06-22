@@ -83,7 +83,6 @@
     <item quantity="one">%s tao</item>
     <item quantity="other">%s (na) tao</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Hindi Matukoy</string>
   <string name="searchbar_clear_search">I-clear ang paghahanap</string>
   <string name="searchbar_back">Bumalik</string>
   <string name="searchbar_query_hint_default">Maghanap</string>
