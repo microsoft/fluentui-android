@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.appbarlayout
+package com.microsoft.fluentui.topappbars.appbarlayout
 
 import android.animation.AnimatorInflater
 import android.content.Context
@@ -18,11 +18,11 @@ import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.appbarlayout.AppBarLayout.ScrollBehavior
-import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentui.topappbars.R
+import com.microsoft.fluentui.topappbars.appbarlayout.AppBarLayout.ScrollBehavior
+import com.microsoft.fluentui.topappbars.search.Searchbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
-import com.microsoft.fluentui.toolbar.Toolbar
+import com.microsoft.fluentui.topappbars.toolbar.Toolbar
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.activity
 import kotlin.math.abs
@@ -121,7 +121,7 @@ class AppBarLayout : AppBarLayout {
         }
     }
 
-    constructor(appContext: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs) {
+    constructor(appContext: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_TopAppBars), attrs) {
         setupToolbar(context)
         setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiAppBarLayoutBackgroundColor))
 

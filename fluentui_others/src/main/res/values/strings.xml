@@ -186,21 +186,6 @@
     <!--Describes a Linear progress indicator that animates.-->
     <string name="progress_linear_content_description_determinate">Determinate Linear</string>
 
-    <!-- *** Searchbar *** -->
-
-    <!--Content description for the button that clears the query text entered in the search field.-->
-    <string name="searchbar_clear_search">Clear search</string>
-    <!--Content description for the button that navigates out of the search experience back to a previous state.-->
-    <string name="searchbar_back">Back</string>
-    <!--Hint for the search field.-->
-    <string name="searchbar_query_hint_default">Search</string>
-
-
-
-    <!--Announcement when SearchBar is cleared-->
-    <string name="searchbar_accessibility_cleared_announcement">edit field cleared</string>
-
-
     <!-- *** ActionBar *** -->
 
     <!--Content description for default left action in the action bar layout.-->

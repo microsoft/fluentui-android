@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.toolbar
+package com.microsoft.fluentui.topappbars.toolbar
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -14,12 +14,12 @@ import androidx.appcompat.widget.Toolbar
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.topappbars.R
 import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.persona.AvatarView
 import com.microsoft.fluentui.persona.IAvatar
 import com.microsoft.fluentui.persona.setAvatar
-import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentui.topappbars.search.Searchbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 /**
@@ -41,7 +41,7 @@ class Toolbar : Toolbar {
         }
 
     @JvmOverloads
-    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, R.attr.toolbarStyle) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_TopAppBars), attrs, R.attr.toolbarStyle) {
         // minHeight can't be set in theme or it will also set title height. Having minHeight helps center option menu icons.
         val styledAttributes = context.theme.obtainStyledAttributes(intArrayOf(android.R.attr.actionBarSize))
         val actionBarSize = styledAttributes.getDimensionPixelSize(0, -1)

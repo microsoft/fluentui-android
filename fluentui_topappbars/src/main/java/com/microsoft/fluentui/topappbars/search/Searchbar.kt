@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.search
+package com.microsoft.fluentui.topappbars.search
 
 import android.app.SearchableInfo
 import android.content.Context
@@ -17,8 +17,8 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.appbarlayout.AppBarLayout
+import com.microsoft.fluentui.topappbars.R
+import com.microsoft.fluentui.topappbars.appbarlayout.AppBarLayout
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.inputMethodManager
@@ -105,7 +105,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     var onCloseListener: SearchView.OnCloseListener? = null
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Components), attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_TopAppBars), attrs, defStyleAttr)
 
     /**
      * Sets the query text for the search view.

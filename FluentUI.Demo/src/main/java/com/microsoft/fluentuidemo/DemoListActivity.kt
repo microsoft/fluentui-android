@@ -17,7 +17,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListItemView
-import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentui.topappbars.search.Searchbar
 import com.microsoft.fluentui.util.DuoSupportUtils
 import kotlinx.android.synthetic.main.activity_demo_list.*
 

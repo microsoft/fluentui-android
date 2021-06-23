@@ -62,6 +62,7 @@ dependencies {
     implementation project(':fluentui_tablayout')
     implementation project(':fluentui_ccb')
     implementation project(':fluentui_transients')
+    implementation project(':fluentui_topappbars')
     implementation project(':fluentui_menus')
     implementation project(':fluentui_persona')
     implementation project(':fluentui_others')

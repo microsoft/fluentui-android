@@ -15,10 +15,10 @@ import android.view.ContextThemeWrapper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import com.microsoft.fluentui.appbarlayout.AppBarLayout
+import com.microsoft.fluentui.topappbars.appbarlayout.AppBarLayout
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListSubHeaderView
-import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentui.topappbars.search.Searchbar
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil

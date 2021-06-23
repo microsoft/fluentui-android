@@ -10,14 +10,20 @@ apply from: '../publish.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.FluentUI_version_code
-        versionName project.ext.FluentUI_versionid
+        versionCode project.ext.fluentui_transients_version_code
+        versionName project.ext.fluentui_transients_versionid
+
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -30,19 +36,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':fluentui_core')
-    implementation project(':fluentui_listitem')
-    implementation project(':fluentui_drawer')
-    implementation project(':fluentui_tablayout')
-    implementation project(':fluentui_ccb')
-    implementation project(':fluentui_transients')
-    implementation project(':fluentui_topappbars')
-    implementation project(':fluentui_menus')
     implementation project(':fluentui_persona')
+    // search uses progress, so fluentui_others needs to be replaced by fluentui_progress
     implementation project(':fluentui_others')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
-    testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
@@ -53,6 +52,5 @@ task sourceJar(type: Jar) {
 }
 
 project.afterEvaluate {
-    project.ext.publishingFunc('FluentUIAndroid')
+    project.ext.publishingFunc('fluentui_topappbars')
 }
-
