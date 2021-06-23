@@ -3,5 +3,4 @@
   <string name="searchbar_clear_search">ล้างการค้นหา</string>
   <string name="searchbar_back">ย้อนกลับ</string>
   <string name="searchbar_query_hint_default">ค้นหา</string>
-  <string name="done">เสร็จสิ้น</string>
 </resources>

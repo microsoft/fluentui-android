@@ -6,9 +6,6 @@
 
 <resources>
 
-    <!-- *** Shared *** -->
-    <string name="done">Done</string>
-
     <!-- *** Searchbar *** -->
 
     <!--Content description for the button that clears the query text entered in the search field.-->
