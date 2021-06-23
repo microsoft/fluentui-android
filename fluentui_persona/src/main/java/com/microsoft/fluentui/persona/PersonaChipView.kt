@@ -86,7 +86,7 @@ class PersonaChipView : TemplateView {
             field = value
             avatarView?.apply {
                 avatarContentDescriptionLabel = this@PersonaChipView.avatarContentDescriptionLabel
-                isFocusable = true
+                isFocusable = avatarContentDescriptionLabel.isNotEmpty()
             }
         }
     /**
@@ -223,10 +223,8 @@ class PersonaChipView : TemplateView {
             avatarImageBitmap = this@PersonaChipView.avatarImageBitmap
             avatarImageUri = this@PersonaChipView.avatarImageUri
             avatarBackgroundColor  = this@PersonaChipView.avatarBackgroundColor
-            if(this@PersonaChipView.avatarContentDescriptionLabel.isNotEmpty()) {
-                avatarContentDescriptionLabel = this@PersonaChipView.avatarContentDescriptionLabel
-                isFocusable = true
-            }
+            avatarContentDescriptionLabel = this@PersonaChipView.avatarContentDescriptionLabel
+            isFocusable = avatarContentDescriptionLabel.isNotEmpty()
         }
 
         if (hasError)

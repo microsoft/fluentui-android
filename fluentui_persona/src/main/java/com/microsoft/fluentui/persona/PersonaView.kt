@@ -120,7 +120,7 @@ class PersonaView : ListItemView {
             field = value
             avatarView?.apply {
                 avatarContentDescriptionLabel = this@PersonaView.avatarContentDescriptionLabel
-                isFocusable = true
+                isFocusable = avatarContentDescriptionLabel.isNotEmpty()
             }
         }
 
@@ -162,7 +162,7 @@ class PersonaView : ListItemView {
         avatarView.avatarImageBitmap = avatarImageBitmap
         avatarView.avatarImageUri = avatarImageUri
         avatarView.avatarBackgroundColor = avatarBackgroundColor
-        avatarView.avatarContentDescriptionLabel  = avatarContentDescriptionLabel
+        avatarView.avatarContentDescriptionLabel = avatarContentDescriptionLabel
 
         customView = avatarView
 

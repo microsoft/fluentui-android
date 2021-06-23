@@ -156,9 +156,7 @@ open class AvatarView : AppCompatImageView {
                 return
 
             field = value
-            if(avatarContentDescriptionLabel.isNotEmpty()) {
-                contentDescription = avatarContentDescriptionLabel
-            }
+            contentDescription = avatarContentDescriptionLabel
         }
 
     private val initials = InitialsDrawable(context)
@@ -321,5 +319,5 @@ fun AvatarView.setAvatar(avatar: IAvatar) {
     avatarImageResourceId = avatar.avatarImageResourceId
     avatarImageUri = avatar.avatarImageUri
     avatarBackgroundColor = avatar.avatarBackgroundColor
-    avatarContentDescriptionLabel  = avatar.avatarContentDescriptionLabel
+    avatarContentDescriptionLabel = avatar.avatarContentDescriptionLabel
 }
