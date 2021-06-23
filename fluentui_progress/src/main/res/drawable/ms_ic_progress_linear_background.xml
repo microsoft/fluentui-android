@@ -12,6 +12,5 @@
   <path
       android:pathData="M0,0H75V4H0V0Z"
       android:fillColor="?attr/fluentuiProgressBackgroundColor"
-      android:fillType="evenOdd"
-      tools:ignore="VectorRaster" />
+      android:fillType="evenOdd"/>
 </vector>

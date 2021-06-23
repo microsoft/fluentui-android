@@ -37,6 +37,7 @@ dependencies {
     implementation project(':fluentui_transients')
     implementation project(':fluentui_menus')
     implementation project(':fluentui_persona')
+    implementation project(':fluentui_progress')
     implementation project(':fluentui_others')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
