@@ -88,8 +88,5 @@
     <item quantity="other">Žmonių: %s</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Neapibrėžtas</string>
-  <string name="searchbar_clear_search">Valyti iešką</string>
-  <string name="searchbar_back">Atgal</string>
-  <string name="searchbar_query_hint_default">Ieška</string>
   <string name="done">Atlikta</string>
 </resources>

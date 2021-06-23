@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchbar_clear_search">Očisti pretraživanje</string>
+  <string name="searchbar_back">Natrag</string>
+  <string name="searchbar_query_hint_default">Pretraži</string>
+  <string name="done">Gotovo</string>
+</resources>

@@ -84,8 +84,5 @@
     <item quantity="other">%s kishi</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Noaniq</string>
-  <string name="searchbar_clear_search">Qidiruvni tozalash</string>
-  <string name="searchbar_back">Orqaga</string>
-  <string name="searchbar_query_hint_default">Qidirish</string>
   <string name="done">Tayyor</string>
 </resources>

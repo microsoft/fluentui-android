@@ -84,8 +84,5 @@
     <item quantity="other">%s personer</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Ubestemt</string>
-  <string name="searchbar_clear_search">Ryd søgning</string>
-  <string name="searchbar_back">Tilbage</string>
-  <string name="searchbar_query_hint_default">Søg</string>
   <string name="done">Udført</string>
 </resources>

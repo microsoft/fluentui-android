@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchbar_clear_search">清除搜索</string>
+  <string name="searchbar_back">返回</string>
+  <string name="searchbar_query_hint_default">搜索</string>
+  <string name="done">完成</string>
+</resources>

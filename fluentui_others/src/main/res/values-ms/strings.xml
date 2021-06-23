@@ -82,8 +82,5 @@
     <item quantity="other">%s individu</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Tidak dapat ditentukan</string>
-  <string name="searchbar_clear_search">Kosongkan carian</string>
-  <string name="searchbar_back">Ke belakang</string>
-  <string name="searchbar_query_hint_default">Cari</string>
   <string name="done">Selesai</string>
 </resources>

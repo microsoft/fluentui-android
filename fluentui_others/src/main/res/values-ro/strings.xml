@@ -86,8 +86,5 @@
     <item quantity="other">%s persoane</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Nedeterminat</string>
-  <string name="searchbar_clear_search">Goliți căutarea</string>
-  <string name="searchbar_back">Înapoi</string>
-  <string name="searchbar_query_hint_default">Căutare</string>
   <string name="done">Gata</string>
 </resources>

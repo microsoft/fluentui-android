@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchbar_clear_search">Zoekopdracht wissen</string>
+  <string name="searchbar_back">Terug</string>
+  <string name="searchbar_query_hint_default">Zoeken</string>
+  <string name="done">Gereed</string>
+</resources>

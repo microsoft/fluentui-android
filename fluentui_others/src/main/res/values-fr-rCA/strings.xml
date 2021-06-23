@@ -84,8 +84,5 @@
     <item quantity="other">%s personnes</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Indéterminé</string>
-  <string name="searchbar_clear_search">Effacer la recherche</string>
-  <string name="searchbar_back">Précédent</string>
-  <string name="searchbar_query_hint_default">Rechercher</string>
   <string name="done">OK</string>
 </resources>

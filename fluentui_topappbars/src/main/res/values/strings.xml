@@ -20,4 +20,5 @@
 
     <!--Announcement when SearchBar is cleared-->
     <string name="searchbar_accessibility_cleared_announcement">edit field cleared</string>
+
 </resources>

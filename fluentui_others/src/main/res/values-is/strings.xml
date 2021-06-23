@@ -84,8 +84,5 @@
     <item quantity="other">%s aðilar</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Óljóst</string>
-  <string name="searchbar_clear_search">Hreinsa leit</string>
-  <string name="searchbar_back">Til baka</string>
-  <string name="searchbar_query_hint_default">Leita</string>
   <string name="done">Lokið</string>
 </resources>

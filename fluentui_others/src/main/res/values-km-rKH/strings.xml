@@ -82,8 +82,5 @@
     <item quantity="other">មនុស្ស %s នាក់</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">ដែលមិនច្បាស់លាស់</string>
-  <string name="searchbar_clear_search">លុបការស្វែងរក</string>
-  <string name="searchbar_back">ថយក្រោយ</string>
-  <string name="searchbar_query_hint_default">ស្វែងរក</string>
   <string name="done">រួចរាល់</string>
 </resources>

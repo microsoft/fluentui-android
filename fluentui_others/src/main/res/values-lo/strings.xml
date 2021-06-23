@@ -82,8 +82,5 @@
     <item quantity="other">%s ຄົນ</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">ບໍ່ຊັດເຈນ</string>
-  <string name="searchbar_clear_search">ລຶບລ້າງການຊອກຫາ</string>
-  <string name="searchbar_back">ກັບຄືນ</string>
-  <string name="searchbar_query_hint_default">ຊອກຫາ</string>
   <string name="done">ແລ້ວໆ</string>
 </resources>

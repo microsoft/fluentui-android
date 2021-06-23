@@ -84,8 +84,5 @@
     <item quantity="other">%s మంది వ్యక్తులు</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">మధ్యంతరం</string>
-  <string name="searchbar_clear_search">శోధనను క్లియర్ చేయి</string>
-  <string name="searchbar_back">వెనుకకు</string>
-  <string name="searchbar_query_hint_default">శోధన</string>
   <string name="done">పూర్తయింది</string>
 </resources>

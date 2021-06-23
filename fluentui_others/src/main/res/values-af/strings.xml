@@ -84,8 +84,5 @@
     <item quantity="other">%s mense</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Onbepaald</string>
-  <string name="searchbar_clear_search">Maak soektog skoon</string>
-  <string name="searchbar_back">Terug</string>
-  <string name="searchbar_query_hint_default">Soek</string>
   <string name="done">Klaar</string>
 </resources>

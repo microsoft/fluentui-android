@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchbar_clear_search">Limpar pesquisa</string>
+  <string name="searchbar_back">Voltar</string>
+  <string name="searchbar_query_hint_default">Pesquisar</string>
+  <string name="done">Concluído</string>
+</resources>

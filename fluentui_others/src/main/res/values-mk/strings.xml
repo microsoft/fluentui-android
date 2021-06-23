@@ -84,8 +84,5 @@
     <item quantity="other">%s луѓе</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Неодредено</string>
-  <string name="searchbar_clear_search">Исчисти го пребарувањето</string>
-  <string name="searchbar_back">Назад</string>
-  <string name="searchbar_query_hint_default">Пребарај</string>
   <string name="done">Готово</string>
 </resources>

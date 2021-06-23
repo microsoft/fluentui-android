@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchbar_clear_search">Tyhjennä haku</string>
+  <string name="searchbar_back">Edellinen</string>
+  <string name="searchbar_query_hint_default">Hae</string>
+  <string name="done">Valmis</string>
+</resources>

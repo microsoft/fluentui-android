@@ -88,8 +88,5 @@
     <item quantity="other">%s osób</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Nieokreślony</string>
-  <string name="searchbar_clear_search">Wyczyść wyszukiwanie</string>
-  <string name="searchbar_back">Wstecz</string>
-  <string name="searchbar_query_hint_default">Wyszukaj</string>
   <string name="done">Gotowe</string>
 </resources>

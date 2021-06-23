@@ -82,8 +82,5 @@
     <item quantity="other">%s orang</item>
   </plurals>
   <string name="progress_circular_content_description_indeterminate">Tak tentu</string>
-  <string name="searchbar_clear_search">Hapus pencarian</string>
-  <string name="searchbar_back">Kembali</string>
-  <string name="searchbar_query_hint_default">Cari</string>
   <string name="done">Selesai</string>
 </resources>
