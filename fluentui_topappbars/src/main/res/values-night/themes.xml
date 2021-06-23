@@ -10,7 +10,7 @@
         All dark theme specific semantic colors should be defined here.
         Light theme semantic colors should be defined in themes.xml as the default.
     -->
-    <style name="Theme.FluentUI" parent="Theme.FluentUI.Components">
+    <style name="Theme.FluentUI.TopAppBars" parent="Theme.FluentUI.TopAppBars.Base">
         <!-- *** Semantic Colors *** -->
 
         <!--AppBarLayout-->
