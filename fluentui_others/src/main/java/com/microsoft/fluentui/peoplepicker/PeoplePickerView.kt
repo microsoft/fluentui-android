@@ -258,7 +258,7 @@ class PeoplePickerView : TemplateView {
             allowCollapse(true)
             isLongClickable = true
             setTokenListener(TokenListener(this@PeoplePickerView))
-            performBestGuess(false)
+            performBestGuess(true)
         }
 
         updatePersonaChips()
