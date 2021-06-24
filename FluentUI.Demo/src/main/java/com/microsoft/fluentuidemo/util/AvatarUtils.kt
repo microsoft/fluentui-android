@@ -7,8 +7,6 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.persona.IAvatar
-import com.microsoft.fluentui.persona.IPersona
-import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentuidemo.R
 
 fun createAvatarList(context: Context?): ArrayList<IAvatar> {
@@ -204,6 +202,8 @@ fun createAvatar(
     avatar.avatarImageBitmap = imageBitmap
     avatar.avatarImageUri = imageUri
     avatar.avatarBackgroundColor = imageBackgroundColor
+    // We can set any description here
+    avatar.avatarContentDescriptionLabel = name
     return avatar
 }
 
@@ -214,4 +214,5 @@ data class Avatar(override var name: String) : IAvatar {
     override var avatarImageResourceId: Int? = null
     override var avatarImageUri: Uri? = null
     override var avatarBackgroundColor: Int? = null
+    override var avatarContentDescriptionLabel: String = ""
 }
