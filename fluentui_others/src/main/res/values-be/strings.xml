@@ -87,7 +87,6 @@
     <item quantity="many">%s карыстальнікаў</item>
     <item quantity="other">%s карыстальнікаў</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Не вызначана</string>
   <string name="searchbar_clear_search">Ачысціць поле пошуку</string>
   <string name="searchbar_back">Назад</string>
   <string name="searchbar_query_hint_default">Пошук</string>

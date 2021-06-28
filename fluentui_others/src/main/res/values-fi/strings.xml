@@ -83,7 +83,6 @@
     <item quantity="one">%s henkilö</item>
     <item quantity="other">%s henkilöä</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Määrittelemätön</string>
   <string name="searchbar_clear_search">Tyhjennä haku</string>
   <string name="searchbar_back">Edellinen</string>
   <string name="searchbar_query_hint_default">Hae</string>
