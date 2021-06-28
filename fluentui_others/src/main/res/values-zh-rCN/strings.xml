@@ -81,7 +81,6 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s 个人</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">不确定</string>
   <string name="searchbar_clear_search">清除搜索</string>
   <string name="searchbar_back">返回</string>
   <string name="searchbar_query_hint_default">搜索</string>

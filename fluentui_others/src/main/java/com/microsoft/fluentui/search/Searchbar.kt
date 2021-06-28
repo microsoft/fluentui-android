@@ -26,7 +26,7 @@ import com.microsoft.fluentui.util.isVisible
 import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.toggleKeyboardVisibility
 import com.microsoft.fluentui.view.TemplateView
-import com.microsoft.fluentui.widget.ProgressBar
+import com.microsoft.fluentui.progress.ProgressBar
 
 /**
  * [Searchbar] provides a [SearchView] with a search icon, back button, close icon,

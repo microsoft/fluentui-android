@@ -81,7 +81,6 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s명</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">계산 중...</string>
   <string name="searchbar_clear_search">검색 지우기</string>
   <string name="searchbar_back">뒤로</string>
   <string name="searchbar_query_hint_default">검색</string>

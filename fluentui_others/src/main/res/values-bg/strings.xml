@@ -83,7 +83,6 @@
     <item quantity="one">%s човек</item>
     <item quantity="other">%s души</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Неопределен</string>
   <string name="searchbar_clear_search">Изчисти търсенето</string>
   <string name="searchbar_back">Назад</string>
   <string name="searchbar_query_hint_default">Търсене</string>

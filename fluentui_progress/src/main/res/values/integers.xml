@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--Animation-->
+    <integer name="fluentui_anim_indeterminate_duration">1000</integer>
+    <integer name="fluentui_anim_indeterminate_linear_duration">2000</integer>
+</resources>
