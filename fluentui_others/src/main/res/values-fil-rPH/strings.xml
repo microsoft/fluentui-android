@@ -83,6 +83,5 @@
     <item quantity="one">%s tao</item>
     <item quantity="other">%s (na) tao</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Hindi Matukoy</string>
   <string name="done">Tapos na</string>
 </resources>

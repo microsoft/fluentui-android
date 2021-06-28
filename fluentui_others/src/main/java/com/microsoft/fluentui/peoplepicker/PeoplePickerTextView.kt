@@ -27,6 +27,7 @@ import android.view.DragEvent
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import android.view.KeyEvent
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
@@ -259,6 +260,15 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 showDropDown()
                 requestLayout()
             }
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
+        val handled = super.onKeyUp(keyCode, event)
+        if(!handled && keyCode == KeyEvent.KEYCODE_TAB){
+            val view = parent.focusSearch(this, FOCUS_FORWARD)
+            return view?.requestFocus()?: false
+        }
+        return handled
     }
 
     // super.enoughToFilter() sometimes does not allow for showing suggestions when the threshold is 0.

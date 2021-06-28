@@ -91,6 +91,5 @@
     <item quantity="many">%s شخصاً</item>
     <item quantity="other">%s من الأشخاص</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">غير محدد</string>
   <string name="done">تم</string>
 </resources>

@@ -83,6 +83,5 @@
     <item quantity="one">%s kishi</item>
     <item quantity="other">%s kishi</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Noaniq</string>
   <string name="done">Tayyor</string>
 </resources>

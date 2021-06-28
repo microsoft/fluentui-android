@@ -13,7 +13,6 @@
     <attr name="fluentuiBottomNavigationForegroundActiveColor" format="reference|color"/>
     <attr name="fluentuiBottomNavigationForegroundInactiveColor" format="reference|color"/>
 
-
     <!--Button-->
     <attr name="fluentuiButtonBackgroundDefaultColor" format="reference|color"/>
     <attr name="fluentuiButtonBackgroundDisabledColor" format="reference|color"/>
@@ -82,10 +81,6 @@
     <attr name="fluentuiPeoplePickerHintTextColor" format="reference|color"/>
     <attr name="fluentuiPeoplePickerLabelTextColor" format="reference|color"/>
     <attr name="fluentuiPeoplePickerCountSpanTextColor" format="reference|color"/>
-
-    <!--Progress-->
-    <attr name="fluentuiProgressPrimaryColor" format="reference|color"/>
-    <attr name="fluentuiProgressBackgroundColor" format="reference|color"/>
 
     <!--Dialog TabLayout-->
     <attr name="fluentuiDialogTabTextColor" format="reference|color"/>

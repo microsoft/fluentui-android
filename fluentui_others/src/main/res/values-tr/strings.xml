@@ -83,6 +83,5 @@
     <item quantity="one">%s kişi</item>
     <item quantity="other">%s kişi</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Belirsiz</string>
   <string name="done">Bitti</string>
 </resources>

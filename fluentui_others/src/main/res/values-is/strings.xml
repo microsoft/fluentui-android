@@ -83,6 +83,5 @@
     <item quantity="one">%s aðili</item>
     <item quantity="other">%s aðilar</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Óljóst</string>
   <string name="done">Lokið</string>
 </resources>

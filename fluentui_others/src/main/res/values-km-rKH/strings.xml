@@ -81,6 +81,5 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">មនុស្ស %s នាក់</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">ដែលមិនច្បាស់លាស់</string>
   <string name="done">រួចរាល់</string>
 </resources>

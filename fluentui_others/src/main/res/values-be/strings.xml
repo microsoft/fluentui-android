@@ -87,6 +87,5 @@
     <item quantity="many">%s карыстальнікаў</item>
     <item quantity="other">%s карыстальнікаў</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Не вызначана</string>
   <string name="done">Гатова</string>
 </resources>

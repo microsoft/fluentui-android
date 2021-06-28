@@ -65,6 +65,7 @@ dependencies {
     implementation project(':fluentui_topappbars')
     implementation project(':fluentui_menus')
     implementation project(':fluentui_persona')
+    implementation project(':fluentui_progress')
     implementation project(':fluentui_others')
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.bumptech.glide:glide:4.8.0'

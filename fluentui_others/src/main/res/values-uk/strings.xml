@@ -87,6 +87,5 @@
     <item quantity="many">%s осіб</item>
     <item quantity="other">%s осіб</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Не визначено</string>
   <string name="done">Готово</string>
 </resources>

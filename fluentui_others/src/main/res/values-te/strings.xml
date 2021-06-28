@@ -83,6 +83,5 @@
     <item quantity="one">%s వ్యక్తి</item>
     <item quantity="other">%s మంది వ్యక్తులు</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">మధ్యంతరం</string>
   <string name="done">పూర్తయింది</string>
 </resources>

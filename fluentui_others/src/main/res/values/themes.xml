@@ -93,16 +93,12 @@
         <item name="fluentuiPeoplePickerLabelTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPeoplePickerCountSpanTextColor">?attr/fluentuiForegroundSecondaryColor</item>
 
-        <!--Progress-->
-        <item name="fluentuiProgressPrimaryColor">?attr/colorPrimary</item>
-        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_100</item>
-
        <!--TabLayout Dialog-->
         <item name="fluentuiDialogTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiDialogTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
 
-    </style>
+         </style>
 
     <!--
         All light theme semantic colors should be defined in the base theme as the default.

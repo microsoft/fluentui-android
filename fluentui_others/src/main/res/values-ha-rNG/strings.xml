@@ -83,6 +83,5 @@
     <item quantity="one">Mutum %s</item>
     <item quantity="other">Mutane %s</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Indeterminate</string>
   <string name="done">An gama</string>
 </resources>

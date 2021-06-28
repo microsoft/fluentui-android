@@ -81,6 +81,5 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s ຄົນ</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">ບໍ່ຊັດເຈນ</string>
   <string name="done">ແລ້ວໆ</string>
 </resources>

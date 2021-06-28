@@ -87,6 +87,5 @@
     <item quantity="many">Počet ľudí: %s</item>
     <item quantity="other">Počet ľudí: %s</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Neurčené</string>
   <string name="done">Hotovo</string>
 </resources>

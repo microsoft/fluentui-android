@@ -46,9 +46,6 @@
         <!--NumberPicker-->
         <item name="fluentuiNumberPickerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
 
-        <!--Progress-->
-        <item name="fluentuiProgressBackgroundColor">@color/fluentui_gray_900</item>
-
     </style>
 
 </resources>

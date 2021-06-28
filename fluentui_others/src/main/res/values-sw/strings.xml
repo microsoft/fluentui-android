@@ -83,6 +83,5 @@
     <item quantity="one">Mtu %s</item>
     <item quantity="other">Watu %s</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Sio bainifu</string>
   <string name="done">Imekamilika</string>
 </resources>

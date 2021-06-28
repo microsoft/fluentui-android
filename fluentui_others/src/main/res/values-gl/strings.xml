@@ -83,6 +83,5 @@
     <item quantity="one">%s persoa</item>
     <item quantity="other">%s persoas</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Indeterminado</string>
   <string name="done">Feito</string>
 </resources>

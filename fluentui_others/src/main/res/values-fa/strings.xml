@@ -83,6 +83,5 @@
     <item quantity="one">%s نفر</item>
     <item quantity="other">%s نفر</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">نامشخص</string>
   <string name="done">انجام شد</string>
 </resources>

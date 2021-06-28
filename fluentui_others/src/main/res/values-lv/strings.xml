@@ -85,6 +85,5 @@
     <item quantity="one">%s persona</item>
     <item quantity="other">%s personas</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Nenoteikts</string>
   <string name="done">Gatavs</string>
 </resources>

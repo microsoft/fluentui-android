@@ -83,6 +83,5 @@
     <item quantity="one">%s person</item>
     <item quantity="other">%s njerëz</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate"> I papërcaktuar</string>
   <string name="done">U krye</string>
 </resources>

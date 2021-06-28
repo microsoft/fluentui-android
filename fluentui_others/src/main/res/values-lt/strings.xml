@@ -87,6 +87,5 @@
     <item quantity="many">Žmonių: %s</item>
     <item quantity="other">Žmonių: %s</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Neapibrėžtas</string>
   <string name="done">Atlikta</string>
 </resources>

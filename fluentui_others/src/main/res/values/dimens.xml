@@ -69,15 +69,4 @@
     <dimen name="fluentui_people_picker_label_margin_end">8dp</dimen>
     <dimen name="fluentui_people_picker_vertical_padding">12dp</dimen>
 
-    <!--Progress: Circular-->
-    <dimen name="fluentui_progress_circular_xsmall">20dp</dimen>
-    <dimen name="fluentui_progress_circular_small">24dp</dimen>
-    <dimen name="fluentui_progress_circular_medium">36dp</dimen>
-    <dimen name="fluentui_progress_circular_large">44dp</dimen>
-    <dimen name="fluentui_progress_circular_anim_value_to">360</dimen>
-    <dimen name="fluentui_progress_circular_anim_pivot">50%</dimen>
-
-    <!--Progress: Linear-->
-    <dimen name="fluentui_progress_linear_height">4dp</dimen>
-
 </resources>

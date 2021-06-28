@@ -85,6 +85,5 @@
     <item quantity="few">%s људи</item>
     <item quantity="other">%s људи</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Неодређено</string>
   <string name="done">Готово</string>
 </resources>

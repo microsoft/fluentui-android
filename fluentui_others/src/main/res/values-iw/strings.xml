@@ -87,6 +87,5 @@
     <item quantity="many">%s אנשים</item>
     <item quantity="other">%s אנשים</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">לא מוגדר</string>
   <string name="done">בוצע</string>
 </resources>

@@ -83,6 +83,5 @@
     <item quantity="one">%s জন ব্যক্তি</item>
     <item quantity="other">%s জন লোক</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">অনির্দিষ্ট</string>
   <string name="done">সম্পন্ন</string>
 </resources>

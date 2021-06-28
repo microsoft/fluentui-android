@@ -192,7 +192,7 @@ The list of modules and their respective controls is as follows
 |fluentui_menus|Pop up Menu|
 |fluentui_peoplepicker*|PeoplePickerView|
 |fluentui_persona|AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView|
-|fluentui_progress*|Linear Progress Bar, Circular Progress Bar|
+|fluentui_progress|Linear Progress Bar, Circular Progress Bar|
 |fluentui_topappbars|Toolbar, AppBar Layout, SearchBar|
 |fluentui_transients|Snackbar, Tooltip|
 |fluentui_viewpager*|View Pager|

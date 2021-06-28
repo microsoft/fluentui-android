@@ -87,6 +87,5 @@
     <item quantity="many">%s lidí</item>
     <item quantity="other">%s lidí</item>
   </plurals>
-  <string name="progress_circular_content_description_indeterminate">Neurčitý</string>
   <string name="done">Hotovo</string>
 </resources>

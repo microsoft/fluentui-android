@@ -14,7 +14,7 @@ import android.view.View
 import android.widget.ImageView
 import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.persona.AvatarView
-import com.microsoft.fluentui.widget.ProgressBar
+import com.microsoft.fluentui.progress.ProgressBar
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentuidemo.DemoActivity
