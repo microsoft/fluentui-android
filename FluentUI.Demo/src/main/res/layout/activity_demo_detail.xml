@@ -14,7 +14,7 @@
     android:fitsSystemWindows="true"
     tools:context=".DemoActivity">
 
-    <com.microsoft.fluentui.topappbars.appbarlayout.AppBarLayout
+    <com.microsoft.fluentui.appbarlayout.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

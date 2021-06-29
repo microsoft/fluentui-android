@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.topappbars.toolbar
+package com.microsoft.fluentui.toolbar
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -19,7 +19,7 @@ import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.persona.AvatarView
 import com.microsoft.fluentui.persona.IAvatar
 import com.microsoft.fluentui.persona.setAvatar
-import com.microsoft.fluentui.topappbars.search.Searchbar
+import com.microsoft.fluentui.search.Searchbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 /**

@@ -3,7 +3,7 @@
  * Licensed under the MIT License.
  */
 
-package com.microsoft.fluentui.topappbars.search
+package com.microsoft.fluentui.search
 
 import android.app.SearchableInfo
 import android.content.Context
@@ -18,7 +18,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.microsoft.fluentui.topappbars.R
-import com.microsoft.fluentui.topappbars.appbarlayout.AppBarLayout
+import com.microsoft.fluentui.appbarlayout.AppBarLayout
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.inputMethodManager
