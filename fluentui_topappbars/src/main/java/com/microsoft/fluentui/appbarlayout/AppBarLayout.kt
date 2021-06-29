@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import com.microsoft.fluentui.R
+import com.microsoft.fluentui.topappbars.R
 import com.microsoft.fluentui.appbarlayout.AppBarLayout.ScrollBehavior
 import com.microsoft.fluentui.search.Searchbar
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -121,7 +121,7 @@ class AppBarLayout : AppBarLayout {
         }
     }
 
-    constructor(appContext: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs) {
+    constructor(appContext: Context, attrs: AttributeSet?) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_TopAppBars), attrs) {
         setupToolbar(context)
         setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiAppBarLayoutBackgroundColor))
 

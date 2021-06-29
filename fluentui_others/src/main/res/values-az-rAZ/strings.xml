@@ -83,8 +83,5 @@
     <item quantity="one">%s şəxs</item>
     <item quantity="other">%s nəfər</item>
   </plurals>
-  <string name="searchbar_clear_search">Axtarışı təmizləyin</string>
-  <string name="searchbar_back">Geri</string>
-  <string name="searchbar_query_hint_default">Axtarış</string>
   <string name="done">Hazırdır</string>
 </resources>

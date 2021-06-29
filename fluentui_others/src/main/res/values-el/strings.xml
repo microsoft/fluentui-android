@@ -83,8 +83,5 @@
     <item quantity="one">%s άτομο</item>
     <item quantity="other">%s άτομα</item>
   </plurals>
-  <string name="searchbar_clear_search">Απαλοιφή αναζήτησης</string>
-  <string name="searchbar_back">Πίσω</string>
-  <string name="searchbar_query_hint_default">Αναζήτηση</string>
   <string name="done">Τέλος</string>
 </resources>

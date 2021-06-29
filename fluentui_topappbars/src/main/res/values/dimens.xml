@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--AppBarLayout-->
+    <dimen name="fluentui_app_bar_layout_elevation">0dp</dimen>
+    <dimen name="fluentui_app_bar_layout_elevation_scroll">4dp</dimen>
+
+    <!--Searchbar-->
+    <dimen name="fluentui_searchbar_padding_bottom">3dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_margin_vertical">8dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_margin_end">16dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_search_icon_margin_start">16dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_back_button_margin_start">12dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_with_icons_margin_end">4dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_container_corner_radius">6dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_height">34dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_text_size">16sp</dimen>
+    <dimen name="fluentui_searchbar_search_view_margin_start">12dp</dimen>
+    <dimen name="fluentui_searchbar_search_view_action_view_margin_start">0dp</dimen>
+    <dimen name="fluentui_searchbar_search_icon_padding_start">16dp</dimen>
+    <dimen name="fluentui_searchbar_search_icon_padding_end">8dp</dimen>
+    <dimen name="fluentui_searchbar_with_search_icon_search_view_text_padding_start">8dp</dimen>
+    <!--This 1dp padding difference helps make room for the cursor and keep the hint aligned between focus states.-->
+    <dimen name="fluentui_searchbar_with_back_button_search_view_text_padding_start">7dp</dimen>
+    <dimen name="fluentui_searchbar_progress_size">28dp</dimen>
+
+    <!--Toolbar-->
+    <dimen name="fluentui_toolbar_navigation_icon_container_size">@dimen/fluentui_min_touch_size</dimen>
+    <dimen name="fluentui_toolbar_padding_start">16dp</dimen>
+    <dimen name="fluentui_toolbar_padding_start_with_avatar">8dp</dimen>
+    <dimen name="fluentui_toolbar_title_margin_start">0dp</dimen>
+    <dimen name="fluentui_toolbar_title_margin_start_with_avatar">16dp</dimen>
+
+</resources>

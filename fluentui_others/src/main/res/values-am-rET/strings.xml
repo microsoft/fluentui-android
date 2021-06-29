@@ -83,8 +83,5 @@
     <item quantity="one">%s ሰው</item>
     <item quantity="other">%s ሰዎች</item>
   </plurals>
-  <string name="searchbar_clear_search">ፍለጋን አጽዳ</string>
-  <string name="searchbar_back">ተመለስ</string>
-  <string name="searchbar_query_hint_default">ፍለጋ</string>
   <string name="done">ተከናውኗል</string>
 </resources>

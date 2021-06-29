@@ -83,8 +83,5 @@
     <item quantity="one">%s نفر</item>
     <item quantity="other">%s نفر</item>
   </plurals>
-  <string name="searchbar_clear_search">پاک کردن جستجو</string>
-  <string name="searchbar_back">بازگشت</string>
-  <string name="searchbar_query_hint_default">جستجو</string>
   <string name="done">انجام شد</string>
 </resources>

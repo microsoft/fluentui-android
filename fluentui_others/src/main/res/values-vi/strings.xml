@@ -81,8 +81,5 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s người</item>
   </plurals>
-  <string name="searchbar_clear_search">Xóa tìm kiếm</string>
-  <string name="searchbar_back">Quay lại</string>
-  <string name="searchbar_query_hint_default">Tìm kiếm</string>
   <string name="done">Đã xong</string>
 </resources>

@@ -1,3 +1,4 @@
+include ':fluentui_topappbars'
 include ':fluentui_progress'
 include ':fluentui_persona'
 include ':fluentui_menus'

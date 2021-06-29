@@ -81,8 +81,5 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s ຄົນ</item>
   </plurals>
-  <string name="searchbar_clear_search">ລຶບລ້າງການຊອກຫາ</string>
-  <string name="searchbar_back">ກັບຄືນ</string>
-  <string name="searchbar_query_hint_default">ຊອກຫາ</string>
   <string name="done">ແລ້ວໆ</string>
 </resources>

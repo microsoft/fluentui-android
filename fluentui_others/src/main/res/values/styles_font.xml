@@ -64,12 +64,4 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
-      <!--Toolbar-->
-    <style name="TextAppearance.FluentUI.ToolbarTitle" parent="TextAppearance.FluentUI.Title1">
-        <item name="android:textColor">?attr/fluentuiToolbarTitleTextColor</item>
-    </style>
-    <style name="TextAppearance.FluentUI.ToolbarSubtitle" parent="TextAppearance.FluentUI.Caption">
-        <item name="android:textColor">?attr/fluentuiToolbarSubtitleTextColor</item>
-    </style>
-
 </resources>

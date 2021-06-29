@@ -83,8 +83,5 @@
     <item quantity="one">%s човек</item>
     <item quantity="other">%s души</item>
   </plurals>
-  <string name="searchbar_clear_search">Изчисти търсенето</string>
-  <string name="searchbar_back">Назад</string>
-  <string name="searchbar_query_hint_default">Търсене</string>
   <string name="done">Готово</string>
 </resources>
