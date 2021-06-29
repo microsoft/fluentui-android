@@ -83,8 +83,5 @@
     <item quantity="one">Mtu %s</item>
     <item quantity="other">Watu %s</item>
   </plurals>
-  <string name="searchbar_clear_search">Futa utafutaji</string>
-  <string name="searchbar_back">Nyuma</string>
-  <string name="searchbar_query_hint_default">Utafutaji</string>
   <string name="done">Imekamilika</string>
 </resources>

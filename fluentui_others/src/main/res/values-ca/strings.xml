@@ -83,8 +83,5 @@
     <item quantity="one">%s persona</item>
     <item quantity="other">%s persones</item>
   </plurals>
-  <string name="searchbar_clear_search">Esborra la cerca</string>
-  <string name="searchbar_back">Enrere</string>
-  <string name="searchbar_query_hint_default">Cerca</string>
   <string name="done">Fet</string>
 </resources>

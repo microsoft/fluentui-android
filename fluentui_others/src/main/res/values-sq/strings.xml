@@ -83,8 +83,5 @@
     <item quantity="one">%s person</item>
     <item quantity="other">%s njerëz</item>
   </plurals>
-  <string name="searchbar_clear_search">Pastro kërkimin</string>
-  <string name="searchbar_back">Prapa</string>
-  <string name="searchbar_query_hint_default">Kërko</string>
   <string name="done">U krye</string>
 </resources>

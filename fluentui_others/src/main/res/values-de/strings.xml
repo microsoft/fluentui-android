@@ -83,8 +83,5 @@
     <item quantity="one">%s Person</item>
     <item quantity="other">%s Personen</item>
   </plurals>
-  <string name="searchbar_clear_search">Suche löschen</string>
-  <string name="searchbar_back">Zurück</string>
-  <string name="searchbar_query_hint_default">Suchen</string>
   <string name="done">Fertig</string>
 </resources>

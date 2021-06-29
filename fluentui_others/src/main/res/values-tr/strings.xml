@@ -83,8 +83,5 @@
     <item quantity="one">%s kişi</item>
     <item quantity="other">%s kişi</item>
   </plurals>
-  <string name="searchbar_clear_search">Aramayı temizle</string>
-  <string name="searchbar_back">Geri</string>
-  <string name="searchbar_query_hint_default">Ara</string>
   <string name="done">Bitti</string>
 </resources>

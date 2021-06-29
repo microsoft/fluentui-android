@@ -85,8 +85,5 @@
     <item quantity="few">%s osobe</item>
     <item quantity="other">%s osobe</item>
   </plurals>
-  <string name="searchbar_clear_search">Obriši pretragu</string>
-  <string name="searchbar_back">Nazad</string>
-  <string name="searchbar_query_hint_default">Pretraga</string>
   <string name="done">Gotovo</string>
 </resources>

@@ -81,8 +81,5 @@
   <plurals name="people_picker_accessibility_text_view">
     <item quantity="other">%s 人</item>
   </plurals>
-  <string name="searchbar_clear_search">検索のクリア</string>
-  <string name="searchbar_back">戻る</string>
-  <string name="searchbar_query_hint_default">検索</string>
   <string name="done">完了</string>
 </resources>

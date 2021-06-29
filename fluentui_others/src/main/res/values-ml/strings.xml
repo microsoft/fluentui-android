@@ -83,8 +83,5 @@
     <item quantity="one">%s വ്യക്തി</item>
     <item quantity="other">%s ആളുകൾ</item>
   </plurals>
-  <string name="searchbar_clear_search">തിരയൽ മായ്‌ക്കുക</string>
-  <string name="searchbar_back">പിന്നിലേക്ക്</string>
-  <string name="searchbar_query_hint_default">തിരയുക</string>
   <string name="done">ചെയ്‌തു</string>
 </resources>

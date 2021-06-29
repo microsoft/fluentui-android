@@ -83,8 +83,5 @@
     <item quantity="one">%s pertsona</item>
     <item quantity="other">%s pertsona</item>
   </plurals>
-  <string name="searchbar_clear_search">Garbitu bilaketa</string>
-  <string name="searchbar_back">Atzera</string>
-  <string name="searchbar_query_hint_default">Bilatu</string>
   <string name="done">Eginda</string>
 </resources>
