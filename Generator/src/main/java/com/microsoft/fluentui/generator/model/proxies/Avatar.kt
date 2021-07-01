@@ -20,7 +20,9 @@ class Avatar(val type: Avatar.Type = Avatar.Type.Default()) : AppearanceProxy() 
     override val viewName: String
         get() = super.viewName + "View"
     override val sourcePath: String
-        get() = "../fluentui_others"
+        get() = "../fluentui_persona"
+    override val importPath: String
+        get() = "persona."
 
     override fun setupCustomAttributes(): List<CustomAttribute> {
         val attrsList = mutableListOf<CustomAttribute>()

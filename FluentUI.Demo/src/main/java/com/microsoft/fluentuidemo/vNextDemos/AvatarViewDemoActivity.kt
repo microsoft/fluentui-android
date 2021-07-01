@@ -1,13 +1,9 @@
 package com.microsoft.fluentuidemo.vNextDemos
 
-import android.content.res.Resources
-import android.graphics.Color
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.*
-import androidx.appcompat.widget.ThemeUtils
 import androidx.core.content.ContextCompat
 import androidx.core.widget.TextViewCompat
 import com.bumptech.glide.Glide
