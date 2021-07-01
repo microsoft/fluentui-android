@@ -25,34 +25,6 @@
     <dimen name="fluentui_button_outlined_padding_vertical">8dp</dimen>
     <dimen name="fluentui_button_outlined_stroke_width">1dp</dimen>
 
-    <!--CalendarView-->
-    <dimen name="fluentui_calendar_week_day_font_size">16sp</dimen>
-    <dimen name="fluentui_calendar_month_year_font_size">12sp</dimen>
-    <dimen name="fluentui_calendar_week_heading_height">28dp</dimen>
-    <dimen name="fluentui_calendar_week_heading_text_size">12sp</dimen>
-    <dimen name="fluentui_calendar_month_overlay_text_size">20sp</dimen>
-    <dimen name="fluentui_calendar_weeks_max_width">336dp</dimen>
-    <dimen name="fluentui_calendar_day_selection_size">36dp</dimen>
-
-    <!--DatePickerFragment-->
-    <dimen name="fluentui_date_picker_fragment_title_horizontal_margin">24dp</dimen>
-    <dimen name="fluentui_date_picker_fragment_title_vertical_margin">10dp</dimen>
-
-    <!--DateTimePicker-->
-    <dimen name="fluentui_date_time_picker_padding">16dp</dimen>
-    <dimen name="fluentui_date_time_picker_date_internal_min_width">160dp</dimen>
-    <dimen name="fluentui_date_time_picker_month_internal_min_width">100dp</dimen>
-    <dimen name="fluentui_date_time_picker_year_internal_min_width">80dp</dimen>
-    <dimen name="fluentui_date_time_picker_fading_edge_length">100dp</dimen>
-    <dimen name="fluentui_date_time_picker_internal_min_width">48dp</dimen>
-    <dimen name="fluentui_date_time_picker_max_height">336dp</dimen>
-    <dimen name="fluentui_date_time_picker_padding_right">8dp</dimen>
-    <dimen name="fluentui_date_time_picker_toolbar_elevation">4dp</dimen>
-
-    <!--Dialog-->
-    <dimen name="fluentui_dialog_insets">@dimen/fluentui_content_inset</dimen>
-    <dimen name="fluentui_resizable_dialog_card_elevation">2dp</dimen>
-
     <!--PeoplePicker-->
     <dimen name="fluentui_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
     <!--30dp is an approximation of how much space 3 digits take up for the count span-->
