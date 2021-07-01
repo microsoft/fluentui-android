@@ -12,11 +12,11 @@ import android.text.TextPaint
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
-import com.microsoft.fluentui.R
 import com.microsoft.fluentui.generator.AvatarSize
 import com.microsoft.fluentui.generator.AvatarStyle
-import com.microsoft.fluentui.generator.resourceProxies.AvatarTokensSystem
 import com.microsoft.fluentui.persona.InitialsDrawable
+import com.microsoft.fluentui.generator.resourceProxies.AvatarTokensSystem
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.FieldUpdateListener
 import com.microsoft.fluentui.util.ThemeUtil
@@ -63,7 +63,7 @@ open class AvatarView : AppCompatImageView {
     private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     @JvmOverloads
-    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Persona), attrs, defStyleAttr) {
         tokenSystem = AvatarTokensSystem(context, resources)
         avatar = Avatar()
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarTokensView)

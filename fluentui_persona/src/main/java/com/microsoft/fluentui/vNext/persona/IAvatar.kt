@@ -4,9 +4,9 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import androidx.annotation.DrawableRes
-import com.microsoft.fluentui.R
 import com.microsoft.fluentui.generator.AvatarSize
 import com.microsoft.fluentui.generator.AvatarStyle
+import com.microsoft.fluentui.persona.R
 
 
 interface IAvatar {
