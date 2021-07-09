@@ -5,14 +5,6 @@
   -->
 
 <resources>
-    <!--AppBarLayout-->
-
-    <!--Animation-->
-
     <!--NumberPicker-->
     <integer name="fluentui_number_picker_selector_wheel_item_count" type="integer">7</integer>
-
-
-    <!--PeoplePicker-->
-
 </resources>
