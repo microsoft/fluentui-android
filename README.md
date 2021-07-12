@@ -188,9 +188,9 @@ The list of modules and their respective controls is as follows
 |fluentui_actionbar*|Action Bar Layout|
 |fluentui_bottomnavigation*|Bottom Navigation|
 |fluentui_buttons*| Buttons|
-|fluentui_datetime*|Calendar, DateTime Picker|
+|fluentui_calendar|Calendar, DateTime Picker|
 |fluentui_menus|Pop up Menu|
-|fluentui_peoplepicker*|PeoplePickerView|
+|fluentui_peoplepicker|PeoplePickerView|
 |fluentui_persona|AvatarView, AvatarGroup View,<br>PersonaChipView, PersonaListView|
 |fluentui_progress|Linear Progress Bar, Circular Progress Bar|
 |fluentui_topappbars|Toolbar, AppBar Layout, SearchBar|
