@@ -14,9 +14,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.databinding.PeoplePickerSearchDirectoryBinding
 import com.microsoft.fluentui.listitem.ListItemView
+import com.microsoft.fluentui.peoplepicker.databinding.PeoplePickerSearchDirectoryBinding
 import com.microsoft.fluentui.persona.*
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentui.util.activity

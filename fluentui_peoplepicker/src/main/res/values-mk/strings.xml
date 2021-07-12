@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Етикета</string>
+  <string name="people_picker_search_directory">Пребарај го директориумот</string>
+  <string name="people_picker_search_progress">Се пребарува…</string>
+  <string name="people_picker_accessibility_default_hint">Внесете име или е-пошта</string>
+  <string name="people_picker_accessibility_persona_added">%s се додаде</string>
+  <string name="people_picker_accessibility_persona_removed">%s се отстрани</string>
+  <string name="people_picker_accessibility_replaced">%s се замени,</string>
+  <string name="people_picker_accessibility_click_persona">Кликнете</string>
+  <string name="people_picker_accessibility_delete_persona">Избриши</string>
+  <string name="people_picker_accessibility_deselect_persona">Поништи го изборот</string>
+  <string name="people_picker_accessibility_select_persona">Избери</string>
+  <string name="people_picker_accessibility_clicked_persona">Се кликна на %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Се поништи изборот на %s</string>
+  <string name="people_picker_accessibility_selected_persona">Се избра %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, со активирање ќе се поништи изборот</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, со активирање ќе се избрише</string>
+  <string name="people_picker_accessibility_click_selected_persona">, со активирање ќе се кликне</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Списокот со предлози се отвори со %s лице</item>
+    <item quantity="other">Списокот со предлози се отвори со %s луѓе</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s лице</item>
+    <item quantity="other">%s луѓе</item>
+  </plurals>
+</resources>

@@ -7,5 +7,4 @@
 <resources>
     <!--PeoplePicker-->
     <integer name="fluentui_people_picker_search_directory_max_lines">2</integer>
-
 </resources>

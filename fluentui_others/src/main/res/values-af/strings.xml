@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Etiket</string>
-  <string name="people_picker_search_directory">Deursoek gids</string>
-  <string name="people_picker_search_progress">Soek tans…</string>
-  <string name="people_picker_accessibility_default_hint">Voer \'n naam of e-posadres in</string>
-  <string name="people_picker_accessibility_persona_added">%s bygevoeg</string>
-  <string name="people_picker_accessibility_persona_removed">%s verwyder</string>
-  <string name="people_picker_accessibility_replaced">%s vervang,</string>
-  <string name="people_picker_accessibility_click_persona">Klik</string>
-  <string name="people_picker_accessibility_delete_persona">Skrap</string>
-  <string name="people_picker_accessibility_deselect_persona">Ontkies alles</string>
-  <string name="people_picker_accessibility_select_persona">Kies</string>
-  <string name="people_picker_accessibility_clicked_persona">Het %s geklik</string>
-  <string name="people_picker_accessibility_deselected_persona">Het %s ontkies</string>
-  <string name="people_picker_accessibility_selected_persona">Gekies %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Aktivering sal ontkies</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Aktivering sal skrap</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Aktivering sal klik</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Voorstellelys geopen met %s persoon</item>
-    <item quantity="other">Voorstellelys geopen met %s mense</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s persoon</item>
-    <item quantity="other">%s mense</item>
-  </plurals>
   <string name="done">Klaar</string>
 </resources>

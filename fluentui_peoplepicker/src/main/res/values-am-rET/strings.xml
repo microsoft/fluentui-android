@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">መለያ</string>
+  <string name="people_picker_search_directory">ማውጫ ውስጥ ፈልግ</string>
+  <string name="people_picker_search_progress">በፍለጋ ላይ...</string>
+  <string name="people_picker_accessibility_default_hint">ስም ወይም ኢሜይል አድራሻ ያስገቡ</string>
+  <string name="people_picker_accessibility_persona_added">%s ወደ ተቀባዮች ታክሏል</string>
+  <string name="people_picker_accessibility_persona_removed">%s ከተቀባዮች ተወግዷል</string>
+  <string name="people_picker_accessibility_replaced">%s ተተክቷል፣</string>
+  <string name="people_picker_accessibility_click_persona">ጠቅ አድርግ</string>
+  <string name="people_picker_accessibility_delete_persona">ሰርዝ</string>
+  <string name="people_picker_accessibility_deselect_persona">ሁሉንም ከምርጫ አውጣ</string>
+  <string name="people_picker_accessibility_select_persona">ምረጥ</string>
+  <string name="people_picker_accessibility_clicked_persona">%s ጠቅ ተደርጓል</string>
+  <string name="people_picker_accessibility_deselected_persona">%s ከምርጫ ወጥቷል</string>
+  <string name="people_picker_accessibility_selected_persona">%s ተመርጧል</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ማንቃት ከምርጫ ይወጣል</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, ማንቃት ጠቅ ይደረጋል</string>
+  <string name="people_picker_accessibility_click_selected_persona">፣ ማንቃት ጠቅ ይደረጋል</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">የጥቆማ ዝርዝር በ %s ሰው ተከፍቷል</item>
+    <item quantity="other">የጥቆማዎች ዝርዝር በ%s ሰዎች ተከፍቷል</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s ሰው</item>
+    <item quantity="other">%s ሰዎች</item>
+  </plurals>
+</resources>

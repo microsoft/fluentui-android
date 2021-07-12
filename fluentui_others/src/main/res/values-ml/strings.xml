@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">ലേബൽ</string>
-  <string name="people_picker_search_directory">ഡയറക്‌ടറി തിരയുക</string>
-  <string name="people_picker_search_progress">തിരയുന്നു…</string>
-  <string name="people_picker_accessibility_default_hint">ഒരു പേരോ ഇമെയിലോ നൽകുക</string>
-  <string name="people_picker_accessibility_persona_added">%s ചേർത്തു</string>
-  <string name="people_picker_accessibility_persona_removed">%s നീക്കംചെയ്‌തു</string>
-  <string name="people_picker_accessibility_replaced">%s മാറ്റി പകരംവച്ചു,</string>
-  <string name="people_picker_accessibility_click_persona">ക്ലിക്ക് ചെയ്യുക</string>
-  <string name="people_picker_accessibility_delete_persona">ഇല്ലാതാക്കുക</string>
-  <string name="people_picker_accessibility_deselect_persona">തിരഞ്ഞെടുപ്പ് മാറ്റുക</string>
-  <string name="people_picker_accessibility_select_persona">തിരഞ്ഞെടുക്കുക</string>
-  <string name="people_picker_accessibility_clicked_persona">%s ക്ലിക്ക് ചെയ്‌തു</string>
-  <string name="people_picker_accessibility_deselected_persona">%s തിരഞ്ഞെടുപ്പ് മാറ്റി</string>
-  <string name="people_picker_accessibility_selected_persona">%s തിരഞ്ഞെടുത്തു</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, സജീവമാക്കൽ തിരഞ്ഞെടുപ്പ് മാറ്റും</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, സജീവമാക്കൽ ഇല്ലാതാക്കും</string>
-  <string name="people_picker_accessibility_click_selected_persona">, സജീവമാക്കൽ ക്ലിക്ക് ചെയ്യും</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">%s വ്യക്തി അടങ്ങുന്ന നിർദ്ദേശ ലിസ്റ്റ് തുറന്നു</item>
-    <item quantity="other">%s ആളുകൾ അടങ്ങുന്ന നിർദ്ദേശ ലിസ്റ്റ് തുറന്നു</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s വ്യക്തി</item>
-    <item quantity="other">%s ആളുകൾ</item>
-  </plurals>
   <string name="done">ചെയ്‌തു</string>
 </resources>

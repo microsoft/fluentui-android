@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Lebo</string>
-  <string name="people_picker_search_directory">Tafuta Saraka</string>
-  <string name="people_picker_search_progress">Inatafuta…</string>
-  <string name="people_picker_accessibility_default_hint">Andika jina au anwani ya barua pepe</string>
-  <string name="people_picker_accessibility_persona_added">%s imeongezwa</string>
-  <string name="people_picker_accessibility_persona_removed">%s imeondolewa</string>
-  <string name="people_picker_accessibility_replaced">%s imebadilishwa,</string>
-  <string name="people_picker_accessibility_click_persona">Bofya</string>
-  <string name="people_picker_accessibility_delete_persona">Futa</string>
-  <string name="people_picker_accessibility_deselect_persona">Ondoa zote uteuzi</string>
-  <string name="people_picker_accessibility_select_persona">Chagua</string>
-  <string name="people_picker_accessibility_clicked_persona">Imebofya %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Imebatilishwa uteuzi %s</string>
-  <string name="people_picker_accessibility_selected_persona">Umeteua %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Uamilisho utaondoa uteuzi</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Uamilisho utafuta</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Uamilisho utabofyiwa</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Orodha ya mapendekezo ilifunguliwa na mtu %s</item>
-    <item quantity="other">Orodha ya mapendekezo ilifunguliwa na watu %s</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">Mtu %s</item>
-    <item quantity="other">Watu %s</item>
-  </plurals>
   <string name="done">Imekamilika</string>
 </resources>

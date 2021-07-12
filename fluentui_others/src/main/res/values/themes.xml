@@ -12,7 +12,6 @@
     -->
     <style name="Theme.FluentUI.Components" parent="Base.Theme.FluentUI">
         <item name="buttonStyle">@style/Widget.FluentUI.Button</item>
-        <item name="homeAsUpIndicator">@drawable/ms_ic_arrow_left_24_filled_toolbar</item>
         <item name="checkboxStyle">@style/Widget.FluentUI.CheckBox</item>
         <item name="radioButtonStyle">@style/Widget.FluentUI.RadioButton</item>
         <!-- *** Semantic Colors *** -->
@@ -50,22 +49,12 @@
         <item name="fluentuiCompoundButtonTintDefaultColor">?attr/fluentuiForegroundSecondaryIconColor</item>
         <item name="fluentuiCompoundButtonTintCheckedColor">?attr/fluentuiForegroundSelectedColor</item>
 
-
-        <!--PeoplePicker-->
-        <item name="fluentuiPeoplePickerBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiPeoplePickerPopupBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiPeoplePickerTextViewBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiPeoplePickerTextViewDragBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
-        <item name="fluentuiPeoplePickerHintTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiPeoplePickerLabelTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiPeoplePickerCountSpanTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-
     </style>
 
     <!--
         All light theme semantic colors should be defined in the base theme as the default.
         Dark theme specific semantic colors should be defined in "themes.xml (night)".
     -->
-    <style name="Theme.FluentUI" parent="Theme.FluentUI.Components"/>
+    <style name="Theme.FluentUI.Others" parent="Theme.FluentUI.Components"/>
 
 </resources>
