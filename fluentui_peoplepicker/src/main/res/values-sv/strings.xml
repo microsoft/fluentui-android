@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Etikett</string>
+  <string name="people_picker_search_directory">Sök i katalog</string>
+  <string name="people_picker_search_progress">Söker ...</string>
+  <string name="people_picker_accessibility_default_hint">Ange ett namn eller en e-postadress</string>
+  <string name="people_picker_accessibility_persona_added">%s har lagts till</string>
+  <string name="people_picker_accessibility_persona_removed">%s har tagits bort</string>
+  <string name="people_picker_accessibility_replaced">%s har ersatts,</string>
+  <string name="people_picker_accessibility_click_persona">Klicka</string>
+  <string name="people_picker_accessibility_delete_persona">Ta bort</string>
+  <string name="people_picker_accessibility_deselect_persona">Avmarkera</string>
+  <string name="people_picker_accessibility_select_persona">Välj</string>
+  <string name="people_picker_accessibility_clicked_persona">Klickade på %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Avmarkerade %s</string>
+  <string name="people_picker_accessibility_selected_persona">Markerade %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktivering avmarkerar</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktivering tar bort</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktivering klickar på</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Förslagslista öppnades med %s person</item>
+    <item quantity="other">Förslagslista öppnades med %s personer</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s person</item>
+    <item quantity="other">%s personer</item>
+  </plurals>
+</resources>

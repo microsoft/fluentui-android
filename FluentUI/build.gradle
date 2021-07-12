@@ -29,12 +29,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':fluentui_calendar')
     api project(':fluentui_ccb')
     api project(':fluentui_core')
     api project(':fluentui_drawer')
     api project(':fluentui_listitem')
     api project(':fluentui_menus')
     api project(':fluentui_others')
+    api project(':fluentui_peoplepicker')
     api project(':fluentui_persona')
     api project(':fluentui_progress')
     api project(':fluentui_tablayout')

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Yorliq</string>
+  <string name="people_picker_search_directory">Qidiruv katalogi</string>
+  <string name="people_picker_search_progress">Qidirilmoqda…</string>
+  <string name="people_picker_accessibility_default_hint">Ismi yoki email manzilini kiriting</string>
+  <string name="people_picker_accessibility_persona_added">%s kiritildi</string>
+  <string name="people_picker_accessibility_persona_removed">%s olib tashlandi</string>
+  <string name="people_picker_accessibility_replaced">%s almashtirildi,</string>
+  <string name="people_picker_accessibility_click_persona">Bosish</string>
+  <string name="people_picker_accessibility_delete_persona">O‘chirish</string>
+  <string name="people_picker_accessibility_deselect_persona">Belgilashni bekor qilish</string>
+  <string name="people_picker_accessibility_select_persona">Belgilash</string>
+  <string name="people_picker_accessibility_clicked_persona">%s bosildi</string>
+  <string name="people_picker_accessibility_deselected_persona">%s belgilash bekor qilindi</string>
+  <string name="people_picker_accessibility_selected_persona">%s tanlandi</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Faollashtirish belgilashni bekor qiladi</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Faollashtirish o‘chiradi</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Faollashtirish bosadi</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">%s kishilik tavsiyalar ro‘yxati ochildi</item>
+    <item quantity="other">%s kishilik tavsiyalar ro‘yxati ochildi</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s kishi</item>
+    <item quantity="other">%s kishi</item>
+  </plurals>
+</resources>

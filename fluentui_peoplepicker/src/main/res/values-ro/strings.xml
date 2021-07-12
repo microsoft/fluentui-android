@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Etichetă</string>
+  <string name="people_picker_search_directory">Căutați în director</string>
+  <string name="people_picker_search_progress">Se caută…</string>
+  <string name="people_picker_accessibility_default_hint">Introduceți un nume sau o adresă de e-mail</string>
+  <string name="people_picker_accessibility_persona_added">%s adăugat</string>
+  <string name="people_picker_accessibility_persona_removed">%s eliminat</string>
+  <string name="people_picker_accessibility_replaced">%s înlocuit,</string>
+  <string name="people_picker_accessibility_click_persona">Faceți clic</string>
+  <string name="people_picker_accessibility_delete_persona">Ștergere</string>
+  <string name="people_picker_accessibility_deselect_persona">Deselectare</string>
+  <string name="people_picker_accessibility_select_persona">Selectare</string>
+  <string name="people_picker_accessibility_clicked_persona">Ați făcut clic pe %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Ați deselectat %s</string>
+  <string name="people_picker_accessibility_selected_persona">Ați selectat %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Activarea va deselecta</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Activarea va șterge</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Activarea va face clic</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Lista de sugestii deschisă cu %s persoană</item>
+    <item quantity="few">Lista de sugestii deschisă cu %s persoane</item>
+    <item quantity="other">Lista de sugestii deschisă cu %s persoane</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s persoană</item>
+    <item quantity="few">%s persoane</item>
+    <item quantity="other">%s persoane</item>
+  </plurals>
+</resources>

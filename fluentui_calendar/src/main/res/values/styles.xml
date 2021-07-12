@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
+    <!--DateTimePickerDialog-->
+    <style name="DateTimePickerDialog.Toolbar" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorControlHighlight">?attr/fluentuiBackgroundPressedColor</item>
+    </style>
+    <style name="Base.Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" parent="Widget.FluentUI.Dialog.TabLayout">
+        <item name="tabGravity">fill</item>
+        <item name="tabMode">fixed</item>
+    </style>
+    <style name="Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" parent="Base.Widget.FluentUI.DateTimePickerDialog.DateTimeRange.TabLayout" />
+    <!--Dialog-->
+    <style name="Dialog.FluentUI" parent="@style/Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackground">?attr/fluentuiDialogBackgroundColor</item>
+        <item name="android:colorBackgroundCacheHint">?attr/fluentuiDialogBackgroundColor</item>
+        <item name="android:textAppearance">@style/TextAppearance.FluentUI.Title1</item>
+    </style>
+    <style name="Widget.FluentUI.Dialog.TabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabGravity">center</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabTextAppearance">@style/TextAppearance.FluentUI.Dialog.Tab.Light</item>
+        <item name="tabMinWidth">90dp</item>
+        <item name="tabSelectedTextColor">?attr/fluentuiDialogTabSelectedTextColor</item>
+        <item name="tabIndicatorColor">?attr/fluentuiDialogTabIndicatorColor</item>
+        <item name="android:background">?attr/fluentuiDialogTabLayoutBackgroundColor</item>
+        <item name="tabRippleColor">?fluentuiBackgroundPressedColor</item>
+    </style>
+
+    <!--NumberPicker-->
+    <style name="Widget.FluentUI.NumberPicker">
+        <item name="android:orientation">vertical</item>
+        <item name="android:requiresFadingEdge">vertical</item>
+        <item name="android:fadingEdgeLength">@dimen/fluentui_date_time_picker_fading_edge_length</item>
+        <item name="solidColor">@android:color/transparent</item>
+        <item name="internalMinWidth">@dimen/fluentui_date_time_picker_internal_min_width</item>
+        <item name="internalMaxHeight">@dimen/fluentui_date_time_picker_max_height</item>
+        <item name="selectorWheelItemCount">@integer/fluentui_number_picker_selector_wheel_item_count</item>
+        <item name="textAlign">center</item>
+        <item name="android:paddingRight">@dimen/fluentui_date_time_picker_padding_right</item>
+    </style>
+</resources>
