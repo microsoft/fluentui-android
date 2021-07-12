@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Etikett</string>
-  <string name="people_picker_search_directory">Søk i katalogen</string>
-  <string name="people_picker_search_progress">Søker …</string>
-  <string name="people_picker_accessibility_default_hint">Angi et navn eller en e-postadresse</string>
-  <string name="people_picker_accessibility_persona_added">%s er lagt til</string>
-  <string name="people_picker_accessibility_persona_removed">%s er fjernet</string>
-  <string name="people_picker_accessibility_replaced">%s er erstattet,</string>
-  <string name="people_picker_accessibility_click_persona">Klikk på</string>
-  <string name="people_picker_accessibility_delete_persona">Slett</string>
-  <string name="people_picker_accessibility_deselect_persona">Fjern merking</string>
-  <string name="people_picker_accessibility_select_persona">Merk</string>
-  <string name="people_picker_accessibility_clicked_persona">Klikket på %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Fjernet merking av %s</string>
-  <string name="people_picker_accessibility_selected_persona">Merket %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, aktivering fjerner merking </string>
-  <string name="people_picker_accessibility_delete_selected_persona">, aktivering sletter </string>
-  <string name="people_picker_accessibility_click_selected_persona">, aktivering klikker</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Åpnet forslagsliste med %s person</item>
-    <item quantity="other">Åpnet forslagsliste med %s personer</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s person</item>
-    <item quantity="other">%s personer</item>
-  </plurals>
   <string name="done">Fullført</string>
 </resources>

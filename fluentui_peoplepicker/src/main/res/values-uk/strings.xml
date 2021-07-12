@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Мітка</string>
+  <string name="people_picker_search_directory">Пошук у каталозі</string>
+  <string name="people_picker_search_progress">Пошук…</string>
+  <string name="people_picker_accessibility_default_hint">Введіть ім’я або адресу електронної пошти</string>
+  <string name="people_picker_accessibility_persona_added">Додано користувача %s</string>
+  <string name="people_picker_accessibility_persona_removed">Вилучено користувача %s</string>
+  <string name="people_picker_accessibility_replaced">Замінено користувача %s,</string>
+  <string name="people_picker_accessibility_click_persona">Клацнути</string>
+  <string name="people_picker_accessibility_delete_persona">Видалити</string>
+  <string name="people_picker_accessibility_deselect_persona">Скасувати вибір</string>
+  <string name="people_picker_accessibility_select_persona">Вибрати</string>
+  <string name="people_picker_accessibility_clicked_persona">Клацнуто користувача %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Скасовано вибір користувача %s</string>
+  <string name="people_picker_accessibility_selected_persona">Вибрано користувача %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, якщо активувати, вибір буде скасовано</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, якщо активувати, буде виконано видалення</string>
+  <string name="people_picker_accessibility_click_selected_persona">, якщо активувати, буде виконано клацання</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Список пропозицій відкрити для %s особи</item>
+    <item quantity="few">Список пропозицій відкрити для %s осіб</item>
+    <item quantity="many">Список пропозицій відкрити для %s осіб</item>
+    <item quantity="other">Список пропозицій відкрити для %s осіб</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s особа</item>
+    <item quantity="few">%s особи</item>
+    <item quantity="many">%s осіб</item>
+    <item quantity="other">%s осіб</item>
+  </plurals>
+</resources>

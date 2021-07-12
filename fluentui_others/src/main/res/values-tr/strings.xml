@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Etiket</string>
-  <string name="people_picker_search_directory">Dizinde Ara</string>
-  <string name="people_picker_search_progress">Aranıyor…</string>
-  <string name="people_picker_accessibility_default_hint">Ad veya e-posta girin</string>
-  <string name="people_picker_accessibility_persona_added">%s ekledi</string>
-  <string name="people_picker_accessibility_persona_removed">%s kaldırdı</string>
-  <string name="people_picker_accessibility_replaced">%s değiştirdi,</string>
-  <string name="people_picker_accessibility_click_persona">Tıklayın</string>
-  <string name="people_picker_accessibility_delete_persona">Silin</string>
-  <string name="people_picker_accessibility_deselect_persona">Seçimi kaldırın</string>
-  <string name="people_picker_accessibility_select_persona">Seçin</string>
-  <string name="people_picker_accessibility_clicked_persona">%s adlı kişiye tıklandı</string>
-  <string name="people_picker_accessibility_deselected_persona">%s seçimi kaldırıldı</string>
-  <string name="people_picker_accessibility_selected_persona">%s seçildi</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Etkinleştirildiğinde seçimi kaldırılacak</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Etkinleştirildiğinde silinecek</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Etkinleştirildiğinde tıklanacak</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Öneri listesi %s kişiyle açıldı</item>
-    <item quantity="other">Öneri listesi %s kişiyle açıldı</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s kişi</item>
-    <item quantity="other">%s kişi</item>
-  </plurals>
   <string name="done">Bitti</string>
 </resources>

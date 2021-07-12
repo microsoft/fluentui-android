@@ -1,27 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Label</string>
-  <string name="people_picker_search_directory">Cari Direktori</string>
-  <string name="people_picker_search_progress">Mencari…</string>
-  <string name="people_picker_accessibility_default_hint">Masukkan nama atau email</string>
-  <string name="people_picker_accessibility_persona_added">%s ditambahkan</string>
-  <string name="people_picker_accessibility_persona_removed">%s dihapus</string>
-  <string name="people_picker_accessibility_replaced">%s diganti,</string>
-  <string name="people_picker_accessibility_click_persona">Klik</string>
-  <string name="people_picker_accessibility_delete_persona">Hapus</string>
-  <string name="people_picker_accessibility_deselect_persona">Batalkan Pilihan</string>
-  <string name="people_picker_accessibility_select_persona">Pilih</string>
-  <string name="people_picker_accessibility_clicked_persona">Mengklik %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Membatalkan pilihan %s</string>
-  <string name="people_picker_accessibility_selected_persona">Memilih %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Pengaktifan akan membatalkan pilihan</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Pengaktifan akan menghapus</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Pengaktifan akan mengklik</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="other">Daftar saran dibuka dengan %s orang</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="other">%s orang</item>
-  </plurals>
   <string name="done">Selesai</string>
 </resources>

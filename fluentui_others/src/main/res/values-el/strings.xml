@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Ετικέτα</string>
-  <string name="people_picker_search_directory">Αναζήτηση στον κατάλογο</string>
-  <string name="people_picker_search_progress">Αναζήτηση…</string>
-  <string name="people_picker_accessibility_default_hint">Καταχωρήστε ένα όνομα ή μια διεύθυνση ηλεκτρονικού ταχυδρομείου</string>
-  <string name="people_picker_accessibility_persona_added">Ο χρήστης %s προστέθηκε</string>
-  <string name="people_picker_accessibility_persona_removed">Ο χρήστης %s καταργήθηκε</string>
-  <string name="people_picker_accessibility_replaced">Ο χρήστης %s αντικαταστάθηκε,</string>
-  <string name="people_picker_accessibility_click_persona">Κλικ</string>
-  <string name="people_picker_accessibility_delete_persona">Διαγραφή</string>
-  <string name="people_picker_accessibility_deselect_persona">Αποεπιλογή</string>
-  <string name="people_picker_accessibility_select_persona">Επιλογή</string>
-  <string name="people_picker_accessibility_clicked_persona">Έγινε κλικ στο \"%s\"</string>
-  <string name="people_picker_accessibility_deselected_persona">Αποεπιλέχθηκε το \"%s\"</string>
-  <string name="people_picker_accessibility_selected_persona">Επιλέχθηκε το \"%s\"</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Με την ενεργοποίηση θα γίνει αποεπιλογή</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Με την ενεργοποίηση θα γίνει διαγραφή</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Με την ενεργοποίηση θα γίνει κλικ</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Η λίστα προτάσεων άνοιξε με %s άτομο</item>
-    <item quantity="other">Η λίστα προτάσεων άνοιξε με %s άτομα</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s άτομο</item>
-    <item quantity="other">%s άτομα</item>
-  </plurals>
   <string name="done">Τέλος</string>
 </resources>

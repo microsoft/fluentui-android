@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">برچسب</string>
-  <string name="people_picker_search_directory">جستجوی دایرکتوری</string>
-  <string name="people_picker_search_progress">در حال جستجو…</string>
-  <string name="people_picker_accessibility_default_hint">یک نام یا ایمیل وارد کنید</string>
-  <string name="people_picker_accessibility_persona_added">%s اضافه کرد</string>
-  <string name="people_picker_accessibility_persona_removed">%s حذف کرد</string>
-  <string name="people_picker_accessibility_replaced">%s جایگزین کرد،</string>
-  <string name="people_picker_accessibility_click_persona">کلیک کنید</string>
-  <string name="people_picker_accessibility_delete_persona">حذف</string>
-  <string name="people_picker_accessibility_deselect_persona">لغو انتخاب</string>
-  <string name="people_picker_accessibility_select_persona">انتخاب کردن</string>
-  <string name="people_picker_accessibility_clicked_persona">روی %s کلیک کرد</string>
-  <string name="people_picker_accessibility_deselected_persona">%s را لغو انتخاب کرد</string>
-  <string name="people_picker_accessibility_selected_persona">%s را انتخاب کرد</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">، فعال‌سازی باعث لغو انتخاب خواهد شد</string>
-  <string name="people_picker_accessibility_delete_selected_persona">، فعال‌سازی باعث حذف خواهد شد</string>
-  <string name="people_picker_accessibility_click_selected_persona">، فعال‌سازی باعث کلیک خواهد شد</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">فهرست پیشنهادها با %s نفر باز شد</item>
-    <item quantity="other">فهرست پیشنهادها با %s نفر باز شد</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s نفر</item>
-    <item quantity="other">%s نفر</item>
-  </plurals>
   <string name="done">انجام شد</string>
 </resources>

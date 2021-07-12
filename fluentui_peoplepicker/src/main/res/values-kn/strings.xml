@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">ಲೇಬಲ್</string>
+  <string name="people_picker_search_directory">ಡೈರೆಕ್ಟರಿ ಶೋಧಿಸಿ</string>
+  <string name="people_picker_search_progress">ಶೋಧಿಸಲಾಗುತ್ತಿದೆ…</string>
+  <string name="people_picker_accessibility_default_hint">ಹೆಸರು ಅಥವಾ ಇಮೇಲ್ ನಮೂದಿಸಿ</string>
+  <string name="people_picker_accessibility_persona_added">%s ಅವರನ್ನು ಸೇರಿಸಲಾಗಿದೆ</string>
+  <string name="people_picker_accessibility_persona_removed">%s ಅವರನ್ನು ತೆಗೆದುಹಾಕಲಾಗಿದೆ</string>
+  <string name="people_picker_accessibility_replaced">%s ಅವರನ್ನು ಬದಲಾಯಿಸಲಾಗಿದೆ,</string>
+  <string name="people_picker_accessibility_click_persona">ಕ್ಲಿಕ್ ಮಾಡಿ</string>
+  <string name="people_picker_accessibility_delete_persona">ಅಳಿಸಿ</string>
+  <string name="people_picker_accessibility_deselect_persona">ಆಯ್ಕೆ ರದ್ದುಮಾಡಿ</string>
+  <string name="people_picker_accessibility_select_persona">ಆಯ್ಕೆಮಾಡಿ</string>
+  <string name="people_picker_accessibility_clicked_persona">%s ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+  <string name="people_picker_accessibility_deselected_persona">%s ಆಯ್ಕೆ ರದ್ದುಮಾಡಿ</string>
+  <string name="people_picker_accessibility_selected_persona">%s ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸುವಿಕೆಯು ಆಯ್ಕೆ ರದ್ದುಮಾಡುತ್ತದೆ</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸುವಿಕೆ ಅಳಿಸುತ್ತದೆ</string>
+  <string name="people_picker_accessibility_click_selected_persona">, ಕ್ರಿಯಾತ್ಮಕಗೊಳಿಸುವಿಕೆ ಕ್ಲಿಕ್ ಮಾಡುತ್ತದೆ</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">ಸಲಹೆಗಳ ಪಟ್ಟಿಯು %s ವ್ಯಕ್ತಿಯ ಮೂಲಕ ತೆರೆಯಲ್ಪಟ್ಟಿದೆ</item>
+    <item quantity="other">ಸಲಹೆಗಳ ಪಟ್ಟಿಯು %s ಜನರ ಮೂಲಕ ತೆರೆಯಲ್ಪಟ್ಟಿದೆ</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s ವ್ಯಕ್ತಿ</item>
+    <item quantity="other">%s ಜನರು</item>
+  </plurals>
+</resources>

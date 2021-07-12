@@ -1,27 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Nhãn</string>
-  <string name="people_picker_search_directory">Tìm kiếm trong thư mục</string>
-  <string name="people_picker_search_progress">Đang tìm kiếm…</string>
-  <string name="people_picker_accessibility_default_hint">Nhập tên hoặc email</string>
-  <string name="people_picker_accessibility_persona_added">Đã thêm %s</string>
-  <string name="people_picker_accessibility_persona_removed">Đã loại bỏ %s</string>
-  <string name="people_picker_accessibility_replaced">Đã thay thế %s,</string>
-  <string name="people_picker_accessibility_click_persona">Bấm</string>
-  <string name="people_picker_accessibility_delete_persona">Xóa</string>
-  <string name="people_picker_accessibility_deselect_persona">Bỏ chọn</string>
-  <string name="people_picker_accessibility_select_persona">Chọn</string>
-  <string name="people_picker_accessibility_clicked_persona">Đã bấm vào %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Đã bỏ chọn %s</string>
-  <string name="people_picker_accessibility_selected_persona">Đã chọn %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Sẽ bỏ chọn khi kích hoạt</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Sẽ xóa khi kích hoạt</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Sẽ bấm khi kích hoạt</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="other">Đã mở danh sách Đề xuất có %s người</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="other">%s người</item>
-  </plurals>
   <string name="done">Đã xong</string>
 </resources>

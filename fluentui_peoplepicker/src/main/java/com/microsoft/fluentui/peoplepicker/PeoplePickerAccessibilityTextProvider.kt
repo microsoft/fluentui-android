@@ -6,7 +6,6 @@
 package com.microsoft.fluentui.peoplepicker
 
 import android.content.res.Resources
-import com.microsoft.fluentui.R
 import com.microsoft.fluentui.persona.IPersona
 
 /**

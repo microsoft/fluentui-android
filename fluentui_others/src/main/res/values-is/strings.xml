@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Merki</string>
-  <string name="people_picker_search_directory">Leita í notendaskrá</string>
-  <string name="people_picker_search_progress">Leitar …</string>
-  <string name="people_picker_accessibility_default_hint">Sláðu inn nafn eða netfang</string>
-  <string name="people_picker_accessibility_persona_added">%s bætt við</string>
-  <string name="people_picker_accessibility_persona_removed">%s fjarlægð(ur)</string>
-  <string name="people_picker_accessibility_replaced">%s var skipt út,</string>
-  <string name="people_picker_accessibility_click_persona">Smella</string>
-  <string name="people_picker_accessibility_delete_persona">Eyða</string>
-  <string name="people_picker_accessibility_deselect_persona">Hætta við val</string>
-  <string name="people_picker_accessibility_select_persona">Velja</string>
-  <string name="people_picker_accessibility_clicked_persona">Smellt var á %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Hætt var við val á %s</string>
-  <string name="people_picker_accessibility_selected_persona">%s var valið</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, virkjun mun hreinsa val</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, virkjun mun eyða</string>
-  <string name="people_picker_accessibility_click_selected_persona">, virkjun mun smella</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Tillögulisti opnaður með %s aðila</item>
-    <item quantity="other">Tillögulisti opnaður með %s aðilum</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s aðili</item>
-    <item quantity="other">%s aðilar</item>
-  </plurals>
   <string name="done">Lokið</string>
 </resources>

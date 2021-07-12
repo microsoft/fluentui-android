@@ -35,6 +35,7 @@ dependencies {
     implementation project(':fluentui_listitem')
     implementation project(':fluentui_menus')
     implementation project(':fluentui_others')
+    implementation project(':fluentui_peoplepicker')
     implementation project(':fluentui_persona')
     implementation project(':fluentui_progress')
     implementation project(':fluentui_tablayout')
