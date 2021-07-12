@@ -56,17 +56,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation project(':fluentui_core')
-    implementation project(':fluentui_listitem')
-    implementation project(':fluentui_drawer')
-    implementation project(':fluentui_tablayout')
-    implementation project(':fluentui_ccb')
-    implementation project(':fluentui_transients')
-    implementation project(':fluentui_topappbars')
-    implementation project(':fluentui_menus')
-    implementation project(':fluentui_persona')
-    implementation project(':fluentui_progress')
-    implementation project(':fluentui_others')
+    implementation project(':FluentUI')
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     implementation 'com.jakewharton.threetenabp:threetenabp:1.1.0'

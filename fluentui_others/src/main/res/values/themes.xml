@@ -104,6 +104,6 @@
         All light theme semantic colors should be defined in the base theme as the default.
         Dark theme specific semantic colors should be defined in "themes.xml (night)".
     -->
-    <style name="Theme.FluentUI" parent="Theme.FluentUI.Components"/>
+    <style name="Theme.FluentUI.Others" parent="Theme.FluentUI.Components"/>
 
 </resources>
