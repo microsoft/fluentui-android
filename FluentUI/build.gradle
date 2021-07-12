@@ -40,6 +40,7 @@ dependencies {
     implementation project(':fluentui_tablayout')
     implementation project(':fluentui_topappbars')
     implementation project(':fluentui_transients')
+    implementation project(':fluentui_calendar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
