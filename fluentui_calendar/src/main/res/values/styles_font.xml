@@ -27,8 +27,6 @@
         <item name="android:fontFamily">"sans-serif-medium"</item>
     </style>
 
-    <!--PeoplePicker-->
-
     <!--Dialog TabLayout-->
     <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
         <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>

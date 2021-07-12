@@ -5,19 +5,6 @@
   -->
 
 <resources>
-    <!--ActionBarLayout-->
-
-    <!--AppBarLayout-->
-
-    <!--BottomNavigation-->
-
-    <!--Button-->
-    <dimen name="fluentui_button_base_padding_horizontal">8dp</dimen>
-    <dimen name="fluentui_button_base_padding_vertical">8.5dp</dimen>
-    <dimen name="fluentui_button_min_height">36dp</dimen>
-    <dimen name="fluentui_button_padding_horizontal">@dimen/fluentui_content_inset</dimen>
-    <dimen name="fluentui_button_corner_radius">@dimen/fluentui_corner_radius_2</dimen>
-
     <!--CalendarView-->
     <dimen name="fluentui_calendar_week_day_font_size">16sp</dimen>
     <dimen name="fluentui_calendar_month_year_font_size">12sp</dimen>
