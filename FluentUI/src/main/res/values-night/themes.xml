@@ -9,7 +9,7 @@
     All dark theme specific semantic colors should be defined here.
     Light theme semantic colors should be defined in themes.xml as the default.
 -->
-    <style name="Theme.FluentUI.Container" parent="Base.Theme.FluentUI">
+    <style name="Theme.FluentUI" parent="Theme.FluentUI.Container">
         <item name="android:textColorPrimary">@color/fluentui_white</item>
 
         <!-- *** Base Semantic Colors *** -->
@@ -123,6 +123,4 @@
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
     </style>
-
-    <style name="Theme.FluentUI" parent="Theme.FluentUI.Container"/>
 </resources>

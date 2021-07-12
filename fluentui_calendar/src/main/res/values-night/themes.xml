@@ -9,7 +9,7 @@
         All dark theme specific semantic colors should be defined here.
         Light theme semantic colors should be defined in themes.xml as the default.
     -->
-    <style name="Theme.FluentUI.Calendar" parent="Base.Theme.FluentUI">
+    <style name="Theme.FluentUI.Calendar" parent="Theme.FluentUI.Calendar.Base">
         <!--CalendarView-->
         <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
