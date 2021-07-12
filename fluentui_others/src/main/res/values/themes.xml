@@ -50,39 +50,6 @@
         <item name="fluentuiCompoundButtonTintDefaultColor">?attr/fluentuiForegroundSecondaryIconColor</item>
         <item name="fluentuiCompoundButtonTintCheckedColor">?attr/fluentuiForegroundSelectedColor</item>
 
-        <!--CalendarView-->
-        <item name="fluentuiCalendarBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiCalendarWeekHeadingBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiCalendarWeekHeadingWeekDayTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_400</item>
-        <item name="fluentuiCalendarMonthOverlayBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiCalendarMonthOverlayTextColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiCalendarOtherMonthBackgroundColor">@color/fluentui_gray_25</item>
-        <item name="fluentuiCalendarSelectedColor">?attr/fluentuiForegroundSelectedColor</item>
-        <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiColorPrimaryLighter</item>
-
-        <!--day selector-->
-        <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundSelectedColor</item>
-        <item name="fluentuiCalendarDayTextActiveCheckedColor">?attr/fluentuiForegroundOnPrimaryColor</item>
-        <item name="fluentuiCalendarDayTextInactiveCheckedColor">?attr/fluentuiForegroundOnPrimaryColor</item>
-        <item name="fluentuiCalendarDayTextDefaultColor">?attr/fluentuiForegroundSecondaryColor</item>
-
-        <!--DateTimePicker-->
-        <item name="fluentuiDateTimePickerToolbarTitleTextColor">?attr/colorPrimary</item>
-        <item name="fluentuiDateTimePickerTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiDateTimePickerDialogBackgroundColor">?attr/fluentuiDialogBackgroundColor</item>
-        <item name="fluentuiDateTimePickerToolbarIconColor">?attr/colorPrimary</item>
-
-        <!--Dialog-->
-        <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiDialogCloseIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
-        <item name="fluentuiDialogTabLayoutBackgroundColor">?attr/fluentuiDialogBackgroundColor</item>
-
-
-        <!--NumberPicker-->
-        <item name="fluentuiNumberPickerBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiNumberPickerDefaultTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiNumberPickerSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
 
         <!--PeoplePicker-->
         <item name="fluentuiPeoplePickerBackgroundColor">?attr/fluentuiBackgroundColor</item>
@@ -93,12 +60,7 @@
         <item name="fluentuiPeoplePickerLabelTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPeoplePickerCountSpanTextColor">?attr/fluentuiForegroundSecondaryColor</item>
 
-       <!--TabLayout Dialog-->
-        <item name="fluentuiDialogTabTextColor">?attr/fluentuiForegroundSecondaryColor</item>
-        <item name="fluentuiDialogTabSelectedTextColor">?attr/fluentuiForegroundSelectedColor</item>
-        <item name="fluentuiDialogTabIndicatorColor">?attr/fluentuiForegroundSelectedColor</item>
-
-         </style>
+    </style>
 
     <!--
         All light theme semantic colors should be defined in the base theme as the default.
