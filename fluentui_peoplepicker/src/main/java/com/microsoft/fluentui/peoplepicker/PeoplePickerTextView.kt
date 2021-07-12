@@ -34,7 +34,6 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.MultiAutoCompleteTextView
-import com.microsoft.fluentui.R
 import com.microsoft.fluentui.peoplepicker.PeoplePickerView.PersonaChipClickListener
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.PersonaChipView
@@ -89,7 +88,8 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     /**
      * Defines what happens when a user clicks on a persona chip.
      */
-    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.SELECT
+    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle =
+        PeoplePickerPersonaChipClickStyle.SELECT
         set(value) {
             field = value
             setTokenClickStyle(value.tokenClickStyle)

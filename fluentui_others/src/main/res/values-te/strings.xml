@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">లేబుల్</string>
-  <string name="people_picker_search_directory">డైరెక్టరీలో శోధించు</string>
-  <string name="people_picker_search_progress">శోధిస్తోంది…</string>
-  <string name="people_picker_accessibility_default_hint">పేరు లేదా ఇమెయిల్ చిరునామాను నమోదు చేయండి</string>
-  <string name="people_picker_accessibility_persona_added">%sని జోడించారు</string>
-  <string name="people_picker_accessibility_persona_removed">%sని తీసివేసారు</string>
-  <string name="people_picker_accessibility_replaced">%sని భర్తీ చేసారు,</string>
-  <string name="people_picker_accessibility_click_persona">క్లిక్ చేయి</string>
-  <string name="people_picker_accessibility_delete_persona">తొలగించు</string>
-  <string name="people_picker_accessibility_deselect_persona">ఎంపికను తీసివేయి</string>
-  <string name="people_picker_accessibility_select_persona">ఎంచుకోండి</string>
-  <string name="people_picker_accessibility_clicked_persona">%sని క్లిక్ చేసారు</string>
-  <string name="people_picker_accessibility_deselected_persona">%s ఎంపికను తీసివేసారు</string>
-  <string name="people_picker_accessibility_selected_persona">%sని ఎంచుకున్నారు</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, యాక్టివేషన్ ఎంపిక తీసివేయబడుతుంది</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, యాక్టివేషన్ తొలగించబడుతుంది</string>
-  <string name="people_picker_accessibility_click_selected_persona">, యాక్టివేషన్ క్లిక్ చేయబడుతుంది</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">%s వ్యక్తితో సూచనల జాబితా తెరవబడింది</item>
-    <item quantity="other">%s మంది వ్యక్తులతో సూచనల జాబితా తెరవబడింది</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s వ్యక్తి</item>
-    <item quantity="other">%s మంది వ్యక్తులు</item>
-  </plurals>
   <string name="done">పూర్తయింది</string>
 </resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Белгі</string>
+  <string name="people_picker_search_directory">Каталогтан іздеу</string>
+  <string name="people_picker_search_progress">Ізделуде…</string>
+  <string name="people_picker_accessibility_default_hint">Атын немесе электрондық поштаны енгізіңіз</string>
+  <string name="people_picker_accessibility_persona_added">%s қосылды</string>
+  <string name="people_picker_accessibility_persona_removed">%s жойылды</string>
+  <string name="people_picker_accessibility_replaced">%s алмастырылды,</string>
+  <string name="people_picker_accessibility_click_persona">Басу</string>
+  <string name="people_picker_accessibility_delete_persona">Жою</string>
+  <string name="people_picker_accessibility_deselect_persona">Таңдау белгілерін алу</string>
+  <string name="people_picker_accessibility_select_persona">Таңдау</string>
+  <string name="people_picker_accessibility_clicked_persona">%s басылды</string>
+  <string name="people_picker_accessibility_deselected_persona">%s таңдауы алынды</string>
+  <string name="people_picker_accessibility_selected_persona">%s таңдалды</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, белсендіру жасалғанда, таңдау алынады</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, белсендіру жасалғанда, жойылады</string>
+  <string name="people_picker_accessibility_click_selected_persona">, белсендіру жасалғанда, басылады</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">%s адамды қамтитын ұсыныстар тізімі ашылды</item>
+    <item quantity="other">%s адамды қамтитын ұсыныстар тізімі ашылды</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s адам</item>
+    <item quantity="other">%s адам</item>
+  </plurals>
+</resources>

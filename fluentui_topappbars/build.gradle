@@ -19,9 +19,9 @@ android {
         targetSdkVersion constants.targetSdkVersion
         versionCode project.ext.fluentui_topappbars_version_code
         versionName project.ext.fluentui_topappbars_versionid
-
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {

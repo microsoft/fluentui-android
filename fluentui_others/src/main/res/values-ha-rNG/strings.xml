@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Lamba</string>
-  <string name="people_picker_search_directory">Bincika Ma\'ajiya</string>
-  <string name="people_picker_search_progress">Ana bincikowa…</string>
-  <string name="people_picker_accessibility_default_hint">Shigar da wani suna ko imel</string>
-  <string name="people_picker_accessibility_persona_added">An ƙara %s</string>
-  <string name="people_picker_accessibility_persona_removed">An cire %s</string>
-  <string name="people_picker_accessibility_replaced">An musanya %s,</string>
-  <string name="people_picker_accessibility_click_persona">Danna</string>
-  <string name="people_picker_accessibility_delete_persona">Share</string>
-  <string name="people_picker_accessibility_deselect_persona">Cire zaɓi</string>
-  <string name="people_picker_accessibility_select_persona">Zaɓi</string>
-  <string name="people_picker_accessibility_clicked_persona">Dannannen %s</string>
-  <string name="people_picker_accessibility_deselected_persona">%s da aka fasa zaɓa</string>
-  <string name="people_picker_accessibility_selected_persona">Zaɓaɓɓen %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Tayarwa zai fasa zaɓi</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Tayarwa zai share</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Tayarwa zai danna</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">An buɗe jerin shawarwari da mutum %s</item>
-    <item quantity="other">An buɗe jerin shawarwari da mutane %s</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">Mutum %s</item>
-    <item quantity="other">Mutane %s</item>
-  </plurals>
   <string name="done">An gama</string>
 </resources>

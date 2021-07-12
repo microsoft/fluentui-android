@@ -109,7 +109,7 @@
 
     <!-- Example theme with Fluent Others theme, you will not have to only look for what rest of the
          modules have set. Majorly everything is set for you in Others theme-->
-    <style name="Base.AppTheme.FluentOthers" parent="Theme.FluentUI">
+    <style name="Base.AppTheme.FluentOthers" parent="Theme.FluentUI.Others">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/fluentui_white</item>

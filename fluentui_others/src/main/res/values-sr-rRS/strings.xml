@@ -1,31 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Ознака</string>
-  <string name="people_picker_search_directory">Претражи именик</string>
-  <string name="people_picker_search_progress">Претраживање…</string>
-  <string name="people_picker_accessibility_default_hint">Унесите име или адресу е-поште</string>
-  <string name="people_picker_accessibility_persona_added">%s је додат/а</string>
-  <string name="people_picker_accessibility_persona_removed">%s је уклоњен/а</string>
-  <string name="people_picker_accessibility_replaced">%s је замењен/а,</string>
-  <string name="people_picker_accessibility_click_persona">Клик</string>
-  <string name="people_picker_accessibility_delete_persona">Избриши</string>
-  <string name="people_picker_accessibility_deselect_persona">Опозови избор</string>
-  <string name="people_picker_accessibility_select_persona">Изабери</string>
-  <string name="people_picker_accessibility_clicked_persona">Кликнуто на %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Опозван је избор за %s</string>
-  <string name="people_picker_accessibility_selected_persona">Изабрано %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Активација ће опозвати избор</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Активација ће избрисати</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Активација ће кликнути</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Листа предлога отворених са %s особом</item>
-    <item quantity="few">Листа предлога отворених са %s људи</item>
-    <item quantity="other">Листа предлога отворених са %s људи</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s особа</item>
-    <item quantity="few">%s људи</item>
-    <item quantity="other">%s људи</item>
-  </plurals>
   <string name="done">Готово</string>
 </resources>

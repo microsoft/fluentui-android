@@ -1,29 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Етикет</string>
-  <string name="people_picker_search_directory">Търсене в указателя</string>
-  <string name="people_picker_search_progress">Търсене…</string>
-  <string name="people_picker_accessibility_default_hint">Въведете име или имейл</string>
-  <string name="people_picker_accessibility_persona_added">%s е добавен/а</string>
-  <string name="people_picker_accessibility_persona_removed">%s е премахнат/а</string>
-  <string name="people_picker_accessibility_replaced">%s е заместен/а,</string>
-  <string name="people_picker_accessibility_click_persona">Щракване</string>
-  <string name="people_picker_accessibility_delete_persona">Изтриване</string>
-  <string name="people_picker_accessibility_deselect_persona">Премахни избора</string>
-  <string name="people_picker_accessibility_select_persona">Избор</string>
-  <string name="people_picker_accessibility_clicked_persona">Щракнато върху %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Премахнат избор от %s</string>
-  <string name="people_picker_accessibility_selected_persona">Избрано %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, активирането ще премахне избора</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, активирането ще изтрие</string>
-  <string name="people_picker_accessibility_click_selected_persona">, активирането ще щракне върху</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Списъкът с предложения се отвори с %s човек</item>
-    <item quantity="other">Списъкът с предложения се отвори с %s души</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s човек</item>
-    <item quantity="other">%s души</item>
-  </plurals>
   <string name="done">Готово</string>
 </resources>

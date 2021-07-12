@@ -1,33 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Žyma</string>
-  <string name="people_picker_search_directory">Ieškoti kataloge</string>
-  <string name="people_picker_search_progress">Ieškoma…</string>
-  <string name="people_picker_accessibility_default_hint">Įveskite vardą arba el. paštą</string>
-  <string name="people_picker_accessibility_persona_added">Įtraukta: %s</string>
-  <string name="people_picker_accessibility_persona_removed">Pašalinta: %s</string>
-  <string name="people_picker_accessibility_replaced">Pakeista: %s</string>
-  <string name="people_picker_accessibility_click_persona">Spustelėkite</string>
-  <string name="people_picker_accessibility_delete_persona">Naikinti</string>
-  <string name="people_picker_accessibility_deselect_persona">Atžymėti</string>
-  <string name="people_picker_accessibility_select_persona">Pasirinkti</string>
-  <string name="people_picker_accessibility_clicked_persona">Spustelėta: %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Atžymėta: %s</string>
-  <string name="people_picker_accessibility_selected_persona">Pasirinkta: %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, aktyvinant bus atžymėta</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, aktyvinant bus panaikinta</string>
-  <string name="people_picker_accessibility_click_selected_persona">, aktyvinant bus spustelėta</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Atidaromas pasiūlymų sąrašas su %s asmeniu</item>
-    <item quantity="few">Atidaromas pasiūlymų sąrašas su tiek žmonių: %s</item>
-    <item quantity="many">Atidaromas pasiūlymų sąrašas su tiek žmonių: %s</item>
-    <item quantity="other">Atidaromas pasiūlymų sąrašas su tiek žmonių: %s</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s asmuo</item>
-    <item quantity="few">Žmonių: %s</item>
-    <item quantity="many">Žmonių: %s</item>
-    <item quantity="other">Žmonių: %s</item>
-  </plurals>
   <string name="done">Atlikta</string>
 </resources>

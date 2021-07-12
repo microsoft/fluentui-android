@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Címke</string>
+  <string name="people_picker_search_directory">Keresés a címtárban</string>
+  <string name="people_picker_search_progress">Keresés…</string>
+  <string name="people_picker_accessibility_default_hint">Írjon be egy nevet vagy egy e-mail-címet</string>
+  <string name="people_picker_accessibility_persona_added">%s hozzáadva</string>
+  <string name="people_picker_accessibility_persona_removed">%s eltávolítva</string>
+  <string name="people_picker_accessibility_replaced">%s lecserélve,</string>
+  <string name="people_picker_accessibility_click_persona">Kattintás</string>
+  <string name="people_picker_accessibility_delete_persona">Törlés</string>
+  <string name="people_picker_accessibility_deselect_persona">Kijelölés megszüntetése</string>
+  <string name="people_picker_accessibility_select_persona">Kijelölés</string>
+  <string name="people_picker_accessibility_clicked_persona">%s nevére kattintott</string>
+  <string name="people_picker_accessibility_deselected_persona">%s kijelölése megszüntetve</string>
+  <string name="people_picker_accessibility_selected_persona">%s kijelölve</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, ezt az elemet választva megszüntetheti a kijelölést</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, ezt az elemet választva törölheti a személyt</string>
+  <string name="people_picker_accessibility_click_selected_persona">, ezt az elemet választva rákattinthat a személy nevére</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Javaslatok listája megnyitva, %s személy szerepel rajta</item>
+    <item quantity="other">Javaslatok listája megnyitva, %s személy szerepel rajta</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s személy</item>
+    <item quantity="other">%s személy</item>
+  </plurals>
+</resources>

@@ -13,8 +13,6 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Filter
 import android.widget.TextView
-import com.microsoft.fluentui.R
-import com.microsoft.fluentui.databinding.ViewPeoplePickerBinding
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -118,7 +116,8 @@ class PeoplePickerView : TemplateView {
      * To use your own onClick callback, set this property to [PeoplePickerPersonaChipClickStyle.SELECT_DESELECT]
      * and set the [personaChipClickListener]'s onClick callback.
      */
-    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle = PeoplePickerPersonaChipClickStyle.SELECT
+    var personaChipClickStyle: PeoplePickerPersonaChipClickStyle =
+        PeoplePickerPersonaChipClickStyle.SELECT
         set(value) {
             if (field == value)
                 return
@@ -224,7 +223,7 @@ class PeoplePickerView : TemplateView {
     }
 
     @JvmOverloads
-    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Components), attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_PeoplePicker), attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PeoplePickerView)
 
         label = styledAttrs.getString(R.styleable.PeoplePickerView_label) ?: ""

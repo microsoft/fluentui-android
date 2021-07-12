@@ -1,33 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="people_picker_sample_label">Označenie</string>
-  <string name="people_picker_search_directory">Prehľadať adresár</string>
-  <string name="people_picker_search_progress">Hľadá sa…</string>
-  <string name="people_picker_accessibility_default_hint">Zadajte meno alebo e-mail</string>
-  <string name="people_picker_accessibility_persona_added">Pridaný používateľ: %s</string>
-  <string name="people_picker_accessibility_persona_removed">Odobratý používateľ: %s</string>
-  <string name="people_picker_accessibility_replaced">Nahradený používateľ: %s</string>
-  <string name="people_picker_accessibility_click_persona">Kliknúť</string>
-  <string name="people_picker_accessibility_delete_persona">Odstrániť</string>
-  <string name="people_picker_accessibility_deselect_persona">Zrušiť výber</string>
-  <string name="people_picker_accessibility_select_persona">Vybrať</string>
-  <string name="people_picker_accessibility_clicked_persona">Kliklo sa na používateľa: %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Zrušil sa výber používateľa: %s</string>
-  <string name="people_picker_accessibility_selected_persona">Vybratý používateľ %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, Počas aktivácie sa zruší výber</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, Počas aktivácie sa odstráni</string>
-  <string name="people_picker_accessibility_click_selected_persona">, Počas aktivácie sa klikne</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Zoznam návrhov sa otvoril s %s osobou</item>
-    <item quantity="few">Zoznam návrhov sa otvoril s %s ľuďmi</item>
-    <item quantity="many">Zoznam návrhov sa otvoril s %s ľuďmi</item>
-    <item quantity="other">Zoznam návrhov sa otvoril s %s ľuďmi</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s osoba</item>
-    <item quantity="few">Počet ľudí: %s</item>
-    <item quantity="many">Počet ľudí: %s</item>
-    <item quantity="other">Počet ľudí: %s</item>
-  </plurals>
   <string name="done">Hotovo</string>
 </resources>
