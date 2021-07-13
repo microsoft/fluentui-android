@@ -19,6 +19,9 @@
         <item name="fluentuiPeoplePickerHintTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPeoplePickerLabelTextColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPeoplePickerCountSpanTextColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPeoplePickerSearchTextDefaultColor">?attr/colorPrimary</item>
+        <item name="fluentuiPeoplePickerSearchTextDisabledColor">@color/fluentui_gray_300</item>
+        <item name="fluentuiPeoplePickerSearchTextPressedColor">?attr/fluentuiPeoplePickerSearchTextDefaultColor</item>
 
     </style>
 
