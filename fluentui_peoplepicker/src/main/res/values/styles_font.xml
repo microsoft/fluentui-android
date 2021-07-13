@@ -17,7 +17,7 @@
         <item name="android:textColor">?attr/fluentuiPeoplePickerCountSpanTextColor</item>
     </style>
     <style name="TextAppearance.FluentUI.PeoplePickerSearchDirectoryButton" >
-        <item name="android:textColor">@color/button_text_borderless</item>
+        <item name="android:textColor">@color/people_picker_search_color</item>
     </style>
 
  </resources>
