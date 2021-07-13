@@ -16,6 +16,8 @@
     <style name="TextAppearance.FluentUI.PeoplePickerCountSpan" parent="TextAppearance.FluentUI.Caption">
         <item name="android:textColor">?attr/fluentuiPeoplePickerCountSpanTextColor</item>
     </style>
-    <style name="TextAppearance.FluentUI.PeoplePickerSearchDirectoryButton" parent="TextAppearance.FluentUI.Button.Borderless" />
+    <style name="TextAppearance.FluentUI.PeoplePickerSearchDirectoryButton" >
+        <item name="android:textColor">@color/people_picker_search_color</item>
+    </style>
 
  </resources>

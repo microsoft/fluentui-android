@@ -16,5 +16,8 @@
     <attr name="fluentuiPeoplePickerHintTextColor" format="reference|color"/>
     <attr name="fluentuiPeoplePickerLabelTextColor" format="reference|color"/>
     <attr name="fluentuiPeoplePickerCountSpanTextColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerSearchTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerSearchTextDisabledColor" format="reference|color"/>
+    <attr name="fluentuiPeoplePickerSearchTextPressedColor" format="reference|color"/>
 
 </resources>
