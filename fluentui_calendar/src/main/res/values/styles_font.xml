@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+     <!-- *** FluentUI Semantic Styles *** -->
+
+    <!--Calendar-->
+    <!--calendar_week_day_text_selector sets the colors for these-->
+    <style name="TextAppearance.FluentUI.CalendarDay" parent="TextAppearance.FluentUI.SubHeading1">
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.FluentUI.CalendarDay2" parent="TextAppearance.FluentUI.SubHeading2">
+        <item name="android:textColor">@null</item>
+    </style>
+    <style name="TextAppearance.FluentUI.WeekDayHeader" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@null</item>
+    </style>
+
+
+    <!--NumberPicker-->
+    <style name="TextAppearance.FluentUI.NumberPicker" parent="TextAppearance.FluentUI.Heading"/>
+    <style name="TextAppearance.FluentUI.NumberPicker.Selected">
+        <item name="android:fontFamily">"sans-serif-medium"</item>
+    </style>
+
+    <!--Dialog TabLayout-->
+    <style name="TextAppearance.FluentUI.Dialog.Tab.Light" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">?attr/fluentuiDialogTabTextColor</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+</resources>

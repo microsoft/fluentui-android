@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Silt</string>
+  <string name="people_picker_search_directory">Otsige kataloogist</string>
+  <string name="people_picker_search_progress">Otsimine…</string>
+  <string name="people_picker_accessibility_default_hint">Sisestage nimi või meiliaadress</string>
+  <string name="people_picker_accessibility_persona_added">%s on lisatud</string>
+  <string name="people_picker_accessibility_persona_removed">%s on eemaldatud</string>
+  <string name="people_picker_accessibility_replaced">%s on asendatud,</string>
+  <string name="people_picker_accessibility_click_persona">Klõpsake</string>
+  <string name="people_picker_accessibility_delete_persona">Kustutage</string>
+  <string name="people_picker_accessibility_deselect_persona">Eemaldage valikust</string>
+  <string name="people_picker_accessibility_select_persona">Valige</string>
+  <string name="people_picker_accessibility_clicked_persona">%s on klõpsatud</string>
+  <string name="people_picker_accessibility_deselected_persona">%s on valikust eemaldatud</string>
+  <string name="people_picker_accessibility_selected_persona">%s on valitud</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktiveerimisel valik tühistatakse</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktiveerimisel kustutatakse</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktiveerimisel klõpsatakse</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Soovituste loend on avatud ja selles on %s inimene</item>
+    <item quantity="other">Soovituste loend on avatud ja selles on %s inimest</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s inimene</item>
+    <item quantity="other">%s inimest</item>
+  </plurals>
+</resources>

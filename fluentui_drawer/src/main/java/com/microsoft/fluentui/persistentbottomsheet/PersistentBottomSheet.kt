@@ -53,6 +53,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
     private var shouldInterceptTouch = false
     private var isDrawerHandleVisible = true
+    private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
 
 
     init {
@@ -118,6 +119,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheetBinding.persistentSheetContainer.removeAllViews()
         contentViewProvider?.apply {
             val sheetContainerInfo = this.getSheetContentView(persistentSheetBinding.persistentSheetContainer, itemLayoutParam)
+            sheetContainer = sheetContainerInfo
             onDrawerContentCreatedListener?.onDrawerContentCreated(sheetContainerInfo.Container)
             configureBottomSheetDrawerHandle(sheetContainerInfo)
         }
@@ -309,6 +311,14 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     override fun onSheetItemClick(item: SheetItem) {
         sheetItemClickListener?.onSheetItemClick(item)
+    }
+
+    /**
+     * calling this method is mandatory after changing the input
+     * item list , otherwise related functionalities might not work
+     */
+    fun refreshSheetContent() {
+        contentViewProvider?.updateSheetContentView(sheetContainer)
     }
 
     class DefaultContentBuilder(val context: Context) {

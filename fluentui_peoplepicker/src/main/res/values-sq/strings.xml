@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Etiketa</string>
+  <string name="people_picker_search_directory">Kërko te direktoria</string>
+  <string name="people_picker_search_progress">Duke kërkuar…</string>
+  <string name="people_picker_accessibility_default_hint">Fut një emër ose email</string>
+  <string name="people_picker_accessibility_persona_added">%s u shtua</string>
+  <string name="people_picker_accessibility_persona_removed">%s u hoq</string>
+  <string name="people_picker_accessibility_replaced">%s u zëvendësua,</string>
+  <string name="people_picker_accessibility_click_persona">Kliko</string>
+  <string name="people_picker_accessibility_delete_persona">Fshi</string>
+  <string name="people_picker_accessibility_deselect_persona">Anulo përzgjedhjen</string>
+  <string name="people_picker_accessibility_select_persona">Përzgjidh</string>
+  <string name="people_picker_accessibility_clicked_persona">U klikua %s</string>
+  <string name="people_picker_accessibility_deselected_persona">U anulua përzgjedhja e %s</string>
+  <string name="people_picker_accessibility_selected_persona">U përzgjodh %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktivizimi do të anulojë përzgjedhjen</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktivizimi do të fshijë</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktivizimi do të klikojë</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Lista e sugjerimeve e hapur me %s person</item>
+    <item quantity="other">Lista e sugjerimeve e hapur me %s kontakte</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s person</item>
+    <item quantity="other">%s njerëz</item>
+  </plurals>
+</resources>

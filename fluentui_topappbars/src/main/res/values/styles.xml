@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!--Searchbar-->
+    <style name="Widget.FluentUI.SearchView" parent="Widget.AppCompat.SearchView">
+        <item name="colorControlActivated">?attr/fluentuiSearchbarSearchViewCursorColor</item>
+        <item name="android:textColorHint">?attr/fluentuiSearchbarSearchViewTextHintColor</item>
+        <item name="android:editTextColor">?attr/fluentuiSearchbarSearchViewTextColor</item>
+        <item name="android:textSize">@dimen/fluentui_searchbar_search_view_text_size</item>
+    </style>
+    <style name="Widget.FluentUI.CircularProgress.XSmall.Search">
+        <item name="android:indeterminateTint">?attr/fluentuiSearchbarProgressColor</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+        <item name="android:minHeight">@dimen/fluentui_searchbar_progress_size</item>
+        <item name="android:minWidth">@dimen/fluentui_searchbar_progress_size</item>
+        <item name="android:maxHeight">@dimen/fluentui_searchbar_progress_size</item>
+        <item name="android:maxWidth">@dimen/fluentui_searchbar_progress_size</item>
+    </style>
+    <!--Toolbar-->
+    <!--We use Widget.AppCompat.Toolbar instead of a ThemeOverlay to maintain Android's default Toolbar styling.-->
+    <style name="Base.Widget.FluentUI.Toolbar" parent="@style/Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/fluentuiToolbarBackgroundColor</item>
+        <item name="titleTextAppearance">@style/TextAppearance.FluentUI.ToolbarTitle</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.FluentUI.ToolbarSubtitle</item>
+        <item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
+    </style>
+    <style name="Widget.FluentUI.Toolbar" parent="@style/Base.Widget.FluentUI.Toolbar" />
+    <style name="Widget.FluentUI.Toolbar.OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">?attr/fluentuiToolbarIconColor</item>
+    </style>
+
+</resources>

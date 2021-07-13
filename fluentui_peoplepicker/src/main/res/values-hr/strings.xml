@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Oznaka</string>
+  <string name="people_picker_search_directory">Pretraživanje imenika</string>
+  <string name="people_picker_search_progress">Pretraživanje…</string>
+  <string name="people_picker_accessibility_default_hint">Unesite ime ili adresu e-pošte</string>
+  <string name="people_picker_accessibility_persona_added">Dodan je korisnik %s</string>
+  <string name="people_picker_accessibility_persona_removed">Korisnik %s je uklonjen</string>
+  <string name="people_picker_accessibility_replaced">Korisnik %s je zamijenjen,</string>
+  <string name="people_picker_accessibility_click_persona">Klik</string>
+  <string name="people_picker_accessibility_delete_persona">Brisanje</string>
+  <string name="people_picker_accessibility_deselect_persona">Poništavanje odabira</string>
+  <string name="people_picker_accessibility_select_persona">Odabir</string>
+  <string name="people_picker_accessibility_clicked_persona">Kliknuli ste stavku %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Poništili ste odabir stavke %s</string>
+  <string name="people_picker_accessibility_selected_persona">Odabrali ste stavku %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, aktivacija će poništiti odabir</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, aktivacija će izbrisati</string>
+  <string name="people_picker_accessibility_click_selected_persona">, aktivacija će kliknuti</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Popis prijedloga otvoren je s %s osobom</item>
+    <item quantity="few">Popis prijedloga otvoren je s %s osoba</item>
+    <item quantity="other">Popis prijedloga otvoren je s %s osobe</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s osoba</item>
+    <item quantity="few">%s osobe</item>
+    <item quantity="other">%s osobe</item>
+  </plurals>
+</resources>
