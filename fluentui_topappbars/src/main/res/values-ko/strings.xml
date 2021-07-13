@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="searchbar_clear_search">검색 지우기</string>
+  <string name="searchbar_back">뒤로</string>
+  <string name="searchbar_query_hint_default">검색</string>
+</resources>

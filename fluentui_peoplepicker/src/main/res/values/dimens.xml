@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--PeoplePicker-->
+    <dimen name="fluentui_people_picker_accessibility_search_constraint_extra_space">5dp</dimen>
+    <!--30dp is an approximation of how much space 3 digits take up for the count span-->
+    <dimen name="fluentui_people_picker_count_span_width">30dp</dimen>
+    <dimen name="fluentui_people_picker_dropdown_vertical_offset">0dp</dimen>
+    <dimen name="fluentui_people_picker_popup_elevation">0dp</dimen>
+    <dimen name="fluentui_people_picker_search_directory_min_height">56dp</dimen>
+    <dimen name="fluentui_people_picker_search_directory_padding_horizontal">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_people_picker_search_directory_padding_vertical">12dp</dimen>
+    <dimen name="fluentui_people_picker_text_view_padding">6dp</dimen>
+    <dimen name="fluentui_people_picker_persona_chip_vertical_spacing">4dp</dimen>
+    <dimen name="fluentui_people_picker_horizontal_padding">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_people_picker_horizontal_margin">@dimen/fluentui_content_inset</dimen>
+    <dimen name="fluentui_people_picker_label_margin_end">8dp</dimen>
+    <dimen name="fluentui_people_picker_vertical_padding">12dp</dimen>
+
+</resources>

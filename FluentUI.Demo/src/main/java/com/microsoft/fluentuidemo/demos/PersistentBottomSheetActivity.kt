@@ -44,8 +44,8 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
     private lateinit var scrollView: ScrollView
     private var isBack: Boolean = false
     private lateinit var view: TextView
-    private lateinit var mHorizontalSheet: List<SheetItem>
-    private lateinit var mHorizontalSheet2: List<SheetItem>
+    private lateinit var mHorizontalSheet: MutableList<SheetItem>
+    private lateinit var mHorizontalSheet2: MutableList<SheetItem>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -299,10 +299,18 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
     }
 
+
     override fun onSheetItemClick(item: SheetItem) {
         when (item.id) {
             R.id.persistent_sheet_item_add_view -> {
-                if (!this::view.isInitialized || view.parent == null) {
+                if (currentSheet == defaultPersistentBottomSheet){
+                    mHorizontalSheet.addAll(mHorizontalSheet2)
+                    mHorizontalSheet2.add(mHorizontalSheet2[0])
+                    mHorizontalSheet2.removeAt(0)
+                    currentSheet.refreshSheetContent()
+                    return
+                }
+                else if (!this::view.isInitialized || view.parent == null) {
                     view = TextView(this)
                     view.text = getString(R.string.new_view)
                     view.height = 200
@@ -321,7 +329,13 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
             }
 
 
-            R.id.bottom_sheet_item_flag -> showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
+            R.id.bottom_sheet_item_flag -> {
+                showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
+                item.title = item.title + "clicked"
+                item.drawable = R.drawable.ic_flag_24_filled
+                currentSheet.refreshSheetContent()
+                return
+            }
             R.id.bottom_sheet_item_reply -> showSnackbar(resources.getString(R.string.bottom_sheet_item_reply_toast))
             R.id.bottom_sheet_item_forward -> showSnackbar(resources.getString(R.string.bottom_sheet_item_forward_toast))
             R.id.bottom_sheet_item_delete -> showSnackbar(resources.getString(R.string.bottom_sheet_item_delete_toast))
@@ -337,7 +351,9 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
     override fun onBottomSheetItemClick(item: BottomSheetItem) {
         when (item.id) {
-            R.id.bottom_sheet_item_camera -> showSnackbar(resources.getString(R.string.bottom_sheet_item_camera_toast))
+            R.id.bottom_sheet_item_camera -> {
+                showSnackbar(resources.getString(R.string.bottom_sheet_item_camera_toast))
+            }
             R.id.bottom_sheet_item_gallery -> showSnackbar(resources.getString(R.string.bottom_sheet_item_gallery_toast))
             R.id.bottom_sheet_item_videos -> showSnackbar(resources.getString(R.string.bottom_sheet_item_videos_toast))
             R.id.bottom_sheet_item_manage -> showSnackbar(resources.getString(R.string.bottom_sheet_item_manage_toast))

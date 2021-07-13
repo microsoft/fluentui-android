@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">标签</string>
+  <string name="people_picker_search_directory">搜索目录</string>
+  <string name="people_picker_search_progress">正在搜索…</string>
+  <string name="people_picker_accessibility_default_hint">输入姓名或电子邮件</string>
+  <string name="people_picker_accessibility_persona_added">已添加 %s</string>
+  <string name="people_picker_accessibility_persona_removed">已删除 %s</string>
+  <string name="people_picker_accessibility_replaced">已替换 %s，</string>
+  <string name="people_picker_accessibility_click_persona">单击</string>
+  <string name="people_picker_accessibility_delete_persona">删除</string>
+  <string name="people_picker_accessibility_deselect_persona">取消选择</string>
+  <string name="people_picker_accessibility_select_persona">选择</string>
+  <string name="people_picker_accessibility_clicked_persona">已单击 %s</string>
+  <string name="people_picker_accessibility_deselected_persona">已取消选择 %s</string>
+  <string name="people_picker_accessibility_selected_persona">已选择 %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">，激活将取消选择</string>
+  <string name="people_picker_accessibility_delete_selected_persona">，激活将删除</string>
+  <string name="people_picker_accessibility_click_selected_persona">，单击激活</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">向 %s 个人打开的建议列表</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s 个人</item>
+  </plurals>
+</resources>

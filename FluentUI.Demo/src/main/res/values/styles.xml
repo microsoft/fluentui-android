@@ -107,9 +107,9 @@
         <item name="fluentuiCompoundButtonTintCheckedColor">@color/fluentui_communication_blue</item>
     </style>
 
-    <!-- Example theme with Fluent Others theme, you will not have to only look for what rest of the
-         modules have set. Majorly everything is set for you in Others theme-->
-    <style name="Base.AppTheme.FluentOthers" parent="Theme.FluentUI">
+    <!-- Example theme with Fluent Container Base theme, you will not have to only look for what rest of the
+         modules have set. Majorly everything is set for you in Fluent theme-->
+    <style name="Base.AppTheme.FluentCommon" parent="Theme.FluentUI">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/fluentui_white</item>
@@ -119,7 +119,7 @@
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
-    <style name="AppTheme" parent="Base.AppTheme" />
+    <style name="AppTheme" parent="Base.AppTheme.FluentCommon" />
 
     <style name="AppTheme.Orange">
         <item name="colorPrimaryDark">#a52c00</item>

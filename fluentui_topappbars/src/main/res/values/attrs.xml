@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** Semantic Colors *** -->
+
+    <!--AppBarLayout-->
+    <attr name="fluentuiAppBarLayoutBackgroundColor" format="reference|color"/>
+
+    <!--Searchbar-->
+    <attr name="fluentuiSearchbarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewContainerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarBackButtonColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchIconColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewTextColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewTextHintColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarSearchViewCursorColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarProgressColor" format="reference|color"/>
+    <attr name="fluentuiSearchbarCloseIconColor" format="reference|color"/>
+
+    <!--Toolbar-->
+    <attr name="fluentuiToolbarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiToolbarTitleTextColor" format="reference|color"/>
+    <attr name="fluentuiToolbarSubtitleTextColor" format="reference|color"/>
+    <attr name="fluentuiToolbarIconColor" format="reference|color"/>
+
+</resources>
