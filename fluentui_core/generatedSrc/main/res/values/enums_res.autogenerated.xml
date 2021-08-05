@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<integer name="avatarSize_xSmall">0</integer>
+	<integer name="avatarSize_small">1</integer>
+	<integer name="avatarSize_medium">2</integer>
+	<integer name="avatarSize_large">3</integer>
+	<integer name="avatarSize_xlarge">4</integer>
+	<integer name="avatarSize_xxlarge">5</integer>
+	<integer name="avatarStyle_base">0</integer>
+	<integer name="avatarStyle_accent">1</integer>
+	<integer name="avatarStyle_group">2</integer>
+	<integer name="avatarStyle_outlined">3</integer>
+	<integer name="avatarStyle_outlinedPrimary">4</integer>
+	<integer name="avatarStyle_overflow">5</integer>
+	<integer name="buttonSize_small">0</integer>
+	<integer name="buttonSize_medium">1</integer>
+	<integer name="buttonSize_large">2</integer>
+	<integer name="buttonStyle_primary">0</integer>
+	<integer name="buttonStyle_secondary">1</integer>
+	<integer name="buttonStyle_ghost">2</integer>
+	<integer name="listLeadingViewSize_small">0</integer>
+	<integer name="listLeadingViewSize_medium">1</integer>
+	<integer name="listLeadingViewSize_large">2</integer>
+	<integer name="listCellType_oneLine">0</integer>
+	<integer name="listCellType_twoLines">1</integer>
+	<integer name="listCellType_threeLines">2</integer>
+	<integer name="listHeaderStyle_base">0</integer>
+	<integer name="listHeaderStyle_accent">1</integer>
+	<integer name="drawerType_leftNav">0</integer>
+	<integer name="drawerType_rightNav">1</integer>
+	<integer name="drawerBehavior_full">0</integer>
+	<integer name="drawerBehavior_belowStatus">1</integer>
+	<integer name="drawerBehavior_belowToolbar">2</integer>
+	<integer name="drawerBehavior_anchored">3</integer>
+</resources>

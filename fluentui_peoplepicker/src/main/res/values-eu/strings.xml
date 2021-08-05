@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Etiketa</string>
+  <string name="people_picker_search_directory">Bilatu direktorioan</string>
+  <string name="people_picker_search_progress">Bilatzen…</string>
+  <string name="people_picker_accessibility_default_hint">Idatzi izena edo helbide elektronikoa</string>
+  <string name="people_picker_accessibility_persona_added">%s gehitu da</string>
+  <string name="people_picker_accessibility_persona_removed">%s kendu da</string>
+  <string name="people_picker_accessibility_replaced">%s ordeztu da,</string>
+  <string name="people_picker_accessibility_click_persona">Egin klik</string>
+  <string name="people_picker_accessibility_delete_persona">Ezabatu</string>
+  <string name="people_picker_accessibility_deselect_persona">Desautatu</string>
+  <string name="people_picker_accessibility_select_persona">Hautatu</string>
+  <string name="people_picker_accessibility_clicked_persona">%s(e)k klik egin du</string>
+  <string name="people_picker_accessibility_deselected_persona">%s desautatu da</string>
+  <string name="people_picker_accessibility_selected_persona">%s hautatu da</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Aktibatzen baduzu, desautatu egingo da</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Aktibatzen baduzu, ezabatu egingo da</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Aktibatzen baduzu, sakatu egingo da</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Iradokizunen zerrenda ireki da, %s pertsonarekin</item>
+    <item quantity="other">Iradokizunen zerrenda ireki da, %s pertsonarekin</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s pertsona</item>
+    <item quantity="other">%s pertsona</item>
+  </plurals>
+</resources>

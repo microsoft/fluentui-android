@@ -17,10 +17,6 @@ android {
         versionCode project.ext.fluentui_others_version_code
         versionName project.ext.fluentui_others_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
-        vectorDrawables.useSupportLibrary = true
-    }
-    buildFeatures {
-        viewBinding true
     }
     lintOptions {
         abortOnError false
@@ -38,11 +34,6 @@ android {
     }
     productFlavors {
     }
-    sourceSets {
-        main.java.srcDirs += 'generatedSrc/main/java'
-        main.res.srcDirs += 'generatedSrc/main/res'
-        main.assets.srcDirs += 'generatedSrc/main/assets'
-    }
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
@@ -56,8 +47,6 @@ gradle.taskGraph.whenReady { taskGraph ->
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':fluentui_core')
-    implementation project(':fluentui_listitem')
-    implementation project(':fluentui_persona')
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"

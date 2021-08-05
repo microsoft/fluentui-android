@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<declare-styleable name="ListHeaderTokensView">
+		<attr name="fluentUI_listHeaderStyle" format="enum">
+			<enum name="accent" value="1"/>
+			<enum name="base" value="0"/>
+		</attr>
+		<attr name="fluentUI_listHeaderTitle" format="string"/>
+	</declare-styleable>
+</resources>

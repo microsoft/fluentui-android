@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<color name="groupavatartokensview_backgroundDefaultColor">@color/colors_Brand_primary</color>
+	<color name="groupavatartokensview_foregroundDefaultColor">@color/icon_accentColor</color>
+	<array name="groupavatartokensview_textCalculatedBackgroundColors">
+		<item>@color/colors_DarkRed_shade30</item>
+		<item>@color/colors_Cranberry_shade30</item>
+		<item>@color/colors_Red_shade30</item>
+		<item>@color/colors_Pumpkin_shade30</item>
+		<item>@color/colors_Peach_shade30</item>
+		<item>@color/colors_Marigold_shade30</item>
+		<item>@color/colors_Gold_shade30</item>
+		<item>@color/colors_Brass_shade30</item>
+		<item>@color/colors_Brown_shade30</item>
+		<item>@color/colors_Forest_shade30</item>
+		<item>@color/colors_Seafoam_shade30</item>
+		<item>@color/colors_DarkGreen_shade30</item>
+		<item>@color/colors_LightTeal_shade30</item>
+		<item>@color/colors_Teal_shade30</item>
+		<item>@color/colors_Steel_shade30</item>
+		<item>@color/colors_Blue_shade30</item>
+		<item>@color/colors_RoyalBlue_shade30</item>
+		<item>@color/colors_Cornflower_shade30</item>
+		<item>@color/colors_Navy_shade30</item>
+		<item>@color/colors_Lavender_shade30</item>
+		<item>@color/colors_Purple_shade30</item>
+		<item>@color/colors_Grape_shade30</item>
+		<item>@color/colors_Lilac_shade30</item>
+		<item>@color/colors_Pink_shade30</item>
+		<item>@color/colors_Magenta_shade30</item>
+		<item>@color/colors_Plum_shade30</item>
+		<item>@color/colors_Beige_shade30</item>
+		<item>@color/colors_Mink_shade30</item>
+		<item>@color/colors_Platinum_shade30</item>
+		<item>@color/colors_Anchor_shade30</item>
+	</array>
+	<array name="groupavatartokensview_textCalculatedForegroundColors">
+		<item>@color/colors_DarkRed_tint40</item>
+		<item>@color/colors_Cranberry_tint40</item>
+		<item>@color/colors_Red_tint40</item>
+		<item>@color/colors_Pumpkin_tint40</item>
+		<item>@color/colors_Peach_tint40</item>
+		<item>@color/colors_Marigold_tint40</item>
+		<item>@color/colors_Gold_tint40</item>
+		<item>@color/colors_Brass_tint40</item>
+		<item>@color/colors_Brown_tint40</item>
+		<item>@color/colors_Forest_tint40</item>
+		<item>@color/colors_Seafoam_tint40</item>
+		<item>@color/colors_DarkGreen_tint40</item>
+		<item>@color/colors_LightTeal_tint40</item>
+		<item>@color/colors_Teal_tint40</item>
+		<item>@color/colors_Steel_tint40</item>
+		<item>@color/colors_Blue_tint40</item>
+		<item>@color/colors_RoyalBlue_tint40</item>
+		<item>@color/colors_Cornflower_tint40</item>
+		<item>@color/colors_Navy_tint40</item>
+		<item>@color/colors_Lavender_tint40</item>
+		<item>@color/colors_Purple_tint40</item>
+		<item>@color/colors_Grape_tint40</item>
+		<item>@color/colors_Lilac_tint40</item>
+		<item>@color/colors_Pink_tint40</item>
+		<item>@color/colors_Magenta_tint40</item>
+		<item>@color/colors_Plum_tint40</item>
+		<item>@color/colors_Beige_tint40</item>
+		<item>@color/colors_Mink_tint40</item>
+		<item>@color/colors_Platinum_tint40</item>
+		<item>@color/colors_Anchor_tint40</item>
+	</array>
+</resources>

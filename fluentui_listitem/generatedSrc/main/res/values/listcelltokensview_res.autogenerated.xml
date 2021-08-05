@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<integer name="listcelltokensview_backgroundShape">0</integer>
+	<color name="listcelltokensview_backgroundColor">@color/colors_Background_neutral1</color>
+	<color name="listcelltokensview_borderColor">@color/colors_Foreground_neutral1</color>
+	<dimen name="listcelltokensview_borderSize">@dimen/border_size_thin</dimen>
+	<dimen name="listcelltokensview_labelMargin_oneLine">16dp</dimen>
+	<dimen name="listcelltokensview_labelMargin_twoLines">10dp</dimen>
+	<dimen name="listcelltokensview_labelMargin_threeLines">84dp</dimen>
+	<dimen name="listcelltokensview_accessoryViewInterspace">@dimen/spacing_xSmall</dimen>
+	<dimen name="listcelltokensview_horizontalCellPadding">@dimen/spacing_medium</dimen>
+	<color name="listcelltokensview_labelColor">@color/colors_Foreground_neutral1</color>
+	<style parent="@style/typography_body1" name="listcelltokensview_labelFont"/>
+	<color name="listcelltokensview_leadingViewColor">@color/colors_Foreground_neutral4</color>
+	<dimen name="listcelltokensview_leadingViewSize_small">@dimen/icon_size_xSmall</dimen>
+	<dimen name="listcelltokensview_leadingViewSize_medium">@dimen/icon_size_medium</dimen>
+	<dimen name="listcelltokensview_leadingViewSize_large">32dp</dimen>
+	<dimen name="listcelltokensview_leadingViewInterspace_small">40dp</dimen>
+	<dimen name="listcelltokensview_leadingViewInterspace_medium">@dimen/spacing_xxlarge</dimen>
+	<dimen name="listcelltokensview_leadingViewInterspace_large">@dimen/spacing_xlarge</dimen>
+	<color name="listcelltokensview_sublabelColor">@color/colors_Foreground_neutral3</color>
+	<style parent="@style/typography_caption1" name="listcelltokensview_sublabelFont"/>
+</resources>

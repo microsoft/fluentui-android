@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<declare-styleable name="AvatarTokensView">
+		<attr name="fluentUI_avatarSize" format="enum">
+			<enum name="small" value="1"/>
+			<enum name="large" value="3"/>
+			<enum name="xSmall" value="0"/>
+			<enum name="xlarge" value="4"/>
+			<enum name="xxlarge" value="5"/>
+			<enum name="medium" value="2"/>
+		</attr>
+		<attr name="fluentUI_avatarStyle" format="enum">
+			<enum name="outlined" value="3"/>
+			<enum name="overflow" value="5"/>
+			<enum name="outlinedPrimary" value="4"/>
+			<enum name="accent" value="1"/>
+			<enum name="base" value="0"/>
+			<enum name="group" value="2"/>
+		</attr>
+		<attr name="fluentUI_avatarName" format="string"/>
+		<attr name="fluentUI_avatarEmail" format="string"/>
+		<attr name="fluentUI_avatarBackGroundColor" format="reference"/>
+		<attr name="fluentUI_avatarImageDrawable" format="reference"/>
+	</declare-styleable>
+</resources>

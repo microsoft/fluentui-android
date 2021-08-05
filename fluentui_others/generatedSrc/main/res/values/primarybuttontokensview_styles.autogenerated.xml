@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="Widget.FluentUI.primarybuttontokensview.small" parent="Widget.AppCompat.Button">
+		<item name="android:paddingStart">@dimen/primarybuttontokensview_paddingHorizontal_small</item>
+		<item name="android:paddingEnd">@dimen/primarybuttontokensview_paddingHorizontal_small</item>
+		<item name="android:paddingTop">@dimen/primarybuttontokensview_paddingVertical_small</item>
+		<item name="android:paddingBottom">@dimen/primarybuttontokensview_paddingVertical_small</item>
+		<item name="android:background">@drawable/primarybuttontokensview_smallbackground</item>
+		<item name="android:textColor">@color/primarybuttontokensview_textcolor</item>
+		<item name="android:textAppearance">@style/primarybuttontokensview_textFont_small</item>
+		<item name="android:minHeight">0dp</item>
+		<item name="android:minWidth">0dp</item>
+	</style>
+
+	<style name="Widget.FluentUI.primarybuttontokensview.medium" parent="Widget.AppCompat.Button">
+		<item name="android:paddingStart">@dimen/primarybuttontokensview_paddingHorizontal_medium</item>
+		<item name="android:paddingEnd">@dimen/primarybuttontokensview_paddingHorizontal_medium</item>
+		<item name="android:paddingTop">@dimen/primarybuttontokensview_paddingVertical_medium</item>
+		<item name="android:paddingBottom">@dimen/primarybuttontokensview_paddingVertical_medium</item>
+		<item name="android:background">@drawable/primarybuttontokensview_mediumbackground</item>
+		<item name="android:textColor">@color/primarybuttontokensview_textcolor</item>
+		<item name="android:textAppearance">@style/primarybuttontokensview_textFont_medium</item>
+		<item name="android:minHeight">0dp</item>
+		<item name="android:minWidth">0dp</item>
+	</style>
+
+	<style name="Widget.FluentUI.primarybuttontokensview.large" parent="Widget.AppCompat.Button">
+		<item name="android:paddingStart">@dimen/primarybuttontokensview_paddingHorizontal_large</item>
+		<item name="android:paddingEnd">@dimen/primarybuttontokensview_paddingHorizontal_large</item>
+		<item name="android:paddingTop">@dimen/primarybuttontokensview_paddingVertical_large</item>
+		<item name="android:paddingBottom">@dimen/primarybuttontokensview_paddingVertical_large</item>
+		<item name="android:background">@drawable/primarybuttontokensview_largebackground</item>
+		<item name="android:textColor">@color/primarybuttontokensview_textcolor</item>
+		<item name="android:textAppearance">@style/primarybuttontokensview_textFont_large</item>
+		<item name="android:minHeight">0dp</item>
+		<item name="android:minWidth">0dp</item>
+	</style>
+</resources>

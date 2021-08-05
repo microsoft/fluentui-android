@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<style name="typography_display">
+		<item name="android:textSize">@dimen/font_size_display</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+
+	<style name="typography_large_title">
+		<item name="android:textSize">@dimen/font_size_large_title</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+
+	<style name="typography_title1">
+		<item name="android:textSize">@dimen/font_size_title1</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+
+	<style name="typography_title2">
+		<item name="android:textSize">@dimen/font_size_title2</item>
+		<item name="android:fontFamily">"sans-serif-medium"</item>
+		<item name="android:fontWeight">500</item>
+	</style>
+
+	<style name="typography_title3">
+		<item name="android:textSize">@dimen/font_size_title3</item>
+		<item name="android:fontFamily">"sans-serif-medium"</item>
+		<item name="android:fontWeight">500</item>
+	</style>
+
+	<style name="typography_body1">
+		<item name="android:textSize">@dimen/font_size_body1</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+
+	<style name="typography_body1_strong">
+		<item name="android:textSize">@dimen/font_size_body1_strong</item>
+		<item name="android:fontFamily">"sans-serif-medium"</item>
+		<item name="android:fontWeight">500</item>
+	</style>
+
+	<style name="typography_body2">
+		<item name="android:textSize">@dimen/font_size_body2</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+
+	<style name="typography_body2_strong">
+		<item name="android:textSize">@dimen/font_size_body2_strong</item>
+		<item name="android:fontFamily">"sans-serif-medium"</item>
+		<item name="android:fontWeight">500</item>
+	</style>
+
+	<style name="typography_caption1">
+		<item name="android:textSize">@dimen/font_size_caption1</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+
+	<style name="typography_caption1_strong">
+		<item name="android:textSize">@dimen/font_size_caption1_strong</item>
+		<item name="android:fontFamily">"sans-serif-medium"</item>
+		<item name="android:fontWeight">500</item>
+	</style>
+
+	<style name="typography_caption2">
+		<item name="android:textSize">@dimen/font_size_caption2</item>
+		<item name="android:fontFamily">"sans-serif"</item>
+		<item name="android:fontWeight">400</item>
+	</style>
+</resources>

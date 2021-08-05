@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<integer name="secondarybuttontokensview_backgroundShape">0</integer>
+	<color name="secondarybuttontokensview_backgroundColor_rest">@color/colors_Neutral_clear</color>
+	<color name="secondarybuttontokensview_backgroundColor_hover">@color/colors_Neutral_clear</color>
+	<color name="secondarybuttontokensview_backgroundColor_pressed">@color/colors_Neutral_clear</color>
+	<color name="secondarybuttontokensview_backgroundColor_selected">@color/colors_Neutral_clear</color>
+	<color name="secondarybuttontokensview_backgroundColor_disabled">@color/colors_Neutral_clear</color>
+	<color name="secondarybuttontokensview_borderColor_rest">@color/colors_Stroke_brandRest</color>
+	<color name="secondarybuttontokensview_borderColor_hover">@color/colors_Stroke_brandHover</color>
+	<color name="secondarybuttontokensview_borderColor_pressed">@color/colors_Stroke_brandPressed</color>
+	<color name="secondarybuttontokensview_borderColor_selected">@color/colors_Stroke_brandSelected</color>
+	<color name="secondarybuttontokensview_borderColor_disabled">@color/colors_Stroke_brandDisabled</color>
+	<dimen name="secondarybuttontokensview_borderRadius_small">@dimen/border_radius_medium</dimen>
+	<dimen name="secondarybuttontokensview_borderRadius_medium">@dimen/border_radius_large</dimen>
+	<dimen name="secondarybuttontokensview_borderRadius_large">@dimen/border_radius_xlarge</dimen>
+	<dimen name="secondarybuttontokensview_borderSize_small">@dimen/border_size_thin</dimen>
+	<dimen name="secondarybuttontokensview_borderSize_medium">@dimen/border_size_thin</dimen>
+	<dimen name="secondarybuttontokensview_borderSize_large">@dimen/border_size_thin</dimen>
+	<color name="secondarybuttontokensview_iconColor_rest">@color/colors_Foreground_brandRest</color>
+	<color name="secondarybuttontokensview_iconColor_hover">@color/colors_Foreground_brandHover</color>
+	<color name="secondarybuttontokensview_iconColor_pressed">@color/colors_Foreground_brandPressed</color>
+	<color name="secondarybuttontokensview_iconColor_selected">@color/colors_Foreground_brandSelected</color>
+	<color name="secondarybuttontokensview_iconColor_disabled">@color/colors_Foreground_brandDisabled</color>
+	<dimen name="secondarybuttontokensview_iconSize_small">@dimen/icon_size_small</dimen>
+	<dimen name="secondarybuttontokensview_iconSize_medium">@dimen/icon_size_medium</dimen>
+	<dimen name="secondarybuttontokensview_iconSize_large">@dimen/icon_size_large</dimen>
+	<dimen name="secondarybuttontokensview_interspace_small">@dimen/spacing_xxSmall</dimen>
+	<dimen name="secondarybuttontokensview_interspace_medium">@dimen/spacing_small</dimen>
+	<dimen name="secondarybuttontokensview_interspace_large">@dimen/spacing_large</dimen>
+	<dimen name="secondarybuttontokensview_paddingHorizontal_small">@dimen/spacing_xSmall</dimen>
+	<dimen name="secondarybuttontokensview_paddingHorizontal_medium">@dimen/spacing_small</dimen>
+	<dimen name="secondarybuttontokensview_paddingHorizontal_large">@dimen/spacing_large</dimen>
+	<dimen name="secondarybuttontokensview_paddingVertical_small">6dp</dimen>
+	<dimen name="secondarybuttontokensview_paddingVertical_medium">10dp</dimen>
+	<dimen name="secondarybuttontokensview_paddingVertical_large">14dp</dimen>
+	<color name="secondarybuttontokensview_textColor_rest">@color/colors_Foreground_brandRest</color>
+	<color name="secondarybuttontokensview_textColor_hover">@color/colors_Foreground_brandHover</color>
+	<color name="secondarybuttontokensview_textColor_pressed">@color/colors_Foreground_brandPressed</color>
+	<color name="secondarybuttontokensview_textColor_selected">@color/colors_Foreground_brandSelected</color>
+	<color name="secondarybuttontokensview_textColor_disabled">@color/colors_Foreground_brandDisabled</color>
+	<style parent="@style/typography_caption2" name="secondarybuttontokensview_textFont_small"/>
+	<style parent="@style/typography_caption1_strong" name="secondarybuttontokensview_textFont_medium"/>
+	<style parent="@style/typography_body1_strong" name="secondarybuttontokensview_textFont_large"/>
+</resources>

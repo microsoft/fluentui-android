@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<color name="overflowavatartokensview_backgroundDefaultColor">@color/colors_Background_neutral4</color>
+	<dimen name="overflowavatartokensview_borderRadius_xSmall">@dimen/border_radius_none</dimen>
+	<dimen name="overflowavatartokensview_borderRadius_small">@dimen/border_radius_none</dimen>
+	<dimen name="overflowavatartokensview_borderRadius_medium">@dimen/border_radius_none</dimen>
+	<dimen name="overflowavatartokensview_borderRadius_large">@dimen/border_radius_none</dimen>
+	<dimen name="overflowavatartokensview_borderRadius_xlarge">@dimen/border_radius_none</dimen>
+	<dimen name="overflowavatartokensview_borderRadius_xxlarge">@dimen/border_radius_none</dimen>
+	<color name="overflowavatartokensview_foregroundDefaultColor">@color/colors_Foreground_neutral3</color>
+	<dimen name="overflowavatartokensview_presenceIconSize_xSmall">0dp</dimen>
+	<dimen name="overflowavatartokensview_presenceIconSize_small">@dimen/icon_size_xxxSmall</dimen>
+	<dimen name="overflowavatartokensview_presenceIconSize_medium">@dimen/icon_size_xxxSmall</dimen>
+	<dimen name="overflowavatartokensview_presenceIconSize_large">@dimen/icon_size_xxSmall</dimen>
+	<dimen name="overflowavatartokensview_presenceIconSize_xlarge">@dimen/icon_size_xxSmall</dimen>
+	<dimen name="overflowavatartokensview_presenceIconSize_xxlarge">@dimen/icon_size_small</dimen>
+	<color name="overflowavatartokensview_presenceIconOutlineColor">@color/colors_Background_neutral1</color>
+	<dimen name="overflowavatartokensview_presenceIconOutlineThickness_xSmall">@dimen/border_size_none</dimen>
+	<dimen name="overflowavatartokensview_presenceIconOutlineThickness_small">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_presenceIconOutlineThickness_medium">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_presenceIconOutlineThickness_large">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_presenceIconOutlineThickness_xlarge">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_presenceIconOutlineThickness_xxlarge">@dimen/border_size_thick</dimen>
+	<color name="overflowavatartokensview_ringDefaultColor">@color/colors_Background_neutralDisabled</color>
+	<color name="overflowavatartokensview_ringGapColor">@color/colors_Background_neutral1</color>
+	<dimen name="overflowavatartokensview_ringInnerGap_xSmall">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringInnerGap_small">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringInnerGap_medium">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringInnerGap_large">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringInnerGap_xlarge">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringInnerGap_xxlarge">@dimen/border_size_thicker</dimen>
+	<dimen name="overflowavatartokensview_ringThickness_xSmall">@dimen/border_size_thin</dimen>
+	<dimen name="overflowavatartokensview_ringThickness_small">@dimen/border_size_thin</dimen>
+	<dimen name="overflowavatartokensview_ringThickness_medium">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringThickness_large">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringThickness_xlarge">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringThickness_xxlarge">@dimen/border_size_thicker</dimen>
+	<dimen name="overflowavatartokensview_ringOuterGap_xSmall">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringOuterGap_small">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringOuterGap_medium">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringOuterGap_large">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringOuterGap_xlarge">@dimen/border_size_thick</dimen>
+	<dimen name="overflowavatartokensview_ringOuterGap_xxlarge">@dimen/border_size_thicker</dimen>
+	<dimen name="overflowavatartokensview_size_xSmall">16dp</dimen>
+	<dimen name="overflowavatartokensview_size_small">24dp</dimen>
+	<dimen name="overflowavatartokensview_size_medium">32dp</dimen>
+	<dimen name="overflowavatartokensview_size_large">40dp</dimen>
+	<dimen name="overflowavatartokensview_size_xlarge">52dp</dimen>
+	<dimen name="overflowavatartokensview_size_xxlarge">72dp</dimen>
+	<array name="overflowavatartokensview_textCalculatedBackgroundColors">
+		<item>@color/colors_DarkRed_tint40</item>
+		<item>@color/colors_Cranberry_tint40</item>
+		<item>@color/colors_Red_tint40</item>
+		<item>@color/colors_Pumpkin_tint40</item>
+		<item>@color/colors_Peach_tint40</item>
+		<item>@color/colors_Marigold_tint40</item>
+		<item>@color/colors_Gold_tint40</item>
+		<item>@color/colors_Brass_tint40</item>
+		<item>@color/colors_Brown_tint40</item>
+		<item>@color/colors_Forest_tint40</item>
+		<item>@color/colors_Seafoam_tint40</item>
+		<item>@color/colors_DarkGreen_tint40</item>
+		<item>@color/colors_LightTeal_tint40</item>
+		<item>@color/colors_Teal_tint40</item>
+		<item>@color/colors_Steel_tint40</item>
+		<item>@color/colors_Blue_tint40</item>
+		<item>@color/colors_RoyalBlue_tint40</item>
+		<item>@color/colors_Cornflower_tint40</item>
+		<item>@color/colors_Navy_tint40</item>
+		<item>@color/colors_Lavender_tint40</item>
+		<item>@color/colors_Purple_tint40</item>
+		<item>@color/colors_Grape_tint40</item>
+		<item>@color/colors_Lilac_tint40</item>
+		<item>@color/colors_Pink_tint40</item>
+		<item>@color/colors_Magenta_tint40</item>
+		<item>@color/colors_Plum_tint40</item>
+		<item>@color/colors_Beige_tint40</item>
+		<item>@color/colors_Mink_tint40</item>
+		<item>@color/colors_Platinum_tint40</item>
+		<item>@color/colors_Anchor_tint40</item>
+	</array>
+	<array name="overflowavatartokensview_textCalculatedForegroundColors">
+		<item>@color/colors_DarkRed_shade30</item>
+		<item>@color/colors_Cranberry_shade30</item>
+		<item>@color/colors_Red_shade30</item>
+		<item>@color/colors_Pumpkin_shade30</item>
+		<item>@color/colors_Peach_shade30</item>
+		<item>@color/colors_Marigold_shade30</item>
+		<item>@color/colors_Gold_shade30</item>
+		<item>@color/colors_Brass_shade30</item>
+		<item>@color/colors_Brown_shade30</item>
+		<item>@color/colors_Forest_shade30</item>
+		<item>@color/colors_Seafoam_shade30</item>
+		<item>@color/colors_DarkGreen_shade30</item>
+		<item>@color/colors_LightTeal_shade30</item>
+		<item>@color/colors_Teal_shade30</item>
+		<item>@color/colors_Steel_shade30</item>
+		<item>@color/colors_Blue_shade30</item>
+		<item>@color/colors_RoyalBlue_shade30</item>
+		<item>@color/colors_Cornflower_shade30</item>
+		<item>@color/colors_Navy_shade30</item>
+		<item>@color/colors_Lavender_shade30</item>
+		<item>@color/colors_Purple_shade30</item>
+		<item>@color/colors_Grape_shade30</item>
+		<item>@color/colors_Lilac_shade30</item>
+		<item>@color/colors_Pink_shade30</item>
+		<item>@color/colors_Magenta_shade30</item>
+		<item>@color/colors_Plum_shade30</item>
+		<item>@color/colors_Beige_shade30</item>
+		<item>@color/colors_Mink_shade30</item>
+		<item>@color/colors_Platinum_shade30</item>
+		<item>@color/colors_Anchor_shade30</item>
+	</array>
+	<color name="overflowavatartokensview_textColor">@color/colors_Foreground_neutral3</color>
+</resources>

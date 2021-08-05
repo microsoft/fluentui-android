@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<color name="drawertokensview_backgroundColor">@color/colors_Neutral_white</color>
+	<color name="drawertokensview_backgroundDimmedColor">@color/colors_Elevation_highElevation</color>
+	<dimen name="drawertokensview_elevation">8dp</dimen>
+	<dimen name="drawertokensview_corners_topLeft">0dp</dimen>
+	<dimen name="drawertokensview_corners_topRight">0dp</dimen>
+	<dimen name="drawertokensview_corners_bottomLeft">0dp</dimen>
+	<dimen name="drawertokensview_corners_bottomRight">0dp</dimen>
+	<color name="drawertokensview_shadow1Color">@color/shadow_shadow28_color1</color>
+	<dimen name="drawertokensview_shadow1Blur">@dimen/shadow_shadow28_blur1</dimen>
+	<dimen name="drawertokensview_shadow1OffsetX">@dimen/shadow_shadow28_x1</dimen>
+	<dimen name="drawertokensview_shadow1OffsetY">@dimen/shadow_shadow28_y1</dimen>
+	<color name="drawertokensview_shadow2Color">@color/shadow_shadow28_color2</color>
+	<dimen name="drawertokensview_shadow2Blur">@dimen/shadow_shadow28_blur2</dimen>
+	<dimen name="drawertokensview_shadow2OffsetX">@dimen/shadow_shadow28_x2</dimen>
+	<dimen name="drawertokensview_shadow2OffsetY">@dimen/shadow_shadow28_y2</dimen>
+</resources>

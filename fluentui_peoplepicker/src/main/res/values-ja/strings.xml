@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">ラベル</string>
+  <string name="people_picker_search_directory">ディレクトリの検索</string>
+  <string name="people_picker_search_progress">検索しています…</string>
+  <string name="people_picker_accessibility_default_hint">名前またはメールを入力します</string>
+  <string name="people_picker_accessibility_persona_added">%s を追加しました</string>
+  <string name="people_picker_accessibility_persona_removed">%s を削除しました</string>
+  <string name="people_picker_accessibility_replaced">%s を置き換えました、</string>
+  <string name="people_picker_accessibility_click_persona">クリック</string>
+  <string name="people_picker_accessibility_delete_persona">削除</string>
+  <string name="people_picker_accessibility_deselect_persona">選択解除</string>
+  <string name="people_picker_accessibility_select_persona">選択</string>
+  <string name="people_picker_accessibility_clicked_persona">%s をクリックしました</string>
+  <string name="people_picker_accessibility_deselected_persona">%s の選択を解除しました</string>
+  <string name="people_picker_accessibility_selected_persona">%s を選択しました</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">、ライセンス認証の選択が解除されます</string>
+  <string name="people_picker_accessibility_delete_selected_persona">、ライセンス認証が削除されます</string>
+  <string name="people_picker_accessibility_click_selected_persona">、ライセンス認証をクリックします</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="other">候補の一覧を %s 人が開きました</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="other">%s 人</item>
+  </plurals>
+</resources>

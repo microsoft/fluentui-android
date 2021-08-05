@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/fluentui_transparent">
+<item >
+	<shape android:shape="@integer/listcelltokensview_backgroundShape">
+		<solid android:color="@color/listcelltokensview_backgroundColor"/>
+	</shape>
+</item>
+</ripple>

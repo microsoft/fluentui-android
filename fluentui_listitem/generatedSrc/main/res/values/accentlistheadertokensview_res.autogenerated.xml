@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<integer name="accentlistheadertokensview_backgroundShape">0</integer>
+	<color name="accentlistheadertokensview_backgroundColor">@color/colors_Background_neutral1</color>
+	<color name="accentlistheadertokensview_titleColor_rest">@color/colors_Foreground_brandRest</color>
+	<color name="accentlistheadertokensview_titleColor_hover">@color/colors_Foreground_brandHover</color>
+	<color name="accentlistheadertokensview_titleColor_pressed">@color/colors_Foreground_brandPressed</color>
+	<color name="accentlistheadertokensview_titleColor_selected">@color/colors_Foreground_brandSelected</color>
+	<color name="accentlistheadertokensview_titleColor_disabled">@color/colors_Foreground_brandDisabled</color>
+	<color name="accentlistheadertokensview_actionColor">@color/colors_Foreground_neutral3</color>
+	<dimen name="accentlistheadertokensview_actionViewInterspace">@dimen/spacing_xSmall</dimen>
+	<style parent="@style/typography_body1_strong" name="accentlistheadertokensview_titleFont"/>
+	<style parent="@style/typography_body1_strong" name="accentlistheadertokensview_actionFont"/>
+	<dimen name="accentlistheadertokensview_horizontalPadding">@dimen/spacing_medium</dimen>
+	<dimen name="accentlistheadertokensview_verticalPadding">@dimen/spacing_small</dimen>
+</resources>

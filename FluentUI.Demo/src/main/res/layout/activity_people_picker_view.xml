@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:label="@string/people_picker_select_deselect_example"
-        app:characterThreshold="0"
+        app:characterThreshold="3"
         app:personaChipClickStyle="select_deselect" />
 
 </LinearLayout>

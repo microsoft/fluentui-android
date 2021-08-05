@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<integer name="buttontokensview_backgroundShape">0</integer>
+	<color name="buttontokensview_backgroundColor_rest">@color/colors_Neutral_clear</color>
+	<color name="buttontokensview_backgroundColor_hover">@color/colors_Neutral_clear</color>
+	<color name="buttontokensview_backgroundColor_pressed">@color/colors_Neutral_clear</color>
+	<color name="buttontokensview_backgroundColor_selected">@color/colors_Neutral_clear</color>
+	<color name="buttontokensview_backgroundColor_disabled">@color/colors_Neutral_clear</color>
+	<color name="buttontokensview_borderColor_rest">@color/colors_Background_brandRest</color>
+	<color name="buttontokensview_borderColor_hover">@color/colors_Background_brandHover</color>
+	<color name="buttontokensview_borderColor_pressed">@color/colors_Background_brandPressed</color>
+	<color name="buttontokensview_borderColor_selected">@color/colors_Background_brandSelected</color>
+	<color name="buttontokensview_borderColor_disabled">@color/colors_Background_brandDisabled</color>
+	<dimen name="buttontokensview_borderRadius_small">@dimen/border_radius_medium</dimen>
+	<dimen name="buttontokensview_borderRadius_medium">@dimen/border_radius_large</dimen>
+	<dimen name="buttontokensview_borderRadius_large">@dimen/border_radius_xlarge</dimen>
+	<dimen name="buttontokensview_borderSize_small">@dimen/border_size_none</dimen>
+	<dimen name="buttontokensview_borderSize_medium">@dimen/border_size_none</dimen>
+	<dimen name="buttontokensview_borderSize_large">@dimen/border_size_none</dimen>
+	<color name="buttontokensview_iconColor_rest">@color/colors_Foreground_brandRest</color>
+	<color name="buttontokensview_iconColor_hover">@color/colors_Foreground_brandHover</color>
+	<color name="buttontokensview_iconColor_pressed">@color/colors_Foreground_brandPressed</color>
+	<color name="buttontokensview_iconColor_selected">@color/colors_Foreground_brandSelected</color>
+	<color name="buttontokensview_iconColor_disabled">@color/colors_Foreground_brandDisabled</color>
+	<dimen name="buttontokensview_iconSize_small">@dimen/icon_size_small</dimen>
+	<dimen name="buttontokensview_iconSize_medium">@dimen/icon_size_medium</dimen>
+	<dimen name="buttontokensview_iconSize_large">@dimen/icon_size_large</dimen>
+	<dimen name="buttontokensview_interspace_small">@dimen/spacing_xxSmall</dimen>
+	<dimen name="buttontokensview_interspace_medium">@dimen/spacing_small</dimen>
+	<dimen name="buttontokensview_interspace_large">@dimen/spacing_large</dimen>
+	<dimen name="buttontokensview_paddingHorizontal_small">@dimen/spacing_xSmall</dimen>
+	<dimen name="buttontokensview_paddingHorizontal_medium">@dimen/spacing_small</dimen>
+	<dimen name="buttontokensview_paddingHorizontal_large">@dimen/spacing_large</dimen>
+	<dimen name="buttontokensview_paddingVertical_small">6dp</dimen>
+	<dimen name="buttontokensview_paddingVertical_medium">10dp</dimen>
+	<dimen name="buttontokensview_paddingVertical_large">14dp</dimen>
+	<color name="buttontokensview_textColor_rest">@color/colors_Foreground_brandRest</color>
+	<color name="buttontokensview_textColor_hover">@color/colors_Foreground_brandHover</color>
+	<color name="buttontokensview_textColor_pressed">@color/colors_Foreground_brandPressed</color>
+	<color name="buttontokensview_textColor_selected">@color/colors_Foreground_brandSelected</color>
+	<color name="buttontokensview_textColor_disabled">@color/colors_Foreground_brandDisabled</color>
+	<style parent="@style/typography_caption2" name="buttontokensview_textFont_small"/>
+	<style parent="@style/typography_caption1_strong" name="buttontokensview_textFont_medium"/>
+	<style parent="@style/typography_body1_strong" name="buttontokensview_textFont_large"/>
+</resources>

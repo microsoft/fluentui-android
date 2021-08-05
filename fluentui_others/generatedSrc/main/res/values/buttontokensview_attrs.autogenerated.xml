@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<declare-styleable name="ButtonTokensView">
+		<attr name="fluentUI_buttonSize" format="enum">
+			<enum name="small" value="0"/>
+			<enum name="large" value="2"/>
+			<enum name="medium" value="1"/>
+		</attr>
+		<attr name="fluentUI_buttonStyle" format="enum">
+			<enum name="secondary" value="1"/>
+			<enum name="ghost" value="2"/>
+			<enum name="primary" value="0"/>
+		</attr>
+		<attr name="fluentUI_buttonIcon" format="reference"/>
+	</declare-styleable>
+</resources>

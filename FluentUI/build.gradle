@@ -29,12 +29,19 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':fluentui_core')
-    implementation project(':fluentui_listitem')
-    implementation project(':fluentui_drawer')
-    implementation project(':fluentui_tablayout')
-    implementation project(':fluentui_ccb')
-    implementation project(':fluentui_others')
+    api project(':fluentui_calendar')
+    api project(':fluentui_ccb')
+    api project(':fluentui_core')
+    api project(':fluentui_drawer')
+    api project(':fluentui_listitem')
+    api project(':fluentui_menus')
+    api project(':fluentui_others')
+    api project(':fluentui_peoplepicker')
+    api project(':fluentui_persona')
+    api project(':fluentui_progress')
+    api project(':fluentui_tablayout')
+    api project(':fluentui_topappbars')
+    api project(':fluentui_transients')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"

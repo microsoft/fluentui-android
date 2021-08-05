@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:state_pressed="true" android:color="@color/colors_Foreground_brandPressed"/>
+	<item android:state_activated="true" android:color="@color/colors_Foreground_brandSelected"/>
+	<item android:state_enabled="false" android:color="@color/colors_Foreground_brandDisabled"/>
+	<item android:color="@color/colors_Foreground_brandRest"/>
+</selector>

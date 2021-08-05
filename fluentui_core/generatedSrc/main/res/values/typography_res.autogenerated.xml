@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<dimen name="font_size_display">60sp</dimen>
+	<dimen name="font_size_large_title">34sp</dimen>
+	<dimen name="font_size_title1">24sp</dimen>
+	<dimen name="font_size_title2">20sp</dimen>
+	<dimen name="font_size_title3">18sp</dimen>
+	<dimen name="font_size_body1">16sp</dimen>
+	<dimen name="font_size_body1_strong">16sp</dimen>
+	<dimen name="font_size_body2">14sp</dimen>
+	<dimen name="font_size_body2_strong">14sp</dimen>
+	<dimen name="font_size_caption1">13sp</dimen>
+	<dimen name="font_size_caption1_strong">13sp</dimen>
+	<dimen name="font_size_caption2">12sp</dimen>
+</resources>

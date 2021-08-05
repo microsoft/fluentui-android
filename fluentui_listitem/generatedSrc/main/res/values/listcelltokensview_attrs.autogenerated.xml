@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Auto-generated code, all changes will be lost -->
+
+<resources>
+	<declare-styleable name="ListCellTokensView">
+		<attr name="fluentUI_listLeadingViewSize" format="enum">
+			<enum name="small" value="0"/>
+			<enum name="large" value="2"/>
+			<enum name="medium" value="1"/>
+		</attr>
+		<attr name="fluentUI_listTitle" format="string"/>
+		<attr name="fluentUI_listSubtitle" format="string"/>
+		<attr name="fluentUI_listFooter" format="string"/>
+		<attr name="fluentUI_listTitleMaxLines" format="integer"/>
+		<attr name="fluentUI_listSubtitleMaxLines" format="integer"/>
+		<attr name="fluentUI_listFooterMaxLines" format="integer"/>
+	</declare-styleable>
+</resources>
