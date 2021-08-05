@@ -20,6 +20,9 @@ android {
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
+    buildFeatures {
+        viewBinding true
+    }
 
     buildTypes {
         release {
@@ -44,6 +47,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
 
