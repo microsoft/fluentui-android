@@ -60,3 +60,12 @@ freeline_project_description.json
 */fastlane/screenshots
 */fastlane/test_output
 */fastlane/readme.md
+
+# Generated Files
+FluentUI/generatedSrc
+fluentui_core/generatedSrc
+fluentui_others/generatedSrc
+fluentui_drawer/generatedSrc
+fluentui_listitem/generatedSrc
+fluentui_persona/generatedSrc
+

@@ -27,6 +27,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'generatedSrc/main/java'
+        main.res.srcDirs += 'generatedSrc/main/res'
+        main.assets.srcDirs += 'generatedSrc/main/assets'
+    }
 
 }
 

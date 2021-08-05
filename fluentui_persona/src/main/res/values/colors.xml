@@ -29,4 +29,13 @@
     <color name="fluentui_avatar_border_background">@color/fluentui_gray_200</color>
     <color name="fluentui_avatar_overflow_text_color">@color/fluentui_gray_500</color>
     <color name="fluentui_avatar_overflow_background">@color/fluentui_gray_25</color>
+
+    <color name="fluent_presence_available">#6BB700</color>
+    <color name="fluent_presence_away">#FFAA44</color>
+    <color name="fluent_presence_oof">#B4009E</color>
+    <color name="fluent_presence_blocked">#C50F1F</color>
+    <color name="fluent_presence_busy">#C50F1F</color>
+    <color name="fluent_presence_dnd">#C50F1F</color>
+    <color name="fluent_presence_offline">#8A8886</color>
+    <color name="fluent_presence_unknown">#8A8886</color>
 </resources>

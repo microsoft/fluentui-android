@@ -34,6 +34,11 @@ android {
     }
     productFlavors {
     }
+    sourceSets {
+        main.java.srcDirs += 'generatedSrc/main/java'
+        main.res.srcDirs += 'generatedSrc/main/res'
+        main.assets.srcDirs += 'generatedSrc/main/assets'
+    }
 }
 
 gradle.taskGraph.whenReady { taskGraph ->
