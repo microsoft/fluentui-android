@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--
+       All dark theme specific semantic colors should be defined here.
+       Light theme semantic colors should be defined in themes.xml as the default.
+   -->
+    <style name="Base.Theme.FluentUI" parent="Base.Theme.FluentUI.Internal">
+    <item name="android:textColorPrimary">@color/fluentui_white</item>
+
+    <!-- *** Base Semantic Colors *** -->
+
+    <!--Backgrounds-->
+    <item name="fluentuiBackgroundColor">@color/fluentui_black</item>
+    <item name="fluentuiBackgroundPressedColor">@color/fluentui_gray_900</item>
+
+    <!--Foregrounds-->
+    <item name="fluentuiForegroundColor">@color/fluentui_white</item>
+    <item name="fluentuiForegroundOnPrimaryColor">@color/fluentui_black</item>
+    <item name="fluentuiDividerColor">@color/fluentui_gray_800</item>
+    </style>
+
+    <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent=""/>
+</resources>

@@ -8,13 +8,13 @@ package com.microsoft.fluentuidemo.demos
 import android.graphics.BitmapFactory
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import android.view.View
 import android.widget.ImageView
 import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.persona.AvatarView
-import com.microsoft.fluentui.widget.ProgressBar
+import com.microsoft.fluentui.progress.ProgressBar
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentuidemo.DemoActivity

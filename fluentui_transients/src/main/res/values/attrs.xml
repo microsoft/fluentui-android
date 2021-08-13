@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Snackbar-->
+    <attr name="fluentuiSnackbarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiSnackbarBackgroundAnnouncementColor" format="reference|color"/>
+    <attr name="fluentuiSnackbarTextColor" format="reference|color"/>
+    <attr name="fluentuiSnackbarActionTextColor" format="reference|color"/>
+    <attr name="fluentuiSnackbarActionTextAnnouncementColor" format="reference|color"/>
+    <!--Tooltip-->
+    <attr name="fluentuiTooltipBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTooltipTextColor" format="reference|color"/>
+
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:importantForAccessibility="yes"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/fluentui_persistent_bottomsheet_horizontalitem_padding_horizontal"
+    android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_item_paddingTop"
+    android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_horizontalitem_padding_horizontal"
+    android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_horizontal_item_paddingBottom">
+
+    <LinearLayout
+        android:id="@+id/sheet_item_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="noHideDescendants"
+        android:orientation="vertical" />
+
+    <TextView
+        android:id="@+id/sheet_item_title"
+        style="@style/TextAppearance.FluentUI.PersistentBottomSheetHorizontalItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/fluentui_persistent_bottomsheet_horizontal_icon_text_gap"
+        android:paddingTop="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical"
+        android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_horizontal_textview_padding_vertical"
+        tools:text="Title" />
+
+</LinearLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Label</string>
+  <string name="people_picker_search_directory">Search Directory</string>
+  <string name="people_picker_search_progress">Searching…</string>
+  <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
+  <string name="people_picker_accessibility_persona_added">%s added</string>
+  <string name="people_picker_accessibility_persona_removed">%s removed</string>
+  <string name="people_picker_accessibility_replaced">%s replaced,</string>
+  <string name="people_picker_accessibility_click_persona">Click</string>
+  <string name="people_picker_accessibility_delete_persona">Delete</string>
+  <string name="people_picker_accessibility_deselect_persona">Deselect</string>
+  <string name="people_picker_accessibility_select_persona">Select</string>
+  <string name="people_picker_accessibility_clicked_persona">Clicked %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Deselected %s</string>
+  <string name="people_picker_accessibility_selected_persona">Selected %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, Activation will deselect</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, Activation will delete</string>
+  <string name="people_picker_accessibility_click_selected_persona">, Activation will click</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Suggestions list opened with %s person</item>
+    <item quantity="other">Suggestions list opened with %s people</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s person</item>
+    <item quantity="other">%s people</item>
+  </plurals>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+     <!-- *** FluentUI Semantic Styles *** -->
+
+    <!--BottomNavigation-->
+    <style name="TextAppearance.FluentUI.BottomNavigation.Inactive" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiBottomNavigationForegroundInactiveColor</item>
+    </style>
+    <style name="TextAppearance.FluentUI.BottomNavigation.Active" parent="TextAppearance.FluentUI.Caption">
+        <item name="android:textColor">?attr/fluentuiBottomNavigationForegroundActiveColor</item>
+    </style>
+
+    <!--Button-->
+    <style name="TextAppearance.FluentUI.Button" parent="TextAppearance.FluentUI.Body2">
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Borderless">
+        <item name="android:textColor">@color/button_text_borderless</item>
+    </style>
+    <style name="TextAppearance.FluentUI.Button.Outlined">
+        <item name="android:textColor">@color/button_text_outlined</item>
+    </style>
+
+ </resources>

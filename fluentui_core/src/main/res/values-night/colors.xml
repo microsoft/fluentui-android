@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+
+    <!--Communication Colors-->
+    <color name="fluentui_communication_shade_30">#043862</color>
+    <color name="fluentui_communication_shade_20">#004C87</color>
+    <color name="fluentui_communication_blue">#0086F0</color>
+    <color name="fluentui_communication_tint_20">#3AA0F3</color>
+    <color name="fluentui_communication_tint_40">#092C47</color>
+</resources>

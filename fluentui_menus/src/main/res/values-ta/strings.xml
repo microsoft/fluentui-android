@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">நிலைமாற்று</string>
+  <string name="popup_menu_accessibility_item_select">தேர்ந்தெடுக்கவும்</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s தேர்ந்தெடுக்கப்பட்டது</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s தேர்வுசெய்யப்பட்டது</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s தேர்வுநீக்கப்பட்டது</string>
+  <string name="popup_menu_accessibility_item_radio_button">ரேடியோ பொத்தான்</string>
+  <string name="popup_menu_accessibility_item_check_box">தேர்வுப்பெட்டி</string>
+  <string name="popup_menu_accessibility_item_state_checked">தேர்வுசெய்யப்பட்டது</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">தேர்வுசெய்யப்படவில்லை</string>
+</resources>

@@ -5,12 +5,11 @@
   -->
 
 <resources>
-
     <!--
-        All dark theme specific semantic colors should be defined here.
-        Light theme semantic colors should be defined in themes.xml as the default.
-    -->
-    <style name="Theme.FluentUI" parent="Base.Theme.FluentUI">
+    All dark theme specific semantic colors should be defined here.
+    Light theme semantic colors should be defined in themes.xml as the default.
+-->
+    <style name="Theme.FluentUI" parent="Theme.FluentUI.Container">
         <item name="android:textColorPrimary">@color/fluentui_white</item>
 
         <!-- *** Base Semantic Colors *** -->
@@ -119,28 +118,9 @@
         <item name="fluentuiTabLayoutContainerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiTabLayoutBackgroundColor">@color/fluentui_gray_950</item>
         <item name="fluentuiTabSelectedBackgroundColor">@color/fluentui_gray_600</item>
-        
+
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>
     </style>
-
-    <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent="">
-        <!--AppBarLayout-->
-        <item name="fluentuiAppBarLayoutBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-
-        <!--Searchbar-->
-        <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">@color/fluentui_gray_700</item>
-        <item name="fluentuiSearchbarSearchViewTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-        <item name="fluentuiSearchbarBackButtonColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-        <item name="fluentuiSearchbarSearchViewCursorColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-
-        <!--Toolbar-->
-        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
-        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-        <item name="fluentuiToolbarIconColor">?attr/fluentuiForegroundOnSecondaryColor</item>
-    </style>
-
 </resources>

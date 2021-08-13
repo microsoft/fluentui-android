@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/tooltip_arrow_up"
+        android:layout_width="@dimen/fluentui_tooltip_arrow_width"
+        android:layout_height="@dimen/fluentui_tooltip_arrow_height"
+        android:alpha="@integer/fluentui_tooltip_background_alpha"
+        android:src="@drawable/ms_icon_tooltip_arrow" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/tooltip_arrow_left"
+            android:layout_width="@dimen/fluentui_tooltip_arrow_height"
+            android:layout_height="@dimen/fluentui_tooltip_arrow_width"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:alpha="@integer/fluentui_tooltip_background_alpha"
+            android:src="@drawable/ms_icon_tooltip_side_arrow" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/tooltip_background"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/tooltip_background"
+                android:layout_alignStart="@id/tooltip_text"
+                android:layout_alignTop="@id/tooltip_text"
+                android:layout_alignEnd="@id/tooltip_text"
+                android:layout_alignBottom="@id/tooltip_text"
+                android:alpha="@integer/fluentui_tooltip_background_alpha" />
+
+            <TextView
+                android:id="@+id/tooltip_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="@dimen/fluentui_tooltip_max_width"
+                android:gravity="end|start|center_vertical"
+                android:paddingTop="@dimen/fluentui_tooltip_padding_vertical"
+                android:paddingBottom="@dimen/fluentui_tooltip_padding_vertical"
+                android:paddingEnd="@dimen/fluentui_tooltip_padding_horizontal"
+                android:paddingStart="@dimen/fluentui_tooltip_padding_horizontal"
+                android:textAppearance="@style/TextAppearance.FluentUI.Tooltip" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/tooltip_arrow_right"
+            android:layout_width="@dimen/fluentui_tooltip_arrow_height"
+            android:layout_height="@dimen/fluentui_tooltip_arrow_width"
+            android:visibility="gone"
+            tools:visibility="visible"
+            android:rotation="180"
+            android:alpha="@integer/fluentui_tooltip_background_alpha"
+            android:src="@drawable/ms_icon_tooltip_side_arrow" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/tooltip_arrow_down"
+        android:layout_width="@dimen/fluentui_tooltip_arrow_width"
+        android:layout_height="@dimen/fluentui_tooltip_arrow_height"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:rotation="180"
+        android:alpha="@integer/fluentui_tooltip_background_alpha"
+        android:src="@drawable/ms_icon_tooltip_arrow" />
+
+</LinearLayout>

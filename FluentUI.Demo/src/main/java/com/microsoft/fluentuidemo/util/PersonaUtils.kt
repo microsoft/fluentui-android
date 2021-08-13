@@ -11,8 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.support.v4.content.ContextCompat
-import com.microsoft.fluentui.persona.IAvatar
+import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentuidemo.R
@@ -214,4 +213,5 @@ data class CustomPersona(override var name: String = "", override var email: Str
     override var avatarImageResourceId: Int? = null
     override var avatarImageUri: Uri? = null
     override var avatarBackgroundColor: Int? = null
+    override var avatarContentDescriptionLabel: String = ""
 }

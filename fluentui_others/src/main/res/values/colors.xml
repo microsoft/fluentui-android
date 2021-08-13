@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!-- *** Semantic Colors *** -->
+
+    <!--ActionBarLayout-->
+    <color name="fluentui_action_bar_indicator_background">@color/fluentui_communication_tint_20</color>
+    <color name="fluentui_action_bar_carousel_background">@color/fluentui_communication_blue</color>
+
+</resources>

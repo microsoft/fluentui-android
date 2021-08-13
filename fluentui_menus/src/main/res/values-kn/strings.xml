@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ಟಾಗಲ್</string>
+  <string name="popup_menu_accessibility_item_select">ಆಯ್ಕೆಮಾಡಿ</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ಪರಿಶೀಲಿಸಲಾಗಿದೆ</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ಅನ್‌ಚೆಕ್ ಮಾಡಲಾಗಿದೆ</string>
+  <string name="popup_menu_accessibility_item_radio_button">ರೇಡಿಯೋ ಬಟನ್</string>
+  <string name="popup_menu_accessibility_item_check_box">ಚೆಕ್‌ಬಾಕ್ಸ್</string>
+  <string name="popup_menu_accessibility_item_state_checked">ಪರಿಶೀಲಿಸಲಾಗಿದೆ</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ಪರಿಶೀಲಿಸಲಾಗಿಲ್ಲ</string>
+</resources>

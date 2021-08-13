@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="people_picker_sample_label">Etiqueta</string>
+  <string name="people_picker_search_directory">Buscar en el directorio</string>
+  <string name="people_picker_search_progress">Buscando…</string>
+  <string name="people_picker_accessibility_default_hint">Escribe un nombre o un correo</string>
+  <string name="people_picker_accessibility_persona_added">%s agregado</string>
+  <string name="people_picker_accessibility_persona_removed">%s quitado</string>
+  <string name="people_picker_accessibility_replaced">%s sustituido,</string>
+  <string name="people_picker_accessibility_click_persona">Clic</string>
+  <string name="people_picker_accessibility_delete_persona">Eliminar</string>
+  <string name="people_picker_accessibility_deselect_persona">Anular la selección</string>
+  <string name="people_picker_accessibility_select_persona">Seleccionar</string>
+  <string name="people_picker_accessibility_clicked_persona">Se hizo clic en %s</string>
+  <string name="people_picker_accessibility_deselected_persona">Se anuló la selección de %s</string>
+  <string name="people_picker_accessibility_selected_persona">Se seleccionó %s</string>
+  <string name="people_picker_accessibility_deselect_selected_persona">, la activación anulará la selección de</string>
+  <string name="people_picker_accessibility_delete_selected_persona">, la activación eliminará</string>
+  <string name="people_picker_accessibility_click_selected_persona">, la activación hará clic en</string>
+  <plurals name="people_picker_accessibility_suggestions_opened">
+    <item quantity="one">Lista de sugerencias abierta con %s persona</item>
+    <item quantity="other">Lista de sugerencias abierta con %s personas</item>
+  </plurals>
+  <plurals name="people_picker_accessibility_text_view">
+    <item quantity="one">%s persona</item>
+    <item quantity="other">%s personas</item>
+  </plurals>
+</resources>

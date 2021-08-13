@@ -58,10 +58,12 @@ class AvatarViewActivity : DemoActivity() {
     }
 
     private fun createNewAvatarFromCode() {
+        val avatarName = getString(R.string.persona_name_mauricio_august)
         val avatarView = AvatarView(this)
         avatarView.avatarSize = AvatarSize.XXLARGE
-        avatarView.name = getString(R.string.persona_name_mauricio_august)
+        avatarView.name = avatarName
         avatarView.email = getString(R.string.persona_email_mauricio_august)
+        avatarView.avatarContentDescriptionLabel = avatarName
         avatar_circle_example_xxlarge.addView(avatarView)
     }
 }

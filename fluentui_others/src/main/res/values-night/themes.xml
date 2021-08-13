@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!--
+        All dark theme specific semantic colors should be defined here.
+        Light theme semantic colors should be defined in themes.xml as the default.
+    -->
+    <style name="Theme.FluentUI.Others" parent="Theme.FluentUI.Components">
+        <!-- *** Semantic Colors *** -->
+
+        <!--Button-->
+        <item name="fluentuiButtonBackgroundDisabledColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiButtonBackgroundPressedColor">?attr/fluentuiColorPrimaryDarker</item>
+        <item name="fluentuiButtonTextDisabledColor">?attr/colorPrimaryDark</item>
+
+        <!--ButtonBorderless-->
+        <item name="fluentuiButtonBorderlessBackgroundPressedColor">@android:color/transparent</item>
+        <item name="fluentuiButtonBorderlessTextDisabledColor">@color/fluentui_gray_500</item>
+        <item name="fluentuiButtonBorderlessTextPressedColor">?attr/colorPrimaryDark</item>
+
+        <!--Button Outlined-->
+        <item name="fluentuiButtonOutlinedTextDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="fluentuiButtonOutlinedTextPressedColor">@color/fluentui_communication_tint_20</item>
+        <item name="fluentuiButtonOutlinedTextDisabledColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiButtonOutlinedStrokeDefaultColor">@color/fluentui_communication_blue</item>
+        <item name="FluentuiButtonOutlinedStrokePressedColor">@color/fluentui_communication_tint_40</item>
+        <item name="FluentuiButtonOutlinedStrokeDisabledColor">@color/fluentui_gray_800</item>
+    </style>
+
+</resources>

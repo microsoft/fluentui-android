@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--TabLayout-->
+    <attr name="fluentuiTabLayoutContainerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabLayoutBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabSelectedTextColor" format="reference|color"/>
+    <attr name="fluentuiTabUnselectedTextColor" format="reference|color"/>
+    <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiTabTextAppearance" format="reference" />
+</resources>

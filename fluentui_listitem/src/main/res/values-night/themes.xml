@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FluentUI.ListItem" parent="Theme.FluentUI.ListItem.Base">
+    <!--ListItemView-->
+    <item name="fluentuiListItemTitleColor">@color/fluentui_gray_100</item>
+    </style>
+</resources>

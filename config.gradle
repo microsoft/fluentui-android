@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+/*
+ * The version id mentioned here will be used for pom file generation for publication
+ * Whenever a module code is changed the version id of the module and all modules
+ * which are dependent on it should be incremented
+ * E.g If a change is made in fluentui_listitem and its current version is 0.0.2
+ * and fluentui_drawer' current version is 0.0.2, both fluentui_listitem and
+ * fluentui_drawer and FluentUI should increment their respective version ids
+  */
+project.ext.fluentui_calendar_versionid='0.0.8'
+project.ext.fluentui_core_versionid='0.0.8'
+project.ext.fluentui_listitem_versionid='0.0.8'
+project.ext.fluentui_tablayout_versionid='0.0.8'
+project.ext.fluentui_drawer_versionid='0.0.8'
+project.ext.fluentui_ccb_versionid='0.0.8'
+project.ext.fluentui_others_versionid='0.0.8'
+project.ext.fluentui_transients_versionid='0.0.8'
+project.ext.fluentui_topappbars_versionid='0.0.8'
+project.ext.fluentui_menus_versionid='0.0.8'
+project.ext.fluentui_peoplepicker_versionid='0.0.8'
+project.ext.fluentui_persona_versionid='0.0.8'
+project.ext.fluentui_progress_versionid='0.0.8'
+project.ext.FluentUI_versionid='0.0.18'
+project.ext.fluentui_calendar_version_code=8
+project.ext.fluentui_core_version_code=8
+project.ext.fluentui_listitem_version_code=8
+project.ext.fluentui_tablayout_version_code=8
+project.ext.fluentui_drawer_version_code=8
+project.ext.fluentui_ccb_version_code=8
+project.ext.fluentui_others_version_code=8
+project.ext.fluentui_transients_version_code=8
+project.ext.fluentui_topappbars_version_code=8
+project.ext.fluentui_menus_version_code=8
+project.ext.fluentui_peoplepicker_version_code=8
+project.ext.fluentui_persona_version_code=8
+project.ext.fluentui_progress_version_code=8
+project.ext.FluentUI_version_code=18
+project.ext.license_type='MIT License'
+project.ext.license_url='https://github.com/microsoft/fluentui-android/blob/master/LICENSE'
+project.ext.github_url='https://github.com/microsoft/fluentui-android'
+project.ext.developer_id='fluent-ui-android'
+project.ext.developer_name='Microsoft Inc.'
+project.ext.developer_email='fluentuinativeowners@microsoft.com'
+project.ext.scm_connection='scm:git:github.com/microsoft/fluentui-android.git'
+project.ext.scm_dev_connection='scm:git:ssh://github.com/microsoft/fluentui-android.git'
+project.ext.scm_url='https://github.com/microsoft/fluentui-android/tree/main'

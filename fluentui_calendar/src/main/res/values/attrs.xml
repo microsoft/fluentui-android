@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <!--CalendarView-->
+    <attr name="fluentuiCalendarBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarWeekHeadingBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarWeekHeadingWeekDayTextColor" format="reference|color"/>
+    <attr name="fluentuiCalendarWeekHeadingWeekendTextColor" format="reference|color"/>
+    <attr name="fluentuiCalendarMonthOverlayBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarMonthOverlayTextColor" format="reference|color"/>
+    <attr name="fluentuiCalendarOtherMonthBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiCalendarSelectedColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTodayBackgroundColor" format="reference|color"/>
+
+    <!--day selector-->
+    <attr name="fluentuiCalendarDayTextActiveColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTextActiveCheckedColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTextInactiveCheckedColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayTextDefaultColor" format="reference|color"/>
+
+    <!--DateTimePicker-->
+    <attr name="fluentuiDateTimePickerToolbarTitleTextColor" format="reference|color"/>
+    <attr name="fluentuiDateTimePickerTabTextColor" format="reference|color"/>
+    <attr name="fluentuiDateTimePickerDialogBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiDateTimePickerToolbarIconColor" format="reference|color"/>
+
+    <!--Dialog-->
+    <attr name="fluentuiDialogBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiDialogCloseIconColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabLayoutBackgroundColor" format="reference|color"/>
+
+    <!--Dialog TabLayout-->
+    <attr name="fluentuiDialogTabTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabSelectedTextColor" format="reference|color"/>
+    <attr name="fluentuiDialogTabIndicatorColor" format="reference|color"/>
+
+    <!--NumberPicker-->
+    <attr name="fluentuiNumberPickerBackgroundColor" format="reference|color"/>
+    <attr name="fluentuiNumberPickerDefaultTextColor" format="reference|color"/>
+    <attr name="fluentuiNumberPickerSelectedTextColor" format="reference|color"/>
+
+</resources>

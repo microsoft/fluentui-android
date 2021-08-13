@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:text="@string/avatar_group_max_displayed_avatar"
             android:layout_height="wrap_content"/>
-        <Button
+        <com.microsoft.fluentui.widget.Button
             android:id="@+id/max_displayed_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>

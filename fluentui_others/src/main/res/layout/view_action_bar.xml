@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/action_bar_container_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/fluentui_action_bar_layout_height"
+    android:background="?attr/fluentuiBackgroundColor"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/action_bar_left_action"
+        style="@style/Widget.FluentUI.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:minWidth="@dimen/fluentui_action_bar_layout_height"
+        android:text="@string/action_bar_default_left_action"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="@color/fluentui_gray_500" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.microsoft.fluentui.actionbar.IndicatorView
+        android:id="@+id/action_bar_carousel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/action_bar_right_action"
+        style="@style/Widget.FluentUI.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:minWidth="@dimen/fluentui_action_bar_layout_button_width">
+
+        <TextView
+            android:id="@+id/action_bar_right_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="@string/action_bar_default_right_action"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/fluentui_communication_blue" />
+
+        <ImageView
+            android:id="@+id/action_bar_right_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ms_ic_next_icon_12_filled" />
+    </LinearLayout>
+
+</LinearLayout>

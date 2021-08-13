@@ -5,12 +5,11 @@
   -->
 
 <resources>
-
     <!--
-        All semantic colors should be defined here in their light theme state as the default.
-        If they have a different semantic color for dark theme, define that color in "themes.xml (night)" as well.
-    -->
-    <style name="Base.Theme.FluentUI" parent="Theme.AppCompat.Light.DarkActionBar">
+    All semantic colors should be defined here in their light theme state as the default.
+    If they have a different semantic color for dark theme, define that color in "themes.xml (night)" as well.
+-->
+    <style name="Theme.FluentUI.Container" parent="Base.Theme.FluentUI">
         <item name="colorPrimary">@color/fluentui_communication_blue</item>
         <item name="colorPrimaryDark">@color/fluentui_communication_shade_20</item>
         <item name="colorAccent">@color/fluentui_communication_blue</item>
@@ -239,32 +238,5 @@
         All light theme semantic colors should be defined in the base theme as the default.
         Dark theme specific semantic colors should be defined in "themes.xml (night)".
     -->
-    <style name="Theme.FluentUI" parent="Base.Theme.FluentUI"/>
-
-    <!--
-        This theme overlay targets only the attributes needed for a neutral AppBarLayout with a white background.
-        Use as the theme attribute in an AppBarLayout or in a ContextThemeWrapper for AppBarLayout, Searchbar, or Toolbar.
-    -->
-    <style name="ThemeOverlay.FluentUI.NeutralAppBar" parent="">
-        <!--AppBarLayout-->
-        <item name="fluentuiAppBarLayoutBackgroundColor">?attr/fluentuiBackgroundColor</item>
-
-        <!--Searchbar-->
-        <item name="fluentuiSearchbarBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiSearchbarSearchViewContainerBackgroundColor">#33C8C8C8</item>
-        <item name="fluentuiSearchbarBackButtonColor">?attr/fluentuiForegroundSecondaryIconColor</item>
-        <item name="fluentuiSearchbarSearchIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
-        <item name="fluentuiSearchbarSearchViewTextColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiSearchbarSearchViewTextHintColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiSearchbarSearchViewCursorColor">?attr/colorPrimary</item>
-        <item name="fluentuiSearchbarProgressColor">?attr/fluentuiForegroundSecondaryIconColor</item>
-        <item name="fluentuiSearchbarCloseIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
-
-        <!--Toolbar-->
-        <item name="fluentuiToolbarBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiToolbarTitleTextColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiToolbarSubtitleTextColor">?attr/fluentuiForegroundColor</item>
-        <item name="fluentuiToolbarIconColor">@color/fluentui_gray_500</item>
-    </style>
-
+    <style name="Theme.FluentUI" parent="Theme.FluentUI.Container"/>
 </resources>

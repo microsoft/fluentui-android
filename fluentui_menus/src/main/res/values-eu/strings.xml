@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">aldatu</string>
+  <string name="popup_menu_accessibility_item_select">hautatu</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s hautatu da</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s markatu da</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s desmarkatu da</string>
+  <string name="popup_menu_accessibility_item_radio_button">aukera-botoia</string>
+  <string name="popup_menu_accessibility_item_check_box">kontrol-laukia</string>
+  <string name="popup_menu_accessibility_item_state_checked">markatuta</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">markatu gabe</string>
+</resources>

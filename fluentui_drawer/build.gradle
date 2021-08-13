@@ -1,0 +1,56 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+apply from: '../config.gradle'
+apply from: '../publish.gradle'
+
+android {
+    compileSdkVersion constants.compileSdkVersion
+    buildFeatures {
+        viewBinding true
+    }
+    defaultConfig {
+        minSdkVersion constants.minSdkVersion
+        targetSdkVersion constants.targetSdkVersion
+        versionCode project.ext.fluentui_drawer_version_code
+        versionName project.ext.fluentui_drawer_versionid
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':fluentui_core')
+    implementation project(':fluentui_listitem')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+project.afterEvaluate {
+    project.ext.publishingFunc('fluentui_drawer')
+}
