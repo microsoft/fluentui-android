@@ -265,8 +265,10 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
         val handled = super.onKeyUp(keyCode, event)
         if(!handled && keyCode == KeyEvent.KEYCODE_TAB){
-            val view = parent.focusSearch(this, FOCUS_FORWARD)
-            return view?.requestFocus()?: false
+            if(!event.isShiftPressed) {
+                val view = parent.focusSearch(this, FOCUS_FORWARD)
+                return view?.requestFocus() ?: false
+            }
         }
         return handled
     }
