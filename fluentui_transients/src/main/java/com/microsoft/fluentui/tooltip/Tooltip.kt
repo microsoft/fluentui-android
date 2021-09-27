@@ -17,6 +17,7 @@ import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupWindow
@@ -49,7 +50,7 @@ class Tooltip {
     private val context: Context
     private val popupWindow: PopupWindow
     private val tooltipView: View
-    private val textView: TextView
+    private val contentFrame: FrameLayout
     private val arrowUpView: ImageView
     private val arrowDownView: ImageView
     private val arrowLeftView: ImageView
@@ -79,7 +80,7 @@ class Tooltip {
         // TODO Change to inflate(R.layout.view_tooltip, parent, false) and refactor dismiss inside listener accordingly.
         tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip, null)
         val bindig = ViewTooltipBinding.bind(tooltipView)
-        textView = bindig.tooltipText
+        contentFrame = bindig.tooltipContentFrame
         arrowUpView = bindig.tooltipArrowUp
         arrowDownView = bindig.tooltipArrowDown
         arrowLeftView = bindig.tooltipArrowLeft
@@ -109,14 +110,25 @@ class Tooltip {
         arrowRightView.visibility = View.GONE
     }
     /**
-     * Shows the tooltip
+     * Shows the text in a tooltip
      * @param config the configuration of the tooltip
      */
     fun show(anchor: View, text: String, config: Config = Config()): Tooltip {
+        val tooltipTextView: View = LayoutInflater.from(FluentUIContextThemeWrapper(this.context, com.microsoft.fluentui.transients.R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip_text, null)
+        val tooltipText: TextView = tooltipTextView.findViewById(R.id.tooltip_text)
+        tooltipText.setText(text)
+        return show(anchor, tooltipTextView, config)
+    }
+
+    /**
+     * Shows the tooltip
+     * @param config the configuration of the tooltip
+     */
+    fun show(anchor: View, content: View, config: Config = Config()): Tooltip {
         if (!(anchor.isAttachedToWindow && anchor.isVisibleOnScreen))
             return this
 
-        initTextView(text)
+        initContentView(content)
 
         // Get location of anchor view on screen
         val screenPos = IntArray(2)
@@ -218,12 +230,11 @@ class Tooltip {
             positionY -= if(secondScreen) 0 else context.statusBarHeight
     }
 
-    private fun initTextView(text: String) {
-        textView.text = text
+    private fun initContentView(content: View) {
+        contentFrame.addView(content)
+        contentFrame.setOnClickListener { dismiss() }
 
-        textView.setOnClickListener { dismiss() }
-
-        ViewCompat.setAccessibilityDelegate(textView, object : AccessibilityDelegateCompat() {
+        ViewCompat.setAccessibilityDelegate(contentFrame, object : AccessibilityDelegateCompat() {
             override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfoCompat) {
                 super.onInitializeAccessibilityNodeInfo(host, info)
                 val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
