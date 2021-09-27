@@ -9,10 +9,13 @@ import android.os.Bundle
 import android.view.ViewTreeObserver
 import android.widget.Button
 import androidx.core.content.ContextCompat
+import com.microsoft.fluentui.calendar.CalendarView
+import com.microsoft.fluentui.persona.AvatarGroupView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.tooltip.Tooltip
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.util.createSmallAvatarList
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_tooltip.*
 
@@ -65,6 +68,27 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
                 Tooltip.Config(touchDismissLocation = Tooltip.TouchDismissLocation.INSIDE)
             )
             tooltip?.onDismissListener = this
+            buttonId = it.id
+        }
+
+        tooltip_anchor_calendar_demo.setOnClickListener {
+            val calendarView = CalendarView(this)
+            tooltip = Tooltip(this).show(it, calendarView, Tooltip.Config())
+            tooltip?.onDismissListener = this
+            buttonId = it.id
+        }
+
+        tooltip_anchor_avatar_group_demo.setOnClickListener {
+            val avatarGroupView = AvatarGroupView(this)
+            avatarGroupView.setAvatars(createSmallAvatarList(this))
+            tooltip = Tooltip(this).show(it, avatarGroupView, Tooltip.Config())
+            tooltip?.onDismissListener = this
+            tooltip?.setCustomBackgroundColor(
+                    ContextCompat.getColor(
+                            baseContext,
+                            R.color.fluentui_avatar_border_background
+                    )
+            )
             buttonId = it.id
         }
 
