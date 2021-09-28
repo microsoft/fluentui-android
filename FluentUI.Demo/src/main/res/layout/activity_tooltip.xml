@@ -69,15 +69,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
-    <com.microsoft.fluentui.widget.Button
-        android:id="@+id/tooltip_anchor_avatar_group_demo"
-        style="@style/Demo.Tooltip.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tooltip_avatar_group_demo_button"
-        app:layout_constraintTop_toBottomOf="@+id/tooltip_anchor_center"
-        app:layout_constraintBottom_toTopOf="@+id/tooltip_anchor_bottom_end"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

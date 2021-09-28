@@ -455,7 +455,6 @@
     <string name="tab_pills">Pills Tab </string>
 
     <!--Tooltip-->
-    <string name="tooltip_avatar_group_demo_button">Tap for Custom Avatar Group Tooltip</string>
     <string name="tooltip_button">Tap for Tooltip</string>
     <string name="tooltip_calendar_demo_button">Tap for Custom Calendar Tooltip</string>
     <string name="tooltip_custom_button">Tap Custom Color Tooltip</string>
