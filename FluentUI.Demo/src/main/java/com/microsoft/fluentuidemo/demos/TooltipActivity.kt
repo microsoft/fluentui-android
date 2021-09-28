@@ -72,8 +72,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         }
 
         tooltip_anchor_calendar_demo.setOnClickListener {
-            val calendarView = CalendarView(this)
-            tooltip = Tooltip(this).show(it, calendarView, Tooltip.Config())
+            tooltip = Tooltip(this).show(it, CalendarView(this), Tooltip.Config())
             tooltip?.onDismissListener = this
             buttonId = it.id
         }
