@@ -456,6 +456,7 @@
 
     <!--Tooltip-->
     <string name="tooltip_button">Tap for Tooltip</string>
+    <string name="tooltip_calendar_demo_button">Tap for Custom Calendar Tooltip</string>
     <string name="tooltip_custom_button">Tap Custom Color Tooltip</string>
     <string name="tooltip_center_button">Tap for Dismiss Inside Tooltip</string>
     <string name="tooltip_top_start_message">Top Custom Color Tooltip</string>
