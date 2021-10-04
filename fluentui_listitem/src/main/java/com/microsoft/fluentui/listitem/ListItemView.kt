@@ -445,12 +445,11 @@ open class ListItemView : TemplateView {
         lp.gravity = Gravity.CENTER_VERTICAL
 
         val extraMarginEnd = if (customViewSize == CustomViewSize.SMALL) customViewSmallMarginEnd else 0
-        lp.setMargins(
-            0,
-            customViewContainerVerticalMargin,
-            extraMarginEnd + listItemHorizontalMargin,
-            customViewContainerVerticalMargin
-        )
+
+        lp.marginStart = 0
+        lp.marginEnd = extraMarginEnd + listItemHorizontalMargin
+        lp.topMargin = customViewContainerVerticalMargin
+        lp.bottomMargin = customViewContainerVerticalMargin
 
         customViewContainer.layoutParams = lp
     }

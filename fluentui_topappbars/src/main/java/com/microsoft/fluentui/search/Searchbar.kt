@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.SearchView
 import android.util.AttributeSet
+import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
@@ -130,6 +131,17 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
     override fun onQueryTextChange(query: String): Boolean {
         updateCloseIconVisibility()
         return onQueryTextListener?.onQueryTextChange(query) ?: false
+    }
+
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        val handled = super.dispatchKeyEvent(event)
+        if(searchView != null && searchView!!.hasFocus() && !handled && event?.action == KeyEvent.ACTION_UP  &&  event?.keyCode == KeyEvent.KEYCODE_TAB){
+            if(event.isShiftPressed) {
+                val view = searchView?.parent?.focusSearch(this, FOCUS_BACKWARD)
+                return view?.requestFocus() ?: false
+            }
+        }
+        return handled
     }
 
     // Template
