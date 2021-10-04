@@ -15,8 +15,8 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 18
-        versionName '0.0.18'
+        versionCode 19
+        versionName '0.0.19'
     }
     buildTypes {
         release {
