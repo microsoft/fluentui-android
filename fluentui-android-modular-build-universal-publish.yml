@@ -34,6 +34,6 @@ steps:
       vstsFeedPublish: 'Office'
       vstsFeedPackagePublish: 'fluentuiandroid'
       versionOption: 'custom'
-      versionPublish: '0.0.19'
+      versionPublish: '0.0.20'
       packagePublishDescription: 'Fluent Universal Package'
       publishedPackageVar: 'fluent package'
