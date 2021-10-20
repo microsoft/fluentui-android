@@ -34,7 +34,6 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.MultiAutoCompleteTextView
-import com.microsoft.fluentui.peoplepicker.PeoplePickerView.PersonaChipClickListener
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.PersonaChipView
 import com.microsoft.fluentui.persona.setPersona
@@ -133,6 +132,12 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             threshold = characterThreshold
         }
 
+    var allowCollapse: Boolean = true
+        set(value) {
+            field = value
+            allowCollapse(value)
+        }
+
     /**
      * When a persona chip with a [PeoplePickerPersonaChipClickStyle] of SELECT_DESELECT is selected,
      * the next touch will fire [PersonaChipClickListener.onClick].
@@ -166,7 +171,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 unblockInput()
         }
     private var shouldAnnouncePersonaAddition: Boolean = false
-    private var shouldAnnouncePersonaRemoval: Boolean = true
+    private var shouldAnnouncePersonaRemovalMap = mutableMapOf<IPersona, Boolean>()
     private var searchConstraint: CharSequence = ""
     private var lastSpan: TokenImageSpan? = null
 
@@ -308,13 +313,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
     override fun canDeleteSelection(beforeLength: Int): Boolean {
         // This method is called from keyboard events so any token removed would be coming from the user.
-        shouldAnnouncePersonaRemoval = true
         return super.canDeleteSelection(beforeLength)
     }
 
     override fun removeObject(`object`: IPersona?) {
-        shouldAnnouncePersonaRemoval = false
-        super.removeObject(`object`)
+        `object`?.let {
+            shouldAnnouncePersonaRemovalMap[it] = false
+            super.removeObject(it)
+        }
     }
 
     override fun showDropDown() {
@@ -392,7 +398,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
      * Adapted from [performCollapse] in [TokenCompleteTextView].
      **/
     private fun performCollapseAndAdjustLayout(hasFocus: Boolean) {
-        if (!hasFocus) {
+        if (!hasFocus && allowCollapse) {
             val spansToHide = ArrayList<TokenImageSpan>()
 
             // Spans don't always fit their new space so we rebuild the spans in available space.
@@ -419,6 +425,16 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
             hiddenPersonaSpans.clear()
         }
+    }
+
+    fun addPickedPersona(persona: IPersona) {
+        shouldAnnouncePersonaAddition = true
+        super.addObject(persona)
+    }
+
+    fun removePickedPersona(persona: IPersona) {
+        shouldAnnouncePersonaRemovalMap[persona] = true
+        super.removeObject(persona)
     }
 
     /**
@@ -479,11 +495,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     // Persona spans don't always fit their new space so we rebuild the spans in available space.
     private fun rebuildPersonaSpans(end: Int = text.length) {
         shouldAnnouncePersonaAddition = false
-        shouldAnnouncePersonaRemoval = false
 
         // We can't cache this array without getting a crash from the generic types in API 19.
         getPersonaSpans<TokenCompleteTextView<IPersona>.TokenImageSpan>(end = end).forEach { personaSpan ->
             val rebuiltSpan = buildSpanForObject(personaSpan.token)
+            shouldAnnouncePersonaRemovalMap[personaSpan.token] = false
             val spanStart = text.getSpanStart(personaSpan)
             val spanEnd = text.getSpanEnd(personaSpan)
             text.removeSpan(personaSpan)
@@ -620,10 +636,11 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         }
 
         override fun onTokenRemoved(token: IPersona) {
-            if (view.shouldAnnouncePersonaRemoval)
+            if (view.shouldAnnouncePersonaRemovalMap[token] != false)
                 view.tokenListener?.onTokenRemoved(token)
             if (view.isFocused)
                 view.announcePersonaRemoved(token)
+            view.shouldAnnouncePersonaRemovalMap.remove(token)
         }
     }
 
@@ -804,7 +821,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         accessibilityTouchHelper.invalidateRoot()
 
         // We only want to announce when a persona was removed by a user.
-        if (shouldAnnouncePersonaRemoval) {
+        if (shouldAnnouncePersonaRemovalMap[persona] != false) {
             announceForAccessibility(getAnnouncementText(
                 persona,
                 R.string.people_picker_accessibility_persona_removed
@@ -1019,7 +1036,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
                 if (personaSpan != null) {
                     personaSpan.onClick()
                     onPersonaSpanAccessibilityClick(personaSpan)
-                    shouldAnnouncePersonaRemoval = true
+                    shouldAnnouncePersonaRemovalMap[persona] = true
                     return true
                 }
             }

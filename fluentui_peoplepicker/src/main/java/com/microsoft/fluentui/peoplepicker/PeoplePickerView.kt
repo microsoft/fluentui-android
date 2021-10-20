@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Filter
 import android.widget.TextView
+import com.microsoft.fluentui.peoplepicker.*
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -254,7 +255,7 @@ class PeoplePickerView : TemplateView {
         // Fixed properties for TokenCompleteTextView.
         peoplePickerTextView?.apply {
             dropDownWidth = ViewGroup.LayoutParams.MATCH_PARENT
-            allowCollapse(true)
+            allowCollapse(allowCollapse)
             isLongClickable = true
             setTokenListener(TokenListener(this@PeoplePickerView))
             performBestGuess(true)
@@ -274,11 +275,24 @@ class PeoplePickerView : TemplateView {
         }
     }
 
+    fun addPickedPersona(persona: IPersona) {
+        peoplePickerTextView?.addPickedPersona(persona)
+    }
+
+    fun removePickedPersona(persona: IPersona) {
+        peoplePickerTextView?.removePickedPersona(persona)
+    }
+
     private fun updateViews() {
-        labelTextView?.text = label
+        if(label.isBlank()) {
+            labelTextView?.visibility = GONE
+        } else {
+            labelTextView?.visibility = VISIBLE
+            labelTextView?.text = label
+        }
         peoplePickerTextView?.apply {
             valueHint = this@PeoplePickerView.valueHint
-            allowCollapse(allowCollapse)
+            allowCollapse = this@PeoplePickerView.allowCollapse
             allowDuplicatePersonaChips = this@PeoplePickerView.allowDuplicatePersonaChips
             characterThreshold = this@PeoplePickerView.characterThreshold
             personaChipLimit = this@PeoplePickerView.personaChipLimit
