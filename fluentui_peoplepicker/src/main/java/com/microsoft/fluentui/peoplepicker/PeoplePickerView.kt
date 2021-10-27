@@ -255,7 +255,7 @@ class PeoplePickerView : TemplateView {
         // Fixed properties for TokenCompleteTextView.
         peoplePickerTextView?.apply {
             dropDownWidth = ViewGroup.LayoutParams.MATCH_PARENT
-            allowCollapse(allowCollapse)
+            allowCollapse = this@PeoplePickerView.allowCollapse
             isLongClickable = true
             setTokenListener(TokenListener(this@PeoplePickerView))
             performBestGuess(true)
@@ -275,10 +275,16 @@ class PeoplePickerView : TemplateView {
         }
     }
 
+    /**
+     * Add a picked persona
+     */
     fun addPickedPersona(persona: IPersona) {
         peoplePickerTextView?.addPickedPersona(persona)
     }
 
+    /**
+     * Removes a persona from picked items
+     */
     fun removePickedPersona(persona: IPersona) {
         peoplePickerTextView?.removePickedPersona(persona)
     }
