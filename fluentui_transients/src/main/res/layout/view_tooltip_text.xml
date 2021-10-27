@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <TextView android:id="@+id/tooltip_text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
