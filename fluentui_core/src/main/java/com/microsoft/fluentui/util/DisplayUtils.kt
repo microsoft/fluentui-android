@@ -41,7 +41,7 @@ val Context.navigationBarHeight: Int
 val Context.softNavBarOffsetX: Int
     get() {
         val rotation = (getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.rotation
-        return if (rotation == Surface.ROTATION_270 && hasSoftNavigationBar && !isTablet)
+        return if (rotation == Surface.ROTATION_270 && !isTablet)
             navigationBarHeight
         else
             0
@@ -66,13 +66,6 @@ val Context.desiredDialogSize: IntArray
         dialogSize[1] = WindowManager.LayoutParams.WRAP_CONTENT
 
         return dialogSize
-    }
-
-// This check returns false in emulators
-val Context.hasSoftNavigationBar: Boolean
-    get() {
-        val id = resources.getIdentifier(CONFIG_SHOW_NAVIGATION_BAR, BOOL_STRING, ANDROID_STRING)
-        return id > 0 && resources.getBoolean(id)
     }
 
 val Context.displaySize: Point
