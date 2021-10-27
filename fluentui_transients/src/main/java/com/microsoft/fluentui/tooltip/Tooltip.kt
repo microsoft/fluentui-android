@@ -156,7 +156,7 @@ class Tooltip {
             popupWindow.height = contentHeight
             anchor.post { popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, positionX, positionY)}
         }
-//      popupWindow gets may get dismissed by outside touch for TouchDismissLocation.ANYWHERE
+        // popupWindow may get dismissed by outside touch for TouchDismissLocation.ANYWHERE
         popupWindow.setOnDismissListener {
             dismissSideEffects()
         }
