@@ -302,9 +302,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
         if (objects.size == personaChipLimit)
             return
 
-        lastSpan?.let {
-            shouldAnnouncePersonaAdditionMap[it.token] = true
-        }
         super.replaceText(text)
         context.activity?.let {
             if (DuoSupportUtils.isDualScreenMode(it) && lastSpan != null) {
@@ -422,6 +419,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
             hiddenPersonaSpans.forEach { span ->
                 // addObject does not work in this code block when in accessibility mode so we use insertPersonaSpan instead.
                 // The persona still gets added to objects through the TokenSpanWatcher.
+                shouldAnnouncePersonaAdditionMap[span.token] = false
                 insertPersonaSpan(span.token)
             }
 
@@ -433,7 +431,6 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
      * Add a picked persona
      */
     fun addPickedPersona(persona: IPersona) {
-        shouldAnnouncePersonaAdditionMap[persona] = true
         super.addObject(persona)
     }
 
@@ -635,7 +632,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
     private class TokenListener(val view: PeoplePickerTextView) : TokenCompleteTextView.TokenListener<IPersona> {
         override fun onTokenAdded(token: IPersona) {
-            if (view.shouldAnnouncePersonaAdditionMap[token] == true)
+            if (view.shouldAnnouncePersonaAdditionMap[token] != false)
                 view.tokenListener?.onTokenAdded(token)
             if (view.isFocused)
                 view.announcePersonaAdded(token)
@@ -817,7 +814,7 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
 
         // We only want to announce when a persona was added by a user.
         // If text has been replaced in the text editor and a token was added, the user added a token.
-        if (shouldAnnouncePersonaAdditionMap[persona] == true) {
+        if (shouldAnnouncePersonaAdditionMap[persona] != false) {
             announceForAccessibility("$replacedText ${getAnnouncementText(
                 persona,
                 R.string.people_picker_accessibility_persona_added
