@@ -443,6 +443,14 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     }
 
     /**
+     * Refreshes picked persona views, since there is no option to refresh the existing views and [invalidate] is not working,
+     * so rebuilding all the spans again
+     */
+    fun refreshPickedPersonaViews() {
+        rebuildPersonaSpans()
+    }
+
+    /**
      * Insert a new span for an object.
      * Adapted from [insertSpan] and [addObject] in [TokenCompleteTextView].
      * Because [addObject] is in a post runnable sometimes the timing is off,

@@ -289,6 +289,21 @@ class PeoplePickerView : TemplateView {
         peoplePickerTextView?.removePickedPersona(persona)
     }
 
+    /**
+     * Refreshes a persona view in both picked items and available options.
+     * Can be used if doing any async operation to load Persona data e.g. downloading avatar image.
+     */
+    fun refreshPersona(persona: IPersona) {
+        if(pickedPersonas.contains(persona)) {
+            peoplePickerTextView?.refreshPickedPersonaViews()
+        }
+
+        val personaIndexInSuggestions = availablePersonas?.indexOf(persona) ?: -1
+        if(personaIndexInSuggestions >= 0) {
+            peoplePickerTextViewAdapter?.notifyDataSetChanged()
+        }
+    }
+
     private fun updateViews() {
         if(label.isBlank()) {
             labelTextView?.visibility = GONE
