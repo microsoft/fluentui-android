@@ -147,15 +147,13 @@ class Tooltip {
         if (requireReinit ) initTooltipArrow(anchorRect, anchor.layoutIsRtl, config.offsetX)
         if (requireReadjustment) readjustTooltip(anchorRect, anchor.layoutIsRtl, config)
 
-        if (config.touchDismissLocation == TouchDismissLocation.INSIDE) {
-            tooltipView.x = if (anchor.layoutIsRtl) resetPositionXForRtl() else positionX.toFloat()
-            tooltipView.y = positionY.toFloat()
-            anchor.post { popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, 0, 0) }
-        } else {
-            popupWindow.width = contentWidth
-            popupWindow.height = contentHeight
-            anchor.post { popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, positionX, positionY)}
-        }
+        popupWindow.width = contentWidth
+        popupWindow.height = contentHeight
+        anchor.post { popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, positionX, positionY)}
+
+        if (config.touchDismissLocation == TouchDismissLocation.INSIDE)
+            popupWindow.setOutsideTouchable(false);
+
         // popupWindow may get dismissed by outside touch for TouchDismissLocation.ANYWHERE
         popupWindow.setOnDismissListener {
             dismissSideEffects()
@@ -232,9 +230,6 @@ class Tooltip {
             positionY = anchor.top - contentHeight - offsetY
             if(secondScreen) positionY -= displayHeight + DuoSupportUtils.DUO_HINGE_WIDTH
         }
-
-        if (dismissLocation == TouchDismissLocation.INSIDE)
-            positionY -= if(secondScreen) 0 else context.statusBarHeight
     }
 
     private fun initContentView(content: View) {
