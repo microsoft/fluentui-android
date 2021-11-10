@@ -17,6 +17,7 @@
         <item name="fluentuiCalendarDayTodayBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiCalendarDayTextActiveColor">?attr/fluentuiForegroundColor</item>
         <item name="fluentuiCalendarWeekHeadingWeekendTextColor">@color/fluentui_gray_600</item>
+        <item name="fluentuiCalendarDayKeyboardFocusTextColor">@color/fluentui_gray_600</item>
 
         <!--Dialog-->
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>

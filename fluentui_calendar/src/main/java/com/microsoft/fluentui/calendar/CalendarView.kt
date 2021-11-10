@@ -258,12 +258,14 @@ class CalendarView : LinearLayout, OnDateSelectedListener {
                 intArrayOf(android.R.attr.state_activated, -android.R.attr.state_checked),
                 intArrayOf(android.R.attr.state_activated, android.R.attr.state_checked),
                 intArrayOf(-android.R.attr.state_activated, android.R.attr.state_checked),
+                intArrayOf(android.R.attr.state_focused, -android.R.attr.state_checked),
                 intArrayOf()
             ),
             intArrayOf(
                 ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiCalendarDayTextActiveColor),
                 ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiCalendarDayTextActiveCheckedColor),
                 ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiCalendarDayTextInactiveCheckedColor),
+                ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiCalendarDayKeyboardFocusTextColor),
                 ThemeUtil.getThemeAttrColor(fluentuiContext, R.attr.fluentuiCalendarDayTextDefaultColor)
             )
         )

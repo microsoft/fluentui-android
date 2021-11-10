@@ -21,6 +21,7 @@
     <attr name="fluentuiCalendarDayTextActiveCheckedColor" format="reference|color"/>
     <attr name="fluentuiCalendarDayTextInactiveCheckedColor" format="reference|color"/>
     <attr name="fluentuiCalendarDayTextDefaultColor" format="reference|color"/>
+    <attr name="fluentuiCalendarDayKeyboardFocusTextColor" format="reference|color"/>
 
     <!--DateTimePicker-->
     <attr name="fluentuiDateTimePickerToolbarTitleTextColor" format="reference|color"/>
