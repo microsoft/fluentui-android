@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Filter
 import android.widget.TextView
+import com.microsoft.fluentui.peoplepicker.*
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.Persona
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -254,7 +255,7 @@ class PeoplePickerView : TemplateView {
         // Fixed properties for TokenCompleteTextView.
         peoplePickerTextView?.apply {
             dropDownWidth = ViewGroup.LayoutParams.MATCH_PARENT
-            allowCollapse(true)
+            allowCollapse = this@PeoplePickerView.allowCollapse
             isLongClickable = true
             setTokenListener(TokenListener(this@PeoplePickerView))
             performBestGuess(true)
@@ -274,11 +275,45 @@ class PeoplePickerView : TemplateView {
         }
     }
 
+    /**
+     * Add a picked persona
+     */
+    fun addPickedPersona(persona: IPersona) {
+        peoplePickerTextView?.addPickedPersona(persona)
+    }
+
+    /**
+     * Removes a persona from picked items
+     */
+    fun removePickedPersona(persona: IPersona) {
+        peoplePickerTextView?.removePickedPersona(persona)
+    }
+
+    /**
+     * Refreshes a persona view in both picked items and available options.
+     * Can be used if doing any async operation to load Persona data e.g. downloading avatar image.
+     */
+    fun refreshPersona(persona: IPersona) {
+        if(pickedPersonas.contains(persona)) {
+            peoplePickerTextView?.refreshPickedPersonaViews()
+        }
+
+        val personaIndexInSuggestions = availablePersonas?.indexOf(persona) ?: -1
+        if(personaIndexInSuggestions >= 0) {
+            peoplePickerTextViewAdapter?.notifyDataSetChanged()
+        }
+    }
+
     private fun updateViews() {
-        labelTextView?.text = label
+        if(label.isBlank()) {
+            labelTextView?.visibility = GONE
+        } else {
+            labelTextView?.visibility = VISIBLE
+            labelTextView?.text = label
+        }
         peoplePickerTextView?.apply {
             valueHint = this@PeoplePickerView.valueHint
-            allowCollapse(allowCollapse)
+            allowCollapse = this@PeoplePickerView.allowCollapse
             allowDuplicatePersonaChips = this@PeoplePickerView.allowDuplicatePersonaChips
             characterThreshold = this@PeoplePickerView.characterThreshold
             personaChipLimit = this@PeoplePickerView.personaChipLimit
