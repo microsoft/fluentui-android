@@ -18,6 +18,7 @@ import android.view.accessibility.AccessibilityEvent
 import androidx.annotation.ColorRes
 import androidx.annotation.LayoutRes
 import androidx.annotation.RestrictTo
+import androidx.annotation.StyleRes
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -45,7 +46,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private lateinit var persistentSheetBinding: ViewPersistentSheetBinding
     private var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
     private var contentViewProvider: PersistentBottomSheetContentViewProvider? = null
-    private val itemLayoutParam: BottomSheetParam.ItemLayoutParam
+    private var itemLayoutParam: BottomSheetParam.ItemLayoutParam
     private var sheetItemClickListener: SheetItem.OnClickListener? = null
     private var collapsedStateDrawerHandleContentDescription : String? = null
     private var expandedStateDrawerHandleContentDescription : String? = null
@@ -86,8 +87,8 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         }
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
-            val colorOffset = slideOffset.coerceIn(0f,255f)
-            persistentSheetBinding.persistentBottomSheetOutlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, (colorOffset * FADE_OUT_THRESHOLD).toInt()))
+            val colorOffset = (slideOffset * FADE_OUT_THRESHOLD).coerceIn(0f,255f)
+            persistentSheetBinding.persistentBottomSheetOutlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, colorOffset.toInt()))
         }
 
     }
@@ -265,6 +266,17 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         } else {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
+    }
+
+    fun updateBottomSheetLayoutParams(peekHeight: Int = itemLayoutParam.defaultPeekHeight,
+                                      itemInRow: Int = itemLayoutParam.itemInRow,
+                                      @StyleRes horizontalTextAppearance: Int = itemLayoutParam.horizontalTextAppearance,
+                                      @StyleRes verticalItemTextAppearance: Int = itemLayoutParam.verticalItemTextAppearance,
+                                      @StyleRes verticalSubTextAppearance: Int = itemLayoutParam.verticalSubTextAppearance,
+                                      @StyleRes headerTextAppearance: Int = itemLayoutParam.headerTextAppearance)  {
+        itemLayoutParam = BottomSheetParam.ItemLayoutParam(peekHeight, itemInRow, horizontalTextAppearance, verticalItemTextAppearance,verticalSubTextAppearance, headerTextAppearance)
+        persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
+        updateSheetContent()
     }
 
 

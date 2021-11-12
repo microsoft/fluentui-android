@@ -19,9 +19,9 @@
     <string name="action_bar_right_icon_description">Next</string>
     <!--accessibiltiy-->
     <!--Announcement when page is scrolled-->
-    <string name="action_bar_accessibility_page_announcement">Slider page %d of %d</string>
+    <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
     <!--Announcement when actionbarlayout opens or when Skip is pressed-->
-    <string name="action_bar_accessibility_viewpager_description">Multi-page view. Slider page %d of %d</string>
+    <string name="action_bar_accessibility_viewpager_description">Multi-page view. Slider page %1$d of %2$d</string>
 
     <string name="fluentui_bottom_sheet_header">BottomSheet Heading</string>
 </resources>
