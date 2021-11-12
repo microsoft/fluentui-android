@@ -37,7 +37,7 @@
 
         <!--Dialog-->
         <item name="fluentuiDialogBackgroundColor">?attr/fluentuiBackgroundColor</item>
-        <item name="fluentuiDialogCloseIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
+        <item name="fluentuiDialogCloseIconColor">?attr/colorPrimary</item>
         <item name="fluentuiDialogTabLayoutBackgroundColor">?attr/fluentuiDialogBackgroundColor</item>
 
 
