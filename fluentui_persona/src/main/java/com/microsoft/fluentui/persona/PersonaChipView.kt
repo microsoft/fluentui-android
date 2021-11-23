@@ -114,14 +114,14 @@ class PersonaChipView : TemplateView {
     constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Persona), attrs, defStyleAttr) {
         if (attrs == null)
             return
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaChipView)
-        name = styledAttrs.getString(R.styleable.PersonaChipView_name) ?: ""
-        email = styledAttrs.getString(R.styleable.PersonaChipView_email) ?: ""
-        showCloseIconWhenSelected = styledAttrs.getBoolean(R.styleable.PersonaChipView_showCloseIconWhenSelected, true)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiPersonaChipView)
+        name = styledAttrs.getString(R.styleable.FluentUiPersonaChipView_fluentUiName) ?: ""
+        email = styledAttrs.getString(R.styleable.FluentUiPersonaChipView_fluentUiEmail) ?: ""
+        showCloseIconWhenSelected = styledAttrs.getBoolean(R.styleable.FluentUiPersonaChipView_fluentUiShowCloseIconWhenSelected, true)
 
-        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.PersonaChipView_avatarImageDrawable, 0)
+        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.FluentUiPersonaChipView_fluentUiAvatarImageDrawable, 0)
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
-            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaChipView_avatarImageDrawable)
+            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.FluentUiPersonaChipView_fluentUiAvatarImageDrawable)
 
         styledAttrs.recycle()
         contentDescription = name
@@ -129,16 +129,16 @@ class PersonaChipView : TemplateView {
 
     // Template
 
-    override val templateId: Int = R.layout.view_persona_chip
+    override val templateId: Int = R.layout.fluent_ui_view_persona_chip
     private var avatarView: AvatarView? = null
     private var textView: TextView? = null
     private var closeIcon: ImageView? = null
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
-        textView = findViewInTemplateById(R.id.persona_chip_text)
-        avatarView = findViewInTemplateById(R.id.persona_chip_avatar)
-        closeIcon = findViewInTemplateById(R.id.persona_chip_close)
+        textView = findViewInTemplateById(R.id.fluent_ui_persona_chip_text)
+        avatarView = findViewInTemplateById(R.id.fluent_ui_persona_chip_avatar)
+        closeIcon = findViewInTemplateById(R.id.fluent_ui_persona_chip_close)
         updateState()
         updateViews()
     }
@@ -213,7 +213,7 @@ class PersonaChipView : TemplateView {
         textView?.text = when {
             name.isNotEmpty() -> name
             email.isNotEmpty() -> email
-            else -> context.getString(R.string.persona_title_placeholder)
+            else -> context.getString(R.string.fluent_ui_persona_title_placeholder)
         }
 
         avatarView?.apply {
@@ -228,9 +228,9 @@ class PersonaChipView : TemplateView {
         }
 
         if (hasError)
-            updateStyles(R.drawable.persona_chip_background_error, R.attr.fluentuiPersonaChipTextErrorColor)
+            updateStyles(R.drawable.fluent_ui_persona_chip_background_error, R.attr.fluentuiPersonaChipTextErrorColor)
         else
-            updateStyles(R.drawable.persona_chip_background_normal, R.attr.fluentuiPersonaChipTextNormalColor)
+            updateStyles(R.drawable.fluent_ui_persona_chip_background_normal, R.attr.fluentuiPersonaChipTextNormalColor)
     }
 
     override fun getAccessibilityClassName(): CharSequence {

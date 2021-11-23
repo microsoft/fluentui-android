@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="persona_title_placeholder">无姓名</string>
+  <string name="fluent_ui_persona_title_placeholder">无姓名</string>
 </resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="FluentUiPersonaChipView">
+        <attr name="fluentUiName" />
+        <attr name="fluentUiEmail" />
+        <attr name="fluentUiAvatarImageDrawable" />
+        <attr name="fluentUiShowCloseIconWhenSelected" format="boolean" />
+    </declare-styleable>
+</resources>

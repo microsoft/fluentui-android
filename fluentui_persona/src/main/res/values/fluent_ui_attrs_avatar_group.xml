@@ -5,12 +5,12 @@
   -->
 
 <resources>
-    <declare-styleable name="AvatarGroupView">
-        <attr name="avatarGroupStyle" format="enum">
+    <declare-styleable name="FluentUiAvatarGroupView">
+        <attr name="fluentUiAvatarGroupStyle" format="enum">
             <enum name="stack" value="0" />
             <enum name="pile" value="1" />
         </attr>
-        <attr name="maxDisplayedAvatars" format="integer" />
-        <attr name="avatarSize"/>
+        <attr name="fluentUiMaxDisplayedAvatars" format="integer" />
+        <attr name="fluentUiAvatarSize"/>
     </declare-styleable>
 </resources>

@@ -13,14 +13,14 @@
     android:padding="@dimen/fluentui_persona_chip_padding">
 
     <com.microsoft.fluentui.persona.AvatarView
-        android:id="@+id/persona_chip_avatar"
+        android:id="@+id/fluent_ui_persona_chip_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
-        app:avatarSize="xsmall" />
+        app:fluentUiAvatarSize="xsmall" />
 
     <ImageView
-        android:id="@+id/persona_chip_close"
+        android:id="@+id/fluent_ui_persona_chip_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
@@ -29,7 +29,7 @@
         android:tintMode="src_in" />
 
     <TextView
-        android:id="@+id/persona_chip_text"
+        android:id="@+id/fluent_ui_persona_chip_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"

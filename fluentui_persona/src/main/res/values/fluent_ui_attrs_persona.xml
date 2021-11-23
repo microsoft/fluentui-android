@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="FluentUiPersonaView">
+        <attr name="fluentUiName" format="string" />
+        <attr name="fluentUiEmail" format="string" />
+        <attr name="fluentUiAvatarSize" />
+        <attr name="fluentUiAvatarImageDrawable" />
+    </declare-styleable>
+</resources>

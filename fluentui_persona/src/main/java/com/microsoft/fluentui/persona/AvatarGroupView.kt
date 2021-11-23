@@ -21,13 +21,13 @@ open class AvatarGroupView : FrameLayout {
 
     @JvmOverloads
     constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Persona), attrs, defStyleAttr) {
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarGroupView)
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
-        val avatarGroupStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_avatarGroupStyle, DEFAULT_AVATAR_GROUP_STYLE.ordinal)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiAvatarGroupView)
+        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.FluentUiAvatarGroupView_fluentUiAvatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
+        val avatarGroupStyleOrdinal = styledAttrs.getInt(R.styleable.FluentUiAvatarGroupView_fluentUiAvatarGroupStyle, DEFAULT_AVATAR_GROUP_STYLE.ordinal)
 
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
         avatarGroupStyle = AvatarGroupStyle.values()[avatarGroupStyleOrdinal]
-        maxDisplayedAvatars = styledAttrs.getInt(R.styleable.AvatarGroupView_maxDisplayedAvatars, DEFAULT_AVATAR_ALLOWED)
+        maxDisplayedAvatars = styledAttrs.getInt(R.styleable.FluentUiAvatarGroupView_fluentUiMaxDisplayedAvatars, DEFAULT_AVATAR_ALLOWED)
         styledAttrs.recycle()
     }
 

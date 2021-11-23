@@ -2,7 +2,7 @@
 <resources>
     <!--
         All semantic colors should be defined here in their light theme state as the default.
-        If they have a different semantic color for dark theme, define that color in "themes.xml (night)" as well.
+        If they have a different semantic color for dark theme, define that color in "fluent_ui_themes.xml (night)" as well.
     -->
     <style name="Theme.FluentUI.PeoplePicker" parent="Theme.FluentUI.PeoplePicker.Base">
         <item name="fluentuiPeoplePickerSearchTextDisabledColor">@color/fluentui_gray_500</item>

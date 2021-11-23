@@ -5,8 +5,8 @@
   -->
 
 <resources>
-    <declare-styleable name="AvatarView">
-        <attr name="avatarSize" format="enum">
+    <declare-styleable name="fluentUiAvatarView">
+        <attr name="fluentUiAvatarSize" format="enum">
             <enum name="xsmall" value="0" />
             <enum name="small" value="1" />
             <enum name="medium" value="2" />
@@ -14,17 +14,17 @@
             <enum name="xlarge" value="4" />
             <enum name="xxlarge" value="5" />
         </attr>
-        <attr name="avatarStyle" format="enum">
+        <attr name="fluentUiAvatarStyle" format="enum">
             <enum name="circle" value="0" />
             <enum name="square" value="1" />
         </attr>
-        <attr name="avatarBorderStyle" format="enum">
+        <attr name="fluentUiAvatarBorderStyle" format="enum">
             <enum name="no_border" value="0" />
             <enum name="ring" value="1" />
         </attr>
-        <attr name="name" />
-        <attr name="email" />
-        <attr name="avatarBackgroundColor" format="reference" />
-        <attr name="avatarImageDrawable" format="reference" />
+        <attr name="fluentUiName" />
+        <attr name="fluentUiEmail" />
+        <attr name="fluentUiAvatarBackgroundColor" format="reference" />
+        <attr name="fluentUiAvatarImageDrawable" format="reference" />
     </declare-styleable>
 </resources>

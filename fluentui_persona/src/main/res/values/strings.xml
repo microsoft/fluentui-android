@@ -5,5 +5,5 @@
   -->
 <resources>
     <!-- *** Persona *** -->
-    <string name="persona_title_placeholder">No name</string>
+    <string name="fluent_ui_persona_title_placeholder">No name</string>
 </resources>
