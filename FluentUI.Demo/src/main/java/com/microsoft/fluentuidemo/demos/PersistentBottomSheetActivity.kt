@@ -293,8 +293,8 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                 .addDivider()
                 .addHorizontalGridItemList(mHorizontalSheet)
                 .addDivider()
-                .addVerticalItemList(mHorizontalSheet, getString(R.string.fluentui_bottom_sheet_header))
-                .addVerticalItemList(mHorizontalSheet, getString(R.string.fluentui_bottom_sheet_header))
+                .addVerticalItemList(mHorizontalSheet, getString(R.string.fluent_ui_bottom_sheet_header))
+                .addVerticalItemList(mHorizontalSheet, getString(R.string.fluent_ui_bottom_sheet_header))
                 .buildWith(defaultPersistentBottomSheet)
 
     }

@@ -25,5 +25,5 @@
     <item quantity="one">%s persona</item>
     <item quantity="other">%s persone</item>
   </plurals>
-  <string name="done">Fatto</string>
+  <string name="fluent_ui_done">Fatto</string>
 </resources>

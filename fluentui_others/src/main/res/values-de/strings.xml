@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="done">Fertig</string>
+  <string name="fluent_ui_done">Fertig</string>
 </resources>

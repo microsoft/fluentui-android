@@ -14,7 +14,7 @@
         <item name="itemBackground">@drawable/ms_ripple_transparent_background_borderless</item>
         <item name="itemTextAppearanceActive">@style/TextAppearance.FluentUI.BottomNavigation.Active</item>
         <item name="itemTextAppearanceInactive">@style/TextAppearance.FluentUI.BottomNavigation.Inactive</item>
-        <item name="itemIconTint">@color/bottom_navigation_icon_tint</item>
+        <item name="itemIconTint">@color/fluent_ui_bottom_navigation_icon_tint</item>
         <item name="labelVisibilityMode">labeled</item>
     </style>
     <style name="Widget.FluentUI.BottomNavigation.Unlabeled">
@@ -23,7 +23,7 @@
 
     <!--Base Button-->
     <style name="Widget.FluentUI.BaseButton" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_background</item>
+        <item name="android:background">@drawable/fluent_ui_button_background</item>
         <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button</item>
         <item name="android:paddingStart">@dimen/fluentui_button_base_padding_horizontal</item>
         <item name="android:paddingEnd">@dimen/fluentui_button_base_padding_horizontal</item>
@@ -41,7 +41,7 @@
 
     <!--We use Borderless button style as the parent to avoid drop shadow issues in some APIs.-->
     <style name="Widget.FluentUI.Button.Borderless" parent="Widget.FluentUI.BaseButton">
-        <item name="android:background">@drawable/button_borderless_background</item>
+        <item name="android:background">@drawable/fluent_ui_button_borderless_background</item>
         <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button.Borderless</item>
     </style>
 
@@ -54,7 +54,7 @@
 
     <!--Outlined Buttons -->
     <style name="Widget.FluentUI.Button.Outlined" parent="Widget.FluentUI.BaseButton">
-        <item name="android:background">@drawable/button_outlined</item>
+        <item name="android:background">@drawable/fluent_ui_button_outlined</item>
         <item name="android:textAppearance">@style/TextAppearance.FluentUI.Button.Outlined</item>
         <item name="android:paddingTop">@dimen/fluentui_button_outlined_padding_vertical</item>
         <item name="android:paddingBottom">@dimen/fluentui_button_outlined_padding_vertical</item>
@@ -63,9 +63,9 @@
 
     <!--Compound Buttons-->
     <style name="Widget.FluentUI.RadioButton" parent="@style/Widget.AppCompat.CompoundButton.RadioButton">
-        <item name="android:buttonTint">@color/compound_button_tint</item>
+        <item name="android:buttonTint">@color/fluent_ui_compound_button_tint</item>
     </style>
     <style name="Widget.FluentUI.CheckBox" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="android:buttonTint">@color/compound_button_tint</item>
+        <item name="android:buttonTint">@color/fluent_ui_compound_button_tint</item>
     </style>
 </resources>

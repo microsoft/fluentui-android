@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="done">Tapos na</string>
+  <string name="fluent_ui_done">Tapos na</string>
 </resources>

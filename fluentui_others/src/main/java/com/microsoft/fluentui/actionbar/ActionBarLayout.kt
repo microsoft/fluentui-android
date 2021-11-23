@@ -24,7 +24,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     }
 
     override val templateId: Int
-        get() = R.layout.view_action_bar
+        get() = R.layout.fluent_ui_view_action_bar
 
     private lateinit var viewPager: ViewPager
     private var finalPageString: String
@@ -44,11 +44,11 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     private lateinit var actionBarCarouselLayout: View
 
     init {
-        val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.ActionBarLayout)
-        viewPagerAttr = styledAttributes.getResourceId(R.styleable.ActionBarLayout_viewPager, View.NO_ID)
-        typeAttr = Type.values()[styledAttributes.getInt(R.styleable.ActionBarLayout_type, DEFAULT_TYPE.ordinal)]
+        val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.FluentUiActionBarLayout)
+        viewPagerAttr = styledAttributes.getResourceId(R.styleable.FluentUiActionBarLayout_fluentUiActionBarViewPager, View.NO_ID)
+        typeAttr = Type.values()[styledAttributes.getInt(R.styleable.FluentUiActionBarLayout_fluentUiActionBarType, DEFAULT_TYPE.ordinal)]
         styledAttributes.recycle()
-        finalPageString = context.getString(R.string.action_bar_default_final_action)
+        finalPageString = context.getString(R.string.fluent_ui_action_bar_default_final_action)
     }
 
     override fun onAttachedToWindow() {
@@ -64,11 +64,11 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
-        rightActionIcon = findViewInTemplateById(R.id.action_bar_right_icon)!!
-        rightActionText = findViewInTemplateById(R.id.action_bar_right_text)!!
-        rightActionContainer = findViewInTemplateById(R.id.action_bar_right_action)!!
-        leftActionText = findViewInTemplateById(R.id.action_bar_left_action)!!
-        actionBarCarousel = findViewInTemplateById(R.id.action_bar_carousel)!!
+        rightActionIcon = findViewInTemplateById(R.id.fluent_ui_action_bar_right_icon)!!
+        rightActionText = findViewInTemplateById(R.id.fluent_ui_action_bar_right_text)!!
+        rightActionContainer = findViewInTemplateById(R.id.fluent_ui_action_bar_right_action)!!
+        leftActionText = findViewInTemplateById(R.id.fluent_ui_action_bar_left_action)!!
+        actionBarCarousel = findViewInTemplateById(R.id.fluent_ui_action_bar_carousel)!!
         actionBarCarouselLayout = findViewInTemplateById(R.id.action_bar_container_layout)!!
     }
 
@@ -95,7 +95,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     private fun carouselMode() {
         rightActionIcon.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ms_ic_arrow_left_24_filled))
         rightActionIcon.rotation = 180f
-        rightActionIcon.contentDescription = resources.getString(R.string.action_bar_right_icon_description)
+        rightActionIcon.contentDescription = resources.getString(R.string.fluent_ui_action_bar_right_icon_description)
         rightActionIcon.setColorFilter(ContextCompat.getColor(context, R.color.fluentui_white))
         leftActionText.setTextColor(ContextCompat.getColor(context, R.color.fluentui_white))
         actionBarCarouselLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.fluentui_action_bar_carousel_background))
@@ -137,7 +137,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
                 currentPosition = position
                 if (currentPosition < itemCount - 1) {
                     setViewVisibility(leftActionText, View.VISIBLE)
-                    setRightActionText(context.getString(R.string.action_bar_default_right_action))
+                    setRightActionText(context.getString(R.string.fluent_ui_action_bar_default_right_action))
                     resetActions()
                 } else{
                     setViewVisibility(leftActionText, View.INVISIBLE)
@@ -151,7 +151,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     }
 
     private fun announcePageForAccessibility() {
-        announceForAccessibility(resources.getString(R.string.action_bar_accessibility_page_announcement, currentPosition+1, itemCount))
+        announceForAccessibility(resources.getString(R.string.fluent_ui_action_bar_accessibility_page_announcement, currentPosition+1, itemCount))
     }
 
     /**
@@ -251,7 +251,7 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
     private inner class defaultViewpagerAccessibilityDelegate() : AccessibilityDelegate() {
         override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
             super.onInitializeAccessibilityNodeInfo(host, info)
-            info?.contentDescription = resources.getString(R.string.action_bar_accessibility_viewpager_description, currentPosition+1, itemCount)
+            info?.contentDescription = resources.getString(R.string.fluent_ui_action_bar_accessibility_viewpager_description, currentPosition+1, itemCount)
         }
     }
 

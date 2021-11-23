@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="done">완료</string>
+  <string name="fluent_ui_done">완료</string>
 </resources>

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="done">Lokið</string>
+  <string name="fluent_ui_done">Lokið</string>
 </resources>

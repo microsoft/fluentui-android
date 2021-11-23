@@ -18,14 +18,14 @@
 
     <!--Button-->
     <style name="TextAppearance.FluentUI.Button" parent="TextAppearance.FluentUI.Body2">
-        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textColor">@color/fluent_ui_button_text</item>
         <item name="android:textAllCaps">true</item>
     </style>
     <style name="TextAppearance.FluentUI.Button.Borderless">
-        <item name="android:textColor">@color/button_text_borderless</item>
+        <item name="android:textColor">@color/fluent_ui_button_text_borderless</item>
     </style>
     <style name="TextAppearance.FluentUI.Button.Outlined">
-        <item name="android:textColor">@color/button_text_outlined</item>
+        <item name="android:textColor">@color/fluent_ui_button_text_outlined</item>
     </style>
 
  </resources>
