@@ -11,20 +11,20 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/bottom_sheet_header_content"
+        android:id="@+id/fluent_ui_bottom_sheet_header_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"/>
 
     <View
-        android:id="@+id/bottom_sheet_header_divider"
+        android:id="@+id/fluent_ui_bottom_sheet_header_divider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fluentui_divider_height"
         android:background="?attr/fluentuiBottomSheetDividerColor"
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/bottom_sheet_items"
+        android:id="@+id/fluent_ui_bottom_sheet_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/fluentui_bottom_sheet_bottom_padding"

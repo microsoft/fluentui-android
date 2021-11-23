@@ -34,13 +34,13 @@ class SheetHorizontalItemView: TemplateView {
     var onSheetItemClickListener: SheetItem.OnClickListener? = null
 
     override val templateId: Int
-        get() = R.layout.view_sheet_horizontal_item_view
+        get() = R.layout.fluent_ui_view_sheet_horizontal_item_view
 
     @JvmOverloads
-    constructor(context: Context,  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), attrs, defStyleAttr)
+    constructor(context: Context,  attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Drawer), attrs, defStyleAttr)
 
     @SuppressLint("ResourceType")
-    constructor(context: Context, sheetItem: SheetItem, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), attrs, defStyleAttr) {
+    constructor(context: Context, sheetItem: SheetItem, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Drawer), attrs, defStyleAttr) {
         this.mSheetItem = sheetItem
         this.title = sheetItem.title
         if (sheetItem.bitmap != null) {
@@ -53,9 +53,9 @@ class SheetHorizontalItemView: TemplateView {
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
 
-        sheetItemTitle = findViewInTemplateById(R.id.sheet_item_title)!!
-        mainContainer = findViewInTemplateById(R.id.main_container)!!
-        imageContainer = findViewInTemplateById(R.id.sheet_item_view_container)!!
+        sheetItemTitle = findViewInTemplateById(R.id.fluent_ui_sheet_item_title)!!
+        mainContainer = findViewInTemplateById(R.id.fluent_ui_main_container)!!
+        imageContainer = findViewInTemplateById(R.id.fluent_ui_sheet_item_view_container)!!
         updateTitleView()
         updateCustomView()
         updateTextAppearance()
@@ -64,7 +64,7 @@ class SheetHorizontalItemView: TemplateView {
             mainContainer.setOnClickListener {
                 onSheetItemClickListener?.onSheetItemClick(mSheetItem!!)
             }
-        mainContainer.setBackgroundResource(R.drawable.bottom_sheet_item_ripple_background)
+        mainContainer.setBackgroundResource(R.drawable.fluent_ui_bottom_sheet_item_ripple_background)
         listener?.onChildTemplateLoaded(mainContainer)
     }
 

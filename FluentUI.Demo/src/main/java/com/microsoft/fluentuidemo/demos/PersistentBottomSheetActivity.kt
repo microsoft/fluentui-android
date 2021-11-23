@@ -52,7 +52,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         super.onCreate(savedInstanceState)
         persistentBottomSheetDemo = findViewById(R.id.demo_persistent_sheet)
         defaultPersistentBottomSheet = findViewById(R.id.default_persistent_sheet)
-        scrollView = findViewById(R.id.scroll_container)
+        scrollView = findViewById(R.id.fluent_ui_scroll_container)
         defaultPersistentBottomSheetContent = LayoutInflater.from(this).inflate(R.layout.demo_persistent_sheet_content, null)
 
         PersistentBottomSheet.DefaultContentBuilder(this)
@@ -180,7 +180,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                                 R.drawable.ic_zoom_out_24_filled,
                                 ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
                         )
-                ), R.style.Drawer_FluentUI, marginBetweenView)
+                ), R.style.FluentUI_Drawer, marginBetweenView)
         horizontalListAdapter.mOnSheetItemClickListener = this
         sheet_horizontal_item_list_3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         sheet_horizontal_item_list_3.adapter = horizontalListAdapter

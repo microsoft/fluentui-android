@@ -50,7 +50,7 @@
     </LinearLayout>
 
     <ScrollView
-        android:id="@+id/scroll_container"
+        android:id="@+id/fluent_ui_scroll_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/demo_main_content">
@@ -74,8 +74,8 @@
         android:layout_height="match_parent"
         android:id="@+id/demo_persistent_sheet"
         android:layout_alignParentBottom="true"
-        app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
-        app:isDrawerHandleVisible="true"/>
+        app:fluentUiBehaviorPeekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
+        app:fluentUiIsDrawerHandleVisible="true"/>
 
     <com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
         android:layout_width="match_parent"
@@ -83,8 +83,8 @@
         android:id="@+id/default_persistent_sheet"
         android:layout_alignParentBottom="true"
         android:visibility="gone"
-        app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
-        app:ItemsInRow="5"
-        app:isDrawerHandleVisible="true"/>
+        app:fluentUiBehaviorPeekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
+        app:fluentUiItemsInRow="5"
+        app:fluentUiIsDrawerHandleVisible="true"/>
 
 </RelativeLayout>

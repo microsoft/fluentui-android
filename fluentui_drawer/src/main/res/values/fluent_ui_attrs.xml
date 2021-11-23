@@ -23,12 +23,12 @@
     <attr name="fluentuiHorizontalListItemTitleColor" format="reference|color"/>
 
     <!-- SheetBehavior-->
-    <declare-styleable name="SheetBehaviorLayout">
-        <attr format="string" name="behaviorType"/>
-        <attr format="dimension" name="behaviorPeekHeight"/>
-        <attr format="dimension" name="behaviorPeekWidth" />
-        <attr format="boolean" name="behaviorHideable"/>
-        <attr format="boolean" name="behaviorSkipCollapsed"/>
-        <attr format="boolean" name="behaviorFitToContents"/>
+    <declare-styleable name="FluentUISheetBehaviorLayout">
+        <attr format="string" name="fluentUiBehaviorType"/>
+        <attr format="dimension" name="fluentUiBehaviorPeekHeight"/>
+        <attr format="dimension" name="fluentUiBehaviorPeekWidth" />
+        <attr format="boolean" name="fluentUiBehaviorHideable"/>
+        <attr format="boolean" name="fluentUiBehaviorSkipCollapsed"/>
+        <attr format="boolean" name="fluentUiBehaviorFitToContents"/>
     </declare-styleable>
 </resources>

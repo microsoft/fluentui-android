@@ -7,12 +7,12 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_container"
+    android:id="@+id/fluent_ui_drawer_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.microsoft.fluentui.drawer.DrawerView
-        android:id="@+id/drawer"
+        android:id="@+id/fluent_ui_drawer"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,14 +20,14 @@
         android:background="?attr/fluentuiDrawerBackgroundColor"
         android:clipToPadding="true"
         app:layout_behavior="@string/bottom_sheet_behavior"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="@dimen/fluentui_drawer_peek_height"
-        app:behaviorType="BOTTOM">
+        app:fluentUiBehaviorHideable="true"
+        app:fluentUiBehaviorPeekHeight="@dimen/fluentui_drawer_peek_height"
+        app:fluentUiBehaviorType="BOTTOM">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_drawer_handle"
+            android:src="@drawable/fluent_ui_ic_drawer_handle"
             app:tint="?attr/fluentuiDrawerHandleColor"
             android:layout_marginTop="@dimen/fluentui_drawer_handle_vertical_margin"
             android:layout_marginBottom="@dimen/fluentui_drawer_handle_vertical_margin"
@@ -35,7 +35,7 @@
             android:importantForAccessibility="no"/>
 
         <LinearLayout
-            android:id="@+id/drawer_content"
+            android:id="@+id/fluent_ui_drawer_content"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

@@ -10,7 +10,6 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import androidx.core.view.AccessibilityDelegateCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
@@ -28,7 +27,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import com.microsoft.fluentui.transients.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
-import com.microsoft.fluentui.transients.databinding.ViewTooltipBinding
+import com.microsoft.fluentui.transients.databinding.FluentUiViewTooltipBinding
 import com.microsoft.fluentui.util.*
 
 /**
@@ -78,14 +77,14 @@ class Tooltip {
 
         // Need the theme wrapper to avoid crashing in Dark theme.
         // TODO Change to inflate(R.layout.view_tooltip, parent, false) and refactor dismiss inside listener accordingly.
-        tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip, null)
-        val bindig = ViewTooltipBinding.bind(tooltipView)
-        contentFrame = bindig.tooltipContentFrame
-        arrowUpView = bindig.tooltipArrowUp
-        arrowDownView = bindig.tooltipArrowDown
-        arrowLeftView = bindig.tooltipArrowLeft
-        arrowRightView = bindig.tooltipArrowRight
-        tooltipBackGround = bindig.tooltipBackground
+        tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Transients)).inflate(R.layout.fluent_ui_view_tooltip, null)
+        val bindig = FluentUiViewTooltipBinding.bind(tooltipView)
+        contentFrame = bindig.fluentUiTooltipContentFrame
+        arrowUpView = bindig.fluentUiTooltipArrowUp
+        arrowDownView = bindig.fluentUiTooltipArrowDown
+        arrowLeftView = bindig.fluentUiTooltipArrowLeft
+        arrowRightView = bindig.fluentUiTooltipArrowRight
+        tooltipBackGround = bindig.fluentUiTooltipBackground
 
         margin = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_margin)
 
@@ -114,8 +113,8 @@ class Tooltip {
      * @param config the configuration of the tooltip
      */
     fun show(anchor: View, text: String, config: Config = Config()): Tooltip {
-        val tooltipTextView: View = LayoutInflater.from(FluentUIContextThemeWrapper(this.context, com.microsoft.fluentui.transients.R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip_text, null)
-        val tooltipText: TextView = tooltipTextView.findViewById(R.id.tooltip_text)
+        val tooltipTextView: View = LayoutInflater.from(FluentUIContextThemeWrapper(this.context, com.microsoft.fluentui.transients.R.style.FluentUI_Theme_Transients)).inflate(R.layout.fluent_ui_view_tooltip_text, null)
+        val tooltipText: TextView = tooltipTextView.findViewById(R.id.fluent_ui_tooltip_text)
         tooltipText.setText(text)
         return show(anchor, tooltipTextView, config)
     }
@@ -176,7 +175,7 @@ class Tooltip {
     }
 
     private fun dismissSideEffects() {
-        tooltipView.announceForAccessibility(context.getString(R.string.tooltip_accessibility_dismiss_announcement))
+        tooltipView.announceForAccessibility(context.getString(R.string.fluent_ui_tooltip_accessibility_dismiss_announcement))
         onDismissListener?.onDismiss()
     }
 
@@ -241,7 +240,7 @@ class Tooltip {
                 super.onInitializeAccessibilityNodeInfo(host, info)
                 val clickAction = AccessibilityNodeInfoCompat.AccessibilityActionCompat(
                     AccessibilityNodeInfoCompat.ACTION_CLICK,
-                    context.resources.getString(R.string.tooltip_accessibility_dismiss_action)
+                    context.resources.getString(R.string.fluent_ui_tooltip_accessibility_dismiss_action)
                 )
                 info.addAction(clickAction)
             }

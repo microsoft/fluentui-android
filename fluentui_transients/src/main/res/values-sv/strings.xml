@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="tooltip_accessibility_dismiss_action">stäng</string>
-  <string name="tooltip_accessibility_dismiss_announcement">Knappbeskrivningen har stängts</string>
+  <string name="fluent_ui_tooltip_accessibility_dismiss_action">stäng</string>
+  <string name="fluent_ui_tooltip_accessibility_dismiss_announcement">Knappbeskrivningen har stängts</string>
 </resources>

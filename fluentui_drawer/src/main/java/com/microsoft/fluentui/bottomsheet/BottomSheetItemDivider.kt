@@ -16,7 +16,7 @@ import com.microsoft.fluentui.view.BaseDividerItemDecoration
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
-internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecoration(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), HORIZONTAL) {
+internal class BottomSheetItemDivider(context: Context) : BaseDividerItemDecoration(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Drawer), HORIZONTAL) {
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         val useDivider = view.getTag(R.id.fluentui_bottom_sheet_item_divider) as? Boolean ?: false
         if (useDivider)

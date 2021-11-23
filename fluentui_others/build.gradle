@@ -11,6 +11,8 @@ apply from: '../publish.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
+    resourcePrefix 'fluent_ui_'
+
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion

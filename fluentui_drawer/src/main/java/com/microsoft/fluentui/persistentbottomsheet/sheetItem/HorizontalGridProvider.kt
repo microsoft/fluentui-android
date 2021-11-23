@@ -24,9 +24,9 @@ internal class HorizontalGridProvider(val context: Context) : IViewProvider {
                                 itemLayoutParam: BottomSheetParam.ItemLayoutParam,
                                 contentParam: BottomSheetParam.ContentParam): View {
         val list = itemTypeList as BottomSheetParam.HorizontalGridItemList
-        val view = LayoutInflater.from(context).inflate(R.layout.persistent_bottomsheet_horizontal_grid, null)
-        val headerText = view.findViewById<TextView>(R.id.header_text)
-        val horizontalGridView = view.findViewById<SheetHorizontalGridItemList>(R.id.horizontal_grid)
+        val view = LayoutInflater.from(context).inflate(R.layout.fluent_ui_persistent_bottomsheet_horizontal_grid, null)
+        val headerText = view.findViewById<TextView>(R.id.fluent_ui_header_text)
+        val horizontalGridView = view.findViewById<SheetHorizontalGridItemList>(R.id.fluent_ui_horizontal_grid)
 
         if (itemTypeList.header.isNullOrEmpty()) {
             headerText.visibility = View.GONE
@@ -59,7 +59,7 @@ internal class HorizontalGridProvider(val context: Context) : IViewProvider {
      * component is self capable of updating only items which have changed
      */
     override fun updateComponentView(itemTypeList: BottomSheetParam.ItemTypeList, view: View) {
-        val horizontalGridView = view.findViewById<SheetHorizontalGridItemList>(R.id.horizontal_grid)
+        val horizontalGridView = view.findViewById<SheetHorizontalGridItemList>(R.id.fluent_ui_horizontal_grid)
         val newList = getHorizontalItemList(itemTypeList as BottomSheetParam.HorizontalGridItemList)
         horizontalGridView.refreshHorizontalItems(newList)
     }

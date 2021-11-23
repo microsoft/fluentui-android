@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 <resources>
-    <style name="Theme.FluentUI.Transients" parent="Theme.FluentUI.Transients.Base">
+    <style name="FluentUI.Theme.Transients" parent="FluentUI.Theme.Transients.Base">
         <!--Tooltip-->
         <item name="fluentuiTooltipBackgroundColor">?attr/fluentuiBackgroundPrimaryColor</item>
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnPrimaryColor</item>

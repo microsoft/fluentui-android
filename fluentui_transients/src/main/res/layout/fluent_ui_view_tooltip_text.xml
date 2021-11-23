@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 
-<TextView android:id="@+id/tooltip_text"
+<TextView android:id="@+id/fluent_ui_tooltip_text"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="end|start|center_vertical"
@@ -12,5 +12,5 @@
     android:paddingBottom="@dimen/fluentui_tooltip_padding_vertical"
     android:paddingEnd="@dimen/fluentui_tooltip_padding_horizontal"
     android:paddingStart="@dimen/fluentui_tooltip_padding_horizontal"
-    android:textAppearance="@style/TextAppearance.FluentUI.Tooltip"
+    android:textAppearance="@style/FluentUI.TextAppearance.Tooltip"
     xmlns:android="http://schemas.android.com/apk/res/android" />

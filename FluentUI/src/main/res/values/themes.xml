@@ -7,7 +7,7 @@
 <resources>
     <!--
     All semantic colors should be defined here in their light theme state as the default.
-    If they have a different semantic color for dark theme, define that color in "themes.xml (night)" as well.
+    If they have a different semantic color for dark theme, define that color in "fluent_ui_themes.xml (night)" as well.
 -->
     <style name="Theme.FluentUI.Container" parent="Base.Theme.FluentUI">
         <item name="colorPrimary">@color/fluentui_communication_blue</item>
@@ -237,7 +237,7 @@
 
     <!--
         All light theme semantic colors should be defined in the base theme as the default.
-        Dark theme specific semantic colors should be defined in "themes.xml (night)".
+        Dark theme specific semantic colors should be defined in "fluent_ui_themes.xml (night)".
     -->
     <style name="Theme.FluentUI" parent="Theme.FluentUI.Container"/>
 </resources>

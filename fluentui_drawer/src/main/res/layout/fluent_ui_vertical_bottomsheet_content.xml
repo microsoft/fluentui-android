@@ -5,14 +5,14 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/header_text"
+        android:id="@+id/fluent_ui_header_text"
         style="@style/TextAppearance.FluentUI.PersistentBottomSheetHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingEnd="@dimen/fluentui_persistent_bottomsheet_header_content_offset" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/vertical_list"
+        android:id="@+id/fluent_ui_vertical_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/fluentui_persistent_bottomsheet_vertical_list_delta_offset"

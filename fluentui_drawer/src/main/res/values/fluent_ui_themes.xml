@@ -5,7 +5,7 @@
   -->
 <resources>
 
-    <style name="Theme.FluentUI.Drawer.Base" parent="Base.Theme.FluentUI" >
+    <style name="FluentUI.Theme.Drawer.Base" parent="Base.Theme.FluentUI" >
 
         <!--Persistent BottomSheet-->
         <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
@@ -27,5 +27,5 @@
 
     </style>
 
-    <style name="Theme.FluentUI.Drawer" parent="Theme.FluentUI.Drawer.Base"/>
+    <style name="FluentUI.Theme.Drawer" parent="FluentUI.Theme.Drawer.Base"/>
 </resources>

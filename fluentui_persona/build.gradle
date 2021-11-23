@@ -10,6 +10,8 @@ apply from: '../publish.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
+    resourcePrefix 'fluent_ui_'
+
     buildFeatures {
         viewBinding true
     }

@@ -14,9 +14,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import androidx.appcompat.app.ActionBar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.appcompat.app.AppCompatDialog
-import com.microsoft.fluentui.drawer.databinding.DialogDrawerBinding
-import com.microsoft.fluentui.drawer.databinding.DialogSideDrawerBinding
-import com.microsoft.fluentui.drawer.databinding.DialogTopDrawerBinding
+import com.microsoft.fluentui.drawer.databinding.FluentUiDialogDrawerBinding
+import com.microsoft.fluentui.drawer.databinding.FluentUiDialogSideDrawerBinding
+import com.microsoft.fluentui.drawer.databinding.FluentUiDialogTopDrawerBinding
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentui.util.displaySize
@@ -26,7 +26,7 @@ import com.microsoft.fluentui.util.statusBarHeight
  * [DrawerDialog] is used for displaying a modal dialog in the form of an expanding and collapsing sheet
  * to which content is added.
  */
-open class DrawerDialog @JvmOverloads constructor(context: Context, val behaviorType: BehaviorType = BehaviorType.BOTTOM, @StyleRes theme: Int = 0) : AppCompatDialog(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), if (theme == 0) R.style.Drawer_FluentUI else theme) {
+open class DrawerDialog @JvmOverloads constructor(context: Context, val behaviorType: BehaviorType = BehaviorType.BOTTOM, @StyleRes theme: Int = 0) : AppCompatDialog(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Drawer), if (theme == 0) R.style.FluentUI_Drawer else theme) {
     companion object {
         private const val DISMISS_THRESHOLD = 0.005f
     }
@@ -77,22 +77,22 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     init {
         when(behaviorType){
             BehaviorType.BOTTOM -> {
-                val binding = DialogDrawerBinding.inflate(layoutInflater)
+                val binding = FluentUiDialogDrawerBinding.inflate(layoutInflater)
                 container = binding.root
-                drawerContent = binding.drawerContent
-                drawer = binding.drawer
+                drawerContent = binding.fluentUiDrawerContent
+                drawer = binding.fluentUiDrawer
             }
             BehaviorType.TOP -> {
-                val binding = DialogTopDrawerBinding.inflate(layoutInflater)
+                val binding = FluentUiDialogTopDrawerBinding.inflate(layoutInflater)
                 container = binding.root
-                drawerContent = binding.drawerContent
-                drawer = binding.drawer
+                drawerContent = binding.fluentUiDrawerContent
+                drawer = binding.fluentUiDrawer
             }
             BehaviorType.RIGHT, BehaviorType.LEFT -> {
-                val binding = DialogSideDrawerBinding.inflate(layoutInflater)
+                val binding = FluentUiDialogSideDrawerBinding.inflate(layoutInflater)
                 container = binding.root
-                drawerContent = binding.drawerContent
-                drawer = binding.drawer
+                drawerContent = binding.fluentUiDrawerContent
+                drawer = binding.fluentUiDrawer
             }
         }
 

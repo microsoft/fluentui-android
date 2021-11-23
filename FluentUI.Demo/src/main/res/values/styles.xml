@@ -54,7 +54,7 @@
                     attrs defined in Library again.
                     <item name="fluentuiButtonBackgroundDefaultColor">your_color</item>
                     <item name="fluentuiButtonBackgroundDisabledColor">your_color</item>
-                    for more attributes you can check themes.xml file and get list of attributes
+                    for more attributes you can check fluent_ui_themes.xml file and get list of attributes
                     that you need to override
              -->
         <item name="toolbarStyle">@style/Widget.FluentUI.Toolbar</item>

@@ -18,7 +18,7 @@ import com.microsoft.fluentui.util.createImageView
 /**
  * [SheetHorizontalItemAdapter] is used for horizontal list in bottomSheet
  */
-class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.Theme_FluentUI_Drawer, private val marginBetweenView: Int = 0) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<SheetItem>, @StyleRes private val themeId: Int = R.style.FluentUI_Theme_Drawer, private val marginBetweenView: Int = 0) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mOnSheetItemClickListener: SheetItem.OnClickListener? = null
     private val mItems: ArrayList<SheetItem> = items
 
@@ -29,7 +29,7 @@ class SheetHorizontalItemAdapter(private val context: Context, items: ArrayList<
             inflater = inflater.cloneInContext(contextThemeWrapper)
         }
 
-        val itemView = inflater.inflate(R.layout.view_sheet_horizontal_item_adapter, parent, false)
+        val itemView = inflater.inflate(R.layout.fluent_ui_view_sheet_horizontal_item_adapter, parent, false)
         val layoutParams = itemView.layoutParams as ViewGroup.MarginLayoutParams
         layoutParams.rightMargin = marginBetweenView
         return PersistentSheetItemViewHolder(itemView as SheetHorizontalItemView)

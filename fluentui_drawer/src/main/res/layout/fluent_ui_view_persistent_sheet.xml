@@ -13,19 +13,19 @@
     android:background="@color/fluentui_transparent">
 
     <com.microsoft.fluentui.drawer.DrawerView
-        android:id="@+id/persistent_bottom_sheet"
+        android:id="@+id/fluent_ui_persistent_bottom_sheet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/fluentuiDrawerBackgroundColor"
         android:clipToPadding="true"
         android:elevation="@dimen/fluentui_persistentbottomsheet_elevation"
         android:orientation="vertical"
-        app:behaviorType="BOTTOM"
+        app:fluentUiBehaviorType="BOTTOM"
         app:cornerRadius="@dimen/fluentui_persistentbottomsheet_corner_radius"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <ImageView
-            android:id="@+id/sheet_drawer_handle"
+            android:id="@+id/fluent_ui_sheet_drawer_handle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -34,17 +34,17 @@
             android:paddingStart="@dimen/fluentui_drawer_handle_horizontal_margin"
             android:contentDescription=" "
             android:paddingEnd="@dimen/fluentui_drawer_handle_horizontal_margin"
-            android:src="@drawable/ic_drawer_handle"
+            android:src="@drawable/fluent_ui_ic_drawer_handle"
             app:tint="?attr/fluentuiDrawerHandleColor"
             tools:ignore="HardcodedText" />
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/scroll_container"
+            android:id="@+id/fluent_ui_scroll_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/persistent_sheet_container"
+                android:id="@+id/fluent_ui_persistent_sheet_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipChildren="false"

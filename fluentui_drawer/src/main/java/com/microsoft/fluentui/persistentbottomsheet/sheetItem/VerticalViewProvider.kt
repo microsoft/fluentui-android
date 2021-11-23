@@ -18,9 +18,9 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
                                 itemLayoutParam: BottomSheetParam.ItemLayoutParam,
                                 contentParam: BottomSheetParam.ContentParam): View {
         val verticalItemList = itemTypeList as BottomSheetParam.VerticalItemList
-        val view = LayoutInflater.from(context).inflate(R.layout.vertical_bottomsheet_content, null)
-        val headerText = view.findViewById<TextView>(R.id.header_text)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.vertical_list)
+        val view = LayoutInflater.from(context).inflate(R.layout.fluent_ui_vertical_bottomsheet_content, null)
+        val headerText = view.findViewById<TextView>(R.id.fluent_ui_header_text)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.fluent_ui_vertical_list)
 
         if (itemTypeList.header.isNullOrEmpty()) {
             headerText.visibility = View.GONE
@@ -30,7 +30,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
         }
         recyclerView.layoutManager =
             LinearLayoutManager(context)
-        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList), R.style.Theme_FluentUI_Drawer)
+        val verticalItemAdapter = BottomSheetAdapter(context, getVerticalItemList(verticalItemList), R.style.FluentUI_Theme_Drawer)
 
         contentParam.listener?.apply {
             val listener = this
@@ -50,7 +50,7 @@ internal class VerticalViewProvider(val context: Context) : IViewProvider {
     }
 
     override fun updateComponentView(itemTypeList: BottomSheetParam.ItemTypeList, view: View) {
-        val recyclerView = view.findViewById<RecyclerView>(R.id.vertical_list)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.fluent_ui_vertical_list)
         val adapter = recyclerView.adapter as BottomSheetAdapter
         val newDataList = getVerticalItemList(itemTypeList as BottomSheetParam.VerticalItemList)
         adapter.updateDataList(newDataList)

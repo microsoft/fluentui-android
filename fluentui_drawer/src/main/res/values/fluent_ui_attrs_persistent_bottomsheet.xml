@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+    <declare-styleable name="FluentUiPersistentBottomSheet">
+        <!-- The min height of the BottomSheet -->
+        <attr name="fluentUiPeekHeight" format="dimension" />
+        <!--  Determines whether to keep the default drawer handle or not -->
+        <attr name="fluentUiIsDrawerHandleVisible" format="boolean" />
+        <!--  horizontal Item in a row-->
+        <attr name="fluentUiItemsInRow" format="integer" />
+        <!-- horizontal item text style-->
+        <attr name="fluentUiHorizontalItemTextAppearanc" format="reference" />
+        <!-- vertical item text style-->
+        <attr name="fluentUiVerticalItemTextAppearance" format="reference" />
+        <!-- vertical item subtitle style-->
+        <attr name="fluentUiVerticalItemSubTextAppearance" format="reference" />
+        <!--header text style-->
+        <attr name="fluentUiHeaderTextAppearance" format="reference" />
+    </declare-styleable>
+</resources>

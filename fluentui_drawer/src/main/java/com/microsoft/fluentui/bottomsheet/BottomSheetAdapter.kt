@@ -45,7 +45,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             inflater = inflater.cloneInContext(contextThemeWrapper)
         }
 
-        val itemView = inflater.inflate(R.layout.view_bottom_sheet_item, parent, false)
+        val itemView = inflater.inflate(R.layout.fluent_ui_view_bottom_sheet_item, parent, false)
         return BottomSheetItemViewHolder(itemView as ListItemView)
     }
 
@@ -77,7 +77,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             listItemView.subtitle = item.subtitle
             listItemView.setTag(R.id.fluentui_bottom_sheet_item_divider, item.useDivider)
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
-            listItemView.background = R.drawable.bottom_sheet_item_ripple_background
+            listItemView.background = R.drawable.fluent_ui_bottom_sheet_item_ripple_background
             if (textAppearance != 0) {
                 listItemView.titleStyleRes = textAppearance
             }

@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 <resources>
-    <style name="Theme.FluentUI.Transients.Base" parent="Base.Theme.FluentUI">
+    <style name="FluentUI.Theme.Transients.Base" parent="Base.Theme.FluentUI">
         <!--Snackbar-->
         <item name="fluentuiSnackbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiSnackbarBackgroundAnnouncementColor">?attr/fluentuiBackgroundPrimaryColor</item>
@@ -16,5 +16,5 @@
         <item name="fluentuiTooltipTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
     </style>
 
-    <style name="Theme.FluentUI.Transients" parent="Theme.FluentUI.Transients.Base"/>
+    <style name="FluentUI.Theme.Transients" parent="FluentUI.Theme.Transients.Base"/>
 </resources>

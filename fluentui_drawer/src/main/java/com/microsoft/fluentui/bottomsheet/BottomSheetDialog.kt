@@ -15,7 +15,7 @@ import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.listitem.ListSubHeaderView
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.drawer.DrawerDialog
-import com.microsoft.fluentui.drawer.databinding.ViewBottomSheetBinding
+import com.microsoft.fluentui.drawer.databinding.FluentUiViewBottomSheetBinding
 import com.microsoft.fluentui.util.isVisible
 
 /**
@@ -30,17 +30,17 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
     constructor(context: Context, items: ArrayList<BottomSheetItem>, headerItem: BottomSheetItem? = null, @StyleRes theme: Int = 0) : super(context, BehaviorType.BOTTOM, theme) {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
 
-        val binding = ViewBottomSheetBinding.inflate(layoutInflater, drawerContent, false)
+        val binding = FluentUiViewBottomSheetBinding.inflate(layoutInflater, drawerContent, false)
 
         val adapter = BottomSheetAdapter(this.context, items, theme)
         adapter.onBottomSheetItemClickListener = this
-        binding.bottomSheetItems.adapter = adapter
-        binding.bottomSheetItems.addItemDecoration(BottomSheetItemDivider(context))
+        binding.fluentUiBottomSheetItems.adapter = adapter
+        binding.fluentUiBottomSheetItems.addItemDecoration(BottomSheetItemDivider(context))
 
         headerItem?.let {
-            binding.bottomSheetHeaderContent.addView(createHeader(it))
-            binding.bottomSheetHeaderContent.visibility = View.VISIBLE
-            binding.bottomSheetHeaderDivider.isVisible = !isSingleLineHeader(it)
+            binding.fluentUiBottomSheetHeaderContent.addView(createHeader(it))
+            binding.fluentUiBottomSheetHeaderContent.visibility = View.VISIBLE
+            binding.fluentUiBottomSheetHeaderDivider.isVisible = !isSingleLineHeader(it)
         }
 
         setContentView(binding.root)
@@ -67,7 +67,7 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
             headerView.customView = context.createImageView(headerItem.imageId, headerItem.getImageTint(context))
         headerView.title = headerItem.title
         headerView.subtitle = headerItem.subtitle
-        headerView.background = R.drawable.bottom_sheet_header_background
+        headerView.background = R.drawable.fluent_ui_bottom_sheet_header_background
         return headerView
     }
 

@@ -29,7 +29,7 @@ import kotlin.math.ceil
 * [SheetHorizontalItemList] is used to display a list of menu items in a horizontal fixed list
 */
 open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0)
-    : TemplateView(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), attrs, defStyleAttr), SheetItem.OnClickListener {
+    : TemplateView(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Drawer), attrs, defStyleAttr), SheetItem.OnClickListener {
     private lateinit var itemSheet:List<SheetItem>
     private lateinit var itemListContainer:ViewGroup
     private var rowCount: Int = 0
@@ -46,7 +46,7 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
     }
 
     override val templateId: Int
-        get() = R.layout.view_sheet_horizontal_item_list
+        get() = R.layout.fluent_ui_view_sheet_horizontal_item_list
 
     fun createHorizontalItemLayout(sheet: List<SheetItem>, itemLayoutParam: BottomSheetParam.HorizontalItemLayoutParam? = null) {
         this.itemSheet = sheet
@@ -238,7 +238,7 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
 
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
-        itemListContainer = findViewInTemplateById(R.id.sheet_item_list)!!
+        itemListContainer = findViewInTemplateById(R.id.fluent_ui_sheet_item_list)!!
     }
 
     override fun onSheetItemClick(item: SheetItem) {

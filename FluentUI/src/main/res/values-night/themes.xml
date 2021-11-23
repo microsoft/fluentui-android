@@ -7,7 +7,7 @@
 <resources>
     <!--
     All dark theme specific semantic colors should be defined here.
-    Light theme semantic colors should be defined in themes.xml as the default.
+    Light theme semantic colors should be defined in fluent_ui_themes.xml as the default.
 -->
     <style name="Theme.FluentUI" parent="Theme.FluentUI.Container">
         <item name="android:textColorPrimary">@color/fluentui_white</item>

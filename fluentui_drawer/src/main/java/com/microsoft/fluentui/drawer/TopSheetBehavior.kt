@@ -79,16 +79,16 @@ class TopSheetBehavior<V : View> : CoordinatorLayout.Behavior<V> {
 
     constructor(context: Context, attrs: AttributeSet? = null) : super(context, attrs) {
         val a: TypedArray = context.obtainStyledAttributes(attrs,
-                R.styleable.SheetBehaviorLayout)
+                R.styleable.FluentUISheetBehaviorLayout)
 
         setPeekHeight(a.getDimensionPixelSize(
-                R.styleable.SheetBehaviorLayout_behaviorPeekHeight, -1))
+                R.styleable.FluentUISheetBehaviorLayout_fluentUiBehaviorPeekHeight, -1))
         setFitToContents(a.getBoolean(
-                R.styleable.SheetBehaviorLayout_behaviorFitToContents, true))
+                R.styleable.FluentUISheetBehaviorLayout_fluentUiBehaviorFitToContents, true))
         hideable = a.getBoolean(
-                R.styleable.SheetBehaviorLayout_behaviorHideable, false)
+                R.styleable.FluentUISheetBehaviorLayout_fluentUiBehaviorHideable, false)
         skipCollapsed = a.getBoolean(
-                R.styleable.SheetBehaviorLayout_behaviorSkipCollapsed, false)
+                R.styleable.FluentUISheetBehaviorLayout_fluentUiBehaviorSkipCollapsed, false)
         a.recycle()
 
         val configuration: ViewConfiguration = ViewConfiguration.get(context)

@@ -24,7 +24,7 @@ import androidx.core.graphics.ColorUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.microsoft.fluentui.drawer.OnDrawerContentCreatedListener
 import com.microsoft.fluentui.drawer.R
-import com.microsoft.fluentui.drawer.databinding.ViewPersistentSheetBinding
+import com.microsoft.fluentui.drawer.databinding.FluentUiViewPersistentSheetBinding
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.BottomSheetParam
 import com.microsoft.fluentui.persistentbottomsheet.sheetItem.PersistentBottomSheetContentViewProvider
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -35,7 +35,7 @@ import com.microsoft.fluentui.view.TemplateView
  * [PersistentBottomSheet] is used to display a bottomSheet with a persistent collapsed state of some peekHeight
  */
 class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-        TemplateView(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), attrs, defStyleAttr), SheetItem.OnClickListener {
+        TemplateView(FluentUIContextThemeWrapper(context,R.style.FluentUI_Theme_Drawer), attrs, defStyleAttr), SheetItem.OnClickListener {
 
     companion object {
         private const val FADE_OUT_THRESHOLD = 160
@@ -43,7 +43,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
 
     private lateinit var persistentSheetBehavior: BottomSheetBehavior<View>
-    private lateinit var persistentSheetBinding: ViewPersistentSheetBinding
+    private lateinit var persistentSheetBinding: FluentUiViewPersistentSheetBinding
     private var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
     private var contentViewProvider: PersistentBottomSheetContentViewProvider? = null
     private var itemLayoutParam: BottomSheetParam.ItemLayoutParam
@@ -58,16 +58,16 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
 
     init {
-        val attributes = context.obtainStyledAttributes(attrs, R.styleable.PersistentBottomSheet)
-        isDrawerHandleVisible = attributes.getBoolean(R.styleable.PersistentBottomSheet_isDrawerHandleVisible, true)
-        val defaultPeekHeight = attributes.getDimensionPixelSize(R.styleable.PersistentBottomSheet_peekHeight, 0)
-        val itemsInRow = attributes.getInteger(R.styleable.PersistentBottomSheet_ItemsInRow, R.integer.fluentui_persistent_bottomsheet_max_item_row)
-        val horizontalItemTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_horizontalItemTextAppearance,
+        val attributes = context.obtainStyledAttributes(attrs, R.styleable.FluentUiPersistentBottomSheet)
+        isDrawerHandleVisible = attributes.getBoolean(R.styleable.FluentUiPersistentBottomSheet_fluentUiIsDrawerHandleVisible, true)
+        val defaultPeekHeight = attributes.getDimensionPixelSize(R.styleable.FluentUiPersistentBottomSheet_fluentUiPeekHeight, 0)
+        val itemsInRow = attributes.getInteger(R.styleable.FluentUiPersistentBottomSheet_fluentUiItemsInRow, R.integer.fluentui_persistent_bottomsheet_max_item_row)
+        val horizontalItemTextStyle = attributes.getResourceId(R.styleable.FluentUiPersistentBottomSheet_fluentUiHorizontalItemTextAppearanc,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHorizontalItem)
-        val verticalItemTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_verticalItemTextAppearance,
+        val verticalItemTextStyle = attributes.getResourceId(R.styleable.FluentUiPersistentBottomSheet_fluentUiVerticalItemTextAppearance,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheet_Item)
-        val verticalSubTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_verticalItemSubTextAppearance, 0)
-        val headerTextStyle = attributes.getResourceId(R.styleable.PersistentBottomSheet_headerTextAppearance,
+        val verticalSubTextStyle = attributes.getResourceId(R.styleable.FluentUiPersistentBottomSheet_fluentUiVerticalItemSubTextAppearance, 0)
+        val headerTextStyle = attributes.getResourceId(R.styleable.FluentUiPersistentBottomSheet_fluentUiHeaderTextAppearance,
                 R.style.TextAppearance_FluentUI_PersistentBottomSheetHeading)
 
         itemLayoutParam = BottomSheetParam.ItemLayoutParam(defaultPeekHeight, itemsInRow,
@@ -81,7 +81,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
                 persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
             }
             if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
-                persistentSheetBinding.scrollContainer.smoothScrollTo(0, 0)
+                persistentSheetBinding.fluentUiScrollContainer.smoothScrollTo(0, 0)
             }
             setDrawerHandleContentDescription(collapsedStateDrawerHandleContentDescription,expandedStateDrawerHandleContentDescription)
         }
@@ -94,17 +94,17 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     }
 
     override val templateId: Int
-        get() = R.layout.view_persistent_sheet
+        get() = R.layout.fluent_ui_view_persistent_sheet
 
     override fun onTemplateLoaded() {
-        persistentSheetBinding = ViewPersistentSheetBinding.bind(templateRoot!!)
-        persistentSheetBehavior = BottomSheetBehavior.from(persistentSheetBinding.persistentBottomSheet)
+        persistentSheetBinding = FluentUiViewPersistentSheetBinding.bind(templateRoot!!)
+        persistentSheetBehavior = BottomSheetBehavior.from(persistentSheetBinding.fluentUiPersistentBottomSheet)
         persistentSheetBehavior.isHideable = true
         persistentSheetBehavior.setBottomSheetCallback(persistentSheetCallback)
         persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
 
         if (!isDrawerHandleVisible)
-            persistentSheetBinding.sheetDrawerHandle.visibility = View.GONE
+            persistentSheetBinding.fluentUiSheetDrawerHandle.visibility = View.GONE
 
         updateSheetContent()
         super.onTemplateLoaded()
@@ -117,9 +117,9 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     }
 
     private fun updateSheetContent() {
-        persistentSheetBinding.persistentSheetContainer.removeAllViews()
+        persistentSheetBinding.fluentUiPersistentSheetContainer.removeAllViews()
         contentViewProvider?.apply {
-            val sheetContainerInfo = this.getSheetContentView(persistentSheetBinding.persistentSheetContainer, itemLayoutParam)
+            val sheetContainerInfo = this.getSheetContentView(persistentSheetBinding.fluentUiPersistentSheetContainer, itemLayoutParam)
             sheetContainer = sheetContainerInfo
             onDrawerContentCreatedListener?.onDrawerContentCreated(sheetContainerInfo.Container)
             configureBottomSheetDrawerHandle(sheetContainerInfo)
@@ -129,18 +129,18 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private fun configureBottomSheetDrawerHandle(sheetContainerInfo: PersistentBottomSheetContentViewProvider.SheetContainerInfo) {
         if (sheetContainerInfo.isSingleLineItem) {
             setDrawerHandleVisibility(View.GONE)
-            persistentSheetBinding.persistentSheetContainer.setPadding(persistentSheetBinding.persistentSheetContainer.paddingLeft,
+            persistentSheetBinding.fluentUiPersistentSheetContainer.setPadding(persistentSheetBinding.fluentUiPersistentSheetContainer.paddingLeft,
                     resources.getDimensionPixelSize(R.dimen.fluentui_persistent_bottomsheet_content_padding_vertical),
-                    persistentSheetBinding.persistentSheetContainer.paddingRight,
-                    persistentSheetBinding.persistentSheetContainer.paddingBottom)
+                    persistentSheetBinding.fluentUiPersistentSheetContainer.paddingRight,
+                    persistentSheetBinding.fluentUiPersistentSheetContainer.paddingBottom)
             return
         }
         setDrawerHandleVisibility(View.VISIBLE)
         setDrawerHandleContentDescription(collapsedStateDrawerHandleContentDescription, expandedStateDrawerHandleContentDescription)
-        persistentSheetBinding.persistentSheetContainer.setPadding(persistentSheetBinding.persistentSheetContainer.paddingLeft, 0,
-                persistentSheetBinding.persistentSheetContainer.paddingRight,
-                persistentSheetBinding.persistentSheetContainer.paddingBottom)
-        persistentSheetBinding.sheetDrawerHandle.setOnClickListener {
+        persistentSheetBinding.fluentUiPersistentSheetContainer.setPadding(persistentSheetBinding.fluentUiPersistentSheetContainer.paddingLeft, 0,
+                persistentSheetBinding.fluentUiPersistentSheetContainer.paddingRight,
+                persistentSheetBinding.fluentUiPersistentSheetContainer.paddingBottom)
+        persistentSheetBinding.fluentUiSheetDrawerHandle.setOnClickListener {
             when {
                 persistentSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED -> expand()
                 persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED -> collapse()
@@ -153,21 +153,21 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun setDrawerHandleVisibility(visibility: Int) {
         isDrawerHandleVisible = View.VISIBLE == visibility
-        persistentSheetBinding.sheetDrawerHandle.visibility = visibility
+        persistentSheetBinding.fluentUiSheetDrawerHandle.visibility = visibility
     }
 
 
     fun changePeekHeight(dy: Int) {
         val transition = ChangeBounds()
         transition.duration = context.resources.getInteger(R.integer.fluentui_persistent_bottomsheet_fade_in_milliseconds).toLong()
-        TransitionManager.beginDelayedTransition(persistentSheetBinding.persistentBottomSheet, transition)
+        TransitionManager.beginDelayedTransition(persistentSheetBinding.fluentUiPersistentBottomSheet, transition)
         val newY = persistentSheetBehavior.peekHeight + dy
         persistentSheetBehavior.peekHeight = newY
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
         val viewRect = Rect()
-        persistentSheetBinding.persistentBottomSheet.getGlobalVisibleRect(viewRect)
+        persistentSheetBinding.fluentUiPersistentBottomSheet.getGlobalVisibleRect(viewRect)
 
         if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
             if (!viewRect.contains(ev!!.rawX.toInt(), ev.rawY.toInt())) {
@@ -199,7 +199,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     }
 
     override fun addView(child: View, index: Int) {
-        addView(child, index, persistentSheetBinding.persistentSheetContainer)
+        addView(child, index, persistentSheetBinding.fluentUiPersistentSheetContainer)
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -212,7 +212,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     override fun removeViewAt(index: Int) {
-        removeViewAt(index, persistentSheetBinding.persistentSheetContainer)
+        removeViewAt(index, persistentSheetBinding.fluentUiPersistentSheetContainer)
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -225,7 +225,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
     override fun removeView(child: View) {
-        removeView(child, persistentSheetBinding.persistentSheetContainer)
+        removeView(child, persistentSheetBinding.fluentUiPersistentSheetContainer)
     }
 
     @RestrictTo(RestrictTo.Scope.LIBRARY)
@@ -248,12 +248,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun collapse() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        persistentSheetBinding.fluentUiSheetDrawerHandle.requestFocus()
     }
 
     fun expand() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-       persistentSheetBinding.sheetDrawerHandle.requestFocus()
+       persistentSheetBinding.fluentUiSheetDrawerHandle.requestFocus()
     }
 
     fun hide(){
@@ -290,7 +290,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         expandedStateDrawerHandleContentDescription = expandedStateDescription
 
         val currentStateContentDescription: String?
-        persistentSheetBinding.sheetDrawerHandle.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
+        persistentSheetBinding.fluentUiSheetDrawerHandle.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_YES
         when (persistentSheetBehavior.state) {
             BottomSheetBehavior.STATE_COLLAPSED -> {
                 currentStateContentDescription =  collapsedStateDescription
@@ -299,13 +299,13 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
                 currentStateContentDescription =  expandedStateDescription
             }
             else -> {
-                persistentSheetBinding.sheetDrawerHandle.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
+                persistentSheetBinding.fluentUiSheetDrawerHandle.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
                 return
             }
         }
         currentStateContentDescription?.apply{
-            persistentSheetBinding.sheetDrawerHandle.contentDescription = this
-            persistentSheetBinding.sheetDrawerHandle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            persistentSheetBinding.fluentUiSheetDrawerHandle.contentDescription = this
+            persistentSheetBinding.fluentUiSheetDrawerHandle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
         }
     }
 
