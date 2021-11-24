@@ -6,12 +6,12 @@
 
 <resources>
     <declare-styleable name="FluentUiListSubHeaderView">
-        <attr name="fluentUiListTitle" />
-        <attr name="fluentUiListTitleColor" format="enum">
+        <attr name="fluentUiTitle" />
+        <attr name="fluentUiTitleColor" format="enum">
             <enum name="primary" value="0" />
             <enum name="secondary" value="1" />
             <enum name="tertiary" value="2" />
         </attr>
-        <attr name="fluentUiListTitleTruncateAt" />
+        <attr name="fluentUiTitleTruncateAt" />
     </declare-styleable>
 </resources>

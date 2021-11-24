@@ -19,9 +19,9 @@
         android:layout_height="wrap_content"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        app:description="@string/cell_example_description"
-        app:orientation="horizontal"
-        app:title="@string/cell_example_title" />
+        app:fluentUiDescription="@string/cell_example_description"
+        app:fluentUiOrientation="horizontal"
+        app:fluentUiTitle="@string/cell_example_title" />
 
     <com.microsoft.fluentuidemo.demos.views.Cell
         android:id="@+id/vertical_cell"
@@ -30,9 +30,9 @@
         android:layout_marginTop="@dimen/default_view_margin"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        app:description="@string/cell_example_description"
-        app:orientation="vertical"
-        app:title="@string/cell_example_title" />
+        app:fluentUiDescription="@string/cell_example_description"
+        app:fluentUiOrientation="vertical"
+        app:fluentUiTitle="@string/cell_example_title" />
 
     <LinearLayout
         android:layout_width="match_parent"

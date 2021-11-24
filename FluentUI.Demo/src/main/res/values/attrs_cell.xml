@@ -5,10 +5,10 @@
   -->
 
 <resources>
-    <declare-styleable name="Cell">
-        <attr name="fluentUiListTitle" format="string"/>
-        <attr name="description" format="string"/>
-        <attr name="orientation" format="enum">
+    <declare-styleable name="FluentUiCell">
+        <attr name="fluentUiTitle" format="string"/>
+        <attr name="fluentUiDescription" format="string"/>
+        <attr name="fluentUiOrientation" format="enum">
             <enum name="horizontal" value="0"/>
             <enum name="vertical" value="1"/>
         </attr>

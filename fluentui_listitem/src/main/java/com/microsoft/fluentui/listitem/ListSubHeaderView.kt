@@ -102,12 +102,12 @@ class ListSubHeaderView : TemplateView {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiListSubHeaderView)
 
-        title = styledAttrs.getString(R.styleable.FluentUiListSubHeaderView_fluentUiListTitle) ?: ""
+        title = styledAttrs.getString(R.styleable.FluentUiListSubHeaderView_fluentUiTitle) ?: ""
 
-        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUiListTitleColor, DEFAULT_TITLE_COLOR.ordinal)
+        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUiTitleColor, DEFAULT_TITLE_COLOR.ordinal)
         titleColor = TitleColor.values()[titleColorOrdinal]
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUiListTitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUiTitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
 
         styledAttrs.recycle()

@@ -6,11 +6,11 @@
 
 <resources>
     <declare-styleable name="FluentUiActionBarLayout">
-        <attr name="fluentUiActionBarType" format="enum">
+        <attr name="fluentUiType" format="enum">
             <enum name="basic" value="0"/>
             <enum name="icon" value="1"/>
             <enum name="carousel" value="2"/>
         </attr>
-        <attr name="fluentUiActionBarViewPager" format="reference"/>
+        <attr name="fluentUiViewPager" format="reference"/>
     </declare-styleable>
 </resources>
