@@ -25,9 +25,9 @@
         android:layout_height="wrap_content"
         app:fluentUiAvatarSize="xxlarge"
         app:fluentUiEmail="@string/persona_email_kat_larsson"
-        app:footer="@string/persona_footer"
+        app:fluentUiFooter="@string/persona_footer"
         app:fluentUiName="@string/persona_name_kat_larsson"
-        app:subtitle="@string/persona_email_kat_larsson" />
+        app:fluentUiSubtitle="@string/persona_email_kat_larsson" />
 
     <TextView
         style="@style/Widget.DemoSubHeader"
@@ -45,7 +45,7 @@
         app:fluentUiAvatarSize="large"
         app:fluentUiEmail="@string/persona_email_mauricio_august"
         app:fluentUiName="@string/persona_name_mauricio_august"
-        app:subtitle="@string/persona_email_mauricio_august" />
+        app:fluentUiSubtitle="@string/persona_email_mauricio_august" />
 
     <TextView
         style="@style/Widget.DemoSubHeader"

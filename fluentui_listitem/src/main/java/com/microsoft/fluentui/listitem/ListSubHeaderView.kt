@@ -14,7 +14,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.setContentAndUpdateVisibility
@@ -101,14 +100,14 @@ class ListSubHeaderView : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ListItem), attrs, defStyleAttr) {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ListSubHeaderView)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiListSubHeaderView)
 
-        title = styledAttrs.getString(R.styleable.ListSubHeaderView_title) ?: ""
+        title = styledAttrs.getString(R.styleable.FluentUiListSubHeaderView_fluentUiTitle) ?: ""
 
-        val titleColorOrdinal = styledAttrs.getInt(R.styleable.ListSubHeaderView_titleColor, DEFAULT_TITLE_COLOR.ordinal)
+        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUiTitleColor, DEFAULT_TITLE_COLOR.ordinal)
         titleColor = TitleColor.values()[titleColorOrdinal]
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListSubHeaderView_titleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUiTitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
 
         styledAttrs.recycle()
@@ -117,7 +116,7 @@ class ListSubHeaderView : TemplateView {
     // Template
 
     override val templateId: Int
-        get() = R.layout.view_list_sub_header
+        get() = R.layout.fluent_ui_view_list_sub_header
 
     private var titleView: TextView? = null
     private var customAccessoryViewContainer: RelativeLayout? = null
@@ -125,8 +124,8 @@ class ListSubHeaderView : TemplateView {
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
 
-        titleView = findViewInTemplateById(R.id.list_sub_header_title)
-        customAccessoryViewContainer = findViewInTemplateById(R.id.list_sub_header_custom_accessory_view_container)
+        titleView = findViewInTemplateById(R.id.fluent_ui_list_sub_header_title)
+        customAccessoryViewContainer = findViewInTemplateById(R.id.fluent_ui_list_sub_header_custom_accessory_view_container)
 
         updateTemplate()
     }

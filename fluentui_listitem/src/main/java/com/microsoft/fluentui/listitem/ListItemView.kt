@@ -15,7 +15,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.setContentAndUpdateVisibility
 import com.microsoft.fluentui.view.TemplateView
@@ -240,7 +239,7 @@ open class ListItemView : TemplateView {
      * The default drawable has a ripple animation for selection state.
      */
     @DrawableRes
-    var background: Int = R.drawable.list_item_view_background
+    var background: Int = R.drawable.fluent_ui_list_item_view_background
         set(value) {
             if (field == value)
                 return
@@ -287,27 +286,27 @@ open class ListItemView : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ListItem), attrs, defStyleAttr) {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ListItemView)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiListItemView)
 
-        title = styledAttrs.getString(R.styleable.ListItemView_title) ?: ""
-        subtitle = styledAttrs.getString(R.styleable.ListItemView_subtitle) ?: ""
-        footer = styledAttrs.getString(R.styleable.ListItemView_footer) ?: ""
+        title = styledAttrs.getString(R.styleable.FluentUiListItemView_fluentUiTitle) ?: ""
+        subtitle = styledAttrs.getString(R.styleable.FluentUiListItemView_fluentUiSubtitle) ?: ""
+        footer = styledAttrs.getString(R.styleable.FluentUiListItemView_fluentUiFooter) ?: ""
 
-        titleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_titleMaxLines, DEFAULT_MAX_LINES)
-        subtitleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_subtitleMaxLines, DEFAULT_MAX_LINES)
-        footerMaxLines = styledAttrs.getInt(R.styleable.ListItemView_footerMaxLines, DEFAULT_MAX_LINES)
+        titleMaxLines = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiTitleMaxLines, DEFAULT_MAX_LINES)
+        subtitleMaxLines = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiSubtitleMaxLines, DEFAULT_MAX_LINES)
+        footerMaxLines = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiFooterMaxLines, DEFAULT_MAX_LINES)
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_titleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiTitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
-        val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_subtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiSubtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         subtitleTruncateAt = TextUtils.TruncateAt.values()[subtitleTruncateAtOrdinal]
-        val footerTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_footerTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val footerTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiFooterTruncateAt, DEFAULT_TRUNCATION.ordinal)
         footerTruncateAt = TextUtils.TruncateAt.values()[footerTruncateAtOrdinal]
 
-        val layoutDensityOrdinal = styledAttrs.getInt(R.styleable.ListItemView_layoutDensity, DEFAULT_LAYOUT_DENSITY.ordinal)
+        val layoutDensityOrdinal = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiLayoutDensity, DEFAULT_LAYOUT_DENSITY.ordinal)
         layoutDensity = LayoutDensity.values()[layoutDensityOrdinal]
 
-        val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.ListItemView_customViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
+        val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.FluentUiListItemView_fluentUiCustomViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
         customViewSize = CustomViewSize.values()[customViewSizeOrdinal]
 
         styledAttrs.recycle()
@@ -316,7 +315,7 @@ open class ListItemView : TemplateView {
     // Template
 
     override val templateId: Int
-        get() = R.layout.view_list_item
+        get() = R.layout.fluent_ui_view_list_item
 
     private var titleView: TextView? = null
     private var subtitleView: TextView? = null
@@ -331,15 +330,15 @@ open class ListItemView : TemplateView {
     override fun onTemplateLoaded() {
         super.onTemplateLoaded()
 
-        titleView = findViewInTemplateById(R.id.list_item_title)
-        subtitleView = findViewInTemplateById(R.id.list_item_subtitle)
-        footerView = findViewInTemplateById(R.id.list_item_footer)
+        titleView = findViewInTemplateById(R.id.fluent_ui_list_item_title)
+        subtitleView = findViewInTemplateById(R.id.fluent_ui_list_item_subtitle)
+        footerView = findViewInTemplateById(R.id.fluent_ui_list_item_footer)
 
         container = findViewInTemplateById(R.id.list_item)
-        customViewContainer = findViewInTemplateById(R.id.list_item_custom_view_container)
-        customAccessoryViewContainer = findViewInTemplateById(R.id.list_item_custom_accessory_view_container)
-        customSecondarySubtitleViewContainer = findViewInTemplateById(R.id.list_item_custom_secondary_subtitle_view_container)
-        textViewContainer = findViewInTemplateById(R.id.list_item_text_view_container)
+        customViewContainer = findViewInTemplateById(R.id.fluent_ui_list_item_custom_view_container)
+        customAccessoryViewContainer = findViewInTemplateById(R.id.fluent_ui_list_item_custom_accessory_view_container)
+        customSecondarySubtitleViewContainer = findViewInTemplateById(R.id.fluent_ui_list_item_custom_secondary_subtitle_view_container)
+        textViewContainer = findViewInTemplateById(R.id.fluent_ui_list_item_text_view_container)
 
         updateTemplate()
     }

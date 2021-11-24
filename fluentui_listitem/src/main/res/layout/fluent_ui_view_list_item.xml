@@ -16,32 +16,32 @@
     android:paddingStart="@dimen/fluentui_list_item_horizontal_margin_regular">
 
     <RelativeLayout
-        android:id="@+id/list_item_custom_view_container"
+        android:id="@+id/fluent_ui_list_item_custom_view_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:id="@+id/list_item_text_view_container"
+        android:id="@+id/fluent_ui_list_item_text_view_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:textDirection="locale">
 
         <TextView
-            android:id="@+id/list_item_title"
+            android:id="@+id/fluent_ui_list_item_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.FluentUI.ListItemTitle"
             tools:text="Title" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/list_item_subtitle_view_container"
+            android:id="@+id/fluent_ui_list_item_subtitle_view_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fluentui_list_item_text_vertical_spacing">
 
             <TextView
-                android:id="@+id/list_item_subtitle"
+                android:id="@+id/fluent_ui_list_item_subtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.FluentUI.ListItemSubtitle"
@@ -56,7 +56,7 @@
                 tools:visibility="visible"/>
 
             <RelativeLayout
-                android:id="@+id/list_item_custom_secondary_subtitle_view_container"
+                android:id="@+id/fluent_ui_list_item_custom_secondary_subtitle_view_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@+id/list_item_subtitle"
@@ -67,7 +67,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/list_item_footer"
+            android:id="@+id/fluent_ui_list_item_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/fluentui_list_item_text_vertical_spacing"
@@ -78,7 +78,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/list_item_custom_accessory_view_container"
+        android:id="@+id/fluent_ui_list_item_custom_accessory_view_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"/>

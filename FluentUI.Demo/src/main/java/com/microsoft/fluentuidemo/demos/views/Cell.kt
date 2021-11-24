@@ -50,7 +50,7 @@ class Cell : TemplateView {
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         if (attrs != null) {
             val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.Cell)
-            title = styledAttrs.getString(R.styleable.Cell_title)
+            title = styledAttrs.getString(R.styleable.Cell_fluentUiTitle)
             description = styledAttrs.getString(R.styleable.Cell_description)
             val orientationOrdinal = styledAttrs.getInt(R.styleable.Cell_orientation, DEFAULT_ORIENTATION.ordinal)
             orientation = CellOrientation.values()[orientationOrdinal]
