@@ -6,13 +6,13 @@
 
 <resources>
     <declare-styleable name="ListItemView">
-        <attr name="title" format="string" />
+        <attr name="fluentUiListTitle" format="string" />
         <attr name="subtitle" format="string" />
         <attr name="footer" format="string" />
         <attr name="titleMaxLines" format="integer" />
         <attr name="subtitleMaxLines" format="integer" />
         <attr name="footerMaxLines" format="integer" />
-        <attr name="titleTruncateAt" format="enum">
+        <attr name="fluentUiListTitleTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />

@@ -15,7 +15,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.setContentAndUpdateVisibility
 import com.microsoft.fluentui.view.TemplateView
@@ -289,7 +288,7 @@ open class ListItemView : TemplateView {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ListItemView)
 
-        title = styledAttrs.getString(R.styleable.ListItemView_title) ?: ""
+        title = styledAttrs.getString(R.styleable.ListItemView_fluentUiListTitle) ?: ""
         subtitle = styledAttrs.getString(R.styleable.ListItemView_subtitle) ?: ""
         footer = styledAttrs.getString(R.styleable.ListItemView_footer) ?: ""
 
@@ -297,7 +296,7 @@ open class ListItemView : TemplateView {
         subtitleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_subtitleMaxLines, DEFAULT_MAX_LINES)
         footerMaxLines = styledAttrs.getInt(R.styleable.ListItemView_footerMaxLines, DEFAULT_MAX_LINES)
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_titleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUiListTitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
         val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_subtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         subtitleTruncateAt = TextUtils.TruncateAt.values()[subtitleTruncateAtOrdinal]
