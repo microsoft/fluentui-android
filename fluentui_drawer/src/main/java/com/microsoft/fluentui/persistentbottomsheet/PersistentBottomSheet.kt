@@ -55,6 +55,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var shouldInterceptTouch = false
     private var isDrawerHandleVisible = true
     private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
+    private var focusDrawerHandleInAccessibility = false
 
 
     init {
@@ -246,25 +247,35 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         changePeekHeight(-persistentSheetBehavior.peekHeight + itemLayoutParam.defaultPeekHeight)
     }
 
-    fun collapse() {
+    fun collapse(focusDrawerHandle: Boolean = false) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        focusDrawerHandleInAccessibility = focusDrawerHandle
+        if(focusDrawerHandle) {
+            persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        }
     }
 
-    fun expand() {
+    fun expand(focusDrawerHandle: Boolean = false) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-       persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        focusDrawerHandleInAccessibility = focusDrawerHandle
+        if(focusDrawerHandle) {
+            persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        }
     }
 
     fun hide(){
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
-    fun show(expanded: Boolean = false) {
+    fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = false) {
         if (expanded) {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         } else {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+        focusDrawerHandleInAccessibility = focusDrawerHandle
+        if(focusDrawerHandle) {
+            persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
     }
 
@@ -305,7 +316,9 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         }
         currentStateContentDescription?.apply{
             persistentSheetBinding.sheetDrawerHandle.contentDescription = this
-            persistentSheetBinding.sheetDrawerHandle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            if(focusDrawerHandleInAccessibility) {
+                persistentSheetBinding.sheetDrawerHandle.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
+            }
         }
     }
 

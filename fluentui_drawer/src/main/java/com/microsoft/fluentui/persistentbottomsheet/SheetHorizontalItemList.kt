@@ -256,11 +256,11 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
 }
 
 
-class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null) {
+class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null, var contentDescription: String = "") {
 
     // just a  convenient constructor
     @JvmOverloads
-    constructor(id: Int, title: String = "", bitmap: Bitmap) : this(id, title, NO_ID, null, bitmap)
+    constructor(id: Int, title: String = "", bitmap: Bitmap) : this(id, title, NO_ID, null, bitmap, "")
 
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)
@@ -277,6 +277,7 @@ class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @
         if (drawable != other.drawable) return false
         if (tint != other.tint) return false
         if (bitmap != other.bitmap) return false
+        if (contentDescription != other.contentDescription) return false
 
         return true
     }
