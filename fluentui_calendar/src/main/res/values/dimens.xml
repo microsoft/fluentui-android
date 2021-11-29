@@ -12,6 +12,7 @@
     <dimen name="fluentui_calendar_month_overlay_text_size">20sp</dimen>
     <dimen name="fluentui_calendar_weeks_max_width">336dp</dimen>
     <dimen name="fluentui_calendar_day_selection_size">36dp</dimen>
+    <dimen name="fluentui_calendar_day_keyboard_focus_stroke_width">1dp</dimen>
 
     <!--DatePickerFragment-->
 

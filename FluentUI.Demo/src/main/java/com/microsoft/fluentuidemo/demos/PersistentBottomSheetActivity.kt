@@ -217,12 +217,12 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         sheet_vertical_item_list_1.adapter = verticalListAdapter
 
         show_persistent_bottom_sheet_button.setOnClickListener {
-            currentSheet.expand()
+            currentSheet.expand(focusDrawerHandle = true)
         }
 
         collapse_persistent_bottom_sheet_button.setOnClickListener {
             if (currentSheet.getBottomSheetBehaviour().state == BottomSheetBehavior.STATE_HIDDEN) {
-                currentSheet.show()
+                currentSheet.show(focusDrawerHandle = true)
                 collapse_persistent_bottom_sheet_button.text = getString(R.string.collapse_persistent_sheet_button)
             } else {
                 currentSheet.hide()
@@ -331,8 +331,8 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
             R.id.bottom_sheet_item_flag -> {
                 showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
-                item.title = item.title + "clicked"
                 item.drawable = R.drawable.ic_flag_24_filled
+                item.contentDescription = resources.getString(R.string.bottom_sheet_item_flag_toast)
                 currentSheet.refreshSheetContent()
                 return
             }
