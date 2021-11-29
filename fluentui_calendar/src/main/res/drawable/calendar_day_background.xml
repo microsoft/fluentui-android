@@ -3,6 +3,8 @@
         <shape
             android:shape="rectangle">
             <solid android:color="@color/fluentui_gray_100"/>
+            <stroke android:color="?attr/fluentuiCalendarSelectedColor"
+                android:width="@dimen/fluentui_calendar_day_keyboard_focus_stroke_width"/>
         </shape>
     </item>
     <item android:drawable="@drawable/ms_ripple_transparent_background"/>
