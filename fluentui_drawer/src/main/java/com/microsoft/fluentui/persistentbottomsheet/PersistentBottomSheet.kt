@@ -290,18 +290,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         updateSheetContent()
     }
 
-    fun updateBottomSheetLayoutParams(peekHeight: Int = itemLayoutParam.defaultPeekHeight,
-                                      itemInRow: Int = itemLayoutParam.itemInRow,
-                                      @StyleRes horizontalTextAppearance: Int = itemLayoutParam.horizontalTextAppearance,
-                                      @StyleRes verticalItemTextAppearance: Int = itemLayoutParam.verticalItemTextAppearance,
-                                      @StyleRes verticalSubTextAppearance: Int = itemLayoutParam.verticalSubTextAppearance,
-                                      @StyleRes headerTextAppearance: Int = itemLayoutParam.headerTextAppearance)  {
-        itemLayoutParam = BottomSheetParam.ItemLayoutParam(peekHeight, itemInRow, horizontalTextAppearance, verticalItemTextAppearance,verticalSubTextAppearance, headerTextAppearance)
-        persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
-        updateSheetContent()
-    }
-
-
     /**
      * Way to set content-description can be handled in better way
      *
