@@ -70,12 +70,17 @@ class SheetHorizontalItemView: TemplateView {
 
     private fun updateTitleView() {
         sheetItemTitle.text = title
-        if (title.isNotEmpty()){
-            sheetItemTitle.visibility =  View.VISIBLE
-            mainContainer.contentDescription = sheetItemTitle.text
-        } else{
-            sheetItemTitle.visibility = View.GONE
-            mainContainer.contentDescription = customView?.contentDescription
+        if (mSheetItem != null && mSheetItem?.contentDescription!!.isNotEmpty()) {
+            mainContainer.contentDescription = mSheetItem?.contentDescription
+        }
+        else {
+            if (title.isNotEmpty()) {
+                sheetItemTitle.visibility = View.VISIBLE
+                mainContainer.contentDescription = sheetItemTitle.text
+            } else {
+                sheetItemTitle.visibility = View.GONE
+                mainContainer.contentDescription = customView?.contentDescription
+            }
         }
         sheetItemTitle.importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
     }
