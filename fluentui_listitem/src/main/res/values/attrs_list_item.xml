@@ -6,35 +6,35 @@
 
 <resources>
     <declare-styleable name="ListItemView">
-        <attr name="fluentUiTitle" format="string" />
-        <attr name="fluentUiSubtitle" format="string" />
-        <attr name="fluentUiFooter" format="string" />
-        <attr name="fluentUiTitleMaxLines" format="integer" />
-        <attr name="fluentUiSubtitleMaxLines" format="integer" />
-        <attr name="fluentUiFooterMaxLines" format="integer" />
-        <attr name="fluentUiTitleTruncateAt" format="enum">
+        <attr name="fluentUITitle" format="string" />
+        <attr name="fluentUISubtitle" format="string" />
+        <attr name="fluentUIFooter" format="string" />
+        <attr name="fluentUITitleMaxLines" format="integer" />
+        <attr name="fluentUISubtitleMaxLines" format="integer" />
+        <attr name="fluentUIFooterMaxLines" format="integer" />
+        <attr name="fluentUITitleTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
             <enum name="marquee" value="3" />
         </attr>
-        <attr name="fluentUiSubtitleTruncateAt" format="enum">
+        <attr name="fluentUISubtitleTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
             <enum name="marquee" value="3" />
         </attr>
-        <attr name="fluentUiFooterTruncateAt" format="enum">
+        <attr name="fluentUIFooterTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
             <enum name="marquee" value="3" />
         </attr>
-        <attr name="fluentUiLayoutDensity" format="enum">
+        <attr name="fluentUILayoutDensity" format="enum">
             <enum name="regular" value="0" />
             <enum name="dense" value="1" />
         </attr>
-        <attr name="fluentUiCustomViewSize" format="enum">
+        <attr name="fluentUICustomViewSize" format="enum">
             <enum name="small" value="0" />
             <enum name="medium" value="1" />
             <enum name="large" value="2" />

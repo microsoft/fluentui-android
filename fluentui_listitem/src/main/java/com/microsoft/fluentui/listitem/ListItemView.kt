@@ -288,25 +288,25 @@ open class ListItemView : TemplateView {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ListItemView)
 
-        title = styledAttrs.getString(R.styleable.ListItemView_fluentUiTitle) ?: ""
-        subtitle = styledAttrs.getString(R.styleable.ListItemView_fluentUiSubtitle) ?: ""
-        footer = styledAttrs.getString(R.styleable.ListItemView_fluentUiFooter) ?: ""
+        title = styledAttrs.getString(R.styleable.ListItemView_fluentUITitle) ?: ""
+        subtitle = styledAttrs.getString(R.styleable.ListItemView_fluentUISubtitle) ?: ""
+        footer = styledAttrs.getString(R.styleable.ListItemView_fluentUIFooter) ?: ""
 
-        titleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_fluentUiTitleMaxLines, DEFAULT_MAX_LINES)
-        subtitleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_fluentUiSubtitleMaxLines, DEFAULT_MAX_LINES)
-        footerMaxLines = styledAttrs.getInt(R.styleable.ListItemView_fluentUiFooterMaxLines, DEFAULT_MAX_LINES)
+        titleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_fluentUITitleMaxLines, DEFAULT_MAX_LINES)
+        subtitleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_fluentUISubtitleMaxLines, DEFAULT_MAX_LINES)
+        footerMaxLines = styledAttrs.getInt(R.styleable.ListItemView_fluentUIFooterMaxLines, DEFAULT_MAX_LINES)
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUiTitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUITitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
-        val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUiSubtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUISubtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         subtitleTruncateAt = TextUtils.TruncateAt.values()[subtitleTruncateAtOrdinal]
-        val footerTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUiFooterTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val footerTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUIFooterTruncateAt, DEFAULT_TRUNCATION.ordinal)
         footerTruncateAt = TextUtils.TruncateAt.values()[footerTruncateAtOrdinal]
 
-        val layoutDensityOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUiLayoutDensity, DEFAULT_LAYOUT_DENSITY.ordinal)
+        val layoutDensityOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUILayoutDensity, DEFAULT_LAYOUT_DENSITY.ordinal)
         layoutDensity = LayoutDensity.values()[layoutDensityOrdinal]
 
-        val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUiCustomViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
+        val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentUICustomViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
         customViewSize = CustomViewSize.values()[customViewSizeOrdinal]
 
         styledAttrs.recycle()

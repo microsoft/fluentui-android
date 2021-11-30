@@ -7,7 +7,7 @@
 <com.microsoft.fluentui.listitem.ListItemView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:fluentUiCustomViewSize="small"
-    app:fluentUiLayoutDensity="dense"
+    app:fluentUICustomViewSize="small"
+    app:fluentUILayoutDensity="dense"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />

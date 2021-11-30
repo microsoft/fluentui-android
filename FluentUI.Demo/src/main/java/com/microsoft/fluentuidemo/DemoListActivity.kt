@@ -44,7 +44,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         demo_list.adapter = DemoListAdapter()
         demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
-        Initializer.init(application)
+        //Initializer.init(application)
     }
 
     private fun setupAppBar() {
