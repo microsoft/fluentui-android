@@ -100,14 +100,14 @@ class ListSubHeaderView : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ListItem), attrs, defStyleAttr) {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiListSubHeaderView)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUIListSubHeaderView)
 
-        title = styledAttrs.getString(R.styleable.FluentUiListSubHeaderView_fluentUITitle) ?: ""
+        title = styledAttrs.getString(R.styleable.FluentUIListSubHeaderView_fluentUITitle) ?: ""
 
-        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUITitleColor, DEFAULT_TITLE_COLOR.ordinal)
+        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUIListSubHeaderView_fluentUITitleColor, DEFAULT_TITLE_COLOR.ordinal)
         titleColor = TitleColor.values()[titleColorOrdinal]
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUiListSubHeaderView_fluentUITitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUIListSubHeaderView_fluentUITitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
 
         styledAttrs.recycle()

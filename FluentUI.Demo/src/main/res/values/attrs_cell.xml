@@ -5,7 +5,7 @@
   -->
 
 <resources>
-    <declare-styleable name="FluentUiCell">
+    <declare-styleable name="FluentUICell">
         <attr name="fluentUITitle" format="string"/>
         <attr name="fluentUIDescription" format="string"/>
         <attr name="fluentUIOrientation" format="enum">

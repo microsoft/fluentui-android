@@ -49,10 +49,10 @@ class Cell : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
         if (attrs != null) {
-            val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUiCell)
-            title = styledAttrs.getString(R.styleable.FluentUiCell_fluentUITitle)
-            description = styledAttrs.getString(R.styleable.FluentUiCell_fluentUIDescription)
-            val orientationOrdinal = styledAttrs.getInt(R.styleable.FluentUiCell_fluentUIOrientation, DEFAULT_ORIENTATION.ordinal)
+            val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUICell)
+            title = styledAttrs.getString(R.styleable.FluentUICell_fluentUITitle)
+            description = styledAttrs.getString(R.styleable.FluentUICell_fluentUIDescription)
+            val orientationOrdinal = styledAttrs.getInt(R.styleable.FluentUICell_fluentUIOrientation, DEFAULT_ORIENTATION.ordinal)
             orientation = CellOrientation.values()[orientationOrdinal]
             styledAttrs.recycle()
         }

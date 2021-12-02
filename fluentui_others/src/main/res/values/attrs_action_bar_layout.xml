@@ -5,7 +5,7 @@
   -->
 
 <resources>
-    <declare-styleable name="FluentUiActionBarLayout">
+    <declare-styleable name="FluentUIActionBarLayout">
         <attr name="fluentUIType" format="enum">
             <enum name="basic" value="0"/>
             <enum name="icon" value="1"/>
