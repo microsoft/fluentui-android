@@ -55,7 +55,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var shouldInterceptTouch = false
     private var isDrawerHandleVisible = true
     private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
-    private var focusDrawerHandleInAccessibility = false
+    private var focusDrawerHandleInAccessibility = true
 
 
     init {
@@ -247,7 +247,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         changePeekHeight(-persistentSheetBehavior.peekHeight + itemLayoutParam.defaultPeekHeight)
     }
 
-    fun collapse(focusDrawerHandle: Boolean = false) {
+    fun collapse(focusDrawerHandle: Boolean = true) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
@@ -255,7 +255,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         }
     }
 
-    fun expand(focusDrawerHandle: Boolean = false) {
+    fun expand(focusDrawerHandle: Boolean = true) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
@@ -267,7 +267,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
-    fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = false) {
+    fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = true) {
         if (expanded) {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         } else {
