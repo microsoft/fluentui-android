@@ -52,7 +52,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var expandedStateDrawerHandleContentDescription : String? = null
 
     private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
-    private var shouldInterceptTouch = false
     private var isDrawerHandleVisible = true
     private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
     private var focusDrawerHandleInAccessibility = true
