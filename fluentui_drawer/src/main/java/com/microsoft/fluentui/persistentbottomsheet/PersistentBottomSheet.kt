@@ -90,8 +90,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
             val colorOffset = (slideOffset * FADE_OUT_THRESHOLD).coerceIn(0f,255f)
             persistentSheetBinding.persistentBottomSheetOutlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, colorOffset.toInt()))
+            persistentSheetBinding.persistentBottomSheetOutlined.setOnClickListener {
+                if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                    persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                }
+            }
         }
-
     }
 
     override val templateId: Int
@@ -166,33 +170,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheetBehavior.peekHeight = newY
     }
 
-    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
-        val viewRect = Rect()
-        persistentSheetBinding.persistentBottomSheet.getGlobalVisibleRect(viewRect)
-
-        if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            if (!viewRect.contains(ev!!.rawX.toInt(), ev.rawY.toInt())) {
-                persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                shouldInterceptTouch = true
-                return true
-            }
-        }
-        shouldInterceptTouch = false
-        return super.onInterceptTouchEvent(ev)
-    }
-
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         if (event?.keyCode == KeyEvent.KEYCODE_ESCAPE) {
             event.dispatch(this, null, null)
             return true
         }
         return super.dispatchKeyEvent(event)
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if (shouldInterceptTouch)
-            return true
-        return super.onTouchEvent(event)
     }
 
     internal fun getSheetBehavior(): BottomSheetBehavior<View> {
