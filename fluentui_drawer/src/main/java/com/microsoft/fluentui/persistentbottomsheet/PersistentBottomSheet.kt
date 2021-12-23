@@ -6,19 +6,15 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
-import android.graphics.Rect
+import android.os.Build
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.KeyEvent
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
-import androidx.annotation.ColorRes
-import androidx.annotation.LayoutRes
-import androidx.annotation.RestrictTo
-import androidx.annotation.StyleRes
+import androidx.annotation.*
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.ColorUtils
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -89,11 +85,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
             val colorOffset = (slideOffset * FADE_OUT_THRESHOLD).coerceIn(0f,255f)
             persistentSheetBinding.persistentBottomSheetOutlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, colorOffset.toInt()))
-            persistentSheetBinding.persistentBottomSheetOutlined.setOnClickListener {
-                if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-                    persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                }
-            }
         }
     }
 
@@ -239,25 +230,39 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun expand(focusDrawerHandle: Boolean = true) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        setClickListenerForDismissal()
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
     }
 
-    fun hide(){
+    fun hide() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = true) {
         if (expanded) {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            setClickListenerForDismissal()
         } else {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
         }
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        }
+    }
+
+    private fun setClickListenerForDismissal() {
+        persistentSheetBinding.persistentBottomSheetOutlined.setOnClickListener {
+            if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+            persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                persistentSheetBinding.persistentBottomSheetOutlined.focusable = NOT_FOCUSABLE
+            }
         }
     }
 
