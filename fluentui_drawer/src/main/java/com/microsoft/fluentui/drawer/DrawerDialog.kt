@@ -134,6 +134,14 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         Handler().postDelayed(::expand, expandDelayMilliseconds)
     }
 
+    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+        if(event?.action == KeyEvent.ACTION_UP  &&  event?.keyCode == KeyEvent.KEYCODE_ESCAPE){
+            dismissDialog()
+            return true
+        }
+        return super.dispatchKeyEvent(event)
+    }
+
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         var topMargin = 0
