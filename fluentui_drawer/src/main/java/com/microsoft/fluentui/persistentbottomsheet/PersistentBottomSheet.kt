@@ -6,12 +6,11 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
-import android.graphics.Rect
+import android.os.Build
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.KeyEvent
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
@@ -52,7 +51,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
     private var expandedStateDrawerHandleContentDescription : String? = null
 
     private var colorBackground = ContextCompat.getColor(context, android.R.color.transparent)
-    private var shouldInterceptTouch = false
     private var isDrawerHandleVisible = true
     private var sheetContainer: PersistentBottomSheetContentViewProvider.SheetContainerInfo? = null
     private var focusDrawerHandleInAccessibility = true
@@ -91,7 +89,6 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             val colorOffset = (slideOffset * FADE_OUT_THRESHOLD).coerceIn(0f,255f)
             persistentSheetBinding.persistentBottomSheetOutlined.setBackgroundColor(ColorUtils.setAlphaComponent(colorBackground, colorOffset.toInt()))
         }
-
     }
 
     override val templateId: Int
@@ -166,33 +163,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheetBehavior.peekHeight = newY
     }
 
-    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
-        val viewRect = Rect()
-        persistentSheetBinding.persistentBottomSheet.getGlobalVisibleRect(viewRect)
-
-        if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            if (!viewRect.contains(ev!!.rawX.toInt(), ev.rawY.toInt())) {
-                persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                shouldInterceptTouch = true
-                return true
-            }
-        }
-        shouldInterceptTouch = false
-        return super.onInterceptTouchEvent(ev)
-    }
-
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         if (event?.keyCode == KeyEvent.KEYCODE_ESCAPE) {
             event.dispatch(this, null, null)
             return true
         }
         return super.dispatchKeyEvent(event)
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if (shouldInterceptTouch)
-            return true
-        return super.onTouchEvent(event)
     }
 
     internal fun getSheetBehavior(): BottomSheetBehavior<View> {
@@ -249,6 +225,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun collapse(focusDrawerHandle: Boolean = true) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        makeOutlineNonClickable()
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
@@ -257,25 +234,44 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun expand(focusDrawerHandle: Boolean = true) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        setClickListenerForDismissal()
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
         }
     }
 
-    fun hide(){
+    fun hide() {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     fun show(expanded: Boolean = false, focusDrawerHandle: Boolean = true) {
         if (expanded) {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            setClickListenerForDismissal()
         } else {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            makeOutlineNonClickable()
         }
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
+        }
+    }
+
+    private fun setClickListenerForDismissal() {
+        persistentSheetBinding.persistentBottomSheetOutlined.setOnClickListener {
+            if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            }
+            makeOutlineNonClickable()
+        }
+    }
+
+    private fun makeOutlineNonClickable() {
+        persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            persistentSheetBinding.persistentBottomSheetOutlined.focusable = NOT_FOCUSABLE
         }
     }
 
