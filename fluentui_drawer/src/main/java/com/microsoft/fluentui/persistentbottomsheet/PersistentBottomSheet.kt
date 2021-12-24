@@ -225,6 +225,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
 
     fun collapse(focusDrawerHandle: Boolean = true) {
         persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        makeOutlineNonClickable()
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
             persistentSheetBinding.sheetDrawerHandle.requestFocus()
@@ -250,6 +251,7 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             setClickListenerForDismissal()
         } else {
             persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            makeOutlineNonClickable()
         }
         focusDrawerHandleInAccessibility = focusDrawerHandle
         if(focusDrawerHandle) {
@@ -262,10 +264,14 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
                 persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             }
-            persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                persistentSheetBinding.persistentBottomSheetOutlined.focusable = NOT_FOCUSABLE
-            }
+            makeOutlineNonClickable()
+        }
+    }
+
+    private fun makeOutlineNonClickable() {
+        persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            persistentSheetBinding.persistentBottomSheetOutlined.focusable = NOT_FOCUSABLE
         }
     }
 
