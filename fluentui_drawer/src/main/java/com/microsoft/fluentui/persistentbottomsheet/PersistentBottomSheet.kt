@@ -6,12 +6,10 @@
 package com.microsoft.fluentui.persistentbottomsheet
 
 import android.content.Context
-import android.graphics.Rect
 import android.transition.ChangeBounds
 import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.KeyEvent
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityEvent
@@ -80,9 +78,20 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             if (newState == BottomSheetBehavior.STATE_EXPANDED) {
                 persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
+                persistentSheetBinding.persistentBottomSheetOutlined.isClickable = true
+                persistentSheetBinding.persistentBottomSheetOutlined.isFocusable = false
+                persistentSheetBinding.persistentBottomSheetOutlined.setOnClickListener {
+                    persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+                }
             }
-            if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
+            else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                 persistentSheetBinding.scrollContainer.smoothScrollTo(0, 0)
+                persistentSheetBinding.persistentBottomSheetOutlined.isFocusable = false
+                persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
+            }
+            else if(newState == BottomSheetBehavior.STATE_HIDDEN) {
+                persistentSheetBinding.persistentBottomSheetOutlined.isFocusable = false
+                persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
             }
             setDrawerHandleContentDescription(collapsedStateDrawerHandleContentDescription,expandedStateDrawerHandleContentDescription)
         }
@@ -166,33 +175,12 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         persistentSheetBehavior.peekHeight = newY
     }
 
-    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
-        val viewRect = Rect()
-        persistentSheetBinding.persistentBottomSheet.getGlobalVisibleRect(viewRect)
-
-        if (persistentSheetBehavior.state == BottomSheetBehavior.STATE_EXPANDED) {
-            if (!viewRect.contains(ev!!.rawX.toInt(), ev.rawY.toInt())) {
-                persistentSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                shouldInterceptTouch = true
-                return true
-            }
-        }
-        shouldInterceptTouch = false
-        return super.onInterceptTouchEvent(ev)
-    }
-
     override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
         if (event?.keyCode == KeyEvent.KEYCODE_ESCAPE) {
             event.dispatch(this, null, null)
             return true
         }
         return super.dispatchKeyEvent(event)
-    }
-
-    override fun onTouchEvent(event: MotionEvent?): Boolean {
-        if (shouldInterceptTouch)
-            return true
-        return super.onTouchEvent(event)
     }
 
     internal fun getSheetBehavior(): BottomSheetBehavior<View> {
