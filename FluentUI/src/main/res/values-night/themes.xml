@@ -77,7 +77,7 @@
         <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiDrawerHandleColor">@color/fluentui_gray_500</item>
 
-        <!--ListItemView-->
+        <!--FluentUIListItemView-->
         <item name="fluentuiListItemTitleColor">@color/fluentui_gray_100</item>
 
         <!--NumberPicker-->

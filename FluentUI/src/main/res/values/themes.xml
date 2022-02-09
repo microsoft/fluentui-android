@@ -138,7 +138,7 @@
         <item name="fluentuiDrawerBackgroundColor">?attr/fluentuiBackgroundColor</item>
         <item name="fluentuiDrawerHandleColor">@color/fluentui_gray_100</item>
 
-        <!--ListItemView-->
+        <!--FluentUIListItemView-->
         <item name="fluentuiListItemBackgroundColor">?attr/fluentuiBackgroundColor</item>
         <item name="fluentuiListItemTitleColor">?attr/fluentuiForegroundColor</item>
         <item name="fluentuiListItemSubtitleColor">?attr/fluentuiForegroundSecondaryColor</item>
@@ -146,7 +146,7 @@
         <item name="fluentuiListItemFooterColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiListItemRippleColor">?attr/fluentuiBackgroundPressedColor</item>
 
-        <!--ListSubHeader-->
+        <!--FluentUIListSubHeader-->
         <item name="fluentuiListSubHeaderTitlePrimaryColor">?attr/colorPrimary</item>
         <item name="fluentuiListSubHeaderTitleSecondaryColor">?attr/fluentuiForegroundColor</item>
         <item name="fluentuiListSubHeaderTitleTertiaryColor">?attr/fluentuiForegroundSecondaryColor</item>

@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         app:avatarSize="xxlarge"
         app:email="@string/persona_email_kat_larsson"
-        app:footer="@string/persona_footer"
+        app:fluentuiListItemView_footer="@string/persona_footer"
         app:name="@string/persona_name_kat_larsson"
         app:subtitle="@string/persona_email_kat_larsson" />
 

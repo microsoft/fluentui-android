@@ -15,7 +15,6 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
-import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.setContentAndUpdateVisibility
 import com.microsoft.fluentui.view.TemplateView
@@ -287,27 +286,27 @@ open class ListItemView : TemplateView {
     @JvmOverloads
     constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_ListItem), attrs, defStyleAttr) {
         // TODO: Add need examples in the demo that tests these attributes. Can inflate a layout in the adapter.
-        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.ListItemView)
+        val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.FluentUIListItemView)
 
-        title = styledAttrs.getString(R.styleable.ListItemView_title) ?: ""
-        subtitle = styledAttrs.getString(R.styleable.ListItemView_subtitle) ?: ""
-        footer = styledAttrs.getString(R.styleable.ListItemView_footer) ?: ""
+        title = styledAttrs.getString(R.styleable.FluentUIListItemView_fluentuiListItemView_title) ?: ""
+        subtitle = styledAttrs.getString(R.styleable.FluentUIListItemView_fluentuiListItemView_subtitle) ?: ""
+        footer = styledAttrs.getString(R.styleable.FluentUIListItemView_fluentuiListItemView_footer) ?: ""
 
-        titleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_titleMaxLines, DEFAULT_MAX_LINES)
-        subtitleMaxLines = styledAttrs.getInt(R.styleable.ListItemView_subtitleMaxLines, DEFAULT_MAX_LINES)
-        footerMaxLines = styledAttrs.getInt(R.styleable.ListItemView_footerMaxLines, DEFAULT_MAX_LINES)
+        titleMaxLines = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_titleMaxLines, DEFAULT_MAX_LINES)
+        subtitleMaxLines = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_subtitleMaxLines, DEFAULT_MAX_LINES)
+        footerMaxLines = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_footerMaxLines, DEFAULT_MAX_LINES)
 
-        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_titleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_titleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         titleTruncateAt = TextUtils.TruncateAt.values()[titleTruncateAtOrdinal]
-        val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_subtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val subtitleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_subtitleTruncateAt, DEFAULT_TRUNCATION.ordinal)
         subtitleTruncateAt = TextUtils.TruncateAt.values()[subtitleTruncateAtOrdinal]
-        val footerTruncateAtOrdinal = styledAttrs.getInt(R.styleable.ListItemView_footerTruncateAt, DEFAULT_TRUNCATION.ordinal)
+        val footerTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_footerTruncateAt, DEFAULT_TRUNCATION.ordinal)
         footerTruncateAt = TextUtils.TruncateAt.values()[footerTruncateAtOrdinal]
 
-        val layoutDensityOrdinal = styledAttrs.getInt(R.styleable.ListItemView_layoutDensity, DEFAULT_LAYOUT_DENSITY.ordinal)
+        val layoutDensityOrdinal = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_layoutDensity, DEFAULT_LAYOUT_DENSITY.ordinal)
         layoutDensity = LayoutDensity.values()[layoutDensityOrdinal]
 
-        val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.ListItemView_customViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
+        val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.FluentUIListItemView_fluentuiListItemView_customViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
         customViewSize = CustomViewSize.values()[customViewSizeOrdinal]
 
         styledAttrs.recycle()

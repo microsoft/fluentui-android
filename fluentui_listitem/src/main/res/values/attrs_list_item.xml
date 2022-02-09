@@ -5,36 +5,36 @@
   -->
 
 <resources>
-    <declare-styleable name="ListItemView">
-        <attr name="title" format="string" />
-        <attr name="subtitle" format="string" />
-        <attr name="footer" format="string" />
-        <attr name="titleMaxLines" format="integer" />
-        <attr name="subtitleMaxLines" format="integer" />
-        <attr name="footerMaxLines" format="integer" />
-        <attr name="titleTruncateAt" format="enum">
+    <declare-styleable name="FluentUIListItemView">
+        <attr name="fluentuiListItemView_title" format="string" />
+        <attr name="fluentuiListItemView_subtitle" format="string" />
+        <attr name="fluentuiListItemView_footer" format="string" />
+        <attr name="fluentuiListItemView_titleMaxLines" format="integer" />
+        <attr name="fluentuiListItemView_subtitleMaxLines" format="integer" />
+        <attr name="fluentuiListItemView_footerMaxLines" format="integer" />
+        <attr name="fluentuiListItemView_titleTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
             <enum name="marquee" value="3" />
         </attr>
-        <attr name="subtitleTruncateAt" format="enum">
+        <attr name="fluentuiListItemView_subtitleTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
             <enum name="marquee" value="3" />
         </attr>
-        <attr name="footerTruncateAt" format="enum">
+        <attr name="fluentuiListItemView_footerTruncateAt" format="enum">
             <enum name="start" value="0" />
             <enum name="middle" value="1" />
             <enum name="end" value="2" />
             <enum name="marquee" value="3" />
         </attr>
-        <attr name="layoutDensity" format="enum">
+        <attr name="fluentuiListItemView_layoutDensity" format="enum">
             <enum name="regular" value="0" />
             <enum name="dense" value="1" />
         </attr>
-        <attr name="customViewSize" format="enum">
+        <attr name="fluentuiListItemView_customViewSize" format="enum">
             <enum name="small" value="0" />
             <enum name="medium" value="1" />
             <enum name="large" value="2" />

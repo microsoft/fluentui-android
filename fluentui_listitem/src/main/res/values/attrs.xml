@@ -4,7 +4,7 @@
   ~ Licensed under the MIT License.
   -->
 <resources>
-    <!--ListItemView-->
+    <!--FluentUIListItemView-->
     <attr name="fluentuiListItemBackgroundColor" format="reference|color"/>
     <attr name="fluentuiListItemTitleColor" format="reference|color"/>
     <attr name="fluentuiListItemSubtitleColor" format="reference|color"/>
@@ -12,7 +12,7 @@
     <attr name="fluentuiListItemFooterColor" format="reference|color"/>
     <attr name="fluentuiListItemRippleColor" format="reference|color"/>
 
-    <!--ListSubHeader-->
+    <!--FluentUIListSubHeader-->
     <attr name="fluentuiListSubHeaderTitlePrimaryColor" format="reference|color"/>
     <attr name="fluentuiListSubHeaderTitleSecondaryColor" format="reference|color"/>
     <attr name="fluentuiListSubHeaderTitleTertiaryColor" format="reference|color"/>
