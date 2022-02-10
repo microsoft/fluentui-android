@@ -7,7 +7,7 @@
 <resources>
     <declare-styleable name="FluentUIListSubHeaderView">
         <attr name="fluentuiListItemView_title" />
-        <attr name="titleColor" format="enum">
+        <attr name="fluentuiListSubHeaderView_titleColor" format="enum">
             <enum name="primary" value="0" />
             <enum name="secondary" value="1" />
             <enum name="tertiary" value="2" />

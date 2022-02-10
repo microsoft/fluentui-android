@@ -104,7 +104,7 @@ class ListSubHeaderView : TemplateView {
 
         title = styledAttrs.getString(R.styleable.FluentUIListSubHeaderView_fluentuiListItemView_title) ?: ""
 
-        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUIListSubHeaderView_titleColor, DEFAULT_TITLE_COLOR.ordinal)
+        val titleColorOrdinal = styledAttrs.getInt(R.styleable.FluentUIListSubHeaderView_fluentuiListSubHeaderView_titleColor, DEFAULT_TITLE_COLOR.ordinal)
         titleColor = TitleColor.values()[titleColorOrdinal]
 
         val titleTruncateAtOrdinal = styledAttrs.getInt(R.styleable.FluentUIListSubHeaderView_fluentuiListItemView_titleTruncateAt, DEFAULT_TRUNCATION.ordinal)
