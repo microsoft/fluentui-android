@@ -5,7 +5,7 @@
   -->
 
 <resources>
-    <attr name="numberPickerStyle" format="reference" />
+    <attr name="fluentui_numberPickerStyle"/>
 
     <declare-styleable name="NumberPicker">
         <!-- Color for the solid color background if such for optimized rendering. -->
