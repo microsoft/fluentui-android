@@ -37,8 +37,9 @@
 
     <!--Attributes from Modules-->
 
-    <!--Calendar Start-->
-
+    <!--fluentui_calendar Start-->
+    <!--NumberPicker-->
+    <attr name="fluentui_numberPickerStyle" format="reference" />
     <!-- Color for the solid color background if such for optimized rendering. -->
     <attr name="fluentui_solidColor" format="color|reference" />
     <!-- The divider for making the selection area. -->
@@ -65,5 +66,5 @@
     <attr name="fluentui_numberPickerSelectedTextColor" format="color|reference"/>
     <attr name="fluentui_selectorWheelItemCount" format="integer" />
 
-    <!--Calendar End-->
+    <!--fluentui_calendar End-->
 </resources>
