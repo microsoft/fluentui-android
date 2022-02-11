@@ -34,4 +34,36 @@
     <!--Transparent Foregrounds-->
     <attr name="fluentuiForegroundOnPrimary80Color" format="reference|color"/>
     <attr name="fluentuiForegroundOnPrimary70Color" format="reference|color"/>
+
+    <!--Attributes from Modules-->
+
+    <!--Calendar Start-->
+
+    <!-- Color for the solid color background if such for optimized rendering. -->
+    <attr name="fluentui_solidColor" format="color|reference" />
+    <!-- The divider for making the selection area. -->
+    <attr name="fluentui_selectionDivider" format="reference" />
+    <!-- The height of the selection divider. -->
+    <attr name="fluentui_selectionDividerHeight" format="dimension" />
+    <!-- The distance between the two selection dividers. -->
+    <attr name="fluentui_selectionDividersDistance" format="dimension" />
+    <!-- The min height of the NumberPicker. -->
+    <attr name="fluentui_internalMinHeight" format="dimension" />
+    <!-- The max height of the NumberPicker. -->
+    <attr name="fluentui_internalMaxHeight" format="dimension" />
+    <!-- The min width of the NumberPicker. -->
+    <attr name="fluentui_internalMinWidth" format="dimension" />
+    <!-- The max width of the NumberPicker. -->
+    <attr name="fluentui_internalMaxWidth" format="dimension" />
+    <!-- The layout of the number picker. -->
+    <attr name="fluentui_internalLayout" format="reference" />
+    <!-- The drawable for pressed virtual (increment/decrement) buttons. -->
+    <attr name="fluentui_virtualButtonPressedDrawable" format="reference"/>
+    <!-- If true then the selector wheel is hidden until the picker has focus. -->
+    <attr name="fluentui_hideWheelUntilFocused" format="boolean"/>
+    <attr name="fluentui_numberPickerTextColor" format="color|reference"/>
+    <attr name="fluentui_numberPickerSelectedTextColor" format="color|reference"/>
+    <attr name="fluentui_selectorWheelItemCount" format="integer" />
+
+    <!--Calendar End-->
 </resources>
