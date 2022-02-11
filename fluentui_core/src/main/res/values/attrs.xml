@@ -67,4 +67,26 @@
     <attr name="fluentui_selectorWheelItemCount" format="integer" />
 
     <!--fluentui_calendar End-->
+
+    <!--fluentui_drawer Start-->
+    <!--Drawer-->
+    <attr name="fluentui_cornerRadius" format="dimension"/>
+
+    <!--PersistentBottomSheet-->
+    <!-- The min height of the BottomSheet -->
+    <attr name="fluentui_peekHeight" format="dimension" />
+    <!--  Determines whether to keep the default drawer handle or not -->
+    <attr name="fluentui_isDrawerHandleVisible" format="boolean" />
+    <!--  horizontal Item in a row-->
+    <attr name="fluentui_itemsInRow" format="integer" />
+    <!-- horizontal item text style-->
+    <attr name="fluentui_horizontalItemTextAppearance" format="reference" />
+    <!-- vertical item text style-->
+    <attr name="fluentui_verticalItemTextAppearance" format="reference" />
+    <!-- vertical item subtitle style-->
+    <attr name="fluentui_verticalItemSubTextAppearance" format="reference" />
+    <!--header text style-->
+    <attr name="fluentui_headerTextAppearance" format="reference" />
+
+    <!--fluentui_drawer End-->
 </resources>

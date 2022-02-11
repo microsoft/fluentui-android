@@ -6,18 +6,18 @@
 <resources>
     <declare-styleable name="PersistentBottomSheet">
         <!-- The min height of the BottomSheet -->
-        <attr name="peekHeight" format="dimension" />
+        <attr name="fluentui_peekHeight"/>
         <!--  Determines whether to keep the default drawer handle or not -->
-        <attr name="isDrawerHandleVisible" format="boolean" />
+        <attr name="fluentui_isDrawerHandleVisible"/>
         <!--  horizontal Item in a row-->
-        <attr name="ItemsInRow" format="integer" />
+        <attr name="fluentui_itemsInRow"/>
         <!-- horizontal item text style-->
-        <attr name="horizontalItemTextAppearance" format="reference" />
+        <attr name="fluentui_horizontalItemTextAppearance"/>
         <!-- vertical item text style-->
-        <attr name="verticalItemTextAppearance" format="reference" />
+        <attr name="fluentui_verticalItemTextAppearance"/>
         <!-- vertical item subtitle style-->
-        <attr name="verticalItemSubTextAppearance" format="reference" />
+        <attr name="fluentui_verticalItemSubTextAppearance"/>
         <!--header text style-->
-        <attr name="headerTextAppearance" format="reference" />
+        <attr name="fluentui_headerTextAppearance"/>
     </declare-styleable>
 </resources>
