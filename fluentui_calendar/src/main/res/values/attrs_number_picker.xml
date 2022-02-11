@@ -9,34 +9,30 @@
 
     <declare-styleable name="NumberPicker">
         <!-- Color for the solid color background if such for optimized rendering. -->
-        <attr name="solidColor" format="color|reference" />
+        <attr name="fluentui_solidColor"/>
         <!-- The divider for making the selection area. -->
-        <attr name="selectionDivider" format="reference" />
+        <attr name="fluentui_selectionDivider"/>
         <!-- The height of the selection divider. -->
-        <attr name="selectionDividerHeight" format="dimension" />
+        <attr name="fluentui_selectionDividerHeight"/>
         <!-- The distance between the two selection dividers. -->
-        <attr name="selectionDividersDistance" format="dimension" />
+        <attr name="fluentui_selectionDividersDistance"/>
         <!-- The min height of the NumberPicker. -->
-        <attr name="internalMinHeight" format="dimension" />
+        <attr name="fluentui_internalMinHeight"/>
         <!-- The max height of the NumberPicker. -->
-        <attr name="internalMaxHeight" format="dimension" />
+        <attr name="fluentui_internalMaxHeight"/>
         <!-- The min width of the NumberPicker. -->
-        <attr name="internalMinWidth" format="dimension" />
+        <attr name="fluentui_internalMinWidth"/>
         <!-- The max width of the NumberPicker. -->
-        <attr name="internalMaxWidth" format="dimension" />
+        <attr name="fluentui_internalMaxWidth"/>
         <!-- The layout of the number picker. -->
-        <attr name="internalLayout" format="reference" />
+        <attr name="fluentui_internalLayout"/>
         <!-- The drawable for pressed virtual (increment/decrement) buttons. -->
-        <attr name="virtualButtonPressedDrawable" format="reference"/>
+        <attr name="fluentui_virtualButtonPressedDrawable"/>
         <!-- If true then the selector wheel is hidden until the picker has focus. -->
-        <attr name="hideWheelUntilFocused" format="boolean"/>
-        <attr name="numberPickerTextColor" format="color|reference"/>
-        <attr name="numberPickerSelectedTextColor" format="color|reference"/>
-        <attr name="selectorWheelItemCount" format="integer" />
-        <attr name="textAlign" format="enum">
-            <enum name="left" value="0" />
-            <enum name="center" value="1" />
-            <enum name="right" value="2" />
-        </attr>
+        <attr name="fluentui_hideWheelUntilFocused"/>
+        <attr name="fluentui_numberPickerTextColor"/>
+        <attr name="fluentui_numberPickerSelectedTextColor"/>
+        <attr name="fluentui_selectorWheelItemCount"/>
+        <attr name="fluentuiCalendar_textAlign"/>
     </declare-styleable>
 </resources>
