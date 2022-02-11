@@ -53,11 +53,11 @@ class ContextualCommandBar @JvmOverloads constructor(
 
             try {
                 groupSpace = styledAttributes.getDimensionPixelSize(
-                        R.styleable.ContextualCommandBar_groupSpace,
+                        R.styleable.ContextualCommandBar_fluentui_groupSpace,
                         resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_group_space)
                 )
                 itemSpace = styledAttributes.getDimensionPixelSize(
-                        R.styleable.ContextualCommandBar_itemSpace,
+                        R.styleable.ContextualCommandBar_fluentui_itemSpace,
                         resources.getDimensionPixelSize(R.dimen.fluentui_contextual_command_bar_default_item_space)
                 )
             } finally {

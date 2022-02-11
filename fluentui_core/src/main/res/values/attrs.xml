@@ -67,4 +67,12 @@
     <attr name="fluentui_selectorWheelItemCount" format="integer" />
 
     <!--fluentui_calendar End-->
+
+    <!--fluentui_ccb Start-->
+    <!--ContextualCommandBar-->
+    <attr name="fluentui_itemSpace" format="dimension"/>
+    <attr name="fluentui_groupSpace" format="dimension"/>
+    <!--ContextualCommandBar End-->
+
+    <!--fluentui_ccb End-->
 </resources>
