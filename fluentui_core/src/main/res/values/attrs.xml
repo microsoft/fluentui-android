@@ -89,4 +89,15 @@
     <attr name="fluentui_headerTextAppearance" format="reference" />
 
     <!--fluentui_drawer End-->
+
+    <!--fluentui_listitem Start-->
+
+    <!--ListItemView-->
+    <attr name="fluentui_title" format="string" />
+    <attr name="fluentui_subtitle" format="string" />
+    <attr name="fluentui_footer" format="string" />
+    <attr name="fluentui_titleMaxLines" format="integer" />
+    <attr name="fluentui_subtitleMaxLines" format="integer" />
+    <attr name="fluentui_footerMaxLines" format="integer" />
+    <!--fluentui_listitem End-->
 </resources>
