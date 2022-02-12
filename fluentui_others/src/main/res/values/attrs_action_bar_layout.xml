@@ -6,11 +6,7 @@
 
 <resources>
     <declare-styleable name="ActionBarLayout">
-        <attr name="type" format="enum">
-            <enum name="basic" value="0"/>
-            <enum name="icon" value="1"/>
-            <enum name="carousel" value="2"/>
-        </attr>
-        <attr name="viewPager" format="reference"/>
+        <attr name="fluentui_type"/>
+        <attr name="fluentui_viewPager"/>
     </declare-styleable>
 </resources>

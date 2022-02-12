@@ -100,4 +100,10 @@
     <attr name="fluentui_subtitleMaxLines" format="integer" />
     <attr name="fluentui_footerMaxLines" format="integer" />
     <!--fluentui_listitem End-->
+
+    <!--fluent_others Start-->
+
+    <!--ActionBarLayout-->
+    <attr name="fluentui_viewPager" format="reference"/>
+    <!--fluent_others End-->
 </resources>
