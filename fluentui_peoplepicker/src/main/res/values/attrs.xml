@@ -20,4 +20,13 @@
     <attr name="fluentuiPeoplePickerSearchTextDisabledColor" format="reference|color"/>
     <attr name="fluentuiPeoplePickerSearchTextPressedColor" format="reference|color"/>
 
+    <!--common fluentui_peoplepicker Module attributes-->
+    <attr name="fluentui_personaChipClickStyle" format="enum">
+        <enum name="none" value="0"/>
+        <enum name="delete" value="1"/>
+        <enum name="select" value="2"/>
+        <enum name="select_deselect" value="3"/>
+    </attr>
+
+
 </resources>

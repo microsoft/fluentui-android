@@ -106,4 +106,14 @@
     <!--ActionBarLayout-->
     <attr name="fluentui_viewPager" format="reference"/>
     <!--fluent_others End-->
+
+    <!-- fluentui_peoplepicker Start-->
+
+    <!--PeoplePickerView-->
+    <attr name="fluentui_label" format="string" />
+    <attr name="fluentui_valueHint" format="string" />
+    <attr name="fluentui_showHint" format="boolean" />
+    <attr name="fluentui_characterThreshold" format="integer" />
+
+    <!-- fluentui_peoplepicker End-->
 </resources>
