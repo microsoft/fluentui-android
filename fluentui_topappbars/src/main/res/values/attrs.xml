@@ -28,4 +28,14 @@
     <attr name="fluentuiToolbarSubtitleTextColor" format="reference|color"/>
     <attr name="fluentuiToolbarIconColor" format="reference|color"/>
 
+    <!--common fluentui_topappbars Module attributes-->
+
+    <!--AppBarLayout-->
+    <attr name="fluentui_scrollBehavior" format="enum">
+        <enum name="none" value="0" />
+        <enum name="collapseToolbar" value="1" />
+        <enum name="pin" value="2" />
+    </attr>
+
+
 </resources>
