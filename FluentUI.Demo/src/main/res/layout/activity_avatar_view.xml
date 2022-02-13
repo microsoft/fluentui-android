@@ -49,8 +49,8 @@
                 android:id="@+id/avatar_example_xxlarge_photo"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_robert_tolbert"
-                app:avatarSize="xxlarge" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_robert_tolbert"
+                app:fluentui_avatarSize="xxlarge" />
 
         </TableRow>
 
@@ -69,13 +69,13 @@
                 android:id="@+id/avatar_example_xlarge_photo"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarSize="xlarge" />
+                app:fluentui_avatarSize="xlarge" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_xlarge_initials"
                 android:layout_gravity="start"
-                app:avatarSize="xlarge"
-                app:name="@string/persona_name_allan_munger" />
+                app:fluentui_avatarSize="xlarge"
+                app:fluentui_name="@string/persona_name_allan_munger" />
 
         </TableRow>
 
@@ -94,13 +94,13 @@
                 android:id="@+id/avatar_example_large_photo"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarSize="large" />
+                app:fluentui_avatarSize="large" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_large_initials"
                 android:layout_gravity="start"
-                app:avatarSize="large"
-                app:name="@string/persona_email_colin_ballinger" />
+                app:fluentui_avatarSize="large"
+                app:fluentui_name="@string/persona_email_colin_ballinger" />
 
         </TableRow>
 
@@ -119,13 +119,13 @@
                 android:id="@+id/avatar_example_medium_photo"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarSize="medium" />
+                app:fluentui_avatarSize="medium" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_medium_initials"
                 android:layout_gravity="start"
-                app:avatarSize="medium"
-                app:name="@string/persona_name_wanda_howard" />
+                app:fluentui_avatarSize="medium"
+                app:fluentui_name="@string/persona_name_wanda_howard" />
 
         </TableRow>
 
@@ -144,13 +144,13 @@
                 android:id="@+id/avatar_example_small_photo"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarSize="small" />
+                app:fluentui_avatarSize="small" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_small_initials"
                 android:layout_gravity="start"
-                app:avatarSize="small"
-                app:name="@string/persona_name_kristen_patterson" />
+                app:fluentui_avatarSize="small"
+                app:fluentui_name="@string/persona_name_kristen_patterson" />
 
         </TableRow>
 
@@ -169,14 +169,14 @@
                 android:id="@+id/avatar_example_xsmall_photo"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_ashley_mccarthy"
-                app:avatarSize="xsmall" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_ashley_mccarthy"
+                app:fluentui_avatarSize="xsmall" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_xsmall_initials"
                 android:layout_gravity="start"
-                app:avatarSize="xsmall"
-                app:name="@string/persona_name_isaac_fielder" />
+                app:fluentui_avatarSize="xsmall"
+                app:fluentui_name="@string/persona_name_isaac_fielder" />
 
         </TableRow>
 
@@ -219,17 +219,17 @@
                 android:id="@+id/avatar_example_xxlarge_photo_square"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_carlos_slattery"
-                app:avatarSize="xxlarge"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_carlos_slattery" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_carlos_slattery"
+                app:fluentui_avatarSize="xxlarge"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_carlos_slattery" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_xxlarge_initials_square"
                 android:layout_gravity="start"
-                app:avatarSize="xxlarge"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_carole_poland" />
+                app:fluentui_avatarSize="xxlarge"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_carole_poland" />
 
         </TableRow>
 
@@ -248,17 +248,17 @@
                 android:id="@+id/avatar_example_xlarge_photo_square"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_daisy_phillips"
-                app:avatarSize="xlarge"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_daisy_phillips" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_daisy_phillips"
+                app:fluentui_avatarSize="xlarge"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_daisy_phillips" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_xlarge_initials_square"
                 android:layout_gravity="start"
-                app:avatarSize="xlarge"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_daisy_phillips" />
+                app:fluentui_avatarSize="xlarge"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_daisy_phillips" />
 
         </TableRow>
 
@@ -277,16 +277,16 @@
                 android:id="@+id/avatar_example_large_photo_square"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_robin_counts"
-                app:avatarSize="large"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_robin_counts" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_robin_counts"
+                app:fluentui_avatarSize="large"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_robin_counts" />
 
             <!--This one sets shape and initials programmatically-->
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_large_initials_square"
                 android:layout_gravity="start"
-                app:avatarSize="large" />
+                app:fluentui_avatarSize="large" />
 
         </TableRow>
 
@@ -305,17 +305,17 @@
                 android:id="@+id/avatar_example_medium_photo_square"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_cecil_folk"
-                app:avatarSize="medium"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_cecil_folk" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_cecil_folk"
+                app:fluentui_avatarSize="medium"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_cecil_folk" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_medium_initials_square"
                 android:layout_gravity="start"
-                app:avatarSize="medium"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_celeste_burton" />
+                app:fluentui_avatarSize="medium"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_celeste_burton" />
 
         </TableRow>
 
@@ -334,18 +334,18 @@
                 android:id="@+id/avatar_example_small_photo_square"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_elliot_woodward"
-                app:avatarSize="small"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_elliot_woodward" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_elliot_woodward"
+                app:fluentui_avatarSize="small"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_elliot_woodward" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_small_initials_square"
                 android:layout_gravity="start"
-                app:avatarSize="small"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_erik_nason"
-                app:avatarBackgroundColor="@android:color/holo_blue_dark"/>
+                app:fluentui_avatarSize="small"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_erik_nason"
+                app:fluentui_avatarBackgroundColor="@android:color/holo_blue_dark"/>
 
         </TableRow>
 
@@ -364,17 +364,17 @@
                 android:id="@+id/avatar_example_xsmall_photo_square"
                 android:layout_gravity="start"
                 android:layout_marginEnd="@dimen/default_layout_margin"
-                app:avatarImageDrawable="@drawable/avatar_henry_brill"
-                app:avatarSize="xsmall"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_henry_brill" />
+                app:fluentui_avatarImageDrawable="@drawable/avatar_henry_brill"
+                app:fluentui_avatarSize="xsmall"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_henry_brill" />
 
             <com.microsoft.fluentui.persona.AvatarView
                 android:id="@+id/avatar_example_xsmall_initials_square"
                 android:layout_gravity="start"
-                app:avatarSize="xsmall"
-                app:avatarStyle="square"
-                app:name="@string/persona_name_lydia_bauer" />
+                app:fluentui_avatarSize="xsmall"
+                app:fluentui_avatarStyle="square"
+                app:fluentui_name="@string/persona_name_lydia_bauer" />
 
         </TableRow>
 

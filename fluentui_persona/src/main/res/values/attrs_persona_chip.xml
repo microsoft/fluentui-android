@@ -6,9 +6,9 @@
 
 <resources>
     <declare-styleable name="PersonaChipView">
-        <attr name="name" />
-        <attr name="email" />
-        <attr name="avatarImageDrawable" />
-        <attr name="showCloseIconWhenSelected" format="boolean" />
+        <attr name="fluentui_name" />
+        <attr name="fluentui_email" />
+        <attr name="fluentui_avatarImageDrawable" />
+        <attr name="fluentui_showCloseIconWhenSelected"/>
     </declare-styleable>
 </resources>

@@ -62,9 +62,9 @@
         android:id="@+id/avatar_face_stack_example_xxlarge_photo"
         android:layout_gravity="start"
         android:layout_marginEnd="@dimen/default_layout_margin"
-        app:avatarGroupStyle="stack"
-        app:maxDisplayedAvatars="4"
-        app:avatarSize="xxlarge" />
+        app:fluentui_avatarGroupStyle="stack"
+        app:fluentui_maxDisplayedAvatars="4"
+        app:fluentui_avatarSize="xxlarge" />
     </LinearLayout>
 
     <LinearLayout
@@ -88,9 +88,9 @@
             android:id="@+id/avatar_face_stack_example_xlarge_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="stack"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="xlarge" />
+            app:fluentui_avatarGroupStyle="stack"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="xlarge" />
     </LinearLayout>
 
     <LinearLayout
@@ -114,9 +114,9 @@
             android:id="@+id/avatar_face_stack_example_large_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="stack"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="large" />
+            app:fluentui_avatarGroupStyle="stack"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="large" />
     </LinearLayout>
 
     <LinearLayout
@@ -140,9 +140,9 @@
             android:id="@+id/avatar_face_stack_example_medium_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="stack"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="medium" />
+            app:fluentui_avatarGroupStyle="stack"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="medium" />
     </LinearLayout>
 
 
@@ -190,9 +190,9 @@
             android:id="@+id/avatar_face_stack_example_xsmall_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="stack"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="xsmall" />
+            app:fluentui_avatarGroupStyle="stack"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="xsmall" />
     </LinearLayout>
 
     <!--Square-->
@@ -225,9 +225,9 @@
             android:id="@+id/avatar_face_pile_example_xxlarge_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="pile"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="xxlarge" />
+            app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="xxlarge" />
     </LinearLayout>
 
     <LinearLayout
@@ -251,9 +251,9 @@
             android:id="@+id/avatar_face_pile_example_xlarge_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="pile"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="xlarge" />
+            app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="xlarge" />
     </LinearLayout>
 
     <LinearLayout
@@ -277,9 +277,9 @@
             android:id="@+id/avatar_face_pile_example_large_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="pile"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="large" />
+            app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="large" />
     </LinearLayout>
 
     <LinearLayout
@@ -303,9 +303,9 @@
             android:id="@+id/avatar_face_pile_example_medium_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="pile"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="medium" />
+            app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="medium" />
     </LinearLayout>
 
 
@@ -330,9 +330,9 @@
             android:id="@+id/avatar_face_pile_example_small_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="pile"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="small" />
+            app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="small" />
     </LinearLayout>
 
     <LinearLayout
@@ -356,9 +356,9 @@
             android:id="@+id/avatar_face_pile_example_xsmall_photo"
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
-            app:avatarGroupStyle="pile"
-            app:maxDisplayedAvatars="4"
-            app:avatarSize="xsmall" />
+            app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_maxDisplayedAvatars="4"
+            app:fluentui_avatarSize="xsmall" />
     </LinearLayout>
 
 </LinearLayout>
