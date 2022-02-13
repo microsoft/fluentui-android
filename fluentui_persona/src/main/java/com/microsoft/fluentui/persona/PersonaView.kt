@@ -13,7 +13,6 @@ import android.net.Uri
 import android.util.AttributeSet
 import android.view.accessibility.AccessibilityEvent
 import androidx.annotation.ColorInt
-import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.util.isVisibleOnScreen
 
@@ -129,15 +128,15 @@ class PersonaView : ListItemView {
     @JvmOverloads
     constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(appContext, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaView)
-        name = styledAttrs.getString(R.styleable.PersonaView_name) ?: ""
-        email = styledAttrs.getString(R.styleable.PersonaView_email) ?: ""
+        name = styledAttrs.getString(R.styleable.PersonaView_fluentui_name) ?: ""
+        email = styledAttrs.getString(R.styleable.PersonaView_fluentui_email) ?: ""
 
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.PersonaView_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
+        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.PersonaView_fluentui_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
 
-        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.PersonaView_avatarImageDrawable, 0)
+        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.PersonaView_fluentui_avatarImageDrawable, 0)
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
-            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaView_avatarImageDrawable)
+            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaView_fluentui_avatarImageDrawable)
 
         styledAttrs.recycle()
     }

@@ -116,4 +116,22 @@
     <attr name="fluentui_characterThreshold" format="integer" />
 
     <!-- fluentui_peoplepicker End-->
+
+    <!--fluentui_persona Start-->
+
+    <!--AvatarView-->
+    <attr name="fluentui_avatarBackgroundColor" format="reference" />
+    <attr name="fluentui_avatarImageDrawable" format="reference" />
+
+    <!--AvatarGroupView-->
+    <attr name="fluentui_maxDisplayedAvatars" format="integer" />
+
+    <!--PersonaView-->
+    <attr name="fluentui_name" format="string" />
+    <attr name="fluentui_email" format="string" />
+
+    <!--PersonaChipView-->
+    <attr name="fluentui_showCloseIconWhenSelected" format="boolean" />
+
+    <!--fluentui_persona End-->
 </resources>

@@ -24,8 +24,8 @@
         android:id="@+id/persona_chip_example_basic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:email="@string/persona_email_mauricio_august"
-        app:name="@string/persona_name_mauricio_august" />
+        app:fluentui_email="@string/persona_email_mauricio_august"
+        app:fluentui_name="@string/persona_name_mauricio_august" />
 
     <TextView
         style="@style/Widget.DemoSubHeader"
@@ -37,10 +37,10 @@
         android:id="@+id/persona_chip_example_no_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:avatarImageDrawable="@drawable/avatar_cecil_folk"
-        app:email="@string/persona_email_cecil_folk"
-        app:name="@string/persona_name_cecil_folk"
-        app:showCloseIconWhenSelected="false" />
+        app:fluentui_avatarImageDrawable="@drawable/avatar_cecil_folk"
+        app:fluentui_email="@string/persona_email_cecil_folk"
+        app:fluentui_name="@string/persona_name_cecil_folk"
+        app:fluentui_showCloseIconWhenSelected="false" />
 
     <TextView
         style="@style/Widget.DemoSubHeader"
@@ -52,8 +52,8 @@
         android:id="@+id/persona_chip_example_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:email="@string/persona_email_mona_kane"
-        app:name="@string/persona_name_mona_kane" />
+        app:fluentui_email="@string/persona_email_mona_kane"
+        app:fluentui_name="@string/persona_name_mona_kane" />
 
     <TextView
         style="@style/Widget.DemoSubHeader"
