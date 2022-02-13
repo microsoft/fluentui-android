@@ -134,4 +134,16 @@
     <attr name="fluentui_showCloseIconWhenSelected" format="boolean" />
 
     <!--fluentui_persona End-->
+
+    <!--fluentui_tablayout Start-->
+
+    <!--TabLayout-->
+    <attr name="fluentui_containerBackgroundColor" format="color" />
+    <attr name="fluentui_tabsBackgroundColor" format="color" />
+    <attr name="fluentui_tabSelectedBackgroundColor" format="color" />
+    <attr name="fluentui_tabUnselectedBackgroundColor" format="color" />
+    <attr name="fluentui_tabSelectedTextColor" format="color" />
+    <attr name="fluentui_tabUnselectedTextColor" format="color" />
+
+    <!--fluentui_tablayout End-->
 </resources>

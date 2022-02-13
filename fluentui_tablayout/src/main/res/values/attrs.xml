@@ -12,4 +12,11 @@
     <attr name="fluentuiTabUnselectedBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTabSelectedBackgroundColor" format="reference|color"/>
     <attr name="fluentuiTabTextAppearance" format="reference" />
+
+    <!--common fluentui_tablayout Module attributes-->
+    <attr name="fluentui_tabType" format="enum">
+        <enum name="Standard" value="0" />
+        <enum name="Switch" value="1" />
+        <enum name="Pills" value="2" />
+    </attr>
 </resources>
