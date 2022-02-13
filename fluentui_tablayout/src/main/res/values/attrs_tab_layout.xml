@@ -6,16 +6,12 @@
 
 <resources>
     <declare-styleable name="TabLayout">
-        <attr name="tabType" format="enum">
-            <enum name="Standard" value="0" />
-            <enum name="Switch" value="1" />
-            <enum name="Pills" value="2" />
-        </attr>
-        <attr name="containerBackgroundColor" format="color" />
-        <attr name="tabsBackgroundColor" format="color" />
-        <attr name="tabSelectedBackgroundColor" format="color" />
-        <attr name="tabUnselectedBackgroundColor" format="color" />
-        <attr name="tabSelectedTextColor" format="color" />
-        <attr name="tabUnselectedTextColor" format="color" />
+        <attr name="fluentui_tabType"/>
+        <attr name="fluentui_containerBackgroundColor"/>
+        <attr name="fluentui_tabsBackgroundColor"/>
+        <attr name="fluentui_tabSelectedBackgroundColor"/>
+        <attr name="fluentui_tabUnselectedBackgroundColor"/>
+        <attr name="fluentui_tabSelectedTextColor"/>
+        <attr name="fluentui_tabUnselectedTextColor"/>
     </declare-styleable>
 </resources>
