@@ -18,7 +18,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:scrollBehavior="pin" />
+        app:fluentui_scrollBehavior="pin" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/demo_detail_scrollable_container"
