@@ -6,11 +6,8 @@
 
 <resources>
     <declare-styleable name="AvatarGroupView">
-        <attr name="avatarGroupStyle" format="enum">
-            <enum name="stack" value="0" />
-            <enum name="pile" value="1" />
-        </attr>
-        <attr name="maxDisplayedAvatars" format="integer" />
-        <attr name="avatarSize"/>
+        <attr name="fluentui_avatarGroupStyle"/>
+        <attr name="fluentui_maxDisplayedAvatars"/>
+        <attr name="fluentui_avatarSize"/>
     </declare-styleable>
 </resources>

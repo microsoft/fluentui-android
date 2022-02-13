@@ -40,21 +40,21 @@ open class AvatarView : AppCompatImageView {
     @JvmOverloads
     constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Persona), attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarView)
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarSize, DEFAULT_AVATAR_SIZE.ordinal)
-        val avatarStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarStyle, DEFAULT_AVATAR_STYLE.ordinal)
-        val avatarBorderStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_avatarBorderStyle, DEFAULT_AVATAR_BORDER_STYLE.ordinal)
+        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarView_fluentui_avatarSize, DEFAULT_AVATAR_SIZE.ordinal)
+        val avatarStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_fluentui_avatarStyle, DEFAULT_AVATAR_STYLE.ordinal)
+        val avatarBorderStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarView_fluentui_avatarBorderStyle, DEFAULT_AVATAR_BORDER_STYLE.ordinal)
 
-        name = styledAttrs.getString(R.styleable.AvatarView_name) ?: ""
-        email = styledAttrs.getString(R.styleable.AvatarView_email) ?: ""
+        name = styledAttrs.getString(R.styleable.AvatarView_fluentui_name) ?: ""
+        email = styledAttrs.getString(R.styleable.AvatarView_fluentui_email) ?: ""
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
         avatarStyle = AvatarStyle.values()[avatarStyleOrdinal]
         avatarBorderStyle = AvatarBorderStyle.values()[avatarBorderStyleOrdinal]
 
-        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_avatarImageDrawable, 0)
+        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_fluentui_avatarImageDrawable, 0)
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
-            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.AvatarView_avatarImageDrawable)
+            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.AvatarView_fluentui_avatarImageDrawable)
 
-        val avatarBackgroundColorResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_avatarBackgroundColor, 0)
+        val avatarBackgroundColorResourceId = styledAttrs.getResourceId(R.styleable.AvatarView_fluentui_avatarBackgroundColor, 0)
         if (avatarBackgroundColorResourceId > 0 && resources.getResourceTypeName(avatarBackgroundColorResourceId) == "color")
             avatarBackgroundColor = ContextCompat.getColor(context, avatarBackgroundColorResourceId)
 
