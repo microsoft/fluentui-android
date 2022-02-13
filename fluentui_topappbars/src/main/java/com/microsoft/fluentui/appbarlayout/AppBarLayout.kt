@@ -126,8 +126,8 @@ class AppBarLayout : AppBarLayout {
         setBackgroundColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiAppBarLayoutBackgroundColor))
 
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.AppBarLayout)
-        scrollTargetViewId = styledAttributes.getResourceId(R.styleable.AppBarLayout_scrollTargetViewId, View.NO_ID)
-        val scrollBehaviorOrdinal = styledAttributes.getInt(R.styleable.AppBarLayout_scrollBehavior, DEFAULT_SCROLL_BEHAVIOR.ordinal)
+        scrollTargetViewId = styledAttributes.getResourceId(R.styleable.AppBarLayout_fluentui_scrollTargetViewId, View.NO_ID)
+        val scrollBehaviorOrdinal = styledAttributes.getInt(R.styleable.AppBarLayout_fluentui_scrollBehavior, DEFAULT_SCROLL_BEHAVIOR.ordinal)
         scrollBehavior = ScrollBehavior.values()[scrollBehaviorOrdinal]
         styledAttributes.recycle()
     }
