@@ -17,15 +17,15 @@
         android:id="@+id/people_picker_select"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:label="@string/people_picker_select_example"
-        app:personaChipClickStyle="select" />
+        app:fluentui_label="@string/people_picker_select_example"
+        app:fluentui_personaChipClickStyle="select" />
 
     <com.microsoft.fluentui.peoplepicker.PeoplePickerView
         android:id="@+id/people_picker_select_deselect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:label="@string/people_picker_select_deselect_example"
-        app:characterThreshold="3"
-        app:personaChipClickStyle="select_deselect" />
+        app:fluentui_label="@string/people_picker_select_deselect_example"
+        app:fluentui_characterThreshold="3"
+        app:fluentui_personaChipClickStyle="select_deselect" />
 
 </LinearLayout>

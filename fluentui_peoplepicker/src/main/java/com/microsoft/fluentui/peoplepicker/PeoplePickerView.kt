@@ -227,14 +227,14 @@ class PeoplePickerView : TemplateView {
     constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_PeoplePicker), attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PeoplePickerView)
 
-        label = styledAttrs.getString(R.styleable.PeoplePickerView_label) ?: ""
-        valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_valueHint)
+        label = styledAttrs.getString(R.styleable.PeoplePickerView_fluentui_label) ?: ""
+        valueHint = styledAttrs.getString(R.styleable.PeoplePickerView_fluentui_valueHint)
             ?: context.getString(R.string.people_picker_accessibility_default_hint)
-        showHint = styledAttrs.getBoolean(R.styleable.PeoplePickerView_showHint, false)
-        characterThreshold = styledAttrs.getInteger(R.styleable.PeoplePickerView_characterThreshold, 1)
+        showHint = styledAttrs.getBoolean(R.styleable.PeoplePickerView_fluentui_showHint, false)
+        characterThreshold = styledAttrs.getInteger(R.styleable.PeoplePickerView_fluentui_characterThreshold, 1)
 
         val personaChipClickStyleOrdinal = styledAttrs.getInt(
-            R.styleable.PeoplePickerView_personaChipClickStyle,
+            R.styleable.PeoplePickerView_fluentui_personaChipClickStyle,
             PeoplePickerPersonaChipClickStyle.SELECT.ordinal
         )
         personaChipClickStyle = PeoplePickerPersonaChipClickStyle.values()[personaChipClickStyleOrdinal]
