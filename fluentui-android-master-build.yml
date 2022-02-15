@@ -24,6 +24,11 @@ steps:
      **/*.aar
     TargetFolder: '$(build.artifactstagingdirectory)'
 
+- task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+  displayName: 📒 Generate Manifest
+  inputs:
+    BuildDropPath: '$(build.artifactstagingdirectory)'
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: Build'
   inputs:
