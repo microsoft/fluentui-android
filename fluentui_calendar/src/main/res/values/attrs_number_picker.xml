@@ -33,6 +33,6 @@
         <attr name="fluentui_numberPickerTextColor"/>
         <attr name="fluentui_numberPickerSelectedTextColor"/>
         <attr name="fluentui_selectorWheelItemCount"/>
-        <attr name="fluentuiCalendar_textAlign"/>
+        <attr name="fluentui_textAlign"/>
     </declare-styleable>
 </resources>

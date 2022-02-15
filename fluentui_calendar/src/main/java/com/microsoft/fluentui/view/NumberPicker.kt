@@ -714,7 +714,7 @@ internal class NumberPicker : LinearLayout {
             R.styleable.NumberPicker_fluentui_virtualButtonPressedDrawable)
 
         val textAlign = attributesArray.getInt(
-            R.styleable.NumberPicker_fluentuiCalendar_textAlign, ALIGN_CENTER)
+            R.styleable.NumberPicker_fluentui_textAlign, ALIGN_CENTER)
 
         attributesArray.recycle()
         mPressedStateHelper = PressedStateHelper()
