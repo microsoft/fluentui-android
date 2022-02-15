@@ -43,7 +43,7 @@
         <item name="fluentui_internalMinWidth">@dimen/fluentui_date_time_picker_internal_min_width</item>
         <item name="fluentui_internalMaxHeight">@dimen/fluentui_date_time_picker_max_height</item>
         <item name="fluentui_selectorWheelItemCount">@integer/fluentui_number_picker_selector_wheel_item_count</item>
-        <item name="fluentuiCalendar_textAlign">center</item>
+        <item name="fluentui_textAlign">center</item>
         <item name="android:paddingRight">@dimen/fluentui_date_time_picker_padding_right</item>
     </style>
 </resources>

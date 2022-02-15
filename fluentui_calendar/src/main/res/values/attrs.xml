@@ -45,7 +45,7 @@
     <attr name="fluentuiNumberPickerSelectedTextColor" format="reference|color"/>
 
     <!--common calendar Module attributes-->
-    <attr name="fluentuiCalendar_textAlign" format="enum">
+    <attr name="fluentui_textAlign" format="enum">
         <enum name="left" value="0" />
         <enum name="center" value="1" />
         <enum name="right" value="2" />
