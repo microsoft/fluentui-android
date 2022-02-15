@@ -26,6 +26,11 @@ steps:
       OverWrite: true
       preserveTimestamp: true
 
+  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+    displayName: 📒 Generate Manifest
+    inputs:
+      BuildDropPath: '$(Build.ArtifactStagingDirectory)/outputs/'
+
   - task: UniversalPackages@0
     inputs:
       command: 'publish'
