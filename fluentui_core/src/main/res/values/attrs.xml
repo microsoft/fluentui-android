@@ -34,7 +34,6 @@
     <!--Transparent Foregrounds-->
     <attr name="fluentuiForegroundOnPrimary80Color" format="reference|color"/>
     <attr name="fluentuiForegroundOnPrimary70Color" format="reference|color"/>
-<<<<<<< HEAD
 
     <!--Attributes from Modules-->
 
@@ -147,13 +146,11 @@
     <attr name="fluentui_tabUnselectedTextColor" format="color" />
 
     <!--fluentui_tablayout End-->
-||||||| parent of 2dc6d10 (Moved the declare-styleable attributes to fluentui_core attrs.xml & enum attributes to fluentui_topappbars attrs.xml to reuse at module level. Attributes also prefixed with 'fluentui_' to avoid conflict with other UI library attributes)
-=======
 
     <!--fluentui_topappbars Start-->
 
     <!--AppBarLayout-->
     <attr name="fluentui_scrollTargetViewId" format="integer" />
     <!--fluentui_topappbars End-->
->>>>>>> 2dc6d10 (Moved the declare-styleable attributes to fluentui_core attrs.xml & enum attributes to fluentui_topappbars attrs.xml to reuse at module level. Attributes also prefixed with 'fluentui_' to avoid conflict with other UI library attributes)
+
 </resources>
