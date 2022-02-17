@@ -34,4 +34,131 @@
     <!--Transparent Foregrounds-->
     <attr name="fluentuiForegroundOnPrimary80Color" format="reference|color"/>
     <attr name="fluentuiForegroundOnPrimary70Color" format="reference|color"/>
+
+    <!--Attributes from Modules-->
+
+    <!--fluentui_calendar Start-->
+    <!--NumberPicker-->
+    <attr name="fluentui_numberPickerStyle" format="reference" />
+    <!-- Color for the solid color background if such for optimized rendering. -->
+    <attr name="fluentui_solidColor" format="color|reference" />
+    <!-- The divider for making the selection area. -->
+    <attr name="fluentui_selectionDivider" format="reference" />
+    <!-- The height of the selection divider. -->
+    <attr name="fluentui_selectionDividerHeight" format="dimension" />
+    <!-- The distance between the two selection dividers. -->
+    <attr name="fluentui_selectionDividersDistance" format="dimension" />
+    <!-- The min height of the NumberPicker. -->
+    <attr name="fluentui_internalMinHeight" format="dimension" />
+    <!-- The max height of the NumberPicker. -->
+    <attr name="fluentui_internalMaxHeight" format="dimension" />
+    <!-- The min width of the NumberPicker. -->
+    <attr name="fluentui_internalMinWidth" format="dimension" />
+    <!-- The max width of the NumberPicker. -->
+    <attr name="fluentui_internalMaxWidth" format="dimension" />
+    <!-- The layout of the number picker. -->
+    <attr name="fluentui_internalLayout" format="reference" />
+    <!-- The drawable for pressed virtual (increment/decrement) buttons. -->
+    <attr name="fluentui_virtualButtonPressedDrawable" format="reference"/>
+    <!-- If true then the selector wheel is hidden until the picker has focus. -->
+    <attr name="fluentui_hideWheelUntilFocused" format="boolean"/>
+    <attr name="fluentui_numberPickerTextColor" format="color|reference"/>
+    <attr name="fluentui_numberPickerSelectedTextColor" format="color|reference"/>
+    <attr name="fluentui_selectorWheelItemCount" format="integer" />
+
+    <!--fluentui_calendar End-->
+
+    <!--fluentui_ccb Start-->
+    <!--ContextualCommandBar-->
+    <attr name="fluentui_itemSpace" format="dimension"/>
+    <attr name="fluentui_groupSpace" format="dimension"/>
+    <!--ContextualCommandBar End-->
+
+    <!--fluentui_ccb End-->
+
+    <!--fluentui_drawer Start-->
+    <!--Drawer-->
+    <attr name="fluentui_cornerRadius" format="dimension"/>
+
+    <!--PersistentBottomSheet-->
+    <!-- The min height of the BottomSheet -->
+    <attr name="fluentui_peekHeight" format="dimension" />
+    <!--  Determines whether to keep the default drawer handle or not -->
+    <attr name="fluentui_isDrawerHandleVisible" format="boolean" />
+    <!--  horizontal Item in a row-->
+    <attr name="fluentui_itemsInRow" format="integer" />
+    <!-- horizontal item text style-->
+    <attr name="fluentui_horizontalItemTextAppearance" format="reference" />
+    <!-- vertical item text style-->
+    <attr name="fluentui_verticalItemTextAppearance" format="reference" />
+    <!-- vertical item subtitle style-->
+    <attr name="fluentui_verticalItemSubTextAppearance" format="reference" />
+    <!--header text style-->
+    <attr name="fluentui_headerTextAppearance" format="reference" />
+
+    <!--fluentui_drawer End-->
+
+    <!--fluentui_listitem Start-->
+
+    <!--ListItemView-->
+    <attr name="fluentui_title" format="string" />
+    <attr name="fluentui_subtitle" format="string" />
+    <attr name="fluentui_footer" format="string" />
+    <attr name="fluentui_titleMaxLines" format="integer" />
+    <attr name="fluentui_subtitleMaxLines" format="integer" />
+    <attr name="fluentui_footerMaxLines" format="integer" />
+    <!--fluentui_listitem End-->
+
+    <!--fluent_others Start-->
+
+    <!--ActionBarLayout-->
+    <attr name="fluentui_viewPager" format="reference"/>
+    <!--fluent_others End-->
+
+    <!-- fluentui_peoplepicker Start-->
+
+    <!--PeoplePickerView-->
+    <attr name="fluentui_label" format="string" />
+    <attr name="fluentui_valueHint" format="string" />
+    <attr name="fluentui_showHint" format="boolean" />
+    <attr name="fluentui_characterThreshold" format="integer" />
+
+    <!-- fluentui_peoplepicker End-->
+
+    <!--fluentui_persona Start-->
+
+    <!--AvatarView-->
+    <attr name="fluentui_avatarBackgroundColor" format="reference" />
+    <attr name="fluentui_avatarImageDrawable" format="reference" />
+
+    <!--AvatarGroupView-->
+    <attr name="fluentui_maxDisplayedAvatars" format="integer" />
+
+    <!--PersonaView-->
+    <attr name="fluentui_name" format="string" />
+    <attr name="fluentui_email" format="string" />
+
+    <!--PersonaChipView-->
+    <attr name="fluentui_showCloseIconWhenSelected" format="boolean" />
+
+    <!--fluentui_persona End-->
+
+    <!--fluentui_tablayout Start-->
+
+    <!--TabLayout-->
+    <attr name="fluentui_containerBackgroundColor" format="color" />
+    <attr name="fluentui_tabsBackgroundColor" format="color" />
+    <attr name="fluentui_tabSelectedBackgroundColor" format="color" />
+    <attr name="fluentui_tabUnselectedBackgroundColor" format="color" />
+    <attr name="fluentui_tabSelectedTextColor" format="color" />
+    <attr name="fluentui_tabUnselectedTextColor" format="color" />
+
+    <!--fluentui_tablayout End-->
+
+    <!--fluentui_topappbars Start-->
+
+    <!--AppBarLayout-->
+    <attr name="fluentui_scrollTargetViewId" format="integer" />
+    <!--fluentui_topappbars End-->
+
 </resources>

@@ -673,37 +673,37 @@ internal class NumberPicker : LinearLayout {
         mHasSelectorWheel = true
 
         mSelectorWheelItemCount = attributesArray.getInt(
-            R.styleable.NumberPicker_selectorWheelItemCount, DEFAULT_SELECTOR_WHEEL_ITEM_COUNT)
+            R.styleable.NumberPicker_fluentui_selectorWheelItemCount, DEFAULT_SELECTOR_WHEEL_ITEM_COUNT)
         mSelectorMiddleItemIndex = mSelectorWheelItemCount / 2
         mSelectorIndices = IntArray(mSelectorWheelItemCount)
         mHideWheelUntilFocused = attributesArray.getBoolean(
-            R.styleable.NumberPicker_hideWheelUntilFocused, false)
-        mSolidColor = attributesArray.getColor(R.styleable.NumberPicker_solidColor, 0)
-        mSelectionDivider = attributesArray.getDrawable(R.styleable.NumberPicker_selectionDivider)
+            R.styleable.NumberPicker_fluentui_hideWheelUntilFocused, false)
+        mSolidColor = attributesArray.getColor(R.styleable.NumberPicker_fluentui_solidColor, 0)
+        mSelectionDivider = attributesArray.getDrawable(R.styleable.NumberPicker_fluentui_selectionDivider)
         val defSelectionDividerHeight = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, UNSCALED_DEFAULT_SELECTION_DIVIDER_HEIGHT.toFloat(),
             resources.displayMetrics).toInt()
         mSelectionDividerHeight = attributesArray.getDimensionPixelSize(
-            R.styleable.NumberPicker_selectionDividerHeight, defSelectionDividerHeight)
+            R.styleable.NumberPicker_fluentui_selectionDividerHeight, defSelectionDividerHeight)
         val defSelectionDividerDistance = TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP, UNSCALED_DEFAULT_SELECTION_DIVIDERS_DISTANCE.toFloat(),
             resources.displayMetrics).toInt()
         mSelectionDividersDistance = attributesArray.getDimensionPixelSize(
-            R.styleable.NumberPicker_selectionDividersDistance, defSelectionDividerDistance)
+            R.styleable.NumberPicker_fluentui_selectionDividersDistance, defSelectionDividerDistance)
         mSelectedTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiNumberPickerSelectedTextColor)
         mTextColor = ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiNumberPickerDefaultTextColor)
         mMinHeight = attributesArray.getDimensionPixelSize(
-            R.styleable.NumberPicker_internalMinHeight, SIZE_UNSPECIFIED)
+            R.styleable.NumberPicker_fluentui_internalMinHeight, SIZE_UNSPECIFIED)
         mMaxHeight = attributesArray.getDimensionPixelSize(
-            R.styleable.NumberPicker_internalMaxHeight, SIZE_UNSPECIFIED)
+            R.styleable.NumberPicker_fluentui_internalMaxHeight, SIZE_UNSPECIFIED)
         if (mMinHeight != SIZE_UNSPECIFIED && mMaxHeight != SIZE_UNSPECIFIED
             && mMinHeight > mMaxHeight) {
             throw IllegalArgumentException("minHeight > maxHeight")
         }
         mMinWidth = attributesArray.getDimensionPixelSize(
-            R.styleable.NumberPicker_internalMinWidth, SIZE_UNSPECIFIED)
+            R.styleable.NumberPicker_fluentui_internalMinWidth, SIZE_UNSPECIFIED)
         mMaxWidth = attributesArray.getDimensionPixelSize(
-            R.styleable.NumberPicker_internalMaxWidth, SIZE_UNSPECIFIED)
+            R.styleable.NumberPicker_fluentui_internalMaxWidth, SIZE_UNSPECIFIED)
 
         if (mMinWidth != SIZE_UNSPECIFIED && mMaxWidth != SIZE_UNSPECIFIED
             && mMinWidth > mMaxWidth) {
@@ -711,10 +711,10 @@ internal class NumberPicker : LinearLayout {
         }
         mComputeMaxWidth = mMaxWidth == SIZE_UNSPECIFIED
         mVirtualButtonPressedDrawable = attributesArray.getDrawable(
-            R.styleable.NumberPicker_virtualButtonPressedDrawable)
+            R.styleable.NumberPicker_fluentui_virtualButtonPressedDrawable)
 
         val textAlign = attributesArray.getInt(
-            R.styleable.NumberPicker_textAlign, ALIGN_CENTER)
+            R.styleable.NumberPicker_fluentui_textAlign, ALIGN_CENTER)
 
         attributesArray.recycle()
         mPressedStateHelper = PressedStateHelper()

@@ -6,9 +6,9 @@
 
 <resources>
     <declare-styleable name="PersonaView">
-        <attr name="name" format="string" />
-        <attr name="email" format="string" />
-        <attr name="avatarSize" />
-        <attr name="avatarImageDrawable" />
+        <attr name="fluentui_name"/>
+        <attr name="fluentui_email"/>
+        <attr name="fluentui_avatarSize" />
+        <attr name="fluentui_avatarImageDrawable" />
     </declare-styleable>
 </resources>

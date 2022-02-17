@@ -20,9 +20,9 @@
         android:elevation="@dimen/fluentui_drawer_elevation"
         android:background="?attr/fluentuiDrawerBackgroundColor"
         android:clipToPadding="true"
-        app:behaviorHideable="true"
-        app:behaviorPeekWidth="@dimen/fluentui_drawer_peek_width"
-        app:behaviorType="RIGHT"
+        app:fluentui_behaviorHideable="true"
+        app:fluentui_behaviorPeekWidth="@dimen/fluentui_drawer_peek_width"
+        app:fluentui_behaviorType="RIGHT"
         app:layout_behavior="@string/side_sheet_behavior">
 
         <LinearLayout

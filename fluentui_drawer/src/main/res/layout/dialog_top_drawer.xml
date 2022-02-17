@@ -19,9 +19,9 @@
         android:elevation="@dimen/fluentui_drawer_elevation"
         android:orientation="vertical"
         app:layout_behavior="@string/top_sheet_behavior"
-        app:behaviorHideable="false"
-        app:behaviorPeekHeight="@dimen/fluentui_drawer_peek_height"
-        app:behaviorType="TOP">
+        app:fluentui_behaviorHideable="false"
+        app:fluentui_behaviorPeekHeight="@dimen/fluentui_drawer_peek_height"
+        app:fluentui_behaviorType="TOP">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

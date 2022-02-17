@@ -45,8 +45,8 @@ class ActionBarLayout @JvmOverloads constructor(appContext: Context, attrs: Attr
 
     init {
         val styledAttributes = context.obtainStyledAttributes(attrs, R.styleable.ActionBarLayout)
-        viewPagerAttr = styledAttributes.getResourceId(R.styleable.ActionBarLayout_viewPager, View.NO_ID)
-        typeAttr = Type.values()[styledAttributes.getInt(R.styleable.ActionBarLayout_type, DEFAULT_TYPE.ordinal)]
+        viewPagerAttr = styledAttributes.getResourceId(R.styleable.ActionBarLayout_fluentui_viewPager, View.NO_ID)
+        typeAttr = Type.values()[styledAttributes.getInt(R.styleable.ActionBarLayout_fluentui_type, DEFAULT_TYPE.ordinal)]
         styledAttributes.recycle()
         finalPageString = context.getString(R.string.action_bar_default_final_action)
     }

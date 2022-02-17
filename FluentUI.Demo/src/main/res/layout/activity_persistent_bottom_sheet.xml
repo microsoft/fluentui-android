@@ -74,8 +74,8 @@
         android:layout_height="match_parent"
         android:id="@+id/demo_persistent_sheet"
         android:layout_alignParentBottom="true"
-        app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
-        app:isDrawerHandleVisible="true"/>
+        app:fluentui_peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
+        app:fluentui_isDrawerHandleVisible="true"/>
 
     <com.microsoft.fluentui.persistentbottomsheet.PersistentBottomSheet
         android:layout_width="match_parent"
@@ -83,8 +83,8 @@
         android:id="@+id/default_persistent_sheet"
         android:layout_alignParentBottom="true"
         android:visibility="gone"
-        app:peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
-        app:ItemsInRow="5"
-        app:isDrawerHandleVisible="true"/>
+        app:fluentui_peekHeight="@dimen/fluentui_persistent_bottom_sheet_peek_height"
+        app:fluentui_itemsInRow="5"
+        app:fluentui_isDrawerHandleVisible="true"/>
 
 </RelativeLayout>

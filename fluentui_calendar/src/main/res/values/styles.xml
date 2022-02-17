@@ -39,11 +39,11 @@
         <item name="android:orientation">vertical</item>
         <item name="android:requiresFadingEdge">vertical</item>
         <item name="android:fadingEdgeLength">@dimen/fluentui_date_time_picker_fading_edge_length</item>
-        <item name="solidColor">@android:color/transparent</item>
-        <item name="internalMinWidth">@dimen/fluentui_date_time_picker_internal_min_width</item>
-        <item name="internalMaxHeight">@dimen/fluentui_date_time_picker_max_height</item>
-        <item name="selectorWheelItemCount">@integer/fluentui_number_picker_selector_wheel_item_count</item>
-        <item name="textAlign">center</item>
+        <item name="fluentui_solidColor">@android:color/transparent</item>
+        <item name="fluentui_internalMinWidth">@dimen/fluentui_date_time_picker_internal_min_width</item>
+        <item name="fluentui_internalMaxHeight">@dimen/fluentui_date_time_picker_max_height</item>
+        <item name="fluentui_selectorWheelItemCount">@integer/fluentui_number_picker_selector_wheel_item_count</item>
+        <item name="fluentui_textAlign">center</item>
         <item name="android:paddingRight">@dimen/fluentui_date_time_picker_padding_right</item>
     </style>
 </resources>

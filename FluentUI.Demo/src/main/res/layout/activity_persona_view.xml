@@ -23,10 +23,10 @@
         android:id="@+id/persona_example_xxlarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:avatarSize="xxlarge"
-        app:email="@string/persona_email_kat_larsson"
-        app:footer="@string/persona_footer"
-        app:name="@string/persona_name_kat_larsson"
+        app:fluentui_avatarSize="xxlarge"
+        app:fluentui_email="@string/persona_email_kat_larsson"
+        app:fluentui_footer="@string/persona_footer"
+        app:fluentui_name="@string/persona_name_kat_larsson"
         app:subtitle="@string/persona_email_kat_larsson" />
 
     <TextView
@@ -41,10 +41,10 @@
         android:id="@+id/persona_example_large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:avatarImageDrawable="@drawable/avatar_tim_deboer"
-        app:avatarSize="large"
-        app:email="@string/persona_email_mauricio_august"
-        app:name="@string/persona_name_mauricio_august"
+        app:fluentui_avatarImageDrawable="@drawable/avatar_tim_deboer"
+        app:fluentui_avatarSize="large"
+        app:fluentui_email="@string/persona_email_mauricio_august"
+        app:fluentui_name="@string/persona_name_mauricio_august"
         app:subtitle="@string/persona_email_mauricio_august" />
 
     <TextView

@@ -35,7 +35,7 @@
             style="@style/Widget.FluentUI.NumberPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:internalMinWidth="@dimen/fluentui_date_time_picker_date_internal_min_width" />
+            app:fluentui_internalMinWidth="@dimen/fluentui_date_time_picker_date_internal_min_width" />
 
         <com.microsoft.fluentui.view.NumberPicker
             android:id="@+id/hour_picker"
@@ -71,7 +71,7 @@
             style="@style/Widget.FluentUI.NumberPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:internalMinWidth="@dimen/fluentui_date_time_picker_month_internal_min_width" />
+            app:fluentui_internalMinWidth="@dimen/fluentui_date_time_picker_month_internal_min_width" />
 
         <com.microsoft.fluentui.view.NumberPicker
             android:id="@+id/day_picker"
@@ -84,7 +84,7 @@
             style="@style/Widget.FluentUI.NumberPicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:internalMinWidth="@dimen/fluentui_date_time_picker_year_internal_min_width" />
+            app:fluentui_internalMinWidth="@dimen/fluentui_date_time_picker_year_internal_min_width" />
 
     </LinearLayout>
 

@@ -14,4 +14,30 @@
     <attr name="fluentuiPersonaChipForegroundActiveColor" format="reference|color"/>
     <attr name="fluentuiPersonaChipTextErrorColor" format="reference|color"/>
     <attr name="fluentuiPersonaChipTextDisabledColor" format="reference|color"/>
+
+    <!--common fluentui_persona Module attributes-->
+
+    <!--AvatarView-->
+    <attr name="fluentui_avatarSize" format="enum">
+        <enum name="xsmall" value="0" />
+        <enum name="small" value="1" />
+        <enum name="medium" value="2" />
+        <enum name="large" value="3" />
+        <enum name="xlarge" value="4" />
+        <enum name="xxlarge" value="5" />
+    </attr>
+    <attr name="fluentui_avatarStyle" format="enum">
+        <enum name="circle" value="0" />
+        <enum name="square" value="1" />
+    </attr>
+    <attr name="fluentui_avatarBorderStyle" format="enum">
+        <enum name="no_border" value="0" />
+        <enum name="ring" value="1" />
+    </attr>
+
+    <!--AvatarGroupView-->
+    <attr name="fluentui_avatarGroupStyle" format="enum">
+        <enum name="stack" value="0" />
+        <enum name="pile" value="1" />
+    </attr>
 </resources>

@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/fluentui_persona_chip_spacing"
-        app:avatarSize="xsmall" />
+        app:fluentui_avatarSize="xsmall" />
 
     <ImageView
         android:id="@+id/persona_chip_close"

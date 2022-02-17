@@ -16,4 +16,11 @@
     <attr name="fluentuiListSubHeaderTitlePrimaryColor" format="reference|color"/>
     <attr name="fluentuiListSubHeaderTitleSecondaryColor" format="reference|color"/>
     <attr name="fluentuiListSubHeaderTitleTertiaryColor" format="reference|color"/>
+    <!--Module attributes-->
+
+    <attr name="fluentui_titleColor" format="enum">
+        <enum name="primary" value="0" />
+        <enum name="secondary" value="1" />
+        <enum name="tertiary" value="2" />
+    </attr>
 </resources>
