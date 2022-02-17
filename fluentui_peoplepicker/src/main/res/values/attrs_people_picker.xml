@@ -6,15 +6,10 @@
 
 <resources>
     <declare-styleable name="PeoplePickerView">
-        <attr name="label" format="string" />
-        <attr name="valueHint" format="string" />
-        <attr name="showHint" format="boolean" />
-        <attr name="characterThreshold" format="integer" />
-        <attr name="personaChipClickStyle" format="enum">
-            <enum name="none" value="0"/>
-            <enum name="delete" value="1"/>
-            <enum name="select" value="2"/>
-            <enum name="select_deselect" value="3"/>
-        </attr>
+        <attr name="fluentui_label"/>
+        <attr name="fluentui_valueHint"/>
+        <attr name="fluentui_showHint"/>
+        <attr name="fluentui_characterThreshold"/>
+        <attr name="fluentui_personaChipClickStyle"/>
     </declare-styleable>
 </resources>

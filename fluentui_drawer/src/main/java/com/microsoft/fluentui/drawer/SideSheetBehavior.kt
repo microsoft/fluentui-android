@@ -83,13 +83,13 @@ class SideSheetBehavior<V: View> : CoordinatorLayout.Behavior<V> {
     constructor(context: Context, attrs: AttributeSet? = null): super(context, attrs) {
         val a:TypedArray = context.obtainStyledAttributes(attrs, R.styleable.SheetBehaviorLayout)
         setFitToContents(a.getBoolean(
-                R.styleable.SheetBehaviorLayout_behaviorFitToContents, true))
+                R.styleable.SheetBehaviorLayout_fluentui_behaviorFitToContents, true))
         hideable = a.getBoolean(
-                R.styleable.SheetBehaviorLayout_behaviorHideable, false)
+                R.styleable.SheetBehaviorLayout_fluentui_behaviorHideable, false)
         skipCollapsed = a.getBoolean(
-                R.styleable.SheetBehaviorLayout_behaviorSkipCollapsed, false)
-        peekWidth = a.getDimensionPixelSize(R.styleable.SheetBehaviorLayout_behaviorPeekWidth, 0)
-        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_behaviorType) ?: "RIGHT")
+                R.styleable.SheetBehaviorLayout_fluentui_behaviorSkipCollapsed, false)
+        peekWidth = a.getDimensionPixelSize(R.styleable.SheetBehaviorLayout_fluentui_behaviorPeekWidth, 0)
+        behaviorType = BehaviorType.valueOf(a.getString(R.styleable.SheetBehaviorLayout_fluentui_behaviorType) ?: "RIGHT")
         a.recycle()
 
         val configuration: ViewConfiguration = ViewConfiguration.get(context)

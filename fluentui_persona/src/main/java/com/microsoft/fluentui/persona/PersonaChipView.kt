@@ -115,13 +115,13 @@ class PersonaChipView : TemplateView {
         if (attrs == null)
             return
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaChipView)
-        name = styledAttrs.getString(R.styleable.PersonaChipView_name) ?: ""
-        email = styledAttrs.getString(R.styleable.PersonaChipView_email) ?: ""
-        showCloseIconWhenSelected = styledAttrs.getBoolean(R.styleable.PersonaChipView_showCloseIconWhenSelected, true)
+        name = styledAttrs.getString(R.styleable.PersonaChipView_fluentui_name) ?: ""
+        email = styledAttrs.getString(R.styleable.PersonaChipView_fluentui_email) ?: ""
+        showCloseIconWhenSelected = styledAttrs.getBoolean(R.styleable.PersonaChipView_fluentui_showCloseIconWhenSelected, true)
 
-        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.PersonaChipView_avatarImageDrawable, 0)
+        val avatarImageResourceId = styledAttrs.getResourceId(R.styleable.PersonaChipView_fluentui_avatarImageDrawable, 0)
         if (avatarImageResourceId > 0 && resources.getResourceTypeName(avatarImageResourceId) == "drawable")
-            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaChipView_avatarImageDrawable)
+            avatarImageDrawable = styledAttrs.getDrawable(R.styleable.PersonaChipView_fluentui_avatarImageDrawable)
 
         styledAttrs.recycle()
         contentDescription = name

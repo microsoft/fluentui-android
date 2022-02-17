@@ -6,7 +6,7 @@
 
 <resources>
     <declare-styleable name="ContextualCommandBar">
-        <attr name="itemSpace" format="dimension"/>
-        <attr name="groupSpace" format="dimension"/>
+        <attr name="fluentui_itemSpace"/>
+        <attr name="fluentui_groupSpace"/>
     </declare-styleable>
 </resources>

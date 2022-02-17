@@ -40,4 +40,12 @@
     <attr name="fluentuiCompoundButtonTintDefaultColor" format="reference|color"/>
     <attr name="fluentuiCompoundButtonTintCheckedColor" format="reference|color"/>
 
+    <!--common fluentui_others Module attributes-->
+    <!--ActionBarLayout-->
+    <attr name="fluentui_type" format="enum">
+        <enum name="basic" value="0"/>
+        <enum name="icon" value="1"/>
+        <enum name="carousel" value="2"/>
+    </attr>
+
 </resources>

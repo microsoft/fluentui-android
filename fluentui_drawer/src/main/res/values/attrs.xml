@@ -24,11 +24,11 @@
 
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">
-        <attr format="string" name="behaviorType"/>
-        <attr format="dimension" name="behaviorPeekHeight"/>
-        <attr format="dimension" name="behaviorPeekWidth" />
-        <attr format="boolean" name="behaviorHideable"/>
-        <attr format="boolean" name="behaviorSkipCollapsed"/>
-        <attr format="boolean" name="behaviorFitToContents"/>
+        <attr format="string" name="fluentui_behaviorType"/>
+        <attr format="dimension" name="fluentui_behaviorPeekHeight"/>
+        <attr format="dimension" name="fluentui_behaviorPeekWidth" />
+        <attr format="boolean" name="fluentui_behaviorHideable"/>
+        <attr format="boolean" name="fluentui_behaviorSkipCollapsed"/>
+        <attr format="boolean" name="fluentui_behaviorFitToContents"/>
     </declare-styleable>
 </resources>
