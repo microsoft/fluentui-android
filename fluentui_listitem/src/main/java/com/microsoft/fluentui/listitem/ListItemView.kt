@@ -248,6 +248,18 @@ open class ListItemView : TemplateView {
         }
 
     /**
+     * Sets the boolean for disabled state of the item.
+     * The default value is false. Item is enabled.
+     */
+    var disabled: Boolean = false
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateTemplate()
+        }
+
+    /**
      * Defines the start inset for the text area.
      */
     internal val textAreaStartInset: Float
@@ -309,6 +321,8 @@ open class ListItemView : TemplateView {
         val customViewSizeOrdinal = styledAttrs.getInt(R.styleable.ListItemView_fluentui_customViewSize, DEFAULT_CUSTOM_VIEW_SIZE.ordinal)
         customViewSize = CustomViewSize.values()[customViewSizeOrdinal]
 
+        disabled = styledAttrs.getBoolean(R.styleable.ListItemView_fluentui_disabled, false)
+
         styledAttrs.recycle()
     }
 
@@ -344,6 +358,12 @@ open class ListItemView : TemplateView {
     }
 
     private fun updateTemplate() {
+        this.isEnabled = !disabled
+        titleView?.isEnabled = !disabled
+        subtitleView?.isEnabled = !disabled
+        footerView?.isEnabled = !disabled
+        customView?.isEnabled = !disabled
+
         updateTextAppearance()
         updateTextView(titleView, title, titleMaxLines, titleTruncateAt)
         updateTextView(subtitleView, subtitle, subtitleMaxLines, subtitleTruncateAt)

@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.core.widget.TextViewCompat
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentui.util.getImageDrawable
 import com.microsoft.fluentui.view.TemplateView
@@ -28,6 +29,7 @@ class SheetHorizontalItemView: TemplateView {
 
     private var title: String = ""
     private var customView: View? = null
+    private var disabled: Boolean = false
     private var mSheetItem: SheetItem? = null
     private var textAppearanceResId: Int = R.style.TextAppearance_FluentUI_HorizontalListItemTitle
 
@@ -43,9 +45,11 @@ class SheetHorizontalItemView: TemplateView {
     constructor(context: Context, sheetItem: SheetItem, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Drawer), attrs, defStyleAttr) {
         this.mSheetItem = sheetItem
         this.title = sheetItem.title
+        this.disabled = sheetItem.disabled
+
         if (sheetItem.bitmap != null) {
             this.customView = context.createImageView(sheetItem.bitmap!!)
-        } else {
+        } else if (sheetItem.drawable != NO_ID) {
             this.customView = context.createImageView(sheetItem.drawable, sheetItem.tint)
         }
     }
@@ -64,12 +68,17 @@ class SheetHorizontalItemView: TemplateView {
             mainContainer.setOnClickListener {
                 onSheetItemClickListener?.onSheetItemClick(mSheetItem!!)
             }
+
+        mainContainer.isEnabled = !disabled
+        sheetItemTitle.isEnabled = !disabled
+
         mainContainer.setBackgroundResource(R.drawable.bottom_sheet_item_ripple_background)
         listener?.onChildTemplateLoaded(mainContainer)
     }
 
     private fun updateTitleView() {
         sheetItemTitle.text = title
+
         if (mSheetItem != null && mSheetItem?.contentDescription!!.isNotEmpty()) {
             mainContainer.contentDescription = mSheetItem?.contentDescription
         }
@@ -87,15 +96,21 @@ class SheetHorizontalItemView: TemplateView {
 
     private fun updateCustomView() {
         if (customView != null) {
+            if (disabled)
+                (customView as ImageView).imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
             imageContainer.addView(customView)
         }
     }
 
-    fun update(title:String, customView:View) {
+    fun update(title:String, customView:ImageView, disabled: Boolean = false) {
         this.title = title
         this.customView = customView
+        this.disabled = disabled
         updateTitleView()
         updateCustomView()
+
+        this.isEnabled = !disabled
+        sheetItemTitle.isEnabled = !disabled
     }
 
     fun update(sheetItem: SheetItem) {

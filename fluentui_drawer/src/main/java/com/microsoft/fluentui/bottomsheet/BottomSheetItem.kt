@@ -38,6 +38,7 @@ class BottomSheetItem : Parcelable {
     val imageTint: Int
     val imageTintType: ImageTintType
     val customBitmap: Bitmap?
+    val disabled: Boolean
 
     @JvmOverloads
     constructor(
@@ -48,7 +49,8 @@ class BottomSheetItem : Parcelable {
         useDivider: Boolean = false,
         @ColorInt imageTint: Int = 0,
         imageTintType: ImageTintType = ImageTintType.DEFAULT,
-        customBitmap: Bitmap? = null
+        customBitmap: Bitmap? = null,
+        disabled: Boolean = false,
     ) {
         this.id = id
         this.imageId = imageId
@@ -58,6 +60,7 @@ class BottomSheetItem : Parcelable {
         this.imageTint = imageTint
         this.imageTintType = imageTintType
         this.customBitmap = customBitmap
+        this.disabled = disabled
     }
 
     private constructor(parcel: Parcel) : this(
@@ -68,7 +71,8 @@ class BottomSheetItem : Parcelable {
         useDivider = parcel.readInt() == 1,
         imageTint = parcel.readInt(),
         imageTintType = ImageTintType.values()[parcel.readInt()],
-        customBitmap = parcel.readParcelable(Bitmap::class.java.classLoader)
+        customBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
+        disabled = parcel.readInt() == 1
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -80,6 +84,7 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(imageTint)
         parcel.writeInt(imageTintType.ordinal)
         parcel.writeValue(customBitmap)
+        parcel.writeInt(if (disabled) 1 else 0)
     }
 
     override fun describeContents(): Int = 0
@@ -97,6 +102,7 @@ class BottomSheetItem : Parcelable {
         if (imageTint != other.imageTint) return false
         if (imageTintType != other.imageTintType) return false
         if (customBitmap != other.customBitmap) return false
+        if (disabled != other.disabled) return false
 
         return true
     }
@@ -110,6 +116,7 @@ class BottomSheetItem : Parcelable {
         result = 31 * result + imageTint
         result = 31 * result + imageTintType.hashCode()
         result = 31 * result + (customBitmap?.hashCode() ?: 0)
+        result = 31 * result + disabled.hashCode()
         return result
     }
 

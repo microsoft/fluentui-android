@@ -8,6 +8,7 @@
     <attr name="fluentuiBottomSheetBackgroundColor" format="reference|color"/>
     <attr name="fluentuiBottomSheetBackgroundPressedColor" format="reference|color"/>
     <attr name="fluentuiBottomSheetIconColor" format="reference|color"/>
+    <attr name="fluentuiBottomSheetDisabledIconColor" format="reference|color"/>
     <attr name="fluentuiBottomSheetDividerColor" format="reference|color"/>
     <!--Drawer-->
     <attr name="fluentuiDrawerBackgroundColor" format="reference|color"/>
@@ -17,10 +18,12 @@
     <!--Persistent bottomsheet-->
     <attr name="fluentuiPersistentBottomSheetHeadingColor" format="reference|color"/>
     <attr name="fluentuiPersistentBottomSheetItemColor" format="reference|color"/>
+    <attr name="fluentuiPersistentBottomSheetItemDisabledColor" format="reference|color"/>
     <attr name="fluentuiPersistentBottomSheetHorizontalItemColor" format="reference|color"/>
 
     <!-- Bottomsheet Horizontal ListItem -->
     <attr name="fluentuiHorizontalListItemTitleColor" format="reference|color"/>
+    <attr name="fluentuiHorizontalListItemTitleDisabledColor" format="reference|color"/>
 
     <!-- SheetBehavior-->
     <declare-styleable name="SheetBehaviorLayout">

@@ -256,11 +256,11 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
 }
 
 
-class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null, var contentDescription: String = "") {
+class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null, var contentDescription: String = "", var disabled: Boolean = false) {
 
-    // just a  convenient constructor
+    // just a convenient constructor
     @JvmOverloads
-    constructor(id: Int, title: String = "", bitmap: Bitmap) : this(id, title, NO_ID, null, bitmap, "")
+    constructor(id: Int, title: String = "", bitmap: Bitmap, disabled: Boolean = false) : this(id, title, NO_ID, null, bitmap, "", disabled)
 
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)
@@ -278,6 +278,7 @@ class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @
         if (tint != other.tint) return false
         if (bitmap != other.bitmap) return false
         if (contentDescription != other.contentDescription) return false
+        if (disabled != other.disabled) return false
 
         return true
     }
@@ -288,6 +289,7 @@ class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @
         result = 31 * result + drawable
         result = 31 * result + (tint ?: 0)
         result = 31 * result + (bitmap?.hashCode() ?: 0)
+        result = 31 * result + disabled.hashCode()
         return result
     }
 }

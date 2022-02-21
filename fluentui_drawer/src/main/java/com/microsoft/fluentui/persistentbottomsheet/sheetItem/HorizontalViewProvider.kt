@@ -77,7 +77,7 @@ internal class HorizontalViewProvider(val context: Context) : IViewProvider {
         return itemTypeList.horizontalItemSheet.filter {
             it.id != 0
         }.map {
-            SheetItem(it.id, it.title, it.drawable, it.tint, it.bitmap, it.contentDescription)
+            SheetItem(it.id, it.title, it.drawable, it.tint, it.bitmap, it.contentDescription, it.disabled)
         }
     }
 }

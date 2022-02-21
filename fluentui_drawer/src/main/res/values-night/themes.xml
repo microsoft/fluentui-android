@@ -13,9 +13,14 @@
         <item name="fluentuiPersistentBottomSheetHorizontalItemColor">@color/fluentui_gray_400</item>
         <!--BottomSheet-->
         <item name="fluentuiBottomSheetBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
+        <item name="fluentuiBottomSheetDisabledIconColor">@color/fluentui_gray_600</item>
         <item name="fluentuiBottomSheetBackgroundPressedColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
         <item name="fluentuiBottomSheetDividerColor">@color/fluentui_gray_700</item>
         <!-- Bottomsheet Horizontal ListItem -->
         <item name="fluentuiHorizontalListItemTitleColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiHorizontalListItemTitleDisabledColor">@color/fluentui_gray_600</item>
+        <!-- Persistent Bottom Sheet -->
+        <item name="fluentuiPersistentBottomSheetItemColor">@color/fluentui_gray_100</item>
+        <item name="fluentuiPersistentBottomSheetItemDisabledColor">@color/fluentui_gray_600</item>
     </style>
 </resources>

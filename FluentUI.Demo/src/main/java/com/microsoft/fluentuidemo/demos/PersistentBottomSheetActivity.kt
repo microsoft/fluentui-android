@@ -65,50 +65,59 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                         R.id.bottom_sheet_item_flag,
                         getString(R.string.bottom_sheet_item_flag_title),
                         R.drawable.ic_fluent_flag_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)),
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = false),
                 SheetItem(R.id.bottom_sheet_item_alarm,
                         getString(R.string.bottom_sheet_item_custom_image),
-                        dummyBitmap()),
+                        dummyBitmap(),
+                        disabled = true),
                 SheetItem(
                         R.id.persistent_sheet_item_add_view,
                         getString(R.string.persistent_sheet_item_add_remove_view),
                         R.drawable.ic_add_circle_28_fill,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)),
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = false),
                 SheetItem(
                         R.id.persistent_sheet_item_change_height_button,
                         getString(R.string.persistent_sheet_item_change_collapsed_height),
                         R.drawable.ic_vertical_align_center_28_fill,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = true
                 ),
                 SheetItem(
                         R.id.bottom_sheet_item_reply,
                         getString(R.string.bottom_sheet_item_reply_title),
                         R.drawable.ic_fluent_reply_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = false
                 ),
                 SheetItem(
                         R.id.bottom_sheet_item_forward,
                         getString(R.string.bottom_sheet_item_forward_title),
                         R.drawable.ic_fluent_forward_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = true
                 ),
                 SheetItem(
                         R.id.bottom_sheet_item_delete,
                         getString(R.string.bottom_sheet_item_delete_title),
                         R.drawable.ic_delete_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = false
                 ),
                 SheetItem(
                         R.id.bottom_sheet_item_delete,
                         getString(R.string.bottom_sheet_item_delete_title),
                         R.drawable.ic_delete_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = true
                 ),
                 SheetItem(
                         R.id.bottom_sheet_item_delete,
                         getString(R.string.bottom_sheet_item_delete_title),
                         R.drawable.ic_delete_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = false
                 )
         )
 
@@ -117,25 +126,30 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                         R.id.bottom_sheet_item_flag,
                         getString(R.string.bottom_sheet_item_flag_title),
                         R.drawable.ic_fluent_flag_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)),
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = true),
                 SheetItem(R.id.bottom_sheet_item_alarm,
                         getString(R.string.bottom_sheet_item_custom_image),
-                        dummyBitmap()),
+                        dummyBitmap(),
+                        disabled = false),
                 SheetItem(
                         R.id.persistent_sheet_item_add_view,
                         getString(R.string.persistent_sheet_item_add_remove_view),
                         R.drawable.ic_add_circle_28_fill,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)),
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = true),
                 SheetItem(
                         R.id.persistent_sheet_item_change_height_button,
                         getString(R.string.persistent_sheet_item_change_collapsed_height),
                         R.drawable.ic_vertical_align_center_28_fill,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)),
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = false),
                 SheetItem(
                         R.id.bottom_sheet_item_reply,
                         getString(R.string.bottom_sheet_item_reply_title),
                         R.drawable.ic_fluent_reply_24_regular,
-                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint))
+                        ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                        disabled = true)
         )
 
 
@@ -154,31 +168,35 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                                 R.id.persistent_sheet_item_create_new_folder,
                                 getString(R.string.persistent_sheet_item_create_new_folder_title),
                                 R.drawable.ic_create_new_folder_24_filled,
-                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                                disabled = true
                         ),
                         SheetItem(
                                 R.id.persistent_sheet_item_edit,
                                 getString(R.string.persistent_sheet_item_edit_title),
                                 R.drawable.ic_edit_24_filled,
-                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                                disabled = false
                         ),
                         SheetItem(
                                 R.id.persistent_sheet_item_save,
                                 getString(R.string.persistent_sheet_item_save_title),
                                 R.drawable.ic_save_24_filled,
-                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                                disabled = true
                         ),
                         SheetItem(
                                 R.id.persistent_sheet_item_zoom_in,
                                 getString(R.string.persistent_sheet_item_zoom_in_title),
                                 R.drawable.ic_zoom_in_24_filled,
-                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
                         ),
                         SheetItem(
                                 R.id.persistent_sheet_item_zoom_out,
                                 getString(R.string.persistent_sheet_item_zoom_out_title),
                                 R.drawable.ic_zoom_out_24_filled,
-                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint)
+                                ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
+                                disabled = true
                         )
                 ), R.style.Drawer_FluentUI, marginBetweenView)
         horizontalListAdapter.mOnSheetItemClickListener = this
@@ -192,25 +210,28 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                                 R.id.bottom_sheet_item_camera,
                                 R.drawable.ic_camera_24_regular,
                                 getString(R.string.bottom_sheet_item_camera_title),
-                                getString(R.string.bottom_sheet_item_camera_subtitle)
+                                getString(R.string.bottom_sheet_item_camera_subtitle),
+                                disabled = false
                         ),
                         BottomSheetItem(
                                 R.id.bottom_sheet_item_gallery,
                                 R.drawable.ic_image_library_24_regular,
                                 getString(R.string.bottom_sheet_item_gallery_title),
-                                getString(R.string.bottom_sheet_item_gallery_subtitle)
+                                getString(R.string.bottom_sheet_item_gallery_subtitle),
+                                disabled = true
                         ),
                         BottomSheetItem(
                                 R.id.bottom_sheet_item_videos,
                                 R.drawable.ic_video_24_regular,
                                 getString(R.string.bottom_sheet_item_videos_title),
-                                getString(R.string.bottom_sheet_item_videos_subtitle)
+                                getString(R.string.bottom_sheet_item_videos_subtitle),
                         ),
                         BottomSheetItem(
                                 R.id.bottom_sheet_item_manage,
                                 R.drawable.ic_settings_24_regular,
                                 getString(R.string.bottom_sheet_item_manage_title),
-                                getString(R.string.bottom_sheet_item_manage_subtitle)
+                                getString(R.string.bottom_sheet_item_manage_subtitle),
+                                disabled = true
                         )
                 ), 0)
         verticalListAdapter.onBottomSheetItemClickListener = this
