@@ -6,22 +6,22 @@
 <resources>
     <!--ListItem-->
     <style name="TextAppearance.FluentUI.ListItemTitle" parent="TextAppearance.FluentUI.SubHeading1">
-        <item name="android:textColor">?attr/fluentuiListItemTitleColor</item>
+        <item name="android:textColor">@color/list_item_title_color</item>
     </style>
     <style name="TextAppearance.FluentUI.ListItemSubtitle" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiListItemSubtitleColor</item>
+        <item name="android:textColor">@color/list_item_subtitle_color</item>
     </style>
     <style name="TextAppearance.FluentUI.ListItemFooter" parent="TextAppearance.FluentUI.Caption">
-        <item name="android:textColor">?attr/fluentuiListItemFooterColor</item>
+        <item name="android:textColor">@color/list_item_footer_color</item>
     </style>
     <style name="TextAppearance.FluentUI.ListItemTitle.LargeHeader" parent="TextAppearance.FluentUI.Title1">
-        <item name="android:textColor">?attr/fluentuiListItemTitleColor</item>
+        <item name="android:textColor">@color/list_item_title_color</item>
     </style>
     <style name="TextAppearance.FluentUI.ListItemSubtitle.LargeHeader">
-        <item name="android:textColor">?attr/fluentuiListItemSubtitleLargeHeaderColor</item>
+        <item name="android:textColor">@color/list_item_subtitle_largeheader_color</item>
     </style>
     <style name="TextAppearance.FluentUI.ListItemFooter.LargeHeader" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiListItemFooterColor</item>
+        <item name="android:textColor">@color/list_item_footer_color</item>
     </style>
 
     <!--ListSubHeader-->

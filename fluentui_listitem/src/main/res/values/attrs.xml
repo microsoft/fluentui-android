@@ -23,4 +23,6 @@
         <enum name="secondary" value="1" />
         <enum name="tertiary" value="2" />
     </attr>
+
+    <attr name="fluentuiListItemDisabledStateColor" format="reference|color"/>
 </resources>

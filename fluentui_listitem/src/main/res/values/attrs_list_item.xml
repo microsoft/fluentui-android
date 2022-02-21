@@ -39,5 +39,6 @@
             <enum name="medium" value="1" />
             <enum name="large" value="2" />
         </attr>
+        <attr name="fluentui_disabled" format="boolean"/>
     </declare-styleable>
 </resources>

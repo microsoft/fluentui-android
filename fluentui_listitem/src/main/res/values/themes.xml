@@ -18,6 +18,8 @@
     <item name="fluentuiListSubHeaderTitleSecondaryColor">?attr/fluentuiForegroundColor</item>
     <item name="fluentuiListSubHeaderTitleTertiaryColor">?attr/fluentuiForegroundSecondaryColor</item>
 
+    <item name="fluentuiListItemDisabledStateColor">@color/fluentui_gray_300</item>
+
     </style>
 
     <style name="Theme.FluentUI.ListItem" parent="Theme.FluentUI.ListItem.Base"/>

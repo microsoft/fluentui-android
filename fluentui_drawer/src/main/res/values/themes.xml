@@ -10,12 +10,14 @@
         <!--Persistent BottomSheet-->
         <item name="fluentuiPersistentBottomSheetHeadingColor">?attr/fluentuiForegroundSecondaryColor</item>
         <item name="fluentuiPersistentBottomSheetItemColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiPersistentBottomSheetItemDisabledColor">@color/fluentui_gray_300</item>
         <item name="fluentuiPersistentBottomSheetHorizontalItemColor">?attr/fluentuiForegroundSecondaryColor</item>
 
         <!--BottomSheet-->
         <item name="fluentuiBottomSheetBackgroundColor">?attr/fluentuiBackgroundColor</item>
         <item name="fluentuiBottomSheetBackgroundPressedColor">?attr/fluentuiBackgroundPressedColor</item>
         <item name="fluentuiBottomSheetIconColor">?attr/fluentuiForegroundSecondaryIconColor</item>
+        <item name="fluentuiBottomSheetDisabledIconColor">@color/fluentui_gray_300</item>
         <item name="fluentuiBottomSheetDividerColor">?attr/fluentuiDividerColor</item>
 
         <!--Drawer-->
@@ -24,6 +26,7 @@
 
         <!-- Bottomsheet Horizontal ListItem -->
         <item name="fluentuiHorizontalListItemTitleColor">?attr/fluentuiForegroundSecondaryColor</item>
+        <item name="fluentuiHorizontalListItemTitleDisabledColor">@color/fluentui_gray_300</item>
 
     </style>
 

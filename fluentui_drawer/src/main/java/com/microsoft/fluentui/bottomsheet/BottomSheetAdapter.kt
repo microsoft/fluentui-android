@@ -9,12 +9,15 @@ import android.content.Context
 import android.view.ContextThemeWrapper
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.StyleRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem.Companion.NO_ID
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.listitem.ListItemView
+import com.microsoft.fluentui.util.ThemeUtil
+import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 import com.microsoft.fluentui.util.createImageView
 
 class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -78,17 +81,24 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             listItemView.setTag(R.id.fluentui_bottom_sheet_item_divider, item.useDivider)
             listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
             listItemView.background = R.drawable.bottom_sheet_item_ripple_background
+            listItemView.disabled = item.disabled
             if (textAppearance != 0) {
                 listItemView.titleStyleRes = textAppearance
             }
             if (subTextAppearance != 0) {
                 listItemView.subTitleStyleRes = subTextAppearance
             }
+
+            var image: ImageView ?= null
             if (item.customBitmap != null) {
-                listItemView.customView = context.createImageView(item.customBitmap)
+                image = context.createImageView(item.customBitmap)
             } else if (item.imageId != NO_ID) {
-                listItemView.customView = context.createImageView(item.imageId, item.getImageTint(context))
+                image = context.createImageView(item.imageId, item.getImageTint(context))
             }
+            if (image != null && item.disabled)
+                image.imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
+            listItemView.customView = image
+
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)
             }

@@ -3,5 +3,6 @@
     <style name="Theme.FluentUI.ListItem" parent="Theme.FluentUI.ListItem.Base">
     <!--ListItemView-->
     <item name="fluentuiListItemTitleColor">@color/fluentui_gray_100</item>
+    <item name="fluentuiListItemDisabledStateColor">@color/fluentui_gray_600</item>
     </style>
 </resources>
