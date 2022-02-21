@@ -28,11 +28,11 @@
         <item name="android:letterSpacing">-0.01</item>
         <item name="android:maxLines">2</item>
         <item name="android:ellipsize">end</item>
-        <item name="android:textColor">?attr/fluentuiPersistentBottomSheetHorizontalItemColor</item>
+        <item name="android:textColor">@color/persistent_bottom_sheet_horizontal_item</item>
     </style>
 
    <style name="TextAppearance.FluentUI.HorizontalListItemTitle" parent="TextAppearance.FluentUI.Body1">
-        <item name="android:textColor">?attr/fluentuiHorizontalListItemTitleColor</item>
-    </style>
+        <item name="android:textColor">@color/persistent_bottom_sheet_horizontal_item</item>
+   </style>
 
 </resources>
