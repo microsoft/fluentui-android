@@ -6,7 +6,7 @@
 
 <resources>
     <declare-styleable name="Cell">
-        <attr name="fluentui_title"/>
+        <attr name="title"/>
         <attr name="description" format="string"/>
         <attr name="orientation" format="enum">
             <enum name="horizontal" value="0"/>
