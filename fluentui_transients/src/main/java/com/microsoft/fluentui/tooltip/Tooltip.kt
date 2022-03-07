@@ -79,13 +79,13 @@ class Tooltip {
         // Need the theme wrapper to avoid crashing in Dark theme.
         // TODO Change to inflate(R.layout.view_tooltip, parent, false) and refactor dismiss inside listener accordingly.
         tooltipView = LayoutInflater.from(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients)).inflate(R.layout.view_tooltip, null)
-        val bindig = ViewTooltipBinding.bind(tooltipView)
-        contentFrame = bindig.tooltipContentFrame
-        arrowUpView = bindig.tooltipArrowUp
-        arrowDownView = bindig.tooltipArrowDown
-        arrowLeftView = bindig.tooltipArrowLeft
-        arrowRightView = bindig.tooltipArrowRight
-        tooltipBackGround = bindig.tooltipBackground
+        val binding = ViewTooltipBinding.bind(tooltipView)
+        contentFrame = binding.tooltipContentFrame
+        arrowUpView = binding.tooltipArrowUp
+        arrowDownView = binding.tooltipArrowDown
+        arrowLeftView = binding.tooltipArrowLeft
+        arrowRightView = binding.tooltipArrowRight
+        tooltipBackGround = binding.tooltipBackground
 
         margin = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_margin)
 
@@ -295,7 +295,7 @@ class Tooltip {
         val upArrowWidth = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_arrow_width)
         val cornerRadius = context.resources.getDimensionPixelSize(R.dimen.fluentui_tooltip_radius)
         val startPosition = positionX + layoutParams.marginStart
-        val topBarHeight = context.statusBarHeight + ( context.activity?.supportActionBar?.height ?: 0 )
+        val topBarHeight = context.statusBarHeight
         val doesNotFitAboveOrBelow = (positionY < topBarHeight) || (positionY + contentHeight > displayHeight)
         val rightSpace = displayWidth - anchorRect.right + context.softNavBarOffsetX
         val rightEdge = ( startPosition + upArrowWidth + cornerRadius + margin - context.softNavBarOffsetX > displayWidth ) || (doesNotFitAboveOrBelow && anchorRect.left > rightSpace)
