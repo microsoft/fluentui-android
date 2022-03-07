@@ -1,44 +1,61 @@
-pool:
-  vmImage: 'macos-latest'
-  demands:
-    - java
-    - JDK
+variables:
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
-steps:
+jobs:
+  - job: Compliance
+    displayName: Compliance checks
+    pool: OE-OfficePublic
+    steps:
+      - checkout: self # self represents the repo where the initial Pipelines YAML file was found
+        clean: true # whether to fetch clean each time
+        fetchDepth: 10 # the depth of commits to ask Git to fetch
 
-  - task: Gradle@2
-    inputs:
-      gradleWrapperFile: 'gradlew'
-      tasks: 'assembleRelease makeUniversalPkg'
-      publishJUnitResults: true
-      testResultsFiles: '**/TEST-*.xml'
-      javaHomeOption: 'JDKVersion'
-      sonarQubeRunAnalysis: false
-      options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+  - job: 
+    dependsOn: Compliance
+    pool:
+      vmImage: 'macos-latest'
+      demands:
+        - java
+        - JDK
+    variables:
+      - name: BUILDSECMON_OPT_IN
+        value: true
+    steps:
+      - task: Gradle@2
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'assembleRelease makeUniversalPkg'
+          publishJUnitResults: true
+          testResultsFiles: '**/TEST-*.xml'
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
+          options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'    
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-    inputs:
-      SourceFolder: '$(system.defaultworkingdirectory)/universal'
-      Contents: '**'
-      TargetFolder: '$(build.artifactstagingdirectory)/outputs'
-      CleanTargetFolder: true
-      OverWrite: true
-      preserveTimestamp: true
+      - task: CopyFiles@2
+        displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+        inputs:
+          SourceFolder: '$(system.defaultworkingdirectory)/universal'
+          Contents: '**'
+          TargetFolder: '$(build.artifactstagingdirectory)/outputs'
+          CleanTargetFolder: true
+          OverWrite: true
+          preserveTimestamp: true    
 
-  - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-    displayName: 📒 Generate Manifest
-    inputs:
-      BuildDropPath: '$(Build.ArtifactStagingDirectory)/outputs/'
+      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest
+        inputs:
+          BuildDropPath: '$(Build.ArtifactStagingDirectory)/outputs/'    
 
-  - task: UniversalPackages@0
-    inputs:
-      command: 'publish'
-      publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
-      feedsToUsePublish: 'internal'
-      vstsFeedPublish: 'Office'
-      vstsFeedPackagePublish: 'fluentuiandroid'
-      versionOption: 'custom'
-      versionPublish: '0.0.26'
-      packagePublishDescription: 'Fluent Universal Package'
-      publishedPackageVar: 'fluent package'
+      - task: UniversalPackages@0
+        inputs:
+          command: 'publish'
+          publishDirectory: '$(Build.ArtifactStagingDirectory)/outputs/'
+          feedsToUsePublish: 'internal'
+          vstsFeedPublish: 'Office'
+          vstsFeedPackagePublish: 'fluentuiandroid'
+          versionOption: 'custom'
+          versionPublish: '0.0.26'
+          packagePublishDescription: 'Fluent Universal Package'
+          publishedPackageVar: 'fluent package'

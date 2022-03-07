@@ -1,6 +1,10 @@
 pool:
   vmImage: 'macos-latest'
 
+variables:
+  - name: BUILDSECMON_OPT_IN
+    value: true
+
 steps:
 - task: Gradle@2
   displayName: 'gradlew build publish'
