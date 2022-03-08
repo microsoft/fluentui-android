@@ -6,6 +6,7 @@
 package com.microsoft.fluentui.drawer
 
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Handler
 import android.view.*
@@ -42,6 +43,28 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     var onDrawerContentCreatedListener: OnDrawerContentCreatedListener? = null
 
     private var sheetBehavior: CoordinatorLayout.Behavior<View>? = null
+    private var currentOrientation = context.resources.configuration.orientation
+
+    var orientationEventListener : OrientationEventListener =
+        object : OrientationEventListener(context) {
+            override fun onOrientationChanged(orientation: Int) {
+                if(this.canDetectOrientation() && getMode(orientation) != Configuration.ORIENTATION_UNDEFINED){
+                    if(currentOrientation != getMode(orientation)){
+                        currentOrientation = context.resources.configuration.orientation
+                        dismiss()
+                    }
+                }
+            }
+        }
+
+    private fun getMode(orientation: Int) : Int {
+        return when (orientation){
+            0 -> Configuration.ORIENTATION_PORTRAIT
+            90,180,270 -> Configuration.ORIENTATION_LANDSCAPE
+            else -> Configuration.ORIENTATION_UNDEFINED
+        }
+    }
+
 
     private val sheetCallback = object : CustomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -73,7 +96,6 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     private var dimValue = 0.5f
     private var anchorView: View? = null
     private var titleBehavior: TitleBehavior = TitleBehavior.DEFAULT
-    private var currentOrientation = 1
 
     init {
         when(behaviorType){
@@ -100,6 +122,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         container.setOnClickListener {
             collapse()
         }
+        orientationEventListener.enable()
     }
 
     constructor(context: Context, behaviorType: BehaviorType=BehaviorType.BOTTOM, dimValue: Float=0.5f, anchorView:View?=null, titleBehavior: TitleBehavior=TitleBehavior.DEFAULT, @StyleRes theme: Int = 0) : this(context, behaviorType, theme) {
@@ -179,18 +202,15 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         window?.setLayout(displaySize.x, displaySize.y-topMargin)
 
         super.setContentView(container)
-        container.viewTreeObserver.addOnGlobalLayoutListener {
+        if(anchorView != null){
+            container.viewTreeObserver.addOnGlobalLayoutListener {
             /* Adding callback to fix the window position as for few devices displayCut is not null
-           * in decorView which somehow got added to drawer position. Here, rebasing the Y value.
-           */
-            if(currentOrientation != context.resources.configuration.orientation){
-                dismiss()
-            }
-            else{
+            * in decorView which somehow got added to drawer position. Here, rebasing the Y value.
+            */
                 val screenPos = IntArray(2)
-                container.getLocationOnScreen(screenPos);
+                container.getLocationOnScreen(screenPos)
                 val containerY = screenPos[1]
-                anchorView?.getLocationOnScreen(screenPos);
+                anchorView?.getLocationOnScreen(screenPos)
                 val anchorViewY = screenPos[1]
                 val expectedY = anchorViewY + (anchorView?.height?:0)
                 if(containerY != expectedY){
@@ -222,6 +242,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     }
 
     override fun dismiss() {
+        orientationEventListener.disable()
         isExpanded = false
         // Dismiss may be called by external objects so state is set to STATE_COLLAPSED in order for
         // the drawer to animate up
