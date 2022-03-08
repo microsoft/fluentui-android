@@ -73,6 +73,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     private var dimValue = 0.5f
     private var anchorView: View? = null
     private var titleBehavior: TitleBehavior = TitleBehavior.DEFAULT
+    private var currentOrientation = 1
 
     init {
         when(behaviorType){
@@ -105,6 +106,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         this.dimValue = dimValue
         this.anchorView = anchorView
         this.titleBehavior = titleBehavior
+        currentOrientation = context.resources.configuration.orientation
     }
 
     override fun setContentView(layoutResID: Int) {
@@ -177,6 +179,31 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         window?.setLayout(displaySize.x, displaySize.y-topMargin)
 
         super.setContentView(container)
+        container.viewTreeObserver.addOnGlobalLayoutListener {
+            /* Adding callback to fix the window position as for few devices displayCut is not null
+           * in decorView which somehow got added to drawer position. Here, rebasing the Y value.
+           */
+            if(currentOrientation != context.resources.configuration.orientation){
+                dismiss()
+            }
+            else{
+                val screenPos = IntArray(2)
+                container.getLocationOnScreen(screenPos);
+                val containerY = screenPos[1]
+                anchorView?.getLocationOnScreen(screenPos);
+                val anchorViewY = screenPos[1]
+                val expectedY = anchorViewY + (anchorView?.height?:0)
+                if(containerY != expectedY){
+                    val layoutParams = (window.attributes as WindowManager.LayoutParams)
+                    val topMargin = layoutParams.y - (containerY - anchorViewY) + (anchorView?.height?:0)
+                    layoutParams.y = topMargin
+                    window.attributes = layoutParams
+                    window?.setLayout(displaySize.x, displaySize.y-topMargin)
+                    container.viewTreeObserver.removeOnGlobalLayoutListener {  }
+                }
+            }
+        }
+
         when(sheetBehavior){
             is BottomSheetBehavior -> (sheetBehavior as BottomSheetBehavior<View>).setBottomSheetCallback(sheetCallback)
             is TopSheetBehavior -> (sheetBehavior as TopSheetBehavior<View>).setTopSheetCallback(sheetCallback)
