@@ -48,6 +48,7 @@ open class Drawer : AppCompatDialogFragment(), OnDrawerContentCreatedListener {
         contentLayoutId = bundle?.getInt(CONTENT_LAYOUT_ID) ?: 0
 
         val drawerDialog = DrawerDialog(context!!, DrawerDialog.BehaviorType.BOTTOM, theme)
+        drawerDialog.orientationEventListener.disable()
         drawerDialog.onDrawerContentCreatedListener = this
         drawerDialog.setContentView(contentLayoutId)
         return drawerDialog
