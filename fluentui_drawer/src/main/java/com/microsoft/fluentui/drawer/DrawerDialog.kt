@@ -50,7 +50,6 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
             override fun onOrientationChanged(orientation: Int) {
                 if(this.canDetectOrientation() && getMode(orientation) != Configuration.ORIENTATION_UNDEFINED){
                     if(currentOrientation != getMode(orientation)){
-                        currentOrientation = context.resources.configuration.orientation
                         dismiss()
                     }
                 }
