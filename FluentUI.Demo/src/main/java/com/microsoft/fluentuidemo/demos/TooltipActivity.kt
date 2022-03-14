@@ -5,13 +5,17 @@
 
 package com.microsoft.fluentuidemo.demos
 
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.ViewTreeObserver
 import android.widget.Button
 import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.calendar.CalendarView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.tooltip.Tooltip
+import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -30,6 +34,11 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
     }
 
     private var tooltip: Tooltip? = null
+
+    private var optionsMenu: Menu? = null
+        set(value) {
+            field = value
+        }
 
     private var buttonId: Int = 0
 
@@ -78,6 +87,35 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         savedInstanceState?.let {
             buttonId = it.getInt(BUTTON_ID)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_app_bar_layout, menu)
+
+        optionsMenu = menu
+
+        for (index in 0 until menu.size()) {
+            val drawable = menu.getItem(index).icon
+            drawable?.setColorFilter(
+                ThemeUtil.getThemeAttrColor(this, R.attr.fluentuiToolbarIconColor),
+                PorterDuff.Mode.SRC_IN
+            )
+        }
+
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_flag -> {
+                Tooltip(baseContext).show(findViewById(item.itemId),
+                    "Flag Tooltip Clicked",
+                    Tooltip.Config(touchDismissLocation = Tooltip.TouchDismissLocation.INSIDE)
+                ).onDismissListener = this
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onStart() {

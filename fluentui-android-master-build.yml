@@ -1,36 +1,49 @@
-pool:
-  vmImage: 'macos-latest'
+variables:
+  - group: InfoSec-SecurityResults
+  - name: tags
+    value: production,externalfacing
 
-steps:
-- task: Gradle@2
-  displayName: 'gradlew build'
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'build'
-    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+jobs:
+  - template: fluentui-android-compliance.yml
 
-- task: AndroidSigning@2
-  displayName: 'Signing and aligning APK file(s) **/*.apk'
-  inputs:
-    jarsign: false
-    zipalign: false
-
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: |
-     **/*.apk
-     **/*.aar
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
-- task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-  displayName: 📒 Generate Manifest
-  inputs:
-    BuildDropPath: '$(build.artifactstagingdirectory)'
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: Build'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
-    ArtifactName: Build
+  - job: Build
+    dependsOn: Compliance
+    pool:
+      vmImage: 'macos-latest'
+    variables:
+      - name: BUILDSECMON_OPT_IN
+        value: true
+    
+    steps:
+    - task: Gradle@2
+      displayName: 'gradlew build'
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'build'
+        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+    
+    - task: AndroidSigning@2
+      displayName: 'Signing and aligning APK file(s) **/*.apk'
+      inputs:
+        jarsign: false
+        zipalign: false
+    
+    - task: CopyFiles@2
+      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+      inputs:
+        SourceFolder: '$(system.defaultworkingdirectory)'
+        Contents: |
+         **/*.apk
+         **/*.aar
+        TargetFolder: '$(build.artifactstagingdirectory)'
+    
+    - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+      displayName: 📒 Generate Manifest
+      inputs:
+        BuildDropPath: '$(build.artifactstagingdirectory)'
+    
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: Build'
+      inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
+        ArtifactName: Build
