@@ -5,26 +5,22 @@
 
 package com.microsoft.fluentuidemo.demos
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
 import com.microsoft.fluentui.contextualcommandbar.CommandItem
 import com.microsoft.fluentui.contextualcommandbar.CommandItemGroup
 import com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.contextualcommandbar.DefaultCommandItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_default
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_dismiss_position_end
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_dismiss_position_group
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_group_space_seekbar
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_group_space_value
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_item_space_seekbar
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.contextual_command_bar_item_space_value
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.insert_item
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.update_item
+import kotlinx.android.synthetic.main.activity_contextual_command_bar.*
+
 
 class ContextualCommandBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -35,9 +31,21 @@ class ContextualCommandBarActivity : DemoActivity() {
 
         val itemGroups = arrayListOf<CommandItemGroup>()
 
+        // Used to test bitmap support
+        var drawable = AppCompatResources.getDrawable(this, R.drawable.ic_fluent_add_24_regular)
+        val bitmap: Bitmap = Bitmap.createBitmap(
+            drawable!!.getIntrinsicWidth(),
+            drawable!!.getIntrinsicHeight(),
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
+        drawable.draw(canvas)
+
+
         itemGroups.add(CommandItemGroup()
                 .addItem(DefaultCommandItem(
-                        R.drawable.ic_fluent_add_24_regular,
+                        bitmap = bitmap,
                         contentDescription = getString(R.string.contextual_command_accessibility_add)
                 ))
                 .addItem(DefaultCommandItem(
@@ -129,12 +137,12 @@ class ContextualCommandBarActivity : DemoActivity() {
         insert_item.setOnClickListener {
             contextual_command_bar_default.addItemGroup(CommandItemGroup()
                     .addItem(DefaultCommandItem(
-                            R.drawable.ic_fluent_add_24_regular,
-                            getString(R.string.contextual_command_accessibility_add)
+                            icon = R.drawable.ic_fluent_add_24_regular,
+                            contentDescription = getString(R.string.contextual_command_accessibility_add)
                     ))
                     .addItem(DefaultCommandItem(
-                            R.drawable.ic_fluent_mention_24_regular,
-                            getString(R.string.contextual_command_accessibility_mention),
+                            icon = R.drawable.ic_fluent_mention_24_regular,
+                            contentDescription = getString(R.string.contextual_command_accessibility_mention),
                             enabled = false
                     ))
             )
