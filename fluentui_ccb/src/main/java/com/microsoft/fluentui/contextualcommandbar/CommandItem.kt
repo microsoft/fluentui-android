@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
+import android.graphics.Bitmap
 import androidx.annotation.DrawableRes
 import android.view.View
 
@@ -25,10 +26,15 @@ interface CommandItem {
     fun getTag(): String? = null
 
     /**
-     * The primary content displayed on the CommandItem
+     * The drawable based primary content displayed on the CommandItem
      */
     @DrawableRes
     fun getIcon(): Int = 0
+
+    /**
+     * The bitmap based primary content displayed on the CommandItem
+     */
+    fun getBitmapIcon(): Bitmap? = null
 
     /**
      * The secondary content displayed on the CommandItem if [getIcon] is not set
