@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
+import android.graphics.Bitmap
 import androidx.annotation.DrawableRes
 
 open class DefaultCommandItem(
@@ -12,7 +13,8 @@ open class DefaultCommandItem(
         private var label: String? = null,
         private var contentDescription: String? = null,
         private var enabled: Boolean = true,
-        private var selected: Boolean = false
+        private var selected: Boolean = false,
+        private var bitmap: Bitmap? = null,
 ) : CommandItem {
 
     fun setEnabled(enabled: Boolean) {
@@ -37,6 +39,10 @@ open class DefaultCommandItem(
 
     override fun getIcon(): Int {
         return icon
+    }
+
+    override fun getBitmapIcon(): Bitmap? {
+        return bitmap
     }
 
     override fun getContentDescription(): String? {

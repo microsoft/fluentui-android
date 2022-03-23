@@ -64,6 +64,7 @@ internal class CommandItemAdapter(
         val isItemEnabled = commandItem.isEnabled()
         val label = commandItem.getLabel()
         val icon = commandItem.getIcon()
+        val bitmapIcon = commandItem.getBitmapIcon()
         val description = commandItem.getContentDescription()
         if (icon != 0) {
             // Using icon as primary display content
@@ -76,6 +77,15 @@ internal class CommandItemAdapter(
                 isSelected = isItemSelected
             }
 
+        } else if (bitmapIcon != null) {
+            viewHolder.label.isVisible = false
+            with(viewHolder.icon) {
+                isVisible = true
+                setImageBitmap(bitmapIcon)
+                contentDescription = description
+                isEnabled = isItemEnabled
+                isSelected = isItemSelected
+            }
         } else if (!label.isNullOrEmpty()) {
             viewHolder.icon.isVisible = false
             with(viewHolder.label) {
