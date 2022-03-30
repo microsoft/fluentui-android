@@ -29,6 +29,23 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            style="@style/TextAppearance.FluentUI.Headline"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/avatar_group_border_type"
+            android:layout_height="wrap_content"/>
+        <com.microsoft.fluentui.widget.Button
+            android:id="@+id/avatar_border_toggle"
+            android:text="Toggle Borders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/default_layout_margin"
@@ -63,6 +80,7 @@
         android:layout_gravity="start"
         android:layout_marginEnd="@dimen/default_layout_margin"
         app:fluentui_avatarGroupStyle="stack"
+        app:fluentui_avatarBorderStyle="ring"
         app:fluentui_maxDisplayedAvatars="4"
         app:fluentui_avatarSize="xxlarge" />
     </LinearLayout>
@@ -115,6 +133,7 @@
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
             app:fluentui_avatarGroupStyle="stack"
+            app:fluentui_avatarBorderStyle="ring"
             app:fluentui_maxDisplayedAvatars="4"
             app:fluentui_avatarSize="large" />
     </LinearLayout>
@@ -226,6 +245,7 @@
             android:layout_gravity="start"
             android:layout_marginEnd="@dimen/default_layout_margin"
             app:fluentui_avatarGroupStyle="pile"
+            app:fluentui_avatarBorderStyle="ring"
             app:fluentui_maxDisplayedAvatars="4"
             app:fluentui_avatarSize="xxlarge" />
     </LinearLayout>

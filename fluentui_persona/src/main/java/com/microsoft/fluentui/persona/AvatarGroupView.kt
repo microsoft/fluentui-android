@@ -16,6 +16,7 @@ enum class AvatarGroupStyle {
 open class AvatarGroupView : FrameLayout {
     companion object {
         internal val DEFAULT_AVATAR_GROUP_STYLE = AvatarGroupStyle.STACK
+        internal val DEFAULT_AVATAR_BORDER_STYLE = AvatarBorderStyle.NO_BORDER
         internal const val DEFAULT_AVATAR_ALLOWED = 4
     }
 
@@ -24,9 +25,11 @@ open class AvatarGroupView : FrameLayout {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarGroupView)
         val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
         val avatarGroupStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_avatarGroupStyle, DEFAULT_AVATAR_GROUP_STYLE.ordinal)
+        val avatarBorderStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_avatarBorderStyle, DEFAULT_AVATAR_BORDER_STYLE.ordinal)
 
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
         avatarGroupStyle = AvatarGroupStyle.values()[avatarGroupStyleOrdinal]
+        avatarBorderStyle = AvatarBorderStyle.values()[avatarBorderStyleOrdinal]
         maxDisplayedAvatars = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_maxDisplayedAvatars, DEFAULT_AVATAR_ALLOWED)
         styledAttrs.recycle()
     }
@@ -65,6 +68,18 @@ open class AvatarGroupView : FrameLayout {
      * Defines the [AvatarGroupStyle] applied to the avatar.
      */
     var avatarGroupStyle: AvatarGroupStyle = DEFAULT_AVATAR_GROUP_STYLE
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            updateView()
+        }
+
+    /**
+     * Defines the [AvatarBorderStyle] applied to the avatar.
+     */
+    var avatarBorderStyle: AvatarBorderStyle = DEFAULT_AVATAR_BORDER_STYLE
         set(value) {
             if (field == value)
                 return
@@ -129,11 +144,14 @@ open class AvatarGroupView : FrameLayout {
             val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             when(avatarGroupStyle) {
                 AvatarGroupStyle.PILE -> {
-                    avatarView.avatarBorderStyle = AvatarBorderStyle.NO_BORDER
+                    avatarView.avatarBorderStyle = avatarBorderStyle
                     layoutParams.marginStart = index * (avatarView.getViewSize() + getPileSpacing())
                 }
                 AvatarGroupStyle.STACK -> {
-                    avatarView.avatarBorderStyle = AvatarBorderStyle.RING
+                    if(avatarBorderStyle == AvatarBorderStyle.NO_BORDER)
+                        avatarView.avatarBorderStyle = AvatarBorderStyle.SINGLE_RING
+                    else
+                        avatarView.avatarBorderStyle = AvatarBorderStyle.RING
                     layoutParams.marginStart = index * (avatarView.getViewSize()/2 + getStackSpacing())
                 }
             }
@@ -156,11 +174,14 @@ open class AvatarGroupView : FrameLayout {
         val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         when (avatarGroupStyle) {
             AvatarGroupStyle.STACK -> {
-                avatarView.avatarBorderStyle = AvatarBorderStyle.RING
+                if(avatarBorderStyle == AvatarBorderStyle.NO_BORDER)
+                    avatarView.avatarBorderStyle = AvatarBorderStyle.SINGLE_RING
+                else
+                    avatarView.avatarBorderStyle = AvatarBorderStyle.RING
                 layoutParams.marginStart = (avatarList.size - overflowCount) * (avatarView.getViewSize() / 2 + getStackSpacing())
             }
             AvatarGroupStyle.PILE -> {
-                avatarView.avatarBorderStyle = AvatarBorderStyle.NO_BORDER
+                avatarView.avatarBorderStyle = avatarBorderStyle
                 layoutParams.marginStart = (avatarList.size - overflowCount) * (avatarView.getViewSize() + getPileSpacing())
             }
         }
