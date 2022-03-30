@@ -7,6 +7,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.view.View
+import com.microsoft.fluentui.persona.AvatarBorderStyle
 import com.microsoft.fluentui.persona.AvatarGroupStyle
 import com.microsoft.fluentui.persona.AvatarGroupView
 import com.microsoft.fluentui.persona.AvatarSize
@@ -26,6 +27,7 @@ class AvatarGroupViewActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.activity_avatar_group_view
     private var singleCheckedItemId: Int = -1
+    var borderStyle: AvatarBorderStyle = AvatarBorderStyle.RING
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,11 +44,16 @@ class AvatarGroupViewActivity : DemoActivity() {
         avatar_face_pile_example_small_photo.setAvatars(createAvatarList(this))
         avatar_face_pile_example_xsmall_photo.setAvatars(createAvatarList(this))
         setupMaxAvatarDisplayed(max_displayed_avatar)
+
+        avatar_border_toggle.setOnClickListener {
+            toggleBorders()
+        }
     }
 
     private fun createFaceStackFromCode(avatarGroupView: AvatarGroupView) {
         avatarGroupView.avatarGroupStyle = AvatarGroupStyle.STACK
         avatarGroupView.avatarSize = AvatarSize.SMALL
+        avatarGroupView.avatarBorderStyle = AvatarBorderStyle.RING
         avatarGroupView.setAvatars(createAvatarList(this))
         avatarGroupView.listener = object : AvatarGroupView.Listener {
             override fun onAvatarClicked(index: Int) {
@@ -61,6 +68,7 @@ class AvatarGroupViewActivity : DemoActivity() {
     private fun createFacePileFromCode(avatarGroupView: AvatarGroupView) {
         avatarGroupView.avatarGroupStyle = AvatarGroupStyle.PILE
         avatarGroupView.avatarSize = AvatarSize.MEDIUM
+        avatarGroupView.avatarBorderStyle = AvatarBorderStyle.RING
         avatarGroupView.setAvatars(createAvatarList(this))
     }
 
@@ -83,6 +91,22 @@ class AvatarGroupViewActivity : DemoActivity() {
         anchorView.setOnClickListener{
             popupMenu.show()
         }
+    }
+
+    private fun toggleBorders() {
+        borderStyle = if (borderStyle == AvatarBorderStyle.RING) AvatarBorderStyle.NO_BORDER else AvatarBorderStyle.RING
+        avatar_face_stack_example_xxlarge_photo.avatarBorderStyle = borderStyle
+        avatar_face_stack_example_xlarge_photo.avatarBorderStyle = borderStyle
+        avatar_face_stack_example_large_photo.avatarBorderStyle = borderStyle
+        avatar_face_stack_example_medium_photo.avatarBorderStyle = borderStyle
+        avatar_face_stack_example_small_photo.avatarBorderStyle = borderStyle
+        avatar_face_stack_example_xsmall_photo.avatarBorderStyle = borderStyle
+        avatar_face_pile_example_xxlarge_photo.avatarBorderStyle = borderStyle
+        avatar_face_pile_example_xlarge_photo.avatarBorderStyle = borderStyle
+        avatar_face_pile_example_large_photo.avatarBorderStyle = borderStyle
+        avatar_face_pile_example_medium_photo.avatarBorderStyle = borderStyle
+        avatar_face_pile_example_small_photo.avatarBorderStyle = borderStyle
+        avatar_face_pile_example_xsmall_photo.avatarBorderStyle = borderStyle
     }
 
     private fun setMaxAvatarDisplayedForAllViews(id: Int) {

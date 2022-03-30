@@ -15,6 +15,7 @@ import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.appcompat.widget.AppCompatImageView
 import android.util.AttributeSet
+import android.util.Log
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 enum class AvatarStyle {
@@ -22,7 +23,7 @@ enum class AvatarStyle {
 }
 
 enum class AvatarBorderStyle {
-    NO_BORDER, RING
+    NO_BORDER, RING, SINGLE_RING
 }
 
 /**
@@ -163,7 +164,11 @@ open class AvatarView : AppCompatImageView {
     private val path: Path = Path()
 
     override fun draw(canvas: Canvas) {
-        val avatarBoundsRect = Rect(getViewBorderSize(), getViewBorderSize(), getViewSize()-getViewBorderSize(), getViewSize()-getViewBorderSize())
+        var avatarBoundsRect = Rect()
+        if (avatarBorderStyle != AvatarBorderStyle.NO_BORDER)
+            avatarBoundsRect = Rect(getViewBorderSize()/2, getViewBorderSize()/2, getViewSize()-getViewBorderSize()/2, getViewSize()-getViewBorderSize()/2)
+        else
+            avatarBoundsRect = Rect(0, 0, getViewSize(), getViewSize())
 
         initials.avatarStyle = avatarStyle
         initials.bounds = avatarBoundsRect
@@ -190,66 +195,84 @@ open class AvatarView : AppCompatImageView {
     }
 
     private fun checkAndAddRing(canvas: Canvas) {
-        if (avatarBorderStyle == AvatarBorderStyle.RING && avatarStyle == AvatarStyle.CIRCLE) {
-            path.reset()
-            /*
-             * There are total 3  rings, 2  outside of  avatar and 1 on top of avatar, thereby
-             * hiding some of the view/image.
-             * stroke size for each ring will be half of border size(1/2)
-             */
+        if (avatarStyle == AvatarStyle.CIRCLE) {
+            if (avatarBorderStyle == AvatarBorderStyle.RING) {
+                path.reset()
+                /*
+                 * There are total 3  rings, 2  outside of  avatar and 1 on top of avatar, thereby
+                 * hiding some of the view/image.
+                 * stroke size for each ring will be half of border size(1/2)
+                 */
 
-            /*
-             * Create Path to add the main border in mid of ring
-             * To create middle ring. We do -3/4 of border size because, 1/2  will be center of
-             * 2 outer rings and we want to create border  of  width bordersize/2. so, it should
-             * be at the center of middle which is 1/2+1/4 = 3/4
-             */
-            path.addCircle(
+                /*
+                 * Create Path to add the main border in mid of ring
+                 * To create middle ring. We do -3/4 of border size because, 1/2  will be center of
+                 * 2 outer rings and we want to create border  of  width bordersize/2. so, it should
+                 * be at the center of middle which is 1/2+1/4 = 3/4
+                 */
+                path.addCircle(
                     getViewSize() / 2f,
                     getViewSize() / 2f,
                     getViewSize() / 2f - 3 * getViewBorderSize() / 4f,
                     Path.Direction.CW
-            )
-            val paint = Paint()
-            paint.style = Paint.Style.STROKE
-            if (avatarIsOverFlow) {
-                paint.color = ContextCompat.getColor(context, R.color.fluentui_avatar_border_background)
-            }
-            else {
-                paint.color = avatarBackgroundColor ?: initials.initialsBackgroundColor
-            }
-            paint.strokeWidth = getViewBorderSize() / 2f
-            paint.isAntiAlias = true
-            canvas.drawPath(path, paint)
-            path.reset()
-            /*
-            * Create path to add inner ring
-            * To create middle ring. We do -5/4 of border size because, border should start
-            * from innermost ring  and as stroke is of  width bordersize/2. so, it should
-            * be at the center of innermost which is 1+1/4 = 5/4
-            */
-            paint.color = ContextCompat.getColor(context, R.color.fluentui_avatar_ring_background)
-            path.addCircle(
+                )
+                val paint = Paint()
+                paint.style = Paint.Style.STROKE
+                if (avatarIsOverFlow) {
+                    paint.color =
+                        ContextCompat.getColor(context, R.color.fluentui_avatar_border_background)
+                } else {
+                    paint.color = avatarBackgroundColor ?: initials.initialsBackgroundColor
+                }
+                paint.strokeWidth = getViewBorderSize() / 2f
+                paint.isAntiAlias = true
+                canvas.drawPath(path, paint)
+                path.reset()
+                /*
+                * Create path to add inner ring
+                * To create middle ring. We do -5/4 of border size because, border should start
+                * from innermost ring  and as stroke is of  width bordersize/2. so, it should
+                * be at the center of innermost which is 1+1/4 = 5/4
+                */
+                paint.color =
+                    ContextCompat.getColor(context, R.color.fluentui_avatar_ring_background)
+                path.addCircle(
                     getViewSize() / 2f,
                     getViewSize() / 2f,
                     getViewSize() / 2f - 5 * getViewBorderSize() / 4f,
                     Path.Direction.CW
-            )
-            canvas.drawPath(path, paint)
-            path.reset()
-            /*
-            * Create path to add outermost ring
-            * We do -1/4 of border size because, border should start from
-            * outermost ring  and as stroke is of  width bordersize/2. so, it should
-            * be at the center of outermost which is 1/4
-            */
-            path.addCircle(
+                )
+                canvas.drawPath(path, paint)
+                path.reset()
+                /*
+                * Create path to add outermost ring
+                * We do -1/4 of border size because, border should start from
+                * outermost ring  and as stroke is of  width bordersize/2. so, it should
+                * be at the center of outermost which is 1/4
+                */
+                path.addCircle(
                     getViewSize() / 2f,
                     getViewSize() / 2f,
                     getViewSize() / 2f - getViewBorderSize() / 4f,
                     Path.Direction.CW
-            )
-            canvas.drawPath(path, paint)
+                )
+                canvas.drawPath(path, paint)
+            } else if (avatarBorderStyle == AvatarBorderStyle.SINGLE_RING) {
+                path.reset()
+                path.addCircle(
+                    getViewSize() / 2f,
+                    getViewSize() / 2f,
+                    getViewSize() / 2f - getViewBorderSize() / 4f,
+                    Path.Direction.CW
+                )
+                val paint = Paint()
+                paint.style = Paint.Style.STROKE
+                paint.strokeWidth = getViewBorderSize() / 2f
+                paint.isAntiAlias = true
+                paint.color =
+                    ContextCompat.getColor(context, R.color.fluentui_avatar_ring_background)
+                canvas.drawPath(path, paint)
+            }
         }
     }
 
@@ -303,7 +326,7 @@ open class AvatarView : AppCompatImageView {
     private fun getViewBorderSize(): Int {
         return when (avatarBorderStyle) {
             AvatarBorderStyle.NO_BORDER -> 0
-            AvatarBorderStyle.RING -> when (avatarSize) {
+            AvatarBorderStyle.SINGLE_RING, AvatarBorderStyle.RING -> when (avatarSize) {
                 AvatarSize.XXLARGE -> context.resources.getDimension(R.dimen.fluentui_avatar_border_size_xxlarge).toInt()
                 else -> context.resources.getDimension(R.dimen.fluentui_avatar_border_size).toInt()
             }
