@@ -118,6 +118,17 @@ class ContextualCommandBarActivity : DemoActivity() {
                 }
             })
 
+            setItemLongClickListener(object : CommandItem.OnItemLongClickListener {
+                override fun onItemLongClick(item: CommandItem, view: View): Boolean {
+                    Toast.makeText(
+                        this@ContextualCommandBarActivity,
+                        getString(R.string.contextual_command_prompt_long_click_item, item.getContentDescription()),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return true
+                }
+            })
+
             dismissCommandItem = ContextualCommandBar.DismissCommandItem(
                     icon = R.drawable.ic_fluent_keyboard_dock_24_regular,
                     contentDescription = getString(R.string.contextual_command_accessibility_dismiss),
