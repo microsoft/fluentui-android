@@ -86,6 +86,10 @@ class ContextualCommandBar @JvmOverloads constructor(
         commandItemAdapter.itemClickListener = listener
     }
 
+    fun setItemLongClickListener (listener: CommandItem.OnItemLongClickListener) {
+        commandItemAdapter.itemLongClickListener = listener
+    }
+
     fun setItemGroups(itemGroups: ArrayList<CommandItemGroup>) {
         commandItemAdapter.commandItemGroups = itemGroups
         commandItemAdapter.notifyDataSetChanged()

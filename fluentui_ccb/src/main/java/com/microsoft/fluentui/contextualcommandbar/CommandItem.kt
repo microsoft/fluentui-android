@@ -15,6 +15,10 @@ interface CommandItem {
         fun onItemClick(item: CommandItem, view: View)
     }
 
+    interface OnItemLongClickListener  {
+        fun onItemLongClick(item: CommandItem, view: View): Boolean
+    }
+
     /**
      * The identifier of command item.
      */

@@ -28,6 +28,7 @@ internal class CommandItemAdapter(
         }
 
     var itemClickListener: CommandItem.OnItemClickListener? = null
+    var itemLongClickListener: CommandItem.OnItemLongClickListener? = null
 
     fun addItemGroup(itemGroup: CommandItemGroup) {
         commandItemGroups.add(itemGroup)
@@ -148,6 +149,9 @@ internal class CommandItemAdapter(
                             R.drawable.contextual_command_bar_single_item_background
                     )
                 }
+            }
+            setOnLongClickListener {
+                itemLongClickListener?.onItemLongClick(commandItem, viewHolder.itemView)!!
             }
             setOnClickListener {
                 itemClickListener?.onItemClick(commandItem, viewHolder.itemView)
