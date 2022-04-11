@@ -139,8 +139,6 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         updateBackground()
         // Set the margin on the FrameLayout (SnackbarLayout) instead of the content because the content's bottom margin is buggy in some APIs.
         if (content.parent is FrameLayout) {
-            val lp = content.layoutParams as FrameLayout.LayoutParams
-            lp.bottomMargin = context.resources.getDimension(R.dimen.fluentui_snackbar_background_inset).toInt()
             context.activity?.let {
                 if(DuoSupportUtils.isWindowDoublePortrait(it)) {
                     val singleScreenDisplayPixels = DuoSupportUtils.getSingleScreenWidthPixels(it)
@@ -150,7 +148,6 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
                     alignLeft(parent)
                 }
             }
-            content.layoutParams = lp
         }
     }
 
