@@ -35,6 +35,10 @@ class SheetHorizontalItemView: TemplateView {
 
     var onSheetItemClickListener: SheetItem.OnClickListener? = null
 
+    companion object {
+        private const val ALPHA_OPAQUE = 255
+    }
+
     override val templateId: Int
         get() = R.layout.view_sheet_horizontal_item_view
 
@@ -98,6 +102,9 @@ class SheetHorizontalItemView: TemplateView {
         if (customView != null) {
             if (disabled)
                 (customView as ImageView).imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
+            else
+                (customView as ImageView).imageAlpha = ALPHA_OPAQUE
+            imageContainer.removeAllViews()
             imageContainer.addView(customView)
         }
     }
@@ -116,12 +123,18 @@ class SheetHorizontalItemView: TemplateView {
     fun update(sheetItem: SheetItem) {
         this.mSheetItem = sheetItem
         this.title = sheetItem.title
+        this.disabled = sheetItem.disabled
+        updateTitleView()
+
         if (sheetItem.bitmap != null) {
             (customView as ImageView).setImageBitmap(sheetItem.bitmap)
         } else {
             (customView as ImageView).setImageDrawable(context.getImageDrawable(sheetItem.tint, sheetItem.drawable))
         }
-        updateTitleView()
+        updateCustomView()
+
+        sheetItemTitle.isEnabled = !disabled
+        mainContainer.isEnabled = !disabled
     }
 
     fun updateTextAppearanceResId(resId: Int) {

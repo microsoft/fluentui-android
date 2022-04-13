@@ -47,6 +47,13 @@
             android:layout_marginTop="@dimen/default_layout_margin"
             android:text="@string/one_line_content" />
 
+        <com.microsoft.fluentui.widget.Button
+            android:id="@+id/toggle_disable_all_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_layout_margin"
+            android:text="@string/toggle_disable_all_items" />
+
     </LinearLayout>
 
     <ScrollView

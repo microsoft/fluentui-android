@@ -286,6 +286,15 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
             toggleBottomSheetVisibility(scrollY);
         })
         currentSheet.getBottomSheetBehaviour().isHideable = true
+
+        toggle_disable_all_items.setOnClickListener {
+            for (item in mHorizontalSheet)
+                item.disabled = !item.disabled
+            for (item in mHorizontalSheet2)
+                item.disabled = !item.disabled
+
+            currentSheet.refreshSheetContent()
+        }
     }
 
     private fun toggleBottomSheetVisibility(scrollY: Int) {
@@ -352,7 +361,7 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
 
             R.id.bottom_sheet_item_flag -> {
                 showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
-                item.drawable = R.drawable.ic_flag_24_filled
+                item.drawable = if (item.drawable == R.drawable.ic_fluent_flag_24_regular) R.drawable.ic_flag_24_filled else R.drawable.ic_fluent_flag_24_regular
                 item.contentDescription = resources.getString(R.string.bottom_sheet_item_flag_toast)
                 currentSheet.refreshSheetContent()
                 return
