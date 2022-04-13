@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import com.microsoft.fluentui.ccb.R
 import com.microsoft.fluentui.util.isVisible
 
@@ -73,6 +74,7 @@ internal class CommandItemAdapter(
             with(viewHolder.icon) {
                 isVisible = true
                 setImageResource(icon)
+                imageTintList = AppCompatResources.getColorStateList(context, R.color.contextual_command_bar_icon_tint)
                 contentDescription = description
                 isEnabled = isItemEnabled
                 isSelected = isItemSelected
