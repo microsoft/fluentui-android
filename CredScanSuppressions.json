@@ -1,0 +1,9 @@
+{
+  "tool": "Credential Scanner",
+  "suppressions": [
+		{
+		  "file": "FluentUI.Demo/keystore.jks",
+		  "_justification": "Key needed for android apk. Does not contain a particular secret"
+		}
+	]
+}
