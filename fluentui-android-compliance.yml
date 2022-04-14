@@ -15,7 +15,8 @@ jobs:
         displayName: '🧭 Run Credential Scanner'
         inputs:
           debugMode: false
-
+          SuppressionsPath: '.\\CredScanSuppressions.json'
+          
       - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
         displayName: '🧭 Publish Guardian Artifacts - All Tools'
         inputs:
