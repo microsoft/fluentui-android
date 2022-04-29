@@ -158,7 +158,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
         Handler().postDelayed(::expand, expandDelayMilliseconds)
     }
 
-    override fun dispatchKeyEvent(event: KeyEvent?): Boolean {
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
         if(event?.action == KeyEvent.ACTION_UP  &&  event?.keyCode == KeyEvent.KEYCODE_ESCAPE){
             dismissDialog()
             return true
@@ -213,10 +213,10 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
                 val anchorViewY = screenPos[1]
                 val expectedY = anchorViewY + (anchorView?.height?:0)
                 if(containerY != expectedY){
-                    val layoutParams = (window.attributes as WindowManager.LayoutParams)
+                    val layoutParams = (window?.attributes as WindowManager.LayoutParams)
                     val topMargin = layoutParams.y - (containerY - anchorViewY) + (anchorView?.height?:0)
                     layoutParams.y = topMargin
-                    window.attributes = layoutParams
+                    window?.attributes = layoutParams
                     window?.setLayout(displaySize.x, displaySize.y-topMargin)
                     container.viewTreeObserver.removeOnGlobalLayoutListener {  }
                 }

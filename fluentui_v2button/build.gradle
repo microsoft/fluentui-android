@@ -1,0 +1,81 @@
+/*
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+apply from: '../config.gradle'
+apply from: '../publish.gradle'
+
+android {
+    compileSdkVersion constants.compileSdkVersion
+    defaultConfig {
+        minSdkVersion constants.minSdkVersion
+        targetSdkVersion constants.targetSdkVersion
+        versionCode project.ext.fluentui_v2button_version_code
+        versionName project.ext.fluentui_v2button_versionid
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    lintOptions {
+        abortOnError false
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    productFlavors {
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+        useIR = true
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion composeVersion
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+gradle.taskGraph.whenReady { taskGraph ->
+    taskGraph.allTasks.forEach {
+        if (it.name.contains("ReleaseUnitTest")) {
+            it.enabled = false
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':fluentui_v2core')
+    implementation project(path: ':mytheme')
+    implementation ("androidx.compose.foundation:foundation:$composeVersion")
+    implementation ("androidx.compose.material:material:$composeVersion")
+    implementation ("androidx.compose.runtime:runtime:$composeVersion")
+    implementation ("androidx.compose.ui:ui:$composeVersion")
+
+}
+
+task sourceJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier "sources"
+}
+
+project.afterEvaluate {
+    project.ext.publishingFunc('fluentui_v2button')
+}
+
+

@@ -5,14 +5,14 @@
 apply plugin: 'io.codearte.nexus-staging'
 
 buildscript {
-    ext.kotlin_version = '1.4.30'
+    ext.kotlin_version = '1.6.20'
     ext.nexus_plugin_version = '0.30.0'
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath 'com.android.tools.build:gradle:7.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:$nexus_plugin_version"
     }
@@ -22,13 +22,13 @@ allprojects {
     project.ext {
         constants = [
                 minSdkVersion: 21,
-                targetSdkVersion: 28,
-                compileSdkVersion: 28,
+                targetSdkVersion: 31,
+                compileSdkVersion: 31,
         ]
 
-        buildToolVersion          =    '29.0.3'
-        kotlin_version            =    '1.4.30'
-        appCompatVersion          =    '1.2.0'
+        buildToolVersion          =    '30.0.0'
+        kotlin_version            =    '1.6.20'
+        appCompatVersion          =    '1.3.0'
         materialVersion           =    '1.3.0'
         supportVersion            =    '28.0.0'
         recyclerViewVersion       =    '1.1.0'
@@ -42,6 +42,7 @@ allprojects {
         tokenautocompleteVersion  =    '2.0.8'
         threetenabpVersion        =    '1.1.0'
         universalPkgDir           =     "universal"
+        composeVersion            =     '1.2.0-alpha08'
 
     }
     repositories {

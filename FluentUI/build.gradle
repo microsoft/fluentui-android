@@ -42,6 +42,9 @@ dependencies {
     api project(':fluentui_tablayout')
     api project(':fluentui_topappbars')
     api project(':fluentui_transients')
+    api project(':fluentui_v2core')
+    api project(':fluentui_v2button')
+    api project(':mytheme')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "com.google.android.material:material:$materialVersion"
