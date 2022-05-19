@@ -277,6 +277,8 @@ open class AvatarView : AppCompatImageView {
     }
 
     override fun setImageDrawable(drawable: Drawable?) {
+        if(drawable == null)
+            return
         if (drawable is BitmapDrawable)
             setImageBitmap(drawable.bitmap)
         else
