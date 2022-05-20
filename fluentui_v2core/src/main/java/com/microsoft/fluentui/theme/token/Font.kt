@@ -8,4 +8,6 @@ package com.microsoft.fluentui.theme.token
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 
-data class FontInfo(val name: String? = null, val size: TextUnit, val weight:FontWeight = FontWeight.Normal)
+data class FontSize(val size: TextUnit, val lineHeight:TextUnit)
+data class FontInfo(val name: String? = null, val fontSize: FontSize, val weight:FontWeight = FontWeight.Normal)
+

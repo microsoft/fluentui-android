@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.TokenSet
  class MyGlobalTokens : GlobalTokens() {
-     override val borderSize: TokenSet<BorderSizeToken, Dp> by lazy {
-         TokenSet { 2.dp}
+     override val borderSize: TokenSet<BorderSizeTokens, Dp> by lazy {
+         TokenSet { 5.dp}
      }
  }

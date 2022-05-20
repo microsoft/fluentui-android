@@ -6,13 +6,24 @@
 package com.microsoft.fluentui.theme.token
 
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import com.microsoft.fluentui.theme.ThemeMode
+import com.microsoft.fluentui.theme.FluentTheme.themeMode
 
-data class DynamicColor (val light:Color, val lightHighContrast :Color? = null,
-                         val lightElevated: Color? = null, val lightElevatedHighContrast: Color? = null,
-                         val dark: Color,
-                         var darkHighContrast: Color? = null, var darkElevated: Color? = null,
-                         var darkElevatedHighContrast: Color? = null) {
+data class StateColor(val rest:Color = Color.Unspecified,
+                      val pressed:Color = Color.Unspecified,
+                      val selected: Color = Color.Unspecified,
+                      val focused:Color = Color.Unspecified,
+                      val disabled:Color = Color.Unspecified,
+)
+
+data class FluentColor (val light:Color, val lightHighContrast :Color? = null,
+                        val lightElevated: Color? = null, val lightElevatedHighContrast: Color? = null,
+                        val dark: Color = light,
+                        var darkHighContrast: Color? = null, var darkElevated: Color? = null,
+                        var darkElevatedHighContrast: Color? = null, var colorful:Color = light) {
 
     fun value(colorScheme: ColorScheme, contrast: ColorSchemeContrast, isElevated : Boolean): Color?{
         if(colorScheme == ColorScheme.Dark){
@@ -25,6 +36,19 @@ data class DynamicColor (val light:Color, val lightHighContrast :Color? = null,
             throw Exception("Unable to choose color. Should not be reachable, as `light` color is non-optional.")
         }
     }
+
+    @Composable
+    fun value(themeMode: ThemeMode = com.microsoft.fluentui.theme.FluentTheme.themeMode) :Color{
+        return when(themeMode){
+            ThemeMode.Light -> light
+            ThemeMode.Dark -> dark
+            ThemeMode.Colorful -> colorful
+            ThemeMode.Auto -> if(isSystemInDarkTheme()) dark else light
+            ThemeMode.AutoColorful -> if(isSystemInDarkTheme()) dark else colorful
+        }
+    }
+
+
     private fun getColor(default: Color?,
                          highContrast: Color?,
                          elevated: Color?,

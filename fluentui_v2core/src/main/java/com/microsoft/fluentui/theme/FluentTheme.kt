@@ -1,29 +1,36 @@
 package com.microsoft.fluentui.theme
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.runtime.*
 import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.LocalAliasToken
-import com.microsoft.fluentui.theme.token.LocalGlobalToken
+import com.microsoft.fluentui.theme.token.LocalGlobalTokens
+
+enum class ThemeMode{
+    Light,
+    Dark,
+    Colorful,
+    Auto,
+    AutoColorful
+}
+
+internal val LocalThemeMode = compositionLocalOf { ThemeMode.Auto }
 
 @Composable
 fun FluentTheme (globalTokens: GlobalTokens = GlobalTokens(),
                  aliasToken: AliasTokens = AliasTokens(),
+                 themeMode: ThemeMode = ThemeMode.Auto,
                  content: @Composable () -> Unit
 ){
     val rememberedGlobalToken = remember {globalTokens}
     val rememberedAliasToken = remember {aliasToken}
 
     CompositionLocalProvider(
-        LocalGlobalToken provides rememberedGlobalToken,
-        LocalAliasToken provides rememberedAliasToken){
+        LocalGlobalTokens provides rememberedGlobalToken,
+        LocalAliasToken provides rememberedAliasToken,
+        LocalThemeMode provides themeMode){
         content()
     }
-
-    var controlTokens : Map<ControlType, ControlTokens> = HashMap()
-
 }
 
 object FluentTheme{
@@ -31,7 +38,7 @@ object FluentTheme{
     val globalTokens:GlobalTokens
     @Composable
     @ReadOnlyComposable
-    get() = LocalGlobalToken.current
+    get() = LocalGlobalTokens.current
 
     val aliasToken:AliasTokens
     @Composable
@@ -43,4 +50,9 @@ object FluentTheme{
     fun register(type:ControlType, controlTokens: ControlTokens) {
         tokens[type] = controlTokens
     }
+
+    val themeMode: ThemeMode
+    @Composable
+    @ReadOnlyComposable
+    get() = LocalThemeMode.current
 }
