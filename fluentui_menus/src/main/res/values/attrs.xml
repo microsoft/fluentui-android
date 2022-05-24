@@ -10,4 +10,7 @@
     <attr name="fluentuiPopupMenuItemTitleColor" format="reference|color"/>
     <attr name="fluentuiPopupMenuItemForegroundSelectedColor" format="reference|color"/>
     <attr name="fluentuiPopupMenuItemCheckBackgroundRippleColor" format="reference|color"/>
+    <attr name="fluentuiPopupMenuItemIconTint" format="reference|color"/>
+    <attr name="fluentuiPopupMenuItemCheckboxTint" format="reference|color"/>
+    <attr name="fluentuiPopupMenuItemRadiobuttonTint" format="reference|color"/>
 </resources>
