@@ -47,7 +47,7 @@
             android:background="@drawable/popup_menu_item_check_background"
             android:importantForAccessibility="no"
             android:visibility="gone"
-            app:tint="?attr/fluentuiPopupMenuItemRadiobuttonTint"/>
+            android:buttonTint="?attr/fluentuiPopupMenuItemRadiobuttonTint"/>
 
         <CheckBox
             android:id="@+id/check_box"
@@ -58,7 +58,7 @@
             android:background="@drawable/popup_menu_item_check_background"
             android:importantForAccessibility="no"
             android:visibility="gone"
-            app:tint="?attr/fluentuiPopupMenuItemCheckboxTint"/>
+            android:buttonTint="?attr/fluentuiPopupMenuItemCheckboxTint"/>
 
     </LinearLayout>
 

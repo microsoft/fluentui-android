@@ -183,6 +183,9 @@
         <item name="fluentuiPopupMenuItemTitleColor">?attr/fluentuiForegroundColor</item>
         <item name="fluentuiPopupMenuItemForegroundSelectedColor">?attr/fluentuiForegroundSelectedColor</item>
         <item name="fluentuiPopupMenuItemCheckBackgroundRippleColor">@color/fluentui_gray_300</item>
+        <item name="fluentuiPopupMenuItemCheckboxTint">@color/fluentui_gray_300</item>
+        <item name="fluentuiPopupMenuItemRadiobuttonTint">@color/fluentui_gray_300</item>
+        <item name="fluentuiPopupMenuItemIconTint">@color/fluentui_gray_500</item>
 
         <!--Progress-->
         <item name="fluentuiProgressPrimaryColor">?attr/colorPrimary</item>
