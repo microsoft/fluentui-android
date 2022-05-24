@@ -5,6 +5,7 @@
   -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/popup_menu_item_ripple_background"
@@ -19,6 +20,7 @@
         android:paddingEnd="@dimen/fluentui_popup_menu_item_margin_horizontal">
 
         <ImageView
+            app:tint="?attr/fluentuiPopupMenuItemIconTint"
             android:id="@+id/icon"
             android:layout_width="@dimen/fluentui_popup_menu_item_icon_size"
             android:layout_height="@dimen/fluentui_popup_menu_item_icon_size"
@@ -44,7 +46,8 @@
             android:layout_marginStart="@dimen/fluentui_popup_menu_item_margin_horizontal"
             android:background="@drawable/popup_menu_item_check_background"
             android:importantForAccessibility="no"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:tint="?attr/fluentuiPopupMenuItemRadiobuttonTint"/>
 
         <CheckBox
             android:id="@+id/check_box"
@@ -54,7 +57,8 @@
             android:layout_marginStart="@dimen/fluentui_popup_menu_item_margin_horizontal"
             android:background="@drawable/popup_menu_item_check_background"
             android:importantForAccessibility="no"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            app:tint="?attr/fluentuiPopupMenuItemCheckboxTint"/>
 
     </LinearLayout>
 
