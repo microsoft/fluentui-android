@@ -10,7 +10,7 @@
     <item name="fluentuiPopupMenuBackgroundPressedColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
     <item name="fluentuiPopupMenuItemTitleColor">@color/fluentui_gray_100</item>
     <item name="fluentuiPopupMenuItemCheckBackgroundRippleColor">?attr/fluentuiBackgroundSecondaryPressedColor</item>
-    <item name="fluentuiPopupMenuItemCheckboxTint">@color/fluentui_white</item>
+    <item name="fluentuiPopupMenuItemCheckboxTint">@color/fluentui_gray_300</item>
     <item name="fluentuiPopupMenuItemRadiobuttonTint">@color/fluentui_gray_300</item>
     <item name="fluentuiPopupMenuItemIconTint">@color/fluentui_gray_300</item>
     </style>
