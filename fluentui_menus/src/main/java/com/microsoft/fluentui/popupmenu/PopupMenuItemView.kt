@@ -6,6 +6,7 @@
 package com.microsoft.fluentui.popupmenu
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.PorterDuff
 import androidx.annotation.DrawableRes
 import androidx.core.view.AccessibilityDelegateCompat
@@ -144,6 +145,8 @@ internal class PopupMenuItemView : TemplateView {
         if (isChecked) {
             val foregroundSelectedColor = ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiPopupMenuItemForegroundSelectedColor)
             titleView?.setTextColor(foregroundSelectedColor)
+            checkBox?.buttonTintList = ColorStateList.valueOf(foregroundSelectedColor)
+            radioButton?.buttonTintList = ColorStateList.valueOf(foregroundSelectedColor)
             // Using post helps ensure that the color filter is applied to the correct image in API <= Lollipop.
             iconImageView?.post {
                 iconImageView?.setColorFilter(foregroundSelectedColor, PorterDuff.Mode.SRC_IN)
@@ -151,6 +154,8 @@ internal class PopupMenuItemView : TemplateView {
             }
         } else {
             titleView?.setTextColor(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiPopupMenuItemTitleColor))
+            checkBox?.buttonTintList = ColorStateList.valueOf(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiPopupMenuItemCheckboxTint))
+            radioButton?.buttonTintList = ColorStateList.valueOf(ThemeUtil.getThemeAttrColor(context, R.attr.fluentuiPopupMenuItemCheckboxTint))
             iconImageView?.post {
                 iconImageView?.clearColorFilter()
                 iconImageView?.invalidate()
