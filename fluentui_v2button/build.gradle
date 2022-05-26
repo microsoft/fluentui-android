@@ -62,10 +62,10 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':fluentui_v2core')
     implementation project(path: ':mytheme')
-    implementation ("androidx.compose.foundation:foundation:$composeVersion")
-    implementation ("androidx.compose.material:material:$composeVersion")
-    implementation ("androidx.compose.runtime:runtime:$composeVersion")
-    implementation ("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.runtime:runtime:$composeVersion")
+    implementation("androidx.compose.ui:ui:$composeVersion")
 
 }
 

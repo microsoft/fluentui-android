@@ -1,30 +1,21 @@
 package com.microsoft.fluentui.button
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.LocalIndication
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.*
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import androidx.compose.runtime.*
-import androidx.compose.ui.graphics.Color
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.ControlType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -34,24 +25,26 @@ val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
 val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
 @Composable
-fun CreateButton (
+fun CreateButton(
     modifier: Modifier = Modifier,
     style: ButtonStyle = ButtonStyle.Button,
     size: ButtonSize = ButtonSize.Medium,
     enabled: Boolean = true,
-    buttonTokens:ButtonTokens? = null,
-    onClick:() -> Unit,
+    buttonTokens: ButtonTokens? = null,
+    onClick: () -> Unit,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: @Composable (RowScope.() -> Unit)? = null,
     text: String
 ) {
 
-    val token  = remember {
+    val token = remember {
         (buttonTokens ?: FluentTheme.tokens[ControlType.Button] as ButtonTokens)
     }
 
-    CompositionLocalProvider(LocalButtonTokens provides token,
-        LocalButtonInfo provides ButtonInfo(style,size) ) {
+    CompositionLocalProvider(
+        LocalButtonTokens provides token,
+        LocalButtonInfo provides ButtonInfo(style, size)
+    ) {
         Button(
             onClick = onClick,
             enabled = enabled,
@@ -80,11 +73,14 @@ fun Button(
         role = Role.Button,
         onClick = onClick
     )
-    val backgroundColor = backgroundColor(enabled,interactionSource)
+    val backgroundColor = backgroundColor(enabled, interactionSource)
     val contentPadding = getButtonToken().padding(getButtonInfo())
     val iconSpacing = getButtonToken().spacing(getButtonInfo())
     val border = getBorder()
-    val textStyle = TextStyle(fontSize =  getButtonToken().fontInfo(getButtonInfo()).fontSize.size, fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight)
+    val textStyle = TextStyle(
+        fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
+        fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight
+    )
     val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
 
     Box(
@@ -105,7 +101,10 @@ fun Button(
                         minHeight = getButtonToken().minHeight(buttonInfo = getButtonInfo())
                     )
                     .padding(contentPadding),
-                horizontalArrangement = Arrangement.spacedBy(iconSpacing, Alignment.CenterHorizontally),
+                horizontalArrangement = Arrangement.spacedBy(
+                    iconSpacing,
+                    Alignment.CenterHorizontally
+                ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (icon != null) {
@@ -118,19 +117,20 @@ fun Button(
 }
 
 @Composable
-fun getButtonToken() : ButtonTokens{
+fun getButtonToken(): ButtonTokens {
     return LocalButtonTokens.current
 }
 
 @Composable
-fun getButtonInfo() :ButtonInfo{
+fun getButtonInfo(): ButtonInfo {
     return LocalButtonInfo.current
 }
 
 @Composable
-fun getText (text:String): @Composable RowScope.() -> Unit {
+fun getText(text: String): @Composable RowScope.() -> Unit {
     return {
-        Text(text = text,
+        Text(
+            text = text,
             fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
             lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
             fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight
@@ -139,7 +139,7 @@ fun getText (text:String): @Composable RowScope.() -> Unit {
 }
 
 @Composable
-fun getBorder() : BorderStroke?{
+fun getBorder(): BorderStroke? {
     val borderSize = getButtonToken().outerBorderSize(getButtonInfo())
     return if (borderSize == 0.dp)
         null
@@ -149,44 +149,42 @@ fun getBorder() : BorderStroke?{
 
 @Composable
 fun backgroundColor(enabled: Boolean, interactionSource: InteractionSource): Color {
-    if(enabled) {
+    if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if(isPressed)
+        if (isPressed)
             return getButtonToken().backgroundColor(getButtonInfo()).pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if(isFocused)
+        if (isFocused)
             return getButtonToken().backgroundColor(getButtonInfo()).focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
-        if(isHovered)
+        if (isHovered)
             return getButtonToken().backgroundColor(getButtonInfo()).focused
 
         return getButtonToken().backgroundColor(getButtonInfo()).rest
-    }
-    else {
+    } else {
         return getButtonToken().backgroundColor(getButtonInfo()).disabled
     }
 }
 
 @Composable
 fun textColor(enabled: Boolean, interactionSource: InteractionSource): Color {
-    if(enabled) {
+    if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if(isPressed)
+        if (isPressed)
             return getButtonToken().textColor(getButtonInfo()).pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if(isFocused)
+        if (isFocused)
             return getButtonToken().textColor(getButtonInfo()).focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
-        if(isHovered)
+        if (isHovered)
             return getButtonToken().textColor(getButtonInfo()).focused
 
         return getButtonToken().textColor(getButtonInfo()).rest
-    }
-    else {
+    } else {
         return getButtonToken().textColor(getButtonInfo()).disabled
     }
 }

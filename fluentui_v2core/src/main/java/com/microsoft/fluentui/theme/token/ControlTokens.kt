@@ -7,6 +7,6 @@ package com.microsoft.fluentui.theme.token
 
 interface ControlTokens
 
-enum class ControlType{
+enum class ControlType {
     Button
 }

@@ -6,17 +6,17 @@
 package com.microsoft.fluentui.theme.token
 
 import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 // Global Tokens represent a unified set of constants to be used by Fluent UI.
 
- open class GlobalTokens {
+open class GlobalTokens {
 
-     enum class BrandColorTokens{
+    enum class BrandColorTokens {
         Color10,
         Color20,
         Color30,
@@ -35,30 +35,30 @@ import androidx.compose.ui.unit.sp
         Color160
     }
 
-     open val brandColor: TokenSet<BrandColorTokens, Color> by lazy {
-         TokenSet { token ->
-             when (token) {
-                 BrandColorTokens.Color10 -> Color(0xFF061724)
-                 BrandColorTokens.Color20 -> Color(0xFF082338)
-                 BrandColorTokens.Color30 -> Color(0xFF0A2E4A)
-                 BrandColorTokens.Color40 -> Color(0xFF0C3B5E)
-                 BrandColorTokens.Color50 -> Color(0xFF0E4775)
-                 BrandColorTokens.Color60 -> Color(0xFF0F548C)
-                 BrandColorTokens.Color70 -> Color(0xFF115EA3)
-                 BrandColorTokens.Color80 -> Color(0xFF0F6CBD)
-                 BrandColorTokens.Color90 -> Color(0xFF2886DE)
-                 BrandColorTokens.Color100 -> Color(0xFF479EF5)
-                 BrandColorTokens.Color110 -> Color(0xFF62ABF5)
-                 BrandColorTokens.Color120 -> Color(0xFF77B7F7)
-                 BrandColorTokens.Color130 -> Color(0xFF96C6FA)
-                 BrandColorTokens.Color140 -> Color(0xFFB4D6FA)
-                 BrandColorTokens.Color150 -> Color(0xFFCFE4FA)
-                 BrandColorTokens.Color160 -> Color(0xFFEBF3FC)                 
-             }
-         }
-     }
+    open val brandColor: TokenSet<BrandColorTokens, Color> by lazy {
+        TokenSet { token ->
+            when (token) {
+                BrandColorTokens.Color10 -> Color(0xFF061724)
+                BrandColorTokens.Color20 -> Color(0xFF082338)
+                BrandColorTokens.Color30 -> Color(0xFF0A2E4A)
+                BrandColorTokens.Color40 -> Color(0xFF0C3B5E)
+                BrandColorTokens.Color50 -> Color(0xFF0E4775)
+                BrandColorTokens.Color60 -> Color(0xFF0F548C)
+                BrandColorTokens.Color70 -> Color(0xFF115EA3)
+                BrandColorTokens.Color80 -> Color(0xFF0F6CBD)
+                BrandColorTokens.Color90 -> Color(0xFF2886DE)
+                BrandColorTokens.Color100 -> Color(0xFF479EF5)
+                BrandColorTokens.Color110 -> Color(0xFF62ABF5)
+                BrandColorTokens.Color120 -> Color(0xFF77B7F7)
+                BrandColorTokens.Color130 -> Color(0xFF96C6FA)
+                BrandColorTokens.Color140 -> Color(0xFFB4D6FA)
+                BrandColorTokens.Color150 -> Color(0xFFCFE4FA)
+                BrandColorTokens.Color160 -> Color(0xFFEBF3FC)
+            }
+        }
+    }
 
-     enum class NeutralColorTokens{
+    enum class NeutralColorTokens {
         Black,
         Grey2,
         Grey4,
@@ -111,9 +111,10 @@ import androidx.compose.ui.unit.sp
         Grey98,
         White
     }
-     open val neutralColor: TokenSet<NeutralColorTokens, Color> by lazy{
-        TokenSet{ token ->
-            when(token){
+
+    open val neutralColor: TokenSet<NeutralColorTokens, Color> by lazy {
+        TokenSet { token ->
+            when (token) {
                 NeutralColorTokens.Black -> Color(0xFF000000)
                 NeutralColorTokens.Grey2 -> Color(0xFF050505)
                 NeutralColorTokens.Grey4 -> Color(0xFF0A0A0A)
@@ -169,7 +170,7 @@ import androidx.compose.ui.unit.sp
         }
     }
 
-     enum class FontSizeTokens{
+    enum class FontSizeTokens {
         Size100,
         Size200,
         Size300,
@@ -181,41 +182,41 @@ import androidx.compose.ui.unit.sp
         Size900
     }
 
-     open val fontSize: TokenSet<FontSizeTokens, FontSize> by lazy {
+    open val fontSize: TokenSet<FontSizeTokens, FontSize> by lazy {
         TokenSet { token ->
             when (token) {
                 FontSizeTokens.Size100 ->
-                    FontSize(12.0.sp,16.sp)
+                    FontSize(12.0.sp, 16.sp)
                 FontSizeTokens.Size200 ->
-                    FontSize(13.0.sp,16.sp)
+                    FontSize(13.0.sp, 16.sp)
                 FontSizeTokens.Size300 ->
-                    FontSize(14.0.sp,18.sp)
+                    FontSize(14.0.sp, 18.sp)
                 FontSizeTokens.Size400 ->
-                    FontSize(16.0.sp,24.sp)
+                    FontSize(16.0.sp, 24.sp)
                 FontSizeTokens.Size500 ->
-                    FontSize(18.0.sp,24.sp)
+                    FontSize(18.0.sp, 24.sp)
                 FontSizeTokens.Size600 ->
-                    FontSize(20.0.sp,24.sp)
+                    FontSize(20.0.sp, 24.sp)
                 FontSizeTokens.Size700 ->
-                    FontSize(24.0.sp,32.sp)
+                    FontSize(24.0.sp, 32.sp)
                 FontSizeTokens.Size800 ->
-                    FontSize(34.0.sp,48.sp)
+                    FontSize(34.0.sp, 48.sp)
                 FontSizeTokens.Size900 ->
-                    FontSize(60.0.sp,72.sp)
+                    FontSize(60.0.sp, 72.sp)
             }
         }
     }
 
-     enum class FontWeightTokens{
-         Light,
-         SemiLight,
-         Regular,
-         Medium,
-         SemiBold,
-         Bold
+    enum class FontWeightTokens {
+        Light,
+        SemiLight,
+        Regular,
+        Medium,
+        SemiBold,
+        Bold
     }
 
-     open val fontWeight: TokenSet<FontWeightTokens, FontWeight> by lazy {
+    open val fontWeight: TokenSet<FontWeightTokens, FontWeight> by lazy {
         TokenSet { token ->
             when (token) {
                 FontWeightTokens.Light ->
@@ -234,28 +235,28 @@ import androidx.compose.ui.unit.sp
         }
     }
 
-     enum class IconSizeTokens{
-         XXXSmall,
-         XXXSmallSelected,
-         XXSmall,
-         XXSmallSelected,
-         XSmall,
-         XSmallSelected,
-         Small,
-         SmallSelected,
-         Medium,
-         MediumSelected,
-         Large,
-         LargeSelected,
-         XLarge,
-         XLargeSelected,
-         XXLarge,
-         XXLargeSelected,
-         XXXLarge,
-         XXXLargeSelected
+    enum class IconSizeTokens {
+        XXXSmall,
+        XXXSmallSelected,
+        XXSmall,
+        XXSmallSelected,
+        XSmall,
+        XSmallSelected,
+        Small,
+        SmallSelected,
+        Medium,
+        MediumSelected,
+        Large,
+        LargeSelected,
+        XLarge,
+        XLargeSelected,
+        XXLarge,
+        XXLargeSelected,
+        XXXLarge,
+        XXXLargeSelected
     }
 
-     open val iconSize: TokenSet<IconSizeTokens, IconSize> by lazy {
+    open val iconSize: TokenSet<IconSizeTokens, IconSize> by lazy {
         TokenSet { token ->
             when (token) {
                 IconSizeTokens.XXXSmall ->
@@ -298,7 +299,7 @@ import androidx.compose.ui.unit.sp
         }
     }
 
-     enum class SpacingTokens{
+    enum class SpacingTokens {
         None,
         XXXSmall,
         XXSmall,
@@ -312,7 +313,7 @@ import androidx.compose.ui.unit.sp
         XXXXLarge
     }
 
-     open val spacing: TokenSet<SpacingTokens, Dp> by lazy {
+    open val spacing: TokenSet<SpacingTokens, Dp> by lazy {
         TokenSet { token ->
             when (token) {
                 SpacingTokens.None ->
@@ -341,228 +342,234 @@ import androidx.compose.ui.unit.sp
         }
     }
 
-     enum class ShadowColorTokens {
-         NeutralAmbient,
-         NeutralKey,
-         NeutralAmbientLighter,
-         NeutralKeyLighter,
-         NeutralAmbientDarker,
-         NeutralKeyDarker,
-         BrandAmbient,
-         BrandKey
-     }
+    enum class ShadowColorTokens {
+        NeutralAmbient,
+        NeutralKey,
+        NeutralAmbientLighter,
+        NeutralKeyLighter,
+        NeutralAmbientDarker,
+        NeutralKeyDarker,
+        BrandAmbient,
+        BrandKey
+    }
 
-     open  val shadowColor: TokenSet<ShadowColorTokens, FluentColor> by lazy{
-         TokenSet { token ->
-             when (token) {
-                 ShadowColorTokens.NeutralAmbient ->
-                     FluentColor(
-                         light = Color( 0.0f, 0.0f,  0.0f, 12.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  24.0f)
-                     )
-                 ShadowColorTokens.NeutralKey ->
-                     FluentColor (
-                         light = Color(0.0f,  0.0f,  0.0f,  14.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  28.0f))
-                 ShadowColorTokens.NeutralAmbientLighter ->
-                     FluentColor(
-                         light = Color(0.0f,  0.0f,  0.0f,  6.0f),
-                         dark = Color(0.0f, 0.0f,  0.0f,  12.0f)
-                     )
-                 ShadowColorTokens.NeutralKeyLighter ->
-                     FluentColor(
-                         light = Color(0.0f,  0.0f,  0.0f,  7.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  14.0f)
-                     )
-                 ShadowColorTokens.NeutralAmbientDarker ->
-                     FluentColor (
-                         light = Color(0.0f,  0.0f,  0.0f,  20.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  40.0f)
-                     )
-                 ShadowColorTokens.NeutralKeyDarker ->
-                     FluentColor(
-                         light = Color(0.0f,  0.0f,  0.0f,  24.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  48.0f)
-                     )
-                 ShadowColorTokens.BrandAmbient ->
-                     FluentColor(
-                         light = Color(0.0f,  0.0f,  0.0f,  30.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  30.0f)
-                     )
-                 ShadowColorTokens.BrandKey ->
-                     FluentColor (
-                         light = Color(0.0f,  0.0f,  0.0f,  25.0f),
-                         dark = Color(0.0f,  0.0f,  0.0f,  25.0f)
-                     )
-             }
-         }
-     }
+    open val shadowColor: TokenSet<ShadowColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                ShadowColorTokens.NeutralAmbient ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 12.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 24.0f)
+                    )
+                ShadowColorTokens.NeutralKey ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 14.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 28.0f)
+                    )
+                ShadowColorTokens.NeutralAmbientLighter ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 6.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 12.0f)
+                    )
+                ShadowColorTokens.NeutralKeyLighter ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 7.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 14.0f)
+                    )
+                ShadowColorTokens.NeutralAmbientDarker ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 20.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 40.0f)
+                    )
+                ShadowColorTokens.NeutralKeyDarker ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 24.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 48.0f)
+                    )
+                ShadowColorTokens.BrandAmbient ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 30.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 30.0f)
+                    )
+                ShadowColorTokens.BrandKey ->
+                    FluentColor(
+                        light = Color(0.0f, 0.0f, 0.0f, 25.0f),
+                        dark = Color(0.0f, 0.0f, 0.0f, 25.0f)
+                    )
+            }
+        }
+    }
 
-     enum class ShadowTokens {
-         Shadow02,
-         Shadow04,
-         Shadow08,
-         Shadow16,
-         Shadow28,
-         Shadow64,
-     }
-     open val shadow: TokenSet<ShadowTokens, ShadowInfo>by lazy{
-         TokenSet { token ->
-             when (token) {
-                 ShadowTokens.Shadow02 ->
-                     ShadowInfo(
-                         colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                         blurOne = 1,
-                         xOne = 0,
-                         yOne = 1,
-                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                         blurTwo = 1,
-                         xTwo = 0,
-                         yTwo = 0
-                     )
-                 ShadowTokens.Shadow04 ->
-                     ShadowInfo (colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                         blurOne = 2,
-                         xOne = 0,
-                         yOne = 2,
-                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                         blurTwo = 1,
-                         xTwo = 0,
-                         yTwo = 0
-                     )
-                 ShadowTokens.Shadow08 ->
-                     ShadowInfo(
-                         colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                         blurOne = 4,
-                         xOne = 0,
-                         yOne = 4,
-                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                         blurTwo = 1,
-                         xTwo = 0,
-                         yTwo = 0
-                     )
-                 ShadowTokens.Shadow16 ->
-                     ShadowInfo(
-                         colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                         blurOne = 8,
-                         xOne = 0,
-                         yOne = 8,
-                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                         blurTwo = 1,
-                         xTwo = 0,
-                         yTwo = 0
-                     )
-                 ShadowTokens.Shadow28 ->
-                     ShadowInfo (
-                         colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
-                         blurOne = 14,
-                         xOne = 0,
-                         yOne = 14,
-                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
-                         blurTwo = 4,
-                         xTwo = 0,
-                         yTwo = 0)
-                 ShadowTokens.Shadow64 ->
-                     ShadowInfo(
-                         colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
-                         blurOne = 32,
-                         xOne = 0,
-                         yOne = 32,
-                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
-                         blurTwo = 4,
-                         xTwo = 0,
-                         yTwo = 0
-                     )
-             }
-         }
-     }
+    enum class ShadowTokens {
+        Shadow02,
+        Shadow04,
+        Shadow08,
+        Shadow16,
+        Shadow28,
+        Shadow64,
+    }
 
-     enum class ElevationTokens {
-         InteractiveElevation1Rest,
-         InteractiveElevation1Hover,
-         InteractiveElevation1Pressed,
-         InteractiveElevation1Selected,
-         InteractiveElevation1Disabled
-     }
+    open val shadow: TokenSet<ShadowTokens, ShadowInfo> by lazy {
+        TokenSet { token ->
+            when (token) {
+                ShadowTokens.Shadow02 ->
+                    ShadowInfo(
+                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                        blurOne = 1,
+                        xOne = 0,
+                        yOne = 1,
+                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                        blurTwo = 1,
+                        xTwo = 0,
+                        yTwo = 0
+                    )
+                ShadowTokens.Shadow04 ->
+                    ShadowInfo(
+                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                        blurOne = 2,
+                        xOne = 0,
+                        yOne = 2,
+                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                        blurTwo = 1,
+                        xTwo = 0,
+                        yTwo = 0
+                    )
+                ShadowTokens.Shadow08 ->
+                    ShadowInfo(
+                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                        blurOne = 4,
+                        xOne = 0,
+                        yOne = 4,
+                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                        blurTwo = 1,
+                        xTwo = 0,
+                        yTwo = 0
+                    )
+                ShadowTokens.Shadow16 ->
+                    ShadowInfo(
+                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                        blurOne = 8,
+                        xOne = 0,
+                        yOne = 8,
+                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                        blurTwo = 1,
+                        xTwo = 0,
+                        yTwo = 0
+                    )
+                ShadowTokens.Shadow28 ->
+                    ShadowInfo(
+                        colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
+                        blurOne = 14,
+                        xOne = 0,
+                        yOne = 14,
+                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
+                        blurTwo = 4,
+                        xTwo = 0,
+                        yTwo = 0
+                    )
+                ShadowTokens.Shadow64 ->
+                    ShadowInfo(
+                        colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
+                        blurOne = 32,
+                        xOne = 0,
+                        yOne = 32,
+                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
+                        blurTwo = 4,
+                        xTwo = 0,
+                        yTwo = 0
+                    )
+            }
+        }
+    }
 
-     open val elevation: TokenSet<ElevationTokens, ShadowInfo> by lazy{
-         TokenSet { token ->
-             when (token) {
-                 ElevationTokens.InteractiveElevation1Rest ->
-                     shadow[ShadowTokens.Shadow08]
-                 ElevationTokens.InteractiveElevation1Hover ->
-                     shadow[ShadowTokens.Shadow02]
-                 ElevationTokens.InteractiveElevation1Pressed ->
-                     shadow[ShadowTokens.Shadow02]
-                 ElevationTokens.InteractiveElevation1Selected ->
-                     shadow[ShadowTokens.Shadow02]
-                 ElevationTokens.InteractiveElevation1Disabled ->
-                     shadow[ShadowTokens.Shadow02]
-             }
-         }
-     }
+    enum class ElevationTokens {
+        InteractiveElevation1Rest,
+        InteractiveElevation1Hover,
+        InteractiveElevation1Pressed,
+        InteractiveElevation1Selected,
+        InteractiveElevation1Disabled
+    }
 
-     enum class OpacityTokens{
-         Opacity8,
-         Opacity16,
-         Opacity24,
-         Opacity32,
-         Opacity64,
-         Opacity72,
-         Opacity88,
-         Opacity96
-     }
+    open val elevation: TokenSet<ElevationTokens, ShadowInfo> by lazy {
+        TokenSet { token ->
+            when (token) {
+                ElevationTokens.InteractiveElevation1Rest ->
+                    shadow[ShadowTokens.Shadow08]
+                ElevationTokens.InteractiveElevation1Hover ->
+                    shadow[ShadowTokens.Shadow02]
+                ElevationTokens.InteractiveElevation1Pressed ->
+                    shadow[ShadowTokens.Shadow02]
+                ElevationTokens.InteractiveElevation1Selected ->
+                    shadow[ShadowTokens.Shadow02]
+                ElevationTokens.InteractiveElevation1Disabled ->
+                    shadow[ShadowTokens.Shadow02]
+            }
+        }
+    }
 
-     open val opacity: TokenSet<OpacityTokens, Float> by lazy {
-         TokenSet { token ->
-             when (token) {
-                 OpacityTokens.Opacity8 -> 0.8f
-                 OpacityTokens.Opacity16 -> 0.16f
-                 OpacityTokens.Opacity24 -> 0.24f
-                 OpacityTokens.Opacity32 -> 0.32f
-                 OpacityTokens.Opacity64 -> 0.64f
-                 OpacityTokens.Opacity72 -> 0.72f
-                 OpacityTokens.Opacity88 -> 0.88f
-                 OpacityTokens.Opacity96 -> 0.96f
-             }
-         }
-     }
+    enum class OpacityTokens {
+        Opacity8,
+        Opacity16,
+        Opacity24,
+        Opacity32,
+        Opacity64,
+        Opacity72,
+        Opacity88,
+        Opacity96
+    }
 
-     enum class BorderRadiusTokens{
-         None,
-         Small,
-         Medium,
-         Large,
-         XLarge,
-         Circle
-     }
-     open val borderRadius: TokenSet<BorderRadiusTokens, Dp> by lazy {
-         TokenSet { token ->
-             when (token) {
-                 BorderRadiusTokens.None ->
-                     0.dp
-                 BorderRadiusTokens.Small ->
-                     2.dp
-                 BorderRadiusTokens.Medium ->
-                     4.dp
-                 BorderRadiusTokens.Large ->
-                     8.dp
-                 BorderRadiusTokens.XLarge ->
-                     12.dp
-                 BorderRadiusTokens.Circle ->
-                     9999.dp
-             }
-         }
-     }
+    open val opacity: TokenSet<OpacityTokens, Float> by lazy {
+        TokenSet { token ->
+            when (token) {
+                OpacityTokens.Opacity8 -> 0.8f
+                OpacityTokens.Opacity16 -> 0.16f
+                OpacityTokens.Opacity24 -> 0.24f
+                OpacityTokens.Opacity32 -> 0.32f
+                OpacityTokens.Opacity64 -> 0.64f
+                OpacityTokens.Opacity72 -> 0.72f
+                OpacityTokens.Opacity88 -> 0.88f
+                OpacityTokens.Opacity96 -> 0.96f
+            }
+        }
+    }
 
-     enum class BorderSizeTokens{
+    enum class BorderRadiusTokens {
+        None,
+        Small,
+        Medium,
+        Large,
+        XLarge,
+        Circle
+    }
+
+    open val borderRadius: TokenSet<BorderRadiusTokens, Dp> by lazy {
+        TokenSet { token ->
+            when (token) {
+                BorderRadiusTokens.None ->
+                    0.dp
+                BorderRadiusTokens.Small ->
+                    2.dp
+                BorderRadiusTokens.Medium ->
+                    4.dp
+                BorderRadiusTokens.Large ->
+                    8.dp
+                BorderRadiusTokens.XLarge ->
+                    12.dp
+                BorderRadiusTokens.Circle ->
+                    9999.dp
+            }
+        }
+    }
+
+    enum class BorderSizeTokens {
         None,
         Thin,
         Thick,
         Thicker,
         Thickest
     }
-     open val borderSize: TokenSet<BorderSizeTokens, Dp> by lazy {
+
+    open val borderSize: TokenSet<BorderSizeTokens, Dp> by lazy {
         TokenSet { token ->
             when (token) {
                 BorderSizeTokens.None ->
@@ -580,4 +587,4 @@ import androidx.compose.ui.unit.sp
     }
 }
 
-internal val LocalGlobalTokens = compositionLocalOf { GlobalTokens()}
+internal val LocalGlobalTokens = compositionLocalOf { GlobalTokens() }

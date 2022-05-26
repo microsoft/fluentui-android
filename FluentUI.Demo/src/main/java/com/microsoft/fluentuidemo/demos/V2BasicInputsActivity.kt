@@ -2,18 +2,21 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.ThumbUp
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -25,7 +28,9 @@ import com.example.theme.token.MyGlobalTokens
 import com.microsoft.fluentui.button.CreateButton
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.ControlType
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
@@ -45,14 +50,14 @@ class V2BasicInputsActivity : DemoActivity() {
         buttons.setContent {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
 
-                val globalTokens : GlobalTokens by viewModel.globalTokens.observeAsState(initial = GlobalTokens())
-                val aliasTokens : AliasTokens by viewModel.aliasTokens.observeAsState(initial = AliasTokens())
+                val globalTokens: GlobalTokens by viewModel.globalTokens.observeAsState(initial = GlobalTokens())
+                val aliasTokens: AliasTokens by viewModel.aliasTokens.observeAsState(initial = AliasTokens())
 
                 FluentTheme.register(ControlType.Button, ButtonTokens())
                 Text("Button to update Theme via Global & Alias token")
 
                 FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
-                    Row (horizontalArrangement = Arrangement.spacedBy(5.dp)){
+                    Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
                         CreateButton(
                             style = ButtonStyle.OutlinedButton,
                             size = ButtonSize.Large,
@@ -77,7 +82,11 @@ class V2BasicInputsActivity : DemoActivity() {
                     }
                 }
 
-                FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, themeMode = ThemeMode.Colorful) {
+                FluentTheme(
+                    globalTokens = globalTokens,
+                    aliasTokens = aliasTokens,
+                    themeMode = ThemeMode.Colorful
+                ) {
                     Text("Button with Colorful mode")
                     CreateButton()
                 }
@@ -98,7 +107,7 @@ class V2BasicInputsActivity : DemoActivity() {
     }
 
     @Composable
-    fun icon(enabled:Boolean) : @Composable (RowScope.() -> Unit) {
+    fun icon(enabled: Boolean): @Composable (RowScope.() -> Unit) {
         return {
             if (enabled)
                 Icon(
@@ -131,23 +140,27 @@ class V2BasicInputsActivity : DemoActivity() {
     @Composable
     fun CreateButton(buttonToken: ButtonTokens? = null) {
         var enabled by rememberSaveable { mutableStateOf(true) }
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)){
+        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             CreateButton(
                 style = ButtonStyle.Button,
                 size = ButtonSize.Large,
                 buttonTokens = buttonToken,
-                onClick = {enabled = !enabled},
-                text = if(enabled) "Click to Disable" else "Click to Enable"
+                onClick = { enabled = !enabled },
+                text = if (enabled) "Click to Disable" else "Click to Enable"
             )
         }
 
         Spacer(Modifier.height(20.dp))
 
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxSize(1.0F),horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.fillMaxSize(1.0F),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             var clicks by rememberSaveable { mutableStateOf(0) }
             val onClickLambda: () -> Unit = { clicks++ }
             val text = "Button $clicks"
-            val toggleIcon = clicks%2 == 0
+            val toggleIcon = clicks % 2 == 0
 
             if (clicks < 3) {
                 CreateButton(
@@ -159,8 +172,7 @@ class V2BasicInputsActivity : DemoActivity() {
                     icon = icon(toggleIcon),
                     text = text
                 )
-            }
-            else{
+            } else {
                 CreateButton(
                     style = ButtonStyle.Button,
                     size = ButtonSize.Large,
@@ -173,10 +185,10 @@ class V2BasicInputsActivity : DemoActivity() {
             }
 
             CreateButton(
-                style = if(clicks < 3) ButtonStyle.Button else ButtonStyle.TextButton,
-                size = if(clicks < 3) ButtonSize.Large else ButtonSize.Small,
+                style = if (clicks < 3) ButtonStyle.Button else ButtonStyle.TextButton,
+                size = if (clicks < 3) ButtonSize.Large else ButtonSize.Small,
                 enabled = enabled,
-                buttonTokens = if(clicks < 3) buttonToken else ButtonTokens(),
+                buttonTokens = if (clicks < 3) buttonToken else ButtonTokens(),
                 onClick = onClickLambda,
                 icon = icon(toggleIcon),
                 text = text
@@ -186,7 +198,7 @@ class V2BasicInputsActivity : DemoActivity() {
                 style = ButtonStyle.Button,
                 size = ButtonSize.Large,
                 enabled = enabled,
-                buttonTokens = if(clicks < 3) buttonToken else ButtonTokens(),
+                buttonTokens = if (clicks < 3) buttonToken else ButtonTokens(),
                 onClick = onClickLambda,
                 icon = icon(toggleIcon),
                 text = "Large $text"
@@ -207,25 +219,26 @@ class V2BasicInputsActivity : DemoActivity() {
                 enabled = enabled,
                 buttonTokens = buttonToken,
                 onClick = onClickLambda,
-                icon = icon(clicks%2 == 0),
+                icon = icon(clicks % 2 == 0),
                 text = "Text $text"
             )
         }
     }
 }
 
-class ThemeViewModel : ViewModel(){
+class ThemeViewModel : ViewModel() {
     private val _aliasTokens: MutableLiveData<AliasTokens> = MutableLiveData(AliasTokens())
 
     private val _globalTokens: MutableLiveData<GlobalTokens> = MutableLiveData(GlobalTokens())
 
-    val aliasTokens : LiveData<AliasTokens> = _aliasTokens
-    val globalTokens : LiveData<GlobalTokens> = _globalTokens
+    val aliasTokens: LiveData<AliasTokens> = _aliasTokens
+    val globalTokens: LiveData<GlobalTokens> = _globalTokens
 
-    fun onAliasChanged(aliasTokens: AliasTokens){
+    fun onAliasChanged(aliasTokens: AliasTokens) {
         _aliasTokens.value = aliasTokens
     }
-    fun onGlobalChanged(globalTokens: GlobalTokens){
+
+    fun onGlobalChanged(globalTokens: GlobalTokens) {
         _globalTokens.value = globalTokens
     }
 }

@@ -5,16 +5,18 @@
 package com.microsoft.fluentui.theme.token
 
 
- class TokenSet <T,V>(var defaultValues :((token: T) -> V)){
-    operator fun get(token :T):V {
+class TokenSet<T, V>(var defaultValues: ((token: T) -> V)) {
+    operator fun get(token: T): V {
         var value = valueOverride[token]
-        if(value == null){
+        if (value == null) {
             value = defaultValues(token)
         }
         return value!!
     }
-    operator fun set (key: T, value:V) {
+
+    operator fun set(key: T, value: V) {
         valueOverride[key] = value
     }
-    private val valueOverride = HashMap<T,V>()
+
+    private val valueOverride = HashMap<T, V>()
 }
