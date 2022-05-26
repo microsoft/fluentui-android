@@ -400,87 +400,90 @@ open class GlobalTokens {
         }
     }
 
-    enum class ShadowTokens {
-        Shadow02,
-        Shadow04,
-        Shadow08,
-        Shadow16,
-        Shadow28,
-        Shadow64,
-    }
-
-    open val shadow: TokenSet<ShadowTokens, ShadowInfo> by lazy {
-        TokenSet { token ->
-            when (token) {
-                ShadowTokens.Shadow02 ->
-                    ShadowInfo(
-                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                        blurOne = 1,
-                        xOne = 0,
-                        yOne = 1,
-                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                        blurTwo = 1,
-                        xTwo = 0,
-                        yTwo = 0
-                    )
-                ShadowTokens.Shadow04 ->
-                    ShadowInfo(
-                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                        blurOne = 2,
-                        xOne = 0,
-                        yOne = 2,
-                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                        blurTwo = 1,
-                        xTwo = 0,
-                        yTwo = 0
-                    )
-                ShadowTokens.Shadow08 ->
-                    ShadowInfo(
-                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                        blurOne = 4,
-                        xOne = 0,
-                        yOne = 4,
-                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                        blurTwo = 1,
-                        xTwo = 0,
-                        yTwo = 0
-                    )
-                ShadowTokens.Shadow16 ->
-                    ShadowInfo(
-                        colorOne = shadowColor[ShadowColorTokens.NeutralKey],
-                        blurOne = 8,
-                        xOne = 0,
-                        yOne = 8,
-                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
-                        blurTwo = 1,
-                        xTwo = 0,
-                        yTwo = 0
-                    )
-                ShadowTokens.Shadow28 ->
-                    ShadowInfo(
-                        colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
-                        blurOne = 14,
-                        xOne = 0,
-                        yOne = 14,
-                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
-                        blurTwo = 4,
-                        xTwo = 0,
-                        yTwo = 0
-                    )
-                ShadowTokens.Shadow64 ->
-                    ShadowInfo(
-                        colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
-                        blurOne = 32,
-                        xOne = 0,
-                        yOne = 32,
-                        colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
-                        blurTwo = 4,
-                        xTwo = 0,
-                        yTwo = 0
-                    )
-            }
-        }
-    }
+     enum class ShadowTokens {
+         Shadow02,
+         Shadow04,
+         Shadow08,
+         Shadow16,
+         Shadow28,
+         Shadow64,
+     }
+     open val shadow: TokenSet<ShadowTokens, ShadowInfo>by lazy{
+         TokenSet { token ->
+             when (token) {
+                 ShadowTokens.Shadow02 ->
+                     ShadowInfo(
+                         colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                         blurOne = 1,
+                         xOne = 0,
+                         yOne = 1,
+                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                         blurTwo = 1,
+                         xTwo = 0,
+                         yTwo = 0,
+                         elevation = 2.dp
+                     )
+                 ShadowTokens.Shadow04 ->
+                     ShadowInfo (colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                         blurOne = 2,
+                         xOne = 0,
+                         yOne = 2,
+                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                         blurTwo = 1,
+                         xTwo = 0,
+                         yTwo = 0,
+                         elevation = 4.dp
+                     )
+                 ShadowTokens.Shadow08 ->
+                     ShadowInfo(
+                         colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                         blurOne = 4,
+                         xOne = 0,
+                         yOne = 4,
+                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                         blurTwo = 1,
+                         xTwo = 0,
+                         yTwo = 0,
+                         elevation = 8.dp
+                     )
+                 ShadowTokens.Shadow16 ->
+                     ShadowInfo(
+                         colorOne = shadowColor[ShadowColorTokens.NeutralKey],
+                         blurOne = 8,
+                         xOne = 0,
+                         yOne = 8,
+                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbient],
+                         blurTwo = 1,
+                         xTwo = 0,
+                         yTwo = 0,
+                         elevation = 16.dp
+                     )
+                 ShadowTokens.Shadow28 ->
+                     ShadowInfo (
+                         colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
+                         blurOne = 14,
+                         xOne = 0,
+                         yOne = 14,
+                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
+                         blurTwo = 4,
+                         xTwo = 0,
+                         yTwo = 0,
+                         elevation = 28.dp)
+                 ShadowTokens.Shadow64 ->
+                     ShadowInfo(
+                         colorOne = shadowColor[ShadowColorTokens.NeutralKeyDarker],
+                         blurOne = 32,
+                         xOne = 0,
+                         yOne = 32,
+                         colorTwo = shadowColor[ShadowColorTokens.NeutralAmbientDarker],
+                         blurTwo = 4,
+                         xTwo = 0,
+                         yTwo = 0,
+                         elevation = 64.dp
+                     )
+             }
+         }
+     }
 
     enum class ElevationTokens {
         InteractiveElevation1Rest,

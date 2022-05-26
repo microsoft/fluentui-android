@@ -1,10 +1,16 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.*
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.runtime.Composable
@@ -16,7 +22,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -40,6 +45,8 @@ import com.microsoft.fluentuidemo.R
 class V2BasicInputsActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_basic_inputs
+    override val contentNeedsScrollableContainer: Boolean
+        get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +54,13 @@ class V2BasicInputsActivity : DemoActivity() {
         val viewModel = ViewModelProvider(this).get(ThemeViewModel::class.java)
 
         val buttons = findViewById<ComposeView>(R.id.buttons)
+        val context = this
+        FluentTheme.register(ControlType.Button, ButtonTokens())
         buttons.setContent {
+            val globalTokens: GlobalTokens by viewModel.globalTokens.observeAsState(initial = GlobalTokens())
+            val aliasTokens: AliasTokens by viewModel.aliasTokens.observeAsState(initial = AliasTokens())
+
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-
-                val globalTokens: GlobalTokens by viewModel.globalTokens.observeAsState(initial = GlobalTokens())
-                val aliasTokens: AliasTokens by viewModel.aliasTokens.observeAsState(initial = AliasTokens())
-
                 FluentTheme.register(ControlType.Button, ButtonTokens())
                 Text("Button to update Theme via Global & Alias token")
 
@@ -82,25 +90,43 @@ class V2BasicInputsActivity : DemoActivity() {
                     }
                 }
 
-                FluentTheme(
-                    globalTokens = globalTokens,
-                    aliasTokens = aliasTokens,
-                    themeMode = ThemeMode.Colorful
-                ) {
-                    Text("Button with Colorful mode")
-                    CreateButton()
+                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    item {
+                        Text("Default Button from provided base token & Auto theme")
+                        FluentTheme {
+                            CreateButtons()
+                        }
+                    }
+
+                    item {FluentTheme(
+                            globalTokens = globalTokens,
+                            aliasTokens = aliasTokens,
+                            themeMode = ThemeMode.Colorful
+                    ) {
+                        Text("Button with Colorful mode")
+                        CreateButtons()
+                    }}
+                    item {
+                        FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+                            Text("Button with existing default token values")
+                            CreateButtons()
+
+                            Text("Button with new buttonToken provided as parameter for different style")
+                            CreateButtons(MyButtonTokens())
+
+                            Text("Button with existing default token values")
+                            CreateButtons()
+                        }
+                    }
                 }
-
-                FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
-                    Text("Button with existing default token values")
-                    CreateButton()
-
-                    Text("Button with new buttonToken provided as parameter for different style")
-                    CreateButton(MyButtonTokens())
-
-                    Text("Button with different style applied by registering new buttonToken as default")
-                    FluentTheme.register(ControlType.Button, MyButtonTokens())
-                    CreateButton()
+            }
+            FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+                Box(contentAlignment = Alignment.BottomEnd,
+                        modifier = Modifier.fillMaxSize()
+                ) {
+                    CreateButton(style = ButtonStyle.FloatingActionButton,
+                            onClick = { Toast.makeText(context, "FAB Clicked", Toast.LENGTH_SHORT).show() },
+                            icon = { Icon(Icons.Filled.Email, contentDescription = "Mail") })
                 }
             }
         }
@@ -138,7 +164,7 @@ class V2BasicInputsActivity : DemoActivity() {
     }
 
     @Composable
-    fun CreateButton(buttonToken: ButtonTokens? = null) {
+    fun CreateButtons(buttonToken: ButtonTokens? = null) {
         var enabled by rememberSaveable { mutableStateOf(true) }
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             CreateButton(
@@ -162,6 +188,8 @@ class V2BasicInputsActivity : DemoActivity() {
             val text = "Button $clicks"
             val toggleIcon = clicks % 2 == 0
 
+
+            FluentTheme() {}
             if (clicks < 3) {
                 CreateButton(
                     style = ButtonStyle.Button,

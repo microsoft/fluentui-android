@@ -5,7 +5,8 @@
 
 package com.microsoft.fluentui.theme.token
 
-data class ShadowInfo(
-    val colorOne: FluentColor, val blurOne: Int, val xOne: Int, val yOne: Int,
-    val colorTwo: FluentColor, val blurTwo: Int, val xTwo: Int, val yTwo: Int
-)
+import androidx.compose.ui.unit.Dp
+
+data class ShadowInfo (val colorOne: FluentColor, val blurOne: Int, val xOne: Int, val yOne: Int,
+                       val colorTwo: FluentColor, val blurTwo: Int, val xTwo: Int, val yTwo: Int,
+                       val elevation: Dp )

@@ -3,6 +3,13 @@ package com.microsoft.fluentui.button
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
@@ -20,6 +27,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
+import androidx.compose.ui.draw.shadow
+import com.microsoft.fluentui.theme.token.*
 
 val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
 val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
@@ -34,21 +43,28 @@ fun CreateButton(
     onClick: () -> Unit,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: @Composable (RowScope.() -> Unit)? = null,
-    text: String
+    text: String? = null
 ) {
 
     val token = remember {
         (buttonTokens ?: FluentTheme.tokens[ControlType.Button] as ButtonTokens)
     }
 
+    var buttonModifier = modifier
+    if (style == ButtonStyle.FloatingActionButton)
+        buttonModifier = buttonModifier
+                .padding(end = 16.dp, bottom = 16.dp)
+                .shadow(getButtonToken()., shape = CircleShape)
+
     CompositionLocalProvider(
         LocalButtonTokens provides token,
         LocalButtonInfo provides ButtonInfo(style, size)
     ) {
+
         Button(
             onClick = onClick,
             enabled = enabled,
-            modifier = modifier,
+            modifier = buttonModifier,
             interactionSource = interactionSource,
             icon = icon,
             content = getText(text)
@@ -84,23 +100,24 @@ fun Button(
     val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
 
     Box(
-        modifier
-            .then(if (border != null) Modifier.border(border, shape) else Modifier)
-            .background(
-                color = backgroundColor,
-                shape = shape
-            )
-            .clip(shape)
-            .then(clickAndSemanticsModifier),
+            modifier
+                    .then(if (border != null) Modifier.border(border, shape) else Modifier)
+                    .background(
+                            color = backgroundColor,
+                            shape = shape
+                    )
+                    .clip(shape)
+                    .then(clickAndSemanticsModifier),
         propagateMinConstraints = true
     ) {
         ProvideTextStyle(textStyle) {
             Row(
-                Modifier
-                    .defaultMinSize(
-                        minHeight = getButtonToken().minHeight(buttonInfo = getButtonInfo())
-                    )
-                    .padding(contentPadding),
+                    Modifier
+                            .defaultMinSize(
+                                    minHeight = getButtonToken().minHeight(buttonInfo = getButtonInfo()),
+                                    minWidth = getButtonToken().minWidth(buttonInfo = getButtonInfo())
+                            )
+                            .padding(contentPadding),
                 horizontalArrangement = Arrangement.spacedBy(
                     iconSpacing,
                     Alignment.CenterHorizontally
@@ -127,14 +144,15 @@ fun getButtonInfo(): ButtonInfo {
 }
 
 @Composable
-fun getText(text: String): @Composable RowScope.() -> Unit {
+fun getText (text:String?): @Composable RowScope.() -> Unit {
     return {
-        Text(
-            text = text,
-            fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
-            lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
-            fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight
-        )
+        if (text != null) {
+            Text(text = text,
+                    fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
+                    lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
+                    fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight
+            )
+        }
     }
 }
 

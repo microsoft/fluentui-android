@@ -16,6 +16,7 @@ import com.microsoft.fluentui.theme.token.*
 
 enum class ButtonStyle {
     Button,
+    FloatingActionButton,
     OutlinedButton,
     TextButton
 }
@@ -56,6 +57,16 @@ open class ButtonTokens : ControlTokens {
                     ),
                     disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
                         themeMode = themeMode
+                    )
+                )
+
+            ButtonStyle.FloatingActionButton ->
+                StateColor(
+                    rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
+                    ),
+                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+                            themeMode = themeMode
                     )
                 )
 
@@ -100,7 +111,15 @@ open class ButtonTokens : ControlTokens {
                     themeMode = themeMode
                 )
             )
-            ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
+            ButtonStyle.FloatingActionButton -> StateColor(
+                rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        themeMode = themeMode
+                ),
+                disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+                        themeMode = themeMode
+                )
+            )
+            ButtonStyle.OutlinedButton, ButtonStyle.TextButton  ->
                 StateColor(
                     rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
@@ -142,6 +161,21 @@ open class ButtonTokens : ControlTokens {
                         themeMode = themeMode
                     )
                 )
+            ButtonStyle.FloatingActionButton ->
+                StateColor(
+                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
+                    ),
+                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                            themeMode = themeMode
+                    ),
+                    selected = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                            themeMode = themeMode
+                    ),
+                    disabled = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                            themeMode = themeMode
+                    )
+                )
             ButtonStyle.OutlinedButton -> StateColor()
             ButtonStyle.TextButton -> StateColor()
         }
@@ -157,9 +191,9 @@ open class ButtonTokens : ControlTokens {
     }
 
     @Composable
-    open fun innerStrokeColor(buttonInfo: ButtonInfo): StateColor {
-        return when (buttonInfo.style) {
-            ButtonStyle.Button -> StateColor(
+    open fun innerStrokeColor(buttonInfo: ButtonInfo): StateColor{
+        return when(buttonInfo.style){
+            ButtonStyle.Button, ButtonStyle.FloatingActionButton -> StateColor(
                 focused = aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                     themeMode = themeMode
                 )
@@ -171,7 +205,9 @@ open class ButtonTokens : ControlTokens {
 
     @Composable
     open fun borderRadius(buttonInfo: ButtonInfo): Dp {
-        return when (buttonInfo.size) {
+        if (buttonInfo.style == ButtonStyle.FloatingActionButton)
+            return globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Circle]
+        return when(buttonInfo.size){
             ButtonSize.Small -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Large]
             ButtonSize.Medium -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Large]
             ButtonSize.Large -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.XLarge]
@@ -182,6 +218,7 @@ open class ButtonTokens : ControlTokens {
     open fun innerBorderSize(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.style) {
             ButtonStyle.Button -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
+            ButtonStyle.FloatingActionButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
             ButtonStyle.OutlinedButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin]
             ButtonStyle.TextButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
         }
@@ -191,6 +228,7 @@ open class ButtonTokens : ControlTokens {
     open fun outerBorderSize(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.style) {
             ButtonStyle.Button -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
+            ButtonStyle.FloatingActionButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
             ButtonStyle.OutlinedButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick]
             ButtonStyle.TextButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
         }
@@ -244,7 +282,12 @@ open class ButtonTokens : ControlTokens {
 
     @Composable
     open fun minHeight(buttonInfo: ButtonInfo): Dp {
-        return when (buttonInfo.size) {
+        if (buttonInfo.style == ButtonStyle.FloatingActionButton)
+            return when(buttonInfo.size) {
+                ButtonSize.Small -> 48.dp
+                ButtonSize.Medium, ButtonSize.Large -> 56.dp
+            }
+        return when(buttonInfo.size){
             ButtonSize.Small -> 28.dp
             ButtonSize.Medium -> 40.dp
             ButtonSize.Large -> 52.dp
@@ -253,7 +296,12 @@ open class ButtonTokens : ControlTokens {
 
     @Composable
     open fun minWidth(buttonInfo: ButtonInfo): Dp {
-        return when (buttonInfo.size) {
+        if (buttonInfo.style == ButtonStyle.FloatingActionButton)
+            return when(buttonInfo.size) {
+                ButtonSize.Small -> 48.dp
+                ButtonSize.Medium, ButtonSize.Large -> 56.dp
+            }
+        return when(buttonInfo.size){
             ButtonSize.Small -> 28.dp
             ButtonSize.Medium -> 40.dp
             ButtonSize.Large -> 52.dp
@@ -266,6 +314,13 @@ open class ButtonTokens : ControlTokens {
             ButtonSize.Small -> 5.dp
             ButtonSize.Medium -> 10.dp
             ButtonSize.Large -> 15.dp
+        }
+    }
+
+    @Composable
+    open fun elevation(buttonInfo: ButtonInfo): Dp {
+        if (buttonInfo.style == ButtonStyle.FloatingActionButton) {
+            return when(buttonInfo.)
         }
     }
 }
