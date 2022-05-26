@@ -6,7 +6,7 @@ import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.TokenSet
-class MyAliasToken (globalTokens:GlobalTokens = MyGlobalTokens()): AliasTokens(globalTokens) {
+class MyAliasTokens (globalTokens:GlobalTokens = MyGlobalTokens()): AliasTokens(globalTokens) {
 
     override val neutralForegroundColor: TokenSet<NeutralForegroundColorTokens, FluentColor> by lazy{
         TokenSet { FluentColor( light = Color.White )}

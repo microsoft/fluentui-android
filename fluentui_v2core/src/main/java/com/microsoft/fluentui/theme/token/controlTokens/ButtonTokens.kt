@@ -3,7 +3,7 @@
 //  Licensed under the MIT License.
 //
 
-package com.microsoft.fluentui.theme.token
+package com.microsoft.fluentui.theme.token.controlTokens
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.aliasToken
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
-
+import com.microsoft.fluentui.theme.token.*
 
 enum class ButtonStyle{
     Button,
@@ -25,7 +25,8 @@ enum class ButtonSize{
     Large
 }
 data class ButtonInfo(val style:ButtonStyle =  ButtonStyle.Button, val size:ButtonSize =  ButtonSize.Medium )
-open class ButtonToken() : ControlTokens {
+
+open class ButtonTokens : ControlTokens {
 
     companion object {
         const val Type:String = "Button"

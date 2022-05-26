@@ -1,9 +1,8 @@
 package com.microsoft.fluentui.theme
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.*
 import com.microsoft.fluentui.theme.token.*
-import com.microsoft.fluentui.theme.token.LocalAliasToken
+import com.microsoft.fluentui.theme.token.LocalAliasTokens
 import com.microsoft.fluentui.theme.token.LocalGlobalTokens
 
 enum class ThemeMode{
@@ -18,16 +17,13 @@ internal val LocalThemeMode = compositionLocalOf { ThemeMode.Auto }
 
 @Composable
 fun FluentTheme (globalTokens: GlobalTokens = GlobalTokens(),
-                 aliasToken: AliasTokens = AliasTokens(),
+                 aliasTokens: AliasTokens = AliasTokens(),
                  themeMode: ThemeMode = ThemeMode.Auto,
                  content: @Composable () -> Unit
 ){
-    val rememberedGlobalToken = remember {globalTokens}
-    val rememberedAliasToken = remember {aliasToken}
-
     CompositionLocalProvider(
-        LocalGlobalTokens provides rememberedGlobalToken,
-        LocalAliasToken provides rememberedAliasToken,
+        LocalGlobalTokens provides globalTokens,
+        LocalAliasTokens provides aliasTokens,
         LocalThemeMode provides themeMode){
         content()
     }
@@ -43,7 +39,7 @@ object FluentTheme{
     val aliasToken:AliasTokens
     @Composable
     @ReadOnlyComposable
-    get() = LocalAliasToken.current
+    get() = LocalAliasTokens.current
 
     val tokens:HashMap<ControlType,Any?> = HashMap()
 

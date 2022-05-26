@@ -25,33 +25,33 @@ import com.microsoft.fluentui.theme.FluentTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
 
-
-val LocalButtonToken = compositionLocalOf { ButtonToken() }
-val LocalButtonInfo = compositionLocalOf {ButtonInfo()}
+val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
+val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
 @Composable
 fun CreateButton (
     modifier: Modifier = Modifier,
-    style:ButtonStyle = ButtonStyle.Button,
-    size:ButtonSize = ButtonSize.Medium,
+    style: ButtonStyle = ButtonStyle.Button,
+    size: ButtonSize = ButtonSize.Medium,
     enabled: Boolean = true,
-    buttonToken:ButtonToken? = null,
+    buttonTokens:ButtonTokens? = null,
     onClick:() -> Unit,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: @Composable (RowScope.() -> Unit)? = null,
     text: String
 ) {
-    val buttonInfo = remember{
-        ButtonInfo(style,size)
-    }
 
     val token  = remember {
-        (buttonToken ?: FluentTheme.tokens[ControlType.Button] as ButtonToken)
+        (buttonTokens ?: FluentTheme.tokens[ControlType.Button] as ButtonTokens)
     }
 
-    CompositionLocalProvider(LocalButtonToken provides token,
-        LocalButtonInfo provides buttonInfo ) {
+    CompositionLocalProvider(LocalButtonTokens provides token,
+        LocalButtonInfo provides ButtonInfo(style,size) ) {
         Button(
             onClick = onClick,
             enabled = enabled,
@@ -81,7 +81,6 @@ fun Button(
         onClick = onClick
     )
     val backgroundColor = backgroundColor(enabled,interactionSource)
-    val contentColor = textColor(enabled,interactionSource)
     val contentPadding = getButtonToken().padding(getButtonInfo())
     val iconSpacing = getButtonToken().spacing(getButtonInfo())
     val border = getBorder()
@@ -119,8 +118,8 @@ fun Button(
 }
 
 @Composable
-fun getButtonToken() : ButtonToken{
-    return LocalButtonToken.current
+fun getButtonToken() : ButtonTokens{
+    return LocalButtonTokens.current
 }
 
 @Composable

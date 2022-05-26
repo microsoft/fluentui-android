@@ -13,6 +13,13 @@ import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.TokenSet
  class MyGlobalTokens : GlobalTokens() {
      override val borderSize: TokenSet<BorderSizeTokens, Dp> by lazy {
-         TokenSet { 5.dp}
+         TokenSet { token ->
+             when (token) {
+                 BorderSizeTokens.None ->
+                     0.dp
+                 else ->
+                     5.dp
+             }
+         }
      }
  }

@@ -506,4 +506,4 @@ open val neutralStrokeColor: TokenSet<NeutralStrokeColorTokens, FluentColor> by 
     }
 }
 
-internal val LocalAliasToken = compositionLocalOf { AliasTokens()}
+internal val LocalAliasTokens = compositionLocalOf { AliasTokens()}

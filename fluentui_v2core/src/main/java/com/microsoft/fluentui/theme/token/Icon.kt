@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.theme.token
 
-import androidx.compose.material.icons.Icons
 import androidx.compose.ui.unit.Dp
 enum class IconType{
     Regular,
