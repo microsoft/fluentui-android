@@ -71,7 +71,11 @@ task sourceJar(type: Jar) {
 }
 
 project.afterEvaluate {
-    project.ext.publishingFunc('fluentui_calendar')
+    try{
+        project.ext.publishingFunc('fluentui_calendar')
+    }catch(Exception e){
+        throw new GradleException("Artifact already exists with same version. Skipping")
+    }
 }
 
 
