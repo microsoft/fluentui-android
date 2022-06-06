@@ -65,6 +65,9 @@ dependencies {
     implementation("androidx.compose.runtime:runtime:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation "androidx.compose.material:material-icons-core:$composeVersion"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.4.1'
+    implementation "androidx.compose.runtime:runtime-livedata:$composeVersion"
 }
 
 task sourceJar(type: Jar) {

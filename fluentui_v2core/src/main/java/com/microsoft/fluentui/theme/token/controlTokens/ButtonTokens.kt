@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.theme.token.controlTokens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
@@ -16,7 +17,6 @@ import com.microsoft.fluentui.theme.token.*
 
 enum class ButtonStyle {
     Button,
-    FloatingActionButton,
     OutlinedButton,
     TextButton
 }
@@ -28,9 +28,9 @@ enum class ButtonSize {
 }
 
 data class ButtonInfo(
-    val style: ButtonStyle = ButtonStyle.Button,
-    val size: ButtonSize = ButtonSize.Medium
-)
+        val style: ButtonStyle = ButtonStyle.Button,
+        val size: ButtonSize = ButtonSize.Medium
+) : ControlInfo
 
 open class ButtonTokens : ControlTokens {
 
@@ -43,50 +43,40 @@ open class ButtonTokens : ControlTokens {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateColor(
-                    rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
-                        themeMode = themeMode
-                    )
-                )
-
-            ButtonStyle.FloatingActionButton ->
-                StateColor(
-                    rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
-                            themeMode = themeMode
-                    )
+                        rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+                                themeMode = themeMode
+                        )
                 )
 
             ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
                 StateColor(
-                    rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
-                    )
+                        rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                                themeMode = themeMode
+                        )
                 )
         }
     }
@@ -95,47 +85,39 @@ open class ButtonTokens : ControlTokens {
     open fun textColor(buttonInfo: ButtonInfo): StateColor {
         return when (buttonInfo.style) {
             ButtonStyle.Button -> StateColor(
-                rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                pressed = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                selected = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
-                    themeMode = themeMode
-                )
-            )
-            ButtonStyle.FloatingActionButton -> StateColor(
-                rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                ),
-                disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
-                        themeMode = themeMode
-                )
-            )
-            ButtonStyle.OutlinedButton, ButtonStyle.TextButton  ->
-                StateColor(
-                    rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
+                    rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
                     ),
-                    pressed = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
-                        themeMode = themeMode
+                    pressed = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
                     ),
-                    selected = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
-                        themeMode = themeMode
+                    selected = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
                     ),
-                    focused = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
+                    focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
                     ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
+                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+                            themeMode = themeMode
                     )
+            )
+            ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
+                StateColor(
+                        rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                                themeMode = themeMode
+                        )
                 )
         }
     }
@@ -145,36 +127,21 @@ open class ButtonTokens : ControlTokens {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateColor(
-                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        themeMode = themeMode
-                    )
-                )
-            ButtonStyle.FloatingActionButton ->
-                StateColor(
-                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = themeMode
-                    ),
-                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
-                            themeMode = themeMode
-                    ),
-                    selected = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                            themeMode = themeMode
-                    )
+                        rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                                themeMode = themeMode
+                        )
                 )
             ButtonStyle.OutlinedButton -> StateColor()
             ButtonStyle.TextButton -> StateColor()
@@ -182,72 +149,87 @@ open class ButtonTokens : ControlTokens {
     }
 
     @Composable
-    open fun outerStrokeColor(buttonInfo: ButtonInfo): StateColor {
-        return StateColor(
-            focused = aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
-                themeMode = themeMode
+    open fun borderStroke(buttonInfo: ButtonInfo): StateBorderStroke {
+        return when (buttonInfo.style) {
+            ButtonStyle.Button, ButtonStyle.TextButton -> StateBorderStroke(
+                    focused = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                    aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                                            themeMode = themeMode
+                                    )
+                            ),
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                                            themeMode = themeMode
+                                    )
+                            )
+                    )
             )
-        )
-    }
 
-    @Composable
-    open fun innerStrokeColor(buttonInfo: ButtonInfo): StateColor{
-        return when(buttonInfo.style){
-            ButtonStyle.Button, ButtonStyle.FloatingActionButton -> StateColor(
-                focused = aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
-                    themeMode = themeMode
-                )
+            ButtonStyle.OutlinedButton -> StateBorderStroke(
+                    pressed = listOf(BorderStroke(
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasToken.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
+                                    themeMode = themeMode
+                            )
+                    )),
+                    rest = listOf(BorderStroke(
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasToken.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
+                                    themeMode = themeMode
+                            )
+                    )),
+                    disabled = listOf(BorderStroke(
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                                    themeMode = themeMode
+                            )
+                    )),
+                    focused = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                    aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                                            themeMode = themeMode
+                                    )),
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                                            themeMode = themeMode
+                                    )
+                            )
+                    )
             )
-            ButtonStyle.OutlinedButton -> StateColor()
-            ButtonStyle.TextButton -> StateColor()
         }
     }
 
     @Composable
     open fun borderRadius(buttonInfo: ButtonInfo): Dp {
-        if (buttonInfo.style == ButtonStyle.FloatingActionButton)
-            return globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Circle]
-        return when(buttonInfo.size){
+        return when (buttonInfo.size) {
             ButtonSize.Small -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Large]
-            ButtonSize.Medium -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Large]
-            ButtonSize.Large -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.XLarge]
-        }
-    }
-
-    @Composable
-    open fun innerBorderSize(buttonInfo: ButtonInfo): Dp {
-        return when (buttonInfo.style) {
-            ButtonStyle.Button -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
-            ButtonStyle.FloatingActionButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
-            ButtonStyle.OutlinedButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin]
-            ButtonStyle.TextButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
-        }
-    }
-
-    @Composable
-    open fun outerBorderSize(buttonInfo: ButtonInfo): Dp {
-        return when (buttonInfo.style) {
-            ButtonStyle.Button -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
-            ButtonStyle.FloatingActionButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
-            ButtonStyle.OutlinedButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick]
-            ButtonStyle.TextButton -> globalTokens.borderSize[GlobalTokens.BorderSizeTokens.None]
+            ButtonSize.Medium -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Medium]
+            ButtonSize.Large -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Medium]
         }
     }
 
     @Composable
     open fun iconSize(buttonInfo: ButtonInfo): IconSize {
-        return when (buttonInfo.size) {
-            ButtonSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmall]
-            ButtonSize.Medium -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.Small]
-            ButtonSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.Small]
+        return when (buttonInfo.style) {
+            ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
+                when (buttonInfo.size) {
+                    ButtonSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmallSelected]
+                    ButtonSize.Medium -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
+                    ButtonSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
+                }
         }
     }
 
     @Composable
     open fun fontInfo(buttonInfo: ButtonInfo): FontInfo {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> aliasToken.typography[AliasTokens.TypographyTokens.Caption1Strong]
-            ButtonSize.Medium -> aliasToken.typography[AliasTokens.TypographyTokens.Caption1Strong]
+            ButtonSize.Small -> aliasToken.typography[AliasTokens.TypographyTokens.Body2Strong]
+            ButtonSize.Medium -> aliasToken.typography[AliasTokens.TypographyTokens.Body2Strong]
             ButtonSize.Large -> aliasToken.typography[AliasTokens.TypographyTokens.Body1Strong]
         }
     }
@@ -257,16 +239,16 @@ open class ButtonTokens : ControlTokens {
         return when (buttonInfo.size) {
             ButtonSize.Small ->
                 PaddingValues(
-                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall],
-                    vertical = 5.dp
+                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall],
+                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
                 )
             ButtonSize.Medium -> PaddingValues(
-                horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                vertical = 10.dp
+                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
+                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
             )
             ButtonSize.Large -> PaddingValues(
-                horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Large],
-                vertical = 15.dp
+                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Large],
+                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Small]
             )
         }
     }
@@ -281,46 +263,11 @@ open class ButtonTokens : ControlTokens {
     }
 
     @Composable
-    open fun minHeight(buttonInfo: ButtonInfo): Dp {
-        if (buttonInfo.style == ButtonStyle.FloatingActionButton)
-            return when(buttonInfo.size) {
-                ButtonSize.Small -> 48.dp
-                ButtonSize.Medium, ButtonSize.Large -> 56.dp
-            }
-        return when(buttonInfo.size){
-            ButtonSize.Small -> 28.dp
-            ButtonSize.Medium -> 40.dp
-            ButtonSize.Large -> 52.dp
-        }
-    }
-
-    @Composable
-    open fun minWidth(buttonInfo: ButtonInfo): Dp {
-        if (buttonInfo.style == ButtonStyle.FloatingActionButton)
-            return when(buttonInfo.size) {
-                ButtonSize.Small -> 48.dp
-                ButtonSize.Medium, ButtonSize.Large -> 56.dp
-            }
-        return when(buttonInfo.size){
-            ButtonSize.Small -> 28.dp
-            ButtonSize.Medium -> 40.dp
-            ButtonSize.Large -> 52.dp
-        }
-    }
-
-    @Composable
-    open fun minPaddingTopBottom(buttonInfo: ButtonInfo): Dp {
+    open fun fixedHeight(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> 5.dp
-            ButtonSize.Medium -> 10.dp
-            ButtonSize.Large -> 15.dp
-        }
-    }
-
-    @Composable
-    open fun elevation(buttonInfo: ButtonInfo): Dp {
-        if (buttonInfo.style == ButtonStyle.FloatingActionButton) {
-            return when(buttonInfo.)
+            ButtonSize.Small -> 28.dp
+            ButtonSize.Medium -> 36.dp
+            ButtonSize.Large -> 48.dp
         }
     }
 }

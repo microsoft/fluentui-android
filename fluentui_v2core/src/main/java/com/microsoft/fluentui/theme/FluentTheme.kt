@@ -1,9 +1,8 @@
 package com.microsoft.fluentui.theme
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.lifecycle.*
 import com.microsoft.fluentui.theme.token.*
 
 enum class ThemeMode {
@@ -18,15 +17,15 @@ internal val LocalThemeMode = compositionLocalOf { ThemeMode.Auto }
 
 @Composable
 fun FluentTheme(
-    globalTokens: GlobalTokens = GlobalTokens(),
-    aliasTokens: AliasTokens = AliasTokens(),
-    themeMode: ThemeMode = ThemeMode.Auto,
-    content: @Composable () -> Unit
+        globalTokens: GlobalTokens = GlobalTokens(),
+        aliasTokens: AliasTokens = AliasTokens(),
+        themeMode: ThemeMode = ThemeMode.Auto,
+        content: @Composable () -> Unit
 ) {
     CompositionLocalProvider(
-        LocalGlobalTokens provides globalTokens,
-        LocalAliasTokens provides aliasTokens,
-        LocalThemeMode provides themeMode
+            LocalGlobalTokens provides globalTokens,
+            LocalAliasTokens provides aliasTokens,
+            LocalThemeMode provides themeMode
     ) {
         content()
     }
@@ -54,4 +53,35 @@ object FluentTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalThemeMode.current
+
+    class ThemeViewModel : ViewModel() {
+        private val _aliasTokens: MutableLiveData<AliasTokens> = MutableLiveData(AliasTokens())
+
+        private val _globalTokens: MutableLiveData<GlobalTokens> = MutableLiveData(GlobalTokens())
+
+        val aliasTokens: LiveData<AliasTokens> = _aliasTokens
+        val globalTokens: LiveData<GlobalTokens> = _globalTokens
+
+        fun onAliasChanged(aliasTokens: AliasTokens) {
+            _aliasTokens.value = aliasTokens
+        }
+
+        fun onGlobalChanged(globalTokens: GlobalTokens) {
+            _globalTokens.value = globalTokens
+        }
+
+        @Composable
+        fun initializeGlobalToken(globalTokens: GlobalTokens): State<GlobalTokens> {
+            return this.globalTokens.observeAsState(initial = globalTokens)
+        }
+
+        @Composable
+        fun initializeAliasToken(aliasTokens: AliasTokens): State<AliasTokens> {
+            return this.aliasTokens.observeAsState(initial = aliasTokens)
+        }
+    }
+
+    fun getViewModel(owner: ViewModelStoreOwner): ThemeViewModel {
+        return ViewModelProvider(owner).get(ThemeViewModel::class.java)
+    }
 }

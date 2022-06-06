@@ -6,7 +6,6 @@ package com.microsoft.fluentui.theme.token
 
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.sp
 
 open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) {
 
@@ -42,170 +41,170 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 NeutralBackgroundColorTokens.Background1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
 
                 NeutralBackgroundColorTokens.Background1Pressed ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey18],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey18],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
                     )
 
                 NeutralBackgroundColorTokens.Background1Selected ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey14],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey14],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
 
                 NeutralBackgroundColorTokens.Background2 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey12],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey12],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
 
                 NeutralBackgroundColorTokens.Background2Pressed ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey30],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey30],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
                     )
 
                 NeutralBackgroundColorTokens.Background2Selected ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey26],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey26],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
                     )
 
                 NeutralBackgroundColorTokens.Background3 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey16],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey16],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
                     )
 
                 NeutralBackgroundColorTokens.Background3Pressed ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50]
                     )
 
                 NeutralBackgroundColorTokens.Background3Selected ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey30],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey30],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60]
                     )
 
                 NeutralBackgroundColorTokens.Background4 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey98],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey20],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey98],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey20],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.Background4Pressed ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey86],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey86],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.Background4Selected ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey90],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey90],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.Background5 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey94],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey24],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color70]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey94],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey24],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color70]
                     )
 
                 NeutralBackgroundColorTokens.Background5Pressed ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey82],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey42],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color40]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey82],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey42],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color40]
                     )
 
                 NeutralBackgroundColorTokens.Background5Selected ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey86],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey86],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50]
                     )
 
                 NeutralBackgroundColorTokens.Background5SelectedBrandFilled ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
 
                 NeutralBackgroundColorTokens.Background5SelectedBrandTint ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
-                        colorful = Color.Unspecified
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.Background6 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey82],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey36],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey82],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey36],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60]
                     )
 
                 NeutralBackgroundColorTokens.Background6Pressed ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey70],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey54],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color30]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey70],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey54],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color30]
                     )
 
                 NeutralBackgroundColorTokens.Background6Selected ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey74],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey50],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color150]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey74],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey50],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color150]
                     )
 
                 NeutralBackgroundColorTokens.BackgroundInverted ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey14],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey14],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.BackgroundDisabled ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey32],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey32],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.Stencil1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey90],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey90],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey34],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralBackgroundColorTokens.Stencil2 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey98],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey20],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey98],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey20],
+                            colorful = Color.Unspecified
                     )
             }
         }
@@ -228,57 +227,57 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 NeutralForegroundColorTokens.Foreground1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey14],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey14],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
                 NeutralForegroundColorTokens.Foreground2 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey84],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey84],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160]
                     )
                 NeutralForegroundColorTokens.Foreground3 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey50],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey68],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color150]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey50],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey68],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color150]
                     )
                 NeutralForegroundColorTokens.ForegroundDisable1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey74],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey36],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color90]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey74],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey36],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color90]
                     )
                 NeutralForegroundColorTokens.ForegroundDisable2 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey24],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey24],
+                            colorful = Color.Unspecified
                     )
                 NeutralForegroundColorTokens.ForegroundContrast ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color70]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color70]
                     )
                 NeutralForegroundColorTokens.ForegroundOnColor ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
                     )
                 NeutralForegroundColorTokens.ForegroundInverted1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
                     )
                 NeutralForegroundColorTokens.ForegroundInverted2 ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
             }
         }
@@ -298,44 +297,44 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 NeutralStrokeColorTokens.Stroke1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey82],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey32],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey82],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey32],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralStrokeColorTokens.Stroke2 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey24],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey24],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralStrokeColorTokens.StrokeDisabled ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey26],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey26],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralStrokeColorTokens.StrokeAccessible ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey62],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey38],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey62],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralStrokeColorTokens.StrokeFocus1 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            colorful = Color.Unspecified
                     )
 
                 NeutralStrokeColorTokens.StrokeFocus2 ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            colorful = Color.Unspecified
                     )
             }
         }
@@ -356,51 +355,51 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 BrandBackgroundColorTokens.BrandBackground1 ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color100],
-                        colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color100],
+                            colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160]
                     )
 
                 BrandBackgroundColorTokens.BrandBackground1Pressed ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
                     )
 
                 BrandBackgroundColorTokens.BrandBackground1Selected ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
                     )
 
                 BrandBackgroundColorTokens.BrandBackground2 ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color20],
-                        colorful = Color.Unspecified
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color20],
+                            colorful = Color.Unspecified
                     )
 
                 BrandBackgroundColorTokens.BrandBackgroundDisabled ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color40],
-                        colorful = Color.Unspecified
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color40],
+                            colorful = Color.Unspecified
                     )
 
                 BrandBackgroundColorTokens.BrandBackgroundInverted ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            colorful = Color.Unspecified
                     )
 
                 BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled ->
                     FluentColor(
-                        light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
-                        dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey98],
-                        colorful = Color.Unspecified
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
+                            dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey98],
+                            colorful = Color.Unspecified
                     )
             }
         }
@@ -417,23 +416,23 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 BrandForegroundColorTokens.BrandForeground1 ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color100],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color100],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
 
                 BrandForegroundColorTokens.BrandForeground1Pressed ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
                     )
 
                 BrandForegroundColorTokens.BrandForeground1Selected ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
                     )
             }
         }
@@ -450,23 +449,23 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 BrandStrokeColorTokens.BrandStroke1 ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color100],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color100],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White]
                     )
 
                 BrandStrokeColorTokens.BrandStroke1Pressed ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color140],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey88]
                     )
 
                 BrandStrokeColorTokens.BrandStroke1Selected ->
                     FluentColor(
-                        light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
-                        dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
-                        colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
+                            light = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
+                            dark = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
+                            colorful = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Grey92]
                     )
             }
         }
@@ -492,63 +491,63 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
             when (token) {
                 TypographyTokens.Display ->
                     FontInfo(
-                        fontSize = FontSize(size = 60.sp, lineHeight = 84.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Bold]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size900],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Bold]
                     )
                 TypographyTokens.LargeTitle ->
                     FontInfo(
-                        fontSize = FontSize(size = 34.sp, lineHeight = 48.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size800],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
                     )
                 TypographyTokens.Title1 ->
                     FontInfo(
-                        fontSize = FontSize(size = 24.sp, lineHeight = 32.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size700],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
                     )
                 TypographyTokens.Title2 ->
                     FontInfo(
-                        fontSize = FontSize(size = 20.sp, lineHeight = 28.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size600],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
                     )
                 TypographyTokens.Title3 ->
                     FontInfo(
-                        fontSize = FontSize(size = 18.sp, lineHeight = 28.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size500],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
                     )
                 TypographyTokens.Body1Strong ->
                     FontInfo(
-                        fontSize = FontSize(size = 16.sp, lineHeight = 24.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size400],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
                     )
                 TypographyTokens.Body1 ->
                     FontInfo(
-                        fontSize = FontSize(size = 16.sp, lineHeight = 24.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size400],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
                     )
                 TypographyTokens.Body2Strong ->
                     FontInfo(
-                        fontSize = FontSize(size = 14.sp, lineHeight = 20.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size300],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
                     )
                 TypographyTokens.Body2 ->
                     FontInfo(
-                        fontSize = FontSize(size = 14.sp, lineHeight = 20.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size300],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
                     )
                 TypographyTokens.Caption1Strong ->
                     FontInfo(
-                        fontSize = FontSize(size = 13.sp, lineHeight = 20.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size200],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Medium]
                     )
                 TypographyTokens.Caption1 ->
                     FontInfo(
-                        fontSize = FontSize(size = 13.sp, lineHeight = 20.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size200],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
                     )
                 TypographyTokens.Caption2 ->
                     FontInfo(
-                        fontSize = FontSize(size = 12.sp, lineHeight = 16.sp),
-                        weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
+                            fontSize = globalTokens.fontSize[GlobalTokens.FontSizeTokens.Size100],
+                            weight = globalTokens.fontWeight[GlobalTokens.FontWeightTokens.Regular]
                     )
             }
         }

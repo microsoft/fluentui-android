@@ -5,8 +5,11 @@
 
 package com.microsoft.fluentui.theme.token
 
+interface ControlInfo
+
 interface ControlTokens
 
 enum class ControlType {
-    Button
+    Button,
+    FloatingActionButton
 }

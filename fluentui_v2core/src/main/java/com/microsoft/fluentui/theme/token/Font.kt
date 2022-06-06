@@ -10,8 +10,8 @@ import androidx.compose.ui.unit.TextUnit
 
 data class FontSize(val size: TextUnit, val lineHeight: TextUnit)
 data class FontInfo(
-    val name: String? = null,
-    val fontSize: FontSize,
-    val weight: FontWeight = FontWeight.Normal
+        val name: String? = null,
+        val fontSize: FontSize,
+        val weight: FontWeight = FontWeight.Normal
 )
 
