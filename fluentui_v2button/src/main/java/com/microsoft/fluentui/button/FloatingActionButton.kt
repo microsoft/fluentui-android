@@ -31,6 +31,7 @@ fun FloatingActionButton(onClick: () -> Unit,
                          modifier: Modifier = Modifier,
                          state: FABState = FABState.Expanded,
                          size: FABSize = FABSize.Large,
+                         expanded: Boolean = true,
                          enabled: Boolean = true,
                          fabTokens: FABTokens? = null,
                          interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -102,7 +103,7 @@ fun FloatingActionButton(onClick: () -> Unit,
                             tint = iconColor(getFABToken(), getFABInfo(), enabled, interactionSource)
                     )
 
-                if (text != null)
+                if (text != null && expanded)
                     Text(text = text,
                             fontSize = getFABToken().fontInfo(getFABInfo()).fontSize.size,
                             lineHeight = getFABToken().fontInfo(getFABInfo()).fontSize.lineHeight,

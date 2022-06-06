@@ -157,11 +157,11 @@ open class FABTokens : ControlTokens {
     @Composable
     open fun elevation(fabInfo: FABInfo): StateElevation {
         return StateElevation(
-                rest = globalTokens.shadow[GlobalTokens.ShadowTokens.Shadow08].elevation,
-                pressed = globalTokens.shadow[GlobalTokens.ShadowTokens.Shadow02].elevation,
-                selected = globalTokens.shadow[GlobalTokens.ShadowTokens.Shadow02].elevation,
-                focused = globalTokens.shadow[GlobalTokens.ShadowTokens.Shadow02].elevation,
-                disabled = globalTokens.shadow[GlobalTokens.ShadowTokens.Shadow02].elevation
+                rest = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow08],
+                pressed = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
+                selected = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
+                focused = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
+                disabled = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02]
         )
     }
 }

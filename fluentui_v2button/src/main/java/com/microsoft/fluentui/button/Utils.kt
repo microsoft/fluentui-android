@@ -8,6 +8,8 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.StateBorderStroke
 import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
@@ -17,121 +19,84 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
 import java.security.InvalidParameterException
 
 @Composable
-fun <S, T> backgroundColor(tokens: S, info: T, enabled: Boolean, interactionSource: InteractionSource): Color {
-    if (!(tokens is ButtonTokens && info is ButtonInfo) && !(tokens is FABTokens && info is FABInfo))
-        throw InvalidParameterException()
-
-    val fetchBackgroundColor: @Composable () -> StateColor = {
-        if (tokens is ButtonTokens)
-            (tokens as ButtonTokens).backgroundColor(info as ButtonInfo)
-        else
-            (tokens as FABTokens).backgroundColor(info as FABInfo)
-    }
-
+fun getColorByState(stateData: StateColor, enabled: Boolean, interactionSource: InteractionSource): Color {
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
         if (isPressed)
-            return fetchBackgroundColor().pressed
+            return stateData.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
         if (isFocused)
-            return fetchBackgroundColor().focused
+            return stateData.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
         if (isHovered)
-            return fetchBackgroundColor().focused
+            return stateData.focused
 
-        return fetchBackgroundColor().rest
+        return stateData.rest
     } else
-        return fetchBackgroundColor().disabled
+        return stateData.disabled
 }
 
 @Composable
-fun <S, T> iconColor(tokens: S, info: T, enabled: Boolean, interactionSource: InteractionSource): Color {
-    if (!(tokens is ButtonTokens && info is ButtonInfo) && !(tokens is FABTokens && info is FABInfo))
-        throw InvalidParameterException()
+fun backgroundColor(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): Color {
+    val backgroundColors: StateColor =
+            when (tokens) {
+                is ButtonTokens -> tokens.backgroundColor(info as ButtonInfo)
+                is FABTokens -> tokens.backgroundColor(info as FABInfo)
+                else -> throw InvalidParameterException()
+            }
 
-    val fetchIconColor: @Composable () -> StateColor = {
-        if (tokens is ButtonTokens)
-            (tokens as ButtonTokens).iconColor(info as ButtonInfo)
-        else
-            (tokens as FABTokens).iconColor(info as FABInfo)
-    }
-
-    if (enabled) {
-        val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
-            return fetchIconColor().pressed
-
-        val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
-            return fetchIconColor().focused
-
-        val isHovered by interactionSource.collectIsHoveredAsState()
-        if (isHovered)
-            return fetchIconColor().focused
-
-        return fetchIconColor().rest
-    } else
-        return fetchIconColor().disabled
+    return getColorByState(backgroundColors, enabled, interactionSource)
 }
 
 @Composable
-fun <S, T> textColor(tokens: S, info: T, enabled: Boolean, interactionSource: InteractionSource): Color {
-    if (!(tokens is ButtonTokens && info is ButtonInfo) && !(tokens is FABTokens && info is FABInfo))
-        throw InvalidParameterException()
+fun iconColor(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): Color {
+    val iconColors: StateColor =
+            when (tokens) {
+                is ButtonTokens -> tokens.iconColor(info as ButtonInfo)
+                is FABTokens -> tokens.iconColor(info as FABInfo)
+                else -> throw InvalidParameterException()
+            }
 
-    val fetchTextColor: @Composable () -> StateColor = {
-        if (tokens is ButtonTokens)
-            (tokens as ButtonTokens).textColor(info as ButtonInfo)
-        else
-            (tokens as FABTokens).textColor(info as FABInfo)
-    }
-
-    if (enabled) {
-        val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
-            return fetchTextColor().pressed
-
-        val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
-            return fetchTextColor().focused
-
-        val isHovered by interactionSource.collectIsHoveredAsState()
-        if (isHovered)
-            return fetchTextColor().focused
-
-        return fetchTextColor().rest
-    } else
-        return fetchTextColor().disabled
+    return getColorByState(iconColors, enabled, interactionSource)
 }
 
 @Composable
-fun <S, T> borderStroke(tokens: S, info: T, enabled: Boolean, interactionSource: InteractionSource): List<BorderStroke> {
-    if (!(tokens is ButtonTokens && info is ButtonInfo) && !(tokens is FABTokens && info is FABInfo))
-        throw InvalidParameterException()
+fun textColor(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): Color {
+    val textColors: StateColor =
+            when (tokens) {
+                is ButtonTokens -> tokens.textColor(info as ButtonInfo)
+                is FABTokens -> tokens.textColor(info as FABInfo)
+                else -> throw InvalidParameterException()
+            }
 
-    val fetchBorderStroke: @Composable () -> StateBorderStroke = {
-        if (tokens is ButtonTokens)
-            (tokens as ButtonTokens).borderStroke(info as ButtonInfo)
-        else
-            (tokens as FABTokens).borderStroke(info as FABInfo)
-    }
+    return getColorByState(textColors, enabled, interactionSource)
+}
+
+@Composable
+fun borderStroke(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): List<BorderStroke> {
+    val fetchBorderStroke: StateBorderStroke =
+            when (tokens) {
+                is ButtonTokens -> tokens.borderStroke(info as ButtonInfo)
+                is FABTokens -> tokens.borderStroke(info as FABInfo)
+                else -> throw InvalidParameterException()
+            }
 
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
         if (isPressed)
-            return fetchBorderStroke().pressed
+            return fetchBorderStroke.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
         if (isFocused)
-            return fetchBorderStroke().focused
+            return fetchBorderStroke.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
         if (isHovered)
-            return fetchBorderStroke().focused
+            return fetchBorderStroke.focused
 
-        return fetchBorderStroke().rest
+        return fetchBorderStroke.rest
     } else
-        return fetchBorderStroke().disabled
+        return fetchBorderStroke.disabled
 }
