@@ -99,7 +99,7 @@ internal class PeoplePickerTextViewAdapter : ArrayAdapter<IPersona>, Filterable 
 
     override fun getViewTypeCount(): Int = ViewType.values().size
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         return when (getItemViewType(position)) {
             ViewType.PERSONA.ordinal -> getPersonaView(position, convertView, parent)
             ViewType.SEARCH_DIRECTORY.ordinal -> getSearchDirectoryView(convertView, parent)
