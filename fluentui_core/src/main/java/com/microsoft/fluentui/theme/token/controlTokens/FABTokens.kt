@@ -115,7 +115,7 @@ open class FABTokens : ControlTokens {
     }
 
     @Composable
-    open fun padding(fabInfo: FABInfo): PaddingValues {
+    open fun iconPadding(fabInfo: FABInfo): PaddingValues {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
@@ -126,6 +126,26 @@ open class FABTokens : ControlTokens {
                 PaddingValues(
                         horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
                         vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium]
+                )
+        }
+    }
+
+    @Composable
+    open fun textPadding(fabInfo: FABInfo): PaddingValues {
+        return when (fabInfo.size) {
+            FABSize.Small ->
+                PaddingValues(
+                        top = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
+                        bottom = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
+                        start = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
+                        end = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium]
+                )
+            FABSize.Large ->
+                PaddingValues(
+                        top = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
+                        bottom = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
+                        start = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
+                        end = globalTokens.spacing[GlobalTokens.SpacingTokens.Large]
                 )
         }
     }

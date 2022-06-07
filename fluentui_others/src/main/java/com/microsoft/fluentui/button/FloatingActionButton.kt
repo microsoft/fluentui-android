@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.button
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.*
 import androidx.compose.foundation.layout.*
@@ -54,9 +55,11 @@ fun FloatingActionButton(onClick: () -> Unit,
                 role = Role.Button,
                 onClick = onClick
         )
+        val fabExpandedState: Boolean = (text != null && expanded)
         val backgroundColor = backgroundColor(getFABToken(), getFABInfo(), enabled, interactionSource)
-        val contentPadding = getFABToken().padding(getFABInfo())
-        val iconSpacing = getFABToken().spacing(getFABInfo())
+        val contentPadding = if (fabExpandedState) getFABToken().textPadding(getFABInfo())
+        else getFABToken().iconPadding(getFABInfo())
+        val iconSpacing = if (fabExpandedState) getFABToken().spacing(getFABInfo()) else 0.dp
         val shape = CircleShape
         val borders: List<BorderStroke> = borderStroke(getFABToken(), getFABInfo(), enabled, interactionSource)
 
@@ -103,8 +106,8 @@ fun FloatingActionButton(onClick: () -> Unit,
                             tint = iconColor(getFABToken(), getFABInfo(), enabled, interactionSource)
                     )
 
-                if (text != null && expanded)
-                    Text(text = text,
+                AnimatedVisibility(fabExpandedState) {
+                    Text(text = text!!,
                             fontSize = getFABToken().fontInfo(getFABInfo()).fontSize.size,
                             lineHeight = getFABToken().fontInfo(getFABInfo()).fontSize.lineHeight,
                             fontWeight = getFABToken().fontInfo(getFABInfo()).weight,
@@ -112,6 +115,7 @@ fun FloatingActionButton(onClick: () -> Unit,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                     )
+                }
             }
         }
     }
