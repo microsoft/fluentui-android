@@ -44,7 +44,7 @@ project.ext.publishingFunc = { artifactIdName ->
             }
         }
         if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
-            println("Artifact already exists with the same name")
+            println("Artifact "+ artifactIdName + "already exists with the same name. Skipping publish")
             return
         }
         publications {

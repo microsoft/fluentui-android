@@ -14,7 +14,11 @@ project.ext.artifactExists = { artifactId, artifactVersion ->
         connection.setRequestMethod("HEAD")
 
         def responseCode = connection.getResponseCode()
-        
+
+        if (responseCode == 401) {
+            println("Maven credentials incorrect: Ignore for NuGet pipeline")
+        }
+
         return (200 == responseCode)
 
     } catch (IOException ignored) {
