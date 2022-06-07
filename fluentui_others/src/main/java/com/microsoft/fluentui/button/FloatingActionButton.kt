@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,7 +40,7 @@ fun FloatingActionButton(onClick: () -> Unit,
                          icon: ImageVector? = null,
                          text: String? = null
 ) {
-    val token = remember {
+    val token = rememberSaveable {
         (fabTokens ?: FluentTheme.tokens[ControlType.FloatingActionButton] as FABTokens)
     }
 

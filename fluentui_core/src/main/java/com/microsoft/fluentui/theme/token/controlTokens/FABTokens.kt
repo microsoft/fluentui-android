@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.theme.token.controlTokens
 
+import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -14,6 +15,7 @@ import com.microsoft.fluentui.theme.FluentTheme.aliasToken
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
+import kotlinx.parcelize.Parcelize
 
 enum class FABState {
     Expanded,
@@ -30,7 +32,8 @@ data class FABInfo(
         val size: FABSize = FABSize.Large
 ) : ControlInfo
 
-open class FABTokens : ControlTokens {
+@Parcelize
+open class FABTokens : ControlTokens, Parcelable {
 
     companion object {
         const val Type: String = "FloatingActionButton"

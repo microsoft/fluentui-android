@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -39,7 +40,7 @@ fun Button(
         icon: ImageVector? = null,
         text: String? = null
 ) {
-    val token = remember {
+    val token = rememberSaveable {
         (buttonTokens ?: FluentTheme.tokens[ControlType.Button] as ButtonTokens)
     }
 
@@ -69,15 +70,15 @@ fun Button(
         }
 
         Box(
-                modifier
-                        .height(getButtonToken().fixedHeight(getButtonInfo()))
-                        .background(
-                                color = backgroundColor,
-                                shape = shape
-                        )
-                        .clip(shape)
-                        .then(borderModifier)
-                        .then(clickAndSemanticsModifier),
+            modifier
+                .height(getButtonToken().fixedHeight(getButtonInfo()))
+                .background(
+                    color = backgroundColor,
+                    shape = shape
+                )
+                .clip(shape)
+                .then(borderModifier)
+                .then(clickAndSemanticsModifier),
                 propagateMinConstraints = true
         ) {
             Row(

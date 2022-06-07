@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.theme.token.controlTokens
 
+import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -14,6 +15,7 @@ import com.microsoft.fluentui.theme.FluentTheme.aliasToken
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
+import kotlinx.parcelize.Parcelize
 
 enum class ButtonStyle {
     Button,
@@ -32,7 +34,8 @@ data class ButtonInfo(
         val size: ButtonSize = ButtonSize.Medium
 ) : ControlInfo
 
-open class ButtonTokens : ControlTokens {
+@Parcelize
+open class ButtonTokens : ControlTokens, Parcelable {
 
     companion object {
         const val Type: String = "Button"
