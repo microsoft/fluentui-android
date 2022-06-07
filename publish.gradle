@@ -43,6 +43,10 @@ project.ext.publishingFunc = { artifactIdName ->
                 }
             }
         }
+        if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
+            println("Artifact "+ artifactIdName + "already exists with the same name. Skipping publish")
+            return
+        }
         publications {
             FluentUI(MavenPublication) {
                 groupId 'com.microsoft.fluentui'
