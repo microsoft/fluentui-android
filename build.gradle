@@ -41,8 +41,9 @@ allprojects {
         duoVersion                =    '1.0.0-alpha01'
         tokenautocompleteVersion  =    '2.0.8'
         threetenabpVersion        =    '1.1.0'
-        universalPkgDir           =     "universal"
-        composeVersion            =     '1.2.0-alpha08'
+        universalPkgDir           =    "universal"
+        composeVersion            =    '1.2.0-alpha08'
+        lifecycleVersion          =    '2.4.1'
 
     }
     repositories {
