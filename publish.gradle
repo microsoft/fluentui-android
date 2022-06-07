@@ -1,6 +1,8 @@
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
+apply from: "../publish-check.gradle"
+
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
 ext["signing.secretKeyRingFile"] = ''

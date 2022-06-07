@@ -19,7 +19,8 @@
         <activity
             android:name="com.microsoft.fluentuidemo.DemoListActivity"
             android:label="@string/app_title"
-            android:theme="@style/AppTheme.Launcher">
+            android:theme="@style/AppTheme.Launcher"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -32,6 +33,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarGroupViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicInputsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />
