@@ -14,11 +14,7 @@ project.ext.artifactExists = { artifactId, artifactVersion ->
         connection.setRequestMethod("HEAD")
 
         def responseCode = connection.getResponseCode()
-
-        if (responseCode == 401) {
-            throw new RuntimeException("Unauthorized MavenUser user. Please provide valid username and password.")
-        }
-
+        
         return (200 == responseCode)
 
     } catch (IOException ignored) {
