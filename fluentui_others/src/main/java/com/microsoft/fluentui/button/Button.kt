@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,37 +30,39 @@ val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
 @Composable
 fun Button(
-        onClick: () -> Unit,
-        modifier: Modifier = Modifier,
-        style: ButtonStyle = ButtonStyle.Button,
-        size: ButtonSize = ButtonSize.Medium,
-        enabled: Boolean = true,
-        buttonTokens: ButtonTokens? = null,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        icon: ImageVector? = null,
-        text: String? = null
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    style: ButtonStyle = ButtonStyle.Button,
+    size: ButtonSize = ButtonSize.Medium,
+    enabled: Boolean = true,
+    buttonTokens: ButtonTokens? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    icon: ImageVector? = null,
+    text: String? = null
 ) {
-    val token = remember {
+    val token = rememberSaveable {
         (buttonTokens ?: FluentTheme.tokens[ControlType.Button] as ButtonTokens)
     }
 
     CompositionLocalProvider(
-            LocalButtonTokens provides token,
-            LocalButtonInfo provides ButtonInfo(style, size)
+        LocalButtonTokens provides token,
+        LocalButtonInfo provides ButtonInfo(style, size)
     ) {
         val clickAndSemanticsModifier = Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                enabled = enabled,
-                onClickLabel = null,
-                role = Role.Button,
-                onClick = onClick
+            interactionSource = interactionSource,
+            indication = LocalIndication.current,
+            enabled = enabled,
+            onClickLabel = null,
+            role = Role.Button,
+            onClick = onClick
         )
-        val backgroundColor = backgroundColor(getButtonToken(), getButtonInfo(), enabled, interactionSource)
+        val backgroundColor =
+            backgroundColor(getButtonToken(), getButtonInfo(), enabled, interactionSource)
         val contentPadding = getButtonToken().padding(getButtonInfo())
         val iconSpacing = getButtonToken().spacing(getButtonInfo())
         val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
-        val borders: List<BorderStroke> = borderStroke(getButtonToken(), getButtonInfo(), enabled, interactionSource)
+        val borders: List<BorderStroke> =
+            borderStroke(getButtonToken(), getButtonInfo(), enabled, interactionSource)
 
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
@@ -69,42 +72,55 @@ fun Button(
         }
 
         Box(
-                modifier
-                        .height(getButtonToken().fixedHeight(getButtonInfo()))
-                        .background(
-                                color = backgroundColor,
-                                shape = shape
-                        )
-                        .clip(shape)
-                        .then(borderModifier)
-                        .then(clickAndSemanticsModifier),
-                propagateMinConstraints = true
+            modifier
+                .height(getButtonToken().fixedHeight(getButtonInfo()))
+                .background(
+                    color = backgroundColor,
+                    shape = shape
+                )
+                .clip(shape)
+                .then(borderModifier)
+                .then(clickAndSemanticsModifier),
+            propagateMinConstraints = true
         ) {
             Row(
-                    Modifier.padding(contentPadding),
-                    horizontalArrangement = Arrangement.spacedBy(
-                            iconSpacing,
-                            Alignment.CenterHorizontally
-                    ),
-                    verticalAlignment = Alignment.CenterVertically
+                Modifier.padding(contentPadding),
+                horizontalArrangement = Arrangement.spacedBy(
+                    iconSpacing,
+                    Alignment.CenterHorizontally
+                ),
+                verticalAlignment = Alignment.CenterVertically
             ) {
 
                 if (icon != null)
-                    Icon(imageVector = icon,
-                            contentDescription = text,
-                            modifier = Modifier.size(
-                                    getButtonToken().iconSize(buttonInfo = getButtonInfo()).size),
-                            tint = iconColor(getButtonToken(), getButtonInfo(), enabled, interactionSource)
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = text,
+                        modifier = Modifier.size(
+                            getButtonToken().iconSize(buttonInfo = getButtonInfo()).size
+                        ),
+                        tint = iconColor(
+                            getButtonToken(),
+                            getButtonInfo(),
+                            enabled,
+                            interactionSource
+                        )
                     )
 
                 if (text != null)
-                    Text(text = text,
-                            fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
-                            lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
-                            fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
-                            color = textColor(getButtonToken(), getButtonInfo(), enabled, interactionSource),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                    Text(
+                        text = text,
+                        fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
+                        lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
+                        fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
+                        color = textColor(
+                            getButtonToken(),
+                            getButtonInfo(),
+                            enabled,
+                            interactionSource
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
             }
         }

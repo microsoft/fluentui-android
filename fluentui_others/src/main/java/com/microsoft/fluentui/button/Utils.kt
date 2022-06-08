@@ -19,7 +19,11 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
 import java.security.InvalidParameterException
 
 @Composable
-fun getColorByState(stateData: StateColor, enabled: Boolean, interactionSource: InteractionSource): Color {
+fun getColorByState(
+    stateData: StateColor,
+    enabled: Boolean,
+    interactionSource: InteractionSource
+): Color {
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
         if (isPressed)
@@ -39,49 +43,69 @@ fun getColorByState(stateData: StateColor, enabled: Boolean, interactionSource: 
 }
 
 @Composable
-fun backgroundColor(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): Color {
+fun backgroundColor(
+    tokens: ControlTokens,
+    info: ControlInfo,
+    enabled: Boolean,
+    interactionSource: InteractionSource
+): Color {
     val backgroundColors: StateColor =
-            when (tokens) {
-                is ButtonTokens -> tokens.backgroundColor(info as ButtonInfo)
-                is FABTokens -> tokens.backgroundColor(info as FABInfo)
-                else -> throw InvalidParameterException()
-            }
+        when (tokens) {
+            is ButtonTokens -> tokens.backgroundColor(info as ButtonInfo)
+            is FABTokens -> tokens.backgroundColor(info as FABInfo)
+            else -> throw InvalidParameterException()
+        }
 
     return getColorByState(backgroundColors, enabled, interactionSource)
 }
 
 @Composable
-fun iconColor(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): Color {
+fun iconColor(
+    tokens: ControlTokens,
+    info: ControlInfo,
+    enabled: Boolean,
+    interactionSource: InteractionSource
+): Color {
     val iconColors: StateColor =
-            when (tokens) {
-                is ButtonTokens -> tokens.iconColor(info as ButtonInfo)
-                is FABTokens -> tokens.iconColor(info as FABInfo)
-                else -> throw InvalidParameterException()
-            }
+        when (tokens) {
+            is ButtonTokens -> tokens.iconColor(info as ButtonInfo)
+            is FABTokens -> tokens.iconColor(info as FABInfo)
+            else -> throw InvalidParameterException()
+        }
 
     return getColorByState(iconColors, enabled, interactionSource)
 }
 
 @Composable
-fun textColor(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): Color {
+fun textColor(
+    tokens: ControlTokens,
+    info: ControlInfo,
+    enabled: Boolean,
+    interactionSource: InteractionSource
+): Color {
     val textColors: StateColor =
-            when (tokens) {
-                is ButtonTokens -> tokens.textColor(info as ButtonInfo)
-                is FABTokens -> tokens.textColor(info as FABInfo)
-                else -> throw InvalidParameterException()
-            }
+        when (tokens) {
+            is ButtonTokens -> tokens.textColor(info as ButtonInfo)
+            is FABTokens -> tokens.textColor(info as FABInfo)
+            else -> throw InvalidParameterException()
+        }
 
     return getColorByState(textColors, enabled, interactionSource)
 }
 
 @Composable
-fun borderStroke(tokens: ControlTokens, info: ControlInfo, enabled: Boolean, interactionSource: InteractionSource): List<BorderStroke> {
+fun borderStroke(
+    tokens: ControlTokens,
+    info: ControlInfo,
+    enabled: Boolean,
+    interactionSource: InteractionSource
+): List<BorderStroke> {
     val fetchBorderStroke: StateBorderStroke =
-            when (tokens) {
-                is ButtonTokens -> tokens.borderStroke(info as ButtonInfo)
-                is FABTokens -> tokens.borderStroke(info as FABInfo)
-                else -> throw InvalidParameterException()
-            }
+        when (tokens) {
+            is ButtonTokens -> tokens.borderStroke(info as ButtonInfo)
+            is FABTokens -> tokens.borderStroke(info as FABInfo)
+            else -> throw InvalidParameterException()
+        }
 
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
