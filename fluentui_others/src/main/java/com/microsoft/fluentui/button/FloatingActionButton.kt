@@ -34,7 +34,6 @@ fun FloatingActionButton(
     modifier: Modifier = Modifier,
     state: FABState = FABState.Expanded,
     size: FABSize = FABSize.Large,
-    expanded: Boolean = true,
     enabled: Boolean = true,
     fabTokens: FABTokens? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -57,7 +56,7 @@ fun FloatingActionButton(
             role = Role.Button,
             onClick = onClick
         )
-        val fabExpandedState: Boolean = (text != null && expanded)
+        val fabExpandedState: Boolean = (text != null && getFABInfo().state == FABState.Expanded)
         val backgroundColor =
             backgroundColor(getFABToken(), getFABInfo(), enabled, interactionSource)
         val contentPadding = if (fabExpandedState) getFABToken().textPadding(getFABInfo())
@@ -75,23 +74,23 @@ fun FloatingActionButton(
         }
 
         Box(
-            modifier
-                .height(getFABToken().fixedHeight(getFABInfo()))
-                .defaultMinSize(minWidth = getFABToken().minWidth(getFABInfo()))
-                .shadow(
-                    elevation = elevation(
-                        enabled = enabled,
-                        interactionSource = interactionSource
-                    ),
-                    shape = CircleShape
-                )
-                .background(
-                    color = backgroundColor,
-                    shape = shape
-                )
-                .clip(shape)
-                .then(borderModifier)
-                .then(clickAndSemanticsModifier),
+                modifier
+                        .height(getFABToken().fixedHeight(getFABInfo()))
+                        .defaultMinSize(minWidth = getFABToken().minWidth(getFABInfo()))
+                        .shadow(
+                                elevation = elevation(
+                                        enabled = enabled,
+                                        interactionSource = interactionSource
+                                ),
+                                shape = CircleShape
+                        )
+                        .background(
+                                color = backgroundColor,
+                                shape = shape
+                        )
+                        .clip(shape)
+                        .then(borderModifier)
+                        .then(clickAndSemanticsModifier),
             propagateMinConstraints = true
         ) {
             Row(
