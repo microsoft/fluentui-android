@@ -45,7 +45,7 @@ open class FABTokens : ControlTokens, Parcelable {
             rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                 themeMode = themeMode
             ),
-            disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+            disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = themeMode
             )
         )
@@ -57,7 +57,7 @@ open class FABTokens : ControlTokens, Parcelable {
             rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                 themeMode = themeMode
             ),
-            disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+            disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = themeMode
             )
         )
@@ -75,7 +75,7 @@ open class FABTokens : ControlTokens, Parcelable {
             selected = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
                 themeMode = themeMode
             ),
-            disabled = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+            disabled = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             )
         )
