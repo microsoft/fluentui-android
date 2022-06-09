@@ -1,25 +1,20 @@
 package com.example.theme.token
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
-import com.microsoft.fluentui.theme.token.StateColor
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
 
 open class MyButtonTokens : ButtonTokens() {
 
     @Composable
-    override fun backgroundColor(buttonInfo: ButtonInfo): StateColor {
-        return StateColor(
-            rest = Color.Red,
-            selected = Color.Yellow,
-            pressed = Color.Green,
-            disabled = Color.LightGray
-        )
-    }
-
-    @Composable
-    override fun textColor(buttonInfo: ButtonInfo): StateColor {
-        return StateColor(rest = Color.Black)
+    override fun fixedHeight(buttonInfo: ButtonInfo): Dp {
+        return when (buttonInfo.size) {
+            ButtonSize.Small -> 32.dp
+            ButtonSize.Medium -> 40.dp
+            ButtonSize.Large -> 52.dp
+        }
     }
 }
