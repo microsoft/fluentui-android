@@ -6,8 +6,7 @@
 package com.microsoft.fluentui.theme.token
 
 import androidx.compose.runtime.compositionLocalOf
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
-import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
+import com.microsoft.fluentui.theme.token.controlTokens.*
 
 interface ControlInfo
 
@@ -18,6 +17,9 @@ class ControlTokens {
     enum class ControlType {
         Button,
         FloatingActionButton,
+        ToggleSwitch,
+        CheckBox,
+        RadioButton
     }
 
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
@@ -25,6 +27,9 @@ class ControlTokens {
             when (token) {
                 ControlType.Button -> ButtonTokens()
                 ControlType.FloatingActionButton -> FABTokens()
+                ControlType.ToggleSwitch -> ToggleSwitchTokens()
+                ControlType.CheckBox -> CheckBoxTokens()
+                ControlType.RadioButton -> RadioButtonTokens()
             }
         }
     }

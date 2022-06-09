@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.button
+package com.microsoft.fluentui.controls
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
