@@ -263,7 +263,7 @@ open class AliasTokens(private val globalTokens: GlobalTokens = GlobalTokens()) 
                     )
                 NeutralForegroundColorTokens.ForegroundOnColor ->
                     FluentColor(
-                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
+                            light = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.White],
                             dark = globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black],
                             colorful = globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color80]
                     )
