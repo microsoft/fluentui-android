@@ -140,23 +140,24 @@ class V2BasicInputsActivity : DemoActivity() {
                         contentAlignment = Alignment.BottomEnd,
                         modifier = Modifier.fillMaxSize()
                 ) {
+                    val fabText: String? = "FAB Text"
                     FloatingActionButton(
                             size = FABSize.Small,
                             state = fabState,
                             onClick = {
-                                var text: String
-                                if (fabState == FABState.Expanded) {
-                                    text = "FAB Collapsed"
+                                var toastText: String = "No Text"
+                                if (fabText != null && fabText != "" && fabState == FABState.Expanded) {
+                                    toastText = "FAB Collapsed"
                                     fabState = FABState.Collapsed
-                                } else {
-                                    text = "FAB Expanded"
+                                } else if (fabText != null && fabText != "") {
+                                    toastText = "FAB Expanded"
                                     fabState = FABState.Expanded
                                 }
-                                Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
                             },
                             icon = Icons.Filled.Email,
                             modifier = Modifier.padding(16.dp),
-                            text = "FAB Text",
+                            text = fabText,
                     )
                 }
             }
