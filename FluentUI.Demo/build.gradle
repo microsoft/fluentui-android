@@ -16,7 +16,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 34
-        versionName '1.0.0'
+        versionName '1.0.1'
     }
     kotlinOptions {
         jvmTarget = '1.8'

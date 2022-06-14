@@ -282,7 +282,8 @@ internal class PeoplePickerTextView : TokenCompleteTextView<IPersona> {
     override fun enoughToFilter(): Boolean = characterThreshold == 0 || super.enoughToFilter()
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
-        // super.onSelectionChanged is buggy, but we still need the accessibility event from the super super call.
+        super.onSelectionChanged(selStart, selEnd)
+        //TODO Bypassed lint error now. Check the comment:- super.onSelectionChanged is buggy, but we still need the accessibility event from the super super call.
         sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_TEXT_SELECTION_CHANGED)
         // This fixes buggy cursor position in accessibility mode.
         // Cutting spans to the clipboard is not functional so this also prevents that operation from being an option.
