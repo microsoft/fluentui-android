@@ -85,4 +85,7 @@ dependencies {
     dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+
+    //JUnit4 framework
+    testImplementation "junit:junit:${junitVersion}"
 }
