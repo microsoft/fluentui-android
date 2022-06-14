@@ -30,7 +30,7 @@ jobs:
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
-          jdkVersionOption:'1.11'
+          jdkVersionOption: '1.11'
           sonarQubeRunAnalysis: false
           options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'    
 
