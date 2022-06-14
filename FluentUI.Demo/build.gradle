@@ -15,7 +15,7 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 35
+        versionCode 34
         versionName '1.0.1'
     }
     kotlinOptions {
