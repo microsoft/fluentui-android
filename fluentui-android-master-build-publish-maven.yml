@@ -11,6 +11,8 @@ steps:
   inputs:
     gradleWrapperFile: 'gradlew'
     tasks: 'build publish'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
     options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PmavenUserName=$(vstsUserName) -PmavenPassword=$(vstsPassword)'
 
 - task: AndroidSigning@2

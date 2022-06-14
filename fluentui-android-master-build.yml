@@ -20,6 +20,8 @@ jobs:
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'build'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.11'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
     
     - task: AndroidSigning@2
