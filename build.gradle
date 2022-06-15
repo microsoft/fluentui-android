@@ -45,6 +45,7 @@ allprojects {
         composeVersion            =    '1.2.0-alpha08'
         lifecycleVersion          =    '2.4.1'
         junitVersion              =    '4.13'
+        mockitoVersion            =    '1.10.19'
 
     }
     repositories {
