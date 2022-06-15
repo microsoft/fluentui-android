@@ -88,4 +88,5 @@ dependencies {
 
     //JUnit4 framework
     testImplementation "junit:junit:${junitVersion}"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
 }
