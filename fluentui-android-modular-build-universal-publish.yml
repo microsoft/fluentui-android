@@ -57,6 +57,6 @@ jobs:
           vstsFeedPublish: 'Office'
           vstsFeedPackagePublish: 'fluentuiandroid'
           versionOption: 'custom'
-          versionPublish: '1.0.0'
+          versionPublish: '0.1.0'
           packagePublishDescription: 'Fluent Universal Package'
           publishedPackageVar: 'fluent package'
