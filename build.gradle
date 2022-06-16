@@ -56,6 +56,7 @@ allprojects {
 }
 
 task makeUniversalPkg(type: Copy) {
+    duplicatesStrategy = DuplicatesStrategy.WARN
     from('.')
     include('**/*.aar')
     exclude('**/FluentUI-release.aar')
