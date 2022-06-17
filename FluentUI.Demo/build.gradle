@@ -99,4 +99,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-intents:${espressoVersion}"
     androidTestImplementation "androidx.test:runner:${androidxRunner}"
     androidTestImplementation "androidx.test:rules:${androidxRunner}"
+
+    //Robolectric
+    testImplementation "org.robolectric:robolectric:${robolectric}"
 }
