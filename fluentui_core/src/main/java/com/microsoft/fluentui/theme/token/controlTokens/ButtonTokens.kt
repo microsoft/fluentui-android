@@ -58,7 +58,7 @@ open class ButtonTokens : ControlTokens, Parcelable {
                     focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                     ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         themeMode = themeMode
                     )
                 )
@@ -100,7 +100,7 @@ open class ButtonTokens : ControlTokens, Parcelable {
                 focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                     themeMode = themeMode
                 ),
-                disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
+                disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                     themeMode = themeMode
                 )
             )

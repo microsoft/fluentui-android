@@ -30,6 +30,7 @@ jobs:
           publishJUnitResults: true
           testResultsFiles: '**/TEST-*.xml'
           javaHomeOption: 'JDKVersion'
+          jdkVersionOption: '1.11'
           sonarQubeRunAnalysis: false
           options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'    
 
@@ -56,6 +57,6 @@ jobs:
           vstsFeedPublish: 'Office'
           vstsFeedPackagePublish: 'fluentuiandroid'
           versionOption: 'custom'
-          versionPublish: '0.0.33'
+          versionPublish: '1.0.0'
           packagePublishDescription: 'Fluent Universal Package'
           publishedPackageVar: 'fluent package'

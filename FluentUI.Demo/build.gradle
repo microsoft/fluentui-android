@@ -15,8 +15,8 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 33
-        versionName '0.0.33'
+        versionCode 34
+        versionName '1.0.0'
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -85,4 +85,7 @@ dependencies {
     dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     dogfoodImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+
+    //JUnit4 framework
+    testImplementation "junit:junit:${junitVersion}"
 }

@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
@@ -52,47 +53,50 @@ class V2BasicInputsActivity : DemoActivity() {
         buttons.setContent {
             val globalTokens: GlobalTokens by viewModel.initializeGlobalToken(globalTokens = GlobalTokens())
             val aliasTokens: AliasTokens by viewModel.initializeAliasToken(aliasTokens = AliasTokens())
-            var fabExpanded by rememberSaveable { mutableStateOf(true) }
+            var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
 
-            Column(verticalArrangement = Arrangement.spacedBy(10.dp),
-                    modifier = Modifier.padding(16.dp)) {
+            Column(
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.padding(16.dp)
+            ) {
                 FluentTheme.register(ControlType.Button, ButtonTokens())
-                Text("Button to update Theme via Global & Alias token")
 
                 FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(5.dp), modifier = Modifier.fillMaxWidth()) {
-                        Button(
-                                style = ButtonStyle.OutlinedButton,
-                                size = ButtonSize.Medium,
-                                buttonTokens = ButtonTokens(),
-                                onClick = {
-                                    viewModel.onAliasChanged(AliasTokens())
-                                    viewModel.onGlobalChanged(GlobalTokens())
-                                },
-                                text = "Set Default Theme"
-                        )
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Text("Button to update Theme via Global & Alias token")
 
-                        Button(
-                                style = ButtonStyle.OutlinedButton,
-                                size = ButtonSize.Medium,
-                                buttonTokens = ButtonTokens(),
-                                onClick = {
-                                    viewModel.onAliasChanged(MyAliasTokens(MyGlobalTokens()))
-                                    viewModel.onGlobalChanged(MyGlobalTokens())
-                                },
-                                text = "Set New Theme"
-                        )
+                        Row(
+                                horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
+                                modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Button(
+                                    style = ButtonStyle.OutlinedButton,
+                                    size = ButtonSize.Medium,
+                                    buttonTokens = ButtonTokens(),
+                                    onClick = {
+                                        viewModel.onAliasChanged(AliasTokens())
+                                        viewModel.onGlobalChanged(GlobalTokens())
+                                    },
+                                    text = "Set Default Theme"
+                            )
 
-                        Button(onClick = { fabExpanded = !fabExpanded },
-                                style = ButtonStyle.OutlinedButton,
-                                size = ButtonSize.Medium,
-                                text = if (fabExpanded) "Collapse FAB" else "Expand FAB")
+                            Button(
+                                    style = ButtonStyle.OutlinedButton,
+                                    size = ButtonSize.Medium,
+                                    buttonTokens = ButtonTokens(),
+                                    onClick = {
+                                        viewModel.onAliasChanged(MyAliasTokens(MyGlobalTokens()))
+                                        viewModel.onGlobalChanged(MyGlobalTokens())
+                                    },
+                                    text = "Set New Theme"
+                            )
+                        }
                     }
                 }
 
                 Divider()
 
-                LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     item {
                         Text("Default Button from provided base token & Auto theme")
                         FluentTheme {
@@ -101,39 +105,60 @@ class V2BasicInputsActivity : DemoActivity() {
                     }
 
                     item {
+                        Text("Button with Selected Theme and Colorful mode")
                         FluentTheme(
                                 globalTokens = globalTokens,
                                 aliasTokens = aliasTokens,
-                                themeMode = ThemeMode.Colorful
+                                themeMode = ThemeMode.AutoColorful
                         ) {
-                            Text("Button with Colorful mode")
-                            CreateButtons()
+                            Box(
+                                    modifier = Modifier
+                                            .background(
+                                                    aliasTokens.neutralBackgroundColor[
+                                                            AliasTokens.NeutralBackgroundColorTokens.Background3
+                                                    ].value(ThemeMode.AutoColorful)
+                                            )
+                                            .padding(5.dp)
+                            ) {
+                                CreateButtons()
+                            }
                         }
                     }
                     item {
                         FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
-                            Text("Button with existing default token values")
+                            Text("Button with selected theme, auto mode and default control token")
                             CreateButtons()
 
-                            Text("Button with new buttonToken provided as parameter for different style")
+                            Text("Button with selected theme, auto mode and overridden control token")
                             CreateButtons(MyButtonTokens())
-
-                            Text("Button with existing default token values")
-                            CreateButtons()
                         }
                     }
                 }
             }
             FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
-                Box(contentAlignment = Alignment.BottomEnd,
+                Box(
+                        contentAlignment = Alignment.BottomEnd,
                         modifier = Modifier.fillMaxSize()
                 ) {
-                    FloatingActionButton(size = FABSize.Small,
-                            onClick = { Toast.makeText(context, "FAB Clicked", Toast.LENGTH_SHORT).show() },
+                    val fabText: String? = "FAB Text"
+                    FloatingActionButton(
+                            size = FABSize.Small,
+                            state = fabState,
+                            onClick = {
+                                var toastText: String = "No Text"
+                                if (fabText != null && fabText != "" && fabState == FABState.Expanded) {
+                                    toastText = "FAB Collapsed"
+                                    fabState = FABState.Collapsed
+                                } else if (fabText != null && fabText != "") {
+                                    toastText = "FAB Expanded"
+                                    fabState = FABState.Expanded
+                                }
+                                Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
+                            },
                             icon = Icons.Filled.Email,
                             modifier = Modifier.padding(16.dp),
-                            text = "FAB Text",
-                            expanded = fabExpanded)
+                            text = fabText,
+                    )
                 }
             }
         }
@@ -150,90 +175,69 @@ class V2BasicInputsActivity : DemoActivity() {
     @Composable
     fun CreateButtons(buttonToken: ButtonTokens? = null) {
         var enabled by rememberSaveable { mutableStateOf(true) }
-        Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            Button(
-                    style = ButtonStyle.Button,
-                    size = ButtonSize.Large,
-                    buttonTokens = buttonToken,
-                    onClick = { enabled = !enabled },
-                    text = if (enabled) "Click to Disable" else "Click to Enable"
-            )
-        }
-
-        Spacer(Modifier.height(20.dp))
-
-        Column(
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-                modifier = Modifier.fillMaxSize(1.0F),
-                horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            var clicks by rememberSaveable { mutableStateOf(0) }
-            val onClickLambda: () -> Unit = { clicks++ }
-            val text = "Button $clicks"
-            val toggleIcon = clicks % 2 == 0
-
-
-            FluentTheme {}
-            if (clicks < 3) {
+        Column {
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Button(
                         style = ButtonStyle.Button,
                         size = ButtonSize.Large,
+                        buttonTokens = buttonToken,
+                        onClick = { enabled = !enabled },
+                        text = if (enabled) "Click to Disable" else "Click to Enable"
+                )
+            }
+
+            Spacer(Modifier.height(20.dp))
+
+            Column(
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                    modifier = Modifier.fillMaxSize(1.0F),
+                    horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                var clicks by rememberSaveable { mutableStateOf(0) }
+                val onClickLambda: () -> Unit = { clicks++ }
+                val text = "Button $clicks"
+                val toggleIcon = clicks % 2 == 0
+
+                // ButtonToken will not update here since it's a RememberSaveable parameter.
+                Button(
+                        style = if (clicks < 3) ButtonStyle.Button else ButtonStyle.TextButton,
+                        size = if (clicks < 3) ButtonSize.Large else ButtonSize.Small,
+                        enabled = enabled,
+                        buttonTokens = if (clicks < 3) buttonToken else ButtonTokens(),
+                        onClick = onClickLambda,
+                        icon = icon(toggleIcon),
+                        text = text
+                )
+
+                Button(
+                        style = ButtonStyle.Button,
+                        size = ButtonSize.Medium,
                         enabled = enabled,
                         buttonTokens = buttonToken,
                         onClick = onClickLambda,
                         icon = icon(toggleIcon),
-                        text = text
+                        text = "Long text displayed on this button. This Is long text."
                 )
-            } else {
+
                 Button(
-                        style = ButtonStyle.Button,
-                        size = ButtonSize.Large,
+                        style = ButtonStyle.OutlinedButton,
+                        size = ButtonSize.Small,
                         enabled = enabled,
-                        buttonTokens = ButtonTokens(),
-                        icon = icon(toggleIcon),
+                        buttonTokens = buttonToken,
                         onClick = onClickLambda,
-                        text = text
+                        icon = icon(toggleIcon),
+                        text = "Outlined $text"
+                )
+                Button(
+                        style = ButtonStyle.TextButton,
+                        size = ButtonSize.Small,
+                        enabled = enabled,
+                        buttonTokens = buttonToken,
+                        onClick = onClickLambda,
+                        icon = icon(clicks % 2 == 0),
+                        text = "Text $text"
                 )
             }
-
-            Button(
-                    style = if (clicks < 3) ButtonStyle.Button else ButtonStyle.TextButton,
-                    size = if (clicks < 3) ButtonSize.Large else ButtonSize.Small,
-                    enabled = enabled,
-                    buttonTokens = if (clicks < 3) buttonToken else ButtonTokens(),
-                    onClick = onClickLambda,
-                    icon = icon(toggleIcon),
-                    text = text
-            )
-
-            Button(
-                    style = ButtonStyle.Button,
-                    size = ButtonSize.Medium,
-                    enabled = enabled,
-                    buttonTokens = if (clicks < 3) buttonToken else ButtonTokens(),
-                    onClick = onClickLambda,
-                    icon = icon(toggleIcon),
-                    text = "Long text displayed on this button. This Is long text."
-            )
-
-            Button(
-                    style = ButtonStyle.OutlinedButton,
-                    size = ButtonSize.Small,
-                    enabled = enabled,
-                    buttonTokens = buttonToken,
-                    onClick = onClickLambda,
-                    icon = icon(toggleIcon),
-                    text = "Outlined $text"
-            )
-            Button(
-                    style = ButtonStyle.TextButton,
-                    size = ButtonSize.Small,
-                    enabled = enabled,
-                    buttonTokens = buttonToken,
-                    onClick = onClickLambda,
-                    icon = icon(clicks % 2 == 0),
-                    text = "Text $text"
-            )
         }
     }
 }
