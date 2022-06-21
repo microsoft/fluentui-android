@@ -26,10 +26,11 @@ import com.example.theme.token.MyButtonTokens
 import com.example.theme.token.MyGlobalTokens
 import com.microsoft.fluentui.button.Button
 import com.microsoft.fluentui.button.FloatingActionButton
+import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.ControlType
+import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentuidemo.DemoActivity
@@ -37,31 +38,28 @@ import com.microsoft.fluentuidemo.R
 
 class V2BasicInputsActivity : DemoActivity() {
     override val contentLayoutId: Int
-        get() = R.layout.v2_activity_basic_inputs
+        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val viewModel = FluentTheme.getViewModel(this)
-
-        val buttons = findViewById<ComposeView>(R.id.buttons)
+        val compose_here = findViewById<ComposeView>(R.id.compose_here)
         val context = this
-        FluentTheme.register(ControlType.Button, ButtonTokens())
-        FluentTheme.register(ControlType.FloatingActionButton, FABTokens())
-        buttons.setContent {
-            val globalTokens: GlobalTokens by viewModel.initializeGlobalToken(globalTokens = GlobalTokens())
-            val aliasTokens: AliasTokens by viewModel.initializeAliasToken(aliasTokens = AliasTokens())
+
+        compose_here.setContent {
+            val globalTokens: GlobalTokens by AppThemeController.observeGlobalToken(initial = GlobalTokens())
+            val aliasTokens: AliasTokens by AppThemeController.observeAliasToken(initial = AliasTokens())
+            val controlTokens: ControlTokens by AppThemeController.observeControlToken(initial = ControlTokens())
+
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
 
             Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                     modifier = Modifier.padding(16.dp)
             ) {
-                FluentTheme.register(ControlType.Button, ButtonTokens())
-
-                FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+                FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text("Button to update Theme via Global & Alias token")
 
@@ -72,10 +70,10 @@ class V2BasicInputsActivity : DemoActivity() {
                             Button(
                                     style = ButtonStyle.OutlinedButton,
                                     size = ButtonSize.Medium,
-                                    buttonTokens = ButtonTokens(),
                                     onClick = {
-                                        viewModel.onAliasChanged(AliasTokens())
-                                        viewModel.onGlobalChanged(GlobalTokens())
+                                        AppThemeController.onGlobalChanged(GlobalTokens())
+                                        AppThemeController.onAliasChanged(AliasTokens())
+                                        AppThemeController.onControlChanged(ControlTokens().updateTokens(ControlTokens.ControlType.Button, ButtonTokens()))
                                     },
                                     text = "Set Default Theme"
                             )
@@ -83,10 +81,10 @@ class V2BasicInputsActivity : DemoActivity() {
                             Button(
                                     style = ButtonStyle.OutlinedButton,
                                     size = ButtonSize.Medium,
-                                    buttonTokens = ButtonTokens(),
                                     onClick = {
-                                        viewModel.onAliasChanged(MyAliasTokens(MyGlobalTokens()))
-                                        viewModel.onGlobalChanged(MyGlobalTokens())
+                                        AppThemeController.onGlobalChanged(MyGlobalTokens())
+                                        AppThemeController.onAliasChanged(MyAliasTokens(MyGlobalTokens()))
+                                        AppThemeController.onControlChanged(ControlTokens().updateTokens(ControlTokens.ControlType.Button, MyButtonTokens()))
                                     },
                                     text = "Set New Theme"
                             )
@@ -109,6 +107,7 @@ class V2BasicInputsActivity : DemoActivity() {
                         FluentTheme(
                                 globalTokens = globalTokens,
                                 aliasTokens = aliasTokens,
+                                controlTokens = controlTokens,
                                 themeMode = ThemeMode.AutoColorful
                         ) {
                             Box(
@@ -125,7 +124,7 @@ class V2BasicInputsActivity : DemoActivity() {
                         }
                     }
                     item {
-                        FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+                        FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
                             Text("Button with selected theme, auto mode and default control token")
                             CreateButtons()
 
@@ -135,7 +134,7 @@ class V2BasicInputsActivity : DemoActivity() {
                     }
                 }
             }
-            FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+            FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
                 Box(
                         contentAlignment = Alignment.BottomEnd,
                         modifier = Modifier.fillMaxSize()
