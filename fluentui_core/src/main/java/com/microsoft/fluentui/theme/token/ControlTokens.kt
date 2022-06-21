@@ -5,11 +5,35 @@
 
 package com.microsoft.fluentui.theme.token
 
+import androidx.compose.runtime.compositionLocalOf
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
+import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
+
 interface ControlInfo
 
-interface ControlTokens
+interface ControlToken
 
-enum class ControlType {
-    Button,
-    FloatingActionButton
+class ControlTokens {
+
+    enum class ControlType {
+        Button,
+        FloatingActionButton,
+    }
+
+    val tokens: TokenSet<ControlType, ControlToken> by lazy {
+        TokenSet { token ->
+            when (token) {
+                ControlType.Button -> ButtonTokens()
+                ControlType.FloatingActionButton -> FABTokens()
+            }
+        }
+    }
+
+    fun updateTokens(type: ControlType, updatedToken: ControlToken): ControlTokens {
+        tokens[type] = updatedToken
+        return this
+    }
+
 }
+
+internal val LocalControlTokens = compositionLocalOf { ControlTokens() }
