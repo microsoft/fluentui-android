@@ -43,14 +43,11 @@ class V2BasicControlsActivity : DemoActivity() {
 
         val compose_here = findViewById<ComposeView>(R.id.compose_here)
         compose_here.setContent {
-            val globalTokens: GlobalTokens by AppThemeController.observeGlobalToken(initial = GlobalTokens())
-            val aliasTokens: AliasTokens by AppThemeController.observeAliasToken(initial = AliasTokens())
-
-            FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+            FluentTheme {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp),
                         modifier = Modifier.padding(16.dp)) {
 
-                    var checked by remember { mutableStateOf(globalTokens !is MyGlobalTokens) }
+                    var checked by remember { mutableStateOf(true) }
                     var enabled by remember { mutableStateOf(false) }
                     val themes = listOf("Theme 1", "Theme 2")
                     val selectedOption = remember { mutableStateOf(themes[0]) }
@@ -61,7 +58,7 @@ class V2BasicControlsActivity : DemoActivity() {
                         Text(text = "Toggle Switch enable",
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1F),
-                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
                         ToggleSwitch(true, enabled, {
                             enabled = it
                             Toast.makeText(context, "Switch 1 Toggled", Toast.LENGTH_SHORT).show()
@@ -76,7 +73,7 @@ class V2BasicControlsActivity : DemoActivity() {
                         Text(text = "Toggle Global/Alias Theme",
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1F),
-                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
                         ToggleSwitch(enabled, checked, {
                             checked = it
                             if (checked) {
