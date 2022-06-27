@@ -209,7 +209,7 @@
         style="@style/TextAppearance.DemoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_description_announcement" />
+        android:text="@string/snackbar_description_single_line" />
 
     <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_primary"
@@ -236,7 +236,7 @@
         style="@style/TextAppearance.DemoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_description_announcement" />
+        android:text="@string/snackbar_description_single_line" />
 
     <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_light"
@@ -263,7 +263,7 @@
         style="@style/TextAppearance.DemoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_description_announcement" />
+        android:text="@string/snackbar_description_single_line" />
 
     <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_warning"
@@ -290,7 +290,7 @@
         style="@style/TextAppearance.DemoDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_description_announcement" />
+        android:text="@string/snackbar_description_single_line" />
 
     <com.microsoft.fluentui.widget.Button
         android:id="@+id/btn_snackbar_danger"
