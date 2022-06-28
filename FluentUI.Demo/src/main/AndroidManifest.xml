@@ -34,6 +34,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarGroupViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicInputsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />

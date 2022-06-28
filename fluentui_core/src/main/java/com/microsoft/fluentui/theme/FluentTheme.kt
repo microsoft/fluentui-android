@@ -63,15 +63,15 @@ object AppThemeController : ViewModel() {
     var aliasTokens: MutableLiveData<AliasTokens> = MutableLiveData(AliasTokens())
     var controlTokens: MutableLiveData<ControlTokens> = MutableLiveData(ControlTokens())
 
-    fun onGlobalChanged(overrideGlobalTokens: GlobalTokens) {
+    fun updateGlobalTokens(overrideGlobalTokens: GlobalTokens) {
         globalTokens.value = overrideGlobalTokens
     }
 
-    fun onAliasChanged(overrideAliasTokens: AliasTokens) {
+    fun updateAliasTokens(overrideAliasTokens: AliasTokens) {
         aliasTokens.value = overrideAliasTokens
     }
 
-    fun onControlChanged(overrideControlTokens: ControlTokens) {
+    fun updateControlTokens(overrideControlTokens: ControlTokens) {
         controlTokens.value = overrideControlTokens
     }
 

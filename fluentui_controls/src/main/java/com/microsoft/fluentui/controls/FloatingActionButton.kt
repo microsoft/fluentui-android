@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.button
+package com.microsoft.fluentui.controls
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.*
