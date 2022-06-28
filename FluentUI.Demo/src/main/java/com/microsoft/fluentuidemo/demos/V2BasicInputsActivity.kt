@@ -24,10 +24,11 @@ import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyButtonTokens
 import com.example.theme.token.MyGlobalTokens
-import com.microsoft.fluentui.button.Button
-import com.microsoft.fluentui.button.FloatingActionButton
+import com.microsoft.fluentui.controls.Button
+import com.microsoft.fluentui.controls.FloatingActionButton
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -61,7 +62,8 @@ class V2BasicInputsActivity : DemoActivity() {
             ) {
                 FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text("Button to update Theme via Global & Alias token")
+                        Text("Button to update Theme via Global & Alias token",
+                        color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
 
                         Row(
                                 horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
@@ -71,9 +73,9 @@ class V2BasicInputsActivity : DemoActivity() {
                                     style = ButtonStyle.OutlinedButton,
                                     size = ButtonSize.Medium,
                                     onClick = {
-                                        AppThemeController.onGlobalChanged(GlobalTokens())
-                                        AppThemeController.onAliasChanged(AliasTokens())
-                                        AppThemeController.onControlChanged(ControlTokens().updateTokens(ControlTokens.ControlType.Button, ButtonTokens()))
+                                        AppThemeController.updateGlobalTokens(GlobalTokens())
+                                        AppThemeController.updateAliasTokens(AliasTokens())
+                                        AppThemeController.updateControlTokens(ControlTokens().updateTokens(ControlTokens.ControlType.Button, ButtonTokens()))
                                     },
                                     text = "Set Default Theme"
                             )
@@ -82,9 +84,9 @@ class V2BasicInputsActivity : DemoActivity() {
                                     style = ButtonStyle.OutlinedButton,
                                     size = ButtonSize.Medium,
                                     onClick = {
-                                        AppThemeController.onGlobalChanged(MyGlobalTokens())
-                                        AppThemeController.onAliasChanged(MyAliasTokens(MyGlobalTokens()))
-                                        AppThemeController.onControlChanged(ControlTokens().updateTokens(ControlTokens.ControlType.Button, MyButtonTokens()))
+                                        AppThemeController.updateGlobalTokens(MyGlobalTokens())
+                                        AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                        AppThemeController.updateControlTokens(ControlTokens().updateTokens(ControlTokens.ControlType.Button, MyButtonTokens()))
                                     },
                                     text = "Set New Theme"
                             )
@@ -96,14 +98,16 @@ class V2BasicInputsActivity : DemoActivity() {
 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     item {
-                        Text("Default Button from provided base token & Auto theme")
+                        Text("Default Button from provided base token & Auto theme",
+                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
                         FluentTheme {
                             CreateButtons()
                         }
                     }
 
                     item {
-                        Text("Button with Selected Theme and Colorful mode")
+                        Text("Button with Selected Theme and Colorful mode",
+                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
                         FluentTheme(
                                 globalTokens = globalTokens,
                                 aliasTokens = aliasTokens,
@@ -124,11 +128,13 @@ class V2BasicInputsActivity : DemoActivity() {
                         }
                     }
                     item {
-                        FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
-                            Text("Button with selected theme, auto mode and default control token")
+                        FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+                            Text("Button with selected theme, auto mode and default control token",
+                                    color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
                             CreateButtons()
 
-                            Text("Button with selected theme, auto mode and overridden control token")
+                            Text("Button with selected theme, auto mode and overridden control token",
+                                    color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
                             CreateButtons(MyButtonTokens())
                         }
                     }

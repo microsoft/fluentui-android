@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.button
+package com.microsoft.fluentui.controls
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.InteractionSource
@@ -12,10 +12,7 @@ import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.ControlToken
 import com.microsoft.fluentui.theme.token.StateBorderStroke
 import com.microsoft.fluentui.theme.token.StateColor
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
-import com.microsoft.fluentui.theme.token.controlTokens.FABInfo
-import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
+import com.microsoft.fluentui.theme.token.controlTokens.*
 import java.security.InvalidParameterException
 
 @Composable
@@ -53,6 +50,9 @@ fun backgroundColor(
             when (tokens) {
                 is ButtonTokens -> tokens.backgroundColor(info as ButtonInfo)
                 is FABTokens -> tokens.backgroundColor(info as FABInfo)
+                is ToggleSwitchTokens -> tokens.TrackColor(info as ToggleSwitchInfo)
+                is CheckBoxTokens -> tokens.backgroundColor(info as CheckBoxInfo)
+                is RadioButtonTokens -> tokens.backgroundColor(info as RadioButtonInfo)
                 else -> throw InvalidParameterException()
             }
 
@@ -70,6 +70,9 @@ fun iconColor(
             when (tokens) {
                 is ButtonTokens -> tokens.iconColor(info as ButtonInfo)
                 is FABTokens -> tokens.iconColor(info as FABInfo)
+                is ToggleSwitchTokens -> tokens.KnobColor(info as ToggleSwitchInfo)
+                is CheckBoxTokens -> tokens.iconColor(info as CheckBoxInfo)
+                is RadioButtonTokens -> tokens.iconColor(info as RadioButtonInfo)
                 else -> throw InvalidParameterException()
             }
 
@@ -104,6 +107,7 @@ fun borderStroke(
             when (tokens) {
                 is ButtonTokens -> tokens.borderStroke(info as ButtonInfo)
                 is FABTokens -> tokens.borderStroke(info as FABInfo)
+                is CheckBoxTokens -> tokens.borderStroke(info as CheckBoxInfo)
                 else -> throw InvalidParameterException()
             }
 
