@@ -4,5 +4,5 @@
   ~ Licensed under the MIT License.
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
     package="com.microsoft.fluentui.controls" />
