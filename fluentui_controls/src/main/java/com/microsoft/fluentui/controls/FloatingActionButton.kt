@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.button
+package com.microsoft.fluentui.controls
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.*
@@ -8,7 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -19,7 +18,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.ControlType
+import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.controlTokens.FABInfo
 import com.microsoft.fluentui.theme.token.controlTokens.FABSize
 import com.microsoft.fluentui.theme.token.controlTokens.FABState
@@ -43,9 +42,8 @@ fun FloatingActionButton(
     if (icon == null && (text == null && text == ""))
         return
 
-    val token = rememberSaveable {
-        (fabTokens ?: FluentTheme.tokens[ControlType.FloatingActionButton] as FABTokens)
-    }
+    val token = fabTokens
+            ?: FluentTheme.controlTokens.tokens[ControlType.FloatingActionButton] as FABTokens
 
     CompositionLocalProvider(
             LocalFABTokens provides token,

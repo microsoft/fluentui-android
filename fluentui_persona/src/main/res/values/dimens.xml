@@ -27,8 +27,8 @@
     <dimen name="fluentui_avatar_stack_space_xlarge">14dp</dimen>
     <dimen name="fluentui_avatar_stack_space_xxlarge">16dp</dimen>
     <!--Persona-->
-    <dimen name="fluentui_persona_horizontal_spacing">@dimen/fluentui_list_item_spacing</dimen>
-    <dimen name="fluentui_persona_horizontal_padding">@dimen/fluentui_list_item_horizontal_margin_regular</dimen>
+    <dimen name="fluentui_persona_horizontal_spacing">16dp</dimen>
+    <dimen name="fluentui_persona_horizontal_padding">@dimen/fluentui_content_inset</dimen>
 
     <!--PersonaChip-->
     <dimen name="fluentui_persona_chip_height">32dp</dimen>
