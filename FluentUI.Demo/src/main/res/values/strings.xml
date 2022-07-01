@@ -423,10 +423,15 @@
     <string name="snackbar_multiline">This is a multiline snackbar. Max lines are set to two, the rest of the text will truncate.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">This is an announcement snackbar. It’s used for communicating new features.</string>
+    <string name="snackbar_primary">This is a primary snackbar.</string>
+    <string name="snackbar_light">This is a light snackbar.</string>
+    <string name="snackbar_warning">This is a warning snackbar.</string>
+    <string name="snackbar_danger">This is a danger snackbar.</string>
     <string name="snackbar_description_single_line">Short duration</string>
     <string name="snackbar_description_single_line_custom_view">Long duration with circular progress as small custom view</string>
     <string name="snackbar_description_single_line_action">Short duration with action</string>
     <string name="snackbar_description_single_line_action_custom_view">Short duration with action and medium custom view</string>
+    <string name="snackbar_description_single_line_custom_text_color">Short duration with customized text color</string>
     <string name="snackbar_description_multiline">Long duration</string>
     <string name="snackbar_description_multiline_custom_view">Long duration with small custom view</string>
     <string name="snackbar_description_multiline_action">Indefinite duration with action and text updates</string>
@@ -438,6 +443,10 @@
     <string name="snackbar_headline_single_line">Single line</string>
     <string name="snackbar_headline_multiline">Multiline</string>
     <string name="snackbar_headline_announcement_style">Announcement style</string>
+    <string name="snackbar_headline_primary_style">Primary style</string>
+    <string name="snackbar_headline_light_style">Light style</string>
+    <string name="snackbar_headline_warning_style">Warning style</string>
+    <string name="snackbar_headline_danger_style">Danger style</string>
 
     <!--TemplateView-->
     <string name="cell_sample_title">Title</string>

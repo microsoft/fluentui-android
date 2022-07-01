@@ -105,7 +105,7 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
      * Includes background color, text color, and action button placement.
      */
     enum class Style {
-        REGULAR, ANNOUNCEMENT
+        REGULAR, ANNOUNCEMENT, PRIMARY, LIGHT, WARNING, DANGER
     }
 
     private val snackbarContainer: RelativeLayout
@@ -198,6 +198,16 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         return this
     }
 
+    fun setTextColor(color: Int): Snackbar {
+        textView.setTextColor(color)
+        return this
+    }
+
+    fun setActionTextColor(color: Int): Snackbar {
+        actionButtonView.setTextColor(color)
+        return this
+    }
+
     /**
      * Use [setAction] to add a button to your Snackbar to prompt a user action.
      */
@@ -260,6 +270,10 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         when (style) {
             Style.REGULAR -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background)
             Style.ANNOUNCEMENT -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_announcement)
+            Style.PRIMARY -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_primary)
+            Style.LIGHT -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_light)
+            Style.WARNING -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_warning)
+            Style.DANGER -> view.background = ContextCompat.getDrawable(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.drawable.snackbar_background_danger)
         }
     }
 
@@ -271,11 +285,33 @@ class Snackbar : BaseTransientBottomBar<Snackbar> {
         when (style) {
             Style.REGULAR -> {
                 actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextColor))
+                textView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextColor))
                 customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
             Style.ANNOUNCEMENT -> {
                 actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextAnnouncementColor))
+                textView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarActionTextAnnouncementColor))
                 customViewLayoutParams?.removeRule(RelativeLayout.CENTER_VERTICAL)
+            }
+            Style.PRIMARY -> {
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextPrimaryColor))
+                textView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextPrimaryColor))
+                customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
+            }
+            Style.LIGHT -> {
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextLightColor))
+                textView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextLightColor))
+                customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
+            }
+            Style.WARNING -> {
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextWarningColor))
+                textView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextWarningColor))
+                customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
+            }
+            Style.DANGER -> {
+                actionButtonView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextDangerColor))
+                textView.setTextColor(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context,R.style.Theme_FluentUI_Transients), R.attr.fluentuiSnackbarTextDangerColor))
+                customViewLayoutParams?.addRule(RelativeLayout.CENTER_VERTICAL)
             }
         }
 

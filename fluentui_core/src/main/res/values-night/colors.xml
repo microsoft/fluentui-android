@@ -11,4 +11,8 @@
     <color name="fluentui_communication_blue">#0086F0</color>
     <color name="fluentui_communication_tint_20">#3AA0F3</color>
     <color name="fluentui_communication_tint_40">#092C47</color>
+
+    <!-- *** Other Colors *** -->
+    <color name="fluentui_red">#E83A3A</color>
+    <color name="fluentui_yellow">#FFC328</color>
 </resources>
