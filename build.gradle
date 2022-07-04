@@ -48,7 +48,7 @@ allprojects {
         mockitoVersion            =    '1.10.19'
         espressoVersion           =    '3.3.0'
         androidxRunner            =    '1.4.0'
-        robolectric               =    '3.2'
+        robolectric               =    '4.1'
     }
     repositories {
         google()

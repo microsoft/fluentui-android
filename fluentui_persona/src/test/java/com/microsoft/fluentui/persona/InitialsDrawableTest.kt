@@ -5,13 +5,15 @@ import org.junit.Test
 
 class InitialsDrawableTest {
 
-    private val NAME = "Lorem Ipsum"
-    private val ONE_WORD_NAME = "Lorem"
-    private val EMPTY_NAME = ""
-    private val NAME_WITH_DIGITS = "Lorem 2 Ipsum"
-    private val NAME_WITH_SPECIAL_CHAR = "_Lorem @ Ipsum"
-    private val EMAIL = "loremipsum@mymail.com"
-    private val EMPTY_EMAIL = ""
+    companion object {
+        private const val NAME = "Lorem Ipsum"
+        private const val ONE_WORD_NAME = "Lorem"
+        private const val EMPTY_NAME = ""
+        private const val NAME_WITH_DIGITS = "Lorem 2 Ipsum"
+        private const val NAME_WITH_SPECIAL_CHAR = "_Lorem @ Ipsum"
+        private const val EMAIL = "loremipsum@mymail.com"
+        private const val EMPTY_EMAIL = ""
+    }
 
     @Test
     fun testGetInitialsHappyPath(){
