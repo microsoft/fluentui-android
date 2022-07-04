@@ -61,6 +61,11 @@ android {
             buildConfigField "String", "APP_CENTER_SECRET", project.hasProperty("appCenterSecret") ? "\"$appCenterSecret\"" : "\"\""
         }
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
