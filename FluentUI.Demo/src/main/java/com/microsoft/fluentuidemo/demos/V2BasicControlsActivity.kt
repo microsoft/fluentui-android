@@ -19,14 +19,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyGlobalTokens
+import com.microsoft.fluentui.controls.CheckBox
+import com.microsoft.fluentui.controls.RadioButton
+import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.controls.CheckBox
-import com.microsoft.fluentui.controls.RadioButton
-import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
