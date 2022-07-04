@@ -50,7 +50,7 @@ fun backgroundColor(
             when (tokens) {
                 is ButtonTokens -> tokens.backgroundColor(info as ButtonInfo)
                 is FABTokens -> tokens.backgroundColor(info as FABInfo)
-                is ToggleSwitchTokens -> tokens.TrackColor(info as ToggleSwitchInfo)
+                is ToggleSwitchTokens -> tokens.trackColor(info as ToggleSwitchInfo)
                 is CheckBoxTokens -> tokens.backgroundColor(info as CheckBoxInfo)
                 is RadioButtonTokens -> tokens.backgroundColor(info as RadioButtonInfo)
                 else -> throw InvalidParameterException()
@@ -70,7 +70,7 @@ fun iconColor(
             when (tokens) {
                 is ButtonTokens -> tokens.iconColor(info as ButtonInfo)
                 is FABTokens -> tokens.iconColor(info as FABInfo)
-                is ToggleSwitchTokens -> tokens.KnobColor(info as ToggleSwitchInfo)
+                is ToggleSwitchTokens -> tokens.knobColor(info as ToggleSwitchInfo)
                 is CheckBoxTokens -> tokens.iconColor(info as CheckBoxInfo)
                 is RadioButtonTokens -> tokens.iconColor(info as RadioButtonInfo)
                 else -> throw InvalidParameterException()
