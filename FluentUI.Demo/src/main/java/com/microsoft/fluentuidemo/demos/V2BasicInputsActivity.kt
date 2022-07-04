@@ -97,6 +97,8 @@ class V2BasicInputsActivity : DemoActivity() {
                         Text("Activity level customization with Auto theme",
                                 color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
 
+                        // TODO Investigate better ways to save activity Theme state
+                        // TODO One possible way is to use State Holders
                         var globalTokens by rememberSaveable { mutableStateOf(GlobalTokens()) }
 
                         FluentTheme(globalTokens = globalTokens, aliasTokens = AliasTokens(), controlTokens = ControlTokens()) {
