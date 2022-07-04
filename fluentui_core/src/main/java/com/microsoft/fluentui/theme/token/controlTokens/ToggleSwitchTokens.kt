@@ -3,7 +3,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme.aliasToken
+import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
@@ -23,27 +23,27 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun TrackColor(switchInfo: ToggleSwitchInfo): StateColor {
+    open fun trackColor(switchInfo: ToggleSwitchInfo): StateColor {
         return when (switchInfo.checked) {
             true -> StateColor(
-                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                             themeMode = themeMode
                     ),
-                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                             themeMode = themeMode
                     ),
-                    disabled = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
                             themeMode = themeMode
                     )
             )
             false -> StateColor(
-                    rest = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                             themeMode = themeMode
                     ),
-                    pressed = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                             themeMode = themeMode
                     ),
-                    disabled = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                             themeMode = themeMode
                     )
             )
@@ -51,27 +51,27 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun KnobColor(switchInfo: ToggleSwitchInfo): StateColor {
+    open fun knobColor(switchInfo: ToggleSwitchInfo): StateColor {
         return when (switchInfo.checked) {
             true -> StateColor(
-                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
                             themeMode = themeMode
                     ),
-                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
                             themeMode = themeMode
                     ),
-                    disabled = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
                             themeMode = themeMode
                     )
             )
             false -> StateColor(
-                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
                             themeMode = themeMode
                     ),
-                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
                             themeMode = themeMode
                     ),
-                    disabled = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
                             themeMode = themeMode
                     )
             )
