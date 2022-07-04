@@ -11,11 +11,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.material.icons.outlined.ThumbUp
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -81,7 +78,7 @@ class V2BasicInputsActivity : DemoActivity() {
                                     size = ButtonSize.Medium,
                                     onClick = {
                                         AppThemeController.updateGlobalTokens(MyGlobalTokens())
-                                        AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                        AppThemeController.updateAliasTokens(MyAliasTokens())
                                         AppThemeController.updateControlTokens(ControlTokens().updateTokens(ControlTokens.ControlType.Button, MyButtonTokens()))
                                     },
                                     text = "Set New Theme"
@@ -94,12 +91,22 @@ class V2BasicInputsActivity : DemoActivity() {
 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     item {
-                        Text("Default Button from provided base token & Auto theme",
+                        Text("Activity level customization with Auto theme",
                                 color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
-                        FluentTheme(globalTokens = GlobalTokens(),
-                                aliasTokens = AliasTokens(),
-                                controlTokens = ControlTokens()) {
-                            CreateButtons()
+
+                        var globalTokens by rememberSaveable { mutableStateOf(GlobalTokens()) }
+
+                        FluentTheme(globalTokens = globalTokens, aliasTokens = AliasTokens(), controlTokens = ControlTokens()) {
+                            Column(verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)) {
+                                Row(
+                                        horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
+                                        modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Button(onClick = { globalTokens = GlobalTokens() }, text = "Theme1")
+                                    Button(onClick = { globalTokens = MyGlobalTokens() }, text = "Theme2")
+                                }
+                                CreateButtons()
+                            }
                         }
                     }
 

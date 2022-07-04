@@ -82,7 +82,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                 selectedOption.value = themes[0]
                             } else {
                                 AppThemeController.updateGlobalTokens(MyGlobalTokens())
-                                AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                AppThemeController.updateAliasTokens(MyAliasTokens())
                                 selectedOption.value = themes[1]
                             }
                             Toast.makeText(context, "Switch 2 Toggled", Toast.LENGTH_SHORT).show()
@@ -103,7 +103,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                 AppThemeController.updateGlobalTokens(GlobalTokens())
                                 selectedOption.value = themes[0]
                             } else {
-                                AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                AppThemeController.updateAliasTokens(MyAliasTokens())
                                 AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                 selectedOption.value = themes[1]
                             }
@@ -135,7 +135,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                             AppThemeController.updateGlobalTokens(GlobalTokens())
                                             checked = true
                                         } else {
-                                            AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                            AppThemeController.updateAliasTokens(MyAliasTokens())
                                             AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                             checked = false
                                         }

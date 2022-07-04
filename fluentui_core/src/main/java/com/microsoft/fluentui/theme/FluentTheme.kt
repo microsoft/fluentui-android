@@ -34,6 +34,7 @@ fun FluentTheme(
             LocalControlTokens provides (controlTokens ?: appControlTokens),
             LocalThemeMode provides themeMode
     ) {
+        LocalAliasTokens.current.updateGlobalToken()
         content()
     }
 }
