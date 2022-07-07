@@ -37,6 +37,7 @@ class ActionBarLayoutActivityUITest {
     @Before
     fun initialize(){
         Intents.init()
+        launchActivity()
     }
 
     @Test

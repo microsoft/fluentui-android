@@ -15,11 +15,11 @@ class AvatarGroupViewActivityTest {
 
     private var activity: Activity? = null
 
-    @Before
-    fun setup() {
-        val context = RuntimeEnvironment.getApplication().applicationContext
-        var intent = Intent(context, AvatarViewActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, DEMOS[2].id)
-        activity = Robolectric.buildActivity(AvatarViewActivity::class.java, intent).create().start().visible().get()
-    }
+//    @Before
+//    fun setup() {
+//        val context = RuntimeEnvironment.getApplication().applicationContext
+//        var intent = Intent(context, AvatarViewActivity::class.java)
+//        intent.putExtra(DemoActivity.DEMO_ID, DEMOS[2].id)
+//        activity = Robolectric.buildActivity(AvatarViewActivity::class.java, intent).create().start().visible().get()
+//    }
 }
