@@ -50,20 +50,16 @@ class V2BasicInputsActivity : DemoActivity() {
         val context = this
 
         compose_here.setContent {
-            val globalTokens: GlobalTokens by AppThemeController.observeGlobalToken(initial = GlobalTokens())
-            val aliasTokens: AliasTokens by AppThemeController.observeAliasToken(initial = AliasTokens())
-            val controlTokens: ControlTokens by AppThemeController.observeControlToken(initial = ControlTokens())
-
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
 
             Column(
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                     modifier = Modifier.padding(16.dp)
             ) {
-                FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
+                FluentTheme {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Text("Button to update Theme via Global & Alias token",
-                        color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
 
                         Row(
                                 horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
@@ -85,7 +81,7 @@ class V2BasicInputsActivity : DemoActivity() {
                                     size = ButtonSize.Medium,
                                     onClick = {
                                         AppThemeController.updateGlobalTokens(MyGlobalTokens())
-                                        AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                        AppThemeController.updateAliasTokens(MyAliasTokens())
                                         AppThemeController.updateControlTokens(ControlTokens().updateTokens(ControlTokens.ControlType.Button, MyButtonTokens()))
                                     },
                                     text = "Set New Theme"
@@ -98,26 +94,37 @@ class V2BasicInputsActivity : DemoActivity() {
 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     item {
-                        Text("Default Button from provided base token & Auto theme",
-                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
-                        FluentTheme {
-                            CreateButtons()
+                        Text("Activity level customization with Auto theme",
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
+
+                        // TODO Investigate better ways to save activity Theme state
+                        // TODO One possible way is to use State Holders
+                        var globalTokens by rememberSaveable { mutableStateOf(GlobalTokens()) }
+
+                        FluentTheme(globalTokens = globalTokens, aliasTokens = AliasTokens(), controlTokens = ControlTokens()) {
+                            Column(verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)) {
+                                Row(
+                                        horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
+                                        modifier = Modifier.fillMaxWidth()
+                                ) {
+                                    Button(onClick = { globalTokens = GlobalTokens() }, text = "Theme1")
+                                    Button(onClick = { globalTokens = MyGlobalTokens() }, text = "Theme2")
+                                }
+                                CreateButtons()
+                            }
                         }
                     }
 
                     item {
                         Text("Button with Selected Theme and Colorful mode",
-                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
                         FluentTheme(
-                                globalTokens = globalTokens,
-                                aliasTokens = aliasTokens,
-                                controlTokens = controlTokens,
                                 themeMode = ThemeMode.AutoColorful
                         ) {
                             Box(
                                     modifier = Modifier
                                             .background(
-                                                    aliasTokens.neutralBackgroundColor[
+                                                    FluentTheme.aliasTokens.neutralBackgroundColor[
                                                             AliasTokens.NeutralBackgroundColorTokens.Background3
                                                     ].value(ThemeMode.AutoColorful)
                                             )
@@ -128,19 +135,15 @@ class V2BasicInputsActivity : DemoActivity() {
                         }
                     }
                     item {
-                        FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
-                            Text("Button with selected theme, auto mode and default control token",
-                                    color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
-                            CreateButtons()
-
+                        FluentTheme {
                             Text("Button with selected theme, auto mode and overridden control token",
-                                    color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
                             CreateButtons(MyButtonTokens())
                         }
                     }
                 }
             }
-            FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens, controlTokens = controlTokens) {
+            FluentTheme {
                 Box(
                         contentAlignment = Alignment.BottomEnd,
                         modifier = Modifier.fillMaxSize()
@@ -150,7 +153,7 @@ class V2BasicInputsActivity : DemoActivity() {
                             size = FABSize.Small,
                             state = fabState,
                             onClick = {
-                                var toastText: String = "No Text"
+                                var toastText = "No Text"
                                 if (fabText != null && fabText != "" && fabState == FABState.Expanded) {
                                     toastText = "FAB Collapsed"
                                     fabState = FABState.Collapsed

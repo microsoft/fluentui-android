@@ -18,18 +18,23 @@ internal val LocalThemeMode = compositionLocalOf { ThemeMode.Auto }
 
 @Composable
 fun FluentTheme(
-        globalTokens: GlobalTokens = GlobalTokens(),
-        aliasTokens: AliasTokens = AliasTokens(),
-        controlTokens: ControlTokens = ControlTokens(),
+        globalTokens: GlobalTokens? = null,
+        aliasTokens: AliasTokens? = null,
+        controlTokens: ControlTokens? = null,
         themeMode: ThemeMode = ThemeMode.Auto,
         content: @Composable () -> Unit
 ) {
+    val appGlobalToken by AppThemeController.observeGlobalToken(initial = GlobalTokens())
+    val appAliasTokens by AppThemeController.observeAliasToken(initial = AliasTokens())
+    val appControlTokens by AppThemeController.observeControlToken(initial = ControlTokens())
+
     CompositionLocalProvider(
-            LocalGlobalTokens provides globalTokens,
-            LocalAliasTokens provides aliasTokens,
-            LocalControlTokens provides controlTokens,
+            LocalGlobalTokens provides (globalTokens ?: appGlobalToken),
+            LocalAliasTokens provides (aliasTokens ?: appAliasTokens),
+            LocalControlTokens provides (controlTokens ?: appControlTokens),
             LocalThemeMode provides themeMode
     ) {
+        LocalAliasTokens.current.updateGlobalToken()
         content()
     }
 }
@@ -40,7 +45,7 @@ object FluentTheme {
         @ReadOnlyComposable
         get() = LocalGlobalTokens.current
 
-    val aliasToken: AliasTokens
+    val aliasTokens: AliasTokens
         @Composable
         @ReadOnlyComposable
         get() = LocalAliasTokens.current

@@ -19,14 +19,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyGlobalTokens
+import com.microsoft.fluentui.controls.CheckBox
+import com.microsoft.fluentui.controls.RadioButton
+import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.controls.CheckBox
-import com.microsoft.fluentui.controls.RadioButton
-import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
@@ -43,14 +43,11 @@ class V2BasicControlsActivity : DemoActivity() {
 
         val compose_here = findViewById<ComposeView>(R.id.compose_here)
         compose_here.setContent {
-            val globalTokens: GlobalTokens by AppThemeController.observeGlobalToken(initial = GlobalTokens())
-            val aliasTokens: AliasTokens by AppThemeController.observeAliasToken(initial = AliasTokens())
-
-            FluentTheme(globalTokens = globalTokens, aliasTokens = aliasTokens) {
+            FluentTheme {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp),
                         modifier = Modifier.padding(16.dp)) {
 
-                    var checked by remember { mutableStateOf(globalTokens !is MyGlobalTokens) }
+                    var checked by remember { mutableStateOf(true) }
                     var enabled by remember { mutableStateOf(false) }
                     val themes = listOf("Theme 1", "Theme 2")
                     val selectedOption = remember { mutableStateOf(themes[0]) }
@@ -61,7 +58,7 @@ class V2BasicControlsActivity : DemoActivity() {
                         Text(text = "Toggle Switch enable",
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1F),
-                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
                         ToggleSwitch(true, enabled, {
                             enabled = it
                             Toast.makeText(context, "Switch 1 Toggled", Toast.LENGTH_SHORT).show()
@@ -76,7 +73,7 @@ class V2BasicControlsActivity : DemoActivity() {
                         Text(text = "Toggle Global/Alias Theme",
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1F),
-                                color = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
                         ToggleSwitch(enabled, checked, {
                             checked = it
                             if (checked) {
@@ -85,7 +82,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                 selectedOption.value = themes[0]
                             } else {
                                 AppThemeController.updateGlobalTokens(MyGlobalTokens())
-                                AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                AppThemeController.updateAliasTokens(MyAliasTokens())
                                 selectedOption.value = themes[1]
                             }
                             Toast.makeText(context, "Switch 2 Toggled", Toast.LENGTH_SHORT).show()
@@ -106,7 +103,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                 AppThemeController.updateGlobalTokens(GlobalTokens())
                                 selectedOption.value = themes[0]
                             } else {
-                                AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                AppThemeController.updateAliasTokens(MyAliasTokens())
                                 AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                 selectedOption.value = themes[1]
                             }
@@ -138,7 +135,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                             AppThemeController.updateGlobalTokens(GlobalTokens())
                                             checked = true
                                         } else {
-                                            AppThemeController.updateAliasTokens(MyAliasTokens(MyGlobalTokens()))
+                                            AppThemeController.updateAliasTokens(MyAliasTokens())
                                             AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                             checked = false
                                         }

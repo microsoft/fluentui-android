@@ -45,4 +45,8 @@
 
     <!-- *** Semantic Colors *** -->
     <color name="fluentui_transparent">#00000000</color>
+
+    <!-- *** Other Colors *** -->
+    <color name="fluentui_red">#D92C2C</color>
+    <color name="fluentui_yellow">#FFD335</color>
 </resources>
