@@ -5,16 +5,19 @@
 
 package com.microsoft.fluentui.theme.token
 
+import android.os.Parcelable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.parcelize.Parcelize
 
 // Global Tokens represent a unified set of constants to be used by Fluent UI.
 
-open class GlobalTokens {
+@Parcelize
+open class GlobalTokens : Parcelable {
 
     enum class BrandColorTokens {
         Color10,
