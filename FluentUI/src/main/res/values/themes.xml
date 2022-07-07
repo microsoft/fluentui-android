@@ -205,7 +205,16 @@
         <!--Snackbar-->
         <item name="fluentuiSnackbarBackgroundColor">?attr/fluentuiBackgroundSecondaryColor</item>
         <item name="fluentuiSnackbarBackgroundAnnouncementColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiSnackbarBackgroundPrimaryColor">?attr/fluentuiBackgroundPrimaryColor</item>
+        <item name="fluentuiSnackbarBackgroundLightColor">@color/fluentui_black</item>
+        <item name="fluentuiSnackbarBackgroundWarningColor">@color/fluentui_yellow</item>
+        <item name="fluentuiSnackbarBackgroundDangerColor">@color/fluentui_red</item>
         <item name="fluentuiSnackbarTextColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiSnackbarTextAnnouncementColor">?attr/fluentuiForegroundOnSecondaryColor</item>
+        <item name="fluentuiSnackbarTextPrimaryColor">?attr/fluentuiForegroundOnPrimaryColor</item>
+        <item name="fluentuiSnackbarTextLightColor">@color/fluentui_white</item>
+        <item name="fluentuiSnackbarTextWarningColor">@color/fluentui_gray_900</item>
+        <item name="fluentuiSnackbarTextDangerColor">@color/fluentui_white</item>
         <item name="fluentuiSnackbarActionTextColor">?attr/fluentuiColorPrimaryLight</item>
         <item name="fluentuiSnackbarActionTextAnnouncementColor">?attr/fluentuiForegroundOnPrimaryColor</item>
 
