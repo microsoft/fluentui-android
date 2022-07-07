@@ -12,7 +12,6 @@ import androidx.test.espresso.intent.matcher.IntentMatchers
 import androidx.test.espresso.matcher.ViewMatchers.Visibility.GONE
 import androidx.test.espresso.matcher.ViewMatchers.Visibility.VISIBLE
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
-import androidx.test.espresso.matcher.ViewMatchers.isClickable
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -42,7 +41,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testNoActionBarPositionNoActionBarType(){
-        launchActivity()
 
         onView(withId(id.start_demo_btn)).perform(ViewActions.click())
 
@@ -51,7 +49,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testActionBarPositionTopActionBarTypeBasic(){
-        launchActivity()
 
         onView(withId(id.action_bar_position_top)).perform(ViewActions.click())
         onView(withId(id.action_bar_type_basic)).perform(ViewActions.click())
@@ -68,7 +65,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testActionBarPositionTopActionBarTypeIcon(){
-        launchActivity()
 
         onView(withId(id.action_bar_position_top)).perform(ViewActions.click())
         onView(withId(id.action_bar_type_icon)).perform(ViewActions.click())
@@ -84,7 +80,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testActionBarPositionTopActionBarTypeCarousel(){
-        launchActivity()
 
         onView(withId(id.action_bar_position_top)).perform(ViewActions.click())
         onView(withId(id.action_bar_type_carousel)).perform(ViewActions.click())
@@ -100,7 +95,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testActionBarPositionBottomActionBarTypeBasic(){
-        launchActivity()
 
         onView(withId(id.action_bar_position_bottom)).perform(ViewActions.click())
         onView(withId(id.action_bar_type_basic)).perform(ViewActions.click())
@@ -116,7 +110,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testActionBarPositionBottomActionBarTypeIcon(){
-        launchActivity()
 
         onView(withId(id.action_bar_position_bottom)).perform(ViewActions.click())
         onView(withId(id.action_bar_type_icon)).perform(ViewActions.click())
@@ -132,7 +125,6 @@ class ActionBarLayoutActivityUITest {
 
     @Test
     fun testActionBarPositionBottomActionBarTypeCarousel(){
-        launchActivity()
 
         onView(withId(id.action_bar_position_bottom)).perform(ViewActions.click())
         onView(withId(id.action_bar_type_carousel)).perform(ViewActions.click())

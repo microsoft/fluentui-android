@@ -4,11 +4,9 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.persona.IAvatar
-import com.microsoft.fluentuidemo.DemoListActivity
 import com.microsoft.fluentuidemo.R
 import org.junit.*
 import org.junit.runner.*
-import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 
@@ -31,13 +29,13 @@ class AvatarUtilsTest {
     fun testCreateAvatar(){
         var avatar = generateAvatar()
 
-        Assert.assertEquals(NAME, avatar.name)
-        Assert.assertEquals(IMAGE_RESOURCE_ID, avatar.avatarImageResourceId)
+        Assert.assertEquals("Lorem", avatar.name)
+        Assert.assertEquals(121, avatar.avatarImageResourceId)
         Assert.assertEquals(IMAGE_DRAWABLE, avatar.avatarImageDrawable)
         Assert.assertEquals(IMAGE_BITMAP, avatar.avatarImageBitmap)
         Assert.assertEquals(IMAGE_URI, avatar.avatarImageUri)
-        Assert.assertEquals(BACKGROUND_COLOR, avatar.avatarBackgroundColor)
-        Assert.assertEquals(EMAIL, avatar.email)
+        Assert.assertEquals(10, avatar.avatarBackgroundColor)
+        Assert.assertEquals("Lorem@mymail.com", avatar.email)
     }
 
     private fun generateAvatar(): IAvatar{

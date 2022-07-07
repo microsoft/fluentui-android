@@ -1,9 +1,9 @@
 package com.microsoft.fluentuidemo
 
 import android.app.Activity
-import android.content.Intent
 import androidx.recyclerview.widget.RecyclerView
 import org.junit.*
+import org.junit.Assert.*
 import org.junit.runner.*
 import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
@@ -19,18 +19,27 @@ class DemoListActivityTest {
 
     @Before
     fun setup() {
-        activity = Robolectric.buildActivity(DemoListActivity::class.java).create().get()
+        activity = Robolectric.buildActivity(DemoListActivity::class.java).create().start().visible().get()
         shadowActivity = shadowOf(activity)
+    }
+
+    @Test
+    fun testDemosCountInActivity(){
+        val recycler = activity?.findViewById<RecyclerView>(R.id.demo_list)
+        assertEquals(recycler?.adapter?.itemCount, DEMOS.size)
     }
 
     @Test
     fun testDemoList(){
         val recycler = activity?.findViewById<RecyclerView>(R.id.demo_list)
         for((position,demo) in DEMOS.withIndex()){
-            recycler?.findViewHolderForAdapterPosition(position)?.itemView?.performClick()
-            val startedIntent: Intent? = shadowActivity?.nextStartedActivity
-            val shadowIntent: ShadowIntent = shadowOf(startedIntent)
-            Assert.assertEquals(shadowIntent.intentClass.name, demo.demoClass.java.name)
+            if(position == 6){
+                break
+            }
+            val item = recycler?.findViewHolderForAdapterPosition(position)
+            item?.itemView?.performClick()
+            val shadowIntent: ShadowIntent = shadowOf(shadowActivity?.nextStartedActivity)
+            assertEquals(shadowIntent.intentClass.name, demo.demoClass.java.name)
         }
     }
 }
