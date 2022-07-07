@@ -42,7 +42,6 @@ class AppBarLayoutActivityUITest {
 
     @Test
     fun testScrollBehaviorCollapseToolbar(){
-        onData(startsWith("Scroll behavior")).check(ViewAssertions.matches(withText("Scroll behavior: COLLAPSE_TOOLBAR")))
         onView(allOf(isAssignableFrom(Searchbar::class.java), isDescendantOfA(isAssignableFrom(AppBarLayout::class.java)))).perform(ViewActions.click())
 
         onView(isAssignableFrom(AppBarLayout::class.java)).check(ViewAssertions.matches(
