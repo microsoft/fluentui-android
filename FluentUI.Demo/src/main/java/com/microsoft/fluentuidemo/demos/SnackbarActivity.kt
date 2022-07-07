@@ -6,6 +6,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.PorterDuff
 import android.os.Bundle
 import androidx.core.content.ContextCompat
@@ -34,6 +35,7 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
         btn_snackbar_single_line_custom_view.setOnClickListener(this)
         btn_snackbar_single_line_action.setOnClickListener(this)
         btn_snackbar_single_line_action_custom_view.setOnClickListener(this)
+        btn_snackbar_single_line_custom_text_color.setOnClickListener(this)
 
         btn_snackbar_multiline.setOnClickListener(this)
         btn_snackbar_multiline_custom_view.setOnClickListener(this)
@@ -42,6 +44,10 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
         btn_snackbar_multiline_long_action.setOnClickListener(this)
 
         btn_snackbar_announcement.setOnClickListener(this)
+        btn_snackbar_primary.setOnClickListener(this)
+        btn_snackbar_light.setOnClickListener(this)
+        btn_snackbar_warning.setOnClickListener(this)
+        btn_snackbar_danger.setOnClickListener(this)
     }
 
     override fun onClick(v: View) {
@@ -87,6 +93,15 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                         // handle click here
                     })
                     .show()
+
+            R.id.btn_snackbar_single_line_custom_text_color ->
+                Snackbar.make(root_view, getString(R.string.snackbar_single_line))
+                        .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                            // handle click here
+                        })
+                        .setTextColor(Color.parseColor("#FF0000"))
+                        .setActionTextColor(Color.parseColor("#FF0000"))
+                        .show()
 
             // Multiline
 
@@ -147,6 +162,46 @@ class SnackbarActivity : DemoActivity(), View.OnClickListener {
                         // handle click here
                     })
                     .show()
+            }
+
+            // Primary style
+
+            R.id.btn_snackbar_primary -> {
+                Snackbar.make(root_view, getString(R.string.snackbar_primary), style = Snackbar.Style.PRIMARY)
+                        .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                            // handle click here
+                        })
+                        .show()
+            }
+
+            // Light style
+
+            R.id.btn_snackbar_light -> {
+                Snackbar.make(root_view, getString(R.string.snackbar_light), style = Snackbar.Style.LIGHT)
+                        .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                            // handle click here
+                        })
+                        .show()
+            }
+
+            // Warning style
+
+            R.id.btn_snackbar_warning -> {
+                Snackbar.make(root_view, getString(R.string.snackbar_warning), style = Snackbar.Style.WARNING)
+                        .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                            // handle click here
+                        })
+                        .show()
+            }
+
+            // Danger style
+
+            R.id.btn_snackbar_danger -> {
+                Snackbar.make(root_view, getString(R.string.snackbar_danger), style = Snackbar.Style.DANGER)
+                        .setAction(getString(R.string.snackbar_action), View.OnClickListener {
+                            // handle click here
+                        })
+                        .show()
             }
         }
     }

@@ -3,7 +3,8 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
+import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.ControlToken
@@ -29,22 +30,22 @@ open class RadioButtonTokens : ControlToken, Parcelable {
     open fun backgroundColor(radioButtonInfo: RadioButtonInfo): StateColor {
         return when (radioButtonInfo.selected) {
             true -> StateColor(
-                    rest = FluentTheme.aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = FluentTheme.themeMode
+                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
                     ),
-                    pressed = FluentTheme.aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = FluentTheme.themeMode
+                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
                     ),
-                    disabled = FluentTheme.aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                            themeMode = FluentTheme.themeMode
+                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                            themeMode = themeMode
                     )
             )
             false -> StateColor(
-                    rest = FluentTheme.aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
-                            themeMode = FluentTheme.themeMode
+                    rest = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                            themeMode = themeMode
                     ),
-                    disabled = FluentTheme.aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
-                            themeMode = FluentTheme.themeMode
+                    disabled = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                            themeMode = themeMode
                     )
             )
         }
@@ -54,11 +55,11 @@ open class RadioButtonTokens : ControlToken, Parcelable {
     open fun iconColor(radioButtonInfo: RadioButtonInfo): StateColor {
         return when (radioButtonInfo.selected) {
             true -> StateColor(
-                    rest = FluentTheme.aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                            themeMode = FluentTheme.themeMode
+                    rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                            themeMode = themeMode
                     ),
-                    disabled = FluentTheme.aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                            themeMode = FluentTheme.themeMode
+                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                            themeMode = themeMode
                     )
             )
             false -> StateColor()
