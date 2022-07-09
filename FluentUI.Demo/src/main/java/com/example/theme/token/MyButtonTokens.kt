@@ -12,9 +12,9 @@ open class MyButtonTokens : ButtonTokens() {
     @Composable
     override fun fixedHeight(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> 32.dp
-            ButtonSize.Medium -> 40.dp
-            ButtonSize.Large -> 52.dp
+            ButtonSize.Small -> 40.dp
+            ButtonSize.Medium -> 48.dp
+            ButtonSize.Large -> 60.dp
         }
     }
 }

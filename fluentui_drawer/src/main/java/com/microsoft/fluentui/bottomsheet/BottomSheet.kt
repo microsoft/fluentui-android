@@ -48,7 +48,7 @@ class BottomSheet : AppCompatDialogFragment(), BottomSheetItem.OnClickListener {
         items = bundle?.getParcelableArrayList(ITEMS) ?: arrayListOf()
         headerItem = bundle?.getParcelable(HEADER_ITEM)
 
-        bottomSheetDialog = BottomSheetDialog(context!!, items, headerItem, theme)
+        bottomSheetDialog = BottomSheetDialog(requireContext(), items, headerItem, theme)
         bottomSheetDialog.onItemClickListener = this
 
         return bottomSheetDialog

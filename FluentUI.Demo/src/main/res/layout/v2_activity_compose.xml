@@ -4,6 +4,6 @@
   ~ Licensed under the MIT License.
   -->
 <androidx.compose.ui.platform.ComposeView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/buttons"
+        android:id="@+id/compose_here"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

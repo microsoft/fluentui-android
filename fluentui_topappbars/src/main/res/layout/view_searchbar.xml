@@ -83,10 +83,10 @@
                 android:layout_gravity="center"
                 android:contentDescription="@string/searchbar_clear_search"
                 android:src="@drawable/ms_ic_dismiss_circle_24_filled"
-                android:tint="?attr/fluentuiSearchbarCloseIconColor"
                 android:tintMode="src_in"
                 android:visibility="gone"
-                tools:visibility="visible" />
+                tools:visibility="visible"
+                app:tint="?attr/fluentuiSearchbarCloseIconColor" />
 
         </FrameLayout>
 

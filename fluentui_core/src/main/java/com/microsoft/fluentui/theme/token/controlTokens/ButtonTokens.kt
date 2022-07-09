@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme.aliasToken
+import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
@@ -30,12 +30,12 @@ enum class ButtonSize {
 }
 
 data class ButtonInfo(
-    val style: ButtonStyle = ButtonStyle.Button,
-    val size: ButtonSize = ButtonSize.Medium
+        val style: ButtonStyle = ButtonStyle.Button,
+        val size: ButtonSize = ButtonSize.Medium
 ) : ControlInfo
 
 @Parcelize
-open class ButtonTokens : ControlTokens, Parcelable {
+open class ButtonTokens : ControlToken, Parcelable {
 
     companion object {
         const val Type: String = "Button"
@@ -46,40 +46,40 @@ open class ButtonTokens : ControlTokens, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateColor(
-                    rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
-                    )
+                        rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                                themeMode = themeMode
+                        )
                 )
 
             ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
                 StateColor(
-                    rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
-                    )
+                        rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                                themeMode = themeMode
+                        )
                 )
         }
     }
@@ -88,39 +88,39 @@ open class ButtonTokens : ControlTokens, Parcelable {
     open fun textColor(buttonInfo: ButtonInfo): StateColor {
         return when (buttonInfo.style) {
             ButtonStyle.Button -> StateColor(
-                rest = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                pressed = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                selected = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                focused = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                    themeMode = themeMode
-                ),
-                disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                    themeMode = themeMode
-                )
+                    rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
+                    ),
+                    pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
+                    ),
+                    selected = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
+                    ),
+                    focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
+                    ),
+                    disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                            themeMode = themeMode
+                    )
             )
             ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
                 StateColor(
-                    rest = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
-                    )
+                        rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                                themeMode = themeMode
+                        )
                 )
         }
     }
@@ -130,21 +130,21 @@ open class ButtonTokens : ControlTokens, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateColor(
-                    rest = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                    ),
-                    pressed = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
-                        themeMode = themeMode
-                    ),
-                    selected = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
-                        themeMode = themeMode
-                    ),
-                    focused = aliasToken.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                    ),
-                    disabled = aliasToken.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        themeMode = themeMode
-                    )
+                        rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                themeMode = themeMode
+                        ),
+                        pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                                themeMode = themeMode
+                        ),
+                        selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                                themeMode = themeMode
+                        ),
+                        focused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                themeMode = themeMode
+                        ),
+                        disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                                themeMode = themeMode
+                        )
                 )
             ButtonStyle.OutlinedButton -> StateColor()
             ButtonStyle.TextButton -> StateColor()
@@ -155,61 +155,61 @@ open class ButtonTokens : ControlTokens, Parcelable {
     open fun borderStroke(buttonInfo: ButtonInfo): StateBorderStroke {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton -> StateBorderStroke(
-                focused = listOf(
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                        aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
-                            themeMode = themeMode
-                        )
-                    ),
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                        aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
-                            themeMode = themeMode
-                        )
+                    focused = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                                            themeMode = themeMode
+                                    )
+                            ),
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                                            themeMode = themeMode
+                                    )
+                            )
                     )
-                )
             )
 
             ButtonStyle.OutlinedButton -> StateBorderStroke(
-                pressed = listOf(
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                        aliasToken.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
-                            themeMode = themeMode
-                        )
-                    )
-                ),
-                rest = listOf(
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                        aliasToken.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
-                            themeMode = themeMode
-                        )
-                    )
-                ),
-                disabled = listOf(
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                        aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
-                            themeMode = themeMode
-                        )
-                    )
-                ),
-                focused = listOf(
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                        aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
-                            themeMode = themeMode
-                        )
+                    pressed = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
+                                            themeMode = themeMode
+                                    )
+                            )
                     ),
-                    BorderStroke(
-                        globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                        aliasToken.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
-                            themeMode = themeMode
-                        )
+                    rest = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
+                                            themeMode = themeMode
+                                    )
+                            )
+                    ),
+                    disabled = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                                            themeMode = themeMode
+                                    )
+                            )
+                    ),
+                    focused = listOf(
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                                            themeMode = themeMode
+                                    )
+                            ),
+                            BorderStroke(
+                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                                            themeMode = themeMode
+                                    )
+                            )
                     )
-                )
             )
         }
     }
@@ -238,9 +238,9 @@ open class ButtonTokens : ControlTokens, Parcelable {
     @Composable
     open fun fontInfo(buttonInfo: ButtonInfo): FontInfo {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> aliasToken.typography[AliasTokens.TypographyTokens.Body2Strong]
-            ButtonSize.Medium -> aliasToken.typography[AliasTokens.TypographyTokens.Body2Strong]
-            ButtonSize.Large -> aliasToken.typography[AliasTokens.TypographyTokens.Body1Strong]
+            ButtonSize.Small -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
+            ButtonSize.Medium -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
+            ButtonSize.Large -> aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
         }
     }
 
@@ -249,16 +249,16 @@ open class ButtonTokens : ControlTokens, Parcelable {
         return when (buttonInfo.size) {
             ButtonSize.Small ->
                 PaddingValues(
-                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall],
-                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
+                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall],
+                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
                 )
             ButtonSize.Medium -> PaddingValues(
-                horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
+                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
             )
             ButtonSize.Large -> PaddingValues(
-                horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Large],
-                vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Small]
+                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Large],
+                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Small]
             )
         }
     }
