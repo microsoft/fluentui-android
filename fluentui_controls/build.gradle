@@ -67,5 +67,5 @@ task sourceJar(type: Jar) {
 }
 
 project.afterEvaluate {
-    project.ext.publishingFunc('fluentui_others')
+    project.ext.publishingFunc('fluentui_controls')
 }
