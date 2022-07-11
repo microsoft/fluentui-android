@@ -13,7 +13,7 @@ import org.robolectric.RuntimeEnvironment
 @RunWith(RobolectricTestRunner::class)
 class AvatarUtilsTest {
 
-    private val context = RuntimeEnvironment.application.applicationContext
+    private val context = RuntimeEnvironment.getApplication().applicationContext
     companion object{
         private const val NAME = "Lorem"
         private const val EMAIL = "Lorem@mymail.com"
