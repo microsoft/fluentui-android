@@ -43,7 +43,7 @@ jobs:
         sonarQubeRunAnalysis: false
         spotBugsAnalysis: false
 
-    - task: Gradle@4
+    - task: Gradle@3
       displayName: Hydra Lab UI test
       inputs:
         gradleWrapperFile: 'gradlew'
@@ -75,3 +75,4 @@ jobs:
       inputs:
         PathtoPublish: '$(build.artifactstagingdirectory)'
         ArtifactName: Build
+        
