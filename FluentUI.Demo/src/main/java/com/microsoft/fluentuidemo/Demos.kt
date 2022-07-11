@@ -14,6 +14,8 @@ const val APP_BAR_LAYOUT = "AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
 const val AVATAR_GROUP_VIEW = "AvatarGroupView"
 const val BASIC_INPUTS = "Basic Inputs"
+const val V2AVATAR_VIEW = "V2 Avatar View"
+const val V2AVATAR_GROUP_VIEW = "V2 Avatar Group View"
 const val V2BASIC_INPUTS = "V2 Basic Inputs"
 const val V2BASIC_CONTROLS = "V2 Basic Controls"
 const val BOTTOM_NAVIGATION = "BottomNavigation"
@@ -42,6 +44,8 @@ val DEMOS = arrayListOf(
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
     Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
     Demo(BASIC_INPUTS, BasicInputsActivity::class),
+    Demo(V2AVATAR_VIEW, V2AvatarViewActivity::class),
+    Demo(V2AVATAR_GROUP_VIEW, V2AvatarGroupViewActivity::class),
     Demo(V2BASIC_INPUTS, V2BasicInputsActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
     Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),

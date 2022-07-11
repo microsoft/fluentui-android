@@ -295,9 +295,9 @@ open class GlobalTokens : Parcelable {
                 IconSizeTokens.XXLargeSelected ->
                     IconSize(40.dp, IconType.Filled)
                 IconSizeTokens.XXXLarge ->
-                    IconSize(48.dp, IconType.Regular)
+                    IconSize(72.dp, IconType.Regular)
                 IconSizeTokens.XXXLargeSelected ->
-                    IconSize(48.dp, IconType.Filled)
+                    IconSize(72.dp, IconType.Filled)
             }
         }
     }

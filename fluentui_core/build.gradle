@@ -59,6 +59,8 @@ gradle.taskGraph.whenReady { taskGraph ->
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':fluentui_icons')
+
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.exifinterface:exifinterface:$exifInterfaceVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"

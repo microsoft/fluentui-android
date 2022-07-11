@@ -354,6 +354,12 @@ open class AliasTokens {
         BrandBackground1Pressed,
         BrandBackground1Selected,
         BrandBackground2,
+        BrandBackground2Pressed,
+        BrandBackground2Selected,
+        BrandBackground3,
+        BrandBackground3Pressed,
+        BrandBackground3Selected,
+        BrandBackground4,
         BrandBackgroundDisabled,
         BrandBackgroundInverted,
         BrandBackgroundInvertedDisabled,
@@ -384,6 +390,48 @@ open class AliasTokens {
                     )
 
                 BrandBackgroundColorTokens.BrandBackground2 ->
+                    FluentColor(
+                            light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color70],
+                            dark = Color.Unspecified,
+                            colorful = Color.Unspecified
+                    )
+
+                BrandBackgroundColorTokens.BrandBackground2Pressed ->
+                    FluentColor(
+                            light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color40],
+                            dark = Color.Unspecified,
+                            colorful = Color.Unspecified
+                    )
+
+                BrandBackgroundColorTokens.BrandBackground2Selected ->
+                    FluentColor(
+                            light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color50],
+                            dark = Color.Unspecified,
+                            colorful = Color.Unspecified
+                    )
+
+                BrandBackgroundColorTokens.BrandBackground3 ->
+                    FluentColor(
+                            light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color60],
+                            dark = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color120],
+                            colorful = Color.Unspecified
+                    )
+
+                BrandBackgroundColorTokens.BrandBackground3Pressed ->
+                    FluentColor(
+                            light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color30],
+                            dark = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160],
+                            colorful = Color.Unspecified
+                    )
+
+                BrandBackgroundColorTokens.BrandBackground3Selected ->
+                    FluentColor(
+                            light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color150],
+                            dark = Color.Unspecified,
+                            colorful = Color.Unspecified
+                    )
+
+                BrandBackgroundColorTokens.BrandBackground4 ->
                     FluentColor(
                             light = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color160],
                             dark = this.globalTokens.brandColor[GlobalTokens.BrandColorTokens.Color20],
