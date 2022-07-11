@@ -32,7 +32,7 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '1.11'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
-    - task: Gradle@3
+    - task: Gradle@2
       displayName: Start Unit tests
       inputs:
         gradleWrapperFile: 'gradlew'
@@ -43,7 +43,7 @@ jobs:
         sonarQubeRunAnalysis: false
         spotBugsAnalysis: false
 
-    - task: Gradle@3
+    - task: Gradle@2
       displayName: Hydra Lab UI test
       inputs:
         gradleWrapperFile: 'gradlew'
