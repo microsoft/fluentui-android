@@ -32,7 +32,24 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '1.11'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
-    
+    - task: Gradle@3
+      displayName: Start Unit tests
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'assembleDevelopmentDebugAndroidTest'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
+
+    - task: Gradle@4
+      displayName: Hydra Lab UI test
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'requestHydraLabTest -PappApkPath=$(build.defaultworkingdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestApkPath=$(build.defaultworkingdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PtimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName)'
+        publishJUnitResults: false
+
     - task: AndroidSigning@2
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
@@ -47,7 +64,7 @@ jobs:
          **/*.apk
          **/*.aar
         TargetFolder: '$(build.artifactstagingdirectory)'
-    
+
     - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
       displayName: 📒 Generate Manifest
       inputs:
