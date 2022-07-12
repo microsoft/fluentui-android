@@ -39,7 +39,7 @@ jobs:
         tasks: 'assembleDevelopmentDebugAndroidTest'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.11'
+        jdkVersionOption: '$(jdkVersion)'
         sonarQubeRunAnalysis: false
         spotBugsAnalysis: false
 
@@ -49,7 +49,7 @@ jobs:
         gradleWrapperFile: 'gradlew'
         tasks: 'requestHydraLabTest -PappApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PtimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType)'
         javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.11'
+        jdkVersionOption: '$(jdkVersion)'
         publishJUnitResults: false
 
     - task: AndroidSigning@2
