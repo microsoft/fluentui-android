@@ -1,0 +1,40 @@
+# Gradle
+# Build your Java project and run tests with Gradle using a Gradle wrapper script.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: Gradle@2
+  displayName: 'gradlew build publish'
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'build publish'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '$(jdkVersion)'
+    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
+
+- task: Gradle@2
+  displayName: Start Unit tests
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'assembleDevelopmentDebugAndroidTest'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '$(jdkVersion)'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+
+- task: Gradle@2
+  displayName: Hydra Lab UI test
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'requestHydraLabTest -PappApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PtimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType)'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '$(jdkVersion)'
+    publishJUnitResults: false
