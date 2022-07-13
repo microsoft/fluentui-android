@@ -11,16 +11,15 @@ pool:
 
 steps:
 - task: Gradle@2
-  displayName: 'gradlew build publish'
+  displayName: 'gradlew build'
   inputs:
     gradleWrapperFile: 'gradlew'
-    tasks: 'build publish'
+    tasks: 'build'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '$(jdkVersion)'
-    options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
 
 - task: Gradle@2
-  displayName: Start Unit tests
+  displayName: Unit tests
   inputs:
     gradleWrapperFile: 'gradlew'
     tasks: 'assembleDevelopmentDebugAndroidTest'
