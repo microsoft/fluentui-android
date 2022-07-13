@@ -13,7 +13,7 @@ pr:
 jobs:
   - template: fluentui-android-compliance.yml
 
-  - job: Build and Test
+  - job: BuildTest
     pool:
       vmImage: ubuntu-latest
     steps:
