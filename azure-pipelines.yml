@@ -21,12 +21,23 @@ steps:
   displayName: 'gradlew build'
   inputs:
     gradleWrapperFile: 'gradlew'
-    tasks: 'build'
+    tasks: 'assembleDevelopmentDebug'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '$(jdkVersion)'
 
 - task: Gradle@2
   displayName: Unit tests
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'testDevelopmentDebugUnitTest'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '$(jdkVersion)'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
+
+- task: Gradle@2
+  displayName: Generate testApk
   inputs:
     gradleWrapperFile: 'gradlew'
     tasks: 'assembleDevelopmentDebugAndroidTest'
