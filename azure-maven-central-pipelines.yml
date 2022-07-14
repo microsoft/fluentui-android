@@ -32,8 +32,20 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
+
     - task: Gradle@2
-      displayName: Start Unit tests
+      displayName: Unit tests
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'testDevelopmentDebugUnitTest'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '$(jdkVersion)'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
+
+    - task: Gradle@2
+      displayName: Generate testApk
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'assembleDevelopmentDebugAndroidTest'
@@ -51,7 +63,7 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         publishJUnitResults: false
-
+      
     - task: AndroidSigning@2
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
