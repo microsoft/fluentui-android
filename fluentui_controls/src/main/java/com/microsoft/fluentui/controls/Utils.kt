@@ -53,6 +53,7 @@ fun backgroundColor(
                 is ToggleSwitchTokens -> tokens.trackColor(info as ToggleSwitchInfo)
                 is CheckBoxTokens -> tokens.backgroundColor(info as CheckBoxInfo)
                 is RadioButtonTokens -> tokens.backgroundColor(info as RadioButtonInfo)
+                is ListItemTokens -> tokens.backgroundColor()
                 else -> throw InvalidParameterException()
             }
 

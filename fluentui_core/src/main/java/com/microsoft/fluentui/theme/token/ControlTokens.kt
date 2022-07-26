@@ -19,7 +19,8 @@ class ControlTokens {
         FloatingActionButton,
         ToggleSwitch,
         CheckBox,
-        RadioButton
+        RadioButton,
+        ListItem
     }
 
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
@@ -30,6 +31,7 @@ class ControlTokens {
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
+                ControlType.ListItem -> ListItemTokens()
             }
         }
     }

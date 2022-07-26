@@ -1,23 +1,25 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.util.Log
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.AccountBox
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Send
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.controls.Button
+import com.microsoft.fluentui.controls.CheckBox
+import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentui.listitem.ListItem
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.launch
@@ -42,87 +44,120 @@ class V2ListItemViewActivity : DemoActivity() {
 }
 @Composable
 private fun CreateActivityUI() {
-    Column(modifier = Modifier.fillMaxWidth().padding(20.dp)) {
-        Text(
-            text = "List",
-            fontSize = 25.sp,
-            color = Color.Green
-        )
+    Column(modifier = Modifier
+        .fillMaxWidth()) {
+
+        singleIconList()
+        threeButtonList()
         singleLineList()
         multiLineList()
+        overFlowButtonList()
+        googleList()
     }
 }
 
 @Composable
+fun singleIconList() {
+        ListItem(title="Text", leftAccessoryView = singleIconLeftView(), rightAccessoryView = checkboxRightView())
+}
+@Composable
+fun threeButtonList() {
+    ListItem(leftAccessoryView = threeButtonLeftView(), rightAccessoryView = rightViewOverFlowMenu())
+}
+@Composable
 fun singleLineList() {
-        ListItem(title="LIST", subTitle = "subTitle", leftAccessoryView = leftView(), rightAccessoryView = rightView())
+    ListItem(title="LIST", leftAccessoryView = leftView(), rightAccessoryView = rightViewOverFlowMenu())
 }
 @Composable
 fun multiLineList() {
-    ListItem(title="LIST", subTitle = " long list of text", leftAccessoryView = leftView(), rightAccessoryView = rightView())
+    ListItem(title="LIST", subTitle = " long list of text", leftAccessoryView = leftView(), rightAccessoryView = rightViewOverFlowMenu())
+}
+@Composable
+fun overFlowButtonList() {
+    ListItem(leftAccessoryView = leftView(), rightAccessoryView = rightViewOverFlowMenu())
 }
 
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun googleList(){
+    androidx.compose.material.ListItem(icon = threeButtonLeftView(), text = checkboxRightView(), trailing = checkboxRightView())
+}
 
 @Composable
-fun leftView(): @Composable (() -> Unit) {
-    val scaffoldState = rememberScaffoldState() // this contains the `SnackbarHostState`
-    val coroutineScope = rememberCoroutineScope()
+fun singleIconLeftView(): @Composable (() -> Unit) {
+
     return {
         Row() {
-            Button(
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .shadow(
-                        50.dp,
-                        shape = RoundedCornerShape(10),
-                        ambientColor = Color.Red,
-                        spotColor = Color.Green
-                    ),
-
-                onClick = {
-                    coroutineScope.launch {
-                        val snackbarResult = scaffoldState.snackbarHostState.showSnackbar(
-                            message = "This is your message",
-                            actionLabel = "Do something."
-                        )
-                        when (snackbarResult) {
-                            SnackbarResult.Dismissed -> Log.d("SnackbarDemo", "Dismissed")
-                            SnackbarResult.ActionPerformed -> Log.d("SnackbarDemo", "Snackbar's button clicked")
-                        }
-                    }
-                }
-            )
+            Icon(Icons.Outlined.Email, contentDescription = "Email")
         }
     }
 }
-
 @Composable
-fun rightView(): @Composable (() -> Unit)? {
-    return {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Button(
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .shadow(
-                        50.dp,
-                        shape = RoundedCornerShape(10),
-                        ambientColor = Color.Red,
-                        spotColor = Color.Green
-                    ),
+fun checkboxRightView(): @Composable (() -> Unit){
+    return{
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)){
+            Text("Value")
+            CheckBox(onCheckedChanged = {})
+        }
+    }
+}
+@Composable
+fun leftView(): @Composable (() -> Unit) {
 
-                onClick = { }
+    return {
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            Icon(Icons.Outlined.ThumbUp, contentDescription = "thumbup")
+            Icon(Icons.Outlined.AccountBox, contentDescription = "box")
+            Icon(Icons.Outlined.Send, contentDescription = "send")
+        }
+    }
+}
+@Composable
+fun rightViewOverFlowMenu(): @Composable (() -> Unit){
+    return{
+        Row {
+            ToggleSwitch()
+        }
+    }
+}
+@Composable
+fun threeButtonLeftView(): @Composable (() -> Unit)? {
+    val scaffoldState = rememberScaffoldState()
+    val coroutineScope = rememberCoroutineScope()
+    return {
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+            Button(
+                style = ButtonStyle.OutlinedButton,
+                text = "Text",
+                onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(
+                            message = "This is your message"
+                        )
+                    }
+                }
             )
             Button(
-                modifier = Modifier
-                    .padding(top = 16.dp)
-                    .shadow(
-                        50.dp,
-                        shape = RoundedCornerShape(10),
-                        ambientColor = Color.Red,
-                        spotColor = Color.Green
-                    ),
-
-                onClick = { }
+                style = ButtonStyle.OutlinedButton,
+                text = "Text",
+                onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(
+                            message = "This is your message"
+                        )
+                    }
+                }
+            )
+            Button(
+                style = ButtonStyle.OutlinedButton,
+                text = "Text",
+                onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(
+                            message = "This is your message"
+                        )
+                    }
+                }
             )
         }
     }
