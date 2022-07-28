@@ -39,6 +39,7 @@ android {
                 events "passed", "failed", "standardError"
                 showCauses true
                 showExceptions true
+                showStackTraces true
             }
         }
     }
