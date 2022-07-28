@@ -62,8 +62,15 @@ android {
         }
     }
     testOptions {
-        unitTests {
+        unitTests{
             includeAndroidResources = true
+        }
+        unitTests.all {
+            testLogging {
+                events "passed", "failed", "standardError"
+                showCauses true
+                showExceptions true
+            }
         }
     }
 }
