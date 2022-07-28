@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
@@ -34,12 +35,27 @@ import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XXSmall
 import com.microsoft.fluentui.theme.token.IconSize
 import com.microsoft.fluentui.theme.token.StateColor
+import com.microsoft.fluentui.theme.token.controlTokens.ListAccessoryType.Button
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.AvatarCarousel
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineThree
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineTwo
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.OneLine
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionDescription
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionHeader
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.AccessoryText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.LabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.Text
 import kotlinx.parcelize.Parcelize
 
+enum class ListItemType {
+    OneLine,
+    MultiLineTwo,
+    MultiLineThree,
+    AvatarCarousel,
+    SectionHeader,
+    SectionDescription
+}
 enum class ListTextType {
     Text,
     AccessoryText,
@@ -122,11 +138,20 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun padding(): PaddingValues {
-        return PaddingValues(
+    open fun padding(accessoryType:ListAccessoryType): PaddingValues {
+        return when(accessoryType){
+            Button -> PaddingValues(
+                horizontal = FluentTheme.globalTokens.spacing[Medium],
+                vertical = FluentTheme.globalTokens.spacing[XSmall]
+            )
+            else -> {
+                PaddingValues(
                     horizontal = FluentTheme.globalTokens.spacing[Medium],
                     vertical = FluentTheme.globalTokens.spacing[Small]
                 )
+            }
+        }
+
 
     }
 
@@ -160,6 +185,18 @@ open class ListItemTokens : ControlToken, Parcelable {
             ListAccessoryType.RadioButton -> FluentTheme.globalTokens.spacing[Medium]
             ListAccessoryType.Icon -> FluentTheme.globalTokens.spacing[Medium]
             ListAccessoryType.Avatar -> FluentTheme.globalTokens.spacing[Medium]
+        }
+    }
+
+    @Composable
+    open fun height(listItemType: ListItemType): Dp {
+        return when (listItemType) {
+            OneLine -> 48.dp
+            MultiLineTwo -> 68.dp
+            MultiLineThree -> 88.dp
+            AvatarCarousel -> 88.dp
+            SectionHeader -> 48.dp
+            SectionDescription -> 48.dp
         }
     }
 }
