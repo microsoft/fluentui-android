@@ -23,4 +23,10 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew clean assembleDevelopmentDebug test
+      run: ./gradlew clean assembleDevelopmentDebug
+    - name: UnitTests
+      run: ./gradlew testDevelopmentDebugUnitTest
+    - name: Generate testApk
+      run: ./gradlew assembleDevelopmentDebugAndroidTest
+    - name: UI Test
+      run: requestHydraLabTest -PappApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PtimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType)
