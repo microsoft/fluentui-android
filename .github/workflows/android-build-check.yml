@@ -26,7 +26,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew clean assembleDevelopmentDebug
     - name: UnitTests
-      run: ./gradlew testDevelopmentDebugUnitTest
+      run: ./gradlew testDebugUnitTest
     - name: Generate testApk
       run: ./gradlew assembleDevelopmentDebugAndroidTest
     - name: UI Test
