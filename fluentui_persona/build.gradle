@@ -30,6 +30,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests{
+            includeAndroidResources = true
+        }
+        unitTests.all {
+            testLogging {
+                events "passed", "failed", "standardError"
+                showCauses true
+                showExceptions true
+                showStackTraces true
+            }
+        }
+    }
 
 }
 
