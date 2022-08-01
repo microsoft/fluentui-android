@@ -1,28 +1,33 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.microsoft.fluentui.drawer.compose.BehaviorType
-import com.microsoft.fluentui.drawer.compose.Drawer
-import com.microsoft.fluentui.drawer.compose.rememberDrawerState
+import androidx.compose.ui.viewinterop.AndroidView
+import com.microsoft.fluentui.persona.IPersona
+import com.microsoft.fluentui.persona.PersonaListView
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.tokenized.drawer.Drawer
+import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
+import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.util.createPersonaList
 import kotlinx.coroutines.launch
 
 
@@ -45,24 +50,36 @@ class V2DrawerActivity : DemoActivity() {
     }
 }
 
+enum class ContentType {
+    FULL_PAGE_SCROLLABLE_CONTENT,
+    EXPANDABLE_SIZE_CONTENT,
+    WRAPPED_SIZE_CONTENT
+}
+
 @Composable
 private fun CreateActivityUI() {
-    Column(modifier = Modifier.fillMaxWidth()) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
         Text(
                 text = "Text on primary surface",
-                fontSize = 40.sp,
+                fontSize = 35.sp,
                 color = Color.Green
         )
-        LazyColumn {
-            item { DrawerInDrawer() }
-            item { BottomDrawer() }
-            item { LeftDrawer() }
-            item { RightDrawer() }
-            item { TopDrawer() }
+        LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Bottom Drawer", BehaviorType.BOTTOM, getDrawerContent()) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Left Drawer", BehaviorType.LEFT, getDrawerContent(true)) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Right Drawer", BehaviorType.RIGHT, getDrawerContent(true)) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Top Drawer", BehaviorType.TOP, getDrawerContent()) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Fixed Drawer", BehaviorType.BOTTOM, getDrawerContent(), expandable = false) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show No Fade Drawer", BehaviorType.BOTTOM, getDrawerContent(), expandable = false, enableScrim = false) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Content Wrapped Expanded Bottom Drawer", BehaviorType.BOTTOM, getDrawerContent(contentType = ContentType.EXPANDABLE_SIZE_CONTENT)) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Content Wrapped Bottom Drawer", BehaviorType.BOTTOM, getDrawerContent(contentType = ContentType.WRAPPED_SIZE_CONTENT)) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Content Wrapped Top Drawer", BehaviorType.TOP, getDrawerContent(contentType = ContentType.WRAPPED_SIZE_CONTENT)) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Bottom Outer Drawer", BehaviorType.BOTTOM, getDrawerInDrawerContent()) }
+            item { CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt("Show Left Outer Drawer", BehaviorType.LEFT, getDrawerInDrawerContent()) }
             item {
                 Text(
                         text = "Text on primary surface",
-                        fontSize = 40.sp,
+                        fontSize = 35.sp,
                         color = Color.Green
                 )
             }
@@ -71,7 +88,7 @@ private fun CreateActivityUI() {
 }
 
 @Composable
-fun TopDrawer() {
+private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(primaryScreenButtonText: String, behaviorType: BehaviorType, drawerContent: @Composable ((() -> Unit) -> Unit), expandable: Boolean = true, enableScrim: Boolean = true) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState()
     val open: () -> Unit = {
@@ -80,238 +97,108 @@ fun TopDrawer() {
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
     }
-    ScreenUI(
+    PrimarySurfaceContent(
             open,
-            text = "Click to open Top drawer",
-            height = 20.dp
+            text = primaryScreenButtonText
     )
     Drawer(
             drawerState = drawerState,
-            drawerContent = getDrawerContent(
-                    close = close
-            ),
-            behaviorType = BehaviorType.TOP,
-            expandable = true
+            drawerContent = { drawerContent(close) },
+            behaviorType = behaviorType,
+            expandable = expandable,
+            enableScrim = enableScrim
     )
 }
 
 @Composable
-fun BottomDrawer() {
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()
-    val open: () -> Unit = {
-        scope.launch { drawerState.open() }
-    }
-
-    val close: () -> Unit = {
-        scope.launch { drawerState.close() }
-    }
-
-    ScreenUI(
-            onClick = open,
-            text = "Click to open Bottom drawer",
-            height = 20.dp
-    )
-
-    Drawer(
-            drawerState = drawerState,
-            drawerContent = getDrawerContent(
-                    close = close
-            ),
-            behaviorType = BehaviorType.BOTTOM,
-            expandable = true
-    )
-}
-
-@Composable
-fun LeftDrawer() {
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()
-    val open: () -> Unit = {
-        scope.launch { drawerState.open() }
-    }
-
-    val close: () -> Unit = {
-        scope.launch { drawerState.close() }
-    }
-
-    ScreenUI(
-            onClick = open,
-            text = "Click to open Left Drawer",
-            height = 20.dp
-    )
-    Drawer(
-            drawerState = drawerState,
-            drawerContent = getDrawerContent(
-                    close = close
-            ),
-            behaviorType = BehaviorType.LEFT,
-    )
-}
-
-@Composable
-fun RightDrawer() {
-    val scope = rememberCoroutineScope()
-    val drawerState = rememberDrawerState()
-    val open: () -> Unit = {
-        scope.launch { drawerState.open() }
-    }
-
-    val close: () -> Unit = {
-        scope.launch { drawerState.close() }
-    }
-
-    ScreenUI(
-            onClick = open,
-            text = "Click to open Right Drawer",
-            height = 20.dp
-    )
-    Drawer(
-            drawerState = drawerState,
-            drawerContent = getDrawerContent(
-                    close = close
-            ),
-            behaviorType = BehaviorType.RIGHT,
-    )
-}
-
-@Composable
-private fun DrawerInDrawer() {
-    val scopeB = rememberCoroutineScope()
-    val drawerStateB = rememberDrawerState()
-    ScreenUI(
-            onClick = {
-                scopeB.launch {
-                    drawerStateB.open()
-                }
-            },
-            text = "Click to open drawer",
-            height = 20.dp
-    )
-    Drawer(
-            drawerState = drawerStateB,
-            drawerContent = getDrawerInDrawerContent(
-                    close = {
-                        scopeB.launch {
-                            drawerStateB.close()
-                        }
-                    }
-            ),
-            expandable = false
-    )
-}
-
-@Composable
-fun ScreenUI(
+private fun PrimarySurfaceContent(
         onClick: () -> Unit,
         text: String,
-        height: Dp,
+        height: Dp = 20.dp,
 ) {
     Column(
-            modifier = Modifier
-                    .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(Modifier.height(height))
-        Button(
+        com.microsoft.fluentui.controls.Button(
+                style = ButtonStyle.Button,
+                size = ButtonSize.Medium,
+                text = text,
                 onClick = onClick
-        ) {
-            Text(text = text)
-        }
+        )
     }
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun getDrawerContent(
-        close: () -> Unit
-): @Composable (() -> Unit) {
-    return {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(
-                    modifier = Modifier
-                            .padding(top = 16.dp)
-                            .shadow(
-                                    50.dp,
-                                    shape = RoundedCornerShape(10),
-                                    ambientColor = Color.Red,
-                                    spotColor = Color.Green
-                            ),
-
-                    onClick = { close() },
-                    content = { Text("Close Drawer") }
-            )
-
-            ListItem(
-                    text = { Text("Single Item") },
-                    icon = {
-                        Icon(
-                                Icons.Default.Favorite,
-                                contentDescription = "Localized description",
-                                tint = Color.Green
-                        )
-                    }
-            )
-
-            LazyColumn(Modifier.fillMaxHeight()) {
-                items(25) {
-                    ListItem(
-                            text = { Text("Item $it") },
-                            icon = {
-                                Icon(
-                                        Icons.Default.Favorite,
-                                        contentDescription = "Localized description",
-                                        tint = Color.Green
-                                )
+fun getDrawerContent(sideDrawer: Boolean = false, contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT): @Composable ((close: () -> Unit) -> Unit) {
+    return { close ->
+        LazyColumn(modifier = if (sideDrawer) Modifier.width(250.dp) else Modifier.fillMaxWidth()
+        ) {
+            item {
+                lateinit var context: Context
+                AndroidView(
+                        modifier = Modifier.fillMaxWidth(),
+                        factory = {
+                            context = it
+                            val view = it.activity!!.layoutInflater.inflate(R.layout.demo_drawer_content, null)!!.rootView
+                            val personaList = createPersonaList(context)
+                            (view as PersonaListView).personas = when (contentType) {
+                                ContentType.FULL_PAGE_SCROLLABLE_CONTENT -> personaList
+                                ContentType.EXPANDABLE_SIZE_CONTENT -> personaList.take(7) as ArrayList<IPersona>
+                                ContentType.WRAPPED_SIZE_CONTENT -> personaList.take(2) as ArrayList<IPersona>
                             }
-                    )
-                }
+                            view
+                        }
+                ) {}
+            }
+
+            item {
+                com.microsoft.fluentui.controls.Button(
+                        style = ButtonStyle.Button,
+                        size = ButtonSize.Medium,
+                        text = "Close Drawer",
+                        onClick = close
+                )
             }
         }
     }
 }
 
 @Composable
-fun getDrawerInDrawerContent(
-        close: () -> Unit
-): @Composable (() -> Unit) {
-    return {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(
-                    modifier = Modifier
-                            .padding(top = 16.dp)
-                            .shadow(
-                                    50.dp,
-                                    shape = RoundedCornerShape(10),
-                                    ambientColor = Color.Red,
-                                    spotColor = Color.Green
-                            ),
-
-                    onClick = { close() },
-                    content = { Text("Close Drawer") }
+fun getDrawerInDrawerContent(sideDrawer: Boolean = false): @Composable ((() -> Unit) -> Unit) {
+    return { close ->
+        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = if (sideDrawer) Modifier.width(250.dp) else Modifier) {
+            com.microsoft.fluentui.controls.Button(
+                    style = ButtonStyle.Button,
+                    size = ButtonSize.Medium,
+                    text = "Close Drawer",
+                    onClick = close
             )
 
             val scopeB = rememberCoroutineScope()
             val drawerStateB = rememberDrawerState()
 
-            ScreenUI(
+            //Button on Outer Drawer Surface
+            PrimarySurfaceContent(
                     onClick = {
                         scopeB.launch {
                             drawerStateB.open()
                         }
                     },
-                    text = "Click to open bottom drawer",
-                    height = 20.dp
+                    text = "Show Inner Drawer"
             )
             Drawer(
                     drawerState = drawerStateB,
-                    drawerContent = getDrawerContent(
-                            close = {
-                                scopeB.launch {
-                                    drawerStateB.close()
-                                }
+                    drawerContent = {
+                        getDrawerContent(false)()
+                        {
+                            scopeB.launch {
+                                drawerStateB.close()
                             }
-                    ),
+                        }
+
+                    },
                     expandable = true
             )
         }
