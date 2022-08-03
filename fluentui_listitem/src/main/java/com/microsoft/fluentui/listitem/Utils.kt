@@ -22,11 +22,11 @@ fun getColorByState(
 
         val isFocused by interactionSource.collectIsFocusedAsState()
         if (isFocused)
-            return stateData.focused
+            return stateData.pressed
 
         val isHovered by interactionSource.collectIsHoveredAsState()
         if (isHovered)
-            return stateData.focused
+            return stateData.pressed
 
         return stateData.rest
     } else

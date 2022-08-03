@@ -138,21 +138,8 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun padding(accessoryType:ListAccessoryType): PaddingValues {
-        return when(accessoryType){
-            Button -> PaddingValues(
-                horizontal = FluentTheme.globalTokens.spacing[Medium],
-                vertical = FluentTheme.globalTokens.spacing[XSmall]
-            )
-            else -> {
-                PaddingValues(
-                    horizontal = FluentTheme.globalTokens.spacing[Medium],
-                    vertical = FluentTheme.globalTokens.spacing[Small]
-                )
-            }
-        }
-
-
+    open fun padding(): Dp {
+        return FluentTheme.globalTokens.spacing[Medium]
     }
 
     @Composable

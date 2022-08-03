@@ -1,12 +1,17 @@
 package com.microsoft.fluentui.listitem
 
+import android.R
+import android.R.drawable
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -20,83 +25,114 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
-import com.microsoft.fluentui.theme.token.controlTokens.ListAccessoryType.Button
-import com.microsoft.fluentui.theme.token.controlTokens.ListAccessoryType.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.OneLine
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 
-object OneLine{
-    @Composable
-    fun ListItem(
-        modifier: Modifier = Modifier,
-        onClick: () -> Unit,
-        text:String,
-        listItemTokens: ListItemTokens? = null,
-        leftIconAccessoryView:(@Composable () -> Unit)? = null,
-        leftButtonAccessoryView:(@Composable () -> Unit)? = null,
-        rightAccessoryView:(@Composable () -> Unit)? = null,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
-
-        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token){
-
-            val clickAndSemanticsModifier = Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                onClickLabel = null,
-                role = Role.Tab,
-                onClick = onClick
-            )
-
-            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
-            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
-            val borderSize = getListItemTokens().borderSize()
-            val cellHeight = getListItemTokens().height(listItemType = OneLine)
-            val contentPadding = getListItemTokens().padding(Icon)
-            val buttonContentPadding = getListItemTokens().padding(Button)
-            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-
-            Row(
-                modifier
-                    .background(backgroundColor)
-                    .border(width = borderSize, color = borderColor)
-                    .fillMaxWidth()
-                    .height(cellHeight)
-                    .then(clickAndSemanticsModifier),
-                verticalAlignment = Alignment.CenterVertically
-            ){
-                if(leftIconAccessoryView != null){
-                    Box(Modifier.padding(contentPadding)){
-                        leftIconAccessoryView()
-                    }
-                }
-                if(leftButtonAccessoryView != null){
-                    Box(Modifier.padding(buttonContentPadding),
-                    ){
-                        leftButtonAccessoryView()
-                    }
-                }
-
-                Box(Modifier.padding(contentPadding)){
-                    Row(){
-                        Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight)
-                    }
-                }
-                Spacer(Modifier.weight(1f))
-                if(rightAccessoryView != null){
-                    Box(Modifier.padding(contentPadding)){
-                        rightAccessoryView()
-                    }
-                }
-
-            }
-        }
-
-    }
-}
+//object OneLine{
+//    @Composable
+//    fun ListItem(
+//        modifier: Modifier = Modifier,
+//        onClick: () -> Unit,
+//        text:String,
+//        listItemTokens: ListItemTokens? = null,
+//        leftAccessoryView: (@Composable () -> Unit)? = null,
+//        leftIconAccessoryView:(@Composable () -> Unit)? = null,
+//        leftButtonAccessoryView:(@Composable () -> Unit)? = null,
+//        rightAccessoryView:(@Composable () -> Unit)? = null,
+//        rightIconAccessoryView:(@Composable () -> Unit)? = null,
+//        rightButtonAccessoryView:(@Composable () -> Unit)? = null,
+//        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+//
+//        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+//        CompositionLocalProvider(LocalListItemTokens provides token){
+//
+//            val clickAndSemanticsModifier = Modifier.clickable(
+//                interactionSource = interactionSource,
+//                indication = LocalIndication.current,
+//                onClickLabel = null,
+//                role = Role.Tab,
+//                onClick = onClick
+//            )
+//
+//            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
+//            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
+//            val borderSize = getListItemTokens().borderSize()
+//            val cellHeight = getListItemTokens().height(listItemType = OneLine)
+//            val contentSpacing = getListItemTokens().spacing(Icon)
+//            val buttonContentSpacing = getListItemTokens().spacing(Button)
+//            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
+//            val horizontalPadding = getListItemTokens().padding()
+//            val textColor = getListItemTokens().textColor(textType = ListTextType.Text).rest
+//            Row(
+//                modifier
+//                    .background(backgroundColor)
+//                    .border(width = borderSize, color = borderColor)
+//                    .fillMaxWidth()
+//                    .height(cellHeight)
+//                    .padding(horizontal = horizontalPadding)
+//                    .then(clickAndSemanticsModifier),
+//                verticalAlignment = Alignment.CenterVertically
+//            ){
+//                if(leftAccessoryView != null){
+//                    Box(){
+//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
+//                            leftAccessoryView()
+//                        }
+//                    }
+//                }
+//                if(leftIconAccessoryView != null){
+//                    Box(){
+//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
+//                            leftIconAccessoryView()
+//                        }
+//                    }
+//                }
+//                if(leftButtonAccessoryView != null){
+//                    Box(){
+//                        Row(Modifier.absolutePadding(right = horizontalPadding), horizontalArrangement = Arrangement.spacedBy(buttonContentSpacing), verticalAlignment = Alignment.CenterVertically) {
+//                            leftButtonAccessoryView()
+//                        }
+//
+//                    }
+//                }
+//
+//                Box(){
+//                    Row(Modifier.absolutePadding(right = horizontalPadding)){
+//                        Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor)
+//                    }
+//                }
+//                Spacer(Modifier.weight(1f))
+//                if(rightAccessoryView != null){
+//                    Box(){
+//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
+//                            rightAccessoryView()
+//                        }
+//                    }
+//                }
+//                if(rightIconAccessoryView != null){
+//                    Box(){
+//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
+//                            rightIconAccessoryView()
+//                        }
+//                    }
+//                }
+//                if(rightButtonAccessoryView != null){
+//                    Box(){
+//                        Row(Modifier.absolutePadding(right = horizontalPadding), horizontalArrangement = Arrangement.spacedBy(buttonContentSpacing), verticalAlignment = Alignment.CenterVertically) {
+//                            rightButtonAccessoryView()
+//                        }
+//
+//                    }
+//                }
+//
+//            }
+//        }
+//
+//    }
+//}
 
 public object MultiLine{
     @Composable
@@ -140,9 +176,9 @@ object SectionHeader{
             val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
             val borderSize = getListItemTokens().borderSize()
             val cellHeight = getListItemTokens().height(listItemType = OneLine)
-            val contentPadding = getListItemTokens().padding(Icon)
+            val horizontalPadding = getListItemTokens().padding()
             val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-
+            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
             Box() {
                 Column() {
                     Row(
@@ -151,29 +187,27 @@ object SectionHeader{
                             .border(width = borderSize, color = borderColor)
                             .fillMaxWidth()
                             .height(cellHeight)
-                            .then(clickAndSemanticsModifier),
-                        verticalAlignment = Alignment.CenterVertically
-                    ){
+                            .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
                         if(accessoryIcon != null){
-                            Box(Modifier.padding(contentPadding)){
+                            Box(Modifier.padding(start = horizontalPadding)){
                                 accessoryIcon()
                             }
                         }
-                        Box(Modifier.padding(contentPadding)){
-                            Row(){
-                                Text(text = title, fontSize = textSize.fontSize.size, fontWeight = textSize.weight)
-                            }
+                        Box(Modifier.padding(start = horizontalPadding)){
+                            Text(text = title, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
                         }
-                        Spacer(Modifier.weight(1f))
+                        Spacer(modifier = Modifier.weight(1f))
                         if(action != null){
-                            Box(Modifier.padding(contentPadding)){
+                            Box(Modifier.padding(end = horizontalPadding)){
                                 action()
                             }
-                        }
 
+                        }
                     }
-                    if(show){
-                        Row(){
+                    AnimatedVisibility(visible = show){
+                        Box(
+                            Modifier
+                                .fillMaxSize()){
                             list()
                         }
                     }
@@ -211,3 +245,58 @@ object AvatarCarousel{
 fun getListItemTokens(): ListItemTokens {
     return LocalListItemTokens.current
 }
+
+object OneLine{
+    @Composable
+    fun ListItem(leftAccessoryView: (@Composable () -> Unit)? = null,
+        text:String,
+        rightAccessoryView: (@Composable () -> Unit)? = null,
+        modifier:Modifier = Modifier,
+        listItemTokens: ListItemTokens? = null,
+        onClick: () -> Unit,
+        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+
+        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+        CompositionLocalProvider(LocalListItemTokens provides token){
+            val clickAndSemanticsModifier = Modifier.clickable(
+                interactionSource = interactionSource,
+                indication = LocalIndication.current,
+                onClickLabel = null,
+                role = Role.Tab,
+                onClick = onClick
+            )
+
+            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
+            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
+            val borderSize = getListItemTokens().borderSize()
+            val cellHeight = getListItemTokens().height(listItemType = OneLine)
+            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
+            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
+            val horizontalPadding = getListItemTokens().padding()
+            Row(
+                modifier
+                    .background(backgroundColor)
+                    .border(width = borderSize, color = borderColor)
+                    .fillMaxWidth()
+                    .height(cellHeight)
+                    .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
+                if(leftAccessoryView != null){
+                    Box(Modifier.padding(start = horizontalPadding)){
+                        leftAccessoryView()
+                    }
+                }
+                Box(Modifier.padding(start = horizontalPadding)){
+                    Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                if(rightAccessoryView != null){
+                    Box(Modifier.padding(end = horizontalPadding)){
+                        rightAccessoryView()
+                    }
+
+                }
+            }
+        }
+    }
+}
+

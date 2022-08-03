@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -27,10 +26,12 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.controls.Button
 import com.microsoft.fluentui.controls.CheckBox
 import com.microsoft.fluentui.controls.ToggleSwitch
+import com.microsoft.fluentui.controls.RadioButton
 import com.microsoft.fluentui.listitem.OneLine
 import com.microsoft.fluentui.listitem.SectionHeader
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.GlobalTokens.NeutralColorTokens.Grey96
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -79,65 +80,78 @@ private fun CreateActivityUI() {
                         .fillMaxWidth()
                         .padding(15.dp)
                         .clip(RoundedCornerShape(10.dp))) {
-                        singleIconList()
+                        multiIconList()
                         threeButtonList()
                         randomList()
                         singleLineList()
+                        multiLineList()
                     }
                 }
             }
 
         }
     }
-
-
-
-
 }
+
+//@Composable
+//private fun CreateActivityUI() {
+//    Box(
+//        Modifier
+//            .fillMaxSize()
+//            .background(FluentTheme.globalTokens.neutralColor[Grey96])){
+//        Column(modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(15.dp)
+//            .clip(RoundedCornerShape(10.dp))) {
+//            multiIconList()
+//            threeButtonList()
+//            randomList()
+//            singleLineList()
+//            multiLineList()
+//        }
+//    }
+//}
 
 @Composable
 fun sectionHeaderCreation(){
-    SectionHeader.ListItem(title = "PinnedList", accessoryIcon = arrowRightView(), list = sampleList())
+    SectionHeader.ListItem(title = "PinnedList", accessoryIcon = arrowRightView(), action = singleButton(), list = sampleList())
 }
 @Composable
 fun sampleList(): @Composable (() -> Unit){
     return {
-        Box(
-            Modifier
-                .fillMaxSize()){
             Column() {
-                singleIconList()
+                multiIconList()
                 threeButtonList()
             }
-        }
+
     }
 }
 @Composable
-fun singleIconList() {
-        OneLine.ListItem(text ="Text", leftIconAccessoryView = singleIconLeftView(), rightAccessoryView = checkboxRightView(), onClick ={
+fun multiIconList() {
+        OneLine.ListItem(text ="Text", leftAccessoryView = radioButtonRightView(), rightAccessoryView = checkboxRightView(), onClick ={
 
         })
 }
 @Composable
 fun threeButtonList() {
-    OneLine.ListItem(text = "", leftButtonAccessoryView = threeButtonLeftView(), rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    OneLine.ListItem(text = "Text", leftAccessoryView = threeButtonLeftView(), rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
 }
 @Composable
 fun singleLineList() {
-    OneLine.ListItem(text="Text", leftIconAccessoryView = leftView(), rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    OneLine.ListItem(text="Text", rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
 }
 @Composable
 fun multiLineList() {
-    OneLine.ListItem(text="Text", leftIconAccessoryView = leftView(), rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    OneLine.ListItem(text="Text", rightAccessoryView = leftViewRowless(), onClick ={})
 }
 @Composable
 fun overFlowButtonList() {
-    OneLine.ListItem(text = "Text", leftIconAccessoryView = leftViewRowless(), rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    OneLine.ListItem(text = "Text", rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
 }
 
 @Composable
 fun randomList(){
-    OneLine.ListItem(text ="", leftButtonAccessoryView = threeButtonLeftView(), rightAccessoryView = radioButtonRightView(), onClick ={})
+    OneLine.ListItem(text ="Text", leftAccessoryView = leftView(), rightAccessoryView = arrowRightView(), onClick ={})
 }
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -147,10 +161,15 @@ fun googleList(){
 }
 
 @Composable
-fun singleIconLeftView(): @Composable (() -> Unit) {
+fun multiIconLeftView(): @Composable (() -> Unit) {
 
     return {
-        Icon(Icons.Outlined.Email, contentDescription = "Email")
+        Row() {
+            Icon(Icons.Outlined.Email, contentDescription = "Email")
+            Icon(Icons.Outlined.Email, contentDescription = "Email")
+            Icon(Icons.Outlined.)
+        }
+
     }
 }
 @Composable
@@ -178,7 +197,6 @@ fun leftView(): @Composable (() -> Unit) {
             Icon(Icons.Outlined.AccountBox, contentDescription = "box")
             Icon(Icons.Outlined.Send, contentDescription = "send")
         }
-
     }
 }
 @Composable
@@ -200,52 +218,59 @@ fun rightViewOverFlowMenu(): @Composable (() -> Unit){
     }
 }
 @Composable
+fun singleButton(): @Composable () -> Unit{
+    return {
+        Button(
+            size = ButtonSize.Small,
+            style = ButtonStyle.OutlinedButton,
+            text = "Text",
+            onClick = { }
+        )
+    }
+}
+@Composable
 fun threeButtonLeftView(): @Composable (() -> Unit)? {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     return {
-        LazyRow(Modifier.widthIn(min = 30.dp, max = 200.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            item{
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    text = "Text",
-                    onClick = {
-                        coroutineScope.launch {
-                            scaffoldState.snackbarHostState.showSnackbar(
-                                message = "This is your message"
-                            )
-                        }
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            Button(
+                size = ButtonSize.Small,
+                style = ButtonStyle.OutlinedButton,
+                text = "Text",
+                onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(
+                            message = "This is your message"
+                        )
                     }
-                )
-            }
-            item{
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    text = "Text",
-                    onClick = {
-                        coroutineScope.launch {
-                            scaffoldState.snackbarHostState.showSnackbar(
-                                message = "This is your message"
-                            )
-                        }
+                }
+            )
+            Button(
+                size = ButtonSize.Small,
+                style = ButtonStyle.OutlinedButton,
+                text = "Text",
+                onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(
+                            message = "This is your message"
+                        )
                     }
-                )
-            }
-            item{
-                Button(
-                    style = ButtonStyle.OutlinedButton,
-                    text = "Text",
-                    onClick = {
-                        coroutineScope.launch {
-                            scaffoldState.snackbarHostState.showSnackbar(
-                                message = "This is your message"
-                            )
-                        }
+                }
+            )
+            Button(
+                size = ButtonSize.Small,
+                style = ButtonStyle.OutlinedButton,
+                text = "Text",
+                onClick = {
+                    coroutineScope.launch {
+                        scaffoldState.snackbarHostState.showSnackbar(
+                            message = "This is your message"
+                        )
                     }
-                )
-            }
+                }
+            )
         }
-
 
     }
 }
@@ -270,7 +295,10 @@ fun arrowRightView(): @Composable (() -> Unit){
 @Composable
 fun radioButtonRightView(): @Composable (() -> Unit){
     return{
-        RadioButton(selected = true, onClick = { })
+        Row() {
+            RadioButton(onClick = { /*TODO*/ })
+        }
+
     }
 }
 
