@@ -26,8 +26,12 @@ import androidx.compose.ui.semantics.Role
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineThree
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineTwo
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.OneLine
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType
+import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 
@@ -140,9 +144,71 @@ public object MultiLine{
         text:String,
         subText:String? = null,
         secondarySubText:String? = null,
+        onClick: () -> Unit,
         listItemTokens: ListItemTokens? = null,
         leftAccessoryView:(@Composable () -> Unit)? = null,
-        rightAccessoryView:(@Composable () -> Unit)? = null){
+        rightAccessoryView:(@Composable () -> Unit)? = null,
+        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+
+        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+        CompositionLocalProvider(LocalListItemTokens provides token){
+            val clickAndSemanticsModifier = Modifier.clickable(
+                interactionSource = interactionSource,
+                indication = LocalIndication.current,
+                onClickLabel = null,
+                role = Role.Tab,
+                onClick = onClick
+            )
+            var listItemType : ListItemType
+            if(subText == null && secondarySubText == null){
+                listItemType = OneLine
+            }else if(secondarySubText == null && subText != null) {
+                listItemType = MultiLineTwo
+            }else if (secondarySubText != null && subText == null){
+                listItemType = MultiLineTwo
+            }else{
+                listItemType = MultiLineThree
+            }
+            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
+            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
+            val borderSize = getListItemTokens().borderSize()
+            val cellHeight = getListItemTokens().height(listItemType = listItemType)
+            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
+            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
+            val horizontalPadding = getListItemTokens().padding()
+            Row(
+                modifier
+                    .background(backgroundColor)
+                    .border(width = borderSize, color = borderColor)
+                    .fillMaxWidth()
+                    .height(cellHeight)
+                    .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
+                if(leftAccessoryView != null){
+                    Box(Modifier.padding(start = horizontalPadding)){
+                        leftAccessoryView()
+                    }
+                }
+                Box(Modifier.padding(start = horizontalPadding)){
+                    Column() {
+                        Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
+                        if(subText != null){
+                            Text(text = subText, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
+                        }
+                        if(secondarySubText != null){
+                            Text(text = secondarySubText, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
+                        }
+                    }
+
+                }
+                Spacer(modifier = Modifier.weight(1f))
+                if(rightAccessoryView != null){
+                    Box(Modifier.padding(end = horizontalPadding)){
+                        rightAccessoryView()
+                    }
+
+                }
+            }
+        }
 
     }
 }
@@ -151,10 +217,13 @@ object SectionHeader{
     @Composable
     fun ListItem(modifier: Modifier = Modifier,
         title:String,
+        actionTitle:String? = null,
+        actionOnClick: (() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null,
-        list:(@Composable () -> Unit),
+        list:(@Composable () -> Unit)? = null,
+        style:SectionHeaderStyle = SectionHeaderStyle.Standard,
         accessoryIcon:(@Composable () -> Unit)? = null,
-        action:(@Composable () -> Unit)? = null,
+        rightAccessory:(@Composable () -> Unit)? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
 
         val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
@@ -183,8 +252,6 @@ object SectionHeader{
                 Column() {
                     Row(
                         modifier
-                            .background(backgroundColor)
-                            .border(width = borderSize, color = borderColor)
                             .fillMaxWidth()
                             .height(cellHeight)
                             .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
@@ -197,18 +264,31 @@ object SectionHeader{
                             Text(text = title, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
                         }
                         Spacer(modifier = Modifier.weight(1f))
-                        if(action != null){
+                        if(actionTitle != null){
                             Box(Modifier.padding(end = horizontalPadding)){
-                                action()
+                                Text(text = actionTitle, modifier.clickable(
+                                    interactionSource = interactionSource,
+                                    indication = LocalIndication.current,
+                                    onClickLabel = null,
+                                    role = Role.Button,
+                                    onClick = actionOnClick ?:{}
+                                ))
+                            }
+                        }
+                        if(rightAccessory != null){
+                            Box(Modifier.padding(end = horizontalPadding)){
+                                rightAccessory()
                             }
 
                         }
                     }
-                    AnimatedVisibility(visible = show){
-                        Box(
-                            Modifier
-                                .fillMaxSize()){
-                            list()
+                    if(list != null){
+                        AnimatedVisibility(visible = show){
+                            Box(
+                                Modifier
+                                    .fillMaxSize()){
+                                list()
+                            }
                         }
                     }
 

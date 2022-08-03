@@ -27,6 +27,7 @@ import com.microsoft.fluentui.controls.Button
 import com.microsoft.fluentui.controls.CheckBox
 import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentui.controls.RadioButton
+import com.microsoft.fluentui.listitem.MultiLine
 import com.microsoft.fluentui.listitem.OneLine
 import com.microsoft.fluentui.listitem.SectionHeader
 import com.microsoft.fluentui.theme.FluentTheme
@@ -65,11 +66,12 @@ private fun CreateActivityUI() {
             .background(FluentTheme.globalTokens.neutralColor[Grey96])){
         LazyColumn( ){
             item {
-                Box{
+                Box(){
                     Column(modifier = Modifier
                         .fillMaxWidth()
                         .padding(15.dp)
                         .clip(RoundedCornerShape(10.dp))) {
+                        Text(text = "Section Header")
                         sectionHeaderCreation()
                     }
                 }
@@ -80,12 +82,23 @@ private fun CreateActivityUI() {
                         .fillMaxWidth()
                         .padding(15.dp)
                         .clip(RoundedCornerShape(10.dp))) {
+                        Text(text = "One Line List")
                         multiIconList()
                         threeButtonList()
                         randomList()
                         singleLineList()
                         multiLineList()
                     }
+                }
+            }
+            item {
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(15.dp)
+                    .clip(RoundedCornerShape(10.dp))) {
+                    Text(text = "Multi Line List")
+                    threeLineTextList()
+                    twoLineTextList()
                 }
             }
 
@@ -114,14 +127,15 @@ private fun CreateActivityUI() {
 
 @Composable
 fun sectionHeaderCreation(){
-    SectionHeader.ListItem(title = "PinnedList", accessoryIcon = arrowRightView(), action = singleButton(), list = sampleList())
+    SectionHeader.ListItem(title = "PinnedList", accessoryIcon = arrowRightView(), rightAccessory = rightViewOverFlowMenu(), actionTitle = "Action", list = sampleList())
 }
 @Composable
 fun sampleList(): @Composable (() -> Unit){
     return {
-            Column() {
+            Column(Modifier.clip(RoundedCornerShape(20.dp))) {
                 multiIconList()
                 threeButtonList()
+                threeLineTextList()
             }
 
     }
@@ -159,7 +173,14 @@ fun randomList(){
 fun googleList(){
     androidx.compose.material.ListItem(icon = leftViewRowless(), trailing = rightViewOverFlowMenu(), text = {})
 }
-
+@Composable
+fun threeLineTextList() {
+    MultiLine.ListItem(text="Text", subText = "subtext", secondarySubText = "secondarySubText", rightAccessoryView = leftViewRowless(), onClick ={})
+}
+@Composable
+fun twoLineTextList() {
+    MultiLine.ListItem(text="Text", subText = "subtext", rightAccessoryView = leftViewRowless(), onClick ={})
+}
 @Composable
 fun multiIconLeftView(): @Composable (() -> Unit) {
 
@@ -167,7 +188,6 @@ fun multiIconLeftView(): @Composable (() -> Unit) {
         Row() {
             Icon(Icons.Outlined.Email, contentDescription = "Email")
             Icon(Icons.Outlined.Email, contentDescription = "Email")
-            Icon(Icons.Outlined.)
         }
 
     }

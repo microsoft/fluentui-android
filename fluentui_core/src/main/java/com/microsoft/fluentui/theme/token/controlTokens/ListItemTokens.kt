@@ -70,6 +70,10 @@ enum class ListAccessoryType {
     Icon,
     Avatar
 }
+enum class SectionHeaderStyle {
+    Standard,
+    Subtle
+}
 
 @Parcelize
 open class ListItemTokens : ControlToken, Parcelable {
