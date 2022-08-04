@@ -18,7 +18,7 @@ enum class BehaviorType {
 }
 
 @Parcelize
-class DrawerTokens : ControlToken, Parcelable {
+open class DrawerTokens : ControlToken, Parcelable {
     companion object {
         const val Type: String = "Drawer"
     }
@@ -37,7 +37,7 @@ class DrawerTokens : ControlToken, Parcelable {
     @Composable
     open fun borderRadius(type: BehaviorType): Dp {
         return when (type) {
-            BehaviorType.TOP, BehaviorType.BOTTOM -> FluentTheme.globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Medium]
+            BehaviorType.TOP, BehaviorType.BOTTOM -> FluentTheme.globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.XLarge]
             BehaviorType.LEFT, BehaviorType.RIGHT -> FluentTheme.globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.None]
         }
     }
