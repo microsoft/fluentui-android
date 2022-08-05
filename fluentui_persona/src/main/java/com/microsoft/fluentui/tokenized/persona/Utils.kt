@@ -1,14 +1,14 @@
-package com.microsoft.fluentui.tokenised.persona
+package com.microsoft.fluentui.tokenized.persona
 
 import androidx.annotation.DrawableRes
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.text.toUpperCase
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 
 
 class Person(
         val firstName: String = "Anonymous",
-        val lastName: String?,
+        val lastName: String = "",
         val email: String? = null,
         @DrawableRes val image: Int? = null,
         val imageBitmap: ImageBitmap? = null,
@@ -19,7 +19,7 @@ class Person(
     fun getInitials(): String {
         var initial: String = ""
         if (firstName.length >= 2) {
-            if (lastName == null || lastName.isBlank())
+            if (lastName.isBlank())
                 initial += firstName.subSequence(0, 2)
             else {
                 initial += firstName[0]
@@ -28,7 +28,7 @@ class Person(
         } else if (firstName.isNotBlank()) {
             initial += firstName
         } else {
-            if (lastName != null && lastName.isNotBlank())
+            if (lastName.isNotBlank())
                 initial += lastName[0]
         }
 
@@ -37,25 +37,26 @@ class Person(
 
         return initial
     }
-
-    fun isPersonActive() = this.isActive
 }
 
 class Group(
         val members: List<Person> = listOf(),
-        val groupName: String?,
+        val groupName: String = "",
         val email: String? = null,
         @DrawableRes val image: Int? = null,
         val imageBitmap: ImageBitmap? = null,
-        val backgroundColor: Color = Color.Red
 ) {
     fun getInitials(): String {
         var initials: String = ""
-        if (groupName != null && groupName.isNotBlank()) {
+        if (groupName.isNotBlank()) {
             for (word in groupName.split(" ")) {
-                initials += word[0]
+                if (word.isNotBlank())
+                    initials += word[0]
+
+                if (initials.length == 2)
+                    break
             }
         }
-        return initials
+        return if (initials.isNotBlank()) initials.uppercase() else "AG"
     }
 }

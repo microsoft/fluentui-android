@@ -1,5 +1,7 @@
-package com.microsoft.fluentui.tokenised.persona
+package com.microsoft.fluentui.tokenized.persona
 
+import android.widget.Button
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -7,6 +9,8 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -17,16 +21,17 @@ import java.lang.Integer.min
 val LocalAvatarGroupTokens = compositionLocalOf { AvatarGroupTokens() }
 val LocalAvatarGroupInfo = compositionLocalOf { AvatarGroupInfo() }
 
+const val DEFAULT_MAX_AVATAR = 5
+
 @Composable
 fun AvatarGroup(
         group: Group,
-        size: AvatarSize = AvatarSize.Medium,
-        imageNAStyle: AvatarImageNA = AvatarImageNA.Standard,
-        style: AvatarGroupStyle = AvatarGroupStyle.Stack,
         modifier: Modifier = Modifier,
-        avatarGroupToken: AvatarGroupTokens? = null,
-        maxAvatar: Int = 5,
-        enablePresence: Boolean = true
+        size: AvatarSize = AvatarSize.Medium,
+        style: AvatarGroupStyle = AvatarGroupStyle.Stack,
+        maxAvatar: Int = DEFAULT_MAX_AVATAR,
+        avatarToken: AvatarTokens? = null,
+        avatarGroupToken: AvatarGroupTokens? = null
 ) {
 
     val token = avatarGroupToken
@@ -44,12 +49,12 @@ fun AvatarGroup(
             LocalAvatarGroupTokens provides token,
             LocalAvatarGroupInfo provides AvatarGroupInfo(size, style)
     ) {
-        var spacing: MutableList<Int> = mutableListOf()
+        val spacing: MutableList<Int> = mutableListOf()
         for (i in 0 until min(maxAvatars, group.members.size)) {
             val person = group.members[i]
             if (i != 0) {
                 spacing.add(with(LocalDensity.current) {
-                    getAvatarGroupTokens().spacing(getAvatarGroupInfo(), person.isPersonActive()).roundToPx()
+                    getAvatarGroupTokens().spacing(getAvatarGroupInfo(), person.isActive).roundToPx()
                 })
             }
         }
@@ -59,14 +64,17 @@ fun AvatarGroup(
             })
         }
 
-        Layout(modifier = Modifier.padding(8.dp), content = {
+        val semanticModifier: Modifier = Modifier.semantics(true) {
+            contentDescription = "Group Name: ${group.groupName}. Total ${group.members.size} members. "
+        }
+
+        Layout(modifier = modifier.padding(8.dp).then(semanticModifier), content = {
             for (i in 0 until min(maxAvatars, group.members.size)) {
                 val person = group.members[i]
-                Avatar(person, size, imageNAStyle, enableActivityRings = true,
-                        enablePresence = if (style == AvatarGroupStyle.Stack) false else enablePresence)
+                Avatar(person, size = size, enableActivityRings = true, enablePresence = false, avatarToken = avatarToken)
             }
             if (group.members.size > maxAvatars) {
-                Avatar(group.members.size - maxAvatars, size, enableActivityRings = true)
+                Avatar(group.members.size - maxAvatars, size = size, enableActivityRings = true, avatarToken = avatarToken)
             }
         }) { measurables, constraints ->
             val placeables = measurables.map { measurable ->

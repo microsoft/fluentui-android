@@ -125,8 +125,11 @@ import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Light
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Light
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
+import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 enum class AvatarSize {
@@ -167,29 +170,43 @@ enum class ActivityRingSize {
 
 data class AvatarInfo(
         val size: AvatarSize = AvatarSize.Medium,
-        val style: AvatarImageNA = AvatarImageNA.Initials,
         val active: Boolean = false,
         val status: AvatarStatus = AvatarStatus.Available,
         val isOOO: Boolean = false
 ) : ControlInfo
 
 @Parcelize
-open class AvatarTokens : ControlToken, Parcelable {
+open class AvatarTokens(private val activityRingToken: ActivityRingsToken = ActivityRingsToken()) : ControlToken, Parcelable {
 
     companion object {
         const val Type: String = "Avatar"
-        val activityRingToken: ActivityRingsToken = ActivityRingsToken()
+    }
+
+    var avatarStyle: AvatarImageNA = AvatarImageNA.Standard
+
+    @Composable
+    open fun overflowAvatarBackground(avatarInfo: AvatarInfo): Color {
+        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                themeMode = themeMode
+        )
+    }
+
+    @Composable
+    open fun overflowAvatarForeground(avatarInfo: AvatarInfo): Color {
+        return aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                themeMode = themeMode
+        )
     }
 
     @Composable
     open fun fontSize(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
-            AvatarSize.XSmall -> 10.dp
+            AvatarSize.XSmall -> 9.dp
             AvatarSize.Small -> 12.dp
             AvatarSize.Medium -> 14.dp
-            AvatarSize.Large -> 18.dp
-            AvatarSize.XLarge -> 24.dp
-            AvatarSize.XXLarge -> 36.dp
+            AvatarSize.Large -> 15.dp
+            AvatarSize.XLarge -> 20.dp
+            AvatarSize.XXLarge -> 28.dp
         }
     }
 
@@ -207,7 +224,7 @@ open class AvatarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun icon(avatarInfo: AvatarInfo): ImageVector {
-        return when (avatarInfo.style) {
+        return when (avatarStyle) {
             AvatarImageNA.Standard, AvatarImageNA.StandardInverted ->
                 when (avatarInfo.size) {
                     AvatarSize.XSmall -> AvatarIcons.Icon.Standard.Xsmall
@@ -233,22 +250,22 @@ open class AvatarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun iconColor(avatarInfo: AvatarInfo): Color {
-        return when (avatarInfo.style) {
+        return when (avatarStyle) {
             AvatarImageNA.Standard ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.StandardInverted ->
-                FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.Anonymous ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.AnonymousAccent ->
-                FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.Initials ->
                 Color.Red
@@ -257,25 +274,26 @@ open class AvatarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(avatarInfo: AvatarInfo): Color {
-        return when (avatarInfo.style) {
+        return when (avatarStyle) {
             AvatarImageNA.Standard ->
-                FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.StandardInverted ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.Anonymous ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                        themeMode = themeMode
                 )
             AvatarImageNA.AnonymousAccent ->
-                FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground4].value(
-                        themeMode = FluentTheme.themeMode
+                aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground4].value(
+                        themeMode = themeMode
                 )
-            AvatarImageNA.Initials ->
-                Color(0xFFF6D1D4)
+            else -> aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
+            )
         }
     }
 
@@ -541,49 +559,49 @@ open class ActivityRingsToken : Parcelable {
         return when (activityRingSize) {
             ActivityRingSize.XSmall -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.Small -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.Medium -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.Large -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.XLarge -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.XXLarge -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
@@ -595,121 +613,121 @@ open class ActivityRingsToken : Parcelable {
         return when (activityRingSize) {
             ActivityRingSize.XSmall -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.Small -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.Medium -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.Large -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.XLarge -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )
             ActivityRingSize.XXLarge -> listOf(
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
-                            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
+                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                                    themeMode = themeMode
                             )
                     ),
                     BorderStroke(
-                            FluentTheme.globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                    themeMode = FluentTheme.themeMode
+                            globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
+                            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                                    themeMode = themeMode
                             )
                     )
             )

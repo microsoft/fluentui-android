@@ -79,12 +79,12 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
     @Composable
     open fun iconSize(avatarGroupInfo: AvatarGroupInfo): IconSize {
         return when (avatarGroupInfo.size) {
-            AvatarSize.XSmall -> FluentTheme.globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXSmallSelected]
-            AvatarSize.Small -> FluentTheme.globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmallSelected]
-            AvatarSize.Medium -> FluentTheme.globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
-            AvatarSize.Large -> FluentTheme.globalTokens.iconSize[GlobalTokens.IconSizeTokens.MediumSelected]
-            AvatarSize.XLarge -> FluentTheme.globalTokens.iconSize[GlobalTokens.IconSizeTokens.LargeSelected]
-            AvatarSize.XXLarge -> FluentTheme.globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXXLargeSelected]
+            AvatarSize.XSmall -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXSmallSelected]
+            AvatarSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmallSelected]
+            AvatarSize.Medium -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
+            AvatarSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.MediumSelected]
+            AvatarSize.XLarge -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.LargeSelected]
+            AvatarSize.XXLarge -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXXLargeSelected]
         }
     }
 }

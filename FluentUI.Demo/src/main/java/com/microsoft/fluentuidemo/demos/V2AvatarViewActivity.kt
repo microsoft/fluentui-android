@@ -12,12 +12,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.controls.Button
+import com.microsoft.fluentui.persona.AvatarStyle
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.controlTokens
+import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarImageNA
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.tokenised.persona.Avatar
-import com.microsoft.fluentui.tokenised.persona.Group
-import com.microsoft.fluentui.tokenised.persona.Person
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
+import com.microsoft.fluentui.tokenized.persona.Avatar
+import com.microsoft.fluentui.tokenized.persona.Group
+import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
@@ -34,110 +39,126 @@ class V2AvatarViewActivity : DemoActivity() {
         val context = this
 
         compose_here.setContent {
-            Column(Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterVertically)) {
-                var isActive by rememberSaveable { mutableStateOf(true) }
-                var isOOO by rememberSaveable { mutableStateOf(false) }
+            FluentTheme {
+                Column(Modifier.padding(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterVertically)) {
+                    var isActive by rememberSaveable { mutableStateOf(true) }
+                    var isOOO by rememberSaveable { mutableStateOf(false) }
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally)) {
-                    Button(onClick = { isActive = !isActive }, text = "Toggle Activity")
-                    Button(onClick = {isOOO = !isOOO}, text = "Toggle OOO")
-                }
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally)) {
+                        Button(onClick = { isActive = !isActive }, text = "Toggle Activity")
+                        Button(onClick = { isOOO = !isOOO }, text = "Toggle OOO")
+                    }
 
-                Divider()
+                    Divider()
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically) {
-                    val person: Person = Person("Allan", "Munger",
-                            image = R.drawable.avatar_allan_munger, isActive = isActive,
-                            status = AvatarStatus.Available, isOOO = isOOO)
-                    Avatar(person, AvatarSize.XSmall, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Small, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Medium, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Large, enableActivityRings = true)
-                    Avatar(person, AvatarSize.XLarge, enableActivityRings = true)
-                    Avatar(person, AvatarSize.XXLarge, enableActivityRings = true)
-                }
+                    val avatarTokens = AvatarTokens()
+                    controlTokens.updateTokens(ControlTokens.ControlType.Avatar, avatarTokens)
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically) {
-                    val person: Person = Person("Amanda", "Brady",
-                            image = R.drawable.avatar_amanda_brady, isActive = isActive,
-                            status = AvatarStatus.Away, isOOO = isOOO)
-                    Avatar(person, AvatarSize.XSmall, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Small, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Medium, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Large, enableActivityRings = true)
-                    Avatar(person, AvatarSize.XLarge, enableActivityRings = true)
-                    Avatar(person, AvatarSize.XXLarge, enableActivityRings = true)
-                }
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically) {
+                        val person: Person = Person("Allan", "Munger",
+                                image = R.drawable.avatar_allan_munger, isActive = isActive,
+                                status = AvatarStatus.Available, isOOO = isOOO)
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically) {
-                    val person: Person = Person("Kat", "Larson", isActive = isActive,
-                            status = AvatarStatus.Busy, isOOO = isOOO)
-                    Avatar(person, AvatarSize.XSmall, enableActivityRings = false)
-                    Avatar(person, AvatarSize.Small, imageNAStyle = AvatarImageNA.AnonymousAccent, enableActivityRings = false)
-                    Avatar(person, AvatarSize.Medium, imageNAStyle = AvatarImageNA.Standard, enableActivityRings = false)
-                    Avatar(person, AvatarSize.Large, imageNAStyle = AvatarImageNA.StandardInverted, enableActivityRings = false)
-                    Avatar(person, AvatarSize.XLarge, imageNAStyle = AvatarImageNA.Initials, enableActivityRings = false)
-                    Avatar(person, AvatarSize.XXLarge, imageNAStyle = AvatarImageNA.Anonymous, enableActivityRings = false)
-                }
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true)
+                    }
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically) {
-                    val person: Person = Person("Robin", "Counts",
-                            image = R.drawable.avatar_robin_counts, isActive = isActive,
-                            status = AvatarStatus.DND, isOOO = isOOO)
-                    Avatar(person, AvatarSize.XSmall, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Small, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Medium, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Large, enableActivityRings = true)
-                    Avatar(person, AvatarSize.XLarge, enableActivityRings = true)
-                    Avatar(person, AvatarSize.XXLarge, enableActivityRings = true)
-                }
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically) {
+                        val person: Person = Person("Amanda", "Brady",
+                                image = R.drawable.avatar_amanda_brady, isActive = isActive,
+                                status = AvatarStatus.Away, isOOO = isOOO)
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically) {
-                    val person: Person = Person("Wanda", "Howard",
-                            image = R.drawable.avatar_wanda_howard, isActive = isActive,
-                            status = AvatarStatus.Offline, isOOO = isOOO)
-                    Avatar(person, AvatarSize.XSmall, enableActivityRings = false)
-                    Avatar(person, AvatarSize.Small, imageNAStyle = AvatarImageNA.AnonymousAccent, enableActivityRings = true)
-                    Avatar(person, AvatarSize.Medium, imageNAStyle = AvatarImageNA.Standard ,enableActivityRings = true)
-                    Avatar(person, AvatarSize.Large, imageNAStyle = AvatarImageNA.StandardInverted ,enableActivityRings = true)
-                    Avatar(person, AvatarSize.XLarge, imageNAStyle = AvatarImageNA.Initials ,enableActivityRings = true)
-                    Avatar(person, AvatarSize.XXLarge, imageNAStyle = AvatarImageNA.Anonymous, enableActivityRings = true)
-                }
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true)
+                    }
 
-                Row(modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
-                        verticalAlignment = Alignment.CenterVertically) {
-                    val group: Group = Group(listOf(
-                            Person("Allan", "Munger",
-                                    image = R.drawable.avatar_allan_munger, isActive = isActive,
-                                    status = AvatarStatus.Available, isOOO = isOOO),
-                            Person("Wanda", "Howard",
-                                    image = R.drawable.avatar_wanda_howard,
-                                    status = AvatarStatus.Busy, isOOO = isOOO),
-                            Person("Kat", "Larson",
-                                    status = AvatarStatus.Busy, isOOO = isOOO),
-                            Person("Amanda", "Brady",
-                                    image = R.drawable.avatar_amanda_brady, isActive = isActive,
-                                    status = AvatarStatus.Away, isOOO = isOOO)
-                    ), "Gang Of 4")
-                    Avatar(group, AvatarSize.XSmall)
-                    Avatar(group, AvatarSize.Small, imageNAStyle = AvatarImageNA.AnonymousAccent)
-                    Avatar(group, AvatarSize.Medium, imageNAStyle = AvatarImageNA.Standard)
-                    Avatar(group, AvatarSize.Large, imageNAStyle = AvatarImageNA.StandardInverted)
-                    Avatar(group, AvatarSize.XLarge, imageNAStyle = AvatarImageNA.Initials)
-                    Avatar(group, AvatarSize.XXLarge, imageNAStyle = AvatarImageNA.Anonymous)
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically) {
+                        val person: Person = Person("Kat", "Larson", isActive = isActive,
+                                status = AvatarStatus.Busy, isOOO = isOOO)
+
+                        avatarTokens.avatarStyle = AvatarImageNA.AnonymousAccent
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Large, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = false, avatarToken = avatarTokens)
+                    }
+
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically) {
+                        val person: Person = Person("Robin", "Counts",
+                                isActive = isActive, status = AvatarStatus.DND, isOOO = isOOO)
+
+                        avatarTokens.avatarStyle = AvatarImageNA.Initials
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true, avatarToken = avatarTokens)
+                        avatarTokens.avatarStyle = AvatarImageNA.Standard
+                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = avatarTokens)
+                    }
+
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically) {
+                        val person: Person = Person("Wanda", "Howard",
+                                isActive = isActive, status = AvatarStatus.Offline, isOOO = isOOO)
+
+                        avatarTokens.avatarStyle = AvatarImageNA.StandardInverted
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true, avatarToken = avatarTokens)
+
+                        avatarTokens.avatarStyle = AvatarImageNA.Anonymous
+
+                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = avatarTokens)
+                    }
+
+                    avatarTokens.avatarStyle = AvatarImageNA.Initials
+                    Row(modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
+                            verticalAlignment = Alignment.CenterVertically) {
+                        val group: Group = Group(listOf(
+                                Person("Allan", "Munger",
+                                        image = R.drawable.avatar_allan_munger, isActive = isActive,
+                                        status = AvatarStatus.Available, isOOO = isOOO),
+                                Person("Wanda", "Howard",
+                                        image = R.drawable.avatar_wanda_howard,
+                                        status = AvatarStatus.Busy, isOOO = isOOO),
+                                Person("Kat", "Larson",
+                                        status = AvatarStatus.Busy, isOOO = isOOO),
+                                Person("Amanda", "Brady",
+                                        image = R.drawable.avatar_amanda_brady, isActive = isActive,
+                                        status = AvatarStatus.Away, isOOO = isOOO)
+                        ), "Gang Of 4")
+                        Avatar(group, size = AvatarSize.XSmall, avatarToken = avatarTokens)
+                        Avatar(group, size = AvatarSize.Small, avatarToken = avatarTokens)
+                        Avatar(group, size = AvatarSize.Medium, avatarToken = avatarTokens)
+                        Avatar(group, size = AvatarSize.Large, avatarToken = avatarTokens)
+                        Avatar(group, size = AvatarSize.XLarge, avatarToken = avatarTokens)
+                        Avatar(group, size = AvatarSize.XXLarge, avatarToken = avatarTokens)
+                    }
                 }
             }
         }
