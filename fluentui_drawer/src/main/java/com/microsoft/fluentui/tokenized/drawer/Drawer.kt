@@ -1,11 +1,9 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import android.content.res.Resources
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.TweenSpec
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.focusable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
@@ -32,7 +30,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.dismiss
-import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.window.Popup
@@ -46,6 +43,7 @@ import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.max
 import kotlin.math.min
@@ -73,7 +71,7 @@ enum class DrawerValue {
 }
 
 /**
- * State of the [HorizontalDrawer] composable.
+ * State of the [Drawer] composable.
  *
  * @param initialValue The initial value of the state.
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
@@ -113,17 +111,13 @@ class DrawerState(
      * was in before the swipe or animation started.
      */
     val currentValue: DrawerValue
-        get() {
-            return swipeableState.currentValue
-        }
+        get() = swipeableState.currentValue
 
     /**
      * Whether the state is currently animating.
      */
     val isAnimationRunning: Boolean
-        get() {
-            return swipeableState.isAnimationRunning
-        }
+        get() = swipeableState.isAnimationRunning
 
     var openTriggered: Boolean = false
 
@@ -136,6 +130,7 @@ class DrawerState(
      */
     suspend fun open() {
         enable = true
+        delay(50)
         openTriggered = true
         animateTo(DrawerValue.Open, AnimationSpec)
         openTriggered = false
@@ -149,8 +144,8 @@ class DrawerState(
      * @return the reason the close animation ended
      */
     suspend fun close() {
-        enable = false
         animateTo(DrawerValue.Closed, AnimationSpec)
+        enable = false
     }
 
     /**
@@ -169,9 +164,8 @@ class DrawerState(
      * @param targetValue The new target value
      */
     @ExperimentalMaterialApi
-    suspend fun snapTo(targetValue: DrawerValue) {
-        swipeableState.snapTo(targetValue)
-    }
+    suspend fun snapTo(targetValue: DrawerValue) =
+            swipeableState.snapTo(targetValue)
 
     /**
      * The target value of the drawer state.
@@ -218,15 +212,13 @@ class DrawerState(
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
  */
 @Composable
-fun rememberDrawerState(
-        confirmStateChange: (DrawerValue) -> Boolean = { true }
-): DrawerState {
+fun rememberDrawerState(confirmStateChange: (DrawerValue) -> Boolean = { true }): DrawerState {
     return rememberSaveable(saver = DrawerState.Saver(confirmStateChange)) {
         DrawerState(DrawerValue.Closed, confirmStateChange)
     }
 }
 
-class DrawerPositionProvider : PopupPositionProvider {
+private class DrawerPositionProvider : PopupPositionProvider {
     override fun calculatePosition(
             anchorBounds: IntRect,
             windowSize: IntSize,
@@ -316,7 +308,13 @@ private fun HorizontalDrawer(
 ) {
     BoxWithConstraints(modifier.fillMaxSize()) {
         val modalDrawerConstraints = constraints
-        val fullWidth = constraints.maxWidth.toFloat()
+
+        // TODO : think about Infinite max bounds case
+        if (!modalDrawerConstraints.hasBoundedWidth) {
+            throw IllegalStateException("Drawer shouldn't have infinite width")
+        }
+
+        val fullWidth = modalDrawerConstraints.maxWidth.toFloat()
         var drawerWidth by remember(fullWidth) { mutableStateOf(fullWidth) }
         //Hack to get exact drawerHeight wrt to content.
         val visible = remember { mutableStateOf(true) }
@@ -329,11 +327,6 @@ private fun HorizontalDrawer(
             }
         } else {
             val paddingPx = pxToDp(max(dpToPx(EndDrawerPadding), (fullWidth - drawerWidth)))
-
-            // TODO : think about Infinite max bounds case
-            if (!modalDrawerConstraints.hasBoundedWidth) {
-                throw IllegalStateException("Drawer shouldn't have infinite width")
-            }
             val leftSlide = behaviorType == BehaviorType.LEFT
 
             val minValue =
@@ -354,7 +347,6 @@ private fun HorizontalDrawer(
                             resistance = null
                     )
             ) {
-
                 Scrim(
                         open = drawerState.isOpen,
                         onClose = onDismiss,
@@ -363,8 +355,6 @@ private fun HorizontalDrawer(
                         },
                         color = if (enableScrim) scrimColor else Color.Transparent,
                 )
-
-                val navigationMenu = getString(Strings.NavigationMenu)
 
                 Surface(
                         modifier = with(LocalDensity.current) {
@@ -382,7 +372,6 @@ private fun HorizontalDrawer(
                                         end = if (leftSlide) paddingPx else 0.dp
                                 )
                                 .semantics {
-                                    paneTitle = navigationMenu
                                     if (drawerState.isOpen) {
                                         dismiss {
                                             if (
@@ -439,9 +428,7 @@ private fun VerticalDrawer(
         onDismiss: () -> Unit,
         drawerContent: @Composable () -> Unit
 ) {
-    BoxWithConstraints(
-            modifier.fillMaxSize()
-    ) {
+    BoxWithConstraints(modifier.fillMaxSize()) {
         val fullHeight = constraints.maxHeight.toFloat()
         var drawerHeight by remember(fullHeight) { mutableStateOf(fullHeight) }
 
@@ -456,7 +443,7 @@ private fun VerticalDrawer(
                                 layout(placeable.width, placeable.height) {
                                     visible.value = false
                                     drawerHeight =
-                                            placeable.height.toFloat() + dpToPx(44.dp) //Add Handle height + padding
+                                            placeable.height.toFloat() + dpToPx(20.dp) //Add Handle height + padding
                                 }
                             }
             ) {
@@ -526,7 +513,7 @@ private fun VerticalDrawer(
 
             Box(swipeable) {
                 Scrim(
-                        open = drawerState.isOpen,
+                        open = !drawerState.isClosed,
                         onClose = onDismiss,
                         fraction = {
                             calculateFraction(scrimMinValue, scrimMaxValue, drawerState.offset.value)
@@ -534,14 +521,11 @@ private fun VerticalDrawer(
                         color = if (enableScrim) scrimColor else Color.Transparent,
                 )
 
-                val navigationMenu = getString(Strings.NavigationMenu)
-
                 if (behaviorType == BehaviorType.BOTTOM) {
                     Surface(
                             drawerConstraints
                                     .offset { IntOffset(x = 0, y = drawerState.offset.value.roundToInt()) }
                                     .semantics {
-                                        paneTitle = navigationMenu
                                         if (drawerState.isOpen) {
                                             // TODO(b/180101663) The action currently doesn't return the correct results
                                             dismiss {
@@ -598,7 +582,10 @@ private fun VerticalDrawer(
                                         tint = drawerHandleColor
                                 )
                             }
-                            Column(modifier = Modifier.focusTarget(), content = { drawerContent() })
+                            Column(modifier = Modifier
+                                    .verticalScroll(
+                                            rememberScrollState()
+                                    ), content = { drawerContent() })
                         }
                     }
                 } else {
@@ -606,7 +593,6 @@ private fun VerticalDrawer(
                             drawerConstraints
                                     .offset { IntOffset(0, 0) }
                                     .semantics {
-                                        paneTitle = navigationMenu
                                         if (drawerState.isOpen) {
                                             // TODO(b/180101663) The action currently doesn't return the correct results
                                             dismiss {
@@ -628,11 +614,11 @@ private fun VerticalDrawer(
                             contentColor = drawerContentColor,
                             elevation = drawerElevation
                     ) {
-                        ConstraintLayout {
+                        ConstraintLayout(modifier = Modifier.padding(bottom = 8.dp)) {
                             val (drawerContentConstrain, drawerHandleConstrain) = createRefs()
                             Column(modifier = Modifier
                                     .offset { IntOffset(0, 0) }
-                                    .padding(top = 21.dp)
+                                    .padding(bottom = 8.dp)
                                     .constrainAs(drawerContentConstrain) {
                                         top.linkTo(parent.top)
                                         bottom.linkTo(drawerHandleConstrain.top)
@@ -642,8 +628,8 @@ private fun VerticalDrawer(
                             Column(horizontalAlignment = Alignment.CenterHorizontally,
                                     modifier = Modifier
                                             .constrainAs(drawerHandleConstrain) {
-                                                top.linkTo(drawerContentConstrain.bottom, margin = 8.dp)
-                                                bottom.linkTo(parent.bottom, margin = 32.dp)
+                                                top.linkTo(drawerContentConstrain.bottom)
+                                                bottom.linkTo(parent.bottom)
                                             }
                                             .fillMaxWidth()
                                             .draggable(
@@ -680,22 +666,39 @@ private fun VerticalDrawer(
 internal val LocalDrawerTokens = compositionLocalOf { DrawerTokens() }
 
 @Composable
-fun getDrawerTokens(): DrawerTokens {
+private fun getDrawerTokens(): DrawerTokens {
     return LocalDrawerTokens.current
 }
+
+/**
+ *
+ * Drawer block interaction with the rest of an app’s content with a scrim.
+ * They are elevated above most of the app’s UI and don’t affect the screen’s layout grid.
+ *
+ * @param modifier optional modifier for the drawer
+ * @param behaviorType opening behaviour of drawer. Default is BOTTOM
+ * @param drawerState state of the drawer
+ * @param expandable if true drawer would expand on drag else drawer open till fixed/wrapped height.
+ * The default value is false
+ * @param enableScrim enable scrim that obscures background when the drawer is open. The default value is true
+ * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [AppThemeController]
+ * @param drawerContent composable that represents content inside the drawer
+ *
+ * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
+ */
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Drawer(
         modifier: Modifier = Modifier,
-        drawerTokens: DrawerTokens? = null,
         behaviorType: BehaviorType = BehaviorType.BOTTOM,
         drawerState: DrawerState = rememberDrawerState(),
         expandable: Boolean = false,
         enableScrim: Boolean = true,
+        drawerTokens: DrawerTokens? = null,
         drawerContent: @Composable () -> Unit
 ) {
-    AnimatedVisibility(drawerState.enable) {
+    if (drawerState.enable) {
         val tokens = drawerTokens
                 ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
 

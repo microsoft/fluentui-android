@@ -24,15 +24,20 @@ open class DrawerTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(type: BehaviorType): Color = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
-            themeMode = FluentTheme.themeMode)
+    open fun backgroundColor(type: BehaviorType): Color =
+            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                    themeMode = FluentTheme.themeMode
+            )
 
     @Composable
-    open fun handleColor(type: BehaviorType): Color = FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
-            themeMode = FluentTheme.themeMode)
+    open fun handleColor(type: BehaviorType): Color =
+            FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                    themeMode = FluentTheme.themeMode
+            )
 
     @Composable
-    open fun elevation(type: BehaviorType): Dp = FluentTheme.globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow28]
+    open fun elevation(type: BehaviorType): Dp =
+            FluentTheme.globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow28]
 
     @Composable
     open fun borderRadius(type: BehaviorType): Dp {
@@ -41,9 +46,12 @@ open class DrawerTokens : ControlToken, Parcelable {
             BehaviorType.LEFT, BehaviorType.RIGHT -> FluentTheme.globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.None]
         }
     }
-    @Composable
-    open fun scrimColor(type: BehaviorType): Color = FluentTheme.globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black]
 
     @Composable
-    open fun scrimOpacity(type: BehaviorType): Float = FluentTheme.globalTokens.opacity[GlobalTokens.OpacityTokens.Opacity32]
+    open fun scrimColor(type: BehaviorType): Color =
+            FluentTheme.globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black]
+
+    @Composable
+    open fun scrimOpacity(type: BehaviorType): Float =
+            FluentTheme.globalTokens.opacity[GlobalTokens.OpacityTokens.Opacity32]
 }

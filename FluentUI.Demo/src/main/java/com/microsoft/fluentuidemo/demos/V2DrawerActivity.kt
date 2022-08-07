@@ -2,10 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -39,9 +36,9 @@ class V2DrawerActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val compose_here = findViewById<ComposeView>(R.id.compose_here)
+        val composeView = findViewById<ComposeView>(R.id.compose_here)
 
-        compose_here.setContent {
+        composeView.setContent {
             FluentTheme {
                 CreateActivityUI()
             }
@@ -190,12 +187,13 @@ private fun PrimarySurfaceContent(
 }
 
 @Composable
-fun getDrawerContent(
+private fun getDrawerContent(
         contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT
 ): @Composable ((close: () -> Unit) -> Unit) {
     return { _ ->
         lateinit var context: Context
         AndroidView(
+                modifier = Modifier.fillMaxWidth(),
                 factory = {
                     context = it
                     val view = it.activity!!.layoutInflater.inflate(
@@ -215,7 +213,7 @@ fun getDrawerContent(
 }
 
 @Composable
-fun getDrawerInDrawerContent(sideDrawer: Boolean = false): @Composable ((() -> Unit) -> Unit) {
+private fun getDrawerInDrawerContent(sideDrawer: Boolean = false): @Composable ((() -> Unit) -> Unit) {
     return { close ->
         Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
