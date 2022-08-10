@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
@@ -106,7 +107,7 @@ fun Avatar(person: Person,
             }
 
             if (enableActivityRings)
-                ActivityRing(radius = with(LocalDensity.current) { avatarSize.toPx() / 2 }, borders)
+                ActivityRing(radius = avatarSize / 2, borders)
 
             if (enablePresence) {
                 Box(Modifier.fillMaxSize()) {
@@ -225,7 +226,7 @@ fun Avatar(overflowCount: Int,
             }
 
             if (enableActivityRings)
-                ActivityRing(radius = with(LocalDensity.current) { avatarSize.toPx() / 2 }, borders)
+                ActivityRing(radius = avatarSize / 2, borders)
         }
     }
 }
@@ -241,8 +242,9 @@ fun getAvatarInfo(): AvatarInfo {
 }
 
 @Composable
-fun ActivityRing(radius: Float, borders: List<BorderStroke>) {
+fun ActivityRing(radius: Dp, borders: List<BorderStroke>) {
     val firstBorderMid = with(LocalDensity.current) { borders[0].width.toPx() / 2 }
+    val radius = with(LocalDensity.current) { radius.toPx() }
     Canvas(Modifier) {
         var ringRadius = radius - firstBorderMid + 1
         var ringStroke: Float
