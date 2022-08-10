@@ -42,7 +42,7 @@ import kotlinx.coroutines.launch
 import com.microsoft.fluentui.listitem.ListItem
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
-
+import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 
 class V2ListItemViewActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -66,6 +66,7 @@ class V2ListItemViewActivity : DemoActivity() {
 private fun CreateActivityUI() {
 
     var show by remember { mutableStateOf(false) }
+    var show2 by remember { mutableStateOf(true) }
     Box(
         Modifier
             .fillMaxSize()
@@ -77,7 +78,7 @@ private fun CreateActivityUI() {
                         .fillMaxWidth()
                         .padding(15.dp)) {
                         Text(text = "Section Header")
-                        ListItem.SectionHeader(title = "PinnedList", accessoryIcon = arrowView(), rightAccessory = overFlowMenuView(), actionTitle = "Action", onClick = {show = !show}, actionOnClick = {show = !show})
+                        ListItem.SectionHeader(style = Subtle, title = "PinnedListPinnedListPinnedListPinnedListPinnedListPinnedListPinnedList", accessoryIcon = arrowView(), rightAccessory = overFlowMenuView(), actionTitle = "Action", onClick = {show = !show}, actionOnClick = {show = !show})
                         AnimatedVisibility(visible = show){
                             Box(
                                 Modifier
@@ -115,9 +116,36 @@ private fun CreateActivityUI() {
                     twoLineTextList()
                 }
             }
+            item {
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(15.dp)) {
+                    Text(text = "Section Description")
+                    oneLineDescription(onClick = {show2 = !show2})
+                    if(show2){
+                        twoLineDescription()
+                        threeLineDescription()
+                    }
+                }
+            }
 
         }
     }
+}
+
+@Composable
+fun oneLineDescription(onClick: (() -> Unit)?){
+    ListItem.SectionDescription(action = true, iconAccessory = radioButtonView(), onActionClick = onClick, border = BorderType.Bottom, description = "Gradle is a build automation tool for multi-language software development.")
+}
+
+@Composable
+fun twoLineDescription(){
+    ListItem.SectionDescription(border = BorderType.Bottom, description = "Gradle is a build automation tool for multi-language software development. It controls the development process in the tasks of compilation")
+}
+
+@Composable
+fun threeLineDescription(){
+    ListItem.SectionDescription(action = true, border = BorderType.Bottom, description = "Gradle is a build automation tool for multi-language software development. It controls the development process in the tasks of compilation It controls the development process in the tasks of compilation")
 }
 
 @Composable
@@ -139,7 +167,7 @@ var modifier = Modifier.border(width = 1.dp, color = Color(0xFFE0E0E0))
 
 @Composable
 fun multiIconList() {
-        ListItem.OneLine(text ="Text", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = radioButtonView(), rightAccessoryView = checkboxRightView(), onClick ={})
+        ListItem.OneLine(text ="Text", secondarySubTextMaxLines = 2, border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = radioButtonView(), rightAccessoryView = checkboxRightView(), onClick ={})
 }
 @Composable
 fun threeButtonList() {
@@ -170,7 +198,7 @@ fun googleList(){
 }
 @Composable
 fun threeLineTextList() {
-    ListItem.OneLine(text="TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText", subText = "subtext", secondarySubText = "secondarysecondarysecondarysecondarysecondarysecondarysecondary", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = multiIconLeftView(), rightAccessoryView = threeIconsView(), onClick ={})
+    ListItem.OneLine(text="TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextxtTextTextTextTextTextxtTextTextTextTextTextxtTextTextTextTextText", secondarySubTextMaxLines = 2, subText = "subtext", secondarySubText = "secondarysecondarysecondarysecondarysecondarysecondarysecondary", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = multiIconLeftView(), rightAccessoryView = threeIconsView(), onClick ={})
 }
 @Composable
 fun twoLineTextList() {
