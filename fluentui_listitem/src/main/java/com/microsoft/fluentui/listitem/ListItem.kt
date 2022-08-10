@@ -1,17 +1,11 @@
 package com.microsoft.fluentui.listitem
 
-import android.R
-import android.R.drawable
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -22,323 +16,29 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.unit.min
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineThree
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineTwo
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.OneLine
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType
-import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle
+import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 
-//object OneLine{
-//    @Composable
-//    fun ListItem(
-//        modifier: Modifier = Modifier,
-//        onClick: () -> Unit,
-//        text:String,
-//        listItemTokens: ListItemTokens? = null,
-//        leftAccessoryView: (@Composable () -> Unit)? = null,
-//        leftIconAccessoryView:(@Composable () -> Unit)? = null,
-//        leftButtonAccessoryView:(@Composable () -> Unit)? = null,
-//        rightAccessoryView:(@Composable () -> Unit)? = null,
-//        rightIconAccessoryView:(@Composable () -> Unit)? = null,
-//        rightButtonAccessoryView:(@Composable () -> Unit)? = null,
-//        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
-//
-//        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-//        CompositionLocalProvider(LocalListItemTokens provides token){
-//
-//            val clickAndSemanticsModifier = Modifier.clickable(
-//                interactionSource = interactionSource,
-//                indication = LocalIndication.current,
-//                onClickLabel = null,
-//                role = Role.Tab,
-//                onClick = onClick
-//            )
-//
-//            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
-//            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
-//            val borderSize = getListItemTokens().borderSize()
-//            val cellHeight = getListItemTokens().height(listItemType = OneLine)
-//            val contentSpacing = getListItemTokens().spacing(Icon)
-//            val buttonContentSpacing = getListItemTokens().spacing(Button)
-//            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-//            val horizontalPadding = getListItemTokens().padding()
-//            val textColor = getListItemTokens().textColor(textType = ListTextType.Text).rest
-//            Row(
-//                modifier
-//                    .background(backgroundColor)
-//                    .border(width = borderSize, color = borderColor)
-//                    .fillMaxWidth()
-//                    .height(cellHeight)
-//                    .padding(horizontal = horizontalPadding)
-//                    .then(clickAndSemanticsModifier),
-//                verticalAlignment = Alignment.CenterVertically
-//            ){
-//                if(leftAccessoryView != null){
-//                    Box(){
-//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
-//                            leftAccessoryView()
-//                        }
-//                    }
-//                }
-//                if(leftIconAccessoryView != null){
-//                    Box(){
-//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
-//                            leftIconAccessoryView()
-//                        }
-//                    }
-//                }
-//                if(leftButtonAccessoryView != null){
-//                    Box(){
-//                        Row(Modifier.absolutePadding(right = horizontalPadding), horizontalArrangement = Arrangement.spacedBy(buttonContentSpacing), verticalAlignment = Alignment.CenterVertically) {
-//                            leftButtonAccessoryView()
-//                        }
-//
-//                    }
-//                }
-//
-//                Box(){
-//                    Row(Modifier.absolutePadding(right = horizontalPadding)){
-//                        Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor)
-//                    }
-//                }
-//                Spacer(Modifier.weight(1f))
-//                if(rightAccessoryView != null){
-//                    Box(){
-//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
-//                            rightAccessoryView()
-//                        }
-//                    }
-//                }
-//                if(rightIconAccessoryView != null){
-//                    Box(){
-//                        Row(Modifier.absolutePadding(right = contentSpacing), horizontalArrangement = Arrangement.spacedBy(contentSpacing)) {
-//                            rightIconAccessoryView()
-//                        }
-//                    }
-//                }
-//                if(rightButtonAccessoryView != null){
-//                    Box(){
-//                        Row(Modifier.absolutePadding(right = horizontalPadding), horizontalArrangement = Arrangement.spacedBy(buttonContentSpacing), verticalAlignment = Alignment.CenterVertically) {
-//                            rightButtonAccessoryView()
-//                        }
-//
-//                    }
-//                }
-//
-//            }
-//        }
-//
-//    }
-//}
-
-public object MultiLine{
-    @Composable
-    fun ListItem(modifier: Modifier = Modifier,
-        text:String,
-        subText:String? = null,
-        secondarySubText:String? = null,
-        onClick: () -> Unit,
-        listItemTokens: ListItemTokens? = null,
-        leftAccessoryView:(@Composable () -> Unit)? = null,
-        rightAccessoryView:(@Composable () -> Unit)? = null,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
-
-        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token){
-            val clickAndSemanticsModifier = Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                onClickLabel = null,
-                role = Role.Tab,
-                onClick = onClick
-            )
-            var listItemType : ListItemType
-            if(subText == null && secondarySubText == null){
-                listItemType = OneLine
-            }else if(secondarySubText == null && subText != null) {
-                listItemType = MultiLineTwo
-            }else if (secondarySubText != null && subText == null){
-                listItemType = MultiLineTwo
-            }else{
-                listItemType = MultiLineThree
-            }
-            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
-            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
-            val borderSize = getListItemTokens().borderSize()
-            val cellHeight = getListItemTokens().height(listItemType = listItemType)
-            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
-            val horizontalPadding = getListItemTokens().padding()
-            Row(
-                modifier
-                    .background(backgroundColor)
-                    .border(width = borderSize, color = borderColor)
-                    .fillMaxWidth()
-                    .height(cellHeight)
-                    .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
-                if(leftAccessoryView != null){
-                    Box(Modifier.padding(start = horizontalPadding)){
-                        leftAccessoryView()
-                    }
-                }
-                Box(Modifier.padding(start = horizontalPadding)){
-                    Column() {
-                        Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
-                        if(subText != null){
-                            Text(text = subText, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
-                        }
-                        if(secondarySubText != null){
-                            Text(text = secondarySubText, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
-                        }
-                    }
-
-                }
-                Spacer(modifier = Modifier.weight(1f))
-                if(rightAccessoryView != null){
-                    Box(Modifier.padding(end = horizontalPadding)){
-                        rightAccessoryView()
-                    }
-
-                }
-            }
-        }
-
-    }
-}
-
-object SectionHeader{
-    @Composable
-    fun ListItem(modifier: Modifier = Modifier,
-        title:String,
-        actionTitle:String? = null,
-        actionOnClick: (() -> Unit)? = null,
-        listItemTokens: ListItemTokens? = null,
-        list:(@Composable () -> Unit)? = null,
-        style:SectionHeaderStyle = SectionHeaderStyle.Standard,
-        accessoryIcon:(@Composable () -> Unit)? = null,
-        rightAccessory:(@Composable () -> Unit)? = null,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
-
-        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token){
-
-            var show by remember { mutableStateOf(false) }
-
-            val clickAndSemanticsModifier = Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = LocalIndication.current,
-                onClickLabel = null,
-                role = Role.Tab,
-                onClick = {
-                    show = !show
-                }
-            )
-
-            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
-            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
-            val borderSize = getListItemTokens().borderSize()
-            val cellHeight = getListItemTokens().height(listItemType = OneLine)
-            val horizontalPadding = getListItemTokens().padding()
-            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
-            Box() {
-                Column() {
-                    Row(
-                        modifier
-                            .fillMaxWidth()
-                            .height(cellHeight)
-                            .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
-                        if(accessoryIcon != null){
-                            Box(Modifier.padding(start = horizontalPadding)){
-                                accessoryIcon()
-                            }
-                        }
-                        Box(Modifier.padding(start = horizontalPadding)){
-                            Text(text = title, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
-                        }
-                        Spacer(modifier = Modifier.weight(1f))
-                        if(actionTitle != null){
-                            Box(Modifier.padding(end = horizontalPadding)){
-                                Text(text = actionTitle, modifier.clickable(
-                                    interactionSource = interactionSource,
-                                    indication = LocalIndication.current,
-                                    onClickLabel = null,
-                                    role = Role.Button,
-                                    onClick = actionOnClick ?:{}
-                                ))
-                            }
-                        }
-                        if(rightAccessory != null){
-                            Box(Modifier.padding(end = horizontalPadding)){
-                                rightAccessory()
-                            }
-
-                        }
-                    }
-                    if(list != null){
-                        AnimatedVisibility(visible = show){
-                            Box(
-                                Modifier
-                                    .fillMaxSize()){
-                                list()
-                            }
-                        }
-                    }
-
-                }
-
-
-            }
-        }
-    }
-}
-
-object SectionDescription{
-    @Composable
-    fun ListItem(modifier: Modifier = Modifier,
-        description:String,
-        listItemTokens: ListItemTokens? = null,
-        icon:(@Composable () -> Unit)? = null,
-        action:(@Composable () -> Unit)? = null){
-
-    }
-}
-
-object AvatarCarousel{
-    @Composable
-    fun ListItem(modifier: Modifier = Modifier,
-        text:String,
-        subText:String? = null,
-        listItemTokens: ListItemTokens? = null,
-        avatar:(@Composable () -> Unit)){
-
-    }
-}
 @Composable
 fun getListItemTokens(): ListItemTokens {
     return LocalListItemTokens.current
 }
 
-object OneLine{
-    @Composable
-    fun ListItem(leftAccessoryView: (@Composable () -> Unit)? = null,
-        text:String,
-        rightAccessoryView: (@Composable () -> Unit)? = null,
-        modifier:Modifier = Modifier,
-        listItemTokens: ListItemTokens? = null,
-        onClick: () -> Unit,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
-
-        val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token){
-            val clickAndSemanticsModifier = Modifier.clickable(
+class ListItem{
+    companion object{
+        private fun Modifier.clickAndSemanticsModifier(interactionSource: MutableInteractionSource, onClick: () -> Unit):Modifier = composed{
+            Modifier.clickable(
                 interactionSource = interactionSource,
                 indication = LocalIndication.current,
                 onClickLabel = null,
@@ -346,37 +46,195 @@ object OneLine{
                 onClick = onClick
             )
 
-            val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
-            val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
-            val borderSize = getListItemTokens().borderSize()
-            val cellHeight = getListItemTokens().height(listItemType = OneLine)
-            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
-            val horizontalPadding = getListItemTokens().padding()
-            Row(
-                modifier
-                    .background(backgroundColor)
-                    .border(width = borderSize, color = borderColor)
-                    .fillMaxWidth()
-                    .height(cellHeight)
-                    .then(clickAndSemanticsModifier), verticalAlignment = Alignment.CenterVertically){
-                if(leftAccessoryView != null){
-                    Box(Modifier.padding(start = horizontalPadding)){
-                        leftAccessoryView()
+        }
+        private fun Modifier.borderModifier(border: BorderType, borderColor:Color, borderSize:Float, borderInset:Float): Modifier = composed{
+            Modifier.drawBehind {
+                when(border){
+                    BorderType.Top -> drawLine(borderColor,
+                        Offset(0f, 0f),
+                        Offset(size.width, 0f),
+                        borderSize * density)
+                    BorderType.Bottom -> drawLine(
+                        borderColor,
+                        Offset(borderInset, size.height),
+                        Offset(size.width, size.height),
+                        borderSize * density
+                    )
+                    BorderType.Top_Bottom -> {
+                        drawLine(
+                            borderColor,
+                            Offset(0f, 0f),
+                            Offset(size.width, 0f),
+                            borderSize * density
+                        )
+                        drawLine(
+                            borderColor,
+                            Offset(borderInset, size.height),
+                            Offset(size.width, size.height),
+                            borderSize * density
+                        )
                     }
                 }
-                Box(Modifier.padding(start = horizontalPadding)){
-                    Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
+            }
+
+        }
+
+        @Composable
+        fun OneLine(modifier: Modifier = Modifier,
+                      text:String,
+                      subText:String? = null,
+                      secondarySubText:String? = null,
+                      onClick: () -> Unit,
+                      border:BorderType = BorderType.No_Border,
+                      borderInset:BorderInset = BorderInset.None,
+                      listItemTokens: ListItemTokens? = null,
+                      leftAccessoryView:(@Composable () -> Unit)? = null,
+                      rightAccessoryView:(@Composable () -> Unit)? = null,
+                      interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+
+            val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            CompositionLocalProvider(LocalListItemTokens provides token){
+
+                var listItemType = if(subText == null && secondarySubText == null){
+                    OneLine
+                }else if((secondarySubText == null && subText != null) || (secondarySubText != null && subText == null)) {
+                    MultiLineTwo
+                }else{
+                    MultiLineThree
                 }
-                Spacer(modifier = Modifier.weight(1f))
-                if(rightAccessoryView != null){
-                    Box(Modifier.padding(end = horizontalPadding)){
-                        rightAccessoryView()
+                val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
+                val cellHeight = getListItemTokens().cellHeight(listItemType = listItemType)
+                val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
+                val subLabelSize = getListItemTokens().textSize(textType = ListTextType.SubLabelText)
+                val textColor = getColorByState(stateData = getListItemTokens().textColor(textType = ListTextType.Text), enabled = true, interactionSource = interactionSource)
+                val subLabelColor = getColorByState(stateData = getListItemTokens().textColor(textType = ListTextType.SubLabelText), enabled = true, interactionSource = interactionSource)
+                val horizontalPadding = getListItemTokens().padding()
+                val borderSize = getListItemTokens().borderSize().value
+                val borderInset = with (LocalDensity.current) {getListItemTokens().borderInset(inset = borderInset).toPx()}
+                val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
+                Row(
+                    modifier
+                        .background(backgroundColor)
+                        .fillMaxWidth()
+                        .height(cellHeight)
+                        .borderModifier(border, borderColor, borderSize, borderInset)
+                        .clickAndSemanticsModifier(interactionSource, onClick), verticalAlignment = Alignment.CenterVertically){
+                    if(leftAccessoryView != null){
+                        Box(Modifier.padding(start = horizontalPadding), contentAlignment = Alignment.Center){
+                            leftAccessoryView()
+                        }
                     }
+                    Box(Modifier.padding(start = horizontalPadding).width(IntrinsicSize.Max), contentAlignment = Alignment.Center){
+                        Column() {
+                            Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor)
+                            if(subText != null){
+                                Text(text = subText, fontSize = subLabelSize.fontSize.size, fontWeight = subLabelSize.weight, color = subLabelColor)
+                            }
+                            if(secondarySubText != null){
+                                Text(text = secondarySubText, fontSize = subLabelSize.fontSize.size, fontWeight = subLabelSize.weight, color = subLabelColor)
+                            }
+                        }
+
+                    }
+                    Spacer(modifier = Modifier.weight(1f))
+                    if(rightAccessoryView != null){
+                        Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.Center){
+                            rightAccessoryView()
+                        }
+
+                    }
+                }
+            }
+
+        }
+        @Composable
+        fun SectionHeader(modifier: Modifier = Modifier,
+                          title:String,
+                          actionTitle:String? = null,
+                          actionOnClick: (() -> Unit)? = null,
+                          border:BorderType = BorderType.No_Border,
+                          borderInset:BorderInset = BorderInset.None,
+                          listItemTokens: ListItemTokens? = null,
+                          style:SectionHeaderStyle = SectionHeaderStyle.Standard,
+                          accessoryIcon:(@Composable () -> Unit)? = null,
+                          rightAccessory:(@Composable () -> Unit)? = null,
+                          onClick: () -> Unit,
+                          interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+
+            val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            CompositionLocalProvider(LocalListItemTokens provides token){
+
+                val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
+                val cellHeight = getListItemTokens().cellHeight(listItemType = OneLine)
+                val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
+                val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
+                val horizontalPadding = getListItemTokens().padding()
+                val borderSize = getListItemTokens().borderSize().value
+                val borderInset = with (LocalDensity.current) {getListItemTokens().borderInset(inset = borderInset).toPx()}
+                val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
+                Box() {
+                    Column() {
+                        Row(
+                            modifier
+                                .fillMaxWidth()
+                                .heightIn(min = cellHeight, max = cellHeight)
+                                .background(backgroundColor)
+                                .borderModifier(border, borderColor, borderSize, borderInset)
+                                .clickAndSemanticsModifier(
+                                    interactionSource,
+                                    onClick = onClick), verticalAlignment = Alignment.CenterVertically){
+                            if(accessoryIcon != null){
+                                Box(Modifier.padding(start = horizontalPadding), contentAlignment = Alignment.Center){
+                                    accessoryIcon()
+                                }
+                            }
+                            Box(Modifier.padding(start = horizontalPadding), contentAlignment = Alignment.Center){
+                                Text(text = title, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor.rest)
+                            }
+                            Spacer(modifier = Modifier.weight(1f))
+                            if(actionTitle != null){
+                                Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.Center){
+                                    Text(text = actionTitle, modifier.clickable(
+                                        interactionSource = interactionSource,
+                                        indication = LocalIndication.current,
+                                        onClickLabel = null,
+                                        role = Role.Button,
+                                        onClick = actionOnClick ?:{}
+                                    ))
+                                }
+                            }
+                            if(rightAccessory != null){
+                                Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.Center){
+                                    rightAccessory()
+                                }
+
+                            }
+                        }
+                    }
+
 
                 }
             }
         }
+        @Composable
+        fun AvatarCarousel(modifier: Modifier = Modifier,
+                           text:String,
+                           subText:String? = null,
+                           listItemTokens: ListItemTokens? = null,
+                           avatar:(@Composable () -> Unit)){
+//TODO
+        }
+
+        @Composable
+        fun SectionDescription(modifier: Modifier = Modifier,
+                               description:String,
+                               listItemTokens: ListItemTokens? = null,
+                               icon:(@Composable () -> Unit)? = null,
+                               action:(@Composable () -> Unit)? = null){
+
+        }
+
     }
+
 }
 

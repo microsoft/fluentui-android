@@ -1,7 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,17 +21,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.controls.Button
 import com.microsoft.fluentui.controls.CheckBox
 import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentui.controls.RadioButton
-import com.microsoft.fluentui.listitem.MultiLine
-import com.microsoft.fluentui.listitem.OneLine
-import com.microsoft.fluentui.listitem.SectionHeader
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.GlobalTokens.NeutralColorTokens.Grey96
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
@@ -37,6 +39,9 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.launch
+import com.microsoft.fluentui.listitem.ListItem
+import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 
 
 class V2ListItemViewActivity : DemoActivity() {
@@ -60,6 +65,7 @@ class V2ListItemViewActivity : DemoActivity() {
 @Composable
 private fun CreateActivityUI() {
 
+    var show by remember { mutableStateOf(false) }
     Box(
         Modifier
             .fillMaxSize()
@@ -69,10 +75,20 @@ private fun CreateActivityUI() {
                 Box(){
                     Column(modifier = Modifier
                         .fillMaxWidth()
-                        .padding(15.dp)
-                        .clip(RoundedCornerShape(10.dp))) {
+                        .padding(15.dp)) {
                         Text(text = "Section Header")
-                        sectionHeaderCreation()
+                        ListItem.SectionHeader(title = "PinnedList", accessoryIcon = arrowView(), rightAccessory = overFlowMenuView(), actionTitle = "Action", onClick = {show = !show}, actionOnClick = {show = !show})
+                        AnimatedVisibility(visible = show){
+                            Box(
+                                Modifier
+                                    .fillMaxWidth(), contentAlignment = Alignment.Center){
+                                Column {
+                                    multiIconList()
+                                    threeButtonList()
+                                    threeLineTextList()
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -80,8 +96,7 @@ private fun CreateActivityUI() {
                 Box{
                     Column(modifier = Modifier
                         .fillMaxWidth()
-                        .padding(15.dp)
-                        .clip(RoundedCornerShape(10.dp))) {
+                        .padding(15.dp)) {
                         Text(text = "One Line List")
                         multiIconList()
                         threeButtonList()
@@ -94,8 +109,7 @@ private fun CreateActivityUI() {
             item {
                 Column(modifier = Modifier
                     .fillMaxWidth()
-                    .padding(15.dp)
-                    .clip(RoundedCornerShape(10.dp))) {
+                    .padding(15.dp)) {
                     Text(text = "Multi Line List")
                     threeLineTextList()
                     twoLineTextList()
@@ -106,33 +120,14 @@ private fun CreateActivityUI() {
     }
 }
 
-//@Composable
-//private fun CreateActivityUI() {
-//    Box(
-//        Modifier
-//            .fillMaxSize()
-//            .background(FluentTheme.globalTokens.neutralColor[Grey96])){
-//        Column(modifier = Modifier
-//            .fillMaxWidth()
-//            .padding(15.dp)
-//            .clip(RoundedCornerShape(10.dp))) {
-//            multiIconList()
-//            threeButtonList()
-//            randomList()
-//            singleLineList()
-//            multiLineList()
-//        }
-//    }
-//}
-
 @Composable
-fun sectionHeaderCreation(){
-    SectionHeader.ListItem(title = "PinnedList", accessoryIcon = arrowRightView(), rightAccessory = rightViewOverFlowMenu(), actionTitle = "Action", list = sampleList())
+fun sectionHeaderCreation(show:Boolean){
+    ListItem.SectionHeader(title = "PinnedList", accessoryIcon = arrowView(), rightAccessory = overFlowMenuView(), actionTitle = "Action", onClick = {})
 }
 @Composable
 fun sampleList(): @Composable (() -> Unit){
     return {
-            Column(Modifier.clip(RoundedCornerShape(20.dp))) {
+            Column {
                 multiIconList()
                 threeButtonList()
                 threeLineTextList()
@@ -140,46 +135,46 @@ fun sampleList(): @Composable (() -> Unit){
 
     }
 }
+var modifier = Modifier.border(width = 1.dp, color = Color(0xFFE0E0E0))
+
 @Composable
 fun multiIconList() {
-        OneLine.ListItem(text ="Text", leftAccessoryView = radioButtonRightView(), rightAccessoryView = checkboxRightView(), onClick ={
-
-        })
+        ListItem.OneLine(text ="Text", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = radioButtonView(), rightAccessoryView = checkboxRightView(), onClick ={})
 }
 @Composable
 fun threeButtonList() {
-    OneLine.ListItem(text = "Text", leftAccessoryView = threeButtonLeftView(), rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    ListItem.OneLine(text = "Text", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = threeButtonView(), rightAccessoryView = overFlowMenuView(), onClick ={})
 }
 @Composable
 fun singleLineList() {
-    OneLine.ListItem(text="Text", rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    ListItem.OneLine(text="Text", border = BorderType.Bottom, borderInset = BorderInset.Large, rightAccessoryView = overFlowMenuView(), onClick ={})
 }
 @Composable
 fun multiLineList() {
-    OneLine.ListItem(text="Text", rightAccessoryView = leftViewRowless(), onClick ={})
+    ListItem.OneLine(text="Text", rightAccessoryView = threeIconsView(), onClick ={})
 }
 @Composable
 fun overFlowButtonList() {
-    OneLine.ListItem(text = "Text", rightAccessoryView = rightViewOverFlowMenu(), onClick ={})
+    ListItem.OneLine(text = "Text", border = BorderType.Bottom, borderInset = BorderInset.Large, rightAccessoryView = overFlowMenuView(), onClick ={})
 }
 
 @Composable
 fun randomList(){
-    OneLine.ListItem(text ="Text", leftAccessoryView = leftView(), rightAccessoryView = arrowRightView(), onClick ={})
+    ListItem.OneLine(text ="Text", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = leftView(), rightAccessoryView = arrowView(), onClick ={})
 }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun googleList(){
-    androidx.compose.material.ListItem(icon = leftViewRowless(), trailing = rightViewOverFlowMenu(), text = {})
+    androidx.compose.material.ListItem(icon = threeIconsView(), trailing = overFlowMenuView(), text = {})
 }
 @Composable
 fun threeLineTextList() {
-    MultiLine.ListItem(text="Text", subText = "subtext", secondarySubText = "secondarySubText", rightAccessoryView = leftViewRowless(), onClick ={})
+    ListItem.OneLine(text="TextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextTextText", subText = "subtext", secondarySubText = "secondarysecondarysecondarysecondarysecondarysecondarysecondary", border = BorderType.Bottom, borderInset = BorderInset.Large, leftAccessoryView = multiIconLeftView(), rightAccessoryView = threeIconsView(), onClick ={})
 }
 @Composable
 fun twoLineTextList() {
-    MultiLine.ListItem(text="Text", subText = "subtext", rightAccessoryView = leftViewRowless(), onClick ={})
+    ListItem.OneLine(text="Text", border = BorderType.Bottom, borderInset = BorderInset.Large, subText = "subtext", rightAccessoryView = threeIconsView(), onClick ={})
 }
 @Composable
 fun multiIconLeftView(): @Composable (() -> Unit) {
@@ -196,7 +191,7 @@ fun multiIconLeftView(): @Composable (() -> Unit) {
 fun checkboxRightView(): @Composable (() -> Unit){
     var checked by remember { mutableStateOf(true) }
     return{
-        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(16.dp), verticalAlignment = CenterVertically) {
             Text("Value")
             CheckBox(enabled = checked, checked = !checked, onCheckedChanged = {
                 checked = !it
@@ -220,7 +215,7 @@ fun leftView(): @Composable (() -> Unit) {
     }
 }
 @Composable
-fun rightViewOverFlowMenu(): @Composable (() -> Unit){
+fun overFlowMenuView(): @Composable (() -> Unit){
     return{
         FluentTheme{
             var checked by remember { mutableStateOf(true) }
@@ -249,7 +244,7 @@ fun singleButton(): @Composable () -> Unit{
     }
 }
 @Composable
-fun threeButtonLeftView(): @Composable (() -> Unit)? {
+fun threeButtonView(): @Composable (() -> Unit)? {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     return {
@@ -295,10 +290,10 @@ fun threeButtonLeftView(): @Composable (() -> Unit)? {
     }
 }
 @Composable
-fun leftViewRowless(): @Composable (() -> Unit) {
+fun threeIconsView(): @Composable (() -> Unit) {
 
     return {
-        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             Icon(Icons.Outlined.ThumbUp, contentDescription = "thumbup")
             Icon(Icons.Outlined.AccountBox, contentDescription = "box")
             Icon(Icons.Outlined.Send, contentDescription = "send")
@@ -306,14 +301,14 @@ fun leftViewRowless(): @Composable (() -> Unit) {
     }
 }
 @Composable
-fun arrowRightView(): @Composable (() -> Unit){
+fun arrowView(): @Composable (() -> Unit){
     return{
         Icon(Icons.Outlined.ArrowForward, contentDescription = "arrow")
     }
 }
 
 @Composable
-fun radioButtonRightView(): @Composable (() -> Unit){
+fun radioButtonView(): @Composable (() -> Unit){
     return{
         Row() {
             RadioButton(onClick = { /*TODO*/ })

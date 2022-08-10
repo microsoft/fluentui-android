@@ -1,31 +1,21 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1Pressed
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground2
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground3
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body2
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1
 import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
-import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens.BorderSizeTokens.Thick
 import com.microsoft.fluentui.theme.token.GlobalTokens.BorderSizeTokens.Thin
 import com.microsoft.fluentui.theme.token.GlobalTokens.IconSizeTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.Large
@@ -35,7 +25,6 @@ import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XXSmall
 import com.microsoft.fluentui.theme.token.IconSize
 import com.microsoft.fluentui.theme.token.StateColor
-import com.microsoft.fluentui.theme.token.controlTokens.ListAccessoryType.Button
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.AvatarCarousel
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineThree
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.MultiLineTwo
@@ -73,6 +62,20 @@ enum class ListAccessoryType {
 enum class SectionHeaderStyle {
     Standard,
     Subtle
+}
+enum class BorderInset {
+    None,
+    Medium,
+    Large,
+    XXLarge,
+    XXXXLarge,
+    XXXXXXLarge
+}
+enum class BorderType {
+    No_Border,
+    Top,
+    Bottom,
+    Top_Bottom
 }
 
 @Parcelize
@@ -180,7 +183,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun height(listItemType: ListItemType): Dp {
+    open fun cellHeight(listItemType: ListItemType): Dp {
         return when (listItemType) {
             OneLine -> 48.dp
             MultiLineTwo -> 68.dp
@@ -188,6 +191,18 @@ open class ListItemTokens : ControlToken, Parcelable {
             AvatarCarousel -> 88.dp
             SectionHeader -> 48.dp
             SectionDescription -> 48.dp
+        }
+    }
+
+    @Composable
+    open fun borderInset(inset:BorderInset): Dp{
+        return when (inset) {
+            BorderInset.None -> 0.dp
+            BorderInset.Medium -> 16.dp
+            BorderInset.Large -> 56.dp
+            BorderInset.XXLarge -> 68.dp
+            BorderInset.XXXXLarge -> 72.dp
+            BorderInset.XXXXXXLarge -> 108.dp
         }
     }
 }
