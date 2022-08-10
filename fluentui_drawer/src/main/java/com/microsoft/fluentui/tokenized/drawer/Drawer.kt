@@ -119,7 +119,7 @@ class DrawerState(
     val isAnimationRunning: Boolean
         get() = swipeableState.isAnimationRunning
 
-    var openTriggered: Boolean = false
+    var animationInProgress: Boolean = false
 
     /**
      * Open the drawer with animation and suspend until it if fully opened or animation has been
@@ -130,10 +130,10 @@ class DrawerState(
      */
     suspend fun open() {
         enable = true
+        animationInProgress = true
         delay(50)
-        openTriggered = true
         animateTo(DrawerValue.Open, AnimationSpec)
-        openTriggered = false
+        animationInProgress = false
     }
 
     /**
@@ -144,7 +144,9 @@ class DrawerState(
      * @return the reason the close animation ended
      */
     suspend fun close() {
+        animationInProgress = true
         animateTo(DrawerValue.Closed, AnimationSpec)
+        animationInProgress = false
         enable = false
     }
 
@@ -540,7 +542,7 @@ private fun VerticalDrawer(
                                     }
                                     .height(pxToDp(bottomDrawerHeight))
                                     .onGloballyPositioned { layoutCoordinates ->
-                                        if (!drawerState.openTriggered && (drawerState.isClosed || layoutCoordinates.size.height == 0)
+                                        if (!drawerState.animationInProgress && (drawerState.isClosed || layoutCoordinates.size.height == 0)
                                         ) {
                                             onDismiss()
                                         }
@@ -716,7 +718,11 @@ fun Drawer(
             )
             {
                 val drawerShape: Shape =
-                        RoundedCornerShape(getDrawerTokens().borderRadius(type = behaviorType))
+                        when (behaviorType) {
+                            BehaviorType.BOTTOM -> RoundedCornerShape(topStart = getDrawerTokens().borderRadius(type = behaviorType), topEnd = getDrawerTokens().borderRadius(type = behaviorType))
+                            BehaviorType.TOP -> RoundedCornerShape(bottomStart = getDrawerTokens().borderRadius(type = behaviorType), bottomEnd = getDrawerTokens().borderRadius(type = behaviorType))
+                            else -> RoundedCornerShape(getDrawerTokens().borderRadius(type = behaviorType))
+                        }
                 val drawerElevation: Dp = getDrawerTokens().elevation(type = behaviorType)
                 val drawerBackgroundColor: Color =
                         getDrawerTokens().backgroundColor(type = behaviorType)
