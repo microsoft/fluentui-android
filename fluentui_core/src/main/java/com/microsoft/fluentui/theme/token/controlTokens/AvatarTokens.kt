@@ -124,13 +124,17 @@ import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Light
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Light
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
-import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
+
+enum class AvatarType {
+    Person,
+    Group,
+    Overflow
+}
 
 enum class AvatarSize {
     XSmall,
@@ -151,12 +155,11 @@ enum class AvatarStatus {
     Offline
 }
 
-enum class AvatarImageNA {
+enum class AvatarStyle {
     Standard,
     StandardInverted,
     Anonymous,
-    AnonymousAccent,
-    Initials
+    AnonymousAccent
 }
 
 enum class ActivityRingSize {
@@ -170,9 +173,17 @@ enum class ActivityRingSize {
 
 data class AvatarInfo(
         val size: AvatarSize = AvatarSize.Medium,
+        val type: AvatarType = AvatarType.Person,
         val active: Boolean = false,
         val status: AvatarStatus = AvatarStatus.Available,
-        val isOOO: Boolean = false
+        val isOOO: Boolean = false,
+        val isImageAvailable: Boolean = false,
+        val hasValidInitials: Boolean = false,
+        val calculatedColor: TokenSet<GlobalTokens.SharedColorsTokens, Color> = TokenSet { token ->
+            when (token) {
+                else -> Color.Unspecified
+            }
+        }
 ) : ControlInfo
 
 @Parcelize
@@ -182,20 +193,9 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
         const val Type: String = "Avatar"
     }
 
-    var avatarStyle: AvatarImageNA = AvatarImageNA.Standard
-
     @Composable
-    open fun overflowAvatarBackground(avatarInfo: AvatarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                themeMode = themeMode
-        )
-    }
-
-    @Composable
-    open fun overflowAvatarForeground(avatarInfo: AvatarInfo): Color {
-        return aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                themeMode = themeMode
-        )
+    open fun avatarStyle(avatarInfo: AvatarInfo): AvatarStyle {
+        return AvatarStyle.Standard
     }
 
     @Composable
@@ -224,8 +224,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
     @Composable
     open fun icon(avatarInfo: AvatarInfo): ImageVector {
-        return when (avatarStyle) {
-            AvatarImageNA.Standard, AvatarImageNA.StandardInverted ->
+        return when (avatarStyle(avatarInfo)) {
+            AvatarStyle.Standard, AvatarStyle.StandardInverted ->
                 when (avatarInfo.size) {
                     AvatarSize.XSmall -> AvatarIcons.Icon.Standard.Xsmall
                     AvatarSize.Small -> AvatarIcons.Icon.Standard.Small
@@ -235,7 +235,7 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
                     AvatarSize.XXLarge -> AvatarIcons.Icon.Standard.Xxlarge
                 }
 
-            AvatarImageNA.Anonymous, AvatarImageNA.AnonymousAccent ->
+            AvatarStyle.Anonymous, AvatarStyle.AnonymousAccent ->
                 when (avatarInfo.size) {
                     AvatarSize.XSmall -> AvatarIcons.Icon.Anonymous.Xsmall
                     AvatarSize.Small -> AvatarIcons.Icon.Anonymous.Small
@@ -244,56 +244,72 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
                     AvatarSize.XLarge -> AvatarIcons.Icon.Anonymous.Xlarge
                     AvatarSize.XXLarge -> AvatarIcons.Icon.Anonymous.Xxlarge
                 }
-            else -> ImageVector.Builder("", 0.dp, 0.dp, 0F, 0F).build()
         }
     }
 
     @Composable
-    open fun iconColor(avatarInfo: AvatarInfo): Color {
-        return when (avatarStyle) {
-            AvatarImageNA.Standard ->
-                aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.StandardInverted ->
-                aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.Anonymous ->
-                aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.AnonymousAccent ->
-                aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.Initials ->
-                Color.Red
+    open fun foregroundColor(avatarInfo: AvatarInfo): Color {
+        return if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
+            FluentColor(light = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.shade30],
+                    dark = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.tint40]).value(
+                    themeMode = themeMode
+            )
+        } else if (avatarInfo.type == AvatarType.Overflow) {
+            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                    themeMode = themeMode
+            )
+        } else {
+            when (avatarStyle(avatarInfo)) {
+                AvatarStyle.Standard ->
+                    aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            themeMode = themeMode
+                    )
+                AvatarStyle.StandardInverted ->
+                    aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                            themeMode = themeMode
+                    )
+                AvatarStyle.Anonymous ->
+                    aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                            themeMode = themeMode
+                    )
+                AvatarStyle.AnonymousAccent ->
+                    aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                            themeMode = themeMode
+                    )
+            }
         }
     }
 
     @Composable
     open fun backgroundColor(avatarInfo: AvatarInfo): Color {
-        return when (avatarStyle) {
-            AvatarImageNA.Standard ->
-                aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.StandardInverted ->
-                aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.Anonymous ->
-                aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        themeMode = themeMode
-                )
-            AvatarImageNA.AnonymousAccent ->
-                aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground4].value(
-                        themeMode = themeMode
-                )
-            else -> aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+        return if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
+            FluentColor(light = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.tint40],
+                    dark = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.shade30]).value(
                     themeMode = themeMode
             )
+        } else if (avatarInfo.type == AvatarType.Overflow) {
+            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
+            )
+        } else {
+            when (avatarStyle(avatarInfo)) {
+                AvatarStyle.Standard ->
+                    aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
+                    )
+                AvatarStyle.StandardInverted ->
+                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                            themeMode = themeMode
+                    )
+                AvatarStyle.Anonymous ->
+                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                            themeMode = themeMode
+                    )
+                AvatarStyle.AnonymousAccent ->
+                    aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground4].value(
+                            themeMode = themeMode
+                    )
+            }
         }
     }
 
@@ -531,14 +547,34 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
     @Composable
     open fun borderStroke(avatarInfo: AvatarInfo): List<BorderStroke> {
+        val glowColor: Color = if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
+            FluentColor(light = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.primary],
+                    dark = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.tint30]).value(
+                    themeMode = themeMode
+            )
+        } else if (avatarInfo.type == AvatarType.Overflow) {
+            aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                    themeMode = themeMode
+            )
+        } else {
+            when (avatarStyle(avatarInfo)) {
+                AvatarStyle.Standard, AvatarStyle.StandardInverted, AvatarStyle.AnonymousAccent -> aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
+                        themeMode = themeMode
+                )
+                AvatarStyle.Anonymous -> aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                        themeMode = themeMode
+                )
+            }
+        }
+
         return if (avatarInfo.active)
             when (avatarInfo.size) {
-                AvatarSize.XSmall -> activityRingToken.activeBorderStroke(ActivityRingSize.XSmall)
-                AvatarSize.Small -> activityRingToken.activeBorderStroke(ActivityRingSize.Small)
-                AvatarSize.Medium -> activityRingToken.activeBorderStroke(ActivityRingSize.Medium)
-                AvatarSize.Large -> activityRingToken.activeBorderStroke(ActivityRingSize.Large)
-                AvatarSize.XLarge -> activityRingToken.activeBorderStroke(ActivityRingSize.XLarge)
-                AvatarSize.XXLarge -> activityRingToken.activeBorderStroke(ActivityRingSize.XXLarge)
+                AvatarSize.XSmall -> activityRingToken.activeBorderStroke(ActivityRingSize.XSmall, glowColor)
+                AvatarSize.Small -> activityRingToken.activeBorderStroke(ActivityRingSize.Small, glowColor)
+                AvatarSize.Medium -> activityRingToken.activeBorderStroke(ActivityRingSize.Medium, glowColor)
+                AvatarSize.Large -> activityRingToken.activeBorderStroke(ActivityRingSize.Large, glowColor)
+                AvatarSize.XLarge -> activityRingToken.activeBorderStroke(ActivityRingSize.XLarge, glowColor)
+                AvatarSize.XXLarge -> activityRingToken.activeBorderStroke(ActivityRingSize.XXLarge, glowColor)
             }
         else
             when (avatarInfo.size) {
@@ -609,7 +645,7 @@ open class ActivityRingsToken : Parcelable {
     }
 
     @Composable
-    open fun activeBorderStroke(activityRingSize: ActivityRingSize): List<BorderStroke> {
+    open fun activeBorderStroke(activityRingSize: ActivityRingSize, glowColor: Color): List<BorderStroke> {
         return when (activityRingSize) {
             ActivityRingSize.XSmall -> listOf(
                     BorderStroke(
@@ -620,9 +656,7 @@ open class ActivityRingsToken : Parcelable {
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = themeMode
-                            )
+                            glowColor
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
@@ -640,9 +674,7 @@ open class ActivityRingsToken : Parcelable {
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = themeMode
-                            )
+                            glowColor
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
@@ -660,9 +692,7 @@ open class ActivityRingsToken : Parcelable {
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = themeMode
-                            )
+                            glowColor
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
@@ -680,9 +710,7 @@ open class ActivityRingsToken : Parcelable {
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = themeMode
-                            )
+                            glowColor
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
@@ -700,9 +728,7 @@ open class ActivityRingsToken : Parcelable {
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = themeMode
-                            )
+                            glowColor
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
@@ -720,9 +746,7 @@ open class ActivityRingsToken : Parcelable {
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],
-                            aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                    themeMode = themeMode
-                            )
+                            glowColor
                     ),
                     BorderStroke(
                             globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thicker],

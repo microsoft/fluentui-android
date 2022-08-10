@@ -16,11 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
+import com.example.theme.token.AnonymousAccentAvatarTokens
+import com.example.theme.token.AnonymousAvatarTokens
+import com.example.theme.token.StandardInvertedAvatarTokens
 import com.microsoft.fluentui.controls.Button
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarGroupStyle
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -52,16 +58,14 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                             isActive = isActive),
                                     Person("Amanda", "Brady",
                                             isActive = !isActive, status = AvatarStatus.Offline),
-                                    Person("Ashley", "McCarthy",
-                                            image = R.drawable.avatar_ashley_mccarthy,
+                                    Person("", "",
                                             isActive = isActive, status = AvatarStatus.DND, isOOO = true),
                                     Person("Carlos", "Slathery",
                                             isActive = !isActive, status = AvatarStatus.Busy, isOOO = true),
                                     Person("Celeste", "Burton",
                                             image = R.drawable.avatar_celeste_burton,
                                             isActive = isActive, status = AvatarStatus.Away),
-                                    Person("Tim", "Deboer",
-                                            image = R.drawable.avatar_tim_deboer,
+                                    Person("", "",
                                             isActive = isActive, status = AvatarStatus.Unknown),
                                     Person("Miguel", "Garcia",
                                             image = R.drawable.avatar_miguel_garcia,
@@ -109,8 +113,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Small: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.StandardInverted
-                                    AvatarGroup(group, size = AvatarSize.Small, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.Small, maxAvatar = maxAvatar, avatarToken = AnonymousAvatarTokens())
                                 }
                             }
                         }
@@ -132,8 +135,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Large: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.Anonymous
-                                    AvatarGroup(group, size = AvatarSize.Large, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.Large, maxAvatar = maxAvatar, avatarToken = AnonymousAccentAvatarTokens())
                                 }
                             }
                         }
@@ -144,8 +146,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XLarge: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.Initials
-                                    AvatarGroup(group, size = AvatarSize.XLarge, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.XLarge, maxAvatar = maxAvatar)
                                 }
                             }
                         }
@@ -156,8 +157,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XXLarge: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.AnonymousAccent
-                                    AvatarGroup(group, size = AvatarSize.XXLarge, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.XXLarge, maxAvatar = maxAvatar, avatarToken = StandardInvertedAvatarTokens())
                                 }
                             }
                         }
@@ -186,8 +186,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Small: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.StandardInverted
-                                    AvatarGroup(group, size = AvatarSize.Small, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.Small, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = AnonymousAvatarTokens())
                                 }
                             }
                         }
@@ -209,8 +208,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Large: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.Anonymous
-                                    AvatarGroup(group, size = AvatarSize.Large, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.Large, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = AnonymousAccentAvatarTokens())
                                 }
                             }
                         }
@@ -221,8 +219,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XLarge: ")
                                 }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.Initials
-                                    AvatarGroup(group, size = AvatarSize.XLarge, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.XLarge, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar)
                                 }
                             }
                         }
@@ -231,8 +228,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     modifier = Modifier.fillMaxSize()) {
                                 item { Text("XXLarge: ") }
                                 item {
-                                    avatarToken.avatarStyle = AvatarImageNA.AnonymousAccent
-                                    AvatarGroup(group, size = AvatarSize.XXLarge, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = avatarToken)
+                                    AvatarGroup(group, size = AvatarSize.XXLarge, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = StandardInvertedAvatarTokens())
                                 }
                             }
                         }

@@ -11,15 +11,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
+import com.example.theme.token.AnonymousAccentAvatarTokens
+import com.example.theme.token.AnonymousAvatarTokens
+import com.example.theme.token.StandardInvertedAvatarTokens
 import com.microsoft.fluentui.controls.Button
-import com.microsoft.fluentui.persona.AvatarStyle
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.controlTokens
-import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarImageNA
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -53,22 +51,23 @@ class V2AvatarViewActivity : DemoActivity() {
 
                     Divider()
 
-                    val avatarTokens = AvatarTokens()
-                    controlTokens.updateTokens(ControlTokens.ControlType.Avatar, avatarTokens)
-
                     Row(modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
                             verticalAlignment = Alignment.CenterVertically) {
                         val person: Person = Person("Allan", "Munger",
                                 image = R.drawable.avatar_allan_munger, isActive = isActive,
                                 status = AvatarStatus.Available, isOOO = isOOO)
+                        val personNoImage: Person = Person("Allan", "Munger",
+                                isActive = isActive,
+                                status = AvatarStatus.Available, isOOO = isOOO)
 
                         Avatar(person, size = AvatarSize.XSmall, enableActivityRings = true)
                         Avatar(person, size = AvatarSize.Small, enableActivityRings = true)
                         Avatar(person, size = AvatarSize.Medium, enableActivityRings = true)
-                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true)
-                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true)
-                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true)
+
+                        Avatar(personNoImage, size = AvatarSize.Large, enableActivityRings = true, avatarToken = AnonymousAvatarTokens())
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = AnonymousAvatarTokens())
+                        Avatar(personNoImage, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = AnonymousAvatarTokens())
                     }
 
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -92,13 +91,12 @@ class V2AvatarViewActivity : DemoActivity() {
                         val person: Person = Person("Kat", "Larson", isActive = isActive,
                                 status = AvatarStatus.Busy, isOOO = isOOO)
 
-                        avatarTokens.avatarStyle = AvatarImageNA.AnonymousAccent
-                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = false, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Small, enableActivityRings = false, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = false, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Large, enableActivityRings = false, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = false, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = false, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = false, avatarToken = AnonymousAccentAvatarTokens())
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = false, avatarToken = AnonymousAccentAvatarTokens())
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = false, avatarToken = AnonymousAccentAvatarTokens())
+                        Avatar(person, size = AvatarSize.Large, enableActivityRings = false, avatarToken = AnonymousAccentAvatarTokens())
+                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = false, avatarToken = AnonymousAccentAvatarTokens())
+                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = false, avatarToken = AnonymousAccentAvatarTokens())
                     }
 
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -107,14 +105,17 @@ class V2AvatarViewActivity : DemoActivity() {
                         val person: Person = Person("Robin", "Counts",
                                 isActive = isActive, status = AvatarStatus.DND, isOOO = isOOO)
 
-                        avatarTokens.avatarStyle = AvatarImageNA.Initials
-                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true, avatarToken = avatarTokens)
-                        avatarTokens.avatarStyle = AvatarImageNA.Standard
-                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = avatarTokens)
+                        val personNoInitial: Person = Person("123", "456",
+                                isActive = isActive, status = AvatarStatus.DND, isOOO = isOOO)
+
+
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true)
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true)
+
+                        Avatar(personNoInitial, size = AvatarSize.Large, enableActivityRings = true, avatarToken = StandardInvertedAvatarTokens())
+                        Avatar(personNoInitial, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = StandardInvertedAvatarTokens())
+                        Avatar(personNoInitial, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = StandardInvertedAvatarTokens())
                     }
 
                     Row(modifier = Modifier.fillMaxWidth(),
@@ -122,20 +123,18 @@ class V2AvatarViewActivity : DemoActivity() {
                             verticalAlignment = Alignment.CenterVertically) {
                         val person: Person = Person("Wanda", "Howard",
                                 isActive = isActive, status = AvatarStatus.Offline, isOOO = isOOO)
+                        val personNoName: Person = Person("", "",
+                                isActive = isActive, status = AvatarStatus.Offline, isOOO = isOOO)
 
-                        avatarTokens.avatarStyle = AvatarImageNA.StandardInverted
-                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = false, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(person, size = AvatarSize.XSmall, enableActivityRings = false, avatarToken = StandardInvertedAvatarTokens())
+                        Avatar(person, size = AvatarSize.Small, enableActivityRings = true, avatarToken = StandardInvertedAvatarTokens())
+                        Avatar(person, size = AvatarSize.Medium, enableActivityRings = true, avatarToken = StandardInvertedAvatarTokens())
 
-                        avatarTokens.avatarStyle = AvatarImageNA.Anonymous
-
-                        Avatar(person, size = AvatarSize.Large, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = avatarTokens)
-                        Avatar(person, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = avatarTokens)
+                        Avatar(personNoName, size = AvatarSize.Large, enableActivityRings = false, avatarToken = AnonymousAvatarTokens())
+                        Avatar(personNoName, size = AvatarSize.XLarge, enableActivityRings = true, avatarToken = AnonymousAvatarTokens())
+                        Avatar(personNoName, size = AvatarSize.XXLarge, enableActivityRings = true, avatarToken = AnonymousAvatarTokens())
                     }
 
-                    avatarTokens.avatarStyle = AvatarImageNA.Initials
                     Row(modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
                             verticalAlignment = Alignment.CenterVertically) {
@@ -152,12 +151,28 @@ class V2AvatarViewActivity : DemoActivity() {
                                         image = R.drawable.avatar_amanda_brady, isActive = isActive,
                                         status = AvatarStatus.Away, isOOO = isOOO)
                         ), "Gang Of 4")
-                        Avatar(group, size = AvatarSize.XSmall, avatarToken = avatarTokens)
-                        Avatar(group, size = AvatarSize.Small, avatarToken = avatarTokens)
-                        Avatar(group, size = AvatarSize.Medium, avatarToken = avatarTokens)
-                        Avatar(group, size = AvatarSize.Large, avatarToken = avatarTokens)
-                        Avatar(group, size = AvatarSize.XLarge, avatarToken = avatarTokens)
-                        Avatar(group, size = AvatarSize.XXLarge, avatarToken = avatarTokens)
+
+                        val groupNoName: Group = Group(listOf(
+                                Person("Allan", "Munger",
+                                        image = R.drawable.avatar_allan_munger, isActive = isActive,
+                                        status = AvatarStatus.Available, isOOO = isOOO),
+                                Person("Wanda", "Howard",
+                                        image = R.drawable.avatar_wanda_howard,
+                                        status = AvatarStatus.Busy, isOOO = isOOO),
+                                Person("Kat", "Larson",
+                                        status = AvatarStatus.Busy, isOOO = isOOO),
+                                Person("Amanda", "Brady",
+                                        image = R.drawable.avatar_amanda_brady, isActive = isActive,
+                                        status = AvatarStatus.Away, isOOO = isOOO)
+                        ), "")
+
+                        Avatar(group, size = AvatarSize.XSmall)
+                        Avatar(group, size = AvatarSize.Small, avatarToken = StandardInvertedAvatarTokens())
+                        Avatar(group, size = AvatarSize.Medium, avatarToken = AnonymousAvatarTokens())
+
+                        Avatar(groupNoName, size = AvatarSize.Large, avatarToken = AnonymousAccentAvatarTokens())
+                        Avatar(group, size = AvatarSize.XLarge)
+                        Avatar(groupNoName, size = AvatarSize.XXLarge, avatarToken = StandardInvertedAvatarTokens())
                     }
                 }
             }

@@ -87,6 +87,8 @@ dependencies {
     implementation ("androidx.compose.foundation:foundation-layout:$composeVersion")
     implementation ("androidx.compose.material:material:$composeVersion")
     implementation 'androidx.test.ext:junit-ktx:1.1.3'
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$composeVersion")
 
     // App Center
     def appCenterSdkVersion = '1.8.0'

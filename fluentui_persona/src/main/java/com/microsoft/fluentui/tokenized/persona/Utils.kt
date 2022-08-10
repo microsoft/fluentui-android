@@ -2,7 +2,6 @@ package com.microsoft.fluentui.tokenized.persona
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.text.toUpperCase
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 
 
@@ -16,26 +15,37 @@ class Person(
         val status: AvatarStatus = AvatarStatus.Available,
         val isOOO: Boolean = false
 ) {
+    fun getName(): String {
+        return firstName + " " + lastName
+    }
+
+    fun isImageAvailable(): Boolean {
+        return image != null || imageBitmap != null
+    }
+
     fun getInitials(): String {
         var initial: String = ""
-        if (firstName.length >= 2) {
-            if (lastName.isBlank())
-                initial += firstName.subSequence(0, 2)
-            else {
-                initial += firstName[0]
-                initial += lastName[0]
-            }
-        } else if (firstName.isNotBlank()) {
-            initial += firstName
-        } else {
-            if (lastName.isNotBlank())
-                initial += lastName[0]
+
+        for (char in firstName) {
+            if (!char.isLetter())
+                continue
+            initial += char
+            break
         }
 
-        if (initial.isBlank())
-            initial = "AU"
+        for (char in lastName) {
+            if (!char.isLetter())
+                continue
+            initial += char
+            break
+        }
 
-        return initial
+        if (initial.isBlank()) {
+            if (!email.isNullOrBlank())
+                initial += email[0]
+        }
+
+        return initial.uppercase()
     }
 }
 
@@ -46,6 +56,10 @@ class Group(
         @DrawableRes val image: Int? = null,
         val imageBitmap: ImageBitmap? = null,
 ) {
+    fun isImageAvailable(): Boolean {
+        return image != null || imageBitmap != null
+    }
+
     fun getInitials(): String {
         var initials: String = ""
         if (groupName.isNotBlank()) {
@@ -57,6 +71,10 @@ class Group(
                     break
             }
         }
-        return if (initials.isNotBlank()) initials.uppercase() else "AG"
+        if (!initials.isNotBlank()) {
+            if (!email.isNullOrBlank())
+                initials += email[0]
+        }
+        return initials.uppercase()
     }
 }
