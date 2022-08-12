@@ -28,6 +28,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.dismiss
 import androidx.compose.ui.semantics.semantics
@@ -251,6 +252,7 @@ private fun Scrim(
             Modifier
                     .fillMaxSize()
                     .then(dismissDrawer)
+                    .testTag(DRAWER_SCRIM_TAG)
     ) {
         drawRect(color, alpha = fraction())
     }
@@ -272,6 +274,11 @@ private fun pxToDp(value: Float) = (value / Resources
 private fun dpToPx(value: Dp) = (value * Resources
         .getSystem()
         .displayMetrics.density).value
+
+//Tag use for testing
+private const val DRAWER_HANDLE_TAG = "Drawer Handle"
+private const val DRAWER_CONTENT_TAG = "Drawer Content"
+private const val DRAWER_SCRIM_TAG = "Drawer Scrim"
 
 /**
  *
@@ -406,7 +413,8 @@ private fun HorizontalDrawer(
                                             }
                                         }
                                     },
-                            ), content = { drawerContent() })
+                            )
+                            .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
                 }
             }
         }
@@ -575,8 +583,8 @@ private fun VerticalDrawer(
                                                             }
                                                         }
                                                     },
-
                                                     )
+                                            .testTag(DRAWER_HANDLE_TAG)
                             ) {
                                 Icon(
                                         painterResource(id = R.drawable.ic_drawer_handle),
@@ -587,7 +595,8 @@ private fun VerticalDrawer(
                             Column(modifier = Modifier
                                     .verticalScroll(
                                             rememberScrollState()
-                                    ), content = { drawerContent() })
+                                    )
+                                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
                         }
                     }
                 } else {
@@ -625,7 +634,8 @@ private fun VerticalDrawer(
                                         top.linkTo(parent.top)
                                         bottom.linkTo(drawerHandleConstrain.top)
                                     }
-                                    .focusTarget(), content = { drawerContent() }
+                                    .focusTarget()
+                                    .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() }
                             )
                             Column(horizontalAlignment = Alignment.CenterHorizontally,
                                     modifier = Modifier
@@ -650,6 +660,7 @@ private fun VerticalDrawer(
                                                         }
                                                     },
                                             )
+                                            .testTag(DRAWER_HANDLE_TAG)
                             ) {
                                 Icon(
                                         painterResource(id = R.drawable.ic_drawer_handle),
