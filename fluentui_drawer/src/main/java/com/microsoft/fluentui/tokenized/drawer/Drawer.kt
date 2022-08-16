@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.drawer
 
-import android.content.res.Resources
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.*
@@ -43,6 +42,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
+import com.microsoft.fluentui.util.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -266,14 +266,6 @@ private val DrawerVelocityThreshold = 400.dp
 private val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
 
 private const val DrawerOpenFraction = 0.5f
-
-private fun pxToDp(value: Float) = (value / Resources
-        .getSystem()
-        .displayMetrics.density).dp
-
-private fun dpToPx(value: Dp) = (value * Resources
-        .getSystem()
-        .displayMetrics.density).value
 
 //Tag use for testing
 private const val DRAWER_HANDLE_TAG = "Drawer Handle"
@@ -583,7 +575,7 @@ private fun VerticalDrawer(
                                                             }
                                                         }
                                                     },
-                                                    )
+                                            )
                                             .testTag(DRAWER_HANDLE_TAG)
                             ) {
                                 Icon(
