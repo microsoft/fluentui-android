@@ -4,7 +4,18 @@ import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.ImageBitmap
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 
-
+/**
+ * Data Class for Person
+ *
+ * @property firstName First Name of person
+ * @property lastName Last Name of person
+ * @property email Email Id for person
+ * @property image Drawable Image for a person
+ * @property imageBitmap Bitmap Image for a person
+ * @property isActive Enable/Disable Active status of a person
+ * @property status Current Status of the person
+ * @property isOOO Enable/Disable Out-Of-Office flag for person
+ */
 class Person(
         val firstName: String = "Anonymous",
         val lastName: String = "",
@@ -16,7 +27,10 @@ class Person(
         val isOOO: Boolean = false
 ) {
     fun getName(): String {
-        return firstName + " " + lastName
+        val name = "$firstName $lastName"
+        if (name.trim().isBlank())
+            return "Anonymous"
+        return name
     }
 
     fun isImageAvailable(): Boolean {
@@ -40,15 +54,23 @@ class Person(
             break
         }
 
-        if (initial.isBlank()) {
-            if (!email.isNullOrBlank())
-                initial += email[0]
+        if (initial.isBlank() && !email.isNullOrBlank()) {
+            initial += email[0]
         }
 
         return initial.uppercase()
     }
 }
 
+/**
+ * Data Class for Group
+ *
+ * @property members List of [Person] in group
+ * @property groupName Name of the group
+ * @property email E-mail ID for the group
+ * @property image Drawable Image for the group
+ * @property imageBitmap Bitmap Image for the group
+ */
 class Group(
         val members: List<Person> = listOf(),
         val groupName: String = "",
@@ -61,20 +83,19 @@ class Group(
     }
 
     fun getInitials(): String {
-        var initials: String = ""
+        var initial = ""
         if (groupName.isNotBlank()) {
             for (word in groupName.split(" ")) {
                 if (word.isNotBlank())
-                    initials += word[0]
+                    initial += word[0]
 
-                if (initials.length == 2)
+                if (initial.length == 2)
                     break
             }
         }
-        if (!initials.isNotBlank()) {
-            if (!email.isNullOrBlank())
-                initials += email[0]
+        if (initial.isBlank() && !email.isNullOrBlank()) {
+            initial += email[0]
         }
-        return initials.uppercase()
+        return initial.uppercase()
     }
 }

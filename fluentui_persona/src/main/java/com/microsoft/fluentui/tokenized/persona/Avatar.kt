@@ -40,6 +40,18 @@ import kotlin.math.abs
 val LocalAvatarTokens = compositionLocalOf { AvatarTokens() }
 val LocalAvatarInfo = compositionLocalOf { AvatarInfo() }
 
+/**
+ * API to generate an avatar for a [Person]. Avatar behavior uses person image(if available),
+ * Initials generated from First and Last name of Person(if provided)
+ * or Anonymous Icons otherwise (as set in AvatarTokens).
+ *
+ * @param person Data Class for the person whose Avatar is to be generated.
+ * @param modifier Optional Modifier for avatar
+ * @param size Set Size of Avatar. Default: [AvatarSize.Medium]
+ * @param enableActivityRings Enable/Disable Activity Rings on Avatar
+ * @param enablePresence Enable/Disable Presence Indicator on Avatar
+ * @param avatarToken Token to provide appearance values to Avatar
+ */
 @Composable
 fun Avatar(person: Person,
            modifier: Modifier = Modifier,
@@ -69,9 +81,9 @@ fun Avatar(person: Person,
         Box(modifier
                 .requiredSize(avatarSize)
                 .semantics(mergeDescendants = false) {
-                    contentDescription = "${person.firstName} ${person.lastName}. " +
+                    contentDescription = "${person.getName()}. " +
                             "${if (enablePresence) "Status, ${person.status}," else ""}. " +
-                            "${if (person.isOOO) "Out Of Office," else ""}. " +
+                            "${if (enablePresence && person.isOOO) "Out Of Office," else ""}. " +
                             "${if (person.isActive) "Active" else "Inactive"} ."
                 }, contentAlignment = Alignment.Center) {
             Box(Modifier
@@ -120,6 +132,16 @@ fun Avatar(person: Person,
     }
 }
 
+/**
+ * API to generate an avatar for a [Group]. Avatar behavior uses group image(if available),
+ * Initials generated from Group Name(if provided)
+ * or Anonymous Icons otherwise (as set in AvatarTokens).
+ *
+ * @param group Data Class for the person whose Avatar is to be generated.
+ * @param modifier Optional Modifier for avatar
+ * @param size Set Size of Avatar. Default: [AvatarSize.Medium]
+ * @param avatarToken Token to provide appearance values to Avatar
+ */
 @Composable
 fun Avatar(
         group: Group,
@@ -192,6 +214,15 @@ fun Avatar(
     }
 }
 
+/**
+ * API to create an overflow avatar to depict overflow count.
+ *
+ * @param overflowCount Magnitude of overflow
+ * @param modifier Optional modifier for Overflow avatar
+ * @param size Set Size of Avatar. Default: [AvatarSize.Medium]
+ * @param enableActivityRings Enable/Disable Activity Rings on Avatar
+ * @param avatarToken Token to provide appearance values to Avatar
+ */
 @Composable
 fun Avatar(overflowCount: Int,
            modifier: Modifier = Modifier,
@@ -292,31 +323,4 @@ fun calculatedColor(avatarString: String): TokenSet<GlobalTokens.SharedColorsTok
     )
 
     return globalTokens.sharedColors[colors[abs(avatarString.hashCode()) % colors.size]]
-
-    /*@Composable
-    fun background(): Color {
-        val colorSet = colors[abs(this.inputString.hashCode()) % colors.size]
-        return FluentColor(
-                light = globalTokens.sharedColors[colorSet][GlobalTokens.SharedColorsTokens.tint40],
-                dark = globalTokens.sharedColors[colorSet][GlobalTokens.SharedColorsTokens.shade30]
-        ).value(themeMode)
-    }
-[
-    @Composable
-    fun foreground(): Color {
-        val colorSet = colors[abs(this.inputString.hashCode()) % colors.size]
-        return FluentColor(
-                light = globalTokens.sharedColors[colorSet][GlobalTokens.SharedColorsTokens.shade30],
-                dark = globalTokens.sharedColors[colorSet][GlobalTokens.SharedColorsTokens.tint40]
-        ).value(themeMode)
-    }
-
-    @Composable
-    fun border(): Color {
-        val colorSet = colors[abs(this.inputString.hashCode()) % colors.size]
-        return FluentColor(
-                light = globalTokens.sharedColors[colorSet][GlobalTokens.SharedColorsTokens.primary],
-                dark = globalTokens.sharedColors[colorSet][GlobalTokens.SharedColorsTokens.tint30]
-        ).value(themeMode)
-    }*/
 }

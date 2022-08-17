@@ -16,15 +16,15 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
-class V2AvatarViewActivityUITest {
+class V2AvatarActivityUITest {
 
     private fun launchActivity() {
-        ActivityScenario.launch<V2AvatarViewActivity>(setUpIntentForActivity())
+        ActivityScenario.launch<V2AvatarActivity>(setUpIntentForActivity())
     }
 
     private fun setUpIntentForActivity(): Intent {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2AvatarViewActivity::class.java)
+        val intent = Intent(targetContext, V2AvatarActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
         return intent
     }

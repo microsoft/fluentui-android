@@ -14,7 +14,6 @@ data class CheckBoxInfo(
         val checked: Boolean = false,
 ) : ControlInfo
 
-
 @Parcelize
 open class CheckBoxTokens : ControlToken, Parcelable {
 

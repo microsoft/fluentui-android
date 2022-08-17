@@ -24,7 +24,7 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
-class V2AvatarViewActivity : DemoActivity() {
+class V2AvatarActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
@@ -34,7 +34,6 @@ class V2AvatarViewActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val compose_here = findViewById<ComposeView>(R.id.compose_here)
-        val context = this
 
         compose_here.setContent {
             FluentTheme {

@@ -13,15 +13,15 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
-class V2AvatarGroupViewActivityUITest {
+class V2AvatarGroupActivityUITest {
 
     private fun launchActivity() {
-        ActivityScenario.launch<V2AvatarGroupViewActivity>(setUpIntentForActivity())
+        ActivityScenario.launch<V2AvatarGroupActivity>(setUpIntentForActivity())
     }
 
     private fun setUpIntentForActivity(): Intent {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2AvatarGroupViewActivity::class.java)
+        val intent = Intent(targetContext, V2AvatarGroupActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
         return intent
     }

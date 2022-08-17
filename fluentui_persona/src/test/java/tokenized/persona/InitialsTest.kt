@@ -38,7 +38,7 @@ class InitialsTest {
 
     @Test
     fun testGetInitialsWithDigits(){
-        val expectedInitials = "F2"
+        val expectedInitials = "FN"
         val resultantInitials = personWithDigit.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
@@ -59,7 +59,7 @@ class InitialsTest {
 
     @Test
     fun testGetInitialsNoNameNoEmail(){
-        val expectedInitials = "#"
+        val expectedInitials = ""
         val resultantInitials = noNameNoEmailPerson.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
@@ -73,7 +73,7 @@ class InitialsTest {
 
     @Test
     fun testGetGroupInitialsNoNameNoEmail() {
-        val expectedInitials = "#"
+        val expectedInitials = ""
         val resultantInitials = groupNoNameNoEmail.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }

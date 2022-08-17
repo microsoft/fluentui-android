@@ -33,7 +33,7 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
-class V2AvatarGroupViewActivity : DemoActivity() {
+class V2AvatarGroupActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
@@ -43,13 +43,13 @@ class V2AvatarGroupViewActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val compose_here = findViewById<ComposeView>(R.id.compose_here)
-        val context = this
 
         compose_here.setContent {
             FluentTheme {
                 Column(Modifier.background(Color.LightGray), verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)) {
                     var isActive by rememberSaveable { mutableStateOf(false) }
-                    var maxAvatar by rememberSaveable { mutableStateOf(1) }
+                    var enablePresence by rememberSaveable { mutableStateOf(true) }
+                    var maxVisibleAvatar by rememberSaveable { mutableStateOf(1) }
 
                     val group = Group(
                             listOf(
@@ -77,11 +77,11 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                             .fillMaxWidth()
                             .padding(5.dp), horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalAlignment = Alignment.CenterVertically) {
-                        Button(onClick = { if (maxAvatar > 0) maxAvatar-- }, text = "-")
-                        Text("${maxAvatar}")
-                        Button(onClick = { maxAvatar++ }, text = "+")
-
+                        Button(onClick = { if (maxVisibleAvatar > 0) maxVisibleAvatar-- }, text = "-")
+                        Text("${maxVisibleAvatar}")
+                        Button(onClick = { maxVisibleAvatar++ }, text = "+")
                         Button(onClick = { isActive = !isActive }, text = "Swap Active State")
+                        Button(onClick = { enablePresence = !enablePresence }, text = "Toggle Presence")
                     }
 
                     Divider()
@@ -102,7 +102,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XSmall: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XSmall, maxAvatar = maxAvatar)
+                                    AvatarGroup(group, size = AvatarSize.XSmall, maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
                                 }
                             }
                         }
@@ -113,7 +113,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Small: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Small, maxAvatar = maxAvatar, avatarToken = AnonymousAvatarTokens())
+                                    AvatarGroup(group, size = AvatarSize.Small, maxVisibleAvatar = maxVisibleAvatar,
+                                            enablePresence = enablePresence, avatarToken = AnonymousAvatarTokens())
                                 }
                             }
                         }
@@ -124,7 +125,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Medium: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Medium, maxAvatar = maxAvatar)
+                                    AvatarGroup(group, size = AvatarSize.Medium, maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
                                 }
                             }
                         }
@@ -135,7 +136,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Large: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Large, maxAvatar = maxAvatar, avatarToken = AnonymousAccentAvatarTokens())
+                                    AvatarGroup(group, size = AvatarSize.Large, maxVisibleAvatar = maxVisibleAvatar,
+                                            enablePresence = enablePresence, avatarToken = AnonymousAccentAvatarTokens())
                                 }
                             }
                         }
@@ -146,7 +148,7 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XLarge: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XLarge, maxAvatar = maxAvatar)
+                                    AvatarGroup(group, size = AvatarSize.XLarge, maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
                                 }
                             }
                         }
@@ -157,7 +159,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XXLarge: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XXLarge, maxAvatar = maxAvatar, avatarToken = StandardInvertedAvatarTokens())
+                                    AvatarGroup(group, size = AvatarSize.XXLarge, maxVisibleAvatar = maxVisibleAvatar,
+                                            enablePresence = enablePresence, avatarToken = StandardInvertedAvatarTokens())
                                 }
                             }
                         }
@@ -175,7 +178,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XSmall: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XSmall, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar)
+                                    AvatarGroup(group, size = AvatarSize.XSmall, style = AvatarGroupStyle.Pile,
+                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
                                 }
                             }
                         }
@@ -186,7 +190,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Small: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Small, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = AnonymousAvatarTokens())
+                                    AvatarGroup(group, size = AvatarSize.Small, style = AvatarGroupStyle.Pile,
+                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence, avatarToken = AnonymousAvatarTokens())
                                 }
                             }
                         }
@@ -197,7 +202,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Medium: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Medium, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar)
+                                    AvatarGroup(group, size = AvatarSize.Medium, style = AvatarGroupStyle.Pile,
+                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
                                 }
                             }
                         }
@@ -208,7 +214,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("Large: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Large, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = AnonymousAccentAvatarTokens())
+                                    AvatarGroup(group, size = AvatarSize.Large, style = AvatarGroupStyle.Pile, maxVisibleAvatar = maxVisibleAvatar,
+                                            enablePresence = enablePresence, avatarToken = AnonymousAccentAvatarTokens())
                                 }
                             }
                         }
@@ -219,7 +226,8 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     Text("XLarge: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XLarge, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar)
+                                    AvatarGroup(group, size = AvatarSize.XLarge, style = AvatarGroupStyle.Pile,
+                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
                                 }
                             }
                         }
@@ -228,7 +236,9 @@ class V2AvatarGroupViewActivity : DemoActivity() {
                                     modifier = Modifier.fillMaxSize()) {
                                 item { Text("XXLarge: ") }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XXLarge, style = AvatarGroupStyle.Pile, maxAvatar = maxAvatar, avatarToken = StandardInvertedAvatarTokens())
+                                    AvatarGroup(group, size = AvatarSize.XXLarge, style = AvatarGroupStyle.Pile,
+                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence,
+                                            avatarToken = StandardInvertedAvatarTokens())
                                 }
                             }
                         }

@@ -1,7 +1,5 @@
 package com.microsoft.fluentui.tokenized.persona
 
-import android.widget.Button
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -16,41 +14,61 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import java.lang.Integer.max
-import java.lang.Integer.min
 
 val LocalAvatarGroupTokens = compositionLocalOf { AvatarGroupTokens() }
 val LocalAvatarGroupInfo = compositionLocalOf { AvatarGroupInfo() }
 
 const val DEFAULT_MAX_AVATAR = 5
 
+/**
+ * API to create a group of Avatar. This can be done in 2 formats, [AvatarGroupStyle.Stack] or [AvatarGroupStyle.Pile].
+ * Stack has negative spacing between Avatars whereas Pile has positive.
+ * Activity Rings Can be enabled in both type of Groups, but presence indicator can be seen only in Pile
+ *
+ * @param group [Group] of people whose Avatar has to be created
+ * @param modifier Optional modifier for AvatarGroup
+ * @param size Set size of AvatarGroup. Default: [AvatarSize.Medium]
+ * @param style Set style of AvatarGroup. Default: [AvatarGroupStyle.Stack]
+ * @param maxVisibleAvatar Maximum number of avatars to be displayed. If number is less than total Group size, Overflow Avatar is added.
+ * @param enablePresence Enable/Disable Presence Indicator in Avatars. Works only for [AvatarGroupStyle.Pile]
+ * @param avatarToken Token to provide appearance values to Avatar
+ * @param avatarGroupToken Token to provide appearance values to AvatarGroup
+ */
 @Composable
 fun AvatarGroup(
         group: Group,
         modifier: Modifier = Modifier,
         size: AvatarSize = AvatarSize.Medium,
         style: AvatarGroupStyle = AvatarGroupStyle.Stack,
-        maxAvatar: Int = DEFAULT_MAX_AVATAR,
+        maxVisibleAvatar: Int = DEFAULT_MAX_AVATAR,
+        enablePresence: Boolean = false,
         avatarToken: AvatarTokens? = null,
         avatarGroupToken: AvatarGroupTokens? = null
 ) {
+    if (group.members.isEmpty())
+        throw IllegalArgumentException("Group requires a minimum of 1 member.")
 
     val token = avatarGroupToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
 
-    var maxAvatars = 1
-    if (maxAvatar < 1)
-        maxAvatars = 1
-    else if (maxAvatar > group.members.size)
-        maxAvatars = group.members.size
+    var maxVisibleAvatars = 1
+    if (maxVisibleAvatar < 1)
+        maxVisibleAvatars = 1
+    else if (maxVisibleAvatar > group.members.size)
+        maxVisibleAvatars = group.members.size
     else
-        maxAvatars = maxAvatar
+        maxVisibleAvatars = maxVisibleAvatar
+
+    var enablePresence: Boolean = enablePresence
+    if (style == AvatarGroupStyle.Stack)
+        enablePresence = false
 
     CompositionLocalProvider(
             LocalAvatarGroupTokens provides token,
             LocalAvatarGroupInfo provides AvatarGroupInfo(size, style)
     ) {
         val spacing: MutableList<Int> = mutableListOf()
-        for (i in 0 until min(maxAvatars, group.members.size)) {
+        for (i in 0 until maxVisibleAvatars) {
             val person = group.members[i]
             if (i != 0) {
                 spacing.add(with(LocalDensity.current) {
@@ -58,7 +76,7 @@ fun AvatarGroup(
                 })
             }
         }
-        if (group.members.size > maxAvatars) {
+        if (group.members.size > maxVisibleAvatars) {
             spacing.add(with(LocalDensity.current) {
                 getAvatarGroupTokens().spacing(getAvatarGroupInfo(), false).roundToPx()
             })
@@ -68,13 +86,16 @@ fun AvatarGroup(
             contentDescription = "Group Name: ${group.groupName}. Total ${group.members.size} members. "
         }
 
-        Layout(modifier = modifier.padding(8.dp).then(semanticModifier), content = {
-            for (i in 0 until min(maxAvatars, group.members.size)) {
+        Layout(modifier = modifier
+                .padding(8.dp)
+                .then(semanticModifier), content = {
+            for (i in 0 until maxVisibleAvatars) {
                 val person = group.members[i]
-                Avatar(person, size = size, enableActivityRings = true, enablePresence = false, avatarToken = avatarToken)
+                Avatar(person, size = size, enableActivityRings = true, enablePresence = enablePresence, avatarToken = avatarToken)
             }
-            if (group.members.size > maxAvatars) {
-                Avatar(group.members.size - maxAvatars, size = size, enableActivityRings = true, avatarToken = avatarToken)
+            if (group.members.size > maxVisibleAvatars) {
+                Avatar(group.members.size - maxVisibleAvatars, size = size,
+                        enableActivityRings = true, avatarToken = avatarToken)
             }
         }) { measurables, constraints ->
             val placeables = measurables.map { measurable ->
