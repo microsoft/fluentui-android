@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -34,10 +34,10 @@ fun Button(
         style: ButtonStyle = ButtonStyle.Button,
         size: ButtonSize = ButtonSize.Medium,
         enabled: Boolean = true,
-        buttonTokens: ButtonTokens? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         icon: ImageVector? = null,
-        text: String? = null
+        text: String? = null,
+        buttonTokens: ButtonTokens? = null
 ) {
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
 

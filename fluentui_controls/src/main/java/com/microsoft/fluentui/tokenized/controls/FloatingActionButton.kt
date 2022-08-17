@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.*
@@ -34,10 +34,10 @@ fun FloatingActionButton(
         state: FABState = FABState.Expanded,
         size: FABSize = FABSize.Large,
         enabled: Boolean = true,
-        fabTokens: FABTokens? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         icon: ImageVector? = null,
-        text: String? = null
+        text: String? = null,
+        fabTokens: FABTokens? = null
 ) {
     if (icon == null && (text == null && text == ""))
         return

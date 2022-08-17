@@ -9,9 +9,7 @@ import com.microsoft.fluentui.theme.token.*
 enum class ThemeMode {
     Light,
     Dark,
-    Colorful,
-    Auto,
-    AutoColorful
+    Auto
 }
 
 internal val LocalThemeMode = compositionLocalOf { ThemeMode.Auto }
