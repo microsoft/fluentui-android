@@ -45,15 +45,12 @@ fun AvatarGroup(
         avatarToken: AvatarTokens? = null,
         avatarGroupToken: AvatarGroupTokens? = null
 ) {
-    if (group.members.isEmpty())
-        throw IllegalArgumentException("Group requires a minimum of 1 member.")
-
     val token = avatarGroupToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
 
-    var maxVisibleAvatars = 1
-    if (maxVisibleAvatar < 1)
-        maxVisibleAvatars = 1
+    var maxVisibleAvatars = 0
+    if (maxVisibleAvatar < 0)
+        maxVisibleAvatars = 0
     else if (maxVisibleAvatar > group.members.size)
         maxVisibleAvatars = group.members.size
     else
@@ -76,7 +73,7 @@ fun AvatarGroup(
                 })
             }
         }
-        if (group.members.size > maxVisibleAvatars) {
+        if (group.members.size > maxVisibleAvatars || group.members.size == 0) {
             spacing.add(with(LocalDensity.current) {
                 getAvatarGroupTokens().spacing(getAvatarGroupInfo(), false).roundToPx()
             })
@@ -93,7 +90,7 @@ fun AvatarGroup(
                 val person = group.members[i]
                 Avatar(person, size = size, enableActivityRings = true, enablePresence = enablePresence, avatarToken = avatarToken)
             }
-            if (group.members.size > maxVisibleAvatars) {
+            if (group.members.size > maxVisibleAvatars || group.members.size == 0) {
                 Avatar(group.members.size - maxVisibleAvatars, size = size,
                         enableActivityRings = true, avatarToken = avatarToken)
             }

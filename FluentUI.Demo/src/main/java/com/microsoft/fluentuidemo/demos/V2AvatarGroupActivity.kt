@@ -26,7 +26,6 @@ import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarGroupStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -77,16 +76,14 @@ class V2AvatarGroupActivity : DemoActivity() {
                             .fillMaxWidth()
                             .padding(5.dp), horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalAlignment = Alignment.CenterVertically) {
-                        Button(onClick = { if (maxVisibleAvatar > 0) maxVisibleAvatar-- }, text = "-")
-                        Text("${maxVisibleAvatar}")
-                        Button(onClick = { maxVisibleAvatar++ }, text = "+")
+                        Button(onClick = { if (maxVisibleAvatar > 0) maxVisibleAvatar-- }, enabled = (maxVisibleAvatar > 0), text = "-")
+                        Text("$maxVisibleAvatar")
+                        Button(onClick = { maxVisibleAvatar++ }, enabled = (maxVisibleAvatar < group.members.size), text = "+")
                         Button(onClick = { isActive = !isActive }, text = "Swap Active State")
                         Button(onClick = { enablePresence = !enablePresence }, text = "Toggle Presence")
                     }
 
                     Divider()
-
-                    val avatarToken = AvatarTokens()
 
                     LazyColumn(modifier = Modifier.fillMaxWidth()) {
                         item {
