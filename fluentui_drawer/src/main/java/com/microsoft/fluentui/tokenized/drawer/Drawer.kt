@@ -261,6 +261,8 @@ private const val DRAWER_HANDLE_TAG = "Drawer Handle"
 private const val DRAWER_CONTENT_TAG = "Drawer Content"
 private const val DRAWER_SCRIM_TAG = "Drawer Scrim"
 
+//Drawer Handle height + padding
+private val DrawerHandleHeightOffset = 20.dp
 /**
  *
  *
@@ -434,7 +436,7 @@ private fun VerticalDrawer(
                                 layout(placeable.width, placeable.height) {
                                     visible.value = false
                                     drawerHeight =
-                                            placeable.height.toFloat() + dpToPx(20.dp) //Add Handle height + padding
+                                            placeable.height.toFloat() + dpToPx(DrawerHandleHeightOffset)
                                 }
                             }
             ) {
@@ -572,6 +574,7 @@ private fun VerticalDrawer(
                                     .verticalScroll(
                                             rememberScrollState()
                                     )
+                                    .height(pxToDp(bottomDrawerHeight) - DrawerHandleHeightOffset)
                                     .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
                         }
                     }
