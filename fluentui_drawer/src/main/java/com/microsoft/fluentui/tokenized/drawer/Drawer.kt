@@ -9,7 +9,6 @@ import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.runtime.*
@@ -24,7 +23,6 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.onPlaced
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
@@ -78,7 +76,6 @@ enum class DrawerValue {
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
  */
 @Suppress("NotCloseable")
-@OptIn(ExperimentalMaterialApi::class)
 @Stable
 class DrawerState(
         private val initialValue: DrawerValue = DrawerValue.Closed,
@@ -157,7 +154,6 @@ class DrawerState(
      * @param targetValue The new value to animate to.
      * @param anim The animation that will be used to animate to the new value.
      */
-    @ExperimentalMaterialApi
     suspend fun animateTo(targetValue: DrawerValue, anim: AnimationSpec<Float>) =
             swipeableState.animateTo(targetValue, anim)
 
@@ -166,7 +162,6 @@ class DrawerState(
      *
      * @param targetValue The new target value
      */
-    @ExperimentalMaterialApi
     suspend fun snapTo(targetValue: DrawerValue) =
             swipeableState.snapTo(targetValue)
 
@@ -178,8 +173,6 @@ class DrawerState(
      * Finally, if no swipe or animation is in progress, this is the same as the [currentValue].
      */
     @Suppress("OPT_IN_MARKER_ON_WRONG_TARGET")
-    //@ExperimentalMaterialApi
-    //@get:ExperimentalMaterialApi
     val targetValue: DrawerValue
         get() = swipeableState.targetValue
 
@@ -187,8 +180,6 @@ class DrawerState(
      * The current position (in pixels) of the drawer sheet.
      */
     @Suppress("OPT_IN_MARKER_ON_WRONG_TARGET")
-    //@ExperimentalMaterialApi
-    //@get:ExperimentalMaterialApi
     val offset: State<Float>
         get() = swipeableState.offset
 
@@ -261,8 +252,6 @@ private fun Scrim(
 private val EndDrawerPadding = 56.dp
 private val DrawerVelocityThreshold = 400.dp
 
-// TODO: b/177571613 this should be a proper decay settling
-// this is taken from the DrawerLayout's DragViewHelper as a min duration.
 private val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
 
 private const val DrawerOpenFraction = 0.5f
@@ -293,7 +282,6 @@ private const val DRAWER_SCRIM_TAG = "Drawer Scrim"
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
 @Composable
-@OptIn(ExperimentalMaterialApi::class)
 private fun HorizontalDrawer(
         modifier: Modifier,
         behaviorType: BehaviorType,
@@ -320,10 +308,16 @@ private fun HorizontalDrawer(
         //Hack to get exact drawerHeight wrt to content.
         val visible = remember { mutableStateOf(true) }
         if (visible.value) {
-            Box(modifier = Modifier.onPlaced { layoutCoordinates ->
-                drawerWidth = layoutCoordinates.size.width.toFloat()
-                visible.value = false
-            }) {
+            Box(
+                    modifier = Modifier
+                            .layout { measurable, constraints ->
+                                val placeable = measurable.measure(constraints)
+                                layout(placeable.width, placeable.height) {
+                                    drawerWidth = placeable.width.toFloat()
+                                    visible.value = false
+                                }
+                            }
+            ) {
                 drawerContent()
             }
         } else {
@@ -375,12 +369,8 @@ private fun HorizontalDrawer(
                                 .semantics {
                                     if (drawerState.isOpen) {
                                         dismiss {
-                                            if (
-                                                    drawerState.swipeableState
-                                                            .confirmStateChange(DrawerValue.Closed)
-                                            ) {
-                                                onDismiss()
-                                            }; true
+                                            onDismiss()
+                                            true
                                         }
                                     }
                                 },
@@ -414,7 +404,6 @@ private fun HorizontalDrawer(
 }
 
 @Composable
-@ExperimentalMaterialApi
 private fun VerticalDrawer(
         modifier: Modifier,
         behaviorType: BehaviorType,
@@ -463,19 +452,19 @@ private fun VerticalDrawer(
             val bottomDrawerHeight =
                     if (expandable) drawerHeight else min(allowedHeight, drawerHeight)
 
-            val scrimMinValue: Float
-            val scrimMaxValue: Float
+            val minValue: Float
+            val maxValue: Float
 
             val anchors = if (behaviorType == BehaviorType.TOP) {
-                scrimMinValue = topCloseHeight
-                scrimMaxValue = topOpenHeight
+                minValue = topCloseHeight
+                maxValue = topOpenHeight
                 mapOf(
                         topCloseHeight to DrawerValue.Closed,
                         topOpenHeight to DrawerValue.Open
                 )
             } else {
-                scrimMinValue = fullHeight
-                scrimMaxValue = bottomOpenStateY
+                minValue = fullHeight
+                maxValue = bottomOpenStateY
                 if (drawerHeight < bottomOpenStateY || !expandable) {
                     mapOf(
                             fullHeight to DrawerValue.Closed,
@@ -518,7 +507,7 @@ private fun VerticalDrawer(
                         open = !drawerState.isClosed,
                         onClose = onDismiss,
                         fraction = {
-                            calculateFraction(scrimMinValue, scrimMaxValue, drawerState.offset.value)
+                            calculateFraction(minValue, maxValue, drawerState.offset.value)
                         },
                         color = if (enableScrim) scrimColor else Color.Transparent,
                 )
@@ -529,14 +518,9 @@ private fun VerticalDrawer(
                                     .offset { IntOffset(x = 0, y = drawerState.offset.value.roundToInt()) }
                                     .semantics {
                                         if (drawerState.isOpen) {
-                                            // TODO(b/180101663) The action currently doesn't return the correct results
                                             dismiss {
-                                                if (drawerState.swipeableState.confirmStateChange(
-                                                                DrawerValue.Closed
-                                                        )
-                                                ) {
-                                                    onDismiss()
-                                                }; true
+                                                onDismiss()
+                                                true
                                             }
                                         }
                                     }
@@ -597,14 +581,9 @@ private fun VerticalDrawer(
                                     .offset { IntOffset(0, 0) }
                                     .semantics {
                                         if (drawerState.isOpen) {
-                                            // TODO(b/180101663) The action currently doesn't return the correct results
                                             dismiss {
-                                                if (drawerState.swipeableState.confirmStateChange(
-                                                                DrawerValue.Closed
-                                                        )
-                                                ) {
-                                                    onDismiss()
-                                                };true
+                                                onDismiss()
+                                                true
                                             }
                                         }
                                     }
@@ -692,7 +671,6 @@ private fun getDrawerTokens(): DrawerTokens {
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
  */
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Drawer(
         modifier: Modifier = Modifier,
