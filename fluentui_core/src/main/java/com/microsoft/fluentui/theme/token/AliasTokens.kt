@@ -98,7 +98,7 @@ open class AliasTokens : Parcelable {
 
                 NeutralBackgroundColorTokens.Background1Selected ->
                     FluentColor(
-                            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
+                            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey92),
                             dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey14)
                     )
 
@@ -239,8 +239,7 @@ open class AliasTokens : Parcelable {
         ForegroundDisable2,
         ForegroundContrast,
         ForegroundOnColor,
-        ForegroundInverted1,
-        ForegroundInverted2
+        ForegroundInverted,
     }
 
     open val neutralForegroundColor: TokenSet<NeutralForegroundColorTokens, FluentColor> by lazy {
@@ -273,7 +272,7 @@ open class AliasTokens : Parcelable {
                     )
                 NeutralForegroundColorTokens.ForegroundContrast ->
                     FluentColor(
-                            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
+                            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black),
                             dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black)
                     )
                 NeutralForegroundColorTokens.ForegroundOnColor ->
@@ -281,14 +280,9 @@ open class AliasTokens : Parcelable {
                             light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
                             dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black)
                     )
-                NeutralForegroundColorTokens.ForegroundInverted1 ->
+                NeutralForegroundColorTokens.ForegroundInverted ->
                     FluentColor(
                             light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
-                            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
-                    )
-                NeutralForegroundColorTokens.ForegroundInverted2 ->
-                    FluentColor(
-                            light = brandColor[BrandColorTokens.Color80],
                             dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
                     )
             }
@@ -440,7 +434,7 @@ open class AliasTokens : Parcelable {
                 BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled ->
                     FluentColor(
                             light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
-                            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey98)
+                            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey68)
                     )
             }
         }
@@ -449,7 +443,13 @@ open class AliasTokens : Parcelable {
     enum class BrandForegroundColorTokens {
         BrandForeground1,
         BrandForeground1Pressed,
-        BrandForeground1Selected
+        BrandForeground1Selected,
+        BrandForeground2,
+        BrandForeground3,
+        BrandForeground4,
+        BrandForeground5,
+        BrandForegroundInverted,
+        BrandForegroundDisabled
     }
 
     open val brandForegroundColor: TokenSet<BrandForegroundColorTokens, FluentColor> by lazy {
@@ -471,6 +471,39 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                             light = brandColor[BrandColorTokens.Color60],
                             dark = brandColor[BrandColorTokens.Color120]
+                    )
+
+                BrandForegroundColorTokens.BrandForeground2 ->
+                    FluentColor(
+                            light = brandColor[BrandColorTokens.Color160],
+                            dark = brandColor[BrandColorTokens.Color20]
+                    )
+
+                BrandForegroundColorTokens.BrandForeground3 ->
+                    FluentColor(
+                            light = brandColor[BrandColorTokens.Color150],
+                    )
+
+                BrandForegroundColorTokens.BrandForeground4 ->
+                    FluentColor(
+                            light = brandColor[BrandColorTokens.Color80],
+                            dark = brandColor[BrandColorTokens.Color120]
+                    )
+
+                BrandForegroundColorTokens.BrandForeground5 ->
+                    FluentColor(
+                            light = brandColor[BrandColorTokens.Color70],
+                    )
+
+                BrandForegroundColorTokens.BrandForegroundInverted ->
+                    FluentColor(
+                            light = brandColor[BrandColorTokens.Color80],
+                            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
+                    )
+
+                BrandForegroundColorTokens.BrandForegroundDisabled ->
+                    FluentColor(
+                            light = brandColor[BrandColorTokens.Color90],
                     )
             }
         }

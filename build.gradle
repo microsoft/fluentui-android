@@ -57,6 +57,7 @@ allprojects {
         espressoVersion           =    '3.3.0'
         androidxRunner            =    '1.4.0'
         robolectric               =    '4.8.1'
+        constraintLayoutComposeVersion = '1.0.1'
     }
     repositories {
         google()
