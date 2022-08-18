@@ -48,13 +48,13 @@ fun AvatarGroup(
     val token = avatarGroupToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
 
-    var maxVisibleAvatars = 0
+    var visibleAvatar = 0
     if (maxVisibleAvatar < 0)
-        maxVisibleAvatars = 0
+        visibleAvatar = 0
     else if (maxVisibleAvatar > group.members.size)
-        maxVisibleAvatars = group.members.size
+        visibleAvatar = group.members.size
     else
-        maxVisibleAvatars = maxVisibleAvatar
+        visibleAvatar = maxVisibleAvatar
 
     var enablePresence: Boolean = enablePresence
     if (style == AvatarGroupStyle.Stack)
@@ -65,7 +65,7 @@ fun AvatarGroup(
             LocalAvatarGroupInfo provides AvatarGroupInfo(size, style)
     ) {
         val spacing: MutableList<Int> = mutableListOf()
-        for (i in 0 until maxVisibleAvatars) {
+        for (i in 0 until visibleAvatar) {
             val person = group.members[i]
             if (i != 0) {
                 spacing.add(with(LocalDensity.current) {
@@ -73,7 +73,7 @@ fun AvatarGroup(
                 })
             }
         }
-        if (group.members.size > maxVisibleAvatars || group.members.size == 0) {
+        if (group.members.size > visibleAvatar || group.members.size == 0) {
             spacing.add(with(LocalDensity.current) {
                 getAvatarGroupTokens().spacing(getAvatarGroupInfo(), false).roundToPx()
             })
@@ -86,12 +86,12 @@ fun AvatarGroup(
         Layout(modifier = modifier
                 .padding(8.dp)
                 .then(semanticModifier), content = {
-            for (i in 0 until maxVisibleAvatars) {
+            for (i in 0 until visibleAvatar) {
                 val person = group.members[i]
                 Avatar(person, size = size, enableActivityRings = true, enablePresence = enablePresence, avatarToken = avatarToken)
             }
-            if (group.members.size > maxVisibleAvatars || group.members.size == 0) {
-                Avatar(group.members.size - maxVisibleAvatars, size = size,
+            if (group.members.size > visibleAvatar || group.members.size == 0) {
+                Avatar(group.members.size - visibleAvatar, size = size,
                         enableActivityRings = true, avatarToken = avatarToken)
             }
         }) { measurables, constraints ->

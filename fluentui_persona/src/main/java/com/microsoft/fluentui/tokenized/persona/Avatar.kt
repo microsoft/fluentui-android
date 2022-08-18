@@ -22,6 +22,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import com.microsoft.fluentui.theme.FluentTheme
@@ -39,6 +40,9 @@ import kotlin.math.abs
 
 val LocalAvatarTokens = compositionLocalOf { AvatarTokens() }
 val LocalAvatarInfo = compositionLocalOf { AvatarInfo() }
+
+const val IMAGE_TEST_TAG = "Image"
+const val ICON_TEST_TAG = "Icon"
 
 /**
  * API to generate an avatar for a [Person]. Avatar behavior uses person image(if available),
@@ -98,6 +102,9 @@ fun Avatar(person: Person,
                             modifier = Modifier
                                     .size(avatarSize)
                                     .clip(CircleShape)
+                                    .semantics {
+                                        testTag = IMAGE_TEST_TAG
+                                    }
                     )
                 } else if (person.imageBitmap != null) {
                     Image(
@@ -105,6 +112,9 @@ fun Avatar(person: Person,
                             modifier = Modifier
                                     .size(avatarSize)
                                     .clip(CircleShape)
+                                    .semantics {
+                                        testTag = IMAGE_TEST_TAG
+                                    }
                     )
                 } else if (personInitials.isNotEmpty()) {
                     Text(personInitials, fontSize = with(LocalDensity.current) { fontSize.toSp() },
@@ -113,6 +123,9 @@ fun Avatar(person: Person,
                     Icon(
                             getAvatarTokens().icon(getAvatarInfo()),
                             null,
+                            modifier = Modifier.semantics {
+                                testTag = ICON_TEST_TAG
+                            },
                             tint = foregroundColor,
                     )
                 }
@@ -186,18 +199,24 @@ fun Avatar(
                 if (group.image != null) {
                     Image(
                             painter = painterResource(group.image),
-                            contentDescription = group.groupName,
+                            contentDescription = null,
                             modifier = Modifier
                                     .size(avatarSize)
                                     .clip(RoundedCornerShape(bordersRadius))
+                                    .semantics {
+                                        testTag = IMAGE_TEST_TAG
+                                    }
                     )
                 } else if (group.imageBitmap != null) {
                     Image(
                             bitmap = group.imageBitmap,
-                            contentDescription = group.groupName,
+                            contentDescription = null,
                             modifier = Modifier
                                     .size(avatarSize)
                                     .clip(RoundedCornerShape(bordersRadius))
+                                    .semantics {
+                                        testTag = IMAGE_TEST_TAG
+                                    }
                     )
                 } else if (group.groupName.isNotEmpty()) {
                     Text(group.getInitials(), fontSize = with(LocalDensity.current) { fontSize.toSp() },
@@ -206,6 +225,9 @@ fun Avatar(
                     Icon(
                             getAvatarTokens().icon(getAvatarInfo()),
                             null,
+                            modifier = Modifier.semantics {
+                                testTag = ICON_TEST_TAG
+                            },
                             tint = foregroundColor
                     )
                 }

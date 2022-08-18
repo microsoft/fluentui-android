@@ -1,11 +1,8 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Intent
-import androidx.compose.ui.test.assertContentDescriptionContains
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onAllNodesWithContentDescription
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
@@ -15,6 +12,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import java.util.*
+
+const val IMAGE_TEST_TAG = "Image"
+const val ICON_TEST_TAG = "Icon"
 
 class V2AvatarActivityUITest {
 
@@ -42,22 +42,26 @@ class V2AvatarActivityUITest {
     fun testToggleStates() {
         val oooButton = composeTestRule.onNodeWithText("Toggle OOO")
         val activityButton = composeTestRule.onNodeWithText("Toggle Activity")
-        val allanAvatar = composeTestRule.onAllNodesWithContentDescription("Allan Munger", substring = true)[0]
+
+        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription("Amanda Brady", substring = true)[0]
+        amandaAvatar.onChild().assert(hasTestTag(IMAGE_TEST_TAG))
 
         //Action
         activityButton.performClick()
         oooButton.performClick()
 
         //Check
-        allanAvatar.assertContentDescriptionContains("Out Of Office", substring = true)
-        allanAvatar.assertContentDescriptionContains("Inactive", substring = true)
+        amandaAvatar.assertContentDescriptionContains("Out Of Office", substring = true)
+        amandaAvatar.assertContentDescriptionContains("Inactive", substring = true)
 
         //Action
         activityButton.performClick()
         oooButton.performClick()
 
         //Check
-        allanAvatar.assertContentDescriptionContains("Active", substring = true)
+        amandaAvatar.assertContentDescriptionContains("Active", substring = true)
+
+        composeTestRule.onAllNodesWithContentDescription("Anonymous").assertAll(hasAnyChild(hasTestTag(ICON_TEST_TAG)))
     }
 
     @After
