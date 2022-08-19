@@ -4,6 +4,8 @@ import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -193,7 +195,9 @@ private fun getDrawerContent(
     return { _ ->
         lateinit var context: Context
         AndroidView(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState()),
                 factory = {
                     context = it
                     val view = it.activity!!.layoutInflater.inflate(
