@@ -17,7 +17,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
  * @property isOOO Enable/Disable Out-Of-Office flag for person
  */
 class Person(
-        val firstName: String = "Anonymous",
+        val firstName: String = "",
         val lastName: String = "",
         val email: String? = null,
         @DrawableRes val image: Int? = null,
@@ -80,6 +80,12 @@ class Group(
 ) {
     fun isImageAvailable(): Boolean {
         return image != null || imageBitmap != null
+    }
+
+    fun getName(): String {
+        if (groupName.trim().isBlank())
+            return "Anonymous"
+        return groupName
     }
 
     fun getInitials(): String {

@@ -10,6 +10,7 @@ class InitialsTest {
     companion object {
         private val person = Person("First", "Last", "firstlast@example.com")
         private val firstNamePerson = Person("First", email = "firstlast@example.com")
+        private val lastNamePerson = Person("", "Last", email = "firstlast@example.com")
         private val personWithDigit = Person("First", "2nd", "firstthe2nd@example.com")
         private val personWithSpecialChar = Person("_First", "@Last", email = "firstthe2nd@example.com")
         private val noNamePerson = Person("", email = "firstlast@example.com")
@@ -23,42 +24,49 @@ class InitialsTest {
     }
 
     @Test
-    fun testGetInitials(){
+    fun testGetInitials() {
         val expectedInitials = "FL"
         val resultantInitials = person.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
 
     @Test
-    fun testGetInitialsFirstNameOnly(){
+    fun testGetInitialsFirstNameOnly() {
         val expectedInitials = "F"
         val resultantInitials = firstNamePerson.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
 
     @Test
-    fun testGetInitialsWithDigits(){
+    fun testGetInitialsLastNameOnly() {
+        val expectedInitials = "L"
+        val resultantInitials = lastNamePerson.getInitials()
+        Assert.assertEquals(expectedInitials, resultantInitials)
+    }
+
+    @Test
+    fun testGetInitialsWithDigits() {
         val expectedInitials = "FN"
         val resultantInitials = personWithDigit.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
 
     @Test
-    fun testGetInitialsWithSpecialChars(){
+    fun testGetInitialsWithSpecialChars() {
         val expectedInitials = "FL"
         val resultantInitials = personWithSpecialChar.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
 
     @Test
-    fun testGetInitialsNoName(){
+    fun testGetInitialsNoName() {
         val expectedInitials = "F"
         val resultantInitials = noNamePerson.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)
     }
 
     @Test
-    fun testGetInitialsNoNameNoEmail(){
+    fun testGetInitialsNoNameNoEmail() {
         val expectedInitials = ""
         val resultantInitials = noNameNoEmailPerson.getInitials()
         Assert.assertEquals(expectedInitials, resultantInitials)

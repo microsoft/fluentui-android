@@ -15,7 +15,6 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
@@ -26,17 +25,13 @@ import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.theme.token.TokenSet
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarType
-import kotlin.math.abs
 
 val LocalAvatarTokens = compositionLocalOf { AvatarTokens() }
 val LocalAvatarInfo = compositionLocalOf { AvatarInfo() }
@@ -74,7 +69,7 @@ fun Avatar(person: Person,
             LocalAvatarTokens provides token,
             LocalAvatarInfo provides AvatarInfo(size, AvatarType.Person, person.isActive,
                     person.status, person.isOOO, person.isImageAvailable(),
-                    personInitials.isNotEmpty(), calculatedColor(person.getName()))
+                    personInitials.isNotEmpty(), person.getName())
     ) {
         val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
         val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
@@ -175,7 +170,7 @@ fun Avatar(
             LocalAvatarInfo provides AvatarInfo(size, AvatarType.Group,
                     isImageAvailable = group.isImageAvailable(),
                     hasValidInitials = group.getInitials().isNotEmpty(),
-                    calculatedColor = calculatedColor(group.groupName))
+                    calculatedColorKey = group.groupName)
     ) {
         val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
         val bordersRadius = getAvatarTokens().borderRadius(getAvatarInfo())
@@ -190,10 +185,7 @@ fun Avatar(
         Box(modifier
                 .requiredSize(avatarSize)
                 .semantics(mergeDescendants = false) {
-                    contentDescription = "${
-                        if (group.groupName.isNullOrBlank()) "Anonymous Group."
-                        else "Group Name ${group.groupName}"
-                    } ${group.members.size} members. ${membersList}"
+                    contentDescription = "Group Name ${group.getName()} ${group.members.size} members. $membersList"
                 }, contentAlignment = Alignment.Center
         ) {
             Box(Modifier
@@ -313,42 +305,4 @@ fun ActivityRing(radius: Dp, borders: List<BorderStroke>) {
             ringRadius += ringStroke
         }
     }
-}
-
-@Composable
-fun calculatedColor(avatarString: String): TokenSet<GlobalTokens.SharedColorsTokens, Color> {
-    val colors = listOf(
-            GlobalTokens.SharedColorSets.DarkRed,
-            GlobalTokens.SharedColorSets.Cranberry,
-            GlobalTokens.SharedColorSets.Red,
-            GlobalTokens.SharedColorSets.Pumpkin,
-            GlobalTokens.SharedColorSets.Peach,
-            GlobalTokens.SharedColorSets.Marigold,
-            GlobalTokens.SharedColorSets.Gold,
-            GlobalTokens.SharedColorSets.Brass,
-            GlobalTokens.SharedColorSets.Brown,
-            GlobalTokens.SharedColorSets.Forest,
-            GlobalTokens.SharedColorSets.Seafoam,
-            GlobalTokens.SharedColorSets.DarkGreen,
-            GlobalTokens.SharedColorSets.LightTeal,
-            GlobalTokens.SharedColorSets.Teal,
-            GlobalTokens.SharedColorSets.Steel,
-            GlobalTokens.SharedColorSets.Blue,
-            GlobalTokens.SharedColorSets.RoyalBlue,
-            GlobalTokens.SharedColorSets.Cornflower,
-            GlobalTokens.SharedColorSets.Navy,
-            GlobalTokens.SharedColorSets.Lavender,
-            GlobalTokens.SharedColorSets.Purple,
-            GlobalTokens.SharedColorSets.Grape,
-            GlobalTokens.SharedColorSets.Lilac,
-            GlobalTokens.SharedColorSets.Pink,
-            GlobalTokens.SharedColorSets.Magenta,
-            GlobalTokens.SharedColorSets.Plum,
-            GlobalTokens.SharedColorSets.Beige,
-            GlobalTokens.SharedColorSets.Mink,
-            GlobalTokens.SharedColorSets.Platinum,
-            GlobalTokens.SharedColorSets.Anchor
-    )
-
-    return globalTokens.sharedColors[colors[abs(avatarString.hashCode()) % colors.size]]
 }

@@ -129,6 +129,7 @@ import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
+import kotlin.math.abs
 
 enum class AvatarType {
     Person,
@@ -179,11 +180,7 @@ data class AvatarInfo(
         val isOOO: Boolean = false,
         val isImageAvailable: Boolean = false,
         val hasValidInitials: Boolean = false,
-        val calculatedColor: TokenSet<GlobalTokens.SharedColorsTokens, Color> = TokenSet { token ->
-            when (token) {
-                else -> Color.Unspecified
-            }
-        }
+        val calculatedColorKey: String = ""
 ) : ControlInfo
 
 @Parcelize
@@ -250,8 +247,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun foregroundColor(avatarInfo: AvatarInfo): Color {
         return if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
-            FluentColor(light = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.shade30],
-                    dark = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.tint40]).value(
+            FluentColor(light = calculatedColor(avatarInfo.calculatedColorKey)[GlobalTokens.SharedColorsTokens.shade30],
+                    dark = calculatedColor(avatarInfo.calculatedColorKey)[GlobalTokens.SharedColorsTokens.tint40]).value(
                     themeMode = themeMode
             )
         } else if (avatarInfo.type == AvatarType.Overflow) {
@@ -283,8 +280,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun backgroundColor(avatarInfo: AvatarInfo): Color {
         return if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
-            FluentColor(light = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.tint40],
-                    dark = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.shade30]).value(
+            FluentColor(light = calculatedColor(avatarInfo.calculatedColorKey)[GlobalTokens.SharedColorsTokens.tint40],
+                    dark = calculatedColor(avatarInfo.calculatedColorKey)[GlobalTokens.SharedColorsTokens.shade30]).value(
                     themeMode = themeMode
             )
         } else if (avatarInfo.type == AvatarType.Overflow) {
@@ -548,8 +545,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun borderStroke(avatarInfo: AvatarInfo): List<BorderStroke> {
         val glowColor: Color = if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
-            FluentColor(light = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.primary],
-                    dark = avatarInfo.calculatedColor[GlobalTokens.SharedColorsTokens.tint30]).value(
+            FluentColor(light = calculatedColor(avatarInfo.calculatedColorKey)[GlobalTokens.SharedColorsTokens.primary],
+                    dark = calculatedColor(avatarInfo.calculatedColorKey)[GlobalTokens.SharedColorsTokens.tint30]).value(
                     themeMode = themeMode
             )
         } else if (avatarInfo.type == AvatarType.Overflow) {
@@ -585,6 +582,44 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
                 AvatarSize.XLarge -> activityRingToken.inactiveBorderStroke(ActivityRingSize.XLarge)
                 AvatarSize.XXLarge -> activityRingToken.inactiveBorderStroke(ActivityRingSize.XXLarge)
             }
+    }
+
+    @Composable
+    private fun calculatedColor(avatarString: String): TokenSet<GlobalTokens.SharedColorsTokens, Color> {
+        val colors = listOf(
+                GlobalTokens.SharedColorSets.DarkRed,
+                GlobalTokens.SharedColorSets.Cranberry,
+                GlobalTokens.SharedColorSets.Red,
+                GlobalTokens.SharedColorSets.Pumpkin,
+                GlobalTokens.SharedColorSets.Peach,
+                GlobalTokens.SharedColorSets.Marigold,
+                GlobalTokens.SharedColorSets.Gold,
+                GlobalTokens.SharedColorSets.Brass,
+                GlobalTokens.SharedColorSets.Brown,
+                GlobalTokens.SharedColorSets.Forest,
+                GlobalTokens.SharedColorSets.Seafoam,
+                GlobalTokens.SharedColorSets.DarkGreen,
+                GlobalTokens.SharedColorSets.LightTeal,
+                GlobalTokens.SharedColorSets.Teal,
+                GlobalTokens.SharedColorSets.Steel,
+                GlobalTokens.SharedColorSets.Blue,
+                GlobalTokens.SharedColorSets.RoyalBlue,
+                GlobalTokens.SharedColorSets.Cornflower,
+                GlobalTokens.SharedColorSets.Navy,
+                GlobalTokens.SharedColorSets.Lavender,
+                GlobalTokens.SharedColorSets.Purple,
+                GlobalTokens.SharedColorSets.Grape,
+                GlobalTokens.SharedColorSets.Lilac,
+                GlobalTokens.SharedColorSets.Pink,
+                GlobalTokens.SharedColorSets.Magenta,
+                GlobalTokens.SharedColorSets.Plum,
+                GlobalTokens.SharedColorSets.Beige,
+                GlobalTokens.SharedColorSets.Mink,
+                GlobalTokens.SharedColorSets.Platinum,
+                GlobalTokens.SharedColorSets.Anchor
+        )
+
+        return globalTokens.sharedColors[colors[abs(avatarString.hashCode()) % colors.size]]
     }
 }
 
