@@ -88,7 +88,11 @@ fun Avatar(person: Person,
                     contentDescription = "${person.getName()}. " +
                             "${if (enablePresence) "Status, ${person.status}," else ""}. " +
                             "${if (enablePresence && person.isOOO) "Out Of Office," else ""}. " +
-                            "${if (person.isActive) "Active" else "Inactive"} ."
+                            "${
+                                if (enableActivityRings) {
+                                    if (person.isActive) "Active" else "Inactive"
+                                } else ""
+                            }."
                 }, contentAlignment = Alignment.Center) {
             Box(Modifier
                     .fillMaxSize()
@@ -186,8 +190,10 @@ fun Avatar(
         Box(modifier
                 .requiredSize(avatarSize)
                 .semantics(mergeDescendants = false) {
-                    contentDescription = "Group Name ${group.groupName}. ${group.members.size} members. ${membersList}"
-
+                    contentDescription = "${
+                        if (group.groupName.isNullOrBlank()) "Anonymous Group."
+                        else "Group Name ${group.groupName}"
+                    } ${group.members.size} members. ${membersList}"
                 }, contentAlignment = Alignment.Center
         ) {
             Box(Modifier
