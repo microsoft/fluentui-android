@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
-import java.lang.Integer.max
+import java.lang.Math.max
 
 val LocalAvatarGroupTokens = compositionLocalOf { AvatarGroupTokens() }
 val LocalAvatarGroupInfo = compositionLocalOf { AvatarGroupInfo() }
@@ -48,13 +48,12 @@ fun AvatarGroup(
     val token = avatarGroupToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
 
-    var visibleAvatar = 0
-    if (maxVisibleAvatar < 0)
-        visibleAvatar = 0
+    val visibleAvatar: Int = if (maxVisibleAvatar < 0)
+        0
     else if (maxVisibleAvatar > group.members.size)
-        visibleAvatar = group.members.size
+        group.members.size
     else
-        visibleAvatar = maxVisibleAvatar
+        maxVisibleAvatar
 
     var enablePresence: Boolean = enablePresence
     if (style == AvatarGroupStyle.Stack)
@@ -73,7 +72,7 @@ fun AvatarGroup(
                 })
             }
         }
-        if (group.members.size > visibleAvatar || group.members.size == 0) {
+        if (group.members.size > visibleAvatar || group.members.isEmpty()) {
             spacing.add(with(LocalDensity.current) {
                 getAvatarGroupTokens().spacing(getAvatarGroupInfo(), false).roundToPx()
             })
@@ -90,7 +89,7 @@ fun AvatarGroup(
                 val person = group.members[i]
                 Avatar(person, size = size, enableActivityRings = true, enablePresence = enablePresence, avatarToken = avatarToken)
             }
-            if (group.members.size > visibleAvatar || group.members.size == 0) {
+            if (group.members.size > visibleAvatar || group.members.isEmpty()) {
                 Avatar(group.members.size - visibleAvatar, size = size,
                         enableActivityRings = true, avatarToken = avatarToken)
             }
@@ -99,8 +98,8 @@ fun AvatarGroup(
                 measurable.measure(constraints)
             }
 
-            var layoutHeight: Int = 0
-            var layoutWidth: Int = 0
+            var layoutHeight = 0
+            var layoutWidth = 0
             placeables.forEach {
                 layoutHeight = max(layoutHeight, it.height)
                 layoutWidth += it.width
