@@ -38,7 +38,7 @@ class Person(
     }
 
     fun getInitials(): String {
-        var initial: String = ""
+        var initial = ""
 
         for (char in firstName) {
             if (!char.isLetter())
