@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -29,9 +29,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.controls.backgroundColor
-import com.microsoft.fluentui.controls.borderStroke
-import com.microsoft.fluentui.controls.iconColor
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.controlTokens.CheckBoxInfo
@@ -41,12 +38,12 @@ val LocalCheckBoxTokens = compositionLocalOf { CheckBoxTokens() }
 val LocalCheckBoxInfo = compositionLocalOf { CheckBoxInfo() }
 
 @Composable
-fun CheckBox(enabled: Boolean = true,
-             checked: Boolean = false,
-             onCheckedChanged: (Boolean) -> Unit?,
+fun CheckBox(onCheckedChanged: ((Boolean) -> Unit)?,
              modifier: Modifier = Modifier,
-             checkBoxToken: CheckBoxTokens? = null,
-             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }) {
+             enabled: Boolean = true,
+             checked: Boolean = false,
+             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+             checkBoxToken: CheckBoxTokens? = null) {
 
     val token = checkBoxToken
             ?: FluentTheme.controlTokens.tokens[ControlType.CheckBox] as CheckBoxTokens
@@ -57,7 +54,7 @@ fun CheckBox(enabled: Boolean = true,
     ) {
         val toggleModifier =
                 if (onCheckedChanged != null) {
-                    Modifier.triStateToggleable(
+                    modifier.triStateToggleable(
                             state = ToggleableState(checked),
                             enabled = enabled,
                             onClick = { onCheckedChanged(!checked) },
@@ -69,7 +66,7 @@ fun CheckBox(enabled: Boolean = true,
                             )
                     )
                 } else {
-                    Modifier
+                    modifier
                 }
 
         val backgroundColor: Color = backgroundColor(getCheckBoxToken(), getCheckBoxInfo(),

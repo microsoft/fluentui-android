@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.foundation.background
@@ -25,8 +25,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.controls.backgroundColor
-import com.microsoft.fluentui.controls.iconColor
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.controlTokens.ToggleSwitchInfo
@@ -38,11 +36,12 @@ val LocalToggleSwitchInfo = compositionLocalOf { ToggleSwitchInfo() }
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ToggleSwitch(enabledSwitch: Boolean = true,
-                 checkedState: Boolean = false,
+fun ToggleSwitch(modifier: Modifier = Modifier,
                  onValueChange: ((Boolean) -> Unit)? = null,
-                 switchTokens: ToggleSwitchTokens? = null,
-                 interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+                 enabledSwitch: Boolean = true,
+                 checkedState: Boolean = false,
+                 interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+                 switchTokens: ToggleSwitchTokens? = null
 ) {
 
     val token = switchTokens
@@ -64,8 +63,8 @@ fun ToggleSwitch(enabledSwitch: Boolean = true,
         val knobMovementWidth = 23.dp
         val minBound = with(LocalDensity.current) { padding.toPx() }
         val maxBound = with(LocalDensity.current) { knobMovementWidth.toPx() }
-        val AnimationSpec = TweenSpec<Float>(durationMillis = 100)
-        val swipeState = rememberSwipeableState(checkedState, AnimationSpec, confirmStateChange = { true })
+        val animationSpec = TweenSpec<Float>(durationMillis = 100)
+        val swipeState = rememberSwipeableState(checkedState, animationSpec, confirmStateChange = { true })
         val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
 
         val forceAnimationCheck = remember { mutableStateOf(false) }
@@ -85,14 +84,14 @@ fun ToggleSwitch(enabledSwitch: Boolean = true,
         // Toggle Logic
         val toggleModifier =
                 if (onValueChange != null) {
-                    Modifier.toggleable(value = getToggleSwitchInfo().checked,
+                    modifier.toggleable(value = getToggleSwitchInfo().checked,
                             enabled = enabledSwitch,
                             role = Role.Switch,
                             onValueChange = onValueChange,
                             interactionSource = interactionSource,
                             indication = null)
                 } else
-                    Modifier
+                    modifier
 
         // UI Implementation
         Box(modifier = Modifier

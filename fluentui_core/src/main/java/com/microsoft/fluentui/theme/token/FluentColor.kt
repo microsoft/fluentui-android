@@ -21,7 +21,6 @@ data class StateColor(
 data class FluentColor(
         val light: Color,
         val dark: Color = light,
-        var colorful: Color = light
 ) {
 
     @Composable
@@ -29,9 +28,7 @@ data class FluentColor(
         return when (themeMode) {
             ThemeMode.Light -> light
             ThemeMode.Dark -> dark
-            ThemeMode.Colorful -> colorful
             ThemeMode.Auto -> if (isSystemInDarkTheme()) dark else light
-            ThemeMode.AutoColorful -> if (isSystemInDarkTheme()) dark else colorful
         }
     }
 }

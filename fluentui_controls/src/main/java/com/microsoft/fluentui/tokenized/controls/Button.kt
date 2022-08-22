@@ -1,11 +1,15 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
@@ -34,10 +38,10 @@ fun Button(
         style: ButtonStyle = ButtonStyle.Button,
         size: ButtonSize = ButtonSize.Medium,
         enabled: Boolean = true,
-        buttonTokens: ButtonTokens? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         icon: ImageVector? = null,
-        text: String? = null
+        text: String? = null,
+        buttonTokens: ButtonTokens? = null
 ) {
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
 
@@ -47,7 +51,7 @@ fun Button(
     ) {
         val clickAndSemanticsModifier = Modifier.clickable(
                 interactionSource = interactionSource,
-                indication = LocalIndication.current,
+                indication = rememberRipple(),
                 enabled = enabled,
                 onClickLabel = null,
                 role = Role.Button,
