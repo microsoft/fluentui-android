@@ -178,7 +178,7 @@ fun Avatar(
         val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
         val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
 
-        var membersList: String = ""
+        var membersList = ""
         for (person in group.members)
             membersList += (person.firstName + person.lastName + "\n")
 
@@ -263,7 +263,7 @@ fun Avatar(overflowCount: Int,
 
         Box(modifier
                 .requiredSize(avatarSize)
-                .semantics(mergeDescendants = false) { contentDescription = "+ ${overflowCount} Avatar More" }, contentAlignment = Alignment.Center
+                .semantics(mergeDescendants = false) { contentDescription = "+ $overflowCount Avatar More" }, contentAlignment = Alignment.Center
         ) {
             Box(Modifier
                     .clip(CircleShape)
@@ -295,9 +295,9 @@ fun getAvatarInfo(): AvatarInfo {
 @Composable
 fun ActivityRing(radius: Dp, borders: List<BorderStroke>) {
     val firstBorderMid = with(LocalDensity.current) { borders[0].width.toPx() / 2 }
-    val radius = with(LocalDensity.current) { radius.toPx() }
+    val radiusPx = with(LocalDensity.current) { radius.toPx() }
     Canvas(Modifier) {
-        var ringRadius = radius - firstBorderMid + 1
+        var ringRadius = radiusPx - firstBorderMid + 1
         var ringStroke: Float
         for (border in borders) {
             ringStroke = border.width.toPx()
