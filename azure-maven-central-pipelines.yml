@@ -64,6 +64,7 @@ jobs:
 #        jdkVersionOption: '$(jdkVersion)'
 #        publishJUnitResults: false
 #
+    - task: ComponentGovernanceComponentDetection@0
     - task: AndroidSigning@2
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
