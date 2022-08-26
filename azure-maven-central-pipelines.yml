@@ -65,6 +65,12 @@ jobs:
 #        publishJUnitResults: false
 #
     - task: ComponentGovernanceComponentDetection@0
+      inputs:
+        scanType: 'Register'
+        useDefaultDetectors: false
+        detectorsToRun: 'NuGet, Maven'
+        verbosity: 'Verbose'
+        alertWarningLevel: 'High'
     - task: AndroidSigning@2
       displayName: 'Signing and aligning APK file(s) **/*.apk'
       inputs:
