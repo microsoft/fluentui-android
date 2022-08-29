@@ -1,0 +1,14 @@
+{
+  "Registrations" : [
+    {
+      "Component" : {
+        "Git" : {
+          "CommitHash" : "f0fbedec21af08335607371c0efc921e4c22c90b",
+          "RepositoryUrl" : "https://github.com/microsoft/fluentui-android"
+        },
+        "Type" : "git"
+      },
+      "DevelopmentDependency" : false
+    }
+  ]
+}
