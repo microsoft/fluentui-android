@@ -165,7 +165,7 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
             drawerContent = { drawerContent(close) },
             behaviorType = behaviorType,
             expandable = expandable,
-            enableScrim = enableScrim
+            scrimVisible = enableScrim
     )
 }
 
@@ -179,7 +179,7 @@ private fun PrimarySurfaceContent(
             horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(Modifier.height(height))
-        com.microsoft.fluentui.controls.Button(
+        com.microsoft.fluentui.tokenized.controls.Button(
                 style = ButtonStyle.Button,
                 size = ButtonSize.Medium,
                 text = text,
@@ -223,7 +223,7 @@ private fun getDrawerInDrawerContent(sideDrawer: Boolean = false): @Composable (
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = if (sideDrawer) Modifier.width(250.dp) else Modifier
         ) {
-            com.microsoft.fluentui.controls.Button(
+            com.microsoft.fluentui.tokenized.controls.Button(
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     text = "Close Drawer",

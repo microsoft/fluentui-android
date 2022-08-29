@@ -75,8 +75,6 @@ enum class DrawerValue {
  * @param initialValue The initial value of the state.
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
  */
-@Suppress("NotCloseable")
-@Stable
 class DrawerState(
         private val initialValue: DrawerValue = DrawerValue.Closed,
         confirmStateChange: (DrawerValue) -> Boolean = { true }
@@ -172,14 +170,12 @@ class DrawerState(
      * swipe finishes. If an animation is running, this is the target value of that animation.
      * Finally, if no swipe or animation is in progress, this is the same as the [currentValue].
      */
-    @Suppress("OPT_IN_MARKER_ON_WRONG_TARGET")
     val targetValue: DrawerValue
         get() = swipeableState.targetValue
 
     /**
      * The current position (in pixels) of the drawer sheet.
      */
-    @Suppress("OPT_IN_MARKER_ON_WRONG_TARGET")
     val offset: State<Float>
         get() = swipeableState.offset
 
@@ -293,7 +289,7 @@ private fun HorizontalDrawer(
         drawerBackgroundColor: Color,
         drawerContentColor: Color,
         scrimColor: Color,
-        enableScrim: Boolean,
+        scrimVisible: Boolean,
         onDismiss: () -> Unit,
         drawerContent: @Composable () -> Unit
 ) {
@@ -350,7 +346,7 @@ private fun HorizontalDrawer(
                         fraction = {
                             calculateFraction(minValue, maxValue, drawerState.offset.value)
                         },
-                        color = if (enableScrim) scrimColor else Color.Transparent,
+                        color = if (scrimVisible) scrimColor else Color.Transparent,
                 )
 
                 Surface(
@@ -416,7 +412,7 @@ private fun VerticalDrawer(
         drawerContentColor: Color,
         drawerHandleColor: Color,
         scrimColor: Color,
-        enableScrim: Boolean,
+        scrimVisible: Boolean,
         expandable: Boolean,
         onDismiss: () -> Unit,
         drawerContent: @Composable () -> Unit
@@ -511,7 +507,7 @@ private fun VerticalDrawer(
                         fraction = {
                             calculateFraction(minValue, maxValue, drawerState.offset.value)
                         },
-                        color = if (enableScrim) scrimColor else Color.Transparent,
+                        color = if (scrimVisible) scrimColor else Color.Transparent,
                 )
 
                 if (behaviorType == BehaviorType.BOTTOM) {
@@ -667,7 +663,7 @@ private fun getDrawerTokens(): DrawerTokens {
  * @param drawerState state of the drawer
  * @param expandable if true drawer would expand on drag else drawer open till fixed/wrapped height.
  * The default value is false
- * @param enableScrim enable scrim that obscures background when the drawer is open. The default value is true
+ * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [AppThemeController]
  * @param drawerContent composable that represents content inside the drawer
  *
@@ -680,7 +676,7 @@ fun Drawer(
         behaviorType: BehaviorType = BehaviorType.BOTTOM,
         drawerState: DrawerState = rememberDrawerState(),
         expandable: Boolean = false,
-        enableScrim: Boolean = true,
+        scrimVisible: Boolean = true,
         drawerTokens: DrawerTokens? = null,
         drawerContent: @Composable () -> Unit
 ) {
@@ -727,7 +723,7 @@ fun Drawer(
                             drawerContentColor = drawerContentColor,
                             drawerHandleColor = drawerHandleColor,
                             scrimColor = scrimColor,
-                            enableScrim = enableScrim,
+                            scrimVisible = scrimVisible,
                             expandable = expandable,
                             onDismiss = close,
                             drawerContent = drawerContent
@@ -742,7 +738,7 @@ fun Drawer(
                             drawerBackgroundColor = drawerBackgroundColor,
                             drawerContentColor = drawerContentColor,
                             scrimColor = scrimColor,
-                            enableScrim = enableScrim,
+                            scrimVisible = scrimVisible,
                             onDismiss = close,
                             drawerContent = drawerContent
                     )
