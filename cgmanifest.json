@@ -3,8 +3,18 @@
     {
       "Component" : {
         "Git" : {
-          "CommitHash" : "f0fbedec21af08335607371c0efc921e4c22c90b",
+          "CommitHash" : "42a358c45f5cea07bda86a6262784e2c3846852f",
           "RepositoryUrl" : "https://github.com/microsoft/fluentui-android"
+        },
+        "Type" : "git"
+      },
+      "DevelopmentDependency" : false
+    },
+    {
+      "Component" : {
+        "Git" : {
+          "CommitHash" : "42a358c45f5cea07bda86a6262784e2c3846852f",
+          "RepositoryUrl" : "https://github.com/microsoft/fluentui-android/blob/master/fluentui_core/src/main/java/com/microsoft/fluentui/compose/Swipeable.kt"
         },
         "Type" : "git"
       },
