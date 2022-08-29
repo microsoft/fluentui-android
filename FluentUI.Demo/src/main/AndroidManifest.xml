@@ -42,6 +42,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.ContextualCommandBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity"
