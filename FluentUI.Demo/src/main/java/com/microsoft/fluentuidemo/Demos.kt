@@ -24,6 +24,7 @@ const val CALENDAR_VIEW = "CalendarView"
 const val CONTEXTUAL_COMMAND_BAR = "ContextualCommandBar"
 const val DATE_TIME_PICKER = "DateTimePicker"
 const val DRAWER = "Drawer"
+const val V2DRAWER = "V2 Drawer"
 const val LIST_ITEM_VIEW = "ListItemView"
 const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
 const val PERSISTENT_BOTTOM_SHEET = "PersistentBottomSheet"
@@ -54,6 +55,7 @@ val DEMOS = arrayListOf(
         Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
         Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
         Demo(DRAWER, DrawerActivity::class),
+        Demo(V2DRAWER, V2DrawerActivity::class),
         Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
         Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
         Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
