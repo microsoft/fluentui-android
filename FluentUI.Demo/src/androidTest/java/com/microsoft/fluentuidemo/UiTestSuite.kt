@@ -1,9 +1,6 @@
 package com.microsoft.fluentuidemo
 
-import com.microsoft.fluentuidemo.demos.ActionBarLayoutActivityUITest
-import com.microsoft.fluentuidemo.demos.AppBarLayoutActivityUITest
-import com.microsoft.fluentuidemo.demos.V2AvatarActivityUITest
-import com.microsoft.fluentuidemo.demos.V2AvatarGroupActivityUITest
+import com.microsoft.fluentuidemo.demos.*
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 
@@ -12,6 +9,7 @@ import org.junit.runners.Suite
         ActionBarLayoutActivityUITest::class,
         AppBarLayoutActivityUITest::class,
         V2AvatarActivityUITest::class,
-        V2AvatarGroupActivityUITest::class
+        V2AvatarGroupActivityUITest::class,
+        V2DrawerActivityUITest::class
 )
 class UiTestSuite
