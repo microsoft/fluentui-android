@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.InteractionSource

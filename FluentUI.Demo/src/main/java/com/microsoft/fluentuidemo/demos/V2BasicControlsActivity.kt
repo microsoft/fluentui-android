@@ -19,9 +19,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyGlobalTokens
-import com.microsoft.fluentui.controls.CheckBox
-import com.microsoft.fluentui.controls.RadioButton
-import com.microsoft.fluentui.controls.ToggleSwitch
+import com.microsoft.fluentui.tokenized.controls.CheckBox
+import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
@@ -59,10 +59,10 @@ class V2BasicControlsActivity : DemoActivity() {
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1F),
                                 color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
-                        ToggleSwitch(true, enabled, {
+                        ToggleSwitch(onValueChange = {
                             enabled = it
                             Toast.makeText(context, "Switch 1 Toggled", Toast.LENGTH_SHORT).show()
-                        })
+                        }, enabledSwitch = true, checkedState = enabled)
                     }
 
                     Divider()
@@ -74,7 +74,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.weight(1F),
                                 color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode = ThemeMode.Auto))
-                        ToggleSwitch(enabled, checked, {
+                        ToggleSwitch(enabledSwitch = enabled, checkedState = checked, onValueChange = {
                             checked = it
                             if (checked) {
                                 AppThemeController.updateGlobalTokens(GlobalTokens())

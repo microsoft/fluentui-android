@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.controls
+package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -27,12 +27,12 @@ val LocalRadioButtonTokens = compositionLocalOf { RadioButtonTokens() }
 val LocalRadioButtonInfo = compositionLocalOf { RadioButtonInfo() }
 
 @Composable
-fun RadioButton(enabled: Boolean = true,
-                selected: Boolean = false,
-                onClick: (() -> Unit)?,
+fun RadioButton(onClick: (() -> Unit)?,
                 modifier: Modifier = Modifier,
-                radioButtonToken: RadioButtonTokens? = null,
-                interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+                enabled: Boolean = true,
+                selected: Boolean = false,
+                interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+                radioButtonToken: RadioButtonTokens? = null
 ) {
     val token = radioButtonToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
