@@ -19,6 +19,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -34,13 +37,37 @@ import kotlin.math.max
 
 val LocalContextualCommandBarTokens = compositionLocalOf { ContextualCommandBarTokens() }
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
+enum class ActionButtonState {
+    None,
+    Start,
+    End
+}
+
+/**
+ * Generate a Contextual Command Bar. This is a horizontally scrollable bar which is made up of [CommandGroup].
+ * Command group internally is a group of [CommandItem] which can be used to create onClick and onLongClick based buttons.
+ * It also consist of an optional icon based action button which can be placed at either side of the CCB.
+ * If enabled, by default this button acts as a Keyboard Dismiss button.
+ *
+ * @param groups List of Groups to be created in a context
+ * @param modifier Optional Modifier for CCB
+ * @param actionButtonState Enum to specify if we will have an Action Button and its position
+ * @param actionButtonIcon ImageVector for The Action Button Icon
+ * @param actionButtonOnClick OnCLick Functionality for the Action Button
+ * @param contextualCommandBarToken Token to provide appearance values to Avatar
+ */
+@OptIn(
+    //Used for:
+    //     Combined Clickable            Soft Keyboard Controller
+    ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class
+)
 @Composable
 fun ContextualCommandBar(
     groups: List<CommandGroup>,
     modifier: Modifier = Modifier,
-    keyboardDismissEnabled: Boolean = true,
-    keyboardDismissAtStart: Boolean = false,
+    actionButtonState: ActionButtonState = ActionButtonState.End,
+    actionButtonIcon: ImageVector = CCBIcons.Keyboarddismiss,
+    actionButtonOnClick: (() -> Unit)? = null,
     contextualCommandBarToken: ContextualCommandBarTokens? = null
 ) {
 
@@ -72,32 +99,36 @@ fun ContextualCommandBar(
         ConstraintLayout(
             modifier = modifier
                 .focusable(enabled = false)
-                .requiredHeight(getContextualCommandBarTokens().contextualCommandBarHeight())
                 .fillMaxWidth()
                 .background(getContextualCommandBarTokens().contextualCommandBarBackgroundColor())
         ) {
             val (KeyboardDismiss, Content) = createRefs()
 
             val contentPaddingWithKD =
-                (getContextualCommandBarTokens().keyboardDismissGradientWidth() + 8.dp) * -1
+                -(getContextualCommandBarTokens().keyboardDismissGradientWidth() + getContextualCommandBarTokens().buttonPadding())
+
             LazyRow(modifier = Modifier
                 .focusable(enabled = false)
                 .constrainAs(Content) {
-                    if (keyboardDismissEnabled && keyboardDismissAtStart) {
-                        start.linkTo(KeyboardDismiss.end, margin = contentPaddingWithKD)
-                        end.linkTo(parent.end)
-                    } else if (keyboardDismissEnabled && !keyboardDismissAtStart) {
-                        start.linkTo(parent.start)
-                        end.linkTo(KeyboardDismiss.start, margin = contentPaddingWithKD)
-                    } else {
-                        start.linkTo(parent.start)
-                        end.linkTo(parent.end)
+                    when (actionButtonState) {
+                        ActionButtonState.Start -> {
+                            start.linkTo(KeyboardDismiss.end, margin = contentPaddingWithKD)
+                            end.linkTo(parent.end)
+                        }
+                        ActionButtonState.End -> {
+                            start.linkTo(parent.start)
+                            end.linkTo(KeyboardDismiss.start, margin = contentPaddingWithKD)
+                        }
+                        ActionButtonState.None -> {
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                        }
                     }
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
                     width = Dimension.fillToConstraints
                 }
-                .padding(8.dp),
+                .padding(getContextualCommandBarTokens().buttonPadding()),
                 state = lazyListState) {
 
                 var itemIndex = 0
@@ -119,7 +150,7 @@ fun ContextualCommandBar(
                             val clickableModifier = Modifier.combinedClickable(
                                 enabled = item.enabled,
                                 onClick = item.onClick,
-                                onClickLabel = item.label,
+                                onClickLabel = null,
                                 onLongClick = item.onLongClick,
                                 role = Role.Button,
                                 interactionSource = interactionSource,
@@ -133,7 +164,21 @@ fun ContextualCommandBar(
                                     focusedBorderModifier.border(borderStroke, shape)
                             }
 
-                            Row(verticalAlignment = Alignment.CenterVertically) {
+                            Row(
+                                modifier = Modifier.height(IntrinsicSize.Min),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                // Spacing before first element if KD is at start.
+                                if (actionButtonState == ActionButtonState.Start &&
+                                    item == commandGroup.items.first() && commandGroup == groups.first()
+                                )
+                                    Spacer(
+                                        Modifier
+                                            .requiredWidth(12.dp)
+                                            .fillMaxHeight()
+                                            .background(Color.Transparent)
+                                    )
+
                                 Box(Modifier
                                     .onFocusEvent { focusState ->
                                         if (focusState.isFocused) {
@@ -149,7 +194,8 @@ fun ContextualCommandBar(
                                     }
                                     .then(clickableModifier)
                                     .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
-                                    .fillMaxHeight()
+                                    .defaultMinSize(minWidth = getContextualCommandBarTokens().buttonMinWidth())
+                                    .height(IntrinsicSize.Min)
                                     .clip(shape)
                                     .background(
                                         getColorByState(
@@ -159,31 +205,75 @@ fun ContextualCommandBar(
                                             interactionSource = interactionSource
                                         ),
                                         shape = shape
-                                    ),
-                                    contentAlignment = Alignment.Center) {
+                                    )
+                                    .semantics {
+                                        contentDescription =
+                                            item.label + if (item.selected) "Selected" else ""
+                                    },
+                                    contentAlignment = Alignment.Center
+                                ) {
                                     val foregroundColor = getColorByState(
                                         stateData = getContextualCommandBarTokens().iconColor(),
                                         enabled = item.enabled,
                                         selected = item.selected,
                                         interactionSource = interactionSource
                                     )
+
+                                    val contentPadding: PaddingValues =
+                                        if (commandGroup.items.size == 1)
+                                            PaddingValues(
+                                                top = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                bottom = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                start = getContextualCommandBarTokens().groupIconHorizontalPadding(),
+                                                end = getContextualCommandBarTokens().groupIconHorizontalPadding()
+                                            )
+                                        else if (item == commandGroup.items.first())
+                                            PaddingValues(
+                                                top = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                bottom = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                start = getContextualCommandBarTokens().groupIconHorizontalPadding(),
+                                                end = getContextualCommandBarTokens().itemIconHorizontalPadding()
+                                            )
+                                        else if (item == commandGroup.items.last())
+                                            PaddingValues(
+                                                top = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                bottom = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                start = getContextualCommandBarTokens().itemIconHorizontalPadding(),
+                                                end = getContextualCommandBarTokens().groupIconHorizontalPadding()
+                                            )
+                                        else
+                                            PaddingValues(
+                                                top = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                bottom = getContextualCommandBarTokens().iconVerticalPadding(),
+                                                start = getContextualCommandBarTokens().itemIconHorizontalPadding(),
+                                                end = getContextualCommandBarTokens().itemIconHorizontalPadding()
+                                            )
+
                                     if (item.icon != null)
                                         Icon(
                                             item.icon,
-                                            item.label,
-                                            Modifier.padding(getContextualCommandBarTokens().iconPadding()),
+                                            null,
+                                            Modifier
+                                                .padding(contentPadding)
+                                                .requiredSize(getContextualCommandBarTokens().iconSize().size),
                                             tint = foregroundColor
                                         )
-                                    else
-                                        Text(
-                                            item.label,
-                                            modifier = Modifier.padding(
-                                                getContextualCommandBarTokens().iconPadding()
-                                            ),
-                                            color = foregroundColor,
-                                            overflow = TextOverflow.Ellipsis,
-                                            maxLines = 1
-                                        )
+                                    else {
+                                        Box(
+                                            modifier = Modifier
+                                                .padding(contentPadding)
+                                                .requiredHeight(getContextualCommandBarTokens().iconSize().size),
+                                            contentAlignment = Alignment.Center
+                                        ) {
+                                            Text(
+                                                item.label,
+                                                modifier = Modifier
+                                                    .clearAndSetSemantics { },
+                                                color = foregroundColor,
+                                                overflow = TextOverflow.Ellipsis,
+                                            )
+                                        }
+                                    }
                                 }
                                 if (item != commandGroup.items.last())
                                     Spacer(
@@ -199,6 +289,17 @@ fun ContextualCommandBar(
                                             .fillMaxHeight()
                                             .background(Color.Transparent)
                                     )
+
+                                // Spacing after last element if KD is at end.
+                                if (actionButtonState == ActionButtonState.End &&
+                                    item == commandGroup.items.last() && commandGroup == groups.last()
+                                )
+                                    Spacer(
+                                        Modifier
+                                            .requiredWidth(12.dp)
+                                            .fillMaxHeight()
+                                            .background(Color.Transparent)
+                                    )
                             }
                         }
                         itemIndex += 1
@@ -206,27 +307,32 @@ fun ContextualCommandBar(
                 }
             }
 
-            if (keyboardDismissEnabled) {
+            if (actionButtonState != ActionButtonState.None) {
                 val keyboardController = LocalSoftwareKeyboardController.current
-                val keyboardDismissClickable = Modifier.clickable(
+                val keyboardDismiss: (() -> Unit) = { keyboardController?.hide() }
+                val actionButtonClickable = Modifier.clickable(
                     enabled = true,
-                    onClick = { keyboardController?.hide() },
+                    onClick = actionButtonOnClick ?: keyboardDismiss,
                     role = Role.Button,
                     onClickLabel = "Keyboard Dismiss",
                     indication = LocalIndication.current,
                     interactionSource = remember { MutableInteractionSource() }
                 )
 
-                Row(Modifier.constrainAs(KeyboardDismiss) {
-                    if (keyboardDismissAtStart) {
-                        start.linkTo(parent.start)
-                    } else {
-                        end.linkTo(parent.end)
-                    }
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                }, verticalAlignment = Alignment.CenterVertically) {
-                    if (!keyboardDismissAtStart)
+                Row(
+                    Modifier
+                        .height(IntrinsicSize.Min)
+                        .constrainAs(KeyboardDismiss) {
+                            if (actionButtonState == ActionButtonState.Start) {
+                                start.linkTo(parent.start)
+                            } else {
+                                end.linkTo(parent.end)
+                            }
+                            top.linkTo(parent.top)
+                            bottom.linkTo(parent.bottom)
+                        }, verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (actionButtonState == ActionButtonState.End)
                         Spacer(
                             modifier = Modifier
                                 .requiredWidth(getContextualCommandBarTokens().keyboardDismissGradientWidth())
@@ -240,16 +346,16 @@ fun ContextualCommandBar(
                                 )
                         )
                     Icon(
-                        imageVector = CCBIcons.Keyboarddismiss,
+                        imageVector = actionButtonIcon,
                         contentDescription = "Dismiss",
                         modifier = Modifier
-                            .then(keyboardDismissClickable)
+                            .then(actionButtonClickable)
                             .fillMaxHeight()
                             .background(getContextualCommandBarTokens().keyboardDismissBackgroundColor())
                             .padding(getContextualCommandBarTokens().keyBoardDismissIconPadding()),
                         tint = getContextualCommandBarTokens().keyboardDismissIconColor()
                     )
-                    if (keyboardDismissAtStart)
+                    if (actionButtonState == ActionButtonState.Start)
                         Spacer(
                             modifier = Modifier
                                 .requiredWidth(getContextualCommandBarTokens().keyboardDismissGradientWidth())
