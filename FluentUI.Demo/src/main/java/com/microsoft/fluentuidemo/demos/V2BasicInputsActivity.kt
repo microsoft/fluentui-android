@@ -2,7 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Divider
@@ -24,16 +23,15 @@ import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyButtonTokens
 import com.example.theme.token.MyGlobalTokens
-import com.microsoft.fluentui.controls.Button
-import com.microsoft.fluentui.controls.FloatingActionButton
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
@@ -115,25 +113,6 @@ class V2BasicInputsActivity : DemoActivity() {
                         }
                     }
 
-                    item {
-                        Text("Button with Selected Theme and Colorful mode",
-                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(themeMode))
-                        FluentTheme(
-                                themeMode = ThemeMode.AutoColorful
-                        ) {
-                            Box(
-                                    modifier = Modifier
-                                            .background(
-                                                    FluentTheme.aliasTokens.neutralBackgroundColor[
-                                                            AliasTokens.NeutralBackgroundColorTokens.Background3
-                                                    ].value(ThemeMode.AutoColorful)
-                                            )
-                                            .padding(5.dp)
-                            ) {
-                                CreateButtons()
-                            }
-                        }
-                    }
                     item {
                         FluentTheme {
                             Text("Button with selected theme, auto mode and overridden control token",

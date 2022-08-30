@@ -10,7 +10,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: 
+      name: build
     steps:
     - uses: actions/checkout@v3
     - name: set up JDK 11
@@ -23,4 +24,10 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew clean assembleDevelopmentDebug test
+      run: ./gradlew clean assembleDevelopmentDebug
+    - name: UnitTests
+      run: ./gradlew testDebugUnitTest
+    - name: Generate testApk
+      run: ./gradlew assembleDevelopmentDebugAndroidTest
+    - name: UI Test
+      run: ./gradlew requestHydraLabTest -PappApkPath=./FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestApkPath=./FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=${{secrets.BUILDFLAVOR}} -PtestSuiteName=${{secrets.TESTSUITENAME}} -PrunTimeOutSeconds=${{secrets.TIMEOUTSECONDS}} -PdeviceIdentifier=${{secrets.DEVICEIDENTIFIER}} -PgroupTestType=${{secrets.GROUPTESTTYPE}} -PreportAudience=${{secrets.REPORTAUDIENCE}} -PauthToken=${{secrets.AUTHTOKEN}} -PpkgName=${{secrets.PKGNAME}} -PtestPkgName=${{secrets.TESTPKGNAME}} -PrunningType=${{secrets.RUNNINGTYPE}} -PframeworkType=${{secrets.FRAMEWORKTYPE}}

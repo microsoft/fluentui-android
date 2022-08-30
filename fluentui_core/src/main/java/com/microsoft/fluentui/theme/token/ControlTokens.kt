@@ -15,21 +15,27 @@ interface ControlToken
 class ControlTokens {
 
     enum class ControlType {
+        Avatar,
+        AvatarGroup,
         Button,
-        FloatingActionButton,
-        ToggleSwitch,
         CheckBox,
-        RadioButton
+        Drawer,
+        FloatingActionButton,
+        RadioButton,
+        ToggleSwitch
     }
 
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
         TokenSet { token ->
             when (token) {
+                ControlType.Avatar -> AvatarTokens()
+                ControlType.AvatarGroup -> AvatarGroupTokens()
                 ControlType.Button -> ButtonTokens()
-                ControlType.FloatingActionButton -> FABTokens()
-                ControlType.ToggleSwitch -> ToggleSwitchTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
+                ControlType.Drawer -> DrawerTokens()
+                ControlType.FloatingActionButton -> FABTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
+                ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
         }
     }
