@@ -34,15 +34,15 @@ import com.microsoft.fluentui.controls.ToggleSwitch
 import com.microsoft.fluentui.controls.RadioButton
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.GlobalTokens.NeutralColorTokens.Grey96
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.launch
 import com.microsoft.fluentui.listitem.ListItem
-import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
-import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.persona.AvatarSize
+import com.microsoft.fluentui.persona.AvatarView
+import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
+import kotlinx.android.synthetic.main.activity_avatar_view.*
 
 class V2ListItemViewActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -128,9 +128,40 @@ private fun CreateActivityUI() {
                     }
                 }
             }
+            item{
+                Column(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(15.dp)) {
+                    Text(text = "Avatar Carousel")
+                    Row() {
+                        avatarCarousel()
+                        avatarCarousel()
+                        avatarCarousel()
+                        avatarCarousel()
+                        avatarCarousel()
+                        avatarCarousel()
+                    }
+                }
+            }
 
         }
     }
+}
+
+
+
+@Composable
+fun avatar(): @Composable (() -> Unit){
+    return {
+        Row{
+            Icon(Icons.Outlined.AccountBox, contentDescription = "box")
+        }
+    }
+}
+
+@Composable
+fun avatarCarousel(){
+    ListItem.AvatarCarousel(firstName = "Lorem", lastName = "Ipsum", avatar = avatar(), size = AvatarCarouselSize.Large)
 }
 
 @Composable

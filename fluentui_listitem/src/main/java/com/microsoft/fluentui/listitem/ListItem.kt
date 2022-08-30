@@ -23,6 +23,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
@@ -197,7 +198,7 @@ class ListItem{
                             style:SectionHeaderStyle = SectionHeaderStyle.Standard,
                             accessoryIcon:(@Composable () -> Unit)? = null,
                             rightAccessory:(@Composable () -> Unit)? = null,
-                            onClick: () -> Unit,
+                            onClick: (() -> Unit)? = null,
                             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
 
             val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
@@ -221,7 +222,7 @@ class ListItem{
                         .borderModifier(border, borderColor, borderSize, borderInset)
                         .clickAndSemanticsModifier(
                             interactionSource,
-                            onClick = onClick
+                            onClick = onClick?:{}
                         ), verticalAlignment = Alignment.CenterVertically){
                     if(accessoryIcon != null){
                         Box(Modifier.padding(start = horizontalPadding), contentAlignment = Alignment.Center){
@@ -256,11 +257,54 @@ class ListItem{
         }
         @Composable
         fun AvatarCarousel(modifier: Modifier = Modifier,
-                           text:String,
-                           subText:String? = null,
+                           firstName:String,
+                           lastName:String? = null,
                            listItemTokens: ListItemTokens? = null,
-                           avatar:(@Composable () -> Unit)){
-//TODO
+                           avatar:(@Composable () -> Unit),
+                           border:BorderType = BorderType.No_Border,
+                           borderInset:BorderInset = BorderInset.None,
+                           size:AvatarCarouselSize = AvatarCarouselSize.Medium,
+                           onClick: (() -> Unit)? = null,
+                           interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+            val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            CompositionLocalProvider(LocalListItemTokens provides token){
+
+                val backgroundColor = getColorByState(stateData = getListItemTokens().backgroundColor(), enabled = true, interactionSource = interactionSource)
+                val cellHeight = getListItemTokens().cellHeight(listItemType = AvatarCarousel)
+                val firstNameTextSize = getListItemTokens().textSize(textType = ListTextType.Text)
+                val lastNameTextSize = getListItemTokens().textSize(textType = ListTextType.SubLabelText)
+                val firstNameTextColor = getListItemTokens().textColor(textType = ListTextType.Text)
+                val lastNameTextColor = getListItemTokens().textColor(textType = ListTextType.DescriptionText)
+                val horizontalPadding = getListItemTokens().padding()
+                val borderSize = getListItemTokens().borderSize().value
+                val borderInset = with (LocalDensity.current) {getListItemTokens().borderInset(inset = borderInset).toPx()}
+                val borderColor = getColorByState(stateData = getListItemTokens().borderColor(), enabled = true, interactionSource = interactionSource)
+                Column(
+                    modifier
+                        .widthIn(max = 88.dp)
+                        .heightIn(min = cellHeight)
+                        .background(backgroundColor)
+                        .borderModifier(border, borderColor, borderSize, borderInset)
+                        .clickAndSemanticsModifier(
+                            interactionSource,
+                            onClick = onClick?:{}), horizontalAlignment = Alignment.CenterHorizontally){
+                    Box(Modifier.padding(top = 8.dp, bottom = 8.dp), contentAlignment = Alignment.Center){
+                        avatar()
+                    }
+                    Box(
+                        Modifier
+                            .padding(start = 8.dp)){
+                        Text(text = firstName, color = firstNameTextColor.rest, fontSize = firstNameTextSize.fontSize.size, fontWeight = firstNameTextSize.weight)
+                    }
+                    if(size == AvatarCarouselSize.Large && lastName != null){
+                        Box(
+                            Modifier
+                                .padding(start = 8.dp)){
+                            Text(text = lastName, color = lastNameTextColor.rest, fontSize = lastNameTextSize.fontSize.size, fontWeight = lastNameTextSize.weight)
+                        }
+                    }
+                }
+            }
         }
 
         @Composable

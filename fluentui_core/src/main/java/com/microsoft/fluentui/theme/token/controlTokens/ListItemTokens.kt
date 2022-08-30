@@ -89,6 +89,11 @@ enum class Placement {
     Bottom
 }
 
+enum class AvatarCarouselSize{
+    Medium,
+    Large
+}
+
 @Parcelize
 open class ListItemTokens : ControlToken, Parcelable {
     @Composable
