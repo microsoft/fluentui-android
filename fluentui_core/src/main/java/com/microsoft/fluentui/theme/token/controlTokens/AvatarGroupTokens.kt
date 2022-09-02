@@ -4,8 +4,6 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.ControlToken
 import com.microsoft.fluentui.theme.token.GlobalTokens
@@ -66,12 +64,12 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
             }
 
             AvatarGroupStyle.Pile -> when (avatarGroupInfo.size) {
-                AvatarSize.XSmall -> globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
-                AvatarSize.Small -> globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
-                AvatarSize.Medium -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-                AvatarSize.Large -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-                AvatarSize.XLarge -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-                AvatarSize.XXLarge -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+                AvatarSize.XSmall -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall)
+                AvatarSize.Small -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall)
+                AvatarSize.Medium -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+                AvatarSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+                AvatarSize.XLarge -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+                AvatarSize.XXLarge -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
             }
         }
     }
@@ -79,12 +77,12 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
     @Composable
     open fun iconSize(avatarGroupInfo: AvatarGroupInfo): IconSize {
         return when (avatarGroupInfo.size) {
-            AvatarSize.XSmall -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXSmallSelected]
-            AvatarSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmallSelected]
-            AvatarSize.Medium -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
-            AvatarSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.MediumSelected]
-            AvatarSize.XLarge -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.LargeSelected]
-            AvatarSize.XXLarge -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXXLargeSelected]
+            AvatarSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmallSelected)
+            AvatarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmallSelected)
+            AvatarSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.SmallSelected)
+            AvatarSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.MediumSelected)
+            AvatarSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.LargeSelected)
+            AvatarSize.XXLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXXLargeSelected)
         }
     }
 }

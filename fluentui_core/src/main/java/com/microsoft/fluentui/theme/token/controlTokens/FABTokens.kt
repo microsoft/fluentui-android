@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
@@ -86,13 +85,13 @@ open class FABTokens : ControlToken, Parcelable {
         return StateBorderStroke(
                 focused = listOf(
                         BorderStroke(
-                                globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thick),
                                 aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                                         themeMode = themeMode
                                 )
                         ),
                         BorderStroke(
-                                globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thin),
                                 aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                                         themeMode = themeMode
                                 )
@@ -104,8 +103,8 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun iconSize(fabInfo: FABInfo): IconSize {
         return when (fabInfo.size) {
-            FABSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.Small]
-            FABSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.Medium]
+            FABSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+            FABSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
         }
     }
 
@@ -122,13 +121,13 @@ open class FABTokens : ControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Small]
+                        horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                        vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
                 )
             FABSize.Large ->
                 PaddingValues(
-                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium]
+                        horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                        vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
                 )
         }
     }
@@ -138,17 +137,17 @@ open class FABTokens : ControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                        top = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        bottom = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        start = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        end = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium]
+                        top = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                        bottom = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                        start = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                        end = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
                 )
             FABSize.Large ->
                 PaddingValues(
-                        top = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        bottom = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        start = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        end = globalTokens.spacing[GlobalTokens.SpacingTokens.Large]
+                        top = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                        bottom = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                        start = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                        end = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Large)
                 )
         }
     }
@@ -156,8 +155,8 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun spacing(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-            FABSize.Large -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+            FABSize.Small -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+            FABSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
         }
     }
 
@@ -180,11 +179,11 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun elevation(fabInfo: FABInfo): StateElevation {
         return StateElevation(
-                rest = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow08],
-                pressed = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
-                selected = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
-                focused = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
-                disabled = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02]
+                rest = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
+                pressed = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02),
+                selected = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02),
+                focused = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02),
+                disabled = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02)
         )
     }
 }
