@@ -22,13 +22,11 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyButtonTokens
-import com.example.theme.token.MyGlobalTokens
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
@@ -67,7 +65,6 @@ class V2BasicInputsActivity : DemoActivity() {
                                     style = ButtonStyle.OutlinedButton,
                                     size = ButtonSize.Medium,
                                     onClick = {
-                                        AppThemeController.updateGlobalTokens(GlobalTokens())
                                         AppThemeController.updateAliasTokens(AliasTokens())
                                         AppThemeController.updateControlTokens(ControlTokens().updateTokens(ControlTokens.ControlType.Button, ButtonTokens()))
                                     },
@@ -78,7 +75,6 @@ class V2BasicInputsActivity : DemoActivity() {
                                     style = ButtonStyle.OutlinedButton,
                                     size = ButtonSize.Medium,
                                     onClick = {
-                                        AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                         AppThemeController.updateAliasTokens(MyAliasTokens())
                                         AppThemeController.updateControlTokens(ControlTokens().updateTokens(ControlTokens.ControlType.Button, MyButtonTokens()))
                                     },
@@ -97,16 +93,16 @@ class V2BasicInputsActivity : DemoActivity() {
 
                         // TODO Investigate better ways to save activity Theme state
                         // TODO One possible way is to use State Holders
-                        var globalTokens by rememberSaveable { mutableStateOf(GlobalTokens()) }
+                        var aliasTokens by rememberSaveable { mutableStateOf(AliasTokens()) }
 
-                        FluentTheme(globalTokens = globalTokens, aliasTokens = AliasTokens(), controlTokens = ControlTokens()) {
+                        FluentTheme(aliasTokens = aliasTokens, controlTokens = ControlTokens()) {
                             Column(verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)) {
                                 Row(
                                         horizontalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterHorizontally),
                                         modifier = Modifier.fillMaxWidth()
                                 ) {
-                                    Button(onClick = { globalTokens = GlobalTokens() }, text = "Theme1")
-                                    Button(onClick = { globalTokens = MyGlobalTokens() }, text = "Theme2")
+                                    Button(onClick = { aliasTokens = AliasTokens() }, text = "Theme1")
+                                    Button(onClick = { aliasTokens = MyAliasTokens() }, text = "Theme2")
                                 }
                                 CreateButtons()
                             }
