@@ -18,7 +18,6 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
-import com.example.theme.token.MyGlobalTokens
 import com.microsoft.fluentui.tokenized.controls.CheckBox
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -26,7 +25,6 @@ import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
@@ -77,11 +75,9 @@ class V2BasicControlsActivity : DemoActivity() {
                         ToggleSwitch(enabledSwitch = enabled, checkedState = checked, onValueChange = {
                             checked = it
                             if (checked) {
-                                AppThemeController.updateGlobalTokens(GlobalTokens())
                                 AppThemeController.updateAliasTokens(AliasTokens())
                                 selectedOption.value = themes[0]
                             } else {
-                                AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                 AppThemeController.updateAliasTokens(MyAliasTokens())
                                 selectedOption.value = themes[1]
                             }
@@ -100,11 +96,9 @@ class V2BasicControlsActivity : DemoActivity() {
                             checked = !it
                             if (checked) {
                                 AppThemeController.updateAliasTokens(AliasTokens())
-                                AppThemeController.updateGlobalTokens(GlobalTokens())
                                 selectedOption.value = themes[0]
                             } else {
                                 AppThemeController.updateAliasTokens(MyAliasTokens())
-                                AppThemeController.updateGlobalTokens(MyGlobalTokens())
                                 selectedOption.value = themes[1]
                             }
                         })
@@ -130,16 +124,14 @@ class V2BasicControlsActivity : DemoActivity() {
                                     selected = (selectedOption.value == theme),
                                     onClick = {
                                         selectedOption.value = theme
-                                        if (theme == "Theme 1") {
+                                        checked = if (theme == "Theme 1") {
                                             AppThemeController.updateAliasTokens(AliasTokens())
-                                            AppThemeController.updateGlobalTokens(GlobalTokens())
-                                            checked = true
+                                            true
                                         } else {
                                             AppThemeController.updateAliasTokens(MyAliasTokens())
-                                            AppThemeController.updateGlobalTokens(MyGlobalTokens())
-                                            checked = false
+                                            false
                                         }
-                                        Toast.makeText(context, "Radio Button: ${theme} selected", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(context, "Radio Button: $theme selected", Toast.LENGTH_SHORT).show()
                                     }
                             )
                         }

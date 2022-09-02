@@ -37,21 +37,21 @@ open class DrawerTokens : ControlToken, Parcelable {
 
     @Composable
     open fun elevation(type: BehaviorType): Dp =
-            FluentTheme.globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow28]
+            GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow28)
 
     @Composable
     open fun borderRadius(type: BehaviorType): Dp {
         return when (type) {
-            BehaviorType.TOP, BehaviorType.BOTTOM -> FluentTheme.globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.XLarge]
-            BehaviorType.LEFT, BehaviorType.RIGHT -> FluentTheme.globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.None]
+            BehaviorType.TOP, BehaviorType.BOTTOM -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
+            BehaviorType.LEFT, BehaviorType.RIGHT -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.None)
         }
     }
 
     @Composable
     open fun scrimColor(type: BehaviorType): Color =
-            FluentTheme.globalTokens.neutralColor[GlobalTokens.NeutralColorTokens.Black]
+            GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black)
 
     @Composable
     open fun scrimOpacity(type: BehaviorType): Float =
-            FluentTheme.globalTokens.opacity[GlobalTokens.OpacityTokens.Opacity32]
+            GlobalTokens.opacity(GlobalTokens.OpacityTokens.Opacity32)
 }
