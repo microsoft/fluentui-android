@@ -37,7 +37,6 @@ class V2ContextualCommandBarActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
-    @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
