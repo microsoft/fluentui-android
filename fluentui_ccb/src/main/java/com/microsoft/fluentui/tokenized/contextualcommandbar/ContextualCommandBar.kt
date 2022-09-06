@@ -38,7 +38,7 @@ import kotlin.math.max
 
 val LocalContextualCommandBarTokens = compositionLocalOf { ContextualCommandBarTokens() }
 
-enum class ActionButtonState {
+enum class ActionButtonPosition {
     None,
     Start,
     End
@@ -52,7 +52,7 @@ enum class ActionButtonState {
  *
  * @param groups List of Groups to be created in a context
  * @param modifier Optional Modifier for CCB
- * @param actionButtonState Enum to specify if we will have an Action Button and its position
+ * @param actionButtonPosition Enum to specify if we will have an Action Button and its position
  * @param actionButtonIcon ImageVector for The Action Button Icon
  * @param actionButtonOnClick OnCLick Functionality for the Action Button
  * @param contextualCommandBarToken Token to provide appearance values to Avatar
@@ -66,7 +66,7 @@ enum class ActionButtonState {
 fun ContextualCommandBar(
     groups: List<CommandGroup>,
     modifier: Modifier = Modifier,
-    actionButtonState: ActionButtonState = ActionButtonState.End,
+    actionButtonPosition: ActionButtonPosition = ActionButtonPosition.End,
     actionButtonIcon: ImageVector = CCBIcons.Keyboarddismiss,
     actionButtonOnClick: (() -> Unit)? = null,
     contextualCommandBarToken: ContextualCommandBarTokens? = null
@@ -111,16 +111,16 @@ fun ContextualCommandBar(
             LazyRow(modifier = Modifier
                 .focusable(enabled = false)
                 .constrainAs(Content) {
-                    when (actionButtonState) {
-                        ActionButtonState.Start -> {
+                    when (actionButtonPosition) {
+                        ActionButtonPosition.Start -> {
                             start.linkTo(KeyboardDismiss.end, margin = contentPaddingWithKD)
                             end.linkTo(parent.end)
                         }
-                        ActionButtonState.End -> {
+                        ActionButtonPosition.End -> {
                             start.linkTo(parent.start)
                             end.linkTo(KeyboardDismiss.start, margin = contentPaddingWithKD)
                         }
-                        ActionButtonState.None -> {
+                        ActionButtonPosition.None -> {
                             start.linkTo(parent.start)
                             end.linkTo(parent.end)
                         }
@@ -170,7 +170,7 @@ fun ContextualCommandBar(
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 // Spacing before first element if KD is at start.
-                                if (actionButtonState == ActionButtonState.Start &&
+                                if (actionButtonPosition == ActionButtonPosition.Start &&
                                     item == commandGroup.items.first() && commandGroup == groups.first()
                                 )
                                     Spacer(
@@ -296,7 +296,7 @@ fun ContextualCommandBar(
                                     )
 
                                 // Spacing after last element if KD is at end.
-                                if (actionButtonState == ActionButtonState.End &&
+                                if (actionButtonPosition == ActionButtonPosition.End &&
                                     item == commandGroup.items.last() && commandGroup == groups.last()
                                 )
                                     Spacer(
@@ -312,7 +312,7 @@ fun ContextualCommandBar(
                 }
             }
 
-            if (actionButtonState != ActionButtonState.None) {
+            if (actionButtonPosition != ActionButtonPosition.None) {
                 val keyboardController = LocalSoftwareKeyboardController.current
                 val keyboardDismiss: (() -> Unit) = { keyboardController?.hide() }
                 val actionButtonClickable = Modifier.clickable(
@@ -328,7 +328,7 @@ fun ContextualCommandBar(
                     Modifier
                         .height(IntrinsicSize.Min)
                         .constrainAs(KeyboardDismiss) {
-                            if (actionButtonState == ActionButtonState.Start) {
+                            if (actionButtonPosition == ActionButtonPosition.Start) {
                                 start.linkTo(parent.start)
                             } else {
                                 end.linkTo(parent.end)
@@ -337,7 +337,7 @@ fun ContextualCommandBar(
                             bottom.linkTo(parent.bottom)
                         }, verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (actionButtonState == ActionButtonState.End)
+                    if (actionButtonPosition == ActionButtonPosition.End)
                         Spacer(
                             modifier = Modifier
                                 .requiredWidth(getContextualCommandBarTokens().actionButtonGradientWidth())
@@ -360,7 +360,7 @@ fun ContextualCommandBar(
                             .padding(getContextualCommandBarTokens().actionButtonIconPadding()),
                         tint = getContextualCommandBarTokens().actionButtonIconColor()
                     )
-                    if (actionButtonState == ActionButtonState.Start)
+                    if (actionButtonPosition == ActionButtonPosition.Start)
                         Spacer(
                             modifier = Modifier
                                 .requiredWidth(getContextualCommandBarTokens().actionButtonGradientWidth())

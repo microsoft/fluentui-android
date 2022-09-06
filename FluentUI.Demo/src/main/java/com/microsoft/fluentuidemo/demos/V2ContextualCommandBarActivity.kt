@@ -22,7 +22,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
-import com.microsoft.fluentui.tokenized.contextualcommandbar.ActionButtonState
+import com.microsoft.fluentui.tokenized.contextualcommandbar.ActionButtonPosition
 import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandGroup
 import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandItem
 import com.microsoft.fluentui.tokenized.contextualcommandbar.ContextualCommandBar
@@ -119,7 +119,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                var kdState by remember { mutableStateOf(ActionButtonState.Start) }
+                var kdState by remember { mutableStateOf(ActionButtonPosition.Start) }
                 var text by remember { mutableStateOf("") }
 
                 val focusManager = LocalFocusManager.current
@@ -132,14 +132,14 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     )
                 ) {
                     Button(
-                        { kdState = if(kdState != ActionButtonState.None) ActionButtonState.None else ActionButtonState.End },
-                        text = if (kdState != ActionButtonState.None) "Disable Keyboard Dismiss" else "Enable Keyboard Dismiss",
+                        { kdState = if(kdState != ActionButtonPosition.None) ActionButtonPosition.None else ActionButtonPosition.End },
+                        text = if (kdState != ActionButtonPosition.None) "Disable Keyboard Dismiss" else "Enable Keyboard Dismiss",
                         style = ButtonStyle.OutlinedButton
                     )
-                    if (kdState != ActionButtonState.None)
+                    if (kdState != ActionButtonPosition.None)
                         Button(
-                            { kdState = if(kdState == ActionButtonState.Start) ActionButtonState.End else ActionButtonState.Start },
-                            text = if (kdState == ActionButtonState.Start) " Move KD to End" else "Move KD to Start",
+                            { kdState = if(kdState == ActionButtonPosition.Start) ActionButtonPosition.End else ActionButtonPosition.Start },
+                            text = if (kdState == ActionButtonPosition.Start) " Move KD to End" else "Move KD to Start",
                             style = ButtonStyle.OutlinedButton
                         )
                 }
@@ -166,7 +166,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
 
                 ContextualCommandBar(
                     commandGroup,
-                    actionButtonState = kdState
+                    actionButtonPosition = kdState
                 )
             }
         }
