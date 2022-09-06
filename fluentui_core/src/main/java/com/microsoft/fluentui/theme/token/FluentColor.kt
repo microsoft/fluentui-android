@@ -15,6 +15,7 @@ data class StateColor(
         val pressed: Color = Color.Unspecified,
         val selected: Color = Color.Unspecified,
         val focused: Color = Color.Unspecified,
+        val selectedFocused: Color = Color.Unspecified,
         val disabled: Color = Color.Unspecified,
 )
 
