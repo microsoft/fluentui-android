@@ -6,6 +6,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1Pressed
@@ -17,14 +18,10 @@ import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1Strong
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1Strong
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.FontInfo
 import com.microsoft.fluentui.theme.token.GlobalTokens.BorderSizeTokens.Thin
 import com.microsoft.fluentui.theme.token.GlobalTokens.IconSizeTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.Medium
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
-import com.microsoft.fluentui.theme.token.IconSize
-import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.AvatarCarousel
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.ThreeLine
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.TwoLine
@@ -166,12 +163,12 @@ open class ListItemTokens : ControlToken, Parcelable {
 
     @Composable
     open fun padding(): Dp {
-        return FluentTheme.globalTokens.spacing[Medium]
+        return GlobalTokens.spacing(Medium)
     }
 
     @Composable
     open fun borderSize(): Dp {
-        return FluentTheme.globalTokens.borderSize[Thin]
+        return GlobalTokens.borderSize(Thin)
     }
 
     @Composable
@@ -202,23 +199,6 @@ open class ListItemTokens : ControlToken, Parcelable {
                     else -> FluentTheme.aliasTokens.typography[Body1]
                 }
             }
-        }
-    }
-
-    @Composable
-    open fun iconSize(): IconSize {
-        return FluentTheme.globalTokens.iconSize[IconSizeTokens.Medium]
-    }
-
-    @Composable
-    open fun spacing(accessoryType: ListAccessoryType): Dp {
-        return when (accessoryType) {
-            ListAccessoryType.Button -> FluentTheme.globalTokens.spacing[XSmall]
-            ListAccessoryType.Checkbox -> FluentTheme.globalTokens.spacing[Medium]
-            ListAccessoryType.ToggleSwitch -> FluentTheme.globalTokens.spacing[Medium]
-            ListAccessoryType.RadioButton -> FluentTheme.globalTokens.spacing[Medium]
-            ListAccessoryType.Icon -> FluentTheme.globalTokens.spacing[Medium]
-            ListAccessoryType.Avatar -> FluentTheme.globalTokens.spacing[Medium]
         }
     }
 
