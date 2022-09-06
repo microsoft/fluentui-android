@@ -69,8 +69,7 @@ private fun CreateActivityUI() {
     var show2 by remember { mutableStateOf(true) }
     Box(
         Modifier
-            .fillMaxSize()
-            .background(FluentTheme.globalTokens.neutralColor[Grey96])){
+            .fillMaxSize()){
         LazyColumn( ){
             item {
                 Box(){
