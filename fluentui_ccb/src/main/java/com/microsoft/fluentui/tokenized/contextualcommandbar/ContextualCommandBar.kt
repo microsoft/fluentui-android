@@ -106,7 +106,7 @@ fun ContextualCommandBar(
             val (KeyboardDismiss, Content) = createRefs()
 
             val contentPaddingWithKD =
-                -(getContextualCommandBarTokens().keyboardDismissGradientWidth() + getContextualCommandBarTokens().buttonPadding())
+                -(getContextualCommandBarTokens().actionButtonGradientWidth() + getContextualCommandBarTokens().buttonPadding())
 
             LazyRow(modifier = Modifier
                 .focusable(enabled = false)
@@ -340,11 +340,11 @@ fun ContextualCommandBar(
                     if (actionButtonState == ActionButtonState.End)
                         Spacer(
                             modifier = Modifier
-                                .requiredWidth(getContextualCommandBarTokens().keyboardDismissGradientWidth())
+                                .requiredWidth(getContextualCommandBarTokens().actionButtonGradientWidth())
                                 .fillMaxHeight()
                                 .background(
                                     Brush.horizontalGradient(
-                                        getContextualCommandBarTokens().keyboardDismissGradient(),
+                                        getContextualCommandBarTokens().actionButtonGradient(),
                                         startX = 0.0F,
                                         endX = Float.POSITIVE_INFINITY
                                     )
@@ -356,18 +356,18 @@ fun ContextualCommandBar(
                         modifier = Modifier
                             .then(actionButtonClickable)
                             .fillMaxHeight()
-                            .background(getContextualCommandBarTokens().keyboardDismissBackgroundColor())
-                            .padding(getContextualCommandBarTokens().keyBoardDismissIconPadding()),
-                        tint = getContextualCommandBarTokens().keyboardDismissIconColor()
+                            .background(getContextualCommandBarTokens().actionButtonBackgroundColor())
+                            .padding(getContextualCommandBarTokens().actionButtonIconPadding()),
+                        tint = getContextualCommandBarTokens().actionButtonIconColor()
                     )
                     if (actionButtonState == ActionButtonState.Start)
                         Spacer(
                             modifier = Modifier
-                                .requiredWidth(getContextualCommandBarTokens().keyboardDismissGradientWidth())
+                                .requiredWidth(getContextualCommandBarTokens().actionButtonGradientWidth())
                                 .fillMaxHeight()
                                 .background(
                                     Brush.horizontalGradient(
-                                        getContextualCommandBarTokens().keyboardDismissGradient(),
+                                        getContextualCommandBarTokens().actionButtonGradient(),
                                         startX = Float.POSITIVE_INFINITY,
                                         endX = 0.0F
                                     )

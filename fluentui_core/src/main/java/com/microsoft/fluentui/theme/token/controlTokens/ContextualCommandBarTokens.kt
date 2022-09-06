@@ -22,21 +22,21 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun keyboardDismissBackgroundColor(): Color {
+    open fun actionButtonBackgroundColor(): Color {
         return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
             themeMode = themeMode
         )
     }
 
     @Composable
-    open fun keyboardDismissIconColor(): Color {
+    open fun actionButtonIconColor(): Color {
         return aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
             themeMode = themeMode
         )
     }
 
     @Composable
-    open fun keyBoardDismissIconPadding(): PaddingValues {
+    open fun actionButtonIconPadding(): PaddingValues {
         return PaddingValues(
             horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
             vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
@@ -44,7 +44,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun keyboardDismissGradient(): List<Color> {
+    open fun actionButtonGradient(): List<Color> {
         return listOf(
             aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = themeMode
@@ -55,7 +55,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
         )
     }
 
-    open fun keyboardDismissGradientWidth(): Dp {
+    open fun actionButtonGradientWidth(): Dp {
         return 16.dp
     }
 

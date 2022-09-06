@@ -8,8 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -63,29 +62,29 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                             onLongClick = longClick
                         ),
                         CommandItem(
-                            "asdasda",
+                            "Refresh",
                             click,
                             enabled = false,
-                            icon = Icons.Filled.Email,
-                            onLongClick = longClick
-                        ),
-                        CommandItem(
-                            "Like",
-                            click,
                             icon = Icons.Filled.Refresh,
                             onLongClick = longClick
                         ),
                         CommandItem(
-                            "Emwerwerail",
+                            "Done",
                             click,
-                            enabled = false,
-                            icon = Icons.Filled.Email,
+                            icon = Icons.Filled.Done,
                             onLongClick = longClick
                         ),
                         CommandItem(
-                            "Liwerwerke",
+                            "Add",
                             click,
-                            icon = Icons.Filled.Refresh,
+                            enabled = false,
+                            icon = Icons.Filled.Add,
+                            onLongClick = longClick
+                        ),
+                        CommandItem(
+                            "Call",
+                            click,
+                            icon = Icons.Filled.Call,
                             onLongClick = longClick
                         )
                     )
@@ -100,18 +99,18 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 ),
                 CommandGroup(
                     "Group 3", listOf(
-                        CommandItem("Ewermail", click, icon = Icons.Filled.Email),
-                        CommandItem("Lasdasdike", click, icon = Icons.Filled.Refresh),
-                        CommandItem("Email", click, icon = Icons.Filled.Email),
-                        CommandItem("Like", click, icon = Icons.Filled.Refresh),
+                        CommandItem("Edit", click, icon = Icons.Filled.Edit),
+                        CommandItem("Delete", click, icon = Icons.Filled.Delete),
+                        CommandItem("Italics", click),
+                        CommandItem("Underline", click),
                     )
                 ),
                 CommandGroup(
                     "Group 4", listOf(
                         CommandItem("Email", click, onLongClick = longClick),
-                        CommandItem("Emaasdail", click, icon = Icons.Filled.Email),
-                        CommandItem("qqeLike", click, onLongClick = longClick),
-                        CommandItem("Emasdasail", click, icon = Icons.Filled.Email)
+                        CommandItem("Info", click, icon = Icons.Filled.Info),
+                        CommandItem("Settings", click, onLongClick = longClick),
+                        CommandItem("Favorite", click, icon = Icons.Filled.Favorite)
                     )
                 )
             )
