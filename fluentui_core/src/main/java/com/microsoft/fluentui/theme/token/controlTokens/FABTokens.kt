@@ -44,6 +44,12 @@ open class FABTokens : ControlToken, Parcelable {
                 rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                 ),
+                pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    themeMode = themeMode
+                ),
+                focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    themeMode = themeMode
+                ),
                 disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         themeMode = themeMode
                 )
@@ -55,6 +61,12 @@ open class FABTokens : ControlToken, Parcelable {
         return StateColor(
                 rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
+                ),
+                pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    themeMode = themeMode
+                ),
+                focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    themeMode = themeMode
                 ),
                 disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         themeMode = themeMode
@@ -73,6 +85,9 @@ open class FABTokens : ControlToken, Parcelable {
                 ),
                 selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
                         themeMode = themeMode
+                ),
+                focused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    themeMode = themeMode
                 ),
                 disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                         themeMode = themeMode
