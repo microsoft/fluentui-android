@@ -22,6 +22,7 @@ const val BOTTOM_NAVIGATION = "BottomNavigation"
 const val BOTTOM_SHEET = "BottomSheet"
 const val CALENDAR_VIEW = "CalendarView"
 const val CONTEXTUAL_COMMAND_BAR = "ContextualCommandBar"
+const val V2CONTEXTUAL_COMMAND_BAR = "V2 ContextualCommandBar"
 const val DATE_TIME_PICKER = "DateTimePicker"
 const val DRAWER = "Drawer"
 const val V2DRAWER = "V2 Drawer"
@@ -53,6 +54,7 @@ val DEMOS = arrayListOf(
         Demo(BOTTOM_SHEET, BottomSheetActivity::class),
         Demo(CALENDAR_VIEW, CalendarViewActivity::class),
         Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
+        Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
         Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
         Demo(DRAWER, DrawerActivity::class),
         Demo(V2DRAWER, V2DrawerActivity::class),
