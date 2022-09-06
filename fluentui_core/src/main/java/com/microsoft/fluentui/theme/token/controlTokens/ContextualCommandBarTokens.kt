@@ -107,6 +107,11 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
+    open fun textSize(): FontInfo {
+        return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
+    }
+
+    @Composable
     open fun itemIconHorizontalPadding(): Dp {
         return 10.dp
     }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -154,7 +155,7 @@ fun ContextualCommandBar(
                                 onLongClick = item.onLongClick,
                                 role = Role.Button,
                                 interactionSource = interactionSource,
-                                indication = null
+                                indication = rememberRipple()
                             )
 
                             val focusStroke = getContextualCommandBarTokens().focusStroke()
@@ -192,8 +193,6 @@ fun ContextualCommandBar(
                                             }
                                         }
                                     }
-                                    .then(clickableModifier)
-                                    .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
                                     .defaultMinSize(minWidth = getContextualCommandBarTokens().buttonMinWidth())
                                     .height(IntrinsicSize.Min)
                                     .clip(shape)
@@ -206,6 +205,8 @@ fun ContextualCommandBar(
                                         ),
                                         shape = shape
                                     )
+                                    .then(clickableModifier)
+                                    .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
                                     .semantics {
                                         contentDescription =
                                             item.label + if (item.selected) "Selected" else ""
@@ -259,6 +260,7 @@ fun ContextualCommandBar(
                                             tint = foregroundColor
                                         )
                                     else {
+                                        val fontInfo = getContextualCommandBarTokens().textSize()
                                         Box(
                                             modifier = Modifier
                                                 .padding(contentPadding)
@@ -269,6 +271,9 @@ fun ContextualCommandBar(
                                                 item.label,
                                                 modifier = Modifier
                                                     .clearAndSetSemantics { },
+                                                fontSize = fontInfo.fontSize.size,
+                                                lineHeight = fontInfo.fontSize.lineHeight,
+                                                fontWeight = fontInfo.weight,
                                                 color = foregroundColor,
                                                 overflow = TextOverflow.Ellipsis,
                                             )
@@ -315,7 +320,7 @@ fun ContextualCommandBar(
                     onClick = actionButtonOnClick ?: keyboardDismiss,
                     role = Role.Button,
                     onClickLabel = "Keyboard Dismiss",
-                    indication = LocalIndication.current,
+                    indication = rememberRipple(),
                     interactionSource = remember { MutableInteractionSource() }
                 )
 
