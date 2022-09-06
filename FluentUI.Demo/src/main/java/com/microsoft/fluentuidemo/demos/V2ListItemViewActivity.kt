@@ -28,10 +28,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.controls.Button
-import com.microsoft.fluentui.controls.CheckBox
-import com.microsoft.fluentui.controls.ToggleSwitch
-import com.microsoft.fluentui.controls.RadioButton
+import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.CheckBox
+import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
+import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.GlobalTokens.NeutralColorTokens.Grey96
 import com.microsoft.fluentuidemo.DemoActivity
@@ -280,12 +280,6 @@ fun overFlowMenuView(): @Composable (() -> Unit){
             var checked by remember { mutableStateOf(true) }
             var enabled by remember { mutableStateOf(false) }
             Row {
-                ToggleSwitch(enabled, checked, {
-                    checked = it
-                    if (checked) {
-                    } else {
-                    }
-                })
             }
         }
 
