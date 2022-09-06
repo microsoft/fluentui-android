@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
@@ -157,13 +156,13 @@ open class ButtonTokens : ControlToken, Parcelable {
             ButtonStyle.Button, ButtonStyle.TextButton -> StateBorderStroke(
                     focused = listOf(
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thick),
                                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                                             themeMode = themeMode
                                     )
                             ),
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thin),
                                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                                             themeMode = themeMode
                                     )
@@ -174,7 +173,7 @@ open class ButtonTokens : ControlToken, Parcelable {
             ButtonStyle.OutlinedButton -> StateBorderStroke(
                     pressed = listOf(
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thin),
                                     aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
                                             themeMode = themeMode
                                     )
@@ -182,7 +181,7 @@ open class ButtonTokens : ControlToken, Parcelable {
                     ),
                     rest = listOf(
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thin),
                                     aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
                                             themeMode = themeMode
                                     )
@@ -190,7 +189,7 @@ open class ButtonTokens : ControlToken, Parcelable {
                     ),
                     disabled = listOf(
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thin),
                                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
                                             themeMode = themeMode
                                     )
@@ -198,13 +197,13 @@ open class ButtonTokens : ControlToken, Parcelable {
                     ),
                     focused = listOf(
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thick),
                                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                                             themeMode = themeMode
                                     )
                             ),
                             BorderStroke(
-                                    globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
+                                    GlobalTokens.borderSize(GlobalTokens.BorderSizeTokens.Thin),
                                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                                             themeMode = themeMode
                                     )
@@ -217,9 +216,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun borderRadius(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Large]
-            ButtonSize.Medium -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Medium]
-            ButtonSize.Large -> globalTokens.borderRadius[GlobalTokens.BorderRadiusTokens.Medium]
+            ButtonSize.Small -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Large)
+            ButtonSize.Medium -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
+            ButtonSize.Large -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
         }
     }
 
@@ -228,9 +227,9 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
                 when (buttonInfo.size) {
-                    ButtonSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmallSelected]
-                    ButtonSize.Medium -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
-                    ButtonSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
+                    ButtonSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmallSelected)
+                    ButtonSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.SmallSelected)
+                    ButtonSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.SmallSelected)
                 }
         }
     }
@@ -249,16 +248,16 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.size) {
             ButtonSize.Small ->
                 PaddingValues(
-                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall],
-                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
+                        horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall),
+                        vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall)
                 )
             ButtonSize.Medium -> PaddingValues(
-                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
             )
             ButtonSize.Large -> PaddingValues(
-                    horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Large],
-                    vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Small]
+                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Large),
+                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
             )
         }
     }
@@ -266,9 +265,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun spacing(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
-            ButtonSize.Medium -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-            ButtonSize.Large -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+            ButtonSize.Small -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall)
+            ButtonSize.Medium -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+            ButtonSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
         }
     }
 
