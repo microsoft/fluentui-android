@@ -16,12 +16,12 @@ import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorToke
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1Strong
+import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body2
+import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body2Strong
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1Strong
 import com.microsoft.fluentui.theme.token.GlobalTokens.BorderSizeTokens.Thin
-import com.microsoft.fluentui.theme.token.GlobalTokens.IconSizeTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.Medium
-import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
+import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.AvatarCarousel
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.ThreeLine
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.TwoLine
@@ -31,10 +31,12 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionHead
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.AccessoryText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.ActionText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.DescriptionText
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.FirstName
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.LastName
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.Text
-import com.microsoft.fluentui.theme.token.controlTokens.Placement.Bottom
-import com.microsoft.fluentui.theme.token.controlTokens.Placement.Top
+import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
+import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Standard
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import kotlinx.parcelize.Parcelize
@@ -52,7 +54,9 @@ enum class ListTextType {
     AccessoryText,
     SubLabelText,
     ActionText,
-    DescriptionText
+    DescriptionText,
+    FirstName,
+    LastName
 }
 enum class ListAccessoryType {
     Button,
@@ -81,7 +85,7 @@ enum class BorderType {
     Top_Bottom
 }
 
-enum class Placement {
+enum class TextPlacement {
     Top,
     Bottom
 }
@@ -158,12 +162,22 @@ open class ListItemTokens : ControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 )
             )
+            FirstName -> StateColor(
+                rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
+            LastName -> StateColor(
+                rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
         }
     }
 
     @Composable
-    open fun padding(): Dp {
-        return GlobalTokens.spacing(Medium)
+    open fun padding(size:SpacingTokens): Dp {
+        return GlobalTokens.spacing(size)
     }
 
     @Composable
@@ -179,6 +193,8 @@ open class ListItemTokens : ControlToken, Parcelable {
             SubLabelText -> FluentTheme.aliasTokens.typography[Caption1]
             DescriptionText -> FluentTheme.aliasTokens.typography[Caption1]
             ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
+            FirstName -> FluentTheme.aliasTokens.typography[Body2]
+            LastName -> FluentTheme.aliasTokens.typography[Caption1]
         }
     }
 
@@ -188,15 +204,15 @@ open class ListItemTokens : ControlToken, Parcelable {
             Standard -> {
                 return when(textType){
                     Text -> FluentTheme.aliasTokens.typography[Body1Strong]
-                    ActionText -> FluentTheme.aliasTokens.typography[Caption1]
-                    else -> FluentTheme.aliasTokens.typography[Body1]
+                    ActionText -> FluentTheme.aliasTokens.typography[Body2Strong]
+                    else -> FluentTheme.aliasTokens.typography[Body1Strong]
                 }
             }
             Subtle -> {
                 return when(textType){
-                    Text -> FluentTheme.aliasTokens.typography[Body1Strong]
-                    ActionText -> FluentTheme.aliasTokens.typography[Caption1]
-                    else -> FluentTheme.aliasTokens.typography[Body1]
+                    Text -> FluentTheme.aliasTokens.typography[Caption1]
+                    ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
+                    else -> FluentTheme.aliasTokens.typography[Caption1]
                 }
             }
         }
@@ -227,10 +243,26 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun descriptionPlacement(placement: Placement): Alignment{
+    open fun descriptionPlacement(placement: TextPlacement): Alignment.Vertical{
         return when(placement){
-            Top -> Alignment.TopStart
-            Bottom -> Alignment.BottomStart
+            Top -> Alignment.Top
+            Bottom -> Alignment.Bottom
+        }
+    }
+
+    @Composable
+    open fun avatarTextHorizontalPadding(carouselSize: AvatarCarouselSize): Dp{
+        return when(carouselSize){
+            AvatarCarouselSize.Medium -> 8.dp
+            AvatarCarouselSize.Large -> 2.dp
+        }
+    }
+
+    @Composable
+    open fun avatarTextVerticalPadding(carouselSize: AvatarCarouselSize): Dp{
+        return when(carouselSize){
+            AvatarCarouselSize.Medium -> 8.dp
+            AvatarCarouselSize.Large -> 12.dp
         }
     }
 }
