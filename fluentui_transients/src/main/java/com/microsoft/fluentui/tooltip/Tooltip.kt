@@ -165,8 +165,12 @@ class Tooltip {
         popupWindow.height = contentHeight
         anchor.post { popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, positionX, positionY) }
 
-        if (config.touchDismissLocation == TouchDismissLocation.INSIDE)
+        if (config.touchDismissLocation == TouchDismissLocation.INSIDE) {
+            // If focusable is true, outside touchable cannot become denied.
+            // https://developer.android.com/reference/android/widget/PopupWindow#setOutsideTouchable%28boolean%29
+            popupWindow.isFocusable = false
             popupWindow.isOutsideTouchable = false
+        }
 
         // popupWindow may get dismissed by outside touch for TouchDismissLocation.ANYWHERE
         popupWindow.setOnDismissListener {

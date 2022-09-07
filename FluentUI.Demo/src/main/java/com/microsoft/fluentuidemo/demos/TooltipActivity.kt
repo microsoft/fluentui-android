@@ -12,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewTreeObserver
 import androidx.core.content.ContextCompat
+import com.google.android.material.tooltip.TooltipDrawable
 import com.microsoft.fluentui.calendar.CalendarView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.tooltip.Tooltip
@@ -84,8 +85,17 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         tooltip_anchor_center.setOnClickListener {
             tooltip = Tooltip(this).show(
                 it,
-                LayoutInflater.from(this).inflate(R.layout.tooltip_custom_view, null),
+                resources.getString(R.string.tooltip_center_message),
                 Tooltip.Config(touchDismissLocation = Tooltip.TouchDismissLocation.INSIDE)
+            )
+            tooltip?.onDismissListener = this
+            buttonId = it.id
+        }
+
+        tooltip_anchor_custom_view.setOnClickListener {
+            tooltip = Tooltip(this).show(
+                it,
+                LayoutInflater.from(this).inflate(R.layout.tooltip_custom_view, null)
             )
             tooltip?.onDismissListener = this
             buttonId = it.id
