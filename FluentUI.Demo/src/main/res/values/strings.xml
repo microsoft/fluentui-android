@@ -471,6 +471,7 @@
     <string name="tooltip_calendar_demo_button">Tap for Custom Calendar Tooltip</string>
     <string name="tooltip_custom_button">Tap Custom Color Tooltip</string>
     <string name="tooltip_center_button">Tap for Dismiss Inside Tooltip</string>
+    <string name="tooltip_custom_view">Tap for Custom View Tooltip</string>
     <string name="tooltip_top_start_message">Top Custom Color Tooltip</string>
     <string name="tooltip_top_end_message">Top End Tooltip with 10dp offsetX</string>
     <string name="tooltip_bottom_start_message">Bottom Start Tooltip</string>
