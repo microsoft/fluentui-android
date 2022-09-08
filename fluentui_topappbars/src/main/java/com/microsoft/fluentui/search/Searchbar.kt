@@ -18,6 +18,7 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import com.microsoft.fluentui.topappbars.R
 import com.microsoft.fluentui.appbarlayout.AppBarLayout
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
@@ -148,7 +149,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
 
     override val templateId: Int = R.layout.view_searchbar
 
-    private var searchbar: FrameLayout? = null
+    private var searchbar: RelativeLayout? = null
     private var searchViewContainer: LinearLayout? = null
     private var searchIcon: ImageView? = null
     private var searchBackButton: ImageButton? = null
@@ -307,7 +308,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         )
 
         // Search view container
-        val searchViewContainerLayoutParams = searchViewContainer?.layoutParams as? FrameLayout.LayoutParams
+        val searchViewContainerLayoutParams = searchViewContainer?.layoutParams as? RelativeLayout.LayoutParams
         val searchViewContainerMarginStartResourceId = if (hasFocus() || isActionMenuView) {
             if (isActionMenuView)
                 R.dimen.fluentui_searchbar_search_view_action_view_margin_start
