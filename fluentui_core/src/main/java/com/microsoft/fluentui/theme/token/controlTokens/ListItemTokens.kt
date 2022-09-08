@@ -33,6 +33,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.ActionText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.DescriptionText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.FirstName
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.LastName
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.Text
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
@@ -51,20 +52,13 @@ enum class ListItemType {
 }
 enum class ListTextType {
     Text,
-    AccessoryText,
     SubLabelText,
+    SecondarySubLabelText,
+    AccessoryText,
     ActionText,
     DescriptionText,
     FirstName,
     LastName
-}
-enum class ListAccessoryType {
-    Button,
-    RadioButton,
-    Checkbox,
-    ToggleSwitch,
-    Icon,
-    Avatar
 }
 enum class SectionHeaderStyle {
     Standard,
@@ -152,6 +146,12 @@ open class ListItemTokens : ControlToken, Parcelable {
                         themeMode = FluentTheme.themeMode
                     )
                 )
+            SecondarySubLabelText ->
+                StateColor(
+                    rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                        themeMode = FluentTheme.themeMode
+                    )
+                )
             ActionText -> StateColor(
                 rest = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
                     themeMode = FluentTheme.themeMode
@@ -190,7 +190,8 @@ open class ListItemTokens : ControlToken, Parcelable {
         return when (textType) {
             Text -> FluentTheme.aliasTokens.typography[Body1]
             AccessoryText -> FluentTheme.aliasTokens.typography[Body1]
-            SubLabelText -> FluentTheme.aliasTokens.typography[Caption1]
+            SubLabelText -> FluentTheme.aliasTokens.typography[Body2]
+            SecondarySubLabelText -> FluentTheme.aliasTokens.typography[Caption1]
             DescriptionText -> FluentTheme.aliasTokens.typography[Caption1]
             ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
             FirstName -> FluentTheme.aliasTokens.typography[Body2]

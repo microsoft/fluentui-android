@@ -4,7 +4,11 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandHorizontally
 import androidx.compose.animation.expandIn
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
@@ -15,6 +19,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
@@ -43,7 +48,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.style.TextOverflow.Companion
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType.No_Border
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
 import kotlin.math.exp
+import kotlin.math.min
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 
@@ -98,43 +111,52 @@ class ListItem{
         @Composable
         private fun descriptionText(description: String, text:String, onClick: () -> Unit, descriptionTextColor: Color, actionTextColor: Color, descriptionTextSize:FontInfo, actionTextSize:FontInfo) {
             val annotatedText = buildAnnotatedString {
-                val grayStyle = SpanStyle(color = descriptionTextColor, fontSize = descriptionTextSize.fontSize.size, fontWeight = descriptionTextSize.weight)
-                pushStyle(grayStyle)
-                append("$description ")
-                pop()
-
+                withStyle(
+                    style = SpanStyle(color = descriptionTextColor, fontSize = descriptionTextSize.fontSize.size, fontWeight = descriptionTextSize.weight)
+                ) {
+                    append(description)
+                }
                 pushStringAnnotation(
-                    tag = "text",
-                    annotation = text
+                    tag = "Action",
+                    annotation = "Action"
                 )
-                val style = SpanStyle(color = actionTextColor, fontSize = actionTextSize.fontSize.size, fontWeight = actionTextSize.weight)
-
-                pushStyle(style)
-                append(text)
-
+                withStyle(
+                    style = SpanStyle(color = actionTextColor, fontSize = actionTextSize.fontSize.size, fontWeight = actionTextSize.weight)
+                ) {
+                    append(text)
+                }
+                // when pop is called it means the end of annotation with current tag
                 pop()
             }
 
-            return ClickableText(text = annotatedText, onClick = {
-                annotatedText.getStringAnnotations(
-                    tag = "text",
-                    start = it,
-                    end = it
-                ).firstOrNull().let { onClick() }
-            })
+            ClickableText(
+                text = annotatedText,
+                onClick = { offset ->
+                    var list = annotatedText.getStringAnnotations(
+                        tag = "Action",// tag which you used in the buildAnnotatedString
+                        start = offset,
+                        end = offset
+                    )
+                    if(list.isNotEmpty()){
+                        onClick()
+                    }
+                }
+            )
 
         }
         @Composable
-        fun OneLine(modifier: Modifier = Modifier,
+        fun Item(
+            modifier: Modifier = Modifier,
                         text:String,
                         subText:String? = null,
                         secondarySubText:String? = null,
+                        enableCenterText:Boolean = false,
                         textMaxLines:Int = 1,
                         subTextMaxLines:Int = 1,
                         secondarySubTextMaxLines:Int = 1,
-                        onClick: () -> Unit,
-                        border:BorderType = BorderType.No_Border,
-                        borderInset:BorderInset = BorderInset.None,
+                        onClick: (() -> Unit)? = null,
+                        border:BorderType = No_Border,
+                        borderInset:BorderInset = None,
                         listItemTokens: ListItemTokens? = null,
                         leftAccessoryView:(@Composable () -> Unit)? = null,
                         rightAccessoryView:(@Composable () -> Unit)? = null,
@@ -154,8 +176,10 @@ class ListItem{
                 val cellHeight = getListItemTokens().cellHeight(listItemType = listItemType)
                 val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
                 val subLabelSize = getListItemTokens().textSize(textType = ListTextType.SubLabelText)
+                var secondarySubLabelSize = getListItemTokens().textSize(textType = SecondarySubLabelText)
                 val textColor = getColorByState(stateData = getListItemTokens().textColor(textType = ListTextType.Text), enabled = true, interactionSource = interactionSource)
                 val subLabelColor = getColorByState(stateData = getListItemTokens().textColor(textType = ListTextType.SubLabelText), enabled = true, interactionSource = interactionSource)
+                var secondarySubLabelColor = getColorByState(stateData = getListItemTokens().textColor(textType = ListTextType.SecondarySubLabelText), enabled = true, interactionSource = interactionSource)
                 val horizontalPadding = getListItemTokens().padding(Medium)
                 val borderSize = getListItemTokens().borderSize().value
                 val borderInset = with (LocalDensity.current) {getListItemTokens().borderInset(inset = borderInset).toPx()}
@@ -164,31 +188,40 @@ class ListItem{
                     modifier
                         .background(backgroundColor)
                         .fillMaxWidth()
-                        .height(cellHeight)
+                        .heightIn(min = cellHeight)
                         .borderModifier(border, borderColor, borderSize, borderInset)
-                        .clickAndSemanticsModifier(interactionSource, onClick), verticalAlignment = Alignment.CenterVertically){
+                        .clickAndSemanticsModifier(interactionSource, onClick = onClick ?: {}), verticalAlignment = Alignment.CenterVertically){
                     if(leftAccessoryView != null){
                         Box(Modifier.padding(start = horizontalPadding), contentAlignment = Alignment.Center){
                             leftAccessoryView()
                         }
                     }
+                    var contentAlignment = if(enableCenterText) Alignment.Center else Alignment.CenterStart
                     Box(
                         Modifier
                             .padding(start = horizontalPadding, end = horizontalPadding)
-                            .weight(1f), contentAlignment = Alignment.CenterStart){
+                            .weight(1f), contentAlignment = contentAlignment){
                         Column() {
-                            Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor, maxLines = textMaxLines)
+                            Row() {
+                                Text(text = text, fontSize = textSize.fontSize.size, fontWeight = textSize.weight, color = textColor, maxLines = textMaxLines, overflow = TextOverflow.Ellipsis)
+                            }
                             if(subText != null){
-                                Text(text = subText, fontSize = subLabelSize.fontSize.size, fontWeight = subLabelSize.weight, color = subLabelColor, maxLines = subTextMaxLines)
+                                Row() {
+                                    Text(text = subText, fontSize = subLabelSize.fontSize.size, fontWeight = subLabelSize.weight, color = subLabelColor, maxLines = subTextMaxLines, overflow = TextOverflow.Ellipsis)
+                                }
                             }
-                            if(secondarySubText != null){
-                                Text(text = secondarySubText, fontSize = subLabelSize.fontSize.size, fontWeight = subLabelSize.weight, color = subLabelColor, maxLines = secondarySubTextMaxLines)
+                            if(subText != null && secondarySubText != null){
+                                Row(modifier.padding(top = 1.dp)) {
+                                    Text(text = secondarySubText, fontSize = secondarySubLabelSize.fontSize.size, fontWeight = secondarySubLabelSize.weight, color = secondarySubLabelColor, maxLines = secondarySubTextMaxLines, overflow = TextOverflow.Ellipsis)
+                                }
                             }
+
+
                         }
 
                     }
                     if(rightAccessoryView != null){
-                        Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.Center){
+                        Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.CenterEnd){
                             rightAccessoryView()
                         }
 
@@ -274,7 +307,7 @@ class ListItem{
                     }
                 }
                 if(expandedState){
-                    AnimatedVisibility(visible = true) {
+                    AnimatedVisibility(visible = true, enter = expandHorizontally() + fadeIn(), exit = shrinkHorizontally() + fadeOut()) {
                         if (content != null) {
                             content()
                         }
@@ -338,7 +371,7 @@ class ListItem{
                             .padding(verticalPadding)
                             .weight(1f)){
                         if(action){
-                            descriptionText(description = description, text = "Action", onClick = onActionClick?:{}, descriptionTextColor = textColor.rest, actionTextColor = actionTextColor.rest, descriptionTextSize = textSize, actionTextSize = actionTextSize)
+                            descriptionText(description = description, text = " Action", onClick = onActionClick?:{}, descriptionTextColor = textColor.rest, actionTextColor = actionTextColor.rest, descriptionTextSize = textSize, actionTextSize = actionTextSize)
                         }else{
                             Text(text = description, color = textColor.rest, fontSize = textSize.fontSize.size, fontWeight = textSize.weight)
                         }
