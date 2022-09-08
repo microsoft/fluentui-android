@@ -277,7 +277,7 @@ open class Searchbar : TemplateView, SearchView.OnQueryTextListener {
         else
             R.dimen.fluentui_searchbar_search_view_container_margin_end
 
-        val lp = searchViewContainer?.layoutParams as? FrameLayout.LayoutParams ?: return
+        val lp = searchViewContainer?.layoutParams as? RelativeLayout.LayoutParams ?: return
         lp.marginEnd = context.resources.getDimension(searchViewContainerMarginEndResourceId).toInt()
         searchViewContainer?.layoutParams = lp
     }
