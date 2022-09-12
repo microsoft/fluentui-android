@@ -40,6 +40,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ContextualCommandBarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />

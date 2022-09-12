@@ -22,6 +22,7 @@ const val BOTTOM_NAVIGATION = "BottomNavigation"
 const val BOTTOM_SHEET = "BottomSheet"
 const val CALENDAR_VIEW = "CalendarView"
 const val CONTEXTUAL_COMMAND_BAR = "ContextualCommandBar"
+const val V2CONTEXTUAL_COMMAND_BAR = "V2 ContextualCommandBar"
 const val DATE_TIME_PICKER = "DateTimePicker"
 const val DRAWER = "Drawer"
 const val V2DRAWER = "V2 Drawer"
@@ -41,36 +42,37 @@ const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
-    Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
-    Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
-    Demo(AVATAR_VIEW, AvatarViewActivity::class),
-    Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
-    Demo(BASIC_INPUTS, BasicInputsActivity::class),
-    Demo(V2AVATAR, V2AvatarActivity::class),
-    Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
-    Demo(V2BASIC_INPUTS, V2BasicInputsActivity::class),
-    Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
-    Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
-    Demo(BOTTOM_SHEET, BottomSheetActivity::class),
-    Demo(CALENDAR_VIEW, CalendarViewActivity::class),
-    Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
-    Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
-    Demo(DRAWER, DrawerActivity::class),
-    Demo(V2DRAWER, V2DrawerActivity::class),
-    Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
-    Demo(V2LIST_ITEM_VIEW, V2ListItemViewActivity::class),
-    Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
-    Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
-    Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
-    Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
-    Demo(PERSONA_VIEW, PersonaViewActivity::class),
-    Demo(POPUP_MENU, PopupMenuActivity::class),
-    Demo(PROGRESS, ProgressActivity::class),
-    Demo(SNACKBAR, SnackbarActivity::class),
-    Demo(TAB_LAYOUT, TabLayoutActivity::class),
-    Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
-    Demo(TOOLTIP, TooltipActivity::class),
-    Demo(TYPOGRAPHY, TypographyActivity::class)
+        Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
+        Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
+        Demo(AVATAR_VIEW, AvatarViewActivity::class),
+        Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
+        Demo(BASIC_INPUTS, BasicInputsActivity::class),
+        Demo(V2AVATAR, V2AvatarActivity::class),
+        Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
+        Demo(V2BASIC_INPUTS, V2BasicInputsActivity::class),
+        Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
+        Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
+        Demo(BOTTOM_SHEET, BottomSheetActivity::class),
+        Demo(CALENDAR_VIEW, CalendarViewActivity::class),
+        Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
+        Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
+        Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
+        Demo(DRAWER, DrawerActivity::class),
+        Demo(V2DRAWER, V2DrawerActivity::class),
+        Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
+        Demo(V2LIST_ITEM_VIEW, V2ListItemViewActivity::class),
+        Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
+        Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
+        Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
+        Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
+        Demo(PERSONA_VIEW, PersonaViewActivity::class),
+        Demo(POPUP_MENU, PopupMenuActivity::class),
+        Demo(PROGRESS, ProgressActivity::class),
+        Demo(SNACKBAR, SnackbarActivity::class),
+        Demo(TAB_LAYOUT, TabLayoutActivity::class),
+        Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
+        Demo(TOOLTIP, TooltipActivity::class),
+        Demo(TYPOGRAPHY, TypographyActivity::class)
 )
 
 val DUO_DEMOS = arrayListOf(
