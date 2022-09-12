@@ -19,6 +19,7 @@ class ControlTokens {
         AvatarGroup,
         Button,
         CheckBox,
+        ContextualCommandBar,
         Drawer,
         FloatingActionButton,
         RadioButton,
@@ -32,6 +33,7 @@ class ControlTokens {
                 ControlType.AvatarGroup -> AvatarGroupTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
+                ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
