@@ -1,9 +1,7 @@
-package com.microsoft.fluentui.listitem
+package com.microsoft.fluentui.tokenized.listitem
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -14,44 +12,38 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.Surface
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.remember
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.Medium
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
 import com.microsoft.fluentui.theme.token.controlTokens.*
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
-import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
-import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.No_Border
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
+import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 
@@ -183,12 +175,13 @@ class ListItem {
             border: BorderType = No_Border,
             borderInset: BorderInset = None,
             listItemTokens: ListItemTokens? = null,
+            interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
             leftAccessoryView: (@Composable () -> Unit)? = null,
             rightAccessoryView: (@Composable () -> Unit)? = null,
-            interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
         ) {
 
-            val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            val token = listItemTokens
+                ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
             CompositionLocalProvider(LocalListItemTokens provides token) {
 
                 var listItemType = if (subText == null && secondarySubText == null) {
@@ -205,8 +198,10 @@ class ListItem {
                 )
                 val cellHeight = getListItemTokens().cellHeight(listItemType = listItemType)
                 val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-                val subLabelSize = getListItemTokens().textSize(textType = ListTextType.SubLabelText)
-                var secondarySubLabelSize = getListItemTokens().textSize(textType = SecondarySubLabelText)
+                val subLabelSize =
+                    getListItemTokens().textSize(textType = ListTextType.SubLabelText)
+                var secondarySubLabelSize =
+                    getListItemTokens().textSize(textType = SecondarySubLabelText)
                 val textColor = getColorByState(
                     stateData = getListItemTokens().textColor(textType = ListTextType.Text),
                     enabled = true,
@@ -218,14 +213,16 @@ class ListItem {
                     interactionSource = interactionSource
                 )
                 var secondarySubLabelColor = getColorByState(
-                    stateData = getListItemTokens().textColor(textType = ListTextType.SecondarySubLabelText),
+                    stateData = getListItemTokens().textColor(textType = SecondarySubLabelText),
                     enabled = true,
                     interactionSource = interactionSource
                 )
                 val horizontalPadding = getListItemTokens().padding(Medium)
                 val borderSize = getListItemTokens().borderSize().value
                 val borderInset =
-                    with(LocalDensity.current) { getListItemTokens().borderInset(inset = borderInset).toPx() }
+                    with(LocalDensity.current) {
+                        getListItemTokens().borderInset(inset = borderInset).toPx()
+                    }
                 val borderColor = getColorByState(
                     stateData = getListItemTokens().borderColor(),
                     enabled = true,
@@ -241,18 +238,22 @@ class ListItem {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     if (leftAccessoryView != null) {
-                        Box(Modifier.padding(start = horizontalPadding), contentAlignment = Alignment.Center) {
+                        Box(
+                            Modifier.padding(start = horizontalPadding),
+                            contentAlignment = Alignment.Center
+                        ) {
                             leftAccessoryView()
                         }
                     }
-                    var contentAlignment = if (enableCenterText) Alignment.Center else Alignment.CenterStart
+                    var contentAlignment =
+                        if (enableCenterText) Alignment.Center else Alignment.CenterStart
                     Box(
                         Modifier
                             .padding(start = horizontalPadding, end = horizontalPadding)
                             .weight(1f), contentAlignment = contentAlignment
                     ) {
-                        Column() {
-                            Row() {
+                        Column {
+                            Row {
                                 Text(
                                     text = text,
                                     fontSize = textSize.fontSize.size,
@@ -263,7 +264,7 @@ class ListItem {
                                 )
                             }
                             if (subText != null) {
-                                Row() {
+                                Row {
                                     Text(
                                         text = subText,
                                         fontSize = subLabelSize.fontSize.size,
@@ -291,7 +292,10 @@ class ListItem {
 
                     }
                     if (rightAccessoryView != null) {
-                        Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.CenterEnd) {
+                        Box(
+                            Modifier.padding(end = horizontalPadding),
+                            contentAlignment = Alignment.CenterEnd
+                        ) {
                             rightAccessoryView()
                         }
                     }
@@ -318,7 +322,8 @@ class ListItem {
             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
         ) {
 
-            val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            val token = listItemTokens
+                ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
             CompositionLocalProvider(LocalListItemTokens provides token) {
 
                 val backgroundColor = getColorByState(
@@ -327,15 +332,20 @@ class ListItem {
                     interactionSource = interactionSource
                 )
                 val cellHeight = getListItemTokens().cellHeight(listItemType = OneLine)
-                val textSize = getListItemTokens().textSize(textType = ListTextType.Text, style = style)
-                val actionTextSize = getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
+                val textSize =
+                    getListItemTokens().textSize(textType = ListTextType.Text, style = style)
+                val actionTextSize =
+                    getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
                 val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
-                val actionTextColor = getListItemTokens().textColor(textType = ListTextType.ActionText)
+                val actionTextColor =
+                    getListItemTokens().textColor(textType = ListTextType.ActionText)
                 val horizontalPadding = getListItemTokens().padding(Medium)
                 val verticalPadding = getListItemTokens().padding(size = XSmall)
                 val borderSize = getListItemTokens().borderSize().value
                 val borderInset =
-                    with(LocalDensity.current) { getListItemTokens().borderInset(inset = borderInset).toPx() }
+                    with(LocalDensity.current) {
+                        getListItemTokens().borderInset(inset = borderInset).toPx()
+                    }
                 val borderColor = getColorByState(
                     stateData = getListItemTokens().borderColor(),
                     enabled = true,
@@ -357,13 +367,15 @@ class ListItem {
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .borderModifier(border, borderColor, borderSize, borderInset)) {
+                            .borderModifier(border, borderColor, borderSize, borderInset)
+                    ) {
                         Row(
                             modifier
                                 .background(backgroundColor)
                                 .fillMaxWidth()
                                 .heightIn(min = cellHeight)
-                                .padding(bottom = verticalPadding), verticalAlignment = Alignment.Bottom
+                                .padding(bottom = verticalPadding),
+                            verticalAlignment = Alignment.Bottom
                         ) {
 
                             Box(
@@ -412,10 +424,21 @@ class ListItem {
                                 }
                             }
                         }
-                        AnimatedVisibility(visible = expandedState,
-                            enter = slideInVertically(animationSpec = tween(durationMillis = 300, easing = LinearOutSlowInEasing)),
-                            exit = slideOutVertically(animationSpec = tween(durationMillis = 250, easing = FastOutLinearInEasing)
-                        )) {
+                        AnimatedVisibility(
+                            visible = expandedState,
+                            enter = slideInVertically(
+                                animationSpec = tween(
+                                    durationMillis = 300,
+                                    easing = LinearOutSlowInEasing
+                                )
+                            ),
+                            exit = slideOutVertically(
+                                animationSpec = tween(
+                                    durationMillis = 250,
+                                    easing = FastOutLinearInEasing
+                                )
+                            )
+                        ) {
                             if (content != null) {
                                 content()
                             }
@@ -441,7 +464,8 @@ class ListItem {
             onActionClick: (() -> Unit)? = null,
             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
         ) {
-            val token = listItemTokens ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            val token = listItemTokens
+                ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
             CompositionLocalProvider(LocalListItemTokens provides token) {
 
                 val backgroundColor = getColorByState(
@@ -451,19 +475,25 @@ class ListItem {
                 )
                 val cellHeight = getListItemTokens().cellHeight(listItemType = SectionDescription)
                 val textSize = getListItemTokens().textSize(textType = ListTextType.DescriptionText)
-                val actionTextSize = getListItemTokens().textSize(textType = ListTextType.ActionText)
-                val textColor = getListItemTokens().textColor(textType = ListTextType.DescriptionText)
-                val actionTextColor = getListItemTokens().textColor(textType = ListTextType.ActionText)
+                val actionTextSize =
+                    getListItemTokens().textSize(textType = ListTextType.ActionText)
+                val textColor =
+                    getListItemTokens().textColor(textType = ListTextType.DescriptionText)
+                val actionTextColor =
+                    getListItemTokens().textColor(textType = ListTextType.ActionText)
                 val horizontalPadding = getListItemTokens().padding(Medium)
                 val borderSize = getListItemTokens().borderSize().value
                 val borderInset =
-                    with(LocalDensity.current) { getListItemTokens().borderInset(inset = borderInset).toPx() }
+                    with(LocalDensity.current) {
+                        getListItemTokens().borderInset(inset = borderInset).toPx()
+                    }
                 val borderColor = getColorByState(
                     stateData = getListItemTokens().borderColor(),
                     enabled = true,
                     interactionSource = interactionSource
                 )
-                val descriptionAlignment = getListItemTokens().descriptionPlacement(placement = descriptionPlacement)
+                val descriptionAlignment =
+                    getListItemTokens().descriptionPlacement(placement = descriptionPlacement)
                 val verticalPadding = if (descriptionPlacement == Top) {
                     PaddingValues(top = getListItemTokens().padding(size = XSmall))
                 } else {
@@ -514,7 +544,10 @@ class ListItem {
                         }
                     }
                     if (rightAccessory != null) {
-                        Box(Modifier.padding(end = horizontalPadding), contentAlignment = Alignment.Center) {
+                        Box(
+                            Modifier.padding(end = horizontalPadding),
+                            contentAlignment = Alignment.Center
+                        ) {
                             rightAccessory()
                         }
                     }
