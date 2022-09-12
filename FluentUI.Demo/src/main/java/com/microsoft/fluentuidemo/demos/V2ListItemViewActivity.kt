@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentui.listitem.ListItem
+import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Large
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Small
@@ -96,16 +96,16 @@ fun createActivityUI(){
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers with chevron", color = Color(0xFF2886DE))
                 Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(title = "One-Line list with accessory views", enableChevron = true, accessoryTextTitle = "Action", accessoryTextOnClick = {}, rightAccessory = { rightViewThreeButton() }, content = { oneLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
-                    ListItem.SectionHeader(title = "Three-Line list with accessory views", style = Subtle, enableChevron = true, content = { threeLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "One-Line list", enableChevron = true, accessoryTextTitle = "Action", accessoryTextOnClick = {}, rightAccessory = { rightViewThreeButton() }, content = { oneLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "Three-Line list", style = Subtle, enableChevron = true, content = { threeLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
                 }
 
             }
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers No chevron", color = Color(0xFF2886DE))
                 Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(title = "Two-Line list with accessory views", enableChevron = false, rightAccessory = { rightViewToggle() }, content = { twoLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
-                    ListItem.SectionHeader(title = "Three-Line list with accessory views", style = Subtle, enableChevron = false, accessoryTextTitle = "Action", accessoryTextOnClick = {}, content = { oneLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "Two-Line list", enableChevron = false, rightAccessory = { rightViewToggle() }, content = { twoLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "Three-Line list", style = Subtle, enableChevron = false, accessoryTextTitle = "Action", accessoryTextOnClick = {}, content = { oneLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
                 }
 
             }
