@@ -1,12 +1,10 @@
 package com.microsoft.fluentui.tokenized.listitem
 
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.*
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -162,7 +160,25 @@ class ListItem {
                 }
             )
         }
-
+        /**
+         * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text
+         *
+         * @param modifier Optional modifier for List item.
+         * @param text Primary text.
+         * @param subText Optional secondaryText or a subtitle.
+         * @param secondarySubText Optional tertiary text or a footer.
+         * @param enableCenterText Optional boolean to align text in the center.
+         * @param textMaxLines Optional max visible lines for primary text.
+         * @param subTextMaxLines Optional max visible lines for secondary text.
+         * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
+         * @param onClick Optional onClick action for list item.
+         * @param border [BorderType] Optional border for the list item.
+         * @param borderInset [BorderInset]Optional borderInset for list item.
+         * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
+         * @param leadingAccessoryView Optional composable leading accessory view.
+         * @param trailingAccessoryView Optional composable trailing accessory view.
+         *
+         */
         @Composable
         fun Item(
             modifier: Modifier = Modifier,
@@ -178,8 +194,8 @@ class ListItem {
             borderInset: BorderInset = None,
             listItemTokens: ListItemTokens? = null,
             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-            leftAccessoryView: (@Composable () -> Unit)? = null,
-            rightAccessoryView: (@Composable () -> Unit)? = null,
+            leadingAccessoryView: (@Composable () -> Unit)? = null,
+            trailingAccessoryView: (@Composable () -> Unit)? = null,
         ) {
 
             val token = listItemTokens
@@ -239,12 +255,12 @@ class ListItem {
                         .clickAndSemanticsModifier(interactionSource, onClick = onClick ?: {}),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (leftAccessoryView != null) {
+                    if (leadingAccessoryView != null) {
                         Box(
                             Modifier.padding(start = horizontalPadding),
                             contentAlignment = Alignment.Center
                         ) {
-                            leftAccessoryView()
+                            leadingAccessoryView()
                         }
                     }
                     var contentAlignment =
@@ -277,7 +293,7 @@ class ListItem {
                                     )
                                 }
                             }
-                            if (subText != null && secondarySubText != null) {
+                            if (secondarySubText != null) {
                                 Row(modifier.padding(top = 1.dp)) {
                                     Text(
                                         text = secondarySubText,
@@ -293,18 +309,35 @@ class ListItem {
                         }
 
                     }
-                    if (rightAccessoryView != null) {
+                    if (trailingAccessoryView != null) {
                         Box(
                             Modifier.padding(end = horizontalPadding),
                             contentAlignment = Alignment.CenterEnd
                         ) {
-                            rightAccessoryView()
+                            trailingAccessoryView()
                         }
                     }
                 }
             }
         }
-
+        /**
+         * Create a Section header. Section headers are list tiles that delineates sections of a list or grid list
+         *
+         * @param modifier Optional modifier for List item.
+         * @param title Section header title.
+         * @param titleMaxLines Optional max visible lines for title.
+         * @param accessoryTextTitle Optional accessory text.
+         * @param accessoryTextOnClick Optional onClick action for accessory text.
+         * @param style [SectionHeaderStyle] Section header style.
+         * @param border [BorderType] Optional border for the list item.
+         * @param borderInset [BorderInset] Optional borderInset for list item.
+         * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
+         * @param enter [EnterTransition] used for appearing transition
+         * @param exit [ExitTransition] used for disappearing transition
+         * @param trailingAccessoryView Optional composable trailing accessory view.
+         * @param content Composable content to appear or disappear on clicking the list item
+         *
+         */
         @OptIn(ExperimentalMaterialApi::class)
         @Composable
         fun SectionHeader(
@@ -318,10 +351,21 @@ class ListItem {
             enableChevron: Boolean = true,
             border: BorderType = No_Border,
             borderInset: BorderInset = None,
-            rightAccessory: (@Composable () -> Unit)? = null,
-            content: (@Composable () -> Unit)? = null,
-            animationSpec: (@Composable () -> Unit)? = null,
-            interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+            enter: EnterTransition = slideInVertically(
+                animationSpec = tween(
+                    durationMillis = 300,
+                    easing = LinearOutSlowInEasing
+                )
+            ),
+            exit: ExitTransition = slideOutVertically(
+                animationSpec = tween(
+                    durationMillis = 250,
+                    easing = FastOutLinearInEasing
+                )
+            ),
+            interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+            trailingAccessoryView: (@Composable () -> Unit)? = null,
+            content: (@Composable () -> Unit)? = null
         ) {
 
             val token = listItemTokens
@@ -417,29 +461,19 @@ class ListItem {
                                         fontWeight = actionTextSize.weight)
                                 }
                             }
-                            if (rightAccessory != null) {
+                            if (trailingAccessoryView != null) {
                                 Box(
                                     Modifier.padding(end = horizontalPadding),
                                     contentAlignment = Alignment.BottomStart
                                 ) {
-                                    rightAccessory()
+                                    trailingAccessoryView()
                                 }
                             }
                         }
                         AnimatedVisibility(
                             visible = expandedState,
-                            enter = slideInVertically(
-                                animationSpec = tween(
-                                    durationMillis = 300,
-                                    easing = LinearOutSlowInEasing
-                                )
-                            ),
-                            exit = slideOutVertically(
-                                animationSpec = tween(
-                                    durationMillis = 250,
-                                    easing = FastOutLinearInEasing
-                                )
-                            )
+                            enter = enter,
+                            exit = exit
                         ) {
                             if (content != null) {
                                 content()
@@ -450,21 +484,36 @@ class ListItem {
 
             }
         }
-
+        /**
+         * Create a Section description. Section description are lists that provide added context to a list.
+         *
+         * @param modifier Optional modifier for List item.
+         * @param description description text.
+         * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
+         * @param actionText Option boolean to append "Action" text button to the description text.
+         * @param descriptionPlacement [TextPlacement] Enum value for placing the description text in the list item.
+         * @param onClick Optional onClick action for list item.
+         * @param onActionClick Optional onClick action for actionText.
+         * @param border [BorderType] Optional border for the list item.
+         * @param borderInset [BorderInset] Optional borderInset for list item.
+         * @param leadingAccessoryView Optional composable leading accessory view.
+         * @param trailingAccessoryView Optional composable trailing accessory view.
+         *
+         */
         @Composable
         fun SectionDescription(
             modifier: Modifier = Modifier,
             description: String,
             listItemTokens: ListItemTokens? = null,
-            iconAccessory: (@Composable () -> Unit)? = null,
-            rightAccessory: (@Composable () -> Unit)? = null,
-            action: Boolean = false,
+            actionText: Boolean = false,
             descriptionPlacement: TextPlacement = Top,
-            border: BorderType = BorderType.No_Border,
-            borderInset: BorderInset = BorderInset.None,
+            border: BorderType = No_Border,
+            borderInset: BorderInset = None,
             onClick: (() -> Unit)? = null,
             onActionClick: (() -> Unit)? = null,
-            interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }
+            interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+            leadingAccessoryView: (@Composable () -> Unit)? = null,
+            trailingAccessoryView: (@Composable () -> Unit)? = null
         ) {
             val token = listItemTokens
                 ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
@@ -511,13 +560,13 @@ class ListItem {
                             interactionSource,
                             onClick = onClick ?: {}), verticalAlignment = descriptionAlignment
                 ) {
-                    if (iconAccessory != null) {
+                    if (leadingAccessoryView != null) {
                         Box(
                             Modifier
                                 .padding(start = horizontalPadding)
                                 .padding(verticalPadding), contentAlignment = Alignment.Center
                         ) {
-                            iconAccessory()
+                            leadingAccessoryView()
                         }
                     }
                     Box(
@@ -526,7 +575,7 @@ class ListItem {
                             .padding(verticalPadding)
                             .weight(1f)
                     ) {
-                        if (action) {
+                        if (actionText) {
                             descriptionText(
                                 description = description,
                                 text = " Action",
@@ -545,12 +594,12 @@ class ListItem {
                             )
                         }
                     }
-                    if (rightAccessory != null) {
+                    if (trailingAccessoryView != null) {
                         Box(
                             Modifier.padding(end = horizontalPadding),
                             contentAlignment = Alignment.Center
                         ) {
-                            rightAccessory()
+                            trailingAccessoryView()
                         }
                     }
                 }
