@@ -57,10 +57,6 @@ task sourceJar(type: Jar) {
 }
 
 project.afterEvaluate {
-    try{
-        project.ext.publishingFunc('FluentUIAndroid')
-    }catch(Exception e){
-        throw new GradleException("Artifact already exists with same version. Skipping")
-    }
+    project.ext.publishingFunc('FluentUIAndroid')
 }
 
