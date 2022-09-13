@@ -106,9 +106,6 @@ fun createActivityUI(){
                 }
 
             }
-            item{
-                ListItem.
-            }
         }
     }
 }
