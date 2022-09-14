@@ -14,7 +14,6 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Busy
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaView
 import com.microsoft.fluentuidemo.DemoActivity
