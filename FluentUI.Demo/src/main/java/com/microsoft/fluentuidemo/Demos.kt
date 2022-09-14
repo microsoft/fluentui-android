@@ -33,6 +33,7 @@ const val PERSISTENT_BOTTOM_SHEET = "PersistentBottomSheet"
 const val PERSONA_CHIP_VIEW = "PersonaChipView"
 const val PERSONA_LIST_VIEW = "PersonaListView"
 const val PERSONA_VIEW = "PersonaView"
+const val V2PERSONA_VIEW = "V2 PersonaView"
 const val POPUP_MENU = "PopupMenu"
 const val PROGRESS = "Progress"
 const val SNACKBAR = "Snackbar"
@@ -66,6 +67,7 @@ val DEMOS = arrayListOf(
         Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
         Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
         Demo(PERSONA_VIEW, PersonaViewActivity::class),
+        Demo(V2PERSONA_VIEW, V2PersonaViewActivity::class),
         Demo(POPUP_MENU, PopupMenuActivity::class),
         Demo(PROGRESS, ProgressActivity::class),
         Demo(SNACKBAR, SnackbarActivity::class),
