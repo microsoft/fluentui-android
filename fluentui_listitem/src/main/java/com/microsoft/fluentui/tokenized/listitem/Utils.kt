@@ -1,5 +1,7 @@
 package com.microsoft.fluentui.listitem
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
@@ -32,3 +34,5 @@ fun getColorByState(
     } else
         return stateData.disabled
 }
+
+data class ChevronTransition (val enterTransition: Float = 0f, val exitTransition: Float = 0f)

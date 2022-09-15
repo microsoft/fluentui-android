@@ -31,6 +31,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.listitem.ChevronTransition
 import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.listitem.getColorByState
 import com.microsoft.fluentui.theme.FluentTheme
@@ -329,11 +330,13 @@ class ListItem {
          * @param accessoryTextTitle Optional accessory text.
          * @param accessoryTextOnClick Optional onClick action for accessory text.
          * @param style [SectionHeaderStyle] Section header style.
+         * @param enableChevron Adds a chevron icon before text
+         * @param chevronOrientation Pass [ChevronTransition] to apply chevron icon transition when clicked on the list item. Defaults to static (enter and exit transition are same).
          * @param border [BorderType] Optional border for the list item.
          * @param borderInset [BorderInset] Optional borderInset for list item.
          * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
-         * @param enter [EnterTransition] used for appearing transition
-         * @param exit [ExitTransition] used for disappearing transition
+         * @param enter [EnterTransition] used for content appearing transition
+         * @param exit [ExitTransition] used for content disappearing transition
          * @param trailingAccessoryView Optional composable trailing accessory view.
          * @param content Composable content to appear or disappear on clicking the list item
          *
@@ -349,6 +352,7 @@ class ListItem {
             listItemTokens: ListItemTokens? = null,
             style: SectionHeaderStyle = SectionHeaderStyle.Standard,
             enableChevron: Boolean = true,
+            chevronOrientation: ChevronTransition = ChevronTransition(0f, 0f),
             border: BorderType = No_Border,
             borderInset: BorderInset = None,
             enter: EnterTransition = slideInVertically(
@@ -399,7 +403,7 @@ class ListItem {
                 )
                 var expandedState by remember { mutableStateOf(false) }
                 val rotationState by animateFloatAsState(
-                    targetValue = if (expandedState) 90f else 0f
+                    targetValue = if (expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
                 )
                 Surface(
                     modifier = modifier
@@ -607,3 +611,5 @@ class ListItem {
         }
     }
 }
+
+

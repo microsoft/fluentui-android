@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.listitem.ChevronTransition
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -93,8 +94,8 @@ fun createActivityUI(){
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers with chevron", color = Color(0xFF2886DE))
                 Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(title = "One-Line list", enableChevron = true, accessoryTextTitle = "Action", accessoryTextOnClick = {}, trailingAccessoryView = { rightViewThreeButton() }, content = { oneLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
-                    ListItem.SectionHeader(title = "Three-Line list", style = Subtle, enableChevron = true, content = { threeLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "One-Line list", enableChevron = true, chevronOrientation = ChevronTransition(90f, 0f), accessoryTextTitle = "Action", accessoryTextOnClick = {}, trailingAccessoryView = { rightViewThreeButton() }, content = { oneLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "Three-Line list", style = Subtle, enableChevron = true, chevronOrientation = ChevronTransition(90f, 0f), content = { threeLineListAccessoryViewContent() }, border = BorderType.Bottom, borderInset = XXLarge)
                 }
 
             }
