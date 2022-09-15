@@ -15,7 +15,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 
 @Composable
-fun PersonaView(person: Person, modifier: Modifier = Modifier,
+fun PersonaView(person: Person,
+    modifier: Modifier = Modifier,
     primaryText: String,
     secondaryText: String? = null,
     tertiaryText: String? = null,
