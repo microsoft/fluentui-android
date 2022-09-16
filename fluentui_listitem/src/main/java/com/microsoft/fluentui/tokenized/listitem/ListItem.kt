@@ -35,8 +35,7 @@ import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
-import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.Medium
-import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
+import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
@@ -199,6 +198,7 @@ class ListItem {
             primaryTrailingTextIcons: TextIcons? = null,
             secondaryLeadingTextIcons: TextIcons? = null,
             secondaryTailingTextIcons: TextIcons? = null,
+            progressIndicator: (@Composable () -> Unit)? = null,
             border: BorderType = NoBorder,
             borderInset: BorderInset = None,
             listItemTokens: ListItemTokens? = null,
@@ -245,6 +245,7 @@ class ListItem {
                     interactionSource = interactionSource
                 )
                 val horizontalPadding = getListItemTokens().padding(Medium)
+                val verticalPadding = getListItemTokens().padding(Small)
                 val borderSize = getListItemTokens().borderSize().value
                 val borderInset =
                     with(LocalDensity.current) {
@@ -279,7 +280,7 @@ class ListItem {
                             .padding(start = horizontalPadding, end = horizontalPadding)
                             .weight(1f), contentAlignment = contentAlignment
                     ){
-                        Column {
+                        Column(Modifier.padding(verticalPadding)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 if(primaryLeadingTextIcons != null){
                                     primaryLeadingTextIcons.icon1()
@@ -322,30 +323,36 @@ class ListItem {
                                 }
                             }
                             Row(verticalAlignment = Alignment.CenterVertically){
-                                if(listItemType == ThreeLine && secondaryLeadingTextIcons != null){
+                                if(listItemType == ThreeLine && progressIndicator != null){
+                                    Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
+                                        progressIndicator()
+                                    }
+                                }else{
+                                    if(listItemType == ThreeLine && secondaryLeadingTextIcons != null){
                                         secondaryLeadingTextIcons.icon1()
                                         secondaryLeadingTextIcons.icon2?.let { it() }
-                                }
-                                if (secondarySubText != null) {
-                                    Row(modifier.padding(top = 1.dp)) {
-                                        Text(
-                                            text = secondarySubText,
-                                            fontSize = secondarySubLabelSize.fontSize.size,
-                                            fontWeight = secondarySubLabelSize.weight,
-                                            color = secondarySubLabelColor,
-                                            maxLines = secondarySubTextMaxLines,
-                                            overflow = TextOverflow.Ellipsis
-                                        )
                                     }
-                                }
-                                if(listItemType == ThreeLine && secondaryTailingTextIcons != null){
-                                    secondaryTailingTextIcons.icon1()
-                                    secondaryTailingTextIcons.icon2?.let { it() }
+                                    if (secondarySubText != null) {
+                                        Row(modifier.padding(top = 1.dp)) {
+                                            Text(
+                                                text = secondarySubText,
+                                                fontSize = secondarySubLabelSize.fontSize.size,
+                                                fontWeight = secondarySubLabelSize.weight,
+                                                color = secondarySubLabelColor,
+                                                maxLines = secondarySubTextMaxLines,
+                                                overflow = TextOverflow.Ellipsis
+                                            )
+                                        }
+                                    }
+                                    if(listItemType == ThreeLine && secondaryTailingTextIcons != null){
+                                        secondaryTailingTextIcons.icon1()
+                                        secondaryTailingTextIcons.icon2?.let { it() }
+                                    }
                                 }
                             }
                         }
                     }
-                    if (trailingAccessoryView != null) {
+                    if (progressIndicator == null && trailingAccessoryView != null) {
                         Box(
                             Modifier.padding(end = horizontalPadding),
                             contentAlignment = Alignment.CenterEnd

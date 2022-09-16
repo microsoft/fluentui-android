@@ -1,5 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -38,6 +39,8 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.controls.RadioButton
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 class V2ListItemViewActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -62,6 +65,7 @@ const val primaryText = "Title, primary text"
 const val secondaryText = "Subtitle, secondary text"
 const val tertiaryText = "Footer, tertiary text"
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CreateListActivityUI(){
     Box(
@@ -69,15 +73,15 @@ fun CreateListActivityUI(){
             .fillMaxSize()){
         LazyColumn{
             item{
-                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "One-Line list", color = Color(0xFF2886DE) )
+                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "One-Line list with Text icons", color = Color(0xFF2886DE) )
                 OneLineListAccessoryViewContent()
             }
             item{
-                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Two-Line list", color = Color(0xFF2886DE))
+                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Two-Line list with Text icons", color = Color(0xFF2886DE))
                 TwoLineListAccessoryViewContent()
             }
             item{
-                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Three-Line list", color = Color(0xFF2886DE))
+                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Three-Line list with Text icons", color = Color(0xFF2886DE))
                 ThreeLineListAccessoryViewContent()
             }
             item{
@@ -90,7 +94,7 @@ fun CreateListActivityUI(){
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Wrapped text list", color = Color(0xFF2886DE))
                 ListItem.Item(text = sampleText, textMaxLines = 4, leadingAccessoryView = { LeftViewFolderIcon40() }, border = BorderType.Bottom, borderInset = XXLarge)
                 ListItem.Item(text = sampleText, subText = sampleText, textMaxLines = 4, subTextMaxLines = 4, leadingAccessoryView = { LeftViewFolderIcon40() }, trailingAccessoryView = { RightViewButton(ButtonSize.Small) }, border = BorderType.Bottom, borderInset = XXLarge)
-                ListItem.Item(text = sampleText, subText = sampleText, secondarySubText = sampleText, textMaxLines = 4, subTextMaxLines = 4, secondarySubTextMaxLines = 4, leadingAccessoryView = { LeftViewAvatar(XLarge) }, trailingAccessoryView = { RightViewText(text = "Value")}, border = BorderType.Bottom)
+                ListItem.Item(text = sampleText, subText = sampleText, secondarySubText = sampleText, textMaxLines = 4, subTextMaxLines = 4, secondarySubTextMaxLines = 4, leadingAccessoryView = { LeftViewFolderIcon40() }, trailingAccessoryView = { RightViewText(text = "Value")}, border = BorderType.Bottom)
             }
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Section description", color = Color(0xFF2886DE))
@@ -145,6 +149,7 @@ fun OneLineListAccessoryViewContent(){
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewRadioButton() }, trailingAccessoryView = { RightViewAvatarStack(Small)}, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewRadioButton() }, trailingAccessoryView = { RightViewCheckbox()}, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewThreeButton() }, trailingAccessoryView = { RightViewToggle() }, border = BorderType.Bottom, borderInset = XXLarge)
+        ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewAvatar(size = Small) }, border = BorderType.Bottom, borderInset = XXLarge, progressIndicator = {ProgressBar()})
     }
 }
 @Composable
@@ -156,6 +161,7 @@ fun TwoLineListAccessoryViewContent(){
         ListItem.Item(text = primaryText, subText = secondaryText, leadingAccessoryView = { LeftViewFolderIcon40() }, secondaryLeadingTextIcons = twoTextIcons16(), secondaryTailingTextIcons = twoTextIcons16(), trailingAccessoryView = { RightViewButton(ButtonSize.Small)}, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, subText = secondaryText, leadingAccessoryView = { LeftViewFolderIcon40() }, secondaryTailingTextIcons = twoTextIcons16(), trailingAccessoryView = { RightViewToggle()}, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, subText = secondaryText, leadingAccessoryView = { LeftViewThreeButton() }, trailingAccessoryView = { RightViewText("Value") }, border = BorderType.Bottom, borderInset = XXLarge)
+        ListItem.Item(text = primaryText, subText = secondaryText, leadingAccessoryView = { LeftViewAvatar(size = Large) }, border = BorderType.Bottom, borderInset = XXLarge, progressIndicator = {ProgressBar()}, primaryTrailingTextIcons = oneTextIcon20(), secondaryTailingTextIcons = oneTextIcon16())
     }
 }
 @Composable
@@ -163,7 +169,7 @@ fun ThreeLineListAccessoryViewContent(){
     return Column {
         ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, primaryLeadingTextIcons = twoTextIcons20(), primaryTrailingTextIcons = oneTextIcon20(), secondaryLeadingTextIcons = twoTextIcons16(), secondaryTailingTextIcons = twoTextIcons16(), leadingAccessoryView = { LeftViewFolderIcon40() }, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, leadingAccessoryView = { LeftViewFolderIcon40() }, trailingAccessoryView = { RightViewButton(ButtonSize.Small) }, border = BorderType.Bottom, borderInset = XXLarge)
-        ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, primaryLeadingTextIcons = oneTextIcon20(), secondaryTailingTextIcons = twoTextIcons16(), leadingAccessoryView = { LeftViewAvatar(XLarge) }, trailingAccessoryView = { RightViewText(text = "Value")}, border = BorderType.Bottom)
+        ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, progressIndicator = {ProgressBar()}, primaryLeadingTextIcons = oneTextIcon20(), secondaryTailingTextIcons = twoTextIcons16(), leadingAccessoryView = { LeftViewAvatar(XLarge) }, trailingAccessoryView = { RightViewText(text = "Value")}, border = BorderType.Bottom)
     }
 }
 
@@ -282,4 +288,9 @@ fun GetAvatar(size: AvatarSize, image: Int) {
 @Composable
 fun RightViewText(text:String) {
     return Text(text = text)
+}
+
+@Composable
+fun ProgressBar(){
+    LinearProgressIndicator()
 }

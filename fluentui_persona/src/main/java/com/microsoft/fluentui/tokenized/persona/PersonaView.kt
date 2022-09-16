@@ -1,11 +1,7 @@
 package com.microsoft.fluentui.tokenized.persona
 
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
@@ -26,18 +22,15 @@ fun PersonaView(person: Person,
     enableAvatarActivityRings: Boolean = false,
     enableAvatarPresence: Boolean = true,
     avatarTokens: AvatarTokens? = null,
-    personaViewTokens: ListItemTokens? = null,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
+    personaViewTokens: ListItemTokens? = null){
 
-    var avatarSize = if (secondaryText != null || tertiaryText != null) AvatarSize.Large else  AvatarSize.Small
-    Box{
-        ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, modifier = modifier, onClick = onClick, border = border, borderInset = borderInset, listItemTokens = personaViewTokens, leadingAccessoryView = { Avatar(
+    var avatarSize = getAvatarSize(secondaryText, tertiaryText)
+        ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, onClick = onClick, modifier = modifier, border = border, borderInset = borderInset, listItemTokens = personaViewTokens, leadingAccessoryView = { Avatar(
             person = person,
             modifier = modifier,
             size = avatarSize,
             enableActivityRings = enableAvatarActivityRings,
             enablePresence = enableAvatarPresence,
             avatarToken = avatarTokens
-        )}, interactionSource = interactionSource)
-    }
+        )})
 }
