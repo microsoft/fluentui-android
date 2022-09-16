@@ -31,9 +31,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.listitem.ChevronTransition
 import com.microsoft.fluentui.listitem.R
-import com.microsoft.fluentui.listitem.getColorByState
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
@@ -41,9 +39,10 @@ import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.Medium
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.XSmall
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
-import com.microsoft.fluentui.theme.token.controlTokens.BorderType.No_Border
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
@@ -90,7 +89,7 @@ class ListItem {
                         Offset(size.width, size.height),
                         borderSize * density
                     )
-                    BorderType.Top_Bottom -> {
+                    BorderType.TopBottom -> {
                         drawLine(
                             borderColor,
                             Offset(0f, 0f),
@@ -161,6 +160,7 @@ class ListItem {
                 }
             )
         }
+
         /**
          * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text
          *
@@ -173,6 +173,10 @@ class ListItem {
          * @param subTextMaxLines Optional max visible lines for secondary text.
          * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
          * @param onClick Optional onClick action for list item.
+         * @param primaryLeadingTextIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
+         * @param primaryTrailingTextIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
+         * @param secondaryLeadingTextIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
+         * @param secondaryTailingTextIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
          * @param border [BorderType] Optional border for the list item.
          * @param borderInset [BorderInset]Optional borderInset for list item.
          * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
@@ -191,7 +195,11 @@ class ListItem {
             subTextMaxLines: Int = 1,
             secondarySubTextMaxLines: Int = 1,
             onClick: (() -> Unit)? = null,
-            border: BorderType = No_Border,
+            primaryLeadingTextIcons: TextIcons? = null,
+            primaryTrailingTextIcons: TextIcons? = null,
+            secondaryLeadingTextIcons: TextIcons? = null,
+            secondaryTailingTextIcons: TextIcons? = null,
+            border: BorderType = NoBorder,
             borderInset: BorderInset = None,
             listItemTokens: ListItemTokens? = null,
             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -227,7 +235,7 @@ class ListItem {
                     interactionSource = interactionSource
                 )
                 val subLabelColor = getColorByState(
-                    stateData = getListItemTokens().textColor(textType = ListTextType.SubLabelText),
+                    stateData = getListItemTokens().textColor(textType = SubLabelText),
                     enabled = true,
                     interactionSource = interactionSource
                 )
@@ -270,9 +278,14 @@ class ListItem {
                         Modifier
                             .padding(start = horizontalPadding, end = horizontalPadding)
                             .weight(1f), contentAlignment = contentAlignment
-                    ) {
+                    ){
                         Column {
-                            Row {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                if(primaryLeadingTextIcons != null){
+                                    primaryLeadingTextIcons.icon1()
+                                    primaryLeadingTextIcons.icon2?.let { it() }
+                                }
+
                                 Text(
                                     text = text,
                                     fontSize = textSize.fontSize.size,
@@ -281,34 +294,56 @@ class ListItem {
                                     maxLines = textMaxLines,
                                     overflow = TextOverflow.Ellipsis
                                 )
-                            }
-                            if (subText != null) {
-                                Row {
-                                    Text(
-                                        text = subText,
-                                        fontSize = subLabelSize.fontSize.size,
-                                        fontWeight = subLabelSize.weight,
-                                        color = subLabelColor,
-                                        maxLines = subTextMaxLines,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
+                                if(primaryTrailingTextIcons != null){
+                                    primaryTrailingTextIcons.icon1()
+                                    primaryTrailingTextIcons.icon2?.let { it() }
                                 }
                             }
-                            if (secondarySubText != null) {
-                                Row(modifier.padding(top = 1.dp)) {
-                                    Text(
-                                        text = secondarySubText,
-                                        fontSize = secondarySubLabelSize.fontSize.size,
-                                        fontWeight = secondarySubLabelSize.weight,
-                                        color = secondarySubLabelColor,
-                                        maxLines = secondarySubTextMaxLines,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                if(listItemType == TwoLine && secondaryLeadingTextIcons != null){
+                                        secondaryLeadingTextIcons.icon1()
+                                        secondaryLeadingTextIcons.icon2?.let { it() }
+                                }
+                                if (subText != null) {
+                                    Row {
+                                        Text(
+                                            text = subText,
+                                            fontSize = subLabelSize.fontSize.size,
+                                            fontWeight = subLabelSize.weight,
+                                            color = subLabelColor,
+                                            maxLines = subTextMaxLines,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
+                                }
+                                if(listItemType == TwoLine && secondaryTailingTextIcons != null){
+                                        secondaryTailingTextIcons.icon1()
+                                        secondaryTailingTextIcons.icon2?.let { it() }
                                 }
                             }
-
+                            Row(verticalAlignment = Alignment.CenterVertically){
+                                if(listItemType == ThreeLine && secondaryLeadingTextIcons != null){
+                                        secondaryLeadingTextIcons.icon1()
+                                        secondaryLeadingTextIcons.icon2?.let { it() }
+                                }
+                                if (secondarySubText != null) {
+                                    Row(modifier.padding(top = 1.dp)) {
+                                        Text(
+                                            text = secondarySubText,
+                                            fontSize = secondarySubLabelSize.fontSize.size,
+                                            fontWeight = secondarySubLabelSize.weight,
+                                            color = secondarySubLabelColor,
+                                            maxLines = secondarySubTextMaxLines,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
+                                }
+                                if(listItemType == ThreeLine && secondaryTailingTextIcons != null){
+                                    secondaryTailingTextIcons.icon1()
+                                    secondaryTailingTextIcons.icon2?.let { it() }
+                                }
+                            }
                         }
-
                     }
                     if (trailingAccessoryView != null) {
                         Box(
@@ -318,9 +353,12 @@ class ListItem {
                             trailingAccessoryView()
                         }
                     }
+
                 }
             }
         }
+
+
         /**
          * Create a Section header. Section headers are list tiles that delineates sections of a list or grid list
          *
@@ -353,7 +391,7 @@ class ListItem {
             style: SectionHeaderStyle = SectionHeaderStyle.Standard,
             enableChevron: Boolean = true,
             chevronOrientation: ChevronTransition = ChevronTransition(0f, 0f),
-            border: BorderType = No_Border,
+            border: BorderType = NoBorder,
             borderInset: BorderInset = None,
             enter: EnterTransition = slideInVertically(
                 animationSpec = tween(
@@ -401,6 +439,7 @@ class ListItem {
                     enabled = true,
                     interactionSource = interactionSource
                 )
+                val chevronTint = getListItemTokens().chevronTint()
                 var expandedState by remember { mutableStateOf(false) }
                 val rotationState by animateFloatAsState(
                     targetValue = if (expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
@@ -440,7 +479,7 @@ class ListItem {
                                             "chevron",
                                             modifier
                                                 .clickable { expandedState = !expandedState }
-                                                .rotate(rotationState))
+                                                .rotate(rotationState), tint = chevronTint)
                                     }
                                     Text(
                                         text = title,
@@ -488,6 +527,7 @@ class ListItem {
 
             }
         }
+
         /**
          * Create a Section description. Section description are lists that provide added context to a list.
          *
@@ -511,7 +551,7 @@ class ListItem {
             listItemTokens: ListItemTokens? = null,
             actionText: Boolean = false,
             descriptionPlacement: TextPlacement = Top,
-            border: BorderType = No_Border,
+            border: BorderType = NoBorder,
             borderInset: BorderInset = None,
             onClick: (() -> Unit)? = null,
             onActionClick: (() -> Unit)? = null,

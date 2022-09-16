@@ -10,7 +10,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
-import com.microsoft.fluentui.theme.token.controlTokens.BorderType.No_Border
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 
@@ -21,7 +21,7 @@ fun PersonaView(person: Person,
     secondaryText: String? = null,
     tertiaryText: String? = null,
     onClick: (() -> Unit)? = null,
-    border: BorderType = No_Border,
+    border: BorderType = NoBorder,
     borderInset: BorderInset = None,
     enableAvatarActivityRings: Boolean = false,
     enableAvatarPresence: Boolean = true,
@@ -30,7 +30,7 @@ fun PersonaView(person: Person,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() }){
 
     var avatarSize = if (secondaryText != null || tertiaryText != null) AvatarSize.Large else  AvatarSize.Small
-    Box(){
+    Box{
         ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, modifier = modifier, onClick = onClick, border = border, borderInset = borderInset, listItemTokens = personaViewTokens, leadingAccessoryView = { Avatar(
             person = person,
             modifier = modifier,

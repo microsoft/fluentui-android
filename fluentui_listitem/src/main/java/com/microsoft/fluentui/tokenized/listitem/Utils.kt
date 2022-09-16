@@ -1,5 +1,7 @@
-package com.microsoft.fluentui.listitem
+package com.microsoft.fluentui.tokenized.listitem
 
+import android.graphics.drawable.Icon
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
 import androidx.compose.foundation.interaction.InteractionSource
@@ -36,3 +38,5 @@ fun getColorByState(
 }
 
 data class ChevronTransition (val enterTransition: Float = 0f, val exitTransition: Float = 0f)
+
+data class TextIcons (val icon1: (@Composable () -> Unit), val icon2: (@Composable () -> Unit)? = null)

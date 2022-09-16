@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
@@ -22,7 +23,6 @@ import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1Strong
 import com.microsoft.fluentui.theme.token.GlobalTokens.BorderSizeTokens.Thin
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.AvatarCarousel
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.ThreeLine
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.TwoLine
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.OneLine
@@ -31,8 +31,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionHead
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.AccessoryText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.ActionText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.DescriptionText
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.FirstName
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.LastName
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.Text
@@ -46,7 +44,6 @@ enum class ListItemType {
     OneLine,
     TwoLine,
     ThreeLine,
-    AvatarCarousel,
     SectionHeader,
     SectionDescription
 }
@@ -56,9 +53,7 @@ enum class ListTextType {
     SecondarySubLabelText,
     AccessoryText,
     ActionText,
-    DescriptionText,
-    FirstName,
-    LastName
+    DescriptionText
 }
 enum class SectionHeaderStyle {
     Standard,
@@ -73,20 +68,15 @@ enum class BorderInset {
     XXXXXXLarge
 }
 enum class BorderType {
-    No_Border,
+    NoBorder,
     Top,
     Bottom,
-    Top_Bottom
+    TopBottom
 }
 
 enum class TextPlacement {
     Top,
     Bottom
-}
-
-enum class AvatarCarouselSize{
-    Medium,
-    Large
 }
 
 @Parcelize
@@ -162,16 +152,6 @@ open class ListItemTokens : ControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 )
             )
-            FirstName -> StateColor(
-                rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            )
-            LastName -> StateColor(
-                rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            )
         }
     }
 
@@ -186,6 +166,13 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
+    open fun chevronTint(): Color {
+        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            FluentTheme.themeMode
+        )
+    }
+
+    @Composable
     open fun textSize(textType: ListTextType): FontInfo {
         return when (textType) {
             Text -> FluentTheme.aliasTokens.typography[Body1]
@@ -194,8 +181,6 @@ open class ListItemTokens : ControlToken, Parcelable {
             SecondarySubLabelText -> FluentTheme.aliasTokens.typography[Caption1]
             DescriptionText -> FluentTheme.aliasTokens.typography[Caption1]
             ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
-            FirstName -> FluentTheme.aliasTokens.typography[Body2]
-            LastName -> FluentTheme.aliasTokens.typography[Caption1]
         }
     }
 
@@ -225,7 +210,6 @@ open class ListItemTokens : ControlToken, Parcelable {
             OneLine -> 48.dp
             TwoLine -> 68.dp
             ThreeLine -> 88.dp
-            AvatarCarousel -> 88.dp
             SectionHeader -> 48.dp
             SectionDescription -> 68.dp
         }
@@ -248,22 +232,6 @@ open class ListItemTokens : ControlToken, Parcelable {
         return when(placement){
             Top -> Alignment.Top
             Bottom -> Alignment.Bottom
-        }
-    }
-
-    @Composable
-    open fun avatarTextHorizontalPadding(carouselSize: AvatarCarouselSize): Dp{
-        return when(carouselSize){
-            AvatarCarouselSize.Medium -> 8.dp
-            AvatarCarouselSize.Large -> 2.dp
-        }
-    }
-
-    @Composable
-    open fun avatarTextVerticalPadding(carouselSize: AvatarCarouselSize): Dp{
-        return when(carouselSize){
-            AvatarCarouselSize.Medium -> 8.dp
-            AvatarCarouselSize.Large -> 12.dp
         }
     }
 }
