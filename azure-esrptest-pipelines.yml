@@ -1,6 +1,6 @@
 jobs:
 
-  - job: Test Build and Publish
+  - job: TestBuildPublish
     pool:
       vmImage: ubuntu-latest
 
