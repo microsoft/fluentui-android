@@ -1,8 +1,8 @@
 jobs:
 
-  - job: Build
+  - job: Test Build and Publish
     pool:
-      vmImage: 'macos-latest'
+      vmImage: ubuntu-latest
 
     steps:
     - task: Gradle@2
