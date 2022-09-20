@@ -163,7 +163,3 @@ nexusStaging {
     username = ossrhUsername
     password = ossrhPassword
 }
-
-signing {
-    sign publishing.publications
-}
