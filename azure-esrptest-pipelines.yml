@@ -6,10 +6,10 @@ jobs:
 
     steps:
     - task: Gradle@2
-      displayName: 'gradlew build publishTestFluentUIPublicationToMavenLocal'
+      displayName: 'gradlew publishToMavenLocal'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'build publishToMavenLocal'
+        tasks: 'publishToMavenLocal'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PtestGroupId=$(testGroupId)'
