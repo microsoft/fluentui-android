@@ -6,7 +6,7 @@ jobs:
 
     steps:
     - task: Gradle@2
-      displayName: 'gradlew build testPublish'
+      displayName: 'gradlew build publishTestFluentUIPublicationToMavenLocal'
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'build testPublish'
