@@ -1,38 +1,15 @@
 apply plugin: 'maven-publish'
 
-ext["ossrhUsername"] = ''
-ext["ossrhPassword"] = ''
-ext["sonatypeStagingProfileId"] = ''
-ext["testGroupId"] = ''
+ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
 
-File secretPropsFile = project.rootProject.file('local.properties')
-if (secretPropsFile.exists()) {
-    Properties p = new Properties()
-    p.load(new FileInputStream(secretPropsFile))
-    p.each { name, value ->
-        ext[name] = value
-    }
-} else {
-    ext["ossrhUsername"] = project.hasProperty('OSSRHUsername') ? "$OSSRHUsername" : ''
-    ext["ossrhPassword"] = project.hasProperty('OSSRHPassword') ? "$OSSRHPassword" : ''
-    ext["sonatypeStagingProfileId"] = project.hasProperty('SonatypeStagingProfileID') ? "$SonatypeStagingProfileID" : ''
-    ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
-}
 
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
-            maven {
-                name = "sonatype"
-                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                credentials {
-                    username ossrhUsername
-                    password ossrhPassword
-                }
-            }
+            mavenLocal()
         }
         publications {
-            FluentUI(MavenPublication) {
+            TestFluentUI(MavenPublication) {
                 groupId testGroupId
                 artifactId artifactIdName
                 version = android.defaultConfig.versionName
@@ -84,11 +61,4 @@ project.ext.publishingFunc = { artifactIdName ->
             }
         }
     }
-}
-
-nexusStaging {
-    packageGroup = testGroupId
-    stagingProfileId = sonatypeStagingProfileId
-    username = ossrhUsername
-    password = ossrhPassword
 }
