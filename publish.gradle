@@ -103,56 +103,6 @@ project.ext.publishingFunc = { artifactIdName ->
                     }
                 }
             }
-            TestFluentUI(MavenPublication) {
-                groupId 'com.test.fluentui'
-                artifactId artifactIdName
-                version = android.defaultConfig.versionName
-                artifact(sourceJar)
-                artifact(bundleReleaseAar)
-                pom {
-                    name = artifactIdName
-                    description = 'Fluent UI Android, Module : '.concat(artifactIdName)
-                    url = project.ext.github_url
-                    licenses {
-                        license {
-                            name = project.ext.license_type
-                            url = project.ext.license_url
-                        }
-                    }
-                    developers {
-                        developer {
-                            id = project.ext.developer_id
-                            name = project.ext.developer_name
-                            email = project.ext.developer_email
-                        }
-                    }
-                    scm {
-                        connection = project.ext.scm_connection
-                        developerConnection = project.ext.scm_dev_connection
-                        url = project.ext.scm_url
-                    }
-                    withXml {
-                        def dependenciesNode = asNode().appendNode('dependencies')
-                        // Iterate over the compile dependencies (we don't want the test ones), adding a <dependency> node for each
-                        configurations.implementation.allDependencies.each {
-                            if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
-                                def dependencyNode = dependenciesNode.appendNode('dependency')
-                                if (it instanceof ProjectDependency) {
-                                    dependencyNode.appendNode('groupId', 'com.test.fluentui')
-                                    dependencyNode.appendNode('artifactId', it.name)
-                                    def artifactName = it.name.replaceAll('-', '_') + '_versionid'
-                                    dependencyNode.appendNode('version', getProperty(artifactName).toString())
-                                } else {
-                                    dependencyNode.appendNode('groupId', it.group)
-                                    dependencyNode.appendNode('artifactId', it.name)
-                                    dependencyNode.appendNode('version', it.version)
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }
