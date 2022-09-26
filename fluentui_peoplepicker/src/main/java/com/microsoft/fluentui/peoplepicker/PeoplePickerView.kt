@@ -125,6 +125,20 @@ class PeoplePickerView : TemplateView {
             field = value
             updateViews()
         }
+
+    /**
+     * Custom width for drop down suggestion Personas List
+     * For tablet requirement, client might need to paas WRAP_CONTENT as per their design need
+     * default value would be MATCH_PARENT here
+     */
+    var customDropDownWidth: Int = LayoutParams.MATCH_PARENT
+        set(value) {
+            if (field == value)
+                return
+            field = value
+            updateViews()
+        }
+
     /**
      * Collapse the [PeoplePickerTextView] to a single line when it loses focus.
      */
@@ -238,7 +252,10 @@ class PeoplePickerView : TemplateView {
             PeoplePickerPersonaChipClickStyle.SELECT.ordinal
         )
         personaChipClickStyle = PeoplePickerPersonaChipClickStyle.values()[personaChipClickStyleOrdinal]
-
+        customDropDownWidth = styledAttrs.getInt(
+                R.styleable.PeoplePickerView_fluentui_customDropDownWidth,
+                LayoutParams.MATCH_PARENT
+        )
         styledAttrs.recycle()
     }
 
@@ -254,7 +271,7 @@ class PeoplePickerView : TemplateView {
 
         // Fixed properties for TokenCompleteTextView.
         peoplePickerTextView?.apply {
-            dropDownWidth = ViewGroup.LayoutParams.MATCH_PARENT
+            dropDownWidth = customDropDownWidth
             allowCollapse = this@PeoplePickerView.allowCollapse
             isLongClickable = true
             setTokenListener(TokenListener(this@PeoplePickerView))
@@ -307,9 +324,25 @@ class PeoplePickerView : TemplateView {
     private fun updateViews() {
         if(label.isBlank()) {
             labelTextView?.visibility = GONE
+            peoplePickerTextView?.let {
+                it.setPaddingRelative(
+                        resources.getDimensionPixelSize(R.dimen.fluentui_people_picker_horizontal_padding),
+                        it.paddingTop,
+                        it.paddingEnd,
+                        it.paddingBottom
+                )
+            }
         } else {
             labelTextView?.visibility = VISIBLE
             labelTextView?.text = label
+            peoplePickerTextView?.let {
+                it.setPaddingRelative(
+                        0,
+                        it.paddingTop,
+                        it.paddingEnd,
+                        it.paddingBottom
+                )
+            }
         }
         peoplePickerTextView?.apply {
             valueHint = this@PeoplePickerView.valueHint
