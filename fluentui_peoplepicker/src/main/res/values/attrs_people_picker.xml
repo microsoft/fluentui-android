@@ -11,5 +11,6 @@
         <attr name="fluentui_showHint"/>
         <attr name="fluentui_characterThreshold"/>
         <attr name="fluentui_personaChipClickStyle"/>
+        <attr name="fluentui_customDropDownWidth"/>
     </declare-styleable>
 </resources>
