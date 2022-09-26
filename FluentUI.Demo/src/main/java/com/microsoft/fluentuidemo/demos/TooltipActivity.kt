@@ -93,7 +93,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         }
 
         tooltip_anchor_custom_view.setOnClickListener {
-            tooltip = Tooltip(this).show(
+            tooltip = Tooltip(this).setFocusable(true).show(
                 it,
                 LayoutInflater.from(this).inflate(R.layout.tooltip_custom_view, null)
             )

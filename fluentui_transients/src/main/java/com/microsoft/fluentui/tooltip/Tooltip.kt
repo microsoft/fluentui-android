@@ -91,7 +91,7 @@ class Tooltip {
 
         popupWindow = PopupWindow(context).apply {
             isClippingEnabled = true
-            isFocusable = true
+            isFocusable = context.isAccessibilityEnabled
             isOutsideTouchable = true
             width = context.displaySize.x
             height = context.displaySize.y
@@ -108,6 +108,11 @@ class Tooltip {
         arrowDownView.visibility = View.GONE
         arrowLeftView.visibility = View.GONE
         arrowRightView.visibility = View.GONE
+    }
+
+    fun setFocusable(focusable: Boolean = false): Tooltip {
+        popupWindow.isFocusable = focusable
+        return this
     }
 
     /**
