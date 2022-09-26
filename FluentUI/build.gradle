@@ -7,6 +7,7 @@ apply plugin: 'kotlin-android'
 
 apply from: '../config.gradle'
 apply from: '../publish.gradle'
+apply from: '../testPublish.gradle'
 
 android {
     compileSdkVersion constants.compileSdkVersion
