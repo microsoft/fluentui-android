@@ -1,18 +1,5 @@
 apply plugin: 'maven-publish'
 
-ext["testGroupId"] = ''
-
-File secretPropsFile = project.rootProject.file('local.properties')
-if (secretPropsFile.exists()) {
-    Properties p = new Properties()
-    p.load(new FileInputStream(secretPropsFile))
-    p.each { name, value ->
-        ext[name] = value
-    }
-} else {
-    ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
-}
-
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
@@ -20,7 +7,7 @@ project.ext.publishingFunc = { artifactIdName ->
         }
         publications {
             TestFluentUI(MavenPublication) {
-                groupId testGroupId
+                groupId = 'com.test.fluentui'
                 artifactId artifactIdName
                 version = android.defaultConfig.versionName
                 artifact(sourceJar)
@@ -54,7 +41,7 @@ project.ext.publishingFunc = { artifactIdName ->
                             if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
                                 def dependencyNode = dependenciesNode.appendNode('dependency')
                                 if (it instanceof ProjectDependency) {
-                                    dependencyNode.appendNode('groupId', testGroupId)
+                                    dependencyNode.appendNode('groupId', 'com.test.fluentui')
                                     dependencyNode.appendNode('artifactId', it.name)
                                     def artifactName = it.name.replaceAll('-', '_') + '_versionid'
                                     dependencyNode.appendNode('version', getProperty(artifactName).toString())
