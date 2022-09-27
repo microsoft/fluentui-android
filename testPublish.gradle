@@ -1,6 +1,6 @@
 apply plugin: 'maven-publish'
 
-ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
+ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : 'com.test.fluentui'
 
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
