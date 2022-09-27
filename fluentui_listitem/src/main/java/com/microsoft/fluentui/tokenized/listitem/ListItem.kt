@@ -219,7 +219,7 @@ class ListItem {
                     ThreeLine
                 }
                 var isTertiaryTextIconsRequired = false
-                if(listItemType == TwoLine && subText == null){
+                if (listItemType == TwoLine && subText == null) {
                     isTertiaryTextIconsRequired = true
                 }
                 val backgroundColor = getColorByState(
@@ -283,10 +283,10 @@ class ListItem {
                         Modifier
                             .padding(start = horizontalPadding, end = horizontalPadding)
                             .weight(1f), contentAlignment = contentAlignment
-                    ){
+                    ) {
                         Column(Modifier.padding(top = verticalPadding, bottom = verticalPadding)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if(primaryLeadingTextIcons != null){
+                                if (primaryLeadingTextIcons != null) {
                                     primaryLeadingTextIcons.icon1()
                                     primaryLeadingTextIcons.icon2?.let { it() }
                                 }
@@ -299,7 +299,7 @@ class ListItem {
                                     maxLines = textMaxLines,
                                     overflow = TextOverflow.Ellipsis
                                 )
-                                if(primaryTrailingTextIcons != null){
+                                if (primaryTrailingTextIcons != null) {
                                     primaryTrailingTextIcons.icon1()
                                     primaryTrailingTextIcons.icon2?.let { it() }
                                 }
@@ -318,13 +318,13 @@ class ListItem {
                                     }
                                 }
                             }
-                            Row(verticalAlignment = Alignment.CenterVertically){
-                                if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null){
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null) {
                                     Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
                                         progressIndicator()
                                     }
-                                }else{
-                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryLeadingTextIcons != null){
+                                } else {
+                                    if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryLeadingTextIcons != null) {
                                         secondaryLeadingTextIcons.icon1()
                                         secondaryLeadingTextIcons.icon2?.let { it() }
                                     }
@@ -340,7 +340,7 @@ class ListItem {
                                             )
                                         }
                                     }
-                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryTailingTextIcons != null){
+                                    if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryTailingTextIcons != null) {
                                         secondaryTailingTextIcons.icon1()
                                         secondaryTailingTextIcons.icon2?.let { it() }
                                     }
@@ -361,7 +361,6 @@ class ListItem {
             }
         }
 
-
         /**
          * Create a Section header. Section headers are list tiles that delineates sections of a list or grid list
          *
@@ -372,7 +371,7 @@ class ListItem {
          * @param accessoryTextOnClick Optional onClick action for accessory text.
          * @param style [SectionHeaderStyle] Section header style.
          * @param enableChevron Adds a chevron icon before text
-         * @param chevronOrientation Pass [ChevronTransition] to apply chevron icon transition when clicked on the list item. Defaults to static (enter and exit transition are same).
+         * @param chevronOrientation Pass [ChevronOrientation] to apply chevron icon transition when clicked on the list item. Defaults to static (enter and exit transition are same).
          * @param border [BorderType] Optional border for the list item.
          * @param borderInset [BorderInset] Optional borderInset for list item.
          * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
@@ -393,7 +392,7 @@ class ListItem {
             listItemTokens: ListItemTokens? = null,
             style: SectionHeaderStyle = SectionHeaderStyle.Standard,
             enableChevron: Boolean = true,
-            chevronOrientation: ChevronTransition = ChevronTransition(0f, 0f),
+            chevronOrientation: ChevronOrientation = ChevronOrientation(0f, 0f),
             border: BorderType = NoBorder,
             borderInset: BorderInset = None,
             enableContentOpenCloseTransition: Boolean = false,
@@ -446,13 +445,15 @@ class ListItem {
                 val chevronTint = getListItemTokens().chevronTint()
                 var expandedState by remember { mutableStateOf(false) }
                 val rotationState by animateFloatAsState(
-                    targetValue = if (!enableContentOpenCloseTransition || expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
+                    targetValue = if (!enableContentOpenCloseTransition || expandedState)
+                        chevronOrientation.enterTransition else chevronOrientation.exitTransition
                 )
                 Surface(
                     modifier = modifier
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
-                        .background(backgroundColor),
+                        .background(backgroundColor)
+                        .borderModifier(border, borderColor, borderSize, borderInset),
                     onClick = {
                         expandedState = !expandedState
                     },
@@ -460,7 +461,6 @@ class ListItem {
                     Column(
                         Modifier
                             .fillMaxWidth()
-                            .borderModifier(border, borderColor, borderSize, borderInset)
                     ) {
                         Row(
                             modifier
