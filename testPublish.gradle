@@ -20,7 +20,13 @@ if (secretPropsFile.exists()) {
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
-            mavenLocal()
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/FluentUI-Android_TestFeed/maven/v1'
+                credentials {
+                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                }
+            }
         }
         publications {
             TestFluentUI(MavenPublication) {
