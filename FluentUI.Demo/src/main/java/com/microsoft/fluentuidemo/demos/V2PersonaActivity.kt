@@ -25,7 +25,7 @@ import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-class V2PersonaViewActivity : DemoActivity() {
+class V2PersonaActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean

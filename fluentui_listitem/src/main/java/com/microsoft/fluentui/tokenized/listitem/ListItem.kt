@@ -218,6 +218,10 @@ class ListItem {
                 } else {
                     ThreeLine
                 }
+                var isTertiaryTextIconsRequired = false
+                if(listItemType == TwoLine && subText == null){
+                    isTertiaryTextIconsRequired = true
+                }
                 val backgroundColor = getColorByState(
                     stateData = getListItemTokens().backgroundColor(),
                     enabled = true,
@@ -226,7 +230,7 @@ class ListItem {
                 val cellHeight = getListItemTokens().cellHeight(listItemType = listItemType)
                 val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
                 val subLabelSize =
-                    getListItemTokens().textSize(textType = ListTextType.SubLabelText)
+                    getListItemTokens().textSize(textType = SubLabelText)
                 var secondarySubLabelSize =
                     getListItemTokens().textSize(textType = SecondarySubLabelText)
                 val textColor = getColorByState(
@@ -280,7 +284,7 @@ class ListItem {
                             .padding(start = horizontalPadding, end = horizontalPadding)
                             .weight(1f), contentAlignment = contentAlignment
                     ){
-                        Column(Modifier.padding(verticalPadding)) {
+                        Column(Modifier.padding(top = verticalPadding, bottom = verticalPadding)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 if(primaryLeadingTextIcons != null){
                                     primaryLeadingTextIcons.icon1()
@@ -301,10 +305,6 @@ class ListItem {
                                 }
                             }
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if(listItemType == TwoLine && secondaryLeadingTextIcons != null){
-                                        secondaryLeadingTextIcons.icon1()
-                                        secondaryLeadingTextIcons.icon2?.let { it() }
-                                }
                                 if (subText != null) {
                                     Row {
                                         Text(
@@ -317,18 +317,14 @@ class ListItem {
                                         )
                                     }
                                 }
-                                if(listItemType == TwoLine && secondaryTailingTextIcons != null){
-                                        secondaryTailingTextIcons.icon1()
-                                        secondaryTailingTextIcons.icon2?.let { it() }
-                                }
                             }
                             Row(verticalAlignment = Alignment.CenterVertically){
-                                if(listItemType == ThreeLine && progressIndicator != null){
+                                if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null){
                                     Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
                                         progressIndicator()
                                     }
                                 }else{
-                                    if(listItemType == ThreeLine && secondaryLeadingTextIcons != null){
+                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryLeadingTextIcons != null){
                                         secondaryLeadingTextIcons.icon1()
                                         secondaryLeadingTextIcons.icon2?.let { it() }
                                     }
@@ -344,7 +340,7 @@ class ListItem {
                                             )
                                         }
                                     }
-                                    if(listItemType == ThreeLine && secondaryTailingTextIcons != null){
+                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryTailingTextIcons != null){
                                         secondaryTailingTextIcons.icon1()
                                         secondaryTailingTextIcons.icon2?.let { it() }
                                     }
@@ -400,6 +396,7 @@ class ListItem {
             chevronOrientation: ChevronTransition = ChevronTransition(0f, 0f),
             border: BorderType = NoBorder,
             borderInset: BorderInset = None,
+            enableContentOpenCloseTransition: Boolean = false,
             enter: EnterTransition = slideInVertically(
                 animationSpec = tween(
                     durationMillis = 300,
@@ -449,7 +446,7 @@ class ListItem {
                 val chevronTint = getListItemTokens().chevronTint()
                 var expandedState by remember { mutableStateOf(false) }
                 val rotationState by animateFloatAsState(
-                    targetValue = if (expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
+                    targetValue = if (!enableContentOpenCloseTransition || expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
                 )
                 Surface(
                     modifier = modifier
@@ -521,7 +518,7 @@ class ListItem {
                             }
                         }
                         AnimatedVisibility(
-                            visible = expandedState,
+                            visible = !enableContentOpenCloseTransition || expandedState,
                             enter = enter,
                             exit = exit
                         ) {

@@ -30,7 +30,7 @@ import com.microsoft.fluentuidemo.R.drawable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-class V2PersonaListViewActivity : DemoActivity() {
+class V2PersonaListActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean

@@ -54,9 +54,9 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.PersistentBottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaChipViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaListViewActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaViewActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
