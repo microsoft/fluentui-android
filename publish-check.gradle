@@ -1,5 +1,5 @@
 project.ext.artifactExists = { artifactId, artifactVersion ->
-    def mavenUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+    def mavenUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/FluentUI-Android_TestFeed/maven/v1'
     def groupId = 'com/microsoft/fluentui'
     def pomFileName = artifactId+"-"+artifactVersion+".pom"
     def artifactPath = groupId+"/"+artifactId+"/"+artifactVersion+"/"+pomFileName
