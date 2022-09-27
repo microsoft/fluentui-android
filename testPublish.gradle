@@ -1,10 +1,6 @@
 apply plugin: 'maven-publish'
-apply plugin: 'signing'
 
 ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
-ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
-ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
-ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
 
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
@@ -64,8 +60,4 @@ project.ext.publishingFunc = { artifactIdName ->
             }
         }
     }
-}
-
-signing {
-    sign publishing.publications
 }
