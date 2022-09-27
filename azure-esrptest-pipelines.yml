@@ -17,10 +17,10 @@ jobs:
           sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
           ls
     - task: Gradle@2
-      displayName: 'gradlew publishToMavenLocal'
+      displayName: 'gradlew publish to Feed'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'publishTestFluentUIPublicationToMavenLocal'
+        tasks: 'publishTestFluentUIPublicationToMavenRepository'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
-        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId) -PtestGroupId=$(testGroupId)'
+        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId) -PtestGroupId=$(testGroupId)'
