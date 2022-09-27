@@ -1,6 +1,17 @@
 apply plugin: 'maven-publish'
 
-ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : 'com.test.fluentui'
+ext["testGroupId"] = ''
+
+File secretPropsFile = project.rootProject.file('local.properties')
+if (secretPropsFile.exists()) {
+    Properties p = new Properties()
+    p.load(new FileInputStream(secretPropsFile))
+    p.each { name, value ->
+        ext[name] = value
+    }
+} else {
+    ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
+}
 
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
