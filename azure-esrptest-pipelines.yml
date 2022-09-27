@@ -5,6 +5,17 @@ jobs:
       vmImage: ubuntu-latest
 
     steps:
+    - task: Bash@3
+      displayName: 'Base64 decodes and pipes the GPG key content into the secret file'
+      env:
+        GPG_KEY_CONTENT: $(gpgContent)
+        SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your commands here
+          sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+          ls
     - task: Gradle@2
       displayName: 'gradlew publishToMavenLocal'
       inputs:
@@ -12,4 +23,4 @@ jobs:
         tasks: 'publishTestFluentUIPublicationToMavenLocal'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
-        options: '-PtestGroupId=$(testGroupId)'
+        options: ' options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId) -PtestGroupId=$(testGroupId)'
