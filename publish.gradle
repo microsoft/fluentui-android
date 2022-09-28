@@ -24,11 +24,7 @@ project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
             maven {
-                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/FluentUI-Android_TestFeed/maven/v1'
-                credentials {
-                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
-                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
-                }
+                url '~/.m2/repository'
             }
         }
         if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
