@@ -24,3 +24,13 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId) -PtestGroupId=$(testGroupId)'
+    - task: Bash@3
+      displayName: 'artifacts'
+      inputs:
+        targetType: 'inline'
+        script: |
+          # Write your commands here
+          ls
+          echo "check maven local repo"
+          cd ~/.m2/repository
+          ls
