@@ -70,12 +70,15 @@ task sourceJar(type: Jar) {
     classifier "sources"
 }
 
-tasks.withType(Zip) { task ->
-    task.doLast {
-        ant.checksum file: it.archivePath
-    }
+aar.doLast { task ->
+    ant.checksum file: task.archivePath
 }
-
+pom.doLast { task ->
+    ant.checksum file: task.archivePath
+}
+asc.doLast { task ->
+    ant.checksum file: task.archivePath
+}
 project.afterEvaluate {
     project.ext.publishingFunc('fluentui_calendar')
 }
