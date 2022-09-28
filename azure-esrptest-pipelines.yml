@@ -34,4 +34,5 @@ jobs:
           # Write your commands here
           ls
           echo "check maven local repo"
-          ls -R ~/.m2/repository
+          cd build
+          ls -R
