@@ -20,19 +20,11 @@ jobs:
       displayName: 'gradlew publish to Feed'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'publishTestFluentUIPublicationToMavenRepository'
+        tasks: 'publishTestFluentUIPublicationToMavenLocal'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
     
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-      inputs:
-        SourceFolder: '$(system.defaultworkingdirectory)'
-        Contents: |
-         **/*.apk
-         **/*.aar
-        TargetFolder: '$(build.artifactstagingdirectory)'
 
     - task: Bash@3
       displayName: 'artifacts'
@@ -42,5 +34,5 @@ jobs:
           # Write your commands here
           ls
           echo "check maven local repo"
-          cd $(build.artifactstagingdirectory)
+          cd ~/.m2/repository
           ls -R
