@@ -6,10 +6,6 @@ apply from: "../publish-check.gradle"
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
 ext["signing.secretKeyRingFile"] = ''
-ext["ossrhUsername"] = ''
-ext["ossrhPassword"] = ''
-ext["sonatypeStagingProfileId"] = ''
-ext["testGroupId"] = ''
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -22,39 +18,22 @@ if (secretPropsFile.exists()) {
     ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
     ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
     ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
-    ext["ossrhUsername"] = project.hasProperty('OSSRHUsername') ? "$OSSRHUsername" : ''
-    ext["ossrhPassword"] = project.hasProperty('OSSRHPassword') ? "$OSSRHPassword" : ''
-    ext["sonatypeStagingProfileId"] = project.hasProperty('SonatypeStagingProfileID') ? "$SonatypeStagingProfileID" : ''
-    ext["testGroupId"] = project.hasProperty('testGroupId') ? "$testGroupId" : ''
 }
 
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
             maven {
-                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/FluentUI-Android_TestFeed/maven/v1'
                 credentials {
                     username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
                     password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
                 }
             }
-            maven {
-                name = "sonatype"
-                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                credentials {
-                    username ossrhUsername
-                    password ossrhPassword
-                }
-            }
-            mavenLocal()
-        }
-        if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
-            println("Artifact "+ artifactIdName + "already exists with the same name. Skipping publish")
-            return
         }
         publications {
-            FluentUI(MavenPublication) {
-                groupId 'com.microsoft.fluentui'
+            TestFluentUI(MavenPublication) {
+                groupId 'com.test.fluentui'
                 artifactId artifactIdName
                 version = android.defaultConfig.versionName
                 artifact(sourceJar)
@@ -88,7 +67,7 @@ project.ext.publishingFunc = { artifactIdName ->
                             if (it.group != null && (it.name != null && it.name != "unspecified") && it.version != null) {
                                 def dependencyNode = dependenciesNode.appendNode('dependency')
                                 if (it instanceof ProjectDependency) {
-                                    dependencyNode.appendNode('groupId', 'com.microsoft.fluentui')
+                                    dependencyNode.appendNode('groupId', 'com.test.fluentui')
                                     dependencyNode.appendNode('artifactId', it.name)
                                     def artifactName = it.name.replaceAll('-', '_') + '_versionid'
                                     dependencyNode.appendNode('version', getProperty(artifactName).toString())
@@ -106,10 +85,6 @@ project.ext.publishingFunc = { artifactIdName ->
         }
     }
 }
-
-nexusStaging {
-    packageGroup = 'com.microsoft.fluentui'
-    stagingProfileId = sonatypeStagingProfileId
-    username = ossrhUsername
-    password = ossrhPassword
+signing {
+    sign publishing.publications
 }
