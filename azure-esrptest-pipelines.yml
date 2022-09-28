@@ -23,16 +23,16 @@ jobs:
         tasks: 'publishTestFluentUIPublicationToMavenRepository'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
-        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
+        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)'
     
-
-    - task: Bash@3
-      displayName: 'artifacts'
+    - task: EsrpRelease@2
       inputs:
-        targetType: 'inline'
-        script: |
-          # Write your commands here
-          ls
-          echo "check maven local repo"
-          cd build
-          ls -R
+        ConnectedServiceName: 'ESRP_Release_Connection'
+        Intent: 'PackageDistribution'
+        ContentType: 'Maven'
+        PackageLocation: '$(build.sourcesdirectory)/build/repo/com/test/fluentui'
+        Owners: 'pyeruva@microsoft.com'
+        Approvers: 'pyeruva@microsoft.com'
+        ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
+        MainPublisher: 'ESRPRELPACMAN'
+        DomainTenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47'
