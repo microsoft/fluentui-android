@@ -32,5 +32,5 @@ jobs:
           # Write your commands here
           ls
           echo "check maven local repo"
-          cd ~/.m2/repository
+          cd ~/.m2/repository/com/test/fluentui
           ls
