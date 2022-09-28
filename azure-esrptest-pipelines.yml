@@ -23,7 +23,7 @@ jobs:
         tasks: 'publishTestFluentUIPublicationToMavenRepository'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
-        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId) -PtestGroupId=$(testGroupId)'
+        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)'
     - task: Bash@3
       displayName: 'artifacts'
       inputs:
@@ -32,5 +32,5 @@ jobs:
           # Write your commands here
           ls
           echo "check maven local repo"
-          cd ~/.m2/repository/com/test/fluentui/fluentui_listitem/0.0.23
-          ls
+          cd ~/.m2/repository
+          ls -R
