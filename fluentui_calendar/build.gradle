@@ -69,9 +69,7 @@ task sourceJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
     classifier "sources"
 }
-doLast {
-   ant.checksum(file: archivePath, algorithm: "SHA-512")
- }
+
 project.afterEvaluate {
     project.ext.publishingFunc('fluentui_calendar')
 }
