@@ -24,7 +24,7 @@ project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
             maven {
-                url '~/.m2/repository'
+                url "file://~/.m2/repository/"
             }
         }
         if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
