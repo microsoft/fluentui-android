@@ -20,7 +20,7 @@ jobs:
       displayName: 'gradlew publish to Feed'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'publishTestFluentUIPublicationToMavenRepository'
+        tasks: 'publishTestFluentUIPublicationToMavenLocal'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)'
