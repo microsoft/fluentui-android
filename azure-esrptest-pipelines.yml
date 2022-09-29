@@ -24,6 +24,11 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)'
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(build.sourcesdirectory)/build/repo/com/test/fluentui'
+        artifact: 'Build'
+        publishLocation: 'pipeline'
     
     - task: EsrpRelease@2
       inputs:
@@ -36,3 +41,4 @@ jobs:
         ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
         MainPublisher: 'ESRPRELPACMAN'
         DomainTenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47'
+        
