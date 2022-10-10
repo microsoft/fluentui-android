@@ -25,19 +25,18 @@ jobs:
           sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
           ls
     - task: Gradle@2
-      displayName: 'gradlew build publish'
+      displayName: 'gradlew build'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'build publish'
+        tasks: 'build'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
-        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
 
     - task: Gradle@2
       displayName: Unit tests
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'testDevelopmentDebugUnitTest'
+        tasks: 'assembleDevelopmentReleaseUnitTest'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
@@ -48,7 +47,7 @@ jobs:
       displayName: Generate testApk
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevelopmentDebugAndroidTest'
+        tasks: 'assembleDevelopmentReleaseAndroidTest'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
@@ -59,34 +58,39 @@ jobs:
       displayName: Hydra Lab UI test
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'requestHydraLabTest -PappApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType)'
+        tasks: 'requestHydraLabTest -PappApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/release/FluentUI.Demo-development-release.apk -PtestApkPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/release/FluentUI.Demo-development-release-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType)'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         publishJUnitResults: false
-      
-    - task: AndroidSigning@2
-      displayName: 'Signing and aligning APK file(s) **/*.apk'
-      inputs:
-        jarsign: false
-        zipalign: false
+    
     
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
       inputs:
-        SourceFolder: '$(system.defaultworkingdirectory)'
+        SourceFolder: '$(build.sourcesdirectory)'
         Contents: |
-         **/*.apk
-         **/*.aar
+         **
         TargetFolder: '$(build.artifactstagingdirectory)'
-
-    - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-      displayName: 📒 Generate Manifest
-      inputs:
-        BuildDropPath: '$(build.artifactstagingdirectory)'
     
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: Build'
+    - task: PublishPipelineArtifact@1
       inputs:
-        PathtoPublish: '$(build.artifactstagingdirectory)'
-        ArtifactName: Build
-        
+        targetPath: '$(build.sourcesdirectory)'
+        artifact: 'Build'
+        publishLocation: 'pipeline'
+
+  - job: Dogfood
+    pool:
+      vmImage: 'macos-latest'
+    variables:
+      - name: BUILDSECMON_OPT_IN
+        value: true
+    steps:
+    - task: Gradle@3
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'assembleDogfoodRelease'
+        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
