@@ -1,7 +1,7 @@
-package com.microsoft.fluentui.icons
+package com.microsoft.fluentuidemo.icons
 
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.microsoft.fluentui.icons.listitemicons.Chevron
+import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import kotlin.collections.List as ____KtList
 
 public object ListItemIcons
@@ -13,6 +13,6 @@ public val ListItemIcons.AllIcons: ____KtList<ImageVector>
     if (__AllIcons != null) {
       return __AllIcons!!
     }
-    __AllIcons= listOf(Chevron)
+    __AllIcons= listOf(Folder40)
     return __AllIcons!!
   }

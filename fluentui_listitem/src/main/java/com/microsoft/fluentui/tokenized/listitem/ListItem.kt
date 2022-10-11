@@ -5,6 +5,7 @@ import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -24,14 +25,15 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.listitem.R
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import com.microsoft.fluentui.icons.ListItemIcons
+import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
@@ -172,10 +174,10 @@ class ListItem {
          * @param subTextMaxLines Optional max visible lines for secondary text.
          * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
          * @param onClick Optional onClick action for list item.
-         * @param primaryLeadingTextIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
-         * @param primaryTrailingTextIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
-         * @param secondaryLeadingTextIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
-         * @param secondaryTailingTextIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
+         * @param primaryTextLeadingIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
+         * @param primaryTextTrailingIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
+         * @param secondarySubTextLeadingIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
+         * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
          * @param border [BorderType] Optional border for the list item.
          * @param borderInset [BorderInset]Optional borderInset for list item.
          * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
@@ -194,10 +196,10 @@ class ListItem {
             subTextMaxLines: Int = 1,
             secondarySubTextMaxLines: Int = 1,
             onClick: (() -> Unit)? = null,
-            primaryLeadingTextIcons: TextIcons? = null,
-            primaryTrailingTextIcons: TextIcons? = null,
-            secondaryLeadingTextIcons: TextIcons? = null,
-            secondaryTailingTextIcons: TextIcons? = null,
+            primaryTextLeadingIcons: TextIcons? = null,
+            primaryTextTrailingIcons: TextIcons? = null,
+            secondarySubTextLeadingIcons: TextIcons? = null,
+            secondarySubTextTailingIcons: TextIcons? = null,
             progressIndicator: (@Composable () -> Unit)? = null,
             border: BorderType = NoBorder,
             borderInset: BorderInset = None,
@@ -286,9 +288,9 @@ class ListItem {
                     ){
                         Column(Modifier.padding(top = verticalPadding, bottom = verticalPadding)) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if(primaryLeadingTextIcons != null){
-                                    primaryLeadingTextIcons.icon1()
-                                    primaryLeadingTextIcons.icon2?.let { it() }
+                                if(primaryTextLeadingIcons != null){
+                                    primaryTextLeadingIcons.icon1()
+                                    primaryTextLeadingIcons.icon2?.let { it() }
                                 }
 
                                 Text(
@@ -299,9 +301,9 @@ class ListItem {
                                     maxLines = textMaxLines,
                                     overflow = TextOverflow.Ellipsis
                                 )
-                                if(primaryTrailingTextIcons != null){
-                                    primaryTrailingTextIcons.icon1()
-                                    primaryTrailingTextIcons.icon2?.let { it() }
+                                if(primaryTextTrailingIcons != null){
+                                    primaryTextTrailingIcons.icon1()
+                                    primaryTextTrailingIcons.icon2?.let { it() }
                                 }
                             }
                             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -324,9 +326,9 @@ class ListItem {
                                         progressIndicator()
                                     }
                                 }else{
-                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryLeadingTextIcons != null){
-                                        secondaryLeadingTextIcons.icon1()
-                                        secondaryLeadingTextIcons.icon2?.let { it() }
+                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextLeadingIcons != null){
+                                        secondarySubTextLeadingIcons.icon1()
+                                        secondarySubTextLeadingIcons.icon2?.let { it() }
                                     }
                                     if (secondarySubText != null) {
                                         Row(modifier.padding(top = 1.dp)) {
@@ -340,9 +342,9 @@ class ListItem {
                                             )
                                         }
                                     }
-                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondaryTailingTextIcons != null){
-                                        secondaryTailingTextIcons.icon1()
-                                        secondaryTailingTextIcons.icon2?.let { it() }
+                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextTailingIcons != null){
+                                        secondarySubTextTailingIcons.icon1()
+                                        secondarySubTextTailingIcons.icon2?.let { it() }
                                     }
                                 }
                             }
@@ -479,8 +481,8 @@ class ListItem {
 
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     if (enableChevron) {
-                                        Icon(painter = painterResource(id = R.drawable.ic_chevron_right_12),
-                                            "chevron",
+                                        val bitmap = ListItemIcons.Chevron
+                                        Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron), contentDescription = "Chevron",
                                             modifier
                                                 .clickable { expandedState = !expandedState }
                                                 .rotate(rotationState), tint = chevronTint)

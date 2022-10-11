@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.icons.listitemicons
+package com.microsoft.fluentuidemo.icons.listitemicons
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush.Companion.linearGradient
@@ -14,14 +14,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.icons.ListItemIcons
+import com.microsoft.fluentuidemo.icons.ListItemIcons
 
-public val ListItemIcons.Folder: ImageVector
+public val ListItemIcons.Folder40: ImageVector
     get() {
-        if (_folder != null) {
-            return _folder!!
+        if (_folder40 != null) {
+            return _folder40!!
         }
-        _folder = Builder(name = "Folder", defaultWidth = 40.0.dp, defaultHeight = 40.0.dp,
+        _folder40 = Builder(name = "Folder40", defaultWidth = 40.0.dp, defaultHeight = 40.0.dp,
                 viewportWidth = 40.0f, viewportHeight = 40.0f).apply {
             path(fill = SolidColor(Color(0xFFFFB900)), stroke = null, strokeLineWidth = 0.0f,
                     strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
@@ -93,16 +93,16 @@ public val ListItemIcons.Folder: ImageVector
                     pathFillType = NonZero) {
                 moveTo(4.0f, 33.0f)
                 horizontalLineTo(36.0f)
-                curveTo(36.8861f, 33.0013f, 37.6674f, 32.4194f, 37.92f, 31.57f)
+                curveTo(36.8861f, 33.0013f, 37.6675f, 32.4194f, 37.92f, 31.57f)
                 curveTo(37.5695f, 31.8466f, 37.1365f, 31.998f, 36.69f, 32.0f)
                 horizontalLineTo(3.32f)
-                curveTo(2.87f, 32.0002f, 2.4332f, 31.8487f, 2.08f, 31.57f)
-                curveTo(2.3325f, 32.4194f, 3.1139f, 33.0013f, 4.0f, 33.0f)
+                curveTo(2.8701f, 32.0002f, 2.4332f, 31.8487f, 2.08f, 31.57f)
+                curveTo(2.3326f, 32.4194f, 3.1139f, 33.0013f, 4.0f, 33.0f)
                 close()
             }
         }
         .build()
-        return _folder!!
+        return _folder40!!
     }
 
-private var _folder: ImageVector? = null
+private var _folder40: ImageVector? = null

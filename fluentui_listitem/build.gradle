@@ -47,20 +47,18 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':fluentui_core')
+    implementation project(':fluentui_icons')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
 
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
 
-    implementation 'androidx.core:core-ktx:1.7.0'
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.runtime:runtime:$composeVersion")
     implementation("androidx.compose.ui:ui:$composeVersion")
 
-    debugImplementation "androidx.compose.ui:ui-tooling:1.1.1"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.1.1"
 }
 
 task sourceJar(type: Jar) {
