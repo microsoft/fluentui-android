@@ -5,23 +5,22 @@ import android.os.Bundle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentuidemo.icons.ListItemIcons
-import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
-import com.microsoft.fluentui.tokenized.listitem.TextIcons
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Large
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Small
@@ -38,7 +37,11 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.listitem.*
+import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
+import kotlinx.coroutines.launch
+import kotlin.math.max
 
 class V2ListItemActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -66,10 +69,17 @@ const val tertiaryText = "Footer, tertiary text"
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CreateListActivityUI(){
+    val lazyListState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
     Box(
         Modifier
-            .fillMaxSize()){
+            .fillMaxSize()
+            ){
         LazyColumn{
+//            item{
+//                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "One-Line list with Text icons", color = Color(0xFF2886DE) )
+//                OneLineListAccessoryViewContentMaterial()
+//            }
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "One-Line list with Text icons", color = Color(0xFF2886DE) )
                 OneLineListAccessoryViewContent()
@@ -98,22 +108,15 @@ fun CreateListActivityUI(){
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Section description", color = Color(0xFF2886DE))
                 ListItem.SectionDescription(description = "Sample description with the description placed at the Top with no Action text and no icon", border = BorderType.Bottom, borderInset = XXLarge)
                 ListItem.SectionDescription(description = "Sample description with the description placed at the Bottom with Icon Accessory and no Action text", leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom, borderInset = XXLarge)
-                ListItem.SectionDescription(description = "Sample description with the description placed at the Top, with Action text", actionText = true, onActionClick = {}, border = BorderType.Bottom, borderInset = XXLarge)
-                ListItem.SectionDescription(description = "Sample description with the description placed at the Bottom with Icon accessory and Action text", actionText = true, onActionClick = {}, leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom)
+                ListItem.SectionDescription(description = "Sample description with the description placed at the Top, with Action text", actionText = "Action", onActionClick = {}, border = BorderType.Bottom, borderInset = XXLarge)
+                ListItem.SectionDescription(description = "Sample description with the description placed at the Bottom with Icon accessory and Action text", actionText = "More", onActionClick = {}, leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom)
             }
             item{
-                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers with chevron", color = Color(0xFF2886DE))
+                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers with/without chevron", color = Color(0xFF2886DE))
                 Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
                     ListItem.SectionHeader(title = "One-Line list", enableChevron = true, enableContentOpenCloseTransition = true, chevronOrientation = ChevronOrientation(90f, 0f), accessoryTextTitle = "Action", accessoryTextOnClick = {}, trailingAccessoryView = { RightViewThreeButton() }, content = { OneLineSimpleList() }, border = BorderType.Bottom)
                     ListItem.SectionHeader(title = "Two-Line list", style = Subtle, enableChevron = true, enableContentOpenCloseTransition = true, chevronOrientation = ChevronOrientation(90f, 0f), content = { TwoLineSimpleList() }, border = BorderType.Bottom)
-                }
-
-            }
-            item{
-                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers No chevron", color = Color(0xFF2886DE))
-                Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(title = "Two-Line list", enableChevron = false, enableContentOpenCloseTransition = true, trailingAccessoryView = { RightViewToggle() }, content = { TwoLineSimpleList() }, border = BorderType.Bottom)
-                    ListItem.SectionHeader(title = "One-Line list", style = Subtle, enableChevron = false, enableContentOpenCloseTransition = true, accessoryTextTitle = "Action", accessoryTextOnClick = {}, content = { OneLineSimpleList() }, border = BorderType.Bottom)
+                    ListItem.SectionHeader(title = "Two-Line list", enableChevron = false, enableContentOpenCloseTransition = true, trailingAccessoryView = { RightViewToggle() }, content = { ThreeLineSimpleList() }, border = BorderType.Bottom)
                 }
 
             }
@@ -141,18 +144,39 @@ fun TwoLineSimpleList(){
         ListItem.Item(text = primaryText, subText = "Subtitle", leadingAccessoryView = { GetAvatar(size = Large, drawable.avatar_charlotte_waltson) }, border = BorderType.Bottom, borderInset = XXLarge)
     }
 }
+@Composable
+fun ThreeLineSimpleList(){
+    return Column {
+        ListItem.Item(text = primaryText, subText = "Subtitle", secondarySubText = tertiaryText, leadingAccessoryView = { GetAvatar(size = XLarge, drawable.avatar_daisy_phillips) }, border = BorderType.Bottom, borderInset = XXLarge)
+        ListItem.Item(text = primaryText, subText = "Subtitle", secondarySubText = tertiaryText, leadingAccessoryView = { GetAvatar(size = XLarge, drawable.avatar_elliot_woodward) }, border = BorderType.Bottom, borderInset = XXLarge)
+        ListItem.Item(text = primaryText, subText = "Subtitle", secondarySubText = tertiaryText, leadingAccessoryView = { GetAvatar(size = XLarge, drawable.avatar_charlotte_waltson) }, border = BorderType.Bottom, borderInset = XXLarge)
+    }
+}
 
 @Composable
 fun OneLineListAccessoryViewContent(){
     return Column {
+        ListItem.Item(leadingAccessoryView = { LeftViewThreeRadioButtons() }, text = "", border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { RightViewButton(size = ButtonSize.Small) }, primaryTextLeadingIcons = twoTextIcons20(), primaryTextTrailingIcons = oneTextIcon20(), border = BorderType.Bottom, borderInset = XXLarge)
-        ListItem.Item(leadingAccessoryView = { LeftViewThreeButton() }, text = "", border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewAvatar(size = Small) }, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = "", leadingAccessoryView = { LeftViewThreeIcon()}, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewRadioButton() }, trailingAccessoryView = { RightViewAvatarStack(Small)}, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewRadioButton() }, trailingAccessoryView = { RightViewCheckbox()}, border = BorderType.Bottom, borderInset = XXLarge)
-        ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewThreeButton() }, trailingAccessoryView = { RightViewToggle() }, border = BorderType.Bottom, borderInset = XXLarge)
+        ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewThreeRadioButtons() }, trailingAccessoryView = { RightViewToggle() }, border = BorderType.Bottom, borderInset = XXLarge)
         ListItem.Item(text = primaryText, leadingAccessoryView = { LeftViewAvatar(size = Small) }, border = BorderType.Bottom, borderInset = XXLarge, progressIndicator = {ProgressBar()})
+    }
+}
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun OneLineListAccessoryViewContentMaterial(){
+    return Column {
+        androidx.compose.material.ListItem(text = { "primaryText" }, icon = { LeftViewThreeButton()}, trailing = { RightViewThreeButton()})
+        androidx.compose.material.ListItem(text = { primaryText }, icon = { LeftViewThreeButton()}, trailing = { RightViewCheckbox()})
+        androidx.compose.material.ListItem(text = { primaryText }, icon = { LeftViewThreeButton()}, trailing = { RightViewAvatarStack(
+            size = Small
+        )})
+        androidx.compose.material.ListItem(text = { primaryText }, icon = { LeftViewThreeButton()}, trailing = { RightViewToggle()})
+        androidx.compose.material.ListItem(text = { primaryText }, icon = { LeftViewThreeButton()}, trailing = { RightViewThreeButton()})
     }
 }
 @Composable
@@ -208,6 +232,33 @@ fun LeftViewThreeIcon(){
             themeMode))
         Icon(painter = painterResource(id = drawable.ic_fluent_forward_24_regular), contentDescription = "Forward", tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             themeMode))
+    }
+}
+
+@Composable
+fun LeftViewThreeRadioButtons(){
+    var checked1 by remember { mutableStateOf(false) }
+    var checked2 by remember { mutableStateOf(false) }
+    var checked3 by remember { mutableStateOf(false) }
+    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+        RadioButton(enabled = true,
+            selected = checked1,
+            onClick = {
+                checked1 = !checked1
+            }
+        )
+        RadioButton(enabled = true,
+            selected = checked2,
+            onClick = {
+                checked2 = !checked2
+            }
+        )
+        RadioButton(enabled = true,
+            selected = checked3,
+            onClick = {
+                checked3 = !checked3
+            }
+        )
     }
 }
 @Composable
