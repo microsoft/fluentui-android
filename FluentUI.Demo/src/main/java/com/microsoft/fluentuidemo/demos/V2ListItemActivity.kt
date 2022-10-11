@@ -13,7 +13,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentuidemo.icons.ListItemIcons
-import com.microsoft.fluentui.tokenized.listitem.ChevronTransition
+import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.TextIcons
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
@@ -96,24 +96,24 @@ fun CreateListActivityUI(){
             }
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp), text = "Section description", color = Color(0xFF2886DE))
-                ListItem.SectionDescription(description = "Sample description with the description placed close to the Top with no Action text and no icon", border = BorderType.Bottom, borderInset = XXLarge)
-                ListItem.SectionDescription(description = "Sample description with the description placed close to the Bottom with Icon Accessory and no Action text", leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom, borderInset = XXLarge)
-                ListItem.SectionDescription(description = "Sample description with the description placed close to the Top, with Action text", actionText = true, onActionClick = {}, border = BorderType.Bottom, borderInset = XXLarge)
-                ListItem.SectionDescription(description = "Sample description with the description placed close to the Bottom with Icon accessory and Action text", actionText = true, onActionClick = {}, leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom)
+                ListItem.SectionDescription(description = "Sample description with the description placed at the Top with no Action text and no icon", border = BorderType.Bottom, borderInset = XXLarge)
+                ListItem.SectionDescription(description = "Sample description with the description placed at the Bottom with Icon Accessory and no Action text", leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom, borderInset = XXLarge)
+                ListItem.SectionDescription(description = "Sample description with the description placed at the Top, with Action text", actionText = true, onActionClick = {}, border = BorderType.Bottom, borderInset = XXLarge)
+                ListItem.SectionDescription(description = "Sample description with the description placed at the Bottom with Icon accessory and Action text", actionText = true, onActionClick = {}, leadingAccessoryView = { LeftViewRadioButton()}, descriptionPlacement = Bottom, border = BorderType.Bottom)
             }
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers with chevron", color = Color(0xFF2886DE))
                 Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(title = "One-Line list", enableChevron = true, enableContentOpenCloseTransition = true, chevronOrientation = ChevronTransition(90f, 0f), accessoryTextTitle = "Action", accessoryTextOnClick = {}, trailingAccessoryView = { RightViewThreeButton() }, content = { OneLineSimpleList() }, border = BorderType.Bottom, borderInset = XXLarge)
-                    ListItem.SectionHeader(title = "Two-Line list", style = Subtle, enableChevron = true, enableContentOpenCloseTransition = true, chevronOrientation = ChevronTransition(90f, 0f), content = { TwoLineSimpleList() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "One-Line list", enableChevron = true, enableContentOpenCloseTransition = true, chevronOrientation = ChevronOrientation(90f, 0f), accessoryTextTitle = "Action", accessoryTextOnClick = {}, trailingAccessoryView = { RightViewThreeButton() }, content = { OneLineSimpleList() }, border = BorderType.Bottom)
+                    ListItem.SectionHeader(title = "Two-Line list", style = Subtle, enableChevron = true, enableContentOpenCloseTransition = true, chevronOrientation = ChevronOrientation(90f, 0f), content = { TwoLineSimpleList() }, border = BorderType.Bottom)
                 }
 
             }
             item{
                 Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Section Headers No chevron", color = Color(0xFF2886DE))
                 Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(title = "Two-Line list", enableChevron = false, enableContentOpenCloseTransition = true, trailingAccessoryView = { RightViewToggle() }, content = { TwoLineSimpleList() }, border = BorderType.Bottom, borderInset = XXLarge)
-                    ListItem.SectionHeader(title = "One-Line list no open/close animation", style = Subtle, enableChevron = false, accessoryTextTitle = "Action", accessoryTextOnClick = {}, content = { OneLineSimpleList() }, border = BorderType.Bottom, borderInset = XXLarge)
+                    ListItem.SectionHeader(title = "Two-Line list", enableChevron = false, enableContentOpenCloseTransition = true, trailingAccessoryView = { RightViewToggle() }, content = { TwoLineSimpleList() }, border = BorderType.Bottom)
+                    ListItem.SectionHeader(title = "One-Line list", style = Subtle, enableChevron = false, enableContentOpenCloseTransition = true, accessoryTextTitle = "Action", accessoryTextOnClick = {}, content = { OneLineSimpleList() }, border = BorderType.Bottom)
                 }
 
             }
