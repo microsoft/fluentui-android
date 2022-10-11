@@ -118,10 +118,9 @@ fun CreateListActivityUI(){
 
             }
             item{
-                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "PrimaryText Only Centered", color = Color(0xFF2886DE))
-                ListItem.Item(text = "Action", enableCenterText = true, border = BorderType.Bottom)
-                ListItem.Item(text = "End", enableCenterText = true, border = BorderType.Bottom)
-                ListItem.Item(text = "Continue", enableCenterText = true, border = BorderType.Bottom)
+                Text(modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp), text = "Action Text", color = Color(0xFF2886DE))
+                ListItem.Item(text = "Action", textFlowType = ListItemFlowType.Centered, border = BorderType.Bottom)
+                ListItem.Item(text = "Disabled", textFlowType = ListItemFlowType.DisabledCentered, border = BorderType.Bottom)
             }
         }
     }

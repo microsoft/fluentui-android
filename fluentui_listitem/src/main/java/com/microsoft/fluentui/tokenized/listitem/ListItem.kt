@@ -5,7 +5,6 @@ import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -42,8 +41,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubText
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubText
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
@@ -58,12 +57,14 @@ class ListItem {
 
         private fun Modifier.clickAndSemanticsModifier(
             interactionSource: MutableInteractionSource,
-            onClick: () -> Unit
+            onClick: () -> Unit,
+            enabled: Boolean
         ): Modifier = composed {
             Modifier.clickable(
                 interactionSource = interactionSource,
                 indication = rememberRipple(),
                 onClickLabel = null,
+                enabled = enabled,
                 role = Role.Tab,
                 onClick = onClick
             )
@@ -169,7 +170,8 @@ class ListItem {
          * @param text Primary text.
          * @param subText Optional secondaryText or a subtitle.
          * @param secondarySubText Optional tertiary text or a footer.
-         * @param enableCenterText Optional boolean to align text in the center.
+         * @param textFlowType Optional [ListItemFlowType] to align text in the center or start at the lead.
+         * @param enabled Optional enable/disable List item
          * @param textMaxLines Optional max visible lines for primary text.
          * @param subTextMaxLines Optional max visible lines for secondary text.
          * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
@@ -191,7 +193,8 @@ class ListItem {
             text: String,
             subText: String? = null,
             secondarySubText: String? = null,
-            enableCenterText: Boolean = false,
+            textFlowType: ListItemFlowType = ListItemFlowType.Regular,
+            enabled: Boolean = true,
             textMaxLines: Int = 1,
             subTextMaxLines: Int = 1,
             secondarySubTextMaxLines: Int = 1,
@@ -231,23 +234,23 @@ class ListItem {
                 )
                 val cellHeight = getListItemTokens().cellHeight(listItemType = listItemType)
                 val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
-                val subLabelSize =
-                    getListItemTokens().textSize(textType = SubLabelText)
-                var secondarySubLabelSize =
-                    getListItemTokens().textSize(textType = SecondarySubLabelText)
+                val subTextSize =
+                    getListItemTokens().textSize(textType = SubText)
+                var secondarySubTextSize =
+                    getListItemTokens().textSize(textType = SecondarySubText)
                 val textColor = getColorByState(
-                    stateData = getListItemTokens().textColor(textType = ListTextType.Text),
-                    enabled = true,
+                    stateData = getListItemTokens().textColor(textType = ListTextType.Text, textFlowType),
+                    enabled = enabled,
                     interactionSource = interactionSource
                 )
                 val subLabelColor = getColorByState(
-                    stateData = getListItemTokens().textColor(textType = SubLabelText),
-                    enabled = true,
+                    stateData = getListItemTokens().textColor(textType = SubText, textFlowType),
+                    enabled = enabled,
                     interactionSource = interactionSource
                 )
                 var secondarySubLabelColor = getColorByState(
-                    stateData = getListItemTokens().textColor(textType = SecondarySubLabelText),
-                    enabled = true,
+                    stateData = getListItemTokens().textColor(textType = SecondarySubText, textFlowType),
+                    enabled = enabled,
                     interactionSource = interactionSource
                 )
                 val horizontalPadding = getListItemTokens().padding(Medium)
@@ -268,10 +271,10 @@ class ListItem {
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
                         .borderModifier(border, borderColor, borderSize, borderInset)
-                        .clickAndSemanticsModifier(interactionSource, onClick = onClick ?: {}),
+                        .clickAndSemanticsModifier(interactionSource, onClick = onClick ?: {}, enabled &&(textFlowType != ListItemFlowType.DisabledCentered)),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (leadingAccessoryView != null) {
+                    if (leadingAccessoryView != null && textFlowType == ListItemFlowType.Regular) {
                         Box(
                             Modifier.padding(start = horizontalPadding),
                             contentAlignment = Alignment.Center
@@ -280,7 +283,7 @@ class ListItem {
                         }
                     }
                     var contentAlignment =
-                        if (enableCenterText) Alignment.Center else Alignment.CenterStart
+                        if (textFlowType == ListItemFlowType.Regular) Alignment.CenterStart else Alignment.Center
                     Box(
                         Modifier
                             .padding(start = horizontalPadding, end = horizontalPadding)
@@ -307,12 +310,12 @@ class ListItem {
                                 }
                             }
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if (subText != null) {
+                                if (subText != null && textFlowType == ListItemFlowType.Regular) {
                                     Row {
                                         Text(
                                             text = subText,
-                                            fontSize = subLabelSize.fontSize.size,
-                                            fontWeight = subLabelSize.weight,
+                                            fontSize = subTextSize.fontSize.size,
+                                            fontWeight = subTextSize.weight,
                                             color = subLabelColor,
                                             maxLines = subTextMaxLines,
                                             overflow = TextOverflow.Ellipsis
@@ -320,37 +323,39 @@ class ListItem {
                                     }
                                 }
                             }
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null) {
-                                    Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
-                                        progressIndicator()
-                                    }
-                                }else{
-                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextLeadingIcons != null){
-                                        secondarySubTextLeadingIcons.icon1()
-                                        secondarySubTextLeadingIcons.icon2?.let { it() }
-                                    }
-                                    if (secondarySubText != null) {
-                                        Row(modifier.padding(top = 1.dp)) {
-                                            Text(
-                                                text = secondarySubText,
-                                                fontSize = secondarySubLabelSize.fontSize.size,
-                                                fontWeight = secondarySubLabelSize.weight,
-                                                color = secondarySubLabelColor,
-                                                maxLines = secondarySubTextMaxLines,
-                                                overflow = TextOverflow.Ellipsis
-                                            )
+                            if(textFlowType == ListItemFlowType.Regular){
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null) {
+                                        Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
+                                            progressIndicator()
                                         }
-                                    }
-                                    if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextTailingIcons != null){
-                                        secondarySubTextTailingIcons.icon1()
-                                        secondarySubTextTailingIcons.icon2?.let { it() }
+                                    }else{
+                                        if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextLeadingIcons != null){
+                                            secondarySubTextLeadingIcons.icon1()
+                                            secondarySubTextLeadingIcons.icon2?.let { it() }
+                                        }
+                                        if (secondarySubText != null) {
+                                            Row(modifier.padding(top = 1.dp)) {
+                                                Text(
+                                                    text = secondarySubText,
+                                                    fontSize = secondarySubTextSize.fontSize.size,
+                                                    fontWeight = secondarySubTextSize.weight,
+                                                    color = secondarySubLabelColor,
+                                                    maxLines = secondarySubTextMaxLines,
+                                                    overflow = TextOverflow.Ellipsis
+                                                )
+                                            }
+                                        }
+                                        if((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextTailingIcons != null){
+                                            secondarySubTextTailingIcons.icon1()
+                                            secondarySubTextTailingIcons.icon2?.let { it() }
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                    if (progressIndicator == null && trailingAccessoryView != null) {
+                    if (progressIndicator == null && trailingAccessoryView != null && textFlowType == ListItemFlowType.Regular) {
                         Box(
                             Modifier.padding(end = horizontalPadding),
                             contentAlignment = Alignment.CenterEnd
@@ -371,6 +376,7 @@ class ListItem {
          * @param titleMaxLines Optional max visible lines for title.
          * @param accessoryTextTitle Optional accessory text.
          * @param accessoryTextOnClick Optional onClick action for accessory text.
+         * @param enabled Optional enable/disable List item
          * @param style [SectionHeaderStyle] Section header style.
          * @param enableChevron Adds a chevron icon before text
          * @param chevronOrientation Pass [ChevronOrientation] to apply chevron icon transition when clicked on the list item. Defaults to static (enter and exit transition are same).
@@ -391,6 +397,7 @@ class ListItem {
             titleMaxLines: Int = 1,
             accessoryTextTitle: String? = null,
             accessoryTextOnClick: (() -> Unit)? = null,
+            enabled: Boolean = true,
             listItemTokens: ListItemTokens? = null,
             style: SectionHeaderStyle = SectionHeaderStyle.Standard,
             enableChevron: Boolean = true,
@@ -455,10 +462,10 @@ class ListItem {
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
                         .background(backgroundColor)
-                        .borderModifier(border, borderColor, borderSize, borderInset),
-                    onClick = {
-                        expandedState = !expandedState
-                    },
+                        .clickAndSemanticsModifier(
+                            interactionSource,
+                            onClick = {expandedState = !expandedState}, enabled)
+                        .borderModifier(border, borderColor, borderSize, borderInset)
                 ) {
                     Column(
                         Modifier
@@ -539,6 +546,7 @@ class ListItem {
          *
          * @param modifier Optional modifier for List item.
          * @param description description text.
+         * @param enabled Optional enable/disable List item
          * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
          * @param actionText Option boolean to append "Action" text button to the description text.
          * @param descriptionPlacement [TextPlacement] Enum value for placing the description text in the list item.
@@ -554,6 +562,7 @@ class ListItem {
         fun SectionDescription(
             modifier: Modifier = Modifier,
             description: String,
+            enabled: Boolean = true,
             listItemTokens: ListItemTokens? = null,
             actionText: Boolean = false,
             descriptionPlacement: TextPlacement = Top,
@@ -608,7 +617,7 @@ class ListItem {
                         .borderModifier(border, borderColor, borderSize, borderInset)
                         .clickAndSemanticsModifier(
                             interactionSource,
-                            onClick = onClick ?: {}), verticalAlignment = descriptionAlignment
+                            onClick = onClick ?: {}, enabled), verticalAlignment = descriptionAlignment
                 ) {
                     if (leadingAccessoryView != null) {
                         Box(

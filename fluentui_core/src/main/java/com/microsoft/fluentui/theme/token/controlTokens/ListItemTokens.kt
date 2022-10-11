@@ -11,9 +11,7 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1Pressed
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground2
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground3
+import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.*
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1Strong
@@ -31,8 +29,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.SectionHead
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.AccessoryText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.ActionText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.DescriptionText
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubLabelText
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubLabelText
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubText
+import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.Text
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
@@ -49,8 +47,8 @@ enum class ListItemType {
 }
 enum class ListTextType {
     Text,
-    SubLabelText,
-    SecondarySubLabelText,
+    SubText,
+    SecondarySubText,
     AccessoryText,
     ActionText,
     DescriptionText
@@ -77,6 +75,12 @@ enum class BorderType {
 enum class TextPlacement {
     Top,
     Bottom
+}
+
+enum class ListItemFlowType {
+    Regular,
+    Centered,
+    DisabledCentered
 }
 
 @Parcelize
@@ -113,10 +117,10 @@ open class ListItemTokens : ControlToken, Parcelable {
             )
         )
     }
-
+    
     @Composable
     open fun textColor(textType: ListTextType): StateColor {
-        return when (textType) {
+        return when(textType){
             Text ->
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
@@ -130,13 +134,13 @@ open class ListItemTokens : ControlToken, Parcelable {
                         themeMode = FluentTheme.themeMode
                     )
                 )
-            SubLabelText ->
+            SubText ->
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                         themeMode = FluentTheme.themeMode
                     )
                 )
-            SecondarySubLabelText ->
+            SecondarySubText ->
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                         themeMode = FluentTheme.themeMode
@@ -149,6 +153,23 @@ open class ListItemTokens : ControlToken, Parcelable {
             )
             DescriptionText -> StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
+        }
+    }
+
+    @Composable
+    open fun textColor(textType: ListTextType, flow: ListItemFlowType): StateColor {
+        return when (flow) {
+            ListItemFlowType.Regular -> textColor(textType = textType)
+            ListItemFlowType.Centered -> StateColor(
+                rest = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
+            ListItemFlowType.DisabledCentered -> StateColor(
+                rest = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
@@ -177,8 +198,8 @@ open class ListItemTokens : ControlToken, Parcelable {
         return when (textType) {
             Text -> FluentTheme.aliasTokens.typography[Body1]
             AccessoryText -> FluentTheme.aliasTokens.typography[Body1]
-            SubLabelText -> FluentTheme.aliasTokens.typography[Body2]
-            SecondarySubLabelText -> FluentTheme.aliasTokens.typography[Caption1]
+            SubText -> FluentTheme.aliasTokens.typography[Body2]
+            SecondarySubText -> FluentTheme.aliasTokens.typography[Caption1]
             DescriptionText -> FluentTheme.aliasTokens.typography[Caption1]
             ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
         }

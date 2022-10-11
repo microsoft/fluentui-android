@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -27,6 +28,9 @@ import com.microsoft.fluentui.tokenized.persona.PersonaView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
+import com.microsoft.fluentuidemo.icons.ListItemIcons
+import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
+import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -50,7 +54,7 @@ class V2PersonaListActivity : DemoActivity() {
 
     @Composable
     private fun trailingIcon(){
-        Icon(painter = painterResource(id = drawable.ic_chevron_right), contentDescription = "Flag", tint = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+        Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron), contentDescription = "Flag", tint = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             FluentTheme.themeMode
         ))
     }
