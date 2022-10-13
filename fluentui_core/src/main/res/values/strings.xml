@@ -30,8 +30,14 @@
     <string name="fluentui_brand">Brand</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">Chevron</string>
+    <!--types of control -->
     <string name="fluentui_large">Large</string>
     <string name="fluentui_medium">Medium</string>
     <string name="fluentui_small">Small</string>
+    <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">Subtitle</string>
+    <!-- Durations for Snackbar -->
+    <string name="fluentui_short">Short</string>"
+    <string name="fluentui_long">Long</string>"
+    <string name="fluentui_indefinite">Indefinite</string>"
 </resources>

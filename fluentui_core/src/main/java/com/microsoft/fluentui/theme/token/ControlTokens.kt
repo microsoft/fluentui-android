@@ -39,6 +39,7 @@ class ControlTokens {
         SearchBarPersonaChip,
         SearchBar,
         Shimmer,
+        Snackbar,
         TabBar,
         TabItem,
         ToggleSwitch
@@ -71,6 +72,7 @@ class ControlTokens {
                 ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
+                ControlType.Snackbar -> SnackbarTokens()
                 ControlType.TabBar -> TabBarTokens()
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()

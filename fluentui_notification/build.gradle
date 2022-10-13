@@ -48,6 +48,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':fluentui_core')
+    implementation project(':fluentui_controls')
 
     implementation 'androidx.core:core-ktx:1.7.0'
 

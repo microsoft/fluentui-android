@@ -47,6 +47,7 @@ const val PERSONA_VIEW = "PersonaView"
 const val POPUP_MENU = "PopupMenu"
 const val PROGRESS = "Progress"
 const val SNACKBAR = "Snackbar"
+const val V2SNACKBAR = "V2 Snackbar"
 const val TAB_LAYOUT = "TabLayout"
 const val TEMPLATE_VIEW = "TemplateView"
 const val TOOLTIP = "Tooltip"
@@ -70,6 +71,7 @@ val DEMOS = arrayListOf(
     Demo(V2PROGRESS, V2ProgressActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
