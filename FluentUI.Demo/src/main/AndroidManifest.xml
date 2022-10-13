@@ -1,8 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
-
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.microsoft.fluentuidemo">
 
@@ -35,6 +31,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ButtonsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2CardNudgeActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -73,6 +70,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TabLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />

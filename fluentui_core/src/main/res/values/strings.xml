@@ -28,10 +28,24 @@
     <string name="fluentui_neutral">Neutral</string>
     <!-- Describes the type - Brand-->
     <string name="fluentui_brand">Brand</string>
+    <!-- Describes the type - Contrast-->
+    <string name="fluentui_contrast">Contrast</string>
+    <!-- Describes the type - Accent-->
+    <string name="fluentui_accent">Accent</string>
+    <!-- Describes the type - Warning-->
+    <string name="fluentui_warning">Warning</string>
+    <!-- Describes the type - Danger-->
+    <string name="fluentui_danger">Danger</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">Chevron</string>
+    <!--types of control -->
     <string name="fluentui_large">Large</string>
     <string name="fluentui_medium">Medium</string>
     <string name="fluentui_small">Small</string>
+    <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">Subtitle</string>
+    <!-- Durations for Snackbar -->
+    <string name="fluentui_short">Short</string>"
+    <string name="fluentui_long">Long</string>"
+    <string name="fluentui_indefinite">Indefinite</string>"
 </resources>
