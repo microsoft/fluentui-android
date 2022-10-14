@@ -9,6 +9,7 @@ import androidx.compose.ui.graphics.Color
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
+import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1Pressed
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.*
@@ -125,6 +126,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
                         themeMode = FluentTheme.themeMode
+                    ),
+                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                        themeMode = FluentTheme.themeMode
                     )
                 )
 
@@ -132,11 +136,17 @@ open class ListItemTokens : ControlToken, Parcelable {
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                         themeMode = FluentTheme.themeMode
+                    ),
+                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                        themeMode = FluentTheme.themeMode
                     )
                 )
             SubText ->
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                        themeMode = FluentTheme.themeMode
+                    ),
+                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
                         themeMode = FluentTheme.themeMode
                     )
                 )
@@ -144,15 +154,24 @@ open class ListItemTokens : ControlToken, Parcelable {
                 StateColor(
                     rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                         themeMode = FluentTheme.themeMode
+                    ),
+                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                        themeMode = FluentTheme.themeMode
                     )
                 )
             ActionText -> StateColor(
                 rest = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
                     themeMode = FluentTheme.themeMode
+                ),
+                disabled = FluentTheme.aliasTokens.brandForegroundColor[BrandForegroundDisabled].value(
+                    themeMode = FluentTheme.themeMode
                 )
             )
             DescriptionText -> StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
+                    themeMode = FluentTheme.themeMode
+                ),
+                disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
                     themeMode = FluentTheme.themeMode
                 )
             )

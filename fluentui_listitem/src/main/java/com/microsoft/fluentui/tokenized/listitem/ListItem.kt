@@ -439,9 +439,17 @@ object ListItem {
                 getListItemTokens().textSize(textType = ListTextType.Text, style = style)
             val actionTextSize =
                 getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
-            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
-            val actionTextColor =
-                getListItemTokens().textColor(textType = ListTextType.ActionText)
+            val textColor = getColorByState(
+                stateData = getListItemTokens().textColor(textType = ListTextType.Text),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
+            val actionTextColor = getColorByState(
+                stateData = getListItemTokens().textColor(textType = ListTextType.ActionText),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
+
             val horizontalPadding = getListItemTokens().padding(Medium)
             val verticalPadding = getListItemTokens().padding(size = XSmall)
             val borderSize = getListItemTokens().borderSize().value
@@ -451,7 +459,7 @@ object ListItem {
                 }
             val borderColor = getColorByState(
                 stateData = getListItemTokens().borderColor(),
-                enabled = true,
+                enabled = enabled,
                 interactionSource = interactionSource
             )
             val chevronTint = getListItemTokens().chevronTint()
@@ -492,7 +500,6 @@ object ListItem {
 
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 if (enableChevron) {
-                                    val bitmap = ListItemIcons.Chevron
                                     Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
                                         contentDescription = "Chevron",
                                         modifier
@@ -504,7 +511,7 @@ object ListItem {
                                     text = title,
                                     fontSize = textSize.fontSize.size,
                                     fontWeight = textSize.weight,
-                                    color = textColor.rest,
+                                    color = textColor,
                                     maxLines = titleMaxLines,
                                     overflow = TextOverflow.Ellipsis
                                 )
@@ -518,7 +525,7 @@ object ListItem {
                                         role = Role.Button,
                                         onClick = accessoryTextOnClick ?: {}
                                     ),
-                                    color = actionTextColor.rest,
+                                    color = actionTextColor,
                                     fontSize = actionTextSize.fontSize.size,
                                     fontWeight = actionTextSize.weight)
                             }
@@ -593,10 +600,16 @@ object ListItem {
             val textSize = getListItemTokens().textSize(textType = ListTextType.DescriptionText)
             val actionTextSize =
                 getListItemTokens().textSize(textType = ListTextType.ActionText)
-            val textColor =
-                getListItemTokens().textColor(textType = ListTextType.DescriptionText)
-            val actionTextColor =
-                getListItemTokens().textColor(textType = ListTextType.ActionText)
+            val textColor = getColorByState(
+                stateData = getListItemTokens().textColor(textType = ListTextType.DescriptionText),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
+            val actionTextColor = getColorByState(
+                stateData = getListItemTokens().textColor(textType = ListTextType.ActionText),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
             val horizontalPadding = getListItemTokens().padding(Medium)
             val borderSize = getListItemTokens().borderSize().value
             val borderInset =
@@ -605,7 +618,7 @@ object ListItem {
                 }
             val borderColor = getColorByState(
                 stateData = getListItemTokens().borderColor(),
-                enabled = true,
+                enabled = enabled,
                 interactionSource = interactionSource
             )
             val descriptionAlignment =
@@ -646,13 +659,13 @@ object ListItem {
                             actionText = actionText,
                             onClick = onActionClick ?: {},
                             actionTextSize = actionTextSize,
-                            actionTextColor = actionTextColor.rest,
-                            descriptionTextColor = textColor.rest,
+                            actionTextColor = actionTextColor,
+                            descriptionTextColor = textColor,
                             descriptionTextSize = textSize)
                     } else {
                         Text(
                             text = description,
-                            color = textColor.rest,
+                            color = textColor,
                             fontSize = textSize.fontSize.size,
                             fontWeight = textSize.weight
                         )

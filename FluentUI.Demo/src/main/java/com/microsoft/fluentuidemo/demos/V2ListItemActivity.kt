@@ -8,7 +8,11 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Icon
 import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.SnackbarResult
 import androidx.compose.material.Text
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,6 +26,8 @@ import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemFlowType.Centered
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemFlowType.DisabledCentered
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
 import com.microsoft.fluentui.tokenized.controls.Button
@@ -40,6 +46,8 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 class V2ListItemActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -69,187 +77,189 @@ const val tertiaryText = "Footer, tertiary text"
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CreateListActivityUI() {
-    val lazyListState = rememberLazyListState()
-    val scope = rememberCoroutineScope()
-    Box(
-        Modifier
-            .fillMaxSize()
-    ) {
-        LazyColumn {
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                    text = "One-Line list with Text icons",
-                    color = Color(0xFF2886DE)
-                )
-                OneLineListAccessoryViewContent()
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                    text = "Two-Line list with Text icons",
-                    color = Color(0xFF2886DE)
-                )
-                TwoLineListAccessoryViewContent()
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                    text = "Three-Line list with Text icons",
-                    color = Color(0xFF2886DE)
-                )
-                ThreeLineListAccessoryViewContent()
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                    text = "Text Only",
-                    color = Color(0xFF2886DE)
-                )
-                ListItem.Item(
-                    text = primaryText,
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge,
-                    primaryTextTrailingIcons = oneTextIcon20()
-                )
-                ListItem.Item(
-                    text = primaryText,
-                    subText = secondaryText,
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge,
-                    secondarySubTextLeadingIcons = oneTextIcon16()
-                )
-                ListItem.Item(
-                    text = primaryText,
-                    subText = secondaryText,
-                    secondarySubText = tertiaryText,
-                    border = BorderType.Bottom,
-                    secondarySubTextTailingIcons = twoTextIcons16()
-                )
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                    text = "Wrapped text list",
-                    color = Color(0xFF2886DE)
-                )
-                ListItem.Item(
-                    text = sampleText,
-                    textMaxLines = 4,
-                    leadingAccessoryView = { LeftViewFolderIcon40() },
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.Item(
-                    text = sampleText,
-                    subText = sampleText,
-                    textMaxLines = 4,
-                    subTextMaxLines = 4,
-                    leadingAccessoryView = { LeftViewFolderIcon40() },
-                    trailingAccessoryView = { RightViewButton(ButtonSize.Small) },
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.Item(
-                    text = sampleText,
-                    subText = sampleText,
-                    secondarySubText = sampleText,
-                    textMaxLines = 4,
-                    subTextMaxLines = 4,
-                    secondarySubTextMaxLines = 4,
-                    leadingAccessoryView = { LeftViewFolderIcon40() },
-                    trailingAccessoryView = { RightViewText(text = "Value") },
-                    border = BorderType.Bottom
-                )
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                    text = "Section description",
-                    color = Color(0xFF2886DE)
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Top with no Action text and no icon",
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Bottom with Icon Accessory and no Action text",
-                    leadingAccessoryView = { LeftViewRadioButton() },
-                    descriptionPlacement = Bottom,
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Top, with Action text",
-                    actionText = "Action",
-                    onActionClick = {},
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Bottom with Icon accessory and Action text",
-                    actionText = "More",
-                    onActionClick = {},
-                    leadingAccessoryView = { LeftViewRadioButton() },
-                    descriptionPlacement = Bottom,
-                    border = BorderType.Bottom
-                )
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                    text = "Section Headers with/without chevron",
-                    color = Color(0xFF2886DE)
-                )
-                Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(
-                        title = "One-Line list",
-                        enableChevron = true,
-                        enableContentOpenCloseTransition = true,
-                        chevronOrientation = ChevronOrientation(90f, 0f),
-                        accessoryTextTitle = "Action",
-                        accessoryTextOnClick = {},
-                        trailingAccessoryView = { RightViewThreeButton() },
-                        content = { OneLineSimpleList() },
-                        border = BorderType.Bottom
+    val scaffoldState: ScaffoldState = rememberScaffoldState()
+    val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    Scaffold(scaffoldState = scaffoldState) {
+        Box(
+            Modifier
+                .fillMaxSize()
+        ) {
+            LazyColumn {
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
+                        text = "One-Line list with Text icons",
+                        color = Color(0xFF2886DE)
                     )
-                    ListItem.SectionHeader(
-                        title = "Two-Line list",
-                        style = Subtle,
-                        enableChevron = true,
-                        enableContentOpenCloseTransition = true,
-                        chevronOrientation = ChevronOrientation(90f, 0f),
-                        content = { TwoLineSimpleList() },
-                        border = BorderType.Bottom
+                    OneLineListAccessoryViewContent(coroutineScope, scaffoldState)
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
+                        text = "Two-Line list with Text icons",
+                        color = Color(0xFF2886DE)
                     )
-                    ListItem.SectionHeader(
-                        title = "Two-Line list",
-                        enableChevron = false,
-                        enableContentOpenCloseTransition = true,
-                        trailingAccessoryView = { RightViewToggle() },
-                        content = { ThreeLineSimpleList() },
+                    TwoLineListAccessoryViewContent(coroutineScope, scaffoldState)
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
+                        text = "Three-Line list with Text icons",
+                        color = Color(0xFF2886DE)
+                    )
+                    ThreeLineListAccessoryViewContent(coroutineScope, scaffoldState)
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
+                        text = "Text Only",
+                        color = Color(0xFF2886DE)
+                    )
+                    ListItem.Item(
+                        text = primaryText,
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge,
+                        primaryTextTrailingIcons = oneTextIcon20()
+                    )
+                    ListItem.Item(
+                        text = primaryText,
+                        subText = secondaryText,
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge,
+                        secondarySubTextLeadingIcons = oneTextIcon16()
+                    )
+                    ListItem.Item(
+                        text = primaryText,
+                        subText = secondaryText,
+                        secondarySubText = tertiaryText,
+                        border = BorderType.Bottom,
+                        secondarySubTextTailingIcons = twoTextIcons16()
+                    )
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
+                        text = "Wrapped text list",
+                        color = Color(0xFF2886DE)
+                    )
+                    ListItem.Item(
+                        text = sampleText,
+                        textMaxLines = 4,
+                        leadingAccessoryView = { LeftViewFolderIcon40() },
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge
+                    )
+                    ListItem.Item(
+                        text = sampleText,
+                        subText = sampleText,
+                        textMaxLines = 4,
+                        subTextMaxLines = 4,
+                        leadingAccessoryView = { LeftViewFolderIcon40() },
+                        trailingAccessoryView = { RightViewButton(ButtonSize.Small, coroutineScope, scaffoldState) },
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge
+                    )
+                    ListItem.Item(
+                        text = sampleText,
+                        subText = sampleText,
+                        secondarySubText = sampleText,
+                        textMaxLines = 4,
+                        subTextMaxLines = 4,
+                        secondarySubTextMaxLines = 4,
+                        leadingAccessoryView = { LeftViewFolderIcon40() },
+                        trailingAccessoryView = { RightViewText(text = "Value") },
                         border = BorderType.Bottom
                     )
                 }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
+                        text = "Section description",
+                        color = Color(0xFF2886DE)
+                    )
+                    ListItem.SectionDescription(
+                        description = "Sample description with the description placed at the Top with no Action text and no icon",
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge
+                    )
+                    ListItem.SectionDescription(
+                        description = "Sample description with the description placed at the Bottom with Icon Accessory and no Action text",
+                        leadingAccessoryView = { LeftViewRadioButton() },
+                        descriptionPlacement = Bottom,
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge
+                    )
+                    ListItem.SectionDescription(
+                        description = "Sample description with the description placed at the Top, with Action text",
+                        actionText = "Action",
+                        onActionClick = {},
+                        border = BorderType.Bottom,
+                        borderInset = XXLarge
+                    )
+                    ListItem.SectionDescription(
+                        description = "Sample description with the description placed at the Bottom with Icon accessory and Action text",
+                        actionText = "More",
+                        onActionClick = {},
+                        leadingAccessoryView = { LeftViewRadioButton() },
+                        descriptionPlacement = Bottom,
+                        border = BorderType.Bottom
+                    )
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
+                        text = "Section Headers with/without chevron",
+                        color = Color(0xFF2886DE)
+                    )
+                    Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
+                        ListItem.SectionHeader(
+                            title = "One-Line list",
+                            enableChevron = true,
+                            enableContentOpenCloseTransition = true,
+                            chevronOrientation = ChevronOrientation(90f, 0f),
+                            accessoryTextTitle = "Action",
+                            accessoryTextOnClick = {},
+                            trailingAccessoryView = { RightViewThreeButton() },
+                            content = { OneLineSimpleList() },
+                            border = BorderType.Bottom
+                        )
+                        ListItem.SectionHeader(
+                            title = "Two-Line list",
+                            style = Subtle,
+                            enableChevron = true,
+                            enableContentOpenCloseTransition = true,
+                            chevronOrientation = ChevronOrientation(90f, 0f),
+                            content = { TwoLineSimpleList() },
+                            border = BorderType.Bottom
+                        )
+                        ListItem.SectionHeader(
+                            title = "Two-Line list",
+                            enableChevron = false,
+                            enableContentOpenCloseTransition = true,
+                            trailingAccessoryView = { RightViewToggle() },
+                            content = { ThreeLineSimpleList() },
+                            border = BorderType.Bottom
+                        )
+                    }
 
-            }
-            item {
-                Text(
-                    modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                    text = "Action Text",
-                    color = Color(0xFF2886DE)
-                )
-                ListItem.Item(
-                    text = "Action",
-                    textFlowType = ListItemFlowType.Centered,
-                    border = BorderType.Bottom
-                )
-                ListItem.Item(
-                    text = "Disabled",
-                    textFlowType = ListItemFlowType.DisabledCentered,
-                    border = BorderType.Bottom
-                )
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
+                        text = "Action Text",
+                        color = Color(0xFF2886DE)
+                    )
+                    ListItem.Item(
+                        text = "Action",
+                        textFlowType = Centered,
+                        border = BorderType.Bottom
+                    )
+                    ListItem.Item(
+                        text = "Disabled",
+                        textFlowType = DisabledCentered,
+                        border = BorderType.Bottom
+                    )
+                }
             }
         }
     }
@@ -337,7 +347,7 @@ fun ThreeLineSimpleList() {
 }
 
 @Composable
-fun OneLineListAccessoryViewContent() {
+fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -348,7 +358,7 @@ fun OneLineListAccessoryViewContent() {
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { RightViewButton(size = ButtonSize.Small) },
+            leadingAccessoryView = { RightViewButton(size = ButtonSize.Small, coroutineScope, scaffoldState) },
             primaryTextLeadingIcons = twoTextIcons20(),
             primaryTextTrailingIcons = oneTextIcon20(),
             border = BorderType.Bottom,
@@ -384,7 +394,7 @@ fun OneLineListAccessoryViewContent() {
 }
 
 @Composable
-fun TwoLineListAccessoryViewContent() {
+fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -419,7 +429,7 @@ fun TwoLineListAccessoryViewContent() {
             leadingAccessoryView = { LeftViewFolderIcon40() },
             secondarySubTextLeadingIcons = twoTextIcons16(),
             secondarySubTextTailingIcons = twoTextIcons16(),
-            trailingAccessoryView = { RightViewButton(ButtonSize.Small) },
+            trailingAccessoryView = { RightViewButton(ButtonSize.Small, coroutineScope, scaffoldState) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -454,7 +464,7 @@ fun TwoLineListAccessoryViewContent() {
 }
 
 @Composable
-fun ThreeLineListAccessoryViewContent() {
+fun ThreeLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -473,7 +483,7 @@ fun ThreeLineListAccessoryViewContent() {
             subText = secondaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
-            trailingAccessoryView = { RightViewButton(ButtonSize.Small) },
+            trailingAccessoryView = { RightViewButton(ButtonSize.Small, coroutineScope, scaffoldState) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -684,10 +694,10 @@ fun LeftViewFolderIcon40() {
 }
 
 @Composable
-fun RightViewButton(size: ButtonSize) {
+fun RightViewButton(size: ButtonSize, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
     return Button(
         text = "Text",
-        onClick = { /*TODO*/ },
+        onClick = { onClick("button", coroutineScope, scaffoldState) },
         size = size,
         style = ButtonStyle.OutlinedButton
     )
@@ -713,4 +723,17 @@ fun RightViewText(text: String) {
 @Composable
 fun ProgressBar() {
     LinearProgressIndicator()
+}
+
+fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState){
+    scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
+    coroutineScope.launch {
+        val result = scaffoldState.snackbarHostState.showSnackbar(
+            message = "Clicked on $text",
+            actionLabel = "Close"
+        )
+        when(result){
+            SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
+        }
+    }
 }
