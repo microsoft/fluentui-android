@@ -110,7 +110,7 @@ open class SwipeableState<T>(
     // current animation target, if animating, otherwise null
     private val animationTarget = mutableStateOf<Float?>(null)
 
-    internal var anchors by mutableStateOf(emptyMap<Float, T>())
+    var anchors by mutableStateOf(emptyMap<Float, T>())
 
     private val latestNonEmptyAnchorsFlow: Flow<Map<Float, T>> =
             snapshotFlow { anchors }

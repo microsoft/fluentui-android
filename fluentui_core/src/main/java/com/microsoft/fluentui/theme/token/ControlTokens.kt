@@ -17,6 +17,7 @@ class ControlTokens {
     enum class ControlType {
         Avatar,
         AvatarGroup,
+        BottomSheet,
         Button,
         CheckBox,
         ContextualCommandBar,
@@ -31,6 +32,7 @@ class ControlTokens {
             when (token) {
                 ControlType.Avatar -> AvatarTokens()
                 ControlType.AvatarGroup -> AvatarGroupTokens()
+                ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
