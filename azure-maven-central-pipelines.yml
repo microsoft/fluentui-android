@@ -35,6 +35,17 @@ jobs:
         sonarQubeRunAnalysis: false
         spotBugsAnalysis: false
 
+    - task: Gradle@2
+      displayName: Generate testApk
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'assembleAndroidTest'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '$(jdkVersion)'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
+
     - task: CopyFiles@2
       displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
       inputs:
@@ -48,27 +59,6 @@ jobs:
         targetPath: '$(build.artifactstagingdirectory)'
         artifact: 'Build'
         publishLocation: 'pipeline'
-    - task: Gradle@2
-      displayName: Unit tests
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'testDevelopmentReleaseUnitTest'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        sonarQubeRunAnalysis: false
-        spotBugsAnalysis: false
-
-    - task: Gradle@2
-      displayName: Generate testApk
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'assembletAndroidTest'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        sonarQubeRunAnalysis: false
-        spotBugsAnalysis: false
 
     - task: Gradle@2
       displayName: Hydra Lab UI test
@@ -78,18 +68,3 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         publishJUnitResults: false
-    
-    
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-      inputs:
-        SourceFolder: '$(build.sourcesdirectory)'
-        Contents: |
-         **
-        TargetFolder: '$(build.artifactstagingdirectory)'
-    
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(build.artifactstagingdirectory)'
-        artifact: 'Build'
-        publishLocation: 'pipeline'
