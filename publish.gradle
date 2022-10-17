@@ -24,6 +24,7 @@ project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
             maven {
+                name = "local"
                 url rootProject.buildDir.path + '/artifacts'
             }
             maven {
