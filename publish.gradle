@@ -26,6 +26,13 @@ project.ext.publishingFunc = { artifactIdName ->
             maven {
                 url rootProject.buildDir.path + '/artifacts'
             }
+            maven {
+                url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/TestFluent/maven/v1'
+                credentials {
+                    username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
+                    password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                }
+            }
         }
         if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
             println("Artifact "+ artifactIdName + "already exists with the same name. Skipping publish")
