@@ -174,7 +174,7 @@ object ListItem {
      * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      * @param leadingAccessoryView Optional composable leading accessory view.
      * @param trailingAccessoryView Optional composable trailing accessory view.
      *
@@ -199,9 +199,9 @@ object ListItem {
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        listItemTokens: ListItemTokens? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        listItemTokens: ListItemTokens? = null
     ) {
 
         val token = listItemTokens
@@ -213,10 +213,6 @@ object ListItem {
                 TwoLine
             } else {
                 ThreeLine
-            }
-            var isTertiaryTextIconsRequired = false
-            if (listItemType == TwoLine && subText == null) {
-                isTertiaryTextIconsRequired = true
             }
             val backgroundColor = getColorByState(
                 stateData = getListItemTokens().backgroundColor(),
@@ -325,12 +321,12 @@ object ListItem {
                         }
                         if (textAlignment == ListItemTextAlignment.Regular) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null) {
+                                if (progressIndicator != null) {
                                     Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
                                         progressIndicator()
                                     }
                                 } else {
-                                    if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextLeadingIcons != null) {
+                                    if (secondarySubTextLeadingIcons != null) {
                                         secondarySubTextLeadingIcons.icon1()
                                         secondarySubTextLeadingIcons.icon2?.let { it() }
                                     }
@@ -346,7 +342,7 @@ object ListItem {
                                             )
                                         }
                                     }
-                                    if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && secondarySubTextTailingIcons != null) {
+                                    if (secondarySubTextTailingIcons != null) {
                                         secondarySubTextTailingIcons.icon1()
                                         secondarySubTextTailingIcons.icon2?.let { it() }
                                     }
@@ -417,8 +413,8 @@ object ListItem {
             )
         ),
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        listItemTokens: ListItemTokens? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        listItemTokens: ListItemTokens? = null,
         content: (@Composable () -> Unit)? = null
     ) {
 
@@ -584,9 +580,9 @@ object ListItem {
         onClick: (() -> Unit)? = null,
         onActionClick: (() -> Unit)? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        listItemTokens: ListItemTokens? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
-        trailingAccessoryView: (@Composable () -> Unit)? = null
+        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        listItemTokens: ListItemTokens? = null
     ) {
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens

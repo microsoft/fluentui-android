@@ -444,16 +444,6 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
-        ListItem.Item(
-            text = primaryText,
-            subText = secondaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Large) },
-            border = BorderType.Bottom,
-            borderInset = XXLarge,
-            progressIndicator = { ProgressBar() },
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
-        )
     }
 }
 
