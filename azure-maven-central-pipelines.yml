@@ -8,7 +8,7 @@ jobs:
 
   - job: Build
     pool:
-      vmImage: 'macos-latest'
+      vmImage: ubuntu-latest
     variables:
       - name: BUILDSECMON_OPT_IN
         value: true
@@ -24,19 +24,22 @@ jobs:
           # Write your commands here
           sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
           ls
-    - task: Gradle@2
-      displayName: 'gradlew build'
+    - task: Gradle@3
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevelopment'
+        tasks: 'build'
+        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
+        publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
 
     - task: Gradle@2
       displayName: Unit tests
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevelopmentReleaseUnitTest'
+        tasks: 'testDevelopmentReleaseUnitTest'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
@@ -47,7 +50,7 @@ jobs:
       displayName: Generate testApk
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevelopmentReleaseAndroidTest'
+        tasks: 'assembleDevelopmentAndroidTest'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
@@ -77,20 +80,3 @@ jobs:
         targetPath: '$(build.artifactstagingdirectory)'
         artifact: 'Build'
         publishLocation: 'pipeline'
-
-  - job: Dogfood
-    pool:
-      vmImage: 'macos-latest'
-    variables:
-      - name: BUILDSECMON_OPT_IN
-        value: true
-    steps:
-    - task: Gradle@3
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDogfood'
-        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        sonarQubeRunAnalysis: false
-        spotBugsAnalysis: false
