@@ -181,8 +181,8 @@ object ListItem {
      */
     @Composable
     fun Item(
-        modifier: Modifier = Modifier,
         text: String,
+        modifier: Modifier = Modifier,
         subText: String? = null,
         secondarySubText: String? = null,
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
@@ -198,8 +198,8 @@ object ListItem {
         progressIndicator: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
-        listItemTokens: ListItemTokens? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        listItemTokens: ListItemTokens? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
     ) {
@@ -392,13 +392,12 @@ object ListItem {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     fun SectionHeader(
-        modifier: Modifier = Modifier,
         title: String,
+        modifier: Modifier = Modifier,
         titleMaxLines: Int = 1,
         accessoryTextTitle: String? = null,
         accessoryTextOnClick: (() -> Unit)? = null,
         enabled: Boolean = true,
-        listItemTokens: ListItemTokens? = null,
         style: SectionHeaderStyle = SectionHeaderStyle.Standard,
         enableChevron: Boolean = true,
         chevronOrientation: ChevronOrientation = ChevronOrientation(0f, 0f),
@@ -418,6 +417,7 @@ object ListItem {
             )
         ),
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        listItemTokens: ListItemTokens? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         content: (@Composable () -> Unit)? = null
     ) {
@@ -575,10 +575,9 @@ object ListItem {
      */
     @Composable
     fun SectionDescription(
-        modifier: Modifier = Modifier,
         description: String,
+        modifier: Modifier = Modifier,
         enabled: Boolean = true,
-        listItemTokens: ListItemTokens? = null,
         actionText: String? = null,
         descriptionPlacement: TextPlacement = Top,
         border: BorderType = NoBorder,
@@ -586,6 +585,7 @@ object ListItem {
         onClick: (() -> Unit)? = null,
         onActionClick: (() -> Unit)? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        listItemTokens: ListItemTokens? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null
     ) {
