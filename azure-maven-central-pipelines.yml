@@ -62,19 +62,12 @@ jobs:
         tasks: 'publishFluentUIPublicationToMavenRepository'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
-        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath)'
+        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
       
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-      inputs:
-        SourceFolder: '$(build.sourcesdirectory)'
-        Contents: |
-         **
-        TargetFolder: '$(build.artifactstagingdirectory)'
-    
     - task: PublishPipelineArtifact@1
+      displayName: 'Publish artifacts to pipeline'
       inputs:
-        targetPath: '$(build.artifactstagingdirectory)'
+        targetPath: '$(build.sourcesdirectory)/build/repo/com/test/fluentui'
         artifact: 'Build'
         publishLocation: 'pipeline'
 
