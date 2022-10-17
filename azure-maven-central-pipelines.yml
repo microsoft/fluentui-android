@@ -28,7 +28,7 @@ jobs:
       displayName: 'gradlew build'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'build'
+        tasks: 'assembleDevlopment'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
 
@@ -74,7 +74,7 @@ jobs:
     
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(build.sourcesdirectory)'
+        targetPath: '$(build.artifactstagingdirectory)'
         artifact: 'Build'
         publishLocation: 'pipeline'
 
@@ -88,7 +88,7 @@ jobs:
     - task: Gradle@3
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDogfoodRelease'
+        tasks: 'assembleDogfood'
         options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
