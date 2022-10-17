@@ -501,7 +501,6 @@ object ListItem {
 
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 if (enableChevron) {
-                                    val bitmap = ListItemIcons.Chevron
                                     Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
                                         contentDescription = "Chevron",
                                         modifier
