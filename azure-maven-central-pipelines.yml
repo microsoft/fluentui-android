@@ -65,9 +65,8 @@ jobs:
         options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
       
     - task: AppCenterDistribute@3
-      displayName: 'publish dogfood apk to appcenter'
       inputs:
-        serverEndpoint: 'App Center Test Connection'
+        serverEndpoint: 'App Center Test Connection(Test)'
         appSlug: 'mayankmishra/FluentTestApp'
         appFile: '$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk'
         symbolsOption: 'Android'
