@@ -28,7 +28,7 @@ jobs:
       displayName: 'gradlew build'
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevlopment'
+        tasks: 'assembleDevelopment'
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
 
