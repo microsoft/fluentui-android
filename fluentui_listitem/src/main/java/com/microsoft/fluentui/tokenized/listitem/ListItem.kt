@@ -9,7 +9,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.ExperimentalMaterialApi
@@ -163,7 +162,7 @@ object ListItem {
      * @param text Primary text.
      * @param subText Optional secondaryText or a subtitle.
      * @param secondarySubText Optional tertiary text or a footer.
-     * @param textFlowType Optional [ListItemFlowType] to align text in the center or start at the lead.
+     * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
      * @param enabled Optional enable/disable List item
      * @param textMaxLines Optional max visible lines for primary text.
      * @param subTextMaxLines Optional max visible lines for secondary text.
@@ -186,7 +185,7 @@ object ListItem {
         text: String,
         subText: String? = null,
         secondarySubText: String? = null,
-        textFlowType: ListItemFlowType = ListItemFlowType.Regular,
+        textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         enabled: Boolean = true,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
@@ -232,21 +231,19 @@ object ListItem {
                 getListItemTokens().textSize(textType = SecondarySubText)
             val textColor = getColorByState(
                 stateData = getListItemTokens().textColor(
-                    textType = ListTextType.Text,
-                    textFlowType
+                    textType = ListTextType.Text
                 ),
                 enabled = enabled,
                 interactionSource = interactionSource
             )
-            val subLabelColor = getColorByState(
-                stateData = getListItemTokens().textColor(textType = SubText, textFlowType),
+            val subTextColor = getColorByState(
+                stateData = getListItemTokens().textColor(textType = SubText),
                 enabled = enabled,
                 interactionSource = interactionSource
             )
-            var secondarySubLabelColor = getColorByState(
+            var secondarySubTextColor = getColorByState(
                 stateData = getListItemTokens().textColor(
-                    textType = SecondarySubText,
-                    textFlowType
+                    textType = SecondarySubText
                 ),
                 enabled = enabled,
                 interactionSource = interactionSource
@@ -260,7 +257,7 @@ object ListItem {
                 }
             val borderColor = getColorByState(
                 stateData = getListItemTokens().borderColor(),
-                enabled = true,
+                enabled = enabled,
                 interactionSource = interactionSource
             )
 
@@ -273,11 +270,11 @@ object ListItem {
                     .clickAndSemanticsModifier(
                         interactionSource,
                         onClick = onClick ?: {},
-                        enabled && (textFlowType != ListItemFlowType.DisabledCentered)
+                        enabled
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (leadingAccessoryView != null && textFlowType == ListItemFlowType.Regular) {
+                if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
                         Modifier.padding(start = horizontalPadding),
                         contentAlignment = Alignment.Center
@@ -286,7 +283,7 @@ object ListItem {
                     }
                 }
                 var contentAlignment =
-                    if (textFlowType == ListItemFlowType.Regular) Alignment.CenterStart else Alignment.Center
+                    if (textAlignment == ListItemTextAlignment.Regular) Alignment.CenterStart else Alignment.Center
                 Box(
                     Modifier
                         .padding(start = horizontalPadding, end = horizontalPadding)
@@ -313,20 +310,20 @@ object ListItem {
                             }
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            if (subText != null && textFlowType == ListItemFlowType.Regular) {
+                            if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
                                 Row {
                                     Text(
                                         text = subText,
                                         fontSize = subTextSize.fontSize.size,
                                         fontWeight = subTextSize.weight,
-                                        color = subLabelColor,
+                                        color = subTextColor,
                                         maxLines = subTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
                                 }
                             }
                         }
-                        if (textFlowType == ListItemFlowType.Regular) {
+                        if (textAlignment == ListItemTextAlignment.Regular) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 if ((isTertiaryTextIconsRequired || listItemType == ThreeLine) && progressIndicator != null) {
                                     Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
@@ -343,7 +340,7 @@ object ListItem {
                                                 text = secondarySubText,
                                                 fontSize = secondarySubTextSize.fontSize.size,
                                                 fontWeight = secondarySubTextSize.weight,
-                                                color = secondarySubLabelColor,
+                                                color = secondarySubTextColor,
                                                 maxLines = secondarySubTextMaxLines,
                                                 overflow = TextOverflow.Ellipsis
                                             )
@@ -358,7 +355,7 @@ object ListItem {
                         }
                     }
                 }
-                if (progressIndicator == null && trailingAccessoryView != null && textFlowType == ListItemFlowType.Regular) {
+                if (progressIndicator == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
                         Modifier.padding(end = horizontalPadding),
                         contentAlignment = Alignment.CenterEnd
@@ -439,9 +436,21 @@ object ListItem {
                 getListItemTokens().textSize(textType = ListTextType.Text, style = style)
             val actionTextSize =
                 getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
-            val textColor = getListItemTokens().textColor(textType = ListTextType.Text)
+            val textColor = getColorByState(
+                stateData = getListItemTokens().textColor(
+                    textType = ListTextType.Text
+                ),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
             val actionTextColor =
-                getListItemTokens().textColor(textType = ListTextType.ActionText)
+                getColorByState(
+                    stateData = getListItemTokens().textColor(
+                        textType = ListTextType.ActionText
+                    ),
+                    enabled = enabled,
+                    interactionSource = interactionSource
+                )
             val horizontalPadding = getListItemTokens().padding(Medium)
             val verticalPadding = getListItemTokens().padding(size = XSmall)
             val borderSize = getListItemTokens().borderSize().value
@@ -451,7 +460,7 @@ object ListItem {
                 }
             val borderColor = getColorByState(
                 stateData = getListItemTokens().borderColor(),
-                enabled = true,
+                enabled = enabled,
                 interactionSource = interactionSource
             )
             val chevronTint = getListItemTokens().chevronTint()
@@ -504,7 +513,7 @@ object ListItem {
                                     text = title,
                                     fontSize = textSize.fontSize.size,
                                     fontWeight = textSize.weight,
-                                    color = textColor.rest,
+                                    color = textColor,
                                     maxLines = titleMaxLines,
                                     overflow = TextOverflow.Ellipsis
                                 )
@@ -518,7 +527,7 @@ object ListItem {
                                         role = Role.Button,
                                         onClick = accessoryTextOnClick ?: {}
                                     ),
-                                    color = actionTextColor.rest,
+                                    color = actionTextColor,
                                     fontSize = actionTextSize.fontSize.size,
                                     fontWeight = actionTextSize.weight)
                             }
@@ -594,9 +603,20 @@ object ListItem {
             val actionTextSize =
                 getListItemTokens().textSize(textType = ListTextType.ActionText)
             val textColor =
-                getListItemTokens().textColor(textType = ListTextType.DescriptionText)
-            val actionTextColor =
-                getListItemTokens().textColor(textType = ListTextType.ActionText)
+                getColorByState(
+                    stateData = getListItemTokens().textColor(
+                        textType = ListTextType.DescriptionText
+                    ),
+                    enabled = enabled,
+                    interactionSource = interactionSource
+                )
+            val actionTextColor = getColorByState(
+                stateData = getListItemTokens().textColor(
+                    textType = ListTextType.ActionText
+                ),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
             val horizontalPadding = getListItemTokens().padding(Medium)
             val borderSize = getListItemTokens().borderSize().value
             val borderInset =
@@ -605,7 +625,7 @@ object ListItem {
                 }
             val borderColor = getColorByState(
                 stateData = getListItemTokens().borderColor(),
-                enabled = true,
+                enabled = enabled,
                 interactionSource = interactionSource
             )
             val descriptionAlignment =
@@ -646,13 +666,13 @@ object ListItem {
                             actionText = actionText,
                             onClick = onActionClick ?: {},
                             actionTextSize = actionTextSize,
-                            actionTextColor = actionTextColor.rest,
-                            descriptionTextColor = textColor.rest,
+                            actionTextColor = actionTextColor,
+                            descriptionTextColor = textColor,
                             descriptionTextSize = textSize)
                     } else {
                         Text(
                             text = description,
-                            color = textColor.rest,
+                            color = textColor,
                             fontSize = textSize.fontSize.size,
                             fontWeight = textSize.weight
                         )
