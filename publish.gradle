@@ -6,9 +6,6 @@ apply from: "../publish-check.gradle"
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
 ext["signing.secretKeyRingFile"] = ''
-ext["ossrhUsername"] = ''
-ext["ossrhPassword"] = ''
-ext["sonatypeStagingProfileId"] = ''
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -21,9 +18,6 @@ if (secretPropsFile.exists()) {
     ext["signing.keyId"] = project.hasProperty('GPGSigningKeyID') ? "$GPGSigningKeyID" : ''
     ext["signing.password"] = project.hasProperty('GPGSigningPassword') ? "$GPGSigningPassword" : ''
     ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
-    ext["ossrhUsername"] = project.hasProperty('OSSRHUsername') ? "$OSSRHUsername" : ''
-    ext["ossrhPassword"] = project.hasProperty('OSSRHPassword') ? "$OSSRHPassword" : ''
-    ext["sonatypeStagingProfileId"] = project.hasProperty('SonatypeStagingProfileID') ? "$SonatypeStagingProfileID" : ''
 }
 
 project.ext.publishingFunc = { artifactIdName ->
@@ -37,12 +31,8 @@ project.ext.publishingFunc = { artifactIdName ->
                 }
             }
             maven {
-                name = "sonatype"
-                url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                credentials {
-                    username ossrhUsername
-                    password ossrhPassword
-                }
+                name = "local"
+                url rootProject.buildDir.path + '/artifacts'
             }
         }
         if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
@@ -102,13 +92,6 @@ project.ext.publishingFunc = { artifactIdName ->
             }
         }
     }
-}
-
-nexusStaging {
-    packageGroup = 'com.microsoft.fluentui'
-    stagingProfileId = sonatypeStagingProfileId
-    username = ossrhUsername
-    password = ossrhPassword
 }
 
 signing {
