@@ -64,6 +64,13 @@ jobs:
         jdkVersionOption: '$(jdkVersion)'
         options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
 
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish artifacts to pipeline'
+      inputs:
+        targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
+        artifact: 'Build'
+        publishLocation: 'pipeline'
+        
     - task: EsrpRelease@2
       displayName: 'publish artifacts to ESRP'
       inputs:
@@ -87,11 +94,4 @@ jobs:
         releaseNotesOption: 'file'
         releaseNotesFile: '$(build.sourcesdirectory)/dogfood-release-notes.txt'
         destinationType: 'groups'
-
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish artifacts to pipeline'
-      inputs:
-        targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        artifact: 'Build'
-        publishLocation: 'pipeline'
 
