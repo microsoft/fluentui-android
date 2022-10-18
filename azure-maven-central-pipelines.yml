@@ -74,7 +74,7 @@ jobs:
         Owners: 'pyeruva@microsoft.com'
         Approvers: 'mayankmishra@microsoft.com'
         ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
-        MainPublisher: 'ESRPRELPACMAN'
+        MainPublisher: 'fluentuiandroidrelease'
         DomainTenantId: '$(domainTenantId)'
 
     - task: AppCenterDistribute@3
