@@ -20,6 +20,12 @@ if (secretPropsFile.exists()) {
     ext["signing.secretKeyRingFile"] = project.hasProperty('SigningSecretKeyRingFile') ? "$SigningSecretKeyRingFile" : ''
 }
 
+tasks.withType(PublishToMavenRepository) {
+    onlyIf {
+        !(artifactExists(artifactIdName, android.defaultConfig.versionName))
+    }
+}
+
 project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
@@ -34,10 +40,6 @@ project.ext.publishingFunc = { artifactIdName ->
                 name = "local"
                 url rootProject.buildDir.path + '/artifacts'
             }
-        }
-        if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
-            println("Artifact "+ artifactIdName + "already exists with the same name. Skipping publish")
-            return
         }
         publications {
             FluentUI(MavenPublication) {
