@@ -8,7 +8,7 @@ jobs:
 
   - job: Build
     pool:
-      vmImage: 'macos-latest'
+      vmImage: ubuntu-latest
     variables:
       - name: BUILDSECMON_OPT_IN
         value: true
@@ -24,20 +24,11 @@ jobs:
           # Write your commands here
           sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
           ls
-    - task: Gradle@2
-      displayName: 'gradlew build publish'
+    - task: Gradle@3
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'build publish'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword) -POSSRHUsername=$(ossrhUsername) -POSSRHPassword=$(ossrhPassword) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword) -PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PSonatypeStagingProfileID=$(sonatypeStagingProfileId)'
-
-    - task: Gradle@2
-      displayName: Unit tests
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'testDevelopmentDebugUnitTest'
+        tasks: 'build'
+        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
         publishJUnitResults: false
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
@@ -63,30 +54,50 @@ jobs:
         javaHomeOption: 'JDKVersion'
         jdkVersionOption: '$(jdkVersion)'
         publishJUnitResults: false
-      
-    - task: AndroidSigning@2
-      displayName: 'Signing and aligning APK file(s) **/*.apk'
-      inputs:
-        jarsign: false
-        zipalign: false
     
-    - task: CopyFiles@2
-      displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    - task: Gradle@2
+      displayName: 'generate artifacts and publish to feed'
       inputs:
-        SourceFolder: '$(system.defaultworkingdirectory)'
-        Contents: |
-         **/*.apk
-         **/*.aar
-        TargetFolder: '$(build.artifactstagingdirectory)'
+        gradleWrapperFile: 'gradlew'
+        tasks: 'publish'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '$(jdkVersion)'
+        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
 
-    - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-      displayName: 📒 Generate Manifest
+    - task: EsrpRelease@2
+      displayName: 'publish artifacts to ESRP'
       inputs:
-        BuildDropPath: '$(build.artifactstagingdirectory)'
-    
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: Build'
+        ConnectedServiceName: 'ESRP_Release_Connection'
+        Intent: 'PackageDistribution'
+        ContentType: 'Maven'
+        PackageLocation: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
+        Owners: |
+          mayankmishra@microsoft.com
+          namanpandey@microsoft.com
+          pyeruva@microsoft.com
+        Approvers: |
+          mayankmishra@microsoft.com
+          namanpandey@microsoft.com
+          pyeruva@microsoft.com
+        ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
+        MainPublisher: 'ESRPRELPACMAN'
+        DomainTenantId: '72f988bf-86f1-41af-91ab-2d7cd011db47'
+
+    - task: AppCenterDistribute@3
+      displayName: 'publish dogfood apk to app center'
       inputs:
-        PathtoPublish: '$(build.artifactstagingdirectory)'
-        ArtifactName: Build
-        
+        serverEndpoint: 'App Center Connection Fluent UI'
+        appSlug: 'ODSP-UX-Engineering/UI-Fabric'
+        appFile: '$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk'
+        symbolsOption: 'Android'
+        releaseNotesOption: 'file'
+        releaseNotesFile: '$(build.sourcesdirectory)/dogfood-release-notes.txt'
+        destinationType: 'groups'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish artifacts to pipeline'
+      inputs:
+        targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
+        artifact: 'Build'
+        publishLocation: 'pipeline'
+
