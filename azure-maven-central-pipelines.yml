@@ -71,14 +71,8 @@ jobs:
         Intent: 'PackageDistribution'
         ContentType: 'Maven'
         PackageLocation: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        Owners: |
-          mayankmishra@microsoft.com
-          namanpandey@microsoft.com
-          pyeruva@microsoft.com
-        Approvers: |
-          mayankmishra@microsoft.com
-          namanpandey@microsoft.com
-          pyeruva@microsoft.com
+        Owners: 'pyeruva@microsoft.com'
+        Approvers: 'mayankmishra@microsoft.com'
         ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
         MainPublisher: 'ESRPRELPACMAN'
         DomainTenantId: '$(domainTenantId)'
