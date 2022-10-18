@@ -24,6 +24,7 @@ project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
             maven {
+            name = "feed"
                 url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
                 credentials {
                     username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
