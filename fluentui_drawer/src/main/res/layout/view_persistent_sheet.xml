@@ -38,11 +38,10 @@
             app:tint="?attr/fluentuiDrawerHandleColor"
             tools:ignore="HardcodedText" />
 
-        <androidx.core.widget.NestedScrollView
+        <com.microsoft.fluentui.persistentbottomsheet.LockableNestedScrollView
             android:id="@+id/scroll_container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:importantForAccessibility="no">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:id="@+id/persistent_sheet_container"
@@ -51,6 +50,6 @@
                 android:clipChildren="false"
                 android:paddingBottom="@dimen/fluentui_persistent_bottomsheet_content_padding_vertical"
                 android:orientation="vertical" />
-        </androidx.core.widget.NestedScrollView>
+        </com.microsoft.fluentui.persistentbottomsheet.LockableNestedScrollView>
     </com.microsoft.fluentui.drawer.DrawerView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
