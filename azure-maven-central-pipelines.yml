@@ -64,6 +64,13 @@ jobs:
         jdkVersionOption: '$(jdkVersion)'
         options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
 
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish artifacts to pipeline'
+      inputs:
+        targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
+        artifact: 'Build'
+        publishLocation: 'pipeline'
+        
     - task: EsrpRelease@2
       displayName: 'publish artifacts to ESRP'
       inputs:
@@ -71,16 +78,10 @@ jobs:
         Intent: 'PackageDistribution'
         ContentType: 'Maven'
         PackageLocation: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        Owners: |
-          mayankmishra@microsoft.com
-          namanpandey@microsoft.com
-          pyeruva@microsoft.com
-        Approvers: |
-          mayankmishra@microsoft.com
-          namanpandey@microsoft.com
-          pyeruva@microsoft.com
+        Owners: 'pyeruva@microsoft.com'
+        Approvers: 'mayankmishra@microsoft.com'
         ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
-        MainPublisher: 'ESRPRELPACMAN'
+        MainPublisher: 'fluentuiandroidrelease'
         DomainTenantId: '$(domainTenantId)'
 
     - task: AppCenterDistribute@3
@@ -93,11 +94,4 @@ jobs:
         releaseNotesOption: 'file'
         releaseNotesFile: '$(build.sourcesdirectory)/dogfood-release-notes.txt'
         destinationType: 'groups'
-
-    - task: PublishPipelineArtifact@1
-      displayName: 'Publish artifacts to pipeline'
-      inputs:
-        targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        artifact: 'Build'
-        publishLocation: 'pipeline'
 

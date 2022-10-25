@@ -24,6 +24,7 @@ project.ext.publishingFunc = { artifactIdName ->
     publishing {
         repositories {
             maven {
+            name = "feed"
                 url 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
                 credentials {
                     username = project.hasProperty("mavenUserName") ? "$mavenUserName" : ""
@@ -35,9 +36,10 @@ project.ext.publishingFunc = { artifactIdName ->
                 url rootProject.buildDir.path + '/artifacts'
             }
         }
-        if(artifactExists(artifactIdName, android.defaultConfig.versionName)){
-            println("Artifact "+ artifactIdName + "already exists with the same name. Skipping publish")
-            return
+        tasks.withType(PublishToMavenRepository) {
+            onlyIf {
+                (repository == publishing.repositories.local) || (repository == publishing.repositories.feed && !(artifactExists(artifactIdName, android.defaultConfig.versionName)))
+            }
         }
         publications {
             FluentUI(MavenPublication) {
