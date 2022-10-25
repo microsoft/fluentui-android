@@ -404,7 +404,7 @@
             android:layout_height="wrap_content"
             android:hint="0"
             android:imeOptions="actionDone"
-            android:inputType="phone" />
+            android:inputType="number" />
     </LinearLayout>
 
     <TextView
