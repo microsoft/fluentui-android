@@ -1,11 +1,12 @@
 package com.microsoft.fluentui.persona
 
 import android.content.Context
-import androidx.core.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 
@@ -18,19 +19,40 @@ open class AvatarGroupView : FrameLayout {
         internal val DEFAULT_AVATAR_GROUP_STYLE = AvatarGroupStyle.STACK
         internal val DEFAULT_AVATAR_BORDER_STYLE = AvatarBorderStyle.NO_BORDER
         internal const val DEFAULT_AVATAR_ALLOWED = 4
+        internal const val DEFAULT_OVERFLOW_AVATAR = 0
     }
 
     @JvmOverloads
-    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(FluentUIContextThemeWrapper(appContext,R.style.Theme_FluentUI_Persona), attrs, defStyleAttr) {
+    constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(
+        FluentUIContextThemeWrapper(appContext, R.style.Theme_FluentUI_Persona),
+        attrs,
+        defStyleAttr
+    ) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.AvatarGroupView)
-        val avatarSizeOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_avatarSize, AvatarView.DEFAULT_AVATAR_SIZE.ordinal)
-        val avatarGroupStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_avatarGroupStyle, DEFAULT_AVATAR_GROUP_STYLE.ordinal)
-        val avatarBorderStyleOrdinal = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_avatarBorderStyle, DEFAULT_AVATAR_BORDER_STYLE.ordinal)
+        val avatarSizeOrdinal = styledAttrs.getInt(
+            R.styleable.AvatarGroupView_fluentui_avatarSize,
+            AvatarView.DEFAULT_AVATAR_SIZE.ordinal
+        )
+        val avatarGroupStyleOrdinal = styledAttrs.getInt(
+            R.styleable.AvatarGroupView_fluentui_avatarGroupStyle,
+            DEFAULT_AVATAR_GROUP_STYLE.ordinal
+        )
+        val avatarBorderStyleOrdinal = styledAttrs.getInt(
+            R.styleable.AvatarGroupView_fluentui_avatarBorderStyle,
+            DEFAULT_AVATAR_BORDER_STYLE.ordinal
+        )
 
         avatarSize = AvatarSize.values()[avatarSizeOrdinal]
         avatarGroupStyle = AvatarGroupStyle.values()[avatarGroupStyleOrdinal]
         avatarBorderStyle = AvatarBorderStyle.values()[avatarBorderStyleOrdinal]
-        maxDisplayedAvatars = styledAttrs.getInt(R.styleable.AvatarGroupView_fluentui_maxDisplayedAvatars, DEFAULT_AVATAR_ALLOWED)
+        maxDisplayedAvatars = styledAttrs.getInt(
+            R.styleable.AvatarGroupView_fluentui_maxDisplayedAvatars,
+            DEFAULT_AVATAR_ALLOWED
+        )
+        overflowAvatarCount = styledAttrs.getInt(
+            R.styleable.AvatarGroupView_fluentui_overflowAvatarCount,
+            DEFAULT_OVERFLOW_AVATAR
+        )
         styledAttrs.recycle()
     }
 
@@ -44,6 +66,19 @@ open class AvatarGroupView : FrameLayout {
     }
 
     var maxDisplayedAvatars: Int = DEFAULT_AVATAR_ALLOWED
+        set(value) {
+            if (field == value)
+                return
+
+            field = value
+            updateView()
+        }
+
+    /**
+     * Defines the [overflowAvatarCount] applied to avatarGroup.
+     * This property when set acts like a manual override and [maxDisplayedAvatar] is not honoured.
+     */
+    var overflowAvatarCount: Int = DEFAULT_OVERFLOW_AVATAR
         set(value) {
             if (field == value)
                 return
@@ -126,9 +161,9 @@ open class AvatarGroupView : FrameLayout {
         removeAllViews()
         overflowAvatar = null
         for ((index, avatar) in avatarList.withIndex()) {
-            if (index >= maxDisplayedAvatars) {
+            if (index >= maxDisplayedAvatars && overflowAvatarCount <= 0) {
                 if (avatarList.size > maxDisplayedAvatars) {
-                    addOverFlowView(avatarList.size - maxDisplayedAvatars)
+                    addOverFlowView(avatarList.size - maxDisplayedAvatars, index)
                 }
                 return
             }
@@ -138,51 +173,63 @@ open class AvatarGroupView : FrameLayout {
             avatarView.avatarStyle = AvatarStyle.CIRCLE
             avatarView.id = View.generateViewId()
             avatarView.tag = index
-            if(listener != null) {
+            if (listener != null) {
                 avatarView.setOnClickListener(clickListener)
             }
-            val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            when(avatarGroupStyle) {
+            val layoutParams = LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            when (avatarGroupStyle) {
                 AvatarGroupStyle.PILE -> {
                     avatarView.avatarBorderStyle = avatarBorderStyle
                     layoutParams.marginStart = index * (avatarView.getViewSize() + getPileSpacing())
                 }
                 AvatarGroupStyle.STACK -> {
-                    if(avatarBorderStyle == AvatarBorderStyle.NO_BORDER)
+                    if (avatarBorderStyle == AvatarBorderStyle.NO_BORDER)
                         avatarView.avatarBorderStyle = AvatarBorderStyle.SINGLE_RING
                     else
                         avatarView.avatarBorderStyle = AvatarBorderStyle.RING
-                    layoutParams.marginStart = index * (avatarView.getViewSize()/2 + getStackSpacing())
+                    layoutParams.marginStart =
+                        index * (avatarView.getViewSize() / 2 + getStackSpacing())
                 }
             }
             avatarView.layoutParams = layoutParams
             addView(avatarView)
         }
+        if (overflowAvatarCount > 0) {
+            addOverFlowView(overflowAvatarCount, avatarList.size)
+            return
+        }
     }
 
-    private fun addOverFlowView(overflowCount: Int) {
+    private fun addOverFlowView(overflowCount: Int, indexToPlace: Int) {
         val avatarView = AvatarView(context)
         avatarView.name = overflowCount.toString()
-        avatarView.avatarBackgroundColor = ContextCompat.getColor(context, R.color.fluentui_avatar_overflow_background)
+        avatarView.avatarBackgroundColor =
+            ContextCompat.getColor(context, R.color.fluentui_avatar_overflow_background)
         avatarView.avatarSize = avatarSize
         avatarView.avatarIsOverFlow = true
         avatarView.avatarStyle = AvatarStyle.CIRCLE
         avatarView.id = View.generateViewId()
-        if(listener  != null) {
+        if (listener != null) {
             avatarView.setOnClickListener(overflowClickListener)
         }
-        val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        val layoutParams =
+            LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         when (avatarGroupStyle) {
             AvatarGroupStyle.STACK -> {
-                if(avatarBorderStyle == AvatarBorderStyle.NO_BORDER)
+                if (avatarBorderStyle == AvatarBorderStyle.NO_BORDER)
                     avatarView.avatarBorderStyle = AvatarBorderStyle.SINGLE_RING
                 else
                     avatarView.avatarBorderStyle = AvatarBorderStyle.RING
-                layoutParams.marginStart = (avatarList.size - overflowCount) * (avatarView.getViewSize() / 2 + getStackSpacing())
+                layoutParams.marginStart =
+                    indexToPlace * (avatarView.getViewSize() / 2 + getStackSpacing())
             }
             AvatarGroupStyle.PILE -> {
                 avatarView.avatarBorderStyle = avatarBorderStyle
-                layoutParams.marginStart = (avatarList.size - overflowCount) * (avatarView.getViewSize() + getPileSpacing())
+                layoutParams.marginStart =
+                    indexToPlace * (avatarView.getViewSize() + getPileSpacing())
             }
         }
         avatarView.layoutParams = layoutParams

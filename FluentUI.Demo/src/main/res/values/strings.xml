@@ -54,7 +54,9 @@
 
     <!--AvatarGroupView-->
     <string name="avatar_group_max_displayed_avatar">Max Displayed Avatar</string>
+    <string name="avatar_group_overflow_avatar_count">Overflow Avatar Count</string>
     <string name="avatar_group_border_type">Border Type</string>
+    <string name="avatar_group_info">Avatar Group with OverflowAvatarCount set will not adhere to max Displayed Avatar.</string>
     <string name="avatar_group_face_stack">Face Stack</string>
     <string name="avatar_group_face_pile">Face Pile</string>
     <string name="avatar_group_overflow_clicked">Overflow clicked</string>

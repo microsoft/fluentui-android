@@ -8,6 +8,7 @@
     <declare-styleable name="AvatarGroupView">
         <attr name="fluentui_avatarGroupStyle"/>
         <attr name="fluentui_maxDisplayedAvatars"/>
+        <attr name="fluentui_overflowAvatarCount"/>
         <attr name="fluentui_avatarSize"/>
         <attr name="fluentui_avatarBorderStyle"/>
     </declare-styleable>
