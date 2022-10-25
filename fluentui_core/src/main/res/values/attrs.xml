@@ -133,6 +133,7 @@
 
     <!--AvatarGroupView-->
     <attr name="fluentui_maxDisplayedAvatars" format="integer" />
+    <attr name="fluentui_overflowAvatarCount" format="integer" />
 
     <!--PersonaView-->
     <attr name="fluentui_name" format="string" />
