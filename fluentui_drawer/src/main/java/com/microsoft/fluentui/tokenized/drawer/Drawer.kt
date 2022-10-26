@@ -40,6 +40,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
+import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.*
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
@@ -218,9 +219,6 @@ private class DrawerPositionProvider : PopupPositionProvider {
         return IntOffset(0, 0)
     }
 }
-
-private fun calculateFraction(a: Float, b: Float, pos: Float) =
-        ((pos - a) / (b - a)).coerceIn(0f, 1f)
 
 @Composable
 private fun Scrim(
