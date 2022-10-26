@@ -5,13 +5,7 @@ trigger:
   branches:
     include:
     - master
-
-pr:
-  branches:
-    include:
-    - master
-  drafts: false
-
+    
 jobs:
 
   - job: BuildTest
