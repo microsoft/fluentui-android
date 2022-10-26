@@ -1,4 +1,4 @@
-#Pipeline to run automatically when PR is created and changes are pushed to master
+#Pipeline to run automatically when a PR is created and changes are pushed to master
 
 trigger:
   batch: true
