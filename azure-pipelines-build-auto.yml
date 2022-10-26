@@ -1,11 +1,5 @@
 #Pipeline to run automatically when a PR is created and changes are pushed to master
 
-trigger:
-  batch: true
-  branches:
-    include:
-    - master
-
 pr:
   branches:
     include:
