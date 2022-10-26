@@ -38,6 +38,7 @@ import com.microsoft.fluentui.compose.SwipeableState
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetTokens
+import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.CancellationException
@@ -76,7 +77,6 @@ enum class BottomSheetValue {
  * @param animationSpec The default animation that will be used to animate to a new state.
  * @param confirmStateChange Optional callback invoked to confirm or veto a pending state change.
  */
-
 class BottomSheetState(
     internal val initialValue: BottomSheetValue = BottomSheetValue.Hidden,
     animationSpec: AnimationSpec<Float> = SwipeableDefaults.AnimationSpec,
@@ -348,6 +348,7 @@ fun BottomSheet(
                             modifier = Modifier
                                 .padding(vertical = 8.dp)
                                 .fillMaxWidth()
+                                //TODO : Revisit SwipeableState usage across module to abstract out common modifier.
                                 .draggable(
                                     orientation = Orientation.Vertical,
                                     state = rememberDraggableState { delta ->
@@ -457,9 +458,9 @@ private fun Modifier.sheetHeight(expandable: Boolean, fullHeight: Float, peekHei
     return this.then(modifier)
 }
 
-private fun calculateFraction(a: Float, b: Float, pos: Float) =
-    ((pos - a) / (b - a)).coerceIn(0f, 1f)
 
+
+//TODO : Revisit Scrim usage across module to check single scrim implementation across module.
 @Composable
 private fun Scrim(
     color: Color,
@@ -469,16 +470,12 @@ private fun Scrim(
 ) {
     if (visible) {
         val closeSheet = getString(Strings.CloseSheet)
-        val dismissModifier = if (visible) {
-            Modifier
-                .pointerInput(onDismiss) { detectTapGestures { onDismiss() } }
-                .semantics(mergeDescendants = true) {
-                    contentDescription = closeSheet
-                    onClick { onDismiss(); true }
-                }
-        } else {
-            Modifier
-        }
+        val dismissModifier = Modifier
+            .pointerInput(onDismiss) { detectTapGestures { onDismiss() } }
+            .semantics(mergeDescendants = true) {
+                contentDescription = closeSheet
+                onClick { onDismiss(); true }
+            }
 
         Canvas(
             Modifier
