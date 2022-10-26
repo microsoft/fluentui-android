@@ -1,11 +1,11 @@
-#Pipeline to run automatically on ADO when a PR is created on master
+#Pipeline to run automatically when changes are pushed to master
 
-pr:
+trigger:
+  batch: true
   branches:
     include:
     - master
-  drafts: false
-
+    
 jobs:
 
   - job: BuildTest
