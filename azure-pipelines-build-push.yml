@@ -1,4 +1,4 @@
-#Pipeline to run automatically when changes are pushed to master
+#Pipeline to run build automatically when changes are pushed to master
 
 trigger:
   batch: true
