@@ -396,7 +396,7 @@ object ListItem {
      * @param chevronOrientation Pass [ChevronOrientation] to apply chevron icon transition when clicked on the list item. Defaults to static (enter and exit transition are same).
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset] Optional borderInset for list item.
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list tokens will be picked from [AppThemeController]
      * @param enter [EnterTransition] used for content appearing transition
      * @param exit [ExitTransition] used for content disappearing transition
      * @param trailingAccessoryView Optional composable trailing accessory view.
@@ -564,7 +564,7 @@ object ListItem {
      * @param modifier Optional modifier for List item.
      * @param description description text.
      * @param enabled Optional enable/disable List item
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then drawer tokens will be picked from [AppThemeController]
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list tokens will be picked from [AppThemeController]
      * @param actionText Option boolean to append "Action" text button to the description text.
      * @param descriptionPlacement [TextPlacement] Enum value for placing the description text in the list item.
      * @param onClick Optional onClick action for list item.
