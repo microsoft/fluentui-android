@@ -1,7 +1,9 @@
 package com.microsoft.fluentui.tokenized.persona
 
 import androidx.annotation.DrawableRes
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.ImageBitmap
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 
 /**
@@ -104,4 +106,22 @@ class Group(
         }
         return initial.uppercase()
     }
+}
+class Persona(
+    val person:Person,
+    val title:String,
+    val subTitle: String? = null,
+    val footer: String? = null,
+    val trailingIcon: (@Composable ()-> Unit)? = null,
+    val onClick: (() -> Unit)? = null){
+
+}
+fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
+    if(secondaryText == null && tertiaryText == null){
+        return AvatarSize.Small
+    }
+    if(secondaryText != null && tertiaryText == null){
+        return AvatarSize.Large
+    }
+    return AvatarSize.XLarge
 }
