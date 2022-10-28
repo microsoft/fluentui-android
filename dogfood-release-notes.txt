@@ -3,7 +3,7 @@ Release Version 0.1.10:
 What's New:
 
 Fluent V2 :
- - Released ListItem, Persona, PersonaList, BottomSheet contols
+ - Released ListItem, Persona, PersonaList, BottomSheet controls
 
 Fluent V1 :
  - Fix accessibility issue : Lock Scrolling for bottomsheet for keyboard tab navigation when bottomsheet is in collapsed state
