@@ -11,7 +11,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 
 @Composable
-fun PersonaView(person: Person,
+fun Persona(
+    person: Person,
     modifier: Modifier = Modifier,
     primaryText: String,
     secondaryText: String? = null,
@@ -22,15 +23,27 @@ fun PersonaView(person: Person,
     enableAvatarActivityRings: Boolean = false,
     enableAvatarPresence: Boolean = true,
     avatarTokens: AvatarTokens? = null,
-    personaViewTokens: ListItemTokens? = null){
+    personaTokens: ListItemTokens? = null
+) {
 
     var avatarSize = getAvatarSize(secondaryText, tertiaryText)
-        ListItem.Item(text = primaryText, subText = secondaryText, secondarySubText = tertiaryText, onClick = onClick, modifier = modifier, border = border, borderInset = borderInset, listItemTokens = personaViewTokens, leadingAccessoryView = { Avatar(
-            person = person,
-            modifier = modifier,
-            size = avatarSize,
-            enableActivityRings = enableAvatarActivityRings,
-            enablePresence = enableAvatarPresence,
-            avatarToken = avatarTokens
-        )})
+    ListItem.Item(
+        text = primaryText,
+        subText = secondaryText,
+        secondarySubText = tertiaryText,
+        onClick = onClick,
+        modifier = modifier,
+        border = border,
+        borderInset = borderInset,
+        listItemTokens = personaTokens,
+        leadingAccessoryView = {
+            Avatar(
+                person = person,
+                modifier = modifier,
+                size = avatarSize,
+                enableActivityRings = enableAvatarActivityRings,
+                enablePresence = enableAvatarPresence,
+                avatarToken = avatarTokens
+            )
+        })
 }

@@ -7,7 +7,7 @@ apply plugin: 'io.codearte.nexus-staging'
 buildscript {
     ext.kotlin_version = '1.6.20'
     ext.nexus_plugin_version = '0.30.0'
-    ext.hydra_client_plugin = '1.0.22'
+    ext.hydra_client_plugin = '1.0.31'
     repositories {
         google()
         jcenter()
@@ -19,7 +19,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:7.0.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "io.codearte.gradle.nexus:gradle-nexus-staging-plugin:$nexus_plugin_version"
-        classpath "com.microsoft.hydralab:client_utils_gradle_plugin:$hydra_client_plugin"
+        classpath "com.microsoft.hydralab:gradle_plugin:$hydra_client_plugin"
     }
 }
 
