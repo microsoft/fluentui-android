@@ -1,10 +1,7 @@
 package com.microsoft.fluentui.tokenized.listitem
 
 import androidx.compose.animation.*
-import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -69,54 +66,59 @@ object ListItem {
                 role = Role.Tab
             )
     }
+
     private fun Modifier.borderModifier(
         border: BorderType,
         borderColor: Color,
         borderSize: Float,
         borderInset: Float
-    ): Modifier = composed {
-        Modifier.drawBehind {
-            when (border) {
-                BorderType.Top -> drawLine(
+    ): Modifier = drawBehind {
+        when (border) {
+            BorderType.Top -> drawLine(
+                borderColor,
+                Offset(0f, 0f),
+                Offset(size.width, 0f),
+                borderSize * density
+            )
+            BorderType.Bottom -> drawLine(
+                borderColor,
+                Offset(borderInset, size.height),
+                Offset(size.width, size.height),
+                borderSize * density
+            )
+            BorderType.TopBottom -> {
+                drawLine(
                     borderColor,
                     Offset(0f, 0f),
                     Offset(size.width, 0f),
                     borderSize * density
                 )
-                BorderType.Bottom -> drawLine(
+                drawLine(
                     borderColor,
                     Offset(borderInset, size.height),
                     Offset(size.width, size.height),
                     borderSize * density
                 )
-                BorderType.TopBottom -> {
-                    drawLine(
-                        borderColor,
-                        Offset(0f, 0f),
-                        Offset(size.width, 0f),
-                        borderSize * density
-                    )
-                    drawLine(
-                        borderColor,
-                        Offset(borderInset, size.height),
-                        Offset(size.width, size.height),
-                        borderSize * density
-                    )
-                }
+            }
+            NoBorder -> {
+
             }
         }
+
     }
+
     @Composable
-    private fun inlineText(description: String,
-                   actionText: String,
-                   onClick: () -> Unit,
-                   descriptionTextColor: Color,
-                   actionTextColor: Color,
-                   descriptionTextSize: FontInfo,
-                   actionTextSize: FontInfo
-        ){
+    private fun InlineText(
+        description: String,
+        actionText: String,
+        onClick: () -> Unit,
+        descriptionTextColor: Color,
+        actionTextColor: Color,
+        descriptionTextSize: FontInfo,
+        actionTextSize: FontInfo
+    ) {
         val text = buildAnnotatedString {
-            if (description != null && description.isNotEmpty()) {
+            if (description.isNotEmpty()) {
                 withStyle(
                     style = SpanStyle(
                         color = descriptionTextColor,
@@ -140,19 +142,24 @@ object ListItem {
                         placeholderVerticalAlign = PlaceholderVerticalAlign.TextTop
                     )
                 ) {
-                    Text(text = actionText,
+                    Text(
+                        text = actionText,
                         modifier = Modifier.clickable(
                             enabled = true,
                             onClickLabel = actionText,
                             role = Role.Button,
-                            onClick = onClick),
+                            onClick = onClick
+                        ),
                         fontSize = actionTextSize.fontSize.size,
-                        color = actionTextColor)
+                        color = actionTextColor
+                    )
                 }
             )
         )
-        Text(text = text,
-            inlineContent = inlineContent)
+        Text(
+            text = text,
+            inlineContent = inlineContent
+        )
     }
 
     /**
@@ -207,7 +214,7 @@ object ListItem {
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         CompositionLocalProvider(LocalListItemTokens provides token) {
-            var listItemType = if (subText == null && secondarySubText == null) {
+            val listItemType = if (subText == null && secondarySubText == null) {
                 OneLine
             } else if ((secondarySubText == null && subText != null) || (secondarySubText != null && subText == null)) {
                 TwoLine
@@ -223,7 +230,7 @@ object ListItem {
             val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
             val subTextSize =
                 getListItemTokens().textSize(textType = SubText)
-            var secondarySubTextSize =
+            val secondarySubTextSize =
                 getListItemTokens().textSize(textType = SecondarySubText)
             val textColor = getColorByState(
                 stateData = getListItemTokens().textColor(
@@ -237,7 +244,7 @@ object ListItem {
                 enabled = enabled,
                 interactionSource = interactionSource
             )
-            var secondarySubTextColor = getColorByState(
+            val secondarySubTextColor = getColorByState(
                 stateData = getListItemTokens().textColor(
                     textType = SecondarySubText
                 ),
@@ -247,7 +254,7 @@ object ListItem {
             val horizontalPadding = getListItemTokens().padding(Medium)
             val verticalPadding = getListItemTokens().padding(Small)
             val borderSize = getListItemTokens().borderSize().value
-            val borderInset =
+            val borderInsetToPx =
                 with(LocalDensity.current) {
                     getListItemTokens().borderInset(inset = borderInset).toPx()
                 }
@@ -262,7 +269,7 @@ object ListItem {
                     .background(backgroundColor)
                     .fillMaxWidth()
                     .heightIn(min = cellHeight)
-                    .borderModifier(border, borderColor, borderSize, borderInset)
+                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .clickAndSemanticsModifier(
                         interactionSource,
                         onClick = onClick ?: {},
@@ -278,7 +285,7 @@ object ListItem {
                         leadingAccessoryView()
                     }
                 }
-                var contentAlignment =
+                val contentAlignment =
                     if (textAlignment == ListItemTextAlignment.Regular) Alignment.CenterStart else Alignment.Center
                 Box(
                     Modifier
@@ -286,10 +293,15 @@ object ListItem {
                         .weight(1f), contentAlignment = contentAlignment
                 ) {
                     Column(Modifier.padding(top = verticalPadding, bottom = verticalPadding)) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
                             if (primaryTextLeadingIcons != null) {
-                                primaryTextLeadingIcons.icon1()
-                                primaryTextLeadingIcons.icon2?.let { it() }
+                                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                    primaryTextLeadingIcons.icon1()
+                                    primaryTextLeadingIcons.icon2?.let { it() }
+                                }
                             }
 
                             Text(
@@ -301,50 +313,55 @@ object ListItem {
                                 overflow = TextOverflow.Ellipsis
                             )
                             if (primaryTextTrailingIcons != null) {
-                                primaryTextTrailingIcons.icon1()
-                                primaryTextTrailingIcons.icon2?.let { it() }
+                                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                    primaryTextTrailingIcons.icon1()
+                                    primaryTextTrailingIcons.icon2?.let { it() }
+                                }
                             }
                         }
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
-                                Row {
-                                    Text(
-                                        text = subText,
-                                        fontSize = subTextSize.fontSize.size,
-                                        fontWeight = subTextSize.weight,
-                                        color = subTextColor,
-                                        maxLines = subTextMaxLines,
-                                        overflow = TextOverflow.Ellipsis
-                                    )
-                                }
+                                Text(
+                                    text = subText,
+                                    fontSize = subTextSize.fontSize.size,
+                                    fontWeight = subTextSize.weight,
+                                    color = subTextColor,
+                                    maxLines = subTextMaxLines,
+                                    overflow = TextOverflow.Ellipsis
+                                )
                             }
                         }
                         if (textAlignment == ListItemTextAlignment.Regular) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
                                 if (progressIndicator != null) {
                                     Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
                                         progressIndicator()
                                     }
                                 } else {
                                     if (secondarySubTextLeadingIcons != null) {
-                                        secondarySubTextLeadingIcons.icon1()
-                                        secondarySubTextLeadingIcons.icon2?.let { it() }
-                                    }
-                                    if (secondarySubText != null) {
-                                        Row(modifier.padding(top = 1.dp)) {
-                                            Text(
-                                                text = secondarySubText,
-                                                fontSize = secondarySubTextSize.fontSize.size,
-                                                fontWeight = secondarySubTextSize.weight,
-                                                color = secondarySubTextColor,
-                                                maxLines = secondarySubTextMaxLines,
-                                                overflow = TextOverflow.Ellipsis
-                                            )
+                                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                            secondarySubTextLeadingIcons.icon1()
+                                            secondarySubTextLeadingIcons.icon2?.let { it() }
                                         }
                                     }
+                                    if (secondarySubText != null) {
+                                        Text(
+                                            text = secondarySubText,
+                                            fontSize = secondarySubTextSize.fontSize.size,
+                                            fontWeight = secondarySubTextSize.weight,
+                                            color = secondarySubTextColor,
+                                            maxLines = secondarySubTextMaxLines,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    }
                                     if (secondarySubTextTailingIcons != null) {
-                                        secondarySubTextTailingIcons.icon1()
-                                        secondarySubTextTailingIcons.icon2?.let { it() }
+                                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                            secondarySubTextTailingIcons.icon1()
+                                            secondarySubTextTailingIcons.icon2?.let { it() }
+                                        }
                                     }
                                 }
                             }
@@ -400,18 +417,8 @@ object ListItem {
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         enableContentOpenCloseTransition: Boolean = false,
-        enter: EnterTransition = slideInVertically(
-            animationSpec = tween(
-                durationMillis = 300,
-                easing = LinearOutSlowInEasing
-            )
-        ),
-        exit: ExitTransition = slideOutVertically(
-            animationSpec = tween(
-                durationMillis = 250,
-                easing = FastOutLinearInEasing
-            )
-        ),
+        enter: EnterTransition = expandVertically(),
+        exit: ExitTransition = shrinkVertically(),
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null,
@@ -450,7 +457,7 @@ object ListItem {
             val horizontalPadding = getListItemTokens().padding(Medium)
             val verticalPadding = getListItemTokens().padding(size = XSmall)
             val borderSize = getListItemTokens().borderSize().value
-            val borderInset =
+            val borderInsetToPx =
                 with(LocalDensity.current) {
                     getListItemTokens().borderInset(inset = borderInset).toPx()
                 }
@@ -474,12 +481,9 @@ object ListItem {
                         interactionSource,
                         onClick = { expandedState = !expandedState }, enabled
                     )
-                    .borderModifier(border, borderColor, borderSize, borderInset)
+                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
             ) {
-                Column(
-                    Modifier
-                        .fillMaxWidth()
-                ) {
+                Column {
                     Row(
                         modifier
                             .background(backgroundColor)
@@ -536,18 +540,20 @@ object ListItem {
                             }
                         }
                     }
-                    AnimatedVisibility(
-                        visible = !enableContentOpenCloseTransition || expandedState,
-                        enter = enter,
-                        exit = exit
-                    ) {
+                    Row {
                         if (content != null) {
-                            content()
+                            AnimatedVisibility(
+                                visible = !enableContentOpenCloseTransition || expandedState,
+                                enter = enter,
+                                exit = exit
+                            ) {
+                                content()
+                            }
                         }
+
                     }
                 }
             }
-
         }
     }
 
@@ -614,7 +620,7 @@ object ListItem {
             )
             val horizontalPadding = getListItemTokens().padding(Medium)
             val borderSize = getListItemTokens().borderSize().value
-            val borderInset =
+            val borderInsetToPx =
                 with(LocalDensity.current) {
                     getListItemTokens().borderInset(inset = borderInset).toPx()
                 }
@@ -635,7 +641,7 @@ object ListItem {
                     .fillMaxWidth()
                     .heightIn(min = cellHeight)
                     .background(backgroundColor)
-                    .borderModifier(border, borderColor, borderSize, borderInset)
+                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .clickAndSemanticsModifier(
                         interactionSource,
                         onClick = onClick ?: {}, enabled
@@ -657,13 +663,15 @@ object ListItem {
                         .weight(1f)
                 ) {
                     if (actionText != null) {
-                        inlineText(description = description,
+                        InlineText(
+                            description = description,
                             actionText = actionText,
                             onClick = onActionClick ?: {},
                             actionTextSize = actionTextSize,
                             actionTextColor = actionTextColor,
                             descriptionTextColor = textColor,
-                            descriptionTextSize = textSize)
+                            descriptionTextSize = textSize
+                        )
                     } else {
                         Text(
                             text = description,
