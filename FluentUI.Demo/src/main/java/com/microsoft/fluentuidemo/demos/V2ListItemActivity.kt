@@ -174,24 +174,23 @@ fun CreateListActivityUI() {
                         borderInset = XXLarge
                     )
                     ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Bottom with Icon Accessory and no Action text",
-                        leadingAccessoryView = { LeftViewRadioButton() },
+                        description = "Sample description with the description placed at the Bottom and no Action text",
                         descriptionPlacement = Bottom,
                         border = BorderType.Bottom,
                         borderInset = XXLarge
                     )
                     ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Top, with Action text",
+                        description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
                         actionText = "Action",
                         onActionClick = {},
+                        leadingAccessoryView = {Icon16()},
                         border = BorderType.Bottom,
                         borderInset = XXLarge
                     )
                     ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Bottom with Icon accessory and Action text",
+                        description = "Sample description with the description placed at the Bottom and Action text",
                         actionText = "More",
                         onActionClick = {},
-                        leadingAccessoryView = { LeftViewRadioButton() },
                         descriptionPlacement = Bottom,
                         border = BorderType.Bottom
                     )

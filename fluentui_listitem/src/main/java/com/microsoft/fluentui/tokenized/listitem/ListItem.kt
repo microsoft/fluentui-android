@@ -33,6 +33,7 @@ import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
@@ -619,6 +620,11 @@ object ListItem {
                 interactionSource = interactionSource
             )
             val horizontalPadding = getListItemTokens().padding(Medium)
+            val leadPadding = if(leadingAccessoryView == null){
+                PaddingValues(start = horizontalPadding, end = horizontalPadding)
+            }else {
+                PaddingValues(start = getListItemTokens().padding(size = GlobalTokens.SpacingTokens.None), end = horizontalPadding)
+            }
             val borderSize = getListItemTokens().borderSize().value
             val borderInsetToPx =
                 with(LocalDensity.current) {
@@ -647,18 +653,17 @@ object ListItem {
                         onClick = onClick ?: {}, enabled
                     ), verticalAlignment = descriptionAlignment
             ) {
-                if (leadingAccessoryView != null) {
+                if (leadingAccessoryView != null && descriptionPlacement == Top) {
                     Box(
                         Modifier
-                            .padding(start = horizontalPadding)
-                            .padding(verticalPadding), contentAlignment = Alignment.Center
+                            .padding(horizontalPadding), contentAlignment = Alignment.Center
                     ) {
                         leadingAccessoryView()
                     }
                 }
                 Box(
                     Modifier
-                        .padding(start = horizontalPadding)
+                        .padding(leadPadding)
                         .padding(verticalPadding)
                         .weight(1f)
                 ) {
