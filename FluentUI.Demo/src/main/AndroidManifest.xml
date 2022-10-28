@@ -46,6 +46,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -54,7 +55,9 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaChipViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaListViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />

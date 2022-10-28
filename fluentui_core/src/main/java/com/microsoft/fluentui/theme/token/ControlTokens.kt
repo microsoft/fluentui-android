@@ -24,7 +24,9 @@ class ControlTokens {
         Drawer,
         FloatingActionButton,
         RadioButton,
-        ToggleSwitch
+        ToggleSwitch,
+        ListItem,
+        PersonaView
     }
 
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
@@ -39,7 +41,9 @@ class ControlTokens {
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
+                ControlType.ListItem -> ListItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
+                ControlType.PersonaView -> PersonaViewTokens()
             }
         }
     }

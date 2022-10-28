@@ -27,12 +27,15 @@ const val DATE_TIME_PICKER = "DateTimePicker"
 const val DRAWER = "Drawer"
 const val V2DRAWER = "V2 Drawer"
 const val LIST_ITEM_VIEW = "ListItemView"
+const val V2LIST_ITEM = "V2 ListItem"
 const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
 const val PERSISTENT_BOTTOM_SHEET = "PersistentBottomSheet"
 const val V2BOTTOM_SHEET = "V2 BottomSheet"
 const val PERSONA_CHIP_VIEW = "PersonaChipView"
 const val PERSONA_LIST_VIEW = "PersonaListView"
+const val V2PERSONA_LIST = "V2 PersonaList"
 const val PERSONA_VIEW = "PersonaView"
+const val V2PERSONA = "V2 Persona"
 const val POPUP_MENU = "PopupMenu"
 const val PROGRESS = "Progress"
 const val SNACKBAR = "Snackbar"
@@ -60,12 +63,15 @@ val DEMOS = arrayListOf(
         Demo(DRAWER, DrawerActivity::class),
         Demo(V2DRAWER, V2DrawerActivity::class),
         Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
+        Demo(V2LIST_ITEM, V2ListItemActivity::class),
         Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
         Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
         Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
         Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
         Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
+        Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
         Demo(PERSONA_VIEW, PersonaViewActivity::class),
+        Demo(V2PERSONA, V2PersonaActivity::class),
         Demo(POPUP_MENU, PopupMenuActivity::class),
         Demo(PROGRESS, ProgressActivity::class),
         Demo(SNACKBAR, SnackbarActivity::class),
