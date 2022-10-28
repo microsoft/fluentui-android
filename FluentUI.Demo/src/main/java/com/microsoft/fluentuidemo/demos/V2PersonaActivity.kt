@@ -2,11 +2,8 @@ package com.microsoft.fluentuidemo.demos
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
@@ -19,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.tokenized.persona.Person
-import com.microsoft.fluentui.tokenized.persona.PersonaView
+import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.CoroutineScope
@@ -63,19 +60,19 @@ class V2PersonaActivity : DemoActivity() {
                         item {
                             Column() {
                                 Text(modifier = Modifier.padding(start = 8.dp, top = 16.dp), text = "One line Persona view with small Avatar", color = Color(0xFF2886DE))
-                                PersonaView(person = person1, primaryText = person1.firstName+" "+person1.lastName, onClick = { onClick(person1.firstName, coroutineScope, scaffoldState) }, enableAvatarActivityRings = true)
+                                Persona(person = person1, primaryText = person1.firstName+" "+person1.lastName, onClick = { onClick(person1.firstName, coroutineScope, scaffoldState) }, enableAvatarActivityRings = true)
                             }
                         }
                         item {
                             Column() {
                                 Text(modifier = Modifier.padding(start = 8.dp, top = 16.dp), text = "Two line Persona view with large Avatar", color = Color(0xFF2886DE))
-                                PersonaView(person = person2, primaryText = person2.firstName+" "+person2.lastName, secondaryText = "Microsoft", onClick = { onClick(person2.firstName, coroutineScope, scaffoldState) }, )
+                                Persona(person = person2, primaryText = person2.firstName+" "+person2.lastName, secondaryText = "Microsoft", onClick = { onClick(person2.firstName, coroutineScope, scaffoldState) }, )
                             }
                         }
                         item {
                             Column() {
                                 Text(modifier = Modifier.padding(start = 8.dp, top = 16.dp), text = "Three line Persona View with Xlarge Avatar", color = Color(0xFF2886DE))
-                                PersonaView(person = person3, primaryText = person3.firstName+" "+person3.lastName, secondaryText = "Microsoft", tertiaryText = person3.status.toString(), onClick = { onClick(person3.firstName, coroutineScope, scaffoldState) }, )
+                                Persona(person = person3, primaryText = person3.firstName+" "+person3.lastName, secondaryText = "Microsoft", tertiaryText = person3.status.toString(), onClick = { onClick(person3.firstName, coroutineScope, scaffoldState) }, )
                             }
                         }
                     }

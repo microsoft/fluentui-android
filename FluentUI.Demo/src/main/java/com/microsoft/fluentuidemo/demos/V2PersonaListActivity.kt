@@ -2,20 +2,11 @@ package com.microsoft.fluentuidemo.demos
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Toast
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
@@ -23,14 +14,12 @@ import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
-import com.microsoft.fluentui.tokenized.persona.PersonaListView
-import com.microsoft.fluentui.tokenized.persona.PersonaView
+import com.microsoft.fluentui.tokenized.persona.PersonaList
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
-import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -106,7 +95,7 @@ class V2PersonaListActivity : DemoActivity() {
         val scaffoldState: ScaffoldState = rememberScaffoldState()
         val coroutineScope: CoroutineScope = rememberCoroutineScope()
         Scaffold(scaffoldState = scaffoldState) {
-            PersonaListView(personas = createPersonasList(scaffoldState, coroutineScope), border = BorderType.Bottom, borderInset = BorderInset.XXLarge)
+            PersonaList(personas = createPersonasList(scaffoldState, coroutineScope), border = BorderType.Bottom, borderInset = BorderInset.XXLarge)
         }
     }
     fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState){

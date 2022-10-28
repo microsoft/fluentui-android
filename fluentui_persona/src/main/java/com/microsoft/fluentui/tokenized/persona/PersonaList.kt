@@ -10,18 +10,18 @@ import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 
 @Composable
-fun PersonaListView(personas: List<Persona>,
-                    modifier: Modifier = Modifier,
-                    border: BorderType = NoBorder,
-                    borderInset: BorderInset = None,
-                    enableAvatarActivityRings: Boolean = false,
-                    enableAvatarPresence: Boolean = true,
-                    avatarTokens: AvatarTokens? = null,
-                    personaListViewTokens: ListItemTokens? = null
+fun PersonaList(personas: List<Persona>,
+                modifier: Modifier = Modifier,
+                border: BorderType = NoBorder,
+                borderInset: BorderInset = None,
+                enableAvatarActivityRings: Boolean = false,
+                enableAvatarPresence: Boolean = true,
+                avatarTokens: AvatarTokens? = null,
+                personaListTokens: ListItemTokens? = null
 ){
         LazyColumn{
             items(personas) { item ->
-                ListItem.Item(text = item.title, subText = item.subTitle, secondarySubText = item.footer, modifier = modifier, onClick = item.onClick, border = border, borderInset = borderInset, listItemTokens = personaListViewTokens, leadingAccessoryView = { Avatar(
+                ListItem.Item(text = item.title, subText = item.subTitle, secondarySubText = item.footer, modifier = modifier, onClick = item.onClick, border = border, borderInset = borderInset, listItemTokens = personaListTokens, leadingAccessoryView = { Avatar(
                     person = item.person,
                     size = getAvatarSize(item.subTitle, item.footer),
                     enableActivityRings = enableAvatarActivityRings,
