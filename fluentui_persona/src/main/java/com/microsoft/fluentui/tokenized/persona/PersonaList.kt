@@ -34,6 +34,7 @@ fun PersonaList(
                 border = border,
                 borderInset = borderInset,
                 listItemTokens = personaListTokens,
+                enabled = item.enabled,
                 leadingAccessoryView = {
                     Avatar(
                         person = item.person,

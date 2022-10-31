@@ -20,6 +20,7 @@ fun Persona(
     onClick: (() -> Unit)? = null,
     border: BorderType = NoBorder,
     borderInset: BorderInset = None,
+    enabled: Boolean = true,
     enableAvatarActivityRings: Boolean = false,
     enableAvatarPresence: Boolean = true,
     avatarTokens: AvatarTokens? = null,
@@ -36,6 +37,7 @@ fun Persona(
         border = border,
         borderInset = borderInset,
         listItemTokens = personaTokens,
+        enabled = enabled,
         leadingAccessoryView = {
             Avatar(
                 person = person,

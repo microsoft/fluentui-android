@@ -34,6 +34,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicInputsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />

@@ -112,10 +112,21 @@ class Persona(
     val title:String,
     val subTitle: String? = null,
     val footer: String? = null,
+    val enabled: Boolean = true,
     val trailingIcon: (@Composable ()-> Unit)? = null,
     val onClick: (() -> Unit)? = null){
 
 }
+class AvatarCarouselItem(
+    val firstName: String = "",
+    val lastName: String = "",
+    @DrawableRes val image: Int? = null,
+    val imageBitmap: ImageBitmap? = null,
+    val isActive: Boolean = false,
+    val status: AvatarStatus = AvatarStatus.Available,
+    val isOOO: Boolean = false,
+    val enabled: Boolean = true
+)
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
     if(secondaryText == null && tertiaryText == null){
         return AvatarSize.Size24
