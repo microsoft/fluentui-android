@@ -13,17 +13,6 @@ jobs:
       - name: BUILDSECMON_OPT_IN
         value: true
     steps:
-    - task: Bash@3
-      displayName: 'Base64 decodes and pipes the GPG key content into the secret file'
-      env:
-        GPG_KEY_CONTENT: $(gpgContent)
-        SIGNING_SECRET_KEY_RING_FILE: $(gpgSecretFilePath)
-      inputs:
-        targetType: 'inline'
-        script: |
-          # Write your commands here
-          sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
-          ls
     - task: Gradle@3
       inputs:
         gradleWrapperFile: 'gradlew'
@@ -34,51 +23,15 @@ jobs:
         jdkVersionOption: '$(jdkVersion)'
         sonarQubeRunAnalysis: false
         spotBugsAnalysis: false
-
-    - task: Gradle@2
-      displayName: Generate testApk
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevelopmentDebugAndroidTest'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        sonarQubeRunAnalysis: false
-        spotBugsAnalysis: false
-
-    - task: Gradle@2
-      displayName: Hydra Lab UI test
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'requestHydraLabTest -PappPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestAppPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType) -PhydraLabAPIHost=$(hydraLabAPIHost) -PhydraLabAPISchema=$(hydraLabAPISchema)'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        publishJUnitResults: false
-    
-    - task: Gradle@2
-      displayName: 'generate artifacts and publish to feed'
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'publish'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        options: '-PGPGSigningKeyID=$(gpgSignKey) -PGPGSigningPassword=$(gpgSignPassword) -PSigningSecretKeyRingFile=$(gpgSecretFileParentPath) -PmavenUserName=$(mavenUsername) -PmavenPassword=$(mavenPassword)'
-
+      
     - task: PublishPipelineArtifact@1
-      displayName: 'Publish artifacts to pipeline'
       inputs:
-        targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        artifact: 'Build'
+        targetPath: '$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk'
+        artifact: 'dogfood'
         publishLocation: 'pipeline'
-
-    - task: AppCenterDistribute@3
-      displayName: 'publish dogfood apk to app center'
+    
+    - task: PublishPipelineArtifact@1
       inputs:
-        serverEndpoint: 'App Center Connection Fluent UI'
-        appSlug: 'ODSP-UX-Engineering/UI-Fabric'
-        appFile: '$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk'
-        symbolsOption: 'Android'
-        releaseNotesOption: 'file'
-        releaseNotesFile: '$(build.sourcesdirectory)/dogfood-release-notes.txt'
-        destinationType: 'groups'
-
+        targetPath: '$(build.sourcesdirectory)/dogfood-release-notes.txt'
+        artifact: 'notes'
+        publishLocation: 'pipeline'
