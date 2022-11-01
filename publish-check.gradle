@@ -35,8 +35,3 @@ def getBase64EncodedCredentials() {
     def s = username + ":" + password
     return s.bytes.encodeBase64().toString()
 }
-
-
-
-
-//https://repo1.maven.org/maven2/com/microsoft/fluentui/fluentui_listitem/0.0.18/fluentui_listitem-0.0.18.pom
