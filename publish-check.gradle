@@ -1,14 +1,19 @@
-project.ext.artifactExists = { artifactId, artifactVersion ->
-    def mavenUrl = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+project.ext.artifactExists = { repo, artifactId, artifactVersion ->
     def groupId = 'com/microsoft/fluentui'
     def pomFileName = artifactId+"-"+artifactVersion+".pom"
     def artifactPath = groupId+"/"+artifactId+"/"+artifactVersion+"/"+pomFileName
-    def repositoryUrl = mavenUrl+"/"+artifactPath
+    def url = 'https://pkgs.dev.azure.com/microsoftdesign/fluentui-native/_packaging/fluentui-android/maven/v1'
+    if(repo != "feed"){
+        url = 'https://repo1.maven.org/maven2'
+    }
+    def repositoryUrl = url+"/"+artifactPath
 
     try {
         def connection = (HttpURLConnection) new URL(repositoryUrl).openConnection()
 
-        connection.setRequestProperty("Authorization", "Basic " + getBase64EncodedCredentials())
+        if(repo == "feed"){
+            connection.setRequestProperty("Authorization", "Basic " + getBase64EncodedCredentials())
+        }
         connection.setConnectTimeout(10000)
         connection.setReadTimeout(10000)
         connection.setRequestMethod("HEAD")
