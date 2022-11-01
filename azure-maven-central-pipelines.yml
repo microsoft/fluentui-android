@@ -70,19 +70,6 @@ jobs:
         targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
         artifact: 'Build'
         publishLocation: 'pipeline'
-        
-    - task: EsrpRelease@2
-      displayName: 'publish artifacts to ESRP'
-      inputs:
-        ConnectedServiceName: 'ESRP_Release_Connection'
-        Intent: 'PackageDistribution'
-        ContentType: 'Maven'
-        PackageLocation: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        Owners: 'pyeruva@microsoft.com'
-        Approvers: 'mayankmishra@microsoft.com'
-        ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
-        MainPublisher: 'fluentuiandroidrelease'
-        DomainTenantId: '$(domainTenantId)'
 
     - task: AppCenterDistribute@3
       displayName: 'publish dogfood apk to app center'
