@@ -24,36 +24,7 @@ jobs:
           # Write your commands here
           sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
           ls
-    - task: Gradle@3
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'build'
-        options: '-PappCenterSecret=$(appCenterSecret) -PsigningKeyPassword=$(signingKeyPassword) -PsigningKeyStorePassword=$(signingKeyStorePassword)'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        sonarQubeRunAnalysis: false
-        spotBugsAnalysis: false
 
-    - task: Gradle@2
-      displayName: Generate testApk
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'assembleDevelopmentDebugAndroidTest'
-        publishJUnitResults: false
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        sonarQubeRunAnalysis: false
-        spotBugsAnalysis: false
-
-    - task: Gradle@2
-      displayName: Hydra Lab UI test
-      inputs:
-        gradleWrapperFile: 'gradlew'
-        tasks: 'requestHydraLabTest -PappPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/development/debug/FluentUI.Demo-development-debug.apk -PtestAppPath=$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/androidTest/development/debug/FluentUI.Demo-development-debug-androidTest.apk -PbuildFlavor=$(buildFlavor) -PtestSuiteName=$(testSuiteName) -PrunTimeOutSeconds=$(timeOutSeconds) -PdeviceIdentifier=$(deviceIdentifier) -PgroupTestType=$(groupTestType) -PreportAudience=TestLabOwner -PauthToken=$(authToken) -PpkgName=$(pkgName) -PtestPkgName=$(testPkgName) -PrunningType=$(runningType) -PframeworkType=$(frameworkType) -PhydraLabAPIHost=$(hydraLabAPIHost) -PhydraLabAPISchema=$(hydraLabAPISchema)'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '$(jdkVersion)'
-        publishJUnitResults: false
     
     - task: Gradle@2
       displayName: 'generate artifacts and publish to feed'
@@ -70,28 +41,3 @@ jobs:
         targetPath: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
         artifact: 'Build'
         publishLocation: 'pipeline'
-        
-    - task: EsrpRelease@2
-      displayName: 'publish artifacts to ESRP'
-      inputs:
-        ConnectedServiceName: 'ESRP_Release_Connection'
-        Intent: 'PackageDistribution'
-        ContentType: 'Maven'
-        PackageLocation: '$(build.sourcesdirectory)/build/artifacts/com/microsoft/fluentui'
-        Owners: 'pyeruva@microsoft.com'
-        Approvers: 'mayankmishra@microsoft.com'
-        ServiceEndpointUrl: 'https://api.esrp.microsoft.com'
-        MainPublisher: 'fluentuiandroidrelease'
-        DomainTenantId: '$(domainTenantId)'
-
-    - task: AppCenterDistribute@3
-      displayName: 'publish dogfood apk to app center'
-      inputs:
-        serverEndpoint: 'App Center Connection Fluent UI'
-        appSlug: 'ODSP-UX-Engineering/UI-Fabric'
-        appFile: '$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk'
-        symbolsOption: 'Android'
-        releaseNotesOption: 'file'
-        releaseNotesFile: '$(build.sourcesdirectory)/dogfood-release-notes.txt'
-        destinationType: 'groups'
-
