@@ -1,8 +1,10 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,9 +21,10 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
-class V2AvatarCarouselActivity:DemoActivity() {
+class V2AvatarCarouselActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_compose
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,10 +38,11 @@ class V2AvatarCarouselActivity:DemoActivity() {
     }
 }
 
-fun createAvatarPersons():List<AvatarCarouselItem>{
+fun createAvatarPersons(): List<AvatarCarouselItem> {
     return arrayListOf(
         AvatarCarouselItem(
-            person = Person("Allan",
+            person = Person(
+                "Allan",
                 "Munger",
                 image = R.drawable.avatar_allan_munger,
                 isActive = true,
@@ -47,7 +51,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Amanda",
+            person = Person(
+                "Amanda",
                 "Brady",
                 image = R.drawable.avatar_amanda_brady,
                 isActive = true,
@@ -56,7 +61,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Ashley",
+            person = Person(
+                "Ashley",
                 "McCarthy",
                 image = R.drawable.avatar_ashley_mccarthy,
                 isActive = true,
@@ -66,7 +72,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             enabled = false
         ),
         AvatarCarouselItem(
-            person = Person("Wanda",
+            person = Person(
+                "Wanda",
                 "Howard",
                 image = R.drawable.avatar_wanda_howard,
                 isActive = true,
@@ -75,7 +82,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Celeste",
+            person = Person(
+                "Celeste",
                 "Burton",
                 image = R.drawable.avatar_celeste_burton,
                 isActive = true,
@@ -95,7 +103,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Carlos",
+            person = Person(
+                "Carlos",
                 "Slattery",
                 image = R.drawable.avatar_carlos_slattery,
                 isActive = true,
@@ -104,7 +113,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Carole",
+            person = Person(
+                "Carole",
                 "Poland",
                 image = R.drawable.avatar_carole_poland,
                 isActive = true,
@@ -113,7 +123,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Charlotte",
+            person = Person(
+                "Charlotte",
                 "Waltson",
                 image = R.drawable.avatar_charlotte_waltson,
                 isActive = true,
@@ -123,7 +134,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             enabled = false
         ),
         AvatarCarouselItem(
-            person = Person("Colin",
+            person = Person(
+                "Colin",
                 "Badllinger",
                 image = R.drawable.avatar_colin_ballinger,
                 isActive = true,
@@ -132,7 +144,8 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
             )
         ),
         AvatarCarouselItem(
-            person = Person("Daisy",
+            person = Person(
+                "Daisy",
                 "Phillips",
                 image = R.drawable.avatar_daisy_phillips,
                 isActive = true,
@@ -163,23 +176,45 @@ fun createAvatarPersons():List<AvatarCarouselItem>{
         )
     )
 }
+
 @Composable
 fun CreateAvatarCarouselActivityUI() {
-    Column(verticalArrangement = Arrangement.spacedBy(16.dp), modifier = Modifier.padding(top = 8.dp)){
-        Text(modifier = Modifier.padding(start = 8.dp), text = "Large Avatar Carousel", color = Color(0xFF2886DE))
-        Row(){
-            AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Large, enablePresence = true)
-        }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.padding(top = 8.dp)
+    ) {
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            text = "Large Avatar Carousel",
+            color = Color(0xFF2886DE)
+        )
+        AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Large)
+
         Divider(Modifier.fillMaxWidth())
-        Text(modifier = Modifier.padding(start = 8.dp), text = "Medium Avatar Carousel", color = Color(0xFF2886DE))
-        Row(){
-            AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Medium, enablePresence = true, enableActivityRings = true)
-        }
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            text = "Medium Avatar Carousel with Presence indicator",
+            color = Color(0xFF2886DE)
+        )
+        AvatarCarousel(
+            avatarList = createAvatarPersons(),
+            size = AvatarCarouselSize.Medium,
+            enablePresence = true
+        )
+
         Divider(Modifier.fillMaxWidth())
-        Text(modifier = Modifier.padding(start = 8.dp), text = "Avatar Carousel with Activity rings", color = Color(0xFF2886DE))
-        Row(){
-            AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Large, enablePresence = true, enableActivityRings = true)
-        }
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            text = "Avatar Carousel with Activity rings and Presence indicators",
+            color = Color(0xFF2886DE)
+        )
+
+        AvatarCarousel(
+            avatarList = createAvatarPersons(),
+            size = AvatarCarouselSize.Large,
+            enablePresence = true,
+            enableActivityRings = true
+        )
     }
 
 }
