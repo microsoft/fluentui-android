@@ -28,11 +28,11 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
     @Composable
     open fun backgroundColor(enabled:Boolean): Color {
-        if(enabled){
-            return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+        return if(enabled){
+            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                 themeMode = FluentTheme.themeMode)
-        }
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+        }else
+            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
             themeMode = FluentTheme.themeMode)
     }
     @Composable
