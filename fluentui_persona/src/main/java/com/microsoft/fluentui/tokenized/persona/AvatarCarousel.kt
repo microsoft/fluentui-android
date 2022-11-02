@@ -32,9 +32,9 @@ fun AvatarCarousel(
     avatarList: List<AvatarCarouselItem>,
     size: AvatarCarouselSize,
     modifier: Modifier = Modifier,
-    avatarTokens: AvatarTokens? = null,
     enableActivityRings: Boolean = false,
     enablePresence: Boolean = false,
+    avatarTokens: AvatarTokens? = null,
     avatarCarouselTokens: AvatarCarouselTokens? = null
 ) {
     val token = avatarCarouselTokens
@@ -61,15 +61,6 @@ fun AvatarCarousel(
                     enabled = item.enabled
                 )
                 val alpha = if (item.enabled) 1f else 0.7f
-                val person = Person(
-                    item.firstName,
-                    item.lastName,
-                    image = item.image,
-                    imageBitmap = item.imageBitmap,
-                    isActive = item.isActive,
-                    isOOO = item.isOOO,
-                    status = item.status
-                )
                 Column(
                     Modifier
                         .background(backgroundColor)
@@ -78,7 +69,7 @@ fun AvatarCarousel(
                         .alpha(alpha), horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Avatar(
-                        person = person,
+                        person = item.person,
                         size = avatarSize,
                         avatarToken = avatarTokens,
                         enableActivityRings = enableActivityRings,
@@ -92,7 +83,7 @@ fun AvatarCarousel(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = item.firstName,
+                            text = item.person.firstName,
                             color = textColor,
                             fontSize = textSize.fontSize.size,
                             fontWeight = textSize.weight,
@@ -109,7 +100,7 @@ fun AvatarCarousel(
                             horizontalArrangement = Arrangement.Center
                         ) {
                             Text(
-                                text = item.lastName,
+                                text = item.person.lastName,
                                 color = subTextColor,
                                 fontSize = subTextSize.fontSize.size,
                                 fontWeight = subTextSize.weight,
