@@ -38,111 +38,127 @@ class V2AvatarCarouselActivity:DemoActivity() {
 fun createAvatarPersons():List<AvatarCarouselItem>{
     return arrayListOf(
         AvatarCarouselItem(
-            "Allan",
-            "Munger",
-            image = R.drawable.avatar_allan_munger,
-            isActive = true,
-            status = AvatarStatus.Available,
-            isOOO = false
+            person = Person("Allan",
+                "Munger",
+                image = R.drawable.avatar_allan_munger,
+                isActive = true,
+                status = AvatarStatus.Available,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Amanda",
-            "Brady",
-            image = R.drawable.avatar_amanda_brady,
-            isActive = true,
-            status = AvatarStatus.Away,
-            isOOO = false
+            person = Person("Amanda",
+                "Brady",
+                image = R.drawable.avatar_amanda_brady,
+                isActive = true,
+                status = AvatarStatus.Away,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Ashley",
-            "McCarthy",
-            image = R.drawable.avatar_ashley_mccarthy,
-            isActive = true,
-            status = AvatarStatus.Blocked,
-            isOOO = false,
+            person = Person("Ashley",
+                "McCarthy",
+                image = R.drawable.avatar_ashley_mccarthy,
+                isActive = true,
+                status = AvatarStatus.Blocked,
+                isOOO = false,
+            ),
             enabled = false
         ),
         AvatarCarouselItem(
-            "Wanda",
-            "Howard",
-            image = R.drawable.avatar_wanda_howard,
-            isActive = true,
-            status = AvatarStatus.Busy,
-            isOOO = false
+            person = Person("Wanda",
+                "Howard",
+                image = R.drawable.avatar_wanda_howard,
+                isActive = true,
+                status = AvatarStatus.Busy,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Celeste",
-            "Burton",
-            image = R.drawable.avatar_celeste_burton,
-            isActive = true,
-            status = AvatarStatus.Blocked,
-            isOOO = false,
+            person = Person("Celeste",
+                "Burton",
+                image = R.drawable.avatar_celeste_burton,
+                isActive = true,
+                status = AvatarStatus.Blocked,
+                isOOO = false,
+            ),
             enabled = false
         ),
         AvatarCarouselItem(
-            "Cecil",
-            "Folk",
-            image = R.drawable.avatar_cecil_folk,
-            isActive = true,
-            status = AvatarStatus.Available,
-            isOOO = false
+            person = Person(
+                "Cecil",
+                "Folk",
+                image = R.drawable.avatar_cecil_folk,
+                isActive = true,
+                status = AvatarStatus.Available,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Carlos",
-            "Slattery",
-            image = R.drawable.avatar_carlos_slattery,
-            isActive = true,
-            status = AvatarStatus.Offline,
-            isOOO = false
+            person = Person("Carlos",
+                "Slattery",
+                image = R.drawable.avatar_carlos_slattery,
+                isActive = true,
+                status = AvatarStatus.Offline,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Carole",
-            "Poland",
-            image = R.drawable.avatar_carole_poland,
-            isActive = true,
-            status = AvatarStatus.Unknown,
-            isOOO = false
+            person = Person("Carole",
+                "Poland",
+                image = R.drawable.avatar_carole_poland,
+                isActive = true,
+                status = AvatarStatus.Unknown,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Charlotte",
-            "Waltson",
-            image = R.drawable.avatar_charlotte_waltson,
-            isActive = true,
-            status = AvatarStatus.Blocked,
-            isOOO = false,
+            person = Person("Charlotte",
+                "Waltson",
+                image = R.drawable.avatar_charlotte_waltson,
+                isActive = true,
+                status = AvatarStatus.Blocked,
+                isOOO = false
+            ),
             enabled = false
         ),
         AvatarCarouselItem(
-            "Colin",
-            "Badllinger",
-            image = R.drawable.avatar_colin_ballinger,
-            isActive = true,
-            status = AvatarStatus.Available,
-            isOOO = false
+            person = Person("Colin",
+                "Badllinger",
+                image = R.drawable.avatar_colin_ballinger,
+                isActive = true,
+                status = AvatarStatus.Available,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Daisy",
-            "Phillips",
-            image = R.drawable.avatar_daisy_phillips,
-            isActive = true,
-            status = AvatarStatus.Available,
-            isOOO = false
+            person = Person("Daisy",
+                "Phillips",
+                image = R.drawable.avatar_daisy_phillips,
+                isActive = true,
+                status = AvatarStatus.Available,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Elliot",
-            "Woodward",
-            image = R.drawable.avatar_elliot_woodward,
-            isActive = true,
-            status = AvatarStatus.Available,
-            isOOO = false
+            person = Person(
+                "Elliot",
+                "Woodward",
+                image = R.drawable.avatar_elliot_woodward,
+                isActive = true,
+                status = AvatarStatus.Available,
+                isOOO = false
+            )
         ),
         AvatarCarouselItem(
-            "Elvia",
-            "Atkins",
-            image = R.drawable.avatar_elvia_atkins,
-            isActive = true,
-            status = AvatarStatus.Blocked,
-            isOOO = false,
+            person = Person(
+                "Elvia",
+                "Atkins",
+                image = R.drawable.avatar_elvia_atkins,
+                isActive = true,
+                status = AvatarStatus.Blocked,
+                isOOO = false
+            ),
             enabled = false
         )
     )
@@ -157,7 +173,12 @@ fun CreateAvatarCarouselActivityUI() {
         Divider(Modifier.fillMaxWidth())
         Text(modifier = Modifier.padding(start = 8.dp), text = "Medium Avatar Carousel", color = Color(0xFF2886DE))
         Row(){
-            AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Medium, enablePresence = true)
+            AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Medium, enablePresence = true, enableActivityRings = true)
+        }
+        Divider(Modifier.fillMaxWidth())
+        Text(modifier = Modifier.padding(start = 8.dp), text = "Avatar Carousel with Activity rings", color = Color(0xFF2886DE))
+        Row(){
+            AvatarCarousel(avatarList = createAvatarPersons(), size = AvatarCarouselSize.Large, enablePresence = true, enableActivityRings = true)
         }
     }
 

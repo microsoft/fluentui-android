@@ -9,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.AnonymousAccentAvatarTokens
@@ -50,7 +51,7 @@ class V2AvatarActivity : DemoActivity() {
 
                     Divider()
 
-                    Row(modifier = Modifier.fillMaxWidth(),
+                    Row(modifier = Modifier.fillMaxWidth().alpha(0.7f),
                             horizontalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterHorizontally),
                             verticalAlignment = Alignment.CenterVertically) {
                         val person: Person = Person("Allan", "Munger",

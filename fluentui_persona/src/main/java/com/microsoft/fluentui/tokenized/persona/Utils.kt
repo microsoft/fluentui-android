@@ -18,15 +18,15 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
  * @property status Current Status of the person
  * @property isOOO Enable/Disable Out-Of-Office flag for person
  */
-class Person(
-        val firstName: String = "",
-        val lastName: String = "",
-        val email: String? = null,
-        @DrawableRes val image: Int? = null,
-        val imageBitmap: ImageBitmap? = null,
-        val isActive: Boolean = false,
-        val status: AvatarStatus = AvatarStatus.Available,
-        val isOOO: Boolean = false
+open class Person(
+    val firstName: String = "",
+    val lastName: String = "",
+    val email: String? = null,
+    @DrawableRes val image: Int? = null,
+    val imageBitmap: ImageBitmap? = null,
+    val isActive: Boolean = false,
+    val status: AvatarStatus = AvatarStatus.Available,
+    val isOOO: Boolean = false
 ) {
     fun getName(): String {
         val name = "$firstName $lastName"
@@ -74,11 +74,11 @@ class Person(
  * @property imageBitmap Bitmap Image for the group
  */
 class Group(
-        val members: List<Person> = listOf(),
-        val groupName: String = "",
-        val email: String? = null,
-        @DrawableRes val image: Int? = null,
-        val imageBitmap: ImageBitmap? = null,
+    val members: List<Person> = listOf(),
+    val groupName: String = "",
+    val email: String? = null,
+    @DrawableRes val image: Int? = null,
+    val imageBitmap: ImageBitmap? = null,
 ) {
     fun isImageAvailable(): Boolean {
         return image != null || imageBitmap != null
@@ -107,31 +107,27 @@ class Group(
         return initial.uppercase()
     }
 }
+
 class Persona(
-    val person:Person,
-    val title:String,
+    val person: Person,
+    val title: String,
     val subTitle: String? = null,
     val footer: String? = null,
     val enabled: Boolean = true,
-    val trailingIcon: (@Composable ()-> Unit)? = null,
-    val onClick: (() -> Unit)? = null){
-
-}
-class AvatarCarouselItem(
-    val firstName: String = "",
-    val lastName: String = "",
-    @DrawableRes val image: Int? = null,
-    val imageBitmap: ImageBitmap? = null,
-    val isActive: Boolean = false,
-    val status: AvatarStatus = AvatarStatus.Available,
-    val isOOO: Boolean = false,
-    val enabled: Boolean = true
+    val trailingIcon: (@Composable () -> Unit)? = null,
+    val onClick: (() -> Unit)? = null
 )
+
+class AvatarCarouselItem(
+    val enabled: Boolean = true,
+    val person: Person = Person()
+)
+
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
-    if(secondaryText == null && tertiaryText == null){
+    if (secondaryText == null && tertiaryText == null) {
         return AvatarSize.Small
     }
-    if(secondaryText != null && tertiaryText == null){
+    if (secondaryText != null && tertiaryText == null) {
         return AvatarSize.Large
     }
     return AvatarSize.XLarge
