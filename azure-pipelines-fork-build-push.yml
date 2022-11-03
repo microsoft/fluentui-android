@@ -1,4 +1,4 @@
-#Pipeline to run automatically when PR is raised
+#Pipeline to run automatically when PR is raised and CI
     
 jobs:
 
