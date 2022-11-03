@@ -1,5 +1,11 @@
 #Pipeline to run automatically when changes are pushed to master
-    
+
+pr:
+  autoCancel: true
+  branches:
+    include:
+    - master
+
 jobs:
 
   - job: BuildTest
