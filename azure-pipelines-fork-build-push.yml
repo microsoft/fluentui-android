@@ -1,4 +1,8 @@
 #Pipeline to run automatically when changes are pushed to master
+trigger:
+  branches:
+    include:
+    - master
 
 pr:
   autoCancel: true
