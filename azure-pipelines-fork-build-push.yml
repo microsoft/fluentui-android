@@ -16,7 +16,7 @@ jobs:
         jdkVersionOption: '$(jdkVersion)'
 
     - task: Gradle@2
-      displayName: Unit tests
+      displayName: tests
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'testDevelopmentDebugUnitTest'
