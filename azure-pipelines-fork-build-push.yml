@@ -1,4 +1,4 @@
-#Pipeline to run automatically when changes are pushed to master and PR is raised
+#Pipeline to run automatically when PR is raised
     
 jobs:
 
