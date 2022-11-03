@@ -1,8 +1,12 @@
 package com.microsoft.fluentui.tokenized.persona
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.interaction.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 
@@ -119,8 +123,32 @@ class Persona(
 
 class AvatarCarouselItem(
     val enabled: Boolean = true,
-    val person: Person = Person()
+    val person: Person = Person(),
+    val onItemClick: (() -> Unit)? = null,
 )
+@Composable
+fun getColorByState(
+    stateData: StateColor,
+    enabled: Boolean,
+    interactionSource: InteractionSource
+): Color {
+    if (enabled) {
+        val isPressed by interactionSource.collectIsPressedAsState()
+        if (isPressed)
+            return stateData.pressed
+
+        val isFocused by interactionSource.collectIsFocusedAsState()
+        if (isFocused)
+            return stateData.pressed
+
+        val isHovered by interactionSource.collectIsHoveredAsState()
+        if (isHovered)
+            return stateData.pressed
+
+        return stateData.rest
+    } else
+        return stateData.disabled
+}
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
     if(secondaryText == null && tertiaryText == null){
         return AvatarSize.Size24
