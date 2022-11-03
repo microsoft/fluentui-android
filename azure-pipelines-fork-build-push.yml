@@ -1,5 +1,5 @@
-#Pipeline to run automatically when changes are pushed to master
 trigger:
+  batch: true
   branches:
     include:
     - master
