@@ -27,14 +27,20 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
         }
     }
     @Composable
-    open fun backgroundColor(enabled:Boolean): Color {
-        return if(enabled){
-            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                themeMode = FluentTheme.themeMode)
-        }else
-            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-            themeMode = FluentTheme.themeMode)
+    open fun backgroundColor(): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1Pressed].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
     }
+
     @Composable
     open fun getTextColor(textType: TextType, enabled:Boolean):Color{
         return when(textType){
