@@ -27,7 +27,7 @@ jobs:
         spotBugsAnalysis: false
 
     - task: Gradle@2
-      displayName: Generate testApk
+      displayName: testApk
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'assembleDevelopmentDebugAndroidTest'
