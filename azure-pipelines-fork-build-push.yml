@@ -8,7 +8,7 @@ jobs:
     steps:
 
     - task: Gradle@2
-      displayName: 'gradlew build'
+      displayName: 'build'
       inputs:
         gradleWrapperFile: 'gradlew'
         tasks: 'assembleDevelopmentDebug'
