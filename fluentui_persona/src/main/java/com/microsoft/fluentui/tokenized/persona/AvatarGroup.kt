@@ -27,7 +27,7 @@ const val DEFAULT_MAX_AVATAR = 5
  *
  * @param group [Group] of people whose Avatar has to be created
  * @param modifier Optional modifier for AvatarGroup
- * @param size Set size of AvatarGroup. Default: [AvatarSize.Medium]
+ * @param size Set size of AvatarGroup. Default: [AvatarSize.Size32]
  * @param style Set style of AvatarGroup. Default: [AvatarGroupStyle.Stack]
  * @param maxVisibleAvatar Maximum number of avatars to be displayed. If number is less than total Group size, Overflow Avatar is added.
  * @param enablePresence Enable/Disable Presence Indicator in Avatars. Works only for [AvatarGroupStyle.Pile]
@@ -89,8 +89,16 @@ fun AvatarGroup(
             .then(semanticModifier), content = {
             for (i in 0 until visibleAvatar) {
                 val person = group.members[i]
+
+                var paddingModifier: Modifier = Modifier
+                if (style == AvatarGroupStyle.Pile && person.isActive) {
+                    val padding = getAvatarGroupTokens().pilePadding(getAvatarGroupInfo())
+                    paddingModifier = paddingModifier.padding(start = padding, end = padding)
+                }
+
                 Avatar(
                     person,
+                    modifier = paddingModifier,
                     size = size,
                     enableActivityRings = true,
                     enablePresence = enablePresence,

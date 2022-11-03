@@ -86,28 +86,55 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
             }
 
             AvatarGroupStyle.Pile -> when (avatarGroupInfo.size) {
-                AvatarSize.Size16 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall) else GlobalTokens.spacing(
+                AvatarSize.Size16 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XXSmall
                 )
-                AvatarSize.Size20 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXXSmall) else GlobalTokens.spacing(
+                AvatarSize.Size20 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XXSmall
                 )
-                AvatarSize.Size24 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXXSmall) else GlobalTokens.spacing(
+                AvatarSize.Size24 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XXSmall
                 )
-                AvatarSize.Size32 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXXSmall) else GlobalTokens.spacing(
+                AvatarSize.Size32 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XSmall
                 )
-                AvatarSize.Size40 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXXSmall) else GlobalTokens.spacing(
+                AvatarSize.Size40 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XSmall
                 )
-                AvatarSize.Size56 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall) else GlobalTokens.spacing(
+                AvatarSize.Size56 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XSmall
                 )
-                AvatarSize.Size72 -> if (isActive) GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall) else GlobalTokens.spacing(
+                AvatarSize.Size72 -> GlobalTokens.spacing(
                     GlobalTokens.SpacingTokens.XSmall
                 )
             }
+        }
+    }
+
+    @Composable
+    open fun pilePadding(avatarGroupInfo: AvatarGroupInfo): Dp {
+        return when (avatarGroupInfo.size) {
+            AvatarSize.Size16 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXSmall
+            )
+            AvatarSize.Size20 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size24 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size32 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size40 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size56 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXSmall
+            )
+            AvatarSize.Size72 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XSmall
+            )
         }
     }
 

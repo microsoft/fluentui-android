@@ -46,7 +46,7 @@ const val ICON_TEST_TAG = "Icon"
  *
  * @param person Data Class for the person whose Avatar is to be generated.
  * @param modifier Optional Modifier for avatar
- * @param size Set Size of Avatar. Default: [AvatarSize.Medium]
+ * @param size Set Size of Avatar. Default: [AvatarSize.Size32]
  * @param enableActivityRings Enable/Disable Activity Rings on Avatar
  * @param enablePresence Enable/Disable Presence Indicator on Avatar
  * @param avatarToken Token to provide appearance values to Avatar
@@ -70,6 +70,7 @@ fun Avatar(
         LocalAvatarTokens provides token,
         LocalAvatarInfo provides AvatarInfo(
             size, AvatarType.Person, person.isActive,
+
             person.status, person.isOOO, person.isImageAvailable(),
             personInitials.isNotEmpty(), person.getName()
         )
@@ -80,26 +81,23 @@ fun Avatar(
         val borders = getAvatarTokens().borderStroke(getAvatarInfo())
         val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
 
-        Box(
-            modifier
-                .requiredSize(avatarSize)
-                .semantics(mergeDescendants = false) {
-                    contentDescription = "${person.getName()}. " +
-                            "${if (enablePresence) "Status, ${person.status}," else ""}. " +
-                            "${if (enablePresence && person.isOOO) "Out Of Office," else ""}. " +
-                            "${
-                                if (enableActivityRings) {
-                                    if (person.isActive) "Active" else "Inactive"
-                                } else ""
-                            }."
-                }, contentAlignment = Alignment.Center
+        Box(modifier = Modifier
+            .semantics(mergeDescendants = false) {
+                contentDescription = "${person.getName()}. " +
+                        "${if (enablePresence) "Status, ${person.status}," else ""}. " +
+                        "${if (enablePresence && person.isOOO) "Out Of Office," else ""}. " +
+                        "${
+                            if (enableActivityRings) {
+                                if (person.isActive) "Active" else "Inactive"
+                            } else ""
+                        }."
+            }
         ) {
             Box(
                 Modifier
-                    .fillMaxSize()
-                    .clip(CircleShape)
-                    .background(backgroundColor),
-                contentAlignment = Alignment.Center
+                    .then(modifier)
+                    .requiredSize(avatarSize)
+                    .background(backgroundColor, CircleShape), contentAlignment = Alignment.Center
             ) {
                 if (person.image != null) {
                     Image(
@@ -127,30 +125,33 @@ fun Avatar(
                         fontWeight = fontInfo.weight,
                         lineHeight = fontInfo.fontSize.lineHeight,
                         color = foregroundColor,
-                        modifier = Modifier.clearAndSetSemantics { })
+                        modifier = Modifier
+                            .clearAndSetSemantics { })
                 } else {
                     Icon(
                         getAvatarTokens().icon(getAvatarInfo()),
                         null,
-                        modifier = Modifier.semantics {
-                            testTag = ICON_TEST_TAG
-                        },
+                        modifier = Modifier
+                            .background(backgroundColor, CircleShape)
+                            .semantics {
+                                testTag = ICON_TEST_TAG
+                            },
                         tint = foregroundColor,
                     )
                 }
-            }
 
-            if (enableActivityRings)
-                ActivityRing(radius = avatarSize / 2, borders)
+                if (enableActivityRings)
+                    ActivityRing(radius = avatarSize / 2, borders)
 
-            if (enablePresence) {
-                Box(Modifier.fillMaxSize()) {
+                if (enablePresence) {
                     val presenceOffset: DpOffset = getAvatarTokens().presenceOffset(getAvatarInfo())
                     val image: Icon = getAvatarTokens().presenceIcon(getAvatarInfo())
                     Image(
                         image.value(themeMode),
                         null,
-                        Modifier.offset(presenceOffset.x, presenceOffset.y)
+                        Modifier
+                            .align(Alignment.TopStart)
+                            .offset(presenceOffset.x, presenceOffset.y)
                     )
                 }
             }
@@ -165,7 +166,7 @@ fun Avatar(
  *
  * @param group Data Class for the person whose Avatar is to be generated.
  * @param modifier Optional Modifier for avatar
- * @param size Set Size of Avatar. Default: [AvatarSize.Medium]
+ * @param size Set Size of Avatar. Default: [AvatarSize.Size32]
  * @param avatarToken Token to provide appearance values to Avatar
  */
 @Composable
@@ -189,7 +190,7 @@ fun Avatar(
         )
     ) {
         val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
-        val bordersRadius = getAvatarTokens().cornerRadius(getAvatarInfo())
+        val cornerRadius = getAvatarTokens().cornerRadius(getAvatarInfo())
         val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
         val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
         val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
@@ -208,7 +209,7 @@ fun Avatar(
         ) {
             Box(
                 Modifier
-                    .clip(RoundedCornerShape(bordersRadius))
+                    .clip(RoundedCornerShape(cornerRadius))
                     .background(backgroundColor)
                     .fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -219,7 +220,7 @@ fun Avatar(
                         contentDescription = null,
                         modifier = Modifier
                             .size(avatarSize)
-                            .clip(RoundedCornerShape(bordersRadius))
+                            .clip(RoundedCornerShape(cornerRadius))
                             .semantics {
                                 testTag = IMAGE_TEST_TAG
                             }
@@ -230,7 +231,7 @@ fun Avatar(
                         contentDescription = null,
                         modifier = Modifier
                             .size(avatarSize)
-                            .clip(RoundedCornerShape(bordersRadius))
+                            .clip(RoundedCornerShape(cornerRadius))
                             .semantics {
                                 testTag = IMAGE_TEST_TAG
                             }
@@ -262,7 +263,7 @@ fun Avatar(
  *
  * @param overflowCount Magnitude of overflow
  * @param modifier Optional modifier for Overflow avatar
- * @param size Set Size of Avatar. Default: [AvatarSize.Medium]
+ * @param size Set Size of Avatar. Default: [AvatarSize. Medium]
  * @param enableActivityRings Enable/Disable Activity Rings on Avatar
  * @param avatarToken Token to provide appearance values to Avatar
  */

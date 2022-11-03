@@ -604,7 +604,7 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             AvatarSize.Size24 -> DpOffset(11.dp, 13.dp)
             AvatarSize.Size32 -> DpOffset(20.dp, 20.dp)
             AvatarSize.Size40 -> DpOffset(26.dp, 26.dp)
-            AvatarSize.Size56 -> DpOffset(36.dp, 36.dp)
+            AvatarSize.Size56 -> DpOffset(40.dp, 40.dp)
             AvatarSize.Size72 -> DpOffset(51.dp, 51.dp)
         }
     }
