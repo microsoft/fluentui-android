@@ -9,23 +9,16 @@ import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorToke
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1Pressed
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground1
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground2
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground3
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
-import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body1
-import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Body2
-import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.Caption1
+import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.*
 import com.microsoft.fluentui.theme.token.ControlToken
 import com.microsoft.fluentui.theme.token.FontInfo
 import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens.BorderSizeTokens.Thin
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens
+import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.Thin
 import com.microsoft.fluentui.theme.token.StateColor
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaViewType.OneLine
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaViewType.ThreeLine
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaViewType.TwoLine
-import com.microsoft.fluentui.theme.token.controlTokens.TextType.SecondaryText
-import com.microsoft.fluentui.theme.token.controlTokens.TextType.TertiaryText
-import com.microsoft.fluentui.theme.token.controlTokens.TextType.Text
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaViewType.*
+import com.microsoft.fluentui.theme.token.controlTokens.TextType.*
 import kotlinx.android.parcel.Parcelize
 
 enum class PersonaViewType {
@@ -115,11 +108,11 @@ open class PersonaViewTokens : ControlToken, Parcelable {
 
     @Composable
     open fun borderSize(): Dp {
-        return GlobalTokens.borderSize(Thin)
+        return GlobalTokens.strokeWidth(Thin)
     }
 
     @Composable
-    open fun borderInset(inset:BorderInset): Dp{
+    open fun borderInset(inset: BorderInset): Dp {
         return when (inset) {
             BorderInset.None -> 0.dp
             BorderInset.Medium -> 16.dp

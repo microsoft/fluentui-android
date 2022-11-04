@@ -82,7 +82,7 @@ fun CreateListActivityUI() {
                         text = "One-Line list with Text icons",
                         color = Color(0xFF2886DE)
                     )
-                    OneLineListAccessoryViewContent(coroutineScope , scaffoldState)
+                    OneLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
                     Text(
@@ -146,7 +146,13 @@ fun CreateListActivityUI() {
                         textMaxLines = 4,
                         subTextMaxLines = 4,
                         leadingAccessoryView = { LeftViewFolderIcon40() },
-                        trailingAccessoryView = { RightViewButton(ButtonSize.Small, coroutineScope, scaffoldState) },
+                        trailingAccessoryView = {
+                            RightViewButton(
+                                ButtonSize.Small,
+                                coroutineScope,
+                                scaffoldState
+                            )
+                        },
                         border = BorderType.Bottom,
                         borderInset = XXLarge
                     )
@@ -183,7 +189,7 @@ fun CreateListActivityUI() {
                         description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
                         actionText = "Action",
                         onActionClick = {},
-                        leadingAccessoryView = {Icon16()},
+                        leadingAccessoryView = { Icon16() },
                         border = BorderType.Bottom,
                         borderInset = XXLarge
                     )
@@ -263,19 +269,19 @@ fun OneLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { GetAvatar(size = Small, drawable.avatar_amanda_brady) },
+            leadingAccessoryView = { GetAvatar(size = Size24, drawable.avatar_amanda_brady) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { GetAvatar(size = Small, drawable.avatar_allan_munger) },
+            leadingAccessoryView = { GetAvatar(size = Size24, drawable.avatar_allan_munger) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { GetAvatar(size = Small, drawable.avatar_ashley_mccarthy) },
+            leadingAccessoryView = { GetAvatar(size = Size24, drawable.avatar_ashley_mccarthy) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -288,21 +294,21 @@ fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryView = { GetAvatar(size = Large, drawable.avatar_daisy_phillips) },
+            leadingAccessoryView = { GetAvatar(size = Size40, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryView = { GetAvatar(size = Large, drawable.avatar_elliot_woodward) },
+            leadingAccessoryView = { GetAvatar(size = Size40, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryView = { GetAvatar(size = Large, drawable.avatar_charlotte_waltson) },
+            leadingAccessoryView = { GetAvatar(size = Size40, drawable.avatar_charlotte_waltson) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -316,7 +322,7 @@ fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { GetAvatar(size = XLarge, drawable.avatar_daisy_phillips) },
+            leadingAccessoryView = { GetAvatar(size = Size56, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -324,7 +330,7 @@ fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { GetAvatar(size = XLarge, drawable.avatar_elliot_woodward) },
+            leadingAccessoryView = { GetAvatar(size = Size56, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -332,7 +338,7 @@ fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { GetAvatar(size = XLarge, drawable.avatar_charlotte_waltson) },
+            leadingAccessoryView = { GetAvatar(size = Size56, drawable.avatar_charlotte_waltson) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -351,7 +357,13 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { RightViewButton(size = ButtonSize.Small, coroutineScope, scaffoldState) },
+            leadingAccessoryView = {
+                RightViewButton(
+                    size = ButtonSize.Small,
+                    coroutineScope,
+                    scaffoldState
+                )
+            },
             primaryTextLeadingIcons = twoTextIcons20(),
             primaryTextTrailingIcons = oneTextIcon20(),
             border = BorderType.Bottom,
@@ -359,7 +371,7 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Small) },
+            leadingAccessoryView = { LeftViewAvatar(size = Size24) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -372,7 +384,7 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
         ListItem.Item(
             text = primaryText,
             leadingAccessoryView = { LeftViewRadioButton() },
-            trailingAccessoryView = { RightViewAvatarStack(Small) },
+            trailingAccessoryView = { RightViewAvatarStack(Size24) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -402,7 +414,7 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Large) },
+            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
             primaryTextTrailingIcons = oneTextIcon20(),
@@ -412,7 +424,7 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             text = primaryText,
             subText = secondaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
-            trailingAccessoryView = { RightViewAvatarStack(Large) },
+            trailingAccessoryView = { RightViewAvatarStack(Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -422,7 +434,13 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             leadingAccessoryView = { LeftViewFolderIcon40() },
             secondarySubTextLeadingIcons = twoTextIcons16(),
             secondarySubTextTailingIcons = twoTextIcons16(),
-            trailingAccessoryView = { RightViewButton(ButtonSize.Small, coroutineScope, scaffoldState) },
+            trailingAccessoryView = {
+                RightViewButton(
+                    ButtonSize.Small,
+                    coroutineScope,
+                    scaffoldState
+                )
+            },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -447,7 +465,10 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
 }
 
 @Composable
-fun ThreeLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+fun ThreeLineListAccessoryViewContent(
+    coroutineScope: CoroutineScope,
+    scaffoldState: ScaffoldState
+) {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -466,7 +487,13 @@ fun ThreeLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldSt
             subText = secondaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
-            trailingAccessoryView = { RightViewButton(ButtonSize.Small, coroutineScope, scaffoldState) },
+            trailingAccessoryView = {
+                RightViewButton(
+                    ButtonSize.Small,
+                    coroutineScope,
+                    scaffoldState
+                )
+            },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -477,7 +504,7 @@ fun ThreeLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldSt
             progressIndicator = { ProgressBar() },
             primaryTextLeadingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = twoTextIcons16(),
-            leadingAccessoryView = { LeftViewAvatar(XLarge) },
+            leadingAccessoryView = { LeftViewAvatar(Size56) },
             trailingAccessoryView = { RightViewText(text = "Value") },
             border = BorderType.Bottom
         )
@@ -677,7 +704,11 @@ fun LeftViewFolderIcon40() {
 }
 
 @Composable
-fun RightViewButton(size: ButtonSize, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+fun RightViewButton(
+    size: ButtonSize,
+    coroutineScope: CoroutineScope,
+    scaffoldState: ScaffoldState
+) {
     return Button(
         text = "Text",
         onClick = { onClick("Button", coroutineScope, scaffoldState) },
@@ -708,14 +739,14 @@ fun ProgressBar() {
     LinearProgressIndicator()
 }
 
-fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState){
+fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
     scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
     coroutineScope.launch {
         val result = scaffoldState.snackbarHostState.showSnackbar(
             message = "Clicked on $text",
             actionLabel = "Close"
         )
-        when(result){
+        when (result) {
             SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
         }
     }

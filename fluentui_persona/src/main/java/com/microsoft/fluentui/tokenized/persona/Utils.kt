@@ -118,10 +118,10 @@ class Persona(
 }
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
     if(secondaryText == null && tertiaryText == null){
-        return AvatarSize.Small
+        return AvatarSize.Size24
     }
     if(secondaryText != null && tertiaryText == null){
-        return AvatarSize.Large
+        return AvatarSize.Size40
     }
-    return AvatarSize.XLarge
+    return AvatarSize.Size56
 }
