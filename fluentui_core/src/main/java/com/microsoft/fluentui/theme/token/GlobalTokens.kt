@@ -6,7 +6,6 @@
 package com.microsoft.fluentui.theme.token
 
 import android.os.Parcelable
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
@@ -175,18 +174,12 @@ object GlobalTokens : Parcelable {
 
     fun fontWeight(token: FontWeightTokens): FontWeight {
         return when (token) {
-            FontWeightTokens.Light ->
-                FontWeight.Light
-            FontWeightTokens.SemiLight ->
-                FontWeight.ExtraLight
-            FontWeightTokens.Regular ->
-                FontWeight.Normal
-            FontWeightTokens.Medium ->
-                FontWeight.Medium
-            FontWeightTokens.SemiBold ->
-                FontWeight.SemiBold
-            FontWeightTokens.Bold ->
-                FontWeight.Bold
+            FontWeightTokens.Light -> FontWeight(0)
+            FontWeightTokens.SemiLight -> FontWeight(0)
+            FontWeightTokens.Regular -> FontWeight(400)
+            FontWeightTokens.Medium -> FontWeight(500)
+            FontWeightTokens.SemiBold -> FontWeight(600)
+            FontWeightTokens.Bold -> FontWeight(700)
         }
     }
 
@@ -246,9 +239,9 @@ object GlobalTokens : Parcelable {
             IconSizeTokens.XXLargeSelected ->
                 IconSize(40.dp, IconType.Filled)
             IconSizeTokens.XXXLarge ->
-                IconSize(72.dp, IconType.Regular)
+                IconSize(48.dp, IconType.Regular)
             IconSizeTokens.XXXLargeSelected ->
-                IconSize(72.dp, IconType.Filled)
+                IconSize(48.dp, IconType.Filled)
         }
     }
 
@@ -309,7 +302,7 @@ object GlobalTokens : Parcelable {
             ShadowTokens.Shadow08 -> 8.dp
             ShadowTokens.Shadow16 -> 16.dp
             ShadowTokens.Shadow28 -> 28.dp
-            ShadowTokens.Shadow64 -> 64.dp
+            ShadowTokens.Shadow64 -> 40.dp
         }
     }
 
@@ -363,25 +356,31 @@ object GlobalTokens : Parcelable {
         }
     }
 
-    enum class BorderSizeTokens {
+    enum class StrokeWidthTokens {
         None,
+        Thinnest,
+        Thinner,
         Thin,
         Thick,
         Thicker,
         Thickest
     }
 
-    fun borderSize(token: BorderSizeTokens): Dp {
+    fun strokeWidth(token: StrokeWidthTokens): Dp {
         return when (token) {
-            BorderSizeTokens.None ->
+            StrokeWidthTokens.None ->
                 0.dp
-            BorderSizeTokens.Thin ->
+            StrokeWidthTokens.Thinnest ->
+                0.5.dp
+            StrokeWidthTokens.Thinner ->
                 1.dp
-            BorderSizeTokens.Thick ->
+            StrokeWidthTokens.Thin ->
+                1.5.dp
+            StrokeWidthTokens.Thick ->
                 2.dp
-            BorderSizeTokens.Thicker ->
+            StrokeWidthTokens.Thicker ->
                 4.dp
-            BorderSizeTokens.Thickest ->
+            StrokeWidthTokens.Thickest ->
                 6.dp
         }
     }

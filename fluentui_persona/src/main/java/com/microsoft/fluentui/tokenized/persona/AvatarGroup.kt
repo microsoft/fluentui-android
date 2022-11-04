@@ -27,7 +27,7 @@ const val DEFAULT_MAX_AVATAR = 5
  *
  * @param group [Group] of people whose Avatar has to be created
  * @param modifier Optional modifier for AvatarGroup
- * @param size Set size of AvatarGroup. Default: [AvatarSize.Medium]
+ * @param size Set size of AvatarGroup. Default: [AvatarSize.Size32]
  * @param style Set style of AvatarGroup. Default: [AvatarGroupStyle.Stack]
  * @param maxVisibleAvatar Maximum number of avatars to be displayed. If number is less than total Group size, Overflow Avatar is added.
  * @param enablePresence Enable/Disable Presence Indicator in Avatars. Works only for [AvatarGroupStyle.Pile]
@@ -36,17 +36,17 @@ const val DEFAULT_MAX_AVATAR = 5
  */
 @Composable
 fun AvatarGroup(
-        group: Group,
-        modifier: Modifier = Modifier,
-        size: AvatarSize = AvatarSize.Medium,
-        style: AvatarGroupStyle = AvatarGroupStyle.Stack,
-        maxVisibleAvatar: Int = DEFAULT_MAX_AVATAR,
-        enablePresence: Boolean = false,
-        avatarToken: AvatarTokens? = null,
-        avatarGroupToken: AvatarGroupTokens? = null
+    group: Group,
+    modifier: Modifier = Modifier,
+    size: AvatarSize = AvatarSize.Size32,
+    style: AvatarGroupStyle = AvatarGroupStyle.Stack,
+    maxVisibleAvatar: Int = DEFAULT_MAX_AVATAR,
+    enablePresence: Boolean = false,
+    avatarToken: AvatarTokens? = null,
+    avatarGroupToken: AvatarGroupTokens? = null
 ) {
     val token = avatarGroupToken
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
 
     val visibleAvatar: Int = if (maxVisibleAvatar < 0)
         0
@@ -60,15 +60,16 @@ fun AvatarGroup(
         enablePresence = false
 
     CompositionLocalProvider(
-            LocalAvatarGroupTokens provides token,
-            LocalAvatarGroupInfo provides AvatarGroupInfo(size, style)
+        LocalAvatarGroupTokens provides token,
+        LocalAvatarGroupInfo provides AvatarGroupInfo(size, style)
     ) {
         val spacing: MutableList<Int> = mutableListOf()
         for (i in 0 until visibleAvatar) {
             val person = group.members[i]
             if (i != 0) {
                 spacing.add(with(LocalDensity.current) {
-                    getAvatarGroupTokens().spacing(getAvatarGroupInfo(), person.isActive).roundToPx()
+                    getAvatarGroupTokens().spacing(getAvatarGroupInfo(), person.isActive)
+                        .roundToPx()
                 })
             }
         }
@@ -79,19 +80,36 @@ fun AvatarGroup(
         }
 
         val semanticModifier: Modifier = Modifier.semantics(true) {
-            contentDescription = "Group Name: ${group.groupName}. Total ${group.members.size} members. "
+            contentDescription =
+                "Group Name: ${group.groupName}. Total ${group.members.size} members. "
         }
 
         Layout(modifier = modifier
-                .padding(8.dp)
-                .then(semanticModifier), content = {
+            .padding(8.dp)
+            .then(semanticModifier), content = {
             for (i in 0 until visibleAvatar) {
                 val person = group.members[i]
-                Avatar(person, size = size, enableActivityRings = true, enablePresence = enablePresence, avatarToken = avatarToken)
+
+                var paddingModifier: Modifier = Modifier
+                if (style == AvatarGroupStyle.Pile && person.isActive) {
+                    val padding = getAvatarGroupTokens().pilePadding(getAvatarGroupInfo())
+                    paddingModifier = paddingModifier.padding(start = padding, end = padding)
+                }
+
+                Avatar(
+                    person,
+                    modifier = paddingModifier,
+                    size = size,
+                    enableActivityRings = true,
+                    enablePresence = enablePresence,
+                    avatarToken = avatarToken
+                )
             }
             if (group.members.size > visibleAvatar || group.members.isEmpty()) {
-                Avatar(group.members.size - visibleAvatar, size = size,
-                        enableActivityRings = true, avatarToken = avatarToken)
+                Avatar(
+                    group.members.size - visibleAvatar, size = size,
+                    enableActivityRings = true, avatarToken = avatarToken
+                )
             }
         }) { measurables, constraints ->
             val placeables = measurables.map { measurable ->

@@ -134,7 +134,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
                 themeMode = themeMode
             ),
             selected = FluentColor(
-                light = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground4].value(
+                light = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
                 dark = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
@@ -142,7 +142,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
                 )
             ).value(themeMode = themeMode),
             selectedFocused = FluentColor(
-                light = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground4].value(
+                light = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
                 dark = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
@@ -168,7 +168,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
                 themeMode = themeMode
             ),
             selected = FluentColor(
-                light = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground4].value(
+                light = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
                 dark = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
@@ -178,7 +178,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
                 themeMode = themeMode
             ),
             selectedFocused = FluentColor(
-                light = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground4].value(
+                light = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
                 dark = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
