@@ -2,16 +2,11 @@ package com.microsoft.fluentui.tokenized.persona
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.FlingBehavior
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Text
-import androidx.compose.material.contentColorFor
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -70,7 +65,7 @@ fun AvatarCarousel(
     modifier: Modifier = Modifier,
     enablePresence: Boolean = false,
     avatarTokens: AvatarTokens? = null,
-    avatarCarouselTokens: AvatarCarouselTokens? = null,
+    avatarCarouselTokens: AvatarCarouselTokens? = null
 ) {
     val token = avatarCarouselTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarCarousel] as AvatarCarouselTokens
@@ -82,6 +77,7 @@ fun AvatarCarousel(
         val subTextSize =
             getAvatarCarouselTokens().getTextSize(textType = TextType.SubText, carouselSize = size)
         val avatarTextPadding = getAvatarCarouselTokens().padding(size = size)
+        val bottomPadding = if(size == AvatarCarouselSize.Medium) 8.dp else 0.dp
 
         LazyRow{
             items(avatarList) { item ->
@@ -116,7 +112,7 @@ fun AvatarCarousel(
                     )
                     Row(
                         Modifier
-                            .padding(start = 2.dp, end = 2.dp, top = avatarTextPadding, bottom = (if(size == AvatarCarouselSize.Medium) 8.dp else 0.dp))
+                            .padding(start = 2.dp, end = 2.dp, top = avatarTextPadding, bottom = bottomPadding)
                             .fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center

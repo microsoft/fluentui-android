@@ -22,8 +22,8 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun getAvatarSize(carouselSize:AvatarCarouselSize):AvatarSize{
         return when(carouselSize){
-            AvatarCarouselSize.Medium -> AvatarSize.XLarge
-            AvatarCarouselSize.Large -> AvatarSize.XXLarge
+            AvatarCarouselSize.Medium -> AvatarSize.Size56
+            AvatarCarouselSize.Large -> AvatarSize.Size72
         }
     }
     @Composable

@@ -285,17 +285,6 @@ fun CreateAvatarCarouselActivityUI() {
                 coroutineScope = coroutineScope,
                 scaffoldState = scaffoldState
             ), size = AvatarCarouselSize.Medium, enablePresence = true)
-
-            Divider(Modifier.fillMaxWidth())
-            Text(
-                modifier = Modifier.padding(start = 8.dp),
-                text = "Medium Avatar Carousel with Presence indicator",
-                color = Color(0xFF2886DE)
-            )
-            AvatarCarousel(avatarList = createLimitedAvatarPersons(
-                coroutineScope = coroutineScope,
-                scaffoldState = scaffoldState
-            ), size = AvatarCarouselSize.Large, enablePresence = true)
         }
     }
 }

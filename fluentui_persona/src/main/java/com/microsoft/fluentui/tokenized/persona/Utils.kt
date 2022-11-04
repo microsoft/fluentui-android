@@ -22,7 +22,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
  * @property status Current Status of the person
  * @property isOOO Enable/Disable Out-Of-Office flag for person
  */
-open class Person(
+class Person(
     val firstName: String = "",
     val lastName: String = "",
     val email: String? = null,
