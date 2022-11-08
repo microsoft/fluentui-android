@@ -124,7 +124,7 @@ class Persona(
 class AvatarCarouselItem(
     val enabled: Boolean = true,
     val person: Person = Person(),
-    val onItemClick: (() -> Unit)? = null,
+    val onItemClick: (() -> Unit)? = null
 )
 @Composable
 fun getColorByState(

@@ -21,17 +21,24 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
-import com.microsoft.fluentui.theme.token.controlTokens.TextType
 
 val LocalAvatarCarouselTokens = compositionLocalOf { AvatarCarouselTokens() }
+val LocalAvatarCarouselInfo = compositionLocalOf { AvatarCarouselInfo() }
 
 @Composable
 fun getAvatarCarouselTokens(): AvatarCarouselTokens {
     return LocalAvatarCarouselTokens.current
 }
+
+@Composable
+fun getAvatarCarouselInfo(): AvatarCarouselInfo {
+    return LocalAvatarCarouselInfo.current
+}
+
 private fun Modifier.clickAndSemanticsModifier(
     interactionSource: MutableInteractionSource,
     onClick: () -> Unit,
@@ -47,6 +54,7 @@ private fun Modifier.clickAndSemanticsModifier(
             role = Role.Tab
         )
 }
+
 /**
  * Generate an AvatarCarousel. This is a horizontally scrollable bar which is made up of [AvatarCarouselItem].
  * Avatar Carousel internally is a group of [AvatarCarouselItem] which can be used to create onClick based Avatar buttons.
@@ -69,17 +77,20 @@ fun AvatarCarousel(
 ) {
     val token = avatarCarouselTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarCarousel] as AvatarCarouselTokens
-    CompositionLocalProvider(LocalAvatarCarouselTokens provides token) {
+    CompositionLocalProvider(
+        LocalAvatarCarouselTokens provides token,
+        LocalAvatarCarouselInfo provides AvatarCarouselInfo(size)
+    ) {
 
-        val avatarSize = getAvatarCarouselTokens().getAvatarSize(carouselSize = size)
+        val avatarSize = getAvatarCarouselTokens().getAvatarSize(getAvatarCarouselInfo())
         val textSize =
-            getAvatarCarouselTokens().getTextSize(textType = TextType.Text, carouselSize = size)
+            getAvatarCarouselTokens().getTextSize(getAvatarCarouselInfo())
         val subTextSize =
-            getAvatarCarouselTokens().getTextSize(textType = TextType.SubText, carouselSize = size)
-        val avatarTextPadding = getAvatarCarouselTokens().padding(size = size)
-        val bottomPadding = if(size == AvatarCarouselSize.Medium) 8.dp else 0.dp
+            getAvatarCarouselTokens().getSubTextSize(getAvatarCarouselInfo())
+        val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
+        val bottomPadding = if (size == AvatarCarouselSize.Medium) 8.dp else 0.dp
 
-        LazyRow{
+        LazyRow {
             items(avatarList) { item ->
                 val interactionSource = remember { MutableInteractionSource() }
                 val backgroundColor = getColorByState(
@@ -87,21 +98,19 @@ fun AvatarCarousel(
                     enabled = item.enabled,
                     interactionSource = interactionSource
                 )
-
-                val textColor = getAvatarCarouselTokens().getTextColor(
-                    textType = TextType.Text,
-                    enabled = item.enabled
-                )
-                val subTextColor = getAvatarCarouselTokens().getTextColor(
-                    textType = TextType.SubText,
-                    enabled = item.enabled
-                )
+                val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
+                val subTextColor =
+                    getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())
                 Column(
                     modifier
                         .background(backgroundColor)
                         .requiredWidth(88.dp)
                         .alpha(if (item.enabled) 1f else 0.7f)
-                        .clickAndSemanticsModifier(interactionSource, {item.onItemClick}, item.enabled), horizontalAlignment = Alignment.CenterHorizontally
+                        .clickAndSemanticsModifier(
+                            interactionSource,
+                            item.onItemClick?:{},
+                            item.enabled
+                        ), horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Avatar(
                         modifier = Modifier.padding(top = 8.dp),
@@ -112,14 +121,19 @@ fun AvatarCarousel(
                     )
                     Row(
                         Modifier
-                            .padding(start = 2.dp, end = 2.dp, top = avatarTextPadding, bottom = bottomPadding)
+                            .padding(
+                                start = 2.dp,
+                                end = 2.dp,
+                                top = avatarTextPadding,
+                                bottom = bottomPadding
+                            )
                             .fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
                             text = item.person.firstName,
-                            color = textColor,
+                            color = if (item.enabled) textColor.rest else textColor.disabled,
                             fontSize = textSize.fontSize.size,
                             fontWeight = textSize.weight,
                             maxLines = 1,
@@ -136,7 +150,7 @@ fun AvatarCarousel(
                         ) {
                             Text(
                                 text = item.person.lastName,
-                                color = subTextColor,
+                                color = if (item.enabled) subTextColor.rest else subTextColor.disabled,
                                 fontSize = subTextSize.fontSize.size,
                                 fontWeight = subTextSize.weight,
                                 maxLines = 1,

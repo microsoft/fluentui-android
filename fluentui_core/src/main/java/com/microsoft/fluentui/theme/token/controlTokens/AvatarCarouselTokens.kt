@@ -16,12 +16,15 @@ enum class TextType {
     Text,
     SubText
 }
+data class AvatarCarouselInfo(
+    val size: AvatarCarouselSize = AvatarCarouselSize.Medium
+): ControlInfo
 
 @Parcelize
 open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
-    open fun getAvatarSize(carouselSize:AvatarCarouselSize):AvatarSize{
-        return when(carouselSize){
+    open fun getAvatarSize(avatarCarouselInfo: AvatarCarouselInfo):AvatarSize{
+        return when(avatarCarouselInfo.size){
             AvatarCarouselSize.Medium -> AvatarSize.Size56
             AvatarCarouselSize.Large -> AvatarSize.Size72
         }
@@ -42,50 +45,45 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getTextColor(textType: TextType, enabled:Boolean):Color{
-        return when(textType){
-            TextType.Text -> {
-                return if (enabled) {
-                    FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                }else{
-                    FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                }
-            }
-            TextType.SubText -> {
-                return if (enabled) {
-                    FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                }else{
-                    FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                }
-            }
+    open fun getTextColor(avatarCarouselInfo: AvatarCarouselInfo):StateColor{
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+    @Composable
+    open fun getSubTextColor(avatarCarouselInfo: AvatarCarouselInfo):StateColor{
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+    @Composable
+    open fun getTextSize(avatarCarouselInfo: AvatarCarouselInfo): FontInfo {
+        return when(avatarCarouselInfo.size){
+            AvatarCarouselSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
         }
     }
     @Composable
-    open fun getTextSize(textType: TextType, carouselSize: AvatarCarouselSize): FontInfo {
-        return when(carouselSize){
-            AvatarCarouselSize.Medium ->
-                return when(textType){
-                    TextType.Text -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
-                    TextType.SubText -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
-                }
-            AvatarCarouselSize.Large ->
-                return when(textType){
-                    TextType.Text -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
-                    TextType.SubText -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
-                }
+    open fun getSubTextSize(avatarCarouselInfo: AvatarCarouselInfo): FontInfo {
+        return when(avatarCarouselInfo.size){
+            AvatarCarouselSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
         }
     }
+
     @Composable
-    open fun padding(size: AvatarCarouselSize): Dp {
-        return when(size){
+    open fun padding(avatarCarouselInfo: AvatarCarouselInfo): Dp {
+        return when(avatarCarouselInfo.size){
             AvatarCarouselSize.Medium -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
             AvatarCarouselSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
         }

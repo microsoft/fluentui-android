@@ -1,7 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,6 +14,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
@@ -22,7 +25,6 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class V2AvatarCarouselActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -42,10 +44,7 @@ class V2AvatarCarouselActivity : DemoActivity() {
 }
 
 @Composable
-fun createAvatarPersons(
-    coroutineScope: CoroutineScope,
-    scaffoldState: ScaffoldState
-): ArrayList<AvatarCarouselItem> {
+fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
     return arrayListOf(
         AvatarCarouselItem(
             person = Person(
@@ -56,7 +55,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Allan", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Allan") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -67,7 +66,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Away,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Amanda", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Amanda") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -79,7 +78,7 @@ fun createAvatarPersons(
                 isOOO = false,
             ),
             enabled = false,
-            onItemClick = { onItemClick("Ashley", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Ashley") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -90,7 +89,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Busy,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Wanda", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Wanda") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -102,7 +101,7 @@ fun createAvatarPersons(
                 isOOO = false,
             ),
             enabled = false,
-            onItemClick = { onItemClick("Celeste", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Celeste") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -113,7 +112,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Cecil", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Cecil") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -124,7 +123,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Offline,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Carlos", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Carlos") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -135,7 +134,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Unknown,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Carole", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Carole") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -147,7 +146,7 @@ fun createAvatarPersons(
                 isOOO = false
             ),
             enabled = false,
-            onItemClick = { onItemClick("Charlotte", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Charlotte") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -158,7 +157,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Colin", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Colin") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -169,7 +168,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Daisy", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Daisy") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -180,7 +179,7 @@ fun createAvatarPersons(
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
-            onItemClick = { onItemClick("Elliot", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Elliot") }
         ),
         AvatarCarouselItem(
             person = Person(
@@ -192,73 +191,17 @@ fun createAvatarPersons(
                 isOOO = false
             ),
             enabled = false,
-            onItemClick = { onItemClick("Elvia", coroutineScope, scaffoldState) }
+            onItemClick = { mToast(mContext, "Elvia") }
         )
     )
-
-
 }
-
-@Composable
-fun createLimitedAvatarPersons(
-    coroutineScope: CoroutineScope,
-    scaffoldState: ScaffoldState
-): ArrayList<AvatarCarouselItem> {
-    return arrayListOf(
-        AvatarCarouselItem(
-            person = Person(
-                "Allan",
-                "Munger",
-                image = R.drawable.avatar_allan_munger,
-                isActive = true,
-                status = AvatarStatus.Available,
-                isOOO = false
-            ),
-            onItemClick = { onItemClick("Allan", coroutineScope, scaffoldState) }
-        ),
-        AvatarCarouselItem(
-            person = Person(
-                "Amanda",
-                "Brady",
-                image = R.drawable.avatar_amanda_brady,
-                isActive = true,
-                status = AvatarStatus.Away,
-                isOOO = false
-            ),
-            onItemClick = { onItemClick("Amanda", coroutineScope, scaffoldState) }
-        ),
-        AvatarCarouselItem(
-            person = Person(
-                "Ashley",
-                "McCarthy",
-                image = R.drawable.avatar_ashley_mccarthy,
-                isActive = true,
-                status = AvatarStatus.Blocked,
-                isOOO = false,
-            ),
-            enabled = false,
-            onItemClick = { onItemClick("Ashley", coroutineScope, scaffoldState) }
-        ),
-        AvatarCarouselItem(
-            person = Person(
-                "Wanda",
-                "Howard",
-                image = R.drawable.avatar_wanda_howard,
-                isActive = true,
-                status = AvatarStatus.Busy,
-                isOOO = false
-            ),
-            onItemClick = { onItemClick("Wanda", coroutineScope, scaffoldState) }
-        ),
-    )
-}
-
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CreateAvatarCarouselActivityUI() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
     val coroutineScope: CoroutineScope = rememberCoroutineScope()
+    val mContext = LocalContext.current
     Scaffold(scaffoldState = scaffoldState) {
         Column(
             verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -269,10 +212,10 @@ fun CreateAvatarCarouselActivityUI() {
                 text = "Large Avatar Carousel",
                 color = Color(0xFF2886DE)
             )
-            AvatarCarousel(avatarList = createAvatarPersons(
-                coroutineScope = coroutineScope,
-                scaffoldState = scaffoldState
-            ), size = AvatarCarouselSize.Large)
+            AvatarCarousel(
+                avatarList = createAvatarPersons(mContext),
+                size = AvatarCarouselSize.Large
+            )
 
 
             Divider(Modifier.fillMaxWidth())
@@ -281,23 +224,18 @@ fun CreateAvatarCarouselActivityUI() {
                 text = "Medium Avatar Carousel with Presence indicator",
                 color = Color(0xFF2886DE)
             )
-            AvatarCarousel(avatarList = createAvatarPersons(
-                coroutineScope = coroutineScope,
-                scaffoldState = scaffoldState
-            ), size = AvatarCarouselSize.Medium, enablePresence = true)
+            AvatarCarousel(
+                avatarList = createAvatarPersons(mContext),
+                size = AvatarCarouselSize.Medium,
+                enablePresence = true
+            )
         }
     }
 }
 
-fun onItemClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
-    scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-    coroutineScope.launch {
-        val result = scaffoldState.snackbarHostState.showSnackbar(
-            message = "Clicked on $text",
-            actionLabel = "Close"
-        )
-        when (result) {
-            SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-        }
-    }
+var toast: Toast? = null
+private fun mToast(context: Context, name: String) {
+    toast?.cancel()
+    toast = Toast.makeText(context, "Clicked on $name", Toast.LENGTH_SHORT)
+    toast?.show()
 }
