@@ -15,6 +15,7 @@ const val AVATAR_VIEW = "AvatarView"
 const val AVATAR_GROUP_VIEW = "AvatarGroupView"
 const val BASIC_INPUTS = "Basic Inputs"
 const val V2AVATAR = "V2 Avatar"
+const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
 const val V2AVATAR_GROUP = "V2 Avatar Group"
 const val V2BASIC_INPUTS = "V2 Basic Inputs"
 const val V2BASIC_CONTROLS = "V2 Basic Controls"
@@ -51,6 +52,7 @@ val DEMOS = arrayListOf(
         Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
         Demo(BASIC_INPUTS, BasicInputsActivity::class),
         Demo(V2AVATAR, V2AvatarActivity::class),
+        Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
         Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
         Demo(V2BASIC_INPUTS, V2BasicInputsActivity::class),
         Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),

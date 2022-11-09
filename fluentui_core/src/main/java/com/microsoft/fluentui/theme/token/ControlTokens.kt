@@ -16,6 +16,7 @@ class ControlTokens {
 
     enum class ControlType {
         Avatar,
+        AvatarCarousel,
         AvatarGroup,
         BottomSheet,
         Button,
@@ -23,16 +24,16 @@ class ControlTokens {
         ContextualCommandBar,
         Drawer,
         FloatingActionButton,
-        RadioButton,
-        ToggleSwitch,
         ListItem,
-        PersonaView
+        RadioButton,
+        ToggleSwitch
     }
 
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
         TokenSet { token ->
             when (token) {
                 ControlType.Avatar -> AvatarTokens()
+                ControlType.AvatarCarousel -> AvatarCarouselTokens()
                 ControlType.AvatarGroup -> AvatarGroupTokens()
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
@@ -40,10 +41,10 @@ class ControlTokens {
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
-                ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.ListItem -> ListItemTokens()
+                ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
-                ControlType.PersonaView -> PersonaViewTokens()
+
             }
         }
     }
