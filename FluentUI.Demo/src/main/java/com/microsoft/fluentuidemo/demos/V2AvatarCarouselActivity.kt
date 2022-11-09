@@ -53,6 +53,7 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
+            enableActivityRing = true,
             onItemClick = { mToast(mContext, "Allan") }
         ),
         AvatarCarouselItem(
@@ -64,6 +65,7 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
                 status = AvatarStatus.Away,
                 isOOO = false
             ),
+            enableActivityRing = true,
             onItemClick = { mToast(mContext, "Amanda") }
         ),
         AvatarCarouselItem(
@@ -87,6 +89,7 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
                 status = AvatarStatus.Busy,
                 isOOO = false
             ),
+            enableActivityRing = false,
             onItemClick = { mToast(mContext, "Wanda") }
         ),
         AvatarCarouselItem(
@@ -132,6 +135,7 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
                 status = AvatarStatus.Unknown,
                 isOOO = false
             ),
+            enableActivityRing = true,
             onItemClick = { mToast(mContext, "Carole") }
         ),
         AvatarCarouselItem(
@@ -177,6 +181,7 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
                 status = AvatarStatus.Available,
                 isOOO = false
             ),
+            enableActivityRing = true,
             onItemClick = { mToast(mContext, "Elliot") }
         ),
         AvatarCarouselItem(

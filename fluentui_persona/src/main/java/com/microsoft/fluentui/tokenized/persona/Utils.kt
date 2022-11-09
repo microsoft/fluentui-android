@@ -124,6 +124,7 @@ class Persona(
 class AvatarCarouselItem(
     val enabled: Boolean = true,
     val person: Person = Person(),
+    val enableActivityRing: Boolean = false,
     val onItemClick: (() -> Unit)? = null
 )
 @Composable

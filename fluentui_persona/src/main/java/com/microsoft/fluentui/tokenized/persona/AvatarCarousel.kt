@@ -131,7 +131,8 @@ fun AvatarCarousel(
                         person = item.person,
                         size = avatarSize,
                         avatarToken = avatarTokens,
-                        enablePresence = enablePresence
+                        enablePresence = enablePresence,
+                        enableActivityRings = item.enableActivityRing
                     )
                     Row(
                         Modifier
