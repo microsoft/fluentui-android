@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
@@ -24,7 +23,6 @@ import com.microsoft.fluentui.tokenized.persona.AvatarCarouselItem
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.coroutines.CoroutineScope
 
 class V2AvatarCarouselActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -200,7 +198,6 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
 @Composable
 fun CreateAvatarCarouselActivityUI() {
     val scaffoldState: ScaffoldState = rememberScaffoldState()
-    val coroutineScope: CoroutineScope = rememberCoroutineScope()
     val mContext = LocalContext.current
     Scaffold(scaffoldState = scaffoldState) {
         Column(

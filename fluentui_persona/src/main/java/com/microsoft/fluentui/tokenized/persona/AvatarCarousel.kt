@@ -5,17 +5,16 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -25,6 +24,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
+import kotlinx.coroutines.launch
+import kotlin.math.max
 
 val LocalAvatarCarouselTokens = compositionLocalOf { AvatarCarouselTokens() }
 val LocalAvatarCarouselInfo = compositionLocalOf { AvatarCarouselInfo() }
@@ -51,7 +52,7 @@ private fun Modifier.clickAndSemanticsModifier(
             onClickLabel = null,
             enabled = enabled,
             onClick = onClick,
-            role = Role.Tab
+            role = Role.Button
         )
 }
 
@@ -81,7 +82,8 @@ fun AvatarCarousel(
         LocalAvatarCarouselTokens provides token,
         LocalAvatarCarouselInfo provides AvatarCarouselInfo(size)
     ) {
-
+        val scope = rememberCoroutineScope()
+        val lazyListState = rememberLazyListState()
         val avatarSize = getAvatarCarouselTokens().getAvatarSize(getAvatarCarouselInfo())
         val textSize =
             getAvatarCarouselTokens().getTextSize(getAvatarCarouselInfo())
@@ -90,11 +92,11 @@ fun AvatarCarousel(
         val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
         val bottomPadding = if (size == AvatarCarouselSize.Medium) 8.dp else 0.dp
 
-        LazyRow {
-            items(avatarList) { item ->
+        LazyRow(state = lazyListState) {
+            itemsIndexed(avatarList) { index, item ->
                 val interactionSource = remember { MutableInteractionSource() }
                 val backgroundColor = getColorByState(
-                    stateData = getAvatarCarouselTokens().backgroundColor(),
+                    stateData = getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo()),
                     enabled = item.enabled,
                     interactionSource = interactionSource
                 )
@@ -103,12 +105,24 @@ fun AvatarCarousel(
                     getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())
                 Column(
                     modifier
+                        .onFocusEvent { focusState ->
+                            if (focusState.isFocused) {
+                                scope.launch {
+                                    lazyListState.animateScrollToItem(
+                                        max(
+                                            0,
+                                            index - 2
+                                        )
+                                    )
+                                }
+                            }
+                        }
                         .background(backgroundColor)
                         .requiredWidth(88.dp)
                         .alpha(if (item.enabled) 1f else 0.7f)
                         .clickAndSemanticsModifier(
                             interactionSource,
-                            item.onItemClick?:{},
+                            item.onItemClick ?: {},
                             item.enabled
                         ), horizontalAlignment = Alignment.CenterHorizontally
                 ) {
