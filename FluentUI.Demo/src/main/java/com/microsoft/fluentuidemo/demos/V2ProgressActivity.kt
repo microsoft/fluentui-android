@@ -70,7 +70,7 @@ fun createActivityUI(){
             }
             Row(Modifier.height(42.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(32.dp)){
                 Text(text = "Small - 16dp", modifier = Modifier.width(100.dp))
-                CircularProgressBar(0.8f, size = CircularProgressBarIndicatorSize.Small)
+                CircularProgressBar(0.8f, size = CircularProgressBarIndicatorSize.XSmall)
             }
             Row(Modifier.height(42.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(32.dp)){
                 Text(text = "Medium - 24dp", modifier = Modifier.width(100.dp))
@@ -98,6 +98,7 @@ fun createActivityUI(){
         )
         Row(Modifier.height(24.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(32.dp)){
             LinearProgressBar(linearProgress, modifier = Modifier.width(240.dp))
+            Text(text = ""+"%.0f".format(linearProgress*100)+"%")
         }
         Text(
             modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
@@ -106,24 +107,39 @@ fun createActivityUI(){
         )
         Row(Modifier.height(24.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(32.dp)){
             CircularProgressBar(circularProgress, size = CircularProgressBarIndicatorSize.Large)
+            Text(text = ""+"%.0f".format(circularProgress*100)+"%")
+        }
+        Row(
+            Modifier
+                .height(24.dp)
+                .padding(top = 24.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(32.dp)){
+            LinearProgressBar(modifier = Modifier.width(240.dp))
+        }
+        Row(
+            Modifier
+                .height(24.dp)
+                .padding(top = 24.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(32.dp)){
+            CircularProgressBar(size = CircularProgressBarIndicatorSize.Large)
         }
     }
     LaunchedEffect(key1 = linearProgress){
         if(linearProgress>=1.0){
-            delay(3000)
+            linearProgress = 1f
+            delay(1000)
             linearProgress = 0f
         }else{
-            delay(1000)
-            linearProgress+= Random.nextFloat()/2
+            delay(500)
+            linearProgress+= Random.nextFloat()/5
         }
     }
     LaunchedEffect(key1 = circularProgress){
         if(circularProgress>=1.0){
-            delay(3000)
+            circularProgress = 1f
+            delay(1000)
             circularProgress = 0f
         }else{
-            delay(1000)
-            circularProgress+= Random.nextFloat()/2
+            delay(500)
+            circularProgress+= Random.nextFloat()/5
         }
     }
 }

@@ -9,6 +9,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.ControlToken
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import kotlinx.parcelize.Parcelize
 
 enum class ProgressBarType{
@@ -16,8 +17,8 @@ enum class ProgressBarType{
     CircularProgressBar
 }
 enum class CircularProgressBarIndicatorSize{
+    XXSmall,
     XSmall,
-    Small,
     Medium,
     Large,
     XLarge
@@ -37,11 +38,11 @@ open class ProgressBarTokens: ControlToken, Parcelable{
     @Composable
     open fun getCircularProgressBarIndicatorSize(progressBarInfo: ProgressBarInfo):Dp{
         return when(progressBarInfo.circularProgressBarIndicatorSize){
-            CircularProgressBarIndicatorSize.XSmall -> 12.dp
-            CircularProgressBarIndicatorSize.Small -> 16.dp
-            CircularProgressBarIndicatorSize.Medium -> 24.dp
-            CircularProgressBarIndicatorSize.Large -> 32.dp
-            CircularProgressBarIndicatorSize.XLarge -> 36.dp
+            CircularProgressBarIndicatorSize.XXSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall).size
+            CircularProgressBarIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall).size
+            CircularProgressBarIndicatorSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium).size
+            CircularProgressBarIndicatorSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Large).size
+            CircularProgressBarIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XLarge).size
         }
     }
     @Composable
