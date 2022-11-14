@@ -6,10 +6,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
 enum class ProgressBarType{
@@ -41,14 +38,24 @@ open class ProgressBarTokens: ControlToken, Parcelable{
             CircularProgressBarIndicatorSize.XXSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall).size
             CircularProgressBarIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall).size
             CircularProgressBarIndicatorSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium).size
-            CircularProgressBarIndicatorSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Large).size
+            CircularProgressBarIndicatorSize.Large -> 32.dp
             CircularProgressBarIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XLarge).size
         }
     }
     @Composable
-    open fun getLinearProgressBarHeight(progressBarInfo: ProgressBarInfo):Dp{
+    open fun getLinearProgressbarStrokeWidth(progressBarInfo: ProgressBarInfo):Dp{
         return when(progressBarInfo.linearProgressBarHeight){
-            LinearProgressBarHeight.XXXSmall -> 2.dp
+            LinearProgressBarHeight.XXXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick)
+        }
+    }
+    @Composable
+    open fun getCircularProgressbarStrokeWidth(progressBarInfo: ProgressBarInfo):Dp{
+        return when(progressBarInfo.circularProgressBarIndicatorSize){
+            CircularProgressBarIndicatorSize.XXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thinner)
+            CircularProgressBarIndicatorSize.XSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thinner)
+            CircularProgressBarIndicatorSize.Medium -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick)
+            CircularProgressBarIndicatorSize.Large -> 3.dp
+            CircularProgressBarIndicatorSize.XLarge -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thicker)
         }
     }
     @Composable
@@ -63,9 +70,14 @@ open class ProgressBarTokens: ControlToken, Parcelable{
             ProgressBarType.LinearProgressBar -> FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = FluentTheme.themeMode
             )
-            ProgressBarType.CircularProgressBar -> FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                themeMode = FluentTheme.themeMode
-            )
+            ProgressBarType.CircularProgressBar -> {
+                return FluentColor(
+                    light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey56),
+                    dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey72)
+                ).value(
+                    themeMode = FluentTheme.themeMode
+                )
+            }
         }
 
     }
