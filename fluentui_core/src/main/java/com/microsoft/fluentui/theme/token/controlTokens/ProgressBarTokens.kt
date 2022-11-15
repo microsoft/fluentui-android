@@ -11,7 +11,8 @@ import kotlinx.parcelize.Parcelize
 
 enum class ProgressBarType{
     LinearProgressBar,
-    CircularProgressBar
+    CircularProgressBar,
+    Shimmer
 }
 enum class CircularProgressBarIndicatorSize{
     XXSmall,
@@ -22,6 +23,10 @@ enum class CircularProgressBarIndicatorSize{
 }
 enum class LinearProgressBarHeight{
     XXXSmall
+}
+enum class ShimmerShape {
+    Box,
+    Circle
 }
 data class ProgressBarInfo(
     val progressBarType: ProgressBarType = ProgressBarType.LinearProgressBar,
@@ -78,7 +83,20 @@ open class ProgressBarTokens: ControlToken, Parcelable{
                     themeMode = FluentTheme.themeMode
                 )
             }
+            ProgressBarType.Shimmer -> FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Stencil1].value(
+                themeMode = FluentTheme.themeMode
+            )
         }
 
+    }
+    @Composable
+    open fun getShimmerCornerRadius(progressBarInfo: ProgressBarInfo): Dp{
+        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
+    }
+    @Composable
+    open fun getShimmerKnockoutEffectColr(progressBarInfo: ProgressBarInfo): Color{
+        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Stencil2].value(
+            themeMode = FluentTheme.themeMode
+        )
     }
 }

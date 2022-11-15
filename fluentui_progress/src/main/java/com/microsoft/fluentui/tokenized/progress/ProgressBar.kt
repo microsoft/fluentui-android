@@ -2,14 +2,16 @@ package com.microsoft.fluentui.tokenized.progress
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -17,10 +19,12 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.util.dpToPx
+import kotlin.math.absoluteValue
 
 val LocalProgressBarTokens = compositionLocalOf { ProgressBarTokens() }
 val LocalProgressBarInfo = compositionLocalOf { ProgressBarInfo() }
@@ -328,5 +332,72 @@ fun CircularProgressBar(
                 center = Offset(indicatorSizeInPx / 2, 0f)
             )
         }
+    }
+}
+
+/**
+ * Create a Shimmer effect
+ *
+ * @param shape Shape of the shimmer. See [ShimmerShape] for shapes
+ * @param modifier Modifier for shimmer
+ * @param progressBarTokens Token values for shimmer
+ *
+ */
+@Composable
+fun Shimmer(
+    shape: ShimmerShape = ShimmerShape.Box,
+    modifier: Modifier = Modifier,
+    progressBarTokens: ProgressBarTokens? = null
+) {
+    val tokens = progressBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ProgressBar] as ProgressBarTokens
+    CompositionLocalProvider(
+        LocalProgressBarTokens provides tokens,
+        LocalProgressBarInfo provides ProgressBarInfo(
+            progressBarType = ProgressBarType.Shimmer
+        )
+    ) {
+        val shimmerBackgroundColor =
+            getProgressBarTokens().getProgressBarIndicatorColor(progressBarInfo = getProgressBarInfo())
+        val shimmerKnockoutEffectColor = getProgressBarTokens().getShimmerKnockoutEffectColr(
+            progressBarInfo = getProgressBarInfo()
+        )
+        val cornerRadius =
+            dpToPx(getProgressBarTokens().getShimmerCornerRadius(progressBarInfo = getProgressBarInfo()))
+        val infiniteTransition = rememberInfiniteTransition()
+        val shimmerEffect by infiniteTransition.animateFloat(
+            0f,
+            1000f,
+            infiniteRepeatable(
+                animation = tween(
+                    durationMillis = 1000,
+                    easing = LinearEasing
+                )
+            )
+        )
+        val gradientColor = Brush.linearGradient(
+            0f to shimmerBackgroundColor,
+            0.5f to shimmerKnockoutEffectColor,
+            1.0f to shimmerBackgroundColor,
+            start = Offset.Zero,
+            end = Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+        )
+        if (shape == ShimmerShape.Box) {
+            Spacer(
+                modifier = modifier
+                    .width(240.dp)
+                    .height(12.dp)
+                    .clip(RoundedCornerShape(cornerRadius))
+                    .background(gradientColor)
+            )
+        } else {
+            Spacer(
+                modifier = modifier
+                    .size(60.dp)
+                    .clip(CircleShape)
+                    .background(gradientColor)
+            )
+        }
+
     }
 }
