@@ -2,26 +2,21 @@ package com.microsoft.fluentui.tokenized.progress
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
@@ -86,7 +81,7 @@ fun LinearProgressBar(
         Canvas(
             modifier = modifier
                 .fillMaxWidth()
-                .height(progressBarHeight)
+                .requiredHeight(progressBarHeight)
         ) {
             val strokeWidth = dpToPx(progressBarHeight)
             val yOffset = strokeWidth / 2
@@ -111,7 +106,7 @@ fun LinearProgressBar(
  *
  * @param progressbarHeight Optional width of the progress bar
  * @param modifier Modifier for linear progress bar
- * @param totalAnimationDuration Optional total animation duration of the indicator.
+ * @param totalAnimationDuration Optional total animation duration of the indicator to complete one cycle.
  * @param animationWaitDelay Optional animation wait delay for the indicator. Time to wait for the indicator to appear again after disappearing
  * @param easing Optional easing animation for the progress indicator. Look at [Easing]
  * @param progressBarTokens Token values for linear progress bar
@@ -172,7 +167,7 @@ fun LinearProgressBar(
         Canvas(
             modifier = modifier
                 .fillMaxWidth()
-                .height(progressBarHeight)
+                .requiredHeight(progressBarHeight)
         ) {
             val strokeWidth = dpToPx(progressBarHeight)
             val yOffset = strokeWidth / 2
@@ -183,9 +178,13 @@ fun LinearProgressBar(
                 strokeWidth
             )
             drawLine(
-                Brush.linearGradient(0f to progressBarBackgroundColor, 0.5f to progressBarIndicatorColor, 1.0f to progressBarBackgroundColor, tileMode = TileMode.Repeated,
-                start = Offset(indicatorHead * size.width, yOffset),
-                end = Offset(indicatorTail * size.width, yOffset)),
+                Brush.linearGradient(
+                    0f to progressBarBackgroundColor,
+                    0.5f to progressBarIndicatorColor,
+                    1.0f to progressBarBackgroundColor,
+                    start = Offset(indicatorHead * size.width, yOffset),
+                    end = Offset(indicatorTail * size.width, yOffset)
+                ),
                 Offset(indicatorHead * size.width, yOffset),
                 Offset(indicatorTail * size.width, yOffset),
                 strokeWidth
@@ -193,6 +192,7 @@ fun LinearProgressBar(
         }
     }
 }
+
 /**
  * Create a Determinate Circular Progressbar
  *
@@ -234,30 +234,33 @@ fun CircularProgressBar(
             )
         val circularProgressBarIndicatorSize =
             getProgressBarTokens().getCircularProgressBarIndicatorSize(getProgressBarInfo())
-        val circularProgressBarStrokeWidth = getProgressBarTokens().getCircularProgressbarStrokeWidth(
-            progressBarInfo = getProgressBarInfo()
-        )
-        Canvas(modifier = modifier.size(circularProgressBarIndicatorSize)) {
+        val circularProgressBarStrokeWidth =
+            getProgressBarTokens().getCircularProgressbarStrokeWidth(
+                progressBarInfo = getProgressBarInfo()
+            )
+        val indicatorSizeInPx = dpToPx(circularProgressBarIndicatorSize)
+        Canvas(modifier = modifier.requiredSize(circularProgressBarIndicatorSize)) {
             drawArc(
                 circularProgressBarIndicatorColor,
                 -90f,
                 currentProgress.value * 360,
                 false,
                 size = Size(
-                    dpToPx(circularProgressBarIndicatorSize),
-                    dpToPx(circularProgressBarIndicatorSize)
+                    indicatorSizeInPx,
+                    indicatorSizeInPx
                 ),
                 style = Stroke(dpToPx(circularProgressBarStrokeWidth), cap = StrokeCap.Round)
             )
         }
     }
 }
+
 /**
  * Create an Indeterminate Circular Progressbar
  *
  * @param size Optional size of the circular progress bar
  * @param modifier Modifier for linear progress bar
- * @param totalAnimationDuration Optional total animation duration of the indicator.
+ * @param totalAnimationDuration Optional total animation duration of the indicator to complete one cycle.
  * @param easing Optional easing animation for the progress indicator. Look at [Easing]
  * @param progressBarTokens Token values for circular progress bar
  *
@@ -285,9 +288,10 @@ fun CircularProgressBar(
             )
         val circularProgressBarIndicatorSize =
             getProgressBarTokens().getCircularProgressBarIndicatorSize(getProgressBarInfo())
-        val circularProgressBarStrokeWidth = getProgressBarTokens().getCircularProgressbarStrokeWidth(
-            progressBarInfo = getProgressBarInfo()
-        )
+        val circularProgressBarStrokeWidth =
+            getProgressBarTokens().getCircularProgressbarStrokeWidth(
+                progressBarInfo = getProgressBarInfo()
+            )
         val infiniteTransition = rememberInfiniteTransition()
         val startAngle by infiniteTransition.animateFloat(
             0f,
@@ -299,17 +303,29 @@ fun CircularProgressBar(
                 )
             )
         )
-        Canvas(modifier = modifier.size(circularProgressBarIndicatorSize)) {
+        val indicatorSizeInPx = dpToPx(circularProgressBarIndicatorSize)
+        Canvas(
+            modifier = Modifier
+                .requiredSize(circularProgressBarIndicatorSize)
+                .rotate(startAngle)
+        ) {
             drawArc(
-                circularProgressBarIndicatorColor,
-                startAngle - 90f,
+                Brush.sweepGradient(
+                    0f to Color.Transparent,
+                    0.6f to circularProgressBarIndicatorColor
+                ),
+                0f,
                 270f,
                 false,
                 size = Size(
-                    dpToPx(circularProgressBarIndicatorSize),
-                    dpToPx(circularProgressBarIndicatorSize)
+                    indicatorSizeInPx, indicatorSizeInPx
                 ),
-                style = Stroke(dpToPx(circularProgressBarStrokeWidth), cap = StrokeCap.Round)
+                style = Stroke(dpToPx(circularProgressBarStrokeWidth))
+            )
+            drawCircle(
+                color = circularProgressBarIndicatorColor,
+                radius = dpToPx(circularProgressBarStrokeWidth) / 2,
+                center = Offset(indicatorSizeInPx / 2, 0f)
             )
         }
     }
