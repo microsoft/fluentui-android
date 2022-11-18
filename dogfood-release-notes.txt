@@ -1,10 +1,8 @@
-Release Version 0.1.10:
+Release Version 0.1.11:
 
 What's New:
 
 Fluent V2 :
- - Released ListItem, Persona, PersonaList, BottomSheet controls
-
-Fluent V1 :
- - Fix accessibility issue : Lock Scrolling for bottomsheet for keyboard tab navigation when bottomsheet is in collapsed state
- - Feature : Provide API to set Overflow Avatar Count.
+ - Added Implementation for Avatar Carousel.
+ - Updated Tokens to reflect to the latest in Figma Sheets
+ - Add Shadow to Toggle Switch knob.
