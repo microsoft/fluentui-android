@@ -256,11 +256,15 @@ open class SheetHorizontalItemList @JvmOverloads constructor(context: Context, a
 }
 
 
-class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null, var contentDescription: String = "", var disabled: Boolean = false) {
+/**
+ * SheetItem is a building block to create lists/grid in PersistentBottomSheet control.
+ * The accessoryDrawable/accessoryBitmap is shown only in vertical list.
+ */
+class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @DrawableRes var drawable: Int, @ColorInt var tint: Int? = null, var bitmap: Bitmap? = null, var contentDescription: String = "", var disabled: Boolean = false, @DrawableRes var accessoryDrawable: Int = NO_ID, var accessoryBitmap: Bitmap? = null) {
 
     // just a convenient constructor
     @JvmOverloads
-    constructor(id: Int, title: String = "", bitmap: Bitmap, disabled: Boolean = false) : this(id, title, NO_ID, null, bitmap, "", disabled)
+    constructor(id: Int, title: String = "", bitmap: Bitmap, disabled: Boolean = false, accessoryBitmap: Bitmap? = null) : this(id, title, NO_ID, null, bitmap, "", disabled, NO_ID, accessoryBitmap)
 
     interface OnClickListener {
         fun onSheetItemClick(item: SheetItem)
@@ -279,6 +283,8 @@ class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @
         if (bitmap != other.bitmap) return false
         if (contentDescription != other.contentDescription) return false
         if (disabled != other.disabled) return false
+        if (accessoryDrawable != other.accessoryDrawable) return false
+        if (accessoryBitmap != other.accessoryBitmap) return false
 
         return true
     }
@@ -290,6 +296,8 @@ class SheetItem @JvmOverloads constructor(val id: Int, var title: String = "", @
         result = 31 * result + (tint ?: 0)
         result = 31 * result + (bitmap?.hashCode() ?: 0)
         result = 31 * result + disabled.hashCode()
+        result = 31 * result + accessoryDrawable
+        result = 31 * result + (accessoryBitmap?.hashCode() ?: 0)
         return result
     }
 }

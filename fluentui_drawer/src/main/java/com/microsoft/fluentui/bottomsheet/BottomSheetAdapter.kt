@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem.Companion.NO_ID
 import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.listitem.ListItemView
-import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
+import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.createImageView
 
 class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -98,6 +98,16 @@ class BottomSheetAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (image != null && item.disabled)
                 image.imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
             listItemView.customView = image
+
+            var accessoryImage: ImageView ?= null
+            if (item.accessoryBitmap != null) {
+                accessoryImage = context.createImageView(item.accessoryBitmap)
+            } else if (item.accessoryImageId != NO_ID) {
+                accessoryImage = context.createImageView(item.accessoryImageId, item.getImageTint(context))
+            }
+            if (accessoryImage != null && item.disabled)
+                accessoryImage.imageAlpha = ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(context, R.style.Theme_FluentUI_Drawer), R.attr.fluentuiBottomSheetDisabledIconColor)
+            listItemView.customAccessoryView = accessoryImage
 
             listItemView.setOnClickListener {
                 onBottomSheetItemClickListener?.onBottomSheetItemClick(item)

@@ -25,6 +25,7 @@ import com.microsoft.fluentui.persistentbottomsheet.SheetItem
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.util.createBitmapFromLayout
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 import kotlinx.android.synthetic.main.activity_persistent_bottom_sheet.*
 import kotlinx.android.synthetic.main.demo_persistent_sheet_content.*
@@ -55,6 +56,16 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
         scrollView = findViewById(R.id.scroll_container)
         defaultPersistentBottomSheetContent = LayoutInflater.from(this).inflate(R.layout.demo_persistent_sheet_content, null)
 
+        val view = LayoutInflater.from(this).inflate(R.layout.accessory_content, null)
+        val textView = view.findViewById<TextView>(R.id.bottom_sheet_item_nudge)
+        textView.text = "10+"
+        val bitmap1 = createBitmapFromLayout(view)
+        textView.text = "100+"
+        val bitmap2 = createBitmapFromLayout(view)
+        textView.text = "123456789+"
+        val bitmap3 = createBitmapFromLayout(view)
+
+
         PersistentBottomSheet.DefaultContentBuilder(this)
                 .setCustomSheetContent(defaultPersistentBottomSheetContent)
                 .buildWith(persistentBottomSheetDemo)
@@ -66,17 +77,20 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                         getString(R.string.bottom_sheet_item_flag_title),
                         R.drawable.ic_fluent_flag_24_regular,
                         ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
-                        disabled = false),
+                        disabled = false,
+                        accessoryBitmap = bitmap1),
                 SheetItem(R.id.bottom_sheet_item_alarm,
                         getString(R.string.bottom_sheet_item_custom_image),
                         dummyBitmap(),
-                        disabled = true),
+                        disabled = true,
+                        accessoryBitmap = bitmap2),
                 SheetItem(
                         R.id.persistent_sheet_item_add_view,
                         getString(R.string.persistent_sheet_item_add_remove_view),
                         R.drawable.ic_add_circle_28_fill,
                         ContextCompat.getColor(this, R.color.bottomsheet_horizontal_icon_tint),
-                        disabled = false),
+                        disabled = false,
+                        accessoryBitmap = bitmap3),
                 SheetItem(
                         R.id.persistent_sheet_item_change_height_button,
                         getString(R.string.persistent_sheet_item_change_collapsed_height),
@@ -211,20 +225,23 @@ class PersistentBottomSheetActivity : DemoActivity(), SheetItem.OnClickListener,
                                 R.drawable.ic_camera_24_regular,
                                 getString(R.string.bottom_sheet_item_camera_title),
                                 getString(R.string.bottom_sheet_item_camera_subtitle),
-                                disabled = false
+                                disabled = false,
+                                accessoryBitmap = bitmap1
                         ),
                         BottomSheetItem(
                                 R.id.bottom_sheet_item_gallery,
                                 R.drawable.ic_image_library_24_regular,
                                 getString(R.string.bottom_sheet_item_gallery_title),
                                 getString(R.string.bottom_sheet_item_gallery_subtitle),
-                                disabled = true
+                                disabled = true,
+                                accessoryBitmap = bitmap2
                         ),
                         BottomSheetItem(
                                 R.id.bottom_sheet_item_videos,
                                 R.drawable.ic_video_24_regular,
                                 getString(R.string.bottom_sheet_item_videos_title),
                                 getString(R.string.bottom_sheet_item_videos_subtitle),
+                                accessoryBitmap = bitmap3
                         ),
                         BottomSheetItem(
                                 R.id.bottom_sheet_item_manage,
