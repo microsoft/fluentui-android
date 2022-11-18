@@ -200,4 +200,13 @@
         <item name="android:textColor">?attr/fluentuiForegroundSecondaryColor</item>
     </style>
 
+    <style name="new_discovery_tag">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/fluentui_white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

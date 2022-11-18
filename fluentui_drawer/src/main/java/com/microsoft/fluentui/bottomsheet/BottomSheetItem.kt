@@ -39,6 +39,9 @@ class BottomSheetItem : Parcelable {
     val imageTintType: ImageTintType
     val customBitmap: Bitmap?
     val disabled: Boolean
+    @DrawableRes
+    val accessoryImageId: Int
+    val accessoryBitmap: Bitmap?
 
     @JvmOverloads
     constructor(
@@ -51,6 +54,8 @@ class BottomSheetItem : Parcelable {
         imageTintType: ImageTintType = ImageTintType.DEFAULT,
         customBitmap: Bitmap? = null,
         disabled: Boolean = false,
+        @DrawableRes accessoryImageId: Int = NO_ID,
+        accessoryBitmap: Bitmap? = null
     ) {
         this.id = id
         this.imageId = imageId
@@ -61,6 +66,8 @@ class BottomSheetItem : Parcelable {
         this.imageTintType = imageTintType
         this.customBitmap = customBitmap
         this.disabled = disabled
+        this.accessoryImageId = accessoryImageId
+        this.accessoryBitmap = accessoryBitmap
     }
 
     private constructor(parcel: Parcel) : this(
@@ -72,7 +79,9 @@ class BottomSheetItem : Parcelable {
         imageTint = parcel.readInt(),
         imageTintType = ImageTintType.values()[parcel.readInt()],
         customBitmap = parcel.readParcelable(Bitmap::class.java.classLoader),
-        disabled = parcel.readInt() == 1
+        disabled = parcel.readInt() == 1,
+        accessoryImageId = parcel.readInt(),
+        accessoryBitmap = parcel.readParcelable(Bitmap::class.java.classLoader)
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -85,6 +94,8 @@ class BottomSheetItem : Parcelable {
         parcel.writeInt(imageTintType.ordinal)
         parcel.writeValue(customBitmap)
         parcel.writeInt(if (disabled) 1 else 0)
+        parcel.writeInt(accessoryImageId)
+        parcel.writeValue(accessoryBitmap)
     }
 
     override fun describeContents(): Int = 0
@@ -103,6 +114,8 @@ class BottomSheetItem : Parcelable {
         if (imageTintType != other.imageTintType) return false
         if (customBitmap != other.customBitmap) return false
         if (disabled != other.disabled) return false
+        if (accessoryImageId != other.accessoryImageId) return false
+        if (accessoryBitmap != other.accessoryBitmap) return false
 
         return true
     }
@@ -117,6 +130,8 @@ class BottomSheetItem : Parcelable {
         result = 31 * result + imageTintType.hashCode()
         result = 31 * result + (customBitmap?.hashCode() ?: 0)
         result = 31 * result + disabled.hashCode()
+        result = 31 * result + accessoryImageId.hashCode()
+        result = 31 * result + (accessoryBitmap?.hashCode() ?: 0)
         return result
     }
 

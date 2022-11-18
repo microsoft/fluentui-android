@@ -29,6 +29,7 @@
     <item name="bottom_sheet_item_double_line_header_share" type="id" />
     <item name="bottom_sheet_item_double_line_header_move" type="id" />
     <item name="bottom_sheet_item_double_line_header_info" type="id" />
+    <item name="bottom_sheet_item_nudge" type="id" />
 
     <!--Persistent BottomSheet-->
     <item name="persistent_sheet_item_create_new_folder" type="id"/>
