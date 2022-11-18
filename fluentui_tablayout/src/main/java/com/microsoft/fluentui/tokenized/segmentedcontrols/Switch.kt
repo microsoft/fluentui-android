@@ -1,23 +1,24 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.AnimationSpec
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusEvent
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
+import com.microsoft.fluentui.theme.token.controlTokens.SwitchInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SwitchTokens
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
@@ -28,7 +29,7 @@ val LocalSwitchInfo = compositionLocalOf { SwitchInfo() }
 fun Switch(
     metadataList: MutableList<PillMetaData>,
     modifier: Modifier = Modifier,
-    selected: String = "",
+    selectedIndex: Int = 0,
     style: PillButtonStyle = PillButtonStyle.Neutral,
     pillButtonTokens: PillButtonTokens? = null,
     switchTokens: SwitchTokens? = null
@@ -36,16 +37,13 @@ fun Switch(
     if (metadataList.size == 0)
         return
 
-    val token = switchTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Switch] as SwitchTokens
+    val token = switchTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Switch] as SwitchTokens
 
     CompositionLocalProvider(
         LocalSwitchTokens provides token,
         LocalSwitchInfo provides SwitchInfo(style)
     ) {
-        var selectedTab: String? = selected
-        if (selectedTab.isNullOrBlank())
-            selectedTab = metadataList[0].text
-
         val shape = RoundedCornerShape(50)
 
         val lazyListState = rememberLazyListState()
@@ -62,7 +60,7 @@ fun Switch(
         ) {
             metadataList.forEachIndexed { index, pillMetadata ->
                 item(index.toString()) {
-                    pillMetadata.selected = (selectedTab == pillMetadata.text)
+                    pillMetadata.selected = (selectedIndex == index)
                     PillButton(
                         pillMetadata,
                         modifier = Modifier
@@ -74,7 +72,8 @@ fun Switch(
                                             max(0, index - 2)
                                         )
                                     }
-                                } },
+                                }
+                            },
                         style = style,
                         pillButtonTokens = pillButtonTokens
                     )

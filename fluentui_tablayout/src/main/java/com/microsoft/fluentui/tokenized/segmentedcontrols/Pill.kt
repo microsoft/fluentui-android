@@ -1,13 +1,18 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
 import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.*
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,10 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.onFocusEvent
-import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
@@ -32,7 +35,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import kotlinx.coroutines.launch
 import kotlin.math.max
@@ -52,14 +54,15 @@ val LocalPillBarInfo = compositionLocalOf { PillBarInfo() }
 
 @Composable
 fun PillButton(
-               pillMetaData: PillMetaData,
-               modifier: Modifier = Modifier,
-               style: PillButtonStyle = PillButtonStyle.Neutral,
-               badge: (@Composable () -> Unit)? = null,
-               interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-               pillButtonTokens: PillButtonTokens? = null
+    pillMetaData: PillMetaData,
+    modifier: Modifier = Modifier,
+    style: PillButtonStyle = PillButtonStyle.Neutral,
+    badge: (@Composable () -> Unit)? = null,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    pillButtonTokens: PillButtonTokens? = null
 ) {
-    val token = pillButtonTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillButton] as PillButtonTokens
+    val token = pillButtonTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillButton] as PillButtonTokens
 
     CompositionLocalProvider(
         LocalPillButtonTokens provides token,
@@ -74,7 +77,7 @@ fun PillButton(
         val scaleBox = remember { Animatable(1.0F) }
 
         LaunchedEffect(key1 = pillMetaData.selected) {
-            if(pillMetaData.selected) {
+            if (pillMetaData.selected) {
                 launch {
                     scaleBox.animateTo(
                         targetValue = 0.95F,
@@ -94,14 +97,20 @@ fun PillButton(
         }
 
         val backgroundColor by animateColorAsState(
-            targetValue = backgroundColor(getPillButtonTokens(), getPillButtonInfo(),
-                pillMetaData.enabled, pillMetaData.selected, interactionSource),
+            targetValue = backgroundColor(
+                getPillButtonTokens(), getPillButtonInfo(),
+                pillMetaData.enabled, pillMetaData.selected, interactionSource
+            ),
             animationSpec = tween(200)
         )
-        val iconColor = iconColor(getPillButtonTokens(),
-            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource)
-        val textColor = textColor(getPillButtonTokens(),
-            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource)
+        val iconColor = iconColor(
+            getPillButtonTokens(),
+            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource
+        )
+        val textColor = textColor(
+            getPillButtonTokens(),
+            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource
+        )
 
         val font = getPillButtonTokens().font(getPillButtonInfo())
 
@@ -145,10 +154,16 @@ fun PillButton(
                         tint = iconColor
                     )
                 } else {
-                    Text(pillMetaData.text, modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 6.dp),
-                        color = textColor, fontSize = font.fontSize.size, fontWeight = font.weight,
-                        lineHeight = font.fontSize.lineHeight, maxLines = 1, overflow = TextOverflow.Ellipsis
+                    Text(
+                        pillMetaData.text,
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp, vertical = 6.dp),
+                        color = textColor,
+                        fontSize = font.fontSize.size,
+                        fontWeight = font.weight,
+                        lineHeight = font.fontSize.lineHeight,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
 
@@ -173,7 +188,8 @@ fun PillBar(
     if (metadataList.size == 0)
         return
 
-    val token = pillBarTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBar] as PillBarTokens
+    val token = pillBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBar] as PillBarTokens
 
     CompositionLocalProvider(
         LocalPillBarTokens provides token,
@@ -184,7 +200,7 @@ fun PillBar(
 
         LazyRow(
             modifier = Modifier
-                .background(if(showBackground) getPillBarTokens().background(getPillBarInfo()) else Color.Unspecified)
+                .background(if (showBackground) getPillBarTokens().background(getPillBarInfo()) else Color.Unspecified)
                 .focusable(enabled = false)
                 .then(modifier),
             contentPadding = PaddingValues(horizontal = 16.dp),
@@ -202,7 +218,9 @@ fun PillBar(
                                         max(0, index - 2)
                                     )
                                 }
-                            } }, style = style, pillButtonTokens = pillButtonTokens)
+                            }
+                        }, style = style, pillButtonTokens = pillButtonTokens
+                    )
                 }
             }
         }

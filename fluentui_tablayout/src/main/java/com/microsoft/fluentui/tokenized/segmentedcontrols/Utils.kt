@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
@@ -8,9 +7,11 @@ import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.Dp
-import com.microsoft.fluentui.theme.token.*
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.ControlToken
+import com.microsoft.fluentui.theme.token.StateColor
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import java.security.InvalidParameterException
 
 @Composable
@@ -39,12 +40,11 @@ fun getColorByState(
         if (isHovered)
             return stateData.focused
 
-        if(selected)
+        if (selected)
             return stateData.selected
 
         return stateData.rest
-    }
-    else if (selected)
+    } else if (selected)
         return stateData.selectedDisabled
     else
         return stateData.disabled
