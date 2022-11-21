@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -57,7 +58,6 @@ fun createActivityUI() {
         )
     Column(
         Modifier
-            .width(360.dp)
             .padding(start = 12.dp, top = 12.dp)
             .verticalScroll(rememberScrollState())
     ) {
@@ -103,16 +103,14 @@ fun LinearProgressBarExample(brandTextColor: Color, textColor: Color) {
             color = brandTextColor,
             fontSize = 20.sp
         )
-        Row(
-            Modifier.height(42.dp),
-            verticalAlignment = Alignment.CenterVertically,
+        Row(verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
             Text(
                 text = "XXXSmall - 2dp",
                 color = textColor
             )
-            LinearProgressBar(0.75f, modifier = Modifier.width(240.dp))
+            LinearProgressBar(modifier = Modifier.width(240.dp))
         }
     }
 }
@@ -129,7 +127,8 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "XSmall - 12dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressBar(0.8f)
+            CircularProgressBar()
+            CircularProgressBar()
         }
         Row(
             Modifier.height(42.dp),
@@ -140,7 +139,8 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "Small - 16dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressBar(0.8f, size = CircularProgressBarIndicatorSize.XSmall)
+            CircularProgressBar(size = CircularProgressBarIndicatorSize.XSmall)
+            CircularProgressBar(CircularProgressBarIndicatorSize.XSmall, isNeutralColor = false)
         }
         Row(
             Modifier.height(42.dp),
@@ -151,7 +151,8 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "Medium - 24dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressBar(0.8f, size = CircularProgressBarIndicatorSize.Medium)
+            CircularProgressBar(size = CircularProgressBarIndicatorSize.Medium)
+            CircularProgressBar(CircularProgressBarIndicatorSize.Medium, isNeutralColor = false)
         }
         Row(
             Modifier.height(48.dp),
@@ -162,7 +163,8 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "Large - 32dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressBar(0.8f, size = CircularProgressBarIndicatorSize.Large)
+            CircularProgressBar(size = CircularProgressBarIndicatorSize.Large)
+            CircularProgressBar(CircularProgressBarIndicatorSize.Large, isNeutralColor = false)
         }
         Row(
             Modifier.height(64.dp),
@@ -173,7 +175,8 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "XLarge - 36dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressBar(0.8f, CircularProgressBarIndicatorSize.XLarge)
+            CircularProgressBar(CircularProgressBarIndicatorSize.XLarge)
+            CircularProgressBar(CircularProgressBarIndicatorSize.XLarge, isNeutralColor = false)
         }
     }
 }
@@ -273,16 +276,16 @@ fun shimmerExamples(brandTextColor: Color, textColor: Color) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Shimmer(modifier = Modifier.size(100.dp, 80.dp))
+        Shimmer(modifier = Modifier.size(120.dp, 80.dp))
         Column(
             Modifier
                 .height(80.dp)
                 .padding(top = 10.dp, bottom = 10.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Shimmer(modifier = Modifier.size(100.dp, 12.dp))
             Shimmer(modifier = Modifier.size(140.dp, 12.dp))
             Shimmer(modifier = Modifier.size(180.dp, 12.dp))
+            Shimmer(modifier = Modifier.size(200.dp, 12.dp))
         }
     }
     Text(
@@ -304,8 +307,8 @@ fun shimmerExamples(brandTextColor: Color, textColor: Color) {
                 .padding(top = 10.dp, bottom = 10.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Shimmer(modifier = Modifier.size(100.dp, 12.dp))
             Shimmer(modifier = Modifier.size(140.dp, 12.dp))
+            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
         }
     }
     Row(
@@ -322,8 +325,8 @@ fun shimmerExamples(brandTextColor: Color, textColor: Color) {
                 .padding(top = 10.dp, bottom = 10.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Shimmer(modifier = Modifier.size(100.dp, 12.dp))
             Shimmer(modifier = Modifier.size(140.dp, 12.dp))
+            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
         }
     }
     Row(
@@ -340,8 +343,8 @@ fun shimmerExamples(brandTextColor: Color, textColor: Color) {
                 .padding(top = 10.dp, bottom = 10.dp),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Shimmer(modifier = Modifier.size(100.dp, 12.dp))
             Shimmer(modifier = Modifier.size(140.dp, 12.dp))
+            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
         }
     }
 }

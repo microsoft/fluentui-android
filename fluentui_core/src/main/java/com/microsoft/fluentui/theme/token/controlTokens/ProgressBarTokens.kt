@@ -31,7 +31,8 @@ enum class ShimmerShape {
 data class ProgressBarInfo(
     val progressBarType: ProgressBarType = ProgressBarType.LinearProgressBar,
     val circularProgressBarIndicatorSize: CircularProgressBarIndicatorSize = CircularProgressBarIndicatorSize.XSmall,
-    val linearProgressBarHeight: LinearProgressBarHeight = LinearProgressBarHeight.XXXSmall
+    val linearProgressBarHeight: LinearProgressBarHeight = LinearProgressBarHeight.XXXSmall,
+    val neutralColor: Boolean = true
 ): ControlInfo
 
 @Parcelize
@@ -76,12 +77,19 @@ open class ProgressBarTokens: ControlToken, Parcelable{
                 themeMode = FluentTheme.themeMode
             )
             ProgressBarType.CircularProgressBar -> {
-                return FluentColor(
-                    light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey56),
-                    dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey72)
-                ).value(
-                    themeMode = FluentTheme.themeMode
-                )
+                if(progressBarInfo.neutralColor){
+                    FluentColor(
+                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey56),
+                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey72)
+                    ).value(
+                        themeMode = FluentTheme.themeMode
+                    )
+                }else{
+                    FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
+                }
+
             }
             ProgressBarType.Shimmer -> FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Stencil1].value(
                 themeMode = FluentTheme.themeMode
@@ -91,10 +99,10 @@ open class ProgressBarTokens: ControlToken, Parcelable{
     }
     @Composable
     open fun getShimmerCornerRadius(progressBarInfo: ProgressBarInfo): Dp{
-        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
+        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
     }
     @Composable
-    open fun getShimmerKnockoutEffectColr(progressBarInfo: ProgressBarInfo): Color{
+    open fun getShimmerKnockoutEffectColor(progressBarInfo: ProgressBarInfo): Color{
         return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Stencil2].value(
             themeMode = FluentTheme.themeMode
         )

@@ -120,8 +120,8 @@ fun LinearProgressBar(
 fun LinearProgressBar(
     progressbarHeight: LinearProgressBarHeight = LinearProgressBarHeight.XXXSmall,
     modifier: Modifier = Modifier,
-    totalAnimationDuration: Int = 1500,
-    animationWaitDelay: Int = 750,
+    totalAnimationDuration: Int = 1750,
+    animationWaitDelay: Int = 500,
     easing: Easing = FastOutSlowInEasing,
     progressBarTokens: ProgressBarTokens? = null
 ) {
@@ -203,7 +203,7 @@ fun LinearProgressBar(
  * @param progress Progress of the progress indicator. 0.0 represents no progress and 1.0 represents full progress.
  * @param size Optional size of the circular progress bar
  * @param modifier Modifier for linear progress bar
- * @param animationSpec Optional animation for the progress indicator. Look at [AnimationSpec]
+ * @Param isNeutralColor color of the indicator whether neutral or brand color
  * @param progressBarTokens Token values for circular progress bar
  *
  */
@@ -212,11 +212,7 @@ fun CircularProgressBar(
     progress: Float,
     size: CircularProgressBarIndicatorSize = CircularProgressBarIndicatorSize.XXSmall,
     modifier: Modifier = Modifier,
-    animationSpec: AnimationSpec<Float> = tween(
-        delayMillis = 0,
-        durationMillis = 1000,
-        easing = LinearOutSlowInEasing
-    ),
+    isNeutralColor: Boolean = true,
     progressBarTokens: ProgressBarTokens? = null
 ) {
     val tokens = progressBarTokens
@@ -225,12 +221,17 @@ fun CircularProgressBar(
         LocalProgressBarTokens provides tokens,
         LocalProgressBarInfo provides ProgressBarInfo(
             progressBarType = ProgressBarType.CircularProgressBar,
-            circularProgressBarIndicatorSize = size
+            circularProgressBarIndicatorSize = size,
+            neutralColor = isNeutralColor
         )
     ) {
         val currentProgress = animateFloatAsState(
-            targetValue = progress,
-            animationSpec = animationSpec
+            targetValue = if (progress >= 1) 1f else progress,
+            animationSpec = tween(
+                delayMillis = 0,
+                durationMillis = 750,
+                easing = LinearOutSlowInEasing
+            )
         )
         val circularProgressBarIndicatorColor =
             getProgressBarTokens().getProgressBarIndicatorColor(
@@ -264,17 +265,15 @@ fun CircularProgressBar(
  *
  * @param size Optional size of the circular progress bar
  * @param modifier Modifier for linear progress bar
- * @param totalAnimationDuration Optional total animation duration of the indicator to complete one cycle.
- * @param easing Optional easing animation for the progress indicator. Look at [Easing]
+ * @Param isNeutralColor color of the indicator whether neutral or brand color
  * @param progressBarTokens Token values for circular progress bar
  *
  */
 @Composable
 fun CircularProgressBar(
     size: CircularProgressBarIndicatorSize = CircularProgressBarIndicatorSize.XXSmall,
+    isNeutralColor: Boolean = true,
     modifier: Modifier = Modifier,
-    totalAnimationDuration: Int = 1000,
-    easing: Easing = LinearEasing,
     progressBarTokens: ProgressBarTokens? = null
 ) {
     val tokens = progressBarTokens
@@ -283,7 +282,8 @@ fun CircularProgressBar(
         LocalProgressBarTokens provides tokens,
         LocalProgressBarInfo provides ProgressBarInfo(
             progressBarType = ProgressBarType.CircularProgressBar,
-            circularProgressBarIndicatorSize = size
+            circularProgressBarIndicatorSize = size,
+            neutralColor = isNeutralColor
         )
     ) {
         val circularProgressBarIndicatorColor =
@@ -302,8 +302,8 @@ fun CircularProgressBar(
             360f,
             infiniteRepeatable(
                 animation = tween(
-                    durationMillis = totalAnimationDuration,
-                    easing = easing
+                    durationMillis = 1000,
+                    easing = LinearEasing
                 )
             )
         )
@@ -359,7 +359,7 @@ fun Shimmer(
     ) {
         val shimmerBackgroundColor =
             getProgressBarTokens().getProgressBarIndicatorColor(progressBarInfo = getProgressBarInfo())
-        val shimmerKnockoutEffectColor = getProgressBarTokens().getShimmerKnockoutEffectColr(
+        val shimmerKnockoutEffectColor = getProgressBarTokens().getShimmerKnockoutEffectColor(
             progressBarInfo = getProgressBarInfo()
         )
         val cornerRadius =
@@ -398,6 +398,5 @@ fun Shimmer(
                     .background(gradientColor)
             )
         }
-
     }
 }
