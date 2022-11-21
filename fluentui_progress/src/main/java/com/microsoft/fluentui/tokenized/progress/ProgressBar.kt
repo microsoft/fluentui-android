@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -351,6 +352,10 @@ fun Shimmer(
 ) {
     val tokens = progressBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ProgressBar] as ProgressBarTokens
+    val configuration = LocalConfiguration.current
+    val screenHeight = dpToPx(configuration.screenHeightDp.dp)
+    val screenWidth = dpToPx(configuration.screenWidthDp.dp)
+    val diagonal = Math.sqrt((screenHeight*screenHeight + screenWidth*screenWidth).toDouble()).toFloat()
     CompositionLocalProvider(
         LocalProgressBarTokens provides tokens,
         LocalProgressBarInfo provides ProgressBarInfo(
@@ -367,7 +372,7 @@ fun Shimmer(
         val infiniteTransition = rememberInfiniteTransition()
         val shimmerEffect by infiniteTransition.animateFloat(
             0f,
-            1000f,
+            diagonal,
             infiniteRepeatable(
                 animation = tween(
                     durationMillis = 1000,
