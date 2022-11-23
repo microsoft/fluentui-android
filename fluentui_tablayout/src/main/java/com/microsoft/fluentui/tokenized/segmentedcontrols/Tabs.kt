@@ -2,25 +2,40 @@ package com.microsoft.fluentui.tokenized.segmentedcontrols
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.requiredWidth
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TabsInfo
+import com.microsoft.fluentui.theme.token.controlTokens.TabsTokens
 
 val LocalTabsTokens = compositionLocalOf { TabsTokens() }
 val LocalTabsInfo = compositionLocalOf { TabsInfo() }
 
+/**
+ * API to create Tabs. The Tabs control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
+ * Within the control, all PillButton are equal in width.
+ * Tabs are often used to display different views.
+
+View Documentation
+ *
+ * @param metadataList List of [PillMetaData] which contains information for all buttons in Tab
+ * @param modifier Optional Modifier for Tabs
+ * @param selectedIndex Index of the PillButton to be selected. Default: [0]
+ * @param scrollable Boolean to make Tab scrollable. Only used if more than 4 items in [metadataList]. Tabs start working as PillBar in case conditions meet
+ * @param style Style of Tabs and inherent PillButtons. Default: [PillButtonStyle.Neutral]
+ * @param pillButtonTokens Tokens to provide appearance value to PillButton
+ * @param tabsTokens Tokens to provide appearance value to Tabs
+ */
 @Composable
 fun Tabs(
     metadataList: MutableList<PillMetaData>,
@@ -44,32 +59,23 @@ fun Tabs(
         val shape = RoundedCornerShape(50)
 
         if (scrollable && metadataList.size > 4) {
-            LazyRow(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(shape)
-                    .background(getTabsTokens().background(getTabsInfo()), shape)
-                    .then(modifier)
-            ) {
-                metadataList.forEachIndexed { index, pillMetadata ->
-                    item {
-                        pillMetadata.selected = (selectedIndex == index)
-                        PillButton(
-                            pillMetadata,
-                            modifier = Modifier.fillParentMaxWidth(0.22f),
-                            style = style,
-                            pillButtonTokens = pillButtonTokens
-                        )
-                    }
-                }
+            metadataList.forEachIndexed { index, pillMetaData ->
+                pillMetaData.selected = index == selectedIndex
             }
-        }
-        else {
+            PillBar(
+                metadataList,
+                modifier = modifier,
+                style = style,
+                showBackground = false,
+                pillButtonTokens = pillButtonTokens,
+                pillBarTokens = tabsTokens
+            )
+        } else {
             Row(
-                modifier = Modifier
+                modifier = modifier
                     .clip(shape)
-                    .background(getTabsTokens().background(getTabsInfo()), shape)
-                    .then(modifier)
+                    .padding(horizontal = 16.dp)
+                    .background(getTabsTokens().trackBackground(getTabsInfo()), shape)
             ) {
                 metadataList.forEachIndexed { index, pillMetadata ->
                     pillMetadata.selected = (selectedIndex == index)

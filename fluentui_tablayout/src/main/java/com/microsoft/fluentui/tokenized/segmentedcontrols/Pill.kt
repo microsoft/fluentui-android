@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
+import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -29,10 +30,13 @@ import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.Strings
+import com.microsoft.fluentui.compose.getString
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
@@ -130,6 +134,18 @@ fun PillButton(
             onClick = pillMetaData.onClick
         )
 
+        val selectedString = if (pillMetaData.selected)
+            getString(Strings.Selected)
+        else
+            getString(Strings.NotSelected)
+
+        val enabledString = if (pillMetaData.enabled)
+            getString(Strings.Enabled)
+        else
+            getString(Strings.Disabled)
+
+        Log.e("dasdasd", "$enabledString $selectedString")
+
         Box(
             modifier
                 .scale(scaleBox.value)
@@ -138,9 +154,9 @@ fun PillButton(
                 .background(backgroundColor, shape)
                 .then(clickAndSemanticsModifier)
                 .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
-                .semantics {
+                .semantics(true) {
                     contentDescription =
-                        pillMetaData.text + if (pillMetaData.selected) "Selected" else "" + if (!pillMetaData.enabled) "Disabled" else ""
+                        "${pillMetaData.text} $selectedString $enabledString"
                 },
             contentAlignment = Alignment.Center
         ) {
@@ -150,14 +166,16 @@ fun PillButton(
                         pillMetaData.icon!!,
                         pillMetaData.text,
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 6.dp),
+                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                            .clearAndSetSemantics { },
                         tint = iconColor
                     )
                 } else {
                     Text(
                         pillMetaData.text,
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 6.dp),
+                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                            .clearAndSetSemantics { },
                         color = textColor,
                         fontSize = font.fontSize.size,
                         fontWeight = font.weight,
@@ -176,6 +194,17 @@ fun PillButton(
     }
 }
 
+/**
+ * API to create Bar of Pill button. The PillBar control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
+ * PillBar are commonly used as filter for search results.
+ *
+ * @param metadataList
+ * @param modifier
+ * @param style
+ * @param showBackground
+ * @param pillButtonTokens
+ * @param pillBarTokens
+ */
 @Composable
 fun PillBar(
     metadataList: MutableList<PillMetaData>,
@@ -199,10 +228,9 @@ fun PillBar(
         val scope = rememberCoroutineScope()
 
         LazyRow(
-            modifier = Modifier
+            modifier = modifier
                 .background(if (showBackground) getPillBarTokens().background(getPillBarInfo()) else Color.Unspecified)
-                .focusable(enabled = false)
-                .then(modifier),
+                .focusable(enabled = false),
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             state = lazyListState

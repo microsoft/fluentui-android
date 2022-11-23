@@ -10,7 +10,6 @@ import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.AvatarIcons
@@ -18,7 +17,8 @@ import com.microsoft.fluentui.icons.avataricons.Icon
 import com.microsoft.fluentui.icons.avataricons.icon.Anonymous
 import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonStyle
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
@@ -43,12 +43,7 @@ class V2SegmentedControlActivity : DemoActivity() {
             FluentTheme {
                 LazyColumn(
                     Modifier
-                        .fillMaxWidth()
-                        .background(
-                            FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                FluentTheme.themeMode
-                            )
-                        ),
+                        .fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(5.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
@@ -68,9 +63,6 @@ class V2SegmentedControlActivity : DemoActivity() {
                                     checkedState = enabled
                                 )
                             },
-                            neutralBackgroundColor = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                                FluentTheme.themeMode
-                            ),
                             neutralContent = {
                                 PillButton(
                                     PillMetaData(
@@ -90,9 +82,6 @@ class V2SegmentedControlActivity : DemoActivity() {
                                     )
                                 )
                             },
-                            brandBackgroundColor = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                                FluentTheme.themeMode
-                            ),
                             brandContent = {
                                 PillButton(
                                     PillMetaData(
@@ -333,8 +322,6 @@ class V2SegmentedControlActivity : DemoActivity() {
         enableSwitch: (@Composable () -> Unit),
         neutralContent: (@Composable RowScope.() -> Unit),
         brandContent: (@Composable RowScope.() -> Unit),
-        neutralBackgroundColor: Color = Color.Transparent,
-        brandBackgroundColor: Color = Color.Transparent
     ) {
         ListItem.SectionHeader(
             title = label,
@@ -343,11 +330,19 @@ class V2SegmentedControlActivity : DemoActivity() {
             chevronOrientation = ChevronOrientation(90f, 0f),
             trailingAccessoryView = enableSwitch
         ) {
-            Column {
+            Column(
+                modifier = Modifier.background(
+                    FluentColor(
+                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey98),
+                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey8)
+                    ).value(
+                        FluentTheme.themeMode
+                    )
+                )
+            ) {
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .background(neutralBackgroundColor)
                         .padding(5.dp),
                     horizontalArrangement = Arrangement.spacedBy(
                         10.dp,
@@ -358,7 +353,6 @@ class V2SegmentedControlActivity : DemoActivity() {
                 Row(
                     Modifier
                         .fillMaxWidth()
-                        .background(brandBackgroundColor)
                         .padding(5.dp),
                     horizontalArrangement = Arrangement.spacedBy(
                         10.dp,

@@ -55,38 +55,66 @@ open class PillButtonTokens : ControlToken, Parcelable {
             )
             PillButtonStyle.Brand -> return StateColor(
                 rest = FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode),
 
                 pressed = FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode),
 
                 selected = FluentColor(
-                    light = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode),
 
                 selectedPressed = FluentColor(
-                    light = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode),
 
                 selectedDisabled = FluentColor(
-                    light = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode),
 
                 focused = FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode),
 
                 disabled = FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(ThemeMode.Light),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(ThemeMode.Dark)
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                        ThemeMode.Dark
+                    )
                 ).value(FluentTheme.themeMode)
             )
         }
@@ -124,7 +152,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -133,7 +161,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -142,7 +170,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -151,7 +179,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -160,7 +188,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -169,7 +197,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -178,7 +206,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode)
             )
@@ -217,7 +245,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -226,7 +254,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -235,7 +263,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -244,7 +272,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -253,7 +281,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable2].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -262,7 +290,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
 
@@ -271,7 +299,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                         ThemeMode.Light
                     ),
                     dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        ThemeMode.Light
+                        ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode)
             )
