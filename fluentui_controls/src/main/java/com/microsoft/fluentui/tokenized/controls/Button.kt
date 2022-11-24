@@ -18,10 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.clearAndSetSemantics
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.*
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -84,7 +82,7 @@ fun Button(
                 )
                 .clip(shape)
                 .semantics(true) {
-                    contentDescription = text ?: ""
+                    editableText = AnnotatedString(text ?: "")
                 }
                 .then(clickAndSemanticsModifier)
                 .then(borderModifier),
@@ -102,12 +100,11 @@ fun Button(
                 if (icon != null)
                     Icon(
                         imageVector = icon,
-                        contentDescription = text,
+                        contentDescription = null,
                         modifier = Modifier
                             .size(
                                 getButtonToken().iconSize(buttonInfo = getButtonInfo()).size
-                            )
-                            .clearAndSetSemantics { },
+                            ),
                         tint = iconColor(
                             getButtonToken(),
                             getButtonInfo(),
