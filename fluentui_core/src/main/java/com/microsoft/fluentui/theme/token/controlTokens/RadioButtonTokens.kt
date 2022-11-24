@@ -12,7 +12,7 @@ import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
 data class RadioButtonInfo(
-        val selected: Boolean = false,
+    val selected: Boolean = false,
 ) : ControlInfo
 
 @Parcelize
@@ -28,41 +28,34 @@ open class RadioButtonTokens : ControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(radioButtonInfo: RadioButtonInfo): StateColor {
-        return when (radioButtonInfo.selected) {
-            true -> StateColor(
-                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = themeMode
-                    ),
-                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                            themeMode = themeMode
-                    )
+        return StateColor(
+            rest = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                themeMode = themeMode
+            ),
+            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                themeMode = themeMode
+            ),
+            disabled = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                themeMode = themeMode
             )
-            false -> StateColor(
-                    rest = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
-                            themeMode = themeMode
-                    )
-            )
-        }
+        )
     }
 
     @Composable
     open fun iconColor(radioButtonInfo: RadioButtonInfo): StateColor {
-        return when (radioButtonInfo.selected) {
-            true -> StateColor(
-                    rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                            themeMode = themeMode
-                    )
+        return StateColor(
+            selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                themeMode = themeMode
+            ),
+            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                themeMode = themeMode
             )
-            false -> StateColor()
-        }
+        )
     }
 }
