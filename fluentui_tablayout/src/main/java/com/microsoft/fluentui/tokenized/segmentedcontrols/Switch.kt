@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Row
@@ -19,45 +20,45 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.PillButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
-import com.microsoft.fluentui.theme.token.controlTokens.SwitchInfo
-import com.microsoft.fluentui.theme.token.controlTokens.SwitchTokens
+import com.microsoft.fluentui.theme.token.controlTokens.PillSwitchInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PillSwitchTokens
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
-val LocalSwitchTokens = compositionLocalOf { SwitchTokens() }
-val LocalSwitchInfo = compositionLocalOf { SwitchInfo() }
+val LocalPillSwitchTokens = compositionLocalOf { PillSwitchTokens() }
+val LocalPillSwitchInfo = compositionLocalOf { PillSwitchInfo() }
 
 /**
- * API to create Switches. The Switch control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
- * Switches are used to toggling between two views.
+ * API to create PillSwitches. The PillSwitch control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
+ * PillSwitches are used to toggling between two views.
  *
  * @param metadataList List of [PillMetaData] which contains information for all buttons in Tab
  * @param modifier Optional Modifier for Tabs
  * @param selectedIndex Index of the PillButton to be selected. Default: [0]
- * @param style Style of Tabs and inherent PillButtons. Default: [PillButtonStyle.Neutral]
+ * @param style Style of Tabs and inherent PillButtons. Default: [FluentStyle.Neutral]
  * @param pillButtonTokens Tokens to provide appearance value to PillButton
- * @param switchTokens Tokens to provide appearance value to Switch
+ * @param pillSwitchTokens Tokens to provide appearance value to PillSwitch
  */
 @Composable
-fun Switch(
+fun PillSwitch(
     metadataList: MutableList<PillMetaData>,
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
-    style: PillButtonStyle = PillButtonStyle.Neutral,
+    style: FluentStyle = FluentStyle.Neutral,
     pillButtonTokens: PillButtonTokens? = null,
-    switchTokens: SwitchTokens? = null
+    pillSwitchTokens: PillSwitchTokens? = null
 ) {
     if (metadataList.size == 0)
         return
 
-    val token = switchTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Switch] as SwitchTokens
+    val token = pillSwitchTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillSwitch] as PillSwitchTokens
 
     CompositionLocalProvider(
-        LocalSwitchTokens provides token,
-        LocalSwitchInfo provides SwitchInfo(style)
+        LocalPillSwitchTokens provides token,
+        LocalPillSwitchInfo provides PillSwitchInfo(style)
     ) {
         val shape = RoundedCornerShape(50)
 
@@ -77,7 +78,7 @@ fun Switch(
                     .padding(horizontal = 16.dp)
                     .focusable(enabled = false)
                     .clip(shape)
-                    .background(getSwitchTokens().background(getSwitchInfo()), shape),
+                    .background(getPillSwitchTokens().background(getPillSwitchInfo()), shape),
                 state = lazyListState
             ) {
                 metadataList.forEachIndexed { index, pillMetadata ->
@@ -107,11 +108,11 @@ fun Switch(
 }
 
 @Composable
-fun getSwitchTokens(): SwitchTokens {
-    return LocalSwitchTokens.current
+fun getPillSwitchTokens(): PillSwitchTokens {
+    return LocalPillSwitchTokens.current
 }
 
 @Composable
-fun getSwitchInfo(): SwitchInfo {
-    return LocalSwitchInfo.current
+fun getPillSwitchInfo(): PillSwitchInfo {
+    return LocalPillSwitchInfo.current
 }

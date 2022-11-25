@@ -9,13 +9,8 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-enum class PillButtonStyle {
-    Neutral,
-    Brand
-}
-
 data class PillButtonInfo(
-    val style: PillButtonStyle = PillButtonStyle.Neutral,
+    val style: FluentStyle = FluentStyle.Neutral,
     val enabled: Boolean = true,
     val selected: Boolean = false
 ) : ControlInfo
@@ -30,7 +25,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun backgroundColor(pillButtonInfo: PillButtonInfo): StateColor {
         when (pillButtonInfo.style) {
-            PillButtonStyle.Neutral -> return StateColor(
+            FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                     themeMode = FluentTheme.themeMode
                 ),
@@ -53,7 +48,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 )
             )
-            PillButtonStyle.Brand -> return StateColor(
+            FluentStyle.Brand -> return StateColor(
                 rest = FluentColor(
                     light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
                         ThemeMode.Light
@@ -123,7 +118,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun iconColor(pillButtonInfo: PillButtonInfo): StateColor {
         when (pillButtonInfo.style) {
-            PillButtonStyle.Neutral -> return StateColor(
+            FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 ),
@@ -146,7 +141,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 )
             )
-            PillButtonStyle.Brand -> return StateColor(
+            FluentStyle.Brand -> return StateColor(
                 rest = FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
@@ -216,7 +211,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun textColor(pillButtonInfo: PillButtonInfo): StateColor {
         when (pillButtonInfo.style) {
-            PillButtonStyle.Neutral -> return StateColor(
+            FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 ),
@@ -239,7 +234,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 )
             )
-            PillButtonStyle.Brand -> return StateColor(
+            FluentStyle.Brand -> return StateColor(
                 rest = FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light

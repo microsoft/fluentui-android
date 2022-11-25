@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
-import android.util.Log
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
@@ -60,7 +59,7 @@ val LocalPillBarInfo = compositionLocalOf { PillBarInfo() }
 fun PillButton(
     pillMetaData: PillMetaData,
     modifier: Modifier = Modifier,
-    style: PillButtonStyle = PillButtonStyle.Neutral,
+    style: FluentStyle = FluentStyle.Neutral,
     badge: (@Composable () -> Unit)? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     pillButtonTokens: PillButtonTokens? = null
@@ -144,8 +143,6 @@ fun PillButton(
         else
             getString(Strings.Disabled)
 
-        Log.e("dasdasd", "$enabledString $selectedString")
-
         Box(
             modifier
                 .scale(scaleBox.value)
@@ -209,7 +206,7 @@ fun PillButton(
 fun PillBar(
     metadataList: MutableList<PillMetaData>,
     modifier: Modifier = Modifier,
-    style: PillButtonStyle = PillButtonStyle.Neutral,
+    style: FluentStyle = FluentStyle.Neutral,
     showBackground: Boolean = false,
     pillButtonTokens: PillButtonTokens? = null,
     pillBarTokens: PillBarTokens? = null

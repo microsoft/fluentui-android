@@ -19,7 +19,7 @@ import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.theme.token.controlTokens.PillButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.FluentStyle
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -90,7 +90,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selected = selectedBrand,
                                         enabled = enabled
                                     ),
-                                    style = PillButtonStyle.Brand
+                                    style = FluentStyle.Brand
                                 )
                                 PillButton(
                                     PillMetaData(
@@ -100,7 +100,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selected = selectedBrandIcon,
                                         enabled = enabled
                                     ),
-                                    style = PillButtonStyle.Brand,
+                                    style = FluentStyle.Brand,
                                 )
                             }
                         )
@@ -171,7 +171,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                             brandContent = {
                                 PillBar(
                                     pillList,
-                                    style = PillButtonStyle.Brand
+                                    style = FluentStyle.Brand
                                 )
                             }
                         )
@@ -213,14 +213,14 @@ class V2SegmentedControlActivity : DemoActivity() {
                             },
                             neutralContent = {
                                 Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                                    Tabs(
+                                    PillTabs(
                                         tabsList.subList(0, 4),
                                         selectedIndex = selectedTab,
                                         scrollable = true
                                     )
-                                    Tabs(
+                                    PillTabs(
                                         tabsList.subList(0, 4),
-                                        style = PillButtonStyle.Brand,
+                                        style = FluentStyle.Brand,
                                         selectedIndex = selectedTab,
                                         scrollable = false
                                     )
@@ -228,14 +228,14 @@ class V2SegmentedControlActivity : DemoActivity() {
                             },
                             brandContent = {
                                 Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
-                                    Tabs(
+                                    PillTabs(
                                         tabsList,
                                         selectedIndex = selectedTab,
                                         scrollable = true
                                     )
-                                    Tabs(
+                                    PillTabs(
                                         tabsList,
-                                        style = PillButtonStyle.Brand,
+                                        style = FluentStyle.Brand,
                                         selectedIndex = selectedTab,
                                         scrollable = false
                                     )
@@ -282,13 +282,13 @@ class V2SegmentedControlActivity : DemoActivity() {
                                 Column(
                                     verticalArrangement = Arrangement.spacedBy(5.dp),
                                 ) {
-                                    Switch(
+                                    PillSwitch(
                                         switchList.subList(0, 2),
                                         selectedIndex = selectedSwitch
                                     )
-                                    Switch(
+                                    PillSwitch(
                                         switchList.subList(0, 2),
-                                        style = PillButtonStyle.Brand,
+                                        style = FluentStyle.Brand,
                                         selectedIndex = selectedSwitch
                                     )
                                 }
@@ -297,13 +297,13 @@ class V2SegmentedControlActivity : DemoActivity() {
                                 Column(
                                     verticalArrangement = Arrangement.spacedBy(5.dp),
                                 ) {
-                                    Switch(
+                                    PillSwitch(
                                         switchList,
                                         selectedIndex = selectedSwitch
                                     )
-                                    Switch(
+                                    PillSwitch(
                                         switchList,
-                                        style = PillButtonStyle.Brand,
+                                        style = FluentStyle.Brand,
                                         selectedIndex = selectedSwitch
                                     )
                                 }

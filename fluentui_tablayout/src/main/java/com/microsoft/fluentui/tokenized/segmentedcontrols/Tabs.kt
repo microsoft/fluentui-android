@@ -13,48 +13,48 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.PillButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
-import com.microsoft.fluentui.theme.token.controlTokens.TabsInfo
-import com.microsoft.fluentui.theme.token.controlTokens.TabsTokens
+import com.microsoft.fluentui.theme.token.controlTokens.PillTabsInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PillTabsTokens
 
-val LocalTabsTokens = compositionLocalOf { TabsTokens() }
-val LocalTabsInfo = compositionLocalOf { TabsInfo() }
+val LocalPillTabsTokens = compositionLocalOf { PillTabsTokens() }
+val LocalPillTabsInfo = compositionLocalOf { PillTabsInfo() }
 
 /**
- * API to create Tabs. The Tabs control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
+ * API to create PillTabs. The PillTabs control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
  * Within the control, all PillButton are equal in width.
- * Tabs are often used to display different views.
+ * PillTabs are often used to display different views.
 
 View Documentation
  *
  * @param metadataList List of [PillMetaData] which contains information for all buttons in Tab
- * @param modifier Optional Modifier for Tabs
+ * @param modifier Optional Modifier for PillTabs
  * @param selectedIndex Index of the PillButton to be selected. Default: [0]
- * @param scrollable Boolean to make Tab scrollable. Only used if more than 4 items in [metadataList]. Tabs start working as PillBar in case conditions meet
- * @param style Style of Tabs and inherent PillButtons. Default: [PillButtonStyle.Neutral]
+ * @param scrollable Boolean to make Tab scrollable. Only used if more than 4 items in [metadataList]. PillTabs start working as PillBar in case conditions meet
+ * @param style Style of PillTabs and inherent PillButtons. Default: [FluentStyle.Neutral]
  * @param pillButtonTokens Tokens to provide appearance value to PillButton
- * @param tabsTokens Tokens to provide appearance value to Tabs
+ * @param tabsTokens Tokens to provide appearance value to PillTabs
  */
 @Composable
-fun Tabs(
+fun PillTabs(
     metadataList: MutableList<PillMetaData>,
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
     scrollable: Boolean = false,
-    style: PillButtonStyle = PillButtonStyle.Neutral,
+    style: FluentStyle = FluentStyle.Neutral,
     pillButtonTokens: PillButtonTokens? = null,
-    tabsTokens: TabsTokens? = null
+    tabsTokens: PillTabsTokens? = null
 ) {
     if (metadataList.size == 0)
         return
 
     val token =
-        tabsTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tabs] as TabsTokens
+        tabsTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillTabs] as PillTabsTokens
 
     CompositionLocalProvider(
-        LocalTabsTokens provides token,
-        LocalTabsInfo provides TabsInfo(style)
+        LocalPillTabsTokens provides token,
+        LocalPillTabsInfo provides PillTabsInfo(style)
     ) {
         val shape = RoundedCornerShape(50)
 
@@ -75,7 +75,7 @@ fun Tabs(
                 modifier = modifier
                     .clip(shape)
                     .padding(horizontal = 16.dp)
-                    .background(getTabsTokens().trackBackground(getTabsInfo()), shape)
+                    .background(getPillTabsTokens().trackBackground(getPillTabsInfo()), shape)
             ) {
                 metadataList.forEachIndexed { index, pillMetadata ->
                     pillMetadata.selected = (selectedIndex == index)
@@ -94,11 +94,11 @@ fun Tabs(
 }
 
 @Composable
-fun getTabsTokens(): TabsTokens {
-    return LocalTabsTokens.current
+fun getPillTabsTokens(): PillTabsTokens {
+    return LocalPillTabsTokens.current
 }
 
 @Composable
-fun getTabsInfo(): TabsInfo {
-    return LocalTabsInfo.current
+fun getPillTabsInfo(): PillTabsInfo {
+    return LocalPillTabsInfo.current
 }

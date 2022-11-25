@@ -28,8 +28,8 @@ class ControlTokens {
         PillButton,
         PillBar,
         RadioButton,
-        Switch,
-        Tabs,
+        PillSwitch,
+        PillTabs,
         ToggleSwitch
     }
 
@@ -49,8 +49,8 @@ class ControlTokens {
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
-                ControlType.Switch -> SwitchTokens()
-                ControlType.Tabs -> TabsTokens()
+                ControlType.PillSwitch -> PillSwitchTokens()
+                ControlType.PillTabs -> PillTabsTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
         }
