@@ -18,7 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.*
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -33,37 +34,37 @@ val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
 @Composable
 fun Button(
-        onClick: () -> Unit,
-        modifier: Modifier = Modifier,
-        style: ButtonStyle = ButtonStyle.Button,
-        size: ButtonSize = ButtonSize.Medium,
-        enabled: Boolean = true,
-        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        icon: ImageVector? = null,
-        text: String? = null,
-        buttonTokens: ButtonTokens? = null
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    style: ButtonStyle = ButtonStyle.Button,
+    size: ButtonSize = ButtonSize.Medium,
+    enabled: Boolean = true,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    icon: ImageVector? = null,
+    text: String? = null,
+    buttonTokens: ButtonTokens? = null
 ) {
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
 
     CompositionLocalProvider(
-            LocalButtonTokens provides token,
-            LocalButtonInfo provides ButtonInfo(style, size)
+        LocalButtonTokens provides token,
+        LocalButtonInfo provides ButtonInfo(style, size)
     ) {
         val clickAndSemanticsModifier = Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(),
-                enabled = enabled,
-                onClickLabel = null,
-                role = Role.Button,
-                onClick = onClick
+            interactionSource = interactionSource,
+            indication = rememberRipple(),
+            enabled = enabled,
+            onClickLabel = null,
+            role = Role.Button,
+            onClick = onClick
         )
         val backgroundColor =
-                backgroundColor(getButtonToken(), getButtonInfo(), enabled, interactionSource)
+            backgroundColor(getButtonToken(), getButtonInfo(), enabled, false, interactionSource)
         val contentPadding = getButtonToken().padding(getButtonInfo())
         val iconSpacing = getButtonToken().spacing(getButtonInfo())
         val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
         val borders: List<BorderStroke> =
-                borderStroke(getButtonToken(), getButtonInfo(), enabled, interactionSource)
+            borderStroke(getButtonToken(), getButtonInfo(), enabled, false, interactionSource)
 
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
@@ -73,55 +74,62 @@ fun Button(
         }
 
         Box(
-                modifier
-                        .height(getButtonToken().fixedHeight(getButtonInfo()))
-                        .background(
-                                color = backgroundColor,
-                                shape = shape
-                        )
-                        .clip(shape)
-                        .then(borderModifier)
-                        .then(clickAndSemanticsModifier),
-                propagateMinConstraints = true
+            modifier
+                .height(getButtonToken().fixedHeight(getButtonInfo()))
+                .background(
+                    color = backgroundColor,
+                    shape = shape
+                )
+                .clip(shape)
+                .semantics(true) {
+                    editableText = AnnotatedString(text ?: "")
+                }
+                .then(clickAndSemanticsModifier)
+                .then(borderModifier),
+            propagateMinConstraints = true
         ) {
             Row(
-                    Modifier.padding(contentPadding),
-                    horizontalArrangement = Arrangement.spacedBy(
-                            iconSpacing,
-                            Alignment.CenterHorizontally
-                    ),
-                    verticalAlignment = Alignment.CenterVertically
+                Modifier.padding(contentPadding),
+                horizontalArrangement = Arrangement.spacedBy(
+                    iconSpacing,
+                    Alignment.CenterHorizontally
+                ),
+                verticalAlignment = Alignment.CenterVertically
             ) {
 
                 if (icon != null)
                     Icon(
-                            imageVector = icon,
-                            contentDescription = text,
-                            modifier = Modifier.size(
-                                    getButtonToken().iconSize(buttonInfo = getButtonInfo()).size
+                        imageVector = icon,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(
+                                getButtonToken().iconSize(buttonInfo = getButtonInfo()).size
                             ),
-                            tint = iconColor(
-                                    getButtonToken(),
-                                    getButtonInfo(),
-                                    enabled,
-                                    interactionSource
-                            )
+                        tint = iconColor(
+                            getButtonToken(),
+                            getButtonInfo(),
+                            enabled,
+                            false,
+                            interactionSource
+                        )
                     )
 
                 if (text != null)
                     Text(
-                            text = text,
-                            fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
-                            lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
-                            fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
-                            color = textColor(
-                                    getButtonToken(),
-                                    getButtonInfo(),
-                                    enabled,
-                                    interactionSource
-                            ),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                        text = text,
+                        modifier = Modifier.clearAndSetSemantics { },
+                        fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
+                        lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
+                        fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
+                        color = textColor(
+                            getButtonToken(),
+                            getButtonInfo(),
+                            enabled,
+                            false,
+                            interactionSource
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
             }
         }
