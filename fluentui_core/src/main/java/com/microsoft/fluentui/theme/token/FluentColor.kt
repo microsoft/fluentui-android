@@ -18,7 +18,7 @@ data class StateColor(
     val selectedPressed: Color = Color.Unspecified,
     val selectedFocused: Color = Color.Unspecified,
     val selectedDisabled: Color = Color.Unspecified,
-    val disabled: Color = Color.Unspecified,
+    val disabled: Color = Color.Unspecified
 )
 
 data class FluentColor(

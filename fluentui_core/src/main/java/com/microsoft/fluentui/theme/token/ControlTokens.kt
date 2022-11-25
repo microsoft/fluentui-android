@@ -25,7 +25,11 @@ class ControlTokens {
         Drawer,
         FloatingActionButton,
         ListItem,
+        PillButton,
+        PillBar,
         RadioButton,
+        PillSwitch,
+        PillTabs,
         ToggleSwitch
     }
 
@@ -42,9 +46,12 @@ class ControlTokens {
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.ListItem -> ListItemTokens()
+                ControlType.PillButton -> PillButtonTokens()
+                ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
+                ControlType.PillSwitch -> PillSwitchTokens()
+                ControlType.PillTabs -> PillTabsTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
-
             }
         }
     }
