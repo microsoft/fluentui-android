@@ -4,9 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -89,7 +93,7 @@ private fun CreateActivityUI() {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
                     "Show Fixed Drawer",
                     BehaviorType.BOTTOM,
-                    getDrawerContent(),
+                    getDrawerContent1(),
                     expandable = false
             )
         }
@@ -190,6 +194,52 @@ private fun PrimarySurfaceContent(
 
 @Composable
 private fun getDrawerContent(
+    contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT
+): @Composable ((close: () -> Unit) -> Unit) {
+    return { _ ->
+        val no = remember { mutableStateOf(0) }
+        LazyColumn(
+            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            item {
+                com.microsoft.fluentui.tokenized.controls.Button(
+                    style = ButtonStyle.Button,
+                    size = ButtonSize.Medium,
+                    text = "Click to create random size list",
+                    onClick = { no.value = (50 * Math.random()).toInt() })
+            }
+            repeat(no.value) {
+                item {
+                    Spacer(Modifier.height(10.dp))
+                    Text("list item $it")
+                }
+            }
+        }
+
+//        LazyRow(
+////            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+////                .fillMaxWidth()
+//        ) {
+//            item {
+//                com.microsoft.fluentui.tokenized.controls.Button(
+//                    style = ButtonStyle.Button,
+//                    size = ButtonSize.Medium,
+//                    text = "Click to create random size list",
+//                    onClick = { no.value = (10 * Math.random()).toInt() })
+//            }
+//            repeat(no.value) {
+//                item {
+//                    Spacer(Modifier.height(10.dp))
+//                    Text("list item $it")
+//                }
+//            }
+//        }
+    }
+}
+
+@Composable
+private fun getDrawerContent1(
         contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT
 ): @Composable ((close: () -> Unit) -> Unit) {
     return { _ ->
