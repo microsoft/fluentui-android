@@ -17,23 +17,35 @@ import java.security.InvalidParameterException
 fun getColorByState(
     stateData: StateColor,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Color {
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
+        if (selected && isPressed)
+            return stateData.selectedPressed
+        else if (isPressed)
             return stateData.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
+        if (selected && isFocused)
+            return stateData.selectedFocused
+        else if (isFocused)
             return stateData.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
+        if (selected && isHovered)
+            return stateData.selectedFocused
         if (isHovered)
             return stateData.focused
 
+        if (selected)
+            return stateData.selected
+
         return stateData.rest
-    } else
+    } else if (selected)
+        return stateData.selectedDisabled
+    else
         return stateData.disabled
 }
 
@@ -42,6 +54,7 @@ fun backgroundColor(
     tokens: ControlToken,
     info: ControlInfo,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Color {
     val backgroundColors: StateColor =
@@ -54,7 +67,7 @@ fun backgroundColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(backgroundColors, enabled, interactionSource)
+    return getColorByState(backgroundColors, enabled, selected, interactionSource)
 }
 
 @Composable
@@ -62,6 +75,7 @@ fun iconColor(
     tokens: ControlToken,
     info: ControlInfo,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Color {
     val iconColors: StateColor =
@@ -74,7 +88,7 @@ fun iconColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(iconColors, enabled, interactionSource)
+    return getColorByState(iconColors, enabled, selected, interactionSource)
 }
 
 @Composable
@@ -82,6 +96,7 @@ fun textColor(
     tokens: ControlToken,
     info: ControlInfo,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Color {
     val textColors: StateColor =
@@ -91,7 +106,7 @@ fun textColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(textColors, enabled, interactionSource)
+    return getColorByState(textColors, enabled, selected, interactionSource)
 }
 
 @Composable
@@ -99,6 +114,7 @@ fun borderStroke(
     tokens: ControlToken,
     info: ControlInfo,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): List<BorderStroke> {
     val fetchBorderStroke: StateBorderStroke =
@@ -111,19 +127,30 @@ fun borderStroke(
 
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
+        if (selected && isPressed)
+            return fetchBorderStroke.selectedPressed
+        else if (isPressed)
             return fetchBorderStroke.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
+        if (selected && isFocused)
+            return fetchBorderStroke.selectedFocused
+        else if (isFocused)
             return fetchBorderStroke.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
+        if (selected && isHovered)
+            return fetchBorderStroke.selectedFocused
         if (isHovered)
             return fetchBorderStroke.focused
 
+        if (selected)
+            return fetchBorderStroke.selected
+
         return fetchBorderStroke.rest
-    } else
+    } else if (selected)
+        return fetchBorderStroke.selectedDisabled
+    else
         return fetchBorderStroke.disabled
 }
 
@@ -132,6 +159,7 @@ fun elevation(
     tokens: ControlToken,
     info: ControlInfo,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Dp {
     val elevationState: StateElevation =
@@ -143,19 +171,29 @@ fun elevation(
 
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
+        if (selected && isPressed)
+            return elevationState.selectedPressed
+        else if (isPressed)
             return elevationState.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
+        if (selected && isFocused)
+            return elevationState.selectedFocused
+        else if (isFocused)
             return elevationState.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
+        if (selected && isHovered)
+            return elevationState.selectedFocused
         if (isHovered)
             return elevationState.focused
 
+        if (selected)
+            return elevationState.selected
+
         return elevationState.rest
-    } else {
+    } else if (selected)
+        return elevationState.selectedDisabled
+    else
         return elevationState.disabled
-    }
 }

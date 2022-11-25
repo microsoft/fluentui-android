@@ -21,58 +21,50 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
 
     @Composable
     open fun trackColor(switchInfo: ToggleSwitchInfo): StateColor {
-        return when (switchInfo.checked) {
-            true -> StateColor(
-                rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                    themeMode = themeMode
-                ),
-                pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                    themeMode = themeMode
-                ),
-                disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                    themeMode = themeMode
-                )
+        return StateColor(
+            rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                themeMode = themeMode
+            ),
+            pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                themeMode = themeMode
+            ),
+            disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                themeMode = themeMode
+            ),
+            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            selectedPressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                themeMode = themeMode
             )
-            false -> StateColor(
-                rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                    themeMode = themeMode
-                ),
-                pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                    themeMode = themeMode
-                ),
-                disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                    themeMode = themeMode
-                )
-            )
-        }
+        )
     }
 
     @Composable
     open fun knobColor(switchInfo: ToggleSwitchInfo): StateColor {
-        return when (switchInfo.checked) {
-            true -> StateColor(
-                rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
-                    themeMode = themeMode
-                ),
-                pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
-                    themeMode = themeMode
-                ),
-                disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
-                    themeMode = themeMode
-                )
+        return StateColor(
+            rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                themeMode = themeMode
+            ),
+            pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                themeMode = themeMode
+            ),
+            disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+                themeMode = themeMode
+            ),
+            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                themeMode = themeMode
+            ),
+            selectedPressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+                themeMode = themeMode
+            ),
+            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+                themeMode = themeMode
             )
-            false -> StateColor(
-                rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
-                    themeMode = themeMode
-                ),
-                pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
-                    themeMode = themeMode
-                ),
-                disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
-                    themeMode = themeMode
-                )
-            )
-        }
+        )
     }
 
     @Composable

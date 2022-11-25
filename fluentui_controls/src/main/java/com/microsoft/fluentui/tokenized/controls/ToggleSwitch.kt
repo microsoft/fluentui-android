@@ -56,15 +56,15 @@ fun ToggleSwitch(
 
         val backgroundColor: Color = backgroundColor(
             getToggleSwitchToken(), getToggleSwitchInfo(),
-            enabledSwitch, interactionSource
+            enabledSwitch, checkedState, interactionSource
         )
         val foregroundColor: Color = iconColor(
             getToggleSwitchToken(), getToggleSwitchInfo(),
-            enabledSwitch, interactionSource
+            enabledSwitch, checkedState, interactionSource
         )
         val elevation: Dp = elevation(
             getToggleSwitchToken(), getToggleSwitchInfo(),
-            enabledSwitch, interactionSource
+            enabledSwitch, checkedState, interactionSource
         )
         val padding: Dp = getToggleSwitchToken().paddingTrack
 

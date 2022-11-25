@@ -11,7 +11,7 @@ import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
 data class CheckBoxInfo(
-        val checked: Boolean = false,
+    val checked: Boolean = false,
 ) : ControlInfo
 
 @Parcelize
@@ -27,70 +27,55 @@ open class CheckBoxTokens : ControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(checkBoxInfo: CheckBoxInfo): StateColor {
-        return when (checkBoxInfo.checked) {
-            true -> StateColor(
-                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = themeMode
-                    ),
-                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                            themeMode = themeMode
-                    )
+        return StateColor(
+            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                themeMode = themeMode
             )
-            false -> StateColor()
-        }
+        )
     }
 
     @Composable
     open fun iconColor(checkBoxInfo: CheckBoxInfo): StateColor {
-        return when (checkBoxInfo.checked) {
-            true -> StateColor(
-                    rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                            themeMode = themeMode
-                    ),
-                    pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                            themeMode = themeMode
-                    ),
-                    disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
-                            themeMode = themeMode
-                    )
+        return StateColor(
+            selected = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+                themeMode = themeMode
             )
-            false -> StateColor()
-        }
+        )
     }
 
     @Composable
     open fun borderStroke(checkBoxInfo: CheckBoxInfo): StateBorderStroke {
-        return when (checkBoxInfo.checked) {
-            true -> StateBorderStroke()
-            false -> StateBorderStroke(
-                    rest = listOf(
-                            BorderStroke(
-                                    1.5.dp,
-                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
-                                            themeMode = themeMode
-                                    )
-                            )
-                    ),
-                    pressed = listOf(
-                            BorderStroke(
-                                    1.5.dp,
-                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
-                                            themeMode = themeMode
-                                    )
-                            )
-                    ),
-                    disabled = listOf(
-                            BorderStroke(
-                                    1.5.dp,
-                                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
-                                            themeMode = themeMode
-                                    )
-                            )
+        return StateBorderStroke(
+            rest = listOf(
+                BorderStroke(
+                    1.5.dp,
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                        themeMode = themeMode
                     )
+                )
+            ),
+            pressed = listOf(
+                BorderStroke(
+                    1.5.dp,
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                        themeMode = themeMode
+                    )
+                )
+            ),
+            disabled = listOf(
+                BorderStroke(
+                    1.5.dp,
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                        themeMode = themeMode
+                    )
+                )
             )
-        }
+        )
     }
 }

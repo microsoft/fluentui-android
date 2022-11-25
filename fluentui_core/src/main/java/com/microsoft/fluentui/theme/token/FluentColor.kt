@@ -11,17 +11,19 @@ import androidx.compose.ui.graphics.Color
 import com.microsoft.fluentui.theme.ThemeMode
 
 data class StateColor(
-        val rest: Color = Color.Unspecified,
-        val pressed: Color = Color.Unspecified,
-        val selected: Color = Color.Unspecified,
-        val focused: Color = Color.Unspecified,
-        val selectedFocused: Color = Color.Unspecified,
-        val disabled: Color = Color.Unspecified,
+    val rest: Color = Color.Unspecified,
+    val pressed: Color = Color.Unspecified,
+    val selected: Color = Color.Unspecified,
+    val focused: Color = Color.Unspecified,
+    val selectedPressed: Color = Color.Unspecified,
+    val selectedFocused: Color = Color.Unspecified,
+    val selectedDisabled: Color = Color.Unspecified,
+    val disabled: Color = Color.Unspecified,
 )
 
 data class FluentColor(
-        val light: Color,
-        val dark: Color = light,
+    val light: Color,
+    val dark: Color = light,
 ) {
 
     @Composable

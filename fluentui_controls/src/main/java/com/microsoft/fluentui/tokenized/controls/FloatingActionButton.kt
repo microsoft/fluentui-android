@@ -17,6 +17,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -41,7 +44,7 @@ fun FloatingActionButton(
     text: String? = null,
     fabTokens: FABTokens? = null
 ) {
-    if (icon == null && (text == null && text == ""))
+    if (icon == null && (text == null || text == ""))
         return
 
     val token = fabTokens
@@ -62,13 +65,13 @@ fun FloatingActionButton(
         val isFabExpanded: Boolean =
             (text != null && text != "" && getFABInfo().state == FABState.Expanded)
         val backgroundColor =
-            backgroundColor(getFABToken(), getFABInfo(), enabled, interactionSource)
+            backgroundColor(getFABToken(), getFABInfo(), enabled, false, interactionSource)
         val contentPadding = if (isFabExpanded) getFABToken().textPadding(getFABInfo())
         else getFABToken().iconPadding(getFABInfo())
         val iconSpacing = if (isFabExpanded) getFABToken().spacing(getFABInfo()) else 0.dp
         val shape = CircleShape
         val borders: List<BorderStroke> =
-            borderStroke(getFABToken(), getFABInfo(), enabled, interactionSource)
+            borderStroke(getFABToken(), getFABInfo(), enabled, false, interactionSource)
 
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
@@ -86,6 +89,7 @@ fun FloatingActionButton(
                         getFABToken(),
                         getFABInfo(),
                         enabled = enabled,
+                        selected = false,
                         interactionSource = interactionSource
                     ),
                     shape = CircleShape
@@ -95,8 +99,9 @@ fun FloatingActionButton(
                     shape = shape
                 )
                 .clip(shape)
-                .then(borderModifier)
-                .then(clickAndSemanticsModifier),
+                .semantics(mergeDescendants = true) { contentDescription = text ?: "" }
+                .then(clickAndSemanticsModifier)
+                .then(borderModifier),
             propagateMinConstraints = true
         ) {
             Row(
@@ -112,19 +117,34 @@ fun FloatingActionButton(
                     Icon(
                         imageVector = icon,
                         contentDescription = text,
-                        modifier = Modifier.size(
-                            getFABToken().iconSize(getFABInfo()).size
-                        ),
-                        tint = iconColor(getFABToken(), getFABInfo(), enabled, interactionSource)
+                        modifier = Modifier
+                            .size(
+                                getFABToken().iconSize(getFABInfo()).size
+                            )
+                            .clearAndSetSemantics { },
+                        tint = iconColor(
+                            getFABToken(),
+                            getFABInfo(),
+                            enabled,
+                            false,
+                            interactionSource
+                        )
                     )
 
                 AnimatedVisibility(isFabExpanded) {
                     Text(
                         text = text!!,
+                        modifier = Modifier.clearAndSetSemantics { },
                         fontSize = getFABToken().fontInfo(getFABInfo()).fontSize.size,
                         lineHeight = getFABToken().fontInfo(getFABInfo()).fontSize.lineHeight,
                         fontWeight = getFABToken().fontInfo(getFABInfo()).weight,
-                        color = textColor(getFABToken(), getFABInfo(), enabled, interactionSource),
+                        color = textColor(
+                            getFABToken(),
+                            getFABInfo(),
+                            enabled,
+                            false,
+                            interactionSource
+                        ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

@@ -5,9 +5,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 data class StateBorderStroke(
-        val rest: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
-        val pressed: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
-        val selected: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
-        val focused: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
-        val disabled: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val rest: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val pressed: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val selected: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val selectedPressed: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val selectedFocused: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val selectedDisabled: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val focused: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
+    val disabled: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
 )
