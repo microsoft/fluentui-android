@@ -8,6 +8,7 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentStyle
 import kotlinx.parcelize.Parcelize
 
 data class PillSwitchInfo(

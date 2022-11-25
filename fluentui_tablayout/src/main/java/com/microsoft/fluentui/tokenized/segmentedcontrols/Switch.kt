@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Row
@@ -20,7 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.FluentStyle
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillSwitchInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillSwitchTokens

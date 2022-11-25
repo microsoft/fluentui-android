@@ -22,10 +22,16 @@ open class PillBarTokens : ControlToken, Parcelable {
     @Composable
     open fun background(pillBarInfo: PillBarInfo): Color {
         return when (pillBarInfo.style) {
-            FluentStyle.Neutral -> FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(FluentTheme.themeMode)
+            FluentStyle.Neutral -> FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                FluentTheme.themeMode
+            )
             FluentStyle.Brand -> FluentColor(
-                light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(ThemeMode.Light),
-                dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(ThemeMode.Dark)
+                light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    ThemeMode.Light
+                ),
+                dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                    ThemeMode.Dark
+                )
             ).value(FluentTheme.themeMode)
         }
     }

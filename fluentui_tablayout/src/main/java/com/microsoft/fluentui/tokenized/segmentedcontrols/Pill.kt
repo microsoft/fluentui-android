@@ -38,7 +38,11 @@ import com.microsoft.fluentui.compose.Strings
 import com.microsoft.fluentui.compose.getString
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.controlTokens.PillBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PillBarTokens
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import kotlinx.coroutines.launch
 import kotlin.math.max
 

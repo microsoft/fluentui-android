@@ -19,7 +19,7 @@ import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.theme.token.controlTokens.FluentStyle
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem

@@ -13,7 +13,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.FluentStyle
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillTabsInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillTabsTokens
@@ -50,7 +50,8 @@ fun PillTabs(
         return
 
     val token =
-        tabsTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillTabs] as PillTabsTokens
+        tabsTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillTabs] as PillTabsTokens
 
     CompositionLocalProvider(
         LocalPillTabsTokens provides token,
