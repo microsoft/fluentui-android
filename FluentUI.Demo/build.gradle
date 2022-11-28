@@ -15,7 +15,7 @@ android {
         applicationId 'com.microsoft.fluentuidemo'
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 46
+        versionCode 47
         versionName '0.1.12'
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
