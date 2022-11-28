@@ -1,8 +1,12 @@
-Release Version 0.1.11:
+Release Version 0.1.12:
 
 What's New:
 
 Fluent V2 :
- - Added Implementation for Avatar Carousel.
- - Updated Tokens to reflect to the latest in Figma Sheets
- - Add Shadow to Toggle Switch knob.
+ - Segmented Control Implementation
+ - Section Header State saving on Orientation Change
+ - Accessibility Issues Fix for Controls Module
+ - Code Improvement for Controls Module.
+
+ Fluent V1:
+ - Accessory Image in SheetItem and BottomSheetItem. To be shown in trailing position in vertical List.
