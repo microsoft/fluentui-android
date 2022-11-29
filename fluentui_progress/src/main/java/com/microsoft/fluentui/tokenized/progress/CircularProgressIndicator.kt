@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorColor
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorInfo
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
@@ -42,7 +43,7 @@ fun getCircularProgressIndicatorInfo(): CircularProgressIndicatorInfo {
  * @param progress Progress of the progress indicator. 0.0 represents no progress and 1.0 represents full progress.
  * @param size Optional size of the circular progress indicator
  * @param modifier Modifier for circular progress indicator
- * @Param isNeutralColor color of the indicator whether neutral or brand color
+ * @param style Style of progress indicator. Default: [FluentStyle.Neutral]
  * @param circularProgressIndicatorTokens Token values for circular progress indicator
  *
  */
@@ -51,7 +52,7 @@ fun CircularProgressIndicator(
     progress: Float,
     size: CircularProgressIndicatorSize = CircularProgressIndicatorSize.XXSmall,
     modifier: Modifier = Modifier,
-    isNeutralColor: CircularProgressIndicatorColor = CircularProgressIndicatorColor.Brand,
+    style: FluentStyle = FluentStyle.Neutral,
     circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
 ) {
     val tokens = circularProgressIndicatorTokens
@@ -60,7 +61,7 @@ fun CircularProgressIndicator(
         LocalCircularProgressIndicatorTokens provides tokens,
         LocalCircularProgressIndicatorInfo provides CircularProgressIndicatorInfo(
             circularProgressIndicatorSize = size,
-            neutralColor = isNeutralColor == CircularProgressIndicatorColor.Neutral
+            style = style
         )
     ) {
         val currentProgress = animateFloatAsState(
@@ -105,7 +106,7 @@ fun CircularProgressIndicator(
  *
  * @param size Optional size of the circular progress indicator
  * @param modifier Modifier for circular progress indicator
- * @Param color color of the indicator whether neutral or brand color
+ * @param style Style of progress indicator. Default: [FluentStyle.Neutral]
  * @param circularProgressIndicatorTokens Token values for circular progress indicator
  *
  */
@@ -113,7 +114,7 @@ fun CircularProgressIndicator(
 fun CircularProgressIndicator(
     size: CircularProgressIndicatorSize = CircularProgressIndicatorSize.XXSmall,
     modifier: Modifier = Modifier,
-    color: CircularProgressIndicatorColor = CircularProgressIndicatorColor.Brand,
+    style: FluentStyle = FluentStyle.Neutral,
     circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
 ) {
     val tokens = circularProgressIndicatorTokens
@@ -122,7 +123,7 @@ fun CircularProgressIndicator(
         LocalCircularProgressIndicatorTokens provides tokens,
         LocalCircularProgressIndicatorInfo provides CircularProgressIndicatorInfo(
             circularProgressIndicatorSize = size,
-            neutralColor = color == CircularProgressIndicatorColor.Neutral
+            style = style
         )
     ) {
         val circularProgressIndicatorColor =
@@ -150,7 +151,7 @@ fun CircularProgressIndicator(
         )
         val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
         Canvas(
-            modifier = Modifier
+            modifier = modifier
                 .requiredSize(circularProgressIndicatorSize)
                 .rotate(startAngle)
         ) {

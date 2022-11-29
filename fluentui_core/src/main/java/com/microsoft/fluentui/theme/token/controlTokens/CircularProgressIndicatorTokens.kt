@@ -23,7 +23,7 @@ enum class CircularProgressIndicatorColor {
 
 data class CircularProgressIndicatorInfo(
     val circularProgressIndicatorSize: CircularProgressIndicatorSize = CircularProgressIndicatorSize.XSmall,
-    val neutralColor: Boolean = true
+    val style: FluentStyle = FluentStyle.Neutral
 ) : ControlInfo
 
 @Parcelize
@@ -53,7 +53,7 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
 
     @Composable
     open fun getCircularProgressIndicatorColor(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Color {
-        return if (circularProgressIndicatorInfo.neutralColor) {
+        return if (circularProgressIndicatorInfo.style == FluentStyle.Neutral) {
             FluentColor(
                 light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey56),
                 dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey72)

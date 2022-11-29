@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorColor
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
@@ -62,7 +63,7 @@ fun createActivityUI() {
             .verticalScroll(rememberScrollState())
     ) {
         LinearProgressBarExample(brandTextColor = brandTextColor, textColor = textColor)
-        CircularProgressBarExamples(brandTextColor = brandTextColor, textColor = textColor)
+        CircularProgressBarExamples(textColor = textColor)
         DeterminateProgressbarExamples(
             brandTextColor = brandTextColor,
             textColor = textColor,
@@ -117,7 +118,7 @@ fun LinearProgressBarExample(brandTextColor: Color, textColor: Color) {
 }
 
 @Composable
-fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
+fun CircularProgressBarExamples(textColor: Color) {
     Column {
         Row(
             Modifier.height(42.dp),
@@ -128,7 +129,7 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "XSmall - 12dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(color = CircularProgressIndicatorColor.Neutral)
+            CircularProgressIndicator(style = FluentStyle.Brand)
             CircularProgressIndicator()
         }
         Row(
@@ -140,7 +141,7 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "Small - 16dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(size = CircularProgressIndicatorSize.XSmall, color = CircularProgressIndicatorColor.Neutral)
+            CircularProgressIndicator(size = CircularProgressIndicatorSize.XSmall, style = FluentStyle.Brand)
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.XSmall
             )
@@ -154,7 +155,7 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "Medium - 24dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(size = CircularProgressIndicatorSize.Medium, color = CircularProgressIndicatorColor.Neutral)
+            CircularProgressIndicator(size = CircularProgressIndicatorSize.Medium, style = FluentStyle.Brand)
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.Medium
             )
@@ -168,7 +169,7 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "Large - 32dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(size = CircularProgressIndicatorSize.Large, color = CircularProgressIndicatorColor.Neutral)
+            CircularProgressIndicator(size = CircularProgressIndicatorSize.Large, style = FluentStyle.Brand)
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.Large
             )
@@ -182,7 +183,7 @@ fun CircularProgressBarExamples(brandTextColor: Color, textColor: Color) {
                 text = "XLarge - 36dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(CircularProgressIndicatorSize.XLarge, color = CircularProgressIndicatorColor.Neutral)
+            CircularProgressIndicator(CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.XLarge
             )
@@ -226,7 +227,7 @@ fun DeterminateProgressbarExamples(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        CircularProgressIndicator(circularProgress, size = CircularProgressIndicatorSize.XLarge)
+        CircularProgressIndicator(circularProgress, size = CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
         Text(text = "" + "%.0f".format(circularProgress * 100) + "%", color = textColor)
     }
 }
@@ -261,7 +262,7 @@ fun IndeterminateProgressBarExamples(brandTextColor: Color, textColor: Color) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        CircularProgressIndicator(size = CircularProgressIndicatorSize.XLarge)
+        CircularProgressIndicator(size = CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
     }
 }
 
