@@ -33,10 +33,10 @@ open class DrawerTokens : ControlToken, Parcelable {
         )
 
     @Composable
-    open fun handleColor(drawerInfo: DrawerInfo): Color = Color.Transparent
-//        FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
-//            themeMode = FluentTheme.themeMode
-//        )
+    open fun handleColor(drawerInfo: DrawerInfo): Color =
+        FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+            themeMode = FluentTheme.themeMode
+        )
 
     @Composable
     open fun elevation(drawerInfo: DrawerInfo): Dp =

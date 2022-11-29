@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -20,7 +19,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.PersonaListView
+import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.ThemeMode
+import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -63,94 +65,102 @@ private fun CreateActivityUI() {
     LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Bottom Drawer",
-                    BehaviorType.BOTTOM,
-                    getDrawerContent()
+                "Show Bottom Drawer",
+                BehaviorType.BOTTOM,
+                getDrawerContent()
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Left Drawer",
-                    BehaviorType.LEFT,
-                    getDrawerContent()
+                "Show Left Drawer",
+                BehaviorType.LEFT,
+                getDrawerContent()
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Right Drawer",
-                    BehaviorType.RIGHT,
-                    getDrawerContent()
+                "Show Right Drawer",
+                BehaviorType.RIGHT,
+                getDrawerContent()
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Top Drawer",
-                    BehaviorType.TOP,
-                    getDrawerContent()
+                "Show Top Drawer",
+                BehaviorType.TOP,
+                getDrawerContent()
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Fixed Drawer",
-                    BehaviorType.BOTTOM,
-                    getDrawerContent1(),
-                    expandable = false
+                "Show Fixed Drawer",
+                BehaviorType.BOTTOM,
+                getDrawerContent(),
+                expandable = false
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show No Fade Drawer",
-                    BehaviorType.BOTTOM,
-                    getDrawerContent(),
-                    expandable = false,
-                    enableScrim = false
+                "Show No Fade Drawer",
+                BehaviorType.BOTTOM,
+                getDrawerContent(),
+                expandable = false,
+                enableScrim = false
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Content Wrapped Expanded Bottom Drawer",
-                    BehaviorType.BOTTOM,
-                    getDrawerContent(contentType = ContentType.EXPANDABLE_SIZE_CONTENT)
+                "Show Content Wrapped Expanded Bottom Drawer",
+                BehaviorType.BOTTOM,
+                getDrawerContent(contentType = ContentType.EXPANDABLE_SIZE_CONTENT)
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Content Wrapped Bottom Drawer",
-                    BehaviorType.BOTTOM,
-                    getDrawerContent(contentType = ContentType.WRAPPED_SIZE_CONTENT)
+                "Show Content Wrapped Bottom Drawer",
+                BehaviorType.BOTTOM,
+                getDrawerContent(contentType = ContentType.WRAPPED_SIZE_CONTENT)
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Content Wrapped Top Drawer",
-                    BehaviorType.TOP,
-                    getDrawerContent(contentType = ContentType.WRAPPED_SIZE_CONTENT)
+                "Show Content Wrapped Top Drawer",
+                BehaviorType.TOP,
+                getDrawerContent(contentType = ContentType.WRAPPED_SIZE_CONTENT)
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Bottom Outer Drawer",
-                    BehaviorType.BOTTOM,
-                    getDrawerInDrawerContent()
+                "Show Bottom Outer Drawer",
+                BehaviorType.BOTTOM,
+                getDrawerInDrawerContent()
             )
         }
         item {
             CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Left Outer Drawer",
-                    BehaviorType.LEFT,
-                    getDrawerInDrawerContent()
+                "Show Left Outer Drawer",
+                BehaviorType.LEFT,
+                getDrawerInDrawerContent()
             )
         }
+        item {
+            CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
+                "Show Dynamic Content Bottom Drawer",
+                BehaviorType.BOTTOM,
+                getDynamicDrawerContent()
+            )
+        }
+
     }
 }
 
 @Composable
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-        primaryScreenButtonText: String,
-        behaviorType: BehaviorType,
-        drawerContent: @Composable ((() -> Unit) -> Unit),
-        expandable: Boolean = true,
-        enableScrim: Boolean = true
+    primaryScreenButtonText: String,
+    behaviorType: BehaviorType,
+    drawerContent: @Composable ((() -> Unit) -> Unit),
+    expandable: Boolean = true,
+    enableScrim: Boolean = true
 ) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState()
@@ -161,41 +171,39 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         scope.launch { drawerState.close() }
     }
     PrimarySurfaceContent(
-            open,
-            text = primaryScreenButtonText
+        open,
+        text = primaryScreenButtonText
     )
     Drawer(
-            drawerState = drawerState,
-            drawerContent = { drawerContent(close) },
-            behaviorType = behaviorType,
-            expandable = expandable,
-            scrimVisible = enableScrim
+        drawerState = drawerState,
+        drawerContent = { drawerContent(close) },
+        behaviorType = behaviorType,
+        expandable = expandable,
+        scrimVisible = enableScrim
     )
 }
 
 @Composable
 private fun PrimarySurfaceContent(
-        onClick: () -> Unit,
-        text: String,
-        height: Dp = 20.dp,
+    onClick: () -> Unit,
+    text: String,
+    height: Dp = 20.dp,
 ) {
     Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(Modifier.height(height))
         com.microsoft.fluentui.tokenized.controls.Button(
-                style = ButtonStyle.Button,
-                size = ButtonSize.Medium,
-                text = text,
-                onClick = onClick
+            style = ButtonStyle.Button,
+            size = ButtonSize.Medium,
+            text = text,
+            onClick = onClick
         )
     }
 }
 
 @Composable
-private fun getDrawerContent(
-    contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT
-): @Composable ((close: () -> Unit) -> Unit) {
+private fun getDynamicDrawerContent(): @Composable ((close: () -> Unit) -> Unit) {
     return { _ ->
         val no = remember { mutableStateOf(0) }
         LazyColumn(
@@ -207,61 +215,47 @@ private fun getDrawerContent(
                     style = ButtonStyle.Button,
                     size = ButtonSize.Medium,
                     text = "Click to create random size list",
-                    onClick = { no.value = (50 * Math.random()).toInt() })
+                    onClick = { no.value = (40 * Math.random()).toInt() })
             }
             repeat(no.value) {
                 item {
                     Spacer(Modifier.height(10.dp))
-                    Text("list item $it")
+                    Text(
+                        text = "Item $it",
+                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
+                    )
                 }
             }
         }
-
-//        LazyRow(
-////            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
-////                .fillMaxWidth()
-//        ) {
-//            item {
-//                com.microsoft.fluentui.tokenized.controls.Button(
-//                    style = ButtonStyle.Button,
-//                    size = ButtonSize.Medium,
-//                    text = "Click to create random size list",
-//                    onClick = { no.value = (10 * Math.random()).toInt() })
-//            }
-//            repeat(no.value) {
-//                item {
-//                    Spacer(Modifier.height(10.dp))
-//                    Text("list item $it")
-//                }
-//            }
-//        }
     }
 }
 
 @Composable
-private fun getDrawerContent1(
-        contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT
+private fun getDrawerContent(
+    contentType: ContentType = ContentType.FULL_PAGE_SCROLLABLE_CONTENT
 ): @Composable ((close: () -> Unit) -> Unit) {
     return { _ ->
         lateinit var context: Context
         AndroidView(
-                modifier = Modifier
-                        .fillMaxWidth()
-                        .verticalScroll(rememberScrollState()),
-                factory = {
-                    context = it
-                    val view = it.activity!!.layoutInflater.inflate(
-                            R.layout.demo_drawer_content,
-                            null
-                    )!!.rootView
-                    val personaList = createPersonaList(context)
-                    (view as PersonaListView).personas = when (contentType) {
-                        ContentType.FULL_PAGE_SCROLLABLE_CONTENT -> personaList
-                        ContentType.EXPANDABLE_SIZE_CONTENT -> personaList.take(7) as ArrayList<IPersona>
-                        ContentType.WRAPPED_SIZE_CONTENT -> personaList.take(2) as ArrayList<IPersona>
-                    }
-                    view
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState()),
+            factory = {
+                context = it
+                val view = it.activity!!.layoutInflater.inflate(
+                    R.layout.demo_drawer_content,
+                    null
+                )!!.rootView
+                val personaList = createPersonaList(context)
+                (view as PersonaListView).personas = when (contentType) {
+                    ContentType.FULL_PAGE_SCROLLABLE_CONTENT -> personaList
+                    ContentType.EXPANDABLE_SIZE_CONTENT -> personaList.take(7) as ArrayList<IPersona>
+                    ContentType.WRAPPED_SIZE_CONTENT -> personaList.take(2) as ArrayList<IPersona>
                 }
+                view
+            }
         ) {}
     }
 }
@@ -270,14 +264,14 @@ private fun getDrawerContent1(
 private fun getDrawerInDrawerContent(sideDrawer: Boolean = false): @Composable ((() -> Unit) -> Unit) {
     return { close ->
         Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = if (sideDrawer) Modifier.width(250.dp) else Modifier
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = if (sideDrawer) Modifier.width(250.dp) else Modifier
         ) {
             com.microsoft.fluentui.tokenized.controls.Button(
-                    style = ButtonStyle.Button,
-                    size = ButtonSize.Medium,
-                    text = "Close Drawer",
-                    onClick = close
+                style = ButtonStyle.Button,
+                size = ButtonSize.Medium,
+                text = "Close Drawer",
+                onClick = close
             )
 
             val scopeB = rememberCoroutineScope()
@@ -285,25 +279,25 @@ private fun getDrawerInDrawerContent(sideDrawer: Boolean = false): @Composable (
 
             //Button on Outer Drawer Surface
             PrimarySurfaceContent(
-                    onClick = {
-                        scopeB.launch {
-                            drawerStateB.open()
-                        }
-                    },
-                    text = "Show Inner Drawer"
+                onClick = {
+                    scopeB.launch {
+                        drawerStateB.open()
+                    }
+                },
+                text = "Show Inner Drawer"
             )
             Drawer(
-                    drawerState = drawerStateB,
-                    drawerContent = {
-                        getDrawerContent()()
-                        {
-                            scopeB.launch {
-                                drawerStateB.close()
-                            }
+                drawerState = drawerStateB,
+                drawerContent = {
+                    getDrawerContent()()
+                    {
+                        scopeB.launch {
+                            drawerStateB.close()
                         }
+                    }
 
-                    },
-                    expandable = true
+                },
+                expandable = true
             )
         }
     }
