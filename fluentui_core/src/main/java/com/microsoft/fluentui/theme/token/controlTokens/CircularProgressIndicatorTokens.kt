@@ -16,10 +16,6 @@ enum class CircularProgressIndicatorSize {
     Large,
     XLarge
 }
-enum class CircularProgressIndicatorColor {
-    Neutral,
-    Brand
-}
 
 data class CircularProgressIndicatorInfo(
     val circularProgressIndicatorSize: CircularProgressIndicatorSize = CircularProgressIndicatorSize.XSmall,
@@ -30,7 +26,7 @@ data class CircularProgressIndicatorInfo(
 open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
 
     @Composable
-    open fun getCircularProgressIndicatorSize(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
+    open fun size(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
         return when (circularProgressIndicatorInfo.circularProgressIndicatorSize) {
             CircularProgressIndicatorSize.XXSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall).size
             CircularProgressIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall).size
@@ -41,7 +37,7 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getCircularProgressIndicatorStrokeWidth(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
+    open fun strokeWidth(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
         return when (circularProgressIndicatorInfo.circularProgressIndicatorSize) {
             CircularProgressIndicatorSize.XXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thinner)
             CircularProgressIndicatorSize.XSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thinner)
@@ -52,7 +48,7 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getCircularProgressIndicatorColor(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Color {
+    open fun color(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Color {
         return if (circularProgressIndicatorInfo.style == FluentStyle.Neutral) {
             FluentColor(
                 light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey56),

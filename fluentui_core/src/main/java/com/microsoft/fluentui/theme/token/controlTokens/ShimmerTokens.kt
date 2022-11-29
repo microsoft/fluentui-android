@@ -18,19 +18,19 @@ enum class ShimmerShape {
 @Parcelize
 open class ShimmerTokens : ControlToken, Parcelable {
     @Composable
-    open fun getShimmerCornerRadius(): Dp {
+    open fun cornerRadius(): Dp {
         return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
     }
 
     @Composable
-    open fun getShimmerKnockoutEffectColor(): Color {
+    open fun knockoutEffectColor(): Color {
         return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Stencil2].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
-    open fun getShimmerColor(): Color {
+    open fun color(): Color {
         return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Stencil1].value(
             themeMode = FluentTheme.themeMode
         )

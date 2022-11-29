@@ -56,10 +56,10 @@ fun Shimmer(
         LocalShimmerTokens provides tokens
     ) {
         val shimmerBackgroundColor =
-            getShimmerTokens().getShimmerColor()
-        val shimmerKnockoutEffectColor = getShimmerTokens().getShimmerKnockoutEffectColor()
+            getShimmerTokens().color()
+        val shimmerKnockoutEffectColor = getShimmerTokens().knockoutEffectColor()
         val cornerRadius =
-            dpToPx(getShimmerTokens().getShimmerCornerRadius())
+            dpToPx(getShimmerTokens().cornerRadius())
         val infiniteTransition = rememberInfiniteTransition()
         val shimmerEffect by infiniteTransition.animateFloat(
             0f,

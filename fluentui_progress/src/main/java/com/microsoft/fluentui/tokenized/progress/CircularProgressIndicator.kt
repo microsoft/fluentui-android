@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorColor
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorInfo
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorTokens
@@ -65,7 +64,7 @@ fun CircularProgressIndicator(
         )
     ) {
         val currentProgress = animateFloatAsState(
-            targetValue = if (progress >= 1) 1f else progress,
+            targetValue = progress.coerceIn(0f..1f),
             animationSpec = tween(
                 delayMillis = 0,
                 durationMillis = 750,
@@ -73,15 +72,15 @@ fun CircularProgressIndicator(
             )
         )
         val circularProgressIndicatorColor =
-            getCircularProgressIndicatorTokens().getCircularProgressIndicatorColor(
+            getCircularProgressIndicatorTokens().color(
                 getCircularProgressIndicatorInfo()
             )
         val circularProgressIndicatorSize =
-            getCircularProgressIndicatorTokens().getCircularProgressIndicatorSize(
+            getCircularProgressIndicatorTokens().size(
                 getCircularProgressIndicatorInfo()
             )
         val circularProgressIndicatorStrokeWidth =
-            getCircularProgressIndicatorTokens().getCircularProgressIndicatorStrokeWidth(
+            getCircularProgressIndicatorTokens().strokeWidth(
                 getCircularProgressIndicatorInfo()
             )
         val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
@@ -127,15 +126,15 @@ fun CircularProgressIndicator(
         )
     ) {
         val circularProgressIndicatorColor =
-            getCircularProgressIndicatorTokens().getCircularProgressIndicatorColor(
+            getCircularProgressIndicatorTokens().color(
                 getCircularProgressIndicatorInfo()
             )
         val circularProgressIndicatorSize =
-            getCircularProgressIndicatorTokens().getCircularProgressIndicatorSize(
+            getCircularProgressIndicatorTokens().size(
                 getCircularProgressIndicatorInfo()
             )
         val circularProgressIndicatorStrokeWidth =
-            getCircularProgressIndicatorTokens().getCircularProgressIndicatorStrokeWidth(
+            getCircularProgressIndicatorTokens().strokeWidth(
                 getCircularProgressIndicatorInfo()
             )
         val infiniteTransition = rememberInfiniteTransition()

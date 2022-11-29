@@ -22,20 +22,20 @@ data class LinearProgressIndicatorInfo(
 open class LinearProgressIndicatorTokens: ControlToken, Parcelable{
 
     @Composable
-    open fun getLinearProgressIndicatorStrokeWidth(linearProgressIndicatorInfo: LinearProgressIndicatorInfo):Dp{
+    open fun strokeWidth(linearProgressIndicatorInfo: LinearProgressIndicatorInfo):Dp{
         return when(linearProgressIndicatorInfo.linearProgressIndicatorHeight){
             LinearProgressIndicatorHeight.XXXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick)
         }
     }
 
     @Composable
-    open fun getLinearProgressIndicatorBackgroundColor(linearProgressIndicatorInfo: LinearProgressIndicatorInfo): Color {
+    open fun backgroundColor(linearProgressIndicatorInfo: LinearProgressIndicatorInfo): Color {
         return FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
             themeMode = FluentTheme.themeMode
         )
     }
     @Composable
-    open fun getLinearProgressIndicatorColor(linearProgressIndicatorInfo: LinearProgressIndicatorInfo): Color {
+    open fun color(linearProgressIndicatorInfo: LinearProgressIndicatorInfo): Color {
         return FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
         themeMode = FluentTheme.themeMode
         )

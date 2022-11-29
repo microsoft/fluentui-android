@@ -56,7 +56,7 @@ fun LinearProgressIndicator(
         )
     ) {
         val currentProgress = animateFloatAsState(
-            targetValue = if (progress >= 1) 1f else progress,
+            targetValue = progress.coerceIn(0f..1f),
             animationSpec = tween(
                 delayMillis = 0,
                 durationMillis = 1000,
@@ -64,15 +64,15 @@ fun LinearProgressIndicator(
             )
         )
         val linearProgressIndicatorHeight =
-            getLinearProgressIndicatorTokens().getLinearProgressIndicatorStrokeWidth(
+            getLinearProgressIndicatorTokens().strokeWidth(
                 getLinearProgressIndicatorInfo()
             )
         val linearProgressIndicatorBackgroundColor =
-            getLinearProgressIndicatorTokens().getLinearProgressIndicatorBackgroundColor(
+            getLinearProgressIndicatorTokens().backgroundColor(
                 getLinearProgressIndicatorInfo()
             )
         val linearProgressIndicatorColor =
-            getLinearProgressIndicatorTokens().getLinearProgressIndicatorColor(
+            getLinearProgressIndicatorTokens().color(
                 getLinearProgressIndicatorInfo()
             )
         Canvas(
@@ -121,15 +121,15 @@ fun LinearProgressIndicator(
         )
     ) {
         val linearProgressIndicatorHeight =
-            getLinearProgressIndicatorTokens().getLinearProgressIndicatorStrokeWidth(
+            getLinearProgressIndicatorTokens().strokeWidth(
                 getLinearProgressIndicatorInfo()
             )
         val linearProgressIndicatorBackgroundColor =
-            getLinearProgressIndicatorTokens().getLinearProgressIndicatorBackgroundColor(
+            getLinearProgressIndicatorTokens().backgroundColor(
                 getLinearProgressIndicatorInfo()
             )
         val linearProgressIndicatorColor =
-            getLinearProgressIndicatorTokens().getLinearProgressIndicatorColor(
+            getLinearProgressIndicatorTokens().color(
                 getLinearProgressIndicatorInfo()
             )
         val infiniteTransition = rememberInfiniteTransition()
