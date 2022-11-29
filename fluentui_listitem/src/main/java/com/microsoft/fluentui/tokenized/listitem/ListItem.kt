@@ -8,7 +8,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -404,7 +403,7 @@ object ListItem {
      * @param content Composable content to appear or disappear on clicking the list item
      *
      */
-    @OptIn(ExperimentalMaterialApi::class)
+
     @Composable
     fun SectionHeader(
         title: String,
@@ -693,6 +692,141 @@ object ListItem {
                         contentAlignment = Alignment.Center
                     ) {
                         trailingAccessoryView()
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Create a Header. Headers are list tiles that delineates heading of a list or grid list
+     *
+     * @param modifier Optional modifier for List item.
+     * @param title Section header title.
+     * @param titleMaxLines Optional max visible lines for title.
+     * @param accessoryTextTitle Optional accessory text.
+     * @param accessoryTextOnClick Optional onClick action for accessory text.
+     * @param enabled Optional enable/disable List item
+     * @param style [SectionHeaderStyle] Section header style.
+     * @param border [BorderType] Optional border for the list item.
+     * @param borderInset [BorderInset] Optional borderInset for list item.
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list tokens will be picked from [AppThemeController]
+     * @param trailingAccessoryView Optional composable trailing accessory view.
+     *
+     */
+
+    @Composable
+    fun Header(
+        title: String,
+        modifier: Modifier = Modifier,
+        titleMaxLines: Int = 1,
+        accessoryTextTitle: String? = null,
+        accessoryTextOnClick: (() -> Unit)? = null,
+        enabled: Boolean = true,
+        style: SectionHeaderStyle = SectionHeaderStyle.Standard,
+        border: BorderType = NoBorder,
+        borderInset: BorderInset = None,
+        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        listItemTokens: ListItemTokens? = null
+    ) {
+        val token = listItemTokens
+            ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+        CompositionLocalProvider(LocalListItemTokens provides token) {
+
+            val backgroundColor = getColorByState(
+                stateData = getListItemTokens().backgroundColor(),
+                enabled = true,
+                interactionSource = interactionSource
+            )
+            val cellHeight = getListItemTokens().cellHeight(listItemType = OneLine)
+            val textSize =
+                getListItemTokens().textSize(textType = ListTextType.Text, style = style)
+            val actionTextSize =
+                getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
+            val textColor = getColorByState(
+                stateData = getListItemTokens().textColor(
+                    textType = ListTextType.Text
+                ),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
+            val actionTextColor =
+                getColorByState(
+                    stateData = getListItemTokens().textColor(
+                        textType = ListTextType.ActionText
+                    ),
+                    enabled = enabled,
+                    interactionSource = interactionSource
+                )
+            val horizontalPadding = getListItemTokens().padding(Medium)
+            val verticalPadding = getListItemTokens().padding(size = XSmall)
+            val borderSize = getListItemTokens().borderSize().value
+            val borderInsetToPx =
+                with(LocalDensity.current) {
+                    getListItemTokens().borderInset(inset = borderInset).toPx()
+                }
+            val borderColor = getColorByState(
+                stateData = getListItemTokens().borderColor(),
+                enabled = enabled,
+                interactionSource = interactionSource
+            )
+
+            Surface(
+                modifier = modifier
+                    .fillMaxWidth()
+                    .heightIn(min = cellHeight)
+                    .background(backgroundColor)
+                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+            ) {
+                Column {
+                    Row(
+                        modifier
+                            .fillMaxWidth()
+                            .heightIn(min = cellHeight)
+                            .background(backgroundColor)
+                            .padding(bottom = verticalPadding),
+                        verticalAlignment = Alignment.Bottom
+                    ) {
+
+                        Box(
+                            Modifier
+                                .padding(start = horizontalPadding, end = horizontalPadding)
+                                .weight(1f), contentAlignment = Alignment.BottomStart
+                        ) {
+
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Text(
+                                    text = title,
+                                    fontSize = textSize.fontSize.size,
+                                    fontWeight = textSize.weight,
+                                    color = textColor,
+                                    maxLines = titleMaxLines,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
+
+                        }
+                        Row(Modifier.padding(end = horizontalPadding)) {
+                            if (accessoryTextTitle != null) {
+                                Text(text = accessoryTextTitle,
+                                    modifier.clickable(
+                                        role = Role.Button,
+                                        onClick = accessoryTextOnClick ?: {}
+                                    ),
+                                    color = actionTextColor,
+                                    fontSize = actionTextSize.fontSize.size,
+                                    fontWeight = actionTextSize.weight)
+                            }
+                        }
+                        if (trailingAccessoryView != null) {
+                            Box(
+                                Modifier.padding(end = horizontalPadding),
+                                contentAlignment = Alignment.BottomStart
+                            ) {
+                                trailingAccessoryView()
+                            }
+                        }
                     }
                 }
             }

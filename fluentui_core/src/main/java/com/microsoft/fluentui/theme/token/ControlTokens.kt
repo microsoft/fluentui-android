@@ -23,6 +23,7 @@ class ControlTokens {
         CheckBox,
         ContextualCommandBar,
         Drawer,
+        Divider,
         FloatingActionButton,
         ListItem,
         PillButton,
@@ -30,6 +31,7 @@ class ControlTokens {
         RadioButton,
         PillSwitch,
         PillTabs,
+        TabItem,
         ToggleSwitch
     }
 
@@ -44,6 +46,7 @@ class ControlTokens {
                 ControlType.CheckBox -> CheckBoxTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
+                ControlType.Divider -> DividerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.PillButton -> PillButtonTokens()
@@ -51,6 +54,7 @@ class ControlTokens {
                 ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.PillSwitch -> PillSwitchTokens()
                 ControlType.PillTabs -> PillTabsTokens()
+                ControlType.TabItem -> TabItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
         }
