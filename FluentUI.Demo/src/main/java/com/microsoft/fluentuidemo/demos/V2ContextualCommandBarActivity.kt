@@ -6,6 +6,7 @@ import android.view.KeyEvent.KEYCODE_DPAD_RIGHT
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -149,6 +150,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 TextField(
                     value = text,
                     onValueChange = { text = it },
+                    label = { Text("Type your text here") },
                     modifier = Modifier.onKeyEvent { keyEvent ->
                         when (keyEvent.nativeKeyEvent.keyCode) {
                             KEYCODE_DPAD_DOWN, KEYCODE_DPAD_RIGHT -> {
