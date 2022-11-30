@@ -37,7 +37,6 @@ import com.microsoft.fluentui.compose.SwipeableDefaults
 import com.microsoft.fluentui.compose.SwipeableState
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetTokens
 import com.microsoft.fluentui.tokenized.calculateFraction
 import com.microsoft.fluentui.util.dpToPx
@@ -184,16 +183,10 @@ private const val BOTTOMSHEET_SCRIM_TAG = "BottomSheet Scrim"
 private const val BottomSheetOpenFraction = 0.5f
 
 internal val LocalBottomSheetTokens = compositionLocalOf { BottomSheetTokens() }
-internal val LocalBottomSheetInfo = compositionLocalOf { BottomSheetInfo() }
 
 @Composable
 private fun getDrawerTokens(): BottomSheetTokens {
     return LocalBottomSheetTokens.current
-}
-
-@Composable
-private fun getBottomSheetInfo(): BottomSheetInfo {
-    return LocalBottomSheetInfo.current
 }
 
 /**
@@ -236,22 +229,18 @@ fun BottomSheet(
     val tokens = bottomSheetTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheet] as BottomSheetTokens
 
-    CompositionLocalProvider(
-        LocalBottomSheetTokens provides tokens,
-        LocalBottomSheetInfo provides BottomSheetInfo()
-    ) {
+    CompositionLocalProvider(LocalBottomSheetTokens provides tokens) {
 
         val sheetShape: Shape = RoundedCornerShape(
-            topStart = getDrawerTokens().borderRadius(getBottomSheetInfo()),
-            topEnd = getDrawerTokens().borderRadius(getBottomSheetInfo())
+            topStart = getDrawerTokens().borderRadius(),
+            topEnd = getDrawerTokens().borderRadius()
         )
-        val sheetElevation: Dp = getDrawerTokens().elevation(getBottomSheetInfo())
-        val sheetBackgroundColor: Color = getDrawerTokens().backgroundColor(getBottomSheetInfo())
+        val sheetElevation: Dp = getDrawerTokens().elevation()
+        val sheetBackgroundColor: Color = getDrawerTokens().backgroundColor()
         val sheetContentColor: Color = Color.Transparent
-        val sheetHandleColor: Color = getDrawerTokens().handleColor(getBottomSheetInfo())
-        val scrimOpacity: Float = getDrawerTokens().scrimOpacity(getBottomSheetInfo())
-        val scrimColor: Color =
-            getDrawerTokens().scrimColor(getBottomSheetInfo()).copy(alpha = scrimOpacity)
+        val sheetHandleColor: Color = getDrawerTokens().handleColor()
+        val scrimOpacity: Float = getDrawerTokens().scrimOpacity()
+        val scrimColor: Color = getDrawerTokens().scrimColor().copy(alpha = scrimOpacity)
 
         val scope = rememberCoroutineScope()
 
@@ -468,6 +457,8 @@ private fun Modifier.sheetHeight(expandable: Boolean, fullHeight: Float, peekHei
     }
     return this.then(modifier)
 }
+
+
 
 //TODO : Revisit Scrim usage across module to check single scrim implementation across module.
 @Composable
