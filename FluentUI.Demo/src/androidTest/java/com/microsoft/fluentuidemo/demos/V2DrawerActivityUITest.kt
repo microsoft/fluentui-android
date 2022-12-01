@@ -113,13 +113,16 @@ class V2DrawerActivityUITest {
         composeTestRule.onNodeWithText("Show Bottom Drawer").performClick()
         openCheckForVerticalDrawer()
 
-        val scrimEnd = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
+        val drawerStart = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
 
         //SwipeDown on drawerContent should close it.
+
+        val swipeEnd  = drawerScrim.fetchSemanticsNode().size.height
+        val swipeStart = (drawerStart .. ((swipeEnd + drawerStart) / 2)).random()
         drawerContent.performTouchInput {
             swipeDown(
-                    startY = (scrimEnd..scrimEnd + height / 2).random().toFloat(),
-                    endY = drawerScrim.fetchSemanticsNode().size.height.toFloat())
+                    startY = swipeStart.toFloat(),
+                    endY = swipeEnd.toFloat())
         }
         closeCheckForVerticalDrawer()
     }
