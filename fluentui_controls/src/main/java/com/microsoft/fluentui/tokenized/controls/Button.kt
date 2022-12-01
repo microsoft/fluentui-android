@@ -83,10 +83,8 @@ fun Button(
                 )
                 .clip(shape)
                 .semantics(true) {
-                    if (contentDescription.isNullOrBlank())
-                        editableText = AnnotatedString(text ?: "")
-                    else
-                        this.contentDescription = (text ?: "") + ". $contentDescription."
+                    editableText = AnnotatedString(text ?: "")
+                    this.contentDescription = contentDescription ?: ""
                 }
                 .then(clickAndSemanticsModifier)
                 .then(borderModifier),
