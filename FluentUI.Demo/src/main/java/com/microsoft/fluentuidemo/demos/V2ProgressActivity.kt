@@ -345,7 +345,7 @@ fun shimmerExamples(brandTextColor: Color, textColor: Color) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Shimmer(modifier = Modifier.size(60.dp, 60.dp), shape = ShimmerShape.Circle)
+        Shimmer(modifier = Modifier.size(60.dp), shape = ShimmerShape.Circle)
         Column(
             Modifier
                 .height(80.dp)
