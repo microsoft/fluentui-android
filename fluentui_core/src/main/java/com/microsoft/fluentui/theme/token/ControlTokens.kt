@@ -21,15 +21,18 @@ class ControlTokens {
         BottomSheet,
         Button,
         CheckBox,
+        CircularProgressIndicator,
         ContextualCommandBar,
         Drawer,
         FloatingActionButton,
+        LinearProgressIndicator,
         ListItem,
         PillButton,
         PillBar,
         RadioButton,
         PillSwitch,
         PillTabs,
+        Shimmer,
         ToggleSwitch
     }
 
@@ -42,15 +45,18 @@ class ControlTokens {
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
+                ControlType.CircularProgressIndicator -> CircularProgressIndicatorTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
+                ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.PillSwitch -> PillSwitchTokens()
                 ControlType.PillTabs -> PillTabsTokens()
+                ControlType.Shimmer -> ShimmerTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
         }
