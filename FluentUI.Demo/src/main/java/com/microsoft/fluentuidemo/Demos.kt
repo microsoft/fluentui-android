@@ -39,6 +39,7 @@ const val PERSONA_VIEW = "PersonaView"
 const val V2PERSONA = "V2 Persona"
 const val POPUP_MENU = "PopupMenu"
 const val PROGRESS = "Progress"
+const val V2PROGRESS = "V2 Progress"
 const val SNACKBAR = "Snackbar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
 const val TAB_LAYOUT = "TabLayout"
@@ -77,6 +78,7 @@ val DEMOS = arrayListOf(
         Demo(V2PERSONA, V2PersonaActivity::class),
         Demo(POPUP_MENU, PopupMenuActivity::class),
         Demo(PROGRESS, ProgressActivity::class),
+        Demo(V2PROGRESS, V2ProgressActivity::class),
         Demo(SNACKBAR, SnackbarActivity::class),
         Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
         Demo(TAB_LAYOUT, TabLayoutActivity::class),
