@@ -22,8 +22,8 @@ open class DividerTokens : ControlToken, Parcelable {
 
     @Composable
     open fun dividerColor(dividerInfo: DividerInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            FluentTheme.themeMode
+        return FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke2].value(
+            themeMode = FluentTheme.themeMode
         )
     }
 }

@@ -33,8 +33,8 @@ import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetState
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetValue
 import com.microsoft.fluentui.tokenized.bottomsheet.rememberBottomSheetState
-import com.microsoft.fluentui.tokenized.contentBuilder.Item
-import com.microsoft.fluentui.tokenized.contentBuilder.ItemListContentBuilder
+import com.microsoft.fluentui.tokenized.contentBuilder.ItemData
+import com.microsoft.fluentui.tokenized.contentBuilder.ListContentBuilder
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -81,18 +81,18 @@ private fun CreateActivityUI() {
     hidden = !bottomSheetState.isVisible
 
     val context = LocalContext.current
-    val contentByContentBuilder = ItemListContentBuilder()
+    val contentByListContentBuilder = ListContentBuilder()
         .addHorizontalList(getSingleLineList(context), "Default: Wrapped")
         .addDivider()
         .addHorizontalList(getSingleLineList(context), "Fixed width", fixedWidth = true)
         .addDivider()
-        .addVerticalGridList(
+        .addVerticalGrid(
             getSingleLineList(context),
             "Vertical Grid",
             3
         )
         .addDivider()
-        .addVerticalGridList(
+        .addVerticalGrid(
             getSingleLineList(context),
             "Vertical Grid: Equidistant",
             3,
@@ -104,7 +104,7 @@ private fun CreateActivityUI() {
             "Single Line List"
         )
         .getContent()
-    var sheetContentState by remember { mutableStateOf(contentByContentBuilder) }
+    var sheetContentState by remember { mutableStateOf(contentByListContentBuilder) }
     val content = listOf(0, 1, 2)
     val selectedOption = remember { mutableStateOf(content[0]) }
 
@@ -281,7 +281,7 @@ private fun CreateActivityUI() {
                     selected = (selectedOption.value == content[0]),
                     onClick = {
                         selectedOption.value = content[0]
-                        sheetContentState = contentByContentBuilder
+                        sheetContentState = contentByListContentBuilder
                     }
                 )
             }
@@ -439,51 +439,51 @@ fun content2(bottomSheetState: BottomSheetState): @Composable () -> Unit = {
     }
 }
 
-fun getSingleLineList(context: Context): List<Item> {
+fun getSingleLineList(context: Context): List<ItemData> {
     return arrayListOf(
-        Item(icon = Icons.Outlined.Email, title = "Email", onClick = {}),
-        Item(
+        ItemData(icon = Icons.Outlined.Email, title = "Email", onClick = {}),
+        ItemData(
             icon = Icons.Outlined.ArrowBack,
             title = context.resources.getString(R.string.bottom_sheet_item_reply_title),
             onClick = {}
         ),
-        Item(
+        ItemData(
             icon = Icons.Outlined.ArrowForward,
             title = context.resources.getString(R.string.bottom_sheet_item_forward_title),
             onClick = {},
             enabled = false
         ),
-        Item(icon = Icons.Outlined.Favorite, title = "Favorite", onClick = {}, enabled = false),
-        Item(icon = Icons.Outlined.Info, title = "Long Info text", onClick = {}),
-        Item(icon = Icons.Outlined.Menu, title = "Menu", onClick = {}),
-        Item(icon = Icons.Outlined.Share, title = "Share", onClick = {}),
-        Item(
+        ItemData(icon = Icons.Outlined.Favorite, title = "Favorite", onClick = {}, enabled = false),
+        ItemData(icon = Icons.Outlined.Info, title = "Long Info text", onClick = {}),
+        ItemData(icon = Icons.Outlined.Menu, title = "Menu", onClick = {}),
+        ItemData(icon = Icons.Outlined.Share, title = "Share", onClick = {}),
+        ItemData(
             icon = Icons.Outlined.Delete,
             title = context.resources.getString(R.string.bottom_sheet_item_delete_title),
             onClick = {})
     )
 }
 
-fun getDoubleLineList(context: Context): List<Item> {
+fun getDoubleLineList(context: Context): List<ItemData> {
     return arrayListOf(
-        Item(
+        ItemData(
             icon = Icons.Outlined.Person,
             title = context.resources.getString(R.string.bottom_sheet_item_camera_title),
             subTitle = context.resources.getString(R.string.bottom_sheet_item_camera_subtitle),
             onClick = {}),
-        Item(
+        ItemData(
             icon = Icons.Outlined.List,
             title = context.resources.getString(R.string.bottom_sheet_item_gallery_title),
             subTitle = context.resources.getString(R.string.bottom_sheet_item_gallery_subtitle),
             onClick = {},
             enabled = false
         ),
-        Item(
+        ItemData(
             icon = Icons.Outlined.Settings,
             title = context.resources.getString(R.string.bottom_sheet_item_manage_title),
             subTitle = context.resources.getString(R.string.bottom_sheet_item_manage_subtitle),
             onClick = {}),
-        Item(
+        ItemData(
             icon = Icons.Outlined.Face,
             title = context.resources.getString(R.string.bottom_sheet_item_videos_title),
             subTitle = context.resources.getString(R.string.bottom_sheet_item_videos_subtitle),

@@ -64,8 +64,10 @@ internal data class VerticalGridContentData(
 //data class for divider
 internal data class DividerContentData(val heightDp: Dp, val dividerToken: DividerTokens?) :
     ContentData
-
-class ContentBuilder {
+/*
+* Builder to create list of list (vertical, horizontal), grid.
+* */
+class ListContentBuilder {
     private val listOfContentData: ArrayList<ContentData> = ArrayList()
 
     private fun add(contentData: ContentData) {
@@ -77,7 +79,7 @@ class ContentBuilder {
         header: String? = null,
         fixedWidth: Boolean = false,
         tabItemTokens: TabItemTokens? = null
-    ): ContentBuilder {
+    ): ListContentBuilder {
         add(HorizontalListContentData(itemDataList, header, fixedWidth, tabItemTokens))
         return this
     }
@@ -86,7 +88,7 @@ class ContentBuilder {
         itemDataList: List<ItemData>,
         header: String? = null,
         listItemTokens: ListItemTokens? = null
-    ): ContentBuilder {
+    ): ListContentBuilder {
         add(VerticalListContentData(itemDataList, header, listItemTokens))
         return this
     }
@@ -96,7 +98,7 @@ class ContentBuilder {
         header: String? = null,
         maxItemInRow: Int = 4,
         equidistant: Boolean = false
-    ): ContentBuilder {
+    ): ListContentBuilder {
         add(VerticalGridContentData(itemDataList, header, maxItemInRow, equidistant))
         return this
     }
@@ -104,7 +106,7 @@ class ContentBuilder {
     fun addDivider(
         heightDp: Dp = 1.dp,
         dividerToken: DividerTokens? = null
-    ): ContentBuilder {
+    ): ListContentBuilder {
         add(DividerContentData(heightDp, dividerToken))
         return this
     }

@@ -4,6 +4,7 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.InlineTextContent
@@ -23,7 +24,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -620,10 +621,13 @@ object ListItem {
                 interactionSource = interactionSource
             )
             val horizontalPadding = getListItemTokens().padding(Medium)
-            val leadPadding = if(leadingAccessoryView == null){
+            val leadPadding = if (leadingAccessoryView == null) {
                 PaddingValues(start = horizontalPadding, end = horizontalPadding)
-            }else {
-                PaddingValues(start = getListItemTokens().padding(size = GlobalTokens.SpacingTokens.None), end = horizontalPadding)
+            } else {
+                PaddingValues(
+                    start = getListItemTokens().padding(size = GlobalTokens.SpacingTokens.None),
+                    end = horizontalPadding
+                )
             }
             val borderSize = getListItemTokens().borderSize().value
             val borderInsetToPx =
@@ -778,54 +782,50 @@ object ListItem {
                     .heightIn(min = cellHeight)
                     .background(backgroundColor)
                     .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+                    .focusable(false)
             ) {
-                Column {
-                    Row(
-                        modifier
-                            .fillMaxWidth()
-                            .heightIn(min = cellHeight)
-                            .background(backgroundColor)
-                            .padding(bottom = verticalPadding),
-                        verticalAlignment = Alignment.Bottom
+                Row(
+                    modifier
+                        .fillMaxWidth()
+                        .heightIn(min = cellHeight)
+                        .background(backgroundColor)
+                        .padding(bottom = verticalPadding)
+                        .focusable(true),
+                    verticalAlignment = Alignment.Bottom
+                ) {
+
+                    Box(
+                        Modifier
+                            .padding(start = horizontalPadding, end = horizontalPadding)
+                            .weight(1f), contentAlignment = Alignment.BottomStart
                     ) {
-
+                        Text(
+                            text = title,
+                            fontSize = textSize.fontSize.size,
+                            fontWeight = textSize.weight,
+                            color = textColor,
+                            maxLines = titleMaxLines,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                    if (accessoryTextTitle != null) {
+                        Box(Modifier.padding(end = horizontalPadding)) {
+                            Text(text = accessoryTextTitle,
+                                modifier.clickable(
+                                    role = Role.Button,
+                                    onClick = accessoryTextOnClick ?: {}
+                                ),
+                                color = actionTextColor,
+                                fontSize = actionTextSize.fontSize.size,
+                                fontWeight = actionTextSize.weight)
+                        }
+                    }
+                    if (trailingAccessoryView != null) {
                         Box(
-                            Modifier
-                                .padding(start = horizontalPadding, end = horizontalPadding)
-                                .weight(1f), contentAlignment = Alignment.BottomStart
+                            Modifier.padding(end = horizontalPadding),
+                            contentAlignment = Alignment.BottomStart
                         ) {
-
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(
-                                    text = title,
-                                    fontSize = textSize.fontSize.size,
-                                    fontWeight = textSize.weight,
-                                    color = textColor,
-                                    maxLines = titleMaxLines,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-
-                        }
-                        Row(Modifier.padding(end = horizontalPadding)) {
-                            if (accessoryTextTitle != null) {
-                                Text(text = accessoryTextTitle,
-                                    modifier.clickable(
-                                        role = Role.Button,
-                                        onClick = accessoryTextOnClick ?: {}
-                                    ),
-                                    color = actionTextColor,
-                                    fontSize = actionTextSize.fontSize.size,
-                                    fontWeight = actionTextSize.weight)
-                            }
-                        }
-                        if (trailingAccessoryView != null) {
-                            Box(
-                                Modifier.padding(end = horizontalPadding),
-                                contentAlignment = Alignment.BottomStart
-                            ) {
-                                trailingAccessoryView()
-                            }
+                            trailingAccessoryView()
                         }
                     }
                 }
