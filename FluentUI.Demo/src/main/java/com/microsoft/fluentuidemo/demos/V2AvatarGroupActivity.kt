@@ -98,18 +98,25 @@ class V2AvatarGroupActivity : DemoActivity() {
                         Button(
                             onClick = { if (maxVisibleAvatar > 0) maxVisibleAvatar-- },
                             enabled = (maxVisibleAvatar > 0),
-                            text = "-"
+                            text = "-",
+                            contentDescription = "Max Visible Avatar $maxVisibleAvatar"
                         )
                         Text("$maxVisibleAvatar")
                         Button(
                             onClick = { maxVisibleAvatar++ },
                             enabled = (maxVisibleAvatar < group.members.size),
-                            text = "+"
+                            text = "+",
+                            contentDescription = "Max Visible Avatar $maxVisibleAvatar"
                         )
-                        Button(onClick = { isActive = !isActive }, text = "Swap Active State")
+                        Button(
+                            onClick = { isActive = !isActive },
+                            text = "Swap Active State",
+                            contentDescription = "Active Status ${if (isActive) "Active" else "Inactive"}"
+                        )
                         Button(
                             onClick = { enablePresence = !enablePresence },
-                            text = "Toggle Presence"
+                            text = "Toggle Presence",
+                            contentDescription = "Presence Status ${if (enablePresence) "Enabled" else "Disabled"}"
                         )
                     }
 
