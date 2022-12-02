@@ -25,7 +25,7 @@ import java.lang.Integer.max
 import java.lang.Integer.min
 import kotlin.math.ceil
 
-data class Item(
+data class ItemData(
     var title: String,
     var subTitle: String? = null,
     var enabled: Boolean = true,
@@ -35,106 +35,113 @@ data class Item(
 )
 
 // marker interface
-internal interface ItemList
+internal interface ContentData
 
-// data class for list of horizontal Items
-internal data class HorizontalItemList(
-    val horizontalItems: List<Item>,
+// data class for list of Items to be placed horizontally
+internal data class HorizontalListContentData(
+    val itemDataList: List<ItemData>,
     val header: String? = null,
     val fixedWidth: Boolean = false,
     val tabItemTokens: TabItemTokens? = null
-) : ItemList
+) : ContentData
 
-// data class for list of vertical Items
-internal data class VerticalItemList(
-    val verticalItems: List<Item>,
+// data class for list of Items to be placed vertically
+internal data class VerticalListContentData(
+    val itemDataList: List<ItemData>,
     val header: String? = null,
     val listItemTokens: ListItemTokens? = null
-) : ItemList
+) : ContentData
 
-// data class for list of horizontal  grid Items
-internal data class VerticalGridItemList(
-    val verticalGridItems: List<Item>,
+// data class for list of Items to be placed in vertical grid
+internal data class VerticalGridContentData(
+    val itemDataList: List<ItemData>,
     val header: String? = null,
     val maxItemInRow: Int,
     val equidistant: Boolean = false,
     val tabItemTokens: TabItemTokens? = null
-) : ItemList
+) : ContentData
 
 //data class for divider
-internal data class DividerItem(val heightDp: Dp, val dividerToken: DividerTokens?) : ItemList
+internal data class DividerContentData(val heightDp: Dp, val dividerToken: DividerTokens?) :
+    ContentData
 
-class ItemListContentBuilder {
-    private val listOfItemList: ArrayList<ItemList> = ArrayList()
+class ContentBuilder {
+    private val listOfContentData: ArrayList<ContentData> = ArrayList()
 
-    private fun add(itemListType: ItemList) {
-        listOfItemList.add(itemListType)
+    private fun add(contentData: ContentData) {
+        listOfContentData.add(contentData)
     }
 
     fun addHorizontalList(
-        items: List<Item>,
+        itemDataList: List<ItemData>,
         header: String? = null,
         fixedWidth: Boolean = false,
         tabItemTokens: TabItemTokens? = null
-    ): ItemListContentBuilder {
-        add(HorizontalItemList(items, header, fixedWidth, tabItemTokens))
+    ): ContentBuilder {
+        add(HorizontalListContentData(itemDataList, header, fixedWidth, tabItemTokens))
         return this
     }
 
     fun addVerticalList(
-        items: List<Item>,
+        itemDataList: List<ItemData>,
         header: String? = null,
         listItemTokens: ListItemTokens? = null
-    ): ItemListContentBuilder {
-        add(VerticalItemList(items, header, listItemTokens))
+    ): ContentBuilder {
+        add(VerticalListContentData(itemDataList, header, listItemTokens))
         return this
     }
 
-    fun addVerticalGridList(
-        items: List<Item>,
+    fun addVerticalGrid(
+        itemDataList: List<ItemData>,
         header: String? = null,
         maxItemInRow: Int = 4,
         equidistant: Boolean = false
-    ): ItemListContentBuilder {
-        add(VerticalGridItemList(items, header, maxItemInRow, equidistant))
+    ): ContentBuilder {
+        add(VerticalGridContentData(itemDataList, header, maxItemInRow, equidistant))
         return this
     }
 
     fun addDivider(
         heightDp: Dp = 1.dp,
         dividerToken: DividerTokens? = null
-    ): ItemListContentBuilder {
-        add(DividerItem(heightDp, dividerToken))
+    ): ContentBuilder {
+        add(DividerContentData(heightDp, dividerToken))
         return this
     }
 
     fun getContent(): @Composable () -> Unit {
         return {
-            LazyColumn {
-                for (itemList in listOfItemList) {
-                    when (itemList) {
-                        is HorizontalItemList -> createHorizontalList(
-                            itemList.horizontalItems,
-                            itemList.header,
-                            itemList.fixedWidth,
-                            itemList.tabItemTokens
+            val scope = rememberCoroutineScope()
+            val lazyListState = rememberLazyListState()
+
+            LazyColumn(state = lazyListState) {
+                for (contentData in listOfContentData) {
+                    when (contentData) {
+                        is HorizontalListContentData -> createHorizontalList(
+                            contentData.itemDataList,
+                            contentData.header,
+                            contentData.fixedWidth,
+                            contentData.tabItemTokens
                         )()
 
-                        is VerticalItemList -> createVerticalList(
-                            itemList.verticalItems,
-                            itemList.header,
-                            itemList.listItemTokens
+                        is VerticalListContentData -> createVerticalList(
+                            contentData.itemDataList,
+                            contentData.header,
+                            contentData.listItemTokens
                         )()
 
-                        is VerticalGridItemList -> createVerticalGrid(
-                            itemList.verticalGridItems,
-                            itemList.header,
-                            itemList.maxItemInRow,
-                            itemList.equidistant,
-                            itemList.tabItemTokens
+                        is VerticalGridContentData -> createVerticalGrid(
+                            contentData.itemDataList,
+                            contentData.header,
+                            contentData.maxItemInRow,
+                            contentData.equidistant,
+                            contentData.tabItemTokens
                         )()
 
-                        is DividerItem -> createDivider(itemList.heightDp, itemList.dividerToken)()
+                        is DividerContentData -> createDivider(
+                            contentData.heightDp,
+                            contentData.dividerToken
+                        )()
                     }
                 }
             }
@@ -142,7 +149,7 @@ class ItemListContentBuilder {
     }
 
     private fun createVerticalGrid(
-        itemsList: List<Item>,
+        itemDataList: List<ItemData>,
         header: String?,
         maxItemsInRow: Int,
         equidistant: Boolean,
@@ -154,7 +161,7 @@ class ItemListContentBuilder {
                     ListItem.Header(title = header)
                 }
             }
-            val size = itemsList.size
+            val size = itemDataList.size
             val itemsInRow = min(size, maxItemsInRow)
 
             items(ceil(size * 1.0 / itemsInRow).toInt()) { row ->
@@ -180,11 +187,11 @@ class ItemListContentBuilder {
                             1.0f / min(itemsInRow, (size - (row * itemsInRow)))
                         while (col < itemsInRow && (row * itemsInRow + col) < size) {
                             TabItem(
-                                title = itemsList[row * itemsInRow + col].title,
-                                enabled = itemsList[row * itemsInRow + col].enabled,
-                                onClick = itemsList[row * itemsInRow + col].onClick,
-                                accessory = itemsList[row * itemsInRow + col].accessory,
-                                icon = itemsList[row * itemsInRow + col].icon,
+                                title = itemDataList[row * itemsInRow + col].title,
+                                enabled = itemDataList[row * itemsInRow + col].enabled,
+                                onClick = itemDataList[row * itemsInRow + col].onClick,
+                                accessory = itemDataList[row * itemsInRow + col].accessory,
+                                icon = itemDataList[row * itemsInRow + col].icon,
                                 modifier = Modifier.fillMaxWidth(widthRatio),
                                 tabItemTokens = tabItemTokens
                             )
@@ -220,7 +227,7 @@ class ItemListContentBuilder {
     }
 
     private fun createHorizontalList(
-        itemList: List<Item>,
+        itemDataList: List<ItemData>,
         header: String?,
         fixedWidth: Boolean = false,
         tabItemTokens: TabItemTokens? = null
@@ -232,13 +239,13 @@ class ItemListContentBuilder {
                 }
             }
             item {
-                val scope = rememberCoroutineScope()
-                val lazyListState = rememberLazyListState()
+                val rowScope = rememberCoroutineScope()
+                val rowLazyListState = rememberLazyListState()
                 val token =
                     tabItemTokens
                         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItem] as TabItemTokens
                 LazyRow(
-                    state = lazyListState, modifier = Modifier
+                    state = rowLazyListState, modifier = Modifier
                         .background(
                             token.background(
                                 TabItemInfo(
@@ -250,7 +257,7 @@ class ItemListContentBuilder {
                         .padding(start = 16.dp)
                         .fillMaxWidth()
                 ) {
-                    itemsIndexed(itemList) { index, item ->
+                    itemsIndexed(itemDataList) { index, item ->
                         TabItem(
                             title = item.title,
                             enabled = item.enabled,
@@ -261,8 +268,8 @@ class ItemListContentBuilder {
                             modifier = Modifier
                                 .onFocusEvent { focusState ->
                                     if (focusState.isFocused) {
-                                        scope.launch {
-                                            lazyListState.animateScrollToItem(
+                                        rowScope.launch {
+                                            rowLazyListState.animateScrollToItem(
                                                 max(0, index - 2)
                                             )
                                         }
@@ -277,7 +284,7 @@ class ItemListContentBuilder {
     }
 
     private fun createVerticalList(
-        itemList: List<Item>,
+        itemDataList: List<ItemData>,
         header: String?,
         listItemTokens: ListItemTokens? = null
     ): LazyListScope.() -> Unit {
@@ -287,7 +294,8 @@ class ItemListContentBuilder {
                     ListItem.Header(title = header)
                 }
             }
-            items(itemList) { item ->
+
+            items(itemDataList) { item ->
                 val token = listItemTokens
                     ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ListItem] as ListItemTokens
                 ListItem.Item(
