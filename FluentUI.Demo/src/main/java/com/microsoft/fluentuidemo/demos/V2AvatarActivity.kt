@@ -51,8 +51,16 @@ class V2AvatarActivity : DemoActivity() {
                             Alignment.CenterHorizontally
                         )
                     ) {
-                        Button(onClick = { isActive = !isActive }, text = "Toggle Activity")
-                        Button(onClick = { isOOO = !isOOO }, text = "Toggle OOO")
+                        Button(
+                            onClick = { isActive = !isActive },
+                            text = "Toggle Activity",
+                            contentDescription = "Activity Indicator ${if (isActive) "enabled" else "disabled"}"
+                        )
+                        Button(
+                            onClick = { isOOO = !isOOO },
+                            text = "Toggle OOO",
+                            contentDescription = "OOO status ${if (isOOO) "enabled" else "disabled"}"
+                        )
                     }
 
                     Divider()
