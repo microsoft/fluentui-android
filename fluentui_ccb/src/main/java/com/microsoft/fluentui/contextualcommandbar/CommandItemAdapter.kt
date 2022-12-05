@@ -70,7 +70,7 @@ internal class CommandItemAdapter(
         val icon = commandItem.getIcon()
         val bitmapIcon = commandItem.getBitmapIcon()
         val description = commandItem.getContentDescription()
-        commandItem.setView(vh.itemView)
+        (commandItem as DefaultCommandItem).setView(vh.itemView)
         if (icon != 0) {
             // Using icon as primary display content
             viewHolder.label.isVisible = false

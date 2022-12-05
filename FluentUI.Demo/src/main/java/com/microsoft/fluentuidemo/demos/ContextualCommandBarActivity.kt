@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.SeekBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.microsoft.fluentui.contextualcommandbar.CommandItem
@@ -200,7 +201,7 @@ class ContextualCommandBarActivity : DemoActivity() {
             (itemGroups[0].items[0] as DefaultCommandItem).setEnabled(false)
             (itemGroups[0].items[1] as DefaultCommandItem).setEnabled(true)
             (itemGroups[0].items[1] as DefaultCommandItem).setSelected(true)
-            itemGroups[1].items[1].getView()?.alpha = 0.5F
+            (itemGroups[1].items[2] as DefaultCommandItem).getView()?.alpha = 0.5F
             contextual_command_bar_default.notifyDataSetChanged()
         }
 

@@ -68,11 +68,4 @@ interface CommandItem {
      * Indicates the view for the CommandItem
      */
     fun getView(): View? = null
-
-    /**
-     * Set The view for this particular CommandItem
-     *
-     * @param view: View to be set
-     */
-    fun setView(view: View): Unit? = null
 }

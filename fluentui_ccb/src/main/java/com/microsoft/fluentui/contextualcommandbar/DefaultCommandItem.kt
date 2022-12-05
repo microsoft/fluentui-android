@@ -16,8 +16,8 @@ open class DefaultCommandItem(
     private var enabled: Boolean = true,
     private var selected: Boolean = false,
     private var bitmap: Bitmap? = null,
-    private var view: View? = null
 ) : CommandItem {
+    private lateinit var view: View
 
     fun setEnabled(enabled: Boolean) {
         this.enabled = enabled
@@ -51,7 +51,7 @@ open class DefaultCommandItem(
         return contentDescription
     }
 
-    override fun setView(view: View) {
+    internal fun setView(view: View) {
         this.view = view
     }
 
