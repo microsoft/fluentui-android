@@ -6,8 +6,8 @@
 package com.microsoft.fluentui.contextualcommandbar
 
 import android.graphics.Bitmap
-import androidx.annotation.DrawableRes
 import android.view.View
+import androidx.annotation.DrawableRes
 
 interface CommandItem {
 
@@ -15,7 +15,7 @@ interface CommandItem {
         fun onItemClick(item: CommandItem, view: View)
     }
 
-    interface OnItemLongClickListener  {
+    interface OnItemLongClickListener {
         fun onItemLongClick(item: CommandItem, view: View): Boolean
     }
 
@@ -63,4 +63,16 @@ interface CommandItem {
      * Indicates the selection state of this view CommandItem bound.
      */
     fun isSelected(): Boolean = false
+
+    /**
+     * Indicates the view for the CommandItem
+     */
+    fun getView(): View? = null
+
+    /**
+     * Set The view for this particular CommandItem
+     *
+     * @param view: View to be set
+     */
+    fun setView(view: View): Unit? = null
 }

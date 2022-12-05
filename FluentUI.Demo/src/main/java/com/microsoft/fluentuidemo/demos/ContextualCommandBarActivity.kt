@@ -34,76 +34,103 @@ class ContextualCommandBarActivity : DemoActivity() {
         // Used to test bitmap support
         var drawable = AppCompatResources.getDrawable(this, R.drawable.ic_fluent_add_24_regular)
         val bitmap: Bitmap = Bitmap.createBitmap(
-            drawable!!.getIntrinsicWidth(),
-            drawable!!.getIntrinsicHeight(),
+            drawable!!.intrinsicWidth,
+            drawable.intrinsicHeight,
             Bitmap.Config.ARGB_8888
         )
         val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight())
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
         drawable.draw(canvas)
 
 
-        itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(
+        itemGroups.add(
+            CommandItemGroup()
+                .addItem(
+                    DefaultCommandItem(
                         bitmap = bitmap,
                         contentDescription = getString(R.string.contextual_command_accessibility_add)
-                ))
-                .addItem(DefaultCommandItem(
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_mention_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_mention),
                         enabled = false
-                ))
+                    )
+                )
         )
 
-        itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(
+        itemGroups.add(
+            CommandItemGroup()
+                .addItem(
+                    DefaultCommandItem(
                         label = getString(R.string.contextual_command_accessibility_bold),
                         contentDescription = getString(R.string.contextual_command_accessibility_bold),
                         selected = true
-                ))
-                .addItem(DefaultCommandItem(
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_text_italic_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_italic)
-                ))
-                .addItem(DefaultCommandItem(
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
                         label = getString(R.string.contextual_command_accessibility_underline),
                         contentDescription = getString(R.string.contextual_command_accessibility_underline)
-                ))
-                .addItem(DefaultCommandItem(
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_text_strikethrough_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_strikethrough)
-                ))
+                    )
+                )
         )
 
-        itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(
+        itemGroups.add(
+            CommandItemGroup()
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_arrow_undo_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_undo),
                         selected = true
-                ))
-                .addItem(DefaultCommandItem(
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_arrow_redo_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_redo)
-                ))
+                    )
+                )
         )
 
-        itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(
+        itemGroups.add(
+            CommandItemGroup()
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_text_bullet_list_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_bullet)
-                ))
-                .addItem(DefaultCommandItem(
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_text_number_list_ltr_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_list)
-                ))
+                    )
+                )
         )
 
-        itemGroups.add(CommandItemGroup()
-                .addItem(DefaultCommandItem(
+        itemGroups.add(
+            CommandItemGroup()
+                .addItem(
+                    DefaultCommandItem(
                         R.drawable.ic_fluent_link_24_regular,
                         contentDescription = getString(R.string.contextual_command_accessibility_link),
                         selected = true
-                ))
+                    )
+                )
         )
 
         with(contextual_command_bar_default) {
@@ -111,9 +138,12 @@ class ContextualCommandBarActivity : DemoActivity() {
             setItemOnClickListener(object : CommandItem.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
                     Toast.makeText(
-                            this@ContextualCommandBarActivity,
-                            getString(R.string.contextual_command_prompt_click_item, item.getContentDescription()),
-                            Toast.LENGTH_SHORT
+                        this@ContextualCommandBarActivity,
+                        getString(
+                            R.string.contextual_command_prompt_click_item,
+                            item.getContentDescription()
+                        ),
+                        Toast.LENGTH_SHORT
                     ).show()
                 }
             })
@@ -122,7 +152,10 @@ class ContextualCommandBarActivity : DemoActivity() {
                 override fun onItemLongClick(item: CommandItem, view: View): Boolean {
                     Toast.makeText(
                         this@ContextualCommandBarActivity,
-                        getString(R.string.contextual_command_prompt_long_click_item, item.getContentDescription()),
+                        getString(
+                            R.string.contextual_command_prompt_long_click_item,
+                            item.getContentDescription()
+                        ),
                         Toast.LENGTH_SHORT
                     ).show()
                     return true
@@ -130,97 +163,117 @@ class ContextualCommandBarActivity : DemoActivity() {
             })
 
             dismissCommandItem = ContextualCommandBar.DismissCommandItem(
-                    icon = R.drawable.ic_fluent_keyboard_dock_24_regular,
-                    contentDescription = getString(R.string.contextual_command_accessibility_dismiss),
-                    visible = true,
-                    position = ContextualCommandBar.DismissItemPosition.START,
-                    dismissListener = {
-                        Toast.makeText(
-                                this@ContextualCommandBarActivity,
-                                getString(R.string.contextual_command_prompt_click_dismiss),
-                                Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                icon = R.drawable.ic_fluent_keyboard_dock_24_regular,
+                contentDescription = getString(R.string.contextual_command_accessibility_dismiss),
+                visible = true,
+                position = ContextualCommandBar.DismissItemPosition.START,
+                dismissListener = {
+                    Toast.makeText(
+                        this@ContextualCommandBarActivity,
+                        getString(R.string.contextual_command_prompt_click_dismiss),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             )
         }
 
         // Item update
         insert_item.setOnClickListener {
-            contextual_command_bar_default.addItemGroup(CommandItemGroup()
-                    .addItem(DefaultCommandItem(
+            contextual_command_bar_default.addItemGroup(
+                CommandItemGroup()
+                    .addItem(
+                        DefaultCommandItem(
                             icon = R.drawable.ic_fluent_add_24_regular,
                             contentDescription = getString(R.string.contextual_command_accessibility_add)
-                    ))
-                    .addItem(DefaultCommandItem(
+                        )
+                    )
+                    .addItem(
+                        DefaultCommandItem(
                             icon = R.drawable.ic_fluent_mention_24_regular,
                             contentDescription = getString(R.string.contextual_command_accessibility_mention),
                             enabled = false
-                    ))
+                        )
+                    )
             )
         }
         update_item.setOnClickListener {
             (itemGroups[0].items[0] as DefaultCommandItem).setEnabled(false)
             (itemGroups[0].items[1] as DefaultCommandItem).setEnabled(true)
             (itemGroups[0].items[1] as DefaultCommandItem).setSelected(true)
+            itemGroups[1].items[1].getView()?.alpha = 0.5F
             contextual_command_bar_default.notifyDataSetChanged()
         }
 
         // Spacing setting
         contextual_command_bar_group_space_seekbar.setOnSeekBarChangeListener(
-                object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                        contextual_command_bar_group_space_value.text =
-                                resources.getString(R.string.contextual_command_bar_space_value, progress)
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    contextual_command_bar_group_space_value.text =
+                        resources.getString(R.string.contextual_command_bar_space_value, progress)
 
-                        if (!fromUser) {
-                            return
-                        }
-
-                        contextual_command_bar_default.setCommandGroupSpace(TypedValue.applyDimension(
-                                TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
-                                resources.displayMetrics).toInt())
+                    if (!fromUser) {
+                        return
                     }
 
-                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                    }
+                    contextual_command_bar_default.setCommandGroupSpace(
+                        TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
+                            resources.displayMetrics
+                        ).toInt()
+                    )
+                }
 
-                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                    }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                }
 
-                })
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                }
+
+            })
         contextual_command_bar_item_space_seekbar.setOnSeekBarChangeListener(
-                object : SeekBar.OnSeekBarChangeListener {
-                    override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                        contextual_command_bar_item_space_value.text =
-                                resources.getString(R.string.contextual_command_bar_space_value, progress)
+            object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(
+                    seekBar: SeekBar?,
+                    progress: Int,
+                    fromUser: Boolean
+                ) {
+                    contextual_command_bar_item_space_value.text =
+                        resources.getString(R.string.contextual_command_bar_space_value, progress)
 
-                        if (!fromUser) {
-                            return
-                        }
-
-                        contextual_command_bar_default.setCommandItemSpace(TypedValue.applyDimension(
-                                TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
-                                resources.displayMetrics).toInt())
+                    if (!fromUser) {
+                        return
                     }
 
-                    override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                    }
+                    contextual_command_bar_default.setCommandItemSpace(
+                        TypedValue.applyDimension(
+                            TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
+                            resources.displayMetrics
+                        ).toInt()
+                    )
+                }
 
-                    override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                    }
+                override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                }
 
-                })
+                override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                }
+
+            })
         contextual_command_bar_group_space_seekbar.progress = 16
         contextual_command_bar_item_space_seekbar.progress = 2
 
         // Dismiss button setting
         contextual_command_bar_dismiss_position_group.setOnCheckedChangeListener { _, checkedId ->
             contextual_command_bar_default.setDismissButtonPosition(
-                    when (checkedId) {
-                        R.id.contextual_command_bar_dismiss_position_start -> ContextualCommandBar.DismissItemPosition.START
-                        R.id.contextual_command_bar_dismiss_position_end -> ContextualCommandBar.DismissItemPosition.END
-                        else -> ContextualCommandBar.DismissItemPosition.END
-                    }
+                when (checkedId) {
+                    R.id.contextual_command_bar_dismiss_position_start -> ContextualCommandBar.DismissItemPosition.START
+                    R.id.contextual_command_bar_dismiss_position_end -> ContextualCommandBar.DismissItemPosition.END
+                    else -> ContextualCommandBar.DismissItemPosition.END
+                }
             )
         }
         contextual_command_bar_dismiss_position_end.isChecked = true
