@@ -21,8 +21,8 @@ import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
 import kotlinx.coroutines.launch
-import java.lang.Integer.max
-import java.lang.Integer.min
+import kotlin.math.max
+import kotlin.math.min
 import kotlin.math.ceil
 
 data class ItemData(
