@@ -242,6 +242,26 @@ fun CreateListActivityUI() {
                 item {
                     Text(
                         modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
+                        text = "Header",
+                        color = Color(0xFF2886DE)
+                    )
+                    ListItem.Header(
+                        title = "Heading",
+                        accessoryTextTitle = "Action",
+                        accessoryTextOnClick = {},
+                        trailingAccessoryView = { RightViewThreeButton() },
+                        border = BorderType.Bottom
+                    )
+                    ListItem.Header(
+                        title = "Heading",
+                        accessoryTextTitle = "Action",
+                        accessoryTextOnClick = {},
+                        style = Subtle
+                    )
+                }
+                item {
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
                         text = "Centered Action Text",
                         color = Color(0xFF2886DE)
                     )

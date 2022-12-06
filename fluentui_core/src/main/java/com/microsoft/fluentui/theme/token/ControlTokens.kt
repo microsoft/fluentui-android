@@ -24,6 +24,7 @@ class ControlTokens {
         CircularProgressIndicator,
         ContextualCommandBar,
         Drawer,
+        Divider,
         FloatingActionButton,
         LinearProgressIndicator,
         ListItem,
@@ -32,6 +33,7 @@ class ControlTokens {
         RadioButton,
         PillSwitch,
         PillTabs,
+        TabItem,
         Shimmer,
         ToggleSwitch
     }
@@ -48,6 +50,7 @@ class ControlTokens {
                 ControlType.CircularProgressIndicator -> CircularProgressIndicatorTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
+                ControlType.Divider -> DividerTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
@@ -56,6 +59,7 @@ class ControlTokens {
                 ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.PillSwitch -> PillSwitchTokens()
                 ControlType.PillTabs -> PillTabsTokens()
+                ControlType.TabItem -> TabItemTokens()
                 ControlType.Shimmer -> ShimmerTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
