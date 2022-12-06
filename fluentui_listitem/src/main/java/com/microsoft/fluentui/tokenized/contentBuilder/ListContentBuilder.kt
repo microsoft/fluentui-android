@@ -64,6 +64,7 @@ internal data class VerticalGridContentData(
 //data class for divider
 internal data class DividerContentData(val heightDp: Dp, val dividerToken: DividerTokens?) :
     ContentData
+
 /*
 * Builder to create list of list (vertical, horizontal), grid.
 * */
@@ -112,11 +113,10 @@ class ListContentBuilder {
     }
 
     fun getContent(): @Composable () -> Unit {
+        //TODO As per the thread https://issuetracker.google.com/issues/184670295#comment34 focus
+        // navigation issues should resolve with compose version 1.3.0.
         return {
-            val scope = rememberCoroutineScope()
-            val lazyListState = rememberLazyListState()
-
-            LazyColumn(state = lazyListState) {
+            LazyColumn {
                 for (contentData in listOfContentData) {
                     when (contentData) {
                         is HorizontalListContentData -> createHorizontalList(

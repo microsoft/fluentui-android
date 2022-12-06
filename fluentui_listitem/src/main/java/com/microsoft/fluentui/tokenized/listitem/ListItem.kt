@@ -789,40 +789,40 @@ object ListItem {
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
                         .background(backgroundColor)
-                        .padding(bottom = verticalPadding)
                         .focusable(true),
                     verticalAlignment = Alignment.Bottom
                 ) {
+                    Text(
+                        text = title,
+                        modifier = Modifier
+                            .padding(
+                                start = horizontalPadding,
+                                end = horizontalPadding,
+                                bottom = verticalPadding
+                            )
+                            .weight(1f),
+                        fontSize = textSize.fontSize.size,
+                        fontWeight = textSize.weight,
+                        color = textColor,
+                        maxLines = titleMaxLines,
+                        overflow = TextOverflow.Ellipsis
+                    )
 
-                    Box(
-                        Modifier
-                            .padding(start = horizontalPadding, end = horizontalPadding)
-                            .weight(1f), contentAlignment = Alignment.BottomStart
-                    ) {
-                        Text(
-                            text = title,
-                            fontSize = textSize.fontSize.size,
-                            fontWeight = textSize.weight,
-                            color = textColor,
-                            maxLines = titleMaxLines,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
                     if (accessoryTextTitle != null) {
-                        Box(Modifier.padding(end = horizontalPadding)) {
-                            Text(text = accessoryTextTitle,
-                                modifier.clickable(
+                        Text(text = accessoryTextTitle,
+                            modifier
+                                .padding(end = horizontalPadding, bottom = verticalPadding)
+                                .clickable(
                                     role = Role.Button,
                                     onClick = accessoryTextOnClick ?: {}
                                 ),
-                                color = actionTextColor,
-                                fontSize = actionTextSize.fontSize.size,
-                                fontWeight = actionTextSize.weight)
-                        }
+                            color = actionTextColor,
+                            fontSize = actionTextSize.fontSize.size,
+                            fontWeight = actionTextSize.weight)
                     }
                     if (trailingAccessoryView != null) {
                         Box(
-                            Modifier.padding(end = horizontalPadding),
+                            Modifier.padding(end = horizontalPadding, bottom = verticalPadding),
                             contentAlignment = Alignment.BottomStart
                         ) {
                             trailingAccessoryView()
