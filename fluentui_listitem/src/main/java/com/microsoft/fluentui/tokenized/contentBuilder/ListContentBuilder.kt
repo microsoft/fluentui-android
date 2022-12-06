@@ -98,9 +98,10 @@ class ListContentBuilder {
         itemDataList: List<ItemData>,
         header: String? = null,
         maxItemInRow: Int = 4,
-        equidistant: Boolean = false
+        equidistant: Boolean = false,
+        tabItemTokens: TabItemTokens? = null
     ): ListContentBuilder {
-        add(VerticalGridContentData(itemDataList, header, maxItemInRow, equidistant))
+        add(VerticalGridContentData(itemDataList, header, maxItemInRow, equidistant, tabItemTokens))
         return this
     }
 
