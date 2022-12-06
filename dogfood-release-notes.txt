@@ -1,12 +1,19 @@
-Release Version 0.1.12:
+Release Version 0.1.13:
 
 What's New:
 
 Fluent V2 :
- - Segmented Control Implementation
- - Section Header State saving on Orientation Change
- - Accessibility Issues Fix for Controls Module
- - Code Improvement for Controls Module.
+ New Controls:
+	1) LinearProgressIndicator
+	2) CircularProgressIndicator
+	3) Shimmer (Box & Circle shape)
+	4) Divider
+	5) ListContentBuilder
+ Fix:
+	1) Accessibility bugfix on button control & demo app activity.
+	2) Bottom type Drawer will hug the content when content size changes dynamically.
 
- Fluent V1:
- - Accessory Image in SheetItem and BottomSheetItem. To be shown in trailing position in vertical List.
+Fluent V1:
+
+ Fix: Tooltip color update fix.
+ Feature: Expose CommandItem as View.
