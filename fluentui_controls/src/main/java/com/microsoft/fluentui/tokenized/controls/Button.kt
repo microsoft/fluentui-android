@@ -42,6 +42,7 @@ fun Button(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     icon: ImageVector? = null,
     text: String? = null,
+    contentDescription: String? = null,
     buttonTokens: ButtonTokens? = null
 ) {
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
@@ -83,6 +84,7 @@ fun Button(
                 .clip(shape)
                 .semantics(true) {
                     editableText = AnnotatedString(text ?: "")
+                    this.contentDescription = contentDescription ?: ""
                 }
                 .then(clickAndSemanticsModifier)
                 .then(borderModifier),

@@ -186,8 +186,9 @@ class Tooltip {
     }
 
     fun setCustomBackgroundColor(@ColorInt color: Int) {
-        tooltipBackGround.background = null
-        tooltipBackGround.setBackgroundColor(color)
+        var drawable = tooltipBackGround.background.constantState?.newDrawable()?.mutate()
+        drawable?.setTint(color)
+        tooltipBackGround.background = drawable
         ImageViewCompat.setImageTintList(arrowUpView, ColorStateList.valueOf(color))
         ImageViewCompat.setImageTintList(arrowDownView, ColorStateList.valueOf(color))
         ImageViewCompat.setImageTintList(arrowLeftView, ColorStateList.valueOf(color))

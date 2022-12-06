@@ -61,6 +61,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TabLayoutActivity" />

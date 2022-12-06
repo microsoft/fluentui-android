@@ -5,19 +5,19 @@
 
 package com.microsoft.fluentui.contextualcommandbar
 
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.ccb.R
 import com.microsoft.fluentui.util.isVisible
 
 internal class CommandItemAdapter(
-        private var options: CommandListOptions
+    private var options: CommandListOptions
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var flattenCommandItems = arrayListOf<CommandItem>()
@@ -53,9 +53,11 @@ internal class CommandItemAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHolder(LayoutInflater
+        return ViewHolder(
+            LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.view_command_item, parent, false))
+                .inflate(R.layout.view_command_item, parent, false)
+        )
     }
 
     override fun onBindViewHolder(vh: RecyclerView.ViewHolder, position: Int) {
@@ -68,13 +70,17 @@ internal class CommandItemAdapter(
         val icon = commandItem.getIcon()
         val bitmapIcon = commandItem.getBitmapIcon()
         val description = commandItem.getContentDescription()
+        (commandItem as DefaultCommandItem).setView(vh.itemView)
         if (icon != 0) {
             // Using icon as primary display content
             viewHolder.label.isVisible = false
             with(viewHolder.icon) {
                 isVisible = true
                 setImageResource(icon)
-                imageTintList = AppCompatResources.getColorStateList(context, R.color.contextual_command_bar_icon_tint)
+                imageTintList = AppCompatResources.getColorStateList(
+                    context,
+                    R.color.contextual_command_bar_icon_tint
+                )
                 contentDescription = description
                 isEnabled = isItemEnabled
                 isSelected = isItemSelected
@@ -114,8 +120,8 @@ internal class CommandItemAdapter(
                     }
 
                     background = ContextCompat.getDrawable(
-                            context,
-                            R.drawable.contextual_command_bar_center_item_background
+                        context,
+                        R.drawable.contextual_command_bar_center_item_background
                     )
                 }
 
@@ -124,8 +130,8 @@ internal class CommandItemAdapter(
                         marginEnd = options.itemSpace
                     }
                     background = ContextCompat.getDrawable(
-                            context,
-                            R.drawable.contextual_command_bar_start_item_background
+                        context,
+                        R.drawable.contextual_command_bar_start_item_background
                     )
                 }
 
@@ -136,8 +142,8 @@ internal class CommandItemAdapter(
                     }
 
                     background = ContextCompat.getDrawable(
-                            context,
-                            R.drawable.contextual_command_bar_end_item_background
+                        context,
+                        R.drawable.contextual_command_bar_end_item_background
                     )
                 }
 
@@ -147,8 +153,8 @@ internal class CommandItemAdapter(
                         else options.groupSpace
                     }
                     background = ContextCompat.getDrawable(
-                            context,
-                            R.drawable.contextual_command_bar_single_item_background
+                        context,
+                        R.drawable.contextual_command_bar_single_item_background
                     )
                 }
             }
@@ -204,8 +210,8 @@ internal class CommandItemAdapter(
     }
 
     data class CommandListOptions(
-            var groupSpace: Int,
-            var itemSpace: Int
+        var groupSpace: Int,
+        var itemSpace: Int
     )
 
     companion object {
