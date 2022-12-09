@@ -31,12 +31,13 @@ class ControlTokens {
         PersonaChip,
         PillButton,
         PillBar,
-        RadioButton,
         PillSwitch,
         PillTabs,
-        TabItem,
+        RadioButton,
         SearchBarPersonaChip,
+        SearchBar,
         Shimmer,
+        TabItem,
         ToggleSwitch
     }
 
@@ -57,14 +58,15 @@ class ControlTokens {
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.PersonaChip -> PersonaChipTokens()
-                ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
-                ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.PillSwitch -> PillSwitchTokens()
                 ControlType.PillTabs -> PillTabsTokens()
-                ControlType.TabItem -> TabItemTokens()
+                ControlType.RadioButton -> RadioButtonTokens()
+                ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
+                ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
+                ControlType.TabItem -> TabItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
         }

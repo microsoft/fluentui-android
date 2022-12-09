@@ -35,13 +35,18 @@ abstract class DemoActivity : AppCompatActivity() {
         // Set demo title
         val demoID = intent.getSerializableExtra(DEMO_ID) as UUID
         var demo: Demo?
+        var v2demo: Demo? = null
         if(DuoSupportUtils.isDualScreenMode(this)){
             demo = DUO_DEMOS.find{ it.id == demoID }
         }
         else{
             demo = DEMOS.find{ it.id == demoID }
+            v2demo = V2DEMOS.find{ it.id == demoID }
         }
-        title = demo?.title
+        if(demo != null)
+            title = demo.title
+        else if(v2demo != null)
+            title = v2demo.title
 
         // Load content and place it in the requested container
         val container = if (contentNeedsScrollableContainer) demo_detail_scrollable_container else demo_detail_container

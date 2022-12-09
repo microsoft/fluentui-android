@@ -6,4 +6,8 @@
     <string name="fluentui_enabled">Enabled</string>
     <string name="fluentui_close_sheet">Close Sheet</string>
     <string name="fluentui_close">Close</string>
+    <string name="fluentui_search">Search</string>
+    <string name="fluentui_microphone">Microphone</string>
+    <string name="fluentui_clear_text">Clear Text</string>
+    <string name="fluentui_back">Back</string>
 </resources>

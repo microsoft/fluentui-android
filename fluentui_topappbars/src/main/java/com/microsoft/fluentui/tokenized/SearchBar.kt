@@ -1,0 +1,326 @@
+package com.microsoft.fluentui.tokenized
+
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.Strings
+import com.microsoft.fluentui.compose.getString
+import com.microsoft.fluentui.icons.SearchBarIcons
+import com.microsoft.fluentui.icons.searchbaricons.Arrowback
+import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
+import com.microsoft.fluentui.icons.searchbaricons.Microphone
+import com.microsoft.fluentui.icons.searchbaricons.Search
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
+import com.microsoft.fluentui.tokenized.persona.Person
+import com.microsoft.fluentui.tokenized.persona.PersonaChip
+import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
+import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
+import kotlinx.coroutines.launch
+
+private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
+private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.Neutral) }
+
+//         AnimatedContent                        Backspace Key
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalAnimationApi::class)
+@Composable
+fun SearchBar(
+    onValueChange: (String, Person?) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    style: FluentStyle = FluentStyle.Neutral,
+    keyboardOptions: KeyboardOptions = KeyboardOptions(),
+    searchHint: String = getString(Strings.Search),
+    selectedPerson: Person? = null,
+    microphoneCallback: (() -> Unit)? = null,
+    rightAccessoryView: (@Composable () -> Unit)? = null,
+    searchBarTokens: SearchBarTokens? = null
+) {
+
+    val token = searchBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBar] as SearchBarTokens
+
+    CompositionLocalProvider(
+        LocalSearchBarTokens provides token,
+        LocalSearchBarInfo provides SearchBarInfo(style)
+    ) {
+        val focusManager = LocalFocusManager.current
+        val focusRequester = remember { FocusRequester() }
+
+        var queryText by rememberSaveable { mutableStateOf("") }
+        var searching by rememberSaveable { mutableStateOf(false) }
+        var searchHasFocus by rememberSaveable { mutableStateOf(false) }
+        var selectedPerson: Person? = selectedPerson
+
+        val scope = rememberCoroutineScope()
+
+        Row(
+            modifier
+                .requiredHeight(getSearchBarTokens().fixedHeight(getSearchBarInfo()))
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(
+                    getSearchBarTokens().inputBackground(getSearchBarInfo()),
+                    RoundedCornerShape(8.dp)
+                ),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            //Left Section
+            AnimatedContent(searchHasFocus) {
+                when (it) {
+                    true ->
+                        Box(
+                            modifier = Modifier
+                                .size(44.dp, 40.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = enabled,
+                                    onClick = {
+                                        scope.launch {
+                                            searchHasFocus = false
+                                            queryText = ""
+                                            selectedPerson = null
+
+                                            searching = true
+                                            onValueChange(queryText, selectedPerson)
+                                            searching = false
+
+                                            focusManager.clearFocus()
+                                        }
+                                    },
+                                    role = Role.Button
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                SearchBarIcons.Arrowback,
+                                getString(Strings.Back),
+                                modifier = Modifier
+                                    .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
+                                tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
+                            )
+                        }
+                    false ->
+                        Box(
+                            modifier = Modifier
+                                .size(44.dp, 40.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = enabled,
+                                    onClick = {
+                                        focusRequester.requestFocus()
+                                    },
+                                    role = Role.Button
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                SearchBarIcons.Search,
+                                getString(Strings.Search),
+                                modifier = Modifier
+                                    .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
+                                tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
+                            )
+                        }
+                }
+            }
+
+            //Center Section
+            Row(
+                modifier = Modifier
+                    .height(24.dp)
+                    .weight(1F)
+                    .onKeyEvent {
+                        if (it.key == Key.Backspace) {
+                            scope.launch {
+                                selectedPerson = null
+
+                                searching = true
+                                onValueChange(queryText, selectedPerson)
+                                searching = false
+                            }
+                        }
+                        true
+                    },
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                LaunchedEffect(selectedPerson) {
+                    queryText = ""
+
+                    searching = true
+                    onValueChange(queryText, selectedPerson)
+                    searching = false
+                }
+
+                if (selectedPerson != null) {
+                    SearchBarPersonaChip(
+                        person = selectedPerson!!,
+                        modifier = Modifier.padding(end = 8.dp),
+                        style = style
+                    )
+                }
+
+                BasicTextField(
+                    value = queryText,
+                    onValueChange = {
+                        scope.launch {
+                            queryText = it
+
+                            searching = true
+                            onValueChange(queryText, selectedPerson)
+                            searching = false
+                        }
+                    },
+                    keyboardOptions = keyboardOptions,
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .weight(1F)
+                        .focusRequester(focusRequester)
+                        .onFocusChanged { focusState ->
+                            when {
+                                focusState.isFocused ->
+                                    searchHasFocus = true
+                            }
+                        },
+                    textStyle = TextStyle(
+                        fontSize = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
+                        lineHeight = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
+                        color = getSearchBarTokens().textColor(getSearchBarInfo())
+                    ),
+                    decorationBox = @Composable { innerTextField ->
+                        Box(
+                            Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.CenterStart
+                        ) {
+                            if (queryText.isEmpty()) {
+                                Text(
+                                    searchHint,
+                                    style = TextStyle(
+                                        fontSize = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
+                                        lineHeight = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
+                                        color = getSearchBarTokens().textColor(getSearchBarInfo())
+                                    )
+                                )
+                            }
+                            innerTextField()
+                        }
+                    },
+                    maxLines = 1
+                )
+            }
+
+            //Right Section
+            AnimatedContent(queryText.isBlank()) {
+                when (it) {
+                    true ->
+                        if (microphoneCallback != null) {
+                            Box(
+                                modifier = Modifier
+                                    .size(44.dp, 40.dp)
+                                    .clickable(
+                                        interactionSource = remember { MutableInteractionSource() },
+                                        indication = rememberRipple(),
+                                        enabled = enabled,
+                                        onClick = microphoneCallback,
+                                        role = Role.Button
+                                    ),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    SearchBarIcons.Microphone,
+                                    getString(Strings.Microphone),
+                                    modifier = Modifier
+                                        .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
+                                    tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                                )
+                            }
+                        }
+                    false ->
+                        Box(
+                            modifier = Modifier
+                                .size(44.dp, 40.dp)
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = enabled,
+                                    onClick = {
+                                        scope.launch {
+                                            queryText = ""
+
+                                            searching = true
+                                            onValueChange(queryText, selectedPerson)
+                                            searching = false
+                                        }
+                                    },
+                                    role = Role.Button
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            if (searching)
+                                CircularProgressIndicator(
+                                    size = getSearchBarTokens().circularProgressIndicatorSize(
+                                        getSearchBarInfo()
+                                    ),
+                                    modifier = Modifier.padding(
+                                        getSearchBarTokens().progressIndicatorRightPadding(
+                                            getSearchBarInfo()
+                                        )
+                                    )
+                                )
+                            Icon(
+                                SearchBarIcons.Dismisscircle,
+                                getString(Strings.ClearText),
+                                modifier = Modifier
+                                    .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
+                                tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                            )
+                        }
+                }
+            }
+
+            rightAccessoryView
+        }
+    }
+}
+
+@Composable
+private fun getSearchBarTokens(): SearchBarTokens {
+    return LocalSearchBarTokens.current
+}
+
+@Composable
+private fun getSearchBarInfo(): SearchBarInfo {
+    return LocalSearchBarInfo.current
+}

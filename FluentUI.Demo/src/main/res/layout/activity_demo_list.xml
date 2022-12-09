@@ -3,14 +3,14 @@
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".DemoListActivity">
 
     <com.microsoft.fluentui.appbarlayout.AppBarLayout
@@ -18,12 +18,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/demo_list"
+    <com.microsoft.fluentui.listitem.ListItemView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        app:fluentui_title="Fluent 2 Controls"
+        app:fluentui_subtitle="Jetpack Compose Based"
+        app:fluentui_disabled="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:background="@drawable/ms_row_divider"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/v2_demo_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         app:layoutManager="LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".DemoListActivity" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:background="@drawable/ms_row_divider"/>
+
+    <com.microsoft.fluentui.listitem.ListItemView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:fluentui_title="Fluent Controls"
+        app:fluentui_subtitle="XML &amp; View Based"
+        app:fluentui_disabled="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/demo_headline_divider_height"
+        android:background="@drawable/ms_row_divider"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/demo_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:layoutManager="LinearLayoutManager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".DemoListActivity" />
+</LinearLayout>

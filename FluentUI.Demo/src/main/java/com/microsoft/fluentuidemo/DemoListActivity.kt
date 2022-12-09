@@ -44,6 +44,10 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         demo_list.adapter = DemoListAdapter()
         demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
+        v2_demo_list.adapter = DemoListAdapter()
+        (v2_demo_list.adapter as DemoListAdapter).demos = V2DEMOS
+        v2_demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
+
         Initializer.init(application)
     }
 
@@ -64,10 +68,15 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val demoList: ArrayList<Demo> = if(dualScreenMode) DUO_DEMOS else DEMOS
         val filteredDemoList = demoList.filter { it.title.toLowerCase().contains(userInput) }
 
+        var filteredV2DemoList: List<Demo> = listOf()
+        if (!dualScreenMode)
+            filteredV2DemoList = V2DEMOS.filter { it.title.toLowerCase().contains(userInput) }
+
         searchbar.showSearchProgress = true
 
         Handler().postDelayed({
             (demo_list.adapter as DemoListAdapter).demos = filteredDemoList as ArrayList<Demo>
+            (v2_demo_list.adapter as DemoListAdapter).demos = filteredV2DemoList as ArrayList<Demo>
             searchbar.showSearchProgress = false
         }, 500)
         return true
@@ -90,6 +99,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val listItemView = ListItemView(parent.context)
+            listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
             listItemView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
             return ViewHolder(listItemView)
         }

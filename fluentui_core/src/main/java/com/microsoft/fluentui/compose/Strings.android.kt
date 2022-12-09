@@ -17,6 +17,10 @@ fun getString(string: Strings): String {
         Strings.Disabled -> resources.getString(R.string.fluentui_disabled)
         Strings.Enabled -> resources.getString(R.string.fluentui_enabled)
         Strings.Close -> resources.getString(R.string.fluentui_close)
+        Strings.Search -> resources.getString(R.string.fluentui_search)
+        Strings.Microphone -> resources.getString(R.string.fluentui_microphone)
+        Strings.ClearText ->  resources.getString(R.string.fluentui_clear_text)
+        Strings.Back ->  resources.getString(R.string.fluentui_back)
         else -> ""
     }
 }
