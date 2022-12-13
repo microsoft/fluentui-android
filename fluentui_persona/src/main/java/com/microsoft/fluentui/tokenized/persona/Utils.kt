@@ -131,23 +131,35 @@ class AvatarCarouselItem(
 fun getColorByState(
     stateData: StateColor,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Color {
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
+        if (selected && isPressed)
+            return stateData.selectedPressed
+        else if (isPressed)
             return stateData.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
-            return stateData.pressed
+        if (selected && isFocused)
+            return stateData.selectedFocused
+        else if (isFocused)
+            return stateData.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
+        if (selected && isHovered)
+            return stateData.selectedFocused
         if (isHovered)
-            return stateData.pressed
+            return stateData.focused
+
+        if (selected)
+            return stateData.selected
 
         return stateData.rest
-    } else
+    } else if (selected)
+        return stateData.selectedDisabled
+    else
         return stateData.disabled
 }
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {

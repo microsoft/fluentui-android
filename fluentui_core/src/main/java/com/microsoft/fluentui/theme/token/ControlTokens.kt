@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.theme.token
 
+import android.app.Person
 import androidx.compose.runtime.compositionLocalOf
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
@@ -28,6 +29,7 @@ class ControlTokens {
         FloatingActionButton,
         LinearProgressIndicator,
         ListItem,
+        PersonaChip,
         PillButton,
         PillBar,
         RadioButton,
@@ -54,6 +56,7 @@ class ControlTokens {
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
+                ControlType.PersonaChip -> PersonaChipTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
