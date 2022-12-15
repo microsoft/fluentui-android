@@ -1,19 +1,8 @@
-Release Version 0.1.13:
+Release Version 0.1.14:
 
 What's New:
 
 Fluent V2 :
- New Controls:
-	1) LinearProgressIndicator
-	2) CircularProgressIndicator
-	3) Shimmer (Box & Circle shape)
-	4) Divider
-	5) ListContentBuilder
- Fix:
-	1) Accessibility bugfix on button control & demo app activity.
-	2) Bottom type Drawer will hug the content when content size changes dynamically.
+	Fix:  bump-up version for fluentui_listItem to release aars out of build system.
+ 
 
-Fluent V1:
-
- Fix: Tooltip color update fix.
- Feature: Expose CommandItem as View.
