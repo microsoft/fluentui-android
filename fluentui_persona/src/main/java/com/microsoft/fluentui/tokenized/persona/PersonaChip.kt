@@ -19,9 +19,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Medium
-import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipTokens
 
 val LocalPersonaChipTokens = compositionLocalOf { PersonaChipTokens() }
 val LocalPersonaChipInfo = compositionLocalOf { PersonaChipInfo() }
@@ -92,7 +94,14 @@ fun PersonaChip(
                 if (showCloseButton && size == Medium && isChipSelected) {
                     Icon(
                         Icons.Filled.Close,
-                        modifier = Modifier.size(16.dp).clickable(enabled = true, onClick = (if(onClick!=null) onClick else {}) as () -> Unit, role = Role.Button),
+                        modifier = Modifier
+                            .size(16.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = (if (onClick != null) onClick else {
+                                }) as () -> Unit,
+                                role = Role.Button
+                            ),
                         contentDescription = "Close",
                         tint = textColor
                     )
@@ -102,7 +111,12 @@ fun PersonaChip(
                         Avatar(person = person, size = avatarSize)
                     }
                 }
-                Text(text = text, color = textColor, fontSize = font.fontSize.size, textAlign = TextAlign.Center)
+                Text(
+                    text = text,
+                    color = textColor,
+                    fontSize = font.fontSize.size,
+                    textAlign = TextAlign.Center
+                )
             }
         }
     }

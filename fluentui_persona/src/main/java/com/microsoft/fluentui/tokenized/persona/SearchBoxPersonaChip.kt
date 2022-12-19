@@ -20,7 +20,9 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipSize
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipTokens
 
 val LocalSearchBoxPersonaChipTokens = compositionLocalOf { SearchBoxPersonaChipTokens() }
 val LocalSearchBoxPersonaChipInfo = compositionLocalOf { SearchBoxPersonaChipInfo() }
@@ -56,8 +58,10 @@ fun SearchBoxPersonaChip(
             stateData = getSearchBoxPersonaChipTokens().textColor(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo()),
             enabled = enabled, selected = isChipSelected, interactionSource = interactionSource
         )
-        val font = getSearchBoxPersonaChipTokens().fontSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
-        val avatarSize = getSearchBoxPersonaChipTokens().avatarSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+        val font =
+            getSearchBoxPersonaChipTokens().fontSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+        val avatarSize =
+            getSearchBoxPersonaChipTokens().avatarSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
         val verticalPadding =
             getSearchBoxPersonaChipTokens().verticalPadding(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
         val horizontalPadding =
@@ -94,7 +98,14 @@ fun SearchBoxPersonaChip(
                 if (showCloseButton && size == SearchBoxPersonaChipSize.Medium && isChipSelected) {
                     Icon(
                         Icons.Filled.Close,
-                        modifier = Modifier.size(16.dp).clickable(enabled = true, onClick = (if(onClick!=null) onClick else {}) as () -> Unit, role = Role.Button),
+                        modifier = Modifier
+                            .size(16.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = (if (onClick != null) onClick else {
+                                }) as () -> Unit,
+                                role = Role.Button
+                            ),
                         contentDescription = "Close",
                         tint = textColor
                     )
@@ -104,7 +115,12 @@ fun SearchBoxPersonaChip(
                         Avatar(person = person, size = avatarSize)
                     }
                 }
-                Text(text = text, color = textColor, fontSize = font.fontSize.size, textAlign = TextAlign.Center)
+                Text(
+                    text = text,
+                    color = textColor,
+                    fontSize = font.fontSize.size,
+                    textAlign = TextAlign.Center
+                )
             }
         }
     }

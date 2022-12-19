@@ -38,14 +38,14 @@ class V2ProgressActivity : DemoActivity() {
 
         compose_here.setContent {
             FluentTheme {
-                createPersonaChipActivityUI()
+                createActivityUI()
             }
         }
     }
 }
 
 @Composable
-fun createPersonaChipActivityUI() {
+fun createActivityUI() {
     var linearProgress by remember { mutableStateOf(0f) }
     var circularProgress by remember { mutableStateOf(0f) }
     val textColor =

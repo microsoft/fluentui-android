@@ -5,48 +5,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.ThemeMode.Dark
-import com.microsoft.fluentui.theme.ThemeMode.Light
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground1
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground2
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground3
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForegroundTint
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.DangerBackground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.DangerBackground2
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.DangerForeground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.SevereBackground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.SevereBackground2
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.SevereForeground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.SuccessBackground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.SuccessBackground2
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.SuccessForeground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.WarningBackground1
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.WarningBackground2
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.WarningForeground1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1
+import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.*
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background5
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background5Pressed
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background5Selected
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background6
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.BackgroundInverted
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.Foreground2
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.ForegroundDarkStatic
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor
-import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.FluentColor
-import com.microsoft.fluentui.theme.token.FluentStyle.Brand
-import com.microsoft.fluentui.theme.token.FluentStyle.Neutral
-import com.microsoft.fluentui.theme.token.FontInfo
-import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.theme.token.StateColor
+import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Medium
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Small
 import kotlinx.parcelize.Parcelize
@@ -195,7 +161,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderRadius(personaChipInfo: PersonaChipInfo):Dp{
+    open fun borderRadius(personaChipInfo: PersonaChipInfo): Dp {
         return when (personaChipInfo.size) {
             Small -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Small)
             Medium -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
@@ -211,7 +177,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun verticalPadding(personaChipInfo: PersonaChipInfo): Dp{
+    open fun verticalPadding(personaChipInfo: PersonaChipInfo): Dp {
         return when (personaChipInfo.size) {
             Small -> 2.dp
             Medium -> 2.dp
@@ -219,7 +185,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun horizontalPadding(personaChipInfo: PersonaChipInfo):Dp{
+    open fun horizontalPadding(personaChipInfo: PersonaChipInfo): Dp {
         return when (personaChipInfo.size) {
             Small -> 4.dp
             Medium -> 8.dp
@@ -227,12 +193,12 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun avatarToTextSpacing(personaChipInfo: PersonaChipInfo): Dp{
+    open fun avatarToTextSpacing(personaChipInfo: PersonaChipInfo): Dp {
         return 8.dp
     }
 
     @Composable
-    open fun avatarSize(personaChipInfo: PersonaChipInfo):AvatarSize{
+    open fun avatarSize(personaChipInfo: PersonaChipInfo): AvatarSize {
         return AvatarSize.Size16
     }
 }

@@ -5,7 +5,6 @@
 
 package com.microsoft.fluentui.theme.token
 
-import android.app.Person
 import androidx.compose.runtime.compositionLocalOf
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
