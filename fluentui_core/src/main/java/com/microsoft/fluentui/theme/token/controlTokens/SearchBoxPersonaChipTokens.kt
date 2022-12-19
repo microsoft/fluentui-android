@@ -89,17 +89,17 @@ open class SearchBoxPersonaChipTokens : ControlToken, Parcelable {
 
     @Composable
     open fun verticalPadding(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return 2.dp
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
     }
 
     @Composable
     open fun horizontalPadding(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return 8.dp
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
     open fun avatarToTextSpacing(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return 8.dp
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
     }
 
     @Composable

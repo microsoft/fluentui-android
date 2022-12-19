@@ -35,7 +35,9 @@ fun PersonaChip(
     style: PersonaChipStyle = PersonaChipStyle.Neutral,
     size: PersonaChipSize = Medium,
     enabled: Boolean = true,
+    selected: Boolean = false,
     onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
     showCloseButton: Boolean = false,
     person: Person? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -51,14 +53,13 @@ fun PersonaChip(
             size
         )
     ) {
-        var isChipSelected by remember { mutableStateOf(false) }
         val backgroundColor = getColorByState(
             stateData = getPersonaChipTokens().backgroundColor(personaChipInfo = getPersonaChipInfo()),
-            enabled = enabled, selected = isChipSelected, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val textColor = getColorByState(
             stateData = getPersonaChipTokens().textColor(personaChipInfo = getPersonaChipInfo()),
-            enabled = enabled, selected = isChipSelected, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val font = getPersonaChipTokens().fontSize(personaChipInfo = getPersonaChipInfo())
         val avatarSize = getPersonaChipTokens().avatarSize(personaChipInfo = getPersonaChipInfo())
@@ -71,35 +72,34 @@ fun PersonaChip(
         val cornerRadius =
             getPersonaChipTokens().borderRadius(personaChipInfo = getPersonaChipInfo())
 
-
-        Box(
-            modifier = modifier
-                .clickable(
-                    enabled = enabled,
-                    onClick = { isChipSelected = !isChipSelected },
-                    interactionSource = interactionSource,
-                    indication = rememberRipple()
-                )
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(backgroundColor), contentAlignment = Alignment.Center
-        ) {
+        Box(modifier = modifier
+            .clip(RoundedCornerShape(cornerRadius))
+            .background(backgroundColor)
+            .clickable (
+                enabled = enabled,
+                onClick = onClick ?: {},
+                interactionSource = interactionSource,
+                indication = rememberRipple()
+            )
+        )
+        {
             Row(
                 modifier.padding(
                     horizontal = horizontalPadding,
                     vertical = verticalPadding
-                ),
+                ).clip(RoundedCornerShape(cornerRadius))
+                    .background(backgroundColor),
                 horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (showCloseButton && size == Medium && isChipSelected) {
+                if (showCloseButton && size == Medium && selected) {
                     Icon(
                         Icons.Filled.Close,
                         modifier = Modifier
                             .size(16.dp)
                             .clickable(
                                 enabled = true,
-                                onClick = (if (onClick != null) onClick else {
-                                }) as () -> Unit,
+                                onClick = onCloseClick ?: {},
                                 role = Role.Button
                             ),
                         contentDescription = "Close",

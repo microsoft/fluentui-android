@@ -34,7 +34,9 @@ fun SearchBoxPersonaChip(
     style: FluentStyle = FluentStyle.Neutral,
     size: SearchBoxPersonaChipSize = SearchBoxPersonaChipSize.Medium,
     enabled: Boolean = true,
+    selected: Boolean = false,
     onClick: (() -> Unit)? = null,
+    onCloseClick: (() -> Unit)? = null,
     showCloseButton: Boolean = false,
     person: Person? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -49,14 +51,13 @@ fun SearchBoxPersonaChip(
             enabled
         )
     ) {
-        var isChipSelected by remember { mutableStateOf(false) }
         val backgroundColor = getColorByState(
             stateData = getSearchBoxPersonaChipTokens().backgroundColor(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo()),
-            enabled = enabled, selected = isChipSelected, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val textColor = getColorByState(
             stateData = getSearchBoxPersonaChipTokens().textColor(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo()),
-            enabled = enabled, selected = isChipSelected, interactionSource = interactionSource
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val font =
             getSearchBoxPersonaChipTokens().fontSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
@@ -71,39 +72,34 @@ fun SearchBoxPersonaChip(
         val cornerRadius =
             getSearchBoxPersonaChipTokens().borderRadius(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
 
-
-        Box(
-            modifier = modifier
-                .clickable(
-                    enabled = enabled,
-                    onClick = {
-                        if (isChipSelected && onClick != null)
-                            onClick()
-                        isChipSelected = !isChipSelected
-                    },
-                    interactionSource = interactionSource,
-                    indication = rememberRipple()
-                )
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(backgroundColor), contentAlignment = Alignment.Center
-        ) {
+        Box(modifier = modifier
+            .clip(RoundedCornerShape(cornerRadius))
+            .background(backgroundColor)
+            .clickable (
+                enabled = enabled,
+                onClick = onClick?:{},
+                interactionSource = interactionSource,
+                indication = rememberRipple()
+            )
+        )
+        {
             Row(
-                modifier.padding(
-                    horizontal = horizontalPadding,
-                    vertical = verticalPadding
-                ),
+                modifier
+                    .padding(
+                        horizontal = horizontalPadding,
+                        vertical = verticalPadding
+                    ),
                 horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (showCloseButton && size == SearchBoxPersonaChipSize.Medium && isChipSelected) {
+                if (showCloseButton && size == SearchBoxPersonaChipSize.Medium && selected) {
                     Icon(
                         Icons.Filled.Close,
                         modifier = Modifier
                             .size(16.dp)
                             .clickable(
                                 enabled = true,
-                                onClick = (if (onClick != null) onClick else {
-                                }) as () -> Unit,
+                                onClick = onCloseClick ?: {},
                                 role = Role.Button
                             ),
                         contentDescription = "Close",

@@ -179,22 +179,22 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     @Composable
     open fun verticalPadding(personaChipInfo: PersonaChipInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> 2.dp
-            Medium -> 2.dp
+            Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
+            Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
         }
     }
 
     @Composable
     open fun horizontalPadding(personaChipInfo: PersonaChipInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> 4.dp
-            Medium -> 8.dp
+            Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
+            Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
         }
     }
 
     @Composable
     open fun avatarToTextSpacing(personaChipInfo: PersonaChipInfo): Dp {
-        return 8.dp
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
