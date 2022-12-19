@@ -36,6 +36,7 @@ class ControlTokens {
         PillSwitch,
         PillTabs,
         TabItem,
+        SearchBarPersonaChip,
         Shimmer,
         ToggleSwitch
     }
@@ -57,6 +58,7 @@ class ControlTokens {
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.PersonaChip -> PersonaChipTokens()
+                ControlType.SearchBarPersonaChip -> SearchBoxPersonaChipTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
