@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -15,7 +16,9 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.*
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipSize
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
 import com.microsoft.fluentui.tokenized.persona.SearchBoxPersonaChip
@@ -41,12 +44,36 @@ class V2PersonaChipActivity : DemoActivity() {
         }
     }
 
-    private fun createPerson(): Person {
+    private fun createPersonWithName(): Person {
         return Person(
             "Allan",
             "Munger",
             image = drawable.avatar_allan_munger,
             email = "allan.munger@microsoft.com",
+            isActive = true,
+            status = Available,
+            isOOO = false
+        )
+    }
+
+    private fun createPersonWithEmail(): Person {
+        return Person(
+            "",
+            "",
+            image = drawable.avatar_allan_munger,
+            email = "allan.munger@microsoft.com",
+            isActive = true,
+            status = Available,
+            isOOO = false
+        )
+    }
+
+    private fun createPersonWithNothing(): Person {
+        return Person(
+            "",
+            "",
+            image = drawable.avatar_allan_munger,
+            email = "",
             isActive = true,
             status = Available,
             isOOO = false
@@ -90,50 +117,112 @@ class V2PersonaChipActivity : DemoActivity() {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(text = "Person Chip Neutral", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = Neutral, selected = chipSelected1, onClick = {chipSelected1 = !chipSelected1})
-                            PersonaChip(text = "Text", person = createPerson(), style = Neutral, selected = chipSelected2, onClick = {chipSelected2 = !chipSelected2})
+                            PersonaChip(
+                                person = createPersonWithName(),
+                                size = PersonaChipSize.Small,
+                                style = Neutral,
+                                selected = chipSelected1,
+                                onClick = { chipSelected1 = !chipSelected1 })
+                            PersonaChip(
+                                person = createPersonWithName(),
+                                style = Neutral,
+                                selected = chipSelected2,
+                                onClick = { chipSelected2 = !chipSelected2 })
                         }
                         Text(text = "Person Chip Brand", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = Brand, selected = chipSelected3, onClick = {chipSelected3 = !chipSelected3})
-                            PersonaChip(text = "Text", person = createPerson(), style = Brand, selected = chipSelected4, onClick = {chipSelected4 = !chipSelected4})
+                            PersonaChip(
+                                person = createPersonWithName(),
+                                size = PersonaChipSize.Small,
+                                style = Brand,
+                                selected = chipSelected3,
+                                onClick = { chipSelected3 = !chipSelected3 })
+                            PersonaChip(
+                                person = createPersonWithName(),
+                                style = Brand,
+                                selected = chipSelected4,
+                                onClick = { chipSelected4 = !chipSelected4 })
                         }
                         Text(text = "Person Chip Danger", color = textColor)
-                        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = Danger, selected = chipSelected5, onClick = {chipSelected5 = !chipSelected5})
-                            PersonaChip(text = "Text", person = createPerson(), style = Danger, selected = chipSelected6, onClick = {chipSelected6 = !chipSelected6})
+                        LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                            item {
+                                PersonaChip(
+                                    person = createPersonWithEmail(),
+                                    size = PersonaChipSize.Small,
+                                    style = Danger,
+                                    selected = chipSelected5,
+                                    onClick = { chipSelected5 = !chipSelected5 })
+                            }
+                            item {
+                                PersonaChip(
+                                    person = createPersonWithEmail(),
+                                    style = Danger,
+                                    selected = chipSelected6,
+                                    onClick = { chipSelected6 = !chipSelected6 })
+                            }
                         }
                         Text(text = "Person Chip Severe Warning", color = textColor)
-                        Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = SevereWarning, selected = chipSelected7, onClick = {chipSelected7 = !chipSelected7})
-                            PersonaChip(
-                                text = "Text",
-                                person = createPerson(),
-                                style = SevereWarning,
-                                selected = chipSelected8,
-                                onClick = {chipSelected8 = !chipSelected8}
-                            )
+                        LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                            item {
+                                PersonaChip(
+                                    person = createPersonWithEmail(),
+                                    size = PersonaChipSize.Small,
+                                    style = SevereWarning,
+                                    selected = chipSelected7,
+                                    onClick = { chipSelected7 = !chipSelected7 })
+                            }
+                            item {
+                                PersonaChip(
+                                    person = createPersonWithEmail(),
+                                    style = SevereWarning,
+                                    selected = chipSelected8,
+                                    onClick = { chipSelected8 = !chipSelected8 }
+                                )
+                            }
                         }
                         Text(text = "Person Chip Warning", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = Warning, selected = chipSelected9, onClick = {chipSelected9 = !chipSelected9})
-                            PersonaChip(text = "Text", person = createPerson(), style = Warning, selected = chipSelected10, onClick = {chipSelected10 = !chipSelected10})
+                            PersonaChip(
+                                person = createPersonWithNothing(),
+                                size = PersonaChipSize.Small,
+                                style = Warning,
+                                selected = chipSelected9,
+                                onClick = { chipSelected9 = !chipSelected9 })
+                            PersonaChip(
+                                person = createPersonWithNothing(),
+                                style = Warning,
+                                selected = chipSelected10,
+                                onClick = { chipSelected10 = !chipSelected10 })
                         }
                         Text(text = "Person Chip Success", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = Success, selected = chipSelected11, onClick = {chipSelected11 = !chipSelected11})
-                            PersonaChip(text = "Text", person = createPerson(), style = Success, selected = chipSelected12, onClick = {chipSelected12 = !chipSelected12})
+                            PersonaChip(
+                                person = createPersonWithName(),
+                                size = PersonaChipSize.Small,
+                                style = Success,
+                                selected = chipSelected11,
+                                onClick = { chipSelected11 = !chipSelected11 })
+                            PersonaChip(
+                                person = createPersonWithName(),
+                                style = Success,
+                                selected = chipSelected12,
+                                onClick = { chipSelected12 = !chipSelected12 })
                         }
                         Text(text = "Person Chip Disabled", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            PersonaChip(text = "Text", style = Neutral, enabled = false, selected = chipSelected13, onClick = {chipSelected13 = !chipSelected13})
                             PersonaChip(
-                                text = "Text",
-                                person = createPerson(),
+                                person = createPersonWithName(),
+                                size = PersonaChipSize.Small,
+                                style = Neutral,
+                                enabled = false,
+                                selected = chipSelected13,
+                                onClick = { chipSelected13 = !chipSelected13 })
+                            PersonaChip(
+                                person = createPersonWithName(),
                                 style = Neutral,
                                 enabled = false,
                                 selected = chipSelected14,
-                                onClick = {chipSelected14 = !chipSelected14}
+                                onClick = { chipSelected14 = !chipSelected14 }
                             )
                         }
                     }
@@ -148,14 +237,17 @@ class V2PersonaChipActivity : DemoActivity() {
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(text = "Persona chip Neutral", color = textColor)
-                        SearchBoxPersonaChip(text = "Text", person = createPerson(), selected = chipSelected15, onClick = {chipSelected15 = !chipSelected15})
+                        SearchBoxPersonaChip(
+                            person = createPersonWithName(),
+                            size = SearchBoxPersonaChipSize.Small,
+                            selected = chipSelected15,
+                            onClick = { chipSelected15 = !chipSelected15 })
                         Text(text = "Persona chip Brand", color = textColor)
                         SearchBoxPersonaChip(
-                            text = "Text",
-                            person = createPerson(),
+                            person = createPersonWithName(),
                             style = FluentStyle.Brand,
                             selected = chipSelected16,
-                            onClick = {chipSelected16 = !chipSelected16}
+                            onClick = { chipSelected16 = !chipSelected16 }
                         )
                     }
                 }
@@ -169,8 +261,7 @@ class V2PersonaChipActivity : DemoActivity() {
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         PersonaChip(
-                            text = "Text",
-                            person = createPerson(),
+                            person = createPersonWithName(),
                             onCloseClick = {
                                 Toast.makeText(
                                     context,
@@ -179,7 +270,9 @@ class V2PersonaChipActivity : DemoActivity() {
                                 ).show()
                             },
                             showCloseButton = true,
-                            style = Brand, selected = chipSelected17, onClick = {chipSelected17 = !chipSelected17}
+                            style = Brand,
+                            selected = chipSelected17,
+                            onClick = { chipSelected17 = !chipSelected17 }
                         )
                     }
                 }

@@ -3,7 +3,6 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground1

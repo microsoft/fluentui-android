@@ -10,7 +10,10 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.compositionLocalOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -27,9 +30,24 @@ import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipToke
 val LocalSearchBoxPersonaChipTokens = compositionLocalOf { SearchBoxPersonaChipTokens() }
 val LocalSearchBoxPersonaChipInfo = compositionLocalOf { SearchBoxPersonaChipInfo() }
 
+/**
+ * [SearchBoxPersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
+ *
+ * @param person Person data for the persona chip
+ * @param modifier Modifier for the persona chip
+ * @param style Optional persona chip style. See [FluentStyle]
+ * @param size Option persona chip size. See [SearchBoxPersonaChipSize]
+ * @param enabled Whether persona chip is enabled or disabled. Enabled by default.
+ * @param selected Whether persona chip is selected or unselected. Unselected by default.
+ * @param onClick onClick action for persona chip
+ * @param onCloseClick onClick action for close button. This should be used when showCloseButton is enabled
+ * @param showCloseButton Boolean value to show/hide close icon.
+ * @param interactionSource Optional interactionSource
+ * @param searchbarPersonaChipTokens Optional tokens for persona chip
+ */
 @Composable
 fun SearchBoxPersonaChip(
-    text: String,
+    person: Person,
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
     size: SearchBoxPersonaChipSize = SearchBoxPersonaChipSize.Medium,
@@ -38,7 +56,6 @@ fun SearchBoxPersonaChip(
     onClick: (() -> Unit)? = null,
     onCloseClick: (() -> Unit)? = null,
     showCloseButton: Boolean = false,
-    person: Person? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     searchbarPersonaChipTokens: SearchBoxPersonaChipTokens? = null
 ) {
@@ -72,15 +89,16 @@ fun SearchBoxPersonaChip(
         val cornerRadius =
             getSearchBoxPersonaChipTokens().borderRadius(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
 
-        Box(modifier = modifier
-            .clip(RoundedCornerShape(cornerRadius))
-            .background(backgroundColor)
-            .clickable (
-                enabled = enabled,
-                onClick = onClick?:{},
-                interactionSource = interactionSource,
-                indication = rememberRipple()
-            )
+        Box(
+            modifier = modifier
+                .clip(RoundedCornerShape(cornerRadius))
+                .background(backgroundColor)
+                .clickable(
+                    enabled = enabled,
+                    onClick = onClick ?: {},
+                    interactionSource = interactionSource,
+                    indication = rememberRipple()
+                )
         )
         {
             Row(
@@ -107,12 +125,12 @@ fun SearchBoxPersonaChip(
                     )
 
                 } else {
-                    if (person != null && size == SearchBoxPersonaChipSize.Medium) {
+                    if (size == SearchBoxPersonaChipSize.Medium) {
                         Avatar(person = person, size = avatarSize)
                     }
                 }
                 Text(
-                    text = text,
+                    text = person.getLabel(),
                     color = textColor,
                     fontSize = font.fontSize.size,
                     textAlign = TextAlign.Center

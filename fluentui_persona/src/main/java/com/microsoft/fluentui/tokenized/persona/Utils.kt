@@ -42,6 +42,15 @@ class Person(
         return name
     }
 
+    fun getLabel(): String {
+        val label = "$firstName $lastName"
+        if (label.trim().isNotBlank())
+            return label
+        if(!email.isNullOrBlank())
+            return email
+        return "Anonymous"
+    }
+
     fun isImageAvailable(): Boolean {
         return image != null || imageBitmap != null
     }
