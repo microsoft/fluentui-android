@@ -8,6 +8,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
@@ -90,24 +92,39 @@ class V2PersonaChipActivity : DemoActivity() {
             FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                 themeMode = FluentTheme.themeMode
             )
-        var chipSelected1 by remember { mutableStateOf(false) }
-        var chipSelected2 by remember { mutableStateOf(false) }
-        var chipSelected3 by remember { mutableStateOf(false) }
-        var chipSelected4 by remember { mutableStateOf(false) }
-        var chipSelected5 by remember { mutableStateOf(false) }
-        var chipSelected6 by remember { mutableStateOf(false) }
-        var chipSelected7 by remember { mutableStateOf(false) }
-        var chipSelected8 by remember { mutableStateOf(false) }
-        var chipSelected9 by remember { mutableStateOf(false) }
-        var chipSelected10 by remember { mutableStateOf(false) }
-        var chipSelected11 by remember { mutableStateOf(false) }
-        var chipSelected12 by remember { mutableStateOf(false) }
-        var chipSelected13 by remember { mutableStateOf(false) }
-        var chipSelected14 by remember { mutableStateOf(false) }
-        var chipSelected15 by remember { mutableStateOf(false) }
-        var chipSelected16 by remember { mutableStateOf(false) }
-        var chipSelected17 by remember { mutableStateOf(false) }
-
+        var selectedList = rememberSaveable(
+            saver = listSaver(
+                save = { stateList ->
+                    if (stateList.isNotEmpty()) {
+                        val first = stateList.first()
+                        if (!canBeSaved(first)) {
+                            throw IllegalStateException("${first::class} cannot be saved. By default only types which can be stored in the Bundle class can be saved.")
+                        }
+                    }
+                    stateList.toList()
+                },
+                restore = { it.toMutableStateList() }
+            )) {
+            mutableStateListOf(
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+            )
+        }
         Box(Modifier.padding(16.dp)) {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 item {
@@ -121,13 +138,13 @@ class V2PersonaChipActivity : DemoActivity() {
                                 person = createPersonWithName(),
                                 size = PersonaChipSize.Small,
                                 style = Neutral,
-                                selected = chipSelected1,
-                                onClick = { chipSelected1 = !chipSelected1 })
+                                selected = selectedList[0],
+                                onClick = { selectedList[0] = !selectedList[0] })
                             PersonaChip(
                                 person = createPersonWithName(),
                                 style = Neutral,
-                                selected = chipSelected2,
-                                onClick = { chipSelected2 = !chipSelected2 })
+                                selected = selectedList[1],
+                                onClick = { selectedList[1] = !selectedList[1] })
                         }
                         Text(text = "Person Chip Brand", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -135,13 +152,13 @@ class V2PersonaChipActivity : DemoActivity() {
                                 person = createPersonWithName(),
                                 size = PersonaChipSize.Small,
                                 style = Brand,
-                                selected = chipSelected3,
-                                onClick = { chipSelected3 = !chipSelected3 })
+                                selected = selectedList[2],
+                                onClick = { selectedList[2] = !selectedList[2] })
                             PersonaChip(
                                 person = createPersonWithName(),
                                 style = Brand,
-                                selected = chipSelected4,
-                                onClick = { chipSelected4 = !chipSelected4 })
+                                selected = selectedList[3],
+                                onClick = { selectedList[3] = !selectedList[3] })
                         }
                         Text(text = "Person Chip Danger", color = textColor)
                         LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -150,15 +167,15 @@ class V2PersonaChipActivity : DemoActivity() {
                                     person = createPersonWithEmail(),
                                     size = PersonaChipSize.Small,
                                     style = Danger,
-                                    selected = chipSelected5,
-                                    onClick = { chipSelected5 = !chipSelected5 })
+                                    selected = selectedList[4],
+                                    onClick = { selectedList[4] = !selectedList[4] })
                             }
                             item {
                                 PersonaChip(
                                     person = createPersonWithEmail(),
                                     style = Danger,
-                                    selected = chipSelected6,
-                                    onClick = { chipSelected6 = !chipSelected6 })
+                                    selected = selectedList[5],
+                                    onClick = { selectedList[5] = !selectedList[5] })
                             }
                         }
                         Text(text = "Person Chip Severe Warning", color = textColor)
@@ -168,15 +185,15 @@ class V2PersonaChipActivity : DemoActivity() {
                                     person = createPersonWithEmail(),
                                     size = PersonaChipSize.Small,
                                     style = SevereWarning,
-                                    selected = chipSelected7,
-                                    onClick = { chipSelected7 = !chipSelected7 })
+                                    selected = selectedList[6],
+                                    onClick = { selectedList[6] = !selectedList[6] })
                             }
                             item {
                                 PersonaChip(
                                     person = createPersonWithEmail(),
                                     style = SevereWarning,
-                                    selected = chipSelected8,
-                                    onClick = { chipSelected8 = !chipSelected8 }
+                                    selected = selectedList[7],
+                                    onClick = { selectedList[7] = !selectedList[7] }
                                 )
                             }
                         }
@@ -186,13 +203,13 @@ class V2PersonaChipActivity : DemoActivity() {
                                 person = createPersonWithNothing(),
                                 size = PersonaChipSize.Small,
                                 style = Warning,
-                                selected = chipSelected9,
-                                onClick = { chipSelected9 = !chipSelected9 })
+                                selected = selectedList[8],
+                                onClick = { selectedList[8] = !selectedList[8] })
                             PersonaChip(
                                 person = createPersonWithNothing(),
                                 style = Warning,
-                                selected = chipSelected10,
-                                onClick = { chipSelected10 = !chipSelected10 })
+                                selected = selectedList[9],
+                                onClick = { selectedList[9] = !selectedList[9] })
                         }
                         Text(text = "Person Chip Success", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -200,13 +217,13 @@ class V2PersonaChipActivity : DemoActivity() {
                                 person = createPersonWithName(),
                                 size = PersonaChipSize.Small,
                                 style = Success,
-                                selected = chipSelected11,
-                                onClick = { chipSelected11 = !chipSelected11 })
+                                selected = selectedList[10],
+                                onClick = { selectedList[10] = !selectedList[10] })
                             PersonaChip(
                                 person = createPersonWithName(),
                                 style = Success,
-                                selected = chipSelected12,
-                                onClick = { chipSelected12 = !chipSelected12 })
+                                selected = selectedList[11],
+                                onClick = { selectedList[11] = !selectedList[11] })
                         }
                         Text(text = "Person Chip Disabled", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -215,14 +232,14 @@ class V2PersonaChipActivity : DemoActivity() {
                                 size = PersonaChipSize.Small,
                                 style = Neutral,
                                 enabled = false,
-                                selected = chipSelected13,
-                                onClick = { chipSelected13 = !chipSelected13 })
+                                selected = selectedList[12],
+                                onClick = { selectedList[12] = !selectedList[12] })
                             PersonaChip(
                                 person = createPersonWithName(),
                                 style = Neutral,
                                 enabled = false,
-                                selected = chipSelected14,
-                                onClick = { chipSelected14 = !chipSelected14 }
+                                selected = selectedList[13],
+                                onClick = { selectedList[13] = !selectedList[13] }
                             )
                         }
                     }
@@ -240,14 +257,14 @@ class V2PersonaChipActivity : DemoActivity() {
                         SearchBoxPersonaChip(
                             person = createPersonWithName(),
                             size = SearchBoxPersonaChipSize.Small,
-                            selected = chipSelected15,
-                            onClick = { chipSelected15 = !chipSelected15 })
+                            selected = selectedList[14],
+                            onClick = { selectedList[14] = !selectedList[14] })
                         Text(text = "Persona chip Brand", color = textColor)
                         SearchBoxPersonaChip(
                             person = createPersonWithName(),
                             style = FluentStyle.Brand,
-                            selected = chipSelected16,
-                            onClick = { chipSelected16 = !chipSelected16 }
+                            selected = selectedList[15],
+                            onClick = { selectedList[15] = !selectedList[15] }
                         )
                     }
                 }
@@ -271,8 +288,8 @@ class V2PersonaChipActivity : DemoActivity() {
                             },
                             showCloseButton = true,
                             style = Brand,
-                            selected = chipSelected17,
-                            onClick = { chipSelected17 = !chipSelected17 }
+                            selected = selectedList[16],
+                            onClick = { selectedList[16] = !selectedList[16] }
                         )
                     }
                 }

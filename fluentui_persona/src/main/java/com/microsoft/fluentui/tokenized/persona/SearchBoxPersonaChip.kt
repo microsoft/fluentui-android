@@ -110,30 +110,29 @@ fun SearchBoxPersonaChip(
                 horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (showCloseButton && size == SearchBoxPersonaChipSize.Medium && selected) {
-                    Icon(
-                        Icons.Filled.Close,
-                        modifier = Modifier
-                            .size(16.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = onCloseClick ?: {},
-                                role = Role.Button
-                            ),
-                        contentDescription = "Close",
-                        tint = textColor
-                    )
-
-                } else {
-                    if (size == SearchBoxPersonaChipSize.Medium) {
+                if(size == SearchBoxPersonaChipSize.Medium){
+                    if (showCloseButton && selected) {
+                        Icon(
+                            Icons.Filled.Close,
+                            modifier = Modifier
+                                .size(16.dp)
+                                .clickable(
+                                    enabled = true,
+                                    onClick = onCloseClick ?: {},
+                                    role = Role.Button
+                                ),
+                            contentDescription = "Close",
+                            tint = textColor
+                        )
+                    } else {
                         Avatar(person = person, size = avatarSize)
                     }
                 }
                 Text(
                     text = person.getLabel(),
                     color = textColor,
-                    fontSize = font.fontSize.size,
-                    textAlign = TextAlign.Center
+                    lineHeight = font.fontSize.lineHeight,
+                    fontSize = font.fontSize.size
                 )
             }
         }

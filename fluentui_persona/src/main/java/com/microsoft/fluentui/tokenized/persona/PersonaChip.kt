@@ -112,30 +112,31 @@ fun PersonaChip(
                 horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (showCloseButton && size == Medium && selected) {
-                    Icon(
-                        Icons.Filled.Close,
-                        modifier = Modifier
-                            .size(16.dp)
-                            .clickable(
-                                enabled = true,
-                                onClick = onCloseClick ?: {},
-                                role = Role.Button
-                            ),
-                        contentDescription = "Close",
-                        tint = textColor
-                    )
+                if (size == Medium) {
+                    if (showCloseButton && selected) {
+                        Icon(
+                            Icons.Filled.Close,
+                            modifier = Modifier
+                                .size(16.dp)
+                                .clickable(
+                                    enabled = true,
+                                    onClick = onCloseClick ?: {},
+                                    role = Role.Button
+                                ),
+                            contentDescription = "Close",
+                            tint = textColor
+                        )
 
-                } else {
-                    if (size == Medium) {
+                    } else {
                         Avatar(person = person, size = avatarSize)
                     }
                 }
                 Text(
                     text = person.getLabel(),
                     color = textColor,
+                    lineHeight = font.fontSize.lineHeight,
                     fontSize = font.fontSize.size,
-                    textAlign = TextAlign.Center
+                    fontWeight = font.weight
                 )
             }
         }
