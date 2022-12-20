@@ -3,7 +3,11 @@ package com.microsoft.fluentui.tokenized.persona
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -18,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -110,7 +113,7 @@ fun SearchBoxPersonaChip(
                 horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if(size == SearchBoxPersonaChipSize.Medium){
+                if (size == SearchBoxPersonaChipSize.Medium) {
                     if (showCloseButton && selected) {
                         Icon(
                             Icons.Filled.Close,
@@ -129,6 +132,7 @@ fun SearchBoxPersonaChip(
                     }
                 }
                 Text(
+                    modifier = Modifier.padding(bottom = 2.dp),//Vertically center align text
                     text = person.getLabel(),
                     color = textColor,
                     lineHeight = font.fontSize.lineHeight,
