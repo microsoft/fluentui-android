@@ -29,7 +29,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipToke
 
 private val LocalSearchBarPersonaChipTokens = compositionLocalOf { SearchBarPersonaChipTokens() }
 private val LocalSearchBarPersonaChipInfo = compositionLocalOf { SearchBarPersonaChipInfo() }
-private val LocalPersonaChipInfo = compositionLocalOf { PersonaChipInfo() }
 
 /**
  * [SearchBarPersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
@@ -66,9 +65,7 @@ fun SearchBarPersonaChip(
         LocalSearchBarPersonaChipTokens provides token,
         LocalSearchBarPersonaChipInfo provides SearchBarPersonaChipInfo(
             style,
-            enabled
-        ),
-        LocalPersonaChipInfo provides PersonaChipInfo(
+            enabled,
             size = size
         )
     ) {
@@ -81,17 +78,17 @@ fun SearchBarPersonaChip(
             enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val font =
-            getSearchBarPersonaChipTokens().fontSize(personaChipInfo = getPersonaChipInfo())
+            getSearchBarPersonaChipTokens().fontSize(personaChipInfo = getSearchBarPersonaChipInfo())
         val avatarSize =
-            getSearchBarPersonaChipTokens().avatarSize(personaChipInfo = getPersonaChipInfo())
+            getSearchBarPersonaChipTokens().avatarSize(personaChipInfo = getSearchBarPersonaChipInfo())
         val verticalPadding =
-            getSearchBarPersonaChipTokens().verticalPadding(personaChipInfo = getPersonaChipInfo())
+            getSearchBarPersonaChipTokens().verticalPadding(personaChipInfo = getSearchBarPersonaChipInfo())
         val horizontalPadding =
-            getSearchBarPersonaChipTokens().horizontalPadding(personaChipInfo = getPersonaChipInfo())
+            getSearchBarPersonaChipTokens().horizontalPadding(personaChipInfo = getSearchBarPersonaChipInfo())
         val avatarToTextSpacing =
-            getSearchBarPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getPersonaChipInfo())
+            getSearchBarPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getSearchBarPersonaChipInfo())
         val cornerRadius =
-            getSearchBarPersonaChipTokens().borderRadius(personaChipInfo = getPersonaChipInfo())
+            getSearchBarPersonaChipTokens().borderRadius(personaChipInfo = getSearchBarPersonaChipInfo())
 
         Box(
             modifier = modifier
@@ -152,9 +149,4 @@ private fun getSearchBarPersonaChipTokens(): SearchBarPersonaChipTokens {
 @Composable
 private fun getSearchBarPersonaChipInfo(): SearchBarPersonaChipInfo {
     return LocalSearchBarPersonaChipInfo.current
-}
-
-@Composable
-private fun getPersonaChipInfo(): PersonaChipInfo {
-    return LocalPersonaChipInfo.current
 }

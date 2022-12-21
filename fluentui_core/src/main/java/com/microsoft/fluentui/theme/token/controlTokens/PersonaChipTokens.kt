@@ -29,12 +29,16 @@ enum class PersonaChipSize {
     Small,
     Medium
 }
+abstract class PersonaChipControlInfo:ControlInfo{
+    abstract val size: PersonaChipSize
+    abstract val enabled: Boolean
+}
 
 data class PersonaChipInfo(
     val style: PersonaChipStyle = PersonaChipStyle.Neutral,
-    val enabled: Boolean = true,
-    val size: PersonaChipSize = Small
-) : ControlInfo
+    override val enabled: Boolean = true,
+    override val size: PersonaChipSize = Small
+) : PersonaChipControlInfo()
 
 @Parcelize
 open class PersonaChipTokens : ControlToken, Parcelable {
@@ -160,7 +164,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderRadius(personaChipInfo: PersonaChipInfo): Dp {
+    open fun borderRadius(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
             Small -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Small)
             Medium -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
@@ -168,7 +172,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fontSize(personaChipInfo: PersonaChipInfo): FontInfo {
+    open fun fontSize(personaChipInfo: PersonaChipControlInfo): FontInfo {
         return when (personaChipInfo.size) {
             Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
@@ -176,7 +180,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun verticalPadding(personaChipInfo: PersonaChipInfo): Dp {
+    open fun verticalPadding(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
             Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
             Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
@@ -184,7 +188,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun horizontalPadding(personaChipInfo: PersonaChipInfo): Dp {
+    open fun horizontalPadding(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
             Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
             Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
@@ -192,12 +196,12 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun avatarToTextSpacing(personaChipInfo: PersonaChipInfo): Dp {
+    open fun avatarToTextSpacing(personaChipInfo: PersonaChipControlInfo): Dp {
         return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
-    open fun avatarSize(personaChipInfo: PersonaChipInfo): AvatarSize {
+    open fun avatarSize(personaChipInfo: PersonaChipControlInfo): AvatarSize {
         return AvatarSize.Size16
     }
 }

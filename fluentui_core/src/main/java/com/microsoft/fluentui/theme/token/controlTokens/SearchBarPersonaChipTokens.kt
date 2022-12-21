@@ -3,15 +3,15 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import androidx.compose.runtime.Composable
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
 data class SearchBarPersonaChipInfo(
     val style: FluentStyle = FluentStyle.Neutral,
-    val enabled: Boolean = true
-) : ControlInfo
+    override val enabled: Boolean = true,
+    override val size: PersonaChipSize = PersonaChipSize.Small
+) : PersonaChipControlInfo()
 
 @Parcelize
 open class SearchBarPersonaChipTokens : PersonaChipTokens() {
