@@ -3,11 +3,7 @@ package com.microsoft.fluentui.tokenized.persona
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -26,20 +22,22 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipInfo
-import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipSize
-import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipTokens
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipInfo
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipInfo
+import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipTokens
 
-val LocalSearchBoxPersonaChipTokens = compositionLocalOf { SearchBoxPersonaChipTokens() }
-val LocalSearchBoxPersonaChipInfo = compositionLocalOf { SearchBoxPersonaChipInfo() }
+private val LocalSearchBarPersonaChipTokens = compositionLocalOf { SearchBarPersonaChipTokens() }
+private val LocalSearchBarPersonaChipInfo = compositionLocalOf { SearchBarPersonaChipInfo() }
+private val LocalPersonaChipInfo = compositionLocalOf { PersonaChipInfo() }
 
 /**
- * [SearchBoxPersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
+ * [SearchBarPersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
  *
  * @param person Person data for the persona chip
  * @param modifier Modifier for the persona chip
  * @param style Optional persona chip style. See [FluentStyle]
- * @param size Option persona chip size. See [SearchBoxPersonaChipSize]
+ * @param size Option persona chip size. See [PersonaChipSize]
  * @param enabled Whether persona chip is enabled or disabled. Enabled by default.
  * @param selected Whether persona chip is selected or unselected. Unselected by default.
  * @param onClick onClick action for persona chip
@@ -49,48 +47,51 @@ val LocalSearchBoxPersonaChipInfo = compositionLocalOf { SearchBoxPersonaChipInf
  * @param searchbarPersonaChipTokens Optional tokens for persona chip
  */
 @Composable
-fun SearchBoxPersonaChip(
+fun SearchBarPersonaChip(
     person: Person,
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
-    size: SearchBoxPersonaChipSize = SearchBoxPersonaChipSize.Medium,
+    size: PersonaChipSize = PersonaChipSize.Medium,
     enabled: Boolean = true,
     selected: Boolean = false,
     onClick: (() -> Unit)? = null,
     onCloseClick: (() -> Unit)? = null,
     showCloseButton: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-    searchbarPersonaChipTokens: SearchBoxPersonaChipTokens? = null
+    searchbarPersonaChipTokens: SearchBarPersonaChipTokens? = null
 ) {
     val token = searchbarPersonaChipTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarPersonaChip] as SearchBoxPersonaChipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarPersonaChip] as SearchBarPersonaChipTokens
     CompositionLocalProvider(
-        LocalSearchBoxPersonaChipTokens provides token,
-        LocalSearchBoxPersonaChipInfo provides SearchBoxPersonaChipInfo(
+        LocalSearchBarPersonaChipTokens provides token,
+        LocalSearchBarPersonaChipInfo provides SearchBarPersonaChipInfo(
             style,
             enabled
+        ),
+        LocalPersonaChipInfo provides PersonaChipInfo(
+            size = size
         )
     ) {
         val backgroundColor = getColorByState(
-            stateData = getSearchBoxPersonaChipTokens().backgroundColor(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo()),
+            stateData = getSearchBarPersonaChipTokens().backgroundColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo()),
             enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val textColor = getColorByState(
-            stateData = getSearchBoxPersonaChipTokens().textColor(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo()),
+            stateData = getSearchBarPersonaChipTokens().textColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo()),
             enabled = enabled, selected = selected, interactionSource = interactionSource
         )
         val font =
-            getSearchBoxPersonaChipTokens().fontSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+            getSearchBarPersonaChipTokens().fontSize(personaChipInfo = getPersonaChipInfo())
         val avatarSize =
-            getSearchBoxPersonaChipTokens().avatarSize(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+            getSearchBarPersonaChipTokens().avatarSize(personaChipInfo = getPersonaChipInfo())
         val verticalPadding =
-            getSearchBoxPersonaChipTokens().verticalPadding(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+            getSearchBarPersonaChipTokens().verticalPadding(personaChipInfo = getPersonaChipInfo())
         val horizontalPadding =
-            getSearchBoxPersonaChipTokens().horizontalPadding(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+            getSearchBarPersonaChipTokens().horizontalPadding(personaChipInfo = getPersonaChipInfo())
         val avatarToTextSpacing =
-            getSearchBoxPersonaChipTokens().avatarToTextSpacing(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+            getSearchBarPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getPersonaChipInfo())
         val cornerRadius =
-            getSearchBoxPersonaChipTokens().borderRadius(searchBoxPersonaChipInfo = getSearchBoxPersonaChipInfo())
+            getSearchBarPersonaChipTokens().borderRadius(personaChipInfo = getPersonaChipInfo())
 
         Box(
             modifier = modifier
@@ -113,7 +114,7 @@ fun SearchBoxPersonaChip(
                 horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (size == SearchBoxPersonaChipSize.Medium) {
+                if (size == PersonaChipSize.Medium) {
                     if (showCloseButton && selected) {
                         Icon(
                             Icons.Filled.Close,
@@ -144,11 +145,16 @@ fun SearchBoxPersonaChip(
 }
 
 @Composable
-fun getSearchBoxPersonaChipTokens(): SearchBoxPersonaChipTokens {
-    return LocalSearchBoxPersonaChipTokens.current
+private fun getSearchBarPersonaChipTokens(): SearchBarPersonaChipTokens {
+    return LocalSearchBarPersonaChipTokens.current
 }
 
 @Composable
-fun getSearchBoxPersonaChipInfo(): SearchBoxPersonaChipInfo {
-    return LocalSearchBoxPersonaChipInfo.current
+private fun getSearchBarPersonaChipInfo(): SearchBarPersonaChipInfo {
+    return LocalSearchBarPersonaChipInfo.current
+}
+
+@Composable
+private fun getPersonaChipInfo(): PersonaChipInfo {
+    return LocalPersonaChipInfo.current
 }

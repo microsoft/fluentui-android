@@ -57,7 +57,7 @@ class ControlTokens {
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.PersonaChip -> PersonaChipTokens()
-                ControlType.SearchBarPersonaChip -> SearchBoxPersonaChipTokens()
+                ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()

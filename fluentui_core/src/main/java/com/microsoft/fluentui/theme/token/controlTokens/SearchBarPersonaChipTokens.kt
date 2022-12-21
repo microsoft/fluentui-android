@@ -1,28 +1,23 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
-import android.os.Parcelable
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
-enum class SearchBoxPersonaChipSize {
-    Small,
-    Medium
-}
-
-data class SearchBoxPersonaChipInfo(
+data class SearchBarPersonaChipInfo(
     val style: FluentStyle = FluentStyle.Neutral,
-    val enabled: Boolean = true,
-    val size: SearchBoxPersonaChipSize = SearchBoxPersonaChipSize.Small
+    val enabled: Boolean = true
 ) : ControlInfo
 
 @Parcelize
-open class SearchBoxPersonaChipTokens : ControlToken, Parcelable {
+open class SearchBarPersonaChipTokens : PersonaChipTokens() {
     @Composable
-    open fun backgroundColor(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): StateColor {
-        when (searchBoxPersonaChipInfo.style) {
+    open fun backgroundColor(searchBarPersonaChipInfo: SearchBarPersonaChipInfo): StateColor {
+        when (searchBarPersonaChipInfo.style) {
             FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background6].value(
                     themeMode = FluentTheme.themeMode
@@ -49,8 +44,8 @@ open class SearchBoxPersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textColor(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): StateColor {
-        when (searchBoxPersonaChipInfo.style) {
+    open fun textColor(searchBarPersonaChipInfo: SearchBarPersonaChipInfo): StateColor {
+        when (searchBarPersonaChipInfo.style) {
             FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
@@ -74,35 +69,5 @@ open class SearchBoxPersonaChipTokens : ControlToken, Parcelable {
                 )
             )
         }
-    }
-
-    @Composable
-    open fun borderRadius(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
-    }
-
-    @Composable
-    open fun fontSize(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): FontInfo {
-        return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
-    }
-
-    @Composable
-    open fun verticalPadding(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
-    }
-
-    @Composable
-    open fun horizontalPadding(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
-    }
-
-    @Composable
-    open fun avatarToTextSpacing(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
-    }
-
-    @Composable
-    open fun avatarSize(searchBoxPersonaChipInfo: SearchBoxPersonaChipInfo): AvatarSize {
-        return AvatarSize.Size16
     }
 }

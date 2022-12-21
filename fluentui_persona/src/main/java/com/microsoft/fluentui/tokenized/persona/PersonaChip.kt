@@ -3,11 +3,7 @@ package com.microsoft.fluentui.tokenized.persona
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -31,8 +27,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Medium
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipTokens
 
-val LocalPersonaChipTokens = compositionLocalOf { PersonaChipTokens() }
-val LocalPersonaChipInfo = compositionLocalOf { PersonaChipInfo() }
+private val LocalPersonaChipTokens = compositionLocalOf { PersonaChipTokens() }
+private val LocalPersonaChipInfo = compositionLocalOf { PersonaChipInfo() }
 
 /**
  * [PersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
@@ -147,11 +143,11 @@ fun PersonaChip(
 }
 
 @Composable
-fun getPersonaChipTokens(): PersonaChipTokens {
+private fun getPersonaChipTokens(): PersonaChipTokens {
     return LocalPersonaChipTokens.current
 }
 
 @Composable
-fun getPersonaChipInfo(): PersonaChipInfo {
+private fun getPersonaChipInfo(): PersonaChipInfo {
     return LocalPersonaChipInfo.current
 }

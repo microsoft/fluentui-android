@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
@@ -20,10 +22,9 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.*
-import com.microsoft.fluentui.theme.token.controlTokens.SearchBoxPersonaChipSize
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
-import com.microsoft.fluentui.tokenized.persona.SearchBoxPersonaChip
+import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
@@ -125,6 +126,8 @@ class V2PersonaChipActivity : DemoActivity() {
                 false,
             )
         }
+
+        //TODO: Clean Activity using for loops
         Box(Modifier.padding(16.dp)) {
             LazyColumn(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 item {
@@ -254,13 +257,13 @@ class V2PersonaChipActivity : DemoActivity() {
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         Text(text = "Persona chip Neutral", color = textColor)
-                        SearchBoxPersonaChip(
+                        SearchBarPersonaChip(
                             person = createPersonWithName(),
-                            size = SearchBoxPersonaChipSize.Small,
+                            size = PersonaChipSize.Small,
                             selected = selectedList[14],
                             onClick = { selectedList[14] = !selectedList[14] })
                         Text(text = "Persona chip Brand", color = textColor)
-                        SearchBoxPersonaChip(
+                        SearchBarPersonaChip(
                             person = createPersonWithName(),
                             style = FluentStyle.Brand,
                             selected = selectedList[15],
