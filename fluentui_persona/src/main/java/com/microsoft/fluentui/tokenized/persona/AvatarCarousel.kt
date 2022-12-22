@@ -98,6 +98,7 @@ fun AvatarCarousel(
                 val backgroundColor = getColorByState(
                     stateData = getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo()),
                     enabled = item.enabled,
+                    selected = false,
                     interactionSource = interactionSource
                 )
                 val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
