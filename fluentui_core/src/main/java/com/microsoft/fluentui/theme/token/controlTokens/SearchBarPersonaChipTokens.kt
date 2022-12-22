@@ -16,7 +16,8 @@ data class SearchBarPersonaChipInfo(
 @Parcelize
 open class SearchBarPersonaChipTokens : PersonaChipTokens() {
     @Composable
-    open fun backgroundColor(searchBarPersonaChipInfo: SearchBarPersonaChipInfo): StateColor {
+    override fun backgroundColor(searchBarPersonaChipInfo: PersonaChipControlInfo): StateColor {
+        searchBarPersonaChipInfo as SearchBarPersonaChipInfo
         when (searchBarPersonaChipInfo.style) {
             FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background6].value(
@@ -44,7 +45,8 @@ open class SearchBarPersonaChipTokens : PersonaChipTokens() {
     }
 
     @Composable
-    open fun textColor(searchBarPersonaChipInfo: SearchBarPersonaChipInfo): StateColor {
+    override fun textColor(searchBarPersonaChipInfo: PersonaChipControlInfo): StateColor {
+        searchBarPersonaChipInfo as SearchBarPersonaChipInfo
         when (searchBarPersonaChipInfo.style) {
             FluentStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(

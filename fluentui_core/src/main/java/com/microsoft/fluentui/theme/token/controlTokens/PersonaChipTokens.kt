@@ -29,7 +29,8 @@ enum class PersonaChipSize {
     Small,
     Medium
 }
-abstract class PersonaChipControlInfo:ControlInfo{
+
+abstract class PersonaChipControlInfo : ControlInfo {
     abstract val size: PersonaChipSize
     abstract val enabled: Boolean
 }
@@ -44,7 +45,8 @@ data class PersonaChipInfo(
 open class PersonaChipTokens : ControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(personaChipInfo: PersonaChipInfo): StateColor {
+    open fun backgroundColor(personaChipInfo: PersonaChipControlInfo): StateColor {
+        personaChipInfo as PersonaChipInfo
         when (personaChipInfo.style) {
             PersonaChipStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
@@ -104,7 +106,9 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textColor(personaChipInfo: PersonaChipInfo): StateColor {
+    open fun textColor(personaChipInfo: PersonaChipControlInfo): StateColor {
+
+        personaChipInfo as PersonaChipInfo
         when (personaChipInfo.style) {
             PersonaChipStyle.Neutral -> return StateColor(
                 rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
