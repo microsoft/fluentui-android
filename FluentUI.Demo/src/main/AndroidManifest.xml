@@ -55,6 +55,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.PersistentBottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaChipViewActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaListViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaViewActivity" />

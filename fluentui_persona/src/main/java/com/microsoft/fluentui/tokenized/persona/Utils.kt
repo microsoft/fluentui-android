@@ -1,7 +1,10 @@
 package com.microsoft.fluentui.tokenized.persona
 
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.interaction.*
+import androidx.compose.foundation.interaction.InteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
@@ -37,6 +40,15 @@ class Person(
         if (name.trim().isBlank())
             return "Anonymous"
         return name
+    }
+
+    fun getLabel(): String {
+        val label = "$firstName $lastName"
+        if (label.trim().isNotBlank())
+            return label
+        if(!email.isNullOrBlank())
+            return email
+        return "Anonymous"
     }
 
     fun isImageAvailable(): Boolean {
@@ -111,6 +123,7 @@ class Group(
         return initial.uppercase()
     }
 }
+
 class Persona(
     val person: Person,
     val title: String,
@@ -127,34 +140,48 @@ class AvatarCarouselItem(
     val enableActivityRing: Boolean = false,
     val onItemClick: (() -> Unit)? = null
 )
+
 @Composable
 fun getColorByState(
     stateData: StateColor,
     enabled: Boolean,
+    selected: Boolean,
     interactionSource: InteractionSource
 ): Color {
     if (enabled) {
         val isPressed by interactionSource.collectIsPressedAsState()
-        if (isPressed)
+        if (selected && isPressed)
+            return stateData.selectedPressed
+        else if (isPressed)
             return stateData.pressed
 
         val isFocused by interactionSource.collectIsFocusedAsState()
-        if (isFocused)
-            return stateData.pressed
+        if (selected && isFocused)
+            return stateData.selectedFocused
+        else if (isFocused)
+            return stateData.focused
 
         val isHovered by interactionSource.collectIsHoveredAsState()
+        if (selected && isHovered)
+            return stateData.selectedFocused
         if (isHovered)
-            return stateData.pressed
+            return stateData.focused
+
+        if (selected)
+            return stateData.selected
 
         return stateData.rest
-    } else
+    } else if (selected)
+        return stateData.selectedDisabled
+    else
         return stateData.disabled
 }
+
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
-    if(secondaryText == null && tertiaryText == null){
+    if (secondaryText == null && tertiaryText == null) {
         return AvatarSize.Size24
     }
-    if(secondaryText != null && tertiaryText == null){
+    if (secondaryText != null && tertiaryText == null) {
         return AvatarSize.Size40
     }
     return AvatarSize.Size56

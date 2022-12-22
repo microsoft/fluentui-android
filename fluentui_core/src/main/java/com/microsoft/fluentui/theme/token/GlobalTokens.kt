@@ -286,6 +286,52 @@ object GlobalTokens : Parcelable {
         }
     }
 
+    enum class SizeTokens {
+        SizeNone,
+        Size20,
+        Size40,
+        Size60,
+        Size80,
+        Size100,
+        Size120,
+        Size140,
+        Size160,
+        Size180,
+        Size200,
+        Size240,
+        Size280,
+        Size320,
+        Size360,
+        Size400,
+        Size480,
+        Size520,
+        Size560
+    }
+
+    fun size(token: SizeTokens): Dp {
+        return when(token) {
+            SizeTokens.SizeNone -> 0.dp
+            SizeTokens.Size20 -> 2.dp
+            SizeTokens.Size40 -> 4.dp
+            SizeTokens.Size60 -> 6.dp
+            SizeTokens.Size80 -> 8.dp
+            SizeTokens.Size100 -> 10.dp
+            SizeTokens.Size120 -> 12.dp
+            SizeTokens.Size140 -> 14.dp
+            SizeTokens.Size160 -> 16.dp
+            SizeTokens.Size180 -> 18.dp
+            SizeTokens.Size200 -> 20.dp
+            SizeTokens.Size240 -> 24.dp
+            SizeTokens.Size280 -> 28.dp
+            SizeTokens.Size320 -> 32.dp
+            SizeTokens.Size360 -> 36.dp
+            SizeTokens.Size400 -> 40.dp
+            SizeTokens.Size480 -> 48.dp
+            SizeTokens.Size520 -> 52.dp
+            SizeTokens.Size560 -> 56.dp
+        }
+    }
+
     enum class ShadowTokens {
         Shadow02,
         Shadow04,

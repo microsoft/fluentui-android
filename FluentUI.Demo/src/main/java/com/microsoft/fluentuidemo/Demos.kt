@@ -33,6 +33,7 @@ const val PEOPLE_PICKER_VIEW = "PeoplePickerView"
 const val PERSISTENT_BOTTOM_SHEET = "PersistentBottomSheet"
 const val V2BOTTOM_SHEET = "V2 BottomSheet"
 const val PERSONA_CHIP_VIEW = "PersonaChipView"
+const val V2PERSONA_CHIP = "V2 PersonaChip"
 const val PERSONA_LIST_VIEW = "PersonaListView"
 const val V2PERSONA_LIST = "V2 PersonaList"
 const val PERSONA_VIEW = "PersonaView"
@@ -72,6 +73,7 @@ val DEMOS = arrayListOf(
         Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
         Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
         Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
+        Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
         Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
         Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
         Demo(PERSONA_VIEW, PersonaViewActivity::class),

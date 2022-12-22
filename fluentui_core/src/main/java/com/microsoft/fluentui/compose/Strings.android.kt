@@ -16,6 +16,7 @@ fun getString(string: Strings): String {
         Strings.NotSelected -> resources.getString(R.string.fluentui_not_selected)
         Strings.Disabled -> resources.getString(R.string.fluentui_disabled)
         Strings.Enabled -> resources.getString(R.string.fluentui_enabled)
+        Strings.Close -> resources.getString(R.string.fluentui_close)
         else -> ""
     }
 }

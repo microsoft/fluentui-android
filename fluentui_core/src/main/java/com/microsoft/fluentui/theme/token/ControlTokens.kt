@@ -28,12 +28,14 @@ class ControlTokens {
         FloatingActionButton,
         LinearProgressIndicator,
         ListItem,
+        PersonaChip,
         PillButton,
         PillBar,
         RadioButton,
         PillSwitch,
         PillTabs,
         TabItem,
+        SearchBarPersonaChip,
         Shimmer,
         ToggleSwitch
     }
@@ -54,6 +56,8 @@ class ControlTokens {
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
+                ControlType.PersonaChip -> PersonaChipTokens()
+                ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
