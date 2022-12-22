@@ -19,10 +19,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.compose.Strings
+import com.microsoft.fluentui.compose.getString
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipTokens
@@ -40,8 +41,7 @@ private val LocalSearchBarPersonaChipInfo = compositionLocalOf { SearchBarPerson
  * @param enabled Whether persona chip is enabled or disabled. Enabled by default.
  * @param selected Whether persona chip is selected or unselected. Unselected by default.
  * @param onClick onClick action for persona chip
- * @param onCloseClick onClick action for close button. This should be used when showCloseButton is enabled
- * @param showCloseButton Boolean value to show/hide close icon.
+ * @param onCloseClick onClick action for close button. This action is performed after the chip is selected and on the close icon
  * @param interactionSource Optional interactionSource
  * @param searchbarPersonaChipTokens Optional tokens for persona chip
  */
@@ -55,7 +55,6 @@ fun SearchBarPersonaChip(
     selected: Boolean = false,
     onClick: (() -> Unit)? = null,
     onCloseClick: (() -> Unit)? = null,
-    showCloseButton: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     searchbarPersonaChipTokens: SearchBarPersonaChipTokens? = null
 ) {
@@ -103,7 +102,7 @@ fun SearchBarPersonaChip(
         )
         {
             Row(
-                modifier
+                Modifier
                     .padding(
                         horizontal = horizontalPadding,
                         vertical = verticalPadding
@@ -112,17 +111,17 @@ fun SearchBarPersonaChip(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (size == PersonaChipSize.Medium) {
-                    if (showCloseButton && selected) {
+                    if (onCloseClick != null && selected) {
                         Icon(
                             Icons.Filled.Close,
                             modifier = Modifier
                                 .size(16.dp)
                                 .clickable(
                                     enabled = true,
-                                    onClick = onCloseClick ?: {},
+                                    onClick = onCloseClick,
                                     role = Role.Button
                                 ),
-                            contentDescription = "Close",
+                            contentDescription = getString(string = Strings.Close),
                             tint = textColor
                         )
                     } else {

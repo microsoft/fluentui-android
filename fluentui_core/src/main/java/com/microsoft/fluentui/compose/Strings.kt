@@ -11,5 +11,6 @@ value class Strings private constructor(@Suppress("unused") private val value: I
         val NotSelected = Strings(2)
         val Disabled = Strings(3)
         val Enabled = Strings(4)
+        val Close = Strings(5)
     }
 }
