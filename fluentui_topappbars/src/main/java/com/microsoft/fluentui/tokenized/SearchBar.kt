@@ -80,6 +80,8 @@ fun SearchBar(
         var queryText by rememberSaveable { mutableStateOf("") }
         var searching by rememberSaveable { mutableStateOf(false) }
         var searchHasFocus by rememberSaveable { mutableStateOf(false) }
+
+        var personaChipSelected by rememberSaveable{ mutableStateOf(false) }
         var selectedPerson: Person? = selectedPerson
 
         val scope = rememberCoroutineScope()
@@ -165,7 +167,13 @@ fun SearchBar(
                     .onKeyEvent {
                         if (it.key == Key.Backspace) {
                             scope.launch {
-                                selectedPerson = null
+                                if(personaChipSelected) {
+                                    selectedPerson = null
+                                    personaChipSelected = false
+                                }
+                                else {
+                                    personaChipSelected = true
+                                }
 
                                 searching = true
                                 onValueChange(queryText, selectedPerson)
@@ -188,7 +196,16 @@ fun SearchBar(
                     SearchBarPersonaChip(
                         person = selectedPerson!!,
                         modifier = Modifier.padding(end = 8.dp),
-                        style = style
+                        style = style,
+                        enabled = enabled,
+                        selected = personaChipSelected,
+                        onCloseClick = {
+                            selectedPerson = null
+
+                            searching = true
+                            onValueChange(queryText, selectedPerson)
+                            searching = false
+                        }
                     )
                 }
 
