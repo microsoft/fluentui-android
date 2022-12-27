@@ -8,18 +8,20 @@ package com.microsoft.fluentuidemo
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
-import androidx.appcompat.widget.SearchView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.search.Searchbar
 import com.microsoft.fluentui.util.DuoSupportUtils
 import kotlinx.android.synthetic.main.activity_demo_list.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * This activity presents a list of [Demo]s, which when touched,
@@ -44,10 +46,6 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         demo_list.adapter = DemoListAdapter()
         demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
-        v2_demo_list.adapter = DemoListAdapter()
-        (v2_demo_list.adapter as DemoListAdapter).demos = V2DEMOS
-        v2_demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
-
         Initializer.init(application)
     }
 
@@ -64,26 +62,21 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     override fun onQueryTextChange(query: String): Boolean {
-        val userInput = query.toLowerCase()
-        val demoList: ArrayList<Demo> = if(dualScreenMode) DUO_DEMOS else DEMOS
-        val filteredDemoList = demoList.filter { it.title.toLowerCase().contains(userInput) }
-
-        var filteredV2DemoList: List<Demo> = listOf()
-        if (!dualScreenMode)
-            filteredV2DemoList = V2DEMOS.filter { it.title.toLowerCase().contains(userInput) }
+        val userInput = query.lowercase(Locale.getDefault())
+        val demoList: ArrayList<Demo> = if (dualScreenMode) DUO_DEMOS else DEMOS
+        val filteredDemoList = demoList.filter { it.title.lowercase(Locale.getDefault()).contains(userInput) }
 
         searchbar.showSearchProgress = true
 
         Handler().postDelayed({
             (demo_list.adapter as DemoListAdapter).demos = filteredDemoList as ArrayList<Demo>
-            (v2_demo_list.adapter as DemoListAdapter).demos = filteredV2DemoList as ArrayList<Demo>
             searchbar.showSearchProgress = false
         }, 500)
         return true
     }
 
     private inner class DemoListAdapter : RecyclerView.Adapter<DemoListAdapter.ViewHolder>() {
-        var demos = if(dualScreenMode) DUO_DEMOS else DEMOS
+        var demos = if (dualScreenMode) DUO_DEMOS else DEMOS
             set(value) {
                 field = value
                 notifyDataSetChanged()
@@ -99,8 +92,10 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val listItemView = ListItemView(parent.context)
-            listItemView.layoutDensity = ListItemView.LayoutDensity.COMPACT
-            listItemView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            listItemView.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
             return ViewHolder(listItemView)
         }
 
