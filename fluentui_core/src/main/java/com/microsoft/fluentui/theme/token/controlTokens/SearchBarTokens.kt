@@ -23,7 +23,7 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun inputBackground(info: SearchBarInfo): Color {
+    open fun inputBackgroundColor(info: SearchBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
@@ -42,7 +42,7 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun background(info: SearchBarInfo): Color {
+    open fun backgroundColor(info: SearchBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
@@ -118,7 +118,7 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textSize(info: SearchBarInfo): FontInfo {
+    open fun typography(info: SearchBarInfo): FontInfo {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
     }
 
@@ -148,7 +148,7 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fixedHeight(info: SearchBarInfo): Dp {
+    open fun height(info: SearchBarInfo): Dp {
         return 40.dp
     }
 }

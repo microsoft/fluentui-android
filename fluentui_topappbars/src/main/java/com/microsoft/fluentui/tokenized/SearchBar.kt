@@ -21,14 +21,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.Strings
 import com.microsoft.fluentui.compose.getString
@@ -43,9 +41,9 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.persona.Person
-import com.microsoft.fluentui.tokenized.persona.PersonaChip
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
@@ -81,18 +79,18 @@ fun SearchBar(
         var searching by rememberSaveable { mutableStateOf(false) }
         var searchHasFocus by rememberSaveable { mutableStateOf(false) }
 
-        var personaChipSelected by rememberSaveable{ mutableStateOf(false) }
+        var personaChipSelected by rememberSaveable { mutableStateOf(false) }
         var selectedPerson: Person? = selectedPerson
 
         val scope = rememberCoroutineScope()
 
         Row(
             modifier
-                .requiredHeight(getSearchBarTokens().fixedHeight(getSearchBarInfo()))
+                .requiredHeight(getSearchBarTokens().height(getSearchBarInfo()))
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
                 .background(
-                    getSearchBarTokens().inputBackground(getSearchBarInfo()),
+                    getSearchBarTokens().inputBackgroundColor(getSearchBarInfo()),
                     RoundedCornerShape(8.dp)
                 ),
             verticalAlignment = Alignment.CenterVertically
@@ -110,7 +108,6 @@ fun SearchBar(
                                     enabled = enabled,
                                     onClick = {
                                         scope.launch {
-                                            searchHasFocus = false
                                             queryText = ""
                                             selectedPerson = null
 
@@ -119,6 +116,7 @@ fun SearchBar(
                                             searching = false
 
                                             focusManager.clearFocus()
+                                            searchHasFocus = false
                                         }
                                     },
                                     role = Role.Button
@@ -167,11 +165,10 @@ fun SearchBar(
                     .onKeyEvent {
                         if (it.key == Key.Backspace) {
                             scope.launch {
-                                if(personaChipSelected) {
+                                if (personaChipSelected) {
                                     selectedPerson = null
                                     personaChipSelected = false
-                                }
-                                else {
+                                } else {
                                     personaChipSelected = true
                                 }
 
@@ -217,6 +214,7 @@ fun SearchBar(
 
                             searching = true
                             onValueChange(queryText, selectedPerson)
+                            delay(2000)
                             searching = false
                         }
                     },
@@ -232,8 +230,8 @@ fun SearchBar(
                             }
                         },
                     textStyle = TextStyle(
-                        fontSize = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
-                        lineHeight = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
+                        fontSize = getSearchBarTokens().typography(getSearchBarInfo()).fontSize.size,
+                        lineHeight = getSearchBarTokens().typography(getSearchBarInfo()).fontSize.size,
                         color = getSearchBarTokens().textColor(getSearchBarInfo())
                     ),
                     decorationBox = @Composable { innerTextField ->
@@ -245,8 +243,10 @@ fun SearchBar(
                                 Text(
                                     searchHint,
                                     style = TextStyle(
-                                        fontSize = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
-                                        lineHeight = getSearchBarTokens().textSize(getSearchBarInfo()).fontSize.size,
+                                        fontSize = getSearchBarTokens().typography(getSearchBarInfo()).fontSize.size,
+                                        lineHeight = getSearchBarTokens().typography(
+                                            getSearchBarInfo()
+                                        ).fontSize.size,
                                         color = getSearchBarTokens().textColor(getSearchBarInfo())
                                     )
                                 )
@@ -259,7 +259,7 @@ fun SearchBar(
             }
 
             //Right Section
-            AnimatedContent(queryText.isBlank()) {
+            AnimatedContent((queryText.isBlank() && selectedPerson == null)) {
                 when (it) {
                     true ->
                         if (microphoneCallback != null) {
@@ -288,6 +288,11 @@ fun SearchBar(
                         Box(
                             modifier = Modifier
                                 .size(44.dp, 40.dp)
+                                .padding(
+                                    getSearchBarTokens().progressIndicatorRightPadding(
+                                        getSearchBarInfo()
+                                    )
+                                )
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(),
@@ -295,6 +300,7 @@ fun SearchBar(
                                     onClick = {
                                         scope.launch {
                                             queryText = ""
+                                            selectedPerson = null
 
                                             searching = true
                                             onValueChange(queryText, selectedPerson)
@@ -309,11 +315,6 @@ fun SearchBar(
                                 CircularProgressIndicator(
                                     size = getSearchBarTokens().circularProgressIndicatorSize(
                                         getSearchBarInfo()
-                                    ),
-                                    modifier = Modifier.padding(
-                                        getSearchBarTokens().progressIndicatorRightPadding(
-                                            getSearchBarInfo()
-                                        )
                                     )
                                 )
                             Icon(

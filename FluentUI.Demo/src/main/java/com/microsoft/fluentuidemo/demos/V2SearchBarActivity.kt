@@ -3,28 +3,24 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
-import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -86,7 +82,7 @@ class V2SearchBarActivity : DemoActivity() {
                         isActive = true, status = AvatarStatus.Blocked
                     )
                 )
-                var filteredPeople by rememberSaveable { mutableStateOf(listofPeople) }
+                var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
 
                 Column(
                     modifier = Modifier
@@ -144,16 +140,19 @@ class V2SearchBarActivity : DemoActivity() {
                     }
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
-                            filteredPeople = (listofPeople.filter {
+                            filteredPeople = listofPeople.filter {
                                 it.firstName.lowercase().contains(query.lowercase()) ||
                                         it.lastName.lowercase().contains(query.lowercase())
-                            } as MutableList<Person>)
+                            } as MutableList<Person>
                             selectedPeople = selectedPerson
                         },
                         style = searchBarStyle,
                         selectedPerson = selectedPeople,
                         microphoneCallback = if (enableMicrophoneCallback) {
-                            { Toast.makeText(context, "Microphone Pressed", Toast.LENGTH_SHORT).show() }
+                            {
+                                Toast.makeText(context, "Microphone Pressed", Toast.LENGTH_SHORT)
+                                    .show()
+                            }
                         } else null,
                         keyboardOptions = KeyboardOptions(
                             autoCorrect = autoCorrectEnabled,

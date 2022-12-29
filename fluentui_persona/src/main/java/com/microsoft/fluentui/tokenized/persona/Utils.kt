@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.persona
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -12,6 +13,8 @@ import androidx.compose.ui.graphics.ImageBitmap
 import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 /**
  * Data Class for Person
@@ -25,16 +28,18 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
  * @property status Current Status of the person
  * @property isOOO Enable/Disable Out-Of-Office flag for person
  */
+@Parcelize
 class Person(
     val firstName: String = "",
     val lastName: String = "",
     val email: String? = null,
     @DrawableRes val image: Int? = null,
-    val imageBitmap: ImageBitmap? = null,
+    val imageBitmap: @RawValue ImageBitmap? = null,
     val isActive: Boolean = false,
     val status: AvatarStatus = AvatarStatus.Available,
     val isOOO: Boolean = false
-) {
+) : Parcelable {
+
     fun getName(): String {
         val name = "$firstName $lastName"
         if (name.trim().isBlank())
@@ -46,7 +51,7 @@ class Person(
         val label = "$firstName $lastName"
         if (label.trim().isNotBlank())
             return label
-        if(!email.isNullOrBlank())
+        if (!email.isNullOrBlank())
             return email
         return "Anonymous"
     }
@@ -89,13 +94,14 @@ class Person(
  * @property image Drawable Image for the group
  * @property imageBitmap Bitmap Image for the group
  */
+@Parcelize
 class Group(
     val members: List<Person> = listOf(),
     val groupName: String = "",
     val email: String? = null,
     @DrawableRes val image: Int? = null,
-    val imageBitmap: ImageBitmap? = null,
-) {
+    val imageBitmap: @RawValue ImageBitmap? = null,
+) : Parcelable {
     fun isImageAvailable(): Boolean {
         return image != null || imageBitmap != null
     }
