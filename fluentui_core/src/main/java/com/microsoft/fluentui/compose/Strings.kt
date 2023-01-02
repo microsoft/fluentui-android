@@ -16,5 +16,10 @@ value class Strings private constructor(@Suppress("unused") private val value: I
         val Microphone = Strings(7)
         val ClearText = Strings(8)
         val Back = Strings(9)
+        val Activated = Strings(10)
+        val DeActivated = Strings(11)
+        val Neutral = Strings(12)
+        val Brand = Strings(13)
+        val Chevron = Strings(14)
     }
 }

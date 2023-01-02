@@ -11,16 +11,20 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 
-public val SearchBarIcons.Microphone: ImageVector
+val SearchBarIcons.Microphone: ImageVector
     get() {
         if (_microphone != null) {
             return _microphone!!
         }
-        _microphone = Builder(name = "Microphone", defaultWidth = 20.0.dp, defaultHeight = 20.0.dp,
-                viewportWidth = 20.0f, viewportHeight = 20.0f).apply {
-            path(fill = SolidColor(Color(0xFF616161)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+        _microphone = Builder(
+            name = "Microphone", defaultWidth = 20.0.dp, defaultHeight = 20.0.dp,
+            viewportWidth = 20.0f, viewportHeight = 20.0f
+        ).apply {
+            path(
+                fill = SolidColor(Color(0xFF616161)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero
+            ) {
                 moveTo(10.0f, 13.0f)
                 curveTo(11.6569f, 13.0f, 13.0f, 11.6568f, 13.0f, 10.0f)
                 verticalLineTo(5.0f)
@@ -53,7 +57,7 @@ public val SearchBarIcons.Microphone: ImageVector
                 close()
             }
         }
-        .build()
+            .build()
         return _microphone!!
     }
 

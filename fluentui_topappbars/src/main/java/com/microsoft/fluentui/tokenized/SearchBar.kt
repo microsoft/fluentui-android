@@ -18,9 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
@@ -30,11 +32,12 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.Strings
 import com.microsoft.fluentui.compose.getString
+import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
+import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.icons.searchbaricons.Microphone
-import com.microsoft.fluentui.icons.searchbaricons.Search
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -43,7 +46,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
@@ -60,8 +62,11 @@ fun SearchBar(
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
     searchHint: String = getString(Strings.Search),
     selectedPerson: Person? = null,
+    personaChipOnClick: (() -> Unit)? = null,
     microphoneCallback: (() -> Unit)? = null,
-    rightAccessoryView: (@Composable () -> Unit)? = null,
+    rightAccessoryIcon: ImageVector? = null,
+    rightAccessoryIconDescription: String = "",
+    rightAccessoryViewOnClick: (() -> Unit)? = null,
     searchBarTokens: SearchBarTokens? = null
 ) {
 
@@ -97,63 +102,58 @@ fun SearchBar(
         ) {
             //Left Section
             AnimatedContent(searchHasFocus) {
+                var onClick: (() -> Unit)? = null
+                var icon: ImageVector? = null
+                var contentDescription: String? = null
+
                 when (it) {
-                    true ->
-                        Box(
-                            modifier = Modifier
-                                .size(44.dp, 40.dp)
-                                .clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = rememberRipple(),
-                                    enabled = enabled,
-                                    onClick = {
-                                        scope.launch {
-                                            queryText = ""
-                                            selectedPerson = null
+                    true -> {
+                        onClick = {
+                            scope.launch {
+                                queryText = ""
+                                selectedPerson = null
 
-                                            searching = true
-                                            onValueChange(queryText, selectedPerson)
-                                            searching = false
+                                searching = true
+                                onValueChange(queryText, selectedPerson)
+                                searching = false
 
-                                            focusManager.clearFocus()
-                                            searchHasFocus = false
-                                        }
-                                    },
-                                    role = Role.Button
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                SearchBarIcons.Arrowback,
-                                getString(Strings.Back),
-                                modifier = Modifier
-                                    .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
-                                tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
-                            )
+                                focusManager.clearFocus()
+                                searchHasFocus = false
+                            }
                         }
-                    false ->
-                        Box(
-                            modifier = Modifier
-                                .size(44.dp, 40.dp)
-                                .clickable(
-                                    interactionSource = remember { MutableInteractionSource() },
-                                    indication = rememberRipple(),
-                                    enabled = enabled,
-                                    onClick = {
-                                        focusRequester.requestFocus()
-                                    },
-                                    role = Role.Button
-                                ),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                SearchBarIcons.Search,
-                                getString(Strings.Search),
-                                modifier = Modifier
-                                    .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
-                                tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
-                            )
+                        icon = SearchBarIcons.Arrowback
+                        contentDescription = getString(Strings.Back)
+                    }
+                    false -> {
+                        onClick = {
+                            scope.launch {
+                                focusRequester.requestFocus()
+                            }
                         }
+                        icon = SearchBarIcons.Arrowback
+                        contentDescription = getString(Strings.Back)
+                    }
+
+                }
+                Box(
+                    modifier = Modifier
+                        .size(44.dp, 40.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(),
+                            enabled = enabled,
+                            onClick = onClick,
+                            role = Role.Button
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        icon,
+                        contentDescription,
+                        modifier = Modifier
+                            .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
+                        tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
+                    )
                 }
             }
 
@@ -168,13 +168,13 @@ fun SearchBar(
                                 if (personaChipSelected) {
                                     selectedPerson = null
                                     personaChipSelected = false
+
+                                    searching = true
+                                    onValueChange(queryText, selectedPerson)
+                                    searching = false
                                 } else {
                                     personaChipSelected = true
                                 }
-
-                                searching = true
-                                onValueChange(queryText, selectedPerson)
-                                searching = false
                             }
                         }
                         true
@@ -183,6 +183,8 @@ fun SearchBar(
             ) {
                 LaunchedEffect(selectedPerson) {
                     queryText = ""
+                    if (personaChipSelected)
+                        personaChipSelected = false
 
                     searching = true
                     onValueChange(queryText, selectedPerson)
@@ -196,6 +198,10 @@ fun SearchBar(
                         style = style,
                         enabled = enabled,
                         selected = personaChipSelected,
+                        onClick = {
+                            personaChipSelected = !personaChipSelected
+                            personaChipOnClick?.invoke()
+                        },
                         onCloseClick = {
                             selectedPerson = null
 
@@ -211,10 +217,10 @@ fun SearchBar(
                     onValueChange = {
                         scope.launch {
                             queryText = it
+                            personaChipSelected = false
 
                             searching = true
                             onValueChange(queryText, selectedPerson)
-                            delay(2000)
                             searching = false
                         }
                     },
@@ -247,8 +253,9 @@ fun SearchBar(
                                         lineHeight = getSearchBarTokens().typography(
                                             getSearchBarInfo()
                                         ).fontSize.size,
-                                        color = getSearchBarTokens().textColor(getSearchBarInfo())
-                                    )
+                                        color = getSearchBarTokens().textColor(getSearchBarInfo()),
+                                    ),
+                                    maxLines = 1
                                 )
                             }
                             innerTextField()
@@ -328,7 +335,34 @@ fun SearchBar(
                 }
             }
 
-            rightAccessoryView
+            if (rightAccessoryIcon != null && rightAccessoryViewOnClick != null) {
+                Row(
+                    modifier = Modifier
+                        .size(44.dp, 40.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(),
+                            enabled = enabled,
+                            onClick = rightAccessoryViewOnClick,
+                            role = Role.Button
+                        ),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        rightAccessoryIcon,
+                        rightAccessoryIconDescription,
+                        modifier = Modifier
+                            .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
+                        tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                    )
+                    Icon(
+                        ListItemIcons.Chevron,
+                        getString(Strings.Chevron),
+                        Modifier.rotate(90F)
+                    )
+                }
+            }
         }
     }
 }

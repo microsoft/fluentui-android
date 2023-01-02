@@ -11,16 +11,20 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 
-public val SearchBarIcons.Arrowback: ImageVector
+val SearchBarIcons.Arrowback: ImageVector
     get() {
         if (_arrowback != null) {
             return _arrowback!!
         }
-        _arrowback = Builder(name = "Arrowback", defaultWidth = 20.0.dp, defaultHeight = 20.0.dp,
-                viewportWidth = 20.0f, viewportHeight = 20.0f).apply {
-            path(fill = SolidColor(Color(0xFF242424)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+        _arrowback = Builder(
+            name = "Arrowback", defaultWidth = 20.0.dp, defaultHeight = 20.0.dp,
+            viewportWidth = 20.0f, viewportHeight = 20.0f
+        ).apply {
+            path(
+                fill = SolidColor(Color(0xFF242424)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero
+            ) {
                 moveTo(9.159f, 16.3666f)
                 curveTo(9.3629f, 16.5528f, 9.6792f, 16.5384f, 9.8654f, 16.3345f)
                 curveTo(10.0515f, 16.1305f, 10.0371f, 15.8143f, 9.8332f, 15.6281f)
@@ -41,7 +45,7 @@ public val SearchBarIcons.Arrowback: ImageVector
                 close()
             }
         }
-        .build()
+            .build()
         return _arrowback!!
     }
 

@@ -10,4 +10,9 @@
     <string name="fluentui_microphone">Microphone</string>
     <string name="fluentui_clear_text">Clear Text</string>
     <string name="fluentui_back">Back</string>
+    <string name="fluentui_activated">Activated</string>
+    <string name="fluentui_deactivated">De-Activated</string>
+    <string name="fluentui_neutral">Neutral</string>
+    <string name="fluentui_brand">Brand</string>
+    <string name="fluentui_chevron">Chevron</string>
 </resources>

@@ -11,16 +11,20 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 
-public val SearchBarIcons.Dismisscircle: ImageVector
+val SearchBarIcons.Dismisscircle: ImageVector
     get() {
         if (_dismisscircle != null) {
             return _dismisscircle!!
         }
-        _dismisscircle = Builder(name = "Dismisscircle", defaultWidth = 20.0.dp, defaultHeight =
-                20.0.dp, viewportWidth = 20.0f, viewportHeight = 20.0f).apply {
-            path(fill = SolidColor(Color(0xFF616161)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+        _dismisscircle = Builder(
+            name = "Dismisscircle", defaultWidth = 20.0.dp, defaultHeight =
+            20.0.dp, viewportWidth = 20.0f, viewportHeight = 20.0f
+        ).apply {
+            path(
+                fill = SolidColor(Color(0xFF616161)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero
+            ) {
                 moveTo(10.0f, 2.0f)
                 curveTo(14.4183f, 2.0f, 18.0f, 5.5817f, 18.0f, 10.0f)
                 curveTo(18.0f, 14.4183f, 14.4183f, 18.0f, 10.0f, 18.0f)
@@ -55,7 +59,7 @@ public val SearchBarIcons.Dismisscircle: ImageVector
                 close()
             }
         }
-        .build()
+            .build()
         return _dismisscircle!!
     }
 

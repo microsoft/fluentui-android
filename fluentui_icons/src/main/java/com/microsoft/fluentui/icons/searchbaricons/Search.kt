@@ -11,16 +11,20 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 
-public val SearchBarIcons.Search: ImageVector
+val SearchBarIcons.Search: ImageVector
     get() {
         if (_search != null) {
             return _search!!
         }
-        _search = Builder(name = "Search", defaultWidth = 20.0.dp, defaultHeight = 20.0.dp,
-                viewportWidth = 20.0f, viewportHeight = 20.0f).apply {
-            path(fill = SolidColor(Color(0xFF808080)), stroke = null, strokeLineWidth = 0.0f,
-                    strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-                    pathFillType = NonZero) {
+        _search = Builder(
+            name = "Search", defaultWidth = 20.0.dp, defaultHeight = 20.0.dp,
+            viewportWidth = 20.0f, viewportHeight = 20.0f
+        ).apply {
+            path(
+                fill = SolidColor(Color(0xFF808080)), stroke = null, strokeLineWidth = 0.0f,
+                strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+                pathFillType = NonZero
+            ) {
                 moveTo(8.5f, 3.0f)
                 curveTo(11.5376f, 3.0f, 14.0f, 5.4624f, 14.0f, 8.5f)
                 curveTo(14.0f, 9.8388f, 13.5217f, 11.0659f, 12.7266f, 12.0196f)
@@ -41,7 +45,7 @@ public val SearchBarIcons.Search: ImageVector
                 close()
             }
         }
-        .build()
+            .build()
         return _search!!
     }
 
