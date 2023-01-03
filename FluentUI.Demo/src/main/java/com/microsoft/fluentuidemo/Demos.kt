@@ -11,6 +11,7 @@ import kotlin.reflect.KClass
 
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
+const val V2APP_BAR_LAYOUT = "V2 AppBarLayout"
 const val AVATAR_VIEW = "AvatarView"
 const val AVATAR_GROUP_VIEW = "AvatarGroupView"
 const val BASIC_INPUTS = "Basic Inputs"
@@ -50,6 +51,7 @@ const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
 
 val DEMOS = arrayListOf(
+    Demo(V2APP_BAR_LAYOUT, V2AppBarLayoutActivity::class),
     Demo(V2AVATAR, V2AvatarActivity::class),
     Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),

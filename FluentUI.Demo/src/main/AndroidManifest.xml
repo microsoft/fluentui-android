@@ -28,6 +28,7 @@
 
         <!-- Demo activities -->
         <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarGroupViewActivity" />

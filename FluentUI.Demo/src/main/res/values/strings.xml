@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="MissingTranslation">
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
     <string name="app_name">Fluent UI Demo</string>
@@ -35,8 +33,12 @@
     <string name="actionbar_position_heading">ActionBar Position</string>
 
     <!--AppBar-->
+    <string name="app_bar_style">AppBar Style</string>
+    <string name="app_bar_subtitle">Subtitle</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Navigation icon clicked.</string>
+
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Flag</string>
     <string name="app_bar_layout_menu_settings">Settings</string>
@@ -98,6 +100,7 @@
     <string name="avatar_group_overflow_clicked">Overflow clicked</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
     <string name="avatar_group_avatar_clicked">AvatarView at index %d clicked</string>
+    <string name="avatar_presence">Presence</string>
 
     <!--BottomNavigation-->
     <!--UI Labels -->
@@ -127,7 +130,7 @@
     <string name="bottom_sheet_dialog_button">Show</string>
     <string name="drawer_content_desc_collapse_state">Expand</string>
     <string name="drawer_content_desc_expand_state">Minimize</string>
-    <string name="large_scrollable_text" translatable="false" >Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
+    <string name="large_scrollable_text" translatable="false">Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
         Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
         Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
         Large demo Text line for showing scroll behaviour of a content. Use inside a Scrollview \n
@@ -296,6 +299,7 @@
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Button</string>
+    <string name="buttonbar">ButtonBar</string>
     <string name="button_disabled">Disabled Button</string>
     <string name="button_borderless">Borderless Button</string>
     <string name="button_borderless_disabled">Borderless Disabled Button</string>
@@ -587,6 +591,7 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
+    <string name="searchbar">SearchBar</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Microphone Callback</string>
     <!-- UI Text label -->

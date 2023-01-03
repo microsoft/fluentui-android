@@ -351,36 +351,36 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     }
 
     @Composable
-    open fun presenceIcon(avatarInfo: AvatarInfo): Icon {
+    open fun presenceIcon(avatarInfo: AvatarInfo): FluentIcon {
         return when (avatarInfo.status) {
             AvatarStatus.Available ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Light else AvatarIcons.Presence.Available.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Dark else AvatarIcons.Presence.Available.Small.Dark
                     )
-                    AvatarSize.Size24 -> Icon(
-                        light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Light else AvatarIcons.Presence.Available.Small.Light,
-                        dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Dark else AvatarIcons.Presence.Available.Small.Dark
-                    )
-
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Light else AvatarIcons.Presence.Available.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Dark else AvatarIcons.Presence.Available.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
+                        light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Light else AvatarIcons.Presence.Available.Small.Light,
+                        dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Small.Dark else AvatarIcons.Presence.Available.Small.Dark
+                    )
+
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Medium.Light else AvatarIcons.Presence.Available.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Medium.Dark else AvatarIcons.Presence.Available.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Medium.Light else AvatarIcons.Presence.Available.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Medium.Dark else AvatarIcons.Presence.Available.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Large.Light else AvatarIcons.Presence.Available.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Availableoof.Large.Dark else AvatarIcons.Presence.Available.Large.Dark
                     )
@@ -388,33 +388,33 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
             AvatarStatus.Busy ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Small.Light else AvatarIcons.Presence.Busy.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Small.Dark else AvatarIcons.Presence.Busy.Small.Dark
                     )
 
-                    AvatarSize.Size24 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Small.Light else AvatarIcons.Presence.Busy.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Small.Dark else AvatarIcons.Presence.Busy.Small.Dark
                     )
 
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Small.Light else AvatarIcons.Presence.Busy.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Small.Dark else AvatarIcons.Presence.Busy.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Medium.Light else AvatarIcons.Presence.Busy.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Medium.Dark else AvatarIcons.Presence.Busy.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Medium.Light else AvatarIcons.Presence.Busy.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Medium.Dark else AvatarIcons.Presence.Busy.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Large.Light else AvatarIcons.Presence.Busy.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Busyoof.Large.Dark else AvatarIcons.Presence.Busy.Large.Dark
                     )
@@ -422,33 +422,33 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
             AvatarStatus.Away ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Small.Light else AvatarIcons.Presence.Away.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Small.Dark else AvatarIcons.Presence.Away.Small.Dark
                     )
 
-                    AvatarSize.Size24 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Small.Light else AvatarIcons.Presence.Away.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Small.Dark else AvatarIcons.Presence.Away.Small.Dark
                     )
 
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Small.Light else AvatarIcons.Presence.Away.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Small.Dark else AvatarIcons.Presence.Away.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Medium.Light else AvatarIcons.Presence.Away.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Medium.Dark else AvatarIcons.Presence.Away.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Medium.Light else AvatarIcons.Presence.Away.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Medium.Dark else AvatarIcons.Presence.Away.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Large.Light else AvatarIcons.Presence.Away.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Awayoof.Large.Dark else AvatarIcons.Presence.Away.Large.Dark
                     )
@@ -456,33 +456,33 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
             AvatarStatus.DND ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Small.Light else AvatarIcons.Presence.Dnd.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Small.Dark else AvatarIcons.Presence.Dnd.Small.Dark
                     )
 
-                    AvatarSize.Size24 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Small.Light else AvatarIcons.Presence.Dnd.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Small.Dark else AvatarIcons.Presence.Dnd.Small.Dark
                     )
 
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Small.Light else AvatarIcons.Presence.Dnd.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Small.Dark else AvatarIcons.Presence.Dnd.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Medium.Light else AvatarIcons.Presence.Dnd.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Medium.Dark else AvatarIcons.Presence.Dnd.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Medium.Light else AvatarIcons.Presence.Dnd.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Medium.Dark else AvatarIcons.Presence.Dnd.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Large.Light else AvatarIcons.Presence.Dnd.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Dndoof.Large.Dark else AvatarIcons.Presence.Dnd.Large.Dark
                     )
@@ -490,33 +490,33 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
             AvatarStatus.Unknown ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Unknown.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Unknown.Small.Dark
                     )
 
-                    AvatarSize.Size24 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Unknown.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Unknown.Small.Dark
                     )
 
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Unknown.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Unknown.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Light else AvatarIcons.Presence.Unknown.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Dark else AvatarIcons.Presence.Unknown.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Light else AvatarIcons.Presence.Unknown.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Dark else AvatarIcons.Presence.Unknown.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Large.Light else AvatarIcons.Presence.Unknown.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Large.Dark else AvatarIcons.Presence.Unknown.Large.Dark
                     )
@@ -524,33 +524,33 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
             AvatarStatus.Blocked ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Blocked.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Blocked.Small.Dark
                     )
 
-                    AvatarSize.Size24 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Blocked.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Blocked.Small.Dark
                     )
 
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Blocked.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Blocked.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Light else AvatarIcons.Presence.Blocked.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Dark else AvatarIcons.Presence.Blocked.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Light else AvatarIcons.Presence.Blocked.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Dark else AvatarIcons.Presence.Blocked.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Large.Light else AvatarIcons.Presence.Blocked.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Large.Dark else AvatarIcons.Presence.Blocked.Large.Dark
                     )
@@ -558,33 +558,33 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
             AvatarStatus.Offline ->
                 when (avatarInfo.size) {
-                    AvatarSize.Size16 -> Icon()
-                    AvatarSize.Size20 -> Icon(
+                    AvatarSize.Size16 -> FluentIcon()
+                    AvatarSize.Size20 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Offline.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Offline.Small.Dark
                     )
 
-                    AvatarSize.Size24 -> Icon(
+                    AvatarSize.Size24 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Offline.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Offline.Small.Dark
                     )
 
-                    AvatarSize.Size32 -> Icon(
+                    AvatarSize.Size32 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Light else AvatarIcons.Presence.Offline.Small.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Small.Dark else AvatarIcons.Presence.Offline.Small.Dark
                     )
 
-                    AvatarSize.Size40 -> Icon(
+                    AvatarSize.Size40 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Light else AvatarIcons.Presence.Offline.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Dark else AvatarIcons.Presence.Offline.Medium.Dark
                     )
 
-                    AvatarSize.Size56 -> Icon(
+                    AvatarSize.Size56 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Light else AvatarIcons.Presence.Offline.Medium.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Medium.Dark else AvatarIcons.Presence.Offline.Medium.Dark
                     )
 
-                    AvatarSize.Size72 -> Icon(
+                    AvatarSize.Size72 -> FluentIcon(
                         light = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Large.Light else AvatarIcons.Presence.Offline.Large.Light,
                         dark = if (avatarInfo.isOOO) AvatarIcons.Presence.Oof.Large.Dark else AvatarIcons.Presence.Offline.Large.Dark
                     )

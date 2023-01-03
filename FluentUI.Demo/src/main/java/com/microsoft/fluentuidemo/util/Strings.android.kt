@@ -19,6 +19,11 @@ fun getDemoAppString(string: DemoAppStrings): String {
         DemoAppStrings.MicrophonePressed -> resources.getString(R.string.searchbar_microphone_pressed)
         DemoAppStrings.RightViewPressed -> resources.getString(R.string.searchbar_right_view_pressed)
         DemoAppStrings.KeyboardSearchPressed -> resources.getString(R.string.searchbar_keyboard_search_pressed)
+        DemoAppStrings.Presence -> resources.getString(R.string.avatar_presence)
+        DemoAppStrings.AppBarStyle -> resources.getString(R.string.app_bar_style)
+        DemoAppStrings.Subtitle -> resources.getString(R.string.app_bar_subtitle)
+        DemoAppStrings.SearchBar -> resources.getString(R.string.searchbar)
+        DemoAppStrings.ButtonBar -> resources.getString(R.string.buttonbar)
         else -> ""
     }
 }

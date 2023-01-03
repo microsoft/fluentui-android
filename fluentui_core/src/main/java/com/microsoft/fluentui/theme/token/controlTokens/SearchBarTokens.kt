@@ -134,8 +134,8 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun padding(searchBarInfo: SearchBarInfo): PaddingValues {
-        return PaddingValues(GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
+    open fun searchBarPadding(info: SearchBarInfo): PaddingValues {
+        return PaddingValues(horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
