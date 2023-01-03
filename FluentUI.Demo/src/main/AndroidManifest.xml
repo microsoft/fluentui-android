@@ -41,7 +41,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ContextualCommandBarActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
@@ -65,6 +66,9 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2SearchBarActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TabLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />
