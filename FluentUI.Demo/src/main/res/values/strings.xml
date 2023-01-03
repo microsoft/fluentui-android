@@ -11,6 +11,10 @@
     <string name="app_name">Fluent UI Demo</string>
     <string name="app_title">Fluent UI</string>
     <string name="app_accessibility_selected">Selected %s</string>
+    <string name="app_modifiable_parameters">Modifiable Parameters</string>
+    <string name="app_right_accessory_view">Right Accessory View</string>
+    <string name="app_style">Style</string>
+    <string name="app_icon_pressed">Icon Pressed</string>
 
     <!--ActionBar-->
     <string name="actionbar_start_button">Start Demo</string>
@@ -417,6 +421,13 @@
     <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar_microphone_callback">Microphone Callback</string>
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_microphone_pressed">Microphone Pressed</string>
+    <string name="searchbar_right_view_pressed">Right View Pressed</string>
+    <string name="searchbar_keyboard_search_pressed">Keyboard Search Pressed</string>
 
     <!--Snackbar-->
     <string name="snackbar_action">Action</string>

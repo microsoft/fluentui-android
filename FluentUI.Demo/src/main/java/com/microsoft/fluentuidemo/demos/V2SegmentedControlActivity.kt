@@ -66,7 +66,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                             neutralContent = {
                                 PillButton(
                                     PillMetaData(
-                                        "Neutral 1",
+                                        "Ally 1",
                                         { selected = !selected },
                                         selected = selected,
                                         enabled = enabled
@@ -134,7 +134,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                         var pillList: MutableList<PillMetaData> = mutableListOf()
 
                         for (idx in 0..5) {
-                            val label = "Neutral ${idx + 1}"
+                            val label = "Ally ${idx + 1}"
                             pillList.add(
                                 PillMetaData(
                                     text = label,
