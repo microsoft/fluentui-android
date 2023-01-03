@@ -8,6 +8,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -38,6 +39,7 @@ import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.icons.searchbaricons.Microphone
+import com.microsoft.fluentui.icons.searchbaricons.Search
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -60,6 +62,7 @@ fun SearchBar(
     enabled: Boolean = true,
     style: FluentStyle = FluentStyle.Neutral,
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
+    keyboardActions: KeyboardActions = KeyboardActions(),
     searchHint: String = getString(Strings.Search),
     selectedPerson: Person? = null,
     personaChipOnClick: (() -> Unit)? = null,
@@ -130,8 +133,8 @@ fun SearchBar(
                                 focusRequester.requestFocus()
                             }
                         }
-                        icon = SearchBarIcons.Arrowback
-                        contentDescription = getString(Strings.Back)
+                        icon = SearchBarIcons.Search
+                        contentDescription = getString(Strings.Search)
                     }
 
                 }
@@ -224,7 +227,9 @@ fun SearchBar(
                             searching = false
                         }
                     },
+                    singleLine = true,
                     keyboardOptions = keyboardOptions,
+                    keyboardActions = keyboardActions,
                     modifier = Modifier
                         .fillMaxHeight()
                         .weight(1F)
@@ -254,14 +259,12 @@ fun SearchBar(
                                             getSearchBarInfo()
                                         ).fontSize.size,
                                         color = getSearchBarTokens().textColor(getSearchBarInfo()),
-                                    ),
-                                    maxLines = 1
+                                    )
                                 )
                             }
                             innerTextField()
                         }
-                    },
-                    maxLines = 1
+                    }
                 )
             }
 

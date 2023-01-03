@@ -425,6 +425,9 @@
     <!--SearchBar-->
     <string name="searchbar_microphone_callback">Microphone Callback</string>
     <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_microphone_pressed">Microphone Pressed</string>
+    <string name="searchbar_right_view_pressed">Right View Pressed</string>
+    <string name="searchbar_keyboard_search_pressed">Keyboard Search Pressed</string>
 
     <!--Snackbar-->
     <string name="snackbar_action">Action</string>

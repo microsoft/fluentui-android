@@ -4,17 +4,19 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.Strings
@@ -34,8 +36,6 @@ import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.icons.ListItemIcons
-import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
 
@@ -45,6 +45,7 @@ class V2SearchBarActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
+    @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -173,7 +174,11 @@ class V2SearchBarActivity : DemoActivity() {
                             )
                         }
                     }
-                    val iconPressedString = getDemoAppString(DemoAppStrings.IconPressed)
+
+                    val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
+                    val rightViewPressedString = getDemoAppString(DemoAppStrings.RightViewPressed)
+                    val keyboardSearchPressedString = getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
+                    val keyboardController = LocalSoftwareKeyboardController.current
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
                             filteredPeople = listofPeople.filter {
@@ -186,20 +191,28 @@ class V2SearchBarActivity : DemoActivity() {
                         selectedPerson = selectedPeople,
                         microphoneCallback = if (enableMicrophoneCallback) {
                             {
-                                Toast.makeText(context, iconPressedString, Toast.LENGTH_SHORT)
+                                Toast.makeText(context, microphonePressedString, Toast.LENGTH_SHORT)
                                     .show()
                             }
                         } else null,
                         keyboardOptions = KeyboardOptions(
                             autoCorrect = autoCorrectEnabled,
-                            keyboardType = KeyboardType.Email
+                            keyboardType = KeyboardType.Email,
+                            imeAction = ImeAction.Search
+                        ),
+                        keyboardActions = KeyboardActions(
+                            onSearch = {
+                                Toast.makeText(context, keyboardSearchPressedString, Toast.LENGTH_SHORT)
+                                    .show()
+                                keyboardController?.hide()
+                            }
                         ),
                         rightAccessoryIcon = if (displayRightAccessory) {
                             SearchBarIcons.Office
                         } else null,
                         rightAccessoryIconDescription = "Office",
                         rightAccessoryViewOnClick = {
-                            Toast.makeText(context, iconPressedString, Toast.LENGTH_SHORT)
+                            Toast.makeText(context, rightViewPressedString, Toast.LENGTH_SHORT)
                                 .show()
                         }
                     )
