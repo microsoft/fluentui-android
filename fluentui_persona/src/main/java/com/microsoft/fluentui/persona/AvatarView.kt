@@ -15,7 +15,6 @@ import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.appcompat.widget.AppCompatImageView
 import android.util.AttributeSet
-import android.util.Log
 import com.microsoft.fluentui.theming.FluentUIContextThemeWrapper
 
 enum class AvatarStyle {
@@ -285,6 +284,14 @@ open class AvatarView : AppCompatImageView {
             super.setImageDrawable(drawable)
     }
 
+    fun clearAvatarImage(){
+        avatarImageBitmap = null
+        avatarImageDrawable = null
+        avatarImageResourceId = null
+        avatarImageUri = null
+        super.setImageDrawable(null)
+    }
+
     override fun setImageBitmap(bitmap: Bitmap?) {
         if (bitmap == null)
             return
@@ -337,6 +344,7 @@ open class AvatarView : AppCompatImageView {
 }
 
 fun AvatarView.setAvatar(avatar: IAvatar) {
+    clearAvatarImage()
     name = avatar.name
     email = avatar.email
     avatarImageBitmap = avatar.avatarImageBitmap
