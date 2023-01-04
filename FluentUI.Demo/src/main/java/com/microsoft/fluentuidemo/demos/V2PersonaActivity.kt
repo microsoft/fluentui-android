@@ -140,8 +140,7 @@ class V2PersonaActivity : DemoActivity() {
         scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
         coroutineScope.launch {
             val result = scaffoldState.snackbarHostState.showSnackbar(
-                message = "Clicked on $text",
-                actionLabel = "Close"
+                message = "Clicked on $text"
             )
             when (result) {
                 SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()

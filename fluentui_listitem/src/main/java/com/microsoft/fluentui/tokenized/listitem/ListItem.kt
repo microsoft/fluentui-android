@@ -149,7 +149,7 @@ object ListItem {
                         modifier = Modifier.clickable(
                             enabled = true,
                             onClickLabel = actionText,
-                            role = Role.Button,
+                            role = Role.Tab,
                             onClick = onClick
                         ),
                         fontSize = actionTextSize.fontSize.size,
