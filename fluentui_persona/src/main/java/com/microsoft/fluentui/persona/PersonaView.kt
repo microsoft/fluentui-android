@@ -125,6 +125,14 @@ class PersonaView : ListItemView {
 
     private val avatarView = AvatarView(context)
 
+    fun clearAvatarImage(){
+        avatarImageBitmap = null
+        avatarImageDrawable = null
+        avatarImageResourceId = null
+        avatarImageUri = null
+        avatarView.clearAvatarImage()
+    }
+
     @JvmOverloads
     constructor(appContext: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(appContext, attrs, defStyleAttr) {
         val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.PersonaView)
@@ -185,6 +193,7 @@ class PersonaView : ListItemView {
 }
 
 fun PersonaView.setPersona(persona: IPersona) {
+    clearAvatarImage()
     name = persona.name
     email = persona.email
     subtitle = persona.subtitle
