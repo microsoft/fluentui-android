@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Describes selected action-->
     <string name="fluentui_selected">Selected</string>
+    <!-- Describes not selected action-->
     <string name="fluentui_not_selected">Not Selected</string>
+    <!-- Describes disabled action-->
     <string name="fluentui_disabled">Disabled</string>
+    <!-- Describes enabled action-->
     <string name="fluentui_enabled">Enabled</string>
+    <!-- Describes close action for a sheet-->
     <string name="fluentui_close_sheet">Close Sheet</string>
+    <!-- Describes close action -->
     <string name="fluentui_close">Close</string>
     <string name="fluentui_search">Search</string>
     <string name="fluentui_microphone">Microphone</string>
