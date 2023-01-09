@@ -69,7 +69,7 @@ fun Button(
         val iconSpacing = getButtonToken().spacing(getButtonInfo())
         val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
         val borders: List<BorderStroke> =
-            getButtonToken().borderStroke(buttonInfo = getButtonInfo()).getColorByState(
+            getButtonToken().borderStroke(buttonInfo = getButtonInfo()).getBorderStrokeByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource

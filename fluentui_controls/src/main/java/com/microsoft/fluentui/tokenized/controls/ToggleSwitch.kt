@@ -67,7 +67,7 @@ fun ToggleSwitch(
                 interactionSource = interactionSource
             )
         val elevation: Dp =
-            getToggleSwitchToken().elevation(fabInfo = getToggleSwitchInfo()).getColorByState(
+            getToggleSwitchToken().elevation(fabInfo = getToggleSwitchInfo()).getElevationByState(
                 enabled = enabledSwitch,
                 selected = checkedState,
                 interactionSource = interactionSource

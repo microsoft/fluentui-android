@@ -74,7 +74,7 @@ fun FloatingActionButton(
         val iconSpacing = if (isFabExpanded) getFABToken().spacing(getFABInfo()) else 0.dp
         val shape = CircleShape
         val borders: List<BorderStroke> =
-            getFABToken().borderStroke(fabInfo = getFABInfo()).getColorByState(
+            getFABToken().borderStroke(fabInfo = getFABInfo()).getBorderStrokeByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
@@ -94,7 +94,7 @@ fun FloatingActionButton(
                 .shadow(
                     elevation = getFABToken()
                         .elevation(fabInfo = getFABInfo())
-                        .getColorByState(
+                        .getElevationByState(
                             enabled = enabled,
                             selected = false,
                             interactionSource = interactionSource

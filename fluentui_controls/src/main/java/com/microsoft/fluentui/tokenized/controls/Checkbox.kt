@@ -82,7 +82,7 @@ fun CheckBox(
         val shape: Shape = RoundedCornerShape(getCheckBoxToken().fixedBorderRadius)
 
         val borders: List<BorderStroke> =
-            getCheckBoxToken().borderStroke(checkBoxInfo = getCheckBoxInfo()).getColorByState(
+            getCheckBoxToken().borderStroke(checkBoxInfo = getCheckBoxInfo()).getBorderStrokeByState(
                 enabled = enabled,
                 selected = checked,
                 interactionSource = interactionSource

@@ -21,7 +21,7 @@ data class StateElevation(
     val disabled: Dp = 0.dp,
 ){
     @Composable
-    fun getColorByState(
+    fun getElevationByState(
         enabled: Boolean,
         selected: Boolean,
         interactionSource: InteractionSource

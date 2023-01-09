@@ -21,7 +21,7 @@ data class StateBorderStroke(
     val disabled: List<BorderStroke> = listOf(BorderStroke(0.dp, Color(0, 0, 0, 0))),
 ){
     @Composable
-    fun getColorByState(
+    fun getBorderStrokeByState(
         enabled: Boolean,
         selected: Boolean,
         interactionSource: InteractionSource
