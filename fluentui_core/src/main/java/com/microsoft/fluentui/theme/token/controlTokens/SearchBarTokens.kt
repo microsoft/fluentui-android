@@ -23,8 +23,8 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun inputBackgroundColor(info: SearchBarInfo): Color {
-        return when (info.style) {
+    open fun inputBackgroundColor(searchBarInfo: SearchBarInfo): Color {
+        return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                     themeMode = FluentTheme.themeMode
@@ -42,8 +42,8 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(info: SearchBarInfo): Color {
-        return when (info.style) {
+    open fun backgroundColor(searchBarInfo: SearchBarInfo): Color {
+        return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
                     themeMode = FluentTheme.themeMode
@@ -61,8 +61,8 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textColor(info: SearchBarInfo): Color {
-        return when (info.style) {
+    open fun textColor(searchBarInfo: SearchBarInfo): Color {
+        return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
@@ -80,8 +80,8 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun leftIconColor(info: SearchBarInfo): Color {
-        return when (info.style) {
+    open fun leftIconColor(searchBarInfo: SearchBarInfo): Color {
+        return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
@@ -99,8 +99,8 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun rightIconColor(info: SearchBarInfo): Color {
-        return when (info.style) {
+    open fun rightIconColor(searchBarInfo: SearchBarInfo): Color {
+        return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
                 FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
@@ -118,37 +118,37 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun typography(info: SearchBarInfo): FontInfo {
+    open fun typography(searchBarInfo: SearchBarInfo): FontInfo {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
     }
 
     @Composable
-    open fun leftIconSize(info: SearchBarInfo): IconSize {
+    open fun leftIconSize(searchBarInfo: SearchBarInfo): IconSize {
         return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
     }
 
     @Composable
-    open fun rightIconSize(info: SearchBarInfo): IconSize {
+    open fun rightIconSize(searchBarInfo: SearchBarInfo): IconSize {
         return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
     }
 
     @Composable
-    open fun circularProgressIndicatorSize(info: SearchBarInfo): CircularProgressIndicatorSize {
+    open fun circularProgressIndicatorSize(searchBarInfo: SearchBarInfo): CircularProgressIndicatorSize {
         return CircularProgressIndicatorSize.Medium
     }
 
     @Composable
-    open fun padding(info: SearchBarInfo): PaddingValues {
+    open fun padding(searchBarInfo: SearchBarInfo): PaddingValues {
         return PaddingValues(GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
-    open fun progressIndicatorRightPadding(info: SearchBarInfo): PaddingValues {
+    open fun progressIndicatorRightPadding(searchBarInfo: SearchBarInfo): PaddingValues {
         return PaddingValues(end = GlobalTokens.size(GlobalTokens.SizeTokens.Size160))
     }
 
     @Composable
-    open fun height(info: SearchBarInfo): Dp {
+    open fun height(searchBarInfo: SearchBarInfo): Dp {
         return 40.dp
     }
 }

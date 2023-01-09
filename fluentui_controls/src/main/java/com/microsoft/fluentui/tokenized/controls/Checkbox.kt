@@ -39,7 +39,7 @@ val LocalCheckBoxInfo = compositionLocalOf { CheckBoxInfo() }
 
 @Composable
 fun CheckBox(
-    onCheckedChanged: ((Boolean) -> Unit)?,
+    onCheckedChanged: ((Boolean) -> Unit),
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     checked: Boolean = false,
@@ -55,34 +55,38 @@ fun CheckBox(
         LocalCheckBoxInfo provides CheckBoxInfo(checked)
     ) {
         val toggleModifier =
-            if (onCheckedChanged != null) {
-                modifier.triStateToggleable(
-                    state = ToggleableState(checked),
-                    enabled = enabled,
-                    onClick = { onCheckedChanged(!checked) },
-                    role = Role.Checkbox,
-                    interactionSource = interactionSource,
-                    indication = rememberRipple(
-                        bounded = false,
-                        radius = 24.dp
-                    )
+            modifier.triStateToggleable(
+                state = ToggleableState(checked),
+                enabled = enabled,
+                onClick = { onCheckedChanged(!checked) },
+                role = Role.Checkbox,
+                interactionSource = interactionSource,
+                indication = rememberRipple(
+                    bounded = false,
+                    radius = 24.dp
                 )
-            } else {
-                modifier
-            }
+            )
 
-        val backgroundColor: Color = backgroundColor(
-            getCheckBoxToken(), getCheckBoxInfo(),
-            enabled, checked, interactionSource
-        )
-        val iconColor: Color = iconColor(
-            getCheckBoxToken(), getCheckBoxInfo(),
-            enabled, checked, interactionSource
-        )
+        val backgroundColor: Color =
+            getCheckBoxToken().backgroundColor(checkBoxInfo = getCheckBoxInfo()).getColorByState(
+                enabled = enabled,
+                selected = checked,
+                interactionSource = interactionSource
+            )
+        val iconColor: Color =
+            getCheckBoxToken().iconColor(checkBoxInfo = getCheckBoxInfo()).getColorByState(
+                enabled = enabled,
+                selected = checked,
+                interactionSource = interactionSource
+            )
         val shape: Shape = RoundedCornerShape(getCheckBoxToken().fixedBorderRadius)
 
         val borders: List<BorderStroke> =
-            borderStroke(getCheckBoxToken(), getCheckBoxInfo(), enabled, checked, interactionSource)
+            getCheckBoxToken().borderStroke(checkBoxInfo = getCheckBoxInfo()).getBorderStrokeByState(
+                enabled = enabled,
+                selected = checked,
+                interactionSource = interactionSource
+            )
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
         for (border in borders) {

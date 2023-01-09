@@ -64,14 +64,21 @@ fun FloatingActionButton(
         )
         val isFabExpanded: Boolean =
             (text != null && text != "" && getFABInfo().state == FABState.Expanded)
-        val backgroundColor =
-            backgroundColor(getFABToken(), getFABInfo(), enabled, false, interactionSource)
+        val backgroundColor = getFABToken().backgroundColor(fabInfo = getFABInfo()).getColorByState(
+            enabled = enabled,
+            selected = false,
+            interactionSource = interactionSource
+        )
         val contentPadding = if (isFabExpanded) getFABToken().textPadding(getFABInfo())
         else getFABToken().iconPadding(getFABInfo())
         val iconSpacing = if (isFabExpanded) getFABToken().spacing(getFABInfo()) else 0.dp
         val shape = CircleShape
         val borders: List<BorderStroke> =
-            borderStroke(getFABToken(), getFABInfo(), enabled, false, interactionSource)
+            getFABToken().borderStroke(fabInfo = getFABInfo()).getBorderStrokeByState(
+                enabled = enabled,
+                selected = false,
+                interactionSource = interactionSource
+            )
 
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
@@ -85,13 +92,13 @@ fun FloatingActionButton(
                 .height(getFABToken().fixedHeight(getFABInfo()))
                 .defaultMinSize(minWidth = getFABToken().minWidth(getFABInfo()))
                 .shadow(
-                    elevation = elevation(
-                        getFABToken(),
-                        getFABInfo(),
-                        enabled = enabled,
-                        selected = false,
-                        interactionSource = interactionSource
-                    ),
+                    elevation = getFABToken()
+                        .elevation(fabInfo = getFABInfo())
+                        .getElevationByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = interactionSource
+                        ),
                     shape = CircleShape
                 )
                 .background(
@@ -122,12 +129,10 @@ fun FloatingActionButton(
                                 getFABToken().iconSize(getFABInfo()).size
                             )
                             .clearAndSetSemantics { },
-                        tint = iconColor(
-                            getFABToken(),
-                            getFABInfo(),
-                            enabled,
-                            false,
-                            interactionSource
+                        tint = getFABToken().iconColor(fabInfo = getFABInfo()).getColorByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = interactionSource
                         )
                     )
 
@@ -138,12 +143,10 @@ fun FloatingActionButton(
                         fontSize = getFABToken().fontInfo(getFABInfo()).fontSize.size,
                         lineHeight = getFABToken().fontInfo(getFABInfo()).fontSize.lineHeight,
                         fontWeight = getFABToken().fontInfo(getFABInfo()).weight,
-                        color = textColor(
-                            getFABToken(),
-                            getFABInfo(),
-                            enabled,
-                            false,
-                            interactionSource
+                        color = getFABToken().textColor(fabInfo = getFABInfo()).getColorByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = interactionSource
                         ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis

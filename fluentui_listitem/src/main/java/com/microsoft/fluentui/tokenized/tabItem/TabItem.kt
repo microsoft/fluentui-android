@@ -23,7 +23,6 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
-import com.microsoft.fluentui.tokenized.listitem.getColorByState
 
 val LocalTabItemTokens = compositionLocalOf { TabItemTokens() }
 val LocalTabItemInfo =
@@ -61,14 +60,14 @@ internal fun TabItem(
         LocalTabItemTokens provides token,
         LocalTabItemInfo provides TabItemInfo(textAlignment, style)
     ) {
-        val textColor = getColorByState(
-            stateData = getTabItemTokens().textColor(tabItemInfo = getTabItemInfo()),
+        val textColor = getTabItemTokens().textColor(tabItemInfo = getTabItemInfo()).getColorByState(
             enabled = enabled,
+            selected = false,
             interactionSource = interactionSource
         )
-        val iconColor = getColorByState(
-            stateData = getTabItemTokens().iconColor(tabItemInfo = getTabItemInfo()),
+        val iconColor = getTabItemTokens().iconColor(tabItemInfo = getTabItemInfo()).getColorByState(
             enabled = enabled,
+            selected = false,
             interactionSource = interactionSource
         )
 

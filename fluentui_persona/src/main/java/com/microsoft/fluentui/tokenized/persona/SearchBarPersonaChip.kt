@@ -17,10 +17,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.Strings
-import com.microsoft.fluentui.compose.getString
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -68,14 +68,16 @@ fun SearchBarPersonaChip(
             size = size
         )
     ) {
-        val backgroundColor = getColorByState(
-            stateData = getSearchBarPersonaChipTokens().backgroundColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo()),
-            enabled = enabled, selected = selected, interactionSource = interactionSource
-        )
-        val textColor = getColorByState(
-            stateData = getSearchBarPersonaChipTokens().textColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo()),
-            enabled = enabled, selected = selected, interactionSource = interactionSource
-        )
+        val backgroundColor =
+            getSearchBarPersonaChipTokens().backgroundColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo())
+                .getColorByState(
+                    enabled = enabled, selected = selected, interactionSource = interactionSource
+                )
+        val textColor =
+            getSearchBarPersonaChipTokens().textColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo())
+                .getColorByState(
+                    enabled = enabled, selected = selected, interactionSource = interactionSource
+                )
         val font =
             getSearchBarPersonaChipTokens().fontSize(personaChipInfo = getSearchBarPersonaChipInfo())
         val avatarSize =
@@ -121,7 +123,7 @@ fun SearchBarPersonaChip(
                                     onClick = onCloseClick,
                                     role = Role.Button
                                 ),
-                            contentDescription = getString(string = Strings.Close),
+                            contentDescription = LocalContext.current.resources.getString(R.string.fluentui_close),
                             tint = textColor
                         )
                     } else {

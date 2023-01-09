@@ -27,12 +27,11 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.Strings
-import com.microsoft.fluentui.compose.getString
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
@@ -48,6 +47,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
+import com.microsoft.fluentui.topappbars.R
 import kotlinx.coroutines.launch
 
 private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
@@ -63,7 +63,7 @@ fun SearchBar(
     style: FluentStyle = FluentStyle.Neutral,
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
     keyboardActions: KeyboardActions = KeyboardActions(),
-    searchHint: String = getString(Strings.Search),
+    searchHint: String = LocalContext.current.resources.getString(R.string.fluentui_search),
     selectedPerson: Person? = null,
     personaChipOnClick: (() -> Unit)? = null,
     microphoneCallback: (() -> Unit)? = null,
@@ -125,7 +125,8 @@ fun SearchBar(
                             }
                         }
                         icon = SearchBarIcons.Arrowback
-                        contentDescription = getString(Strings.Back)
+                        contentDescription =
+                            LocalContext.current.resources.getString(R.string.fluentui_back)
                     }
                     false -> {
                         onClick = {
@@ -134,7 +135,8 @@ fun SearchBar(
                             }
                         }
                         icon = SearchBarIcons.Search
-                        contentDescription = getString(Strings.Search)
+                        contentDescription =
+                            LocalContext.current.resources.getString(R.string.fluentui_search)
                     }
 
                 }
@@ -287,7 +289,7 @@ fun SearchBar(
                             ) {
                                 Icon(
                                     SearchBarIcons.Microphone,
-                                    getString(Strings.Microphone),
+                                    LocalContext.current.resources.getString(R.string.fluentui_microphone),
                                     modifier = Modifier
                                         .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
                                     tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
@@ -329,7 +331,7 @@ fun SearchBar(
                                 )
                             Icon(
                                 SearchBarIcons.Dismisscircle,
-                                getString(Strings.ClearText),
+                                LocalContext.current.resources.getString(R.string.fluentui_clear_text),
                                 modifier = Modifier
                                     .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
                                 tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
@@ -361,7 +363,7 @@ fun SearchBar(
                     )
                     Icon(
                         ListItemIcons.Chevron,
-                        getString(Strings.Chevron),
+                        LocalContext.current.resources.getString(R.string.fluentui_chevron),
                         Modifier.rotate(90F)
                     )
                 }

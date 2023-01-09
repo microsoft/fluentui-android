@@ -278,11 +278,11 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             FluentColor(
                 light = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.shade30
+                    GlobalTokens.SharedColorsTokens.Shade30
                 ),
                 dark = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.tint40
+                    GlobalTokens.SharedColorsTokens.Tint40
                 )
             ).value(
                 themeMode = themeMode
@@ -319,11 +319,11 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             FluentColor(
                 light = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.tint40
+                    GlobalTokens.SharedColorsTokens.Tint40
                 ),
                 dark = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.shade30
+                    GlobalTokens.SharedColorsTokens.Shade30
                 )
             ).value(
                 themeMode = themeMode
@@ -628,11 +628,11 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             FluentColor(
                 light = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.primary
+                    GlobalTokens.SharedColorsTokens.Primary
                 ),
                 dark = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.tint30
+                    GlobalTokens.SharedColorsTokens.Tint30
                 )
             ).value(
                 themeMode = themeMode
