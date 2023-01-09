@@ -555,7 +555,8 @@ fun LeftViewRadioButton() {
         selected = checked,
         onClick = {
             checked = !checked
-        }
+        },
+        contentDescription = "Radiobutton"
     )
 }
 
