@@ -519,11 +519,11 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.tint60
+                            GlobalTokens.SharedColorsTokens.Tint60
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.shade40
+                            GlobalTokens.SharedColorsTokens.Shade40
                         )
                     )
 
@@ -531,44 +531,44 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         )
                     )
                 ErrorAndStatusColorTokens.DangerForeground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.DangerForeground2 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.SuccessBackground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.tint60
+                            GlobalTokens.SharedColorsTokens.Tint60
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.shade40
+                            GlobalTokens.SharedColorsTokens.Shade40
                         )
                     )
 
@@ -576,44 +576,44 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         )
                     )
                 ErrorAndStatusColorTokens.SuccessForeground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.SuccessForeground2 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.WarningBackground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.tint60
+                            GlobalTokens.SharedColorsTokens.Tint60
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.shade40
+                            GlobalTokens.SharedColorsTokens.Shade40
                         )
                     )
 
@@ -621,44 +621,44 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         )
                     )
                 ErrorAndStatusColorTokens.WarningForeground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.shade30
+                            GlobalTokens.SharedColorsTokens.Shade30
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.WarningForeground2 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.shade30
+                            GlobalTokens.SharedColorsTokens.Shade30
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Yellow,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.SevereBackground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.tint60
+                            GlobalTokens.SharedColorsTokens.Tint60
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.shade40
+                            GlobalTokens.SharedColorsTokens.Shade40
                         )
                     )
 
@@ -666,33 +666,33 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         )
                     )
                 ErrorAndStatusColorTokens.SevereForeground1 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.shade10
+                            GlobalTokens.SharedColorsTokens.Shade10
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
                 ErrorAndStatusColorTokens.SevereForeground2 ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.shade20
+                            GlobalTokens.SharedColorsTokens.Shade20
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Orange,
-                            GlobalTokens.SharedColorsTokens.tint30
+                            GlobalTokens.SharedColorsTokens.Tint30
                         )
                     )
             }
@@ -707,51 +707,51 @@ open class AliasTokens : Parcelable {
         OutOfOffice
     }
 
-    open val PresenceColor: TokenSet<PresenceColorTokens, FluentColor> by lazy {
+    open val presenceColor: TokenSet<PresenceColorTokens, FluentColor> by lazy {
         TokenSet { token ->
             when (token) {
                 PresenceColorTokens.Away ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Marigold,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Marigold,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         )
                     )
                 PresenceColorTokens.Busy, PresenceColorTokens.DND ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Red,
-                            GlobalTokens.SharedColorsTokens.tint10
+                            GlobalTokens.SharedColorsTokens.Tint10
                         )
                     )
                 PresenceColorTokens.Available ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Green,
-                            GlobalTokens.SharedColorsTokens.tint20
+                            GlobalTokens.SharedColorsTokens.Tint20
                         )
                     )
                 PresenceColorTokens.OutOfOffice ->
                     FluentColor(
                         light = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Berry,
-                            GlobalTokens.SharedColorsTokens.primary
+                            GlobalTokens.SharedColorsTokens.Primary
                         ),
                         dark = GlobalTokens.sharedColors(
                             GlobalTokens.SharedColorSets.Berry,
-                            GlobalTokens.SharedColorsTokens.tint20
+                            GlobalTokens.SharedColorsTokens.Tint20
                         )
                     )
             }

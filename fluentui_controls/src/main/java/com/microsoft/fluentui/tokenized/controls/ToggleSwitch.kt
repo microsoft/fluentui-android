@@ -54,18 +54,24 @@ fun ToggleSwitch(
         LocalToggleSwitchInfo provides ToggleSwitchInfo(checkedState)
     ) {
 
-        val backgroundColor: Color = backgroundColor(
-            getToggleSwitchToken(), getToggleSwitchInfo(),
-            enabledSwitch, checkedState, interactionSource
-        )
-        val foregroundColor: Color = iconColor(
-            getToggleSwitchToken(), getToggleSwitchInfo(),
-            enabledSwitch, checkedState, interactionSource
-        )
-        val elevation: Dp = elevation(
-            getToggleSwitchToken(), getToggleSwitchInfo(),
-            enabledSwitch, checkedState, interactionSource
-        )
+        val backgroundColor: Color =
+            getToggleSwitchToken().trackColor(switchInfo = getToggleSwitchInfo()).getColorByState(
+                enabled = enabledSwitch,
+                selected = checkedState,
+                interactionSource = interactionSource
+            )
+        val foregroundColor: Color =
+            getToggleSwitchToken().knobColor(switchInfo = getToggleSwitchInfo()).getColorByState(
+                enabled = enabledSwitch,
+                selected = checkedState,
+                interactionSource = interactionSource
+            )
+        val elevation: Dp =
+            getToggleSwitchToken().elevation(fabInfo = getToggleSwitchInfo()).getColorByState(
+                enabled = enabledSwitch,
+                selected = checkedState,
+                interactionSource = interactionSource
+            )
         val padding: Dp = getToggleSwitchToken().paddingTrack
 
 

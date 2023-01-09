@@ -104,20 +104,26 @@ fun PillButton(
         }
 
         val backgroundColor by animateColorAsState(
-            targetValue = backgroundColor(
-                getPillButtonTokens(), getPillButtonInfo(),
-                pillMetaData.enabled, pillMetaData.selected, interactionSource
-            ),
+            targetValue = getPillButtonTokens().backgroundColor(pillButtonInfo = getPillButtonInfo())
+                .getColorByState(
+                    enabled = pillMetaData.enabled,
+                    selected = pillMetaData.selected,
+                    interactionSource = interactionSource
+                ),
             animationSpec = tween(200)
         )
-        val iconColor = iconColor(
-            getPillButtonTokens(),
-            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource
-        )
-        val textColor = textColor(
-            getPillButtonTokens(),
-            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource
-        )
+        val iconColor =
+            getPillButtonTokens().iconColor(pillButtonInfo = getPillButtonInfo()).getColorByState(
+                enabled = pillMetaData.enabled,
+                selected = pillMetaData.selected,
+                interactionSource = interactionSource
+            )
+        val textColor =
+            getPillButtonTokens().textColor(pillButtonInfo = getPillButtonInfo()).getColorByState(
+                enabled = pillMetaData.enabled,
+                selected = pillMetaData.selected,
+                interactionSource = interactionSource
+            )
 
         val font = getPillButtonTokens().font(getPillButtonInfo())
 

@@ -28,7 +28,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
-import kotlinx.coroutines.selects.select
 
 val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
 val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
@@ -60,16 +59,21 @@ fun Button(
             role = Role.Button,
             onClick = onClick
         )
-        val backgroundColor = getButtonToken().backgroundColor(buttonInfo = getButtonInfo()).getColorByState(
-            enabled = enabled,
-            selected = false,
-            interactionSource = interactionSource
-        )
+        val backgroundColor =
+            getButtonToken().backgroundColor(buttonInfo = getButtonInfo()).getColorByState(
+                enabled = enabled,
+                selected = false,
+                interactionSource = interactionSource
+            )
         val contentPadding = getButtonToken().padding(getButtonInfo())
         val iconSpacing = getButtonToken().spacing(getButtonInfo())
         val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
         val borders: List<BorderStroke> =
-            borderStroke(getButtonToken(), getButtonInfo(), enabled, false, interactionSource)
+            getButtonToken().borderStroke(buttonInfo = getButtonInfo()).getColorByState(
+                enabled = enabled,
+                selected = false,
+                interactionSource = interactionSource
+            )
 
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
@@ -111,13 +115,12 @@ fun Button(
                             .size(
                                 getButtonToken().iconSize(buttonInfo = getButtonInfo()).size
                             ),
-                        tint = iconColor(
-                            getButtonToken(),
-                            getButtonInfo(),
-                            enabled,
-                            false,
-                            interactionSource
-                        )
+                        tint = getButtonToken().iconColor(buttonInfo = getButtonInfo())
+                            .getColorByState(
+                                enabled = enabled,
+                                selected = false,
+                                interactionSource = interactionSource
+                            )
                     )
 
                 if (text != null)
@@ -127,13 +130,12 @@ fun Button(
                         fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
                         lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
                         fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
-                        color = textColor(
-                            getButtonToken(),
-                            getButtonInfo(),
-                            enabled,
-                            false,
-                            interactionSource
-                        ),
+                        color = getButtonToken().textColor(buttonInfo = getButtonInfo())
+                            .getColorByState(
+                                enabled = enabled,
+                                selected = false,
+                                interactionSource = interactionSource
+                            ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )

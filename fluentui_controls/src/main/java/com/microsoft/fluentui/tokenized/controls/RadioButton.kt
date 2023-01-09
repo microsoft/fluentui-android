@@ -59,14 +59,19 @@ fun RadioButton(
             )
         )
 
-        val outerStrokeColor = backgroundColor(
-            getRadioButtonTokens(), getRadioButtonInfo(),
-            enabled, selected, interactionSource
-        )
-        val innerColor = iconColor(
-            getRadioButtonTokens(), getRadioButtonInfo(),
-            enabled, selected, interactionSource
-        )
+        val outerStrokeColor =
+            getRadioButtonTokens().backgroundColor(radioButtonInfo = getRadioButtonInfo())
+                .getColorByState(
+                    enabled = enabled,
+                    selected = selected,
+                    interactionSource = interactionSource
+                )
+        val innerColor = getRadioButtonTokens().iconColor(radioButtonInfo = getRadioButtonInfo())
+            .getColorByState(
+                enabled = enabled,
+                selected = selected,
+                interactionSource = interactionSource
+            )
 
         val outerRadius = getRadioButtonTokens().outerCircleRadius
         val strokeWidth = getRadioButtonTokens().strokeWidthInwards
