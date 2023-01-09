@@ -39,7 +39,7 @@ val LocalCheckBoxInfo = compositionLocalOf { CheckBoxInfo() }
 
 @Composable
 fun CheckBox(
-    onCheckedChanged: ((Boolean) -> Unit)?,
+    onCheckedChanged: ((Boolean) -> Unit),
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     checked: Boolean = false,
@@ -55,21 +55,17 @@ fun CheckBox(
         LocalCheckBoxInfo provides CheckBoxInfo(checked)
     ) {
         val toggleModifier =
-            if (onCheckedChanged != null) {
-                modifier.triStateToggleable(
-                    state = ToggleableState(checked),
-                    enabled = enabled,
-                    onClick = { onCheckedChanged(!checked) },
-                    role = Role.Checkbox,
-                    interactionSource = interactionSource,
-                    indication = rememberRipple(
-                        bounded = false,
-                        radius = 24.dp
-                    )
+            modifier.triStateToggleable(
+                state = ToggleableState(checked),
+                enabled = enabled,
+                onClick = { onCheckedChanged(!checked) },
+                role = Role.Checkbox,
+                interactionSource = interactionSource,
+                indication = rememberRipple(
+                    bounded = false,
+                    radius = 24.dp
                 )
-            } else {
-                modifier
-            }
+            )
 
         val backgroundColor: Color = backgroundColor(
             getCheckBoxToken(), getCheckBoxInfo(),

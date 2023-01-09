@@ -512,7 +512,7 @@ open class AliasTokens : Parcelable {
         SevereForeground2
     }
 
-    open val ErrorAndStatusColor: TokenSet<ErrorAndStatusColorTokens, FluentColor> by lazy {
+    open val errorAndStatusColor: TokenSet<ErrorAndStatusColorTokens, FluentColor> by lazy {
         TokenSet { token ->
             when (token) {
                 ErrorAndStatusColorTokens.DangerBackground1 ->

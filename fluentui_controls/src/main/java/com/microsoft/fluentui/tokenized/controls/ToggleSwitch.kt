@@ -39,7 +39,7 @@ val LocalToggleSwitchInfo = compositionLocalOf { ToggleSwitchInfo() }
 @Composable
 fun ToggleSwitch(
     modifier: Modifier = Modifier,
-    onValueChange: ((Boolean) -> Unit)? = null,
+    onValueChange: ((Boolean) -> Unit),
     enabledSwitch: Boolean = true,
     checkedState: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -86,25 +86,21 @@ fun ToggleSwitch(
         }
         DisposableEffect(swipeState.currentValue) {
             if (checkedState != swipeState.currentValue) {
-                onValueChange?.invoke(swipeState.currentValue)
+                onValueChange.invoke(swipeState.currentValue)
                 forceAnimationCheck.value = !forceAnimationCheck.value
             }
             onDispose { }
         }
 
         // Toggle Logic
-        val toggleModifier =
-            if (onValueChange != null) {
-                modifier.toggleable(
-                    value = getToggleSwitchInfo().checked,
-                    enabled = enabledSwitch,
-                    role = Role.Switch,
-                    onValueChange = onValueChange,
-                    interactionSource = interactionSource,
-                    indication = null
-                )
-            } else
-                modifier
+        val toggleModifier = modifier.toggleable(
+            value = getToggleSwitchInfo().checked,
+            enabled = enabledSwitch,
+            role = Role.Switch,
+            onValueChange = onValueChange,
+            interactionSource = interactionSource,
+            indication = null
+        )
 
         // UI Implementation
         Box(
@@ -115,7 +111,7 @@ fun ToggleSwitch(
                     anchors = mapOf(minBound to false, maxBound to true),
                     thresholds = { _, _ -> FractionalThreshold(0.5f) },
                     orientation = Orientation.Horizontal,
-                    enabled = enabledSwitch && onValueChange != null,
+                    enabled = enabledSwitch,
                     reverseDirection = isRtl,
                     interactionSource = interactionSource,
                     resistance = null

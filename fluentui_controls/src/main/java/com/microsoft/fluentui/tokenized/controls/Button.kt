@@ -28,6 +28,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
+import kotlinx.coroutines.selects.select
 
 val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
 val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
@@ -59,8 +60,11 @@ fun Button(
             role = Role.Button,
             onClick = onClick
         )
-        val backgroundColor =
-            backgroundColor(getButtonToken(), getButtonInfo(), enabled, false, interactionSource)
+        val backgroundColor = getButtonToken().backgroundColor(buttonInfo = getButtonInfo()).getColorByState(
+            enabled = enabled,
+            selected = false,
+            interactionSource = interactionSource
+        )
         val contentPadding = getButtonToken().padding(getButtonInfo())
         val iconSpacing = getButtonToken().spacing(getButtonInfo())
         val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))

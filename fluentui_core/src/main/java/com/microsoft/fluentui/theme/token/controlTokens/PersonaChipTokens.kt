@@ -71,34 +71,34 @@ open class PersonaChipTokens : ControlToken, Parcelable {
                 )
             )
             PersonaChipStyle.Danger -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[DangerBackground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[DangerBackground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                selected = FluentTheme.aliasTokens.ErrorAndStatusColor[DangerBackground2].value(
+                selected = FluentTheme.aliasTokens.errorAndStatusColor[DangerBackground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
             PersonaChipStyle.SevereWarning -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[SevereBackground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[SevereBackground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                selected = FluentTheme.aliasTokens.ErrorAndStatusColor[SevereBackground2].value(
+                selected = FluentTheme.aliasTokens.errorAndStatusColor[SevereBackground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
             PersonaChipStyle.Warning -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[WarningBackground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[WarningBackground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                selected = FluentTheme.aliasTokens.ErrorAndStatusColor[WarningBackground2].value(
+                selected = FluentTheme.aliasTokens.errorAndStatusColor[WarningBackground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
             PersonaChipStyle.Success -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[SuccessBackground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[SuccessBackground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                selected = FluentTheme.aliasTokens.ErrorAndStatusColor[SuccessBackground2].value(
+                selected = FluentTheme.aliasTokens.errorAndStatusColor[SuccessBackground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
@@ -133,7 +133,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
                 )
             )
             PersonaChipStyle.Danger -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[DangerForeground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[DangerForeground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
                 selected = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundLightStatic].value(
@@ -141,7 +141,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
                 )
             )
             PersonaChipStyle.SevereWarning -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[SevereForeground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[SevereForeground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
                 selected = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundLightStatic].value(
@@ -149,7 +149,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
                 )
             )
             PersonaChipStyle.Warning -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[WarningForeground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[WarningForeground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
                 selected = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDarkStatic].value(
@@ -157,7 +157,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
                 )
             )
             PersonaChipStyle.Success -> return StateColor(
-                rest = FluentTheme.aliasTokens.ErrorAndStatusColor[SuccessForeground1].value(
+                rest = FluentTheme.aliasTokens.errorAndStatusColor[SuccessForeground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
                 selected = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundLightStatic].value(
