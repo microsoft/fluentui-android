@@ -551,7 +551,8 @@ fun groupAvatar(): Group {
 @Composable
 fun LeftViewRadioButton() {
     var checked by remember { mutableStateOf(false) }
-    return RadioButton(enabled = true,
+    return RadioButton(
+        enabled = true,
         selected = checked,
         onClick = {
             checked = !checked
