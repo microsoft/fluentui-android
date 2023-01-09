@@ -12,13 +12,22 @@
     <string name="fluentui_close_sheet">Close Sheet</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Close</string>
+    <!--name of the icon -->
     <string name="fluentui_search">Search</string>
+    <!--name of the icon -->
     <string name="fluentui_microphone">Microphone</string>
+    <!-- Describes the action - to clear the text -->
     <string name="fluentui_clear_text">Clear Text</string>
+    <!-- Describes the action - back -->
     <string name="fluentui_back">Back</string>
+    <!-- Describes the action - activated -->
     <string name="fluentui_activated">Activated</string>
+    <!-- Describes the action - deactivated -->
     <string name="fluentui_deactivated">De-Activated</string>
+    <!-- Describes the type - Neutral-->
     <string name="fluentui_neutral">Neutral</string>
+    <!-- Describes the type - Brand-->
     <string name="fluentui_brand">Brand</string>
+    <!--name of the icon -->
     <string name="fluentui_chevron">Chevron</string>
 </resources>
