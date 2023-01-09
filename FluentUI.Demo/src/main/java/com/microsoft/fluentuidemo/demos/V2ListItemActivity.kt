@@ -367,13 +367,19 @@ fun ThreeLineSimpleList() {
 
 @Composable
 fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+    var checked by remember { mutableStateOf(true) }
     return Column {
         ListItem.Item(
             text = primaryText,
             leadingAccessoryView = { LeftViewRadioButton() },
-            trailingAccessoryView = { RightViewCheckbox() },
+            trailingAccessoryView = {
+                CheckBox(enabled = true, checked = !checked, onCheckedChanged = {
+                    checked = !it
+                })
+            },
             border = BorderType.Bottom,
-            borderInset = XXLarge
+            borderInset = XXLarge,
+            onClick = { checked = !checked }
         )
         ListItem.Item(
             text = primaryText,

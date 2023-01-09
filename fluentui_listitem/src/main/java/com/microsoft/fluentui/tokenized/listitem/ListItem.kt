@@ -64,8 +64,7 @@ object ListItem {
                 indication = rememberRipple(),
                 onClickLabel = null,
                 enabled = enabled,
-                onClick = onClick,
-                role = Role.Tab
+                onClick = onClick
             )
     }
 
