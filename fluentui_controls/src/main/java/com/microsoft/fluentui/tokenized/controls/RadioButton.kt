@@ -28,7 +28,7 @@ val LocalRadioButtonInfo = compositionLocalOf { RadioButtonInfo() }
 
 @Composable
 fun RadioButton(
-    onClick: (() -> Unit)?,
+    onClick: (() -> Unit),
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     selected: Boolean = false,
@@ -47,30 +47,31 @@ fun RadioButton(
             animationSpec = tween(durationMillis = 100)
         )
 
-        val selectableModifier = if (onClick != null) {
-            modifier.selectable(
-                selected = selected,
-                enabled = enabled,
-                onClick = onClick,
-                role = Role.RadioButton,
-                interactionSource = interactionSource,
-                indication = rememberRipple(
-                    bounded = false,
-                    radius = 24.dp
-                )
+        val selectableModifier = modifier.selectable(
+            selected = selected,
+            enabled = enabled,
+            onClick = onClick,
+            role = Role.RadioButton,
+            interactionSource = interactionSource,
+            indication = rememberRipple(
+                bounded = false,
+                radius = 24.dp
             )
-        } else {
-            modifier
-        }
+        )
 
-        val outerStrokeColor = backgroundColor(
-            getRadioButtonTokens(), getRadioButtonInfo(),
-            enabled, selected, interactionSource
-        )
-        val innerColor = iconColor(
-            getRadioButtonTokens(), getRadioButtonInfo(),
-            enabled, selected, interactionSource
-        )
+        val outerStrokeColor =
+            getRadioButtonTokens().backgroundColor(radioButtonInfo = getRadioButtonInfo())
+                .getColorByState(
+                    enabled = enabled,
+                    selected = selected,
+                    interactionSource = interactionSource
+                )
+        val innerColor = getRadioButtonTokens().iconColor(radioButtonInfo = getRadioButtonInfo())
+            .getColorByState(
+                enabled = enabled,
+                selected = selected,
+                interactionSource = interactionSource
+            )
 
         val outerRadius = getRadioButtonTokens().outerCircleRadius
         val strokeWidth = getRadioButtonTokens().strokeWidthInwards

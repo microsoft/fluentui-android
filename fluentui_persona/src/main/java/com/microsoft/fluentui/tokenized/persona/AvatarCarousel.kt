@@ -95,12 +95,13 @@ fun AvatarCarousel(
         LazyRow(state = lazyListState) {
             itemsIndexed(avatarList) { index, item ->
                 val interactionSource = remember { MutableInteractionSource() }
-                val backgroundColor = getColorByState(
-                    stateData = getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo()),
-                    enabled = item.enabled,
-                    selected = false,
-                    interactionSource = interactionSource
-                )
+                val backgroundColor =
+                    getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo())
+                        .getColorByState(
+                            enabled = item.enabled,
+                            selected = false,
+                            interactionSource = interactionSource
+                        )
                 val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
                 val subTextColor =
                     getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())

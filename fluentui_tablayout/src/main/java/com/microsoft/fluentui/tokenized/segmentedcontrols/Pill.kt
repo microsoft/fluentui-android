@@ -28,14 +28,14 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.Strings
-import com.microsoft.fluentui.compose.getString
+import com.microsoft.fluentui.tablayout.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -104,20 +104,26 @@ fun PillButton(
         }
 
         val backgroundColor by animateColorAsState(
-            targetValue = backgroundColor(
-                getPillButtonTokens(), getPillButtonInfo(),
-                pillMetaData.enabled, pillMetaData.selected, interactionSource
-            ),
+            targetValue = getPillButtonTokens().backgroundColor(pillButtonInfo = getPillButtonInfo())
+                .getColorByState(
+                    enabled = pillMetaData.enabled,
+                    selected = pillMetaData.selected,
+                    interactionSource = interactionSource
+                ),
             animationSpec = tween(200)
         )
-        val iconColor = iconColor(
-            getPillButtonTokens(),
-            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource
-        )
-        val textColor = textColor(
-            getPillButtonTokens(),
-            getPillButtonInfo(), pillMetaData.enabled, pillMetaData.selected, interactionSource
-        )
+        val iconColor =
+            getPillButtonTokens().iconColor(pillButtonInfo = getPillButtonInfo()).getColorByState(
+                enabled = pillMetaData.enabled,
+                selected = pillMetaData.selected,
+                interactionSource = interactionSource
+            )
+        val textColor =
+            getPillButtonTokens().textColor(pillButtonInfo = getPillButtonInfo()).getColorByState(
+                enabled = pillMetaData.enabled,
+                selected = pillMetaData.selected,
+                interactionSource = interactionSource
+            )
 
         val font = getPillButtonTokens().font(getPillButtonInfo())
 
@@ -138,14 +144,14 @@ fun PillButton(
         )
 
         val selectedString = if (pillMetaData.selected)
-            getString(Strings.Selected)
+            LocalContext.current.resources.getString(R.string.fluentui_selected)
         else
-            getString(Strings.NotSelected)
+            LocalContext.current.resources.getString(R.string.fluentui_not_selected)
 
         val enabledString = if (pillMetaData.enabled)
-            getString(Strings.Enabled)
+            LocalContext.current.resources.getString(R.string.fluentui_enabled)
         else
-            getString(Strings.Disabled)
+            LocalContext.current.resources.getString(R.string.fluentui_disabled)
 
         Box(
             modifier

@@ -15,12 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.Strings
-import com.microsoft.fluentui.compose.getString
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.FluentTheme
@@ -111,9 +110,9 @@ class V2SearchBarActivity : DemoActivity() {
                             ListItem.Item(
                                 text = getDemoAppString(DemoAppStrings.AutoCorrect),
                                 subText = if (autoCorrectEnabled)
-                                    getString(Strings.Enabled)
+                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
-                                    getString(Strings.Disabled),
+                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                 trailingAccessoryView = {
                                     ToggleSwitch(
                                         onValueChange = {
@@ -126,9 +125,9 @@ class V2SearchBarActivity : DemoActivity() {
                             ListItem.Item(
                                 text = getDemoAppString(DemoAppStrings.MicrophoneCallback),
                                 subText = if (enableMicrophoneCallback)
-                                    getString(Strings.Activated)
+                                    LocalContext.current.resources.getString(R.string.fluentui_activated)
                                 else
-                                    getString(Strings.DeActivated),
+                                    LocalContext.current.resources.getString(R.string.fluentui_deactivated),
                                 trailingAccessoryView = {
                                     ToggleSwitch(
                                         onValueChange = {
@@ -141,9 +140,9 @@ class V2SearchBarActivity : DemoActivity() {
                             ListItem.Item(
                                 text = getDemoAppString(DemoAppStrings.Style),
                                 subText = if (searchBarStyle == FluentStyle.Neutral)
-                                    getString(Strings.Neutral)
+                                    LocalContext.current.resources.getString(R.string.fluentui_neutral)
                                 else
-                                    getString(Strings.Brand),
+                                    LocalContext.current.resources.getString(R.string.fluentui_brand),
                                 trailingAccessoryView = {
                                     ToggleSwitch(
                                         onValueChange = {
@@ -160,9 +159,9 @@ class V2SearchBarActivity : DemoActivity() {
                             ListItem.Item(
                                 text = getDemoAppString(DemoAppStrings.RightAccessoryView),
                                 subText = if (displayRightAccessory)
-                                    getString(Strings.Enabled)
+                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
-                                    getString(Strings.Disabled),
+                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                 trailingAccessoryView = {
                                     ToggleSwitch(
                                         onValueChange = {
