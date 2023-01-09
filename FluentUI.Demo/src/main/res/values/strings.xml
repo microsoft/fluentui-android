@@ -14,7 +14,9 @@
     <string name="app_accessibility_selected">Selected %s</string>
     <string name="app_modifiable_parameters">Modifiable Parameters</string>
     <string name="app_right_accessory_view">Right Accessory View</string>
+
     <string name="app_style">Style</string>
+    <!-- describes an action, icon pressed -->
     <string name="app_icon_pressed">Icon Pressed</string>
 
     <!--ActionBar-->
@@ -585,10 +587,15 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
+    <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Microphone Callback</string>
+    <!-- UI Text label -->
     <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Microphone Pressed</string>
+    <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">Right View Pressed</string>
+    <!-- Announces that keyboard search has been pressed -->
     <string name="searchbar_keyboard_search_pressed">Keyboard Search Pressed</string>
 
     <!--Snackbar-->
