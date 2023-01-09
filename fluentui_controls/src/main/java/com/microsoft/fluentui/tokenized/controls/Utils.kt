@@ -14,42 +14,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 import java.security.InvalidParameterException
 
 @Composable
-fun getColorByState(
-    stateData: StateColor,
-    enabled: Boolean,
-    selected: Boolean,
-    interactionSource: InteractionSource
-): Color {
-    if (enabled) {
-        val isPressed by interactionSource.collectIsPressedAsState()
-        if (selected && isPressed)
-            return stateData.selectedPressed
-        else if (isPressed)
-            return stateData.pressed
-
-        val isFocused by interactionSource.collectIsFocusedAsState()
-        if (selected && isFocused)
-            return stateData.selectedFocused
-        else if (isFocused)
-            return stateData.focused
-
-        val isHovered by interactionSource.collectIsHoveredAsState()
-        if (selected && isHovered)
-            return stateData.selectedFocused
-        if (isHovered)
-            return stateData.focused
-
-        if (selected)
-            return stateData.selected
-
-        return stateData.rest
-    } else if (selected)
-        return stateData.selectedDisabled
-    else
-        return stateData.disabled
-}
-
-@Composable
 fun backgroundColor(
     tokens: ControlToken,
     info: ControlInfo,
@@ -67,7 +31,7 @@ fun backgroundColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(backgroundColors, enabled, selected, interactionSource)
+    return backgroundColors.getColorByState(enabled, selected, interactionSource)
 }
 
 @Composable
@@ -88,7 +52,7 @@ fun iconColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(iconColors, enabled, selected, interactionSource)
+    return iconColors.getColorByState(enabled, selected, interactionSource)
 }
 
 @Composable
@@ -106,7 +70,7 @@ fun textColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(textColors, enabled, selected, interactionSource)
+    return textColors.getColorByState(enabled, selected, interactionSource)
 }
 
 @Composable
@@ -125,33 +89,11 @@ fun borderStroke(
             else -> throw InvalidParameterException()
         }
 
-    if (enabled) {
-        val isPressed by interactionSource.collectIsPressedAsState()
-        if (selected && isPressed)
-            return fetchBorderStroke.selectedPressed
-        else if (isPressed)
-            return fetchBorderStroke.pressed
-
-        val isFocused by interactionSource.collectIsFocusedAsState()
-        if (selected && isFocused)
-            return fetchBorderStroke.selectedFocused
-        else if (isFocused)
-            return fetchBorderStroke.focused
-
-        val isHovered by interactionSource.collectIsHoveredAsState()
-        if (selected && isHovered)
-            return fetchBorderStroke.selectedFocused
-        if (isHovered)
-            return fetchBorderStroke.focused
-
-        if (selected)
-            return fetchBorderStroke.selected
-
-        return fetchBorderStroke.rest
-    } else if (selected)
-        return fetchBorderStroke.selectedDisabled
-    else
-        return fetchBorderStroke.disabled
+    return fetchBorderStroke.getColorByState(
+        enabled = enabled,
+        selected = selected,
+        interactionSource = interactionSource
+    )
 }
 
 @Composable
@@ -168,32 +110,9 @@ fun elevation(
             is ToggleSwitchTokens -> tokens.elevation(info as ToggleSwitchInfo)
             else -> throw InvalidParameterException()
         }
-
-    if (enabled) {
-        val isPressed by interactionSource.collectIsPressedAsState()
-        if (selected && isPressed)
-            return elevationState.selectedPressed
-        else if (isPressed)
-            return elevationState.pressed
-
-        val isFocused by interactionSource.collectIsFocusedAsState()
-        if (selected && isFocused)
-            return elevationState.selectedFocused
-        else if (isFocused)
-            return elevationState.focused
-
-        val isHovered by interactionSource.collectIsHoveredAsState()
-        if (selected && isHovered)
-            return elevationState.selectedFocused
-        if (isHovered)
-            return elevationState.focused
-
-        if (selected)
-            return elevationState.selected
-
-        return elevationState.rest
-    } else if (selected)
-        return elevationState.selectedDisabled
-    else
-        return elevationState.disabled
+    return elevationState.getColorByState(
+        enabled = enabled,
+        selected = selected,
+        interactionSource = interactionSource
+    )
 }

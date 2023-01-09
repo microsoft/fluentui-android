@@ -17,10 +17,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.Strings
-import com.microsoft.fluentui.compose.getString
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipInfo
@@ -69,14 +69,15 @@ fun PersonaChip(
             size
         )
     ) {
-        val backgroundColor = getColorByState(
-            stateData = getPersonaChipTokens().backgroundColor(personaChipInfo = getPersonaChipInfo()),
-            enabled = enabled, selected = selected, interactionSource = interactionSource
-        )
-        val textColor = getColorByState(
-            stateData = getPersonaChipTokens().textColor(personaChipInfo = getPersonaChipInfo()),
-            enabled = enabled, selected = selected, interactionSource = interactionSource
-        )
+        val backgroundColor =
+            getPersonaChipTokens().backgroundColor(personaChipInfo = getPersonaChipInfo())
+                .getColorByState(
+                    enabled = enabled, selected = selected, interactionSource = interactionSource
+                )
+        val textColor = getPersonaChipTokens().textColor(personaChipInfo = getPersonaChipInfo())
+            .getColorByState(
+                enabled = enabled, selected = selected, interactionSource = interactionSource
+            )
         val font = getPersonaChipTokens().fontSize(personaChipInfo = getPersonaChipInfo())
         val avatarSize = getPersonaChipTokens().avatarSize(personaChipInfo = getPersonaChipInfo())
         val verticalPadding =
@@ -110,7 +111,7 @@ fun PersonaChip(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (size == Medium) {
-                    if (onCloseClick!=null && selected) {
+                    if (onCloseClick != null && selected) {
                         Icon(
                             Icons.Filled.Close,
                             modifier = Modifier
@@ -120,7 +121,7 @@ fun PersonaChip(
                                     onClick = onCloseClick,
                                     role = Role.Button
                                 ),
-                            contentDescription = getString(string = Strings.Close),
+                            contentDescription = LocalContext.current.resources.getString(R.string.fluentui_close),
                             tint = textColor
                         )
                     } else {

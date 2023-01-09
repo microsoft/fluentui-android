@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.*
@@ -32,9 +33,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.*
-import com.microsoft.fluentui.compose.Strings
 import com.microsoft.fluentui.compose.SwipeableDefaults
 import com.microsoft.fluentui.compose.SwipeableState
+import com.microsoft.fluentui.drawer.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BottomSheetInfo
@@ -478,7 +479,7 @@ private fun Scrim(
     visible: Boolean
 ) {
     if (visible) {
-        val closeSheet = getString(Strings.CloseSheet)
+        val closeSheet = LocalContext.current.resources.getString(R.string.fluentui_close_sheet)
         val dismissModifier = Modifier
             .pointerInput(onDismiss) { detectTapGestures { onDismiss() } }
             .semantics(mergeDescendants = true) {

@@ -1,11 +1,7 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
 import androidx.compose.foundation.interaction.InteractionSource
-import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.interaction.collectIsHoveredAsState
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.ControlToken
@@ -13,42 +9,6 @@ import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import java.security.InvalidParameterException
-
-@Composable
-fun getColorByState(
-    stateData: StateColor,
-    enabled: Boolean,
-    selected: Boolean,
-    interactionSource: InteractionSource
-): Color {
-    if (enabled) {
-        val isPressed by interactionSource.collectIsPressedAsState()
-        if (selected && isPressed)
-            return stateData.selectedPressed
-        else if (isPressed)
-            return stateData.pressed
-
-        val isFocused by interactionSource.collectIsFocusedAsState()
-        if (selected && isFocused)
-            return stateData.selectedFocused
-        else if (isFocused)
-            return stateData.focused
-
-        val isHovered by interactionSource.collectIsHoveredAsState()
-        if (selected && isHovered)
-            return stateData.selectedFocused
-        if (isHovered)
-            return stateData.focused
-
-        if (selected)
-            return stateData.selected
-
-        return stateData.rest
-    } else if (selected)
-        return stateData.selectedDisabled
-    else
-        return stateData.disabled
-}
 
 @Composable
 fun backgroundColor(
@@ -64,7 +24,7 @@ fun backgroundColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(backgroundColors, enabled, selected, interactionSource)
+    return backgroundColors.getColorByState(enabled, selected, interactionSource)
 }
 
 @Composable
@@ -81,7 +41,7 @@ fun iconColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(iconColors, enabled, selected, interactionSource)
+    return iconColors.getColorByState(enabled, selected, interactionSource)
 }
 
 @Composable
@@ -98,5 +58,5 @@ fun textColor(
             else -> throw InvalidParameterException()
         }
 
-    return getColorByState(textColors, enabled, selected, interactionSource)
+    return textColors.getColorByState(enabled, selected, interactionSource)
 }
