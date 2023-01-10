@@ -61,15 +61,15 @@ fun createActivityUI() {
             .padding(start = 12.dp, top = 12.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        LinearProgressBarExample(brandTextColor = brandTextColor, textColor = textColor)
-        CircularProgressBarExamples(textColor = textColor)
-        DeterminateProgressbarExamples(
+        LinearProgressIndicatorExample(brandTextColor = brandTextColor, textColor = textColor)
+        CircularProgressIndicatorExamples(textColor = textColor)
+        DeterminateProgressIndicatorExamples(
             brandTextColor = brandTextColor,
             textColor = textColor,
             linearProgress,
             circularProgress
         )
-        IndeterminateProgressBarExamples(brandTextColor = brandTextColor, textColor = textColor)
+        IndeterminateProgressIndicatorExamples(brandTextColor = brandTextColor, textColor = textColor)
         shimmerExamples(brandTextColor = brandTextColor, textColor = textColor)
     }
     LaunchedEffect(key1 = linearProgress) {
@@ -95,11 +95,11 @@ fun createActivityUI() {
 }
 
 @Composable
-fun LinearProgressBarExample(brandTextColor: Color, textColor: Color) {
+fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text(
             modifier = Modifier.padding(top = 16.dp),
-            text = "ProgressBars",
+            text = "ProgressIndicators",
             color = brandTextColor,
             fontSize = 20.sp
         )
@@ -117,7 +117,7 @@ fun LinearProgressBarExample(brandTextColor: Color, textColor: Color) {
 }
 
 @Composable
-fun CircularProgressBarExamples(textColor: Color) {
+fun CircularProgressIndicatorExamples(textColor: Color) {
     Column {
         Row(
             Modifier.height(42.dp),
@@ -191,7 +191,7 @@ fun CircularProgressBarExamples(textColor: Color) {
 }
 
 @Composable
-fun DeterminateProgressbarExamples(
+fun DeterminateProgressIndicatorExamples(
     brandTextColor: Color,
     textColor: Color,
     linearProgress: Float,
@@ -199,13 +199,13 @@ fun DeterminateProgressbarExamples(
 ) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
-        text = "Determinate ProgressBar",
+        text = "Determinate ProgressIndicator",
         color = brandTextColor,
         fontSize = 18.sp
     )
     Text(
         modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
-        text = "Linear Progressbar",
+        text = "Linear ProgressIndicator",
         color = textColor
     )
     Row(
@@ -218,7 +218,7 @@ fun DeterminateProgressbarExamples(
     }
     Text(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
-        text = "Circular ProgressBar",
+        text = "Circular ProgressIndicator",
         color = textColor
     )
     Row(
@@ -232,16 +232,16 @@ fun DeterminateProgressbarExamples(
 }
 
 @Composable
-fun IndeterminateProgressBarExamples(brandTextColor: Color, textColor: Color) {
+fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textColor: Color) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
-        text = "InDeterminate ProgressBar",
+        text = "InDeterminate ProgressIndicator",
         color = brandTextColor,
         fontSize = 18.sp
     )
     Text(
         modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
-        text = "Linear Progressbar",
+        text = "Linear ProgressIndicator",
         color = textColor
     )
     Row(
@@ -253,7 +253,7 @@ fun IndeterminateProgressBarExamples(brandTextColor: Color, textColor: Color) {
     }
     Text(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
-        text = "Circular ProgressBar",
+        text = "Circular ProgressIndicator",
         color = textColor
     )
     Row(
