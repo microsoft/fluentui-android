@@ -17,6 +17,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -61,9 +63,12 @@ fun Shimmer(
         val cornerRadius =
             dpToPx(getShimmerTokens().cornerRadius())
         val infiniteTransition = rememberInfiniteTransition()
+        val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
+        val initialValue = if(isLtr) 0f else screenWidth
+        val targetValue = if(isLtr) diagonal else 0f
         val shimmerEffect by infiniteTransition.animateFloat(
-            0f,
-            diagonal,
+            initialValue,
+            targetValue,
             infiniteRepeatable(
                 animation = tween(
                     durationMillis = 1000,
