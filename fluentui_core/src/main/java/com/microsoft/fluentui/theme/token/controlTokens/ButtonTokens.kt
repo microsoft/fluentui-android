@@ -214,11 +214,11 @@ open class ButtonTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderRadius(buttonInfo: ButtonInfo): Dp {
+    open fun cornerRadius(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
-            ButtonSize.Medium -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            ButtonSize.Large -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            ButtonSize.Small -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
+            ButtonSize.Medium -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            ButtonSize.Large -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
 

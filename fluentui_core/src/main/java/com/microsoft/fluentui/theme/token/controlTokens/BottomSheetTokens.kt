@@ -36,8 +36,8 @@ open class BottomSheetTokens : ControlToken, Parcelable {
         GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow28)
 
     @Composable
-    open fun borderRadius(bottomSheetInfo: BottomSheetInfo): Dp =
-        GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
+    open fun cornerRadius(bottomSheetInfo: BottomSheetInfo): Dp =
+        GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
 
     @Composable
     open fun scrimColor(bottomSheetInfo: BottomSheetInfo): Color =

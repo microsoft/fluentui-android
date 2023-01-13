@@ -612,13 +612,13 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun cornerRadius(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
-            AvatarSize.Size16 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
-            AvatarSize.Size20 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            AvatarSize.Size24 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            AvatarSize.Size32 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            AvatarSize.Size40 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
-            AvatarSize.Size56 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
-            AvatarSize.Size72 -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
+            AvatarSize.Size16 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
+            AvatarSize.Size20 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size24 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size32 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size40 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
+            AvatarSize.Size56 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
+            AvatarSize.Size72 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
         }
     }
 

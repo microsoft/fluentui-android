@@ -168,10 +168,10 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderRadius(personaChipInfo: PersonaChipControlInfo): Dp {
+    open fun cornerRadius(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
-            Medium -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            Small -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
+            Medium -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
 

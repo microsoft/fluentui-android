@@ -87,7 +87,7 @@ fun PersonaChip(
         val avatarToTextSpacing =
             getPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getPersonaChipInfo())
         val cornerRadius =
-            getPersonaChipTokens().borderRadius(personaChipInfo = getPersonaChipInfo())
+            getPersonaChipTokens().cornerRadius(personaChipInfo = getPersonaChipInfo())
 
         Box(
             modifier = modifier

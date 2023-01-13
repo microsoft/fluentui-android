@@ -385,7 +385,7 @@ object GlobalTokens : Parcelable {
         CornerRadiusCircle
     }
 
-    fun borderRadius(token: CornerRadiusTokens): Dp {
+    fun cornerRadius(token: CornerRadiusTokens): Dp {
         return when (token) {
             CornerRadiusTokens.CornerRadiusNone ->
                 0.dp
