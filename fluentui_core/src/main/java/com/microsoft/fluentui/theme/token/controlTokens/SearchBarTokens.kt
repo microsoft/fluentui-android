@@ -18,10 +18,6 @@ data class SearchBarInfo(
 @Parcelize
 open class SearchBarTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "SearchBar"
-    }
-
     @Composable
     open fun inputBackgroundColor(searchBarInfo: SearchBarInfo): Color {
         return when (searchBarInfo.style) {

@@ -22,9 +22,6 @@ data class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT) : ControlInfo
 
 @Parcelize
 open class DrawerTokens : ControlToken, Parcelable {
-    companion object {
-        const val Type: String = "Drawer"
-    }
 
     @Composable
     open fun backgroundColor(drawerInfo: DrawerInfo): Color =

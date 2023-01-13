@@ -17,10 +17,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 open class ContextualCommandBarTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "ContextualCommandBar"
-    }
-
     @Composable
     open fun actionButtonBackgroundColor(): Color {
         return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(

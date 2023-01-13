@@ -36,10 +36,6 @@ data class ButtonInfo(
 @Parcelize
 open class ButtonTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "Button"
-    }
-
     @Composable
     open fun iconColor(buttonInfo: ButtonInfo): StateColor {
         return when (buttonInfo.style) {
