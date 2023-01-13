@@ -89,7 +89,7 @@ fun SearchBarPersonaChip(
         val avatarToTextSpacing =
             getSearchBarPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getSearchBarPersonaChipInfo())
         val cornerRadius =
-            getSearchBarPersonaChipTokens().borderRadius(personaChipInfo = getSearchBarPersonaChipInfo())
+            getSearchBarPersonaChipTokens().cornerRadius(personaChipInfo = getSearchBarPersonaChipInfo())
 
         Box(
             modifier = modifier

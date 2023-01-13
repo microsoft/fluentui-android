@@ -72,6 +72,8 @@ open class AliasTokens : Parcelable {
         Background5Selected,
         Background6,
         CanvasBackground,
+        BackgroundLightStatic,
+        BackgroundLightStaticDisabled,
         BackgroundDarkStatic,
         BackgroundInverted,
         BackgroundDisabled,
@@ -184,6 +186,18 @@ open class AliasTokens : Parcelable {
                         dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey8)
                     )
 
+                NeutralBackgroundColorTokens.BackgroundLightStatic ->
+                    FluentColor(
+                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
+                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
+                    )
+
+                NeutralBackgroundColorTokens.BackgroundLightStaticDisabled ->
+                    FluentColor(
+                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
+                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey68)
+                    )
+
                 NeutralBackgroundColorTokens.BackgroundDarkStatic ->
                     FluentColor(
                         light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey14),
@@ -290,7 +304,7 @@ open class AliasTokens : Parcelable {
                 NeutralStrokeColorTokens.Stroke1 ->
                     FluentColor(
                         light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey82),
-                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey32)
+                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey30)
                     )
 
                 NeutralStrokeColorTokens.Stroke2 ->
@@ -335,9 +349,7 @@ open class AliasTokens : Parcelable {
         BrandBackground2Selected,
         BrandBackground3,
         BrandBackgroundTint,
-        BrandBackgroundDisabled,
-        BrandBackgroundInverted,
-        BrandBackgroundInvertedDisabled,
+        BrandBackgroundDisabled
     }
 
     open val brandBackgroundColor: TokenSet<BrandBackgroundColorTokens, FluentColor> by lazy {
@@ -395,18 +407,6 @@ open class AliasTokens : Parcelable {
                     FluentColor(
                         light = brandColor[BrandColorTokens.Color140],
                         dark = brandColor[BrandColorTokens.Color40]
-                    )
-
-                BrandBackgroundColorTokens.BrandBackgroundInverted ->
-                    FluentColor(
-                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
-                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
-                    )
-
-                BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled ->
-                    FluentColor(
-                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White),
-                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey68)
                     )
             }
         }

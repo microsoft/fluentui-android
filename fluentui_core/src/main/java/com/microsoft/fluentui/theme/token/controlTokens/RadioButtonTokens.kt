@@ -49,7 +49,7 @@ open class RadioButtonTokens : ControlToken, Parcelable {
             selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+            selectedDisabled = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
                 themeMode = themeMode
             )
         )

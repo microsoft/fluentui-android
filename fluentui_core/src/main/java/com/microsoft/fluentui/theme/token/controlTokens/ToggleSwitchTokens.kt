@@ -42,22 +42,22 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
     @Composable
     open fun knobColor(switchInfo: ToggleSwitchInfo): StateColor {
         return StateColor(
-            rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+            rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+            pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            disabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+            disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
                 themeMode = themeMode
             ),
-            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+            selected = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            selectedPressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInverted].value(
+            selectedPressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundInvertedDisabled].value(
+            selectedDisabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
                 themeMode = themeMode
             )
         )
