@@ -100,13 +100,13 @@ open class FABTokens : ControlToken, Parcelable {
         return StateBorderStroke(
             focused = listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                         themeMode = themeMode
                     )

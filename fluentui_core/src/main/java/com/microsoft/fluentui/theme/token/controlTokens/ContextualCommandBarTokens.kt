@@ -68,12 +68,12 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun itemBorderRadius(): Dp {
-        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.None)
+        return GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusNone)
     }
 
     @Composable
     open fun groupBorderRadius(): Dp {
-        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
+        return GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
     }
 
     @Composable

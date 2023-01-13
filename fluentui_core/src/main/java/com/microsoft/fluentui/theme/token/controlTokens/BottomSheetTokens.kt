@@ -37,7 +37,7 @@ open class BottomSheetTokens : ControlToken, Parcelable {
 
     @Composable
     open fun borderRadius(bottomSheetInfo: BottomSheetInfo): Dp =
-        GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
+        GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
 
     @Composable
     open fun scrimColor(bottomSheetInfo: BottomSheetInfo): Color =

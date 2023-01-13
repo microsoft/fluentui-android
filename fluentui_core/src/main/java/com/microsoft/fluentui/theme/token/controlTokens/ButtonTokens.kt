@@ -156,13 +156,13 @@ open class ButtonTokens : ControlToken, Parcelable {
             ButtonStyle.Button, ButtonStyle.TextButton -> StateBorderStroke(
                 focused = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                         aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                             themeMode = themeMode
                         )
                     ),
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                         aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                             themeMode = themeMode
                         )
@@ -173,7 +173,7 @@ open class ButtonTokens : ControlToken, Parcelable {
             ButtonStyle.OutlinedButton -> StateBorderStroke(
                 pressed = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                         aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
                             themeMode = themeMode
                         )
@@ -181,7 +181,7 @@ open class ButtonTokens : ControlToken, Parcelable {
                 ),
                 rest = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                         aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
                             themeMode = themeMode
                         )
@@ -189,7 +189,7 @@ open class ButtonTokens : ControlToken, Parcelable {
                 ),
                 disabled = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                         aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
                             themeMode = themeMode
                         )
@@ -197,13 +197,13 @@ open class ButtonTokens : ControlToken, Parcelable {
                 ),
                 focused = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                         aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                             themeMode = themeMode
                         )
                     ),
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                         aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                             themeMode = themeMode
                         )
@@ -216,9 +216,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun borderRadius(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Large)
-            ButtonSize.Medium -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
-            ButtonSize.Large -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
+            ButtonSize.Small -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
+            ButtonSize.Medium -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            ButtonSize.Large -> GlobalTokens.borderRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
 

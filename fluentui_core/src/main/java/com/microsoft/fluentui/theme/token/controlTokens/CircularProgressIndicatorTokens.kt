@@ -39,11 +39,11 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
     @Composable
     open fun strokeWidth(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
         return when (circularProgressIndicatorInfo.circularProgressIndicatorSize) {
-            CircularProgressIndicatorSize.XXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thinner)
-            CircularProgressIndicatorSize.XSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thinner)
-            CircularProgressIndicatorSize.Medium -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick)
+            CircularProgressIndicatorSize.XXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth10)
+            CircularProgressIndicatorSize.XSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth10)
+            CircularProgressIndicatorSize.Medium -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20)
             CircularProgressIndicatorSize.Large -> 3.dp
-            CircularProgressIndicatorSize.XLarge -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thicker)
+            CircularProgressIndicatorSize.XLarge -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40)
         }
     }
 
