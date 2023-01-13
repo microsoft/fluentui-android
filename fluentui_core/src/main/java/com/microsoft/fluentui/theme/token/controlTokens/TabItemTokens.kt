@@ -23,9 +23,6 @@ class TabItemInfo(
 
 @Parcelize
 open class TabItemTokens : ControlToken, Parcelable {
-    companion object {
-        const val Type: String = "TabItem"
-    }
 
     @Composable
     open fun width(tabItemInfo: TabItemInfo): Dp {

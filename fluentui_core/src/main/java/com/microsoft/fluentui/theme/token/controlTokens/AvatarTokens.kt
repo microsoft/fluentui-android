@@ -189,10 +189,6 @@ data class AvatarInfo(
 open class AvatarTokens(private val activityRingToken: ActivityRingsToken = ActivityRingsToken()) :
     ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "Avatar"
-    }
-
     @Composable
     open fun avatarStyle(avatarInfo: AvatarInfo): AvatarStyle {
         return AvatarStyle.Standard

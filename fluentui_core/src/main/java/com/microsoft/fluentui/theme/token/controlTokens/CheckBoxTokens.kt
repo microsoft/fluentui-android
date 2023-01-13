@@ -17,10 +17,6 @@ data class CheckBoxInfo(
 @Parcelize
 open class CheckBoxTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "Checkbox"
-    }
-
     val fixedSize: Dp = 20.dp
     val fixedIconSize: Dp = 12.dp
     val fixedBorderRadius: Dp = 4.dp

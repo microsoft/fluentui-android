@@ -15,10 +15,6 @@ data class PillBarInfo(
 @Parcelize
 open class PillBarTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "PillBarControl"
-    }
-
     @Composable
     open fun background(pillBarInfo: PillBarInfo): Color {
         return when (pillBarInfo.style) {

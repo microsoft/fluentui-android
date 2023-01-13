@@ -18,10 +18,6 @@ data class RadioButtonInfo(
 @Parcelize
 open class RadioButtonTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "Checkbox"
-    }
-
     open var innerCircleRadius = 5.dp
     open var outerCircleRadius = 10.dp
     open var strokeWidthInwards = 1.5.dp
