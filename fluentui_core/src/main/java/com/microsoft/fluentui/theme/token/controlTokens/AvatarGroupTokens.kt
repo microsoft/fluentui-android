@@ -21,10 +21,6 @@ data class AvatarGroupInfo(
 @Parcelize
 open class AvatarGroupTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "AvatarGroup"
-    }
-
     @Composable
     open fun avatarSize(avatarGroupInfo: AvatarGroupInfo): Dp {
         return when (avatarGroupInfo.size) {

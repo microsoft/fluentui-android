@@ -15,9 +15,6 @@ class BottomSheetInfo() : ControlInfo
 
 @Parcelize
 open class BottomSheetTokens : ControlToken, Parcelable {
-    companion object {
-        const val Type: String = "BottomSheet"
-    }
 
     @Composable
     open fun backgroundColor(bottomSheetInfo: BottomSheetInfo): Color =

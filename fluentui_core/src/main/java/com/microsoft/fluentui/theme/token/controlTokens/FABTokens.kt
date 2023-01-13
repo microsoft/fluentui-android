@@ -34,10 +34,6 @@ data class FABInfo(
 @Parcelize
 open class FABTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "FloatingActionButton"
-    }
-
     @Composable
     open fun iconColor(fabInfo: FABInfo): StateColor {
         return StateColor(

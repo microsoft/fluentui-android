@@ -15,10 +15,6 @@ data class ToggleSwitchInfo(
 @Parcelize
 open class ToggleSwitchTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "ToggleSwitch"
-    }
-
     @Composable
     open fun trackColor(switchInfo: ToggleSwitchInfo): StateColor {
         return StateColor(
