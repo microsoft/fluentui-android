@@ -16,7 +16,7 @@ import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorToke
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.*
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.Thin
+import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.StrokeWidth15
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.*
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Standard
@@ -174,7 +174,7 @@ open class ListItemTokens : ControlToken, Parcelable {
 
     @Composable
     open fun borderSize(): Dp {
-        return GlobalTokens.strokeWidth(Thin)
+        return GlobalTokens.strokeWidth(StrokeWidth15)
     }
 
     @Composable

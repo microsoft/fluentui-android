@@ -376,57 +376,57 @@ object GlobalTokens : Parcelable {
         }
     }
 
-    enum class BorderRadiusTokens {
-        None,
-        Small,
-        Medium,
-        Large,
-        XLarge,
-        Circle
+    enum class CornerRadiusTokens {
+        CornerRadiusNone,
+        CornerRadius20,
+        CornerRadius40,
+        CornerRadius80,
+        CornerRadius120,
+        CornerRadiusCircle
     }
 
-    fun borderRadius(token: BorderRadiusTokens): Dp {
+    fun cornerRadius(token: CornerRadiusTokens): Dp {
         return when (token) {
-            BorderRadiusTokens.None ->
+            CornerRadiusTokens.CornerRadiusNone ->
                 0.dp
-            BorderRadiusTokens.Small ->
+            CornerRadiusTokens.CornerRadius20 ->
                 2.dp
-            BorderRadiusTokens.Medium ->
+            CornerRadiusTokens.CornerRadius40 ->
                 4.dp
-            BorderRadiusTokens.Large ->
+            CornerRadiusTokens.CornerRadius80 ->
                 8.dp
-            BorderRadiusTokens.XLarge ->
+            CornerRadiusTokens.CornerRadius120 ->
                 12.dp
-            BorderRadiusTokens.Circle ->
+            CornerRadiusTokens.CornerRadiusCircle ->
                 9999.dp
         }
     }
 
     enum class StrokeWidthTokens {
-        None,
-        Thinnest,
-        Thinner,
-        Thin,
-        Thick,
-        Thicker,
-        Thickest
+        StrokeWidthNone,
+        StrokeWidth05,
+        StrokeWidth10,
+        StrokeWidth15,
+        StrokeWidth20,
+        StrokeWidth40,
+        StrokeWidth60
     }
 
     fun strokeWidth(token: StrokeWidthTokens): Dp {
         return when (token) {
-            StrokeWidthTokens.None ->
+            StrokeWidthTokens.StrokeWidthNone ->
                 0.dp
-            StrokeWidthTokens.Thinnest ->
+            StrokeWidthTokens.StrokeWidth05 ->
                 0.5.dp
-            StrokeWidthTokens.Thinner ->
+            StrokeWidthTokens.StrokeWidth10 ->
                 1.dp
-            StrokeWidthTokens.Thin ->
+            StrokeWidthTokens.StrokeWidth15 ->
                 1.5.dp
-            StrokeWidthTokens.Thick ->
+            StrokeWidthTokens.StrokeWidth20 ->
                 2.dp
-            StrokeWidthTokens.Thicker ->
+            StrokeWidthTokens.StrokeWidth40 ->
                 4.dp
-            StrokeWidthTokens.Thickest ->
+            StrokeWidthTokens.StrokeWidth60 ->
                 6.dp
         }
     }

@@ -67,7 +67,7 @@ fun Button(
             )
         val contentPadding = getButtonToken().padding(getButtonInfo())
         val iconSpacing = getButtonToken().spacing(getButtonInfo())
-        val shape = RoundedCornerShape(getButtonToken().borderRadius(getButtonInfo()))
+        val shape = RoundedCornerShape(getButtonToken().cornerRadius(getButtonInfo()))
         val borders: List<BorderStroke> =
             getButtonToken().borderStroke(buttonInfo = getButtonInfo()).getBorderStrokeByState(
                 enabled = enabled,

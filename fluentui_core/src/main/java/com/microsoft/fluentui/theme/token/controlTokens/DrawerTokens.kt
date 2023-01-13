@@ -42,8 +42,8 @@ open class DrawerTokens : ControlToken, Parcelable {
     @Composable
     open fun borderRadius(drawerInfo: DrawerInfo): Dp {
         return when (drawerInfo.type) {
-            BehaviorType.TOP, BehaviorType.BOTTOM -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
-            BehaviorType.LEFT, BehaviorType.RIGHT -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.None)
+            BehaviorType.TOP, BehaviorType.BOTTOM -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
+            BehaviorType.LEFT, BehaviorType.RIGHT -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusNone)
         }
     }
 

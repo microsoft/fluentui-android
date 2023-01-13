@@ -608,13 +608,13 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun cornerRadius(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
-            AvatarSize.Size16 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Small)
-            AvatarSize.Size20 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
-            AvatarSize.Size24 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
-            AvatarSize.Size32 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
-            AvatarSize.Size40 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Large)
-            AvatarSize.Size56 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Large)
-            AvatarSize.Size72 -> GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.XLarge)
+            AvatarSize.Size16 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
+            AvatarSize.Size20 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size24 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size32 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size40 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
+            AvatarSize.Size56 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
+            AvatarSize.Size72 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
         }
     }
 
@@ -740,7 +740,7 @@ open class ActivityRingsToken : Parcelable {
         return when (activityRingSize) {
             ActivityRingSize.Size16 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -748,7 +748,7 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size20 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -756,7 +756,7 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size24 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -764,7 +764,7 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size32 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -772,7 +772,7 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size40 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -780,7 +780,7 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size56 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -788,7 +788,7 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size72 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thicker),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -805,17 +805,17 @@ open class ActivityRingsToken : Parcelable {
         return when (activityRingSize) {
             ActivityRingSize.Size16 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -823,17 +823,17 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size20 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thin),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -841,17 +841,17 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size24 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -859,17 +859,17 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size32 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -877,17 +877,17 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size40 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -895,17 +895,17 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size56 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thick),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
@@ -913,17 +913,17 @@ open class ActivityRingsToken : Parcelable {
             )
             ActivityRingSize.Size72 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thicker),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thicker),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.Thicker),
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
                     aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )

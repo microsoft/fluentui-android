@@ -19,7 +19,7 @@ enum class ShimmerShape {
 open class ShimmerTokens : ControlToken, Parcelable {
     @Composable
     open fun cornerRadius(): Dp {
-        return GlobalTokens.borderRadius(GlobalTokens.BorderRadiusTokens.Medium)
+        return GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
     }
 
     @Composable

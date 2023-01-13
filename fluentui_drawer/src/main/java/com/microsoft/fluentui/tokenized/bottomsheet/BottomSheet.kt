@@ -243,8 +243,8 @@ fun BottomSheet(
     ) {
 
         val sheetShape: Shape = RoundedCornerShape(
-            topStart = getDrawerTokens().borderRadius(getBottomSheetInfo()),
-            topEnd = getDrawerTokens().borderRadius(getBottomSheetInfo())
+            topStart = getDrawerTokens().cornerRadius(getBottomSheetInfo()),
+            topEnd = getDrawerTokens().cornerRadius(getBottomSheetInfo())
         )
         val sheetElevation: Dp = getDrawerTokens().elevation(getBottomSheetInfo())
         val sheetBackgroundColor: Color = getDrawerTokens().backgroundColor(getBottomSheetInfo())
