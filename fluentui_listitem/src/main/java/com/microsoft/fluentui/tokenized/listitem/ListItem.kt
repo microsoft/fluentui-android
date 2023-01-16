@@ -786,7 +786,7 @@ object ListItem {
                     .focusable(false)
             ) {
                 Row(
-                    modifier
+                    Modifier
                         .fillMaxWidth()
                         .heightIn(min = cellHeight)
                         .background(backgroundColor)
@@ -811,7 +811,7 @@ object ListItem {
 
                     if (accessoryTextTitle != null) {
                         Text(text = accessoryTextTitle,
-                            modifier
+                            Modifier
                                 .padding(end = horizontalPadding, bottom = verticalPadding)
                                 .clickable(
                                     role = Role.Button,

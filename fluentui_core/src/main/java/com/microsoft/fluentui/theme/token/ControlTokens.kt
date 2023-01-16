@@ -19,6 +19,7 @@ class ControlTokens {
         Avatar,
         AvatarCarousel,
         AvatarGroup,
+        Badge,
         BottomSheet,
         Button,
         CheckBox,
@@ -38,6 +39,8 @@ class ControlTokens {
         SearchBarPersonaChip,
         SearchBar,
         Shimmer,
+        TabBar,
+        TabBarTabItem,
         TabItem,
         ToggleSwitch
     }
@@ -49,6 +52,7 @@ class ControlTokens {
                 ControlType.Avatar -> AvatarTokens()
                 ControlType.AvatarCarousel -> AvatarCarouselTokens()
                 ControlType.AvatarGroup -> AvatarGroupTokens()
+                ControlType.Badge -> BadgeTokens()
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
@@ -68,6 +72,8 @@ class ControlTokens {
                 ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
+                ControlType.TabBar -> TabBarTokens()
+                ControlType.TabBarTabItem -> TabBarTabItemsTokens()
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
