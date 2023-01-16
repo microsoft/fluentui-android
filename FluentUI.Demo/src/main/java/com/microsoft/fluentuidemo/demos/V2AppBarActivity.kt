@@ -27,8 +27,6 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.compose.Strings
-import com.microsoft.fluentui.compose.getString
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
@@ -53,8 +51,6 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.util.DemoAppStrings
-import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlin.math.max
 
 class V2AppBarLayoutActivity : DemoActivity() {
@@ -88,7 +84,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                     }
                 }) {
                     ListItem.SectionHeader(
-                        title = getDemoAppString(DemoAppStrings.ModifiableParameters),
+                        title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
                         chevronOrientation = ChevronOrientation(90f, 0f),
@@ -120,9 +116,9 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                 showBackground = true
                             )
 
-                            var subtitleText = getDemoAppString(DemoAppStrings.Subtitle)
+                            var subtitleText = LocalContext.current.resources.getString(R.string.app_bar_subtitle)
                             ListItem.Item(
-                                text = getDemoAppString(DemoAppStrings.Subtitle),
+                                text = subtitleText,
                                 subText = if (subtitle.isNullOrBlank())
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                 else
@@ -142,7 +138,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             )
 
                             ListItem.Item(
-                                text = getDemoAppString(DemoAppStrings.Style),
+                                text = LocalContext.current.resources.getString(R.string.app_bar_style),
                                 subText = if (style == FluentStyle.Neutral)
                                     LocalContext.current.resources.getString(R.string.fluentui_neutral)
                                 else
@@ -162,7 +158,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             )
 
                             ListItem.Item(
-                                text = getDemoAppString(DemoAppStrings.ButtonBar),
+                                text = LocalContext.current.resources.getString(R.string.buttonbar),
                                 subText = if (enableButtonBar)
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
@@ -178,7 +174,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             )
 
                             ListItem.Item(
-                                text = getDemoAppString(DemoAppStrings.SearchBar),
+                                text = LocalContext.current.resources.getString(R.string.searchbar),
                                 subText = if (enableSearchBar)
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
