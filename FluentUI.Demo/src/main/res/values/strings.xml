@@ -101,6 +101,13 @@
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
     <string name="avatar_group_avatar_clicked">AvatarView at index %d clicked</string>
 
+    <!--Badge-->
+    <!--UI Labels -->
+    <string name="badge_notification_badge">Notification Badge</string>
+    <string name="badge_notification_dot">Dot</string>
+    <string name="badge_notification_list">List</string>
+    <string name="badge_notification_character">Character</string>
+
     <!--BottomNavigation-->
     <!--UI Labels -->
     <string name="bottom_navigation_menu_item_photos">Photos</string>
@@ -642,6 +649,19 @@
     <string name="snackbar_headline_warning_style">Warning style</string>
     <!-- UI Text denoting Danger style snackbar -->
     <string name="snackbar_headline_danger_style">Danger style</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <string name="tabBar_home">Home</string>
+    <string name="tabBar_mail">Mail</string>
+    <string name="tabBar_settings">Settings</string>
+    <string name="tabBar_notification">Notification</string>
+    <string name="tabBar_more">More</string>
+    <string name="tabBar_text_alignment">Text Alignment</string>
+    <string name="tabBar_vertical">Vertical</string>
+    <string name="tabBar_horizontal">Horizontal</string>
+    <string name="tabBar_no_text">No Text</string>
+    <string name="tabBar_tab_items">Tab Items</string>
 
     <!--TemplateView-->
     <!-- UI labels and descriptions -->

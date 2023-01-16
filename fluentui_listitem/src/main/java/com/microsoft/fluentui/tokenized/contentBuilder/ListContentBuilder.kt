@@ -31,7 +31,7 @@ data class ItemData(
     var enabled: Boolean = true,
     var onClick: () -> Unit,
     var accessory: @Composable (() -> Unit)? = null,
-    var icon: ImageVector? = null
+    var icon: ImageVector
 )
 
 // marker interface
@@ -174,7 +174,7 @@ class ListContentBuilder {
                 Layout(
                     modifier = Modifier
                         .background(
-                            token.background(
+                            token.backgroundColor(
                                 TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand
@@ -250,7 +250,7 @@ class ListContentBuilder {
                 LazyRow(
                     state = rowLazyListState, modifier = Modifier
                         .background(
-                            token.background(
+                            token.backgroundColor(
                                 TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand

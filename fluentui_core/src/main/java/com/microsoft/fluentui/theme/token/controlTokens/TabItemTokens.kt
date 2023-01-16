@@ -30,7 +30,7 @@ open class TabItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun background(tabItemInfo: TabItemInfo): Color {
+    open fun backgroundColor(tabItemInfo: TabItemInfo): Color {
         return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
             FluentTheme.themeMode
         )
