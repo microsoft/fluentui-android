@@ -112,7 +112,7 @@ open class FABTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun iconSize(fabInfo: FABInfo): IconSize {
+    open fun iconSize(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
             FABSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
             FABSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)

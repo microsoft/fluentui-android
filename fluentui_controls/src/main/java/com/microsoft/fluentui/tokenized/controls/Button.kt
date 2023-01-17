@@ -113,7 +113,7 @@ fun Button(
                         contentDescription = null,
                         modifier = Modifier
                             .size(
-                                getButtonToken().iconSize(buttonInfo = getButtonInfo()).size
+                                getButtonToken().iconSize(buttonInfo = getButtonInfo())
                             ),
                         tint = getButtonToken().iconColor(buttonInfo = getButtonInfo())
                             .getColorByState(

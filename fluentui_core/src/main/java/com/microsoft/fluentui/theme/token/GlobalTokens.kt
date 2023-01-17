@@ -185,63 +185,27 @@ object GlobalTokens : Parcelable {
 
     enum class IconSizeTokens {
         XXXSmall,
-        XXXSmallSelected,
         XXSmall,
-        XXSmallSelected,
         XSmall,
-        XSmallSelected,
         Small,
-        SmallSelected,
         Medium,
-        MediumSelected,
         Large,
-        LargeSelected,
         XLarge,
-        XLargeSelected,
         XXLarge,
-        XXLargeSelected,
-        XXXLarge,
-        XXXLargeSelected
+        XXXLarge
     }
 
-    fun iconSize(token: IconSizeTokens): IconSize {
+    fun iconSize(token: IconSizeTokens): Dp {
         return when (token) {
-            IconSizeTokens.XXXSmall ->
-                IconSize(10.dp, IconType.Regular)
-            IconSizeTokens.XXXSmallSelected ->
-                IconSize(10.dp, IconType.Filled)
-            IconSizeTokens.XXSmall ->
-                IconSize(12.dp, IconType.Regular)
-            IconSizeTokens.XXSmallSelected ->
-                IconSize(12.dp, IconType.Filled)
-            IconSizeTokens.XSmall ->
-                IconSize(16.dp, IconType.Regular)
-            IconSizeTokens.XSmallSelected ->
-                IconSize(16.dp, IconType.Filled)
-            IconSizeTokens.Small ->
-                IconSize(20.dp, IconType.Regular)
-            IconSizeTokens.SmallSelected ->
-                IconSize(20.dp, IconType.Filled)
-            IconSizeTokens.Medium ->
-                IconSize(24.dp, IconType.Regular)
-            IconSizeTokens.MediumSelected ->
-                IconSize(24.dp, IconType.Filled)
-            IconSizeTokens.Large ->
-                IconSize(28.dp, IconType.Regular)
-            IconSizeTokens.LargeSelected ->
-                IconSize(28.dp, IconType.Filled)
-            IconSizeTokens.XLarge ->
-                IconSize(36.dp, IconType.Regular)
-            IconSizeTokens.XLargeSelected ->
-                IconSize(36.dp, IconType.Filled)
-            IconSizeTokens.XXLarge ->
-                IconSize(40.dp, IconType.Regular)
-            IconSizeTokens.XXLargeSelected ->
-                IconSize(40.dp, IconType.Filled)
-            IconSizeTokens.XXXLarge ->
-                IconSize(48.dp, IconType.Regular)
-            IconSizeTokens.XXXLargeSelected ->
-                IconSize(48.dp, IconType.Filled)
+            IconSizeTokens.XXXSmall -> 10.dp
+            IconSizeTokens.XXSmall -> 12.dp
+            IconSizeTokens.XSmall -> 16.dp
+            IconSizeTokens.Small -> 20.dp
+            IconSizeTokens.Medium -> 24.dp
+            IconSizeTokens.Large -> 28.dp
+            IconSizeTokens.XLarge -> 36.dp
+            IconSizeTokens.XXLarge -> 40.dp
+            IconSizeTokens.XXXLarge -> 48.dp
         }
     }
 

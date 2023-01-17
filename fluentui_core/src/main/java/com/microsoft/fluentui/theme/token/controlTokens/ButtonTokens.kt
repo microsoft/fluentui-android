@@ -219,13 +219,13 @@ open class ButtonTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun iconSize(buttonInfo: ButtonInfo): IconSize {
+    open fun iconSize(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
                 when (buttonInfo.size) {
-                    ButtonSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmallSelected)
-                    ButtonSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.SmallSelected)
-                    ButtonSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.SmallSelected)
+                    ButtonSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+                    ButtonSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+                    ButtonSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
                 }
         }
     }

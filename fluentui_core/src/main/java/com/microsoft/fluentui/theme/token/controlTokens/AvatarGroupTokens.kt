@@ -135,7 +135,7 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun avatarSize(avatarInfo: AvatarInfo): IconSize {
+    open fun avatarSize(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
             AvatarSize.Size16 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
             AvatarSize.Size20 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
