@@ -119,12 +119,12 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun leftIconSize(searchBarInfo: SearchBarInfo): IconSize {
+    open fun leftIconSize(searchBarInfo: SearchBarInfo): Dp {
         return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
     }
 
     @Composable
-    open fun rightIconSize(searchBarInfo: SearchBarInfo): IconSize {
+    open fun rightIconSize(searchBarInfo: SearchBarInfo): Dp {
         return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
     }
 

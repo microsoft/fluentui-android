@@ -156,7 +156,7 @@ fun SearchBar(
                         icon,
                         contentDescription,
                         modifier = Modifier
-                            .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
+                            .size(getSearchBarTokens().leftIconSize(getSearchBarInfo())),
                         tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
                     )
                 }
@@ -291,7 +291,7 @@ fun SearchBar(
                                     SearchBarIcons.Microphone,
                                     LocalContext.current.resources.getString(R.string.fluentui_microphone),
                                     modifier = Modifier
-                                        .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
+                                        .size(getSearchBarTokens().rightIconSize(getSearchBarInfo())),
                                     tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
                                 )
                             }
@@ -333,7 +333,7 @@ fun SearchBar(
                                 SearchBarIcons.Dismisscircle,
                                 LocalContext.current.resources.getString(R.string.fluentui_clear_text),
                                 modifier = Modifier
-                                    .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
+                                    .size(getSearchBarTokens().rightIconSize(getSearchBarInfo())),
                                 tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
                             )
                         }
@@ -358,7 +358,7 @@ fun SearchBar(
                         rightAccessoryIcon,
                         rightAccessoryIconDescription,
                         modifier = Modifier
-                            .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()).size),
+                            .size(getSearchBarTokens().rightIconSize(getSearchBarInfo())),
                         tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
                     )
                     Icon(

@@ -126,7 +126,7 @@ fun FloatingActionButton(
                         contentDescription = text,
                         modifier = Modifier
                             .size(
-                                getFABToken().iconSize(getFABInfo()).size
+                                getFABToken().iconSize(getFABInfo())
                             )
                             .clearAndSetSemantics { },
                         tint = getFABToken().iconColor(fabInfo = getFABInfo()).getColorByState(
