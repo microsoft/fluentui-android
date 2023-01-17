@@ -14,6 +14,5 @@ value class DemoAppStrings private constructor(@Suppress("unused") private val v
         val MicrophonePressed = DemoAppStrings(5)
         val RightViewPressed = DemoAppStrings(6)
         val KeyboardSearchPressed = DemoAppStrings(7)
-        val Presence = DemoAppStrings(8)
     }
 }

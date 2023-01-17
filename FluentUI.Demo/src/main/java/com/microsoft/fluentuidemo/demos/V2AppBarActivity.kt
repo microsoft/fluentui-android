@@ -7,11 +7,10 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
@@ -77,7 +76,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
 
                 Column(modifier = Modifier.pointerInput(Unit) {
                     detectDragGestures { _, distance ->
-                        if(searchMode)
+                        if (searchMode)
                             yAxisDelta = 0F
                         else
                             yAxisDelta = max(0F, distance.y + 10F) / 20F
@@ -116,7 +115,8 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                 showBackground = true
                             )
 
-                            var subtitleText = LocalContext.current.resources.getString(R.string.app_bar_subtitle)
+                            var subtitleText =
+                                LocalContext.current.resources.getString(R.string.app_bar_subtitle)
                             ListItem.Item(
                                 text = subtitleText,
                                 subText = if (subtitle.isNullOrBlank())
@@ -218,7 +218,9 @@ class V2AppBarLayoutActivity : DemoActivity() {
 
                     val accessoryDelta: Float by animateFloatAsState(yAxisDeltaCoerced)
                     val rightIconColor: Color = if (style == FluentStyle.Neutral)
-                        FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(FluentTheme.themeMode)
+                        FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                            FluentTheme.themeMode
+                        )
                     else
                         FluentColor(
                             light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -235,7 +237,11 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             SearchBarIcons.Arrowback,
                             contentDescription = "Navigate Back",
                             onClick = {
-                                Toast.makeText(context, "Navigation Icon pressed", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(
+                                    context,
+                                    "Navigation Icon pressed",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         ),
                         subTitle = subtitle,
@@ -254,15 +260,17 @@ class V2AppBarLayoutActivity : DemoActivity() {
                         postTitleIcon = FluentIcon(
                             ListItemIcons.Chevron,
                             contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                                    onClick = {
-                                Toast.makeText(context, "Title Icon pressed", Toast.LENGTH_SHORT).show()
+                            onClick = {
+                                Toast.makeText(context, "Title Icon pressed", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         ),
                         postSubtitleIcon = FluentIcon(
                             ListItemIcons.Chevron,
                             contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
                             onClick = {
-                                Toast.makeText(context, "Subtitle Icon pressed", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Subtitle Icon pressed", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         ),
                         appBarStyle = appBarStyle,
@@ -294,7 +302,15 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                 Modifier
                                     .size(44.dp)
                                     .clickable(
-                                        onClick = { Toast.makeText(context, "Navigation Icon 1 Pressed", Toast.LENGTH_SHORT).show() }
+                                        onClick = {
+                                            Toast
+                                                .makeText(
+                                                    context,
+                                                    "Navigation Icon 1 Pressed",
+                                                    Toast.LENGTH_SHORT
+                                                )
+                                                .show()
+                                        }
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
@@ -309,7 +325,15 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                 Modifier
                                     .size(44.dp)
                                     .clickable(
-                                        onClick = { Toast.makeText(context, "Navigation Icon 2 Pressed", Toast.LENGTH_SHORT).show() }
+                                        onClick = {
+                                            Toast
+                                                .makeText(
+                                                    context,
+                                                    "Navigation Icon 2 Pressed",
+                                                    Toast.LENGTH_SHORT
+                                                )
+                                                .show()
+                                        }
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
@@ -321,7 +345,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             }
                         }
                     )
-                } 
+                }
             }
         }
     }

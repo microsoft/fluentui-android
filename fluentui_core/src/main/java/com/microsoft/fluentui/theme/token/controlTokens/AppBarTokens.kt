@@ -172,7 +172,7 @@ open class AppBarTokens : ControlToken, Parcelable {
 
     @Composable
     fun titleIconSize(info: AppBarInfo): IconSize {
-        return when(info.appBarStyle) {
+        return when (info.appBarStyle) {
             AppBarStyle.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
             else -> IconSize(0.dp, IconType.Regular)
         }
@@ -180,7 +180,7 @@ open class AppBarTokens : ControlToken, Parcelable {
 
     @Composable
     fun subtitleIconSize(info: AppBarInfo): IconSize {
-        return when(info.appBarStyle) {
+        return when (info.appBarStyle) {
             AppBarStyle.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
             AppBarStyle.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
             else -> IconSize(0.dp, IconType.Regular)

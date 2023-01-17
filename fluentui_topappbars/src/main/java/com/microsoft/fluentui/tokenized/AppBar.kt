@@ -4,7 +4,6 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -14,18 +13,12 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.BaselineShift
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextGeometricTransform
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
@@ -49,6 +42,7 @@ private val LocalAppBarInfo = compositionLocalOf { AppBarInfo(FluentStyle.Neutra
 @Composable
 fun AppBar(
     title: String,
+
     modifier: Modifier = Modifier,
     appBarStyle: AppBarStyle = AppBarStyle.Medium,
     style: FluentStyle = FluentStyle.Neutral,
@@ -96,17 +90,18 @@ fun AppBar(
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (appBarStyle != AppBarStyle.Large && navigationIcon.isAvailable()) {
-                        Box(modifier = Modifier
-                            .then(
-                                if (navigationIcon.onClick != null) {
-                                    Modifier.clickable(
-                                        role = Role.Button,
-                                        onClick = navigationIcon.onClick!!
-                                    )
-                                } else
-                                    Modifier
-                            ), contentAlignment = Alignment.Center
+                    if (appBarStyle != AppBarStyle.Large && navigationIcon.isIconAvailable()) {
+                        Box(
+                            modifier = Modifier
+                                .then(
+                                    if (navigationIcon.onClick != null) {
+                                        Modifier.clickable(
+                                            role = Role.Button,
+                                            onClick = navigationIcon.onClick!!
+                                        )
+                                    } else
+                                        Modifier
+                                ), contentAlignment = Alignment.Center
                         ) {
                             Icon(
                                 navigationIcon.value(themeMode = themeMode),
@@ -119,7 +114,7 @@ fun AppBar(
                         }
                     }
 
-                    if(appBarStyle != AppBarStyle.Medium)
+                    if (appBarStyle != AppBarStyle.Medium)
                         logo?.invoke()
 
                     val titleFontInfo = getAppBarTokens().titleTypography(getAppBarInfo())
@@ -132,13 +127,14 @@ fun AppBar(
                                 .weight(1F)
                                 .padding(getAppBarTokens().logoPadding(getAppBarInfo()))
                         ) {
-                            Row(modifier = Modifier
-                                .then(
-                                    if(postTitleIcon.onClick != null && appBarStyle == AppBarStyle.Small)
-                                        Modifier.clickable(onClick = postTitleIcon.onClick!!)
-                                    else
-                                        Modifier
-                                ), verticalAlignment = Alignment.CenterVertically
+                            Row(
+                                modifier = Modifier
+                                    .then(
+                                        if (postTitleIcon.onClick != null && appBarStyle == AppBarStyle.Small)
+                                            Modifier.clickable(onClick = postTitleIcon.onClick!!)
+                                        else
+                                            Modifier
+                                    ), verticalAlignment = Alignment.CenterVertically
                             ) {
                                 Text(
                                     text = title,
@@ -154,7 +150,7 @@ fun AppBar(
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis
                                 )
-                                if (postTitleIcon.isAvailable() && appBarStyle == AppBarStyle.Small)
+                                if (postTitleIcon.isIconAvailable() && appBarStyle == AppBarStyle.Small)
                                     Icon(
                                         postTitleIcon.value(themeMode),
                                         postTitleIcon.contentDescription,
@@ -163,15 +159,16 @@ fun AppBar(
                                         tint = getAppBarTokens().titleIconColor(getAppBarInfo())
                                     )
                             }
-                            Row(modifier = Modifier
-                                .then(
-                                    if(postSubtitleIcon.onClick != null)
-                                        Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
-                                    else
-                                        Modifier
-                                ), verticalAlignment = Alignment.CenterVertically
+                            Row(
+                                modifier = Modifier
+                                    .then(
+                                        if (postSubtitleIcon.onClick != null)
+                                            Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
+                                        else
+                                            Modifier
+                                    ), verticalAlignment = Alignment.CenterVertically
                             ) {
-                                if (preSubtitleIcon.isAvailable())
+                                if (preSubtitleIcon.isIconAvailable())
                                     Icon(
                                         preSubtitleIcon.value(themeMode),
                                         preSubtitleIcon.contentDescription,
@@ -196,7 +193,7 @@ fun AppBar(
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis
                                 )
-                                if (postSubtitleIcon.isAvailable())
+                                if (postSubtitleIcon.isIconAvailable())
                                     Icon(
                                         postSubtitleIcon.value(themeMode),
                                         postSubtitleIcon.contentDescription,
@@ -213,13 +210,17 @@ fun AppBar(
                     } else {
                         Text(
                             text = title,
-                            modifier = Modifier.padding(getAppBarTokens().logoPadding(getAppBarInfo())),
+                            modifier = Modifier
+                                .padding(getAppBarTokens().logoPadding(getAppBarInfo()))
+                                .weight(1F),
                             style = TextStyle(
                                 color = getAppBarTokens().titleTextColor(getAppBarInfo()),
                                 fontSize = titleFontInfo.fontSize.size,
                                 lineHeight = titleFontInfo.fontSize.lineHeight,
                                 fontWeight = titleFontInfo.weight,
-                                textAlign = TextAlign.Center
+                                platformStyle = PlatformTextStyle(
+                                    includeFontPadding = false
+                                )
                             ),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
@@ -236,7 +237,7 @@ fun AppBar(
                         modifier
                             .animateContentSize()
                             .fillMaxWidth()
-                            .height(56.dp * accessoryDelta)
+                            .then(if (!searchMode) Modifier.height(56.dp * accessoryDelta) else Modifier)
                             .padding(vertical = 8.dp),
                         horizontalArrangement = Arrangement.Center
                     ) {
@@ -248,7 +249,7 @@ fun AppBar(
                         Modifier
                             .animateContentSize()
                             .fillMaxWidth()
-                            .height(48.dp * accessoryDelta)
+                            .then(if (!searchMode) Modifier.height(48.dp * accessoryDelta) else Modifier)
                             .padding(vertical = 8.dp)
                     ) {
                         bottomBar()

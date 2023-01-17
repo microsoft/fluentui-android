@@ -100,7 +100,6 @@
     <string name="avatar_group_overflow_clicked">Overflow clicked</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
     <string name="avatar_group_avatar_clicked">AvatarView at index %d clicked</string>
-    <string name="avatar_presence">Presence</string>
 
     <!--BottomNavigation-->
     <!--UI Labels -->
