@@ -256,7 +256,7 @@ fun ContextualCommandBar(
                                             null,
                                             Modifier
                                                 .padding(contentPadding)
-                                                .requiredSize(getContextualCommandBarTokens().iconSize().size),
+                                                .requiredSize(getContextualCommandBarTokens().iconSize()),
                                             tint = foregroundColor
                                         )
                                     else {
@@ -264,7 +264,7 @@ fun ContextualCommandBar(
                                         Box(
                                             modifier = Modifier
                                                 .padding(contentPadding)
-                                                .requiredHeight(getContextualCommandBarTokens().iconSize().size),
+                                                .requiredHeight(getContextualCommandBarTokens().iconSize()),
                                             contentAlignment = Alignment.Center
                                         ) {
                                             Text(

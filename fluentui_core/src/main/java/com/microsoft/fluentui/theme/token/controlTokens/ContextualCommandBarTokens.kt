@@ -93,7 +93,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun iconSize(): IconSize {
+    open fun iconSize(): Dp {
         return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
     }
 

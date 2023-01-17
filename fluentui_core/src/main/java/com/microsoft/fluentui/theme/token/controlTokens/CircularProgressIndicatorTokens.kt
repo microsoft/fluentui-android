@@ -28,11 +28,11 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
     @Composable
     open fun size(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
         return when (circularProgressIndicatorInfo.circularProgressIndicatorSize) {
-            CircularProgressIndicatorSize.XXSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall).size
-            CircularProgressIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall).size
-            CircularProgressIndicatorSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium).size
+            CircularProgressIndicatorSize.XXSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
+            CircularProgressIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+            CircularProgressIndicatorSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
             CircularProgressIndicatorSize.Large -> 32.dp
-            CircularProgressIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XLarge).size
+            CircularProgressIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XLarge)
         }
     }
 
