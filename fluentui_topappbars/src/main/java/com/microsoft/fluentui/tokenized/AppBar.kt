@@ -32,19 +32,47 @@ import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarStyle
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
 
 private val LocalAppBarTokens = compositionLocalOf { AppBarTokens() }
 private val LocalAppBarInfo = compositionLocalOf { AppBarInfo(FluentStyle.Neutral) }
 
+/**
+ * An app bar appears at the top of an app screen, below the status bar,
+ * and enables navigation through a series of hierarchical screens.
+ * When a new screen is displayed, a back button, often labeled with the title of
+ * the previous screen, appears on the left side of the bar. Sometimes, the right side
+ * of a navigation bar contains a control, like an Edit or a Done button,
+ * for managing the content within the active view. In a split view,
+ * a navigation bar may appear in a single pane of the split view.
+ * Navigation bars are translucent, may have a background tint, and can be configured
+ * to hide when the keyboard is onscreen, a gesture occurs, or a view resizes.
+ *
+ * @param title Title Of the current page
+ * @param modifier Optional Modifier for updating appbar
+ * @param appBarSize Enum to define App Bar Size. Default: [AppBarSize.Medium]
+ * @param style Fluent Style of AppBar. Default: [FluentStyle.Neutral]
+ * @param subTitle Subtitle to be displayed. Default: [null]
+ * @param logo Composable to be placed at left of Title. Guideline is to not increase a size of 32x32. Default: [null]
+ * @param searchMode Boolean to enable/disable searchMode. Default: [false]
+ * @param navigationIcon Navigate Back Icon to be placed at extreme left. Default: [SearchBarIcons.Arrowback]
+ * @param postTitleIcon Icon to be placed after title making the title clickable. Default: Empty [FluentIcon]
+ * @param preSubtitleIcon Icon to be placed before subtitle. Default: Empty [FluentIcon]
+ * @param postSubtitleIcon Icon to be placed after subtitle. Default: [ListItemIcons.Chevron]
+ * @param rightAccessoryView Row Placeholder to be placed at right on AppTitle. Default: [null]
+ * @param searchBar Composable to be placed as searchbar below appTitle. Default: [null]
+ * @param bottomBar Composable to Be placed below appTitle. Displayed if searchbar is not provided or when in searchmode. Default: [null]
+ * @param appTitleDelta Ratio of opening of appTitle. Used for Shychrome and other animations. Default: [1.0F]
+ * @param accessoryDelta Ratio of opening of accessory View. Used for Shychrome and other animations. Default: [1.0F]
+ * @param appBarTokens Optional Tokens for App Bar to customize it. Default: [null]
+ */
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun AppBar(
     title: String,
-
     modifier: Modifier = Modifier,
-    appBarStyle: AppBarStyle = AppBarStyle.Medium,
+    appBarSize: AppBarSize = AppBarSize.Medium,
     style: FluentStyle = FluentStyle.Neutral,
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
@@ -68,19 +96,19 @@ fun AppBar(
 
     CompositionLocalProvider(
         LocalAppBarTokens provides token,
-        LocalAppBarInfo provides AppBarInfo(style, appBarStyle)
+        LocalAppBarInfo provides AppBarInfo(style, appBarSize)
     ) {
         Surface(
             modifier = modifier
                 .fillMaxWidth()
         ) {
             Column(
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .background(getAppBarTokens().backgroundColor(getAppBarInfo()))
             ) {
                 Row(
-                    modifier
+                    Modifier
                         .requiredHeight(56.dp * appTitleDelta)
                         .animateContentSize()
                         .fillMaxWidth()
@@ -90,7 +118,7 @@ fun AppBar(
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (appBarStyle != AppBarStyle.Large && navigationIcon.isIconAvailable()) {
+                    if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
                         Box(
                             modifier = Modifier
                                 .then(
@@ -104,7 +132,7 @@ fun AppBar(
                                 ), contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                navigationIcon.value(themeMode = themeMode),
+                                navigationIcon.value(),
                                 navigationIcon.contentDescription,
                                 modifier = Modifier
                                     .padding(getAppBarTokens().navigationIconPadding(getAppBarInfo()))
@@ -114,23 +142,23 @@ fun AppBar(
                         }
                     }
 
-                    if (appBarStyle != AppBarStyle.Medium)
+                    if (appBarSize != AppBarSize.Medium)
                         logo?.invoke()
 
                     val titleFontInfo = getAppBarTokens().titleTypography(getAppBarInfo())
                     val subtitleFontInfo =
                         getAppBarTokens().subtitleTypography(getAppBarInfo())
 
-                    if (appBarStyle != AppBarStyle.Large && !subTitle.isNullOrBlank()) {
+                    if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
                         Column(
                             modifier = Modifier
                                 .weight(1F)
-                                .padding(getAppBarTokens().logoPadding(getAppBarInfo()))
+                                .padding(getAppBarTokens().textPadding(getAppBarInfo()))
                         ) {
                             Row(
                                 modifier = Modifier
                                     .then(
-                                        if (postTitleIcon.onClick != null && appBarStyle == AppBarStyle.Small)
+                                        if (postTitleIcon.onClick != null && appBarSize == AppBarSize.Small)
                                             Modifier.clickable(onClick = postTitleIcon.onClick!!)
                                         else
                                             Modifier
@@ -150,7 +178,7 @@ fun AppBar(
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis
                                 )
-                                if (postTitleIcon.isIconAvailable() && appBarStyle == AppBarStyle.Small)
+                                if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
                                     Icon(
                                         postTitleIcon.value(themeMode),
                                         postTitleIcon.contentDescription,
@@ -211,7 +239,7 @@ fun AppBar(
                         Text(
                             text = title,
                             modifier = Modifier
-                                .padding(getAppBarTokens().logoPadding(getAppBarInfo()))
+                                .padding(getAppBarTokens().textPadding(getAppBarInfo()))
                                 .weight(1F),
                             style = TextStyle(
                                 color = getAppBarTokens().titleTextColor(getAppBarInfo()),

@@ -95,12 +95,12 @@ fun SearchBar(
         val scope = rememberCoroutineScope()
 
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .background(getSearchBarTokens().backgroundColor(getSearchBarInfo()))
                 .padding(getSearchBarTokens().searchBarPadding(getSearchBarInfo()))
         ) {
             Row(
-                modifier
+                Modifier
                     .requiredHeight(getSearchBarTokens().height(getSearchBarInfo()))
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(8.dp))

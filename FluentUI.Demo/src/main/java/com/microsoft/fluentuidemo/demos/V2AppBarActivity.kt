@@ -36,7 +36,7 @@ import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarStyle
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.tokenized.AppBar
@@ -61,13 +61,13 @@ class V2AppBarLayoutActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val compose_here = findViewById<ComposeView>(R.id.compose_here)
+        val composeHere = findViewById<ComposeView>(R.id.compose_here)
         val context = this
 
-        compose_here.setContent {
+        composeHere.setContent {
             FluentTheme {
                 var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
-                var appBarStyle: AppBarStyle by rememberSaveable { mutableStateOf(AppBarStyle.Small) }
+                var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
                 var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
                 var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
                 var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
@@ -93,18 +93,18 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                 mutableListOf(
                                     PillMetaData(
                                         text = LocalContext.current.resources.getString(R.string.fluentui_large),
-                                        onClick = { appBarStyle = AppBarStyle.Large },
-                                        selected = appBarStyle == AppBarStyle.Large
+                                        onClick = { appBarSize = AppBarSize.Large },
+                                        selected = appBarSize == AppBarSize.Large
                                     ),
                                     PillMetaData(
                                         text = LocalContext.current.resources.getString(R.string.fluentui_medium),
-                                        onClick = { appBarStyle = AppBarStyle.Medium },
-                                        selected = appBarStyle == AppBarStyle.Medium
+                                        onClick = { appBarSize = AppBarSize.Medium },
+                                        selected = appBarSize == AppBarSize.Medium
                                     ),
                                     PillMetaData(
                                         text = LocalContext.current.resources.getString(R.string.fluentui_small),
-                                        onClick = { appBarStyle = AppBarStyle.Small },
-                                        selected = appBarStyle == AppBarStyle.Small
+                                        onClick = { appBarSize = AppBarSize.Small },
+                                        selected = appBarSize == AppBarSize.Small
                                     ),
                                     PillMetaData(
                                         text = LocalContext.current.resources.getString(R.string.fluentui_search),
@@ -273,7 +273,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     .show()
                             }
                         ),
-                        appBarStyle = appBarStyle,
+                        appBarSize = appBarSize,
                         style = style,
                         searchMode = searchMode,
                         searchBar = if (enableSearchBar) {

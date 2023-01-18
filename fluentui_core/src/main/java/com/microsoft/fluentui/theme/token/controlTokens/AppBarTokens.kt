@@ -12,7 +12,7 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-enum class AppBarStyle {
+enum class AppBarSize {
     Large,
     Medium,
     Small
@@ -20,15 +20,11 @@ enum class AppBarStyle {
 
 data class AppBarInfo(
     val style: FluentStyle = FluentStyle.Neutral,
-    val appBarStyle: AppBarStyle = AppBarStyle.Medium
+    val appBarSize: AppBarSize = AppBarSize.Medium
 ) : ControlInfo
 
 @Parcelize
 open class AppBarTokens : ControlToken, Parcelable {
-
-    companion object {
-        const val Type: String = "AppBar"
-    }
 
     @Composable
     open fun backgroundColor(info: AppBarInfo): Color {
@@ -147,10 +143,10 @@ open class AppBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun titleTypography(info: AppBarInfo): FontInfo {
-        return when (info.appBarStyle) {
-            AppBarStyle.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
-            AppBarStyle.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
-            AppBarStyle.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
+        return when (info.appBarSize) {
+            AppBarSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
+            AppBarSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
+            AppBarSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
             else -> FontInfo(fontSize = FontSize(0.sp, 0.sp))
         }
     }
@@ -166,51 +162,37 @@ open class AppBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    fun logoSize(info: AppBarInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size320)
-    }
-
-    @Composable
     fun titleIconSize(info: AppBarInfo): IconSize {
-        return when (info.appBarStyle) {
-            AppBarStyle.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+        return when (info.appBarSize) {
+            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
             else -> IconSize(0.dp, IconType.Regular)
         }
     }
 
     @Composable
     fun subtitleIconSize(info: AppBarInfo): IconSize {
-        return when (info.appBarStyle) {
-            AppBarStyle.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
-            AppBarStyle.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
+        return when (info.appBarSize) {
+            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
+            AppBarSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
             else -> IconSize(0.dp, IconType.Regular)
         }
     }
 
     @Composable
-    open fun textPadding(info: AppBarInfo): PaddingValues {
-        return when (info.appBarStyle) {
-            AppBarStyle.Large -> PaddingValues(vertical = 12.dp)
-            AppBarStyle.Medium -> PaddingValues(vertical = 16.dp)
-            AppBarStyle.Small -> PaddingValues(vertical = 8.dp)
-        }
-    }
-
-    @Composable
     open fun navigationIconPadding(info: AppBarInfo): PaddingValues {
-        return when (info.appBarStyle) {
-            AppBarStyle.Large -> PaddingValues()
-            AppBarStyle.Medium -> PaddingValues(16.dp)
-            AppBarStyle.Small -> PaddingValues(16.dp)
+        return when (info.appBarSize) {
+            AppBarSize.Large -> PaddingValues()
+            AppBarSize.Medium -> PaddingValues(16.dp)
+            AppBarSize.Small -> PaddingValues(16.dp)
         }
     }
 
     @Composable
-    open fun logoPadding(info: AppBarInfo): PaddingValues {
-        return when (info.appBarStyle) {
-            AppBarStyle.Large -> PaddingValues(start = 12.dp)
-            AppBarStyle.Medium -> PaddingValues()
-            AppBarStyle.Small -> PaddingValues(start = 8.dp)
+    open fun textPadding(info: AppBarInfo): PaddingValues {
+        return when (info.appBarSize) {
+            AppBarSize.Large -> PaddingValues(start = 12.dp)
+            AppBarSize.Medium -> PaddingValues()
+            AppBarSize.Small -> PaddingValues(start = 8.dp)
         }
     }
 
