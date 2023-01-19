@@ -160,14 +160,15 @@ object ListItem {
                         append("$description ")
                     }
                 }
-                appendInlineContent(actionText, actionText)
+                //below alternate text will be replaced by composable
+                appendInlineContent("key", actionText)
             }
             val widthInDp: TextUnit = with(LocalDensity.current) {
                 measuredWidth.toSp()
             }
             val inlineContent = mapOf(
                 Pair(
-                    actionText,
+                    "key",
                     InlineTextContent(
                         Placeholder(
                             width = widthInDp,
@@ -706,7 +707,7 @@ object ListItem {
                         .padding(verticalPadding)
                         .weight(1f)
                 ) {
-                    if (actionText != null) {
+                    if (!actionText.isNullOrBlank()) {
                         InlineText(
                             description = description,
                             actionText = actionText,
