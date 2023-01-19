@@ -32,6 +32,7 @@ import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
+import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
@@ -527,7 +528,7 @@ fun ThreeLineListAccessoryViewContent(
             text = primaryText,
             subText = secondaryText,
             secondarySubText = tertiaryText,
-            progressIndicator = { ProgressBar() },
+            progressIndicator = { LinearProgressIndicator() },
             primaryTextLeadingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = twoTextIcons16(),
             leadingAccessoryView = { LeftViewAvatar(Size56) },

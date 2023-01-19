@@ -118,6 +118,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                     ),
                     disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
                         themeMode = FluentTheme.themeMode
+                    ),
+                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
+                        themeMode = FluentTheme.themeMode
                     )
                 )
 
@@ -128,6 +131,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                     ),
                     disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
                         themeMode = FluentTheme.themeMode
+                    ),
+                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                        themeMode = FluentTheme.themeMode
                     )
                 )
             SubText ->
@@ -136,6 +142,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                         themeMode = FluentTheme.themeMode
                     ),
                     disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                        themeMode = FluentTheme.themeMode
+                    ),
+                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
                         themeMode = FluentTheme.themeMode
                     )
                 )
@@ -146,6 +155,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                     ),
                     disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
                         themeMode = FluentTheme.themeMode
+                    ),
+                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                        themeMode = FluentTheme.themeMode
                     )
                 )
             ActionText -> StateColor(
@@ -154,6 +166,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                 ),
                 disabled = FluentTheme.aliasTokens.brandForegroundColor[BrandForegroundDisabled1].value(
                     themeMode = FluentTheme.themeMode
+                ),
+                pressed = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
+                    themeMode = FluentTheme.themeMode
                 )
             )
             DescriptionText -> StateColor(
@@ -161,6 +176,9 @@ open class ListItemTokens : ControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 ),
                 disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                    themeMode = FluentTheme.themeMode
+                ),
+                pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
