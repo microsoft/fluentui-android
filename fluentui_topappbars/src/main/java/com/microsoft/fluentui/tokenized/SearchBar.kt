@@ -164,7 +164,7 @@ fun SearchBar(
                             icon,
                             contentDescription,
                             modifier = Modifier
-                                .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()).size),
+                                .size(getSearchBarTokens().leftIconSize(getSearchBarInfo())),
                             tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
                         )
                     }
@@ -308,7 +308,7 @@ fun SearchBar(
                                             .size(
                                                 getSearchBarTokens().rightIconSize(
                                                     getSearchBarInfo()
-                                                ).size
+                                                )
                                             ),
                                         tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
                                     )
@@ -389,13 +389,14 @@ fun SearchBar(
             }
         }
     }
+}
 
-    @Composable
-    private fun getSearchBarTokens(): SearchBarTokens {
-        return LocalSearchBarTokens.current
-    }
+@Composable
+private fun getSearchBarTokens(): SearchBarTokens {
+    return LocalSearchBarTokens.current
+}
 
-    @Composable
-    private fun getSearchBarInfo(): SearchBarInfo {
-        return LocalSearchBarInfo.current
-    }
+@Composable
+private fun getSearchBarInfo(): SearchBarInfo {
+    return LocalSearchBarInfo.current
+}

@@ -136,7 +136,7 @@ fun AppBar(
                                 navigationIcon.contentDescription,
                                 modifier = Modifier
                                     .padding(getAppBarTokens().navigationIconPadding(getAppBarInfo()))
-                                    .size(getAppBarTokens().leftIconSize(getAppBarInfo()).size),
+                                    .size(getAppBarTokens().leftIconSize(getAppBarInfo())),
                                 tint = getAppBarTokens().navigationIconColor(getAppBarInfo())
                             )
                         }
@@ -183,7 +183,7 @@ fun AppBar(
                                         postTitleIcon.value(themeMode),
                                         postTitleIcon.contentDescription,
                                         modifier = Modifier
-                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo()).size),
+                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo())),
                                         tint = getAppBarTokens().titleIconColor(getAppBarInfo())
                                     )
                             }
@@ -204,7 +204,7 @@ fun AppBar(
                                             .size(
                                                 getAppBarTokens().subtitleIconSize(
                                                     getAppBarInfo()
-                                                ).size
+                                                )
                                             ),
                                         tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
                                     )
@@ -229,7 +229,7 @@ fun AppBar(
                                             .size(
                                                 getAppBarTokens().subtitleIconSize(
                                                     getAppBarInfo()
-                                                ).size
+                                                )
                                             ),
                                         tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
                                     )
