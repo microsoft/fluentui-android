@@ -15,6 +15,7 @@ interface ControlToken
 class ControlTokens {
 
     enum class ControlType {
+        AppBar,
         Avatar,
         AvatarCarousel,
         AvatarGroup,
@@ -44,6 +45,7 @@ class ControlTokens {
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
         TokenSet { token ->
             when (token) {
+                ControlType.AppBar -> AppBarTokens()
                 ControlType.Avatar -> AvatarTokens()
                 ControlType.AvatarCarousel -> AvatarCarouselTokens()
                 ControlType.AvatarGroup -> AvatarGroupTokens()
