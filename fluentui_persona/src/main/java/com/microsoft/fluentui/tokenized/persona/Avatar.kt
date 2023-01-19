@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.DpOffset
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
@@ -145,7 +145,7 @@ fun Avatar(
 
                 if (enablePresence) {
                     val presenceOffset: DpOffset = getAvatarTokens().presenceOffset(getAvatarInfo())
-                    val image: Icon = getAvatarTokens().presenceIcon(getAvatarInfo())
+                    val image: FluentIcon = getAvatarTokens().presenceIcon(getAvatarInfo())
                     Image(
                         image.value(themeMode),
                         null,
