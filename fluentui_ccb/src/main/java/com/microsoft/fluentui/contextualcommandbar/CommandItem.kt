@@ -65,6 +65,13 @@ interface CommandItem {
     fun isSelected(): Boolean = false
 
     /**
+     * Sets View for the Command Item
+     *
+     * @param view CommandItem View
+     */
+    fun setView(view: View) {}
+
+    /**
      * Indicates the view for the CommandItem
      */
     fun getView(): View? = null
