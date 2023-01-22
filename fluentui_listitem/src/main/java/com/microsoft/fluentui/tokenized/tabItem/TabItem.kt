@@ -47,15 +47,15 @@ fun getTabItemInfo(): TabItemInfo {
 @Composable
 fun TabItem(
     title: String,
-    modifier: Modifier = Modifier,
     icon: ImageVector,
+    onClick: () -> Unit,
+    accessory: (@Composable () -> Unit)?,
+    modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
     textAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
     enabled: Boolean = true,
     selected: Boolean = false,
     fixedWidth: Boolean = false,
-    onClick: () -> Unit,
-    accessory: (@Composable () -> Unit)?,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     tabItemTokens: TabItemTokens? = null
 ) {
