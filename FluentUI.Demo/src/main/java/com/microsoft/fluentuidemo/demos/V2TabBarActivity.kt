@@ -47,6 +47,7 @@ class V2TabBarActivity : DemoActivity() {
 
         composeHere.setContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
+            var showHomeBadge by rememberSaveable { mutableStateOf(true) }
             val tabDataList = arrayListOf(
                 TabData(
                     title = resources.getString(R.string.tabBar_home),
@@ -54,10 +55,10 @@ class V2TabBarActivity : DemoActivity() {
                     selectedIcon = Icons.Filled.Home,
                     onClick = {
                         invokeToast(resources.getString(R.string.tabBar_home), context)
-                        Toast.makeText(context, "Home Tab Clicked", Toast.LENGTH_SHORT).show()
                         selectedIndex = 0
+                        showHomeBadge = false
                     },
-                    badge = { Badge() }
+                    badge = { if(selectedIndex == 0 && showHomeBadge) Badge() else null }
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_mail),

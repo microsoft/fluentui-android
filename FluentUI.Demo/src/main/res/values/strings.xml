@@ -102,10 +102,13 @@
     <string name="avatar_group_avatar_clicked">AvatarView at index %d clicked</string>
 
     <!--Badge-->
-    <!--UI Labels -->
+    <!--UI Label for notification badge  -->
     <string name="badge_notification_badge">Notification Badge</string>
+    <!--UI Label for dot notification -->
     <string name="badge_notification_dot">Dot</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
     <string name="badge_notification_list">List</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
     <string name="badge_notification_character">Character</string>
 
     <!--BottomNavigation-->
@@ -652,15 +655,25 @@
 
     <!-- TabBar-->
     <!-- UI labels -->
+    <!-- text for tabbar home tab -->
     <string name="tabBar_home">Home</string>
+    <!-- text for tabbar mail tab -->
     <string name="tabBar_mail">Mail</string>
+    <!-- text for tabbar setting tab -->
     <string name="tabBar_settings">Settings</string>
+    <!-- text for tabbar notification tab -->
     <string name="tabBar_notification">Notification</string>
+    <!-- text for tabbar more tab -->
     <string name="tabBar_more">More</string>
+    <!-- UI text for text alignment of tab -->
     <string name="tabBar_text_alignment">Text Alignment</string>
+    <!-- UI text for vertical alignment of tab -->
     <string name="tabBar_vertical">Vertical</string>
+    <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Horizontal</string>
+    <!-- UI text for no text of tab -->
     <string name="tabBar_no_text">No Text</string>
+    <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Tab Items</string>
 
     <!--TemplateView-->
