@@ -10,6 +10,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
 
@@ -23,26 +24,37 @@ data class TabData(
     var badge: @Composable (() -> Unit)? = null
 )
 
-val LocalTabBarInfo = compositionLocalOf { TabBarInfo() }
-val LocalTabBarToken = compositionLocalOf { TabBarTokens() }
+private val LocalTabBarInfo = compositionLocalOf { TabBarInfo() }
+private val LocalTabBarToken = compositionLocalOf { TabBarTokens() }
 
 @Composable
-fun getTabBarInfo(): TabBarInfo {
+private fun getTabBarInfo(): TabBarInfo {
     return LocalTabBarInfo.current
 }
 
 @Composable
-fun getTabBarToken(): TabBarTokens {
+private fun getTabBarToken(): TabBarTokens {
     return LocalTabBarToken.current
 }
 
+/**
+ * TabBar displays tabs that are arranged horizontally.
+ *
+ *  @param tabDataList provide list of [TabData] to create tabs.
+ *  @param modifier the [Modifier] to be applied to this item
+ *  @param selectedIndex Index of selected tax. This should be updated onClick of TabData & provide back to TabBar.
+ *  @param tabTextAlignment Placement of text in Tab
+ *  @param tabItemTokens [TabBarTabItemsTokens] to apply on tabs.
+ *  @param tabBarTokens provide appearance values. If not provided then tokens will be picked from AppThemeController
+ *
+ */
 @Composable
 fun TabBar(
     tabDataList: List<TabData>,
     modifier: Modifier = Modifier,
     selectedIndex: Int = 0,
     tabTextAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
-    tabItemTokens: TabBarTabItemsTokens? = null,
+    tabItemTokens: TabItemTokens? = null,
     tabBarTokens: TabBarTokens? = null
 ) {
     val token = tabBarTokens
@@ -59,7 +71,7 @@ fun TabBar(
                     .background(color = getTabBarToken().topBorderColor(tabBarInfo = getTabBarInfo()))
             )
             Row(
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
@@ -76,7 +88,8 @@ fun TabBar(
                         onClick = tabData.onClick,
                         accessory = tabData.badge,
                         tabItemTokens = tabItemTokens
-                            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBarTabItem] as TabItemTokens
+                            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItem] as TabItemTokens,
+                        style = if (tabData.selected) FluentStyle.Brand else FluentStyle.Neutral
                     )
                 }
             }

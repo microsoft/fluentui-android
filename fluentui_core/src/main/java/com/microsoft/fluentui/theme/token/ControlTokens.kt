@@ -40,7 +40,6 @@ class ControlTokens {
         SearchBar,
         Shimmer,
         TabBar,
-        TabBarTabItem,
         TabItem,
         ToggleSwitch
     }
@@ -73,7 +72,6 @@ class ControlTokens {
                 ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
                 ControlType.TabBar -> TabBarTokens()
-                ControlType.TabBarTabItem -> TabBarTabItemsTokens()
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }

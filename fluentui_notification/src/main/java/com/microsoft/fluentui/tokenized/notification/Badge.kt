@@ -26,18 +26,27 @@ import com.microsoft.fluentui.theme.token.controlTokens.BadgeTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.util.dpToPx
 
-val LocalBadgeInfo = compositionLocalOf { BadgeInfo(BadgeType.Character) }
-val LocalBadgeToken = compositionLocalOf { BadgeTokens() }
+private val LocalBadgeInfo = compositionLocalOf { BadgeInfo(BadgeType.Character) }
+private val LocalBadgeToken = compositionLocalOf { BadgeTokens() }
 
 @Composable
-fun getBadgeInfo(): BadgeInfo {
+private fun getBadgeInfo(): BadgeInfo {
     return LocalBadgeInfo.current
 }
 
 @Composable
-fun getBadgeTokens(): BadgeTokens {
+private fun getBadgeTokens(): BadgeTokens {
     return LocalBadgeToken.current
 }
+
+/**
+ * Badge represents dynamic information such as a number of pending requests on tab.
+ * @param text Text to display, if not provided then it appear as dot.
+ * @param modifier the [Modifier] to be applied to this item
+ * @param badgeType Badge type could be [BadgeType.Character] to use it on tab or [BadgeType.List] to use in List.
+ * @param badgeTokens provide appearance values. If not provided then tokens will be picked from AppThemeController
+ *
+ */
 
 @OptIn(ExperimentalTextApi::class)
 @Composable
