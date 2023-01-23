@@ -6,12 +6,15 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.TextView
 import com.microsoft.fluentui.bottomsheet.BottomSheet
 import com.microsoft.fluentui.bottomsheet.BottomSheetDialog
 import com.microsoft.fluentui.bottomsheet.BottomSheetItem
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.util.createBitmapFromLayout
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 import kotlinx.android.synthetic.main.activity_demo_detail.*
 
@@ -26,22 +29,35 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
 
         // Single line items
         show_with_single_line_items_button.setOnClickListener {
+            val view = LayoutInflater.from(this).inflate(R.layout.accessory_content, null)
+            val textView = view.findViewById<TextView>(R.id.bottom_sheet_item_nudge)
+            textView.text = "10+"
+            val bitmap1 = createBitmapFromLayout(view)
+            textView.text = "100+"
+            val bitmap2 = createBitmapFromLayout(view)
+            textView.text = "123456789+"
+            val bitmap3 = createBitmapFromLayout(view)
+
             val bottomSheet = BottomSheet.newInstance(
                 arrayListOf(
                     BottomSheetItem(
                         R.id.bottom_sheet_item_flag,
                         R.drawable.ic_fluent_flag_24_regular,
-                        getString(R.string.bottom_sheet_item_flag_title)
+                        getString(R.string.bottom_sheet_item_flag_title),
+                        accessoryBitmap = bitmap1
                     ),
                     BottomSheetItem(
-                        R.id.bottom_sheet_item_reply,
-                        R.drawable.ic_fluent_reply_24_regular,
-                        getString(R.string.bottom_sheet_item_reply_title)
+                            R.id.bottom_sheet_item_reply,
+                            R.drawable.ic_fluent_reply_24_regular,
+                            getString(R.string.bottom_sheet_item_reply_title),
+                            disabled = true,
+                            accessoryBitmap = bitmap2
                     ),
                     BottomSheetItem(
-                        R.id.bottom_sheet_item_forward,
-                        R.drawable.ic_fluent_forward_24_regular,
-                        getString(R.string.bottom_sheet_item_forward_title)
+                            R.id.bottom_sheet_item_forward,
+                            R.drawable.ic_fluent_forward_24_regular,
+                            getString(R.string.bottom_sheet_item_forward_title),
+                            accessoryBitmap = bitmap3,
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,

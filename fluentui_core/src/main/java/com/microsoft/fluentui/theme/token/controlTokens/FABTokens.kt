@@ -12,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.FluentTheme.globalTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
@@ -28,84 +27,95 @@ enum class FABSize {
 }
 
 data class FABInfo(
-        val state: FABState = FABState.Expanded,
-        val size: FABSize = FABSize.Large
+    val state: FABState = FABState.Expanded,
+    val size: FABSize = FABSize.Large
 ) : ControlInfo
 
 @Parcelize
 open class FABTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "FloatingActionButton"
-    }
-
     @Composable
     open fun iconColor(fabInfo: FABInfo): StateColor {
         return StateColor(
-                rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                ),
-                disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
-                )
+            rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                themeMode = themeMode
+            )
         )
     }
 
     @Composable
     open fun textColor(fabInfo: FABInfo): StateColor {
         return StateColor(
-                rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        themeMode = themeMode
-                ),
-                disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = themeMode
-                )
+            rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                themeMode = themeMode
+            ),
+            disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                themeMode = themeMode
+            )
         )
     }
 
     @Composable
     open fun backgroundColor(fabInfo: FABInfo): StateColor {
         return StateColor(
-                rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                ),
-                pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
-                        themeMode = themeMode
-                ),
-                selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
-                        themeMode = themeMode
-                ),
-                disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        themeMode = themeMode
-                )
+            rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                themeMode = themeMode
+            ),
+            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                themeMode = themeMode
+            ),
+            focused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
+            disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                themeMode = themeMode
+            )
         )
     }
 
     @Composable
     open fun borderStroke(fabInfo: FABInfo): StateBorderStroke {
         return StateBorderStroke(
-                focused = listOf(
-                        BorderStroke(
-                                globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thick],
-                                aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
-                                        themeMode = themeMode
-                                )
-                        ),
-                        BorderStroke(
-                                globalTokens.borderSize[GlobalTokens.BorderSizeTokens.Thin],
-                                aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
-                                        themeMode = themeMode
-                                )
-                        )
+            focused = listOf(
+                BorderStroke(
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                        themeMode = themeMode
+                    )
+                ),
+                BorderStroke(
+                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                        themeMode = themeMode
+                    )
                 )
+            )
         )
     }
 
     @Composable
-    open fun iconSize(fabInfo: FABInfo): IconSize {
+    open fun iconSize(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.Small]
-            FABSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.Medium]
+            FABSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+            FABSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
         }
     }
 
@@ -122,13 +132,13 @@ open class FABTokens : ControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Small]
+                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
                 )
             FABSize.Large ->
                 PaddingValues(
-                        horizontal = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        vertical = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium]
+                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
                 )
         }
     }
@@ -138,17 +148,17 @@ open class FABTokens : ControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                        top = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        bottom = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        start = globalTokens.spacing[GlobalTokens.SpacingTokens.Small],
-                        end = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium]
+                    top = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                    bottom = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                    start = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
+                    end = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
                 )
             FABSize.Large ->
                 PaddingValues(
-                        top = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        bottom = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        start = globalTokens.spacing[GlobalTokens.SpacingTokens.Medium],
-                        end = globalTokens.spacing[GlobalTokens.SpacingTokens.Large]
+                    top = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                    bottom = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                    start = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
+                    end = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Large)
                 )
         }
     }
@@ -156,8 +166,8 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun spacing(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-            FABSize.Large -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+            FABSize.Small -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+            FABSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
         }
     }
 
@@ -180,11 +190,11 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun elevation(fabInfo: FABInfo): StateElevation {
         return StateElevation(
-                rest = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow08],
-                pressed = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
-                selected = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
-                focused = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02],
-                disabled = globalTokens.elevation[GlobalTokens.ShadowTokens.Shadow02]
+            rest = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
+            pressed = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02),
+            selected = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02),
+            focused = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02),
+            disabled = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow02)
         )
     }
 }

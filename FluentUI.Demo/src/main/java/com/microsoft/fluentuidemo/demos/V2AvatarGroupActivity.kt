@@ -19,13 +19,13 @@ import androidx.compose.ui.unit.dp
 import com.example.theme.token.AnonymousAccentAvatarTokens
 import com.example.theme.token.AnonymousAvatarTokens
 import com.example.theme.token.StandardInvertedAvatarTokens
-import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarGroupStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -45,42 +45,79 @@ class V2AvatarGroupActivity : DemoActivity() {
 
         compose_here.setContent {
             FluentTheme {
-                Column(Modifier.background(Color.LightGray), verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)) {
+                Column(
+                    Modifier.background(Color.LightGray),
+                    verticalArrangement = Arrangement.spacedBy(5.dp, Alignment.CenterVertically)
+                ) {
                     var isActive by rememberSaveable { mutableStateOf(false) }
                     var enablePresence by rememberSaveable { mutableStateOf(true) }
                     var maxVisibleAvatar by rememberSaveable { mutableStateOf(1) }
 
                     val group = Group(
-                            listOf(
-                                    Person("Allan", "Munger",
-                                            image = R.drawable.avatar_allan_munger,
-                                            isActive = isActive),
-                                    Person("Amanda", "Brady",
-                                            isActive = !isActive, status = AvatarStatus.Offline),
-                                    Person("", "",
-                                            isActive = isActive, status = AvatarStatus.DND, isOOO = true),
-                                    Person("Carlos", "Slathery",
-                                            isActive = !isActive, status = AvatarStatus.Busy, isOOO = true),
-                                    Person("Celeste", "Burton",
-                                            image = R.drawable.avatar_celeste_burton,
-                                            isActive = isActive, status = AvatarStatus.Away),
-                                    Person("", "",
-                                            isActive = isActive, status = AvatarStatus.Unknown),
-                                    Person("Miguel", "Garcia",
-                                            image = R.drawable.avatar_miguel_garcia,
-                                            isActive = isActive, status = AvatarStatus.Blocked)
-                            ), "Fluent UI Android"
+                        listOf(
+                            Person(
+                                "Allan", "Munger",
+                                image = R.drawable.avatar_allan_munger,
+                                isActive = isActive
+                            ),
+                            Person(
+                                "Amanda", "Brady",
+                                isActive = !isActive, status = AvatarStatus.Offline
+                            ),
+                            Person(
+                                "", "",
+                                isActive = isActive, status = AvatarStatus.DND, isOOO = true
+                            ),
+                            Person(
+                                "Carlos", "Slathery",
+                                isActive = !isActive, status = AvatarStatus.Busy, isOOO = true
+                            ),
+                            Person(
+                                "Celeste", "Burton",
+                                image = R.drawable.avatar_celeste_burton,
+                                isActive = isActive, status = AvatarStatus.Away
+                            ),
+                            Person(
+                                "", "",
+                                isActive = isActive, status = AvatarStatus.Unknown
+                            ),
+                            Person(
+                                "Miguel", "Garcia",
+                                image = R.drawable.avatar_miguel_garcia,
+                                isActive = isActive, status = AvatarStatus.Blocked
+                            )
+                        ), "Fluent UI Android"
                     )
 
-                    Row(Modifier
+                    Row(
+                        Modifier
                             .fillMaxWidth()
                             .padding(5.dp), horizontalArrangement = Arrangement.SpaceEvenly,
-                            verticalAlignment = Alignment.CenterVertically) {
-                        Button(onClick = { if (maxVisibleAvatar > 0) maxVisibleAvatar-- }, enabled = (maxVisibleAvatar > 0), text = "-")
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Button(
+                            onClick = { if (maxVisibleAvatar > 0) maxVisibleAvatar-- },
+                            enabled = (maxVisibleAvatar > 0),
+                            text = "-",
+                            contentDescription = "Max Visible Avatar $maxVisibleAvatar"
+                        )
                         Text("$maxVisibleAvatar")
-                        Button(onClick = { maxVisibleAvatar++ }, enabled = (maxVisibleAvatar < group.members.size), text = "+")
-                        Button(onClick = { isActive = !isActive }, text = "Swap Active State")
-                        Button(onClick = { enablePresence = !enablePresence }, text = "Toggle Presence")
+                        Button(
+                            onClick = { maxVisibleAvatar++ },
+                            enabled = (maxVisibleAvatar < group.members.size),
+                            text = "+",
+                            contentDescription = "Max Visible Avatar $maxVisibleAvatar"
+                        )
+                        Button(
+                            onClick = { isActive = !isActive },
+                            text = "Swap Active State",
+                            contentDescription = "Active Status ${if (isActive) "Active" else "Inactive"}"
+                        )
+                        Button(
+                            onClick = { enablePresence = !enablePresence },
+                            text = "Toggle Presence",
+                            contentDescription = "Presence Status ${if (enablePresence) "Enabled" else "Disabled"}"
+                        )
                     }
 
                     Divider()
@@ -88,154 +125,283 @@ class V2AvatarGroupActivity : DemoActivity() {
                     LazyColumn(modifier = Modifier.fillMaxWidth()) {
                         item {
                             Row(horizontalArrangement = Arrangement.Center) {
-                                Text("Stack Group Style",
-                                        fontSize = aliasTokens.typography[AliasTokens.TypographyTokens.Title2].fontSize.size)
+                                Text(
+                                    "Stack Group Style",
+                                    fontSize = aliasTokens.typography[AliasTokens.TypographyTokens.Title2].fontSize.size
+                                )
                             }
                         }
                         item {
-                            LazyRow(horizontalArrangement = Arrangement.SpaceEvenly,
-                                    verticalAlignment = Alignment.CenterVertically) {
+                            LazyRow(
+                                horizontalArrangement = Arrangement.SpaceEvenly,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
                                 item {
-                                    Text("XSmall: ")
+                                    Text("Size 16: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XSmall, maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
-                                }
-                            }
-                        }
-                        item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item {
-                                    Text("Small: ")
-                                }
-                                item {
-                                    AvatarGroup(group, size = AvatarSize.Small, maxVisibleAvatar = maxVisibleAvatar,
-                                            enablePresence = enablePresence, avatarToken = AnonymousAvatarTokens())
-                                }
-                            }
-                        }
-                        item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item {
-                                    Text("Medium: ")
-                                }
-                                item {
-                                    AvatarGroup(group, size = AvatarSize.Medium, maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size16,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence
+                                    )
                                 }
                             }
                         }
                         item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
                                 item {
-                                    Text("Large: ")
+                                    Text("Size 20: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Large, maxVisibleAvatar = maxVisibleAvatar,
-                                            enablePresence = enablePresence, avatarToken = AnonymousAccentAvatarTokens())
-                                }
-                            }
-                        }
-                        item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item {
-                                    Text("XLarge: ")
-                                }
-                                item {
-                                    AvatarGroup(group, size = AvatarSize.XLarge, maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size20,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = AnonymousAvatarTokens()
+                                    )
                                 }
                             }
                         }
                         item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
                                 item {
-                                    Text("XXLarge: ")
+                                    Text("Size 24: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XXLarge, maxVisibleAvatar = maxVisibleAvatar,
-                                            enablePresence = enablePresence, avatarToken = StandardInvertedAvatarTokens())
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size24,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = AnonymousAvatarTokens()
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 32: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size32,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 40: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size40,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = AnonymousAccentAvatarTokens()
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 56: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size56,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 72: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size72,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = StandardInvertedAvatarTokens()
+                                    )
                                 }
                             }
                         }
 
                         item {
                             Row(horizontalArrangement = Arrangement.Center) {
-                                Text("Pile Group Style",
-                                        fontSize = aliasTokens.typography[AliasTokens.TypographyTokens.Title2].fontSize.size)
+                                Text(
+                                    "Pile Group Style",
+                                    fontSize = aliasTokens.typography[AliasTokens.TypographyTokens.Title2].fontSize.size
+                                )
                             }
                         }
                         item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
                                 item {
-                                    Text("XSmall: ")
+                                    Text("Size 16: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XSmall, style = AvatarGroupStyle.Pile,
-                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
-                                }
-                            }
-                        }
-                        item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item {
-                                    Text("Small: ")
-                                }
-                                item {
-                                    AvatarGroup(group, size = AvatarSize.Small, style = AvatarGroupStyle.Pile,
-                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence, avatarToken = AnonymousAvatarTokens())
-                                }
-                            }
-                        }
-                        item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item {
-                                    Text("Medium: ")
-                                }
-                                item {
-                                    AvatarGroup(group, size = AvatarSize.Medium, style = AvatarGroupStyle.Pile,
-                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size16,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence
+                                    )
                                 }
                             }
                         }
                         item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
                                 item {
-                                    Text("Large: ")
+                                    Text("Size 20: ")
                                 }
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.Large, style = AvatarGroupStyle.Pile, maxVisibleAvatar = maxVisibleAvatar,
-                                            enablePresence = enablePresence, avatarToken = AnonymousAccentAvatarTokens())
-                                }
-                            }
-                        }
-                        item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item {
-                                    Text("XLarge: ")
-                                }
-                                item {
-                                    AvatarGroup(group, size = AvatarSize.XLarge, style = AvatarGroupStyle.Pile,
-                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence)
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size20,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = AnonymousAvatarTokens()
+                                    )
                                 }
                             }
                         }
                         item {
-                            LazyRow(verticalAlignment = Alignment.CenterVertically,
-                                    modifier = Modifier.fillMaxSize()) {
-                                item { Text("XXLarge: ") }
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
                                 item {
-                                    AvatarGroup(group, size = AvatarSize.XXLarge, style = AvatarGroupStyle.Pile,
-                                            maxVisibleAvatar = maxVisibleAvatar, enablePresence = enablePresence,
-                                            avatarToken = StandardInvertedAvatarTokens())
+                                    Text("Size 24: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size24,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = AnonymousAvatarTokens()
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 32: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size32,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 40: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size40,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = AnonymousAccentAvatarTokens()
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item {
+                                    Text("Size 56: ")
+                                }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size56,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence
+                                    )
+                                }
+                            }
+                        }
+                        item {
+                            LazyRow(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier.fillMaxSize()
+                            ) {
+                                item { Text("Size 72: ") }
+                                item {
+                                    AvatarGroup(
+                                        group,
+                                        size = AvatarSize.Size72,
+                                        style = AvatarGroupStyle.Pile,
+                                        maxVisibleAvatar = maxVisibleAvatar,
+                                        enablePresence = enablePresence,
+                                        avatarToken = StandardInvertedAvatarTokens()
+                                    )
                                 }
                             }
                         }

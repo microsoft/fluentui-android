@@ -38,45 +38,55 @@ val LocalCheckBoxTokens = compositionLocalOf { CheckBoxTokens() }
 val LocalCheckBoxInfo = compositionLocalOf { CheckBoxInfo() }
 
 @Composable
-fun CheckBox(onCheckedChanged: ((Boolean) -> Unit)?,
-             modifier: Modifier = Modifier,
-             enabled: Boolean = true,
-             checked: Boolean = false,
-             interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-             checkBoxToken: CheckBoxTokens? = null) {
+fun CheckBox(
+    onCheckedChanged: ((Boolean) -> Unit),
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    checked: Boolean = false,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    checkBoxToken: CheckBoxTokens? = null
+) {
 
     val token = checkBoxToken
-            ?: FluentTheme.controlTokens.tokens[ControlType.CheckBox] as CheckBoxTokens
+        ?: FluentTheme.controlTokens.tokens[ControlType.CheckBox] as CheckBoxTokens
 
     CompositionLocalProvider(
-            LocalCheckBoxTokens provides token,
-            LocalCheckBoxInfo provides CheckBoxInfo(checked)
+        LocalCheckBoxTokens provides token,
+        LocalCheckBoxInfo provides CheckBoxInfo(checked)
     ) {
         val toggleModifier =
-                if (onCheckedChanged != null) {
-                    modifier.triStateToggleable(
-                            state = ToggleableState(checked),
-                            enabled = enabled,
-                            onClick = { onCheckedChanged(!checked) },
-                            role = Role.Checkbox,
-                            interactionSource = interactionSource,
-                            indication = rememberRipple(
-                                    bounded = false,
-                                    radius = 24.dp
-                            )
-                    )
-                } else {
-                    modifier
-                }
+            modifier.triStateToggleable(
+                state = ToggleableState(checked),
+                enabled = enabled,
+                onClick = { onCheckedChanged(!checked) },
+                role = Role.Checkbox,
+                interactionSource = interactionSource,
+                indication = rememberRipple(
+                    bounded = false,
+                    radius = 24.dp
+                )
+            )
 
-        val backgroundColor: Color = backgroundColor(getCheckBoxToken(), getCheckBoxInfo(),
-                enabled, interactionSource)
-        val iconColor: Color = iconColor(getCheckBoxToken(), getCheckBoxInfo(),
-                enabled, interactionSource)
+        val backgroundColor: Color =
+            getCheckBoxToken().backgroundColor(checkBoxInfo = getCheckBoxInfo()).getColorByState(
+                enabled = enabled,
+                selected = checked,
+                interactionSource = interactionSource
+            )
+        val iconColor: Color =
+            getCheckBoxToken().iconColor(checkBoxInfo = getCheckBoxInfo()).getColorByState(
+                enabled = enabled,
+                selected = checked,
+                interactionSource = interactionSource
+            )
         val shape: Shape = RoundedCornerShape(getCheckBoxToken().fixedBorderRadius)
 
         val borders: List<BorderStroke> =
-                borderStroke(getCheckBoxToken(), getCheckBoxInfo(), enabled, interactionSource)
+            getCheckBoxToken().borderStroke(checkBoxInfo = getCheckBoxInfo()).getBorderStrokeByState(
+                enabled = enabled,
+                selected = checked,
+                interactionSource = interactionSource
+            )
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
         for (border in borders) {
@@ -84,19 +94,25 @@ fun CheckBox(onCheckedChanged: ((Boolean) -> Unit)?,
             borderModifier = borderModifier.border(borderWidth, border.brush, shape)
         }
 
-        Box(modifier = Modifier.indication(interactionSource, null),
-                contentAlignment = Alignment.Center) {
-            Spacer(modifier = Modifier
+        Box(
+            modifier = Modifier.indication(interactionSource, null),
+            contentAlignment = Alignment.Center
+        ) {
+            Spacer(
+                modifier = Modifier
                     .size(getCheckBoxToken().fixedSize)
                     .clip(shape)
                     .background(backgroundColor)
                     .then(borderModifier)
-                    .then(toggleModifier))
+                    .then(toggleModifier)
+            )
             AnimatedVisibility(checked, enter = fadeIn(), exit = fadeOut()) {
-                Icon(Icons.Filled.Done,
-                        "Done",
-                        modifier = Modifier.size(getCheckBoxToken().fixedIconSize),
-                        tint = iconColor)
+                Icon(
+                    Icons.Filled.Done,
+                    "Done",
+                    modifier = Modifier.size(getCheckBoxToken().fixedIconSize),
+                    tint = iconColor
+                )
             }
         }
 

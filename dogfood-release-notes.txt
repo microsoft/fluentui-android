@@ -1,0 +1,18 @@
+Release Version 0.1.15:
+
+What's New:
+
+Fluent V2 :
+	Controls: Release V2 SearchBar, V2 Persona Chip
+	Fix: 
+		1) Accessibility bug fix in V2 ListItem.
+		2) Code refractor & enhancement.
+
+
+Fluent V1 (v-current):
+	Fix:  
+		1) Fix issue of PeoplePickerView where it show incorrect avatar in persona list on change of query text.
+		2) Remove unused tokenautocomplete dependency from calendar and others modules.
+
+ 
+

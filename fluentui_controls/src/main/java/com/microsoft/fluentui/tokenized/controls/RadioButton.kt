@@ -27,53 +27,66 @@ val LocalRadioButtonTokens = compositionLocalOf { RadioButtonTokens() }
 val LocalRadioButtonInfo = compositionLocalOf { RadioButtonInfo() }
 
 @Composable
-fun RadioButton(onClick: (() -> Unit)?,
-                modifier: Modifier = Modifier,
-                enabled: Boolean = true,
-                selected: Boolean = false,
-                interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-                radioButtonToken: RadioButtonTokens? = null
+fun RadioButton(
+    onClick: (() -> Unit),
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    selected: Boolean = false,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    radioButtonToken: RadioButtonTokens? = null
 ) {
     val token = radioButtonToken
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
 
     CompositionLocalProvider(
-            LocalRadioButtonTokens provides token,
-            LocalRadioButtonInfo provides RadioButtonInfo(selected)
+        LocalRadioButtonTokens provides token,
+        LocalRadioButtonInfo provides RadioButtonInfo(selected)
     ) {
         val dotRadius = animateDpAsState(
-                targetValue = if (selected) getRadioButtonTokens().innerCircleRadius else 0.dp,
-                animationSpec = tween(durationMillis = 100)
+            targetValue = if (selected) getRadioButtonTokens().innerCircleRadius else 0.dp,
+            animationSpec = tween(durationMillis = 100)
         )
 
-        val selectableModifier = if (onClick != null) {
-            modifier.selectable(selected = selected,
-                    enabled = enabled,
-                    onClick = onClick,
-                    role = Role.RadioButton,
-                    interactionSource = interactionSource,
-                    indication = rememberRipple(
-                            bounded = false,
-                            radius = 24.dp
-                    )
+        val selectableModifier = modifier.selectable(
+            selected = selected,
+            enabled = enabled,
+            onClick = onClick,
+            role = Role.RadioButton,
+            interactionSource = interactionSource,
+            indication = rememberRipple(
+                bounded = false,
+                radius = 24.dp
             )
-        } else {
-            modifier
-        }
+        )
 
-        val outerStrokeColor = backgroundColor(getRadioButtonTokens(), getRadioButtonInfo(),
-                enabled, interactionSource)
-        val innerColor = iconColor(getRadioButtonTokens(), getRadioButtonInfo(),
-                enabled, interactionSource)
+        val outerStrokeColor =
+            getRadioButtonTokens().backgroundColor(radioButtonInfo = getRadioButtonInfo())
+                .getColorByState(
+                    enabled = enabled,
+                    selected = selected,
+                    interactionSource = interactionSource
+                )
+        val innerColor = getRadioButtonTokens().iconColor(radioButtonInfo = getRadioButtonInfo())
+            .getColorByState(
+                enabled = enabled,
+                selected = selected,
+                interactionSource = interactionSource
+            )
 
         val outerRadius = getRadioButtonTokens().outerCircleRadius
         val strokeWidth = getRadioButtonTokens().strokeWidthInwards
 
-        Canvas(modifier = Modifier
+        Canvas(
+            modifier = Modifier
                 .then(selectableModifier)
                 .size(24.dp)
-                .wrapContentSize(Alignment.Center)) {
-            drawCircle(outerStrokeColor, (outerRadius - (strokeWidth / 2)).toPx(), style = Stroke(1.5.dp.toPx()))
+                .wrapContentSize(Alignment.Center)
+        ) {
+            drawCircle(
+                outerStrokeColor,
+                (outerRadius - (strokeWidth / 2)).toPx(),
+                style = Stroke(1.5.dp.toPx())
+            )
 
             if (dotRadius.value > 0.dp) {
                 drawCircle(innerColor, (dotRadius.value).toPx(), style = Fill)

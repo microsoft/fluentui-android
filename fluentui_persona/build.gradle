@@ -4,6 +4,7 @@
  */
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-parcelize'
 
 apply from: '../config.gradle'
 apply from: '../publish.gradle'
@@ -12,6 +13,7 @@ android {
     compileSdkVersion constants.compileSdkVersion
     buildFeatures {
         viewBinding true
+        compose true
     }
 
     defaultConfig {
@@ -31,7 +33,7 @@ android {
         }
     }
     testOptions {
-        unitTests{
+        unitTests {
             includeAndroidResources = true
         }
         unitTests.all {
@@ -44,9 +46,6 @@ android {
         }
     }
 
-    buildFeatures {
-        compose true
-    }
     composeOptions {
         kotlinCompilerExtensionVersion composeVersion
     }

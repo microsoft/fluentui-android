@@ -28,5 +28,10 @@
         <enum name="select_deselect" value="3"/>
     </attr>
 
+  <!-- fluentui_customDropDownWidth for custom width -->
+   <attr name="fluentui_customDropDownWidth" format="dimension">
+        <enum name="match_parent" value="-1" />
+        <enum name="wrap_content" value="-2" />
+   </attr>
 
 </resources>

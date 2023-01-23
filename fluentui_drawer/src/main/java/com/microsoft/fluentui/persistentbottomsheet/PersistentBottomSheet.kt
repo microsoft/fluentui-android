@@ -78,6 +78,8 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             if (newState == BottomSheetBehavior.STATE_EXPANDED) {
                 persistentSheetBehavior.peekHeight = itemLayoutParam.defaultPeekHeight
+                persistentSheetBinding.scrollContainer.setScrollingEnabled(true)
+                persistentSheetBinding.scrollContainer.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
                 persistentSheetBinding.persistentBottomSheetOutlined.isClickable = true
                 persistentSheetBinding.persistentBottomSheetOutlined.isFocusable = false
                 persistentSheetBinding.persistentBottomSheetOutlined.setOnClickListener {
@@ -86,10 +88,14 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
             }
             else if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                 persistentSheetBinding.scrollContainer.smoothScrollTo(0, 0)
+                persistentSheetBinding.scrollContainer.setScrollingEnabled(false)
+                persistentSheetBinding.scrollContainer.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
                 persistentSheetBinding.persistentBottomSheetOutlined.isFocusable = false
                 persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
             }
             else if(newState == BottomSheetBehavior.STATE_HIDDEN) {
+                persistentSheetBinding.scrollContainer.setScrollingEnabled(false)
+                persistentSheetBinding.scrollContainer.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
                 persistentSheetBinding.persistentBottomSheetOutlined.isFocusable = false
                 persistentSheetBinding.persistentBottomSheetOutlined.isClickable = false
             }
@@ -145,6 +151,8 @@ class PersistentBottomSheet @JvmOverloads constructor(context: Context, attrs: A
                     persistentSheetBinding.persistentSheetContainer.paddingBottom)
             return
         }
+        persistentSheetBinding.scrollContainer.importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_NO
+        persistentSheetBinding.scrollContainer.setScrollingEnabled(false)
         setDrawerHandleVisibility(View.VISIBLE)
         setDrawerHandleContentDescription(collapsedStateDrawerHandleContentDescription, expandedStateDrawerHandleContentDescription)
         persistentSheetBinding.persistentSheetContainer.setPadding(persistentSheetBinding.persistentSheetContainer.paddingLeft, 0,

@@ -4,12 +4,8 @@ import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.globalTokens
-import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.GlobalTokens
-import com.microsoft.fluentui.theme.token.IconSize
+import androidx.compose.ui.unit.sp
+import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
 enum class AvatarGroupStyle {
@@ -18,38 +14,57 @@ enum class AvatarGroupStyle {
 }
 
 data class AvatarGroupInfo(
-        val size: AvatarSize = AvatarSize.Medium,
-        val style: AvatarGroupStyle = AvatarGroupStyle.Stack
+    val size: AvatarSize = AvatarSize.Size32,
+    val style: AvatarGroupStyle = AvatarGroupStyle.Stack
 ) : ControlInfo
 
 @Parcelize
 open class AvatarGroupTokens : ControlToken, Parcelable {
 
-    companion object {
-        const val Type: String = "AvatarGroup"
-    }
-
     @Composable
     open fun avatarSize(avatarGroupInfo: AvatarGroupInfo): Dp {
         return when (avatarGroupInfo.size) {
-            AvatarSize.XSmall -> 16.dp
-            AvatarSize.Small -> 24.dp
-            AvatarSize.Medium -> 32.dp
-            AvatarSize.Large -> 40.dp
-            AvatarSize.XLarge -> 52.dp
-            AvatarSize.XXLarge -> 72.dp
+            AvatarSize.Size16 -> 16.dp
+            AvatarSize.Size20 -> 24.dp
+            AvatarSize.Size24 -> 24.dp
+            AvatarSize.Size32 -> 32.dp
+            AvatarSize.Size40 -> 40.dp
+            AvatarSize.Size56 -> 56.dp
+            AvatarSize.Size72 -> 72.dp
         }
     }
 
     @Composable
-    open fun fontSize(avatarGroupInfo: AvatarGroupInfo): Dp {
-        return when (avatarGroupInfo.size) {
-            AvatarSize.XSmall -> 10.dp
-            AvatarSize.Small -> 12.dp
-            AvatarSize.Medium -> 14.dp
-            AvatarSize.Large -> 18.dp
-            AvatarSize.XLarge -> 24.dp
-            AvatarSize.XXLarge -> 36.dp
+    open fun fontInfo(avatarInfo: AvatarInfo): FontInfo {
+        return when (avatarInfo.size) {
+            AvatarSize.Size16 -> FontInfo(
+                fontSize = FontSize(9.sp, 12.sp),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            )
+            AvatarSize.Size20 -> FontInfo(
+                fontSize = FontSize(9.sp, 12.sp),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            )
+            AvatarSize.Size24 -> FontInfo(
+                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size100),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            )
+            AvatarSize.Size32 -> FontInfo(
+                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size200),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            )
+            AvatarSize.Size40 -> FontInfo(
+                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size300),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            )
+            AvatarSize.Size56 -> FontInfo(
+                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size500),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+            )
+            AvatarSize.Size72 -> FontInfo(
+                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size700),
+                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+            )
         }
     }
 
@@ -57,34 +72,78 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
     open fun spacing(avatarGroupInfo: AvatarGroupInfo, isActive: Boolean): Dp {
         return when (avatarGroupInfo.style) {
             AvatarGroupStyle.Stack -> when (avatarGroupInfo.size) {
-                AvatarSize.XSmall -> if (isActive) 0.dp else (-2).dp
-                AvatarSize.Small -> if (isActive) 0.dp else (-2).dp
-                AvatarSize.Medium -> if (isActive) (-4).dp else (-4).dp
-                AvatarSize.Large -> if (isActive) (-4).dp else (-8).dp
-                AvatarSize.XLarge -> if (isActive) (-8).dp else (-12).dp
-                AvatarSize.XXLarge -> if (isActive) (-6).dp else (-12).dp
+                AvatarSize.Size16 -> if (isActive) 0.dp else (-2).dp
+                AvatarSize.Size20 -> if (isActive) 0.dp else (-2).dp
+                AvatarSize.Size24 -> if (isActive) 0.dp else (-2).dp
+                AvatarSize.Size32 -> if (isActive) (-4).dp else (-4).dp
+                AvatarSize.Size40 -> if (isActive) (-4).dp else (-8).dp
+                AvatarSize.Size56 -> if (isActive) (-8).dp else (-12).dp
+                AvatarSize.Size72 -> if (isActive) (-6).dp else (-12).dp
             }
 
             AvatarGroupStyle.Pile -> when (avatarGroupInfo.size) {
-                AvatarSize.XSmall -> globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
-                AvatarSize.Small -> globalTokens.spacing[GlobalTokens.SpacingTokens.XXSmall]
-                AvatarSize.Medium -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-                AvatarSize.Large -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-                AvatarSize.XLarge -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
-                AvatarSize.XXLarge -> globalTokens.spacing[GlobalTokens.SpacingTokens.XSmall]
+                AvatarSize.Size16 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XXSmall
+                )
+                AvatarSize.Size20 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XXSmall
+                )
+                AvatarSize.Size24 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XXSmall
+                )
+                AvatarSize.Size32 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XSmall
+                )
+                AvatarSize.Size40 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XSmall
+                )
+                AvatarSize.Size56 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XSmall
+                )
+                AvatarSize.Size72 -> GlobalTokens.spacing(
+                    GlobalTokens.SpacingTokens.XSmall
+                )
             }
         }
     }
 
     @Composable
-    open fun iconSize(avatarGroupInfo: AvatarGroupInfo): IconSize {
+    open fun pilePadding(avatarGroupInfo: AvatarGroupInfo): Dp {
         return when (avatarGroupInfo.size) {
-            AvatarSize.XSmall -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXSmallSelected]
-            AvatarSize.Small -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XSmallSelected]
-            AvatarSize.Medium -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.SmallSelected]
-            AvatarSize.Large -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.MediumSelected]
-            AvatarSize.XLarge -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.LargeSelected]
-            AvatarSize.XXLarge -> globalTokens.iconSize[GlobalTokens.IconSizeTokens.XXXLargeSelected]
+            AvatarSize.Size16 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXSmall
+            )
+            AvatarSize.Size20 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size24 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size32 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size40 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXXSmall
+            )
+            AvatarSize.Size56 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XXSmall
+            )
+            AvatarSize.Size72 -> GlobalTokens.spacing(
+                GlobalTokens.SpacingTokens.XSmall
+            )
+        }
+    }
+
+    @Composable
+    open fun avatarSize(avatarInfo: AvatarInfo): Dp {
+        return when (avatarInfo.size) {
+            AvatarSize.Size16 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
+            AvatarSize.Size20 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+            AvatarSize.Size24 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+            AvatarSize.Size32 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+            AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
+            AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Large)
+            AvatarSize.Size72 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXXLarge)
         }
     }
 }

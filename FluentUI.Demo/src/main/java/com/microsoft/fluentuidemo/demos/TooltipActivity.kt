@@ -7,15 +7,17 @@ package com.microsoft.fluentuidemo.demos
 
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewTreeObserver
-import android.widget.Button
 import androidx.core.content.ContextCompat
+import com.google.android.material.tooltip.TooltipDrawable
 import com.microsoft.fluentui.calendar.CalendarView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.tooltip.Tooltip
 import com.microsoft.fluentui.util.ThemeUtil
+import com.microsoft.fluentui.widget.Button
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import kotlinx.android.synthetic.main.activity_demo_detail.*
@@ -26,19 +28,31 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
         const val BUTTON_ID = "buttonId"
     }
 
-    enum class TooltipType(val buttonId: Int, val messageId: Int, val offsetXId: Int, val offsetYId: Int) {
+    enum class TooltipType(
+        val buttonId: Int,
+        val messageId: Int,
+        val offsetXId: Int,
+        val offsetYId: Int
+    ) {
         TOP_START(R.id.tooltip_anchor_top_start, R.string.tooltip_top_start_message, 0, 0),
-        TOP_END(R.id.tooltip_anchor_top_end, R.string.tooltip_top_end_message, R.dimen.tooltip_example_offset_x, 0),
+        TOP_END(
+            R.id.tooltip_anchor_top_end,
+            R.string.tooltip_top_end_message,
+            R.dimen.tooltip_example_offset_x,
+            0
+        ),
         BOTTOM_START(R.id.tooltip_anchor_bottom_start, R.string.tooltip_bottom_start_message, 0, 0),
-        BOTTOM_END(R.id.tooltip_anchor_bottom_end, R.string.tooltip_bottom_end_message, 0, R.dimen.tooltip_example_offset_y)
+        BOTTOM_END(
+            R.id.tooltip_anchor_bottom_end,
+            R.string.tooltip_bottom_end_message,
+            0,
+            R.dimen.tooltip_example_offset_y
+        )
     }
 
     private var tooltip: Tooltip? = null
 
     private var optionsMenu: Menu? = null
-        set(value) {
-            field = value
-        }
 
     private var buttonId: Int = 0
 
@@ -78,6 +92,15 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
             buttonId = it.id
         }
 
+        tooltip_anchor_custom_view.setOnClickListener {
+            tooltip = Tooltip(this).setFocusable(true).show(
+                it,
+                LayoutInflater.from(this).inflate(R.layout.tooltip_custom_view, null)
+            )
+            tooltip?.onDismissListener = this
+            buttonId = it.id
+        }
+
         tooltip_anchor_calendar_demo.setOnClickListener {
             tooltip = Tooltip(this).show(it, CalendarView(this), Tooltip.Config())
             tooltip?.onDismissListener = this
@@ -108,7 +131,8 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_flag -> {
-                Tooltip(baseContext).show(findViewById(item.itemId),
+                Tooltip(baseContext).show(
+                    findViewById(item.itemId),
                     "Flag Tooltip Clicked",
                     Tooltip.Config(touchDismissLocation = Tooltip.TouchDismissLocation.INSIDE)
                 ).onDismissListener = this
@@ -123,7 +147,8 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
 
         if (buttonId > 0) {
             val button = findViewById<Button>(buttonId)
-            button.viewTreeObserver.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+            button.viewTreeObserver.addOnGlobalLayoutListener(object :
+                ViewTreeObserver.OnGlobalLayoutListener {
                 override fun onGlobalLayout() {
                     // Show tooltip on configuration change
                     button.performClick()
@@ -150,7 +175,11 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
     }
 
     override fun onDismiss() {
-        Snackbar.make(root_view, resources.getString(R.string.tooltip_dismiss_message), Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            root_view,
+            resources.getString(R.string.tooltip_dismiss_message),
+            Snackbar.LENGTH_SHORT
+        ).show()
     }
 
     private fun getDimen(id: Int): Int =
