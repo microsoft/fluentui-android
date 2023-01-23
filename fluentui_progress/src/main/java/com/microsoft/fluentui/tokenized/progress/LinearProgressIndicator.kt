@@ -1,10 +1,10 @@
 package com.microsoft.fluentui.tokenized.progress
 
-import android.widget.ProgressBar
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.requiredHeight
+import androidx.compose.foundation.progressSemantics
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
@@ -81,6 +81,7 @@ fun LinearProgressIndicator(
             modifier = modifier
                 .fillMaxWidth()
                 .requiredHeight(linearProgressIndicatorHeight)
+                .progressSemantics(progress)
         ) {
             val strokeWidth = dpToPx(linearProgressIndicatorHeight)
             val yOffset = strokeWidth / 2
@@ -94,7 +95,8 @@ fun LinearProgressIndicator(
                 strokeWidth
             )
             val progressIndicatorWidth = currentProgress.value * size.width
-            val indicatorLineEnd = if(isLtr) progressIndicatorWidth else size.width - progressIndicatorWidth
+            val indicatorLineEnd =
+                if (isLtr) progressIndicatorWidth else size.width - progressIndicatorWidth
             drawLine(
                 linearProgressIndicatorColor,
                 Offset(barStart, yOffset),
@@ -168,6 +170,7 @@ fun LinearProgressIndicator(
         Canvas(
             modifier = modifier
                 .fillMaxWidth()
+                .progressSemantics()
                 .requiredHeight(linearProgressIndicatorHeight)
         ) {
             val strokeWidth = dpToPx(linearProgressIndicatorHeight)
@@ -181,8 +184,10 @@ fun LinearProgressIndicator(
                 Offset(barEnd, yOffset),
                 strokeWidth
             )
-            val progressIndicatorStart = (if (isLtr) indicatorHead * size.width else (size.width) - indicatorHead * size.width)
-            val progressIndicatorEnd = (if (isLtr) indicatorTail * (size.width) else (size.width) - indicatorTail * (size.width))
+            val progressIndicatorStart =
+                (if (isLtr) indicatorHead * size.width else (size.width) - indicatorHead * size.width)
+            val progressIndicatorEnd =
+                (if (isLtr) indicatorTail * (size.width) else (size.width) - indicatorTail * (size.width))
             drawLine(
                 Brush.linearGradient(
                     0f to linearProgressIndicatorBackgroundColor,
