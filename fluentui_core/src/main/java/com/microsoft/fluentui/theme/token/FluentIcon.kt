@@ -31,6 +31,14 @@ data class FluentIcon(
     }
 }
 
+/**
+ * Wrapper over Material's Icon API to incorporate FluentIcon class.
+ * Icon tint provided in FluentIcon override's the value provided in API.
+ *
+ * @param icon [FluentIcon] object to be displayed.
+ * @param modifier Optional modifier for Icon.
+ * @param tint Tint Color to be used if not provided in icon.
+ */
 @Composable
 fun Icon(
     icon: FluentIcon,
