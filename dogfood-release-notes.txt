@@ -1,18 +1,19 @@
-Release Version 0.1.15:
+Release Version 0.1.16:
 
 What's New:
 
 Fluent V2 :
-	Controls: Release V2 SearchBar, V2 Persona Chip
+	Controls: Release V2 AppBar, V2 TabBar, V2 Badge
 	Fix: 
-		1) Accessibility bug fix in V2 ListItem.
-		2) Code refractor & enhancement.
+		1) Update FluentIcon to have tint as parameter. This take precedence before token value, if provided.
+		2) Accessibility bugfix on Progress Indicator, ListItem
+		3) RTL support in Progress Indicator.
+		4) Design token update.
 
 
 Fluent V1 (v-current):
 	Fix:  
-		1) Fix issue of PeoplePickerView where it show incorrect avatar in persona list on change of query text.
-		2) Remove unused tokenautocomplete dependency from calendar and others modules.
+		1) Added setView in CommandItem interface which is used by recycler view to set reference of view of command item.
 
  
 
