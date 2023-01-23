@@ -15,13 +15,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.contextualcommandbar.ActionButtonPosition
 import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandGroup
@@ -59,33 +60,33 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                             "Email",
                             { boldSelected = !boldSelected },
                             selected = !boldSelected,
-                            icon = Icons.Filled.Email,
+                            icon = FluentIcon(Icons.Filled.Email),
                             onLongClick = longClick
                         ),
                         CommandItem(
                             "Refresh",
                             click,
                             enabled = false,
-                            icon = Icons.Filled.Refresh,
+                            icon = FluentIcon(Icons.Filled.Refresh),
                             onLongClick = longClick
                         ),
                         CommandItem(
                             "Done",
                             click,
-                            icon = Icons.Filled.Done,
+                            icon = FluentIcon(Icons.Filled.Done, tint = Color.Green),
                             onLongClick = longClick
                         ),
                         CommandItem(
                             "Add",
                             click,
                             enabled = false,
-                            icon = Icons.Filled.Add,
+                            icon = FluentIcon(Icons.Filled.Add),
                             onLongClick = longClick
                         ),
                         CommandItem(
                             "Call",
                             click,
-                            icon = Icons.Filled.Call,
+                            icon = FluentIcon(Icons.Filled.Call),
                             onLongClick = longClick
                         )
                     )
@@ -100,8 +101,8 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 ),
                 CommandGroup(
                     "Group 3", listOf(
-                        CommandItem("Edit", click, icon = Icons.Filled.Edit),
-                        CommandItem("Delete", click, icon = Icons.Filled.Delete),
+                        CommandItem("Edit", click, icon = FluentIcon(Icons.Filled.Edit)),
+                        CommandItem("Delete", click, icon = FluentIcon(Icons.Filled.Delete)),
                         CommandItem("Italics", click),
                         CommandItem("Underline", click),
                     )
@@ -109,9 +110,9 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 CommandGroup(
                     "Group 4", listOf(
                         CommandItem("Email", click, onLongClick = longClick),
-                        CommandItem("Info", click, icon = Icons.Filled.Info),
+                        CommandItem("Info", click, icon = FluentIcon(Icons.Filled.Info)),
                         CommandItem("Settings", click, onLongClick = longClick),
-                        CommandItem("Favorite", click, icon = Icons.Filled.Favorite)
+                        CommandItem("Favorite", click, icon = FluentIcon(Icons.Filled.Favorite))
                     )
                 )
             )
@@ -133,13 +134,19 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     )
                 ) {
                     Button(
-                        { kdState = if(kdState != ActionButtonPosition.None) ActionButtonPosition.None else ActionButtonPosition.End },
+                        {
+                            kdState =
+                                if (kdState != ActionButtonPosition.None) ActionButtonPosition.None else ActionButtonPosition.End
+                        },
                         text = if (kdState != ActionButtonPosition.None) "Disable Keyboard Dismiss" else "Enable Keyboard Dismiss",
                         style = ButtonStyle.OutlinedButton
                     )
                     if (kdState != ActionButtonPosition.None)
                         Button(
-                            { kdState = if(kdState == ActionButtonPosition.Start) ActionButtonPosition.End else ActionButtonPosition.Start },
+                            {
+                                kdState =
+                                    if (kdState == ActionButtonPosition.Start) ActionButtonPosition.End else ActionButtonPosition.Start
+                            },
                             text = if (kdState == ActionButtonPosition.Start) " Move KD to End" else "Move KD to Start",
                             style = ButtonStyle.OutlinedButton
                         )

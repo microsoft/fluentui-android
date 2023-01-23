@@ -1,7 +1,10 @@
 package com.microsoft.fluentui.theme.token
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.ThemeMode
@@ -9,8 +12,9 @@ import com.microsoft.fluentui.theme.ThemeMode
 data class FluentIcon(
     val light: ImageVector = ImageVector.Builder("", 0.dp, 0.dp, 0F, 0F).build(),
     val dark: ImageVector = light,
-    val contentDescription: String = "",
-    val onClick: (() -> Unit)? = null
+    val contentDescription: String? = null,
+    val onClick: (() -> Unit)? = null,
+    val tint: Color? = null
 ) {
     @Composable
     fun value(themeMode: ThemeMode = com.microsoft.fluentui.theme.FluentTheme.themeMode): ImageVector {
@@ -25,4 +29,26 @@ data class FluentIcon(
         return (this.light.defaultWidth > 0.dp && this.light.defaultHeight > 0.dp) ||
                 (this.dark.defaultWidth > 0.dp && this.dark.defaultHeight > 0.dp)
     }
+}
+
+/**
+ * Wrapper over Material's Icon API to incorporate FluentIcon class.
+ * Icon tint provided in FluentIcon override's the value provided in API.
+ *
+ * @param icon [FluentIcon] object to be displayed.
+ * @param modifier Optional modifier for Icon.
+ * @param tint Tint Color to be used if not provided in icon.
+ */
+@Composable
+fun Icon(
+    icon: FluentIcon,
+    modifier: Modifier = Modifier,
+    tint: Color = Color.Unspecified
+) {
+    Icon(
+        icon.value(),
+        icon.contentDescription,
+        modifier,
+        tint = icon.tint ?: tint
+    )
 }
