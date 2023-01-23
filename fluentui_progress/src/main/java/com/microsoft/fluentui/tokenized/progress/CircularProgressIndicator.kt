@@ -3,6 +3,7 @@ package com.microsoft.fluentui.tokenized.progress
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.progressSemantics
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.compositionLocalOf
@@ -84,7 +85,11 @@ fun CircularProgressIndicator(
                 getCircularProgressIndicatorInfo()
             )
         val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
-        Canvas(modifier = modifier.requiredSize(circularProgressIndicatorSize)) {
+        Canvas(
+            modifier = modifier
+                .requiredSize(circularProgressIndicatorSize)
+                .progressSemantics(progress)
+        ) {
             drawArc(
                 circularProgressIndicatorColor,
                 -90f,
@@ -152,6 +157,7 @@ fun CircularProgressIndicator(
         Canvas(
             modifier = modifier
                 .requiredSize(circularProgressIndicatorSize)
+                .progressSemantics()
                 .rotate(startAngle)
         ) {
             drawArc(
