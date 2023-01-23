@@ -9,9 +9,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
-import androidx.compose.material.Icon
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -23,12 +21,12 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
+import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.*
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
@@ -108,6 +106,28 @@ object ListItem {
 
     }
 
+    /*
+    This function calculates the placeholder width for action text
+     */
+    @Composable
+    fun PlaceholderForActionText(
+        actionTextComposable: @Composable () -> Unit,
+        content: @Composable (width: Dp) -> Unit,
+    ) {
+        SubcomposeLayout { constraints ->
+            val calculatedWidth = subcompose("textToCalculate", actionTextComposable)[0]
+                .measure(Constraints()).width.toDp()
+
+            val contentPlaceable = subcompose("inlineText") {
+                content(calculatedWidth)
+            }[0].measure(constraints)
+            layout(contentPlaceable.width, contentPlaceable.height) {
+                contentPlaceable.place(0, 0)
+            }
+        }
+    }
+
+    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     private fun InlineText(
         description: String,
@@ -116,51 +136,66 @@ object ListItem {
         descriptionTextColor: Color,
         actionTextColor: Color,
         descriptionTextSize: FontInfo,
-        actionTextSize: FontInfo
+        actionTextSize: FontInfo,
+        backgroundColor: Color
     ) {
-        val text = buildAnnotatedString {
-            if (description.isNotEmpty()) {
-                withStyle(
-                    style = SpanStyle(
-                        color = descriptionTextColor,
-                        fontSize = descriptionTextSize.fontSize.size,
-                        fontWeight = descriptionTextSize.weight
-                    )
-                ) {
-                    append("$description ")
-                }
+        PlaceholderForActionText(
+            actionTextComposable = {
+                Text(
+                    text = actionText,
+                    fontSize = actionTextSize.fontSize.size,
+                    fontWeight = actionTextSize.weight
+                )
             }
-            appendInlineContent(actionText, "text")
+        ) { measuredWidth ->
+            val text = buildAnnotatedString {
+                if (description.isNotEmpty()) {
+                    withStyle(
+                        style = SpanStyle(
+                            color = descriptionTextColor,
+                            fontSize = descriptionTextSize.fontSize.size,
+                            fontWeight = descriptionTextSize.weight
+                        )
+                    ) {
+                        append("$description ")
+                    }
+                }
+                //below alternate text will be replaced by composable
+                appendInlineContent("key", actionText)
+            }
+            val widthInDp: TextUnit = with(LocalDensity.current) {
+                measuredWidth.toSp()
+            }
+            val inlineContent = mapOf(
+                Pair(
+                    "key",
+                    InlineTextContent(
+                        Placeholder(
+                            width = widthInDp,
+                            height = 16.sp,
+                            placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
+                        )
+                    ) {
+                        Surface(
+                            onClick = onClick,
+                            color = backgroundColor
+                        ) {
+                            Text(
+                                text = actionText,
+                                fontSize = actionTextSize.fontSize.size,
+                                fontWeight = actionTextSize.weight,
+                                color = actionTextColor
+                            )
+                        }
+                    }
+                )
+            )
+            Text(
+                text = text,
+                inlineContent = inlineContent
+            )
         }
 
-        val inlineContent = mapOf(
-            Pair(
-                actionText,
-                InlineTextContent(
-                    Placeholder(
-                        width = 50.sp,
-                        height = 20.sp,
-                        placeholderVerticalAlign = PlaceholderVerticalAlign.TextTop
-                    )
-                ) {
-                    Text(
-                        text = actionText,
-                        modifier = Modifier.clickable(
-                            enabled = true,
-                            onClickLabel = actionText,
-                            role = Role.Button,
-                            onClick = onClick
-                        ),
-                        fontSize = actionTextSize.fontSize.size,
-                        color = actionTextColor
-                    )
-                }
-            )
-        )
-        Text(
-            text = text,
-            inlineContent = inlineContent
-        )
     }
 
     /**
@@ -672,7 +707,7 @@ object ListItem {
                         .padding(verticalPadding)
                         .weight(1f)
                 ) {
-                    if (actionText != null) {
+                    if (!actionText.isNullOrBlank()) {
                         InlineText(
                             description = description,
                             actionText = actionText,
@@ -680,7 +715,8 @@ object ListItem {
                             actionTextSize = actionTextSize,
                             actionTextColor = actionTextColor,
                             descriptionTextColor = textColor,
-                            descriptionTextSize = textSize
+                            descriptionTextSize = textSize,
+                            backgroundColor = backgroundColor
                         )
                     } else {
                         Text(
