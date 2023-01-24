@@ -3,10 +3,7 @@ package com.microsoft.fluentui.tokenized.controls
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.indication
+import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
@@ -27,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -82,11 +80,12 @@ fun CheckBox(
         val shape: Shape = RoundedCornerShape(getCheckBoxToken().fixedBorderRadius)
 
         val borders: List<BorderStroke> =
-            getCheckBoxToken().borderStroke(checkBoxInfo = getCheckBoxInfo()).getBorderStrokeByState(
-                enabled = enabled,
-                selected = checked,
-                interactionSource = interactionSource
-            )
+            getCheckBoxToken().borderStroke(checkBoxInfo = getCheckBoxInfo())
+                .getBorderStrokeByState(
+                    enabled = enabled,
+                    selected = checked,
+                    interactionSource = interactionSource
+                )
         var borderModifier: Modifier = Modifier
         var borderWidth = 0.dp
         for (border in borders) {
@@ -109,8 +108,11 @@ fun CheckBox(
             AnimatedVisibility(checked, enter = fadeIn(), exit = fadeOut()) {
                 Icon(
                     Icons.Filled.Done,
-                    "Done",
-                    modifier = Modifier.size(getCheckBoxToken().fixedIconSize),
+                    null,
+                    modifier = Modifier
+                        .size(getCheckBoxToken().fixedIconSize)
+                        .focusable(false)
+                        .clearAndSetSemantics {},
                     tint = iconColor
                 )
             }

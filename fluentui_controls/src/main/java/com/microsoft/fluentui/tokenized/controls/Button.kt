@@ -20,6 +20,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.PlatformTextStyle
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -32,6 +35,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
 val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
 val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
+@OptIn(ExperimentalTextApi::class)
 @Composable
 fun Button(
     onClick: () -> Unit,
@@ -127,15 +131,18 @@ fun Button(
                     Text(
                         text = text,
                         modifier = Modifier.clearAndSetSemantics { },
-                        fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
-                        lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
-                        fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
-                        color = getButtonToken().textColor(buttonInfo = getButtonInfo())
-                            .getColorByState(
-                                enabled = enabled,
-                                selected = false,
-                                interactionSource = interactionSource
-                            ),
+                        style = TextStyle(
+                            fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
+                            lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
+                            fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
+                            color = getButtonToken().textColor(buttonInfo = getButtonInfo())
+                                .getColorByState(
+                                    enabled = enabled,
+                                    selected = false,
+                                    interactionSource = interactionSource
+                                ),
+                            platformStyle = PlatformTextStyle(includeFontPadding = false)
+                        ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
