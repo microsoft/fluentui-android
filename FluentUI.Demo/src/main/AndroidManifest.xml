@@ -32,7 +32,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BadgeActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicInputsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ButtonsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
         <activity
@@ -44,7 +44,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ProgressActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2SearchBarActivity"
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.V2SearchBarActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
