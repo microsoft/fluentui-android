@@ -33,7 +33,7 @@ class ContextualCommandBarActivity : DemoActivity() {
         val itemGroups = arrayListOf<CommandItemGroup>()
 
         // Used to test bitmap support
-        var drawable = AppCompatResources.getDrawable(this, R.drawable.thinking_face_color)
+        var drawable = AppCompatResources.getDrawable(this, R.drawable.ic_fluent_add_24_regular)
         val bitmap: Bitmap = Bitmap.createBitmap(
             drawable!!.intrinsicWidth,
             drawable.intrinsicHeight,
