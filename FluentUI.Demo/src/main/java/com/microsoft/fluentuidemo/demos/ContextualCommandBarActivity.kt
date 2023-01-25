@@ -33,7 +33,7 @@ class ContextualCommandBarActivity : DemoActivity() {
         val itemGroups = arrayListOf<CommandItemGroup>()
 
         // Used to test bitmap support
-        var drawable = AppCompatResources.getDrawable(this, R.drawable.ic_fluent_add_24_regular)
+        var drawable = AppCompatResources.getDrawable(this, R.drawable.thinking_face_color)
         val bitmap: Bitmap = Bitmap.createBitmap(
             drawable!!.intrinsicWidth,
             drawable.intrinsicHeight,
@@ -198,6 +198,23 @@ class ContextualCommandBarActivity : DemoActivity() {
             )
         }
         update_item.setOnClickListener {
+            val updatedItemGroup = CommandItemGroup()
+                .addItem(
+                    DefaultCommandItem(
+                        R.drawable.ic_fluent_mention_24_regular,
+                        contentDescription = getString(R.string.contextual_command_accessibility_mention),
+                        enabled = false
+                    )
+                )
+                .addItem(
+                    DefaultCommandItem(
+                        bitmap = bitmap,
+                        contentDescription = getString(R.string.contextual_command_accessibility_add)
+                    )
+                )
+            itemGroups[0] = updatedItemGroup
+            contextual_command_bar_default.setItemGroups(itemGroups)
+
             (itemGroups[0].items[0] as DefaultCommandItem).setEnabled(false)
             (itemGroups[0].items[1] as DefaultCommandItem).setEnabled(true)
             (itemGroups[0].items[1] as DefaultCommandItem).setSelected(true)
