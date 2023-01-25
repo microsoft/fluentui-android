@@ -90,6 +90,7 @@ internal class CommandItemAdapter(
             viewHolder.label.isVisible = false
             with(viewHolder.icon) {
                 isVisible = true
+                imageTintList = null
                 setImageBitmap(bitmapIcon)
                 contentDescription = description
                 isEnabled = isItemEnabled
