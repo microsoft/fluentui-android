@@ -392,14 +392,25 @@ fun BottomSheet(
                             Icon(
                                 painterResource(id = com.microsoft.fluentui.drawer.R.drawable.ic_drawer_handle),
                                 contentDescription =
-                                if (sheetState.currentValue == BottomSheetValue.Expanded) {
-                                    "Minimize Button"
+                                if (sheetState.currentValue == BottomSheetValue.Expanded || (sheetState.hasExpandedState && sheetState.isVisible)) {
+                                    LocalContext.current.resources.getString(R.string.drag_handle)
                                 } else {
-                                    if (sheetState.hasExpandedState && sheetState.isVisible) "Maximize Button" else null
+                                    null
                                 },
                                 tint = sheetHandleColor,
                                 modifier = Modifier
-                                    .clickable(enabled = sheetState.hasExpandedState) {
+                                    .clickable(
+                                        enabled = sheetState.hasExpandedState,
+                                        role = Role.Button,
+                                        onClickLabel =
+                                        if (sheetState.currentValue == BottomSheetValue.Expanded) {
+                                            LocalContext.current.resources.getString(R.string.collapse)
+                                        } else {
+                                            if (sheetState.hasExpandedState && sheetState.isVisible) LocalContext.current.resources.getString(
+                                                R.string.expand
+                                            ) else null
+                                        }
+                                    ) {
                                         if (sheetState.currentValue == BottomSheetValue.Expanded) {
                                             if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                                 scope.launch { sheetState.show() }
