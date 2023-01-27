@@ -860,3 +860,29 @@ val <T> SwipeableState<T>.PreUpPostDownNestedScrollConnection: NestedScrollConne
 
         private fun Offset.toFloat(): Float = this.y
     }
+
+val <T> SwipeableState<T>.PostDownNestedScrollConnection: NestedScrollConnection
+    get() = object : NestedScrollConnection {
+
+        override fun onPostScroll(
+            consumed: Offset,
+            available: Offset,
+            source: NestedScrollSource
+        ): Offset {
+            return if (source == NestedScrollSource.Drag && available.toFloat() > 0) {
+                performDrag(available.toFloat()).toOffset()
+            } else {
+                Offset.Zero
+            }
+        }
+
+        override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+            performFling(velocity = Offset(available.x, available.y).toFloat())
+            return available
+        }
+
+        private fun Float.toOffset(): Offset = Offset(0f, this)
+
+        private fun Offset.toFloat(): Float = this.y
+    }
+

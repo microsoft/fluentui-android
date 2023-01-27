@@ -70,6 +70,8 @@ private fun CreateActivityUI() {
 
     var expandableState by remember { mutableStateOf(true) }
 
+    var slideOverState by remember { mutableStateOf(true) }
+
     var peekHeightState by remember { mutableStateOf(110.dp) }
 
     var hidden by remember { mutableStateOf(true) }
@@ -113,7 +115,8 @@ private fun CreateActivityUI() {
         expandable = expandableState,
         peekHeight = peekHeightState,
         showHandle = showHandleState,
-        sheetState = bottomSheetState
+        sheetState = bottomSheetState,
+        slideOver =  slideOverState
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
@@ -225,8 +228,14 @@ private fun CreateActivityUI() {
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Peek Height is restricted to half of screen size.",
-                    modifier = Modifier.weight(1F)
+                    text = "Slide Over",
+                    modifier = Modifier.weight(1F),
+                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        themeMode = ThemeMode.Auto
+                    )
+                )
+                ToggleSwitch(checkedState = slideOverState,
+                    onValueChange = { slideOverState = it }
                 )
             }
 
@@ -256,6 +265,18 @@ private fun CreateActivityUI() {
                     enabled = !hidden && (peekHeightState > 0.dp),
                     onClick = { peekHeightState -= 8.dp })
             }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(30.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Note: When 'Slide Over' is On then Peek Height max limit is restricted to half of screen size. When 'Slide Over' is off then bottomSheet height does not vary with content height. It either open at peek height or expand to fullest or hide at bottom",
+                    modifier = Modifier.weight(1F)
+                )
+            }
+
 
             Row {
                 Text(

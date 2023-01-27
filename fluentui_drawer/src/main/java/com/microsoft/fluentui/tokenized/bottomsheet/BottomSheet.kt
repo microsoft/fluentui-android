@@ -127,8 +127,6 @@ class BottomSheetState(
      */
     suspend fun hide() = animateTo(BottomSheetValue.Hidden)
 
-    internal val nestedScrollConnection = this.PreUpPostDownNestedScrollConnection
-
     companion object {
         /**
          * The default [Saver] implementation for [BottomSheetState].
@@ -217,6 +215,8 @@ private fun getBottomSheetInfo(): BottomSheetInfo {
  * when visible. The default value is true
  * @param showHandle if true, the handle would be visible on top of the BottomSheet. The default
  * value is true.
+ * @param slideOver if true, then sheetContent would be drawn in full length & it just get slided
+ * in the visible region. If false then, the sheetContainer placed at the bottom & its height varies when dragged by Handle.
  * @param bottomSheetTokens tokens to provide appearance values. If not provided then bottomSheet
  * tokens will be picked from [AppThemeController]
  * @param content The content of rest of the screen.
@@ -231,6 +231,7 @@ fun BottomSheet(
     peekHeight: Dp = 110.dp,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
+    slideOver: Boolean = true,
     bottomSheetTokens: BottomSheetTokens? = null,
     content: @Composable () -> Unit
 ) {
@@ -263,37 +264,39 @@ fun BottomSheet(
 
             Box(Modifier.fillMaxSize()) {
                 content()
-                Scrim(
-                    color = if (scrimVisible) scrimColor else Color.Transparent,
-                    onDismiss = {
-                        if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
-                            scope.launch { sheetState.show() }
-                        }
-                    },
-                    fraction = {
-                        if (sheetState.anchors.isEmpty()
-                            || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
-                        ) {
-                            0.toFloat()
-                        } else {
-                            calculateFraction(
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
-                                sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,
-                                sheetState.offset.value
-                            )
-                        }
-                    },
-                    visible = (sheetState.targetValue == BottomSheetValue.Expanded
-                            || (sheetState.targetValue == BottomSheetValue.Shown
-                            && sheetState.currentValue == BottomSheetValue.Expanded)
-                            )
-                )
+                if (slideOver) {
+                    Scrim(
+                        color = if (scrimVisible) scrimColor else Color.Transparent,
+                        onDismiss = {
+                            if (sheetState.confirmStateChange(BottomSheetValue.Hidden)) {
+                                scope.launch { sheetState.show() }
+                            }
+                        },
+                        fraction = {
+                            if (sheetState.anchors.isEmpty()
+                                || !sheetState.anchors.containsValue(BottomSheetValue.Expanded)
+                            ) {
+                                0.toFloat()
+                            } else {
+                                calculateFraction(
+                                    sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Shown }?.key!!,
+                                    sheetState.anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded }?.key!!,
+                                    sheetState.offset.value
+                                )
+                            }
+                        },
+                        visible = (sheetState.targetValue == BottomSheetValue.Expanded
+                                || (sheetState.targetValue == BottomSheetValue.Shown
+                                && sheetState.currentValue == BottomSheetValue.Expanded)
+                                )
+                    )
+                }
             }
 
             Surface(
                 Modifier
                     .fillMaxWidth()
-                    .nestedScroll(sheetState.nestedScrollConnection)
+                    .nestedScroll(if (slideOver) sheetState.PreUpPostDownNestedScrollConnection else sheetState.PostDownNestedScrollConnection)
                     .offset {
                         val y = if (sheetState.anchors.isEmpty()) {
                             // if we don't know our anchors yet, render the sheet as hidden
@@ -309,20 +312,33 @@ fun BottomSheet(
                         expandable,
                         peekHeight,
                         fullHeight,
-                        sheetHeightState.value
+                        sheetHeightState.value,
+                        slideOver
                     )
                     .onGloballyPositioned {
                         val originalSize = it.size.height.toFloat()
-                        sheetHeightState.value = if (expandable) {
-                            originalSize
+                        if (slideOver) {
+                            sheetHeightState.value = if (expandable) {
+                                originalSize
+                            } else {
+                                min(
+                                    originalSize,
+                                    min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
+                                )
+                            }
                         } else {
-                            min(
-                                originalSize,
-                                min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
-                            )
+                            if (sheetHeightState.value == null) {
+                                sheetHeightState.value = originalSize
+                            }
                         }
                     }
-                    .sheetHeight(expandable, fullHeight, peekHeight)
+                    .sheetHeight(
+                        expandable,
+                        slideOver,
+                        fullHeight,
+                        peekHeight,
+                        sheetState
+                    )
                     .semantics(mergeDescendants = true) {
                         if (sheetState.isVisible) {
                             dismiss {
@@ -401,7 +417,9 @@ fun BottomSheet(
                             )
                         }
                     }
-                    Column(modifier = Modifier.testTag(BOTTOMSHEET_CONTENT_TAG),
+                    Column(modifier = Modifier
+                        .testTag(BOTTOMSHEET_CONTENT_TAG)
+                        .then(if (slideOver) Modifier else Modifier.fillMaxSize()),
                         content = { sheetContent() })
                 }
             }
@@ -414,36 +432,62 @@ private fun Modifier.bottomSheetSwipeable(
     expandable: Boolean,
     peekHeight: Dp,
     fullHeight: Float,
-    sheetHeight: Float?
+    sheetHeight: Float?,
+    slideOver: Boolean
+
 ): Modifier {
-    val modifier = if (sheetHeight != null) {
-        val peekHeightPx = min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
-        val anchors = if (!expandable) {
-            mapOf(
-                fullHeight to BottomSheetValue.Hidden,
-                fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown
+    var peekHeightPx = min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
+    val modifier = if (slideOver) {
+        if (sheetHeight != null) {
+            val anchors = if (!expandable) {
+                mapOf(
+                    fullHeight to BottomSheetValue.Hidden,
+                    fullHeight - min(sheetHeight, peekHeightPx) to BottomSheetValue.Shown
+                )
+            } else if (sheetHeight <= peekHeightPx) {
+                mapOf(
+                    fullHeight to BottomSheetValue.Hidden,
+                    fullHeight - sheetHeight to BottomSheetValue.Shown
+                )
+            } else {
+                mapOf(
+                    fullHeight to BottomSheetValue.Hidden,
+                    fullHeight - peekHeightPx to BottomSheetValue.Shown,
+                    max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded
+                )
+            }
+            if (sheetState.initialValue == BottomSheetValue.Expanded
+                && anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } == null
+            ) {
+                throw IllegalArgumentException(
+                    "BottomSheet initial value must not be set to Expanded " +
+                            "if the whole content is visible in Shown state itself"
+                )
+            }
+            Modifier.swipeable(
+                state = sheetState,
+                anchors = anchors,
+                orientation = Orientation.Vertical,
+                enabled = sheetState.currentValue != BottomSheetValue.Hidden,
+                resistance = null
             )
-        } else if (sheetHeight <= peekHeightPx) {
+        } else {
+            Modifier
+        }
+    } else {
+        peekHeightPx = dpToPx(peekHeight)
+        val anchors = if (expandable) {
             mapOf(
                 fullHeight to BottomSheetValue.Hidden,
-                fullHeight - sheetHeight to BottomSheetValue.Shown
+                fullHeight - peekHeightPx to BottomSheetValue.Shown,
+                0F to BottomSheetValue.Expanded
             )
         } else {
             mapOf(
                 fullHeight to BottomSheetValue.Hidden,
-                fullHeight - peekHeightPx to BottomSheetValue.Shown,
-                max(0f, fullHeight - sheetHeight) to BottomSheetValue.Expanded
+                fullHeight - peekHeightPx to BottomSheetValue.Shown
             )
         }
-        if (sheetState.initialValue == BottomSheetValue.Expanded
-            && anchors.entries.firstOrNull { it.value == BottomSheetValue.Expanded } == null
-        ) {
-            throw IllegalArgumentException(
-                "BottomSheet initial value must not be set to Expanded " +
-                        "if the whole content is visible in Shown state itself"
-            )
-        }
-
         Modifier.swipeable(
             state = sheetState,
             anchors = anchors,
@@ -451,22 +495,31 @@ private fun Modifier.bottomSheetSwipeable(
             enabled = sheetState.currentValue != BottomSheetValue.Hidden,
             resistance = null
         )
-    } else {
-        Modifier
     }
 
     return this.then(modifier)
 }
 
-private fun Modifier.sheetHeight(expandable: Boolean, fullHeight: Float, peekHeight: Dp): Modifier {
-    val modifier = if (expandable) {
-        Modifier
-    } else {
-        Modifier.heightIn(
-            0.dp,
-            pxToDp(min(fullHeight * BottomSheetOpenFraction, dpToPx(peekHeight)))
-        )
-    }
+private fun Modifier.sheetHeight(
+    expandable: Boolean,
+    slideOver: Boolean,
+    fullHeight: Float,
+    peekHeight: Dp,
+    sheetState: BottomSheetState
+): Modifier {
+    val modifier =
+        if (slideOver) {
+            if (expandable) {
+                Modifier
+            } else {
+                Modifier.heightIn(
+                    0.dp,
+                    pxToDp(min(fullHeight * BottomSheetOpenFraction, dpToPx(peekHeight)))
+                )
+            }
+        } else {
+            Modifier.heightIn(0.dp, pxToDp(fullHeight - sheetState.offset.value))
+        }
     return this.then(modifier)
 }
 
