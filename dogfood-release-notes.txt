@@ -1,19 +1,18 @@
-Release Version 0.1.16:
+Release Version 0.1.17:
 
 What's New:
 
-Fluent V2 :
-	Controls: Release V2 AppBar, V2 TabBar, V2 Badge
-	Fix: 
-		1) Update FluentIcon to have tint as parameter. This take precedence before token value, if provided.
-		2) Accessibility bugfix on Progress Indicator, ListItem
-		3) RTL support in Progress Indicator.
-		4) Design token update.
+Fluent V2:
+	Fix/Enhancement:
+		1) Added slideOver mode parameter in BottomSheet API. Default value true in which sheetContent slide over to visible region. When slideOver mode is false then sheetContent get fixed height (peek height, fullheight when expanded) scrollable bottomsheet container as per state placed at bottom of screen.
+		2) Fix Radio button color on Long press.
+		3) Switch animation parity with RN.
+		4) Token Update for FAB.
 
 
 Fluent V1 (v-current):
 	Fix:  
-		1) Added setView in CommandItem interface which is used by recycler view to set reference of view of command item.
+		1) Reset tint color in CCB viewholder.
 
  
 
