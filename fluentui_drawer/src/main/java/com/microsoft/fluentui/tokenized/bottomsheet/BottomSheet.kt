@@ -216,7 +216,7 @@ private fun getBottomSheetInfo(): BottomSheetInfo {
  * @param showHandle if true, the handle would be visible on top of the BottomSheet. The default
  * value is true.
  * @param slideOver if true, then sheetContent would be drawn in full length & it just get slided
- * in the visible region. If false then, the sheetContainer placed at the bottom & its height varies when dragged by Handle.
+ * in the visible region. If false then, the sheetContainer placed at the bottom & its height could be at peekHeight, fullheight or hidden when dragged by Handle or swipe down.
  * @param bottomSheetTokens tokens to provide appearance values. If not provided then bottomSheet
  * tokens will be picked from [AppThemeController]
  * @param content The content of rest of the screen.
@@ -316,8 +316,8 @@ fun BottomSheet(
                         slideOver
                     )
                     .onGloballyPositioned {
-                        val originalSize = it.size.height.toFloat()
                         if (slideOver) {
+                            val originalSize = it.size.height.toFloat()
                             sheetHeightState.value = if (expandable) {
                                 originalSize
                             } else {
@@ -325,10 +325,6 @@ fun BottomSheet(
                                     originalSize,
                                     min(dpToPx(peekHeight), fullHeight * BottomSheetOpenFraction)
                                 )
-                            }
-                        } else {
-                            if (sheetHeightState.value == null) {
-                                sheetHeightState.value = originalSize
                             }
                         }
                     }
