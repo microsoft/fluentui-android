@@ -210,13 +210,14 @@ fun Avatar(
         val cutoutIconSize = getAvatarTokens().cutoutIconSize(avatarInfo = getAvatarInfo())
         var isImageOrInitialsAvailable = true
 
-        Box(Modifier
-            .then(modifier)
-            .requiredSize(avatarSize)
-            .background(backgroundColor, CircleShape)
-            .semantics(mergeDescendants = true) {
-                contentDescription = "${person.getName()}"
-            }, contentAlignment = Alignment.Center
+        Box(
+            Modifier
+                .then(modifier)
+                .requiredSize(avatarSize)
+                .background(backgroundColor, CircleShape)
+                .semantics(mergeDescendants = true) {
+                    contentDescription = "${person.getName()}"
+                }, contentAlignment = Alignment.Center
         ) {
             when {
                 person.image != null -> {

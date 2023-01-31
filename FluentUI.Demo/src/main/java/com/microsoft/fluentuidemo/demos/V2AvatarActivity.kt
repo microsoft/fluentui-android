@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -28,8 +26,6 @@ import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.icons.ListItemIcons
-import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 
 class V2AvatarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -48,7 +44,11 @@ class V2AvatarActivity : DemoActivity() {
                     Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterVertically)
                 ) {
-                    Text(modifier = Modifier.padding(start = 16.dp), text = "Avatar Cutout", color = Color(0xFF2886DE))
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp),
+                        text = "Avatar Cutout",
+                        color = Color(0xFF2886DE)
+                    )
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(
@@ -64,15 +64,43 @@ class V2AvatarActivity : DemoActivity() {
                         val personNoImage: Person = Person(
                             "Kat", "Larsson",
                         )
-                        Avatar(person, cutoutContentDescription = "heart", size = AvatarSize.Size40, cutoutIconDrawable = R.drawable.cutout_heart16x16)
-                        Avatar(personNoImage, size = AvatarSize.Size40, cutoutIconDrawable = R.drawable.cutout_laughing24x24)
-                        Avatar(person, size = AvatarSize.Size40, cutoutIconDrawable = R.drawable.cutout_excel32x32, cutoutStyle = CutoutStyle.Square)
-                        Avatar(person, size = AvatarSize.Size56, cutoutIconDrawable = R.drawable.cutout_people32x32)
-                        Avatar(personNoImage, size = AvatarSize.Size56, cutoutIconDrawable = R.drawable.cutout_onenote32x32, cutoutStyle = CutoutStyle.Square)
-                        Avatar(person, size = AvatarSize.Size56, cutoutIconDrawable = R.drawable.cutout_pp48x48, cutoutStyle = CutoutStyle.Square)
+                        Avatar(
+                            person,
+                            cutoutContentDescription = "heart",
+                            size = AvatarSize.Size40,
+                            cutoutIconDrawable = R.drawable.cutout_heart16x16
+                        )
+                        Avatar(
+                            personNoImage,
+                            size = AvatarSize.Size40,
+                            cutoutIconDrawable = R.drawable.cutout_laughing24x24
+                        )
+                        Avatar(
+                            person,
+                            size = AvatarSize.Size40,
+                            cutoutIconDrawable = R.drawable.cutout_excel32x32,
+                            cutoutStyle = CutoutStyle.Square
+                        )
+                        Avatar(
+                            person,
+                            size = AvatarSize.Size56,
+                            cutoutIconDrawable = R.drawable.cutout_people32x32
+                        )
+                        Avatar(
+                            personNoImage,
+                            size = AvatarSize.Size56,
+                            cutoutIconDrawable = R.drawable.cutout_onenote32x32,
+                            cutoutStyle = CutoutStyle.Square
+                        )
+                        Avatar(
+                            person,
+                            size = AvatarSize.Size56,
+                            cutoutIconDrawable = R.drawable.cutout_pp48x48,
+                            cutoutStyle = CutoutStyle.Square
+                        )
                     }
                     Divider()
-                    
+
                     var isActive by rememberSaveable { mutableStateOf(true) }
                     var isOOO by rememberSaveable { mutableStateOf(false) }
 
@@ -96,7 +124,7 @@ class V2AvatarActivity : DemoActivity() {
                     }
 
                     Divider()
-                    
+
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(

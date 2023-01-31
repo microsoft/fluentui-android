@@ -699,8 +699,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     }
 
     @Composable
-    open fun cutoutCornerRadius(avatarInfo: AvatarInfo): Dp{
-        return when(avatarInfo.cutoutStyle){
+    open fun cutoutCornerRadius(avatarInfo: AvatarInfo): Dp {
+        return when (avatarInfo.cutoutStyle) {
             CutoutStyle.Circle -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusCircle)
             CutoutStyle.Square -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
@@ -721,8 +721,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     }
 
     @Composable
-    open fun cutoutIconSize(avatarInfo: AvatarInfo): Dp{
-        return when(avatarInfo.size){
+    open fun cutoutIconSize(avatarInfo: AvatarInfo): Dp {
+        return when (avatarInfo.size) {
             AvatarSize.Size16, AvatarSize.Size20, AvatarSize.Size24, AvatarSize.Size32, AvatarSize.Size72 -> 0.dp
             AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
             AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
