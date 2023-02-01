@@ -125,6 +125,7 @@ import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Light
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Light
+import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
@@ -174,6 +175,11 @@ enum class ActivityRingSize {
     Size72
 }
 
+enum class CutoutStyle {
+    Square,
+    Circle
+}
+
 data class AvatarInfo(
     val size: AvatarSize = AvatarSize.Size40,
     val type: AvatarType = AvatarType.Person,
@@ -182,7 +188,8 @@ data class AvatarInfo(
     val isOOO: Boolean = false,
     val isImageAvailable: Boolean = false,
     val hasValidInitials: Boolean = false,
-    val calculatedColorKey: String = ""
+    val calculatedColorKey: String = "",
+    val cutoutStyle: CutoutStyle = CutoutStyle.Circle
 ) : ControlInfo
 
 @Parcelize
@@ -689,6 +696,37 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
                 AvatarSize.Size56 -> activityRingToken.inactiveBorderStroke(ActivityRingSize.Size56)
                 AvatarSize.Size72 -> activityRingToken.inactiveBorderStroke(ActivityRingSize.Size72)
             }
+    }
+
+    @Composable
+    open fun cutoutCornerRadius(avatarInfo: AvatarInfo): Dp {
+        return when (avatarInfo.cutoutStyle) {
+            CutoutStyle.Circle -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusCircle)
+            CutoutStyle.Square -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+        }
+    }
+
+    @Composable
+    open fun cutoutBackgroundColor(avatarInfo: AvatarInfo): Color {
+        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            themeMode = FluentTheme.themeMode
+        )
+    }
+
+    @Composable
+    open fun cutoutBorderColor(avatarInfo: AvatarInfo): Color {
+        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+            themeMode = FluentTheme.themeMode
+        )
+    }
+
+    @Composable
+    open fun cutoutIconSize(avatarInfo: AvatarInfo): Dp {
+        return when (avatarInfo.size) {
+            AvatarSize.Size16, AvatarSize.Size20, AvatarSize.Size24, AvatarSize.Size32, AvatarSize.Size72 -> 0.dp
+            AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+            AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
+        }
     }
 
     @Composable
