@@ -186,6 +186,13 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
+    open fun unreadDotColor():Color {
+        return FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            FluentTheme.themeMode
+        )
+    }
+
+    @Composable
     open fun padding(size: SpacingTokens): Dp {
         return GlobalTokens.spacing(size)
     }

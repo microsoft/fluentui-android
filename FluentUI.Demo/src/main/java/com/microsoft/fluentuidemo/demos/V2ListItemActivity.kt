@@ -431,12 +431,11 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewFolderIcon40() },
-            primaryTextLeadingIcons = twoTextIcons20(),
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = twoTextIcons16(),
+            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
             border = BorderType.Bottom,
-            borderInset = XXLarge
+            borderInset = XXLarge,
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = oneTextIcon16()
         )
         ListItem.Item(
             text = primaryText,
@@ -444,8 +443,29 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             leadingAccessoryView = { LeftViewAvatar(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
+            unreadDot = true,
             primaryTextTrailingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = oneTextIcon16()
+        )
+        ListItem.Item(
+            text = primaryText,
+            secondarySubText = tertiaryText,
+            leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
+            border = BorderType.Bottom,
+            borderInset = XXLarge,
+            unreadDot = true,
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = oneTextIcon16()
+        )
+        ListItem.Item(
+            text = primaryText,
+            secondarySubText = tertiaryText,
+            leadingAccessoryView = { LeftViewFolderIcon40() },
+            primaryTextLeadingIcons = twoTextIcons20(),
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = twoTextIcons16(),
+            border = BorderType.Bottom,
+            borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
@@ -470,15 +490,6 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             },
             border = BorderType.Bottom,
             borderInset = XXLarge
-        )
-        ListItem.Item(
-            text = primaryText,
-            secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
-            border = BorderType.Bottom,
-            borderInset = XXLarge,
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
         )
         ListItem.Item(
             text = primaryText,

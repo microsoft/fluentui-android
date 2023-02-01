@@ -2,6 +2,7 @@ package com.microsoft.fluentui.tokenized.listitem
 
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
@@ -20,6 +21,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
@@ -41,6 +43,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubText
 import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubText
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
+import com.microsoft.fluentui.util.dpToPx
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 
@@ -229,6 +232,7 @@ object ListItem {
         subText: String? = null,
         secondarySubText: String? = null,
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
+        unreadDot: Boolean = false,
         enabled: Boolean = true,
         textMaxLines: Int = 1,
         subTextMaxLines: Int = 1,
@@ -289,6 +293,7 @@ object ListItem {
                 selected = false,
                 interactionSource = interactionSource
             )
+            val unreadDotColor = getListItemTokens().unreadDotColor()
             val horizontalPadding = getListItemTokens().padding(Medium)
             val verticalPadding = getListItemTokens().padding(Small)
             val borderSize = getListItemTokens().borderSize().value
@@ -315,9 +320,22 @@ object ListItem {
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
+                if(unreadDot){
+                    Canvas(
+                        modifier = Modifier
+                            .padding(start = 4.dp)
+                            .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
+                    ) {
+                        drawCircle(
+                            color = unreadDotColor,
+                            style = Fill,
+                            radius = dpToPx(4.dp)
+                        )
+                    }
+                }
                 if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
-                        Modifier.padding(start = horizontalPadding),
+                        Modifier.padding(start = if(unreadDot) 4.dp else horizontalPadding),
                         contentAlignment = Alignment.Center
                     ) {
                         leadingAccessoryView()
