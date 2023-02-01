@@ -212,6 +212,7 @@ object ListItem {
      * @param subText Optional secondaryText or a subtitle.
      * @param secondarySubText Optional tertiary text or a footer.
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
+     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
      * @param enabled Optional enable/disable List item
      * @param textMaxLines Optional max visible lines for primary text.
      * @param subTextMaxLines Optional max visible lines for secondary text.
