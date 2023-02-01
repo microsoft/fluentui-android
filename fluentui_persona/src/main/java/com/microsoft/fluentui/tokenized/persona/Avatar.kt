@@ -45,7 +45,11 @@ const val ICON_TEST_TAG = "Icon"
  * @param modifier Optional Modifier for avatar
  * @param size Set Size of Avatar. Default: [AvatarSize.Size32]
  * @param enableActivityRings Enable/Disable Activity Rings on Avatar
- * @param enablePresence Enable/Disable Presence Indicator on Avatar
+ * @param enablePresence Enable/Disable Presence Indicator on Avatar, if cutout is provided then presence indicator is not displayed
+ * @param cutoutIconDrawable cutout drawable
+ * @param cutoutIconImageVector cutout image vector
+ * @param cutoutStyle shape of the cutout. Default: [CutoutStyle.Circle]
+ * @param cutoutContentDescription accessibility description for the cutout
  * @param avatarToken Token to provide appearance values to Avatar
  */
 @Composable
@@ -55,6 +59,10 @@ fun Avatar(
     size: AvatarSize = AvatarSize.Size32,
     enableActivityRings: Boolean = false,
     enablePresence: Boolean = true,
+    @DrawableRes cutoutIconDrawable: Int? = null,
+    cutoutIconImageVector: ImageVector? = null,
+    cutoutStyle: CutoutStyle = CutoutStyle.Circle,
+    cutoutContentDescription: String? = null,
     avatarToken: AvatarTokens? = null
 ) {
 
@@ -69,7 +77,7 @@ fun Avatar(
             size, AvatarType.Person, person.isActive,
 
             person.status, person.isOOO, person.isImageAvailable(),
-            personInitials.isNotEmpty(), person.getName()
+            personInitials.isNotEmpty(), person.getName(), cutoutStyle
         )
     ) {
         val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
@@ -77,6 +85,13 @@ fun Avatar(
         val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
         val borders = getAvatarTokens().borderStroke(getAvatarInfo())
         val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
+        val cutoutCornerRadius = getAvatarTokens().cutoutCornerRadius(getAvatarInfo())
+        val cutoutBackgroundColor =
+            getAvatarTokens().cutoutBackgroundColor(avatarInfo = getAvatarInfo())
+        val cutoutBorderColor = getAvatarTokens().cutoutBorderColor(avatarInfo = getAvatarInfo())
+        val cutoutIconSize = getAvatarTokens().cutoutIconSize(avatarInfo = getAvatarInfo())
+        val isCutoutEnabled = (cutoutIconDrawable != null || cutoutIconImageVector != null)
+        var isImageOrInitialsAvailable = true
 
         Box(modifier = Modifier
             .semantics(mergeDescendants = false) {
@@ -129,6 +144,7 @@ fun Avatar(
                                 .clearAndSetSemantics { })
                     }
                     else -> {
+                        isImageOrInitialsAvailable = false
                         Icon(
                             getAvatarTokens().icon(getAvatarInfo()),
                             null,
@@ -145,7 +161,46 @@ fun Avatar(
                 if (enableActivityRings)
                     ActivityRing(radius = avatarSize / 2, borders)
 
-                if (enablePresence) {
+                if (isCutoutEnabled && isImageOrInitialsAvailable && cutoutIconSize > 0.dp) {
+                    Box(
+                        modifier = Modifier
+                            .offset(6.dp, 6.dp)
+                            .align(Alignment.BottomEnd)
+                            .clip(shape = RoundedCornerShape(size = cutoutCornerRadius))
+                    ) {
+                        if (cutoutIconDrawable != null) {
+                            Image(
+                                painter = painterResource(cutoutIconDrawable),
+                                modifier = Modifier
+                                    .background(cutoutBackgroundColor)
+                                    .border(
+                                        2.dp,
+                                        cutoutBorderColor,
+                                        RoundedCornerShape(cutoutCornerRadius)
+                                    )
+                                    .padding(4.dp)
+                                    .size(cutoutIconSize),
+                                contentDescription = cutoutContentDescription
+                            )
+                        } else if (cutoutIconImageVector != null) {
+                            Image(
+                                imageVector = cutoutIconImageVector,
+                                modifier = Modifier
+                                    .background(cutoutBackgroundColor)
+                                    .border(
+                                        2.dp,
+                                        cutoutBorderColor,
+                                        RoundedCornerShape(cutoutCornerRadius)
+                                    )
+                                    .padding(4.dp)
+                                    .size(cutoutIconSize),
+                                contentDescription = cutoutContentDescription
+                            )
+                        }
+                    }
+                }
+
+                if (!isCutoutEnabled && enablePresence) {
                     val presenceOffset: DpOffset = getAvatarTokens().presenceOffset(getAvatarInfo())
                     val image: FluentIcon = getAvatarTokens().presenceIcon(getAvatarInfo())
                     Image(
@@ -155,152 +210,6 @@ fun Avatar(
                             .align(Alignment.TopStart)
                             .offset(presenceOffset.x, presenceOffset.y)
                     )
-                }
-            }
-        }
-    }
-}
-
-/**
- * API to generate an avatar for a [Person] with a cutout.
- * Only avatar sizes 40 and 56 will generate cutout, rest will not have any cutouts
- *
- * @param person Data Class for the person whose Avatar is to be generated.
- * @param modifier Optional Modifier for avatar
- * @param size Set Size of Avatar. Default: [AvatarSize.Size40]
- * @param cutoutIconDrawable cutout drawable
- * @param cutoutIconImageVector cutout image vector
- * @param cutoutStyle shape of the cutout. Default: [CutoutStyle.Circle]
- * @param cutoutContentDescription description for the cutout
- * @param avatarToken Token to provide appearance values to Avatar
- */
-@Composable
-fun Avatar(
-    person: Person,
-    modifier: Modifier = Modifier,
-    size: AvatarSize = AvatarSize.Size40,
-    @DrawableRes cutoutIconDrawable: Int? = null,
-    cutoutIconImageVector: ImageVector? = null,
-    cutoutStyle: CutoutStyle = CutoutStyle.Circle,
-    cutoutContentDescription: String? = null,
-    avatarToken: AvatarTokens? = null
-) {
-
-    val token = avatarToken
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
-
-    val personInitials = person.getInitials()
-
-    CompositionLocalProvider(
-        LocalAvatarTokens provides token,
-        LocalAvatarInfo provides AvatarInfo(
-            size, AvatarType.Person, person.isActive,
-            person.status, person.isOOO, person.isImageAvailable(),
-            personInitials.isNotEmpty(), person.getName(), cutoutStyle
-        )
-    ) {
-        val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
-        val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
-        val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
-        val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
-        val cutoutCornerRadius = getAvatarTokens().cutoutCornerRadius(getAvatarInfo())
-        val cutoutBackgroundColor =
-            getAvatarTokens().cutoutBackgroundColor(avatarInfo = getAvatarInfo())
-        val cutoutBorderColor = getAvatarTokens().cutoutBorderColor(avatarInfo = getAvatarInfo())
-        val cutoutIconSize = getAvatarTokens().cutoutIconSize(avatarInfo = getAvatarInfo())
-        var isImageOrInitialsAvailable = true
-
-        Box(
-            Modifier
-                .then(modifier)
-                .requiredSize(avatarSize)
-                .background(backgroundColor, CircleShape)
-                .semantics(mergeDescendants = true) {
-                    contentDescription = "${person.getName()}"
-                }, contentAlignment = Alignment.Center
-        ) {
-            when {
-                person.image != null -> {
-                    Image(
-                        painter = painterResource(person.image), null,
-                        modifier = Modifier
-                            .size(avatarSize)
-                            .clip(CircleShape)
-                            .semantics {
-                                testTag = IMAGE_TEST_TAG
-                            }
-                    )
-                }
-                person.imageBitmap != null -> {
-                    Image(
-                        bitmap = person.imageBitmap, null,
-                        modifier = Modifier
-                            .size(avatarSize)
-                            .clip(CircleShape)
-                            .semantics {
-                                testTag = IMAGE_TEST_TAG
-                            }
-                    )
-                }
-                personInitials.isNotEmpty() -> {
-                    Text(personInitials,
-                        fontSize = fontInfo.fontSize.size,
-                        fontWeight = fontInfo.weight,
-                        lineHeight = fontInfo.fontSize.lineHeight,
-                        color = foregroundColor,
-                        modifier = Modifier
-                            .clearAndSetSemantics { })
-                }
-                else -> {
-                    isImageOrInitialsAvailable = false
-                    Icon(
-                        getAvatarTokens().icon(getAvatarInfo()),
-                        null,
-                        modifier = Modifier
-                            .background(backgroundColor, CircleShape)
-                            .semantics {
-                                testTag = ICON_TEST_TAG
-                            },
-                        tint = foregroundColor,
-                    )
-                }
-            }
-            if (isImageOrInitialsAvailable && cutoutIconSize > 0.dp) {
-                Box(
-                    modifier = Modifier
-                        .offset(6.dp, 6.dp)
-                        .align(Alignment.BottomEnd)
-                        .clip(shape = RoundedCornerShape(size = cutoutCornerRadius))
-                ) {
-                    if (cutoutIconDrawable != null) {
-                        Image(
-                            painter = painterResource(cutoutIconDrawable),
-                            modifier = Modifier
-                                .background(cutoutBackgroundColor)
-                                .border(
-                                    2.dp,
-                                    cutoutBorderColor,
-                                    RoundedCornerShape(cutoutCornerRadius)
-                                )
-                                .padding(4.dp)
-                                .size(cutoutIconSize),
-                            contentDescription = cutoutContentDescription
-                        )
-                    } else if (cutoutIconImageVector != null) {
-                        Image(
-                            imageVector = cutoutIconImageVector,
-                            modifier = Modifier
-                                .background(cutoutBackgroundColor)
-                                .border(
-                                    2.dp,
-                                    cutoutBorderColor,
-                                    RoundedCornerShape(cutoutCornerRadius)
-                                )
-                                .padding(4.dp)
-                                .size(cutoutIconSize),
-                            contentDescription = cutoutContentDescription
-                        )
-                    }
                 }
             }
         }
