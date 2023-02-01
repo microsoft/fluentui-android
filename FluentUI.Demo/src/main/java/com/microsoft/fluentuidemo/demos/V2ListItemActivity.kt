@@ -16,6 +16,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FontInfo
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
@@ -427,6 +428,8 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
 
 @Composable
 fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+    var unreadDot1 by remember { mutableStateOf(true) }
+    var unreadDot2 by remember { mutableStateOf(true) }
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -443,7 +446,8 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             leadingAccessoryView = { LeftViewAvatar(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
-            unreadDot = true,
+            unreadDot = unreadDot1,
+            onClick = {unreadDot1 = !unreadDot1},
             primaryTextTrailingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = oneTextIcon16()
         )
@@ -453,7 +457,8 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
-            unreadDot = true,
+            unreadDot = unreadDot2,
+            onClick = {unreadDot2 = !unreadDot2},
             primaryTextTrailingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = oneTextIcon16()
         )

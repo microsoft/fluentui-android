@@ -18,7 +18,6 @@ import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.*
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.StrokeWidth15
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.*
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Standard
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
@@ -73,10 +72,20 @@ enum class ListItemTextAlignment {
     Centered
 }
 
+data class ListItemInfo(
+    val style: SectionHeaderStyle = Standard,
+    val listItemType: ListItemType = OneLine,
+    val borderInset: BorderInset = BorderInset.None,
+    val placement: TextPlacement = Top,
+    val horizontalSpacing: SpacingTokens = SpacingTokens.Small,
+    val verticalSpacing: SpacingTokens = SpacingTokens.Small,
+    val unreadDot: Boolean = false
+) : ControlInfo
+
 @Parcelize
 open class ListItemTokens : ControlToken, Parcelable {
     @Composable
-    open fun backgroundColor(): StateColor {
+    open fun backgroundColor(listItemInfo: ListItemInfo): StateColor {
         return StateColor(
             rest = FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
                 themeMode = FluentTheme.themeMode
@@ -88,7 +97,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderColor(): StateColor {
+    open fun borderColor(listItemInfo: ListItemInfo): StateColor {
         return StateColor(
             rest = FluentTheme.aliasTokens.neutralStrokeColor[Stroke2].value(
                 themeMode = FluentTheme.themeMode
@@ -100,7 +109,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun iconColor(): StateColor {
+    open fun iconColor(listItemInfo: ListItemInfo): StateColor {
         return StateColor(
             rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
                 themeMode = FluentTheme.themeMode
@@ -109,141 +118,8 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textColor(textType: ListTextType): StateColor {
-        return when (textType) {
-            Text ->
-                StateColor(
-                    rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                )
-
-            AccessoryText ->
-                StateColor(
-                    rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                )
-            SubText ->
-                StateColor(
-                    rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                )
-            SecondarySubText ->
-                StateColor(
-                    rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                )
-            ActionText -> StateColor(
-                rest = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
-                    themeMode = FluentTheme.themeMode
-                ),
-                disabled = FluentTheme.aliasTokens.brandForegroundColor[BrandForegroundDisabled1].value(
-                    themeMode = FluentTheme.themeMode
-                ),
-                pressed = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            )
-            DescriptionText -> StateColor(
-                rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
-                    themeMode = FluentTheme.themeMode
-                ),
-                disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
-                    themeMode = FluentTheme.themeMode
-                ),
-                pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            )
-        }
-    }
-
-    @Composable
-    open fun unreadDotColor():Color {
-        return FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-            FluentTheme.themeMode
-        )
-    }
-
-    @Composable
-    open fun padding(size: SpacingTokens): Dp {
-        return GlobalTokens.spacing(size)
-    }
-
-    @Composable
-    open fun borderSize(): Dp {
-        return GlobalTokens.strokeWidth(StrokeWidth15)
-    }
-
-    @Composable
-    open fun chevronTint(): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-            FluentTheme.themeMode
-        )
-    }
-
-    @Composable
-    open fun textSize(textType: ListTextType): FontInfo {
-        return when (textType) {
-            Text -> FluentTheme.aliasTokens.typography[Body1]
-            AccessoryText -> FluentTheme.aliasTokens.typography[Body1]
-            SubText -> FluentTheme.aliasTokens.typography[Body2]
-            SecondarySubText -> FluentTheme.aliasTokens.typography[Caption1]
-            DescriptionText -> FluentTheme.aliasTokens.typography[Caption1]
-            ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
-        }
-    }
-
-    @Composable
-    open fun textSize(textType: ListTextType, style: SectionHeaderStyle): FontInfo {
-        return when (style) {
-            Standard -> {
-                return when (textType) {
-                    Text -> FluentTheme.aliasTokens.typography[Body1Strong]
-                    ActionText -> FluentTheme.aliasTokens.typography[Body2Strong]
-                    else -> FluentTheme.aliasTokens.typography[Body1Strong]
-                }
-            }
-            Subtle -> {
-                return when (textType) {
-                    Text -> FluentTheme.aliasTokens.typography[Caption1]
-                    ActionText -> FluentTheme.aliasTokens.typography[Caption1Strong]
-                    else -> FluentTheme.aliasTokens.typography[Caption1]
-                }
-            }
-        }
-    }
-
-    @Composable
-    open fun cellHeight(listItemType: ListItemType): Dp {
-        return when (listItemType) {
+    open fun cellHeight(listItemInfo: ListItemInfo): Dp {
+        return when (listItemInfo.listItemType) {
             OneLine -> 48.dp
             TwoLine -> 68.dp
             ThreeLine -> 88.dp
@@ -253,8 +129,37 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderInset(inset: BorderInset): Dp {
-        return when (inset) {
+    open fun unreadDotColor(listItemInfo: ListItemInfo): Color {
+        return FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            FluentTheme.themeMode
+        )
+    }
+
+    @Composable
+    open fun horizontalPadding(listItemInfo: ListItemInfo): Dp {
+        return GlobalTokens.spacing(listItemInfo.horizontalSpacing)
+    }
+
+    @Composable
+    open fun verticalPadding(listItemInfo: ListItemInfo): Dp {
+        return GlobalTokens.spacing(listItemInfo.verticalSpacing)
+    }
+
+    @Composable
+    open fun borderSize(listItemInfo: ListItemInfo): Dp {
+        return GlobalTokens.strokeWidth(StrokeWidth15)
+    }
+
+    @Composable
+    open fun chevronTint(listItemInfo: ListItemInfo): Color {
+        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            FluentTheme.themeMode
+        )
+    }
+
+    @Composable
+    open fun borderInset(listItemInfo: ListItemInfo): Dp {
+        return when (listItemInfo.borderInset) {
             BorderInset.None -> 0.dp
             BorderInset.Medium -> 16.dp
             BorderInset.Large -> 56.dp
@@ -265,10 +170,138 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun descriptionPlacement(placement: TextPlacement): Alignment.Vertical {
-        return when (placement) {
+    open fun descriptionPlacement(listItemInfo: ListItemInfo): Alignment.Vertical {
+        return when (listItemInfo.placement) {
             Top -> Alignment.Top
             Bottom -> Alignment.Bottom
+        }
+    }
+
+    @Composable
+    open fun primaryTextColor(listItemInfo: ListItemInfo): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun subTextColor(listItemInfo: ListItemInfo): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun secondarySubTextColor(listItemInfo: ListItemInfo): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun actionTextColor(listItemInfo: ListItemInfo): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.brandForegroundColor[BrandForegroundDisabled1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.brandForegroundColor[BrandForeground1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun descriptionTextColor(listItemInfo: ListItemInfo): StateColor {
+        return StateColor(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
+    @Composable
+    open fun primaryTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return if(listItemInfo.unreadDot){
+            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
+        }else{
+            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
+        }
+    }
+
+    @Composable
+    open fun subTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return FluentTheme.aliasTokens.typography[Body2]
+    }
+
+    @Composable
+    open fun secondarySubTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return FluentTheme.aliasTokens.typography[Caption1]
+    }
+
+    @Composable
+    open fun actionTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return FluentTheme.aliasTokens.typography[Caption1Strong]
+    }
+
+    @Composable
+    open fun descriptionTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return FluentTheme.aliasTokens.typography[Caption1]
+    }
+
+    @Composable
+    open fun sectionHeaderPrimaryTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return when (listItemInfo.style) {
+            Standard -> {
+                FluentTheme.aliasTokens.typography[Body1Strong]
+            }
+            Subtle -> {
+                FluentTheme.aliasTokens.typography[Caption1]
+            }
+        }
+    }
+
+    @Composable
+    open fun sectionHeaderActionTextTypography(listItemInfo: ListItemInfo): FontInfo {
+        return when (listItemInfo.style) {
+            Standard -> {
+                FluentTheme.aliasTokens.typography[Body2Strong]
+            }
+            Subtle -> {
+                FluentTheme.aliasTokens.typography[Caption1Strong]
+            }
         }
     }
 }

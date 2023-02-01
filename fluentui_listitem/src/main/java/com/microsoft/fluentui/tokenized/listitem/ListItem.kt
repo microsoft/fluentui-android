@@ -34,22 +34,25 @@ import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.FontInfo
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SecondarySubText
-import com.microsoft.fluentui.theme.token.controlTokens.ListTextType.SubText
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 import com.microsoft.fluentui.util.dpToPx
 
 val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
+val LocalListItemInfo = compositionLocalOf { ListItemInfo() }
 
 @Composable
 fun getListItemTokens(): ListItemTokens {
     return LocalListItemTokens.current
+}
+
+@Composable
+fun getListItemInfo(): ListItemInfo {
+    return LocalListItemInfo.current
 }
 
 object ListItem {
@@ -250,58 +253,68 @@ object ListItem {
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
-
+        val listItemType = if (subText == null && secondarySubText == null) {
+            OneLine
+        } else if ((secondarySubText == null && subText != null) || (secondarySubText != null && subText == null)) {
+            TwoLine
+        } else {
+            ThreeLine
+        }
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token) {
-            val listItemType = if (subText == null && secondarySubText == null) {
-                OneLine
-            } else if ((secondarySubText == null && subText != null) || (secondarySubText != null && subText == null)) {
-                TwoLine
-            } else {
-                ThreeLine
-            }
-            val backgroundColor = getListItemTokens().backgroundColor().getColorByState(
-                enabled = true,
-                selected = false,
-                interactionSource = interactionSource
+        CompositionLocalProvider(
+            LocalListItemTokens provides token,
+            LocalListItemInfo provides ListItemInfo(
+                listItemType = listItemType,
+                borderInset = borderInset,
+                horizontalSpacing = Medium,
+                verticalSpacing = Medium,
+                unreadDot = unreadDot
             )
-            val cellHeight = getListItemTokens().cellHeight(listItemType = listItemType)
-            val textSize = getListItemTokens().textSize(textType = ListTextType.Text)
+        ) {
+
+            val backgroundColor =
+                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
+                    enabled = true,
+                    selected = false,
+                    interactionSource = interactionSource
+                )
+            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
+            val primaryTextSize = getListItemTokens().primaryTextTypography(getListItemInfo())
             val subTextSize =
-                getListItemTokens().textSize(textType = SubText)
+                getListItemTokens().subTextTypography(getListItemInfo())
             val secondarySubTextSize =
-                getListItemTokens().textSize(textType = SecondarySubText)
-            val textColor = getListItemTokens().textColor(
-                textType = ListTextType.Text
+                getListItemTokens().secondarySubTextTypography(getListItemInfo())
+            val primaryTextColor = getListItemTokens().primaryTextColor(
+                getListItemInfo()
             ).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
-            val subTextColor = getListItemTokens().textColor(
-                textType = SubText
+            val subTextColor = getListItemTokens().subTextColor(
+                getListItemInfo()
             ).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
-            val secondarySubTextColor = getListItemTokens().textColor(
-                textType = SecondarySubText
+            val secondarySubTextColor = getListItemTokens().secondarySubTextColor(
+                getListItemInfo()
             ).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
-            val unreadDotColor = getListItemTokens().unreadDotColor()
-            val horizontalPadding = getListItemTokens().padding(Medium)
-            val verticalPadding = getListItemTokens().padding(Small)
-            val borderSize = getListItemTokens().borderSize().value
+            val unreadDotColor = getListItemTokens().unreadDotColor(getListItemInfo())
+            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
+            val verticalPadding = getListItemTokens().verticalPadding(getListItemInfo())
+            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
-                    getListItemTokens().borderInset(inset = borderInset).toPx()
+                    getListItemTokens().borderInset(getListItemInfo()).toPx()
                 }
-            val borderColor = getListItemTokens().borderColor().getColorByState(
+            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
@@ -320,7 +333,7 @@ object ListItem {
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if(unreadDot){
+                if (unreadDot) {
                     Canvas(
                         modifier = Modifier
                             .padding(start = 4.dp)
@@ -335,7 +348,7 @@ object ListItem {
                 }
                 if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
-                        Modifier.padding(start = if(unreadDot) 4.dp else horizontalPadding),
+                        Modifier.padding(start = if (unreadDot) 4.dp else horizontalPadding),
                         contentAlignment = Alignment.Center
                     ) {
                         leadingAccessoryView()
@@ -362,9 +375,9 @@ object ListItem {
 
                             Text(
                                 text = text,
-                                fontSize = textSize.fontSize.size,
-                                fontWeight = textSize.weight,
-                                color = textColor,
+                                fontSize = primaryTextSize.fontSize.size,
+                                fontWeight = primaryTextSize.weight,
+                                color = primaryTextColor,
                                 maxLines = textMaxLines,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -483,46 +496,56 @@ object ListItem {
 
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token) {
-
-            val backgroundColor = getListItemTokens().backgroundColor().getColorByState(
-                enabled = true,
-                selected = false,
-                interactionSource = interactionSource
+        CompositionLocalProvider(
+            LocalListItemTokens provides token,
+            LocalListItemInfo provides ListItemInfo(
+                listItemType = SectionHeader,
+                borderInset = borderInset,
+                horizontalSpacing = Medium,
+                verticalSpacing = Small,
+                style = style
             )
-            val cellHeight = getListItemTokens().cellHeight(listItemType = OneLine)
-            val textSize =
-                getListItemTokens().textSize(textType = ListTextType.Text, style = style)
+        ) {
+
+            val backgroundColor =
+                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
+                    enabled = true,
+                    selected = false,
+                    interactionSource = interactionSource
+                )
+            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
+            val primaryTextSize =
+                getListItemTokens().sectionHeaderPrimaryTextTypography(getListItemInfo())
             val actionTextSize =
-                getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
-            val textColor = getListItemTokens().textColor(
-                textType = ListTextType.Text
+                getListItemTokens().sectionHeaderActionTextTypography(getListItemInfo())
+            val primaryTextColor = getListItemTokens().primaryTextColor(
+                getListItemInfo()
             ).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
             val actionTextColor =
-                getListItemTokens().textColor(
-                    textType = ListTextType.ActionText
+                getListItemTokens().actionTextColor(
+                    getListItemInfo()
                 ).getColorByState(
                     enabled = enabled,
                     selected = false,
                     interactionSource = interactionSource
                 )
-            val horizontalPadding = getListItemTokens().padding(Medium)
-            val verticalPadding = getListItemTokens().padding(size = XSmall)
-            val borderSize = getListItemTokens().borderSize().value
+            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
+            val verticalPadding = getListItemTokens().verticalPadding(getListItemInfo())
+            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
-                    getListItemTokens().borderInset(inset = borderInset).toPx()
+                    getListItemTokens().borderInset(getListItemInfo()).toPx()
                 }
-            val borderColor = getListItemTokens().borderColor().getColorByState(
+            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
-            val chevronTint = getListItemTokens().chevronTint()
+            val chevronTint = getListItemTokens().chevronTint(getListItemInfo())
             var expandedState by rememberSaveable { mutableStateOf(false) }
             val rotationState by animateFloatAsState(
                 targetValue = if (!enableContentOpenCloseTransition || expandedState)
@@ -566,9 +589,9 @@ object ListItem {
                                 }
                                 Text(
                                     text = title,
-                                    fontSize = textSize.fontSize.size,
-                                    fontWeight = textSize.weight,
-                                    color = textColor,
+                                    fontSize = primaryTextSize.fontSize.size,
+                                    fontWeight = primaryTextSize.weight,
+                                    color = primaryTextColor,
                                     maxLines = titleMaxLines,
                                     overflow = TextOverflow.Ellipsis
                                 )
@@ -648,57 +671,67 @@ object ListItem {
     ) {
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token) {
-
-            val backgroundColor = getListItemTokens().backgroundColor().getColorByState(
-                enabled = true,
-                selected = false,
-                interactionSource = interactionSource
+        CompositionLocalProvider(
+            LocalListItemTokens provides token,
+            LocalListItemInfo provides ListItemInfo(
+                listItemType = SectionDescription,
+                horizontalSpacing = Medium,
+                verticalSpacing = XSmall,
+                borderInset = borderInset,
+                placement = descriptionPlacement
             )
-            val cellHeight = getListItemTokens().cellHeight(listItemType = SectionDescription)
-            val textSize = getListItemTokens().textSize(textType = ListTextType.DescriptionText)
+        ) {
+
+            val backgroundColor =
+                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
+                    enabled = true,
+                    selected = false,
+                    interactionSource = interactionSource
+                )
+            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
+            val descriptionTextSize = getListItemTokens().descriptionTextTypography(getListItemInfo())
             val actionTextSize =
-                getListItemTokens().textSize(textType = ListTextType.ActionText)
-            val textColor =
-                getListItemTokens().textColor(
-                    textType = ListTextType.DescriptionText
+                getListItemTokens().actionTextTypography(getListItemInfo())
+            val descriptionTextColor =
+                getListItemTokens().descriptionTextColor(
+                    getListItemInfo()
                 ).getColorByState(
                     enabled = enabled,
                     selected = false,
                     interactionSource = interactionSource
                 )
-            val actionTextColor = getListItemTokens().textColor(
-                textType = ListTextType.ActionText
+            val actionTextColor = getListItemTokens().actionTextColor(
+                getListItemInfo()
             ).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
-            val horizontalPadding = getListItemTokens().padding(Medium)
+            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
             val leadPadding = if (leadingAccessoryView == null) {
                 PaddingValues(start = horizontalPadding, end = horizontalPadding)
             } else {
                 PaddingValues(
-                    start = getListItemTokens().padding(size = GlobalTokens.SpacingTokens.None),
+                    start = 0.dp,
                     end = horizontalPadding
                 )
             }
-            val borderSize = getListItemTokens().borderSize().value
+            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
-                    getListItemTokens().borderInset(inset = borderInset).toPx()
+                    getListItemTokens().borderInset(getListItemInfo()).toPx()
                 }
-            val borderColor = getListItemTokens().borderColor().getColorByState(
+            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
             val descriptionAlignment =
-                getListItemTokens().descriptionPlacement(placement = descriptionPlacement)
+                getListItemTokens().descriptionPlacement(getListItemInfo())
             val verticalPadding = if (descriptionPlacement == Top) {
-                PaddingValues(top = getListItemTokens().padding(size = XSmall))
+                PaddingValues(top = getListItemTokens().verticalPadding(getListItemInfo()))
             } else {
-                PaddingValues(bottom = getListItemTokens().padding(size = XSmall))
+                PaddingValues(bottom = getListItemTokens().verticalPadding(getListItemInfo()))
             }
             Row(
                 modifier
@@ -732,16 +765,16 @@ object ListItem {
                             onClick = onActionClick ?: {},
                             actionTextSize = actionTextSize,
                             actionTextColor = actionTextColor,
-                            descriptionTextColor = textColor,
-                            descriptionTextSize = textSize,
+                            descriptionTextColor = descriptionTextColor,
+                            descriptionTextSize = descriptionTextSize,
                             backgroundColor = backgroundColor
                         )
                     } else {
                         Text(
                             text = description,
-                            color = textColor,
-                            fontSize = textSize.fontSize.size,
-                            fontWeight = textSize.weight
+                            color = descriptionTextColor,
+                            fontSize = descriptionTextSize.fontSize.size,
+                            fontWeight = descriptionTextSize.weight
                         )
                     }
                 }
@@ -791,41 +824,51 @@ object ListItem {
     ) {
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(LocalListItemTokens provides token) {
-
-            val backgroundColor = getListItemTokens().backgroundColor().getColorByState(
-                enabled = true,
-                selected = false,
-                interactionSource = interactionSource
+        CompositionLocalProvider(
+            LocalListItemTokens provides token,
+            LocalListItemInfo provides ListItemInfo(
+                listItemType = OneLine,
+                style = style,
+                horizontalSpacing = Medium,
+                verticalSpacing = XSmall,
+                borderInset = borderInset
             )
-            val cellHeight = getListItemTokens().cellHeight(listItemType = OneLine)
-            val textSize =
-                getListItemTokens().textSize(textType = ListTextType.Text, style = style)
+        ) {
+
+            val backgroundColor =
+                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
+                    enabled = true,
+                    selected = false,
+                    interactionSource = interactionSource
+                )
+            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
+            val primaryTextSize =
+                getListItemTokens().sectionHeaderPrimaryTextTypography(getListItemInfo())
             val actionTextSize =
-                getListItemTokens().textSize(textType = ListTextType.ActionText, style = style)
-            val textColor = getListItemTokens().textColor(
-                textType = ListTextType.Text
+                getListItemTokens().sectionHeaderActionTextTypography(getListItemInfo())
+            val primaryTextColor = getListItemTokens().primaryTextColor(
+                getListItemInfo()
             ).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
             )
             val actionTextColor =
-                getListItemTokens().textColor(
-                    textType = ListTextType.ActionText
+                getListItemTokens().actionTextColor(
+                    getListItemInfo()
                 ).getColorByState(
                     enabled = enabled,
                     selected = false,
                     interactionSource = interactionSource
                 )
-            val horizontalPadding = getListItemTokens().padding(Medium)
-            val verticalPadding = getListItemTokens().padding(size = XSmall)
-            val borderSize = getListItemTokens().borderSize().value
+            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
+            val verticalPadding = getListItemTokens().verticalPadding(getListItemInfo())
+            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
-                    getListItemTokens().borderInset(inset = borderInset).toPx()
+                    getListItemTokens().borderInset(getListItemInfo()).toPx()
                 }
-            val borderColor = getListItemTokens().borderColor().getColorByState(
+            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
                 enabled = enabled,
                 selected = false,
                 interactionSource = interactionSource
@@ -856,9 +899,9 @@ object ListItem {
                                 bottom = verticalPadding
                             )
                             .weight(1f),
-                        fontSize = textSize.fontSize.size,
-                        fontWeight = textSize.weight,
-                        color = textColor,
+                        fontSize = primaryTextSize.fontSize.size,
+                        fontWeight = primaryTextSize.weight,
+                        color = primaryTextColor,
                         maxLines = titleMaxLines,
                         overflow = TextOverflow.Ellipsis
                     )
