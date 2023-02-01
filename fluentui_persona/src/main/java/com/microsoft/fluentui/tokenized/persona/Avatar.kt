@@ -94,7 +94,7 @@ fun Avatar(
         var isImageOrInitialsAvailable = true
 
         Box(modifier = Modifier
-            .semantics(mergeDescendants = false) {
+            .semantics(mergeDescendants = true) {
                 contentDescription = "${person.getName()}. " +
                         "${if (enablePresence) "Status, ${person.status}," else ""}. " +
                         "${if (enablePresence && person.isOOO) "Out Of Office," else ""}. " +

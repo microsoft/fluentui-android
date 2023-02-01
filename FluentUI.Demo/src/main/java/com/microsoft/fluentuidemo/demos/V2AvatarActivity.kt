@@ -44,6 +44,9 @@ class V2AvatarActivity : DemoActivity() {
                     Modifier.padding(16.dp),
                     verticalArrangement = Arrangement.spacedBy(14.dp, Alignment.CenterVertically)
                 ) {
+                    var isActive by rememberSaveable { mutableStateOf(true) }
+                    var isOOO by rememberSaveable { mutableStateOf(false) }
+
                     Text(
                         modifier = Modifier.padding(start = 16.dp),
                         text = "Avatar Cutout",
@@ -59,50 +62,55 @@ class V2AvatarActivity : DemoActivity() {
                     ) {
                         val person: Person = Person(
                             "Kat", "Larsson",
+                            isActive = isActive,
                             image = R.drawable.avatar_kat_larsson
                         )
                         val personNoImage: Person = Person(
                             "Kat", "Larsson",
+                            isActive = isActive,
                         )
                         Avatar(
                             person,
                             cutoutContentDescription = "heart",
                             size = AvatarSize.Size40,
+                            enableActivityRings = true,
                             cutoutIconDrawable = R.drawable.cutout_heart16x16
                         )
                         Avatar(
                             personNoImage,
                             size = AvatarSize.Size40,
+                            enableActivityRings = true,
                             cutoutIconDrawable = R.drawable.cutout_laughing24x24
                         )
                         Avatar(
                             person,
                             size = AvatarSize.Size40,
+                            enableActivityRings = true,
                             cutoutIconDrawable = R.drawable.cutout_excel32x32,
                             cutoutStyle = CutoutStyle.Square
                         )
                         Avatar(
                             person,
                             size = AvatarSize.Size56,
+                            enableActivityRings = true,
                             cutoutIconDrawable = R.drawable.cutout_people32x32
                         )
                         Avatar(
                             personNoImage,
                             size = AvatarSize.Size56,
+                            enableActivityRings = true,
                             cutoutIconDrawable = R.drawable.cutout_onenote32x32,
                             cutoutStyle = CutoutStyle.Square
                         )
                         Avatar(
                             person,
                             size = AvatarSize.Size56,
+                            enableActivityRings = true,
                             cutoutIconDrawable = R.drawable.cutout_pp48x48,
                             cutoutStyle = CutoutStyle.Square
                         )
                     }
                     Divider()
-
-                    var isActive by rememberSaveable { mutableStateOf(true) }
-                    var isOOO by rememberSaveable { mutableStateOf(false) }
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),

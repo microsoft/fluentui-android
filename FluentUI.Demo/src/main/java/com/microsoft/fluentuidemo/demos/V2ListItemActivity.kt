@@ -474,6 +474,15 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
+            leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
+            border = BorderType.Bottom,
+            borderInset = XXLarge,
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = oneTextIcon16()
+        )
+        ListItem.Item(
+            text = primaryText,
+            secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
             secondarySubTextTailingIcons = twoTextIcons16(),
             trailingAccessoryView = { RightViewToggle() },
@@ -748,6 +757,12 @@ fun RightViewButton(
 fun LeftViewAvatar(size: AvatarSize) {
     val person = Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady)
     return Avatar(person = person, size = size, enablePresence = false)
+}
+
+@Composable
+fun LeftViewAvatarCutout(size: AvatarSize) {
+    val person = Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
+    return Avatar(person = person, size = size, enablePresence = false, enableActivityRings = true, cutoutIconDrawable = R.drawable.cutout_heart16x16)
 }
 
 @Composable
