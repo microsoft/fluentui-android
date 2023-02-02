@@ -33,15 +33,6 @@ enum class ListItemType {
     SectionDescription
 }
 
-enum class ListTextType {
-    Text,
-    SubText,
-    SecondarySubText,
-    AccessoryText,
-    ActionText,
-    DescriptionText
-}
-
 enum class SectionHeaderStyle {
     Standard,
     Subtle

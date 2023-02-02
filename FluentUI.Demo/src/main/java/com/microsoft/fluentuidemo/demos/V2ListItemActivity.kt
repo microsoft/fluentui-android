@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -16,7 +15,6 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.FontInfo
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
@@ -516,7 +514,6 @@ fun ThreeLineListAccessoryViewContent(
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
-            secondarySubText = tertiaryText,
             progressIndicator = { LinearProgressIndicator() },
             primaryTextLeadingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = twoTextIcons16(),
@@ -748,7 +745,7 @@ fun LeftViewAvatarCutout(size: AvatarSize) {
         size = size,
         enablePresence = false,
         enableActivityRings = true,
-        cutoutIconDrawable = R.drawable.cutout_heart16x16
+        cutoutIconDrawable = drawable.cutout_heart16x16
     )
 }
 
@@ -761,11 +758,6 @@ fun GetAvatar(size: AvatarSize, image: Int) {
 @Composable
 fun RightViewText(text: String) {
     return Text(text = text)
-}
-
-@Composable
-fun ProgressBar() {
-    LinearProgressIndicator()
 }
 
 fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
