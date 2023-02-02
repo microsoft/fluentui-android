@@ -96,13 +96,11 @@ fun Avatar(
         Box(modifier = Modifier
             .semantics(mergeDescendants = true) {
                 contentDescription = "${person.getName()}. " +
-                        "${if (enablePresence) "Status, ${person.status}," else ""}. " +
-                        "${if (enablePresence && person.isOOO) "Out Of Office," else ""}. " +
-                        "${
-                            if (enableActivityRings) {
-                                if (person.isActive) "Active" else "Inactive"
-                            } else ""
-                        }."
+                        "${if (enablePresence) "Status, ${person.status}," else ""} " +
+                        "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " +
+                        if (enableActivityRings) {
+                            if (person.isActive) "Active" else "Inactive"
+                        } else ""
             }
         ) {
             Box(
