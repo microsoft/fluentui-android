@@ -252,6 +252,7 @@ open class ListItemTokens : ControlToken, Parcelable {
             )
         )
     }
+
     @Composable
     open fun rippleColor(listItemInfo: ListItemInfo): Color {
         return FluentColor(
@@ -264,9 +265,9 @@ open class ListItemTokens : ControlToken, Parcelable {
 
     @Composable
     open fun primaryTextTypography(listItemInfo: ListItemInfo): FontInfo {
-        return if(listItemInfo.unreadDot){
+        return if (listItemInfo.unreadDot) {
             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
-        }else{
+        } else {
             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
         }
     }

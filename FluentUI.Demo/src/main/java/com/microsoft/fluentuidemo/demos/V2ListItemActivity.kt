@@ -411,7 +411,7 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             border = BorderType.Bottom,
             borderInset = XXLarge,
             unreadDot = unreadDot1,
-            onClick = {unreadDot1 = !unreadDot1},
+            onClick = { unreadDot1 = !unreadDot1 },
             primaryTextTrailingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = oneTextIcon16()
         )
@@ -422,7 +422,7 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             border = BorderType.Bottom,
             borderInset = XXLarge,
             unreadDot = unreadDot2,
-            onClick = {unreadDot2 = !unreadDot2},
+            onClick = { unreadDot2 = !unreadDot2 },
             primaryTextTrailingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = oneTextIcon16()
         )
@@ -741,8 +741,15 @@ fun LeftViewAvatar(size: AvatarSize) {
 
 @Composable
 fun LeftViewAvatarCutout(size: AvatarSize) {
-    val person = Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
-    return Avatar(person = person, size = size, enablePresence = false, enableActivityRings = true, cutoutIconDrawable = R.drawable.cutout_heart16x16)
+    val person =
+        Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
+    return Avatar(
+        person = person,
+        size = size,
+        enablePresence = false,
+        enableActivityRings = true,
+        cutoutIconDrawable = R.drawable.cutout_heart16x16
+    )
 }
 
 @Composable
