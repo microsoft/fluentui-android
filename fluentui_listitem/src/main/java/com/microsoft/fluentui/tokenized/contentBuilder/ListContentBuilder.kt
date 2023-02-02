@@ -19,6 +19,7 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.listitem.getListItemInfo
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
 import kotlinx.coroutines.launch
 import kotlin.math.max
@@ -306,7 +307,7 @@ class ListContentBuilder {
                     subText = item.subTitle,
                     leadingAccessoryView = {
                         if (item.icon != null) {
-                            Icon(item.icon!!, null, tint = token.iconColor().rest)
+                            Icon(item.icon!!, null, tint = token.iconColor(getListItemInfo()).rest)
                         }
                     },
                     trailingAccessoryView = item.accessory,
