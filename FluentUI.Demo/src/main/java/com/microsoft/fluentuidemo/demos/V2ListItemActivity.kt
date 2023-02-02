@@ -79,35 +79,19 @@ fun CreateListActivityUI() {
         ) {
             LazyColumn {
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "One-Line list with Text icons",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "One-Line list with Text icons")
                     OneLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Two-Line list with Text icons",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Two-Line list with Text icons")
                     TwoLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Three-Line list with Text icons",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Three-Line list with Text icons")
                     ThreeLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Text Only",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Text Only")
                     ListItem.Item(
                         text = primaryText,
                         border = BorderType.Bottom,
@@ -130,11 +114,7 @@ fun CreateListActivityUI() {
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Wrapped text list",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Wrapped Text list")
                     ListItem.Item(
                         text = sampleText,
                         textMaxLines = 4,
@@ -171,11 +151,7 @@ fun CreateListActivityUI() {
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Section description",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Section description")
                     ListItem.SectionDescription(
                         description = "Sample description with the description placed at the Top with no Action text and no icon",
                         border = BorderType.Bottom,
@@ -204,11 +180,7 @@ fun CreateListActivityUI() {
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                        text = "Section Headers with/without chevron",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Section Headers with/without chevron")
                     Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
                         ListItem.SectionHeader(
                             title = "One-Line list",
@@ -242,31 +214,23 @@ fun CreateListActivityUI() {
 
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                        text = "Header",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Headers")
                     ListItem.Header(
-                        title = "Heading",
+                        title = "Standard heading",
                         accessoryTextTitle = "Action",
                         accessoryTextOnClick = {},
                         trailingAccessoryView = { RightViewThreeButton() },
                         border = BorderType.Bottom
                     )
                     ListItem.Header(
-                        title = "Heading",
+                        title = "Subtle heading",
                         accessoryTextTitle = "Action",
                         accessoryTextOnClick = {},
                         style = Subtle
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                        text = "Centered Action Text",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Centered Action Text")
                     ListItem.Item(
                         text = "Action",
                         textAlignment = ListItemTextAlignment.Centered,
