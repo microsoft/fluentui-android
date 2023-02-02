@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
@@ -39,6 +40,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
+import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 import com.microsoft.fluentui.util.dpToPx
 
@@ -46,12 +48,12 @@ val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
 val LocalListItemInfo = compositionLocalOf { ListItemInfo() }
 
 @Composable
-fun getListItemTokens(): ListItemTokens {
+internal fun getListItemTokens(): ListItemTokens {
     return LocalListItemTokens.current
 }
 
 @Composable
-fun getListItemInfo(): ListItemInfo {
+internal fun getListItemInfo(): ListItemInfo {
     return LocalListItemInfo.current
 }
 
@@ -60,12 +62,13 @@ object ListItem {
     private fun Modifier.clickAndSemanticsModifier(
         interactionSource: MutableInteractionSource,
         onClick: () -> Unit,
-        enabled: Boolean
+        enabled: Boolean,
+        rippleColor: Color
     ): Modifier = composed {
         Modifier
             .clickable(
                 interactionSource = interactionSource,
-                indication = rememberRipple(),
+                indication = rememberRipple(color = rippleColor),
                 onClickLabel = null,
                 enabled = enabled,
                 onClick = onClick
@@ -307,9 +310,9 @@ object ListItem {
                 selected = false,
                 interactionSource = interactionSource
             )
+            val rippleColor = getListItemTokens().rippleColor(getListItemInfo())
             val unreadDotColor = getListItemTokens().unreadDotColor(getListItemInfo())
-            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
-            val verticalPadding = getListItemTokens().verticalPadding(getListItemInfo())
+            val padding = getListItemTokens().padding(getListItemInfo())
             val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
@@ -330,7 +333,8 @@ object ListItem {
                     .clickAndSemanticsModifier(
                         interactionSource,
                         onClick = onClick ?: {},
-                        enabled
+                        enabled,
+                        rippleColor
                     ),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -349,7 +353,7 @@ object ListItem {
                 }
                 if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
-                        Modifier.padding(start = if (unreadDot) 4.dp else horizontalPadding),
+                        Modifier.padding(start = if (unreadDot) 4.dp else padding.calculateStartPadding(LocalLayoutDirection.current)),
                         contentAlignment = Alignment.Center
                     ) {
                         leadingAccessoryView()
@@ -359,10 +363,10 @@ object ListItem {
                     if (textAlignment == ListItemTextAlignment.Regular) Alignment.CenterStart else Alignment.Center
                 Box(
                     Modifier
-                        .padding(start = horizontalPadding, end = horizontalPadding)
+                        .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
                         .weight(1f), contentAlignment = contentAlignment
                 ) {
-                    Column(Modifier.padding(top = verticalPadding, bottom = verticalPadding)) {
+                    Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -440,7 +444,7 @@ object ListItem {
                 }
                 if (progressIndicator == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
-                        Modifier.padding(end = horizontalPadding),
+                        Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
                         contentAlignment = Alignment.CenterEnd
                     ) {
                         trailingAccessoryView()
@@ -534,8 +538,8 @@ object ListItem {
                     selected = false,
                     interactionSource = interactionSource
                 )
-            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
-            val verticalPadding = getListItemTokens().verticalPadding(getListItemInfo())
+            val rippleColor = getListItemTokens().rippleColor(getListItemInfo())
+            val padding = getListItemTokens().padding(getListItemInfo())
             val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
@@ -559,7 +563,7 @@ object ListItem {
                     .background(backgroundColor)
                     .clickAndSemanticsModifier(
                         interactionSource,
-                        onClick = { expandedState = !expandedState }, enabled
+                        onClick = { expandedState = !expandedState }, enabled, rippleColor
                     )
                     .borderModifier(border, borderColor, borderSize, borderInsetToPx)
             ) {
@@ -569,13 +573,17 @@ object ListItem {
                             .background(backgroundColor)
                             .fillMaxWidth()
                             .heightIn(min = cellHeight)
-                            .padding(bottom = verticalPadding),
+                            .padding(bottom = padding.calculateBottomPadding()),
                         verticalAlignment = Alignment.Bottom
                     ) {
 
                         Box(
                             Modifier
-                                .padding(start = horizontalPadding, end = horizontalPadding)
+                                .padding(
+                                    horizontal = padding.calculateStartPadding(
+                                        LocalLayoutDirection.current
+                                    )
+                                )
                                 .weight(1f), contentAlignment = Alignment.BottomStart
                         ) {
 
@@ -599,7 +607,7 @@ object ListItem {
                             }
 
                         }
-                        Row(Modifier.padding(end = horizontalPadding)) {
+                        Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
                             if (accessoryTextTitle != null) {
                                 Text(text = accessoryTextTitle,
                                     modifier.clickable(
@@ -613,7 +621,7 @@ object ListItem {
                         }
                         if (trailingAccessoryView != null) {
                             Box(
-                                Modifier.padding(end = horizontalPadding),
+                                Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
                                 contentAlignment = Alignment.BottomStart
                             ) {
                                 trailingAccessoryView()
@@ -708,15 +716,7 @@ object ListItem {
                 selected = false,
                 interactionSource = interactionSource
             )
-            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
-            val leadPadding = if (leadingAccessoryView == null) {
-                PaddingValues(start = horizontalPadding, end = horizontalPadding)
-            } else {
-                PaddingValues(
-                    start = 0.dp,
-                    end = horizontalPadding
-                )
-            }
+            val rippleColor = getListItemTokens().rippleColor(getListItemInfo())
             val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
@@ -729,11 +729,7 @@ object ListItem {
             )
             val descriptionAlignment =
                 getListItemTokens().descriptionPlacement(getListItemInfo())
-            val verticalPadding = if (descriptionPlacement == Top) {
-                PaddingValues(top = getListItemTokens().verticalPadding(getListItemInfo()))
-            } else {
-                PaddingValues(bottom = getListItemTokens().verticalPadding(getListItemInfo()))
-            }
+            val padding = getListItemTokens().padding(getListItemInfo())
             Row(
                 modifier
                     .fillMaxWidth()
@@ -742,21 +738,27 @@ object ListItem {
                     .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .clickAndSemanticsModifier(
                         interactionSource,
-                        onClick = onClick ?: {}, enabled
+                        onClick = onClick ?: {}, enabled, rippleColor
                     ), verticalAlignment = descriptionAlignment
             ) {
                 if (leadingAccessoryView != null && descriptionPlacement == Top) {
                     Box(
                         Modifier
-                            .padding(horizontalPadding), contentAlignment = Alignment.Center
+                            .padding(padding.calculateStartPadding(LocalLayoutDirection.current)), contentAlignment = Alignment.Center
                     ) {
                         leadingAccessoryView()
                     }
                 }
                 Box(
                     Modifier
-                        .padding(leadPadding)
-                        .padding(verticalPadding)
+                        .padding(
+                            start = if (leadingAccessoryView == null) padding.calculateStartPadding(
+                                LocalLayoutDirection.current
+                            ) else 0.dp,
+                            end = padding.calculateEndPadding(LocalLayoutDirection.current),
+                            top = if (descriptionPlacement == Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (descriptionPlacement == Bottom) padding.calculateTopPadding() else 0.dp
+                        )
                         .weight(1f)
                 ) {
                     if (!actionText.isNullOrBlank()) {
@@ -781,7 +783,7 @@ object ListItem {
                 }
                 if (trailingAccessoryView != null) {
                     Box(
-                        Modifier.padding(end = horizontalPadding),
+                        Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
                         contentAlignment = Alignment.Center
                     ) {
                         trailingAccessoryView()
@@ -862,8 +864,7 @@ object ListItem {
                     selected = false,
                     interactionSource = interactionSource
                 )
-            val horizontalPadding = getListItemTokens().horizontalPadding(getListItemInfo())
-            val verticalPadding = getListItemTokens().verticalPadding(getListItemInfo())
+            val padding = getListItemTokens().padding(getListItemInfo())
             val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
             val borderInsetToPx =
                 with(LocalDensity.current) {
@@ -895,9 +896,9 @@ object ListItem {
                         text = title,
                         modifier = Modifier
                             .padding(
-                                start = horizontalPadding,
-                                end = horizontalPadding,
-                                bottom = verticalPadding
+                                start = padding.calculateStartPadding(LocalLayoutDirection.current),
+                                end = padding.calculateEndPadding(LocalLayoutDirection.current),
+                                bottom = padding.calculateBottomPadding()
                             )
                             .weight(1f),
                         fontSize = primaryTextSize.fontSize.size,
@@ -910,7 +911,7 @@ object ListItem {
                     if (accessoryTextTitle != null) {
                         Text(text = accessoryTextTitle,
                             Modifier
-                                .padding(end = horizontalPadding, bottom = verticalPadding)
+                                .padding(end = padding.calculateEndPadding(LocalLayoutDirection.current), bottom = padding.calculateBottomPadding())
                                 .clickable(
                                     role = Role.Button,
                                     onClick = accessoryTextOnClick ?: {}
@@ -921,7 +922,7 @@ object ListItem {
                     }
                     if (trailingAccessoryView != null) {
                         Box(
-                            Modifier.padding(end = horizontalPadding, bottom = verticalPadding),
+                            Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current), bottom = padding.calculateBottomPadding()),
                             contentAlignment = Alignment.BottomStart
                         ) {
                             trailingAccessoryView()

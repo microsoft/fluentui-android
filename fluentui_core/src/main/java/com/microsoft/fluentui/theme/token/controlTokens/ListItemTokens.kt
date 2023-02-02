@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
@@ -136,13 +137,13 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun horizontalPadding(listItemInfo: ListItemInfo): Dp {
-        return GlobalTokens.spacing(listItemInfo.horizontalSpacing)
-    }
-
-    @Composable
-    open fun verticalPadding(listItemInfo: ListItemInfo): Dp {
-        return GlobalTokens.spacing(listItemInfo.verticalSpacing)
+    open fun padding(listItemInfo: ListItemInfo): PaddingValues {
+        return PaddingValues(
+            start = GlobalTokens.spacing(listItemInfo.horizontalSpacing),
+            end = GlobalTokens.spacing(listItemInfo.horizontalSpacing),
+            top = GlobalTokens.spacing(listItemInfo.verticalSpacing),
+            bottom = GlobalTokens.spacing(listItemInfo.verticalSpacing)
+        )
     }
 
     @Composable
@@ -249,6 +250,15 @@ open class ListItemTokens : ControlToken, Parcelable {
             pressed = FluentTheme.aliasTokens.neutralForegroundColor[Foreground3].value(
                 themeMode = FluentTheme.themeMode
             )
+        )
+    }
+    @Composable
+    open fun rippleColor(listItemInfo: ListItemInfo): Color {
+        return FluentColor(
+            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black),
+            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
+        ).value(
+            FluentTheme.themeMode
         )
     }
 
