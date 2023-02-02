@@ -202,36 +202,31 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CreateAvatarCarouselActivityUI() {
-    val scaffoldState: ScaffoldState = rememberScaffoldState()
     val mContext = LocalContext.current
-    Scaffold(scaffoldState = scaffoldState) {
-        Column(
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.padding(top = 8.dp)
-        ) {
-            Text(
-                modifier = Modifier.padding(start = 8.dp),
-                text = "Large Avatar Carousel",
-                color = Color(0xFF2886DE)
-            )
-            AvatarCarousel(
-                avatarList = createAvatarPersons(mContext),
-                size = AvatarCarouselSize.Large
-            )
-
-
-            Divider(Modifier.fillMaxWidth())
-            Text(
-                modifier = Modifier.padding(start = 8.dp),
-                text = "Medium Avatar Carousel with Presence indicator",
-                color = Color(0xFF2886DE)
-            )
-            AvatarCarousel(
-                avatarList = createAvatarPersons(mContext),
-                size = AvatarCarouselSize.Medium,
-                enablePresence = true
-            )
-        }
+    Column(
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = Modifier.padding(top = 8.dp)
+    ) {
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            text = "Large Avatar Carousel",
+            color = Color(0xFF2886DE)
+        )
+        AvatarCarousel(
+            avatarList = createAvatarPersons(mContext),
+            size = AvatarCarouselSize.Large
+        )
+        Divider(Modifier.fillMaxWidth())
+        Text(
+            modifier = Modifier.padding(start = 8.dp),
+            text = "Medium Avatar Carousel with Presence indicator",
+            color = Color(0xFF2886DE)
+        )
+        AvatarCarousel(
+            avatarList = createAvatarPersons(mContext),
+            size = AvatarCarouselSize.Medium,
+            enablePresence = true
+        )
     }
 }
 

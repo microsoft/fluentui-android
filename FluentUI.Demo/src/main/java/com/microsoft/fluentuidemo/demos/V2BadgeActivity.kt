@@ -3,7 +3,10 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
@@ -45,7 +48,7 @@ class V2BadgeActivity : DemoActivity() {
                         modifier = Modifier.padding(8.dp)
 
                     )
-                    Row(Modifier.padding(16.dp)) {
+                    Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                         Text(
                             text = resources.getString(R.string.badge_notification_dot),
                             fontWeight = title2Font.weight,
@@ -53,10 +56,10 @@ class V2BadgeActivity : DemoActivity() {
                             lineHeight = title2Font.fontSize.lineHeight,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
                         )
+                        Spacer(modifier = Modifier.width(16.dp))
                         Badge()
                     }
-
-                    Row(Modifier.padding(16.dp)) {
+                    Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically){
                         Text(
                             text = resources.getString(R.string.badge_notification_character),
                             fontWeight = title2Font.weight,
@@ -64,20 +67,37 @@ class V2BadgeActivity : DemoActivity() {
                             lineHeight = title2Font.fontSize.lineHeight,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
                         )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("1", badgeType = BadgeType.Character)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("2", badgeType = BadgeType.Character)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("8", badgeType = BadgeType.Character)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("12", badgeType = BadgeType.Character)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("123", badgeType = BadgeType.Character)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("12345678910", badgeType = BadgeType.Character)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("Badge", badgeType = BadgeType.Character)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        LazyRow(){
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("1", badgeType = BadgeType.Character)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("2", badgeType = BadgeType.Character)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("8", badgeType = BadgeType.Character)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("12", badgeType = BadgeType.Character)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("123", badgeType = BadgeType.Character)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("12345678910", badgeType = BadgeType.Character)
+                            }
+                            item{
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("Badge", badgeType = BadgeType.Character)
+                            }
+                        }
                     }
                     Row(Modifier.padding(16.dp)) {
                         Text(
@@ -89,20 +109,37 @@ class V2BadgeActivity : DemoActivity() {
                                 themeMode = ThemeMode.Auto
                             )
                         )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("1", badgeType = BadgeType.List)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("2", badgeType = BadgeType.List)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("8", badgeType = BadgeType.List)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("12", badgeType = BadgeType.List)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("123", badgeType = BadgeType.List)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("12345678910", badgeType = BadgeType.List)
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Badge("Badge", badgeType = BadgeType.List)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        LazyRow(){
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("1", badgeType = BadgeType.List)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("2", badgeType = BadgeType.List)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("8", badgeType = BadgeType.List)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("12", badgeType = BadgeType.List)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("123", badgeType = BadgeType.List)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("12345678910", badgeType = BadgeType.List)
+                            }
+                            item {
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Badge("Badge", badgeType = BadgeType.List)
+                            }
+                        }
                     }
                 }
             }
