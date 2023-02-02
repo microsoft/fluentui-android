@@ -1,18 +1,11 @@
-Release Version 0.1.17:
+Release Version 0.1.18:
 
 What's New:
 
 Fluent V2:
 	Fix/Enhancement:
-		1) Added slideOver mode parameter in BottomSheet API. Default value true in which sheetContent slide over to visible region. When slideOver mode is false then sheetContent get fixed height (peek height, fullheight when expanded) scrollable bottomsheet container as per state placed at bottom of screen.
-		2) Fix Radio button color on Long press.
-		3) Switch animation parity with RN.
-		4) Token Update for FAB.
-
-
-Fluent V1 (v-current):
-	Fix:  
-		1) Reset tint color in CCB viewholder.
-
- 
-
+		1) Added cutout slot for Avatar to show badges.
+		2) Added unread dot support in ListItem.
+		3) Fix talkback announcement for Avatar.
+		4) Fix V2 Badge activity to show badges in scrollable row.
+		5) Fix V2 AvatarCarousel activity to have focus on AvatarCarousel item.
