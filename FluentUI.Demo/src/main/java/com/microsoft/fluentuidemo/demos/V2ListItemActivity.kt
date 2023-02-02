@@ -8,7 +8,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -78,35 +77,19 @@ fun CreateListActivityUI() {
         ) {
             LazyColumn {
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "One-Line list with Text icons",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "One-Line list with Text icons")
                     OneLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Two-Line list with Text icons",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Two-Line list with Text icons")
                     TwoLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Three-Line list with Text icons",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Three-Line list with Text icons")
                     ThreeLineListAccessoryViewContent(coroutineScope, scaffoldState)
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Text Only",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Text Only")
                     ListItem.Item(
                         text = primaryText,
                         border = BorderType.Bottom,
@@ -129,11 +112,7 @@ fun CreateListActivityUI() {
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Wrapped text list",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Wrapped Text list")
                     ListItem.Item(
                         text = sampleText,
                         textMaxLines = 4,
@@ -170,11 +149,7 @@ fun CreateListActivityUI() {
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 16.dp),
-                        text = "Section description",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Section description")
                     ListItem.SectionDescription(
                         description = "Sample description with the description placed at the Top with no Action text and no icon",
                         border = BorderType.Bottom,
@@ -203,11 +178,7 @@ fun CreateListActivityUI() {
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                        text = "Section Headers with/without chevron",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Section Headers with/without chevron")
                     Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
                         ListItem.SectionHeader(
                             title = "One-Line list",
@@ -241,31 +212,23 @@ fun CreateListActivityUI() {
 
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                        text = "Header",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Headers")
                     ListItem.Header(
-                        title = "Heading",
+                        title = "Standard heading",
                         accessoryTextTitle = "Action",
                         accessoryTextOnClick = {},
                         trailingAccessoryView = { RightViewThreeButton() },
                         border = BorderType.Bottom
                     )
                     ListItem.Header(
-                        title = "Heading",
+                        title = "Subtle heading",
                         accessoryTextTitle = "Action",
                         accessoryTextOnClick = {},
                         style = Subtle
                     )
                 }
                 item {
-                    Text(
-                        modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp),
-                        text = "Centered Action Text",
-                        color = Color(0xFF2886DE)
-                    )
+                    ListItem.Header(title = "Centered Action Text")
                     ListItem.Item(
                         text = "Action",
                         textAlignment = ListItemTextAlignment.Centered,
@@ -427,7 +390,40 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
 
 @Composable
 fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+    var unreadDot1 by remember { mutableStateOf(true) }
+    var unreadDot2 by remember { mutableStateOf(true) }
     return Column {
+        ListItem.Item(
+            text = primaryText,
+            secondarySubText = tertiaryText,
+            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
+            border = BorderType.Bottom,
+            borderInset = XXLarge,
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = oneTextIcon16()
+        )
+        ListItem.Item(
+            text = primaryText,
+            secondarySubText = tertiaryText,
+            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
+            border = BorderType.Bottom,
+            borderInset = XXLarge,
+            unreadDot = unreadDot1,
+            onClick = { unreadDot1 = !unreadDot1 },
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = oneTextIcon16()
+        )
+        ListItem.Item(
+            text = primaryText,
+            secondarySubText = tertiaryText,
+            leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
+            border = BorderType.Bottom,
+            borderInset = XXLarge,
+            unreadDot = unreadDot2,
+            onClick = { unreadDot2 = !unreadDot2 },
+            primaryTextTrailingIcons = oneTextIcon20(),
+            secondarySubTextTailingIcons = oneTextIcon16()
+        )
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
@@ -437,15 +433,6 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             secondarySubTextTailingIcons = twoTextIcons16(),
             border = BorderType.Bottom,
             borderInset = XXLarge
-        )
-        ListItem.Item(
-            text = primaryText,
-            secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
-            border = BorderType.Bottom,
-            borderInset = XXLarge,
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
         )
         ListItem.Item(
             text = primaryText,
@@ -470,15 +457,6 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             },
             border = BorderType.Bottom,
             borderInset = XXLarge
-        )
-        ListItem.Item(
-            text = primaryText,
-            secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
-            border = BorderType.Bottom,
-            borderInset = XXLarge,
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
         )
         ListItem.Item(
             text = primaryText,
@@ -536,7 +514,6 @@ fun ThreeLineListAccessoryViewContent(
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
-            secondarySubText = tertiaryText,
             progressIndicator = { LinearProgressIndicator() },
             primaryTextLeadingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = twoTextIcons16(),
@@ -761,8 +738,15 @@ fun LeftViewAvatar(size: AvatarSize) {
 
 @Composable
 fun LeftViewAvatarCutout(size: AvatarSize) {
-    val person = Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
-    return Avatar(person = person, size = size, enablePresence = false, enableActivityRings = true, cutoutIconDrawable = R.drawable.cutout_heart16x16)
+    val person =
+        Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
+    return Avatar(
+        person = person,
+        size = size,
+        enablePresence = false,
+        enableActivityRings = true,
+        cutoutIconDrawable = drawable.cutout_heart16x16
+    )
 }
 
 @Composable
@@ -774,11 +758,6 @@ fun GetAvatar(size: AvatarSize, image: Int) {
 @Composable
 fun RightViewText(text: String) {
     return Text(text = text)
-}
-
-@Composable
-fun ProgressBar() {
-    LinearProgressIndicator()
 }
 
 fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
