@@ -104,7 +104,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textSize(contextualCommandBarInfo: ContextualCommandBarInfo): FontInfo {
+    open fun typography(contextualCommandBarInfo: ContextualCommandBarInfo): FontInfo {
         return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
     }
 
@@ -198,8 +198,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
                 aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                     themeMode
                 )
-            ),
-            BorderStroke(
+            ), BorderStroke(
                 3.dp,
                 aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                     themeMode
