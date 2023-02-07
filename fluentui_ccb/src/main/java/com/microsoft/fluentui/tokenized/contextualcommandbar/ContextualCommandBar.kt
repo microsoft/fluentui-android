@@ -41,12 +41,14 @@ private val LocalContextualCommandBarTokens = compositionLocalOf { ContextualCom
 private val LocalContextualCommandBarInfo = compositionLocalOf { ContextualCommandBarInfo() }
 
 enum class ActionButtonPosition {
-    None, Start, End
+    None,
+    Start,
+    End
 }
 
 /**
  * Generate a Contextual Command Bar. This is a horizontally scrollable bar which is made up of [CommandGroup].
- * Command group internally is a group of [CommandItemComposable] which can be used to create onClick and onLongClick based buttons.
+ * Command group internally is a group of [CommandItem] which can be used to create onClick and onLongClick based buttons.
  * It also consist of an optional icon based action button which can be placed at either side of the CCB.
  * If enabled, by default this button acts as a Keyboard Dismiss button.
  *
@@ -558,7 +560,9 @@ private fun getContextualCommandBarInfo(): ContextualCommandBarInfo {
 }
 
 data class CommandGroup(
-    val groupName: String, val items: List<CommandItem>, val weight: Float = 1f
+    val groupName: String,
+    val items: List<CommandItem>,
+    val weight: Float = 1f
 )
 
 data class CommandItem(

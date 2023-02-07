@@ -198,7 +198,8 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
                 aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                     themeMode
                 )
-            ), BorderStroke(
+            ),
+            BorderStroke(
                 3.dp,
                 aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                     themeMode
