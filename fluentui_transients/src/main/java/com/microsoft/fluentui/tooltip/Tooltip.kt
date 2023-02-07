@@ -168,7 +168,11 @@ class Tooltip {
 
         popupWindow.width = contentWidth
         popupWindow.height = contentHeight
-        anchor.post { popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, positionX, positionY) }
+        anchor.post {
+            if (anchor.isAttachedToWindow) {
+                popupWindow.showAtLocation(anchor, Gravity.NO_GRAVITY, positionX, positionY)
+            }
+        }
 
         if (config.touchDismissLocation == TouchDismissLocation.INSIDE) {
             // If focusable is true, outside touchable cannot become denied.
