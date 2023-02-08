@@ -58,7 +58,7 @@ internal fun getListItemInfo(): ListItemInfo {
 }
 
 object ListItem {
-    private fun addCSemantics(properties: (SemanticsPropertyReceiver.() -> Unit)?): Modifier {
+    private fun clearSemantics(properties: (SemanticsPropertyReceiver.() -> Unit)?): Modifier {
         return if (properties != null) {
             Modifier.clearAndSetSemantics(properties)
         } else {
@@ -66,7 +66,7 @@ object ListItem {
         }
     }
 
-    private fun clearSemantics(
+    private fun clearSemanticsAndMergeDescendants(
         mergeDescendants: Boolean,
         properties: (SemanticsPropertyReceiver.() -> Unit)?
     ): Modifier {
@@ -74,7 +74,7 @@ object ListItem {
             if (properties != null) {
                 Modifier.clearAndSetSemantics(properties)
             } else {
-                Modifier.semantics(mergeDescendants) {}
+                Modifier.semantics(true) {}
             }
         } else {
             Modifier
@@ -329,7 +329,7 @@ object ListItem {
                     .clickAndSemanticsModifier(
                         interactionSource, onClick = onClick ?: {}, enabled, rippleColor
                     )
-                    .then(clearSemantics(mergeDescendants, properties)),
+                    .then(clearSemanticsAndMergeDescendants(mergeDescendants, properties)),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (unreadDot) {
@@ -360,7 +360,7 @@ object ListItem {
                     Modifier
                         .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
                         .weight(1f)
-                        .then(addCSemantics(properties)), contentAlignment = contentAlignment
+                        .then(clearSemantics(properties)), contentAlignment = contentAlignment
                 ) {
                     Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                         Row(
