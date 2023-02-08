@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.onFocusEvent
-import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -54,6 +54,22 @@ private fun Modifier.clickAndSemanticsModifier(
             onClick = onClick,
             role = Role.Button
         )
+}
+private fun updateSemantics(item: AvatarCarouselItem, enablePresence: Boolean): Modifier {
+    return if (item.contentDescription != null) {
+        Modifier.clearAndSetSemantics{
+            this.contentDescription = item.contentDescription
+        }
+    } else {
+        Modifier.clearAndSetSemantics{
+            this.contentDescription = "${item.person.getName()}. " +
+                    "${if (enablePresence) "Status, ${item.person.status}," else ""} " +
+                    "${if (enablePresence && item.person.isOOO) "Out Of Office," else ""} " +
+                    if (item.enableActivityRing) {
+                        if (item.person.isActive) "Active" else "Inactive"
+                    } else ""
+        }
+    }
 }
 
 /**
@@ -126,7 +142,7 @@ fun AvatarCarousel(
                             interactionSource,
                             item.onItemClick ?: {},
                             item.enabled
-                        ), horizontalAlignment = Alignment.CenterHorizontally
+                        ).then(updateSemantics(item, enablePresence)), horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Avatar(
                         modifier = Modifier.padding(top = 8.dp),

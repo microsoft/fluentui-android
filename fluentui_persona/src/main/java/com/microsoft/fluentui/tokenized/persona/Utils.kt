@@ -144,7 +144,8 @@ class AvatarCarouselItem(
     val enabled: Boolean = true,
     val person: Person = Person(),
     val enableActivityRing: Boolean = false,
-    val onItemClick: (() -> Unit)? = null
+    val onItemClick: (() -> Unit)? = null,
+    val contentDescription: String? = null
 )
 
 fun getAvatarSize(secondaryText: String?, tertiaryText: String?): AvatarSize {
