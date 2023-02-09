@@ -211,9 +211,9 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 )
             )
             Column(
-                modifier = Modifier.padding(top = 16.dp),
+                modifier = Modifier.padding(top = 4.dp),
                 verticalArrangement = Arrangement.spacedBy(
-                    10.dp,
+                    8.dp,
                     CenterVertically
                 )
             ) {
@@ -228,36 +228,43 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     scope.launch { drawerState.open() }
                 }
                 Row(
-                    modifier = Modifier.padding(8.dp),
+                    modifier = Modifier.padding(start = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(
                         10.dp,
                         CenterHorizontally
                     ), verticalAlignment = CenterVertically
                 ) {
                     Text(text = "Action Button")
-                    ToggleSwitch(onValueChange =
-                    {
-                        actionButtonEnabled = it
-                        if (!actionButtonEnabled)
-                            kdState = ActionButtonPosition.None
-                        else
-                            kdState = ActionButtonPosition.Start
-                    }, enabledSwitch = true, checkedState = actionButtonEnabled
+                    ToggleSwitch(
+                        onValueChange =
+                        {
+                            actionButtonEnabled = it
+                            if (!actionButtonEnabled)
+                                kdState = ActionButtonPosition.None
+                            else
+                                kdState = ActionButtonPosition.Start
+                        }, enabledSwitch = true, checkedState = actionButtonEnabled
                     )
-                    if (kdState != ActionButtonPosition.None && actionButtonEnabled) {
-                        Text(text = "Action Button position")
-                        Button(
-                            {
-                                kdState =
-                                    if (kdState == ActionButtonPosition.Start) ActionButtonPosition.End else ActionButtonPosition.Start
-                            },
-                            text = if (kdState == ActionButtonPosition.Start) " End" else "Start",
-                            style = ButtonStyle.OutlinedButton
-                        )
-                    }
                 }
                 Row(
-                    modifier = Modifier.padding(8.dp),
+                    modifier = Modifier.padding(start = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(
+                        10.dp,
+                        CenterHorizontally
+                    ), verticalAlignment = CenterVertically
+                ) {
+                    Button(
+                        {
+                            kdState =
+                                if (kdState == ActionButtonPosition.Start) ActionButtonPosition.End else ActionButtonPosition.Start
+                        },
+                        text = "Toggle action button position",
+                        style = ButtonStyle.OutlinedButton,
+                        enabled = kdState != ActionButtonPosition.None
+                    )
+                }
+                Row(
+                    modifier = Modifier.padding(start = 8.dp),
                     horizontalArrangement = Arrangement.spacedBy(
                         10.dp,
                         CenterHorizontally
@@ -271,25 +278,30 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 }
 
                 Divider()
-
-                TextField(
-                    value = text,
-                    onValueChange = { text = it },
-                    label = { Text("Type your text here") },
-                    modifier = Modifier
-                        .onKeyEvent { keyEvent ->
-                            when (keyEvent.nativeKeyEvent.keyCode) {
-                                KEYCODE_DPAD_DOWN, KEYCODE_DPAD_RIGHT -> {
-                                    focusManager.moveFocus(FocusDirection.Down)
-                                    true
-                                }
-                                else -> {
-                                    false
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    TextField(
+                        value = text,
+                        onValueChange = { text = it },
+                        label = { Text("Type your text here") },
+                        modifier = Modifier
+                            .onKeyEvent { keyEvent ->
+                                when (keyEvent.nativeKeyEvent.keyCode) {
+                                    KEYCODE_DPAD_DOWN, KEYCODE_DPAD_RIGHT -> {
+                                        focusManager.moveFocus(FocusDirection.Down)
+                                        true
+                                    }
+                                    else -> {
+                                        false
+                                    }
                                 }
                             }
-                        }
-                        .padding(8.dp)
-                )
+                            .padding(start = 8.dp)
+                    )
+                }
+
 
                 Spacer(modifier = Modifier.weight(1F))
 
