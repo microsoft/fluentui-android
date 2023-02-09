@@ -56,7 +56,7 @@ enum class ActionButtonPosition {
  * @param modifier Optional Modifier for CCB
  * @param actionButtonPosition Enum to specify if we will have an Action Button and its position
  * @param actionButtonIcon FluentIcon for The Action Button Icon
- * @param actionButtonOnClick OnCLick Functionality for the Action Button
+ * @param actionButtonOnClick OnCLick Functionality for the Action Button. By default has keyboard dismiss action.
  * @param scrollable Optional boolean to specify if CCB has fixed or infinite width(Scrollable).
  *                      Use false to create a fixed non scrollable CCB. Command groups widths will adhere to the weights set in [CommandGroup] weight parameter.
  *                      Use true to have a scrollable CCB. [CommandGroup] weight parameter is ignored
@@ -106,6 +106,10 @@ fun ContextualCommandBar(
             topStart = itemBorderRadius,
             bottomStart = itemBorderRadius
         )
+        val focusStroke = getContextualCommandBarTokens().focusStroke(
+            getContextualCommandBarInfo()
+        )
+        var focusedBorderModifier: Modifier = Modifier
 
         val lazyListState = rememberLazyListState()
         val scope = rememberCoroutineScope()
@@ -121,21 +125,28 @@ fun ContextualCommandBar(
                 )
         ) {
             val (KeyboardDismiss, Content) = createRefs()
-            val contentPaddingWithKD = -(getContextualCommandBarTokens().actionButtonGradientWidth(
-                getContextualCommandBarInfo()
-            ) + getContextualCommandBarTokens().buttonPadding(getContextualCommandBarInfo()))
+            val contentPaddingWithActionButton =
+                -(getContextualCommandBarTokens().actionButtonGradientWidth(
+                    getContextualCommandBarInfo()
+                ) + getContextualCommandBarTokens().buttonPadding(getContextualCommandBarInfo()))
             if (scrollable) {
                 LazyRow(modifier = Modifier
                     .focusable(enabled = false)
                     .constrainAs(Content) {
                         when (actionButtonPosition) {
                             ActionButtonPosition.Start -> {
-                                start.linkTo(KeyboardDismiss.end, margin = contentPaddingWithKD)
+                                start.linkTo(
+                                    KeyboardDismiss.end,
+                                    margin = contentPaddingWithActionButton
+                                )
                                 end.linkTo(parent.end)
                             }
                             ActionButtonPosition.End -> {
                                 start.linkTo(parent.start)
-                                end.linkTo(KeyboardDismiss.start, margin = contentPaddingWithKD)
+                                end.linkTo(
+                                    KeyboardDismiss.start,
+                                    margin = contentPaddingWithActionButton
+                                )
                             }
                             ActionButtonPosition.None -> {
                                 start.linkTo(parent.start)
@@ -174,10 +185,6 @@ fun ContextualCommandBar(
                                     indication = rememberRipple()
                                 )
 
-                                val focusStroke = getContextualCommandBarTokens().focusStroke(
-                                    getContextualCommandBarInfo()
-                                )
-                                var focusedBorderModifier: Modifier = Modifier
                                 for (borderStroke in focusStroke) {
                                     focusedBorderModifier =
                                         focusedBorderModifier.border(borderStroke, shape)
@@ -262,12 +269,18 @@ fun ContextualCommandBar(
                     .constrainAs(Content) {
                         when (actionButtonPosition) {
                             ActionButtonPosition.Start -> {
-                                start.linkTo(KeyboardDismiss.end, margin = contentPaddingWithKD)
+                                start.linkTo(
+                                    KeyboardDismiss.end,
+                                    margin = contentPaddingWithActionButton
+                                )
                                 end.linkTo(parent.end)
                             }
                             ActionButtonPosition.End -> {
                                 start.linkTo(parent.start)
-                                end.linkTo(KeyboardDismiss.start, margin = contentPaddingWithKD)
+                                end.linkTo(
+                                    KeyboardDismiss.start,
+                                    margin = contentPaddingWithActionButton
+                                )
                             }
                             ActionButtonPosition.None -> {
                                 start.linkTo(parent.start)
@@ -302,11 +315,6 @@ fun ContextualCommandBar(
                                 interactionSource = interactionSource,
                                 indication = rememberRipple()
                             )
-
-                            val focusStroke = getContextualCommandBarTokens().focusStroke(
-                                getContextualCommandBarInfo()
-                            )
-                            var focusedBorderModifier: Modifier = Modifier
                             for (borderStroke in focusStroke) {
                                 focusedBorderModifier =
                                     focusedBorderModifier.border(borderStroke, shape)

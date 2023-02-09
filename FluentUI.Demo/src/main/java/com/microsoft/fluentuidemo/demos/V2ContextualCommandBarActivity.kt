@@ -37,6 +37,7 @@ import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandGroup
 import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandItem
 import com.microsoft.fluentui.tokenized.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentuidemo.DemoActivity
@@ -211,11 +212,14 @@ class V2ContextualCommandBarActivity : DemoActivity() {
             )
             Column(
                 modifier = Modifier.padding(top = 16.dp),
-                horizontalAlignment = CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                verticalArrangement = Arrangement.spacedBy(
+                    10.dp,
+                    CenterVertically
+                )
             ) {
                 var kdState by remember { mutableStateOf(ActionButtonPosition.Start) }
                 var text by remember { mutableStateOf("") }
+                var actionButtonEnabled by remember { mutableStateOf(true) }
 
                 val focusManager = LocalFocusManager.current
                 val scope = rememberCoroutineScope()
@@ -224,32 +228,44 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     scope.launch { drawerState.open() }
                 }
                 Row(
-                    modifier = Modifier.padding(4.dp),
+                    modifier = Modifier.padding(8.dp),
                     horizontalArrangement = Arrangement.spacedBy(
                         10.dp,
                         CenterHorizontally
-                    )
+                    ), verticalAlignment = CenterVertically
                 ) {
-                    Button(
-                        {
-                            kdState =
-                                if (kdState != ActionButtonPosition.None) ActionButtonPosition.None else ActionButtonPosition.End
-                        },
-                        text = if (kdState != ActionButtonPosition.None) "Disable KD" else "Enable KD",
-                        style = ButtonStyle.OutlinedButton
+                    Text(text = "Action Button")
+                    ToggleSwitch(onValueChange =
+                    {
+                        actionButtonEnabled = it
+                        if (!actionButtonEnabled)
+                            kdState = ActionButtonPosition.None
+                        else
+                            kdState = ActionButtonPosition.Start
+                    }, enabledSwitch = true, checkedState = actionButtonEnabled
                     )
-                    if (kdState != ActionButtonPosition.None)
+                    if (kdState != ActionButtonPosition.None && actionButtonEnabled) {
+                        Text(text = "Action Button position")
                         Button(
                             {
                                 kdState =
                                     if (kdState == ActionButtonPosition.Start) ActionButtonPosition.End else ActionButtonPosition.Start
                             },
-                            text = if (kdState == ActionButtonPosition.Start) " Move KD to End" else "Move KD to Start",
+                            text = if (kdState == ActionButtonPosition.Start) " End" else "Start",
                             style = ButtonStyle.OutlinedButton
                         )
+                    }
+                }
+                Row(
+                    modifier = Modifier.padding(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(
+                        10.dp,
+                        CenterHorizontally
+                    ), verticalAlignment = CenterVertically
+                ) {
                     Button(
                         style = ButtonStyle.OutlinedButton,
-                        text = "Multiline CCB",
+                        text = "Multiline CCB on Drawer",
                         onClick = open
                     )
                 }
@@ -260,17 +276,19 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     value = text,
                     onValueChange = { text = it },
                     label = { Text("Type your text here") },
-                    modifier = Modifier.onKeyEvent { keyEvent ->
-                        when (keyEvent.nativeKeyEvent.keyCode) {
-                            KEYCODE_DPAD_DOWN, KEYCODE_DPAD_RIGHT -> {
-                                focusManager.moveFocus(FocusDirection.Down)
-                                true
-                            }
-                            else -> {
-                                false
+                    modifier = Modifier
+                        .onKeyEvent { keyEvent ->
+                            when (keyEvent.nativeKeyEvent.keyCode) {
+                                KEYCODE_DPAD_DOWN, KEYCODE_DPAD_RIGHT -> {
+                                    focusManager.moveFocus(FocusDirection.Down)
+                                    true
+                                }
+                                else -> {
+                                    false
+                                }
                             }
                         }
-                    }
+                        .padding(8.dp)
                 )
 
                 Spacer(modifier = Modifier.weight(1F))
@@ -445,7 +463,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                             commandGroup5
                                         ),
                                         scrollable = false,
-                                        actionButtonPosition = kdState
+                                        actionButtonPosition = ActionButtonPosition.None
                                     )
 
                                 }
