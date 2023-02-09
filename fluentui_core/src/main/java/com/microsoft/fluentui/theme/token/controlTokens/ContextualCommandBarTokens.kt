@@ -104,7 +104,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun textSize(contextualCommandBarInfo: ContextualCommandBarInfo): FontInfo {
+    open fun typography(contextualCommandBarInfo: ContextualCommandBarInfo): FontInfo {
         return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
     }
 
