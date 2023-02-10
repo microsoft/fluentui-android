@@ -236,6 +236,8 @@ object ListItem {
      * @param borderInset [BorderInset]Optional borderInset for list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      * @param leadingAccessoryView Optional composable leading accessory view.
+     * @param accessibilityProperties Accessibility properties for talkback
+     * @param mergeDescendants merge all the components in the node tree
      * @param trailingAccessoryView Optional composable trailing accessory view.
      *
      */
@@ -262,7 +264,7 @@ object ListItem {
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
-        properties: (SemanticsPropertyReceiver.() -> Unit)? = null,
+        accessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         mergeDescendants: Boolean = false,
         listItemTokens: ListItemTokens? = null
     ) {
@@ -329,7 +331,7 @@ object ListItem {
                     .clickAndSemanticsModifier(
                         interactionSource, onClick = onClick ?: {}, enabled, rippleColor
                     )
-                    .then(clearSemanticsAndMergeDescendants(mergeDescendants, properties)),
+                    .then(clearSemanticsAndMergeDescendants(mergeDescendants, accessibilityProperties)),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (unreadDot) {
@@ -360,7 +362,7 @@ object ListItem {
                     Modifier
                         .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
                         .weight(1f)
-                        .then(clearSemantics(properties)), contentAlignment = contentAlignment
+                        .then(clearSemantics(accessibilityProperties)), contentAlignment = contentAlignment
                 ) {
                     Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                         Row(

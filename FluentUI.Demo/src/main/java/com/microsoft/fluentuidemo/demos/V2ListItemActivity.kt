@@ -345,7 +345,7 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             border = BorderType.Bottom,
             borderInset = XXLarge,
             onClick = { checked = !checked },
-            properties = { this.contentDescription = "List-item 1" },
+            accessibilityProperties = { this.contentDescription = "List-item 1" },
             mergeDescendants = false
         )
         ListItem.Item(
