@@ -71,12 +71,13 @@ class V2DrawerActivityUITest {
     }
 
     private fun dpToPx(value: Dp) = (value * Resources
-            .getSystem()
-            .displayMetrics.density).value
+        .getSystem()
+        .displayMetrics.density).value
 
     @Test
     fun testBottomDrawer1() {
-        composeTestRule.onNodeWithText("Show Bottom Drawer").performClick()
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
 
         val scrimEnd = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
@@ -96,40 +97,45 @@ class V2DrawerActivityUITest {
 
     @Test
     fun testBottomDrawer2() {
-        composeTestRule.onNodeWithText("Show Bottom Drawer").performClick()
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
 
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                    startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
-                    endY = drawerScrim.fetchSemanticsNode().size.height.toFloat())
+                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
+                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+            )
         }
         closeCheckForVerticalDrawer()
     }
 
     @Test
     fun testBottomDrawer3() {
-        composeTestRule.onNodeWithText("Show Bottom Drawer").performClick()
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
 
         val drawerStart = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
 
         //SwipeDown on drawerContent should close it.
 
-        val swipeEnd  = drawerScrim.fetchSemanticsNode().size.height
-        val swipeStart = (drawerStart .. ((swipeEnd + drawerStart) / 2)).random()
+        val swipeEnd = drawerScrim.fetchSemanticsNode().size.height
+        val swipeStart = (drawerStart..((swipeEnd + drawerStart) / 2)).random()
         drawerContent.performTouchInput {
             swipeDown(
-                    startY = swipeStart.toFloat(),
-                    endY = swipeEnd.toFloat())
+                startY = swipeStart.toFloat(),
+                endY = swipeEnd.toFloat()
+            )
         }
         closeCheckForVerticalDrawer()
     }
 
     @Test
     fun testBottomDrawer4() {
-        composeTestRule.onNodeWithText("Show Bottom Drawer").performClick()
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
 
         val scrimEnd = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
@@ -141,22 +147,25 @@ class V2DrawerActivityUITest {
         //SwipeDown of drawerHandle to bottom should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                    startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
-                    endY = drawerScrim.fetchSemanticsNode().size.height.toFloat())
+                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
+                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+            )
         }
         closeCheckForVerticalDrawer()
     }
 
     @Test
     fun testBottomDrawer5() {
-        composeTestRule.onNodeWithText("Show Bottom Drawer").performClick()
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
 
         //SwipeDown a little should not close the drawer
         drawerHandle.performTouchInput {
             swipeDown(
-                    startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
-                    endY = drawerHandle.fetchSemanticsNode().positionInRoot.y + (0..dpToPx(26.dp).toInt()).random())
+                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
+                endY = drawerHandle.fetchSemanticsNode().positionInRoot.y + (0..dpToPx(26.dp).toInt()).random()
+            )
         }
         composeTestRule.waitForIdle()
         openCheckForVerticalDrawer()
@@ -165,7 +174,8 @@ class V2DrawerActivityUITest {
 
     @Test
     fun testLeftDrawer1() {
-        composeTestRule.onNodeWithText("Show Left Drawer").performClick()
+        composeTestRule.onNodeWithText("Left Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForHorizontalDrawer()
 
         val drawerEnd = drawerContent.fetchSemanticsNode().boundsInRoot.right.toInt()
@@ -185,7 +195,8 @@ class V2DrawerActivityUITest {
 
     @Test
     fun testLeftDrawer2() {
-        composeTestRule.onNodeWithText("Show Left Drawer").performClick()
+        composeTestRule.onNodeWithText("Left Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForHorizontalDrawer()
 
         //Swipe right should not close the drawer
@@ -199,7 +210,8 @@ class V2DrawerActivityUITest {
 
     @Test
     fun testRightDrawer1() {
-        composeTestRule.onNodeWithText("Show Right Drawer").performClick()
+        composeTestRule.onNodeWithText("Right Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForHorizontalDrawer()
 
         val drawerStart = drawerContent.fetchSemanticsNode().boundsInRoot.left.toInt()
@@ -218,7 +230,8 @@ class V2DrawerActivityUITest {
 
     @Test
     fun testRightDrawer2() {
-        composeTestRule.onNodeWithText("Show Right Drawer").performClick()
+        composeTestRule.onNodeWithText("Right Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForHorizontalDrawer()
 
         //Swipe left should not close the drawer
@@ -232,7 +245,8 @@ class V2DrawerActivityUITest {
 
     @Test
     fun testTopDrawer1() {
-        composeTestRule.onNodeWithText("Show Top Drawer").performClick()
+        composeTestRule.onNodeWithText("Top", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
         //Click on Drawer area
         drawerScrim.performTouchInput {
@@ -243,14 +257,20 @@ class V2DrawerActivityUITest {
         //Click on Scrim area
         drawerScrim.performTouchInput {
             val scrimStart = drawerHandle.fetchSemanticsNode().boundsInRoot.bottom + dpToPx(8.dp)
-            click(Offset((0..width).random().toFloat(), (scrimStart.toInt()..height).random().toFloat()))
+            click(
+                Offset(
+                    (0..width).random().toFloat(),
+                    (scrimStart.toInt()..height).random().toFloat()
+                )
+            )
         }
         closeCheckForVerticalDrawer()
     }
 
     @Test
     fun testTopDrawer2() {
-        composeTestRule.onNodeWithText("Show Top Drawer").performClick()
+        composeTestRule.onNodeWithText("Top", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
         openCheckForVerticalDrawer()
 
         //Swipe up on content should not close top drawer
@@ -268,5 +288,4 @@ class V2DrawerActivityUITest {
     fun tearDown() {
         Intents.release()
     }
-
 }

@@ -15,10 +15,10 @@ import kotlinx.parcelize.Parcelize
  * Possible values of [BehaviorType].
  */
 enum class BehaviorType {
-    BOTTOM, TOP, LEFT, RIGHT
+    TOP, BOTTOM, LEFT_SLIDE_OVER, RIGHT_SLIDE_OVER, BOTTOM_SLIDE_OVER
 }
 
-data class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT) : ControlInfo
+data class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : ControlInfo
 
 @Parcelize
 open class DrawerTokens : ControlToken, Parcelable {
@@ -42,8 +42,12 @@ open class DrawerTokens : ControlToken, Parcelable {
     @Composable
     open fun borderRadius(drawerInfo: DrawerInfo): Dp {
         return when (drawerInfo.type) {
-            BehaviorType.TOP, BehaviorType.BOTTOM -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
-            BehaviorType.LEFT, BehaviorType.RIGHT -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusNone)
+            BehaviorType.TOP, BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> GlobalTokens.cornerRadius(
+                GlobalTokens.CornerRadiusTokens.CornerRadius120
+            )
+            BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> GlobalTokens.cornerRadius(
+                GlobalTokens.CornerRadiusTokens.CornerRadiusNone
+            )
         }
     }
 
