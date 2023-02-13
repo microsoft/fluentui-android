@@ -13,7 +13,8 @@ Fluent V2:
                 Behaviour.LEFT -> Behaviour.LEFT_SLIDE_OVER
                 Behaviour.RIGHT -> Behaviour.RIGHT_SLIDE_OVER
                 Behaviour.BOTTOM -> Behaviour.BOTTOM_SLIDE_OVER.
-        3) Bug fix in semantic modifier to call confirmStateChange with correct state in BottomSheet.Revamp of V2 Drawer Activity to demonstrate all the capability of Drawer.
+        3) Bug fix in semantic modifier to call confirmStateChange with correct state in BottomSheet.
+        4) Revamp of V2 Drawer Activity to demonstrate all the capability of Drawer.
 
 Fluent v-current:
     Fix/Enhancement:
