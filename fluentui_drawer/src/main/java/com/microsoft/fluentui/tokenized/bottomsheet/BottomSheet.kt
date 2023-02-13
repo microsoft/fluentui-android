@@ -345,14 +345,14 @@ fun BottomSheet(
                             }
                             if (sheetState.currentValue == BottomSheetValue.Shown) {
                                 expand {
-                                    if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
+                                    if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
                                         scope.launch { sheetState.expand() }
                                     }
                                     true
                                 }
                             } else if (sheetState.hasExpandedState) {
                                 collapse {
-                                    if (sheetState.confirmStateChange(BottomSheetValue.Expanded)) {
+                                    if (sheetState.confirmStateChange(BottomSheetValue.Shown)) {
                                         scope.launch { sheetState.show() }
                                     }
                                     true
