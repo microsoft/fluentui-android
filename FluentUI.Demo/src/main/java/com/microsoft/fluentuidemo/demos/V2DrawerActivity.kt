@@ -291,68 +291,6 @@ private fun CreateActivityUI() {
                     }
                 )
             }
-            item {
-                Row {
-                    CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                        "Show Top Drawer",
-                        selectedBehaviorType,
-                        getDrawerContent(selectedContent),
-                        scrimVisible = scrimVisible
-                    )
-                    Spacer(Modifier.width(16.dp))
-                    CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                        "Show Bottom Drawer",
-                        BehaviorType.BOTTOM_SLIDE_OVER,
-                        getDrawerContent(selectedContent),
-                        scrimVisible = scrimVisible,
-                        expandable = expandable
-                    )
-                }
-            }
-            item {
-                Row {
-                    CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                        "Show Left Drawer",
-                        BehaviorType.LEFT_SLIDE_OVER,
-                        getDrawerContent(selectedContent),
-                        scrimVisible = scrimVisible
-                    )
-                    Spacer(Modifier.width(16.dp))
-                    CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                        "Show Right Drawer",
-                        BehaviorType.RIGHT_SLIDE_OVER,
-                        getDrawerContent(selectedContent),
-                        scrimVisible = scrimVisible
-                    )
-                }
-            }
-            item {
-                CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Bottom Outer Drawer",
-                    BehaviorType.BOTTOM_SLIDE_OVER,
-                    getDrawerInDrawerContent(),
-                    scrimVisible = scrimVisible,
-                    expandable = expandable
-                )
-            }
-            item {
-                CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Left Outer Drawer",
-                    BehaviorType.LEFT_SLIDE_OVER,
-                    getDrawerInDrawerContent(),
-                    scrimVisible = scrimVisible,
-                )
-            }
-            item {
-                CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-                    "Show Dynamic Content Bottom Drawer",
-                    BehaviorType.BOTTOM_SLIDE_OVER,
-                    getDynamicDrawerContent(),
-                    expandable = expandable,
-                    scrimVisible = scrimVisible,
-                )
-            }
-
         }
     }
 }
