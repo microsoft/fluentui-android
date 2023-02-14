@@ -64,7 +64,7 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun elevation(fabInfo: ToggleSwitchInfo): StateElevation {
+    open fun elevation(switchInfo: ToggleSwitchInfo): StateElevation {
         return StateElevation(
             rest = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
             pressed = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
@@ -76,7 +76,9 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
 
     open val fixedTrackHeight = 32.dp
     open val fixedTrackWidth = 52.dp
-    open val fixedKnobDiameter = 26.dp
+    open val restKnobDiameter = 26.dp
+    open val pressedKnobDiameter = 24.dp
     open val knobRippleRadius = 24.dp
-    open val paddingTrack = 3.dp
+    open val restPaddingTrack = 3.dp
+    open val pressedPaddingTrack = 4.dp
 }

@@ -14,9 +14,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
@@ -39,16 +45,17 @@ fun getTabItemInfo(): TabItemInfo {
 }
 
 @Composable
-internal fun TabItem(
+fun TabItem(
     title: String,
+    icon: ImageVector,
+    onClick: () -> Unit,
+    accessory: (@Composable () -> Unit)?,
     modifier: Modifier = Modifier,
-    icon: ImageVector? = null,
     style: FluentStyle = FluentStyle.Neutral,
     textAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
     enabled: Boolean = true,
+    selected: Boolean = false,
     fixedWidth: Boolean = false,
-    onClick: () -> Unit,
-    accessory: (@Composable () -> Unit)?,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     tabItemTokens: TabItemTokens? = null
 ) {
@@ -60,18 +67,20 @@ internal fun TabItem(
         LocalTabItemTokens provides token,
         LocalTabItemInfo provides TabItemInfo(textAlignment, style)
     ) {
-        val textColor = getTabItemTokens().textColor(tabItemInfo = getTabItemInfo()).getColorByState(
-            enabled = enabled,
-            selected = false,
-            interactionSource = interactionSource
-        )
-        val iconColor = getTabItemTokens().iconColor(tabItemInfo = getTabItemInfo()).getColorByState(
-            enabled = enabled,
-            selected = false,
-            interactionSource = interactionSource
-        )
+        val textColor =
+            getTabItemTokens().textColor(tabItemInfo = getTabItemInfo()).getColorByState(
+                enabled = enabled,
+                selected = selected,
+                interactionSource = interactionSource
+            )
+        val iconColor =
+            getTabItemTokens().iconColor(tabItemInfo = getTabItemInfo()).getColorByState(
+                enabled = enabled,
+                selected = selected,
+                interactionSource = interactionSource
+            )
 
-        val backgroundColor = getTabItemTokens().background(tabItemInfo = getTabItemInfo())
+        val backgroundColor = getTabItemTokens().backgroundColor(tabItemInfo = getTabItemInfo())
         val rippleColor = getTabItemTokens().rippleColor(tabItemInfo = getTabItemInfo())
 
         val clickableModifier = Modifier
@@ -90,41 +99,115 @@ internal fun TabItem(
             Modifier
         }
         val iconContent: @Composable () -> Unit = {
-            Box(
-                contentAlignment = Alignment.Center
-            ) {
-                if (icon != null) {
-                    Icon(
-                        imageVector = icon,
-                        modifier = Modifier.height(if (textAlignment == TabTextAlignment.NO_TEXT) 28.dp else 24.dp),
-                        contentDescription = if (textAlignment == TabTextAlignment.NO_TEXT) title else null,
-                        tint = iconColor
-                    )
-                }
-                if (accessory != null) {
-                    accessory()
-                }
-            }
+            Icon(
+                imageVector = icon,
+                modifier = Modifier.size(if (textAlignment == TabTextAlignment.NO_TEXT) 28.dp else 24.dp),
+                contentDescription = if (textAlignment == TabTextAlignment.NO_TEXT) title else null,
+                tint = iconColor
+            )
         }
+
         if (textAlignment == TabTextAlignment.HORIZONTAL) {
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically,
+            ConstraintLayout(
                 modifier = modifier
                     .then(clickableModifier)
                     .background(backgroundColor)
                     .padding(top = 8.dp, start = 4.dp, bottom = 4.dp, end = 8.dp)
                     .then(widthModifier)
-            ) {
-                iconContent()
-                Spacer(modifier = Modifier.width(2.dp))
+            )
+            {
+                val (iconConstrain, textConstrain, badgeConstrain) = createRefs()
+
+                Box(modifier = Modifier.constrainAs(iconConstrain) {
+                    start.linkTo(parent.start)
+                    end.linkTo(textConstrain.start)
+                }
+                ) {
+                    iconContent()
+                }
+
                 Text(
                     text = title,
+                    modifier = Modifier
+                        .constrainAs(textConstrain) {
+                            start.linkTo(iconConstrain.end)
+                            end.linkTo(badgeConstrain.start)
+                            width = Dimension.preferredWrapContent
+                        }
+                        .padding(start = 8.dp),
                     color = textColor,
-                    textAlign = TextAlign.Justify
+                    textAlign = TextAlign.Center,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
+                )
+
+                if (accessory != null) {
+                    Box(modifier = Modifier
+                        .constrainAs(badgeConstrain) {
+                            start.linkTo(textConstrain.end)
+                            end.linkTo(parent.end)
+                        }
+                    ) {
+                        accessory()
+                    }
+                }
+                createHorizontalChain(
+                    iconConstrain,
+                    textConstrain,
+                    badgeConstrain,
+                    chainStyle = ChainStyle.Packed
                 )
             }
         } else {
+            val badgeWithIcon: @Composable () -> Unit = {
+                Layout(
+                    {
+                        Box(
+                            modifier = Modifier.layoutId("anchor"),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            iconContent()
+                        }
+
+                        Box(modifier = Modifier.layoutId("badge")) {
+                            if (accessory != null)
+                                accessory()
+                        }
+
+                    }
+                ) { measurables, constraints ->
+                    val badgePlaceable = measurables.first { it.layoutId == "badge" }.measure(
+                        // Measure with loose constraints for height as we don't want the text to take up more
+                        // space than it needs.
+                        constraints.copy(minHeight = 0)
+                    )
+
+                    val anchorPlaceable =
+                        measurables.first { it.layoutId == "anchor" }.measure(constraints)
+
+                    // Use the width of the badge to infer whether it has any content (based on radius used
+                    // in [Badge]) and determine its horizontal offset.
+                    val hasContent = badgePlaceable.width > 16.dp.roundToPx()
+                    val contentOffset = if (hasContent) -2.dp.roundToPx() else 0
+                    val badgeHorizontalOffset = -anchorPlaceable.width / 2 + contentOffset
+                    val badgeVerticalOffset = (-4).dp
+
+                    val totalWidth = anchorPlaceable.width
+                    val totalHeight = anchorPlaceable.height
+
+                    layout(
+                        totalWidth,
+                        totalHeight
+                    ) {
+
+                        anchorPlaceable.placeRelative(0, 0)
+                        val badgeX = anchorPlaceable.width + badgeHorizontalOffset
+                        val badgeY = badgeVerticalOffset.roundToPx()
+                        badgePlaceable.placeRelative(badgeX, badgeY)
+                    }
+                }
+            }
+
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
@@ -134,7 +217,7 @@ internal fun TabItem(
                     .padding(top = 8.dp, start = 8.dp, bottom = 4.dp, end = 8.dp)
                     .then(widthModifier)
             ) {
-                iconContent()
+                badgeWithIcon()
                 if (textAlignment == TabTextAlignment.VERTICAL) {
                     Spacer(modifier = Modifier.height(2.dp))
                     Text(

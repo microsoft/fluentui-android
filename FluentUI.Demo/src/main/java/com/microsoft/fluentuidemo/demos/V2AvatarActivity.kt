@@ -3,12 +3,14 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.AnonymousAccentAvatarTokens
@@ -17,6 +19,7 @@ import com.example.theme.token.StandardInvertedAvatarTokens
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
+import com.microsoft.fluentui.theme.token.controlTokens.CutoutStyle
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.Group
@@ -43,6 +46,71 @@ class V2AvatarActivity : DemoActivity() {
                 ) {
                     var isActive by rememberSaveable { mutableStateOf(true) }
                     var isOOO by rememberSaveable { mutableStateOf(false) }
+
+                    Text(
+                        modifier = Modifier.padding(start = 16.dp),
+                        text = "Avatar Cutout",
+                        color = Color(0xFF2886DE)
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(
+                            12.dp,
+                            Alignment.CenterHorizontally
+                        ),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        val person: Person = Person(
+                            "Kat", "Larsson",
+                            isActive = isActive,
+                            image = R.drawable.avatar_kat_larsson
+                        )
+                        val personNoImage: Person = Person(
+                            "Kat", "Larsson",
+                            isActive = isActive,
+                        )
+                        Avatar(
+                            person,
+                            cutoutContentDescription = "heart",
+                            size = AvatarSize.Size40,
+                            enableActivityRings = true,
+                            cutoutIconDrawable = R.drawable.cutout_heart16x16
+                        )
+                        Avatar(
+                            personNoImage,
+                            size = AvatarSize.Size40,
+                            enableActivityRings = true,
+                            cutoutIconDrawable = R.drawable.cutout_laughing24x24
+                        )
+                        Avatar(
+                            person,
+                            size = AvatarSize.Size40,
+                            enableActivityRings = true,
+                            cutoutIconDrawable = R.drawable.cutout_excel32x32,
+                            cutoutStyle = CutoutStyle.Square
+                        )
+                        Avatar(
+                            person,
+                            size = AvatarSize.Size56,
+                            enableActivityRings = true,
+                            cutoutIconDrawable = R.drawable.cutout_people32x32
+                        )
+                        Avatar(
+                            personNoImage,
+                            size = AvatarSize.Size56,
+                            enableActivityRings = true,
+                            cutoutIconDrawable = R.drawable.cutout_onenote32x32,
+                            cutoutStyle = CutoutStyle.Square
+                        )
+                        Avatar(
+                            person,
+                            size = AvatarSize.Size56,
+                            enableActivityRings = true,
+                            cutoutIconDrawable = R.drawable.cutout_pp48x48,
+                            cutoutStyle = CutoutStyle.Square
+                        )
+                    }
+                    Divider()
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),

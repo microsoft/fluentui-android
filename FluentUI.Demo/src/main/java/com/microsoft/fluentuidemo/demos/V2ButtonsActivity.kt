@@ -34,7 +34,7 @@ import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 
-class V2BasicInputsActivity : DemoActivity() {
+class V2ButtonsActivity : DemoActivity() {
     override val contentLayoutId: Int
         get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean

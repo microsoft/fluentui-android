@@ -1,17 +1,19 @@
 package com.microsoft.fluentui.tokenized.controls
 
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.TweenSpec
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.rememberSwipeableState
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -54,12 +56,15 @@ fun ToggleSwitch(
         LocalToggleSwitchInfo provides ToggleSwitchInfo(checkedState)
     ) {
 
-        val backgroundColor: Color =
+        val backgroundColor: Color = animateColorAsState(
+            targetValue =
             getToggleSwitchToken().trackColor(switchInfo = getToggleSwitchInfo()).getColorByState(
                 enabled = enabledSwitch,
                 selected = checkedState,
                 interactionSource = interactionSource
-            )
+            ),
+            animationSpec = tween(500)
+        ).value
         val foregroundColor: Color =
             getToggleSwitchToken().knobColor(switchInfo = getToggleSwitchInfo()).getColorByState(
                 enabled = enabledSwitch,
@@ -67,19 +72,31 @@ fun ToggleSwitch(
                 interactionSource = interactionSource
             )
         val elevation: Dp =
-            getToggleSwitchToken().elevation(fabInfo = getToggleSwitchInfo()).getElevationByState(
-                enabled = enabledSwitch,
-                selected = checkedState,
-                interactionSource = interactionSource
-            )
-        val padding: Dp = getToggleSwitchToken().paddingTrack
-
+            getToggleSwitchToken().elevation(switchInfo = getToggleSwitchInfo())
+                .getElevationByState(
+                    enabled = enabledSwitch,
+                    selected = checkedState,
+                    interactionSource = interactionSource
+                )
+        val padding: Dp = animateDpAsState(
+            targetValue =
+            if (interactionSource.collectIsPressedAsState().value)
+                getToggleSwitchToken().pressedPaddingTrack
+            else
+                getToggleSwitchToken().restPaddingTrack
+        ).value
+        val knobMovementWidth: Dp = animateDpAsState(
+            targetValue =
+            if (interactionSource.collectIsPressedAsState().value)
+                22.dp
+            else
+                23.dp
+        ).value
 
         // Swipe Logic
-        val knobMovementWidth = 23.dp
         val minBound = with(LocalDensity.current) { padding.toPx() }
         val maxBound = with(LocalDensity.current) { knobMovementWidth.toPx() }
-        val animationSpec = TweenSpec<Float>(durationMillis = 100)
+        val animationSpec = TweenSpec<Float>(durationMillis = 300)
         val swipeState =
             rememberSwipeableState(checkedState, animationSpec, confirmStateChange = { true })
         val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
@@ -133,14 +150,15 @@ fun ToggleSwitch(
             Spacer(modifier = Modifier
                 .offset { IntOffset(swipeState.offset.value.roundToInt(), 0) }
                 .shadow(elevation, CircleShape)
-                .indication(
-                    interactionSource = interactionSource,
-                    indication = rememberRipple(
-                        false,
-                        getToggleSwitchToken().knobRippleRadius
-                    )
+                .size(
+                    animateDpAsState(
+                        targetValue =
+                        if (interactionSource.collectIsPressedAsState().value)
+                            getToggleSwitchToken().pressedKnobDiameter
+                        else
+                            getToggleSwitchToken().restKnobDiameter
+                    ).value
                 )
-                .size(getToggleSwitchToken().fixedKnobDiameter)
                 .clip(CircleShape)
                 .background(foregroundColor)
             )

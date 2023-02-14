@@ -43,7 +43,7 @@ class V2AvatarActivityUITest {
         val oooButton = composeTestRule.onNodeWithText("Toggle OOO")
         val activityButton = composeTestRule.onNodeWithText("Toggle Activity")
 
-        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription("Amanda Brady", substring = true)[0]
+        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription(useUnmergedTree = true, label = "Amanda Brady", substring = true)[0]
         amandaAvatar.onChild().assert(hasTestTag(IMAGE_TEST_TAG))
 
         //Action

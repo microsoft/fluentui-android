@@ -27,48 +27,52 @@
         </activity>
 
         <!-- Demo activities -->
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarLayoutActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BadgeActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ButtonsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ProgressActivity" />
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.V2SearchBarActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarGroupViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BasicInputsActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicInputsActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomNavigationActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.CalendarViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ContextualCommandBarActivity" />
-        <activity
-            android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
-            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DateTimePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.DrawerActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ListItemViewActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersistentBottomSheetActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaChipViewActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaListViewActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PersonaViewActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2SearchBarActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TabLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />

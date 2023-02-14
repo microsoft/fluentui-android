@@ -30,7 +30,7 @@ open class TabItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun background(tabItemInfo: TabItemInfo): Color {
+    open fun backgroundColor(tabItemInfo: TabItemInfo): Color {
         return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
             FluentTheme.themeMode
         )
@@ -78,6 +78,7 @@ open class TabItemTokens : ControlToken, Parcelable {
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
+                selected = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(),
                 disabled = FluentColor(
                     light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
                         ThemeMode.Light
@@ -122,6 +123,7 @@ open class TabItemTokens : ControlToken, Parcelable {
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
+                selected = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(),
                 disabled = FluentColor(
                     light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
                         ThemeMode.Light

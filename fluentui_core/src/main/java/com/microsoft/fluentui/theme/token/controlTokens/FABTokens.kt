@@ -174,7 +174,7 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun fixedHeight(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> 48.dp
+            FABSize.Small -> 44.dp
             FABSize.Large -> 56.dp
         }
     }
@@ -182,7 +182,7 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun minWidth(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> 48.dp
+            FABSize.Small -> 44.dp
             FABSize.Large -> 56.dp
         }
     }

@@ -1,18 +1,21 @@
-Release Version 0.1.15:
+Release Version 0.1.19:
 
 What's New:
 
-Fluent V2 :
-	Controls: Release V2 SearchBar, V2 Persona Chip
-	Fix: 
-		1) Accessibility bug fix in V2 ListItem.
-		2) Code refractor & enhancement.
+Fluent V2:
+	Fix/Enhancement:
+    	1) CCB enhancement for multiline CCB:
+    		    Added scrollable parameter. When true, CCB become scrollable else it will be drawn within available limit which is case for multiline CCB.
+                Added weight parameter in CommandGroup to modify the CCB groups width. Weight is applicable only when scrollable is false for multiline CCB design.
+		2) Drawer(Bottom) enhancement:
+            a) Drawer to have 2 behavior for Bottom drawer: BOTTOM, BOTTOM_SLIDE_OVER.
+            b) Updated Behaviour enum:
+                Behaviour.LEFT -> Behaviour.LEFT_SLIDE_OVER
+                Behaviour.RIGHT -> Behaviour.RIGHT_SLIDE_OVER
+                Behaviour.BOTTOM -> Behaviour.BOTTOM_SLIDE_OVER.
+        3) Bug fix in semantic modifier to call confirmStateChange with correct state in BottomSheet.
+        4) Revamp of V2 Drawer Activity to demonstrate all the capability of Drawer.
 
-
-Fluent V1 (v-current):
-	Fix:  
-		1) Fix issue of PeoplePickerView where it show incorrect avatar in persona list on change of query text.
-		2) Remove unused tokenautocomplete dependency from calendar and others modules.
-
- 
-
+Fluent v-current:
+    Fix/Enhancement:
+        1) Fix crash by ToolTip.
