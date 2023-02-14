@@ -1,4 +1,4 @@
-# Fluent UI for Android - Test
+# Fluent UI for Android
 
 ##### The Android UI framework for building experiences for Microsoft 365.
 
