@@ -12,7 +12,7 @@ jobs:
         TDBUILD_TEAM_ID: ${{ secrets.TDBUILD_TEAM_ID }}
         TDBUILD_AAD_APPLICATION_CLIENT_ID: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_ID }}
         TDBUILD_AAD_APPLICATION_CLIENT_SECRET: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_SECRET }}
-      run: localize.sh
+      run: ./localize.sh
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3.5.0
       with:
