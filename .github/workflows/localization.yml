@@ -6,6 +6,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: ${{secrets.LOCALIZATION}}
     - shell: bash
       name: Localize
       env:
