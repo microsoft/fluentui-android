@@ -22,7 +22,6 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonTokens
-
 val LocalRadioButtonTokens = compositionLocalOf { RadioButtonTokens() }
 val LocalRadioButtonInfo = compositionLocalOf { RadioButtonInfo() }
 
