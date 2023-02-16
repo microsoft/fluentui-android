@@ -1,11 +1,4 @@
-on: 
-  push:
-    branches:
-      - main
-  # Also run every day at midnight to pick up new localizations
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron:  '0 0 * * *'
+on: workflow_dispatch
 
 jobs:
   Localize:
