@@ -85,7 +85,7 @@ continue
 fi
 
 echo "Processing $file"
-echi "FileName $fileName"
+echo "FileName $fileName"
 relPath=$relativeFilePath/"$fileName"
 
 echo "Relative file path $relPath"
@@ -132,7 +132,6 @@ fi
 
 if [ "$renameLanguageFolder" = true ]; then
 echo "Renaming language folders in $outputDirectory"
-outputDirectory=./localizedFiles/res/values
 languageFolders=$outputDirectory/*/
 valuesDir=${outputDirectory%/}
 resDir=${valuesDir%/*}
