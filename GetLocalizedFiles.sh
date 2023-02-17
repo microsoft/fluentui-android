@@ -85,7 +85,7 @@ continue
 fi
 
 echo "Processing $file"
-echi "FileName $fileName"
+echo "FileName $fileName"
 relPath=$relativeFilePath/"$fileName"
 
 echo "Relative file path $relPath"
