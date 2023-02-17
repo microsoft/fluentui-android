@@ -70,7 +70,43 @@ tokenValue=`echo $tokenFetchCmd | jsonValue access_token 1`
 echo $tokenValue
 }
 
-if [ -f $filePath ]; then
+if [ -d $filePath ]; then
+
+echo "Getting all input files from $filePath"
+inputFiles=$filePath/*
+
+for file in $inputFiles
+do
+fileName="${file##*/}"
+if [[ $fileName != "strings.xml" ]]
+then
+  echo "Skipping $file"
+continue
+fi
+
+echo "Processing $file"
+echi "FileName $fileName"
+relPath=$relativeFilePath/"$fileName"
+
+echo "Relative file path $relPath"
+
+if [ "$isoauth" = false ]; then
+response=$(curl --ntlm -u $alias:$password -H "x-TDBuildWrapper: FluentUI-Android" -X put https://build.intlservices.microsoft.com/api/teams/$id/LocalizableFiles/ParserId/$parserId --form 'FilePath={"FilePath":"'$relPath'"};type=application/json' --form "file=@$file;type=application/octet-stream" -o "$fileName.zip")
+echo "Response result LocalizableFiles call $response"
+else
+tokenValue=$(oauthToken)
+response=$(curl -H "Authorization: Bearer $tokenValue" -H "Accept: application/json" -H "x-TDBuildWrapper: FluentUI-Android" -X put https://build.intlservices.microsoft.com/api/teams/$id/LocalizableFiles/ParserId/$parserId --form 'FilePath={"FilePath":"'$relPath'"};type=application/json' --form "file=@$file;type=application/octet-stream" -o "$fileName.zip")
+echo "Response result LocalizableFiles call $response"
+fi
+
+if [ -f $fileName.zip ]; then
+unzip -o $fileName.zip -d $outputDirectory
+rm $fileName.zip
+fi
+
+done
+
+elif [ -f $filePath ]; then
 
 if [ "$isoauth" = false ]; then
 response=$(curl --ntlm -u $alias:$password -H "x-TDBuildWrapper: FluentUI-Android" -X put https://build.intlservices.microsoft.com/api/teams/$id/LocalizableFiles/ParserId/$parserId --form 'FilePath={"FilePath":"'$relativeFilePath'"};type=application/json' --form "file=@$filePath;type=application/octet-stream" -o loc.zip)
@@ -97,31 +133,26 @@ fi
 if [ "$renameLanguageFolder" = true ]; then
 echo "Renaming language folders in $outputDirectory"
 languageFolders=$outputDirectory/*/
+valuesDir=${outputDirectory%/}
+resDir=${valuesDir%/*}
 
 for folder in $languageFolders
 do
-folderWithoutLeadingSlash=${folder#./localizedFiles/}
-WithoutTrailingandLeadingSlash=${folderWithoutLeadingSlash%/}
+echo "Folder is: $folder"
+folderWithoutTrailingSlash=${folder#${outputDirectory}/}
+echo "folderWithoutTrailingSlash is: $folderWithoutTrailingSlash"
 
-if [[ "values" == "${WithoutTrailingandLeadingSlash%%-*}" ]]
+echo "Renaming $folder to "${outputDirectory}/values-${folderWithoutTrailingSlash}""
+
+if [ -d "${resDir}/values-${folderWithoutTrailingSlash}" ]
 then
-  continue
-fi
-
-echo "Renaming $WithoutTrailingandLeadingSlash to values-$WithoutTrailingandLeadingSlash"
-
-if [ -d ./values-$WithoutTrailingandLeadingSlash ]
-then
-  echo "Deleting values-$WithoutTrailingandLeadingSlash as it already exists"
-  rm -r ./values-$WithoutTrailingandLeadingSlash
+  echo "Deleting values-$folderWithoutTrailingSlash from ${resDir} as it already exists"
+  rm -r "${resDir}/values-${folderWithoutTrailingSlash}"
 fi
  
-cd localizedFiles
-mv $WithoutTrailingandLeadingSlash values-${WithoutTrailingandLeadingSlash}
-cd ..
+mv $folder "${outputDirectory}/values-${folderWithoutTrailingSlash}"
+mv ${valuesDir}/values-${folderWithoutTrailingSlash} $resDir
+
 
 done
-
-mv localizedFiles/* .
-rm -r localizedFiles
 fi
