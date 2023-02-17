@@ -85,7 +85,7 @@ continue
 fi
 
 echo "Processing $file"
-echo "FileName $fileName"
+echi "FileName $fileName"
 relPath=$relativeFilePath/"$fileName"
 
 echo "Relative file path $relPath"
@@ -132,6 +132,7 @@ fi
 
 if [ "$renameLanguageFolder" = true ]; then
 echo "Renaming language folders in $outputDirectory"
+outputDirectory=./localizedFiles/res/values
 languageFolders=$outputDirectory/*/
 valuesDir=${outputDirectory%/}
 resDir=${valuesDir%/*}
@@ -141,6 +142,12 @@ do
 echo "Folder is: $folder"
 folderWithoutTrailingSlash=${folder#${outputDirectory}/}
 echo "folderWithoutTrailingSlash is: $folderWithoutTrailingSlash"
+
+if [ $(echo $folderWithoutTrailingSlash | grep -o "-" | wc -l) -gt "1" ]; then
+folderWithoutTrailingSlash=b+$(echo "$folderWithoutTrailingSlash" | tr - +)
+else
+folderWithoutTrailingSlash=$(echo "${folderWithoutTrailingSlash//-/"-r"}")
+fi
 
 echo "Renaming $folder to "${outputDirectory}/values-${folderWithoutTrailingSlash}""
 
@@ -152,7 +159,6 @@ fi
  
 mv $folder "${outputDirectory}/values-${folderWithoutTrailingSlash}"
 mv ${valuesDir}/values-${folderWithoutTrailingSlash} $resDir
-
 
 done
 fi
