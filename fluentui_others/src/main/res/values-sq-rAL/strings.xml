@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">U krye</string>
+  <string name="action_bar_default_left_action">Kapërce</string>
+  <string name="action_bar_default_right_action">Tjetër</string>
+  <string name="action_bar_default_final_action">Nis</string>
+  <string name="action_bar_right_icon_description">Tjetër</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Pamje shumëfaqëshe. Faqe slider %1$d e %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Në krye të fletës së poshtme</string>
+</resources>

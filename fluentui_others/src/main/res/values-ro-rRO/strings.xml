@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Gata</string>
+  <string name="action_bar_default_left_action">Ignorați</string>
+  <string name="action_bar_default_right_action">Următorul</string>
+  <string name="action_bar_default_final_action">Porniți</string>
+  <string name="action_bar_right_icon_description">Următorul</string>
+  <string name="action_bar_accessibility_page_announcement">Pagina glisorului %1$d de %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Vizualizare pe mai multe pagini. Pagina glisorului %1$d de %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Stil titlu Foaie inferioară</string>
+</resources>

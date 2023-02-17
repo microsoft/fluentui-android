@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Arrastaka kontrolatzailea</string>
+  <string name="expand">zabaldu</string>
+  <string name="collapse">tolestu</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">انجام شد</string>
+  <string name="action_bar_default_left_action">رد شدن</string>
+  <string name="action_bar_default_right_action">بعدی</string>
+  <string name="action_bar_default_final_action">شروع</string>
+  <string name="action_bar_right_icon_description">بعدی</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">نمای چند صفحه ای. نوار لغزنده %1$d زبانه متحرک %2$d</string>
+  <string name="fluentui_bottom_sheet_header">سرصفحه صفحه پایین</string>
+</resources>

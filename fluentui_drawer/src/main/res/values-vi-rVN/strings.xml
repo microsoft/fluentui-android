@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Kéo Núm điều khiển</string>
+  <string name="expand">bung rộng</string>
+  <string name="collapse">thu gọn</string>
+</resources>

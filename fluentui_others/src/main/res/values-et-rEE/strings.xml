@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Valmis</string>
+  <string name="action_bar_default_left_action">Jäta vahele</string>
+  <string name="action_bar_default_right_action">Järgmine</string>
+  <string name="action_bar_default_final_action">Käivita</string>
+  <string name="action_bar_right_icon_description">Järgmine</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Mitmeleheline vaade. %2$d liugurilehe %1$d</string>
+  <string name="fluentui_bottom_sheet_header">Alumise lehe pealkiri</string>
+</resources>

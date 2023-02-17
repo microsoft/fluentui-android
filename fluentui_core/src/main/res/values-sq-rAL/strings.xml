@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">I përzgjedhur</string>
+  <string name="fluentui_not_selected">E pazgjedhur</string>
+  <string name="fluentui_disabled">Çaktivizuar</string>
+  <string name="fluentui_enabled">Aktivizuar</string>
+  <string name="fluentui_close_sheet">Mbyll fletën</string>
+  <string name="fluentui_close">Mbyll</string>
+  <string name="fluentui_search">Kërko</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Pastro tekstin</string>
+  <string name="fluentui_back">Prapa</string>
+  <string name="fluentui_activated">Aktivo</string>
+  <string name="fluentui_deactivated">E çaktivizuar</string>
+  <string name="fluentui_neutral">Neutral</string>
+  <string name="fluentui_brand">markë e njohur</string>
+  <string name="fluentui_chevron">Shevron</string>
+  <string name="fluentui_large">I madh</string>
+  <string name="fluentui_medium">Mesatare</string>
+  <string name="fluentui_small">I vogël</string>
+  <string name="fluentui_subtitle">Nëntitull</string>
+</resources>

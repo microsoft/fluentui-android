@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Vybráno</string>
+  <string name="fluentui_not_selected">Nevybráno</string>
+  <string name="fluentui_disabled">Zakázáno</string>
+  <string name="fluentui_enabled">Povoleno</string>
+  <string name="fluentui_close_sheet">Zavřít list</string>
+  <string name="fluentui_close">Zavřít</string>
+  <string name="fluentui_search">Hledat</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Vymazat text</string>
+  <string name="fluentui_back">Zpět</string>
+  <string name="fluentui_activated">Aktivováno</string>
+  <string name="fluentui_deactivated">Deaktivováno</string>
+  <string name="fluentui_neutral">Neutrální</string>
+  <string name="fluentui_brand">Značka</string>
+  <string name="fluentui_chevron">DvojitáŠipka</string>
+  <string name="fluentui_large">Velké</string>
+  <string name="fluentui_medium">Střední</string>
+  <string name="fluentui_small">Malé</string>
+  <string name="fluentui_subtitle">Titulek</string>
+</resources>

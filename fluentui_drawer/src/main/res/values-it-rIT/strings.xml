@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Trascina punto di manipolazione</string>
+  <string name="expand">espandi</string>
+  <string name="collapse">comprimi</string>
+</resources>

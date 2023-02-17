@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Geselekteer</string>
+  <string name="fluentui_not_selected">Nie geselekteer nie</string>
+  <string name="fluentui_disabled">Gedeaktiveer</string>
+  <string name="fluentui_enabled">Geaktiveer</string>
+  <string name="fluentui_close_sheet">Sluit blad</string>
+  <string name="fluentui_close">Sluit</string>
+  <string name="fluentui_search">Soek</string>
+  <string name="fluentui_microphone">Mikrofoon</string>
+  <string name="fluentui_clear_text">Vee teks uit</string>
+  <string name="fluentui_back">Terug</string>
+  <string name="fluentui_activated">Geaktiveer</string>
+  <string name="fluentui_deactivated">deaktiveer</string>
+  <string name="fluentui_neutral">Neutraal</string>
+  <string name="fluentui_brand">brand</string>
+  <string name="fluentui_chevron">Sjevron</string>
+  <string name="fluentui_large">Groot</string>
+  <string name="fluentui_medium">Medium</string>
+  <string name="fluentui_small">Klein</string>
+  <string name="fluentui_subtitle">Subtitel</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Готово</string>
+  <string name="action_bar_default_left_action">Пропустить</string>
+  <string name="action_bar_default_right_action">Далее</string>
+  <string name="action_bar_default_final_action">Запустить</string>
+  <string name="action_bar_right_icon_description">Далее</string>
+  <string name="action_bar_accessibility_page_announcement">Ползунок %1$d %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Представление с несколькими страницами. Ползунок %1$d %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Заголовок нижней таблицы</string>
+</resources>

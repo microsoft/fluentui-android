@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">tumbler</string>
+  <string name="popup_menu_accessibility_item_select">valige</string>
+  <string name="popup_menu_accessibility_item_click_selected">Valitud on %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s märgitud</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s märkimata</string>
+  <string name="popup_menu_accessibility_item_radio_button">raadionupp</string>
+  <string name="popup_menu_accessibility_item_check_box">märkeruut</string>
+  <string name="popup_menu_accessibility_item_state_checked">märgitud</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">märkimata</string>
+</resources>

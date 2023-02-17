@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">váltás</string>
+  <string name="popup_menu_accessibility_item_select">kijelölés</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s kijelölve</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s bejelölve</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s nincs bejelölve</string>
+  <string name="popup_menu_accessibility_item_radio_button">választógomb</string>
+  <string name="popup_menu_accessibility_item_check_box">jelölőnégyzet</string>
+  <string name="popup_menu_accessibility_item_state_checked">bejelölve</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nincs bejelölve</string>
+</resources>

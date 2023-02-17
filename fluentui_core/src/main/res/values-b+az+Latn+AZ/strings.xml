@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Seçildi</string>
+  <string name="fluentui_not_selected">Seçilməyib</string>
+  <string name="fluentui_disabled">Qeyri-aktiv edilib</string>
+  <string name="fluentui_enabled">Aktivləşdirilib</string>
+  <string name="fluentui_close_sheet">Vərəqi Bağla</string>
+  <string name="fluentui_close">Bağla</string>
+  <string name="fluentui_search">Axtarış</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Mətni təmizləyin</string>
+  <string name="fluentui_back">Geri</string>
+  <string name="fluentui_activated">Aktivləşdirildi</string>
+  <string name="fluentui_deactivated">Passivləşdirildi</string>
+  <string name="fluentui_neutral">Neytral</string>
+  <string name="fluentui_brand">Brend</string>
+  <string name="fluentui_chevron">Bucaq Dırnaqlar</string>
+  <string name="fluentui_large">Böyük</string>
+  <string name="fluentui_medium">Orta</string>
+  <string name="fluentui_small">Kiçik</string>
+  <string name="fluentui_subtitle">Altyazı</string>
+</resources>

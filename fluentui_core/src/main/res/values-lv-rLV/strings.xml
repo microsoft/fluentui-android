@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Atlasīts</string>
+  <string name="fluentui_not_selected">Nav atlasīta</string>
+  <string name="fluentui_disabled">Atspējots</string>
+  <string name="fluentui_enabled">Iespējots</string>
+  <string name="fluentui_close_sheet">Aizvērt lapu</string>
+  <string name="fluentui_close">Aizvērt</string>
+  <string name="fluentui_search">Meklēt</string>
+  <string name="fluentui_microphone">Mikrofons</string>
+  <string name="fluentui_clear_text">Notīrīt tekstu</string>
+  <string name="fluentui_back">Atpakaļ</string>
+  <string name="fluentui_activated">Aktivizēts</string>
+  <string name="fluentui_deactivated">Deaktivizēts</string>
+  <string name="fluentui_neutral">Neitrāls</string>
+  <string name="fluentui_brand">Zīmols</string>
+  <string name="fluentui_chevron">Skujiņa</string>
+  <string name="fluentui_large">Liels</string>
+  <string name="fluentui_medium">Vidēja</string>
+  <string name="fluentui_small">Mazs</string>
+  <string name="fluentui_subtitle">Apakšvirsraksts</string>
+</resources>

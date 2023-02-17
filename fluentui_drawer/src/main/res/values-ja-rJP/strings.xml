@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">ドラッグ ハンドル</string>
+  <string name="expand">展開</string>
+  <string name="collapse">折りたたみ</string>
+</resources>

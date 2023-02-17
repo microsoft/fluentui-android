@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Pasirinktas</string>
+  <string name="fluentui_not_selected">Nepažymėta</string>
+  <string name="fluentui_disabled">Išjungta</string>
+  <string name="fluentui_enabled">Įgalinta</string>
+  <string name="fluentui_close_sheet">Uždaryti lapą</string>
+  <string name="fluentui_close">Uždaryti</string>
+  <string name="fluentui_search">Ieška</string>
+  <string name="fluentui_microphone">Mikrofonas</string>
+  <string name="fluentui_clear_text">Išvalyti tekstą</string>
+  <string name="fluentui_back">Atgal</string>
+  <string name="fluentui_activated">Įjungtas</string>
+  <string name="fluentui_deactivated">Išjungta</string>
+  <string name="fluentui_neutral">Neutralios nuomonės</string>
+  <string name="fluentui_brand">Prekės ženklas</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Didelė</string>
+  <string name="fluentui_medium">Vidutinis</string>
+  <string name="fluentui_small">Mažas</string>
+  <string name="fluentui_subtitle">Subtitras</string>
+</resources>

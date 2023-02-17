@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Tühjenda otsing</string>
+  <string name="searchbar_back">Tagasi</string>
+  <string name="searchbar_query_hint_default">Otsi</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">redigeerimisväli on tühjendatud</string>
+</resources>

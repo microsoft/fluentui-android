@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Selectat</string>
+  <string name="fluentui_not_selected">Neselectat</string>
+  <string name="fluentui_disabled">Dezactivat</string>
+  <string name="fluentui_enabled">Activ</string>
+  <string name="fluentui_close_sheet">Închidere foaie</string>
+  <string name="fluentui_close">Închideți</string>
+  <string name="fluentui_search">Căutare</string>
+  <string name="fluentui_microphone">Microfon</string>
+  <string name="fluentui_clear_text">Golire text</string>
+  <string name="fluentui_back">Înapoi</string>
+  <string name="fluentui_activated">Activat</string>
+  <string name="fluentui_deactivated">Dezactivat</string>
+  <string name="fluentui_neutral">Neutru</string>
+  <string name="fluentui_brand">Marcă</string>
+  <string name="fluentui_chevron">Ghilimele unghiulare</string>
+  <string name="fluentui_large">Mare</string>
+  <string name="fluentui_medium">Mediu</string>
+  <string name="fluentui_small">Mic</string>
+  <string name="fluentui_subtitle">Subtitlu</string>
+</resources>

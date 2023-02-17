@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Handle glisare</string>
+  <string name="expand">extindeți</string>
+  <string name="collapse">restrângeți</string>
+</resources>

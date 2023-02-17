@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Xong</string>
+  <string name="action_bar_default_left_action">Bỏ qua</string>
+  <string name="action_bar_default_right_action">Tiếp theo</string>
+  <string name="action_bar_default_final_action">Khởi động</string>
+  <string name="action_bar_right_icon_description">Tiếp theo</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Dạng xem nhiều trang. Trang con trượt %1$d trên %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Đầu đề Trang tính Đáy</string>
+</resources>

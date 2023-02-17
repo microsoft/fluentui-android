@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Valmis</string>
+  <string name="action_bar_default_left_action">Ohita</string>
+  <string name="action_bar_default_right_action">Seuraava</string>
+  <string name="action_bar_default_final_action">Aloita</string>
+  <string name="action_bar_right_icon_description">Seuraava</string>
+  <string name="action_bar_accessibility_page_announcement">%2$d liukusäädinsivun %1$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Monisivuinen näkymä. %2$d liukusäädinsivun %1$d</string>
+  <string name="fluentui_bottom_sheet_header">Alataulukon otsikko</string>
+</resources>

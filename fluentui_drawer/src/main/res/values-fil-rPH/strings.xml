@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Hawakan ng Pag-drag</string>
+  <string name="expand">palawakin</string>
+  <string name="collapse">paliitin</string>
+</resources>

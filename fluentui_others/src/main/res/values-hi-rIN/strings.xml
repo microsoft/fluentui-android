@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">पूर्ण</string>
+  <string name="action_bar_default_left_action">छोड़ें</string>
+  <string name="action_bar_default_right_action">अगला</string>
+  <string name="action_bar_default_final_action">प्रारंभ करें</string>
+  <string name="action_bar_right_icon_description">अगला</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">बहु-पृष्ठ दृश्य. %2$d का स्लाइडर पृष्ठ %1$d</string>
+  <string name="fluentui_bottom_sheet_header">निचला पत्रक शीर्ष</string>
+</resources>

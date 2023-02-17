@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">piron</string>
+  <string name="popup_menu_accessibility_item_select">selectați</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s selectat</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s bifat</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s debifat</string>
+  <string name="popup_menu_accessibility_item_radio_button">butonul radio</string>
+  <string name="popup_menu_accessibility_item_check_box">casetă de selectare</string>
+  <string name="popup_menu_accessibility_item_state_checked">bifat</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nebifat</string>
+</resources>

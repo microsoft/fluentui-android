@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="progress_circular_content_description_indeterminate">Hindi Matukoy</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="progress_circular_content_description_indeterminate">Hindi Matukoy na Pabilog</string>
+  <string name="progress_linear_content_description_indeterminate" ignore="MissingTranslation">Hindi tukoy na Linear</string>
+  <string name="progress_linear_content_description_determinate" ignore="MissingTranslation">Tukuyin ang Linear</string>
 </resources>

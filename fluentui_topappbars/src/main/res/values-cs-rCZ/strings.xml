@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Vymazat hledání</string>
+  <string name="searchbar_back">Zpět</string>
+  <string name="searchbar_query_hint_default">Hledat</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">pole úprav vymazáno</string>
+</resources>

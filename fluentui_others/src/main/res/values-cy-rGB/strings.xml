@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Wedi gorffen</string>
+  <string name="action_bar_default_left_action">Hepgor</string>
+  <string name="action_bar_default_right_action">Nesaf</string>
+  <string name="action_bar_default_final_action">Cychwyn</string>
+  <string name="action_bar_right_icon_description">Nesaf</string>
+  <string name="action_bar_accessibility_page_announcement">%1$d tudalen llithrydd y %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Gweld mwy nag un dudalen. %1$d tudalen llithrydd y %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Pennawd Dalen Isaf</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">선택됨</string>
+  <string name="fluentui_not_selected">선택되지 않음</string>
+  <string name="fluentui_disabled">사용 안 함</string>
+  <string name="fluentui_enabled">사용</string>
+  <string name="fluentui_close_sheet">시트 닫기</string>
+  <string name="fluentui_close">닫기</string>
+  <string name="fluentui_search">검색</string>
+  <string name="fluentui_microphone">마이크</string>
+  <string name="fluentui_clear_text">텍스트 지우기</string>
+  <string name="fluentui_back">뒤로</string>
+  <string name="fluentui_activated">활성화됨</string>
+  <string name="fluentui_deactivated">비활성화됨</string>
+  <string name="fluentui_neutral">보통</string>
+  <string name="fluentui_brand">브랜드</string>
+  <string name="fluentui_chevron">갈매기형 수장</string>
+  <string name="fluentui_large">크게</string>
+  <string name="fluentui_medium">중간</string>
+  <string name="fluentui_small">작게</string>
+  <string name="fluentui_subtitle">부제</string>
+</resources>

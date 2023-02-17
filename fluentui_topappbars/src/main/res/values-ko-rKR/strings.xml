@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">검색 지우기</string>
+  <string name="searchbar_back">뒤로</string>
+  <string name="searchbar_query_hint_default">검색</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">편집 필드가 지워졌습니다.</string>
+</resources>

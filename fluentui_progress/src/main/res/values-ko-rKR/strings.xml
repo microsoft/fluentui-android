@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="progress_circular_content_description_indeterminate">정할 수 없는 순환</string>
+  <string name="progress_linear_content_description_indeterminate" ignore="MissingTranslation">확정되지 않은 선형</string>
+  <string name="progress_linear_content_description_determinate" ignore="MissingTranslation">선형 확인</string>
+</resources>

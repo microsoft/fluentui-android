@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="progress_circular_content_description_indeterminate">不確定</string>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="progress_circular_content_description_indeterminate">不確定的迴圈</string>
+  <string name="progress_linear_content_description_indeterminate" ignore="MissingTranslation">不確定的線性</string>
+  <string name="progress_linear_content_description_determinate" ignore="MissingTranslation">確定線性</string>
 </resources>

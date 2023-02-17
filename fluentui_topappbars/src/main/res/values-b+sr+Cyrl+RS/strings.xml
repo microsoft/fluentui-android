@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Обриши претрагу</string>
+  <string name="searchbar_back">Назад</string>
+  <string name="searchbar_query_hint_default">Претрага</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">брисање поља за уређивање</string>
+</resources>

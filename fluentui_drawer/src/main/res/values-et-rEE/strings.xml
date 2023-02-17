@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Lohistamispide</string>
+  <string name="expand">laienda</string>
+  <string name="collapse">ahenda</string>
+</resources>

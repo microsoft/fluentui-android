@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">தேர்ந்தெடுக்கப்பட்டது</string>
+  <string name="fluentui_not_selected">தேர்ந்தெடுக்கவில்லை</string>
+  <string name="fluentui_disabled">முடக்கப்பட்டது</string>
+  <string name="fluentui_enabled">இயக்கப்பட்டது</string>
+  <string name="fluentui_close_sheet">தாளை மூடவும்</string>
+  <string name="fluentui_close">மூடு</string>
+  <string name="fluentui_search">தேடு</string>
+  <string name="fluentui_microphone">மைக்ரோஃபோன்</string>
+  <string name="fluentui_clear_text">உரையை அழிக்கவும்</string>
+  <string name="fluentui_back">பின்செல்</string>
+  <string name="fluentui_activated">செயல்படுத்தப்பட்டது</string>
+  <string name="fluentui_deactivated">செயல்நிறுத்தப்பட்டது</string>
+  <string name="fluentui_neutral">நடுநிலை</string>
+  <string name="fluentui_brand">பிராண்டு</string>
+  <string name="fluentui_chevron">செவ்ரான்</string>
+  <string name="fluentui_large">பெரியது</string>
+  <string name="fluentui_medium">நடுத்தரமானது</string>
+  <string name="fluentui_small">சிறியது</string>
+  <string name="fluentui_subtitle">துணைத்தலைப்பு</string>
+</resources>

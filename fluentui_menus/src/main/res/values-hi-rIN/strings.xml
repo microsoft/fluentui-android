@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">टॉगल करें</string>
+  <string name="popup_menu_accessibility_item_select">चुनें</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s चयनित</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s जाँचा गया</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s अनचेक किया गया</string>
+  <string name="popup_menu_accessibility_item_radio_button">रेडियो बटन</string>
+  <string name="popup_menu_accessibility_item_check_box">चेकबॉक्स</string>
+  <string name="popup_menu_accessibility_item_state_checked">जाँचा गया</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">नहीं जाँचा गया</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">არჩეულია</string>
+  <string name="fluentui_not_selected">არ არის მონიშნული</string>
+  <string name="fluentui_disabled">გამორთულია</string>
+  <string name="fluentui_enabled">ჩართულია</string>
+  <string name="fluentui_close_sheet">Close Sheet</string>
+  <string name="fluentui_close">Close</string>
+  <string name="fluentui_search">ძიება</string>
+  <string name="fluentui_microphone">მიკროფონი</string>
+  <string name="fluentui_clear_text">ტექსტის გასუფთავება</string>
+  <string name="fluentui_back">უკან</string>
+  <string name="fluentui_activated">გააქტიურებულია</string>
+  <string name="fluentui_deactivated">უმოქმედო</string>
+  <string name="fluentui_neutral">ნეიტრალური</string>
+  <string name="fluentui_brand">ბრენდი</string>
+  <string name="fluentui_chevron">შევრონი</string>
+  <string name="fluentui_large">დიდი</string>
+  <string name="fluentui_medium">საშუალო</string>
+  <string name="fluentui_small">პატარა</string>
+  <string name="fluentui_subtitle">სუბტიტრი</string>
+</resources>

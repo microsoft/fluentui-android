@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">टॉगल</string>
+  <string name="popup_menu_accessibility_item_select">निवडा</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s निवडलेले</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s तपासले</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s नाही</string>
+  <string name="popup_menu_accessibility_item_radio_button">रेडिओ बटण</string>
+  <string name="popup_menu_accessibility_item_check_box">चेकबॉक्स</string>
+  <string name="popup_menu_accessibility_item_state_checked">खूण केली</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">खूण रद्द केली</string>
+</resources>

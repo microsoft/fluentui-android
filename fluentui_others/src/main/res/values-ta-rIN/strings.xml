@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">முடிந்தது</string>
+  <string name="action_bar_default_left_action">தவிர்</string>
+  <string name="action_bar_default_right_action">அடுத்தது</string>
+  <string name="action_bar_default_final_action">தொடங்கும்</string>
+  <string name="action_bar_right_icon_description">அடுத்தது</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">பல பக்க பார்வை. %2$d %1$d ஸ்லைடர் பக்கம்</string>
+  <string name="fluentui_bottom_sheet_header">கீழே தாள் தலைப்பு</string>
+</resources>

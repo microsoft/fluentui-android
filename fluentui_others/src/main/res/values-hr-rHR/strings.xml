@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Gotovo</string>
+  <string name="action_bar_default_left_action">Preskoči</string>
+  <string name="action_bar_default_right_action">Sljedeće</string>
+  <string name="action_bar_default_final_action">Pokreni</string>
+  <string name="action_bar_right_icon_description">Sljedeće</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Prikaz s više stranica. Stranica klizača %1$d %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Zaglavlje donje tablice</string>
+</resources>

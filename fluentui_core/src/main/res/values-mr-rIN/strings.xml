@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">निवडले</string>
+  <string name="fluentui_not_selected">निवडलेले नाही</string>
+  <string name="fluentui_disabled">अक्षम केले</string>
+  <string name="fluentui_enabled">सक्षम केले</string>
+  <string name="fluentui_close_sheet">पत्रक बंद करा</string>
+  <string name="fluentui_close">बंद करा</string>
+  <string name="fluentui_search">शोध</string>
+  <string name="fluentui_microphone">मायक्रोफोन</string>
+  <string name="fluentui_clear_text">मजकूर साफ करा</string>
+  <string name="fluentui_back">मागे</string>
+  <string name="fluentui_activated">सक्रिय केले</string>
+  <string name="fluentui_deactivated">निष्क्रिय केले</string>
+  <string name="fluentui_neutral">तटस्थ</string>
+  <string name="fluentui_brand">ब्रांड</string>
+  <string name="fluentui_chevron">शेव्हरॉन</string>
+  <string name="fluentui_large">मोठा</string>
+  <string name="fluentui_medium">मध्यम</string>
+  <string name="fluentui_small">लहान</string>
+  <string name="fluentui_subtitle">उपशिर्षक</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Udført</string>
+  <string name="action_bar_default_left_action">Spring over</string>
+  <string name="action_bar_default_right_action">Næste</string>
+  <string name="action_bar_default_final_action">Start</string>
+  <string name="action_bar_right_icon_description">Næste</string>
+  <string name="action_bar_accessibility_page_announcement">Skyderside %1$d af %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Visning med flere sider. Skyderside %1$d af %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Overskrift i nederste ark</string>
+</resources>

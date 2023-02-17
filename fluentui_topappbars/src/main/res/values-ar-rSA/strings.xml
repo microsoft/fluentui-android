@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">مسح البحث</string>
+  <string name="searchbar_back">رجوع</string>
+  <string name="searchbar_query_hint_default">بحث</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">تم مسح تحرير الحقل</string>
+</resources>

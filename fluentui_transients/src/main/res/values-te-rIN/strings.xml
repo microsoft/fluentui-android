@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="tooltip_accessibility_dismiss_action">తొలగించు</string>
+  <string name="tooltip_accessibility_dismiss_announcement">Tooltip తిరస్కరించబడింది</string>
+</resources>

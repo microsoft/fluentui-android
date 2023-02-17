@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="done">Concluído</string>
+  <string name="action_bar_default_left_action">Ignorar</string>
+  <string name="action_bar_default_right_action">Seguinte</string>
+  <string name="action_bar_default_final_action">Iniciar</string>
+  <string name="action_bar_right_icon_description">Seguinte</string>
+  <string name="action_bar_accessibility_page_announcement">%1$d de página de controlo de deslize de %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Vista de várias páginas. %1$d de página de controlo de deslize de %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Cabeçalho da Folha Inferior</string>
 </resources>

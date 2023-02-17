@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">டிராக் கைப்பிடி</string>
+  <string name="expand">விரிவாக்கு</string>
+  <string name="collapse">சுருக்கு</string>
+</resources>

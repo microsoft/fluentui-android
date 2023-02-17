@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="progress_circular_content_description_indeterminate">Neodređeno kružno</string>
+  <string name="progress_linear_content_description_indeterminate" ignore="MissingTranslation">Neodređeni linearni</string>
+  <string name="progress_linear_content_description_determinate" ignore="MissingTranslation">Određivanje linearnog</string>
+</resources>

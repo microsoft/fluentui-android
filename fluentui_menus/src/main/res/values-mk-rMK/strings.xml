@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">преклопник</string>
+  <string name="popup_menu_accessibility_item_select">изберете</string>
+  <string name="popup_menu_accessibility_item_click_selected">Избрана: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s проверено.</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s непроверен.</string>
+  <string name="popup_menu_accessibility_item_radio_button">радио-копче</string>
+  <string name="popup_menu_accessibility_item_check_box">поле за избор</string>
+  <string name="popup_menu_accessibility_item_state_checked">избрано</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">неизбрано</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Seçili</string>
+  <string name="fluentui_not_selected">Seçili Değil</string>
+  <string name="fluentui_disabled">Devre dışı</string>
+  <string name="fluentui_enabled">Etkin</string>
+  <string name="fluentui_close_sheet">Sayfayı Kapat</string>
+  <string name="fluentui_close">Kapat</string>
+  <string name="fluentui_search">Ara</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Metni Temizle</string>
+  <string name="fluentui_back">Geri</string>
+  <string name="fluentui_activated">Etkin</string>
+  <string name="fluentui_deactivated">Devre Dışı Bırakıldı</string>
+  <string name="fluentui_neutral">Nötr</string>
+  <string name="fluentui_brand">Marka</string>
+  <string name="fluentui_chevron">Köşeli Çift Ayraç</string>
+  <string name="fluentui_large">Büyük</string>
+  <string name="fluentui_medium">Orta</string>
+  <string name="fluentui_small">Küçük</string>
+  <string name="fluentui_subtitle">Alt Başlık</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="progress_circular_content_description_indeterminate">வரையறுக்கப்படாத சுற்றறிக்கை</string>
+  <string name="progress_linear_content_description_indeterminate" ignore="MissingTranslation">வரையறுக்கப்படாத நேரியல்</string>
+  <string name="progress_linear_content_description_determinate" ignore="MissingTranslation">நேரியல் தீர்மானிக்கும்</string>
+</resources>

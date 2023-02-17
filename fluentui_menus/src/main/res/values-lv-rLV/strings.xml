@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">pārslēgs</string>
+  <string name="popup_menu_accessibility_item_select">atlasīt</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s atlasīts</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s atzīmēta</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s neatzīmēts</string>
+  <string name="popup_menu_accessibility_item_radio_button">radiopoga</string>
+  <string name="popup_menu_accessibility_item_check_box">izvēles rūtiņa</string>
+  <string name="popup_menu_accessibility_item_state_checked">atzīmēta</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">nav atzīmēta</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">拖动手柄</string>
+  <string name="expand">展开</string>
+  <string name="collapse">折叠</string>
+</resources>

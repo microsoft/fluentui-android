@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Napili</string>
+  <string name="fluentui_not_selected">Hindi Napili</string>
+  <string name="fluentui_disabled">Hindi Pinagana</string>
+  <string name="fluentui_enabled">Pinagana</string>
+  <string name="fluentui_close_sheet">Isara ang Sheet</string>
+  <string name="fluentui_close">Isara</string>
+  <string name="fluentui_search">Maghanap</string>
+  <string name="fluentui_microphone">Mikropono</string>
+  <string name="fluentui_clear_text">I-clear ang Teksto</string>
+  <string name="fluentui_back">Bumalik</string>
+  <string name="fluentui_activated">Ginawang aktibo</string>
+  <string name="fluentui_deactivated">Napatay</string>
+  <string name="fluentui_neutral">Neutral</string>
+  <string name="fluentui_brand">Brand</string>
+  <string name="fluentui_chevron">Tsebron</string>
+  <string name="fluentui_large">Malaki</string>
+  <string name="fluentui_medium">Katamtaman</string>
+  <string name="fluentui_small">Maliit</string>
+  <string name="fluentui_subtitle">Subtitle</string>
+</resources>

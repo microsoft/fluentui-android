@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Effacer la recherche</string>
+  <string name="searchbar_back">Précédent</string>
+  <string name="searchbar_query_hint_default">Rechercher</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">champ d’édition effacé</string>
+</resources>

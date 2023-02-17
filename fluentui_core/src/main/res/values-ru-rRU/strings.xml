@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Выбрано</string>
+  <string name="fluentui_not_selected">Не выбрано</string>
+  <string name="fluentui_disabled">Отключено</string>
+  <string name="fluentui_enabled">Включено</string>
+  <string name="fluentui_close_sheet">Закрыть лист</string>
+  <string name="fluentui_close">Закрыть</string>
+  <string name="fluentui_search">Поиск</string>
+  <string name="fluentui_microphone">Микрофон</string>
+  <string name="fluentui_clear_text">Удалить текст</string>
+  <string name="fluentui_back">Назад</string>
+  <string name="fluentui_activated">Активно</string>
+  <string name="fluentui_deactivated">Неактивно</string>
+  <string name="fluentui_neutral">Нейтрально</string>
+  <string name="fluentui_brand">Торговая марка</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Большой</string>
+  <string name="fluentui_medium">Средний</string>
+  <string name="fluentui_small">Небольшой</string>
+  <string name="fluentui_subtitle">Подзаголовок</string>
+</resources>

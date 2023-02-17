@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
   <string name="searchbar_clear_search">清除搜尋</string>
-  <string name="searchbar_back">返回</string>
+  <string name="searchbar_back">上一頁</string>
   <string name="searchbar_query_hint_default">搜尋</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">已清除編輯欄位</string>
 </resources>

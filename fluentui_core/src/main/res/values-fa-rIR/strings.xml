@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">انتخاب‌شده</string>
+  <string name="fluentui_not_selected">انتخاب‌نشده</string>
+  <string name="fluentui_disabled">غیرفعال‌شده</string>
+  <string name="fluentui_enabled">فعال</string>
+  <string name="fluentui_close_sheet">بستن صفحه</string>
+  <string name="fluentui_close">بستن</string>
+  <string name="fluentui_search">جستجو</string>
+  <string name="fluentui_microphone">میکروفون</string>
+  <string name="fluentui_clear_text">پاک کردن متن</string>
+  <string name="fluentui_back">بازگشت</string>
+  <string name="fluentui_activated">فعال‌شده</string>
+  <string name="fluentui_deactivated">از کار انداختن</string>
+  <string name="fluentui_neutral">خنثی</string>
+  <string name="fluentui_brand">برند</string>
+  <string name="fluentui_chevron">درجه نظامی</string>
+  <string name="fluentui_large">بزرگ</string>
+  <string name="fluentui_medium">متوسط</string>
+  <string name="fluentui_small">کوچک</string>
+  <string name="fluentui_subtitle">زیرنویس</string>
+</resources>

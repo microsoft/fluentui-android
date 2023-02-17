@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Træk i håndtag</string>
+  <string name="expand">udvid</string>
+  <string name="collapse">skjul</string>
+</resources>

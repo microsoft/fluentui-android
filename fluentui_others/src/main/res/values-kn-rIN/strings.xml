@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">ಮುಗಿದಿದೆ</string>
+  <string name="action_bar_default_left_action">ಬಿಟ್ಟುಬಿಡಿ</string>
+  <string name="action_bar_default_right_action">ಮುಂದೆ</string>
+  <string name="action_bar_default_final_action">ಪ್ರಾರಂಭಿಸಿ</string>
+  <string name="action_bar_right_icon_description">ಮುಂದೆ</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">ಬಹು-ಪುಟ ವೀಕ್ಷಣೆ. %2$d %1$d ಸ್ಲೈಡರ್ ಪುಟ</string>
+  <string name="fluentui_bottom_sheet_header">ಬೊಟ್ಟು ಹಾಳೆ ಶೀರ್ಷಿಕೆ</string>
+</resources>

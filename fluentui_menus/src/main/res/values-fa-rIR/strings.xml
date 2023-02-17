@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">کلید</string>
+  <string name="popup_menu_accessibility_item_select">انتخاب</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s انتخاب شده</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s شده</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s انتخاب نشده</string>
+  <string name="popup_menu_accessibility_item_radio_button">دکمه رادیو</string>
+  <string name="popup_menu_accessibility_item_check_box">کادر انتخاب</string>
+  <string name="popup_menu_accessibility_item_state_checked">علامت‌گذاری‌شده</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">علامت‌گذاری‌نشده</string>
+</resources>

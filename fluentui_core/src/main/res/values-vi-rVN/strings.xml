@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Đã chọn</string>
+  <string name="fluentui_not_selected">Không được chọn</string>
+  <string name="fluentui_disabled">Đã tắt</string>
+  <string name="fluentui_enabled">Được bật</string>
+  <string name="fluentui_close_sheet">Đóng Trang tính</string>
+  <string name="fluentui_close">Đóng</string>
+  <string name="fluentui_search">Tìm kiếm</string>
+  <string name="fluentui_microphone">Micrô</string>
+  <string name="fluentui_clear_text">Xóa văn bản</string>
+  <string name="fluentui_back">Trở lại</string>
+  <string name="fluentui_activated">Đã kích hoạt</string>
+  <string name="fluentui_deactivated">Đã khử hoạt</string>
+  <string name="fluentui_neutral">Trung lập</string>
+  <string name="fluentui_brand">SharePoint</string>
+  <string name="fluentui_chevron">Hình V</string>
+  <string name="fluentui_large">Lớn</string>
+  <string name="fluentui_medium">Trung bình</string>
+  <string name="fluentui_small">Nhỏ</string>
+  <string name="fluentui_subtitle">Tiêu đề</string>
+</resources>

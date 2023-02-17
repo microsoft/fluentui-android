@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="done">Tapos na</string>
+  <string name="action_bar_default_left_action">Laktawan</string>
+  <string name="action_bar_default_right_action">Susunod</string>
+  <string name="action_bar_default_final_action">Simulan</string>
+  <string name="action_bar_right_icon_description">Susunod</string>
+  <string name="action_bar_accessibility_page_announcement">Pahina ng slider %1$d ng %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">View ng maraming pahina. Pahina ng slider %1$d ng %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Heading sa IbabangSheet</string>
 </resources>

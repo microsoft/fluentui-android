@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Drag სახელური</string>
+  <string name="expand">გაშლა</string>
+  <string name="collapse">აკეცვა</string>
+</resources>

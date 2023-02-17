@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">បានជ្រើសរើស</string>
+  <string name="fluentui_not_selected">មិនបានជ្រើសរើស</string>
+  <string name="fluentui_disabled">បានបិទ</string>
+  <string name="fluentui_enabled">បានបើក</string>
+  <string name="fluentui_close_sheet">បិទសន្លឹកកិច្ចការ</string>
+  <string name="fluentui_close">បិទ</string>
+  <string name="fluentui_search">ស្វែងរក</string>
+  <string name="fluentui_microphone">មីក្រូហ្វូន</string>
+  <string name="fluentui_clear_text">លុបអត្ថបទ</string>
+  <string name="fluentui_back">ថយក្រោយ</string>
+  <string name="fluentui_activated">បាន ធ្វើ ឲ្យ សកម្ម</string>
+  <string name="fluentui_deactivated">ធ្វើឲ្យគ្មានសកម្មភាពពេញលេញ</string>
+  <string name="fluentui_neutral">ធម្មតា</string>
+  <string name="fluentui_brand">ម៉ាកយីហោ</string>
+  <string name="fluentui_chevron">សញ្ញាអញ្ញប្រកាស</string>
+  <string name="fluentui_large">ធំ</string>
+  <string name="fluentui_medium">មធ្យម</string>
+  <string name="fluentui_small">តូច</string>
+  <string name="fluentui_subtitle">Subtitle</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Tanlangan</string>
+  <string name="fluentui_not_selected">tanlanmagan</string>
+  <string name="fluentui_disabled">Faolsizlantirilgan</string>
+  <string name="fluentui_enabled">Yoqilgan</string>
+  <string name="fluentui_close_sheet">Varaqni yopish</string>
+  <string name="fluentui_close">Yopish</string>
+  <string name="fluentui_search">Qidirish</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Matnni tozalash</string>
+  <string name="fluentui_back">Orqaga</string>
+  <string name="fluentui_activated">Aktivlashtirilgan</string>
+  <string name="fluentui_deactivated">Nofaol</string>
+  <string name="fluentui_neutral">Neytral</string>
+  <string name="fluentui_brand">Brend</string>
+  <string name="fluentui_chevron">Shevron</string>
+  <string name="fluentui_large">Yirik</string>
+  <string name="fluentui_medium">O‘rtacha</string>
+  <string name="fluentui_small">Kichik</string>
+  <string name="fluentui_subtitle">Taglavha</string>
+</resources>

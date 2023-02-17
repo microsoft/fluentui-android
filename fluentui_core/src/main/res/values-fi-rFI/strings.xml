@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Valittu</string>
+  <string name="fluentui_not_selected">Ei valittu</string>
+  <string name="fluentui_disabled">Poissa käytöstä</string>
+  <string name="fluentui_enabled">Käytössä</string>
+  <string name="fluentui_close_sheet">Sulje taulukko</string>
+  <string name="fluentui_close">Sulje</string>
+  <string name="fluentui_search">Haku</string>
+  <string name="fluentui_microphone">Mikrofoni</string>
+  <string name="fluentui_clear_text">Tyhjennä teksti</string>
+  <string name="fluentui_back">Takaisin</string>
+  <string name="fluentui_activated">Aktiivinen</string>
+  <string name="fluentui_deactivated">Ei aktiivinen</string>
+  <string name="fluentui_neutral">Neutraali</string>
+  <string name="fluentui_brand">Tuotemerkki</string>
+  <string name="fluentui_chevron">Lovettu nuolenkärki</string>
+  <string name="fluentui_large">Suuri</string>
+  <string name="fluentui_medium">Normaali</string>
+  <string name="fluentui_small">Pieni</string>
+  <string name="fluentui_subtitle">Alaotsikko</string>
+</resources>

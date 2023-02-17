@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Готово</string>
+  <string name="action_bar_default_left_action">Прескочи</string>
+  <string name="action_bar_default_right_action">Следеће</string>
+  <string name="action_bar_default_final_action">Почетак</string>
+  <string name="action_bar_right_icon_description">Следеће</string>
+  <string name="action_bar_accessibility_page_announcement">Слајдер страница %1$d %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Приказ на више страница. Слајдер страница %1$d %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Наслов доњег листа</string>
+</resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Dipilih</string>
+  <string name="fluentui_not_selected">Tidak Terpilih</string>
+  <string name="fluentui_disabled">Dinyahdayakan</string>
+  <string name="fluentui_enabled">Didayakan</string>
+  <string name="fluentui_close_sheet">Tutup Helaian</string>
+  <string name="fluentui_close">Tutup</string>
+  <string name="fluentui_search">Cari</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Kosongkan Teks</string>
+  <string name="fluentui_back">Kembali</string>
+  <string name="fluentui_activated">Diaktifkan</string>
+  <string name="fluentui_deactivated">Dinyahaktifkan</string>
+  <string name="fluentui_neutral">Neutral</string>
+  <string name="fluentui_brand">Jenama</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Besar</string>
+  <string name="fluentui_medium">Sederhana</string>
+  <string name="fluentui_small">Kecil</string>
+  <string name="fluentui_subtitle">Sari kata</string>
+</resources>

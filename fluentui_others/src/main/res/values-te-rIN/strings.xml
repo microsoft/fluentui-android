@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">పూర్తయింది</string>
+  <string name="action_bar_default_left_action">దాటవేయు</string>
+  <string name="action_bar_default_right_action">తదుపరి</string>
+  <string name="action_bar_default_final_action">ప్రారంభించు</string>
+  <string name="action_bar_right_icon_description">తదుపరి</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">బహుళ పేజీల వీక్షణ. %2$d యొక్క స్లైడర్ పేజీ %1$d</string>
+  <string name="fluentui_bottom_sheet_header">దిగువ షీట్ శీర్షిక</string>
+</resources>

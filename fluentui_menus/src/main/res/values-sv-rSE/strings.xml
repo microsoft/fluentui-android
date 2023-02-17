@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">växla</string>
+  <string name="popup_menu_accessibility_item_select">välj</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s markerade</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s markerat</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s avmarkerad</string>
+  <string name="popup_menu_accessibility_item_radio_button">radioknapp</string>
+  <string name="popup_menu_accessibility_item_check_box">kryssruta</string>
+  <string name="popup_menu_accessibility_item_state_checked">markerad</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ej markerad</string>
+</resources>

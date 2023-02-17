@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="done">完成</string>
+  <string name="action_bar_default_left_action">跳过</string>
+  <string name="action_bar_default_right_action">下一个</string>
+  <string name="action_bar_default_final_action">开始</string>
+  <string name="action_bar_right_icon_description">下一个</string>
+  <string name="action_bar_accessibility_page_announcement">%2$d的滑块页%1$d</string>
+  <string name="action_bar_accessibility_viewpager_description">多页视图。%2$d的滑块页%1$d</string>
+  <string name="fluentui_bottom_sheet_header">BottomSheet 标题</string>
 </resources>

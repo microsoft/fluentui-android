@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Seleccionado</string>
+  <string name="fluentui_not_selected">No seleccionado</string>
+  <string name="fluentui_disabled">Deshabilitado</string>
+  <string name="fluentui_enabled">Habilitado</string>
+  <string name="fluentui_close_sheet">Cerrar hoja</string>
+  <string name="fluentui_close">Cerrar</string>
+  <string name="fluentui_search">Búsqueda</string>
+  <string name="fluentui_microphone">Micrófono</string>
+  <string name="fluentui_clear_text">Borrar texto</string>
+  <string name="fluentui_back">Volver</string>
+  <string name="fluentui_activated">Activado</string>
+  <string name="fluentui_deactivated">Desactivada</string>
+  <string name="fluentui_neutral">Neutral</string>
+  <string name="fluentui_brand">Marca</string>
+  <string name="fluentui_chevron">Cheurón</string>
+  <string name="fluentui_large">Grande</string>
+  <string name="fluentui_medium">Mediana</string>
+  <string name="fluentui_small">Pequeño</string>
+  <string name="fluentui_subtitle">Subtítulo</string>
+</resources>

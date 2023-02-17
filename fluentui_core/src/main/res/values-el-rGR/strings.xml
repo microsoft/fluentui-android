@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Επιλεγμένο</string>
+  <string name="fluentui_not_selected">Δεν έχει επιλεγεί</string>
+  <string name="fluentui_disabled">Απενεργοποιημένο</string>
+  <string name="fluentui_enabled">Ενεργοποιημένη</string>
+  <string name="fluentui_close_sheet">Κλείσιμο φύλλου</string>
+  <string name="fluentui_close">Κλείσιμο</string>
+  <string name="fluentui_search">Αναζήτηση</string>
+  <string name="fluentui_microphone">Μικρόφωνο</string>
+  <string name="fluentui_clear_text">Απαλοιφή κειμένου</string>
+  <string name="fluentui_back">Πίσω</string>
+  <string name="fluentui_activated">Ενεργοποιήθηκε</string>
+  <string name="fluentui_deactivated">Απενεργοποιήθηκε</string>
+  <string name="fluentui_neutral">Ουδέτερα</string>
+  <string name="fluentui_brand">Εμπορική επωνυμία</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Μεγάλο</string>
+  <string name="fluentui_medium">Μεσαίο</string>
+  <string name="fluentui_small">Μικρό</string>
+  <string name="fluentui_subtitle">Υπότιτλος</string>
+</resources>

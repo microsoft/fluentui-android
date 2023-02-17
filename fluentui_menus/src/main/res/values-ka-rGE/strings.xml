@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ბერკეტი</string>
+  <string name="popup_menu_accessibility_item_select">არჩევა</string>
+  <string name="popup_menu_accessibility_item_click_selected">არჩეულია %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s შემოწმდა</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s შეუმოწმებელი</string>
+  <string name="popup_menu_accessibility_item_radio_button">რადიო ღილაკი</string>
+  <string name="popup_menu_accessibility_item_check_box">მოსანიშნი უჯრა</string>
+  <string name="popup_menu_accessibility_item_state_checked">მონიშნული</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">მონიშვნის გარეშე</string>
+</resources>

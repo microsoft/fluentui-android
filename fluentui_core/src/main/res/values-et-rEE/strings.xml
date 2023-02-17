@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Valitud</string>
+  <string name="fluentui_not_selected">Valimata</string>
+  <string name="fluentui_disabled">Keelatud</string>
+  <string name="fluentui_enabled">Lubatud</string>
+  <string name="fluentui_close_sheet">Sule leht</string>
+  <string name="fluentui_close">Sule</string>
+  <string name="fluentui_search">Otsi</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Kustuta tekst</string>
+  <string name="fluentui_back">Tagasi</string>
+  <string name="fluentui_activated">Aktiveeritud</string>
+  <string name="fluentui_deactivated">Inaktiveeritud</string>
+  <string name="fluentui_neutral">Neutraalne</string>
+  <string name="fluentui_brand">Kaubamärk</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Suur</string>
+  <string name="fluentui_medium">Keskmine</string>
+  <string name="fluentui_small">Väike</string>
+  <string name="fluentui_subtitle">Alampealkiri</string>
+</resources>

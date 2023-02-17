@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Sleep greep</string>
+  <string name="expand">uitvouwen</string>
+  <string name="collapse">samenvouwen</string>
+</resources>

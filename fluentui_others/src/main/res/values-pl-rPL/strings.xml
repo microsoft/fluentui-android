@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Gotowe</string>
+  <string name="action_bar_default_left_action">Pomiń</string>
+  <string name="action_bar_default_right_action">Następna</string>
+  <string name="action_bar_default_final_action">Start</string>
+  <string name="action_bar_right_icon_description">Następna</string>
+  <string name="action_bar_accessibility_page_announcement">%1$d strony suwaka %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Widok wielostronicowy. %1$d strony suwaka %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Nagłówek arkusza dolnego</string>
+</resources>

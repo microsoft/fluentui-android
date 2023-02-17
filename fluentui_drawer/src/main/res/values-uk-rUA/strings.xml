@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Маркер перетягування</string>
+  <string name="expand">розгорнути</string>
+  <string name="collapse">згорнути</string>
+</resources>

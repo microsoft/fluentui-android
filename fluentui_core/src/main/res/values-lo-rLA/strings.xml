@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">ເລືອກແລ້ວ</string>
+  <string name="fluentui_not_selected">ບໍ່ໄດ້ເລືອກ</string>
+  <string name="fluentui_disabled">ປິດການນຳໃຊ້ແລ້ວ</string>
+  <string name="fluentui_enabled">ເປີດນຳໃຊ້ແລ້ວ</string>
+  <string name="fluentui_close_sheet">ປິດຊີດ</string>
+  <string name="fluentui_close">ປິດ</string>
+  <string name="fluentui_search">ຊອກຫາ</string>
+  <string name="fluentui_microphone">ໄມໂຄຣໂຟນ</string>
+  <string name="fluentui_clear_text">ລຶບລ້າງຂໍ້ຄວາມ</string>
+  <string name="fluentui_back">ກັບຄືນ</string>
+  <string name="fluentui_activated">Activated</string>
+  <string name="fluentui_deactivated">De-Activated</string>
+  <string name="fluentui_neutral">ປານກາງ</string>
+  <string name="fluentui_brand">ຍີ່ຫໍ້</string>
+  <string name="fluentui_chevron">ເຄື່ອງ​ໝາຍ​ຮູບ​ຕົວ​ວີ</string>
+  <string name="fluentui_large">ໃຫຍ່</string>
+  <string name="fluentui_medium">ປານກາງ</string>
+  <string name="fluentui_small">ນ້ອຍ</string>
+  <string name="fluentui_subtitle">ຊື່ສຳຮອງ</string>
+</resources>

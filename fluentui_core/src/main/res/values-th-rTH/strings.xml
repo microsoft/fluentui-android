@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">เลือกแล้ว</string>
+  <string name="fluentui_not_selected">ไม่ได้เลือก</string>
+  <string name="fluentui_disabled">ปิดใช้งานอยู่</string>
+  <string name="fluentui_enabled">เปิดใช้งาน</string>
+  <string name="fluentui_close_sheet">ปิดแผ่นงาน</string>
+  <string name="fluentui_close">ปิด</string>
+  <string name="fluentui_search">ค้นหา</string>
+  <string name="fluentui_microphone">ไมโครโฟน</string>
+  <string name="fluentui_clear_text">ล้างข้อความ</string>
+  <string name="fluentui_back">ย้อนกลับ</string>
+  <string name="fluentui_activated">เปิดใช้งานแล้ว</string>
+  <string name="fluentui_deactivated">ปิดใช้งานแล้ว</string>
+  <string name="fluentui_neutral">เฉยๆ</string>
+  <string name="fluentui_brand">ตราสินค้า</string>
+  <string name="fluentui_chevron">เครื่องหมายบั้ง</string>
+  <string name="fluentui_large">ใหญ่</string>
+  <string name="fluentui_medium">กลาง</string>
+  <string name="fluentui_small">เล็ก</string>
+  <string name="fluentui_subtitle">คำบรรยาย</string>
+</resources>

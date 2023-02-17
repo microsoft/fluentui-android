@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">נבחר</string>
+  <string name="fluentui_not_selected">לא נבחר</string>
+  <string name="fluentui_disabled">לא זמין</string>
+  <string name="fluentui_enabled">זמין</string>
+  <string name="fluentui_close_sheet">סגור גיליון</string>
+  <string name="fluentui_close">סגור</string>
+  <string name="fluentui_search">חפש</string>
+  <string name="fluentui_microphone">מיקרופון</string>
+  <string name="fluentui_clear_text">נקה טקסט</string>
+  <string name="fluentui_back">הקודם</string>
+  <string name="fluentui_activated">מופעל</string>
+  <string name="fluentui_deactivated">לא פעיל</string>
+  <string name="fluentui_neutral">ניטרלי</string>
+  <string name="fluentui_brand">מותג</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">גדול</string>
+  <string name="fluentui_medium">בינוני</string>
+  <string name="fluentui_small">קטן</string>
+  <string name="fluentui_subtitle">כותרת משנה</string>
+</resources>

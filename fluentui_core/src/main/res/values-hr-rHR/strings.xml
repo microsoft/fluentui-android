@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Odabrano</string>
+  <string name="fluentui_not_selected">Nije odabrano</string>
+  <string name="fluentui_disabled">Onemogućeno</string>
+  <string name="fluentui_enabled">Omogućeno</string>
+  <string name="fluentui_close_sheet">Zatvori list</string>
+  <string name="fluentui_close">Zatvori</string>
+  <string name="fluentui_search">Pretraži</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Očisti tekst</string>
+  <string name="fluentui_back">Natrag</string>
+  <string name="fluentui_activated">Aktivirano</string>
+  <string name="fluentui_deactivated">Deaktivirano</string>
+  <string name="fluentui_neutral">Niti zadovoljan, niti nezadovoljan</string>
+  <string name="fluentui_brand">Robna marka</string>
+  <string name="fluentui_chevron">Ševron</string>
+  <string name="fluentui_large">Veliko</string>
+  <string name="fluentui_medium">Srednje</string>
+  <string name="fluentui_small">Mala</string>
+  <string name="fluentui_subtitle">Podnaslov</string>
+</resources>

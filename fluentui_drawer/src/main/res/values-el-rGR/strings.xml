@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Δείκτης χειρισμού μεταφοράς</string>
+  <string name="expand">ανάπτυξη</string>
+  <string name="collapse">σύμπτυξη</string>
+</resources>

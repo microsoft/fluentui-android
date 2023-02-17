@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
   <string name="searchbar_clear_search">Limpar pesquisa</string>
   <string name="searchbar_back">Anterior</string>
   <string name="searchbar_query_hint_default">Procurar</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">campo de edição limpo</string>
 </resources>

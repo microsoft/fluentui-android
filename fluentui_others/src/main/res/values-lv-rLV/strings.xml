@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Gatavs</string>
+  <string name="action_bar_default_left_action">Izlaist</string>
+  <string name="action_bar_default_right_action">Nākamais</string>
+  <string name="action_bar_default_final_action">Sākt</string>
+  <string name="action_bar_right_icon_description">Nākamais</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Vairāklapu skats. Slīdņa %1$d %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Apakšējās lapas virsraksts</string>
+</resources>

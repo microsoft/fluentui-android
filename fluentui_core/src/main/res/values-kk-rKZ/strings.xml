@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">Таңдалды</string>
+  <string name="fluentui_not_selected">Таңдалмады</string>
+  <string name="fluentui_disabled">Өшірулі</string>
+  <string name="fluentui_enabled">Қосулы</string>
+  <string name="fluentui_close_sheet">Парақты жабу</string>
+  <string name="fluentui_close">Жабу</string>
+  <string name="fluentui_search">Іздеу</string>
+  <string name="fluentui_microphone">Микрофон</string>
+  <string name="fluentui_clear_text">Мәтінді тазалау</string>
+  <string name="fluentui_back">Артқа</string>
+  <string name="fluentui_activated">Белсендірілген</string>
+  <string name="fluentui_deactivated">Ажыратылды</string>
+  <string name="fluentui_neutral">Бейтарап</string>
+  <string name="fluentui_brand">Бренд</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Үлкен</string>
+  <string name="fluentui_medium">Орташа</string>
+  <string name="fluentui_small">Шағын</string>
+  <string name="fluentui_subtitle">Тақырыпша</string>
+</resources>

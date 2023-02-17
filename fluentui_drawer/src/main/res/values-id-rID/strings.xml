@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Handel Seret</string>
+  <string name="expand">luaskan</string>
+  <string name="collapse">ciutkan</string>
+</resources>

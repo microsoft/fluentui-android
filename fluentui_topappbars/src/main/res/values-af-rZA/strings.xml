@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Vee soektog uit</string>
+  <string name="searchbar_back">Terug</string>
+  <string name="searchbar_query_hint_default">Soek</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">redigeer veld skoongemaak</string>
+</resources>

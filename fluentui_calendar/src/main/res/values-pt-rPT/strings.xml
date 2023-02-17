@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="date_time">%1$s, %2$s</string>
-  <string name="today">Hoje</string>
-  <string name="tomorrow">Amanhã</string>
-  <string name="yesterday">Ontem</string>
   <string name="monday_initial">S</string>
   <string name="tuesday_initial">T</string>
   <string name="wednesday_initial">Q</string>
@@ -15,6 +11,11 @@
   <string name="accessibility_goto_previous_week">Ir para a semana anterior</string>
   <string name="accessibility_today">hoje</string>
   <string name="accessibility_selected">Selecionado</string>
+  <string name="done">Concluído</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Hoje</string>
+  <string name="tomorrow">Amanhã</string>
+  <string name="yesterday">Ontem</string>
   <string name="date_time_picker_start_time">Hora de início</string>
   <string name="date_time_picker_end_time">Hora de fim</string>
   <string name="date_time_picker_start_date">Data de início</string>
@@ -57,5 +58,5 @@
   <string name="date_time_picker_accessibility_period_toggle_button">Ativar/Desativar o período AM/PM</string>
   <string name="date_time_picker_accessibility_period_toggle_click_action">ativar/desativar o período AM/PM</string>
   <string name="date_time_picker_accessibility_selected_date">%s selecionada</string>
-    <string name="done">Concluído</string>
+  <string name="calendar_adapter_accessibility_item_selected">selecionado</string>
 </resources>

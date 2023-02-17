@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="fluentui_selected">選択済み</string>
+  <string name="fluentui_not_selected">未選択</string>
+  <string name="fluentui_disabled">無効</string>
+  <string name="fluentui_enabled">有効</string>
+  <string name="fluentui_close_sheet">シートを閉じる</string>
+  <string name="fluentui_close">閉じる</string>
+  <string name="fluentui_search">検索</string>
+  <string name="fluentui_microphone">マイク</string>
+  <string name="fluentui_clear_text">テキストをクリア</string>
+  <string name="fluentui_back">戻る</string>
+  <string name="fluentui_activated">アクティブ</string>
+  <string name="fluentui_deactivated">非アクティブ</string>
+  <string name="fluentui_neutral">中立</string>
+  <string name="fluentui_brand">ブランド</string>
+  <string name="fluentui_chevron">山形の帯図形</string>
+  <string name="fluentui_large">大</string>
+  <string name="fluentui_medium">中</string>
+  <string name="fluentui_small">小</string>
+  <string name="fluentui_subtitle">字幕</string>
+</resources>

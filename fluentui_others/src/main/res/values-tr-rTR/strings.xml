@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">Bitti</string>
+  <string name="action_bar_default_left_action">Atla</string>
+  <string name="action_bar_default_right_action">İleri</string>
+  <string name="action_bar_default_final_action">Başlat</string>
+  <string name="action_bar_right_icon_description">İleri</string>
+  <string name="action_bar_accessibility_page_announcement">Kaydırıcı sayfa %1$d %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Çok sayfalı görünüm. Kaydırıcı sayfa %1$d %2$d</string>
+  <string name="fluentui_bottom_sheet_header">Alt Sayfa Başlığı</string>
+</resources>

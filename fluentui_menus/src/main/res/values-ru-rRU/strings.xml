@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">выключатель</string>
+  <string name="popup_menu_accessibility_item_select">выбрать</string>
+  <string name="popup_menu_accessibility_item_click_selected">Выбрано: %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s флажок</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s флажок снят</string>
+  <string name="popup_menu_accessibility_item_radio_button">переключатель</string>
+  <string name="popup_menu_accessibility_item_check_box">поле для галочки</string>
+  <string name="popup_menu_accessibility_item_state_checked">флажок установлен</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">флажок снят</string>
+</resources>

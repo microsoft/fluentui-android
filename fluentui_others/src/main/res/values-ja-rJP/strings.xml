@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">完了</string>
+  <string name="action_bar_default_left_action">スキップ</string>
+  <string name="action_bar_default_right_action">次へ</string>
+  <string name="action_bar_default_final_action">開始</string>
+  <string name="action_bar_right_icon_description">次へ</string>
+  <string name="action_bar_accessibility_page_announcement">%2$dのスライダー ページ %1$d</string>
+  <string name="action_bar_accessibility_viewpager_description">複数ページビュー。%2$dのスライダー ページ %1$d</string>
+  <string name="fluentui_bottom_sheet_header">下のシートの見出し</string>
+</resources>

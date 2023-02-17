@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">ટૉગલ</string>
+  <string name="popup_menu_accessibility_item_select">પસંદ કરો</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s ને પસંદ કરી</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s ચેક કરેલ</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s બેરોકટોક</string>
+  <string name="popup_menu_accessibility_item_radio_button">રેડિયો બટન</string>
+  <string name="popup_menu_accessibility_item_check_box">ચેકબૉક્સ</string>
+  <string name="popup_menu_accessibility_item_state_checked">ચેક કરેલ છે</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ચેક કરેલ નથી</string>
+</resources>

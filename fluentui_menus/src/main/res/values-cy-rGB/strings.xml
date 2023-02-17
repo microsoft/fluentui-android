@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="popup_menu_accessibility_item_toggle">togl</string>
+  <string name="popup_menu_accessibility_item_select">dewiswch</string>
+  <string name="popup_menu_accessibility_item_click_selected"> Wedi dewis %s</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s gwirio</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s heb ei dicio</string>
+  <string name="popup_menu_accessibility_item_radio_button">botwm radio</string>
+  <string name="popup_menu_accessibility_item_check_box">blwch ticio</string>
+  <string name="popup_menu_accessibility_item_state_checked">wedi gwirio</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">heb ei wirio</string>
+</resources>

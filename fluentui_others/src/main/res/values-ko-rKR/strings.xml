@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="done">완료</string>
+  <string name="action_bar_default_left_action">건너뛰기</string>
+  <string name="action_bar_default_right_action">다음</string>
+  <string name="action_bar_default_final_action">시작</string>
+  <string name="action_bar_right_icon_description">다음</string>
+  <string name="action_bar_accessibility_page_announcement">%2$d 슬라이더 페이지 %1$d</string>
+  <string name="action_bar_accessibility_viewpager_description">다중 페이지 보기입니다. %2$d 슬라이더 페이지 %1$d</string>
+  <string name="fluentui_bottom_sheet_header">맨 아래시트 제목</string>
+</resources>
