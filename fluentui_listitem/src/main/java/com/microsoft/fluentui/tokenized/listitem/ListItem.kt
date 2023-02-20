@@ -58,6 +58,28 @@ internal fun getListItemInfo(): ListItemInfo {
 }
 
 object ListItem {
+    private fun clearSemantics(properties: (SemanticsPropertyReceiver.() -> Unit)?): Modifier {
+        return if (properties != null) {
+            Modifier.clearAndSetSemantics(properties)
+        } else {
+            Modifier
+        }
+    }
+
+    private fun clearSemanticsAndMergeDescendants(
+        mergeDescendants: Boolean,
+        properties: (SemanticsPropertyReceiver.() -> Unit)?
+    ): Modifier {
+        return if (mergeDescendants) {
+            if (properties != null) {
+                Modifier.clearAndSetSemantics(properties)
+            } else {
+                Modifier.semantics(true) {}
+            }
+        } else {
+            Modifier
+        }
+    }
 
     private fun Modifier.clickAndSemanticsModifier(
         interactionSource: MutableInteractionSource,
@@ -66,12 +88,12 @@ object ListItem {
         rippleColor: Color
     ): Modifier = composed {
         Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(color = rippleColor),
-                onClickLabel = null,
-                enabled = enabled,
-                onClick = onClick
-            )
+            interactionSource = interactionSource,
+            indication = rememberRipple(color = rippleColor),
+            onClickLabel = null,
+            enabled = enabled,
+            onClick = onClick
+        )
     }
 
     private fun Modifier.borderModifier(
@@ -165,24 +187,26 @@ object ListItem {
             val widthInDp: TextUnit = with(LocalDensity.current) {
                 measuredWidth.toSp()
             }
-            val inlineContent = mapOf(Pair("key", InlineTextContent(
-                Placeholder(
-                    width = widthInDp,
-                    height = 16.sp,
-                    placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
-                )
-            ) {
-                Surface(
-                    onClick = onClick, color = backgroundColor
-                ) {
-                    Text(
-                        text = actionText,
-                        fontSize = actionTextTypography.fontSize.size,
-                        fontWeight = actionTextTypography.weight,
-                        color = actionTextColor
+            val inlineContent = mapOf(
+                Pair("key", InlineTextContent(
+                    Placeholder(
+                        width = widthInDp,
+                        height = 16.sp,
+                        placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
                     )
-                }
-            }))
+                ) {
+                    Surface(
+                        onClick = onClick, color = backgroundColor
+                    ) {
+                        Text(
+                            text = actionText,
+                            fontSize = actionTextTypography.fontSize.size,
+                            fontWeight = actionTextTypography.weight,
+                            color = actionTextColor
+                        )
+                    }
+                })
+            )
             Text(
                 text = text, inlineContent = inlineContent
             )
@@ -212,6 +236,8 @@ object ListItem {
      * @param borderInset [BorderInset]Optional borderInset for list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      * @param leadingAccessoryView Optional composable leading accessory view.
+     * @param accessibilityProperties Accessibility properties for talkback
+     * @param mergeDescendants merge all the components in the node tree
      * @param trailingAccessoryView Optional composable trailing accessory view.
      *
      */
@@ -238,6 +264,8 @@ object ListItem {
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        accessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
+        mergeDescendants: Boolean = false,
         listItemTokens: ListItemTokens? = null
     ) {
         val listItemType = if (subText == null && secondarySubText == null) {
@@ -302,7 +330,9 @@ object ListItem {
                     .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .clickAndSemanticsModifier(
                         interactionSource, onClick = onClick ?: {}, enabled, rippleColor
-                    ), verticalAlignment = Alignment.CenterVertically
+                    )
+                    .then(clearSemanticsAndMergeDescendants(mergeDescendants, accessibilityProperties)),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 if (unreadDot) {
                     Canvas(
@@ -331,7 +361,8 @@ object ListItem {
                 Box(
                     Modifier
                         .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
-                        .weight(1f), contentAlignment = contentAlignment
+                        .weight(1f)
+                        .then(clearSemantics(accessibilityProperties)), contentAlignment = contentAlignment
                 ) {
                     Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                         Row(
@@ -566,12 +597,14 @@ object ListItem {
                         }
                         Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
                             if (accessoryTextTitle != null) {
-                                Text(text = accessoryTextTitle,
+                                Text(
+                                    text = accessoryTextTitle,
                                     modifier.clickable(role = Role.Button,
                                         onClick = accessoryTextOnClick ?: {}),
                                     color = actionTextColor,
                                     fontSize = actionTextTypography.fontSize.size,
-                                    fontWeight = actionTextTypography.weight)
+                                    fontWeight = actionTextTypography.weight
+                                )
                             }
                         }
                         if (trailingAccessoryView != null) {
@@ -842,16 +875,20 @@ object ListItem {
                     )
 
                     if (accessoryTextTitle != null) {
-                        Text(text = accessoryTextTitle,
+                        Text(
+                            text = accessoryTextTitle,
                             Modifier
                                 .padding(
                                     end = padding.calculateEndPadding(LocalLayoutDirection.current),
                                     bottom = padding.calculateBottomPadding()
                                 )
-                                .clickable(role = Role.Button, onClick = accessoryTextOnClick ?: {}),
+                                .clickable(
+                                    role = Role.Button,
+                                    onClick = accessoryTextOnClick ?: {}),
                             color = actionTextColor,
                             fontSize = actionTextTypography.fontSize.size,
-                            fontWeight = actionTextTypography.weight)
+                            fontWeight = actionTextTypography.weight
+                        )
                     }
                     if (trailingAccessoryView != null) {
                         Box(

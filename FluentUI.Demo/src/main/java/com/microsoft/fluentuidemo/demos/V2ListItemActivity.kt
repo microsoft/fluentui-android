@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
@@ -343,7 +344,9 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             },
             border = BorderType.Bottom,
             borderInset = XXLarge,
-            onClick = { checked = !checked }
+            onClick = { checked = !checked },
+            accessibilityProperties = { this.contentDescription = "List-item 1" },
+            mergeDescendants = false
         )
         ListItem.Item(
             text = primaryText,
