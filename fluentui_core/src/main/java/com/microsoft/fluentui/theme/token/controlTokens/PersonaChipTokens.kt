@@ -2,6 +2,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
@@ -176,7 +177,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fontSize(personaChipInfo: PersonaChipControlInfo): FontInfo {
+    open fun fontStyle(personaChipInfo: PersonaChipControlInfo): TextStyle {
         return when (personaChipInfo.size) {
             Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]

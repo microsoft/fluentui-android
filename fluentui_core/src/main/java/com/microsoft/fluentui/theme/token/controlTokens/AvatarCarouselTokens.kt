@@ -2,6 +2,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
@@ -66,7 +67,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getTextSize(avatarCarouselInfo: AvatarCarouselInfo): FontInfo {
+    open fun getTextStyle(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
             AvatarCarouselSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
@@ -74,7 +75,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getSubTextSize(avatarCarouselInfo: AvatarCarouselInfo): FontInfo {
+    open fun getSubTextStyle(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
             AvatarCarouselSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
@@ -84,8 +85,8 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun padding(avatarCarouselInfo: AvatarCarouselInfo): Dp {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Medium -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
-            AvatarCarouselSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
+            AvatarCarouselSize.Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            AvatarCarouselSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
         }
     }
 }

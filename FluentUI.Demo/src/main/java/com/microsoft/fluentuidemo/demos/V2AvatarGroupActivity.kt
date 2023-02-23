@@ -127,7 +127,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                             Row(horizontalArrangement = Arrangement.Center) {
                                 Text(
                                     "Stack Group Style",
-                                    fontSize = aliasTokens.typography[AliasTokens.TypographyTokens.Title2].fontSize.size
+                                    style = aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
                                 )
                             }
                         }
@@ -266,7 +266,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                             Row(horizontalArrangement = Arrangement.Center) {
                                 Text(
                                     "Pile Group Style",
-                                    fontSize = aliasTokens.typography[AliasTokens.TypographyTokens.Title2].fontSize.size
+                                    style = aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
                                 )
                             }
                         }

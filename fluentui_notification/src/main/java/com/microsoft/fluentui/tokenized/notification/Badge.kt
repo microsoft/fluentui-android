@@ -104,12 +104,9 @@ fun Badge(
                 Text(
                     text,
                     modifier = Modifier.padding(paddingValues),
-                    style = LocalTextStyle.current.merge(
+                    color = textColor,
+                    style = typography.merge(
                         TextStyle(
-                            color = textColor,
-                            lineHeight = typography.fontSize.lineHeight,
-                            fontSize = typography.fontSize.size,
-                            fontWeight = typography.weight,
                             platformStyle = PlatformTextStyle(
                                 includeFontPadding = false
                             )

@@ -250,10 +250,10 @@ fun SearchBar(
                                         searchHasFocus = true
                                 }
                             },
-                        textStyle = TextStyle(
-                            fontSize = getSearchBarTokens().typography(getSearchBarInfo()).fontSize.size,
-                            lineHeight = getSearchBarTokens().typography(getSearchBarInfo()).fontSize.size,
-                            color = getSearchBarTokens().textColor(getSearchBarInfo())
+                        textStyle = getSearchBarTokens().typography(getSearchBarInfo()).merge(
+                            TextStyle(
+                                color = getSearchBarTokens().textColor(getSearchBarInfo())
+                            )
                         ),
                         decorationBox = @Composable { innerTextField ->
                             Box(
@@ -263,15 +263,8 @@ fun SearchBar(
                                 if (queryText.isEmpty()) {
                                     Text(
                                         searchHint,
-                                        style = TextStyle(
-                                            fontSize = getSearchBarTokens().typography(
-                                                getSearchBarInfo()
-                                            ).fontSize.size,
-                                            lineHeight = getSearchBarTokens().typography(
-                                                getSearchBarInfo()
-                                            ).fontSize.size,
-                                            color = getSearchBarTokens().textColor(getSearchBarInfo()),
-                                        )
+                                        style = getSearchBarTokens().typography(getSearchBarInfo()),
+                                        color = getSearchBarTokens().textColor(getSearchBarInfo())
                                     )
                                 }
                                 innerTextField()
@@ -382,7 +375,8 @@ fun SearchBar(
                         Icon(
                             ListItemIcons.Chevron,
                             LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                            Modifier.rotate(90F)
+                            Modifier.rotate(90F),
+                            tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
                         )
                     }
                 }

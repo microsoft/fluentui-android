@@ -85,10 +85,10 @@ fun AvatarCarousel(
         val scope = rememberCoroutineScope()
         val lazyListState = rememberLazyListState()
         val avatarSize = getAvatarCarouselTokens().getAvatarSize(getAvatarCarouselInfo())
-        val textSize =
-            getAvatarCarouselTokens().getTextSize(getAvatarCarouselInfo())
-        val subTextSize =
-            getAvatarCarouselTokens().getSubTextSize(getAvatarCarouselInfo())
+        val textStyle =
+            getAvatarCarouselTokens().getTextStyle(getAvatarCarouselInfo())
+        val subTextStyle =
+            getAvatarCarouselTokens().getSubTextStyle(getAvatarCarouselInfo())
         val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
         val bottomPadding = if (size == AvatarCarouselSize.Medium) 8.dp else 0.dp
 
@@ -151,8 +151,7 @@ fun AvatarCarousel(
                         Text(
                             text = item.person.firstName,
                             color = if (item.enabled) textColor.rest else textColor.disabled,
-                            fontSize = textSize.fontSize.size,
-                            fontWeight = textSize.weight,
+                            style = textStyle,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -168,8 +167,7 @@ fun AvatarCarousel(
                             Text(
                                 text = item.person.lastName,
                                 color = if (item.enabled) subTextColor.rest else subTextColor.disabled,
-                                fontSize = subTextSize.fontSize.size,
-                                fontWeight = subTextSize.weight,
+                                style = subTextStyle,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )

@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -202,35 +203,42 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     }
 
     @Composable
-    open fun fontInfo(avatarInfo: AvatarInfo): FontInfo {
+    open fun fontTypography(avatarInfo: AvatarInfo): TextStyle {
         return when (avatarInfo.size) {
-            AvatarSize.Size16 -> FontInfo(
-                fontSize = FontSize(9.sp, 12.sp),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            AvatarSize.Size16 -> TextStyle(
+                fontSize = 9.sp,
+                lineHeight = 12.sp,
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
             )
-            AvatarSize.Size20 -> FontInfo(
-                fontSize = FontSize(9.sp, 12.sp),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+            AvatarSize.Size20 -> TextStyle(
+                fontSize = 9.sp,
+                lineHeight = 12.sp,
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
             )
-            AvatarSize.Size24 -> FontInfo(
+            AvatarSize.Size24 -> TextStyle(
                 fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size100),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size100),
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
             )
-            AvatarSize.Size32 -> FontInfo(
+            AvatarSize.Size32 -> TextStyle(
                 fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size200),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size200),
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
             )
-            AvatarSize.Size40 -> FontInfo(
+            AvatarSize.Size40 -> TextStyle(
                 fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size300),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size300),
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
             )
-            AvatarSize.Size56 -> FontInfo(
+            AvatarSize.Size56 -> TextStyle(
                 fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size500),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size500),
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
             )
-            AvatarSize.Size72 -> FontInfo(
+            AvatarSize.Size72 -> TextStyle(
                 fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size700),
-                weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size700),
+                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
             )
         }
     }
@@ -708,15 +716,15 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
 
     @Composable
     open fun cutoutBackgroundColor(avatarInfo: AvatarInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
-            themeMode = FluentTheme.themeMode
+        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            themeMode = themeMode
         )
     }
 
     @Composable
     open fun cutoutBorderColor(avatarInfo: AvatarInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
-            themeMode = FluentTheme.themeMode
+        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+            themeMode = themeMode
         )
     }
 
@@ -724,8 +732,8 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     open fun cutoutIconSize(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
             AvatarSize.Size16, AvatarSize.Size20, AvatarSize.Size24, AvatarSize.Size32, AvatarSize.Size72 -> 0.dp
-            AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
-            AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
+            AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
+            AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
         }
     }
 
