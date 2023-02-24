@@ -16,7 +16,7 @@ interface CommandItem {
     }
 
     interface OnItemLongClickListener {
-        fun onItemLongClick(item: CommandItem, view: View)
+        fun onItemLongClick(item: CommandItem, view: View): Boolean
     }
 
     /**
