@@ -150,7 +150,7 @@ class ContextualCommandBarActivity : DemoActivity() {
             })
 
             setItemLongClickListener(object : CommandItem.OnItemLongClickListener {
-                override fun onItemLongClick(item: CommandItem, view: View) {
+                override fun onItemLongClick(item: CommandItem, view: View): Boolean {
                     Toast.makeText(
                         this@ContextualCommandBarActivity,
                         getString(
@@ -159,6 +159,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                         ),
                         Toast.LENGTH_SHORT
                     ).show()
+                    return true
                 }
             })
 
