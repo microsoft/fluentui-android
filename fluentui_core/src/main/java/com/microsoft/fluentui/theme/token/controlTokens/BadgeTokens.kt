@@ -5,9 +5,13 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.ControlToken
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import kotlinx.parcelize.Parcelize
 
 enum class BadgeType {
@@ -31,7 +35,7 @@ open class BadgeTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun typography(badgeInfo: BadgeInfo): FontInfo {
+    open fun typography(badgeInfo: BadgeInfo): TextStyle {
         return when (badgeInfo.type) {
             BadgeType.Character -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption2]
             BadgeType.List -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1Strong]

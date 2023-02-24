@@ -56,6 +56,5 @@ open class DrawerTokens : ControlToken, Parcelable {
         GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black)
 
     @Composable
-    open fun scrimOpacity(drawerInfo: DrawerInfo): Float =
-        GlobalTokens.opacity(GlobalTokens.OpacityTokens.Opacity32)
+    open fun scrimOpacity(drawerInfo: DrawerInfo): Float = 0.32F
 }

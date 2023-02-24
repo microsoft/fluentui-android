@@ -531,7 +531,7 @@ private fun CommandItemComposable(
                 ), tint = foregroundColor
         )
     } else {
-        val fontInfo = getContextualCommandBarTokens().typography(
+        val fontTypography = getContextualCommandBarTokens().typography(
             getContextualCommandBarInfo()
         )
         Box(
@@ -546,9 +546,7 @@ private fun CommandItemComposable(
             Text(
                 item.label,
                 modifier = Modifier.clearAndSetSemantics { },
-                fontSize = fontInfo.fontSize.size,
-                lineHeight = fontInfo.fontSize.lineHeight,
-                fontWeight = fontInfo.weight,
+                style = fontTypography,
                 color = foregroundColor,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,

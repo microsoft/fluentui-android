@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -142,29 +143,29 @@ open class AppBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun titleTypography(info: AppBarInfo): FontInfo {
+    open fun titleTypography(info: AppBarInfo): TextStyle {
         return when (info.appBarSize) {
             AppBarSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
             AppBarSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
             AppBarSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
-            else -> FontInfo(fontSize = FontSize(0.sp, 0.sp))
+            else -> TextStyle(fontSize = 0.sp)
         }
     }
 
     @Composable
-    open fun subtitleTypography(info: AppBarInfo): FontInfo {
+    open fun subtitleTypography(info: AppBarInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
     }
 
     @Composable
     fun leftIconSize(info: AppBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
+        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
     }
 
     @Composable
     fun titleIconSize(info: AppBarInfo): Dp {
         return when (info.appBarSize) {
-            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
+            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
             else -> 0.dp
         }
     }
@@ -172,8 +173,8 @@ open class AppBarTokens : ControlToken, Parcelable {
     @Composable
     fun subtitleIconSize(info: AppBarInfo): Dp {
         return when (info.appBarSize) {
-            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
-            AppBarSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XXSmall)
+            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize120)
+            AppBarSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize120)
             else -> 0.dp
         }
     }

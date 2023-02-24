@@ -11,7 +11,7 @@ import com.microsoft.fluentui.theme.token.ControlToken
 import com.microsoft.fluentui.theme.token.GlobalTokens
 import kotlinx.parcelize.Parcelize
 
-class BottomSheetInfo() : ControlInfo
+class BottomSheetInfo : ControlInfo
 
 @Parcelize
 open class BottomSheetTokens : ControlToken, Parcelable {
@@ -41,6 +41,5 @@ open class BottomSheetTokens : ControlToken, Parcelable {
         GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black)
 
     @Composable
-    open fun scrimOpacity(bottomSheetInfo: BottomSheetInfo): Float =
-        GlobalTokens.opacity(GlobalTokens.OpacityTokens.Opacity32)
+    open fun scrimOpacity(bottomSheetInfo: BottomSheetInfo): Float = 0.32F
 }

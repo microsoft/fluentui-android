@@ -9,6 +9,7 @@ import android.os.Parcelable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.parcelize.Parcelize
@@ -140,32 +141,47 @@ object GlobalTokens : Parcelable {
         Size900
     }
 
-    fun fontSize(token: FontSizeTokens): FontSize {
+    fun fontSize(token: FontSizeTokens): TextUnit {
         return when (token) {
-            FontSizeTokens.Size100 ->
-                FontSize(12.0.sp, 16.sp)
-            FontSizeTokens.Size200 ->
-                FontSize(13.0.sp, 16.sp)
-            FontSizeTokens.Size300 ->
-                FontSize(14.0.sp, 18.sp)
-            FontSizeTokens.Size400 ->
-                FontSize(16.0.sp, 24.sp)
-            FontSizeTokens.Size500 ->
-                FontSize(18.0.sp, 24.sp)
-            FontSizeTokens.Size600 ->
-                FontSize(20.0.sp, 24.sp)
-            FontSizeTokens.Size700 ->
-                FontSize(24.0.sp, 32.sp)
-            FontSizeTokens.Size800 ->
-                FontSize(34.0.sp, 48.sp)
-            FontSizeTokens.Size900 ->
-                FontSize(60.0.sp, 72.sp)
+            FontSizeTokens.Size100 -> 12.0.sp
+            FontSizeTokens.Size200 -> 13.0.sp
+            FontSizeTokens.Size300 -> 14.0.sp
+            FontSizeTokens.Size400 -> 16.0.sp
+            FontSizeTokens.Size500 -> 18.0.sp
+            FontSizeTokens.Size600 -> 20.0.sp
+            FontSizeTokens.Size700 -> 24.0.sp
+            FontSizeTokens.Size800 -> 34.0.sp
+            FontSizeTokens.Size900 -> 60.0.sp
+        }
+    }
+
+    enum class LineHeightTokens {
+        Size100,
+        Size200,
+        Size300,
+        Size400,
+        Size500,
+        Size600,
+        Size700,
+        Size800,
+        Size900
+    }
+
+    fun lineHeight(token: LineHeightTokens): TextUnit {
+        return when (token) {
+            LineHeightTokens.Size100 -> 16.0.sp
+            LineHeightTokens.Size200 -> 16.0.sp
+            LineHeightTokens.Size300 -> 18.0.sp
+            LineHeightTokens.Size400 -> 24.0.sp
+            LineHeightTokens.Size500 -> 24.0.sp
+            LineHeightTokens.Size600 -> 24.0.sp
+            LineHeightTokens.Size700 -> 32.0.sp
+            LineHeightTokens.Size800 -> 48.0.sp
+            LineHeightTokens.Size900 -> 72.0.sp
         }
     }
 
     enum class FontWeightTokens {
-        Light,
-        SemiLight,
         Regular,
         Medium,
         SemiBold,
@@ -174,8 +190,6 @@ object GlobalTokens : Parcelable {
 
     fun fontWeight(token: FontWeightTokens): FontWeight {
         return when (token) {
-            FontWeightTokens.Light -> FontWeight(0)
-            FontWeightTokens.SemiLight -> FontWeight(0)
             FontWeightTokens.Regular -> FontWeight(400)
             FontWeightTokens.Medium -> FontWeight(500)
             FontWeightTokens.SemiBold -> FontWeight(600)
@@ -184,69 +198,28 @@ object GlobalTokens : Parcelable {
     }
 
     enum class IconSizeTokens {
-        XXXSmall,
-        XXSmall,
-        XSmall,
-        Small,
-        Medium,
-        Large,
-        XLarge,
-        XXLarge,
-        XXXLarge
+        IconSize100,
+        IconSize120,
+        IconSize160,
+        IconSize200,
+        IconSize240,
+        IconSize280,
+        IconSize360,
+        IconSize400,
+        IconSize480
     }
 
     fun iconSize(token: IconSizeTokens): Dp {
         return when (token) {
-            IconSizeTokens.XXXSmall -> 10.dp
-            IconSizeTokens.XXSmall -> 12.dp
-            IconSizeTokens.XSmall -> 16.dp
-            IconSizeTokens.Small -> 20.dp
-            IconSizeTokens.Medium -> 24.dp
-            IconSizeTokens.Large -> 28.dp
-            IconSizeTokens.XLarge -> 36.dp
-            IconSizeTokens.XXLarge -> 40.dp
-            IconSizeTokens.XXXLarge -> 48.dp
-        }
-    }
-
-    enum class SpacingTokens {
-        None,
-        XXXSmall,
-        XXSmall,
-        XSmall,
-        Small,
-        Medium,
-        Large,
-        XLarge,
-        XXLarge,
-        XXXLarge,
-        XXXXLarge
-    }
-
-    fun spacing(token: SpacingTokens): Dp {
-        return when (token) {
-            SpacingTokens.None ->
-                0.dp
-            SpacingTokens.XXXSmall ->
-                2.dp
-            SpacingTokens.XXSmall ->
-                4.dp
-            SpacingTokens.XSmall ->
-                8.dp
-            SpacingTokens.Small ->
-                12.dp
-            SpacingTokens.Medium ->
-                16.dp
-            SpacingTokens.Large ->
-                20.dp
-            SpacingTokens.XLarge ->
-                24.dp
-            SpacingTokens.XXLarge ->
-                36.dp
-            SpacingTokens.XXXLarge ->
-                48.dp
-            SpacingTokens.XXXXLarge ->
-                72.dp
+            IconSizeTokens.IconSize100 -> 10.dp
+            IconSizeTokens.IconSize120 -> 12.dp
+            IconSizeTokens.IconSize160 -> 16.dp
+            IconSizeTokens.IconSize200 -> 20.dp
+            IconSizeTokens.IconSize240 -> 24.dp
+            IconSizeTokens.IconSize280 -> 28.dp
+            IconSizeTokens.IconSize360 -> 36.dp
+            IconSizeTokens.IconSize400 -> 40.dp
+            IconSizeTokens.IconSize480 -> 48.dp
         }
     }
 
@@ -313,30 +286,6 @@ object GlobalTokens : Parcelable {
             ShadowTokens.Shadow16 -> 16.dp
             ShadowTokens.Shadow28 -> 28.dp
             ShadowTokens.Shadow64 -> 40.dp
-        }
-    }
-
-    enum class OpacityTokens {
-        Opacity8,
-        Opacity16,
-        Opacity24,
-        Opacity32,
-        Opacity64,
-        Opacity72,
-        Opacity88,
-        Opacity96
-    }
-
-    fun opacity(token: OpacityTokens): Float {
-        return when (token) {
-            OpacityTokens.Opacity8 -> 0.8f
-            OpacityTokens.Opacity16 -> 0.16f
-            OpacityTokens.Opacity24 -> 0.24f
-            OpacityTokens.Opacity32 -> 0.32f
-            OpacityTokens.Opacity64 -> 0.64f
-            OpacityTokens.Opacity72 -> 0.72f
-            OpacityTokens.Opacity88 -> 0.88f
-            OpacityTokens.Opacity96 -> 0.96f
         }
     }
 

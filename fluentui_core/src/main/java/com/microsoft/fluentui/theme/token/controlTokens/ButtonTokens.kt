@@ -9,6 +9,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
@@ -223,15 +224,15 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
                 when (buttonInfo.size) {
-                    ButtonSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.XSmall)
-                    ButtonSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
-                    ButtonSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+                    ButtonSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
+                    ButtonSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
+                    ButtonSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
                 }
         }
     }
 
     @Composable
-    open fun fontInfo(buttonInfo: ButtonInfo): FontInfo {
+    open fun fontInfo(buttonInfo: ButtonInfo): TextStyle {
         return when (buttonInfo.size) {
             ButtonSize.Small -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
             ButtonSize.Medium -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
@@ -244,16 +245,16 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.size) {
             ButtonSize.Small ->
                 PaddingValues(
-                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall),
-                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall)
+                    horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size80),
+                    vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
                 )
             ButtonSize.Medium -> PaddingValues(
-                horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
-                vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+                horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
+                vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
             )
             ButtonSize.Large -> PaddingValues(
-                horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Large),
-                vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
+                horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size200),
+                vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
             )
         }
     }
@@ -261,9 +262,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun spacing(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXSmall)
-            ButtonSize.Medium -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
-            ButtonSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+            ButtonSize.Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
+            ButtonSize.Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            ButtonSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
         }
     }
 

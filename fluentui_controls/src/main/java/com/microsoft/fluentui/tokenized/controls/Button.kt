@@ -131,17 +131,16 @@ fun Button(
                     Text(
                         text = text,
                         modifier = Modifier.clearAndSetSemantics { },
-                        style = TextStyle(
-                            fontSize = getButtonToken().fontInfo(getButtonInfo()).fontSize.size,
-                            lineHeight = getButtonToken().fontInfo(getButtonInfo()).fontSize.lineHeight,
-                            fontWeight = getButtonToken().fontInfo(getButtonInfo()).weight,
-                            color = getButtonToken().textColor(buttonInfo = getButtonInfo())
-                                .getColorByState(
-                                    enabled = enabled,
-                                    selected = false,
-                                    interactionSource = interactionSource
-                                ),
-                            platformStyle = PlatformTextStyle(includeFontPadding = false)
+                        color = getButtonToken().textColor(buttonInfo = getButtonInfo())
+                            .getColorByState(
+                                enabled = enabled,
+                                selected = false,
+                                interactionSource = interactionSource
+                            ),
+                        style = getButtonToken().fontInfo(getButtonInfo()).merge(
+                            TextStyle(
+                                platformStyle = PlatformTextStyle(includeFontPadding = false)
+                            )
                         ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis

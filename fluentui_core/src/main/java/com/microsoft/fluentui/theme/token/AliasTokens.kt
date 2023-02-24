@@ -7,6 +7,8 @@ package com.microsoft.fluentui.theme.token
 import android.os.Parcelable
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.sp
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -773,68 +775,92 @@ open class AliasTokens : Parcelable {
         Caption2
     }
 
-    open val typography: TokenSet<TypographyTokens, FontInfo> by lazy {
+    open val typography: TokenSet<TypographyTokens, TextStyle> by lazy {
         TokenSet { token ->
             when (token) {
                 TypographyTokens.Display ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size900),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size900),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular),
+                        letterSpacing = -0.5.sp
                     )
                 TypographyTokens.LargeTitle ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size800),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size800),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular),
+                        letterSpacing = -0.25.sp
                     )
                 TypographyTokens.Title1 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size700),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Bold)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size700),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Bold),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Title2 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size600),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size600),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Title3 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size500),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size500),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Body1Strong ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size400),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.SemiBold)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size400),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.SemiBold),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Body1 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size400),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size400),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Body2Strong ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size300),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size300),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Body2 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size300),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size300),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Caption1Strong ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size200),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size200),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Caption1 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size200),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size200),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular),
+                        letterSpacing = 0.sp
                     )
                 TypographyTokens.Caption2 ->
-                    FontInfo(
+                    TextStyle(
                         fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size100),
-                        weight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                        lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size100),
+                        fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular),
+                        letterSpacing = 0.sp
                     )
             }
         }
