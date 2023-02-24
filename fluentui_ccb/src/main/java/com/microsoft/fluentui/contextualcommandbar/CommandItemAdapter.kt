@@ -159,9 +159,12 @@ internal class CommandItemAdapter(
                     )
                 }
             }
+
             setOnLongClickListener {
-                itemLongClickListener?.onItemLongClick(commandItem, viewHolder.itemView)!!
+                itemLongClickListener?.onItemLongClick(commandItem, viewHolder.itemView)
+                true
             }
+
             setOnClickListener {
                 itemClickListener?.onItemClick(commandItem, viewHolder.itemView)
             }
