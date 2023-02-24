@@ -34,8 +34,7 @@ import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
-import com.microsoft.fluentui.theme.token.FontInfo
-import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens.*
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
@@ -66,12 +65,12 @@ object ListItem {
         rippleColor: Color
     ): Modifier = composed {
         Modifier.clickable(
-                interactionSource = interactionSource,
-                indication = rememberRipple(color = rippleColor),
-                onClickLabel = null,
-                enabled = enabled,
-                onClick = onClick
-            )
+            interactionSource = interactionSource,
+            indication = rememberRipple(color = rippleColor),
+            onClickLabel = null,
+            enabled = enabled,
+            onClick = onClick
+        )
     }
 
     private fun Modifier.borderModifier(
@@ -136,15 +135,14 @@ object ListItem {
         onClick: () -> Unit,
         descriptionTextColor: Color,
         actionTextColor: Color,
-        descriptionTextTypography: FontInfo,
-        actionTextTypography: FontInfo,
+        descriptionTextTypography: TextStyle,
+        actionTextTypography: TextStyle,
         backgroundColor: Color
     ) {
         PlaceholderForActionText(actionTextComposable = {
             Text(
                 text = actionText,
-                fontSize = actionTextTypography.fontSize.size,
-                fontWeight = actionTextTypography.weight
+                style = actionTextTypography,
             )
         }) { measuredWidth ->
             val text = buildAnnotatedString {
@@ -152,8 +150,8 @@ object ListItem {
                     withStyle(
                         style = SpanStyle(
                             color = descriptionTextColor,
-                            fontSize = descriptionTextTypography.fontSize.size,
-                            fontWeight = descriptionTextTypography.weight
+                            fontSize = descriptionTextTypography.fontSize,
+                            fontWeight = descriptionTextTypography.fontWeight
                         )
                     ) {
                         append("$description ")
@@ -165,24 +163,25 @@ object ListItem {
             val widthInDp: TextUnit = with(LocalDensity.current) {
                 measuredWidth.toSp()
             }
-            val inlineContent = mapOf(Pair("key", InlineTextContent(
-                Placeholder(
-                    width = widthInDp,
-                    height = 16.sp,
-                    placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
-                )
-            ) {
-                Surface(
-                    onClick = onClick, color = backgroundColor
-                ) {
-                    Text(
-                        text = actionText,
-                        fontSize = actionTextTypography.fontSize.size,
-                        fontWeight = actionTextTypography.weight,
-                        color = actionTextColor
+            val inlineContent = mapOf(
+                Pair("key", InlineTextContent(
+                    Placeholder(
+                        width = widthInDp,
+                        height = 16.sp,
+                        placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
                     )
-                }
-            }))
+                ) {
+                    Surface(
+                        onClick = onClick, color = backgroundColor
+                    ) {
+                        Text(
+                            text = actionText,
+                            style = actionTextTypography,
+                            color = actionTextColor
+                        )
+                    }
+                })
+            )
             Text(
                 text = text, inlineContent = inlineContent
             )
@@ -253,8 +252,8 @@ object ListItem {
             LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
                 listItemType = listItemType,
                 borderInset = borderInset,
-                horizontalSpacing = Medium,
-                verticalSpacing = Medium,
+                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+                verticalSpacing = GlobalTokens.SizeTokens.Size160,
                 unreadDot = unreadDot
             )
         ) {
@@ -347,8 +346,7 @@ object ListItem {
 
                             Text(
                                 text = text,
-                                fontSize = primaryTextTypography.fontSize.size,
-                                fontWeight = primaryTextTypography.weight,
+                                style = primaryTextTypography,
                                 color = primaryTextColor,
                                 maxLines = textMaxLines,
                                 overflow = TextOverflow.Ellipsis
@@ -364,8 +362,7 @@ object ListItem {
                             if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
                                 Text(
                                     text = subText,
-                                    fontSize = subTextTypography.fontSize.size,
-                                    fontWeight = subTextTypography.weight,
+                                    style = subTextTypography,
                                     color = subTextColor,
                                     maxLines = subTextMaxLines,
                                     overflow = TextOverflow.Ellipsis
@@ -391,8 +388,7 @@ object ListItem {
                                     if (secondarySubText != null) {
                                         Text(
                                             text = secondarySubText,
-                                            fontSize = secondarySubTextTypography.fontSize.size,
-                                            fontWeight = secondarySubTextTypography.weight,
+                                            style = secondarySubTextTypography,
                                             color = secondarySubTextColor,
                                             maxLines = secondarySubTextMaxLines,
                                             overflow = TextOverflow.Ellipsis
@@ -472,8 +468,8 @@ object ListItem {
             LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
                 listItemType = SectionHeader,
                 borderInset = borderInset,
-                horizontalSpacing = Medium,
-                verticalSpacing = Small,
+                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+                verticalSpacing = GlobalTokens.SizeTokens.Size120,
                 style = style
             )
         ) {
@@ -555,8 +551,7 @@ object ListItem {
                                 }
                                 Text(
                                     text = title,
-                                    fontSize = primaryTextTypography.fontSize.size,
-                                    fontWeight = primaryTextTypography.weight,
+                                    style = primaryTextTypography,
                                     color = primaryTextColor,
                                     maxLines = titleMaxLines,
                                     overflow = TextOverflow.Ellipsis
@@ -566,12 +561,13 @@ object ListItem {
                         }
                         Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
                             if (accessoryTextTitle != null) {
-                                Text(text = accessoryTextTitle,
+                                Text(
+                                    text = accessoryTextTitle,
                                     modifier.clickable(role = Role.Button,
                                         onClick = accessoryTextOnClick ?: {}),
                                     color = actionTextColor,
-                                    fontSize = actionTextTypography.fontSize.size,
-                                    fontWeight = actionTextTypography.weight)
+                                    style = actionTextTypography
+                                )
                             }
                         }
                         if (trailingAccessoryView != null) {
@@ -641,8 +637,8 @@ object ListItem {
         CompositionLocalProvider(
             LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
                 listItemType = SectionDescription,
-                horizontalSpacing = Medium,
-                verticalSpacing = XSmall,
+                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+                verticalSpacing = GlobalTokens.SizeTokens.Size80,
                 borderInset = borderInset,
                 placement = descriptionPlacement
             )
@@ -721,8 +717,7 @@ object ListItem {
                         Text(
                             text = description,
                             color = descriptionTextColor,
-                            fontSize = descriptionTextTypography.fontSize.size,
-                            fontWeight = descriptionTextTypography.weight
+                            style = descriptionTextTypography
                         )
                     }
                 }
@@ -776,8 +771,8 @@ object ListItem {
             LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
                 listItemType = OneLine,
                 style = style,
-                horizontalSpacing = Medium,
-                verticalSpacing = XSmall,
+                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+                verticalSpacing = GlobalTokens.SizeTokens.Size80,
                 borderInset = borderInset
             )
         ) {
@@ -834,24 +829,26 @@ object ListItem {
                                 bottom = padding.calculateBottomPadding()
                             )
                             .weight(1f),
-                        fontSize = primaryTextTypography.fontSize.size,
-                        fontWeight = primaryTextTypography.weight,
+                        style = primaryTextTypography,
                         color = primaryTextColor,
                         maxLines = titleMaxLines,
                         overflow = TextOverflow.Ellipsis
                     )
 
                     if (accessoryTextTitle != null) {
-                        Text(text = accessoryTextTitle,
+                        Text(
+                            text = accessoryTextTitle,
                             Modifier
                                 .padding(
                                     end = padding.calculateEndPadding(LocalLayoutDirection.current),
                                     bottom = padding.calculateBottomPadding()
                                 )
-                                .clickable(role = Role.Button, onClick = accessoryTextOnClick ?: {}),
+                                .clickable(
+                                    role = Role.Button,
+                                    onClick = accessoryTextOnClick ?: {}),
                             color = actionTextColor,
-                            fontSize = actionTextTypography.fontSize.size,
-                            fontWeight = actionTextTypography.weight)
+                            style = actionTextTypography
+                        )
                     }
                     if (trailingAccessoryView != null) {
                         Box(

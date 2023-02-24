@@ -145,9 +145,8 @@ fun AppBar(
                     if (appBarSize != AppBarSize.Medium)
                         logo?.invoke()
 
-                    val titleFontInfo = getAppBarTokens().titleTypography(getAppBarInfo())
-                    val subtitleFontInfo =
-                        getAppBarTokens().subtitleTypography(getAppBarInfo())
+                    val titleTextStyle = getAppBarTokens().titleTypography(getAppBarInfo())
+                    val subtitleTextStyle = getAppBarTokens().subtitleTypography(getAppBarInfo())
 
                     if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
                         Column(
@@ -166,13 +165,10 @@ fun AppBar(
                             ) {
                                 Text(
                                     text = title,
-                                    style = TextStyle(
-                                        color = getAppBarTokens().titleTextColor(getAppBarInfo()),
-                                        fontSize = titleFontInfo.fontSize.size,
-                                        lineHeight = titleFontInfo.fontSize.lineHeight,
-                                        fontWeight = titleFontInfo.weight,
-                                        platformStyle = PlatformTextStyle(
-                                            includeFontPadding = false
+                                    color = getAppBarTokens().titleTextColor(getAppBarInfo()),
+                                    style = titleTextStyle.merge(
+                                        TextStyle(
+                                            platformStyle = PlatformTextStyle(includeFontPadding = true)
                                         )
                                     ),
                                     maxLines = 1,
@@ -210,13 +206,13 @@ fun AppBar(
                                     )
                                 Text(
                                     subTitle,
-                                    style = TextStyle(
-                                        color = getAppBarTokens().subtitleTextColor(
-                                            getAppBarInfo()
-                                        ),
-                                        fontSize = subtitleFontInfo.fontSize.size,
-                                        lineHeight = subtitleFontInfo.fontSize.lineHeight,
-                                        fontWeight = subtitleFontInfo.weight
+                                    color = getAppBarTokens().subtitleTextColor(
+                                        getAppBarInfo()
+                                    ),
+                                    style = subtitleTextStyle.merge(
+                                        TextStyle(
+                                            platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                        )
                                     ),
                                     maxLines = 1,
                                     overflow = TextOverflow.Ellipsis
@@ -241,13 +237,12 @@ fun AppBar(
                             modifier = Modifier
                                 .padding(getAppBarTokens().textPadding(getAppBarInfo()))
                                 .weight(1F),
-                            style = TextStyle(
-                                color = getAppBarTokens().titleTextColor(getAppBarInfo()),
-                                fontSize = titleFontInfo.fontSize.size,
-                                lineHeight = titleFontInfo.fontSize.lineHeight,
-                                fontWeight = titleFontInfo.weight,
-                                platformStyle = PlatformTextStyle(
-                                    includeFontPadding = false
+                            color = getAppBarTokens().titleTextColor(getAppBarInfo()),
+                            style = titleTextStyle.merge(
+                                TextStyle(
+                                    platformStyle = PlatformTextStyle(
+                                        includeFontPadding = true
+                                    )
                                 )
                             ),
                             maxLines = 1,

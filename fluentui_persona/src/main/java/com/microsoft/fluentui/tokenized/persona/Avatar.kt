@@ -84,7 +84,7 @@ fun Avatar(
         val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
         val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
         val borders = getAvatarTokens().borderStroke(getAvatarInfo())
-        val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
+        val fontTextStyle = getAvatarTokens().fontTypography(getAvatarInfo())
         val cutoutCornerRadius = getAvatarTokens().cutoutCornerRadius(getAvatarInfo())
         val cutoutBackgroundColor =
             getAvatarTokens().cutoutBackgroundColor(avatarInfo = getAvatarInfo())
@@ -134,9 +134,7 @@ fun Avatar(
                     }
                     personInitials.isNotEmpty() -> {
                         Text(personInitials,
-                            fontSize = fontInfo.fontSize.size,
-                            fontWeight = fontInfo.weight,
-                            lineHeight = fontInfo.fontSize.lineHeight,
+                            style = fontTextStyle,
                             color = foregroundColor,
                             modifier = Modifier
                                 .clearAndSetSemantics { })
@@ -246,7 +244,7 @@ fun Avatar(
     ) {
         val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
         val cornerRadius = getAvatarTokens().cornerRadius(getAvatarInfo())
-        val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
+        val fontTextStyle = getAvatarTokens().fontTypography(getAvatarInfo())
         val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
         val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
 
@@ -293,9 +291,7 @@ fun Avatar(
                     )
                 } else if (group.groupName.isNotEmpty()) {
                     Text(group.getInitials(),
-                        fontSize = fontInfo.fontSize.size,
-                        fontWeight = fontInfo.weight,
-                        lineHeight = fontInfo.fontSize.lineHeight,
+                        style = fontTextStyle,
                         color = foregroundColor,
                         modifier = Modifier.clearAndSetSemantics { })
                 } else {
@@ -339,7 +335,7 @@ fun Avatar(
     ) {
         val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
         val borders = getAvatarTokens().borderStroke(getAvatarInfo())
-        val fontInfo = getAvatarTokens().fontInfo(getAvatarInfo())
+        val fontTextStyle = getAvatarTokens().fontTypography(getAvatarInfo())
 
         Box(
             modifier
@@ -356,9 +352,7 @@ fun Avatar(
                 contentAlignment = Alignment.Center
             ) {
                 Text("+${overflowCount}",
-                    fontSize = fontInfo.fontSize.size,
-                    fontWeight = fontInfo.weight,
-                    lineHeight = fontInfo.fontSize.lineHeight,
+                    style = fontTextStyle,
                     color = getAvatarTokens().foregroundColor(getAvatarInfo()),
                     modifier = Modifier.clearAndSetSemantics { })
             }

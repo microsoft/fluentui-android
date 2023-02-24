@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,9 +40,7 @@ class V2BadgeActivity : DemoActivity() {
                 Column(Modifier.background(Color.Gray)) {
                     Text(
                         text = resources.getString(R.string.badge_notification_badge),
-                        fontWeight = title1Font.weight,
-                        fontSize = title1Font.fontSize.size,
-                        lineHeight = title1Font.fontSize.lineHeight,
+                        style = title1Font,
                         color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(),
                         modifier = Modifier.padding(8.dp)
 
@@ -51,24 +48,20 @@ class V2BadgeActivity : DemoActivity() {
                     Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                         Text(
                             text = resources.getString(R.string.badge_notification_dot),
-                            fontWeight = title2Font.weight,
-                            fontSize = title2Font.fontSize.size,
-                            lineHeight = title2Font.fontSize.lineHeight,
+                            style = title2Font,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
                         )
                         Spacer(modifier = Modifier.width(16.dp))
                         Badge()
                     }
-                    Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically){
+                    Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                         Text(
                             text = resources.getString(R.string.badge_notification_character),
-                            fontWeight = title2Font.weight,
-                            fontSize = title2Font.fontSize.size,
-                            lineHeight = title2Font.fontSize.lineHeight,
+                            style = title2Font,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
                         )
                         Spacer(modifier = Modifier.width(16.dp))
-                        LazyRow(){
+                        LazyRow {
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Badge("1", badgeType = BadgeType.Character)
@@ -93,7 +86,7 @@ class V2BadgeActivity : DemoActivity() {
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Badge("12345678910", badgeType = BadgeType.Character)
                             }
-                            item{
+                            item {
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Badge("Badge", badgeType = BadgeType.Character)
                             }
@@ -102,15 +95,13 @@ class V2BadgeActivity : DemoActivity() {
                     Row(Modifier.padding(16.dp)) {
                         Text(
                             text = "List",
-                            fontWeight = title2Font.weight,
-                            fontSize = title2Font.fontSize.size,
-                            lineHeight = title2Font.fontSize.lineHeight,
+                            style = title2Font,
                             color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                 themeMode = ThemeMode.Auto
                             )
                         )
                         Spacer(modifier = Modifier.width(16.dp))
-                        LazyRow(){
+                        LazyRow {
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Badge("1", badgeType = BadgeType.List)

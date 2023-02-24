@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
@@ -35,8 +36,8 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     @Composable
     open fun actionButtonIconPadding(contextualCommandBarInfo: ContextualCommandBarInfo): PaddingValues {
         return PaddingValues(
-            horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
-            vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
+            horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
+            vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
         )
     }
 
@@ -75,7 +76,7 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun buttonSpacing(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.spacing(GlobalTokens.SpacingTokens.XXXSmall)
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
     }
 
     @Composable
@@ -90,21 +91,21 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun groupSpacing(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
     }
 
     @Composable
     open fun iconSize(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
+        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
     }
 
     @Composable
     open fun iconVerticalPadding(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
-    open fun typography(contextualCommandBarInfo: ContextualCommandBarInfo): FontInfo {
+    open fun typography(contextualCommandBarInfo: ContextualCommandBarInfo): TextStyle {
         return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
     }
 

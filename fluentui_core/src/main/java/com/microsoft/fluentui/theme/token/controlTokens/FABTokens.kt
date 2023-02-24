@@ -9,6 +9,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
@@ -114,13 +115,13 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun iconSize(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
-            FABSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Medium)
+            FABSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
+            FABSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
         }
     }
 
     @Composable
-    open fun fontInfo(fabInfo: FABInfo): FontInfo {
+    open fun fontInfo(fabInfo: FABInfo): TextStyle {
         return when (fabInfo.size) {
             FABSize.Small -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
             FABSize.Large -> aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
@@ -132,13 +133,13 @@ open class FABTokens : ControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
-                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small)
+                    horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
+                    vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
                 )
             FABSize.Large ->
                 PaddingValues(
-                    horizontal = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
-                    vertical = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
+                    horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size160),
+                    vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size160),
                 )
         }
     }
@@ -148,17 +149,17 @@ open class FABTokens : ControlToken, Parcelable {
         return when (fabInfo.size) {
             FABSize.Small ->
                 PaddingValues(
-                    top = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
-                    bottom = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
-                    start = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Small),
-                    end = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium)
+                    top = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
+                    bottom = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
+                    start = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
+                    end = GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
                 )
             FABSize.Large ->
                 PaddingValues(
-                    top = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
-                    bottom = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
-                    start = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Medium),
-                    end = GlobalTokens.spacing(GlobalTokens.SpacingTokens.Large)
+                    top = GlobalTokens.size(GlobalTokens.SizeTokens.Size160),
+                    bottom = GlobalTokens.size(GlobalTokens.SizeTokens.Size160),
+                    start = GlobalTokens.size(GlobalTokens.SizeTokens.Size160),
+                    end = GlobalTokens.size(GlobalTokens.SizeTokens.Size200)
                 )
         }
     }
@@ -166,8 +167,8 @@ open class FABTokens : ControlToken, Parcelable {
     @Composable
     open fun spacing(fabInfo: FABInfo): Dp {
         return when (fabInfo.size) {
-            FABSize.Small -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
-            FABSize.Large -> GlobalTokens.spacing(GlobalTokens.SpacingTokens.XSmall)
+            FABSize.Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            FABSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
         }
     }
 

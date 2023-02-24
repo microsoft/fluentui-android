@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -16,7 +17,6 @@ import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorToke
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.*
 import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.*
-import com.microsoft.fluentui.theme.token.GlobalTokens.SpacingTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.StrokeWidth15
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Standard
@@ -69,8 +69,8 @@ data class ListItemInfo(
     val listItemType: ListItemType = OneLine,
     val borderInset: BorderInset = BorderInset.None,
     val placement: TextPlacement = Top,
-    val horizontalSpacing: SpacingTokens = SpacingTokens.Small,
-    val verticalSpacing: SpacingTokens = SpacingTokens.Small,
+    val horizontalSpacing: GlobalTokens.SizeTokens = GlobalTokens.SizeTokens.Size120,
+    val verticalSpacing: GlobalTokens.SizeTokens = GlobalTokens.SizeTokens.Size120,
     val unreadDot: Boolean = false
 ) : ControlInfo
 
@@ -130,10 +130,10 @@ open class ListItemTokens : ControlToken, Parcelable {
     @Composable
     open fun padding(listItemInfo: ListItemInfo): PaddingValues {
         return PaddingValues(
-            start = GlobalTokens.spacing(listItemInfo.horizontalSpacing),
-            end = GlobalTokens.spacing(listItemInfo.horizontalSpacing),
-            top = GlobalTokens.spacing(listItemInfo.verticalSpacing),
-            bottom = GlobalTokens.spacing(listItemInfo.verticalSpacing)
+            start = GlobalTokens.size(listItemInfo.horizontalSpacing),
+            end = GlobalTokens.size(listItemInfo.horizontalSpacing),
+            top = GlobalTokens.size(listItemInfo.verticalSpacing),
+            bottom = GlobalTokens.size(listItemInfo.verticalSpacing)
         )
     }
 
@@ -255,7 +255,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun primaryTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return if (listItemInfo.unreadDot) {
             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
         } else {
@@ -264,27 +264,27 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun subTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun subTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[Body2]
     }
 
     @Composable
-    open fun secondarySubTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun secondarySubTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[Caption1]
     }
 
     @Composable
-    open fun actionTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun actionTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[Caption1Strong]
     }
 
     @Composable
-    open fun descriptionTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun descriptionTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[Caption1]
     }
 
     @Composable
-    open fun sectionHeaderPrimaryTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun sectionHeaderPrimaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return when (listItemInfo.style) {
             Standard -> {
                 FluentTheme.aliasTokens.typography[Body1Strong]
@@ -296,7 +296,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun sectionHeaderActionTextTypography(listItemInfo: ListItemInfo): FontInfo {
+    open fun sectionHeaderActionTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return when (listItemInfo.style) {
             Standard -> {
                 FluentTheme.aliasTokens.typography[Body2Strong]

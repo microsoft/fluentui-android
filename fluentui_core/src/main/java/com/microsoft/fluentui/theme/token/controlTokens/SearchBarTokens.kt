@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -114,18 +115,18 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun typography(searchBarInfo: SearchBarInfo): FontInfo {
+    open fun typography(searchBarInfo: SearchBarInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
     }
 
     @Composable
     open fun leftIconSize(searchBarInfo: SearchBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
     }
 
     @Composable
     open fun rightIconSize(searchBarInfo: SearchBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.Small)
+        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
     }
 
     @Composable

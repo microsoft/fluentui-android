@@ -125,7 +125,7 @@ fun PillButton(
                 interactionSource = interactionSource
             )
 
-        val font = getPillButtonTokens().font(getPillButtonInfo())
+        val fontStyle = getPillButtonTokens().fontStyle(getPillButtonInfo())
 
         val focusStroke = getPillButtonTokens().focusStroke(getPillButtonInfo())
         var focusedBorderModifier: Modifier = Modifier
@@ -136,7 +136,7 @@ fun PillButton(
 
         val clickAndSemanticsModifier = modifier.clickable(
             interactionSource = interactionSource,
-            indication = rememberRipple(bounded = false, radius = 24.dp),
+            indication = rememberRipple(),
             enabled = pillMetaData.enabled,
             onClickLabel = null,
             role = Role.Button,
@@ -184,9 +184,7 @@ fun PillButton(
                             .padding(horizontal = 16.dp, vertical = 6.dp)
                             .clearAndSetSemantics { },
                         color = textColor,
-                        fontSize = font.fontSize.size,
-                        fontWeight = font.weight,
-                        lineHeight = font.fontSize.lineHeight,
+                        style = fontStyle,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -236,10 +234,11 @@ fun PillBar(
 
         LazyRow(
             modifier = modifier
+                .fillMaxWidth()
                 .background(if (showBackground) getPillBarTokens().background(getPillBarInfo()) else Color.Unspecified)
                 .focusable(enabled = false),
             contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
             state = lazyListState
         ) {
             metadataList.forEachIndexed { index, pillMetadata ->

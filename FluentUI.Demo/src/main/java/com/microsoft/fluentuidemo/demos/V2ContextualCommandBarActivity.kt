@@ -329,9 +329,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading1",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                     item {
@@ -343,9 +341,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading2",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                     item {
@@ -357,9 +353,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading3",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                     item {
@@ -371,9 +365,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Paragraph",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                 }
@@ -418,9 +410,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading1",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                     item {
@@ -432,9 +422,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading2",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                     item {
@@ -446,9 +434,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading3",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                     item {
@@ -460,9 +446,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                                 vertical = 4.dp
                                             ),
                                             text = "Paragraph",
-                                            fontSize = font.fontSize.size,
-                                            fontWeight = font.weight,
-                                            lineHeight = font.fontSize.lineHeight
+                                            style = font
                                         )
                                     }
                                 }

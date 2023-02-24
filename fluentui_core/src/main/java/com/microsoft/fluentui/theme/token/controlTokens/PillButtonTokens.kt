@@ -3,6 +3,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
@@ -298,7 +299,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun font(pillButtonInfo: PillButtonInfo): FontInfo {
+    open fun fontStyle(pillButtonInfo: PillButtonInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
     }
 

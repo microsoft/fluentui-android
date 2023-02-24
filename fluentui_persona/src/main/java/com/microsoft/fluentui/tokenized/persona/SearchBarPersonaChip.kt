@@ -78,8 +78,8 @@ fun SearchBarPersonaChip(
                 .getColorByState(
                     enabled = enabled, selected = selected, interactionSource = interactionSource
                 )
-        val font =
-            getSearchBarPersonaChipTokens().fontSize(personaChipInfo = getSearchBarPersonaChipInfo())
+        val fontStyle =
+            getSearchBarPersonaChipTokens().fontStyle(personaChipInfo = getSearchBarPersonaChipInfo())
         val avatarSize =
             getSearchBarPersonaChipTokens().avatarSize(personaChipInfo = getSearchBarPersonaChipInfo())
         val verticalPadding =
@@ -134,8 +134,7 @@ fun SearchBarPersonaChip(
                     modifier = Modifier.padding(bottom = 2.dp),//Vertically center align text
                     text = person.getLabel(),
                     color = textColor,
-                    lineHeight = font.fontSize.lineHeight,
-                    fontSize = font.fontSize.size
+                    style = fontStyle
                 )
             }
         }
