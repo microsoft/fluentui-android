@@ -7,3 +7,7 @@ Fluent V2:
 	    1) Move from FontInfo to textStyle for a better Material Integration.
 	    2) Updated Global Tokens.
 	    3) Fix Formatting for Pill Bar.
+
+Fluent VCurrent:
+    Fix/Enhancement:
+        1) Remove non-nullable force assert from CCB's Long Click Listener
