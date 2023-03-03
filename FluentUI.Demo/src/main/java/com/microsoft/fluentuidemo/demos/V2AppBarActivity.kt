@@ -242,7 +242,8 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     "Navigation Icon pressed",
                                     Toast.LENGTH_SHORT
                                 ).show()
-                            }
+                            },
+                            flipOnRtl = true
                         ),
                         subTitle = subtitle,
                         logo = {
@@ -263,7 +264,8 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             onClick = {
                                 Toast.makeText(context, "Title Icon pressed", Toast.LENGTH_SHORT)
                                     .show()
-                            }
+                            },
+                            flipOnRtl = true
                         ),
                         postSubtitleIcon = FluentIcon(
                             ListItemIcons.Chevron,
@@ -271,7 +273,8 @@ class V2AppBarLayoutActivity : DemoActivity() {
                             onClick = {
                                 Toast.makeText(context, "Subtitle Icon pressed", Toast.LENGTH_SHORT)
                                     .show()
-                            }
+                            },
+                            flipOnRtl = true
                         ),
                         appBarSize = appBarSize,
                         style = style,

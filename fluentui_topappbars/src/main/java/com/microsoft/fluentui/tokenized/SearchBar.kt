@@ -169,10 +169,10 @@ fun SearchBar(
                                 icon,
                                 contentDescription = contentDescription,
                                 tint = getSearchBarTokens().leftIconColor(getSearchBarInfo()),
+                                flipOnRtl = mirrorImage
                             ),
                             modifier = Modifier
-                                .size(getSearchBarTokens().leftIconSize(getSearchBarInfo()))
-                                .then(if (mirrorImage) Modifier.handleOnRtl() else Modifier),
+                                .size(getSearchBarTokens().leftIconSize(getSearchBarInfo())),
                         )
                     }
                 }

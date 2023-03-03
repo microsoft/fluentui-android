@@ -73,7 +73,7 @@ fun AppBar(
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
-    navigationIcon: FluentIcon = FluentIcon(SearchBarIcons.Arrowback),
+    navigationIcon: FluentIcon = FluentIcon(SearchBarIcons.Arrowback, flipOnRtl = true),
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
@@ -129,7 +129,6 @@ fun AppBar(
                             Icon(
                                 navigationIcon,
                                 modifier = Modifier
-                                    .handleOnRtl()
                                     .padding(getAppBarTokens().navigationIconPadding(getAppBarInfo()))
                                     .size(getAppBarTokens().leftIconSize(getAppBarInfo())),
                                 tint = getAppBarTokens().navigationIconColor(getAppBarInfo())
@@ -184,8 +183,7 @@ fun AppBar(
                                     Icon(
                                         postTitleIcon,
                                         modifier = Modifier
-                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo()))
-                                            .handleOnRtl(),
+                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo())),
                                         tint = getAppBarTokens().titleIconColor(getAppBarInfo())
                                     )
                             }
@@ -206,8 +204,7 @@ fun AppBar(
                                                 getAppBarTokens().subtitleIconSize(
                                                     getAppBarInfo()
                                                 )
-                                            )
-                                            .handleOnRtl(),
+                                            ),
                                         tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
                                     )
                                 Text(
@@ -231,8 +228,7 @@ fun AppBar(
                                                 getAppBarTokens().subtitleIconSize(
                                                     getAppBarInfo()
                                                 )
-                                            )
-                                            .handleOnRtl(),
+                                            ),
                                         tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
                                     )
                             }
