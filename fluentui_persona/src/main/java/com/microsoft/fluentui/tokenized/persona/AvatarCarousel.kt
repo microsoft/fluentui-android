@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.onFocusEvent
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -27,6 +26,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
+import com.microsoft.fluentui.util.getStringResource
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
@@ -41,11 +41,6 @@ fun getAvatarCarouselTokens(): AvatarCarouselTokens {
 @Composable
 fun getAvatarCarouselInfo(): AvatarCarouselInfo {
     return LocalAvatarCarouselInfo.current
-}
-
-@Composable
-fun getStringResource(id: Int): String {
-    return LocalContext.current.resources.getString(id)
 }
 
 /**
