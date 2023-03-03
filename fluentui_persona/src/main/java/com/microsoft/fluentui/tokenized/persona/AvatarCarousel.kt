@@ -42,8 +42,9 @@ fun getAvatarCarouselTokens(): AvatarCarouselTokens {
 fun getAvatarCarouselInfo(): AvatarCarouselInfo {
     return LocalAvatarCarouselInfo.current
 }
+
 @Composable
-fun getStringResource(id:Int): String{
+fun getStringResource(id: Int): String {
     return LocalContext.current.resources.getString(id)
 }
 
@@ -61,8 +62,8 @@ fun getStringResource(id:Int): String{
 @Composable
 fun AvatarCarousel(
     avatarList: List<AvatarCarouselItem>,
-    size: AvatarCarouselSize = AvatarCarouselSize.Small,
     modifier: Modifier = Modifier,
+    size: AvatarCarouselSize = AvatarCarouselSize.Small,
     enablePresence: Boolean = false,
     avatarTokens: AvatarTokens? = null,
     avatarCarouselTokens: AvatarCarouselTokens? = null
@@ -101,7 +102,8 @@ fun AvatarCarousel(
                             selected = false,
                             interactionSource = interactionSource
                         )
-                val nameString =  if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
+                val nameString =
+                    if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
                 Column(
                     modifier
                         .onFocusEvent { focusState ->
@@ -128,7 +130,8 @@ fun AvatarCarousel(
                             role = Role.Button
                         )
                         .clearAndSetSemantics {
-                            contentDescription = nameString + "${if (enablePresence) "${statusString}, ${item.person.status}," else ""} " +
+                            contentDescription =
+                                nameString + "${if (enablePresence) "${statusString}, ${item.person.status}," else ""} " +
                                         "${if (enablePresence && item.person.isOOO) "${outOfOfficeString}," else ""} " +
                                         if (item.enableActivityRing) {
                                             if (item.person.isActive) activeString else inActiveString
