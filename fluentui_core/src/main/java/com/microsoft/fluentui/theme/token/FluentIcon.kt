@@ -3,9 +3,13 @@ package com.microsoft.fluentui.theme.token
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.ThemeMode
 
@@ -51,4 +55,13 @@ fun Icon(
         modifier,
         tint = icon.tint ?: tint
     )
+}
+
+@Stable
+@Composable
+fun Modifier.handleOnRtl(): Modifier {
+    return if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+        this.scale(-1F, -1F)
+    else
+        this
 }

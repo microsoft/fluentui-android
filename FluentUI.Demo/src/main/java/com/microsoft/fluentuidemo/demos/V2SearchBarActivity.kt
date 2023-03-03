@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
@@ -207,13 +208,19 @@ class V2SearchBarActivity : DemoActivity() {
                             }
                         ),
                         rightAccessoryIcon = if (displayRightAccessory) {
-                            SearchBarIcons.Office
-                        } else null,
-                        rightAccessoryIconDescription = "Office",
-                        rightAccessoryViewOnClick = {
-                            Toast.makeText(context, rightViewPressedString, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                            FluentIcon(
+                                SearchBarIcons.Office,
+                                contentDescription = "Office",
+                                onClick = {
+                                    Toast.makeText(
+                                        context,
+                                        rightViewPressedString,
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                }
+                            )
+                        } else null
                     )
 
                     val filteredPersona = mutableListOf<Persona>()

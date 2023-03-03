@@ -4,7 +4,6 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -13,16 +12,13 @@ import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.ListItemIcons
@@ -30,10 +26,7 @@ import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.FluentIcon
-import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
@@ -134,14 +127,9 @@ fun AppBar(
                                 ), contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                navigationIcon.value(),
-                                navigationIcon.contentDescription,
+                                navigationIcon,
                                 modifier = Modifier
-                                    .then(
-                                        if (LocalLayoutDirection.current == LayoutDirection.Rtl) Modifier.rotate(
-                                            180F
-                                        ) else Modifier
-                                    )
+                                    .handleOnRtl()
                                     .padding(getAppBarTokens().navigationIconPadding(getAppBarInfo()))
                                     .size(getAppBarTokens().leftIconSize(getAppBarInfo())),
                                 tint = getAppBarTokens().navigationIconColor(getAppBarInfo())
@@ -194,15 +182,10 @@ fun AppBar(
                                 )
                                 if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
                                     Icon(
-                                        postTitleIcon.value(themeMode),
-                                        postTitleIcon.contentDescription,
+                                        postTitleIcon,
                                         modifier = Modifier
-                                            .then(
-                                                if (LocalLayoutDirection.current == LayoutDirection.Rtl) Modifier.rotate(
-                                                    180F
-                                                ) else Modifier
-                                            )
-                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo())),
+                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo()))
+                                            .handleOnRtl(),
                                         tint = getAppBarTokens().titleIconColor(getAppBarInfo())
                                     )
                             }
@@ -217,19 +200,14 @@ fun AppBar(
                             ) {
                                 if (preSubtitleIcon.isIconAvailable())
                                     Icon(
-                                        preSubtitleIcon.value(themeMode),
-                                        preSubtitleIcon.contentDescription,
+                                        preSubtitleIcon,
                                         modifier = Modifier
-                                            .then(
-                                                if (LocalLayoutDirection.current == LayoutDirection.Rtl) Modifier.rotate(
-                                                    180F
-                                                ) else Modifier
-                                            )
                                             .size(
                                                 getAppBarTokens().subtitleIconSize(
                                                     getAppBarInfo()
                                                 )
-                                            ),
+                                            )
+                                            .handleOnRtl(),
                                         tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
                                     )
                                 Text(
@@ -247,19 +225,14 @@ fun AppBar(
                                 )
                                 if (postSubtitleIcon.isIconAvailable())
                                     Icon(
-                                        postSubtitleIcon.value(themeMode),
-                                        postSubtitleIcon.contentDescription,
+                                        postSubtitleIcon,
                                         modifier = Modifier
-                                            .then(
-                                                if (LocalLayoutDirection.current == LayoutDirection.Rtl) Modifier.rotate(
-                                                    180F
-                                                ) else Modifier
-                                            )
                                             .size(
                                                 getAppBarTokens().subtitleIconSize(
                                                     getAppBarInfo()
                                                 )
-                                            ),
+                                            )
+                                            .handleOnRtl(),
                                         tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
                                     )
                             }
