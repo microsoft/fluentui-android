@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
@@ -29,8 +28,11 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
@@ -40,8 +42,7 @@ import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.icons.searchbaricons.Microphone
 import com.microsoft.fluentui.icons.searchbaricons.Search
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarTokens
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -69,9 +70,7 @@ fun SearchBar(
     personaChipOnClick: (() -> Unit)? = null,
     microphoneCallback: (() -> Unit)? = null,
     navigationIconCallback: (() -> Unit)? = null,
-    rightAccessoryIcon: ImageVector? = null,
-    rightAccessoryIconDescription: String = "",
-    rightAccessoryViewOnClick: (() -> Unit)? = null,
+    rightAccessoryIcon: FluentIcon? = null,
     searchBarTokens: SearchBarTokens? = null
 ) {
 
@@ -116,6 +115,8 @@ fun SearchBar(
                     var icon: ImageVector? = null
                     var contentDescription: String? = null
 
+                    var mirrorImage = false
+
                     when (it) {
                         true -> {
                             onClick = {
@@ -135,6 +136,8 @@ fun SearchBar(
                             icon = SearchBarIcons.Arrowback
                             contentDescription =
                                 LocalContext.current.resources.getString(R.string.fluentui_back)
+                            if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                mirrorImage = true
                         }
                         false -> {
                             onClick = {
@@ -145,6 +148,7 @@ fun SearchBar(
                             icon = SearchBarIcons.Search
                             contentDescription =
                                 LocalContext.current.resources.getString(R.string.fluentui_search)
+                            mirrorImage = false
                         }
                     }
 
@@ -161,11 +165,14 @@ fun SearchBar(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            icon,
-                            contentDescription,
+                            FluentIcon(
+                                icon,
+                                contentDescription = contentDescription,
+                                tint = getSearchBarTokens().leftIconColor(getSearchBarInfo()),
+                                flipOnRtl = mirrorImage
+                            ),
                             modifier = Modifier
                                 .size(getSearchBarTokens().leftIconSize(getSearchBarInfo())),
-                            tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
                         )
                     }
                 }
@@ -249,16 +256,21 @@ fun SearchBar(
                                     focusState.isFocused ->
                                         searchHasFocus = true
                                 }
-                            },
+                            }
+                            .padding(horizontal = 8.dp),
                         textStyle = getSearchBarTokens().typography(getSearchBarInfo()).merge(
                             TextStyle(
-                                color = getSearchBarTokens().textColor(getSearchBarInfo())
+                                color = getSearchBarTokens().textColor(getSearchBarInfo()),
+                                textDirection = TextDirection.ContentOrLtr
                             )
                         ),
                         decorationBox = @Composable { innerTextField ->
                             Box(
-                                Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.CenterStart
+                                Modifier.fillMaxWidth(),
+                                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                    Alignment.CenterEnd
+                                else
+                                    Alignment.CenterStart
                             ) {
                                 if (queryText.isEmpty()) {
                                     Text(
@@ -267,9 +279,10 @@ fun SearchBar(
                                         color = getSearchBarTokens().textColor(getSearchBarInfo())
                                     )
                                 }
-                                innerTextField()
                             }
-                        }
+                            innerTextField()
+                        },
+                        cursorBrush = getSearchBarTokens().cursorColor(getSearchBarInfo())
                     )
                 }
                 LaunchedEffect(Unit) {
@@ -295,15 +308,21 @@ fun SearchBar(
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Icon(
-                                        SearchBarIcons.Microphone,
-                                        LocalContext.current.resources.getString(R.string.fluentui_microphone),
+                                        FluentIcon(
+                                            SearchBarIcons.Microphone,
+                                            contentDescription = LocalContext.current.resources.getString(
+                                                R.string.fluentui_microphone
+                                            ),
+                                            tint = getSearchBarTokens().rightIconColor(
+                                                getSearchBarInfo()
+                                            )
+                                        ),
                                         modifier = Modifier
                                             .size(
                                                 getSearchBarTokens().rightIconSize(
                                                     getSearchBarInfo()
                                                 )
-                                            ),
-                                        tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                                            )
                                     )
                                 }
                             }
@@ -341,17 +360,21 @@ fun SearchBar(
                                         )
                                     )
                                 Icon(
-                                    SearchBarIcons.Dismisscircle,
-                                    LocalContext.current.resources.getString(R.string.fluentui_clear_text),
+                                    FluentIcon(
+                                        SearchBarIcons.Dismisscircle,
+                                        contentDescription = LocalContext.current.resources.getString(
+                                            R.string.fluentui_clear_text
+                                        ),
+                                        tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                                    ),
                                     modifier = Modifier
-                                        .size(getSearchBarTokens().rightIconSize(getSearchBarInfo())),
-                                    tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                                        .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()))
                                 )
                             }
                     }
                 }
 
-                if (rightAccessoryIcon != null && rightAccessoryViewOnClick != null) {
+                if (rightAccessoryIcon?.isIconAvailable() == true && rightAccessoryIcon.onClick != null) {
                     Row(
                         modifier = Modifier
                             .size(44.dp, 40.dp)
@@ -359,7 +382,7 @@ fun SearchBar(
                                 interactionSource = remember { MutableInteractionSource() },
                                 indication = rememberRipple(),
                                 enabled = enabled,
-                                onClick = rightAccessoryViewOnClick,
+                                onClick = rightAccessoryIcon.onClick!!,
                                 role = Role.Button
                             ),
                         horizontalArrangement = Arrangement.Center,
@@ -367,16 +390,17 @@ fun SearchBar(
                     ) {
                         Icon(
                             rightAccessoryIcon,
-                            rightAccessoryIconDescription,
                             modifier = Modifier
                                 .size(getSearchBarTokens().rightIconSize(getSearchBarInfo())),
                             tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
                         )
                         Icon(
-                            ListItemIcons.Chevron,
-                            LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                            Modifier.rotate(90F),
-                            tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                            FluentIcon(
+                                ListItemIcons.Chevron,
+                                contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
+                                tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                            ),
+                            Modifier.rotate(90F)
                         )
                     }
                 }
