@@ -224,7 +224,7 @@ fun CreateAvatarCarouselActivityUI() {
         )
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
-            size = AvatarCarouselSize.Medium,
+            size = AvatarCarouselSize.Small,
             enablePresence = true
         )
     }

@@ -9,12 +9,12 @@ import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
 enum class AvatarCarouselSize {
-    Medium,
+    Small,
     Large
 }
 
 data class AvatarCarouselInfo(
-    val size: AvatarCarouselSize = AvatarCarouselSize.Medium
+    val size: AvatarCarouselSize = AvatarCarouselSize.Small
 ) : ControlInfo
 
 @Parcelize
@@ -22,7 +22,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun getAvatarSize(avatarCarouselInfo: AvatarCarouselInfo): AvatarSize {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Medium -> AvatarSize.Size56
+            AvatarCarouselSize.Small -> AvatarSize.Size56
             AvatarCarouselSize.Large -> AvatarSize.Size72
         }
     }
@@ -48,6 +48,9 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
             rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = FluentTheme.themeMode
             ),
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                themeMode = FluentTheme.themeMode
+            ),
             disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = FluentTheme.themeMode
             )
@@ -60,6 +63,9 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
             rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                 themeMode = FluentTheme.themeMode
             ),
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            ),
             disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = FluentTheme.themeMode
             )
@@ -69,7 +75,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun getTextStyle(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
         }
     }
@@ -77,7 +83,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun getSubTextStyle(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
         }
     }
@@ -85,8 +91,8 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun padding(avatarCarouselInfo: AvatarCarouselInfo): Dp {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
-            AvatarCarouselSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
+            AvatarCarouselSize.Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
+            AvatarCarouselSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
         }
     }
 }
