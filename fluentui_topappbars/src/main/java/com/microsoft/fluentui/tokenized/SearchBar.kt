@@ -29,8 +29,11 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
@@ -116,6 +119,8 @@ fun SearchBar(
                     var icon: ImageVector? = null
                     var contentDescription: String? = null
 
+                    var mirrorImage = false
+
                     when (it) {
                         true -> {
                             onClick = {
@@ -135,6 +140,8 @@ fun SearchBar(
                             icon = SearchBarIcons.Arrowback
                             contentDescription =
                                 LocalContext.current.resources.getString(R.string.fluentui_back)
+                            if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                mirrorImage = true
                         }
                         false -> {
                             onClick = {
@@ -145,6 +152,7 @@ fun SearchBar(
                             icon = SearchBarIcons.Search
                             contentDescription =
                                 LocalContext.current.resources.getString(R.string.fluentui_search)
+                            mirrorImage = false
                         }
                     }
 
@@ -164,6 +172,7 @@ fun SearchBar(
                             icon,
                             contentDescription,
                             modifier = Modifier
+                                .then(if (mirrorImage) Modifier.rotate(180F) else Modifier)
                                 .size(getSearchBarTokens().leftIconSize(getSearchBarInfo())),
                             tint = getSearchBarTokens().leftIconColor(getSearchBarInfo())
                         )
@@ -249,16 +258,21 @@ fun SearchBar(
                                     focusState.isFocused ->
                                         searchHasFocus = true
                                 }
-                            },
+                            }
+                            .padding(horizontal = 8.dp),
                         textStyle = getSearchBarTokens().typography(getSearchBarInfo()).merge(
                             TextStyle(
-                                color = getSearchBarTokens().textColor(getSearchBarInfo())
+                                color = getSearchBarTokens().textColor(getSearchBarInfo()),
+                                textDirection = TextDirection.ContentOrLtr
                             )
                         ),
                         decorationBox = @Composable { innerTextField ->
                             Box(
-                                Modifier.fillMaxSize(),
-                                contentAlignment = Alignment.CenterStart
+                                Modifier.fillMaxWidth(),
+                                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                    Alignment.CenterEnd
+                                else
+                                    Alignment.CenterStart
                             ) {
                                 if (queryText.isEmpty()) {
                                     Text(
@@ -267,9 +281,10 @@ fun SearchBar(
                                         color = getSearchBarTokens().textColor(getSearchBarInfo())
                                     )
                                 }
-                                innerTextField()
                             }
-                        }
+                            innerTextField()
+                        },
+                        cursorBrush = getSearchBarTokens().cursorColor(getSearchBarInfo())
                     )
                 }
                 LaunchedEffect(Unit) {
