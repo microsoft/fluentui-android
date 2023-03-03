@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -16,6 +17,8 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -40,22 +43,6 @@ fun getAvatarCarouselInfo(): AvatarCarouselInfo {
     return LocalAvatarCarouselInfo.current
 }
 
-private fun Modifier.clickAndSemanticsModifier(
-    interactionSource: MutableInteractionSource,
-    onClick: () -> Unit,
-    enabled: Boolean
-): Modifier = composed {
-    Modifier
-        .clickable(
-            interactionSource = interactionSource,
-            indication = rememberRipple(),
-            onClickLabel = null,
-            enabled = enabled,
-            onClick = onClick,
-            role = Role.Button
-        )
-}
-
 /**
  * Generate an AvatarCarousel. This is a horizontally scrollable bar which is made up of [AvatarCarouselItem].
  * Avatar Carousel internally is a group of [AvatarCarouselItem] which can be used to create onClick based Avatar buttons.
@@ -70,7 +57,7 @@ private fun Modifier.clickAndSemanticsModifier(
 @Composable
 fun AvatarCarousel(
     avatarList: List<AvatarCarouselItem>,
-    size: AvatarCarouselSize,
+    size: AvatarCarouselSize = AvatarCarouselSize.Small,
     modifier: Modifier = Modifier,
     enablePresence: Boolean = false,
     avatarTokens: AvatarTokens? = null,
@@ -90,11 +77,15 @@ fun AvatarCarousel(
         val subTextStyle =
             getAvatarCarouselTokens().getSubTextStyle(getAvatarCarouselInfo())
         val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
-        val bottomPadding = if (size == AvatarCarouselSize.Medium) 8.dp else 0.dp
+        val bottomPadding = if (size == AvatarCarouselSize.Small) 8.dp else 0.dp
+        val interactionSource = remember { MutableInteractionSource() }
+        val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
+        val subTextColor =
+            getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())
+
 
         LazyRow(state = lazyListState) {
             itemsIndexed(avatarList) { index, item ->
-                val interactionSource = remember { MutableInteractionSource() }
                 val backgroundColor =
                     getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo())
                         .getColorByState(
@@ -102,9 +93,6 @@ fun AvatarCarousel(
                             selected = false,
                             interactionSource = interactionSource
                         )
-                val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
-                val subTextColor =
-                    getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())
                 Column(
                     modifier
                         .onFocusEvent { focusState ->
@@ -122,14 +110,27 @@ fun AvatarCarousel(
                         .background(backgroundColor)
                         .requiredWidth(88.dp)
                         .alpha(if (item.enabled) 1f else 0.7f)
-                        .clickAndSemanticsModifier(
-                            interactionSource,
-                            item.onItemClick ?: {},
-                            item.enabled
-                        ), horizontalAlignment = Alignment.CenterHorizontally
+                        .clickable(
+                            interactionSource = interactionSource,
+                            indication = rememberRipple(),
+                            onClickLabel = null,
+                            enabled = item.enabled,
+                            onClick = item.onItemClick?:{},
+                            role = Role.Button
+                        )
+                        .clearAndSetSemantics {
+                            contentDescription = if(size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. " +
+                                    "${if (enablePresence) "Status, ${item.person.status}," else ""} " +
+                                    "${if (enablePresence && item.person.isOOO) "Out Of Office," else ""} " +
+                                    if (item.enableActivityRing) {
+                                        if (item.person.isActive) "Active" else "Inactive"
+                                    } else ""
+                        },
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Avatar(
-                        modifier = Modifier.padding(top = 8.dp),
+                        modifier = Modifier
+                            .padding(top = 8.dp),
                         person = item.person,
                         size = avatarSize,
                         avatarToken = avatarTokens,
@@ -149,6 +150,7 @@ fun AvatarCarousel(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
+                            modifier = Modifier.clearAndSetSemantics { },
                             text = item.person.firstName,
                             color = if (item.enabled) textColor.rest else textColor.disabled,
                             style = textStyle,
@@ -165,6 +167,7 @@ fun AvatarCarousel(
                             horizontalArrangement = Arrangement.Center
                         ) {
                             Text(
+                                modifier = Modifier.clearAndSetSemantics { },
                                 text = item.person.lastName,
                                 color = if (item.enabled) subTextColor.rest else subTextColor.disabled,
                                 style = subTextStyle,
