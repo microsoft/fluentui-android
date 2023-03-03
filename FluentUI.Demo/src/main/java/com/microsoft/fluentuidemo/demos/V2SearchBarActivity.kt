@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.getValue
@@ -13,16 +12,15 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
@@ -96,8 +94,6 @@ class V2SearchBarActivity : DemoActivity() {
                 var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
 
                 Column(
-                    modifier = Modifier
-                        .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ListItem.SectionHeader(
@@ -176,7 +172,8 @@ class V2SearchBarActivity : DemoActivity() {
 
                     val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
                     val rightViewPressedString = getDemoAppString(DemoAppStrings.RightViewPressed)
-                    val keyboardSearchPressedString = getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
+                    val keyboardSearchPressedString =
+                        getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
                     val keyboardController = LocalSoftwareKeyboardController.current
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
@@ -201,19 +198,29 @@ class V2SearchBarActivity : DemoActivity() {
                         ),
                         keyboardActions = KeyboardActions(
                             onSearch = {
-                                Toast.makeText(context, keyboardSearchPressedString, Toast.LENGTH_SHORT)
+                                Toast.makeText(
+                                    context,
+                                    keyboardSearchPressedString,
+                                    Toast.LENGTH_SHORT
+                                )
                                     .show()
                                 keyboardController?.hide()
                             }
                         ),
                         rightAccessoryIcon = if (displayRightAccessory) {
-                            SearchBarIcons.Office
-                        } else null,
-                        rightAccessoryIconDescription = "Office",
-                        rightAccessoryViewOnClick = {
-                            Toast.makeText(context, rightViewPressedString, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                            FluentIcon(
+                                SearchBarIcons.Office,
+                                contentDescription = "Office",
+                                onClick = {
+                                    Toast.makeText(
+                                        context,
+                                        rightViewPressedString,
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                }
+                            )
+                        } else null
                     )
 
                     val filteredPersona = mutableListOf<Persona>()

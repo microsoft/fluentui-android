@@ -3,7 +3,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -93,6 +95,25 @@ open class SearchBarTokens : ControlToken, Parcelable {
                     )
                 ).value(themeMode = FluentTheme.themeMode)
         }
+    }
+
+    @Composable
+    open fun cursorColor(searchBarInfo: SearchBarInfo): Brush {
+        return SolidColor(
+            when (searchBarInfo.style) {
+                FluentStyle.Neutral ->
+                    FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value()
+                FluentStyle.Brand ->
+                    FluentColor(
+                        light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            ThemeMode.Light
+                        ),
+                        dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                            ThemeMode.Dark
+                        )
+                    ).value()
+            }
+        )
     }
 
     @Composable
