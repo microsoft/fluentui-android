@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -13,14 +12,15 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselInfo
@@ -41,6 +41,10 @@ fun getAvatarCarouselTokens(): AvatarCarouselTokens {
 @Composable
 fun getAvatarCarouselInfo(): AvatarCarouselInfo {
     return LocalAvatarCarouselInfo.current
+}
+@Composable
+fun getStringResource(id:Int): String{
+    return LocalContext.current.resources.getString(id)
 }
 
 /**
@@ -69,6 +73,10 @@ fun AvatarCarousel(
         LocalAvatarCarouselTokens provides token,
         LocalAvatarCarouselInfo provides AvatarCarouselInfo(size)
     ) {
+        val statusString = getStringResource(R.string.Status)
+        val outOfOfficeString = getStringResource(R.string.Out_Of_Office)
+        val activeString = getStringResource(R.string.Active)
+        val inActiveString = getStringResource(R.string.Inactive)
         val scope = rememberCoroutineScope()
         val lazyListState = rememberLazyListState()
         val avatarSize = getAvatarCarouselTokens().getAvatarSize(getAvatarCarouselInfo())
@@ -93,6 +101,7 @@ fun AvatarCarousel(
                             selected = false,
                             interactionSource = interactionSource
                         )
+                val nameString =  if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
                 Column(
                     modifier
                         .onFocusEvent { focusState ->
@@ -115,16 +124,15 @@ fun AvatarCarousel(
                             indication = rememberRipple(),
                             onClickLabel = null,
                             enabled = item.enabled,
-                            onClick = item.onItemClick?:{},
+                            onClick = item.onItemClick ?: {},
                             role = Role.Button
                         )
                         .clearAndSetSemantics {
-                            contentDescription = if(size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. " +
-                                    "${if (enablePresence) "Status, ${item.person.status}," else ""} " +
-                                    "${if (enablePresence && item.person.isOOO) "Out Of Office," else ""} " +
-                                    if (item.enableActivityRing) {
-                                        if (item.person.isActive) "Active" else "Inactive"
-                                    } else ""
+                            contentDescription = nameString + "${if (enablePresence) "${statusString}, ${item.person.status}," else ""} " +
+                                        "${if (enablePresence && item.person.isOOO) "${outOfOfficeString}," else ""} " +
+                                        if (item.enableActivityRing) {
+                                            if (item.person.isActive) activeString else inActiveString
+                                        } else ""
                         },
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
