@@ -37,8 +37,7 @@ jobs:
             echo "adding files"
             git add .
             git status | grep modified
-            if [ $? -eq 0 ]
-            then
+            if [ $? -eq 0 ]; then
                 echo "Adding git commit"
                 git commit -m 'Test Localization [skip ci]'
                 echo "Pushing to origin"
