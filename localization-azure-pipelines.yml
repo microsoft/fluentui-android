@@ -26,15 +26,16 @@ jobs:
             git config --global user.email pyeruva@microsoft.com
             git config --global user.name PraveenKumar Yeruva
             git config pull.rebase false
-            #branch=localization-update-$(date)
-            git checkout -b testLocalize-$(date)
+            branch=testLocalize-$(date +%s)
+            git branch $branch origin/master
+            git checkout $branch
             # Add / update and commit
             git add .
             git status | grep modified
             if [ $? -eq 0 ]
             then
                 git commit -m 'Test Localization [skip ci]'
-                git push origin testLocalize-$(date)
+                git push origin $branch
                 gh pr create --title "Test PR" --body "Updated Test strings"
             else
                 echo "No changes since last run"
