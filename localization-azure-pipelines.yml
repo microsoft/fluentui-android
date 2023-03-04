@@ -27,6 +27,7 @@ jobs:
             git config --global user.name PraveenKumar Yeruva
             git config pull.rebase false
             branch=testLocalize-$(date +%s)
+            git branch
             echo "Creating branch $branch"
             git branch $branch
             echo "Checkout $branch"
@@ -38,8 +39,11 @@ jobs:
             git status | grep modified
             if [ $? -eq 0 ]
             then
+                echo "Adding git commit"
                 git commit -m 'Test Localization [skip ci]'
+                echo "Pushing to origin"
                 git push origin $branch
+                echo "Creating PR"
                 gh pr create --title "Test PR" --body "Updated Test strings"
             else
                 echo "No changes since last run"
