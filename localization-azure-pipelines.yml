@@ -28,7 +28,7 @@ jobs:
             git config pull.rebase false
             branch=testLocalize-$(date +%s)
             echo "Creating branch $branch"
-            git branch $branch origin/master
+            git branch $branch
             echo "Checkout $branch"
             git checkout $branch
             # Add / update and commit
