@@ -27,9 +27,13 @@ jobs:
             git config --global user.name PraveenKumar Yeruva
             git config pull.rebase false
             branch=testLocalize-$(date +%s)
-            git branch $branch
+            echo "Creating branch $branch"
+            git branch $branch origin/master
+            echo "Checkout $branch"
             git checkout $branch
             # Add / update and commit
+            git status
+            echo "adding files"
             git add .
             git status | grep modified
             if [ $? -eq 0 ]
