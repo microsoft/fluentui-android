@@ -27,7 +27,7 @@ jobs:
             git config --global user.name PraveenKumar Yeruva
             git config pull.rebase false
             branch=testLocalize-$(date +%s)
-            git branch $branch origin/master
+            git branch $branch
             git checkout $branch
             # Add / update and commit
             git add .
