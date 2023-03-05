@@ -17,6 +17,8 @@ jobs:
       
     - task: Bash@3
       displayName: Create PR
+      env:
+          GH_TOKEN: $(GH_TOKEN)
       inputs:
         targetType: 'inline'
         script: |
@@ -36,14 +38,20 @@ jobs:
             git status
             echo "adding files"
             git add .
-            git status | grep modified
-            if [ $? -eq 0 ]; then
+            if [[ `git status --porcelain` ]]; then
                 echo "Adding git commit"
                 git commit -m 'Test Localization [skip ci]'
                 echo "Pushing to origin"
-                git push origin $branch
+                git push origin HEAD
                 echo "Creating PR"
-                gh pr create --title "Test PR" --body "Updated Test strings"
+                gh api \
+                --method POST \
+                -H "Accept: application/vnd.github+json" \
+                /repos/$(GITHUB_REPOSITORY)/pulls \
+                -f title="LocalizationTitle" \
+                -f body="Message Body" \
+                -f head="$branch" \
+                -f base='main'
             else
                 echo "No changes since last run"
             fi
