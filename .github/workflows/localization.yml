@@ -23,7 +23,7 @@ jobs:
         git config --global user.name PraveenKumar Yeruva
         git config pull.rebase false
         branch=testLocalize-$GITHUB_RUN_ID
-        message=Testing localization
+        message='Testing localization'
         git branch
         echo "Creating branch $branch"
         git branch $branch
