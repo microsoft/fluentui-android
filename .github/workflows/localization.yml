@@ -12,9 +12,10 @@ jobs:
         TDBUILD_TEAM_ID: ${{ secrets.TDBUILD_TEAM_ID }}
         TDBUILD_AAD_APPLICATION_CLIENT_ID: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_ID }}
         TDBUILD_AAD_APPLICATION_CLIENT_SECRET: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_SECRET }}
-        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       run: ./localize.sh
     - name: Create Pull Request
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       run: |
         set -e
         echo "Start."
