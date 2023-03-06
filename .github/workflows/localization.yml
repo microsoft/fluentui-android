@@ -3,6 +3,7 @@ on: workflow_dispatch
 jobs:
   Localize:
     runs-on: ubuntu-20.04
+    environment: Auth
 
     steps:
     - uses: actions/checkout@v3
@@ -15,7 +16,7 @@ jobs:
       run: ./localize.sh
     - name: Create Pull Request
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         set -e
         echo "Start."
