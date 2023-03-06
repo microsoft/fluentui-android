@@ -48,7 +48,7 @@ jobs:
                 -f title="$message" \
               -f body="$message" \
               -f head="$branch" \
-              -f base='main'
+              -f base='master'
         else
             echo "No changes since last run"
         fi
