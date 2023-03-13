@@ -14,7 +14,8 @@
         android:id="@+id/header_text"
         style="@style/TextAppearance.FluentUI.PersistentBottomSheetHeading"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:accessibilityHeading="true"/>
 
     <com.microsoft.fluentui.persistentbottomsheet.SheetHorizontalItemList
         android:id="@+id/horizontal_list"
