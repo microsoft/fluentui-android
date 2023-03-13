@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Vybraté</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Nevybraté</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Zakázané</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Povolené</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Zavrieť hárok</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Zavrieť</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Hľadať</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofón</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Vymazať text</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Späť</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktivované</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Deaktivované</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutrálny</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Značka</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Plochá šípka</string>
+    <string name="fluentui_large">Veľké</string>
+    <string name="fluentui_medium">Stredné</string>
+    <string name="fluentui_small">Malé</string>
+    <string name="fluentui_subtitle">Podtitul</string>
+</resources>

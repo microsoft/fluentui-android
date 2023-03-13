@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Demostració d\'interfície d\'usuari fluent</string>
+    <string name="app_title">Interfície d\'usuari fluent</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">S\'ha seleccionat %s</string>
+    <string name="app_modifiable_parameters">Paràmetres modificables</string>
+    <string name="app_right_accessory_view">Visualització accessori dret</string>
+
+    <string name="app_style">Estil</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Icona en prémer</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Inicia la demostració</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Seqüència</string>
+    <string name="actionbar_icon_radio_label">Icona</string>
+    <string name="actionbar_basic_radio_label">Bàsic</string>
+    <string name="actionbar_position_bottom_radio_label">Inferior</string>
+    <string name="actionbar_position_top_radio_label">Superior</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Tipus d\'ActionBar</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Posició de la barra d\'accions</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">Estil de la barra d\'aplicacions</string>
+    <string name="app_bar_subtitle">Subtítol</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">S\'ha fet clic a la icona de navegació.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Indicador</string>
+    <string name="app_bar_layout_menu_settings">Configuració</string>
+    <string name="app_bar_layout_menu_search">Cerca</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Comportament del desplaçament: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Commuta el comportament del desplaçament</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Commuta la icona de navegació</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Mostra l\'avatar</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Mostra la icona enrere</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Amaga la icona</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Mostra la icona</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Commuta l\'estil de disposició de la barra de cerca</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Mostra com a visualització per a accessori</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Mostra com a visualització d\'accions</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Commuta entre temes (torna a crear l\'activitat)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Element</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Contingut extra desplaçable</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Estil del cercle</string>
+    <string name="avatar_style_square">Estil quadrat</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">Més gran de l\'X</string>
+    <string name="avatar_size_large">Gran</string>
+    <string name="avatar_size_medium">Mitjana</string>
+    <string name="avatar_size_small">Petita</string>
+    <string name="avatar_size_xsmall">Fitxer XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Avatar màxim mostrat</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Recompte d\'avatars de sobreeiximent</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Tipus de vora:</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">El grup d\'avatars amb OverflowAvatarCount definit no s\'adherirà al màxim d\'avatars mostrats.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Cara apilada</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Pila de cara</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">S\'ha fet clic al sobreeiximent</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">AvatarView a l\'índex %d clic</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Distintiu de notificació</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Punt</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Llista</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Caràcter</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Fotos</string>
+    <string name="bottom_navigation_menu_item_news">Notícies</string>
+    <string name="bottom_navigation_menu_item_alerts">Avisos</string>
+    <string name="bottom_navigation_menu_item_calendar">Calendari</string>
+    <string name="bottom_navigation_menu_item_team">Equip</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Commuta les etiquetes</string>
+    <string name="bottom_navigation_three_menu_items_button">Mostra tres elements de menú</string>
+    <string name="bottom_navigation_four_menu_items_button">Mostra quatre elements de menú</string>
+    <string name="bottom_navigation_five_menu_items_button">Mostra cinc elements de menú</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Les etiquetes s\'%s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">Full inferior</string>
+    <string name="bottom_sheet_dialog">Diagrama de full inferior</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Mostra amb elements d\'una sola línia</string>
+    <string name="bottom_sheet_with_double_line_items">Mostra amb elements de doble línia</string>
+    <string name="bottom_sheet_with_single_line_header">Mostra amb una capçalera de línia única</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Mostra amb la capçalera i els divisors de doble línia</string>
+    <string name="bottom_sheet_dialog_button">Mostra</string>
+    <string name="drawer_content_desc_collapse_state">Expandeix</string>
+    <string name="drawer_content_desc_expand_state">Minimitza</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Feu clic %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">Clic llarg %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Inserció d\'elements</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Actualitza l\'element</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Ignora</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Afegeix</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Menció</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Negreta</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Cursiva</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Subratllat</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Ratllat</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Desfés</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Refés</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Pic</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Llista</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Enllaç</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">S\'està actualitzant l\'element</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Espaiat</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Descarta la posició</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">INICI</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Espai de grup</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Espai de l\'element</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Indicador</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">S\'ha fet clic a l\'element de marca</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Respon</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">S\'ha fet clic a l\'element de resposta</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Endavant</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Reenvia l\'element al qual s\'ha fet clic</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Suprimeix</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">Suprimeix l\'element al qual s\'ha fet clic</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Càmera</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Fes una foto</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">S\'ha fet clic a l\'element de la càmera</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galeria</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Visualitza les fotos</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">S\'ha fet clic a l\'element de la galeria</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Vídeos</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Reprodueix els vídeos</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">S\'ha fet clic a l\'element de vídeos</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Administra</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Administra la biblioteca multimèdia</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">S\'ha fet clic a Administra l\'element</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">Accions de correu</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Documents</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Darrera actualització: 14:14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Comparteix</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">S\'ha fet clic a Comparteix l\'element</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Desplaça</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">Desplaça l\'element al qual s\'ha fet clic</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Suprimeix</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Suprimeix l\'element al qual s\'ha fet clic</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Informació</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">S\'ha fet clic a l\'element d\'informació</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Rellotge de paret</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">S\'ha fet clic a l\'element del rellotge</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Alarma</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">S\'ha fet clic a l\'element d\'alarma</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Fus horari</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">S\'ha fet clic a l\'element de fus horari</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Botó</string>
+    <string name="buttonbar">Barra de botons</string>
+    <string name="button_disabled">Botó inhabilitat</string>
+    <string name="button_borderless">Botó sense vores</string>
+    <string name="button_borderless_disabled">Botó Sense vores inhabilitat</string>
+    <string name="button_large">Botó gran</string>
+    <string name="button_large_disabled">Botó gran inhabilitat</string>
+    <string name="button_outlined">Botó amb contorn</string>
+    <string name="button_outlined_disabled">Botó inhabilitat amb contorn</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Tria una data</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Data única</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">No s\'ha triat cap data</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Show date picker</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Mostra el selector de data i hora amb la pestanya de data seleccionada</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Mostra el selector de data i hora amb la pestanya d\'hora seleccionada</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Mostra el selector de data i hora</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Interval de dades</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Inici:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Fi:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">No s\'ha triat cap inici</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">No s\'ha seleccionat cap final</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Selecciona la data d\'inici</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Selecciona la data de finalització</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Interval de data i hora</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">Diagrama de DateTimePicker</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Mostra el quadre de diàleg</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Mostra el calaix</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Mostra el quadre de diàleg del calaix</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">No hi ha cap quadre de diàleg de fosa inferior</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Mostra el tauler superior</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">No hi ha cap quadre de diàleg abaixat a la part superior</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Mostra el quadre de diàleg superior de la visualització d\'ancoratge</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Mostra el quadre de diàleg de la part superior del títol</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Mostra el quadre de diàleg superior del títol a sota</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Mostra el calaix dret</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Mostra el calaix esquerre</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Títol, text principal</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Subtítol, text secundari</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Text de subtítol personalitzat</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Peu de pàgina, text terciari</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Llista d\'una línia amb text de capçalera secundària gris</string>
+    <string name="list_item_sub_header_two_line">Llista de dues línies</string>
+    <string name="list_item_sub_header_two_line_dense">Llista de dues línies amb espaiat dens</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Llista de dues línies amb visualització de subtítols secundari personalitzada</string>
+    <string name="list_item_sub_header_three_line">Llista de tres línies amb text de capçalera secundària negre</string>
+    <string name="list_item_sub_header_no_custom_views">Elements de llista sense visualitzacions personalitzades</string>
+    <string name="list_item_sub_header_large_header">Enumereu elements amb visualitzacions personalitzades grans</string>
+    <string name="list_item_sub_header_wrapped_text">Enumera els elements amb text ajustat</string>
+    <string name="list_item_sub_header_truncated_text">Mostra els elements amb text truncat</string>
+    <string name="list_item_sub_header_custom_accessory_text">Acció</string>
+    <string name="list_item_truncation_middle">Truncatge mitjà.</string>
+    <string name="list_item_truncation_end">Trunca el truncament.</string>
+    <string name="list_item_truncation_start">Inicia el truncatge.</string>
+    <string name="list_item_custom_text_view">Valor</string>
+    <string name="list_item_click">Heu fet clic a l\'element de la llista.</string>
+    <string name="list_item_click_custom_accessory_view">Heu fet clic a la visualització d\'accessoris personalitzada.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Heu fet clic a la visualització accessori personalitzat de subtítols.</string>
+    <string name="list_item_more_options">Més opcions</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Selecciona</string>
+    <string name="people_picker_select_deselect_example">Selecció de selecció</string>
+    <string name="people_picker_none_example">Cap</string>
+    <string name="people_picker_delete_example">Suprimeix</string>
+    <string name="people_picker_custom_persona_description">Aquest exemple mostra com crear un objecte IPersona personalitzat.</string>
+    <string name="people_picker_dialog_title_removed">Heu suprimit una persona:</string>
+    <string name="people_picker_dialog_title_added">Heu afegit una persona:</string>
+    <string name="people_picker_drag_started">L\'arrossegament ha començat</string>
+    <string name="people_picker_drag_ended">S\'ha acabat d\'arrossegar</string>
+    <string name="people_picker_picked_personas_listener">Oient de rols</string>
+    <string name="people_picker_suggestions_listener">Oient de suggeriments</string>
+    <string name="people_picker_persona_chip_click">Heu fet clic al %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Expandeix el full inferior persistent</string>
+    <string name="collapse_persistent_sheet_button"> Amaga el full inferior persistent</string>
+    <string name="show_persistent_sheet_button"> Mostra el full inferior persistent</string>
+    <string name="new_view">Esta és la visualització nova</string>
+    <string name="toggle_sheet_content">Commuta el contingut del full inferior</string>
+    <string name="switch_to_custom_content">Canvia al contingut personalitzat</string>
+    <string name="one_line_content">Contingut del full de fons d\'una línia</string>
+    <string name="toggle_disable_all_items">Commuta l\'opció Inhabilita tots els elements</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Afegeix o suprimeix la visualització</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Canvia l\'alçada reduïda</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Crea una carpeta</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">S\'ha fet clic a Un element de carpeta nou</string>
+    <string name="persistent_sheet_item_edit_title">Edita</string>
+    <string name="persistent_sheet_item_edit_toast">Edita l\'element al qual s\'ha fet clic</string>
+    <string name="persistent_sheet_item_save_title">Desa</string>
+    <string name="persistent_sheet_item_save_toast">S\'ha fet clic a Desa l\'element</string>
+    <string name="persistent_sheet_item_zoom_in_title">Amplia</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> S\'ha fet clic a Amplia l\'element</string>
+    <string name="persistent_sheet_item_zoom_out_title">Redueix</string>
+    <string name="persistent_sheet_item_zoom_out_toast">S\'ha fet clic a l\'element Desprotegit</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Disponible</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Tsenada Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Nadala Polònia</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Burton per a desenes de faen</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Gingebre de gingebre</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Cap al bosc d\'Elonet</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Nàson de tsenta</string>
+    <string name="persona_name_henry_brill">Brill d\'ansa</string>
+    <string name="persona_name_isaac_fielder">Camp Isaac</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Patterson feren un persecució de l\'estat de l</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio d\'agost</string>
+    <string name="persona_name_miguel_garcia">Esteve Desvalls</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Ricar Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Charlotte Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Dissenyador</string>
+    <string name="persona_subtitle_engineer">Enginyer</string>
+    <string name="persona_subtitle_manager">Administrador</string>
+    <string name="persona_subtitle_researcher">Cercador</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (exemple de text llarg per provar el truncatge)</string>
+    <string name="persona_view_description_xxlarge">XXLarge avatar amb tres línies de text</string>
+    <string name="persona_view_description_large">Avatar gran amb dos línies de text</string>
+    <string name="persona_view_description_small">Avatar xicotet amb una línia de text</string>
+    <string name="people_picker_hint">Cap amb suggeriment que es mostri</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Persona Chip inhabilitada</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Rol d\'error</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Persona Chip sense icona de tancament</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Xip de rol bàsic</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Heu fet clic en un xip de rol seleccionat.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Comparteix</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Segueix</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Convida persones</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Actualització de la pàgina</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Obre-ho al navegador</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Aquest és un menú emergent de diverses línies. El nombre màxim de línies s\'ha definit en dos; la resta del text es truncarà.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Totes les notícies</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Notícies guardades</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Notícies de llocs</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Notifica-ho fora de l\'horari laboral</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Notifica-ho quan el dispositiu estiga inactiu a l\'escriptori</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Heu fet clic a l\'element:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Menú senzill</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Menú senzill 2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Menú amb un element selectable i un divisor</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Menú amb tots els elements que es poden seleccionar, icones i text llarg</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Mostra</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Progrés circular</string>
+    <string name="circular_progress_xsmall">Fitxer XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Petita</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Mitjana</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">Gran</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Progrés lineal</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Indeterminat</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Determinades</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Searchbar</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Resposta de trucada del micròfon</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">S\'ha prement el micròfon</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">S\'ha prement la visualització dreta</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">S\'ha prement la recerca del teclat</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Acció</string>
+    <string name="snackbar_action_long">Acció de text llarg</string>
+    <string name="snackbar_single_line">Barra d\'berenar d\'una línia</string>
+    <string name="snackbar_multiline">Açò és una barra d\'aperitius de diverses línies. El nombre màxim de línies s\'ha definit en dos; la resta del text es truncarà.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Açò és un anunci de la barra d\'aperitius. S\'utilitza per comunicar característiques noves.</string>
+    <string name="snackbar_primary">Açò és una barra d\'aperitius principal.</string>
+    <string name="snackbar_light">Açò és una barra d\'aperitius clara.</string>
+    <string name="snackbar_warning">Açò és una barra d\'advertiment.</string>
+    <string name="snackbar_danger">Açò és una barra d\'aperitius en perill.</string>
+    <string name="snackbar_description_single_line">Short duration</string>
+    <string name="snackbar_description_single_line_custom_view">Duració llarga amb progrés circular com a visualització personalitzada xicoteta</string>
+    <string name="snackbar_description_single_line_action">Short duration with action</string>
+    <string name="snackbar_description_single_line_action_custom_view">Short duration with action and medium custom view</string>
+    <string name="snackbar_description_single_line_custom_text_color">Short duration with customized text color</string>
+    <string name="snackbar_description_multiline">Duració llarga</string>
+    <string name="snackbar_description_multiline_custom_view">Duració llarga amb una visualització personalitzada xicoteta</string>
+    <string name="snackbar_description_multiline_action">Duració indefinida amb actualitzacions d\'acció i text</string>
+    <string name="snackbar_description_multiline_action_custom_view">Short duration with action and medium custom view</string>
+    <string name="snackbar_description_multiline_action_long">Short duration with long action text</string>
+    <string name="snackbar_description_announcement">Short duration</string>
+    <string name="snackbar_description_updated">El text s\'ha actualitzat.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Mostra la barra d\'aperitius</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Línia única</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Multilínia</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Estil d\'anunci</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Estil principal</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Estil clar</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Estil d\'advertència</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Estil de perill</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Inici</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Correu electrònic</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Configuració</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Notificació</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Més</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Alineació del text</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Vertical</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Horitzontal</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(sense text)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Elements de pestanya</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Títol</string>
+    <string name="cell_sample_description">Descripció</string>
+    <string name="calculate_cells">Carrega o calcula 100 cel·les</string>
+    <string name="calculate_layouts">Carrega o calcula 100 disposicions</string>
+    <string name="template_list">Template List</string>
+    <string name="regular_list">Llista normal</string>
+    <string name="cell_example_title">Títol: cel·la</string>
+    <string name="cell_example_description">Descripció: toca per canviar l\'orientació</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Pestanya estàndard 2-Segment</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Pestanya estàndard 3-Segment</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Pestanya estàndard 4-Segment</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Pestanya estàndard amb pager</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Canvia de pestanya</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Pestanya De píndoles </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Toca per a l\'indicador de funció</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Toqueu per obtenir informació sobre eines del calendari personalitzat</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Toca indicador de funció de color personalitzat</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Toca per descartar la informació sobre eines</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Toqueu per obtenir informació sobre eines de visualització personalitzada</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Indicador de funció del color personalitzat principal</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Informació sobre eines de l\'extrem superior amb desplaçament de 10 pX</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Indicador de funció de l\'Inici inferior</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Indicador de funció final inferior amb desplaçament de 10 p.</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Descarta dins de l\'indicador de funció</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Indicador de funció descartat</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Headline is Light 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">El títol 1 és de 20 sp mitjà</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">El títol 2 és normal de 20 sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">El títol és 18sp normal</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">El subtítol 1 és normal 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">El subtítol 2 és de 16 sp mitjà</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">El cos 1 és 14sp regular</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">El cos 2 és mitjà 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">La llegenda és 12sp regular</string>
+
+</resources>

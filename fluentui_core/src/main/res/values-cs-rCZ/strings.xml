@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Vybráno</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Nevybráno</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Zakázáno</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Povoleno</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Zavřít list</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Zavřít</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Hledat</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Vymazat text</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Zpět</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktivováno</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Deaktivováno</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutrální</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Značka</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Dvojitá šipka</string>
+    <string name="fluentui_large">Velké</string>
+    <string name="fluentui_medium">Střední</string>
+    <string name="fluentui_small">Malé</string>
+    <string name="fluentui_subtitle">Titulek</string>
+</resources>

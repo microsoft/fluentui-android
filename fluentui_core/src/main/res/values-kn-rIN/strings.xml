@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">ಹಾಳೆಯನ್ನು ಮುಚ್ಚಿ</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">ಮುಚ್ಚಿರಿ</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">ಶೋಧಿಸಿ</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">ಮೈಕ್ರೋಫೋನ್</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">ಪಠ್ಯ ತೆರವುಗೊಳಿಸಿ</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">ಹಿಂದೆ</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">ತಟಸ್ಥ</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">ಬ್ರ್ಯಾಂಡ್</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">ಚೆವರಾನ್</string>
+    <string name="fluentui_large">ದೊಡ್ಡದು</string>
+    <string name="fluentui_medium">ಮಧ್ಯಮ</string>
+    <string name="fluentui_small">ಚಿಕ್ಕದು</string>
+    <string name="fluentui_subtitle">ಉಪಶೀರ್ಷಿಕೆ</string>
+</resources>

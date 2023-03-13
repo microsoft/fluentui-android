@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI डेमो</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">चयनित %s</string>
+    <string name="app_modifiable_parameters">संशोधित करने योग्य पैरामीटर्स</string>
+    <string name="app_right_accessory_view">दायाँ सहायक दृश्य</string>
+
+    <string name="app_style">शैली</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">चिह्न दबाया गया</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">डेमो प्रारंभ करें</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">कैरूज़ेल</string>
+    <string name="actionbar_icon_radio_label">आइकन</string>
+    <string name="actionbar_basic_radio_label">मूलभूत</string>
+    <string name="actionbar_position_bottom_radio_label">नीचे</string>
+    <string name="actionbar_position_top_radio_label">शीर्ष</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">क्रिया पट्टी प्रकार</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">क्रिया पट्टी स्थिति</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">AppBar शैली</string>
+    <string name="app_bar_subtitle">उप-शीर्षक</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">नेविगेशन चिह्न क्लिक किया गया.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">ध्वज</string>
+    <string name="app_bar_layout_menu_settings">सेटिंग</string>
+    <string name="app_bar_layout_menu_search">खोज</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">स्क्रॉल व्यवहार: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">स्क्रॉल व्यवहार टॉगल करें</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">नेविगेशन चिह्न टॉगल करें</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">अवतार दिखाएँ</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">वापस चिह्न दिखाएँ</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">आइकन छुपाएँ</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">चिह्न दिखाएँ</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">खोज पट्टी लेआउट शैली टॉगल करें</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">सहायक दृश्य के रूप में दिखाएँ</string>
+    <string name="app_bar_layout_searchbar_action_view_button">क्रिया दृश्य के रूप में दिखाएँ</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">विषयवस्तुओं के बीच टॉगल करें (गतिविधि फिर से बनाएँ)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">आइटम</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">अतिरिक्त स्क्रॉल करने योग्य सामग्री</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">वृत्त शैली</string>
+    <string name="avatar_style_square">वर्ग शैली</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">बड़ा</string>
+    <string name="avatar_size_medium">मध्यम</string>
+    <string name="avatar_size_small">छोटा</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">अधिकतम प्रदर्शित अवतार</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">ओवरफ़्लो अवतार गणना</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">बॉर्डर प्रकार:</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">OverflowAvatarCount सेट वाला अवतार समूह अधिकतम प्रदर्शित अवतार का पालन नहीं करेगा.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">चेहरा स्टैक</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">चेहरे पर ढेर</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">ओवरफ़्लो क्लिक किया गया</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">अनुक्रमणिका पर अवतार दृश्य क्लिक %d</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">सूचना बैज</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">डॉट</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">सूची</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">वर्ण</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">फ़ोटोज़</string>
+    <string name="bottom_navigation_menu_item_news">समाचार</string>
+    <string name="bottom_navigation_menu_item_alerts">सूचनाएँ</string>
+    <string name="bottom_navigation_menu_item_calendar">कैलेंडर</string>
+    <string name="bottom_navigation_menu_item_team">टीम</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">लेबल टॉगल करें</string>
+    <string name="bottom_navigation_three_menu_items_button">तीन मेनू आइटम दिखाएँ</string>
+    <string name="bottom_navigation_four_menu_items_button">चार मेनू आइटम दिखाएँ</string>
+    <string name="bottom_navigation_five_menu_items_button">पाँच मेनू आइटम दिखाएँ</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">लेबल %s हैं</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">बॉटमशीट</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">एकल पंक्ति आइटम्स के साथ दिखाएँ</string>
+    <string name="bottom_sheet_with_double_line_items">दोहरी रेखा वाले आइटम दिखाएँ</string>
+    <string name="bottom_sheet_with_single_line_header">एकल पंक्ति शीर्ष लेख के साथ दिखाएँ</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">दोहरी रेखा वाले शीर्ष लेख और विभाजकों के साथ दिखाएँ</string>
+    <string name="bottom_sheet_dialog_button">दिखाएँ</string>
+    <string name="drawer_content_desc_collapse_state">विस्तृत करें</string>
+    <string name="drawer_content_desc_expand_state">छोटा करें</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">%s क्लिक करें</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">%s लंबा क्लिक करें</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">आइटम सम्मिलित करें</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">आइटम अद्यतन करें</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">ख़ारिज करें</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">जोड़ें</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">उल्लेख करें</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">बोल्ड करें</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">इटैलिक</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">रेखांकित करें</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">स्ट्राइकथ्रू</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">पूर्ववत करें</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">फिर से करें</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">बुलेट</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">सूची</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">लिंक</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">आइटम अद्यतन कर रहा है</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">रिक्ति</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">स्थिति ख़ारिज करें</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">प्रारंभ करें</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">समूह स्थान</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">आइटम स्थान</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">dp %d</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">ध्वज</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">ध्वज आइटम क्लिक किया गया</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">उत्तर दें</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">उत्तर आइटम क्लिक किया गया</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">अग्रेषित करें</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">फ़ॉरवर्ड आइटम क्लिक किया गया</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">हटाएँ</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">क्लिक किया गया आइटम हटाएँ</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">अवतार</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">कैमरा</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">एक फ़ोटो लें</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">कैमरा आइटम क्लिक किया गया</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">गैलरी</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">अपने फ़ोटो देखें</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">गैलरी आइटम क्लिक किया गया</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">वीडियो</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">अपने वीडियो चलाएँ</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">वीडियो आइटम क्लिक किया गया</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">प्रबंधित करें</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">अपनी मीडिया लाइब्रेरी प्रबंधित करें</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">क्लिक किया गया आइटम प्रबंधित करें</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">ईमेल क्रियाएँ</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">दस्तावेज़</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">अंतिम अद्यतन 2:14 अपराह्न</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">साझा करें</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">साझा आइटम क्लिक किया गया</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">ले जाएँ</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">क्लिक किया गया आइटम ले जाएँ</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">हटाएँ</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">क्लिक किया गया आइटम हटाएँ</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">जानकारी</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">जानकारी आइटम क्लिक किया गया</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">घड़ी</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">घड़ी आइटम क्लिक किया गया</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">अलार्म</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">अलार्म आइटम क्लिक किया गया</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">समय क्षेत्र</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">समय क्षेत्र आइटम क्लिक किया गया</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">बटन</string>
+    <string name="buttonbar">बटन पट्टी</string>
+    <string name="button_disabled">अक्षम किया गया बटन</string>
+    <string name="button_borderless">बॉर्डर रहित बटन</string>
+    <string name="button_borderless_disabled">बॉर्डररहित अक्षम बटन</string>
+    <string name="button_large">बड़ा बटन</string>
+    <string name="button_large_disabled">बड़ा अक्षम बटन</string>
+    <string name="button_outlined">बाह्यरेखित बटन</string>
+    <string name="button_outlined_disabled">बाह्यरेखांकित अक्षम बटन</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">कोई दिनांक चुनें</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">एकल दिनांक</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">कोई दिनांक नहीं चुना गया</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Show date picker</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">चयनित दिनांक टैब के साथ दिनांक समय पिकर दिखाएँ</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">चयनित समय टैब के साथ दिनांक समय पिकर दिखाएँ</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Show date time picker</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">दिनांक श्रेणी</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">प्रारंभ:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">समाप्त:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">कोई प्रारंभ नहीं चुना गया</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">कोई अंत नहीं चुना गया</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">प्रारंभ दिनांक का चयन करें</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">समाप्ति दिनांक का चयन करें</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">दिनांक समय सीमा</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">संवाद दिखाएँ</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">ड्रॉवर दिखाएँ</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">ड्रॉवर संवाद दिखाएँ</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">कोई फ़ेड बॉटम संवाद नहीं</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">शीर्ष ड्रॉवर दिखाएँ</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">शीर्ष फ़ेड संवाद नहीं</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> एंकर दृश्य शीर्ष संवाद दिखाएँ</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> कोई शीर्षक शीर्ष संवाद नहीं दिखाएँ</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> शीर्षक शीर्ष संवाद के नीचे दिखाएँ</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">दायाँ ड्रॉवर दिखाएँ</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">बायाँ ड्रॉवर दिखाएँ</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">शीर्षक, प्राथमिक पाठ</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">उपशीर्षक, द्वितीयक पाठ</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">कस्टम उपशीर्षक पाठ</string>
+    <!-- Footer -->
+    <string name="list_item_footer">पाद लेख, तृतीयक पाठ</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">धूसर उप शीर्ष लेख पाठ के साथ एकल-पंक्ति सूची</string>
+    <string name="list_item_sub_header_two_line">दो-पंक्ति सूची</string>
+    <string name="list_item_sub_header_two_line_dense">घनी रिक्ति वाली दो-पंक्ति सूची</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">कस्टम द्वितीयक उपशीर्षक दृश्य के साथ दो पंक्ति सूची</string>
+    <string name="list_item_sub_header_three_line">काले उप शीर्ष लेख पाठ के साथ तीन-पंक्ति वाली सूची</string>
+    <string name="list_item_sub_header_no_custom_views">बिना कस्टम दृश्य वाले आइटम सूचीबद्ध करें</string>
+    <string name="list_item_sub_header_large_header">बड़े कस्टम दृश्यों वाले आइटम सूचीबद्ध करें</string>
+    <string name="list_item_sub_header_wrapped_text">लपेटे गए पाठ के साथ आइटम सूचीबद्ध करें</string>
+    <string name="list_item_sub_header_truncated_text">काट-काट कर निकाले गए पाठ वाले आइटम सूचीबद्ध करें</string>
+    <string name="list_item_sub_header_custom_accessory_text">कार्रवाई</string>
+    <string name="list_item_truncation_middle">मध्य काट-छाँट.</string>
+    <string name="list_item_truncation_end">काट-छाँट समाप्त.</string>
+    <string name="list_item_truncation_start">काट-छाँट प्रारंभ करें.</string>
+    <string name="list_item_custom_text_view">मान</string>
+    <string name="list_item_click">आपने सूची आइटम पर क्लिक किया.</string>
+    <string name="list_item_click_custom_accessory_view">आपने कस्टम सहायक उपकरण दृश्य पर क्लिक किया.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">आपने उप शीर्ष लेख कस्टम सहायक उपकरण दृश्य पर क्लिक किया.</string>
+    <string name="list_item_more_options">अधिक विकल्प</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">चुनें</string>
+    <string name="people_picker_select_deselect_example">चयन चयन करें</string>
+    <string name="people_picker_none_example">कोई नहीं</string>
+    <string name="people_picker_delete_example">हटाएँ</string>
+    <string name="people_picker_custom_persona_description">यह उदाहरण कस्टम IPersona ऑब्जेक्ट बनाने का तरीका दिखाता है.</string>
+    <string name="people_picker_dialog_title_removed">आपने एक व्यक्ति को निकाल दिया:</string>
+    <string name="people_picker_dialog_title_added">आपने एक व्यक्ति जोड़ा:</string>
+    <string name="people_picker_drag_started">खींचना प्रारंभ किया गया</string>
+    <string name="people_picker_drag_ended">खींचना समाप्त</string>
+    <string name="people_picker_picked_personas_listener">Personas Listener</string>
+    <string name="people_picker_suggestions_listener">सुझाव श्रोता</string>
+    <string name="people_picker_persona_chip_click">आपने %s पर क्लिक किया</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">निर्बाध निचला पत्रक विस्तृत करें</string>
+    <string name="collapse_persistent_sheet_button"> निर्बाध निचला पत्रक छुपाएँ</string>
+    <string name="show_persistent_sheet_button"> निर्बाध निचला पत्रक दिखाएँ</string>
+    <string name="new_view">यह नया दृश्य है</string>
+    <string name="toggle_sheet_content">निचली पत्रक सामग्री टॉगल करें</string>
+    <string name="switch_to_custom_content">कस्टम सामग्री पर स्विच करें</string>
+    <string name="one_line_content">एक पंक्ति निचली सामग्री</string>
+    <string name="toggle_disable_all_items">सभी आइटम्स अक्षम करें टॉगल करें</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">दृश्य जोड़ें/निकालें</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> संक्षिप्त ऊँचाई परिवर्तित करें</string>
+    <string name="persistent_sheet_item_create_new_folder_title">नया फ़ोल्डर</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">नया फ़ोल्डर आइटम क्लिक किया गया</string>
+    <string name="persistent_sheet_item_edit_title">संपादित करें</string>
+    <string name="persistent_sheet_item_edit_toast">क्लिक किया गया आइटम संपादित करें</string>
+    <string name="persistent_sheet_item_save_title">सहेजें</string>
+    <string name="persistent_sheet_item_save_toast">आइटम सहेजें क्लिक किया गया</string>
+    <string name="persistent_sheet_item_zoom_in_title">ज़ूम इन करें</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> ज़ूम इन आइटम क्लिक किया गया</string>
+    <string name="persistent_sheet_item_zoom_out_title">ज़ूम आउट करें</string>
+    <string name="persistent_sheet_item_zoom_out_toast">ज़ूम आउट आइटम क्लिक किया गया</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">उपलब्ध</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">एलन मुंगर</string>
+    <string name="persona_name_amanda_brady">अमांडा ब्राडी</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">कार्लोस स्लेटरी</string>
+    <string name="persona_name_carole_poland">कैरोल पोलैंड</string>
+    <string name="persona_name_cecil_folk">सेसिल लोक</string>
+    <string name="persona_name_celeste_burton">सेलेस्ट बर्टन</string>
+    <string name="persona_name_charlotte_waltson">शार्लोट वाल्टसन</string>
+    <string name="persona_name_colin_ballinger">कॉलिन बॉलिंगर</string>
+    <string name="persona_name_daisy_phillips">डेज़ी फ़िलिप्स</string>
+    <string name="persona_name_elliot_woodward">एलियॉट वुडवर्ड</string>
+    <string name="persona_name_elvia_atkins">एल्विया एटकिन</string>
+    <string name="persona_name_erik_nason">एरिक नेसन</string>
+    <string name="persona_name_henry_brill">ब्रेसन ब्राल</string>
+    <string name="persona_name_isaac_fielder">इसहाक फ़ील्डर</string>
+    <string name="persona_name_johnie_mcconnell">जॉनी मैककॉनेल</string>
+    <string name="persona_name_kat_larsson">कत लार्सन</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">केविन स्टर्गिस</string>
+    <string name="persona_name_kristen_patterson">क्रिस्टन पैटरसन</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio अगस्त</string>
+    <string name="persona_name_miguel_garcia">माइगल गार्सिया</string>
+    <string name="persona_name_mona_kane">मोना कान</string>
+    <string name="persona_name_robin_counts">रॉबिन गणना</string>
+    <string name="persona_name_robert_tolbert">राबर्ट टोलबर्ट</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">डिज़ाइनर</string>
+    <string name="persona_subtitle_engineer">इंजीनियर</string>
+    <string name="persona_subtitle_manager">प्रबंधक</string>
+    <string name="persona_subtitle_researcher">शोधकर्ता</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (काट-छाँट का परीक्षण करने के लिए लंबा पाठ उदाहरण)</string>
+    <string name="persona_view_description_xxlarge">पाठ की तीन पंक्तियों वाला XXLarge अवतार</string>
+    <string name="persona_view_description_large">पाठ की दो पंक्तियों वाला बड़ा अवतार</string>
+    <string name="persona_view_description_small">पाठ की एक पंक्ति वाला छोटा अवतार</string>
+    <string name="people_picker_hint">संकेत के साथ कोई नहीं दिखाया गया</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">अक्षम किया गया व्यक्ति चिप</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">त्रुटि व्यक्ति चिप</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">कोई बंद चिह्न के साथ Persona चिप</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">मूल व्यक्ति चिप</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">आपने किसी चयनित व्यक्ति चिप पर क्लिक किया है.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">साझा करें</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">अनुसरण करें</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">लोगों को आमंत्रित करें</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">पृष्ठ ताज़ा करें</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">ब्राउज़र में खोलें</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">यह एकाधिक पंक्ति पॉपअप मेनू है. अधिकतम पंक्तियाँ दो पर सेट हैं, शेष पाठ छोटा हो जाएगा.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">सभी समाचार</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">सहेजा गया समाचार</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">साइट्स से समाचार</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">कार्य घंटों के बाहर सूचित करें</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">डेस्कटॉप पर निष्क्रिय होने पर सूचित करें</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">आपने आइटम पर क्लिक किया:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">साधारण मेनू</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">साधारण मेनू2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">एक चयन योग्य आइटम और विभाजक वाला मेनू</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">सभी चयन योग्य आइटम, आइकन और लंबे पाठ वाला मेनू</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">दिखाएँ</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">वृत्ताकार प्रगति</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">छोटा</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">मध्यम</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">बड़ा</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">रेखीय प्रगति</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">अस्पष्ट</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">निर्धारित करें</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">खोज पट्टी</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">माइक्रोफ़ोन कॉलबैक</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">माइक्रोफ़ोन दबाया गया</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">दायाँ दृश्य दबाया गया</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">कुंजीपटल खोज दबाई गई</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">कार्रवाई</string>
+    <string name="snackbar_action_long">लंबा पाठ क्रिया</string>
+    <string name="snackbar_single_line">एकल लाइन स्नैकबार</string>
+    <string name="snackbar_multiline">यह एकाधिक रेखा स्नैकबार है. अधिकतम पंक्तियाँ दो पर सेट हैं, शेष पाठ छोटा हो जाएगा.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">यह घोषणा स्नैकबार है. इसका उपयोग नई सुविधाओं से संचार करने के लिए किया जाता है.</string>
+    <string name="snackbar_primary">यह एक प्राथमिक स्नैकबार है.</string>
+    <string name="snackbar_light">यह एक हल्की स्नैकबार है.</string>
+    <string name="snackbar_warning">यह एक चेतावनी स्नैकबार है.</string>
+    <string name="snackbar_danger">यह एक खतरा स्नैकबार है.</string>
+    <string name="snackbar_description_single_line">छोटी अवधि</string>
+    <string name="snackbar_description_single_line_custom_view">छोटे कस्टम दृश्य के रूप में वृत्ताकार प्रगति के साथ लंबी अवधि</string>
+    <string name="snackbar_description_single_line_action">क्रिया के साथ छोटी अवधि</string>
+    <string name="snackbar_description_single_line_action_custom_view">क्रिया और मध्यम कस्टम दृश्य के साथ छोटी अवधि</string>
+    <string name="snackbar_description_single_line_custom_text_color">अनुकूलित पाठ रंग के साथ छोटी अवधि</string>
+    <string name="snackbar_description_multiline">लंबी अवधि</string>
+    <string name="snackbar_description_multiline_custom_view">छोटे कस्टम दृश्य के साथ लंबी अवधि</string>
+    <string name="snackbar_description_multiline_action">क्रिया और पाठ अद्यतनों के साथ अनिश्चित अवधि</string>
+    <string name="snackbar_description_multiline_action_custom_view">क्रिया और मध्यम कस्टम दृश्य के साथ छोटी अवधि</string>
+    <string name="snackbar_description_multiline_action_long">लंबे क्रिया पाठ के साथ छोटी अवधि</string>
+    <string name="snackbar_description_announcement">छोटी अवधि</string>
+    <string name="snackbar_description_updated">This text has been updated.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">स्नैकबार दिखाएँ</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">एकल रेखा</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">बहु-रेखा</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">घोषणा शैली</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">प्राथमिक शैली</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">हल्की शैली</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">चेतावनी शैली</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">खतरा शैली</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">होम पेज</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">मेल</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">सेटिंग</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">अधिसूचना</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">अधिक</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">पाठ संरेखण</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">अनुलंब</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">क्षैतिज</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(कोई पाठ नहीं)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">टैब आइटम</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">शीर्षक</string>
+    <string name="cell_sample_description">वर्णन</string>
+    <string name="calculate_cells">100 कक्ष लोड/परिकलित करें</string>
+    <string name="calculate_layouts">100 लेआउट लोड/परिकलित करें</string>
+    <string name="template_list">Template List</string>
+    <string name="regular_list">नियमित सूची</string>
+    <string name="cell_example_title">शीर्षक: कक्ष</string>
+    <string name="cell_example_description">वर्णन: ओरिएंटेशन बदलने के लिए टैप करें</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">मानक टैब 2-खंड</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">मानक टैब 3-खंड</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">मानक टैब 4-खंड</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">पेजर के साथ मानक टैब</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">टैब स्विच करें</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">गोली टैब </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">टूलटिप के लिए टैप करें</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">कस्टम कैलेंडर टूलटिप के लिए टैप करें</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">कस्टम रंग टूलटिप टैप करें</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">टूलटिप के अंदर ख़ारिज करें के लिए टैप करें</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">कस्टम दृश्य टूलटिप के लिए टैप करें</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">शीर्ष कस्टम रंग टूलटिप</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">10dp ऑफ़सेटX के साथ शीर्ष समाप्ति टूलटिप</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">निचला प्रारंभ टूलटिप</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">10dp ऑफ़सेटी के साथ निचला अंत टूलटिप</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">टूलटिप के अंदर ख़ारिज करें</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">टूलटिप ख़ारिज किया गया</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">हेडलाइन हल्की 28sp है</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">शीर्षक 1 मध्यम 20sp है</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">शीर्षक 2 नियमित 20sp है</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">शीर्षक नियमित 18sp है</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">उपशीर्षक 1 नियमित 16sp है</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">उपशीर्षक 2 मध्यम 16sp है</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">मुख्य भाग 1 नियमित 14sp है</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">मुख्य भाग 2 मध्यम 14sp है</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">कैप्शन नियमित 12sp है</string>
+
+</resources>

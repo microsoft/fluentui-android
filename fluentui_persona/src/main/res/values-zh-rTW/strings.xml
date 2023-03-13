@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="persona_title_placeholder">沒有名稱</string>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- *** Persona *** -->
+    <string name="persona_title_placeholder">沒有名稱</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Status">狀態</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Out_Of_Office">不在辦公室</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Active">作用中</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Inactive">非使用中</string>
 </resources>

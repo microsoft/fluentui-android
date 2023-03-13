@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Selezionato</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Non selezionata</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Disabilitato</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Abilitato</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Chiudi foglio di lavoro</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Chiudi</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Cerca</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Microfono</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Cancella testo</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Indietro</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Attivata</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Disattivata</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Né soddisfacente né insoddisfacente</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Marchio</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Gallone</string>
+    <string name="fluentui_large">Grande</string>
+    <string name="fluentui_medium">Medio</string>
+    <string name="fluentui_small">Piccola</string>
+    <string name="fluentui_subtitle">Sottotitolo</string>
+</resources>

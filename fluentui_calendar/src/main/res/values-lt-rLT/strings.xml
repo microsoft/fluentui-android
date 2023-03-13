@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">Pr</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">A</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">T</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">K</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">Pn</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">Š</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">S</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Eiti į paskesnę savaitę</string>
+    <string name="accessibility_goto_previous_week">Eiti į ankstesnę savaitę</string>
+    <string name="accessibility_today">šiandien</string>
+    <string name="accessibility_selected">Pasirinkta</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Atlikta</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Šiandien</string>
+    <string name="tomorrow">Rytoj</string>
+    <string name="yesterday">Vakar</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Pradžios laikas</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Pabaigos laikas</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Pradžios data</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Pabaigos data</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Pasirinkti laiką</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Pasirinkti datą</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Datos/laiko parinkiklis</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Datos parinkiklis</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Datos/laiko parinkiklio diapazonas</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Datos/laiko parinkiklio diapazonas</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Skirtukas Pradžios laikas</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Skirtukas Pabaigos laikas</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Skirtukas Pradžios data</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Skirtukas Pabaigos data</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Uždaryti dialogo langą</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Pavėlinti mėnesį</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">pasirinkti kitą mėnesį</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Paankstinti mėnesį</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">pasirinkti ankstesnį mėnesį</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Pavėlinti dieną</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">pasirinkti kitą dieną</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Paankstinti dieną</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">pasirinkti ankstesnę dieną</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Pavėlinti metus</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">pasirinkti kitus metus</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Paankstinti metus</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">pasirinkti ankstesnius metus</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Pavėlinti datą</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">pasirinkti kitą datą</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Paankstinti datą</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">pasirinkti ankstesnę datą</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Pavėlinti valandą</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">pasirinkti kitą valandą</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Paankstinti valandą</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">pasirinkti ankstesnę valandą</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Pavėlinti minutę</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">pasirinkti kitą minutę</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Paankstinti minutę</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">pasirinkti ankstesnę minutę</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Perjungti priešpiet ir popiet laikotarpį</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">perjungti priešpiet ir popiet laikotarpį</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">Pasirinkta: %s</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">pasirinkta</string>
+</resources>

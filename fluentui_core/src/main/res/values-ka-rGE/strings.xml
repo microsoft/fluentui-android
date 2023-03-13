@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">არჩეულია</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">არ არის არჩეული</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">გამორთულია</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">ჩართულია</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">ფურცლის დახურვა</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">დახურვა</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">ძიება</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">მიკროფონი</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">ტექსტის გასუფთავება</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">უკან</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">გააქტიურებულია</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">დეაქტივირებულია</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">ნეიტრალური</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">ბრენდი</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">შევრონი</string>
+    <string name="fluentui_large">დიდი</string>
+    <string name="fluentui_medium">საშუალო</string>
+    <string name="fluentui_small">პატარა</string>
+    <string name="fluentui_subtitle">ქვესათაური</string>
+</resources>

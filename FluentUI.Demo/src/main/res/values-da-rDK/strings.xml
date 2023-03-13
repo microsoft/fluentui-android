@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI Demo</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">Markerede %s</string>
+    <string name="app_modifiable_parameters">Redigerbare parametre</string>
+    <string name="app_right_accessory_view">Visning af højre tilbehør</string>
+
+    <string name="app_style">Typografi</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Der er trykket på ikonet</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Start Demo</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Karrusel</string>
+    <string name="actionbar_icon_radio_label">Ikon</string>
+    <string name="actionbar_basic_radio_label">Grundlæggende</string>
+    <string name="actionbar_position_bottom_radio_label">Nederst</string>
+    <string name="actionbar_position_top_radio_label">Top</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Handlingslinjetype</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Placering af handlingslinje</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">AppBar-typografi</string>
+    <string name="app_bar_subtitle">Undertekst</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">Der blev klikket på navigationsikonet.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Flag</string>
+    <string name="app_bar_layout_menu_settings">Indstillinger</string>
+    <string name="app_bar_layout_menu_search">Søg</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Rullefunktion: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Slå rullefunktionalitet til/fra</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Navigationsikon til/fra</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Vis avatar</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Vis tilbage-ikon</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Skjul ikon</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Vis ikon</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Slå layouttypografi for søgepanelet til/fra</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Vis som tilbehørsvisning</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Vis som handlingsvisning</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Skift mellem temaer (genopretter aktivitet)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Element</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Ekstra indhold, der kan rulles i</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Cirkeltypografi</string>
+    <string name="avatar_style_square">Firkantet typografi</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">Stor</string>
+    <string name="avatar_size_medium">Mellem</string>
+    <string name="avatar_size_small">Lille</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Maks. vist avatar</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Overløb af avatarantal</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Kanttype</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">Avatargruppen med OverflowAvatarCount indstillet vil ikke overholde det maksimale antal viste avatarer.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Ansigtsstak</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Ansigtsstak</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">Der blev klikket på overløb</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">AvatarView ved indeks %d klikket på</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Meddelelsesbadge</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Punkt</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Liste</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Tegn</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Billeder</string>
+    <string name="bottom_navigation_menu_item_news">Nyheder</string>
+    <string name="bottom_navigation_menu_item_alerts">Underretninger</string>
+    <string name="bottom_navigation_menu_item_calendar">Kalender</string>
+    <string name="bottom_navigation_menu_item_team">Team</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Slå etiketter til/fra</string>
+    <string name="bottom_navigation_three_menu_items_button">Vis tre menupunkter</string>
+    <string name="bottom_navigation_four_menu_items_button">Vis fire menupunkter</string>
+    <string name="bottom_navigation_five_menu_items_button">Vis fem menupunkter</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Etiketter er %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">Nederste ark</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Vis med elementer på én linje</string>
+    <string name="bottom_sheet_with_double_line_items">Vis med dobbeltlinjeelementer</string>
+    <string name="bottom_sheet_with_single_line_header">Vis med overskrift med enkelt linje</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Vis med dobbeltlinjeoverskrift og skillelinjer</string>
+    <string name="bottom_sheet_dialog_button">Vis</string>
+    <string name="drawer_content_desc_collapse_state">Udvid</string>
+    <string name="drawer_content_desc_expand_state">Minimer</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Klik %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">Langt klik %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Indsæt element</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Opdater element</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Afvis</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Tilføj</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Omtale</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Fed</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Kursiv</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Understregning</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Gennemstreget</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Fortryd</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Annuller Fortryd</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Punkttegn</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Liste</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Link</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Opdatering af element</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Afstand</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Afvis position</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">START</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Gruppeområde</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Elementplads</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d DP</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Flag</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Der er klikket på et element med flag</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Besvar</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">Der blev klikket på svarelementet</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Videresend</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Der er klikket på Videresend element</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Slet</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">Der er klikket på Slet element</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Kamera</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Tag et foto</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">Der blev klikket på kameraelement</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galleri</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Se dine billeder</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">Der er klikket på gallerielement</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Videoer</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Afspil dine videoer</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">Der blev klikket på videoelement</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Administrer</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Administrer dit mediebibliotek</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">Der er klikket på Administrer element</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">Mailhandlinger</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Dokumenter</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Senest opdateret kl. 14.14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Del</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">Der er klikket på Del element</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Flyt</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">Der er klikket på Flyt element</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Slet</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Der er klikket på Slet element</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Oplysninger</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">Infoelement klikket</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Ur</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">Der blev klikket på urelementet</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">alarm</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Der blev klikket på alarmelementet</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Tidszone</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">Der blev klikket på et tidszoneelement</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Knap</string>
+    <string name="buttonbar">Knaplinje</string>
+    <string name="button_disabled">Knappen Deaktiveret</string>
+    <string name="button_borderless">Knap uden kanter</string>
+    <string name="button_borderless_disabled">Deaktiveret knap uden kanter</string>
+    <string name="button_large">Stor knap</string>
+    <string name="button_large_disabled">Knappen Stor deaktiveret</string>
+    <string name="button_outlined">Knappen Kontur</string>
+    <string name="button_outlined_disabled">Knappen Kontur deaktiveret</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Vælg en dato</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Enkelt dato</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Ingen dato valgt</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Vis Datovælger?</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Vis dato- og klokkeslætsvælger med datofane markeret</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Vis dato- og klokkeslætsvælger med klokkeslætsfane valgt</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Vis dato- og klokkeslætsvælger</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Datoområde</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Start:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Slut:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Ingen start valgt</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Der er ikke valgt nogen ende</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Vælg startdato</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Vælg slutdato</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Dato/klokkeslætsinterval</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Show Dialog</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Vis skuffe</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Vis skuffedialogboks</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Dialogboksen Ingen udtoning nederst</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Vis øverste skuffe</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Ingen dialogboks for udtoning øverst</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Vis dialogboksen ankervisning øverst</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Vis ingen dialogboks øverst i titlen</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Vis dialogboksen under titel øverst</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Vis højre skuffe</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Vis venstre skuffe</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Titel, primær tekst</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Undertitel, sekundær tekst</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Brugerdefineret undertiteltekst</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Sidefod, tertiær tekst</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Liste med enkelt linje og grå underoverskriftstekst</string>
+    <string name="list_item_sub_header_two_line">Liste med to linjer</string>
+    <string name="list_item_sub_header_two_line_dense">Liste med to linjer og tæt afstand</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Liste med to linjer med brugerdefineret visning af undertekster</string>
+    <string name="list_item_sub_header_three_line">Liste med tre linjer med sort underoverskriftstekst</string>
+    <string name="list_item_sub_header_no_custom_views">Vis elementer uden brugerdefinerede visninger</string>
+    <string name="list_item_sub_header_large_header">Listeelementer med store brugerdefinerede visninger</string>
+    <string name="list_item_sub_header_wrapped_text">Listeelementer med ombrudt tekst</string>
+    <string name="list_item_sub_header_truncated_text">Listeelementer med afkortet tekst</string>
+    <string name="list_item_sub_header_custom_accessory_text">Handling</string>
+    <string name="list_item_truncation_middle">Afkortning i midten.</string>
+    <string name="list_item_truncation_end">Afslut afkortning.</string>
+    <string name="list_item_truncation_start">Start afkortning.</string>
+    <string name="list_item_custom_text_view">Værdi</string>
+    <string name="list_item_click">Du har klikket på listeelementet.</string>
+    <string name="list_item_click_custom_accessory_view">Du har klikket på visningen brugerdefineret tilbehør.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Du har klikket på visningen brugerdefineret tilbehør i underoverskriften.</string>
+    <string name="list_item_more_options">Flere indstillinger</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Markér</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">Ingen</string>
+    <string name="people_picker_delete_example">Slet</string>
+    <string name="people_picker_custom_persona_description">Dette eksempel viser, hvordan du opretter et brugerdefineret IPersona-objekt.</string>
+    <string name="people_picker_dialog_title_removed">Du fjernede en karakter:</string>
+    <string name="people_picker_dialog_title_added">Du har tilføjet en karakter:</string>
+    <string name="people_picker_drag_started">Træk startet</string>
+    <string name="people_picker_drag_ended">Træk afsluttet</string>
+    <string name="people_picker_picked_personas_listener">Lyttefunktion for karakterer</string>
+    <string name="people_picker_suggestions_listener">Lyttefunktion til forslag</string>
+    <string name="people_picker_persona_chip_click">Du klikkede på %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Udvid vedvarende bottomsheet</string>
+    <string name="collapse_persistent_sheet_button"> Skjul vedvarende bottomsheet</string>
+    <string name="show_persistent_sheet_button"> Vis vedvarende bundark</string>
+    <string name="new_view">Dette er en ny visning</string>
+    <string name="toggle_sheet_content">Slå indhold i nederste ark til/fra</string>
+    <string name="switch_to_custom_content">Skift til brugerdefineret indhold</string>
+    <string name="one_line_content">Indhold af bundark på én linje</string>
+    <string name="toggle_disable_all_items">Slå Deaktiver alle elementer til/fra</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Tilføj/fjern visning</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Skift skjult højde</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Ny mappe</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Der blev klikket på nyt mappeelement</string>
+    <string name="persistent_sheet_item_edit_title">Rediger</string>
+    <string name="persistent_sheet_item_edit_toast">Der blev klikket på Rediger element</string>
+    <string name="persistent_sheet_item_save_title">Gem</string>
+    <string name="persistent_sheet_item_save_toast">Der er klikket på Gem element</string>
+    <string name="persistent_sheet_item_zoom_in_title">Zoom ind</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Der blev klikket på elementet Zoom ind</string>
+    <string name="persistent_sheet_item_zoom_out_title">Zoom ud</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Der blev klikket på elementet Zoom ud</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Tilgængelig</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Polesk Polen</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Ornament</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Charlotteson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Daisys</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atgurian</string>
+    <string name="persona_name_erik_nason">Bernard Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McCondonald</string>
+    <string name="persona_name_kat_larsson">KatKatson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Anne Erde</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin-optællinger</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Erde</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Designer</string>
+    <string name="persona_subtitle_engineer">Tekniker</string>
+    <string name="persona_subtitle_manager">Leder</string>
+    <string name="persona_subtitle_researcher">Researcher</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (langt teksteksempel til test afkortning)</string>
+    <string name="persona_view_description_xxlarge">XXLarge-avatar med tre tekstlinjer</string>
+    <string name="persona_view_description_large">Stor avatar med to tekstlinjer</string>
+    <string name="persona_view_description_small">Lille avatar med én tekstlinje</string>
+    <string name="people_picker_hint">Ingen med tip vist</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Deaktiveret persona-chip</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Fejl-persona-chip</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Persona-chip uden ikon for lukning</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Basic-persona-chip</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Du har klikket på en valgt persona-chip.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Del</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Følg</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Inviter personer</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Opdater side</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Åbn i browser</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Dette er en pop op-menu med flere linjer. Maks. linjer er angivet til to. Resten af teksten afkortes.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Alle nyheder</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Gemte nyheder</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Nyheder fra websteder</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Giv besked uden for arbejdstiden</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Giv besked, når computeren er inaktiv</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Du klikkede på elementet:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Enkel menu</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Enkel menu2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Menu med ét element, der kan markeres, og en skillelinje</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Menu med alle elementer, ikoner og lang tekst, der kan markeres</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Vis</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Cirkulær fremdrift</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Lille</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Mellem</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">Stor</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Lineær fremdrift</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Ikke defineret</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Definer</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Searchbar</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Tilbagekald af mikrofon</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Mikrofonen er trykket ned</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Der er trykket på højre visning</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Der er trykket på tastatursøgning</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Handling</string>
+    <string name="snackbar_action_long">Lang teksthandling</string>
+    <string name="snackbar_single_line">Snackbar med enkelt linje</string>
+    <string name="snackbar_multiline">Dette er en snackbar med flere linjer. Maks. linjer er angivet til to. Resten af teksten afkortes.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Dette er en snackbar med meddelelser. Den bruges til at kommunikere nye funktioner.</string>
+    <string name="snackbar_primary">Dette er en primær snackbar.</string>
+    <string name="snackbar_light">Dette er en let snackbar.</string>
+    <string name="snackbar_warning">Dette er en advarselssnack.</string>
+    <string name="snackbar_danger">Dette er en snackbar, der udgør en fare.</string>
+    <string name="snackbar_description_single_line">Kort varighed</string>
+    <string name="snackbar_description_single_line_custom_view">Lang varighed med cirkulær fremdrift som lille brugerdefineret visning</string>
+    <string name="snackbar_description_single_line_action">Kort varighed med handling</string>
+    <string name="snackbar_description_single_line_action_custom_view">Kort varighed med handling og mellemstor brugerdefineret visning</string>
+    <string name="snackbar_description_single_line_custom_text_color">Kort varighed med brugerdefineret tekstfarve</string>
+    <string name="snackbar_description_multiline">Lang varighed</string>
+    <string name="snackbar_description_multiline_custom_view">Lang varighed med lille brugerdefineret visning</string>
+    <string name="snackbar_description_multiline_action">Varighed på ubestemt tid med handlings- og tekstopdateringer</string>
+    <string name="snackbar_description_multiline_action_custom_view">Kort varighed med handling og mellemstor brugerdefineret visning</string>
+    <string name="snackbar_description_multiline_action_long">Kort varighed med lang handlingstekst</string>
+    <string name="snackbar_description_announcement">Kort varighed</string>
+    <string name="snackbar_description_updated">This text has been updated.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Vis snackbar</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Enkeltstreg</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Flere streger</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Bekendtgørelsesstil</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Primær typografi</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Lys typografi</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Advarselstype</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Faretype</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Start</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Post</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Indstillinger</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Meddelelse</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Mere</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Tekstjustering</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Lodret</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Vandret</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(ingen tekst)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Faneelementer</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Titel</string>
+    <string name="cell_sample_description">Beskrivelse</string>
+    <string name="calculate_cells">Indlæs/beregn 100 celler</string>
+    <string name="calculate_layouts">Indlæs/beregn 100 layout</string>
+    <string name="template_list">Skabelonliste</string>
+    <string name="regular_list">Almindelig liste</string>
+    <string name="cell_example_title">titelcelle</string>
+    <string name="cell_example_description">Beskrivelse: Tryk for at ændre retning</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Standardfane 2-segment</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Standardfane 3-segment</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Standardfane 4-segment</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Standardfane med personsøger</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Skift fane</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Fane til bjælker </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Tryk for at få værktøjstip</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Værktøjstip til brugerdefineret kalender</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Tryk på værktøjstip for brugerdefineret farve</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Tryk for Afvis inde i værktøjstip</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Værktøjstip til brugerdefineret visning</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Værktøjstip til top brugerdefineret farve</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Værktøjstip for øverste ende med 10dp offsetX</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Værktøjstip til nederste start</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Værktøjstip for nederste ende med 10dp-forskydning</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Afvis inde i værktøjstip</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Værktøjstip er afvist</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Overskriften er Light 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">Titel 1 er mellem 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">Titel 2 er almindelig 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Overskriften er almindelig 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">Underoverskrift 1 er regular 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">Underoverskrift 2 er mellem 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">Brødtekst 1 er almindelig 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">Brødtekst 2 er mellem 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">Billedteksten er almindelig 12sp</string>
+
+</resources>

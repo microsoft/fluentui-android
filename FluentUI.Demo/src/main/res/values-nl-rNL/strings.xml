@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI Demo</string>
+    <string name="app_title">Vloeiende gebruikersinterface</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">%s is geselecteerd</string>
+    <string name="app_modifiable_parameters">Parameters die kunnen worden gewijzigd</string>
+    <string name="app_right_accessory_view">Weergave accessoire rechts</string>
+
+    <string name="app_style">Stijl</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Pictogram ingedrukt</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Demo starten</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Carrousel</string>
+    <string name="actionbar_icon_radio_label">Pictogram</string>
+    <string name="actionbar_basic_radio_label">Basis</string>
+    <string name="actionbar_position_bottom_radio_label">Onder</string>
+    <string name="actionbar_position_top_radio_label">Boven</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Type actiebalk</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Positie van actiebalk</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">AppBar-stijl</string>
+    <string name="app_bar_subtitle">Ondertitel</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">Er is op het navigatiepictogram geklikt.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Vlag</string>
+    <string name="app_bar_layout_menu_settings">Instellingen</string>
+    <string name="app_bar_layout_menu_search">Zoeken</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Schuifgedrag: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Schuifgedrag in-/uitschakelen</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Navigatiepictogram in-/uitschakelen</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Avatar weergeven</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Pictogram Vorige weergeven</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Pictogram verbergen</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Pictogram weergeven</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Indelingsstijl van zoekbalk in-/uitschakelen</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Weergeven als accessoireweergave</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Weergeven als actieweergave</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Schakelen tussen thema\'s (activiteit opnieuw maken)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Item</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Extra schuifbare inhoud</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Cirkelstijl</string>
+    <string name="avatar_style_square">Vierkante stijl</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XX-groot</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">Groot</string>
+    <string name="avatar_size_medium">Standaard</string>
+    <string name="avatar_size_small">Klein</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Maximaal weergegeven avatar</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Aantal avatars overlopen</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Type rand</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">Avatargroep met OverflowAvatarCount-set voldoet niet aan het maximum aantal weergegeven avatars.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Face Stack</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Stapel gezicht</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">Overloop geklikt</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">AvatarView bij index %d geklikt</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Meldingsbadge</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Stip</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Lijst</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Personage</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Foto\'s</string>
+    <string name="bottom_navigation_menu_item_news">Nieuws</string>
+    <string name="bottom_navigation_menu_item_alerts">Waarschuwingen</string>
+    <string name="bottom_navigation_menu_item_calendar">Agenda</string>
+    <string name="bottom_navigation_menu_item_team">Team</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Labels in-/uitschakelen</string>
+    <string name="bottom_navigation_three_menu_items_button">Drie menuopdrachten weergeven</string>
+    <string name="bottom_navigation_four_menu_items_button">Vier menuopdrachten weergeven</string>
+    <string name="bottom_navigation_five_menu_items_button">Vijf menuopdrachten weergeven</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Labels worden %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">Onderste blad</string>
+    <string name="bottom_sheet_dialog">Onderste bladdialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Weergeven met items met één regel</string>
+    <string name="bottom_sheet_with_double_line_items">Weergeven met dubbele lijn items</string>
+    <string name="bottom_sheet_with_single_line_header">Weergeven met koptekst met één regel</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Weergeven met dubbele lijnkoptekst en scheidingslijnen</string>
+    <string name="bottom_sheet_dialog_button">Weergeven</string>
+    <string name="drawer_content_desc_collapse_state">Uitvouwen</string>
+    <string name="drawer_content_desc_expand_state">Minimaliseren</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Klik op %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">Lang Klik %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Item invoegen</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Item bijwerken</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Sluiten</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Toevoegen</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Vermelding</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Vet</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Cursief</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Onderstrepen</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Doorhalen</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Ongedaan maken</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Opnieuw</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Opsommingsteken</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Lijst</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Koppeling</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Item bijwerken</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Afstand</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Positie negeren</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">STARTEN</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Groepsruimte</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Itemruimte</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d DP</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Vlag</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Vlag toevoegen aan item</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Beantwoorden</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">Antwoorditem geklikt</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Doorsturen</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Er is op een doorstuuritem geklikt</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Verwijderen</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">Er is op Item verwijderen geklikt</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Camera</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Een foto maken</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">Camera-item geklikt</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galerie</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Uw foto\'s weergeven</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">Galerie-item geklikt</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Video\'s</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Video\'s afspelen</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">Item video\'s geklikt</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Beheren</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Uw mediabibliotheek beheren</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">Item beheren waar op is geklikt</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">E-mailacties</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Documenten</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Laatst bijgewerkt om 14:14 uur</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Delen</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">Item delen is geklikt</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Verplaatsen</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">Item verplaatsen is geklikt</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Verwijderen</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Er is op Item verwijderen geklikt</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Info</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">Er is op een informatie-item geklikt</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Klok</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">Geklikt op klokitem</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Waarschuwing</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Er is op een alarmitem geklikt</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Tijdzone</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">Er is op een tijdzone-item geklikt</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Knop</string>
+    <string name="buttonbar">Knopbalk</string>
+    <string name="button_disabled">Knop Uitgeschakeld</string>
+    <string name="button_borderless">Knop randloos</string>
+    <string name="button_borderless_disabled">Knop Randloos uitgeschakeld</string>
+    <string name="button_large">Grote knop</string>
+    <string name="button_large_disabled">Grote uitgeschakelde knop</string>
+    <string name="button_outlined">Knop Contour</string>
+    <string name="button_outlined_disabled">Knop voor uitgeschakeld overzicht</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Een datum kiezen</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">Datum/tijdkiezer</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Enkele datum</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Geen datum opgenomen</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Datumkiezer weergeven?</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Datum/tijdkiezer weergeven met geselecteerd datumtabblad</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Datum/tijdkiezer weergeven met geselecteerd tabblad Tijd</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Datum/tijdkiezer weergeven</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Datumbereik</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Begindatum:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Einde:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Geen start gekozen</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Niet beëindigd</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Begindatum selecteren</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Einddatum selecteren</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Datum/tijdsbereik</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">Datum/tijdkiezerdialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Show Dialog</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Lade weergeven</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Dialoogvenster lade weergeven</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Dialoogvenster onder geen vervagen</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Bovenste lade weergeven</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Het bovenste dialoogvenster niet uitfaden</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Bovenste dialoogvenster voor ankerweergave weergeven</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Dialoogvenster geen titel boven weergeven</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Bovenste dialoogvenster onder titel weergeven</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Rechterlade weergeven</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Linkerlade weergeven</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Titel, primaire tekst</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Ondertitel, secundaire tekst</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Aangepaste tekst voor ondertitel</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Voettekst, tertiaire tekst</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Lijst met één regel met grijze tekst in koptekst</string>
+    <string name="list_item_sub_header_two_line">Lijst met twee regels</string>
+    <string name="list_item_sub_header_two_line_dense">Lijst met twee regels met dichte afstand</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Twee regels lijst met aangepaste secundaire ondertitel weergave</string>
+    <string name="list_item_sub_header_three_line">Lijst met drie regels met zwarte koptekst tekst</string>
+    <string name="list_item_sub_header_no_custom_views">Lijstitems zonder aangepaste weergaven</string>
+    <string name="list_item_sub_header_large_header">Lijstitems met grote aangepaste weergaven</string>
+    <string name="list_item_sub_header_wrapped_text">Lijstitems met tekstterugloop</string>
+    <string name="list_item_sub_header_truncated_text">Lijstitems met afgekapte tekst</string>
+    <string name="list_item_sub_header_custom_accessory_text">Actie</string>
+    <string name="list_item_truncation_middle">Afkapping.</string>
+    <string name="list_item_truncation_end">Afkapping beëindigen.</string>
+    <string name="list_item_truncation_start">Afkappen starten.</string>
+    <string name="list_item_custom_text_view">Waarde</string>
+    <string name="list_item_click">U hebt op het lijstitem geklikt.</string>
+    <string name="list_item_click_custom_accessory_view">U hebt op de aangepaste weergave voor accessoire geklikt.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">U hebt op de aangepaste weergave subkopteksten geklikt.</string>
+    <string name="list_item_more_options">Meer opties</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Selecteren</string>
+    <string name="people_picker_select_deselect_example">Selectie opheffen</string>
+    <string name="people_picker_none_example">Geen</string>
+    <string name="people_picker_delete_example">Verwijderen</string>
+    <string name="people_picker_custom_persona_description">In dit voorbeeld ziet u hoe u een aangepast IPersona-object maakt.</string>
+    <string name="people_picker_dialog_title_removed">U hebt een persoon verwijderd uit:</string>
+    <string name="people_picker_dialog_title_added">U hebt de volgende persoon toegevoegd:</string>
+    <string name="people_picker_drag_started">Slepen is gestart</string>
+    <string name="people_picker_drag_ended">Slepen beëindigd</string>
+    <string name="people_picker_picked_personas_listener">Personas-listener</string>
+    <string name="people_picker_suggestions_listener">Suggesties voor listener</string>
+    <string name="people_picker_persona_chip_click">U hebt op %s geklikt</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Permanente BottomSheet</string>
+    <string name="collapse_persistent_sheet_button"> Permanent onderste blad verbergen</string>
+    <string name="show_persistent_sheet_button"> Permanent onderste blad weergeven</string>
+    <string name="new_view">Dit is een nieuwe weergave</string>
+    <string name="toggle_sheet_content">Inhoud van onderste werkblad in-/uitschakelen</string>
+    <string name="switch_to_custom_content">Overschakelen naar aangepaste inhoud</string>
+    <string name="one_line_content">Inhoud van onderste regelblad met één regel</string>
+    <string name="toggle_disable_all_items">Alle items uitschakelen in-/uitschakelen</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Weergave toevoegen/verwijderen</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Samengevouwen hoogte wijzigen</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Nieuwe map</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Nieuw mapitem heeft geklikt</string>
+    <string name="persistent_sheet_item_edit_title">Bewerken</string>
+    <string name="persistent_sheet_item_edit_toast">Item bewerken door erop te klikken</string>
+    <string name="persistent_sheet_item_save_title">Opslaan</string>
+    <string name="persistent_sheet_item_save_toast">Item opslaan door erop te klikken</string>
+    <string name="persistent_sheet_item_zoom_in_title">Inzoomen</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Inzoomen op item geklikt</string>
+    <string name="persistent_sheet_item_zoom_out_title">Uitzoomen</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Item uitzoomen op</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Beschikbaar</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Gitte McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Polen</string>
+    <string name="persona_name_cecil_folk">Cecil folk</string>
+    <string name="persona_name_celeste_burton">CelesteLe</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Margriet MadeliefJe</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Hadson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Jan Sturgis</string>
+    <string name="persona_name_kristen_patterson">U hebt een andere extensie</string>
+    <string name="persona_name_lydia_bauer">Er is een 36-uur</string>
+    <string name="persona_name_mauricio_august">Mauricio augustus</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Aantal robins</string>
+    <string name="persona_name_robert_tolbert">Ysjee</string>
+    <string name="persona_name_tim_deboer">Tim De kolom</string>
+    <string name="persona_name_wanda_howard">Wanda Tovers</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Designer</string>
+    <string name="persona_subtitle_engineer">Technicus</string>
+    <string name="persona_subtitle_manager">Manager</string>
+    <string name="persona_subtitle_researcher">Onderzoek</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (voorbeeld van lange tekst om afkapping te testen)</string>
+    <string name="persona_view_description_xxlarge">XXLarge-avatar met drie regels tekst</string>
+    <string name="persona_view_description_large">Grote avatar met twee regels tekst</string>
+    <string name="persona_view_description_small">Kleine avatar met één regel tekst</string>
+    <string name="people_picker_hint">Geen met Hint weergegeven</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Uitgeschakelde Persona Chip</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Fout persoon-chip</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Persoona chip zonder pictogram sluiten</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Basis chip van PG</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">U hebt op een geselecteerde Persoona chip geklikt.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Delen</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Volgen</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Personen uitnodigen</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Pagina vernieuwen</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Openen in browser</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Dit is een menu met meerdere regels. Het maximum aantal regels is ingesteld op twee. De rest van de tekst wordt afgekapt.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Alle nieuws</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Opgeslagen nieuws</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Nieuws van sites</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Melden buiten werkuren</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Waarschuwen wanneer deze inactief is op het bureaublad</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">U hebt op het item geklikt:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Eenvoudig menu</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Eenvoudig menu2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Menu met één selecteerbaar item en een scheidingslijn</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Menu met alle selecteerbare items, pictogrammen en lange tekst</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Weergeven</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Kringvoortgang</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Klein</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Standaard</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">Groot</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Lineaire voortgang</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Onbepaald</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Determineren</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Searchbar</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Callback van microfoon</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Microfoon ingedrukt</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Rechterweergave ingedrukt</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Toetsenbord zoeken ingedrukt</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Actie</string>
+    <string name="snackbar_action_long">Lange tekstactie</string>
+    <string name="snackbar_single_line">Eén lijn</string>
+    <string name="snackbar_multiline">Dit is een multiline-gesprek. Het maximum aantal regels is ingesteld op twee. De rest van de tekst wordt afgekapt.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Dit is een aankondiging. Het wordt gebruikt voor het communiceren van nieuwe functies.</string>
+    <string name="snackbar_primary">Dit is een primaire domeincontroller.</string>
+    <string name="snackbar_light">Dit is een lichte lantaarn.</string>
+    <string name="snackbar_warning">Dit is een waarschuwing.</string>
+    <string name="snackbar_danger">Dit is een gevaar.</string>
+    <string name="snackbar_description_single_line">Korte duur</string>
+    <string name="snackbar_description_single_line_custom_view">Lange duur met circulaire voortgang als kleine aangepaste weergave</string>
+    <string name="snackbar_description_single_line_action">Korte duur met actie</string>
+    <string name="snackbar_description_single_line_action_custom_view">Korte duur met actie en gemiddelde aangepaste weergave</string>
+    <string name="snackbar_description_single_line_custom_text_color">Korte duur met aangepaste tekstkleur</string>
+    <string name="snackbar_description_multiline">Lange duur</string>
+    <string name="snackbar_description_multiline_custom_view">Lange duur met kleine aangepaste weergave</string>
+    <string name="snackbar_description_multiline_action">Onbepaalde duur met actie- en tekstupdates</string>
+    <string name="snackbar_description_multiline_action_custom_view">Korte duur met actie en gemiddelde aangepaste weergave</string>
+    <string name="snackbar_description_multiline_action_long">Korte duur met lange actietekst</string>
+    <string name="snackbar_description_announcement">Korte duur</string>
+    <string name="snackbar_description_updated">This text has been updated.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Toon je vrienden</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Enkele lijn</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Meerdere lijnen</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Aankondigingsstijl</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Primaire stijl</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Lichte stijl</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Waarschuwingsstijl</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Gevaarstijl</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Start</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Post</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Instellingen</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Melding</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Meer</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Tekstuitlijning</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Verticaal</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Horizontaal</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(geen tekst)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Tabbladitems</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Titel</string>
+    <string name="cell_sample_description">Beschrijving</string>
+    <string name="calculate_cells">100 cellen laden/berekenen</string>
+    <string name="calculate_layouts">100 indelingen laden/berekenen</string>
+    <string name="template_list">Sjablonenlijst</string>
+    <string name="regular_list">Reguliere lijst</string>
+    <string name="cell_example_title">titelcel</string>
+    <string name="cell_example_description">Beschrijving: Tik om de afdrukstand te wijzigen</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Standaardtab 2-segment</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Standaardtab 3-segment</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Standaardtabblad 4-segment</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Standaardtabblad met pager</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Schakelen tussen tabbladen</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Tabblad Pillen </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Tikken voor knopinfo</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Tik voor knopinfo voor aangepaste agenda</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Tik op knopinfo voor aangepaste kleuren</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Tik voor knopinfo binnen sluiten</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Tik voor knopinfo voor aangepaste weergave</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Knopinfo voor bovenste aangepaste kleur</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Knopinfo bovenkant met 10dp offsetX</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Knopinfo onder start</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Knopinfo aan onderkant met 10dp offsetY</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Sluiten binnen Knopinfo</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Knopinfo genegeerd</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Kop is licht 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">Titel 1 is normaal 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">Titel 2 is normaal 20 asp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Kop is normaal 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">Subkop 1 is normaal 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">Subkop 2 is normaal 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">Hoofdtekst 1 is normaal 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">Hoofdtekst 2 is normaal 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">Bijschrift is normale 12SP</string>
+
+</resources>

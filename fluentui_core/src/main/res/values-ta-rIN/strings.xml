@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">தேர்ந்தெடுக்கப்பட்டது</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">தேர்ந்தெடுக்கப்படவில்லை</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">முடக்கப்பட்டது</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">இயக்கப்பட்டது</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">தாளை மூடும்</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">மூடும்</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">தேடல்</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">மைக்ரோஃபோன்</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">உரையை அழிக்கும்</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">பின்செல்லும்</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">செயற்படுத்தப்பட்டது</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">செயலிழக்கச் செய்யப்பட்டது</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">நடுநிலை</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">பிராண்ட்</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">செவ்ரான்</string>
+    <string name="fluentui_large">பெரியது</string>
+    <string name="fluentui_medium">நடுத்தரமானது</string>
+    <string name="fluentui_small">சிறியது</string>
+    <string name="fluentui_subtitle">துணைத்தலைப்பு</string>
+</resources>

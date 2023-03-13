@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <resources>
-  <string name="done">រួចរាល់</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">រួចរាល់</string>
+
+    <!--Content description for default left action in the action bar layout.-->
+    <string name="action_bar_default_left_action">រំលង</string>
+    <!--Content description for default right action in the action bar layout.-->
+    <string name="action_bar_default_right_action">បន្ទាប់</string>
+    <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
+    <string name="action_bar_default_final_action">ចាប់ផ្តើម</string>
+    <!--Content description default right icon-->
+    <string name="action_bar_right_icon_description">បន្ទាប់</string>
+    <!--accessibiltiy-->
+    <!--Announcement when page is scrolled-->
+    <string name="action_bar_accessibility_page_announcement">របាររំកិលទំព័រ %1$d នៃ %2$d</string>
+    <!--Announcement when actionbarlayout opens or when Skip is pressed-->
+    <string name="action_bar_accessibility_viewpager_description">ទិដ្ឋភាពហុទំព័រ។ របាររំកិលទំព័រ %1$d នៃ %2$d</string>
+
+    <string name="fluentui_bottom_sheet_header">ក្បាលសន្លឹកខាងក្រោម</string>
 </resources>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="searchbar_clear_search">সন্ধান সাফ করুন</string>
-  <string name="searchbar_back">ফিরে যান</string>
-  <string name="searchbar_query_hint_default">সন্ধান করুন</string>
-</resources>

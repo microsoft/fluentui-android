@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="searchbar_clear_search">Obriši pretragu</string>
-  <string name="searchbar_back">Nazad</string>
-  <string name="searchbar_query_hint_default">Pretraga</string>
-</resources>

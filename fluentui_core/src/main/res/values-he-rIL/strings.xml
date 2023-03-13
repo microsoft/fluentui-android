@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">נבחר</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">לא נבחר</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">לא זמין</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">הפך לזמין</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">סגור גיליון</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">סגור</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">חפש</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">מיקרופון</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">נקה טקסט</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">הקודם</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">מופעל</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">מושבת</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">ניטרלי</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">מותג</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">סוגר זוויתי אנכי</string>
+    <string name="fluentui_large">גדול</string>
+    <string name="fluentui_medium">גודל בינוני</string>
+    <string name="fluentui_small">קטן</string>
+    <string name="fluentui_subtitle">כותרת משנה</string>
+</resources>
