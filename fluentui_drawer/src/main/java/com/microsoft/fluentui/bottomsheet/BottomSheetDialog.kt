@@ -6,16 +6,17 @@
 package com.microsoft.fluentui.bottomsheet
 
 import android.content.Context
-import androidx.annotation.StyleRes
+import android.os.Build
 import android.view.View
 import android.view.Window
-import com.microsoft.fluentui.util.ThemeUtil
-import com.microsoft.fluentui.util.createImageView
+import androidx.annotation.StyleRes
+import com.microsoft.fluentui.drawer.DrawerDialog
+import com.microsoft.fluentui.drawer.R
+import com.microsoft.fluentui.drawer.databinding.ViewBottomSheetBinding
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.listitem.ListSubHeaderView
-import com.microsoft.fluentui.drawer.R
-import com.microsoft.fluentui.drawer.DrawerDialog
-import com.microsoft.fluentui.drawer.databinding.ViewBottomSheetBinding
+import com.microsoft.fluentui.util.ThemeUtil
+import com.microsoft.fluentui.util.createImageView
 import com.microsoft.fluentui.util.isVisible
 
 /**
@@ -68,6 +69,10 @@ class BottomSheetDialog : DrawerDialog, BottomSheetItem.OnClickListener {
         headerView.title = headerItem.title
         headerView.subtitle = headerItem.subtitle
         headerView.background = R.drawable.bottom_sheet_header_background
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            headerView.isAccessibilityHeading = true
+            headerView.isFocusable = true
+        }
         return headerView
     }
 
