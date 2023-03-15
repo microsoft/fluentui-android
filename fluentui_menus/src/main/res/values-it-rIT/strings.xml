@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- *** PopupMenu *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to toggle radio button and checkbox checked states.-->
+    <string name="popup_menu_accessibility_item_toggle">alternare</string>
+    <!--Describes the action used to select a menu item.-->
+    <string name="popup_menu_accessibility_item_select">seleziona</string>
+    <!--Announces which menu item has been selected.-->
+    <string name="popup_menu_accessibility_item_click_selected">%s selezionato</string>
+    <!--Announces which menu item has been checked.-->
+    <string name="popup_menu_accessibility_item_click_checked">L\'elemento %s è stato selezionato</string>
+    <!--Announces which menu item has been unchecked.-->
+    <string name="popup_menu_accessibility_item_click_unchecked">L\'elemento %s è stato deselezionato</string>
+    <!--Describes the radio button control.-->
+    <string name="popup_menu_accessibility_item_radio_button">pulsante radio</string>
+    <!--Describes the check box control.-->
+    <string name="popup_menu_accessibility_item_check_box">casella di controllo</string>
+    <!--Describes the state of a menu item that is checked.-->
+    <string name="popup_menu_accessibility_item_state_checked">selezionata</string>
+    <!--Describes the state of a menu item that is not checked.-->
+    <string name="popup_menu_accessibility_item_state_not_checked">deselezionata</string>
+
+</resources>

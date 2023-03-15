@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">已选择</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">未选择</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">已禁用</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">已启用</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">关闭工作表</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">关闭</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">搜索</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">麦克风</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">清除文本</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">返回</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">已激活</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">已停用</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">中性</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">品牌</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">V 形</string>
+    <string name="fluentui_large">大型</string>
+    <string name="fluentui_medium">中等</string>
+    <string name="fluentui_small">小型</string>
+    <string name="fluentui_subtitle">副标题</string>
+</resources>

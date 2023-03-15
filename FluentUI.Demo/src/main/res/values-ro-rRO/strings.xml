@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Demonstrație pentru interfața utilizator Fluent</string>
+    <string name="app_title">Interfață utilizator Fluent</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">%s selectate</string>
+    <string name="app_modifiable_parameters">Parametri modificabili</string>
+    <string name="app_right_accessory_view">Vizualizare accesoriu dreapta</string>
+
+    <string name="app_style">Stil</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Pictogramă apăsată</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Pornire demonstrație</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Carusel</string>
+    <string name="actionbar_icon_radio_label">Pictogramă</string>
+    <string name="actionbar_basic_radio_label">De bază</string>
+    <string name="actionbar_position_bottom_radio_label">Jos</string>
+    <string name="actionbar_position_top_radio_label">Sus</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Tip bară de acțiuni</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Poziție bară de acțiuni</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">Stil AppBar</string>
+    <string name="app_bar_subtitle">Subtitlu</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">S-a făcut clic pe pictograma de navigare.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Semnalizator</string>
+    <string name="app_bar_layout_menu_settings">Setări</string>
+    <string name="app_bar_layout_menu_search">Căutare</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Comportament defilare: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Comutați comportamentul de defilare</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Comutați pictograma de navigare</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Afișați avatarul</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Afișați pictograma Înapoi</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Ascundeți pictograma</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Afișați pictograma</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Comutați stilul de aspect al barei de căutare</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Afișați ca vizualizare accesoriu</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Afișați ca vizualizare de acțiune</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Comutați între teme (recreează activitatea)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Element</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Conținut suplimentar în care se poate defila</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Stil cerc</string>
+    <string name="avatar_style_square">Stil pătrat</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">Deplasare XX</string>
+    <string name="avatar_size_xlarge">Deplasare pe axa X</string>
+    <string name="avatar_size_large">Mare</string>
+    <string name="avatar_size_medium">Mediu</string>
+    <string name="avatar_size_small">Mic</string>
+    <string name="avatar_size_xsmall">Xsmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Număr maxim de avataruri afișate</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Număr de avataruri de depășire</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Tipul bordurii</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">Grupul de avataruri cu setul OverflowAvatarCount nu va respecta avatarul afișat maxim.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Stivă față</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Morman de fețe</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">S-a făcut clic pe depășire</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">AvatarView la indexul pe care %d făcut clic</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Ecuson de notificare</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Punct</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Listă</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Caracter</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Fotografii</string>
+    <string name="bottom_navigation_menu_item_news">Știri</string>
+    <string name="bottom_navigation_menu_item_alerts">Avertizări</string>
+    <string name="bottom_navigation_menu_item_calendar">Calendar</string>
+    <string name="bottom_navigation_menu_item_team">Echipă</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Comutați etichetele</string>
+    <string name="bottom_navigation_three_menu_items_button">Afișați trei elemente de meniu</string>
+    <string name="bottom_navigation_four_menu_items_button">Afișați patru elemente de meniu</string>
+    <string name="bottom_navigation_five_menu_items_button">Afișați cinci elemente de meniu</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Etichetele sunt %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">Foaie inferioară</string>
+    <string name="bottom_sheet_dialog">Foaie InferioarăDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Afișare cu elemente cu o singură linie</string>
+    <string name="bottom_sheet_with_double_line_items">Afișare cu elemente linie dublă</string>
+    <string name="bottom_sheet_with_single_line_header">Afișare cu antet cu o singură linie</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Afișare cu antet și divizoare cu două linii</string>
+    <string name="bottom_sheet_dialog_button">Afișați</string>
+    <string name="drawer_content_desc_collapse_state">Extindeți</string>
+    <string name="drawer_content_desc_expand_state">Minimizare</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Faceți clic pe %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">clic lung %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Inserare element</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Actualizare element</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Ignorați</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Adăugați</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Mențiune</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Aldin</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Cursiv</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Subliniați</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Tăiere text cu o linie</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Anulați</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Refacere</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Marcator</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Listă</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Link</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Actualizare element</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Spațiere</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Îndepărtați poziția</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">ÎNCEPEȚI</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Spațiu de grup</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Spațiu element</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Semnalizator</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Semnalizare element pe care s-a făcut clic</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Răspuns</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">S-a făcut clic pe elementul de răspuns</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Redirecționați</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">S-a făcut clic pe redirecționarea elementului</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Ștergeți</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">S-a făcut clic pe Ștergere element</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Cameră video</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Faceți o fotografie</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">S-a făcut clic pe elementul camerei</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galerie</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Vizualizați fotografiile dvs.</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">S-a făcut clic pe elementul din galerie</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Fișiere video</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Redați videoclipurile</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">S-a făcut clic pe elementul video</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Gestionați</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Gestionați biblioteca media</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">Gestionați elementul pe care s-a făcut clic</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">Acțiuni pentru e-mail</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Documente</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Ultima actualizare 14:14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Partajare</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">Partajați elementul pe care s-a făcut clic</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Mutare</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">S-a făcut clic pe mutarea elementului</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Ștergeți</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">S-a făcut clic pe Ștergere element</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Informații</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">S-a făcut clic pe elementul informativ</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Ceas</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">S-a făcut clic pe elementul ceas</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Alarmă</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Element alarmă pe care s-a făcut clic</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Fus orar</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">S-a făcut clic pe elementul de fus orar</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Buton</string>
+    <string name="buttonbar">Bară buton</string>
+    <string name="button_disabled">Butonul Dezactivat</string>
+    <string name="button_borderless">Buton fără bordură</string>
+    <string name="button_borderless_disabled">Buton fără chenar dezactivat</string>
+    <string name="button_large">Buton mare</string>
+    <string name="button_large_disabled">Buton mare dezactivat</string>
+    <string name="button_outlined">Buton conturat</string>
+    <string name="button_outlined_disabled">Buton conturat dezactivat</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Alegeți o dată</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DataTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Dată unică</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Nicio dată aleasă</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Se afișează Selecție date?</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Afișați selectorul de dată și oră cu fila Dată selectată</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Afișați selectorul de dată și oră cu fila Oră selectată</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Afișați selectorul de dată și oră</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Interval perioadă</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Start:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Sfârșit:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Nu s-a selectat niciun început</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Fără sfârșit selectat</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Selectați data de început</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Selectați data de sfârșit</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Interval de timp</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Afișare dialog</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Afișați sertarul</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Afișați caseta de dialog a sertarului</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Fără dialog estompare jos</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Afișați sertarul de sus</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Fără dialog estompare sus</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Afișați caseta de dialog de sus a vizualizării ancoră</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Nu se afișează niciun dialog superior de titlu</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Afișați caseta de dialog de sus a titlului de mai jos</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Afișați sertarul din dreapta</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Afișați sertarul din stânga</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Titlu, text principal</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Subtitlu, text secundar</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Text subtitlu particularizat</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Subsol, text terțiar</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Listă cu o singură linie cu text de subantet gri</string>
+    <string name="list_item_sub_header_two_line">Listă cu două linii</string>
+    <string name="list_item_sub_header_two_line_dense">Listă cu două linii cu spațiere densă</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Listă cu două linii cu vizualizare particularizată a subtitrării secundare</string>
+    <string name="list_item_sub_header_three_line">Listă cu trei linii cu text subantet negru</string>
+    <string name="list_item_sub_header_no_custom_views">Listați elementele fără vizualizări particularizate</string>
+    <string name="list_item_sub_header_large_header">Listați elementele cu vizualizări particularizate mari</string>
+    <string name="list_item_sub_header_wrapped_text">Listați elementele cu text încadrat</string>
+    <string name="list_item_sub_header_truncated_text">Listați elementele cu text trunchiat</string>
+    <string name="list_item_sub_header_custom_accessory_text">Acțiune</string>
+    <string name="list_item_truncation_middle">Trunchiere la mijloc.</string>
+    <string name="list_item_truncation_end">Terminare trunchiere.</string>
+    <string name="list_item_truncation_start">Începeți trunchierea.</string>
+    <string name="list_item_custom_text_view">Valoare</string>
+    <string name="list_item_click">Ați făcut clic pe elementul de listă.</string>
+    <string name="list_item_click_custom_accessory_view">Ați făcut clic pe vizualizarea accesoriu particularizată.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Ați făcut clic pe vizualizarea accesor particularizată a subantetului.</string>
+    <string name="list_item_more_options">Mai multe opțiuni</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Selectați</string>
+    <string name="people_picker_select_deselect_example">SelectareDeselectare</string>
+    <string name="people_picker_none_example">Fără</string>
+    <string name="people_picker_delete_example">Ștergeți</string>
+    <string name="people_picker_custom_persona_description">Acest exemplu arată cum se creează un obiect IPersona particularizat.</string>
+    <string name="people_picker_dialog_title_removed">Ați eliminat un personaj:</string>
+    <string name="people_picker_dialog_title_added">Ați adăugat un personaj:</string>
+    <string name="people_picker_drag_started">Glisare începută</string>
+    <string name="people_picker_drag_ended">Glisare încheiată</string>
+    <string name="people_picker_picked_personas_listener">Listener personaje</string>
+    <string name="people_picker_suggestions_listener">Listener sugestii</string>
+    <string name="people_picker_persona_chip_click">Ați făcut clic pe %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="few">%1$s recipients</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Extindere foaie inferioară persistentă</string>
+    <string name="collapse_persistent_sheet_button"> Ascundere foaie inferioară persistentă</string>
+    <string name="show_persistent_sheet_button"> Afișare foaie inferioară persistentă</string>
+    <string name="new_view">Aceasta este o vizualizare nouă</string>
+    <string name="toggle_sheet_content">Comutați conținutul foii de jos</string>
+    <string name="switch_to_custom_content">Comutați la conținut particularizat</string>
+    <string name="one_line_content">Conținut foaie inferioară cu o linie</string>
+    <string name="toggle_disable_all_items">Comutați dezactivarea tuturor elementelor</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Adăugare/eliminare vizualizare</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Modificare înălțime restrânsă</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Folder nou</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">S-a făcut clic pe elementul nou din folder</string>
+    <string name="persistent_sheet_item_edit_title">Editați</string>
+    <string name="persistent_sheet_item_edit_toast">Editare element pe care s-a făcut clic</string>
+    <string name="persistent_sheet_item_save_title">Salvați</string>
+    <string name="persistent_sheet_item_save_toast">S-a făcut clic pe salvarea elementului</string>
+    <string name="persistent_sheet_item_zoom_in_title">Mărire</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> S-a făcut clic pe elementul mărire</string>
+    <string name="persistent_sheet_item_zoom_out_title">Micșorare</string>
+    <string name="persistent_sheet_item_zoom_out_toast">S-a făcut clic pe micșorare element</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Disponibil</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Iulia</string>
+    <string name="persona_name_ashley_mccarthy">Carta Mc McCa</string>
+    <string name="persona_name_carlos_slattery">Vlad Preda</string>
+    <string name="persona_name_carole_poland">Colindă Polonia</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">CelesteUl</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Chason</string>
+    <string name="persona_name_colin_ballinger">Iuliana Stăruița</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">On Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia At cedează</string>
+    <string name="persona_name_erik_nason">Andrei Nason</string>
+    <string name="persona_name_henry_brill">Iulia Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConlla</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Iulia</string>
+    <string name="persona_name_lydia_bauer">Iulia</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Valeriu Nechita</string>
+    <string name="persona_name_mona_kane">Iulia Costea</string>
+    <string name="persona_name_robin_counts">Contoare de robineți</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Rav</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Designer</string>
+    <string name="persona_subtitle_engineer">Inginer</string>
+    <string name="persona_subtitle_manager">Manager</string>
+    <string name="persona_subtitle_researcher">Cercetare</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (exemplu de text lung pentru testarea trunchierii)</string>
+    <string name="persona_view_description_xxlarge">Avatar xxLarge cu trei linii de text</string>
+    <string name="persona_view_description_large">Avatar mare cu două linii de text</string>
+    <string name="persona_view_description_small">Avatar mic cu o singură linie de text</string>
+    <string name="people_picker_hint">Niciunul cu sugestie afișată</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Cip personal cu dizabilități</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Chip personaj eroare</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Cip personal fără pictogramă de apropiere</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Cip personal de bază</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Ați făcut clic pe un cip personal selectat.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Partajare</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Urmărire</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Invitați persoane</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Reîmprospătare pagină</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Deschidere în browser</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Acesta este un meniu pop-up cu mai multe linii. Numărul maxim de linii este setat la două, restul textului va fi trunchiat.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Toate știrile</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Știri salvate</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Știri de la site-uri</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Notificare în afara orelor de lucru</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Notificare când este inactiv pe desktop</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Ați făcut clic pe elementul:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Meniu simplu</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Meniu simplu2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Meniu cu un element selectabil și un separator</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Meniu cu toate elementele selectabile, pictogramele și textul lung</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Afișați</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Progres circular</string>
+    <string name="circular_progress_xsmall">Xsmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Mic</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Mediu</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">Mare</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Progres liniar</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Nedefinită</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Stabiliți</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Searchbar</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Apelare inversă microfon</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Microfon apăsat</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Vizualizare dreapta apăsată</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Căutare tastatură apăsată</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Acțiune</string>
+    <string name="snackbar_action_long">Acțiune text lung</string>
+    <string name="snackbar_single_line">Bară de gustare cu o singură linie</string>
+    <string name="snackbar_multiline">Aceasta este o bară de gustare multilinie. Numărul maxim de linii este setat la două, restul textului va fi trunchiat.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Aceasta este o gustare de anunțuri. Se utilizează pentru comunicarea noilor caracteristici.</string>
+    <string name="snackbar_primary">Aceasta este o bară de gustare principală.</string>
+    <string name="snackbar_light">Aceasta este o gustare ușoară.</string>
+    <string name="snackbar_warning">Aceasta este o bară de gustare de avertizare.</string>
+    <string name="snackbar_danger">Aceasta este o gustare de pericol.</string>
+    <string name="snackbar_description_single_line">Durată scurtă</string>
+    <string name="snackbar_description_single_line_custom_view">Durată lungă cu progres circular ca vizualizare particularizată mică</string>
+    <string name="snackbar_description_single_line_action">Durată scurtă cu acțiune</string>
+    <string name="snackbar_description_single_line_action_custom_view">Durată scurtă cu vizualizare particularizată de acțiune și medie</string>
+    <string name="snackbar_description_single_line_custom_text_color">Durată scurtă cu culoare de text particularizată</string>
+    <string name="snackbar_description_multiline">Durată lungă</string>
+    <string name="snackbar_description_multiline_custom_view">Durată lungă cu vizualizare particularizată mică</string>
+    <string name="snackbar_description_multiline_action">Durată nedefinită cu actualizări de acțiuni și text</string>
+    <string name="snackbar_description_multiline_action_custom_view">Durată scurtă cu vizualizare particularizată de acțiune și medie</string>
+    <string name="snackbar_description_multiline_action_long">Durată scurtă cu text de acțiune lung</string>
+    <string name="snackbar_description_announcement">Durată scurtă</string>
+    <string name="snackbar_description_updated">This text has been updated.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Afișați bara de gustare</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Linie unică</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Multilinie</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Stil anunț</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Stil principal</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Stil deschis</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Stil avertisment</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Stil pericol</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Pagina de pornire</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Corespondență</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Setări</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Notificare</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Mai mult</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Aliniere text</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Verticală</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Orizontal</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(niciun text)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Elemente filă</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Titlu</string>
+    <string name="cell_sample_description">Descriere</string>
+    <string name="calculate_cells">Încărcați/calculați 100 de celule</string>
+    <string name="calculate_layouts">Încărcați/calculați 100 de aspecte</string>
+    <string name="template_list">Listă de șabloane</string>
+    <string name="regular_list">Listă obișnuită</string>
+    <string name="cell_example_title">celulă titlu</string>
+    <string name="cell_example_description">Descriere: atingeți pentru a modifica orientarea</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Segment 2 file Standard</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Segment 3 file standard</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Fila Standard 4 segmente</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Filă standard cu pager</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Comutare filă</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Fila Anas antiorare </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Atingeți pentru sfat ecran</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Atingeți pentru sfatul ecran de calendar particularizat</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Atingeți Sfatul ecran pentru culoarea particularizată</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Atingeți pentru a respinge sfatul ecran din interior</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Atingeți pentru sfatul ecran al vizualizării particularizate</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Sfat ecran culoare particularizată de top</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Sfat ecran de final de sus cu offsetX 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Sfat ecran început de jos</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Sfat ecran final jos cu deplasare 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Îndepărtați în interiorul sfatului ecran</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Sfat ecran îndepărtat</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Titlul este Deschis 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">Titlul 1 este mediu 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">Titlul 2 este regular 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Titlul este regular 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">Subtitlu 1 este normal 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">Subtitlu 2 este Mediu 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">Corpul 1 este normal 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">Corpul 2 este mediu 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">Legenda este un 12sp obișnuit</string>
+
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Valitud</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Valimata</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Keelatud</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Lubatud</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Sule leht</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Sule</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Otsing</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Kustuta tekst</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Tagasi</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktiveeritud</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Aktiveerimata</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutraalne</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Kaubamärk</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Rööpnool</string>
+    <string name="fluentui_large">Suur</string>
+    <string name="fluentui_medium">Keskmine</string>
+    <string name="fluentui_small">Väike</string>
+    <string name="fluentui_subtitle">Alampealkiri</string>
+</resources>

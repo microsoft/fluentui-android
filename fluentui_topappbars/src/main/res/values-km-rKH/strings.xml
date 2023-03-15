@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="searchbar_clear_search">លុបការស្វែងរក</string>
-  <string name="searchbar_back">ថយក្រោយ</string>
-  <string name="searchbar_query_hint_default">ស្វែងរក</string>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- *** Searchbar *** -->
+
+    <!--Content description for the button that clears the query text entered in the search field.-->
+    <string name="searchbar_clear_search">លុបការស្វែងរក</string>
+    <!--Content description for the button that navigates out of the search experience back to a previous state.-->
+    <string name="searchbar_back">ថយក្រោយ</string>
+    <!--Hint for the search field.-->
+    <string name="searchbar_query_hint_default">ស្វែងរក</string>
+
+    <!--Announcement when SearchBar is cleared-->
+    <string name="searchbar_accessibility_cleared_announcement" tools:ignore="MissingTranslation">បានលុបកន្លែងបញ្ចូលការកែសម្រួល</string>
+
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Geselecteerd</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Niet geselecteerd</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Uitgeschakeld</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Ingeschakeld</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Blad sluiten</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Sluiten</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Zoeken</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Microfoon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Tekst wissen</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Terug</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Geactiveerd</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Gedeactiveerd</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutraal</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Merk</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Punthaak</string>
+    <string name="fluentui_large">Groot</string>
+    <string name="fluentui_medium">Gemiddeld</string>
+    <string name="fluentui_small">Klein</string>
+    <string name="fluentui_subtitle">Ondertitel</string>
+</resources>

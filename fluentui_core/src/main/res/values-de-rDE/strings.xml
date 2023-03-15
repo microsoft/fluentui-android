@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Markiert</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Nicht ausgewählt</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Deaktiviert</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Aktiviert</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Blatt schließen</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Schließen</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Suchen</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Text löschen</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Zurück</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktiviert</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Deaktiviert</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutral</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Marke</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Chevron</string>
+    <string name="fluentui_large">Groß</string>
+    <string name="fluentui_medium">Mittel</string>
+    <string name="fluentui_small">Klein</string>
+    <string name="fluentui_subtitle">Untertitel</string>
+</resources>

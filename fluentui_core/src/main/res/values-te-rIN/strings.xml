@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">ఎంచుకోబడింది</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">ఎంచుకోలేదు</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">నిలిపివేయబడింది</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">ప్రారంభించబడింది</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">షీట్ మూసివేయి</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">మూసివేయి</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">శోధించు</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">మైక్రోఫోన్</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">వచనాన్ని క్లియర్ చేయి</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">వెనుకకు</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">యాక్టివేట్ చేయబడింది</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">డీ-యాక్టివేట్ చేయబడింది</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">తటస్థం</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">బ్రాండ్</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">చెవ్రన్‌</string>
+    <string name="fluentui_large">పెద్దది</string>
+    <string name="fluentui_medium">మధ్యస్థం</string>
+    <string name="fluentui_small">చిన్నది</string>
+    <string name="fluentui_subtitle">ఉపశీర్షిక</string>
+</resources>

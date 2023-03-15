@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- *** Persona *** -->
+    <string name="persona_title_placeholder">이름 없음</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Status">상태</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Out_Of_Office">부재 중</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Active">활성</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Inactive">비활성</string>
+</resources>

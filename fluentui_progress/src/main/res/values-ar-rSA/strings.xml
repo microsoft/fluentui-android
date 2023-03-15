@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- *** Progress *** -->
+
+    <!--Describes a Circular progress indicator that spins indefinitely.-->
+    <string name="progress_circular_content_description_indeterminate">دائري غير محدد</string>
+
+    <!--Describes a Linear progress indicator that animates indefinitely.-->
+    <string name="progress_linear_content_description_indeterminate" tools:ignore="MissingTranslation">خطي غير محدد</string>
+    <!--Describes a Linear progress indicator that animates.-->
+    <string name="progress_linear_content_description_determinate" tools:ignore="MissingTranslation">تحديد خطي</string>
+</resources>

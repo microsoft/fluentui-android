@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">H</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">M</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">M</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">E</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">P</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">Sh</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">D</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Shko te java tjetër</string>
+    <string name="accessibility_goto_previous_week">Shko te java paraardhëse</string>
+    <string name="accessibility_today">sot</string>
+    <string name="accessibility_selected">I përzgjedhur</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">U krye</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Sot</string>
+    <string name="tomorrow">Nesër</string>
+    <string name="yesterday">Dje</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Ora e nisjes</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Ora e mbarimit</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Data e nisjes</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Data e mbarimit</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Zgjidh orën</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Zgjidh datën</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Zgjedhësi i orës dhe i datës</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Zgjedhësi i datës</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Rangu i zgjedhësit të orës dhe datës</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Rangu i zgjedhësit të datës</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Skeda e orës së fillimit</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Skeda e orës së mbarimit</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Skeda e datës së fillimit</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Skeda e datës së mbarimit</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Mbyll dialogun</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Rrit muajin</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">përzgjidh muajin pasardhës</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Zvogëlo muajin</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">përzgjidh muajin paraardhës</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Rrit ditën</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">përzgjidh ditën pasardhëse</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Zvogëlo ditën</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">përzgjidh ditën paraardhëse</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Rrit vitin</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">përzgjidh vitin pasardhës</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Zvogëlo vitin</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">përzgjidh vitin paraardhës</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Rrit datën</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">përzgjidh datën pasardhëse</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Zvogëlo datën</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">përzgjidh datën paraardhëse</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Rrit orën</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">përzgjidh orën pasardhëse</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Zvogëlo orën</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">përzgjidh orën paraardhëse</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Rrit minutën</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">përzgjidh minutën pasardhëse</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Zvogëlo minutën</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">përzgjidh minutën paraardhëse</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Ndrysho gjendjen e periudhës PD MD</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">ndrysho gjendjen e periudhës PD MD</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s u përzgjodh</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">e zgjedhur</string>
+</resources>

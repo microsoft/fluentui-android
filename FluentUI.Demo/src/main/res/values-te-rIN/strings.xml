@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">అనర్గళంగా UI డెమో</string>
+    <string name="app_title">అనర్గళమైన UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">%sని ఎంచుకున్నారు</string>
+    <string name="app_modifiable_parameters">సవరించదగిన పరామితులు</string>
+    <string name="app_right_accessory_view">కుడి యాక్ససరీ వీక్షణ</string>
+
+    <string name="app_style">శైలి</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">ఐకాన్ ప్రెస్ చేయబడింది</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">డెమో ప్రారంభించు</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">రంగులరాట్నం</string>
+    <string name="actionbar_icon_radio_label">సూక్ష్మచిత్రం</string>
+    <string name="actionbar_basic_radio_label">ప్రాథమికం</string>
+    <string name="actionbar_position_bottom_radio_label">దిగువ</string>
+    <string name="actionbar_position_top_radio_label">ఎగువ</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">యాక్షన్ బార్ రకం</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">యాక్షన్ బార్ పొజిషన్</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">యాప్ బార్ స్టైల్</string>
+    <string name="app_bar_subtitle">ఉపశీర్షిక</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">నావిగేషన్ ఐకాన్ క్లిక్ చేయబడింది.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">ఫ్లాగ్ చేయండి</string>
+    <string name="app_bar_layout_menu_settings">సెట్టింగ్‌లు</string>
+    <string name="app_bar_layout_menu_search">శోధించు</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">స్క్రోల్ ప్రవర్తన: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">టోగిల్ స్క్రోల్ ప్రవర్తన</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">టోగిల్ నావిగేషన్ ఐకాన్</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">అవతార్ చూపించు</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">బ్యాక్ ఐకాన్ చూపించు</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">సూక్ష్మచిత్రాన్ని దాచండి</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">సూక్ష్మచిత్రాన్ని చూపించు</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Toggle శోధనbar layout శైలి</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">యాక్ససరీ వ్యూ వలె చూపించు</string>
+    <string name="app_bar_layout_searchbar_action_view_button">యాక్షన్ వ్యూ వలె చూపించు</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">థీమ్ ల మధ్య టోగిల్ (యాక్టివిటీని రీక్రియేట్ చేస్తుంది)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">అంశం</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">అదనపు స్క్రోలబుల్ కంటెంట్</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">సర్కిల్ శైలి</string>
+    <string name="avatar_style_square">చతురస్రాకార శైలి</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">పెద్దది</string>
+    <string name="avatar_size_medium">మధ్యస్థం</string>
+    <string name="avatar_size_small">చిన్నది</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">మ్యాక్స్ ప్రదర్శించిన అవతార్</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">ఓవర్ ఫ్లో అవతార్ కౌంట్</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">బోర్డర్ రకం:</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">ఓవర్ ఫ్లో అవతార్ కౌంట్ సెట్ ఉన్న అవతార్ గ్రూప్ మ్యాక్స్ డిస్ ప్లేడ్ అవతార్ కు కట్టుబడి ఉండదు.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">ఫేస్ స్టాక్</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">ఫేస్ పైల్</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">ఓవర్ ఫ్లో క్లిక్ చేయబడింది</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">ఇండెక్స్ వద్ద అవతార్ వ్యూ క్లిక్ %d క్లిక్ చేయబడింది</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Notification Badge</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">డాట్</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">జాబితా</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">అక్షరం</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">ఫోటోలు</string>
+    <string name="bottom_navigation_menu_item_news">వార్తలు</string>
+    <string name="bottom_navigation_menu_item_alerts">హెచ్చరికలు</string>
+    <string name="bottom_navigation_menu_item_calendar">క్యాలెండర్</string>
+    <string name="bottom_navigation_menu_item_team">జట్టు</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">టోగిల్ లేబుల్స్</string>
+    <string name="bottom_navigation_three_menu_items_button">మూడు మెనూ ఐటమ్ లను చూపించు</string>
+    <string name="bottom_navigation_four_menu_items_button">నాలుగు మెనూ ఐటమ్ లను చూపించు</string>
+    <string name="bottom_navigation_five_menu_items_button">ఐదు మెనూ ఐటమ్ లను చూపించు</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">లేబుల్స్ %s ఉంటాయి</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">సింగిల్ లైన్ ఐటమ్ లతో చూపించు</string>
+    <string name="bottom_sheet_with_double_line_items">డబుల్ లైన్ ఐటమ్ లతో చూపించు</string>
+    <string name="bottom_sheet_with_single_line_header">సింగిల్ లైన్ శీర్షికతో చూపించు</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">డబుల్ లైన్ హెడ్డర్ మరియు డివైడర్ లతో చూపించండి</string>
+    <string name="bottom_sheet_dialog_button">ప్రదర్శన</string>
+    <string name="drawer_content_desc_collapse_state">విస్తరించండి</string>
+    <string name="drawer_content_desc_expand_state">కనిష్టీకరించు</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">%s క్లిక్ చేయండి</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">లాంగ్ క్లిక్ %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">అంశాన్ని చొప్పించు</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">ఐటమ్ ని అప్ డేట్ చేయండి</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">విస్మరించు</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">జోడించు</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">ప్రస్తావించండి</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">బోల్డ్</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">ఏటవాలు</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">అండర్‌లైన్</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">కొట్టివేత</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">చర్య రద్దు చేయి</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">చర్య పునరావృత్తం</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">బుల్లెట్</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">జాబితా</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">లింక్</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">ఐటమ్ అప్ డేట్ అవుతోంది</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">అంతరం</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">డిస్మిస్ పొజిషన్</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">ప్రారంభించు</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">గ్రూప్ స్పేస్</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">ఐటమ్ స్పేస్</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">ఫ్లాగ్ చేయండి</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">ఫ్లాగ్ ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">ప్రత్యుత్తరం పంపు</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">రిప్లై ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">ఫార్వార్డ్ చేయి</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">ఫార్వర్డ్ ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">తొలగించు</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">క్లిక్ చేయబడ్డ ఐటమ్ ని డిలీట్ చేయండి</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">అవతార్</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">కెమెరా</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">ఫోటో తీసుకోండి</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">కెమెరా ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">గ్యాలరీ</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">మీ ఫోటోలను వీక్షించండి</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">గ్యాలరీ ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">వీడియోలు</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">మీ వీడియోలను ప్లే చేయండి</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">వీడియో ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">నిర్వహించండి</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">మీ మీడియా లైబ్రరీని నిర్వహించండి</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">క్లిక్ చేయబడ్డ అంశాన్ని నిర్వహించు</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">ఇమెయిల్ చర్యలు</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">పత్రాలు</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">చివరిగా అప్ డేట్ చేయబడింది 2:14 PM</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">భాగస్వామ్యం చేయండి</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">క్లిక్ చేయబడ్డ అంశాన్ని భాగస్వామ్యం చేయండి</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">తరలించు</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">ఐటమ్ ను తరలించు క్లిక్ చేయబడింది</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">తొలగించు</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">క్లిక్ చేయబడ్డ ఐటమ్ ని డిలీట్ చేయండి</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">సమాచారం</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">ఇన్ఫో ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">గడియారం</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">గడియారం ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">అలారం</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">అలారం ఐటమ్ క్లిక్ చేయబడింది</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">సమయ మండలి</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">టైమ్ జోన్ ఐటమ్ క్లిక్ చేయబడింది</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">బటన్</string>
+    <string name="buttonbar">బటన్ బార్</string>
+    <string name="button_disabled">నిలిపివేసిన బటన్</string>
+    <string name="button_borderless">బోర్డర్ లెస్ బటన్</string>
+    <string name="button_borderless_disabled">బోర్డర్ లెస్ డిజేబుల్డ్ బటన్</string>
+    <string name="button_large">పెద్ద బటన్</string>
+    <string name="button_large_disabled">పెద్ద డిసేబుల్డ్ బటన్</string>
+    <string name="button_outlined">వివరించబడ్డ బటన్</string>
+    <string name="button_outlined_disabled">వివరించబడ్డ డిజేబుల్డ్ బటన్</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">తేదీని ఎంచుకోండి</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">ఒకే తేదీ</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">తేదీ నిర్ణయించబడలేదు</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Show date picker</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">ఎంచుకున్న తేదీ ట్యాబ్ తో తేదీ సమయ పికర్ ను చూపించండి</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">ఎంచుకున్న టైమ్ ట్యాబ్ తో డేట్ టైమ్ పికర్ ని చూపించండి</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">తేదీ సమయ పికర్ ను చూపించు</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">తేదీ పరిధి</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">ప్రారంభం:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">ముగింపు:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">ప్రారంభం ఎంచుకోబడలేదు</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">ముగింపు ఎంచుకోబడలేదు</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">ప్రారంభ తేదీని ఎంచుకోండి</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">ముగింపు తేదీని ఎంచుకోండి</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">తేదీ సమయ పరిధి</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">డైలాగ్ చూపించు</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">డ్రాయర్ ను చూపించు</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">డ్రాయర్ డైలాగ్ చూపించు</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">ఫేడ్ బాటమ్ డైలాగ్ లేదు</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">టాప్ డ్రాయర్ చూపించు</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">టాప్ డైలాగ్ లేదు</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> యాంకర్ వ్యూ టాప్ డైలాగ్ చూడండి</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> టైటిల్ టాప్ డైలాగ్ చూపించవద్దు</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> క్రింద శీర్షిక టాప్ డైలాగ్ చూపించండి</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">కుడి డ్రాయర్ చూపించు</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">ఎడమ డ్రాయర్ చూపించు</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">శీర్షిక, ప్రాధమిక వచనం</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">సబ్ టైటిల్, సెకండరీ టెక్స్ట్</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Custom సబ్ టైటిల్ text</string>
+    <!-- Footer -->
+    <string name="list_item_footer">ఫూటర్, తృతీయ వచనం</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">బూడిద సబ్ శీర్షిక టెక్స్ట్ తో సింగిల్ లైన్ జాబితా</string>
+    <string name="list_item_sub_header_two_line">రెండు లైన్ల జాబితా</string>
+    <string name="list_item_sub_header_two_line_dense">దట్టమైన దూరంతో కూడిన రెండు వరుసల జాబితా</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">కస్టమ్ సెకండరీ సబ్ టైటిల్ వ్యూతో రెండు లైన్ల జాబితా</string>
+    <string name="list_item_sub_header_three_line">నలుపు సబ్ శీర్షిక టెక్స్ట్ తో మూడు లైన్ల జాబితా</string>
+    <string name="list_item_sub_header_no_custom_views">కస్టమ్ వీక్షణలు లేని ఐటమ్ లను జాబితా చేయండి</string>
+    <string name="list_item_sub_header_large_header">పెద్ద కస్టమ్ వ్యూస్ ఉన్న ఐటమ్ లను జాబితా చేయండి</string>
+    <string name="list_item_sub_header_wrapped_text">చుట్టిన టెక్స్ట్ తో ఐటమ్ లను జాబితా చేయండి</string>
+    <string name="list_item_sub_header_truncated_text">కత్తిరించిన టెక్స్ట్ తో ఐటమ్ లను జాబితా చేయండి</string>
+    <string name="list_item_sub_header_custom_accessory_text">చర్య</string>
+    <string name="list_item_truncation_middle">మిడిల్ ట్రంకింగ్..</string>
+    <string name="list_item_truncation_end">ట్రంకింగ్ ను ముగించండి.</string>
+    <string name="list_item_truncation_start">ట్రంకింగ్ ప్రారంభించండి.</string>
+    <string name="list_item_custom_text_view">విలువ</string>
+    <string name="list_item_click">మీరు జాబితా ఐటమ్ పై క్లిక్ చేశారు.</string>
+    <string name="list_item_click_custom_accessory_view">మీరు కస్టమ్ యాక్ససరీ వ్యూపై క్లిక్ చేశారు.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">మీరు సబ్ శీర్షిక కస్టమ్ యాక్సెసరీ వ్యూపై క్లిక్ చేశారు.</string>
+    <string name="list_item_more_options">మరిన్ని ఐచ్ఛికాలు</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">ఎంచుకోండి</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">ఏదీకాదు</string>
+    <string name="people_picker_delete_example">తొలగించు</string>
+    <string name="people_picker_custom_persona_description">ఈ ఉదాహరణ కస్టమ్ IPersona ఆబ్జెక్ట్ ను ఎలా సృష్టించాలో చూపిస్తుంది.</string>
+    <string name="people_picker_dialog_title_removed">మీరు ఒక వ్యక్తిత్వాన్ని తొలగించారు:</string>
+    <string name="people_picker_dialog_title_added">మీరు ఒక వ్యక్తిత్వాన్ని జోడించారు:</string>
+    <string name="people_picker_drag_started">డ్రాగ్ ప్రారంభమైంది</string>
+    <string name="people_picker_drag_ended">డ్రాగ్ ముగిసింది</string>
+    <string name="people_picker_picked_personas_listener">Personas Listener</string>
+    <string name="people_picker_suggestions_listener">Suggestions Listen</string>
+    <string name="people_picker_persona_chip_click">మీరు %s మీద క్లిక్ చేశారు</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">నిరంతర బాటమ్ షీట్ ను విస్తరించండి</string>
+    <string name="collapse_persistent_sheet_button"> నిరంతర అడుగుషీట్ ను దాచు</string>
+    <string name="show_persistent_sheet_button"> నిరంతర బాటమ్ షీట్ చూపించు</string>
+    <string name="new_view">ఇది కొత్త వీక్షణ</string>
+    <string name="toggle_sheet_content">టోగిల్ బాటమ్ షీట్ కంటెంట్</string>
+    <string name="switch_to_custom_content">కస్టమ్ కంటెంట్ కు మారండి</string>
+    <string name="one_line_content">వన్ లైన్ బాటమ్ షీట్ కంటెంట్</string>
+    <string name="toggle_disable_all_items">టోగిల్ అన్ని అంశాలను నిలిపివేయండి</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">వీక్షణను జోడించు/తొలగించు</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> కూలిన ఎత్తులో మార్పు</string>
+    <string name="persistent_sheet_item_create_new_folder_title">కొత్త ఫోల్డర్</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">కొత్త ఫోల్డర్ ఐటమ్ క్లిక్ చేయబడింది</string>
+    <string name="persistent_sheet_item_edit_title">సవరించు</string>
+    <string name="persistent_sheet_item_edit_toast">ఐటమ్ ను సవరించు క్లిక్ చేయబడింది</string>
+    <string name="persistent_sheet_item_save_title">సేవ్ చేయి</string>
+    <string name="persistent_sheet_item_save_toast">ఐటమ్ ను సేవ్ చేయడం క్లిక్ చేయబడింది</string>
+    <string name="persistent_sheet_item_zoom_in_title">జూమ్ ఇన్</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> ఐటమ్ లో జూమ్ క్లిక్ చేయబడింది</string>
+    <string name="persistent_sheet_item_zoom_out_title">జూమ్ అవుట్</string>
+    <string name="persistent_sheet_item_zoom_out_toast">జూమ్ అవుట్ ఐటమ్ క్లిక్ చేయబడింది</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">అందుబాటులో ఉంది</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">అలన్ ముంగేర్</string>
+    <string name="persona_name_amanda_brady">అమండా బ్రాడీ</string>
+    <string name="persona_name_ashley_mccarthy">యాష్లే మెక్ కార్తీ</string>
+    <string name="persona_name_carlos_slattery">కార్లోస్ స్లాటరీ</string>
+    <string name="persona_name_carole_poland">కరోల్ పోలాండ్</string>
+    <string name="persona_name_cecil_folk">సెసిల్ ఫోక్</string>
+    <string name="persona_name_celeste_burton">సెలెస్టే బర్టన్</string>
+    <string name="persona_name_charlotte_waltson">షార్లెట్ వాల్ట్సన్</string>
+    <string name="persona_name_colin_ballinger">కొలిన్ బాలింగర్</string>
+    <string name="persona_name_daisy_phillips">డైసీ ఫిలిప్స్</string>
+    <string name="persona_name_elliot_woodward">ఎలియట్ వుడ్ వర్డ్</string>
+    <string name="persona_name_elvia_atkins">ఎల్వియా అట్కిన్స్</string>
+    <string name="persona_name_erik_nason">ఎరిక్ నాసన్</string>
+    <string name="persona_name_henry_brill">హెన్రీ బ్రిల్</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">జానీ మెక్ కానెల్</string>
+    <string name="persona_name_kat_larsson">క్యాట్ లార్సన్</string>
+    <string name="persona_name_katri_ahokas">కత్రి అహోకాస్</string>
+    <string name="persona_name_kevin_sturgis">కెవిన్ స్టుర్గిస్</string>
+    <string name="persona_name_kristen_patterson">క్రిస్టెన్ ప్యాటర్సన్</string>
+    <string name="persona_name_lydia_bauer">లిడియా బాయర్</string>
+    <string name="persona_name_mauricio_august">మౌరిసియో ఆగస్టు</string>
+    <string name="persona_name_miguel_garcia">చింతకాయల రవి</string>
+    <string name="persona_name_mona_kane">మోనా కేన్</string>
+    <string name="persona_name_robin_counts">రాబిన్ కౌంట్స్</string>
+    <string name="persona_name_robert_tolbert">రాబర్ట్ టోల్బర్ట్</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">వాండా హోవార్డ్</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">డిజైనర్</string>
+    <string name="persona_subtitle_engineer">ఇంజినీర్</string>
+    <string name="persona_subtitle_manager">నిర్వాహకుడు</string>
+    <string name="persona_subtitle_researcher">పరిశోధకులు</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (ట్రంకేషన్ ను పరీక్షించడానికి సుదీర్ఘ టెక్స్ట్ ఉదాహరణ)</string>
+    <string name="persona_view_description_xxlarge">మూడు లైన్ల టెక్స్ట్ తో XXలార్జ్ అవతార్</string>
+    <string name="persona_view_description_large">రెండు లైన్ల వచనంతో పెద్ద అవతారం</string>
+    <string name="persona_view_description_small">ఒక లైన్ టెక్స్ట్ తో చిన్న అవతారం</string>
+    <string name="people_picker_hint">హింట్ చూపించనివి ఏవీ లేవు</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">వికలాంగుల పర్సోనా చిప్</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">లోపం Persona Chip</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">క్లోజ్ ఐకాన్ లేని పర్సనా చిప్</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">బేసిక్ పర్సన చిప్</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">మీరు ఎంచుకున్న పర్సోనా చిప్ పై క్లిక్ చేశారు.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">భాగస్వామ్యం చేయండి</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">అనుసరించు</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">వ్యక్తులను ఆహ్వానించు</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">పేజీని రీఫ్రెష్ చేయి</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">బ్రౌజర్‌లో తెరువు</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">ఇది మల్టీలైన్ పాప్ అప్ మెనూ. గరిష్ట రేఖలు రెండింటికి సెట్ చేయబడతాయి, మిగిలిన టెక్స్ట్ ట్రంక్ చేయబడుతుంది.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">అన్ని వార్తలు</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">సేవ్ చేసిన వార్తలను చూడండి</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">సైట్ ల నుండి వార్తలు</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">పనివేళల వెలుపల తెలియజేయండి</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">డెస్క్ టాప్ లో ఇన్ యాక్టివ్ గా ఉన్నప్పుడు నోటిఫై చేయండి</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">ఐటమ్ పై మీరు క్లిక్ చేశారు:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">సింపుల్ మెనూ</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">సింపుల్ మెనూ2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">ఒక ఎంపిక చేయదగిన ఐటమ్ మరియు ఒక డివైడర్ తో మెనూ</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">ఎంపిక చేయదగిన అన్ని ఐటమ్ లు, ఐకాన్ లు మరియు లాంగ్ టెక్స్ట్ తో మెనూ</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">ప్రదర్శన</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">సర్క్యులర్ పురోగతి</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">చిన్నది</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">మధ్యస్థం</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">పెద్దది</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">రేఖీయ పురోగతి</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">నిర్ణయాత్మకం కాదు</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">నిర్ణయాత్మకం</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">సెర్చ్ బార్</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">మైక్రోఫోన్ కాల్ బ్యాక్</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">మైక్రోఫోన్ ప్రెస్ చేయబడింది</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">కుడి వీక్షణ నొక్కబడింది</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">కీబోర్డ్ శోధన నొక్కబడింది</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">చర్య</string>
+    <string name="snackbar_action_long">లాంగ్ టెక్స్ట్ చర్య</string>
+    <string name="snackbar_single_line">సింగిల్ లైన్ స్నాక్ బార్</string>
+    <string name="snackbar_multiline">ఇది మల్టీలైన్ స్నాక్ బార్. గరిష్ట రేఖలు రెండింటికి సెట్ చేయబడతాయి, మిగిలిన టెక్స్ట్ ట్రంక్ చేయబడుతుంది.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">ఇదొక అనౌన్స్ మెంట్ స్నాక్ బార్. కొత్త ఫీచర్లను కమ్యూనికేట్ చేయడానికి దీనిని ఉపయోగిస్తారు.</string>
+    <string name="snackbar_primary">ఇది ఒక ప్రైమరీ స్నాక్ బార్.</string>
+    <string name="snackbar_light">ఇది తేలికపాటి స్నాక్ బార్.</string>
+    <string name="snackbar_warning">ఇదొక వార్నింగ్ స్నాక్ బార్.</string>
+    <string name="snackbar_danger">ఇది డేంజర్ స్నాక్ బార్.</string>
+    <string name="snackbar_description_single_line">స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_single_line_custom_view">చిన్న కస్టమ్ వ్యూ వలె వృత్తాకార పురోగతితో సుదీర్ఘ వ్యవధి</string>
+    <string name="snackbar_description_single_line_action">చర్యతో స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_single_line_action_custom_view">యాక్షన్ మరియు మీడియం కస్టమ్ వ్యూతో స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_single_line_custom_text_color">కస్టమైజ్డ్ టెక్స్ట్ కలర్ తో స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_multiline">సుదీర్ఘ వ్యవధి</string>
+    <string name="snackbar_description_multiline_custom_view">చిన్న కస్టమ్ వ్యూతో సుదీర్ఘ వ్యవధి</string>
+    <string name="snackbar_description_multiline_action">యాక్షన్ మరియు టెక్స్ట్ అప్ డేట్ లతో నిరవధిక వ్యవధి</string>
+    <string name="snackbar_description_multiline_action_custom_view">యాక్షన్ మరియు మీడియం కస్టమ్ వ్యూతో స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_multiline_action_long">లాంగ్ యాక్షన్ టెక్స్ట్ తో స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_announcement">స్వల్ప వ్యవధి</string>
+    <string name="snackbar_description_updated">ఈ టెక్స్ట్ అప్ డేట్ చేయబడింది.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">స్నాక్స్ బార్ చూపించు</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">ఒక పంక్తి</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Multiline</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">ప్రకటన శైలి[మార్చు]</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">ప్రాధమిక శైలి</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">లైట్ స్టైల్</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">హెచ్చరిక శైలి</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">ప్రమాద శైలి</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">హోమ్</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">మెయిల్</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">సెట్టింగ్‌లు</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">నోటిఫికేషన్</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">మరిన్ని</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">వచన సమలేఖనం</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">క్షితిజ లంబం</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">క్షితిజ సమాంతరం</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">టెక్స్ట్ లేదు</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">ట్యాబ్ ఐటమ్ లు</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">శీర్షిక</string>
+    <string name="cell_sample_description">వివరణ</string>
+    <string name="calculate_cells">100 కణాలను లోడ్ చేయండి/లెక్కించండి</string>
+    <string name="calculate_layouts">100 లేఅవుట్ లను లోడ్/లెక్కించండి</string>
+    <string name="template_list">మూస జాబితా</string>
+    <string name="regular_list">రెగ్యులర్ జాబితా</string>
+    <string name="cell_example_title">శీర్షిక: సెల్</string>
+    <string name="cell_example_description">వివరణ: ఓరియెంటేషన్ మార్చడానికి ట్యాప్ చేయండి</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">స్టాండర్డ్ ట్యాబ్ 2-సెగ్మెంట్</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">స్టాండర్డ్ ట్యాబ్ 3-సెగ్మెంట్</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">స్టాండర్డ్ ట్యాబ్ 4-సెగ్మెంట్</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">పేజర్ తో ప్రామాణిక ట్యాబ్</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">ట్యాబ్ మార్చండి</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">పిల్స్ ట్యాబ్ </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">టూల్ టిప్ కోసం ట్యాప్ చేయండి</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">కస్టమ్ క్యాలెండర్ టూల్ టిప్ కోసం ట్యాప్ చేయండి</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Custom Color Tooltipని ట్యాప్ చేయండి</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Dismiss Inside Tooltip కోసం ట్యాప్ చేయండి</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Custom View Tooltip కోసం ట్యాప్ చేయండి</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">టాప్ కస్టమ్ కలర్ టూల్ టిప్</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">టాప్ ఎండ్ టూల్ టిప్ విత్ 10dp ఆఫ్ సెట్ ఎక్స్</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Bottom Start Tooltip</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Bottom End Tooltip with 10dp offsetY</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Dispos inside Tooltip</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Tooltip తిరస్కరించబడింది</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">శీర్షిక లైట్ 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">టైటిల్ 1 అనేది మీడియం 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">టైటిల్ 2 రెగ్యులర్ 200</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">శీర్షిక రెగ్యులర్ 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">సబ్ హెడ్డింగ్ 1 అనేది రెగ్యులర్ 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">సబ్ హెడ్డింగ్ 2 అంటే మీడియం 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">బాడీ 1 అనేది రెగ్యులర్ 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">బాడీ 2 అనేది మీడియం 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">శీర్షిక రెగ్యులర్ 12sp</string>
+
+</resources>

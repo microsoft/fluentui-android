@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">التسمية</string>
+    <string name="people_picker_search_directory">البحث في الدليل</string>
+    <string name="people_picker_search_progress">يتم الآن البحث…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
+    <string name="people_picker_accessibility_persona_added">تمت إضافة %s</string>
+    <string name="people_picker_accessibility_persona_removed">تمت إزالة %s</string>
+    <string name="people_picker_accessibility_replaced">%s استبداله،</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">انقر</string>
+    <string name="people_picker_accessibility_delete_persona">حذف</string>
+    <string name="people_picker_accessibility_deselect_persona">إلغاء تحديد</string>
+    <string name="people_picker_accessibility_select_persona">تحديد</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">تم النقر فوق %s</string>
+    <string name="people_picker_accessibility_deselected_persona">تم إلغاء تحديد %s</string>
+    <string name="people_picker_accessibility_selected_persona">تم تحديد %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">، سيتم إلغاء تحديد التنشيط</string>
+    <string name="people_picker_accessibility_delete_selected_persona">، سيتم حذف التنشيط</string>
+    <string name="people_picker_accessibility_click_selected_persona">، سيتم النقر فوق التنشيط</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="zero">Suggestions list opened with %s people</item>
+        <item quantity="one">Suggestions list opened with %s person</item>
+        <item quantity="two">Suggestions list opened with %s people</item>
+        <item quantity="few">Suggestions list opened with %s people</item>
+        <item quantity="many">Suggestions list opened with %s people</item>
+        <item quantity="other">Suggestions list opened with %s people</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="zero">%s people</item>
+        <item quantity="one">%s person</item>
+        <item quantity="two">%s people</item>
+        <item quantity="few">%s people</item>
+        <item quantity="many">%s people</item>
+        <item quantity="other">%s people</item>
+    </plurals>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!--SheetBehavior Address-->
+
+    <!-- Text for bottomsheet handle -->
+    <string name="drag_handle">இழுவைக் கைப்பிடி</string>
+    <!-- onClick Label for bottomsheet to expand -->
+    <string name="expand">விரிவாக்கு</string>
+    <!-- onClick Label for bottomsheet to collapse -->
+    <string name="collapse">சுருக்கு</string>
+</resources>

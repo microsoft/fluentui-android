@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Ознака</string>
+    <string name="people_picker_search_directory">Претражи именик</string>
+    <string name="people_picker_search_progress">Претраживање…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Унесите име или адресу е-поште</string>
+    <string name="people_picker_accessibility_persona_added">%s је додат/а</string>
+    <string name="people_picker_accessibility_persona_removed">%s је уклоњен/а</string>
+    <string name="people_picker_accessibility_replaced">%s је замењен/а,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Клик</string>
+    <string name="people_picker_accessibility_delete_persona">Избриши</string>
+    <string name="people_picker_accessibility_deselect_persona">Опозови избор</string>
+    <string name="people_picker_accessibility_select_persona">Изабери</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Кликнуто на %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Опозван је избор за %s</string>
+    <string name="people_picker_accessibility_selected_persona">Изабрано %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, Активација ће опозвати избор</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Активација ће избрисати</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Активација ће кликнути</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Suggestions list opened with %s person</item>
+        <item quantity="few">Suggestions list opened with %s people</item>
+        <item quantity="other">Suggestions list opened with %s people</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s person</item>
+        <item quantity="few">%s people</item>
+        <item quantity="other">%s people</item>
+    </plurals>
+</resources>

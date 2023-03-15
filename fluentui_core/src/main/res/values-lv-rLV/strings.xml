@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Atlasīts</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Nav atlasīta</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Atspējots</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Iespējota</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Aizvērt lapu</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Aizvērt</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Meklēt</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofons</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Notīrīt tekstu</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Atpakaļ</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktivizēts</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Deaktivizēts</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neitrāls</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Zīmols</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Skujiņa</string>
+    <string name="fluentui_large">Liels</string>
+    <string name="fluentui_medium">Vidēja</string>
+    <string name="fluentui_small">Mazs</string>
+    <string name="fluentui_subtitle">Subtitrs</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Избрано</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Не е избрано</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Забранено</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Активирани</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Затваряне на листа</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Затвори</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Търсене</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Микрофон</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Изчистване на текста</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Назад</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Активирано</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Деактивирано</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Неутрален</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Марка</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">V-образна стрелка</string>
+    <string name="fluentui_large">Голяма</string>
+    <string name="fluentui_medium">Средна</string>
+    <string name="fluentui_small">Малка</string>
+    <string name="fluentui_subtitle">Подзаглавие</string>
+</resources>

@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Sklandi vartotojo sąsajos demonstracinė versija</string>
+    <string name="app_title">Sklandi vartotojo sąsaja</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">Pasirinktas %s</string>
+    <string name="app_modifiable_parameters">Modifikuojami parametrai</string>
+    <string name="app_right_accessory_view">Dešiniojo priedų rodinys</string>
+
+    <string name="app_style">Stilius</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Piktograma paspausta</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Paleisti demonstracinę versiją</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Karuselė</string>
+    <string name="actionbar_icon_radio_label">Piktograma</string>
+    <string name="actionbar_basic_radio_label">Bazinė</string>
+    <string name="actionbar_position_bottom_radio_label">Apačioje</string>
+    <string name="actionbar_position_top_radio_label">Viršus</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Veiksmų juostos tipas</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Veiksmų juostos padėtis</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">Programėlės juostos stilius</string>
+    <string name="app_bar_subtitle">Subtitras</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">Naršymo piktograma spustelėta.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Vėliavėlė</string>
+    <string name="app_bar_layout_menu_settings">Parametrai</string>
+    <string name="app_bar_layout_menu_search">Ieška</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Slinkties veikimas: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Perjungti slinkties veikimo būdą</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Perjungti naršymo piktogramą</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Rodyti pseudoportretą</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Rodyti piktogramą Atgal</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Slėpti piktogramą</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Rodyti piktogramą</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Perjungti ieškos juostos maketo stilių</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Rodyti kaip priedų rodinį</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Rodyti kaip veiksmo rodinį</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Perjungti tarp temų (atkuria veiklą)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Elementas</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Papildomas slenkamas turinys</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Apskritimo stilius</string>
+    <string name="avatar_style_square">Kvadratinis stilius</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XX didž.</string>
+    <string name="avatar_size_xlarge">X didž.</string>
+    <string name="avatar_size_large">Didelė</string>
+    <string name="avatar_size_medium">Vidutinis</string>
+    <string name="avatar_size_small">Mažas</string>
+    <string name="avatar_size_xsmall">Suslėgamas small( s)</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Maks. rodomas pseudoportretas</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Perpildos pseudoportretų skaičius</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Kraštinės tipas:</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">Pseudoportretų grupė su rinkiniu OverflowAvatarCount neatitinka maksimalaus rodomo pseudoportreto.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Veido dėklas</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Veido krūvelė</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">Spustelėta perpilda</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">Spustelėtas "AvatarView" indekso %d</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Pranešimų ženklelis</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Taškas</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Sąrašas</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Veikėjas</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Nuotraukos</string>
+    <string name="bottom_navigation_menu_item_news">Naujienos</string>
+    <string name="bottom_navigation_menu_item_alerts">Įspėjimai</string>
+    <string name="bottom_navigation_menu_item_calendar">Kalendorius</string>
+    <string name="bottom_navigation_menu_item_team">Komanda</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Perjungti žymas</string>
+    <string name="bottom_navigation_three_menu_items_button">Rodyti tris meniu elementus</string>
+    <string name="bottom_navigation_four_menu_items_button">Rodyti keturis meniu elementus</string>
+    <string name="bottom_navigation_five_menu_items_button">Rodyti penkis meniu elementus</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Žymos yra %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">Apatinis lapas</string>
+    <string name="bottom_sheet_dialog">Apatinės lapo dalies dialogo langas</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Rodyti su vienos eilutės elementais</string>
+    <string name="bottom_sheet_with_double_line_items">Rodyti su dviejų eilučių elementais</string>
+    <string name="bottom_sheet_with_single_line_header">Rodyti su vienos eilutės antrašte</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Rodyti su dvigubų linijų antrašte ir skyrikliais</string>
+    <string name="bottom_sheet_dialog_button">Kino seansas</string>
+    <string name="drawer_content_desc_collapse_state">Išplėsti</string>
+    <string name="drawer_content_desc_expand_state">Minimizuoti</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Spustelėkite %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">Ilgas spustelėjimas %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Elemento įterpimas</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Naujinti elementą</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Atsisakyti</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Įtraukti</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Paminėjimas</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Paryškintasis</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Pasvirasis</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Pabraukti</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Perbraukimas</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Anuliuoti</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Perdaryti</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Ženklelis</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Sąrašas</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Saitas</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Elementas naujinamas</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Tarpai</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Išjungti padėtį</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">PRADĖTI</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Grupės erdvė</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Elemento vieta</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Vėliavėlė</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Spustelėtas vėliavėlės elementas</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Atsakyti</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">Spustelėtas atsakymo elementas</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Pirmyn</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Persiųsti elementą spustelėtas</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Naikinti</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">Spustelėtas naikinti elementas</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Pseudonimas</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Kamera</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Fotografuoti</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">Fotoaparato elementas spustelėtas</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galerija</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Peržiūrėkite savo nuotraukas</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">Galerijos elementas spustelėtas</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Vaizdo įrašai</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Leisti vaizdo įrašus</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">Vaizdo įrašų elementas spustelėtas</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Tvarkyti</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Tvarkyti medijos biblioteką</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">Elementas tvarkomas spustelėjus</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">El. pašto veiksmai</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Dokumentai</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Paskutinį kartą atnaujinta 14:14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Bendrinti</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">Bendrinimo elementas spustelėtas</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Perkelti</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">Elementas perkeltas spustelėtas</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Naikinti</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Spustelėtas naikinti elementas</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Informacija</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">Informacijos elementas spustelėtas</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Laikrodis</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">Laikrodžio elementas spustelėtas</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Žadintuvas</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Signalo elementas spustelėtas</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Laiko juosta</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">Spustelėtas laiko juostos elementas</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Mygtukas</string>
+    <string name="buttonbar">Mygtukų juosta</string>
+    <string name="button_disabled">Išjungimo mygtukas</string>
+    <string name="button_borderless">Mygtukas be rėmelio</string>
+    <string name="button_borderless_disabled">Mygtukas Be kraštinių išjungtas</string>
+    <string name="button_large">Didelis mygtukas</string>
+    <string name="button_large_disabled">Didelis išjungimo mygtukas</string>
+    <string name="button_outlined">Kontūro mygtukas</string>
+    <string name="button_outlined_disabled">Išjungto kontūro mygtukas</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Pasirinkti datą</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">Datos ir laiko parinkiklis</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Viena data</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Data nepasirinkta</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Rodyti datų išrinkiklį?</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Rodyti datos ir laiko parinkiklį, kai pasirinktas datos skirtukas</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Rodyti datos ir laiko parinkiklį su pasirinktu laiko skirtuku</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Rodyti datos ir laiko parinkiklį</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Datos diapazonas</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Pradžia:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Baigti:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Pradžia neparinkta</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Nepasirinkta pabaiga</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Pasirinkite pradžios datą</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Pasirinkite pabaigos datą</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Datos ir laiko intervalas</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">Datos ir laiko parinkiklio dialogo langas</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Rodyti dialogo langą</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Rodyti skydelį</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Rodyti skydelio dialogo langą</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Be išnykimo apatinio dialogo lango</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Rodyti viršutinį skydelį</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Viršutinis dialogo langas be išnykimo</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Rodyti fiksavimo rodinio viršutinį dialogo langą</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Rodyti viršutinį dialogo langą be pavadinimo</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Rodyti dialogo langą po pavadinimu viršuje</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Rodyti dešinįjį skydelį</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Rodyti kairįjį skydelį</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Pavadinimas, pirminis tekstas</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Paantraštė, antrinis tekstas</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Pasirinktinis paantraštės tekstas</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Poraštė, tretinis tekstas</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Vienos eilutės sąrašas su pilkos antrinės antraštės tekstu</string>
+    <string name="list_item_sub_header_two_line">Dviejų eilučių sąrašas</string>
+    <string name="list_item_sub_header_two_line_dense">Dviejų eilučių sąrašas su tankiais tarpais</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Dviejų eilučių sąrašas su pasirinktiniu antriniu subtitrų rodiniu</string>
+    <string name="list_item_sub_header_three_line">Trijų eilučių sąrašas su juodu antrinės antraštės tekstu</string>
+    <string name="list_item_sub_header_no_custom_views">Išvardyti elementus be pasirinktinių rodinių</string>
+    <string name="list_item_sub_header_large_header">Išvardyti elementus su dideliais pasirinktiniais rodiniais</string>
+    <string name="list_item_sub_header_wrapped_text">Išvardyti elementus su perkeltu tekstu</string>
+    <string name="list_item_sub_header_truncated_text">Išvardyti elementus sutrumpintais tekstu</string>
+    <string name="list_item_sub_header_custom_accessory_text">Veiksmas</string>
+    <string name="list_item_truncation_middle">Vidurinis sutrumpinimas.</string>
+    <string name="list_item_truncation_end">Baigti sutrumpinimą.</string>
+    <string name="list_item_truncation_start">Pradėti trumpinimą.</string>
+    <string name="list_item_custom_text_view">Reikšmė</string>
+    <string name="list_item_click">Spustelėjote sąrašo elementą.</string>
+    <string name="list_item_click_custom_accessory_view">Spustelėjote pasirinktinio priedų rodinį.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Spustelėjote pasirinktinio priedų rodinio paantraštės rodinį.</string>
+    <string name="list_item_more_options">Daugiau parinkčių</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Pasirinkti</string>
+    <string name="people_picker_select_deselect_example">Pasirinkti pasirinkimą</string>
+    <string name="people_picker_none_example">Nėra</string>
+    <string name="people_picker_delete_example">Naikinti</string>
+    <string name="people_picker_custom_persona_description">Šiame pavyzdyje rodoma, kaip sukurti pasirinktinį objektą IPersona.</string>
+    <string name="people_picker_dialog_title_removed">Pašalinote asmenį:</string>
+    <string name="people_picker_dialog_title_added">Įtraukėte personažą:</string>
+    <string name="people_picker_drag_started">Vilkimas pradėtas</string>
+    <string name="people_picker_drag_ended">Vilkimas baigtas</string>
+    <string name="people_picker_picked_personas_listener">Personažų nukreipimo priemonė</string>
+    <string name="people_picker_suggestions_listener">Pasiūlymų nukreipimo priemonė</string>
+    <string name="people_picker_persona_chip_click">Spustelėjote %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s recipient</item>
+        <item quantity="few">%1$s recipients</item>
+        <item quantity="many">%1$s recipients</item>
+        <item quantity="other">%1$s recipients</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Išplėsti pastovų apatinį lapą</string>
+    <string name="collapse_persistent_sheet_button"> Slėpti pastovų apatinį lapą</string>
+    <string name="show_persistent_sheet_button"> Rodyti pastovų apatinį lapą</string>
+    <string name="new_view">Tai naujas rodinys</string>
+    <string name="toggle_sheet_content">Perjungti apatinio lapo turinį</string>
+    <string name="switch_to_custom_content">Perjungti į pasirinktinį turinį</string>
+    <string name="one_line_content">Vienos eilutės apatinio lapo turinys</string>
+    <string name="toggle_disable_all_items">Įjungti / išjungti visus elementus</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Įtraukti / pašalinti rodinį</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Keisti sutrauktą aukštį</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Naujas aplankas</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Spustelėtas naujas aplanko elementas</string>
+    <string name="persistent_sheet_item_edit_title">Redaguoti</string>
+    <string name="persistent_sheet_item_edit_toast">Redaguotas elementas spustelėtas</string>
+    <string name="persistent_sheet_item_save_title">Įrašyti</string>
+    <string name="persistent_sheet_item_save_toast">Įrašytas elementas spustelėtas</string>
+    <string name="persistent_sheet_item_zoom_in_title">Didinti mastelį</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Spustelėtas priartinimo elementas</string>
+    <string name="persistent_sheet_item_zoom_out_title">Mažinti mastelį</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Spustelėtas tolinimo elementas</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Pasiekiama</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Makastė</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Kalėdų giesmės Lenkijoje</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Šarlotė Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Saulis Fillipsas</string>
+    <string name="persona_name_elliot_woodward">Elisot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Izaokas fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McCongregor</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Pattersonas</string>
+    <string name="persona_name_lydia_bauer">Lydia  Login</string>
+    <string name="persona_name_mauricio_august">Mauricio rugpjūtis</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Išteklių rotacijos skaičius</string>
+    <string name="persona_name_robert_tolbert">Rober tolbertas</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Taisa Disė</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Dizaino įrankis</string>
+    <string name="persona_subtitle_engineer">Inžinierius</string>
+    <string name="persona_subtitle_manager">Vadovas</string>
+    <string name="persona_subtitle_researcher">Tyrinėtojas</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (ilgas teksto pavyzdys norint patikrinti sutrumpinimą)</string>
+    <string name="persona_view_description_xxlarge">XXLarge pseudoportretas su trimis teksto eilutėmis</string>
+    <string name="persona_view_description_large">Didelis pseudoportretas su dviem teksto eilutėmis</string>
+    <string name="persona_view_description_small">Mažas pseudoportretas su viena teksto eilute</string>
+    <string name="people_picker_hint">Nieko su rodoma užuomina</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Išjungtas personažų lustas</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Klaidos asmens lustas</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Personažų lustas be uždarymo piktogramos</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Paprastas personažų lustas</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Spustelėjote pasirinktą asmens lustą.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Bendrinti</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Stebėti</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Kviesti žmones</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Puslapio atnaujinimas</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Atidaryti naršyklėje</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Tai yra kelių eilučių laikinasis meniu. Didžiausias eilučių skaičius nustatytas kaip dvi, o likusi teksto dalis bus trumpinama.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Visos naujienos</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Įrašytos naujienos</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Naujienos iš svetainių</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Pranešti ne darbo valandomis</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Pranešti, kai darbalaukis neaktyvus</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Spustelėjote elementą:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Paprastasis meniu</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Paprastasis meniu 2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Meniu su vienu pasirenkamu elementu ir skyrituvu</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Meniu su visais pasirenkamais elementais, piktogramomis ir ilgu tekstu</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Kino seansas</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Ciklinė eiga</string>
+    <string name="circular_progress_xsmall">Suslėgamas small( s)</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Mažas</string>
+    <string name="circular_progress_small_size">24 ks</string>
+    <string name="circular_progress_medium">Vidutinis</string>
+    <string name="circular_progress_medium_size">36 ksp</string>
+    <string name="circular_progress_large">Didelė</string>
+    <string name="circular_progress_large_size">44 ks.</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Linijinė eiga</string>
+    <string name="linear_progress_size">4-os kpp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Nenustatyta</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Nustatyti</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Ieškos juosta</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Mikrofono atgalinis skambinimas</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Mikrofonas paspaustas</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Dešinysis rodinys paspaustas</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Klaviatūros ieška paspausta</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Veiksmas</string>
+    <string name="snackbar_action_long">Ilgasis teksto veiksmas</string>
+    <string name="snackbar_single_line">Vienos eilutės užkandinė juosta</string>
+    <string name="snackbar_multiline">Tai kelių eilučių užkandinė juosta. Didžiausias eilučių skaičius nustatytas kaip dvi, o likusi teksto dalis bus trumpinama.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Tai pranešimo užkandinė juosta. Jis naudojamas naujoms funkcijoms palaikyti.</string>
+    <string name="snackbar_primary">Tai pagrindinė užkandinė juosta.</string>
+    <string name="snackbar_light">Tai šviesi užkandinė.</string>
+    <string name="snackbar_warning">Tai įspėjimo užkandinė juosta.</string>
+    <string name="snackbar_danger">Tai yra pavojus užkandinė.</string>
+    <string name="snackbar_description_single_line">Trumpa trukmė</string>
+    <string name="snackbar_description_single_line_custom_view">Ilga trukmė su cikline eiga kaip mažas pasirinktinis rodinys</string>
+    <string name="snackbar_description_single_line_action">Trumpa trukmė su veiksmu</string>
+    <string name="snackbar_description_single_line_action_custom_view">Trumpa trukmė su veiksmu ir vidutiniu pasirinktiniu rodiniu</string>
+    <string name="snackbar_description_single_line_custom_text_color">Trumpa trukmė su tinkinta teksto spalva</string>
+    <string name="snackbar_description_multiline">Ilga trukmė</string>
+    <string name="snackbar_description_multiline_custom_view">Ilga trukmė su mažu pasirinktiniu rodiniu</string>
+    <string name="snackbar_description_multiline_action">Neribotą laiką su veiksmais ir teksto naujinimais</string>
+    <string name="snackbar_description_multiline_action_custom_view">Trumpa trukmė su veiksmu ir vidutiniu pasirinktiniu rodiniu</string>
+    <string name="snackbar_description_multiline_action_long">Trumpa trukmė su ilgu veiksmo tekstu</string>
+    <string name="snackbar_description_announcement">Trumpa trukmė</string>
+    <string name="snackbar_description_updated">This text has been updated.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Rodyti užkandinę juostą</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Vienguba linija</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Multiline</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Skelbimo stilius</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Pirminis stilius</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Šviesus stilius</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Įspėjimo stilius</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Grėsmės stilius</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Pagrindinis</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Paštas</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Parametrai</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Pranešimas</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Daugiau</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">TEKSTO LYGIUOTĖ</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Vertikalioji</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Horizontaliai</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(nėra teksto)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Skirtuko elementai</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Pavadinimas</string>
+    <string name="cell_sample_description">Aprašas</string>
+    <string name="calculate_cells">Įkelti / apskaičiuoti 100 langelių</string>
+    <string name="calculate_layouts">Įkelti / apskaičiuoti 100 maketų</string>
+    <string name="template_list">Šablonų sąrašas</string>
+    <string name="regular_list">Įprastas sąrašas</string>
+    <string name="cell_example_title">Pavadinimas: langelis</string>
+    <string name="cell_example_description">Aprašas: bakstelėkite norėdami pakeisti padėtį</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Standartinis skirtukas 2 segmentas</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Standartinis skirtukas 3 segmentas</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Standartinis 4 skirtuko segmentas</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Standartinis skirtukas su pranešimų gavi programa</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Perjungti skirtuką</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">"Pills" skirtukas </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Bakstelėkite, kad gautumėte patarimą</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Bakstelėkite, kad gautumėte pasirinktinio kalendoriaus patarimą</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Bakstelėkite pasirinktinių spalvų patarimą</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Bakstelėkite, kad atmeskite vidinio įrankio patarimą</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Bakstelėkite, kad gautumėte pasirinktinio rodinio patarimą</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Patarimas dėl populiariausių pasirinktinių spalvų</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Patarimas viršuje su 10dp poslinkioX</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Apatinės pradžios patarimas</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Patarimas apačioje gale su 10dp poslinkiu</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Atmesti patarime apie įrankį</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Patarimas išjungtas</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Antraštė – šviesus 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">1 pavadinimas yra 20sp vidutinis</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">2 pavadinimas yra įprastas 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Antraštė – įprastas 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">1 paantraštė yra įprasta 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">2 paantraštė yra vidutinė 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">1 pagrindinė dalis yra įprastas 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">2 tekstas yra vidutinis 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">Antraštė yra įprastas 12sp</string>
+
+</resources>
