@@ -12,8 +12,11 @@ Fluent V2:
         6.updated accessibilty semantics for avatar carousel
         7.Avatar carousel now has default size
         8.Removed default person from avatar carousel api
-        9.Enabled accessibility Heading flag in ListSubHeader, Bottomsheet, PersistentBottomSheet
     Localization:
         Retranslated the strings to support localization. Now supports 66 languages.
     Build:
         Upgrading hydra lab version
+
+Fluent VCurrent:
+    Fix/Enhancement:
+        1.Enabled accessibility Heading flag in ListSubHeader, Bottomsheet, PersistentBottomSheet
