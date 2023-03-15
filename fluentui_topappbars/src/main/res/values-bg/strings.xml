@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="searchbar_clear_search">Изчисти търсенето</string>
-  <string name="searchbar_back">Назад</string>
-  <string name="searchbar_query_hint_default">Търсене</string>
-</resources>

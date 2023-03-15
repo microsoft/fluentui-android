@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Valið</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Ekki valið</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Óvirkt</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Virkt</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Loka blaði</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Loka</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Leita</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Hljóðnemi</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Hreinsa texta</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Til baka</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Gert virkt</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Gert óvirkt</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Hlutlaust</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Vörumerki</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Vinstri tvíoddur</string>
+    <string name="fluentui_large">L</string>
+    <string name="fluentui_medium">M</string>
+    <string name="fluentui_small">S</string>
+    <string name="fluentui_subtitle">Undirtitill</string>
+</resources>

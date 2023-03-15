@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Seleccionada</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Non se seleccionou</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Desactivado</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Activado</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Pechar folla</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Pechar</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Buscar</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Micrófono</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Borrar texto</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Atrás</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Activado</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Desactivado</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutro</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Marca</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Comiñas angulares</string>
+    <string name="fluentui_large">Grande</string>
+    <string name="fluentui_medium">Medio</string>
+    <string name="fluentui_small">Pequeno</string>
+    <string name="fluentui_subtitle">Subtítulo</string>
+</resources>

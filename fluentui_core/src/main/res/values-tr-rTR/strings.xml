@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Seçili</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Seçili Değil</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Devre dışı bırakılmış</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Etkin</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Sayfayı Kapatma</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Kapatma</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Arama</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Metni Temizleme</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Geri</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Etkin</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Devre Dışı Bırakılmış</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Nötr</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Marka</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Köşeli Çift Ayraç</string>
+    <string name="fluentui_large">Büyük</string>
+    <string name="fluentui_medium">Orta</string>
+    <string name="fluentui_small">Küçük</string>
+    <string name="fluentui_subtitle">Alt Yazı</string>
+</resources>

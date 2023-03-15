@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Markerat</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Inte valt</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Inaktiverat</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Aktiverad</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Stäng blad</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Stäng</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Sök</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Ta bort text</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Tillbaka</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktiverad</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Inaktivera</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutral</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Varumärke</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">V-form</string>
+    <string name="fluentui_large">Stor</string>
+    <string name="fluentui_medium">Mellan</string>
+    <string name="fluentui_small">Liten</string>
+    <string name="fluentui_subtitle">Underrubrik</string>
+</resources>

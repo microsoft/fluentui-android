@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** Shared *** -->
+    <string name="done">Gereed</string>
+
+    <!--Content description for default left action in the action bar layout.-->
+    <string name="action_bar_default_left_action">Overslaan</string>
+    <!--Content description for default right action in the action bar layout.-->
+    <string name="action_bar_default_right_action">Volgende</string>
+    <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
+    <string name="action_bar_default_final_action">Start</string>
+    <!--Content description default right icon-->
+    <string name="action_bar_right_icon_description">Volgende</string>
+    <!--accessibiltiy-->
+    <!--Announcement when page is scrolled-->
+    <string name="action_bar_accessibility_page_announcement">Schuifpagina %1$d van %2$d</string>
+    <!--Announcement when actionbarlayout opens or when Skip is pressed-->
+    <string name="action_bar_accessibility_viewpager_description">Weergave met meerdere pagina\'s. Schuifpagina %1$d van %2$d</string>
+
+    <string name="fluentui_bottom_sheet_header">Kop BottomSheet</string>
+</resources>

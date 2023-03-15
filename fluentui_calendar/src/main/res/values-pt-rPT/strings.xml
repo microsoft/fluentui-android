@@ -1,61 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <resources>
-    <string name="date_time">%1$s, %2$s</string>
-  <string name="today">Hoje</string>
-  <string name="tomorrow">Amanhã</string>
-  <string name="yesterday">Ontem</string>
-  <string name="monday_initial">S</string>
-  <string name="tuesday_initial">T</string>
-  <string name="wednesday_initial">Q</string>
-  <string name="thursday_initial">Q</string>
-  <string name="friday_initial">S</string>
-  <string name="saturday_initial">S</string>
-  <string name="sunday_initial">D</string>
-  <string name="accessibility_goto_next_week">Ir para a próxima semana</string>
-  <string name="accessibility_goto_previous_week">Ir para a semana anterior</string>
-  <string name="accessibility_today">hoje</string>
-  <string name="accessibility_selected">Selecionado</string>
-  <string name="date_time_picker_start_time">Hora de início</string>
-  <string name="date_time_picker_end_time">Hora de fim</string>
-  <string name="date_time_picker_start_date">Data de início</string>
-  <string name="date_time_picker_end_date">Data de fim</string>
-  <string name="date_time_picker_choose_time">Escolher Hora</string>
-  <string name="date_time_picker_choose_date">Escolher Data</string>
-  <string name="date_time_picker_accessibility_dialog_title">Seletor de Data e Hora</string>
-  <string name="date_picker_accessibility_dialog_title">Selecionador de Datas</string>
-  <string name="date_time_picker_range_accessibility_dialog_title">Intervalo do Seletor de Data e Hora</string>
-  <string name="date_picker_range_accessibility_dialog_title">Intervalo do Selecionador de Datas</string>
-  <string name="date_time_picker_accessiblility_start_time">Separador de hora de início</string>
-  <string name="date_time_picker_accessiblility_end_time">Separador de hora de fim</string>
-  <string name="date_picker_accessiblility_start_date">Separador de data de início</string>
-  <string name="date_picker_accessiblility_end_date">Separador de data de fim</string>
-  <string name="date_time_picker_accessibility_close_dialog_button">Fechar a caixa de diálogo</string>
-  <string name="date_picker_accessibility_increment_month_button">Aumentar um mês</string>
-  <string name="date_picker_accessibility_next_month_click_action">selecionar o mês seguinte</string>
-  <string name="date_picker_accessibility_decrement_month_button">Diminuir um mês</string>
-  <string name="date_picker_accessibility_previous_month_click_action">selecionar o mês anterior</string>
-  <string name="date_picker_accessibility_increment_day_button">Aumentar um dia</string>
-  <string name="date_picker_accessibility_next_day_click_action">selecionar o dia seguinte</string>
-  <string name="date_picker_accessibility_decrement_day_button">Diminuir um dia</string>
-  <string name="date_picker_accessibility_previous_day_click_action">selecionar o dia anterior</string>
-  <string name="date_picker_accessibility_increment_year_button">Aumentar um ano</string>
-  <string name="date_picker_accessibility_next_year_click_action">selecionar o ano seguinte</string>
-  <string name="date_picker_accessibility_decrement_year_button">Diminuir um ano</string>
-  <string name="date_picker_accessibility_previous_year_click_action">selecionar o ano anterior</string>
-  <string name="date_time_picker_accessibility_increment_date_button">Aumentar data</string>
-  <string name="date_picker_accessibility_next_date_click_action">selecionar a data seguinte</string>
-  <string name="date_time_picker_accessibility_decrement_date_button">Diminuir data</string>
-  <string name="date_picker_accessibility_previous_date_click_action">selecionar a data anterior</string>
-  <string name="date_time_picker_accessibility_increment_hour_button">Aumentar hora</string>
-  <string name="date_picker_accessibility_next_hour_click_action">selecionar a hora seguinte</string>
-  <string name="date_time_picker_accessibility_decrement_hour_button">Diminuir hora</string>
-  <string name="date_picker_accessibility_previous_hour_click_action">selecionar a hora anterior</string>
-  <string name="date_time_picker_accessibility_increment_minute_button">Aumentar minuto</string>
-  <string name="date_picker_accessibility_next_minute_click_action">selecionar o minuto seguinte</string>
-  <string name="date_time_picker_accessibility_decrement_minute_button">Diminuir minuto</string>
-  <string name="date_picker_accessibility_previous_minute_click_action">selecionar o minuto anterior</string>
-  <string name="date_time_picker_accessibility_period_toggle_button">Ativar/Desativar o período AM/PM</string>
-  <string name="date_time_picker_accessibility_period_toggle_click_action">ativar/desativar o período AM/PM</string>
-  <string name="date_time_picker_accessibility_selected_date">%s selecionada</string>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">S</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">T</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">Q</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">Q</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">S</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">S</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">D</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Ir para a próxima semana</string>
+    <string name="accessibility_goto_previous_week">Ir para a semana anterior</string>
+    <string name="accessibility_today">hoje</string>
+    <string name="accessibility_selected">Selecionado</string>
+
+    <!-- *** Shared *** -->
     <string name="done">Concluído</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Hoje</string>
+    <string name="tomorrow">Amanhã</string>
+    <string name="yesterday">Ontem</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Hora de início</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Hora de fim</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Data de início</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Data de fim</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Escolher Hora</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Escolher Data</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Seletor de Data e Hora</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Selecionador de Datas</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Intervalo do Seletor de Data e Hora</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Intervalo do Selecionador de Datas</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Separador de hora de início</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Separador de hora de fim</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Separador de data de início</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Separador de data de fim</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Fechar a caixa de diálogo</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Aumentar um mês</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">selecionar o mês seguinte</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Diminuir um mês</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">selecionar o mês anterior</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Aumentar um dia</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">selecionar o dia seguinte</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Diminuir um dia</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">selecionar o dia anterior</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Aumentar um ano</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">selecionar o ano seguinte</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Diminuir um ano</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">selecionar o ano anterior</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Aumentar data</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">selecionar a data seguinte</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Diminuir data</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">selecionar a data anterior</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Aumentar hora</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">selecionar a hora seguinte</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Diminuir hora</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">selecionar a hora anterior</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Aumentar minuto</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">selecionar o minuto seguinte</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Diminuir minuto</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">selecionar o minuto anterior</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Ativar/Desativar o período AM/PM</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">ativar/desativar o período AM/PM</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s selecionada</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">selecionado</string>
 </resources>

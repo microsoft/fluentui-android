@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="persona_title_placeholder">គ្មានឈ្មោះ</string>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- *** Persona *** -->
+    <string name="persona_title_placeholder">គ្មានឈ្មោះ</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Status">ស្ថានភាព</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Out_Of_Office">នៅ​ក្រៅ​ការិយាល័យ</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Active">សកម្ម</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Inactive">អសកម្ម</string>
 </resources>

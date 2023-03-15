@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** Shared *** -->
+    <string name="done">انجام شد</string>
+
+    <!--Content description for default left action in the action bar layout.-->
+    <string name="action_bar_default_left_action">صرفنظر کردن</string>
+    <!--Content description for default right action in the action bar layout.-->
+    <string name="action_bar_default_right_action">بعدی</string>
+    <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
+    <string name="action_bar_default_final_action">شروع</string>
+    <!--Content description default right icon-->
+    <string name="action_bar_right_icon_description">بعدی</string>
+    <!--accessibiltiy-->
+    <!--Announcement when page is scrolled-->
+    <string name="action_bar_accessibility_page_announcement">صفحه زبانه متحرک %1$d از %2$d</string>
+    <!--Announcement when actionbarlayout opens or when Skip is pressed-->
+    <string name="action_bar_accessibility_viewpager_description">نمای چندصفحه‌ای. صفحه زبانه متحرک %1$d از %2$d</string>
+
+    <string name="fluentui_bottom_sheet_header">سرعنوان ورقه پایین</string>
+</resources>

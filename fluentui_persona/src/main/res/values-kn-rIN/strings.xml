@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- *** Persona *** -->
+    <string name="persona_title_placeholder">ಯಾವುದೇ ಹೆಸರಿಲ್ಲ</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Status">ಸ್ಥಿತಿ</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Out_Of_Office">ಕಛೇರಿಯ ಹೊರಗೆ</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Active">ಸಕ್ರಿಯ</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Inactive">ನಿಷ್ಕ್ರಿಯವಾಗಿದೆ</string>
+</resources>

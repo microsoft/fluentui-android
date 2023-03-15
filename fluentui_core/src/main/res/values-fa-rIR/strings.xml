@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">انتخاب‌شده</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">انتخاب‌نشده</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">غیرفعال‌شده</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">فعال‌شده</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">بستن صفحه</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">بستن</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">جستجو</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">میکروفون</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">پاک‌کردن متن</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">بازگشت</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">فعال‌شده</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">غیرفعال‌سازی‌شده</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">خنثی</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">برند</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">شورون</string>
+    <string name="fluentui_large">بزرگ</string>
+    <string name="fluentui_medium">متوسط</string>
+    <string name="fluentui_small">کوچک</string>
+    <string name="fluentui_subtitle">زیرنویس</string>
+</resources>

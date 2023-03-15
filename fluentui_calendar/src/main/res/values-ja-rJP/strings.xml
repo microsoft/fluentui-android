@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">月</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">火</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">水</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">木</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">金</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">土</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">日</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">次の週に移動</string>
+    <string name="accessibility_goto_previous_week">前の週に移動</string>
+    <string name="accessibility_today">今日</string>
+    <string name="accessibility_selected">選択済み</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">完了</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s、%2$s</string>
+    <string name="today">今日</string>
+    <string name="tomorrow">明日</string>
+    <string name="yesterday">昨日</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">開始時刻</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">終了時刻</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">開始日</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">終了日</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">時間の選択</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">日付の選択</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">日付時刻の選択</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">日付の選択</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">日付時刻の選択範囲</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">日付の選択範囲</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">[開始時刻] タブ</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">[終了時刻] タブ</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">[開始日] タブ</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">[終了日] タブ</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">ダイアログを閉じる</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">月を 1 つ増やす</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">次の月を選択</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">月を 1 つ減らす</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">前の月を選択</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">日を 1 つ増やす</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">次の日を選択</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">日を 1 つ減らす</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">前の日を選択</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">年を 1 つ増やす</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">次の年を選択</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">年を 1 つ減らす</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">前の年を選択</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">日を 1 つ増やす</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">次の日を選択</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">日を 1 つ減らす</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">前の日付を選択</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">時間を 1 つ増やす</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">次の時間を選択</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">時間を 1 つ減らす</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">前の時間を選択</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">分を 1 つ増やす</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">次の分を選択</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">分を 1 つ減らす</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">前の分を選択</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">午前と午後の期間を切り替える</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">午前と午後の期間を切り替える</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s を選択しました</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">選択済み</string>
+</resources>

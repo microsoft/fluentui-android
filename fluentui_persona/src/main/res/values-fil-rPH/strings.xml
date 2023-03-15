@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <string name="persona_title_placeholder">Walang pangalan</string>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <!-- *** Persona *** -->
+    <string name="persona_title_placeholder">Walang pangalan</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Status">Katayuan</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Out_Of_Office">Wala sa Opisina</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Active">Aktibo</string>
+    <!-- String specifying the work status of a person -->
+    <string name="Inactive">Di aktibo</string>
 </resources>

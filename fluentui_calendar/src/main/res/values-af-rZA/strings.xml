@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">M</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">D</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">W</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">D</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">V</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">S</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">S</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Gaan na volgende week</string>
+    <string name="accessibility_goto_previous_week">Gaan na vorige week</string>
+    <string name="accessibility_today">vandag</string>
+    <string name="accessibility_selected">Gekies</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Klaar</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Vandag</string>
+    <string name="tomorrow">Môre</string>
+    <string name="yesterday">Gister</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Begintyd</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Eindtyd</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Begindatum</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Einddatum</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Kies tyd</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Kies datum</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Datum-/tydkieser</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Datumkieser</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Datum-/tydkieserbestek</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Datumkieserbestek</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Begintyd-duimgids</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Eindtyd-duimgids</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Begindatum-duimgids</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Einddatum-duimgids</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Sluit dialoog</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Inkrementmaand</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">kies volgende maand</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Dekrementmaand</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">kies vorige maand</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Inkrementdag</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">kies volgende dag</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Dekrementdag</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">kies vorige dag</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Inkrementjaar</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">kies volgende jaar</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Dekrementjaar</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">kies vorige jaar</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Inkrementdatum</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">kies volgende datum</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Dekrementdatum</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">kies vorige datum</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Inkrementuur</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">kies volgende uur</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Dekrementuur</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">kies vorige uur</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Inkrementminuut</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">kies volgende minuut</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Dekrementminuut</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">kies vorige minuut</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">wissel vm./nm.-tydperk</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">wissel vm./nm.-tydperk</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s is geselekteer</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">geselekteer</string>
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">បានជ្រើសរើស</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">មិនបានជ្រើសរើស</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">បានបិទ</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">បានបើក</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">បិទសន្លឹកកិច្ចការ</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">បិទ</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">ស្វែងរក</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">មីក្រូហ្វូន</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">លុបអត្ថបទ</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">ថយក្រោយ</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">បានបើកដំណើរការ</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">បានបិទដំណើរការ</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">ធម្មតា</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">ម៉ាកយីហោ</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">សញ្ញាអញ្ញប្រកាស</string>
+    <string name="fluentui_large">ធំ</string>
+    <string name="fluentui_medium">មធ្យម</string>
+    <string name="fluentui_small">តូច</string>
+    <string name="fluentui_subtitle">ចំណងជើងរង</string>
+</resources>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">H</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">K</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">Sze</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">Cs</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">P</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">Szo</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">V</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Ugrás a következő hétre</string>
+    <string name="accessibility_goto_previous_week">Ugrás az előző hétre</string>
+    <string name="accessibility_today">ma</string>
+    <string name="accessibility_selected">Kijelölve</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Kész</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Ma</string>
+    <string name="tomorrow">Holnap</string>
+    <string name="yesterday">Tegnap</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Kezdés ideje</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Befejezési időpont</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Kezdés dátuma</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Befejezés dátuma</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Időpont kiválasztása</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Dátum választása</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Dátum- és időválasztó</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Dátumválasztó</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Dátum- és időválasztási tartomány</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Dátumválasztási tartomány</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Kezdés ideje lap</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Befejezés ideje lap</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Kezdés dátuma lap</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Befejezés dátuma lap</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Párbeszédpanel bezárása</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Hónap számának növelése</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">válassza ki a következő hónapot</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Hónap számának csökkentése</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">válassza ki az előző hónapot</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Nap számának növelése</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">válassza ki a következő napot</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Nap számának csökkentése</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">válassza ki az előző napot</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Év számának növelése</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">válassza ki a következő évet</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Év számának csökkentése</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">válassza ki az előző évet</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Dátum növelése</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">válassza ki a következő dátumot</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Dátum csökkentése</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">válassza ki az előző dátumot</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Óra számának növelése</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">válassza ki a következő órát</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Óra számának csökkentése</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">válassza ki az előző órát</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Perc számának növelése</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">válassza ki a következő percet</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Perc számának csökkentése</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">Válassza ki az előző percet</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Délelőtt/délután időjelzés be- vagy kikapcsolása</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">délelőtt/délután időjelzés be- vagy kikapcsolása</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s kijelölve</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">kijelölve</string>
+</resources>
