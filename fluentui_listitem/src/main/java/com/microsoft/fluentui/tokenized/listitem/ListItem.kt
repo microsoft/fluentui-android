@@ -58,6 +58,14 @@ internal fun getListItemInfo(): ListItemInfo {
 
 object ListItem {
 
+    private fun clearSemantics(properties: (SemanticsPropertyReceiver.() -> Unit)?): Modifier {
+        return if (properties != null) {
+            Modifier.clearAndSetSemantics(properties)
+        } else {
+            Modifier
+        }
+    }
+
     private fun Modifier.clickAndSemanticsModifier(
         interactionSource: MutableInteractionSource,
         onClick: () -> Unit,
@@ -212,6 +220,7 @@ object ListItem {
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      * @param leadingAccessoryView Optional composable leading accessory view.
      * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param textAccessibilityProperties Accessibility properties for the text in list item.
      *
      */
     @Composable
@@ -237,6 +246,7 @@ object ListItem {
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
         val listItemType = if (subText == null && secondarySubText == null) {
@@ -301,7 +311,8 @@ object ListItem {
                     .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .clickAndSemanticsModifier(
                         interactionSource, onClick = onClick ?: {}, enabled, rippleColor
-                    ), verticalAlignment = Alignment.CenterVertically
+                    )
+                , verticalAlignment = Alignment.CenterVertically
             ) {
                 if (unreadDot) {
                     Canvas(
@@ -330,7 +341,8 @@ object ListItem {
                 Box(
                     Modifier
                         .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
-                        .weight(1f), contentAlignment = contentAlignment
+                        .weight(1f)
+                        .then(clearSemantics(textAccessibilityProperties)),contentAlignment = contentAlignment
                 ) {
                     Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                         Row(

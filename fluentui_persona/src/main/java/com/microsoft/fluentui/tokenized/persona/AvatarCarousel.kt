@@ -75,17 +75,16 @@ fun AvatarCarousel(
         val inActiveString = getStringResource(R.string.Inactive)
         val scope = rememberCoroutineScope()
         val lazyListState = rememberLazyListState()
-        val avatarSize = getAvatarCarouselTokens().getAvatarSize(getAvatarCarouselInfo())
+        val avatarSize = getAvatarCarouselTokens().avatarSize(getAvatarCarouselInfo())
         val textStyle =
-            getAvatarCarouselTokens().getTextStyle(getAvatarCarouselInfo())
+            getAvatarCarouselTokens().textTypography(getAvatarCarouselInfo())
         val subTextStyle =
-            getAvatarCarouselTokens().getSubTextStyle(getAvatarCarouselInfo())
+            getAvatarCarouselTokens().subTextTypography(getAvatarCarouselInfo())
         val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
         val bottomPadding = if (size == AvatarCarouselSize.Small) 8.dp else 0.dp
-        val interactionSource = remember { MutableInteractionSource() }
-        val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
+        val textColor = getAvatarCarouselTokens().textColor(getAvatarCarouselInfo())
         val subTextColor =
-            getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())
+            getAvatarCarouselTokens().subTextColor(getAvatarCarouselInfo())
 
 
         LazyRow(state = lazyListState) {
@@ -95,7 +94,7 @@ fun AvatarCarousel(
                         .getColorByState(
                             enabled = item.enabled,
                             selected = false,
-                            interactionSource = interactionSource
+                            interactionSource = remember { MutableInteractionSource() }
                         )
                 val nameString =
                     if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
@@ -117,7 +116,7 @@ fun AvatarCarousel(
                         .requiredWidth(88.dp)
                         .alpha(if (item.enabled) 1f else 0.7f)
                         .clickable(
-                            interactionSource = interactionSource,
+                            interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(),
                             onClickLabel = null,
                             enabled = item.enabled,
