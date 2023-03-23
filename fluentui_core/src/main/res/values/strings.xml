@@ -28,6 +28,14 @@
     <string name="fluentui_neutral">Neutral</string>
     <!-- Describes the type - Brand-->
     <string name="fluentui_brand">Brand</string>
+    <!-- Describes the type - Contrast-->
+    <string name="fluentui_contrast">Contrast</string>
+    <!-- Describes the type - Accent-->
+    <string name="fluentui_accent">Accent</string>
+    <!-- Describes the type - Warning-->
+    <string name="fluentui_warning">Warning</string>
+    <!-- Describes the type - Danger-->
+    <string name="fluentui_danger">Danger</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">Chevron</string>
     <!--types of control -->
