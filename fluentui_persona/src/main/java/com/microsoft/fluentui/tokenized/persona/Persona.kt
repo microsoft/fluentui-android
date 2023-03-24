@@ -16,10 +16,10 @@ import com.microsoft.fluentui.tokenized.listitem.TextIcons
  * @param primaryText Primary text.
  * @param secondaryText Optional secondaryText or a subtitle.
  * @param tertiaryText Optional tertiary text or a footer.
- * @param enabled Optional enable/disable List item
  * @param onClick Optional onClick action for list item.
  * @param border [BorderType] Optional border for the list item.
  * @param borderInset [BorderInset]Optional borderInset for list item.
+ * @param enabled Optional enable/disable List item
  * @param enableAvatarActivityRings if avatar activity rings are enabled/disabled
  * @param enableAvatarPresence if avatar presence is enabled/disabled
  * @param avatarTokens tokens for the avatar in [Person]

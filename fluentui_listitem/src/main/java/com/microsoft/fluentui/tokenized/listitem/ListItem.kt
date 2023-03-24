@@ -200,8 +200,8 @@ object ListItem {
     /**
      * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text
      *
-     * @param modifier Optional modifier for List item.
      * @param text Primary text.
+     * @param modifier Optional modifier for List item.
      * @param subText Optional secondaryText or a subtitle.
      * @param secondarySubText Optional tertiary text or a footer.
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
@@ -217,10 +217,10 @@ object ListItem {
      * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      * @param leadingAccessoryView Optional composable leading accessory view.
      * @param trailingAccessoryView Optional composable trailing accessory view.
      * @param textAccessibilityProperties Accessibility properties for the text in list item.
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      *
      */
     @Composable

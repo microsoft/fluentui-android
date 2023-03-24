@@ -48,8 +48,8 @@ fun getAvatarCarouselInfo(): AvatarCarouselInfo {
  * Avatar Carousel internally is a group of [AvatarCarouselItem] which can be used to create onClick based Avatar buttons.
  *
  * @param avatarList List of Avatars to be created in a carousel
- * @param size size of the carousel
  * @param modifier Optional Modifier for Avatar carousel
+ * @param size size of the carousel
  * @param enablePresence enable/disable presence indicator on avatar
  * @param avatarTokens Token to provide appearance values to Avatar
  * @param avatarCarouselTokens Token to provide appearance values to Avatar Carousel
