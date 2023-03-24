@@ -21,8 +21,8 @@ jobs:
         set -e
         echo "Start."
         # Configure git and Push updates
-        git config --global user.email github-actions@github.com
-        git config --global user.name github-actions
+        git config --global user.email pyeruva@microsoft.com
+        git config --global user.name PraveenKumar Yeruva
         git config pull.rebase false
         branch=testLocalize-$GITHUB_RUN_ID
         message='Testing localization'
