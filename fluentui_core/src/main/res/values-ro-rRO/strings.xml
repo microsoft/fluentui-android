@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Selectată</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Neselectată</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Dezactivată</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Activată</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Închideți foaia</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Închideți</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Căutare</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Microfon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Goliți textul</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Înapoi</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Activată</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Dezactivată</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutru</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Marcă</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Chevron</string>
+    <string name="fluentui_large">Mare</string>
+    <string name="fluentui_medium">Mediu</string>
+    <string name="fluentui_small">Mic</string>
+    <string name="fluentui_subtitle">Subtitlu</string>
+</resources>

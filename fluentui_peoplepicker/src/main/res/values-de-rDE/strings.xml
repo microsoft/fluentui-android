@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Bezeichnung</string>
+    <string name="people_picker_search_directory">Verzeichnis durchsuchen</string>
+    <string name="people_picker_search_progress">Suchen...</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Namen oder E-Mail-Adresse eingeben</string>
+    <string name="people_picker_accessibility_persona_added">%s hinzugefügt</string>
+    <string name="people_picker_accessibility_persona_removed">%s entfernt</string>
+    <string name="people_picker_accessibility_replaced">%s ersetzt,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Klicken auf</string>
+    <string name="people_picker_accessibility_delete_persona">Löschen</string>
+    <string name="people_picker_accessibility_deselect_persona">Auswahl aufheben</string>
+    <string name="people_picker_accessibility_select_persona">Auswählen</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Auf "%s" geklickt</string>
+    <string name="people_picker_accessibility_deselected_persona">Auswahl von "%s" aufgehoben</string>
+    <string name="people_picker_accessibility_selected_persona">%s ausgewählt</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, Durch Aktivierung wird Auswahl aufgehoben.</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Durch Aktivierung wird gelöscht.</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Durch Aktivierung wird geklickt</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Vorschlägeliste mit %s Person geöffnet.</item>
+        <item quantity="other">Vorschlägeliste mit %s Personen geöffnet.</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s Person</item>
+        <item quantity="other">%s Personen</item>
+    </plurals>
+</resources>

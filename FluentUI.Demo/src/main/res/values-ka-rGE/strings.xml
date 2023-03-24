@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI Demo</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">არჩეულია %s</string>
+    <string name="app_modifiable_parameters">მოდიფიცირებადი პარამეტრები</string>
+    <string name="app_right_accessory_view">აქსესუარების ხედი მარჯვნივ</string>
+
+    <string name="app_style">სტილი</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">ხატულაზე დაჭერილია</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">დემოს დაწყება</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">კარუსელი</string>
+    <string name="actionbar_icon_radio_label">ხატულა</string>
+    <string name="actionbar_basic_radio_label">ძირითადი</string>
+    <string name="actionbar_position_bottom_radio_label">ქვედა</string>
+    <string name="actionbar_position_top_radio_label">ზედა</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">ActionBar-ის ტიპი</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">ActionBar-ის პოზიცია</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">AppBar-ის სტილი</string>
+    <string name="app_bar_subtitle">ქვესათაური</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">დააწკაპუნეს ნავიგაციის ხატულაზე.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">ალამი</string>
+    <string name="app_bar_layout_menu_settings">პარამეტრები</string>
+    <string name="app_bar_layout_menu_search">ძიება</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">გადაადგილების ქცევა: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">გადამრთველის გადაადგილების ქცევა</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">ნავიგაციის ხატულას გადართვა</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">ავატარის ჩვენება</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">უკან დაბრუნების ხატულას ჩვენება</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">ხატულას დამალვა</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">ხატულას ჩვენება</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">ძიების ზოლის განლაგების სტილის გადართვა</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">აქსესუარების ხედის სახით ჩვენება</string>
+    <string name="app_bar_layout_searchbar_action_view_button">მოქმედების ხედად ჩვენება</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">თემებს შორის გადართვა (ხელახლა იქმნება აქტივობა)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">თემის გადართვა</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">ელემენტი</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">შიგთავსი, რომელიც ხელმისაწვდომია დამატებით გადაადგილებით</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">წრის სტილი</string>
+    <string name="avatar_style_square">კვადრატის სტილი</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">დიდი</string>
+    <string name="avatar_size_medium">საშუალო</string>
+    <string name="avatar_size_small">პატარა</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">მაქსიმალურად ნაჩვენები ავატარი</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">გადამფარავი ავატარის რაოდენობა</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">საზღვრის ტიპი</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">ავატარის ჯგუფი „OverflowAvatarCount“ ნაკრებით ვერ შეესაბამება მაქსიმალურად ნაჩვენებ ავატარს.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">სახის დასტა</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">სახის წყობა</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">გადაფარვა დაწკაპუნებულია</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">AvatarView დაწკაპუნებულია %d ინდექსზე</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">შეტყობინებების მაჩვენებელი</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">წერტილი</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">სია</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">სიმბოლო</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">ფოტოები</string>
+    <string name="bottom_navigation_menu_item_news">ახალი ამბები</string>
+    <string name="bottom_navigation_menu_item_alerts">გაფრთხილებები</string>
+    <string name="bottom_navigation_menu_item_calendar">კალენდარი</string>
+    <string name="bottom_navigation_menu_item_team">გუნდი</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">გადამრთველის იარლიყები</string>
+    <string name="bottom_navigation_three_menu_items_button">მენიუს სამი ელემენტის ჩვენება</string>
+    <string name="bottom_navigation_four_menu_items_button">მენიუს ოთხი ელემენტის ჩვენება</string>
+    <string name="bottom_navigation_five_menu_items_button">მენიუს ხუთი ელემენტის ჩვენება</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">იარლიყები: %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">ქვედა ფურცელი</string>
+    <string name="bottom_sheet_dialog">BottomSheetdialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">ერთხაზოვანი ელემენტების ჩვენება</string>
+    <string name="bottom_sheet_with_double_line_items">ორხაზოვანი ელემენტების ჩვენება</string>
+    <string name="bottom_sheet_with_single_line_header">ერთხაზოვანი ელემენტის სათაურის ჩვენება</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">ორხაზოვანი ელემენტის სათაურის და გამყოფების ჩვენება</string>
+    <string name="bottom_sheet_dialog_button">ჩვენება</string>
+    <string name="drawer_content_desc_collapse_state">გაშლა</string>
+    <string name="drawer_content_desc_expand_state">ჩაკეცვა</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">დაწკაპუნებით აირჩიეთ %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">ხანგრძლივი დაწკაპუნებით აირჩიეთ %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">დაწკაპუნებით აირჩიეთ დახურვა</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">ელემენტის ჩასმა</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">ელემენტის განახლება</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">გაუქმება</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">დამატება</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">ხსენება</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">მუქი</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">დახრილი</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">ხაზგასმა</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">გადახაზული</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">მოქმედების დაბრუნება</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">გამეორება</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">ბურთულა</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">სია</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">ბმული</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">მიმდინარეობს ელემენტის განახლება</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">ინტერვალი</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">პოზიციის დახურვა</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">დაწყება</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">დასრულება</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">ჯგუფური სივრცე</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">ელემენტის სივრცე</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">ალამი</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">დაწკაპუნებულია ალმით მონიშვნის ელემენტზე</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">პასუხი</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">დაწკაპუნებულია პასუხის ელემენტზე</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">გადაგზავნა</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">დაწკაპუნებულია გადაგზავნის ელემენტზე</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">წაშლა</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">დაწკაპუნებული წაშლის ელემენტზე</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">ავატარი</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">კამერა</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">სურათის გადაღება</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">დაწკაპუნებულია კამერის ელემენტზე</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">გალერეა</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">თქვენი ფოტოების ნახვა</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">დაწკაპუნებულია გალერეის ელემენტზე</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">ვიდეოები</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">დაუკარით თქვენი ვიდეოები</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">დაწკაპუნებულია ვიდეოების ელემენტზე</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">მართვა</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">თქვენი მედია ბიბლიოთეკის მართვა</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">დაწკაპუნებულია მართვის ელემენტზე</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">ელფოსტის მოქმედებები</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">დოკუმენტები</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">ბოლოს განახლდა 14:14-ზე</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">გაზიარება</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">დაწკაპუნებულია გაზიარების ელემენტზე</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">გადატანა</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">დაწკაპუნებულია გადატანის ელემენტზე</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">წაშლა</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">დაწკაპუნებული წაშლის ელემენტზე</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">ინფორმაცია</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">დაწკაპუნებული ინფორმაციის ელემენტზე</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">საათი</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">დაწკაპუნებული საათის ელემენტზე</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">სიგნალი</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">დაწკაპუნებული სიგნალის ელემენტზე</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">დროის სარტყელი</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">დაწკაპუნებულია დროის სარტყლის ელემენტზე</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">ღილაკი</string>
+    <string name="buttonbar">ButtonBar</string>
+    <string name="button_disabled">გამორთვის ღილაკი</string>
+    <string name="button_borderless">უსაზღვრო ღილაკი</string>
+    <string name="button_borderless_disabled">დიდი უსაზღვრო ღილაკი</string>
+    <string name="button_large">დიდი ღილაკი</string>
+    <string name="button_large_disabled">დიდი გამორთული ღილაკი</string>
+    <string name="button_outlined">გამოკვეთილი ღილაკი</string>
+    <string name="button_outlined_disabled">გამოკვეთილი გამორთვის ღილაკი</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">თარიღის არჩევა</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">ერთი თარიღი</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">თარიღი არ არის არჩეული</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">თარიღის ამომრჩევლის ჩვენება</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">თარიღისა და დროის ამრჩევის ჩვენება თარიღის არჩეულ ჩანართთან</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">თარიღისა და დროის ამრჩევის ჩვენება დროის არჩეულ ჩანართთან</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">თარიღისა და დროის ამრჩევის ჩვენება</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">თარიღების დიაპაზონი</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">დაწყება:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">დასასრული:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">დაწყება არ არის არჩეული</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">დასასრული არ არის არჩეული</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">დაწყების თარიღის არჩევა</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">დასრულების თარიღის არჩევა</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">თარიღისა და დროის დიაპაზონი</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">თარიღისა და დროის დიაპაზონის არჩევა</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">დიალოგის ჩვენება</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">უჯრის ჩვენება</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">უჯრის დიალოგის ჩვენება</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">ქვედა დიალოგი არ მინავლდება</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">ზედა უჯრის ჩვენება</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">ზედა დიალოგი არ მინავლდა</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> წამყვანის ხედის ჩვენების ზედა დიალოგი</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> უსათაურო დიალოგის ჩვენება</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> ქვემოთ მოცემული სათაურის ზედა დიალოგი</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">მარჯვენა უჯრის ჩვენება</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">მარცხენა უჯრის ჩვენება</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">სათაური, პირველადი ტექსტი</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">ქვესათაური, მეორე რიგის ტექსტი</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">ქვესათაურის მორგებული ტექსტი</string>
+    <!-- Footer -->
+    <string name="list_item_footer">ქვედა კოლონტიული, მესამე რიგის ტექსტი</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">ერთხაზიანი სია ქვესათაურის ნაცრისფერი ტექსტით</string>
+    <string name="list_item_sub_header_two_line">ორხაზიანი სია</string>
+    <string name="list_item_sub_header_two_line_dense">ორხაზიანი სია მჭიდრო ინტერვალით</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">ორხაზიანი სია მორგებული ქვესათაურის მეორეული ხედით</string>
+    <string name="list_item_sub_header_three_line">სამხაზიანი სია ქვესათაურის შავი ტექსტით</string>
+    <string name="list_item_sub_header_no_custom_views">ნახვები არმქონე ელემენტების სია</string>
+    <string name="list_item_sub_header_large_header">სია დიდი მორგებული ხედებით</string>
+    <string name="list_item_sub_header_wrapped_text">გაფორმებული ტექსტიანი ელემენტების სია</string>
+    <string name="list_item_sub_header_truncated_text">შეკვეცილი ტექსტიანი ელემენტების სია</string>
+    <string name="list_item_sub_header_custom_accessory_text">მოქმედება</string>
+    <string name="list_item_truncation_middle">საშუალო შეკვეცა.</string>
+    <string name="list_item_truncation_end">შეკვეცის დასრულება.</string>
+    <string name="list_item_truncation_start">შეკვეცის დაწყება.</string>
+    <string name="list_item_custom_text_view">მნიშვნელობა</string>
+    <string name="list_item_click">თქვენ დააწკაპუნეთ სიის ელემენტზე.</string>
+    <string name="list_item_click_custom_accessory_view">თქვენ დააწკაპუნეთ მორგებული აქსესუარის ხედზე.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">თქვენ დააწკაპუნეთ ქვესათაური მორგებული აქსესუარის ხედზე.</string>
+    <string name="list_item_more_options">სხვა ვარიანტები</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">არჩევა</string>
+    <string name="people_picker_select_deselect_example">არჩევა/არჩევის გაუქმება</string>
+    <string name="people_picker_none_example">არაფერი</string>
+    <string name="people_picker_delete_example">წაშლა</string>
+    <string name="people_picker_custom_persona_description">ეს მაგალითი გვიჩვენებს, როგორ უნდა შექმნათ მორგებული IPersona ობიექტი.</string>
+    <string name="people_picker_dialog_title_removed">თქვენ ამოშალეთ პერსონები:</string>
+    <string name="people_picker_dialog_title_added">თქვენ დაამატეთ პერსონა:</string>
+    <string name="people_picker_drag_started">გადათრევა დაიწყო</string>
+    <string name="people_picker_drag_ended">გადათრევა დასრულდა</string>
+    <string name="people_picker_picked_personas_listener">მსმენელები</string>
+    <string name="people_picker_suggestions_listener">მსმენელების შეთავაზებები</string>
+    <string name="people_picker_persona_chip_click">თქვენ დააწკაპუნეთ %s-ზე</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s მიმღები</item>
+        <item quantity="other">%1$s მიმღები</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">უცვლელი ქვედა ფურცლის გაშლა</string>
+    <string name="collapse_persistent_sheet_button"> უცვლელი ქვედა ფურცლის დამალვა</string>
+    <string name="show_persistent_sheet_button"> მუდმივი ქვედა ფურცლის ჩვენება</string>
+    <string name="new_view">ეს არის ახალი ხედი</string>
+    <string name="toggle_sheet_content">ქვედა ფურცლის შიგთავსის გადართვა</string>
+    <string name="switch_to_custom_content">მორგებულ შიგთავსზე გადართვა</string>
+    <string name="one_line_content">ქვედა ფურცლის შიგთავსი ერთ ხაზად</string>
+    <string name="toggle_disable_all_items">ყველა ელემენტის გამორთვის გადართვა</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">ხედის დამატება/წაშლა</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> აკეცვის სიმაღლის შეცვლა</string>
+    <string name="persistent_sheet_item_create_new_folder_title">ახალი საქაღალდე</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">დაწკაპუნებულია ახალი საქაღალდის ელემენტზე</string>
+    <string name="persistent_sheet_item_edit_title">რედაქტირება</string>
+    <string name="persistent_sheet_item_edit_toast">დაწკაპუნებულია რედაქტირების ელემენტზე</string>
+    <string name="persistent_sheet_item_save_title">შენახვა</string>
+    <string name="persistent_sheet_item_save_toast">დაწკაპუნებულია შენახვის ელემენტზე</string>
+    <string name="persistent_sheet_item_zoom_in_title">მასშტაბის გადიდება</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> დაწკაპუნებულია მასშტაბის შემცირების ელემენტზე</string>
+    <string name="persistent_sheet_item_zoom_out_title">მასშტაბის შემცირება</string>
+    <string name="persistent_sheet_item_zoom_out_toast">დაწკაპუნებულია მასშტაბის გადიდების ელემენტზე</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">ხელმისაწვდომი</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">ალან მუნგერი</string>
+    <string name="persona_name_amanda_brady">ამანდა ბრედი</string>
+    <string name="persona_name_ashley_mccarthy">ეშლი მაკარტი</string>
+    <string name="persona_name_carlos_slattery">კარლოს სლატერი</string>
+    <string name="persona_name_carole_poland">ქეროლ პოლანდი</string>
+    <string name="persona_name_cecil_folk">სესილ ფოლკი</string>
+    <string name="persona_name_celeste_burton">სელესტე ბარტონი</string>
+    <string name="persona_name_charlotte_waltson">შარლოტა უოლტსონი</string>
+    <string name="persona_name_colin_ballinger">კოლინ ბალინგერი</string>
+    <string name="persona_name_daisy_phillips">დეიზი ფილიფსი</string>
+    <string name="persona_name_elliot_woodward">ელიოტ ვუდვარდი</string>
+    <string name="persona_name_elvia_atkins">ელვია ატკინსი</string>
+    <string name="persona_name_erik_nason">ერიკ ნასონი</string>
+    <string name="persona_name_henry_brill">ჰენრი ბრილი</string>
+    <string name="persona_name_isaac_fielder">ისააკ ფილდერი</string>
+    <string name="persona_name_johnie_mcconnell">ჯონი მაკკონელი</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">კატრი აჰოკასი</string>
+    <string name="persona_name_kevin_sturgis">კევინ სტურგისი</string>
+    <string name="persona_name_kristen_patterson">კრისტენ პატერსონი</string>
+    <string name="persona_name_lydia_bauer">ლიდია ბაუერი</string>
+    <string name="persona_name_mauricio_august">მაურიციო აუგუსტი</string>
+    <string name="persona_name_miguel_garcia">მიგელ გარსია</string>
+    <string name="persona_name_mona_kane">მონა კეინი</string>
+    <string name="persona_name_robin_counts">რობინ ქაუნთსი</string>
+    <string name="persona_name_robert_tolbert">რობერტ ტოლბერტი</string>
+    <string name="persona_name_tim_deboer">ტიმ დებოერი</string>
+    <string name="persona_name_wanda_howard">უანდა ჰოვარდი</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">დიზაინერი</string>
+    <string name="persona_subtitle_engineer">ინჟინერი</string>
+    <string name="persona_subtitle_manager">მმართველი</string>
+    <string name="persona_subtitle_researcher">მკვლევარი</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (გრძელი ტექსტის მაგალითი ტექსტის შესაკვეცად)</string>
+    <string name="persona_view_description_xxlarge">XXLarge ავატარი ტექსტის სამი ხაზით</string>
+    <string name="persona_view_description_large">დიდი ავატარი ტექსტის ორი ხაზით</string>
+    <string name="persona_view_description_small">პატარა ავატარი ტექსტის ერთი ხაზით</string>
+    <string name="people_picker_hint">ნაჩვენები მინიშნებით არაფერი მოიძებნა</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">პერსონის ჩიპი გამორთულია</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">პირის ჩიპის შეცდომა</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">პერსონის ჩიპი დახურული ხატულას გარეშე</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">ძირითადი პირის ჩიპი</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">თქვენ დააწკაპუნეთ არჩეული პირის ჩიპზე.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">გაზიარება</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">თვალის დევნება</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">ხალხის მოწვევა</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">გვერდის განახლება</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">ბრაუზერში გახსნა</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">ეს არის მრავალხაზიანი კონტექსტური მენიუ. ხაზების მაქსიმალური რაოდენობა დაყენებულია ორზე, დანარჩენი ტექსტი შეიკვეცება.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">ყველა სიახლე</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">შენახული ახალი ამბები</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">სიახლეები საიტებიდან</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">შეტყობინება არასამუშაო საათებში</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">შეტყობინება, როცა სამუშაო დაფაზე უმოქმედობაა</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">თქვენ დააწკაპუნეთ ელემენტზე:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">მარტივი მენიუ</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">მარტივი მენიუ2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">მენიუ ერთი არჩევითი ელემენტითა და გამყოფით</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">მენიუ ყველა არჩევადი ელემენტით, ხატულითა და გრძელი ტექსტით</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">ჩვენება</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">წრიული პროგრესია</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">პატარა</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">საშუალო</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">დიდი</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">წრფივი პროგრესია</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">განუსაზღვრელი</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">განსაზღვრა</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">SearchBar</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">მიკროფონით დარეკვა</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">ავტომატურად შესწორება</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">მიკროფონზე დაჭერილია</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">დაჭერილია მარჯვენა ხედზე</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">დაჭერილია კლავიატურის ძიებაზე</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">მოქმედება</string>
+    <string name="snackbar_action_long">გრძელი ტექსტის მოქმედება</string>
+    <string name="snackbar_single_line">ერთხაზიანი შეტყობინების ზოლი</string>
+    <string name="snackbar_multiline">ეს არის მრავალხაზიანი შეტყობინების ზოლი. ხაზების მაქსიმალური რაოდენობა დაყენებულია ორზე, დანარჩენი ტექსტი შეიკვეცება.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">ეს არის განცხადების შეტყობინების ზოლი. იგი გამოიყენება ახალი ფუნქციების კომუნიკაციისთვის.</string>
+    <string name="snackbar_primary">ეს არის ძირითადი შეტყობინების ზოლი.</string>
+    <string name="snackbar_light">ეს არის ღია ფერის შეტყობინების ზოლი.</string>
+    <string name="snackbar_warning">ეს არის გაფრთხილების ზოლი.</string>
+    <string name="snackbar_danger">ეს არის საფრთხის ზოლი.</string>
+    <string name="snackbar_description_single_line">მოკლე ხანგრძლივობა</string>
+    <string name="snackbar_description_single_line_custom_view">დიდი ხანგრძლივობა წრიული პროგრესიით, როგორც მცირე მორგებული ხედი</string>
+    <string name="snackbar_description_single_line_action">მოკლე ხანგრძლივობა მოქმედებით</string>
+    <string name="snackbar_description_single_line_action_custom_view">მოკლე ხანგრძლივობა მოქმედებით და საშუალო მორგებული ხედით</string>
+    <string name="snackbar_description_single_line_custom_text_color">მოკლე ხანგრძლივობა ტექსტის მორგებული ფერით</string>
+    <string name="snackbar_description_multiline">გრძელი ხანგრძლივობა</string>
+    <string name="snackbar_description_multiline_custom_view">დიდი ხანგრძლივობა მცირე მორგებული ხედით</string>
+    <string name="snackbar_description_multiline_action">განუსაზღვრელი ხანგრძლივობა მოქმედებისა და ტექსტის განახლებებით</string>
+    <string name="snackbar_description_multiline_action_custom_view">მოკლე ხანგრძლივობა მოქმედებით და საშუალო მორგებული ხედით</string>
+    <string name="snackbar_description_multiline_action_long">მოკლე ხანგრძლივობა მოქმედების გრძელი ტექსტით</string>
+    <string name="snackbar_description_announcement">მოკლე ხანგრძლივობა</string>
+    <string name="snackbar_description_updated">ეს ტექსტი განახლდა.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">შეტყობინების ზოლის ჩვენება</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">ერთი ხაზი</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">მრავალხაზიანი</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">განცხადების სტილი</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">პირველადი სტილი</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">ღია სტილი</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">გაფრთხილების სტილი</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">საფრთხის სტილი</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">სახლი</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">ფოსტა</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">პარამეტრები</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">შეტყობინება</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">სხვა</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">ტექსტის სწორება</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">ვერტიკალური</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">ჰორიზონტალური</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">ტექსტის გარეშე</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">ჩანართის ელემენტები</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">სათაური</string>
+    <string name="cell_sample_description">აღწერა</string>
+    <string name="calculate_cells">100 უჯრედის ჩატვირთვა/გამოთვლა</string>
+    <string name="calculate_layouts">100 განლაგების ჩატვირთვა/გამოთვლა</string>
+    <string name="template_list">შაბლონების სია</string>
+    <string name="regular_list">რეგულარული სია</string>
+    <string name="cell_example_title">სათაური: უჯრედი</string>
+    <string name="cell_example_description">აღწერა: შეეხეთ ორიენტაციის შესაცვლელად</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">სტანდარტული 2-სეგმენტიანი ჩანართი</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">სტანდარტული 3-სეგმენტიანი ჩანართი</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">სტანდარტული 4-სეგმენტიანი ჩანართი</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">სტანდარტული ჩანართი პეიჯერით</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">ჩანართის გადართვა</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">აბების ჩანართი </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">შეეხეთ მინიშნებისთვის</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">შეეხეთ კალენდრის მორგებული მინიშნებისთვის</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">შეეხეთ მორგებული ფერის მინიშნებას</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">დასახურად შეეხეთ დახურვას მინიშნების შიგნით</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">შეეხეთ მინიშნების მორგებული ხედის სანახავად</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">ზედა მორგებული ფერის მინიშნება</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">მინიშნება ზედა ბოლოში 10dp offsetY-ით</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">ქვედა დაწყების მინიშნება</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">მინიშნება ქვედა ბოლოში 10dp offsetY-ით</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">დახურვა მინიშნების შიგნით</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">მინიშნება დაიხურა</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">სათაური არის Light 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">სათაური 1 არის Medium 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">სათაური 2 არის რეგულარული 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">სათაური არის Regular 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">ქვესათაური 1 არის Regular 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">ქვესათაური 2 არის Medium 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">ტექსტი 1 არის რეგულარული 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">ტექსტი 2 არის საშუალო 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">წარწერა არის Regular 12sp</string>
+
+</resources>

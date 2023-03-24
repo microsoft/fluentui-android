@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <resources>
-  <string name="people_picker_sample_label">Etiqueta</string>
-  <string name="people_picker_search_directory">Procurar no Diretório</string>
-  <string name="people_picker_search_progress">A procurar…</string>
-  <string name="people_picker_accessibility_default_hint">Introduza um nome ou e-mail</string>
-  <string name="people_picker_accessibility_persona_added">%s adicionado(a)</string>
-  <string name="people_picker_accessibility_persona_removed">%s removido(a)</string>
-  <string name="people_picker_accessibility_replaced">%s substituído(a),</string>
-  <string name="people_picker_accessibility_click_persona">Clique</string>
-  <string name="people_picker_accessibility_delete_persona">Eliminar</string>
-  <string name="people_picker_accessibility_deselect_persona">Desselecionar</string>
-  <string name="people_picker_accessibility_select_persona">Selecionar</string>
-  <string name="people_picker_accessibility_clicked_persona">Clicou em %s</string>
-  <string name="people_picker_accessibility_deselected_persona">Desselecionou %s</string>
-  <string name="people_picker_accessibility_selected_persona">Selecionou %s</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">, A ativação irá desselecionar</string>
-  <string name="people_picker_accessibility_delete_selected_persona">, A ativação irá eliminar</string>
-  <string name="people_picker_accessibility_click_selected_persona">, A ativação irá clicar</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="one">Lista de sugestões aberta com %s pessoa</item>
-    <item quantity="other">Lista de sugestões aberta com %s pessoas</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="one">%s pessoa</item>
-    <item quantity="other">%s pessoas</item>
-  </plurals>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Etiqueta</string>
+    <string name="people_picker_search_directory">Procurar no Diretório</string>
+    <string name="people_picker_search_progress">A procurar…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Introduza um nome ou e-mail</string>
+    <string name="people_picker_accessibility_persona_added">%s adicionado(a)</string>
+    <string name="people_picker_accessibility_persona_removed">%s removido(a)</string>
+    <string name="people_picker_accessibility_replaced">%s substituído(a),</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Clique</string>
+    <string name="people_picker_accessibility_delete_persona">Eliminar</string>
+    <string name="people_picker_accessibility_deselect_persona">Desselecionar</string>
+    <string name="people_picker_accessibility_select_persona">Selecionar</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Clicou em %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Desselecionou %s</string>
+    <string name="people_picker_accessibility_selected_persona">Selecionou %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, A ativação irá desselecionar</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, A ativação irá eliminar</string>
+    <string name="people_picker_accessibility_click_selected_persona">, A ativação irá clicar</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Lista de sugestões aberta com %s pessoa</item>
+        <item quantity="many">Lista de sugestões aberta com %s pessoas</item>
+        <item quantity="other">Lista de sugestões aberta com %s pessoas</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s pessoa</item>
+        <item quantity="many">%s pessoas</item>
+        <item quantity="other">%s pessoas</item>
+    </plurals>
 </resources>

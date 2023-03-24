@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- *** PopupMenu *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to toggle radio button and checkbox checked states.-->
+    <string name="popup_menu_accessibility_item_toggle">تغییر وضعیت</string>
+    <!--Describes the action used to select a menu item.-->
+    <string name="popup_menu_accessibility_item_select">انتخاب</string>
+    <!--Announces which menu item has been selected.-->
+    <string name="popup_menu_accessibility_item_click_selected">%s انتخاب شد</string>
+    <!--Announces which menu item has been checked.-->
+    <string name="popup_menu_accessibility_item_click_checked">%s علامت زده شد</string>
+    <!--Announces which menu item has been unchecked.-->
+    <string name="popup_menu_accessibility_item_click_unchecked">علامت %s برداشته شد</string>
+    <!--Describes the radio button control.-->
+    <string name="popup_menu_accessibility_item_radio_button">دکمه رادیو</string>
+    <!--Describes the check box control.-->
+    <string name="popup_menu_accessibility_item_check_box">کادر انتخاب</string>
+    <!--Describes the state of a menu item that is checked.-->
+    <string name="popup_menu_accessibility_item_state_checked">علامت‌گذاری‌شده</string>
+    <!--Describes the state of a menu item that is not checked.-->
+    <string name="popup_menu_accessibility_item_state_not_checked">علامت‌گذاری‌نشده</string>
+
+</resources>

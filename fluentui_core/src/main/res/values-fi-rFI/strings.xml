@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Valittu</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Ei valittu</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Poissa käytöstä</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Käytössä</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Sulje taulukko</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Sulje</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Haku</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofoni</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Tyhjennä teksti</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Takaisin</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktiivinen</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Aktivointi poistettu</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutraali</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Tuotemerkki</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Lovettu nuolenkärki</string>
+    <string name="fluentui_large">Suuri</string>
+    <string name="fluentui_medium">Normaali</string>
+    <string name="fluentui_small">Pieni</string>
+    <string name="fluentui_subtitle">Alaotsikko</string>
+</resources>

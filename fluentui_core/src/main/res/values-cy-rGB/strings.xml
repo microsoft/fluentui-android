@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">Dewiswyd</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">Heb Ddewis</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Wedi’i analluogi</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Wedi\'i alluogi</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Cau\'r Ddalen</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Cau</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Chwilio</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Meicroffon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Clirio\'r Testun</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Yn ôl</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Wedi\'i Ysgogi</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">Wedi\'i Ddadysgogi</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Niwtral</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Brand</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Siefron</string>
+    <string name="fluentui_large">Mawr</string>
+    <string name="fluentui_medium">Canolig</string>
+    <string name="fluentui_small">Bach</string>
+    <string name="fluentui_subtitle">Is-deitl</string>
+</resources>

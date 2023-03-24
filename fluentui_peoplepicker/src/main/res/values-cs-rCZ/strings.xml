@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Popisek</string>
+    <string name="people_picker_search_directory">Prohledat adresář</string>
+    <string name="people_picker_search_progress">Hledá se…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Zadejte jméno nebo e-mail.</string>
+    <string name="people_picker_accessibility_persona_added">Přidaný uživatel: %s</string>
+    <string name="people_picker_accessibility_persona_removed">Odebraný uživatel: %s</string>
+    <string name="people_picker_accessibility_replaced">Nahrazený uživatel: %s,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Kliknout</string>
+    <string name="people_picker_accessibility_delete_persona">Odstranit</string>
+    <string name="people_picker_accessibility_deselect_persona">Zrušit výběr</string>
+    <string name="people_picker_accessibility_select_persona">Vybrat</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Kliknuto na uživatele %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Zrušen výběr uživatele %s</string>
+    <string name="people_picker_accessibility_selected_persona">Vybráno: %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, aktivací se výběr zruší</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, aktivací se odstraní</string>
+    <string name="people_picker_accessibility_click_selected_persona">, aktivací dojde ke kliknutí</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Otevřený seznam návrhů s %s člověkem</item>
+        <item quantity="few">Otevřený seznam návrhů s %s lidmi</item>
+        <item quantity="many">Otevřený seznam návrhů s %s lidmi</item>
+        <item quantity="other">Otevřený seznam návrhů s %s lidmi</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s člověk</item>
+        <item quantity="few">%s lidi</item>
+        <item quantity="many">%s lidí</item>
+        <item quantity="other">%s lidí</item>
+    </plurals>
+</resources>

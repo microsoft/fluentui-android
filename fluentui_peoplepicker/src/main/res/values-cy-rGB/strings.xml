@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Label</string>
+    <string name="people_picker_search_directory">Chwilio\'r Cyfeiriadur</string>
+    <string name="people_picker_search_progress">Wrthi\'n chwilio…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Rhowch enw neu e-bost</string>
+    <string name="people_picker_accessibility_persona_added">Wedi ychwanegu %s</string>
+    <string name="people_picker_accessibility_persona_removed">Wedi tynnu %s</string>
+    <string name="people_picker_accessibility_replaced">Wedi disodli %s,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Clicio</string>
+    <string name="people_picker_accessibility_delete_persona">Dileu</string>
+    <string name="people_picker_accessibility_deselect_persona">Dad-ddewis</string>
+    <string name="people_picker_accessibility_select_persona">Dewis</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Wedi clicio ar %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Wedi dad-ddewis %s</string>
+    <string name="people_picker_accessibility_selected_persona">Wedi dewis %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, Bydd ysgogi yn dad-ddewis</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Bydd ysgogi yn dileu</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Bydd ysgogi yn clicio</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="zero">Wedi agor y rhestr awgrymiadau gyda %s pobl</item>
+        <item quantity="one">Wedi agor y rhestr awgrymiadau gydag %s person</item>
+        <item quantity="two">Wedi agor y rhestr awgrymiadau gyda %s berson</item>
+        <item quantity="few">Wedi agor y rhestr awgrymiadau gyda %s pherson</item>
+        <item quantity="many">Wedi agor y rhestr awgrymiadau gyda %s pherson</item>
+        <item quantity="other">Wedi agor y rhestr awgrymiadau gyda %s person</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="zero">%s pobl</item>
+        <item quantity="one">%s person</item>
+        <item quantity="two">%s berson</item>
+        <item quantity="few">%s pherson</item>
+        <item quantity="many">%s pherson</item>
+        <item quantity="other">%s person</item>
+    </plurals>
+</resources>

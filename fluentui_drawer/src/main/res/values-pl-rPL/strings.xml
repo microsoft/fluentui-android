@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Uchwyt przeciągania</string>
+  <string name="expand">rozwijanie</string>
+  <string name="collapse">zwijanie</string>
+</resources>

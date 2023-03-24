@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">I përzgjedhur</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">E pazgjedhur</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">Çaktivizuar</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">Aktivizuar</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">Mbyll fletën</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">Mbyll</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">Kërko</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">Mikrofon</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">Pastro tekstin</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">Prapa</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">Aktive</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">E çaktivizuar</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">Neutral</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">Marka</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">Shevron</string>
+    <string name="fluentui_large">I madh</string>
+    <string name="fluentui_medium">Mesatare</string>
+    <string name="fluentui_small">I vogël</string>
+    <string name="fluentui_subtitle">Nëntitull</string>
+</resources>

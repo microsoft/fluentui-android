@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="done">Done</string>
+  <string name="action_bar_default_left_action">Skip</string>
+  <string name="action_bar_default_right_action">Next</string>
+  <string name="action_bar_default_final_action">Start</string>
+  <string name="action_bar_right_icon_description">Next</string>
+  <string name="action_bar_accessibility_page_announcement">Slider page %1$d of %2$d</string>
+  <string name="action_bar_accessibility_viewpager_description">Multi-page view. Slider page %1$d of %2$d</string>
+  <string name="fluentui_bottom_sheet_header">BottomSheet Heading</string>
 </resources>

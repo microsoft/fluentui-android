@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** Shared *** -->
+    <string name="done">पूर्ण झाले</string>
+
+    <!--Content description for default left action in the action bar layout.-->
+    <string name="action_bar_default_left_action">वगळा</string>
+    <!--Content description for default right action in the action bar layout.-->
+    <string name="action_bar_default_right_action">पुढील</string>
+    <!--Content description for the default final action in the action bar layout that occurs on opening of last viewpage-->
+    <string name="action_bar_default_final_action">प्रारंभ करा</string>
+    <!--Content description default right icon-->
+    <string name="action_bar_right_icon_description">पुढील</string>
+    <!--accessibiltiy-->
+    <!--Announcement when page is scrolled-->
+    <string name="action_bar_accessibility_page_announcement">%2$d पैकी %1$d स्लायडर पृष्ठ</string>
+    <!--Announcement when actionbarlayout opens or when Skip is pressed-->
+    <string name="action_bar_accessibility_viewpager_description">एकाधिक-पृष्ठ दृश्य. %2$d पैकी %1$d स्लायडर पृष्ठ</string>
+
+    <string name="fluentui_bottom_sheet_header">तळपत्रक शीर्षक</string>
+</resources>

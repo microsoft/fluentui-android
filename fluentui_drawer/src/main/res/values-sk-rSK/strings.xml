@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Rukoväť presunutia</string>
+  <string name="expand">rozbaliť</string>
+  <string name="collapse">zbaliť</string>
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Надпис</string>
+    <string name="people_picker_search_directory">Пошук у каталозі</string>
+    <string name="people_picker_search_progress">Триває пошук…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Введіть ім’я або адресу електронної пошти</string>
+    <string name="people_picker_accessibility_persona_added">Додано користувача %s</string>
+    <string name="people_picker_accessibility_persona_removed">Вилучено користувача %s</string>
+    <string name="people_picker_accessibility_replaced">Замінено користувача %s,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Клацнути</string>
+    <string name="people_picker_accessibility_delete_persona">Видалити</string>
+    <string name="people_picker_accessibility_deselect_persona">Скасувати вибір</string>
+    <string name="people_picker_accessibility_select_persona">Вибрати</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Клацнуто користувача %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Скасовано вибір користувача %s</string>
+    <string name="people_picker_accessibility_selected_persona">Вибрано користувача %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, якщо активувати, вибір буде скасовано</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, якщо активувати, буде виконано видалення</string>
+    <string name="people_picker_accessibility_click_selected_persona">, якщо активувати, буде виконано клацання</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Відкритий список пропозицій з %s особою</item>
+        <item quantity="few">Відкритий список пропозицій з %s особами</item>
+        <item quantity="many">Відкритий список пропозицій з %s особами</item>
+        <item quantity="other">Відкритий список пропозицій з %s особи</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s особа</item>
+        <item quantity="few">%s особи</item>
+        <item quantity="many">%s осіб</item>
+        <item quantity="other">%s особи</item>
+    </plurals>
+</resources>

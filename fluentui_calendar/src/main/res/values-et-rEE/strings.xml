@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">E</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">T</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">K</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">N</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">R</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">L</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">P</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Mine järgmisele nädalale</string>
+    <string name="accessibility_goto_previous_week">Mine eelmisele nädalale</string>
+    <string name="accessibility_today">täna</string>
+    <string name="accessibility_selected">Valitud</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Valmis</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Täna</string>
+    <string name="tomorrow">Homme</string>
+    <string name="yesterday">Eile</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Alguskellaaeg</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Lõppkellaaeg</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Alguskuupäev</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Lõpukuupäev</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Valige kellaaeg</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Valige kuupäev</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Kuupäeva- ja kellaajavalija</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Kuupäevavalija</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Kuupäeva- ja kellaajavalija ajavahemik</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Kuupäevavalija ajavahemik</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Alguskellaaja vahekaart</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Lõppkellaaja vahekaart</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Alguskuupäeva vahekaart</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Lõppkuupäeva vahekaart</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Sule dialoog</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Ühe kuu võrra edasi</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">valige järgmine kuu</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Ühe kuu võrra tagasi</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">valige eelmine kuu</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Ühe päeva võrra edasi</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">valige järgmine päev</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Ühe päeva võrra tagasi</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">valige eelmine päev</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Ühe aasta võrra edasi</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">valige järgmine aasta</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Ühe aasta võrra tagasi</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">valige eelmine aasta</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Ühe kuupäeva võrra edasi</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">valige järgmine kuupäev</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Ühe kuupäeva võrra tagasi</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">valige eelmine kuupäev</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Ühe tunni võrra edasi</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">valige järgmine tund</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Ühe tunni võrra tagasi</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">valige eelmine tund</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Ühe minuti võrra edasi</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">valige järgmine minut</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Ühe minuti võrra tagasi</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">valige eelmine minut</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">12-tunnise kella ajavahemiku vahetamine</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">12-tunnise kella ajavahemiku vahetamine</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">Valitud on %s</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">valitud</string>
+</resources>

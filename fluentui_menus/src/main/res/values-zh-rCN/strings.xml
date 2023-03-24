@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
 <resources>
-  <string name="popup_menu_accessibility_item_toggle">切换</string>
-  <string name="popup_menu_accessibility_item_select">选择</string>
-  <string name="popup_menu_accessibility_item_click_selected">已选择 %s</string>
-  <string name="popup_menu_accessibility_item_click_checked">已选择 %s</string>
-  <string name="popup_menu_accessibility_item_click_unchecked">已取消选择 %s</string>
-  <string name="popup_menu_accessibility_item_radio_button">单选按钮</string>
-  <string name="popup_menu_accessibility_item_check_box">复选框</string>
-  <string name="popup_menu_accessibility_item_state_checked">已选择</string>
-  <string name="popup_menu_accessibility_item_state_not_checked">未选中</string>
+    <!-- *** PopupMenu *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to toggle radio button and checkbox checked states.-->
+    <string name="popup_menu_accessibility_item_toggle">切换</string>
+    <!--Describes the action used to select a menu item.-->
+    <string name="popup_menu_accessibility_item_select">选择</string>
+    <!--Announces which menu item has been selected.-->
+    <string name="popup_menu_accessibility_item_click_selected">已选择 %s</string>
+    <!--Announces which menu item has been checked.-->
+    <string name="popup_menu_accessibility_item_click_checked">已选中 %s</string>
+    <!--Announces which menu item has been unchecked.-->
+    <string name="popup_menu_accessibility_item_click_unchecked">已取消选中 %s</string>
+    <!--Describes the radio button control.-->
+    <string name="popup_menu_accessibility_item_radio_button">单选按钮</string>
+    <!--Describes the check box control.-->
+    <string name="popup_menu_accessibility_item_check_box">复选框</string>
+    <!--Describes the state of a menu item that is checked.-->
+    <string name="popup_menu_accessibility_item_state_checked">已选中</string>
+    <!--Describes the state of a menu item that is not checked.-->
+    <string name="popup_menu_accessibility_item_state_not_checked">未选中</string>
+
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">ເລືອກແລ້ວ</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">ບໍ່ໄດ້ເລືອກ</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">ປິດການນຳໃຊ້ແລ້ວ</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">ເປີດນຳໃຊ້ແລ້ວ</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">ປິດຊີດ</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">ປິດ</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">ຊອກຫາ</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">ໄມໂຄຣໂຟນ</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">ລຶບລ້າງຂໍ້ຄວາມ</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">ກັບຄືນ</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">ເປີດໃຊ້ງານແລ້ວ</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">ຍົກເລີກການເປີດໃຊ້ງານ</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">ປານກາງ</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">ຍີ່ຫໍ້</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">ເຄື່ອງ​ໝາຍ​ຮູບ​ຕົວ​ວີ</string>
+    <string name="fluentui_large">ໃຫຍ່</string>
+    <string name="fluentui_medium">ປານກາງ</string>
+    <string name="fluentui_small">ນ້ອຍ</string>
+    <string name="fluentui_subtitle">ຄຳແປ</string>
+</resources>

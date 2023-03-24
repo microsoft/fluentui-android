@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI 演示</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">已选择 %s</string>
+    <string name="app_modifiable_parameters">可修改的参数</string>
+    <string name="app_right_accessory_view">右附件视图</string>
+
+    <string name="app_style">样式</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">已按下图标</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">开始演示</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">旋转木马</string>
+    <string name="actionbar_icon_radio_label">图标</string>
+    <string name="actionbar_basic_radio_label">基本</string>
+    <string name="actionbar_position_bottom_radio_label">底部</string>
+    <string name="actionbar_position_top_radio_label">顶部</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">ActionBar 类型</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">ActionBar 位置</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">AppBar 样式</string>
+    <string name="app_bar_subtitle">副标题</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">已单击导航图标。</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">标记</string>
+    <string name="app_bar_layout_menu_settings">设置</string>
+    <string name="app_bar_layout_menu_search">搜索</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">滚动行为: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">切换滚动行为</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">切换导航图标</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">显示虚拟形象</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">显示返回图标</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">隐藏图标</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">显示图标</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">切换搜索栏布局样式</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">显示为附件视图</string>
+    <string name="app_bar_layout_searchbar_action_view_button">显示为操作视图</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">在主题之间切换(重新创建活动)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">切换主题</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">项</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">额外的可滚动内容</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">圆圈样式</string>
+    <string name="avatar_style_square">方形样式</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">特大</string>
+    <string name="avatar_size_xlarge">超大</string>
+    <string name="avatar_size_large">大型</string>
+    <string name="avatar_size_medium">中等</string>
+    <string name="avatar_size_small">小型</string>
+    <string name="avatar_size_xsmall">超小</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">显示的最大头像</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">溢出虚拟形象计数</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">边框类型</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">设置了 OverflowAvatarCount 的虚拟形象组将不遵循最大显示虚拟形象。</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">人脸堆叠</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">人脸堆积</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">已单击溢出</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">已单击索引 %d 处的 AvatarView</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">通知徽章</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">点</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">列表</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">字符</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">照片</string>
+    <string name="bottom_navigation_menu_item_news">资讯</string>
+    <string name="bottom_navigation_menu_item_alerts">警报</string>
+    <string name="bottom_navigation_menu_item_calendar">日历</string>
+    <string name="bottom_navigation_menu_item_team">团队</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">切换标签</string>
+    <string name="bottom_navigation_three_menu_items_button">显示三个菜单项</string>
+    <string name="bottom_navigation_four_menu_items_button">显示四个菜单项</string>
+    <string name="bottom_navigation_five_menu_items_button">显示五个菜单项</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">标签为 %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">使用单行项显示</string>
+    <string name="bottom_sheet_with_double_line_items">使用双行项目显示</string>
+    <string name="bottom_sheet_with_single_line_header">使用单行标题显示</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">使用双行标题和分隔条显示</string>
+    <string name="bottom_sheet_dialog_button">显示</string>
+    <string name="drawer_content_desc_collapse_state">展开</string>
+    <string name="drawer_content_desc_expand_state">最小化</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">单击 %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">长单击 %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">单击关闭</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">插入项</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">更新项目</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">关闭</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">添加</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">提及</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">粗体</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">倾斜</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">下划线</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">删除线</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">撤消</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">重做</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">项目符号</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">列出</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">链接</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">项目正在更新</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">间距</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">关闭位置</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">开始</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">结束</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">组间距</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">项间距</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">标记</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">已单击标记项</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">答复</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">已单击回复项目</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">前进</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">已单击前进项</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">删除</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">已单击“删除项目”</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">虚拟形象</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">相机</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">拍照</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">已单击相机项</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">库</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">查看照片</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">已单击库项目</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">视频</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">播放视频</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">已单击视频项</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">管理</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">管理媒体库</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">已单击管理项目</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">电子邮件操作</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">文档</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">上次更新时间: 下午 2:14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">共享</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">已单击“共享项目”</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">移动</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">已单击移动项目</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">删除</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">已单击“删除项目”</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">信息</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">已单击信息项</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">时钟</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">已单击时钟项</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">闹钟</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">已单击闹钟项</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">时区</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">已单击时区项</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">按钮</string>
+    <string name="buttonbar">ButtonBar</string>
+    <string name="button_disabled">禁用的按钮</string>
+    <string name="button_borderless">无边框按钮</string>
+    <string name="button_borderless_disabled">无边框禁用按钮</string>
+    <string name="button_large">大型按钮</string>
+    <string name="button_large_disabled">大型禁用的按钮</string>
+    <string name="button_outlined">带轮廓的按钮</string>
+    <string name="button_outlined_disabled">带轮廓的禁用按钮</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">选择日期</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">单个日期</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">未选取日期</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">显示日期选取器</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">显示日期时间选取器(已选择“日期”选项卡)</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">显示日期时间选取器(已选择“时间”选项卡)</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">显示日期时间选取器</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">日期范围</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">开始时间:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">结束时间:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">未选取开始</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">未选取结束时间</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">选择开始日期</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">选择结束日期</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">日期时间范围</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">选择日期时间范围</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">显示对话框</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">显示抽屉</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">显示抽屉对话框</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">无淡出底部对话框</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">显示顶部抽屉</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">无淡出顶部对话框</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> 显示锚点视图顶部对话框</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> 不显示标题顶部对话框</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> 显示在标题顶部对话框下方</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">显示右侧抽屉</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">显示左侧抽屉</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">标题、主要文本</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">副标题，辅助文本</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">自定义副标题文本</string>
+    <!-- Footer -->
+    <string name="list_item_footer">页脚，第三级文本</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">单行列表(包含灰色子标题文本)</string>
+    <string name="list_item_sub_header_two_line">双行列表</string>
+    <string name="list_item_sub_header_two_line_dense">双行列表(带密集间距)</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">双行列表(具有自定义辅助副标题视图)</string>
+    <string name="list_item_sub_header_three_line">三行列表(包含黑体子标题文本)</string>
+    <string name="list_item_sub_header_no_custom_views">列表项(无自定义视图)</string>
+    <string name="list_item_sub_header_large_header">列表项(带大型自定义视图)</string>
+    <string name="list_item_sub_header_wrapped_text">列表项(带换行文本)</string>
+    <string name="list_item_sub_header_truncated_text">列表项(带截断的文本)</string>
+    <string name="list_item_sub_header_custom_accessory_text">操作</string>
+    <string name="list_item_truncation_middle">中间截断。</string>
+    <string name="list_item_truncation_end">结束截断。</string>
+    <string name="list_item_truncation_start">开始截断。</string>
+    <string name="list_item_custom_text_view">值</string>
+    <string name="list_item_click">你单击了列表项。</string>
+    <string name="list_item_click_custom_accessory_view">你单击了自定义附件视图。</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">你单击了子标题自定义附件视图。</string>
+    <string name="list_item_more_options">更多选项</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">选择</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">无</string>
+    <string name="people_picker_delete_example">删除</string>
+    <string name="people_picker_custom_persona_description">此示例演示如何创建自定义 IPersona 对象。</string>
+    <string name="people_picker_dialog_title_removed">你移除了角色:</string>
+    <string name="people_picker_dialog_title_added">你添加了一个角色:</string>
+    <string name="people_picker_drag_started">已开始拖动</string>
+    <string name="people_picker_drag_ended">已结束拖动</string>
+    <string name="people_picker_picked_personas_listener">角色侦听器</string>
+    <string name="people_picker_suggestions_listener">建议侦听器</string>
+    <string name="people_picker_persona_chip_click">你单击了 %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="other">%1$s 位收件人</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">展开永久性 BottomSheet</string>
+    <string name="collapse_persistent_sheet_button"> 隐藏永久性 BottomSheet</string>
+    <string name="show_persistent_sheet_button"> 显示永久性底部动作条</string>
+    <string name="new_view">这是新视图</string>
+    <string name="toggle_sheet_content">切换底部动作条内容</string>
+    <string name="switch_to_custom_content">切换到自定义内容</string>
+    <string name="one_line_content">一行底部动作条内容</string>
+    <string name="toggle_disable_all_items">切换“禁用所有项”</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">添加/移除视图</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> 更改折叠的高度</string>
+    <string name="persistent_sheet_item_create_new_folder_title">新建文件夹</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">已单击新文件夹项</string>
+    <string name="persistent_sheet_item_edit_title">编辑</string>
+    <string name="persistent_sheet_item_edit_toast">已单击“编辑项目”</string>
+    <string name="persistent_sheet_item_save_title">保存</string>
+    <string name="persistent_sheet_item_save_toast">已单击“保存项目”</string>
+    <string name="persistent_sheet_item_zoom_in_title">放大</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> 已单击“放大项目”</string>
+    <string name="persistent_sheet_item_zoom_out_title">缩小</string>
+    <string name="persistent_sheet_item_zoom_out_toast">已单击缩小项目</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">可用</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">设计师</string>
+    <string name="persona_subtitle_engineer">工程师</string>
+    <string name="persona_subtitle_manager">经理</string>
+    <string name="persona_subtitle_researcher">研究员</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (用于测试截断的长文本示例)</string>
+    <string name="persona_view_description_xxlarge">特大虚拟形象(包含三行文本)</string>
+    <string name="persona_view_description_large">包含两行文本的大型虚拟形象</string>
+    <string name="persona_view_description_small">包含一行文本的小型虚拟形象</string>
+    <string name="people_picker_hint">无(显示提示)</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">禁用的角色芯片</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">错误角色芯片</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">角色芯片(无关闭图标)</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">基本角色芯片</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">你单击了所选的“角色芯片”。</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">共享</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">关注</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">邀请人员</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">刷新页面</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">在浏览器中打开</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">这是多行弹出菜单。最大行数设置为 2，其余文本将截断。
+        Lorem ipsum dolor sit amet consectetur adipiscing elit.</string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">所有资讯</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">已保存的新闻</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">网站新闻</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">在工作时间以外通知</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">在桌面上处于非活动状态时通知</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">你单击了项目:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">简单菜单</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">简单菜单 2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">包含一个可选项和一个分隔条的菜单</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">包含所有可选项目、图标和长文本的菜单</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">显示</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">圆形进度</string>
+    <string name="circular_progress_xsmall">超小</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">小型</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">中等</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">大型</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">线性进度</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">不确定</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">确定</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">SearchBar</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">麦克风回拨</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">自动更正</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">已按下麦克风</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">已按下右视图</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">已按下键盘搜索</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">操作</string>
+    <string name="snackbar_action_long">长文本操作</string>
+    <string name="snackbar_single_line">单行 Snackbar</string>
+    <string name="snackbar_multiline">这是一个多行零食栏。最大行数设置为 2，其余文本将截断。
+        Lorem ipsum dolor sit amet consectetur adipiscing elit.</string>
+    <string name="snackbar_announcement">这是一个公告 Snackbar。它用于传达新功能。</string>
+    <string name="snackbar_primary">这是一个主 Snackbar。</string>
+    <string name="snackbar_light">这是一个浅色 Snackbar。</string>
+    <string name="snackbar_warning">这是一个警告性零食栏。</string>
+    <string name="snackbar_danger">这是一个危险零食栏。</string>
+    <string name="snackbar_description_single_line">短持续时间</string>
+    <string name="snackbar_description_single_line_custom_view">长持续时间(带作为小型自定义视图的圆形进度)</string>
+    <string name="snackbar_description_single_line_action">持续时间短(带操作)</string>
+    <string name="snackbar_description_single_line_action_custom_view">短持续时间(带操作和中等自定义视图)</string>
+    <string name="snackbar_description_single_line_custom_text_color">短持续时间(带自定义文本颜色)</string>
+    <string name="snackbar_description_multiline">持续时间长</string>
+    <string name="snackbar_description_multiline_custom_view">长持续时间(带小型自定义视图)</string>
+    <string name="snackbar_description_multiline_action">无限持续时间(带操作和文本更新)</string>
+    <string name="snackbar_description_multiline_action_custom_view">短持续时间(带操作和中等自定义视图)</string>
+    <string name="snackbar_description_multiline_action_long">短持续时间(带长操作文本)</string>
+    <string name="snackbar_description_announcement">短持续时间</string>
+    <string name="snackbar_description_updated">此文本已更新。</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">显示 Snackbar</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">单行</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">多行</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">公告样式</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">主要样式</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">细体样式</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">警告样式</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">危险样式</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">主页</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">邮件</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">设置</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">通知</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">更多</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">文本对齐</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">垂直</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">水平</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">(无文本)</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">选项卡项</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">标题</string>
+    <string name="cell_sample_description">说明</string>
+    <string name="calculate_cells">加载/计算 100 个单元格</string>
+    <string name="calculate_layouts">加载/计算 100 个布局</string>
+    <string name="template_list">模板列表</string>
+    <string name="regular_list">常规列表</string>
+    <string name="cell_example_title">标题: 单元格</string>
+    <string name="cell_example_description">说明: 点击以更改方向</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">标准选项卡 2 段</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">3 段式标准选项卡</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">4 段式标准选项卡</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">标准选项卡(带寻呼机)</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">切换选项卡</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">药丸选项卡 </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">点击以显示工具提示</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">点击以显示自定义日历工具提示</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">点击自定义颜色工具提示</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">点击以关闭内部工具提示</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">点击以显示自定义视图工具提示</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">热门自定义颜色工具提示</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">顶端工具提示(offsetX 为 10dp)</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">底部开始工具提示</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">底端工具提示(offsetY 为 10dp)</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">关闭内部工具提示</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">已关闭工具提示</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">标题为细体 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">标题 1 为中等 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">标题 2 为常规 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">标题为常规 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">副标题 1 为常规 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">副标题 2 为中等 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">正文 1 为常规 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">正文 2 为中等 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">描述文字为常规 12sp</string>
+
+</resources>

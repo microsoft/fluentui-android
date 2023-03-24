@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Žyma</string>
+    <string name="people_picker_search_directory">Ieškoti kataloge</string>
+    <string name="people_picker_search_progress">Ieškoma…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Įveskite vardą arba el. paštą</string>
+    <string name="people_picker_accessibility_persona_added">Įtraukta: %s</string>
+    <string name="people_picker_accessibility_persona_removed">Pašalinta: %s</string>
+    <string name="people_picker_accessibility_replaced">Pakeista: %s</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Spustelėkite</string>
+    <string name="people_picker_accessibility_delete_persona">Naikinti</string>
+    <string name="people_picker_accessibility_deselect_persona">Naikinti žymėjimą</string>
+    <string name="people_picker_accessibility_select_persona">Pasirinkti</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Spustelėta: %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Atžymėta: %s</string>
+    <string name="people_picker_accessibility_selected_persona">Pasirinktas %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, aktyvinant bus atžymėta</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, aktyvinant bus panaikinta</string>
+    <string name="people_picker_accessibility_click_selected_persona">, aktyvinant bus spustelėta</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Atidaromas pasiūlymų sąrašas su %s asmeniu</item>
+        <item quantity="few">Atidaromas pasiūlymų sąrašas su %s žmonėmis</item>
+        <item quantity="many">Atidaromas pasiūlymų sąrašas su %s žmogaus</item>
+        <item quantity="other">Atidaromas pasiūlymų sąrašas su %s žmonių</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s asmuo</item>
+        <item quantity="few">%s žmonės</item>
+        <item quantity="many">%s žmogaus</item>
+        <item quantity="other">%s žmonių</item>
+    </plurals>
+</resources>

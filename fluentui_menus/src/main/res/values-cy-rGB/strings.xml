@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+<resources>
+    <!-- *** PopupMenu *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to toggle radio button and checkbox checked states.-->
+    <string name="popup_menu_accessibility_item_toggle">togl</string>
+    <!--Describes the action used to select a menu item.-->
+    <string name="popup_menu_accessibility_item_select">dewis</string>
+    <!--Announces which menu item has been selected.-->
+    <string name="popup_menu_accessibility_item_click_selected">Wedi dewis %s</string>
+    <!--Announces which menu item has been checked.-->
+    <string name="popup_menu_accessibility_item_click_checked">%s wedi\'i dicio</string>
+    <!--Announces which menu item has been unchecked.-->
+    <string name="popup_menu_accessibility_item_click_unchecked">%s heb ei dicio</string>
+    <!--Describes the radio button control.-->
+    <string name="popup_menu_accessibility_item_radio_button">botwm radio</string>
+    <!--Describes the check box control.-->
+    <string name="popup_menu_accessibility_item_check_box">blwch ticio</string>
+    <!--Describes the state of a menu item that is checked.-->
+    <string name="popup_menu_accessibility_item_state_checked">wedi\'i dicio</string>
+    <!--Describes the state of a menu item that is not checked.-->
+    <string name="popup_menu_accessibility_item_state_not_checked">heb ei dicio</string>
+
+</resources>
