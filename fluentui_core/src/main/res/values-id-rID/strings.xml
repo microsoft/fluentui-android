@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Describes selected action-->
-    <string name="fluentui_selected">Dipilih</string>
-    <!-- Describes not selected action-->
-    <string name="fluentui_not_selected">Tidak Dipilih</string>
-    <!-- Describes disabled action-->
-    <string name="fluentui_disabled">Dinonaktifkan</string>
-    <!-- Describes enabled action-->
-    <string name="fluentui_enabled">Diaktifkan</string>
-    <!-- Describes close action for a sheet-->
-    <string name="fluentui_close_sheet">Tutup Lembar</string>
-    <!-- Describes close action -->
-    <string name="fluentui_close">Tutup</string>
-    <!--name of the icon -->
-    <string name="fluentui_search">Cari</string>
-    <!--name of the icon -->
-    <string name="fluentui_microphone">Mikrofon</string>
-    <!-- Describes the action - to clear the text -->
-    <string name="fluentui_clear_text">Bersihkan Teks</string>
-    <!-- Describes the action - back -->
-    <string name="fluentui_back">Kembali</string>
-    <!-- Describes the action - activated -->
-    <string name="fluentui_activated">Diaktifkan</string>
-    <!-- Describes the action - deactivated -->
-    <string name="fluentui_deactivated">Dinonaktifkan</string>
-    <!-- Describes the type - Neutral-->
-    <string name="fluentui_neutral">Netral</string>
-    <!-- Describes the type - Brand-->
-    <string name="fluentui_brand">Merek</string>
-    <!--name of the icon -->
-    <string name="fluentui_chevron">Chevron</string>
-    <string name="fluentui_large">Besar</string>
-    <string name="fluentui_medium">Sedang</string>
-    <string name="fluentui_small">Kecil</string>
-    <string name="fluentui_subtitle">Subjudul</string>
+  <string name="fluentui_selected">Dipilih</string>
+  <string name="fluentui_not_selected">Tidak Dipilih</string>
+  <string name="fluentui_disabled">Dinonaktifkan</string>
+  <string name="fluentui_enabled">Diaktifkan</string>
+  <string name="fluentui_close_sheet">Tutup Lembar</string>
+  <string name="fluentui_close">Tutup</string>
+  <string name="fluentui_search">Cari</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Bersihkan Teks</string>
+  <string name="fluentui_back">Kembali</string>
+  <string name="fluentui_activated">Diaktifkan</string>
+  <string name="fluentui_deactivated">Dinonaktifkan</string>
+  <string name="fluentui_neutral">Netral</string>
+  <string name="fluentui_brand">Merek</string>
+  <string name="fluentui_chevron">Chevron</string>
+  <string name="fluentui_large">Besar</string>
+  <string name="fluentui_medium">Sedang</string>
+  <string name="fluentui_small">Kecil</string>
+  <string name="fluentui_subtitle">Subjudul</string>
 </resources>

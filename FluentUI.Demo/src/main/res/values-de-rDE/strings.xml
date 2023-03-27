@@ -6,10 +6,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Demo der Benutzeroberfläche für Fluent</string>
-    <string name="app_title">Benutzeroberfläche für Fluent</string>
+    <string name="app_name">Demo der Fluent-Benutzeroberfläche</string>
+    <string name="app_title">Fluent-Benutzeroberfläche</string>
     <!-- Announces selected component -->
-    <string name="app_accessibility_selected">%s ausgewählt.</string>
+    <string name="app_accessibility_selected">%s ausgewählt</string>
     <string name="app_modifiable_parameters">Änderbare Parameter</string>
     <string name="app_right_accessory_view">Rechte Zubehöransicht</string>
 
@@ -28,19 +28,19 @@
     <string name="actionbar_position_top_radio_label">Oben</string>
 
     <!--UI Text view label denoting type of action bar -->
-    <string name="actionbar_type_heading">Aktionsleistentyp</string>
+    <string name="actionbar_type_heading">ActionBar-Typ</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">Position der Aktionsleiste</string>
+    <string name="actionbar_position_heading">ActionBar Position</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">AppBar-Stil</string>
+    <string name="app_bar_style">AppBar Style</string>
     <string name="app_bar_subtitle">Untertitel</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Auf das Navigationssymbol wurde geklickt.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">Flagge</string>
+    <string name="app_bar_layout_menu_flag">Kennzeichnen</string>
     <string name="app_bar_layout_menu_settings">Einstellungen</string>
     <string name="app_bar_layout_menu_search">Suchen</string>
     <!-- UI Text that shows the type of scroll behavior -->
@@ -65,7 +65,7 @@
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Zwischen Designs umschalten (Aktivität neu erstellen)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Design umschalten</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Element</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -77,7 +77,7 @@
     <string name="avatar_style_square">Quadratisches Format</string>
     <!-- Sizes -->
     <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">Xlarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">Groß</string>
     <string name="avatar_size_medium">Mittel</string>
     <string name="avatar_size_small">Klein</string>
@@ -87,7 +87,7 @@
     <!-- UI label to show maximum displayed avatars -->
     <string name="avatar_group_max_displayed_avatar">Maximal angezeigter Avatar</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">Anzahl von Überlaufavataren</string>
+    <string name="avatar_group_overflow_avatar_count">Anzahl von Überlauf-Avataren</string>
     <!-- UI label to show border type -->
     <string name="avatar_group_border_type">Rahmentyp</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
@@ -129,12 +129,12 @@
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Unteres Blatt</string>
+    <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Mit einzeiligen Elementen anzeigen</string>
     <string name="bottom_sheet_with_double_line_items">Mit doppelzeiligem Element anzeigen</string>
-    <string name="bottom_sheet_with_single_line_header">Mit einzeiliger Kopfzeile anzeigen</string>
+    <string name="bottom_sheet_with_single_line_header">Mit einzeiligem Header anzeigen</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Mit doppelzeiligem Header und Trennzeichen anzeigen</string>
     <string name="bottom_sheet_dialog_button">Anzeigen</string>
     <string name="drawer_content_desc_collapse_state">Erweitern</string>
@@ -142,11 +142,11 @@
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Klicken Sie auf %s</string>
+    <string name="contextual_command_prompt_click_item">%s klicken</string>
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">Langes Klicken %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Klicken Sie auf "Schließen"</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Element einfügen</string>
     <!-- Text for button for updating an item-->
@@ -156,7 +156,7 @@
     <!-- Announces add action -->
     <string name="contextual_command_accessibility_add">Hinzufügen</string>
     <!-- Announces mention action -->
-    <string name="contextual_command_accessibility_mention">Erwähnung</string>
+    <string name="contextual_command_accessibility_mention">Erwähnen</string>
     <!-- Announces bold action -->
     <string name="contextual_command_accessibility_bold">Fett</string>
     <!-- Announces italic action -->
@@ -194,17 +194,17 @@
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">Flagge</string>
+    <string name="bottom_sheet_item_flag_title">Kennzeichnen</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Element gekennzeichnet, auf das geklickt wurde</string>
+    <string name="bottom_sheet_item_flag_toast">Auf "Element kennzeichnen" geklickt</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Antworten</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Auf Antwortelement geklickt</string>
+    <string name="bottom_sheet_item_reply_toast">Auf "Element antworten" geklickt</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Weiterleiten</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Auf Das Vorwärtselement wurde geklickt.</string>
+    <string name="bottom_sheet_item_forward_toast">Auf "Element weiterleiten" geklickt</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Löschen</string>
     <!--UI Label for user action clicked on item delete-->
@@ -229,13 +229,13 @@
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">Ihre Videos wiedergeben</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Auf Das Videoelement wurde geklickt.</string>
+    <string name="bottom_sheet_item_videos_toast">Videoelement angeklickt</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Verwalten</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">Medienbibliothek verwalten</string>
+    <string name="bottom_sheet_item_manage_subtitle">Ihre Medienbibliothek verwalten</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Auf Element verwalten geklickt</string>
+    <string name="bottom_sheet_item_manage_toast">Auf "Element verwalten" geklickt</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">E-Mail-Aktionen</string>
@@ -247,11 +247,11 @@
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Teilen</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Auf Das Freigabeelement wurde geklickt.</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Auf "Element freigeben" geklickt</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Verschieben</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Auf Element verschieben geklickt</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Auf "Element verschieben" geklickt</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Löschen</string>
     <!--UI Label for user action clicked on item delete-->
@@ -264,7 +264,7 @@
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Uhr</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Uhrelement angeklickt</string>
+    <string name="bottom_sheet_item_clock_toast">Auf Uhrelement geklickt</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Alarm</string>
     <!--UI Label for user action clicked on item alarm-->
@@ -277,33 +277,33 @@
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Schaltfläche</string>
-    <string name="buttonbar">Schaltflächenleiste</string>
-    <string name="button_disabled">Schaltfläche "Deaktiviert"</string>
+    <string name="buttonbar">ButtonBar</string>
+    <string name="button_disabled">Deaktivierte Schaltfläche</string>
     <string name="button_borderless">Schaltfläche "Rahmenlos"</string>
-    <string name="button_borderless_disabled">Schaltfläche "Rahmenlos deaktiviert"</string>
+    <string name="button_borderless_disabled">Rahmenlose deaktivierte Schaltfläche</string>
     <string name="button_large">Große Schaltfläche</string>
-    <string name="button_large_disabled">Schaltfläche "Groß" deaktiviert</string>
+    <string name="button_large_disabled">Große deaktivierte Schaltfläche</string>
     <string name="button_outlined">Schaltfläche "Umriss"</string>
     <string name="button_outlined_disabled">Deaktivierte Schaltfläche "Gliederung"</string>
 
     <!--CalendarView-->
-    <string name="calendar_example_chosen_date">Wählen Sie ein Datum aus.</string>
+    <string name="calendar_example_chosen_date">Wählen Sie ein Datum aus</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Datetimepicker</string>
+    <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Einzelnes Datum</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Kein Datum ausgewählt</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Datumsauswahl anzeigen?</string>
+    <string name="date_time_picker_date_button">Datumsauswahl anzeigen</string>
     <!-- text for button that shows date picker with date tab selected -->
     <string name="date_time_picker_calendar_date_time_button">Datums-/Uhrzeitauswahl mit ausgewählter Datumsregisterkarte anzeigen</string>
     <!-- text for button that shows date picker with time tab selected -->
     <string name="date_time_picker_date_time_calendar_button">Datums-/Uhrzeitauswahl mit ausgewählter Registerkarte "Uhrzeit" anzeigen</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Show date time picker</string>
+    <string name="date_time_picker_date_time_button">Datums-/Uhrzeitauswahl anzeigen</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Zeitraum</string>
     <!-- UI label showing start of the range-->
@@ -321,7 +321,7 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Datum/Uhrzeit-Bereich</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Datums-/Uhrzeitbereich auswählen</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
@@ -335,9 +335,9 @@
     <!-- text for button that shows no fade bottom dialog -->
     <string name="no_fade_bottom_dialog_button">Kein Dialogfeld "Unterer Bereich ausblenden"</string>
     <!-- text for button that shows top drawer -->
-    <string name="drawer_top_dialog_button">Obere Schublade anzeigen</string>
+    <string name="drawer_top_dialog_button">Oberen Drawer anzeigen</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Kein Dialogfeld "Obere Blende"</string>
+    <string name="no_fade_top_dialog_button">Kein Dialogfeld "Oberer Bereich ausblenden"</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> Dialogfeld "Ankeransicht oben" anzeigen</string>
     <!-- text for button that shows no title top dialog drawer -->
@@ -345,9 +345,9 @@
     <!-- text for button that shows below title top dialog drawer -->
     <string name="below_title_top_dialog_button"> Dialogfeld "Titel oben unten" anzeigen</string>
     <!-- text for button that shows right drawer -->
-    <string name="drawer_right_dialog_button">Rechte Schublade anzeigen</string>
+    <string name="drawer_right_dialog_button">Rechter Drawer anzeigen</string>
     <!-- text for button that shows left drawer -->
-    <string name="drawer_left_dialog_button">Linke Schublade anzeigen</string>
+    <string name="drawer_left_dialog_button">Linker Drawer anzeigen</string>
 
     <!--ListItem-->
     <!-- Title -->
@@ -365,12 +365,12 @@
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Zweizeiliger Listenwert mit benutzerdefinierter sekundärer Untertitelansicht</string>
     <string name="list_item_sub_header_three_line">Dreizeilige Liste mit schwarzem Unterheadertext</string>
     <string name="list_item_sub_header_no_custom_views">Elemente ohne benutzerdefinierte Ansichten auflisten</string>
-    <string name="list_item_sub_header_large_header">Elemente mit großen benutzerdefinierten Ansichten auflisten</string>
-    <string name="list_item_sub_header_wrapped_text">Listenelemente mit umschlossenem Text</string>
+    <string name="list_item_sub_header_large_header">Elementen mit großen benutzerdefinierten Ansichten auflisten</string>
+    <string name="list_item_sub_header_wrapped_text">Auflisten von Elementen mit umschlossenem Text</string>
     <string name="list_item_sub_header_truncated_text">Listenelemente mit abgeschnittenem Text</string>
     <string name="list_item_sub_header_custom_accessory_text">Aktion</string>
     <string name="list_item_truncation_middle">Mittlere Kürzung.</string>
-    <string name="list_item_truncation_end">Das Abschneiden wird beendet.</string>
+    <string name="list_item_truncation_end">Abschneiden beenden.</string>
     <string name="list_item_truncation_start">Abschneiden starten.</string>
     <string name="list_item_custom_text_view">Wert</string>
     <string name="list_item_click">Sie haben auf das Listenelement geklickt.</string>
@@ -381,7 +381,7 @@
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Auswählen</string>
-    <string name="people_picker_select_deselect_example">Auswahl auswählen</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">Keine</string>
     <string name="people_picker_delete_example">Löschen</string>
     <string name="people_picker_custom_persona_description">Dieses Beispiel zeigt, wie Sie ein benutzerdefiniertes IPersona-Objekt erstellen.</string>
@@ -389,23 +389,23 @@
     <string name="people_picker_dialog_title_added">Sie haben eine Persona hinzugefügt:</string>
     <string name="people_picker_drag_started">Ziehen gestartet</string>
     <string name="people_picker_drag_ended">Ziehen beendet</string>
-    <string name="people_picker_picked_personas_listener">Personas Listener</string>
-    <string name="people_picker_suggestions_listener">Vorschlagslistener</string>
-    <string name="people_picker_persona_chip_click">Sie haben auf %s geklickt.</string>
+    <string name="people_picker_picked_personas_listener">Personas-Zuhörer</string>
+    <string name="people_picker_suggestions_listener">Vorschlagszuhörer</string>
+    <string name="people_picker_persona_chip_click">Sie haben auf %s geklickt</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s Empfänger</item>
+        <item quantity="other">%1$s Empfänger</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Persistentes BottomSheet erweitern</string>
     <string name="collapse_persistent_sheet_button"> Persistentes BottomSheet ausblenden</string>
     <string name="show_persistent_sheet_button"> Persistentes BottomSheet anzeigen</string>
-    <string name="new_view">Dies ist eine neue Ansicht.</string>
-    <string name="toggle_sheet_content">Inhalt des unteren Blatts umschalten</string>
+    <string name="new_view">Dies ist eine neue Ansicht</string>
+    <string name="toggle_sheet_content">Inhalt des Bottomsheet umschalten</string>
     <string name="switch_to_custom_content">Zu benutzerdefiniertem Inhalt wechseln</string>
-    <string name="one_line_content">Einzeiliger Inhalt des unteren Tabellenblatts</string>
+    <string name="one_line_content">Einzeilige Inhalte des Bottomsheet</string>
     <string name="toggle_disable_all_items">"Alle Elemente deaktivieren" umschalten</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Ansicht hinzufügen/entfernen</string>
@@ -413,13 +413,13 @@
     <string name="persistent_sheet_item_create_new_folder_title">Neuer Ordner</string>
     <string name="persistent_sheet_item_create_new_folder_toast">Auf neues Ordnerelement geklickt</string>
     <string name="persistent_sheet_item_edit_title">Bearbeiten</string>
-    <string name="persistent_sheet_item_edit_toast">Auf Element bearbeiten geklickt</string>
+    <string name="persistent_sheet_item_edit_toast">Auf "Element bearbeiten" geklickt</string>
     <string name="persistent_sheet_item_save_title">Speichern</string>
-    <string name="persistent_sheet_item_save_toast">Auf Das Element speichern wurde geklickt.</string>
+    <string name="persistent_sheet_item_save_toast">Auf "Element speichern" geklickt</string>
     <string name="persistent_sheet_item_zoom_in_title">Vergrößern</string>
     <string name="persistent_sheet_item_zoom_in_toast"> Element vergrößern angeklickt</string>
     <string name="persistent_sheet_item_zoom_out_title">Verkleinern</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Verkleinern: Element angeklickt</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Auf "Element verkleinern" geklickt</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -454,31 +454,31 @@
     <string name="persona_name_allan_munger">Allan Munger</string>
     <string name="persona_name_amanda_brady">Amanda Brady</string>
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
-    <string name="persona_name_carlos_slattery">Karl Fleischhauer</string>
-    <string name="persona_name_carole_poland">Weihnachtsliederpolen</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
     <string name="persona_name_cecil_folk">Cecil Folk</string>
-    <string name="persona_name_celeste_burton">Celeste Nachz.</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
     <string name="persona_name_colin_ballinger">Colin Ballinger</string>
-    <string name="persona_name_daisy_phillips">Gänser</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
     <string name="persona_name_elliot_woodward">Elliot Woodward</string>
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
-    <string name="persona_name_erik_nason">Der Nason</string>
-    <string name="persona_name_henry_brill">Eric Brill</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Isaac Fielder</string>
     <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
-    <string name="persona_name_kevin_sturgis">Kippa Sturgis</string>
-    <string name="persona_name_kristen_patterson">Christian Patterson</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
     <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
-    <string name="persona_name_mona_kane">Der Kane</string>
-    <string name="persona_name_robin_counts">Robinanzahl</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
     <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">WandaAu</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Designer</string>
     <string name="persona_subtitle_engineer">Konstrukteur(in)</string>
@@ -495,11 +495,11 @@
     <!-- UI label showing a disabled persona chip -->
     <string name="persona_chip_example_disabled">Deaktivierter Persona Chip</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Fehler: Persona Chip</string>
+    <string name="persona_chip_example_error">Fehler Persona Chip</string>
     <!-- UI label showing a persona chip with no close icon-->
     <string name="persona_chip_example_no_icon">Symbol für Persona Chip ohne Schließen</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Basic-Persona-Chip</string>
+    <string name="persona_chip_example_basic">Standard Persona Chip</string>
     <!-- UI label showing user action click on a selected persona chip -->
     <string name="persona_chip_example_click">Sie haben auf einen ausgewählten Persona Chip geklickt.</string>
 
@@ -520,7 +520,7 @@
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">Alle Neuigkeiten</string>
     <!-- UI label for item Saved news -->
-    <string name="popup_menu_item_saved_news">Gespeicherte Nachrichten</string>
+    <string name="popup_menu_item_saved_news">Gespeicherte Neuigkeiten</string>
     <!-- UI label for item >News from sites -->
     <string name="popup_menu_item_news_from_sites">Neuigkeiten von Websites</string>
     <!-- UI label for item contoso -->
@@ -569,11 +569,11 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">SearchBar</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Mikrofonrückruf</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Autokorrektur</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Mikrofon gedrückt</string>
     <!-- Announces that right view has been pressed -->
@@ -592,7 +592,7 @@
     <string name="snackbar_primary">Dies ist eine primäre Snackbar.</string>
     <string name="snackbar_light">Dies ist eine helle Snackbar.</string>
     <string name="snackbar_warning">Dies ist eine Warnungs-Snackbar.</string>
-    <string name="snackbar_danger">Dies ist eine Gefahr für die Snackbar.</string>
+    <string name="snackbar_danger">Dies ist eine Gefahr-Snackbar.</string>
     <string name="snackbar_description_single_line">Kurze Dauer</string>
     <string name="snackbar_description_single_line_custom_view">Lange Dauer mit zirkulärem Fortschritt als kleine benutzerdefinierte Ansicht</string>
     <string name="snackbar_description_single_line_action">Kurze Dauer mit Aktion</string>
@@ -604,7 +604,7 @@
     <string name="snackbar_description_multiline_action_custom_view">Kurze Dauer mit Aktion und mittlerer benutzerdefinierter Ansicht</string>
     <string name="snackbar_description_multiline_action_long">Kurze Dauer mit langem Aktionstext</string>
     <string name="snackbar_description_announcement">Kurze Dauer</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Dieser Text wurde aktualisiert.</string>
     <!-- text for button that shows a snackbar -->
     <string name="snackbar_button_show">Snackbar anzeigen</string>
     <!-- UI Text denoting single line snackbar -->
@@ -641,7 +641,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Horizontal</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(kein Text)</string>
+    <string name="tabBar_no_text">Kein Text</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Registerkartenelemente</string>
 
@@ -653,8 +653,8 @@
     <string name="calculate_layouts">100 Layouts laden/berechnen</string>
     <string name="template_list">Vorlagenliste</string>
     <string name="regular_list">Reguläre Liste</string>
-    <string name="cell_example_title">Titelzelle</string>
-    <string name="cell_example_description">Beschreibung: Tippen Sie, um die Ausrichtung zu ändern.</string>
+    <string name="cell_example_title">Titel: Zelle</string>
+    <string name="cell_example_description">Beschreibung: Tippen Sie, um die Ausrichtung zu ändern</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -662,27 +662,27 @@
     <!-- Text for button that shows a Standard Tab 3-Segment -->
     <string name="tab_standard_three_segment">Standardregisterkarte 3-Segment</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Standardregisterkarte 4 Segment</string>
+    <string name="tab_standard_four_segment">Standardregisterkarte 4-Segment</string>
     <!-- Text for button that shows a Standard Tab with pager -->
     <string name="tab_standard_with_pager">Standardregisterkarte mit Pager</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Tab wechseln</string>
+    <string name="tab_switch">Registerkarte wechseln</string>
     <!-- Text for button that shows pills tabs -->
     <string name="tab_pills">Registerkarte "Pillen" </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Tippen Für QuickInfo tippen</string>
+    <string name="tooltip_button">Für QuickInfo tippen</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Tippen Sie für benutzerdefinierte Kalender-QuickInfo.</string>
+    <string name="tooltip_calendar_demo_button">Tippen Sie für benutzerdefinierte Kalender-QuickInfo</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Tippen Sie auf "Benutzerdefinierte Farbe"-QuickInfo.</string>
+    <string name="tooltip_custom_button">Tippen Sie auf die QuickInfo "Benutzerdefinierte Farbe"</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Tippen Sie, um die QuickInfo zu schließen.</string>
+    <string name="tooltip_center_button">Tippen Sie, um die QuickInfo zu schließen</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Tippen Sie, um eine QuickInfo zur benutzerdefinierten Ansicht anzuzeigen.</string>
+    <string name="tooltip_custom_view">Tippen Sie, um eine QuickInfo zur benutzerdefinierten Ansicht anzuzeigen</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">QuickInfo zur benutzerdefinierten Topfarbe</string>
+    <string name="tooltip_top_start_message">Top-QuickInfo für benutzerdefinierte Farben</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_top_end_message">QuickInfo am oberen Ende mit 10dp offsetX</string>
     <!--UI label showing tooltip message -->
@@ -696,7 +696,7 @@
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Überschrift ist hell 28 s</string>
+    <string name="headline">Kopfzeile ist hell 28 s</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
     <string name="title_1">Titel 1 ist mittel 20 s</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
@@ -704,13 +704,13 @@
     <!-- UI label, heading with Regular appearance and font size 18sp -->
     <string name="heading">Überschrift ist normal 18 s</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Die Unterüberschrift 1 ist "Regular 16sp".</string>
+    <string name="subheading_1">Unterüberschrift 1 ist normal 16 s</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Die Unterüberschrift 2 ist mittel 16 s.</string>
+    <string name="subheading_2">Unterüberschrift 2 ist Mittel 16 s</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Body 1 ist regular 14sp</string>
+    <string name="body_1">Text 1 ist normal 14 s</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Body 2 is Medium 14sp</string>
+    <string name="body_2">Text 2 ist mittel 14 s</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
     <string name="caption">Beschriftung ist normal 12 s</string>
 

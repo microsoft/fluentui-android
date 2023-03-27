@@ -6,12 +6,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Демонстрация на потребителски интерфейс с плавни настройки</string>
+    <string name="app_name">Демонстрация на потребителски интерфейс на Fluent</string>
     <string name="app_title">Потребителски интерфейс на Fluent</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">Избран е %s</string>
     <string name="app_modifiable_parameters">Параметри, които могат да се модифицират</string>
-    <string name="app_right_accessory_view">Изглед на аксесоар отдясно</string>
+    <string name="app_right_accessory_view">Изглед на десен аксесоар</string>
 
     <string name="app_style">Стил</string>
     <!-- describes an action, icon pressed -->
@@ -33,8 +33,8 @@
     <string name="actionbar_position_heading">Позиция на лентата с действия</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">Стил на AppBar</string>
-    <string name="app_bar_subtitle">Подиме</string>
+    <string name="app_bar_style">Стил на лента с приложения</string>
+    <string name="app_bar_subtitle">Подзаглавие</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Иконата за навигация е щракната.</string>
@@ -60,12 +60,12 @@
     <!-- UI label denoting layout style -->
     <string name="app_bar_layout_toggle_searchbar_sub_header">Превключване на стила на оформлението на лентата за търсене</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Показване като спомагателен изглед</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Показване като изглед на аксесоар</string>
     <string name="app_bar_layout_searchbar_action_view_button">Показване като изглед на действие</string>
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Превключване между темите (пресъздава дейността)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Превключване на тема</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Елемент</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -73,33 +73,33 @@
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">Стил на кръг</string>
+    <string name="avatar_style_circle">Стилове за кръгове</string>
     <string name="avatar_style_square">Квадратен стил</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XX многосножна</string>
-    <string name="avatar_size_xlarge">Многослоен</string>
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">Голяма</string>
-    <string name="avatar_size_medium">Среден</string>
-    <string name="avatar_size_small">Малко</string>
+    <string name="avatar_size_medium">Средна</string>
+    <string name="avatar_size_small">Малка</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Максимален показан аватар</string>
+    <string name="avatar_group_max_displayed_avatar">Максимален брой показвани аватари</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">Брой аватари за препълване</string>
+    <string name="avatar_group_overflow_avatar_count">Брой аватари при препълване</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Тип граница:</string>
+    <string name="avatar_group_border_type">Тип граница</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">Групата аватари с набор OverflowAvatarCount няма да се придържа към максималния показан аватар.</string>
+    <string name="avatar_group_info">Групата аватари с набор OverflowAvatarCount няма да се придържа към максималния брой показани аватари.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Стек на лицето</string>
+    <string name="avatar_group_face_stack">Група на лицето</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">Купчина лица</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Препълване, върху което е щракнато</string>
+    <string name="avatar_group_overflow_clicked">Щракнато е върху елемент за препълване</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView при индекс %d щракнато</string>
+    <string name="avatar_group_avatar_clicked">Щракнато е върху AvatarView при индекс %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -129,12 +129,12 @@
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Долен лист</string>
-    <string name="bottom_sheet_dialog">Диалог на долен лист</string>
+    <string name="bottom_sheet">ДолуНаЛиста</string>
+    <string name="bottom_sheet_dialog">ДиалоговПрозорецДолуНаЛиста</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Показване с елементи от един ред</string>
-    <string name="bottom_sheet_with_double_line_items">Показване с елементи с два реда</string>
-    <string name="bottom_sheet_with_single_line_header">Показване с горен колонтитул с един ред</string>
+    <string name="bottom_sheet_with_double_line_items">Показване с елементи от два реда</string>
+    <string name="bottom_sheet_with_single_line_header">Показване с едноредов горен колонтитул</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Показване с двуредова заглавка и разделители</string>
     <string name="bottom_sheet_dialog_button">Показване</string>
     <string name="drawer_content_desc_collapse_state">Разширяване</string>
@@ -144,15 +144,15 @@
     <!-- UI text showing the click action performed by the user -->
     <string name="contextual_command_prompt_click_item">Щракнете върху %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">%s с продължително щракване</string>
+    <string name="contextual_command_prompt_long_click_item">Дълго щракване %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Отхвърляне при щракване</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Вмъкване на елемент</string>
     <!-- Text for button for updating an item-->
     <string name="contextual_command_update_item">Актуализиране на елемент</string>
     <!-- Announces dismiss action -->
-    <string name="contextual_command_accessibility_dismiss">Изключи</string>
+    <string name="contextual_command_accessibility_dismiss">Отхвърляне</string>
     <!-- Announces add action -->
     <string name="contextual_command_accessibility_add">Добавяне</string>
     <!-- Announces mention action -->
@@ -162,7 +162,7 @@
     <!-- Announces italic action -->
     <string name="contextual_command_accessibility_italic">Курсив</string>
     <!-- Announces undeline action -->
-    <string name="contextual_command_accessibility_underline">Подчертайте</string>
+    <string name="contextual_command_accessibility_underline">Подчертаване</string>
     <!-- Announces strikethrough action -->
     <string name="contextual_command_accessibility_strikethrough">Зачеркнато</string>
     <!-- Announces undo action -->
@@ -184,11 +184,11 @@
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">СТАРТ</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">КРАЙ</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">Групово пространство</string>
+    <string name="contextual_command_bar_group_space_title">Пространство между групи</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">Място на елемента</string>
+    <string name="contextual_command_bar_item_space_title">Разстояние между елементи</string>
     <!-- UI bar label denoting the space in number value dp's -->
     <string name="contextual_command_bar_space_value">%d dp</string>
 
@@ -200,15 +200,15 @@
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Отговор</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Елементът за отговор е щракнат</string>
+    <string name="bottom_sheet_item_reply_toast">Щракнато е върху елемент за отговор</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Пренасочване</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Препрати елемента, върху който е щракнато</string>
+    <string name="bottom_sheet_item_forward_toast">Щракнато е върху елемент за препращане</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Изтриване</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Изтрит елемент, върху който е щракнато</string>
+    <string name="bottom_sheet_item_delete_toast">Щракнато е върху елемент за изтриване</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Аватар</string>
     <!--Double line items-->
@@ -217,25 +217,25 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Правене на снимка</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Елементът от камерата е щракнат</string>
+    <string name="bottom_sheet_item_camera_toast">Щракнат елемент от камерата</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Галерия</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">Преглед на вашите снимки</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Елементът от галерията е щракнат</string>
+    <string name="bottom_sheet_item_gallery_toast">Щракнато е върху елемент от галерията</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Видеоклипове</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">Възпроизвеждане на вашите видеоклипове</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Щракнат елемент от видеоклипове</string>
+    <string name="bottom_sheet_item_videos_toast">Щракнато е върху елемент от видеоклипове</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Управление</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Управление на вашата мултимедийна библиотека</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Управление на щракнат елемент</string>
+    <string name="bottom_sheet_item_manage_toast">Щракнато е върху "Управление на елемент"</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">Действия с имейл</string>
@@ -243,7 +243,7 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Документи</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Последна актуализация на 14:14 ч.</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Последна актуализация: 14:14 ч.</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Споделяне</string>
     <!--UI Label for user action clicked on item share-->
@@ -251,59 +251,59 @@
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Преместване</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Преместването на елемента е щракнато</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Щракнато е върху елемент за преместване</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Изтриване</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Изтрит елемент, върху който е щракнато</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Щракнато е върху елемент за изтриване</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Информация</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Щракнат е информационен елемент</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Щракнат информационен елемент</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Часовник</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Щракнат е елемент от часовника</string>
+    <string name="bottom_sheet_item_clock_toast">Щракнато е върху елемент от часовника</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Аларма</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Щракнат е елемент на аларма</string>
+    <string name="bottom_sheet_item_alarm_toast">Щракнато е върху елемент на аларма</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Часова зона</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Щракнат елемент за часова зона</string>
+    <string name="bottom_sheet_item_time_zone_toast">Щракнато е върху елемент на часова зона</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Бутон</string>
     <string name="buttonbar">Лента с бутони</string>
-    <string name="button_disabled">Бутон "Забранено"</string>
+    <string name="button_disabled">Бутон "Неразрешено"</string>
     <string name="button_borderless">Бутон без граници</string>
-    <string name="button_borderless_disabled">Бутон "Забранено" без граници</string>
+    <string name="button_borderless_disabled">Бутон "Неразрешено" без граници</string>
     <string name="button_large">Голям бутон</string>
-    <string name="button_large_disabled">Голям забранен бутон</string>
+    <string name="button_large_disabled">Голям бутон "Неразрешено"</string>
     <string name="button_outlined">Бутон с контур</string>
-    <string name="button_outlined_disabled">Бутон "Дезактивиран" с контур</string>
+    <string name="button_outlined_disabled">Бутон "Неразрешено" с контур</string>
 
     <!--CalendarView-->
-    <string name="calendar_example_chosen_date">Изберете дата</string>
+    <string name="calendar_example_chosen_date">Избор на дата</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Дата и час на подаване</string>
+    <string name="date_time_picker_title">ИзборНаДатаИЧас</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Единична дата</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Няма избрана дата</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Да се покаже ли елементът за избор на дата?</string>
+    <string name="date_time_picker_date_button">Показване на избор на дата</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Показване на избирача на дата и час с избран раздел за дата</string>
+    <string name="date_time_picker_calendar_date_time_button">Показване на избора на дата и час с избран раздел за дата</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Показване на избирача на дата и час с избран раздел за час</string>
+    <string name="date_time_picker_date_time_calendar_button">Показване на избора на дата и час с избран раздел за час</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Показване на избирача на дата и час</string>
+    <string name="date_time_picker_date_time_button">Показване на избора на дата и час</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Интервал от дати</string>
     <!-- UI label showing start of the range-->
@@ -321,11 +321,11 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Диапазон на дата и час</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Избор на диапазон от дати и часове</string>
     <!-- UI label -->
-    <string name="date_time_picker_dialog_title">Дата и час На подаване</string>
+    <string name="date_time_picker_dialog_title">ДиалоговПрозорецЗаИзборНаДатаИЧас</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Показване на диалогов прозорец</string>
+    <string name="date_time_picker_dialog_button">Показване на диалоговия прозорец</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
@@ -333,21 +333,21 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Показване на диалоговия прозорец на чекмеджето</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Няма избледняване на долния диалогов прозорец</string>
+    <string name="no_fade_bottom_dialog_button">Без избледняване на долния диалогов прозорец</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Показване на горното чекмедже</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Няма избледняване на горен диалогов прозорец</string>
+    <string name="no_fade_top_dialog_button">Без избледняване на горния диалогов прозорец</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> Показване на горен диалогов прозорец за изглед на котва</string>
     <!-- text for button that shows no title top dialog drawer -->
     <string name="no_title_top_dialog_button"> Не показвай горен диалогов прозорец за заглавие</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Показване под горния диалогов прозорец на заглавието</string>
+    <string name="below_title_top_dialog_button"> Показване под горния диалогов прозорец за заглавие</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Показване на дясното чекмедже</string>
     <!-- text for button that shows left drawer -->
-    <string name="drawer_left_dialog_button">Покажи лявото чекмедже</string>
+    <string name="drawer_left_dialog_button">Показване на лявото чекмедже</string>
 
     <!--ListItem-->
     <!-- Title -->
@@ -357,69 +357,69 @@
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">Текст на подзаглавие по избор</string>
     <!-- Footer -->
-    <string name="list_item_footer">Долен колонтитул, трети текст</string>
+    <string name="list_item_footer">Долен колонтитул, третичен текст</string>
     <!-- UI labels -->
     <string name="list_item_sub_header_single_line">Едноредов списък със сив текст на подзаглавие</string>
     <string name="list_item_sub_header_two_line">Списък с два реда</string>
-    <string name="list_item_sub_header_two_line_dense">Двуредови списъци с плътна разредка</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Списък с два реда с изглед по избор на вторично подзаглавие</string>
+    <string name="list_item_sub_header_two_line_dense">Двуредов списък с плътна разредка</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Двуредов списък с допълнителен изглед по избор за подзаглавие</string>
     <string name="list_item_sub_header_three_line">Триредов списък с черен текст на подзаглавие</string>
-    <string name="list_item_sub_header_no_custom_views">Елементи на списък без изгледи по избор</string>
+    <string name="list_item_sub_header_no_custom_views">Изброяване на елементи без изгледи по избор</string>
     <string name="list_item_sub_header_large_header">Изброяване на елементи с големи изгледи по избор</string>
     <string name="list_item_sub_header_wrapped_text">Елементи от списък с пренесен текст</string>
-    <string name="list_item_sub_header_truncated_text">Елементи от списък с отрязан текст</string>
+    <string name="list_item_sub_header_truncated_text">Изброяване на елементи с отрязан текст</string>
     <string name="list_item_sub_header_custom_accessory_text">Действие</string>
-    <string name="list_item_truncation_middle">Средно отрязване.</string>
-    <string name="list_item_truncation_end">Прекратяване на отрязването.</string>
-    <string name="list_item_truncation_start">Стартиране на отрязване.</string>
+    <string name="list_item_truncation_middle">Отрязване по средата.</string>
+    <string name="list_item_truncation_end">Край на отрязването.</string>
+    <string name="list_item_truncation_start">Начало на отрязването.</string>
     <string name="list_item_custom_text_view">Стойност</string>
     <string name="list_item_click">Щракнали сте върху елемента от списъка.</string>
     <string name="list_item_click_custom_accessory_view">Щракнали сте върху изгледа на аксесоар по избор.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Щракнали сте върху изгледа на аксесоар по избор на подзаглавие.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Щракнали сте върху потребителския изглед на аксесоар на подзаглавие.</string>
     <string name="list_item_more_options">Още опции</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Избор</string>
-    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_select_deselect_example">ИзборОтмянаНаИзбор</string>
     <string name="people_picker_none_example">Няма</string>
     <string name="people_picker_delete_example">Изтриване</string>
-    <string name="people_picker_custom_persona_description">Този пример показва как да създадете обект по избор IPersona.</string>
+    <string name="people_picker_custom_persona_description">Този пример показва как да създадете обект на IPersona по избор.</string>
     <string name="people_picker_dialog_title_removed">Премахнахте персона:</string>
     <string name="people_picker_dialog_title_added">Добавихте персона:</string>
     <string name="people_picker_drag_started">Плъзгането започна</string>
-    <string name="people_picker_drag_ended">Плъзгане приключи</string>
+    <string name="people_picker_drag_ended">Плъзгането приключи</string>
     <string name="people_picker_picked_personas_listener">Слушател на персони</string>
     <string name="people_picker_suggestions_listener">Слушател на предложения</string>
     <string name="people_picker_persona_chip_click">Щракнахте върху %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s получател</item>
+        <item quantity="other">%1$s получатели</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Разгъване на постоянен долен лист</string>
-    <string name="collapse_persistent_sheet_button"> Скриване на постоянен долен лист</string>
-    <string name="show_persistent_sheet_button"> Показване на постоянен долен лист</string>
+    <string name="collapse_persistent_sheet_button"> Скриване на постоянна ДолнаЧастНаЛист</string>
+    <string name="show_persistent_sheet_button"> Показване на постоянна ДолнаЧастНаЛист</string>
     <string name="new_view">Това е нов изглед</string>
-    <string name="toggle_sheet_content">Превключване на съдържанието на долния лист</string>
+    <string name="toggle_sheet_content">Превключване на съдържанието на ДолнияЛист</string>
     <string name="switch_to_custom_content">Превключване към съдържание по избор</string>
     <string name="one_line_content">Съдържание на долен лист с един ред</string>
     <string name="toggle_disable_all_items">Превключване на забраняването на всички елементи</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Добавяне/премахване на изглед</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> Промяна на свита височина</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Промяна на свитата височина</string>
     <string name="persistent_sheet_item_create_new_folder_title">Нова папка</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Щракнат е нов елемент от папка</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Щракнато е върху елемент от нова папка</string>
     <string name="persistent_sheet_item_edit_title">Редактиране</string>
-    <string name="persistent_sheet_item_edit_toast">Редактиране на елемент, върху който е щракнато</string>
+    <string name="persistent_sheet_item_edit_toast">Щракнато е върху елемент за редактиране</string>
     <string name="persistent_sheet_item_save_title">Записване</string>
-    <string name="persistent_sheet_item_save_toast">Елементът за записване е щракнат</string>
+    <string name="persistent_sheet_item_save_toast">Щракнато е върху елемент за записване</string>
     <string name="persistent_sheet_item_zoom_in_title">Увеличи</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Щракнато е върху "Увеличаване на елемент"</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Щракнато е върху елемент за увеличаване</string>
     <string name="persistent_sheet_item_zoom_out_title">Намали</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Щракнат е елемент за намаляване</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Щракнато е върху елемент за намаляване</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -451,55 +451,55 @@
     <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
     <string name="persona_footer">Свободно</string>
     <!-- Person names -->
-    <string name="persona_name_allan_munger">Allan Мунгер</string>
-    <string name="persona_name_amanda_brady">Аманда Бради</string>
-    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
-    <string name="persona_name_carlos_slattery">Явор Костов</string>
-    <string name="persona_name_carole_poland">Кероле Полша</string>
-    <string name="persona_name_cecil_folk">Павил фолк</string>
+    <string name="persona_name_allan_munger">Алан Мунгер</string>
+    <string name="persona_name_amanda_brady">Аманда Брейди</string>
+    <string name="persona_name_ashley_mccarthy">Ашли Маккарти</string>
+    <string name="persona_name_carlos_slattery">Карлос Слатъри</string>
+    <string name="persona_name_carole_poland">Карол Поланд</string>
+    <string name="persona_name_cecil_folk">Сесил Фолк</string>
     <string name="persona_name_celeste_burton">Селесте Бъртън</string>
     <string name="persona_name_charlotte_waltson">Шарлот Уолтсън</string>
     <string name="persona_name_colin_ballinger">Колин Балингер</string>
-    <string name="persona_name_daisy_phillips">Маргаритки филипси</string>
+    <string name="persona_name_daisy_phillips">Дейзи Филипс</string>
     <string name="persona_name_elliot_woodward">Елиът Удуърд</string>
     <string name="persona_name_elvia_atkins">Елвия Аткинс</string>
-    <string name="persona_name_erik_nason">Erik Nason</string>
-    <string name="persona_name_henry_brill">Брил</string>
-    <string name="persona_name_isaac_fielder">Асаак Fielder</string>
-    <string name="persona_name_johnie_mcconnell">Джон Макконъл</string>
+    <string name="persona_name_erik_nason">Ерик Нейсън</string>
+    <string name="persona_name_henry_brill">Хенри Брил</string>
+    <string name="persona_name_isaac_fielder">Айзък Фийлдър</string>
+    <string name="persona_name_johnie_mcconnell">Джони Макконъл</string>
     <string name="persona_name_kat_larsson">Кат Ларсон</string>
     <string name="persona_name_katri_ahokas">Катри Ахокас</string>
-    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kevin_sturgis">Кевин Стърджис</string>
     <string name="persona_name_kristen_patterson">Кристен Патерсън</string>
     <string name="persona_name_lydia_bauer">Лидия Бауер</string>
-    <string name="persona_name_mauricio_august">Маурисио Август</string>
-    <string name="persona_name_miguel_garcia">Явор Костов</string>
-    <string name="persona_name_mona_kane">Тана Кейн</string>
-    <string name="persona_name_robin_counts">Брой червеношийки</string>
-    <string name="persona_name_robert_tolbert">Роберт Толбърт</string>
+    <string name="persona_name_mauricio_august">Маурисио Огъст</string>
+    <string name="persona_name_miguel_garcia">Мигел Гарсия</string>
+    <string name="persona_name_mona_kane">Мона Кейн</string>
+    <string name="persona_name_robin_counts">Робин Каунтс</string>
+    <string name="persona_name_robert_tolbert">Робърт Толбърт</string>
     <string name="persona_name_tim_deboer">Тим Дибоер</string>
-    <string name="persona_name_wanda_howard">Уанда Хауард</string>
+    <string name="persona_name_wanda_howard">Уанда Хауърд</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Дизайнер</string>
     <string name="persona_subtitle_engineer">Инженер</string>
     <string name="persona_subtitle_manager">Ръководител</string>
     <string name="persona_subtitle_researcher">Изследване</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (пример за дълъг текст за тестване на отрязване)</string>
-    <string name="persona_view_description_xxlarge">Аватар на XXLarge с три реда текст</string>
+    <string name="persona_truncation">\ (дълъг текстов пример за тестване на отрязването)</string>
+    <string name="persona_view_description_xxlarge">Аватар с размер XXLarge с три реда текст</string>
     <string name="persona_view_description_large">Голям аватар с два реда текст</string>
     <string name="persona_view_description_small">Малък аватар с един ред текст</string>
     <string name="people_picker_hint">Няма с показано подсказване</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Чип с дезактивирана персона</string>
+    <string name="persona_chip_example_disabled">Дезактивиран чип на персона</string>
     <!-- UI label showing a error persona chip -->
     <string name="persona_chip_example_error">Грешка в чипа за персона</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Икона на персона без затварящ край</string>
+    <string name="persona_chip_example_no_icon">Икона на чип на персона без затваряне</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Чип за основна персона</string>
+    <string name="persona_chip_example_basic">Основен чип персона</string>
     <!-- UI label showing user action click on a selected persona chip -->
     <string name="persona_chip_example_click">Щракнали сте върху избран чип за персона.</string>
 
@@ -528,13 +528,13 @@
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_outside">Уведомяване извън работно време</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Известяване, когато е неактивно на работния плот</string>
+    <string name="popup_menu_item_notify_inactive">Уведомяване при неактивност на работния плот</string>
     <!-- UI message for user action clicked on an item in popup menu -->
     <string name="popup_menu_item_clicked">Щракнахте върху елемента:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">Просто меню</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Просто меню 2</string>
+    <string name="popup_menu_simple_duo">Просто меню2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">Меню с един избираем елемент и разделител</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
@@ -546,10 +546,10 @@
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">Кръгов напредък</string>
     <string name="circular_progress_xsmall">XSmall</string>
-    <string name="circular_progress_xsmall_size">20 dp</string>
-    <string name="circular_progress_small">Малко</string>
-    <string name="circular_progress_small_size">24 dp</string>
-    <string name="circular_progress_medium">Среден</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Малка</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Средна</string>
     <string name="circular_progress_medium_size">36dp</string>
     <string name="circular_progress_large">Голяма</string>
     <string name="circular_progress_large_size">44dp</string>
@@ -559,7 +559,7 @@
     <!-- UI label showing a Indeterminate progress bar -->
     <string name="linear_progress_indeterminate_label">Неопределено</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">С детерминанта</string>
+    <string name="linear_progress_determinate_label">Определен</string>
 
 
     <!--Shared-->
@@ -569,50 +569,50 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">ЛентаЗаТърсене</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Обратно повикване от микрофона</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Автокоригиране</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Натиснат микрофон</string>
     <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">Натиснат десен изглед</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Натиснато търсене на клавиатура</string>
+    <string name="searchbar_keyboard_search_pressed">Натиснато търсене на клавиатурата</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Действие</string>
     <string name="snackbar_action_long">Дълго текстово действие</string>
-    <string name="snackbar_single_line">Похапка с една линия</string>
+    <string name="snackbar_single_line">Лента за предупреждение с единична линия</string>
     <string name="snackbar_multiline">Това е панел за закуска с много редове. Максималният брой редове е зададен на два, а останалата част от текста ще се закръгли.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">Това е лента за закуска за съобщения. Използва се за комуникация на нови функции.</string>
-    <string name="snackbar_primary">Това е основна закуска.</string>
-    <string name="snackbar_light">Това е лека закуска.</string>
-    <string name="snackbar_warning">Това е предупредителна похапка.</string>
-    <string name="snackbar_danger">Това е опасна похапка.</string>
+    <string name="snackbar_primary">Това е основно предупреждение.</string>
+    <string name="snackbar_light">Това е малко предупреждение.</string>
+    <string name="snackbar_warning">Това е лента за предупреждение.</string>
+    <string name="snackbar_danger">Това е лента за предупреждение.</string>
     <string name="snackbar_description_single_line">Кратка продължителност</string>
-    <string name="snackbar_description_single_line_custom_view">Дълго времетраене с кръгов напредък като малък изглед по избор</string>
+    <string name="snackbar_description_single_line_custom_view">Дълга продължителност с кръгов напредък като малък изглед по избор</string>
     <string name="snackbar_description_single_line_action">Кратка продължителност с действие</string>
     <string name="snackbar_description_single_line_action_custom_view">Кратка продължителност с действие и среден изглед по избор</string>
     <string name="snackbar_description_single_line_custom_text_color">Кратка продължителност с персонализиран цвят на текста</string>
     <string name="snackbar_description_multiline">Дълга продължителност</string>
-    <string name="snackbar_description_multiline_custom_view">Дълго времетраене с малък изглед по избор</string>
+    <string name="snackbar_description_multiline_custom_view">Дълга продължителност с малък изглед по избор</string>
     <string name="snackbar_description_multiline_action">Неопределена продължителност с актуализации на действието и текста</string>
     <string name="snackbar_description_multiline_action_custom_view">Кратка продължителност с действие и среден изглед по избор</string>
-    <string name="snackbar_description_multiline_action_long">Кратка продължителност с дълъг текст за действие</string>
+    <string name="snackbar_description_multiline_action_long">Кратка продължителност с текст с дълго действие</string>
     <string name="snackbar_description_announcement">Кратка продължителност</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Този текст е актуализиран.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Показване на лентата за закуска</string>
+    <string name="snackbar_button_show">Показване на лентата за предупреждение</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Единична линия</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Мултилиния</string>
+    <string name="snackbar_headline_multiline">Многоредова</string>
     <!-- UI Text denoting Announcement style snackbar -->
-    <string name="snackbar_headline_announcement_style">Стил на обявлението</string>
+    <string name="snackbar_headline_announcement_style">Стил на обявления</string>
     <!-- UI Text denoting Primary style snackbar -->
     <string name="snackbar_headline_primary_style">Основен стил</string>
     <!-- UI Text denoting Light style snackbar -->
@@ -641,7 +641,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Хоризонтално</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(без текст)</string>
+    <string name="tabBar_no_text">Няма текст</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Елементи на раздел</string>
 
@@ -658,7 +658,7 @@
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Стандартен раздел 2-сегмент</string>
+    <string name="tab_standard_two_segment">Стандартен раздел с 2 сегмента</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
     <string name="tab_standard_three_segment">Стандартен табулатор с 3 сегмента</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
@@ -666,9 +666,9 @@
     <!-- Text for button that shows a Standard Tab with pager -->
     <string name="tab_standard_with_pager">Стандартен раздел с пейджър</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Превключване на раздел</string>
+    <string name="tab_switch">Превключване на раздела</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Раздел "Раздели" </string>
+    <string name="tab_pills">Раздел "Капсули" </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
@@ -676,33 +676,33 @@
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
     <string name="tooltip_calendar_demo_button">Докоснете за пояснение за календар по избор</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Пояснение за цвят по избор</string>
+    <string name="tooltip_custom_button">Докоснете пояснение за цвят по избор</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Докоснете за отхвърляне на вътрешно пояснение</string>
+    <string name="tooltip_center_button">Докоснете за изключване на вътрешното пояснение</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
     <string name="tooltip_custom_view">Докоснете за пояснение за изглед по избор</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_top_start_message">Пояснение за цвят по избор</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Пояснение в горния край с 10dp offsetX</string>
+    <string name="tooltip_top_end_message">Пояснение в долния край с 10dp offsetX</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Пояснение за долен старт</string>
+    <string name="tooltip_bottom_start_message">Пояснение долу за старт</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Пояснение в долния край с 10dp изместванеY</string>
+    <string name="tooltip_bottom_end_message">Пояснение в долния край с 10dp offsetY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Отхвърляне на вътрешното пояснение</string>
+    <string name="tooltip_center_message">Изключване на вътрешното пояснение</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Екранното пояснение е отхвърлено</string>
+    <string name="tooltip_dismiss_message">Пояснението е отхвърлено</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Заглавието е светло 28 ч.</string>
+    <string name="headline">Заглавието е Light 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">Заглавие 1 е medium 20sp</string>
+    <string name="title_1">Заглавие 1 е Medium 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
     <string name="title_2">Заглавие 2 е Regular 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Заглавието е regular 18sp</string>
+    <string name="heading">Заглавието е Regular 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
     <string name="subheading_1">Подзаглавие 1 е Regular 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
@@ -710,8 +710,8 @@
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
     <string name="body_1">Основният текст 1 е Regular 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Тялото 2 е средно 14 ч./с</string>
+    <string name="body_2">Основният текст 2 е Medium 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Надписът е обикновен 12sp</string>
+    <string name="caption">Надписът е Regular 12sp</string>
 
 </resources>

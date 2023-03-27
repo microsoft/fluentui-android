@@ -1,14 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--SheetBehavior Address-->
-
-    <!-- Text for bottomsheet handle -->
-    <string name="drag_handle">Drag Handle</string>
-    <!-- onClick Label for bottomsheet to expand -->
-    <string name="expand">expand</string>
-    <!-- onClick Label for bottomsheet to collapse -->
-    <string name="collapse">collapse</string>
+  <string name="drag_handle">Drag Handle</string>
+  <string name="expand">expand</string>
+  <string name="collapse">collapse</string>
 </resources>

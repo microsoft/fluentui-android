@@ -13,32 +13,32 @@
     <string name="people_picker_search_progress">Duke kërkuar…</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s added</string>
-    <string name="people_picker_accessibility_persona_removed">%s hequr</string>
-    <string name="people_picker_accessibility_replaced">%s zëvendësuar,</string>
+    <string name="people_picker_accessibility_default_hint">Fut një emër ose email</string>
+    <string name="people_picker_accessibility_persona_added">%s u shtua</string>
+    <string name="people_picker_accessibility_persona_removed">%s u hoq</string>
+    <string name="people_picker_accessibility_replaced">%s u zëvendësua,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">Kliko</string>
     <string name="people_picker_accessibility_delete_persona">Fshi</string>
     <string name="people_picker_accessibility_deselect_persona">Anulo përzgjedhjen</string>
     <string name="people_picker_accessibility_select_persona">Përzgjedh</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Klikuar %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Des zgjidhet %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Klikoi %s</string>
+    <string name="people_picker_accessibility_deselected_persona">U anulua përzgjedhja e %s</string>
     <string name="people_picker_accessibility_selected_persona">U përzgjodh %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">Aktivizimi do të shmanget.</string>
-    <string name="people_picker_accessibility_delete_selected_persona">Aktivizimi do të eleminojë</string>
-    <string name="people_picker_accessibility_click_selected_persona">Aktivizimi do të klikojë</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, Aktivizimi do të anulojë përzgjedhjen</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Aktivizimi do të fshijë</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Aktivizimi do të klikojë</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Lista e sugjerimeve e hapur me %s person</item>
+        <item quantity="other">Lista e sugjerimeve e hapur me %s kontakte</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
         <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="other">%s njerëz</item>
     </plurals>
 </resources>

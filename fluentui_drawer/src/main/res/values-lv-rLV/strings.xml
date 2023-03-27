@@ -1,14 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--SheetBehavior Address-->
-
-    <!-- Text for bottomsheet handle -->
-    <string name="drag_handle">Vilkšanas turis</string>
-    <!-- onClick Label for bottomsheet to expand -->
-    <string name="expand">izvērst</string>
-    <!-- onClick Label for bottomsheet to collapse -->
-    <string name="collapse">sakļaut</string>
+  <string name="drag_handle">Vilkšanas turis</string>
+  <string name="expand">izvērst</string>
+  <string name="collapse">sakļaut</string>
 </resources>

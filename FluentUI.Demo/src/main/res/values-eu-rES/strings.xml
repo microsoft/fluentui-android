@@ -6,20 +6,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Erabiltzaile jariakoraren interfazearen erakustaldia</string>
-    <string name="app_title">Erabiltzaile jarioaren interfazea</string>
+    <string name="app_name">Fluent erabiltzaile-interfazearen demoa</string>
+    <string name="app_title">Fluent erabiltzaile-interfazea</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">%s hautatu da</string>
     <string name="app_modifiable_parameters">Parametro aldagarriak</string>
-    <string name="app_right_accessory_view">Eskuineko osagarrien bista</string>
+    <string name="app_right_accessory_view">Eskuineko osagarriaren ikuspegia</string>
 
     <string name="app_style">Estiloa</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">Ikono presionatua</string>
+    <string name="app_icon_pressed">Ikonoa sakatu da</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
-    <string name="actionbar_start_button">Demoari hasiera eman</string>
+    <string name="actionbar_start_button">Abiarazi demoa</string>
     <!-- Texts for radio buttons -->
     <string name="actionbar_carousel_radio_label">Menu birakaria</string>
     <string name="actionbar_icon_radio_label">Ikonoa</string>
@@ -30,42 +30,42 @@
     <!--UI Text view label denoting type of action bar -->
     <string name="actionbar_type_heading">Ekintza-barra mota</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">ActionBar-en jarrera</string>
+    <string name="actionbar_position_heading">Ekintza-barraren jarrera</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">AppBar estiloa</string>
+    <string name="app_bar_style">Aplikazio-barraren estiloa</string>
     <string name="app_bar_subtitle">Azpititulua</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Nabigazio-ikonoan klik egin da.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">Nabigazio-ikonoa sakatu da.</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Markatu</string>
     <string name="app_bar_layout_menu_settings">Ezarpenak</string>
     <string name="app_bar_layout_menu_search">Bilatu</string>
     <!-- UI Text that shows the type of scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Joan-etorrien portaera: %s</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Korritze-portaera: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">Joan-etorrien portaera txandakatzea</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Aldatu korritze-portaera</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Nabigazio-ikonoa txandakatzea</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Aldatu nabigazio-ikonoa</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">Erakutsi avatar</string>
+    <string name="app_bar_layout_show_avatar_button">Erakutsi avatarra</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Atzerapausoaren ikonoa erakutsi</string>
+    <string name="app_bar_layout_show_back_icon_button">Erakutsi atzera-ikonoa</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">Ezkutatu ikonoa</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">Erakutsi ikonoa</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Bilaketa-barraren diseinu-estiloa txandakatu</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Aldatu bilaketa-barraren diseinu-estiloa</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Ikuspegi osagarri gisa erakutsi</string>
-    <string name="app_bar_layout_searchbar_action_view_button">Ekintza-ikuspegi gisa erakutsi</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Erakutsi osagarri-ikuspegi gisa</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Erakutsi ekintza-ikuspegi gisa</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Gaien artean txandakatzea (jarduera birsortu)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">Aldatu gaien artean (jarduerak birsortzen ditu)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Aldatu gaia</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Elementua</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -74,32 +74,32 @@
     <!--AvatarView-->
     <!-- Style -->
     <string name="avatar_style_circle">Zirkulu-estiloa</string>
-    <string name="avatar_style_square">Estilo karratua</string>
+    <string name="avatar_style_square">Lauki-estiloa</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xxlarge">Oso-oso handia</string>
     <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">Handia</string>
     <string name="avatar_size_medium">Ertaina</string>
     <string name="avatar_size_small">Txikia</string>
-    <string name="avatar_size_xsmall">XSmall</string>
+    <string name="avatar_size_xsmall">Oso txikia</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Erakutsitako maximoa abatatu</string>
+    <string name="avatar_group_max_displayed_avatar">Gehienez erakutsitako avatar kopurua</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">Gainezkatze-gainezkatzeen zenbaketa</string>
+    <string name="avatar_group_overflow_avatar_count">Gainezka egindako avatar kopurua</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Ertz mota:</string>
+    <string name="avatar_group_border_type">Ertz mota</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">OverflowAvatarCount-ekin egindako gorabehera-taldea ez da ahalik eta gehien atxikiko.</string>
+    <string name="avatar_group_info">OverflowAvatarCount-ekin ezarritako avatar taldea ez da bistaratutako gehieneko avatar kopuruarekin bat etorriko.</string>
     <!-- UI label showing face stack type of avatar group -->
     <string name="avatar_group_face_stack">Aurpegi-pila</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">Aurpegi-pila</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Gainezka egin zuen eta klik egin zen</string>
+    <string name="avatar_group_overflow_clicked">Gainezkatzea sakatu da</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView indize %d klik egin da</string>
+    <string name="avatar_group_avatar_clicked">%d. avatar-ikuspegia sakatu da</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -119,10 +119,10 @@
     <string name="bottom_navigation_menu_item_calendar">Egutegia</string>
     <string name="bottom_navigation_menu_item_team">Taldea</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">Etiketak txandakatu</string>
-    <string name="bottom_navigation_three_menu_items_button">Menuko hiru elementu erakutsi</string>
-    <string name="bottom_navigation_four_menu_items_button">Menuko lau elementu erakutsi</string>
-    <string name="bottom_navigation_five_menu_items_button">Menuko bost elementu erakutsi</string>
+    <string name="bottom_navigation_toggle_labels_button">Aldatu etiketak</string>
+    <string name="bottom_navigation_three_menu_items_button">Erakutsi menuko hiru elementu</string>
+    <string name="bottom_navigation_four_menu_items_button">Erakutsi menuko lau elementu</string>
+    <string name="bottom_navigation_five_menu_items_button">Erakutsi menuko bost elementu</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
     <string name="bottom_navigation_accessibility_labels_state">Etiketak %s dira</string>
@@ -132,25 +132,25 @@
     <string name="bottom_sheet">Beheko orria</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">Lerro bakarreko elementuekin erakutsi</string>
-    <string name="bottom_sheet_with_double_line_items">Lerro bikoitzeko elementuekin erakutsi</string>
-    <string name="bottom_sheet_with_single_line_header">Lerro bakar baten buru erakutsi</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Lerro bikoitzeko buruarekin eta zatitzaileekin erakutsi</string>
+    <string name="bottom_sheet_with_single_line_items">Erakutsi lerro bakarreko elementuak</string>
+    <string name="bottom_sheet_with_double_line_items">Erakutsi lerro bikoitzeko elementuekin</string>
+    <string name="bottom_sheet_with_single_line_header">Erakutsi lerro bakarreko goiburua</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Erakutsi lerro bikoitzeko goiburuarekin eta zatitzaileekin</string>
     <string name="bottom_sheet_dialog_button">Erakutsi</string>
     <string name="drawer_content_desc_collapse_state">Zabaldu</string>
     <string name="drawer_content_desc_expand_state">Ikonotu</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Egin klik %s</string>
+    <string name="contextual_command_prompt_click_item">Sakatu %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">Egin klik luze %s</string>
+    <string name="contextual_command_prompt_long_click_item">Sakatu luze %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Sakatu baztertzeko aukera</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Txertatu elementua</string>
     <!-- Text for button for updating an item-->
-    <string name="contextual_command_update_item">Eguneratze-elementua</string>
+    <string name="contextual_command_update_item">Eguneratu elementua</string>
     <!-- Announces dismiss action -->
     <string name="contextual_command_accessibility_dismiss">Baztertu</string>
     <!-- Announces add action -->
@@ -170,45 +170,45 @@
     <!-- Announces redo action -->
     <string name="contextual_command_accessibility_redo">Berregin</string>
     <!-- Announces bullet action -->
-    <string name="contextual_command_accessibility_bullet">Buleta </string>
+    <string name="contextual_command_accessibility_bullet">Buleta</string>
     <!-- Announces list action -->
     <string name="contextual_command_accessibility_list">Zerrenda</string>
     <!-- Announces link action -->
     <string name="contextual_command_accessibility_link">Esteka</string>
     <!-- UI Label denoting item updating -->
-    <string name="contextual_command_bar_item_update_title">Artikuluak eguneratzea</string>
+    <string name="contextual_command_bar_item_update_title">Elementua eguneratzen</string>
     <!-- UI Label denoting spacing -->
     <string name="contextual_command_bar_space_title">Tartea</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">Posizioa baztertu</string>
+    <string name="contextual_command_bar_dismiss_position">Baztertu posizioa</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">HASI</string>
     <!-- Radio button label END -->
     <string name="contextual_command_bar_dismiss_position_end">END</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">Taldeentzako espazioa</string>
+    <string name="contextual_command_bar_group_space_title">Taldeen arteko espazioa</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">Artikuluaren espazioa</string>
+    <string name="contextual_command_bar_item_space_title">Elementuaren espazioa</string>
     <!-- UI bar label denoting the space in number value dp's -->
-    <string name="contextual_command_bar_space_value">dp %d</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">Markatu</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Klik egiteko elementua markatzea</string>
+    <string name="bottom_sheet_item_flag_toast">Salatzeko elementua sakatu da</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Erantzun</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Erantzun-elementua, zeinetan klik egin den</string>
+    <string name="bottom_sheet_item_reply_toast">Erantzuteko elementua sakatu da</string>
     <!--UI Label for item forward-->
-    <string name="bottom_sheet_item_forward_title">Aurreratu</string>
+    <string name="bottom_sheet_item_forward_title">Birbidali</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Klik egiteko elementua berriro bidali</string>
+    <string name="bottom_sheet_item_forward_toast">Birbidaltzeko elementua sakatu da</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Ezabatu</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Klik egiteko elementua ezabatzea</string>
+    <string name="bottom_sheet_item_delete_toast">Ezabatzeko elementua sakatu da</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatarra</string>
     <!--Double line items-->
@@ -217,13 +217,13 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Atera argazki bat</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Kameraren elementuan klik egin da</string>
+    <string name="bottom_sheet_item_camera_toast">Kamera-elementua sakatu da</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Galeria</string>
     <!--UI description label view your photos-->
-    <string name="bottom_sheet_item_gallery_subtitle">Ikusi zure argazkiak</string>
+    <string name="bottom_sheet_item_gallery_subtitle">Ikusi argazkiak</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Galeriako elementuan klik egin da</string>
+    <string name="bottom_sheet_item_gallery_toast">Galeria-elementua sakatu da</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Bideoak</string>
     <!--UI description label play your videos -->
@@ -233,9 +233,9 @@
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Kudeatu</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">Multimedia liburutegia administratzea</string>
+    <string name="bottom_sheet_item_manage_subtitle">Kudeatu multimedia-liburutegia</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Klik egiteko elementua administratzea</string>
+    <string name="bottom_sheet_item_manage_toast">Kudeatzeko elementua sakatu da</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">Posta elektronikoaren ekintzak</string>
@@ -243,48 +243,48 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Dokumentuak</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Azken eguneratzea 2: 14PM</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Azken eguneratzea: 14:14</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Partekatu</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Klik egiteko elementua partekatzea</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Partekatzeko elementua sakatu da</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Eraman</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Klik egiteko elementua mugitzea</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Mugitzeko elementua sakatu da</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Ezabatu</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Klik egiteko elementua ezabatzea</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Ezabatzeko elementua sakatu da</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Informazioa</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Klik egin den informazio-elementua</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Informazio-elementua sakatu da</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Erlojua</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Erloju-elementua, non klik egin den</string>
+    <string name="bottom_sheet_item_clock_toast">Erloju-elementua sakatu da</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Alarma</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Klik egin da alarma-elementuan</string>
+    <string name="bottom_sheet_item_alarm_toast">Alarma-elementua sakatu da</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Ordu-zona</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Klik egin den ordu-eremuko elementua</string>
+    <string name="bottom_sheet_item_time_zone_toast">Ordu-zonaren elementua sakatu da</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Botoia</string>
-    <string name="buttonbar">Botoi barra</string>
+    <string name="buttonbar">Botoi-barra</string>
     <string name="button_disabled">Desgaitutako botoia</string>
     <string name="button_borderless">Ertzik gabeko botoia</string>
-    <string name="button_borderless_disabled">Ertzik gabeko botoi desaktibatua</string>
+    <string name="button_borderless_disabled">Ertzik gabeko botoi desgaitua</string>
     <string name="button_large">Botoi handia</string>
     <string name="button_large_disabled">Desgaitutako botoi handia</string>
-    <string name="button_outlined">Delineatutako botoia</string>
-    <string name="button_outlined_disabled">Delineatutako botoi desgaitua</string>
+    <string name="button_outlined">Inguruko lerroa duen botoia</string>
+    <string name="button_outlined_disabled">Inguruko lerroa duen botoi desgaitua</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Aukeratu data</string>
@@ -295,15 +295,15 @@
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Data bakarra</string>
     <!-- UI label -->
-    <string name="date_time_picker_date_picked_default">Ez datarik</string>
+    <string name="date_time_picker_date_picked_default">Ez da hautatu datarik</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Show date picker</string>
+    <string name="date_time_picker_date_button">Erakutsi data-hautatzailea</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Aukeratutako data eta orduaren selektorea erakutsi</string>
+    <string name="date_time_picker_calendar_date_time_button">Erakutsi data eta orduaren hautatzailea, dataren fitxa hautatuta</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Aukeratutako ordu-betilearekin data eta ordua hautatuta erakutsi</string>
+    <string name="date_time_picker_date_time_calendar_button">Erakutsi data eta orduaren hautatzailea, orduaren fitxa hautatuta</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Data eta ordua hautatu</string>
+    <string name="date_time_picker_date_time_button">Erakutsi data eta orduaren hautatzailea</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Data-bitartea</string>
     <!-- UI label showing start of the range-->
@@ -311,115 +311,115 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Amaiera:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Ez da hasierarik aukeratu</string>
+    <string name="date_time_picker_date_start_picked_default">Ez da hautatu hasierarik</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">Aukeratutako amaierarik gabe</string>
+    <string name="date_time_picker_date_end_picked_default">Ez da hautatu amaierarik</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">Hautatu hasiera-data</string>
     <!-- text for button that selects end date -->
     <string name="date_time_picker_date_end_button">Hautatu amaiera-data</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">Data eta ordu-tartea</string>
+    <string name="date_time_picker_date_time_range_title">Data- eta ordu-tartea</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Hautatu data- eta ordu-tartea</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Elkarrizketa-koadroa erakutsi</string>
+    <string name="date_time_picker_dialog_button">Erakutsi elkarrizketa-koadroa</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
-    <string name="drawer_button">Kajoia erakutsi</string>
+    <string name="drawer_button">Erakutsi tiradera</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">Kaxoiaren elkarrizketa-koadroa erakutsi</string>
+    <string name="drawer_dialog_button">Erakutsi tiraderaren elkarrizketa-koadroa</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Beheko urtu gabeko elkarrizketa-koadroa</string>
+    <string name="no_fade_bottom_dialog_button">Ez iraungi beheko elkarrizketa-koadroa</string>
     <!-- text for button that shows top drawer -->
-    <string name="drawer_top_dialog_button">Goiko kajoia erakutsi</string>
+    <string name="drawer_top_dialog_button">Erakutsi goiko tiradera</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Goi-mailako elkarrizketa-koadroa desagertu gabe</string>
+    <string name="no_fade_top_dialog_button">Ez iraungi goiko elkarrizketa-koadroa</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> Elkarrizketa-koadroa Goi-mailako ainguratze-ikuspegia erakutsi</string>
+    <string name="anchor_view_top_dialog_button"> Erakutsi aingura-ikuspegiko goiko elkarrizketa-koadroa</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Tituluko goi-mailako elkarrizketa-koadrorik erakustea</string>
+    <string name="no_title_top_dialog_button"> Ez erakutsi izenbururik goiko elkarrizketa-koadroan</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Tituluaren goiko elkarrizketa-koadroaren azpian erakustea</string>
+    <string name="below_title_top_dialog_button"> Erakutsi tituluaren goiko elkarrizketa-koadroaren azpian</string>
     <!-- text for button that shows right drawer -->
-    <string name="drawer_right_dialog_button">Eskuineko kajoia erakutsi</string>
+    <string name="drawer_right_dialog_button">Erakutsi eskuineko tiradera</string>
     <!-- text for button that shows left drawer -->
-    <string name="drawer_left_dialog_button">Ezkerreko kaxoia erakutsi</string>
+    <string name="drawer_left_dialog_button">Erakutsi ezkerreko tiradera</string>
 
     <!--ListItem-->
     <!-- Title -->
-    <string name="list_item_title">Titulua, testu nagusia</string>
+    <string name="list_item_title">Izenburua, testu nagusia</string>
     <!-- subtitle -->
     <string name="list_item_subtitle">Azpititulua, bigarren mailako testua</string>
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">Azpititulu pertsonalizatuen testua</string>
     <!-- Footer -->
-    <string name="list_item_footer">Orrialde-oina, hirugarren testua</string>
+    <string name="list_item_footer">Orri-oina, hirugarren mailako testua</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">Buru-buru griseko testua duen lerro bakarraren zerrenda</string>
-    <string name="list_item_sub_header_two_line">Bi lerroen zerrenda</string>
-    <string name="list_item_sub_header_two_line_dense">Espaziatu deskontsudun bi lerroen zerrenda</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Bigarren mailako azpititulu pertsonalizatuak dituzten bi lerroen zerrenda</string>
-    <string name="list_item_sub_header_three_line">Azpibezatu beltzeko testua duten hiru lerroen zerrenda</string>
-    <string name="list_item_sub_header_no_custom_views">Ikusmen pertsonalizaturik gabeko elementuak erakutsi</string>
-    <string name="list_item_sub_header_large_header">Zerrendako elementuak, ikuspegi pertsonalizatu handiak dituztenak</string>
-    <string name="list_item_sub_header_wrapped_text">Zerrendako elementuak testu doituarekin</string>
-    <string name="list_item_sub_header_truncated_text">Testu trunkatua duten zerrendako elementuak</string>
+    <string name="list_item_sub_header_single_line">Lerro bakarreko zerrenda azpigoiburuko testu grisarekin</string>
+    <string name="list_item_sub_header_two_line">Bi lerroko zerrenda</string>
+    <string name="list_item_sub_header_two_line_dense">Bi lerroko zerrenda tartekatze lodiarekin</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Bi lerroko zerrenda, bigarren mailako azpititulu-ikuspegi pertsonalizatu batekin</string>
+    <string name="list_item_sub_header_three_line">Hiru lerroko zerrenda, azpigoiburuko testu beltzarekin</string>
+    <string name="list_item_sub_header_no_custom_views">Ikuspegi pertsonalizaturik gabeko zerrenda-elementuak</string>
+    <string name="list_item_sub_header_large_header">Ikuspegi pertsonalizatuak dituzten zerrenda-elementuak</string>
+    <string name="list_item_sub_header_wrapped_text">Doitutako testua duten zerrenda-elementuak</string>
+    <string name="list_item_sub_header_truncated_text">Testu moztua duten zerrenda-elementuak</string>
     <string name="list_item_sub_header_custom_accessory_text">Ekintza</string>
-    <string name="list_item_truncation_middle">Trunkamendu ertaina.</string>
-    <string name="list_item_truncation_end">Trunkamenduaren amaiera.</string>
-    <string name="list_item_truncation_start">Hasi trunkamendua.</string>
+    <string name="list_item_truncation_middle">Mozketa ertaina.</string>
+    <string name="list_item_truncation_end">Mozketaren amaiera.</string>
+    <string name="list_item_truncation_start">Hasi mozketa.</string>
     <string name="list_item_custom_text_view">Balioa</string>
-    <string name="list_item_click">Zerrendako elementuan klik egin du.</string>
-    <string name="list_item_click_custom_accessory_view">Osagarri pertsonalizatuen bistan klik egin zuen.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Buru-buruko osagarri pertsonalizatuen bistan klik egin zuen.</string>
+    <string name="list_item_click">Zerrenda-elementu bat sakatu duzu.</string>
+    <string name="list_item_click_custom_accessory_view">Osagai pertsonalizatuaren ikuspegia sakatu duzu.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Azpigoiburuaren osagai pertsonalizatuaren ikuspegia sakatu duzu.</string>
     <string name="list_item_more_options">Aukera gehiago</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Hautatu</string>
-    <string name="people_picker_select_deselect_example">HautatuDeselect</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">Bat ere ez</string>
     <string name="people_picker_delete_example">Ezabatu</string>
     <string name="people_picker_custom_persona_description">Adibide honetan, IPersona objektu pertsonalizatu bat nola sortu erakusten da.</string>
-    <string name="people_picker_dialog_title_removed">Pertsona bat ezabatu duzu:</string>
-    <string name="people_picker_dialog_title_added">Pertsona bat erantsi zenuen:</string>
-    <string name="people_picker_drag_started">Hasitako arrasketa</string>
-    <string name="people_picker_drag_ended">Amaitutako arrastrea</string>
-    <string name="people_picker_picked_personas_listener">Entzuleak</string>
-    <string name="people_picker_suggestions_listener">Iradokizunak</string>
-    <string name="people_picker_persona_chip_click">Klik egin zenuen %s</string>
+    <string name="people_picker_dialog_title_removed">Ezaugarri pertsonal bat kendu duzu:</string>
+    <string name="people_picker_dialog_title_added">Ezaugarri pertsonal bat gehitu duzu:</string>
+    <string name="people_picker_drag_started">Arrastatzen hasi da</string>
+    <string name="people_picker_drag_ended">Arrastatzen amaitu da</string>
+    <string name="people_picker_picked_personas_listener">Ezaugarri pertsonalen entzulea</string>
+    <string name="people_picker_suggestions_listener">Iradokizunen entzulea</string>
+    <string name="people_picker_persona_chip_click">%s sakatu duzu</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">hartzaile %1$s</item>
+        <item quantity="other">%1$s hartzaile</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Beheko orri iraunkorra zabaltzea</string>
-    <string name="collapse_persistent_sheet_button"> Ezkutatu beheko hosto iraunkorra</string>
-    <string name="show_persistent_sheet_button"> Beheko hosto iraunkorra erakutsi</string>
-    <string name="new_view">Hau bista berri bat da</string>
-    <string name="toggle_sheet_content">Beheko orriaren edukia txandakatu</string>
-    <string name="switch_to_custom_content">Eduki pertsonalizatura aldatzea</string>
-    <string name="one_line_content">Lerro baten beheko orriaren edukia</string>
-    <string name="toggle_disable_all_items">Elementu guztiak desgaitzea</string>
+    <string name="expand_bottom_sheet_button">Zabaldu beheko orri iraunkorra</string>
+    <string name="collapse_persistent_sheet_button"> Ezkutatu beheko orri iraunkorra</string>
+    <string name="show_persistent_sheet_button">Erakutsi beheko orri iraunkorra</string>
+    <string name="new_view">Ikuspegi berri bat da hau</string>
+    <string name="toggle_sheet_content">Txandakatu beheko orriaren edukia</string>
+    <string name="switch_to_custom_content">Aldatu eduki pertsonalizatura</string>
+    <string name="one_line_content">Lerro bateko beheko orriko edukia</string>
+    <string name="toggle_disable_all_items">Desaktibatu elementu guztiak</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">Gaineratu edo begiak kendu</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> Altuera aldatu</string>
+    <string name="persistent_sheet_item_add_remove_view">Gehitu/Kendu ikuspegia</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Aldatu altuera tolestua</string>
     <string name="persistent_sheet_item_create_new_folder_title">Karpeta berria</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Karpeta Berria elementuan klik egin da</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Karpeta berriaren elementua sakatu da</string>
     <string name="persistent_sheet_item_edit_title">Editatu</string>
-    <string name="persistent_sheet_item_edit_toast">Klik egiteko elementua editatzea</string>
+    <string name="persistent_sheet_item_edit_toast">Editatzeko elementua sakatu da</string>
     <string name="persistent_sheet_item_save_title">Gorde</string>
-    <string name="persistent_sheet_item_save_toast">Klik egiteko elementua gorde</string>
+    <string name="persistent_sheet_item_save_toast">Gordetzeko elementua sakatu da</string>
     <string name="persistent_sheet_item_zoom_in_title">Handiagotu</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Klik egin den elementua hurbildu</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Handiagotzeko elementua sakatu da</string>
     <string name="persistent_sheet_item_zoom_out_title">Txikiagotu</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Klik egiteko elementua urrundu</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Txikiagotzeko elementua sakatu da</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -454,8 +454,8 @@
     <string name="persona_name_allan_munger">Allan Munger</string>
     <string name="persona_name_amanda_brady">Amanda Brady</string>
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
-    <string name="persona_name_carlos_slattery">Oier Lexarreta</string>
-    <string name="persona_name_carole_poland">Carole Polonia</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
     <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
@@ -473,10 +473,10 @@
     <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
     <string name="persona_name_mauricio_august">Mauricio Agosto</string>
-    <string name="persona_name_miguel_garcia">Aitor Atxabalgoitia</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
     <string name="persona_name_mona_kane">Mona Kane</string>
     <string name="persona_name_robin_counts">Robin Counts</string>
-    <string name="persona_name_robert_tolbert">Roberto Tolbert</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
     <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
@@ -485,23 +485,23 @@
     <string name="persona_subtitle_manager">Arduraduna</string>
     <string name="persona_subtitle_researcher">Ikertzailea</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (testu luzearen adibidea trunkamendua frogatzeko)</string>
-    <string name="persona_view_description_xxlarge">Avatar XXLarge hiru testu-ildorekin</string>
-    <string name="persona_view_description_large">Bi testu-lerro dituen avatar handia</string>
-    <string name="persona_view_description_small">Testu-lerro batekin avatar txiki bat</string>
-    <string name="people_picker_hint">Erakutsitako iradokizunik ez</string>
+    <string name="persona_truncation">\ (etena probatzeko testu luzearen adibidea)</string>
+    <string name="persona_view_description_xxlarge">Avatar oso-oso handia testuzko hiru lerrorekin</string>
+    <string name="persona_view_description_large">Abatar handia, bi testu-lerrorekin</string>
+    <string name="persona_view_description_small">Avatar txikia testu-lerro batekin</string>
+    <string name="people_picker_hint">Ez da erakusten adierazlea duen inor</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Pertsona desgaituaren txipa</string>
+    <string name="persona_chip_example_disabled">Ezaugarri pertsonalaren txip desgaitua</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Errorea Chip Pertsona</string>
+    <string name="persona_chip_example_error">Ezaugarri pertsonalaren errorea erakusten duen txipa</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Ixteko ikonorik ez duen pertsonaren txipa</string>
+    <string name="persona_chip_example_no_icon">Ixteko ikonorik ez duen ezaugarri pertsonalaren txipa</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Pertsonaren oinarrizko txipa</string>
+    <string name="persona_chip_example_basic">Oinarrizko ezaugarri pertsonal txipa</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Klik egin duzu aukeratutako Txip Pertsona batean.</string>
+    <string name="persona_chip_example_click">Ezaugarri pertsonalaren txip hautatu bat sakatu duzu.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -515,7 +515,7 @@
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">Ireki arakatzailean</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">Menu hau, alinea sortzen ari da. Gehieneko lerroak bitan ezartzen dira, testuaren gainerakoa trunkatuko da.
+    <string name="popup_menu_item_multiline">Lerro anitzeko laster-menu bat hau, gehieneko lerro kopurua bi da, gainerako testua moztu egingo da.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">Albiste guztiak</string>
@@ -526,36 +526,36 @@
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">Lan-ordutegitik kanpo jakinaraztea</string>
+    <string name="popup_menu_item_notify_outside">Jakinarazi lanorduetatik kanpo</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Idazmahaian inaktiboa denean jakinaraztea</string>
+    <string name="popup_menu_item_notify_inactive">Jakinarazi mahaigainean inaktibo egotean</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">Elementuan klik egin duzu:</string>
+    <string name="popup_menu_item_clicked">Elementu hau sakatu duzu:</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple">Menua</string>
+    <string name="popup_menu_simple">Menu sinplea</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Menu sinplea2</string>
+    <string name="popup_menu_simple_duo">Menu2 sinplea</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">Menua elementu aukeragarri batekin eta zatitzaile batekin</string>
+    <string name="popup_menu_single_check">Elementu hautagarri bat eta zatitzaile bat duen menua</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">Menua elementu aukeragarri, ikono eta testu luze guztiekin</string>
+    <string name="popup_menu_all_check">Menua, hauta daitezkeen elementu guztiekin, ikonoekin eta azalpen-testuarekin</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">Erakutsi</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">Aurrerapen zirkularra</string>
-    <string name="circular_progress_xsmall">XSmall</string>
-    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_xsmall">Oso txikia</string>
+    <string name="circular_progress_xsmall_size">20 dp</string>
     <string name="circular_progress_small">Txikia</string>
-    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_small_size">24 dp</string>
     <string name="circular_progress_medium">Ertaina</string>
-    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_medium_size">36 dp</string>
     <string name="circular_progress_large">Handia</string>
-    <string name="circular_progress_large_size">44dp</string>
+    <string name="circular_progress_large_size">44 dp</string>
     <!-- UI label showing a linear progress bar -->
     <string name="linear_progress">Aurrerapen lineala</string>
-    <string name="linear_progress_size">4dp</string>
+    <string name="linear_progress_size">4 dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
     <string name="linear_progress_indeterminate_label">Zehaztugabea</string>
     <!-- UI label showing a Determinate progress bar -->
@@ -571,61 +571,61 @@
     <!--SearchBar-->
     <string name="searchbar">Bilaketa-barra</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">Mikrofonoaren deia itzultzea</string>
+    <string name="searchbar_microphone_callback">Mikrofono bidezko atzeradeia</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Zuzenketa automatikoa</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">Mikrofono presionatua</string>
+    <string name="searchbar_microphone_pressed">Mikrofonoa sakatuta</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">Presioatuta ikusita</string>
+    <string name="searchbar_right_view_pressed">Prentsatutako eskuineko bista</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Presioatutako teklatuaren bilaketa</string>
+    <string name="searchbar_keyboard_search_pressed">Bilaketa sakatuaren teklatua</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Ekintza</string>
     <string name="snackbar_action_long">Testu luzeko ekintza</string>
     <string name="snackbar_single_line">Lerro bakarreko Snackbar</string>
-    <string name="snackbar_multiline">Hau snackbar multilineoa da. Gehieneko lerroak bitan ezartzen dira, testuaren gainerakoa trunkatuko da.
+    <string name="snackbar_multiline">Hau lerro anitzeko snackbar bat da. Gehieneko lerroak bitan finkatzen dira, testuaren gainerakoa trunkatu egingo da.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">Iragarki snackbar bat da hau. Ezaugarri berriak komunikatzeko erabiltzen da.</string>
+    <string name="snackbar_announcement">Iragarki barra bat da. Funtzio berriak komunikatzeko erabiltzen da.</string>
     <string name="snackbar_primary">Hau snackbar nagusia da.</string>
     <string name="snackbar_light">Hau snackbar arina da.</string>
-    <string name="snackbar_warning">Abisu snackbar bat da hau.</string>
-    <string name="snackbar_danger">Hau snackbar arriskutsua da.</string>
+    <string name="snackbar_warning">Abisu bat duen snackbar bat da hau.</string>
+    <string name="snackbar_danger">Arrisku baten emateko snackbar bat da hau.</string>
     <string name="snackbar_description_single_line">Iraupen laburra</string>
-    <string name="snackbar_description_single_line_custom_view">Iraupen luzea, aurrerapen zirkularra, ikuspegi pertsonalizatu txiki gisa</string>
+    <string name="snackbar_description_single_line_custom_view">Iraupen luzea, ikuspegi pertsonalizatu txiki gisako aurrerapen zirkularrarekin</string>
     <string name="snackbar_description_single_line_action">Iraupen laburra ekintzarekin</string>
-    <string name="snackbar_description_single_line_action_custom_view">Iraupen laburra, ekintza eta ikusmen pertsonalizatu ertainarekin</string>
+    <string name="snackbar_description_single_line_action_custom_view">Iraupen laburra, ekintza batekin eta ikuspegi pertsonalizatu ertainarekin</string>
     <string name="snackbar_description_single_line_custom_text_color">Iraupen laburra, testu-kolore pertsonalizatuarekin</string>
     <string name="snackbar_description_multiline">Iraupen luzea</string>
     <string name="snackbar_description_multiline_custom_view">Iraupen luzea, ikuspegi pertsonalizatu txiki batekin</string>
     <string name="snackbar_description_multiline_action">Iraupen mugagabea, ekintzekin eta testu-eguneratzeekin</string>
-    <string name="snackbar_description_multiline_action_custom_view">Iraupen laburra, ekintza eta ikusmen pertsonalizatu ertainarekin</string>
+    <string name="snackbar_description_multiline_action_custom_view">Iraupen laburra, ekintza batekin eta ikuspegi pertsonalizatu ertainarekin</string>
     <string name="snackbar_description_multiline_action_long">Iraupen laburra, ekintza luzeko testuarekin</string>
     <string name="snackbar_description_announcement">Iraupen laburra</string>
-    <string name="snackbar_description_updated">Testu hau eguneratu egin dute.</string>
+    <string name="snackbar_description_updated">Testu hau eguneratu egin da.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Snackbar erakutsi</string>
+    <string name="snackbar_button_show">Erakutsi Snackbar</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Lerro bakarra</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">Lerro anitz</string>
     <!-- UI Text denoting Announcement style snackbar -->
-    <string name="snackbar_headline_announcement_style">Iragarki-estiloa</string>
+    <string name="snackbar_headline_announcement_style">Iragarpen-estiloa</string>
     <!-- UI Text denoting Primary style snackbar -->
-    <string name="snackbar_headline_primary_style">Estilo primarioa</string>
+    <string name="snackbar_headline_primary_style">Estilo nagusia</string>
     <!-- UI Text denoting Light style snackbar -->
-    <string name="snackbar_headline_light_style">Estilo arina</string>
+    <string name="snackbar_headline_light_style">Estilo argia</string>
     <!-- UI Text denoting Warning stylee snackbar -->
-    <string name="snackbar_headline_warning_style">Ohartarazpen-estiloa</string>
+    <string name="snackbar_headline_warning_style">Abisuaren estiloa</string>
     <!-- UI Text denoting Danger style snackbar -->
     <string name="snackbar_headline_danger_style">Arrisku-estiloa</string>
 
     <!-- TabBar-->
     <!-- UI labels -->
     <!-- text for tabbar home tab -->
-    <string name="tabBar_home">Hasiera</string>
+    <string name="tabBar_home">Etxea</string>
     <!-- text for tabbar mail tab -->
     <string name="tabBar_mail">Posta</string>
     <!-- text for tabbar setting tab -->
@@ -641,7 +641,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Horizontala</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(ez dago testurik)</string>
+    <string name="tabBar_no_text">Ez dago testurik</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Fitxako elementuak</string>
 
@@ -649,69 +649,69 @@
     <!-- UI labels and descriptions -->
     <string name="cell_sample_title">Izenburua</string>
     <string name="cell_sample_description">Azalpena</string>
-    <string name="calculate_cells">100 ziega kargatu/ kalkulatu</string>
-    <string name="calculate_layouts">100 diseinu kargatu/ kalkulatu</string>
-    <string name="template_list">Template List</string>
+    <string name="calculate_cells">Kargatu/Kalkulatu 100 gelaxka</string>
+    <string name="calculate_layouts">Kargatu/Kalkulatu 100 diseinu</string>
+    <string name="template_list">Txantiloi-zerrenda</string>
     <string name="regular_list">Zerrenda erregularra</string>
-    <string name="cell_example_title">Titulua: Cell</string>
-    <string name="cell_example_description">Deskribapena: Orientazioa aldatzeko sakatu</string>
+    <string name="cell_example_title">Izenburua: gelaxka</string>
+    <string name="cell_example_description">Deskribapena: sakatu hau orientazioa aldatzeko</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Fitxa estandarra 2 segmentu</string>
+    <string name="tab_standard_two_segment">2 segmentuko fitxa estandarra</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
     <string name="tab_standard_three_segment">3 segmentuko fitxa estandarra</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
     <string name="tab_standard_four_segment">4 segmentuko fitxa estandarra</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Fitxa estandarra pertsonen bila</string>
+    <string name="tab_standard_with_pager">Fitxa estandarra lokalizatzailearekin</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Pestaña Cambiar</string>
+    <string name="tab_switch">Aldatu fitxa</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Pestaña Pilula </string>
+    <string name="tab_pills">Pilulen fitxa</string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Ukitua erremintei buruzko informazioa lortzeko</string>
+    <string name="tooltip_button">Sakatu pantailako azalpenerako</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Egutegi pertsonalizatuko tresnei buruzko informazioa jotzen du</string>
+    <string name="tooltip_calendar_demo_button">Sakatu egutegiari buruzko informazioa pertsonalizatzeko</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Kolore pertsonalizatuko tresnei buruzko informazioa jotzen du</string>
+    <string name="tooltip_custom_button">Sakatu kolore pertsonalizatuko pantailako azalpenerako</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Ukitua, barruan tresnei buruzko informazioa baztertzeko</string>
+    <string name="tooltip_center_button">Sakatu tresnei buruzko informazioaren barruan baztertzeko</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Ukitu ikusmen pertsonalizatuko tresnei buruzko informazioa</string>
+    <string name="tooltip_custom_view">Sakatu ikusmen-tresnei buruzko pantailako azalpena pertsonalizatzeko</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Goi-mailako kolore pertsonalizatuko tresnei buruzko informazioa</string>
+    <string name="tooltip_top_start_message">Goiko kolore pertsonalizatuko pantailako azalpenerako</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">10dp-ko desplazamendua duten goiko gamako tresnei buruzko informazioa</string>
+    <string name="tooltip_top_end_message">Goiko muturreko erremintaren informazioa: 10dp offsetY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Behe-mailako tresnei buruzko informazioa</string>
+    <string name="tooltip_bottom_start_message">Beheragoko hasierako informazioa</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Behe-mailako tresnei buruzko informazioa, 10 ppp-ko desplazamenduarekin</string>
+    <string name="tooltip_bottom_end_message">Beheko muturreko erremintaren informazioa: 10dp offsetY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Barruan tresnei buruzko informazioa baztertu</string>
+    <string name="tooltip_center_message">Baztertu pantailako azalpen barruan</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Baztertutako tresnei buruzko informazioa</string>
+    <string name="tooltip_dismiss_message">Baztertu da argibidea</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Titularra Light 28sp da</string>
+    <string name="headline">Goiburua 28 sp arina da</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">1. titulua ertaina da 20sp</string>
+    <string name="title_1">1. izenburua 20 sp ertaina da</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
     <string name="title_2">2. titulua erregularra da 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Erregularra 18sp da.</string>
+    <string name="heading">Goiburua 18 sp erregularra da</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">1. azpipartida Erregularra 16sp da</string>
+    <string name="subheading_1">1. azpigoiburua 16 sp erregularra da</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">2 azpi-errubrika 16sp ertaina da</string>
+    <string name="subheading_2">2. azpigoiburua 16 sp ertaina da</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">1. gorputza erregularra da 14sp</string>
+    <string name="body_1">1. gorputza 14 sp erregularra da</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">2. gorputza ertaina da 14sp</string>
+    <string name="body_2">2. gorputza 14 sp ertaina da</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Titulua erregularra da 12sp</string>
+    <string name="caption">Epigrafea 12 sp erregularra da</string>
 
 </resources>

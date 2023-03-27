@@ -8,39 +8,39 @@
 
     <!-- *** PeoplePicker *** -->
 
-    <string name="people_picker_sample_label">Label</string>
-    <string name="people_picker_search_directory">Search Directory</string>
-    <string name="people_picker_search_progress">Searching…</string>
+    <string name="people_picker_sample_label">Etiqueta</string>
+    <string name="people_picker_search_directory">Buscar en el directorio</string>
+    <string name="people_picker_search_progress">Buscando...</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s added</string>
-    <string name="people_picker_accessibility_persona_removed">%s removed</string>
-    <string name="people_picker_accessibility_replaced">%s replaced,</string>
+    <string name="people_picker_accessibility_default_hint">Escribir un nombre o un correo electrónico</string>
+    <string name="people_picker_accessibility_persona_added">%s agregado</string>
+    <string name="people_picker_accessibility_persona_removed">%s quitado</string>
+    <string name="people_picker_accessibility_replaced">%s sustituido,</string>
     <!--Describes the click action for personas-->
-    <string name="people_picker_accessibility_click_persona">Click</string>
-    <string name="people_picker_accessibility_delete_persona">Delete</string>
-    <string name="people_picker_accessibility_deselect_persona">Deselect</string>
-    <string name="people_picker_accessibility_select_persona">Select</string>
+    <string name="people_picker_accessibility_click_persona">Hacer clic</string>
+    <string name="people_picker_accessibility_delete_persona">Eliminar</string>
+    <string name="people_picker_accessibility_deselect_persona">Anular la selección</string>
+    <string name="people_picker_accessibility_select_persona">Seleccionar</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Clicked %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Deselected %s</string>
-    <string name="people_picker_accessibility_selected_persona">Selected %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Se hizo clic en %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Se anuló la selección de %s</string>
+    <string name="people_picker_accessibility_selected_persona">Se seleccionó %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, Activation will deselect</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, Activation will delete</string>
-    <string name="people_picker_accessibility_click_selected_persona">, Activation will click</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, la activación anulará la selección de</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, la activación eliminará</string>
+    <string name="people_picker_accessibility_click_selected_persona">, la activación hará clic en</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="many">Suggestions list opened with %s people</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Lista de sugerencias abierta con %s persona</item>
+        <item quantity="many">Lista de sugerencias abierta con %s personas</item>
+        <item quantity="other">Lista de sugerencias abierta con %s personas</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="many">%s people</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s persona</item>
+        <item quantity="many">%s personas</item>
+        <item quantity="other">%s personas</item>
     </plurals>
 </resources>

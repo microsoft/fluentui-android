@@ -9,40 +9,40 @@
     <!-- *** PeoplePicker *** -->
 
     <string name="people_picker_sample_label">תווית</string>
-    <string name="people_picker_search_directory">חפש במדריך הכתובות</string>
+    <string name="people_picker_search_directory">חפש במדריך השמות</string>
     <string name="people_picker_search_progress">מחפש…</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s נוסף</string>
-    <string name="people_picker_accessibility_persona_removed">%s הוסרו</string>
-    <string name="people_picker_accessibility_replaced">%s,</string>
+    <string name="people_picker_accessibility_default_hint">הזן שם או דואר אלקטרוני</string>
+    <string name="people_picker_accessibility_persona_added">%s נוסף/ה</string>
+    <string name="people_picker_accessibility_persona_removed">%s הוסר/ה</string>
+    <string name="people_picker_accessibility_replaced">%s הוחלף/ה,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">לחץ</string>
     <string name="people_picker_accessibility_delete_persona">מחק</string>
     <string name="people_picker_accessibility_deselect_persona">בטל בחירה</string>
     <string name="people_picker_accessibility_select_persona">בחר</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">לחיצה %s</string>
-    <string name="people_picker_accessibility_deselected_persona">הבחירה בוטלה %s</string>
-    <string name="people_picker_accessibility_selected_persona">נבחר %s</string>
+    <string name="people_picker_accessibility_clicked_persona">בוצעה לחיצה על %s</string>
+    <string name="people_picker_accessibility_deselected_persona">הבחירה של %s בוטלה</string>
+    <string name="people_picker_accessibility_selected_persona">%s נבחרו</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, הבחירה בהפעלה תבטל</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, ההפעלה תימחק</string>
-    <string name="people_picker_accessibility_click_selected_persona">, ההפעלה תלחץ</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, הפעלה תגרום לביטול בחירה</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, הפעלה תגרום למחיקה</string>
+    <string name="people_picker_accessibility_click_selected_persona">, הפעלה תגרום ללחיצה</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="two">Suggestions list opened with %s people</item>
-        <item quantity="many">Suggestions list opened with %s people</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">רשימת ההצעות נפתחה עם אדם %s</item>
+        <item quantity="two">רשימת ההצעות נפתחה עם %s אנשים</item>
+        <item quantity="many">רשימת ההצעות נפתחה עם %s אנשים</item>
+        <item quantity="other">רשימת ההצעות נפתחה עם %s אנשים</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="two">%s people</item>
-        <item quantity="many">%s people</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">אדם %s</item>
+        <item quantity="two">%s אנשים</item>
+        <item quantity="many">%s אנשים</item>
+        <item quantity="other">%s אנשים</item>
     </plurals>
 </resources>

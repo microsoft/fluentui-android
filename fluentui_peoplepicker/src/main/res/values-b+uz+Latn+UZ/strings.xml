@@ -33,12 +33,12 @@
     <string name="people_picker_accessibility_click_selected_persona">, Faollashtirish bosadi</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">%s kishilik tavsiyalar ro‘yxati ochildi</item>
+        <item quantity="other">%s kishilik tavsiyalar ro‘yxati ochildi</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s kishi</item>
+        <item quantity="other">%s kishi</item>
     </plurals>
 </resources>

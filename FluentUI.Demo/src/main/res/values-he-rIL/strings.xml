@@ -6,16 +6,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">הדגמה של ממשק משתמש Fluent</string>
-    <string name="app_title">ממשק משתמש של Fluent</string>
+    <string name="app_name">הדגמה של Fluent UI</string>
+    <string name="app_title">Fluent UI</string>
     <!-- Announces selected component -->
-    <string name="app_accessibility_selected">נבחר %s</string>
+    <string name="app_accessibility_selected">%s נבחרו</string>
     <string name="app_modifiable_parameters">פרמטרים הניתנים לשינוי</string>
     <string name="app_right_accessory_view">תצוגת עזר ימנית</string>
 
     <string name="app_style">סגנון</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">סמל נלחץ</string>
+    <string name="app_icon_pressed">סמל לחוץ</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
@@ -24,8 +24,8 @@
     <string name="actionbar_carousel_radio_label">קרוסלה</string>
     <string name="actionbar_icon_radio_label">סמל</string>
     <string name="actionbar_basic_radio_label">בסיסי</string>
-    <string name="actionbar_position_bottom_radio_label">למטה</string>
-    <string name="actionbar_position_top_radio_label">למעלה</string>
+    <string name="actionbar_position_bottom_radio_label">תחתון</string>
+    <string name="actionbar_position_top_radio_label">עליון</string>
 
     <!--UI Text view label denoting type of action bar -->
     <string name="actionbar_type_heading">סוג שורת הפעולות</string>
@@ -33,22 +33,22 @@
     <string name="actionbar_position_heading">מיקום שורת הפעולות</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">סגנון AppBar</string>
+    <string name="app_bar_style">סגנון סרגל אפליקציות</string>
     <string name="app_bar_subtitle">כותרת משנה</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">סמל ניווט נלחץ.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">בוצעה לחיצה על סמל ניווט.</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">דגל</string>
     <string name="app_bar_layout_menu_settings">הגדרות</string>
     <string name="app_bar_layout_menu_search">חפש</string>
     <!-- UI Text that shows the type of scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">אופן פעולה של גלילה: %s</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">אופן פעולת הגלילה: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">החלף מצב אופן פעולה של גלילה</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">החלף את אופן פעולת הגלילה</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">החלף מצב של סמל ניווט</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">החלפת מצב של סמל הניווט</string>
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">הצג אוואטאר</string>
     <!-- Text for button that shows back icon -->
@@ -58,48 +58,48 @@
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">הצג סמל</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">החלף מצב של סגנון פריסה של סרגל חיפוש</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">החלף את סגנון הפריסה של סרגל חיפוש</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">הצג כהצגת אביזר</string>
-    <string name="app_bar_layout_searchbar_action_view_button">הצג כתהצגת פעולה</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">הצג כתצוגת עזר</string>
+    <string name="app_bar_layout_searchbar_action_view_button">הצג כתצוגת פעולה</string>
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">החלף בין ערכות נושא (צור מחדש פעילות)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">החלף מצב של ערכת נושא</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">פריט</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">תוכן הניתן לגלילה נוסף</string>
+    <string name="app_bar_layout_list_sub_header">ניתן לגלול לתוכן נוסף</string>
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">סגנון עיגול</string>
-    <string name="avatar_style_square">סגנון מרובע</string>
+    <string name="avatar_style_circle">סגנון העיגול</string>
+    <string name="avatar_style_square">סגנון הריבוע</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">סמל XLarge</string>
+    <string name="avatar_size_xxlarge">גודל XXLarge</string>
+    <string name="avatar_size_xlarge">גודל XLarge</string>
     <string name="avatar_size_large">גדול</string>
-    <string name="avatar_size_medium">בינוני</string>
+    <string name="avatar_size_medium">גודל בינוני</string>
     <string name="avatar_size_small">קטן</string>
-    <string name="avatar_size_xsmall">יום ההו צ\'</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">אוואטאר מוצג מרבי</string>
+    <string name="avatar_group_max_displayed_avatar">המספר המרבי של אוואטארים מוצגים.</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">ספירת אוואטארים גולשת</string>
+    <string name="avatar_group_overflow_avatar_count">מונה גלישת אוואטארים</string>
     <!-- UI label to show border type -->
     <string name="avatar_group_border_type">סוג גבול</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">קבוצת האוואטארים עם ההגדרה OverflowAvatarCount לא תהיה תואמת לאוואטאר המוצג המרבי.</string>
+    <string name="avatar_group_info">קבוצת האוואטארים עם ההגדרה ‘מונה גלישת אוואטרים‘ לא תתאם למספר המרבי של אוואטארים מוצגים.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">ערימת פנים</string>
+    <string name="avatar_group_face_stack">Face Stack</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">ערימת פנים</string>
+    <string name="avatar_group_face_pile">שורה של פנים חופפים חלקית</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">גלישה הצליחה</string>
+    <string name="avatar_group_overflow_clicked">בוצעה לחיצה על גלישה</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">תצוגת אוואטאר באינדקס %d לחיצה</string>
+    <string name="avatar_group_avatar_clicked">בוצעה לחיצה על תצוגת אוואטאר באינדקס %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -125,18 +125,18 @@
     <string name="bottom_navigation_five_menu_items_button">הצג חמישה פריטי תפריט</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">תוויות %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">התוויות %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">גליון תחתון</string>
-    <string name="bottom_sheet_dialog">דיאגרמת Sheet תחתונה</string>
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">הצג עם פריטי שורה בודדת</string>
     <string name="bottom_sheet_with_double_line_items">הצג עם פריטי שורה כפולה</string>
     <string name="bottom_sheet_with_single_line_header">הצג עם כותרת שורה בודדת</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">הצג עם כותרת דו-קווית וקווים מפרידים</string>
-    <string name="bottom_sheet_dialog_button">הצגה</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">הצג עם כותרת דו-קווית וחוצצים</string>
+    <string name="bottom_sheet_dialog_button">הצג</string>
     <string name="drawer_content_desc_collapse_state">הרחב</string>
     <string name="drawer_content_desc_expand_state">מזער</string>
 
@@ -144,15 +144,15 @@
     <!-- UI text showing the click action performed by the user -->
     <string name="contextual_command_prompt_click_item">לחץ על %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">לחיצה ארוכה %s</string>
+    <string name="contextual_command_prompt_long_click_item">לחיצה ארוכה של %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">לחץ על ‘התעלם מזה‘</string>
     <!-- Text for button for inserting an item-->
-    <string name="contextual_command_insert_item">הוספת פריט</string>
+    <string name="contextual_command_insert_item">הוסף פריט</string>
     <!-- Text for button for updating an item-->
     <string name="contextual_command_update_item">עדכן פריט</string>
     <!-- Announces dismiss action -->
-    <string name="contextual_command_accessibility_dismiss">בטל</string>
+    <string name="contextual_command_accessibility_dismiss">התעלם מזה</string>
     <!-- Announces add action -->
     <string name="contextual_command_accessibility_add">הוסף</string>
     <!-- Announces mention action -->
@@ -164,7 +164,7 @@
     <!-- Announces undeline action -->
     <string name="contextual_command_accessibility_underline">קו תחתון</string>
     <!-- Announces strikethrough action -->
-    <string name="contextual_command_accessibility_strikethrough">קו חוצה</string>
+    <string name="contextual_command_accessibility_strikethrough">בצע קו חוצה</string>
     <!-- Announces undo action -->
     <string name="contextual_command_accessibility_undo">בטל</string>
     <!-- Announces redo action -->
@@ -176,39 +176,39 @@
     <!-- Announces link action -->
     <string name="contextual_command_accessibility_link">קישור</string>
     <!-- UI Label denoting item updating -->
-    <string name="contextual_command_bar_item_update_title">עדכון פריטים</string>
+    <string name="contextual_command_bar_item_update_title">עדכון פריט</string>
     <!-- UI Label denoting spacing -->
-    <string name="contextual_command_bar_space_title">מרווח</string>
+    <string name="contextual_command_bar_space_title">ריווח</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">בטל מיקום</string>
+    <string name="contextual_command_bar_dismiss_position">התעלם ממיקום</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">התחלה</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">סיום</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">שטח קבוצה</string>
+    <string name="contextual_command_bar_group_space_title">מרווח קבוצה</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">שטח פריט</string>
+    <string name="contextual_command_bar_item_space_title">מרווח פריט</string>
     <!-- UI bar label denoting the space in number value dp's -->
-    <string name="contextual_command_bar_space_value">%d dp</string>
+    <string name="contextual_command_bar_space_value">‎%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">דגל</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">פריט דגל נלחץ</string>
+    <string name="bottom_sheet_item_flag_toast">בוצעה לחיצה על סימון פריט בדגל</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">תשובה</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">פריט תשובה נלחץ</string>
+    <string name="bottom_sheet_item_reply_toast">בוצעה לחיצה על הפעל פריט שוב</string>
     <!--UI Label for item forward-->
-    <string name="bottom_sheet_item_forward_title">העבר</string>
+    <string name="bottom_sheet_item_forward_title">העברה</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">פריט העברה נלחץ</string>
+    <string name="bottom_sheet_item_forward_toast">בוצעה לחיצה על העברת פריט</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">מחק</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">מחק פריט שנלחץ</string>
+    <string name="bottom_sheet_item_delete_toast">בוצעה לחיצה על מחיקת פריט</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">אוואטאר</string>
     <!--Double line items-->
@@ -217,25 +217,25 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">צלם תמונה</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">פריט מצלמה נלחץ</string>
+    <string name="bottom_sheet_item_camera_toast">בוצעה לחיצה על פריט מצלמה</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">גלריה</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">הצג את התמונות שלך</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">פריט גלריה נלחץ</string>
+    <string name="bottom_sheet_item_gallery_toast">בוצעה לחיצה על פריט גלריה</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">סרטוני וידאו</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">הפעל את סרטוני הווידאו שלך</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">פריט סרטוני וידאו נלחץ</string>
+    <string name="bottom_sheet_item_videos_toast">בוצעה לחיצה על פריטי סרטון וידאו</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">ניהול</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">נהל את ספריית המדיה שלך</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">ניהול הפריט נלחץ</string>
+    <string name="bottom_sheet_item_manage_toast">בוצעה לחיצה על ניהול פריט</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">פעולות דואר אלקטרוני</string>
@@ -247,63 +247,63 @@
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">שיתוף</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">הפריט המשותף נלחץ</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">בוצעה לחיצה על ‘שתף פריט‘</string>
     <!--UI Label for item move-->
-    <string name="bottom_sheet_item_double_line_header_move">העברה</string>
+    <string name="bottom_sheet_item_double_line_header_move">הזזה</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">העברת פריט נלחץ</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">בוצעה לחיצה על הזזת פריט</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">מחק</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">מחק פריט שנלחץ</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">בוצעה לחיצה על מחיקת פריט</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">מידע</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">פריט מידע נלחץ</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">בוצעה לחיצה על פריט מידע</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">שעון</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">פריט שעון נלחץ</string>
+    <string name="bottom_sheet_item_clock_toast">בוצעה לחיצה על פריט שעון</string>
     <!--UI Label for item alarm-->
-    <string name="bottom_sheet_item_alarm_title">אזעקה</string>
+    <string name="bottom_sheet_item_alarm_title">התראה</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">פריט התראה נלחץ</string>
+    <string name="bottom_sheet_item_alarm_toast">בוצעה לחיצה על פריט התראה</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">אזור זמן</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">פריט אזור זמן נלחץ</string>
+    <string name="bottom_sheet_item_time_zone_toast">בוצעה לחיצה על פריט אזור זמן</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">לחצן</string>
     <string name="buttonbar">סרגל לחצנים</string>
-    <string name="button_disabled">לחצן \'לא זמין\'</string>
-    <string name="button_borderless">לחצן ללא גבולות</string>
-    <string name="button_borderless_disabled">לחצן לא זמין ללא גבולות</string>
+    <string name="button_disabled">לחצן לא זמין</string>
+    <string name="button_borderless">לחצן ללא שוליים</string>
+    <string name="button_borderless_disabled">לחצן ללא שוליים לא זמין</string>
     <string name="button_large">לחצן גדול</string>
-    <string name="button_large_disabled">לחצן \'גדול לא זמין\'</string>
-    <string name="button_outlined">לחצן עם מיתאר</string>
-    <string name="button_outlined_disabled">לחצן עם מיתאר לא זמין</string>
+    <string name="button_large_disabled">לחצן גדול לא זמין</string>
+    <string name="button_outlined">לחצן עם קו מתאר</string>
+    <string name="button_outlined_disabled">לחצן עם קו מתאר לא זמין</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">בחר תאריך</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">בורר תאריך-שעה</string>
+    <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">תאריך בודד</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">לא נבחר תאריך</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">האם להציג את בורר התאריכים?</string>
+    <string name="date_time_picker_date_button">הצג בורר תאריכים</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">הצג את בורר התאריך והשעה עם כרטיסיית התאריך שנבחרה</string>
+    <string name="date_time_picker_calendar_date_time_button">הצג את בורר התאריך והשעה עם לשונית התאריך שנבחר</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">הצג את בורר התאריך והשעה עם כרטיסיית השעה שנבחרה</string>
+    <string name="date_time_picker_date_time_calendar_button">הצג את בורר התאריך והשעה עם לשונית השעה שנבחרה</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">הצג את בורר התאריך והשעה</string>
+    <string name="date_time_picker_date_time_button">בורר תאריך ושעה</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">טווח תאריכים</string>
     <!-- UI label showing start of the range-->
@@ -313,7 +313,7 @@
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_start_picked_default">לא נבחרה התחלה</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">לא נבחר קצה</string>
+    <string name="date_time_picker_date_end_picked_default">לא נבחר תאריך סיום</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">בחר תאריך התחלה</string>
     <!-- text for button that selects end date -->
@@ -321,29 +321,29 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">טווח תאריך ושעה</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">בחר טווח תאריכים ושעות</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">הצג תיבת דו-שיח</string>
+    <string name="date_time_picker_dialog_button">הצג דו-שיח</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
     <string name="drawer_button">הצג מגירה</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">הצג תיבת דו-שיח של מגירה</string>
+    <string name="drawer_dialog_button">הצג דו-שיח של מגירה</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">תיבת דו-שיח ללא עמעום תחתון</string>
+    <string name="no_fade_bottom_dialog_button">ללא דו-שיח תחתון עם עמעום</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">הצג מגירה עליונה</string>
     <!-- text for button that shows No fade top dialog drawer -->
     <string name="no_fade_top_dialog_button">ללא דו-שיח עליון עם עמעום</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> הצג את תיבת הדו-שיח הקודמת של תצוגת עוגן</string>
+    <string name="anchor_view_top_dialog_button"> הצג דו-שיח עליון של תצוגת עוגן</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> אל תציג דו-שיח עליון של כותרת</string>
+    <string name="no_title_top_dialog_button"> אל תציג כותרת דו-שיח עליון</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> הצג מתחת לכותרת תיבת הדו-שיח הקודמת</string>
+    <string name="below_title_top_dialog_button"> הצג מתחת לכותרת הדו-שיח העליון</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">הצג מגירה ימנית</string>
     <!-- text for button that shows left drawer -->
@@ -359,29 +359,29 @@
     <!-- Footer -->
     <string name="list_item_footer">כותרת תחתונה, טקסט שלישוני</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">רשימה בעלת שורה בודדת עם טקסט כותרת משנה אפור</string>
-    <string name="list_item_sub_header_two_line">רשימה דו-קווית</string>
-    <string name="list_item_sub_header_two_line_dense">רשימה דו-קווית עם מרווח צפוף</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">רשימה של שתי שורות עם תצוגת כותרת משנה משנית מותאמת אישית</string>
-    <string name="list_item_sub_header_three_line">רשימה תלת-קווית עם טקסט כותרת משנה שחור</string>
-    <string name="list_item_sub_header_no_custom_views">פריטי רשימה ללא תצוגות מותאמות אישית</string>
-    <string name="list_item_sub_header_large_header">פריטי רשימה עם תצוגות מותאמות אישית גדולות</string>
+    <string name="list_item_sub_header_single_line">רשימת חד-טורית עם טקסט כותרת משנה אפור</string>
+    <string name="list_item_sub_header_two_line">רשימה דו-טורית</string>
+    <string name="list_item_sub_header_two_line_dense">רשימה דו-טורית עם ריווח צפוף</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">רשימה של שני טורים עם תצוגת כותרת משנה מותאמת אישית</string>
+    <string name="list_item_sub_header_three_line">רשימה תלת-טורית עם טקסט כותרת משנה שחור</string>
+    <string name="list_item_sub_header_no_custom_views">פריטי רשימה ללא תצוגה מותאמת אישית</string>
+    <string name="list_item_sub_header_large_header">פריטי רשימה עם תצוגות גדולות מותאמות אישית</string>
     <string name="list_item_sub_header_wrapped_text">פריטי רשימה עם גלישת טקסט</string>
     <string name="list_item_sub_header_truncated_text">פריטי רשימה עם טקסט חתוך</string>
     <string name="list_item_sub_header_custom_accessory_text">פעולה</string>
-    <string name="list_item_truncation_middle">חיתוך אמצעי.</string>
-    <string name="list_item_truncation_end">סיים חיתוך.</string>
-    <string name="list_item_truncation_start">התחל חיתוך.</string>
+    <string name="list_item_truncation_middle">אמצע החיתוך.</string>
+    <string name="list_item_truncation_end">סיום חיתוך.</string>
+    <string name="list_item_truncation_start">תחילת חיתוך.</string>
     <string name="list_item_custom_text_view">ערך</string>
-    <string name="list_item_click">לחיצות על פריט הרשימה.</string>
-    <string name="list_item_click_custom_accessory_view">לחיצות על תצוגת האביזר המותאמת אישית.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">לחיצות על תצוגת האביזר המותאם אישית של כותרת המשנה.</string>
+    <string name="list_item_click">לחצת על פריט הרשימה.</string>
+    <string name="list_item_click_custom_accessory_view">לחצת על תצוגת עזר מותאמת אישית.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">לחצת על תצוגת עזר של כותרת משנה מותאמת אישית.</string>
     <string name="list_item_more_options">אפשרויות נוספות</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">בחר</string>
-    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_select_deselect_example">בחירה ביטול בחירה</string>
     <string name="people_picker_none_example">ללא</string>
     <string name="people_picker_delete_example">מחק</string>
     <string name="people_picker_custom_persona_description">דוגמה זו מציגה כיצד ליצור אובייקט IPersna מותאם אישית.</string>
@@ -389,39 +389,39 @@
     <string name="people_picker_dialog_title_added">הוספת אישיות:</string>
     <string name="people_picker_drag_started">הגרירה התחילה</string>
     <string name="people_picker_drag_ended">הגרירה הסתיימה</string>
-    <string name="people_picker_picked_personas_listener">מאזין האישיות</string>
-    <string name="people_picker_suggestions_listener">מאזין הצעות</string>
-    <string name="people_picker_persona_chip_click">לחיצה על %s</string>
+    <string name="people_picker_picked_personas_listener">קשב אישיות</string>
+    <string name="people_picker_suggestions_listener">קשב הצעות</string>
+    <string name="people_picker_persona_chip_click">לחצת על %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="two">%1$s recipients</item>
-        <item quantity="many">%1$s recipients</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">נמען %1$s</item>
+        <item quantity="two">%1$s נמענים</item>
+        <item quantity="many">%1$s נמענים</item>
+        <item quantity="other">%1$s נמענים</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">הרחב הזנה תחתונה מתמידה</string>
-    <string name="collapse_persistent_sheet_button"> הסתר Sheet תחתון מתמיד</string>
-    <string name="show_persistent_sheet_button"> הצג Sheet תחתון מתמיד</string>
+    <string name="expand_bottom_sheet_button">הרחב גיליון תחתון עקבי</string>
+    <string name="collapse_persistent_sheet_button"> הסתר גיליון תחתון עקבי</string>
+    <string name="show_persistent_sheet_button"> הצג גיליון תחתון עקבי</string>
     <string name="new_view">זוהי תצוגה חדשה</string>
-    <string name="toggle_sheet_content">החלף מצב תוכן של  גליונות תחתונים</string>
+    <string name="toggle_sheet_content">החלף מצב תוכן של גיליון תחתון</string>
     <string name="switch_to_custom_content">עבור לתוכן מותאם אישית</string>
-    <string name="one_line_content">תוכן תרשים תחתון עם שורה אחת</string>
+    <string name="one_line_content">תוכן של גיליון תחתון חד טורי</string>
     <string name="toggle_disable_all_items">החלף מצב של הפיכת כל הפריטים ללא זמינים</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">הוסף/הסר תצוגה</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> שינוי גובה מכווץ</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> שינוי גובה הכיווץ</string>
     <string name="persistent_sheet_item_create_new_folder_title">תיקיה חדשה</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">פריט תיקיה חדש נלחץ</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">בוצעה לחיצה על פריט תיקיה חדש</string>
     <string name="persistent_sheet_item_edit_title">עריכה</string>
-    <string name="persistent_sheet_item_edit_toast">עריכת פריט נלחץ</string>
+    <string name="persistent_sheet_item_edit_toast">בוצעה לחיצה על ערוך פריט</string>
     <string name="persistent_sheet_item_save_title">שמור</string>
-    <string name="persistent_sheet_item_save_toast">שמירת פריט נלחץ</string>
+    <string name="persistent_sheet_item_save_toast">בוצעה לחיצה על שמור פריט</string>
     <string name="persistent_sheet_item_zoom_in_title">הגדלת תצוגה</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> פריט הגדלת תצוגה נלחץ</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> בוצע לחיצה על פריט הגדלת תצוגה</string>
     <string name="persistent_sheet_item_zoom_out_title">הקטנת תצוגה</string>
-    <string name="persistent_sheet_item_zoom_out_toast">פריט הקטנת תצוגה נלחץ</string>
+    <string name="persistent_sheet_item_zoom_out_toast">בוצעה לחיצה על פריט הקטנת תצוגה</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -453,57 +453,57 @@
     <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
     <string name="persona_footer">זמין</string>
     <!-- Person names -->
-    <string name="persona_name_allan_munger">אלן ליינגר</string>
-    <string name="persona_name_amanda_brady">לין בריידי</string>
-    <string name="persona_name_ashley_mccarthy">ג\'ון מק\'רתי</string>
-    <string name="persona_name_carlos_slattery">יואב ברק</string>
-    <string name="persona_name_carole_poland">מזמור פולין</string>
-    <string name="persona_name_cecil_folk">פולק פוק</string>
-    <string name="persona_name_celeste_burton">סלסט בורוטון</string>
-    <string name="persona_name_charlotte_waltson">שרלוט לוסון</string>
-    <string name="persona_name_colin_ballinger">עט סימון פיתה</string>
-    <string name="persona_name_daisy_phillips">חינניות ותותים</string>
-    <string name="persona_name_elliot_woodward">רהטווד</string>
-    <string name="persona_name_elvia_atkins">אלוויה אטינס</string>
-    <string name="persona_name_erik_nason">נאוה נסון</string>
-    <string name="persona_name_henry_brill">נמען בריל</string>
-    <string name="persona_name_isaac_fielder">Fielder של איקס</string>
-    <string name="persona_name_johnie_mcconnell">ג\'יני מק\'קונלי</string>
-    <string name="persona_name_kat_larsson">קט לרסון</string>
+    <string name="persona_name_allan_munger">אלן מאנגר</string>
+    <string name="persona_name_amanda_brady">אמנדה בריידי</string>
+    <string name="persona_name_ashley_mccarthy">אשלי מק\'רתי</string>
+    <string name="persona_name_carlos_slattery">קרלוס סלאטרי</string>
+    <string name="persona_name_carole_poland">קרולה פולנד</string>
+    <string name="persona_name_cecil_folk">ססיל פולק</string>
+    <string name="persona_name_celeste_burton">סלסט ברטון</string>
+    <string name="persona_name_charlotte_waltson">שרלוט וולטסון</string>
+    <string name="persona_name_colin_ballinger">קולין בלינגר</string>
+    <string name="persona_name_daisy_phillips">דייזי פיליפס</string>
+    <string name="persona_name_elliot_woodward">אליוט וודוורד</string>
+    <string name="persona_name_elvia_atkins">אלוויה אטקינס</string>
+    <string name="persona_name_erik_nason">אריק נסון</string>
+    <string name="persona_name_henry_brill">הנרי בריל</string>
+    <string name="persona_name_isaac_fielder">אייזיק פילדר</string>
+    <string name="persona_name_johnie_mcconnell">גלעד הראל</string>
+    <string name="persona_name_kat_larsson">נטע סינגר</string>
     <string name="persona_name_katri_ahokas">קאטרי אהוקה</string>
-    <string name="persona_name_kevin_sturgis">Haga hagagais</string>
-    <string name="persona_name_kristen_patterson">יותם פטרסון</string>
-    <string name="persona_name_lydia_bauer">בוה\'ם</string>
-    <string name="persona_name_mauricio_august">יופיו אוגוסט</string>
+    <string name="persona_name_kevin_sturgis">חגית גבאי</string>
+    <string name="persona_name_kristen_patterson">כלנית ברעם</string>
+    <string name="persona_name_lydia_bauer">לילך ברקאי</string>
+    <string name="persona_name_mauricio_august">מאוריציו אוגוסט</string>
     <string name="persona_name_miguel_garcia">איתמר אפשטיין</string>
-    <string name="persona_name_mona_kane">מונה בות\'ם</string>
-    <string name="persona_name_robin_counts">ספירות של אדום החזה</string>
-    <string name="persona_name_robert_tolbert">מרים ת\'לברט</string>
-    <string name="persona_name_tim_deboer">טים דבר</string>
-    <string name="persona_name_wanda_howard">נדה ת\'נדר</string>
+    <string name="persona_name_mona_kane">מונה קובליו</string>
+    <string name="persona_name_robin_counts">רובין קאונטס</string>
+    <string name="persona_name_robert_tolbert">רוברט טולברט</string>
+    <string name="persona_name_tim_deboer">טים דבואר</string>
+    <string name="persona_name_wanda_howard">וונדה הווארד</string>
     <!-- Designations -->
-    <string name="persona_subtitle_designer">מעצב</string>
+    <string name="persona_subtitle_designer">Designer</string>
     <string name="persona_subtitle_engineer">מהנדס</string>
     <string name="persona_subtitle_manager">מנהל</string>
     <string name="persona_subtitle_researcher">חוקר</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (דוגמה של טקסט ארוך לבדיקת חיתוך)</string>
-    <string name="persona_view_description_xxlarge">אוואטאר XXLarge עם שלוש שורות טקסט</string>
+    <string name="persona_truncation">\ (דוגמה של טקסט ארוך לבדיקת קיטוע)</string>
+    <string name="persona_view_description_xxlarge">אוואטאר בגודל XXLarge עם שלוש שורות טקסט</string>
     <string name="persona_view_description_large">אוואטאר גדול עם שתי שורות טקסט</string>
     <string name="persona_view_description_small">אוואטאר קטן עם שורת טקסט אחת</string>
-    <string name="people_picker_hint">ללא עם רמז מוצג</string>
+    <string name="people_picker_hint">לא מוצג אף ‘עם רמז‘</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">שבב אישיות לא זמין</string>
+    <string name="persona_chip_example_disabled">שבב אישיות מושבת</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">שבב אישיות של שגיאה</string>
+    <string name="persona_chip_example_error">שגיאת שבב אישיות</string>
     <!-- UI label showing a persona chip with no close icon-->
     <string name="persona_chip_example_no_icon">שבב אישיות ללא סמל סגירה</string>
     <!-- UI label showing a basic persona chip -->
     <string name="persona_chip_example_basic">שבב אישיות בסיסי</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">לחיצות על שבב האישיות שנבחר.</string>
+    <string name="persona_chip_example_click">לחצת על שבב האישיות שנבחר.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -522,97 +522,97 @@
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">כל החדשות</string>
     <!-- UI label for item Saved news -->
-    <string name="popup_menu_item_saved_news">חדשות שנשמרו</string>
+    <string name="popup_menu_item_saved_news">חדשות שמורות</string>
     <!-- UI label for item >News from sites -->
     <string name="popup_menu_item_news_from_sites">חדשות מאתרים</string>
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">הודע מחוץ לשעות העבודה</string>
+    <string name="popup_menu_item_notify_outside">יידע מחוץ לשעות העבודה</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">הודע כאשר לא פעיל בשולחן העבודה</string>
+    <string name="popup_menu_item_notify_inactive">הודע רק כאשר אני לא פעיל במחשב השולחני</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">לחיצות על הפריט:</string>
+    <string name="popup_menu_item_clicked">לחצת על הפריט:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">תפריט פשוט</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple_duo">תפריט פשוט2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">תפריט עם פריט אחד הניתן לבחירה ומפריד</string>
+    <string name="popup_menu_single_check">תפריט עם פריט ניתן לבחירה אחד וחוצץ</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
     <string name="popup_menu_all_check">תפריט עם כל הפריטים, הסמלים והטקסט הארוך הניתנים לבחירה</string>
     <!--Text for button that shows popupmenu -->
-    <string name="popup_menu_show">הצגה</string>
+    <string name="popup_menu_show">הצג</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">התקדמות מעגלית</string>
-    <string name="circular_progress_xsmall">יום ההו צ\'</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">קטן</string>
     <string name="circular_progress_small_size">24dp</string>
-    <string name="circular_progress_medium">בינוני</string>
+    <string name="circular_progress_medium">גודל בינוני</string>
     <string name="circular_progress_medium_size">36dp</string>
     <string name="circular_progress_large">גדול</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">התקדמות ליניארית</string>
-    <string name="linear_progress_size">4dp (4dp)</string>
+    <string name="linear_progress">התקדמות לינארית</string>
+    <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">לא מוגדר</string>
+    <string name="linear_progress_indeterminate_label">ללא הגבלת אורך</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">קביעת</string>
+    <string name="linear_progress_determinate_label">מחוון התקדמות</string>
 
 
     <!--Shared-->
     <!-- dummy message -->
-    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam.</string>
+    <string name="long_placeholder">‎Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+‎        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.‎
+‎‪        Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
     <string name="searchbar">סרגל חיפוש</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">התקשרות חזרה של מיקרופון</string>
+    <string name="searchbar_microphone_callback">מיקרופון משמיע קול</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">תיקון שגיאות אוטומטי</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">לחיצה על המיקרופון</string>
+    <string name="searchbar_microphone_pressed">בוצעה לחיצה על המיקרופון</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">תצוגה ימנית - נלחץ</string>
+    <string name="searchbar_right_view_pressed">תצוגה ימנית נלחצה</string>
     <!-- Announces that keyboard search has been pressed -->
     <string name="searchbar_keyboard_search_pressed">חיפוש בלוח המקשים נלחץ</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">פעולה</string>
-    <string name="snackbar_action_long">פעולת טקסט ארוך</string>
-    <string name="snackbar_single_line">בר חטיף עם קו בודד</string>
-    <string name="snackbar_multiline">זהו בר חטיף מרובה קווים. הקווים המרביים מוגדרים לשתיים, שאר הטקסט ייחתך.
+    <string name="snackbar_action_long">פעולת טקסט ארוכה</string>
+    <string name="snackbar_single_line">בר התראות (snackbar) של שורה יחידה</string>
+    <string name="snackbar_multiline">זהו בר התראה (snackbar) מרובה שורות. מספר השורות המרבי לשתיים, שאר הטקסט ייחתך.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">זוהי חטיף הכרזה. הוא משמש לתקשורת עם תכונות חדשות.</string>
-    <string name="snackbar_primary">זהו בר חטיף ראשי.</string>
-    <string name="snackbar_light">זהו בר חטיף קל.</string>
-    <string name="snackbar_warning">זהו בר חטיף אזהרה.</string>
-    <string name="snackbar_danger">זהו חטיף סכנה.</string>
+    <string name="snackbar_announcement">זהו בר התראה (snackbar) להכרזה. הוא משמש לתקשורת עם תכונות חדשות.</string>
+    <string name="snackbar_primary">זהו בר התראות (snackbar) ראשי.</string>
+    <string name="snackbar_light">זהו בר התראות (snackbar) קל.</string>
+    <string name="snackbar_warning">זהו משוב אזהרה.</string>
+    <string name="snackbar_danger">זהו משוב סכנה.</string>
     <string name="snackbar_description_single_line">משך זמן קצר</string>
-    <string name="snackbar_description_single_line_custom_view">משך זמן ארוך עם התקדמות מעגלית כצג מותאם אישית קטן</string>
+    <string name="snackbar_description_single_line_custom_view">משך זמן ארוך עם התקדמות מעגלית כתצוגה מותאמת אישית קטנה</string>
     <string name="snackbar_description_single_line_action">משך זמן קצר עם פעולה</string>
-    <string name="snackbar_description_single_line_action_custom_view">משך זמן קצר עם פעולה ות תצוגה מותאמת אישית בינונית</string>
+    <string name="snackbar_description_single_line_action_custom_view">משך זמן קצר עם פעולה ותצוגה בינונית מותאמת אישית</string>
     <string name="snackbar_description_single_line_custom_text_color">משך זמן קצר עם צבע טקסט מותאם אישית</string>
     <string name="snackbar_description_multiline">משך זמן ארוך</string>
     <string name="snackbar_description_multiline_custom_view">משך זמן ארוך עם תצוגה מותאמת אישית קטנה</string>
     <string name="snackbar_description_multiline_action">משך זמן לא מוגדר עם עדכוני פעולה וטקסט</string>
-    <string name="snackbar_description_multiline_action_custom_view">משך זמן קצר עם פעולה ות תצוגה מותאמת אישית בינונית</string>
+    <string name="snackbar_description_multiline_action_custom_view">משך זמן קצר עם פעולה ותצוגה בינונית מותאמת אישית</string>
     <string name="snackbar_description_multiline_action_long">משך זמן קצר עם טקסט פעולה ארוך</string>
     <string name="snackbar_description_announcement">משך זמן קצר</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">הטקסט עודכן.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">הצג בר חטיף</string>
+    <string name="snackbar_button_show">הצג בר התראות (snackbar)</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">קו בודד</string>
+    <string name="snackbar_headline_single_line">חד טורי</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">מרובה קווים</string>
+    <string name="snackbar_headline_multiline">מרובה שורות</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">סגנון הכרזה</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -643,9 +643,9 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">אופקי</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(ללא טקסט)</string>
+    <string name="tabBar_no_text">ללא טקסט</string>
     <!-- UI text for no. of tab items -->
-    <string name="tabBar_tab_items">פריטי כרטיסיה</string>
+    <string name="tabBar_tab_items">פריטי כרטיסייה</string>
 
     <!--TemplateView-->
     <!-- UI labels and descriptions -->
@@ -655,22 +655,22 @@
     <string name="calculate_layouts">טען/חשב 100 פריסות</string>
     <string name="template_list">רשימת תבניות</string>
     <string name="regular_list">רשימה רגילה</string>
-    <string name="cell_example_title">תא כותרת</string>
+    <string name="cell_example_title">כותרת: תא</string>
     <string name="cell_example_description">תיאור: הקש כדי לשנות כיוון</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
     <string name="tab_standard_two_segment">כרטיסיה רגילה - 2 מקטעים</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">כרטיסיה רגילה 3-מקטע</string>
+    <string name="tab_standard_three_segment">כרטיסיה רגילה עם 3 מקטעים</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">כרטיסיה רגילה 4-מקטע</string>
+    <string name="tab_standard_four_segment">כרטיסיה רגילה עם 4 מקטעים</string>
     <!-- Text for button that shows a Standard Tab with pager -->
     <string name="tab_standard_with_pager">כרטיסיה רגילה עם רכיב הדף</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">החלף כרטיסיה</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">כרטיסיית \'אתה יודע\' </string>
+    <string name="tab_pills">תגית גלולות </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
@@ -684,23 +684,23 @@
     <!-- Text for button that shows Custom View Tooltip on tap -->
     <string name="tooltip_custom_view">הקש לקבלת תיאור כלי של תצוגה מותאמת אישית</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">תיאור כלי של צבע מותאם אישית עליון</string>
+    <string name="tooltip_top_start_message">תיאור כלי עליון של צבע מותאם אישית</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_top_end_message">תיאור כלי קצה עליון עם היסט 10dp</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">תיאור כלי של התחלה תחתונה</string>
+    <string name="tooltip_bottom_start_message">תיאור כלי התחלה תחתון</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_bottom_end_message">תיאור כלי קצה תחתון עם היסט של 10dp</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_center_message">בטל בתוך תיאור כלי</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">תיאור כלי בוטל</string>
+    <string name="tooltip_dismiss_message">תיאור הכלי נסגר</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">הכותרת בהירה ב- 28 ס"מ</string>
+    <string name="headline">הכותרת היא 28sp בהיר</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">כותרת 1 היא בינונית 20sp</string>
+    <string name="title_1">כותרת 1 היא 20sp בינוני</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
     <string name="title_2">כותרת 2 היא 20sp רגיל</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
@@ -708,12 +708,12 @@
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
     <string name="subheading_1">כותרת משנה 1 היא 16sp רגיל</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">כותרת משנה 2 היא בינונית מ- 16sp</string>
+    <string name="subheading_2">כותרת משנה 2 היא 16spבינוני</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">גוף 1 הוא 14sp רגיל</string>
+    <string name="body_1">גוף הודעה 1 הוא 14sp רגיל</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">גוף 2 הוא בינוני 14sp</string>
+    <string name="body_2">גוף הודעה 2 הוא 14sp בינוני</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">הכיתוב הוא 12sp רגיל</string>
+    <string name="caption">הכתובית היא 12sp רגיל</string>
 
 </resources>

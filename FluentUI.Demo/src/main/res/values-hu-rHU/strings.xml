@@ -6,7 +6,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Fluent felhasználói felület – bemutató</string>
+    <string name="app_name">Fluent felhasználói felület – demó</string>
     <string name="app_title">Fluent felhasználói felület</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">Kijelölte ezt: %s</string>
@@ -19,13 +19,13 @@
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
-    <string name="actionbar_start_button">Bemutató indítása</string>
+    <string name="actionbar_start_button">Demó indítása</string>
     <!-- Texts for radio buttons -->
     <string name="actionbar_carousel_radio_label">Forgótár</string>
     <string name="actionbar_icon_radio_label">Ikon</string>
     <string name="actionbar_basic_radio_label">Alapszintű</string>
     <string name="actionbar_position_bottom_radio_label">Lent</string>
-    <string name="actionbar_position_top_radio_label">Felülre</string>
+    <string name="actionbar_position_top_radio_label">Fent</string>
 
     <!--UI Text view label denoting type of action bar -->
     <string name="actionbar_type_heading">Műveletsáv típusa</string>
@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Felirat</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Navigációs ikonra kattintott.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">A navigációs ikonra kattintott.</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Zászló</string>
@@ -48,7 +48,7 @@
     <!-- Text for button that toggles the scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_button">Görgetési viselkedés be- és kikapcsolása</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Navigációs ikon ki-/bekapcsolása</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Navigáció be- és kikapcsolása ikon</string>
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">Avatar megjelenítése</string>
     <!-- Text for button that shows back icon -->
@@ -58,14 +58,14 @@
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">Ikon megjelenítése</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Keresősáv elrendezési stílusának váltása</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Keresősáv elrendezési stílusának be- és kikapcsolása</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
     <string name="app_bar_layout_searchbar_accessory_view_button">Megjelenítés kiegészítő nézetként</string>
     <string name="app_bar_layout_searchbar_action_view_button">Megjelenítés műveletnézetként</string>
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Váltás a témák között (újra létrehozza a tevékenységet)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Téma váltása</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Elem</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -77,7 +77,7 @@
     <string name="avatar_style_square">Négyzetstílus</string>
     <!-- Sizes -->
     <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">Xlarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">Nagy</string>
     <string name="avatar_size_medium">Közepes</string>
     <string name="avatar_size_small">Kicsi</string>
@@ -85,7 +85,7 @@
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Megjelenített avatarok maximális mérete</string>
+    <string name="avatar_group_max_displayed_avatar">Megjelenített avatarok maximális száma</string>
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">Túlcsordulási avatarok száma</string>
     <!-- UI label to show border type -->
@@ -93,13 +93,13 @@
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
     <string name="avatar_group_info">Az OverflowAvatarCount beállítással rendelkező avatarcsoport nem felel meg a megjelenített avatarok maximális számának.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Arcverem</string>
+    <string name="avatar_group_face_stack">Archalom</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">Archalom</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Túlcsordulásra kattintott</string>
+    <string name="avatar_group_overflow_clicked">A túlcsordulásra kattintott</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">Avatarnézet az indexnél %d kattintott</string>
+    <string name="avatar_group_avatar_clicked">A(z) %d indexnél az avatarnézetre kattintott</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -120,17 +120,17 @@
     <string name="bottom_navigation_menu_item_team">Csapat</string>
     <!-- Text for buttons -->
     <string name="bottom_navigation_toggle_labels_button">Címkék be- és kikapcsolása</string>
-    <string name="bottom_navigation_three_menu_items_button">Három menüpont megjelenítése</string>
-    <string name="bottom_navigation_four_menu_items_button">Négy menüpont megjelenítése</string>
-    <string name="bottom_navigation_five_menu_items_button">Öt menüpont megjelenítése</string>
+    <string name="bottom_navigation_three_menu_items_button">Három menüelem megjelenítése</string>
+    <string name="bottom_navigation_four_menu_items_button">Négy menüelem megjelenítése</string>
+    <string name="bottom_navigation_five_menu_items_button">Öt menüelem megjelenítése</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">A címkék %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">A címkék állapota: %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Alsó lap</string>
-    <string name="bottom_sheet_dialog">Alsó lap dianaplója</string>
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Megjelenítés egysoros elemekkel</string>
     <string name="bottom_sheet_with_double_line_items">Megjelenítés kétsoros elemekkel</string>
@@ -142,11 +142,11 @@
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Kattintson %s</string>
+    <string name="contextual_command_prompt_click_item">Kattintás a következőre: %s</string>
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">Hosszú kattintás %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">A bezárás gombra kattintás</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Elem beszúrása</string>
     <!-- Text for button for updating an item-->
@@ -176,7 +176,7 @@
     <!-- Announces link action -->
     <string name="contextual_command_accessibility_link">Hivatkozás</string>
     <!-- UI Label denoting item updating -->
-    <string name="contextual_command_bar_item_update_title">Elem frissítése</string>
+    <string name="contextual_command_bar_item_update_title">Az elem frissül</string>
     <!-- UI Label denoting spacing -->
     <string name="contextual_command_bar_space_title">Térköz</string>
     <!-- UI Label denoting dismiss position -->
@@ -196,19 +196,19 @@
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">Zászló</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Elem megjelölése rákattintva</string>
+    <string name="bottom_sheet_item_flag_toast">Az elem megjelölésére kattintott</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Válasz</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Válaszelemre kattintott</string>
+    <string name="bottom_sheet_item_reply_toast">A válaszelemre kattintott</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Továbbítás</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Elem továbbítása kattintásra</string>
+    <string name="bottom_sheet_item_forward_toast">Az elem továbbítására kattintott</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Törlés</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Elem törlése rákattintva</string>
+    <string name="bottom_sheet_item_delete_toast">Az elem törlésére kattintott</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -223,19 +223,19 @@
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">Fényképek megtekintése</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Katalóguselemre kattintott</string>
+    <string name="bottom_sheet_item_gallery_toast">A katalóguselemre kattintott</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Videók</string>
     <!--UI description label play your videos -->
-    <string name="bottom_sheet_item_videos_subtitle">Videók lejátszása</string>
+    <string name="bottom_sheet_item_videos_subtitle">A videók lejátszása</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Videók elemre kattintott</string>
+    <string name="bottom_sheet_item_videos_toast">A videók elemre kattintott</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Kezelés</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">Műsortár kezelése</string>
+    <string name="bottom_sheet_item_manage_subtitle">A médiatár kezelése</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Elem kezelése kattintással</string>
+    <string name="bottom_sheet_item_manage_toast">Az elem kezelésére kattintott</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">E-mail műveletek</string>
@@ -247,19 +247,19 @@
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Megosztás</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">A megosztási elemre kattintott</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Az elem megosztására kattintott</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Áthelyezés</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Elem áthelyezése rákattintva</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Az elem áthelyezésére kattintott</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Törlés</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Elem törlése rákattintva</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Az elem törlésére kattintott</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Információ</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Információs elemre kattintott</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Az információs elemre kattintott</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Óra</string>
@@ -268,11 +268,11 @@
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Riasztó</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">A riasztási elemre kattintott</string>
+    <string name="bottom_sheet_item_alarm_toast">A riasztáselemre kattintott</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Időzóna</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Időzónaelemre kattintott</string>
+    <string name="bottom_sheet_item_time_zone_toast">Az időzónaelemre kattintott</string>
 
     <!--Button-->
     <!-- text for buttons -->
@@ -284,7 +284,7 @@
     <string name="button_large">Nagy gomb</string>
     <string name="button_large_disabled">Nagy letiltott gomb</string>
     <string name="button_outlined">Körvonalas gomb</string>
-    <string name="button_outlined_disabled">Tagolt letiltott gomb</string>
+    <string name="button_outlined_disabled">Körvonalas letiltott gomb</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Válasszon egy dátumot</string>
@@ -297,11 +297,11 @@
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Nincs kiválasztva dátum</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Megjelenjen a dátumválasztó?</string>
+    <string name="date_time_picker_date_button">Dátumválasztó megjelenítése</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Dátum- és időválasztó megjelenítése a kijelölt dátumlappal</string>
+    <string name="date_time_picker_calendar_date_time_button">Dátum- és időválasztó megjelenítése a kijelölt dátum lappal</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Dátum- és időválasztó megjelenítése a kijelölt időlappal</string>
+    <string name="date_time_picker_date_time_calendar_button">Dátum- és időválasztó megjelenítése a kijelölt idő lappal</string>
     <!-- text for button that shows time picker -->
     <string name="date_time_picker_date_time_button">Dátum- és időválasztó megjelenítése</string>
     <!-- UI label to show date range-->
@@ -319,31 +319,31 @@
     <!-- text for button that selects end date -->
     <string name="date_time_picker_date_end_button">Záró dátum kiválasztása</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">Dátum-időtartomány</string>
+    <string name="date_time_picker_date_time_range_title">Dátum- és időtartomány</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">A dátum- és időtartomány kiválasztása</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">Párbeszédpanel megjelenítése</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
-    <string name="drawer_button">Menü megjelenítése</string>
+    <string name="drawer_button">Fiók megjelenítése</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">Menü párbeszédpanel megjelenítése</string>
+    <string name="drawer_dialog_button">Fiók párbeszédpanel megjelenítése</string>
     <!-- text for button that shows no fade bottom dialog -->
     <string name="no_fade_bottom_dialog_button">Nincs halványuló alsó párbeszédpanel</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Felső fiók megjelenítése</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Nincs halványítási felső párbeszédpanel</string>
+    <string name="no_fade_top_dialog_button">Nincs elhalványuló felső párbeszédpanel</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> Horgonynézet felső párbeszédpaneljének megjelenítése</string>
     <!-- text for button that shows no title top dialog drawer -->
     <string name="no_title_top_dialog_button"> Cím nélküli felső párbeszédpanel megjelenítése</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> A cím alatt megjelenő felső párbeszédpanel</string>
+    <string name="below_title_top_dialog_button"> A cím alatti felső párbeszédpanel megjelenítése</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Jobb oldali fiók megjelenítése</string>
     <!-- text for button that shows left drawer -->
@@ -364,17 +364,17 @@
     <string name="list_item_sub_header_two_line_dense">Kétsoros lista sűrű térközzel</string>
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Kétsoros lista egyéni másodlagos alcímnézettel</string>
     <string name="list_item_sub_header_three_line">Háromsoros lista fekete alfejlécszöveggel</string>
-    <string name="list_item_sub_header_no_custom_views">Egyéni nézetekkel nem rendelkező elemek listázása</string>
-    <string name="list_item_sub_header_large_header">Nagyméretű egyéni nézetekkel rendelkező elemek listázása</string>
-    <string name="list_item_sub_header_wrapped_text">Burkolt szöveget tartalmazó elemek listázása</string>
-    <string name="list_item_sub_header_truncated_text">Elemek listázása csonkolt szöveggel</string>
+    <string name="list_item_sub_header_no_custom_views">Egyéni nézetekkel nem rendelkező listaelemek</string>
+    <string name="list_item_sub_header_large_header">Nagy egyéni nézetekkel rendelkező listaelemek</string>
+    <string name="list_item_sub_header_wrapped_text">Tördelt szöveget tartalmazó listaelemek</string>
+    <string name="list_item_sub_header_truncated_text">Csonkolt szöveget tartalmazó listaelemek</string>
     <string name="list_item_sub_header_custom_accessory_text">Művelet</string>
     <string name="list_item_truncation_middle">Középső csonkolás.</string>
     <string name="list_item_truncation_end">Csonkolás befejezése.</string>
     <string name="list_item_truncation_start">Csonkolás indítása.</string>
     <string name="list_item_custom_text_view">Érték</string>
     <string name="list_item_click">A listaelemre kattintott.</string>
-    <string name="list_item_click_custom_accessory_view">Az egyéni tartozéknézetre kattintott.</string>
+    <string name="list_item_click_custom_accessory_view">Az egyéni kiegészítő nézetre kattintott.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">Az alfejléc egyéni kiegészítő nézetére kattintott.</string>
     <string name="list_item_more_options">További beállítások</string>
 
@@ -389,37 +389,37 @@
     <string name="people_picker_dialog_title_added">Felvett egy általános személyt:</string>
     <string name="people_picker_drag_started">Húzás elindítva</string>
     <string name="people_picker_drag_ended">A húzás befejeződött</string>
-    <string name="people_picker_picked_personas_listener">Általános személyek figyelője</string>
+    <string name="people_picker_picked_personas_listener">Személyfigyelő</string>
     <string name="people_picker_suggestions_listener">Javaslatok figyelője</string>
-    <string name="people_picker_persona_chip_click">A %s kattintott</string>
+    <string name="people_picker_persona_chip_click">A következőre kattintott: %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s címzett</item>
+        <item quantity="other">%1$s címzett</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Állandó bottomSheet kibontása</string>
-    <string name="collapse_persistent_sheet_button"> Állandó bottomSheet elrejtése</string>
-    <string name="show_persistent_sheet_button"> Állandó bottomSheet megjelenítése</string>
+    <string name="expand_bottom_sheet_button">Állandó alsó lap kibontása</string>
+    <string name="collapse_persistent_sheet_button"> Állandó alsó lap elrejtése</string>
+    <string name="show_persistent_sheet_button"> Állandó alsó lap megjelenítése</string>
     <string name="new_view">Ez egy új nézet</string>
-    <string name="toggle_sheet_content">Alsó lap tartalmának be- vagy kikapcsolása</string>
+    <string name="toggle_sheet_content">Alsó lap tartalmának be-/kikapcsolása</string>
     <string name="switch_to_custom_content">Váltás egyéni tartalomra</string>
-    <string name="one_line_content">Egysoros alsó táblázat tartalma</string>
-    <string name="toggle_disable_all_items">Az összes elem letiltásának ki-/bekapcsolása</string>
+    <string name="one_line_content">Egysoros alsó lap tartalma</string>
+    <string name="toggle_disable_all_items">Minden elem letiltásának be-/kikapcsolása</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Nézet hozzáadása/eltávolítása</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Összecsukott magasság módosítása</string>
     <string name="persistent_sheet_item_create_new_folder_title">Új mappa</string>
     <string name="persistent_sheet_item_create_new_folder_toast">Új mappaelemre kattintott</string>
     <string name="persistent_sheet_item_edit_title">Szerkesztés</string>
-    <string name="persistent_sheet_item_edit_toast">Elem szerkesztése kattintással</string>
+    <string name="persistent_sheet_item_edit_toast">Az elem szerkesztésére kattintott</string>
     <string name="persistent_sheet_item_save_title">Mentés</string>
-    <string name="persistent_sheet_item_save_toast">Elem mentése kattintásra</string>
+    <string name="persistent_sheet_item_save_toast">Az elem mentésére kattintott</string>
     <string name="persistent_sheet_item_zoom_in_title">Nagyítás</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> A nagyítás elemre kattintott</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Az elem nagyítására kattintott</string>
     <string name="persistent_sheet_item_zoom_out_title">Kicsinyítés</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Elem kicsinyítésre kattintása</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Az elem kicsinyítésére kattintott</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -452,31 +452,31 @@
     <string name="persona_footer">Elérhető</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">Allan Munger</string>
-    <string name="persona_name_amanda_brady">Dr. Brady</string>
-    <string name="persona_name_ashley_mccarthy">Misai Beáta</string>
-    <string name="persona_name_carlos_slattery">Slattery Andres</string>
-    <string name="persona_name_carole_poland">Éneke Lengyelország</string>
-    <string name="persona_name_cecil_folk">Cécil léni</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
-    <string name="persona_name_charlotte_waltson">Harvey-tason</string>
-    <string name="persona_name_colin_ballinger">Ballinger Balett</string>
-    <string name="persona_name_daisy_phillips">Százszorszépek</string>
-    <string name="persona_name_elliot_woodward">Faanyagú faanyag</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
-    <string name="persona_name_erik_nason">Besenyő Nason</string>
-    <string name="persona_name_henry_brill">Német Brill</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Isaac Fielder</string>
     <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
-    <string name="persona_name_kevin_sturgis">Szabó Imre</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
     <string name="persona_name_kristen_patterson">Kristen Patterson</string>
-    <string name="persona_name_lydia_bauer">Lydia János</string>
-    <string name="persona_name_mauricio_august">Avatási ünnep</string>
-    <string name="persona_name_miguel_garcia">Budai Csaba</string>
-    <string name="persona_name_mona_kane">Dzsonka</string>
-    <string name="persona_name_robin_counts">Multiplexelések száma</string>
-    <string name="persona_name_robert_tolbert">Szabó Norbi</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
     <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
@@ -485,21 +485,21 @@
     <string name="persona_subtitle_manager">Vezető</string>
     <string name="persona_subtitle_researcher">Kutató</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (hosszú szöveges példa csonkítás teszteléséhez)</string>
+    <string name="persona_truncation">\ (hosszú szöveges példa a csonkítás teszteléséhez)</string>
     <string name="persona_view_description_xxlarge">XXLarge avatar három sornyi szöveggel</string>
     <string name="persona_view_description_large">Nagy avatar két sornyi szöveggel</string>
     <string name="persona_view_description_small">Kis avatar egy sornyi szöveggel</string>
-    <string name="people_picker_hint">Nincs megjelenítve mutató</string>
+    <string name="people_picker_hint">Nincs tippel rendelkező megjelenített</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
     <string name="persona_chip_example_disabled">Letiltott általános személy lapka</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Hiba az általános személy lapkáiban</string>
+    <string name="persona_chip_example_error">Hiba az általános személy lapkájában</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Általános személy chipje bezárás ikon nélkül</string>
+    <string name="persona_chip_example_no_icon">Általános személy lapkája bezárás ikon nélkül</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Egyszerű általános személy lapka</string>
+    <string name="persona_chip_example_basic">Alapszintű általános személy lapka</string>
     <!-- UI label showing user action click on a selected persona chip -->
     <string name="persona_chip_example_click">A kijelölt általános személy lapkájára kattintott.</string>
 
@@ -528,17 +528,17 @@
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_outside">Értesítés munkaidőn kívül</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Értesítés, ha inaktív az asztalon</string>
+    <string name="popup_menu_item_notify_inactive">Értesítés, ha nem aktív az asztalon</string>
     <!-- UI message for user action clicked on an item in popup menu -->
     <string name="popup_menu_item_clicked">A következő elemre kattintott:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">Egyszerű menü</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Egyszerű menü2</string>
+    <string name="popup_menu_simple_duo">2. egyszerű menü</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">Menü egy kijelölhető elválasztóval</string>
+    <string name="popup_menu_single_check">Menü egy kijelölhető elemmel és egy elválasztóval</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">Menü az összes kijelölhető elemet, ikont és hosszú szöveget tartalmazó menüvel</string>
+    <string name="popup_menu_all_check">Az összes kijelölhető elemet, ikont és hosszú szöveget tartalmazó menü</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">Megjelenítés</string>
 
@@ -559,7 +559,7 @@
     <!-- UI label showing a Indeterminate progress bar -->
     <string name="linear_progress_indeterminate_label">Határozatlan</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Determinátum</string>
+    <string name="linear_progress_determinate_label">Határozott</string>
 
 
     <!--Shared-->
@@ -569,11 +569,11 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">Keresősáv</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Mikrofon visszahívása</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Automatikus javítás</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Mikrofon megnyomva</string>
     <!-- Announces that right view has been pressed -->
@@ -584,15 +584,15 @@
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Művelet</string>
-    <string name="snackbar_action_long">Hosszú szöveges művelet</string>
-    <string name="snackbar_single_line">Egysoros nasibar</string>
+    <string name="snackbar_action_long">Hosszú szövegművelet</string>
+    <string name="snackbar_single_line">Egysoros tálca</string>
     <string name="snackbar_multiline">Ez egy többsoros nasisáv. A sorok maximális száma kettő, a többi szöveg csonkolódik.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">Ez egy közleményhez tartozó tálca. Az új funkciók kommunikációjára szolgál.</string>
-    <string name="snackbar_primary">Ez egy elsődleges nasisáv.</string>
-    <string name="snackbar_light">Ez egy világos nasisáv.</string>
+    <string name="snackbar_announcement">Ez egy közleményhez tartozó tálca. Az új funkciók kommunikálására szolgál.</string>
+    <string name="snackbar_primary">Ez egy elsődleges tálca.</string>
+    <string name="snackbar_light">Ez egy világos tálca.</string>
     <string name="snackbar_warning">Ez egy figyelmeztető tálca.</string>
-    <string name="snackbar_danger">Ez egy veszélyes nasisáv.</string>
+    <string name="snackbar_danger">Ez egy veszélyes tálca.</string>
     <string name="snackbar_description_single_line">Rövid időtartam</string>
     <string name="snackbar_description_single_line_custom_view">Hosszú időtartam körkörös előrehaladással kis egyéni nézetként</string>
     <string name="snackbar_description_single_line_action">Rövid időtartam művelettel</string>
@@ -604,13 +604,13 @@
     <string name="snackbar_description_multiline_action_custom_view">Rövid időtartam művelettel és közepes egyéni nézettel</string>
     <string name="snackbar_description_multiline_action_long">Rövid időtartam hosszú műveletszöveggel</string>
     <string name="snackbar_description_announcement">Rövid időtartam</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Ez a szöveg frissült.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Nasisáv megjelenítése</string>
+    <string name="snackbar_button_show">Tálca megjelenítése</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Szimpla vonal</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">többvonalas</string>
+    <string name="snackbar_headline_multiline">Többsoros</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Hirdetmény stílusa</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -641,7 +641,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Vízszintes</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(szöveg nélkül)</string>
+    <string name="tabBar_no_text">Szöveg nélkül</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Lapelemek</string>
 
@@ -653,50 +653,50 @@
     <string name="calculate_layouts">100 elrendezés betöltése/kiszámítása</string>
     <string name="template_list">Sablonlista</string>
     <string name="regular_list">Normál lista</string>
-    <string name="cell_example_title">cím cellája</string>
-    <string name="cell_example_description">Leírás: Koppintással módosíthatja a tájolást</string>
+    <string name="cell_example_title">Cím: Cella</string>
+    <string name="cell_example_description">Leírás: Koppintás a tájolás módosításához</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Szabványos füles, 2 szegmens</string>
+    <string name="tab_standard_two_segment">Szabványos lap, 2 szegmens</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Szabványos fül 3 szegmens</string>
+    <string name="tab_standard_three_segment">Szabványos lap, 3 szegmens</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Szabványos füles 4 szegmens</string>
+    <string name="tab_standard_four_segment">Szabványos lap, 4 szegmens</string>
     <!-- Text for button that shows a Standard Tab with pager -->
     <string name="tab_standard_with_pager">Szabványos lap személyhívóval</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Lapváltás</string>
+    <string name="tab_switch">Váltás lap</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Tabulátor </string>
+    <string name="tab_pills">Tabletták lap </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
     <string name="tooltip_button">Koppintson az elemleíráshoz</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Koppintson az egyéni naptár elemleírásához</string>
+    <string name="tooltip_calendar_demo_button">Koppintson az Egyéni naptár elemleíráshoz</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
     <string name="tooltip_custom_button">Koppintson az Egyéni szín elemleírásra</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Koppintson ide a belső elemleírás bezárásához</string>
+    <string name="tooltip_center_button">Koppintson a belső elemleírás bezárásához</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
     <string name="tooltip_custom_view">Koppintson az egyéni nézet elemleírásához</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_top_start_message">Felső egyéni szín elemleírása</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Felső vég elemleírása 10dp eltolásX-eltolással</string>
+    <string name="tooltip_top_end_message">Felső vég elemleírása 10 dp X-eltolással</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_bottom_start_message">Alsó kezdő elemleírás</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Alsó vég elemleírása 10dp eltolással</string>
+    <string name="tooltip_bottom_end_message">Alsó vég elemleírása 10 dp Y-eltolással</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Elemleírás bezárása</string>
+    <string name="tooltip_center_message">A belső elemleírás bezárása</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Elemleírás mellőzve</string>
+    <string name="tooltip_dismiss_message">Elemleírás bezárva</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">A főcím világos 28sp</string>
+    <string name="headline">A címsor világos 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
     <string name="title_1">Az 1. cím közepes 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
