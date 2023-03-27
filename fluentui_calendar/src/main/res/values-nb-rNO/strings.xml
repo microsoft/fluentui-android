@@ -1,140 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
-
 <resources>
-
-    <!-- weekday initials -->
-    <!--Initial that represents the day Monday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="monday_initial" comment="initial for monday">M</string>
-    <!--Initial that represents the day Tuesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="tuesday_initial" comment="initial for tuesday">T</string>
-    <!--Initial that represents the day Wednesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="wednesday_initial" comment="initial for wednesday">O</string>
-    <!--Initial that represents the day Thursday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="thursday_initial" comment="initial for thursday">T</string>
-    <!--Initial that represents the day Friday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="friday_initial" comment="initial for friday">F</string>
-    <!--Initial that represents the day Saturday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="saturday_initial" comment="initial for saturday">L</string>
-    <!--Initial that represents the day Sunday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="sunday_initial" comment="initial for sunday">S</string>
-
-    <!-- accessibility -->
-    <string name="accessibility_goto_next_week">Gå til neste uke</string>
-    <string name="accessibility_goto_previous_week">Gå til forrige uke</string>
-    <string name="accessibility_today">i dag</string>
-    <string name="accessibility_selected">Merket</string>
-
-    <!-- *** Shared *** -->
-    <string name="done">Fullført</string>
-
-    <!-- *** CalendarView *** -->
-    <string name="date_time">%1$s, %2$s</string>
-    <string name="today">I dag</string>
-    <string name="tomorrow">I morgen</string>
-    <string name="yesterday">I går</string>
-
-    <!-- *** TimePicker *** -->
-    <!--date picker tab title for start time range-->
-    <string name="date_time_picker_start_time">Starttidspunkt</string>
-    <!--date picker tab title for end time range-->
-    <string name="date_time_picker_end_time">Sluttidspunkt</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_time_picker_start_date">Startdato</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_time_picker_end_date">Sluttdato</string>
-    <!--date picker dialog title for time selection-->
-    <string name="date_time_picker_choose_time">Velg tidspunkt</string>
-    <!--date picker dialog title for date selection-->
-    <string name="date_time_picker_choose_date">Velg dato</string>
-
-    <!--accessibility-->
-    <!--Announcement for date time picker-->
-    <string name="date_time_picker_accessibility_dialog_title">Dato-/klokkeslettvelger</string>
-    <!--Announcement for date picker-->
-    <string name="date_picker_accessibility_dialog_title">Datovelger</string>
-    <!--Announcement for date time picker range-->
-    <string name="date_time_picker_range_accessibility_dialog_title">Dato-/klokkeslettvelger-intervall</string>
-    <!--Announcement for date picker range-->
-    <string name="date_picker_range_accessibility_dialog_title">Datovelger-intervall</string>
-    <!--date time picker tab title for start time range-->
-    <string name="date_time_picker_accessiblility_start_time">Fane for starttidspunkt</string>
-    <!--date time picker tab title for end time range-->
-    <string name="date_time_picker_accessiblility_end_time">Fane for sluttidspunkt</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_picker_accessiblility_start_date">Fane for startdato</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_picker_accessiblility_end_date">Fane for sluttdato</string>
-    <!--date time picker dialog close button-->
-    <string name="date_time_picker_accessibility_close_dialog_button">Lukk dialogboks</string>
-    <!--date number picker month increment button-->
-    <string name="date_picker_accessibility_increment_month_button">Øk tallet for måneder</string>
-    <!-- date time picker click action next month announcement-->
-    <string name="date_picker_accessibility_next_month_click_action">velg neste måned</string>
-    <!--date number picker month decrement button-->
-    <string name="date_picker_accessibility_decrement_month_button">Reduser tallet for måneder</string>
-    <!-- date time picker click action previous month announcement-->
-    <string name="date_picker_accessibility_previous_month_click_action">velg forrige måned</string>
-    <!--date number picker day increment button-->
-    <string name="date_picker_accessibility_increment_day_button">Øk tallet for dager</string>
-    <!-- date time picker click action next day announcement-->
-    <string name="date_picker_accessibility_next_day_click_action">velg neste dag</string>
-    <!--date number picker day decrement button-->
-    <string name="date_picker_accessibility_decrement_day_button">Reduser tallet for dager</string>
-    <!-- date time picker click action previous day announcement-->
-    <string name="date_picker_accessibility_previous_day_click_action">velg forrige dag</string>
-    <!--date number picker year increment button-->
-    <string name="date_picker_accessibility_increment_year_button">Øk tallet for år</string>
-    <!-- date time picker click action next year announcement-->
-    <string name="date_picker_accessibility_next_year_click_action">velg neste år</string>
-    <!--date number picker year decrement button-->
-    <string name="date_picker_accessibility_decrement_year_button">Reduser tallet for år</string>
-    <!-- date time picker click action previous year announcement-->
-    <string name="date_picker_accessibility_previous_year_click_action">velg forrige år</string>
-    <!--date time number picker date increment button-->
-    <string name="date_time_picker_accessibility_increment_date_button">Øk tallet for dato</string>
-    <!-- date time picker click action next date announcement-->
-    <string name="date_picker_accessibility_next_date_click_action">velg neste dato</string>
-    <!--date time number picker date decrement button-->
-    <string name="date_time_picker_accessibility_decrement_date_button">Reduser tallet for dato</string>
-    <!-- date time picker click action previous date announcement-->
-    <string name="date_picker_accessibility_previous_date_click_action">velg forrige dato</string>
-    <!--date time number picker hour increment button-->
-    <string name="date_time_picker_accessibility_increment_hour_button">Øk tallet for timer</string>
-    <!-- date time picker click action next hour announcement-->
-    <string name="date_picker_accessibility_next_hour_click_action">velg neste time</string>
-    <!--date time number picker hour decrement button-->
-    <string name="date_time_picker_accessibility_decrement_hour_button">Reduser tallet for timer</string>
-    <!-- date time picker click action previous hour announcement-->
-    <string name="date_picker_accessibility_previous_hour_click_action">velg forrige time</string>
-    <!--date time number picker minute increment button-->
-    <string name="date_time_picker_accessibility_increment_minute_button">Øk tallet for minutter</string>
-    <!-- date time picker click action next minute announcement-->
-    <string name="date_picker_accessibility_next_minute_click_action">velg neste minutt</string>
-    <!--date time number picker minute decrement button-->
-    <string name="date_time_picker_accessibility_decrement_minute_button">Reduser tallet for minutter</string>
-    <!-- date time picker click action previous minute announcement-->
-    <string name="date_picker_accessibility_previous_minute_click_action">velg forrige minutt</string>
-    <!--date time number picker period (am/pm) toggle button-->
-    <string name="date_time_picker_accessibility_period_toggle_button">Veksle for AM-/PM-periode</string>
-    <!--date time number picker click action period (am/pm) announcement-->
-    <string name="date_time_picker_accessibility_period_toggle_click_action">veksle for AM-/PM-periode</string>
-    <!--Announces the selected date and/or time-->
-    <string name="date_time_picker_accessibility_selected_date">%s er valgt</string>
-
-    <!-- *** Calendar *** -->
-
-    <!--accessibility-->
-    <!--Describes the action used to select calendar item-->
-    <string name="calendar_adapter_accessibility_item_selected">valgt</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">T</string>
+  <string name="wednesday_initial">O</string>
+  <string name="thursday_initial">T</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">L</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">Gå til neste uke</string>
+  <string name="accessibility_goto_previous_week">Gå til forrige uke</string>
+  <string name="accessibility_today">i dag</string>
+  <string name="accessibility_selected">Merket</string>
+  <string name="done">Fullført</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">I dag</string>
+  <string name="tomorrow">I morgen</string>
+  <string name="yesterday">I går</string>
+  <string name="date_time_picker_start_time">Starttidspunkt</string>
+  <string name="date_time_picker_end_time">Sluttidspunkt</string>
+  <string name="date_time_picker_start_date">Startdato</string>
+  <string name="date_time_picker_end_date">Sluttdato</string>
+  <string name="date_time_picker_choose_time">Velg tidspunkt</string>
+  <string name="date_time_picker_choose_date">Velg dato</string>
+  <string name="date_time_picker_accessibility_dialog_title">Dato-/klokkeslettvelger</string>
+  <string name="date_picker_accessibility_dialog_title">Datovelger</string>
+  <string name="date_time_picker_range_accessibility_dialog_title">Dato-/klokkeslettvelger-intervall</string>
+  <string name="date_picker_range_accessibility_dialog_title">Datovelger-intervall</string>
+  <string name="date_time_picker_accessiblility_start_time">Fane for starttidspunkt</string>
+  <string name="date_time_picker_accessiblility_end_time">Fane for sluttidspunkt</string>
+  <string name="date_picker_accessiblility_start_date">Fane for startdato</string>
+  <string name="date_picker_accessiblility_end_date">Fane for sluttdato</string>
+  <string name="date_time_picker_accessibility_close_dialog_button">Lukk dialogboks</string>
+  <string name="date_picker_accessibility_increment_month_button">Øk tallet for måneder</string>
+  <string name="date_picker_accessibility_next_month_click_action">velg neste måned</string>
+  <string name="date_picker_accessibility_decrement_month_button">Reduser tallet for måneder</string>
+  <string name="date_picker_accessibility_previous_month_click_action">velg forrige måned</string>
+  <string name="date_picker_accessibility_increment_day_button">Øk tallet for dager</string>
+  <string name="date_picker_accessibility_next_day_click_action">velg neste dag</string>
+  <string name="date_picker_accessibility_decrement_day_button">Reduser tallet for dager</string>
+  <string name="date_picker_accessibility_previous_day_click_action">velg forrige dag</string>
+  <string name="date_picker_accessibility_increment_year_button">Øk tallet for år</string>
+  <string name="date_picker_accessibility_next_year_click_action">velg neste år</string>
+  <string name="date_picker_accessibility_decrement_year_button">Reduser tallet for år</string>
+  <string name="date_picker_accessibility_previous_year_click_action">velg forrige år</string>
+  <string name="date_time_picker_accessibility_increment_date_button">Øk tallet for dato</string>
+  <string name="date_picker_accessibility_next_date_click_action">velg neste dato</string>
+  <string name="date_time_picker_accessibility_decrement_date_button">Reduser tallet for dato</string>
+  <string name="date_picker_accessibility_previous_date_click_action">velg forrige dato</string>
+  <string name="date_time_picker_accessibility_increment_hour_button">Øk tallet for timer</string>
+  <string name="date_picker_accessibility_next_hour_click_action">velg neste time</string>
+  <string name="date_time_picker_accessibility_decrement_hour_button">Reduser tallet for timer</string>
+  <string name="date_picker_accessibility_previous_hour_click_action">velg forrige time</string>
+  <string name="date_time_picker_accessibility_increment_minute_button">Øk tallet for minutter</string>
+  <string name="date_picker_accessibility_next_minute_click_action">velg neste minutt</string>
+  <string name="date_time_picker_accessibility_decrement_minute_button">Reduser tallet for minutter</string>
+  <string name="date_picker_accessibility_previous_minute_click_action">velg forrige minutt</string>
+  <string name="date_time_picker_accessibility_period_toggle_button">Veksle for AM-/PM-periode</string>
+  <string name="date_time_picker_accessibility_period_toggle_click_action">veksle for AM-/PM-periode</string>
+  <string name="date_time_picker_accessibility_selected_date">%s er valgt</string>
+  <string name="calendar_adapter_accessibility_item_selected">valgt</string>
 </resources>

@@ -6,12 +6,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Sýniútgáfa Fluent UI</string>
-    <string name="app_title">Fluent UI</string>
+    <string name="app_name">Sýniútgáfa af notendaviðmóti Fluent</string>
+    <string name="app_title">Notendaviðmót Fluent</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">%s var valið</string>
     <string name="app_modifiable_parameters">Breytanlegar færibreytur</string>
-    <string name="app_right_accessory_view">Hægra aukabúnaðaryfirlit</string>
+    <string name="app_right_accessory_view">Aukayfirlit hægra megin</string>
 
     <string name="app_style">Stíll</string>
     <!-- describes an action, icon pressed -->
@@ -21,7 +21,7 @@
     <!-- Text for button that starts the demo -->
     <string name="actionbar_start_button">Hefja sýniútgáfu</string>
     <!-- Texts for radio buttons -->
-    <string name="actionbar_carousel_radio_label">Hringekja</string>
+    <string name="actionbar_carousel_radio_label">Myndaræma</string>
     <string name="actionbar_icon_radio_label">Tákn</string>
     <string name="actionbar_basic_radio_label">Almennt</string>
     <string name="actionbar_position_bottom_radio_label">Neðst</string>
@@ -34,38 +34,38 @@
 
     <!--AppBar-->
     <string name="app_bar_style">Stíll forritastiku</string>
-    <string name="app_bar_subtitle">Skjátexti</string>
+    <string name="app_bar_subtitle">Undirtitill</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Smellt á yfirlitstákn.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">Smellt á „Yfirlitstákn“.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">Flagga</string>
+    <string name="app_bar_layout_menu_flag">Flagg</string>
     <string name="app_bar_layout_menu_settings">Stillingar</string>
     <string name="app_bar_layout_menu_search">Leita</string>
     <!-- UI Text that shows the type of scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Flettihegðun: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">Víhnappur fyrir flettingarvirkni</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Víxla flettihegðun</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Kveikja/stækka yfirlitstákn</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Víxla yfirlitstákni</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">Sýna spilaramynd</string>
+    <string name="app_bar_layout_show_avatar_button">Sýna notandapersónu</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Sýna afturtákn</string>
+    <string name="app_bar_layout_show_back_icon_button">Sýna táknið „til baka“</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">Fela tákn</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">Sýna tákn</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Víxla útliti leitarstiku</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Víxla útlitsstíl leitarstiku</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Sýna sem aukabúnaðaryfirlit</string>
-    <string name="app_bar_layout_searchbar_action_view_button">Sýna sem aðgerðayfirlit</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Sýna sem aukayfirlit</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Sýna sem aðgerðaryfirlit</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Skipta á milli þema (endurtekur virkni)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">Skipta á milli þema (endurskapar virkni)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Víxla þema</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Atriði</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -73,43 +73,43 @@
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">Hringstíll</string>
-    <string name="avatar_style_square">Ferningsstíll</string>
+    <string name="avatar_style_circle">Hringlaga stíll</string>
+    <string name="avatar_style_square">Ferningslaga stíll</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">XLarge</string>
-    <string name="avatar_size_large">Stór</string>
-    <string name="avatar_size_medium">Miðlungs</string>
-    <string name="avatar_size_small">Lítill</string>
-    <string name="avatar_size_xsmall">XSmall</string>
+    <string name="avatar_size_xxlarge">XXL</string>
+    <string name="avatar_size_xlarge">XL</string>
+    <string name="avatar_size_large">L</string>
+    <string name="avatar_size_medium">M</string>
+    <string name="avatar_size_small">S</string>
+    <string name="avatar_size_xsmall">XS</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Hámarksbirt notandamynd</string>
+    <string name="avatar_group_max_displayed_avatar">Hámarksfjöldi birtra notandapersóna</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">Fjöldi yfirflæðismynda</string>
+    <string name="avatar_group_overflow_avatar_count">Yfirflæði á talningu notandapersónu</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Gerð ramma:</string>
+    <string name="avatar_group_border_type">Gerð ramma</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">Notandamyndahópur með overflowAvatarCount set mun ekki fylgja hámarksfjörgum notandamyndum.</string>
+    <string name="avatar_group_info">Hópur notandapersóna með OverflowAvatarCount stillt mun ekki fylgja hámarksfjölda birtra notandapersóna.</string>
     <!-- UI label showing face stack type of avatar group -->
     <string name="avatar_group_face_stack">Andlitsstafli</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">Hrúgur í andliti</string>
+    <string name="avatar_group_face_pile">Andlitsbunki</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Smellt á yfirflæði</string>
+    <string name="avatar_group_overflow_clicked">Smellt á „Yfirflæði“</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">%d smellt á AvatarView í atriðaskrá %d</string>
+    <string name="avatar_group_avatar_clicked">Smellt á AvatarView í atriðaskrá %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
-    <string name="badge_notification_badge">Notification Badge</string>
+    <string name="badge_notification_badge">Tilkynningatákn</string>
     <!--UI Label for dot notification -->
     <string name="badge_notification_dot">Punktur</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
     <string name="badge_notification_list">Listi</string>
     <!--UI Label for notification shown in character used in vertical Tab -->
-    <string name="badge_notification_character">Karakter</string>
+    <string name="badge_notification_character">Stafur</string>
 
     <!--BottomNavigation-->
     <!--UI Labels -->
@@ -117,11 +117,11 @@
     <string name="bottom_navigation_menu_item_news">Fréttir</string>
     <string name="bottom_navigation_menu_item_alerts">Viðvaranir</string>
     <string name="bottom_navigation_menu_item_calendar">Dagbók</string>
-    <string name="bottom_navigation_menu_item_team">Lið</string>
+    <string name="bottom_navigation_menu_item_team">Hópur</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">Víbreyta merkjum</string>
+    <string name="bottom_navigation_toggle_labels_button">Víxla merkjum</string>
     <string name="bottom_navigation_three_menu_items_button">Sýna þrjú valmyndaratriði</string>
-    <string name="bottom_navigation_four_menu_items_button">Sýna fjögurra valmyndaratriða</string>
+    <string name="bottom_navigation_four_menu_items_button">Sýna fjögur valmyndaratriði</string>
     <string name="bottom_navigation_five_menu_items_button">Sýna fimm valmyndaratriði</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
@@ -133,26 +133,26 @@
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Sýna með atriðum í einni línu</string>
-    <string name="bottom_sheet_with_double_line_items">Sýna með atriðum í tvöföldum línum</string>
-    <string name="bottom_sheet_with_single_line_header">Sýna með einni línuhaus</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Sýna með tvöfaldum línuhaus og deildum</string>
+    <string name="bottom_sheet_with_double_line_items">Sýna með atriðum í tveimur línum</string>
+    <string name="bottom_sheet_with_single_line_header">Sýna með haus í einni línu</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Sýna með haus og skiptingu í tveimur línum</string>
     <string name="bottom_sheet_dialog_button">Sýna</string>
     <string name="drawer_content_desc_collapse_state">Stækka</string>
-    <string name="drawer_content_desc_expand_state">Minnka</string>
+    <string name="drawer_content_desc_expand_state">Fela</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Smelltu %s</string>
+    <string name="contextual_command_prompt_click_item">Smellt á %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">Smella lengi %s</string>
+    <string name="contextual_command_prompt_long_click_item">Smella lengi á %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Smella á hafna</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Setja inn atriði</string>
     <!-- Text for button for updating an item-->
     <string name="contextual_command_update_item">Uppfæra atriði</string>
     <!-- Announces dismiss action -->
-    <string name="contextual_command_accessibility_dismiss">Hunsa</string>
+    <string name="contextual_command_accessibility_dismiss">Hafna</string>
     <!-- Announces add action -->
     <string name="contextual_command_accessibility_add">Bæta við</string>
     <!-- Announces mention action -->
@@ -178,37 +178,37 @@
     <!-- UI Label denoting item updating -->
     <string name="contextual_command_bar_item_update_title">Uppfærsla atriðis</string>
     <!-- UI Label denoting spacing -->
-    <string name="contextual_command_bar_space_title">Millibil</string>
+    <string name="contextual_command_bar_space_title">Bil</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">Hunsa staðsetningu</string>
+    <string name="contextual_command_bar_dismiss_position">Hafna staðsetningu</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">BYRJA</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">LJÚKA</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">Hópsvæði</string>
     <!-- UI bar label denoting the space between items -->
     <string name="contextual_command_bar_item_space_title">Svæði atriðis</string>
     <!-- UI bar label denoting the space in number value dp's -->
-    <string name="contextual_command_bar_space_value">%d DP</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">Flagga</string>
+    <string name="bottom_sheet_item_flag_title">Flagg</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Smellt á flaggatriði</string>
+    <string name="bottom_sheet_item_flag_toast">Smellt á „Flaggatriði“</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Svara</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Smellt á svaratriði</string>
+    <string name="bottom_sheet_item_reply_toast">Smellt á „Svaratriði“</string>
     <!--UI Label for item forward-->
-    <string name="bottom_sheet_item_forward_title">Áfram</string>
+    <string name="bottom_sheet_item_forward_title">Framsenda</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Smellt á framsendingaratriði</string>
+    <string name="bottom_sheet_item_forward_toast">Smellt á „Framsenda atriði“</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Eyða</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Smellt á eyða atriði</string>
+    <string name="bottom_sheet_item_delete_toast">Smellt á „Eyða atriði“</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Notandapersóna</string>
     <!--Double line items-->
@@ -217,25 +217,25 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Taka mynd</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Smellt á myndavélaratriði</string>
+    <string name="bottom_sheet_item_camera_toast">Smellt á „Myndavélaratriði“</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Gallerí</string>
     <!--UI description label view your photos-->
-    <string name="bottom_sheet_item_gallery_subtitle">Skoða myndirnar þínar</string>
+    <string name="bottom_sheet_item_gallery_subtitle">Skoðaðu myndirnar þínar</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Smellt á galleríatriði</string>
+    <string name="bottom_sheet_item_gallery_toast">Smellt á „Galleríatriði“</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Myndskeið</string>
     <!--UI description label play your videos -->
-    <string name="bottom_sheet_item_videos_subtitle">Spila myndböndin þín</string>
+    <string name="bottom_sheet_item_videos_subtitle">Spilaðu myndböndin þín</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Smellt á myndbandsatriði</string>
+    <string name="bottom_sheet_item_videos_toast">Smellt á „Myndbandsatriði“</string>
     <!--UI Label for item manage-->
-    <string name="bottom_sheet_item_manage_title">Stjórnun</string>
+    <string name="bottom_sheet_item_manage_title">Stjórna</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">Stjórna efnissafninu þínu</string>
+    <string name="bottom_sheet_item_manage_subtitle">Stjórnaðu geymslumiðlasafninu þínu</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Smellt á stjórna atriði</string>
+    <string name="bottom_sheet_item_manage_toast">Smellt á „Stjórna atriði“</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">Aðgerðir tölvupósts</string>
@@ -243,48 +243,48 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Skjöl</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Síðast uppfært klukkan 14:00</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Síðast uppfært kl. 14:14</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Deila</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Smellt á "Deila atriði"</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Smellt á „Deila atriði“</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Færa</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Smellt á færa atriði</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Smellt á „Færa atriði“</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Eyða</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Smellt á eyða atriði</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Smellt á „Eyða atriði“</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Upplýsingar</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Smellt á upplýsingaatriði</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Smellt á „Upplýsingaatriði“</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Klukka</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Smellt á klukkuatriði</string>
+    <string name="bottom_sheet_item_clock_toast">Smellt á „Klukkuatriði“</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Áminning</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Smellt á vekjaraatriði</string>
+    <string name="bottom_sheet_item_alarm_toast">Smellt á „Viðvörunaratriði“</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Tímabelti</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Smellt á tímabeltisatriði</string>
+    <string name="bottom_sheet_item_time_zone_toast">Smellt á „Tímabeltisatriði“</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Hnappur</string>
     <string name="buttonbar">Hnappastika</string>
-    <string name="button_disabled">Hnappur til að gera óvirkt</string>
+    <string name="button_disabled">Hnappur fyrir óvirkt</string>
     <string name="button_borderless">Rammalaus hnappur</string>
-    <string name="button_borderless_disabled">Rammalaus hnappur óvirkur</string>
+    <string name="button_borderless_disabled">Rammalaus hnappur fyrir óvirkt</string>
     <string name="button_large">Stór hnappur</string>
-    <string name="button_large_disabled">Hnappur fyrir stórt óvirkt</string>
-    <string name="button_outlined">Hnappur fyrir efnisskipan</string>
-    <string name="button_outlined_disabled">Hnappur fyrir útlínu óvirkt</string>
+    <string name="button_large_disabled">Stór hnappur fyrir óvirkt</string>
+    <string name="button_outlined">Hnappur með útlínum</string>
+    <string name="button_outlined_disabled">Hnappur með útlínum fyrir óvirkt</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Velja dagsetningu</string>
@@ -297,31 +297,31 @@
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Engin dagsetning valin</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Show date picker</string>
+    <string name="date_time_picker_date_button">Sýna dagsetningarval</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Sýna val á dagsetningu og tíma með dagsetningarflipa valinn</string>
+    <string name="date_time_picker_calendar_date_time_button">Sýna val á dagsetningu/tíma með dagsetningarflipa valinn</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Sýna val á dagsetningu og tíma með tímaflipa valinn</string>
+    <string name="date_time_picker_date_time_calendar_button">Sýna val á dagsetningu/tíma með tímaflipa valinn</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Sýna val á dagsetningu og tíma</string>
+    <string name="date_time_picker_date_time_button">Sýna val á dagsetningu/tíma</string>
     <!-- UI label to show date range-->
-    <string name="date_time_picker_date_range_title">Tímabil</string>
+    <string name="date_time_picker_date_range_title">Dagsetningabil</string>
     <!-- UI label showing start of the range-->
     <string name="date_time_picker_date_range_start_title">Hefst:</string>
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Lýkur:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Ekkert byrjað að velja</string>
+    <string name="date_time_picker_date_start_picked_default">Ekkert upphaf valið</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">Ekkert valið enda</string>
+    <string name="date_time_picker_date_end_picked_default">Engin lok valin</string>
     <!-- text for button that selects start date -->
-    <string name="date_time_picker_date_start_button">Velja upphafsdag</string>
+    <string name="date_time_picker_date_start_button">Velja upphafsdagsetningu</string>
     <!-- text for button that selects end date -->
-    <string name="date_time_picker_date_end_button">Velja lokadag</string>
+    <string name="date_time_picker_date_end_button">Velja lokadagsetningu</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">Tímabil dagsetningar</string>
+    <string name="date_time_picker_date_time_range_title">Dagsetningarbil og tími</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Velja dagsetningarbil og tíma</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
@@ -333,19 +333,19 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Sýna skúffuglugga</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Enginn svargluggi dofnaður neðst</string>
+    <string name="no_fade_bottom_dialog_button">Enginn deyfður gluggi neðst</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Sýna efstu skúffu</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Svargluggi ekki dofna efst</string>
+    <string name="no_fade_top_dialog_button">Ekki deyfður gluggi efst</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> Sýna glugga akkor-yfirlits að ofan</string>
+    <string name="anchor_view_top_dialog_button"> Sýna fest yfirlit efst í glugga</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Sýna engan svarglugga titils efst</string>
+    <string name="no_title_top_dialog_button"> Sýna glugga efst með engum titli</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Sýna glugga fyrir neðan titil efst</string>
+    <string name="below_title_top_dialog_button"> Sýna í efsta glugga undir titli</string>
     <!-- text for button that shows right drawer -->
-    <string name="drawer_right_dialog_button">Sýna skúffu til hægri</string>
+    <string name="drawer_right_dialog_button">Sýna hægri skúffu</string>
     <!-- text for button that shows left drawer -->
     <string name="drawer_left_dialog_button">Sýna vinstri skúffu</string>
 
@@ -353,73 +353,73 @@
     <!-- Title -->
     <string name="list_item_title">Titill, aðaltexti</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">Skjátexti, aukatexti</string>
+    <string name="list_item_subtitle">Undirtitill, aukatexti</string>
     <!-- secondary subtitle -->
-    <string name="list_item_secondary_subtitle">Sérsniðinn skjátexti</string>
+    <string name="list_item_secondary_subtitle">Sérsniðinn texti undirfyrirsagnar</string>
     <!-- Footer -->
-    <string name="list_item_footer">Síðufótur, hraðtexti</string>
+    <string name="list_item_footer">Síðufótur, samantekinn texti</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">Einnar línu listi með gráum undirhaustexta</string>
-    <string name="list_item_sub_header_two_line">Tveggja lína listi</string>
-    <string name="list_item_sub_header_two_line_dense">Tveggja lína listi með þéttu bili</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Tveir línulisti með sérsniðnu aukaskjátextayfirliti</string>
-    <string name="list_item_sub_header_three_line">Þriggja lína listi með svörtum undirhaustexta</string>
-    <string name="list_item_sub_header_no_custom_views">Listaatriði með engum sérstilltum yfirlitum</string>
-    <string name="list_item_sub_header_large_header">Listaatriði með stórum sérstilltum yfirlitum</string>
-    <string name="list_item_sub_header_wrapped_text">Atriðalistaatriði með skriðnum texta</string>
-    <string name="list_item_sub_header_truncated_text">Birta atriði með stýfðum texta</string>
+    <string name="list_item_sub_header_single_line">Einnar línu listi með gráum texta í undirfyrirsögn</string>
+    <string name="list_item_sub_header_two_line">Tveggja línu listi</string>
+    <string name="list_item_sub_header_two_line_dense">Tveggja línu listi með þjöppuðu bili</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Tveggja línu listi með sérsniðnu aukayfirliti í undirfyrirsögn</string>
+    <string name="list_item_sub_header_three_line">Þriggja línu listi með svörtum texta í undirfyrirsögn</string>
+    <string name="list_item_sub_header_no_custom_views">Birta atriði með engum sérsniðnum yfirlitum</string>
+    <string name="list_item_sub_header_large_header">Birta atriði með stórum sérsniðnum yfirlitum</string>
+    <string name="list_item_sub_header_wrapped_text">Birta atriði með þjöppuðum texta</string>
+    <string name="list_item_sub_header_truncated_text">Birta atriði með styttum texta</string>
     <string name="list_item_sub_header_custom_accessory_text">Aðgerð</string>
-    <string name="list_item_truncation_middle">Miðstýfing.</string>
-    <string name="list_item_truncation_end">Ljúka stýfingu.</string>
-    <string name="list_item_truncation_start">Hefja stýfingu.</string>
+    <string name="list_item_truncation_middle">Stytting í miðju.</string>
+    <string name="list_item_truncation_end">Ljúka styttingu.</string>
+    <string name="list_item_truncation_start">Hefja styttingu.</string>
     <string name="list_item_custom_text_view">Gildi</string>
     <string name="list_item_click">Þú smelltir á listaatriðið.</string>
-    <string name="list_item_click_custom_accessory_view">Þú smelltir á sérsniðna aukabúnaðaryfirlitið.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Þú smelltir á sérsniðna aukabúnaðaryfirlit undirhaussins.</string>
+    <string name="list_item_click_custom_accessory_view">Þú smelltir á sérsniðið aukayfirlit.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Þú smelltir á sérsniðið aukayfirlit undirhauss.</string>
     <string name="list_item_more_options">Fleiri valkostir</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Velja</string>
-    <string name="people_picker_select_deselect_example">Velja val</string>
-    <string name="people_picker_none_example">Ekkert</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">Enginn</string>
     <string name="people_picker_delete_example">Eyða</string>
     <string name="people_picker_custom_persona_description">Þetta dæmi sýnir hvernig á að búa til sérsniðinn IPersona-hlut.</string>
     <string name="people_picker_dialog_title_removed">Þú fjarlægðir persónu:</string>
     <string name="people_picker_dialog_title_added">Þú bættir við persónu:</string>
-    <string name="people_picker_drag_started">Draga hafið</string>
-    <string name="people_picker_drag_ended">Draga lauk</string>
-    <string name="people_picker_picked_personas_listener">Personas Listener</string>
+    <string name="people_picker_drag_started">Byrjað að draga</string>
+    <string name="people_picker_drag_ended">Búið að draga</string>
+    <string name="people_picker_picked_personas_listener">Persónur að hlusta</string>
     <string name="people_picker_suggestions_listener">Tillögur frá hlustanda</string>
     <string name="people_picker_persona_chip_click">Þú smelltir á %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s viðtakandi</item>
+        <item quantity="other">%1$s viðtakendur</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Stækka viðvarandi neðsta neðsta blað</string>
-    <string name="collapse_persistent_sheet_button"> Fela viðvarandi neðsta neðsta blað</string>
+    <string name="expand_bottom_sheet_button">Stækka viðvarandi neðsta blað</string>
+    <string name="collapse_persistent_sheet_button"> Fela viðvarandi neðsta blað</string>
     <string name="show_persistent_sheet_button"> Sýna viðvarandi neðsta blað</string>
     <string name="new_view">Þetta er nýtt yfirlit</string>
-    <string name="toggle_sheet_content">Víhnappur innihalds neðsta blaðs</string>
+    <string name="toggle_sheet_content">Víxla efni neðsta blaðs</string>
     <string name="switch_to_custom_content">Skipta yfir í sérsniðið efni</string>
-    <string name="one_line_content">Efni í einni línu neðst á síðu</string>
-    <string name="toggle_disable_all_items">Slökkva/slökkva á öllum atriðum</string>
+    <string name="one_line_content">Efni í einni línu á neðsta blaði</string>
+    <string name="toggle_disable_all_items">Velja „Gera öll atriði óvirk“</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Bæta við/fjarlægja yfirlit</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Breyta samandreginni hæð</string>
     <string name="persistent_sheet_item_create_new_folder_title">Ný mappa</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Smellt á nýtt möppuatriði</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Smellt á „Nýtt möppuatriði“</string>
     <string name="persistent_sheet_item_edit_title">Breyta</string>
-    <string name="persistent_sheet_item_edit_toast">Smellt á Breyta atriði</string>
+    <string name="persistent_sheet_item_edit_toast">Smellt á „Breyta atriði“</string>
     <string name="persistent_sheet_item_save_title">Vista</string>
-    <string name="persistent_sheet_item_save_toast">Smellt á vista atriði</string>
+    <string name="persistent_sheet_item_save_toast">Smellt á „Vista atriði“</string>
     <string name="persistent_sheet_item_zoom_in_title">Auka aðdrátt</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Smellt á aðdrátt að atriði</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Smellt á „Auka aðdrátt“</string>
     <string name="persistent_sheet_item_zoom_out_title">Minnka aðdrátt</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Smellt á aðdráttaratriði</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Smellt á „Minnka aðdrátt“</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -456,7 +456,7 @@
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
     <string name="persona_name_carole_poland">Carole Poland</string>
-    <string name="persona_name_cecil_folk">Cecil-alþýðuletur</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
     <string name="persona_name_colin_ballinger">Colin Ballinger</string>
@@ -465,14 +465,14 @@
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
     <string name="persona_name_erik_nason">Erik Nason</string>
     <string name="persona_name_henry_brill">Henry Brill</string>
-    <string name="persona_name_isaac_fielder">Isaac-reitari</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
     <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">Kristen-mynstur</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
-    <string name="persona_name_mauricio_august">Mauricio ágúst</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
     <string name="persona_name_mona_kane">Mona Kane</string>
     <string name="persona_name_robin_counts">Robin Counts</string>
@@ -482,40 +482,40 @@
     <!-- Designations -->
     <string name="persona_subtitle_designer">Hönnuður</string>
     <string name="persona_subtitle_engineer">Verkfræðingur</string>
-    <string name="persona_subtitle_manager">Yfirmaður</string>
+    <string name="persona_subtitle_manager">Stjórnandi</string>
     <string name="persona_subtitle_researcher">Heimildaleit</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (langt textadæmi til að prófa styttingu)</string>
-    <string name="persona_view_description_xxlarge">XXLarge-notandamynd með þremur textalínum</string>
+    <string name="persona_truncation">\ (dæmi með löngum texta til að prófa styttingu)</string>
+    <string name="persona_view_description_xxlarge">XXL notandapersóna með þremur textalínum</string>
     <string name="persona_view_description_large">Stór notandamynd með tveimur línum af texta</string>
     <string name="persona_view_description_small">Lítil notandamynd með einni textalínu</string>
-    <string name="people_picker_hint">Ekkert með ábendingu sýnd</string>
+    <string name="people_picker_hint">Ekkert með ábendingu sýnt</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Fatlaður Persónukubbur</string>
+    <string name="persona_chip_example_disabled">Óvirk persónuflís</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Villupersóna</string>
+    <string name="persona_chip_example_error">Villa í persónuflís</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Persónutákn með engu nándartákni</string>
+    <string name="persona_chip_example_no_icon">Persónuflís með engu tákni fyrir lokun</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Einfaldar persónukubbur</string>
+    <string name="persona_chip_example_basic">Venjuleg persónuflís</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Þú smelltir á valda Persónulögun.</string>
+    <string name="persona_chip_example_click">Þú smelltir valda persónuflís.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
     <string name="popup_menu_item_share">Deila</string>
     <!-- UI label for item follow -->
-    <string name="popup_menu_item_follow">Fylgjast með</string>
+    <string name="popup_menu_item_follow">Fylgja</string>
     <!-- UI label for item invite people -->
     <string name="popup_menu_item_invite_people">Bjóða fólki</string>
     <!-- UI label for item refresh page -->
-    <string name="popup_menu_item_refresh_page">Uppfæra síðu</string>
+    <string name="popup_menu_item_refresh_page">Endurhlaða síðu</string>
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">Opna í vafra</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">Þetta er sprettivalmynd fyrir marga línu. Hámarkslínur eru stilltar á tvær, afgangurinn af textanum stýfur.
+    <string name="popup_menu_item_multiline">Þetta er sprettivalmynd með mörgum línum. Hámarkslínur eru stilltar á tvær, afgangurinn af textanum verður styttur.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">Allar fréttir</string>
@@ -528,7 +528,7 @@
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_outside">Láta vita utan vinnutíma</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Tilkynna þegar þú óvirk(ur) á skjáborði</string>
+    <string name="popup_menu_item_notify_inactive">Láta vita þegar óvirk(ur) á skjáborði</string>
     <!-- UI message for user action clicked on an item in popup menu -->
     <string name="popup_menu_item_clicked">Þú smelltir á atriðið:</string>
     <!-- UI label that shows simple pop up menu -->
@@ -536,30 +536,30 @@
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple_duo">Einföld valmynd2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">Valmynd með einu atriði sem hægt er að velja og skiltákni</string>
+    <string name="popup_menu_single_check">Valmynd með einu veljanlegu atriði og skiltákni</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">Valmynd með öllum völdum atriðum, táknum og löngum texta</string>
+    <string name="popup_menu_all_check">Valmynd með öllum veljanlegum atriðum, táknum og löngum texta</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">Sýna</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">Hringframvinda</string>
-    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress">Hringlaga framvinda</string>
+    <string name="circular_progress_xsmall">XS</string>
     <string name="circular_progress_xsmall_size">20dp</string>
-    <string name="circular_progress_small">Lítill</string>
+    <string name="circular_progress_small">S</string>
     <string name="circular_progress_small_size">24dp</string>
-    <string name="circular_progress_medium">Miðlungs</string>
-    <string name="circular_progress_medium_size">Þriðja vikan</string>
-    <string name="circular_progress_large">Stór</string>
+    <string name="circular_progress_medium">M</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">L</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
     <string name="linear_progress">Línuleg framvinda</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">Ákveða ekki</string>
+    <string name="linear_progress_indeterminate_label">Óákveðið</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Ákveða</string>
+    <string name="linear_progress_determinate_label">Ákveðið</string>
 
 
     <!--Shared-->
@@ -573,44 +573,44 @@
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Svarhringing með hljóðnema</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Sjálfvirk leiðrétting</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Ýtt á hljóðnema</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">Ýtt á hægri skoðun</string>
+    <string name="searchbar_right_view_pressed">Ýtt á hægra yfirlit</string>
     <!-- Announces that keyboard search has been pressed -->
     <string name="searchbar_keyboard_search_pressed">Ýtt á lyklaborðsleit</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Aðgerð</string>
-    <string name="snackbar_action_long">Löng textaaðgerð</string>
-    <string name="snackbar_single_line">Snarlstika með einni línu</string>
-    <string name="snackbar_multiline">Þetta er snarlstika með mörgum línum. Hámarkslínur eru stilltar á tvær, afgangurinn af textanum stýfur.
+    <string name="snackbar_action_long">Aðgerð með löngum texta</string>
+    <string name="snackbar_single_line">Snakkstika með einni línu</string>
+    <string name="snackbar_multiline">Þetta er snakkstika með mörgum línum. Hámarkslínur eru stilltar á tvær, afgangurinn af textanum verður styttur.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">Þetta er snakkstika með tilkynningu. Það er notað til að miðla nýjum eiginleikum.</string>
-    <string name="snackbar_primary">Þetta er aðalsnarbar.</string>
-    <string name="snackbar_light">Þetta er létt snarlstika.</string>
-    <string name="snackbar_warning">Þetta er viðvörunarsnarbar.</string>
-    <string name="snackbar_danger">Þetta er hættulegt snarl.</string>
-    <string name="snackbar_description_single_line">Stutt tímalengd</string>
-    <string name="snackbar_description_single_line_custom_view">Löng tímalengd með hringframvindu eins og lítið sérsniðið yfirlit</string>
-    <string name="snackbar_description_single_line_action">Stutt tímalengd með aðgerð</string>
-    <string name="snackbar_description_single_line_action_custom_view">Stutt tímalengd með aðgerð og miðlungs sérsniðnu yfirliti</string>
-    <string name="snackbar_description_single_line_custom_text_color">Stutt tímalengd með sérsniðnum textalit</string>
-    <string name="snackbar_description_multiline">Löng tímalengd</string>
-    <string name="snackbar_description_multiline_custom_view">Löng tímalengd með litlu sérsniðnu yfirliti</string>
-    <string name="snackbar_description_multiline_action">Óákjósanleg tímalengd með aðgerðum og textauppfærslum</string>
-    <string name="snackbar_description_multiline_action_custom_view">Stutt tímalengd með aðgerð og miðlungs sérsniðnu yfirliti</string>
-    <string name="snackbar_description_multiline_action_long">Stutt tímalengd með löngum aðgerðatexta</string>
-    <string name="snackbar_description_announcement">Stutt tímalengd</string>
+    <string name="snackbar_announcement">Þetta er snakkstika tilkynninga. Hún er notuð til að miðla nýjum eiginleikum.</string>
+    <string name="snackbar_primary">Þetta er aðalsnakkstika.</string>
+    <string name="snackbar_light">Þetta er létt snakkstika.</string>
+    <string name="snackbar_warning">Þetta er viðvörunarsnakkstika.</string>
+    <string name="snackbar_danger">Þetta er áhættusnakkstika.</string>
+    <string name="snackbar_description_single_line">Stuttur tími</string>
+    <string name="snackbar_description_single_line_custom_view">Langur tími með hringlaga framvindu í litlu sérsniðnu yfirliti</string>
+    <string name="snackbar_description_single_line_action">Stuttur tími með aðgerð</string>
+    <string name="snackbar_description_single_line_action_custom_view">Stuttur tími með aðgerð og miðlungsstóru sérsniðnu yfirliti</string>
+    <string name="snackbar_description_single_line_custom_text_color">Stuttur tími með sérsniðnum textalit</string>
+    <string name="snackbar_description_multiline">Langur tími</string>
+    <string name="snackbar_description_multiline_custom_view">Langur tími með litlu sérsniðnu yfirliti</string>
+    <string name="snackbar_description_multiline_action">Óákveðinn tími með aðgerðum og textauppfærslum</string>
+    <string name="snackbar_description_multiline_action_custom_view">Stuttur tími með aðgerð og miðlungsstóru sérsniðnu yfirliti</string>
+    <string name="snackbar_description_multiline_action_long">Stuttur tími með löngum aðgerðartexta</string>
+    <string name="snackbar_description_announcement">Stuttur tími</string>
     <string name="snackbar_description_updated">Þessi texti hefur verið uppfærður.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Sýna snarlstiku</string>
+    <string name="snackbar_button_show">Sýna snakkstiku</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Einföld lína</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">Margar línur</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Stíll tilkynningar</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -651,67 +651,67 @@
     <string name="cell_sample_description">Lýsing</string>
     <string name="calculate_cells">Hlaða/reikna út 100 hólf</string>
     <string name="calculate_layouts">Hlaða/reikna út 100 útlit</string>
-    <string name="template_list">Sniðmátalisti</string>
+    <string name="template_list">Sniðmátslisti</string>
     <string name="regular_list">Venjulegur listi</string>
     <string name="cell_example_title">Titill: Hólf</string>
     <string name="cell_example_description">Lýsing: Pikkaðu til að breyta stefnu</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Staðlaður flipi 2-kafli</string>
+    <string name="tab_standard_two_segment">Staðlaður flipahluti 2</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Staðlaður flipi 3-kafli</string>
+    <string name="tab_standard_three_segment">Staðlaður flipahluti 3</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Venjulegur flipi 4-kafli</string>
+    <string name="tab_standard_four_segment">Staðlaður flipahluti 4</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Venjulegur flipi með símblaði</string>
+    <string name="tab_standard_with_pager">Venjulegur flipi með símboða</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">Skipta um flipa</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Pillaflipi </string>
+    <string name="tab_pills">Pilluflipi </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
     <string name="tooltip_button">Pikkaðu fyrir ábendingu</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Pikkaðu fyrir sérsniðna ábendingu dagbókar</string>
+    <string name="tooltip_calendar_demo_button">Pikkaðu fyrir ábendingu um sérsniðna dagbók</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Pikkaðu á sérsniðna litaábendingu</string>
+    <string name="tooltip_custom_button">Pikkaðu á ábendingu um sérsniðinn lit</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Pikkaðu til að hafna innan í ábendingu</string>
+    <string name="tooltip_center_button">Pikkaðu til að hafna innri ábendingu</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Pikkaðu fyrir ábendingu fyrir sérstillt yfirlit</string>
+    <string name="tooltip_custom_view">Pikkaðu fyrir ábendingu um sérsniðið yfirlit</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Ábending efst í sérstilltum lit</string>
+    <string name="tooltip_top_start_message">Ábending efst um sérsniðinn lit</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Ábending efst fyrir enda með 10dp hliðrunX</string>
+    <string name="tooltip_top_end_message">Ábending efst í lokin með 10dp hliðrunX</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Ábending neðst fyrir upphafsskjá</string>
+    <string name="tooltip_bottom_start_message">Ábending neðst í upphafi</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Ábending neðst á enda með 10dp hliðrun</string>
+    <string name="tooltip_bottom_end_message">Ábending neðst í lokin með 10dp hliðrunY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Hunsa í ábendingu</string>
+    <string name="tooltip_center_message">Hafna innri ábendingu</string>
     <!--UI label showing tooltip dismissed message -->
     <string name="tooltip_dismiss_message">Ábendingu hafnað</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Fyrirsögn er ljós 28 mb</string>
+    <string name="headline">Fyrirsögn er ljós 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
     <string name="title_1">Titill 1 er miðlungs 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Titill 2 er venjulegur 20 stafir</string>
+    <string name="title_2">Titill 2 er venjulegur 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Fyrirsögnin er venjuleg 18 gr.</string>
+    <string name="heading">Fyrirsögn er venjuleg 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Undirfyrirsending 1 er venjuleg 16sp</string>
+    <string name="subheading_1">Undirfyrirsögn 1 er venjuleg 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Undirfyrirsending 2 er miðlungs 16sp</string>
+    <string name="subheading_2">Undirfyrirsögn 2 er miðlungs 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Meginmál 1 er venjulegt 14 gr.</string>
+    <string name="body_1">Meginmál 1 er venjulegt 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Meginmál 2 er miðlungs 14st</string>
+    <string name="body_2">Meginmál 2 er miðlungs 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Skýringartexti er venjulegur 12 stafir</string>
+    <string name="caption">Myndatexti er venjulegur 12sp</string>
 
 </resources>

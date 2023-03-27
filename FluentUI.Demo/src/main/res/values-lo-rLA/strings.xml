@@ -6,20 +6,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Fluent UI Demo</string>
+    <string name="app_name">Fluent UI ເດໂມ</string>
     <string name="app_title">Fluent UI</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">ເລືອກ %s ແລ້ວ</string>
-    <string name="app_modifiable_parameters">Modifiable Parameters</string>
-    <string name="app_right_accessory_view">ຊອບ ແວ ທີ່ ຖືກ ຕ້ອງ Accessory View</string>
+    <string name="app_modifiable_parameters">ພາຣາມິເຕີທີ່ສາມາດແກ້ໄຂໄດ້</string>
+    <string name="app_right_accessory_view">ມຸມມອງອຸປະກອນເສີມດ້ານຂວາ</string>
 
     <string name="app_style">ຮູບ​ແບບ</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">Icon Pressed</string>
+    <string name="app_icon_pressed">ໄອຄອນກົດແລ້ວ</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
-    <string name="actionbar_start_button">Start Demo</string>
+    <string name="actionbar_start_button">ເລີ່ມເດໂມ</string>
     <!-- Texts for radio buttons -->
     <string name="actionbar_carousel_radio_label">ມ້າໝຸນ</string>
     <string name="actionbar_icon_radio_label">ໄອຄອນ</string>
@@ -33,77 +33,77 @@
     <string name="actionbar_position_heading">ຕໍາແຫນ່ງ ActionBar</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">AppBar Style</string>
-    <string name="app_bar_subtitle">ຊື່ສຳຮອງ</string>
+    <string name="app_bar_style">ຮູບແບບ AppBar</string>
+    <string name="app_bar_subtitle">ຄຳແປ</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Icon Navigation clicked.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">ຄລິກໄອຄອນການນຳທາງແລ້ວ</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">ໝາຍ</string>
     <string name="app_bar_layout_menu_settings">ການຕັ້ງຄ່າ</string>
     <string name="app_bar_layout_menu_search">ຊອກຫາ</string>
     <!-- UI Text that shows the type of scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">ພຶດຕິກໍາມ້ວນ: %s</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">ລັກສະນະການເລື່ອນ: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">Toggle ພຶດຕິກໍາscroll</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">ສະຫຼັບພຶດຕິກຳການເລື່ອນ</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Toggle navigation icon</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">ສະຫຼັບໄອຄອນການນຳທາງ</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">ສະແດງ avatar</string>
+    <string name="app_bar_layout_show_avatar_button">ສະແດງ​ຮູບແທນຕົວ</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">ສະແດງຮູບພາບຫຼັງ</string>
+    <string name="app_bar_layout_show_back_icon_button">ສະແດງໄອຄອນດ້ານຫຼັງ</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">ເຊື່ອງໄອຄອນ</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">ສະແດງໄອຄອນ</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Toggle searchbar ຮູບແບບການlayout</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">ສະຫຼັບຮູບແບບໂຄງຮ່າງ SearchBar</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">ສະ ແດງ ໃຫ້ ເຫັນ ວ່າ ເປັນ ທັດ ສະ ນະ ຂອງ ຊອບ ແວ</string>
-    <string name="app_bar_layout_searchbar_action_view_button">ສະ ແດງ ໃຫ້ ເຫັນ ວ່າ ເປັນ ທັດ ສະ ນະ ການ ກະ ທໍາ</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">ສະແດງເປັນມຸມມອງອຸປະກອນເສີມ</string>
+    <string name="app_bar_layout_searchbar_action_view_button">ສະແດງເປັນມຸມມອງການດຳເນີນການ</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Toggle ລະຫວ່າງເນື້ອຫາ (recreates activity)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">ສະຫຼັບລະຫວ່າງຮູບແບບສີສັນ (ສ້າງກິດຈະກຳຄືນໃໝ່)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">ສະຫຼັບຮູບແບບ</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">ລາຍການ</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">ເນື້ອຫາscrollable ເພີ່ມເຕີມ</string>
+    <string name="app_bar_layout_list_sub_header">ເນື້ອຫາພິເສດທີ່ສາມາດເລື່ອນໄດ້</string>
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">ແບບວົງ</string>
-    <string name="avatar_style_square">ແບບ ສະ ຫງ່ຽມ</string>
+    <string name="avatar_style_circle">ຮູບແບບວົງມົນ</string>
+    <string name="avatar_style_square">ຮູບແບບສີ່ຫຼ່ຽມ</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XXໃຫຍ່</string>
-    <string name="avatar_size_xlarge">Xໃຫຍ່</string>
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">ໃຫຍ່</string>
     <string name="avatar_size_medium">ປານກາງ</string>
     <string name="avatar_size_small">ນ້ອຍ</string>
-    <string name="avatar_size_xsmall">Xນ້ອຍ</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Max ສະແດງ Avatar</string>
+    <string name="avatar_group_max_displayed_avatar">ຮູບແທນຕົວທີ່ສະແດງສູງສຸດ</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">Overflow Avatar Count</string>
+    <string name="avatar_group_overflow_avatar_count">ຈຳນວນ​ຮູບແທນຕົວຫຼາຍໂພດ</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">ປະເພດເສັ້ນຂອບ:</string>
+    <string name="avatar_group_border_type">ປະເພດເສັ້ນຂອບ</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">ກຸ່ມ Avatar ທີ່ມີ OverflowAvatarCount set ຈະບໍ່ຍຶດຫມັ້ນກັບMax Displayed Avatar.</string>
+    <string name="avatar_group_info">ກຸ່ມ​ຮູບແທນຕົວທີ່ມີຊຸດ OverflowAvatarCount ຈະບໍ່ປະຕິບັດຕາມ​ຮູບແທນຕົວທີ່ສະແດງສູງສຸດ.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">ຫນ້າ Stack</string>
+    <string name="avatar_group_face_stack">ໜ້າຊ້ອນກັນ</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">ຫນ້າPile</string>
+    <string name="avatar_group_face_pile">ກອງໜ້າ</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Overflow clicked</string>
+    <string name="avatar_group_overflow_clicked">ຄລິກຫຼາຍໂພດ</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView ທີ່ດັດຊະນີ %d ຄິກ</string>
+    <string name="avatar_group_avatar_clicked">AvatarView ທີ່ດັດຊະນີ %d ຄລິກແລ້ວ</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
-    <string name="badge_notification_badge">Notification Badge</string>
+    <string name="badge_notification_badge">ປ້າຍການແຈ້ງເຕືອນ</string>
     <!--UI Label for dot notification -->
     <string name="badge_notification_dot">ຈ້ຳ</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
@@ -119,34 +119,34 @@
     <string name="bottom_navigation_menu_item_calendar">ປະຕິທິນ</string>
     <string name="bottom_navigation_menu_item_team">ທີມ</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">Toggle labels</string>
-    <string name="bottom_navigation_three_menu_items_button">ສະແດງລາຍການສາມລາຍການ</string>
+    <string name="bottom_navigation_toggle_labels_button">ສະຫຼັບປ້າຍ</string>
+    <string name="bottom_navigation_three_menu_items_button">ສະແດງລາຍການສາມເມນູ</string>
     <string name="bottom_navigation_four_menu_items_button">ສະແດງສີ່ລາຍການເມນູ</string>
-    <string name="bottom_navigation_five_menu_items_button">ສະແດງຫ້າລາຍການລາຍການ</string>
+    <string name="bottom_navigation_five_menu_items_button">ສະແດງລາຍການເມນູຫ້າລາຍການ</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">labels %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">ປ້າຍກຳກັບແມ່ນ %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
     <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">ສະແດງດ້ວຍລາຍການເສັ້ນດຽວ</string>
-    <string name="bottom_sheet_with_double_line_items">ສະແດງດ້ວຍລາຍການdouble line</string>
-    <string name="bottom_sheet_with_single_line_header">ສະແດງດ້ວຍຫົວຂໍ້ເສັ້ນດຽວ</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">ສະ ແດງ ໃຫ້ ເຫັນ ດ້ວຍ ຫົວ ຂໍ້ ສອງ ເສັ້ນ ແລະ ຜູ້ ແບ່ງ</string>
+    <string name="bottom_sheet_with_single_line_items">ສະແດງດ້ວຍລາຍການແຖວດຽວ</string>
+    <string name="bottom_sheet_with_double_line_items">ສະແດງດ້ວຍລາຍການແຖວຄູ່</string>
+    <string name="bottom_sheet_with_single_line_header">ສະແດງດ້ວຍສ່ວນຫົວແຖວດຽວ</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">ສະ​ແດງດ້ວຍສ່ວນຫົວຂອງແຖວຄູ່ ແລະ ​ຕົວ​ແບ່ງ</string>
     <string name="bottom_sheet_dialog_button">ສະແດງ</string>
     <string name="drawer_content_desc_collapse_state">ຂະຫຍາຍ</string>
     <string name="drawer_content_desc_expand_state">ຫຍໍ້ລົງ</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">ຄິກ %s</string>
+    <string name="contextual_command_prompt_click_item">ຄ​ລິກ %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">ຄລິກຍາວ %s</string>
+    <string name="contextual_command_prompt_long_click_item">ກົດຄ້າງໄວ້ %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">ຄລິກ ປ່ອຍໄປ</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">ແຊກລາຍການ</string>
     <!-- Text for button for updating an item-->
@@ -158,7 +158,7 @@
     <!-- Announces mention action -->
     <string name="contextual_command_accessibility_mention">ກ່າວເຖິງ</string>
     <!-- Announces bold action -->
-    <string name="contextual_command_accessibility_bold">ເຂັ້ມ</string>
+    <string name="contextual_command_accessibility_bold">ຕົວໜາ</string>
     <!-- Announces italic action -->
     <string name="contextual_command_accessibility_italic">ຕົວເນີ້ງ</string>
     <!-- Announces undeline action -->
@@ -170,25 +170,25 @@
     <!-- Announces redo action -->
     <string name="contextual_command_accessibility_redo">ເຮັດຄືນ</string>
     <!-- Announces bullet action -->
-    <string name="contextual_command_accessibility_bullet">Bullet</string>
+    <string name="contextual_command_accessibility_bullet">ສັນຍາລັກຫົວຂໍ້</string>
     <!-- Announces list action -->
     <string name="contextual_command_accessibility_list">ລາຍຊື່</string>
     <!-- Announces link action -->
     <string name="contextual_command_accessibility_link">ລິ້ງ</string>
     <!-- UI Label denoting item updating -->
-    <string name="contextual_command_bar_item_update_title">ການອັບເດດລາຍການ</string>
+    <string name="contextual_command_bar_item_update_title">ອັບເດດລາຍການ</string>
     <!-- UI Label denoting spacing -->
     <string name="contextual_command_bar_space_title">ໄລຍະຫ່າງ</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">Dismiss Position</string>
+    <string name="contextual_command_bar_dismiss_position">ປິດຕຳແໜ່ງໄວ້</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">ເລີ່ມຕົ້ນ</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">ສິ້ນສຸດ</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">ຊ່ອງຫວ່າງຂອງກຸ່ມ</string>
+    <string name="contextual_command_bar_group_space_title">ພື້ນທີ່ກຸ່ມ</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">ຊ່ອງຫວ່າງຂອງລາຍການ</string>
+    <string name="contextual_command_bar_item_space_title">ພື້ນທີ່ລາຍການ</string>
     <!-- UI bar label denoting the space in number value dp's -->
     <string name="contextual_command_bar_space_value">%d dp</string>
 
@@ -196,95 +196,95 @@
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">ໝາຍ</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">ລາຍການ Flag clicked</string>
+    <string name="bottom_sheet_item_flag_toast">ຄລິກລາຍການທຸງແລ້ວ</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">ຕອບກັບ</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Reply item clicked</string>
+    <string name="bottom_sheet_item_reply_toast">ຕອບກັບລາຍການໂມງແລ້ວ</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">ສົ່ງຕໍ່</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">ລາຍການໄປຂ້າງຫນ້າຄລິກ</string>
+    <string name="bottom_sheet_item_forward_toast">ຄລິກລາຍການສົ່ງຕໍ່</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">ລຶບ</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">ລຶບລາຍການທີ່ຄລິກ</string>
+    <string name="bottom_sheet_item_delete_toast">ລຶບລາຍການແບ່ງປັນ</string>
     <!--UI Label for item avatar-->
-    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <string name="bottom_sheet_item_custom_image">ຮູບແທນຕົວ</string>
     <!--Double line items-->
     <!--UI Label for item camera -->
     <string name="bottom_sheet_item_camera_title">ກ້ອງຖ່າຍຮູບ</string>
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">ຖ່າຍຮູບ</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">ລາຍການກ້ອງຄລິກ</string>
+    <string name="bottom_sheet_item_camera_toast">ຄລິກລາຍການກ້ອງຖ່າຍຮູບແລ້ວ</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">ແກເລີຣີ</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">ເບິ່ງຮູບພາບຂອງທ່ານ</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">ລາຍການ Gallery clicked</string>
+    <string name="bottom_sheet_item_gallery_toast">ຄລິກລາຍການແກເລີຣີແລ້ວ</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">ວິດີໂອ</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">ຫຼິ້ນວິດີໂອຂອງທ່ານ</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">ລາຍການວິດີໂອຄລິກ</string>
+    <string name="bottom_sheet_item_videos_toast">ຄລິກລາຍການວິດີໂອແລ້ວ</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">ຈັດການ</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">ຈັດການຫ້ອງສະຫມຸດສື່ມວນຊົນຂອງທ່ານ</string>
+    <string name="bottom_sheet_item_manage_subtitle">ຈັດ​ການຄັງເກັບມ້ຽນສື່ຂອງທ່ານ</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">ຈັດການສິ່ງຂອງທີ່ຄລິກ</string>
+    <string name="bottom_sheet_item_manage_toast">ຈັດການລາຍການຄລິກແລ້ວ</string>
     <!--Single line header-->
     <!--UI title header email actions-->
-    <string name="bottom_sheet_item_single_line_header">ການກະທໍາອີເມລ</string>
+    <string name="bottom_sheet_item_single_line_header">ຄຳສັ່ງອີເມວ</string>
     <!--Double line header-->
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">ເອກະສານ</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">ອັບເດດຄັ້ງສຸດທ້າຍ 2:14PM</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">ອັບເດດຫຼ້າສຸດ 2:14PM</string>
     <!--UI Label for item share-->
-    <string name="bottom_sheet_item_double_line_header_share">Share</string>
+    <string name="bottom_sheet_item_double_line_header_share">ແຊຣ໌</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Share item clicked</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">ຄລິກລາຍການແບ່ງປັນແລ້ວ</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">ຍ້າຍ</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">ຍ້າຍລາຍການຄລິກ</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">ຍ້າຍລາຍການແບ່ງປັນແລ້ວ</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">ລຶບ</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">ລຶບລາຍການທີ່ຄລິກ</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">ລຶບລາຍການແບ່ງປັນ</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">ຂໍ້ມູນ</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">ລາຍການ Info clicked</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">ຄລິກລາຍການຂໍ້ມູນແລ້ວ</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">ໂມງ</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">ລາຍການໂມງຄິກ</string>
+    <string name="bottom_sheet_item_clock_toast">ຄລິກລາຍການໂມງແລ້ວ</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">ໂມງປຸກ</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Alarm item clicked</string>
+    <string name="bottom_sheet_item_alarm_toast">ຄລິກລາຍການປຸກແລ້ວ</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">ເຂດເວລາ</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">ລາຍການເຂດເວລາຖືກຄລິກ</string>
+    <string name="bottom_sheet_item_time_zone_toast">ຄລິກລາຍການເຂດເວລາ</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">ປຸ່ມ</string>
     <string name="buttonbar">ButtonBar</string>
-    <string name="button_disabled">ປຸ່ມຄົນພິການ</string>
-    <string name="button_borderless">ປຸ່ມບໍ່ມີພົມແດນ</string>
-    <string name="button_borderless_disabled">ປຸ່ມຄົນພິການບໍ່ມີພົມແດນ</string>
+    <string name="button_disabled">ປຸ່ມປິດໃຊ້ງານ</string>
+    <string name="button_borderless">ປຸ່ມບໍ່ມີຂອບ</string>
+    <string name="button_borderless_disabled">ປຸ່ມປິດການໃຊ້ງານບໍ່ມີຂອບ</string>
     <string name="button_large">ປຸ່ມໃຫຍ່</string>
-    <string name="button_large_disabled">ປຸ່ມຄົນພິການໃຫຍ່</string>
-    <string name="button_outlined">ປຸ່ມທີ່ໄດ້ລະບຸໄວ້</string>
-    <string name="button_outlined_disabled">ກະທັດສູດຄົນພິການທີ່ໄດ້ລະບຸໄວ້</string>
+    <string name="button_large_disabled">ປຸ່ມປິດໃຊ້ງານຂະຫນາດໃຫຍ່</string>
+    <string name="button_outlined">ປຸ່ມໂຄງຮ່າງ</string>
+    <string name="button_outlined_disabled">ປຸ່ມປິດໃຊ້ງານໂຄງຮ່າງ</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">ເລືອກວັນທີ</string>
@@ -295,130 +295,130 @@
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">ວັນດຽວ</string>
     <!-- UI label -->
-    <string name="date_time_picker_date_picked_default">ບໍ່ມີວັນເລືອກ</string>
+    <string name="date_time_picker_date_picked_default">ບໍ່ໄດ້ເລືອກວັນທີ</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">ສະ ແດງ picker ວັນ ທີ</string>
+    <string name="date_time_picker_date_button">ສະແດງຕົວເລືອກເອົາວັນທີ</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">ສະ ແດງ ໃຫ້ ເຫັນ ຜູ້ ເລືອກ ເວ ລາ ທີ່ ມີ ການ ຄັດ ເລືອກ ວັນ ທີ ທີ່ ຖືກ ຄັດ ເລືອກ</string>
+    <string name="date_time_picker_calendar_date_time_button">ສະແດງຕົວເລືອກວັນທີທີ່ມີແຖບວັນທີທີ່ເລືອກ</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">ສະ ແດງ ໃຫ້ ເຫັນ ຜູ້ ເລືອກ ເວ ລາ ທີ່ ມີ ຕາ ຕະ ນາ ການ ທີ່ ຖືກ ເລືອກ</string>
+    <string name="date_time_picker_date_time_calendar_button">ສະແດງຕົວເລືອກວັນທີກັບແຖບເວລາທີ່ເລືອກ</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">ສະ ແດງ ໃຫ້ ເຫັນ ຜູ້ ເກັບ ກໍາ ເວ ລາ ວັນ ທີ</string>
+    <string name="date_time_picker_date_time_button">ສະແດງຕົວເລືອກວັນເວລາ</string>
     <!-- UI label to show date range-->
-    <string name="date_time_picker_date_range_title">ໄລຍະວັນທີ</string>
+    <string name="date_time_picker_date_range_title">ຊ່ວງວັນທີ</string>
     <!-- UI label showing start of the range-->
-    <string name="date_time_picker_date_range_start_title">​ເລີ່​ມຕົ້ນ:</string>
+    <string name="date_time_picker_date_range_start_title">ເລີ່​ມຕົ້ນ:</string>
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">ສິ້ນສຸດ:</string>
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_start_picked_default">ບໍ່ມີການເລືອກເລີ່ມຕົ້ນ</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">ບໍ່ມີສິ້ນຖືກເລືອກ</string>
+    <string name="date_time_picker_date_end_picked_default">ບໍ່​​ເລືອກ​ສິ້ນສຸດ</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">ເລືອກວັນທີເລີ່ມຕົ້ນ</string>
     <!-- text for button that selects end date -->
-    <string name="date_time_picker_date_end_button">ເລືອກວັນສິ້ນສຸດ</string>
+    <string name="date_time_picker_date_end_button">ເລືອກວັນທີສິ້ນສຸດ</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">ໄລຍະເວລາວັນທີ</string>
+    <string name="date_time_picker_date_time_range_title">ຊ່ວງເວລາວັນທີ</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">ເລືອກກໍານົດເວລາວັນທີ</string>
+    <string name="date_time_picker_date_time_range_button">ເລືອກຊ່ວງເວລາວັນທີ</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">ສະແດງກ່ອງຂໍ້ຄວາມ</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
-    <string name="drawer_button">Show drawer</string>
+    <string name="drawer_button">ສະແດງລິ້ນຊັກ</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">ສະແດງການສົນທະນາdrawer</string>
+    <string name="drawer_dialog_button">ສະແດງກ່ອງຂໍ້ຄວາມລິ້ນຊັກ</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">ບໍ່ມີການສົນທະນາດ້ານລຸ່ມfade</string>
+    <string name="no_fade_bottom_dialog_button">ບໍ່ມີກ່ອງຂໍ້ຄວາມລຸ່ມສຸດຈາງຫາຍໄປ</string>
     <!-- text for button that shows top drawer -->
-    <string name="drawer_top_dialog_button">ສະ ແດງ ຮູບ ແຕ້ມ ຍອດ</string>
+    <string name="drawer_top_dialog_button">ສະແດງລິ້ນຊັກດ້ານເທິງ</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">ບໍ່ ມີ ການ ເວົ້າ ລົມ ກັນ ທີ່ ຫາຍ ໄປ</string>
+    <string name="no_fade_top_dialog_button">ບໍ່ມີກ່ອງຂໍ້ຄວາມດ້ານເທິງຈາງຫາຍໄປ</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> ສະ ແດງ ໃຫ້ ເຫັນ anchor view ການ ສົນ ທະ ນາ ສູງ ສຸດ</string>
+    <string name="anchor_view_top_dialog_button"> ສະແດງກ່ອງຂໍ້ຄວາມມຸມມອງດ້ານເທິງສະໝໍ</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> ສະ ແດງ ໃຫ້ ເຫັນ ບໍ່ ມີ ການ ສົນ ທະ ນາ ທີ່ ດີ ທີ່ ສຸດ ຂອງ ຕໍາ ແຫນ່ ງ</string>
+    <string name="no_title_top_dialog_button"> ບໍ່ສະແດງກ່ອງຂໍ້ຄວາມເທິງສຸດ</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> ສະ ແດງ ໃຫ້ ເຫັນ ຂ້າງ ລຸ່ມ ນີ້ ຕໍາ ແຫນ່ ງ ການ ໂອ້ ລົມ ສົນ ທະ ນາ ຂັ້ນ ເທິງ</string>
+    <string name="below_title_top_dialog_button"> ສະແດງກ່ອງຂໍ້ຄວາມຫົວຂໍ້ທາງລຸ່ມ</string>
     <!-- text for button that shows right drawer -->
-    <string name="drawer_right_dialog_button">ສະ ແດງ ຮູບ ແຕ້ມ ທີ່ ຖືກ ຕ້ອງ</string>
+    <string name="drawer_right_dialog_button">ສະແດງລິ້ນຊັກດ້ານຂວາ</string>
     <!-- text for button that shows left drawer -->
-    <string name="drawer_left_dialog_button">ສະແດງdrawer ຊ້າຍ</string>
+    <string name="drawer_left_dialog_button">ສະແດງລິ້ນຊັກດ້ານຊ້າຍ</string>
 
     <!--ListItem-->
     <!-- Title -->
-    <string name="list_item_title">ຫົວຂໍ້, ຂໍ້ຄວາມຕົ້ນຕໍ</string>
+    <string name="list_item_title">ຫົວຂໍ້, ຂໍ້ຄວາມຫຼັກ</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">Subtitle, ຂໍ້ຄວາມຮອງ</string>
+    <string name="list_item_subtitle">ຄຳແປ, ຂໍ້ຄວາມຮອງ</string>
     <!-- secondary subtitle -->
-    <string name="list_item_secondary_subtitle">ຂໍ້ຄວາມsubtitle Custom</string>
+    <string name="list_item_secondary_subtitle">ຂໍ້ຄວາມຄຳແປທີ່ກຳນົດເອງ</string>
     <!-- Footer -->
-    <string name="list_item_footer">ຕີນ, ຂໍ້ຄວາມຊັ້ນສູງ</string>
+    <string name="list_item_footer">ສ່ວນທ້າຍ, ຂໍ້​ຄວາມ​ຊັ້ນ​ສູງ​</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">ລາຍການເສັ້ນດຽວທີ່ມີຂໍ້ຄວາມຫົວຂໍ້ຍ່ອຍສີຂີ້ເຖົ່າ</string>
+    <string name="list_item_sub_header_single_line">ລາຍການແຖວດຽວທີ່ມີຂໍ້ຄວາມຫົວຂໍ້ຍ່ອຍສີເທົາ</string>
     <string name="list_item_sub_header_two_line">ລາຍການສອງແຖວ</string>
-    <string name="list_item_sub_header_two_line_dense">ລາຍການສອງແຖວທີ່ມີຄວາມຫນາແຫນ້ນ</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">ສອງລາຍການແຖວທີ່ມີທັດສະນີ່subtitle customary</string>
-    <string name="list_item_sub_header_three_line">ລາຍການສາມແຖວທີ່ມີຂໍ້ຄວາມຫົວຂໍ້ຍ່ອຍດໍາ</string>
-    <string name="list_item_sub_header_no_custom_views">ລາຍການລາຍການທີ່ບໍ່ມີທັດສະນະcustom</string>
-    <string name="list_item_sub_header_large_header">ລາຍການລາຍການທີ່ມີທັດສະນະທໍານຽມຂະຫນາດໃຫຍ່</string>
-    <string name="list_item_sub_header_wrapped_text">ລາຍການທີ່ມີຂໍ້ຄວາມຫຸ້ມຫໍ່</string>
-    <string name="list_item_sub_header_truncated_text">ລາຍການລາຍການທີ່ມີຂໍ້ຄວາມtruncated</string>
+    <string name="list_item_sub_header_two_line_dense">ລາຍການສອງແຖວທີ່ມີຊ່ອງຫວ່າງຫນາແຫນ້ນ</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">ລາຍການສອງແຖວທີ່ມີມຸມມອງຄຳແປສຳຮອງທີ່ກຳນົດເອງ</string>
+    <string name="list_item_sub_header_three_line">ລາຍການສາມແຖວທີ່ມີຂໍ້ຄວາມຫົວຂໍ້ຍ່ອຍສີດໍາ</string>
+    <string name="list_item_sub_header_no_custom_views">ລາຍການລາຍຊື່ທີ່ບໍ່ມີມຸມມອງແບບກຳນົດເອງ</string>
+    <string name="list_item_sub_header_large_header">ລາຍການລາຍຊື່ທີ່ມີມຸມມອງແບບກຳນົດເອງຂະໜາດໃຫຍ່</string>
+    <string name="list_item_sub_header_wrapped_text">ລາຍການລາຍຊື່ດ້ວຍຂໍ້ຄວາມທີ່ຫໍ່ແລ້ວ</string>
+    <string name="list_item_sub_header_truncated_text">ລາຍການລາຍຊື່ທີ່ມີຂໍ້ຄວາມຖືກຕັດອອກ</string>
     <string name="list_item_sub_header_custom_accessory_text">ການດຳເນີນການ</string>
-    <string name="list_item_truncation_middle">ການປະທະກັນກາງ.</string>
-    <string name="list_item_truncation_end">ສິ້ນສຸດການປະທະກັນ.</string>
-    <string name="list_item_truncation_start">ເລີ່ມຕົ້ນການtruncation.</string>
+    <string name="list_item_truncation_middle">ຕັດເຄິ່ງກາງ.</string>
+    <string name="list_item_truncation_end">ສິ້ນສຸດການຕັດ.</string>
+    <string name="list_item_truncation_start">ເລີ່ມຕົ້ນການຕັດ.</string>
     <string name="list_item_custom_text_view">ຄ່າ</string>
-    <string name="list_item_click">ທ່ານໄດ້ຄລິກໃສ່ລາຍການ.</string>
-    <string name="list_item_click_custom_accessory_view">ທ່ານໄດ້ຄລິກໃສ່ທັດສະນະຂອງເຄື່ອງສໍາອາງຕາມທໍານຽມ.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">ທ່ານໄດ້ຄລິກໃສ່ທັດສະນະເຄື່ອງສໍາອາງຂອງຫົວຂໍ້ຍ່ອຍ.</string>
+    <string name="list_item_click">ທ່ານຄລິກໃສ່ລາຍການລາຍຊື່.</string>
+    <string name="list_item_click_custom_accessory_view">ທ່ານຄລິກໃສ່ມຸມມອງອຸປະກອນທີ່ກໍານົດເອງ.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">ທ່ານຄລິກໃສ່ຫົວຂໍ້ຍ່ອຍມຸມມອງອຸປະກອນທີ່ກໍານົດເອງ.</string>
     <string name="list_item_more_options">ຕົວເລືອກເພີ່ມເຕີມ</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">ເລືອກ</string>
-    <string name="people_picker_select_deselect_example">ເລືອກDeselect</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">ບໍ່ມີຫຍັງ</string>
     <string name="people_picker_delete_example">ລຶບ</string>
-    <string name="people_picker_custom_persona_description">ຕົວຢ່າງນີ້ສະແດງໃຫ້ເຫັນວິທີການສ້າງວັດຖຸ IPersona custom.</string>
-    <string name="people_picker_dialog_title_removed">ທ່ານໄດ້ຖອດຖອນບຸກຄົນ:</string>
-    <string name="people_picker_dialog_title_added">ທ່ານadded a persona:</string>
-    <string name="people_picker_drag_started">Drag ໄດ້ເລີ່ມຕົ້ນ</string>
-    <string name="people_picker_drag_ended">Drag ສິ້ນສຸດລົງ</string>
-    <string name="people_picker_picked_personas_listener">Personas Listener</string>
-    <string name="people_picker_suggestions_listener">ຄໍາແນະນໍາທ່ານ ຜູ້ຟັງ</string>
+    <string name="people_picker_custom_persona_description">ຕົວຢ່າງນີ້ສະແດງໃຫ້ເຫັນວິທີການສ້າງວັດຖຸ IPsona ແບບກໍາຫນົດເອງ.</string>
+    <string name="people_picker_dialog_title_removed">ທ່ານໄດ້ລຶບບຸກຄົນອອກ:</string>
+    <string name="people_picker_dialog_title_added">ທ່ານເພີ່ມບຸກຄົນ:</string>
+    <string name="people_picker_drag_started">ເລີ່ມລາກແລ້ວ</string>
+    <string name="people_picker_drag_ended">ການລາກສິ້ນສຸດລົງແລ້ວ</string>
+    <string name="people_picker_picked_personas_listener">ຄົນຟັງ</string>
+    <string name="people_picker_suggestions_listener">ຜູ້​ຟັງ​ການແນະນໍາ</string>
     <string name="people_picker_persona_chip_click">ທ່ານໄດ້ຄລິກໃສ່ %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="other">ຜູ້ຮັບ %1$s ຄົນ</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">ຂະຫຍາຍພື້ນແບບຍືນຍົງ</string>
-    <string name="collapse_persistent_sheet_button"> Hide Persistent BottomSheet</string>
-    <string name="show_persistent_sheet_button"> Show Persistent BottomSheet</string>
-    <string name="new_view">ນີ້ແມ່ນNew View</string>
-    <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
-    <string name="switch_to_custom_content">Switch to custom Content</string>
-    <string name="one_line_content">ເນື້ອໃນແຜ່ນພື້ນແບບຫນຶ່ງLine</string>
-    <string name="toggle_disable_all_items">Toggle Disable All Items</string>
+    <string name="expand_bottom_sheet_button">ຂະຫຍາຍ BottomSheet ແບບຖາວອນ</string>
+    <string name="collapse_persistent_sheet_button"> ​ເຊື່ອງ BottomSheet ແບບຖາວອນ</string>
+    <string name="show_persistent_sheet_button"> ສະແດງ BottomSheet ແບບຖາວອນ</string>
+    <string name="new_view">ນີ້ແມ່ນມຸມມອງໃໝ່</string>
+    <string name="toggle_sheet_content">ສະຫຼັບເນື້ອຫາ BottomSheet</string>
+    <string name="switch_to_custom_content">ປ່ຽນເປັນເນື້ອຫາແບບກຳນົດເອງ</string>
+    <string name="one_line_content">ເນື້ອຫາແຖວລຸ່ມສຸດແຖວດຽວ</string>
+    <string name="toggle_disable_all_items">ສະຫຼັບປິດໃຊ້ງານລາຍການທັງໝົດ</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">Add/Remove View</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> ການປ່ຽນແປງCollapsed Height</string>
+    <string name="persistent_sheet_item_add_remove_view">ມຸມມອງ ເພີ່ມ/ລຶບ</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> ປ່ຽນຄວາມສູງທີ່ຫຍໍ້ລົງ</string>
     <string name="persistent_sheet_item_create_new_folder_title">ໂຟ​ລ​ເດີໃໝ່</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">ລາຍການໂຟນເດີໃຫມ່ຄລິກ</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">ຄລິກລາຍການໂຟນເດີໃໝ່ແລ້ວ</string>
     <string name="persistent_sheet_item_edit_title">ແກ້ໄຂ</string>
-    <string name="persistent_sheet_item_edit_toast">ແກ້ໄຂລາຍການທີ່ຄລິກ</string>
+    <string name="persistent_sheet_item_edit_toast">ຄລິກແກ້ໄຂລາຍການ</string>
     <string name="persistent_sheet_item_save_title">ບັນທຶກ</string>
-    <string name="persistent_sheet_item_save_toast">Save item clicked</string>
+    <string name="persistent_sheet_item_save_toast">ຄລິກບັນທຶກລາຍການ</string>
     <string name="persistent_sheet_item_zoom_in_title">ຊູມເຂົ້າ</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Zoom In ເຄື່ອງຄິກ</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> ຊູມເຂົ້າລາຍການຄລິກແລ້ວ</string>
     <string name="persistent_sheet_item_zoom_out_title">ຊູມອອກ</string>
-    <string name="persistent_sheet_item_zoom_out_toast">ລາຍການ Zoom Out clicked</string>
+    <string name="persistent_sheet_item_zoom_out_toast">ຄລິກລາຍການຊູມອອກແລ້ວ</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -464,16 +464,16 @@
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
     <string name="persona_name_erik_nason">Erik Nason</string>
     <string name="persona_name_henry_brill">Henry Brill</string>
-    <string name="persona_name_isaac_fielder">ອີຊາກ ຟິດເຕີ</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
     <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
-    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_kat_larsson">ແຄທ ລາສສັນ</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
-    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
-    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
-    <string name="persona_name_mauricio_august">Mauricio ສິງຫາ</string>
+    <string name="persona_name_kevin_sturgis">ເຄວິນ ສະເຕີຈີສ</string>
+    <string name="persona_name_kristen_patterson">ຄຮິສເຕົນ ແພດເຕີສັນ</string>
+    <string name="persona_name_lydia_bauer">ລີເດຍ ບາວເດີ</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
-    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_mona_kane">ໂມນາ ເຄົນ</string>
     <string name="persona_name_robin_counts">Robin Counts</string>
     <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
@@ -484,27 +484,27 @@
     <string name="persona_subtitle_manager">ຜູ້ຈັດການ</string>
     <string name="persona_subtitle_researcher">ຕົວຄົ້ນຄວ້າ</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ \(ຕົວຢ່າງຂໍ້ຄວາມຍາວເພື່ອທົດສອບtruncation)</string>
-    <string name="persona_view_description_xxlarge">XXLarge avatar ທີ່ມີຂໍ້ຄວາມສາມແຖວ</string>
-    <string name="persona_view_description_large">avatar ຂະຫນາດໃຫຍ່ທີ່ມີສອງແຖວຂອງຂໍ້ຄວາມ</string>
-    <string name="persona_view_description_small">avatar ຂະຫນາດນ້ອຍທີ່ມີຂໍ້ຄວາມຫນຶ່ງເສັ້ນ</string>
-    <string name="people_picker_hint">ບໍ່ ມີ ຜູ້ ໃດ ທີ່ ມີ ຄໍາ ອຸ ປະ ກອນ ສະ ແດງ ໃຫ້ ເຫັນ</string>
+    <string name="persona_truncation">\ (ຕົວຢ່າງຂໍ້ຄວາມຍາວເພື່ອທົດສອບການຕັດ)</string>
+    <string name="persona_view_description_xxlarge">ຮູບແທນຕົວຂະຫນາດ XXLarge ທີ່ມີສາມແຖວຂອງຂໍ້ຄວາມ</string>
+    <string name="persona_view_description_large">ຮູບແທນຕົວຂະຫນາດໃຫຍ່ທີ່ມີສອງແຖວຂອງຂໍ້ຄວາມ</string>
+    <string name="persona_view_description_small">ຮູບແທນຕົວຂະຫນາດນ້ອຍໆທີ່ມີຂໍ້ຄວາມແຖວດ່ຽວ</string>
+    <string name="people_picker_hint">ບໍ່​ມີ​ຄຳໃບ້ສະ​ແດງ​ໃຫ້​ເຫັນ​</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">ຈິບຄົນພິການ</string>
+    <string name="persona_chip_example_disabled">ປິດໃຊ້ງານ Persona Chip ໄວ້</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Error Persona Chip</string>
+    <string name="persona_chip_example_error">ຂໍ້ຜິດພາດ Persona Chip</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Persona Chip ທີ່ບໍ່ມີicon ໃກ້</string>
+    <string name="persona_chip_example_no_icon">Persona Chip ທີ່ບໍ່ມີໄອຄອນປິດ</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Chip Persona ພື້ນຖານ</string>
+    <string name="persona_chip_example_basic">Persona Chip ພື້ນຖານ</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">ທ່ານໄດ້ຄລິກໃສ່Persona Chip ທີ່ເລືອກ.</string>
+    <string name="persona_chip_example_click">ທ່ານໄດ້ຄລິກໃສ່ Persona Chip ທີ່ເລືອກ.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
-    <string name="popup_menu_item_share">Share</string>
+    <string name="popup_menu_item_share">ແຊຣ໌</string>
     <!-- UI label for item follow -->
     <string name="popup_menu_item_follow">ຕິດຕາມ</string>
     <!-- UI label for item invite people -->
@@ -514,37 +514,37 @@
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">ເປີດໃນບຣາວເຊີ</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">ນີ້ແມ່ນເມນູ Popup multiline. Max line ຖືກກໍານົດເປັນສອງ, ສ່ວນທີ່ເຫຼືອຂອງຂໍ້ຄວາມຈະ truncate.
-        Lorem ipsum dolor ນັ່ງ amet consectetur adipiscing elit. </string>
+    <string name="popup_menu_item_multiline">ນີ້ແມ່ນເມນູຍ່ອຍແຖວເສັ້ນ. ແຖວສູງສຸດແມ່ນຕັ້ງເປັນສອງແຖວ, ສ່ວນທີ່ເຫຼືອຂອງຂໍ້ຄວາມຈະຕັດອອກ.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">ຂ່າວທັງຫມົດ</string>
     <!-- UI label for item Saved news -->
-    <string name="popup_menu_item_saved_news">ຂ່າວທີ່ເກັບຮັກສາໄວ້</string>
+    <string name="popup_menu_item_saved_news">ບັນທຶກຂ່າວແລ້ວ</string>
     <!-- UI label for item >News from sites -->
-    <string name="popup_menu_item_news_from_sites">ຂ່າວຈາກສະຖານທີ່ຕ່າງໆ</string>
+    <string name="popup_menu_item_news_from_sites">ຂ່າວຈາກເວັບໄຊ</string>
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">Notify outside of working hours</string>
+    <string name="popup_menu_item_notify_outside">ແຈ້ງເຕືອນນອກເວລາເຮັດວຽກ</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">ແຈ້ງໃຫ້ຮູ້ເມື່ອໃດທີ່ບໍ່ເຂັ້ມຂຸ້ນເທິງdesktop</string>
+    <string name="popup_menu_item_notify_inactive">ແຈ້ງເຕືອນເມື່ອບໍ່ໃຊ້ການງານຢູ່ໃນເດັສທັອບ</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">ທ່ານໄດ້ຄລິກໃສ່ລາຍການ:</string>
+    <string name="popup_menu_item_clicked">ທ່ານຄລິກໃສ່ລາຍການ:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">ເມນູງ່າຍໆ</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">ເມນູງ່າຍໆ2</string>
+    <string name="popup_menu_simple_duo">ເມນູ2 ງ່າຍໆ</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">ເມນູທີ່ມີເຄື່ອງທີ່ເລືອກໄດ້ຫນຶ່ງແລະdivider</string>
+    <string name="popup_menu_single_check">ເມນູທີ່ມີໜຶ່ງລາຍການທີ່ເລືອກໄດ້ ແລະ ຕົວແບ່ງ</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">ເມນູທີ່ມີເຄື່ອງທີ່ເລືອກໄດ້ທັງຫມົດ, icons, ແລະຂໍ້ຄວາມຍາວ</string>
+    <string name="popup_menu_all_check">ເມນູທີ່ມີລາຍການ, ໄອຄອນ ແລະຂໍ້ຄວາມຍາວທີ່ເລືອກໄດ້ທັງໝົດ</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">ສະແດງ</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">ຄວາມກ້າວຫນ້າຮອບດ້ານ</string>
-    <string name="circular_progress_xsmall">Xນ້ອຍ</string>
+    <string name="circular_progress">ຄວາມຄືບໜ້າວົງມົນ</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">ນ້ອຍ</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -553,71 +553,71 @@
     <string name="circular_progress_large">ໃຫຍ່</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">ຄວາມກ້າວຫນ້າຂອງLinear</string>
+    <string name="linear_progress">ຄວາມຄືບໜ້າເສັ້ນຊື່</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">Indeterminate</string>
+    <string name="linear_progress_indeterminate_label">ບໍ່ຊັດເຈນ</string>
     <!-- UI label showing a Determinate progress bar -->
     <string name="linear_progress_determinate_label">Determinate</string>
 
 
     <!--Shared-->
     <!-- dummy message -->
-    <string name="long_placeholder">Lorem ipsum dolor ນັ່ງ amet, consectetur adipiscing elit,
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
     <string name="searchbar">SearchBar</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">ໄມໂຄຣໂຟນ Callback</string>
+    <string name="searchbar_microphone_callback">ການເອີ້ນກັບໄມໂຄຣໂຟນ</string>
     <!-- UI Text label -->
     <string name="searchbar_autocorrect">ແກ້ໄຂໃຫ້ຖືກຕ້ອງອັດຕະໂນມັດ</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">ໄມໂຄຣໂຟນ ກົດ</string>
+    <string name="searchbar_microphone_pressed">ກົດໄມໂຄຣໂຟນແລ້ວ</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">Right View Pressed</string>
+    <string name="searchbar_right_view_pressed">ກົດມຸມມອງດ້ານຂວາ</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Keyboard Search Pressed</string>
+    <string name="searchbar_keyboard_search_pressed">ກົດຄົ້ນຫາແປ້ນພິມ</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">ການດຳເນີນການ</string>
-    <string name="snackbar_action_long">ການກະທໍາຂໍ້ຄວາມຍາວ</string>
-    <string name="snackbar_single_line">snackbar ເສັ້ນດຽວ</string>
-    <string name="snackbar_multiline">ນີ້ແມ່ນ snackbar multiline. Max line ຖືກກໍານົດເປັນສອງ, ສ່ວນທີ່ເຫຼືອຂອງຂໍ້ຄວາມຈະ truncate.
-        Lorem ipsum dolor ນັ່ງ amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">ນີ້ແມ່ນການປະກາດ snackbar. ມັນຖືກນໍາໃຊ້ສໍາລັບການສື່ສານຄຸນນະສົມບັດໃຫມ່.</string>
-    <string name="snackbar_primary">ນີ້ແມ່ນ snackbar ຕົ້ນຕໍ.</string>
-    <string name="snackbar_light">ນີ້ແມ່ນ snackbar ເບົາ.</string>
-    <string name="snackbar_warning">ນີ້ແມ່ນsnackbar ເຕືອນ.</string>
-    <string name="snackbar_danger">ນີ້ແມ່ນsnackbar ອັນຕະລາຍ.</string>
-    <string name="snackbar_description_single_line">ໄລຍະສັ້ນ</string>
-    <string name="snackbar_description_single_line_custom_view">ໄລຍະຍາວທີ່ມີຄວາມກ້າວຫນ້າເປັນວົງກົມເປັນທັດສະນະທໍານຽມຂະຫນາດນ້ອຍ</string>
-    <string name="snackbar_description_single_line_action">ໄລຍະສັ້ນກັບການກະທໍາ</string>
-    <string name="snackbar_description_single_line_action_custom_view">ໄລຍະສັ້ນທີ່ມີການດໍາເນີນການແລະທັດສະນີຍະພາບກາງ</string>
-    <string name="snackbar_description_single_line_custom_text_color">Short duration with customized text color</string>
-    <string name="snackbar_description_multiline">ໄລຍະຍາວ</string>
-    <string name="snackbar_description_multiline_custom_view">ໄລຍະຍາວດ້ວຍທັດສະນະທໍານຽມຂະຫນາດນ້ອຍ</string>
-    <string name="snackbar_description_multiline_action">ໄລຍະເວລາທີ່ບໍ່ກໍານົດດ້ວຍການດໍາເນີນການແລະການປັບປຸງຂໍ້ຄວາມ</string>
-    <string name="snackbar_description_multiline_action_custom_view">ໄລຍະສັ້ນທີ່ມີການດໍາເນີນການແລະທັດສະນີຍະພາບກາງ</string>
-    <string name="snackbar_description_multiline_action_long">ໄລຍະສັ້ນທີ່ມີຂໍ້ຄວາມການກະທໍາຍາວ</string>
-    <string name="snackbar_description_announcement">ໄລຍະສັ້ນ</string>
-    <string name="snackbar_description_updated">ຂໍ້ຄວາມນີ້ໄດ້ຮັບການປັບປຸງ.</string>
+    <string name="snackbar_action_long">ການດຳເນີນການຂໍ້ຄວາມຍາວ</string>
+    <string name="snackbar_single_line">Snackbar ແຖວດ່ຽວ</string>
+    <string name="snackbar_multiline">ນີ້ແມ່ນ Snackbar ແຖວເສັ້ນ. ແຖວສູງສຸດແມ່ນຕັ້ງເປັນສອງແຖວ, ສ່ວນທີ່ເຫຼືອຂອງຂໍ້ຄວາມຈະຕັດອອກ.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">ນີ້ແມ່ນການປະກາດ Snackbar. ໃຊ້ສໍາລັບສື່ສານຄຸນສົມບັດໃຫມ່.</string>
+    <string name="snackbar_primary">ນີ້ແມ່ນ Snackbar ຫຼັກ.</string>
+    <string name="snackbar_light">ນີ້ແມ່ນ Snackbar ແບບເບົາ.</string>
+    <string name="snackbar_warning">ນີ້ແມ່ນຄຳເຕືອນ Snackbar.</string>
+    <string name="snackbar_danger">ນີ້ແມ່ນອັນຕະລາຍ Snackbar.</string>
+    <string name="snackbar_description_single_line">ໄລຍະເວລາສັ້ນ</string>
+    <string name="snackbar_description_single_line_custom_view">ໄລຍະເວລາຍາວທີ່ມີຄວາມຄືບຫນ້າແບບວົງເປັນມຸມມອງແບບກໍານົດເອງຂະຫນາດນ້ອຍ</string>
+    <string name="snackbar_description_single_line_action">ໄລຍະເວລາສັ້ນໆທີ່ມີການດຳເນີນການ</string>
+    <string name="snackbar_description_single_line_action_custom_view">ໄລຍະເວລາສັ້ນດ້ວຍການດຳເນີນການ ແລະ ມຸມມອງແບບກຳນົດເອງຂະໜາດກາງ</string>
+    <string name="snackbar_description_single_line_custom_text_color">ໄລຍະເວລາສັ້ນທີ່ມີສີຂໍ້ຄວາມທີ່ປັບແຕ່ງ</string>
+    <string name="snackbar_description_multiline">ໄລຍະເວລາຍາວ</string>
+    <string name="snackbar_description_multiline_custom_view">ໄລຍະເວລາຍາວດ້ວຍມຸມມອງແບບກຳນົດເອງຂະໜາດນ້ອຍ</string>
+    <string name="snackbar_description_multiline_action">ໄລຍະເວລາທີ່ບໍ່ມີກໍານົດດ້ວຍການດໍາເນີນການ ແລະ ການອັບເດດຂໍ້ຄວາມ</string>
+    <string name="snackbar_description_multiline_action_custom_view">ໄລຍະເວລາສັ້ນດ້ວຍການດຳເນີນການ ແລະ ມຸມມອງແບບກຳນົດເອງຂະໜາດກາງ</string>
+    <string name="snackbar_description_multiline_action_long">ໄລຍະເວລາສັ້ນທີ່ມີຂໍ້ຄວາມການດຳເນີນການຍາວ</string>
+    <string name="snackbar_description_announcement">ໄລຍະເວລາສັ້ນ</string>
+    <string name="snackbar_description_updated">ຂໍ້ຄວາມນີ້ໄດ້ຖືກປັບປຸງແລ້ວ.</string>
     <!-- text for button that shows a snackbar -->
     <string name="snackbar_button_show">ສະແດງ Snackbar</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">ເສັ້ນດຽວ</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">ຫຼາຍແຖວ</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">ຮູບແບບການປະກາດ</string>
     <!-- UI Text denoting Primary style snackbar -->
-    <string name="snackbar_headline_primary_style">ແບບປະຖົມ</string>
+    <string name="snackbar_headline_primary_style">ຮູບແບບຫຼັກ</string>
     <!-- UI Text denoting Light style snackbar -->
-    <string name="snackbar_headline_light_style">ຮູບແບບແສງສະຫວ່າງ</string>
+    <string name="snackbar_headline_light_style">ປະ​ເພດສີອ່ອນ</string>
     <!-- UI Text denoting Warning stylee snackbar -->
-    <string name="snackbar_headline_warning_style">ຮູບແບບການເຕືອນ</string>
+    <string name="snackbar_headline_warning_style">ຮູບແບບຄຳເຕືອນ</string>
     <!-- UI Text denoting Danger style snackbar -->
     <string name="snackbar_headline_danger_style">ຮູບແບບອັນຕະລາຍ</string>
 
@@ -642,75 +642,75 @@
     <!-- UI text for no text of tab -->
     <string name="tabBar_no_text">ບໍ່ມີຂໍ້ຄວາມ</string>
     <!-- UI text for no. of tab items -->
-    <string name="tabBar_tab_items">Tab Items</string>
+    <string name="tabBar_tab_items">ແຕະລາຍການ</string>
 
     <!--TemplateView-->
     <!-- UI labels and descriptions -->
     <string name="cell_sample_title">ຊື່</string>
     <string name="cell_sample_description">ລາຍລະອຽດ</string>
-    <string name="calculate_cells">Load/calculate 100 cells</string>
-    <string name="calculate_layouts">Load/calculate 100 layouts</string>
-    <string name="template_list">ລາຍການTemplate</string>
-    <string name="regular_list">ລາຍການປະຈໍາ</string>
+    <string name="calculate_cells">ໂຫຼດ/ຄຳນວນ 100 ເຊວ</string>
+    <string name="calculate_layouts">ໂຫຼດ/ຄຳນວນ 100 ໂຄງຮ່າງ</string>
+    <string name="template_list">ລາຍການແມ່ແບບ</string>
+    <string name="regular_list">ລາຍການປົກກະຕິ</string>
     <string name="cell_example_title">ຫົວຂໍ້: ເຊລ</string>
-    <string name="cell_example_description">Description: Tap ເພື່ອປ່ຽນທິດທາງ</string>
+    <string name="cell_example_description">ຄຳອະທິບາຍ: ແຕະເພື່ອປ່ຽນທິດທາງ</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">ມາດຕະຖານ Tab 2-Segment</string>
+    <string name="tab_standard_two_segment">ແຖບມາດຕະຖານ 2-ສ່ວນ</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">ມາດຕະຖານ Tab 3-Segment</string>
+    <string name="tab_standard_three_segment">ແຖບມາດຕະຖານ 3-ສ່ວນ</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">ມາດຕະຖານ Tab 4-Segment</string>
+    <string name="tab_standard_four_segment">ແຖບມາດຕະຖານ 4-ສ່ວນ</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">ແທັບມາດຕະຖານທີ່ມີ Pager</string>
+    <string name="tab_standard_with_pager">ແຖບມາດຕະຖານທີ່ມີ ເພດ​ເຈີ</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Switch Tab</string>
+    <string name="tab_switch">ສະຫຼັບແຖບ</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Tab ຢາ </string>
+    <string name="tab_pills">ແຖບ ເມັດຢາ </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Tap ສໍາລັບ Tooltip</string>
+    <string name="tooltip_button">ແຕະສໍາລັບເຄື່ອງມືແນະນຳ</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Tap for Custom Calendar Tooltip</string>
+    <string name="tooltip_calendar_demo_button">ແຕະເພື່ອເຄື່ອງມືແນະນຳປະຕິທິນແບບກຳນົດເອງ</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Tap Custom Color Tooltip</string>
+    <string name="tooltip_custom_button">ແຕະໃສ່ເຄື່ອງມືແນະນຳສີທີ່ກໍາຫນົດເອງ</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Tap for Dismiss Inside Tooltip</string>
+    <string name="tooltip_center_button">ແຕະເພື່ອປິດເຄື່ອງມືແນະນຳພາຍໃນ</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Tap for Custom View Tooltip</string>
+    <string name="tooltip_custom_view">ແຕະສຳລັບເຄື່ອງມືແນະນຳມຸມມອງແບບກຳນົດເອງ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Top Custom Color Tooltip</string>
+    <string name="tooltip_top_start_message">ເຄື່ອງມືແນະນຳສີທີ່ກໍາຫນົດເອງດ້ານເທິງ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Top ສຸດ Tooltip ກັບ 10dp offsetX</string>
+    <string name="tooltip_top_end_message">ແນະນຳເຄື່ອງມືດ້ານເທິງດ້ວຍ 10dp offsetX</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Bottom Start Tooltip</string>
+    <string name="tooltip_bottom_start_message">ແນະນຳເຄື່ອງມືເລີ່ມ​ຕົ້ນດ້ານລຸ່ມ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Bottom End Tooltip ກັບ 10dp offsetY</string>
+    <string name="tooltip_bottom_end_message">ແນະນຳເຄື່ອງມືດ້ານລຸ່ມດ້ວຍ 10dp offsetY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Dismiss ພາຍໃນ Tooltip</string>
+    <string name="tooltip_center_message">ປິດເຄື່ອງມືແນະນຳພາຍໃນ</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Tooltip ຖືກປະຕິເສດ</string>
+    <string name="tooltip_dismiss_message">ປິດເຄັດລັບເຄື່ອງມືໄວ້</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">ຫົວຂໍ້ແມ່ນ ແສງສະຫວ່າງ 28sp</string>
+    <string name="headline">ຫົວຂໍ້ຂ່າວແມ່ນ ໄຟ 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">Title 1 ແມ່ນ Medium 20sp</string>
+    <string name="title_1">ຫົວຂໍ້ 1 ແມ່ນປານກາງ 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Title 2 ເປັນປະຈໍາ 20sp</string>
+    <string name="title_2">ຫົວຂໍ້ 2 ແມ່ນປົກກະຕິ 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">ຫົວຂໍ້ເປັນປະຈໍາ 18sp</string>
+    <string name="heading">ຫົວຂໍ້ແມ່ນປົກກະຕິ 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Subheading 1 ເປັນປະຈໍາ 16sp</string>
+    <string name="subheading_1">ຫົວ​ຂໍ້​ຍ່ອຍ 1 ແມ່ນ Regular 16sp ປົກກະຕິ</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Subheading 2 is Medium 16sp</string>
+    <string name="subheading_2">ຫົວ​ຂໍ້​ຍ່ອຍ 2 ແມ່ນ 16sp ປານກາງ</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Body 1 is Regular 14sp</string>
+    <string name="body_1">ສ່ວນເນື້ອຫາ 1 ແມ່ນ ທຳມະດາ 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Body 2 is Medium 14sp</string>
+    <string name="body_2">ສ່ວນເນື້ອຫາ 2 ແມ່ນ ປານກາງ 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">ຄໍາເຫັນເປັນປະຈໍາ 12sp</string>
+    <string name="caption">ຄຳ​ອະ​ທິ​ບາຍ​ພາບແມ່ນ 12sp ປົກກະຕິ</string>
 
 </resources>

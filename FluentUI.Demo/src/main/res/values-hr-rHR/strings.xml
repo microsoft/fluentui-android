@@ -6,12 +6,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Fluentna pokazna verzija korisničkog sučelja</string>
-    <string name="app_title">Tečno korisničko sučelje</string>
+    <string name="app_name">Pokazna verzija aplikacije Fluent UI</string>
+    <string name="app_title">Fluent UI</string>
     <!-- Announces selected component -->
-    <string name="app_accessibility_selected">Odabrano %s</string>
+    <string name="app_accessibility_selected">Odabrana je stavka %s</string>
     <string name="app_modifiable_parameters">Parametri koji se mogu mijenjati</string>
-    <string name="app_right_accessory_view">Prikaz desne dodatne opreme</string>
+    <string name="app_right_accessory_view">Desni prikaz dodataka</string>
 
     <string name="app_style">Stil</string>
     <!-- describes an action, icon pressed -->
@@ -24,8 +24,8 @@
     <string name="actionbar_carousel_radio_label">Vrtuljak</string>
     <string name="actionbar_icon_radio_label">Ikona</string>
     <string name="actionbar_basic_radio_label">Osnovno</string>
-    <string name="actionbar_position_bottom_radio_label">Dno</string>
-    <string name="actionbar_position_top_radio_label">Vrh</string>
+    <string name="actionbar_position_bottom_radio_label">Donji</string>
+    <string name="actionbar_position_top_radio_label">Gornji</string>
 
     <!--UI Text view label denoting type of action bar -->
     <string name="actionbar_type_heading">Vrsta akcijske trake</string>
@@ -37,79 +37,79 @@
     <string name="app_bar_subtitle">Podnaslov</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Kliknuto na ikonu navigacije.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">Kliknuta je ikona navigacije.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">Zastava</string>
+    <string name="app_bar_layout_menu_flag">Zastavica</string>
     <string name="app_bar_layout_menu_settings">Postavke</string>
-    <string name="app_bar_layout_menu_search">Pretraži</string>
+    <string name="app_bar_layout_menu_search">Pretraživanje</string>
     <!-- UI Text that shows the type of scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Ponašanje pomicanja: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_button">Uključivanje/isključivanje ponašanja pomicanja</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Uključivanje/isključivanje ikone navigacije</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Uključivanje/isključivanje navigacije</string>
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">Prikaži avatar</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Prikaži ikonu unatrag</string>
+    <string name="app_bar_layout_show_back_icon_button">Prikaži ikonu natrag</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">Sakrij ikonu</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">Prikaži ikonu</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Uključivanje/isključivanje stila izgleda trake za pretraživanje</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Uključivanje/isključivanje stila rasporeda trake za pretraživanje</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Prikaži kao prikaz dodatne opreme</string>
-    <string name="app_bar_layout_searchbar_action_view_button">Pokaži kao prikaz akcije</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Prikaži kao prikaz dodataka</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Prikaži kao prikaz radnji</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Prebacivanje između tema (ponovno stvara aktivnost)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">Prebacivanje između tema (ponovo stvara aktivnost)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Uključivanje/isključivanje teme</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Stavka</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">Sadržaj koji se može dodatno pomičite</string>
+    <string name="app_bar_layout_list_sub_header">Sadržaj koji se može dodatno pomicati</string>
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">Stil kruga</string>
+    <string name="avatar_style_circle">Kružni stil</string>
     <string name="avatar_style_square">Kvadratni stil</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XxLerge</string>
-    <string name="avatar_size_xlarge">XLarge (XLarge)</string>
-    <string name="avatar_size_large">Veliko</string>
-    <string name="avatar_size_medium">Srednje</string>
-    <string name="avatar_size_small">Mala</string>
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">Veliki</string>
+    <string name="avatar_size_medium">Srednji</string>
+    <string name="avatar_size_small">Mali</string>
     <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Avatar koji je prikazan s maksimumom</string>
+    <string name="avatar_group_max_displayed_avatar">Maksimalni prikazani avatar</string>
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">Broj avatara preljeva</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Vrsta obruba:</string>
+    <string name="avatar_group_border_type">Vrsta obruba</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
     <string name="avatar_group_info">Grupa avatara sa skupom OverflowAvatarCount neće se pridržavati maksimalnog prikazanog avatara.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Stog lica</string>
+    <string name="avatar_group_face_stack">Grupa lica</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">Hrpa lica</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
     <string name="avatar_group_overflow_clicked">Kliknuto na preljev</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView na indeks %d kliknuto</string>
+    <string name="avatar_group_avatar_clicked">Kliknut je prikaz avatara na indeksu %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
     <string name="badge_notification_badge">Obavijesna značka</string>
     <!--UI Label for dot notification -->
-    <string name="badge_notification_dot">Točkasta</string>
+    <string name="badge_notification_dot">Točka</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
     <string name="badge_notification_list">Popis</string>
     <!--UI Label for notification shown in character used in vertical Tab -->
-    <string name="badge_notification_character">Lik</string>
+    <string name="badge_notification_character">Znak</string>
 
     <!--BottomNavigation-->
     <!--UI Labels -->
@@ -120,8 +120,8 @@
     <string name="bottom_navigation_menu_item_team">Tim</string>
     <!-- Text for buttons -->
     <string name="bottom_navigation_toggle_labels_button">Uključivanje/isključivanje oznaka</string>
-    <string name="bottom_navigation_three_menu_items_button">Pokaži tri stavke izbornika</string>
-    <string name="bottom_navigation_four_menu_items_button">Pokaži četiri stavke izbornika</string>
+    <string name="bottom_navigation_three_menu_items_button">Prikaži tri stavke izbornika</string>
+    <string name="bottom_navigation_four_menu_items_button">Prikaži četiri stavke izbornika</string>
     <string name="bottom_navigation_five_menu_items_button">Prikaži pet stavki izbornika</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
@@ -130,25 +130,25 @@
     <!--BottomSheet-->
     <!--UI Labels -->
     <string name="bottom_sheet">Donji list</string>
-    <string name="bottom_sheet_dialog">Donji redak u dijalogu</string>
+    <string name="bottom_sheet_dialog">Dijaloški okvir donjeg lista</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">Pokaži sa stavkama u jednom retku</string>
-    <string name="bottom_sheet_with_double_line_items">Pokaži s dvostrukim stavkama</string>
-    <string name="bottom_sheet_with_single_line_header">Pokaži sa zaglavljem od jednog retka</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Prikaži s dvo redaka zaglavlja i razdjelnika</string>
-    <string name="bottom_sheet_dialog_button">Pokaži</string>
-    <string name="drawer_content_desc_collapse_state">Proširivanje</string>
+    <string name="bottom_sheet_with_single_line_items">Prikaži sa stavkama u jednom retku</string>
+    <string name="bottom_sheet_with_double_line_items">Prikaži sa stavkama u dva retka</string>
+    <string name="bottom_sheet_with_single_line_header">Prikaži sa zaglavljem u jednom retku</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Prikaži sa zaglavljem u dva retka i razdjelnicima</string>
+    <string name="bottom_sheet_dialog_button">Prikaži</string>
+    <string name="drawer_content_desc_collapse_state">Proširi</string>
     <string name="drawer_content_desc_expand_state">Minimiziraj</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
     <string name="contextual_command_prompt_click_item">Kliknite %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">Dugo klikni %s</string>
+    <string name="contextual_command_prompt_long_click_item">Dugo kliknite stavku %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Kliknite Odbaci</string>
     <!-- Text for button for inserting an item-->
-    <string name="contextual_command_insert_item">Umetanje stavke</string>
+    <string name="contextual_command_insert_item">Umetni stavku</string>
     <!-- Text for button for updating an item-->
     <string name="contextual_command_update_item">Ažuriraj stavku</string>
     <!-- Announces dismiss action -->
@@ -162,117 +162,117 @@
     <!-- Announces italic action -->
     <string name="contextual_command_accessibility_italic">Kurziv</string>
     <!-- Announces undeline action -->
-    <string name="contextual_command_accessibility_underline">Podcrtavanje</string>
+    <string name="contextual_command_accessibility_underline">Podcrtaj</string>
     <!-- Announces strikethrough action -->
-    <string name="contextual_command_accessibility_strikethrough">Precrtano</string>
+    <string name="contextual_command_accessibility_strikethrough">Precrtaj</string>
     <!-- Announces undo action -->
     <string name="contextual_command_accessibility_undo">Poništi</string>
     <!-- Announces redo action -->
-    <string name="contextual_command_accessibility_redo">Ponavljanje poništenog</string>
+    <string name="contextual_command_accessibility_redo">Ponovi poništeno</string>
     <!-- Announces bullet action -->
     <string name="contextual_command_accessibility_bullet">Grafička oznaka</string>
     <!-- Announces list action -->
     <string name="contextual_command_accessibility_list">Popis</string>
     <!-- Announces link action -->
-    <string name="contextual_command_accessibility_link">Poveznica</string>
+    <string name="contextual_command_accessibility_link">Veza</string>
     <!-- UI Label denoting item updating -->
     <string name="contextual_command_bar_item_update_title">Ažuriranje stavke</string>
     <!-- UI Label denoting spacing -->
-    <string name="contextual_command_bar_space_title">Razmak</string>
+    <string name="contextual_command_bar_space_title">Prored</string>
     <!-- UI Label denoting dismiss position -->
     <string name="contextual_command_bar_dismiss_position">Odbaci položaj</string>
     <!-- Radio button label START -->
-    <string name="contextual_command_bar_dismiss_position_start">ZAPOČNI</string>
+    <string name="contextual_command_bar_dismiss_position_start">POKRENI</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">KRAJ</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">Grupni prostor</string>
+    <string name="contextual_command_bar_group_space_title">Prostor grupe</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">Prostor za stavke</string>
+    <string name="contextual_command_bar_item_space_title">Prostor stavke</string>
     <!-- UI bar label denoting the space in number value dp's -->
-    <string name="contextual_command_bar_space_value">%d tpi</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">Zastava</string>
+    <string name="bottom_sheet_item_flag_title">Zastavica</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Kliknuto na stavku zastavicom</string>
+    <string name="bottom_sheet_item_flag_toast">Kliknuta je stavka zastavica</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Odgovor</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Kliknuto je na stavku odgovora</string>
+    <string name="bottom_sheet_item_reply_toast">Kliknuta je stavka odgovori</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Prosljeđivanje</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Kliknuto na stavku za prosljeđivanje</string>
+    <string name="bottom_sheet_item_forward_toast">Kliknuto je prosljeđivanje stavke</string>
     <!--UI Label for item delete-->
-    <string name="bottom_sheet_item_delete_title">Izbriši</string>
+    <string name="bottom_sheet_item_delete_title">Brisanje</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Izbriši stavku koju je kliknuto</string>
+    <string name="bottom_sheet_item_delete_toast">Kliknuto je brisanje stavke</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
     <!--UI Label for item camera -->
     <string name="bottom_sheet_item_camera_title">Kamera</string>
     <!--UI description label take a photo-->
-    <string name="bottom_sheet_item_camera_subtitle">Snimi fotografiju</string>
+    <string name="bottom_sheet_item_camera_subtitle">Snimanje fotografije</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Kliknuto je stavka kamere</string>
+    <string name="bottom_sheet_item_camera_toast">Kliknuta je stavka kamera</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Galerija</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">Prikaz fotografija</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Kliknuto na stavku galerije</string>
+    <string name="bottom_sheet_item_gallery_toast">Kliknuta je stavka galerija</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Videozapisi</string>
     <!--UI description label play your videos -->
-    <string name="bottom_sheet_item_videos_subtitle">Reproducirajte videozapise</string>
+    <string name="bottom_sheet_item_videos_subtitle">Reproduciranje videozapisa</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Kliknuto na stavku videozapisa</string>
+    <string name="bottom_sheet_item_videos_toast">Kliknuta je stavka videozapisi</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Upravljanje</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Upravljanje bibliotekom medijskih sadržaja</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Upravljaj stavkom koja je kliknuto</string>
+    <string name="bottom_sheet_item_manage_toast">Kliknuto je upravljanje stavkom</string>
     <!--Single line header-->
     <!--UI title header email actions-->
-    <string name="bottom_sheet_item_single_line_header">Akcije za e-poštu</string>
+    <string name="bottom_sheet_item_single_line_header">Radnje za e-poštu</string>
     <!--Double line header-->
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Dokumenti</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Zadnji put ažurirano 14.14</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Zadnji put ažurirano u 14.14</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Zajedničko korištenje</string>
     <!--UI Label for user action clicked on item share-->
     <string name="bottom_sheet_item_double_line_header_share_toast">Kliknuto je zajedničko korištenje stavke</string>
     <!--UI Label for item move-->
-    <string name="bottom_sheet_item_double_line_header_move">Premjesti</string>
+    <string name="bottom_sheet_item_double_line_header_move">Premještanje</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Kliknuto premjesti stavku</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Kliknuto je premještanje stavke</string>
     <!--UI Label for item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete">Izbriši</string>
+    <string name="bottom_sheet_item_double_line_header_delete">Brisanje</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Izbriši stavku koju je kliknuto</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Kliknuto je brisanje stavke</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Informacije</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Kliknute stavke s informacijama</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Kliknuta je stavka informacije</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Sat</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Kliknuto na stavku sata</string>
+    <string name="bottom_sheet_item_clock_toast">Kliknuta je stavka sat</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Alarm</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Kliknuto je stavka alarma</string>
+    <string name="bottom_sheet_item_alarm_toast">Kliknuta je stavka alarma</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Vremenska zona</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Kliknuto na stavku vremenske zone</string>
+    <string name="bottom_sheet_item_time_zone_toast">Kliknuta je stavka vremenska zona</string>
 
     <!--Button-->
     <!-- text for buttons -->
@@ -280,30 +280,30 @@
     <string name="buttonbar">Traka gumba</string>
     <string name="button_disabled">Gumb Onemogućeno</string>
     <string name="button_borderless">Gumb bez obruba</string>
-    <string name="button_borderless_disabled">Gumb onemogućen bez obruba</string>
+    <string name="button_borderless_disabled">Gumb Onemogućeno bez obruba</string>
     <string name="button_large">Veliki gumb</string>
-    <string name="button_large_disabled">Veliki onemogućeni gumb</string>
-    <string name="button_outlined">Gumb s konturom</string>
-    <string name="button_outlined_disabled">Gumb Onemogućeno s konturom</string>
+    <string name="button_large_disabled">Veliki gumb Onemogućeno</string>
+    <string name="button_outlined">Gumb s obrubom</string>
+    <string name="button_outlined_disabled">Gumb Onemogućeno s obrubom</string>
 
     <!--CalendarView-->
-    <string name="calendar_example_chosen_date">Odabir datuma...</string>
+    <string name="calendar_example_chosen_date">Odaberite datum</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Birač datuma i vremena</string>
+    <string name="date_time_picker_title">Alat za odabir datuma i vremena</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Jedan datum</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Nije odabran nijedan datum</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Prikaži Birač datuma?</string>
+    <string name="date_time_picker_date_button">Prikaži alat za odabir datuma</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Pokaži birač datuma i vremena s odabranom tabulatorom datuma</string>
+    <string name="date_time_picker_calendar_date_time_button">Prikaži alat za odabir datuma i vremena s odabranom karticom datuma</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Pokaži birač datuma i vremena s odabranom tabulatorom vremena</string>
+    <string name="date_time_picker_date_time_calendar_button">Prikaži alat za odabir datuma i vremena s odabranom karticom vremena</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Prikaži birač datuma i vremena</string>
+    <string name="date_time_picker_date_time_button">Prikaži alat za odabir datuma i vremena</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Raspon datuma</string>
     <!-- UI label showing start of the range-->
@@ -311,9 +311,9 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Kraj:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Nije odabran nijedan početak</string>
+    <string name="date_time_picker_date_start_picked_default">Nije odabran početak</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">Nema odabranih završetaka</string>
+    <string name="date_time_picker_date_end_picked_default">Nije odabran kraj</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">Odaberite datum početka</string>
     <!-- text for button that selects end date -->
@@ -321,29 +321,29 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Raspon datuma i vremena</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Odaberite raspon datuma i vremena</string>
     <!-- UI label -->
-    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <string name="date_time_picker_dialog_title">Dijaloški okvir alata za odabir datuma i vremena</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">Prikaži dijaloški okvir</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
-    <string name="drawer_button">Pokaži ladicu</string>
+    <string name="drawer_button">Prikaži ladicu</string>
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Prikaži dijaloški okvir ladice</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Bez dijaloškog okvira za iščezanje pri dnu</string>
+    <string name="no_fade_bottom_dialog_button">Donji dijaloški okvir bez iščezavanja</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Prikaži gornju ladicu</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Bez dijaloškog okvira za iščezanje pri vrhu</string>
+    <string name="no_fade_top_dialog_button">Gornji dijaloški okvir bez iščezavanja</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> Prikaži gornji dijaloški okvir prikaza sidrišta</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Prikaz dijaloškog okvira bez naslova na vrhu</string>
+    <string name="no_title_top_dialog_button"> Prikaži gornji dijaloški okvir bez naslova</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Prikaži donji dijaloški okvir naslova pri vrhu</string>
+    <string name="below_title_top_dialog_button"> Prikaži gornji dijaloški okvir ispod naslova</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Prikaži desnu ladicu</string>
     <!-- text for button that shows left drawer -->
@@ -357,70 +357,70 @@
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">Tekst prilagođenog podnaslova</string>
     <!-- Footer -->
-    <string name="list_item_footer">Podnožje, treći tekst</string>
+    <string name="list_item_footer">Podnožje, tercijarni tekst</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">Jednostruki popis sa sivim tekstom podzaglavlje</string>
+    <string name="list_item_sub_header_single_line">Popis u jednom retku sa sivim tekstom podnaslova</string>
     <string name="list_item_sub_header_two_line">Popis u dva retka</string>
-    <string name="list_item_sub_header_two_line_dense">Dvoredni popis s gustim proredom</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Popis s dva retka s prilagođenim sekundarnim prikazom podnaslova</string>
-    <string name="list_item_sub_header_three_line">Tro redak s crnim tekstom podzaglavlje</string>
+    <string name="list_item_sub_header_two_line_dense">Popis u dva retka s gustim proredom</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Popis u dva retka s prilagođenim sekundarnim prikazom podnaslova</string>
+    <string name="list_item_sub_header_three_line">Popis u dva retka s crnim tekstom podnaslova</string>
     <string name="list_item_sub_header_no_custom_views">Popis stavki bez prilagođenih prikaza</string>
-    <string name="list_item_sub_header_large_header">Popis stavki s velikim prilagođenim prikazima</string>
-    <string name="list_item_sub_header_wrapped_text">Prikaži popis stavki s prelomljenim tekstom</string>
-    <string name="list_item_sub_header_truncated_text">Popis stavki s skraćenim tekstom</string>
+    <string name="list_item_sub_header_large_header">Stavke popisa s velikim prilagođenim prikazima</string>
+    <string name="list_item_sub_header_wrapped_text">Stavke popisa s prelomljenim tekstom</string>
+    <string name="list_item_sub_header_truncated_text">Stavke popisa sa skraćenim tekstom</string>
     <string name="list_item_sub_header_custom_accessory_text">Radnja</string>
-    <string name="list_item_truncation_middle">Središnje skraženje.</string>
-    <string name="list_item_truncation_end">Kraj skratanja.</string>
-    <string name="list_item_truncation_start">Započni skračivanje.</string>
+    <string name="list_item_truncation_middle">Srednje kraćenje.</string>
+    <string name="list_item_truncation_end">Završite kraćenje.</string>
+    <string name="list_item_truncation_start">Započnite kraćenje.</string>
     <string name="list_item_custom_text_view">Vrijednost</string>
-    <string name="list_item_click">Klikli ste na stavku popisa.</string>
-    <string name="list_item_click_custom_accessory_view">Klikli ste na prilagođeni prikaz dodataka.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Klikli ste na prilagođeni prikaz dodatne opreme podzaglavlje.</string>
+    <string name="list_item_click">Kliknuli ste stavku popisa.</string>
+    <string name="list_item_click_custom_accessory_view">Kliknuli ste prilagođeni prikaz dodataka.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Kliknuli ste prilagođeni prikaz dodataka podnaslova.</string>
     <string name="list_item_more_options">Dodatne mogućnosti</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Odaberi</string>
-    <string name="people_picker_select_deselect_example">Odabir odabira</string>
+    <string name="people_picker_select_deselect_example">Odaberi/Poništi odabir</string>
     <string name="people_picker_none_example">Ništa</string>
     <string name="people_picker_delete_example">Izbriši</string>
     <string name="people_picker_custom_persona_description">Ovaj primjer pokazuje kako stvoriti prilagođeni objekt IPersona.</string>
-    <string name="people_picker_dialog_title_removed">Uklonili ste model korisnika:</string>
-    <string name="people_picker_dialog_title_added">Dodali ste model korisnika:</string>
-    <string name="people_picker_drag_started">Povlačenje je započelo</string>
+    <string name="people_picker_dialog_title_removed">Uklonili ste osobu:</string>
+    <string name="people_picker_dialog_title_added">Dodali ste osobu:</string>
+    <string name="people_picker_drag_started">Povlačenje je pokrenuto</string>
     <string name="people_picker_drag_ended">Povlačenje je završeno</string>
-    <string name="people_picker_picked_personas_listener">Osluškivač modela korisnika</string>
+    <string name="people_picker_picked_personas_listener">Osluškivač osoba</string>
     <string name="people_picker_suggestions_listener">Osluškivač prijedloga</string>
-    <string name="people_picker_persona_chip_click">Klikli ste na %s</string>
+    <string name="people_picker_persona_chip_click">Kliknuli ste %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="few">%1$s recipients</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s primatelj</item>
+        <item quantity="few">%1$s primatelja</item>
+        <item quantity="other">%1$s primatelja</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
     <string name="expand_bottom_sheet_button">Proširi trajni donji list</string>
     <string name="collapse_persistent_sheet_button"> Sakrij trajni donji list</string>
-    <string name="show_persistent_sheet_button"> Pokaži trajni donji list</string>
+    <string name="show_persistent_sheet_button"> Prikaži trajni donji list</string>
     <string name="new_view">Ovo je novi prikaz</string>
-    <string name="toggle_sheet_content">Uključivanje/isključivanje sadržaja donje tablice</string>
+    <string name="toggle_sheet_content">Uključivanje/isključivanje sadržaja donjeg lista</string>
     <string name="switch_to_custom_content">Prijeđi na prilagođeni sadržaj</string>
-    <string name="one_line_content">Sadržaj donje tablice s jednim retkom</string>
+    <string name="one_line_content">Sadržaj donjeg lista u jednom retku</string>
     <string name="toggle_disable_all_items">Uključivanje/isključivanje onemogućivanja svih stavki</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Dodaj/ukloni prikaz</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> Promjena sažete visine</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Promijeni sažetu visinu</string>
     <string name="persistent_sheet_item_create_new_folder_title">Nova mapa</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Kliknuto je nova stavka mape</string>
-    <string name="persistent_sheet_item_edit_title">Uredi</string>
-    <string name="persistent_sheet_item_edit_toast">Kliknuto uređivanje stavke</string>
-    <string name="persistent_sheet_item_save_title">Spremi</string>
-    <string name="persistent_sheet_item_save_toast">Kliknuto na stavku spremanja</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Kliknuta je stavka nova mapa</string>
+    <string name="persistent_sheet_item_edit_title">Uređivanje</string>
+    <string name="persistent_sheet_item_edit_toast">Kliknuto je uređivanje stavke</string>
+    <string name="persistent_sheet_item_save_title">Spremanje</string>
+    <string name="persistent_sheet_item_save_toast">Kliknuto je spremanje stavke</string>
     <string name="persistent_sheet_item_zoom_in_title">Povećavanje</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Kliknuto na stavku za zumiranje</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Kliknuta je stavka povećaj</string>
     <string name="persistent_sheet_item_zoom_out_title">Smanjivanje</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Kliknuto na stavku za smanjivanje</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Kliknuta je stavka smanji</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -453,56 +453,56 @@
     <string name="persona_footer">Dostupno</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">Allan Munger</string>
-    <string name="persona_name_amanda_brady">To je to.</string>
-    <string name="persona_name_ashley_mccarthy">Dami McCarroid</string>
-    <string name="persona_name_carlos_slattery">Roko Stipanov</string>
-    <string name="persona_name_carole_poland">Carole Poljska</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
     <string name="persona_name_cecil_folk">Cecil Folk</string>
-    <string name="persona_name_celeste_burton">Damski, Aloha</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
-    <string name="persona_name_colin_ballinger">Negosto Gamš</string>
-    <string name="persona_name_daisy_phillips">Ivančica Damica</string>
-    <string name="persona_name_elliot_woodward">Dami Woodward</string>
-    <string name="persona_name_elvia_atkins">Elvia Atvia</string>
-    <string name="persona_name_erik_nason">Dalma Nason</string>
-    <string name="persona_name_henry_brill">Rill Brill</string>
-    <string name="persona_name_isaac_fielder">Izlagač polja</string>
-    <string name="persona_name_johnie_mcconnell">Johnie McCon instanca</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">To je to.</string>
-    <string name="persona_name_lydia_bauer">Saams</string>
-    <string name="persona_name_mauricio_august">Mauricio – kolovoz</string>
-    <string name="persona_name_miguel_garcia">Tomislav Kralj</string>
-    <string name="persona_name_mona_kane">Mona Damska</string>
-    <string name="persona_name_robin_counts">Broj dodjeljivanja</string>
-    <string name="persona_name_robert_tolbert">Robert To roland</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">Negosto</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
-    <string name="persona_subtitle_designer">Designer</string>
+    <string name="persona_subtitle_designer">Dizajner</string>
     <string name="persona_subtitle_engineer">Inženjer</string>
-    <string name="persona_subtitle_manager">Nadređeni</string>
+    <string name="persona_subtitle_manager">Voditelj</string>
     <string name="persona_subtitle_researcher">Istraživač</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (primjer dugog teksta za testiranje skratanja)</string>
-    <string name="persona_view_description_xxlarge">XXLarge avatar s tri retka teksta</string>
+    <string name="persona_truncation">\ (primjer dugog teksta za testiranje kraćenja)</string>
+    <string name="persona_view_description_xxlarge">Avatar XXLarge s tri retka teksta</string>
     <string name="persona_view_description_large">Veliki avatar s dva retka teksta</string>
     <string name="persona_view_description_small">Mali avatar s jednim retkom teksta</string>
-    <string name="people_picker_hint">Ništa s prikazanim podsjetnikom</string>
+    <string name="people_picker_hint">Ništa s prikazanim savjetom</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Onemogućeni persona čip</string>
+    <string name="persona_chip_example_disabled">Onemogućeni žeton osobe</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Persona čip pogreške</string>
+    <string name="persona_chip_example_error">Pogreška žetona osobe</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Persona Chip bez ikone za zatvaranje</string>
+    <string name="persona_chip_example_no_icon">Žeton osobe bez ikone za zatvaranje</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Osnovni persona čip</string>
+    <string name="persona_chip_example_basic">Osnovni žeton osobe</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Klikli ste na odabrani persona čip.</string>
+    <string name="persona_chip_example_click">Kliknuli ste žeton odabrane osobe.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -510,57 +510,57 @@
     <!-- UI label for item follow -->
     <string name="popup_menu_item_follow">Prati</string>
     <!-- UI label for item invite people -->
-    <string name="popup_menu_item_invite_people">Pozivanje korisnika</string>
+    <string name="popup_menu_item_invite_people">Pozovi osobe</string>
     <!-- UI label for item refresh page -->
-    <string name="popup_menu_item_refresh_page">Osvježavanje stranice</string>
+    <string name="popup_menu_item_refresh_page">Osvježi stranicu</string>
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">Otvori u pregledniku</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">Ovo je skočni izbornik s više redaka. Maksimalni broj redaka postavljen je na dva, a ostatak teksta će se stisati.
+    <string name="popup_menu_item_multiline">Ovo je skočni izbornik u više redaka. Maksimalni broj redaka postavljen je na dva, a ostatak teksta bit će skraćen.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
-    <string name="popup_menu_item_all_news">Sve novosti</string>
+    <string name="popup_menu_item_all_news">Sve vijesti</string>
     <!-- UI label for item Saved news -->
     <string name="popup_menu_item_saved_news">Spremljene vijesti</string>
     <!-- UI label for item >News from sites -->
-    <string name="popup_menu_item_news_from_sites">Novosti s web-mjesta</string>
+    <string name="popup_menu_item_news_from_sites">Vijesti s web-mjesta</string>
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_outside">Obavijesti izvan radnog vremena</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Obavijesti kada nije aktivno na radnoj površini</string>
+    <string name="popup_menu_item_notify_inactive">Obavijesti kada je neaktivna na radnoj površini</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">Klikli ste na stavku:</string>
+    <string name="popup_menu_item_clicked">Kliknuli ste na stavku:</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple">Jednostavan izbornik</string>
+    <string name="popup_menu_simple">Jednostavni izbornik</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Jednostavan izbornik2</string>
+    <string name="popup_menu_simple_duo">Jednostavni izbornik 2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">Izbornik s jednom stavkom koju je moguće odabrati i razdjelnikom</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
     <string name="popup_menu_all_check">Izbornik sa svim stavkama koje se mogu odabrati, ikonama i dugim tekstom</string>
     <!--Text for button that shows popupmenu -->
-    <string name="popup_menu_show">Pokaži</string>
+    <string name="popup_menu_show">Prikaži</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">Kružni napredak</string>
+    <string name="circular_progress">Kružni tijek</string>
     <string name="circular_progress_xsmall">XSmall</string>
-    <string name="circular_progress_xsmall_size">20dp (prije 20 dana)</string>
-    <string name="circular_progress_small">Mala</string>
-    <string name="circular_progress_small_size">24dp (24dp)</string>
-    <string name="circular_progress_medium">Srednje</string>
-    <string name="circular_progress_medium_size">36dp (36dp)</string>
-    <string name="circular_progress_large">Veliko</string>
-    <string name="circular_progress_large_size">44dp (44dp)</string>
+    <string name="circular_progress_xsmall_size">20 dp</string>
+    <string name="circular_progress_small">Mali</string>
+    <string name="circular_progress_small_size">24 dp</string>
+    <string name="circular_progress_medium">Srednji</string>
+    <string name="circular_progress_medium_size">36 dp</string>
+    <string name="circular_progress_large">Veliki</string>
+    <string name="circular_progress_large_size">44 dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">Linearni napredak</string>
-    <string name="linear_progress_size">4dp (4dp)</string>
+    <string name="linear_progress">Linearni tijek</string>
+    <string name="linear_progress_size">4 dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">Neodređeno</string>
+    <string name="linear_progress_indeterminate_label">Neodređeni</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Determinatirajte</string>
+    <string name="linear_progress_determinate_label">Određeni</string>
 
 
     <!--Shared-->
@@ -570,11 +570,11 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Traka pretraživanja</string>
+    <string name="searchbar">Traka za pretraživanje</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Povratni poziv mikrofona</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Samoispravak</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Mikrofon je pritisnut</string>
     <!-- Announces that right view has been pressed -->
@@ -585,33 +585,33 @@
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Radnja</string>
-    <string name="snackbar_action_long">Akcija dugog teksta</string>
-    <string name="snackbar_single_line">Zalogaj s jednom crtom</string>
-    <string name="snackbar_multiline">Ovo je višeredna zalogajska traka. Maksimalni broj redaka postavljen je na dva, a ostatak teksta će se stisati.
+    <string name="snackbar_action_long">Radnja s dugim tekstom</string>
+    <string name="snackbar_single_line">Kratka poruka u jednom retku</string>
+    <string name="snackbar_multiline">Ovo je kratka poruka u više redaka. Maksimalni broj redaka postavljen je na dva, a ostatak teksta bit će skraćen.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">Ovo je traka za najavu. Koristi se za komunikaciju novih značajki.</string>
-    <string name="snackbar_primary">Ovo je primarna zalogajska traka.</string>
-    <string name="snackbar_light">Ovo je lagana prigušnica.</string>
-    <string name="snackbar_warning">Ovo je zalogaj upozorenja.</string>
-    <string name="snackbar_danger">Ovo je opasnost prigušnica.</string>
+    <string name="snackbar_primary">Ovo je primarna kratka poruka.</string>
+    <string name="snackbar_light">Ovo je kratka poruka sa svijetlim stilom.</string>
+    <string name="snackbar_warning">Ovo je kratka poruka upozorenja.</string>
+    <string name="snackbar_danger">Ovo je kratka poruka opasnosti.</string>
     <string name="snackbar_description_single_line">Kratko trajanje</string>
     <string name="snackbar_description_single_line_custom_view">Dugo trajanje s kružnim tijekom kao malim prilagođenim prikazom</string>
-    <string name="snackbar_description_single_line_action">Kratko trajanje uz akciju</string>
-    <string name="snackbar_description_single_line_action_custom_view">Kratko trajanje s radjom i srednjim prilagođenim prikazom</string>
+    <string name="snackbar_description_single_line_action">Kratko trajanje s radnjom</string>
+    <string name="snackbar_description_single_line_action_custom_view">Kratko trajanje s radnjom i srednjim prilagođenim prikazom</string>
     <string name="snackbar_description_single_line_custom_text_color">Kratko trajanje s prilagođenom bojom teksta</string>
     <string name="snackbar_description_multiline">Dugo trajanje</string>
     <string name="snackbar_description_multiline_custom_view">Dugo trajanje s malim prilagođenim prikazom</string>
-    <string name="snackbar_description_multiline_action">Neograničeno trajanje s ažuriranjima akcije i teksta</string>
-    <string name="snackbar_description_multiline_action_custom_view">Kratko trajanje s radjom i srednjim prilagođenim prikazom</string>
-    <string name="snackbar_description_multiline_action_long">Kratko trajanje s tekstom dugačke akcije</string>
+    <string name="snackbar_description_multiline_action">Neograničeno trajanje s ažuriranjima radnje i teksta</string>
+    <string name="snackbar_description_multiline_action_custom_view">Kratko trajanje s radnjom i srednjim prilagođenim prikazom</string>
+    <string name="snackbar_description_multiline_action_long">Kratko trajanje s dugim tekstom radnje</string>
     <string name="snackbar_description_announcement">Kratko trajanje</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Tekst je ažuriran.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Prikaži prigušnicu</string>
+    <string name="snackbar_button_show">Prikaži kratku poruku</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">Jednostruka linija</string>
+    <string name="snackbar_headline_single_line">Jedan redak</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">Više redaka</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Stil objave</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -642,7 +642,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Vodoravno</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(nema teksta)</string>
+    <string name="tabBar_no_text">Nema teksta</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Stavke kartice</string>
 
@@ -651,7 +651,7 @@
     <string name="cell_sample_title">Naslov</string>
     <string name="cell_sample_description">Opis</string>
     <string name="calculate_cells">Učitaj/izračunaj 100 ćelija</string>
-    <string name="calculate_layouts">Učitaj/izračunaj 100 izgleda</string>
+    <string name="calculate_layouts">Učitaj/izračunaj 100 rasporeda</string>
     <string name="template_list">Popis predložaka</string>
     <string name="regular_list">Običan popis</string>
     <string name="cell_example_title">Naslov: ćelija</string>
@@ -661,15 +661,15 @@
     <!-- Text for button that shows a Standard Tab 2-Segment -->
     <string name="tab_standard_two_segment">Standardna kartica s dva segmenta</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Standardna kartica s 3 segmenta</string>
+    <string name="tab_standard_three_segment">Standardna kartica s tri segmenta</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Standardna kartica s 4 segmenta</string>
+    <string name="tab_standard_four_segment">Standardna kartica s četiri segmenta</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Standardna kartica s pagerom</string>
+    <string name="tab_standard_with_pager">Standardna kartica sa sučeljem za pregled stranica</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Prebaci se na drugu karticu</string>
+    <string name="tab_switch">Prebaci na drugu karticu</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Tabulator </string>
+    <string name="tab_pills">Kartica s tabletama </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
@@ -677,19 +677,19 @@
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
     <string name="tooltip_calendar_demo_button">Dodirnite za opis elementa prilagođenog kalendara</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Dodirnite Opis elementa prilagođene boje</string>
+    <string name="tooltip_custom_button">Dodirnite opis elementa prilagođene boje</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Dodirnite da biste odbacili unutarnji opis elementa</string>
+    <string name="tooltip_center_button">Dodirnite da biste odbacili unutar opisa elementa</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
     <string name="tooltip_custom_view">Dodirnite za opis elementa prilagođenog prikaza</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Gornji opis elementa prilagođene boje</string>
+    <string name="tooltip_top_start_message">Opis elementa prilagođene boje gornje strane elementa</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Opis elementa gornjeg kraja s pomakom od 10dpX</string>
+    <string name="tooltip_top_end_message">Opis elementa s gornje strane kraja elementa s pomakom od 10 dp po osi X</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Opis elementa pri dnu početka</string>
+    <string name="tooltip_bottom_start_message">Opis elementa s donje strane početka elementa</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Opis elementa donjeg kraja s pomakom od 10dp</string>
+    <string name="tooltip_bottom_end_message">Opis elementa s donje strane kraja elementa s pomakom od 10 dp po osi Y</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_center_message">Odbaci unutar opisa elementa</string>
     <!--UI label showing tooltip dismissed message -->
@@ -697,22 +697,22 @@
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Naslov je Light 28sp</string>
+    <string name="headline">Naslov je svijetli 28 sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">Naslov 1 je srednji 20sp</string>
+    <string name="title_1">Naslov 1 je srednji 20 sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Naslov 2 je 20sp</string>
+    <string name="title_2">Naslov 2 je običan 20 sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Naslov je običan 18sp</string>
+    <string name="heading">Naslov je običan 18 sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Podnaslov 1 je 16sp</string>
+    <string name="subheading_1">Podnaslov 1 je obični 16 sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Podnaslov 2 je srednji 16sp</string>
+    <string name="subheading_2">Podnaslov 2 je srednji 16 sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Tijelo 1 je obično 14sp</string>
+    <string name="body_1">Tijelo 1 je obično 14 sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Tijelo 2 je srednje veličine 14sp</string>
+    <string name="body_2">Tijelo 2 je srednje 14 sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Opis je običan 12sp</string>
+    <string name="caption">Opis je običan 12 sp</string>
 
 </resources>

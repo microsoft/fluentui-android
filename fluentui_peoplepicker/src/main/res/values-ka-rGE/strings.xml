@@ -9,36 +9,36 @@
     <!-- *** PeoplePicker *** -->
 
     <string name="people_picker_sample_label">წარწერა</string>
-    <string name="people_picker_search_directory">ძიება დირექტორიაში</string>
+    <string name="people_picker_search_directory">ძიება საქაღალდეში</string>
     <string name="people_picker_search_progress">ძიება…</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s added</string>
-    <string name="people_picker_accessibility_persona_removed">%s removed</string>
-    <string name="people_picker_accessibility_replaced">%s შეიცვალა,</string>
+    <string name="people_picker_accessibility_default_hint">შეიყვანეთ სახელი ან ელფოსტის მისამართი</string>
+    <string name="people_picker_accessibility_persona_added">%s დაემატა</string>
+    <string name="people_picker_accessibility_persona_removed">%s ამოშლილია</string>
+    <string name="people_picker_accessibility_replaced">%s ჩანაცვლებულია,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">დაწკაპუნება</string>
     <string name="people_picker_accessibility_delete_persona">წაშლა</string>
     <string name="people_picker_accessibility_deselect_persona">მონიშვნის გაუქმება</string>
     <string name="people_picker_accessibility_select_persona">არჩევა</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">დაწკაპუნებული %s</string>
-    <string name="people_picker_accessibility_deselected_persona">არჩეული %s</string>
+    <string name="people_picker_accessibility_clicked_persona">დაწკაპუნებულია %s-ზე</string>
+    <string name="people_picker_accessibility_deselected_persona">%s-ის არჩევა გაუქმებულია</string>
     <string name="people_picker_accessibility_selected_persona">არჩეულია %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, აქტივაცია დაირჩევა</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, გააქტიურება არჩევას გააუქმებს</string>
     <string name="people_picker_accessibility_delete_selected_persona">, გააქტიურება წაშლის</string>
-    <string name="people_picker_accessibility_click_selected_persona">, აქტივაცია დააწკაპუნებს</string>
+    <string name="people_picker_accessibility_click_selected_persona">, გააქტიურება დააწკაპუნებს</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">შემოთავაზებების სია გაიხსნა %s პირთან</item>
+        <item quantity="other">შემოთავაზებების სია გაიხსნა %s ადამიანთან</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s პირი</item>
+        <item quantity="other">%s ადამიანი</item>
     </plurals>
 </resources>

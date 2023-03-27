@@ -9,38 +9,38 @@
     <!-- *** PeoplePicker *** -->
 
     <string name="people_picker_sample_label">Oznaka</string>
-    <string name="people_picker_search_directory">Pretraži imenik</string>
-    <string name="people_picker_search_progress">Traženje…</string>
+    <string name="people_picker_search_directory">Pretraži direktorij</string>
+    <string name="people_picker_search_progress">Pretraživanje...</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s added</string>
-    <string name="people_picker_accessibility_persona_removed">%s je uklonjen</string>
-    <string name="people_picker_accessibility_replaced">%s zamijenjen,</string>
+    <string name="people_picker_accessibility_default_hint">Unesite ime ili adresu e-pošte</string>
+    <string name="people_picker_accessibility_persona_added">Dodana je osoba %s</string>
+    <string name="people_picker_accessibility_persona_removed">Uklonjena je osoba %s</string>
+    <string name="people_picker_accessibility_replaced">Zamijenjena je osoba %s,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">Kliknite</string>
     <string name="people_picker_accessibility_delete_persona">Izbriši</string>
     <string name="people_picker_accessibility_deselect_persona">Poništi odabir</string>
     <string name="people_picker_accessibility_select_persona">Odaberi</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Kliknuto %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Poništen odabir %s</string>
-    <string name="people_picker_accessibility_selected_persona">Odabrano %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Kliknuta je osoba %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Poništen je odabir osobe %s</string>
+    <string name="people_picker_accessibility_selected_persona">Odabrana je osoba %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, Aktivacija će poništiti odabir</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, Aktivacija će se izbrisati</string>
-    <string name="people_picker_accessibility_click_selected_persona">, Aktivacija će kliknuti</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, aktivacija će poništiti odabir</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, aktivacija će izbrisati</string>
+    <string name="people_picker_accessibility_click_selected_persona">, aktivacija će kliknuti</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="few">Suggestions list opened with %s people</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Otvoren je popis prijedloga s %s osobom</item>
+        <item quantity="few">Otvoren je popis prijedloga s %s osobe</item>
+        <item quantity="other">Otvoren je popis prijedloga s %s osoba</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="few">%s people</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s osoba</item>
+        <item quantity="few">%s osobe</item>
+        <item quantity="other">%s osoba</item>
     </plurals>
 </resources>
