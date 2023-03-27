@@ -8,7 +8,6 @@ buildscript {
     ext.kotlin_version = '1.6.20'
     ext.nexus_plugin_version = '0.30.0'
     ext.hydra_client_plugin = '1.0.45'
-
     repositories {
         google()
         jcenter()
