@@ -1,8 +1,14 @@
 package com.microsoft.fluentui.tokenized.persona
 
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.SemanticsPropertyReceiver
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
@@ -12,6 +18,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import kotlinx.coroutines.launch
 
 /**
  * A customized  list of personas. Can be a Single or multiline Persona.
@@ -39,7 +46,16 @@ fun PersonaList(
     avatarTokens: AvatarTokens? = null,
     personaListTokens: ListItemTokens? = null
 ) {
-    LazyColumn {
+    val scope = rememberCoroutineScope()
+    val lazyListState = rememberLazyListState()
+    LazyColumn(state = lazyListState, modifier = Modifier.draggable(
+        orientation = Orientation.Vertical,
+        state = rememberDraggableState { delta ->
+            scope.launch {
+                lazyListState.scrollBy(-delta)
+            }
+        },
+    )) {
         items(personas) { item ->
             ListItem.Item(
                 text = item.title,

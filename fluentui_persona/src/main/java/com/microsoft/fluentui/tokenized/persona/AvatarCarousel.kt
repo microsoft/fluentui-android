@@ -2,6 +2,10 @@ package com.microsoft.fluentui.tokenized.persona
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -87,7 +91,15 @@ fun AvatarCarousel(
             getAvatarCarouselTokens().subTextColor(getAvatarCarouselInfo())
 
 
-        LazyRow(state = lazyListState) {
+        LazyRow(state = lazyListState,
+        modifier = Modifier.draggable(
+            orientation = Orientation.Horizontal,
+            state = rememberDraggableState { delta ->
+                scope.launch {
+                    lazyListState.scrollBy(-delta)
+                }
+            },
+        )) {
             itemsIndexed(avatarList) { index, item ->
                 val backgroundColor =
                     getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo())
