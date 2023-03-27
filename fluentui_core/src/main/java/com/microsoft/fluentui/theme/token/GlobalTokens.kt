@@ -321,6 +321,7 @@ object GlobalTokens : Parcelable {
         StrokeWidth10,
         StrokeWidth15,
         StrokeWidth20,
+        StrokeWidth30,
         StrokeWidth40,
         StrokeWidth60
     }
@@ -337,6 +338,8 @@ object GlobalTokens : Parcelable {
                 1.5.dp
             StrokeWidthTokens.StrokeWidth20 ->
                 2.dp
+            StrokeWidthTokens.StrokeWidth30 ->
+                3.dp
             StrokeWidthTokens.StrokeWidth40 ->
                 4.dp
             StrokeWidthTokens.StrokeWidth60 ->

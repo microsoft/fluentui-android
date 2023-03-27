@@ -20,7 +20,7 @@ data class AvatarCarouselInfo(
 @Parcelize
 open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
-    open fun getAvatarSize(avatarCarouselInfo: AvatarCarouselInfo): AvatarSize {
+    open fun avatarSize(avatarCarouselInfo: AvatarCarouselInfo): AvatarSize {
         return when (avatarCarouselInfo.size) {
             AvatarCarouselSize.Small -> AvatarSize.Size56
             AvatarCarouselSize.Large -> AvatarSize.Size72
@@ -43,7 +43,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getTextColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
+    open fun textColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
         return StateColor(
             rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = FluentTheme.themeMode
@@ -58,7 +58,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getSubTextColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
+    open fun subTextColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
         return StateColor(
             rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                 themeMode = FluentTheme.themeMode
@@ -73,7 +73,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getTextStyle(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
+    open fun textTypography(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
             AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
@@ -81,7 +81,7 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun getSubTextStyle(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
+    open fun subTextTypography(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
             AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
