@@ -1,140 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
-
 <resources>
-
-    <!-- weekday initials -->
-    <!--Initial that represents the day Monday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="monday_initial" comment="initial for monday">D</string>
-    <!--Initial that represents the day Tuesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="tuesday_initial" comment="initial for tuesday">S</string>
-    <!--Initial that represents the day Wednesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="wednesday_initial" comment="initial for wednesday">CH</string>
-    <!--Initial that represents the day Thursday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="thursday_initial" comment="initial for thursday">P</string>
-    <!--Initial that represents the day Friday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="friday_initial" comment="initial for friday">J</string>
-    <!--Initial that represents the day Saturday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="saturday_initial" comment="initial for saturday">S</string>
-    <!--Initial that represents the day Sunday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="sunday_initial" comment="initial for sunday">Y</string>
-
-    <!-- accessibility -->
-    <string name="accessibility_goto_next_week">Keyingi haftaga o‘tish</string>
-    <string name="accessibility_goto_previous_week">Avvalgi haftaga o‘tish</string>
-    <string name="accessibility_today">bugun</string>
-    <string name="accessibility_selected">Tanlangan</string>
-
-    <!-- *** Shared *** -->
-    <string name="done">Tayyor</string>
-
-    <!-- *** CalendarView *** -->
-    <string name="date_time">%1$s, %2$s</string>
-    <string name="today">Bugun</string>
-    <string name="tomorrow">Ertaga</string>
-    <string name="yesterday">Kecha</string>
-
-    <!-- *** TimePicker *** -->
-    <!--date picker tab title for start time range-->
-    <string name="date_time_picker_start_time">Boshlanish vaqti</string>
-    <!--date picker tab title for end time range-->
-    <string name="date_time_picker_end_time">Tugash vaqti</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_time_picker_start_date">Boshlanish sanasi</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_time_picker_end_date">Tugash sanasi</string>
-    <!--date picker dialog title for time selection-->
-    <string name="date_time_picker_choose_time">Vaqtni tanlang</string>
-    <!--date picker dialog title for date selection-->
-    <string name="date_time_picker_choose_date">Sanasini tanlang</string>
-
-    <!--accessibility-->
-    <!--Announcement for date time picker-->
-    <string name="date_time_picker_accessibility_dialog_title">Sana-vaqt tanlagich</string>
-    <!--Announcement for date picker-->
-    <string name="date_picker_accessibility_dialog_title">Sana tanlagich</string>
-    <!--Announcement for date time picker range-->
-    <string name="date_time_picker_range_accessibility_dialog_title">Sana-vaqt tanlagich oraligʻi</string>
-    <!--Announcement for date picker range-->
-    <string name="date_picker_range_accessibility_dialog_title">Sana tanlagich oraligʻi</string>
-    <!--date time picker tab title for start time range-->
-    <string name="date_time_picker_accessiblility_start_time">Boshlanish vaqti varagʻi</string>
-    <!--date time picker tab title for end time range-->
-    <string name="date_time_picker_accessiblility_end_time">Tugash vaqti varagʻi</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_picker_accessiblility_start_date">Boshlanish sanasi varagʻi</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_picker_accessiblility_end_date">Tugash sanasi varagʻi</string>
-    <!--date time picker dialog close button-->
-    <string name="date_time_picker_accessibility_close_dialog_button">Muloqot oynasini yopish</string>
-    <!--date number picker month increment button-->
-    <string name="date_picker_accessibility_increment_month_button">Oyni oshirish</string>
-    <!-- date time picker click action next month announcement-->
-    <string name="date_picker_accessibility_next_month_click_action">keyingi oyni belgilash</string>
-    <!--date number picker month decrement button-->
-    <string name="date_picker_accessibility_decrement_month_button">Oyni kamaytirish</string>
-    <!-- date time picker click action previous month announcement-->
-    <string name="date_picker_accessibility_previous_month_click_action">avvalgi oyni belgilash</string>
-    <!--date number picker day increment button-->
-    <string name="date_picker_accessibility_increment_day_button">Kunni oshirish</string>
-    <!-- date time picker click action next day announcement-->
-    <string name="date_picker_accessibility_next_day_click_action">keyingi kunni belgilash</string>
-    <!--date number picker day decrement button-->
-    <string name="date_picker_accessibility_decrement_day_button">Kunni kamaytirish</string>
-    <!-- date time picker click action previous day announcement-->
-    <string name="date_picker_accessibility_previous_day_click_action">avvalgi kunni belgilash</string>
-    <!--date number picker year increment button-->
-    <string name="date_picker_accessibility_increment_year_button">Yilni oshirish</string>
-    <!-- date time picker click action next year announcement-->
-    <string name="date_picker_accessibility_next_year_click_action">keyingi yilni belgilash</string>
-    <!--date number picker year decrement button-->
-    <string name="date_picker_accessibility_decrement_year_button">Yilni kamaytirish</string>
-    <!-- date time picker click action previous year announcement-->
-    <string name="date_picker_accessibility_previous_year_click_action">avvalgi yilni belgilash</string>
-    <!--date time number picker date increment button-->
-    <string name="date_time_picker_accessibility_increment_date_button">Sanani oshirish tugmasi</string>
-    <!-- date time picker click action next date announcement-->
-    <string name="date_picker_accessibility_next_date_click_action">keyingi sanani belgilash</string>
-    <!--date time number picker date decrement button-->
-    <string name="date_time_picker_accessibility_decrement_date_button">Sanani kamaytirish tugmasi</string>
-    <!-- date time picker click action previous date announcement-->
-    <string name="date_picker_accessibility_previous_date_click_action">avvalgi sanani belgilash</string>
-    <!--date time number picker hour increment button-->
-    <string name="date_time_picker_accessibility_increment_hour_button">Soatni oshirish tugmasi</string>
-    <!-- date time picker click action next hour announcement-->
-    <string name="date_picker_accessibility_next_hour_click_action">keyingi soatni belgilash</string>
-    <!--date time number picker hour decrement button-->
-    <string name="date_time_picker_accessibility_decrement_hour_button">Soatni kamaytirish tugmasi</string>
-    <!-- date time picker click action previous hour announcement-->
-    <string name="date_picker_accessibility_previous_hour_click_action">avvalgi soatni belgilash</string>
-    <!--date time number picker minute increment button-->
-    <string name="date_time_picker_accessibility_increment_minute_button">Daqiqani oshirish tugmasi</string>
-    <!-- date time picker click action next minute announcement-->
-    <string name="date_picker_accessibility_next_minute_click_action">keyingi daqiqani belgilash</string>
-    <!--date time number picker minute decrement button-->
-    <string name="date_time_picker_accessibility_decrement_minute_button">Daqiqani kamaytirish tugmasi</string>
-    <!-- date time picker click action previous minute announcement-->
-    <string name="date_picker_accessibility_previous_minute_click_action">avvalgi daqiqani belgilash</string>
-    <!--date time number picker period (am/pm) toggle button-->
-    <string name="date_time_picker_accessibility_period_toggle_button">TO TK davrini almashtirish tugmasi</string>
-    <!--date time number picker click action period (am/pm) announcement-->
-    <string name="date_time_picker_accessibility_period_toggle_click_action">TO TK davrini almashtirish tugmasi</string>
-    <!--Announces the selected date and/or time-->
-    <string name="date_time_picker_accessibility_selected_date">%s tanlangan</string>
-
-    <!-- *** Calendar *** -->
-
-    <!--accessibility-->
-    <!--Describes the action used to select calendar item-->
-    <string name="calendar_adapter_accessibility_item_selected">tanlangan</string>
+  <string name="monday_initial">D</string>
+  <string name="tuesday_initial">S</string>
+  <string name="wednesday_initial">CH</string>
+  <string name="thursday_initial">P</string>
+  <string name="friday_initial">J</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">Y</string>
+  <string name="accessibility_goto_next_week">Keyingi haftaga o‘tish</string>
+  <string name="accessibility_goto_previous_week">Avvalgi haftaga o‘tish</string>
+  <string name="accessibility_today">bugun</string>
+  <string name="accessibility_selected">Tanlangan</string>
+  <string name="done">Tayyor</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Bugun</string>
+  <string name="tomorrow">Ertaga</string>
+  <string name="yesterday">Kecha</string>
+  <string name="date_time_picker_start_time">Boshlanish vaqti</string>
+  <string name="date_time_picker_end_time">Tugash vaqti</string>
+  <string name="date_time_picker_start_date">Boshlanish sanasi</string>
+  <string name="date_time_picker_end_date">Tugash sanasi</string>
+  <string name="date_time_picker_choose_time">Vaqtni tanlang</string>
+  <string name="date_time_picker_choose_date">Sanasini tanlang</string>
+  <string name="date_time_picker_accessibility_dialog_title">Sana-vaqt tanlagich</string>
+  <string name="date_picker_accessibility_dialog_title">Sana tanlagich</string>
+  <string name="date_time_picker_range_accessibility_dialog_title">Sana-vaqt tanlagich oraligʻi</string>
+  <string name="date_picker_range_accessibility_dialog_title">Sana tanlagich oraligʻi</string>
+  <string name="date_time_picker_accessiblility_start_time">Boshlanish vaqti varagʻi</string>
+  <string name="date_time_picker_accessiblility_end_time">Tugash vaqti varagʻi</string>
+  <string name="date_picker_accessiblility_start_date">Boshlanish sanasi varagʻi</string>
+  <string name="date_picker_accessiblility_end_date">Tugash sanasi varagʻi</string>
+  <string name="date_time_picker_accessibility_close_dialog_button">Muloqot oynasini yopish</string>
+  <string name="date_picker_accessibility_increment_month_button">Oyni oshirish</string>
+  <string name="date_picker_accessibility_next_month_click_action">keyingi oyni belgilash</string>
+  <string name="date_picker_accessibility_decrement_month_button">Oyni kamaytirish</string>
+  <string name="date_picker_accessibility_previous_month_click_action">avvalgi oyni belgilash</string>
+  <string name="date_picker_accessibility_increment_day_button">Kunni oshirish</string>
+  <string name="date_picker_accessibility_next_day_click_action">keyingi kunni belgilash</string>
+  <string name="date_picker_accessibility_decrement_day_button">Kunni kamaytirish</string>
+  <string name="date_picker_accessibility_previous_day_click_action">avvalgi kunni belgilash</string>
+  <string name="date_picker_accessibility_increment_year_button">Yilni oshirish</string>
+  <string name="date_picker_accessibility_next_year_click_action">keyingi yilni belgilash</string>
+  <string name="date_picker_accessibility_decrement_year_button">Yilni kamaytirish</string>
+  <string name="date_picker_accessibility_previous_year_click_action">avvalgi yilni belgilash</string>
+  <string name="date_time_picker_accessibility_increment_date_button">Sanani oshirish tugmasi</string>
+  <string name="date_picker_accessibility_next_date_click_action">keyingi sanani belgilash</string>
+  <string name="date_time_picker_accessibility_decrement_date_button">Sanani kamaytirish tugmasi</string>
+  <string name="date_picker_accessibility_previous_date_click_action">avvalgi sanani belgilash</string>
+  <string name="date_time_picker_accessibility_increment_hour_button">Soatni oshirish tugmasi</string>
+  <string name="date_picker_accessibility_next_hour_click_action">keyingi soatni belgilash</string>
+  <string name="date_time_picker_accessibility_decrement_hour_button">Soatni kamaytirish tugmasi</string>
+  <string name="date_picker_accessibility_previous_hour_click_action">avvalgi soatni belgilash</string>
+  <string name="date_time_picker_accessibility_increment_minute_button">Daqiqani oshirish tugmasi</string>
+  <string name="date_picker_accessibility_next_minute_click_action">keyingi daqiqani belgilash</string>
+  <string name="date_time_picker_accessibility_decrement_minute_button">Daqiqani kamaytirish tugmasi</string>
+  <string name="date_picker_accessibility_previous_minute_click_action">avvalgi daqiqani belgilash</string>
+  <string name="date_time_picker_accessibility_period_toggle_button">TO TK davrini almashtirish tugmasi</string>
+  <string name="date_time_picker_accessibility_period_toggle_click_action">TO TK davrini almashtirish tugmasi</string>
+  <string name="date_time_picker_accessibility_selected_date">%s tanlangan</string>
+  <string name="calendar_adapter_accessibility_item_selected">tanlangan</string>
 </resources>

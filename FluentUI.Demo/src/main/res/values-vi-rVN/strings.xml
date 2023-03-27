@@ -6,38 +6,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Bản demo giao diện người dùng trôi  màu</string>
-    <string name="app_title">Giao diện người dùng trôi  màu</string>
+    <string name="app_name">Bản demo giao diện người dùng Fluent</string>
+    <string name="app_title">Giao diện người dùng Fluent</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">Đã chọn %s</string>
     <string name="app_modifiable_parameters">Tham số có thể sửa đổi</string>
-    <string name="app_right_accessory_view">Dạng xem Phụ kiện Bên phải</string>
+    <string name="app_right_accessory_view">Dạng xem ngoại vi bên phải</string>
 
     <string name="app_style">Kiểu</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">Đã nhấn biểu tượng</string>
+    <string name="app_icon_pressed">Đã nhấn vào biểu tượng</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
-    <string name="actionbar_start_button">Bắt đầu Bản demo</string>
+    <string name="actionbar_start_button">Bắt đầu bản demo</string>
     <!-- Texts for radio buttons -->
-    <string name="actionbar_carousel_radio_label">Vòng quay</string>
+    <string name="actionbar_carousel_radio_label">Quay vòng</string>
     <string name="actionbar_icon_radio_label">Biểu tượng</string>
     <string name="actionbar_basic_radio_label">Cơ bản</string>
-    <string name="actionbar_position_bottom_radio_label">Dưới cùng</string>
-    <string name="actionbar_position_top_radio_label">Trên</string>
+    <string name="actionbar_position_bottom_radio_label">Đáy</string>
+    <string name="actionbar_position_top_radio_label">Cao nhất</string>
 
     <!--UI Text view label denoting type of action bar -->
-    <string name="actionbar_type_heading">Loại Thanh Hành động</string>
+    <string name="actionbar_type_heading">Loại Thanh_hành_động</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">Vị trí Thanh Hành động</string>
+    <string name="actionbar_position_heading">Vị trí Thanh_hành_động</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">Kiểu Thanh Ứng dụng</string>
-    <string name="app_bar_subtitle">Tiêu đề</string>
+    <string name="app_bar_style">Kiểu Thanh_ứng_dụng</string>
+    <string name="app_bar_subtitle">Phụ đề</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Đã bấm vào biểu tượng dẫn hướng.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">Đã bấm vào biểu tượng điều hướng.</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Cờ</string>
@@ -46,30 +46,30 @@
     <!-- UI Text that shows the type of scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Hành vi cuộn: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">Chuyển đổi hành vi cuộn</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Bật/tắt hành vi cuộn</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Bật/tắt biểu tượng dẫn hướng</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Bật/tắt biểu tượng điều hướng</string>
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">Hiển thị hình đại diện</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Hiển thị biểu tượng quay lại</string>
+    <string name="app_bar_layout_show_back_icon_button">Hiển thị biểu tượng Trở về</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">Ẩn biểu tượng</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">Hiển thị biểu tượng</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Chuyển đổi kiểu bố trí thanh tìm kiếm</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Bật/tắt kiểu bố trí thanh tìm kiếm</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Hiển thị dưới dạng dạng xem phụ kiện</string>
-    <string name="app_bar_layout_searchbar_action_view_button">Hiển thị dưới dạng dạng xem hành động</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Hiển thị dưới dạng xem ngoại vi</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Hiển thị theo dạng xem hành động</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Chuyển đổi giữa các chủ đề (tạo lại hoạt động)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">Bật/tắt giữa các chủ đề (tái tạo hoạt động)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Bật/tắt chủ đề</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Mục</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">Nội dung có thể cuộn bổ sung</string>
+    <string name="app_bar_layout_list_sub_header">Nội dung có thể cuộn thêm</string>
 
     <!--AvatarView-->
     <!-- Style -->
@@ -77,11 +77,11 @@
     <string name="avatar_style_square">Kiểu hình vuông</string>
     <!-- Sizes -->
     <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">Đại cộ</string>
+    <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">Lớn</string>
     <string name="avatar_size_medium">Trung bình</string>
     <string name="avatar_size_small">Nhỏ</string>
-    <string name="avatar_size_xsmall">Cài đặt XSmall</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -89,21 +89,21 @@
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">Số lượng hình đại diện tràn</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Loại viền:</string>
+    <string name="avatar_group_border_type">Loại viền</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">Nhóm hình đại diện với bộ OverflowAvatarCount sẽ không tuân thủ hình đại diện được hiển thị tối đa.</string>
+    <string name="avatar_group_info">Nhóm hình đại diện có bộ OverflowAvatarCount sẽ không tuân thủ Hình đại diện được hiển thị tối đa.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Chồng Khuôn mặt</string>
+    <string name="avatar_group_face_stack">Xếp chồng mặt</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">Mặt Chồng</string>
+    <string name="avatar_group_face_pile">Chất đống mặt</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Đã bấm tràn</string>
+    <string name="avatar_group_overflow_clicked">Đã bấm vào tràn</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">Đã bấm vào Xem Hình đại diện %d chỉ mục</string>
+    <string name="avatar_group_avatar_clicked">Đã bấm vào AvatarView ở chỉ mục %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
-    <string name="badge_notification_badge">Huy hiệu thông báo</string>
+    <string name="badge_notification_badge">Biểu tượng thông báo</string>
     <!--UI Label for dot notification -->
     <string name="badge_notification_dot">Chấm</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
@@ -119,38 +119,38 @@
     <string name="bottom_navigation_menu_item_calendar">Lịch</string>
     <string name="bottom_navigation_menu_item_team">Nhóm</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">Chuyển đổi nhãn</string>
+    <string name="bottom_navigation_toggle_labels_button">Bật/tắt nhãn</string>
     <string name="bottom_navigation_three_menu_items_button">Hiển thị ba mục menu</string>
     <string name="bottom_navigation_four_menu_items_button">Hiển thị bốn mục menu</string>
     <string name="bottom_navigation_five_menu_items_button">Hiển thị năm mục menu</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">Nhãn không được %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">Nhãn %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Trang tính Đáy</string>
-    <string name="bottom_sheet_dialog">ĐáySheetDialog</string>
+    <string name="bottom_sheet">Chân_trang_tính</string>
+    <string name="bottom_sheet_dialog">Hộp_thoại_chân_trang_tính</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">Hiển thị với các mục một dòng</string>
+    <string name="bottom_sheet_with_single_line_items">Hiển thị với các mục dòng đơn</string>
     <string name="bottom_sheet_with_double_line_items">Hiển thị với các mục dòng kép</string>
-    <string name="bottom_sheet_with_single_line_header">Hiển thị với tiêu đề một dòng</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Hiển thị với tiêu đề và thanh chia hai dòng</string>
-    <string name="bottom_sheet_dialog_button">Hiện</string>
+    <string name="bottom_sheet_with_single_line_header">Hiển thị với tiêu đề dòng đơn</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Hiển thị với tiêu đề dòng kép và thanh chia</string>
+    <string name="bottom_sheet_dialog_button">Hiển thị</string>
     <string name="drawer_content_desc_collapse_state">Bung rộng</string>
     <string name="drawer_content_desc_expand_state">Thu nhỏ</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Bấm %s</string>
+    <string name="contextual_command_prompt_click_item">Bấm vào %s</string>
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">Bấm và giữ %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Bấm vào Bỏ qua</string>
     <!-- Text for button for inserting an item-->
-    <string name="contextual_command_insert_item">Chèn Mục</string>
+    <string name="contextual_command_insert_item">Chèn mục</string>
     <!-- Text for button for updating an item-->
-    <string name="contextual_command_update_item">Cập nhật Mục</string>
+    <string name="contextual_command_update_item">Cập nhật mục</string>
     <!-- Announces dismiss action -->
     <string name="contextual_command_accessibility_dismiss">Bỏ qua</string>
     <!-- Announces add action -->
@@ -178,13 +178,13 @@
     <!-- UI Label denoting item updating -->
     <string name="contextual_command_bar_item_update_title">Đang cập nhật mục</string>
     <!-- UI Label denoting spacing -->
-    <string name="contextual_command_bar_space_title">Dãn cách</string>
+    <string name="contextual_command_bar_space_title">Giãn cách</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">Bỏ qua Vị trí</string>
+    <string name="contextual_command_bar_dismiss_position">Bỏ qua vị trí</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">BẮT ĐẦU</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">KẾT THÚC</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">Không gian nhóm</string>
     <!-- UI bar label denoting the space between items -->
@@ -196,19 +196,19 @@
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">Cờ</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Đã bấm vào mục gắn cờ</string>
+    <string name="bottom_sheet_item_flag_toast">Đã bấm vào mục Gắn cờ</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Trả lời</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Đã bấm vào mục trả lời</string>
+    <string name="bottom_sheet_item_reply_toast">Đã bấm vào mục Trả lời</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Chuyển tiếp</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Đã bấm vào chuyển tiếp mục</string>
+    <string name="bottom_sheet_item_forward_toast">Đã bấm vào mục Chuyển tiếp</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Xóa</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Đã bấm vào xóa mục</string>
+    <string name="bottom_sheet_item_delete_toast">Đã bấm vào mục Xóa</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Hình đại diện</string>
     <!--Double line items-->
@@ -217,25 +217,25 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Chụp ảnh</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Đã bấm vào mục camera</string>
+    <string name="bottom_sheet_item_camera_toast">Đã bấm vào mục Camera</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Bộ sưu tập</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">Xem ảnh của bạn</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Đã bấm vào mục bộ sưu tập</string>
+    <string name="bottom_sheet_item_gallery_toast">Đã bấm vào mục Bộ sưu tập</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Video</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">Phát video của bạn</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Đã bấm vào mục video</string>
+    <string name="bottom_sheet_item_videos_toast">Đã bấm vào mục Video</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Quản lý</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Quản lý thư viện phương tiện của bạn</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Đã bấm quản lý mục</string>
+    <string name="bottom_sheet_item_manage_toast">Đã bấm vào mục Quản lý</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">Thao tác trên email</string>
@@ -243,75 +243,75 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Tài liệu</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Cập nhật lần cuối 2:14CH</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Cập nhật gần nhất lúc 2:14 CH</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Chia sẻ</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Đã bấm vào chia sẻ mục</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Đã bấm vào mục Chia sẻ</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Di chuyển</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Đã bấm vào di chuyển mục</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Đã bấm vào mục Di chuyển</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Xóa</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Đã bấm vào xóa mục</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Đã bấm vào mục Xóa</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Thông tin</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Đã bấm vào mục thông tin</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Đã bấm vào mục Thông tin</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Đồng hồ</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Đã bấm vào mục đồng hồ</string>
+    <string name="bottom_sheet_item_clock_toast">Đã bấm vào mục Đồng hồ</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Báo thức</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Đã bấm vào mục báo thức</string>
+    <string name="bottom_sheet_item_alarm_toast">Đã bấm vào mục Báo thức</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Múi giờ</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Đã bấm vào mục múi giờ</string>
+    <string name="bottom_sheet_item_time_zone_toast">Đã bấm vào mục Múi giờ</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Nút</string>
-    <string name="buttonbar">Thanh Nút</string>
+    <string name="buttonbar">Thanh nút</string>
     <string name="button_disabled">Nút Đã tắt</string>
-    <string name="button_borderless">Nút Không viền</string>
-    <string name="button_borderless_disabled">Nút Vô hiệu hóa Không viền</string>
-    <string name="button_large">Nút Lớn</string>
-    <string name="button_large_disabled">Nút Vô hiệu hóa Lớn</string>
-    <string name="button_outlined">Nút Viền ngoài</string>
-    <string name="button_outlined_disabled">Nút Vô hiệu hóa Có viền ngoài</string>
+    <string name="button_borderless">Nút không viền</string>
+    <string name="button_borderless_disabled">Nút Đã tắt không viền</string>
+    <string name="button_large">Nút lớn</string>
+    <string name="button_large_disabled">Nút Đã tắt lớn</string>
+    <string name="button_outlined">Nút có viền</string>
+    <string name="button_outlined_disabled">Nút Đã tắt có viền</string>
 
     <!--CalendarView-->
-    <string name="calendar_example_chosen_date">Chọn ngày</string>
+    <string name="calendar_example_chosen_date">Chọn ngày tháng</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">DateTimePicker</string>
+    <string name="date_time_picker_title">Trình_chọn_ngày_tháng</string>
     <!-- UI label -->
-    <string name="date_time_picker_single_date_title">Ngày Đơn</string>
+    <string name="date_time_picker_single_date_title">Ngày đơn</string>
     <!-- UI label -->
-    <string name="date_time_picker_date_picked_default">Chưa chọn ngày nào</string>
+    <string name="date_time_picker_date_picked_default">Chưa chọn ngày tháng nào</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Hiện Trình Chọn Ngày Tháng?</string>
+    <string name="date_time_picker_date_button">Hiển thị trình chọn ngày tháng</string>
     <!-- text for button that shows date picker with date tab selected -->
     <string name="date_time_picker_calendar_date_time_button">Hiển thị bộ chọn ngày giờ với tab ngày đã chọn</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Hiển thị bộ chọn ngày giờ với tab thời gian được chọn</string>
+    <string name="date_time_picker_date_time_calendar_button">Hiển thị bộ chọn ngày giờ với tab thời gian đã chọn</string>
     <!-- text for button that shows time picker -->
     <string name="date_time_picker_date_time_button">Hiển thị bộ chọn ngày giờ</string>
     <!-- UI label to show date range-->
-    <string name="date_time_picker_date_range_title">Phạm vi Ngày</string>
+    <string name="date_time_picker_date_range_title">Phạm vi ngày</string>
     <!-- UI label showing start of the range-->
     <string name="date_time_picker_date_range_start_title">Bắt đầu:</string>
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Kết thúc:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Không có lựa chọn bắt đầu nào</string>
+    <string name="date_time_picker_date_start_picked_default">Chưa chọn bắt đầu nào</string>
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_end_picked_default">Chưa chọn kết thúc nào</string>
     <!-- text for button that selects start date -->
@@ -319,106 +319,106 @@
     <!-- text for button that selects end date -->
     <string name="date_time_picker_date_end_button">Chọn ngày kết thúc</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">Phạm vi Ngày Giờ</string>
+    <string name="date_time_picker_date_time_range_title">Phạm vi ngày giờ</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Chọn phạm vi ngày giờ</string>
     <!-- UI label -->
-    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <string name="date_time_picker_dialog_title">Hộp_thoại_trình_chọn_ngày_tháng</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Hiện Hộp thoại</string>
+    <string name="date_time_picker_dialog_button">Hiển thị hộp thoại</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
-    <string name="drawer_button">Hiển thị ngăn kéo</string>
+    <string name="drawer_button">Hiển thị ngăn</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">Hiển thị hộp thoại ngăn kéo</string>
+    <string name="drawer_dialog_button">Hiển thị hộp thoại ngăn</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Không có hộp thoại dưới cùng mờ dần</string>
+    <string name="no_fade_bottom_dialog_button">Không có hộp thoại ở đáy mờ dần</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Hiển thị ngăn trên cùng</string>
     <!-- text for button that shows No fade top dialog drawer -->
     <string name="no_fade_top_dialog_button">Không có hộp thoại trên cùng mờ dần</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> Hiển thị hộp thoại trên cùng của dạng xem dấu neo</string>
+    <string name="anchor_view_top_dialog_button"> Hiển thị hộp thoại trên cùng dạng xem neo</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Không hiển thị hộp thoại trên cùng tiêu đề</string>
+    <string name="no_title_top_dialog_button"> Không hiển thị hộp thoại trên cùng của tiêu đề</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Hiển thị hộp thoại trên cùng của tiêu đề bên dưới</string>
+    <string name="below_title_top_dialog_button">Hiển thị dưới hộp thoại trên cùng của tiêu đề</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Hiển thị ngăn bên phải</string>
     <!-- text for button that shows left drawer -->
-    <string name="drawer_left_dialog_button">Hiển thị ngăn kéo bên trái</string>
+    <string name="drawer_left_dialog_button">Hiển thị ngăn bên trái</string>
 
     <!--ListItem-->
     <!-- Title -->
     <string name="list_item_title">Tiêu đề, văn bản chính</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">Tiêu đề phụ, văn bản phụ</string>
+    <string name="list_item_subtitle">Phụ đề, văn bản cấp hai</string>
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">Văn bản phụ đề tùy chỉnh</string>
     <!-- Footer -->
-    <string name="list_item_footer">Chân trang, văn bản thứ ba</string>
+    <string name="list_item_footer">Chân trang, văn bản cấp ba</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">Danh sách một dòng với văn bản tiêu đề phụ màu xám</string>
+    <string name="list_item_sub_header_single_line">Danh sách dòng đơn với văn bản tiêu đề phụ màu xám</string>
     <string name="list_item_sub_header_two_line">Danh sách hai dòng</string>
-    <string name="list_item_sub_header_two_line_dense">Danh sách hai dòng với khoảng cách dày đặc</string>
+    <string name="list_item_sub_header_two_line_dense">Danh sách hai dòng có giãn cách dày đặc</string>
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Danh sách hai dòng với dạng xem phụ đề phụ tùy chỉnh</string>
     <string name="list_item_sub_header_three_line">Danh sách ba dòng với văn bản tiêu đề phụ màu đen</string>
     <string name="list_item_sub_header_no_custom_views">Mục danh sách không có dạng xem tùy chỉnh</string>
-    <string name="list_item_sub_header_large_header">Mục danh sách có dạng xem tùy chỉnh lớn</string>
-    <string name="list_item_sub_header_wrapped_text">Liệt kê các mục có văn bản ngắt dòng</string>
+    <string name="list_item_sub_header_large_header">Mục danh sách với các dạng xem tùy chỉnh lớn</string>
+    <string name="list_item_sub_header_wrapped_text">Mục danh sách có văn bản được xuống dòng tự động</string>
     <string name="list_item_sub_header_truncated_text">Mục danh sách với văn bản bị cắt bớt</string>
     <string name="list_item_sub_header_custom_accessory_text">Hành động</string>
-    <string name="list_item_truncation_middle">Cắt bớt giữa.</string>
-    <string name="list_item_truncation_end">Kết thúc cắt bớt.</string>
+    <string name="list_item_truncation_middle">Cắt bớt ở giữa.</string>
+    <string name="list_item_truncation_end">Kết thúc quá trình cắt bớt.</string>
     <string name="list_item_truncation_start">Bắt đầu cắt bớt.</string>
     <string name="list_item_custom_text_view">Giá trị</string>
     <string name="list_item_click">Bạn đã bấm vào mục danh sách.</string>
-    <string name="list_item_click_custom_accessory_view">Bạn đã bấm vào dạng xem phụ kiện tùy chỉnh.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Bạn đã bấm vào dạng xem phụ kiện tùy chỉnh tiêu đề phụ.</string>
+    <string name="list_item_click_custom_accessory_view">Bạn đã bấm vào dạng xem ngoại vi tùy chỉnh.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Bạn đã bấm vào dạng xem ngoại vi tùy chỉnh tiêu đề phụ.</string>
     <string name="list_item_more_options">Tùy chọn khác</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Chọn</string>
-    <string name="people_picker_select_deselect_example">Chọn Lựa chọn</string>
+    <string name="people_picker_select_deselect_example">Chọn Bỏ chọn</string>
     <string name="people_picker_none_example">Không có</string>
     <string name="people_picker_delete_example">Xóa</string>
     <string name="people_picker_custom_persona_description">Ví dụ này hiển thị cách tạo đối tượng IPersona tùy chỉnh.</string>
     <string name="people_picker_dialog_title_removed">Bạn đã loại bỏ một nhân vật:</string>
     <string name="people_picker_dialog_title_added">Bạn đã thêm một nhân vật:</string>
     <string name="people_picker_drag_started">Đã bắt đầu kéo</string>
-    <string name="people_picker_drag_ended">Kéo đã kết thúc</string>
+    <string name="people_picker_drag_ended">Đã kết thúc kéo</string>
     <string name="people_picker_picked_personas_listener">Người nghe nhân vật</string>
-    <string name="people_picker_suggestions_listener">Người nghe Đề xuất</string>
+    <string name="people_picker_suggestions_listener">Người nghe đề xuất</string>
     <string name="people_picker_persona_chip_click">Bạn đã bấm vào %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="other">%1$s người nhận</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Bung rộng Trang tính Đáy Liên tục</string>
-    <string name="collapse_persistent_sheet_button"> Ẩn Trang tính Đáy Liên tục</string>
-    <string name="show_persistent_sheet_button"> Hiển thị Trang tính Đáy Liên tục</string>
-    <string name="new_view">Đây là Dạng xem Mới</string>
-    <string name="toggle_sheet_content">Bật tắt Nội dung Trang tính Đáy</string>
+    <string name="expand_bottom_sheet_button">Bung rộng chân trang tính liên tục</string>
+    <string name="collapse_persistent_sheet_button">Ẩn chân trang tính liên tục</string>
+    <string name="show_persistent_sheet_button"> Hiển thị BottomSheet liên tục</string>
+    <string name="new_view">Đây là dạng xem mới</string>
+    <string name="toggle_sheet_content">Chuyển đổi nội dung Bottomsheet</string>
     <string name="switch_to_custom_content">Chuyển sang Nội dung tùy chỉnh</string>
-    <string name="one_line_content">Nội dung Bảng đáy Một Dòng</string>
-    <string name="toggle_disable_all_items">Bật tắt Tất cả Các mục</string>
+    <string name="one_line_content">Nội dung chân trang tính một dòng</string>
+    <string name="toggle_disable_all_items">Chuyển đổi Tắt tất cả các mục</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">Thêm/Loại bỏ Dạng xem</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> Thay đổi Chiều cao Thu gọn</string>
-    <string name="persistent_sheet_item_create_new_folder_title">Thư mục Mới</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Đã bấm vào mục Thư mục Mới</string>
+    <string name="persistent_sheet_item_add_remove_view">Thêm/Loại bỏ dạng xem</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Thay đổi chiều cao thu gọn</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Thư mục mới</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Đã bấm vào mục Thư mục mới</string>
     <string name="persistent_sheet_item_edit_title">Chỉnh sửa</string>
-    <string name="persistent_sheet_item_edit_toast">Đã bấm vào chỉnh sửa mục</string>
+    <string name="persistent_sheet_item_edit_toast">Đã bấm vào mục Chỉnh sửa</string>
     <string name="persistent_sheet_item_save_title">Lưu</string>
-    <string name="persistent_sheet_item_save_toast">Đã bấm vào lưu mục</string>
+    <string name="persistent_sheet_item_save_toast">Đã bấm vào mục Lưu</string>
     <string name="persistent_sheet_item_zoom_in_title">Phóng to</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Đã bấm vào mục Phóng to</string>
+    <string name="persistent_sheet_item_zoom_in_toast">Đã bấm vào mục Phóng to</string>
     <string name="persistent_sheet_item_zoom_out_title">Thu nhỏ</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Đã bấm thu nhỏ mục</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Đã bấm vào mục Thu nhỏ</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -448,22 +448,22 @@
     <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
     <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
     <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
-    <string name="persona_footer">Đang hoạt động</string>
+    <string name="persona_footer">Sẵn sàng</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">Allan Munger</string>
     <string name="persona_name_amanda_brady">Amanda Brady</string>
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
-    <string name="persona_name_carole_poland">Carole Ba Lan</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
     <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
-    <string name="persona_name_colin_ballinger">Bút bi Colin</string>
-    <string name="persona_name_daisy_phillips">Daisy Philips</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
     <string name="persona_name_elliot_woodward">Elliot Woodward</string>
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
     <string name="persona_name_erik_nason">Erik Nason</string>
-    <string name="persona_name_henry_brill">Ngồng brill</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Isaac Fielder</string>
     <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
@@ -471,10 +471,10 @@
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
     <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
-    <string name="persona_name_mauricio_august">Tháng Tám Mauricio</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
     <string name="persona_name_mona_kane">Mona Kane</string>
-    <string name="persona_name_robin_counts">Số lượng chim cổ đỏ</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
     <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
     <string name="persona_name_wanda_howard">Wanda Howard</string>
@@ -484,23 +484,23 @@
     <string name="persona_subtitle_manager">Người quản lý</string>
     <string name="persona_subtitle_researcher">Trình nghiên cứu</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (văn bản dài ví dụ để kiểm tra rút ngắn)</string>
+    <string name="persona_truncation">\ (văn bản dài ví dụ để kiểm tra tính năng cắt bớt)</string>
     <string name="persona_view_description_xxlarge">Hình đại diện XXLarge với ba dòng văn bản</string>
     <string name="persona_view_description_large">Hình đại diện lớn với hai dòng văn bản</string>
     <string name="persona_view_description_small">Hình đại diện nhỏ với một dòng văn bản</string>
-    <string name="people_picker_hint">Không có gợi ý nào được hiển thị</string>
+    <string name="people_picker_hint">Không có gợi ý nào hiển thị</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Đã tắt chip nhân vật</string>
+    <string name="persona_chip_example_disabled">Chip nhân vật bị vô hiệu hóa</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Chip Nhân vật Lỗi</string>
+    <string name="persona_chip_example_error">Chip nhân vật lỗi</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Chip Nhân vật không có biểu tượng đóng</string>
+    <string name="persona_chip_example_no_icon">Chip nhân vật không có biểu tượng đóng</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Chip Nhân vật Cơ bản</string>
+    <string name="persona_chip_example_basic">Chip nhân vật cơ bản</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Bạn đã bấm vào Chip Nhân vật đã chọn.</string>
+    <string name="persona_chip_example_click">Bạn đã bấm vào Chip nhân vật được chọn.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -517,19 +517,19 @@
     <string name="popup_menu_item_multiline">Đây là Menu Bật lên nhiều dòng. Các đường tối đa được đặt thành hai, phần còn lại của văn bản sẽ cắt bớt.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
-    <string name="popup_menu_item_all_news">Tất cả tin tức</string>
+    <string name="popup_menu_item_all_news">Mọi tin tức</string>
     <!-- UI label for item Saved news -->
     <string name="popup_menu_item_saved_news">Tin tức đã lưu</string>
     <!-- UI label for item >News from sites -->
-    <string name="popup_menu_item_news_from_sites">Tin tức từ site</string>
+    <string name="popup_menu_item_news_from_sites">Tin tức từ các trang</string>
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">Thông báo ngoài giờ làm việc</string>
+    <string name="popup_menu_item_notify_outside">Thông báo ngoài giờ làm việc</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Thông báo khi không hoạt động trên máy tính để bàn</string>
+    <string name="popup_menu_item_notify_inactive">Thông báo khi không hoạt động trên máy để bàn</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">Bạn đã bấm vào khoản mục:</string>
+    <string name="popup_menu_item_clicked">Bạn đã bấm vào mục:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">Menu đơn giản</string>
     <!-- UI label that shows simple pop up menu -->
@@ -539,12 +539,12 @@
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
     <string name="popup_menu_all_check">Menu với tất cả các mục, biểu tượng và văn bản dài có thể chọn</string>
     <!--Text for button that shows popupmenu -->
-    <string name="popup_menu_show">Hiện</string>
+    <string name="popup_menu_show">Hiển thị</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">Tiến độ Vòng tròn</string>
-    <string name="circular_progress_xsmall">Cài đặt XSmall</string>
+    <string name="circular_progress">Tiến độ vòng tròn</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">Nhỏ</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -553,12 +553,12 @@
     <string name="circular_progress_large">Lớn</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">Tiến độ Tuyến tính</string>
+    <string name="linear_progress">Tiến độ tuyến tính</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">Vô hạn</string>
+    <string name="linear_progress_indeterminate_label">Vô hạn định</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Xác định</string>
+    <string name="linear_progress_determinate_label">Có hạn định</string>
 
 
     <!--Shared-->
@@ -568,48 +568,48 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">SearchBar</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Gọi lại micrô</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Tự động sửa</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">Micrô đã nhấn</string>
+    <string name="searchbar_microphone_pressed">Đã nhấn micrô</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">Đã nhấn Dạng xem Bên phải</string>
+    <string name="searchbar_right_view_pressed">Đã nhấn Dạng xem bên phải</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Đã nhấn Tìm kiếm Bàn phím</string>
+    <string name="searchbar_keyboard_search_pressed">Đã nhấn Tìm kiếm bàn phím</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Hành động</string>
-    <string name="snackbar_action_long">Hành động Văn bản Dài</string>
-    <string name="snackbar_single_line">Thanh đồ ăn vặt một dòng</string>
+    <string name="snackbar_action_long">Thao tác với văn bản dài</string>
+    <string name="snackbar_single_line">Thanh thông báo một dòng</string>
     <string name="snackbar_multiline">Đây là thanh đồ ăn vặt nhiều dòng. Các đường tối đa được đặt thành hai, phần còn lại của văn bản sẽ cắt bớt.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">Đây là thanh snack thông báo. Nó được sử dụng để giao tiếp các tính năng mới.</string>
-    <string name="snackbar_primary">Đây là thanh đồ ăn vặt chính.</string>
-    <string name="snackbar_light">Đây là thanh đồ ăn vặt nhẹ.</string>
+    <string name="snackbar_announcement">Đây là thanh thông báo. Nó được sử dụng để thông báo các tính năng mới.</string>
+    <string name="snackbar_primary">Đây là thanh thông báo chính.</string>
+    <string name="snackbar_light">Đây là thanh thông báo nhẹ.</string>
     <string name="snackbar_warning">Đây là thanh đồ ăn vặt cảnh báo.</string>
-    <string name="snackbar_danger">Đây là thanh đồ ăn vặt nguy hiểm.</string>
+    <string name="snackbar_danger">Đây là một thanh ăn vặt nguy hiểm.</string>
     <string name="snackbar_description_single_line">Thời lượng ngắn</string>
-    <string name="snackbar_description_single_line_custom_view">Thời lượng dài với tiến độ vòng tròn dưới dạng xem tùy chỉnh nhỏ</string>
-    <string name="snackbar_description_single_line_action">Thời lượng ngắn kèm theo hành động</string>
+    <string name="snackbar_description_single_line_custom_view">Khoảng thời gian dài với tiến độ vòng tròn ở dạng xem tùy chỉnh nhỏ</string>
+    <string name="snackbar_description_single_line_action">Thời lượng ngắn kèm hành động</string>
     <string name="snackbar_description_single_line_action_custom_view">Thời lượng ngắn với hành động và dạng xem tùy chỉnh trung bình</string>
     <string name="snackbar_description_single_line_custom_text_color">Thời lượng ngắn với màu văn bản tùy chỉnh</string>
     <string name="snackbar_description_multiline">Thời lượng dài</string>
     <string name="snackbar_description_multiline_custom_view">Thời lượng dài với dạng xem tùy chỉnh nhỏ</string>
-    <string name="snackbar_description_multiline_action">Khoảng thời gian không xác định với cập nhật hành động và văn bản</string>
+    <string name="snackbar_description_multiline_action">Khoảng thời gian vô hạn định với cập nhật hành động và văn bản</string>
     <string name="snackbar_description_multiline_action_custom_view">Thời lượng ngắn với hành động và dạng xem tùy chỉnh trung bình</string>
     <string name="snackbar_description_multiline_action_long">Thời lượng ngắn với văn bản hành động dài</string>
     <string name="snackbar_description_announcement">Thời lượng ngắn</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Văn bản này đã được cập nhật.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Hiển thị Thanh ăn vặt</string>
+    <string name="snackbar_button_show">Hiển thị thanh thông báo</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">Đường kẻ đơn</string>
+    <string name="snackbar_headline_single_line">Dòng đơn</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">Nhiều dòng</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Kiểu thông báo</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -634,83 +634,83 @@
     <!-- text for tabbar more tab -->
     <string name="tabBar_more">Xem thêm</string>
     <!-- UI text for text alignment of tab -->
-    <string name="tabBar_text_alignment">Căn chỉnh Văn bản</string>
+    <string name="tabBar_text_alignment">Căn chỉnh văn bản</string>
     <!-- UI text for vertical alignment of tab -->
     <string name="tabBar_vertical">Dọc</string>
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Ngang</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(không có văn bản)</string>
+    <string name="tabBar_no_text">Không có văn bản</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Mục Tab</string>
 
     <!--TemplateView-->
     <!-- UI labels and descriptions -->
-    <string name="cell_sample_title">Tiêu đề</string>
+    <string name="cell_sample_title">Tiêu đề</string>
     <string name="cell_sample_description">Mô tả</string>
     <string name="calculate_cells">Tải/tính toán 100 ô</string>
-    <string name="calculate_layouts">Tải/tính toán 100 bố trí</string>
-    <string name="template_list">Template List</string>
-    <string name="regular_list">Danh sách Thông thường</string>
+    <string name="calculate_layouts">Tải/tính toán 100 bố cục</string>
+    <string name="template_list">Danh sách mẫu</string>
+    <string name="regular_list">Danh sách thông thường</string>
     <string name="cell_example_title">Tiêu đề: Ô</string>
     <string name="cell_example_description">Mô tả: Nhấn để thay đổi hướng</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Tab Chuẩn 2-Phân đoạn</string>
+    <string name="tab_standard_two_segment">Tab Tiêu chuẩn 2-Phân đoạn</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Tab Chuẩn 3-Phân đoạn</string>
+    <string name="tab_standard_three_segment">Tab chuẩn 3 phân đoạn</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Tab Chuẩn 4-Phân đoạn</string>
+    <string name="tab_standard_four_segment">Tab Chuẩn 4 phân đoạn</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Tab Chuẩn với Máy tính bảng</string>
+    <string name="tab_standard_with_pager">Tab Tiêu chuẩn với Máy nhắn tin</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Chuyển đổi Tab</string>
+    <string name="tab_switch">Chuyển tab</string>
     <!-- Text for button that shows pills tabs -->
     <string name="tab_pills">Tab Viên thuốc </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Nhấn để xem Chú giải công cụ</string>
+    <string name="tooltip_button">Nhấn để xem mách nước</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Nhấn để xem Chú giải công cụ Lịch Tùy chỉnh</string>
+    <string name="tooltip_calendar_demo_button">Nhấn để xem mách nước lịch tùy chỉnh</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Nhấn vào Chú giải công cụ Màu Tùy chỉnh</string>
+    <string name="tooltip_custom_button">Nhấn vào mách nước màu tùy chỉnh</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Nhấn để Bỏ Mách nước Bên trong</string>
+    <string name="tooltip_center_button">Nhấn để bỏ qua mách nước bên trong</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Nhấn để Xem Công cụ Tùy chỉnh</string>
+    <string name="tooltip_custom_view">Nhấn để xem mách nước dạng xem tùy chỉnh</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Chú giải công cụ Màu Tùy chỉnh Hàng đầu</string>
+    <string name="tooltip_top_start_message">Mách nước màu tùy chỉnh trên cùng</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Chú giải công cụ Kết thúc Trên cùng với phần bù 10dp</string>
+    <string name="tooltip_top_end_message">Mách nước kết thúc trên cùng với 10dp offsetY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Mách nước Bắt đầu Dưới cùng</string>
+    <string name="tooltip_bottom_start_message">Mách nước bắt đầu dưới cùng</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Chú giải công cụ Kết thúc Dưới cùng với phần bù 10dp</string>
+    <string name="tooltip_bottom_end_message">Mách nước kết thúc dưới cùng với 10dp offsetY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Bỏ bên trong Chú giải công cụ</string>
+    <string name="tooltip_center_message">Bỏ qua mách nước bên trong</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Đã bỏ mách nước</string>
+    <string name="tooltip_dismiss_message">Đã bỏ qua mách nước</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Tiêu đề Nhạt 28sp</string>
+    <string name="headline">Tiêu đề là chữ nhạt 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">Tiêu đề 1 là Trung bình 20sp</string>
+    <string name="title_1">Tiêu đề 1 là chữ trung bình 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Tiêu đề 2 là Thông thường 20sp</string>
+    <string name="title_2">Tiêu đề 2 là 20sp thông thường</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Đầu đề thường 18sp</string>
+    <string name="heading">Đầu đề là chữ thường 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Đầu đề con 1 là Thông thường 16sp</string>
+    <string name="subheading_1">Tiêu đề phụ 1 là chữ thường 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Đầu đề con 2 là Trung bình 16sp</string>
+    <string name="subheading_2">Tiêu đề phụ 2 là chữ trung bình 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Cơ thể 1 là Bình thường 14sp</string>
+    <string name="body_1">Phần nội dung 1 là chữ thường 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Thân 2 vừa 14sp</string>
+    <string name="body_2">Phần nội dung 2 là chữ trung bình 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Chú thích là Thông thường 12sp</string>
+    <string name="caption">Chú thích là chữ thường 12sp</string>
 
 </resources>

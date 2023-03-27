@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Describes selected action-->
-    <string name="fluentui_selected">Merket</string>
-    <!-- Describes not selected action-->
-    <string name="fluentui_not_selected">Ikke valgt</string>
-    <!-- Describes disabled action-->
-    <string name="fluentui_disabled">Deaktivert</string>
-    <!-- Describes enabled action-->
-    <string name="fluentui_enabled">Aktivert</string>
-    <!-- Describes close action for a sheet-->
-    <string name="fluentui_close_sheet">Lukk ark</string>
-    <!-- Describes close action -->
-    <string name="fluentui_close">Lukk</string>
-    <!--name of the icon -->
-    <string name="fluentui_search">Søk</string>
-    <!--name of the icon -->
-    <string name="fluentui_microphone">Mikrofon</string>
-    <!-- Describes the action - to clear the text -->
-    <string name="fluentui_clear_text">Fjern tekst</string>
-    <!-- Describes the action - back -->
-    <string name="fluentui_back">Tilbake</string>
-    <!-- Describes the action - activated -->
-    <string name="fluentui_activated">Aktivert</string>
-    <!-- Describes the action - deactivated -->
-    <string name="fluentui_deactivated">Deaktivert</string>
-    <!-- Describes the type - Neutral-->
-    <string name="fluentui_neutral">Nøytral</string>
-    <!-- Describes the type - Brand-->
-    <string name="fluentui_brand">Merke</string>
-    <!--name of the icon -->
-    <string name="fluentui_chevron">Vinkeltegn</string>
-    <string name="fluentui_large">Stor</string>
-    <string name="fluentui_medium">Middels</string>
-    <string name="fluentui_small">Liten</string>
-    <string name="fluentui_subtitle">Undertittel</string>
+  <string name="fluentui_selected">Merket</string>
+  <string name="fluentui_not_selected">Ikke valgt</string>
+  <string name="fluentui_disabled">Deaktivert</string>
+  <string name="fluentui_enabled">Aktivert</string>
+  <string name="fluentui_close_sheet">Lukk ark</string>
+  <string name="fluentui_close">Lukk</string>
+  <string name="fluentui_search">Søk</string>
+  <string name="fluentui_microphone">Mikrofon</string>
+  <string name="fluentui_clear_text">Fjern tekst</string>
+  <string name="fluentui_back">Tilbake</string>
+  <string name="fluentui_activated">Aktivert</string>
+  <string name="fluentui_deactivated">Deaktivert</string>
+  <string name="fluentui_neutral">Nøytral</string>
+  <string name="fluentui_brand">Merke</string>
+  <string name="fluentui_chevron">Vinkeltegn</string>
+  <string name="fluentui_large">Stor</string>
+  <string name="fluentui_medium">Middels</string>
+  <string name="fluentui_small">Liten</string>
+  <string name="fluentui_subtitle">Undertittel</string>
 </resources>

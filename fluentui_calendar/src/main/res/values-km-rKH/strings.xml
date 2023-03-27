@@ -1,140 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
-
 <resources>
-
-    <!-- weekday initials -->
-    <!--Initial that represents the day Monday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="monday_initial" comment="initial for monday">M</string>
-    <!--Initial that represents the day Tuesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="tuesday_initial" comment="initial for tuesday">T</string>
-    <!--Initial that represents the day Wednesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="wednesday_initial" comment="initial for wednesday">W</string>
-    <!--Initial that represents the day Thursday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="thursday_initial" comment="initial for thursday">T</string>
-    <!--Initial that represents the day Friday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="friday_initial" comment="initial for friday">F</string>
-    <!--Initial that represents the day Saturday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="saturday_initial" comment="initial for saturday">S</string>
-    <!--Initial that represents the day Sunday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="sunday_initial" comment="initial for sunday">S</string>
-
-    <!-- accessibility -->
-    <string name="accessibility_goto_next_week">ទៅកាន់សប្ដាហ៍ក្រោយ</string>
-    <string name="accessibility_goto_previous_week">ទៅកាន់សប្ដាហ៍មុន</string>
-    <string name="accessibility_today">ថ្ងៃនេះ</string>
-    <string name="accessibility_selected">បានជ្រើសរើស</string>
-
-    <!-- *** Shared *** -->
-    <string name="done">រួចរាល់</string>
-
-    <!-- *** CalendarView *** -->
-    <string name="date_time">%1$s, %2$s</string>
-    <string name="today">ថ្ងៃនេះ</string>
-    <string name="tomorrow">ថ្ងៃស្អែក</string>
-    <string name="yesterday">ម្សិលមិញ</string>
-
-    <!-- *** TimePicker *** -->
-    <!--date picker tab title for start time range-->
-    <string name="date_time_picker_start_time">ពេលវេលាចាប់ផ្ដើម</string>
-    <!--date picker tab title for end time range-->
-    <string name="date_time_picker_end_time">ពេលវេលាបញ្ចប់</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_time_picker_start_date">កាលបរិច្ឆេទចាប់ផ្តើម</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_time_picker_end_date">កាលបរិច្ឆេទបញ្ចប់</string>
-    <!--date picker dialog title for time selection-->
-    <string name="date_time_picker_choose_time">ជ្រើសរើសពេលវេលា</string>
-    <!--date picker dialog title for date selection-->
-    <string name="date_time_picker_choose_date">ជ្រើសរើសកាលបរិច្ឆេទ</string>
-
-    <!--accessibility-->
-    <!--Announcement for date time picker-->
-    <string name="date_time_picker_accessibility_dialog_title">ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>
-    <!--Announcement for date picker-->
-    <string name="date_picker_accessibility_dialog_title">ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទ</string>
-    <!--Announcement for date time picker range-->
-    <string name="date_time_picker_range_accessibility_dialog_title">លំដាប់ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>
-    <!--Announcement for date picker range-->
-    <string name="date_picker_range_accessibility_dialog_title">លំដាប់ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទ</string>
-    <!--date time picker tab title for start time range-->
-    <string name="date_time_picker_accessiblility_start_time">ផ្ទាំងពេលវេលាចាប់ផ្ដើម</string>
-    <!--date time picker tab title for end time range-->
-    <string name="date_time_picker_accessiblility_end_time">ផ្ទាំងពេលវេលាបញ្ចប់</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_picker_accessiblility_start_date">ផ្ទាំងកាលបរិច្ឆេទចាប់ផ្ដើម</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_picker_accessiblility_end_date">ផ្ទាំងកាលបរិច្ឆេទបញ្ចប់</string>
-    <!--date time picker dialog close button-->
-    <string name="date_time_picker_accessibility_close_dialog_button">បិទប្រអប់សន្ទនា</string>
-    <!--date number picker month increment button-->
-    <string name="date_picker_accessibility_increment_month_button">ខែបន្ថែម</string>
-    <!-- date time picker click action next month announcement-->
-    <string name="date_picker_accessibility_next_month_click_action">ជ្រើសរើសខែបន្ទាប់</string>
-    <!--date number picker month decrement button-->
-    <string name="date_picker_accessibility_decrement_month_button">ខែបន្ថយ</string>
-    <!-- date time picker click action previous month announcement-->
-    <string name="date_picker_accessibility_previous_month_click_action">ជ្រើសរើសខែមុន</string>
-    <!--date number picker day increment button-->
-    <string name="date_picker_accessibility_increment_day_button">ថ្ងៃបន្ថែម</string>
-    <!-- date time picker click action next day announcement-->
-    <string name="date_picker_accessibility_next_day_click_action">ជ្រើសរើសថ្ងៃបន្ទាប់</string>
-    <!--date number picker day decrement button-->
-    <string name="date_picker_accessibility_decrement_day_button">ថ្ងៃបន្ថយ</string>
-    <!-- date time picker click action previous day announcement-->
-    <string name="date_picker_accessibility_previous_day_click_action">ជ្រើសរើសថ្ងៃមុន</string>
-    <!--date number picker year increment button-->
-    <string name="date_picker_accessibility_increment_year_button">ឆ្នាំបន្ថែម</string>
-    <!-- date time picker click action next year announcement-->
-    <string name="date_picker_accessibility_next_year_click_action">ជ្រើសរើសឆ្នាំបន្ទាប់</string>
-    <!--date number picker year decrement button-->
-    <string name="date_picker_accessibility_decrement_year_button">ឆ្នាំបន្ថយ</string>
-    <!-- date time picker click action previous year announcement-->
-    <string name="date_picker_accessibility_previous_year_click_action">ជ្រើសរើសឆ្នាំមុន</string>
-    <!--date time number picker date increment button-->
-    <string name="date_time_picker_accessibility_increment_date_button">កាលបរិច្ឆេទបន្ថែម</string>
-    <!-- date time picker click action next date announcement-->
-    <string name="date_picker_accessibility_next_date_click_action">ជ្រើសរើសកាលបរិច្ឆេទបន្ទាប់</string>
-    <!--date time number picker date decrement button-->
-    <string name="date_time_picker_accessibility_decrement_date_button">កាលបរិច្ឆេទបន្ថយ</string>
-    <!-- date time picker click action previous date announcement-->
-    <string name="date_picker_accessibility_previous_date_click_action">ជ្រើសរើសកាលបរិច្ឆេទមុន</string>
-    <!--date time number picker hour increment button-->
-    <string name="date_time_picker_accessibility_increment_hour_button">ម៉ោងបន្ថែម</string>
-    <!-- date time picker click action next hour announcement-->
-    <string name="date_picker_accessibility_next_hour_click_action">ជ្រើសរើសម៉ោងបន្ទាប់</string>
-    <!--date time number picker hour decrement button-->
-    <string name="date_time_picker_accessibility_decrement_hour_button">ម៉ោង​បន្ថយ</string>
-    <!-- date time picker click action previous hour announcement-->
-    <string name="date_picker_accessibility_previous_hour_click_action">ជ្រើសរើសម៉ោងមុន</string>
-    <!--date time number picker minute increment button-->
-    <string name="date_time_picker_accessibility_increment_minute_button">នាទីបន្ថែម</string>
-    <!-- date time picker click action next minute announcement-->
-    <string name="date_picker_accessibility_next_minute_click_action">ជ្រើសរើសនាទីបន្ទាប់</string>
-    <!--date time number picker minute decrement button-->
-    <string name="date_time_picker_accessibility_decrement_minute_button">នាទីបន្ថយ</string>
-    <!-- date time picker click action previous minute announcement-->
-    <string name="date_picker_accessibility_previous_minute_click_action">ជ្រើសរើសនាទីមុន</string>
-    <!--date time number picker period (am/pm) toggle button-->
-    <string name="date_time_picker_accessibility_period_toggle_button">បិទបើកប៊ូតុងរយៈពេលព្រឹកល្ងាច</string>
-    <!--date time number picker click action period (am/pm) announcement-->
-    <string name="date_time_picker_accessibility_period_toggle_click_action">បិទបើកប៊ូតុងរយៈពេលព្រឹកល្ងាច</string>
-    <!--Announces the selected date and/or time-->
-    <string name="date_time_picker_accessibility_selected_date">%s ត្រូវបានជ្រើសរើស</string>
-
-    <!-- *** Calendar *** -->
-
-    <!--accessibility-->
-    <!--Describes the action used to select calendar item-->
-    <string name="calendar_adapter_accessibility_item_selected">បានជ្រើសរើស</string>
+  <string name="monday_initial">M</string>
+  <string name="tuesday_initial">T</string>
+  <string name="wednesday_initial">W</string>
+  <string name="thursday_initial">T</string>
+  <string name="friday_initial">F</string>
+  <string name="saturday_initial">S</string>
+  <string name="sunday_initial">S</string>
+  <string name="accessibility_goto_next_week">ទៅកាន់សប្ដាហ៍ក្រោយ</string>
+  <string name="accessibility_goto_previous_week">ទៅកាន់សប្ដាហ៍មុន</string>
+  <string name="accessibility_today">ថ្ងៃនេះ</string>
+  <string name="accessibility_selected">បានជ្រើសរើស</string>
+  <string name="done">រួចរាល់</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">ថ្ងៃនេះ</string>
+  <string name="tomorrow">ថ្ងៃស្អែក</string>
+  <string name="yesterday">ម្សិលមិញ</string>
+  <string name="date_time_picker_start_time">ពេលវេលាចាប់ផ្ដើម</string>
+  <string name="date_time_picker_end_time">ពេលវេលាបញ្ចប់</string>
+  <string name="date_time_picker_start_date">កាលបរិច្ឆេទចាប់ផ្តើម</string>
+  <string name="date_time_picker_end_date">កាលបរិច្ឆេទបញ្ចប់</string>
+  <string name="date_time_picker_choose_time">ជ្រើសរើសពេលវេលា</string>
+  <string name="date_time_picker_choose_date">ជ្រើសរើសកាលបរិច្ឆេទ</string>
+  <string name="date_time_picker_accessibility_dialog_title">ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>
+  <string name="date_picker_accessibility_dialog_title">ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទ</string>
+  <string name="date_time_picker_range_accessibility_dialog_title">លំដាប់ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>
+  <string name="date_picker_range_accessibility_dialog_title">លំដាប់ផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទ</string>
+  <string name="date_time_picker_accessiblility_start_time">ផ្ទាំងពេលវេលាចាប់ផ្ដើម</string>
+  <string name="date_time_picker_accessiblility_end_time">ផ្ទាំងពេលវេលាបញ្ចប់</string>
+  <string name="date_picker_accessiblility_start_date">ផ្ទាំងកាលបរិច្ឆេទចាប់ផ្ដើម</string>
+  <string name="date_picker_accessiblility_end_date">ផ្ទាំងកាលបរិច្ឆេទបញ្ចប់</string>
+  <string name="date_time_picker_accessibility_close_dialog_button">បិទប្រអប់សន្ទនា</string>
+  <string name="date_picker_accessibility_increment_month_button">ខែបន្ថែម</string>
+  <string name="date_picker_accessibility_next_month_click_action">ជ្រើសរើសខែបន្ទាប់</string>
+  <string name="date_picker_accessibility_decrement_month_button">ខែបន្ថយ</string>
+  <string name="date_picker_accessibility_previous_month_click_action">ជ្រើសរើសខែមុន</string>
+  <string name="date_picker_accessibility_increment_day_button">ថ្ងៃបន្ថែម</string>
+  <string name="date_picker_accessibility_next_day_click_action">ជ្រើសរើសថ្ងៃបន្ទាប់</string>
+  <string name="date_picker_accessibility_decrement_day_button">ថ្ងៃបន្ថយ</string>
+  <string name="date_picker_accessibility_previous_day_click_action">ជ្រើសរើសថ្ងៃមុន</string>
+  <string name="date_picker_accessibility_increment_year_button">ឆ្នាំបន្ថែម</string>
+  <string name="date_picker_accessibility_next_year_click_action">ជ្រើសរើសឆ្នាំបន្ទាប់</string>
+  <string name="date_picker_accessibility_decrement_year_button">ឆ្នាំបន្ថយ</string>
+  <string name="date_picker_accessibility_previous_year_click_action">ជ្រើសរើសឆ្នាំមុន</string>
+  <string name="date_time_picker_accessibility_increment_date_button">កាលបរិច្ឆេទបន្ថែម</string>
+  <string name="date_picker_accessibility_next_date_click_action">ជ្រើសរើសកាលបរិច្ឆេទបន្ទាប់</string>
+  <string name="date_time_picker_accessibility_decrement_date_button">កាលបរិច្ឆេទបន្ថយ</string>
+  <string name="date_picker_accessibility_previous_date_click_action">ជ្រើសរើសកាលបរិច្ឆេទមុន</string>
+  <string name="date_time_picker_accessibility_increment_hour_button">ម៉ោងបន្ថែម</string>
+  <string name="date_picker_accessibility_next_hour_click_action">ជ្រើសរើសម៉ោងបន្ទាប់</string>
+  <string name="date_time_picker_accessibility_decrement_hour_button">ម៉ោង​បន្ថយ</string>
+  <string name="date_picker_accessibility_previous_hour_click_action">ជ្រើសរើសម៉ោងមុន</string>
+  <string name="date_time_picker_accessibility_increment_minute_button">នាទីបន្ថែម</string>
+  <string name="date_picker_accessibility_next_minute_click_action">ជ្រើសរើសនាទីបន្ទាប់</string>
+  <string name="date_time_picker_accessibility_decrement_minute_button">នាទីបន្ថយ</string>
+  <string name="date_picker_accessibility_previous_minute_click_action">ជ្រើសរើសនាទីមុន</string>
+  <string name="date_time_picker_accessibility_period_toggle_button">បិទបើកប៊ូតុងរយៈពេលព្រឹកល្ងាច</string>
+  <string name="date_time_picker_accessibility_period_toggle_click_action">បិទបើកប៊ូតុងរយៈពេលព្រឹកល្ងាច</string>
+  <string name="date_time_picker_accessibility_selected_date">%s ត្រូវបានជ្រើសរើស</string>
+  <string name="calendar_adapter_accessibility_item_selected">បានជ្រើសរើស</string>
 </resources>

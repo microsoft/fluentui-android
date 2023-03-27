@@ -9,13 +9,13 @@
     <string name="app_name">Ukážka používateľského rozhrania Fluent</string>
     <string name="app_title">Používateľské rozhranie Fluent</string>
     <!-- Announces selected component -->
-    <string name="app_accessibility_selected">Vybraté: %s</string>
+    <string name="app_accessibility_selected">Vybratý používateľ %s</string>
     <string name="app_modifiable_parameters">Upravovateľné parametre</string>
-    <string name="app_right_accessory_view">Zobrazenie pravého príslušenstva</string>
+    <string name="app_right_accessory_view">Pravé zobrazenie príslušenstva</string>
 
     <string name="app_style">Štýl</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">Stlačená ikona</string>
+    <string name="app_icon_pressed">Stlačila sa ikona</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
@@ -34,13 +34,13 @@
 
     <!--AppBar-->
     <string name="app_bar_style">Štýl panela aplikácií</string>
-    <string name="app_bar_subtitle">Podnadpis</string>
+    <string name="app_bar_subtitle">Podtitul</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Klikla sa ikona navigácie.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">Kliklo sa na ikonu Navigácia.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">Označiť</string>
+    <string name="app_bar_layout_menu_flag">Príznak</string>
     <string name="app_bar_layout_menu_settings">Nastavenia</string>
     <string name="app_bar_layout_menu_search">Hľadať</string>
     <!-- UI Text that shows the type of scroll behavior -->
@@ -52,7 +52,7 @@
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">Zobraziť avatara</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Zobraziť ikonu naspäť</string>
+    <string name="app_bar_layout_show_back_icon_button">Zobraziť ikonu Späť</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">Skryť ikonu</string>
     <!-- Text for button that shows icon -->
@@ -65,7 +65,7 @@
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Prepínať medzi motívmi (znova vytvorí aktivitu)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Prepnúť motív</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Položka</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -74,14 +74,14 @@
     <!--AvatarView-->
     <!-- Style -->
     <string name="avatar_style_circle">Štýl kruhu</string>
-    <string name="avatar_style_square">Štvorcový štýl</string>
+    <string name="avatar_style_square">Štýl štvorca</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XX - vytvorenie rozlišovného grafu</string>
-    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_xxlarge">XXL</string>
+    <string name="avatar_size_xlarge">XL</string>
     <string name="avatar_size_large">Veľké</string>
-    <string name="avatar_size_medium">Stredná</string>
+    <string name="avatar_size_medium">Stredné</string>
     <string name="avatar_size_small">Malé</string>
-    <string name="avatar_size_xsmall">XSmall</string>
+    <string name="avatar_size_xsmall">XS</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -99,13 +99,13 @@
     <!-- UI label denoting the overflow clicked action performed by the user -->
     <string name="avatar_group_overflow_clicked">Kliklo sa na pretečenie</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView na indexe %d kliknuté</string>
+    <string name="avatar_group_avatar_clicked">Kliklo sa na AvatarView na indexe %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
     <string name="badge_notification_badge">Štítok s oznámením</string>
     <!--UI Label for dot notification -->
-    <string name="badge_notification_dot">Bodkované</string>
+    <string name="badge_notification_dot">Bodka</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
     <string name="badge_notification_list">Zoznam</string>
     <!--UI Label for notification shown in character used in vertical Tab -->
@@ -129,24 +129,24 @@
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Dolný hárok</string>
-    <string name="bottom_sheet_dialog">Dolné okno hárka</string>
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Zobraziť s jednoriadkovými položkami</string>
     <string name="bottom_sheet_with_double_line_items">Zobraziť s dvojriadkovými položkami</string>
-    <string name="bottom_sheet_with_single_line_header">Zobraziť s hlavičkou s jedným riadkom</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Zobraziť s hlavičkou a rozdeľovačmi s dvomi čiarami</string>
+    <string name="bottom_sheet_with_single_line_header">Zobraziť s jednoriadkovou hlavičkou</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Zobraziť s dvojriadkovou hlavičkou a rozdeľovačmi</string>
     <string name="bottom_sheet_dialog_button">Zobraziť</string>
     <string name="drawer_content_desc_collapse_state">Rozbaliť</string>
     <string name="drawer_content_desc_expand_state">Minimalizovať</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Kliknite na položku %s</string>
+    <string name="contextual_command_prompt_click_item">Kliknutie %s</string>
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">Dlhé kliknutie %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Kliknutie na tlačidlo Zrušiť</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Vložiť položku</string>
     <!-- Text for button for updating an item-->
@@ -174,7 +174,7 @@
     <!-- Announces list action -->
     <string name="contextual_command_accessibility_list">Zoznam</string>
     <!-- Announces link action -->
-    <string name="contextual_command_accessibility_link">Prepojenie</string>
+    <string name="contextual_command_accessibility_link">Prepojiť</string>
     <!-- UI Label denoting item updating -->
     <string name="contextual_command_bar_item_update_title">Aktualizácia položky</string>
     <!-- UI Label denoting spacing -->
@@ -182,60 +182,60 @@
     <!-- UI Label denoting dismiss position -->
     <string name="contextual_command_bar_dismiss_position">Zrušiť pozíciu</string>
     <!-- Radio button label START -->
-    <string name="contextual_command_bar_dismiss_position_start">SPUSTIŤ</string>
+    <string name="contextual_command_bar_dismiss_position_start">ZAČIATOK</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">KONIEC</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">Priestor skupiny</string>
+    <string name="contextual_command_bar_group_space_title">Priestor medzi skupinami</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">Priestor položky</string>
+    <string name="contextual_command_bar_item_space_title">Priestor medzi položkami</string>
     <!-- UI bar label denoting the space in number value dp's -->
     <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">Označiť</string>
+    <string name="bottom_sheet_item_flag_title">Príznak</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Klikla sa položka príznaku</string>
+    <string name="bottom_sheet_item_flag_toast">Kliklo sa na položku Označiť príznakom</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Odpovedať</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Klikla sa položka odpovede</string>
+    <string name="bottom_sheet_item_reply_toast">Kliklo sa na položku Odpovedať</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Preposlať</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Kliknuté položky dopredu</string>
+    <string name="bottom_sheet_item_forward_toast">Kliklo sa na položku Preposlať</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Odstrániť</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Kliknuté odstránenie položky</string>
+    <string name="bottom_sheet_item_delete_toast">Kliklo sa na položku Odstrániť</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
     <!--UI Label for item camera -->
-    <string name="bottom_sheet_item_camera_title">Kamera</string>
+    <string name="bottom_sheet_item_camera_title">Fotoaparát</string>
     <!--UI description label take a photo-->
-    <string name="bottom_sheet_item_camera_subtitle">Odfotografovať</string>
+    <string name="bottom_sheet_item_camera_subtitle">Odfotiť</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Klikla sa položka fotoaparátu</string>
+    <string name="bottom_sheet_item_camera_toast">Kliklo sa na položku Fotoaparát</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Galéria</string>
     <!--UI description label view your photos-->
-    <string name="bottom_sheet_item_gallery_subtitle">Zobraziť fotografie</string>
+    <string name="bottom_sheet_item_gallery_subtitle">Zobrazujte svoje fotografie</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Kliknuté položky galérie</string>
+    <string name="bottom_sheet_item_gallery_toast">Kliklo sa na položku Galéria</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Videá</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">Prehrávajte svoje videá</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Kliknuté položky videí</string>
+    <string name="bottom_sheet_item_videos_toast">Kliklo sa na položku Videá</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Spravovať</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Spravovať knižnicu médií</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Kliknuté položky spravovať</string>
+    <string name="bottom_sheet_item_manage_toast">Kliklo sa na položku Spravovať</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">E-mailové akcie</string>
@@ -243,65 +243,65 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Dokumenty</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Posledná aktualizácia o 14:14</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Naposledy aktualizované 14:14</string>
     <!--UI Label for item share-->
-    <string name="bottom_sheet_item_double_line_header_share">Zdieľanie</string>
+    <string name="bottom_sheet_item_double_line_header_share">Zdieľať</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Kliknuté položky na zdieľanie</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Kliklo sa na položku Zdieľať</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Premiestniť</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Kliknuté premiestnenie položky</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Kliklo sa na položku Presunúť</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Odstrániť</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Kliknuté odstránenie položky</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Kliklo sa na položku Odstrániť</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Informácie</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Kliknuté informačné položky</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Kliklo sa na položku Informácie</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Hodiny</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Kliknuté položky hodín</string>
+    <string name="bottom_sheet_item_clock_toast">Kliklo sa na položku Hodiny</string>
     <!--UI Label for item alarm-->
-    <string name="bottom_sheet_item_alarm_title">Zabezpečenie</string>
+    <string name="bottom_sheet_item_alarm_title">Budík</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Klikla sa na položku budíka</string>
+    <string name="bottom_sheet_item_alarm_toast">Kliklo sa na položku Budík</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Časové pásmo</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Kliknuté položky časového pásma</string>
+    <string name="bottom_sheet_item_time_zone_toast">Kliklo sa na položku Časové pásmo</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Tlačidlo</string>
     <string name="buttonbar">Panel tlačidiel</string>
-    <string name="button_disabled">Tlačidlo Vypnuté</string>
-    <string name="button_borderless">Tlačidlo bez orámovania</string>
-    <string name="button_borderless_disabled">Tlačidlo vypnuté bez orámovania</string>
-    <string name="button_large">Veľké tlačidlo</string>
-    <string name="button_large_disabled">Veľké vypnuté tlačidlo</string>
-    <string name="button_outlined">Tlačidlo s obrysom</string>
-    <string name="button_outlined_disabled">Tlačidlo Vypnuté s prehľadom</string>
+    <string name="button_disabled">Tlačidlo Zakázané</string>
+    <string name="button_borderless">Tlačidlo Bez orámovania</string>
+    <string name="button_borderless_disabled">Tlačidlo Bez orámovania Zakázané</string>
+    <string name="button_large">Tlačidlo Veľké</string>
+    <string name="button_large_disabled">Tlačidlo Veľké Zakázané</string>
+    <string name="button_outlined">Tlačidlo S obrysom</string>
+    <string name="button_outlined_disabled">Tlačidlo S obrysom Zakázané</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Vyberte dátum</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Ukazovateľ dátumu a času</string>
+    <string name="date_time_picker_title">Výber dátumu a času</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Jeden dátum</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Nie je vybratý žiadny dátum</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Chcete zobraziť výber údajov?</string>
+    <string name="date_time_picker_date_button">Zobraziť výber dátumu</string>
     <!-- text for button that shows date picker with date tab selected -->
     <string name="date_time_picker_calendar_date_time_button">Zobraziť výber dátumu a času s vybratou kartou dátumu</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Zobraziť výber dátumu a času s vybratou kartou Čas</string>
+    <string name="date_time_picker_date_time_calendar_button">Zobraziť výber dátumu a času s vybratou kartou času</string>
     <!-- text for button that shows time picker -->
     <string name="date_time_picker_date_time_button">Zobraziť výber dátumu a času</string>
     <!-- UI label to show date range-->
@@ -315,17 +315,17 @@
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_end_picked_default">Nie je vybratý žiadny koniec</string>
     <!-- text for button that selects start date -->
-    <string name="date_time_picker_date_start_button">Vyberte dátum začiatku</string>
+    <string name="date_time_picker_date_start_button">Vybrať dátum začiatku</string>
     <!-- text for button that selects end date -->
-    <string name="date_time_picker_date_end_button">Vyberte dátum ukončenia</string>
+    <string name="date_time_picker_date_end_button">Vybrať dátum ukončenia</string>
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Rozsah dátumu a času</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Vybrať rozsah dátumu a času</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">Zobraziť dialógové okno</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
@@ -333,17 +333,17 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Zobraziť dialógové okno zásuvky</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Žiadne dialógové okno postupné zoslabnutie zdola</string>
+    <string name="no_fade_bottom_dialog_button">Dolné dialógové okno Žiadne postupné zoslabnutie</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Zobraziť hornú zásuvku</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Žiadne dialógové okno postupné zoslabenia v hornej časti</string>
+    <string name="no_fade_top_dialog_button">Horné dialógové okno Žiadne postupné zoslabnutie</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> Zobraziť horné dialógové okno zobrazenia ukotvenia</string>
+    <string name="anchor_view_top_dialog_button"> Zobraziť horné dialógové okno Ukotviť zobrazenie</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Nezobrazovať žiadne horné dialógové okno nadpisu</string>
+    <string name="no_title_top_dialog_button"> Zobraziť horné dialógové okno Žiaden titul</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Zobraziť pod hornou časťou okna nadpisu</string>
+    <string name="below_title_top_dialog_button"> Zobraziť horné dialógové okno Pod titulom</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Zobraziť pravú zásuvku</string>
     <!-- text for button that shows left drawer -->
@@ -351,9 +351,9 @@
 
     <!--ListItem-->
     <!-- Title -->
-    <string name="list_item_title">Názov, primárny text</string>
+    <string name="list_item_title">Titul, primárny text</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">Podnadpis, sekundárny text</string>
+    <string name="list_item_subtitle">Podtitul, sekundárny text</string>
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">Vlastný text podnadpisu</string>
     <!-- Footer -->
@@ -361,8 +361,8 @@
     <!-- UI labels -->
     <string name="list_item_sub_header_single_line">Jednoriadkový zoznam so sivým textom vedľajšej hlavičky</string>
     <string name="list_item_sub_header_two_line">Dvojriadkový zoznam</string>
-    <string name="list_item_sub_header_two_line_dense">Dvojriadkový zoznam s hustým rozstupom</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Dvojriadkový zoznam s vlastným sekundárnym zobrazením titulkov</string>
+    <string name="list_item_sub_header_two_line_dense">Dvojriadkový zoznam s rozstupom nahusto</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Dvojriadkový zoznam s vlastným zobrazením sekundárneho podtitulu</string>
     <string name="list_item_sub_header_three_line">Trojriadkový zoznam s čiernym textom vedľajšej hlavičky</string>
     <string name="list_item_sub_header_no_custom_views">Položky zoznamu bez vlastných zobrazení</string>
     <string name="list_item_sub_header_large_header">Zoznam položiek s veľkými vlastnými zobrazeniami</string>
@@ -370,40 +370,40 @@
     <string name="list_item_sub_header_truncated_text">Položky zoznamu so skráteným textom</string>
     <string name="list_item_sub_header_custom_accessory_text">Akcia</string>
     <string name="list_item_truncation_middle">Skrátenie v strede.</string>
-    <string name="list_item_truncation_end">Ukončenie skrátenia.</string>
-    <string name="list_item_truncation_start">Spustiť skrátenie.</string>
+    <string name="list_item_truncation_end">Skrátenie na konci.</string>
+    <string name="list_item_truncation_start">Skrátenie na začiatku.</string>
     <string name="list_item_custom_text_view">Hodnota</string>
     <string name="list_item_click">Klikli ste na položku zoznamu.</string>
     <string name="list_item_click_custom_accessory_view">Klikli ste na vlastné zobrazenie príslušenstva.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Klikli ste na vlastné zobrazenie príslušenstva podhlavičiek.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Klikli ste na vedľajšiu hlavičku vlastné zobrazenie príslušenstva.</string>
     <string name="list_item_more_options">Ďalšie možnosti</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Vybrať</string>
-    <string name="people_picker_select_deselect_example">Vybrať výber</string>
-    <string name="people_picker_none_example">Žiadny</string>
+    <string name="people_picker_select_deselect_example">VybraťZrušiť výber</string>
+    <string name="people_picker_none_example">Žiadne</string>
     <string name="people_picker_delete_example">Odstrániť</string>
     <string name="people_picker_custom_persona_description">V tomto príklade je uvedené, ako vytvoriť vlastný objekt IPersona.</string>
     <string name="people_picker_dialog_title_removed">Odstránili ste persónu:</string>
     <string name="people_picker_dialog_title_added">Pridali ste persónu:</string>
     <string name="people_picker_drag_started">Presunutie sa začalo</string>
     <string name="people_picker_drag_ended">Presunutie sa skončilo</string>
-    <string name="people_picker_picked_personas_listener">Prijímač persón</string>
-    <string name="people_picker_suggestions_listener">Prijímač návrhov</string>
+    <string name="people_picker_picked_personas_listener">Poslucháč persón</string>
+    <string name="people_picker_suggestions_listener">Poslucháč návrhov</string>
     <string name="people_picker_persona_chip_click">Klikli ste na %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="few">%1$s recipients</item>
-        <item quantity="many">%1$s recipients</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s príjemca</item>
+        <item quantity="few">%1$s príjemcovia</item>
+        <item quantity="many">%1$s príjemcov</item>
+        <item quantity="other">%1$s príjemcov</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Rozbaliť trvalé spodné hárky</string>
-    <string name="collapse_persistent_sheet_button"> Skryť trvalé spodné hárky</string>
-    <string name="show_persistent_sheet_button"> Zobraziť trvalé spodné hárky</string>
+    <string name="expand_bottom_sheet_button">Rozbaliť trvalý spodný hárok</string>
+    <string name="collapse_persistent_sheet_button"> Skryť trvalý spodný hárok</string>
+    <string name="show_persistent_sheet_button"> Zobraziť trvalý spodný hárok</string>
     <string name="new_view">Toto je nové zobrazenie</string>
     <string name="toggle_sheet_content">Prepnúť obsah dolného hárka</string>
     <string name="switch_to_custom_content">Prepnúť na vlastný obsah</string>
@@ -415,13 +415,13 @@
     <string name="persistent_sheet_item_create_new_folder_title">Nový priečinok</string>
     <string name="persistent_sheet_item_create_new_folder_toast">Kliklo sa na položku Nový priečinok</string>
     <string name="persistent_sheet_item_edit_title">Upraviť</string>
-    <string name="persistent_sheet_item_edit_toast">Kliknuté upraviť položku</string>
+    <string name="persistent_sheet_item_edit_toast">Kliklo sa na položku Upraviť</string>
     <string name="persistent_sheet_item_save_title">Uložiť</string>
-    <string name="persistent_sheet_item_save_toast">Kliknuté na položku Uložiť</string>
+    <string name="persistent_sheet_item_save_toast">Kliklo sa na položku Uložiť</string>
     <string name="persistent_sheet_item_zoom_in_title">Priblížiť</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Klikla sa na položku priblížiť</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Kliklo sa na položku Priblížiť</string>
     <string name="persistent_sheet_item_zoom_out_title">Oddialiť</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Kliknuté položky vzdialiť</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Kliklo sa na položku Oddialiť</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -453,74 +453,74 @@
     <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
     <string name="persona_footer">K dispozícii</string>
     <!-- Person names -->
-    <string name="persona_name_allan_munger">Ín žulér</string>
-    <string name="persona_name_amanda_brady">Prešov - Prešov</string>
-    <string name="persona_name_ashley_mccarthy">Poľná mcKa</string>
-    <string name="persona_name_carlos_slattery">Peter Kováč</string>
-    <string name="persona_name_carole_poland">Koleda v Poľsku</string>
-    <string name="persona_name_cecil_folk">Ľudová hudba</string>
-    <string name="persona_name_celeste_burton">Celeste Pola</string>
-    <string name="persona_name_charlotte_waltson">Charlotte Waltsonová</string>
-    <string name="persona_name_colin_ballinger">Ond bejzbal</string>
-    <string name="persona_name_daisy_phillips">Sedmokráska akus</string>
-    <string name="persona_name_elliot_woodward">Prešov - Prešov</string>
-    <string name="persona_name_elvia_atkins">Elvia Atsell</string>
-    <string name="persona_name_erik_nason">Long Nason</string>
-    <string name="persona_name_henry_brill">Majúci Brill</string>
-    <string name="persona_name_isaac_fielder">Ikúrový fielder</string>
-    <string name="persona_name_johnie_mcconnell">Johnie McCall</string>
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
-    <string name="persona_name_katri_ahokas">Káthri Ahokas</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">Počasia</string>
-    <string name="persona_name_lydia_bauer">Lýdiu Ďuďovu</string>
-    <string name="persona_name_mauricio_august">Priateli august</string>
-    <string name="persona_name_miguel_garcia">Pavol Sloboda</string>
-    <string name="persona_name_mona_kane">Mona Šermová</string>
-    <string name="persona_name_robin_counts">Počty kombinácií</string>
-    <string name="persona_name_robert_tolbert">Ár Tolbert</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">Wanda Posol</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Návrhár</string>
     <string name="persona_subtitle_engineer">Technik</string>
     <string name="persona_subtitle_manager">Manažér</string>
     <string name="persona_subtitle_researcher">Vyhľadávač</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (dlhý príklad textu na testovanie skrátenia)</string>
-    <string name="persona_view_description_xxlarge">Avatar XXLarge s tromi riadkami textu</string>
+    <string name="persona_truncation">\ (príklad dlhého textu na testovanie skrátenia)</string>
+    <string name="persona_view_description_xxlarge">XXL avatar s tromi riadkami textu</string>
     <string name="persona_view_description_large">Veľký avatar s dvoma riadkami textu</string>
     <string name="persona_view_description_small">Malý avatar s jedným riadkom textu</string>
     <string name="people_picker_hint">Žiadne so zobrazeným tipom</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Zakázaný persónový čip</string>
+    <string name="persona_chip_example_disabled">Zakázaný čip persóny</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Chyba – persóna</string>
+    <string name="persona_chip_example_error">Chyba čipu persóny</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Persóna čipu bez ikony zavrieť</string>
+    <string name="persona_chip_example_no_icon">Čip persóny s ikonou nezavretia</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Základný persónový čip</string>
+    <string name="persona_chip_example_basic">Základný čip persóny</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Klikli ste na vybratý persónový čip.</string>
+    <string name="persona_chip_example_click">Klikli ste na vybratý čip persóny.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
-    <string name="popup_menu_item_share">Zdieľanie</string>
+    <string name="popup_menu_item_share">Zdieľať</string>
     <!-- UI label for item follow -->
     <string name="popup_menu_item_follow">Sledovať</string>
     <!-- UI label for item invite people -->
     <string name="popup_menu_item_invite_people">Pozvať ľudí</string>
     <!-- UI label for item refresh page -->
-    <string name="popup_menu_item_refresh_page">Obnovenie stránky</string>
+    <string name="popup_menu_item_refresh_page">Obnoviť stránku</string>
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">Otvoriť v prehliadači</string>
     <!-- UI label for multi line description -->
     <string name="popup_menu_item_multiline">Toto je kontextová ponuka s viacerými riadkami. Maximálny počet riadkov je nastavený na dva, zvyšné riadky sa skrátia.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
-    <string name="popup_menu_item_all_news">Všetky správy</string>
+    <string name="popup_menu_item_all_news">Všetky novinky</string>
     <!-- UI label for item Saved news -->
     <string name="popup_menu_item_saved_news">Uložené správy</string>
     <!-- UI label for item >News from sites -->
@@ -528,9 +528,9 @@
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">Upozorniť mimo pracovného času</string>
+    <string name="popup_menu_item_notify_outside">Upozorňovať mimo pracovného času</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Upozorniť, keď nie som aktívny(-a) na pracovnej ploche</string>
+    <string name="popup_menu_item_notify_inactive">Upozorniť, keď neaktívny/-a v počítači</string>
     <!-- UI message for user action clicked on an item in popup menu -->
     <string name="popup_menu_item_clicked">Klikli ste na položku:</string>
     <!-- UI label that shows simple pop up menu -->
@@ -538,30 +538,30 @@
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple_duo">Jednoduchá ponuka2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">Ponuka s jednou voliteľnou položkou a rozdeľovačom</string>
+    <string name="popup_menu_single_check">Ponuka s jednou vybrateľnou položkou a oddeľovačom</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">Ponuka so všetkými voliteľnými položkami, ikonami a dlhým textom</string>
+    <string name="popup_menu_all_check">Ponuka so všetkými vybrateľnými položkami, ikonami a dlhým textom</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">Zobraziť</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">Kruhový priebeh</string>
-    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall">XS</string>
     <string name="circular_progress_xsmall_size">20 dp</string>
     <string name="circular_progress_small">Malé</string>
-    <string name="circular_progress_small_size">24dp</string>
-    <string name="circular_progress_medium">Stredná</string>
-    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_small_size">24 dp</string>
+    <string name="circular_progress_medium">Stredné</string>
+    <string name="circular_progress_medium_size">36 dp</string>
     <string name="circular_progress_large">Veľké</string>
-    <string name="circular_progress_large_size">44dp</string>
+    <string name="circular_progress_large_size">44 dp</string>
     <!-- UI label showing a linear progress bar -->
     <string name="linear_progress">Lineárny priebeh</string>
-    <string name="linear_progress_size">4dp</string>
+    <string name="linear_progress_size">4 dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">Neurčené</string>
+    <string name="linear_progress_indeterminate_label">Neurčitý</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Určiť</string>
+    <string name="linear_progress_determinate_label">Určitý</string>
 
 
     <!--Shared-->
@@ -571,48 +571,48 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">Vyhľadávací panel</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">Spätné volanie mikrofónu</string>
+    <string name="searchbar_microphone_callback">Mikrofón Callback</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Automatické opravy</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">Mikrofón sa stlačil</string>
+    <string name="searchbar_microphone_pressed">Ikona Mikrofón sa stlačila</string>
     <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">Stlačené zobrazenie sprava</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Vyhľadávanie na klávesnici stlačené</string>
+    <string name="searchbar_keyboard_search_pressed">Vyhľadávanie na klávesnici sa stlačilo</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Akcia</string>
-    <string name="snackbar_action_long">Dlhá textová akcia</string>
-    <string name="snackbar_single_line">Jednoriadkový snackbar</string>
+    <string name="snackbar_action_long">Akcia dlhého textu</string>
+    <string name="snackbar_single_line">Panel s jedným riadkom</string>
     <string name="snackbar_multiline">Toto je viacriadkový snackbar. Maximálny počet riadkov je nastavený na dva, zvyšné riadky sa skrátia.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">Toto je denný panel oznámení. Používa sa na komunikáciu nových funkcií.</string>
-    <string name="snackbar_primary">Toto je primárny snackbar.</string>
-    <string name="snackbar_light">Toto je svetlý občerstvenie.</string>
-    <string name="snackbar_warning">Toto je výstražný snackbar.</string>
-    <string name="snackbar_danger">Toto je výstupný občerstvenie.</string>
+    <string name="snackbar_primary">Toto je primárny panel.</string>
+    <string name="snackbar_light">Toto je svetlý panel.</string>
+    <string name="snackbar_warning">Toto je panel výstrahy.</string>
+    <string name="snackbar_danger">Toto je panel nebezpečenstva.</string>
     <string name="snackbar_description_single_line">Krátke trvanie</string>
     <string name="snackbar_description_single_line_custom_view">Dlhé trvanie s cyklickým priebehom ako malé vlastné zobrazenie</string>
     <string name="snackbar_description_single_line_action">Krátke trvanie s akciou</string>
-    <string name="snackbar_description_single_line_action_custom_view">Krátke trvanie s akciou a stredne veľkými vlastnými zobrazeniami</string>
+    <string name="snackbar_description_single_line_action_custom_view">Krátke trvanie s akciou a stredne veľkým vlastným zobrazením</string>
     <string name="snackbar_description_single_line_custom_text_color">Krátke trvanie s prispôsobenou farbou textu</string>
     <string name="snackbar_description_multiline">Dlhé trvanie</string>
     <string name="snackbar_description_multiline_custom_view">Dlhé trvanie s malým vlastným zobrazením</string>
     <string name="snackbar_description_multiline_action">Neurčité trvanie s aktualizáciami akcií a textu</string>
-    <string name="snackbar_description_multiline_action_custom_view">Krátke trvanie s akciou a stredne veľkými vlastnými zobrazeniami</string>
+    <string name="snackbar_description_multiline_action_custom_view">Krátke trvanie s akciou a stredne veľkým vlastným zobrazením</string>
     <string name="snackbar_description_multiline_action_long">Krátke trvanie s textom dlhej akcie</string>
     <string name="snackbar_description_announcement">Krátke trvanie</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Tento text bol aktualizovaný.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Zobraziť snackbar</string>
+    <string name="snackbar_button_show">Zobraziť panel</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">Jednoduchá čiara</string>
+    <string name="snackbar_headline_single_line">Jeden riadok</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">viacčiarové</string>
+    <string name="snackbar_headline_multiline">Viacriadkové</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Štýl oznámenia</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -620,9 +620,9 @@
     <!-- UI Text denoting Light style snackbar -->
     <string name="snackbar_headline_light_style">Svetlý štýl</string>
     <!-- UI Text denoting Warning stylee snackbar -->
-    <string name="snackbar_headline_warning_style">Štýl upozornenia</string>
+    <string name="snackbar_headline_warning_style">Štýl výstrahy</string>
     <!-- UI Text denoting Danger style snackbar -->
-    <string name="snackbar_headline_danger_style">Štýl nebezpečenstvo</string>
+    <string name="snackbar_headline_danger_style">Štýl nebezpečenstva</string>
 
     <!-- TabBar-->
     <!-- UI labels -->
@@ -643,26 +643,26 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Vodorovne</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(bez textu)</string>
+    <string name="tabBar_no_text">Žiadny text</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Položky na karte</string>
 
     <!--TemplateView-->
     <!-- UI labels and descriptions -->
-    <string name="cell_sample_title">Nadpis</string>
+    <string name="cell_sample_title">Titul</string>
     <string name="cell_sample_description">Popis</string>
     <string name="calculate_cells">Načítať alebo vypočítať 100 buniek</string>
     <string name="calculate_layouts">Načítať alebo vypočítať 100 rozložení</string>
     <string name="template_list">Zoznam šablón</string>
     <string name="regular_list">Bežný zoznam</string>
-    <string name="cell_example_title">názov bunky</string>
+    <string name="cell_example_title">Titul: Bunka</string>
     <string name="cell_example_description">Popis: Ťuknutím zmeníte orientáciu</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
     <string name="tab_standard_two_segment">Štandardná karta 2 – segment</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Štandardná karta – segment 3</string>
+    <string name="tab_standard_three_segment">Štandardná karta 3 – segment</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
     <string name="tab_standard_four_segment">Štandardná karta 4 – segment</string>
     <!-- Text for button that shows a Standard Tab with pager -->
@@ -670,7 +670,7 @@
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">Prepnúť kartu</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Karta tabletu </string>
+    <string name="tab_pills">Karta Tabletky</string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
@@ -678,42 +678,42 @@
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
     <string name="tooltip_calendar_demo_button">Ťuknutím zobrazíte popis vlastného kalendára</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Ťuknite na popis vlastnej farby</string>
+    <string name="tooltip_custom_button">Ťuknutím zobrazíte popis vlastnej farby</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Ťuknutím zobrazíte popis vnútornej časti</string>
+    <string name="tooltip_center_button">Ťuknutím zobrazíte popis zrušenia vnútri</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
     <string name="tooltip_custom_view">Ťuknutím zobrazíte popis vlastného zobrazenia</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Popis vlastnej hornej farby</string>
+    <string name="tooltip_top_start_message">Popis vlastnej farby hore</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Popis horného konca s 10dp offsetX</string>
+    <string name="tooltip_top_end_message">Popis na konci hore s odsadením 10 dpX</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Popis na začiatku spodnej časti</string>
+    <string name="tooltip_bottom_start_message">Popis na začiatku dolu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Popis dolného konca s odsadením 10 dp</string>
+    <string name="tooltip_bottom_end_message">Popis na konci dolu s odsadením 10 dpY</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Zrušiť vnútorný popis</string>
+    <string name="tooltip_center_message">Popis zrušenia vnútri</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Názov tlačidla bol zamietnutý</string>
+    <string name="tooltip_dismiss_message">Popis bol zrušený</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Nadpis je svetlý 28sp</string>
+    <string name="headline">Písmo pre Titulok je Ľahké 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">Nadpis 1 je stredný 20sp</string>
+    <string name="title_1">Písmo pre Titul 1 je Stredné 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Názov 2 je bežný 20sp</string>
+    <string name="title_2">Písmo pre Titul 2 je Normálne 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Nadpis je Normálny 18sp</string>
+    <string name="heading">Písmo pre Nadpis je Normálne 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Podnadpis 1 je normálny 16sp</string>
+    <string name="subheading_1">Písmo pre Podnadpis 1 je Normálne 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Podnadpis 2 je stredný 16sp</string>
+    <string name="subheading_2">Písmo pre Podnadpis 2 je Stredné 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Telo 1 je pravidelné 14sp</string>
+    <string name="body_1">Písmo pre Telo správy 1 je Pravidelné 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Telo 2 je stredné 14sp</string>
+    <string name="body_2">Písmo pre Telo správy 2 je Stredné 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Popis je pravidelný 12sp</string>
+    <string name="caption">Písmo pre Popis je Pravidelné 12sp</string>
 
 </resources>

@@ -11,7 +11,7 @@
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">تم تحديد %s</string>
     <string name="app_modifiable_parameters">معلمات قابلة للتعديل</string>
-    <string name="app_right_accessory_view">طريقة عرض الملحق الأيمن</string>
+    <string name="app_right_accessory_view">طريقة عرض الملحقات اليمنى</string>
 
     <string name="app_style">نمط</string>
     <!-- describes an action, icon pressed -->
@@ -40,7 +40,7 @@
     <string name="app_bar_layout_navigation_icon_clicked">تم النقر فوق أيقونة التنقل.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">العلامة</string>
+    <string name="app_bar_layout_menu_flag">وضع علامة</string>
     <string name="app_bar_layout_menu_settings">الإعدادات</string>
     <string name="app_bar_layout_menu_search">بحث</string>
     <!-- UI Text that shows the type of scroll behavior -->
@@ -60,16 +60,16 @@
     <!-- UI label denoting layout style -->
     <string name="app_bar_layout_toggle_searchbar_sub_header">تبديل نمط تخطيط شريط البحث</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">إظهار كطريقة عرض الملحق</string>
-    <string name="app_bar_layout_searchbar_action_view_button">إظهار كطريقة عرض إجراء</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">إظهار كطريقة عرض ملحق</string>
+    <string name="app_bar_layout_searchbar_action_view_button">إظهار كطريقة عرض الإجراء</string>
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">التبديل بين النسق (إعادة إنشاء النشاط)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">تبديل النسق</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">عنصر</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">محتوى قابل للتمرير إضافي</string>
+    <string name="app_bar_layout_list_sub_header">محتوى إضافي قابل للتمرير</string>
 
     <!--AvatarView-->
     <!-- Style -->
@@ -87,19 +87,19 @@
     <!-- UI label to show maximum displayed avatars -->
     <string name="avatar_group_max_displayed_avatar">أقصى صورة أفاتار معروضة</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">تجاوز عدد الأفاتار</string>
+    <string name="avatar_group_overflow_avatar_count">تجاوز عدد صور الأفاتار</string>
     <!-- UI label to show border type -->
     <string name="avatar_group_border_type">نوع الحد</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">لن تتقيد مجموعة الأفاتار ذات مجموعة أفاتارCount المتجاوزة للحد الأقصى من الأفاتار المعروض.</string>
+    <string name="avatar_group_info">لن تلتزم مجموعة الأفاتار مع مجموعة OverflowAvatarCount بحد أقصى من الأفاتار المعروض.</string>
     <!-- UI label showing face stack type of avatar group -->
     <string name="avatar_group_face_stack">مكدس الوجه</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">كومة من الوجه</string>
+    <string name="avatar_group_face_pile">كومة الأوجه</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">تم النقر فوق تجاوز السعة</string>
+    <string name="avatar_group_overflow_clicked">تم النقر فوق تجاوز النص</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">تم النقر فوق AvatarView عند الفهرس %d</string>
+    <string name="avatar_group_avatar_clicked">تم النقر فوق AvatarView في الفهرس %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -120,33 +120,33 @@
     <string name="bottom_navigation_menu_item_team">فريق</string>
     <!-- Text for buttons -->
     <string name="bottom_navigation_toggle_labels_button">تبديل التسميات</string>
-    <string name="bottom_navigation_three_menu_items_button">إظهار ثلاثة عناصر قائمة</string>
+    <string name="bottom_navigation_three_menu_items_button">إظهار عناصر القائمة الثلاثة</string>
     <string name="bottom_navigation_four_menu_items_button">إظهار أربعة عناصر قائمة</string>
     <string name="bottom_navigation_five_menu_items_button">إظهار خمسة عناصر قائمة</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">التسميات %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">التسميات هي %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
     <string name="bottom_sheet">ورقة سفلي</string>
-    <string name="bottom_sheet_dialog">خط مائل لأسفل</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">إظهار مع عناصر بسطر واحد</string>
-    <string name="bottom_sheet_with_double_line_items">إظهار مع عناصر الخط المزدوج</string>
-    <string name="bottom_sheet_with_single_line_header">إظهار باستخدام رأس سطر واحد</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">إظهار مع رأس سطر مزدوج وقسمات</string>
+    <string name="bottom_sheet_with_single_line_items">إظهار بعناصر ذات سطر واحد</string>
+    <string name="bottom_sheet_with_double_line_items">إظهار مع عناصر سطر مزدوج</string>
+    <string name="bottom_sheet_with_single_line_header">إظهار مع رأس سطر واحد</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">إظهار برأس مزدوج الخطوط وبالفواصل</string>
     <string name="bottom_sheet_dialog_button">إظهار</string>
     <string name="drawer_content_desc_collapse_state">توسيع</string>
     <string name="drawer_content_desc_expand_state">تصغير</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">انقر فوق %s</string>
+    <string name="contextual_command_prompt_click_item">نقرة فوق %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">%s النقر الطويل</string>
+    <string name="contextual_command_prompt_long_click_item">نقرة طويلة فوق %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">انقر فوق تجاهل</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">إدراج عنصر</string>
     <!-- Text for button for updating an item-->
@@ -184,7 +184,7 @@
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">البدء</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">انتهاء</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">مساحة المجموعة</string>
     <!-- UI bar label denoting the space between items -->
@@ -194,7 +194,7 @@
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">العلامة</string>
+    <string name="bottom_sheet_item_flag_title">وضع علامة</string>
     <!--UI Label for user action clicked on item flag-->
     <string name="bottom_sheet_item_flag_toast">تم النقر فوق عنصر العلامة</string>
     <!--UI Label for item reply-->
@@ -204,7 +204,7 @@
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">إعادة توجيه</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">تم النقر فوق إعادة توجيه العنصر</string>
+    <string name="bottom_sheet_item_forward_toast">تم النقر فوق عنصر إعادة التوجيه</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">حذف</string>
     <!--UI Label for user action clicked on item delete-->
@@ -235,7 +235,7 @@
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">إدارة مكتبة الوسائط</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">إدارة العنصر الذي تم النقر فوقه</string>
+    <string name="bottom_sheet_item_manage_toast">تم النقر فوق إدارة العنصر</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">إجراءات البريد الإلكتروني</string>
@@ -243,7 +243,7 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">مستندات</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">آخر تحديث 2:14 م</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">تاريخ آخر تحديث 2:14 م</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">مشاركة</string>
     <!--UI Label for user action clicked on item share-->
@@ -278,13 +278,13 @@
     <!-- text for buttons -->
     <string name="button">زر</string>
     <string name="buttonbar">شريط الأزرار</string>
-    <string name="button_disabled">الزر معطل</string>
+    <string name="button_disabled">زر معطل</string>
     <string name="button_borderless">زر بلا حدود</string>
-    <string name="button_borderless_disabled">زر تعطيل بدون حدود</string>
+    <string name="button_borderless_disabled">زر معطّل بلا حدود</string>
     <string name="button_large">زر كبير</string>
-    <string name="button_large_disabled">الزر "معطل كبير"</string>
-    <string name="button_outlined">زر مخطط تفصيلي</string>
-    <string name="button_outlined_disabled">الزر "معطل مخطط تفصيلي"</string>
+    <string name="button_large_disabled">زر معطل كبير</string>
+    <string name="button_outlined">زر الموضح</string>
+    <string name="button_outlined_disabled">الزر المعطل الموضح</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">اختيار تاريخ</string>
@@ -293,17 +293,17 @@
     <!-- title -->
     <string name="date_time_picker_title">Datetimepicker</string>
     <!-- UI label -->
-    <string name="date_time_picker_single_date_title">تاريخ مفرد</string>
+    <string name="date_time_picker_single_date_title">تاريخ واحد</string>
     <!-- UI label -->
-    <string name="date_time_picker_date_picked_default">لم يتم انتقاء تاريخ</string>
+    <string name="date_time_picker_date_picked_default">لم يتم اختيار أي تاريخ</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">هل ترغب في إظهار "منتقي التاريخ"؟</string>
+    <string name="date_time_picker_date_button">إظهار منتقي التاريخ</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">إظهار منتقي التاريخ والوقت مع تحديد علامة تبويب التاريخ</string>
+    <string name="date_time_picker_calendar_date_time_button">إظهار منتقي وقت التاريخ مع تحديد علامة تبويب التاريخ</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">إظهار منتقي التاريخ والوقت مع تحديد علامة تبويب الوقت</string>
+    <string name="date_time_picker_date_time_calendar_button">إظهار منتقي وقت التاريخ مع تحديد علامة تبويب الوقت</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">إظهار منتقي التاريخ والوقت</string>
+    <string name="date_time_picker_date_time_button">إظهار منتقي وقت التاريخ</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">نطاق التاريخ</string>
     <!-- UI label showing start of the range-->
@@ -311,21 +311,21 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">الانتهاء:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">لم يتم انتقاء أي بدء</string>
+    <string name="date_time_picker_date_start_picked_default">لم يتم اختيار أي بدء</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">لم يتم انتقاء نهاية</string>
+    <string name="date_time_picker_date_end_picked_default">لم يتم انتقاء أي نهاية</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">تحديد تاريخ البدء</string>
     <!-- text for button that selects end date -->
     <string name="date_time_picker_date_end_button">تحديد تاريخ الانتهاء</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">نطاق التاريخ الزمني</string>
+    <string name="date_time_picker_date_time_range_title">نطاق وقت التاريخ</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">تحديد نطاق وقت التاريخ</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">إظهار مربع الحوار</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
@@ -333,17 +333,17 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">إظهار مربع حوار الدرج</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">مربع حوار بلا تلاشي سفلي</string>
+    <string name="no_fade_bottom_dialog_button">لا يوجد مربع حوار تلاشي أسفل</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">إظهار الدرج العلوي</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">مربع حوار عدم التلاشي العلوي</string>
+    <string name="no_fade_top_dialog_button">لا يوجد مربع حوار تلاشي علوي</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> إظهار مربع الحوار العلوي لعرض الارتساء</string>
     <!-- text for button that shows no title top dialog drawer -->
     <string name="no_title_top_dialog_button"> عدم إظهار مربع الحوار العلوي للعنوان</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> إظهار أسفل مربع الحوار العلوي للعنوان</string>
+    <string name="below_title_top_dialog_button"> إظهار مربع الحوار العلوي للعنوان السفلي</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">إظهار الدرج الأيمن</string>
     <!-- text for button that shows left drawer -->
@@ -351,77 +351,77 @@
 
     <!--ListItem-->
     <!-- Title -->
-    <string name="list_item_title">عنوان، نص أساسي</string>
+    <string name="list_item_title">العنوان، النص الأساسي</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">عنوان فرعي، نص ثانوي</string>
+    <string name="list_item_subtitle">العنوان الفرعي، نص ثانوي</string>
     <!-- secondary subtitle -->
-    <string name="list_item_secondary_subtitle">نص عنوان فرعي مخصص</string>
+    <string name="list_item_secondary_subtitle">نص العنوان الفرعي المخصص</string>
     <!-- Footer -->
     <string name="list_item_footer">تذييل الصفحة، نص ثالث</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">قائمة ذات سطر واحد مع نص رأس فرعي رمادي</string>
-    <string name="list_item_sub_header_two_line">قائمة ذات خطين</string>
-    <string name="list_item_sub_header_two_line_dense">قائمة ذات خطين ذات تباعد كثيف</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">قائمة بسطرين مع طريقة عرض العناوين الفرعية الثانوية المخصصة</string>
-    <string name="list_item_sub_header_three_line">قائمة مكونة من ثلاثة أسطر مع نص عنوان فرعي أسود</string>
-    <string name="list_item_sub_header_no_custom_views">سرد العناصر بدون طرق عرض مخصصة</string>
+    <string name="list_item_sub_header_single_line">قائمة من سطر واحد مع نص رأس فرعي رمادي</string>
+    <string name="list_item_sub_header_two_line">قائمة مكونة من سطرين</string>
+    <string name="list_item_sub_header_two_line_dense">قائمة ذات خطين مع تباعد كثيف</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">قائمة من سطرين مع طريقة عرض العناوين الفرعية الثانوية المخصصة</string>
+    <string name="list_item_sub_header_three_line">قائمة ثلاثية الأسطر مع نص رأس فرعي أسود</string>
+    <string name="list_item_sub_header_no_custom_views">سرد العناصر التي لا تحتوي على طرق عرض مخصصة</string>
     <string name="list_item_sub_header_large_header">سرد العناصر ذات طرق العرض المخصصة الكبيرة</string>
     <string name="list_item_sub_header_wrapped_text">سرد العناصر ذات النص الملتف</string>
-    <string name="list_item_sub_header_truncated_text">سرد العناصر ذات النص مقتطع</string>
+    <string name="list_item_sub_header_truncated_text">سرد العناصر ذات النص المقتطع</string>
     <string name="list_item_sub_header_custom_accessory_text">الإجراء</string>
-    <string name="list_item_truncation_middle">الاقتطاع الأوسط.</string>
+    <string name="list_item_truncation_middle">اقتطاع متوسط.</string>
     <string name="list_item_truncation_end">إنهاء الاقتطاع.</string>
     <string name="list_item_truncation_start">بدء الاقتطاع.</string>
     <string name="list_item_custom_text_view">قيمة</string>
-    <string name="list_item_click">لقد نقرت فوق عنصر القائمة.</string>
-    <string name="list_item_click_custom_accessory_view">لقد نقرت فوق طريقة عرض الملحق المخصص.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">لقد نقرت فوق طريقة عرض الملحقات المخصصة للرأس الفرعي.</string>
+    <string name="list_item_click">قمت بالنقر فوق عنصر القائمة.</string>
+    <string name="list_item_click_custom_accessory_view">قمت بالنقر فوق طريقة عرض الملحقات المخصصة.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">قمت بالنقر فوق طريقة عرض الملحقات المخصصة للرأس الفرعي.</string>
     <string name="list_item_more_options">خيارات إضافية</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">تحديد</string>
-    <string name="people_picker_select_deselect_example">تحديد</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">بلا</string>
     <string name="people_picker_delete_example">حذف</string>
-    <string name="people_picker_custom_persona_description">يظهر هذا المثال كيفية إنشاء كائن IPersona مخصص.</string>
-    <string name="people_picker_dialog_title_removed">لقد قمت بإزالة الشخصية:</string>
+    <string name="people_picker_custom_persona_description">يوضح هذا المثال كيفية إنشاء عنصر IPersona مخصص.</string>
+    <string name="people_picker_dialog_title_removed">لقد قمت بإزالة شخصية:</string>
     <string name="people_picker_dialog_title_added">لقد أضفت شخصية:</string>
     <string name="people_picker_drag_started">بدأ السحب</string>
     <string name="people_picker_drag_ended">انتهى السحب</string>
     <string name="people_picker_picked_personas_listener">مستمع الشخصيات</string>
-    <string name="people_picker_suggestions_listener">وحدة إصغاء الاقتراحات</string>
-    <string name="people_picker_persona_chip_click">لقد نقرت فوق %s</string>
+    <string name="people_picker_suggestions_listener">إصغاء الاقتراحات</string>
+    <string name="people_picker_persona_chip_click">قمت بالنقر فوق %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="zero">%1$s recipients</item>
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="two">%1$s recipients</item>
-        <item quantity="few">%1$s recipients</item>
-        <item quantity="many">%1$s recipients</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="zero">%1$s من المستلمين</item>
+        <item quantity="one">مستلم %1$s</item>
+        <item quantity="two">مستلمان %1$s</item>
+        <item quantity="few">%1$s مستلمين</item>
+        <item quantity="many">%1$s مستلماً</item>
+        <item quantity="other">%1$s مستلم</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">توسيع ورقة سفلي ثابتة</string>
-    <string name="collapse_persistent_sheet_button"> إخفاء ورقة سفلي ثابتة</string>
-    <string name="show_persistent_sheet_button"> إظهار ورقة سفلي ثابتة</string>
+    <string name="expand_bottom_sheet_button">توسيع ورقة سفلية ثابتة</string>
+    <string name="collapse_persistent_sheet_button"> إخفاء ورقة سفلية ثابتة</string>
+    <string name="show_persistent_sheet_button"> إظهار ورقة سفلية ثابتة</string>
     <string name="new_view">هذه طريقة عرض جديدة</string>
-    <string name="toggle_sheet_content">تبديل محتوى الصفحة السفلى</string>
+    <string name="toggle_sheet_content">تبديل محتوى الورقة السفلية</string>
     <string name="switch_to_custom_content">التبديل إلى محتوى مخصص</string>
-    <string name="one_line_content">محتوى سطر سفلي واحد</string>
+    <string name="one_line_content">محتوى ورقة سفلي سطر واحد</string>
     <string name="toggle_disable_all_items">تبديل تعطيل كافة العناصر</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">إضافة/إزالة طريقة عرض</string>
+    <string name="persistent_sheet_item_add_remove_view">إضافة/إزالة طريقة العرض</string>
     <string name="persistent_sheet_item_change_collapsed_height"> تغيير الارتفاع المطوي</string>
     <string name="persistent_sheet_item_create_new_folder_title">مجلد جديد</string>
     <string name="persistent_sheet_item_create_new_folder_toast">تم النقر فوق عنصر مجلد جديد</string>
     <string name="persistent_sheet_item_edit_title">تحرير</string>
-    <string name="persistent_sheet_item_edit_toast">تحرير العنصر الذي تم النقر فوقه</string>
+    <string name="persistent_sheet_item_edit_toast">تم النقر فوق تحرير العنصر</string>
     <string name="persistent_sheet_item_save_title">حفظ</string>
     <string name="persistent_sheet_item_save_toast">تم النقر فوق حفظ العنصر</string>
     <string name="persistent_sheet_item_zoom_in_title">تكبير</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> تم النقر فوق عنصر التكبير</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> تم النقر فوق عنصر التكبير/التصغير</string>
     <string name="persistent_sheet_item_zoom_out_title">تصغير</string>
     <string name="persistent_sheet_item_zoom_out_toast">تم النقر فوق عنصر التصغير</string>
 
@@ -456,33 +456,33 @@
     <string name="persona_footer">متوفر</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">Allan Munger</string>
-    <string name="persona_name_amanda_brady">هاون برادي</string>
+    <string name="persona_name_amanda_brady">أماندا برادي</string>
     <string name="persona_name_ashley_mccarthy">أشلي مكارثى</string>
     <string name="persona_name_carlos_slattery">سلام بيطار</string>
-    <string name="persona_name_carole_poland">ترنيم بولندا</string>
-    <string name="persona_name_cecil_folk">Cecil Folk</string>
-    <string name="persona_name_celeste_burton">سيلست بورتون</string>
-    <string name="persona_name_charlotte_waltson">شارلوت والتسون</string>
-    <string name="persona_name_colin_ballinger">ناكب كره هواء</string>
-    <string name="persona_name_daisy_phillips">زهرة Daisy Lips</string>
+    <string name="persona_name_carole_poland">كارول بولند</string>
+    <string name="persona_name_cecil_folk">سيسيل فولك</string>
+    <string name="persona_name_celeste_burton">سيلست بيرتون</string>
+    <string name="persona_name_charlotte_waltson">تشارلو والتسون</string>
+    <string name="persona_name_colin_ballinger">كولين بالينجر</string>
+    <string name="persona_name_daisy_phillips">دايسي فيليبس</string>
     <string name="persona_name_elliot_woodward">إليوت وودوارد</string>
     <string name="persona_name_elvia_atkins">إليا أتكينس</string>
-    <string name="persona_name_erik_nason">أريك ناسون</string>
-    <string name="persona_name_henry_brill">درية بريل</string>
-    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
-    <string name="persona_name_johnie_mcconnell">جوني مككونا</string>
+    <string name="persona_name_erik_nason">إيريك ناسون</string>
+    <string name="persona_name_henry_brill">جاكلين بريل</string>
+    <string name="persona_name_isaac_fielder">إيزاك فيلدر</string>
+    <string name="persona_name_johnie_mcconnell">جوني ماكونيل</string>
     <string name="persona_name_kat_larsson">كات لارسون</string>
-    <string name="persona_name_katri_ahokas">كاتري أهوكاس</string>
-    <string name="persona_name_kevin_sturgis">كيفن ستاريس</string>
-    <string name="persona_name_kristen_patterson">كريستن باترتسون</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">كيفين ستارجيس</string>
+    <string name="persona_name_kristen_patterson">كريستن باتيرسون</string>
     <string name="persona_name_lydia_bauer">ليديا باور</string>
-    <string name="persona_name_mauricio_august">Mauricio أغسطس</string>
+    <string name="persona_name_mauricio_august">ماوريسيو أغسطس</string>
     <string name="persona_name_miguel_garcia">ميغيل غارسيا</string>
-    <string name="persona_name_mona_kane">منى كاين</string>
-    <string name="persona_name_robin_counts">عدد أبو الحناء</string>
-    <string name="persona_name_robert_tolbert">روبيرت تول بيرت</string>
+    <string name="persona_name_mona_kane">منى كين</string>
+    <string name="persona_name_robin_counts">روبين كاونتس</string>
+    <string name="persona_name_robert_tolbert">روبيرت تولبيرت</string>
     <string name="persona_name_tim_deboer">تيم ديبور</string>
-    <string name="persona_name_wanda_howard">واندا هاون</string>
+    <string name="persona_name_wanda_howard">واندا هاورد</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">المصمم</string>
     <string name="persona_subtitle_engineer">مهندس</string>
@@ -490,22 +490,22 @@
     <string name="persona_subtitle_researcher">الباحث</string>
     <!-- UI labels -->
     <string name="persona_truncation">\ (مثال نص طويل لاختبار الاقتطاع)</string>
-    <string name="persona_view_description_xxlarge">أفاتار XXLarge مع ثلاثة أسطر من النص</string>
-    <string name="persona_view_description_large">أفاتار كبير مع سطرين من النص</string>
-    <string name="persona_view_description_small">أفاتار صغير بسطر واحد من النص</string>
-    <string name="people_picker_hint">بلا تلميحات معروضة</string>
+    <string name="persona_view_description_xxlarge">صورة XXLarge مع ثلاثة أسطر من النص</string>
+    <string name="persona_view_description_large">صورة أفاتار كبيرة مع سطرين من النص</string>
+    <string name="persona_view_description_small">صورة أفاتار صغيرة مع سطر واحد من النص</string>
+    <string name="people_picker_hint">بلا مع ظهور تلميح</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
     <string name="persona_chip_example_disabled">شريحة شخصية معطلة</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">خطأ في شريحة الشخصية</string>
+    <string name="persona_chip_example_error">شريحة شخصية الخطأ</string>
     <!-- UI label showing a persona chip with no close icon-->
     <string name="persona_chip_example_no_icon">شريحة شخصية بدون أيقونة إغلاق</string>
     <!-- UI label showing a basic persona chip -->
     <string name="persona_chip_example_basic">شريحة شخصية أساسية</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">لقد نقرت فوق شريحة شخصية محددة.</string>
+    <string name="persona_chip_example_click">قمت بالنقر فوق شريحة شخصية محددة.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -530,19 +530,19 @@
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">الإعلام خارج ساعات العمل</string>
+    <string name="popup_menu_item_notify_outside">إعلام خارج ساعات العمل</string>
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_inactive">الإعلام عندما يكون غير نشط على سطح المكتب</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">لقد نقرت فوق العنصر:</string>
+    <string name="popup_menu_item_clicked">قمت بالنقر فوق العنصر:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">قائمة بسيطة</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">القائمة البسيطة 2</string>
+    <string name="popup_menu_simple_duo">قائمة بسيطة2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">قائمة بعنصر واحد قابل للتحديد ومقسم</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">قائمة بكافة العناصر والأيقونات والنص الطويل القابل للتحديد</string>
+    <string name="popup_menu_all_check">قائمة تتضمن كافة العناصر والأيقونات والنص الطويل القابل للتحديد</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">إظهار</string>
 
@@ -563,7 +563,7 @@
     <!-- UI label showing a Indeterminate progress bar -->
     <string name="linear_progress_indeterminate_label">غير معروف</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">غير محدد</string>
+    <string name="linear_progress_determinate_label">تحديد</string>
 
 
     <!--Shared-->
@@ -577,9 +577,9 @@
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">رد اتصال الميكروفون</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">التصحيح التلقائي</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">تم ضغط الميكروفون</string>
+    <string name="searchbar_microphone_pressed">الميكروفون مضغوط</string>
     <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">تم الضغط على طريقة العرض اليمنى</string>
     <!-- Announces that keyboard search has been pressed -->
@@ -589,28 +589,28 @@
     <!-- UI label descriptions -->
     <string name="snackbar_action">الإجراء</string>
     <string name="snackbar_action_long">إجراء نص طويل</string>
-    <string name="snackbar_single_line">وجبة خفيفة بخط واحد</string>
+    <string name="snackbar_single_line">شريط الإعلامات بخط واحد</string>
     <string name="snackbar_multiline">هذا شريط وجبات خفيفة متعدد الأسطر. تم تعيين الحد الأقصى للسطرين، سيتم اقتطاع باقي النص.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">هذا شريط وجبة خفيفة للإعلانات. يستخدم للاتصال بميزات جديدة.</string>
-    <string name="snackbar_primary">هذا شريط وجبات خفيفة أساسي.</string>
-    <string name="snackbar_light">هذا شريط وجبة خفيفة.</string>
-    <string name="snackbar_warning">هذا شريط وجبة خفيفة تحذير.</string>
-    <string name="snackbar_danger">هذا شريط وجبة خفيفة خطر.</string>
+    <string name="snackbar_announcement">هذا شريط إعلامات للإعلان. يتم استخدامه لإبلاغ الميزات الجديدة.</string>
+    <string name="snackbar_primary">هذا شريط إعلامات الأساسي.</string>
+    <string name="snackbar_light">هذا شريط إعلامات فاتح.</string>
+    <string name="snackbar_warning">هذا شريط إعلام للتحذير.</string>
+    <string name="snackbar_danger">هذا شريط إعلامات عن الخطر.</string>
     <string name="snackbar_description_single_line">مدة قصيرة</string>
     <string name="snackbar_description_single_line_custom_view">مدة طويلة مع تقدم دائري كطريقة عرض مخصصة صغيرة</string>
     <string name="snackbar_description_single_line_action">مدة قصيرة مع إجراء</string>
-    <string name="snackbar_description_single_line_action_custom_view">مدة قصيرة مع إجراء وعرض مخصص متوسط</string>
+    <string name="snackbar_description_single_line_action_custom_view">مدة قصيرة مع الإجراء وعرض مخصص متوسط</string>
     <string name="snackbar_description_single_line_custom_text_color">مدة قصيرة مع لون نص مخصص</string>
     <string name="snackbar_description_multiline">مدة طويلة</string>
-    <string name="snackbar_description_multiline_custom_view">مدة طويلة مع عرض مخصص صغير</string>
-    <string name="snackbar_description_multiline_action">المدة غير المحددة مع تحديثات الإجراءات والنصوص</string>
-    <string name="snackbar_description_multiline_action_custom_view">مدة قصيرة مع إجراء وعرض مخصص متوسط</string>
+    <string name="snackbar_description_multiline_custom_view">مدة طويلة مع طريقة عرض مخصصة صغيرة</string>
+    <string name="snackbar_description_multiline_action">مدة غير محددة مع تحديثات الإجراءات والنصوص</string>
+    <string name="snackbar_description_multiline_action_custom_view">مدة قصيرة مع الإجراء وعرض مخصص متوسط</string>
     <string name="snackbar_description_multiline_action_long">مدة قصيرة مع نص إجراء طويل</string>
     <string name="snackbar_description_announcement">مدة قصيرة</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">تم تحديث هذا النص.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">إظهار شريط الوجبات الخفيفة</string>
+    <string name="snackbar_button_show">إظهار شريط الإعلامات</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">خط مفرد</string>
     <!-- UI Text denoting multi line snackbar -->
@@ -645,7 +645,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">أفقي</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(بلا نص)</string>
+    <string name="tabBar_no_text">لا يوجد نص</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">عناصر علامة التبويب</string>
 
@@ -657,65 +657,65 @@
     <string name="calculate_layouts">تحميل/حساب 100 تخطيط</string>
     <string name="template_list">قائمة القوالب</string>
     <string name="regular_list">قائمة عادية</string>
-    <string name="cell_example_title">خلية العنوان</string>
+    <string name="cell_example_title">العنوان: خلية</string>
     <string name="cell_example_description">الوصف: اضغط لتغيير الاتجاه</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">علامة تبويب قياسية مقطعان</string>
+    <string name="tab_standard_two_segment">علامة تبويب قياسية مقطع-2</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">علامة تبويب قياسية-مقطع 3</string>
+    <string name="tab_standard_three_segment">علامة تبويب قياسية 3-مقاطع</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">علامة تبويب قياسية مقطع 4</string>
+    <string name="tab_standard_four_segment">علامة تبويب قياسية 4-مقاطع</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">علامة تبويب قياسية مع جهاز النداء</string>
+    <string name="tab_standard_with_pager">علامة تبويب قياسية مع جهاز النّداء</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">تبديل علامة التبويب</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">علامة تبويب حبوب </string>
+    <string name="tab_pills">علامة تبويب الأقراص </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">اضغط للحصول على تعريف الأدوات</string>
+    <string name="tooltip_button">اضغط للحصول على تلميح الأدوات</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">اضغط للحصول على تعريف أدوات التقويم المخصص</string>
+    <string name="tooltip_calendar_demo_button">اضغط للحصول على تلميح أدوات التقويم المخصص</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">اضغط على تعريف أدوات الألوان المخصصة</string>
+    <string name="tooltip_custom_button">اضغط على تلميح أدوات الألوان المخصصة</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
     <string name="tooltip_center_button">اضغط لتجاهل تلميح الأدوات الداخلي</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">اضغط للحصول على تعريف أدوات العرض المخصص</string>
+    <string name="tooltip_custom_view">اضغط للحصول على تلميح أدوات العرض المخصص</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">تلميح الأدوات للألوان المخصصة العلوية</string>
+    <string name="tooltip_top_start_message">تلميح أدوات اللون المخصص العلوي</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">تلميح أداة الطرف العلوي مع إزاحة 10dpX</string>
+    <string name="tooltip_top_end_message">تلميح أداة النهاية العلوية مع إزاحةX 10dp</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_bottom_start_message">تلميح أدوات البدء السفلي</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">تلميح أداة الطرف السفلي مع إزاحة 10dp</string>
+    <string name="tooltip_bottom_end_message">تلميح أداة النهاية السفلية مع إزاحةY 10dp</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_center_message">تجاهل داخل تلميح الأدوات</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">تم تجاهل تلميح الأداة</string>
+    <string name="tooltip_dismiss_message">تم تجاهل تعريف الأدوات</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">العنوان هو Light 28sp</string>
+    <string name="headline">العنوان فاتح 28 ملعقة</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">العنوان 1 متوسط 20sp</string>
+    <string name="title_1">العنوان 1 هو متوسط 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
     <string name="title_2">العنوان 2 هو 20sp عادي</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">العنوان 18 ملعقة عادية</string>
+    <string name="heading">العنوان هو 18sp عادي</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
     <string name="subheading_1">العنوان الفرعي 1 هو 16sp عادي</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">العنوان الفرعي 2 متوسط 16sp</string>
+    <string name="subheading_2">العنوان الفرعي 2 هو متوسط 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
     <string name="body_1">النص الأساسي 1 هو 14sp عادي</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Body 2 is Medium 14sp</string>
+    <string name="body_2">النص الأساسي 2 متوسط 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">التسمية التوضيحية عادية ب 12sp</string>
+    <string name="caption">التسمية التوضيحية عادية 12sp</string>
 
 </resources>

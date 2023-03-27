@@ -13,32 +13,32 @@
     <string name="people_picker_search_progress">Söker …</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s har lagts till</string>
-    <string name="people_picker_accessibility_persona_removed">%s borttagen</string>
-    <string name="people_picker_accessibility_replaced">%s ersatt,</string>
+    <string name="people_picker_accessibility_default_hint">Ange ett namn eller en e-postadress</string>
+    <string name="people_picker_accessibility_persona_added">%s lagts till</string>
+    <string name="people_picker_accessibility_persona_removed">%s har tagits bort</string>
+    <string name="people_picker_accessibility_replaced">%s har ersatts,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">Klicka</string>
     <string name="people_picker_accessibility_delete_persona">Ta bort</string>
     <string name="people_picker_accessibility_deselect_persona">Avmarkera</string>
     <string name="people_picker_accessibility_select_persona">Välj</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Klickade %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Avmarkerad %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Klickade på %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Avmarkerade %s</string>
     <string name="people_picker_accessibility_selected_persona">Vald %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, kommer aktiveringen att avmarkeras</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, kommer aktiveringen att ta bort</string>
-    <string name="people_picker_accessibility_click_selected_persona">, klickar aktiveringen på</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, Aktivering avmarkerar</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Aktivering tar bort</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Aktivering klickar på</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Förslagslista öppnades med %s person</item>
+        <item quantity="other">Förslagslista öppnades med %s personer</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
         <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="other">%s personer</item>
     </plurals>
 </resources>

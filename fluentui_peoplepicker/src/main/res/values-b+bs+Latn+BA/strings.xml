@@ -33,14 +33,14 @@
     <string name="people_picker_accessibility_click_selected_persona">, Aktiviranje će kliknuti</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="few">Suggestions list opened with %s people</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Spisak prijedloga otvoren je s %s osobom</item>
+        <item quantity="few">Spisak prijedloga otvoren je sa sljedećim brojem osoba: %s</item>
+        <item quantity="other">Spisak prijedloga otvoren je sa sljedećim brojem osoba: %s</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="few">%s people</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s osoba</item>
+        <item quantity="few">%s osobe</item>
+        <item quantity="other">%s osobe</item>
     </plurals>
 </resources>

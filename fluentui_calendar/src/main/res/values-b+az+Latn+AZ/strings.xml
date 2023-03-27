@@ -1,140 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
-
 <resources>
-
-    <!-- weekday initials -->
-    <!--Initial that represents the day Monday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="monday_initial" comment="initial for monday">BE</string>
-    <!--Initial that represents the day Tuesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="tuesday_initial" comment="initial for tuesday">ÇA</string>
-    <!--Initial that represents the day Wednesday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="wednesday_initial" comment="initial for wednesday">Ç</string>
-    <!--Initial that represents the day Thursday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="thursday_initial" comment="initial for thursday">CA</string>
-    <!--Initial that represents the day Friday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="friday_initial" comment="initial for friday">C</string>
-    <!--Initial that represents the day Saturday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="saturday_initial" comment="initial for saturday">Ş</string>
-    <!--Initial that represents the day Sunday. For English this should be the first letter,
-    but for other languages like Russian, it might be two or more letters.-->
-    <string name="sunday_initial" comment="initial for sunday">B</string>
-
-    <!-- accessibility -->
-    <string name="accessibility_goto_next_week">Növbəti həftəyə keçin</string>
-    <string name="accessibility_goto_previous_week">Əvvəlki həftəyə keçin</string>
-    <string name="accessibility_today">bu gün</string>
-    <string name="accessibility_selected">Seçilmişlər</string>
-
-    <!-- *** Shared *** -->
-    <string name="done">Hazırdır</string>
-
-    <!-- *** CalendarView *** -->
-    <string name="date_time">%1$s, %2$s</string>
-    <string name="today">Bu gün</string>
-    <string name="tomorrow">Sabah</string>
-    <string name="yesterday">Dünən</string>
-
-    <!-- *** TimePicker *** -->
-    <!--date picker tab title for start time range-->
-    <string name="date_time_picker_start_time">Başlama vaxtı</string>
-    <!--date picker tab title for end time range-->
-    <string name="date_time_picker_end_time">Bitmə vaxtı</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_time_picker_start_date">Başlama tarixi</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_time_picker_end_date">Bitmə tarixi</string>
-    <!--date picker dialog title for time selection-->
-    <string name="date_time_picker_choose_time">Vaxt Seçin</string>
-    <!--date picker dialog title for date selection-->
-    <string name="date_time_picker_choose_date">Tarix Seçin</string>
-
-    <!--accessibility-->
-    <!--Announcement for date time picker-->
-    <string name="date_time_picker_accessibility_dialog_title">Tarix və Vaxt Seçicisi</string>
-    <!--Announcement for date picker-->
-    <string name="date_picker_accessibility_dialog_title">Tarix Seçicisi</string>
-    <!--Announcement for date time picker range-->
-    <string name="date_time_picker_range_accessibility_dialog_title">Tarix Vaxt Seçicisi Diapazonu</string>
-    <!--Announcement for date picker range-->
-    <string name="date_picker_range_accessibility_dialog_title">Tarix Seçicisi Diapazonu</string>
-    <!--date time picker tab title for start time range-->
-    <string name="date_time_picker_accessiblility_start_time">Başlama vaxtı tab-vərəqəsi</string>
-    <!--date time picker tab title for end time range-->
-    <string name="date_time_picker_accessiblility_end_time">Bitmə vaxtı tab-vərəqəsi</string>
-    <!--date picker tab title for start date range-->
-    <string name="date_picker_accessiblility_start_date">Başlama tarixi tab-vərəqəsi</string>
-    <!--date picker tab title for end date range-->
-    <string name="date_picker_accessiblility_end_date">Bitmə tarixi tab-vərəqəsi</string>
-    <!--date time picker dialog close button-->
-    <string name="date_time_picker_accessibility_close_dialog_button">Dialoqu bağla</string>
-    <!--date number picker month increment button-->
-    <string name="date_picker_accessibility_increment_month_button">Artım ayı</string>
-    <!-- date time picker click action next month announcement-->
-    <string name="date_picker_accessibility_next_month_click_action">növbəti ayı seçin</string>
-    <!--date number picker month decrement button-->
-    <string name="date_picker_accessibility_decrement_month_button">Azalma ayı</string>
-    <!-- date time picker click action previous month announcement-->
-    <string name="date_picker_accessibility_previous_month_click_action">əvvəlki ayı seçin</string>
-    <!--date number picker day increment button-->
-    <string name="date_picker_accessibility_increment_day_button">Artım günü</string>
-    <!-- date time picker click action next day announcement-->
-    <string name="date_picker_accessibility_next_day_click_action">növbəti günü seçin</string>
-    <!--date number picker day decrement button-->
-    <string name="date_picker_accessibility_decrement_day_button">Azalma günü</string>
-    <!-- date time picker click action previous day announcement-->
-    <string name="date_picker_accessibility_previous_day_click_action">əvvəlki günü seçin</string>
-    <!--date number picker year increment button-->
-    <string name="date_picker_accessibility_increment_year_button">Artım ili</string>
-    <!-- date time picker click action next year announcement-->
-    <string name="date_picker_accessibility_next_year_click_action">növbəti ili seçin</string>
-    <!--date number picker year decrement button-->
-    <string name="date_picker_accessibility_decrement_year_button">Azalma ili</string>
-    <!-- date time picker click action previous year announcement-->
-    <string name="date_picker_accessibility_previous_year_click_action">əvvəlki ili seçin</string>
-    <!--date time number picker date increment button-->
-    <string name="date_time_picker_accessibility_increment_date_button">Artım tarixi</string>
-    <!-- date time picker click action next date announcement-->
-    <string name="date_picker_accessibility_next_date_click_action">növbəti tarixi seçin</string>
-    <!--date time number picker date decrement button-->
-    <string name="date_time_picker_accessibility_decrement_date_button">Azalma tarixi</string>
-    <!-- date time picker click action previous date announcement-->
-    <string name="date_picker_accessibility_previous_date_click_action">əvvəlki tarixi seçin</string>
-    <!--date time number picker hour increment button-->
-    <string name="date_time_picker_accessibility_increment_hour_button">Artım saatı</string>
-    <!-- date time picker click action next hour announcement-->
-    <string name="date_picker_accessibility_next_hour_click_action">növbəti saatı seçin</string>
-    <!--date time number picker hour decrement button-->
-    <string name="date_time_picker_accessibility_decrement_hour_button">Azalma saatı</string>
-    <!-- date time picker click action previous hour announcement-->
-    <string name="date_picker_accessibility_previous_hour_click_action">əvvəlki saatı seçin</string>
-    <!--date time number picker minute increment button-->
-    <string name="date_time_picker_accessibility_increment_minute_button">Artım dəqiqəsi</string>
-    <!-- date time picker click action next minute announcement-->
-    <string name="date_picker_accessibility_next_minute_click_action">növbəti dəqiqəni seçin</string>
-    <!--date time number picker minute decrement button-->
-    <string name="date_time_picker_accessibility_decrement_minute_button">Azalma dəqiqəsi</string>
-    <!-- date time picker click action previous minute announcement-->
-    <string name="date_picker_accessibility_previous_minute_click_action">əvvəlki dəqiqəni seçin</string>
-    <!--date time number picker period (am/pm) toggle button-->
-    <string name="date_time_picker_accessibility_period_toggle_button">AM PM müddətini dəyişdir</string>
-    <!--date time number picker click action period (am/pm) announcement-->
-    <string name="date_time_picker_accessibility_period_toggle_click_action">AM PM müddətini dəyişdir</string>
-    <!--Announces the selected date and/or time-->
-    <string name="date_time_picker_accessibility_selected_date">%s seçildi</string>
-
-    <!-- *** Calendar *** -->
-
-    <!--accessibility-->
-    <!--Describes the action used to select calendar item-->
-    <string name="calendar_adapter_accessibility_item_selected">seçildi</string>
+  <string name="monday_initial">BE</string>
+  <string name="tuesday_initial">ÇA</string>
+  <string name="wednesday_initial">Ç</string>
+  <string name="thursday_initial">CA</string>
+  <string name="friday_initial">C</string>
+  <string name="saturday_initial">Ş</string>
+  <string name="sunday_initial">B</string>
+  <string name="accessibility_goto_next_week">Növbəti həftəyə keçin</string>
+  <string name="accessibility_goto_previous_week">Əvvəlki həftəyə keçin</string>
+  <string name="accessibility_today">bu gün</string>
+  <string name="accessibility_selected">Seçilmişlər</string>
+  <string name="done">Hazırdır</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Bu gün</string>
+  <string name="tomorrow">Sabah</string>
+  <string name="yesterday">Dünən</string>
+  <string name="date_time_picker_start_time">Başlama vaxtı</string>
+  <string name="date_time_picker_end_time">Bitmə vaxtı</string>
+  <string name="date_time_picker_start_date">Başlama tarixi</string>
+  <string name="date_time_picker_end_date">Bitmə tarixi</string>
+  <string name="date_time_picker_choose_time">Vaxt Seçin</string>
+  <string name="date_time_picker_choose_date">Tarix Seçin</string>
+  <string name="date_time_picker_accessibility_dialog_title">Tarix və Vaxt Seçicisi</string>
+  <string name="date_picker_accessibility_dialog_title">Tarix Seçicisi</string>
+  <string name="date_time_picker_range_accessibility_dialog_title">Tarix Vaxt Seçicisi Diapazonu</string>
+  <string name="date_picker_range_accessibility_dialog_title">Tarix Seçicisi Diapazonu</string>
+  <string name="date_time_picker_accessiblility_start_time">Başlama vaxtı tab-vərəqəsi</string>
+  <string name="date_time_picker_accessiblility_end_time">Bitmə vaxtı tab-vərəqəsi</string>
+  <string name="date_picker_accessiblility_start_date">Başlama tarixi tab-vərəqəsi</string>
+  <string name="date_picker_accessiblility_end_date">Bitmə tarixi tab-vərəqəsi</string>
+  <string name="date_time_picker_accessibility_close_dialog_button">Dialoqu bağla</string>
+  <string name="date_picker_accessibility_increment_month_button">Artım ayı</string>
+  <string name="date_picker_accessibility_next_month_click_action">növbəti ayı seçin</string>
+  <string name="date_picker_accessibility_decrement_month_button">Azalma ayı</string>
+  <string name="date_picker_accessibility_previous_month_click_action">əvvəlki ayı seçin</string>
+  <string name="date_picker_accessibility_increment_day_button">Artım günü</string>
+  <string name="date_picker_accessibility_next_day_click_action">növbəti günü seçin</string>
+  <string name="date_picker_accessibility_decrement_day_button">Azalma günü</string>
+  <string name="date_picker_accessibility_previous_day_click_action">əvvəlki günü seçin</string>
+  <string name="date_picker_accessibility_increment_year_button">Artım ili</string>
+  <string name="date_picker_accessibility_next_year_click_action">növbəti ili seçin</string>
+  <string name="date_picker_accessibility_decrement_year_button">Azalma ili</string>
+  <string name="date_picker_accessibility_previous_year_click_action">əvvəlki ili seçin</string>
+  <string name="date_time_picker_accessibility_increment_date_button">Artım tarixi</string>
+  <string name="date_picker_accessibility_next_date_click_action">növbəti tarixi seçin</string>
+  <string name="date_time_picker_accessibility_decrement_date_button">Azalma tarixi</string>
+  <string name="date_picker_accessibility_previous_date_click_action">əvvəlki tarixi seçin</string>
+  <string name="date_time_picker_accessibility_increment_hour_button">Artım saatı</string>
+  <string name="date_picker_accessibility_next_hour_click_action">növbəti saatı seçin</string>
+  <string name="date_time_picker_accessibility_decrement_hour_button">Azalma saatı</string>
+  <string name="date_picker_accessibility_previous_hour_click_action">əvvəlki saatı seçin</string>
+  <string name="date_time_picker_accessibility_increment_minute_button">Artım dəqiqəsi</string>
+  <string name="date_picker_accessibility_next_minute_click_action">növbəti dəqiqəni seçin</string>
+  <string name="date_time_picker_accessibility_decrement_minute_button">Azalma dəqiqəsi</string>
+  <string name="date_picker_accessibility_previous_minute_click_action">əvvəlki dəqiqəni seçin</string>
+  <string name="date_time_picker_accessibility_period_toggle_button">AM PM müddətini dəyişdir</string>
+  <string name="date_time_picker_accessibility_period_toggle_click_action">AM PM müddətini dəyişdir</string>
+  <string name="date_time_picker_accessibility_selected_date">%s seçildi</string>
+  <string name="calendar_adapter_accessibility_item_selected">seçildi</string>
 </resources>

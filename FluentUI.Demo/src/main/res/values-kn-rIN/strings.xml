@@ -6,41 +6,41 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">ನಿರರ್ಗಳವಾಗಿ ಈ ಡೆಮೊ</string>
-    <string name="app_title">ನಿರರ್ಗಳವಾಗಿ</string>
+    <string name="app_name">Fluent UI ಡೆಮೋ</string>
+    <string name="app_title">Fluent UI</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">%s ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
-    <string name="app_modifiable_parameters">ಮೋದಿಫೈಡ್ ಪ್ಯಾರಾಮೀಟರ್</string>
-    <string name="app_right_accessory_view">ಬಲ ಅಕ್ಸೆಸೊರಿ ವೀಕ್ಷಣೆ</string>
+    <string name="app_modifiable_parameters">ಮಾರ್ಪಡಿಸಬಹುದಾದ ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು</string>
+    <string name="app_right_accessory_view">ಬಲ ಉಪಕರಣ ವೀಕ್ಷಣೆ</string>
 
     <string name="app_style">ಶೈಲಿ</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">ಐಕಾನ್ ಒತ್ತಿ</string>
+    <string name="app_icon_pressed">ಐಕಾನ್ ಒತ್ತಲಾಗಿದೆ</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
     <string name="actionbar_start_button">ಡೆಮೋ ಪ್ರಾರಂಭಿಸಿ</string>
     <!-- Texts for radio buttons -->
-    <string name="actionbar_carousel_radio_label">ಗಿರಗಟ್ಟೆ</string>
+    <string name="actionbar_carousel_radio_label">ಕರೋಸಲ್</string>
     <string name="actionbar_icon_radio_label">ಐಕಾನ್</string>
     <string name="actionbar_basic_radio_label">ಸಾಮಾನ್ಯ</string>
     <string name="actionbar_position_bottom_radio_label">ಕೆಳಗಡೆ</string>
     <string name="actionbar_position_top_radio_label">ಮೇಲೆ</string>
 
     <!--UI Text view label denoting type of action bar -->
-    <string name="actionbar_type_heading">ಪಟ್ಟಿ ಪ್ರಕಾರ</string>
+    <string name="actionbar_type_heading">ActionBar ಪ್ರಕಾರ</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">ಪಟ್ಟಿ ಸ್ಥಾನ</string>
+    <string name="actionbar_position_heading">ActionBar ಸ್ಥಾನ</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">ಅಪ್ಪುಪಟ್ಟಿ ಶೈಲಿ</string>
+    <string name="app_bar_style">AppBar ಶೈಲಿ</string>
     <string name="app_bar_subtitle">ಉಪಶೀರ್ಷಿಕೆ</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">ನ್ಯಾವಿಗೇಶನ್ ಐಕಾನ್ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">ಫ್ಲ್ಯಾಗ್ ಮಾಡು</string>
+    <string name="app_bar_layout_menu_flag">ಫ್ಲ್ಯಾಗ್</string>
     <string name="app_bar_layout_menu_settings">ಸೆಟ್ಟಿಂಗ್‌ಗಳು</string>
     <string name="app_bar_layout_menu_search">ಶೋಧಿಸಿ</string>
     <!-- UI Text that shows the type of scroll behavior -->
@@ -48,24 +48,24 @@
     <!-- Text for button that toggles the scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_button">ಸ್ಕ್ರಾಲ್ ನಡವಳಿಕೆಯನ್ನು ಟಾಗಲ್ ಮಾಡಿ</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">ವಿಹಾರ ವಿಹಾರ ಐಕಾನ್</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">ನ್ಯಾವಿಗೇಶನ್ ಐಕಾನ್ ಟಾಗಲ್ ಮಾಡಿ</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">ಅವತಾರ್ ತೋರಿಸು</string>
+    <string name="app_bar_layout_show_avatar_button">ಅವತಾರ್ ತೋರಿಸಿ</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">ಹಿಂದಿನ ಐಕಾನ್ ತೋರಿಸು</string>
+    <string name="app_bar_layout_show_back_icon_button">ಹಿಂದಿನ ಐಕಾನ್ ತೋರಿಸಿ</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">ಐಕಾನ್ ಮರೆಮಾಡಿ</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">ಐಕಾನ್ ತೋರಿಸಿ</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">ಶೋಧದ ಲೇಔಟ್ ಶೈಲಿಯನ್ನು ಟಾಗಲ್ ಮಾಡಿ</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">ಶೋಧಪಟ್ಟಿ ಲೇಔಟ್ ಶೈಲಿಯನ್ನು ಟಾಗಲ್ ಮಾಡಿ</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">ಅಕ್ಸೆಸೊರಿ ವೀಕ್ಷಣೆಯಾಗಿ ತೋರಿಸಿ</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">ಉಪಕರಣ ವೀಕ್ಷಣೆಯಾಗಿ ತೋರಿಸಿ</string>
     <string name="app_bar_layout_searchbar_action_view_button">ಕ್ರಿಯೆ ವೀಕ್ಷಣೆಯಾಗಿ ತೋರಿಸಿ</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">ಥೀಮ್ ಗಳ ನಡುವೆ ಟಾಗಲ್ ಮಾಡಿ (ಕ್ರಿಯಾಶೀಲತೆಯ ಚಟುವಟಿಕೆ)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">ಥೀಮ್‌ಗಳ ನಡುವೆ ಟಾಗಲ್ ಮಾಡಿ (ಚಟುವಟಿಕೆಯನ್ನು ಮರುಸೃಷ್ಟಿಸುತ್ತದೆ)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">ಥೀಮ್ ಟಾಗಲ್ ಮಾಡಿ</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">ಐಟಂ</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -73,7 +73,7 @@
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">ವೃತ್ತ ಶೈಲಿ</string>
+    <string name="avatar_style_circle">ವೃತ್ತಾಕರದ ಶೈಲಿಗಳು</string>
     <string name="avatar_style_square">ಚೌಕ ಶೈಲಿ</string>
     <!-- Sizes -->
     <string name="avatar_size_xxlarge">XXLarge</string>
@@ -81,7 +81,7 @@
     <string name="avatar_size_large">ದೊಡ್ಡದು</string>
     <string name="avatar_size_medium">ಮಧ್ಯಮ</string>
     <string name="avatar_size_small">ಚಿಕ್ಕದು</string>
-    <string name="avatar_size_xsmall">Xಚಿಕ್ಕದಾಗಿದೆ</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -89,21 +89,21 @@
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">ಅವತಾರ್ ಎಣಿಕೆ ಓವರ್ ಫ್ಲೋ</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">ಅಂಚು ಪ್ರಕಾರ:</string>
+    <string name="avatar_group_border_type">ಅಂಚು ಪ್ರಕಾರ</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">ಮೇಲ್ಮುಖ ಆಕೌಂಟ್ ಸೆಟ್ ಹೊಂದಿರುವ ಅವತಾರ್ ಗುಂಪು ಗರಿಷ್ಠ ಪ್ರದರ್ಶಿತ ಅವತಾರ್ ಗೆ ಅಂಟಿಕೊಳ್ಳುವುದಿಲ್ಲ.</string>
+    <string name="avatar_group_info">‌OverflowAvatarCount ಸೆಟ್ ಹೊಂದಿರುವ ಅವತಾರ್ ಗುಂಪು ಗರಿಷ್ಠ ಪ್ರದರ್ಶಿತ ಅವತಾರಕ್ಕೆ ಬದ್ಧವಾಗಿರುವುದಿಲ್ಲ.</string>
     <!-- UI label showing face stack type of avatar group -->
     <string name="avatar_group_face_stack">ಮುಖ ಸ್ಟ್ಯಾಕ್</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">ಮುಖ ಪೈಲ್</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">ಓವರ್ ಫ್ಲೋ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="avatar_group_overflow_clicked">ಓವರ್‌ಫ್ಲೋ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">ಪದಸೂಚಿ %d ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="avatar_group_avatar_clicked">ಪದಸೂಚಿ %d ನಲ್ಲಿ AvatarView ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
-    <string name="badge_notification_badge">Notification Badge</string>
+    <string name="badge_notification_badge">ಅಧಿಸೂಚನೆ ಬ್ಯಾಡ್ಜ್</string>
     <!--UI Label for dot notification -->
     <string name="badge_notification_dot">ಡಾಟ್</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
@@ -119,24 +119,24 @@
     <string name="bottom_navigation_menu_item_calendar">ಕ್ಯಾಲೆಂಡರ್</string>
     <string name="bottom_navigation_menu_item_team">ತಂಡ</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">ಲೇಬಲ್ ಗಳನ್ನು ಟಾಗಲ್ ಮಾಡಿ</string>
+    <string name="bottom_navigation_toggle_labels_button">ಲೇಬಲ್‌ಗಳನ್ನು ಟಾಗಲ್ ಮಾಡಿ</string>
     <string name="bottom_navigation_three_menu_items_button">ಮೂರು ಮೆನು ಐಟಂಗಳನ್ನು ತೋರಿಸಿ</string>
     <string name="bottom_navigation_four_menu_items_button">ನಾಲ್ಕು ಮೆನು ಐಟಂಗಳನ್ನು ತೋರಿಸಿ</string>
     <string name="bottom_navigation_five_menu_items_button">ಐದು ಮೆನು ಐಟಂಗಳನ್ನು ತೋರಿಸಿ</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">ಲೇಬಲ್ ಗಳನ್ನು %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">ಲೇಬಲ್‌ಗಳು %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">ಬಾಟಮೊಹಾಳೆ</string>
-    <string name="bottom_sheet_dialog">ಬೊಟ್ಟು ಸಂವಾದ</string>
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">ಏಕ ಸಾಲು ಐಟಂಗಳನ್ನು ತೋರಿಸಿ</string>
-    <string name="bottom_sheet_with_double_line_items">ಎರಡು ಸಾಲು ಐಟಂಗಳನ್ನು ತೋರಿಸಿ</string>
-    <string name="bottom_sheet_with_single_line_header">ಏಕ ಸಾಲು ಶಿರೋಲೇಖ ತೋರಿಸಿ</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">ಎರಡು ಸಾಲಿನ ಶಿರೋಲೇಖ ಮತ್ತು ಡಿವೈಎಸ್ಪಿ ಗಳೊಂದಿಗೆ ತೋರಿಸಿ</string>
-    <string name="bottom_sheet_dialog_button">ತೋರಿಸು</string>
+    <string name="bottom_sheet_with_double_line_items">ಎರಡು ಸಾಲು ಐಟಂಗಳೊಂದಿಗೆ ತೋರಿಸಿ</string>
+    <string name="bottom_sheet_with_single_line_header">ಏಕ ಸಾಲು ಶಿರೋಲೇಖವನ್ನು ತೋರಿಸಿ</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">ಎರಡು ಸಾಲಿನ ಶಿರೋಲೇಖ ಮತ್ತು ಡಿವೈಡರ್‌ಗಳೊಂದಿಗೆ ತೋರಿಸಿ</string>
+    <string name="bottom_sheet_dialog_button">ತೋರಿಸಿ</string>
     <string name="drawer_content_desc_collapse_state">ವಿಸ್ತರಿಸಿ</string>
     <string name="drawer_content_desc_expand_state">ಚಿಕ್ಕದಾಗಿಸಿ</string>
 
@@ -146,11 +146,11 @@
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">%s ದೀರ್ಘ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">ವಜಾಗೊಳಿಸಿ ಕ್ಲಿಕ್ ಮಾಡಿ</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">ಐಟಂ ಸೇರಿಸಿ</string>
     <!-- Text for button for updating an item-->
-    <string name="contextual_command_update_item">ಐಟಂಅನ್ನು ನವೀಕರಿಸಿ</string>
+    <string name="contextual_command_update_item">ಐಟಂ ಅನ್ನು ನವೀಕರಿಸಿ</string>
     <!-- Announces dismiss action -->
     <string name="contextual_command_accessibility_dismiss">ವಜಾಗೊಳಿಸಿ</string>
     <!-- Announces add action -->
@@ -164,7 +164,7 @@
     <!-- Announces undeline action -->
     <string name="contextual_command_accessibility_underline">ಅಡಿಗೆರೆ</string>
     <!-- Announces strikethrough action -->
-    <string name="contextual_command_accessibility_strikethrough">ಹೊಡೆದುಹಾಕಿ</string>
+    <string name="contextual_command_accessibility_strikethrough">ತೊಡೆದುಹಾಕಿ</string>
     <!-- Announces undo action -->
     <string name="contextual_command_accessibility_undo">ರದ್ದುಮಾಡಿ</string>
     <!-- Announces redo action -->
@@ -176,7 +176,7 @@
     <!-- Announces link action -->
     <string name="contextual_command_accessibility_link">ಲಿಂಕ್</string>
     <!-- UI Label denoting item updating -->
-    <string name="contextual_command_bar_item_update_title">ವಸ್ತುವನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ</string>
+    <string name="contextual_command_bar_item_update_title">ಐಟಂ ಅನ್ನು ನವೀಕರಿಸಲಾಗುತ್ತಿದೆ</string>
     <!-- UI Label denoting spacing -->
     <string name="contextual_command_bar_space_title">ಅಂತರಿಸುವಿಕೆ</string>
     <!-- UI Label denoting dismiss position -->
@@ -184,31 +184,31 @@
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">ಪ್ರಾರಂಭಿಸಿ</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">ಮುಕ್ತಾಯ</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">ಗುಂಪು ಸ್ಥಳಾವಕಾಶ</string>
+    <string name="contextual_command_bar_group_space_title">ಗುಂಪು ಸ್ಥಳ</string>
     <!-- UI bar label denoting the space between items -->
     <string name="contextual_command_bar_item_space_title">ಐಟಂನ ಸ್ಥಳ</string>
     <!-- UI bar label denoting the space in number value dp's -->
-    <string name="contextual_command_bar_space_value">%d ಡಿಪಿ</string>
+    <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">ಫ್ಲ್ಯಾಗ್ ಮಾಡು</string>
+    <string name="bottom_sheet_item_flag_title">ಫ್ಲ್ಯಾಗ್</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">ಫ್ಲ್ಯಾಗ್ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_flag_toast">ಫ್ಲ್ಯಾಗ್ ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">ಪ್ರತ್ಯುತ್ತರಿಸಿ</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">ಪ್ರತ್ಯುತ್ತರ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_reply_toast">ಪ್ರತ್ಯುತ್ತರ ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">ಫಾರ್ವರ್ಡ್</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">ಮುನ್ನೋಟ ಐಟಂಗೆ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_forward_toast">ಮುನ್ನೋಟ ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">ಅಳಿಸಿ</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">ಕ್ಲಿಕ್ ಮಾಡಿದ ಐಟಂಅನ್ನು ಅಳಿಸು</string>
+    <string name="bottom_sheet_item_delete_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಅಳಿಸಿ</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">ಅವತಾರ್</string>
     <!--Double line items-->
@@ -217,25 +217,25 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">ಫೋಟೋ ತೆಗೆಯಿರಿ</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">ಕ್ಯಾಮೆರಾ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_camera_toast">ಕ್ಯಾಮರಾ ಐಟಂ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">ಗ್ಯಾಲರಿ</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">ನಿಮ್ಮ ಫೋಟೋಗಳನ್ನು ವೀಕ್ಷಿಸಿ</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">ಗ್ಯಾಲರಿ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_gallery_toast">ಗ್ಯಾಲರಿ ಐಟಂ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">ವೀಡಿಯೋಗಳು</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">ನಿಮ್ಮ ವೀಡಿಯೋಗಳನ್ನು ಪ್ಲೇ ಮಾಡಿ</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">ವೀಡಿಯೋಗಳ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_videos_toast">ವೀಡಿಯೋಗಳ ಐಟಂ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">ನಿರ್ವಹಿಸಿ</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">ನಿಮ್ಮ ಮಾಧ್ಯಮ ಲೈಬ್ರರಿಯನ್ನು ನಿರ್ವಹಿಸಿ</string>
+    <string name="bottom_sheet_item_manage_subtitle">ನಿಮ್ಮ ಮಾಧ್ಯಮ ಲೈಬ್ರರಿ ಬಳಸಿ</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">ಕ್ಲಿಕ್ ಮಾಡಿದ ಐಟಂಅನ್ನು ನಿರ್ವಹಿಸಿ</string>
+    <string name="bottom_sheet_item_manage_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ನಿರ್ವಹಿಸಿ</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">ಇಮೇಲ್ ಕ್ರಿಯೆಗಳು</string>
@@ -247,63 +247,63 @@
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">ಹಂಚಿಕೊಳ್ಳಿ</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">ಹಂಚಿಕೊಳ್ಳಬಹುದಾದ ಐಟಂ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">ಸರಿಸಿ</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">ವಸ್ತುವನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಸರಿಸಿ</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">ಅಳಿಸಿ</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">ಕ್ಲಿಕ್ ಮಾಡಿದ ಐಟಂಅನ್ನು ಅಳಿಸು</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಅಳಿಸಿ</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">ಮಾಹಿತಿ</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">ಮಾಹಿತಿ ಐಟಂಗೆ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">ಮಾಹಿತಿ ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">ಗಡಿಯಾರ</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">ಕ್ಲಾಕ್ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_clock_toast">ಗಡಿಯಾರ ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">ಅಲಾರಂ</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">ಅಲಾರಂ ಐಟಂಗೆ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_alarm_toast">ಅಲಾರಂ ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">ಸಮಯ ವಲಯ</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">ಸಮಯ ವಲಯ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="bottom_sheet_item_time_zone_toast">ಸಮಯ ವಲಯ ಐಟಂ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">ಬಟನ್</string>
-    <string name="buttonbar">ಬುತ್ತಿಪಟ್ಟಿ</string>
-    <string name="button_disabled">ನಿಷ್ಕ್ರಿಯ ಬಟನ್</string>
-    <string name="button_borderless">ಬೋರ್ಲೆಸ್ ಬಟನ್</string>
-    <string name="button_borderless_disabled">ಬೋರ್ಲೆಸ್ ನಿಷ್ಕ್ರಿಯ ಬಟನ್</string>
+    <string name="buttonbar">ButtonBar</string>
+    <string name="button_disabled">ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾದ ಬಟನ್</string>
+    <string name="button_borderless">ಬಾರ್ಡರ್‌ಲೆಸ್ ಬಟನ್</string>
+    <string name="button_borderless_disabled">ಬಾರ್ಡರ್‌ಲೆಸ್ ನಿಷ್ಕ್ರಿಯ ಬಟನ್</string>
     <string name="button_large">ದೊಡ್ಡ ಬಟನ್</string>
     <string name="button_large_disabled">ದೊಡ್ಡ ನಿಷ್ಕ್ರಿಯ ಬಟನ್</string>
     <string name="button_outlined">ವಿವರಿಸಿರುವ ಬಟನ್</string>
-    <string name="button_outlined_disabled">ವಿವರಿಸಿರುವ ನಿಷ್ಕ್ರಿಯ ಬಟನ್</string>
+    <string name="button_outlined_disabled">ವಿವರಿಸಲಾದ ನಿಷ್ಕ್ರಿಯ ಬಟನ್</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">ದಿನಾಂಕವನ್ನು ಆರಿಸಿ</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">ದಿನಾಂಕ ಸಮಯ ಪಿಕ್ಕರ್</string>
+    <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">ಏಕ ದಿನಾಂಕ</string>
     <!-- UI label -->
-    <string name="date_time_picker_date_picked_default">ಯಾವುದೇ ದಿನಾಂಕ ಆರಿಸಿಕೊಂಡಿಲ್ಲ</string>
+    <string name="date_time_picker_date_picked_default">ಯಾವುದೇ ದಿನಾಂಕ ಪಿಕರ್ ಇಲ್ಲ</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Show date picker</string>
+    <string name="date_time_picker_date_button">ಡೇಟ್ ಪಿಕ್ಕರ್ ತೋರಿಸಿ</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">ದಿನಾಂಕ ಟ್ಯಾಬ್ ಆಯ್ಕೆಮಾಡಿದ ದಿನಾಂಕ ಟೈಂ ಪಿಕ್ಕರ್ ತೋರಿಸು</string>
+    <string name="date_time_picker_calendar_date_time_button">ದಿನಾಂಕ ಟ್ಯಾಬ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ದಿನಾಂಕ ಸಮಯ ಪಿಕ್ಕರ್ ಅನ್ನು ತೋರಿಸಿ</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">ನೇರ ಟ್ಯಾಬ್ ಆಯ್ಕೆಮಾಡಿದ ದಿನಾಂಕ ಟೈಂ ಪಿಕ್ಕರ್ ತೋರಿಸು</string>
+    <string name="date_time_picker_date_time_calendar_button">ಸಮಯ ಟ್ಯಾಬ್ ಅನ್ನು ಆಯ್ಕೆ ಮಾಡಿದ ದಿನಾಂಕ ಸಮಯ ಪಿಕ್ಕರ್ ಅನ್ನು ತೋರಿಸಿ</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">ದಿನಾಂಕ ಟೈಂ ಪಿಕ್ಕರ್ ತೋರಿಸಿ</string>
+    <string name="date_time_picker_date_time_button">ದಿನಾಂಕ/ಸಮಯ ಪಿಕ್ಕರ್ ತೋರಿಸಿ</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">ದಿನಾಂಕ ಶ್ರೇಣಿ</string>
     <!-- UI label showing start of the range-->
@@ -311,7 +311,7 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">ಮುಕ್ತಾಯ:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">ಯಾವುದೇ ಪ್ರಾರಂಭವಿಲ್ಲ</string>
+    <string name="date_time_picker_date_start_picked_default">ಯಾವುದೇ ಪ್ರಾರಂಭ ಆಯ್ಕೆಮಾಡಿಲ್ಲ</string>
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_end_picked_default">ಯಾವುದೇ ಅಂತಿಮ ಆಯ್ಕೆಮಾಡಿಲ್ಲ</string>
     <!-- text for button that selects start date -->
@@ -319,35 +319,35 @@
     <!-- text for button that selects end date -->
     <string name="date_time_picker_date_end_button">ಅಂತ್ಯ ದಿನಾಂಕ ಆಯ್ಕೆಮಾಡಿ</string>
     <!-- UI label showing date time range-->
-    <string name="date_time_picker_date_time_range_title">ದಿನಾಂಕ ಸಮಯಶ್ರೇಣಿ</string>
+    <string name="date_time_picker_date_time_range_title">ದಿನಾಂಕ ಸಮಯ ಶ್ರೇಣಿ</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">ದಿನಾಂಕ ಸಮಯ ಶ್ರೇಣಿ ಆಯ್ಕೆಮಾಡಿ</string>
     <!-- UI label -->
-    <string name="date_time_picker_dialog_title">ದಿನಾಂಕ ಮತ್ತು ಸಮಯ ಸಂವಾದ</string>
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">ಸಂವಾದವನ್ನು ತೋರಿಸು</string>
+    <string name="date_time_picker_dialog_button">ಸಂವಾದ ತೋರಿಸಿ</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
     <string name="drawer_button">ಡ್ರಾಯರ್ ತೋರಿಸಿ</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">ಡ್ರಾಯರ್ ಸಂವಾದವನ್ನು ತೋರಿಸು</string>
+    <string name="drawer_dialog_button">ಡ್ರಾಯರ್ ಸಂವಾದವನ್ನು ತೋರಿಸಿ</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">ಯಾವುದೇ ಫೇಡ್ ಬಾಟಮ್ ಸಂವಾದ</string>
+    <string name="no_fade_bottom_dialog_button">ಯಾವುದೇ ಫೇಡ್ ಬಾಟಮ್ ಸಂವಾದ ಇಲ್ಲ</string>
     <!-- text for button that shows top drawer -->
-    <string name="drawer_top_dialog_button">ಮೇಲ್ಭಾಗದ ಡ್ರಾಯರ್ ತೋರಿಸು</string>
+    <string name="drawer_top_dialog_button">ಮೇಲ್ಭಾಗದ ಡ್ರಾಯರ್ ತೋರಿಸಿ</string>
     <!-- text for button that shows No fade top dialog drawer -->
     <string name="no_fade_top_dialog_button">ಯಾವುದೇ ಫೇಡ್ ಟಾಪ್ ಸಂವಾದ ಇಲ್ಲ</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> ಆಂಕರ್ ವೀಕ್ಷಣೆ ಮೇಲಿನ ಸಂವಾದ ತೋರಿಸು</string>
+    <string name="anchor_view_top_dialog_button"> ಆಂಕರ್ ವೀಕ್ಷಣೆ ಟಾಪ್ ಸಂವಾದ ತೋರಿಸಿ</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> ಯಾವುದೇ ಶೀರ್ಷಿಕೆ ಮೇಲಿನ ಸಂವಾದವನ್ನು ಪ್ರದರ್ಶಿಸಬೇಡ</string>
+    <string name="no_title_top_dialog_button"> ಯಾವುದೇ ಶೀರ್ಷಿಕೆ ಮೇಲಿನ ಸಂವಾದವನ್ನು ಪ್ರದರ್ಶಿಸಬೇಡಿ</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> ಕೆಳಗಿನ ಶೀರ್ಷಿಕೆ ಮೇಲಿನ ಸಂವಾದ ತೋರಿಸು</string>
+    <string name="below_title_top_dialog_button"> ಶೀರ್ಷಿಕೆ ಟಾಪ್ ಸಂವಾದವನ್ನು ಕೆಳಗೆ ತೋರಿಸಿ</string>
     <!-- text for button that shows right drawer -->
-    <string name="drawer_right_dialog_button">ಬಲ ಡ್ರಾಯರ್ ತೋರಿಸು</string>
+    <string name="drawer_right_dialog_button">ಬಲ ಡ್ರಾಯರ್ ತೋರಿಸಿ</string>
     <!-- text for button that shows left drawer -->
-    <string name="drawer_left_dialog_button">ಎಡಕ್ಕೆ ಡ್ರಾಯರ್ ತೋರಿಸು</string>
+    <string name="drawer_left_dialog_button">ಎಡ ಡ್ರಾಯರ್ ತೋರಿಸಿ</string>
 
     <!--ListItem-->
     <!-- Title -->
@@ -355,71 +355,71 @@
     <!-- subtitle -->
     <string name="list_item_subtitle">ಉಪಶೀರ್ಷಿಕೆ, ಮಾಧ್ಯಮಿಕ ಪಠ್ಯ</string>
     <!-- secondary subtitle -->
-    <string name="list_item_secondary_subtitle">ಗ್ರಾಹಕೀಯ ಉಪಶೀರ್ಷಿಕೆ ಪಠ್ಯ</string>
+    <string name="list_item_secondary_subtitle">ಕಸ್ಟಮ್ ಉಪಶೀರ್ಷಿಕೆ ಪಠ್ಯ</string>
     <!-- Footer -->
     <string name="list_item_footer">ಅಡಿಬರಹ, ತೃತೀಯಕ ಪಠ್ಯ</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">ಬೂದು ಉಪ ಶಿರೋಲೇಖ ಪಠ್ಯದೊಂದಿಗೆ ಏಕ-ಸಾಲು ಪಟ್ಟಿ</string>
+    <string name="list_item_sub_header_single_line">ಬೂದು ಉಪ ಶೀರ್ಷಿಕೆ ಪಠ್ಯದೊಂದಿಗೆ ಏಕ-ಸಾಲು ಪಟ್ಟಿ</string>
     <string name="list_item_sub_header_two_line">ಎರಡು-ಸಾಲಿನ ಪಟ್ಟಿ</string>
-    <string name="list_item_sub_header_two_line_dense">ದಟ್ಟವಾದ ಅಂತರವಿರುವ ಎರಡು-ಸಾಲಿನ ಪಟ್ಟಿ</string>
+    <string name="list_item_sub_header_two_line_dense">ದಟ್ಟವಾದ ಅಂತರದೊಂದಿಗೆ ಎರಡು-ಸಾಲಿನ ಪಟ್ಟಿ</string>
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">ಕಸ್ಟಮ್ ದ್ವಿತೀಯ ಉಪಶೀರ್ಷಿಕೆ ವೀಕ್ಷಣೆಯೊಂದಿಗೆ ಎರಡು ಸಾಲಿನ ಪಟ್ಟಿ</string>
     <string name="list_item_sub_header_three_line">ಕಪ್ಪು ಉಪ ಶಿರೋಲೇಖ ಪಠ್ಯದೊಂದಿಗೆ ಮೂರು-ಸಾಲಿನ ಪಟ್ಟಿ</string>
-    <string name="list_item_sub_header_no_custom_views">ಯಾವುದೇ ಗ್ರಾಹಕೀಯ ವೀಕ್ಷಣೆಗಳನ್ನು ಹೊಂದಿರುವ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
-    <string name="list_item_sub_header_large_header">ದೊಡ್ಡ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಗಳನ್ನು ಹೊಂದಿರುವ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
-    <string name="list_item_sub_header_wrapped_text">ಸುತ್ತುವ ಪಠ್ಯದೊಂದಿಗೆ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
+    <string name="list_item_sub_header_no_custom_views">ಯಾವುದೇ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಗಳಿಲ್ಲದ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
+    <string name="list_item_sub_header_large_header">ದೊಡ್ಡ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಗಳೊಂದಿಗೆ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
+    <string name="list_item_sub_header_wrapped_text">ಸುತ್ತಿದ ಪಠ್ಯದೊಂದಿಗೆ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
     <string name="list_item_sub_header_truncated_text">ಮೊಟಕುಗೊಳಿಸಿದ ಪಠ್ಯದೊಂದಿಗೆ ಐಟಂಗಳನ್ನು ಪಟ್ಟಿ ಮಾಡಿ</string>
     <string name="list_item_sub_header_custom_accessory_text">ಕ್ರಿಯೆ</string>
-    <string name="list_item_truncation_middle">ಮಧ್ಯಮ ಮೊಟಕುಮಾಡಲಾಗಿದೆ.</string>
-    <string name="list_item_truncation_end">ಅಂತ್ಯಗೊಳಿಸಿ.</string>
-    <string name="list_item_truncation_start">ಮೊಟಕುಮಾಡಲು ಪ್ರಾರಂಭಿಸಿ.</string>
+    <string name="list_item_truncation_middle">ಮಧ್ಯಮ ಮೊಟಕುಗೊಳಿಸಲಾಗಿದೆ.</string>
+    <string name="list_item_truncation_end">ಮೊಟಕುಗೊಳಿಸುವಿಕೆ ಅಂತ್ಯಗೊಳಿಸಿ.</string>
+    <string name="list_item_truncation_start">ಮೊಟಕುಗೊಳಿಸುವಿಕೆ ಪ್ರಾರಂಭಿಸಿ.</string>
     <string name="list_item_custom_text_view">ಮೌಲ್ಯ</string>
-    <string name="list_item_click">ನೀವು ಪಟ್ಟಿ ಐಟಂನಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
-    <string name="list_item_click_custom_accessory_view">ನೀವು ಕಸ್ಟಮ್ ಅಕ್ಸೆಸೊರಿ ವೀಕ್ಷಣೆಯಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">ನೀವು ಉಪ ಶಿರೋಲೇಖ ಕಸ್ಟಮ್ ಅಕ್ಸೆಸೊರಿಯನ್ನು ವೀಕ್ಷಿಸುತ್ತೀರಿ.</string>
+    <string name="list_item_click">ನೀವು ಪಟ್ಟಿ ಐಟಂ ನಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
+    <string name="list_item_click_custom_accessory_view">ನೀವು ಕಸ್ಟಮ್ ಪರಿಕರ ವೀಕ್ಷಣೆಯ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">ನೀವು ಉಪ ಶೀರ್ಷಿಕೆ ಕಸ್ಟಮ್ ಪರಿಕರ ವೀಕ್ಷಣೆಯ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
     <string name="list_item_more_options">ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">ಆಯ್ಕೆಮಾಡಿ</string>
-    <string name="people_picker_select_deselect_example">ಆಯ್ಕೆ ರದ್ದುಮಾಡಿ</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">ಯಾವುದು ಇಲ್ಲ</string>
     <string name="people_picker_delete_example">ಅಳಿಸಿ</string>
-    <string name="people_picker_custom_persona_description">ಈ ಉದಾಹರಣೆಯು ಗ್ರಾಹಕೀಯ Iವೈಯಕ್ತಕ ಆಬ್ಜೆಕ್ಟ್ ಅನ್ನು ಹೇಗೆ ರಚಿಸುವುದು ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ.</string>
-    <string name="people_picker_dialog_title_removed">ನೀವು ವೈಯಕ್ತವನ್ನು ತೆಗೆದುಹಾಕಿದ್ದೀರಿ:</string>
-    <string name="people_picker_dialog_title_added">ನೀವು ವೈಯಕ್ತವನ್ನು ಸೇರಿಸಿದ್ದೀರಿ:</string>
-    <string name="people_picker_drag_started">ಡ್ರ್ಯಾಗ್ ಪ್ರಾರಂಭಿಸಿದ್ದೇನೆ</string>
+    <string name="people_picker_custom_persona_description">ಈ ಉದಾಹರಣೆಯು ಕಸ್ಟಮ್ IPersona ವಸ್ತುವನ್ನು ಹೇಗೆ ರಚಿಸುವುದು ಎಂಬುದನ್ನು ತೋರಿಸುತ್ತದೆ.</string>
+    <string name="people_picker_dialog_title_removed">ನೀವು ಪರ್ಸೋನಾವನ್ನು ತೆಗೆದುಹಾಕಿದ್ದೀರಿ:</string>
+    <string name="people_picker_dialog_title_added">ನೀವು ಪರ್ಸೋನಾವನ್ನು ಸೇರಿಸಿದ್ದೀರಿ:</string>
+    <string name="people_picker_drag_started">ಡ್ರ್ಯಾಗ್ ಪ್ರಾರಂಭಿಸಲಾಗಿದೆ</string>
     <string name="people_picker_drag_ended">ಡ್ರ್ಯಾಗ್ ಕೊನೆಗೊಂಡಿದೆ</string>
-    <string name="people_picker_picked_personas_listener">ವೈಯಕ್ತಕ ಶ್ರೋತೃಗಳ</string>
-    <string name="people_picker_suggestions_listener">ಸಲಹೆಗಳು ಶ್ರೋತೃಗಳ</string>
+    <string name="people_picker_picked_personas_listener">ವೈಯಕ್ತಕ ಕೇಳುಗ</string>
+    <string name="people_picker_suggestions_listener">ಸಲಹೆಗಳ ಕೇಳುಗ</string>
     <string name="people_picker_persona_chip_click">ನೀವು %s ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s ಸ್ವೀಕೃತದಾರ</item>
+        <item quantity="other">%1$s ಸ್ವೀಕೃತದಾರರು</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">ನಿರಂತರವಾದ ಬಾಟಮೊಹಾಳೆ ವಿಸ್ತರಿಸಿ</string>
-    <string name="collapse_persistent_sheet_button"> ನಿರಂತರ ಬಾಟಹಾಳೆಯನ್ನು ಮರೆಮಾಡಿ</string>
-    <string name="show_persistent_sheet_button"> ನಿರಂತರ ಬಾಟಹಾಳೆಯನ್ನು ತೋರಿಸು</string>
+    <string name="expand_bottom_sheet_button">ನಿರಂತರ BottomSheet ಮರೆಮಾಡಿ</string>
+    <string name="collapse_persistent_sheet_button"> ನಿರಂತರ BottomSheet ಮರೆಮಾಡಿ</string>
+    <string name="show_persistent_sheet_button"> ನಿರಂತರ BottomSheet ತೋರಿಸಿ</string>
     <string name="new_view">ಇದು ಹೊಸ ವೀಕ್ಷಣೆ</string>
-    <string name="toggle_sheet_content">ಟಾಗಲ್ ಹಾಳೆ ವಿಷಯ</string>
+    <string name="toggle_sheet_content">ಕೆಳಹಾಳೆ ವಿಷಯ ಟಾಗಲ್ ಮಾಡಿ</string>
     <string name="switch_to_custom_content">ಕಸ್ಟಮ್ ವಿಷಯಕ್ಕೆ ಸ್ವಿಚ್ ಮಾಡಿ</string>
-    <string name="one_line_content">ಒಂದು ಸಾಲು ಬಾಟಮೊಹಾಳೆ ವಿಷಯ</string>
-    <string name="toggle_disable_all_items">ಎಲ್ಲಾ ಐಟಂಗಳನ್ನು ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು</string>
+    <string name="one_line_content">ಏಕ ಸಾಲು ಕೆಳಹಾಳೆ ವಿಷಯ</string>
+    <string name="toggle_disable_all_items">ಎಲ್ಲಾ ಐಟಂಗಳ ಟಾಗಲ್ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">ವೀಕ್ಷಣೆ ಸೇರಿಸಿ/ತೊಲಗಿಸಿ</string>
+    <string name="persistent_sheet_item_add_remove_view">ವೀಕ್ಷಣೆ ಸೇರಿಸಿ/ತೆಗೆದುಹಾಕಿ</string>
     <string name="persistent_sheet_item_change_collapsed_height"> ಕುಸಿದ ಎತ್ತರವನ್ನು ಬದಲಾಯಿಸಿ</string>
     <string name="persistent_sheet_item_create_new_folder_title">ಹೊಸ ಫೋಲ್ಡರ್</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">ಹೊಸ ಫೋಲ್ಡರ್ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">ಹೊಸ ಫೋಲ್ಡರ್ ಐಟಂ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
     <string name="persistent_sheet_item_edit_title">ಸಂಪಾದಿಸಿ</string>
-    <string name="persistent_sheet_item_edit_toast">ಕ್ಲಿಕ್ ಮಾಡಿದ ಐಟಂಅನ್ನು ಸಂಪಾದಿಸು</string>
+    <string name="persistent_sheet_item_edit_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಸಂಪಾದಿಸಿ</string>
     <string name="persistent_sheet_item_save_title">ಉಳಿಸಿ</string>
-    <string name="persistent_sheet_item_save_toast">ಉಳಿಸು ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿ</string>
+    <string name="persistent_sheet_item_save_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಉಳಿಸಿ</string>
     <string name="persistent_sheet_item_zoom_in_title">ಝೂಮ್ ಇನ್</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> ಕ್ಲಿಕ್ ಮಾಡಿದ ಐಟಂನಲ್ಲಿ ಜೂಮ್ ಮಾಡಿ</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> ಕ್ಲಿಕ್ ಮಾಡಿದ ಐಟಂ ಜೂಮ್ ಮಾಡಿ</string>
     <string name="persistent_sheet_item_zoom_out_title">ಝೂಮ್ ಔಟ್</string>
-    <string name="persistent_sheet_item_zoom_out_toast">ಜೂಮ್ ಔಟ್ ಮಾಡಿದ ಐಟಂಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ</string>
+    <string name="persistent_sheet_item_zoom_out_toast">ಕ್ಲಿಕ್ ಮಾಡಲಾದ ಐಟಂ ಜೂಮ್ ಔಟ್ ಮಾಡಿ</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -452,62 +452,62 @@
     <string name="persona_footer">ಲಭ್ಯ</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">ಆಲನ್ ಮುಂಗರ್</string>
-    <string name="persona_name_amanda_brady">ಅಂಡ ಬ್ರಾಂಡಿ</string>
-    <string name="persona_name_ashley_mccarthy">ಆಶ್ಲೆ ಕಾರ್ಟ್ನಿ</string>
+    <string name="persona_name_amanda_brady">ಅಮಾಂಡಾ ಬ್ರ್ಯಾಡಿ</string>
+    <string name="persona_name_ashley_mccarthy">ಆಶ್ಲೆ ಮ್ಯಾಕ್‌ಕಾರ್ಥಿ</string>
     <string name="persona_name_carlos_slattery">ಕಾರ್ಲೋಸ್ ಸ್ಲಾಟರಿ</string>
-    <string name="persona_name_carole_poland">ಕಾರ್ಲೆ ಪೋಲೆಂಡ್</string>
+    <string name="persona_name_carole_poland">ಕ್ಯಾರೋಲ್ ಪೋಲ್ಯಾಂಡ್</string>
     <string name="persona_name_cecil_folk">ಸಿಸಿಲ್ ಜಾನಪದ</string>
-    <string name="persona_name_celeste_burton">ಸೆಲೆಸ್ತೆ ಬರ್ಟನ್</string>
-    <string name="persona_name_charlotte_waltson">ಷಾರ್ಲೆಟ್ Waltson</string>
-    <string name="persona_name_colin_ballinger">ಕಾಲಿನ್ ಬಾಲ್ಸಿಂಗರ್</string>
+    <string name="persona_name_celeste_burton">ಸೆಲೆಸ್ಟೆ ಬರ್ಟನ್</string>
+    <string name="persona_name_charlotte_waltson">ಷಾರ್ಲೆಟ್ ವಾಲ್ಟ್‌ಸನ್</string>
+    <string name="persona_name_colin_ballinger">ಕಾಲಿನ್ ಬ್ಯಾಲಿಂಗರ್</string>
     <string name="persona_name_daisy_phillips">ಡೈಸಿ ಫಿಲಿಪ್ಸ್</string>
-    <string name="persona_name_elliot_woodward">ಎಲಿಯಟ್ ವುವರ್ಡ್</string>
+    <string name="persona_name_elliot_woodward">ಎಲಿಯಟ್ ವುಡ್‌ವರ್ಡ್</string>
     <string name="persona_name_elvia_atkins">ಎಲ್ವಿಯಾ ಅಟ್ಕಿನ್ಸ್</string>
-    <string name="persona_name_erik_nason">ಎರ್ಕ್ ನಸಾನ್</string>
-    <string name="persona_name_henry_brill">ಹೆನ್ರಿ ಬ್ರೆಲ್</string>
+    <string name="persona_name_erik_nason">ಎರಿಕ್ ನಾಸನ್</string>
+    <string name="persona_name_henry_brill">ಹೆನ್ರಿ ಬ್ರಿಲ್</string>
     <string name="persona_name_isaac_fielder">ಐಸಾಕ್ ಫೀಲ್ಡರ್</string>
-    <string name="persona_name_johnie_mcconnell">ಜೋನಿಯೇ ಮೆಕೆವೆಲ್</string>
-    <string name="persona_name_kat_larsson">ಕಾಟ್ ಲಾರ್ಸನ್</string>
-    <string name="persona_name_katri_ahokas">ಕಂತ್ರಿ ಅಹೋಕಾಸ್</string>
-    <string name="persona_name_kevin_sturgis">ಕೆವಿನ್ ಸ್ಟೌಮಿನ್</string>
-    <string name="persona_name_kristen_patterson">ಕ್ರಿಸ್ಸ್ಟೆನ್ Patterson</string>
-    <string name="persona_name_lydia_bauer">ಲಿಡಿಯಾ ಪೌರ್</string>
-    <string name="persona_name_mauricio_august">ಮೌರಿಜಿಯೊ ಅಗಸ್ಟ್</string>
+    <string name="persona_name_johnie_mcconnell">ಜಾನಿ ಮೆಕ್‌ಕ್ಯಾನೆಲ್</string>
+    <string name="persona_name_kat_larsson">ಕ್ಯಾಟ್ ಲಾರ್ಸನ್</string>
+    <string name="persona_name_katri_ahokas">ಕತ್ರಿ ಅಹೋಕಾಸ್</string>
+    <string name="persona_name_kevin_sturgis">ಕೆವಿನ್ ಸ್ಟರ್ಗಿಸ್</string>
+    <string name="persona_name_kristen_patterson">ಕ್ರಿಸ್ಟನ್ ಪ್ಯಾಟರ್ಸನ್</string>
+    <string name="persona_name_lydia_bauer">ಲಿಡಿಯಾ ಬಾಯರ್</string>
+    <string name="persona_name_mauricio_august">ಮಾರಿಸಿಯೋ ಆಗಸ್ಟ್</string>
     <string name="persona_name_miguel_garcia">ಮಿಗುಯೆಲ್ ಗಾರ್ಸಿಯಾ</string>
     <string name="persona_name_mona_kane">ಮೋನಾ ಕೇನ್</string>
-    <string name="persona_name_robin_counts">ರಾಬಿನ್ ಗಣಗಳು</string>
-    <string name="persona_name_robert_tolbert">ರಾಬರ್ಟ್ ಟೊರ್ಬರ್ಟ್</string>
-    <string name="persona_name_tim_deboer">ಟಿಮ್ ಡೆಬೊರ್</string>
-    <string name="persona_name_wanda_howard">ವಾಂಡಾ ಹಾವರ್ಡ್</string>
+    <string name="persona_name_robin_counts">ರಾಬಿನ್ ಕೌಂಟ್ಸ್</string>
+    <string name="persona_name_robert_tolbert">ರಾಬರ್ಟ್ ಟೋಲ್ಬರ್ಟ್</string>
+    <string name="persona_name_tim_deboer">ಟಿಮ್ ಡೆಬೋಯರ್</string>
+    <string name="persona_name_wanda_howard">ವಾಂಡಾ ಹೊವಾರ್ಡ್</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">ವಿನ್ಯಾಸಕ</string>
     <string name="persona_subtitle_engineer">ಇಂಜಿನಿಯರ್</string>
     <string name="persona_subtitle_manager">ವ್ಯವಸ್ಥಾಪಕ</string>
     <string name="persona_subtitle_researcher">ಸಂಶೋಧಕ</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (ಪರೀಕ್ಷಣೆ ಪರೀಕ್ಷೆಗೆ ದೀರ್ಘ ಪಠ್ಯ ಉದಾಹರಣೆ)</string>
-    <string name="persona_view_description_xxlarge">ಪಠ್ಯದ ಮೂರು ಸಾಲುಗಳ ಮೂಲಕ Xದೊಡ್ಡ ಅವತಾರ್</string>
-    <string name="persona_view_description_large">ಪಠ್ಯದ ಎರಡು ಸಾಲುಗಳ ದೊಡ್ಡ ಅವತಾರ್</string>
-    <string name="persona_view_description_small">ಪಠ್ಯದ ಒಂದು ಸಾಲಿನೊಂದಿಗೆ ಚಿಕ್ಕ ಅವತಾರ್</string>
+    <string name="persona_truncation">\ (ಮೊಟಕುಗೊಳಿಸುವುದು ಪರೀಕ್ಷೆಗೆ ದೀರ್ಘ ಪಠ್ಯ ಉದಾಹರಣೆ)</string>
+    <string name="persona_view_description_xxlarge">ಪಠ್ಯದ ಮೂರು ಸಾಲುಗಳ ಮೂಲಕ XXLarge ಅವತಾರ್</string>
+    <string name="persona_view_description_large">ಎರಡು ಸಾಲುಗಳ ಪಠ್ಯದೊಂದಿಗೆ ದೊಡ್ಡ ಅವತಾರ್</string>
+    <string name="persona_view_description_small">ಒಂದು ಸಾಲಿನ ಪಠ್ಯದೊಂದಿಗೆ ಚಿಕ್ಕ ಅವತಾರ್</string>
     <string name="people_picker_hint">ಯಾವುದೇ ಸೂಚನೆಯನ್ನು ತೋರಿಸಲಾಗಿಲ್ಲ</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">ನಿಷ್ಕ್ರಿಯ ವೈಯಕ್ತಿಕ ಚಿಪ್</string>
+    <string name="persona_chip_example_disabled">ನಿಷ್ಕ್ರಿಯ ಪರ್ಸೋನಾ ಚಿಪ್</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">ದೋಷ ವೈಯಕ್ತಿಕ ಚಿಪ್</string>
+    <string name="persona_chip_example_error">ದೋಷ ಪರ್ಸೋನಾ ಚಿಪ್</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">ಯಾವುದೇ ಮುಚ್ಚು ಐಕಾನ್ ಇಲ್ಲದ ವೈಯಕ್ತಿಕ ಚಿಪ್</string>
+    <string name="persona_chip_example_no_icon">ಯಾವುದೇ ಮುಚ್ಚುವ ಐಕಾನ್ ಇಲ್ಲದ ಪರ್ಸೋನ ಚಿಪ್</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">ಮೂಲ ವ್ಯಕ್ತಿತ್ವ ಚಿಪ್</string>
+    <string name="persona_chip_example_basic">ಬೇಸಿಕ್ ಪರ್ಸೋನಾ ಚಿಪ್</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">ನೀವು ಆಯ್ಕೆಮಾಡಿದ ವೈಯಕ್ತಿಕ ಚಿಪ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
+    <string name="persona_chip_example_click">ನೀವು ಆಯ್ಕೆಮಾಡಿದ ಪರ್ಸೋನಾ ಚಿಪ್ ಅನ್ನು ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
     <string name="popup_menu_item_share">ಹಂಚಿಕೊಳ್ಳಿ</string>
     <!-- UI label for item follow -->
-    <string name="popup_menu_item_follow">ಅನುಸರಿಸು</string>
+    <string name="popup_menu_item_follow">ಅನುಸರಿಸಿ</string>
     <!-- UI label for item invite people -->
     <string name="popup_menu_item_invite_people">ಜನರನ್ನು ಆಮಂತ್ರಿಸಿ</string>
     <!-- UI label for item refresh page -->
@@ -515,37 +515,37 @@
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">ಬ್ರೌಸರ್‌ನಲ್ಲಿ ತೆರೆಯಿರಿ</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">ಇದು ಬಹುಸಾಲು ಪಾಪ್ ಅಪ್ ಮೆನು. ಗರಿಷ್ಠ ಲೈನ್ ಗಳನ್ನು ಎರಡಕ್ಕೆ ಹೊಂದಿಸಲಾಗಿದೆ, ಪಠ್ಯದ ಉಳಿದ ಭಾಗ ಮೊಟಕುಗೊಳ್ಳುತ್ತದೆ.
-        ಲೋರೆಮ್ ಇಪ್ಸಮ್ ಡೋಲರ್ ಸಿಟ್ ಅಮೋಟ್ ಪ್ರತಿಷ್ಠಾಪನಾ ಅಡಿಪಿಸೆ </string>
+    <string name="popup_menu_item_multiline">ಇದು ಬಹುಸಾಲು ಪಾಪಪ್ ಮೆನು ಆಗಿದೆ. ಗರಿಷ್ಠ ರೇಖೆಗಳನ್ನು ಎರಡಕ್ಕೆ ಸೆಟ್ ಮಾಡಲಾಗಿದೆ, ಉಳಿದ ಪಠ್ಯವು ಮೊಟಕುಗೊಳಿಸುತ್ತದೆ.
+         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">ಎಲ್ಲಾ ಸುದ್ದಿ</string>
     <!-- UI label for item Saved news -->
     <string name="popup_menu_item_saved_news">ಉಳಿಸಿದ ಸುದ್ದಿ</string>
     <!-- UI label for item >News from sites -->
-    <string name="popup_menu_item_news_from_sites">ಸೈಟ್ ಗಳಿಂದ ಸುದ್ದಿ</string>
+    <string name="popup_menu_item_news_from_sites">ಸೈಟ್‌ಗಳಿಂದ ಸುದ್ದಿ</string>
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">ಕೆಲಸದ ಸಮಯದ ಹೊರಗೆ ಸೂಚಿಸಿ</string>
+    <string name="popup_menu_item_notify_outside">ಕೆಲಸದ ಅವಧಿಯ ಹೊರಗೆ ಸೂಚಿಸಿ</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">ಡೆಸ್ಕ್ ಟಾಪ್ ನಲ್ಲಿ ನಿಷ್ಕ್ರಿಯಗೊಂಡಾಗ ಸೂಚಿಸಿ</string>
+    <string name="popup_menu_item_notify_inactive">ಡೆಸ್ಕ್‌ಟಾಪ್‌ನಲ್ಲಿ ನಿಷ್ಕ್ರಿಯವಾಗಿರುವಾಗ ಸೂಚಿಸಿ</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">ನೀವು ಐಟಂನಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ:</string>
+    <string name="popup_menu_item_clicked">ನೀವು ಐಟಂ ಕ್ಲಿಕ್ ಮಾಡಿದ್ದೀರಿ:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">ಸರಳ ಮೆನು</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">ಸರಳ menu2</string>
+    <string name="popup_menu_simple_duo">ಸರಳ ಮೆನು2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">ಒಂದು ಆಯ್ಕೆಮಾಡಿದ ಐಟಂನೊಂದಿಗೆ ಮೆನು ಮತ್ತು ಒಂದು ಡಿವೈಡರ್</string>
+    <string name="popup_menu_single_check">ಒಂದು ಆಯ್ಕೆಮಾಡಬಹುದಾದ ಐಟಂನೊಂದಿಗೆ ಮೆನು ಮತ್ತು ಒಂದು ಡಿವೈಡರ್</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿದ ಐಟಂಗಳು, ಐಕಾನ್ ಗಳು ಮತ್ತು ಉದ್ದನೆಯ ಪಠ್ಯದೊಂದಿಗೆ ಮೆನು</string>
+    <string name="popup_menu_all_check">ಎಲ್ಲಾ ಆಯ್ಕೆಮಾಡಿದ ಐಟಂಗಳು, ಐಕಾನ್‌ಗಳು ಮತ್ತು ಉದ್ದನೆಯ ಪಠ್ಯದೊಂದಿಗೆ ಮೆನು</string>
     <!--Text for button that shows popupmenu -->
-    <string name="popup_menu_show">ತೋರಿಸು</string>
+    <string name="popup_menu_show">ತೋರಿಸಿ</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">ವೃತ್ತಾಕಾರದ ಅಭ್ಯುದಯ</string>
-    <string name="circular_progress_xsmall">Xಚಿಕ್ಕದಾಗಿದೆ</string>
+    <string name="circular_progress">ವೃತ್ತಾಕಾರದ ಪ್ರಗತಿ</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">ಚಿಕ್ಕದು</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -554,7 +554,7 @@
     <string name="circular_progress_large">ದೊಡ್ಡದು</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">ರೇಖೀಯ ಅಭ್ಯುದಯ</string>
+    <string name="linear_progress">ರೇಖೀಯ ಪ್ರಗತಿ</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
     <string name="linear_progress_indeterminate_label">ಅನಿರ್ದಿಷ್ಟ</string>
@@ -569,48 +569,48 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">ಶೋಧದ ಪಟ್ಟಿ</string>
+    <string name="searchbar">SearchBar</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">ಮೈಕ್ರೋಫೋನ್ ಕಾಲ್ ಬ್ಯಾಕ್</string>
+    <string name="searchbar_microphone_callback">ಮೈಕ್ರೋಫೋನ್ ಕಾಲ್‌ಬ್ಯಾಕ್</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">ಸ್ವಯಂಸರಿ...</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">ಮೈಕ್ರೋಫೋನ್ ಒತ್ತಿ</string>
+    <string name="searchbar_microphone_pressed">ಮೈಕ್ರೋಫೋನ್ ಒತ್ತಲಾಗಿದೆ</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">ಬಲ ವೀಕ್ಷಣೆ ಒತ್ತಿ</string>
+    <string name="searchbar_right_view_pressed">ಬಲ ವೀಕ್ಷಣೆ ಒತ್ತಲಾಗಿದೆ</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">ಕೀಬೋರ್ಡ್ ಶೋಧ ಒತ್ತಿ</string>
+    <string name="searchbar_keyboard_search_pressed">ಕೀಬೋರ್ಡ್ ಶೋಧ ಒತ್ತಲಾಗಿದೆ</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">ಕ್ರಿಯೆ</string>
     <string name="snackbar_action_long">ದೀರ್ಘ ಪಠ್ಯ ಕ್ರಿಯೆ</string>
-    <string name="snackbar_single_line">ಏಕ ಸಾಲು ಸ್ನಾನಪಟ್ಟಿ</string>
-    <string name="snackbar_multiline">ಇದು ಬಹುಮಹಡಿ ಸ್ನಾನಪಟ್ಟಿ. ಗರಿಷ್ಠ ಲೈನ್ ಗಳನ್ನು ಎರಡಕ್ಕೆ ಹೊಂದಿಸಲಾಗಿದೆ, ಪಠ್ಯದ ಉಳಿದ ಭಾಗ ಮೊಟಕುಗೊಳ್ಳುತ್ತದೆ.
-        ಲೋರೆಮ್ ಇಪ್ಸಮ್ ಡೋಲರ್ ಸಿಟ್ ಅಮೋಟ್ ಪ್ರತಿಷ್ಠಾಪನಾ ಅಡಿಪಿಸೆ </string>
-    <string name="snackbar_announcement">ಇದು ಒಂದು ಪ್ರಕಟನೆ ಸ್ನಾನಪಟ್ಟಿ. ಹೊಸ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಂವಹನಕ್ಕಾಗಿ ಇದನ್ನು ಬಳಸಲಾಗುತ್ತದೆ.</string>
-    <string name="snackbar_primary">ಇದು ಪ್ರಾಥಮಿಕ ಸ್ನಾನಪಟ್ಟಿ.</string>
-    <string name="snackbar_light">ಇದು ಲೈಟ್ ಸ್ಕ್ವಿಬಾರ್ ಆಗಿದೆ.</string>
-    <string name="snackbar_warning">ಇದು ಎಚ್ಚರಿಕೆಯ ಸ್ನಾನಪಟ್ಟಿ.</string>
-    <string name="snackbar_danger">ಇದು ಅಪಾಯದ ಸ್ನಾನಪಟ್ಟಿ.</string>
+    <string name="snackbar_single_line">ಏಕ ಸಾಲು ಸ್ನ್ಯಾಕ್‌ಪಟ್ಟಿ</string>
+    <string name="snackbar_multiline">ಇದು ಬಹುಸಾಲು ಸ್ನ್ಯಾಕ್‌ಬಾರ್ ಆಗಿದೆ. ಗರಿಷ್ಠ ರೇಖೆಗಳನ್ನು ಎರಡಕ್ಕೆ ಸೆಟ್ ಮಾಡಲಾಗಿದೆ, ಉಳಿದ ಪಠ್ಯವು ಮೊಟಕುಗೊಳಿಸುತ್ತದೆ.
+         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">ಇದು ಸ್ನ್ಯಾಕ್‌ಬಾರ್ ಪ್ರಕಟಣೆ. ಹೊಸ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಸಂವಹನ ಮಾಡಲು ಇದನ್ನು ಬಳಸಲಾಗುತ್ತದೆ.</string>
+    <string name="snackbar_primary">ಇದು ಪ್ರಾಥಮಿಕ ಸ್ನ್ಯಾಕ್‌ಪಟ್ಟಿ.</string>
+    <string name="snackbar_light">ಇದು ಲೈಟ್ ಸ್ನ್ಯಾಕ್‌ಪಟ್ಟಿ ಆಗಿದೆ.</string>
+    <string name="snackbar_warning">ಇದು ಎಚ್ಚರಿಕೆಯ ಸ್ನ್ಯಾಕ್‌ಪಟ್ಟಿ.</string>
+    <string name="snackbar_danger">ಇದು ಅಪಾಯದ ಸ್ನ್ಯಾಕ್‌ಪಟ್ಟಿ.</string>
     <string name="snackbar_description_single_line">ಕಡಿಮೆ ಅವಧಿ</string>
-    <string name="snackbar_description_single_line_custom_view">ಸಣ್ಣ ಗ್ರಾಹಕೀಯ ವೀಕ್ಷಣೆಯಾಗಿ ವೃತ್ತಾಕಾರದ ಪ್ರಗತಿಯಿಂದ ದೀರ್ಘ ಕಾಲಾವಧಿ</string>
-    <string name="snackbar_description_single_line_action">ಕ್ರಿಯೆಯ ಜೊತೆಗೆ ಅಲ್ಪ ಕಾಲಾವಧಿ</string>
+    <string name="snackbar_description_single_line_custom_view">ಸಣ್ಣ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಯಂತೆ ವೃತ್ತಾಕಾರದ ಪ್ರಗತಿಯೊಂದಿಗೆ ದೀರ್ಘಾವಧಿ</string>
+    <string name="snackbar_description_single_line_action">ಕ್ರಿಯೆಯ ಜೊತೆಗೆ ಅಲ್ಪಾವಧಿ</string>
     <string name="snackbar_description_single_line_action_custom_view">ಕ್ರಿಯೆ ಮತ್ತು ಮಧ್ಯಮ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಯೊಂದಿಗೆ ಕಡಿಮೆ ಅವಧಿ</string>
     <string name="snackbar_description_single_line_custom_text_color">ಗ್ರಾಹಕೀಯಗೊಳಿಸಿದ ಪಠ್ಯ ಬಣ್ಣದೊಂದಿಗೆ ಕಡಿಮೆ ಅವಧಿ</string>
     <string name="snackbar_description_multiline">ದೀರ್ಘ ಕಾಲಾವಧಿ</string>
-    <string name="snackbar_description_multiline_custom_view">ಚಿಕ್ಕ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಯೊಂದಿಗೆ ದೀರ್ಘ ಕಾಲಾವಧಿ</string>
-    <string name="snackbar_description_multiline_action">ಕ್ರಿಯೆ ಮತ್ತು ಪಠ್ಯ ನವೀಕರಣಗಳ ಜೊತೆಗೆ ಅನಿರ್ದಿಷ್ಟ ಅವಧಿ</string>
+    <string name="snackbar_description_multiline_custom_view">ಸಣ್ಣ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಯೊಂದಿಗೆ ದೀರ್ಘಾವಧಿ</string>
+    <string name="snackbar_description_multiline_action">ಕ್ರಿಯೆ ಮತ್ತು ಪಠ್ಯ ನವೀಕರಣಗಳೊಂದಿಗೆ ಅನಿರ್ದಿಷ್ಟ ಅವಧಿ</string>
     <string name="snackbar_description_multiline_action_custom_view">ಕ್ರಿಯೆ ಮತ್ತು ಮಧ್ಯಮ ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆಯೊಂದಿಗೆ ಕಡಿಮೆ ಅವಧಿ</string>
-    <string name="snackbar_description_multiline_action_long">ದೀರ್ಘ ಕ್ರಿಯೆ ಪಠ್ಯದ ಜೊತೆಗೆ ಅಲ್ಪ ಕಾಲಾವಧಿ</string>
+    <string name="snackbar_description_multiline_action_long">ದೀರ್ಘ ಕ್ರಿಯೆಯ ಪಠ್ಯದೊಂದಿಗೆ ಕಡಿಮೆ ಅವಧಿ</string>
     <string name="snackbar_description_announcement">ಕಡಿಮೆ ಅವಧಿ</string>
     <string name="snackbar_description_updated">ಈ ಪಠ್ಯವನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">ಸ್ನಾನಪಟ್ಟಿ ತೋರಿಸು</string>
+    <string name="snackbar_button_show">ಸ್ನ್ಯಾಕ್‌ಪಟ್ಟಿ ತೋರಿಸಿ</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">ಒಂದೇ ಸಾಲು</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">ಬಹುಸಾಲು</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">ಘೋಷಣೆ ಶೈಲಿ</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -635,11 +635,11 @@
     <!-- text for tabbar more tab -->
     <string name="tabBar_more">ಇನ್ನಷ್ಟು</string>
     <!-- UI text for text alignment of tab -->
-    <string name="tabBar_text_alignment">ಪಠ್ಯ ಹೊಂದಾಣಿಕೆ</string>
+    <string name="tabBar_text_alignment">ಪಠ್ಯ ಒಗ್ಗೂಡಿಸುವಿಕೆ</string>
     <!-- UI text for vertical alignment of tab -->
     <string name="tabBar_vertical">ಲಂಬ</string>
     <!-- UI text for horizontal alignment of tab -->
-    <string name="tabBar_horizontal">ಅಡ್ಡವಾದ</string>
+    <string name="tabBar_horizontal">ಅಡ್ದವಾಗಿ</string>
     <!-- UI text for no text of tab -->
     <string name="tabBar_no_text">ಪಠ್ಯವಿಲ್ಲ</string>
     <!-- UI text for no. of tab items -->
@@ -649,22 +649,22 @@
     <!-- UI labels and descriptions -->
     <string name="cell_sample_title">ಶೀರ್ಷಿಕೆ</string>
     <string name="cell_sample_description">ವಿವರಣೆ</string>
-    <string name="calculate_cells">100 ಕೋಶಗಳನ್ನು ಲೋಡ್ ಮಾಡಿ/ಲೆಕ್ಕಾಚಾರ ಮಾಡಿ</string>
+    <string name="calculate_cells">100 ಸೆಲ್‌ಗಳನ್ನು ಲೋಡ್/ಲೆಕ್ಕಾಚಾರ ಮಾಡಿ</string>
     <string name="calculate_layouts">100 ಲೇಔಟ್ ಅನ್ನು ಲೋಡ್ ಮಾಡಿ/ಲೆಕ್ಕಾಚಾರ ಮಾಡಿ</string>
-    <string name="template_list">ಟೆಂಪ್ಲೇಟ್ ಪಟ್ಟಿ</string>
+    <string name="template_list">ಟೆಂಪ್ಲೆಟ್ ಪಟ್ಟಿ</string>
     <string name="regular_list">ನಿಯಮಿತ ಪಟ್ಟಿ</string>
-    <string name="cell_example_title">ಶೀರ್ಷಿಕೆ: ಕೋಶ</string>
-    <string name="cell_example_description">ವಿವರಣೆ: ದೃಗ್ವಿಜ್ಞಾನವನ್ನು ಬದಲಿಸಲು ತಟ್ಟಿ</string>
+    <string name="cell_example_title">ಶೀರ್ಷಿಕೆ: ಸೆಲ್</string>
+    <string name="cell_example_description">ವಿವರಣೆ: ದೃಷ್ಟಿಕೋನವನ್ನು ಬದಲಾಯಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
     <string name="tab_standard_two_segment">ಪ್ರಮಾಣ ಟ್ಯಾಬ್ 2-ಸೆಗ್ಮೆಂಟ್</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">ಪ್ರಮಾಣ ಟ್ಯಾಬ್ 3-ಸೆಗ್ ಮೆಂಟ್</string>
+    <string name="tab_standard_three_segment">ಪ್ರಮಾಣಿತ ಟ್ಯಾಬ್ 3-ಸೆಗ್ಮೆಂಟ್</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">ಪ್ರಮಾಣ ಟ್ಯಾಬ್ 4-ಸೆಗ್ ಮೆಂಟ್</string>
+    <string name="tab_standard_four_segment">ಪ್ರಮಾಣಿತ ಟ್ಯಾಬ್ 4-ಸೆಗ್ಮೆಂಟ್</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">ಪೇಜರ್ ಜೊತೆಗೆ ಪ್ರಮಾಣ ಟ್ಯಾಬ್</string>
+    <string name="tab_standard_with_pager">ಪೇಜರ್ ಜೊತೆಗೆ ಪ್ರಮಾಣಿತ ಟ್ಯಾಬ್</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">ಟ್ಯಾಬ್ ಸ್ವಿಚ್ ಮಾಡಿ</string>
     <!-- Text for button that shows pills tabs -->
@@ -672,46 +672,46 @@
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">ಪರಿಕರಸುಳಿವು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="tooltip_button">ಪರಿಕರಸೂಚಿಗಾಗಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">ಗ್ರಾಹಕೀಯ ಕ್ಯಾಲೆಂಡರ್ ಪರಿಕರಕ್ಕಾಗಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="tooltip_calendar_demo_button">ಕಸ್ಟಮ್ ಕ್ಯಾಲೆಂಡರ್ ಪರಿಕರಕಸೂಚಿಗಾಗಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
     <string name="tooltip_custom_button">ಕಸ್ಟಮ್ ಬಣ್ಣ ಪರಿಕರಸೂಚಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">ಪರಿಕರಸೂಚಿಗಳಲ್ಲಿ ವಜಾ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="tooltip_center_button">ಪರಿಕರಸೂಚಿಯ ಒಳಗೆ ವಜಾ ಮಾಡಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">ಗ್ರಾಹಕೀಯ ವೀಕ್ಷಣೆ ಪರಿಕರಸುಳಿವು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="tooltip_custom_view">ಕಸ್ಟಮ್ ವೀಕ್ಷಣೆ ಪರಿಕರಸೂಚಿಗಾಗಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">ಮೇಲ್ಭಾಗದ ಗ್ರಾಹಕೀಯ ಬಣ್ಣ ಪರಿಕರ ಸುಳಿವು</string>
+    <string name="tooltip_top_start_message">ಮೇಲಿನ ಕಸ್ಟಮ್ ಬಣ್ಣ ಪರಿಕರಸೂಚಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">10dp ಆಫ್ ಸೆಟ್ ಕ್ಸ್ ನೊಂದಿಗೆ ಮೇಲ್ಭಾಗದ ಅಂತಿಮ ಪರಿಕರಸೂಚಿ</string>
+    <string name="tooltip_top_end_message">10dp offsetY ಜೊತೆಗೆ ಮೇಲಿನ ಅಂತ್ಯ ಪರಿಕರಪಟ್ಟಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">ಕೆಳಗಿನ ಪ್ರಾರಂಭ ಪರಿಕರಸುಳಿವು</string>
+    <string name="tooltip_bottom_start_message">ಕೆಳಗಿನ ಪ್ರಾರಂಭ ಪರಿಕರಸೂಚಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">10dp ಆಫ್ ಸೇಟಿ ಜೊತೆಗೆ ಕೆಳಗಿನ ಅಂತ್ಯ ಪರಿಕರಪಟ್ಟಿ</string>
+    <string name="tooltip_bottom_end_message">10dp offsetY ಜೊತೆಗೆ ಕೆಳಗಿನ ಅಂತ್ಯ ಪರಿಕರಪಟ್ಟಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">ಪರಿಕರಸೂಚಿಯೊಳಗೆ ವಜಾಗೊಳಿಸಿ</string>
+    <string name="tooltip_center_message">ಪರಿಕರಸೂಚಿಯ ಒಳಗೆ ವಜಾ ಮಾಡಿ</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">ಪರಿಕರಸುಳಿವು ವಜಾಗೊಳಿಸಲಾಗಿದೆ</string>
+    <string name="tooltip_dismiss_message">ಪರಿಕರಸೂಚಿಯನ್ನು ವಜಾಗೊಳಿಸಲಾಗಿದೆ</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">ಹೆಡ್ ಲೈನ್ ಲೈಟ್ 28sp</string>
+    <string name="headline">ಶಿರೋನಾಮೆ ಲೈಟ್ 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">ಶೀರ್ಷಿಕೆ 1 ಮಧ್ಯಮ 20 ಎಸ್ಪಿ</string>
+    <string name="title_1">ಶೀರ್ಷಿಕೆ 1 ಮಧ್ಯಮ 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">ಶೀರ್ಷಿಕೆ 2 ರೆಗ್ಯುಲರ್ 20sp</string>
+    <string name="title_2">ಶೀರ್ಷಿಕೆ 2 ಸಾಮಾನ್ಯ 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">ಶಿರೋನಾಮೆ ೧೮ಎಸ್ಪಿ</string>
+    <string name="heading">ಶಿರೋನಾಮೆ ನಿಯಮಿತ 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
     <string name="subheading_1">ಉಪಶೀರ್ಷಿಕೆ 1 ನಿಯಮಿತ 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">ಉಪಶೀರ್ಷಿಕೆ 2 ಮಧ್ಯಮ 16 ಎಸ್ಪಿ</string>
+    <string name="subheading_2">ಉಪಶೀರ್ಷಿಕೆ 2 ಮಧ್ಯಮ 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">1 ನಿಯಮಿತ 14sp</string>
+    <string name="body_1">ಬಾಡಿ 1 ನಿಯಮಿತ 14sp ಆಗಿದೆ</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">ಸಂಸ್ಥೆ 2 ಮಧ್ಯಮ 14 ಎಸ್ಪಿ</string>
+    <string name="body_2">ಬಾಡಿ 2 ಮಧ್ಯಮ 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">ಶೀರ್ಷಿಕೆ ನಿಯಮಿತ 12sp</string>
+    <string name="caption">ಶೀರ್ಷಿಕೆಯು ನಿಯಮಿತ 12sp</string>
 
 </resources>

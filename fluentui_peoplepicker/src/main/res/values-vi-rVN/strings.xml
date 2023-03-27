@@ -9,34 +9,34 @@
     <!-- *** PeoplePicker *** -->
 
     <string name="people_picker_sample_label">Nhãn</string>
-    <string name="people_picker_search_directory">Tìm kiếm trong Thư mục</string>
-    <string name="people_picker_search_progress">Đang tìm kiếm…</string>
+    <string name="people_picker_search_directory">Tìm kiếm thư mục</string>
+    <string name="people_picker_search_progress">Đang tìm kiếm...</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s added</string>
-    <string name="people_picker_accessibility_persona_removed">%s bỏ</string>
-    <string name="people_picker_accessibility_replaced">%s thế,</string>
+    <string name="people_picker_accessibility_default_hint">Nhập tên hoặc email</string>
+    <string name="people_picker_accessibility_persona_added">Đã thêm %s</string>
+    <string name="people_picker_accessibility_persona_removed">Đã xóa %s</string>
+    <string name="people_picker_accessibility_replaced">Đã thay thế %s,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">Bấm</string>
     <string name="people_picker_accessibility_delete_persona">Xóa</string>
     <string name="people_picker_accessibility_deselect_persona">Bỏ chọn</string>
     <string name="people_picker_accessibility_select_persona">Chọn</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Đã bấm %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Đã bấm vào %s</string>
     <string name="people_picker_accessibility_deselected_persona">Đã bỏ chọn %s</string>
     <string name="people_picker_accessibility_selected_persona">Đã chọn %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, Kích hoạt sẽ bỏ chọn</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, Kích hoạt sẽ xóa</string>
-    <string name="people_picker_accessibility_click_selected_persona">, Kích hoạt sẽ bấm</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, Sẽ bỏ chọn khi kích hoạt</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Sẽ xóa khi kích hoạt</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Sẽ bấm khi kích hoạt</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="other">Đã mở danh sách đề xuất có %s người</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="other">%s people</item>
+        <item quantity="other">%s người</item>
     </plurals>
 </resources>

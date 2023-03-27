@@ -33,12 +33,12 @@
     <string name="people_picker_accessibility_click_selected_persona">, Aktivləşdirmə klikləyəcəkdir</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Təkliflər siyahısı %s şəxslə açıldı</item>
+        <item quantity="other">Təkliflər siyahısı %s nəfərlə açıldı</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s şəxs</item>
+        <item quantity="other">%s nəfər</item>
     </plurals>
 </resources>

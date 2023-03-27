@@ -33,10 +33,10 @@
     <string name="people_picker_accessibility_click_selected_persona">, ការធ្វើឲ្យមានដំណើរការនឹងចុច</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="other">បញ្ជីណែនាំត្រូវបានបើក​ដោយមនុស្ស %s នាក់</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="other">%s people</item>
+        <item quantity="other">មនុស្ស %s នាក់</item>
     </plurals>
 </resources>

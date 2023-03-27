@@ -6,70 +6,70 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">சரளமான UI டெமோ</string>
-    <string name="app_title">சரளமான UI</string>
+    <string name="app_name">Fluent UI செயல்விளக்கம்</string>
+    <string name="app_title">Fluent UI</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">%s தேர்ந்தெடுக்கப்பட்டது</string>
     <string name="app_modifiable_parameters">மாற்றியமைக்கக்கூடிய அளவுருக்கள்</string>
-    <string name="app_right_accessory_view">வலது துணை காட்சி</string>
+    <string name="app_right_accessory_view">வலது துணைக் காட்சி</string>
 
-    <string name="app_style">ஸ்டைல்</string>
+    <string name="app_style">பாணி</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">ஐகான் அழுத்தப்பட்டது</string>
+    <string name="app_icon_pressed">படவுரு அழுத்தப்பட்டது</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
-    <string name="actionbar_start_button">Start Demo</string>
+    <string name="actionbar_start_button">செயல்விளக்கத்தைத் தொடங்கு</string>
     <!-- Texts for radio buttons -->
-    <string name="actionbar_carousel_radio_label">கேரசூல்</string>
+    <string name="actionbar_carousel_radio_label">கொணர்வி</string>
     <string name="actionbar_icon_radio_label">படவுரு</string>
-    <string name="actionbar_basic_radio_label">பேஸிக்</string>
+    <string name="actionbar_basic_radio_label">அடிப்படை</string>
     <string name="actionbar_position_bottom_radio_label">கீழ்</string>
-    <string name="actionbar_position_top_radio_label">மேலே</string>
+    <string name="actionbar_position_top_radio_label">மேல்</string>
 
     <!--UI Text view label denoting type of action bar -->
-    <string name="actionbar_type_heading">ஆக்ஷன் பார் வகை</string>
+    <string name="actionbar_type_heading">ActionBar வகை</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">ஆக்ஷன் பார் நிலை</string>
+    <string name="actionbar_position_heading">ActionBar இடநிலை</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">AppBar Style</string>
+    <string name="app_bar_style">AppBar பாணி</string>
     <string name="app_bar_subtitle">துணைத்தலைப்பு</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">வழிசெலுத்தல் ஐகான் கிளிக் செய்யப்பட்டது.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">வழிசெலுத்தல் படவுரு கிளிக் செய்யப்பட்டது.</string>
 
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">கொடி</string>
     <string name="app_bar_layout_menu_settings">அமைப்புகள்</string>
     <string name="app_bar_layout_menu_search">தேடு</string>
     <!-- UI Text that shows the type of scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">ஸ்க்ரோல் நடத்தை: %s</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">உருட்டு நடத்தை: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">டோகிள் ஸ்க்ரோல் நடத்தை</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">உருட்டு நடத்தையை நிலைமாற்று</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">டோகிள் வழிசெலுத்தல் ஐகான்</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">வழிசெலுத்தல் பலகத்தை நிலைமாற்று</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">அவதாரத்தைக் காட்டு</string>
+    <string name="app_bar_layout_show_avatar_button">அவதாரைக் காட்டு</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">மீண்டும் ஐகானைக் காட்டு</string>
+    <string name="app_bar_layout_show_back_icon_button">பின்செல் படவுருவைக் காட்டு</string>
     <!-- Text for button that hides icon-->
-    <string name="app_bar_layout_hide_icon_button">ஐகானை மறை</string>
+    <string name="app_bar_layout_hide_icon_button">படவுருவை மறை</string>
     <!-- Text for button that shows icon -->
-    <string name="app_bar_layout_show_icon_button">ஐகானைக் காட்டு</string>
+    <string name="app_bar_layout_show_icon_button">படவுருவைக் காட்டு</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">டோகிள் தேடல்பட்டி தளவமைப்பு பாணி</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">தேடல்பட்டி தளவமைப்பு பாணியை நிலைமாற்று</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
     <string name="app_bar_layout_searchbar_accessory_view_button">துணைக் காட்சியாகக் காட்டு</string>
     <string name="app_bar_layout_searchbar_action_view_button">செயல் காட்சியாகக் காட்டு</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">கருப்பொருள்களுக்கு இடையில் தடுமாறுதல் (செயல்பாட்டை மீண்டும் உருவாக்குகிறது)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">கருப்பொருள்களுக்கு இடையில் நிலைமாற்று (செயல்பாட்டை மீண்டும் உருவாக்குகிறது)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">கருப்பொருளை நிலைமாற்று</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">உருப்படி</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">கூடுதல் ஸ்க்ரோபிள் உள்ளடக்கம்</string>
+    <string name="app_bar_layout_list_sub_header">கூடுதல் உருட்டக்கூடிய உள்ளடக்கம்</string>
 
     <!--AvatarView-->
     <!-- Style -->
@@ -81,29 +81,29 @@
     <string name="avatar_size_large">பெரியது</string>
     <string name="avatar_size_medium">நடுத்தரமானது</string>
     <string name="avatar_size_small">சிறியது</string>
-    <string name="avatar_size_xsmall">XSmal</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">மேக்ஸ் காண்பிக்கப்பட்ட அவதார்</string>
+    <string name="avatar_group_max_displayed_avatar">அதிகபட்ச காண்பிக்கப்பட்ட அவதார்</string>
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">நிரம்பி வழியும் அவதார் எண்ணிக்கை</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">பார்டர் வகை:</string>
+    <string name="avatar_group_border_type">கரை வகை:</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">ஓவர்ஃப்ளோ அவடார்கவுண்ட் செட் கொண்ட அவதார் குழுமம் மேக்ஸ் டிஸ்பிளே செய்யப்பட்ட அவதாருடன் ஒட்டிக்கொள்ளாது.</string>
+    <string name="avatar_group_info">OverflowAvatarCount தொகுப்பைக் கொண்ட அவதார் குழு அதிகபட்ச காட்சிப்படுத்தப்பட்ட அவதாரைக் கடைபிடிக்காது.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">ஃபேஸ் ஸ்டாக்</string>
+    <string name="avatar_group_face_stack">முக அடுக்கு</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">முகக் குவியல்</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">ஓவர்ஃப்ளோ கிளிக் செய்யப்பட்டது</string>
+    <string name="avatar_group_overflow_clicked">நிரம்பிவழிதல் கிளிக் செய்யப்பட்டது</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">குறியீட்டில் அவதார்வியூ கிளிக் %d</string>
+    <string name="avatar_group_avatar_clicked">%d குறியீட்டில் AvatarView கிளிக் செய்யப்பட்டது</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
-    <string name="badge_notification_badge">Notification Badge</string>
+    <string name="badge_notification_badge">அறிவிப்பு பேட்ஜ்</string>
     <!--UI Label for dot notification -->
     <string name="badge_notification_dot">புள்ளி</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
@@ -114,12 +114,12 @@
     <!--BottomNavigation-->
     <!--UI Labels -->
     <string name="bottom_navigation_menu_item_photos">புகைப்படங்கள்</string>
-    <string name="bottom_navigation_menu_item_news">செய்தி</string>
+    <string name="bottom_navigation_menu_item_news">செய்திகள்</string>
     <string name="bottom_navigation_menu_item_alerts">விழிப்பூட்டல்கள்</string>
     <string name="bottom_navigation_menu_item_calendar">நாள்காட்டி</string>
-    <string name="bottom_navigation_menu_item_team">அணி</string>
+    <string name="bottom_navigation_menu_item_team">குழு</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">டோகிள் லேபிள்கள்</string>
+    <string name="bottom_navigation_toggle_labels_button">லேபிள்களை நிலைமாற்று</string>
     <string name="bottom_navigation_three_menu_items_button">மூன்று மெனு உருப்படிகளைக் காட்டு</string>
     <string name="bottom_navigation_four_menu_items_button">நான்கு மெனு உருப்படிகளைக் காட்டு</string>
     <string name="bottom_navigation_five_menu_items_button">ஐந்து மெனு உருப்படிகளைக் காட்டு</string>
@@ -129,72 +129,72 @@
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">கீழே தாள்</string>
+    <string name="bottom_sheet">கீழ்தாள்</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">ஒற்றை வரி உருப்படிகளுடன் காட்டு</string>
     <string name="bottom_sheet_with_double_line_items">இரட்டை வரி உருப்படிகளுடன் காட்டு</string>
-    <string name="bottom_sheet_with_single_line_header">ஒற்றை வரி தலைப்புடன் காட்டவும்</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">இரட்டை வரி தலைப்பு மற்றும் டிவைடர்களுடன் காட்டவும்</string>
-    <string name="bottom_sheet_dialog_button">காண்பி</string>
+    <string name="bottom_sheet_with_single_line_header">ஒற்றை வரி தலைப்புடன் காட்டு</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">இரட்டை வரி தலைப்பு மற்றும் பிரிப்பான்களுடன் காட்டு</string>
+    <string name="bottom_sheet_dialog_button">காட்டு</string>
     <string name="drawer_content_desc_collapse_state">விரி</string>
     <string name="drawer_content_desc_expand_state">சிறிதாக்கு</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">%s கிளிக் செய்க</string>
+    <string name="contextual_command_prompt_click_item">%s என்பதைக் கிளிக் செய்க</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">நீண்ட கிளிக் %s</string>
+    <string name="contextual_command_prompt_long_click_item">%s-ஐ நீண்ட கிளிக் செய்</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">நிராகரி என்பதைக் கிளிக் செய்க</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">உருப்படியைச் செருகு</string>
     <!-- Text for button for updating an item-->
-    <string name="contextual_command_update_item">புதுப்பித்தல் உருப்படி</string>
+    <string name="contextual_command_update_item">உருப்படியைப் புதுப்பி</string>
     <!-- Announces dismiss action -->
-    <string name="contextual_command_accessibility_dismiss">நிராகரி</string>
+    <string name="contextual_command_accessibility_dismiss">நிராகரிக்கும்</string>
     <!-- Announces add action -->
-    <string name="contextual_command_accessibility_add">சேர்</string>
+    <string name="contextual_command_accessibility_add">சேர்க்கும்</string>
     <!-- Announces mention action -->
-    <string name="contextual_command_accessibility_mention">குறிப்பிடு</string>
+    <string name="contextual_command_accessibility_mention">குறிப்பிடும்</string>
     <!-- Announces bold action -->
     <string name="contextual_command_accessibility_bold">தடித்த</string>
     <!-- Announces italic action -->
-    <string name="contextual_command_accessibility_italic">சாய்ந்த</string>
+    <string name="contextual_command_accessibility_italic">சாய்வாக்கும்</string>
     <!-- Announces undeline action -->
-    <string name="contextual_command_accessibility_underline">அடிக்கோடு</string>
+    <string name="contextual_command_accessibility_underline">அடிக்கோடிடும்</string>
     <!-- Announces strikethrough action -->
     <string name="contextual_command_accessibility_strikethrough">அடித்தம்</string>
     <!-- Announces undo action -->
-    <string name="contextual_command_accessibility_undo">செயல்தவிர்</string>
+    <string name="contextual_command_accessibility_undo">செயல்தவிர்க்கும்</string>
     <!-- Announces redo action -->
-    <string name="contextual_command_accessibility_redo">மீண்டும் செய்</string>
+    <string name="contextual_command_accessibility_redo">மீண்டும்செய்யும்</string>
     <!-- Announces bullet action -->
     <string name="contextual_command_accessibility_bullet">பொட்டுக்குறி</string>
     <!-- Announces list action -->
     <string name="contextual_command_accessibility_list">பட்டியல்</string>
     <!-- Announces link action -->
-    <string name="contextual_command_accessibility_link">இணைப்பு</string>
+    <string name="contextual_command_accessibility_link">இணைக்கும்</string>
     <!-- UI Label denoting item updating -->
-    <string name="contextual_command_bar_item_update_title">பொருள் புதுப்பித்தல்</string>
+    <string name="contextual_command_bar_item_update_title">உருப்படி புதுப்பிக்கப்படுகிறது</string>
     <!-- UI Label denoting spacing -->
-    <string name="contextual_command_bar_space_title">இடைவெளி</string>
+    <string name="contextual_command_bar_space_title">இடைவெளியிடல்</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">பதவி நீக்கம்</string>
+    <string name="contextual_command_bar_dismiss_position">இடநிலையை நிராகரி</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">தொடங்கு</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">முடிவு</string>
     <!-- UI bar label denoting the space between groups -->
-    <string name="contextual_command_bar_group_space_title">குழு இடம்</string>
+    <string name="contextual_command_bar_group_space_title">குழு இடைவெளி</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">பொருள் இடம்</string>
+    <string name="contextual_command_bar_item_space_title">உருப்படி இடைவெளி</string>
     <!-- UI bar label denoting the space in number value dp's -->
     <string name="contextual_command_bar_space_value">%d dp</string>
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">கொடி</string>
+    <string name="bottom_sheet_item_flag_title">கொடியிடு</string>
     <!--UI Label for user action clicked on item flag-->
     <string name="bottom_sheet_item_flag_toast">கொடி உருப்படி கிளிக் செய்யப்பட்டது</string>
     <!--UI Label for item reply-->
@@ -202,13 +202,13 @@
     <!--UI Label for user action clicked on item reply-->
     <string name="bottom_sheet_item_reply_toast">பதில் உருப்படி கிளிக் செய்யப்பட்டது</string>
     <!--UI Label for item forward-->
-    <string name="bottom_sheet_item_forward_title">முன்னோக்கி</string>
+    <string name="bottom_sheet_item_forward_title">முன்னனுப்பு</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">முன்னோக்கி உருப்படி கிளிக் செய்யப்பட்டது</string>
+    <string name="bottom_sheet_item_forward_toast">கிளிக் செய்த உருப்படியை முன்னனுப்பு</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">நீக்கு</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">கிளிக் செய்த உருப்படியை நீக்கு</string>
+    <string name="bottom_sheet_item_delete_toast">உருப்படியை நீக்கு கிளிக் செய்யப்பட்டது</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">அவதார்</string>
     <!--Double line items-->
@@ -221,21 +221,21 @@
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">படத்தொகுப்பு</string>
     <!--UI description label view your photos-->
-    <string name="bottom_sheet_item_gallery_subtitle">உங்கள் புகைப்படங்களைக் காண்க</string>
+    <string name="bottom_sheet_item_gallery_subtitle">உங்கள் புகைப்படங்களைக் காணவும்</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">கேலரி உருப்படி கிளிக் செய்யப்பட்டது</string>
+    <string name="bottom_sheet_item_gallery_toast">படத்தொகுப்பு உருப்படி கிளிக் செய்யப்பட்டது</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">வீடியோக்கள்</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">உங்கள் வீடியோக்களை இயக்கவும்</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">கிளிக் செய்யப்பட்ட வீடியோக்கள் உருப்படி</string>
+    <string name="bottom_sheet_item_videos_toast">வீடியோக்கள் உருப்படி கிளிக் செய்யப்பட்டது</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">நிர்வகி</string>
     <!--UI description label Manage your media library-->
-    <string name="bottom_sheet_item_manage_subtitle">உங்கள் மீடியா நூலகத்தை நிர்வகிக்கவும்</string>
+    <string name="bottom_sheet_item_manage_subtitle">உங்கள் ஊடக நூலகத்தை நிர்வகிக்கவும்</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">கிளிக் செய்த உருப்படியை நிர்வகி</string>
+    <string name="bottom_sheet_item_manage_toast">உருப்படியை நிர்வகி கிளிக் செய்யப்பட்டது</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">மின்னஞ்சல் செயல்கள்</string>
@@ -243,19 +243,19 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">ஆவணங்கள்</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">கடைசியாக புதுப்பிக்கப்பட்டது 2:14 பிற்பகல்</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">பிற்பகல் 2:14-க்கு கடைசியாக புதுப்பிக்கப்பட்டது</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">பகிர்</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">கிளிக் செய்த உருப்படியைப் பகிரவும்</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">கிளிக் செய்த உருப்படியைப் பகிர்</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">நகர்த்து</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">உருப்படியை கிளிக் செய்தபடி நகர்த்தவும்</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">கிளிக் செய்த உருப்படியை நகர்த்து</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">நீக்கு</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">கிளிக் செய்த உருப்படியை நீக்கு</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">உருப்படியை நீக்கு கிளிக் செய்யப்பட்டது</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">தகவல்</string>
     <!--UI Label for user action clicked on item info-->
@@ -277,33 +277,33 @@
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">பொத்தான்</string>
-    <string name="buttonbar">பொத்தான் பார்</string>
+    <string name="buttonbar">ButtonBar</string>
     <string name="button_disabled">முடக்கப்பட்ட பொத்தான்</string>
-    <string name="button_borderless">எல்லையற்ற பொத்தான்</string>
-    <string name="button_borderless_disabled">எல்லையற்ற முடக்கப்பட்ட பொத்தான்</string>
+    <string name="button_borderless">கரையில்லா பொத்தான்</string>
+    <string name="button_borderless_disabled">கரையில்லா முடக்கப்பட்ட பொத்தான்</string>
     <string name="button_large">பெரிய பொத்தான்</string>
     <string name="button_large_disabled">பெரிய முடக்கப்பட்ட பொத்தான்</string>
     <string name="button_outlined">கோடிட்டுக் காட்டப்பட்ட பொத்தான்</string>
     <string name="button_outlined_disabled">கோடிட்டுக் காட்டப்பட்ட முடக்கப்பட்ட பொத்தான்</string>
 
     <!--CalendarView-->
-    <string name="calendar_example_chosen_date">தேதியைத் தேர்வுசெய்</string>
+    <string name="calendar_example_chosen_date">தேதியைத் தேர்வுசெய்யவும்</string>
 
     <!--DateTimePicker-->
     <!-- title -->
     <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
-    <string name="date_time_picker_single_date_title">ஒற்றை தேதி</string>
+    <string name="date_time_picker_single_date_title">ஒற்றைத் தேதி</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">தேதி தேர்வு செய்யப்படவில்லை</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Show date picker</string>
+    <string name="date_time_picker_date_button">தேதித் தேர்வியைக் காட்டு</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">தேர்ந்தெடுக்கப்பட்ட தேதி தாவலுடன் தேதி நேர பிக்கரைக் காட்டு</string>
+    <string name="date_time_picker_calendar_date_time_button">தேர்ந்தெடுக்கப்பட்ட தேதித் தாவலுடன் தேதி நேரத் தேர்வியைக் காட்டு</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">தேர்ந்தெடுக்கப்பட்ட நேரத் தாவலுடன் தேதி நேரத் தேர்வைக் காட்டு</string>
+    <string name="date_time_picker_date_time_calendar_button">தேர்ந்தெடுக்கப்பட்ட நேரத் தாவலுடன் தேதி நேரத் தேர்வியைக் காட்டு</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">தேதி நேர பிக்கரைக் காட்டு</string>
+    <string name="date_time_picker_date_time_button">தேதி-நேரத் தேர்வியைக் காட்டு</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">தேதி வரம்பு</string>
     <!-- UI label showing start of the range-->
@@ -311,41 +311,41 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">முடிவு:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">தேர்வு செய்யப்படவில்லை</string>
+    <string name="date_time_picker_date_start_picked_default">எந்த தொடக்கமும் தேர்ந்தெடுக்கப்படவில்லை</string>
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_end_picked_default">முடிவு தேர்வு செய்யப்படவில்லை</string>
     <!-- text for button that selects start date -->
-    <string name="date_time_picker_date_start_button">தொடக்கத் தேதியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="date_time_picker_date_start_button">தொடக்கத் தேதியைத் தேர்ந்தெடு</string>
     <!-- text for button that selects end date -->
-    <string name="date_time_picker_date_end_button">முடிவுத் தேதியைத் தேர்ந்தெடுக்கவும்</string>
+    <string name="date_time_picker_date_end_button">முடிவுத் தேதியைத் தேர்ந்தெடு</string>
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">தேதி நேர வரம்பு</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">தேதி நேர வரம்பைத் தேர்ந்தெடு</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">உரையாடல் காட்டு</string>
+    <string name="date_time_picker_dialog_button">உரையாடலைக் காட்டு</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
-    <string name="drawer_button">காட்சி டிராயர்</string>
+    <string name="drawer_button">டிராயரைக் காட்டு</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">Show drawer dialog</string>
+    <string name="drawer_dialog_button">டிராயர் உரையாடலைக் காட்டு</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">No fade bottom dialog</string>
+    <string name="no_fade_bottom_dialog_button">மங்கலான கீழ் உரையாடல் இல்லை</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">மேல் டிராயரைக் காட்டு</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">ஃபேட் டாப் டயலாக் இல்லை</string>
+    <string name="no_fade_top_dialog_button">மங்கலான மேல் உரையாடல் இல்லை</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> நிகழ்ச்சி தொகுப்பாளர் பார்வை சிறந்த உரையாடல்</string>
+    <string name="anchor_view_top_dialog_button"> உரையாடல் மேல் அடையாளக் காட்சியைக் காட்டு</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> தலைப்பு மேல் உரையாடலைக் காண்பிக்கவும்</string>
+    <string name="no_title_top_dialog_button"> தலைப்பு மேல் உரையாடலைக் காட்ட வேண்டாம்</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> கீழே உள்ள தலைப்பு மேல் உரையாடலைக் காட்டு</string>
+    <string name="below_title_top_dialog_button"> தலைப்பு மேல் உரையாடலைக் கீழே காட்டு</string>
     <!-- text for button that shows right drawer -->
-    <string name="drawer_right_dialog_button">வலது டிராயரை காட்டு</string>
+    <string name="drawer_right_dialog_button">வலது டிராயரைக் காட்டு</string>
     <!-- text for button that shows left drawer -->
     <string name="drawer_left_dialog_button">இடது டிராயரைக் காட்டு</string>
 
@@ -353,73 +353,73 @@
     <!-- Title -->
     <string name="list_item_title">தலைப்பு, முதன்மை உரை</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">சப் டைட்டில், இரண்டாம் நிலை உரை</string>
+    <string name="list_item_subtitle">துணைத்தலைப்பு, இரண்டாம் நிலை உரை</string>
     <!-- secondary subtitle -->
-    <string name="list_item_secondary_subtitle">தனிப்பயன் சப் டைட்டில் உரை</string>
+    <string name="list_item_secondary_subtitle">துணைத்தலைப்பு உரையை தனிப்பயனாக்கவும்</string>
     <!-- Footer -->
-    <string name="list_item_footer">அடிக்குறிப்பு, மூன்றாம் நிலை உரை</string>
+    <string name="list_item_footer">கீழ்க்குறிப்பு, மூன்றாம் நிலை உரை</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">சாம்பல் துணை தலைப்பு உரையுடன் ஒற்றை வரி பட்டியல்</string>
+    <string name="list_item_sub_header_single_line">சாம்பல் துணைத் தலைப்பு உரையுடன் ஒற்றை வரி பட்டியல்</string>
     <string name="list_item_sub_header_two_line">இரண்டு வரி பட்டியல்</string>
     <string name="list_item_sub_header_two_line_dense">அடர்த்தியான இடைவெளி கொண்ட இரண்டு வரி பட்டியல்</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">தனிப்பயன் இரண்டாம் நிலை சப்டைட்டில் பார்வையுடன் இரண்டு வரி பட்டியல்</string>
-    <string name="list_item_sub_header_three_line">கருப்பு துணை தலைப்பு உரையுடன் மூன்று வரி பட்டியல்</string>
-    <string name="list_item_sub_header_no_custom_views">தனிப்பயன் காட்சிகள் இல்லாத உருப்படிகளை பட்டியலிடு</string>
-    <string name="list_item_sub_header_large_header">பெரிய தனிப்பயன் காட்சிகளைக் கொண்ட உருப்படிகளை பட்டியலிடுக</string>
-    <string name="list_item_sub_header_wrapped_text">மூடப்பட்ட உரை கொண்ட உருப்படிகளை பட்டியலிடுக</string>
-    <string name="list_item_sub_header_truncated_text">சுருக்கப்பட்ட உரை கொண்ட உருப்படிகளை பட்டியலிடுக</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">தனிப்பயன் இரண்டாம் நிலை துணைத்தலைப்பு பார்வையுடன் இரண்டு வரி பட்டியல்</string>
+    <string name="list_item_sub_header_three_line">கருப்பு துணைத் தலைப்பு உரையுடன் மூன்று வரி பட்டியல்</string>
+    <string name="list_item_sub_header_no_custom_views">தனிப்பயன் காட்சிகள் இல்லாத உருப்படிகளைப் பட்டியலிடு</string>
+    <string name="list_item_sub_header_large_header">பெரிய தனிப்பயன் காட்சிகளைக் கொண்ட உருப்படிகளைப் பட்டியலிடு</string>
+    <string name="list_item_sub_header_wrapped_text">மூடப்பட்ட உரை கொண்ட உருப்படிகளைப் பட்டியலிடுக</string>
+    <string name="list_item_sub_header_truncated_text">துண்டிக்கப்பட்ட உரை கொண்ட உருப்படிகளைப் பட்டியலிடு</string>
     <string name="list_item_sub_header_custom_accessory_text">செயல்</string>
-    <string name="list_item_truncation_middle">நடுத்தர திரிபு.</string>
-    <string name="list_item_truncation_end">முடிவுக்குக் கொண்டு வருதல்.</string>
-    <string name="list_item_truncation_start">சுருக்கத்தைத் தொடங்குங்கள்.</string>
+    <string name="list_item_truncation_middle">நடுத் துண்டிப்பு.</string>
+    <string name="list_item_truncation_end">முடிவு துண்டிப்பு.</string>
+    <string name="list_item_truncation_start">துண்டிப்பைத் தொடங்கு.</string>
     <string name="list_item_custom_text_view">மதிப்பு</string>
     <string name="list_item_click">பட்டியல் உருப்படியைக் கிளிக் செய்தீர்கள்.</string>
     <string name="list_item_click_custom_accessory_view">தனிப்பயன் துணைக் காட்சியைக் கிளிக் செய்தீர்கள்.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">நீங்கள் துணை தலைப்பு தனிப்பயன் துணை காட்சியைக் கிளிக் செய்தீர்கள்.</string>
-    <string name="list_item_more_options">மேலும் விருப்பங்கள்</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">நீங்கள் துணைத் தலைப்பு தனிப்பயன் துணைக் காட்சியைக் கிளிக் செய்தீர்கள்.</string>
+    <string name="list_item_more_options">கூடுதல் விருப்பங்கள்</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
-    <string name="people_picker_select_example">தேர்ந்தெடு</string>
+    <string name="people_picker_select_example">தேர்ந்தெடுக்கும்</string>
     <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">ஏதுமில்லை</string>
     <string name="people_picker_delete_example">நீக்கு</string>
     <string name="people_picker_custom_persona_description">இந்த எடுத்துக்காட்டு ஒரு தனிப்பயன் IPersona பொருளை எவ்வாறு உருவாக்குவது என்பதைக் காட்டுகிறது.</string>
-    <string name="people_picker_dialog_title_removed">நீங்கள் ஒரு ஆளுமையை நீக்கினீர்கள்:</string>
-    <string name="people_picker_dialog_title_added">நீங்கள் ஒரு ஆளுமையைச் சேர்த்தீர்கள்:</string>
-    <string name="people_picker_drag_started">டிராக் தொடங்கியது</string>
-    <string name="people_picker_drag_ended">டிராக் முடிந்தது</string>
+    <string name="people_picker_dialog_title_removed">நீங்கள் ஒரு Persona சிப்பை நீக்கினீர்கள்:</string>
+    <string name="people_picker_dialog_title_added">நீங்கள் ஒரு persona-ஐச் சேர்த்தீர்கள்:</string>
+    <string name="people_picker_drag_started">இழுவைத் தொடங்கியது</string>
+    <string name="people_picker_drag_ended">இழுவை முடிந்தது</string>
     <string name="people_picker_picked_personas_listener">Personas கேட்பவர்</string>
     <string name="people_picker_suggestions_listener">பரிந்துரைகள் கேட்பவர்</string>
-    <string name="people_picker_persona_chip_click">நீங்கள் %s கிளிக் செய்தீர்கள்</string>
+    <string name="people_picker_persona_chip_click">%s-இல் கிளிக் செய்தீர்கள்</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s பெறுநர்</item>
+        <item quantity="other">%1$s பெறுநர்கள்</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Expand Persistent BottomSheet</string>
-    <string name="collapse_persistent_sheet_button"> தொடர்ச்சியான பாட்டம்ஷீட்டை மறைக்கவும்</string>
-    <string name="show_persistent_sheet_button"> தொடர்ச்சியான பாட்டம்ஷீட்டைக் காட்டு</string>
+    <string name="expand_bottom_sheet_button">தொடர்ச்சியான கீழ்தாளை விரி</string>
+    <string name="collapse_persistent_sheet_button"> தொடர்ச்சியான கீழ்தாளை மறை</string>
+    <string name="show_persistent_sheet_button"> தொடர்ச்சியான கீழ்தாளைக் காட்டு</string>
     <string name="new_view">இது புதிய பார்வை</string>
-    <string name="toggle_sheet_content">Toggle Bottomsheet Content</string>
+    <string name="toggle_sheet_content">கீழ் தாள் உள்ளடக்கத்தை நிலைமாற்றவும்</string>
     <string name="switch_to_custom_content">தனிப்பயன் உள்ளடக்கத்திற்கு மாறவும்</string>
-    <string name="one_line_content">ஒன் லைன் பாட்டம்ஷீட் உள்ளடக்கம்</string>
-    <string name="toggle_disable_all_items">அனைத்து உருப்படிகளையும் முடக்கவும்</string>
+    <string name="one_line_content">ஒரு வரி கீழ்தாள் உள்ளடக்கம்</string>
+    <string name="toggle_disable_all_items">அனைத்து உருப்படிகளையும் முடக்குவதை நிலைமாற்று</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">காட்சியைச் சேர்/ அகற்று</string>
-    <string name="persistent_sheet_item_change_collapsed_height"> சரிந்த உயரத்தை மாற்றவும்</string>
+    <string name="persistent_sheet_item_add_remove_view">காட்சியைச் சேர்க்கவும்/அகற்றவும்</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> சுருக்கப்பட்ட உயரத்தை மாற்றவும்</string>
     <string name="persistent_sheet_item_create_new_folder_title">புதிய கோப்புறை</string>
     <string name="persistent_sheet_item_create_new_folder_toast">புதிய கோப்புறை உருப்படி கிளிக் செய்யப்பட்டது</string>
-    <string name="persistent_sheet_item_edit_title">திருத்து</string>
-    <string name="persistent_sheet_item_edit_toast">கிளிக் செய்த உருப்படியைத் திருத்தவும்</string>
-    <string name="persistent_sheet_item_save_title">சேமிக்கும்</string>
-    <string name="persistent_sheet_item_save_toast">உருப்படியை கிளிக் செய்த சேமிக்கவும்</string>
-    <string name="persistent_sheet_item_zoom_in_title">இன்னும் பெரிதாக்குக</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> ஜூம் இன் உருப்படி கிளிக் செய்யப்பட்டது</string>
-    <string name="persistent_sheet_item_zoom_out_title">இன்னும் சிறிதாக்குக</string>
-    <string name="persistent_sheet_item_zoom_out_toast">ஜூம் அவுட் உருப்படி கிளிக் செய்யப்பட்டது</string>
+    <string name="persistent_sheet_item_edit_title">திருத்தவும்</string>
+    <string name="persistent_sheet_item_edit_toast">உருப்படியைத் திருத்து கிளிக் செய்யப்பட்டது</string>
+    <string name="persistent_sheet_item_save_title">சேமிக்கவும்</string>
+    <string name="persistent_sheet_item_save_toast">உருப்படியைச் சேமி கிளிக் செய்யப்பட்டது</string>
+    <string name="persistent_sheet_item_zoom_in_title">பெரிதாக்குக</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> உருப்படியைப் பெரிதாக்கு கிளிக் செய்யப்பட்டது</string>
+    <string name="persistent_sheet_item_zoom_out_title">சிறிதாக்குக</string>
+    <string name="persistent_sheet_item_zoom_out_toast">இன்னும் சிறிதாக்கு உருப்படி கிளிக் செய்யப்பட்டது</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -456,7 +456,7 @@
     <string name="persona_name_ashley_mccarthy">ஆஷ்லே மெக்கார்த்தி</string>
     <string name="persona_name_carlos_slattery">கார்லோஸ் ஸ்லேட்டரி</string>
     <string name="persona_name_carole_poland">கரோல் போலந்து</string>
-    <string name="persona_name_cecil_folk">செசில் நாட்டுப்புற</string>
+    <string name="persona_name_cecil_folk">செசில் ஃபோக்</string>
     <string name="persona_name_celeste_burton">செலஸ்டே பர்ட்டன்</string>
     <string name="persona_name_charlotte_waltson">சார்லோட் வால்ட்சன்</string>
     <string name="persona_name_colin_ballinger">கொலின் பாலிங்கர்</string>
@@ -483,25 +483,25 @@
     <string name="persona_subtitle_designer">வடிவமைப்பாளர்</string>
     <string name="persona_subtitle_engineer">பொறியாளர்</string>
     <string name="persona_subtitle_manager">மேலாளர்</string>
-    <string name="persona_subtitle_researcher">ஆராய்வான்</string>
+    <string name="persona_subtitle_researcher">ஆராய்ச்சியாளர்</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (சுருக்கத்தை சோதிக்க நீண்ட உரை எடுத்துக்காட்டு)</string>
-    <string name="persona_view_description_xxlarge">மூன்று வரி உரையுடன் XXLarge அவதாரம்</string>
-    <string name="persona_view_description_large">இரண்டு வரி உரையுடன் பெரிய அவதாரம்</string>
-    <string name="persona_view_description_small">ஒரு வரி உரையுடன் சிறிய அவதாரம்</string>
-    <string name="people_picker_hint">குறிப்பு காட்டப்பட்ட எதுவும் இல்லை</string>
+    <string name="persona_truncation">\ (சுருக்குவதைச் சோதிப்பதற்கான நீண்ட உரை எடுத்துக்காட்டு)</string>
+    <string name="persona_view_description_xxlarge">மூன்று வரி உரையுடன் XXLarge அவதார்</string>
+    <string name="persona_view_description_large">இரண்டு வரி உரையுடன் பெரிய அவதார்</string>
+    <string name="persona_view_description_small">ஒரு வரி உரையுடன் சிறிய அவதார்</string>
+    <string name="people_picker_hint">காட்டப்பட்ட குறிப்புடன் எதுவும் இல்லை</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">முடக்கப்பட்ட ஆளுமை சிப்</string>
+    <string name="persona_chip_example_disabled">முடக்கப்பட்ட Persona சிப்</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">பிழை ஆளுமை சிப்</string>
+    <string name="persona_chip_example_error">Persona சிப் பிழை</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">நெருங்கிய ஐகான் இல்லாத ஆளுமை சிப்</string>
+    <string name="persona_chip_example_no_icon">மூடு படவுரு இல்லாத Persona சிப்</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">அடிப்படை ஆளுமை சிப்</string>
+    <string name="persona_chip_example_basic">அடிப்படை Persona சிப்</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">நீங்கள் தேர்ந்தெடுத்த பெர்சனா சிப்பைக் கிளிக் செய்தீர்கள்.</string>
+    <string name="persona_chip_example_click">நீங்கள் தேர்ந்தெடுக்கப்பட்ட Persona சிப்பைக் கிளிக் செய்தீர்கள்.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -515,7 +515,7 @@
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">உலாவியில் திற</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">இது ஒரு மல்டிலைன் பாப்அப் மெனு. அதிகபட்ச வரிகள் இரண்டாக அமைக்கப்பட்டுள்ளன, மீதமுள்ள உரை சுருக்கப்படும்.
+    <string name="popup_menu_item_multiline">இது ஒரு பல-வரி பாப்அப் மெனு. அதிகபட்ச வரிகள் இரண்டாக அமைக்கப்பட்டுள்ளன, மீதமுள்ள உரைத் துண்டிக்கப்படும்.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">அனைத்து செய்திகளும்</string>
@@ -524,28 +524,28 @@
     <!-- UI label for item >News from sites -->
     <string name="popup_menu_item_news_from_sites">தளங்களில் இருந்து செய்திகள்</string>
     <!-- UI label for item contoso -->
-    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <string name="popup_menu_item_contoso_travel">கான்டோசோ</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">வேலை நேரத்திற்கு வெளியே அறிவிக்கவும்</string>
+    <string name="popup_menu_item_notify_outside">பணி நேரம் முடிந்துவிட்டதை அறிவி</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">டெஸ்க்டாப்பில் செயலற்ற நிலையில் இருக்கும்போது அறிவிக்கவும்</string>
+    <string name="popup_menu_item_notify_inactive">திரைப்பலகத்தில் செயலற்ற நிலையில் இருக்கும்போது அறிவி</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">உருப்படியைக் கிளிக் செய்தீர்கள்:</string>
+    <string name="popup_menu_item_clicked">உருப்படியில் கிளிக் செய்தீர்கள்:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">எளிய மெனு</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple_duo">எளிய மெனு2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
-    <string name="popup_menu_single_check">தேர்ந்தெடுக்கக்கூடிய ஒரு உருப்படி மற்றும் ஒரு டிவைடர் கொண்ட மெனு</string>
+    <string name="popup_menu_single_check">ஒரு தேர்ந்தெடுக்கக்கூடிய உருப்படி மற்றும் ஒரு பிரிப்பான் கொண்ட மெனு</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">தேர்ந்தெடுக்கக்கூடிய அனைத்து உருப்படிகள், ஐகான்கள் மற்றும் நீண்ட உரையுடன் மெனு</string>
+    <string name="popup_menu_all_check">தேர்ந்தெடுக்கக்கூடிய அனைத்து உருப்படிகள், படவுருக்கள் மற்றும் நீண்ட உரையுடன் மெனு</string>
     <!--Text for button that shows popupmenu -->
-    <string name="popup_menu_show">காண்பி</string>
+    <string name="popup_menu_show">காட்டு</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">சுற்றறிக்கை முன்னேற்றம்</string>
-    <string name="circular_progress_xsmall">XSmal</string>
+    <string name="circular_progress">வட்ட முன்னேற்றம்</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">சிறியது</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -554,10 +554,10 @@
     <string name="circular_progress_large">பெரியது</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">நேரியல் முன்னேற்றம்</string>
+    <string name="linear_progress">நேர்க்கோட்டு முன்னேற்றம்</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">உறுதி நிலையற்ற</string>
+    <string name="linear_progress_indeterminate_label">தீர்மானிக்கப்படாத</string>
     <!-- UI label showing a Determinate progress bar -->
     <string name="linear_progress_determinate_label">தீர்மானிக்கப்பட்ட</string>
 
@@ -569,56 +569,56 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">தேடல் பட்டி</string>
+    <string name="searchbar">தேடல்பட்டி</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">மைக்ரோஃபோன் அழைப்பு</string>
+    <string name="searchbar_microphone_callback">மைக்ரோஃபோன் மறுஅழைப்பு</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">தானாகத்திருத்து</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">மைக்ரோஃபோன் அழுத்தப்பட்டது</string>
     <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">வலது பார்வை அழுத்தப்பட்டது</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">விசைப்பலகை தேடல் அழுத்தப்பட்டது</string>
+    <string name="searchbar_keyboard_search_pressed">விசைப்பலகைத் தேடல் அழுத்தப்பட்டது</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">செயல்</string>
     <string name="snackbar_action_long">நீண்ட உரை நடவடிக்கை</string>
-    <string name="snackbar_single_line">சிங்கிள் லைன் சிற்றுண்டி</string>
-    <string name="snackbar_multiline">இது ஒரு மல்டிலைன் சிற்றுண்டி. அதிகபட்ச வரிகள் இரண்டாக அமைக்கப்பட்டுள்ளன, மீதமுள்ள உரை சுருக்கப்படும்.
+    <string name="snackbar_single_line">ஒற்றை வரி snackbar</string>
+    <string name="snackbar_multiline">இது ஒரு பல-வரி snackbar. அதிகபட்ச வரிகள் இரண்டாக அமைக்கப்பட்டுள்ளன, மீதமுள்ள உரை சுருக்கப்படும்.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">இது ஒரு அறிவிப்பு சிற்றுண்டி. இது புதிய அம்சங்களைத் தொடர்பு கொள்ளப் பயன்படுகிறது.</string>
-    <string name="snackbar_primary">இது ஒரு முதன்மை சிற்றுண்டி.</string>
-    <string name="snackbar_light">இது ஒரு இலகுவான சிற்றுண்டி.</string>
-    <string name="snackbar_warning">இது ஒரு எச்சரிக்கை சிற்றுண்டி.</string>
-    <string name="snackbar_danger">இது ஒரு அபாய சிற்றுண்டி.</string>
-    <string name="snackbar_description_single_line">குறுகிய காலம்</string>
-    <string name="snackbar_description_single_line_custom_view">சிறிய தனிப்பயன் காட்சியாக வட்ட முன்னேற்றத்துடன் நீண்ட காலம்</string>
-    <string name="snackbar_description_single_line_action">செயலுடன் கூடிய குறுகிய காலம்</string>
-    <string name="snackbar_description_single_line_action_custom_view">செயல் மற்றும் நடுத்தர தனிப்பயன் பார்வையுடன் குறுகிய காலம்</string>
-    <string name="snackbar_description_single_line_custom_text_color">தனிப்பயனாக்கப்பட்ட உரை வண்ணத்துடன் குறுகிய காலம்</string>
-    <string name="snackbar_description_multiline">நீண்ட காலம்</string>
-    <string name="snackbar_description_multiline_custom_view">சிறிய தனிப்பயன் பார்வையுடன் நீண்ட காலம்</string>
-    <string name="snackbar_description_multiline_action">செயல் மற்றும் உரை புதுப்பிப்புகளுடன் காலவரையற்ற காலம்</string>
-    <string name="snackbar_description_multiline_action_custom_view">செயல் மற்றும் நடுத்தர தனிப்பயன் பார்வையுடன் குறுகிய காலம்</string>
-    <string name="snackbar_description_multiline_action_long">நீண்ட செயல் உரையுடன் குறுகிய காலம்</string>
-    <string name="snackbar_description_announcement">குறுகிய காலம்</string>
-    <string name="snackbar_description_updated">இந்த உரை புதுப்பிக்கப்பட்டுள்ளது.</string>
+    <string name="snackbar_announcement">இது ஒரு அறிவிப்பு snackbar. இது புதிய அம்சங்களைத் தொடர்பு கொள்ளப் பயன்படுகிறது.</string>
+    <string name="snackbar_primary">இது ஒரு முதன்மை snackbar.</string>
+    <string name="snackbar_light">இது ஒரு இலகுவான snackbar.</string>
+    <string name="snackbar_warning">இது ஒரு எச்சரிக்கை snackbar.</string>
+    <string name="snackbar_danger">இது ஒரு அபாய snackbar.</string>
+    <string name="snackbar_description_single_line">குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_single_line_custom_view">சிறிய தனிப்பயன் காட்சியாக வட்ட முன்னேற்றத்துடன் நீண்ட காலஅளவு</string>
+    <string name="snackbar_description_single_line_action">செயலுடன் கூடிய குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_single_line_action_custom_view">செயல் மற்றும் நடுத்தர தனிப்பயன் பார்வையுடன் குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_single_line_custom_text_color">தனிப்பயனாக்கப்பட்ட உரை வண்ணத்துடன் குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_multiline">நீண்ட காலஅளவு</string>
+    <string name="snackbar_description_multiline_custom_view">சிறிய தனிப்பயன் பார்வையுடன் நீண்ட காலஅளவு</string>
+    <string name="snackbar_description_multiline_action">செயல் மற்றும் உரைப் புதுப்பிப்புகளுடன் காலவரையற்ற காலஅளவு</string>
+    <string name="snackbar_description_multiline_action_custom_view">செயல் மற்றும் நடுத்தர தனிப்பயன் பார்வையுடன் குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_multiline_action_long">நீண்ட செயல் உரையுடன் குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_announcement">குறுகிய காலஅளவு</string>
+    <string name="snackbar_description_updated">இந்த உரைப் புதுப்பிக்கப்பட்டுள்ளது.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">ஸ்நாக்ஸ்பார் காட்டு</string>
+    <string name="snackbar_button_show">Snackbar-ஐக் காட்டு</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">ஒற்றைக் கோடு</string>
+    <string name="snackbar_headline_single_line">ஒற்றை வரி</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">பலவரி</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">அறிவிப்பு பாணி</string>
     <!-- UI Text denoting Primary style snackbar -->
-    <string name="snackbar_headline_primary_style">முதன்மை பாணி</string>
+    <string name="snackbar_headline_primary_style">முதன்மைப் பாணி</string>
     <!-- UI Text denoting Light style snackbar -->
-    <string name="snackbar_headline_light_style">லைட் ஸ்டைல்</string>
+    <string name="snackbar_headline_light_style">லேசான பாணி</string>
     <!-- UI Text denoting Warning stylee snackbar -->
-    <string name="snackbar_headline_warning_style">எச்சரிக்கை பாணி</string>
+    <string name="snackbar_headline_warning_style">எச்சரிக்கைப் பாணி</string>
     <!-- UI Text denoting Danger style snackbar -->
     <string name="snackbar_headline_danger_style">அபாய பாணி</string>
 
@@ -637,9 +637,9 @@
     <!-- UI text for text alignment of tab -->
     <string name="tabBar_text_alignment">உரை சீரமைப்பு</string>
     <!-- UI text for vertical alignment of tab -->
-    <string name="tabBar_vertical">செங்குத்து</string>
+    <string name="tabBar_vertical">செங்குத்தாக</string>
     <!-- UI text for horizontal alignment of tab -->
-    <string name="tabBar_horizontal">கிடைமட்டம்</string>
+    <string name="tabBar_horizontal">கிடைமட்டமாக</string>
     <!-- UI text for no text of tab -->
     <string name="tabBar_no_text">உரை இல்லை</string>
     <!-- UI text for no. of tab items -->
@@ -649,68 +649,68 @@
     <!-- UI labels and descriptions -->
     <string name="cell_sample_title">தலைப்பு</string>
     <string name="cell_sample_description">விளக்கம்</string>
-    <string name="calculate_cells">100 செல்களை ஏற்றவும் / கணக்கிடவும்</string>
-    <string name="calculate_layouts">100 தளவமைப்புகளை ஏற்றவும் / கணக்கிடவும்</string>
+    <string name="calculate_cells">100 கலங்களை ஏற்று/கணக்கிடு</string>
+    <string name="calculate_layouts">100 தளவமைப்புகளை ஏற்று/கணக்கிடு</string>
     <string name="template_list">வார்ப்புரு பட்டியல்</string>
     <string name="regular_list">வழக்கமான பட்டியல்</string>
-    <string name="cell_example_title">தலைப்பு: செல்</string>
+    <string name="cell_example_title">தலைப்பு: கலம்</string>
     <string name="cell_example_description">விளக்கம்: நோக்குநிலையை மாற்ற தட்டவும்</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">ஸ்டாண்டர்ட் டேப் 2-பிரிவு</string>
+    <string name="tab_standard_two_segment">நிலையான தாவல் 2-பிரிவு</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">ஸ்டாண்டர்ட் டேப் 3-செக்மெண்ட்</string>
+    <string name="tab_standard_three_segment">நிலையான தாவல் 3-பிரிவு</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">ஸ்டாண்டர்ட் டேப் 4-செக்மென்ட்</string>
+    <string name="tab_standard_four_segment">நிலையான தாவல் 4-பிரிவு</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Pager உடன் நிலையான தாவல்</string>
+    <string name="tab_standard_with_pager">பேஜருடன் நிலையான தாவல்</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">சுவிட்ச் டேப்</string>
+    <string name="tab_switch">தாவலை நிலைமாற்று</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">மாத்திரைகள் தாவல் </string>
+    <string name="tab_pills">மாத்திரைகள் வடிவ தாவல் </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Tooltip ஐத் தட்டவும்</string>
+    <string name="tooltip_button">கருவிக்குறிப்பைத் தட்டு</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">தனிப்பயன் நாள்காட்டி கருவிக்கு தட்டவும்</string>
+    <string name="tooltip_calendar_demo_button">தனிப்பயன் நாள்காட்டி கருவிக்குறிப்புக்குத் தட்டு</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">தனிப்பயன் வண்ண கருவிக்குறிப்பைத் தட்டவும்</string>
+    <string name="tooltip_custom_button">தனிப்பயன் வண்ண கருவிக்குறிப்பைத் தட்டு</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">உள்ளே உள்ள கருவிக்குறிப்பைத் தட்டவும்</string>
+    <string name="tooltip_center_button">உள்ளே உள்ள கருவிக்குறிப்பை நிராகரிக்கத் தட்டு</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">தனிப்பயன் காட்சி கருவிக்கு தட்டவும்</string>
+    <string name="tooltip_custom_view">தனிப்பயன் காட்சி கருவிக்குறிப்புக்குத் தட்டு</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">சிறந்த தனிப்பயன் வண்ண கருவிக்குறிப்பு</string>
+    <string name="tooltip_top_start_message">மேல் தனிப்பயன் வண்ண கருவிக்குறிப்பு</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">10dp offsetX உடன் டாப் எண்ட் டூல்டிப்</string>
+    <string name="tooltip_top_end_message">10dp ஆஃப்செட்X உடன் மேல் முனை உதவிக்குறிப்பு</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">கீழே தொடக்க கருவிக்குறிப்பு</string>
+    <string name="tooltip_bottom_start_message">கீழ் தொடக்க கருவிக்குறிப்பு</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">10dp offsetY உடன் கீழே எண்ட் டூல்டிப்</string>
+    <string name="tooltip_bottom_end_message">10dp ஆஃப்செட்Y உடன் கீழ் முனை உதவிக்குறிப்பு</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">டூல்டிப்பின் உள்ளே நிராகரிக்கவும்</string>
+    <string name="tooltip_center_message">உள்ளே உள்ள கருவிக்குறிப்பை நிராகரி</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Tooltip பணிநீக்கம்</string>
+    <string name="tooltip_dismiss_message">கருவிக்குறிப்பு நிராகரிக்கப்பட்டது</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">தலைப்பு லைட் 28sp</string>
+    <string name="headline">தலைப்பு லேசான 28sp ஆகும்</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">தலைப்பு 1 என்பது நடுத்தர 20sp</string>
+    <string name="title_1">தலைப்பு 1 நடுத்தர 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
     <string name="title_2">தலைப்பு 2 வழக்கமான 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">தலைப்பு ரெகுலர் 18sp</string>
+    <string name="heading">தலைப்பு வழக்கமான 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">துணைத் தலைப்பு 1 வழக்கமான 16sp ஆகும்</string>
+    <string name="subheading_1">துணைத்தலைப்பு 1 வழக்கமான 16sp ஆகும்</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">துணைத் தலைப்பு 2 நடுத்தர 16sp ஆகும்</string>
+    <string name="subheading_2">துணைத்தலைப்பு 2 நடுத்தர 16sp ஆகும்</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">உடல் 1 வழக்கமான 14 sp ஆகும்</string>
+    <string name="body_1">உடல் 1 வழக்கமான 14sp ஆகும்</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">பாடி 2 நடுத்தர 14 sp ஆகும்</string>
+    <string name="body_2">உடல் 2 நடுத்தர 14sp ஆகும்</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
     <string name="caption">தலைப்பு வழக்கமான 12sp</string>
 

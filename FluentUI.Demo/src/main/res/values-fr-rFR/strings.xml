@@ -65,7 +65,7 @@
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Basculer entre les thèmes (recrée l’activité)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Activer/désactiver le thème</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Élément</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -77,11 +77,11 @@
     <string name="avatar_style_square">Style carré</string>
     <!-- Sizes -->
     <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">Xlarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
     <string name="avatar_size_large">Grande</string>
     <string name="avatar_size_medium">Moyen</string>
     <string name="avatar_size_small">Petite</string>
-    <string name="avatar_size_xsmall">Xsmall</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -129,7 +129,7 @@
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Feuille inférieure</string>
+    <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Afficher avec des éléments sur une seule ligne</string>
@@ -146,7 +146,7 @@
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">Clic long %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Cliquez sur Ignorer</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Insertion d\'un élément</string>
     <!-- Text for button for updating an item-->
@@ -200,7 +200,7 @@
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Réponse</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Élément de réponse cliqué</string>
+    <string name="bottom_sheet_item_reply_toast">L’élément de réponse a cliqué</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Transférer</string>
     <!--UI Label for user action clicked on item forward-->
@@ -238,7 +238,7 @@
     <string name="bottom_sheet_item_manage_toast">Nous avons cliqué sur Gérer l’élément</string>
     <!--Single line header-->
     <!--UI title header email actions-->
-    <string name="bottom_sheet_item_single_line_header">Actions de courrier</string>
+    <string name="bottom_sheet_item_single_line_header">Actions d’e-mail</string>
     <!--Double line header-->
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Documents</string>
@@ -264,7 +264,7 @@
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Horloge</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Élément d’horloge cliqué</string>
+    <string name="bottom_sheet_item_clock_toast">L’élément horloge a cliqué</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Alarme</string>
     <!--UI Label for user action clicked on item alarm-->
@@ -291,19 +291,19 @@
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Datetimepicker</string>
+    <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Date unique</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Aucune date sélectionnée</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Afficher le sélecteur de dates ?</string>
+    <string name="date_time_picker_date_button">Afficher le sélecteur de dates</string>
     <!-- text for button that shows date picker with date tab selected -->
     <string name="date_time_picker_calendar_date_time_button">Afficher le sélecteur de date et heure avec l’onglet date sélectionné</string>
     <!-- text for button that shows date picker with time tab selected -->
     <string name="date_time_picker_date_time_calendar_button">Afficher le sélecteur de date et heure avec l’onglet Heure sélectionné</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Show date time picker</string>
+    <string name="date_time_picker_date_time_button">Afficher le sélecteur de date et d’heure</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Plage de dates</string>
     <!-- UI label showing start of the range-->
@@ -321,7 +321,7 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Plage de dates et d’heures</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Sélectionner l’intervalle de date et d’heure</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
@@ -362,7 +362,7 @@
     <string name="list_item_sub_header_single_line">Liste sur une seule ligne avec un texte d’en-tête de sous-titre gris</string>
     <string name="list_item_sub_header_two_line">Liste à deux lignes</string>
     <string name="list_item_sub_header_two_line_dense">Liste sur deux lignes avec un espacement dense</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Liste sur deux lignes avec affichage des sous-titres secondaires personnalisés</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Liste à deux lignes avec affichage personnalisé des sous-titres secondaires</string>
     <string name="list_item_sub_header_three_line">Liste sur trois lignes avec texte d’en-tête de sous-titre noir</string>
     <string name="list_item_sub_header_no_custom_views">Répertorier les éléments sans affichage personnalisé</string>
     <string name="list_item_sub_header_large_header">Répertorier les éléments avec des vues personnalisées volumineuses</string>
@@ -394,9 +394,9 @@
     <string name="people_picker_persona_chip_click">Vous avez cliqué sur %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="many">%1$s recipients</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s destinataire</item>
+        <item quantity="many">%1$s destinataires</item>
+        <item quantity="other">%1$s destinataires</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
@@ -406,7 +406,7 @@
     <string name="new_view">Il s’agit d’une nouvelle vue</string>
     <string name="toggle_sheet_content">Activer/désactiver le contenu de la feuille inférieure</string>
     <string name="switch_to_custom_content">Basculer vers le contenu personnalisé</string>
-    <string name="one_line_content">Contenu de la feuille inférieure à une ligne</string>
+    <string name="one_line_content">Contenu d’une feuille de base d’une ligne</string>
     <string name="toggle_disable_all_items">Activer/désactiver tous les éléments</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Ajouter/supprimer une vue</string>
@@ -416,7 +416,7 @@
     <string name="persistent_sheet_item_edit_title">Modifier</string>
     <string name="persistent_sheet_item_edit_toast">Modification de l’élément cliqué</string>
     <string name="persistent_sheet_item_save_title">Enregistrer</string>
-    <string name="persistent_sheet_item_save_toast">Enregistrement de l’élément sur lequel vous avez cliqué</string>
+    <string name="persistent_sheet_item_save_toast">Enregistrement de l’élément cliqué</string>
     <string name="persistent_sheet_item_zoom_in_title">Agrandir</string>
     <string name="persistent_sheet_item_zoom_in_toast"> Zoom avant sur l’élément sur lequel vous avez cliqué</string>
     <string name="persistent_sheet_item_zoom_out_title">Dézoomer</string>
@@ -453,33 +453,33 @@
     <string name="persona_footer">Disponible</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">Ait Meunier</string>
-    <string name="persona_name_amanda_brady">MeeManie</string>
-    <string name="persona_name_ashley_mccarthy">Marie Mc Nté</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
     <string name="persona_name_carole_poland">Pologne de Noël</string>
-    <string name="persona_name_cecil_folk">CécileÉcile</string>
-    <string name="persona_name_celeste_burton">Celeste ( Celeste )</string>
-    <string name="persona_name_charlotte_waltson">Jean-Jean Dussy</string>
-    <string name="persona_name_colin_ballinger">Ait Ballinger</string>
-    <string name="persona_name_daisy_phillips">Marguerite Maré</string>
-    <string name="persona_name_elliot_woodward">Bois de Lasse</string>
-    <string name="persona_name_elvia_atkins">Elvia Saño</string>
-    <string name="persona_name_erik_nason">Ait Nason</string>
-    <string name="persona_name_henry_brill">).</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Fielder Der</string>
-    <string name="persona_name_johnie_mcconnell">Johnie McCon kermique</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
     <string name="persona_name_kat_larsson">Kat Larsson</string>
-    <string name="persona_name_katri_ahokas">K api Ahokas</string>
-    <string name="persona_name_kevin_sturgis">Alain Sturgis</string>
-    <string name="persona_name_kristen_patterson">).</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Jean-Jean</string>
-    <string name="persona_name_mauricio_august">Mauricio août</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
-    <string name="persona_name_mona_kane">Mona Assistant</string>
-    <string name="persona_name_robin_counts">Nombre de robins</string>
-    <string name="persona_name_robert_tolbert">Chef Tolbert</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">Baguette magique ( Baguette )</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Concepteur</string>
     <string name="persona_subtitle_engineer">Ingénieur</string>
@@ -500,7 +500,7 @@
     <!-- UI label showing a persona chip with no close icon-->
     <string name="persona_chip_example_no_icon">Puce de personnage sans icône de fermeture</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Puce de personnage simple</string>
+    <string name="persona_chip_example_basic">Puce persona de base</string>
     <!-- UI label showing user action click on a selected persona chip -->
     <string name="persona_chip_example_click">Vous avez cliqué sur une puce de personnage sélectionnée.</string>
 
@@ -546,7 +546,7 @@
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">Progression circulaire</string>
-    <string name="circular_progress_xsmall">Xsmall</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">Petite</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -570,11 +570,11 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">Barre de Recherche</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Rappel du microphone</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Correction automatique</string>
+    <string name="searchbar_autocorrect">Autocorrect</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Microphone enfoncé</string>
     <!-- Announces that right view has been pressed -->
@@ -605,7 +605,7 @@
     <string name="snackbar_description_multiline_action_custom_view">Durée courte avec une action et une vue personnalisée moyenne</string>
     <string name="snackbar_description_multiline_action_long">Durée courte avec texte d’action long</string>
     <string name="snackbar_description_announcement">Durée courte</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Ce texte a été mis à jour.</string>
     <!-- text for button that shows a snackbar -->
     <string name="snackbar_button_show">Afficher la barre d’en-cas</string>
     <!-- UI Text denoting single line snackbar -->
@@ -642,7 +642,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Horizontal</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(sans texte)</string>
+    <string name="tabBar_no_text">Aucun texte</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Éléments d’onglet</string>
 
@@ -654,18 +654,18 @@
     <string name="calculate_layouts">Charger/calculer 100 dispositions</string>
     <string name="template_list">Liste de modèles</string>
     <string name="regular_list">Liste standard</string>
-    <string name="cell_example_title">cellule de titre</string>
+    <string name="cell_example_title">Titre : Cellule</string>
     <string name="cell_example_description">Description : appuyez pour modifier l’orientation</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
     <string name="tab_standard_two_segment">Onglet Standard 2 segments</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Onglet Standard 3 segments</string>
+    <string name="tab_standard_three_segment">Onglet Standard 3-segments</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
     <string name="tab_standard_four_segment">Onglet Standard 4 segments</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Onglet standard avec récepteur de pagineur</string>
+    <string name="tab_standard_with_pager">Onglet standard avec pager</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">Changer d’onglet</string>
     <!-- Text for button that shows pills tabs -->
@@ -693,7 +693,7 @@
     <!--UI label showing tooltip message -->
     <string name="tooltip_center_message">Masquer dans l’info-bulle</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Info-bulle ignorée</string>
+    <string name="tooltip_dismiss_message">Info-bulle fermée</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
@@ -709,10 +709,10 @@
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
     <string name="subheading_2">La sous-titre 2 est moyenne de 16 sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Body 1 est normal 14 sp</string>
+    <string name="body_1">Body 1 est normal 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
     <string name="body_2">Le corps 2 est moyen 14 sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">La légende est normale 12 sp</string>
+    <string name="caption">La légende est normale 12sp</string>
 
 </resources>
