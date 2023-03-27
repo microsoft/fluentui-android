@@ -5,7 +5,7 @@
 apply plugin: 'io.codearte.nexus-staging'
 
 buildscript {
-    ext.kotlin_version = '1.6.21'
+    ext.kotlin_version = '1.6.20'
     ext.nexus_plugin_version = '0.30.0'
     ext.hydra_client_plugin = '1.0.31'
     repositories {
@@ -50,7 +50,7 @@ allprojects {
         tokenautocompleteVersion  =    '2.0.8'
         threetenabpVersion        =    '1.1.0'
         universalPkgDir           =    "universal"
-        composeVersion            =    '1.2.0-beta02'
+        composeVersion            =    '1.2.0-alpha08'
         lifecycleVersion          =    '2.4.1'
         junitVersion              =    '4.13'
         mockitoVersion            =    '1.10.19'

@@ -66,6 +66,17 @@ enum class SwipeGesture {
     RIGHT
 }
 
+/**
+ * A card nudge is a short message that helps people discover what they can do in an app.
+ * It appears at the top of a screen, beneath the navigation bar, and pushes all other content below it.
+ * Card nudges are helpful for sending reminders and recommendations, but they don’t necessarily relates
+ * to someone’s current task.
+ *
+ * @param metadata [CardNudgeMetaData] storing the information for the Nudge to be displayed.
+ * @param modifier Optional Modifier to be applied to CardNudge.
+ * @param outlineMode Boolean for enabling outline on CardNudge. Default: [false]
+ * @param cardNudgeTokens Optional Tokens for customizing CardNudge.
+ */
 @Composable
 fun CardNudge(
     metadata: CardNudgeMetaData,

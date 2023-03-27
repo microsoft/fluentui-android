@@ -103,6 +103,16 @@ class SnackbarQueue {
     }
 }
 
+/**
+ * Snackbar are transient Notification control used to deliver information which can be timedout or
+ * can be cleared by user pressing the CTA or dismiss icon. Snackbar is rendered using [SnackbarMetadata]
+ * which saves all the information about it. Snackbar shows one message at a time and uses a [SnackbarQueue]
+ * to save all the requests. Multiple styles of Snackbar are supported using [SnackbarStyle].
+ *
+ * @param snackBarQueue Queue to store all the Notification requests.
+ * @param modifier Optional modifier to be applied to Snackbar.
+ * @param snackbarTokens Optional Tokens to redesign Snackbar.
+ */
 @Composable
 fun Snackbar(
     snackBarQueue: SnackbarQueue,
