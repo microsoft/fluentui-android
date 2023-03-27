@@ -3,6 +3,7 @@ on: workflow_dispatch
 jobs:
   Localize:
     runs-on: ubuntu-20.04
+    environment: Auth
 
     steps:
     - uses: actions/checkout@v3
@@ -14,11 +15,37 @@ jobs:
         TDBUILD_AAD_APPLICATION_CLIENT_SECRET: ${{ secrets.TDBUILD_AAD_APPLICATION_CLIENT_SECRET }}
       run: ./localize.sh
     - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3.5.0
-      with:
-        commit-message: Latest localized resource files from Touchdown Build
-        title: '[Localization] Localized Resource Files'
-        body: 'Latest localized resource files from Touchdown Build'
-        branch: tdbuild
-        labels: Automated PR
-        branch-suffix: timestamp
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        set -e
+        echo "Start."
+        # Configure git and Push updates
+        git config --global user.email ${{ secrets.EMAIL }}
+        git config --global user.name ${{ secrets.NAME }}
+        git config pull.rebase false
+        branch=testLocalize-$GITHUB_RUN_ID
+        message='TDBuild Localization'
+        echo "Creating branch $branch"
+        git branch $branch
+        echo "Checkout $branch"
+        git checkout $branch
+        # Add / update and commit
+        git add .
+        if [[ `git status --porcelain` ]]; then
+            echo "Adding git commit"
+            git commit -m 'Adding localized files'
+            echo "Pushing to origin"
+            git push origin $branch
+            echo "Creating PR"
+            gh api \
+                --method POST \
+                -H "Accept: application/vnd.github+json" \
+                /repos/${GITHUB_REPOSITORY}/pulls \
+                -f title="$message" \
+              -f body="Localized files" \
+              -f head="$branch" \
+              -f base='master'
+        else
+            echo "No changes since last run"
+        fi
