@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -92,7 +93,7 @@ fun AvatarCarousel(
 
 
         LazyRow(state = lazyListState,
-        modifier = Modifier.draggable(
+        modifier = modifier.draggable(
             orientation = Orientation.Horizontal,
             state = rememberDraggableState { delta ->
                 scope.launch {
@@ -111,7 +112,7 @@ fun AvatarCarousel(
                 val nameString =
                     if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
                 Column(
-                    modifier
+                    Modifier
                         .onFocusEvent { focusState ->
                             if (focusState.isFocused) {
                                 scope.launch {
@@ -134,7 +135,7 @@ fun AvatarCarousel(
                             enabled = item.enabled,
                             onClick = item.onItemClick ?: {},
                             role = Role.Button
-                        )
+                        ).testTag("item $index")
                         .clearAndSetSemantics {
                             contentDescription =
                                 nameString + "${if (enablePresence) "${statusString}, ${item.person.status}," else ""} " +

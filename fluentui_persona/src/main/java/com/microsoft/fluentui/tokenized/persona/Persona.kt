@@ -9,7 +9,7 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.listitem.TextIcons
 
 /**
- * A customized  list item. Can be a Single or multiline Avatar item.
+ * A customized  list item. Can be a Single or multiline Avatar item. Size of the persona is based on the texts provided
  *
  * @param person person details like avatar
  * @param modifier Optional modifier for List item.
@@ -57,7 +57,6 @@ fun Persona(
         leadingAccessoryView = {
             Avatar(
                 person = person,
-                modifier = modifier,
                 size = avatarSize,
                 enableActivityRings = enableAvatarActivityRings,
                 enablePresence = enableAvatarPresence,
