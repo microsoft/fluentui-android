@@ -9,7 +9,6 @@ import androidx.compose.ui.test.onChildAt
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.unit.dp
 import androidx.test.espresso.accessibility.AccessibilityChecks
-import com.google.android.apps.common.testing.accessibility.framework.AccessibilityCheck
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
@@ -18,6 +17,15 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+private const val SMALL_PERSONA_TAG = "small-persona"
+private const val LARGE_PERSONA_TAG = "large-persona"
+private const val XLARGE_PERSONA_TAG = "xlarge-persona"
+private const val ONE_LINE_HEIGHT = 48
+private const val TWO_LINE_HEIGHT = 68
+private const val THREE_LINE_HEIGHT = 88
+private const val SMALL_AVATAR_SIZE = 24
+private const val LARGE_AVATAR_SIZE = 40
+private const val XLARGE_AVATAR_SIZE = 56
 class V2PersonaUITest {
     @get:Rule
     val composeTestRule = createComposeRule()
@@ -34,35 +42,38 @@ class V2PersonaUITest {
             Persona(
                 person = person1,
                 primaryText = person1.firstName,
-                modifier = Modifier.testTag("small-persona")
+                modifier = Modifier.testTag(SMALL_PERSONA_TAG)
             )
             Persona(
                 person = person1,
                 primaryText = person1.firstName,
                 secondaryText = person1.lastName,
-                modifier = Modifier.testTag("large-persona")
+                modifier = Modifier.testTag(LARGE_PERSONA_TAG)
             )
             Persona(
                 person = person1,
                 primaryText = person1.firstName,
                 secondaryText = person1.lastName,
                 tertiaryText = "Microsoft",
-                modifier = Modifier.testTag("xlarge-persona")
+                modifier = Modifier.testTag(XLARGE_PERSONA_TAG)
             )
         }
     }
 
     @Test
     fun testPersonaBounds() {
-        composeTestRule.onNodeWithTag("small-persona").assertHeightIsAtLeast(48.dp)
-        composeTestRule.onNodeWithTag("large-persona").assertHeightIsAtLeast(68.dp)
-        composeTestRule.onNodeWithTag("xlarge-persona").assertHeightIsAtLeast(88.dp)
+        composeTestRule.onNodeWithTag(SMALL_PERSONA_TAG).assertHeightIsAtLeast(ONE_LINE_HEIGHT.dp)
+        composeTestRule.onNodeWithTag(LARGE_PERSONA_TAG).assertHeightIsAtLeast(TWO_LINE_HEIGHT.dp)
+        composeTestRule.onNodeWithTag(XLARGE_PERSONA_TAG).assertHeightIsAtLeast(THREE_LINE_HEIGHT.dp)
     }
 
     @Test
     fun testPersonaAvatarSize() {
-        composeTestRule.onNodeWithTag("small-persona").onChildAt(0).assertHeightIsEqualTo(24.dp)
-        composeTestRule.onNodeWithTag("large-persona").onChildAt(0).assertHeightIsEqualTo(40.dp)
-        composeTestRule.onNodeWithTag("xlarge-persona").onChildAt(0).assertHeightIsEqualTo(56.dp)
+        composeTestRule.onNodeWithTag(SMALL_PERSONA_TAG).onChildAt(0).assertHeightIsEqualTo(
+            SMALL_AVATAR_SIZE.dp)
+        composeTestRule.onNodeWithTag(LARGE_PERSONA_TAG).onChildAt(0).assertHeightIsEqualTo(
+            LARGE_AVATAR_SIZE.dp)
+        composeTestRule.onNodeWithTag(XLARGE_PERSONA_TAG).onChildAt(0).assertHeightIsEqualTo(
+            XLARGE_AVATAR_SIZE.dp)
     }
 }
