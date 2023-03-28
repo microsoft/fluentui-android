@@ -1,6 +1,5 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -13,26 +12,16 @@ import androidx.compose.ui.test.assertWidthIsEqualTo
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.unit.dp
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
-import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.services.events.AnnotationInfo
-import androidx.test.services.events.TestCaseInfo
-import androidx.test.services.events.TestRunInfo
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.Shimmer
-import com.microsoft.fluentuidemo.DemoActivity
-import org.junit.After
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
-class V2ProgressNoActivityUITest {
+class V2ProgressIndicatorUITest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
