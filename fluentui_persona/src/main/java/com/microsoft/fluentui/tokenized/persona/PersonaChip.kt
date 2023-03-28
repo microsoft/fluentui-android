@@ -129,7 +129,6 @@ fun PersonaChip(
                     }
                 }
                 Text(
-                    modifier = Modifier.padding(bottom = 2.dp),//Vertically center align text
                     text = person.getLabel(),
                     color = textColor,
                     style = typography
