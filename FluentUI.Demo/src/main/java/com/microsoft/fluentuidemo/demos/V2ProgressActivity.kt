@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -111,7 +112,7 @@ fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
                 text = "XXXSmall - 2dp",
                 color = textColor
             )
-            LinearProgressIndicator(modifier = Modifier.width(240.dp))
+            LinearProgressIndicator(modifier = Modifier.width(240.dp).testTag("LinearIndicator"))
         }
     }
 }
@@ -129,7 +130,7 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
                 color = textColor
             )
             CircularProgressIndicator(style = FluentStyle.Brand)
-            CircularProgressIndicator()
+            CircularProgressIndicator(modifier = Modifier.testTag("12dp"))
         }
         Row(
             Modifier.height(42.dp),
@@ -142,7 +143,8 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
             )
             CircularProgressIndicator(size = CircularProgressIndicatorSize.XSmall, style = FluentStyle.Brand)
             CircularProgressIndicator(
-                CircularProgressIndicatorSize.XSmall
+                CircularProgressIndicatorSize.XSmall,
+                modifier = Modifier.testTag("16dp")
             )
         }
         Row(
@@ -156,7 +158,8 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
             )
             CircularProgressIndicator(size = CircularProgressIndicatorSize.Medium, style = FluentStyle.Brand)
             CircularProgressIndicator(
-                CircularProgressIndicatorSize.Medium
+                CircularProgressIndicatorSize.Medium,
+                modifier = Modifier.testTag("24dp")
             )
         }
         Row(
@@ -170,7 +173,8 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
             )
             CircularProgressIndicator(size = CircularProgressIndicatorSize.Large, style = FluentStyle.Brand)
             CircularProgressIndicator(
-                CircularProgressIndicatorSize.Large
+                CircularProgressIndicatorSize.Large,
+                modifier = Modifier.testTag("32dp")
             )
         }
         Row(
@@ -184,7 +188,8 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
             )
             CircularProgressIndicator(CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
             CircularProgressIndicator(
-                CircularProgressIndicatorSize.XLarge
+                CircularProgressIndicatorSize.XLarge,
+                modifier = Modifier.testTag("40dp")
             )
         }
     }
@@ -213,8 +218,8 @@ fun DeterminateProgressIndicatorExamples(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        LinearProgressIndicator(linearProgress, modifier = Modifier.width(240.dp))
-        Text(text = "" + "%.0f".format(linearProgress * 100) + "%", color = textColor)
+        LinearProgressIndicator(linearProgress, modifier = Modifier.width(240.dp).testTag("LinearDeterminate"))
+        Text(text = "" + "%.0f".format(linearProgress * 100) + "%", color = textColor, modifier = Modifier.testTag("LinearProgress"))
     }
     Text(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
