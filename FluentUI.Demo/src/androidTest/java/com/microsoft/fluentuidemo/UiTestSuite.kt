@@ -13,6 +13,7 @@ import org.junit.runners.Suite
         V2DrawerActivityUITest::class,
         V2AvatarCarouselActivityUITest::class,
         V2PersonaUITest::class,
-        V2PersonaChipActivityUITest::class
+        V2PersonaChipActivityUITest::class,
+        V2ProgressIndicatorUITest::class
 )
 class UiTestSuite
