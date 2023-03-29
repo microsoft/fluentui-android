@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.listitem
 
+import android.R
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -210,6 +211,7 @@ object ListItem {
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
+     * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
      * @param leadingAccessoryView Optional composable leading accessory view.
      * @param trailingAccessoryView Optional composable trailing accessory view.
      *
@@ -231,10 +233,10 @@ object ListItem {
         primaryTextTrailingIcons: TextIcons? = null,
         secondarySubTextLeadingIcons: TextIcons? = null,
         secondarySubTextTailingIcons: TextIcons? = null,
-        progressIndicator: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        bottomView: (@Composable () -> Unit)? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
@@ -374,9 +376,9 @@ object ListItem {
                                 verticalAlignment = Alignment.CenterVertically,
                                 horizontalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
-                                if (progressIndicator != null) {
+                                if (bottomView != null) {
                                     Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
-                                        progressIndicator()
+                                        bottomView()
                                     }
                                 } else {
                                     if (secondarySubTextLeadingIcons != null) {
@@ -405,7 +407,7 @@ object ListItem {
                         }
                     }
                 }
-                if (progressIndicator == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
+                if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                     Box(
                         Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
                         contentAlignment = Alignment.CenterEnd
@@ -448,7 +450,7 @@ object ListItem {
         accessoryTextTitle: String? = null,
         accessoryTextOnClick: (() -> Unit)? = null,
         enabled: Boolean = true,
-        style: SectionHeaderStyle = SectionHeaderStyle.Standard,
+        style: SectionHeaderStyle = SectionHeaderStyle.Bold,
         enableChevron: Boolean = true,
         chevronOrientation: ChevronOrientation = ChevronOrientation(0f, 0f),
         border: BorderType = NoBorder,
@@ -522,7 +524,7 @@ object ListItem {
             ) {
                 Column {
                     Row(
-                        modifier
+                        Modifier
                             .background(backgroundColor)
                             .fillMaxWidth()
                             .heightIn(min = cellHeight)
@@ -544,7 +546,7 @@ object ListItem {
                                 if (enableChevron) {
                                     Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
                                         contentDescription = "Chevron",
-                                        modifier
+                                        Modifier
                                             .clickable { expandedState = !expandedState }
                                             .rotate(rotationState),
                                         tint = chevronTint)
@@ -563,7 +565,7 @@ object ListItem {
                             if (accessoryTextTitle != null) {
                                 Text(
                                     text = accessoryTextTitle,
-                                    modifier.clickable(role = Role.Button,
+                                    Modifier.clickable(role = Role.Button,
                                         onClick = accessoryTextOnClick ?: {}),
                                     color = actionTextColor,
                                     style = actionTextTypography
@@ -758,7 +760,7 @@ object ListItem {
         accessoryTextTitle: String? = null,
         accessoryTextOnClick: (() -> Unit)? = null,
         enabled: Boolean = true,
-        style: SectionHeaderStyle = SectionHeaderStyle.Standard,
+        style: SectionHeaderStyle = SectionHeaderStyle.Bold,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
