@@ -15,6 +15,25 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import org.junit.Rule
 import org.junit.Test
 
+private const val PRIMARY_TEXT = "text"
+private const val SECONDARY_TEXT = "subText"
+private const val TERTIARY_TEXT = "secondarySubText"
+private const val ONE_LINE_ITEM_TAG = "oneLineItem"
+private const val TWO_LINE_ITEM_TAG = "twoLineItem"
+private const val THREE_LINE_ITEM_TAG = "threeLineItem"
+private const val SECTION_DESCRIPTION_TAG = "SectionDescription"
+private const val SECTION_DESCRIPTION_BOTTOM_TAG = "BottomSectionDescription"
+private const val SECTION_HEADER_TAG = "SectionHeader"
+private const val HEADER_TAG = "Header"
+private const val BUTTON_TEXT = "button"
+private const val LEFT_VIEW_TAG = "leftView"
+private const val RIGHT_VIEW_TAG = "rightView"
+private const val MORE_ACTION_TEXT = "More"
+private const val ACTION_TEXT = "Action"
+private const val CONTENT_TAG = "content"
+private const val BOLD_TAG = "Bold"
+private const val SUBTLE_TAG = "Subtle"
+private const val CHEVRON_TAG = "Chevron"
 
 class V2ListItemActivityUITest {
 
@@ -24,10 +43,9 @@ class V2ListItemActivityUITest {
     @Test
     fun testOneLineListItem() {
         composeTestRule.setContent {
-            ListItem.Item(text = "primarytext", modifier = Modifier.testTag("oneLineItem"))
+            ListItem.Item(text = PRIMARY_TEXT, modifier = Modifier.testTag(ONE_LINE_ITEM_TAG))
         }
-        composeTestRule.onRoot(true).printToLog("tree")
-        val listItem = composeTestRule.onNodeWithTag("oneLineItem")
+        val listItem = composeTestRule.onNodeWithTag(ONE_LINE_ITEM_TAG)
         listItem.assertHeightIsAtLeast(48.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
@@ -38,13 +56,12 @@ class V2ListItemActivityUITest {
     fun testOneLineDisabledListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primarytext",
-                modifier = Modifier.testTag("oneLineItem"),
+                text = PRIMARY_TEXT,
+                modifier = Modifier.testTag(ONE_LINE_ITEM_TAG),
                 enabled = false
             )
         }
-        composeTestRule.onRoot(true).printToLog("tree")
-        val listItem = composeTestRule.onNodeWithTag("oneLineItem")
+        val listItem = composeTestRule.onNodeWithTag(ONE_LINE_ITEM_TAG)
         listItem.assertHeightIsAtLeast(48.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
@@ -52,15 +69,15 @@ class V2ListItemActivityUITest {
     }
 
     @Test
-    fun testTneLineListItem() {
+    fun testTwoLineListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primaryText",
-                subText = "subText",
-                modifier = Modifier.testTag("twoLineItem")
+                text = PRIMARY_TEXT,
+                subText = SECONDARY_TEXT,
+                modifier = Modifier.testTag(TWO_LINE_ITEM_TAG)
             )
         }
-        val listItem = composeTestRule.onNodeWithTag("twoLineItem")
+        val listItem = composeTestRule.onNodeWithTag(TWO_LINE_ITEM_TAG)
         listItem.assertHeightIsAtLeast(68.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
@@ -68,16 +85,16 @@ class V2ListItemActivityUITest {
     }
 
     @Test
-    fun testTneLineDisabledListItem() {
+    fun testTwoLineDisabledListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primaryText",
-                subText = "subText",
-                modifier = Modifier.testTag("twoLineItem"),
+                text = PRIMARY_TEXT,
+                subText = SECONDARY_TEXT,
+                modifier = Modifier.testTag(TWO_LINE_ITEM_TAG),
                 enabled = false
             )
         }
-        val listItem = composeTestRule.onNodeWithTag("twoLineItem")
+        val listItem = composeTestRule.onNodeWithTag(TWO_LINE_ITEM_TAG)
         listItem.assertHeightIsAtLeast(68.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
@@ -88,13 +105,13 @@ class V2ListItemActivityUITest {
     fun testThreeLineListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primaryText",
-                subText = "subText",
-                secondarySubText = "secondarySubText",
-                modifier = Modifier.testTag("threeLineItem")
+                text = PRIMARY_TEXT,
+                subText = SECONDARY_TEXT,
+                secondarySubText = TERTIARY_TEXT,
+                modifier = Modifier.testTag(THREE_LINE_ITEM_TAG)
             )
         }
-        val listItem = composeTestRule.onNodeWithTag("threeLineItem")
+        val listItem = composeTestRule.onNodeWithTag(THREE_LINE_ITEM_TAG)
         listItem.assertHeightIsAtLeast(88.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
@@ -105,14 +122,14 @@ class V2ListItemActivityUITest {
     fun testThreeLineDisabledListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primaryText",
-                subText = "subText",
-                secondarySubText = "secondarySubText",
-                modifier = Modifier.testTag("threeLineItem"),
+                text = PRIMARY_TEXT,
+                subText = SECONDARY_TEXT,
+                secondarySubText = TERTIARY_TEXT,
+                modifier = Modifier.testTag(THREE_LINE_ITEM_TAG),
                 enabled = false
             )
         }
-        val listItem = composeTestRule.onNodeWithTag("threeLineItem")
+        val listItem = composeTestRule.onNodeWithTag(THREE_LINE_ITEM_TAG)
         listItem.assertHeightIsAtLeast(88.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
@@ -123,37 +140,37 @@ class V2ListItemActivityUITest {
     fun testLeadingAccessoryViewInListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primaryText",
-                modifier = Modifier.testTag("oneLineItem"),
+                text = PRIMARY_TEXT,
+                modifier = Modifier.testTag(ONE_LINE_ITEM_TAG),
                 leadingAccessoryView = {
-                    Row(modifier = Modifier.testTag("leftView")) {
-                        Button(onClick = { }, text = "button")
+                    Row(modifier = Modifier.testTag(LEFT_VIEW_TAG)) {
+                        Button(onClick = { }, text = BUTTON_TEXT)
                     }
                 })
         }
-        composeTestRule.onNodeWithText("button", true).assertExists().assertIsDisplayed()
-        composeTestRule.onNodeWithText("button", true)
-            .assert(hasAnyAncestor(hasTestTag("oneLineItem")))
-        composeTestRule.onNodeWithTag("leftView", true).assertLeftPositionInRootIsEqualTo(16.dp)
+        composeTestRule.onNodeWithText(BUTTON_TEXT, true).assertExists().assertIsDisplayed()
+        composeTestRule.onNodeWithText(BUTTON_TEXT, true)
+            .assert(hasAnyAncestor(hasTestTag(ONE_LINE_ITEM_TAG)))
+        composeTestRule.onNodeWithTag(LEFT_VIEW_TAG, true).assertLeftPositionInRootIsEqualTo(16.dp)
     }
 
     @Test
     fun testTrailingAccessoryViewInListItem() {
         composeTestRule.setContent {
             ListItem.Item(
-                text = "primaryText",
-                modifier = Modifier.testTag("oneLineItem"),
+                text = PRIMARY_TEXT,
+                modifier = Modifier.testTag(ONE_LINE_ITEM_TAG),
                 trailingAccessoryView = {
-                    Row(modifier = Modifier.testTag("rightView")) {
-                        Button(onClick = { }, text = "button")
+                    Row(modifier = Modifier.testTag(RIGHT_VIEW_TAG)) {
+                        Button(onClick = { }, text = BUTTON_TEXT)
                     }
                 })
         }
-        val rootWidth = composeTestRule.onNodeWithTag("oneLineItem").getBoundsInRoot().width
-        composeTestRule.onNodeWithText("button", true).assertExists().assertIsDisplayed()
-        composeTestRule.onNodeWithText("button", true)
-            .assert(hasAnyAncestor(hasTestTag("oneLineItem")))
-        composeTestRule.onNodeWithTag("rightView", true).getBoundsInRoot().right.assertIsEqualTo(
+        val rootWidth = composeTestRule.onNodeWithTag(ONE_LINE_ITEM_TAG).getBoundsInRoot().width
+        composeTestRule.onNodeWithText(BUTTON_TEXT, true).assertExists().assertIsDisplayed()
+        composeTestRule.onNodeWithText(BUTTON_TEXT, true)
+            .assert(hasAnyAncestor(hasTestTag(ONE_LINE_ITEM_TAG)))
+        composeTestRule.onNodeWithTag(RIGHT_VIEW_TAG, true).getBoundsInRoot().right.assertIsEqualTo(
             rootWidth - 16.dp,
             "Right"
         )
@@ -163,19 +180,19 @@ class V2ListItemActivityUITest {
     fun testSectionDescription() {
         composeTestRule.setContent {
             ListItem.SectionDescription(
-                description = "Top Section Description",
-                modifier = Modifier.testTag("SD"),
+                description = SECTION_DESCRIPTION_TAG,
+                modifier = Modifier.testTag(SECTION_DESCRIPTION_TAG),
                 descriptionPlacement = TextPlacement.Top
             )
         }
-        val listItem = composeTestRule.onNodeWithTag("SD")
+        val listItem = composeTestRule.onNodeWithTag(SECTION_DESCRIPTION_TAG)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertHeightIsAtLeast(64.dp)
         listItem.assertIsEnabled()
-        composeTestRule.onNodeWithText("Top Section Description", useUnmergedTree = true).assert(
+        composeTestRule.onNodeWithText(SECTION_DESCRIPTION_TAG, useUnmergedTree = true).assert(
             hasAnyAncestor(
-                hasTestTag("SD")
+                hasTestTag(SECTION_DESCRIPTION_TAG)
             )
         )
     }
@@ -184,21 +201,22 @@ class V2ListItemActivityUITest {
     fun testSectionDescriptionTextPlacement() {
         composeTestRule.setContent {
             ListItem.SectionDescription(
-                description = "Top Section Description",
-                modifier = Modifier.testTag("SD"),
+                description = "Top $SECTION_DESCRIPTION_TAG",
+                modifier = Modifier.testTag(SECTION_DESCRIPTION_TAG),
                 descriptionPlacement = TextPlacement.Top
             )
             ListItem.SectionDescription(
-                description = "Bottom Section Description",
-                modifier = Modifier.testTag("BSD"),
+                description = SECTION_DESCRIPTION_BOTTOM_TAG,
+                modifier = Modifier.testTag(SECTION_DESCRIPTION_BOTTOM_TAG),
                 descriptionPlacement = TextPlacement.Bottom
             )
         }
-        composeTestRule.onNodeWithText("Top Section Description", useUnmergedTree = true)
+        composeTestRule.onNodeWithText("Top $SECTION_DESCRIPTION_TAG", useUnmergedTree = true)
             .assertTopPositionInRootIsEqualTo(8.dp)
         val text =
-            composeTestRule.onNodeWithText("Bottom Section Description", useUnmergedTree = true)
-        val rootHeight = composeTestRule.onNodeWithTag("BSD").getBoundsInRoot().height
+            composeTestRule.onNodeWithText(SECTION_DESCRIPTION_BOTTOM_TAG, useUnmergedTree = true)
+        val rootHeight =
+            composeTestRule.onNodeWithTag(SECTION_DESCRIPTION_BOTTOM_TAG).getBoundsInRoot().height
         (rootHeight - text.getBoundsInRoot().bottom).assertIsEqualTo(8.dp, "Bottom")
     }
 
@@ -206,16 +224,18 @@ class V2ListItemActivityUITest {
     fun testSectionDescriptionActionButton() {
         composeTestRule.setContent {
             ListItem.SectionDescription(
-                description = "Section Description",
-                modifier = Modifier.testTag("SD"),
-                actionText = "More",
+                description = SECTION_DESCRIPTION_TAG,
+                modifier = Modifier.testTag(SECTION_DESCRIPTION_TAG),
+                actionText = MORE_ACTION_TEXT,
                 onActionClick = {})
         }
-        composeTestRule.onRoot(true).printToLog("tree")
         val actionButton =
-            composeTestRule.onNodeWithText("Section Description More", useUnmergedTree = true)
+            composeTestRule.onNodeWithText(
+                "$SECTION_DESCRIPTION_TAG $MORE_ACTION_TEXT",
+                useUnmergedTree = true
+            )
                 .onChild()
-        actionButton.onChild().assert(hasText("More"))
+        actionButton.onChild().assert(hasText(MORE_ACTION_TEXT))
         actionButton.assertExists()
         actionButton.assertIsDisplayed()
         actionButton.assertHasClickAction()
@@ -225,9 +245,13 @@ class V2ListItemActivityUITest {
     @Test
     fun testSectionHeader() {
         composeTestRule.setContent {
-            ListItem.SectionHeader(title = "Header", modifier = Modifier.testTag("SH"))
+            ListItem.SectionHeader(
+                title = SECTION_HEADER_TAG, modifier = Modifier.testTag(
+                    SECTION_HEADER_TAG
+                )
+            )
         }
-        val listItem = composeTestRule.onNodeWithTag("SH", true)
+        val listItem = composeTestRule.onNodeWithTag(SECTION_HEADER_TAG, true)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertHeightIsEqualTo(48.dp)
@@ -238,11 +262,11 @@ class V2ListItemActivityUITest {
     fun sectionHeaderActionButton() {
         composeTestRule.setContent {
             ListItem.SectionHeader(
-                title = "Header",
-                accessoryTextTitle = "Action",
+                title = SECTION_HEADER_TAG,
+                accessoryTextTitle = ACTION_TEXT,
                 accessoryTextOnClick = {})
         }
-        val actionButton = composeTestRule.onNodeWithText("Action")
+        val actionButton = composeTestRule.onNodeWithText(ACTION_TEXT)
         actionButton.assertExists()
         actionButton.assertIsDisplayed()
         actionButton.assertHasClickAction()
@@ -252,31 +276,31 @@ class V2ListItemActivityUITest {
     @Test
     fun testSectionHeaderStyles() {
         composeTestRule.setContent {
-            ListItem.SectionHeader(title = "SectionHeader",
-                modifier = Modifier.testTag("Bold"),
+            ListItem.SectionHeader(title = SECTION_HEADER_TAG,
+                modifier = Modifier.testTag(BOLD_TAG),
                 style = SectionHeaderStyle.Bold,
                 content =
                 {
-                    Row(modifier = Modifier.testTag("content")) {
+                    Row(modifier = Modifier.testTag(CONTENT_TAG)) {
                         Button(onClick = {})
                     }
                 }
             )
             ListItem.SectionHeader(
-                title = "SectionHeader",
-                modifier = Modifier.testTag("Subtle"),
+                title = SECTION_HEADER_TAG,
+                modifier = Modifier.testTag(SUBTLE_TAG),
                 style = SectionHeaderStyle.Subtle,
                 enableChevron = false
             )
         }
-        composeTestRule.onNodeWithTag("content", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithTag(CONTENT_TAG, useUnmergedTree = true).assertExists()
             .assertIsDisplayed()
         composeTestRule.onNode(
-            hasContentDescription("Chevron").and(hasAnyAncestor(hasTestTag("Bold"))),
+            hasContentDescription(CHEVRON_TAG).and(hasAnyAncestor(hasTestTag(BOLD_TAG))),
             true
         ).assertIsDisplayed()
         composeTestRule.onNode(
-            hasContentDescription("Chevron").and(hasAnyAncestor(hasTestTag("Subtle"))),
+            hasContentDescription(CHEVRON_TAG).and(hasAnyAncestor(hasTestTag(SUBTLE_TAG))),
             true
         ).assertDoesNotExist()
     }
@@ -284,14 +308,13 @@ class V2ListItemActivityUITest {
     @Test
     fun testHeaders() {
         composeTestRule.setContent {
-            ListItem.Header(title = "Header", modifier = Modifier.testTag("Header"))
+            ListItem.Header(title = HEADER_TAG, modifier = Modifier.testTag(HEADER_TAG))
         }
-        val listItem = composeTestRule.onNodeWithTag("Header")
+        val listItem = composeTestRule.onNodeWithTag(HEADER_TAG)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertHeightIsEqualTo(48.dp)
         listItem.assertIsEnabled()
-        composeTestRule.onRoot(true).printToLog("tree")
         listItem.assertHasNoClickAction()
     }
 }
