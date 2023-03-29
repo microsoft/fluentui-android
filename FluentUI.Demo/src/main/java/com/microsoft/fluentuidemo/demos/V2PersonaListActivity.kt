@@ -1,7 +1,10 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -38,7 +41,7 @@ class V2PersonaListActivity : DemoActivity() {
 
         compose_here.setContent {
             FluentTheme {
-                createActivityUI()
+                createPersonaListActivityUI(this)
             }
         }
     }
@@ -54,10 +57,7 @@ class V2PersonaListActivity : DemoActivity() {
         )
     }
 
-    private fun createPersonasList(
-        scaffoldState: ScaffoldState,
-        coroutineScope: CoroutineScope
-    ): List<Persona> {
+    private fun createPersonasList(context: Context): List<Persona> {
         return arrayListOf(
             Persona(Person(
                 "Allan",
@@ -71,7 +71,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Allan Munger",
                 subTitle = "Manager",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Allan Munger", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Allan Munger", context) }),
             Persona(Person(
                 "Amanda",
                 "Brady",
@@ -84,7 +84,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Amanda Brady",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Amanda Brady", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Amanda Brady", context) }),
             Persona(Person(
                 "Ashley",
                 "McCarthy",
@@ -97,7 +97,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Ashley McCarthy",
                 subTitle = "Designer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Ashley McCarthy", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Ashley McCarthy", context) }),
             Persona(Person(
                 "Wanda",
                 "Howard",
@@ -110,7 +110,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Wanda Howard",
                 subTitle = "Manager",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Wanda Howard", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Wanda Howard", context) }),
             Persona(Person(
                 "Celeste",
                 "Burton",
@@ -123,7 +123,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Celeste Burton",
                 subTitle = "Engineer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Celeste Burton", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Celeste Burton", context) }),
             Persona(Person(
                 "Cecil",
                 "Folk",
@@ -136,7 +136,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Cecil Folk",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Cecil Folk", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Cecil Folk", context) }),
             Persona(Person(
                 "Carlos",
                 "Slattery",
@@ -149,7 +149,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Carlos Slattery",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Carlos Slattery", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Carlos Slattery", context) }),
             Persona(Person(
                 "Carole",
                 "Poland",
@@ -162,7 +162,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Carole Poland",
                 subTitle = "Designer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Carole Poland", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Carole Poland", context) }),
             Persona(Person(
                 "Charlotte",
                 "Waltson",
@@ -175,7 +175,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Charlotte Walston",
                 subTitle = "Engineer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Charlotte Walston", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Charlotte Walston", context) }),
             Persona(Person(
                 "Colin",
                 "Badllinger",
@@ -188,7 +188,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Colin Ballinger",
                 subTitle = "Engineer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Colin Ballinger", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Colin Ballinger", context) }),
             Persona(Person(
                 "Daisy",
                 "Phillips",
@@ -201,7 +201,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Daisy Phillips",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Daisy Phillips", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Daisy Phillips", context) }),
             Persona(Person(
                 "elliot",
                 "Woodward",
@@ -214,7 +214,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Elliot Woodward",
                 subTitle = "Intern",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Elliot Woodward", coroutineScope, scaffoldState) }),
+                onClick = { onClick("Elliot Woodward", context) }),
             Persona(Person(
                 "Elvia",
                 "Atkins",
@@ -227,35 +227,20 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Elvia Atkins",
                 subTitle = "Intern",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Elvia Atkins", coroutineScope, scaffoldState) })
+                onClick = { onClick("Elvia Atkins", context) })
         )
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
-    fun createActivityUI() {
-        val scaffoldState: ScaffoldState = rememberScaffoldState()
-        val coroutineScope: CoroutineScope = rememberCoroutineScope()
-        Scaffold(scaffoldState = scaffoldState) {
-            PersonaList(
-                modifier = Modifier.testTag("list"),
-                personas = createPersonasList(scaffoldState, coroutineScope),
-                border = BorderType.Bottom,
-                borderInset = BorderInset.XXLarge
-            )
-        }
+    fun createPersonaListActivityUI(context:Context) {
+        PersonaList(
+            personas = createPersonasList(context),
+            border = BorderType.Bottom,
+            borderInset = BorderInset.XXLarge
+        )
     }
 
-    fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
-        scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-        coroutineScope.launch {
-            val result = scaffoldState.snackbarHostState.showSnackbar(
-                message = "Clicked on $text",
-                actionLabel = "Close"
-            )
-            when (result) {
-                SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-            }
-        }
+    fun onClick(text: String, context: Context) {
+        Toast.makeText(context, text, LENGTH_SHORT).show()
     }
 }
