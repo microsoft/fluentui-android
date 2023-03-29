@@ -59,6 +59,16 @@ val LocalPillButtonInfo = compositionLocalOf { PillButtonInfo() }
 val LocalPillBarTokens = compositionLocalOf { PillBarTokens() }
 val LocalPillBarInfo = compositionLocalOf { PillBarInfo() }
 
+/**
+ * API to create Pill shaped Button which will further be used in tabs and bars.
+ *
+ * @param pillMetaData Metadata for a single pill. Type: [PillMetaData]
+ * @param modifier Optional Modifier to customize the design and behaviour of pill button
+ * @param style Color Scheme of pill shaped button. Default: [FluentStyle.Neutral]
+ * @param badge Composable slot to incorporate badge on the pill shaped button. Default: [null]
+ * @param interactionSource Interaction Source Object to handle gestures.
+ * @param pillButtonTokens Tokens to customize the design of pill button.
+ */
 @Composable
 fun PillButton(
     pillMetaData: PillMetaData,

@@ -26,6 +26,17 @@ import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonTokens
 val LocalRadioButtonTokens = compositionLocalOf { RadioButtonTokens() }
 val LocalRadioButtonInfo = compositionLocalOf { RadioButtonInfo() }
 
+/**
+ * API to create a Radio Button. A Radio selection lets user choose one option out of all values.
+ * This API provides a single instance of radio button and not a group.
+ *
+ * @param onClick OnClick method to be invoked when clicken on the radio button
+ * @param modifier Optional modifier for Radio Button
+ * @param enabled Boolean for enabling/disabling Radio Button. Default: [true]
+ * @param selected Boolean for setting selected state in radio Button. Default: [false]
+ * @param interactionSource Interaction Source for user gesture management.
+ * @param radioButtonToken Tokens for customizing Radio buttons
+ */
 @Composable
 fun RadioButton(
     onClick: (() -> Unit),

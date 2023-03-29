@@ -54,6 +54,26 @@ import kotlinx.coroutines.launch
 private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
 private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.Neutral) }
 
+/**
+ * API to create a searchbar. This control takes input from user's keyboard and runs it against a lambda
+ * function provided by user to generate results. It allows user to select a person and display in the form
+ * of a persona chip.
+ *
+ * @param onValueChange Lambda function against which the input text is run.
+ * @param modifier Optional modifier for Searchbar.
+ * @param enabled Boolean to enable/disable the CTAs on Searchbar. Default: [false]
+ * @param style Color Scheme to be applied to Searchbar. Default: [FluentStyle.Neutral]
+ * @param keyboardOptions Keyboard Configuration Options for Input Text Field. Default: [KeyboardOptions]
+ * @param keyboardActions Configures keyboards response w.r.t. user interactions. Default: [KeyboardActions]
+ * @param searchHint String provided as hint on SearchBar. Default: "Search"
+ * @param focusByDefault Boolean which allows Searchbar to be initially composed in focused state. Default: [false]
+ * @param selectedPerson Person object which has to be displayed as a Persona Chip. Default: [null]
+ * @param personaChipOnClick OnClick Behaviour for above persona chip. Default: [null]
+ * @param microphoneCallback Callback to be provided to microphone icon, available at right side. Default: [null]
+ * @param navigationIconCallback Callback to be provided to navigation icon, present at left side. Default: [null]
+ * @param rightAccessoryIcon [FluentIcon] Object which is displayed on the right side of microphone. Default: [null]
+ * @param searchBarTokens Tokens which help in customizing appearance of search bar. Default: [null]
+ */
 //         AnimatedContent                        Backspace Key
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalAnimationApi::class)
 @Composable
