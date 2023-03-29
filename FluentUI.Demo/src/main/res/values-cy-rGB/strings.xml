@@ -6,12 +6,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Demo UI y Diraddiad</string>
-    <string name="app_title">Rhyngwyneb Defnyddiwr Ysoledd</string>
+    <string name="app_name">Demo UI Fluent</string>
+    <string name="app_title">UI Fluent</string>
     <!-- Announces selected component -->
-    <string name="app_accessibility_selected">Y %s dan sylw</string>
-    <string name="app_modifiable_parameters">Paramedrau y gellir eu Haddasu</string>
-    <string name="app_right_accessory_view">Gwedd Ategolyn De</string>
+    <string name="app_accessibility_selected">Wedi dewis %s</string>
+    <string name="app_modifiable_parameters">Paramedrau y Mae Modd eu Haddasu</string>
+    <string name="app_right_accessory_view">Gwedd Ategolion ar y Dde</string>
 
     <string name="app_style">Arddull</string>
     <!-- describes an action, icon pressed -->
@@ -28,19 +28,19 @@
     <string name="actionbar_position_top_radio_label">Brig</string>
 
     <!--UI Text view label denoting type of action bar -->
-    <string name="actionbar_type_heading">Math o Far Gweithredu</string>
+    <string name="actionbar_type_heading">Math o FarGweithredu</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">Safle\'r Bar Gweithredu</string>
+    <string name="actionbar_position_heading">Safle\'r BarGweithredu</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">Arddull Bar Ap</string>
-    <string name="app_bar_subtitle">Isdeitl</string>
+    <string name="app_bar_style">Arddull BarApiau</string>
+    <string name="app_bar_subtitle">Is-deitl</string>
 
     <!-- Text that shows the action performed to the user -->
-    <string name="app_bar_layout_navigation_icon_clicked">Wedi clicio\'r eicon llywio.</string>
+    <string name="app_bar_layout_navigation_icon_clicked">Wedi clicio ar eicon llywio.</string>
 
     <!-- Icon labels -->
-    <string name="app_bar_layout_menu_flag">Fflag</string>
+    <string name="app_bar_layout_menu_flag">Fflagio</string>
     <string name="app_bar_layout_menu_settings">Gosodiadau</string>
     <string name="app_bar_layout_menu_search">Chwilio</string>
     <!-- UI Text that shows the type of scroll behavior -->
@@ -48,24 +48,24 @@
     <!-- Text for button that toggles the scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_button">Toglo ymddygiad sgrolio</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Toglo\'r eicon llywio</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Toglo’r cwarel llywio</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">Dangos yr avatar</string>
+    <string name="app_bar_layout_show_avatar_button">Dangos afatar</string>
     <!-- Text for button that shows back icon -->
     <string name="app_bar_layout_show_back_icon_button">Dangos eicon yn ôl</string>
     <!-- Text for button that hides icon-->
-    <string name="app_bar_layout_hide_icon_button">Cuddio\'r Eicon</string>
+    <string name="app_bar_layout_hide_icon_button">Cuddio\'r eicon</string>
     <!-- Text for button that shows icon -->
-    <string name="app_bar_layout_show_icon_button">Dangos Eicon</string>
+    <string name="app_bar_layout_show_icon_button">Dangos eicon</string>
     <!-- UI label denoting layout style -->
     <string name="app_bar_layout_toggle_searchbar_sub_header">Toglo arddull cynllun y bar chwilio</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Dangos fel gwedd ategolyn</string>
-    <string name="app_bar_layout_searchbar_action_view_button">Dangos fel gwedd gweithred</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Dangos fel gwedd ategolion</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Dangos fel gwedd gweithredoedd</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Toglo rhwng themâu (ail-greu gweithgaredd)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">Toglo rhwng themâu (yn ail-greu gweithgareddau)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toglo thema</string>
+    <string name="app_bar_layout_toggle_theme_button">Toglo\'r thema</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Eitem</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -76,40 +76,40 @@
     <string name="avatar_style_circle">Arddull cylch</string>
     <string name="avatar_style_square">Arddull sgwâr</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">Ehangu XX</string>
-    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_xxlarge">Mawr Iawn Iawn</string>
+    <string name="avatar_size_xlarge">Mawr Iawn</string>
     <string name="avatar_size_large">Mawr</string>
     <string name="avatar_size_medium">Canolig</string>
     <string name="avatar_size_small">Bach</string>
-    <string name="avatar_size_xsmall">XSmall</string>
+    <string name="avatar_size_xsmall">Bach Iawn</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Uchafswm yr Avatar a Ddangosir</string>
+    <string name="avatar_group_max_displayed_avatar">Y Nifer Mwyaf o Afatarau a Ddangosir</string>
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">Cyfrif Avatar Gorlif</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Math o forder:</string>
+    <string name="avatar_group_border_type">Math o Forder</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">Fydd y Grŵp Avatar gyda\'r set OverflowAvatarCount ddim yn glynu wrth y nifer mwyaf o Avatar a Ddangosir.</string>
+    <string name="avatar_group_info">Fydd y Grŵp Avatar gyda\'r set OverflowAvatarCount ddim yn cydymffurfio â nifer mwyaf o Afatarau a Ddangosir.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Pentwr Wyneb</string>
+    <string name="avatar_group_face_stack">Pentwr Wynebau</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">Pentwr Wyneb</string>
+    <string name="avatar_group_face_pile">Pentwr Wynebau</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Wedi clicio gorlif</string>
+    <string name="avatar_group_overflow_clicked">Wedi clicio ar orlif</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">Wedi clicio AvatarView yn y %d mynegai</string>
+    <string name="avatar_group_avatar_clicked">Wedi clicio ar WeddAfatar yn y mynegai %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
-    <string name="badge_notification_badge">Bathodyn Hysbysu</string>
+    <string name="badge_notification_badge">Bathodyn Hysbysiadau</string>
     <!--UI Label for dot notification -->
     <string name="badge_notification_dot">Dot</string>
     <!--UI Label for notification shown as list type used in horizontal tab -->
     <string name="badge_notification_list">Rhestr</string>
     <!--UI Label for notification shown in character used in vertical Tab -->
-    <string name="badge_notification_character">Cymeriad</string>
+    <string name="badge_notification_character">Nod</string>
 
     <!--BottomNavigation-->
     <!--UI Labels -->
@@ -125,36 +125,36 @@
     <string name="bottom_navigation_five_menu_items_button">Dangos pum eitem ar y ddewislen</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">Mae labeli\'n cael eu %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">Mae labeli %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Dalen Gwaelod</string>
-    <string name="bottom_sheet_dialog">Deialog Dalen Gwaelod</string>
+    <string name="bottom_sheet">DalenGwaelod</string>
+    <string name="bottom_sheet_dialog">DeialogDalenGwaelod</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Dangos gydag eitemau un llinell</string>
     <string name="bottom_sheet_with_double_line_items">Dangos gydag eitemau llinell ddwbl</string>
     <string name="bottom_sheet_with_single_line_header">Dangos gyda phennyn un llinell</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Dangos gyda phennyn a gwahanwyr llinell ddwbl</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Dangos gyda phennyn llinell ddwbl a gwahanwyr</string>
     <string name="bottom_sheet_dialog_button">Dangos</string>
     <string name="drawer_content_desc_collapse_state">Ehangu</string>
     <string name="drawer_content_desc_expand_state">Lleihau</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Cliciwch %s</string>
+    <string name="contextual_command_prompt_click_item">Clicio ar %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">%s Clic Hir</string>
+    <string name="contextual_command_prompt_long_click_item">Clicio\'n Hir Ar %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Clicio ar waredu</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Mewnosod Eitem</string>
     <!-- Text for button for updating an item-->
-    <string name="contextual_command_update_item">Diweddaru\'r Eitem</string>
+    <string name="contextual_command_update_item">Diweddaru Eitem</string>
     <!-- Announces dismiss action -->
     <string name="contextual_command_accessibility_dismiss">Gwaredu</string>
     <!-- Announces add action -->
-    <string name="contextual_command_accessibility_add">Ychwanegwch</string>
+    <string name="contextual_command_accessibility_add">Ychwanegu</string>
     <!-- Announces mention action -->
     <string name="contextual_command_accessibility_mention">Sôn</string>
     <!-- Announces bold action -->
@@ -166,7 +166,7 @@
     <!-- Announces strikethrough action -->
     <string name="contextual_command_accessibility_strikethrough">Llinell Drwodd</string>
     <!-- Announces undo action -->
-    <string name="contextual_command_accessibility_undo">Dadwneud</string>
+    <string name="contextual_command_accessibility_undo">Dad-wneud</string>
     <!-- Announces redo action -->
     <string name="contextual_command_accessibility_redo">Ail-wneud</string>
     <!-- Announces bullet action -->
@@ -180,11 +180,11 @@
     <!-- UI Label denoting spacing -->
     <string name="contextual_command_bar_space_title">Bylchau</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">Diystyru\'r Safle</string>
+    <string name="contextual_command_bar_dismiss_position">Gwaredu\'r Safle</string>
     <!-- Radio button label START -->
-    <string name="contextual_command_bar_dismiss_position_start">CYCHWYN</string>
+    <string name="contextual_command_bar_dismiss_position_start">DECHRAU</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">DIWEDD</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">Bwlch grŵp</string>
     <!-- UI bar label denoting the space between items -->
@@ -194,21 +194,21 @@
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">Fflag</string>
+    <string name="bottom_sheet_item_flag_title">Fflagio</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Wedi clicio\'r eitem fflag</string>
+    <string name="bottom_sheet_item_flag_toast">Wedi clicio ar eitem fflagio</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Ateb</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Wedi clicio\'r eitem ateb</string>
+    <string name="bottom_sheet_item_reply_toast">Wedi clicio ar eitem ateb</string>
     <!--UI Label for item forward-->
-    <string name="bottom_sheet_item_forward_title">Ymlaen</string>
+    <string name="bottom_sheet_item_forward_title">Anfon Ymlaen</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Wedi clicio anfon yr eitem ymlaen</string>
+    <string name="bottom_sheet_item_forward_toast">Wedi clicio ar eitem anfon ymlaen</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Dileu</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Wedi clicio dileu\'r eitem</string>
+    <string name="bottom_sheet_item_delete_toast">Wedi clicio ar eitem dileu</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Afatar</string>
     <!--Double line items-->
@@ -217,28 +217,28 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Tynnu llun</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Wedi clicio eitem camera</string>
+    <string name="bottom_sheet_item_camera_toast">Wedi clicio ar eitem camera</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Oriel</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">Gweld eich lluniau</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Wedi clicio eitem oriel</string>
+    <string name="bottom_sheet_item_gallery_toast">Wedi clicio ar eitem oriel</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Fideos</string>
     <!--UI description label play your videos -->
     <string name="bottom_sheet_item_videos_subtitle">Chwarae eich fideos</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Wedi clicio\'r eitem fideos</string>
+    <string name="bottom_sheet_item_videos_toast">Wedi clicio ar eitem fideos</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Rheoli</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Rheoli eich llyfrgell cyfryngau</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Wedi clicio rheoli eitem</string>
+    <string name="bottom_sheet_item_manage_toast">Wedi clicio ar eitem rheoli</string>
     <!--Single line header-->
     <!--UI title header email actions-->
-    <string name="bottom_sheet_item_single_line_header">Camau e-bost</string>
+    <string name="bottom_sheet_item_single_line_header">Gweithredoedd E-bost</string>
     <!--Double line header-->
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Dogfennau</string>
@@ -247,63 +247,63 @@
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Rhannu</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Wedi clicio rhannu eitem</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Wedi clicio ar eitem rhannu</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Symud</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Symud yr eitem a gliciwyd</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Wedi clicio ar eitem symud</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Dileu</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Wedi clicio dileu\'r eitem</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Wedi clicio ar eitem dileu</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Gwybodaeth</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Wedi clicio\'r eitem wybodaeth</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Wedi clicio ar eitem gwybodaeth</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Cloc</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Wedi clicio eitem cloc</string>
+    <string name="bottom_sheet_item_clock_toast">Wedi clicio ar eitem cloc</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Larwm</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Wedi clicio\'r eitem larwm</string>
+    <string name="bottom_sheet_item_alarm_toast">Wedi clicio ar eitem larwm</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Cylchfa amser</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Wedi clicio eitem cylchfa amser</string>
+    <string name="bottom_sheet_item_time_zone_toast">Wedi clicio ar eitem cylchfa amser</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Botwm</string>
-    <string name="buttonbar">Bar Botymau</string>
-    <string name="button_disabled">Botwm Wedi\'i Analluogi</string>
+    <string name="buttonbar">BarBotymau</string>
+    <string name="button_disabled">Botwm wedi\'i Analluogi</string>
     <string name="button_borderless">Botwm Heb Forder</string>
-    <string name="button_borderless_disabled">Botwm Analluogi Heb Forder</string>
+    <string name="button_borderless_disabled">Botwm Wedi\'i Analluogi Heb Forder</string>
     <string name="button_large">Botwm Mawr</string>
     <string name="button_large_disabled">Botwm Mawr wedi\'i Analluogi</string>
     <string name="button_outlined">Botwm wedi\'i Amlinellu</string>
-    <string name="button_outlined_disabled">Botwm Wedi Analluogi wedi\'i Amlinellu</string>
+    <string name="button_outlined_disabled">Botwm Wedi\'i Analluogi wedi\'i Amlinellu</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Dewis dyddiad</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Dewiswr Dyddiad Amser</string>
+    <string name="date_time_picker_title">DewiswrDyddiadAmser</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Un Dyddiad</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Heb ddewis dyddiad</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Show date picker</string>
+    <string name="date_time_picker_date_button">Dangos dewiswr dyddiad</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Dangos y dewiswr amser dyddiad gyda\'r tab dyddiad wedi\'i ddewis</string>
+    <string name="date_time_picker_calendar_date_time_button">Dangos dewiswr dyddiad amser gyda\'r tab dyddiad wedi\'i ddewis</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Dangos dewiswr amser dyddiad gyda\'r tab amser wedi\'i ddewis</string>
+    <string name="date_time_picker_date_time_calendar_button">Dangos dewiswr dyddiad amser gyda\'r tab amser wedi\'i ddewis</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Dangos y dewiswr amser dyddiad</string>
+    <string name="date_time_picker_date_time_button">Dangos dewiswr dyddiad amser</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Ystod Dyddiadau</string>
     <!-- UI label showing start of the range-->
@@ -311,19 +311,19 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Diwedd:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Dim cychwyn wedi\'i ddewis</string>
+    <string name="date_time_picker_date_start_picked_default">Heb ddewis dechrau</string>
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_end_picked_default">Heb ddewis diwedd</string>
     <!-- text for button that selects start date -->
-    <string name="date_time_picker_date_start_button">Dewiswch y dyddiad dechrau</string>
+    <string name="date_time_picker_date_start_button">Dewis y dyddiad dechrau</string>
     <!-- text for button that selects end date -->
-    <string name="date_time_picker_date_end_button">Dewiswch y dyddiad gorffen</string>
+    <string name="date_time_picker_date_end_button">Dewis y dyddiad gorffen</string>
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Ystod Amser Dyddiad</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Dewis ystod dyddiad amser</string>
     <!-- UI label -->
-    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <string name="date_time_picker_dialog_title">DeialogDewiswrDyddiadAmser</string>
     <!-- text for button that shows picker dialog -->
     <string name="date_time_picker_dialog_button">Dangos Blwch Deialog</string>
 
@@ -333,17 +333,17 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Dangos blwch deialog y drôr</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Dim deialog gwaelod pylu</string>
+    <string name="no_fade_bottom_dialog_button">Deialog gwaelod dim pylu</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Dangos y drôr uchaf</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Dim blwch deialog pylu brig</string>
+    <string name="no_fade_top_dialog_button">Blwch deialog uchaf dim pylu</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> Dangos blwch deialog uchaf gwedd angor</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Dangos dim deialog teitl brig</string>
+    <string name="no_title_top_dialog_button"> Dangos dim deialog teitl uchaf</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Dangos o dan y blwch deialog teitl brig</string>
+    <string name="below_title_top_dialog_button"> Dangos dan blwch deialog y teitl uchaf</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Dangos y drôr dde</string>
     <!-- text for button that shows left drawer -->
@@ -363,67 +363,67 @@
     <string name="list_item_sub_header_two_line">Rhestr dwy linell</string>
     <string name="list_item_sub_header_two_line_dense">Rhestr dwy linell gyda bylchau trwchus</string>
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Rhestr dwy linell gyda gwedd is-deitlau eilaidd personol</string>
-    <string name="list_item_sub_header_three_line">Rhestr tair llinell gydag is-destun pennyn du</string>
+    <string name="list_item_sub_header_three_line">Rhestr tair llinell gyda thestun is bennyn du</string>
     <string name="list_item_sub_header_no_custom_views">Eitemau rhestr heb weddau personol</string>
-    <string name="list_item_sub_header_large_header">Eitemau rhestr gyda gweddau personol mawr</string>
+    <string name="list_item_sub_header_large_header">Eitemau rhestr gyda gweddau personol fawr</string>
     <string name="list_item_sub_header_wrapped_text">Eitemau rhestr gyda thestun wedi\'i amlapio</string>
     <string name="list_item_sub_header_truncated_text">Rhestru eitemau gyda thestun wedi\'i docio</string>
     <string name="list_item_sub_header_custom_accessory_text">Gweithred</string>
-    <string name="list_item_truncation_middle">Toncation canol.</string>
-    <string name="list_item_truncation_end">Terfynu\'r toncation.</string>
-    <string name="list_item_truncation_start">Dechrau tonciad.</string>
+    <string name="list_item_truncation_middle">Tocio canol.</string>
+    <string name="list_item_truncation_end">Gorffen tocio.</string>
+    <string name="list_item_truncation_start">Dechrau tocio.</string>
     <string name="list_item_custom_text_view">Gwerth</string>
-    <string name="list_item_click">Rydych wedi clicio ar yr eitem rhestr.</string>
-    <string name="list_item_click_custom_accessory_view">Rydych chi wedi clicio ar y wedd ategolyn bersonol.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Rydych chi wedi clicio ar wedd ategolyn personol yr is bennyn.</string>
-    <string name="list_item_more_options">Rhagor o opsiynau</string>
+    <string name="list_item_click">Rydych chi wedi clicio ar yr eitem rhestr.</string>
+    <string name="list_item_click_custom_accessory_view">Rydych chi wedi clicio ar wedd ategolion bersonol.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Rydych chi wedi clicio ar wedd ategolion bersonol yr is bennyn.</string>
+    <string name="list_item_more_options">Mwy o ddewisiadau</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Dewis</string>
-    <string name="people_picker_select_deselect_example">Dewis dewis</string>
+    <string name="people_picker_select_deselect_example">DewisDadddewis</string>
     <string name="people_picker_none_example">Dim</string>
     <string name="people_picker_delete_example">Dileu</string>
     <string name="people_picker_custom_persona_description">Mae\'r enghraifft hon yn dangos sut i greu gwrthrych IPersona personol.</string>
     <string name="people_picker_dialog_title_removed">Rydych chi wedi tynnu persona:</string>
     <string name="people_picker_dialog_title_added">Rydych chi wedi ychwanegu persona:</string>
-    <string name="people_picker_drag_started">Wedi cychwyn llusgo</string>
+    <string name="people_picker_drag_started">Wedi dechrau llusgo</string>
     <string name="people_picker_drag_ended">Llusgo wedi dod i ben</string>
-    <string name="people_picker_picked_personas_listener">Personas Listener</string>
-    <string name="people_picker_suggestions_listener">Gwrandawr Awgrymiadau</string>
+    <string name="people_picker_picked_personas_listener">Gwrandawyr Personas</string>
+    <string name="people_picker_suggestions_listener">Gwrandawyr Awgrymiadau</string>
     <string name="people_picker_persona_chip_click">Rydych chi wedi clicio ar %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="zero">%1$s recipients</item>
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="two">%1$s recipients</item>
-        <item quantity="few">%1$s recipients</item>
-        <item quantity="many">%1$s recipients</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="zero">%1$s derbynyddion</item>
+        <item quantity="one">%1$s derbynnydd</item>
+        <item quantity="two">%1$s dderbynnydd</item>
+        <item quantity="few">%1$s derbynnydd</item>
+        <item quantity="many">%1$s derbynnydd</item>
+        <item quantity="other">%1$s derbynnydd</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Ehangu Dalen Gwaelod Parhaus</string>
-    <string name="collapse_persistent_sheet_button"> Cuddio Dalen Gwaelod Parhaus</string>
-    <string name="show_persistent_sheet_button"> Dangos Dalen Waelod Parhaus</string>
+    <string name="expand_bottom_sheet_button">Ehangu DalenGwaelod Parhaus</string>
+    <string name="collapse_persistent_sheet_button"> Cuddio DalenGwaelod Parhaus</string>
+    <string name="show_persistent_sheet_button"> Dangos DalenGwaelod Parhaus</string>
     <string name="new_view">Dyma Wedd Newydd</string>
     <string name="toggle_sheet_content">Toglo Cynnwys Dalen Gwaelod</string>
     <string name="switch_to_custom_content">Newid i Gynnwys personol</string>
-    <string name="one_line_content">Cynnwys Dalen Waelod Un Llinell</string>
+    <string name="one_line_content">Cynnwys DalenGwaelod Un Llinell</string>
     <string name="toggle_disable_all_items">Toglo Analluogi Pob Eitem</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Ychwanegu/Tynnu Gwedd</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Newid Uchder wedi\'i Grebachu</string>
     <string name="persistent_sheet_item_create_new_folder_title">Ffolder Newydd</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Wedi clicio eitem Ffolder Newydd</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Wedi clicio ar eitem Ffolder Newydd</string>
     <string name="persistent_sheet_item_edit_title">Golygu</string>
-    <string name="persistent_sheet_item_edit_toast">Wedi clicio golygu\'r eitem</string>
+    <string name="persistent_sheet_item_edit_toast">Wedi clicio ar eitem golygu</string>
     <string name="persistent_sheet_item_save_title">Cadw</string>
-    <string name="persistent_sheet_item_save_toast">Wedi clicio cadw\'r eitem</string>
+    <string name="persistent_sheet_item_save_toast">Wedi clicio ar eitem cadw</string>
     <string name="persistent_sheet_item_zoom_in_title">Nesáu</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Wedi clicio nesáu/pellhau yn yr eitem</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Wedi clicio ar eitem Nesáu</string>
     <string name="persistent_sheet_item_zoom_out_title">Pellhau</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Wedi clicio pellhau o\'r eitem</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Wedi clicio ar eitem Pellhau</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -463,26 +463,26 @@
     <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
-    <string name="persona_name_colin_ballinger">Ballinger pŵl pŵl</string>
-    <string name="persona_name_daisy_phillips">Daisy Ran o\'r Storfa</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
     <string name="persona_name_elliot_woodward">Elliot Woodward</string>
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
     <string name="persona_name_erik_nason">Erik Nason</string>
-    <string name="persona_name_henry_brill">Priodferch Dwndwr</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Isaac Fielder</string>
     <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
-    <string name="persona_name_kat_larsson">Kat Lar newid 8 i 2013</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
     <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
-    <string name="persona_name_mauricio_august">Mauricio Awst</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
     <string name="persona_name_mona_kane">Mona Kane</string>
-    <string name="persona_name_robin_counts">Mae Robin yn Cyfrif</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
     <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">Wanda Amgrŵm</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Dylunydd</string>
     <string name="persona_subtitle_engineer">Peiriannwr</string>
@@ -490,14 +490,14 @@
     <string name="persona_subtitle_researcher">Ymchwilydd</string>
     <!-- UI labels -->
     <string name="persona_truncation">\ (enghraifft testun hir i brofi tocio)</string>
-    <string name="persona_view_description_xxlarge">Avatar XXLarge gyda thair llinell o destun</string>
-    <string name="persona_view_description_large">Avatar mawr gyda dwy linell o destun</string>
-    <string name="persona_view_description_small">Avatar bach gydag un llinell o destun</string>
+    <string name="persona_view_description_xxlarge">Afatar Mawr Iawn Iawn gyda thair llinell o destun</string>
+    <string name="persona_view_description_large">Afatar mawr gyda dwy linell o destun</string>
+    <string name="persona_view_description_small">Afatar bach gydag un llinell o destun</string>
     <string name="people_picker_hint">Dim gyda chliw wedi\'i ddangos</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Sglodyn Persona Anabl</string>
+    <string name="persona_chip_example_disabled">Sglodyn Persona wedi\'i Analluogi</string>
     <!-- UI label showing a error persona chip -->
     <string name="persona_chip_example_error">Sglodyn Persona Gwall</string>
     <!-- UI label showing a persona chip with no close icon-->
@@ -515,11 +515,11 @@
     <!-- UI label for item invite people -->
     <string name="popup_menu_item_invite_people">Gwahodd pobl</string>
     <!-- UI label for item refresh page -->
-    <string name="popup_menu_item_refresh_page">Adnewyddu\'r Dudalen</string>
+    <string name="popup_menu_item_refresh_page">Adnewyddu\'r dudalen</string>
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">Agor mewn porwr</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">Dewislen Hwylus sawl llinell ydy hon. Bydd uchafswm y llinellau wedi\'u gosod i ddau, bydd gweddill y testun yn tocio.
+    <string name="popup_menu_item_multiline">Dewislen Naid aml linell yw hon. Mae\'r nifer mwyaf o linellau wedi\'i osod i ddwy linell, caiff gweddill y testun ei docio.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">Yr holl newyddion</string>
@@ -530,26 +530,26 @@
     <!-- UI label for item contoso -->
     <string name="popup_menu_item_contoso_travel">Contoso</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_outside">Hysbysu y tu allan i oriau gwaith</string>
+    <string name="popup_menu_item_notify_outside">Rhoi gwybod y tu allan i oriau gwaith</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Hysbysu pan fydd yn segur ar y bwrdd gwaith</string>
+    <string name="popup_menu_item_notify_inactive">Rhoi gwybod pan fydd yn segur ar y bwrdd gwaith</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">Rydych wedi clicio\'r eitem:</string>
+    <string name="popup_menu_item_clicked">Rydych chi wedi clicio ar yr eitem:</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple">Dewislen syml</string>
+    <string name="popup_menu_simple">Dewislen seml</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Dewislen syml2</string>
+    <string name="popup_menu_simple_duo">Dewislen seml2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">Dewislen gydag un eitem mae modd ei dewis a gwahanydd</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">Dewislen gyda\'r holl eitemau, eiconau a thestun hir mae modd eu dewis</string>
+    <string name="popup_menu_all_check">Dewislen gyda\'r holl eitemau, eiconau a thestun hir y mae modd eu dewis</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">Dangos</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
-    <string name="circular_progress">Hynt Cylchol</string>
-    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress">Cynnydd Cylchol</string>
+    <string name="circular_progress_xsmall">Bach Iawn</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">Bach</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -558,12 +558,12 @@
     <string name="circular_progress_large">Mawr</string>
     <string name="circular_progress_large_size">44dp</string>
     <!-- UI label showing a linear progress bar -->
-    <string name="linear_progress">Hynt Llinol</string>
+    <string name="linear_progress">Cynnydd Llinellol</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
     <string name="linear_progress_indeterminate_label">Amhenderfynadwy</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Penderfynwch</string>
+    <string name="linear_progress_determinate_label">Penderfynadwy</string>
 
 
     <!--Shared-->
@@ -573,11 +573,11 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Bar Chwilio</string>
+    <string name="searchbar">BarChwilio</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Galw\'n ôl Meicroffon</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Awto Gywiro</string>
+    <string name="searchbar_autocorrect">AwtoGywiro</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Meicroffon wedi\'i Bwyso</string>
     <!-- Announces that right view has been pressed -->
@@ -589,32 +589,32 @@
     <!-- UI label descriptions -->
     <string name="snackbar_action">Gweithred</string>
     <string name="snackbar_action_long">Gweithred Testun Hir</string>
-    <string name="snackbar_single_line">Bar byrbryd un llinell</string>
-    <string name="snackbar_multiline">Mae hwn yn far byrbrydau sawl llinell. Bydd uchafswm y llinellau wedi\'u gosod i ddau, bydd gweddill y testun yn tocio.
+    <string name="snackbar_single_line">Bar hysbysiadau un llinell</string>
+    <string name="snackbar_multiline">Bar hysbysiadau aml linell yw hwn. Mae\'r nifer mwyaf o linellau wedi\'i osod i ddwy linell, caiff gweddill y testun ei docio.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">Bar byrbrydau yw hwn. Caiff ei ddefnyddio i gyfleu nodweddion newydd.</string>
-    <string name="snackbar_primary">Prif far byrbryd yw hwn.</string>
-    <string name="snackbar_light">Bar byrbrydau ysgafn yw hwn.</string>
-    <string name="snackbar_warning">Mae hwn yn far byrbryd rhybudd.</string>
-    <string name="snackbar_danger">Mae hwn yn far byrbrydau perygl.</string>
+    <string name="snackbar_announcement">Bar hysbysiadau cyhoeddiadau yw hwn. Mae\'n cael ei ddefnyddio i sôn am nodweddion newydd.</string>
+    <string name="snackbar_primary">Prif far hysbysiadau yw hwn.</string>
+    <string name="snackbar_light">Bar hysbysiadau ysgafn yw hwn.</string>
+    <string name="snackbar_warning">Bar hysbysiadau rhybudd yw hwn.</string>
+    <string name="snackbar_danger">Mae hwn yn far hysbysiadau perygl.</string>
     <string name="snackbar_description_single_line">Hyd byr</string>
-    <string name="snackbar_description_single_line_custom_view">Hyd hir gyda hynt cylchol fel gwedd bersonol fach</string>
-    <string name="snackbar_description_single_line_action">Hyd byr gyda\'r weithred</string>
-    <string name="snackbar_description_single_line_action_custom_view">Hyd byr gyda gweithred a gwedd ganolig personol</string>
-    <string name="snackbar_description_single_line_custom_text_color">Hyd byr gyda lliw testun wedi\'i addasu</string>
+    <string name="snackbar_description_single_line_custom_view">Hyd hir gyda chynnydd cylchol fel gwedd bersonol fach</string>
+    <string name="snackbar_description_single_line_action">Hyd byr gyda gweithred</string>
+    <string name="snackbar_description_single_line_action_custom_view">Hyd byr gyda gweithred a gwedd bersonol ganolig</string>
+    <string name="snackbar_description_single_line_custom_text_color">Hyd byr gyda lliw testun personol</string>
     <string name="snackbar_description_multiline">Hyd hir</string>
     <string name="snackbar_description_multiline_custom_view">Hyd hir gyda gwedd bersonol fach</string>
-    <string name="snackbar_description_multiline_action">Hyd amhenodol gyda diweddariadau gweithredu a thestun</string>
-    <string name="snackbar_description_multiline_action_custom_view">Hyd byr gyda gweithred a gwedd ganolig personol</string>
+    <string name="snackbar_description_multiline_action">Hyd amhenodol gyda gweithred a diweddariadau testun</string>
+    <string name="snackbar_description_multiline_action_custom_view">Hyd byr gyda gweithred a gwedd bersonol ganolig</string>
     <string name="snackbar_description_multiline_action_long">Hyd byr gyda thestun gweithredu hir</string>
     <string name="snackbar_description_announcement">Hyd byr</string>
-    <string name="snackbar_description_updated">Mae\'r testun hwn wedi cael ei ddiweddaru.</string>
+    <string name="snackbar_description_updated">Mae\'r testun hwn wedi\'i ddiweddaru.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Dangos y Bar Byrbrydau</string>
+    <string name="snackbar_button_show">Dangos y Bar Hysbysiadau</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Un llinell</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">Aml-linell</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Arddull cyhoeddiad</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -641,11 +641,11 @@
     <!-- UI text for text alignment of tab -->
     <string name="tabBar_text_alignment">Alinio Testun</string>
     <!-- UI text for vertical alignment of tab -->
-    <string name="tabBar_vertical">Fertigol</string>
+    <string name="tabBar_vertical">Ar i fyny</string>
     <!-- UI text for horizontal alignment of tab -->
-    <string name="tabBar_horizontal">Llorweddol</string>
+    <string name="tabBar_horizontal">Ar draws</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(dim testun)</string>
+    <string name="tabBar_no_text">Dim Testun</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Eitemau Tab</string>
 
@@ -655,10 +655,10 @@
     <string name="cell_sample_description">Disgrifiad</string>
     <string name="calculate_cells">Llwytho/cyfrifo 100 cell</string>
     <string name="calculate_layouts">Llwytho/cyfrifo 100 cynllun</string>
-    <string name="template_list">Template List</string>
+    <string name="template_list">Rhestr Templedi</string>
     <string name="regular_list">Rhestr Arferol</string>
     <string name="cell_example_title">Teitl: Cell</string>
-    <string name="cell_example_description">Disgrifiad: Tarwch i newid gogwydd y dudalen</string>
+    <string name="cell_example_description">Disgrifiad: Tarwch i newid cyfeiriad</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -668,7 +668,7 @@
     <!-- Text for button that shows a Standard Tab 4-Segment -->
     <string name="tab_standard_four_segment">Tab Safonol 4-Segment</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Tab Safonol gyda Thudalennydd</string>
+    <string name="tab_standard_with_pager">Tab Safonol gyda Galwr</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">Newid Tab</string>
     <!-- Text for button that shows pills tabs -->
@@ -676,46 +676,46 @@
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Tarwch ar gyfer Blwch Diffinio</string>
+    <string name="tooltip_button">Tarwch ar gyfer Cyngor</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Tarwch ar gyfer Blwch Diffinio Calendr Personol</string>
+    <string name="tooltip_calendar_demo_button">Tarwch ar gyfer Cyngor Calendr Personol</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Tarwch y Blwch Offer Lliw Personol</string>
+    <string name="tooltip_custom_button">Taro Cyngor Lliw Personol</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Tarwch i Ddiystyru Blwch Offer Tu Mewn</string>
+    <string name="tooltip_center_button">Tarwch ar gyfer Gwaredu Cyngor Tu Mewn</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Tarwch ar gyfer Blwch Offer y Wedd Bersonol</string>
+    <string name="tooltip_custom_view">Tarwch ar gyfer Cyngor Gwedd Bersonol</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Blwch Offer Lliw Personol Uchaf</string>
+    <string name="tooltip_top_start_message">Cyngor Lliw Personol Brig</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Blwch Offer Diwedd Uchaf gyda 10dp offsetX</string>
+    <string name="tooltip_top_end_message">Cyngor Gorffen Brig gyda chilosodX 10dp</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Blwch Offer Dechrau Gwaelod</string>
+    <string name="tooltip_bottom_start_message">Cyngor Dechrau Gwaelod</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Blwch offer Diwedd Gwaelod gydag atred 10dp</string>
+    <string name="tooltip_bottom_end_message">Cyngor Gorffen Gwaelod gyda chilosodY 10dp</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Diystyru tu mewn i\'r Blwch Diffinio</string>
+    <string name="tooltip_center_message">Gwaredu Cyngor tu mewn</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Gwrthodwyd y blwch offer</string>
+    <string name="tooltip_dismiss_message">Wedi gwaredu\'r cyngor</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Y pennawd yw Golau 28sp</string>
+    <string name="headline">Mae\'r Pennyn yn 28sp Ysgafn</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">Teitl 1 yw Canolig 20sp</string>
+    <string name="title_1">Mae Teitl 1 yn 20sp Canolig</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
     <string name="title_2">Mae Teitl 2 yn 20sp Rheolaidd</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Mae\'r Pennawd yn 18sp rheolaidd</string>
+    <string name="heading">Mae\'r Pennawd yn 18sp Rheolaidd</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Mae isbennyn 1 yn 16sp rheolaidd</string>
+    <string name="subheading_1">Mae is-bennawd 1 yn 16sp Rheolaidd</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">Mae\'r is-bennawd 2 yn Ganolig 16sp</string>
+    <string name="subheading_2">Mae\'r is-bennawd 2 yn 16sp Canolig</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
     <string name="body_1">Mae Corff 1 yn 14sp Rheolaidd</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Mae Corff 2 yn Ganolig 14sp</string>
+    <string name="body_2">Mae Corff 2 yn 14sp Canolig</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Capsiwn yw 12sp Rheolaidd</string>
+    <string name="caption">Mae\'r Capsiwn yn 12sp Rheolaidd</string>
 
 </resources>

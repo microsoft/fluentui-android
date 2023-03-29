@@ -59,6 +59,14 @@ internal fun getListItemInfo(): ListItemInfo {
 
 object ListItem {
 
+    private fun clearSemantics(properties: (SemanticsPropertyReceiver.() -> Unit)?): Modifier {
+        return if (properties != null) {
+            Modifier.clearAndSetSemantics(properties)
+        } else {
+            Modifier
+        }
+    }
+
     private fun Modifier.clickAndSemanticsModifier(
         interactionSource: MutableInteractionSource,
         onClick: () -> Unit,
@@ -193,8 +201,8 @@ object ListItem {
     /**
      * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text
      *
-     * @param modifier Optional modifier for List item.
      * @param text Primary text.
+     * @param modifier Optional modifier for List item.
      * @param subText Optional secondaryText or a subtitle.
      * @param secondarySubText Optional tertiary text or a footer.
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
@@ -210,10 +218,11 @@ object ListItem {
      * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
      * @param leadingAccessoryView Optional composable leading accessory view.
      * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param textAccessibilityProperties Accessibility properties for the text in list item.
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      *
      */
     @Composable
@@ -239,6 +248,7 @@ object ListItem {
         bottomView: (@Composable () -> Unit)? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
         val listItemType = if (subText == null && secondarySubText == null) {
@@ -303,7 +313,8 @@ object ListItem {
                     .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                     .clickAndSemanticsModifier(
                         interactionSource, onClick = onClick ?: {}, enabled, rippleColor
-                    ), verticalAlignment = Alignment.CenterVertically
+                    )
+                , verticalAlignment = Alignment.CenterVertically
             ) {
                 if (unreadDot) {
                     Canvas(
@@ -332,7 +343,8 @@ object ListItem {
                 Box(
                     Modifier
                         .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
-                        .weight(1f), contentAlignment = contentAlignment
+                        .weight(1f)
+                        .then(clearSemantics(textAccessibilityProperties)),contentAlignment = contentAlignment
                 ) {
                     Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
                         Row(

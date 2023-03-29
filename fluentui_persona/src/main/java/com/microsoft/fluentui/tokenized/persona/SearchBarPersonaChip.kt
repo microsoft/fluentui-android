@@ -79,7 +79,7 @@ fun SearchBarPersonaChip(
                     enabled = enabled, selected = selected, interactionSource = interactionSource
                 )
         val fontStyle =
-            getSearchBarPersonaChipTokens().fontStyle(personaChipInfo = getSearchBarPersonaChipInfo())
+            getSearchBarPersonaChipTokens().typography(personaChipInfo = getSearchBarPersonaChipInfo())
         val avatarSize =
             getSearchBarPersonaChipTokens().avatarSize(personaChipInfo = getSearchBarPersonaChipInfo())
         val verticalPadding =

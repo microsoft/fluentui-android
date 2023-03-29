@@ -9,36 +9,36 @@
     <!-- *** PeoplePicker *** -->
 
     <string name="people_picker_sample_label">Silt</string>
-    <string name="people_picker_search_directory">Otsi kataloogist</string>
+    <string name="people_picker_search_directory">Otsige kataloogist</string>
     <string name="people_picker_search_progress">Otsimine…</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s added</string>
-    <string name="people_picker_accessibility_persona_removed">%s eemaldatud</string>
-    <string name="people_picker_accessibility_replaced">%s asendatud,</string>
+    <string name="people_picker_accessibility_default_hint">Sisestage nimi või meiliaadress</string>
+    <string name="people_picker_accessibility_persona_added">%s on lisatud</string>
+    <string name="people_picker_accessibility_persona_removed">%s on eemaldatud</string>
+    <string name="people_picker_accessibility_replaced">%s on asendatud,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">Klõpsake</string>
     <string name="people_picker_accessibility_delete_persona">Kustuta</string>
-    <string name="people_picker_accessibility_deselect_persona">Tühista valimine</string>
-    <string name="people_picker_accessibility_select_persona">Vali</string>
+    <string name="people_picker_accessibility_deselect_persona">Tühista valik</string>
+    <string name="people_picker_accessibility_select_persona">Valige</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Klõpsatud %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Tühistatud %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Klõpsati %s</string>
+    <string name="people_picker_accessibility_deselected_persona">%s on valikust eemaldatud</string>
     <string name="people_picker_accessibility_selected_persona">Valitud %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, Aktiveerimisel tühistatakse valik</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, Aktiveerimine kustutatakse</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, Aktiveerimisel valik tühistatakse</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Aktiveerimisel kustutatakse</string>
     <string name="people_picker_accessibility_click_selected_persona">, Aktiveerimisel klõpsatakse</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Soovituste loend on avatud ja selles on %s inimene</item>
+        <item quantity="other">Soovituste loend on avatud ja selles on %s inimest</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s inimene</item>
+        <item quantity="other">%s inimest</item>
     </plurals>
 </resources>

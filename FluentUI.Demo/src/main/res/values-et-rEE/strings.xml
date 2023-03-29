@@ -6,16 +6,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Sujuva kasutajaliidese demo</string>
-    <string name="app_title">Fluent UI</string>
+    <string name="app_name">Kasutajaliidese Fluent demo</string>
+    <string name="app_title">Kasutajaliides Fluent</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">Valitud %s</string>
     <string name="app_modifiable_parameters">Muudetavad parameetrid</string>
-    <string name="app_right_accessory_view">Parempoolne tarvikvaade</string>
+    <string name="app_right_accessory_view">Parempoolne tarvikuvaade</string>
 
     <string name="app_style">Laad</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">Ikooni vajutamine</string>
+    <string name="app_icon_pressed">Ikoon on vajutatud</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
@@ -42,64 +42,64 @@
     <!-- Icon labels -->
     <string name="app_bar_layout_menu_flag">Märgi lipuga</string>
     <string name="app_bar_layout_menu_settings">Sätted</string>
-    <string name="app_bar_layout_menu_search">Otsi</string>
+    <string name="app_bar_layout_menu_search">Otsing</string>
     <!-- UI Text that shows the type of scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Kerimiskäitumine: %s</string>
     <!-- Text for button that toggles the scroll behavior -->
-    <string name="app_bar_layout_toggle_scroll_behavior_button">Lülita kerimiskäitumine sisse/välja</string>
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Vaheta kerimiskäitumist</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Lülita navigeerimisikoon sisse/välja</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Lülita navigeerimine sisse/välja</string>
     <!-- Text for button that shows avatar -->
-    <string name="app_bar_layout_show_avatar_button">Kuva avatari</string>
+    <string name="app_bar_layout_show_avatar_button">Kuva avatar</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Kuva ikoon Tagasi</string>
+    <string name="app_bar_layout_show_back_icon_button">Kuva ikoon tagasi</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">Peida ikoon</string>
     <!-- Text for button that shows icon -->
     <string name="app_bar_layout_show_icon_button">Kuva ikoon</string>
     <!-- UI label denoting layout style -->
-    <string name="app_bar_layout_toggle_searchbar_sub_header">Lülita otsinguriba paigutuse laad sisse/välja</string>
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Vaheta otsinguriba paigutuslaadi</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
     <string name="app_bar_layout_searchbar_accessory_view_button">Kuva tarvikuvaatena</string>
     <string name="app_bar_layout_searchbar_action_view_button">Kuva toiminguvaatena</string>
     <!-- UI label for toggling themes -->
-    <string name="app_bar_layout_toggle_theme_sub_header">Lülita kujunduste vahel sisse/välja (loob tegevuse uuesti)</string>
+    <string name="app_bar_layout_toggle_theme_sub_header">Vaheta kujunduste vahel (loob tegevuse uuesti)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Vaheta kujundust</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Üksus</string>
     <!-- UI label that denotes extra content that is scrollable -->
-    <string name="app_bar_layout_list_sub_header">Eriti keritav sisu</string>
+    <string name="app_bar_layout_list_sub_header">Lisa keritav sisu</string>
 
     <!--AvatarView-->
     <!-- Style -->
-    <string name="avatar_style_circle">Ringi laad</string>
+    <string name="avatar_style_circle">Ringilaad</string>
     <string name="avatar_style_square">Kandiline laad</string>
     <!-- Sizes -->
-    <string name="avatar_size_xxlarge">XXLarge</string>
-    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_xxlarge">XXL</string>
+    <string name="avatar_size_xlarge">XL</string>
     <string name="avatar_size_large">Suur</string>
     <string name="avatar_size_medium">Keskmine</string>
     <string name="avatar_size_small">Väike</string>
-    <string name="avatar_size_xsmall">XSmall</string>
+    <string name="avatar_size_xsmall">XS</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
-    <string name="avatar_group_max_displayed_avatar">Max kuvatud avatari</string>
+    <string name="avatar_group_max_displayed_avatar">Maksimaalne kuvatud avataride arv</string>
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">Ületäitumise avataride arv</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Äärise tüüp:</string>
+    <string name="avatar_group_border_type">Äärise tüüp</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
-    <string name="avatar_group_info">Avatari rühm, mille komplekt OverflowAvatarCount ei vasta maksimaalsele kuvatavale avatarile.</string>
+    <string name="avatar_group_info">Avataride rühm, millel on märgitud ÜletäitumiseAvatarideArv, ei järgi maksimaalseid kuvatavaid avatare.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Näopinu</string>
+    <string name="avatar_group_face_stack">Näovirn</string>
     <!-- UI label showing face pile type of avatar group -->
-    <string name="avatar_group_face_pile">Näo kuhjaga</string>
+    <string name="avatar_group_face_pile">Näokuhi</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Ületäitumine on klõpsatud</string>
+    <string name="avatar_group_overflow_clicked">Klõpsati valikut ületäitumine</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView registris %d klõpsatud</string>
+    <string name="avatar_group_avatar_clicked">Klõpsati avatarivaadet indeksil %d</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -109,7 +109,7 @@
     <!--UI Label for notification shown as list type used in horizontal tab -->
     <string name="badge_notification_list">Loend</string>
     <!--UI Label for notification shown in character used in vertical Tab -->
-    <string name="badge_notification_character">Tegelaskuju</string>
+    <string name="badge_notification_character">Tähemärk</string>
 
     <!--BottomNavigation-->
     <!--UI Labels -->
@@ -129,14 +129,14 @@
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Allserv</string>
-    <string name="bottom_sheet_dialog">Alllehedialog</string>
+    <string name="bottom_sheet">AlumineLeht</string>
+    <string name="bottom_sheet_dialog">AlumiseLeheDialoog</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">Kuva üherealise üksusega</string>
-    <string name="bottom_sheet_with_double_line_items">Kuva kaherealise üksusega</string>
+    <string name="bottom_sheet_with_single_line_items">Kuva üherealiste üksustega</string>
+    <string name="bottom_sheet_with_double_line_items">Kuva kaherealiste üksustega</string>
     <string name="bottom_sheet_with_single_line_header">Kuva üherealise päisega</string>
     <string name="bottom_sheet_with_double_line_title_and_dividers">Kuva topeltrea päise ja eraldajatega</string>
-    <string name="bottom_sheet_dialog_button">Kuvamine</string>
+    <string name="bottom_sheet_dialog_button">Kuva</string>
     <string name="drawer_content_desc_collapse_state">Laienda</string>
     <string name="drawer_content_desc_expand_state">Minimeeri</string>
 
@@ -146,13 +146,13 @@
     <!-- UI text showing the long click action performed by the user -->
     <string name="contextual_command_prompt_long_click_item">Pikk klõps %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Klõpsake sule</string>
     <!-- Text for button for inserting an item-->
-    <string name="contextual_command_insert_item">Üksuse lisamine</string>
+    <string name="contextual_command_insert_item">Lisa üksus</string>
     <!-- Text for button for updating an item-->
     <string name="contextual_command_update_item">Värskenda üksust</string>
     <!-- Announces dismiss action -->
-    <string name="contextual_command_accessibility_dismiss">Unusta</string>
+    <string name="contextual_command_accessibility_dismiss">Sulge</string>
     <!-- Announces add action -->
     <string name="contextual_command_accessibility_add">Lisa</string>
     <!-- Announces mention action -->
@@ -166,29 +166,29 @@
     <!-- Announces strikethrough action -->
     <string name="contextual_command_accessibility_strikethrough">Läbikriipsutus</string>
     <!-- Announces undo action -->
-    <string name="contextual_command_accessibility_undo">Võta tagasi</string>
+    <string name="contextual_command_accessibility_undo">Tagasivõtmine</string>
     <!-- Announces redo action -->
-    <string name="contextual_command_accessibility_redo">Tee uuesti</string>
+    <string name="contextual_command_accessibility_redo">Uuestitegemine</string>
     <!-- Announces bullet action -->
-    <string name="contextual_command_accessibility_bullet">Täpploend</string>
+    <string name="contextual_command_accessibility_bullet">Täpp</string>
     <!-- Announces list action -->
     <string name="contextual_command_accessibility_list">Loend</string>
     <!-- Announces link action -->
-    <string name="contextual_command_accessibility_link">Link</string>
+    <string name="contextual_command_accessibility_link">Linkige</string>
     <!-- UI Label denoting item updating -->
     <string name="contextual_command_bar_item_update_title">Üksuse värskendamine</string>
     <!-- UI Label denoting spacing -->
     <string name="contextual_command_bar_space_title">Vahed</string>
     <!-- UI Label denoting dismiss position -->
-    <string name="contextual_command_bar_dismiss_position">Sule paigutus</string>
+    <string name="contextual_command_bar_dismiss_position">Sulgemise paigutus</string>
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">KÄIVITAMINE</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">LÕPETA</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">Rühmaruum</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">Üksuse ruum</string>
+    <string name="contextual_command_bar_item_space_title">Üksuste ruum</string>
     <!-- UI bar label denoting the space in number value dp's -->
     <string name="contextual_command_bar_space_value">%d dp</string>
 
@@ -196,19 +196,19 @@
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">Märgi lipuga</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Klõpsatud lipuüksus</string>
+    <string name="bottom_sheet_item_flag_toast">Klõpsati üksust märgi lipuga</string>
     <!--UI Label for item reply-->
-    <string name="bottom_sheet_item_reply_title">Vastus</string>
+    <string name="bottom_sheet_item_reply_title">Vasta</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Vastuseüksust on klõpsatud</string>
+    <string name="bottom_sheet_item_reply_toast">Klõpsati üksust vasta</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">Edasi</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Edasisaatmisüksust on klõpsatud</string>
+    <string name="bottom_sheet_item_forward_toast">Klõpsati üksust saada edasi</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Kustuta</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Klõpsatud üksuse kustutamine</string>
+    <string name="bottom_sheet_item_delete_toast">Klõpsati üksust kustuta</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -217,25 +217,25 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Pildista</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Klõpsatud on kaameraüksust</string>
+    <string name="bottom_sheet_item_camera_toast">Klõpsati üksust kaamera</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Galerii</string>
     <!--UI description label view your photos-->
-    <string name="bottom_sheet_item_gallery_subtitle">Fotode vaatamine</string>
+    <string name="bottom_sheet_item_gallery_subtitle">Vaadake oma fotosid</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Galeriiüksust on klõpsatud</string>
+    <string name="bottom_sheet_item_gallery_toast">Klõpsati üksust galerii</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Videod</string>
     <!--UI description label play your videos -->
-    <string name="bottom_sheet_item_videos_subtitle">Esita videod</string>
+    <string name="bottom_sheet_item_videos_subtitle">Esita oma videod</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Videote üksust on klõpsatud</string>
+    <string name="bottom_sheet_item_videos_toast">Klõpsati üksust videod</string>
     <!--UI Label for item manage-->
-    <string name="bottom_sheet_item_manage_title">Haldamine</string>
+    <string name="bottom_sheet_item_manage_title">Halda</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Meediumiteegi haldamine</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Klõpsatud üksuse haldamine</string>
+    <string name="bottom_sheet_item_manage_toast">Klõpsati üksust halda</string>
     <!--Single line header-->
     <!--UI title header email actions-->
     <string name="bottom_sheet_item_single_line_header">Meilitoimingud</string>
@@ -243,46 +243,46 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Dokumendid</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Viimati värskendatud 14:14</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Viimati värskendatud kell 14.14</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Jagamine</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Jaga üksust on klõpsatud</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Klõpsati jaga üksust</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Teisalda</string>
     <!--UI Label for user action clicked on item move-->
-    <string name="bottom_sheet_item_double_line_header_move_toast">Üksust on teisaldatud</string>
+    <string name="bottom_sheet_item_double_line_header_move_toast">Klõpsati üksust teisalda</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Kustuta</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Klõpsatud üksuse kustutamine</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Klõpsati üksust kustuta</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Teave</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Teabeüksust on klõpsatud</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Klõpsati üksust teave</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Kell</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Kellaüksust on klõpsatud</string>
+    <string name="bottom_sheet_item_clock_toast">Klõpsati üksust kell</string>
     <!--UI Label for item alarm-->
-    <string name="bottom_sheet_item_alarm_title">Sireen</string>
+    <string name="bottom_sheet_item_alarm_title">Märguanne</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Märguandeüksust on klõpsatud</string>
+    <string name="bottom_sheet_item_alarm_toast">Klõpsati üksust märguanne</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Ajavöönd</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Ajavööndi üksust on klõpsatud</string>
+    <string name="bottom_sheet_item_time_zone_toast">Klõpsati üksust ajavöönd</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Nupp</string>
     <string name="buttonbar">Nupuriba</string>
-    <string name="button_disabled">Nupp Keelatud</string>
+    <string name="button_disabled">Keelatud nupp</string>
     <string name="button_borderless">Ääristuseta nupp</string>
     <string name="button_borderless_disabled">Ääristeta keelatud nupp</string>
     <string name="button_large">Suur nupp</string>
-    <string name="button_large_disabled">Nupp Suur keelatud</string>
+    <string name="button_large_disabled">Suur keelatud nupp</string>
     <string name="button_outlined">Liigendatud nupp</string>
     <string name="button_outlined_disabled">Liigendatud keelatud nupp</string>
 
@@ -291,25 +291,25 @@
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">DateTimePicker</string>
+    <string name="date_time_picker_title">KuupäevaKellaValija</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Üks kuupäev</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Kuupäeva pole valitud</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Kas kuvada kuupäevavalija?</string>
+    <string name="date_time_picker_date_button">Kuva kuupäevavalija</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Kuva kuupäeva- ja kellaajavalija, kus on valitud kuupäevavahekaart</string>
+    <string name="date_time_picker_calendar_date_time_button">Kuva kuupäeva- ja kellaajavalija, kus valitud on kuupäevavahekaart</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Kuva kuupäeva- ja kellaajavalija, kus valitud on kellaaja vahekaart</string>
+    <string name="date_time_picker_date_time_calendar_button">Kuva kuupäeva- ja kellaajavalija, kus valitud on kellaajavahekaart</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Kuva kuupäeva- ja kellaajavalija</string>
+    <string name="date_time_picker_date_time_button">Kuva lõpukuupäeva/-kellaaja valija</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Kuupäevavahemik</string>
     <!-- UI label showing start of the range-->
-    <string name="date_time_picker_date_range_start_title">Algusaeg:</string>
+    <string name="date_time_picker_date_range_start_title">Algus:</string>
     <!-- UI label showing end of the range-->
-    <string name="date_time_picker_date_range_end_title">Lõppkuupäev:</string>
+    <string name="date_time_picker_date_range_end_title">Lõpp:</string>
     <!-- UI label showing no date picked-->
     <string name="date_time_picker_date_start_picked_default">Algust pole valitud</string>
     <!-- UI label showing no date picked-->
@@ -321,9 +321,9 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Kuupäeva- ja kellaajavahemik</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Valige kuupäeva- ja kellaajavahemik</string>
     <!-- UI label -->
-    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <string name="date_time_picker_dialog_title">KuupäevaKellaValijaDialoog</string>
     <!-- text for button that shows picker dialog -->
     <string name="date_time_picker_dialog_button">Kuva dialoog</string>
 
@@ -331,19 +331,19 @@
     <!-- text for button that shows drawer -->
     <string name="drawer_button">Kuva sahtel</string>
     <!-- text for button that shows drawer dialog -->
-    <string name="drawer_dialog_button">Kuva liuglemisdialoog</string>
+    <string name="drawer_dialog_button">Kuva sahteldialoog</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Alumise hajumise dialoog puudub</string>
+    <string name="no_fade_bottom_dialog_button">Hajutuseta alumine dialoog</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Kuva ülemine sahtel</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Ülemise hajutuse dialoog puudub</string>
+    <string name="no_fade_top_dialog_button">Hajutuseta ülemine dialoog</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> Kuva ankruvaate ülaosa dialoog</string>
+    <string name="anchor_view_top_dialog_button"> Kuva ankruvaate ülemine dialoog</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Kuva pealkirjata ülemised dialoogid</string>
+    <string name="no_title_top_dialog_button"> Kuva pealkirjata ülemine dialoog</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Kuva pealkirja ülemise dialoogi all</string>
+    <string name="below_title_top_dialog_button"> Kuva pealkirja all ülemine dialoog</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Kuva parempoolne sahtel</string>
     <!-- text for button that shows left drawer -->
@@ -359,67 +359,67 @@
     <!-- Footer -->
     <string name="list_item_footer">Jalus, kolmanda astme tekst</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">Halli alampäise tekstiga üherealine loend</string>
+    <string name="list_item_sub_header_single_line">Üherealine loend halli alampäise tekstiga</string>
     <string name="list_item_sub_header_two_line">Kaherealine loend</string>
     <string name="list_item_sub_header_two_line_dense">Tiheda vahega kaherealine loend</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Kaherealine loend kohandatud teisese alapealkirja vaatega</string>
-    <string name="list_item_sub_header_three_line">Musta alampäise tekstiga kolmerealine loend</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Kaherealine loend kohandatud teisese alampealkirja vaatega</string>
+    <string name="list_item_sub_header_three_line">Kolmerealine loend musta alampäise tekstiga</string>
     <string name="list_item_sub_header_no_custom_views">Loetle kohandatud vaadeteta üksused</string>
-    <string name="list_item_sub_header_large_header">Suurte kohandatud vaadetega üksuste loend</string>
+    <string name="list_item_sub_header_large_header">Loetle suurte kohandatud vaadetega üksused</string>
     <string name="list_item_sub_header_wrapped_text">Loetle mähitud tekstiga üksused</string>
-    <string name="list_item_sub_header_truncated_text">Kärbitud tekstiga üksuste loend</string>
+    <string name="list_item_sub_header_truncated_text">Loetle kärbitud tekstiga üksused</string>
     <string name="list_item_sub_header_custom_accessory_text">Toiming</string>
     <string name="list_item_truncation_middle">Keskmine kärpimine.</string>
     <string name="list_item_truncation_end">Lõpeta kärpimine.</string>
     <string name="list_item_truncation_start">Alusta kärpimist.</string>
     <string name="list_item_custom_text_view">Väärtus</string>
-    <string name="list_item_click">Klõpsasite loendiüksust.</string>
+    <string name="list_item_click">Klõpsasite üksusele loend.</string>
     <string name="list_item_click_custom_accessory_view">Klõpsasite kohandatud tarvikuvaadet.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">Klõpsasite alampäise kohandatud tarvikuvaadet.</string>
-    <string name="list_item_more_options">Rohkem suvandeid</string>
+    <string name="list_item_more_options">Rohkem valikuid</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
-    <string name="people_picker_select_example">Vali</string>
-    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_select_example">Valige</string>
+    <string name="people_picker_select_deselect_example">ValiTühistaValik</string>
     <string name="people_picker_none_example">Pole</string>
     <string name="people_picker_delete_example">Kustuta</string>
     <string name="people_picker_custom_persona_description">See näide näitab, kuidas luua kohandatud IPersona objekti.</string>
-    <string name="people_picker_dialog_title_removed">Eemaldasite isiku:</string>
-    <string name="people_picker_dialog_title_added">Lisasite isiku:</string>
-    <string name="people_picker_drag_started">Lohistamine algas</string>
-    <string name="people_picker_drag_ended">Lohistamine lõppes</string>
-    <string name="people_picker_picked_personas_listener">Kuulaja</string>
+    <string name="people_picker_dialog_title_removed">Eemaldasite persona:</string>
+    <string name="people_picker_dialog_title_added">Lisasite persona:</string>
+    <string name="people_picker_drag_started">Lohistamine alustatud</string>
+    <string name="people_picker_drag_ended">Lohistamine lõpetatud</string>
+    <string name="people_picker_picked_personas_listener">Personade kuulaja</string>
     <string name="people_picker_suggestions_listener">Soovituste kuulaja</string>
     <string name="people_picker_persona_chip_click">Klõpsasite %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s saaja</item>
+        <item quantity="other">%1$s saajat</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">Laienda püsiv allleht</string>
-    <string name="collapse_persistent_sheet_button"> Peida püsiv allleht</string>
-    <string name="show_persistent_sheet_button"> Kuva püsiv allleht</string>
+    <string name="expand_bottom_sheet_button">Laienda püsiv AlumineLeht</string>
+    <string name="collapse_persistent_sheet_button"> Peida püsiv AlumineLeht</string>
+    <string name="show_persistent_sheet_button"> Püsivalt kuvamise alumine leht</string>
     <string name="new_view">See on uus vaade</string>
-    <string name="toggle_sheet_content">Lülita alumise lehe sisu sisse/välja</string>
-    <string name="switch_to_custom_content">Aktiveeri kohandatud sisu</string>
+    <string name="toggle_sheet_content">Alumise lehe sisu tumblernupp</string>
+    <string name="switch_to_custom_content">Aktiveerige kohandatud sisu</string>
     <string name="one_line_content">Üherealine alumise lehe sisu</string>
-    <string name="toggle_disable_all_items">Lülita kõigi üksuste keelamine sisse/välja</string>
+    <string name="toggle_disable_all_items">Tumblernupp kõigi üksuste keelamiseks</string>
     <!--Persistent BottomSheet Items-->
-    <string name="persistent_sheet_item_add_remove_view">Lisa/eemalda vaade</string>
+    <string name="persistent_sheet_item_add_remove_view">Lisa/Eemalda vaade</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Muuda ahendatud kõrgust</string>
     <string name="persistent_sheet_item_create_new_folder_title">Uus kaust</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Klõpsati uut kaustaüksust</string>
-    <string name="persistent_sheet_item_edit_title">Muuda</string>
-    <string name="persistent_sheet_item_edit_toast">Redigeeri klõpsatud üksust</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Klõpsati üksust uus kaust</string>
+    <string name="persistent_sheet_item_edit_title">Redigeeri</string>
+    <string name="persistent_sheet_item_edit_toast">Klõpsati üksust redigeeri</string>
     <string name="persistent_sheet_item_save_title">Salvesta</string>
-    <string name="persistent_sheet_item_save_toast">Salvesta üksus on klõpsatud</string>
-    <string name="persistent_sheet_item_zoom_in_title">Suurendamine</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Klõpsatud on üksuse suumimine</string>
-    <string name="persistent_sheet_item_zoom_out_title">Vähendamine</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Klõpsatud on üksuse suumimine</string>
+    <string name="persistent_sheet_item_save_toast">Klõpsati üksust salvesta</string>
+    <string name="persistent_sheet_item_zoom_in_title">Suumi sisse</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Klõpsati üksust suumi sisse</string>
+    <string name="persistent_sheet_item_zoom_out_title">Suumi välja</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Klõpsati üksust suumi välja</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -455,7 +455,7 @@
     <string name="persona_name_amanda_brady">Amanda Brady</string>
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
-    <string name="persona_name_carole_poland">Kalev Poola</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
     <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
@@ -466,42 +466,42 @@
     <string name="persona_name_erik_nason">Erik Nason</string>
     <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Isaac Fielder</string>
-    <string name="persona_name_johnie_mcconnell">Johnie McConpide</string>
-    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_johnie_mcconnell">Markus Lill</string>
+    <string name="persona_name_kat_larsson">Kristiina Koppel</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
-    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
-    <string name="persona_name_lydia_bauer">Lydia, Lydia, Lydia</string>
+    <string name="persona_name_kevin_sturgis">Paul Kirsipuu</string>
+    <string name="persona_name_kristen_patterson">Kristel Haab</string>
+    <string name="persona_name_lydia_bauer">Leida Oks</string>
     <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Markus Lill</string>
-    <string name="persona_name_mona_kane">Mona Kane</string>
-    <string name="persona_name_robin_counts">Robini arvud</string>
-    <string name="persona_name_robert_tolbert">Paul Tolbert</string>
+    <string name="persona_name_mona_kane">Miina Kask</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
     <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Kujundaja</string>
     <string name="persona_subtitle_engineer">Insener</string>
     <string name="persona_subtitle_manager">Ülemus</string>
-    <string name="persona_subtitle_researcher">Uurimispaan</string>
+    <string name="persona_subtitle_researcher">Uurija</string>
     <!-- UI labels -->
     <string name="persona_truncation">\ (pika teksti näide kärpimise testimiseks)</string>
-    <string name="persona_view_description_xxlarge">XXLarge\'i avatar kolme tekstireaga</string>
-    <string name="persona_view_description_large">Suur avatari kahe tekstireaga</string>
+    <string name="persona_view_description_xxlarge">XXL avatar kolme tekstireaga</string>
+    <string name="persona_view_description_large">Suur avatar koos kaherealise tekstiga</string>
     <string name="persona_view_description_small">Väike avatar ühe tekstireaga</string>
     <string name="people_picker_hint">Pole kuvatud vihjega</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Keelatud kaktusekiip</string>
+    <string name="persona_chip_example_disabled">Keelatud personakiip</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Vigane persona kiip</string>
+    <string name="persona_chip_example_error">Vigane personakiip</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">Kaanepilt ilma sulgemisikoonita</string>
+    <string name="persona_chip_example_no_icon">Personakiip ilma sulgemisikoonita</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Tavaline kaktusekiip</string>
+    <string name="persona_chip_example_basic">Lihtne personakiip</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Klõpsasite valitud Persona Kiibi.</string>
+    <string name="persona_chip_example_click">Klõpsasite valitud personakiibil.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
@@ -511,11 +511,11 @@
     <!-- UI label for item invite people -->
     <string name="popup_menu_item_invite_people">Kutsu inimesi</string>
     <!-- UI label for item refresh page -->
-    <string name="popup_menu_item_refresh_page">Lehe värskendamine</string>
+    <string name="popup_menu_item_refresh_page">Värskenda lehte</string>
     <!-- UI label for item open in browser -->
     <string name="popup_menu_item_open_in_browser">Ava brauseris</string>
     <!-- UI label for multi line description -->
-    <string name="popup_menu_item_multiline">See on mitmerealine hüpikmenüü. Max ridade arvuks on seatud kaks, ülejäänud tekst kärbitakse.
+    <string name="popup_menu_item_multiline">See on mitmerealine hüpikmenüü. Maksimaalseks ridade arvuks on seatud kaks, ülejäänud tekst kärbitakse.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">Kõik uudised</string>
@@ -528,7 +528,7 @@
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_outside">Teavita väljaspool tööaega</string>
     <!-- UI label for an item -->
-    <string name="popup_menu_item_notify_inactive">Teavita, kui töölaual on passiivne</string>
+    <string name="popup_menu_item_notify_inactive">Teavita, kui on töölaual passiivne</string>
     <!-- UI message for user action clicked on an item in popup menu -->
     <string name="popup_menu_item_clicked">Klõpsasite üksust:</string>
     <!-- UI label that shows simple pop up menu -->
@@ -540,12 +540,12 @@
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
     <string name="popup_menu_all_check">Menüü koos kõigi valitavate üksuste, ikoonide ja pika tekstiga</string>
     <!--Text for button that shows popupmenu -->
-    <string name="popup_menu_show">Kuvamine</string>
+    <string name="popup_menu_show">Kuva</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">Ringikujuline edenemine</string>
-    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall">XS</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">Väike</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -557,9 +557,9 @@
     <string name="linear_progress">Lineaarne edenemine</string>
     <string name="linear_progress_size">4dp</string>
     <!-- UI label showing a Indeterminate progress bar -->
-    <string name="linear_progress_indeterminate_label">Fikseerimata</string>
+    <string name="linear_progress_indeterminate_label">Määramata</string>
     <!-- UI label showing a Determinate progress bar -->
-    <string name="linear_progress_determinate_label">Määratle</string>
+    <string name="linear_progress_determinate_label">Määratud</string>
 
 
     <!--Shared-->
@@ -573,28 +573,28 @@
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Mikrofoni tagasihelistamine</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Automaatkorrektuur</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">Mikrofon on vajutatud</string>
+    <string name="searchbar_microphone_pressed">Mikrofoni on vajutatud</string>
     <!-- Announces that right view has been pressed -->
-    <string name="searchbar_right_view_pressed">Paremvaade on vajutatud</string>
+    <string name="searchbar_right_view_pressed">Vajutatud on paremvaadet</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Klaviatuuriotsingu vajutamine</string>
+    <string name="searchbar_keyboard_search_pressed">Vajutati klaviatuuri otsingut</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Toiming</string>
-    <string name="snackbar_action_long">Pikk tekstitoiming</string>
-    <string name="snackbar_single_line">Üherealine suupisteriba</string>
-    <string name="snackbar_multiline">See on mitmerealine suupisteriba. Max ridade arvuks on seatud kaks, ülejäänud tekst kärbitakse.
+    <string name="snackbar_action_long">Toiming pika tekstiga</string>
+    <string name="snackbar_single_line">Üherealine teavitusriba</string>
+    <string name="snackbar_multiline">See on mitmerealine teavitusriba. Maksimaalseks ridade arvuks on seatud kaks, ülejäänud tekst kärbitakse.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
-    <string name="snackbar_announcement">See on teadaande suupisteriba. Seda kasutatakse uute funktsioonide edastamiseks.</string>
-    <string name="snackbar_primary">See on esmane suupisteriba.</string>
-    <string name="snackbar_light">See on hele suupisteriba.</string>
-    <string name="snackbar_warning">See on hoiatuse suupisteriba.</string>
-    <string name="snackbar_danger">See on oht, et suupisteriba.</string>
+    <string name="snackbar_announcement">See on teadaannete teavitusriba. Seda kasutatakse uute funktsioonide kohta teabe edastamiseks.</string>
+    <string name="snackbar_primary">See on peamine teavitusriba</string>
+    <string name="snackbar_light">See on lihtne teavitusriba.</string>
+    <string name="snackbar_warning">See on hoiatuse teavitusriba.</string>
+    <string name="snackbar_danger">See on ohu teavitusriba.</string>
     <string name="snackbar_description_single_line">Lühike kestus</string>
-    <string name="snackbar_description_single_line_custom_view">Pikk kestus, ringikujuline edenemine väikese kohandatud vaatena</string>
+    <string name="snackbar_description_single_line_custom_view">Pika kestusega ringikujuline edenemine väikese kohandatud vaatena</string>
     <string name="snackbar_description_single_line_action">Lühike kestus koos toiminguga</string>
     <string name="snackbar_description_single_line_action_custom_view">Lühike kestus koos toimingu ja keskmise kohandatud vaatega</string>
     <string name="snackbar_description_single_line_custom_text_color">Lühike kestus kohandatud tekstivärviga</string>
@@ -604,13 +604,13 @@
     <string name="snackbar_description_multiline_action_custom_view">Lühike kestus koos toimingu ja keskmise kohandatud vaatega</string>
     <string name="snackbar_description_multiline_action_long">Lühike kestus koos pika toimingutekstiga</string>
     <string name="snackbar_description_announcement">Lühike kestus</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Seda teksti on värskendatud.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Kuva suupisteriba</string>
+    <string name="snackbar_button_show">Kuva teavitusriba</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">Üks joon</string>
+    <string name="snackbar_headline_single_line">Üherealine</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multiline</string>
+    <string name="snackbar_headline_multiline">Mitmerealine</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Teadaande laad</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -637,80 +637,80 @@
     <!-- UI text for text alignment of tab -->
     <string name="tabBar_text_alignment">Teksti joondus</string>
     <!-- UI text for vertical alignment of tab -->
-    <string name="tabBar_vertical">Vertikaalsed</string>
+    <string name="tabBar_vertical">Vertikaalne</string>
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Horisontaalne</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(teksti pole)</string>
+    <string name="tabBar_no_text">Tekst puudub</string>
     <!-- UI text for no. of tab items -->
-    <string name="tabBar_tab_items">Vahekaardi üksused</string>
+    <string name="tabBar_tab_items">Vahekaardiüksused</string>
 
     <!--TemplateView-->
     <!-- UI labels and descriptions -->
-    <string name="cell_sample_title">Tiitel</string>
+    <string name="cell_sample_title">Pealkiri</string>
     <string name="cell_sample_description">Kirjeldus</string>
     <string name="calculate_cells">Laadi/arvuta 100 lahtrit</string>
     <string name="calculate_layouts">Laadi/arvuta 100 paigutust</string>
     <string name="template_list">Mallide loend</string>
-    <string name="regular_list">Tavaline loend</string>
+    <string name="regular_list">Tavaloend</string>
     <string name="cell_example_title">Pealkiri: Lahter</string>
     <string name="cell_example_description">Kirjeldus: paigutuse muutmiseks puudutage</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Standardne vahekaardi 2 segment</string>
+    <string name="tab_standard_two_segment">Standardne 2-segmendiline vahekaart</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Standardne vahekaardi 3 segment</string>
+    <string name="tab_standard_three_segment">Standardne 3-segmendiline vahekaart</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Standardne vahekaardi 4 segment</string>
+    <string name="tab_standard_four_segment">Standardne 4-segmendiline vahekaart</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Standardne vahekaart piieriga</string>
+    <string name="tab_standard_with_pager">Tavaline vahekaart koos piipariga</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">Vaheta vahekaarti</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Tablettide vahekaart </string>
+    <string name="tab_pills">Pillide vahekaart </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Puuduta kohtspikri kuvamiseks</string>
+    <string name="tooltip_button">Puudutage kohtspikri kuvamiseks</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Puudutage kohandatud kalendri kohtspikri kuvamiseks</string>
+    <string name="tooltip_calendar_demo_button">Puudutage kohandatud kalendri kohtspikri jaoks</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Puudutage valikut Kohandatud värvi kohtspikr</string>
+    <string name="tooltip_custom_button">Puudutage kohandatud värvi kohtspikri jaoks</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Puudutage kohtspikri sulgemiseks</string>
+    <string name="tooltip_center_button">Puudutage sisemise kohtspikri sulgemiseks</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Puudutage kohandatud vaate kohtspikri kuvamiseks</string>
+    <string name="tooltip_custom_view">Puudutage kliendivaate tööriistariba jaoks</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">Ülemise kohandatud värvi kohtspiker</string>
+    <string name="tooltip_top_start_message">Ülemine kohandatud värvi kohtspikri jaoks</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Ülemise lõpu kohtspikr 10dp offsetX-iga</string>
+    <string name="tooltip_top_end_message">Ülemise lõpu kohtspikker koos 10 dp X-telje nihkega</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Alumise alguse kohtspikr</string>
+    <string name="tooltip_bottom_start_message">Alumise alguse kohtspikker</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Alumise lõpu kohtspikr 10dp nihkega</string>
+    <string name="tooltip_bottom_end_message">Alumise lõpu kohtspikker koos 10 dp Y-telje nihkega</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Sule kohtspikker</string>
+    <string name="tooltip_center_message">Sisemuse sulgemise tööriistariba</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">Kohtspiker on suletud</string>
+    <string name="tooltip_dismiss_message">Kohtspikker on suletud</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Pealkiri on hele 28 s</string>
+    <string name="headline">Pealkiri on hele 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
     <string name="title_1">Pealkiri 1 on keskmine 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Pealkiri 2 on tavaline 20sp</string>
+    <string name="title_2">2. peakiri on tavaline 20 sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
     <string name="heading">Pealkiri on tavaline 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Alapealkiri 1 on harilik 16sp</string>
+    <string name="subheading_1">Alapealkiri 1 on tavaline 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
     <string name="subheading_2">Alapealkiri 2 on keskmine 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Keha 1 on tavaline 14sp</string>
+    <string name="body_1">Sisutekst 1 on tavaline 14sp</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Keha 2 on keskmine 14sp</string>
+    <string name="body_2">Sisutekst 2 on keskmine 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
     <string name="caption">Pealdis on tavaline 12sp</string>
 

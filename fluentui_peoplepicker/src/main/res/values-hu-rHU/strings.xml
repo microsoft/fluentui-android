@@ -13,7 +13,7 @@
     <string name="people_picker_search_progress">Keresés…</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
+    <string name="people_picker_accessibility_default_hint">Írjon be egy nevet vagy egy e-mail-címet</string>
     <string name="people_picker_accessibility_persona_added">%s hozzáadva</string>
     <string name="people_picker_accessibility_persona_removed">%s eltávolítva</string>
     <string name="people_picker_accessibility_replaced">%s lecserélve,</string>
@@ -23,22 +23,22 @@
     <string name="people_picker_accessibility_deselect_persona">Kijelölés megszüntetése</string>
     <string name="people_picker_accessibility_select_persona">Kiválasztás</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Kattintott %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Kijelölt %s</string>
+    <string name="people_picker_accessibility_clicked_persona">%s nevére kattintott</string>
+    <string name="people_picker_accessibility_deselected_persona">%s kijelölése megszüntetve</string>
     <string name="people_picker_accessibility_selected_persona">Kijelölte ezt: %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, Az aktiválás megszünteti a kijelölést</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, Aktiváláskor törlődni fog</string>
-    <string name="people_picker_accessibility_click_selected_persona">, Az aktiválás a következőre kattint:</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, ezt az elemet választva megszüntetheti a kijelölést</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, ezt az elemet választva törölheti a személyt</string>
+    <string name="people_picker_accessibility_click_selected_persona">, ezt az elemet választva rákattinthat a személy nevére</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Javaslatok listája megnyitva, %s személy szerepel rajta</item>
+        <item quantity="other">Javaslatok listája megnyitva, %s személy szerepel rajta</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s személy</item>
+        <item quantity="other">%s személy</item>
     </plurals>
 </resources>

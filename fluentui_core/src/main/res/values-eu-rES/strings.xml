@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Describes selected action-->
-    <string name="fluentui_selected">Hautatuta</string>
-    <!-- Describes not selected action-->
-    <string name="fluentui_not_selected">Hautatu gabe</string>
-    <!-- Describes disabled action-->
-    <string name="fluentui_disabled">Desgaituta</string>
-    <!-- Describes enabled action-->
-    <string name="fluentui_enabled">Gaituta</string>
-    <!-- Describes close action for a sheet-->
-    <string name="fluentui_close_sheet">Itxi orria</string>
-    <!-- Describes close action -->
-    <string name="fluentui_close">Itxi</string>
-    <!--name of the icon -->
-    <string name="fluentui_search">Bilatu</string>
-    <!--name of the icon -->
-    <string name="fluentui_microphone">Mikrofonoa</string>
-    <!-- Describes the action - to clear the text -->
-    <string name="fluentui_clear_text">Garbitu testua</string>
-    <!-- Describes the action - back -->
-    <string name="fluentui_back">Atzera</string>
-    <!-- Describes the action - activated -->
-    <string name="fluentui_activated">Aktibatuta</string>
-    <!-- Describes the action - deactivated -->
-    <string name="fluentui_deactivated">Desaktibatuta</string>
-    <!-- Describes the type - Neutral-->
-    <string name="fluentui_neutral">Neutroa</string>
-    <!-- Describes the type - Brand-->
-    <string name="fluentui_brand">Marka</string>
-    <!--name of the icon -->
-    <string name="fluentui_chevron">Xebroia</string>
-    <string name="fluentui_large">Handia</string>
-    <string name="fluentui_medium">Ertaina</string>
-    <string name="fluentui_small">Txikia</string>
-    <string name="fluentui_subtitle">Azpititulua</string>
+  <string name="fluentui_selected">Hautatuta</string>
+  <string name="fluentui_not_selected">Hautatu gabe</string>
+  <string name="fluentui_disabled">Desgaituta</string>
+  <string name="fluentui_enabled">Gaituta</string>
+  <string name="fluentui_close_sheet">Itxi orria</string>
+  <string name="fluentui_close">Itxi</string>
+  <string name="fluentui_search">Bilatu</string>
+  <string name="fluentui_microphone">Mikrofonoa</string>
+  <string name="fluentui_clear_text">Garbitu testua</string>
+  <string name="fluentui_back">Atzera</string>
+  <string name="fluentui_activated">Aktibatuta</string>
+  <string name="fluentui_deactivated">Desaktibatuta</string>
+  <string name="fluentui_neutral">Neutroa</string>
+  <string name="fluentui_brand">Marka</string>
+  <string name="fluentui_chevron">Xebroia</string>
+  <string name="fluentui_large">Handia</string>
+  <string name="fluentui_medium">Ertaina</string>
+  <string name="fluentui_small">Txikia</string>
+  <string name="fluentui_subtitle">Azpititulua</string>
 </resources>

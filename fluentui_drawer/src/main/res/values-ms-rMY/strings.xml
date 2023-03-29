@@ -1,14 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--SheetBehavior Address-->
-
-    <!-- Text for bottomsheet handle -->
-    <string name="drag_handle">Pemegang Seret</string>
-    <!-- onClick Label for bottomsheet to expand -->
-    <string name="expand">kembangkan</string>
-    <!-- onClick Label for bottomsheet to collapse -->
-    <string name="collapse">runtuhkan</string>
+  <string name="drag_handle">Pemegang Seret</string>
+  <string name="expand">kembangkan</string>
+  <string name="collapse">runtuhkan</string>
 </resources>

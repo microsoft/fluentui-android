@@ -32,7 +32,7 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
             CircularProgressIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
             CircularProgressIndicatorSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
             CircularProgressIndicatorSize.Large -> 32.dp
-            CircularProgressIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize360)
+            CircularProgressIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize400)
         }
     }
 
@@ -42,7 +42,7 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
             CircularProgressIndicatorSize.XXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth10)
             CircularProgressIndicatorSize.XSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth10)
             CircularProgressIndicatorSize.Medium -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20)
-            CircularProgressIndicatorSize.Large -> 3.dp
+            CircularProgressIndicatorSize.Large -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth30)
             CircularProgressIndicatorSize.XLarge -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40)
         }
     }

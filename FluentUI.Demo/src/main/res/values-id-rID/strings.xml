@@ -6,8 +6,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--App-->
-    <string name="app_name">Demo UI Lancar</string>
-    <string name="app_title">UI Lancar</string>
+    <string name="app_name">Demo UI Fluent</string>
+    <string name="app_title">UI Fluent</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">Memilih %s</string>
     <string name="app_modifiable_parameters">Parameter yang Dapat Diubah</string>
@@ -54,9 +54,9 @@
     <!-- Text for button that shows back icon -->
     <string name="app_bar_layout_show_back_icon_button">Tampilkan ikon kembali</string>
     <!-- Text for button that hides icon-->
-    <string name="app_bar_layout_hide_icon_button">Sembunyikan Ikon</string>
+    <string name="app_bar_layout_hide_icon_button">Sembunyikan ikon</string>
     <!-- Text for button that shows icon -->
-    <string name="app_bar_layout_show_icon_button">Tampilkan Ikon</string>
+    <string name="app_bar_layout_show_icon_button">Tampilkan ikon</string>
     <!-- UI label denoting layout style -->
     <string name="app_bar_layout_toggle_searchbar_sub_header">Aktifkan/nonaktifkan gaya tata letak bilah pencarian</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
@@ -65,7 +65,7 @@
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Beralih antar tema (membuat ulang aktivitas)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Aktifkan/nonaktifkan tema</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Item</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -89,7 +89,7 @@
     <!-- UI label to show the overflow avatar counter -->
     <string name="avatar_group_overflow_avatar_count">Jumlah Avatar Luapan</string>
     <!-- UI label to show border type -->
-    <string name="avatar_group_border_type">Tipe batas:</string>
+    <string name="avatar_group_border_type">Tipe Batas</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
     <string name="avatar_group_info">Grup Avatar dengan set OverflowAvatarCount tidak akan mematuhi Avatar Maksimum yang Ditampilkan.</string>
     <!-- UI label showing face stack type of avatar group -->
@@ -99,7 +99,7 @@
     <!-- UI label denoting the overflow clicked action performed by the user -->
     <string name="avatar_group_overflow_clicked">Luapan diklik</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">AvatarView di indeks %d diklik</string>
+    <string name="avatar_group_avatar_clicked">AvatarView pada indeks %d diklik</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -125,17 +125,17 @@
     <string name="bottom_navigation_five_menu_items_button">Tampilkan lima item menu</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">Label %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">Label adalah %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Lembar Bawah</string>
+    <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Tampilkan dengan item baris tunggal</string>
     <string name="bottom_sheet_with_double_line_items">Tampilkan dengan item garis ganda</string>
     <string name="bottom_sheet_with_single_line_header">Tampilkan dengan header baris tunggal</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Tampilkan dengan header dan pembagi garis ganda</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Tampilkan dengan header dan pemisah garis ganda</string>
     <string name="bottom_sheet_dialog_button">Tampilkan</string>
     <string name="drawer_content_desc_collapse_state">Luaskan</string>
     <string name="drawer_content_desc_expand_state">Kecilkan</string>
@@ -144,9 +144,9 @@
     <!-- UI text showing the click action performed by the user -->
     <string name="contextual_command_prompt_click_item">Klik %s</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">%s Klik Panjang</string>
+    <string name="contextual_command_prompt_long_click_item">Klik Panjang %s</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Klik tutup</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Sisipkan Item</string>
     <!-- Text for button for updating an item-->
@@ -188,7 +188,7 @@
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">Ruang grup</string>
     <!-- UI bar label denoting the space between items -->
-    <string name="contextual_command_bar_item_space_title">Ruang item</string>
+    <string name="contextual_command_bar_item_space_title">Spasi item</string>
     <!-- UI bar label denoting the space in number value dp's -->
     <string name="contextual_command_bar_space_value">%d dp</string>
 
@@ -238,16 +238,16 @@
     <string name="bottom_sheet_item_manage_toast">Kelola item yang diklik</string>
     <!--Single line header-->
     <!--UI title header email actions-->
-    <string name="bottom_sheet_item_single_line_header">Tindakan email</string>
+    <string name="bottom_sheet_item_single_line_header">Tindakan Email</string>
     <!--Double line header-->
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Dokumen</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">Terakhir diperbarui 14:14</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">Terakhir diperbarui pukul 14.14</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">Bagikan</string>
     <!--UI Label for user action clicked on item share-->
-    <string name="bottom_sheet_item_double_line_header_share_toast">Bagikan item yang diklik</string>
+    <string name="bottom_sheet_item_double_line_header_share_toast">Berbagi item diklik</string>
     <!--UI Label for item move-->
     <string name="bottom_sheet_item_double_line_header_move">Pindahkan</string>
     <!--UI Label for user action clicked on item move-->
@@ -277,33 +277,33 @@
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Tombol</string>
-    <string name="buttonbar">Bilah Tombol</string>
+    <string name="buttonbar">ButtonBar</string>
     <string name="button_disabled">Tombol Dinonaktifkan</string>
-    <string name="button_borderless">Tombol Tanpa Batas Tepi</string>
-    <string name="button_borderless_disabled">Tombol Nonaktif Tanpa Batas Tepi</string>
+    <string name="button_borderless">Tombol Tanpa Batas</string>
+    <string name="button_borderless_disabled">Tombol Nonaktif Tanpa Batas</string>
     <string name="button_large">Tombol Besar</string>
-    <string name="button_large_disabled">Tombol Nonaktif Besar</string>
-    <string name="button_outlined">Tombol Dengan Kerangka</string>
-    <string name="button_outlined_disabled">Tombol Dinonaktifkan Dengan Kerangka</string>
+    <string name="button_large_disabled">Tombol Besar Nonaktif</string>
+    <string name="button_outlined">Tombol Bergaris Luar</string>
+    <string name="button_outlined_disabled">Tombol Nonaktif Diuraikan</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Pilih tanggal</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Pemecah TanggalWaktu</string>
+    <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Tanggal Tunggal</string>
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">Tidak ada tanggal yang dipilih</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Perlihatkan Pemilih Tanggal?</string>
+    <string name="date_time_picker_date_button">Tampilkan pemilih tanggal</string>
     <!-- text for button that shows date picker with date tab selected -->
     <string name="date_time_picker_calendar_date_time_button">Tampilkan pemilih tanggal waktu dengan tab tanggal dipilih</string>
     <!-- text for button that shows date picker with time tab selected -->
     <string name="date_time_picker_date_time_calendar_button">Tampilkan pemilih tanggal waktu dengan tab waktu dipilih</string>
     <!-- text for button that shows time picker -->
-    <string name="date_time_picker_date_time_button">Tampilkan pemilih tanggal waktu</string>
+    <string name="date_time_picker_date_time_button">Tampilkan pemilih waktu tanggal</string>
     <!-- UI label to show date range-->
     <string name="date_time_picker_date_range_title">Rentang Tanggal</string>
     <!-- UI label showing start of the range-->
@@ -311,9 +311,9 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Akhir:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Tidak ada pilihan awal</string>
+    <string name="date_time_picker_date_start_picked_default">Tidak ada mulai yang dipilih</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">Tidak ada pilihan akhir</string>
+    <string name="date_time_picker_date_end_picked_default">Tidak ada akhir yang dipilih</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">Pilih tanggal mulai</string>
     <!-- text for button that selects end date -->
@@ -321,7 +321,7 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Rentang Waktu Tanggal</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Pilih rentang waktu tanggal</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
@@ -333,17 +333,17 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Tampilkan dialog laci</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Tidak ada dialog memudar bawah</string>
+    <string name="no_fade_bottom_dialog_button">Tidak ada dialog efek memudar ke bawah</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Tampilkan laci atas</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Tidak ada dialog atas pudar</string>
+    <string name="no_fade_top_dialog_button">Tidak ada dialog efek memudar ke atas</string>
     <!-- text for button that shows anchor view top dialog drawer -->
-    <string name="anchor_view_top_dialog_button"> Tampilkan dialog tampilan jangkar atas</string>
+    <string name="anchor_view_top_dialog_button"> Tampilkan dialog atas tampilan jangkar</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> Tampilkan tidak ada dialog judul atas</string>
+    <string name="no_title_top_dialog_button"> Dialog di atas judul tidak ditampilkan</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> Tampilkan di bawah dialog atas judul</string>
+    <string name="below_title_top_dialog_button"> Tampilkan dialog teratas pada judul berikut</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">Tampilkan laci kanan</string>
     <!-- text for button that shows left drawer -->
@@ -361,27 +361,27 @@
     <!-- UI labels -->
     <string name="list_item_sub_header_single_line">Daftar satu baris dengan teks sub header abu-abu</string>
     <string name="list_item_sub_header_two_line">Daftar dua baris</string>
-    <string name="list_item_sub_header_two_line_dense">Daftar dua baris dengan spasi padat</string>
+    <string name="list_item_sub_header_two_line_dense">Daftar dua baris dengan penspasian padat</string>
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Daftar dua baris dengan tampilan subjudul sekunder kustom</string>
     <string name="list_item_sub_header_three_line">Daftar tiga baris dengan teks sub header hitam</string>
     <string name="list_item_sub_header_no_custom_views">Cantumkan item tanpa tampilan kustom</string>
     <string name="list_item_sub_header_large_header">Cantumkan item dengan tampilan kustom besar</string>
     <string name="list_item_sub_header_wrapped_text">Cantumkan item dengan teks yang dibungkus</string>
-    <string name="list_item_sub_header_truncated_text">Cantumkan item dengan teks terpotok</string>
+    <string name="list_item_sub_header_truncated_text">Cantumkan item dengan teks terpotong</string>
     <string name="list_item_sub_header_custom_accessory_text">Aksi</string>
-    <string name="list_item_truncation_middle">Pemengkolan tengah.</string>
-    <string name="list_item_truncation_end">Akhiri pemengkahan.</string>
-    <string name="list_item_truncation_start">Mulai pemengkolan.</string>
+    <string name="list_item_truncation_middle">Pemotongan tengah.</string>
+    <string name="list_item_truncation_end">Akhiri pemotongan.</string>
+    <string name="list_item_truncation_start">Mulai pemotongan.</string>
     <string name="list_item_custom_text_view">Nilai</string>
-    <string name="list_item_click">Anda mengklik item daftar.</string>
-    <string name="list_item_click_custom_accessory_view">Anda mengklik tampilan aksesori kustom.</string>
-    <string name="list_item_click_sub_header_custom_accessory_view">Anda mengklik tampilan aksesori kustom sub-header.</string>
+    <string name="list_item_click">Anda mengeklik item daftar.</string>
+    <string name="list_item_click_custom_accessory_view">Anda mengeklik tampilan aksesori kustom.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Anda mengeklik tampilan aksesori kustom sub-header.</string>
     <string name="list_item_more_options">Opsi lainnya</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
     <string name="people_picker_select_example">Pilih</string>
-    <string name="people_picker_select_deselect_example">PilihPilih</string>
+    <string name="people_picker_select_deselect_example">PilihBatalkanPilihan</string>
     <string name="people_picker_none_example">Tidak ada</string>
     <string name="people_picker_delete_example">Hapus</string>
     <string name="people_picker_custom_persona_description">Contoh ini menunjukkan cara membuat objek IPersona kustom.</string>
@@ -391,10 +391,10 @@
     <string name="people_picker_drag_ended">Seret berakhir</string>
     <string name="people_picker_picked_personas_listener">Pendengar Persona</string>
     <string name="people_picker_suggestions_listener">Pendengar Saran</string>
-    <string name="people_picker_persona_chip_click">Anda mengklik %s</string>
+    <string name="people_picker_persona_chip_click">Anda mengeklik %s</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="other">%1$s penerima</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
@@ -404,8 +404,8 @@
     <string name="new_view">Ini adalah Tampilan Baru</string>
     <string name="toggle_sheet_content">Aktifkan/Nonaktifkan Konten Lembar Bawah</string>
     <string name="switch_to_custom_content">Beralih ke Konten kustom</string>
-    <string name="one_line_content">Konten Lembar Bawah Satu Baris</string>
-    <string name="toggle_disable_all_items">Alihkan Nonaktifkan Semua Item</string>
+    <string name="one_line_content">Konten Bottomsheet Satu Baris</string>
+    <string name="toggle_disable_all_items">Hidupkan/Matikan Semua Item</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Tambah/Hapus Tampilan</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Ubah Tinggi yang Diciutkan</string>
@@ -416,9 +416,9 @@
     <string name="persistent_sheet_item_save_title">Simpan</string>
     <string name="persistent_sheet_item_save_toast">Simpan item yang diklik</string>
     <string name="persistent_sheet_item_zoom_in_title">Perbesar</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Perbesar item yang diklik</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Memperbesar item yang diklik</string>
     <string name="persistent_sheet_item_zoom_out_title">Perkecil</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Perkecil item yang diklik</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Memperkecil item yang diklik</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -455,10 +455,10 @@
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
     <string name="persona_name_carole_poland">Carole Polandia</string>
-    <string name="persona_name_cecil_folk">Rakyat Cecil</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
     <string name="persona_name_celeste_burton">Celeste Burton</string>
     <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
-    <string name="persona_name_colin_ballinger">Penyangga Bola Colin</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
     <string name="persona_name_daisy_phillips">Daisy Phillips</string>
     <string name="persona_name_elliot_woodward">Elliot Woodward</string>
     <string name="persona_name_elvia_atkins">Elvia Atkins</string>
@@ -472,9 +472,9 @@
     <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
     <string name="persona_name_mauricio_august">Mauricio August</string>
-    <string name="persona_name_miguel_garcia">Andi Dharmawan</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
     <string name="persona_name_mona_kane">Mona Kane</string>
-    <string name="persona_name_robin_counts">Jumlah Robin</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
     <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
     <string name="persona_name_wanda_howard">Wanda Howard</string>
@@ -484,7 +484,7 @@
     <string name="persona_subtitle_manager">Manajer</string>
     <string name="persona_subtitle_researcher">Peneliti</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (contoh teks panjang untuk menguji pemengkahan)</string>
+    <string name="persona_truncation">\ (contoh teks panjang untuk menguji pemotongan)</string>
     <string name="persona_view_description_xxlarge">Avatar XXLarge dengan tiga baris teks</string>
     <string name="persona_view_description_large">Avatar besar dengan dua baris teks</string>
     <string name="persona_view_description_small">Avatar kecil dengan satu baris teks</string>
@@ -494,7 +494,7 @@
     <!-- UI label showing a disabled persona chip -->
     <string name="persona_chip_example_disabled">Chip Persona Dinonaktifkan</string>
     <!-- UI label showing a error persona chip -->
-    <string name="persona_chip_example_error">Chip Persona Kesalahan</string>
+    <string name="persona_chip_example_error">Kesalahan Chip Persona</string>
     <!-- UI label showing a persona chip with no close icon-->
     <string name="persona_chip_example_no_icon">Chip Persona tanpa ikon tutup</string>
     <!-- UI label showing a basic persona chip -->
@@ -519,7 +519,7 @@
     <!-- UI label for item All news -->
     <string name="popup_menu_item_all_news">Semua berita</string>
     <!-- UI label for item Saved news -->
-    <string name="popup_menu_item_saved_news">Berita tersimpan</string>
+    <string name="popup_menu_item_saved_news">Berita yang disimpan</string>
     <!-- UI label for item >News from sites -->
     <string name="popup_menu_item_news_from_sites">Berita dari situs</string>
     <!-- UI label for item contoso -->
@@ -529,11 +529,11 @@
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_inactive">Beri tahu saat tidak aktif di desktop</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">Anda mengklik item:</string>
+    <string name="popup_menu_item_clicked">Anda mengeklik item:</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">Menu sederhana</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Menu2 sederhana</string>
+    <string name="popup_menu_simple_duo">Menu sederhana2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">Menu dengan satu item yang dapat dipilih dan pembagi</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
@@ -568,11 +568,11 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">SearchBar</string>
     <!-- name of the icon-->
     <string name="searchbar_microphone_callback">Panggilan Balik Mikrofon</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Koreksi Otomatis</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Mikrofon Ditekan</string>
     <!-- Announces that right view has been pressed -->
@@ -584,7 +584,7 @@
     <!-- UI label descriptions -->
     <string name="snackbar_action">Aksi</string>
     <string name="snackbar_action_long">Tindakan Teks Panjang</string>
-    <string name="snackbar_single_line">Snackbar satu baris</string>
+    <string name="snackbar_single_line">Snackbar baris tunggal</string>
     <string name="snackbar_multiline">Ini adalah snackbar multibaris. Garis maks diatur ke dua, sisa teks akan terpotok.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">Ini adalah pengumuman snackbar. Ini digunakan untuk mengomunikasikan fitur baru.</string>
@@ -596,20 +596,20 @@
     <string name="snackbar_description_single_line_custom_view">Durasi panjang dengan kemajuan melingkar sebagai tampilan kustom kecil</string>
     <string name="snackbar_description_single_line_action">Durasi pendek dengan tindakan</string>
     <string name="snackbar_description_single_line_action_custom_view">Durasi pendek dengan tindakan dan tampilan kustom sedang</string>
-    <string name="snackbar_description_single_line_custom_text_color">Durasi pendek dengan warna teks yang disesuaikan</string>
+    <string name="snackbar_description_single_line_custom_text_color">Durasi pendek dengan warna teks yang dikustomisasi</string>
     <string name="snackbar_description_multiline">Durasi panjang</string>
     <string name="snackbar_description_multiline_custom_view">Durasi panjang dengan tampilan kustom kecil</string>
     <string name="snackbar_description_multiline_action">Durasi tidak terbatas dengan pembaruan tindakan dan teks</string>
     <string name="snackbar_description_multiline_action_custom_view">Durasi pendek dengan tindakan dan tampilan kustom sedang</string>
     <string name="snackbar_description_multiline_action_long">Durasi pendek dengan teks tindakan panjang</string>
     <string name="snackbar_description_announcement">Durasi pendek</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Teks ini telah diperbarui.</string>
     <!-- text for button that shows a snackbar -->
     <string name="snackbar_button_show">Tampilkan Snackbar</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Garis tunggal</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">Multi-Garis</string>
+    <string name="snackbar_headline_multiline">Multibaris</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">Gaya pengumuman</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -632,7 +632,7 @@
     <!-- text for tabbar notification tab -->
     <string name="tabBar_notification">Pemberitahuan</string>
     <!-- text for tabbar more tab -->
-    <string name="tabBar_more">Lebih banyak</string>
+    <string name="tabBar_more">Lainnya</string>
     <!-- UI text for text alignment of tab -->
     <string name="tabBar_text_alignment">Perataan Teks</string>
     <!-- UI text for vertical alignment of tab -->
@@ -640,7 +640,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Horizontal</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(tanpa teks)</string>
+    <string name="tabBar_no_text">Tanpa Teks</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Item Tab</string>
 
@@ -648,8 +648,8 @@
     <!-- UI labels and descriptions -->
     <string name="cell_sample_title">Judul</string>
     <string name="cell_sample_description">Deskripsi</string>
-    <string name="calculate_cells">Muat/hitung 100 sel</string>
-    <string name="calculate_layouts">Muat/hitung 100 tata letak</string>
+    <string name="calculate_cells">Memuat/menghitung 100 sel</string>
+    <string name="calculate_layouts">Memuat/menghitung 100 tata letak</string>
     <string name="template_list">Daftar Templat</string>
     <string name="regular_list">Daftar Reguler</string>
     <string name="cell_example_title">Judul: Sel</string>
@@ -657,39 +657,39 @@
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">Segmen 2 Tab Standar</string>
+    <string name="tab_standard_two_segment">Segmen-2 Tab Standar</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">Segmen 3 Tab Standar</string>
+    <string name="tab_standard_three_segment">Segmen-3 Tab Standar</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Segmen 4 Tab Standar</string>
+    <string name="tab_standard_four_segment">Segmen-4 Tab Standar</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Tab Standar dengan Pager</string>
+    <string name="tab_standard_with_pager">Tab Standar dengan Penyeranta</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">Beralih Tab</string>
+    <string name="tab_switch">Alihkan Tab</string>
     <!-- Text for button that shows pills tabs -->
     <string name="tab_pills">Tab Pil </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">Ketuk untuk TipsAlat</string>
+    <string name="tooltip_button">Ketuk untuk Tipsalat</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">Ketuk untuk TipsAlat Kalender Kustom</string>
+    <string name="tooltip_calendar_demo_button">Ketuk untuk Tipsalat Kalender Kustom</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">Ketuk TipsAlat Warna Kustom</string>
+    <string name="tooltip_custom_button">Ketuk Tipsalat Warna Kustom</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">Ketuk untuk Menutup Di Dalam TipsAlat</string>
+    <string name="tooltip_center_button">Ketuk untuk Tutup di Dalam Tipsalat</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">Ketuk untuk TipsAlat Tampilan Kustom</string>
+    <string name="tooltip_custom_view">Ketuk untuk Tipsalat Tampilan Kustom</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">TipsAlat Warna Kustom Teratas</string>
+    <string name="tooltip_top_start_message">Tipsalat Warna Kustom Teratas</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">Tooltip Akhir Atas dengan offsetX 10dp</string>
+    <string name="tooltip_top_end_message">Tipsalat Ujung Atas dengan offsetX 10dp</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">TipsAlat Mulai Bawah</string>
+    <string name="tooltip_bottom_start_message">Tipsalat Mulai Bawah</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">Tooltip Ujung Bawah dengan offsetY 10dp</string>
+    <string name="tooltip_bottom_end_message">Tipsalat Ujung Bawah dengan offsetY 10dp</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Tutup di dalam TipsAlat</string>
+    <string name="tooltip_center_message">Tutup di dalam Tipsalat</string>
     <!--UI label showing tooltip dismissed message -->
     <string name="tooltip_dismiss_message">Tipsalat ditutup</string>
 
@@ -699,18 +699,18 @@
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
     <string name="title_1">Judul 1 adalah Medium 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">Judul 2 adalah Regular 20sp</string>
+    <string name="title_2">Judul 2 adalah Reguler 20sp</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">Judul Reguler 18sp</string>
+    <string name="heading">Judul reguler 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Subjudul 1 reguler 16sp</string>
+    <string name="subheading_1">Subjudul 1 adalah Reguler 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
     <string name="subheading_2">Subjudul 2 adalah Medium 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">Body 1 adalah Regular 14sp</string>
+    <string name="body_1">Body 1 adalah 14sp Reguler</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">Body 2 adalah Medium 14sp</string>
+    <string name="body_2">Body 2 adalah 14sp Medium</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">Keterangan adalah Regular 12sp</string>
+    <string name="caption">Keterangan adalah 12sp Reguler</string>
 
 </resources>

@@ -78,7 +78,7 @@ fun PersonaChip(
             .getColorByState(
                 enabled = enabled, selected = selected, interactionSource = interactionSource
             )
-        val fontStyle = getPersonaChipTokens().fontStyle(personaChipInfo = getPersonaChipInfo())
+        val typography = getPersonaChipTokens().typography(personaChipInfo = getPersonaChipInfo())
         val avatarSize = getPersonaChipTokens().avatarSize(personaChipInfo = getPersonaChipInfo())
         val verticalPadding =
             getPersonaChipTokens().verticalPadding(personaChipInfo = getPersonaChipInfo())
@@ -132,7 +132,7 @@ fun PersonaChip(
                     modifier = Modifier.padding(bottom = 2.dp),//Vertically center align text
                     text = person.getLabel(),
                     color = textColor,
-                    style = fontStyle
+                    style = typography
                 )
             }
         }

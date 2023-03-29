@@ -13,36 +13,36 @@
     <string name="people_picker_search_progress">Trwa wyszukiwanie…</string>
 
     <!--accessibility-->
-    <string name="people_picker_accessibility_default_hint">Enter a name or email</string>
-    <string name="people_picker_accessibility_persona_added">%s dodane</string>
-    <string name="people_picker_accessibility_persona_removed">%s usunięte</string>
-    <string name="people_picker_accessibility_replaced">%s zamieniono,</string>
+    <string name="people_picker_accessibility_default_hint">Wprowadź nazwę lub adres e-mail</string>
+    <string name="people_picker_accessibility_persona_added">Dodano użytkownika %s</string>
+    <string name="people_picker_accessibility_persona_removed">Usunięto użytkownika %s</string>
+    <string name="people_picker_accessibility_replaced">Zamieniono użytkownika %s,</string>
     <!--Describes the click action for personas-->
     <string name="people_picker_accessibility_click_persona">Kliknij</string>
     <string name="people_picker_accessibility_delete_persona">Usuń</string>
-    <string name="people_picker_accessibility_deselect_persona">Usuń zaznaczenie</string>
-    <string name="people_picker_accessibility_select_persona">Wybierz</string>
+    <string name="people_picker_accessibility_deselect_persona">Usuwanie zaznaczenia</string>
+    <string name="people_picker_accessibility_select_persona">Zaznaczanie</string>
     <!--Announces actions that have occurred for a persona-->
-    <string name="people_picker_accessibility_clicked_persona">Kliknięto %s</string>
-    <string name="people_picker_accessibility_deselected_persona">Usunięto zaznaczenie %s</string>
-    <string name="people_picker_accessibility_selected_persona">Wybrano zdarzenie %s</string>
+    <string name="people_picker_accessibility_clicked_persona">Kliknięto użytkownika %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Usunięto zaznaczenie użytkownika %s</string>
+    <string name="people_picker_accessibility_selected_persona">Zaznaczono użytkownika %s</string>
     <!--Describes the action that will happen when already selected personas are activated / clicked-->
     <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
-    <string name="people_picker_accessibility_deselect_selected_persona">, aktywacja zostanie usunięta z zaznaczenia</string>
-    <string name="people_picker_accessibility_delete_selected_persona">, aktywacja zostanie usunięta</string>
+    <string name="people_picker_accessibility_deselect_selected_persona">, aktywacja spowoduje usunięcie zaznaczenia</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, aktywacja spowoduje usunięcie</string>
     <string name="people_picker_accessibility_click_selected_persona">, aktywacja spowoduje kliknięcie</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="few">Suggestions list opened with %s people</item>
-        <item quantity="many">Suggestions list opened with %s people</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Otwarto listę sugestii z %s osobą</item>
+        <item quantity="few">Otwarto listę sugestii z %s osobami</item>
+        <item quantity="many">Otwarto listę sugestii z %s osobami</item>
+        <item quantity="other">Otwarto listę sugestii z %s osobami</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="few">%s people</item>
-        <item quantity="many">%s people</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s osoba</item>
+        <item quantity="few">%s osób</item>
+        <item quantity="many">%s osób</item>
+        <item quantity="other">%s osób</item>
     </plurals>
 </resources>

@@ -7,11 +7,11 @@
 
     <!--App-->
     <string name="app_name">Fluent UI Tanıtımı</string>
-    <string name="app_title">Fluent kullanıcı arabirimi</string>
+    <string name="app_title">Fluent UI</string>
     <!-- Announces selected component -->
     <string name="app_accessibility_selected">%s seçildi</string>
     <string name="app_modifiable_parameters">Değiştirilebilir Parametreler</string>
-    <string name="app_right_accessory_view">Sağ Aksesuar Görünümü</string>
+    <string name="app_right_accessory_view">Sağ Donatı Görünümü</string>
 
     <string name="app_style">Stil</string>
     <!-- describes an action, icon pressed -->
@@ -34,7 +34,7 @@
 
     <!--AppBar-->
     <string name="app_bar_style">Uygulama Çubuğu Stili</string>
-    <string name="app_bar_subtitle">Alt Başlık</string>
+    <string name="app_bar_subtitle">Alt Yazı</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Gezinti simgesine tıklandı.</string>
@@ -48,24 +48,24 @@
     <!-- Text for button that toggles the scroll behavior -->
     <string name="app_bar_layout_toggle_scroll_behavior_button">Kaydırma davranışını değiştir</string>
     <!-- UI label for toggling navigation icon -->
-    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Gezinti simgesini aç/kapat</string>
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Gezinti simgesini değiştir</string>
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">Avatarı göster</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">Geri göster simgesi</string>
+    <string name="app_bar_layout_show_back_icon_button">Geri simgesini göster</string>
     <!-- Text for button that hides icon-->
-    <string name="app_bar_layout_hide_icon_button">Simgeyi Gizle</string>
+    <string name="app_bar_layout_hide_icon_button">Simgeyi gizle</string>
     <!-- Text for button that shows icon -->
-    <string name="app_bar_layout_show_icon_button">Simgeyi Göster</string>
+    <string name="app_bar_layout_show_icon_button">Simgeyi göster</string>
     <!-- UI label denoting layout style -->
     <string name="app_bar_layout_toggle_searchbar_sub_header">Arama çubuğu düzen stilini değiştir</string>
     <!-- Text for button that shows searchbar as accessory or action view -->
-    <string name="app_bar_layout_searchbar_accessory_view_button">Aksesuar görünümü olarak göster</string>
+    <string name="app_bar_layout_searchbar_accessory_view_button">Donatı görünümü olarak göster</string>
     <string name="app_bar_layout_searchbar_action_view_button">Eylem görünümü olarak göster</string>
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">Temalar arasında geçiş (etkinliği yeniden oluştur)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">Temayı değiştir</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">Öğe</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -87,7 +87,7 @@
     <!-- UI label to show maximum displayed avatars -->
     <string name="avatar_group_max_displayed_avatar">En Fazla Görüntülenen Avatar</string>
     <!-- UI label to show the overflow avatar counter -->
-    <string name="avatar_group_overflow_avatar_count">Taşma Avatarı Sayısı</string>
+    <string name="avatar_group_overflow_avatar_count">Taşma Avatar Sayısı</string>
     <!-- UI label to show border type -->
     <string name="avatar_group_border_type">Kenarlık Türü</string>
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
@@ -97,9 +97,9 @@
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">Yüz Yığını</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
-    <string name="avatar_group_overflow_clicked">Taşma tıklandı</string>
+    <string name="avatar_group_overflow_clicked">Taşmaya tıklandı</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">Dizindeki AvatarView %d tıklandı</string>
+    <string name="avatar_group_avatar_clicked">%d dizinindeki AvatarView’a tıklandı</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -119,34 +119,34 @@
     <string name="bottom_navigation_menu_item_calendar">Takvim</string>
     <string name="bottom_navigation_menu_item_team">Ekip</string>
     <!-- Text for buttons -->
-    <string name="bottom_navigation_toggle_labels_button">Etiketleri aç/kapat</string>
+    <string name="bottom_navigation_toggle_labels_button">Etiketleri değiştir</string>
     <string name="bottom_navigation_three_menu_items_button">Üç menü öğesini göster</string>
     <string name="bottom_navigation_four_menu_items_button">Dört menü öğesini göster</string>
     <string name="bottom_navigation_five_menu_items_button">Beş menü öğesini göster</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">Etiketler %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">Etiketler: %s</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">Alt Sayfa</string>
+    <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
     <string name="bottom_sheet_with_single_line_items">Tek satırlı öğelerle göster</string>
     <string name="bottom_sheet_with_double_line_items">Çift satırlı öğelerle göster</string>
     <string name="bottom_sheet_with_single_line_header">Tek satırlı üst bilgiyle göster</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">Çift satırlı üst bilgi ve ayırıcılarla göster</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Çift satırlı üst bilgi ve ayırıcıyla göster</string>
     <string name="bottom_sheet_dialog_button">Göster</string>
     <string name="drawer_content_desc_collapse_state">Genişlet</string>
     <string name="drawer_content_desc_expand_state">Simge Durumuna Küçült</string>
 
     <!--ContextualCommandBar-->
     <!-- UI text showing the click action performed by the user -->
-    <string name="contextual_command_prompt_click_item">Buraya %s</string>
+    <string name="contextual_command_prompt_click_item">%s öğesine tıklama</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">Uzun Tıklama %s</string>
+    <string name="contextual_command_prompt_long_click_item">%s öğesinde uzun tıklama</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">Kapat\'a tıklama</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">Öğe Ekle</string>
     <!-- Text for button for updating an item-->
@@ -166,9 +166,9 @@
     <!-- Announces strikethrough action -->
     <string name="contextual_command_accessibility_strikethrough">Üstü Çizili</string>
     <!-- Announces undo action -->
-    <string name="contextual_command_accessibility_undo">Geri Al</string>
+    <string name="contextual_command_accessibility_undo">Geri Alma</string>
     <!-- Announces redo action -->
-    <string name="contextual_command_accessibility_redo">Yinele</string>
+    <string name="contextual_command_accessibility_redo">Yineleme</string>
     <!-- Announces bullet action -->
     <string name="contextual_command_accessibility_bullet">Madde İşareti</string>
     <!-- Announces list action -->
@@ -184,7 +184,7 @@
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">BAŞLAT</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">SONLANDIR</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">Grup alanı</string>
     <!-- UI bar label denoting the space between items -->
@@ -194,21 +194,21 @@
 
     <!--Single line items-->
     <!--UI Label for item flag-->
-    <string name="bottom_sheet_item_flag_title">Bayrak</string>
+    <string name="bottom_sheet_item_flag_title">Bayrak ekle</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">Bayrak öğesi tıklandı</string>
+    <string name="bottom_sheet_item_flag_toast">Öğeye bayrak eklemeye tıklandı</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">Yanıt</string>
     <!--UI Label for user action clicked on item reply-->
-    <string name="bottom_sheet_item_reply_toast">Yanıt öğesi tıklandı</string>
+    <string name="bottom_sheet_item_reply_toast">Yanıt öğesine tıklandı</string>
     <!--UI Label for item forward-->
     <string name="bottom_sheet_item_forward_title">İlet</string>
     <!--UI Label for user action clicked on item forward-->
-    <string name="bottom_sheet_item_forward_toast">Öğeyi ilet\'e tıklandı</string>
+    <string name="bottom_sheet_item_forward_toast">Öğeyi ilete tıklandı</string>
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_delete_title">Sil</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_delete_toast">Öğeyi silme tıklandı</string>
+    <string name="bottom_sheet_item_delete_toast">Öğeyi silmeye tıklandı</string>
     <!--UI Label for item avatar-->
     <string name="bottom_sheet_item_custom_image">Avatar</string>
     <!--Double line items-->
@@ -217,35 +217,35 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">Fotoğraf çek</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">Kamera ögesine tıklandı</string>
+    <string name="bottom_sheet_item_camera_toast">Kamera öğesine tıklandı</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">Galeri</string>
     <!--UI description label view your photos-->
-    <string name="bottom_sheet_item_gallery_subtitle">Fotoğraflarınızı görüntüleyin</string>
+    <string name="bottom_sheet_item_gallery_subtitle">Fotoğrafları görüntüleme</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">Galeri öğesi tıklandı</string>
+    <string name="bottom_sheet_item_gallery_toast">Galeri öğesine tıklandı</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">Videolar</string>
     <!--UI description label play your videos -->
-    <string name="bottom_sheet_item_videos_subtitle">Videolarınızı yürütün</string>
+    <string name="bottom_sheet_item_videos_subtitle">Videolarınızı oynatın</string>
     <!--UI Label for user action clicked on item videos-->
-    <string name="bottom_sheet_item_videos_toast">Video ögesi tıklandı</string>
+    <string name="bottom_sheet_item_videos_toast">Videolar öğesine tıklandı</string>
     <!--UI Label for item manage-->
     <string name="bottom_sheet_item_manage_title">Yönet</string>
     <!--UI description label Manage your media library-->
     <string name="bottom_sheet_item_manage_subtitle">Medya kitaplığınızı yönetme</string>
     <!--UI Label for user action clicked on item manage-->
-    <string name="bottom_sheet_item_manage_toast">Öğeyi yönet\'e tıklandı</string>
+    <string name="bottom_sheet_item_manage_toast">Öğeyi yönetmeye tıklandı</string>
     <!--Single line header-->
     <!--UI title header email actions-->
-    <string name="bottom_sheet_item_single_line_header">E-posta eylemleri</string>
+    <string name="bottom_sheet_item_single_line_header">E-posta Eylemleri</string>
     <!--Double line header-->
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">Belgeler</string>
     <!--UI subtitle header-->
     <string name="bottom_sheet_item_double_line_header_subtitle">Son güncelleştirme: 14:14</string>
     <!--UI Label for item share-->
-    <string name="bottom_sheet_item_double_line_header_share">Paylaşın</string>
+    <string name="bottom_sheet_item_double_line_header_share">Paylaş</string>
     <!--UI Label for user action clicked on item share-->
     <string name="bottom_sheet_item_double_line_header_share_toast">Öğeyi paylaşmaya tıklandı</string>
     <!--UI Label for item move-->
@@ -255,53 +255,53 @@
     <!--UI Label for item delete-->
     <string name="bottom_sheet_item_double_line_header_delete">Sil</string>
     <!--UI Label for user action clicked on item delete-->
-    <string name="bottom_sheet_item_double_line_header_delete_toast">Öğeyi silme tıklandı</string>
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Öğeyi silmeye tıklandı</string>
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">Bilgi</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">Bilgi öğesi tıklandı</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">Bilgi öğesine tıklandı</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">Saat</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">Saat ögesi tıklandı</string>
+    <string name="bottom_sheet_item_clock_toast">Saat öğesine tıklandı</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">Alarm</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">Alarm ögesi tıklandı</string>
+    <string name="bottom_sheet_item_alarm_toast">Alarm öğesine tıklandı</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">Saat dilimi</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">Saat dilimi öğesi tıklandı</string>
+    <string name="bottom_sheet_item_time_zone_toast">Saat dilimi öğesine tıklandı</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">Düğme</string>
-    <string name="buttonbar">Düğme Çubuğu</string>
+    <string name="buttonbar">ButtonBar</string>
     <string name="button_disabled">Devre Dışı Düğmesi</string>
-    <string name="button_borderless">Kenarlıksız Düğme</string>
+    <string name="button_borderless">Kenarlıklı Düğme</string>
     <string name="button_borderless_disabled">Kenarlıksız Devre Dışı Düğmesi</string>
     <string name="button_large">Büyük Düğme</string>
     <string name="button_large_disabled">Büyük Devre Dışı Düğmesi</string>
     <string name="button_outlined">Ana Hatlı Düğme</string>
-    <string name="button_outlined_disabled">Anahatlı Devre Dışı Düğmesi</string>
+    <string name="button_outlined_disabled">Ana Hatlı Devre Dışı Düğmesi</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">Tarih seçin</string>
 
     <!--DateTimePicker-->
     <!-- title -->
-    <string name="date_time_picker_title">Datetimepicker</string>
+    <string name="date_time_picker_title">DateTimePicker</string>
     <!-- UI label -->
     <string name="date_time_picker_single_date_title">Tek Tarih</string>
     <!-- UI label -->
-    <string name="date_time_picker_date_picked_default">Tarih alınmaz</string>
+    <string name="date_time_picker_date_picked_default">Tarih seçilmedi</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">Tarih Seçici kullanılsın mı?</string>
+    <string name="date_time_picker_date_button">Tarih seçiciyi göster</string>
     <!-- text for button that shows date picker with date tab selected -->
-    <string name="date_time_picker_calendar_date_time_button">Tarih sekmesi seçili olan tarih saat seçiciyi göster</string>
+    <string name="date_time_picker_calendar_date_time_button">Tarih sekmesi seçiliyken tarih saat seçiciyi göster</string>
     <!-- text for button that shows date picker with time tab selected -->
-    <string name="date_time_picker_date_time_calendar_button">Tarih saat seçiciyi saat sekmesi seçili olarak göster</string>
+    <string name="date_time_picker_date_time_calendar_button">Saat sekmesi seçiliyken tarih saat seçiciyi göster</string>
     <!-- text for button that shows time picker -->
     <string name="date_time_picker_date_time_button">Tarih saat seçiciyi göster</string>
     <!-- UI label to show date range-->
@@ -311,21 +311,21 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">Bitiş:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">Başlangıç alınmaz</string>
+    <string name="date_time_picker_date_start_picked_default">Başlangıç ​​seçilmedi</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">Bitiş alınmaz</string>
+    <string name="date_time_picker_date_end_picked_default">Bitiş seçilmedi</string>
     <!-- text for button that selects start date -->
-    <string name="date_time_picker_date_start_button">Başlangıç tarihi seçin</string>
+    <string name="date_time_picker_date_start_button">Başlangıç tarihi seç</string>
     <!-- text for button that selects end date -->
-    <string name="date_time_picker_date_end_button">Bitiş tarihi seçin</string>
+    <string name="date_time_picker_date_end_button">Bitiş tarihi seç</string>
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">Tarih Saat Aralığı</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">Tarih saat aralığını seç</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">İletişim Kutusunu Göster</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
@@ -333,11 +333,11 @@
     <!-- text for button that shows drawer dialog -->
     <string name="drawer_dialog_button">Çekmece iletişim kutusunu göster</string>
     <!-- text for button that shows no fade bottom dialog -->
-    <string name="no_fade_bottom_dialog_button">Soldurma alt iletişim kutusu yok</string>
+    <string name="no_fade_bottom_dialog_button">Solan alt iletişim kutusu yok</string>
     <!-- text for button that shows top drawer -->
     <string name="drawer_top_dialog_button">Üst çekmeceyi göster</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">Soldurma üst iletişim kutusu yok</string>
+    <string name="no_fade_top_dialog_button">Solan üst iletişim kutusu yok</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> Bağlayıcı görünümü üst iletişim kutusunu göster</string>
     <!-- text for button that shows no title top dialog drawer -->
@@ -353,49 +353,49 @@
     <!-- Title -->
     <string name="list_item_title">Başlık, birincil metin</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">Alt başlık, ikincil metin</string>
+    <string name="list_item_subtitle">Alt yazı, ikincil metin</string>
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">Özel alt yazı metni</string>
     <!-- Footer -->
     <string name="list_item_footer">Alt bilgi, üçüncül metin</string>
     <!-- UI labels -->
-    <string name="list_item_sub_header_single_line">Gri alt üst bilgi metni olan tek satırlı liste</string>
+    <string name="list_item_sub_header_single_line">Gri alt üst bilgi metniyle tek satırlı liste</string>
     <string name="list_item_sub_header_two_line">İki satırlı liste</string>
     <string name="list_item_sub_header_two_line_dense">Yoğun aralıklı iki satırlı liste</string>
-    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Özel ikincil alt başlık görünümüne sahip iki satırlı liste</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Özel ikincil alt yazı görünümüne sahip iki satırlı liste</string>
     <string name="list_item_sub_header_three_line">Siyah alt üst bilgi metniyle üç satırlı liste</string>
     <string name="list_item_sub_header_no_custom_views">Özel görünümlere sahip liste öğeleri</string>
-    <string name="list_item_sub_header_large_header">Büyük özel görünümlere sahip öğeleri listele</string>
-    <string name="list_item_sub_header_wrapped_text">Öğeleri kaydırılmış metinle listele</string>
-    <string name="list_item_sub_header_truncated_text">Kesilmiş metin içeren öğeleri listele</string>
+    <string name="list_item_sub_header_large_header">Büyük görünümlere sahip liste öğeleri</string>
+    <string name="list_item_sub_header_wrapped_text">Kaydırılmış metin içeren liste öğeleri</string>
+    <string name="list_item_sub_header_truncated_text">Kesilmiş metin içeren liste öğeleri</string>
     <string name="list_item_sub_header_custom_accessory_text">Eylem</string>
     <string name="list_item_truncation_middle">Orta kesme.</string>
     <string name="list_item_truncation_end">Kesmeyi sonlandır.</string>
     <string name="list_item_truncation_start">Kesmeyi başlat.</string>
     <string name="list_item_custom_text_view">Değer</string>
-    <string name="list_item_click">Liste öğesini tıkladınız.</string>
-    <string name="list_item_click_custom_accessory_view">Özel aksesuar görünümüne tıkladınız.</string>
+    <string name="list_item_click">Liste öğesine tıkladınız.</string>
+    <string name="list_item_click_custom_accessory_view">Özel donatı görünümüne tıkladınız.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">Alt üst bilgi özel donatı görünümüne tıkladınız.</string>
     <string name="list_item_more_options">Diğer seçenekler</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
-    <string name="people_picker_select_example">Seç</string>
+    <string name="people_picker_select_example">Seçin</string>
     <string name="people_picker_select_deselect_example">SelectDeselect</string>
     <string name="people_picker_none_example">Yok</string>
     <string name="people_picker_delete_example">Sil</string>
     <string name="people_picker_custom_persona_description">Bu örnek, özel bir IPersona nesnesinin nasıl oluşturulamadı olduğunu gösterir.</string>
-    <string name="people_picker_dialog_title_removed">Bir kişilik kaldırılmış:</string>
+    <string name="people_picker_dialog_title_removed">Bir kişiliği kaldırdınız:</string>
     <string name="people_picker_dialog_title_added">Bir kişilik eklediniz:</string>
     <string name="people_picker_drag_started">Sürükleme başlatıldı</string>
     <string name="people_picker_drag_ended">Sürükleme sona erdi</string>
     <string name="people_picker_picked_personas_listener">Kişilik Dinleyicisi</string>
     <string name="people_picker_suggestions_listener">Öneri Dinleyicisi</string>
-    <string name="people_picker_persona_chip_click">Bu belgeye %s</string>
+    <string name="people_picker_persona_chip_click">%s öğesine tıkladınız</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="one">%1$s recipient</item>
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="one">%1$s alıcı</item>
+        <item quantity="other">%1$s alıcı</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
@@ -403,23 +403,23 @@
     <string name="collapse_persistent_sheet_button"> Kalıcı Alt Sayfayı Gizle</string>
     <string name="show_persistent_sheet_button"> Kalıcı Alt Sayfayı Göster</string>
     <string name="new_view">Bu Yeni Görünüm</string>
-    <string name="toggle_sheet_content">Alt Sayfa İçeriğini Aç/Kapat</string>
-    <string name="switch_to_custom_content">Özel İçerik\'e geç</string>
+    <string name="toggle_sheet_content">Alt Sayfa İçeriğini Değiştir</string>
+    <string name="switch_to_custom_content">Özel İçerik’e geç</string>
     <string name="one_line_content">Tek Satırlı Alt Sayfa İçeriği</string>
-    <string name="toggle_disable_all_items">Tüm Öğeleri Devre Dışı Bırak\'a Geçiş</string>
+    <string name="toggle_disable_all_items">Tüm Öğeleri Devre Dışı Bırakmayı Değiştir</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">Görünüm Ekle/Kaldır</string>
     <string name="persistent_sheet_item_change_collapsed_height"> Daraltılmış Yüksekliği Değiştir</string>
     <string name="persistent_sheet_item_create_new_folder_title">Yeni Klasör</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">Yeni Klasör öğesi tıklandı</string>
-    <string name="persistent_sheet_item_edit_title">Düzenle</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Yeni Klasör öğesine tıklandı</string>
+    <string name="persistent_sheet_item_edit_title">Düzenleme</string>
     <string name="persistent_sheet_item_edit_toast">Öğeyi düzenlemeye tıklandı</string>
-    <string name="persistent_sheet_item_save_title">Kaydet</string>
+    <string name="persistent_sheet_item_save_title">Kaydetme</string>
     <string name="persistent_sheet_item_save_toast">Öğeyi kaydetmeye tıklandı</string>
-    <string name="persistent_sheet_item_zoom_in_title">Yakınlaştır</string>
-    <string name="persistent_sheet_item_zoom_in_toast"> Öğeyi Yakınlaştır\'a tıklandı</string>
-    <string name="persistent_sheet_item_zoom_out_title">Uzaklaştır</string>
-    <string name="persistent_sheet_item_zoom_out_toast">Öğeyi Uzaklaştır\'a tıklandı</string>
+    <string name="persistent_sheet_item_zoom_in_title">Yakınlaştırma</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Yakınlaştır öğesine tıklandı</string>
+    <string name="persistent_sheet_item_zoom_out_title">Uzaklaştırma</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Uzaklaştır öğesine tıklandı</string>
 
     <!--Persona-->
     <!-- Emails -->
@@ -452,33 +452,33 @@
     <string name="persona_footer">Kullanılabilir</string>
     <!-- Person names -->
     <string name="persona_name_allan_munger">Allan Munger</string>
-    <string name="persona_name_amanda_brady">İstiYeni</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
     <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
-    <string name="persona_name_carole_poland">Noel\'in Polonya\'sı</string>
-    <string name="persona_name_cecil_folk">Halk Müziği</string>
-    <string name="persona_name_celeste_burton">Celeste Sıyrı</string>
-    <string name="persona_name_charlotte_waltson">HornsonSon</string>
-    <string name="persona_name_colin_ballinger">Lotus Ballinger</string>
-    <string name="persona_name_daisy_phillips">Papatya Papatyaları</string>
-    <string name="persona_name_elliot_woodward">Woodward(Woodward)</string>
-    <string name="persona_name_elvia_atkins">Elvia Atvia Atvia</string>
-    <string name="persona_name_erik_nason">Erden Nason</string>
-    <string name="persona_name_henry_brill">Şu anda 10000000</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
     <string name="persona_name_isaac_fielder">Isaac Fielder</string>
-    <string name="persona_name_johnie_mcconnell">Johnie McCon kapsayıcısı</string>
-    <string name="persona_name_kat_larsson">Kat Larcik</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">Tümen Patterson</string>
-    <string name="persona_name_lydia_bauer">AntepLi</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
     <string name="persona_name_mauricio_august">Mauricio August</string>
-    <string name="persona_name_miguel_garcia">Mahmut Koç</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
     <string name="persona_name_mona_kane">Mona Kane</string>
-    <string name="persona_name_robin_counts">Robin Sayıları</string>
-    <string name="persona_name_robert_tolbert">Bert Tolbert</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">WandaYık</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">Tasarımcı</string>
     <string name="persona_subtitle_engineer">Mühendis</string>
@@ -486,26 +486,26 @@
     <string name="persona_subtitle_researcher">Araştırmacı</string>
     <!-- UI labels -->
     <string name="persona_truncation">\ (kesmeyi test etmek için uzun metin örneği)</string>
-    <string name="persona_view_description_xxlarge">Üç satır metin içeren XXLarge avatarı</string>
+    <string name="persona_view_description_xxlarge">Üç satır metin içeren XXLarge avatar</string>
     <string name="persona_view_description_large">İki satır metin içeren büyük avatar</string>
     <string name="persona_view_description_small">Tek satır metin içeren küçük avatar</string>
     <string name="people_picker_hint">İpucu gösterilen yok</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">Engelli Kişilik Yongası</string>
+    <string name="persona_chip_example_disabled">Devre Dışı Kişilik Yongası</string>
     <!-- UI label showing a error persona chip -->
     <string name="persona_chip_example_error">Hata Kişilik Yongası</string>
     <!-- UI label showing a persona chip with no close icon-->
     <string name="persona_chip_example_no_icon">Yakın simgesiz Kişilik Yongası</string>
     <!-- UI label showing a basic persona chip -->
-    <string name="persona_chip_example_basic">Temel Kişilik Yongası</string>
+    <string name="persona_chip_example_basic">Basit Kişilik Yongası</string>
     <!-- UI label showing user action click on a selected persona chip -->
-    <string name="persona_chip_example_click">Seçili bir Kişilik Yongası\'nın düğmesine tıkladınız.</string>
+    <string name="persona_chip_example_click">Seçili bir Kişilik Yongası\'na tıkladınız.</string>
 
     <!--PopupMenu-->
     <!-- UI label for item share -->
-    <string name="popup_menu_item_share">Paylaşın</string>
+    <string name="popup_menu_item_share">Paylaş</string>
     <!-- UI label for item follow -->
     <string name="popup_menu_item_follow">Takip Et</string>
     <!-- UI label for item invite people -->
@@ -534,7 +534,7 @@
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">Basit menü</string>
     <!-- UI label that shows simple pop up menu -->
-    <string name="popup_menu_simple_duo">Basit menü2</string>
+    <string name="popup_menu_simple_duo">Basit menü 2</string>
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">Tek bir seçilebilir öğe ve ayırıcı içeren menü</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
@@ -569,44 +569,44 @@
         Ut enim ad minim veniam.</string>
 
     <!--SearchBar-->
-    <string name="searchbar">Searchbar</string>
+    <string name="searchbar">Arama Çubuğu</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">Mikrofon Geri Arama</string>
+    <string name="searchbar_microphone_callback">Mikrofonla Geri Arama</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">Otomatik düzeltme</string>
     <!-- Announces that microphone has been pressed -->
     <string name="searchbar_microphone_pressed">Mikrofona Basıldı</string>
     <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">Sağ Görünüme Basıldı</string>
     <!-- Announces that keyboard search has been pressed -->
-    <string name="searchbar_keyboard_search_pressed">Klavye Arama basılı</string>
+    <string name="searchbar_keyboard_search_pressed">Klavye Aramaya Basıldı</string>
 
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">Eylem</string>
     <string name="snackbar_action_long">Uzun Metin Eylemi</string>
-    <string name="snackbar_single_line">Tek satırlı bar</string>
+    <string name="snackbar_single_line">Tek satırlı çubuk (snackbar)</string>
     <string name="snackbar_multiline">Bu çok satırlı bir kaydırma çubuğu. En fazla satır iki olarak ayarlanır, metnin geri kalanı kesilir.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">Bu bir duyuru yer çubuğu. Yeni özelliklerle iletişim kurmak için kullanılır.</string>
-    <string name="snackbar_primary">Bu birincil bir kısıtlama çubuğu.</string>
-    <string name="snackbar_light">Bu hafif bir bar.</string>
-    <string name="snackbar_warning">Bu bir uyarı çubuğu.</string>
-    <string name="snackbar_danger">Bu bir tehlike haber çubuğu.</string>
+    <string name="snackbar_primary">Bu birincil çubuk (snackbar).</string>
+    <string name="snackbar_light">Bu açık bir çubuk (snackbar).</string>
+    <string name="snackbar_warning">Bu bir uyarı çubuğu (snackbar).</string>
+    <string name="snackbar_danger">Bu bir sürükleme çubuğu (snackbar).</string>
     <string name="snackbar_description_single_line">Kısa süre</string>
     <string name="snackbar_description_single_line_custom_view">Küçük özel görünüm olarak döngüsel ilerlemeyle uzun süre</string>
     <string name="snackbar_description_single_line_action">Eylem içeren kısa süre</string>
-    <string name="snackbar_description_single_line_action_custom_view">Eylem ve orta düzeyde özel görünüme sahip kısa süre</string>
+    <string name="snackbar_description_single_line_action_custom_view">Eylem ve orta düzeyde özel görünümle kısa süre</string>
     <string name="snackbar_description_single_line_custom_text_color">Özelleştirilmiş metin rengiyle kısa süre</string>
     <string name="snackbar_description_multiline">Uzun süre</string>
-    <string name="snackbar_description_multiline_custom_view">Küçük özel görünüme sahip uzun süre</string>
-    <string name="snackbar_description_multiline_action">Eylem ve metin güncelleştirmeleri ile süresi belirsiz</string>
-    <string name="snackbar_description_multiline_action_custom_view">Eylem ve orta düzeyde özel görünüme sahip kısa süre</string>
+    <string name="snackbar_description_multiline_custom_view">Küçük özel görüntüleme uzun süre</string>
+    <string name="snackbar_description_multiline_action">Eylem ve metin güncelleştirmeleriyle belirsiz süre</string>
+    <string name="snackbar_description_multiline_action_custom_view">Eylem ve orta düzeyde özel görünümle kısa süre</string>
     <string name="snackbar_description_multiline_action_long">Uzun eylem metniyle kısa süre</string>
     <string name="snackbar_description_announcement">Kısa süre</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">Bu metin güncelleştirildi.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">Özel Çubuğu Göster</string>
+    <string name="snackbar_button_show">Çubuğu (Snackbar) Göster</string>
     <!-- UI Text denoting single line snackbar -->
     <string name="snackbar_headline_single_line">Tek çizgi</string>
     <!-- UI Text denoting multi line snackbar -->
@@ -616,7 +616,7 @@
     <!-- UI Text denoting Primary style snackbar -->
     <string name="snackbar_headline_primary_style">Birincil stil</string>
     <!-- UI Text denoting Light style snackbar -->
-    <string name="snackbar_headline_light_style">Açık stil</string>
+    <string name="snackbar_headline_light_style">Açık Stil</string>
     <!-- UI Text denoting Warning stylee snackbar -->
     <string name="snackbar_headline_warning_style">Uyarı stili</string>
     <!-- UI Text denoting Danger style snackbar -->
@@ -641,7 +641,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">Yatay</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(metin yok)</string>
+    <string name="tabBar_no_text">Metin Yok</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">Sekme Öğeleri</string>
 
@@ -649,11 +649,11 @@
     <!-- UI labels and descriptions -->
     <string name="cell_sample_title">Başlık</string>
     <string name="cell_sample_description">Açıklama</string>
-    <string name="calculate_cells">100 hücreyi yükle/hesapla</string>
-    <string name="calculate_layouts">100 düzeni yükle/hesapla</string>
+    <string name="calculate_cells">100 hücreyi yükleme/hesaplama</string>
+    <string name="calculate_layouts">100 düzeni yükleme/hesaplama</string>
     <string name="template_list">Şablon Listesi</string>
     <string name="regular_list">Normal Liste</string>
-    <string name="cell_example_title">başlık hücresi</string>
+    <string name="cell_example_title">Başlık: Hücre</string>
     <string name="cell_example_description">Açıklama: Yönü değiştirmek için dokunun</string>
 
     <!--TabLayout-->
@@ -662,13 +662,13 @@
     <!-- Text for button that shows a Standard Tab 3-Segment -->
     <string name="tab_standard_three_segment">Standart Sekme 3 Segment</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
-    <string name="tab_standard_four_segment">Standart Sekme 4 Bölüt</string>
+    <string name="tab_standard_four_segment">Standart Sekme 4 Segment</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">Çağrı Cihazıyla Standart Sekme</string>
+    <string name="tab_standard_with_pager">Çağrı Cihazı ile Standart Sekme</string>
     <!-- Text for button that shows switch tabs -->
     <string name="tab_switch">Sekme Değiştir</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">Tabla </string>
+    <string name="tab_pills">Hap Sekmesi </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
@@ -686,17 +686,17 @@
     <!--UI label showing tooltip message -->
     <string name="tooltip_top_end_message">10dp offsetX ile Üst Uç Araç İpucu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start_message">Alt Başlatma Araç İpucu</string>
+    <string name="tooltip_bottom_start_message">Alt Başlangıç Araç İpucu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">10dp offsetY ile Alt Uç Araç İpucu</string>
+    <string name="tooltip_bottom_end_message">10dp ofsetY ile Alt Uç Araç İpucu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center_message">Araç İpucu içinde kapat</string>
+    <string name="tooltip_center_message">İç Araç İpucunu Kapatın</string>
     <!--UI label showing tooltip dismissed message -->
     <string name="tooltip_dismiss_message">Araç ipucu kapatıldı</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">Başlık: Açık 28sp</string>
+    <string name="headline">Başlık Açık 28sp</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
     <string name="title_1">Başlık 1 Orta 20sp</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
@@ -704,7 +704,7 @@
     <!-- UI label, heading with Regular appearance and font size 18sp -->
     <string name="heading">Başlık Normal 18sp</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">Alt başlık 1 Normal 16sp\'dir</string>
+    <string name="subheading_1">Alt başlık 1 Normal 16sp</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
     <string name="subheading_2">Alt başlık 2 Orta 16sp</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->

@@ -12,5 +12,6 @@ import org.junit.runners.Suite
         V2AvatarGroupActivityUITest::class,
         V2DrawerActivityUITest::class,
         V2ListItemActivityUITest::class
+        V2ProgressIndicatorUITest::class
 )
 class UiTestSuite

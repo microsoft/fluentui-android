@@ -33,14 +33,14 @@
     <string name="people_picker_accessibility_click_selected_persona">, A ativação irá clicar</string>
 
     <plurals name="people_picker_accessibility_suggestions_opened">
-        <item quantity="one">Suggestions list opened with %s person</item>
-        <item quantity="many">Suggestions list opened with %s people</item>
-        <item quantity="other">Suggestions list opened with %s people</item>
+        <item quantity="one">Lista de sugestões aberta com %s pessoa</item>
+        <item quantity="many">Lista de sugestões aberta com %s pessoas</item>
+        <item quantity="other">Lista de sugestões aberta com %s pessoas</item>
     </plurals>
 
     <plurals name="people_picker_accessibility_text_view">
-        <item quantity="one">%s person</item>
-        <item quantity="many">%s people</item>
-        <item quantity="other">%s people</item>
+        <item quantity="one">%s pessoa</item>
+        <item quantity="many">%s pessoas</item>
+        <item quantity="other">%s pessoas</item>
     </plurals>
 </resources>

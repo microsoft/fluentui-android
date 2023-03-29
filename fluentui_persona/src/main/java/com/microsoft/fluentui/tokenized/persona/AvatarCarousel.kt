@@ -2,6 +2,10 @@ package com.microsoft.fluentui.tokenized.persona
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.draggable
+import androidx.compose.foundation.gestures.rememberDraggableState
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -48,8 +52,8 @@ fun getAvatarCarouselInfo(): AvatarCarouselInfo {
  * Avatar Carousel internally is a group of [AvatarCarouselItem] which can be used to create onClick based Avatar buttons.
  *
  * @param avatarList List of Avatars to be created in a carousel
- * @param size size of the carousel
  * @param modifier Optional Modifier for Avatar carousel
+ * @param size size of the carousel
  * @param enablePresence enable/disable presence indicator on avatar
  * @param avatarTokens Token to provide appearance values to Avatar
  * @param avatarCarouselTokens Token to provide appearance values to Avatar Carousel
@@ -75,27 +79,34 @@ fun AvatarCarousel(
         val inActiveString = getStringResource(R.string.Inactive)
         val scope = rememberCoroutineScope()
         val lazyListState = rememberLazyListState()
-        val avatarSize = getAvatarCarouselTokens().getAvatarSize(getAvatarCarouselInfo())
+        val avatarSize = getAvatarCarouselTokens().avatarSize(getAvatarCarouselInfo())
         val textStyle =
-            getAvatarCarouselTokens().getTextStyle(getAvatarCarouselInfo())
+            getAvatarCarouselTokens().textTypography(getAvatarCarouselInfo())
         val subTextStyle =
-            getAvatarCarouselTokens().getSubTextStyle(getAvatarCarouselInfo())
+            getAvatarCarouselTokens().subTextTypography(getAvatarCarouselInfo())
         val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
         val bottomPadding = if (size == AvatarCarouselSize.Small) 8.dp else 0.dp
-        val interactionSource = remember { MutableInteractionSource() }
-        val textColor = getAvatarCarouselTokens().getTextColor(getAvatarCarouselInfo())
+        val textColor = getAvatarCarouselTokens().textColor(getAvatarCarouselInfo())
         val subTextColor =
-            getAvatarCarouselTokens().getSubTextColor(getAvatarCarouselInfo())
+            getAvatarCarouselTokens().subTextColor(getAvatarCarouselInfo())
 
 
-        LazyRow(state = lazyListState) {
+        LazyRow(state = lazyListState,
+        modifier = Modifier.draggable(
+            orientation = Orientation.Horizontal,
+            state = rememberDraggableState { delta ->
+                scope.launch {
+                    lazyListState.scrollBy(-delta)
+                }
+            },
+        )) {
             itemsIndexed(avatarList) { index, item ->
                 val backgroundColor =
                     getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo())
                         .getColorByState(
                             enabled = item.enabled,
                             selected = false,
-                            interactionSource = interactionSource
+                            interactionSource = remember { MutableInteractionSource() }
                         )
                 val nameString =
                     if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
@@ -117,7 +128,7 @@ fun AvatarCarousel(
                         .requiredWidth(88.dp)
                         .alpha(if (item.enabled) 1f else 0.7f)
                         .clickable(
-                            interactionSource = interactionSource,
+                            interactionSource = remember { MutableInteractionSource() },
                             indication = rememberRipple(),
                             onClickLabel = null,
                             enabled = item.enabled,

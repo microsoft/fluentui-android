@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) Microsoft Corporation. All rights reserved.
-  ~ Licensed under the MIT License.
-  -->
 <resources>
-    <!-- *** PopupMenu *** -->
-
-    <!--accessibility-->
-    <!--Describes the action used to toggle radio button and checkbox checked states.-->
-    <string name="popup_menu_accessibility_item_toggle">aktivere/deaktivere</string>
-    <!--Describes the action used to select a menu item.-->
-    <string name="popup_menu_accessibility_item_select">vel</string>
-    <!--Announces which menu item has been selected.-->
-    <string name="popup_menu_accessibility_item_click_selected">%s valt</string>
-    <!--Announces which menu item has been checked.-->
-    <string name="popup_menu_accessibility_item_click_checked">%s merkt</string>
-    <!--Announces which menu item has been unchecked.-->
-    <string name="popup_menu_accessibility_item_click_unchecked">%s ikkje merkt</string>
-    <!--Describes the radio button control.-->
-    <string name="popup_menu_accessibility_item_radio_button">alternativknapp</string>
-    <!--Describes the check box control.-->
-    <string name="popup_menu_accessibility_item_check_box">Avmerkingsboks</string>
-    <!--Describes the state of a menu item that is checked.-->
-    <string name="popup_menu_accessibility_item_state_checked">kontrollert</string>
-    <!--Describes the state of a menu item that is not checked.-->
-    <string name="popup_menu_accessibility_item_state_not_checked">ikkje merkt av</string>
-
+  <string name="popup_menu_accessibility_item_toggle">aktivere/deaktivere</string>
+  <string name="popup_menu_accessibility_item_select">vel</string>
+  <string name="popup_menu_accessibility_item_click_selected">%s valt</string>
+  <string name="popup_menu_accessibility_item_click_checked">%s merkt</string>
+  <string name="popup_menu_accessibility_item_click_unchecked">%s ikkje merkt</string>
+  <string name="popup_menu_accessibility_item_radio_button">alternativknapp</string>
+  <string name="popup_menu_accessibility_item_check_box">Avmerkingsboks</string>
+  <string name="popup_menu_accessibility_item_state_checked">kontrollert</string>
+  <string name="popup_menu_accessibility_item_state_not_checked">ikkje merkt av</string>
 </resources>

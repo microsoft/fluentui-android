@@ -15,7 +15,7 @@
 
     <string name="app_style">스타일</string>
     <!-- describes an action, icon pressed -->
-    <string name="app_icon_pressed">아이콘 누르기</string>
+    <string name="app_icon_pressed">아이콘 누름</string>
 
     <!--ActionBar-->
     <!-- Text for button that starts the demo -->
@@ -30,11 +30,11 @@
     <!--UI Text view label denoting type of action bar -->
     <string name="actionbar_type_heading">작업 표시줄 유형</string>
     <!--UI Text view label denoting position of action bar -->
-    <string name="actionbar_position_heading">작업 표시줄 위치</string>
+    <string name="actionbar_position_heading">ActionBar 위치</string>
 
     <!--AppBar-->
-    <string name="app_bar_style">AppBar 스타일</string>
-    <string name="app_bar_subtitle">부제</string>
+    <string name="app_bar_style">앱 표시줄 스타일</string>
+    <string name="app_bar_subtitle">자막</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">탐색 아이콘을 클릭했습니다.</string>
@@ -52,7 +52,7 @@
     <!-- Text for button that shows avatar -->
     <string name="app_bar_layout_show_avatar_button">아바타 표시</string>
     <!-- Text for button that shows back icon -->
-    <string name="app_bar_layout_show_back_icon_button">뒤로 아이콘 표시</string>
+    <string name="app_bar_layout_show_back_icon_button">뒤로 표시 아이콘</string>
     <!-- Text for button that hides icon-->
     <string name="app_bar_layout_hide_icon_button">아이콘 숨기기</string>
     <!-- Text for button that shows icon -->
@@ -65,7 +65,7 @@
     <!-- UI label for toggling themes -->
     <string name="app_bar_layout_toggle_theme_sub_header">테마 간 전환(활동 다시 만들기)</string>
     <!-- Text for button that toggles themes -->
-    <string name="app_bar_layout_toggle_theme_button">Toggle theme</string>
+    <string name="app_bar_layout_toggle_theme_button">토글 테마</string>
     <!-- Label for list -->
     <string name="app_bar_layout_list_item">항목</string>
     <!-- UI label that denotes extra content that is scrollable -->
@@ -81,7 +81,7 @@
     <string name="avatar_size_large">크게</string>
     <string name="avatar_size_medium">중간</string>
     <string name="avatar_size_small">작게</string>
-    <string name="avatar_size_xsmall">X-Small</string>
+    <string name="avatar_size_xsmall">XSmall</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -93,13 +93,13 @@
     <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
     <string name="avatar_group_info">OverflowAvatarCount가 설정된 아바타 그룹은 표시된 최대 아바타를 따르지 않습니다.</string>
     <!-- UI label showing face stack type of avatar group -->
-    <string name="avatar_group_face_stack">Face Stack</string>
+    <string name="avatar_group_face_stack">얼굴 스택</string>
     <!-- UI label showing face pile type of avatar group -->
     <string name="avatar_group_face_pile">얼굴 더미</string>
     <!-- UI label denoting the overflow clicked action performed by the user -->
     <string name="avatar_group_overflow_clicked">오버플로 클릭됨</string>
     <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
-    <string name="avatar_group_avatar_clicked">인덱스의 AvatarView를 클릭할 %d.</string>
+    <string name="avatar_group_avatar_clicked">인덱스 %d의 AvatarView가 클릭됨</string>
 
     <!--Badge-->
     <!--UI Label for notification badge  -->
@@ -121,21 +121,21 @@
     <!-- Text for buttons -->
     <string name="bottom_navigation_toggle_labels_button">레이블 설정/해제</string>
     <string name="bottom_navigation_three_menu_items_button">세 개의 메뉴 항목 표시</string>
-    <string name="bottom_navigation_four_menu_items_button">4개 메뉴 항목 표시</string>
-    <string name="bottom_navigation_five_menu_items_button">5개의 메뉴 항목 표시</string>
+    <string name="bottom_navigation_four_menu_items_button">네 개의 메뉴 항목 표시</string>
+    <string name="bottom_navigation_five_menu_items_button">다섯 개의 메뉴 항목 표시</string>
     <!--accessibility-->
     <!-- Announces if labels are ON/OFF -->
-    <string name="bottom_navigation_accessibility_labels_state">레이블이 %s</string>
+    <string name="bottom_navigation_accessibility_labels_state">레이블은 %s입니다.</string>
 
     <!--BottomSheet-->
     <!--UI Labels -->
-    <string name="bottom_sheet">맨 아래 시트</string>
+    <string name="bottom_sheet">BottomSheet</string>
     <string name="bottom_sheet_dialog">BottomSheetDialog</string>
     <!-- Text for buttons -->
-    <string name="bottom_sheet_with_single_line_items">한 줄 항목과 함께 표시</string>
-    <string name="bottom_sheet_with_double_line_items">이중 품목과 함께 표시</string>
-    <string name="bottom_sheet_with_single_line_header">한 줄 머리글과 함께 표시</string>
-    <string name="bottom_sheet_with_double_line_title_and_dividers">이중선 머리글 및 구분선으로 표시</string>
+    <string name="bottom_sheet_with_single_line_items">한 줄 항목으로 표시</string>
+    <string name="bottom_sheet_with_double_line_items">이중 줄 항목으로 표시</string>
+    <string name="bottom_sheet_with_single_line_header">한 줄 머리글로 표시</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">이중 줄 머리글 및 구분선으로 표시</string>
     <string name="bottom_sheet_dialog_button">표시</string>
     <string name="drawer_content_desc_collapse_state">확장</string>
     <string name="drawer_content_desc_expand_state">최소화</string>
@@ -144,9 +144,9 @@
     <!-- UI text showing the click action performed by the user -->
     <string name="contextual_command_prompt_click_item">%s 클릭</string>
     <!-- UI text showing the long click action performed by the user -->
-    <string name="contextual_command_prompt_long_click_item">긴 클릭 %s</string>
+    <string name="contextual_command_prompt_long_click_item">%s을(를) 길게 클릭</string>
     <!-- UI text showing the click on dismiss action performed by the user -->
-    <string name="contextual_command_prompt_click_dismiss">Click dismiss</string>
+    <string name="contextual_command_prompt_click_dismiss">해제 클릭</string>
     <!-- Text for button for inserting an item-->
     <string name="contextual_command_insert_item">항목 삽입</string>
     <!-- Text for button for updating an item-->
@@ -184,7 +184,7 @@
     <!-- Radio button label START -->
     <string name="contextual_command_bar_dismiss_position_start">시작</string>
     <!-- Radio button label END -->
-    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <string name="contextual_command_bar_dismiss_position_end">종료</string>
     <!-- UI bar label denoting the space between groups -->
     <string name="contextual_command_bar_group_space_title">그룹 공간</string>
     <!-- UI bar label denoting the space between items -->
@@ -196,7 +196,7 @@
     <!--UI Label for item flag-->
     <string name="bottom_sheet_item_flag_title">플래그</string>
     <!--UI Label for user action clicked on item flag-->
-    <string name="bottom_sheet_item_flag_toast">항목에 플래그 지정 클릭됨</string>
+    <string name="bottom_sheet_item_flag_toast">플래그 항목 클릭됨</string>
     <!--UI Label for item reply-->
     <string name="bottom_sheet_item_reply_title">회신</string>
     <!--UI Label for user action clicked on item reply-->
@@ -217,13 +217,13 @@
     <!--UI description label take a photo-->
     <string name="bottom_sheet_item_camera_subtitle">사진 찍기</string>
     <!--UI Label for user action clicked on item camera-->
-    <string name="bottom_sheet_item_camera_toast">카메라 항목 클릭됨</string>
+    <string name="bottom_sheet_item_camera_toast">카메라 항목을 클릭함</string>
     <!--UI Label for item gallery-->
     <string name="bottom_sheet_item_gallery_title">갤러리</string>
     <!--UI description label view your photos-->
     <string name="bottom_sheet_item_gallery_subtitle">사진 보기</string>
     <!--UI Label for user action clicked on item gallery-->
-    <string name="bottom_sheet_item_gallery_toast">갤러리 항목 클릭됨</string>
+    <string name="bottom_sheet_item_gallery_toast">갤러리 항목을 클릭함</string>
     <!--UI Label for item videos-->
     <string name="bottom_sheet_item_videos_title">비디오</string>
     <!--UI description label play your videos -->
@@ -243,7 +243,7 @@
     <!--UI title for item documents -->
     <string name="bottom_sheet_item_double_line_header">문서</string>
     <!--UI subtitle header-->
-    <string name="bottom_sheet_item_double_line_header_subtitle">마지막 업데이트 날짜: 오후 2:14</string>
+    <string name="bottom_sheet_item_double_line_header_subtitle">마지막 업데이트 날짜: 오후 2시 14분</string>
     <!--UI Label for item share-->
     <string name="bottom_sheet_item_double_line_header_share">공유</string>
     <!--UI Label for user action clicked on item share-->
@@ -259,32 +259,32 @@
     <!--UI Label for item info-->
     <string name="bottom_sheet_item_double_line_header_info">정보</string>
     <!--UI Label for user action clicked on item info-->
-    <string name="bottom_sheet_item_double_line_header_info_toast">정보 항목 클릭됨</string>
+    <string name="bottom_sheet_item_double_line_header_info_toast">정보 항목을 클릭했습니다.</string>
     <!--BottomSheetDialog-->
     <!--UI Label for item clock-->
     <string name="bottom_sheet_item_clock_title">시계</string>
     <!--UI Label for user action clicked on item clock-->
-    <string name="bottom_sheet_item_clock_toast">시계 항목 클릭됨</string>
+    <string name="bottom_sheet_item_clock_toast">클록 항목 클릭됨</string>
     <!--UI Label for item alarm-->
     <string name="bottom_sheet_item_alarm_title">경보</string>
     <!--UI Label for user action clicked on item alarm-->
-    <string name="bottom_sheet_item_alarm_toast">알람 항목 클릭됨</string>
+    <string name="bottom_sheet_item_alarm_toast">알람 항목을 클릭했습니다.</string>
     <!--UI Label for item timezone-->
     <string name="bottom_sheet_item_time_zone_title">표준 시간대</string>
     <!--UI Label for user action clicked on item timezone-->
-    <string name="bottom_sheet_item_time_zone_toast">표준 시간대 항목 클릭됨</string>
+    <string name="bottom_sheet_item_time_zone_toast">표준 시간대 항목을 클릭함</string>
 
     <!--Button-->
     <!-- text for buttons -->
     <string name="button">단추</string>
-    <string name="buttonbar">단추 모음</string>
+    <string name="buttonbar">ButtonBar</string>
     <string name="button_disabled">사용 안 함 단추</string>
     <string name="button_borderless">테두리 없는 단추</string>
     <string name="button_borderless_disabled">테두리 없는 사용 안 함 단추</string>
     <string name="button_large">큰 단추</string>
     <string name="button_large_disabled">큰 사용 안 함 단추</string>
     <string name="button_outlined">개요 단추</string>
-    <string name="button_outlined_disabled">개요가 표시된 사용 안 함 단추</string>
+    <string name="button_outlined_disabled">윤곽선이 있는 사용 안 함 단추</string>
 
     <!--CalendarView-->
     <string name="calendar_example_chosen_date">날짜 선택</string>
@@ -297,7 +297,7 @@
     <!-- UI label -->
     <string name="date_time_picker_date_picked_default">선택한 날짜 없음</string>
     <!-- text for button that shows date picker -->
-    <string name="date_time_picker_date_button">날짜 선택 표시</string>
+    <string name="date_time_picker_date_button">날짜 선택기 표시</string>
     <!-- text for button that shows date picker with date tab selected -->
     <string name="date_time_picker_calendar_date_time_button">날짜 탭이 선택된 날짜 시간 선택기 표시</string>
     <!-- text for button that shows date picker with time tab selected -->
@@ -311,9 +311,9 @@
     <!-- UI label showing end of the range-->
     <string name="date_time_picker_date_range_end_title">끝:</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_start_picked_default">선택한 시작 없음</string>
+    <string name="date_time_picker_date_start_picked_default">시작이 선택되지 않음</string>
     <!-- UI label showing no date picked-->
-    <string name="date_time_picker_date_end_picked_default">선택한 끝 없음</string>
+    <string name="date_time_picker_date_end_picked_default">끝 선택 안 됨</string>
     <!-- text for button that selects start date -->
     <string name="date_time_picker_date_start_button">시작 날짜 선택</string>
     <!-- text for button that selects end date -->
@@ -321,11 +321,11 @@
     <!-- UI label showing date time range-->
     <string name="date_time_picker_date_time_range_title">날짜 시간 범위</string>
     <!-- text for button that selects date time range -->
-    <string name="date_time_picker_date_time_range_button">Select date time range</string>
+    <string name="date_time_picker_date_time_range_button">날짜 시간 범위 선택</string>
     <!-- UI label -->
     <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
     <!-- text for button that shows picker dialog -->
-    <string name="date_time_picker_dialog_button">Show Dialog</string>
+    <string name="date_time_picker_dialog_button">대화 상자 표시</string>
 
     <!--Drawer-->
     <!-- text for button that shows drawer -->
@@ -335,15 +335,15 @@
     <!-- text for button that shows no fade bottom dialog -->
     <string name="no_fade_bottom_dialog_button">아래쪽 페이드 대화 상자 없음</string>
     <!-- text for button that shows top drawer -->
-    <string name="drawer_top_dialog_button">상단 서랍 표시</string>
+    <string name="drawer_top_dialog_button">위쪽 서랍 표시</string>
     <!-- text for button that shows No fade top dialog drawer -->
-    <string name="no_fade_top_dialog_button">위쪽 페이드 대화 상자 없음</string>
+    <string name="no_fade_top_dialog_button">페이드 상단 대화 상자 없음</string>
     <!-- text for button that shows anchor view top dialog drawer -->
     <string name="anchor_view_top_dialog_button"> 앵커 보기 위쪽 대화 상자 표시</string>
     <!-- text for button that shows no title top dialog drawer -->
-    <string name="no_title_top_dialog_button"> 위쪽 제목 없음 대화 상자 표시</string>
+    <string name="no_title_top_dialog_button"> 제목 위쪽 대화 상자 표시 안 함</string>
     <!-- text for button that shows below title top dialog drawer -->
-    <string name="below_title_top_dialog_button"> 제목 위쪽 대화 상자 아래에 표시</string>
+    <string name="below_title_top_dialog_button"> 제목 위쪽 아래 대화 상자 표시</string>
     <!-- text for button that shows right drawer -->
     <string name="drawer_right_dialog_button">오른쪽 서랍 표시</string>
     <!-- text for button that shows left drawer -->
@@ -353,7 +353,7 @@
     <!-- Title -->
     <string name="list_item_title">제목, 기본 텍스트</string>
     <!-- subtitle -->
-    <string name="list_item_subtitle">부제목, 보조 텍스트</string>
+    <string name="list_item_subtitle">자막, 보조 텍스트</string>
     <!-- secondary subtitle -->
     <string name="list_item_secondary_subtitle">사용자 지정 자막 텍스트</string>
     <!-- Footer -->
@@ -361,12 +361,12 @@
     <!-- UI labels -->
     <string name="list_item_sub_header_single_line">회색 하위 머리글 텍스트가 있는 한 줄 목록</string>
     <string name="list_item_sub_header_two_line">두 줄 목록</string>
-    <string name="list_item_sub_header_two_line_dense">굵은 간격이 있는 두 줄 목록</string>
+    <string name="list_item_sub_header_two_line_dense">간격이 조밀한 두 줄 목록</string>
     <string name="list_item_sub_header_two_line_custom_secondary_subtitle">사용자 지정 보조 부제목 보기가 있는 두 줄 목록</string>
-    <string name="list_item_sub_header_three_line">검은색 하위 머리글 텍스트가 있는 3줄 목록</string>
-    <string name="list_item_sub_header_no_custom_views">사용자 지정 보기가 없는 목록 항목</string>
-    <string name="list_item_sub_header_large_header">큰 사용자 지정 보기가 있는 목록 항목</string>
-    <string name="list_item_sub_header_wrapped_text">줄 바꿈된 텍스트가 있는 항목 나열</string>
+    <string name="list_item_sub_header_three_line">검은색 하위 머리글 텍스트가 있는 세 줄 목록</string>
+    <string name="list_item_sub_header_no_custom_views">사용자 지정 보기가 없는 항목 나열</string>
+    <string name="list_item_sub_header_large_header">큰 사용자 지정 보기가 있는 항목 나열</string>
+    <string name="list_item_sub_header_wrapped_text">래핑된 텍스트가 있는 항목 나열</string>
     <string name="list_item_sub_header_truncated_text">잘린 텍스트가 있는 항목 나열</string>
     <string name="list_item_sub_header_custom_accessory_text">작업</string>
     <string name="list_item_truncation_middle">중간 잘림입니다.</string>
@@ -376,7 +376,7 @@
     <string name="list_item_click">목록 항목을 클릭했습니다.</string>
     <string name="list_item_click_custom_accessory_view">사용자 지정 액세서리 보기를 클릭했습니다.</string>
     <string name="list_item_click_sub_header_custom_accessory_view">하위 헤더 사용자 지정 액세서리 보기를 클릭했습니다.</string>
-    <string name="list_item_more_options">추가 옵션</string>
+    <string name="list_item_more_options">기타 옵션</string>
 
     <!--PeoplePicker-->
     <!-- UI labels -->
@@ -385,36 +385,36 @@
     <string name="people_picker_none_example">없음</string>
     <string name="people_picker_delete_example">삭제</string>
     <string name="people_picker_custom_persona_description">이 예에서는 사용자 지정 IPersona 개체를 만드는 방법을 보여  제공합니다.</string>
-    <string name="people_picker_dialog_title_removed">가상 사용자를 제거했습니다.</string>
-    <string name="people_picker_dialog_title_added">가상 사용자를 추가했습니다.</string>
+    <string name="people_picker_dialog_title_removed">가상 사용자를 제거함:</string>
+    <string name="people_picker_dialog_title_added">가상 사용자를 추가함:</string>
     <string name="people_picker_drag_started">끌기 시작됨</string>
-    <string name="people_picker_drag_ended">끌기 종료됨</string>
-    <string name="people_picker_picked_personas_listener">가상 수신기</string>
-    <string name="people_picker_suggestions_listener">제안 수신기</string>
-    <string name="people_picker_persona_chip_click">%s 클릭했습니다.</string>
+    <string name="people_picker_drag_ended">끌기 종료</string>
+    <string name="people_picker_picked_personas_listener">가상 사용자 수신기</string>
+    <string name="people_picker_suggestions_listener">추천 수신기</string>
+    <string name="people_picker_persona_chip_click">%s을(를) 클릭했습니다.</string>
 
     <plurals name="people_picker_accessibility_text_view_example">
-        <item quantity="other">%1$s recipients</item>
+        <item quantity="other">수신자 %1$s명</item>
     </plurals>
 
     <!--Persistent BottomSheet-->
-    <string name="expand_bottom_sheet_button">영구 하위시트 확장</string>
-    <string name="collapse_persistent_sheet_button"> 영구 맨 아래시트 숨기기</string>
+    <string name="expand_bottom_sheet_button">영구 하위 시트 확장</string>
+    <string name="collapse_persistent_sheet_button"> 영구 하위시트 숨기기</string>
     <string name="show_persistent_sheet_button"> 영구 하위시트 표시</string>
     <string name="new_view">새 보기입니다.</string>
     <string name="toggle_sheet_content">하위시트 콘텐츠 설정/해제</string>
     <string name="switch_to_custom_content">사용자 지정 콘텐츠로 전환</string>
-    <string name="one_line_content">한 줄 하단시트 내용</string>
+    <string name="one_line_content">한 줄 하단시트 콘텐츠</string>
     <string name="toggle_disable_all_items">모든 항목 사용 안 함 설정/해제</string>
     <!--Persistent BottomSheet Items-->
     <string name="persistent_sheet_item_add_remove_view">보기 추가/제거</string>
     <string name="persistent_sheet_item_change_collapsed_height"> 축소된 높이 변경</string>
     <string name="persistent_sheet_item_create_new_folder_title">새 폴더</string>
-    <string name="persistent_sheet_item_create_new_folder_toast">새 폴더 항목 클릭됨</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">새 폴더 항목을 클릭함</string>
     <string name="persistent_sheet_item_edit_title">편집</string>
     <string name="persistent_sheet_item_edit_toast">항목 편집 클릭됨</string>
     <string name="persistent_sheet_item_save_title">저장</string>
-    <string name="persistent_sheet_item_save_toast">항목 저장 클릭</string>
+    <string name="persistent_sheet_item_save_toast">항목 저장 클릭됨</string>
     <string name="persistent_sheet_item_zoom_in_title">확대</string>
     <string name="persistent_sheet_item_zoom_in_toast"> 항목 확대 클릭됨</string>
     <string name="persistent_sheet_item_zoom_out_title">축소</string>
@@ -450,53 +450,53 @@
     <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
     <string name="persona_footer">사용 가능</string>
     <!-- Person names -->
-    <string name="persona_name_allan_munger">이진수</string>
-    <string name="persona_name_amanda_brady">은(는) 은(</string>
-    <string name="persona_name_ashley_mccarthy">이진수</string>
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
     <string name="persona_name_carlos_slattery">Carlos Slattery</string>
-    <string name="persona_name_carole_poland">폴레(폴란드)</string>
-    <string name="persona_name_cecil_folk">은(는) 설사</string>
-    <string name="persona_name_celeste_burton">셀레스테 로체</string>
-    <string name="persona_name_charlotte_waltson">2018년 12월</string>
-    <string name="persona_name_colin_ballinger">배스볼링거</string>
-    <string name="persona_name_daisy_phillips">데이지 데커</string>
-    <string name="persona_name_elliot_woodward">로인드 나무워드</string>
-    <string name="persona_name_elvia_atkins">엘비아 아틀로</string>
-    <string name="persona_name_erik_nason">은(는) Nason</string>
-    <string name="persona_name_henry_brill">브릴</string>
-    <string name="persona_name_isaac_fielder">스트릿지 필더</string>
-    <string name="persona_name_johnie_mcconnell">Johnie Mc게인</string>
-    <string name="persona_name_kat_larsson">Kat Lar</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
     <string name="persona_name_katri_ahokas">Katri Ahokas</string>
     <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
-    <string name="persona_name_kristen_patterson">홍진수</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
     <string name="persona_name_lydia_bauer">Lydia Bauer</string>
-    <string name="persona_name_mauricio_august">8월 리마토</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
     <string name="persona_name_miguel_garcia">Miguel Garcia</string>
-    <string name="persona_name_mona_kane">Mona 사용자</string>
-    <string name="persona_name_robin_counts">Robin 개수</string>
-    <string name="persona_name_robert_tolbert">톨버트</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
     <string name="persona_name_tim_deboer">Tim Deboer</string>
-    <string name="persona_name_wanda_howard">Wanda일</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
     <!-- Designations -->
     <string name="persona_subtitle_designer">디자이너</string>
     <string name="persona_subtitle_engineer">엔지니어</string>
     <string name="persona_subtitle_manager">관리자</string>
     <string name="persona_subtitle_researcher">리서치 도구</string>
     <!-- UI labels -->
-    <string name="persona_truncation">\ (잘림 테스트에 대한 긴 텍스트 예제)</string>
+    <string name="persona_truncation">\ (잘림을 테스트하는 긴 텍스트 예제)</string>
     <string name="persona_view_description_xxlarge">세 줄 텍스트가 있는 XXLarge 아바타</string>
     <string name="persona_view_description_large">두 줄 텍스트가 있는 큰 아바타</string>
-    <string name="persona_view_description_small">한 줄 텍스트가 있는 작은 아바타</string>
-    <string name="people_picker_hint">힌트가 표시된 항목 없음</string>
+    <string name="persona_view_description_small">텍스트 한 줄이 있는 작은 아바타</string>
+    <string name="people_picker_hint">힌트가 표시된 없음</string>
 
     <!--Persona Chip-->
     <!-- UI label showing a disabled persona chip -->
-    <string name="persona_chip_example_disabled">사용 안 함 가상 사용자 칩</string>
+    <string name="persona_chip_example_disabled">가상 사용자 칩 사용 안 함</string>
     <!-- UI label showing a error persona chip -->
     <string name="persona_chip_example_error">오류 가상 사용자 칩</string>
     <!-- UI label showing a persona chip with no close icon-->
-    <string name="persona_chip_example_no_icon">닫는 아이콘이 없는 가상 칩</string>
+    <string name="persona_chip_example_no_icon">닫는 아이콘이 없는 가상 사용자 칩</string>
     <!-- UI label showing a basic persona chip -->
     <string name="persona_chip_example_basic">기본 가상 사용자 칩</string>
     <!-- UI label showing user action click on a selected persona chip -->
@@ -529,7 +529,7 @@
     <!-- UI label for an item -->
     <string name="popup_menu_item_notify_inactive">데스크톱에서 비활성 상태일 때 알림</string>
     <!-- UI message for user action clicked on an item in popup menu -->
-    <string name="popup_menu_item_clicked">다음 항목을 클릭했습니다.</string>
+    <string name="popup_menu_item_clicked">항목을 클릭했습니다.</string>
     <!-- UI label that shows simple pop up menu -->
     <string name="popup_menu_simple">간단한 메뉴</string>
     <!-- UI label that shows simple pop up menu -->
@@ -537,14 +537,14 @@
     <!-- UI label that shows a pop up menu with one selectable item and a divider -->
     <string name="popup_menu_single_check">선택 가능한 항목 하나와 구분선이 있는 메뉴</string>
     <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
-    <string name="popup_menu_all_check">모든 선택 가능한 항목, 아이콘 및 긴 텍스트가 포함된 메뉴</string>
+    <string name="popup_menu_all_check">모든 선택 가능한 항목, 아이콘 및 긴 텍스트가 있는 메뉴</string>
     <!--Text for button that shows popupmenu -->
     <string name="popup_menu_show">표시</string>
 
     <!--Progress-->
     <!-- UI label showing a circular progress bar -->
     <string name="circular_progress">순환 진행률</string>
-    <string name="circular_progress_xsmall">X-Small</string>
+    <string name="circular_progress_xsmall">XSmall</string>
     <string name="circular_progress_xsmall_size">20dp</string>
     <string name="circular_progress_small">작게</string>
     <string name="circular_progress_small_size">24dp</string>
@@ -570,11 +570,11 @@
     <!--SearchBar-->
     <string name="searchbar">검색 표시줄</string>
     <!-- name of the icon-->
-    <string name="searchbar_microphone_callback">마이크 콜백</string>
+    <string name="searchbar_microphone_callback">Microphone Callback</string>
     <!-- UI Text label -->
-    <string name="searchbar_autocorrect">Autocorrect</string>
+    <string name="searchbar_autocorrect">자동 고침</string>
     <!-- Announces that microphone has been pressed -->
-    <string name="searchbar_microphone_pressed">마이크를 눌렀습니다.</string>
+    <string name="searchbar_microphone_pressed">마이크 누름</string>
     <!-- Announces that right view has been pressed -->
     <string name="searchbar_right_view_pressed">오른쪽 보기 누름</string>
     <!-- Announces that keyboard search has been pressed -->
@@ -583,33 +583,33 @@
     <!--Snackbar-->
     <!-- UI label descriptions -->
     <string name="snackbar_action">작업</string>
-    <string name="snackbar_action_long">긴 텍스트 동작</string>
-    <string name="snackbar_single_line">한 줄 스레세바</string>
+    <string name="snackbar_action_long">긴 텍스트 작업</string>
+    <string name="snackbar_single_line">단일 선 스낵바</string>
     <string name="snackbar_multiline">여러 줄 스레드바입니다. 최대 줄이 2로 설정되어 있으며 나머지 텍스트는 잘립니다.
         Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
     <string name="snackbar_announcement">공지 사항 스나일바입니다. 새 기능을 전달하는 데 사용됩니다.</string>
-    <string name="snackbar_primary">기본 스나인드바입니다.</string>
-    <string name="snackbar_light">가벼운 스세일바입니다.</string>
-    <string name="snackbar_warning">경고 스나일바입니다.</string>
-    <string name="snackbar_danger">위험 스위드바입니다.</string>
+    <string name="snackbar_primary">기본 스낵바입니다.</string>
+    <string name="snackbar_light">간단한 스낵바입니다.</string>
+    <string name="snackbar_warning">경고 스낵바입니다.</string>
+    <string name="snackbar_danger">위험 스낵바입니다.</string>
     <string name="snackbar_description_single_line">짧은 기간</string>
-    <string name="snackbar_description_single_line_custom_view">작은 사용자 지정 보기로 순환 진행률이 있는 긴 기간</string>
-    <string name="snackbar_description_single_line_action">작업과 함께 짧은 기간</string>
-    <string name="snackbar_description_single_line_action_custom_view">작업 및 보통 사용자 지정 보기가 포함된 짧은 기간</string>
+    <string name="snackbar_description_single_line_custom_view">작은 사용자 지정 보기로 순환 진행이 있는 긴 기간</string>
+    <string name="snackbar_description_single_line_action">작업이 포함된 짧은 기간</string>
+    <string name="snackbar_description_single_line_action_custom_view">작업 및 중간 사용자 지정 보기가 있는 짧은 기간</string>
     <string name="snackbar_description_single_line_custom_text_color">사용자 지정된 텍스트 색의 짧은 기간</string>
     <string name="snackbar_description_multiline">긴 기간</string>
     <string name="snackbar_description_multiline_custom_view">사용자 지정 보기가 작은 긴 기간</string>
     <string name="snackbar_description_multiline_action">작업 및 텍스트 업데이트가 포함된 무기한 기간</string>
-    <string name="snackbar_description_multiline_action_custom_view">작업 및 보통 사용자 지정 보기가 포함된 짧은 기간</string>
+    <string name="snackbar_description_multiline_action_custom_view">작업 및 중간 사용자 지정 보기가 있는 짧은 기간</string>
     <string name="snackbar_description_multiline_action_long">긴 작업 텍스트가 있는 짧은 기간</string>
     <string name="snackbar_description_announcement">짧은 기간</string>
-    <string name="snackbar_description_updated">This text has been updated.</string>
+    <string name="snackbar_description_updated">이 텍스트는 업데이트되었습니다.</string>
     <!-- text for button that shows a snackbar -->
-    <string name="snackbar_button_show">스나인드바 표시</string>
+    <string name="snackbar_button_show">스낵바 표시</string>
     <!-- UI Text denoting single line snackbar -->
-    <string name="snackbar_headline_single_line">단일선</string>
+    <string name="snackbar_headline_single_line">단일 줄</string>
     <!-- UI Text denoting multi line snackbar -->
-    <string name="snackbar_headline_multiline">다중 선</string>
+    <string name="snackbar_headline_multiline">여러 줄</string>
     <!-- UI Text denoting Announcement style snackbar -->
     <string name="snackbar_headline_announcement_style">알림 스타일</string>
     <!-- UI Text denoting Primary style snackbar -->
@@ -640,7 +640,7 @@
     <!-- UI text for horizontal alignment of tab -->
     <string name="tabBar_horizontal">가로</string>
     <!-- UI text for no text of tab -->
-    <string name="tabBar_no_text">(텍스트 없음)</string>
+    <string name="tabBar_no_text">텍스트 없음</string>
     <!-- UI text for no. of tab items -->
     <string name="tabBar_tab_items">탭 항목</string>
 
@@ -657,60 +657,60 @@
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
-    <string name="tab_standard_two_segment">표준 탭 2 세그먼트</string>
+    <string name="tab_standard_two_segment">표준 탭 2-세그먼트</string>
     <!-- Text for button that shows a Standard Tab 3-Segment -->
-    <string name="tab_standard_three_segment">표준 탭 3 세그먼트</string>
+    <string name="tab_standard_three_segment">표준 탭 3-세그먼트</string>
     <!-- Text for button that shows a Standard Tab 4-Segment -->
     <string name="tab_standard_four_segment">표준 탭 4 세그먼트</string>
     <!-- Text for button that shows a Standard Tab with pager -->
-    <string name="tab_standard_with_pager">페이저가 있는 표준 탭</string>
+    <string name="tab_standard_with_pager">호출기가 있는 표준 탭</string>
     <!-- Text for button that shows switch tabs -->
-    <string name="tab_switch">탭 전환</string>
+    <string name="tab_switch">스위치 탭</string>
     <!-- Text for button that shows pills tabs -->
-    <string name="tab_pills">필기 탭 </string>
+    <string name="tab_pills">알약 모양 탭 </string>
 
     <!--Tooltip-->
     <!-- Text for button that shows tooltip on tap -->
-    <string name="tooltip_button">탭하여 도구 설명</string>
+    <string name="tooltip_button">도구 설명을 보려면 탭하기</string>
     <!-- Text for button that shows Custom Calendar Tooltip on tap -->
-    <string name="tooltip_calendar_demo_button">사용자 지정 달력 도구 설명을 보려면 탭하세요.</string>
+    <string name="tooltip_calendar_demo_button">사용자 지정 일정 도구 설명 탭하기</string>
     <!-- Text for button that shows Custom Color Tooltip on tap -->
-    <string name="tooltip_custom_button">사용자 지정 색 도구 설명을 탭하세요.</string>
+    <string name="tooltip_custom_button">사용자 지정 색 도구 설명 탭하기</string>
     <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
-    <string name="tooltip_center_button">탭하여 내부 도구 설명 해제</string>
+    <string name="tooltip_center_button">내부 도구 설명 해제를 보려면 탭하기</string>
     <!-- Text for button that shows Custom View Tooltip on tap -->
-    <string name="tooltip_custom_view">탭하여 사용자 지정 보기 도구 설명</string>
+    <string name="tooltip_custom_view">사용자 지정 보기 도구 설명을 보려면 탭하기</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start_message">위쪽 사용자 지정 색 도구 설명</string>
+    <string name="tooltip_top_start_message">상위 사용자 지정 색 도구 설명</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end_message">10dp offsetX가 있는 위쪽 끝 도구 설명</string>
+    <string name="tooltip_top_end_message">10dp 오프셋X가 있는 위쪽 끝 도구 설명</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_bottom_start_message">아래쪽 시작 도구 설명</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end_message">10dp 오프셋이 있는 아래쪽 끝 도구 설명</string>
+    <string name="tooltip_bottom_end_message">10dp 오프셋Y가 있는 아래쪽 끝 도구 설명</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_center_message">도구 설명 내부 해제</string>
     <!--UI label showing tooltip dismissed message -->
-    <string name="tooltip_dismiss_message">도구 설명 해제됨</string>
+    <string name="tooltip_dismiss_message">도구 설명 해제</string>
 
     <!--Typography-->
     <!-- UI label, headline with light appearance and font size 28sp -->
-    <string name="headline">헤드라인은 Light 28sp입니다.</string>
+    <string name="headline">헤드라인은 밝은 28sp입니다.</string>
     <!-- UI label, title_1 with medium appearance and font size 20sp -->
-    <string name="title_1">제목 1은 보통 20sp입니다.</string>
+    <string name="title_1">타이틀 1은 중간 20sp입니다.</string>
     <!-- UI label, title_2 with Regular appearance and font size 20sp -->
-    <string name="title_2">제목 2는 일반 20sp입니다.</string>
+    <string name="title_2">타이틀 2는 일반 20sp입니다.</string>
     <!-- UI label, heading with Regular appearance and font size 18sp -->
-    <string name="heading">제목은 보통 18sp입니다.</string>
+    <string name="heading">제목은 레귤러 18sp입니다.</string>
     <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
-    <string name="subheading_1">부제목 1은 일반 16sp입니다.</string>
+    <string name="subheading_1">부제목 1은 레귤러 16sp입니다.</string>
     <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
-    <string name="subheading_2">부제목 2는 보통 16sp입니다.</string>
+    <string name="subheading_2">부제목 2는 중간 16sp입니다.</string>
     <!-- UI label, body_1 with Regular appearance and font size 14sp -->
-    <string name="body_1">본문 1은 보통 14sp입니다.</string>
+    <string name="body_1">본문 1은 레귤러 14sp입니다.</string>
     <!-- UI label, body_2 with Medium appearance and font size 14sp -->
-    <string name="body_2">본문 2는 보통 14sp입니다.</string>
+    <string name="body_2">본문 2는 중간 14sp입니다.</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
-    <string name="caption">캡션이 일반 12sp입니다.</string>
+    <string name="caption">자막은 레귤러 12sp입니다.</string>
 
 </resources>
