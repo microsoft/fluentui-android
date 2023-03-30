@@ -5,10 +5,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
@@ -27,6 +24,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
@@ -39,10 +37,12 @@ import com.microsoft.fluentui.tablayout.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
+import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
@@ -51,7 +51,8 @@ data class PillMetaData(
     var onClick: (() -> Unit),
     var icon: ImageVector? = null,
     var enabled: Boolean = true,
-    var selected: Boolean = false
+    var selected: Boolean = false,
+    var notificationDot: Boolean = false,
 )
 
 val LocalPillButtonTokens = compositionLocalOf { PillButtonTokens() }
@@ -65,7 +66,6 @@ val LocalPillBarInfo = compositionLocalOf { PillBarInfo() }
  * @param pillMetaData Metadata for a single pill. Type: [PillMetaData]
  * @param modifier Optional Modifier to customize the design and behaviour of pill button
  * @param style Color Scheme of pill shaped button. Default: [FluentStyle.Neutral]
- * @param badge Composable slot to incorporate badge on the pill shaped button. Default: [null]
  * @param interactionSource Interaction Source Object to handle gestures.
  * @param pillButtonTokens Tokens to customize the design of pill button.
  */
@@ -74,7 +74,6 @@ fun PillButton(
     pillMetaData: PillMetaData,
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
-    badge: (@Composable () -> Unit)? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     pillButtonTokens: PillButtonTokens? = null
 ) {
@@ -171,27 +170,33 @@ fun PillButton(
                 .background(backgroundColor, shape)
                 .then(clickAndSemanticsModifier)
                 .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
+                .then(
+                    if (!pillMetaData.notificationDot)
+                        Modifier.padding(vertical = 6.dp)
+                    else
+                        Modifier.padding(vertical = 6.dp)
+                )
                 .semantics(true) {
                     contentDescription =
                         "${pillMetaData.text} $selectedString $enabledString"
                 },
             contentAlignment = Alignment.Center
         ) {
-            Row {
+            Row(Modifier.width(IntrinsicSize.Max)) {
+                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                 if (pillMetaData.icon != null) {
                     Icon(
                         pillMetaData.icon!!,
                         pillMetaData.text,
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                            .size(GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200))
                             .clearAndSetSemantics { },
                         tint = iconColor
                     )
                 } else {
                     Text(
                         pillMetaData.text,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                        modifier = Modifier.weight(1F)
                             .clearAndSetSemantics { },
                         color = textColor,
                         style = fontStyle,
@@ -200,9 +205,25 @@ fun PillButton(
                     )
                 }
 
-                if (badge != null) {
-                    // TODO: Add logic to display badge
-                    Surface(content = badge)
+                if(pillMetaData.notificationDot) {
+                    val notificationDotColor: Color = getPillButtonTokens().notificationDotColor(getPillButtonInfo()).getColorByState(
+                        enabled = pillMetaData.enabled,
+                        selected = pillMetaData.selected,
+                        interactionSource = interactionSource
+                    )
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size20)))
+                    Canvas(
+                        modifier = Modifier
+                            .padding(top = 2.dp, bottom = 12.dp)
+                            .sizeIn(minWidth = 6.dp, minHeight = 6.dp)
+                    ) {
+                        drawCircle(
+                            color = notificationDotColor, style = Fill, radius = dpToPx(3.dp)
+                        )
+                    }
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
+                } else {
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                 }
             }
         }

@@ -78,7 +78,7 @@ private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun SearchBar(
-    onValueChange: (String, Person?) -> Unit,
+    onValueChange: suspend (String, Person?) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     style: FluentStyle = FluentStyle.Neutral,
@@ -243,11 +243,13 @@ fun SearchBar(
                                 personaChipOnClick?.invoke()
                             },
                             onCloseClick = {
-                                selectedPerson = null
+                                scope.launch {
+                                    selectedPerson = null
 
-                                searching = true
-                                onValueChange(queryText, selectedPerson)
-                                searching = false
+                                    searching = true
+                                    onValueChange(queryText, selectedPerson)
+                                    searching = false
+                                }
                             }
                         )
                     }

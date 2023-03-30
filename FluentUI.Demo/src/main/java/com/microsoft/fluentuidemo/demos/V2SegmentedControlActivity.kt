@@ -23,9 +23,11 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.segmentedcontrols.*
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import kotlin.random.Random
 
 class V2SegmentedControlActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -69,7 +71,8 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         "Ally 1",
                                         { selected = !selected },
                                         selected = selected,
-                                        enabled = enabled
+                                        enabled = enabled,
+                                        notificationDot = true
                                     )
                                 )
                                 PillButton(
@@ -98,7 +101,8 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         { selectedBrandIcon = !selectedBrandIcon },
                                         icon = AvatarIcons.Icon.Anonymous.Xxlarge,
                                         selected = selectedBrandIcon,
-                                        enabled = enabled
+                                        enabled = enabled,
+                                        notificationDot = true
                                     ),
                                     style = FluentStyle.Brand,
                                 )
@@ -148,7 +152,8 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedList[idx] = !selectedList[idx]
                                     },
                                     enabled = enableBar,
-                                    selected = selectedList[idx]
+                                    selected = selectedList[idx],
+                                    notificationDot = Random.nextBoolean()
                                 )
                             )
                         }
@@ -198,6 +203,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedTab = idx
                                     },
                                     enabled = enableTabs,
+                                    notificationDot = Random.nextBoolean()
                                 )
                             )
                         }
@@ -265,6 +271,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedSwitch = idx
                                     },
                                     enabled = enableSwitch,
+                                    notificationDot = Random.nextBoolean()
                                 )
                             )
                         }
