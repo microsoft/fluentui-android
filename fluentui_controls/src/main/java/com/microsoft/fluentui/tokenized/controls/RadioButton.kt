@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -92,6 +94,7 @@ fun RadioButton(
                 .then(selectableModifier)
                 .size(24.dp)
                 .wrapContentSize(Alignment.Center)
+                .semantics { contentDescription = "RadioButton" }
         ) {
             drawCircle(
                 outerStrokeColor,

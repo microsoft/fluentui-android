@@ -30,6 +30,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.LayoutDirection
@@ -261,7 +263,8 @@ fun SearchBar(
                                         searchHasFocus = true
                                 }
                             }
-                            .padding(horizontal = 8.dp),
+                            .padding(horizontal = 8.dp)
+                            .semantics { contentDescription = "SearchBar" },
                         textStyle = getSearchBarTokens().typography(getSearchBarInfo()).merge(
                             TextStyle(
                                 color = getSearchBarTokens().textColor(getSearchBarInfo()),

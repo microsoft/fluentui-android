@@ -18,15 +18,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
+import com.microsoft.fluentui.ccb.R
 import com.microsoft.fluentui.icons.CCBIcons
 import com.microsoft.fluentui.icons.ccbicons.Keyboarddismiss
 import com.microsoft.fluentui.theme.FluentTheme
@@ -74,9 +77,9 @@ fun ContextualCommandBar(
     modifier: Modifier = Modifier,
     actionButtonPosition: ActionButtonPosition = ActionButtonPosition.End,
     actionButtonIcon: FluentIcon = FluentIcon(
-        CCBIcons.Keyboarddismiss, contentDescription = "Dismiss"
+        CCBIcons.Keyboarddismiss,
+        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_dismiss)
     ),
-    actionButtonOnClick: (() -> Unit)? = null,
     scrollable: Boolean = true,
     contextualCommandBarToken: ContextualCommandBarTokens? = null
 ) {
@@ -111,6 +114,8 @@ fun ContextualCommandBar(
             getContextualCommandBarInfo()
         )
         var focusedBorderModifier: Modifier = Modifier
+
+        val selectedString = LocalContext.current.resources.getString(R.string.fluentui_selected)
 
         val lazyListState = rememberLazyListState()
         val scope = rememberCoroutineScope()
@@ -231,7 +236,10 @@ fun ContextualCommandBar(
                                             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
                                             .semantics {
                                                 contentDescription =
-                                                    item.label + if (item.selected) "Selected" else ""
+                                                    item.label +
+                                                            if (item.selected)
+                                                                selectedString
+                                                            else ""
                                             }, contentAlignment = Alignment.Center
                                     ) {
                                         CommandItemComposable(item, interactionSource, commandGroup)
@@ -349,7 +357,7 @@ fun ContextualCommandBar(
                                         .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
                                         .semantics {
                                             contentDescription =
-                                                item.label + if (item.selected) "Selected" else ""
+                                                item.label + if (item.selected) selectedString else ""
                                         }, contentAlignment = Alignment.Center
                                 ) {
                                     CommandItemComposable(
@@ -389,11 +397,13 @@ fun ContextualCommandBar(
                 val keyboardController = LocalSoftwareKeyboardController.current
                 val keyboardDismiss: (() -> Unit) = { keyboardController?.hide() }
                 val actionButtonClickable = Modifier.clickable(enabled = true,
-                    onClick = actionButtonOnClick ?: keyboardDismiss,
+                    onClick = actionButtonIcon.onClick ?: keyboardDismiss,
                     role = Role.Button,
-                    onClickLabel = "Keyboard Dismiss",
+                    onClickLabel = actionButtonIcon.contentDescription,
                     indication = rememberRipple(),
                     interactionSource = remember { MutableInteractionSource() })
+
+                val isRtl: Boolean = LocalLayoutDirection.current == LayoutDirection.Rtl
 
                 Row(
                     Modifier
@@ -408,22 +418,25 @@ fun ContextualCommandBar(
                             bottom.linkTo(parent.bottom)
                         }, verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (actionButtonPosition == ActionButtonPosition.End) Spacer(
-                        modifier = Modifier
-                            .requiredWidth(
-                                getContextualCommandBarTokens().actionButtonGradientWidth(
-                                    getContextualCommandBarInfo()
-                                )
-                            )
-                            .fillMaxHeight()
-                            .background(
-                                Brush.horizontalGradient(
-                                    getContextualCommandBarTokens().actionButtonGradient(
+                    if (actionButtonPosition == ActionButtonPosition.End)
+                        Spacer(
+                            modifier = Modifier
+                                .requiredWidth(
+                                    getContextualCommandBarTokens().actionButtonGradientWidth(
                                         getContextualCommandBarInfo()
-                                    ), startX = 0.0F, endX = Float.POSITIVE_INFINITY
+                                    )
                                 )
-                            )
-                    )
+                                .fillMaxHeight()
+                                .background(
+                                    Brush.horizontalGradient(
+                                        getContextualCommandBarTokens().actionButtonGradient(
+                                            getContextualCommandBarInfo()
+                                        ),
+                                        startX = if (!isRtl) 0.0F else Float.POSITIVE_INFINITY,
+                                        endX = if (!isRtl) Float.POSITIVE_INFINITY else 0.0F
+                                    )
+                                )
+                        )
                     Icon(
                         actionButtonIcon,
                         modifier = Modifier
@@ -442,22 +455,25 @@ fun ContextualCommandBar(
                             getContextualCommandBarInfo()
                         )
                     )
-                    if (actionButtonPosition == ActionButtonPosition.Start) Spacer(
-                        modifier = Modifier
-                            .requiredWidth(
-                                getContextualCommandBarTokens().actionButtonGradientWidth(
-                                    getContextualCommandBarInfo()
-                                )
-                            )
-                            .fillMaxHeight()
-                            .background(
-                                Brush.horizontalGradient(
-                                    getContextualCommandBarTokens().actionButtonGradient(
+                    if (actionButtonPosition == ActionButtonPosition.Start)
+                        Spacer(
+                            modifier = Modifier
+                                .requiredWidth(
+                                    getContextualCommandBarTokens().actionButtonGradientWidth(
                                         getContextualCommandBarInfo()
-                                    ), startX = Float.POSITIVE_INFINITY, endX = 0.0F
+                                    )
                                 )
-                            )
-                    )
+                                .fillMaxHeight()
+                                .background(
+                                    Brush.horizontalGradient(
+                                        getContextualCommandBarTokens().actionButtonGradient(
+                                            getContextualCommandBarInfo()
+                                        ),
+                                        startX = if (!isRtl) Float.POSITIVE_INFINITY else 0F,
+                                        endX = if (!isRtl) 0F else Float.POSITIVE_INFINITY
+                                    )
+                                )
+                        )
                 }
             }
         }

@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.FractionalThreshold
 import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -133,7 +134,7 @@ fun ToggleSwitch(
             role = Role.Switch,
             onValueChange = onValueChange,
             interactionSource = interactionSource,
-            indication = null
+            indication = rememberRipple()
         )
 
         // UI Implementation

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Describes dismiss behaviour -->
+    <string name="fluentui_dismiss">Dismiss</string>
     <!-- Describes selected action-->
     <string name="fluentui_selected">Selected</string>
     <!-- Describes not selected action-->

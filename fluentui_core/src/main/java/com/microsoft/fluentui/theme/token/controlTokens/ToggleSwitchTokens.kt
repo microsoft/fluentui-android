@@ -27,6 +27,12 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
             disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
+            focused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                themeMode = themeMode
+            ),
+            selectedFocused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
             selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
@@ -49,6 +55,12 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
                 themeMode = themeMode
             ),
             disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
+                themeMode = themeMode
+            ),
+            focused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+                themeMode = themeMode
+            ),
+            selectedFocused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
             selected = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(

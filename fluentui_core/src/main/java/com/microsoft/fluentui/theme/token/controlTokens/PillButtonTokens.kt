@@ -311,7 +311,7 @@ open class PillButtonTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fontStyle(pillButtonInfo: PillButtonInfo): TextStyle {
+    open fun typography(pillButtonInfo: PillButtonInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
     }
 
