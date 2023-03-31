@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
@@ -18,6 +19,17 @@ data class PillButtonInfo(
 
 @Parcelize
 open class PillButtonTokens : ControlToken, Parcelable {
+
+    @Composable
+    open fun minHeight(pillButtonInfo: PillButtonInfo): Dp = 32.dp
+
+    @Composable
+    open fun verticalPadding(pillButtonInfo: PillButtonInfo): Dp =
+        GlobalTokens.size(GlobalTokens.SizeTokens.Size60)
+
+    @Composable
+    open fun iconSize(pillButtonInfo: PillButtonInfo): Dp =
+        GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
 
     @Composable
     open fun backgroundColor(pillButtonInfo: PillButtonInfo): StateColor {

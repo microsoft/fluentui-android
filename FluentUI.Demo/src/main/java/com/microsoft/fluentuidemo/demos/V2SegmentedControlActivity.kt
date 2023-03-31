@@ -18,16 +18,14 @@ import com.microsoft.fluentui.icons.avataricons.icon.Anonymous
 import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentColor
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
-import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.segmentedcontrols.*
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlin.random.Random
 
 class V2SegmentedControlActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -52,6 +50,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                     item {
                         var enabled by rememberSaveable { mutableStateOf(true) }
                         var selected by rememberSaveable { mutableStateOf(false) }
+                        var unread by rememberSaveable { mutableStateOf(true) }
                         var selectedIcon by rememberSaveable { mutableStateOf(false) }
                         var selectedBrand by rememberSaveable { mutableStateOf(false) }
                         var selectedBrandIcon by rememberSaveable { mutableStateOf(false) }
@@ -69,10 +68,13 @@ class V2SegmentedControlActivity : DemoActivity() {
                                 PillButton(
                                     PillMetaData(
                                         "Ally 1",
-                                        { selected = !selected },
+                                        {
+                                            selected = !selected
+                                            unread = false
+                                        },
                                         selected = selected,
                                         enabled = enabled,
-                                        notificationDot = true
+                                        notificationDot = unread
                                     )
                                 )
                                 PillButton(
@@ -153,7 +155,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                     },
                                     enabled = enableBar,
                                     selected = selectedList[idx],
-                                    notificationDot = Random.nextBoolean()
+                                    notificationDot = !selectedList[idx]
                                 )
                             )
                         }
@@ -203,7 +205,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedTab = idx
                                     },
                                     enabled = enableTabs,
-                                    notificationDot = Random.nextBoolean()
+                                    notificationDot = selectedTab != idx
                                 )
                             )
                         }
@@ -271,7 +273,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedSwitch = idx
                                     },
                                     enabled = enableSwitch,
-                                    notificationDot = Random.nextBoolean()
+                                    notificationDot = selectedSwitch != idx
                                 )
                             )
                         }

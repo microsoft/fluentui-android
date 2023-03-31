@@ -14,7 +14,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
@@ -165,17 +164,12 @@ fun PillButton(
         Box(
             modifier
                 .scale(scaleBox.value)
-                .requiredHeight(32.dp)
+                .defaultMinSize(minHeight = getPillButtonTokens().minHeight(getPillButtonInfo()))
                 .clip(shape)
                 .background(backgroundColor, shape)
+                .padding(vertical = getPillButtonTokens().verticalPadding(getPillButtonInfo()))
                 .then(clickAndSemanticsModifier)
                 .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
-                .then(
-                    if (!pillMetaData.notificationDot)
-                        Modifier.padding(vertical = 6.dp)
-                    else
-                        Modifier.padding(vertical = 6.dp)
-                )
                 .semantics(true) {
                     contentDescription =
                         "${pillMetaData.text} $selectedString $enabledString"
@@ -183,20 +177,22 @@ fun PillButton(
             contentAlignment = Alignment.Center
         ) {
             Row(Modifier.width(IntrinsicSize.Max)) {
-                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                 if (pillMetaData.icon != null) {
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size180)))
                     Icon(
                         pillMetaData.icon!!,
                         pillMetaData.text,
                         modifier = Modifier
-                            .size(GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200))
+                            .size(getPillButtonTokens().iconSize(getPillButtonInfo()))
                             .clearAndSetSemantics { },
                         tint = iconColor
                     )
                 } else {
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                     Text(
                         pillMetaData.text,
-                        modifier = Modifier.weight(1F)
+                        modifier = Modifier
+                            .weight(1F)
                             .clearAndSetSemantics { },
                         color = textColor,
                         style = fontStyle,
@@ -205,12 +201,14 @@ fun PillButton(
                     )
                 }
 
-                if(pillMetaData.notificationDot) {
-                    val notificationDotColor: Color = getPillButtonTokens().notificationDotColor(getPillButtonInfo()).getColorByState(
-                        enabled = pillMetaData.enabled,
-                        selected = pillMetaData.selected,
-                        interactionSource = interactionSource
-                    )
+                if (pillMetaData.notificationDot) {
+                    val notificationDotColor: Color =
+                        getPillButtonTokens().notificationDotColor(getPillButtonInfo())
+                            .getColorByState(
+                                enabled = pillMetaData.enabled,
+                                selected = pillMetaData.selected,
+                                interactionSource = interactionSource
+                            )
                     Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size20)))
                     Canvas(
                         modifier = Modifier
@@ -221,7 +219,10 @@ fun PillButton(
                             color = notificationDotColor, style = Fill, radius = dpToPx(3.dp)
                         )
                     }
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
+                    if (pillMetaData.icon != null)
+                        Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
+                    else
+                        Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size80)))
                 } else {
                     Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                 }
