@@ -264,7 +264,7 @@ fun SearchBar(
                                 }
                             }
                             .padding(horizontal = 8.dp)
-                            .semantics { contentDescription = "SearchBar" },
+                            .semantics {contentDescription = searchHint},
                         textStyle = getSearchBarTokens().typography(getSearchBarInfo()).merge(
                             TextStyle(
                                 color = getSearchBarTokens().textColor(getSearchBarInfo()),

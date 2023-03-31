@@ -245,7 +245,7 @@ fun CardNudge(
                             }
 
                             @Composable
-                            override fun fontStyle(pillButtonInfo: PillButtonInfo): TextStyle {
+                            override fun typography(pillButtonInfo: PillButtonInfo): TextStyle {
                                 return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
                             }
                         }
