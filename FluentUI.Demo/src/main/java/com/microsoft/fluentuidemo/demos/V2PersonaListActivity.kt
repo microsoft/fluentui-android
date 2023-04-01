@@ -5,8 +5,10 @@ import android.os.Bundle
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.testTag
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
@@ -236,6 +238,7 @@ class V2PersonaListActivity : DemoActivity() {
         val coroutineScope: CoroutineScope = rememberCoroutineScope()
         Scaffold(scaffoldState = scaffoldState) {
             PersonaList(
+                modifier = Modifier.testTag("list"),
                 personas = createPersonasList(scaffoldState, coroutineScope),
                 border = BorderType.Bottom,
                 borderInset = BorderInset.XXLarge
