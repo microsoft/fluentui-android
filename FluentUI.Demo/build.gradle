@@ -114,7 +114,6 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-intents:${espressoVersion}"
     androidTestImplementation "androidx.test:runner:${androidxRunner}"
     androidTestImplementation "androidx.test:rules:${androidxRunner}"
-    androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.3.0-alpha05'
 
     //Robolectric
     testImplementation "org.robolectric:robolectric:${robolectric}"
