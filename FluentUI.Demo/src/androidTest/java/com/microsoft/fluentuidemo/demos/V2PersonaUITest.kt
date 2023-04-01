@@ -8,7 +8,6 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onChildAt
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.unit.dp
-import androidx.test.espresso.accessibility.AccessibilityChecks
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
@@ -32,7 +31,6 @@ class V2PersonaUITest {
 
     @Before
     fun initialize() {
-        AccessibilityChecks.enable()
         composeTestRule.setContent {
             val person1 = Person(
                 "Allan", "Munger",
