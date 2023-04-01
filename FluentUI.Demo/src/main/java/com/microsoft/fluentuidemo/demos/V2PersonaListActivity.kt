@@ -8,8 +8,10 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.testTag
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available

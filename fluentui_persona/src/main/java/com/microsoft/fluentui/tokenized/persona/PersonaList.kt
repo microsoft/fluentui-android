@@ -48,7 +48,7 @@ fun PersonaList(
 ) {
     val scope = rememberCoroutineScope()
     val lazyListState = rememberLazyListState()
-    LazyColumn(state = lazyListState, modifier = Modifier.draggable(
+    LazyColumn(state = lazyListState, modifier = modifier.draggable(
         orientation = Orientation.Vertical,
         state = rememberDraggableState { delta ->
             scope.launch {
@@ -61,7 +61,6 @@ fun PersonaList(
                 text = item.title,
                 subText = item.subTitle,
                 secondarySubText = item.footer,
-                modifier = modifier,
                 onClick = item.onClick,
                 border = border,
                 borderInset = borderInset,
