@@ -67,7 +67,7 @@ open class CardNudgeTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun strokeColor(cardNudgeInfo: CardNudgeInfo): Color =
+    open fun borderStrokeColor(cardNudgeInfo: CardNudgeInfo): Color =
         aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke2].value()
 
     @Composable

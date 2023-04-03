@@ -16,6 +16,7 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
@@ -24,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.FractionalThreshold
 import com.microsoft.fluentui.compose.rememberSwipeableState
 import com.microsoft.fluentui.compose.swipeable
+import com.microsoft.fluentui.notification.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.token.*
@@ -60,7 +62,7 @@ class CardNudgeMetaData(
     val rightSwipeGesture: (() -> Unit)? = null
 )
 
-enum class SwipeGesture {
+private enum class SwipeGesture {
     NONE,
     LEFT,
     RIGHT
@@ -110,7 +112,7 @@ fun CardNudge(
                         if (outlineMode)
                             Modifier.border(
                                 getCardNudgeTokens().borderSize(getCardNudgeInfo()),
-                                getCardNudgeTokens().strokeColor(getCardNudgeInfo()),
+                                getCardNudgeTokens().borderStrokeColor(getCardNudgeInfo()),
                                 shape
                             )
                         else
@@ -269,7 +271,7 @@ fun CardNudge(
                     ) {
                         MaterialIcon(
                             Icons.Filled.Close,
-                            "Dismiss",
+                            LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
                             modifier = Modifier
                                 .size(getCardNudgeTokens().dismissIconSize(getCardNudgeInfo())),
                             tint = getCardNudgeTokens().iconColor(getCardNudgeInfo())

@@ -46,6 +46,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
@@ -70,7 +71,6 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.PopupMenuActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ProgressActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.SnackbarActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TabLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TemplateViewActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.TooltipActivity" />

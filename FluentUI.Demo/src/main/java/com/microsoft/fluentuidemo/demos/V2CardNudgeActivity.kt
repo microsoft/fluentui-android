@@ -79,7 +79,7 @@ class V2CardNudgeActivity : DemoActivity() {
                         LazyColumn(Modifier.fillMaxHeight(0.5F)) {
                             item {
                                 ListItem.Item(
-                                    text = "Icon",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_icon),
                                     subText = if (!icon)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -148,7 +148,7 @@ class V2CardNudgeActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Accent Image",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_accent_icon),
                                     subText = if (accentImage)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -167,7 +167,7 @@ class V2CardNudgeActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Action Button",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_action_button),
                                     subText = if (actionButton)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -186,7 +186,7 @@ class V2CardNudgeActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Dismiss Button",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
                                     subText = if (!dismissEnabled)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -205,7 +205,7 @@ class V2CardNudgeActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Outline Enabled",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_outline),
                                     subText = if (!outlineEnabled)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -223,21 +223,31 @@ class V2CardNudgeActivity : DemoActivity() {
                         }
                     }
 
+                    //Behaviour text
+                    val buttonPressed =
+                        LocalContext.current.resources.getString(R.string.fluentui_button_pressed)
+                    val dismissPressed =
+                        LocalContext.current.resources.getString(R.string.fluentui_dismissed)
+                    val leftSwiped =
+                        LocalContext.current.resources.getString(R.string.fluentui_left_swiped)
+                    val rightSwiped =
+                        LocalContext.current.resources.getString(R.string.fluentui_right_swiped)
+
                     Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
                         CardNudge(
                             metadata = CardNudgeMetaData(
-                                message = "Title",
+                                message = LocalContext.current.resources.getString(R.string.fluentui_title),
                                 icon = if (icon) FluentIcon(Icons.Outlined.Call) else null,
                                 subTitle = subtitle,
                                 accentText = accentText,
                                 accentIcon = if (accentImage) FluentIcon(Icons.Outlined.LocationOn) else null,
                                 actionMetaData = if (actionButton)
                                     PillMetaData(
-                                        "Action",
+                                        LocalContext.current.resources.getString(R.string.fluentui_action_button),
                                         onClick = {
                                             Toast.makeText(
                                                 context,
-                                                "Action Pressed",
+                                                buttonPressed,
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         }
@@ -246,7 +256,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                     {
                                         Toast.makeText(
                                             context,
-                                            "Dismiss Pressed",
+                                            dismissPressed,
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
@@ -264,9 +274,9 @@ class V2CardNudgeActivity : DemoActivity() {
                             outlineMode = outlineEnabled
                         )
                         if (swipeLeft)
-                            Text("Left Swiped")
+                            Text(leftSwiped)
                         else if (swipeRight)
-                            Text("Right Swiped")
+                            Text(rightSwiped)
                     }
                 }
             }

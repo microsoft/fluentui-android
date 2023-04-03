@@ -68,7 +68,7 @@ class V2SnackbarActivity : DemoActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     var icon: Boolean by rememberSaveable { mutableStateOf(false) }
-                    var actionLabel: String? by rememberSaveable { mutableStateOf(null) }
+                    var actionLabel: Boolean by rememberSaveable { mutableStateOf(false) }
                     var subtitle: String? by rememberSaveable { mutableStateOf(null) }
                     var style: SnackbarStyle by rememberSaveable { mutableStateOf(SnackbarStyle.Neutral) }
                     var duration: NotificationDuration by rememberSaveable {
@@ -169,7 +169,7 @@ class V2SnackbarActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Icon",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_icon),
                                     subText = if (!icon)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -213,21 +213,17 @@ class V2SnackbarActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Action Label",
-                                    subText = if (actionLabel.isNullOrBlank())
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_action_button),
+                                    subText = if (actionLabel)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
                                     trailingAccessoryView = {
                                         ToggleSwitch(
                                             onValueChange = {
-                                                if (actionLabel.isNullOrBlank()) {
-                                                    actionLabel = "Action"
-                                                } else {
-                                                    actionLabel = null
-                                                }
+                                                actionLabel = it
                                             },
-                                            checkedState = !actionLabel.isNullOrBlank(),
+                                            checkedState = actionLabel,
                                             modifier = Modifier.testTag(ACTION_BUTTON_PARAM)
                                         )
                                     }
@@ -236,7 +232,7 @@ class V2SnackbarActivity : DemoActivity() {
 
                             item {
                                 ListItem.Item(
-                                    text = "Dismiss Button",
+                                    text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
                                     subText = if (!dismissEnabled)
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
@@ -260,6 +256,14 @@ class V2SnackbarActivity : DemoActivity() {
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+                        val actionButtonString =
+                            LocalContext.current.resources.getString(R.string.fluentui_action_button)
+                        val dismissedString =
+                            LocalContext.current.resources.getString(R.string.fluentui_dismissed)
+                        val pressedString =
+                            LocalContext.current.resources.getString(R.string.fluentui_button_pressed)
+                        val timeoutString =
+                            LocalContext.current.resources.getString(R.string.fluentui_timeout)
                         Button(
                             onClick = {
                                 scope.launch {
@@ -267,7 +271,7 @@ class V2SnackbarActivity : DemoActivity() {
                                         "Hello from Fluent",
                                         style = style,
                                         icon = if (icon) FluentIcon(Icons.Outlined.ShoppingCart) else null,
-                                        actionText = actionLabel,
+                                        actionText = if (actionLabel) actionButtonString else null,
                                         subTitle = subtitle,
                                         duration = duration,
                                         enableDismiss = dismissEnabled
@@ -276,25 +280,25 @@ class V2SnackbarActivity : DemoActivity() {
                                     when (result) {
                                         NotificationResult.TIMEOUT -> Toast.makeText(
                                             context,
-                                            "Fluent Snackbar Timed Out",
+                                            timeoutString,
                                             Toast.LENGTH_SHORT
                                         ).show()
 
                                         NotificationResult.CLICKED -> Toast.makeText(
                                             context,
-                                            "Fluent Snackbar Clicked",
+                                            pressedString,
                                             Toast.LENGTH_SHORT
                                         ).show()
 
                                         NotificationResult.DISMISSED -> Toast.makeText(
                                             context,
-                                            "Fluent Snackbar Dismissed",
+                                            dismissedString,
                                             Toast.LENGTH_SHORT
                                         ).show()
                                     }
                                 }
                             },
-                            text = "Show Snackbar",
+                            text = LocalContext.current.resources.getString(R.string.fluentui_show_snackbar),
                             size = ButtonSize.Small,
                             style = ButtonStyle.OutlinedButton,
                             modifier = Modifier.testTag(SHOW_SNACKBAR)
@@ -304,7 +308,7 @@ class V2SnackbarActivity : DemoActivity() {
                             onClick = {
                                 snackbarQueue.currentSnackbar?.dismiss()
                             },
-                            text = "Dismiss Snackbar",
+                            text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                             size = ButtonSize.Small,
                             style = ButtonStyle.OutlinedButton,
                             modifier = Modifier.testTag(DISMISS_SNACKBAR)
