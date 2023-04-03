@@ -8,6 +8,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -36,6 +37,7 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class V2SearchBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -192,19 +194,30 @@ class V2SearchBarActivity : DemoActivity() {
                     val rightViewPressedString = getDemoAppString(DemoAppStrings.RightViewPressed)
                     val keyboardSearchPressedString =
                         getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
+
+                    val scope = rememberCoroutineScope()
+                    var loading by rememberSaveable { mutableStateOf(false) }
                     val keyboardController = LocalSoftwareKeyboardController.current
+
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
-                            if(induceDelay)
-                                delay(2000)
+                            scope.launch {
+                                loading = true
 
-                            filteredPeople = listofPeople.filter {
-                                it.firstName.lowercase().contains(query.lowercase()) ||
-                                        it.lastName.lowercase().contains(query.lowercase())
-                            } as MutableList<Person>
-                            selectedPeople = selectedPerson
+                                if (induceDelay)
+                                    delay(2000)
+
+                                filteredPeople = listofPeople.filter {
+                                    it.firstName.lowercase().contains(query.lowercase()) ||
+                                            it.lastName.lowercase().contains(query.lowercase())
+                                } as MutableList<Person>
+                                selectedPeople = selectedPerson
+
+                                loading = false
+                            }
                         },
                         style = searchBarStyle,
+                        loading = loading,
                         selectedPerson = selectedPeople,
                         microphoneCallback = if (enableMicrophoneCallback) {
                             {

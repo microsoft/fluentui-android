@@ -49,7 +49,6 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.topappbars.R
-import kotlinx.coroutines.launch
 
 private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
 private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.Neutral) }
@@ -67,6 +66,7 @@ private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.
  * @param keyboardActions Configures keyboards response w.r.t. user interactions. Default: [KeyboardActions]
  * @param searchHint String provided as hint on SearchBar. Default: "Search"
  * @param focusByDefault Boolean which allows Searchbar to be initially composed in focused state. Default: [false]
+ * @param loading Boolean to display progress indicator on SearchBar. Default: [false]
  * @param selectedPerson Person object which has to be displayed as a Persona Chip. Default: [null]
  * @param personaChipOnClick OnClick Behaviour for above persona chip. Default: [null]
  * @param microphoneCallback Callback to be provided to microphone icon, available at right side. Default: [null]
@@ -78,7 +78,7 @@ private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalAnimationApi::class)
 @Composable
 fun SearchBar(
-    onValueChange: suspend (String, Person?) -> Unit,
+    onValueChange: (String, Person?) -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     style: FluentStyle = FluentStyle.Neutral,
@@ -86,6 +86,7 @@ fun SearchBar(
     keyboardActions: KeyboardActions = KeyboardActions(),
     searchHint: String = LocalContext.current.resources.getString(R.string.fluentui_search),
     focusByDefault: Boolean = false,
+    loading: Boolean = false,
     selectedPerson: Person? = null,
     personaChipOnClick: (() -> Unit)? = null,
     microphoneCallback: (() -> Unit)? = null,
@@ -140,17 +141,14 @@ fun SearchBar(
                     when (it) {
                         true -> {
                             onClick = {
-                                scope.launch {
-                                    queryText = ""
-                                    selectedPerson = null
+                                queryText = ""
+                                selectedPerson = null
 
-                                    searching = true
-                                    onValueChange(queryText, selectedPerson)
-                                    searching = false
+                                onValueChange(queryText, selectedPerson)
 
-                                    focusManager.clearFocus()
-                                    searchHasFocus = false
-                                }
+                                focusManager.clearFocus()
+                                searchHasFocus = false
+
                                 navigationIconCallback?.invoke()
                             }
                             icon = SearchBarIcons.Arrowback
@@ -161,9 +159,7 @@ fun SearchBar(
                         }
                         false -> {
                             onClick = {
-                                scope.launch {
-                                    focusRequester.requestFocus()
-                                }
+                                focusRequester.requestFocus()
                             }
                             icon = SearchBarIcons.Search
                             contentDescription =
@@ -204,18 +200,18 @@ fun SearchBar(
                         .weight(1F)
                         .onKeyEvent {
                             if (it.key == Key.Backspace) {
-                                scope.launch {
-                                    if (personaChipSelected) {
-                                        selectedPerson = null
-                                        personaChipSelected = false
 
-                                        searching = true
-                                        onValueChange(queryText, selectedPerson)
-                                        searching = false
-                                    } else {
-                                        personaChipSelected = true
-                                    }
+                                if (personaChipSelected) {
+                                    selectedPerson = null
+                                    personaChipSelected = false
+
+                                    searching = true
+                                    onValueChange(queryText, selectedPerson)
+                                    searching = false
+                                } else {
+                                    personaChipSelected = true
                                 }
+
                             }
                             true
                         },
@@ -226,9 +222,7 @@ fun SearchBar(
                         if (personaChipSelected)
                             personaChipSelected = false
 
-                        searching = true
                         onValueChange(queryText, selectedPerson)
-                        searching = false
                     }
 
                     if (selectedPerson != null) {
@@ -243,13 +237,9 @@ fun SearchBar(
                                 personaChipOnClick?.invoke()
                             },
                             onCloseClick = {
-                                scope.launch {
-                                    selectedPerson = null
+                                selectedPerson = null
 
-                                    searching = true
-                                    onValueChange(queryText, selectedPerson)
-                                    searching = false
-                                }
+                                onValueChange(queryText, selectedPerson)
                             }
                         )
                     }
@@ -257,20 +247,15 @@ fun SearchBar(
                     BasicTextField(
                         value = queryText,
                         onValueChange = {
-                            scope.launch {
-                                queryText = it
-                                personaChipSelected = false
+                            queryText = it
+                            personaChipSelected = false
 
-                                searching = true
-                                onValueChange(queryText, selectedPerson)
-                                searching = false
-                            }
+                            onValueChange(queryText, selectedPerson)
                         },
                         singleLine = true,
                         keyboardOptions = keyboardOptions,
                         keyboardActions = keyboardActions,
                         modifier = Modifier
-                            .fillMaxHeight()
                             .weight(1F)
                             .focusRequester(focusRequester)
                             .onFocusChanged { focusState ->
@@ -362,25 +347,22 @@ fun SearchBar(
                                         indication = rememberRipple(),
                                         enabled = enabled,
                                         onClick = {
-                                            scope.launch {
-                                                queryText = ""
-                                                selectedPerson = null
+                                            queryText = ""
+                                            selectedPerson = null
 
-                                                searching = true
-                                                onValueChange(queryText, selectedPerson)
-                                                searching = false
-                                            }
+                                            onValueChange(queryText, selectedPerson)
                                         },
                                         role = Role.Button
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
-                                if (searching)
+                                if (loading) {
                                     CircularProgressIndicator(
                                         size = getSearchBarTokens().circularProgressIndicatorSize(
                                             getSearchBarInfo()
                                         )
                                     )
+                                }
                                 Icon(
                                     FluentIcon(
                                         SearchBarIcons.Dismisscircle,
