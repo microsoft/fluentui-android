@@ -23,6 +23,7 @@ const val V2PERSONA = "V2 Persona"
 const val V2PERSONA_CHIP = "V2 PersonaChip"
 const val V2PERSONA_LIST = "V2 PersonaList"
 const val V2PROGRESS = "V2 Progress"
+const val V2SCAFFOLD = "V2 Scaffold"
 const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
 const val V2TABBAR = "V2 TabBar"
@@ -68,6 +69,7 @@ val DEMOS = arrayListOf(
     Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
     Demo(V2PROGRESS, V2ProgressActivity::class),
+    Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),

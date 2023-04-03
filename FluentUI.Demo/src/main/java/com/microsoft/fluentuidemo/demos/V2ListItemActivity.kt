@@ -514,7 +514,7 @@ fun ThreeLineListAccessoryViewContent(
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
-            progressIndicator = { LinearProgressIndicator() },
+            bottomView = { LinearProgressIndicator() },
             primaryTextLeadingIcons = oneTextIcon20(),
             secondarySubTextTailingIcons = twoTextIcons16(),
             leadingAccessoryView = { LeftViewAvatar(Size56) },
