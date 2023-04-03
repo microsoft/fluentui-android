@@ -60,7 +60,6 @@ enum class ActionButtonPosition {
  * @param modifier Optional Modifier for CCB
  * @param actionButtonPosition Enum to specify if we will have an Action Button and its position
  * @param actionButtonIcon FluentIcon for The Action Button Icon
- * @param actionButtonOnClick OnCLick Functionality for the Action Button. By default has keyboard dismiss action.
  * @param scrollable Boolean value to specify if CCB has fixed or infinite width(Scrollable).
  *                      Use false to create a fixed non scrollable CCB. Command groups widths will adhere to the weights set in [CommandGroup] weight parameter.
  *                      Use true to have a scrollable CCB. [CommandGroup] weight parameter is ignored
