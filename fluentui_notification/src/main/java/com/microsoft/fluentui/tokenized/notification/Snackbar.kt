@@ -49,10 +49,9 @@ class SnackbarMetadata(
     val icon: FluentIcon?,
     val subTitle: String?,
     val actionText: String?,
-    duration: NotificationDuration,
-    val continuation: CancellableContinuation<NotificationResult>
+    val duration: NotificationDuration,
+    private val continuation: CancellableContinuation<NotificationResult>
 ) : NotificationMetadata {
-    override var notificationDuration: NotificationDuration = duration
 
     override fun clicked() {
         if (continuation.isActive) continuation.resume(NotificationResult.CLICKED)
@@ -62,17 +61,17 @@ class SnackbarMetadata(
         if (continuation.isActive) continuation.resume(NotificationResult.DISMISSED)
     }
 
-    override fun timedout() {
+    override fun timedOut() {
         if (continuation.isActive) continuation.resume(NotificationResult.TIMEOUT)
     }
 }
 
-class SnackbarQueue {
+class SnackbarState {
     private val mutex = Mutex()
 
     var currentSnackbar by mutableStateOf<SnackbarMetadata?>(null)
 
-    suspend fun enqueue(
+    suspend fun showSnackbar(
         message: String,
         style: SnackbarStyle = SnackbarStyle.Neutral,
         enableDismiss: Boolean = false,
@@ -106,20 +105,20 @@ class SnackbarQueue {
 /**
  * Snackbar are transient Notification control used to deliver information which can be timedout or
  * can be cleared by user pressing the CTA or dismiss icon. Snackbar is rendered using [SnackbarMetadata]
- * which saves all the information about it. Snackbar shows one message at a time and uses a [SnackbarQueue]
+ * which saves all the information about it. Snackbar shows one message at a time and uses a [SnackbarState]
  * to save all the requests. Multiple styles of Snackbar are supported using [SnackbarStyle].
  *
- * @param snackBarQueue Queue to store all the Notification requests.
+ * @param snackbarState Queue to store all the Notification requests.
  * @param modifier Optional modifier to be applied to Snackbar.
  * @param snackbarTokens Optional Tokens to redesign Snackbar.
  */
 @Composable
 fun Snackbar(
-    snackBarQueue: SnackbarQueue,
+    snackbarState: SnackbarState,
     modifier: Modifier = Modifier,
     snackbarTokens: SnackBarTokens? = null
 ) {
-    val metadata: SnackbarMetadata = snackBarQueue.currentSnackbar ?: return
+    val metadata: SnackbarMetadata = snackbarState.currentSnackbar ?: return
 
     val token = snackbarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Snackbar] as SnackBarTokens
@@ -128,7 +127,12 @@ fun Snackbar(
         LocalSnackBarTokens provides token,
         LocalSnackBarInfo provides SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
     ) {
-        NotificationContainer(notificationMetadata = metadata) { alpha, scale ->
+        NotificationContainer(
+            notificationMetadata = metadata,
+            hasIcon = metadata.icon != null,
+            hasAction = metadata.actionText != null,
+            duration = metadata.duration
+        ) { alpha, scale ->
             Row(
                 modifier
                     .graphicsLayer(scaleX = scale.value, scaleY = scale.value, alpha = alpha.value)

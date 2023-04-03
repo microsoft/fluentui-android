@@ -30,7 +30,7 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.NotificationDuration
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
-import com.microsoft.fluentui.tokenized.notification.SnackbarQueue
+import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.DemoActivity
@@ -60,7 +60,7 @@ class V2SnackbarActivity : DemoActivity() {
 
         composeView.setContent {
             FluentTheme {
-                val snackbarQueue = remember { SnackbarQueue() }
+                val snackbarState = remember { SnackbarState() }
 
                 val scope = rememberCoroutineScope()
                 Column(
@@ -267,7 +267,7 @@ class V2SnackbarActivity : DemoActivity() {
                         Button(
                             onClick = {
                                 scope.launch {
-                                    val result: NotificationResult = snackbarQueue.enqueue(
+                                    val result: NotificationResult = snackbarState.showSnackbar(
                                         "Hello from Fluent",
                                         style = style,
                                         icon = if (icon) FluentIcon(Icons.Outlined.ShoppingCart) else null,
@@ -306,7 +306,7 @@ class V2SnackbarActivity : DemoActivity() {
 
                         Button(
                             onClick = {
-                                snackbarQueue.currentSnackbar?.dismiss()
+                                snackbarState.currentSnackbar?.dismiss()
                             },
                             text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                             size = ButtonSize.Small,
@@ -315,7 +315,7 @@ class V2SnackbarActivity : DemoActivity() {
                         )
                     }
                     Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
-                        Snackbar(snackbarQueue, Modifier.padding(bottom = 12.dp))
+                        Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))
                     }
                 }
             }
