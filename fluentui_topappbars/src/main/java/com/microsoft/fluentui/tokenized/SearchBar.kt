@@ -106,7 +106,6 @@ fun SearchBar(
         val focusRequester = remember { FocusRequester() }
 
         var queryText by rememberSaveable { mutableStateOf("") }
-        var searching by rememberSaveable { mutableStateOf(false) }
         var searchHasFocus by rememberSaveable { mutableStateOf(false) }
 
         var personaChipSelected by rememberSaveable { mutableStateOf(false) }
@@ -205,9 +204,7 @@ fun SearchBar(
                                     selectedPerson = null
                                     personaChipSelected = false
 
-                                    searching = true
                                     onValueChange(queryText, selectedPerson)
-                                    searching = false
                                 } else {
                                     personaChipSelected = true
                                 }
