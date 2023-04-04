@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -37,6 +38,7 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
+import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -53,7 +55,7 @@ class V2ListItemActivity : DemoActivity() {
 
         composeHere.setContent {
             FluentTheme {
-                CreateListActivityUI()
+                CreateListActivityUI(this)
             }
         }
     }
@@ -65,187 +67,181 @@ const val primaryText = "Title, primary text"
 const val secondaryText = "Subtitle, secondary text"
 const val tertiaryText = "Footer, tertiary text"
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Composable
-fun CreateListActivityUI() {
-    val scaffoldState: ScaffoldState = rememberScaffoldState()
-    val coroutineScope: CoroutineScope = rememberCoroutineScope()
-    Scaffold(scaffoldState = scaffoldState) {
-        Box(
-            Modifier
-                .fillMaxSize()
-        ) {
-            LazyColumn {
-                item {
-                    ListItem.Header(title = "One-Line list with Text icons")
-                    OneLineListAccessoryViewContent(coroutineScope, scaffoldState)
-                }
-                item {
-                    ListItem.Header(title = "Two-Line list with Text icons")
-                    TwoLineListAccessoryViewContent(coroutineScope, scaffoldState)
-                }
-                item {
-                    ListItem.Header(title = "Three-Line list with Text icons")
-                    ThreeLineListAccessoryViewContent(coroutineScope, scaffoldState)
-                }
-                item {
-                    ListItem.Header(title = "Text Only")
-                    ListItem.Item(
-                        text = primaryText,
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge,
-                        primaryTextTrailingIcons = oneTextIcon20()
-                    )
-                    ListItem.Item(
-                        text = primaryText,
-                        subText = secondaryText,
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge,
-                        secondarySubTextLeadingIcons = oneTextIcon16()
-                    )
-                    ListItem.Item(
-                        text = primaryText,
-                        subText = secondaryText,
-                        secondarySubText = tertiaryText,
-                        border = BorderType.Bottom,
-                        secondarySubTextTailingIcons = twoTextIcons16()
-                    )
-                }
-                item {
-                    ListItem.Header(title = "Wrapped Text list")
-                    ListItem.Item(
-                        text = sampleText,
-                        textMaxLines = 4,
-                        leadingAccessoryView = { LeftViewFolderIcon40() },
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge
-                    )
-                    ListItem.Item(
-                        text = sampleText,
-                        subText = sampleText,
-                        textMaxLines = 4,
-                        subTextMaxLines = 4,
-                        leadingAccessoryView = { LeftViewFolderIcon40() },
-                        trailingAccessoryView = {
-                            RightViewButton(
-                                ButtonSize.Small,
-                                coroutineScope,
-                                scaffoldState
-                            )
-                        },
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge
-                    )
-                    ListItem.Item(
-                        text = sampleText,
-                        subText = sampleText,
-                        secondarySubText = sampleText,
-                        textMaxLines = 4,
-                        subTextMaxLines = 4,
-                        secondarySubTextMaxLines = 4,
-                        leadingAccessoryView = { LeftViewFolderIcon40() },
-                        trailingAccessoryView = { RightViewText(text = "Value") },
-                        border = BorderType.Bottom
-                    )
-                }
-                item {
-                    ListItem.Header(title = "Section description")
-                    ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Top with no Action text and no icon",
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge
-                    )
-                    ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Bottom and no Action text",
-                        descriptionPlacement = Bottom,
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge
-                    )
-                    ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
-                        actionText = "Action",
-                        onActionClick = {},
-                        leadingAccessoryView = { Icon16() },
-                        border = BorderType.Bottom,
-                        borderInset = XXLarge
-                    )
-                    ListItem.SectionDescription(
-                        description = "Sample description with the description placed at the Bottom and Action text",
-                        actionText = "More",
-                        onActionClick = {},
-                        descriptionPlacement = Bottom,
-                        border = BorderType.Bottom
-                    )
-                }
-                item {
-                    ListItem.Header(title = "Section Headers with/without chevron")
-                    Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                        ListItem.SectionHeader(
-                            title = "One-Line list",
-                            enableChevron = true,
-                            enableContentOpenCloseTransition = true,
-                            chevronOrientation = ChevronOrientation(90f, 0f),
-                            accessoryTextTitle = "Action",
-                            accessoryTextOnClick = {},
-                            trailingAccessoryView = { RightViewThreeButton() },
-                            content = { OneLineSimpleList() },
-                            border = BorderType.Bottom
-                        )
-                        ListItem.SectionHeader(
-                            title = "Two-Line list",
-                            style = Subtle,
-                            enableChevron = true,
-                            enableContentOpenCloseTransition = true,
-                            chevronOrientation = ChevronOrientation(90f, 0f),
-                            content = { TwoLineSimpleList() },
-                            border = BorderType.Bottom
-                        )
-                        ListItem.SectionHeader(
-                            title = "Two-Line list",
-                            enableChevron = false,
-                            enableContentOpenCloseTransition = true,
-                            trailingAccessoryView = { RightViewToggle() },
-                            content = { ThreeLineSimpleList() },
-                            border = BorderType.Bottom
-                        )
-                    }
 
-                }
-                item {
-                    ListItem.Header(title = "Headers")
-                    ListItem.Header(
-                        title = "Standard heading",
+@Composable
+private fun CreateListActivityUI(context: Context) {
+    Box(
+        Modifier
+            .fillMaxSize()
+    ) {
+        LazyColumn {
+            item {
+                ListItem.Header(title = "One-Line list with Text icons")
+                OneLineListAccessoryViewContent(context)
+            }
+            item {
+                ListItem.Header(title = "Two-Line list with Text icons")
+                TwoLineListAccessoryViewContent(context)
+            }
+            item {
+                ListItem.Header(title = "Three-Line list with Text icons")
+                ThreeLineListAccessoryViewContent(context)
+            }
+            item {
+                ListItem.Header(title = "Text Only")
+                ListItem.Item(
+                    text = primaryText,
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge,
+                    primaryTextTrailingIcons = oneTextIcon20()
+                )
+                ListItem.Item(
+                    text = primaryText,
+                    subText = secondaryText,
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge,
+                    secondarySubTextLeadingIcons = oneTextIcon16()
+                )
+                ListItem.Item(
+                    text = primaryText,
+                    subText = secondaryText,
+                    secondarySubText = tertiaryText,
+                    border = BorderType.Bottom,
+                    secondarySubTextTailingIcons = twoTextIcons16()
+                )
+            }
+            item {
+                ListItem.Header(title = "Wrapped Text list")
+                ListItem.Item(
+                    text = sampleText,
+                    textMaxLines = 4,
+                    leadingAccessoryView = { LeftViewFolderIcon40() },
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge
+                )
+                ListItem.Item(
+                    text = sampleText,
+                    subText = sampleText,
+                    textMaxLines = 4,
+                    subTextMaxLines = 4,
+                    leadingAccessoryView = { LeftViewFolderIcon40() },
+                    trailingAccessoryView = {
+                        RightViewButton(
+                            ButtonSize.Small,
+                            context
+                        )
+                    },
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge
+                )
+                ListItem.Item(
+                    text = sampleText,
+                    subText = sampleText,
+                    secondarySubText = sampleText,
+                    textMaxLines = 4,
+                    subTextMaxLines = 4,
+                    secondarySubTextMaxLines = 4,
+                    leadingAccessoryView = { LeftViewFolderIcon40() },
+                    trailingAccessoryView = { RightViewText(text = "Value") },
+                    border = BorderType.Bottom
+                )
+            }
+            item {
+                ListItem.Header(title = "Section description")
+                ListItem.SectionDescription(
+                    description = "Sample description with the description placed at the Top with no Action text and no icon",
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge
+                )
+                ListItem.SectionDescription(
+                    description = "Sample description with the description placed at the Bottom and no Action text",
+                    descriptionPlacement = Bottom,
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge
+                )
+                ListItem.SectionDescription(
+                    description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
+                    actionText = "Action",
+                    onActionClick = {},
+                    leadingAccessoryView = { Icon16() },
+                    border = BorderType.Bottom,
+                    borderInset = XXLarge
+                )
+                ListItem.SectionDescription(
+                    description = "Sample description with the description placed at the Bottom and Action text",
+                    actionText = "More",
+                    onActionClick = {},
+                    descriptionPlacement = Bottom,
+                    border = BorderType.Bottom
+                )
+            }
+            item {
+                ListItem.Header(title = "Section Headers with/without chevron")
+                Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
+                    ListItem.SectionHeader(
+                        title = "One-Line list",
+                        enableChevron = true,
+                        enableContentOpenCloseTransition = true,
+                        chevronOrientation = ChevronOrientation(90f, 0f),
                         accessoryTextTitle = "Action",
                         accessoryTextOnClick = {},
                         trailingAccessoryView = { RightViewThreeButton() },
+                        content = { OneLineSimpleList() },
                         border = BorderType.Bottom
                     )
-                    ListItem.Header(
-                        title = "Subtle heading",
-                        accessoryTextTitle = "Action",
-                        accessoryTextOnClick = {},
-                        style = Subtle
+                    ListItem.SectionHeader(
+                        title = "Two-Line list",
+                        style = Subtle,
+                        enableChevron = true,
+                        enableContentOpenCloseTransition = true,
+                        chevronOrientation = ChevronOrientation(90f, 0f),
+                        content = { TwoLineSimpleList() },
+                        border = BorderType.Bottom
+                    )
+                    ListItem.SectionHeader(
+                        title = "Two-Line list",
+                        enableChevron = false,
+                        enableContentOpenCloseTransition = true,
+                        trailingAccessoryView = { RightViewToggle() },
+                        content = { ThreeLineSimpleList() },
+                        border = BorderType.Bottom
                     )
                 }
-                item {
-                    ListItem.Header(title = "Centered Action Text")
-                    ListItem.Item(
-                        text = "Action",
-                        textAlignment = ListItemTextAlignment.Centered,
-                        border = BorderType.Bottom
-                    )
-                    ListItem.Item(
-                        text = "Disabled",
-                        enabled = false,
-                        textAlignment = ListItemTextAlignment.Centered,
-                        border = BorderType.Bottom
-                    )
-                    ListItem.SectionDescription(description = "Centered action text only supports primary text and ignores any given trailing or leading accessory views")
-                }
+
+            }
+            item {
+                ListItem.Header(title = "Headers")
+                ListItem.Header(
+                    title = "Standard heading",
+                    accessoryTextTitle = "Action",
+                    accessoryTextOnClick = {},
+                    trailingAccessoryView = { RightViewThreeButton() },
+                    border = BorderType.Bottom
+                )
+                ListItem.Header(
+                    title = "Subtle heading",
+                    accessoryTextTitle = "Action",
+                    accessoryTextOnClick = {},
+                    style = Subtle
+                )
+            }
+            item {
+                ListItem.Header(title = "Centered Action Text")
+                ListItem.Item(
+                    text = "Action",
+                    textAlignment = ListItemTextAlignment.Centered,
+                    border = BorderType.Bottom
+                )
+                ListItem.Item(
+                    text = "Disabled",
+                    enabled = false,
+                    textAlignment = ListItemTextAlignment.Centered,
+                    border = BorderType.Bottom
+                )
+                ListItem.SectionDescription(description = "Centered action text only supports primary text and ignores any given trailing or leading accessory views")
             }
         }
     }
-
 }
 
 @Composable
@@ -330,7 +326,7 @@ fun ThreeLineSimpleList() {
 }
 
 @Composable
-fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+fun OneLineListAccessoryViewContent(context: Context) {
     var checked by remember { mutableStateOf(true) }
     return Column {
         ListItem.Item(
@@ -350,8 +346,7 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             leadingAccessoryView = {
                 RightViewButton(
                     size = ButtonSize.Small,
-                    coroutineScope,
-                    scaffoldState
+                    context
                 )
             },
             primaryTextLeadingIcons = twoTextIcons20(),
@@ -389,7 +384,7 @@ fun OneLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
 }
 
 @Composable
-fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
+fun TwoLineListAccessoryViewContent(context: Context) {
     var unreadDot1 by remember { mutableStateOf(true) }
     var unreadDot2 by remember { mutableStateOf(true) }
     return Column {
@@ -451,8 +446,7 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
             trailingAccessoryView = {
                 RightViewButton(
                     ButtonSize.Small,
-                    coroutineScope,
-                    scaffoldState
+                    context
                 )
             },
             border = BorderType.Bottom,
@@ -480,8 +474,7 @@ fun TwoLineListAccessoryViewContent(coroutineScope: CoroutineScope, scaffoldStat
 
 @Composable
 fun ThreeLineListAccessoryViewContent(
-    coroutineScope: CoroutineScope,
-    scaffoldState: ScaffoldState
+    context: Context
 ) {
     return Column {
         ListItem.Item(
@@ -504,8 +497,7 @@ fun ThreeLineListAccessoryViewContent(
             trailingAccessoryView = {
                 RightViewButton(
                     ButtonSize.Small,
-                    coroutineScope,
-                    scaffoldState
+                    context
                 )
             },
             border = BorderType.Bottom,
@@ -719,12 +711,11 @@ fun LeftViewFolderIcon40() {
 @Composable
 fun RightViewButton(
     size: ButtonSize,
-    coroutineScope: CoroutineScope,
-    scaffoldState: ScaffoldState
+    context: Context
 ) {
     return Button(
         text = "Text",
-        onClick = { onClick("Button", coroutineScope, scaffoldState) },
+        onClick = { invokeToast("Button", context) },
         size = size,
         style = ButtonStyle.OutlinedButton
     )
@@ -758,17 +749,4 @@ fun GetAvatar(size: AvatarSize, image: Int) {
 @Composable
 fun RightViewText(text: String) {
     return Text(text = text)
-}
-
-fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
-    scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-    coroutineScope.launch {
-        val result = scaffoldState.snackbarHostState.showSnackbar(
-            message = "Clicked on $text",
-            actionLabel = "Close"
-        )
-        when (result) {
-            SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-        }
-    }
 }

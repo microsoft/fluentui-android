@@ -1,10 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.ComposeView
@@ -22,8 +21,7 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
+import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2PersonaListActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -38,7 +36,7 @@ class V2PersonaListActivity : DemoActivity() {
 
         compose_here.setContent {
             FluentTheme {
-                createActivityUI()
+                CreatePersonaListActivityUI(this)
             }
         }
     }
@@ -54,10 +52,7 @@ class V2PersonaListActivity : DemoActivity() {
         )
     }
 
-    private fun createPersonasList(
-        scaffoldState: ScaffoldState,
-        coroutineScope: CoroutineScope
-    ): List<Persona> {
+    private fun createPersonasList(context: Context): List<Persona> {
         return arrayListOf(
             Persona(Person(
                 "Allan",
@@ -71,7 +66,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Allan Munger",
                 subTitle = "Manager",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Allan Munger", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Allan Munger", context) }),
             Persona(Person(
                 "Amanda",
                 "Brady",
@@ -84,7 +79,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Amanda Brady",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Amanda Brady", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Amanda Brady", context) }),
             Persona(Person(
                 "Ashley",
                 "McCarthy",
@@ -97,7 +92,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Ashley McCarthy",
                 subTitle = "Designer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Ashley McCarthy", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Ashley McCarthy", context) }),
             Persona(Person(
                 "Wanda",
                 "Howard",
@@ -110,7 +105,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Wanda Howard",
                 subTitle = "Manager",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Wanda Howard", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Wanda Howard", context) }),
             Persona(Person(
                 "Celeste",
                 "Burton",
@@ -123,7 +118,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Celeste Burton",
                 subTitle = "Engineer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Celeste Burton", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Celeste Burton", context) }),
             Persona(Person(
                 "Cecil",
                 "Folk",
@@ -136,7 +131,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Cecil Folk",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Cecil Folk", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Cecil Folk", context) }),
             Persona(Person(
                 "Carlos",
                 "Slattery",
@@ -149,7 +144,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Carlos Slattery",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Carlos Slattery", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Carlos Slattery", context) }),
             Persona(Person(
                 "Carole",
                 "Poland",
@@ -162,7 +157,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Carole Poland",
                 subTitle = "Designer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Carole Poland", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Carole Poland", context) }),
             Persona(Person(
                 "Charlotte",
                 "Waltson",
@@ -175,7 +170,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Charlotte Walston",
                 subTitle = "Engineer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Charlotte Walston", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Charlotte Walston", context) }),
             Persona(Person(
                 "Colin",
                 "Badllinger",
@@ -188,7 +183,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Colin Ballinger",
                 subTitle = "Engineer",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Colin Ballinger", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Colin Ballinger", context) }),
             Persona(Person(
                 "Daisy",
                 "Phillips",
@@ -201,7 +196,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Daisy Phillips",
                 subTitle = "Researcher",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Daisy Phillips", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Daisy Phillips", context) }),
             Persona(Person(
                 "elliot",
                 "Woodward",
@@ -214,7 +209,7 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Elliot Woodward",
                 subTitle = "Intern",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Elliot Woodward", coroutineScope, scaffoldState) }),
+                onClick = { invokeToast("Elliot Woodward", context) }),
             Persona(Person(
                 "Elvia",
                 "Atkins",
@@ -227,35 +222,17 @@ class V2PersonaListActivity : DemoActivity() {
                 title = "Elvia Atkins",
                 subTitle = "Intern",
                 trailingIcon = { trailingIcon() },
-                onClick = { onClick("Elvia Atkins", coroutineScope, scaffoldState) })
+                onClick = { invokeToast("Elvia Atkins", context) })
         )
     }
 
-    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
-    fun createActivityUI() {
-        val scaffoldState: ScaffoldState = rememberScaffoldState()
-        val coroutineScope: CoroutineScope = rememberCoroutineScope()
-        Scaffold(scaffoldState = scaffoldState) {
-            PersonaList(
-                modifier = Modifier.testTag("list"),
-                personas = createPersonasList(scaffoldState, coroutineScope),
-                border = BorderType.Bottom,
-                borderInset = BorderInset.XXLarge
-            )
-        }
-    }
-
-    fun onClick(text: String, coroutineScope: CoroutineScope, scaffoldState: ScaffoldState) {
-        scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-        coroutineScope.launch {
-            val result = scaffoldState.snackbarHostState.showSnackbar(
-                message = "Clicked on $text",
-                actionLabel = "Close"
-            )
-            when (result) {
-                SnackbarResult.ActionPerformed -> scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-            }
-        }
+    private fun CreatePersonaListActivityUI(context: Context) {
+        PersonaList(
+            modifier = Modifier.testTag("list"),
+            personas = createPersonasList(context),
+            border = BorderType.Bottom,
+            borderInset = BorderInset.XXLarge
+        )
     }
 }
