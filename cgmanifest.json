@@ -4,7 +4,7 @@
     {
       "Component": {
         "Git": {
-          "CommitHash": "72cb83280b88695b23cf914cb37d696eb261c90e",
+          "CommitHash": "e066f1922ec8d42b1673a0ac1838fda56d05b36e",
           "RepositoryUrl": "https://github.com/microsoft/fluentui-android"
         },
         "Type": "git"
@@ -14,8 +14,18 @@
     {
       "Component": {
         "Git": {
-          "CommitHash": "72cb83280b88695b23cf914cb37d696eb261c90e",
+          "CommitHash": "e066f1922ec8d42b1673a0ac1838fda56d05b36e",
           "RepositoryUrl": "https://github.com/microsoft/fluentui-android/blob/master/fluentui_core/src/main/java/com/microsoft/fluentui/compose/Swipeable.kt"
+        },
+        "Type": "git"
+      },
+      "DevelopmentDependency": false
+    },
+  {
+      "Component": {
+        "Git": {
+          "CommitHash": "e066f1922ec8d42b1673a0ac1838fda56d05b36e",
+          "RepositoryUrl": "https://github.com/microsoft/fluentui-android/blob/master/fluentui_core/src/main/java/com/microsoft/fluentui/compose/Scaffold.kt"
         },
         "Type": "git"
       },

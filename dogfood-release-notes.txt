@@ -1,22 +1,19 @@
-Release Version 0.1.22:
+Release Version 0.1.23:
 
 What's New:
 
 Fluent V2:
     Fix/Enhancement:
-        1.Cursor color in searchbar
-        2.RTL support for searchbar
-        3.RTL support in Appbar
-        4.Removing excess padding In Navigation Icon(AppBar)
-        5.Rename size enum in Avatar carousel
-        6.updated accessibilty semantics for avatar carousel
-        7.Avatar carousel now has default size
-        8.Removed default person from avatar carousel api
+        1.Added textAccessibiltyProperties variable for setting accessibilty properties to the text in Listitem
+        2.Added Scaffold, Snackbar and CardNudge
+        3.Fixed Token Parity for Pill Button, Button, FAB and Avatar
+        4.Fixed RTL issue for CCB Gradient
+        5.Fixed focused State in RadioButton, CheckBox and ToggleSwitch
+        6.Fixed Accessibility Insights Issue with Searchbar and Radio Button
+        7.Minor code fixes
     Localization:
-        Retranslated the strings to support localization. Now supports 66 languages.
+        Updated strings in few modules
+        Added GH workflow to autotranslate and create PR for transalted strings
     Build:
-        Upgrading hydra lab version
-
-Fluent VCurrent:
-    Fix/Enhancement:
-        1.Enabled accessibility Heading flag in ListSubHeader, Bottomsheet, PersistentBottomSheet
+        Upgrading hydra lab version to 1.1.4
+        Added UI tests to all the components
