@@ -24,6 +24,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.microsoft.fluentui.icons.CCBIcons
@@ -185,6 +186,7 @@ fun ContextualCommandBar(
                                     indication = rememberRipple()
                                 )
 
+                                focusedBorderModifier = Modifier
                                 for (borderStroke in focusStroke) {
                                     focusedBorderModifier =
                                         focusedBorderModifier.border(borderStroke, shape)
@@ -315,6 +317,8 @@ fun ContextualCommandBar(
                                 interactionSource = interactionSource,
                                 indication = rememberRipple()
                             )
+
+                            focusedBorderModifier = Modifier
                             for (borderStroke in focusStroke) {
                                 focusedBorderModifier =
                                     focusedBorderModifier.border(borderStroke, shape)

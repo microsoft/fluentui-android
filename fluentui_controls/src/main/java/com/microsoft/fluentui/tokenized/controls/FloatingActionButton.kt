@@ -32,6 +32,20 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
 val LocalFABTokens = compositionLocalOf { FABTokens() }
 val LocalFABInfo = compositionLocalOf { FABInfo() }
 
+/**
+ * API to create a Floating Action Button. This button has elevation and can be expanded and collapsed.
+ * In expanded state, Icon + Text are displayed. In collapsed state, only icon is displayed.
+ *
+ * @param onClick OnClick behaviour for the button
+ * @param modifier Optional Modifier for FAB
+ * @param state State the FAB is supposed to be in. Default: [FABState.Expanded]
+ * @param size Size of the FAB. Default: [FABSize.Large]
+ * @param enabled Boolean for enabling/disabling FAB. Default: [true]
+ * @param interactionSource Interaction Source for user interactions.
+ * @param icon ImageVector for Icon to be displayed. Default: [null]
+ * @param text String to be displayed. Default: [null]
+ * @param fabTokens Tokens to customize design of FAB. Default: [null]
+ */
 @Composable
 fun FloatingActionButton(
     onClick: () -> Unit,

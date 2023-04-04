@@ -5,10 +5,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.focusable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.interaction.collectIsHoveredAsState
@@ -17,7 +14,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
@@ -27,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
@@ -39,10 +36,12 @@ import com.microsoft.fluentui.tablayout.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
+import com.microsoft.fluentui.util.dpToPx
 import kotlinx.coroutines.launch
 import kotlin.math.max
 
@@ -51,7 +50,8 @@ data class PillMetaData(
     var onClick: (() -> Unit),
     var icon: ImageVector? = null,
     var enabled: Boolean = true,
-    var selected: Boolean = false
+    var selected: Boolean = false,
+    var notificationDot: Boolean = false,
 )
 
 val LocalPillButtonTokens = compositionLocalOf { PillButtonTokens() }
@@ -59,12 +59,20 @@ val LocalPillButtonInfo = compositionLocalOf { PillButtonInfo() }
 val LocalPillBarTokens = compositionLocalOf { PillBarTokens() }
 val LocalPillBarInfo = compositionLocalOf { PillBarInfo() }
 
+/**
+ * API to create Pill shaped Button which will further be used in tabs and bars.
+ *
+ * @param pillMetaData Metadata for a single pill. Type: [PillMetaData]
+ * @param modifier Optional Modifier to customize the design and behaviour of pill button
+ * @param style Color Scheme of pill shaped button. Default: [FluentStyle.Neutral]
+ * @param interactionSource Interaction Source Object to handle gestures.
+ * @param pillButtonTokens Tokens to customize the design of pill button.
+ */
 @Composable
 fun PillButton(
     pillMetaData: PillMetaData,
     modifier: Modifier = Modifier,
     style: FluentStyle = FluentStyle.Neutral,
-    badge: (@Composable () -> Unit)? = null,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     pillButtonTokens: PillButtonTokens? = null
 ) {
@@ -156,9 +164,10 @@ fun PillButton(
         Box(
             modifier
                 .scale(scaleBox.value)
-                .requiredHeight(32.dp)
+                .defaultMinSize(minHeight = getPillButtonTokens().minHeight(getPillButtonInfo()))
                 .clip(shape)
                 .background(backgroundColor, shape)
+                .padding(vertical = getPillButtonTokens().verticalPadding(getPillButtonInfo()))
                 .then(clickAndSemanticsModifier)
                 .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
                 .semantics(true) {
@@ -167,21 +176,23 @@ fun PillButton(
                 },
             contentAlignment = Alignment.Center
         ) {
-            Row {
+            Row(Modifier.width(IntrinsicSize.Max)) {
                 if (pillMetaData.icon != null) {
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size180)))
                     Icon(
                         pillMetaData.icon!!,
                         pillMetaData.text,
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                            .size(getPillButtonTokens().iconSize(getPillButtonInfo()))
                             .clearAndSetSemantics { },
                         tint = iconColor
                     )
                 } else {
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                     Text(
                         pillMetaData.text,
                         modifier = Modifier
-                            .padding(horizontal = 16.dp, vertical = 6.dp)
+                            .weight(1F)
                             .clearAndSetSemantics { },
                         color = textColor,
                         style = fontStyle,
@@ -190,9 +201,30 @@ fun PillButton(
                     )
                 }
 
-                if (badge != null) {
-                    // TODO: Add logic to display badge
-                    Surface(content = badge)
+                if (pillMetaData.notificationDot) {
+                    val notificationDotColor: Color =
+                        getPillButtonTokens().notificationDotColor(getPillButtonInfo())
+                            .getColorByState(
+                                enabled = pillMetaData.enabled,
+                                selected = pillMetaData.selected,
+                                interactionSource = interactionSource
+                            )
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size20)))
+                    Canvas(
+                        modifier = Modifier
+                            .padding(top = 2.dp, bottom = 12.dp)
+                            .sizeIn(minWidth = 6.dp, minHeight = 6.dp)
+                    ) {
+                        drawCircle(
+                            color = notificationDotColor, style = Fill, radius = dpToPx(3.dp)
+                        )
+                    }
+                    if (pillMetaData.icon != null)
+                        Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
+                    else
+                        Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size80)))
+                } else {
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
                 }
             }
         }

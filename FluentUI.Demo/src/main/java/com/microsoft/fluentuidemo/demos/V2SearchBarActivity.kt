@@ -8,6 +8,7 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -35,6 +36,8 @@ import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class V2SearchBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -55,6 +58,7 @@ class V2SearchBarActivity : DemoActivity() {
                 var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }
                 var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
                 var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
+                var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
 
                 var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
 
@@ -167,6 +171,22 @@ class V2SearchBarActivity : DemoActivity() {
                                     )
                                 }
                             )
+
+                            ListItem.Item(
+                                text = "Induce Delay",
+                                subText = if (induceDelay)
+                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                else
+                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                trailingAccessoryView = {
+                                    ToggleSwitch(
+                                        onValueChange = {
+                                            induceDelay = it
+                                        },
+                                        checkedState = induceDelay
+                                    )
+                                }
+                            )
                         }
                     }
 
@@ -174,16 +194,30 @@ class V2SearchBarActivity : DemoActivity() {
                     val rightViewPressedString = getDemoAppString(DemoAppStrings.RightViewPressed)
                     val keyboardSearchPressedString =
                         getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
+
+                    val scope = rememberCoroutineScope()
+                    var loading by rememberSaveable { mutableStateOf(false) }
                     val keyboardController = LocalSoftwareKeyboardController.current
+
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
-                            filteredPeople = listofPeople.filter {
-                                it.firstName.lowercase().contains(query.lowercase()) ||
-                                        it.lastName.lowercase().contains(query.lowercase())
-                            } as MutableList<Person>
-                            selectedPeople = selectedPerson
+                            scope.launch {
+                                loading = true
+
+                                if (induceDelay)
+                                    delay(2000)
+
+                                filteredPeople = listofPeople.filter {
+                                    it.firstName.lowercase().contains(query.lowercase()) ||
+                                            it.lastName.lowercase().contains(query.lowercase())
+                                } as MutableList<Person>
+                                selectedPeople = selectedPerson
+
+                                loading = false
+                            }
                         },
                         style = searchBarStyle,
+                        loading = loading,
                         selectedPerson = selectedPeople,
                         microphoneCallback = if (enableMicrophoneCallback) {
                             {

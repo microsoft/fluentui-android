@@ -6,17 +6,19 @@ import org.junit.runners.Suite
 
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
-        ActionBarLayoutActivityUITest::class,
-        AppBarLayoutActivityUITest::class,
-        V2AvatarActivityUITest::class,
-        V2AvatarGroupActivityUITest::class,
-        V2DrawerActivityUITest::class,
-        V2ListItemActivityUITest::class,
-        V2ProgressIndicatorUITest::class,
-        V2PersonaListActivityUITest::class,
-        V2AvatarCarouselActivityUITest::class,
-        V2PersonaUITest::class,
-        V2PersonaChipActivityUITest::class,
-        V2ScaffoldActivityUITest::class
+    ActionBarLayoutActivityUITest::class,
+    AppBarLayoutActivityUITest::class,
+    V2AvatarActivityUITest::class,
+    V2AvatarGroupActivityUITest::class,
+    V2CardNudgeActivityUITest::class,
+    V2DrawerActivityUITest::class,
+    V2ListItemActivityUITest::class,
+    V2AvatarCarouselActivityUITest::class,
+    V2PersonaUITest::class,
+    V2PersonaChipActivityUITest::class,
+    V2ProgressIndicatorUITest::class,
+    V2PersonaListActivityUITest::class,
+    V2ScaffoldActivityUITest::class,
+    V2SnackbarActivityUITest::class
 )
 class UiTestSuite

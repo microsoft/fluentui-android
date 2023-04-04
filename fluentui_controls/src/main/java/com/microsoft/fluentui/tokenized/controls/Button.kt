@@ -35,6 +35,20 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
 val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
 val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
+/**
+ * API to create a button, containing icon as well as text.
+ *
+ * @param onClick OnClick behaviour for the button
+ * @param modifier Optional modifier for Button
+ * @param style Style of Button. Default: [ButtonStyle.Button]
+ * @param size Size of Button. Default: [ButtonSize.Medium]
+ * @param enabled Boolean for enabling/disabling button. Default: [true]
+ * @param interactionSource Interaction Source to handle user interactions
+ * @param icon ImageVector for Icon Content on buttton. Default: [null]
+ * @param text String to be displayed as text on button. Default: [null]
+ * @param contentDescription Content Description for Icon. Default: [null]
+ * @param buttonTokens Tokens to customize appearance of button. Default: [null]
+ */
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun Button(

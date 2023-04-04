@@ -16,6 +16,7 @@ const val V2Badge = "V2 Badge"
 const val V2BASIC_CONTROLS = "V2 Basic Controls"
 const val V2BOTTOM_SHEET = "V2 BottomSheet"
 const val V2BUTTON = "V2 Buttons"
+const val V2CARD_NUDGE = "V2 Card Nudge"
 const val V2CONTEXTUAL_COMMAND_BAR = "V2 ContextualCommandBar"
 const val V2DRAWER = "V2 Drawer"
 const val V2LIST_ITEM = "V2 ListItem"
@@ -26,6 +27,7 @@ const val V2PROGRESS = "V2 Progress"
 const val V2SCAFFOLD = "V2 Scaffold"
 const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
+const val V2SNACKBAR = "V2 Snackbar"
 const val V2TABBAR = "V2 TabBar"
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
@@ -62,6 +64,7 @@ val DEMOS = arrayListOf(
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
     Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
     Demo(V2BUTTON, V2ButtonsActivity::class),
+    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
     Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
@@ -72,6 +75,7 @@ val DEMOS = arrayListOf(
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
