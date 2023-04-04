@@ -83,7 +83,6 @@ fun PillTabs(
                     PillButton(
                         pillMetadata,
                         modifier = Modifier
-                            .fillMaxWidth()
                             .weight(1F),
                         style = style,
                         pillButtonTokens = pillButtonTokens

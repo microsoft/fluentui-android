@@ -35,6 +35,18 @@ import com.microsoft.fluentui.theme.token.controlTokens.CheckBoxTokens
 val LocalCheckBoxTokens = compositionLocalOf { CheckBoxTokens() }
 val LocalCheckBoxInfo = compositionLocalOf { CheckBoxInfo() }
 
+/**
+ * API to create a checkbox. A checkbox is a type of button that lets the user choose between two opposite states,
+ * actions, or values. A selected checkbox is considered on when it contains a checkmark and off when
+ * it's empty. A checkbox is almost always followed by a title unless it appears in a checklist.
+ *
+ * @param onCheckedChanged Function to be invoked when checked state changes
+ * @param modifier Optional Modifier for CheckBox
+ * @param enabled Boolean for enabling/disabling CheckBox. Default: [true]
+ * @param checked Boolean for checked state of control. Default: [false]
+ * @param interactionSource Interaction source for User gesture Management.
+ * @param checkBoxToken Tokens for customizing CheckBox design.
+ */
 @Composable
 fun CheckBox(
     onCheckedChanged: ((Boolean) -> Unit),

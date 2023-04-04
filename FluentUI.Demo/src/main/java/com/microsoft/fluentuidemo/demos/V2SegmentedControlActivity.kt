@@ -18,8 +18,8 @@ import com.microsoft.fluentui.icons.avataricons.icon.Anonymous
 import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentColor
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -50,6 +50,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                     item {
                         var enabled by rememberSaveable { mutableStateOf(true) }
                         var selected by rememberSaveable { mutableStateOf(false) }
+                        var unread by rememberSaveable { mutableStateOf(true) }
                         var selectedIcon by rememberSaveable { mutableStateOf(false) }
                         var selectedBrand by rememberSaveable { mutableStateOf(false) }
                         var selectedBrandIcon by rememberSaveable { mutableStateOf(false) }
@@ -67,9 +68,13 @@ class V2SegmentedControlActivity : DemoActivity() {
                                 PillButton(
                                     PillMetaData(
                                         "Ally 1",
-                                        { selected = !selected },
+                                        {
+                                            selected = !selected
+                                            unread = false
+                                        },
                                         selected = selected,
-                                        enabled = enabled
+                                        enabled = enabled,
+                                        notificationDot = unread
                                     )
                                 )
                                 PillButton(
@@ -98,7 +103,8 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         { selectedBrandIcon = !selectedBrandIcon },
                                         icon = AvatarIcons.Icon.Anonymous.Xxlarge,
                                         selected = selectedBrandIcon,
-                                        enabled = enabled
+                                        enabled = enabled,
+                                        notificationDot = true
                                     ),
                                     style = FluentStyle.Brand,
                                 )
@@ -148,7 +154,8 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedList[idx] = !selectedList[idx]
                                     },
                                     enabled = enableBar,
-                                    selected = selectedList[idx]
+                                    selected = selectedList[idx],
+                                    notificationDot = !selectedList[idx]
                                 )
                             )
                         }
@@ -198,6 +205,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedTab = idx
                                     },
                                     enabled = enableTabs,
+                                    notificationDot = selectedTab != idx
                                 )
                             )
                         }
@@ -265,6 +273,7 @@ class V2SegmentedControlActivity : DemoActivity() {
                                         selectedSwitch = idx
                                     },
                                     enabled = enableSwitch,
+                                    notificationDot = selectedSwitch != idx
                                 )
                             )
                         }
