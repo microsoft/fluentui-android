@@ -121,7 +121,7 @@ open class FABTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fontInfo(fabInfo: FABInfo): TextStyle {
+    open fun typography(fabInfo: FABInfo): TextStyle {
         return when (fabInfo.size) {
             FABSize.Small -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
             FABSize.Large -> aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]

@@ -232,7 +232,7 @@ open class ButtonTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fontInfo(buttonInfo: ButtonInfo): TextStyle {
+    open fun typography(buttonInfo: ButtonInfo): TextStyle {
         return when (buttonInfo.size) {
             ButtonSize.Small -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
             ButtonSize.Medium -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]

@@ -154,7 +154,7 @@ fun FloatingActionButton(
                     Text(
                         text = text!!,
                         modifier = Modifier.clearAndSetSemantics { },
-                        style = getFABToken().fontInfo(getFABInfo()),
+                        style = getFABToken().typography(getFABInfo()),
                         color = getFABToken().textColor(fabInfo = getFABInfo()).getColorByState(
                             enabled = enabled,
                             selected = false,

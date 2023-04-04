@@ -133,7 +133,7 @@ fun PillButton(
                 interactionSource = interactionSource
             )
 
-        val fontStyle = getPillButtonTokens().fontStyle(getPillButtonInfo())
+        val fontStyle = getPillButtonTokens().typography(getPillButtonInfo())
 
         val focusStroke = getPillButtonTokens().focusStroke(getPillButtonInfo())
         var focusedBorderModifier: Modifier = Modifier

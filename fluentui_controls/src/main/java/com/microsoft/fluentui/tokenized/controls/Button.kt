@@ -151,7 +151,7 @@ fun Button(
                                 selected = false,
                                 interactionSource = interactionSource
                             ),
-                        style = getButtonToken().fontInfo(getButtonInfo()).merge(
+                        style = getButtonToken().typography(getButtonInfo()).merge(
                             TextStyle(
                                 platformStyle = PlatformTextStyle(includeFontPadding = false)
                             )
