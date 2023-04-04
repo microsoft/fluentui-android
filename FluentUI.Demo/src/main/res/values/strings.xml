@@ -613,6 +613,10 @@
     <string name="searchbar_keyboard_search_pressed">Keyboard Search Pressed</string>
 
     <!--Snackbar-->
+    <!-- Snackbar Activity Buttons -->
+    <string name="fluentui_show_snackbar">Show Snackbar</string>
+    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+
     <!-- UI label descriptions -->
     <string name="snackbar_action">Action</string>
     <string name="snackbar_action_long">Long Text Action</string>

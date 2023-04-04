@@ -22,6 +22,7 @@ class ControlTokens {
         Badge,
         BottomSheet,
         Button,
+        CardNudge,
         CheckBox,
         CircularProgressIndicator,
         ContextualCommandBar,
@@ -39,6 +40,7 @@ class ControlTokens {
         SearchBarPersonaChip,
         SearchBar,
         Shimmer,
+        Snackbar,
         TabBar,
         TabItem,
         ToggleSwitch
@@ -54,6 +56,7 @@ class ControlTokens {
                 ControlType.Badge -> BadgeTokens()
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
+                ControlType.CardNudge -> CardNudgeTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
                 ControlType.CircularProgressIndicator -> CircularProgressIndicatorTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
@@ -71,6 +74,7 @@ class ControlTokens {
                 ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
+                ControlType.Snackbar -> SnackBarTokens()
                 ControlType.TabBar -> TabBarTokens()
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
