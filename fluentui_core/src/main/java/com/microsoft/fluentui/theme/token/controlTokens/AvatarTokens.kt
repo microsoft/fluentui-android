@@ -126,7 +126,6 @@ import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.medium.Light
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Dark
 import com.microsoft.fluentui.icons.avataricons.presence.unknown.small.Light
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
@@ -611,12 +610,12 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     open fun presenceOffset(avatarInfo: AvatarInfo): DpOffset {
         return when (avatarInfo.size) {
             AvatarSize.Size16 -> DpOffset(0.dp, 0.dp)
-            AvatarSize.Size20 -> DpOffset(11.dp, 13.dp)
-            AvatarSize.Size24 -> DpOffset(11.dp, 13.dp)
-            AvatarSize.Size32 -> DpOffset(20.dp, 20.dp)
-            AvatarSize.Size40 -> DpOffset(26.dp, 26.dp)
-            AvatarSize.Size56 -> DpOffset(40.dp, 40.dp)
-            AvatarSize.Size72 -> DpOffset(51.dp, 51.dp)
+            AvatarSize.Size20 -> DpOffset(0.dp, (-3).dp)
+            AvatarSize.Size24 -> DpOffset((-1).dp, (-1).dp)
+            AvatarSize.Size32 -> DpOffset(0.dp, 0.dp)
+            AvatarSize.Size40 -> DpOffset(0.dp, 0.dp)
+            AvatarSize.Size56 -> DpOffset((-2).dp, 2.dp)
+            AvatarSize.Size72 -> DpOffset((-3).dp, 3.dp)
         }
     }
 

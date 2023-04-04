@@ -203,8 +203,9 @@ fun Avatar(
                         image.value(themeMode),
                         null,
                         Modifier
-                            .align(Alignment.TopStart)
-                            .offset(presenceOffset.x, presenceOffset.y)
+                            .align(Alignment.BottomEnd)
+                            // Adding 2.dp to both side to incorporate border which is an image in Fluent Android.
+                            .offset(presenceOffset.x + 2.dp, -presenceOffset.y + 2.dp)
                     )
                 }
             }

@@ -28,6 +28,12 @@ open class RadioButtonTokens : ControlToken, Parcelable {
             rest = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                 themeMode = themeMode
             ),
+            focused = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                themeMode = themeMode
+            ),
+            selectedFocused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                themeMode = themeMode
+            ),
             selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
@@ -50,6 +56,9 @@ open class RadioButtonTokens : ControlToken, Parcelable {
     open fun iconColor(radioButtonInfo: RadioButtonInfo): StateColor {
         return StateColor(
             selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                themeMode = themeMode
+            ),
+            selectedFocused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                 themeMode = themeMode
             ),
             selectedPressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(

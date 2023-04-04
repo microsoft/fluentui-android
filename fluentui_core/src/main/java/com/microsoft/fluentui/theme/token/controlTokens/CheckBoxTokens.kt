@@ -64,6 +64,22 @@ open class CheckBoxTokens : ControlToken, Parcelable {
                     )
                 )
             ),
+            focused = listOf(
+                BorderStroke(
+                    1.5.dp,
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                        themeMode = themeMode
+                    )
+                )
+            ),
+            selectedFocused = listOf(
+                BorderStroke(
+                    1.5.dp,
+                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                        themeMode = themeMode
+                    )
+                )
+            ),
             disabled = listOf(
                 BorderStroke(
                     1.5.dp,
