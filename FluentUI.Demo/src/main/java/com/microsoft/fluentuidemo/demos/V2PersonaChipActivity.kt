@@ -12,6 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -141,6 +142,7 @@ class V2PersonaChipActivity : DemoActivity() {
                             fontSize = 10.sp
                         )
                         ToggleSwitch(
+                            modifier = Modifier.testTag("switch"),
                             onValueChange = { showCloseButton = !showCloseButton },
                             checkedState = showCloseButton
                         )
@@ -172,12 +174,14 @@ class V2PersonaChipActivity : DemoActivity() {
                         Text(text = "Person Chip Brand", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
+                                modifier = Modifier.testTag("small persona chip"),
                                 person = createPersonWithName(),
                                 size = PersonaChipSize.Small,
                                 style = Brand,
                                 selected = selectedList[2],
                                 onClick = { selectedList[2] = !selectedList[2] })
                             PersonaChip(
+                                modifier = Modifier.testTag("medium persona chip"),
                                 person = createPersonWithName(),
                                 style = Brand,
                                 selected = selectedList[3],
@@ -234,6 +238,7 @@ class V2PersonaChipActivity : DemoActivity() {
                         Text(text = "Person Chip Warning", color = textColor)
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
+                                modifier = Modifier.testTag("ann persona chip"),
                                 person = createPersonWithNothing(),
                                 size = PersonaChipSize.Small,
                                 style = Warning,
@@ -281,6 +286,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 } else null
                             )
                             PersonaChip(
+                                modifier = Modifier.testTag("disabled persona chip"),
                                 person = createPersonWithName(),
                                 style = Neutral,
                                 enabled = false,
