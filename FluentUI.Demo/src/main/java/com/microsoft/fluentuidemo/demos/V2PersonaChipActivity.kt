@@ -27,6 +27,7 @@ import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
+import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2PersonaChipActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -41,7 +42,7 @@ class V2PersonaChipActivity : DemoActivity() {
 
         compose_here.setContent {
             FluentTheme {
-                createPersonaChipActivityUI()
+                CreatePersonaChipActivityUI()
             }
         }
     }
@@ -83,7 +84,8 @@ class V2PersonaChipActivity : DemoActivity() {
     }
 
     @Composable
-    fun createPersonaChipActivityUI() {
+    fun CreatePersonaChipActivityUI() {
+        var context  = this
         val textColor =
             FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = FluentTheme.themeMode
@@ -165,7 +167,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 selected = selectedList[1],
                                 onClick = { selectedList[1] = !selectedList[1] },
                                 onCloseClick = if (showCloseButton) {
-                                    { onClickToast() }
+                                    { invokeToast("Clicked on close icon", context) }
                                 } else null
                             )
                         }
@@ -183,7 +185,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 selected = selectedList[3],
                                 onClick = { selectedList[3] = !selectedList[3] },
                                 onCloseClick = if (showCloseButton) {
-                                    { onClickToast() }
+                                    { invokeToast("Clicked on close icon", context) }
                                 } else null
                             )
                         }
@@ -204,7 +206,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                     selected = selectedList[5],
                                     onClick = { selectedList[5] = !selectedList[5] },
                                     onCloseClick = if (showCloseButton) {
-                                        { onClickToast() }
+                                        { invokeToast("Clicked on close icon", context) }
                                     } else null
                                 )
                             }
@@ -226,7 +228,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                     selected = selectedList[7],
                                     onClick = { selectedList[7] = !selectedList[7] },
                                     onCloseClick = if (showCloseButton) {
-                                        { onClickToast() }
+                                        { invokeToast("Clicked on close icon", context) }
                                     } else null
                                 )
                             }
@@ -245,7 +247,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 selected = selectedList[9],
                                 onClick = { selectedList[9] = !selectedList[9] },
                                 onCloseClick = if (showCloseButton) {
-                                    { onClickToast() }
+                                    { invokeToast("Clicked on close icon", context) }
                                 } else null
                             )
                         }
@@ -263,7 +265,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 selected = selectedList[11],
                                 onClick = { selectedList[11] = !selectedList[11] },
                                 onCloseClick = if (showCloseButton) {
-                                    { onClickToast() }
+                                    { invokeToast("Clicked on close icon", context) }
                                 } else null
                             )
                         }
@@ -277,7 +279,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 selected = selectedList[12],
                                 onClick = { selectedList[12] = !selectedList[12] },
                                 onCloseClick = if (showCloseButton) {
-                                    { onClickToast() }
+                                    { invokeToast("Clicked on close icon", context) }
                                 } else null
                             )
                             PersonaChip(
@@ -287,7 +289,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 selected = selectedList[13],
                                 onClick = { selectedList[13] = !selectedList[13] },
                                 onCloseClick = if (showCloseButton) {
-                                    { onClickToast() }
+                                    { invokeToast("Clicked on close icon", context) }
                                 } else null
                             )
                         }
@@ -309,7 +311,7 @@ class V2PersonaChipActivity : DemoActivity() {
                             selected = selectedList[14],
                             onClick = { selectedList[14] = !selectedList[14] },
                             onCloseClick = if (showCloseButton) {
-                                { onClickToast() }
+                                { invokeToast("Clicked on close icon", context) }
                             } else null
                         )
                         Text(text = "Persona chip Brand", color = textColor)
@@ -319,20 +321,12 @@ class V2PersonaChipActivity : DemoActivity() {
                             selected = selectedList[15],
                             onClick = { selectedList[15] = !selectedList[15] },
                             onCloseClick = if (showCloseButton) {
-                                { onClickToast() }
+                                { invokeToast("Clicked on close icon", context) }
                             } else null
                         )
                     }
                 }
             }
         }
-    }
-
-    private fun onClickToast() {
-        Toast.makeText(
-            this,
-            "Clicked on close icon",
-            Toast.LENGTH_SHORT
-        ).show()
     }
 }

@@ -40,6 +40,7 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
+import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -56,7 +57,7 @@ class V2ListItemActivity : DemoActivity() {
 
         composeHere.setContent {
             FluentTheme {
-                createListActivityUI(this)
+                CreateListActivityUI(this)
             }
         }
     }
@@ -69,7 +70,7 @@ const val secondaryText = "Subtitle, secondary text"
 const val tertiaryText = "Footer, tertiary text"
 
 @Composable
-fun createListActivityUI(context: Context) {
+fun CreateListActivityUI(context: Context) {
     Box(
         Modifier
             .fillMaxSize()
@@ -716,7 +717,7 @@ fun RightViewButton(
 ) {
     return Button(
         text = "Text",
-        onClick = { onClick("Button", context) },
+        onClick = {invokeToast("Button", context) },
         size = size,
         style = ButtonStyle.OutlinedButton
     )
@@ -750,8 +751,4 @@ fun GetAvatar(size: AvatarSize, image: Int) {
 @Composable
 fun RightViewText(text: String) {
     return Text(text = text)
-}
-
-fun onClick(text: String, context: Context) {
-    Toast.makeText(context, text, LENGTH_SHORT).show()
 }
