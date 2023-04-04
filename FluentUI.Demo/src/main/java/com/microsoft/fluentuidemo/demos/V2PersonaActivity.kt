@@ -1,17 +1,14 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
@@ -22,8 +19,7 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
+import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2PersonaActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -38,12 +34,12 @@ class V2PersonaActivity : DemoActivity() {
 
         compose_here.setContent {
             FluentTheme {
-                createActivityUI()
+                CreateActivityUI()
             }
         }
     }
     @Composable
-    fun createActivityUI() {
+    fun CreateActivityUI() {
         val person1 = Person(
             "Allan", "Munger",
             image = R.drawable.avatar_allan_munger, isActive = true,
@@ -73,7 +69,7 @@ class V2PersonaActivity : DemoActivity() {
                             person = person1,
                             primaryText = person1.firstName + " " + person1.lastName,
                             onClick = {
-                                onClick(
+                                invokeToast(
                                     person1.firstName,
                                     context
                                 )
@@ -94,7 +90,7 @@ class V2PersonaActivity : DemoActivity() {
                             primaryText = person2.firstName + " " + person2.lastName,
                             secondaryText = "Microsoft",
                             onClick = {
-                                onClick(
+                                invokeToast(
                                     person2.firstName,
                                     context
                                 )
@@ -115,7 +111,7 @@ class V2PersonaActivity : DemoActivity() {
                             secondaryText = "Microsoft",
                             tertiaryText = person3.status.toString(),
                             onClick = {
-                                onClick(
+                                invokeToast(
                                     person3.firstName,
                                     context
                                 )
@@ -126,9 +122,5 @@ class V2PersonaActivity : DemoActivity() {
             }
         }
 
-    }
-
-    fun onClick(text: String, context:Context) {
-        Toast.makeText(context, text, LENGTH_SHORT).show()
     }
 }
