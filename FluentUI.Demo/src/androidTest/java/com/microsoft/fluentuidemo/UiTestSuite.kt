@@ -13,9 +13,12 @@ import org.junit.runners.Suite
     V2CardNudgeActivityUITest::class,
     V2DrawerActivityUITest::class,
     V2ListItemActivityUITest::class,
+    V2AvatarCarouselActivityUITest::class,
+    V2PersonaUITest::class,
+    V2PersonaChipActivityUITest::class,
     V2ProgressIndicatorUITest::class,
     V2PersonaListActivityUITest::class,
     V2ScaffoldActivityUITest::class,
-    V2SnackbarActivityUITest::class,
+    V2SnackbarActivityUITest::class
 )
 class UiTestSuite

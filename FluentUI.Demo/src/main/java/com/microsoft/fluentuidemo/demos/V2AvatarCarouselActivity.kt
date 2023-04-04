@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
@@ -213,7 +214,8 @@ fun CreateAvatarCarouselActivityUI() {
         )
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
-            size = AvatarCarouselSize.Large
+            size = AvatarCarouselSize.Large,
+            modifier = Modifier.testTag("LargeCarousel")
         )
         Divider(Modifier.fillMaxWidth())
         Text(
@@ -224,7 +226,8 @@ fun CreateAvatarCarouselActivityUI() {
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
             size = AvatarCarouselSize.Small,
-            enablePresence = true
+            enablePresence = true,
+            modifier = Modifier.testTag("SmallCarousel")
         )
     }
 }
