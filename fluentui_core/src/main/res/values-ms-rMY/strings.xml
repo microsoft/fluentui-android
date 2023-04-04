@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Describes dismiss behaviour -->
+    <string name="fluentui_dismiss">Dismiss</string>
     <!-- Describes selected action-->
     <string name="fluentui_selected">Dipilih</string>
     <!-- Describes not selected action-->
     <string name="fluentui_not_selected">Tidak Dipilih</string>
+    <!-- Describes the icon component -->
+    <string name="fluentui_icon">Icon</string>
+    <!-- Describes the image component with accent color -->
+    <string name="fluentui_accent_icon">Icon</string>
     <!-- Describes disabled action-->
     <string name="fluentui_disabled">Dinyahdayakan</string>
+    <!-- Describes the action button component -->
+    <string name="fluentui_action_button">Action Button</string>
+    <!-- Describes the dismiss button component -->
+    <string name="fluentui_dismiss_button">Dismiss Button</string>
     <!-- Describes enabled action-->
     <string name="fluentui_enabled">Didayakan</string>
     <!-- Describes close action for a sheet-->
@@ -28,10 +38,42 @@
     <string name="fluentui_neutral">Neutral</string>
     <!-- Describes the type - Brand-->
     <string name="fluentui_brand">Jenama</string>
+    <!-- Describes the type - Contrast-->
+    <string name="fluentui_contrast">Contrast</string>
+    <!-- Describes the type - Accent-->
+    <string name="fluentui_accent">Accent</string>
+    <!-- Describes the type - Warning-->
+    <string name="fluentui_warning">Warning</string>
+    <!-- Describes the type - Danger-->
+    <string name="fluentui_danger">Danger</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">Chevron</string>
+    <!-- Describes the outline design of control -->
+    <string name="fluentui_outline">Outline</string>
+
+    <!--Describes the control - RadioButton -->
+    <string name="fluentui_radio_button">Radio Button</string>
+
+    <!--types of control -->
     <string name="fluentui_large">Besar</string>
     <string name="fluentui_medium">Sederhana</string>
     <string name="fluentui_small">Kecil</string>
+
+    <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">Subtajuk</string>
+
+    <!-- Decribes the title component of list -->
+    <string name="fluentui_title">Title</string>
+
+    <!-- Durations for Snackbar -->
+    <string name="fluentui_short">Short</string>"
+    <string name="fluentui_long">Long</string>"
+    <string name="fluentui_indefinite">Indefinite</string>"
+
+    <!-- Describes the behaviour on components -->
+    <string name="fluentui_button_pressed">Button Pressed</string>
+    <string name="fluentui_dismissed">Dismissed</string>
+    <string name="fluentui_timeout">Timed Out</string>
+    <string name="fluentui_left_swiped">Left Swiped</string>
+    <string name="fluentui_right_swiped">Right Swiped</string>
 </resources>

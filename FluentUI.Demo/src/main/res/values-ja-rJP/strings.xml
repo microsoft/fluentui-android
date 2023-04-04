@@ -581,6 +581,10 @@
     <string name="searchbar_keyboard_search_pressed">キーボード検索が押されました</string>
 
     <!--Snackbar-->
+    <!-- Snackbar Activity Buttons -->
+    <string name="fluentui_show_snackbar">Show Snackbar</string>
+    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+
     <!-- UI label descriptions -->
     <string name="snackbar_action">アクション</string>
     <string name="snackbar_action_long">長いテキスト アクション</string>
@@ -712,5 +716,29 @@
     <string name="body_2">ボディ 2 はミディアム 14sp</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
     <string name="caption">キャプションは標準 12sp です</string>
+
+    <!--Common-->
+    <!--UI Label for Toast message-->
+    <string name="common_list">Item %d</string>
+    <!--UI Label for Toast message-->
+    <string name="common_folder">Folder</string>
+    <!--UI Label for Toast message-->
+    <string name="common_clicked">Clicked</string>
+
+    <!--V2 Scaffold -->
+    <!--UI Label Scaffold Example-->
+    <string name="scaffold">Scaffold</string>
+    <!--UI Label for button-->
+    <string name="scaffold_fab">FAB</string>
+    <!--UI Label for Toast message-->
+    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <!--UI Label for Toast message-->
+    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <!--UI Label for button-->
+    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <!--UI Label for button-->
+    <string name="scaffold_open_drawer">Open Drawer</string>
+
+
 
 </resources>

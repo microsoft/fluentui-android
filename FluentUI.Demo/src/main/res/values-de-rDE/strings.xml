@@ -582,6 +582,10 @@
     <string name="searchbar_keyboard_search_pressed">Tastatursuche gedrückt</string>
 
     <!--Snackbar-->
+    <!-- Snackbar Activity Buttons -->
+    <string name="fluentui_show_snackbar">Show Snackbar</string>
+    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+
     <!-- UI label descriptions -->
     <string name="snackbar_action">Aktion</string>
     <string name="snackbar_action_long">Lange Textaktion</string>
@@ -713,5 +717,29 @@
     <string name="body_2">Text 2 ist mittel 14 s</string>
     <!-- UI label, caption with Regular appearance and font size 12sp -->
     <string name="caption">Beschriftung ist normal 12 s</string>
+
+    <!--Common-->
+    <!--UI Label for Toast message-->
+    <string name="common_list">Item %d</string>
+    <!--UI Label for Toast message-->
+    <string name="common_folder">Folder</string>
+    <!--UI Label for Toast message-->
+    <string name="common_clicked">Clicked</string>
+
+    <!--V2 Scaffold -->
+    <!--UI Label Scaffold Example-->
+    <string name="scaffold">Scaffold</string>
+    <!--UI Label for button-->
+    <string name="scaffold_fab">FAB</string>
+    <!--UI Label for Toast message-->
+    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <!--UI Label for Toast message-->
+    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <!--UI Label for button-->
+    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <!--UI Label for button-->
+    <string name="scaffold_open_drawer">Open Drawer</string>
+
+
 
 </resources>
