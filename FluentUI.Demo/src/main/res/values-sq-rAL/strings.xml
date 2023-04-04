@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI Demo</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">U përzgjodh %s</string>
+    <string name="app_modifiable_parameters">Parametrat e modifikueshëm</string>
+    <string name="app_right_accessory_view">Pamja e djathtë e aksesorit</string>
+
+    <string name="app_style">Stili</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Ikona e shtypur</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Fillo demonstrimin</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Karusel</string>
+    <string name="actionbar_icon_radio_label">Ikonë</string>
+    <string name="actionbar_basic_radio_label">Basic</string>
+    <string name="actionbar_position_bottom_radio_label">Në fund</string>
+    <string name="actionbar_position_top_radio_label">Veshje e sipërme</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Tipi i shiritit të aksionit</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Pozicioni i shiritit të veprimit</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">Stili AppBar</string>
+    <string name="app_bar_subtitle">Nëntitull</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">Ikona e navigacionit klikuar.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Flamur</string>
+    <string name="app_bar_layout_menu_settings">Parametrat</string>
+    <string name="app_bar_layout_menu_search">Kërko</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Sjellja e lëvizjes: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Ndrysho sjelljen e lëvizjen</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Ndrysho ikonën e navigimit</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Shfaq avatarin</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Shfaq ikonën e kthimit</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Fshih ikonën</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Shfaq ikonën</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Ndrysho stilin e shiritit të kërkimit</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Shfaq si pamje aksesori</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Shfaq si pamje veprimi</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Kalo nga njëra temë te tjetra (rikrijon aktivitetin)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Ndrysho temën</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Njësi</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Përmbajtje shtesë e lëvizshme</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Stili i rrethit</string>
+    <string name="avatar_style_square">Stili i katrorit</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">I madh</string>
+    <string name="avatar_size_medium">Mesatare</string>
+    <string name="avatar_size_small">I vogël</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Maks i Avatarëve të shfaqur</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Numërimi i vërshimit të avatarëve</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Tipi i kufizuesit</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">Grupi i avatarit me OverflowAvatarCount të caktuar nuk do t’i përmbahet Avatarit maks të shfaqur.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Stivë fytyrash</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Grumbull fytyrash</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">Tejkalimi i klikuar</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">PamjaAvatar në treguesin %d klikuar</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Stema e njoftimeve</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Pikë</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Listë</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Karakteri</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Fotografitë</string>
+    <string name="bottom_navigation_menu_item_news">Lajme</string>
+    <string name="bottom_navigation_menu_item_alerts">Sinjalizimet</string>
+    <string name="bottom_navigation_menu_item_calendar">Kalendar</string>
+    <string name="bottom_navigation_menu_item_team">Ekip</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Ndrysho etiketat</string>
+    <string name="bottom_navigation_three_menu_items_button">Shfaq tre njësi të menysë</string>
+    <string name="bottom_navigation_four_menu_items_button">Shfaq katër njësi menyje</string>
+    <string name="bottom_navigation_five_menu_items_button">Shfaq pesë njësi të menysë</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Etiketat janë %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Shfaq me njësi me një linjë</string>
+    <string name="bottom_sheet_with_double_line_items">Shfaq me njësitë me linja të dyfishta</string>
+    <string name="bottom_sheet_with_single_line_header">Shfaq me kreun me një linjë</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Shfaq me kreun me linja të dyfishta dhe ndarës</string>
+    <string name="bottom_sheet_dialog_button">Shfaqje</string>
+    <string name="drawer_content_desc_collapse_state">Zgjero</string>
+    <string name="drawer_content_desc_expand_state">Minimizo</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Kliko %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">Klikim i gjatë %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Kliko shpërfill</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Ndërfut njësinë</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Përditëso elementin</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Shpërfill</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Shto</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Përmendje</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Theksuar</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Kursiv</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Nënvizo</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Mesvijëzuar</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Zhbëj</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Ribëj</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Kokërr</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Listë</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Lidhje</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Njësia duke përditësuar</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Ndarje me hapësira</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Hidh poshtë pozicionin</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">NIS</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Hapësira e grupit</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Hapësira e njësisë</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Flamur</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Njësia e shënuar me flamur e klikuar</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Përgjigju</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">Njësia e përgjigjes klikuar</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Paso</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Njësia e pasuar klikuar</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Fshi</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">Fshij njësinë klikuar</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Kamera</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Bëj një fotografi</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">Njësia e kamerës e klikuar</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galeria</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Paraqit fotografitë e tua</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">Njësia e galerisë klikuar</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Videot</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Luaj videot e tua</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">Njësia e videos klikuar</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Menaxho</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Menaxho bibliotekën tënde të medias</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">Njësia e menaxhuar klikuar</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">Veprimet e emailit</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Dokumente</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Përditësuar së fundi 2:14MD</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Bashkëndaj</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">Njësia e ndarë e klikuar</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Zhvendos</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">Zhvendos njësinë e klikuar</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Fshi</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Fshij njësinë klikuar</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Informacioni</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">Njësia e informacionit klikuar</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Orë</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">Njësia e orës klikuar</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Alarm</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Njësia e alarmit e klikuar</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Zona kohore</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">Njësia e zonës kohore klikuar</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Buton</string>
+    <string name="buttonbar">ButtonBar</string>
+    <string name="button_disabled">Buton i çaktivizuar</string>
+    <string name="button_borderless">Buton pa kufizim</string>
+    <string name="button_borderless_disabled">Butoni i pakufizuar i çaktivizuar</string>
+    <string name="button_large">Buton i madh</string>
+    <string name="button_large_disabled">Butoni i madh i çaktivizuar</string>
+    <string name="button_outlined">Buton i përvijuar</string>
+    <string name="button_outlined_disabled">Butoni i përvijuar i çaktivizuar</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Zgjidh një datë</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">ZgjedhësitDatësOrës</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Data e vetme</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Asnjë datë e zgjedhur</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Shfaq zgjedhësin e datës</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Shfaq zgjedhësin e datës orës me skedën e datës të përzgjedhur</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Shfaq zgjedhësin e datës orës me skedën e orës të përzgjedhur</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Shfaq zgjedhësin e datës e orës</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Rangu i datës</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Nisja:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Mbarimi:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Asnjë fillim i zgjedhur</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Asnjë fund i përzgjedhur</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Zgjidh datën e fillimit</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Zgjidh datën e mbarimit</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Rangu i datës e orës</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Përzgjidh rangun e datës e orës</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DialoguZgjedhësitDatësOrës</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Shfaq dialogun</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Shfaq sirtarin</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Shfaq sirtarin e dialogut</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Dialog pa zbehje të poshtme</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Shfaq sirtarin e sipërm</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Dialogu i kreut pa zbehje</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Shfaq pamjen e spirancës të dialogut lart</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Shfaq dialogun e kreut pa titull</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Shfaq më poshtë titullit të kreut të dialogut</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Shfaq sirtarin e djathtë</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Shfaq sirtarin e majtë</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Titull, teksti parësor</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Nëntitull, teksti sekondar</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Teksti i personalizuar i nëntitullit</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Fundi i faqes, teksti terciar</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Listë një vizëshe me tekst gri të nën kreut</string>
+    <string name="list_item_sub_header_two_line">Listë 2 linjëshe</string>
+    <string name="list_item_sub_header_two_line_dense">Listë 2 linjëshe me hapësirë të dendura</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Listë dy vijëshe me pamje të personalizuar sekondare të nëntitujve</string>
+    <string name="list_item_sub_header_three_line">Listë tre vijëshe me tekst të zi nën kreu</string>
+    <string name="list_item_sub_header_no_custom_views">Listo njësitë pa pamje të personalizuar</string>
+    <string name="list_item_sub_header_large_header">Njësitë e listës me pamje të madhe të personalizuar</string>
+    <string name="list_item_sub_header_wrapped_text">Listo njësitë me tekst të mbështjellë</string>
+    <string name="list_item_sub_header_truncated_text">Listo listat me tekst të prerë</string>
+    <string name="list_item_sub_header_custom_accessory_text">Veprimi</string>
+    <string name="list_item_truncation_middle">Prerje në mes</string>
+    <string name="list_item_truncation_end">Fundi i prerjes.</string>
+    <string name="list_item_truncation_start">Fillo prerjen.</string>
+    <string name="list_item_custom_text_view">Vlera</string>
+    <string name="list_item_click">Klikove në njësinë e listës.</string>
+    <string name="list_item_click_custom_accessory_view">Klikove në pamjen e personalizuar të aksesorit.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Klikove në pamjen e nën kreut të personalizuar të aksesorit.</string>
+    <string name="list_item_more_options">Më shumë opsione</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Përzgjedh</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">Asnjë</string>
+    <string name="people_picker_delete_example">Fshi</string>
+    <string name="people_picker_custom_persona_description">Ky shembull tregon se si të krijosh një objekt të IPersona të personalizuar.</string>
+    <string name="people_picker_dialog_title_removed">Hoqe një person:</string>
+    <string name="people_picker_dialog_title_added">Shtove një person:</string>
+    <string name="people_picker_drag_started">Zvarritja filloi</string>
+    <string name="people_picker_drag_ended">Zvarritja mbaroi</string>
+    <string name="people_picker_picked_personas_listener">Dëgjues personash</string>
+    <string name="people_picker_suggestions_listener">Dëgjues sugjerimesh</string>
+    <string name="people_picker_persona_chip_click">Klikove në %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s marrës</item>
+        <item quantity="other">%1$s marrës</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">BottomSheet e zgjeruar e pandërprerë</string>
+    <string name="collapse_persistent_sheet_button"> Fshih fletën e fundit të pandërprerë</string>
+    <string name="show_persistent_sheet_button"> Shfaq fletën fundore të pandërprerë</string>
+    <string name="new_view">Kjo është pamja e re</string>
+    <string name="toggle_sheet_content">Ndrysho përmbajtjen e faqes së poshtme</string>
+    <string name="switch_to_custom_content">Kalo në përmbajtjen e personalizuar</string>
+    <string name="one_line_content">Përmbajtja me një linjë e fletës së fundit</string>
+    <string name="toggle_disable_all_items">Ndrysho Çaktivizo të gjitha njësitë</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Shto/Hiq pamjen</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Ndrysho lartësinë e palosjes</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Dosje e re</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Njësia dosjes e re e klikuar</string>
+    <string name="persistent_sheet_item_edit_title">Redakto</string>
+    <string name="persistent_sheet_item_edit_toast">Njësia e redaktimit klikuar</string>
+    <string name="persistent_sheet_item_save_title">Ruaj</string>
+    <string name="persistent_sheet_item_save_toast">Njësia e ruajtur klikuar</string>
+    <string name="persistent_sheet_item_zoom_in_title">Zmadho</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Njësia e zmadhimit klikuar</string>
+    <string name="persistent_sheet_item_zoom_out_title">Zvogëlo</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Njësi e zvogëluar klikuar</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Në dispozicion</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Dritan Kodra</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Projektuesi</string>
+    <string name="persona_subtitle_engineer">Inxhinier</string>
+    <string name="persona_subtitle_manager">Menaxher</string>
+    <string name="persona_subtitle_researcher">Hulumtuesi</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (shembull i tekstit të gjatë për të testuar prerjet)</string>
+    <string name="persona_view_description_xxlarge">Avatar XXLarge me tre linja teksti</string>
+    <string name="persona_view_description_large">Avatar i madh me dy linja teksti</string>
+    <string name="persona_view_description_small">Avatar i vogël me një linjë teksti</string>
+    <string name="people_picker_hint">Asnjë me ndihma të shfaqur</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Chip persona jo aktiv</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Chip personi i gabuar</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Chip persona me ikonë të hapur</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Chip personi bazë</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Klikove në një Chip personi të përzgjedhur</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Bashkëndaj</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Ndjek</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Fto kontakte</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Fresko faqen</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Hap në shfletues</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Ky është një Meny kërcyese shumë-linjësh. Maksimumi i linjave është vendosur në dy, pjesa e tjetër e tekstit do të pritet.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Të gjitha lajmet</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Lajmet e ruajtura</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Lajme nga sajtet</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Njofto jashtë orëve të punës</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Njofto kur je joaktiv në desktop</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Klikove në njësinë:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Meny e thjeshtë</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Meny e thjeshtë2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Meny me një njësi të përzgjedhshme dhe një ndarës</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Meny me të gjitha njësitë e përzgjedhura, ikonat, dhe tekstin e gjatë</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Shfaqje</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Progresi rrethor</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">I vogël</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Mesatare</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">I madh</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Progresi linear</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">I papërcaktuar</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Përcaktuar</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Shiriti kërkimit</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Thirrje mikrofoni</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Vetëkorrigjimi</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Mikrofon klikuar</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Pamja e djathtë e shtypur</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Kërkimi në tastierë i shtypur</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Veprimi</string>
+    <string name="snackbar_action_long">Tekst i gjatë veprimi</string>
+    <string name="snackbar_single_line">Snackbar me një linjë</string>
+    <string name="snackbar_multiline">Ky është një snackbar shumë-linjësh. Maksimumi i linjave është vendosur në dy, pjesa e tjetër e tekstit do të pritet.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Ky është një snackbar deklarate. Përdoret për të komunikuar veçori të reja.</string>
+    <string name="snackbar_primary">Ky është një snackbar parësor.</string>
+    <string name="snackbar_light">Ky është një snackbar i lehtë</string>
+    <string name="snackbar_warning">Ky është një snackbar paralajmërues.</string>
+    <string name="snackbar_danger">Ky është një snackbar rreziku.</string>
+    <string name="snackbar_description_single_line">Kohëzgjatja e shkurtër</string>
+    <string name="snackbar_description_single_line_custom_view">Kohëzgjatje e gjatë me përparim rrethor si pamje e vogël e personalizuar</string>
+    <string name="snackbar_description_single_line_action">Kohëzgjatje e shkurtër me veprim</string>
+    <string name="snackbar_description_single_line_action_custom_view">Kohëzgjatje e shkurtër me veprim dhe pamje të mesme të personalizuar</string>
+    <string name="snackbar_description_single_line_custom_text_color">Kohëzgjatje e shkurtër me tekst me ngjyrë të personalizuar</string>
+    <string name="snackbar_description_multiline">Kohëzgjatja e gjatë</string>
+    <string name="snackbar_description_multiline_custom_view">Kohëzgjatje e gjatë me pamje të vogël të personalizuar</string>
+    <string name="snackbar_description_multiline_action">Kohëzgjatje e pacaktuar me përditësime veprimi dhe teksti</string>
+    <string name="snackbar_description_multiline_action_custom_view">Kohëzgjatje e shkurtër me veprim dhe pamje të mesme të personalizuar</string>
+    <string name="snackbar_description_multiline_action_long">Kohëzgjatja e shkurtër me tekst të gjatë veprimi</string>
+    <string name="snackbar_description_announcement">Kohëzgjatja e shkurtër</string>
+    <string name="snackbar_description_updated">Ky tekst është përditësuar.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Shfaq Snackbar</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Vijë e njëfishtë</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Shumëlinjëshe</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Stili i njoftimit</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Stili primar</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Stil i çelur</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Stili i paralajmërimit</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Stil rreziku</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Faqja kryesore</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Postë</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Parametrat</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Njoftim</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Më shumë</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Drejtvendosja e tekstit</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Vertikal</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Horizontale</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">Pa tekst</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Njësitë e skedës</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Titulli</string>
+    <string name="cell_sample_description">Përshkrimi</string>
+    <string name="calculate_cells">Ngarko/llogarit 100 qeliza</string>
+    <string name="calculate_layouts">Ngarko/llogarit 100 struktura</string>
+    <string name="template_list">Lista e shabllonëve</string>
+    <string name="regular_list">Lista e rregullt</string>
+    <string name="cell_example_title">Titulli: qelizë</string>
+    <string name="cell_example_description">Përshkrimi: Trokit për të ndryshuar orientimin</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Skedë standarde me 2 segmente</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Skedë standarde 3-segmentëshe</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Skedë standarde 4-segmentëshe</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Skedë standarde me Pager</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Ndrysho skedën</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Skeda e pilulave </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Trokit për këshillën</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Trokit për kalendarin e personalizuar të këshillës</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Trokit për ngjyrën e personalizuar të këshillës</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Trokit për të hequr brenda këshillës</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Trokit për pamjen e personalizuar të këshillës</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Ngjyra e sipërme e personalizuar të këshillës</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Fundi i kreut të këshillës me zhvendosjeY 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Nisja e fundit të këshillës</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Fundi i fundit të këshillës me zhvendosjeY 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Hiq brenda këshillës</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Këshilla u hoq</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Kryeartikulli është i çelur 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">Titulli 1 është mesatare 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">Titulli 2 është i Rregullt 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Kreu është i rregullt 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">Nëntitulli 1 është i rregullt 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">Nëntitulli 2 është Medium 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">Trupi 1 është i rregullt 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">Trupi 2 është mesatar 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">Nëntitulli është i rregullt 12sp</string>
+
+</resources>

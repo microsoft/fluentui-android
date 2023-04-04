@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI កំណែសាកល្បង</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">បានជ្រើសរើស %s</string>
+    <string name="app_modifiable_parameters">ប៉ារ៉ាម៉ែត្រដែលអាចកែប្រែបាន</string>
+    <string name="app_right_accessory_view">ទិដ្ឋភាពឧបករណ៍បន្ទាប់បន្សំខាងស្តាំ</string>
+
+    <string name="app_style">រចនាបថ</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">បានចុចរូបតំណាង</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">ចាប់ផ្តើមការសាកល្បង</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">កងរង្វង់</string>
+    <string name="actionbar_icon_radio_label">រូបតំណាង</string>
+    <string name="actionbar_basic_radio_label">មូលដ្ឋាន</string>
+    <string name="actionbar_position_bottom_radio_label">ក្រោម</string>
+    <string name="actionbar_position_top_radio_label">កំពូល</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">ប្រភេទរបារសកម្មភាព</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">ទីតាំងរបារសកម្មភាព</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">រចនាបថរបារកម្មវិធី</string>
+    <string name="app_bar_subtitle">ចំណងជើងរង</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">បានចុចរូបតំណាងប្រាប់ទិស។</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">ទង់</string>
+    <string name="app_bar_layout_menu_settings">ការកំណត់</string>
+    <string name="app_bar_layout_menu_search">ស្វែងរក</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">ឥរិយាបថរំកិល៖ %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">បិទបើកឥរិយាបថរំកិល</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">រូបតំណាងការបិទបើកប្រាប់ទិស</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">បង្ហាញអវតារ</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">បង្ហាញរូបតំណាងថយក្រោយ</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">លាក់រូបតំណាង</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">បងា្ហញរូបតំណាង</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">បិទបើករចនាបថប្លង់របារស្វែងរក</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">បង្ហាញជាឧបករណ៍បន្ទាប់បន្សំ</string>
+    <string name="app_bar_layout_searchbar_action_view_button">បង្ហាញជាទិដ្ឋភាពសកម្មភាព</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">បិទបើក​រវាងរូបរាង (បង្កើត​សកម្មភាព​ឡើងវិញ)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">បិទបើក​​រូបរាង</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">ធាតុ</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">ខ្លឹមសារដែលអាចរំកិលបន្ថែមបាន</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">រចនាបថរង្វង់</string>
+    <string name="avatar_style_square">រចនាបទការេ</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">ធំ</string>
+    <string name="avatar_size_medium">មធ្យម</string>
+    <string name="avatar_size_small">តូច</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">បានបង្ហាញអវតារអតិបរមា</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">រាប់ចំនួនលើសអវតារ</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">ប្រភេទស៊ុម</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">ក្រុមអវតារដែលមានសំណុំ OverflowAvatarCount នឹងមិនប្រកាន់ខ្ជាប់អវតារដែលបង្ហាញអតិបរមាទេ។</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">គំនរមុខត្រួតលើគ្នា</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">គំនរមុខ</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">បានចុចលើសចំណុះ</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">បានចុច AvatarView នៅសន្ទស្សន៍ %d</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">សញ្ញាលក្ខណ​ជូនដំណឹង</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">ចុចៗ</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">បញ្ជី</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">ចរិតលក្ខណៈ</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">រូបថត</string>
+    <string name="bottom_navigation_menu_item_news">ព័ត៌មាន</string>
+    <string name="bottom_navigation_menu_item_alerts">ការជូនដំណឹង</string>
+    <string name="bottom_navigation_menu_item_calendar">ប្រតិទិន</string>
+    <string name="bottom_navigation_menu_item_team">ក្រុមការងារ</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">ស្លាកបិទបើក</string>
+    <string name="bottom_navigation_three_menu_items_button">បង្ហាញធាតុម៉ឺនុយបី</string>
+    <string name="bottom_navigation_four_menu_items_button">បង្ហាញធាតុម៉ឺនុយបួន</string>
+    <string name="bottom_navigation_five_menu_items_button">បង្ហាញធាតុម៉ឺនុយប្រាំ</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">ស្លាក %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">សន្លឹកខាងក្រោម</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">បង្ហាញជាមួយធាតុតែមួយបន្ទាត់</string>
+    <string name="bottom_sheet_with_double_line_items">បង្ហាញជាមួយធាតុបន្ទាត់ទ្វេ</string>
+    <string name="bottom_sheet_with_single_line_header">បង្ហាញជាមួយចំណងជើងតែមួយបន្ទាត់</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">បង្ហាញ​ជាមួយចំណងជើងបន្ទាត់ទ្វេ និងអង្គបែងចែក</string>
+    <string name="bottom_sheet_dialog_button">បង្ហាញ</string>
+    <string name="drawer_content_desc_collapse_state">ពង្រីក</string>
+    <string name="drawer_content_desc_expand_state">បង្រួមជាអប្បបរមា</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">ចុច %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">ចុចឱ្យយូរ %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">ចុចបោះបង់</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">បញ្ចូលធាតុ</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">អាប់ដេតធាតុ</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">បោះបង់</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">បន្ថែម</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">លើកឡើង</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">ដិត</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">ទ្រេត</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">គូសបន្ទាត់ពីក្រោម</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">បន្ទាត់ឆូត</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">មិនធ្វើវិញ</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">ធ្វើឡើងវិញ</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">ចំណុច</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">បញ្ជី</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">តំណ</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">កំពុងអាប់ដេតធាតុ</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">គម្លាត</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">បោះបង់ទីតាំង</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">ចាប់ផ្ដើម</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">បញ្ចប់</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">គម្លាតក្រុម</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">គម្លាតធាតុ</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">ទង់</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">បានចុចធាតុភ្ជាប់ទង់</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">ឆ្លើយតប</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">បានចុចឆ្លើយតបធាតុ</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">បញ្ជូនបន្ត</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">បានចុចធាតុបញ្ជូនបន្ត</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">លុប</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">បានចុចលុបធាតុ</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">អវតារ</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">កាមេរ៉ា</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">ថតរូប</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">បានចុចធាតុកាមេរ៉ា</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">វិចិត្រសាល</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">មើលរូបថតរបស់អ្នក</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">បានចុចធាតុវិចិត្រសាល</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">វីដេអូ</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">លេងវីដេអូរបស់អ្នក</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">បានចុចធាតុវីដេអូ</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">គ្រប់គ្រង</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">គ្រប់គ្រងបណ្ណាល័យមេឌៀរបស់អ្នក</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">បានចុចគ្រប់គ្រងធាតុ</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">សកម្មភាពអ៊ីម៉ែល</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">ឯកសារ</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">បានអាប់ដេតចុងក្រោយ៖ 2:14 រសៀល</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">ចែករំលែក</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">បានចុច​ចែករំលែក​ធាតុ</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">ផ្លាស់ទី</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">បានចុចផ្លាស់ទីធាតុ</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">លុប</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">បានចុចលុបធាតុ</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">ព័ត៌មាន</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">បានចុចធាតុព័ត៌មាន</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">នាឡិកា</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">បានចុចធាតុនាឡិកា</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">ម៉ោងរោទ៍</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">បានចុចធាតុម៉ោងរោទ៍</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">ល្វែងម៉ោង</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">បានចុចធាតុល្វែងម៉ោង</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">ប៊ូតុង</string>
+    <string name="buttonbar">របារប៊ូតុង</string>
+    <string name="button_disabled">ប៊ូតុងមិនអាចប្រើបាន</string>
+    <string name="button_borderless">ប៊ូតុងគ្មានស៊ុម</string>
+    <string name="button_borderless_disabled">ប៊ូតុងមិនអាចប្រើបានគ្មានស៊ុម</string>
+    <string name="button_large">ប៊ូតុងធំ</string>
+    <string name="button_large_disabled">ប៊ូតុងមិនអាចប្រើបានធំ</string>
+    <string name="button_outlined">ប៊ូតុងដែលបានគ្រោង</string>
+    <string name="button_outlined_disabled">បានគ្រោងប៊ូតុងមិនអាចប្រើបាន</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">ជ្រើសរើសកាលបរិច្ឆេទមួយ</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">កាលបរិច្ឆេទទោល</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">មិនបានជ្រើសរើសកាលបរិច្ឆេទទេ</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">បង្ហាញផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទ</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">បង្ហាញផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលាជាមួយផ្ទាំងកាលបរិច្ឆេទដែលបានជ្រើសរើស</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">បង្ហាញផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលាជាមួយផ្ទាំងពេលវេលាដែលបានជ្រើសរើស</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">បង្ហាញផ្ទាំងជ្រើសរើសកាលបរិច្ឆេទពេលវេលា</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">ចន្លោះកាលបរិច្ឆេទ</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">ចាប់ផ្តើម៖</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">បញ្ចប់៖</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">គ្មានការជ្រើសរើសចាប់ផ្តើម</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">មិនបានជ្រើសរើសបញ្ចប់</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">ជ្រើសរើសកាលបរិច្ឆេទចាប់ផ្ដើម</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">ជ្រើសរើសកាលបរិច្ឆេទបញ្ចប់</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">ចន្លោះកាលបរិច្ឆេទពេលវេលា</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">ជ្រើសរើសចន្លោះកាលបរិច្ឆេទពេលវេលា</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">បង្ហាញប្រអប់សន្ទនា</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">បង្ហាញថត</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">បង្ហាញប្រអប់ថត</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">គ្មាន​ប្រអប់​ខាងក្រោម​ដែលរសាត់បាត់</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">បង្ហាញថតខាងលើ</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">គ្មាន​ប្រអប់​កំពូល​រសាត់​បាត់ទេ</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> បង្ហាញប្រអប់ទិដ្ឋភាពកំពូលនៃយុថ្កា</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> បង្ហាញប្រអប់កំពូលគ្មានចំណងជើង</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> បង្ហាញខាងក្រោមប្រអប់ចំណងជើងខាងលើ</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">បង្ហាញថតខាងស្តាំ</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">បង្ហាញថតខាងឆ្វេង</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">ចំណងជើង អត្ថបទដើម</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">ចំណងជើងរង អត្ថបទបន្ទាប់បន្សំ</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">អត្ថបទចំណងជើងរងផ្ទាល់ខ្លួន</string>
+    <!-- Footer -->
+    <string name="list_item_footer">ជើងទំព័រ, អត្ថបទ​ទីបី</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">បញ្ជីជួរតែមួយបន្ទាត់ដែលមានអត្ថបទចំណងជើងរងពណ៌ប្រផេះ</string>
+    <string name="list_item_sub_header_two_line">បញ្ជីពីរបន្ទាត់</string>
+    <string name="list_item_sub_header_two_line_dense">បញ្ជីពីរជួរដែលមានគម្លាតក្រាស់</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">បញ្ជីជួរពីរដែលមានទិដ្ឋភាពចំណងជើងរងបន្ទាប់បន្សំផ្ទាល់ខ្លួន</string>
+    <string name="list_item_sub_header_three_line">បញ្ជីបីជួរដែលមានអត្ថបទចំណងជើងរងខ្មៅ</string>
+    <string name="list_item_sub_header_no_custom_views">រាយធាតុដោយគ្មានទិដ្ឋភាពផ្ទាល់ខ្លួន</string>
+    <string name="list_item_sub_header_large_header">រាយធាតុដែលមានទិដ្ឋភាពផ្ទាល់ខ្លួនធំ</string>
+    <string name="list_item_sub_header_wrapped_text">រាយធាតុជាមួយអត្ថបទដែលបានខ្ចប់</string>
+    <string name="list_item_sub_header_truncated_text">រាយធាតុជាមួយអត្ថបទដែលបានកាត់ឱ្យខ្លី</string>
+    <string name="list_item_sub_header_custom_accessory_text">សកម្មភាព</string>
+    <string name="list_item_truncation_middle">ការកាត់ឱ្យខ្លីនៅកណ្តាល។</string>
+    <string name="list_item_truncation_end">ការកាត់ចុងឱ្យខ្លី។</string>
+    <string name="list_item_truncation_start">ចាប់ផ្តើមកាត់ឱ្យខ្លី។</string>
+    <string name="list_item_custom_text_view">តម្លៃ</string>
+    <string name="list_item_click">អ្នក​បាន​ចុច​លើ​ធាតុ​បញ្ជី។</string>
+    <string name="list_item_click_custom_accessory_view">អ្នកបានចុចលើទិដ្ឋភាពឩបករណ៍បន្ទាប់បន្សំផ្ទាល់ខ្លួន។</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">អ្នក​បាន​ចុច​លើ​ទិដ្ឋភាពឧបករណ៍បន្ទាប់បន្សំផ្ទាល់ខ្លួន​របស់ចំណងជើង​រង។</string>
+    <string name="list_item_more_options">ជម្រើសច្រើនទៀត</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">ជ្រើសរើស</string>
+    <string name="people_picker_select_deselect_example">ជ្រើសរើសមិនជ្រើសរើស</string>
+    <string name="people_picker_none_example">គ្មាន</string>
+    <string name="people_picker_delete_example">លុប</string>
+    <string name="people_picker_custom_persona_description">ឧទាហរណ៍នេះបង្ហាញពីរបៀបបង្កើតវត្ថុ IPersona ផ្ទាល់ខ្លួន។</string>
+    <string name="people_picker_dialog_title_removed">អ្នក​បានយក​បុគ្គល​ចេញ៖</string>
+    <string name="people_picker_dialog_title_added">អ្នក​បាន​បញ្ចូលបុគ្គលម្នាក់៖</string>
+    <string name="people_picker_drag_started">ការអូសបានចាប់ផ្តើម</string>
+    <string name="people_picker_drag_ended">ការអូសបានបញ្ចប់</string>
+    <string name="people_picker_picked_personas_listener">អ្នកស្តាប់បុគ្គល</string>
+    <string name="people_picker_suggestions_listener">ការណែនាំអ្នកស្តាប់</string>
+    <string name="people_picker_persona_chip_click">អ្នកបានចុចលើ %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="other">អ្នក​ទទួល %1$s នាក់</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">ពង្រីកសន្លឹកបាតជាប់រហូត</string>
+    <string name="collapse_persistent_sheet_button"> លាក់សន្លឹកបាតជាប់រហូត</string>
+    <string name="show_persistent_sheet_button"> បង្ហាញសន្លឹកបាតជាប់រហូត</string>
+    <string name="new_view">នេះជាការបង្ហាញថ្មី</string>
+    <string name="toggle_sheet_content">បិទបើក ខ្លឹមសារសន្លឹកខាងក្រោម</string>
+    <string name="switch_to_custom_content">ប្តូរទៅខ្លឹមសារផ្ទាល់ខ្លួន</string>
+    <string name="one_line_content">ខ្លឹមសារសន្លឹកបាតមួយជួរ</string>
+    <string name="toggle_disable_all_items">បិទធាតុទាំងអស់</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">បន្ថែម/យកចេញទិដ្ឋភាព</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> ផ្លាស់ប្តូរកម្ពស់បង្រួមចូល</string>
+    <string name="persistent_sheet_item_create_new_folder_title">សឺមីថ្មី</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">បានចុចធាតុសឺមីថ្មី</string>
+    <string name="persistent_sheet_item_edit_title">កែសម្រួល</string>
+    <string name="persistent_sheet_item_edit_toast">បានចុចកែសម្រួលធាតុ</string>
+    <string name="persistent_sheet_item_save_title">រក្សាទុក</string>
+    <string name="persistent_sheet_item_save_toast">បានចុចរក្សាទុកធាតុ</string>
+    <string name="persistent_sheet_item_zoom_in_title">ពង្រីក</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> បានចុចពង្រីកធាតុ</string>
+    <string name="persistent_sheet_item_zoom_out_title">បង្រួម</string>
+    <string name="persistent_sheet_item_zoom_out_toast">បានចុចពង្រីកធាតុ</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">ទំនេរ</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">អ្នករចនា</string>
+    <string name="persona_subtitle_engineer">វិស្វករ</string>
+    <string name="persona_subtitle_manager">អ្នកគ្រប់គ្រង</string>
+    <string name="persona_subtitle_researcher">អ្នកស្រាវជ្រាវ</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (ឧទាហរណ៍អត្ថបទវែងដើម្បីសាកល្បងកាត់ឱ្យខ្លី)</string>
+    <string name="persona_view_description_xxlarge">អវតារ XXLarge ជាមួយអត្ថបទបីបន្ទាត់</string>
+    <string name="persona_view_description_large">អវតារធំដែលមានអត្ថបទពីរជួរ</string>
+    <string name="persona_view_description_small">អវតារតូចដែលមានអត្ថបទមួយជួរ</string>
+    <string name="people_picker_hint">គ្មានពាក្យប្រលយ​ត្រូវ​បាន​បង្ហាញ</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">មិនអាចប្រើឈីបបុគ្គលបាន</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">កំហុសឈីបបុគ្គល</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">ឈីបបុគ្គលដោយគ្មានរូបតំណាងបិទ</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">ឈីបបុគ្គលមូលដ្ឋាន</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">អ្នកបានចុចលើឈីបបុគ្គលដែលបានជ្រើសរើស។</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">ចែករំលែក</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">តាមដាន</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">អញ្ជើញមនុស្ស</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">ផ្ទុកទំព័រឡើងវិញ</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">បើកនៅក្នុងកម្មវិធីរុករកវិប</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">នេះគឺជាម៉ឺនុយផុសចេញច្រើនបន្ទាត់។ កំណត់ចំនួនបន្ទាត់អតិបរមាត្រឹមពីរបន្ទាត់ អត្ថបទដែលនៅសល់នឹងកាត់ឱ្យខ្លី។
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">ព័ត៌មាន​ទាំងអស់</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">ព័ត៌មាន​ដែល​បាន​រក្សាទុក</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">ព័ត៌មានពីទំព័រវិប</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">ជូនដំណឹងនៅក្រៅម៉ោងធ្វើការ</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">ជូនដំណឹងនៅពេលអសកម្មនៅលើដែសថប</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">អ្នកបានចុចលើធាតុ៖</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">ម៉ឺនុយសាមញ្ញ</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">ម៉ឺនុយសាមញ្ញ2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">ម៉ឺនុយដែលមានធាតុដែលអាចជ្រើសរើសបានមួយ និងអង្គបែងចែក</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">ម៉ឺនុយដែលមានធាតុអាចជ្រើសរើសបានទាំងអស់ រូបតំណាង និងអត្ថបទវែង</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">បង្ហាញ</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">វឌ្ឍនភាពរង្វង់</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">តូច</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">មធ្យម</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">ធំ</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">វឌ្ឍនភាពលីនេអ៊ែរ</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">មិនច្បាស់</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">ជាក់លាក់</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">របារស្វែងរក</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">មីក្រូហ្វូន ហៅត្រឡប់មកវិញ</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">ស្វ័យកែតម្រូវ</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">បានចុចមីក្រូហ្វូន</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">បានចុចមើលស្តាំ</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">បានចុចការស្វែងរក</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">សកម្មភាព</string>
+    <string name="snackbar_action_long">សកម្មភាពអត្ថបទវែង</string>
+    <string name="snackbar_single_line">សារសង្ខេបមួយជួរ</string>
+    <string name="snackbar_multiline">នេះគឺជាសារសង្ខេបច្រើនបន្ទាត់។ កំណត់ចំនួនបន្ទាត់អតិបរមាត្រឹមពីរបន្ទាត់ អត្ថបទដែលនៅសល់នឹងកាត់ឱ្យខ្លី។
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">នេះគឺជាសារសង្ខេបសេចក្តីប្រកាស។ វាត្រូវបានប្រើសម្រាប់បង្ហាញមុខងារថ្មីៗ។</string>
+    <string name="snackbar_primary">នេះគឺជាសារសង្ខេបចម្បង។</string>
+    <string name="snackbar_light">នេះគឺជាសារសង្ខេបស្រាល។</string>
+    <string name="snackbar_warning">នេះគឺជាសារសង្ខេបព្រមាន។</string>
+    <string name="snackbar_danger">នេះគឺជាសារសង្ខេបគ្រោះថ្នាក់។</string>
+    <string name="snackbar_description_single_line">រយៈពេលខ្លី</string>
+    <string name="snackbar_description_single_line_custom_view">រយៈពេលវែងជាមួយនឹងវឌ្ឍនភាពរង្វង់ជាទិដ្ឋភាពផ្ទាល់ខ្លួនតូច</string>
+    <string name="snackbar_description_single_line_action">រយៈពេលខ្លីដែលមានសកម្មភាព</string>
+    <string name="snackbar_description_single_line_action_custom_view">រយៈពេលខ្លីជាមួយនឹងសកម្មភាព និងទិដ្ឋភាពផ្ទាល់ខ្លួនមធ្យម</string>
+    <string name="snackbar_description_single_line_custom_text_color">រយៈពេលខ្លីជាមួយនឹងពណ៌អត្ថបទផ្ទាល់ខ្លួន</string>
+    <string name="snackbar_description_multiline">រយៈ ពេលវែង</string>
+    <string name="snackbar_description_multiline_custom_view">រយៈពេលវែងជាមួយនឹងទិដ្ឋភាពផ្ទាល់ខ្លួនតូច</string>
+    <string name="snackbar_description_multiline_action">រយៈពេលមិនកំណត់ជាមួយនឹងការអាប់ដេតសកម្មភាព និងអត្ថបទ</string>
+    <string name="snackbar_description_multiline_action_custom_view">រយៈពេលខ្លីជាមួយនឹងសកម្មភាព និងទិដ្ឋភាពផ្ទាល់ខ្លួនមធ្យម</string>
+    <string name="snackbar_description_multiline_action_long">រយៈពេលខ្លីជាមួយនឹងអត្ថបទសកម្មភាពវែង</string>
+    <string name="snackbar_description_announcement">រយៈពេលខ្លី</string>
+    <string name="snackbar_description_updated">អត្ថបទនេះត្រូវបានអាប់ដេត។</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">បង្ហាញសារសង្ខេប</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">បន្ទាត់ទោល</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">ច្រើនបន្ទាត់</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">រចនាបថសេចក្តីប្រកាស</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">រចនាបថបឋម</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">រចនាបថស្រាល</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">រចនាបថព្រមាន</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">រចនាបថគ្រោះថ្នាក់</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">ទំព័រដើម</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">អ៊ីម៉ែល</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">ការកំណត់</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">ការជូនដំណឹង</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">ច្រើនទៀត</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">ការតម្រឹមអត្ថបទ</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">បញ្ឈរ</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">ផ្តេក</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">គ្មានអត្ថបទ</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">ធាតុផ្ទាំង</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">ចំណងជើង</string>
+    <string name="cell_sample_description">ការពណ៌នា</string>
+    <string name="calculate_cells">ទាញ/គណនា 100 ក្រឡា</string>
+    <string name="calculate_layouts">ទាញ/គណនា 100 ប្លង់</string>
+    <string name="template_list">បញ្ជីពុម្ពតារាង</string>
+    <string name="regular_list">បញ្ជីធម្មតា</string>
+    <string name="cell_example_title">ចំណងជើង៖ ក្រឡា</string>
+    <string name="cell_example_description">ការពិពណ៌នា៖ ថេបដើម្បីប្តូរទិស</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">ផ្ទាំងស្តង់ដារ 2-ផ្នែក</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">ផ្ទាំងស្តង់ដារ 3-ផ្នែក</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">ផ្ទាំងស្តង់ដារ 4-ផ្នែក</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">ផ្ទាំងស្តង់ដារជាមួយភេយ័រ</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">ប្តូរផ្ទាំង</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">ផ្ទាំងថ្នាំគ្រាប់ </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">ថេបសម្រាប់ព័ត៌មានជំនួយ</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">ថេបសម្រាប់ព័ត៌មានជំនួយប្រតិទិនផ្ទាល់ខ្លួន</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">ថេបព័ត៌មានជំនួយពណ៌ផ្ទាល់ខ្លួន</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">ថេបដើម្បីបោះបង់​ព័ត៌មានជំនួយ​ជំនួយ​ខាងក្នុង</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">ថេបសម្រាប់ព័ត៌មានជំនួយទិដ្ឋភាពផ្ទាល់ខ្លួន</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">ព័ត៌មានជំនួយពណ៌ផ្ទាល់ខ្លួនកំពូល</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">ព័ត៌មានជំនួយបញ្ចប់ខាងក្រោមជាមួយនឹង offsetX 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">ព័ត៌មានជំនួយចាប់ផ្តើមខាងក្រោម</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">ព័ត៌មានជំនួយបញ្ចប់ខាងក្រោមជាមួយនឹង offsetY 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">បោះបង់ព័ត៌មានជំនួយខាងក្នុង</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">បានបោះបង់ផ្ទាំងណែនាំ</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">ចំណងជើងធំគឺស្រាល 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">ចំណងជើង 1 គឺ Medium 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">ចំណងជើងទី 2 គឺធម្មតា 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">ចំណងជើងធំគឺធម្មតា 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">ចំណងជើងរង 1 គឺធម្មតា 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">ចំណងជើងរង 2 គឺមធ្យម 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">តួ 1 គឺធម្មតា 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">តួ 2 គឺមធ្យម 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">ចំណងជើងគឺធម្មតា 12sp</string>
+
+</resources>

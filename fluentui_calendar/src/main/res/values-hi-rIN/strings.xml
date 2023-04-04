@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">सो</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">मं</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">बु</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">गु</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">शु</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">श</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">र</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">अगले सप्ताह पर जाएँ</string>
+    <string name="accessibility_goto_previous_week">पिछले सप्ताह पर जाएँ</string>
+    <string name="accessibility_today">आज</string>
+    <string name="accessibility_selected">चयनित</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">पूर्ण</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">आज</string>
+    <string name="tomorrow">आने वाला दिन</string>
+    <string name="yesterday">बीता दिन</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">शुरू होने का समय</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">समाप्त होने का समय</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">शुरू होने की तारीख</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">समाप्ति तिथि</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">समय चुनें</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">दिनांक चुनें</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">दिनांक समय पिकर</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">दिनांक पिकर</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">दिनांक समय पिकर श्रेणी</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">दिनांक पिकर श्रेणी</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">समय प्रारंभ टैब</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">समय समाप्ति टैब</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">शुरू होने की दिनांक टैब</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">समाप्ति दिनांक टैब</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">संवाद बंद करें</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">वेतन वृद्धि का महीना</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">अगले महीने का चयन करें</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">वेतन कटौती का महीना</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">पिछले महीने का चयन करें</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">वेतन वृद्धि का दिन</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">अगले दिन का चयन करें</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">वेतन कटौती का दिन</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">पिछले दिन का चयन करें</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">वेतन वृद्धि का वर्ष</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">अगले वर्ष का चयन करें</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">वेतन कटौती का वर्ष</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">पिछले वर्ष का चयन करें</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">वेतन वृद्धि दिनांक</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">अगली दिनांक चुनें</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">वेतन कटौती दिनांक</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">पिछली तिथि का चयन करें</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">वेतन वृद्धि का घंटा</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">अगले घंटे का चयन करें</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">वेतन कटौती का घंटा</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">पिछले घंटे का चयन करें</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">वेतन वृद्धि का मिनट</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">अगले मिनट का चयन करें</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">वेतन कटौती का मिनट</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">पिछले मिनट का चयन करें</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">AM PM अवधि टॉगल करें</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">AM PM अवधि टॉगल करें</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s चयनित</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">चयनित</string>
+</resources>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">레이블</string>
+    <string name="people_picker_search_directory">디렉터리 검색</string>
+    <string name="people_picker_search_progress">검색 중...</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">이름 또는 전자 메일 입력</string>
+    <string name="people_picker_accessibility_persona_added">%s 추가됨</string>
+    <string name="people_picker_accessibility_persona_removed">%s 제거됨</string>
+    <string name="people_picker_accessibility_replaced">%s이(가) 바뀌었습니다,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">클릭</string>
+    <string name="people_picker_accessibility_delete_persona">삭제</string>
+    <string name="people_picker_accessibility_deselect_persona">선택 취소</string>
+    <string name="people_picker_accessibility_select_persona">선택</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">%s을(를) 클릭함</string>
+    <string name="people_picker_accessibility_deselected_persona">%s을(를) 선택 취소함</string>
+    <string name="people_picker_accessibility_selected_persona">%s 선택됨</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, 활성화를 하면 다음 항목이 선택 취소됩니다.</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, 활성화가 삭제됩니다.</string>
+    <string name="people_picker_accessibility_click_selected_persona">, 활성화를 하면 다음 항목을 클릭합니다.</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="other">%s명의 사용자가 포함된 추천 목록이 열렸습니다.</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="other">%s명의 사용자</item>
+    </plurals>
+</resources>

@@ -4,8 +4,11 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.ThemeMode
 
@@ -13,8 +16,9 @@ data class FluentIcon(
     val light: ImageVector = ImageVector.Builder("", 0.dp, 0.dp, 0F, 0F).build(),
     val dark: ImageVector = light,
     val contentDescription: String? = null,
-    val onClick: (() -> Unit)? = null,
-    val tint: Color? = null
+    val tint: Color? = null,
+    val flipOnRtl: Boolean = false,
+    val onClick: (() -> Unit)? = null
 ) {
     @Composable
     fun value(themeMode: ThemeMode = com.microsoft.fluentui.theme.FluentTheme.themeMode): ImageVector {
@@ -48,7 +52,13 @@ fun Icon(
     Icon(
         icon.value(),
         icon.contentDescription,
-        modifier,
+        modifier
+            .then(
+                if (icon.flipOnRtl && LocalLayoutDirection.current == LayoutDirection.Rtl)
+                    Modifier.scale(-1F, -1F)
+                else
+                    Modifier
+            ),
         tint = icon.tint ?: tint
     )
 }

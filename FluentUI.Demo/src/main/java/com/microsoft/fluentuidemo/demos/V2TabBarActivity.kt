@@ -32,6 +32,7 @@ import com.microsoft.fluentui.tokenized.navigation.TabData
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2TabBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -208,9 +209,5 @@ class V2TabBarActivity : DemoActivity() {
                 }
             }
         }
-    }
-
-    private fun invokeToast(string: String, context: Context) {
-        Toast.makeText(context, "$string Tab Clicked", Toast.LENGTH_SHORT).show()
     }
 }

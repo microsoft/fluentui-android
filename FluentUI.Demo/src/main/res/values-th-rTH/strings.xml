@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Fluent UI เวอร์ชันสาธิต</string>
+    <string name="app_title">Fluent UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">เลือก %s แล้ว</string>
+    <string name="app_modifiable_parameters">พารามิเตอร์ที่ปรับเปลี่ยนได้</string>
+    <string name="app_right_accessory_view">มุมมองอุปกรณ์เสริมด้านขวา</string>
+
+    <string name="app_style">สไตล์</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">กดไอคอนแล้ว</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">เริ่มเวอร์ชันสาธิต</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">วงล้อ</string>
+    <string name="actionbar_icon_radio_label">ไอคอน</string>
+    <string name="actionbar_basic_radio_label">พื้นฐาน</string>
+    <string name="actionbar_position_bottom_radio_label">ล่างสุด</string>
+    <string name="actionbar_position_top_radio_label">บน</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">ชนิด ActionBar</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">ตําแหน่งของ ActionBar</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">สไตล์ AppBar</string>
+    <string name="app_bar_subtitle">คำบรรยาย</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">คลิกไอคอนการนําทางแล้ว</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">ค่าสถานะ</string>
+    <string name="app_bar_layout_menu_settings">การตั้งค่า</string>
+    <string name="app_bar_layout_menu_search">ค้นหา</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">ลักษณะการเลื่อน: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">สลับลักษณะการเลื่อน</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">สลับไอคอนการนําทาง</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">แสดงอวาตาร์</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">แสดงไอคอนย้อนกลับ</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">ซ่อนไอคอน</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">แสดงไอคอน</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">สลับสไตล์เค้าโครงแถบค้นหา</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">แสดงเป็นมุมมองอุปกรณ์เสริม</string>
+    <string name="app_bar_layout_searchbar_action_view_button">แสดงเป็นมุมมองการดําเนินการ</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">สลับระหว่างธีม (สร้างกิจกรรมใหม่)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">สลับธีม</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">รายการ</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">เนื้อหาเพิ่มเติมที่สามารถเลื่อนได้</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">สไตล์วงกลม</string>
+    <string name="avatar_style_square">สไตล์สี่เหลี่ยม</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">ใหญ่</string>
+    <string name="avatar_size_medium">กลาง</string>
+    <string name="avatar_size_small">เล็ก</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">อวาตารที่แสดงสูงสุด</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">จํานวนอวาตาร์มากเกิน</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">ประเภทเส้นขอบ</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">กลุ่มอวาตาร์ที่มีการตั้งค่า OverflowAvatarCount จะไม่ยึดตามอวตารที่แสดงสูงสุด</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">ใบหน้าเรียงซ้อนกัน</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">ใบหน้าเรียงต่อกัน</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">คลิกมากเกินแล้ว</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">คลิก AvatarView ที่ดัชนี %d แล้ว</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">ป้ายการแจ้งเตือน</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">จุดแจ้งเตือน</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">รายการ</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">อักขระ</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">รูปถ่าย</string>
+    <string name="bottom_navigation_menu_item_news">ข่าวสาร</string>
+    <string name="bottom_navigation_menu_item_alerts">การแจ้งเตือน</string>
+    <string name="bottom_navigation_menu_item_calendar">ปฏิทิน</string>
+    <string name="bottom_navigation_menu_item_team">ทีม</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">สลับป้ายกำกับ</string>
+    <string name="bottom_navigation_three_menu_items_button">แสดงรายการเมนูสามรายการ</string>
+    <string name="bottom_navigation_four_menu_items_button">แสดงรายการเมนูสี่รายการ</string>
+    <string name="bottom_navigation_five_menu_items_button">แสดงรายการเมนูห้ารายการ</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">ป้ายกำกับ %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">แสดงพร้อมรายการแบบบรรทัดเดียว</string>
+    <string name="bottom_sheet_with_double_line_items">แสดงพร้อมรายการแบบบรรทัดคู่</string>
+    <string name="bottom_sheet_with_single_line_header">แสดงพร้อมส่วนหัวแบบบรรทัดเดียว</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">แสดงพร้อมส่วนหัวแบบบรรทัดคู่และเส้นแบ่งหน้าจอ</string>
+    <string name="bottom_sheet_dialog_button">แสดง</string>
+    <string name="drawer_content_desc_collapse_state">ขยาย</string>
+    <string name="drawer_content_desc_expand_state">ย่อเล็กสุด</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">คลิก %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">คลิกค้างไว้ %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">คลิกปิด</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">แทรกรายการ</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">อัปเดตรายการ</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">ปิด</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">เพิ่ม</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">การอ้างถึง</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">ตัวหนา</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">ตัวเอียง</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">ขีดเส้นใต้</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">ขีดทับ</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">เลิกทำ</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">ทำซ้ำ</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">สัญลักษณ์แสดงหัวข้อย่อย</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">รายการ</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">ลิงก์</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">กําลังอัปเดตรายการ</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">ระยะห่าง</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">ปิดตําแหน่ง</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">เริ่ม</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">ระยะห่างระหว่างกลุ่ม</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">ระยะห่างระหว่างรายการ</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">ค่าสถานะ</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">คลิกตั้งค่าสถานะรายการแล้ว</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">ตอบกลับ</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">คลิกรายการตอบกลับแล้ว</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">ส่งต่อ</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">คลิกส่งต่อรายการแล้ว</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">ลบ</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">คลิกลบรายการแล้ว</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">อวาตาร์</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">กล้อง</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">ถ่ายภาพ</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">คลิกรายการกล้องแล้ว</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">แกลเลอรี</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">ดูรูปถ่ายของคุณ</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">คลิกรายการแกลเลอรีแล้ว</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">วิดีโอ</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">เล่นวิดีโอของคุณ</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">คลิกรายการวิดีโอแล้ว</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">จัดการ</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">จัดการไลบรารีสื่อของคุณ</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">คลิกจัดการรายการแล้ว</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">การดำเนินการสำหรับอีเมล</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">เอกสาร</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">อัปเดตล่าสุด 14:14 น.</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">แชร์</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">คลิกแชร์รายการแล้ว</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">ย้าย</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">คลิกย้ายรายการแล้ว</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">ลบ</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">คลิกลบรายการแล้ว</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">ข้อมูล</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">คลิกรายการข้อมูลแล้ว</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">นาฬิกา</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">คลิกรายการนาฬิกาแล้ว</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">แจ้งเตือน</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">คลิกการเตือนรายการแล้ว</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">โซนเวลา</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">คลิกรายการโซนเวลาแล้ว</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">ปุ่ม</string>
+    <string name="buttonbar">แถบปุ่ม</string>
+    <string name="button_disabled">ปุ่มปิดใช้งาน</string>
+    <string name="button_borderless">ปุ่มไม่มีเส้นขอบ</string>
+    <string name="button_borderless_disabled">ปุ่มปิดใช้งานแบบไร้ขอบ</string>
+    <string name="button_large">ปุ่มขนาดใหญ่</string>
+    <string name="button_large_disabled">ปุ่มปิดใช้งานขนาดใหญ่</string>
+    <string name="button_outlined">ปุ่มที่มีเค้าร่าง</string>
+    <string name="button_outlined_disabled">ปุ่มปิดใช้งานที่มีเค้าร่าง</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">เลือกวันที่</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">ตัวเลือกวันที่และเวลา</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">วันที่เดียว</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">ไม่ได้เลือกวันที่</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">แสดงตัวเลือกวันที่</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">แสดงตัวเลือกวันที่และเวลาที่มีการเลือกแท็บวันที่</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">แสดงตัวเลือกวันที่และเวลาที่เลือกแท็บเวลา</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">แสดงตัวเลือกวันที่และเวลา</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">ช่วงวันที่</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">เริ่ม:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">สิ้นสุด:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">ไม่ได้เลือกเริ่มต้น</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">ไม่ได้เลือกวันที่สิ้นสุด</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">เลือกวันที่เริ่มต้น</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">เลือกวันสิ้นสุด</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">ช่วงวันที่และเวลา</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">เลือกช่วงวันที่และเวลา</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">กล่องโต้ตอบตัวเลือกวันที่และเวลา</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">แสดงกล่องโต้ตอบ</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">แสดงลิ้นชัก</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">แสดงกล่องโต้ตอบแบบลิ้นชัก</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">กล่องโต้ตอบด้านล่างแบบไม่เลือนหาย</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">แสดงลิ้นชักด้านบน</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">กล่องโต้ตอบด้านบนแบบไม่เลือนหาย</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> แสดงกล่องโต้ตอบด้านบนของมุมมองจุดยึด</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button">แสดงกล่องโต้ตอบด้านบนแบบไม่มีชื่อเรื่อง</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button">แสดงกล่องโต้ตอบด้านบนของชื่อเรื่องด้านล่าง</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">แสดงลิ้นชักด้านขวา</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">แสดงลิ้นชักด้านซ้าย</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">ชื่อเรื่อง ข้อความหลัก</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">คําบรรยาย, ข้อความรอง</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">ข้อความคําบรรยายแบบกําหนดเอง</string>
+    <!-- Footer -->
+    <string name="list_item_footer">ท้ายกระดาษ, ข้อความลําดับที่สาม</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">รายการแบบบรรทัดเดียวที่มีข้อความส่วนหัวย่อยสีเทา</string>
+    <string name="list_item_sub_header_two_line">รายการแบบสองบรรทัด</string>
+    <string name="list_item_sub_header_two_line_dense">รายการแบบสองบรรทัดที่มีระยะห่างน้อยมาก</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">รายการสองบรรทัดที่มีมุมมองคําบรรยายรองแบบกําหนดเอง</string>
+    <string name="list_item_sub_header_three_line">รายการแบบสามบรรทัดที่มีข้อความส่วนหัวย่อยสีดํา</string>
+    <string name="list_item_sub_header_no_custom_views">แสดงรายการแบบไม่มีมุมมองแบบกําหนดเอง</string>
+    <string name="list_item_sub_header_large_header">แสดงรายการด้วยมุมมองแบบกําหนดเองขนาดใหญ่</string>
+    <string name="list_item_sub_header_wrapped_text">แสดงรายการด้วยข้อความที่ถูกตัดคํา</string>
+    <string name="list_item_sub_header_truncated_text">แสดงรายการด้วยข้อความที่ถูกตัดทอน</string>
+    <string name="list_item_sub_header_custom_accessory_text">การดำเนินการ</string>
+    <string name="list_item_truncation_middle">การตัดทอนตรงกลาง</string>
+    <string name="list_item_truncation_end">สิ้นสุดการตัดทอน</string>
+    <string name="list_item_truncation_start">เริ่มการตัดทอน</string>
+    <string name="list_item_custom_text_view">ค่า</string>
+    <string name="list_item_click">คุณได้คลิกบนข้อมูลในรายการ</string>
+    <string name="list_item_click_custom_accessory_view">คุณได้คลิกบนมุมมองอุปกรณ์เสริมแบบกําหนดเอง</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">คุณได้คลิกบนมุมมองอุปกรณ์เสริมแบบกําหนดเองของส่วนหัวย่อย</string>
+    <string name="list_item_more_options">ตัวเลือกเพิ่มเติม</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">เลือก</string>
+    <string name="people_picker_select_deselect_example">เลือกยกเลิกการเลือก</string>
+    <string name="people_picker_none_example">ไม่มี</string>
+    <string name="people_picker_delete_example">ลบ</string>
+    <string name="people_picker_custom_persona_description">ตัวอย่างนี้แสดงวิธีการสร้างวัตถุ IPersona แบบกําหนดเอง</string>
+    <string name="people_picker_dialog_title_removed">คุณได้เอาลักษณะออก:</string>
+    <string name="people_picker_dialog_title_added">คุณได้เพิ่มลักษณะ:</string>
+    <string name="people_picker_drag_started">เริ่มต้นลากแล้ว</string>
+    <string name="people_picker_drag_ended">สิ้นสุดการลากแล้ว</string>
+    <string name="people_picker_picked_personas_listener">ตัวรอรับข้อมูลลักษณะ</string>
+    <string name="people_picker_suggestions_listener">ตัวรอรับคําแนะนํา</string>
+    <string name="people_picker_persona_chip_click">คุณได้คลิก %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="other">ผู้รับ %1$s คน</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">ขยาย BottomSheet แบบถาวร</string>
+    <string name="collapse_persistent_sheet_button"> ซ่อน BottomSheet แบบถาวร</string>
+    <string name="show_persistent_sheet_button">แสดง BottomSheet แบบถาวร</string>
+    <string name="new_view">นี่คือมุมมองใหม่</string>
+    <string name="toggle_sheet_content">สลับเนื้อหา Bottomsheet</string>
+    <string name="switch_to_custom_content">สลับไปยังเนื้อหาแบบกําหนดเอง</string>
+    <string name="one_line_content">เนื้อหา Bottomsheet แบบบรรทัดเดียว</string>
+    <string name="toggle_disable_all_items">สลับปิดการใช้งานทุกรายการ</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">เพิ่ม/ลบมุมมอง</string>
+    <string name="persistent_sheet_item_change_collapsed_height">เปลี่ยนความสูงที่ยุบ</string>
+    <string name="persistent_sheet_item_create_new_folder_title">โฟลเดอร์ใหม่</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">คลิกรายการโฟลเดอร์ใหม่แล้ว</string>
+    <string name="persistent_sheet_item_edit_title">แก้ไข</string>
+    <string name="persistent_sheet_item_edit_toast">คลิกแก้ไขรายการแล้ว</string>
+    <string name="persistent_sheet_item_save_title">บันทึก</string>
+    <string name="persistent_sheet_item_save_toast">คลิกบันทึกรายการแล้ว</string>
+    <string name="persistent_sheet_item_zoom_in_title">ขยาย</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> คลิกขยายรายการแล้ว</string>
+    <string name="persistent_sheet_item_zoom_out_title">ย่อ</string>
+    <string name="persistent_sheet_item_zoom_out_toast">คลิกย่อรายการแล้ว</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">พร้อมใช้งาน</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Allan Munger</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Carole Poland</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Isaac Fielder</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Lydia Bauer</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">ตัวออกแบบ</string>
+    <string name="persona_subtitle_engineer">วิศวกร</string>
+    <string name="persona_subtitle_manager">ผู้จัดการ</string>
+    <string name="persona_subtitle_researcher">เครื่องมือค้นคว้า</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (ตัวอย่างข้อความขนาดยาวเพื่อทดสอบการตัดทอน)</string>
+    <string name="persona_view_description_xxlarge">อวาตารขนาด XXLarge ที่มีข้อความสามบรรทัด</string>
+    <string name="persona_view_description_large">อวาตารขนาดใหญ่ที่มีข้อความสองบรรทัด</string>
+    <string name="persona_view_description_small">อวาตารขนาดเล็กที่มีข้อความหนึ่งบรรทัด</string>
+    <string name="people_picker_hint">ไม่มีพร้อมแสดงคําใบ้</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Persona Chip ที่ปิดใช้งาน</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Persona Chip ข้อผิดพลาด</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Persona Chip แบบไม่มีไอคอนปิด</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Persona Chip พื้นฐาน</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">คุณคลิกที่ Persona Chip ที่เลือก</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">แชร์</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">ติดตาม</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">เชิญบุคคล</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">รีเฟรชหน้า</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">เปิดในเบราว์เซอร์</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">นี่คือเมนูป็อปอัพแบบหลายบรรทัด บรรทัดสูงสุดถูกตั้งค่าเป็นสองบรรทัด ส่วนที่เหลือของข้อความจะถูกตัดทอน
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">ข่าวทั้งหมด</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">ข่าวที่บันทึกไว้</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">ข่าวสารจากไซต์</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">แจ้งนอกเวลาทํางาน</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">แจ้งให้ทราบเมื่อไม่ได้ใช้งานบนเดสก์ท็อป</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">คุณได้คลิกที่รายการ:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">เมนูแบบง่าย</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">เมนูแบบง่าย2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">เมนูที่มีหนึ่งรายการที่เลือกได้และเส้นแบ่งหน้าจอ</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">เมนูที่มีรายการ ไอคอน และข้อความยาวที่เลือกได้ทั้งหมด</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">แสดง</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">ความคืบหน้าแบบวงกลม</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">เล็ก</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">กลาง</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">ใหญ่</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">ความคืบหน้าแบบเส้นตรง</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">แบบไม่มีที่สิ้นสุด</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">แบบมีที่สิ้นสุด</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">แถบค้นหา</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">การติดต่อกลับด้วยไมโครโฟน</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">การแก้ไขอัตโนมัติ</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">กดไมโครโฟนแล้ว</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">กดมุมมองด้านขวาแล้ว</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">กดค้นหาด้วยแป้นพิมพ์แล้ว</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">การดำเนินการ</string>
+    <string name="snackbar_action_long">การดำเนินการแบบข้อความยาว</string>
+    <string name="snackbar_single_line">Snackbar แบบบรรทัดเดียว</string>
+    <string name="snackbar_multiline">นี่คือแถบว่างแบบหลายบรรทัด บรรทัดสูงสุดถูกตั้งค่าเป็นสองบรรทัด ส่วนที่เหลือของข้อความจะถูกตัดทอน
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">นี่คือ Snackbar แบบประกาศ ใช้สำหรับสื่อสารฟีเจอร์ใหม่ๆ</string>
+    <string name="snackbar_primary">นี่คือ Snackbar หลัก</string>
+    <string name="snackbar_light">นี่คือ Snackbar แบบฟอนต์บาง</string>
+    <string name="snackbar_warning">นี่คือ Snackbar แบบคําเตือน</string>
+    <string name="snackbar_danger">นี่คือ Snackbar แบบแจ้งเตือนอันตราย</string>
+    <string name="snackbar_description_single_line">ระยะเวลาแบบสั้น</string>
+    <string name="snackbar_description_single_line_custom_view">ระยะเวลาแบบยาวที่มีแถบความคืบหน้าแบบวงกลมเป็นมุมมองแบบกําหนดเองขนาดเล็ก</string>
+    <string name="snackbar_description_single_line_action">ระยะเวลาสั้นๆ ที่มีการดําเนินการ</string>
+    <string name="snackbar_description_single_line_action_custom_view">ระยะเวลาแบบสั้นที่มีการดําเนินการและมุมมองแบบกําหนดเองขนาดปานกลาง</string>
+    <string name="snackbar_description_single_line_custom_text_color">ระยะเวลาแบบสั้นที่มีสีข้อความแบบกําหนดเอง</string>
+    <string name="snackbar_description_multiline">ระยะเวลานาน</string>
+    <string name="snackbar_description_multiline_custom_view">ระยะเวลาแบบยาวที่มีมุมมองแบบกําหนดเองขนาดเล็ก</string>
+    <string name="snackbar_description_multiline_action">ระยะเวลาแบบไม่จํากัดที่มีการอัปเดตการดําเนินการและข้อความ</string>
+    <string name="snackbar_description_multiline_action_custom_view">ระยะเวลาแบบสั้นที่มีการดําเนินการและมุมมองแบบกําหนดเองขนาดปานกลาง</string>
+    <string name="snackbar_description_multiline_action_long">ระยะเวลาแบบสั้นที่มีข้อความการดําเนินการแบบยาว</string>
+    <string name="snackbar_description_announcement">ระยะเวลาแบบสั้น</string>
+    <string name="snackbar_description_updated">ข้อความนี้ได้รับการอัปเดตแล้ว</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">แสดง Snackbar</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">บรรทัดเดียว</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">หลายบรรทัด</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">สไตล์ข้อความประกาศ</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">สไตล์หลัก</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">สไตล์สีอ่อน</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">สไตล์การเตือน</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">แบบแจ้งเตือนอันตราย</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">หน้าแรก</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">จดหมาย</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">การตั้งค่า</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">การแจ้งเตือน</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">เพิ่มเติม</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">การจัดแนวข้อความ</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">แบบแนวตั้ง</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">แบบแนวนอน</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">ไม่มีข้อความ</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">รายการแท็บ</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">ชื่อเรื่อง</string>
+    <string name="cell_sample_description">คำอธิบาย</string>
+    <string name="calculate_cells">โหลด/คํานวณ 100 เซลล์</string>
+    <string name="calculate_layouts">โหลด/คํานวณเค้าโครง 100 รายการ</string>
+    <string name="template_list">รายการเทมเพลต</string>
+    <string name="regular_list">รายการแบบฟอนต์ปกติ</string>
+    <string name="cell_example_title">ชื่อเรื่อง: เซลล์</string>
+    <string name="cell_example_description">คําอธิบาย: แตะเพื่อเปลี่ยนการวางแนว</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">แท็บมาตรฐานแบบ 2 ส่วน</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">แท็บมาตรฐานแบบ 3 ส่วน</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">แท็บมาตรฐานแบบ 4 ส่วน</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">แท็บมาตรฐานที่มีหน้า</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">สลับแท็บ</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">แท็บข้อเสนอแนะในกล่อง </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">แตะเพื่อดูคําแนะนําเครื่องมือ</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">แตะเพื่อดูคำแนะนำเครื่องมือปฏิทินแบบกำหนดเอง</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">แตะคําแนะนําเครื่องมือสีแบบกําหนดเอง</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">แตะเพื่อปิดคําแนะนําเครื่องมือภายใน</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">แตะเพื่อดูคําแนะนําเครื่องมือมุมมองแบบกําหนดเอง</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">คําแนะนําเครื่องมือสีแบบกําหนดเองด้านบน</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">คำแนะนำเครื่องมือด้านบนสุดแบบ 10dp offsetX</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">คําแนะนําเครื่องมือเริ่มต้นด้านล่าง</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">คำแนะนำเครื่องมือด้านล่างสุดแบบ 10dp offsetY</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">ปิดคําแนะนําเครื่องมือภายใน</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">ปิดคำแนะนำเครื่องมือแล้ว</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">พาดหัวข่าวเป็นแบบ Light 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">ชื่อเรื่อง 1 เป็นแบบ Medium 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">ชื่อเรื่อง 2 เป็นฟอนต์แบบปกติ 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">หัวเรื่องเป็นแบบ Regular 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">หัวเรื่องย่อย 1 เป็นแบบ Regular 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">หัวเรื่องย่อย 2 เป็นแบบ Medium 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">เนื้อความ 1 เป็นแบบ Regular 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">เนื้อความ 2 เป็นแบบ Medium 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">คําบรรยายเป็นแบบ Regular 12sp</string>
+
+</resources>

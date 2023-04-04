@@ -199,7 +199,6 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
     )
 }
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CreateAvatarCarouselActivityUI() {
     val mContext = LocalContext.current
@@ -224,7 +223,7 @@ fun CreateAvatarCarouselActivityUI() {
         )
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
-            size = AvatarCarouselSize.Medium,
+            size = AvatarCarouselSize.Small,
             enablePresence = true
         )
     }

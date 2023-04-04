@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">लेबल</string>
+    <string name="people_picker_search_directory">निर्देशिका शोधा</string>
+    <string name="people_picker_search_progress">शोधत आहे…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">नाव आणि ईमेल प्रविष्ट करा</string>
+    <string name="people_picker_accessibility_persona_added">%s जोडले</string>
+    <string name="people_picker_accessibility_persona_removed">%s काढले</string>
+    <string name="people_picker_accessibility_replaced">%s बदलले,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">क्लिक करा</string>
+    <string name="people_picker_accessibility_delete_persona">हटवा</string>
+    <string name="people_picker_accessibility_deselect_persona">निवड रद्द करा</string>
+    <string name="people_picker_accessibility_select_persona">निवडा</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">%s क्लिक केले</string>
+    <string name="people_picker_accessibility_deselected_persona">%s निवड रद्द केली</string>
+    <string name="people_picker_accessibility_selected_persona">%s निवडले</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, सक्रियकरण निवड रद्द करेल</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, सक्रीयकरण हटवेल</string>
+    <string name="people_picker_accessibility_click_selected_persona">, सक्रियकरण क्लिक करेल</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">सूचना यादी %s व्यक्तीसह उघडली</item>
+        <item quantity="other">सूचना यादी %s लोकांसह उघडली</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s व्यक्ती</item>
+        <item quantity="other">%s लोक</item>
+    </plurals>
+</resources>

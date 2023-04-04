@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Démonstration de l’interface utilisateur Fluent</string>
+    <string name="app_title">Interface utilisateur Fluent</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">%s sélectionné</string>
+    <string name="app_modifiable_parameters">Paramètres modifiables</string>
+    <string name="app_right_accessory_view">Mode Accessoire droit</string>
+
+    <string name="app_style">Style</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Icône enfoncée</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Démarrer la démo</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Carrousel</string>
+    <string name="actionbar_icon_radio_label">Icône</string>
+    <string name="actionbar_basic_radio_label">De base</string>
+    <string name="actionbar_position_bottom_radio_label">Bas</string>
+    <string name="actionbar_position_top_radio_label">Haut</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Type de barre d’action</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Position de la barre d’action</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">AppBar Style</string>
+    <string name="app_bar_subtitle">Sous-titre</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">L’icône de navigation a cliqué.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Drapeau</string>
+    <string name="app_bar_layout_menu_settings">Paramètres</string>
+    <string name="app_bar_layout_menu_search">Rechercher</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Comportement de défilement : %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Activer/désactiver le comportement de défilement</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Activer/désactiver l’icône de navigation</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Afficher l’avatar</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">Afficher l’icône retour</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Masquer l’icône</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Afficher l’icône</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Activer/désactiver le style de disposition de la barre de recherche</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Afficher en tant qu’affichage accessoire</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Afficher en tant que vue d’action</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Basculer entre les thèmes (recrée l’activité)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Activer/désactiver le thème</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Élément</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Contenu défilant supplémentaire</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Style de cercle</string>
+    <string name="avatar_style_square">Style carré</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">Grande</string>
+    <string name="avatar_size_medium">Moyen</string>
+    <string name="avatar_size_small">Petite</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Nombre maximal d’avatars affichés</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Dépassement du nombre d’avatars</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Type de bordure</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">Le groupe d’avatars avec OverflowAvatarCount défini n’est pas conforme au nombre maximal d’avatars affichés.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Pile de visages</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Pile des visages</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">Dépassement de capacité sur clic</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">AvatarView à l’index %d cliqué</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Badge de notification</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Point</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Liste</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Caractère</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Photos</string>
+    <string name="bottom_navigation_menu_item_news">Actualités</string>
+    <string name="bottom_navigation_menu_item_alerts">Alertes</string>
+    <string name="bottom_navigation_menu_item_calendar">Calendrier</string>
+    <string name="bottom_navigation_menu_item_team">Équipe</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Activer/désactiver les étiquettes</string>
+    <string name="bottom_navigation_three_menu_items_button">Afficher trois éléments de menu</string>
+    <string name="bottom_navigation_four_menu_items_button">Afficher quatre éléments de menu</string>
+    <string name="bottom_navigation_five_menu_items_button">Afficher cinq éléments de menu</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Les étiquettes sont %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">BottomSheet</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Afficher avec des éléments sur une seule ligne</string>
+    <string name="bottom_sheet_with_double_line_items">Afficher avec des éléments de ligne double</string>
+    <string name="bottom_sheet_with_single_line_header">Afficher avec un en-tête sur une seule ligne</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Afficher avec un en-tête et des séparateurs double ligne</string>
+    <string name="bottom_sheet_dialog_button">Afficher</string>
+    <string name="drawer_content_desc_collapse_state">Développer</string>
+    <string name="drawer_content_desc_expand_state">Réduire</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">Cliquez sur %s</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">Clic long %s</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">Cliquez sur Ignorer</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Insertion d\'un élément</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Mettre à jour l’élément</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Ignorer</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Ajouter</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Mention</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Gras</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Italique</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Souligner</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Barré</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Annuler</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Rétablir</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Puce</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Liste</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Lien</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Mise à jour de l’élément</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Espacement</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Ignorer la position</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">DÉMARRER</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">END</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Espace de groupe</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Espace de l’élément</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Drapeau</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Élément d’indicateur cliqué</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Réponse</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">L’élément de réponse a cliqué</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Transférer</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Élément transféré cliqué</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Supprimer</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">Suppression de l’élément cliqué</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Avatar</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Caméra</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Prendre une photo</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">L’élément de l’appareil photo a cliqué</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Galerie</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Afficher vos photos</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">Élément de galerie cliqué</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Vidéos</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Lire vos vidéos</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">Élément vidéos cliqué</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Gestion</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Gérer votre bibliothèque multimédia</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">Nous avons cliqué sur Gérer l’élément</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">Actions d’e-mail</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Documents</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Dernière mise à jour 14:14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Partage</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">Nous avons cliqué sur l’élément de partage</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Déplacer</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">Déplacer l’élément sur lequel vous avez cliqué</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Supprimer</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">Suppression de l’élément cliqué</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Informations</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">Élément d’informations sur clic</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Horloge</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">L’élément horloge a cliqué</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Alarme</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Élément d’alarme cliqué</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Fuseau horaire</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">Élément de fuseau horaire sur lequel vous avez cliqué</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Bouton</string>
+    <string name="buttonbar">Barre de boutons</string>
+    <string name="button_disabled">Bouton désactivé</string>
+    <string name="button_borderless">Bouton sans bordure</string>
+    <string name="button_borderless_disabled">Bouton désactivé sans bordure</string>
+    <string name="button_large">Grand bouton</string>
+    <string name="button_large_disabled">Grand bouton désactivé</string>
+    <string name="button_outlined">Bouton avec contour</string>
+    <string name="button_outlined_disabled">Bouton désactivé avec contour</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Choisir une date</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Date unique</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Aucune date sélectionnée</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Afficher le sélecteur de dates</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Afficher le sélecteur de date et heure avec l’onglet date sélectionné</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Afficher le sélecteur de date et heure avec l’onglet Heure sélectionné</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Afficher le sélecteur de date et d’heure</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Plage de dates</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Début :</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Fin :</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Aucun démarrage sélectionné</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Aucune fin sélectionnée</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Sélectionnez la date de début</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Sélectionnez la date de fin</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Plage de dates et d’heures</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Sélectionner l’intervalle de date et d’heure</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Afficher la boîte de dialogue</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Afficher le tiroir</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Afficher la boîte de dialogue du tiroir</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Boîte de dialogue Sans fondu vers le bas</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Afficher le tiroir supérieur</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Boîte de dialogue Pas de fondu en haut</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button"> Afficher la boîte de dialogue d’affichage d’ancrage en haut</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button"> Ne pas afficher la boîte de dialogue titre en haut</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button"> Afficher la boîte de dialogue en haut du titre ci-dessous</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Afficher le tiroir droit</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Afficher le tiroir gauche</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Titre, texte principal</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Sous-titre, texte secondaire</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Texte du sous-titre personnalisé</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Pied de page, texte troisième</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Liste sur une seule ligne avec un texte d’en-tête de sous-titre gris</string>
+    <string name="list_item_sub_header_two_line">Liste à deux lignes</string>
+    <string name="list_item_sub_header_two_line_dense">Liste sur deux lignes avec un espacement dense</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Liste à deux lignes avec affichage personnalisé des sous-titres secondaires</string>
+    <string name="list_item_sub_header_three_line">Liste sur trois lignes avec texte d’en-tête de sous-titre noir</string>
+    <string name="list_item_sub_header_no_custom_views">Répertorier les éléments sans affichage personnalisé</string>
+    <string name="list_item_sub_header_large_header">Répertorier les éléments avec des vues personnalisées volumineuses</string>
+    <string name="list_item_sub_header_wrapped_text">Répertorier les éléments avec du texte encapsulé</string>
+    <string name="list_item_sub_header_truncated_text">Répertorier les éléments avec du texte tronqué</string>
+    <string name="list_item_sub_header_custom_accessory_text">Action</string>
+    <string name="list_item_truncation_middle">Troncation intermédiaire.</string>
+    <string name="list_item_truncation_end">Terminer la troncation.</string>
+    <string name="list_item_truncation_start">Démarrez la troncation.</string>
+    <string name="list_item_custom_text_view">Valeur</string>
+    <string name="list_item_click">Vous avez cliqué sur l’élément de liste.</string>
+    <string name="list_item_click_custom_accessory_view">Vous avez cliqué sur l’affichage des accessoires personnalisés.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Vous avez cliqué sur l’affichage accessoire personnalisé du sous-en-tête.</string>
+    <string name="list_item_more_options">Autres options</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Sélectionner</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">Aucun</string>
+    <string name="people_picker_delete_example">Supprimer</string>
+    <string name="people_picker_custom_persona_description">Cet exemple montre comment créer un objet IPersona personnalisé.</string>
+    <string name="people_picker_dialog_title_removed">Vous avez supprimé un personnage :</string>
+    <string name="people_picker_dialog_title_added">Vous avez ajouté un personnage :</string>
+    <string name="people_picker_drag_started">Glisser-déplacer démarré</string>
+    <string name="people_picker_drag_ended">Glisser-déplacer terminé</string>
+    <string name="people_picker_picked_personas_listener">Écouteur de personnages</string>
+    <string name="people_picker_suggestions_listener">Écouteur de suggestions</string>
+    <string name="people_picker_persona_chip_click">Vous avez cliqué sur %s</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s destinataire</item>
+        <item quantity="many">%1$s destinataires</item>
+        <item quantity="other">%1$s destinataires</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Développer la feuille inférieure persistante</string>
+    <string name="collapse_persistent_sheet_button"> Masquer la feuille inférieure persistante</string>
+    <string name="show_persistent_sheet_button"> Afficher la feuille inférieure persistante</string>
+    <string name="new_view">Il s’agit d’une nouvelle vue</string>
+    <string name="toggle_sheet_content">Activer/désactiver le contenu de la feuille inférieure</string>
+    <string name="switch_to_custom_content">Basculer vers le contenu personnalisé</string>
+    <string name="one_line_content">Contenu d’une feuille de base d’une ligne</string>
+    <string name="toggle_disable_all_items">Activer/désactiver tous les éléments</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Ajouter/supprimer une vue</string>
+    <string name="persistent_sheet_item_change_collapsed_height"> Modifier la hauteur réduite</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Nouveau dossier</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Nouvel élément de dossier sur lequel l’utilisateur a cliqué</string>
+    <string name="persistent_sheet_item_edit_title">Modifier</string>
+    <string name="persistent_sheet_item_edit_toast">Modification de l’élément cliqué</string>
+    <string name="persistent_sheet_item_save_title">Enregistrer</string>
+    <string name="persistent_sheet_item_save_toast">Enregistrement de l’élément cliqué</string>
+    <string name="persistent_sheet_item_zoom_in_title">Agrandir</string>
+    <string name="persistent_sheet_item_zoom_in_toast"> Zoom avant sur l’élément sur lequel vous avez cliqué</string>
+    <string name="persistent_sheet_item_zoom_out_title">Dézoomer</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Clic sur l’élément zoom arrière</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Disponible</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Ait Meunier</string>
+    <string name="persona_name_amanda_brady">Amanda Brady</string>
+    <string name="persona_name_ashley_mccarthy">Ashley McCarthy</string>
+    <string name="persona_name_carlos_slattery">Carlos Slattery</string>
+    <string name="persona_name_carole_poland">Pologne de Noël</string>
+    <string name="persona_name_cecil_folk">Cecil Folk</string>
+    <string name="persona_name_celeste_burton">Celeste Burton</string>
+    <string name="persona_name_charlotte_waltson">Charlotte Waltson</string>
+    <string name="persona_name_colin_ballinger">Colin Ballinger</string>
+    <string name="persona_name_daisy_phillips">Daisy Phillips</string>
+    <string name="persona_name_elliot_woodward">Elliot Woodward</string>
+    <string name="persona_name_elvia_atkins">Elvia Atkins</string>
+    <string name="persona_name_erik_nason">Erik Nason</string>
+    <string name="persona_name_henry_brill">Henry Brill</string>
+    <string name="persona_name_isaac_fielder">Fielder Der</string>
+    <string name="persona_name_johnie_mcconnell">Johnie McConnell</string>
+    <string name="persona_name_kat_larsson">Kat Larsson</string>
+    <string name="persona_name_katri_ahokas">Katri Ahokas</string>
+    <string name="persona_name_kevin_sturgis">Kevin Sturgis</string>
+    <string name="persona_name_kristen_patterson">Kristen Patterson</string>
+    <string name="persona_name_lydia_bauer">Jean-Jean</string>
+    <string name="persona_name_mauricio_august">Mauricio August</string>
+    <string name="persona_name_miguel_garcia">Miguel Garcia</string>
+    <string name="persona_name_mona_kane">Mona Kane</string>
+    <string name="persona_name_robin_counts">Robin Counts</string>
+    <string name="persona_name_robert_tolbert">Robert Tolbert</string>
+    <string name="persona_name_tim_deboer">Tim Deboer</string>
+    <string name="persona_name_wanda_howard">Wanda Howard</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Concepteur</string>
+    <string name="persona_subtitle_engineer">Ingénieur</string>
+    <string name="persona_subtitle_manager">Responsable</string>
+    <string name="persona_subtitle_researcher">Recherche</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (exemple de texte long pour tester la troncation)</string>
+    <string name="persona_view_description_xxlarge">Avatar XXLarge avec trois lignes de texte</string>
+    <string name="persona_view_description_large">Grand avatar avec deux lignes de texte</string>
+    <string name="persona_view_description_small">Petit avatar avec une ligne de texte</string>
+    <string name="people_picker_hint">Aucun avec indicateur affiché</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Puce de personnage désactivée</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Erreur Persona Chip</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Puce de personnage sans icône de fermeture</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Puce persona de base</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Vous avez cliqué sur une puce de personnage sélectionnée.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Partage</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Suivre</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Inviter des personnes</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Actualiser la page</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Ouvrir dans le navigateur</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Il s’agit d’un menu contextuel multiligne. Le nombre maximal de lignes est défini sur deux. Le reste du texte sera tronqué.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Toutes les actualités</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Actualités enregistrées</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Actualités des sites</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Notifier en dehors des heures de travail</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Notifier en cas d’inactivité sur le Bureau</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Vous avez cliqué sur l’élément :</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Menu simple</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">Menu simple 2</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Menu avec un élément sélectionnable et un séparateur</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Menu avec tous les éléments, icônes et texte long sélectionnables</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Afficher</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Progression circulaire</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Petite</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Moyen</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">Grande</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Progression linéaire</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Indéterminé</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Déterminée</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Barre de Recherche</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Rappel du microphone</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Autocorrect</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Microphone enfoncé</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Mode Droit enfoncé</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Recherche au clavier enfoncée</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Action</string>
+    <string name="snackbar_action_long">Action de texte long</string>
+    <string name="snackbar_single_line">Barre d’en-cas sur une seule ligne</string>
+    <string name="snackbar_multiline">Ceci est un en-cas multiligne. Le nombre maximal de lignes est défini sur deux. Le reste du texte sera tronqué.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit. </string>
+    <string name="snackbar_announcement">Ceci est un en-cas d’annonce. Il est utilisé pour communiquer de nouvelles fonctionnalités.</string>
+    <string name="snackbar_primary">Ceci est un en-cas principal.</string>
+    <string name="snackbar_light">Ceci est un en-cas léger.</string>
+    <string name="snackbar_warning">Ceci est un en-cas d’avertissement.</string>
+    <string name="snackbar_danger">Ceci est un en-cas danger.</string>
+    <string name="snackbar_description_single_line">Durée courte</string>
+    <string name="snackbar_description_single_line_custom_view">Durée longue avec progression circulaire en tant que petite vue personnalisée</string>
+    <string name="snackbar_description_single_line_action">Durée courte avec action</string>
+    <string name="snackbar_description_single_line_action_custom_view">Durée courte avec une action et une vue personnalisée moyenne</string>
+    <string name="snackbar_description_single_line_custom_text_color">Durée courte avec une couleur de texte personnalisée</string>
+    <string name="snackbar_description_multiline">Durée longue</string>
+    <string name="snackbar_description_multiline_custom_view">Durée longue avec une petite vue personnalisée</string>
+    <string name="snackbar_description_multiline_action">Durée indéfinie avec des mises à jour d’action et de texte</string>
+    <string name="snackbar_description_multiline_action_custom_view">Durée courte avec une action et une vue personnalisée moyenne</string>
+    <string name="snackbar_description_multiline_action_long">Durée courte avec texte d’action long</string>
+    <string name="snackbar_description_announcement">Durée courte</string>
+    <string name="snackbar_description_updated">Ce texte a été mis à jour.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Afficher la barre d’en-cas</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Ligne simple</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Multiligne</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Style d’annonce</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Style principal</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Style clair</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Style d’avertissement</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Style de danger</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Accueil</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Courrier</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Paramètres</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Notification</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Plus</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Alignement du texte</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Verticale</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Horizontal</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">Aucun texte</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Éléments d’onglet</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Titre</string>
+    <string name="cell_sample_description">Description</string>
+    <string name="calculate_cells">Charger/calculer 100 cellules</string>
+    <string name="calculate_layouts">Charger/calculer 100 dispositions</string>
+    <string name="template_list">Liste de modèles</string>
+    <string name="regular_list">Liste standard</string>
+    <string name="cell_example_title">Titre : Cellule</string>
+    <string name="cell_example_description">Description : appuyez pour modifier l’orientation</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Onglet Standard 2 segments</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Onglet Standard 3-segments</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Onglet Standard 4 segments</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Onglet standard avec pager</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Changer d’onglet</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Onglet Pilules </string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Appuyez pour l’info-bulle</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Appuyez pour l’info-bulle calendrier personnalisé</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Appuyez sur l’info-bulle Couleur personnalisée</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Appuyez pour ignorer l’info-bulle Intérieur</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Appuyez pour l’info-bulle Affichage personnalisé</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Info-bulle Couleur personnalisée supérieure</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">Info-bulle de fin supérieure avec offsetX 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Info-bulle De début inférieur</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Info-bulle de bas de page avec décalage 10dp</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Masquer dans l’info-bulle</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Info-bulle fermée</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Le titre est clair 28 sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">Le titre 1 est moyen 20 sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">Title 2 is Regular 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Titre normal 18 sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">Sous-titre 1 : Normal 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">La sous-titre 2 est moyenne de 16 sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">Body 1 est normal 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">Le corps 2 est moyen 14 sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">La légende est normale 12sp</string>
+
+</resources>

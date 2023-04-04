@@ -4,7 +4,6 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Icon
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,10 +26,7 @@ import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.FluentIcon
-import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
@@ -77,7 +73,7 @@ fun AppBar(
     subTitle: String? = null,
     logo: @Composable (() -> Unit)? = null,
     searchMode: Boolean = false,
-    navigationIcon: FluentIcon = FluentIcon(SearchBarIcons.Arrowback),
+    navigationIcon: FluentIcon = FluentIcon(SearchBarIcons.Arrowback, flipOnRtl = true),
     postTitleIcon: FluentIcon = FluentIcon(),
     preSubtitleIcon: FluentIcon = FluentIcon(),
     postSubtitleIcon: FluentIcon = FluentIcon(
@@ -112,7 +108,6 @@ fun AppBar(
                         .requiredHeight(56.dp * appTitleDelta)
                         .animateContentSize()
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
                         .scale(scaleX = 1.0F, scaleY = appTitleDelta)
                         .alpha(if (appTitleDelta != 1.0F) appTitleDelta / 3 else 1.0F),
                     horizontalArrangement = Arrangement.Start,
@@ -132,8 +127,7 @@ fun AppBar(
                                 ), contentAlignment = Alignment.Center
                         ) {
                             Icon(
-                                navigationIcon.value(),
-                                navigationIcon.contentDescription,
+                                navigationIcon,
                                 modifier = Modifier
                                     .padding(getAppBarTokens().navigationIconPadding(getAppBarInfo()))
                                     .size(getAppBarTokens().leftIconSize(getAppBarInfo())),
@@ -142,8 +136,19 @@ fun AppBar(
                         }
                     }
 
-                    if (appBarSize != AppBarSize.Medium)
-                        logo?.invoke()
+                    if (appBarSize != AppBarSize.Medium) {
+                        Box(
+                            modifier = Modifier
+                                .then(
+                                    if (appBarSize == AppBarSize.Large)
+                                        Modifier.padding(start = 16.dp)
+                                    else
+                                        Modifier
+                                )
+                        ) {
+                            logo?.invoke()
+                        }
+                    }
 
                     val titleTextStyle = getAppBarTokens().titleTypography(getAppBarInfo())
                     val subtitleTextStyle = getAppBarTokens().subtitleTypography(getAppBarInfo())
@@ -176,8 +181,7 @@ fun AppBar(
                                 )
                                 if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
                                     Icon(
-                                        postTitleIcon.value(themeMode),
-                                        postTitleIcon.contentDescription,
+                                        postTitleIcon,
                                         modifier = Modifier
                                             .size(getAppBarTokens().titleIconSize(getAppBarInfo())),
                                         tint = getAppBarTokens().titleIconColor(getAppBarInfo())
@@ -194,8 +198,7 @@ fun AppBar(
                             ) {
                                 if (preSubtitleIcon.isIconAvailable())
                                     Icon(
-                                        preSubtitleIcon.value(themeMode),
-                                        preSubtitleIcon.contentDescription,
+                                        preSubtitleIcon,
                                         modifier = Modifier
                                             .size(
                                                 getAppBarTokens().subtitleIconSize(
@@ -219,8 +222,7 @@ fun AppBar(
                                 )
                                 if (postSubtitleIcon.isIconAvailable())
                                     Icon(
-                                        postSubtitleIcon.value(themeMode),
-                                        postSubtitleIcon.contentDescription,
+                                        postSubtitleIcon,
                                         modifier = Modifier
                                             .size(
                                                 getAppBarTokens().subtitleIconSize(

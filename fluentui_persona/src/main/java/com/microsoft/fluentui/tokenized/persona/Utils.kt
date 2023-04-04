@@ -141,8 +141,8 @@ class Persona(
 )
 
 class AvatarCarouselItem(
+    val person: Person,
     val enabled: Boolean = true,
-    val person: Person = Person(),
     val enableActivityRing: Boolean = false,
     val onItemClick: (() -> Unit)? = null
 )

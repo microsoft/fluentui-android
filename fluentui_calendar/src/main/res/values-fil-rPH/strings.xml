@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="date_time">%1$s, %2$s</string>
-  <string name="today">Ngayon</string>
-  <string name="tomorrow">Bukas</string>
-  <string name="yesterday">Kahapon</string>
   <string name="monday_initial">L</string>
   <string name="tuesday_initial">M</string>
   <string name="wednesday_initial">M</string>
@@ -15,6 +11,11 @@
   <string name="accessibility_goto_previous_week">Pumunta sa nakaraang linggo</string>
   <string name="accessibility_today">ngayon</string>
   <string name="accessibility_selected">Napili</string>
+  <string name="done">Tapos na</string>
+  <string name="date_time">%1$s, %2$s</string>
+  <string name="today">Ngayong Araw</string>
+  <string name="tomorrow">Bukas</string>
+  <string name="yesterday">Kahapon</string>
   <string name="date_time_picker_start_time">Oras ng pagsisimula</string>
   <string name="date_time_picker_end_time">Oras ng pagtatapos</string>
   <string name="date_time_picker_start_date">Petsa ng pagsisimula</string>
@@ -57,5 +58,5 @@
   <string name="date_time_picker_accessibility_period_toggle_button">I-toggle ang AM PM na oras</string>
   <string name="date_time_picker_accessibility_period_toggle_click_action">i-toggle ang AM PM na oras</string>
   <string name="date_time_picker_accessibility_selected_date">%s ang napili</string>
-    <string name="done">Tapos na</string>
+  <string name="calendar_adapter_accessibility_item_selected">napili</string>
 </resources>

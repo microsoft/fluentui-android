@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Vilkimo rankenėlė</string>
+  <string name="expand">išplėsti</string>
+  <string name="collapse">sutraukti</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">હેન્ડલ ખેંચો</string>
+  <string name="expand">વિસ્તૃત કરો</string>
+  <string name="collapse">સંક્ષિપ્ત કરો</string>
+</resources>

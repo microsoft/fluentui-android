@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Vilkšanas turis</string>
+  <string name="expand">izvērst</string>
+  <string name="collapse">sakļaut</string>
+</resources>

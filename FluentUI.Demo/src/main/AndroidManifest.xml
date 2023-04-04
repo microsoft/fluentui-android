@@ -41,6 +41,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ProgressActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ScaffoldActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.V2SearchBarActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

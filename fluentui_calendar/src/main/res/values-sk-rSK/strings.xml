@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">P</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">U</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">S</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">Š</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">Pi</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">So</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">N</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Prejsť na nasledujúci týždeň</string>
+    <string name="accessibility_goto_previous_week">Prejsť na predchádzajúci týždeň</string>
+    <string name="accessibility_today">dnes</string>
+    <string name="accessibility_selected">Vybraté</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Hotovo</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Dnes</string>
+    <string name="tomorrow">Zajtra</string>
+    <string name="yesterday">Včera</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Čas začatia</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Čas ukončenia</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Dátum začatia</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Dátum ukončenia</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Vyberte čas</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Vyberte dátum</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Výber dátumu a času</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Výber dátumu</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Rozsah nástroja na výber dátumu a času</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Rozsah nástroja na výber dátumu</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Karta Počiatočný čas</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Karta Čas ukončenia</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Karta Dátum začatia</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Karta Dátum ukončenia</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Zavrieť dialógové okno</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">O mesiac viac</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">vybrať nasledujúci mesiac</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">O mesiac menej</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">vybrať predchádzajúci mesiac</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">O deň viac</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">vybrať nasledujúci deň</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">O deň menej</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">vybrať predchádzajúci deň</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">O rok viac</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">vybrať nasledujúci rok</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">O rok menej</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">vybrať predchádzajúci rok</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">O deň viac</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">vybrať nasledujúci dátum</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">O deň menej</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">vybrať predchádzajúci dátum</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">O hodinu viac</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">vybrať nasledujúcu hodinu</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">O hodinu menej</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">vybrať predchádzajúcu hodinu</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">O minútu viac</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">vybrať nasledujúcu minútu</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">O minútu menej</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">vybrať predchádzajúcu minútu</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Tlačidlo prepínania medzi dopoludním a popoludním</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">prepnúť dopoludnie a popoludnie</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">%s vybraté</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">vybraté</string>
+</resources>

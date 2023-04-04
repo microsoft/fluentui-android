@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- weekday initials -->
+    <!--Initial that represents the day Monday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="monday_initial" comment="initial for monday">Ll</string>
+    <!--Initial that represents the day Tuesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="tuesday_initial" comment="initial for tuesday">Maw</string>
+    <!--Initial that represents the day Wednesday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="wednesday_initial" comment="initial for wednesday">Mer</string>
+    <!--Initial that represents the day Thursday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="thursday_initial" comment="initial for thursday">I</string>
+    <!--Initial that represents the day Friday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="friday_initial" comment="initial for friday">G</string>
+    <!--Initial that represents the day Saturday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="saturday_initial" comment="initial for saturday">S</string>
+    <!--Initial that represents the day Sunday. For English this should be the first letter,
+    but for other languages like Russian, it might be two or more letters.-->
+    <string name="sunday_initial" comment="initial for sunday">S</string>
+
+    <!-- accessibility -->
+    <string name="accessibility_goto_next_week">Mynd i\'r wythnos nesaf</string>
+    <string name="accessibility_goto_previous_week">Mynd i\'r wythnos flaenorol</string>
+    <string name="accessibility_today">heddiw</string>
+    <string name="accessibility_selected">Dewiswyd</string>
+
+    <!-- *** Shared *** -->
+    <string name="done">Wedi gorffen</string>
+
+    <!-- *** CalendarView *** -->
+    <string name="date_time">%1$s, %2$s</string>
+    <string name="today">Heddiw</string>
+    <string name="tomorrow">Yfory</string>
+    <string name="yesterday">Ddoe</string>
+
+    <!-- *** TimePicker *** -->
+    <!--date picker tab title for start time range-->
+    <string name="date_time_picker_start_time">Amser dechrau</string>
+    <!--date picker tab title for end time range-->
+    <string name="date_time_picker_end_time">Amser gorffen</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_time_picker_start_date">Dyddiad dechrau</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_time_picker_end_date">Dyddiad gorffen</string>
+    <!--date picker dialog title for time selection-->
+    <string name="date_time_picker_choose_time">Dewis Amser</string>
+    <!--date picker dialog title for date selection-->
+    <string name="date_time_picker_choose_date">Dewis Dyddiad</string>
+
+    <!--accessibility-->
+    <!--Announcement for date time picker-->
+    <string name="date_time_picker_accessibility_dialog_title">Dewiswr Amser Dyddiad</string>
+    <!--Announcement for date picker-->
+    <string name="date_picker_accessibility_dialog_title">Dewiswr Dyddiad</string>
+    <!--Announcement for date time picker range-->
+    <string name="date_time_picker_range_accessibility_dialog_title">Ystod Dewiswr Amser Dyddiad</string>
+    <!--Announcement for date picker range-->
+    <string name="date_picker_range_accessibility_dialog_title">Ystod Dewiswr Dyddiad</string>
+    <!--date time picker tab title for start time range-->
+    <string name="date_time_picker_accessiblility_start_time">Tab amser dechrau</string>
+    <!--date time picker tab title for end time range-->
+    <string name="date_time_picker_accessiblility_end_time">Tab amser gorffen</string>
+    <!--date picker tab title for start date range-->
+    <string name="date_picker_accessiblility_start_date">Tab dyddiad dechrau</string>
+    <!--date picker tab title for end date range-->
+    <string name="date_picker_accessiblility_end_date">Tab dyddiad gorffen</string>
+    <!--date time picker dialog close button-->
+    <string name="date_time_picker_accessibility_close_dialog_button">Cau\'r blwch deialog</string>
+    <!--date number picker month increment button-->
+    <string name="date_picker_accessibility_increment_month_button">Mis cynyddiad</string>
+    <!-- date time picker click action next month announcement-->
+    <string name="date_picker_accessibility_next_month_click_action">dewis y mis nesaf</string>
+    <!--date number picker month decrement button-->
+    <string name="date_picker_accessibility_decrement_month_button">Mis lleihad</string>
+    <!-- date time picker click action previous month announcement-->
+    <string name="date_picker_accessibility_previous_month_click_action">dewis y mis blaenorol</string>
+    <!--date number picker day increment button-->
+    <string name="date_picker_accessibility_increment_day_button">Diwrnod cynyddiad</string>
+    <!-- date time picker click action next day announcement-->
+    <string name="date_picker_accessibility_next_day_click_action">dewis y diwrnod nesaf</string>
+    <!--date number picker day decrement button-->
+    <string name="date_picker_accessibility_decrement_day_button">Diwrnod lleihad</string>
+    <!-- date time picker click action previous day announcement-->
+    <string name="date_picker_accessibility_previous_day_click_action">dewis y diwrnod blaenorol</string>
+    <!--date number picker year increment button-->
+    <string name="date_picker_accessibility_increment_year_button">Blwyddyn cynyddiad</string>
+    <!-- date time picker click action next year announcement-->
+    <string name="date_picker_accessibility_next_year_click_action">dewis y flwyddyn nesaf</string>
+    <!--date number picker year decrement button-->
+    <string name="date_picker_accessibility_decrement_year_button">Blwyddyn lleihad</string>
+    <!-- date time picker click action previous year announcement-->
+    <string name="date_picker_accessibility_previous_year_click_action">dewis y flwyddyn flaenorol</string>
+    <!--date time number picker date increment button-->
+    <string name="date_time_picker_accessibility_increment_date_button">Dyddiad cynyddiad</string>
+    <!-- date time picker click action next date announcement-->
+    <string name="date_picker_accessibility_next_date_click_action">dewis y dyddiad nesaf</string>
+    <!--date time number picker date decrement button-->
+    <string name="date_time_picker_accessibility_decrement_date_button">Dyddiad lleihad</string>
+    <!-- date time picker click action previous date announcement-->
+    <string name="date_picker_accessibility_previous_date_click_action">dewis y dyddiad blaenorol</string>
+    <!--date time number picker hour increment button-->
+    <string name="date_time_picker_accessibility_increment_hour_button">Awr cynyddiad</string>
+    <!-- date time picker click action next hour announcement-->
+    <string name="date_picker_accessibility_next_hour_click_action">dewis yr awr nesaf</string>
+    <!--date time number picker hour decrement button-->
+    <string name="date_time_picker_accessibility_decrement_hour_button">Awr lleihad</string>
+    <!-- date time picker click action previous hour announcement-->
+    <string name="date_picker_accessibility_previous_hour_click_action">dewis yr awr flaenorol</string>
+    <!--date time number picker minute increment button-->
+    <string name="date_time_picker_accessibility_increment_minute_button">Munud cynyddiad</string>
+    <!-- date time picker click action next minute announcement-->
+    <string name="date_picker_accessibility_next_minute_click_action">dewis y munud nesaf</string>
+    <!--date time number picker minute decrement button-->
+    <string name="date_time_picker_accessibility_decrement_minute_button">Munud lleihad</string>
+    <!-- date time picker click action previous minute announcement-->
+    <string name="date_picker_accessibility_previous_minute_click_action">dewis y munud blaenorol</string>
+    <!--date time number picker period (am/pm) toggle button-->
+    <string name="date_time_picker_accessibility_period_toggle_button">Toglo cyfnod AM PM</string>
+    <!--date time number picker click action period (am/pm) announcement-->
+    <string name="date_time_picker_accessibility_period_toggle_click_action">toglo cyfnod AM PM</string>
+    <!--Announces the selected date and/or time-->
+    <string name="date_time_picker_accessibility_selected_date">Wedi dewis %s</string>
+
+    <!-- *** Calendar *** -->
+
+    <!--accessibility-->
+    <!--Describes the action used to select calendar item-->
+    <string name="calendar_adapter_accessibility_item_selected">dewiswyd</string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Ryd søgning</string>
+  <string name="searchbar_back">Tilbage</string>
+  <string name="searchbar_query_hint_default">Søg</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">redigeringsfeltet er ryddet</string>
+</resources>

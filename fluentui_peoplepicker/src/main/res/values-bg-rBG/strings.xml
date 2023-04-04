@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Етикет</string>
+    <string name="people_picker_search_directory">Търсене в указателя</string>
+    <string name="people_picker_search_progress">Търсене…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Въведете име или имейл</string>
+    <string name="people_picker_accessibility_persona_added">%s е добавен/а</string>
+    <string name="people_picker_accessibility_persona_removed">%s е премахнат/а</string>
+    <string name="people_picker_accessibility_replaced">%s е заместен/а,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Щракнете</string>
+    <string name="people_picker_accessibility_delete_persona">Изтриване</string>
+    <string name="people_picker_accessibility_deselect_persona">Отмяна на избора</string>
+    <string name="people_picker_accessibility_select_persona">Избор</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">Щракнато е върху %s</string>
+    <string name="people_picker_accessibility_deselected_persona">Премахнат избор от %s</string>
+    <string name="people_picker_accessibility_selected_persona">Избран е %s</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, активирането ще премахне избора</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, активирането ще изтрие</string>
+    <string name="people_picker_accessibility_click_selected_persona">, активирането ще щракне върху</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Списъкът с предложения се отвори с %s човек</item>
+        <item quantity="other">Списъкът с предложения се отвори с %s души</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s човек</item>
+        <item quantity="other">%s души</item>
+    </plurals>
+</resources>

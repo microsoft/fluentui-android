@@ -4,25 +4,24 @@ import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
@@ -37,6 +36,8 @@ import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class V2SearchBarActivity : DemoActivity() {
     override val contentLayoutId: Int
@@ -57,6 +58,7 @@ class V2SearchBarActivity : DemoActivity() {
                 var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }
                 var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
                 var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
+                var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
 
                 var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
 
@@ -96,8 +98,6 @@ class V2SearchBarActivity : DemoActivity() {
                 var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
 
                 Column(
-                    modifier = Modifier
-                        .padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     ListItem.SectionHeader(
@@ -171,22 +171,53 @@ class V2SearchBarActivity : DemoActivity() {
                                     )
                                 }
                             )
+
+                            ListItem.Item(
+                                text = "Induce Delay",
+                                subText = if (induceDelay)
+                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                else
+                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                trailingAccessoryView = {
+                                    ToggleSwitch(
+                                        onValueChange = {
+                                            induceDelay = it
+                                        },
+                                        checkedState = induceDelay
+                                    )
+                                }
+                            )
                         }
                     }
 
                     val microphonePressedString = getDemoAppString(DemoAppStrings.MicrophonePressed)
                     val rightViewPressedString = getDemoAppString(DemoAppStrings.RightViewPressed)
-                    val keyboardSearchPressedString = getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
+                    val keyboardSearchPressedString =
+                        getDemoAppString(DemoAppStrings.KeyboardSearchPressed)
+
+                    val scope = rememberCoroutineScope()
+                    var loading by rememberSaveable { mutableStateOf(false) }
                     val keyboardController = LocalSoftwareKeyboardController.current
+
                     SearchBar(
                         onValueChange = { query, selectedPerson ->
-                            filteredPeople = listofPeople.filter {
-                                it.firstName.lowercase().contains(query.lowercase()) ||
-                                        it.lastName.lowercase().contains(query.lowercase())
-                            } as MutableList<Person>
-                            selectedPeople = selectedPerson
+                            scope.launch {
+                                loading = true
+
+                                if (induceDelay)
+                                    delay(2000)
+
+                                filteredPeople = listofPeople.filter {
+                                    it.firstName.lowercase().contains(query.lowercase()) ||
+                                            it.lastName.lowercase().contains(query.lowercase())
+                                } as MutableList<Person>
+                                selectedPeople = selectedPerson
+
+                                loading = false
+                            }
                         },
                         style = searchBarStyle,
+                        loading = loading,
                         selectedPerson = selectedPeople,
                         microphoneCallback = if (enableMicrophoneCallback) {
                             {
@@ -201,19 +232,29 @@ class V2SearchBarActivity : DemoActivity() {
                         ),
                         keyboardActions = KeyboardActions(
                             onSearch = {
-                                Toast.makeText(context, keyboardSearchPressedString, Toast.LENGTH_SHORT)
+                                Toast.makeText(
+                                    context,
+                                    keyboardSearchPressedString,
+                                    Toast.LENGTH_SHORT
+                                )
                                     .show()
                                 keyboardController?.hide()
                             }
                         ),
                         rightAccessoryIcon = if (displayRightAccessory) {
-                            SearchBarIcons.Office
-                        } else null,
-                        rightAccessoryIconDescription = "Office",
-                        rightAccessoryViewOnClick = {
-                            Toast.makeText(context, rightViewPressedString, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                            FluentIcon(
+                                SearchBarIcons.Office,
+                                contentDescription = "Office",
+                                onClick = {
+                                    Toast.makeText(
+                                        context,
+                                        rightViewPressedString,
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                }
+                            )
+                        } else null
                     )
 
                     val filteredPersona = mutableListOf<Persona>()

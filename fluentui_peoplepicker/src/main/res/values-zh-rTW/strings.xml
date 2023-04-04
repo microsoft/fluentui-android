@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
 <resources>
-  <string name="people_picker_sample_label">標籤</string>
-  <string name="people_picker_search_directory">搜尋目錄</string>
-  <string name="people_picker_search_progress">正在搜尋…</string>
-  <string name="people_picker_accessibility_default_hint">輸入名稱或電子郵件</string>
-  <string name="people_picker_accessibility_persona_added">已新增「%s」</string>
-  <string name="people_picker_accessibility_persona_removed">已移除「%s」</string>
-  <string name="people_picker_accessibility_replaced">已取代「%s」，</string>
-  <string name="people_picker_accessibility_click_persona">按一下</string>
-  <string name="people_picker_accessibility_delete_persona">刪除</string>
-  <string name="people_picker_accessibility_deselect_persona">取消選取</string>
-  <string name="people_picker_accessibility_select_persona">選取</string>
-  <string name="people_picker_accessibility_clicked_persona">已按一下「%s」</string>
-  <string name="people_picker_accessibility_deselected_persona">已取消選取「%s」</string>
-  <string name="people_picker_accessibility_selected_persona">已選取「%s」</string>
-  <string name="people_picker_accessibility_deselect_selected_persona">，啟用將取消選取</string>
-  <string name="people_picker_accessibility_delete_selected_persona">，啟用將刪除</string>
-  <string name="people_picker_accessibility_click_selected_persona">，啟用將按一下</string>
-  <plurals name="people_picker_accessibility_suggestions_opened">
-    <item quantity="other">已由 %s 人開啟的建議清單</item>
-  </plurals>
-  <plurals name="people_picker_accessibility_text_view">
-    <item quantity="other">%s 人</item>
-  </plurals>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">標籤</string>
+    <string name="people_picker_search_directory">搜尋目錄</string>
+    <string name="people_picker_search_progress">正在搜尋…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">輸入名稱或電子郵件</string>
+    <string name="people_picker_accessibility_persona_added">已新增「%s」</string>
+    <string name="people_picker_accessibility_persona_removed">已移除「%s」</string>
+    <string name="people_picker_accessibility_replaced">已取代「%s」，</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">按一下</string>
+    <string name="people_picker_accessibility_delete_persona">刪除</string>
+    <string name="people_picker_accessibility_deselect_persona">取消選取</string>
+    <string name="people_picker_accessibility_select_persona">選取</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">已按一下「%s」</string>
+    <string name="people_picker_accessibility_deselected_persona">已取消選取「%s」</string>
+    <string name="people_picker_accessibility_selected_persona">已選取「%s」</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">，啟用將取消選取</string>
+    <string name="people_picker_accessibility_delete_selected_persona">，啟用將刪除</string>
+    <string name="people_picker_accessibility_click_selected_persona">，啟用將按一下</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="other">已由 %s 人開啟的建議清單</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="other">%s 人</item>
+    </plurals>
 </resources>

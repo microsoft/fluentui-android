@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="drag_handle">Faire glisser la poignée</string>
+  <string name="expand">développer</string>
+  <string name="collapse">réduire</string>
+</resources>

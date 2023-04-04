@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <!--App-->
+    <string name="app_name">Реттелмелі UI көрсетілімі</string>
+    <string name="app_title">Реттелмелі UI</string>
+    <!-- Announces selected component -->
+    <string name="app_accessibility_selected">%s таңдалды</string>
+    <string name="app_modifiable_parameters">Өзгертілмелі параметрлер</string>
+    <string name="app_right_accessory_view">Оң жақ қосалқы көрініс</string>
+
+    <string name="app_style">Мәнер</string>
+    <!-- describes an action, icon pressed -->
+    <string name="app_icon_pressed">Белгіше басылды</string>
+
+    <!--ActionBar-->
+    <!-- Text for button that starts the demo -->
+    <string name="actionbar_start_button">Көрсетілімді бастау</string>
+    <!-- Texts for radio buttons -->
+    <string name="actionbar_carousel_radio_label">Карусель</string>
+    <string name="actionbar_icon_radio_label">Белгіше</string>
+    <string name="actionbar_basic_radio_label">Негізгі</string>
+    <string name="actionbar_position_bottom_radio_label">Төменгі жақ</string>
+    <string name="actionbar_position_top_radio_label">Жоғарғы жағы бойынша</string>
+
+    <!--UI Text view label denoting type of action bar -->
+    <string name="actionbar_type_heading">Әрекеттер тақтасының түрі</string>
+    <!--UI Text view label denoting position of action bar -->
+    <string name="actionbar_position_heading">Әрекеттер тақтасының орны</string>
+
+    <!--AppBar-->
+    <string name="app_bar_style">Бағдарламаның пәрмендік жолының мәнері</string>
+    <string name="app_bar_subtitle">Тақырыпша</string>
+
+    <!-- Text that shows the action performed to the user -->
+    <string name="app_bar_layout_navigation_icon_clicked">Навигация белгішесі басылды.</string>
+
+    <!-- Icon labels -->
+    <string name="app_bar_layout_menu_flag">Жалауша</string>
+    <string name="app_bar_layout_menu_settings">Параметрлер</string>
+    <string name="app_bar_layout_menu_search">Іздеу</string>
+    <!-- UI Text that shows the type of scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_sub_header">Айналдыру әрекеті: %s</string>
+    <!-- Text for button that toggles the scroll behavior -->
+    <string name="app_bar_layout_toggle_scroll_behavior_button">Айналдыру әрекетін қосу/өшіру</string>
+    <!-- UI label for toggling navigation icon -->
+    <string name="app_bar_layout_toggle_navigation_icon_sub_header">Навигация белгішесін көрсету/жасыру</string>
+    <!-- Text for button that shows avatar -->
+    <string name="app_bar_layout_show_avatar_button">Аватарды көрсету</string>
+    <!-- Text for button that shows back icon -->
+    <string name="app_bar_layout_show_back_icon_button">“Артқа” белгішесін көрсету</string>
+    <!-- Text for button that hides icon-->
+    <string name="app_bar_layout_hide_icon_button">Белгішені жасыру</string>
+    <!-- Text for button that shows icon -->
+    <string name="app_bar_layout_show_icon_button">Белгішені көрсету</string>
+    <!-- UI label denoting layout style -->
+    <string name="app_bar_layout_toggle_searchbar_sub_header">Іздеу тақтасының орналасу мәнерін көрсету/жасыру</string>
+    <!-- Text for button that shows searchbar as accessory or action view -->
+    <string name="app_bar_layout_searchbar_accessory_view_button">Қосалқы көрініс ретінде көрсету</string>
+    <string name="app_bar_layout_searchbar_action_view_button">Әрекет көрінісі ретінде көрсету</string>
+    <!-- UI label for toggling themes -->
+    <string name="app_bar_layout_toggle_theme_sub_header">Тақырыптар арасында ауысу (әрекетті қайта жасайды)</string>
+    <!-- Text for button that toggles themes -->
+    <string name="app_bar_layout_toggle_theme_button">Тақырыпты қосу/өшіру</string>
+    <!-- Label for list -->
+    <string name="app_bar_layout_list_item">Элемент</string>
+    <!-- UI label that denotes extra content that is scrollable -->
+    <string name="app_bar_layout_list_sub_header">Қосымша айналдырылатын мазмұн</string>
+
+    <!--AvatarView-->
+    <!-- Style -->
+    <string name="avatar_style_circle">Шеңбер мәнері</string>
+    <string name="avatar_style_square">Шаршы мәнері</string>
+    <!-- Sizes -->
+    <string name="avatar_size_xxlarge">XXLarge</string>
+    <string name="avatar_size_xlarge">XLarge</string>
+    <string name="avatar_size_large">Үлкен</string>
+    <string name="avatar_size_medium">Орташа</string>
+    <string name="avatar_size_small">Шағын</string>
+    <string name="avatar_size_xsmall">XSmall</string>
+
+    <!--AvatarGroupView-->
+    <!-- UI label to show maximum displayed avatars -->
+    <string name="avatar_group_max_displayed_avatar">Максималды көрсетілген аватар</string>
+    <!-- UI label to show the overflow avatar counter -->
+    <string name="avatar_group_overflow_avatar_count">Толып кету орын алатын аватарлар саны</string>
+    <!-- UI label to show border type -->
+    <string name="avatar_group_border_type">Жиек түрі</string>
+    <!-- UI Info explaining OverflowAvatarCount will not adhere to maximum displayed avatars -->
+    <string name="avatar_group_info">OverflowAvatarCount мәні орнатылған аватарлар тобы көрсетілетін аватарлардың максималды санын ұстанбайды.</string>
+    <!-- UI label showing face stack type of avatar group -->
+    <string name="avatar_group_face_stack">Беттер жинағы</string>
+    <!-- UI label showing face pile type of avatar group -->
+    <string name="avatar_group_face_pile">Беттер үйіндісі</string>
+    <!-- UI label denoting the overflow clicked action performed by the user -->
+    <string name="avatar_group_overflow_clicked">“Толып кету” түймешігі басылды</string>
+    <!-- UI label denoting the avatar view clicked action performed by the user at a specific index-->
+    <string name="avatar_group_avatar_clicked">%d индексіндегі AvatarView басылды</string>
+
+    <!--Badge-->
+    <!--UI Label for notification badge  -->
+    <string name="badge_notification_badge">Хабарландыру таңбасы</string>
+    <!--UI Label for dot notification -->
+    <string name="badge_notification_dot">Нүкте</string>
+    <!--UI Label for notification shown as list type used in horizontal tab -->
+    <string name="badge_notification_list">Тізім</string>
+    <!--UI Label for notification shown in character used in vertical Tab -->
+    <string name="badge_notification_character">Таңба</string>
+
+    <!--BottomNavigation-->
+    <!--UI Labels -->
+    <string name="bottom_navigation_menu_item_photos">Фотосуреттер</string>
+    <string name="bottom_navigation_menu_item_news">Жаңалықтар</string>
+    <string name="bottom_navigation_menu_item_alerts">Ескертулер</string>
+    <string name="bottom_navigation_menu_item_calendar">Күнтізбе</string>
+    <string name="bottom_navigation_menu_item_team">Топ</string>
+    <!-- Text for buttons -->
+    <string name="bottom_navigation_toggle_labels_button">Белгілерді көрсету/жасыру</string>
+    <string name="bottom_navigation_three_menu_items_button">Үш мәзір элементін көрсету</string>
+    <string name="bottom_navigation_four_menu_items_button">Төрт мәзір элементін көрсету</string>
+    <string name="bottom_navigation_five_menu_items_button">Бес мәзір элементін көрсету</string>
+    <!--accessibility-->
+    <!-- Announces if labels are ON/OFF -->
+    <string name="bottom_navigation_accessibility_labels_state">Белгілер: %s</string>
+
+    <!--BottomSheet-->
+    <!--UI Labels -->
+    <string name="bottom_sheet">Төменгі парақ</string>
+    <string name="bottom_sheet_dialog">BottomSheetDialog</string>
+    <!-- Text for buttons -->
+    <string name="bottom_sheet_with_single_line_items">Бір жолды элементтермен көрсету</string>
+    <string name="bottom_sheet_with_double_line_items">Қос жолды элементтермен көрсету</string>
+    <string name="bottom_sheet_with_single_line_header">Бір жолды тақырыппен көрсету</string>
+    <string name="bottom_sheet_with_double_line_title_and_dividers">Қос жолды тақырыппен және бөлгіштермен көрсету</string>
+    <string name="bottom_sheet_dialog_button">Көрсету</string>
+    <string name="drawer_content_desc_collapse_state">Кеңейту</string>
+    <string name="drawer_content_desc_expand_state">Қайыру</string>
+
+    <!--ContextualCommandBar-->
+    <!-- UI text showing the click action performed by the user -->
+    <string name="contextual_command_prompt_click_item">%s түймешігін басу</string>
+    <!-- UI text showing the long click action performed by the user -->
+    <string name="contextual_command_prompt_long_click_item">%s түймешігін ұзақ басу</string>
+    <!-- UI text showing the click on dismiss action performed by the user -->
+    <string name="contextual_command_prompt_click_dismiss">“Жабу” түймешігін басу</string>
+    <!-- Text for button for inserting an item-->
+    <string name="contextual_command_insert_item">Элементті кірістіру</string>
+    <!-- Text for button for updating an item-->
+    <string name="contextual_command_update_item">Элементті жаңарту</string>
+    <!-- Announces dismiss action -->
+    <string name="contextual_command_accessibility_dismiss">Жабу</string>
+    <!-- Announces add action -->
+    <string name="contextual_command_accessibility_add">Қосу</string>
+    <!-- Announces mention action -->
+    <string name="contextual_command_accessibility_mention">Сілтеме жасау</string>
+    <!-- Announces bold action -->
+    <string name="contextual_command_accessibility_bold">Қалың</string>
+    <!-- Announces italic action -->
+    <string name="contextual_command_accessibility_italic">Көлбеу</string>
+    <!-- Announces undeline action -->
+    <string name="contextual_command_accessibility_underline">Астын сызу</string>
+    <!-- Announces strikethrough action -->
+    <string name="contextual_command_accessibility_strikethrough">Сызылған</string>
+    <!-- Announces undo action -->
+    <string name="contextual_command_accessibility_undo">Болдырмау</string>
+    <!-- Announces redo action -->
+    <string name="contextual_command_accessibility_redo">Қайталау</string>
+    <!-- Announces bullet action -->
+    <string name="contextual_command_accessibility_bullet">Таңбалауыш</string>
+    <!-- Announces list action -->
+    <string name="contextual_command_accessibility_list">Тізім</string>
+    <!-- Announces link action -->
+    <string name="contextual_command_accessibility_link">Сілтеме</string>
+    <!-- UI Label denoting item updating -->
+    <string name="contextual_command_bar_item_update_title">Элемент жаңартылуда</string>
+    <!-- UI Label denoting spacing -->
+    <string name="contextual_command_bar_space_title">Аралық</string>
+    <!-- UI Label denoting dismiss position -->
+    <string name="contextual_command_bar_dismiss_position">Орынды жою</string>
+    <!-- Radio button label START -->
+    <string name="contextual_command_bar_dismiss_position_start">БАСТАУ</string>
+    <!-- Radio button label END -->
+    <string name="contextual_command_bar_dismiss_position_end">СОҢЫ</string>
+    <!-- UI bar label denoting the space between groups -->
+    <string name="contextual_command_bar_group_space_title">Топ кеңістігі</string>
+    <!-- UI bar label denoting the space between items -->
+    <string name="contextual_command_bar_item_space_title">Элемент кеңістігі</string>
+    <!-- UI bar label denoting the space in number value dp's -->
+    <string name="contextual_command_bar_space_value">%d dp</string>
+
+    <!--Single line items-->
+    <!--UI Label for item flag-->
+    <string name="bottom_sheet_item_flag_title">Жалауша</string>
+    <!--UI Label for user action clicked on item flag-->
+    <string name="bottom_sheet_item_flag_toast">Жалауша элементі басылды</string>
+    <!--UI Label for item reply-->
+    <string name="bottom_sheet_item_reply_title">Жауап беру</string>
+    <!--UI Label for user action clicked on item reply-->
+    <string name="bottom_sheet_item_reply_toast">Жауап беру элементі басылды</string>
+    <!--UI Label for item forward-->
+    <string name="bottom_sheet_item_forward_title">Әрі қарай жіберу</string>
+    <!--UI Label for user action clicked on item forward-->
+    <string name="bottom_sheet_item_forward_toast">Қайта жіберу элементі басылды</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_delete_title">Жою</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_delete_toast">“Элементті жою” түймешігі басылды</string>
+    <!--UI Label for item avatar-->
+    <string name="bottom_sheet_item_custom_image">Аватар</string>
+    <!--Double line items-->
+    <!--UI Label for item camera -->
+    <string name="bottom_sheet_item_camera_title">Камера</string>
+    <!--UI description label take a photo-->
+    <string name="bottom_sheet_item_camera_subtitle">Суретке түсіру</string>
+    <!--UI Label for user action clicked on item camera-->
+    <string name="bottom_sheet_item_camera_toast">Камера элементі басылды</string>
+    <!--UI Label for item gallery-->
+    <string name="bottom_sheet_item_gallery_title">Галерея</string>
+    <!--UI description label view your photos-->
+    <string name="bottom_sheet_item_gallery_subtitle">Фотосуреттерді қарап шығу</string>
+    <!--UI Label for user action clicked on item gallery-->
+    <string name="bottom_sheet_item_gallery_toast">Галерея элементі басылды</string>
+    <!--UI Label for item videos-->
+    <string name="bottom_sheet_item_videos_title">Бейнелер</string>
+    <!--UI description label play your videos -->
+    <string name="bottom_sheet_item_videos_subtitle">Бейнелерді ойнату</string>
+    <!--UI Label for user action clicked on item videos-->
+    <string name="bottom_sheet_item_videos_toast">Бейнелер элементі басылды</string>
+    <!--UI Label for item manage-->
+    <string name="bottom_sheet_item_manage_title">Басқару</string>
+    <!--UI description label Manage your media library-->
+    <string name="bottom_sheet_item_manage_subtitle">Мультимедиа кітапханасын басқару</string>
+    <!--UI Label for user action clicked on item manage-->
+    <string name="bottom_sheet_item_manage_toast">“Элементті басқару” түймешігі басылды</string>
+    <!--Single line header-->
+    <!--UI title header email actions-->
+    <string name="bottom_sheet_item_single_line_header">Электрондық пошта әрекеттері</string>
+    <!--Double line header-->
+    <!--UI title for item documents -->
+    <string name="bottom_sheet_item_double_line_header">Құжаттар</string>
+    <!--UI subtitle header-->
+    <string name="bottom_sheet_item_double_line_header_subtitle">Соңғы жаңарту: 14:14</string>
+    <!--UI Label for item share-->
+    <string name="bottom_sheet_item_double_line_header_share">Ортақ пайдалану</string>
+    <!--UI Label for user action clicked on item share-->
+    <string name="bottom_sheet_item_double_line_header_share_toast">“Элементті бөлісу” түймешігі басылды</string>
+    <!--UI Label for item move-->
+    <string name="bottom_sheet_item_double_line_header_move">Жылжыту</string>
+    <!--UI Label for user action clicked on item move-->
+    <string name="bottom_sheet_item_double_line_header_move_toast">“Элементті жылжыту” түймешігі басылды</string>
+    <!--UI Label for item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete">Жою</string>
+    <!--UI Label for user action clicked on item delete-->
+    <string name="bottom_sheet_item_double_line_header_delete_toast">“Элементті жою” түймешігі басылды</string>
+    <!--UI Label for item info-->
+    <string name="bottom_sheet_item_double_line_header_info">Ақпарат</string>
+    <!--UI Label for user action clicked on item info-->
+    <string name="bottom_sheet_item_double_line_header_info_toast">Ақпарат элементі басылды</string>
+    <!--BottomSheetDialog-->
+    <!--UI Label for item clock-->
+    <string name="bottom_sheet_item_clock_title">Сағат</string>
+    <!--UI Label for user action clicked on item clock-->
+    <string name="bottom_sheet_item_clock_toast">Сағат элементі басылды</string>
+    <!--UI Label for item alarm-->
+    <string name="bottom_sheet_item_alarm_title">Дабыл</string>
+    <!--UI Label for user action clicked on item alarm-->
+    <string name="bottom_sheet_item_alarm_toast">Дабыл элементі басылды</string>
+    <!--UI Label for item timezone-->
+    <string name="bottom_sheet_item_time_zone_title">Уақыт белдеуі</string>
+    <!--UI Label for user action clicked on item timezone-->
+    <string name="bottom_sheet_item_time_zone_toast">Уақыт белдеуі элементі басылды</string>
+
+    <!--Button-->
+    <!-- text for buttons -->
+    <string name="button">Түймешік</string>
+    <string name="buttonbar">Түймешік жолағы</string>
+    <string name="button_disabled">Өшірілген түймешік</string>
+    <string name="button_borderless">Жиексіз түймешік</string>
+    <string name="button_borderless_disabled">Жиексіз өшірілген түймешік</string>
+    <string name="button_large">Үлкен түймешік</string>
+    <string name="button_large_disabled">Үлкен өшірілген түймешік</string>
+    <string name="button_outlined">Контурлы түймешік</string>
+    <string name="button_outlined_disabled">Контурлы өшірілген түймешік</string>
+
+    <!--CalendarView-->
+    <string name="calendar_example_chosen_date">Күнді таңдау</string>
+
+    <!--DateTimePicker-->
+    <!-- title -->
+    <string name="date_time_picker_title">DateTimePicker</string>
+    <!-- UI label -->
+    <string name="date_time_picker_single_date_title">Бір күн</string>
+    <!-- UI label -->
+    <string name="date_time_picker_date_picked_default">Күн таңдалмаған</string>
+    <!-- text for button that shows date picker -->
+    <string name="date_time_picker_date_button">Күнді таңдау құралын көрсету</string>
+    <!-- text for button that shows date picker with date tab selected -->
+    <string name="date_time_picker_calendar_date_time_button">Күн қойыншасы таңдалған күн мен уақытты таңдау құралын көрсету</string>
+    <!-- text for button that shows date picker with time tab selected -->
+    <string name="date_time_picker_date_time_calendar_button">Уақыт қойыншасы таңдалған күн мен уақытты таңдау құралын көрсету</string>
+    <!-- text for button that shows time picker -->
+    <string name="date_time_picker_date_time_button">Күн мен уақытты таңдау құралын көрсету</string>
+    <!-- UI label to show date range-->
+    <string name="date_time_picker_date_range_title">Күн ауқымы</string>
+    <!-- UI label showing start of the range-->
+    <string name="date_time_picker_date_range_start_title">Басталуы:</string>
+    <!-- UI label showing end of the range-->
+    <string name="date_time_picker_date_range_end_title">Соңы:</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_start_picked_default">Басталу күні таңдалмаған</string>
+    <!-- UI label showing no date picked-->
+    <string name="date_time_picker_date_end_picked_default">Соңғы күн таңдалмаған</string>
+    <!-- text for button that selects start date -->
+    <string name="date_time_picker_date_start_button">Басталу күнін таңдаңыз</string>
+    <!-- text for button that selects end date -->
+    <string name="date_time_picker_date_end_button">Аяқталу күнін таңдаңыз</string>
+    <!-- UI label showing date time range-->
+    <string name="date_time_picker_date_time_range_title">Күндер және уақыт ауқымы</string>
+    <!-- text for button that selects date time range -->
+    <string name="date_time_picker_date_time_range_button">Күндер және уақыт ауқымын таңдау</string>
+    <!-- UI label -->
+    <string name="date_time_picker_dialog_title">DateTimePickerDialog</string>
+    <!-- text for button that shows picker dialog -->
+    <string name="date_time_picker_dialog_button">Диалогтық терезені көрсету</string>
+
+    <!--Drawer-->
+    <!-- text for button that shows drawer -->
+    <string name="drawer_button">Тақтаны көрсету</string>
+    <!-- text for button that shows drawer dialog -->
+    <string name="drawer_dialog_button">Тақта диалогтық терезесін көрсету</string>
+    <!-- text for button that shows no fade bottom dialog -->
+    <string name="no_fade_bottom_dialog_button">Өшпейтін төменгі диалогтық терезе</string>
+    <!-- text for button that shows top drawer -->
+    <string name="drawer_top_dialog_button">Жоғарғы тақтаны көрсету</string>
+    <!-- text for button that shows No fade top dialog drawer -->
+    <string name="no_fade_top_dialog_button">Өшпейтін жоғарғы диалогтық терезе</string>
+    <!-- text for button that shows anchor view top dialog drawer -->
+    <string name="anchor_view_top_dialog_button">Зәкірлік көріністің жоғарғы диалогтық терезесін көрсету</string>
+    <!-- text for button that shows no title top dialog drawer -->
+    <string name="no_title_top_dialog_button">Тақырыпсыз жоғарғы диалогтық терезені көрсету</string>
+    <!-- text for button that shows below title top dialog drawer -->
+    <string name="below_title_top_dialog_button">Тақырып жоғарғы диалогтық терезесінің астында көрсету</string>
+    <!-- text for button that shows right drawer -->
+    <string name="drawer_right_dialog_button">Оң жақ тақтаны көрсету</string>
+    <!-- text for button that shows left drawer -->
+    <string name="drawer_left_dialog_button">Сол жақ тақтаны көрсету</string>
+
+    <!--ListItem-->
+    <!-- Title -->
+    <string name="list_item_title">Тақырып, негізгі мәтін</string>
+    <!-- subtitle -->
+    <string name="list_item_subtitle">Тақырыпша, қосалқы мәтін</string>
+    <!-- secondary subtitle -->
+    <string name="list_item_secondary_subtitle">Реттелетін тақырыпша мәтіні</string>
+    <!-- Footer -->
+    <string name="list_item_footer">Төменгі деректеме, үштік мәтін</string>
+    <!-- UI labels -->
+    <string name="list_item_sub_header_single_line">Сұр ішкі үстіңгі деректеме мәтіні бар бір жолды тізім</string>
+    <string name="list_item_sub_header_two_line">Екі жолды тізім</string>
+    <string name="list_item_sub_header_two_line_dense">Тығыз аралығы бар екі жолды тізім</string>
+    <string name="list_item_sub_header_two_line_custom_secondary_subtitle">Реттелетін қосалқы тақырыпша көрінісі бар екі жолды тізім</string>
+    <string name="list_item_sub_header_three_line">Қара ішкі үстіңгі деректеме мәтіні бар үш жолды тізім</string>
+    <string name="list_item_sub_header_no_custom_views">Реттелетін көріністері жоқ тізім элементтері</string>
+    <string name="list_item_sub_header_large_header">Үлкен реттелетін көріністері бар тізім элементтері</string>
+    <string name="list_item_sub_header_wrapped_text">Тасымалданған мәтіні бар тізім элементтері</string>
+    <string name="list_item_sub_header_truncated_text">Мәтіні қысқартылған тізім элементтері</string>
+    <string name="list_item_sub_header_custom_accessory_text">Әрекет</string>
+    <string name="list_item_truncation_middle">Ортаңғы қысқарту.</string>
+    <string name="list_item_truncation_end">Қысқартуды аяқтау.</string>
+    <string name="list_item_truncation_start">Қысқартуды бастау.</string>
+    <string name="list_item_custom_text_view">Мән</string>
+    <string name="list_item_click">Сіз тізім элементін бастыңыз.</string>
+    <string name="list_item_click_custom_accessory_view">Сіз реттелетін қосымша көріністі бастыңыз.</string>
+    <string name="list_item_click_sub_header_custom_accessory_view">Сіз ішкі үстіңгі деректеменің реттелетін қосымша көрінісін бастыңыз.</string>
+    <string name="list_item_more_options">Қосымша параметрлер</string>
+
+    <!--PeoplePicker-->
+    <!-- UI labels -->
+    <string name="people_picker_select_example">Бөлектеу</string>
+    <string name="people_picker_select_deselect_example">SelectDeselect</string>
+    <string name="people_picker_none_example">Ешқайсысы</string>
+    <string name="people_picker_delete_example">Жою</string>
+    <string name="people_picker_custom_persona_description">Бұл мысал реттелетін IPersona нысанын жасау жолын көрсетеді.</string>
+    <string name="people_picker_dialog_title_removed">Сіз пайдалнаушыны жойдыңыз:</string>
+    <string name="people_picker_dialog_title_added">Сіз пайдаланушыны қостыңыз:</string>
+    <string name="people_picker_drag_started">Апару басталды</string>
+    <string name="people_picker_drag_ended">Апару аяқталды</string>
+    <string name="people_picker_picked_personas_listener">Пайдаланушылар қабылдағышы</string>
+    <string name="people_picker_suggestions_listener">Ұсыныстарды қабылдағыш</string>
+    <string name="people_picker_persona_chip_click">Сіз %s түймешігін бастыңыз</string>
+
+    <plurals name="people_picker_accessibility_text_view_example">
+        <item quantity="one">%1$s алушы</item>
+        <item quantity="other">%1$s алушы</item>
+    </plurals>
+
+    <!--Persistent BottomSheet-->
+    <string name="expand_bottom_sheet_button">Тұрақты төменгі парақты кеңейту</string>
+    <string name="collapse_persistent_sheet_button">Тұрақты төменгі парақты жасыру</string>
+    <string name="show_persistent_sheet_button">Тұрақты төменгі парақты көрсету</string>
+    <string name="new_view">Бұл — жаңа көрініс</string>
+    <string name="toggle_sheet_content">Төменгі парақ мазмұнын көрсету/жасыру</string>
+    <string name="switch_to_custom_content">Реттелетін мазмұнға ауысу</string>
+    <string name="one_line_content">Бір жолды төменгі парақтың мазмұны</string>
+    <string name="toggle_disable_all_items">Барлық элементтерді ажыратуды қосу/өшіру</string>
+    <!--Persistent BottomSheet Items-->
+    <string name="persistent_sheet_item_add_remove_view">Көріністі қосу/жою</string>
+    <string name="persistent_sheet_item_change_collapsed_height">Тасаланған биіктікті өзгерту</string>
+    <string name="persistent_sheet_item_create_new_folder_title">Жаңа қалта</string>
+    <string name="persistent_sheet_item_create_new_folder_toast">Жаңа қалта элементі басылды</string>
+    <string name="persistent_sheet_item_edit_title">Өңдеу</string>
+    <string name="persistent_sheet_item_edit_toast">“Элементті өңдеу” түймешігі басылды</string>
+    <string name="persistent_sheet_item_save_title">Сақтау</string>
+    <string name="persistent_sheet_item_save_toast">“Элементті сақтау” түймешігі басылды</string>
+    <string name="persistent_sheet_item_zoom_in_title">Ұлғайту</string>
+    <string name="persistent_sheet_item_zoom_in_toast">“Элементті ұлғайту” түймешігі басылды</string>
+    <string name="persistent_sheet_item_zoom_out_title">Кішірейту</string>
+    <string name="persistent_sheet_item_zoom_out_toast">Кішілеу элементі басылды</string>
+
+    <!--Persona-->
+    <!-- Emails -->
+    <string name="persona_email_allan_munger">amunger@microsoft.com</string>
+    <string name="persona_email_amanda_brady">abrady@microsoft.com</string>
+    <string name="persona_email_carlos_slattery">cslattery@microsoft.com</string>
+    <string name="persona_email_carole_poland">cpoland@microsoft.com</string>
+    <string name="persona_email_cecil_folk">cfolk@microsoft.com</string>
+    <string name="persona_email_celeste_burton">cburton@microsoft.com</string>
+    <string name="persona_email_charlotte_waltson">cwaltson@microsoft.com</string>
+    <string name="persona_email_colin_ballinger">cballinger@microsoft.com</string>
+    <string name="persona_email_daisy_phillips">dphillips@microsoft.com</string>
+    <string name="persona_email_elliot_woodward">ewoodward@microsoft.com</string>
+    <string name="persona_email_elvia_atkins">eatkins@microsoft.com</string>
+    <string name="persona_email_erik_nason">enason@microsoft.com</string>
+    <string name="persona_email_henry_brill">hbrill@microsoft.com</string>
+    <string name="persona_email_isaac_fielder">ifielder@microsoft.com</string>
+    <string name="persona_email_johnie_mcconnell">jmcconnell@microsoft.com</string>
+    <string name="persona_email_kat_larsson">klarsson@microsoft.com</string>
+    <string name="persona_email_katri_ahokas">kahokas@microsoft.com</string>
+    <string name="persona_email_kevin_sturgis">ksturgis@microsoft.com</string>
+    <string name="persona_email_kristen_patterson">kpatterson@microsoft.com</string>
+    <string name="persona_email_lydia_bauer">lbauer@microsoft.com</string>
+    <string name="persona_email_mauricio_august">maugust@microsoft.com</string>
+    <string name="persona_email_miguel_garcia">mgarcia@microsoft.com</string>
+    <string name="persona_email_mona_kane">mkane@microsoft.com</string>
+    <string name="persona_email_robin_counts">rcounts@microsoft.com</string>
+    <string name="persona_email_tim_deboer">tdeboer@microsoft.com</string>
+    <string name="persona_email_wanda_howard">whoward@microsoft.com</string>
+    <string name="persona_footer">Қолжетімді</string>
+    <!-- Person names -->
+    <string name="persona_name_allan_munger">Аллан Мунгер</string>
+    <string name="persona_name_amanda_brady">Аманда Брейди</string>
+    <string name="persona_name_ashley_mccarthy">Эшли МакКарти</string>
+    <string name="persona_name_carlos_slattery">Карлос Слаттери</string>
+    <string name="persona_name_carole_poland">Кэрол, Польша</string>
+    <string name="persona_name_cecil_folk">Сесиль Фольк</string>
+    <string name="persona_name_celeste_burton">Селеста Бертон</string>
+    <string name="persona_name_charlotte_waltson">Шарлотта Уолтсон</string>
+    <string name="persona_name_colin_ballinger">Колин Баллингер</string>
+    <string name="persona_name_daisy_phillips">Дэйзи Филлипс</string>
+    <string name="persona_name_elliot_woodward">Эллиот Вудвард</string>
+    <string name="persona_name_elvia_atkins">Элвия Аткинс</string>
+    <string name="persona_name_erik_nason">Эрик Насон</string>
+    <string name="persona_name_henry_brill">Генри Брилл</string>
+    <string name="persona_name_isaac_fielder">Исаак Филдер</string>
+    <string name="persona_name_johnie_mcconnell">Джонни МакКоннелл</string>
+    <string name="persona_name_kat_larsson">Кэт Ларссон</string>
+    <string name="persona_name_katri_ahokas">Катри Ахокас</string>
+    <string name="persona_name_kevin_sturgis">Кевин Стерджес</string>
+    <string name="persona_name_kristen_patterson">Кристен Паттерсон</string>
+    <string name="persona_name_lydia_bauer">Лидия Бауэр</string>
+    <string name="persona_name_mauricio_august">Маурицио Август</string>
+    <string name="persona_name_miguel_garcia">Мигель Гарсия</string>
+    <string name="persona_name_mona_kane">Мона Кейн</string>
+    <string name="persona_name_robin_counts">Робин Каунтс</string>
+    <string name="persona_name_robert_tolbert">Роберт Толберт</string>
+    <string name="persona_name_tim_deboer">Тим Дебоэр</string>
+    <string name="persona_name_wanda_howard">Ванда Говард</string>
+    <!-- Designations -->
+    <string name="persona_subtitle_designer">Құрастырушы</string>
+    <string name="persona_subtitle_engineer">Инженер</string>
+    <string name="persona_subtitle_manager">Менеджер</string>
+    <string name="persona_subtitle_researcher">Зерттеуші</string>
+    <!-- UI labels -->
+    <string name="persona_truncation">\ (қысқартуды тексеруге арналған ұзын мәтіннің мысалы)</string>
+    <string name="persona_view_description_xxlarge">Мәтіннің үш жолы бар XXLarge өлшемді аватар</string>
+    <string name="persona_view_description_large">Мәтіннің екі жолы бар үлкен аватар</string>
+    <string name="persona_view_description_small">Мәтіннің бір жолы бар шағын аватар</string>
+    <string name="people_picker_hint">Тұспалы бар ешқайсысы көрсетілмеген</string>
+
+    <!--Persona Chip-->
+    <!-- UI label showing a disabled persona chip -->
+    <string name="persona_chip_example_disabled">Ажыратылған пайдаланушы чипі</string>
+    <!-- UI label showing a error persona chip -->
+    <string name="persona_chip_example_error">Қате пайдаланушы чипі</string>
+    <!-- UI label showing a persona chip with no close icon-->
+    <string name="persona_chip_example_no_icon">Жақын белгішесі жоқ пайдаланушы чипі</string>
+    <!-- UI label showing a basic persona chip -->
+    <string name="persona_chip_example_basic">Негізгі пайдаланушы чипі</string>
+    <!-- UI label showing user action click on a selected persona chip -->
+    <string name="persona_chip_example_click">Таңдалған пайдаланушының чипін бастыңыз.</string>
+
+    <!--PopupMenu-->
+    <!-- UI label for item share -->
+    <string name="popup_menu_item_share">Ортақ пайдалану</string>
+    <!-- UI label for item follow -->
+    <string name="popup_menu_item_follow">Жазылу</string>
+    <!-- UI label for item invite people -->
+    <string name="popup_menu_item_invite_people">Адамдарды шақыру</string>
+    <!-- UI label for item refresh page -->
+    <string name="popup_menu_item_refresh_page">Бетті жаңарту</string>
+    <!-- UI label for item open in browser -->
+    <string name="popup_menu_item_open_in_browser">Браузерде ашу</string>
+    <!-- UI label for multi line description -->
+    <string name="popup_menu_item_multiline">Бұл — көп жолды қалқымалы мәзір. Сызықтардың максималды саны екіге орнатылады, қалған мәтін қысқартылады.
+        Lorem ipsum dolor sit amet consectetur adipiscing elit.</string>
+    <!-- UI label for item All news -->
+    <string name="popup_menu_item_all_news">Барлық жаңалықтар</string>
+    <!-- UI label for item Saved news -->
+    <string name="popup_menu_item_saved_news">Сақталған жаңалықтар</string>
+    <!-- UI label for item >News from sites -->
+    <string name="popup_menu_item_news_from_sites">Сайттардағы жаңалықтар</string>
+    <!-- UI label for item contoso -->
+    <string name="popup_menu_item_contoso_travel">Contoso</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_outside">Жұмыс уақытынан тыс хабарлау</string>
+    <!-- UI label for an item -->
+    <string name="popup_menu_item_notify_inactive">Жұмыс үстелінде белсенді емес кезде хабарлау</string>
+    <!-- UI message for user action clicked on an item in popup menu -->
+    <string name="popup_menu_item_clicked">Сіз элементті бастыңыз:</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple">Қарапайым мәзір</string>
+    <!-- UI label that shows simple pop up menu -->
+    <string name="popup_menu_simple_duo">2-ші қарапайым мәзір</string>
+    <!-- UI label that shows a pop up menu with one selectable item and a divider -->
+    <string name="popup_menu_single_check">Бір таңдалатын элементі және бөлгіші бар мәзір</string>
+    <!-- UI label that shows a pop up menu with all selectable items, icons, and long text -->
+    <string name="popup_menu_all_check">Барлық таңдауға болатын элементтері, белгішелері және ұзын мәтіні бар мәзір</string>
+    <!--Text for button that shows popupmenu -->
+    <string name="popup_menu_show">Көрсету</string>
+
+    <!--Progress-->
+    <!-- UI label showing a circular progress bar -->
+    <string name="circular_progress">Дөңгелек орындалу барысы</string>
+    <string name="circular_progress_xsmall">XSmall</string>
+    <string name="circular_progress_xsmall_size">20dp</string>
+    <string name="circular_progress_small">Шағын</string>
+    <string name="circular_progress_small_size">24dp</string>
+    <string name="circular_progress_medium">Орташа</string>
+    <string name="circular_progress_medium_size">36dp</string>
+    <string name="circular_progress_large">Үлкен</string>
+    <string name="circular_progress_large_size">44dp</string>
+    <!-- UI label showing a linear progress bar -->
+    <string name="linear_progress">Сызықтық орындалу барысы</string>
+    <string name="linear_progress_size">4dp</string>
+    <!-- UI label showing a Indeterminate progress bar -->
+    <string name="linear_progress_indeterminate_label">Анықталмаған</string>
+    <!-- UI label showing a Determinate progress bar -->
+    <string name="linear_progress_determinate_label">Анықталған</string>
+
+
+    <!--Shared-->
+    <!-- dummy message -->
+    <string name="long_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam.</string>
+
+    <!--SearchBar-->
+    <string name="searchbar">Іздеу жолағы</string>
+    <!-- name of the icon-->
+    <string name="searchbar_microphone_callback">Микрофонды қайтадан шақыру</string>
+    <!-- UI Text label -->
+    <string name="searchbar_autocorrect">Автоауыстырғыш</string>
+    <!-- Announces that microphone has been pressed -->
+    <string name="searchbar_microphone_pressed">Микрофон басылды</string>
+    <!-- Announces that right view has been pressed -->
+    <string name="searchbar_right_view_pressed">Оң жақ көрініс басылды</string>
+    <!-- Announces that keyboard search has been pressed -->
+    <string name="searchbar_keyboard_search_pressed">Пернетақтаны іздеу басылды</string>
+
+    <!--Snackbar-->
+    <!-- UI label descriptions -->
+    <string name="snackbar_action">Әрекет</string>
+    <string name="snackbar_action_long">Ұзын мәтін әрекеті</string>
+    <string name="snackbar_single_line">Бір жолды снэкбар</string>
+    <string name="snackbar_multiline">Бұл — көп жолды снэкбар. Сызықтардың максималды саны екіге орнатылады, қалған мәтін қысқартылады.
+        Lorem ipsum dolor sit asmet consecteur adipising elit. </string>
+    <string name="snackbar_announcement">Бұл — хабарландыру снэкбары. Ол жаңа мүмкіндіктермен байланысу үшін пайдаланылады.</string>
+    <string name="snackbar_primary">Бұл — негізгі снэкбар.</string>
+    <string name="snackbar_light">Бұл — жеңіл снэкбар.</string>
+    <string name="snackbar_warning">Бұл — ескерту снэкбары.</string>
+    <string name="snackbar_danger">Бұл — қауіп снэкбары.</string>
+    <string name="snackbar_description_single_line">Қысқа ұзақтық</string>
+    <string name="snackbar_description_single_line_custom_view">Шағын реттелетін көрініс түріндегі дөңгелек орындалу барысы бар ұзақ ұзақтық</string>
+    <string name="snackbar_description_single_line_action">Әрекеті бар қысқа ұзақтық</string>
+    <string name="snackbar_description_single_line_action_custom_view">Әрекет және орташа реттелетін көрініс бар қысқа ұзақтық</string>
+    <string name="snackbar_description_single_line_custom_text_color">Реттелген мәтін түсі бар қысқа ұзақтық</string>
+    <string name="snackbar_description_multiline">Ұзақ ұзақтық</string>
+    <string name="snackbar_description_multiline_custom_view">Шағын реттелетін көрінісі бар ұзақ ұзақтық</string>
+    <string name="snackbar_description_multiline_action">Әрекет және мәтін жаңартулары бар белгісіз ұзақтық</string>
+    <string name="snackbar_description_multiline_action_custom_view">Әрекет және орташа реттелетін көрініс бар қысқа ұзақтық</string>
+    <string name="snackbar_description_multiline_action_long">Ұзын әрекет мәтіні бар қысқа ұзақтық</string>
+    <string name="snackbar_description_announcement">Қысқа ұзақтық</string>
+    <string name="snackbar_description_updated">Бұл мәтін жаңартылды.</string>
+    <!-- text for button that shows a snackbar -->
+    <string name="snackbar_button_show">Снэкбарды көрсету</string>
+    <!-- UI Text denoting single line snackbar -->
+    <string name="snackbar_headline_single_line">Бір жол</string>
+    <!-- UI Text denoting multi line snackbar -->
+    <string name="snackbar_headline_multiline">Бірнеше жол</string>
+    <!-- UI Text denoting Announcement style snackbar -->
+    <string name="snackbar_headline_announcement_style">Хабарландыру мәнері</string>
+    <!-- UI Text denoting Primary style snackbar -->
+    <string name="snackbar_headline_primary_style">Негізгі мәнер</string>
+    <!-- UI Text denoting Light style snackbar -->
+    <string name="snackbar_headline_light_style">Ашық мәнер</string>
+    <!-- UI Text denoting Warning stylee snackbar -->
+    <string name="snackbar_headline_warning_style">Ескерту мәнері</string>
+    <!-- UI Text denoting Danger style snackbar -->
+    <string name="snackbar_headline_danger_style">Қауіп мәнері</string>
+
+    <!-- TabBar-->
+    <!-- UI labels -->
+    <!-- text for tabbar home tab -->
+    <string name="tabBar_home">Басты бет</string>
+    <!-- text for tabbar mail tab -->
+    <string name="tabBar_mail">Пошта</string>
+    <!-- text for tabbar setting tab -->
+    <string name="tabBar_settings">Параметрлер</string>
+    <!-- text for tabbar notification tab -->
+    <string name="tabBar_notification">Хабарландыру</string>
+    <!-- text for tabbar more tab -->
+    <string name="tabBar_more">Қосымша</string>
+    <!-- UI text for text alignment of tab -->
+    <string name="tabBar_text_alignment">Мәтінді туралау</string>
+    <!-- UI text for vertical alignment of tab -->
+    <string name="tabBar_vertical">Тік</string>
+    <!-- UI text for horizontal alignment of tab -->
+    <string name="tabBar_horizontal">Көлденең</string>
+    <!-- UI text for no text of tab -->
+    <string name="tabBar_no_text">Мәтін жоқ</string>
+    <!-- UI text for no. of tab items -->
+    <string name="tabBar_tab_items">Қойынша элементтері</string>
+
+    <!--TemplateView-->
+    <!-- UI labels and descriptions -->
+    <string name="cell_sample_title">Тақырып</string>
+    <string name="cell_sample_description">Сипаттама</string>
+    <string name="calculate_cells">100 ұяшықты жүктеу/есептеу</string>
+    <string name="calculate_layouts">100 орналасуды жүктеу/есептеу</string>
+    <string name="template_list">Үлгілер тізімі</string>
+    <string name="regular_list">Кәдімгі тізім</string>
+    <string name="cell_example_title">Тақырып: ұяшық</string>
+    <string name="cell_example_description">Сипаттама: бағдарды өзгерту үшін түртіңіз</string>
+
+    <!--TabLayout-->
+    <!-- Text for button that shows a Standard Tab 2-Segment -->
+    <string name="tab_standard_two_segment">Стандартты қойынша, 2-сегмент</string>
+    <!-- Text for button that shows a Standard Tab 3-Segment -->
+    <string name="tab_standard_three_segment">Стандартты қойынша, 3-сегмент</string>
+    <!-- Text for button that shows a Standard Tab 4-Segment -->
+    <string name="tab_standard_four_segment">Стандартты қойынша, 4-сегмент</string>
+    <!-- Text for button that shows a Standard Tab with pager -->
+    <string name="tab_standard_with_pager">Бет таңдағышы бар стандартты қойынша</string>
+    <!-- Text for button that shows switch tabs -->
+    <string name="tab_switch">Қойыншаны ауыстыру</string>
+    <!-- Text for button that shows pills tabs -->
+    <string name="tab_pills">Капсулалар қойыншасы</string>
+
+    <!--Tooltip-->
+    <!-- Text for button that shows tooltip on tap -->
+    <string name="tooltip_button">Қалқыма сөзкөмекті көрсету үшін түртіңіз</string>
+    <!-- Text for button that shows Custom Calendar Tooltip on tap -->
+    <string name="tooltip_calendar_demo_button">Реттелетін күнтізбе қалқыма сөзкөмегін көрсету үшін түртіңіз</string>
+    <!-- Text for button that shows Custom Color Tooltip on tap -->
+    <string name="tooltip_custom_button">Реттелетін түс қалқыма сөзкөмегін түрту</string>
+    <!-- Text for button that shows Dismiss Inside Tooltip on tap -->
+    <string name="tooltip_center_button">Ішінде жабу қалқыма сөзкөмегін көрсету үшін түртіңіз</string>
+    <!-- Text for button that shows Custom View Tooltip on tap -->
+    <string name="tooltip_custom_view">Реттелетін көрініс қалқыма сөзкөмегін көрсету үшін түртіңіз</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start_message">Жоғарғы реттелетін түс қалқыма сөзкөмегі</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end_message">X осінде 10dp ауытқуы бар жоғарғы соңғы қалқыма сөзкөмек</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start_message">Төменгі бастапқы қалқыма сөзкөмек</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end_message">Y осінде 10dp ауытқуы бар төменгі соңғы қалқыма сөзкөмек</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center_message">Ішінде жабу қалқыма сөзкөмегі</string>
+    <!--UI label showing tooltip dismissed message -->
+    <string name="tooltip_dismiss_message">Сөзкөмек жабылды</string>
+
+    <!--Typography-->
+    <!-- UI label, headline with light appearance and font size 28sp -->
+    <string name="headline">Ашық тақырып, 28sp</string>
+    <!-- UI label, title_1 with medium appearance and font size 20sp -->
+    <string name="title_1">1-тақырып: орташа, 20sp</string>
+    <!-- UI label, title_2 with Regular appearance and font size 20sp -->
+    <string name="title_2">2-тақырып — кәдімгі 20sp</string>
+    <!-- UI label, heading with Regular appearance and font size 18sp -->
+    <string name="heading">Кәдімгі тақырып, 18sp</string>
+    <!-- UI label, subheading_1 with Regular appearance and font size 16sp -->
+    <string name="subheading_1">1-тақырыпша: кәдімгі, 16sp</string>
+    <!-- UI label, subheading_2 with Medium appearance and font size 16sp -->
+    <string name="subheading_2">2-ші тақырыпша: орташа 16sp</string>
+    <!-- UI label, body_1 with Regular appearance and font size 14sp -->
+    <string name="body_1">1-ші негізгі мәтін: кәдімгі, 14sp</string>
+    <!-- UI label, body_2 with Medium appearance and font size 14sp -->
+    <string name="body_2">2-ші негізгі мәтін: орташа, 14sp</string>
+    <!-- UI label, caption with Regular appearance and font size 12sp -->
+    <string name="caption">Кәдімгі тақырып, 12sp</string>
+
+</resources>

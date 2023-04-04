@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="searchbar_clear_search">Goliți căutarea</string>
+  <string name="searchbar_back">Înapoi</string>
+  <string name="searchbar_query_hint_default">Căutare</string>
+  <string name="searchbar_accessibility_cleared_announcement" ignore="MissingTranslation">câmpul de editare a fost golit</string>
+</resources>

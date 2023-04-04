@@ -37,6 +37,17 @@ import kotlin.math.roundToInt
 val LocalToggleSwitchTokens = compositionLocalOf { ToggleSwitchTokens() }
 val LocalToggleSwitchInfo = compositionLocalOf { ToggleSwitchInfo() }
 
+/**
+ * API to create a Toggle Switch. This switch toggles state on tap and swipe gestures.
+ * The two states of toggle are mutually exclusive.
+ *
+ * @param onValueChange Function to be invoked when state of switch changes.
+ * @param modifier Optional modifier for Toggle Switch.
+ * @param enabledSwitch Boolean to enable/disable switch. Default: [true]
+ * @param checkedState Boolean representing current state of switch. Default: [false]
+ * @param interactionSource Interaction Source for user interactions.
+ * @param switchTokens Tokens to customize Toggle Switch's design.
+ */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ToggleSwitch(

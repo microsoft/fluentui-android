@@ -177,7 +177,7 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun fontStyle(personaChipInfo: PersonaChipControlInfo): TextStyle {
+    open fun typography(personaChipInfo: PersonaChipControlInfo): TextStyle {
         return when (personaChipInfo.size) {
             Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
             Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]

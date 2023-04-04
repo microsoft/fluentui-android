@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Describes selected action-->
+    <string name="fluentui_selected">પસંદ કરેલ છે</string>
+    <!-- Describes not selected action-->
+    <string name="fluentui_not_selected">પસંદ કરેલ નથી</string>
+    <!-- Describes disabled action-->
+    <string name="fluentui_disabled">અક્ષમ કર્યું</string>
+    <!-- Describes enabled action-->
+    <string name="fluentui_enabled">સક્ષમ કરેલ છે</string>
+    <!-- Describes close action for a sheet-->
+    <string name="fluentui_close_sheet">પત્રક બંધ કરો</string>
+    <!-- Describes close action -->
+    <string name="fluentui_close">બંધ કરો</string>
+    <!--name of the icon -->
+    <string name="fluentui_search">શોધો</string>
+    <!--name of the icon -->
+    <string name="fluentui_microphone">માઇક્રોફોન</string>
+    <!-- Describes the action - to clear the text -->
+    <string name="fluentui_clear_text">ટેક્સ્ટ સાફ કરો</string>
+    <!-- Describes the action - back -->
+    <string name="fluentui_back">પાછા જાઓ</string>
+    <!-- Describes the action - activated -->
+    <string name="fluentui_activated">સક્રિય કર્યું</string>
+    <!-- Describes the action - deactivated -->
+    <string name="fluentui_deactivated">નિષ્ક્રિય કર્યું</string>
+    <!-- Describes the type - Neutral-->
+    <string name="fluentui_neutral">તટસ્થ</string>
+    <!-- Describes the type - Brand-->
+    <string name="fluentui_brand">બ્રાન્ડ</string>
+    <!--name of the icon -->
+    <string name="fluentui_chevron">શેવરોન</string>
+    <string name="fluentui_large">મોટું</string>
+    <string name="fluentui_medium">મધ્યમ</string>
+    <string name="fluentui_small">નાનું</string>
+    <string name="fluentui_subtitle">ઉપશીર્ષક</string>
+</resources>

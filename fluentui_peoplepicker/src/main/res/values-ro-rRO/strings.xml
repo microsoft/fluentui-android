@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Microsoft Corporation. All rights reserved.
+  ~ Licensed under the MIT License.
+  -->
+
+<resources>
+
+    <!-- *** PeoplePicker *** -->
+
+    <string name="people_picker_sample_label">Etichetă</string>
+    <string name="people_picker_search_directory">Căutați în director</string>
+    <string name="people_picker_search_progress">Se caută…</string>
+
+    <!--accessibility-->
+    <string name="people_picker_accessibility_default_hint">Introduceți un nume sau o adresă de e-mail</string>
+    <string name="people_picker_accessibility_persona_added">%s a fost adăugată</string>
+    <string name="people_picker_accessibility_persona_removed">%s a fost eliminată</string>
+    <string name="people_picker_accessibility_replaced">%s a fost înlocuit,</string>
+    <!--Describes the click action for personas-->
+    <string name="people_picker_accessibility_click_persona">Clic</string>
+    <string name="people_picker_accessibility_delete_persona">Ștergeți</string>
+    <string name="people_picker_accessibility_deselect_persona">Deselectați</string>
+    <string name="people_picker_accessibility_select_persona">Selectați</string>
+    <!--Announces actions that have occurred for a persona-->
+    <string name="people_picker_accessibility_clicked_persona">S-a făcut clic pe %s</string>
+    <string name="people_picker_accessibility_deselected_persona">S-a deselectat %s</string>
+    <string name="people_picker_accessibility_selected_persona">%s selectate</string>
+    <!--Describes the action that will happen when already selected personas are activated / clicked-->
+    <!--We say "Activation" instead of "Double-tap" or "Tap" because that is directive is determined in user settings-->
+    <string name="people_picker_accessibility_deselect_selected_persona">, Activarea va deselecta</string>
+    <string name="people_picker_accessibility_delete_selected_persona">, Activarea va șterge</string>
+    <string name="people_picker_accessibility_click_selected_persona">, Activarea va face clic</string>
+
+    <plurals name="people_picker_accessibility_suggestions_opened">
+        <item quantity="one">Lista de sugestii deschisă cu %s persoană</item>
+        <item quantity="few">Lista de sugestii a fost deschisă cu %s persoane</item>
+        <item quantity="other">Lista de sugestii a fost deschisă cu %s de persoane</item>
+    </plurals>
+
+    <plurals name="people_picker_accessibility_text_view">
+        <item quantity="one">%s persoană</item>
+        <item quantity="few">%s persoane</item>
+        <item quantity="other">%s de persoane</item>
+    </plurals>
+</resources>

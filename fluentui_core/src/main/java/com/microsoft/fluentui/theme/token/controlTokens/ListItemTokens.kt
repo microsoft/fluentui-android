@@ -19,7 +19,7 @@ import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.S
 import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.*
 import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.StrokeWidth15
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
-import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Standard
+import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Bold
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
@@ -34,7 +34,7 @@ enum class ListItemType {
 }
 
 enum class SectionHeaderStyle {
-    Standard,
+    Bold,
     Subtle
 }
 
@@ -65,7 +65,7 @@ enum class ListItemTextAlignment {
 }
 
 data class ListItemInfo(
-    val style: SectionHeaderStyle = Standard,
+    val style: SectionHeaderStyle = Bold,
     val listItemType: ListItemType = OneLine,
     val borderInset: BorderInset = BorderInset.None,
     val placement: TextPlacement = Top,
@@ -116,7 +116,7 @@ open class ListItemTokens : ControlToken, Parcelable {
             TwoLine -> 68.dp
             ThreeLine -> 88.dp
             SectionHeader -> 48.dp
-            SectionDescription -> 68.dp
+            SectionDescription -> 64.dp
         }
     }
 
@@ -286,7 +286,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     @Composable
     open fun sectionHeaderPrimaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return when (listItemInfo.style) {
-            Standard -> {
+            Bold -> {
                 FluentTheme.aliasTokens.typography[Body1Strong]
             }
             Subtle -> {
@@ -298,7 +298,7 @@ open class ListItemTokens : ControlToken, Parcelable {
     @Composable
     open fun sectionHeaderActionTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return when (listItemInfo.style) {
-            Standard -> {
+            Bold -> {
                 FluentTheme.aliasTokens.typography[Body2Strong]
             }
             Subtle -> {
