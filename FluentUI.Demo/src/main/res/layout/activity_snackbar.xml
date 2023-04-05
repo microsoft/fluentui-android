@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
@@ -38,7 +37,8 @@
         android:id="@+id/btn_snackbar_single_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -50,7 +50,8 @@
         android:id="@+id/btn_snackbar_single_line_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line_action" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -62,7 +63,8 @@
         android:id="@+id/btn_snackbar_single_line_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line_custom_view" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -74,7 +76,8 @@
         android:id="@+id/btn_snackbar_single_line_action_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line_action_custom_view" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -86,7 +89,8 @@
         android:id="@+id/btn_snackbar_single_line_custom_text_color"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line_custom_text_color" />
 
     <!--Multiline-->
 
@@ -113,7 +117,8 @@
         android:id="@+id/btn_snackbar_multiline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_multiline" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -125,7 +130,8 @@
         android:id="@+id/btn_snackbar_multiline_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_multiline_action" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -137,7 +143,8 @@
         android:id="@+id/btn_snackbar_multiline_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_multiline_custom_view" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -149,7 +156,8 @@
         android:id="@+id/btn_snackbar_multiline_action_custom_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_multiline_action_custom_view" />
 
     <TextView
         style="@style/TextAppearance.DemoDescription"
@@ -161,7 +169,8 @@
         android:id="@+id/btn_snackbar_multiline_long_action"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_multiline_action_long" />
 
     <!--Announcement style-->
 
@@ -188,7 +197,8 @@
         android:id="@+id/btn_snackbar_announcement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_announcement" />
 
     <!--Primary style-->
 
@@ -215,7 +225,8 @@
         android:id="@+id/btn_snackbar_primary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line" />
 
     <!--Light style-->
 
@@ -242,7 +253,8 @@
         android:id="@+id/btn_snackbar_light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line" />
 
     <!--Warning style-->
 
@@ -269,7 +281,8 @@
         android:id="@+id/btn_snackbar_warning"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line" />
 
     <!--Danger style-->
 
@@ -296,6 +309,7 @@
         android:id="@+id/btn_snackbar_danger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/snackbar_button_show" />
+        android:text="@string/snackbar_button_show"
+        android:hint="@string/snackbar_description_single_line" />
 
 </LinearLayout>

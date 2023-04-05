@@ -9,12 +9,12 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import android.view.ContextThemeWrapper
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.microsoft.fluentui.appbarlayout.AppBarLayout
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListSubHeaderView
@@ -58,7 +58,8 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             updateSearchbarFocus()
             updateSearchbarQuery()
         }
-    private var scrollBehavior: AppBarLayout.ScrollBehavior = AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR
+    private var scrollBehavior: AppBarLayout.ScrollBehavior =
+        AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR
         set(value) {
             field = value
             updateScrollBehavior()
@@ -110,7 +111,10 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         searchbar = createSearchbar()
 
         scrollBehaviorSubHeader = createListSubHeader(
-            resources.getString(R.string.app_bar_layout_toggle_scroll_behavior_sub_header, scrollBehavior.toString())
+            resources.getString(
+                R.string.app_bar_layout_toggle_scroll_behavior_sub_header,
+                scrollBehavior.toString()
+            )
         )
         navigationIconButton = ButtonItem(
             buttonText = resources.getString(R.string.app_bar_layout_hide_icon_button),
@@ -145,7 +149,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         val viewId = view.id
-        when(view.id) {
+        when (view.id) {
             R.id.app_bar_layout_toggle_scroll_behavior_button -> {
                 scrollBehavior = when (scrollBehavior) {
                     AppBarLayout.ScrollBehavior.NONE -> AppBarLayout.ScrollBehavior.COLLAPSE_TOOLBAR
@@ -171,11 +175,20 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
                 recreate()
             }
         }
-        Handler(Looper.getMainLooper()).post{
-            // for setting keyboard focus
-            findViewById<View>(viewId).requestFocus()
-        }
-
+        Handler(Looper.getMainLooper()).postDelayed(
+            {
+                // for setting keyboard focus
+                findViewById<View>(viewId).requestFocus()
+                if (viewId == R.id.app_bar_layout_toggle_theme_button) {
+                    val themeName = when (themeId) {
+                        R.style.AppTheme -> "Default"
+                        R.style.AppTheme_Neutral -> "Neutral"
+                        else -> "Orange"
+                    }
+                    findViewById<View>(viewId).announceForAccessibility("Theme: ${themeName}")
+                }
+            }, 500
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -227,32 +240,46 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             NavigationIconType.NONE -> {
                 app_bar.toolbar.navigationIcon = null
 
-                navigationIconButton.buttonText = resources.getString(R.string.app_bar_layout_show_avatar_button)
+                navigationIconButton.buttonText =
+                    resources.getString(R.string.app_bar_layout_show_avatar_button)
             }
             NavigationIconType.AVATAR -> {
                 val avatar = Avatar(resources.getString(R.string.persona_name_mauricio_august))
                 avatar.avatarImageResourceId = R.drawable.avatar_mauricio_august
                 app_bar.toolbar.setNavigationOnClickListener {
-                    Snackbar.make(root_view, getString(R.string.app_bar_layout_navigation_icon_clicked)).show()
+                    Snackbar.make(
+                        root_view,
+                        getString(R.string.app_bar_layout_navigation_icon_clicked)
+                    ).show()
                 }
                 app_bar.toolbar.avatar = avatar
 
-                navigationIconButton.buttonText = resources.getString(R.string.app_bar_layout_show_back_icon_button)
+                navigationIconButton.buttonText =
+                    resources.getString(R.string.app_bar_layout_show_back_icon_button)
             }
             NavigationIconType.BACK_ICON -> {
-                val backArrow = ContextCompat.getDrawable(this, R.drawable.ms_ic_arrow_left_24_filled)
+                val backArrow =
+                    ContextCompat.getDrawable(this, R.drawable.ms_ic_arrow_left_24_filled)
                 /*
                  Wrapping this by FluentUIContext so that we need not declare this attr in Theme,
                  In case our theme is not extending Fluent Theme.
                  But if declare this attr in theme then no context wrapping is required
                  */
-                backArrow?.setTint(ThemeUtil.getThemeAttrColor(FluentUIContextThemeWrapper(this, R.style.Theme_FluentUI_Components), R.attr.fluentuiToolbarIconColor))
+                backArrow?.setTint(
+                    ThemeUtil.getThemeAttrColor(
+                        FluentUIContextThemeWrapper(
+                            this,
+                            R.style.Theme_FluentUI_Components
+                        ), R.attr.fluentuiToolbarIconColor
+                    )
+                )
                 app_bar.toolbar.navigationIcon = backArrow
                 app_bar.toolbar.setNavigationOnClickListener {
                     onBackPressed()
                 }
 
-                navigationIconButton.buttonText = resources.getString(R.string.app_bar_layout_hide_icon_button)
+                navigationIconButton.buttonText =
+                    resources.getString(R.string.app_bar_layout_hide_icon_button)
             }
         }
 
@@ -268,17 +295,27 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             val optionsMenu = optionsMenu ?: return
             app_bar.accessoryView = null
 
-            val searchIcon = getTintedDrawable(R.drawable.ms_ic_search_24_filled, ThemeUtil.getThemeAttrColor(this, R.attr.fluentuiToolbarIconColor))
-            optionsMenu.add(R.id.app_bar_menu, R.id.app_bar_layout_action_search, 0, getString(R.string.app_bar_layout_menu_search))
+            val searchIcon = getTintedDrawable(
+                R.drawable.ms_ic_search_24_filled,
+                ThemeUtil.getThemeAttrColor(this, R.attr.fluentuiToolbarIconColor)
+            )
+            optionsMenu.add(
+                R.id.app_bar_menu,
+                R.id.app_bar_layout_action_search,
+                0,
+                getString(R.string.app_bar_layout_menu_search)
+            )
                 .setIcon(searchIcon)
                 .setActionView(searchbar)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or MenuItem.SHOW_AS_ACTION_ALWAYS)
 
-            searchbarButton.buttonText = resources.getString(R.string.app_bar_layout_searchbar_accessory_view_button)
+            searchbarButton.buttonText =
+                resources.getString(R.string.app_bar_layout_searchbar_accessory_view_button)
         } else {
             optionsMenu?.removeItem(R.id.app_bar_layout_action_search)
             app_bar.accessoryView = searchbar
-            searchbarButton.buttonText = resources.getString(R.string.app_bar_layout_searchbar_action_view_button)
+            searchbarButton.buttonText =
+                resources.getString(R.string.app_bar_layout_searchbar_action_view_button)
         }
 
         adapter.notifyDataSetChanged()
@@ -340,11 +377,13 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
 
         val themeSection = createSection(
             createListSubHeader(resources.getString(R.string.app_bar_layout_toggle_theme_sub_header)),
-            arrayListOf(ButtonItem(
-                buttonText = resources.getString(R.string.app_bar_layout_toggle_theme_button),
-                id = R.id.app_bar_layout_toggle_theme_button,
-                onClickListener = this
-            ))
+            arrayListOf(
+                ButtonItem(
+                    buttonText = resources.getString(R.string.app_bar_layout_toggle_theme_button),
+                    id = R.id.app_bar_layout_toggle_theme_button,
+                    onClickListener = this
+                )
+            )
         )
 
         val extraListItems = ArrayList<IBaseListItem>()
@@ -359,7 +398,10 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         return (scrollBehaviorSection + navigationIconSection + searchbarSection + themeSection + extraScrollableContextSection) as ArrayList<IBaseListItem>
     }
 
-    private fun createSection(subHeader: ListSubHeader, items: ArrayList<IBaseListItem>): ArrayList<IBaseListItem> {
+    private fun createSection(
+        subHeader: ListSubHeader,
+        items: ArrayList<IBaseListItem>
+    ): ArrayList<IBaseListItem> {
         val itemArray = arrayListOf(subHeader) as ArrayList<IBaseListItem>
         itemArray.addAll(items)
         return itemArray
