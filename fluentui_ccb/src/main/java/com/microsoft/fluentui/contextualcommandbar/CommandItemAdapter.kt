@@ -12,6 +12,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentui.ccb.R
 import com.microsoft.fluentui.util.isVisible
@@ -167,6 +170,18 @@ internal class CommandItemAdapter(
             setOnClickListener {
                 itemClickListener?.onItemClick(commandItem, viewHolder.itemView)
             }
+
+            ViewCompat.setAccessibilityDelegate(this,
+                object : AccessibilityDelegateCompat() {
+                    override fun onInitializeAccessibilityNodeInfo(
+                        v: View,
+                        info: AccessibilityNodeInfoCompat
+                    ) {
+                        super.onInitializeAccessibilityNodeInfo(v, info)
+                        info.roleDescription = "Button"
+                    }
+                }
+            )
         }
     }
 
