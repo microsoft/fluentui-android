@@ -7,7 +7,11 @@ package com.microsoft.fluentuidemo.demos.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.TextView
+import androidx.core.view.AccessibilityDelegateCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat
 import com.microsoft.fluentui.view.TemplateView
 import com.microsoft.fluentuidemo.R
 
@@ -47,14 +51,30 @@ class Cell : TemplateView {
         }
 
     @JvmOverloads
-    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
         if (attrs != null) {
             val styledAttrs = context.obtainStyledAttributes(attrs, R.styleable.Cell)
             title = styledAttrs.getString(R.styleable.Cell_title)!!
             description = styledAttrs.getString(R.styleable.Cell_description)!!
-            val orientationOrdinal = styledAttrs.getInt(R.styleable.Cell_orientation, DEFAULT_ORIENTATION.ordinal)
+            val orientationOrdinal =
+                styledAttrs.getInt(R.styleable.Cell_orientation, DEFAULT_ORIENTATION.ordinal)
             orientation = CellOrientation.values()[orientationOrdinal]
             styledAttrs.recycle()
+
+            ViewCompat.setAccessibilityDelegate(this, object : AccessibilityDelegateCompat() {
+                override fun onInitializeAccessibilityNodeInfo(
+                    v: View,
+                    info: AccessibilityNodeInfoCompat
+                ) {
+                    super.onInitializeAccessibilityNodeInfo(v, info)
+                    info.roleDescription = "Cell"
+                }
+            }
+            )
         }
     }
 
