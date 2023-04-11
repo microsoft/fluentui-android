@@ -6,13 +6,13 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.demos.views.Cell
@@ -69,7 +69,7 @@ class TemplateViewActivity : DemoActivity() {
         }
     }
 
-    private fun measureAndLayoutViews(createView: () -> View): Long  {
+    private fun measureAndLayoutViews(createView: () -> View): Long {
         val t1 = System.nanoTime()
 
         for (i in 1..100) {
@@ -85,20 +85,30 @@ class TemplateViewActivity : DemoActivity() {
 
     private fun onCellClicked(cell: Cell) {
         cell.orientation = when (cell.orientation) {
-            CellOrientation.HORIZONTAL -> CellOrientation.VERTICAL
-            CellOrientation.VERTICAL -> CellOrientation.HORIZONTAL
+            CellOrientation.HORIZONTAL -> {
+                cell.announceForAccessibility(getString(R.string.vertical_layout))
+                CellOrientation.VERTICAL
+            }
+            CellOrientation.VERTICAL -> {
+                cell.announceForAccessibility(getString(R.string.horizontal_layout))
+                CellOrientation.HORIZONTAL
+            }
         }
     }
 
     // Template list view adapter
 
-    private class TemplateListViewAdapter : RecyclerView.Adapter<TemplateListViewAdapter.ViewHolder>() {
+    private class TemplateListViewAdapter :
+        RecyclerView.Adapter<TemplateListViewAdapter.ViewHolder>() {
         override fun getItemCount(): Int = LIST_ITEM_COUNT
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val cell = Cell(parent.context)
             cell.orientation = CellOrientation.VERTICAL
-            cell.layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            cell.layoutParams = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
             return ViewHolder(cell)
         }
 
@@ -114,11 +124,13 @@ class TemplateViewActivity : DemoActivity() {
 
     // Regular list view adapter
 
-    private class RegularListViewAdapter : RecyclerView.Adapter<RegularListViewAdapter.ViewHolder>() {
+    private class RegularListViewAdapter :
+        RecyclerView.Adapter<RegularListViewAdapter.ViewHolder>() {
         override fun getItemCount(): Int = LIST_ITEM_COUNT
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val cell = LayoutInflater.from(parent.context).inflate(R.layout.template_cell_vertical, parent, false)
+            val cell = LayoutInflater.from(parent.context)
+                .inflate(R.layout.template_cell_vertical, parent, false)
             cell.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
             return ViewHolder(cell)
         }

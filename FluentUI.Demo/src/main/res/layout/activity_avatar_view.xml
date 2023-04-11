@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) Microsoft Corporation. All rights reserved.
   ~ Licensed under the MIT License.
   -->
@@ -20,7 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="@dimen/demo_headline_padding_bottom"
-        android:text="@string/avatar_style_circle" />
+        android:text="@string/avatar_style_circle"
+        android:accessibilityHeading="true" />
 
     <View
         android:layout_width="match_parent"
@@ -43,6 +43,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/avatar_size_text_margin_end"
                 android:text="@string/avatar_size_xxlarge"
+                android:contentDescription="@string/avatar_size_xxlarge_accessibility"
                 android:textAppearance="@style/TextAppearance.DemoDescription" />
 
             <com.microsoft.fluentui.persona.AvatarView
@@ -63,6 +64,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/avatar_size_text_margin_end"
                 android:text="@string/avatar_size_xlarge"
+                android:contentDescription="@string/avatar_size_xlarge_accessibility"
                 android:textAppearance="@style/TextAppearance.DemoDescription" />
 
             <com.microsoft.fluentui.persona.AvatarView
@@ -163,6 +165,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/avatar_size_text_margin_end"
                 android:text="@string/avatar_size_xsmall"
+                android:contentDescription="@string/avatar_size_xsmall_accessibility"
                 android:textAppearance="@style/TextAppearance.DemoDescription" />
 
             <com.microsoft.fluentui.persona.AvatarView
@@ -190,7 +193,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/default_layout_margin"
         android:paddingBottom="@dimen/demo_headline_padding_bottom"
-        android:text="@string/avatar_style_square" />
+        android:text="@string/avatar_style_square"
+        android:accessibilityHeading="true" />
 
     <View
         android:layout_width="match_parent"
@@ -213,6 +217,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/avatar_size_text_margin_end"
                 android:text="@string/avatar_size_xxlarge"
+                android:contentDescription="@string/avatar_size_xxlarge_accessibility"
                 android:textAppearance="@style/TextAppearance.DemoDescription" />
 
             <com.microsoft.fluentui.persona.AvatarView
@@ -242,6 +247,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/avatar_size_text_margin_end"
                 android:text="@string/avatar_size_xlarge"
+                android:contentDescription="@string/avatar_size_xlarge_accessibility"
                 android:textAppearance="@style/TextAppearance.DemoDescription" />
 
             <com.microsoft.fluentui.persona.AvatarView
@@ -345,7 +351,7 @@
                 app:fluentui_avatarSize="small"
                 app:fluentui_avatarStyle="square"
                 app:fluentui_name="@string/persona_name_erik_nason"
-                app:fluentui_avatarBackgroundColor="@android:color/holo_blue_dark"/>
+                app:fluentui_avatarBackgroundColor="@android:color/holo_blue_dark" />
 
         </TableRow>
 
@@ -358,6 +364,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="@dimen/avatar_size_text_margin_end"
                 android:text="@string/avatar_size_xsmall"
+                android:contentDescription="@string/avatar_size_xsmall_accessibility"
                 android:textAppearance="@style/TextAppearance.DemoDescription" />
 
             <com.microsoft.fluentui.persona.AvatarView
