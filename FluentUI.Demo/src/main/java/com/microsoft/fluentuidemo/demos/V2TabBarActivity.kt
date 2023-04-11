@@ -1,8 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
+import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -14,7 +13,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
@@ -32,21 +30,19 @@ import com.microsoft.fluentui.tokenized.navigation.TabData
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2TabBarActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val composeHere = findViewById<ComposeView>(R.id.compose_here)
         val context = this
-
-        composeHere.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
             var showHomeBadge by rememberSaveable { mutableStateOf(true) }
             val tabDataList = arrayListOf(
@@ -59,7 +55,7 @@ class V2TabBarActivity : DemoActivity() {
                         selectedIndex = 0
                         showHomeBadge = false
                     },
-                    badge = { if(selectedIndex == 0 && showHomeBadge) Badge() else null }
+                    badge = { if (selectedIndex == 0 && showHomeBadge) Badge() else null }
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_mail),

@@ -7,29 +7,32 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.os.Handler
+import android.view.LayoutInflater
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_progress.*
+import com.microsoft.fluentuidemo.databinding.ActivityProgressBinding
 
 class ProgressActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_progress
+
+    private lateinit var progressBinding: ActivityProgressBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        progressBinding =
+            ActivityProgressBinding.inflate(LayoutInflater.from(container.context), container, true)
 
         var progressStatus = 0
         val handler = Handler()
 
         // Updates linear determinate progress
         Thread {
-            while(progressStatus<100){
+            while (progressStatus < 100) {
                 progressStatus++
                 handler.post {
-                    progress_bar_linear_determinate.progress = progressStatus
+                    progressBinding.progressBarLinearDeterminate.progress = progressStatus
                 }
                 Thread.sleep(20)
-                if(progressStatus == 100)
+                if (progressStatus == 100)
                     progressStatus = 0
             }
         }.start()

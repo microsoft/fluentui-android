@@ -9,10 +9,7 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.view.ContextThemeWrapper
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.microsoft.fluentui.appbarlayout.AppBarLayout
@@ -25,11 +22,9 @@ import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.util.getTintedDrawable
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityAppBarLayoutBinding
 import com.microsoft.fluentuidemo.demos.list.*
 import com.microsoft.fluentuidemo.util.Avatar
-import kotlinx.android.synthetic.main.activity_app_bar_layout.*
-import kotlinx.android.synthetic.main.activity_demo_detail.*
-import kotlinx.android.synthetic.main.activity_demo_list.app_bar
 
 class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     companion object {
@@ -41,12 +36,11 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
         private const val SEARCHBAR_QUERY = "searchbarQuery"
     }
 
+    private lateinit var appBarBinding: ActivityAppBarLayoutBinding
+
     enum class NavigationIconType {
         NONE, AVATAR, BACK_ICON
     }
-
-    override val contentLayoutId: Int
-        get() = R.layout.activity_app_bar_layout
 
     override val contentNeedsScrollableContainer: Boolean
         get() = false
@@ -92,21 +86,13 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     private lateinit var searchbar: Searchbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(themeId)
-
-        var scrollBehaviorOrdinal = scrollBehavior.ordinal
-        var navigationIconTypeOrdinal = navigationIconType.ordinal
-        savedInstanceState?.let {
-            scrollBehaviorOrdinal = it.getInt(SCROLL_BEHAVIOR)
-            navigationIconTypeOrdinal = it.getInt(NAVIGATION_ICON_TYPE)
-            searchbarIsActionMenuView = it.getBoolean(SEARCHBAR_IS_ACTION_MENU_VIEW)
-            searchbarHasFocus = it.getBoolean(SEARCHBAR_HAS_FOCUS)
-            searchbarQuery = it.getString(SEARCHBAR_QUERY) ?: ""
-        }
-        scrollBehavior = AppBarLayout.ScrollBehavior.values()[scrollBehaviorOrdinal]
-        navigationIconType = NavigationIconType.values()[navigationIconTypeOrdinal]
-
         super.onCreate(savedInstanceState)
+        appBarBinding = ActivityAppBarLayoutBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
+        setTheme(themeId)
 
         searchbar = createSearchbar()
 
@@ -126,9 +112,21 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             id = R.id.app_bar_layout_toggle_searchbar_type_button,
             onClickListener = this
         )
+        var scrollBehaviorOrdinal = scrollBehavior.ordinal
+        var navigationIconTypeOrdinal = navigationIconType.ordinal
+        savedInstanceState?.let {
+            scrollBehaviorOrdinal = it.getInt(SCROLL_BEHAVIOR)
+            navigationIconTypeOrdinal = it.getInt(NAVIGATION_ICON_TYPE)
+            searchbarIsActionMenuView = it.getBoolean(SEARCHBAR_IS_ACTION_MENU_VIEW)
+            searchbarHasFocus = it.getBoolean(SEARCHBAR_HAS_FOCUS)
+            searchbarQuery = it.getString(SEARCHBAR_QUERY) ?: ""
+        }
+
+        scrollBehavior = AppBarLayout.ScrollBehavior.values()[scrollBehaviorOrdinal]
+        navigationIconType = NavigationIconType.values()[navigationIconTypeOrdinal]
 
         setupList()
-        app_bar.scrollTargetViewId = R.id.app_bar_layout_list
+        demoBinding.appBar.scrollTargetViewId = R.id.app_bar_layout_list
 
         updateScrollBehavior()
         updateNavigationIcon()
@@ -215,10 +213,10 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun updateScrollBehavior() {
-        if (app_bar == null)
+        if (demoBinding.appBar == null)
             return
 
-        app_bar.scrollBehavior = scrollBehavior
+        demoBinding.appBar.scrollBehavior = scrollBehavior
 
         scrollBehaviorSubHeader.title =
             resources.getString(
@@ -230,7 +228,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun updateNavigationIcon() {
-        if (app_bar == null)
+        if (demoBinding.appBar == null)
             return
 
         searchbar.clearFocus()
@@ -238,7 +236,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
 
         when (navigationIconType) {
             NavigationIconType.NONE -> {
-                app_bar.toolbar.navigationIcon = null
+                demoBinding.appBar.toolbar.navigationIcon = null
 
                 navigationIconButton.buttonText =
                     resources.getString(R.string.app_bar_layout_show_avatar_button)
@@ -246,13 +244,13 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
             NavigationIconType.AVATAR -> {
                 val avatar = Avatar(resources.getString(R.string.persona_name_mauricio_august))
                 avatar.avatarImageResourceId = R.drawable.avatar_mauricio_august
-                app_bar.toolbar.setNavigationOnClickListener {
+                demoBinding.appBar.toolbar.setNavigationOnClickListener {
                     Snackbar.make(
-                        root_view,
+                        demoBinding.rootView,
                         getString(R.string.app_bar_layout_navigation_icon_clicked)
                     ).show()
                 }
-                app_bar.toolbar.avatar = avatar
+                demoBinding.appBar.toolbar.avatar = avatar
 
                 navigationIconButton.buttonText =
                     resources.getString(R.string.app_bar_layout_show_back_icon_button)
@@ -273,8 +271,8 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
                         ), R.attr.fluentuiToolbarIconColor
                     )
                 )
-                app_bar.toolbar.navigationIcon = backArrow
-                app_bar.toolbar.setNavigationOnClickListener {
+                demoBinding.appBar.toolbar.navigationIcon = backArrow
+                demoBinding.appBar.toolbar.setNavigationOnClickListener {
                     onBackPressed()
                 }
 
@@ -287,13 +285,13 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun updateSearchbar() {
-        if (app_bar == null)
+        if (demoBinding.appBar == null)
             return
 
         searchbar.isActionMenuView = searchbarIsActionMenuView
         if (searchbarIsActionMenuView) {
             val optionsMenu = optionsMenu ?: return
-            app_bar.accessoryView = null
+            demoBinding.appBar.accessoryView = null
 
             val searchIcon = getTintedDrawable(
                 R.drawable.ms_ic_search_24_filled,
@@ -313,7 +311,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
                 resources.getString(R.string.app_bar_layout_searchbar_accessory_view_button)
         } else {
             optionsMenu?.removeItem(R.id.app_bar_layout_action_search)
-            app_bar.accessoryView = searchbar
+            demoBinding.appBar.accessoryView = searchbar
             searchbarButton.buttonText =
                 resources.getString(R.string.app_bar_layout_searchbar_action_view_button)
         }
@@ -322,7 +320,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun updateSearchbarFocus() {
-        if (app_bar == null)
+        if (demoBinding.appBar == null)
             return
 
         if (searchbarHasFocus) {
@@ -332,7 +330,7 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun updateSearchbarQuery() {
-        if (app_bar == null)
+        if (demoBinding.appBar == null)
             return
 
         searchbar.setQuery(searchbarQuery, false)
@@ -349,8 +347,13 @@ class AppBarLayoutActivity : DemoActivity(), View.OnClickListener {
 
     private fun setupList() {
         adapter.listItems = createList()
-        app_bar_layout_list.adapter = adapter
-        app_bar_layout_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
+        appBarBinding.appBarLayoutList.adapter = adapter
+        appBarBinding.appBarLayoutList.addItemDecoration(
+            ListItemDivider(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     private fun createList(): ArrayList<IBaseListItem> {

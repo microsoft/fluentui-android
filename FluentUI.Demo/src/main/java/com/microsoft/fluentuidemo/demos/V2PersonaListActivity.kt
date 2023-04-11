@@ -2,11 +2,11 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import androidx.compose.material.*
+import android.view.LayoutInflater
+import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.testTag
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.AliasTokens
@@ -17,24 +17,20 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
 import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
 import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2PersonaListActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val compose_here = findViewById<ComposeView>(R.id.compose_here)
-
-        compose_here.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreatePersonaListActivityUI(this)
             }

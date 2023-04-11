@@ -6,34 +6,44 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.fluentui.persona.PersonaChipView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_demo_detail.*
-import kotlinx.android.synthetic.main.activity_persona_chip_view.*
+import com.microsoft.fluentuidemo.databinding.ActivityPersonaChipViewBinding
 
 class PersonaChipViewActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_persona_chip_view
+
+    private lateinit var personaChipBinding: ActivityPersonaChipViewBinding
 
     private val personaChipViewListener = object : PersonaChipView.Listener {
-        override fun onSelected(selected: Boolean) { }
+        override fun onSelected(selected: Boolean) {}
 
         override fun onClicked() {
-            Snackbar.make(root_view, getString(R.string.persona_chip_example_click), Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(
+                demoBinding.rootView,
+                getString(R.string.persona_chip_example_click),
+                Snackbar.LENGTH_SHORT
+            ).show()
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        personaChipBinding = ActivityPersonaChipViewBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
+
         createDisabledPersonaChip()
-        persona_chip_example_basic.listener = personaChipViewListener
-        persona_chip_example_no_icon.listener = personaChipViewListener
-        persona_chip_example_error.listener = personaChipViewListener
-        persona_chip_example_error.hasError = true
+        personaChipBinding.personaChipExampleBasic.listener = personaChipViewListener
+        personaChipBinding.personaChipExampleNoIcon.listener = personaChipViewListener
+        personaChipBinding.personaChipExampleError.listener = personaChipViewListener
+        personaChipBinding.personaChipExampleError.hasError = true
     }
 
     private fun createDisabledPersonaChip() {
@@ -42,8 +52,11 @@ class PersonaChipViewActivity : DemoActivity() {
         personaChipView.isEnabled = false
         personaChipView.name = personaName
         personaChipView.email = resources.getString(R.string.persona_email_kat_larsson)
-        personaChipView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        personaChipView.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         personaChipView.avatarContentDescriptionLabel = personaName
-        persona_chip_layout.addView(personaChipView)
+        personaChipBinding.personaChipLayout.addView(personaChipView)
     }
 }

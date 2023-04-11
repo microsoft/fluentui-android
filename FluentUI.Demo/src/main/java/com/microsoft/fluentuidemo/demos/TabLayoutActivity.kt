@@ -6,42 +6,47 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import androidx.viewpager.widget.PagerAdapter
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.viewpager.widget.PagerAdapter
 import com.microsoft.fluentui.tablayout.TabLayout
 import com.microsoft.fluentui.tablayout.TabLayout.TabType.*
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_tab_layout.*
+import com.microsoft.fluentuidemo.databinding.ActivityTabLayoutBinding
 
 class TabLayoutActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_tab_layout
 
     private var adapter: TabPagerAdapter? = null
     private lateinit var tabLayout: com.google.android.material.tabs.TabLayout
+    private lateinit var tabLayoutBinding: ActivityTabLayoutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        tabLayoutBinding = ActivityTabLayoutBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
-        tabLayout = demo_tab_layout.tabLayout ?: return
+        tabLayout = tabLayoutBinding.demoTabLayout.tabLayout ?: return
         adapter = TabPagerAdapter()
         adapter?.setData(createPageList())
         adapter?.setTitle(createPageTitleList())
-        view_pager.adapter = adapter
+        tabLayoutBinding.viewPager.adapter = adapter
 
-        show_tab_standard_two_segment.setOnClickListener(this::clickListener)
-        show_tab_standard_three_segment.setOnClickListener(this::clickListener)
-        show_tab_standard_four_segment.setOnClickListener(this::clickListener)
-        show_tab_standard_with_pager.setOnClickListener(this::clickListener)
-        show_tab_switch.setOnClickListener(this::clickListener)
-        show_tab_pills.setOnClickListener(this::clickListener)
+        tabLayoutBinding.showTabStandardTwoSegment.setOnClickListener(this::clickListener)
+        tabLayoutBinding.showTabStandardThreeSegment.setOnClickListener(this::clickListener)
+        tabLayoutBinding.showTabStandardFourSegment.setOnClickListener(this::clickListener)
+        tabLayoutBinding.showTabStandardWithPager.setOnClickListener(this::clickListener)
+        tabLayoutBinding.showTabSwitch.setOnClickListener(this::clickListener)
+        tabLayoutBinding.showTabPills.setOnClickListener(this::clickListener)
     }
 
     private fun clickListener(v: View) {
-        demo_tab_layout.visibility = View.VISIBLE
+        tabLayoutBinding.demoTabLayout.visibility = View.VISIBLE
         tabLayout.removeAllTabs()
         tabLayout.setupWithViewPager(null)
 
@@ -65,15 +70,15 @@ class TabLayoutActivity : DemoActivity() {
                 tabType = PILLS
             }
             R.id.show_tab_standard_with_pager -> {
-                tabLayout.setupWithViewPager(view_pager)
+                tabLayout.setupWithViewPager(tabLayoutBinding.viewPager)
             }
         }
-        demo_tab_layout.tabType = tabType
+        tabLayoutBinding.demoTabLayout.tabType = tabType
     }
 
     private fun setTabs(numTabs: Int) {
         for (i in 0 until numTabs) {
-            tabLayout.addTab(tabLayout.newTab().setText("Label "+(i+1)))
+            tabLayout.addTab(tabLayout.newTab().setText("Label " + (i + 1)))
         }
     }
 

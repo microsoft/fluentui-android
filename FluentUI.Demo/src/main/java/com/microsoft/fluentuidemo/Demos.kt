@@ -5,6 +5,8 @@
 
 package com.microsoft.fluentuidemo
 
+import androidx.viewbinding.ViewBinding
+import com.microsoft.fluentuidemo.databinding.ActivityActionBarLayoutBinding
 import com.microsoft.fluentuidemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass

@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -17,7 +18,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -41,22 +41,19 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.util.activity
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.util.createPersonaList
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class V2BottomSheetActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val composeHere = findViewById<ComposeView>(R.id.compose_here)
-
-        composeHere.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateActivityUI()
             }
@@ -116,7 +113,7 @@ private fun CreateActivityUI() {
         peekHeight = peekHeightState,
         showHandle = showHandleState,
         sheetState = bottomSheetState,
-        slideOver =  slideOverState
+        slideOver = slideOverState
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(10.dp),
