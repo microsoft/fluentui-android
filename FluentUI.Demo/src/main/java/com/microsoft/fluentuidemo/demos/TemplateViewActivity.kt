@@ -91,8 +91,14 @@ class TemplateViewActivity : DemoActivity() {
 
     private fun onCellClicked(cell: Cell) {
         cell.orientation = when (cell.orientation) {
-            CellOrientation.HORIZONTAL -> CellOrientation.VERTICAL
-            CellOrientation.VERTICAL -> CellOrientation.HORIZONTAL
+            CellOrientation.HORIZONTAL -> {
+                cell.announceForAccessibility(getString(R.string.vertical_layout))
+                CellOrientation.VERTICAL
+            }
+            CellOrientation.VERTICAL -> {
+                cell.announceForAccessibility(getString(R.string.horizontal_layout))
+                CellOrientation.HORIZONTAL
+            }
         }
     }
 
