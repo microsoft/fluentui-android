@@ -1,18 +1,16 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -20,27 +18,23 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.util.invokeToast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class V2PersonaActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val compose_here = findViewById<ComposeView>(R.id.compose_here)
-
-        compose_here.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreatePersonaActivityUI(this)
             }
         }
     }
+
     @Composable
     private fun CreatePersonaActivityUI(context: Context) {
         val person1 = Person(

@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
@@ -13,7 +14,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
@@ -34,14 +34,13 @@ import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class V2SearchBarActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
@@ -50,9 +49,8 @@ class V2SearchBarActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context: Context = this
-        val compose_here = findViewById<ComposeView>(R.id.compose_here)
-
-        compose_here.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
                 var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }

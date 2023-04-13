@@ -12,7 +12,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.ViewTreeObserver
 import androidx.core.content.ContextCompat
-import com.google.android.material.tooltip.TooltipDrawable
 import com.microsoft.fluentui.calendar.CalendarView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentui.tooltip.Tooltip
@@ -20,8 +19,7 @@ import com.microsoft.fluentui.util.ThemeUtil
 import com.microsoft.fluentui.widget.Button
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_demo_detail.*
-import kotlinx.android.synthetic.main.activity_tooltip.*
+import com.microsoft.fluentuidemo.databinding.ActivityTooltipBinding
 
 class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
     companion object {
@@ -59,11 +57,13 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
-    override val contentLayoutId: Int
-        get() = R.layout.activity_tooltip
+    private lateinit var tooltipBinding: ActivityTooltipBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        tooltipBinding =
+            ActivityTooltipBinding.inflate(LayoutInflater.from(container.context), container, true)
 
         TooltipType.values().forEach { type ->
             findViewById<Button>(type.buttonId).setOnClickListener {
@@ -82,7 +82,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
             }
         }
 
-        tooltip_anchor_center.setOnClickListener {
+        tooltipBinding.tooltipAnchorCenter.setOnClickListener {
             tooltip = Tooltip(this).show(
                 it,
                 resources.getString(R.string.tooltip_center_message),
@@ -92,7 +92,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
             buttonId = it.id
         }
 
-        tooltip_anchor_custom_view.setOnClickListener {
+        tooltipBinding.tooltipAnchorCustomView.setOnClickListener {
             tooltip = Tooltip(this).setFocusable(true).show(
                 it,
                 LayoutInflater.from(this).inflate(R.layout.tooltip_custom_view, null)
@@ -101,7 +101,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
             buttonId = it.id
         }
 
-        tooltip_anchor_calendar_demo.setOnClickListener {
+        tooltipBinding.tooltipAnchorCalendarDemo.setOnClickListener {
             tooltip = Tooltip(this).show(it, CalendarView(this), Tooltip.Config())
             tooltip?.onDismissListener = this
             buttonId = it.id
@@ -176,7 +176,7 @@ class TooltipActivity : DemoActivity(), Tooltip.OnDismissListener {
 
     override fun onDismiss() {
         Snackbar.make(
-            root_view,
+            demoBinding.rootView,
             resources.getString(R.string.tooltip_dismiss_message),
             Snackbar.LENGTH_SHORT
         ).show()

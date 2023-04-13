@@ -14,21 +14,25 @@ import com.microsoft.fluentui.bottomsheet.BottomSheetItem
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityBottomSheetBinding
 import com.microsoft.fluentuidemo.util.createBitmapFromLayout
-import kotlinx.android.synthetic.main.activity_bottom_sheet.*
-import kotlinx.android.synthetic.main.activity_demo_detail.*
 
 class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_bottom_sheet
-
     private var bottomSheetDialog: BottomSheetDialog? = null
 
+    private lateinit var bottomSheetBinding: ActivityBottomSheetBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        bottomSheetBinding = ActivityBottomSheetBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
         // Single line items
-        show_with_single_line_items_button.setOnClickListener {
+        bottomSheetBinding.showWithSingleLineItemsButton.setOnClickListener {
             val view = LayoutInflater.from(this).inflate(R.layout.accessory_content, null)
             val textView = view.findViewById<TextView>(R.id.bottom_sheet_item_nudge)
             textView.text = "10+"
@@ -47,17 +51,17 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                         accessoryBitmap = bitmap1
                     ),
                     BottomSheetItem(
-                            R.id.bottom_sheet_item_reply,
-                            R.drawable.ic_fluent_reply_24_regular,
-                            getString(R.string.bottom_sheet_item_reply_title),
-                            disabled = true,
-                            accessoryBitmap = bitmap2
+                        R.id.bottom_sheet_item_reply,
+                        R.drawable.ic_fluent_reply_24_regular,
+                        getString(R.string.bottom_sheet_item_reply_title),
+                        disabled = true,
+                        accessoryBitmap = bitmap2
                     ),
                     BottomSheetItem(
-                            R.id.bottom_sheet_item_forward,
-                            R.drawable.ic_fluent_forward_24_regular,
-                            getString(R.string.bottom_sheet_item_forward_title),
-                            accessoryBitmap = bitmap3,
+                        R.id.bottom_sheet_item_forward,
+                        R.drawable.ic_fluent_forward_24_regular,
+                        getString(R.string.bottom_sheet_item_forward_title),
+                        accessoryBitmap = bitmap3,
                     ),
                     BottomSheetItem(
                         R.id.bottom_sheet_item_delete,
@@ -70,7 +74,7 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
         }
 
         // Double line items
-        show_with_double_line_items_button.setOnClickListener {
+        bottomSheetBinding.showWithDoubleLineItemsButton.setOnClickListener {
             val bottomSheet = BottomSheet.newInstance(
                 arrayListOf(
                     BottomSheetItem(
@@ -103,7 +107,7 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
         }
 
         // Single line header
-        show_with_single_line_items_and_header_button.setOnClickListener {
+        bottomSheetBinding.showWithSingleLineItemsAndHeaderButton.setOnClickListener {
             val bottomSheet = BottomSheet.newInstance(
                 arrayListOf(
                     BottomSheetItem(
@@ -128,14 +132,14 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
                     )
                 ),
                 BottomSheetItem(
-                   title = getString(R.string.bottom_sheet_item_single_line_header)
+                    title = getString(R.string.bottom_sheet_item_single_line_header)
                 )
             )
             bottomSheet.show(supportFragmentManager, null)
         }
 
         // Double line header
-        show_with_double_line_items_and_two_line_header_button.setOnClickListener {
+        bottomSheetBinding.showWithDoubleLineItemsAndTwoLineHeaderButton.setOnClickListener {
             val bottomSheet = BottomSheet.newInstance(
                 arrayListOf(
                     BottomSheetItem(
@@ -170,7 +174,7 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
         }
 
         // Dialog
-        show_bottom_sheet_dialog_button.setOnClickListener {
+        bottomSheetBinding.showBottomSheetDialogButton.setOnClickListener {
             if (bottomSheetDialog == null) {
                 bottomSheetDialog = BottomSheetDialog(
                     this,
@@ -205,7 +209,7 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
     }
 
     override fun onBottomSheetItemClick(item: BottomSheetItem) {
-        when(item.id) {
+        when (item.id) {
             // Single line items & single line header
             R.id.bottom_sheet_item_flag -> showSnackbar(resources.getString(R.string.bottom_sheet_item_flag_toast))
             R.id.bottom_sheet_item_reply -> showSnackbar(resources.getString(R.string.bottom_sheet_item_reply_toast))
@@ -232,6 +236,6 @@ class BottomSheetActivity : DemoActivity(), BottomSheetItem.OnClickListener {
     }
 
     private fun showSnackbar(message: String) {
-        Snackbar.make(root_view, message).show()
+        Snackbar.make(demoBinding.rootView, message).show()
     }
 }

@@ -1,15 +1,15 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -34,26 +34,20 @@ import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
 import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.R.drawable
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 
 class V2ListItemActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val composeHere = findViewById<ComposeView>(R.id.compose_here)
-
-        composeHere.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateListActivityUI(this)
             }
@@ -245,7 +239,7 @@ private fun CreateListActivityUI(context: Context) {
 }
 
 @Composable
-fun OneLineSimpleList() {
+private fun OneLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -269,7 +263,7 @@ fun OneLineSimpleList() {
 }
 
 @Composable
-fun TwoLineSimpleList() {
+private fun TwoLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -296,7 +290,7 @@ fun TwoLineSimpleList() {
 }
 
 @Composable
-fun ThreeLineSimpleList() {
+private fun ThreeLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
@@ -326,7 +320,7 @@ fun ThreeLineSimpleList() {
 }
 
 @Composable
-fun OneLineListAccessoryViewContent(context: Context) {
+private fun OneLineListAccessoryViewContent(context: Context) {
     var checked by remember { mutableStateOf(true) }
     return Column {
         ListItem.Item(
@@ -384,7 +378,7 @@ fun OneLineListAccessoryViewContent(context: Context) {
 }
 
 @Composable
-fun TwoLineListAccessoryViewContent(context: Context) {
+private fun TwoLineListAccessoryViewContent(context: Context) {
     var unreadDot1 by remember { mutableStateOf(true) }
     var unreadDot2 by remember { mutableStateOf(true) }
     return Column {
@@ -473,7 +467,7 @@ fun TwoLineListAccessoryViewContent(context: Context) {
 }
 
 @Composable
-fun ThreeLineListAccessoryViewContent(
+private fun ThreeLineListAccessoryViewContent(
     context: Context
 ) {
     return Column {
@@ -516,19 +510,19 @@ fun ThreeLineListAccessoryViewContent(
     }
 }
 
-fun getPersonsList(): List<Person> {
+private fun getPersonsList(): List<Person> {
     val person1 = Person(firstName = "Allan", image = drawable.avatar_allan_munger)
     val person2 = Person(firstName = "Amanda", image = drawable.avatar_amanda_brady)
     val person3 = Person(firstName = "Ashley", image = drawable.avatar_ashley_mccarthy)
     return listOf(person1, person2, person3)
 }
 
-fun groupAvatar(): Group {
+private fun groupAvatar(): Group {
     return Group(getPersonsList())
 }
 
 @Composable
-fun LeftViewRadioButton() {
+private fun LeftViewRadioButton() {
     var checked by remember { mutableStateOf(false) }
     return RadioButton(enabled = true,
         selected = checked,
@@ -539,12 +533,12 @@ fun LeftViewRadioButton() {
 }
 
 @Composable
-fun RightViewAvatarStack(size: AvatarSize) {
+private fun RightViewAvatarStack(size: AvatarSize) {
     return AvatarGroup(group = groupAvatar(), size = size)
 }
 
 @Composable
-fun LeftViewThreeIcon() {
+private fun LeftViewThreeIcon() {
     Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
         Icon(
             painter = painterResource(id = drawable.ic_fluent_flag_24_regular),
@@ -571,34 +565,7 @@ fun LeftViewThreeIcon() {
 }
 
 @Composable
-fun LeftViewThreeRadioButtons() {
-    var checked1 by remember { mutableStateOf(false) }
-    var checked2 by remember { mutableStateOf(false) }
-    var checked3 by remember { mutableStateOf(false) }
-    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-        RadioButton(enabled = true,
-            selected = checked1,
-            onClick = {
-                checked1 = !checked1
-            }
-        )
-        RadioButton(enabled = true,
-            selected = checked2,
-            onClick = {
-                checked2 = !checked2
-            }
-        )
-        RadioButton(enabled = true,
-            selected = checked3,
-            onClick = {
-                checked3 = !checked3
-            }
-        )
-    }
-}
-
-@Composable
-fun RightViewToggle() {
+private fun RightViewToggle() {
     var enabled by remember { mutableStateOf(false) }
     return ToggleSwitch(onValueChange = {
         enabled = it
@@ -606,7 +573,7 @@ fun RightViewToggle() {
 }
 
 @Composable
-fun RightViewThreeButton() {
+private fun RightViewThreeButton() {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Button(
             onClick = { /*TODO*/ },
@@ -630,15 +597,7 @@ fun RightViewThreeButton() {
 }
 
 @Composable
-fun RightViewCheckbox() {
-    var checked by remember { mutableStateOf(true) }
-    return CheckBox(enabled = true, checked = !checked, onCheckedChanged = {
-        checked = !it
-    })
-}
-
-@Composable
-fun LeftViewThreeButton() {
+private fun LeftViewThreeButton() {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Button(
             onClick = { /*TODO*/ },
@@ -662,27 +621,27 @@ fun LeftViewThreeButton() {
 }
 
 @Composable
-fun oneTextIcon16(): TextIcons {
+private fun oneTextIcon16(): TextIcons {
     return TextIcons({ Icon16() })
 }
 
 @Composable
-fun twoTextIcons16(): TextIcons {
+private fun twoTextIcons16(): TextIcons {
     return TextIcons({ Icon16() }, { Icon16() })
 }
 
 @Composable
-fun oneTextIcon20(): TextIcons {
+private fun oneTextIcon20(): TextIcons {
     return TextIcons({ Icon20() })
 }
 
 @Composable
-fun twoTextIcons20(): TextIcons {
+private fun twoTextIcons20(): TextIcons {
     return TextIcons({ Icon20() }, { Icon20() })
 }
 
 @Composable
-fun Icon16() {
+private fun Icon16() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__16x16_checkmark),
         contentDescription = "Flag",
@@ -693,7 +652,7 @@ fun Icon16() {
 }
 
 @Composable
-fun Icon20() {
+private fun Icon20() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__20x20_checkmark),
         contentDescription = "Flag",
@@ -704,12 +663,12 @@ fun Icon20() {
 }
 
 @Composable
-fun LeftViewFolderIcon40() {
+private fun LeftViewFolderIcon40() {
     return Image(ListItemIcons.Folder40, "Folder")
 }
 
 @Composable
-fun RightViewButton(
+private fun RightViewButton(
     size: ButtonSize,
     context: Context
 ) {
@@ -722,13 +681,13 @@ fun RightViewButton(
 }
 
 @Composable
-fun LeftViewAvatar(size: AvatarSize) {
+private fun LeftViewAvatar(size: AvatarSize) {
     val person = Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady)
     return Avatar(person = person, size = size, enablePresence = false)
 }
 
 @Composable
-fun LeftViewAvatarCutout(size: AvatarSize) {
+private fun LeftViewAvatarCutout(size: AvatarSize) {
     val person =
         Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
     return Avatar(
@@ -741,12 +700,12 @@ fun LeftViewAvatarCutout(size: AvatarSize) {
 }
 
 @Composable
-fun GetAvatar(size: AvatarSize, image: Int) {
+private fun GetAvatar(size: AvatarSize, image: Int) {
     val person = Person(firstName = "", lastName = "", image = image)
     return Avatar(person = person, size = size, enablePresence = false)
 }
 
 @Composable
-fun RightViewText(text: String) {
+private fun RightViewText(text: String) {
     return Text(text = text)
 }

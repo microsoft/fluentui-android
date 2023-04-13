@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,7 +18,6 @@ import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
@@ -39,14 +39,13 @@ import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
 class V2ScaffoldActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
@@ -63,10 +62,9 @@ class V2ScaffoldActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val composeHere = findViewById<ComposeView>(R.id.compose_here)
         val context = this
-
-        composeHere.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
             var showHomeBadge by rememberSaveable { mutableStateOf(true) }
             val tabDataList = arrayListOf(

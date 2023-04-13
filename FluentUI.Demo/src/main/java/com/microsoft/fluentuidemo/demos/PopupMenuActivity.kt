@@ -6,14 +6,14 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import com.microsoft.fluentui.popupmenu.PopupMenu
 import com.microsoft.fluentui.popupmenu.PopupMenuItem
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_demo_detail.*
-import kotlinx.android.synthetic.main.activity_popup_menu.*
+import com.microsoft.fluentuidemo.databinding.ActivityPopupMenuBinding
 
 class PopupMenuActivity : DemoActivity(), View.OnClickListener {
     companion object {
@@ -21,22 +21,25 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
         private const val ALL_CHECKED_ITEMS = "allCheckedItems"
     }
 
-    override val contentLayoutId: Int
-        get() = R.layout.activity_popup_menu
-
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     private var singleCheckedItemId: Int = -1
     private var allCheckedItems: ArrayList<PopupMenuItem>? = null
+    private lateinit var popupMenuBinding: ActivityPopupMenuBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        popupMenuBinding = ActivityPopupMenuBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
-        no_check.setOnClickListener(this)
-        no_check2.setOnClickListener(this)
-        single_check.setOnClickListener(this)
-        all_check.setOnClickListener(this)
+        popupMenuBinding.noCheck.setOnClickListener(this)
+        popupMenuBinding.noCheck2.setOnClickListener(this)
+        popupMenuBinding.singleCheck.setOnClickListener(this)
+        popupMenuBinding.allCheck.setOnClickListener(this)
 
         savedInstanceState?.let {
             singleCheckedItemId = it.getInt(SINGLE_CHECKED_ITEM_ID)
@@ -53,10 +56,10 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
 
     override fun onClick(anchorView: View) {
         when (anchorView) {
-            no_check -> showPopupNoCheck(anchorView)
-            no_check2 -> showPopupNoCheck(anchorView)
-            single_check -> showPopupSingleCheck(anchorView)
-            all_check -> showPopupAllCheck(anchorView)
+            popupMenuBinding.noCheck -> showPopupNoCheck(anchorView)
+            popupMenuBinding.noCheck2 -> showPopupNoCheck(anchorView)
+            popupMenuBinding.singleCheck -> showPopupSingleCheck(anchorView)
+            popupMenuBinding.allCheck -> showPopupAllCheck(anchorView)
         }
     }
 
@@ -64,10 +67,22 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
         val popupMenuItems = arrayListOf(
             PopupMenuItem(R.id.popup_menu_item_share, getString(R.string.popup_menu_item_share)),
             PopupMenuItem(R.id.popup_menu_item_follow, getString(R.string.popup_menu_item_follow)),
-            PopupMenuItem(R.id.popup_menu_item_invite_people, getString(R.string.popup_menu_item_invite_people)),
-            PopupMenuItem(R.id.popup_menu_item_refresh_page, getString(R.string.popup_menu_item_refresh_page)),
-            PopupMenuItem(R.id.popup_menu_item_open_in_browser, getString(R.string.popup_menu_item_open_in_browser)),
-            PopupMenuItem(R.id.popup_menu_item_multiline, getString(R.string.popup_menu_item_multiline))
+            PopupMenuItem(
+                R.id.popup_menu_item_invite_people,
+                getString(R.string.popup_menu_item_invite_people)
+            ),
+            PopupMenuItem(
+                R.id.popup_menu_item_refresh_page,
+                getString(R.string.popup_menu_item_refresh_page)
+            ),
+            PopupMenuItem(
+                R.id.popup_menu_item_open_in_browser,
+                getString(R.string.popup_menu_item_open_in_browser)
+            ),
+            PopupMenuItem(
+                R.id.popup_menu_item_multiline,
+                getString(R.string.popup_menu_item_multiline)
+            )
         )
 
         val onPopupMenuItemClickListener = object : PopupMenuItem.OnClickListener {
@@ -76,15 +91,33 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
             }
         }
 
-        showPopupMenu(anchorView, popupMenuItems, PopupMenu.ItemCheckableBehavior.NONE, onPopupMenuItemClickListener)
+        showPopupMenu(
+            anchorView,
+            popupMenuItems,
+            PopupMenu.ItemCheckableBehavior.NONE,
+            onPopupMenuItemClickListener
+        )
     }
 
     private fun showPopupSingleCheck(anchorView: View) {
         val popupMenuItems = arrayListOf(
-            PopupMenuItem(R.id.popup_menu_item_all_news, getString(R.string.popup_menu_item_all_news), showDividerBelow = true),
-            PopupMenuItem(R.id.popup_menu_item_saved_news, getString(R.string.popup_menu_item_saved_news)),
-            PopupMenuItem(R.id.popup_menu_item_news_from_sites, getString(R.string.popup_menu_item_news_from_sites)),
-            PopupMenuItem(R.id.popup_menu_item_contoso_travel, getString(R.string.popup_menu_item_contoso_travel))
+            PopupMenuItem(
+                R.id.popup_menu_item_all_news,
+                getString(R.string.popup_menu_item_all_news),
+                showDividerBelow = true
+            ),
+            PopupMenuItem(
+                R.id.popup_menu_item_saved_news,
+                getString(R.string.popup_menu_item_saved_news)
+            ),
+            PopupMenuItem(
+                R.id.popup_menu_item_news_from_sites,
+                getString(R.string.popup_menu_item_news_from_sites)
+            ),
+            PopupMenuItem(
+                R.id.popup_menu_item_contoso_travel,
+                getString(R.string.popup_menu_item_contoso_travel)
+            )
         )
 
         popupMenuItems.forEach { popupMenuItem ->
@@ -98,14 +131,27 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
             }
         }
 
-        showPopupMenu(anchorView, popupMenuItems, PopupMenu.ItemCheckableBehavior.SINGLE, onPopupMenuItemClickListener)
+        showPopupMenu(
+            anchorView,
+            popupMenuItems,
+            PopupMenu.ItemCheckableBehavior.SINGLE,
+            onPopupMenuItemClickListener
+        )
     }
 
     private fun showPopupAllCheck(anchorView: View) {
         if (allCheckedItems == null)
             allCheckedItems = arrayListOf(
-                PopupMenuItem(R.id.popup_menu_item_notify_outside, getString(R.string.popup_menu_item_notify_outside), R.drawable.ic_sync_24_filled),
-                PopupMenuItem(R.id.popup_menu_item_notify_inactive, getString(R.string.popup_menu_item_notify_inactive), R.drawable.ic_clock_24_filled)
+                PopupMenuItem(
+                    R.id.popup_menu_item_notify_outside,
+                    getString(R.string.popup_menu_item_notify_outside),
+                    R.drawable.ic_sync_24_filled
+                ),
+                PopupMenuItem(
+                    R.id.popup_menu_item_notify_inactive,
+                    getString(R.string.popup_menu_item_notify_inactive),
+                    R.drawable.ic_clock_24_filled
+                )
             )
 
         val onPopupMenuItemClickListener = object : PopupMenuItem.OnClickListener {
@@ -114,7 +160,12 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
             }
         }
 
-        showPopupMenu(anchorView, allCheckedItems!!, PopupMenu.ItemCheckableBehavior.ALL, onPopupMenuItemClickListener)
+        showPopupMenu(
+            anchorView,
+            allCheckedItems!!,
+            PopupMenu.ItemCheckableBehavior.ALL,
+            onPopupMenuItemClickListener
+        )
     }
 
     private fun showPopupMenu(
@@ -129,6 +180,9 @@ class PopupMenuActivity : DemoActivity(), View.OnClickListener {
     }
 
     private fun showSnackbar(popupMenuItem: PopupMenuItem) {
-        Snackbar.make(root_view, "${getString(R.string.popup_menu_item_clicked)} ${popupMenuItem.title}").show()
+        Snackbar.make(
+            demoBinding.rootView,
+            "${getString(R.string.popup_menu_item_clicked)} ${popupMenuItem.title}"
+        ).show()
     }
 }

@@ -8,14 +8,15 @@ package com.microsoft.fluentuidemo.demos
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
-import androidx.core.content.ContextCompat
-import androidx.core.widget.TextViewCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import android.text.TextUtils
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.core.widget.TextViewCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.listitem.ListItemView.Companion.DEFAULT_CUSTOM_VIEW_SIZE
@@ -26,30 +27,37 @@ import com.microsoft.fluentui.persona.AvatarView
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityListItemViewBinding
 import com.microsoft.fluentuidemo.demos.list.IBaseListItem
 import com.microsoft.fluentuidemo.demos.list.ListAdapter
 import com.microsoft.fluentuidemo.demos.list.ListItem
 import com.microsoft.fluentuidemo.demos.list.ListSubHeader
-import kotlinx.android.synthetic.main.activity_demo_detail.*
-import kotlinx.android.synthetic.main.activity_list_item_view.*
 
 class ListItemViewActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_list_item_view
 
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
+    private lateinit var listBinding: ActivityListItemViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        app_bar.scrollTargetViewId = R.id.list_example
+        listBinding = ActivityListItemViewBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
+        demoBinding.appBar.scrollTargetViewId = R.id.list_example
 
         val listAdapter = ListAdapter(this)
         listAdapter.listItems = createList()
 
-        list_example.adapter = listAdapter
-        list_example.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
+        listBinding.listExample.adapter = listAdapter
+        listBinding.listExample.addItemDecoration(
+            ListItemDivider(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
     }
 
     private fun createList(): ArrayList<IBaseListItem> {
@@ -59,7 +67,11 @@ class ListItemViewActivity : DemoActivity() {
         // Single-line list example
 
         val singleLineSection = createSection(
-            createListSubHeader(getString(R.string.list_item_sub_header_single_line), ListSubHeaderView.TitleColor.TERTIARY, true),
+            createListSubHeader(
+                getString(R.string.list_item_sub_header_single_line),
+                ListSubHeaderView.TitleColor.TERTIARY,
+                true
+            ),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -145,31 +157,31 @@ class ListItemViewActivity : DemoActivity() {
             createListSubHeader(getString(R.string.list_item_sub_header_two_line_custom_secondary_subtitle)),
             arrayListOf(
                 createListItem(
-                        getString(R.string.list_item_title),
-                        getString(R.string.list_item_subtitle),
-                        customView = createExampleCustomView(smallIcon),
-                        customViewSize = ListItemView.CustomViewSize.SMALL,
-                        customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
-                        layoutDensity = ListItemView.LayoutDensity.COMPACT
+                    getString(R.string.list_item_title),
+                    getString(R.string.list_item_subtitle),
+                    customView = createExampleCustomView(smallIcon),
+                    customViewSize = ListItemView.CustomViewSize.SMALL,
+                    customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
+                    layoutDensity = ListItemView.LayoutDensity.COMPACT
                 ),
                 createListItem(
-                        getString(R.string.list_item_title),
-                        getString(R.string.list_item_subtitle),
-                        customView = createExampleCustomView(smallIcon),
-                        customViewSize = ListItemView.CustomViewSize.SMALL,
-                        customAccessoryView = createExampleCustomView(overflowIcon),
-                        customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
-                        addCustomAccessoryViewClick = true,
-                        layoutDensity = ListItemView.LayoutDensity.COMPACT
+                    getString(R.string.list_item_title),
+                    getString(R.string.list_item_subtitle),
+                    customView = createExampleCustomView(smallIcon),
+                    customViewSize = ListItemView.CustomViewSize.SMALL,
+                    customAccessoryView = createExampleCustomView(overflowIcon),
+                    customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
+                    addCustomAccessoryViewClick = true,
+                    layoutDensity = ListItemView.LayoutDensity.COMPACT
                 ),
                 createListItem(
-                        getString(R.string.list_item_title),
-                        getString(R.string.list_item_subtitle),
-                        customView = createExampleAvatarView(R.drawable.avatar_wanda_howard),
-                        customViewSize = ListItemView.CustomViewSize.MEDIUM,
-                        customAccessoryView = createExampleTextView(),
-                        customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
-                        layoutDensity = ListItemView.LayoutDensity.COMPACT
+                    getString(R.string.list_item_title),
+                    getString(R.string.list_item_subtitle),
+                    customView = createExampleAvatarView(R.drawable.avatar_wanda_howard),
+                    customViewSize = ListItemView.CustomViewSize.MEDIUM,
+                    customAccessoryView = createExampleTextView(),
+                    customSecondarySubtitleView = createExampleCustomSecondarySubtitleView(),
+                    layoutDensity = ListItemView.LayoutDensity.COMPACT
                 )
             )
         )
@@ -177,7 +189,11 @@ class ListItemViewActivity : DemoActivity() {
         // Three-line list example
 
         val threeLineSection = createSection(
-            createListSubHeader(getString(R.string.list_item_sub_header_three_line), ListSubHeaderView.TitleColor.SECONDARY, true),
+            createListSubHeader(
+                getString(R.string.list_item_sub_header_three_line),
+                ListSubHeaderView.TitleColor.SECONDARY,
+                true
+            ),
             arrayListOf(
                 createListItem(
                     getString(R.string.list_item_title),
@@ -232,19 +248,28 @@ class ListItemViewActivity : DemoActivity() {
                     getString(R.string.list_item_title),
                     getString(R.string.list_item_subtitle),
                     getString(R.string.list_item_footer),
-                    customView = createExampleAvatarView(R.drawable.avatar_johnie_mcconnell, avatarSize = AvatarSize.XXLARGE),
+                    customView = createExampleAvatarView(
+                        R.drawable.avatar_johnie_mcconnell,
+                        avatarSize = AvatarSize.XXLARGE
+                    ),
                     customViewSize = ListItemView.CustomViewSize.LARGE
                 ),
                 createListItem(
                     getString(R.string.list_item_title),
                     footer = getString(R.string.list_item_footer),
-                    customView = createExampleAvatarView(avatarNameStringId = R.string.persona_name_elliot_woodward, avatarSize = AvatarSize.XXLARGE),
+                    customView = createExampleAvatarView(
+                        avatarNameStringId = R.string.persona_name_elliot_woodward,
+                        avatarSize = AvatarSize.XXLARGE
+                    ),
                     customViewSize = ListItemView.CustomViewSize.LARGE
                 ),
                 createListItem(
                     getString(R.string.list_item_title),
                     getString(R.string.list_item_subtitle),
-                    customView = createExampleAvatarView(R.drawable.avatar_miguel_garcia, avatarSize = AvatarSize.XXLARGE),
+                    customView = createExampleAvatarView(
+                        R.drawable.avatar_miguel_garcia,
+                        avatarSize = AvatarSize.XXLARGE
+                    ),
                     customViewSize = ListItemView.CustomViewSize.LARGE
                 )
             )
@@ -310,12 +335,17 @@ class ListItemViewActivity : DemoActivity() {
             )
         )
 
-        val twoLineListSections = twoLineSection + twoLineDenseSection + twoLineCustomSecondarySubtitleSection
-        val layoutVariantSections = noCustomViewSection + largeHeaderSection + truncationSection + wrappingSection
+        val twoLineListSections =
+            twoLineSection + twoLineDenseSection + twoLineCustomSecondarySubtitleSection
+        val layoutVariantSections =
+            noCustomViewSection + largeHeaderSection + truncationSection + wrappingSection
         return (singleLineSection + twoLineListSections + threeLineSection + layoutVariantSections) as ArrayList<IBaseListItem>
     }
 
-    private fun createSection(subHeader: ListSubHeader, items: ArrayList<ListItem>): ArrayList<IBaseListItem> {
+    private fun createSection(
+        subHeader: ListSubHeader,
+        items: ArrayList<ListItem>
+    ): ArrayList<IBaseListItem> {
         val itemArray = arrayListOf(subHeader) as ArrayList<IBaseListItem>
         itemArray.addAll(items)
         return itemArray
@@ -332,7 +362,10 @@ class ListItemViewActivity : DemoActivity() {
         if (useCustomAccessoryView) {
             val customTextView = TextView(this)
             customTextView.text = getString(R.string.list_item_sub_header_custom_accessory_text)
-            TextViewCompat.setTextAppearance(customTextView, R.style.FluentUIDemo_ListItemSubHeaderTitle)
+            TextViewCompat.setTextAppearance(
+                customTextView,
+                R.style.FluentUIDemo_ListItemSubHeaderTitle
+            )
             customTextView.setOnClickListener {
                 Snackbar.make(
                     it,
@@ -375,7 +408,7 @@ class ListItemViewActivity : DemoActivity() {
         } else {
             item.titleTruncateAt = TextUtils.TruncateAt.MIDDLE
             if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP)
-                // In earlier APIs this crashes with an ArrayIndexOutOfBoundsException
+            // In earlier APIs this crashes with an ArrayIndexOutOfBoundsException
                 item.subtitleTruncateAt = TextUtils.TruncateAt.START
         }
 
@@ -400,12 +433,19 @@ class ListItemViewActivity : DemoActivity() {
 
     private fun createExampleTextView(): TextView {
         val textCustomAccessoryView = TextView(this)
-        TextViewCompat.setTextAppearance(textCustomAccessoryView, R.style.TextAppearance_ListItemValue)
+        TextViewCompat.setTextAppearance(
+            textCustomAccessoryView,
+            R.style.TextAppearance_ListItemValue
+        )
         textCustomAccessoryView.text = getString(R.string.list_item_custom_text_view)
         return textCustomAccessoryView
     }
 
-    private fun createExampleAvatarView(avatarImageResourceId: Int = -1, avatarNameStringId: Int = -1, avatarSize: AvatarSize = AvatarSize.LARGE): AvatarView {
+    private fun createExampleAvatarView(
+        avatarImageResourceId: Int = -1,
+        avatarNameStringId: Int = -1,
+        avatarSize: AvatarSize = AvatarSize.LARGE
+    ): AvatarView {
         val avatarView = AvatarView(this)
         avatarView.avatarImageResourceId = avatarImageResourceId
         avatarView.avatarSize = avatarSize
@@ -419,7 +459,10 @@ class ListItemViewActivity : DemoActivity() {
         dotTextView.text = " . "
 
         val secondarySubtitleTextView = TextView(this)
-        TextViewCompat.setTextAppearance(secondarySubtitleTextView, R.style.TextAppearance_DemoListItemSubtitle)
+        TextViewCompat.setTextAppearance(
+            secondarySubtitleTextView,
+            R.style.TextAppearance_DemoListItemSubtitle
+        )
         secondarySubtitleTextView.text = getString(R.string.list_item_secondary_subtitle)
 
         val linearLayout = LinearLayout(this)

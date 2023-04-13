@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -9,7 +10,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -21,22 +21,18 @@ import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.Shimmer
 import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 class V2ProgressActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val compose_here = findViewById<ComposeView>(R.id.compose_here)
-
-        compose_here.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateProgressActivityUI()
             }
@@ -69,7 +65,10 @@ private fun CreateProgressActivityUI() {
             linearProgress,
             circularProgress
         )
-        IndeterminateProgressIndicatorExamples(brandTextColor = brandTextColor, textColor = textColor)
+        IndeterminateProgressIndicatorExamples(
+            brandTextColor = brandTextColor,
+            textColor = textColor
+        )
         shimmerExamples(brandTextColor = brandTextColor, textColor = textColor)
     }
     LaunchedEffect(key1 = linearProgress) {
@@ -95,7 +94,7 @@ private fun CreateProgressActivityUI() {
 }
 
 @Composable
-fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
+private fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Text(
             modifier = Modifier.padding(top = 16.dp),
@@ -117,7 +116,7 @@ fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
 }
 
 @Composable
-fun CircularProgressIndicatorExamples(textColor: Color) {
+private fun CircularProgressIndicatorExamples(textColor: Color) {
     Column {
         Row(
             Modifier.height(42.dp),
@@ -140,7 +139,10 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
                 text = "Small - 16dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(size = CircularProgressIndicatorSize.XSmall, style = FluentStyle.Brand)
+            CircularProgressIndicator(
+                size = CircularProgressIndicatorSize.XSmall,
+                style = FluentStyle.Brand
+            )
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.XSmall
             )
@@ -154,7 +156,10 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
                 text = "Medium - 24dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(size = CircularProgressIndicatorSize.Medium, style = FluentStyle.Brand)
+            CircularProgressIndicator(
+                size = CircularProgressIndicatorSize.Medium,
+                style = FluentStyle.Brand
+            )
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.Medium
             )
@@ -168,7 +173,10 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
                 text = "Large - 32dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(size = CircularProgressIndicatorSize.Large, style = FluentStyle.Brand)
+            CircularProgressIndicator(
+                size = CircularProgressIndicatorSize.Large,
+                style = FluentStyle.Brand
+            )
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.Large
             )
@@ -182,7 +190,10 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
                 text = "XLarge - 36dp", modifier = Modifier.width(100.dp),
                 color = textColor
             )
-            CircularProgressIndicator(CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
+            CircularProgressIndicator(
+                CircularProgressIndicatorSize.XLarge,
+                style = FluentStyle.Brand
+            )
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.XLarge
             )
@@ -191,7 +202,7 @@ fun CircularProgressIndicatorExamples(textColor: Color) {
 }
 
 @Composable
-fun DeterminateProgressIndicatorExamples(
+private fun DeterminateProgressIndicatorExamples(
     brandTextColor: Color,
     textColor: Color,
     linearProgress: Float,
@@ -226,13 +237,17 @@ fun DeterminateProgressIndicatorExamples(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        CircularProgressIndicator(circularProgress, size = CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
+        CircularProgressIndicator(
+            circularProgress,
+            size = CircularProgressIndicatorSize.XLarge,
+            style = FluentStyle.Brand
+        )
         Text(text = "" + "%.0f".format(circularProgress * 100) + "%", color = textColor)
     }
 }
 
 @Composable
-fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textColor: Color) {
+private fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textColor: Color) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
         text = "InDeterminate ProgressIndicator",
@@ -261,12 +276,15 @@ fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textColor: Col
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(32.dp)
     ) {
-        CircularProgressIndicator(size = CircularProgressIndicatorSize.XLarge, style = FluentStyle.Brand)
+        CircularProgressIndicator(
+            size = CircularProgressIndicatorSize.XLarge,
+            style = FluentStyle.Brand
+        )
     }
 }
 
 @Composable
-fun shimmerExamples(brandTextColor: Color, textColor: Color) {
+private fun shimmerExamples(brandTextColor: Color, textColor: Color) {
     Text(
         modifier = Modifier.padding(top = 16.dp),
         text = "Shimmer",

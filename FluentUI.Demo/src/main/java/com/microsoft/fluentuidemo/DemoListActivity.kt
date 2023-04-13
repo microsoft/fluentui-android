@@ -19,7 +19,7 @@ import com.microsoft.fluentui.listitem.ListItemDivider
 import com.microsoft.fluentui.listitem.ListItemView
 import com.microsoft.fluentui.search.Searchbar
 import com.microsoft.fluentui.util.DuoSupportUtils
-import kotlinx.android.synthetic.main.activity_demo_list.*
+import com.microsoft.fluentuidemo.databinding.ActivityDemoListBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -30,31 +30,32 @@ import kotlin.collections.ArrayList
 class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var searchbar: Searchbar
     var dualScreenMode = false
+    private lateinit var demoListBinding: ActivityDemoListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Launch Screen: Setting the theme here removes the launch screen, which was added to this activity
         // by setting the theme to App.Launcher in the manifest.
         setTheme(R.style.AppTheme)
-
+        demoListBinding = ActivityDemoListBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         dualScreenMode = DuoSupportUtils.isDualScreenMode(this)
 
-        setContentView(R.layout.activity_demo_list)
+        setContentView(demoListBinding.root)
 
         setupAppBar()
 
-        demo_list.adapter = DemoListAdapter()
-        demo_list.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
+        demoListBinding.demoList.adapter = DemoListAdapter()
+        demoListBinding.demoList.addItemDecoration(ListItemDivider(this, DividerItemDecoration.VERTICAL))
 
         Initializer.init(application)
     }
 
     private fun setupAppBar() {
-        app_bar.toolbar.subtitle = BuildConfig.VERSION_NAME
+        demoListBinding.appBar.toolbar.subtitle = BuildConfig.VERSION_NAME
 
         searchbar = Searchbar(this)
         searchbar.onQueryTextListener = this
-        app_bar.accessoryView = searchbar
+        demoListBinding.appBar.accessoryView = searchbar
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
@@ -69,7 +70,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         searchbar.showSearchProgress = true
 
         Handler().postDelayed({
-            (demo_list.adapter as DemoListAdapter).demos = filteredDemoList as ArrayList<Demo>
+            (demoListBinding.demoList.adapter as DemoListAdapter).demos = filteredDemoList as ArrayList<Demo>
             searchbar.showSearchProgress = false
         }, 500)
         return true

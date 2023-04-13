@@ -7,11 +7,13 @@ package com.microsoft.fluentuidemo
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
-import androidx.annotation.LayoutRes
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.microsoft.fluentui.util.DuoSupportUtils
-import kotlinx.android.synthetic.main.activity_demo_detail.*
+import com.microsoft.fluentuidemo.databinding.ActivityDemoDetailBinding
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import java.util.*
 
 abstract class DemoActivity : AppCompatActivity() {
@@ -19,43 +21,43 @@ abstract class DemoActivity : AppCompatActivity() {
         const val DEMO_ID = "demo_id"
     }
 
-    protected abstract val contentLayoutId: Int
-        @LayoutRes get
     protected open val contentNeedsScrollableContainer: Boolean
         get() = true
+
+    protected lateinit var demoBinding: ActivityDemoDetailBinding
+
+    protected lateinit var container: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_demo_detail)
+        demoBinding = ActivityDemoDetailBinding.inflate(layoutInflater)
+        setContentView(demoBinding.root)
 
         // Show the Up button in the action bar.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Set demo title
         val demoID = intent.getSerializableExtra(DEMO_ID) as UUID
-        var demo: Demo?
-        if (DuoSupportUtils.isDualScreenMode(this)) {
-            demo = DUO_DEMOS.find { it.id == demoID }
+        val demo: Demo? = if (DuoSupportUtils.isDualScreenMode(this)) {
+            DUO_DEMOS.find { it.id == demoID }
         } else {
-            demo = DEMOS.find { it.id == demoID }
+            DEMOS.find { it.id == demoID }
         }
         if (demo != null)
             title = demo.title
 
-        // Load content and place it in the requested container
-        val container =
-            if (contentNeedsScrollableContainer) demo_detail_scrollable_container else demo_detail_container
-        layoutInflater.inflate(contentLayoutId, container, true)
+        container =
+            if (contentNeedsScrollableContainer) demoBinding.demoDetailScrollableContainer else demoBinding.demoDetailContainer
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 navigateUpTo(Intent(this, DemoListActivity::class.java))
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

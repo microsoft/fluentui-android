@@ -7,6 +7,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.microsoft.fluentui.peoplepicker.PeoplePickerAccessibilityTextProvider
@@ -16,28 +17,31 @@ import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.snackbar.Snackbar
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityPeoplePickerViewBinding
 import com.microsoft.fluentuidemo.util.createCustomPersona
 import com.microsoft.fluentuidemo.util.createPersonaList
-import kotlinx.android.synthetic.main.activity_demo_detail.*
-import kotlinx.android.synthetic.main.activity_people_picker_view.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 class PeoplePickerViewActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_people_picker_view
 
     private lateinit var samplePersonas: ArrayList<IPersona>
 
+    private lateinit var peoplePickerBinding: ActivityPeoplePickerViewBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        peoplePickerBinding = ActivityPeoplePickerViewBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
         samplePersonas = createPersonaList(this)
         val accessibilityTextProvider = getAccessibilityTextProvider()
 
         // Use attributes to set personaChipClickStyle and label
 
-        people_picker_select.availablePersonas = samplePersonas
+        peoplePickerBinding.peoplePickerSelect.availablePersonas = samplePersonas
         val selectPickedPersonas = arrayListOf(
             samplePersonas[0],
             samplePersonas[1],
@@ -50,25 +54,33 @@ class PeoplePickerViewActivity : DemoActivity() {
             samplePersonas[8],
             samplePersonas[9]
         )
-        people_picker_select.pickedPersonas = selectPickedPersonas
-        people_picker_select.showSearchDirectoryButton = true
-        people_picker_select.searchDirectorySuggestionsListener = createPersonaSuggestionsListener(selectSearchDirectoryPersonas)
-        people_picker_select.allowPersonaChipDragAndDrop = true
-        people_picker_select.onCreatePersona = { name, email ->
+        peoplePickerBinding.peoplePickerSelect.pickedPersonas = selectPickedPersonas
+        peoplePickerBinding.peoplePickerSelect.showSearchDirectoryButton = true
+        peoplePickerBinding.peoplePickerSelect.searchDirectorySuggestionsListener =
+            createPersonaSuggestionsListener(selectSearchDirectoryPersonas)
+        peoplePickerBinding.peoplePickerSelect.allowPersonaChipDragAndDrop = true
+        peoplePickerBinding.peoplePickerSelect.onCreatePersona = { name, email ->
             createCustomPersona(this, name, email)
         }
-        people_picker_select.accessibilityTextProvider = accessibilityTextProvider
+        peoplePickerBinding.peoplePickerSelect.accessibilityTextProvider = accessibilityTextProvider
 
-        people_picker_select_deselect.availablePersonas = samplePersonas
+        peoplePickerBinding.peoplePickerSelectDeselect.availablePersonas = samplePersonas
         val selectDeselectPickedPersonas = arrayListOf(samplePersonas[2])
-        people_picker_select_deselect.pickedPersonas = selectDeselectPickedPersonas
-        people_picker_select_deselect.allowPersonaChipDragAndDrop = true
-        people_picker_select_deselect.accessibilityTextProvider = accessibilityTextProvider
-        people_picker_select_deselect.personaChipClickListener = object : PeoplePickerView.PersonaChipClickListener {
-            override fun onClick(persona: IPersona) {
-                showSnackbar(getString(R.string.people_picker_persona_chip_click, accessibilityTextProvider.getPersonaDescription(persona)))
+        peoplePickerBinding.peoplePickerSelectDeselect.pickedPersonas = selectDeselectPickedPersonas
+        peoplePickerBinding.peoplePickerSelectDeselect.allowPersonaChipDragAndDrop = true
+        peoplePickerBinding.peoplePickerSelectDeselect.accessibilityTextProvider =
+            accessibilityTextProvider
+        peoplePickerBinding.peoplePickerSelectDeselect.personaChipClickListener =
+            object : PeoplePickerView.PersonaChipClickListener {
+                override fun onClick(persona: IPersona) {
+                    showSnackbar(
+                        getString(
+                            R.string.people_picker_persona_chip_click,
+                            accessibilityTextProvider.getPersonaDescription(persona)
+                        )
+                    )
+                }
             }
-        }
 
         // Use code to set personaChipClickStyle and label
 
@@ -95,18 +107,19 @@ class PeoplePickerViewActivity : DemoActivity() {
         )
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
-            people_picker_select.requestFocus()
+            peoplePickerBinding.peoplePickerSelect.requestFocus()
     }
 
-    private fun getAccessibilityTextProvider() = object : PeoplePickerAccessibilityTextProvider(resources) {
-        override fun getPersonaQuantityText(personas: ArrayList<IPersona>): String {
-            return resources.getQuantityString(
-                R.plurals.people_picker_accessibility_text_view_example,
-                personas.size,
-                personas.size
-            )
+    private fun getAccessibilityTextProvider() =
+        object : PeoplePickerAccessibilityTextProvider(resources) {
+            override fun getPersonaQuantityText(personas: ArrayList<IPersona>): String {
+                return resources.getQuantityString(
+                    R.plurals.people_picker_accessibility_text_view_example,
+                    personas.size,
+                    personas.size
+                )
+            }
         }
-    }
 
     private fun setupPeoplePickerView(
         labelText: String,
@@ -118,7 +131,10 @@ class PeoplePickerViewActivity : DemoActivity() {
         showHint: Boolean = false
     ) {
         val peoplePickerView = PeoplePickerView(this)
-        peoplePickerView.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        peoplePickerView.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         with(peoplePickerView) {
             label = labelText
             this.availablePersonas = availablePersonas
@@ -129,7 +145,7 @@ class PeoplePickerViewActivity : DemoActivity() {
             this.valueHint = valueHint
             this.showHint = showHint
         }
-        people_picker_layout.addView(peoplePickerView)
+        peoplePickerBinding.peoplePickerLayout.addView(peoplePickerView)
     }
 
     private fun createPickedPersonasChangeListener(): PeoplePickerView.PickedPersonasChangeListener {
@@ -166,7 +182,7 @@ class PeoplePickerViewActivity : DemoActivity() {
     }
 
     private fun showSnackbar(text: String) {
-        Snackbar.make(root_view, text, Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(demoBinding.rootView, text, Snackbar.LENGTH_SHORT).show()
     }
 
     // Basic custom filtering example
@@ -177,9 +193,11 @@ class PeoplePickerViewActivity : DemoActivity() {
     ): ArrayList<IPersona> {
         if (searchConstraint == null)
             return availablePersonas
-        val constraint = searchConstraint.toString().toLowerCase()
+        val constraint = searchConstraint.toString().lowercase(Locale.getDefault())
         val filteredResults = availablePersonas.filter {
-            it.name.toLowerCase().contains(constraint) && !pickedPersonas.contains(it)
+            it.name.lowercase(Locale.getDefault()).contains(constraint) && !pickedPersonas.contains(
+                it
+            )
         }
         return ArrayList(filteredResults)
     }

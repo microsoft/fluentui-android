@@ -7,8 +7,6 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 android {
     compileSdkVersion 31
     defaultConfig {
@@ -25,6 +23,7 @@ android {
         useIR = true
     }
     buildFeatures {
+        viewBinding true
         compose true
     }
     composeOptions {

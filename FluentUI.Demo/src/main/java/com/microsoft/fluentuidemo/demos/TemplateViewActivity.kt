@@ -15,47 +15,52 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityTemplateViewBinding
+import com.microsoft.fluentuidemo.databinding.TemplateCellVerticalBinding
 import com.microsoft.fluentuidemo.demos.views.Cell
 import com.microsoft.fluentuidemo.demos.views.CellOrientation
-import kotlinx.android.synthetic.main.activity_template_view.*
-import kotlinx.android.synthetic.main.template_cell_vertical.view.*
 
 class TemplateViewActivity : DemoActivity() {
     companion object {
         const val LIST_ITEM_COUNT = 1000
     }
 
-    override val contentLayoutId: Int
-        get() = R.layout.activity_template_view
+    private lateinit var templateViewBinding: ActivityTemplateViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        templateViewBinding = ActivityTemplateViewBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
-        horizontal_cell.setOnClickListener { onCellClicked(it as Cell) }
-        vertical_cell.setOnClickListener { onCellClicked(it as Cell) }
+        templateViewBinding.horizontalCell.setOnClickListener { onCellClicked(it as Cell) }
+        templateViewBinding.verticalCell.setOnClickListener { onCellClicked(it as Cell) }
 
-        template_list_view.adapter = TemplateListViewAdapter()
-        template_list_view.layoutManager =
+        templateViewBinding.templateListView.adapter = TemplateListViewAdapter()
+        templateViewBinding.templateListView.layoutManager =
             LinearLayoutManager(this)
-        template_list_view.setHasFixedSize(true)
+        templateViewBinding.templateListView.setHasFixedSize(true)
 
-        regular_list_view.adapter = RegularListViewAdapter()
-        regular_list_view.layoutManager =
+        templateViewBinding.regularListView.adapter = RegularListViewAdapter()
+        templateViewBinding.regularListView.layoutManager =
             LinearLayoutManager(this)
-        regular_list_view.setHasFixedSize(true)
+        templateViewBinding.regularListView.setHasFixedSize(true)
 
-        calculate_cells_button.setOnClickListener {
+        templateViewBinding.calculateCellsButton.setOnClickListener {
             val t = measureAndLayoutViews(createView = {
                 val cell = Cell(this)
                 cell.orientation = CellOrientation.VERTICAL
                 return@measureAndLayoutViews cell
             })
             println("Cell.M&L: $t")
-            calculate_cells_button.text = getString(R.string.calculate_cells) + " = $t ms"
-            calculate_cells_button.announceForAccessibility(" took $t ms to load")
+            templateViewBinding.calculateCellsButton.text =
+                getString(R.string.calculate_cells) + " = $t ms"
+            templateViewBinding.calculateCellsButton.announceForAccessibility(" took $t ms to load")
         }
 
-        calculate_layouts_button.setOnClickListener {
+        templateViewBinding.calculateLayoutsButton.setOnClickListener {
             val t = measureAndLayoutViews(createView = {
                 // Emulation of Cell code without extra ViewGroup (Cell itself)
                 val cell = layoutInflater.inflate(R.layout.template_cell_vertical, null)
@@ -64,8 +69,9 @@ class TemplateViewActivity : DemoActivity() {
                 return@measureAndLayoutViews cell
             })
             println("Layout.M&L: $t")
-            calculate_layouts_button.text = getString(R.string.calculate_layouts) + " = $t ms"
-            calculate_layouts_button.announceForAccessibility(" took $t ms to load")
+            templateViewBinding.calculateLayoutsButton.text =
+                getString(R.string.calculate_layouts) + " = $t ms"
+            templateViewBinding.calculateLayoutsButton.announceForAccessibility(" took $t ms to load")
         }
     }
 
@@ -127,12 +133,17 @@ class TemplateViewActivity : DemoActivity() {
     private class RegularListViewAdapter :
         RecyclerView.Adapter<RegularListViewAdapter.ViewHolder>() {
         override fun getItemCount(): Int = LIST_ITEM_COUNT
+        private lateinit var templateCellBinding: TemplateCellVerticalBinding
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val cell = LayoutInflater.from(parent.context)
-                .inflate(R.layout.template_cell_vertical, parent, false)
-            cell.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            return ViewHolder(cell)
+            templateCellBinding = TemplateCellVerticalBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+//            val cell = LayoutInflater.from(parent.context).inflate(R.layout.template_cell_vertical, parent, false)
+//            cell.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+            return ViewHolder(templateCellBinding)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -142,9 +153,10 @@ class TemplateViewActivity : DemoActivity() {
             }
         }
 
-        class ViewHolder(cell: View) : RecyclerView.ViewHolder(cell) {
-            val titleView: TextView = cell.cell_title
-            val descriptionView: TextView = cell.cell_description
+        class ViewHolder(binding: TemplateCellVerticalBinding) :
+            RecyclerView.ViewHolder(binding.root) {
+            val titleView: TextView = binding.cellTitle
+            val descriptionView: TextView = binding.cellDescription
         }
     }
 }

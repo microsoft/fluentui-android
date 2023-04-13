@@ -9,9 +9,9 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.SeekBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.microsoft.fluentui.contextualcommandbar.CommandItem
@@ -20,15 +20,21 @@ import com.microsoft.fluentui.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.contextualcommandbar.DefaultCommandItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_contextual_command_bar.*
+import com.microsoft.fluentuidemo.databinding.ActivityContextualCommandBarBinding
 
 
 class ContextualCommandBarActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_contextual_command_bar
+
+    private lateinit var ccbBinding: ActivityContextualCommandBarBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        ccbBinding = ActivityContextualCommandBarBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
         val itemGroups = arrayListOf<CommandItemGroup>()
 
@@ -134,7 +140,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                 )
         )
 
-        with(contextual_command_bar_default) {
+        with(ccbBinding.contextualCommandBarDefault) {
             setItemGroups(itemGroups)
             setItemOnClickListener(object : CommandItem.OnItemClickListener {
                 override fun onItemClick(item: CommandItem, view: View) {
@@ -179,8 +185,8 @@ class ContextualCommandBarActivity : DemoActivity() {
         }
 
         // Item update
-        insert_item.setOnClickListener {
-            contextual_command_bar_default.addItemGroup(
+        ccbBinding.insertItem.setOnClickListener {
+            ccbBinding.contextualCommandBarDefault.addItemGroup(
                 CommandItemGroup()
                     .addItem(
                         DefaultCommandItem(
@@ -197,7 +203,7 @@ class ContextualCommandBarActivity : DemoActivity() {
                     )
             )
         }
-        update_item.setOnClickListener {
+        ccbBinding.updateItem.setOnClickListener {
             val updatedItemGroup = CommandItemGroup()
                 .addItem(
                     DefaultCommandItem(
@@ -213,31 +219,31 @@ class ContextualCommandBarActivity : DemoActivity() {
                     )
                 )
             itemGroups[0] = updatedItemGroup
-            contextual_command_bar_default.setItemGroups(itemGroups)
+            ccbBinding.contextualCommandBarDefault.setItemGroups(itemGroups)
 
             (itemGroups[0].items[0] as DefaultCommandItem).setEnabled(false)
             (itemGroups[0].items[1] as DefaultCommandItem).setEnabled(true)
             (itemGroups[0].items[1] as DefaultCommandItem).setSelected(true)
             (itemGroups[1].items[2] as DefaultCommandItem).getView()?.alpha = 0.5F
-            contextual_command_bar_default.notifyDataSetChanged()
+            ccbBinding.contextualCommandBarDefault.notifyDataSetChanged()
         }
 
         // Spacing setting
-        contextual_command_bar_group_space_seekbar.setOnSeekBarChangeListener(
+        ccbBinding.contextualCommandBarGroupSpaceSeekbar.setOnSeekBarChangeListener(
             object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(
                     seekBar: SeekBar?,
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    contextual_command_bar_group_space_value.text =
+                    ccbBinding.contextualCommandBarGroupSpaceValue.text =
                         resources.getString(R.string.contextual_command_bar_space_value, progress)
 
                     if (!fromUser) {
                         return
                     }
 
-                    contextual_command_bar_default.setCommandGroupSpace(
+                    ccbBinding.contextualCommandBarDefault.setCommandGroupSpace(
                         TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
                             resources.displayMetrics
@@ -252,21 +258,21 @@ class ContextualCommandBarActivity : DemoActivity() {
                 }
 
             })
-        contextual_command_bar_item_space_seekbar.setOnSeekBarChangeListener(
+        ccbBinding.contextualCommandBarItemSpaceSeekbar.setOnSeekBarChangeListener(
             object : SeekBar.OnSeekBarChangeListener {
                 override fun onProgressChanged(
                     seekBar: SeekBar?,
                     progress: Int,
                     fromUser: Boolean
                 ) {
-                    contextual_command_bar_item_space_value.text =
+                    ccbBinding.contextualCommandBarItemSpaceValue.text =
                         resources.getString(R.string.contextual_command_bar_space_value, progress)
 
                     if (!fromUser) {
                         return
                     }
 
-                    contextual_command_bar_default.setCommandItemSpace(
+                    ccbBinding.contextualCommandBarDefault.setCommandItemSpace(
                         TypedValue.applyDimension(
                             TypedValue.COMPLEX_UNIT_DIP, progress.toFloat(),
                             resources.displayMetrics
@@ -281,12 +287,12 @@ class ContextualCommandBarActivity : DemoActivity() {
                 }
 
             })
-        contextual_command_bar_group_space_seekbar.progress = 16
-        contextual_command_bar_item_space_seekbar.progress = 2
+        ccbBinding.contextualCommandBarGroupSpaceSeekbar.progress = 16
+        ccbBinding.contextualCommandBarItemSpaceSeekbar.progress = 2
 
         // Dismiss button setting
-        contextual_command_bar_dismiss_position_group.setOnCheckedChangeListener { _, checkedId ->
-            contextual_command_bar_default.setDismissButtonPosition(
+        ccbBinding.contextualCommandBarDismissPositionGroup.setOnCheckedChangeListener { _, checkedId ->
+            ccbBinding.contextualCommandBarDefault.setDismissButtonPosition(
                 when (checkedId) {
                     R.id.contextual_command_bar_dismiss_position_start -> ContextualCommandBar.DismissItemPosition.START
                     R.id.contextual_command_bar_dismiss_position_end -> ContextualCommandBar.DismissItemPosition.END
@@ -294,6 +300,6 @@ class ContextualCommandBarActivity : DemoActivity() {
                 }
             )
         }
-        contextual_command_bar_dismiss_position_end.isChecked = true
+        ccbBinding.contextualCommandBarDismissPositionEnd.isChecked = true
     }
 }

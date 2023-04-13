@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.KeyEvent.KEYCODE_DPAD_DOWN
 import android.view.KeyEvent.KEYCODE_DPAD_RIGHT
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -23,7 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
@@ -41,22 +41,19 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.launch
 
 class V2ContextualCommandBarActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val composeHere = findViewById<ComposeView>(R.id.compose_here)
         val context = this
-
-        composeHere.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             val click: (() -> Unit) =
                 { Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show() }
             val longClick: (() -> Unit) =
