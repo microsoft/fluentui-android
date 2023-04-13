@@ -1,18 +1,18 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.*
+import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
@@ -24,17 +24,14 @@ import com.microsoft.fluentui.tokenized.persona.AvatarCarouselItem
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 
 class V2AvatarCarouselActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.v2_activity_compose
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val composeHere = findViewById<ComposeView>(R.id.compose_here)
-
-        composeHere.setContent {
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateAvatarCarouselActivityUI()
             }
@@ -43,7 +40,7 @@ class V2AvatarCarouselActivity : DemoActivity() {
 }
 
 @Composable
-fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
+private fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
     return arrayListOf(
         AvatarCarouselItem(
             person = Person(
@@ -201,7 +198,7 @@ fun createAvatarPersons(mContext: Context): ArrayList<AvatarCarouselItem> {
 }
 
 @Composable
-fun CreateAvatarCarouselActivityUI() {
+private fun CreateAvatarCarouselActivityUI() {
     val mContext = LocalContext.current
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),

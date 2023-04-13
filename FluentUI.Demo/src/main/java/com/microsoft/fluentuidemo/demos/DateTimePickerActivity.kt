@@ -6,22 +6,22 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.microsoft.fluentui.datetimepicker.DateTimePicker
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.DateRangeMode
 import com.microsoft.fluentui.datetimepicker.DateTimePickerDialog.Mode
-import com.microsoft.fluentui.datetimepicker.DateTimePicker
 import com.microsoft.fluentui.util.DateStringUtils
 import com.microsoft.fluentui.util.accessibilityManager
 import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_date_time_picker.*
+import com.microsoft.fluentuidemo.databinding.ActivityDateTimePickerBinding
 import org.threeten.bp.Duration
 import org.threeten.bp.ZonedDateTime
-import android.view.View
-import java.lang.IllegalStateException
 
 class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePickedListener {
     companion object {
@@ -44,19 +44,43 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         private const val DIALOG_MODE = "dialogMode"
     }
 
-    enum class DatePickerType(val buttonId: Int, val tag: String, val mode: Mode, val dateRangeMode: DateRangeMode) {
+    enum class DatePickerType(
+        val buttonId: Int,
+        val tag: String,
+        val mode: Mode,
+        val dateRangeMode: DateRangeMode
+    ) {
         DATE(R.id.date_picker_button, TAG_DATE_PICKER, Mode.DATE, DateRangeMode.NONE),
-        DATE_TIME(R.id.date_time_picker_date_selected_button, TAG_DATE_TIME_PICKER, Mode.DATE_TIME, DateRangeMode.NONE),
-        TIME_DATE(R.id.date_time_picker_time_selected_button, TAG_DATE_TIME_PICKER, Mode.TIME_DATE, DateRangeMode.NONE),
-        START_DATE(R.id.date_range_start_button, TAG_START_DATE_PICKER, Mode.DATE, DateRangeMode.START),
+        DATE_TIME(
+            R.id.date_time_picker_date_selected_button,
+            TAG_DATE_TIME_PICKER,
+            Mode.DATE_TIME,
+            DateRangeMode.NONE
+        ),
+        TIME_DATE(
+            R.id.date_time_picker_time_selected_button,
+            TAG_DATE_TIME_PICKER,
+            Mode.TIME_DATE,
+            DateRangeMode.NONE
+        ),
+        START_DATE(
+            R.id.date_range_start_button,
+            TAG_START_DATE_PICKER,
+            Mode.DATE,
+            DateRangeMode.START
+        ),
         END_DATE(R.id.date_range_end_button, TAG_END_DATE_PICKER, Mode.DATE, DateRangeMode.END),
-        START_DATE_TIME(R.id.date_time_range_start_button, TAG_DATE_TIME_RANGE_PICKER, Mode.DATE_TIME, DateRangeMode.START)
+        START_DATE_TIME(
+            R.id.date_time_range_start_button,
+            TAG_DATE_TIME_RANGE_PICKER,
+            Mode.DATE_TIME,
+            DateRangeMode.START
+        )
     }
 
-    override val contentLayoutId: Int
-        get() = R.layout.activity_date_time_picker
-
     private var dateTimePickerDialog: DateTimePickerDialog? = null
+
+    private lateinit var dateTimeBinding: ActivityDateTimePickerBinding
 
     // Date and time
     private var dateTime: ZonedDateTime? = null
@@ -66,9 +90,10 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             field = value
             val tag = singleModeTag ?: return
             if (tag == TAG_DATE_PICKER)
-                date_text_view.text = DateStringUtils.formatDateWithWeekDay(this, value)
+                dateTimeBinding.dateTextView.text =
+                    DateStringUtils.formatDateWithWeekDay(this, value)
             else
-                date_text_view.text = DateStringUtils.formatFullDateTime(this, value)
+                dateTimeBinding.dateTextView.text = DateStringUtils.formatFullDateTime(this, value)
         }
 
     // Date range
@@ -77,14 +102,16 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             if (value == null)
                 return
             field = value
-            start_date_text_view.text = DateStringUtils.formatDateWithWeekDay(this, value)
+            dateTimeBinding.startDateTextView.text =
+                DateStringUtils.formatDateWithWeekDay(this, value)
         }
     private var durationDate: Duration = Duration.ZERO
         set(value) {
             val startDate = startDate ?: return
             field = value
             val endDate = startDate.plus(value)
-            end_date_text_view.text = DateStringUtils.formatDateWithWeekDay(this, endDate)
+            dateTimeBinding.endDateTextView.text =
+                DateStringUtils.formatDateWithWeekDay(this, endDate)
         }
 
     // Date and time range
@@ -93,14 +120,16 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             if (value == null)
                 return
             field = value
-            start_date_time_text_view.text = DateStringUtils.formatFullDateTime(this, value)
+            dateTimeBinding.startDateTimeTextView.text =
+                DateStringUtils.formatFullDateTime(this, value)
         }
     private var durationDateTime: Duration = Duration.ZERO
         set(value) {
             val startDateTime = startDateTime ?: return
             field = value
             val endDateTime = startDateTime.plus(value)
-            end_date_time_text_view.text = DateStringUtils.formatFullDateTime(this, endDateTime)
+            dateTimeBinding.endDateTimeTextView.text =
+                DateStringUtils.formatFullDateTime(this, endDateTime)
         }
 
     // Dialog date and time
@@ -111,9 +140,11 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             field = value
             val mode = dialogMode ?: getDialogMode()
             if (mode == Mode.DATE_TIME)
-                date_time_picker_dialog_date_text_view.text = DateStringUtils.formatDateWithWeekDay(this@DateTimePickerActivity, value)
+                dateTimeBinding.dateTimePickerDialogDateTextView.text =
+                    DateStringUtils.formatDateWithWeekDay(this@DateTimePickerActivity, value)
             else
-                date_time_picker_dialog_date_text_view.text = DateStringUtils.formatFullDateTime(this@DateTimePickerActivity, value)
+                dateTimeBinding.dateTimePickerDialogDateTextView.text =
+                    DateStringUtils.formatFullDateTime(this@DateTimePickerActivity, value)
         }
 
     private var dateRangeMode: DateRangeMode = DateRangeMode.NONE
@@ -134,7 +165,13 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        dateTimeBinding = ActivityDateTimePickerBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
 
         savedInstanceState?.let {
             fragmentTag = it.getString(FRAGMENT_TAG)
@@ -156,7 +193,7 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
         }
 
         // DateTimePickerDialog
-        date_time_picker_dialog_button.setOnClickListener {
+        dateTimeBinding.dateTimePickerDialogButton.setOnClickListener {
             createDateTimePickerDialog()
         }
 
@@ -228,12 +265,13 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
             Duration.ZERO
         )
 
-        dateTimePickerDialog?.onDateTimePickedListener = object : DateTimePickerDialog.OnDateTimePickedListener {
-            override fun onDateTimePicked(dateTime: ZonedDateTime, duration: Duration) {
-                dialogMode = getDialogMode()
-                dialogDateTime = dateTime
+        dateTimePickerDialog?.onDateTimePickedListener =
+            object : DateTimePickerDialog.OnDateTimePickedListener {
+                override fun onDateTimePicked(dateTime: ZonedDateTime, duration: Duration) {
+                    dialogMode = getDialogMode()
+                    dialogDateTime = dateTime
+                }
             }
-        }
 
         dateTimePickerDialog?.show()
     }
@@ -242,11 +280,11 @@ class DateTimePickerActivity : DemoActivity(), DateTimePickerDialog.OnDateTimePi
 
     private fun updateButtonsForAccessibility(accessibilityEnabled: Boolean) {
         if (accessibilityEnabled) {
-            date_time_picker_time_selected_button.visibility = View.GONE
-            date_time_picker_date_selected_button.setText(R.string.date_time_picker_date_time_button)
+            dateTimeBinding.dateTimePickerTimeSelectedButton.visibility = View.GONE
+            dateTimeBinding.dateTimePickerDateSelectedButton.setText(R.string.date_time_picker_date_time_button)
         } else {
-            date_time_picker_time_selected_button.visibility = View.VISIBLE
-            date_time_picker_date_selected_button.setText(R.string.date_time_picker_calendar_date_time_button)
+            dateTimeBinding.dateTimePickerTimeSelectedButton.visibility = View.VISIBLE
+            dateTimeBinding.dateTimePickerDateSelectedButton.setText(R.string.date_time_picker_calendar_date_time_button)
         }
     }
 

@@ -5,10 +5,16 @@
 
 package com.microsoft.fluentuidemo.demos
 
+import android.os.Bundle
+import android.view.LayoutInflater
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityBasicInputsBinding
 
 class BasicInputsActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_basic_inputs
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        ActivityBasicInputsBinding.inflate(LayoutInflater.from(container.context), container, true)
+    }
 }

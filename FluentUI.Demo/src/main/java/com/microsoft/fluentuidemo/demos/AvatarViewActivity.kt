@@ -7,6 +7,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.microsoft.fluentui.persona.AvatarSize
@@ -14,32 +15,33 @@ import com.microsoft.fluentui.persona.AvatarStyle
 import com.microsoft.fluentui.persona.AvatarView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.databinding.ActivityAvatarViewBinding
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_avatar_view.*
 
 class AvatarViewActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_avatar_view
-
+    private lateinit var avatarBinding: ActivityAvatarViewBinding
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        avatarBinding = ActivityAvatarViewBinding.inflate(LayoutInflater.from(container.context), container, true)
 
         // Avatar drawables with bitmap
-        loadBitmapFromPicasso(avatar_example_medium_photo)
-        loadBitmapFromGlide(avatar_example_large_photo)
+        loadBitmapFromPicasso(avatarBinding.avatarExampleMediumPhoto)
+        loadBitmapFromGlide(avatarBinding.avatarExampleLargePhoto)
 
-        avatar_example_xlarge_photo.avatarImageResourceId = R.drawable.avatar_erik_nason
+        avatarBinding.avatarExampleXlargePhoto.avatarImageResourceId = R.drawable.avatar_erik_nason
 
-        avatar_example_small_photo.name = getString(R.string.persona_name_kat_larsson)
-        avatar_example_small_photo.email = getString(R.string.persona_email_kat_larsson)
-        avatar_example_small_photo.avatarImageResourceId = R.drawable.avatar_kat_larsson
+        avatarBinding.avatarExampleSmallPhoto.name = getString(R.string.persona_name_kat_larsson)
+        avatarBinding.avatarExampleSmallPhoto.email = getString(R.string.persona_email_kat_larsson)
+        avatarBinding.avatarExampleSmallPhoto.avatarImageResourceId = R.drawable.avatar_kat_larsson
 
         // Avatar drawable with initials
-        avatar_example_large_initials_square.name = getString(R.string.persona_email_henry_brill)
-        avatar_example_large_initials_square.avatarStyle = AvatarStyle.SQUARE
+        avatarBinding.avatarExampleLargeInitialsSquare.name =
+            getString(R.string.persona_email_henry_brill)
+        avatarBinding.avatarExampleLargeInitialsSquare.avatarStyle = AvatarStyle.SQUARE
 
         // Change initials background color
-        avatar_example_xsmall_initials.avatarBackgroundColor = Color.DKGRAY
+        avatarBinding.avatarExampleXsmallInitials.avatarBackgroundColor = Color.DKGRAY
 
         // Add AvatarView with code
         createNewAvatarFromCode()
@@ -64,6 +66,6 @@ class AvatarViewActivity : DemoActivity() {
         avatarView.name = avatarName
         avatarView.email = getString(R.string.persona_email_mauricio_august)
         avatarView.avatarContentDescriptionLabel = avatarName
-        avatar_circle_example_xxlarge.addView(avatarView)
+        avatarBinding.avatarCircleExampleXxlarge.addView(avatarView)
     }
 }

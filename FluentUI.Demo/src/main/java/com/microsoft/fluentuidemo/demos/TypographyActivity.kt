@@ -6,17 +6,26 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.core.widget.TextViewCompat
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import kotlinx.android.synthetic.main.activity_typography.*
+import com.microsoft.fluentuidemo.databinding.ActivityTypographyBinding
 
 class TypographyActivity : DemoActivity() {
-    override val contentLayoutId: Int
-        get() = R.layout.activity_typography
+
+    private lateinit var typographyBinding: ActivityTypographyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        TextViewCompat.setTextAppearance(typography_example_body_2, R.style.TextAppearance_FluentUI_Body2)
+        typographyBinding = ActivityTypographyBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
+        TextViewCompat.setTextAppearance(
+            typographyBinding.typographyExampleBody2,
+            R.style.TextAppearance_FluentUI_Body2
+        )
     }
 }
