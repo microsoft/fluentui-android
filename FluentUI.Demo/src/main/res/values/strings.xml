@@ -777,5 +777,22 @@
     <!--UI Label for button-->
     <string name="scaffold_open_drawer">Open Drawer</string>
 
+    <!--V2 Menu-->
+    <!-- UI Label for content text-->
+    <string name="menu_content_text_input">Menu Item</string>
+    <!-- UI Label for xOffset -->
+    <string name="menu_xOffset">Offset X (in dp)</string>
+    <!-- UI Label for yOffset -->
+    <string name="menu_yOffset">Offset Y (in dp)</string>
+    <!-- UI Label for content text -->
+    <string name="menu_content_text">Content Text</string>
+    <!-- UI Label for repeat content text -->
+    <string name="menu_repeat_content_text">Repeat Content Text</string>
+    <!-- UI Label for description -->
+    <string name="menu_description">Menu width will change with respect to Content Text. The max
+        width is restricted to 75% of screen size. The content margin from side and bottom is govern by token. The same content text will repeat to vary
+        the height.</string>
+    <!-- UI Label for open menu button -->
+    <string name="menu_open_menu_button">Open Menu</string>
 
 </resources>

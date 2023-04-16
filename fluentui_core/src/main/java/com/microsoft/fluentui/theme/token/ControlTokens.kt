@@ -31,6 +31,7 @@ class ControlTokens {
         FloatingActionButton,
         LinearProgressIndicator,
         ListItem,
+        Menu,
         PersonaChip,
         PillButton,
         PillBar,
@@ -65,6 +66,7 @@ class ControlTokens {
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
+                ControlType.Menu -> MenuTokens()
                 ControlType.PersonaChip -> PersonaChipTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
