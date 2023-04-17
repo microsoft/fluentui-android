@@ -158,25 +158,16 @@ fun CircularProgressIndicator(
             modifier = modifier
                 .requiredSize(circularProgressIndicatorSize)
                 .progressSemantics()
-                .rotate(startAngle)
         ) {
             drawArc(
-                Brush.sweepGradient(
-                    0f to Color.Transparent,
-                    0.6f to circularProgressIndicatorColor
-                ),
-                0f,
+                circularProgressIndicatorColor,
+                startAngle,
                 270f,
                 false,
                 size = Size(
                     indicatorSizeInPx, indicatorSizeInPx
                 ),
-                style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth))
-            )
-            drawCircle(
-                color = circularProgressIndicatorColor,
-                radius = dpToPx(circularProgressIndicatorStrokeWidth) / 2,
-                center = Offset(indicatorSizeInPx / 2, 0f)
+                style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
             )
         }
     }
