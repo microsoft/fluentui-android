@@ -10,7 +10,9 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -40,9 +42,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.ContextualCommandBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ContextualCommandBarTokens
 import kotlinx.coroutines.launch
 import kotlin.math.max
-
-private val LocalContextualCommandBarTokens = compositionLocalOf { ContextualCommandBarTokens() }
-private val LocalContextualCommandBarInfo = compositionLocalOf { ContextualCommandBarInfo() }
 
 enum class ActionButtonPosition {
     None,
@@ -86,228 +85,90 @@ fun ContextualCommandBar(
     val token = contextualCommandBarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ContextualCommandBar] as ContextualCommandBarTokens
 
-    CompositionLocalProvider(
-        LocalContextualCommandBarTokens provides token,
-        LocalContextualCommandBarInfo provides ContextualCommandBarInfo()
-    ) {
-        val groupBorderRadius =
-            getContextualCommandBarTokens().groupBorderRadius(getContextualCommandBarInfo())
-        val itemBorderRadius =
-            getContextualCommandBarTokens().itemBorderRadius(getContextualCommandBarInfo())
+    val contextualCommandBarInfo = ContextualCommandBarInfo()
+    val groupBorderRadius =
+        token.groupBorderRadius(contextualCommandBarInfo)
+    val itemBorderRadius =
+        token.itemBorderRadius(contextualCommandBarInfo)
 
-        val soloItemShape = RoundedCornerShape(groupBorderRadius)
-        val startShape = RoundedCornerShape(
-            topStart = groupBorderRadius,
-            bottomStart = groupBorderRadius,
-            topEnd = itemBorderRadius,
-            bottomEnd = itemBorderRadius
-        )
-        val defaultShape = RoundedCornerShape(itemBorderRadius)
-        val endShape = RoundedCornerShape(
-            topEnd = groupBorderRadius,
-            bottomEnd = groupBorderRadius,
-            topStart = itemBorderRadius,
-            bottomStart = itemBorderRadius
-        )
-        val focusStroke = getContextualCommandBarTokens().focusStroke(
-            getContextualCommandBarInfo()
-        )
-        var focusedBorderModifier: Modifier = Modifier
+    val soloItemShape = RoundedCornerShape(groupBorderRadius)
+    val startShape = RoundedCornerShape(
+        topStart = groupBorderRadius,
+        bottomStart = groupBorderRadius,
+        topEnd = itemBorderRadius,
+        bottomEnd = itemBorderRadius
+    )
+    val defaultShape = RoundedCornerShape(itemBorderRadius)
+    val endShape = RoundedCornerShape(
+        topEnd = groupBorderRadius,
+        bottomEnd = groupBorderRadius,
+        topStart = itemBorderRadius,
+        bottomStart = itemBorderRadius
+    )
+    val focusStroke = token.focusStroke(
+        contextualCommandBarInfo
+    )
+    var focusedBorderModifier: Modifier = Modifier
 
-        val selectedString = LocalContext.current.resources.getString(R.string.fluentui_selected)
+    val selectedString = LocalContext.current.resources.getString(R.string.fluentui_selected)
 
-        val lazyListState = rememberLazyListState()
-        val scope = rememberCoroutineScope()
+    val lazyListState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
 
-        ConstraintLayout(
-            modifier = modifier
-                .focusable(enabled = false)
-                .fillMaxWidth()
-                .background(
-                    getContextualCommandBarTokens().contextualCommandBarBackgroundColor(
-                        getContextualCommandBarInfo()
-                    )
+    ConstraintLayout(
+        modifier = modifier
+            .focusable(enabled = false)
+            .fillMaxWidth()
+            .background(
+                token.contextualCommandBarBackgroundColor(
+                    contextualCommandBarInfo
                 )
-        ) {
-            val (KeyboardDismiss, Content) = createRefs()
-            val contentPaddingWithActionButton =
-                -(getContextualCommandBarTokens().actionButtonGradientWidth(
-                    getContextualCommandBarInfo()
-                ) + getContextualCommandBarTokens().buttonPadding(getContextualCommandBarInfo()))
-            if (scrollable) {
-                LazyRow(modifier = Modifier
-                    .focusable(enabled = false)
-                    .constrainAs(Content) {
-                        when (actionButtonPosition) {
-                            ActionButtonPosition.Start -> {
-                                start.linkTo(
-                                    KeyboardDismiss.end,
-                                    margin = contentPaddingWithActionButton
-                                )
-                                end.linkTo(parent.end)
-                            }
-                            ActionButtonPosition.End -> {
-                                start.linkTo(parent.start)
-                                end.linkTo(
-                                    KeyboardDismiss.start,
-                                    margin = contentPaddingWithActionButton
-                                )
-                            }
-                            ActionButtonPosition.None -> {
-                                start.linkTo(parent.start)
-                                end.linkTo(parent.end)
-                            }
+            )
+    ) {
+        val (KeyboardDismiss, Content) = createRefs()
+        val contentPaddingWithActionButton =
+            -(token.actionButtonGradientWidth(
+                contextualCommandBarInfo
+            ) + token.buttonPadding(contextualCommandBarInfo))
+        if (scrollable) {
+            LazyRow(modifier = Modifier
+                .focusable(enabled = false)
+                .constrainAs(Content) {
+                    when (actionButtonPosition) {
+                        ActionButtonPosition.Start -> {
+                            start.linkTo(
+                                KeyboardDismiss.end,
+                                margin = contentPaddingWithActionButton
+                            )
+                            end.linkTo(parent.end)
                         }
-                        top.linkTo(parent.top)
-                        bottom.linkTo(parent.bottom)
-                        width = Dimension.fillToConstraints
-                    }
-                    .padding(
-                        getContextualCommandBarTokens().buttonPadding(
-                            getContextualCommandBarInfo()
-                        )
-                    ), state = lazyListState) {
-
-                    var itemKey = 0
-                    for ((index, commandGroup) in groups.withIndex()) {
-                        for ((itemIndex, item) in commandGroup.items.withIndex()) {
-                            val key = itemKey.toString()
-                            item(key) {
-                                val shape = if (commandGroup.items.size == 1) soloItemShape
-                                else if (item == commandGroup.items.first()) startShape
-                                else if (item == commandGroup.items.last()) endShape
-                                else defaultShape
-
-                                val interactionSource: MutableInteractionSource =
-                                    remember { MutableInteractionSource() }
-                                val clickableModifier = Modifier.combinedClickable(
-                                    enabled = item.enabled,
-                                    onClick = item.onClick,
-                                    onClickLabel = null,
-                                    onLongClick = item.onLongClick,
-                                    role = Role.Button,
-                                    interactionSource = interactionSource,
-                                    indication = rememberRipple()
-                                )
-
-                                focusedBorderModifier = Modifier
-                                for (borderStroke in focusStroke) {
-                                    focusedBorderModifier =
-                                        focusedBorderModifier.border(borderStroke, shape)
-                                }
-
-                                Row(
-                                    modifier = Modifier.height(IntrinsicSize.Min),
-                                    verticalAlignment = Alignment.CenterVertically,
-                                ) {
-                                    Box(
-                                        Modifier
-                                            .onFocusEvent { focusState ->
-                                                if (focusState.isFocused) {
-                                                    scope.launch {
-                                                        lazyListState.animateScrollToItem(
-                                                            max(
-                                                                0, key.toInt() - 2
-                                                            )
-                                                        )
-                                                    }
-                                                }
-                                            }
-                                            .defaultMinSize(
-                                                minWidth = getContextualCommandBarTokens().buttonMinWidth(
-                                                    getContextualCommandBarInfo()
-                                                )
-                                            )
-                                            .height(IntrinsicSize.Min)
-                                            .clip(shape)
-                                            .background(
-                                                getContextualCommandBarTokens()
-                                                    .buttonBackgroundColor(
-                                                        getContextualCommandBarInfo()
-                                                    )
-                                                    .getColorByState(
-                                                        enabled = item.enabled,
-                                                        selected = item.selected,
-                                                        interactionSource = interactionSource
-                                                    ), shape = shape
-                                            )
-                                            .then(clickableModifier)
-                                            .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
-                                            .semantics {
-                                                contentDescription =
-                                                    item.label +
-                                                            if (item.selected)
-                                                                selectedString
-                                                            else ""
-                                            }, contentAlignment = Alignment.Center
-                                    ) {
-                                        CommandItemComposable(item, interactionSource, commandGroup)
-                                    }
-                                    if (itemIndex != commandGroup.items.size - 1) {
-                                        Spacer(
-                                            Modifier
-                                                .requiredWidth(
-                                                    getContextualCommandBarTokens().buttonSpacing(
-                                                        getContextualCommandBarInfo()
-                                                    )
-                                                )
-                                                .fillMaxHeight()
-                                                .background(Color.Transparent)
-                                        )
-                                    } else if (index != groups.size - 1) {
-                                        Spacer(
-                                            Modifier
-                                                .requiredWidth(
-                                                    getContextualCommandBarTokens().groupSpacing(
-                                                        getContextualCommandBarInfo()
-                                                    )
-                                                )
-                                                .fillMaxHeight()
-                                                .background(Color.Transparent)
-                                        )
-                                    }
-                                }
-
-                            }
-                            itemKey += 1
+                        ActionButtonPosition.End -> {
+                            start.linkTo(parent.start)
+                            end.linkTo(
+                                KeyboardDismiss.start,
+                                margin = contentPaddingWithActionButton
+                            )
+                        }
+                        ActionButtonPosition.None -> {
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
                         }
                     }
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    width = Dimension.fillToConstraints
                 }
-            } else {
-                Row(modifier = Modifier
-                    .constrainAs(Content) {
-                        when (actionButtonPosition) {
-                            ActionButtonPosition.Start -> {
-                                start.linkTo(
-                                    KeyboardDismiss.end,
-                                    margin = contentPaddingWithActionButton
-                                )
-                                end.linkTo(parent.end)
-                            }
-                            ActionButtonPosition.End -> {
-                                start.linkTo(parent.start)
-                                end.linkTo(
-                                    KeyboardDismiss.start,
-                                    margin = contentPaddingWithActionButton
-                                )
-                            }
-                            ActionButtonPosition.None -> {
-                                start.linkTo(parent.start)
-                                end.linkTo(parent.end)
-                            }
-                        }
-                        top.linkTo(parent.top)
-                        bottom.linkTo(parent.bottom)
-                        width = Dimension.fillToConstraints
-                    }
-                    .fillMaxWidth()
-                    .padding(
-                        getContextualCommandBarTokens().buttonPadding(
-                            getContextualCommandBarInfo()
-                        )
-                    )) {
-                    for ((index, commandGroup) in groups.withIndex()) {
-                        for ((itemIndex, item) in commandGroup.items.withIndex()) {
+                .padding(
+                    token.buttonPadding(
+                        contextualCommandBarInfo
+                    )
+                ), state = lazyListState) {
+
+                var itemKey = 0
+                for ((index, commandGroup) in groups.withIndex()) {
+                    for ((itemIndex, item) in commandGroup.items.withIndex()) {
+                        val key = itemKey.toString()
+                        item(key) {
                             val shape = if (commandGroup.items.size == 1) soloItemShape
                             else if (item == commandGroup.items.first()) startShape
                             else if (item == commandGroup.items.last()) endShape
@@ -330,21 +191,35 @@ fun ContextualCommandBar(
                                 focusedBorderModifier =
                                     focusedBorderModifier.border(borderStroke, shape)
                             }
+
                             Row(
-                                modifier = Modifier
-                                    .height(IntrinsicSize.Min)
-                                    .weight(commandGroup.weight),
-                                verticalAlignment = Alignment.CenterVertically
+                                modifier = Modifier.height(IntrinsicSize.Min),
+                                verticalAlignment = Alignment.CenterVertically,
                             ) {
                                 Box(
                                     Modifier
+                                        .onFocusEvent { focusState ->
+                                            if (focusState.isFocused) {
+                                                scope.launch {
+                                                    lazyListState.animateScrollToItem(
+                                                        max(
+                                                            0, key.toInt() - 2
+                                                        )
+                                                    )
+                                                }
+                                            }
+                                        }
+                                        .defaultMinSize(
+                                            minWidth = token.buttonMinWidth(
+                                                contextualCommandBarInfo
+                                            )
+                                        )
                                         .height(IntrinsicSize.Min)
-                                        .fillMaxWidth()
                                         .clip(shape)
                                         .background(
-                                            getContextualCommandBarTokens()
+                                            token
                                                 .buttonBackgroundColor(
-                                                    getContextualCommandBarInfo()
+                                                    contextualCommandBarInfo
                                                 )
                                                 .getColorByState(
                                                     enabled = item.enabled,
@@ -356,124 +231,252 @@ fun ContextualCommandBar(
                                         .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
                                         .semantics {
                                             contentDescription =
-                                                item.label + if (item.selected) selectedString else ""
+                                                item.label +
+                                                        if (item.selected)
+                                                            selectedString
+                                                        else ""
                                         }, contentAlignment = Alignment.Center
                                 ) {
                                     CommandItemComposable(
-                                        item = item,
-                                        interactionSource = interactionSource,
-                                        commandGroup = commandGroup
+                                        token,
+                                        contextualCommandBarInfo,
+                                        item,
+                                        interactionSource,
+                                        commandGroup
                                     )
                                 }
+                                if (itemIndex != commandGroup.items.size - 1) {
+                                    Spacer(
+                                        Modifier
+                                            .requiredWidth(
+                                                token.buttonSpacing(
+                                                    contextualCommandBarInfo
+                                                )
+                                            )
+                                            .fillMaxHeight()
+                                            .background(Color.Transparent)
+                                    )
+                                } else if (index != groups.size - 1) {
+                                    Spacer(
+                                        Modifier
+                                            .requiredWidth(
+                                                token.groupSpacing(
+                                                    contextualCommandBarInfo
+                                                )
+                                            )
+                                            .fillMaxHeight()
+                                            .background(Color.Transparent)
+                                    )
+                                }
+                            }
 
-                            }
-                            if (itemIndex != commandGroup.items.size - 1) {
-                                Spacer(
-                                    Modifier
-                                        .requiredWidth(
-                                            getContextualCommandBarTokens().buttonSpacing(
-                                                getContextualCommandBarInfo()
+                        }
+                        itemKey += 1
+                    }
+                }
+            }
+        } else {
+            Row(modifier = Modifier
+                .constrainAs(Content) {
+                    when (actionButtonPosition) {
+                        ActionButtonPosition.Start -> {
+                            start.linkTo(
+                                KeyboardDismiss.end,
+                                margin = contentPaddingWithActionButton
+                            )
+                            end.linkTo(parent.end)
+                        }
+                        ActionButtonPosition.End -> {
+                            start.linkTo(parent.start)
+                            end.linkTo(
+                                KeyboardDismiss.start,
+                                margin = contentPaddingWithActionButton
+                            )
+                        }
+                        ActionButtonPosition.None -> {
+                            start.linkTo(parent.start)
+                            end.linkTo(parent.end)
+                        }
+                    }
+                    top.linkTo(parent.top)
+                    bottom.linkTo(parent.bottom)
+                    width = Dimension.fillToConstraints
+                }
+                .fillMaxWidth()
+                .padding(
+                    token.buttonPadding(
+                        contextualCommandBarInfo
+                    )
+                )) {
+                for ((index, commandGroup) in groups.withIndex()) {
+                    for ((itemIndex, item) in commandGroup.items.withIndex()) {
+                        val shape = if (commandGroup.items.size == 1) soloItemShape
+                        else if (item == commandGroup.items.first()) startShape
+                        else if (item == commandGroup.items.last()) endShape
+                        else defaultShape
+
+                        val interactionSource: MutableInteractionSource =
+                            remember { MutableInteractionSource() }
+                        val clickableModifier = Modifier.combinedClickable(
+                            enabled = item.enabled,
+                            onClick = item.onClick,
+                            onClickLabel = null,
+                            onLongClick = item.onLongClick,
+                            role = Role.Button,
+                            interactionSource = interactionSource,
+                            indication = rememberRipple()
+                        )
+
+                        focusedBorderModifier = Modifier
+                        for (borderStroke in focusStroke) {
+                            focusedBorderModifier =
+                                focusedBorderModifier.border(borderStroke, shape)
+                        }
+                        Row(
+                            modifier = Modifier
+                                .height(IntrinsicSize.Min)
+                                .weight(commandGroup.weight),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Box(
+                                Modifier
+                                    .height(IntrinsicSize.Min)
+                                    .fillMaxWidth()
+                                    .clip(shape)
+                                    .background(
+                                        token
+                                            .buttonBackgroundColor(
+                                                contextualCommandBarInfo
                                             )
-                                        )
-                                        .background(Color.Transparent)
-                                )
-                            } else if (index != groups.size - 1) {
-                                Spacer(
-                                    Modifier
-                                        .requiredWidth(
-                                            getContextualCommandBarTokens().groupSpacing(
-                                                getContextualCommandBarInfo()
-                                            )
-                                        )
-                                        .background(Color.Transparent)
+                                            .getColorByState(
+                                                enabled = item.enabled,
+                                                selected = item.selected,
+                                                interactionSource = interactionSource
+                                            ), shape = shape
+                                    )
+                                    .then(clickableModifier)
+                                    .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
+                                    .semantics {
+                                        contentDescription =
+                                            item.label + if (item.selected) selectedString else ""
+                                    }, contentAlignment = Alignment.Center
+                            ) {
+                                CommandItemComposable(
+                                    token,
+                                    contextualCommandBarInfo,
+                                    item = item,
+                                    interactionSource = interactionSource,
+                                    commandGroup = commandGroup
                                 )
                             }
+
+                        }
+                        if (itemIndex != commandGroup.items.size - 1) {
+                            Spacer(
+                                Modifier
+                                    .requiredWidth(
+                                        token.buttonSpacing(
+                                            contextualCommandBarInfo
+                                        )
+                                    )
+                                    .background(Color.Transparent)
+                            )
+                        } else if (index != groups.size - 1) {
+                            Spacer(
+                                Modifier
+                                    .requiredWidth(
+                                        token.groupSpacing(
+                                            contextualCommandBarInfo
+                                        )
+                                    )
+                                    .background(Color.Transparent)
+                            )
                         }
                     }
                 }
             }
-            if (actionButtonPosition != ActionButtonPosition.None) {
-                val keyboardController = LocalSoftwareKeyboardController.current
-                val keyboardDismiss: (() -> Unit) = { keyboardController?.hide() }
-                val actionButtonClickable = Modifier.clickable(enabled = true,
-                    onClick = actionButtonIcon.onClick ?: keyboardDismiss,
-                    role = Role.Button,
-                    onClickLabel = actionButtonIcon.contentDescription,
-                    indication = rememberRipple(),
-                    interactionSource = remember { MutableInteractionSource() })
+        }
+        if (actionButtonPosition != ActionButtonPosition.None) {
+            val keyboardController = LocalSoftwareKeyboardController.current
+            val keyboardDismiss: (() -> Unit) = { keyboardController?.hide() }
+            val actionButtonClickable = Modifier.clickable(enabled = true,
+                onClick = actionButtonIcon.onClick ?: keyboardDismiss,
+                role = Role.Button,
+                onClickLabel = actionButtonIcon.contentDescription,
+                indication = rememberRipple(),
+                interactionSource = remember { MutableInteractionSource() })
 
-                val isRtl: Boolean = LocalLayoutDirection.current == LayoutDirection.Rtl
+            val isRtl: Boolean = LocalLayoutDirection.current == LayoutDirection.Rtl
 
-                Row(
-                    Modifier
-                        .height(IntrinsicSize.Min)
-                        .constrainAs(KeyboardDismiss) {
-                            if (actionButtonPosition == ActionButtonPosition.Start) {
-                                start.linkTo(parent.start)
-                            } else {
-                                end.linkTo(parent.end)
-                            }
-                            top.linkTo(parent.top)
-                            bottom.linkTo(parent.bottom)
-                        }, verticalAlignment = Alignment.CenterVertically
-                ) {
-                    if (actionButtonPosition == ActionButtonPosition.End)
-                        Spacer(
-                            modifier = Modifier
-                                .requiredWidth(
-                                    getContextualCommandBarTokens().actionButtonGradientWidth(
-                                        getContextualCommandBarInfo()
-                                    )
-                                )
-                                .fillMaxHeight()
-                                .background(
-                                    Brush.horizontalGradient(
-                                        getContextualCommandBarTokens().actionButtonGradient(
-                                            getContextualCommandBarInfo()
-                                        ),
-                                        startX = if (!isRtl) 0.0F else Float.POSITIVE_INFINITY,
-                                        endX = if (!isRtl) Float.POSITIVE_INFINITY else 0.0F
-                                    )
-                                )
-                        )
-                    Icon(
-                        actionButtonIcon,
+            Row(
+                Modifier
+                    .height(IntrinsicSize.Min)
+                    .constrainAs(KeyboardDismiss) {
+                        if (actionButtonPosition == ActionButtonPosition.Start) {
+                            start.linkTo(parent.start)
+                        } else {
+                            end.linkTo(parent.end)
+                        }
+                        top.linkTo(parent.top)
+                        bottom.linkTo(parent.bottom)
+                    }, verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (actionButtonPosition == ActionButtonPosition.End)
+                    Spacer(
                         modifier = Modifier
-                            .then(actionButtonClickable)
-                            .background(
-                                getContextualCommandBarTokens().actionButtonBackgroundColor(
-                                    getContextualCommandBarInfo()
+                            .requiredWidth(
+                                token.actionButtonGradientWidth(
+                                    contextualCommandBarInfo
                                 )
                             )
-                            .padding(
-                                getContextualCommandBarTokens().actionButtonIconPadding(
-                                    getContextualCommandBarInfo()
+                            .fillMaxHeight()
+                            .background(
+                                Brush.horizontalGradient(
+                                    token.actionButtonGradient(
+                                        contextualCommandBarInfo
+                                    ),
+                                    startX = if (!isRtl) 0.0F else Float.POSITIVE_INFINITY,
+                                    endX = if (!isRtl) Float.POSITIVE_INFINITY else 0.0F
                                 )
-                            ),
-                        tint = getContextualCommandBarTokens().actionButtonIconColor(
-                            getContextualCommandBarInfo()
-                        )
+                            )
                     )
-                    if (actionButtonPosition == ActionButtonPosition.Start)
-                        Spacer(
-                            modifier = Modifier
-                                .requiredWidth(
-                                    getContextualCommandBarTokens().actionButtonGradientWidth(
-                                        getContextualCommandBarInfo()
-                                    )
-                                )
-                                .fillMaxHeight()
-                                .background(
-                                    Brush.horizontalGradient(
-                                        getContextualCommandBarTokens().actionButtonGradient(
-                                            getContextualCommandBarInfo()
-                                        ),
-                                        startX = if (!isRtl) Float.POSITIVE_INFINITY else 0F,
-                                        endX = if (!isRtl) 0F else Float.POSITIVE_INFINITY
-                                    )
-                                )
+                Icon(
+                    actionButtonIcon,
+                    modifier = Modifier
+                        .then(actionButtonClickable)
+                        .background(
+                            token.actionButtonBackgroundColor(
+                                contextualCommandBarInfo
+                            )
                         )
-                }
+                        .padding(
+                            token.actionButtonIconPadding(
+                                contextualCommandBarInfo
+                            )
+                        ),
+                    tint = token.actionButtonIconColor(
+                        contextualCommandBarInfo
+                    )
+                )
+                if (actionButtonPosition == ActionButtonPosition.Start)
+                    Spacer(
+                        modifier = Modifier
+                            .requiredWidth(
+                                token.actionButtonGradientWidth(
+                                    contextualCommandBarInfo
+                                )
+                            )
+                            .fillMaxHeight()
+                            .background(
+                                Brush.horizontalGradient(
+                                    token.actionButtonGradient(
+                                        contextualCommandBarInfo
+                                    ),
+                                    startX = if (!isRtl) Float.POSITIVE_INFINITY else 0F,
+                                    endX = if (!isRtl) 0F else Float.POSITIVE_INFINITY
+                                )
+                            )
+                    )
             }
         }
     }
@@ -481,60 +484,64 @@ fun ContextualCommandBar(
 
 @Composable
 private fun CommandItemComposable(
-    item: CommandItem, interactionSource: MutableInteractionSource, commandGroup: CommandGroup
+    token: ContextualCommandBarTokens,
+    contextualCommandBarInfo: ContextualCommandBarInfo,
+    item: CommandItem,
+    interactionSource: MutableInteractionSource,
+    commandGroup: CommandGroup
 ) {
-    val foregroundColor = getContextualCommandBarTokens().iconColor(
-        getContextualCommandBarInfo()
+    val foregroundColor = token.iconColor(
+        contextualCommandBarInfo
     ).getColorByState(
         enabled = item.enabled, selected = item.selected, interactionSource = interactionSource
     )
 
     val contentPadding: PaddingValues = if (commandGroup.items.size == 1) {
         PaddingValues(
-            top = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), bottom = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), start = getContextualCommandBarTokens().groupIconHorizontalPadding(
-                getContextualCommandBarInfo()
-            ), end = getContextualCommandBarTokens().groupIconHorizontalPadding(
-                getContextualCommandBarInfo()
+            top = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), bottom = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), start = token.groupIconHorizontalPadding(
+                contextualCommandBarInfo
+            ), end = token.groupIconHorizontalPadding(
+                contextualCommandBarInfo
             )
         )
     } else if (item == commandGroup.items.first()) {
         PaddingValues(
-            top = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), bottom = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), start = getContextualCommandBarTokens().groupIconHorizontalPadding(
-                getContextualCommandBarInfo()
-            ), end = getContextualCommandBarTokens().itemIconHorizontalPadding(
-                getContextualCommandBarInfo()
+            top = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), bottom = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), start = token.groupIconHorizontalPadding(
+                contextualCommandBarInfo
+            ), end = token.itemIconHorizontalPadding(
+                contextualCommandBarInfo
             )
         )
     } else if (item == commandGroup.items.last()) {
         PaddingValues(
-            top = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), bottom = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), start = getContextualCommandBarTokens().itemIconHorizontalPadding(
-                getContextualCommandBarInfo()
-            ), end = getContextualCommandBarTokens().groupIconHorizontalPadding(
-                getContextualCommandBarInfo()
+            top = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), bottom = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), start = token.itemIconHorizontalPadding(
+                contextualCommandBarInfo
+            ), end = token.groupIconHorizontalPadding(
+                contextualCommandBarInfo
             )
         )
     } else {
         PaddingValues(
-            top = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), bottom = getContextualCommandBarTokens().iconVerticalPadding(
-                getContextualCommandBarInfo()
-            ), start = getContextualCommandBarTokens().itemIconHorizontalPadding(
-                getContextualCommandBarInfo()
-            ), end = getContextualCommandBarTokens().itemIconHorizontalPadding(
-                getContextualCommandBarInfo()
+            top = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), bottom = token.iconVerticalPadding(
+                contextualCommandBarInfo
+            ), start = token.itemIconHorizontalPadding(
+                contextualCommandBarInfo
+            ), end = token.itemIconHorizontalPadding(
+                contextualCommandBarInfo
             )
         )
     }
@@ -544,21 +551,21 @@ private fun CommandItemComposable(
             Modifier
                 .padding(contentPadding)
                 .requiredSize(
-                    getContextualCommandBarTokens().iconSize(
-                        getContextualCommandBarInfo()
+                    token.iconSize(
+                        contextualCommandBarInfo
                     )
                 ), tint = foregroundColor
         )
     } else {
-        val fontTypography = getContextualCommandBarTokens().typography(
-            getContextualCommandBarInfo()
+        val fontTypography = token.typography(
+            contextualCommandBarInfo
         )
         Box(
             modifier = Modifier
                 .padding(contentPadding)
                 .requiredHeight(
-                    getContextualCommandBarTokens().iconSize(
-                        getContextualCommandBarInfo()
+                    token.iconSize(
+                        contextualCommandBarInfo
                     )
                 ), contentAlignment = Alignment.Center
         ) {
@@ -572,16 +579,6 @@ private fun CommandItemComposable(
             )
         }
     }
-}
-
-@Composable
-private fun getContextualCommandBarTokens(): ContextualCommandBarTokens {
-    return LocalContextualCommandBarTokens.current
-}
-
-@Composable
-private fun getContextualCommandBarInfo(): ContextualCommandBarInfo {
-    return LocalContextualCommandBarInfo.current
 }
 
 data class CommandGroup(

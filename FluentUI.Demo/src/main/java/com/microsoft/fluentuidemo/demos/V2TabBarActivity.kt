@@ -65,7 +65,7 @@ class V2TabBarActivity : DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_mail), context)
                         selectedIndex = 1
                     },
-                    badge = { Badge("123+", badgeType = BadgeType.Character) }
+                    badge = { Badge(text = "123+", badgeType = BadgeType.Character) }
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_settings),
@@ -84,7 +84,7 @@ class V2TabBarActivity : DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_notification), context)
                         selectedIndex = 3
                     },
-                    badge = { Badge("10", badgeType = BadgeType.Character) }
+                    badge = { Badge(text = "10", badgeType = BadgeType.Character) }
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_more),

@@ -17,7 +17,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicato
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
-import com.microsoft.fluentui.tokenized.progress.Shimmer
+import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import org.junit.Rule
 import org.junit.Test
 

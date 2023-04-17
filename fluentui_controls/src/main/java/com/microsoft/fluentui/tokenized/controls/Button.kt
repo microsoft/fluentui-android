@@ -11,8 +11,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,9 +29,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.ButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
-
-val LocalButtonTokens = compositionLocalOf { ButtonTokens() }
-val LocalButtonInfo = compositionLocalOf { ButtonInfo() }
 
 /**
  * API to create a button, containing icon as well as text.
@@ -64,112 +59,97 @@ fun Button(
     buttonTokens: ButtonTokens? = null
 ) {
     val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
-
-    CompositionLocalProvider(
-        LocalButtonTokens provides token,
-        LocalButtonInfo provides ButtonInfo(style, size)
-    ) {
-        val clickAndSemanticsModifier = Modifier.clickable(
-            interactionSource = interactionSource,
-            indication = rememberRipple(),
+    val buttonInfo = ButtonInfo(style, size)
+    val clickAndSemanticsModifier = Modifier.clickable(
+        interactionSource = interactionSource,
+        indication = rememberRipple(),
+        enabled = enabled,
+        onClickLabel = null,
+        role = Role.Button,
+        onClick = onClick
+    )
+    val backgroundColor =
+        token.backgroundColor(buttonInfo = buttonInfo).getColorByState(
             enabled = enabled,
-            onClickLabel = null,
-            role = Role.Button,
-            onClick = onClick
+            selected = false,
+            interactionSource = interactionSource
         )
-        val backgroundColor =
-            getButtonToken().backgroundColor(buttonInfo = getButtonInfo()).getColorByState(
-                enabled = enabled,
-                selected = false,
-                interactionSource = interactionSource
+    val contentPadding = token.padding(buttonInfo)
+    val iconSpacing = token.spacing(buttonInfo)
+    val shape = RoundedCornerShape(token.cornerRadius(buttonInfo))
+    val borders: List<BorderStroke> =
+        token.borderStroke(buttonInfo = buttonInfo).getBorderStrokeByState(
+            enabled = enabled,
+            selected = false,
+            interactionSource = interactionSource
+        )
+
+    var borderModifier: Modifier = Modifier
+    var borderWidth = 0.dp
+    for (border in borders) {
+        borderWidth += border.width
+        borderModifier = borderModifier.border(borderWidth, border.brush, shape)
+    }
+
+    Box(
+        modifier
+            .height(token.fixedHeight(buttonInfo))
+            .background(
+                color = backgroundColor,
+                shape = shape
             )
-        val contentPadding = getButtonToken().padding(getButtonInfo())
-        val iconSpacing = getButtonToken().spacing(getButtonInfo())
-        val shape = RoundedCornerShape(getButtonToken().cornerRadius(getButtonInfo()))
-        val borders: List<BorderStroke> =
-            getButtonToken().borderStroke(buttonInfo = getButtonInfo()).getBorderStrokeByState(
-                enabled = enabled,
-                selected = false,
-                interactionSource = interactionSource
-            )
-
-        var borderModifier: Modifier = Modifier
-        var borderWidth = 0.dp
-        for (border in borders) {
-            borderWidth += border.width
-            borderModifier = borderModifier.border(borderWidth, border.brush, shape)
-        }
-
-        Box(
-            modifier
-                .height(getButtonToken().fixedHeight(getButtonInfo()))
-                .background(
-                    color = backgroundColor,
-                    shape = shape
-                )
-                .clip(shape)
-                .semantics(true) {
-                    editableText = AnnotatedString(text ?: "")
-                    this.contentDescription = contentDescription ?: ""
-                }
-                .then(clickAndSemanticsModifier)
-                .then(borderModifier),
-            propagateMinConstraints = true
-        ) {
-            Row(
-                Modifier.padding(contentPadding),
-                horizontalArrangement = Arrangement.spacedBy(
-                    iconSpacing,
-                    Alignment.CenterHorizontally
-                ),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-
-                if (icon != null)
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(
-                                getButtonToken().iconSize(buttonInfo = getButtonInfo())
-                            ),
-                        tint = getButtonToken().iconColor(buttonInfo = getButtonInfo())
-                            .getColorByState(
-                                enabled = enabled,
-                                selected = false,
-                                interactionSource = interactionSource
-                            )
-                    )
-
-                if (text != null)
-                    Text(
-                        text = text,
-                        modifier = Modifier.clearAndSetSemantics { },
-                        color = getButtonToken().textColor(buttonInfo = getButtonInfo())
-                            .getColorByState(
-                                enabled = enabled,
-                                selected = false,
-                                interactionSource = interactionSource
-                            ),
-                        style = getButtonToken().typography(getButtonInfo()).merge(
-                            TextStyle(
-                                platformStyle = PlatformTextStyle(includeFontPadding = false)
-                            )
-                        ),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
+            .clip(shape)
+            .semantics(true) {
+                editableText = AnnotatedString(text ?: "")
+                this.contentDescription = contentDescription ?: ""
             }
+            .then(clickAndSemanticsModifier)
+            .then(borderModifier),
+        propagateMinConstraints = true
+    ) {
+        Row(
+            Modifier.padding(contentPadding),
+            horizontalArrangement = Arrangement.spacedBy(
+                iconSpacing,
+                Alignment.CenterHorizontally
+            ),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+
+            if (icon != null)
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(
+                            token.iconSize(buttonInfo = buttonInfo)
+                        ),
+                    tint = token.iconColor(buttonInfo = buttonInfo)
+                        .getColorByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = interactionSource
+                        )
+                )
+
+            if (text != null)
+                Text(
+                    text = text,
+                    modifier = Modifier.clearAndSetSemantics { },
+                    color = token.textColor(buttonInfo = buttonInfo)
+                        .getColorByState(
+                            enabled = enabled,
+                            selected = false,
+                            interactionSource = interactionSource
+                        ),
+                    style = token.typography(buttonInfo).merge(
+                        TextStyle(
+                            platformStyle = PlatformTextStyle(includeFontPadding = false)
+                        )
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
         }
     }
-}
-
-@Composable
-fun getButtonToken(): ButtonTokens {
-    return LocalButtonTokens.current
-}
-
-@Composable
-fun getButtonInfo(): ButtonInfo {
-    return LocalButtonInfo.current
 }

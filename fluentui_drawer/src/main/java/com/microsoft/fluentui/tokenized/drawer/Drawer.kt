@@ -783,20 +783,6 @@ private fun BottomDrawer(
     }
 }
 
-internal val LocalDrawerTokens = compositionLocalOf { DrawerTokens() }
-internal val LocalDrawerInfo = compositionLocalOf { DrawerInfo() }
-
-@Composable
-private fun getDrawerTokens(): DrawerTokens {
-    return LocalDrawerTokens.current
-}
-
-@Composable
-private fun getDrawerInfo(): DrawerInfo {
-    return LocalDrawerInfo.current
-}
-
-
 /**
  *
  * Drawer block interaction with the rest of an app’s content with a scrim.
@@ -835,82 +821,77 @@ fun Drawer(
                 scope.launch { drawerState.close() }
             }
         }
-
-        CompositionLocalProvider(
-            LocalDrawerTokens provides tokens,
-            LocalDrawerInfo provides DrawerInfo(type = behaviorType)
-        ) {
-            Popup(
-                onDismissRequest = close,
-                popupPositionProvider = popupPositionProvider,
-                properties = PopupProperties(focusable = true)
-            )
-            {
-                val drawerShape: Shape =
-                    when (behaviorType) {
-                        BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> RoundedCornerShape(
-                            topStart = getDrawerTokens().borderRadius(getDrawerInfo()),
-                            topEnd = getDrawerTokens().borderRadius(getDrawerInfo())
-                        )
-                        BehaviorType.TOP -> RoundedCornerShape(
-                            bottomStart = getDrawerTokens().borderRadius(getDrawerInfo()),
-                            bottomEnd = getDrawerTokens().borderRadius(getDrawerInfo())
-                        )
-                        else -> RoundedCornerShape(getDrawerTokens().borderRadius(getDrawerInfo()))
-                    }
-                val drawerElevation: Dp = getDrawerTokens().elevation(getDrawerInfo())
-                val drawerBackgroundColor: Color =
-                    getDrawerTokens().backgroundColor(getDrawerInfo())
-                val drawerContentColor: Color = Color.Transparent
-                val drawerHandleColor: Color = getDrawerTokens().handleColor(getDrawerInfo())
-                val scrimOpacity: Float = getDrawerTokens().scrimOpacity(getDrawerInfo())
-                val scrimColor: Color =
-                    getDrawerTokens().scrimColor(getDrawerInfo()).copy(alpha = scrimOpacity)
-
+        val drawerInfo = DrawerInfo(type = behaviorType)
+        Popup(
+            onDismissRequest = close,
+            popupPositionProvider = popupPositionProvider,
+            properties = PopupProperties(focusable = true)
+        )
+        {
+            val drawerShape: Shape =
                 when (behaviorType) {
-                    BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> BottomDrawer(
-                        modifier = modifier,
-                        drawerState = drawerState,
-                        drawerShape = drawerShape,
-                        drawerElevation = drawerElevation,
-                        drawerBackgroundColor = drawerBackgroundColor,
-                        drawerContentColor = drawerContentColor,
-                        drawerHandleColor = drawerHandleColor,
-                        scrimColor = scrimColor,
-                        scrimVisible = scrimVisible,
-                        expandable = expandable,
-                        slideOver = behaviorType == BehaviorType.BOTTOM_SLIDE_OVER,
-                        onDismiss = close,
-                        drawerContent = drawerContent
+                    BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> RoundedCornerShape(
+                        topStart = tokens.borderRadius(drawerInfo),
+                        topEnd = tokens.borderRadius(drawerInfo)
                     )
-                    BehaviorType.TOP -> TopDrawer(
-                        modifier = modifier,
-                        drawerState = drawerState,
-                        drawerShape = drawerShape,
-                        drawerElevation = drawerElevation,
-                        drawerBackgroundColor = drawerBackgroundColor,
-                        drawerContentColor = drawerContentColor,
-                        drawerHandleColor = drawerHandleColor,
-                        scrimColor = scrimColor,
-                        scrimVisible = scrimVisible,
-                        onDismiss = close,
-                        drawerContent = drawerContent
+                    BehaviorType.TOP -> RoundedCornerShape(
+                        bottomStart = tokens.borderRadius(drawerInfo),
+                        bottomEnd = tokens.borderRadius(drawerInfo)
                     )
-
-                    BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> HorizontalDrawer(
-                        behaviorType = behaviorType,
-                        modifier = modifier,
-                        drawerState = drawerState,
-                        drawerShape = drawerShape,
-                        drawerElevation = drawerElevation,
-                        drawerBackgroundColor = drawerBackgroundColor,
-                        drawerContentColor = drawerContentColor,
-                        scrimColor = scrimColor,
-                        scrimVisible = scrimVisible,
-                        onDismiss = close,
-                        drawerContent = drawerContent
-                    )
+                    else -> RoundedCornerShape(tokens.borderRadius(drawerInfo))
                 }
+            val drawerElevation: Dp = tokens.elevation(drawerInfo)
+            val drawerBackgroundColor: Color =
+                tokens.backgroundColor(drawerInfo)
+            val drawerContentColor: Color = Color.Transparent
+            val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
+            val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
+            val scrimColor: Color =
+                tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
+
+            when (behaviorType) {
+                BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> BottomDrawer(
+                    modifier = modifier,
+                    drawerState = drawerState,
+                    drawerShape = drawerShape,
+                    drawerElevation = drawerElevation,
+                    drawerBackgroundColor = drawerBackgroundColor,
+                    drawerContentColor = drawerContentColor,
+                    drawerHandleColor = drawerHandleColor,
+                    scrimColor = scrimColor,
+                    scrimVisible = scrimVisible,
+                    expandable = expandable,
+                    slideOver = behaviorType == BehaviorType.BOTTOM_SLIDE_OVER,
+                    onDismiss = close,
+                    drawerContent = drawerContent
+                )
+                BehaviorType.TOP -> TopDrawer(
+                    modifier = modifier,
+                    drawerState = drawerState,
+                    drawerShape = drawerShape,
+                    drawerElevation = drawerElevation,
+                    drawerBackgroundColor = drawerBackgroundColor,
+                    drawerContentColor = drawerContentColor,
+                    drawerHandleColor = drawerHandleColor,
+                    scrimColor = scrimColor,
+                    scrimVisible = scrimVisible,
+                    onDismiss = close,
+                    drawerContent = drawerContent
+                )
+
+                BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> HorizontalDrawer(
+                    behaviorType = behaviorType,
+                    modifier = modifier,
+                    drawerState = drawerState,
+                    drawerShape = drawerShape,
+                    drawerElevation = drawerElevation,
+                    drawerBackgroundColor = drawerBackgroundColor,
+                    drawerContentColor = drawerContentColor,
+                    scrimColor = scrimColor,
+                    scrimVisible = scrimVisible,
+                    onDismiss = close,
+                    drawerContent = drawerContent
+                )
             }
         }
     }

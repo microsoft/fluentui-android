@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -30,9 +28,6 @@ import com.microsoft.fluentui.theme.token.*
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
-
-private val LocalAppBarTokens = compositionLocalOf { AppBarTokens() }
-private val LocalAppBarInfo = compositionLocalOf { AppBarInfo(FluentStyle.Neutral) }
 
 /**
  * An app bar appears at the top of an app screen, below the status bar,
@@ -90,207 +85,193 @@ fun AppBar(
     val token = appBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBar] as AppBarTokens
 
-    CompositionLocalProvider(
-        LocalAppBarTokens provides token,
-        LocalAppBarInfo provides AppBarInfo(style, appBarSize)
+    val appBarInfo = AppBarInfo(style, appBarSize)
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
     ) {
-        Surface(
-            modifier = modifier
+        Column(
+            modifier = Modifier
                 .fillMaxWidth()
+                .background(token.backgroundColor(appBarInfo))
         ) {
-            Column(
-                modifier = Modifier
+            Row(
+                Modifier
+                    .requiredHeight(56.dp * appTitleDelta)
+                    .animateContentSize()
                     .fillMaxWidth()
-                    .background(getAppBarTokens().backgroundColor(getAppBarInfo()))
+                    .scale(scaleX = 1.0F, scaleY = appTitleDelta)
+                    .alpha(if (appTitleDelta != 1.0F) appTitleDelta / 3 else 1.0F),
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(
-                    Modifier
-                        .requiredHeight(56.dp * appTitleDelta)
-                        .animateContentSize()
-                        .fillMaxWidth()
-                        .scale(scaleX = 1.0F, scaleY = appTitleDelta)
-                        .alpha(if (appTitleDelta != 1.0F) appTitleDelta / 3 else 1.0F),
-                    horizontalArrangement = Arrangement.Start,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
-                        Box(
-                            modifier = Modifier
-                                .then(
-                                    if (navigationIcon.onClick != null) {
-                                        Modifier.clickable(
-                                            role = Role.Button,
-                                            onClick = navigationIcon.onClick!!
-                                        )
-                                    } else
-                                        Modifier
-                                ), contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                navigationIcon,
-                                modifier = Modifier
-                                    .padding(getAppBarTokens().navigationIconPadding(getAppBarInfo()))
-                                    .size(getAppBarTokens().leftIconSize(getAppBarInfo())),
-                                tint = getAppBarTokens().navigationIconColor(getAppBarInfo())
-                            )
-                        }
-                    }
-
-                    if (appBarSize != AppBarSize.Medium) {
-                        Box(
-                            modifier = Modifier
-                                .then(
-                                    if (appBarSize == AppBarSize.Large)
-                                        Modifier.padding(start = 16.dp)
-                                    else
-                                        Modifier
-                                )
-                        ) {
-                            logo?.invoke()
-                        }
-                    }
-
-                    val titleTextStyle = getAppBarTokens().titleTypography(getAppBarInfo())
-                    val subtitleTextStyle = getAppBarTokens().subtitleTypography(getAppBarInfo())
-
-                    if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
-                        Column(
-                            modifier = Modifier
-                                .weight(1F)
-                                .padding(getAppBarTokens().textPadding(getAppBarInfo()))
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .then(
-                                        if (postTitleIcon.onClick != null && appBarSize == AppBarSize.Small)
-                                            Modifier.clickable(onClick = postTitleIcon.onClick!!)
-                                        else
-                                            Modifier
-                                    ), verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = title,
-                                    color = getAppBarTokens().titleTextColor(getAppBarInfo()),
-                                    style = titleTextStyle.merge(
-                                        TextStyle(
-                                            platformStyle = PlatformTextStyle(includeFontPadding = true)
-                                        )
-                                    ),
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                                if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
-                                    Icon(
-                                        postTitleIcon,
-                                        modifier = Modifier
-                                            .size(getAppBarTokens().titleIconSize(getAppBarInfo())),
-                                        tint = getAppBarTokens().titleIconColor(getAppBarInfo())
+                if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
+                    Box(
+                        modifier = Modifier
+                            .then(
+                                if (navigationIcon.onClick != null) {
+                                    Modifier.clickable(
+                                        role = Role.Button,
+                                        onClick = navigationIcon.onClick!!
                                     )
-                            }
-                            Row(
-                                modifier = Modifier
-                                    .then(
-                                        if (postSubtitleIcon.onClick != null)
-                                            Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
-                                        else
-                                            Modifier
-                                    ), verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                if (preSubtitleIcon.isIconAvailable())
-                                    Icon(
-                                        preSubtitleIcon,
-                                        modifier = Modifier
-                                            .size(
-                                                getAppBarTokens().subtitleIconSize(
-                                                    getAppBarInfo()
-                                                )
-                                            ),
-                                        tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
-                                    )
-                                Text(
-                                    subTitle,
-                                    color = getAppBarTokens().subtitleTextColor(
-                                        getAppBarInfo()
-                                    ),
-                                    style = subtitleTextStyle.merge(
-                                        TextStyle(
-                                            platformStyle = PlatformTextStyle(includeFontPadding = true)
-                                        )
-                                    ),
-                                    maxLines = 1,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                                if (postSubtitleIcon.isIconAvailable())
-                                    Icon(
-                                        postSubtitleIcon,
-                                        modifier = Modifier
-                                            .size(
-                                                getAppBarTokens().subtitleIconSize(
-                                                    getAppBarInfo()
-                                                )
-                                            ),
-                                        tint = getAppBarTokens().subtitleIconColor(getAppBarInfo())
-                                    )
-                            }
-                        }
-                    } else {
-                        Text(
-                            text = title,
+                                } else
+                                    Modifier
+                            ), contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            navigationIcon,
                             modifier = Modifier
-                                .padding(getAppBarTokens().textPadding(getAppBarInfo()))
-                                .weight(1F),
-                            color = getAppBarTokens().titleTextColor(getAppBarInfo()),
-                            style = titleTextStyle.merge(
-                                TextStyle(
-                                    platformStyle = PlatformTextStyle(
-                                        includeFontPadding = true
-                                    )
-                                )
-                            ),
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis
+                                .padding(token.navigationIconPadding(appBarInfo))
+                                .size(token.leftIconSize(appBarInfo)),
+                            tint = token.navigationIconColor(appBarInfo)
                         )
                     }
+                }
 
-                    if (rightAccessoryView != null) {
-                        rightAccessoryView()
+                if (appBarSize != AppBarSize.Medium) {
+                    Box(
+                        modifier = Modifier
+                            .then(
+                                if (appBarSize == AppBarSize.Large)
+                                    Modifier.padding(start = 16.dp)
+                                else
+                                    Modifier
+                            )
+                    ) {
+                        logo?.invoke()
                     }
                 }
 
-                if (searchBar != null) {
-                    Row(
-                        modifier
-                            .animateContentSize()
-                            .fillMaxWidth()
-                            .then(if (!searchMode) Modifier.height(56.dp * accessoryDelta) else Modifier)
-                            .padding(vertical = 8.dp),
-                        horizontalArrangement = Arrangement.Center
+                val titleTextStyle = token.titleTypography(appBarInfo)
+                val subtitleTextStyle = token.subtitleTypography(appBarInfo)
+
+                if (appBarSize != AppBarSize.Large && !subTitle.isNullOrBlank()) {
+                    Column(
+                        modifier = Modifier
+                            .weight(1F)
+                            .padding(token.textPadding(appBarInfo))
                     ) {
-                        searchBar()
+                        Row(
+                            modifier = Modifier
+                                .then(
+                                    if (postTitleIcon.onClick != null && appBarSize == AppBarSize.Small)
+                                        Modifier.clickable(onClick = postTitleIcon.onClick!!)
+                                    else
+                                        Modifier
+                                ), verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Text(
+                                text = title,
+                                color = token.titleTextColor(appBarInfo),
+                                style = titleTextStyle.merge(
+                                    TextStyle(
+                                        platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                    )
+                                ),
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
+                                Icon(
+                                    postTitleIcon,
+                                    modifier = Modifier
+                                        .size(token.titleIconSize(appBarInfo)),
+                                    tint = token.titleIconColor(appBarInfo)
+                                )
+                        }
+                        Row(
+                            modifier = Modifier
+                                .then(
+                                    if (postSubtitleIcon.onClick != null)
+                                        Modifier.clickable(onClick = postSubtitleIcon.onClick!!)
+                                    else
+                                        Modifier
+                                ), verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            if (preSubtitleIcon.isIconAvailable())
+                                Icon(
+                                    preSubtitleIcon,
+                                    modifier = Modifier
+                                        .size(
+                                            token.subtitleIconSize(
+                                                appBarInfo
+                                            )
+                                        ),
+                                    tint = token.subtitleIconColor(appBarInfo)
+                                )
+                            Text(
+                                subTitle,
+                                color = token.subtitleTextColor(
+                                    appBarInfo
+                                ),
+                                style = subtitleTextStyle.merge(
+                                    TextStyle(
+                                        platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                    )
+                                ),
+                                maxLines = 1,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                            if (postSubtitleIcon.isIconAvailable())
+                                Icon(
+                                    postSubtitleIcon,
+                                    modifier = Modifier
+                                        .size(
+                                            token.subtitleIconSize(
+                                                appBarInfo
+                                            )
+                                        ),
+                                    tint = token.subtitleIconColor(appBarInfo)
+                                )
+                        }
                     }
+                } else {
+                    Text(
+                        text = title,
+                        modifier = Modifier
+                            .padding(token.textPadding(appBarInfo))
+                            .weight(1F),
+                        color = token.titleTextColor(appBarInfo),
+                        style = titleTextStyle.merge(
+                            TextStyle(
+                                platformStyle = PlatformTextStyle(
+                                    includeFontPadding = true
+                                )
+                            )
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
                 }
-                if (bottomBar != null && (searchMode || searchBar == null)) {
-                    Row(
-                        Modifier
-                            .animateContentSize()
-                            .fillMaxWidth()
-                            .then(if (!searchMode) Modifier.height(48.dp * accessoryDelta) else Modifier)
-                            .padding(vertical = 8.dp)
-                    ) {
-                        bottomBar()
-                    }
+
+                if (rightAccessoryView != null) {
+                    rightAccessoryView()
+                }
+            }
+
+            if (searchBar != null) {
+                Row(
+                    modifier
+                        .animateContentSize()
+                        .fillMaxWidth()
+                        .then(if (!searchMode) Modifier.height(56.dp * accessoryDelta) else Modifier)
+                        .padding(vertical = 8.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    searchBar()
+                }
+            }
+            if (bottomBar != null && (searchMode || searchBar == null)) {
+                Row(
+                    Modifier
+                        .animateContentSize()
+                        .fillMaxWidth()
+                        .then(if (!searchMode) Modifier.height(48.dp * accessoryDelta) else Modifier)
+                        .padding(vertical = 8.dp)
+                ) {
+                    bottomBar()
                 }
             }
         }
     }
-}
-
-@Composable
-private fun getAppBarTokens(): AppBarTokens {
-    return LocalAppBarTokens.current
-}
-
-@Composable
-private fun getAppBarInfo(): AppBarInfo {
-    return LocalAppBarInfo.current
 }
