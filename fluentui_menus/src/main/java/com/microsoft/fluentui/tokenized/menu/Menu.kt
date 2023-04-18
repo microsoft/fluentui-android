@@ -86,9 +86,6 @@ fun Menu(
             transformOriginState.value = calculateTransformOrigin(parentBounds, menuBounds)
             flag.value = menuBounds.size.width >= screenWidth * 0.75f
         }
-        LaunchedEffect(content.hashCode()) {
-            restrictWidth.value = flag.value
-        }
 
         Popup(
             onDismissRequest = onDismissRequest,
@@ -108,6 +105,10 @@ fun Menu(
                 cornerRadius = token.cornerRadius(menuInfo),
                 color = token.backgroundColor(menuInfo)
             )
+        }
+
+        LaunchedEffect(Unit) {
+            restrictWidth.value = flag.value
         }
     }
 }
@@ -176,7 +177,7 @@ internal fun MenuContent(
     }
     val shape = RoundedCornerShape(cornerRadius)
     Box(
-        modifier = Modifier
+        modifier = modifier
             .graphicsLayer {
                 scaleX = scale
                 scaleY = scale
@@ -188,14 +189,10 @@ internal fun MenuContent(
             .clip(shape)
             .semantics(mergeDescendants = false) {}
             .pointerInput(Unit) {}
+            .padding(vertical = MenuVerticalPadding)
+            .width(IntrinsicSize.Max)
     ) {
-        Box(
-            modifier = modifier
-                .padding(vertical = MenuVerticalPadding)
-                .width(IntrinsicSize.Max)
-        ) {
-            content()
-        }
+        content()
     }
 }
 
