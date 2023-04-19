@@ -21,18 +21,28 @@ fun Divider(
         dividerToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Divider] as DividerTokens
     val dividerInfo = DividerInfo()
+    
     Column(
         Modifier
             .fillMaxWidth()
-            .background(token.background(dividerInfo = dividerInfo))
+            .background(token.background(dividerInfo))
             .focusable(false)
             .padding(vertical = 8.dp)
     ) {
         Box(
             Modifier
                 .fillMaxWidth()
-                .requiredHeight(height)
-                .background(token.dividerColor(dividerInfo = dividerInfo))
-        )
+                .background(token.background(dividerInfo))
+                .focusable(false)
+                .padding(token.verticalPadding(dividerInfo))
+        ) {
+            Box(
+                Modifier
+                    .fillMaxWidth()
+                    .requiredHeight(height)
+                    .background(token.dividerColor(dividerInfo))
+                    .padding(start = token.startIndent(dividerInfo))
+            )
+        }
     }
 }
