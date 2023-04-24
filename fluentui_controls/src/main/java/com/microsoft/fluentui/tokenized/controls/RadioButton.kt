@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,9 +24,6 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonInfo
 import com.microsoft.fluentui.theme.token.controlTokens.RadioButtonTokens
-
-val LocalRadioButtonTokens = compositionLocalOf { RadioButtonTokens() }
-val LocalRadioButtonInfo = compositionLocalOf { RadioButtonInfo() }
 
 /**
  * API to create a Radio Button. A Radio selection lets user choose one option out of all values.
@@ -52,73 +47,57 @@ fun RadioButton(
 ) {
     val token = radioButtonToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
+    val radioButtonInfo = RadioButtonInfo(selected)
+    val dotRadius = animateDpAsState(
+        targetValue = if (selected) token.innerCircleRadius else 0.dp,
+        animationSpec = tween(durationMillis = 100)
+    )
 
-    CompositionLocalProvider(
-        LocalRadioButtonTokens provides token,
-        LocalRadioButtonInfo provides RadioButtonInfo(selected)
-    ) {
-        val dotRadius = animateDpAsState(
-            targetValue = if (selected) getRadioButtonTokens().innerCircleRadius else 0.dp,
-            animationSpec = tween(durationMillis = 100)
+    val selectableModifier = modifier.selectable(
+        selected = selected,
+        enabled = enabled,
+        onClick = onClick,
+        role = Role.RadioButton,
+        interactionSource = interactionSource,
+        indication = rememberRipple(
+            bounded = false,
+            radius = 24.dp
         )
+    )
 
-        val selectableModifier = modifier.selectable(
-            selected = selected,
-            enabled = enabled,
-            onClick = onClick,
-            role = Role.RadioButton,
-            interactionSource = interactionSource,
-            indication = rememberRipple(
-                bounded = false,
-                radius = 24.dp
-            )
-        )
-
-        val outerStrokeColor =
-            getRadioButtonTokens().backgroundColor(radioButtonInfo = getRadioButtonInfo())
-                .getColorByState(
-                    enabled = enabled,
-                    selected = selected,
-                    interactionSource = interactionSource
-                )
-        val innerColor = getRadioButtonTokens().iconColor(radioButtonInfo = getRadioButtonInfo())
+    val outerStrokeColor =
+        token.backgroundColor(radioButtonInfo = radioButtonInfo)
             .getColorByState(
                 enabled = enabled,
                 selected = selected,
                 interactionSource = interactionSource
             )
+    val innerColor = token.iconColor(radioButtonInfo = radioButtonInfo)
+        .getColorByState(
+            enabled = enabled,
+            selected = selected,
+            interactionSource = interactionSource
+        )
 
-        val outerRadius = getRadioButtonTokens().outerCircleRadius
-        val strokeWidth = getRadioButtonTokens().strokeWidthInwards
+    val outerRadius = token.outerCircleRadius
+    val strokeWidth = token.strokeWidthInwards
 
-        val contentDesc = LocalContext.current.resources.getString(R.string.fluentui_radio_button)
-        Canvas(
-            modifier = Modifier
-                .then(selectableModifier)
-                .size(24.dp)
-                .wrapContentSize(Alignment.Center)
-                .semantics { contentDescription = contentDesc }
-        ) {
-            drawCircle(
-                outerStrokeColor,
-                (outerRadius - (strokeWidth / 2)).toPx(),
-                style = Stroke(1.5.dp.toPx())
-            )
+    val contentDesc = LocalContext.current.resources.getString(R.string.fluentui_radio_button)
+    Canvas(
+        modifier = Modifier
+            .then(selectableModifier)
+            .size(24.dp)
+            .wrapContentSize(Alignment.Center)
+            .semantics { contentDescription = contentDesc }
+    ) {
+        drawCircle(
+            outerStrokeColor,
+            (outerRadius - (strokeWidth / 2)).toPx(),
+            style = Stroke(1.5.dp.toPx())
+        )
 
-            if (dotRadius.value > 0.dp) {
-                drawCircle(innerColor, (dotRadius.value).toPx(), style = Fill)
-            }
+        if (dotRadius.value > 0.dp) {
+            drawCircle(innerColor, (dotRadius.value).toPx(), style = Fill)
         }
     }
-}
-
-
-@Composable
-fun getRadioButtonTokens(): RadioButtonTokens {
-    return LocalRadioButtonTokens.current
-}
-
-@Composable
-fun getRadioButtonInfo(): RadioButtonInfo {
-    return LocalRadioButtonInfo.current
 }

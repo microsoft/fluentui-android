@@ -1,4 +1,4 @@
-package com.microsoft.fluentui.tokenized.progress
+package com.microsoft.fluentui.tokenized.shimmer
 
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.background
@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,17 +20,12 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.controlTokens.ShimmerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerTokens
 import com.microsoft.fluentui.util.dpToPx
 import kotlin.math.absoluteValue
-
-val LocalShimmerTokens = compositionLocalOf { ShimmerTokens() }
-
-@Composable
-fun getShimmerTokens(): ShimmerTokens {
-    return LocalShimmerTokens.current
-}
+import kotlin.math.sqrt
 
 /**
  * Create a Shimmer effect
@@ -44,8 +37,8 @@ fun getShimmerTokens(): ShimmerTokens {
  */
 @Composable
 fun Shimmer(
-    shape: ShimmerShape = ShimmerShape.Box,
     modifier: Modifier = Modifier,
+    shape: ShimmerShape = ShimmerShape.Box,
     shimmerTokens: ShimmerTokens? = null
 ) {
     val tokens = shimmerTokens
@@ -54,51 +47,48 @@ fun Shimmer(
     val screenHeight = dpToPx(configuration.screenHeightDp.dp)
     val screenWidth = dpToPx(configuration.screenWidthDp.dp)
     val diagonal =
-        Math.sqrt((screenHeight * screenHeight + screenWidth * screenWidth).toDouble()).toFloat()
-    CompositionLocalProvider(
-        LocalShimmerTokens provides tokens
-    ) {
-        val shimmerBackgroundColor =
-            getShimmerTokens().color()
-        val shimmerKnockoutEffectColor = getShimmerTokens().knockoutEffectColor()
-        val cornerRadius =
-            dpToPx(getShimmerTokens().cornerRadius())
-        val infiniteTransition = rememberInfiniteTransition()
-        val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
-        val initialValue = if(isLtr) 0f else screenWidth
-        val targetValue = if(isLtr) diagonal else 0f
-        val shimmerEffect by infiniteTransition.animateFloat(
-            initialValue,
-            targetValue,
-            infiniteRepeatable(
-                animation = tween(
-                    durationMillis = 1000,
-                    easing = LinearEasing
-                )
+        sqrt((screenHeight * screenHeight + screenWidth * screenWidth).toDouble()).toFloat()
+    val shimmerInfo = ShimmerInfo(shape = shape)
+    val shimmerBackgroundColor =
+        tokens.color(shimmerInfo)
+    val shimmerKnockoutEffectColor = tokens.knockoutEffectColor(shimmerInfo)
+    val cornerRadius =
+        dpToPx(tokens.cornerRadius(shimmerInfo))
+    val infiniteTransition = rememberInfiniteTransition()
+    val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
+    val initialValue = if (isLtr) 0f else screenWidth
+    val targetValue = if (isLtr) diagonal else 0f
+    val shimmerEffect by infiniteTransition.animateFloat(
+        initialValue,
+        targetValue,
+        infiniteRepeatable(
+            animation = tween(
+                durationMillis = 1000,
+                easing = LinearEasing
             )
         )
-        val gradientColor = Brush.linearGradient(
-            0f to shimmerBackgroundColor,
-            0.5f to shimmerKnockoutEffectColor,
-            1.0f to shimmerBackgroundColor,
-            start = Offset.Zero,
-            end = Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+    )
+    val gradientColor = Brush.linearGradient(
+        0f to shimmerBackgroundColor,
+        0.5f to shimmerKnockoutEffectColor,
+        1.0f to shimmerBackgroundColor,
+        start = Offset.Zero,
+        end = Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
+    )
+    if (shape == ShimmerShape.Box) {
+        Spacer(
+            modifier = modifier
+                .width(240.dp)
+                .height(12.dp)
+                .clip(RoundedCornerShape(cornerRadius))
+                .background(gradientColor)
         )
-        if (shape == ShimmerShape.Box) {
-            Spacer(
-                modifier = modifier
-                    .width(240.dp)
-                    .height(12.dp)
-                    .clip(RoundedCornerShape(cornerRadius))
-                    .background(gradientColor)
-            )
-        } else {
-            Spacer(
-                modifier = modifier
-                    .size(60.dp)
-                    .clip(CircleShape)
-                    .background(gradientColor)
-            )
-        }
+    } else {
+        Spacer(
+            modifier = modifier
+                .size(60.dp)
+                .clip(CircleShape)
+                .background(gradientColor)
+        )
     }
 }

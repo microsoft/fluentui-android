@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.listitem
 
-import android.R
 import androidx.compose.animation.*
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
@@ -43,19 +42,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Top
 import com.microsoft.fluentui.util.dpToPx
-
-val LocalListItemTokens = compositionLocalOf { ListItemTokens() }
-val LocalListItemInfo = compositionLocalOf { ListItemInfo() }
-
-@Composable
-internal fun getListItemTokens(): ListItemTokens {
-    return LocalListItemTokens.current
-}
-
-@Composable
-internal fun getListItemInfo(): ListItemInfo {
-    return LocalListItemInfo.current
-}
 
 object ListItem {
 
@@ -260,174 +246,169 @@ object ListItem {
         }
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(
-            LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
-                listItemType = listItemType,
-                borderInset = borderInset,
-                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-                verticalSpacing = GlobalTokens.SizeTokens.Size160,
-                unreadDot = unreadDot
+        val listItemInfo = ListItemInfo(
+            listItemType = listItemType,
+            borderInset = borderInset,
+            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+            verticalSpacing = GlobalTokens.SizeTokens.Size160,
+            unreadDot = unreadDot
+        )
+        val backgroundColor =
+            token.backgroundColor(listItemInfo).getColorByState(
+                enabled = true, selected = false, interactionSource = interactionSource
             )
+        val cellHeight = token.cellHeight(listItemInfo)
+        val primaryTextTypography = token.primaryTextTypography(listItemInfo)
+        val subTextTypography = token.subTextTypography(listItemInfo)
+        val secondarySubTextTypography =
+            token.secondarySubTextTypography(listItemInfo)
+        val primaryTextColor = token.primaryTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val subTextColor = token.subTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val secondarySubTextColor = token.secondarySubTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val rippleColor = token.rippleColor(listItemInfo)
+        val unreadDotColor = token.unreadDotColor(listItemInfo)
+        val padding = token.padding(listItemInfo)
+        val borderSize = token.borderSize(listItemInfo).value
+        val borderInsetToPx = with(LocalDensity.current) {
+            token.borderInset(listItemInfo).toPx()
+        }
+        val borderColor = token.borderColor(listItemInfo).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+
+        Row(
+            modifier
+                .background(backgroundColor)
+                .fillMaxWidth()
+                .heightIn(min = cellHeight)
+                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+                .clickAndSemanticsModifier(
+                    interactionSource, onClick = onClick ?: {}, enabled, rippleColor
+                ), verticalAlignment = Alignment.CenterVertically
         ) {
-
-            val backgroundColor =
-                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
-                    enabled = true, selected = false, interactionSource = interactionSource
-                )
-            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
-            val primaryTextTypography = getListItemTokens().primaryTextTypography(getListItemInfo())
-            val subTextTypography = getListItemTokens().subTextTypography(getListItemInfo())
-            val secondarySubTextTypography =
-                getListItemTokens().secondarySubTextTypography(getListItemInfo())
-            val primaryTextColor = getListItemTokens().primaryTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val subTextColor = getListItemTokens().subTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val secondarySubTextColor = getListItemTokens().secondarySubTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val rippleColor = getListItemTokens().rippleColor(getListItemInfo())
-            val unreadDotColor = getListItemTokens().unreadDotColor(getListItemInfo())
-            val padding = getListItemTokens().padding(getListItemInfo())
-            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
-            val borderInsetToPx = with(LocalDensity.current) {
-                getListItemTokens().borderInset(getListItemInfo()).toPx()
-            }
-            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-
-            Row(
-                modifier
-                    .background(backgroundColor)
-                    .fillMaxWidth()
-                    .heightIn(min = cellHeight)
-                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                    .clickAndSemanticsModifier(
-                        interactionSource, onClick = onClick ?: {}, enabled, rippleColor
-                    )
-                , verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (unreadDot) {
-                    Canvas(
-                        modifier = Modifier
-                            .padding(start = 4.dp)
-                            .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
-                    ) {
-                        drawCircle(
-                            color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
-                        )
-                    }
-                }
-                if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
-                    Box(
-                        Modifier.padding(
-                            start = if (unreadDot) 4.dp else padding.calculateStartPadding(
-                                LocalLayoutDirection.current
-                            )
-                        ), contentAlignment = Alignment.Center
-                    ) {
-                        leadingAccessoryView()
-                    }
-                }
-                val contentAlignment =
-                    if (textAlignment == ListItemTextAlignment.Regular) Alignment.CenterStart else Alignment.Center
-                Box(
-                    Modifier
-                        .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
-                        .weight(1f)
-                        .then(clearSemantics(textAccessibilityProperties)),contentAlignment = contentAlignment
+            if (unreadDot) {
+                Canvas(
+                    modifier = Modifier
+                        .padding(start = 4.dp)
+                        .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
                 ) {
-                    Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
+                    drawCircle(
+                        color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
+                    )
+                }
+            }
+            if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
+                Box(
+                    Modifier.padding(
+                        start = if (unreadDot) 4.dp else padding.calculateStartPadding(
+                            LocalLayoutDirection.current
+                        )
+                    ), contentAlignment = Alignment.Center
+                ) {
+                    leadingAccessoryView()
+                }
+            }
+            val contentAlignment =
+                if (textAlignment == ListItemTextAlignment.Regular) Alignment.CenterStart else Alignment.Center
+            Box(
+                Modifier
+                    .padding(horizontal = padding.calculateStartPadding(LocalLayoutDirection.current))
+                    .weight(1f)
+                    .then(clearSemantics(textAccessibilityProperties)),
+                contentAlignment = contentAlignment
+            ) {
+                Column(Modifier.padding(vertical = padding.calculateTopPadding())) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        if (primaryTextLeadingIcons != null) {
+                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                primaryTextLeadingIcons.icon1()
+                                primaryTextLeadingIcons.icon2?.let { it() }
+                            }
+                        }
+
+                        Text(
+                            text = text,
+                            style = primaryTextTypography,
+                            color = primaryTextColor,
+                            maxLines = textMaxLines,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        if (primaryTextTrailingIcons != null) {
+                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                primaryTextTrailingIcons.icon1()
+                                primaryTextTrailingIcons.icon2?.let { it() }
+                            }
+                        }
+                    }
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
+                            Text(
+                                text = subText,
+                                style = subTextTypography,
+                                color = subTextColor,
+                                maxLines = subTextMaxLines,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+                    }
+                    if (textAlignment == ListItemTextAlignment.Regular) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            if (primaryTextLeadingIcons != null) {
-                                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                    primaryTextLeadingIcons.icon1()
-                                    primaryTextLeadingIcons.icon2?.let { it() }
+                            if (bottomView != null) {
+                                Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
+                                    bottomView()
                                 }
-                            }
-
-                            Text(
-                                text = text,
-                                style = primaryTextTypography,
-                                color = primaryTextColor,
-                                maxLines = textMaxLines,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                            if (primaryTextTrailingIcons != null) {
-                                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                    primaryTextTrailingIcons.icon1()
-                                    primaryTextTrailingIcons.icon2?.let { it() }
+                            } else {
+                                if (secondarySubTextLeadingIcons != null) {
+                                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        secondarySubTextLeadingIcons.icon1()
+                                        secondarySubTextLeadingIcons.icon2?.let { it() }
+                                    }
                                 }
-                            }
-                        }
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
-                                Text(
-                                    text = subText,
-                                    style = subTextTypography,
-                                    color = subTextColor,
-                                    maxLines = subTextMaxLines,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-                        }
-                        if (textAlignment == ListItemTextAlignment.Regular) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                if (bottomView != null) {
-                                    Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
-                                        bottomView()
-                                    }
-                                } else {
-                                    if (secondarySubTextLeadingIcons != null) {
-                                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                            secondarySubTextLeadingIcons.icon1()
-                                            secondarySubTextLeadingIcons.icon2?.let { it() }
-                                        }
-                                    }
-                                    if (secondarySubText != null) {
-                                        Text(
-                                            text = secondarySubText,
-                                            style = secondarySubTextTypography,
-                                            color = secondarySubTextColor,
-                                            maxLines = secondarySubTextMaxLines,
-                                            overflow = TextOverflow.Ellipsis
-                                        )
-                                    }
-                                    if (secondarySubTextTailingIcons != null) {
-                                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                            secondarySubTextTailingIcons.icon1()
-                                            secondarySubTextTailingIcons.icon2?.let { it() }
-                                        }
+                                if (secondarySubText != null) {
+                                    Text(
+                                        text = secondarySubText,
+                                        style = secondarySubTextTypography,
+                                        color = secondarySubTextColor,
+                                        maxLines = secondarySubTextMaxLines,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+                                if (secondarySubTextTailingIcons != null) {
+                                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                        secondarySubTextTailingIcons.icon1()
+                                        secondarySubTextTailingIcons.icon2?.let { it() }
                                     }
                                 }
                             }
                         }
                     }
                 }
-                if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
-                    Box(
-                        Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
-                        contentAlignment = Alignment.CenterEnd
-                    ) {
-                        trailingAccessoryView()
-                    }
+            }
+            if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
+                Box(
+                    Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
+                    contentAlignment = Alignment.CenterEnd
+                ) {
+                    trailingAccessoryView()
                 }
-
             }
         }
     }
@@ -478,136 +459,132 @@ object ListItem {
 
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(
-            LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
-                listItemType = SectionHeader,
-                borderInset = borderInset,
-                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-                verticalSpacing = GlobalTokens.SizeTokens.Size120,
-                style = style
+        val listItemInfo = ListItemInfo(
+            listItemType = SectionHeader,
+            borderInset = borderInset,
+            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+            verticalSpacing = GlobalTokens.SizeTokens.Size120,
+            style = style
+        )
+        val backgroundColor =
+            token.backgroundColor(listItemInfo).getColorByState(
+                enabled = true, selected = false, interactionSource = interactionSource
             )
-        ) {
-
-            val backgroundColor =
-                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
-                    enabled = true, selected = false, interactionSource = interactionSource
+        val cellHeight = token.cellHeight(listItemInfo)
+        val primaryTextTypography =
+            token.sectionHeaderPrimaryTextTypography(listItemInfo)
+        val actionTextTypography =
+            token.sectionHeaderActionTextTypography(listItemInfo)
+        val primaryTextColor = token.primaryTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val actionTextColor = token.actionTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val rippleColor = token.rippleColor(listItemInfo)
+        val padding = token.padding(listItemInfo)
+        val borderSize = token.borderSize(listItemInfo).value
+        val borderInsetToPx = with(LocalDensity.current) {
+            token.borderInset(listItemInfo).toPx()
+        }
+        val borderColor = token.borderColor(listItemInfo).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val chevronTint = token.chevronTint(listItemInfo)
+        var expandedState by rememberSaveable { mutableStateOf(false) }
+        val rotationState by animateFloatAsState(
+            targetValue = if (!enableContentOpenCloseTransition || expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
+        )
+        Surface(
+            modifier = modifier
+                .fillMaxWidth()
+                .heightIn(min = cellHeight)
+                .background(backgroundColor)
+                .clickAndSemanticsModifier(
+                    interactionSource,
+                    onClick = { expandedState = !expandedState },
+                    enabled,
+                    rippleColor
                 )
-            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
-            val primaryTextTypography =
-                getListItemTokens().sectionHeaderPrimaryTextTypography(getListItemInfo())
-            val actionTextTypography =
-                getListItemTokens().sectionHeaderActionTextTypography(getListItemInfo())
-            val primaryTextColor = getListItemTokens().primaryTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val actionTextColor = getListItemTokens().actionTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val rippleColor = getListItemTokens().rippleColor(getListItemInfo())
-            val padding = getListItemTokens().padding(getListItemInfo())
-            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
-            val borderInsetToPx = with(LocalDensity.current) {
-                getListItemTokens().borderInset(getListItemInfo()).toPx()
-            }
-            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val chevronTint = getListItemTokens().chevronTint(getListItemInfo())
-            var expandedState by rememberSaveable { mutableStateOf(false) }
-            val rotationState by animateFloatAsState(
-                targetValue = if (!enableContentOpenCloseTransition || expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
-            )
-            Surface(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .heightIn(min = cellHeight)
-                    .background(backgroundColor)
-                    .clickAndSemanticsModifier(
-                        interactionSource,
-                        onClick = { expandedState = !expandedState },
-                        enabled,
-                        rippleColor
-                    )
-                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-            ) {
-                Column {
-                    Row(
+                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+        ) {
+            Column {
+                Row(
+                    Modifier
+                        .background(backgroundColor)
+                        .fillMaxWidth()
+                        .heightIn(min = cellHeight)
+                        .padding(bottom = padding.calculateBottomPadding()),
+                    verticalAlignment = Alignment.Bottom
+                ) {
+
+                    Box(
                         Modifier
-                            .background(backgroundColor)
-                            .fillMaxWidth()
-                            .heightIn(min = cellHeight)
-                            .padding(bottom = padding.calculateBottomPadding()),
-                        verticalAlignment = Alignment.Bottom
+                            .padding(
+                                horizontal = padding.calculateStartPadding(
+                                    LocalLayoutDirection.current
+                                )
+                            )
+                            .weight(1f), contentAlignment = Alignment.BottomStart
                     ) {
 
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            if (enableChevron) {
+                                Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
+                                    contentDescription = "Chevron",
+                                    Modifier
+                                        .clickable { expandedState = !expandedState }
+                                        .rotate(rotationState),
+                                    tint = chevronTint)
+                            }
+                            Text(
+                                text = title,
+                                style = primaryTextTypography,
+                                color = primaryTextColor,
+                                maxLines = titleMaxLines,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
+
+                    }
+                    Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
+                        if (accessoryTextTitle != null) {
+                            Text(
+                                text = accessoryTextTitle,
+                                Modifier.clickable(role = Role.Button,
+                                    onClick = accessoryTextOnClick ?: {}),
+                                color = actionTextColor,
+                                style = actionTextTypography
+                            )
+                        }
+                    }
+                    if (trailingAccessoryView != null) {
                         Box(
-                            Modifier
-                                .padding(
-                                    horizontal = padding.calculateStartPadding(
-                                        LocalLayoutDirection.current
-                                    )
+                            Modifier.padding(
+                                end = padding.calculateEndPadding(
+                                    LocalLayoutDirection.current
                                 )
-                                .weight(1f), contentAlignment = Alignment.BottomStart
+                            ), contentAlignment = Alignment.BottomStart
                         ) {
-
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                if (enableChevron) {
-                                    Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
-                                        contentDescription = "Chevron",
-                                        Modifier
-                                            .clickable { expandedState = !expandedState }
-                                            .rotate(rotationState),
-                                        tint = chevronTint)
-                                }
-                                Text(
-                                    text = title,
-                                    style = primaryTextTypography,
-                                    color = primaryTextColor,
-                                    maxLines = titleMaxLines,
-                                    overflow = TextOverflow.Ellipsis
-                                )
-                            }
-
-                        }
-                        Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
-                            if (accessoryTextTitle != null) {
-                                Text(
-                                    text = accessoryTextTitle,
-                                    Modifier.clickable(role = Role.Button,
-                                        onClick = accessoryTextOnClick ?: {}),
-                                    color = actionTextColor,
-                                    style = actionTextTypography
-                                )
-                            }
-                        }
-                        if (trailingAccessoryView != null) {
-                            Box(
-                                Modifier.padding(
-                                    end = padding.calculateEndPadding(
-                                        LocalLayoutDirection.current
-                                    )
-                                ), contentAlignment = Alignment.BottomStart
-                            ) {
-                                trailingAccessoryView()
-                            }
+                            trailingAccessoryView()
                         }
                     }
-                    Row {
-                        if (content != null) {
-                            AnimatedVisibility(
-                                visible = !enableContentOpenCloseTransition || expandedState,
-                                enter = enter,
-                                exit = exit
-                            ) {
-                                content()
-                            }
+                }
+                Row {
+                    if (content != null) {
+                        AnimatedVisibility(
+                            visible = !enableContentOpenCloseTransition || expandedState,
+                            enter = enter,
+                            exit = exit
+                        ) {
+                            content()
                         }
-
                     }
+
                 }
             }
         }
@@ -648,100 +625,96 @@ object ListItem {
     ) {
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(
-            LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
-                listItemType = SectionDescription,
-                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-                verticalSpacing = GlobalTokens.SizeTokens.Size80,
-                borderInset = borderInset,
-                placement = descriptionPlacement
+        val listItemInfo = ListItemInfo(
+            listItemType = SectionDescription,
+            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+            verticalSpacing = GlobalTokens.SizeTokens.Size80,
+            borderInset = borderInset,
+            placement = descriptionPlacement
+        )
+        val backgroundColor =
+            token.backgroundColor(listItemInfo).getColorByState(
+                enabled = true, selected = false, interactionSource = interactionSource
             )
+        val cellHeight = token.cellHeight(listItemInfo)
+        val descriptionTextTypography =
+            token.descriptionTextTypography(listItemInfo)
+        val actionTextTypography = token.actionTextTypography(listItemInfo)
+        val descriptionTextColor = token.descriptionTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val actionTextColor = token.actionTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val rippleColor = token.rippleColor(listItemInfo)
+        val borderSize = token.borderSize(listItemInfo).value
+        val borderInsetToPx = with(LocalDensity.current) {
+            token.borderInset(listItemInfo).toPx()
+        }
+        val borderColor = token.borderColor(listItemInfo).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val descriptionAlignment = token.descriptionPlacement(listItemInfo)
+        val padding = token.padding(listItemInfo)
+        Row(
+            modifier
+                .fillMaxWidth()
+                .heightIn(min = cellHeight)
+                .background(backgroundColor)
+                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+                .clickAndSemanticsModifier(
+                    interactionSource, onClick = onClick ?: {}, enabled, rippleColor
+                ), verticalAlignment = descriptionAlignment
         ) {
-
-            val backgroundColor =
-                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
-                    enabled = true, selected = false, interactionSource = interactionSource
-                )
-            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
-            val descriptionTextTypography =
-                getListItemTokens().descriptionTextTypography(getListItemInfo())
-            val actionTextTypography = getListItemTokens().actionTextTypography(getListItemInfo())
-            val descriptionTextColor = getListItemTokens().descriptionTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val actionTextColor = getListItemTokens().actionTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val rippleColor = getListItemTokens().rippleColor(getListItemInfo())
-            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
-            val borderInsetToPx = with(LocalDensity.current) {
-                getListItemTokens().borderInset(getListItemInfo()).toPx()
-            }
-            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val descriptionAlignment = getListItemTokens().descriptionPlacement(getListItemInfo())
-            val padding = getListItemTokens().padding(getListItemInfo())
-            Row(
-                modifier
-                    .fillMaxWidth()
-                    .heightIn(min = cellHeight)
-                    .background(backgroundColor)
-                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                    .clickAndSemanticsModifier(
-                        interactionSource, onClick = onClick ?: {}, enabled, rippleColor
-                    ), verticalAlignment = descriptionAlignment
-            ) {
-                if (leadingAccessoryView != null && descriptionPlacement == Top) {
-                    Box(
-                        Modifier.padding(padding.calculateStartPadding(LocalLayoutDirection.current)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        leadingAccessoryView()
-                    }
-                }
+            if (leadingAccessoryView != null && descriptionPlacement == Top) {
                 Box(
-                    Modifier
-                        .padding(
-                            start = if (leadingAccessoryView == null) padding.calculateStartPadding(
-                                LocalLayoutDirection.current
-                            ) else 0.dp,
-                            end = padding.calculateEndPadding(LocalLayoutDirection.current),
-                            top = if (descriptionPlacement == Top) padding.calculateTopPadding() else 0.dp,
-                            bottom = if (descriptionPlacement == Bottom) padding.calculateTopPadding() else 0.dp
-                        )
-                        .weight(1f)
+                    Modifier.padding(padding.calculateStartPadding(LocalLayoutDirection.current)),
+                    contentAlignment = Alignment.Center
                 ) {
-                    if (!actionText.isNullOrBlank()) {
-                        InlineText(
-                            description = description,
-                            actionText = actionText,
-                            onClick = onActionClick ?: {},
-                            actionTextTypography = actionTextTypography,
-                            actionTextColor = actionTextColor,
-                            descriptionTextColor = descriptionTextColor,
-                            descriptionTextTypography = descriptionTextTypography,
-                            backgroundColor = backgroundColor
-                        )
-                    } else {
-                        Text(
-                            text = description,
-                            color = descriptionTextColor,
-                            style = descriptionTextTypography
-                        )
-                    }
+                    leadingAccessoryView()
                 }
-                if (trailingAccessoryView != null) {
-                    Box(
-                        Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        trailingAccessoryView()
-                    }
+            }
+            Box(
+                Modifier
+                    .padding(
+                        start = if (leadingAccessoryView == null) padding.calculateStartPadding(
+                            LocalLayoutDirection.current
+                        ) else 0.dp,
+                        end = padding.calculateEndPadding(LocalLayoutDirection.current),
+                        top = if (descriptionPlacement == Top) padding.calculateTopPadding() else 0.dp,
+                        bottom = if (descriptionPlacement == Bottom) padding.calculateTopPadding() else 0.dp
+                    )
+                    .weight(1f)
+            ) {
+                if (!actionText.isNullOrBlank()) {
+                    InlineText(
+                        description = description,
+                        actionText = actionText,
+                        onClick = onActionClick ?: {},
+                        actionTextTypography = actionTextTypography,
+                        actionTextColor = actionTextColor,
+                        descriptionTextColor = descriptionTextColor,
+                        descriptionTextTypography = descriptionTextTypography,
+                        backgroundColor = backgroundColor
+                    )
+                } else {
+                    Text(
+                        text = description,
+                        color = descriptionTextColor,
+                        style = descriptionTextTypography
+                    )
+                }
+            }
+            if (trailingAccessoryView != null) {
+                Box(
+                    Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    trailingAccessoryView()
                 }
             }
         }
@@ -781,98 +754,94 @@ object ListItem {
     ) {
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
-        CompositionLocalProvider(
-            LocalListItemTokens provides token, LocalListItemInfo provides ListItemInfo(
-                listItemType = OneLine,
-                style = style,
-                horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-                verticalSpacing = GlobalTokens.SizeTokens.Size80,
-                borderInset = borderInset
+        val listItemInfo = ListItemInfo(
+            listItemType = OneLine,
+            style = style,
+            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
+            verticalSpacing = GlobalTokens.SizeTokens.Size80,
+            borderInset = borderInset
+        )
+        val backgroundColor =
+            token.backgroundColor(listItemInfo).getColorByState(
+                enabled = true, selected = false, interactionSource = interactionSource
             )
+        val cellHeight = token.cellHeight(listItemInfo)
+        val primaryTextTypography =
+            token.sectionHeaderPrimaryTextTypography(listItemInfo)
+        val actionTextTypography =
+            token.sectionHeaderActionTextTypography(listItemInfo)
+        val primaryTextColor = token.primaryTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val actionTextColor = token.actionTextColor(
+            listItemInfo
+        ).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+        val padding = token.padding(listItemInfo)
+        val borderSize = token.borderSize(listItemInfo).value
+        val borderInsetToPx = with(LocalDensity.current) {
+            token.borderInset(listItemInfo).toPx()
+        }
+        val borderColor = token.borderColor(listItemInfo).getColorByState(
+            enabled = enabled, selected = false, interactionSource = interactionSource
+        )
+
+        Surface(
+            modifier = modifier
+                .fillMaxWidth()
+                .heightIn(min = cellHeight)
+                .background(backgroundColor)
+                .borderModifier(border, borderColor, borderSize, borderInsetToPx)
+                .focusable(false)
         ) {
-
-            val backgroundColor =
-                getListItemTokens().backgroundColor(getListItemInfo()).getColorByState(
-                    enabled = true, selected = false, interactionSource = interactionSource
-                )
-            val cellHeight = getListItemTokens().cellHeight(getListItemInfo())
-            val primaryTextTypography =
-                getListItemTokens().sectionHeaderPrimaryTextTypography(getListItemInfo())
-            val actionTextTypography =
-                getListItemTokens().sectionHeaderActionTextTypography(getListItemInfo())
-            val primaryTextColor = getListItemTokens().primaryTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val actionTextColor = getListItemTokens().actionTextColor(
-                getListItemInfo()
-            ).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-            val padding = getListItemTokens().padding(getListItemInfo())
-            val borderSize = getListItemTokens().borderSize(getListItemInfo()).value
-            val borderInsetToPx = with(LocalDensity.current) {
-                getListItemTokens().borderInset(getListItemInfo()).toPx()
-            }
-            val borderColor = getListItemTokens().borderColor(getListItemInfo()).getColorByState(
-                enabled = enabled, selected = false, interactionSource = interactionSource
-            )
-
-            Surface(
-                modifier = modifier
+            Row(
+                Modifier
                     .fillMaxWidth()
                     .heightIn(min = cellHeight)
                     .background(backgroundColor)
-                    .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                    .focusable(false)
+                    .focusable(true), verticalAlignment = Alignment.Bottom
             ) {
-                Row(
-                    Modifier
-                        .fillMaxWidth()
-                        .heightIn(min = cellHeight)
-                        .background(backgroundColor)
-                        .focusable(true), verticalAlignment = Alignment.Bottom
-                ) {
+                Text(
+                    text = title,
+                    modifier = Modifier
+                        .padding(
+                            start = padding.calculateStartPadding(LocalLayoutDirection.current),
+                            end = padding.calculateEndPadding(LocalLayoutDirection.current),
+                            bottom = padding.calculateBottomPadding()
+                        )
+                        .weight(1f),
+                    style = primaryTextTypography,
+                    color = primaryTextColor,
+                    maxLines = titleMaxLines,
+                    overflow = TextOverflow.Ellipsis
+                )
+
+                if (accessoryTextTitle != null) {
                     Text(
-                        text = title,
-                        modifier = Modifier
+                        text = accessoryTextTitle,
+                        Modifier
                             .padding(
-                                start = padding.calculateStartPadding(LocalLayoutDirection.current),
                                 end = padding.calculateEndPadding(LocalLayoutDirection.current),
                                 bottom = padding.calculateBottomPadding()
                             )
-                            .weight(1f),
-                        style = primaryTextTypography,
-                        color = primaryTextColor,
-                        maxLines = titleMaxLines,
-                        overflow = TextOverflow.Ellipsis
+                            .clickable(
+                                role = Role.Button,
+                                onClick = accessoryTextOnClick ?: {}),
+                        color = actionTextColor,
+                        style = actionTextTypography
                     )
-
-                    if (accessoryTextTitle != null) {
-                        Text(
-                            text = accessoryTextTitle,
-                            Modifier
-                                .padding(
-                                    end = padding.calculateEndPadding(LocalLayoutDirection.current),
-                                    bottom = padding.calculateBottomPadding()
-                                )
-                                .clickable(
-                                    role = Role.Button,
-                                    onClick = accessoryTextOnClick ?: {}),
-                            color = actionTextColor,
-                            style = actionTextTypography
-                        )
-                    }
-                    if (trailingAccessoryView != null) {
-                        Box(
-                            Modifier.padding(
-                                end = padding.calculateEndPadding(LocalLayoutDirection.current),
-                                bottom = padding.calculateBottomPadding()
-                            ), contentAlignment = Alignment.BottomStart
-                        ) {
-                            trailingAccessoryView()
-                        }
+                }
+                if (trailingAccessoryView != null) {
+                    Box(
+                        Modifier.padding(
+                            end = padding.calculateEndPadding(LocalLayoutDirection.current),
+                            bottom = padding.calculateBottomPadding()
+                        ), contentAlignment = Alignment.BottomStart
+                    ) {
+                        trailingAccessoryView()
                     }
                 }
             }

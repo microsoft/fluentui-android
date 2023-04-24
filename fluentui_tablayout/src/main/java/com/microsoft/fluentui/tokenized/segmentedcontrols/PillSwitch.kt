@@ -9,8 +9,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,9 +23,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.PillSwitchInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillSwitchTokens
 import kotlinx.coroutines.launch
 import kotlin.math.max
-
-val LocalPillSwitchTokens = compositionLocalOf { PillSwitchTokens() }
-val LocalPillSwitchInfo = compositionLocalOf { PillSwitchInfo() }
 
 /**
  * API to create PillSwitches. The PillSwitch control is a linear set of two or more PillButton, each of which functions as a mutually exclusive button.
@@ -55,63 +50,49 @@ fun PillSwitch(
     val token = pillSwitchTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillSwitch] as PillSwitchTokens
 
-    CompositionLocalProvider(
-        LocalPillSwitchTokens provides token,
-        LocalPillSwitchInfo provides PillSwitchInfo(style)
+    val pillSwitchInfo = PillSwitchInfo(style)
+    val shape = RoundedCornerShape(50)
+
+    val lazyListState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
+
+    Row(
+        modifier = Modifier
+            .wrapContentWidth()
+            .padding(horizontal = 16.dp)
+            .background(Color.Transparent)
+            .focusable(false)
     ) {
-        val shape = RoundedCornerShape(50)
-
-        val lazyListState = rememberLazyListState()
-        val scope = rememberCoroutineScope()
-
-        Row(
-            modifier = Modifier
+        LazyRow(
+            modifier = modifier
                 .wrapContentWidth()
                 .padding(horizontal = 16.dp)
-                .background(Color.Transparent)
-                .focusable(false)
+                .focusable(enabled = false)
+                .clip(shape)
+                .background(token.background(pillSwitchInfo), shape),
+            state = lazyListState
         ) {
-            LazyRow(
-                modifier = modifier
-                    .wrapContentWidth()
-                    .padding(horizontal = 16.dp)
-                    .focusable(enabled = false)
-                    .clip(shape)
-                    .background(getPillSwitchTokens().background(getPillSwitchInfo()), shape),
-                state = lazyListState
-            ) {
-                metadataList.forEachIndexed { index, pillMetadata ->
-                    item(index.toString()) {
-                        pillMetadata.selected = (selectedIndex == index)
-                        PillButton(
-                            pillMetadata,
-                            modifier = Modifier
-                                .wrapContentWidth()
-                                .onFocusEvent { focusState ->
-                                    if (focusState.isFocused) {
-                                        scope.launch {
-                                            lazyListState.animateScrollToItem(
-                                                max(0, index - 2)
-                                            )
-                                        }
+            metadataList.forEachIndexed { index, pillMetadata ->
+                item(index.toString()) {
+                    pillMetadata.selected = (selectedIndex == index)
+                    PillButton(
+                        pillMetadata,
+                        modifier = Modifier
+                            .wrapContentWidth()
+                            .onFocusEvent { focusState ->
+                                if (focusState.isFocused) {
+                                    scope.launch {
+                                        lazyListState.animateScrollToItem(
+                                            max(0, index - 2)
+                                        )
                                     }
-                                },
-                            style = style,
-                            pillButtonTokens = pillButtonTokens
-                        )
-                    }
+                                }
+                            },
+                        style = style,
+                        pillButtonTokens = pillButtonTokens
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-fun getPillSwitchTokens(): PillSwitchTokens {
-    return LocalPillSwitchTokens.current
-}
-
-@Composable
-fun getPillSwitchInfo(): PillSwitchInfo {
-    return LocalPillSwitchInfo.current
 }
