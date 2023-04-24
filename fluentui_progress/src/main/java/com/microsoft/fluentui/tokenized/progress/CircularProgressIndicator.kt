@@ -5,8 +5,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.progressSemantics
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
@@ -19,19 +17,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicato
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorTokens
 import com.microsoft.fluentui.util.dpToPx
-
-val LocalCircularProgressIndicatorTokens = compositionLocalOf { CircularProgressIndicatorTokens() }
-val LocalCircularProgressIndicatorInfo = compositionLocalOf { CircularProgressIndicatorInfo() }
-
-@Composable
-fun getCircularProgressIndicatorTokens(): CircularProgressIndicatorTokens {
-    return LocalCircularProgressIndicatorTokens.current
-}
-
-@Composable
-fun getCircularProgressIndicatorInfo(): CircularProgressIndicatorInfo {
-    return LocalCircularProgressIndicatorInfo.current
-}
 
 /**
  * Create a Determinate Circular Progress Indicator
@@ -53,51 +38,47 @@ fun CircularProgressIndicator(
 ) {
     val tokens = circularProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicator] as CircularProgressIndicatorTokens
-    CompositionLocalProvider(
-        LocalCircularProgressIndicatorTokens provides tokens,
-        LocalCircularProgressIndicatorInfo provides CircularProgressIndicatorInfo(
-            circularProgressIndicatorSize = size,
-            style = style
+    val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(
+        circularProgressIndicatorSize = size,
+        style = style
+    )
+    val currentProgress = animateFloatAsState(
+        targetValue = progress.coerceIn(0f..1f),
+        animationSpec = tween(
+            delayMillis = 0,
+            durationMillis = 750,
+            easing = LinearOutSlowInEasing
         )
+    )
+    val circularProgressIndicatorColor =
+        tokens.color(
+            circularProgressIndicatorInfo
+        )
+    val circularProgressIndicatorSize =
+        tokens.size(
+            circularProgressIndicatorInfo
+        )
+    val circularProgressIndicatorStrokeWidth =
+        tokens.strokeWidth(
+            circularProgressIndicatorInfo
+        )
+    val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
+    Canvas(
+        modifier = modifier
+            .requiredSize(circularProgressIndicatorSize)
+            .progressSemantics(progress)
     ) {
-        val currentProgress = animateFloatAsState(
-            targetValue = progress.coerceIn(0f..1f),
-            animationSpec = tween(
-                delayMillis = 0,
-                durationMillis = 750,
-                easing = LinearOutSlowInEasing
-            )
+        drawArc(
+            circularProgressIndicatorColor,
+            -90f,
+            currentProgress.value * 360,
+            false,
+            size = Size(
+                indicatorSizeInPx,
+                indicatorSizeInPx
+            ),
+            style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
         )
-        val circularProgressIndicatorColor =
-            getCircularProgressIndicatorTokens().color(
-                getCircularProgressIndicatorInfo()
-            )
-        val circularProgressIndicatorSize =
-            getCircularProgressIndicatorTokens().size(
-                getCircularProgressIndicatorInfo()
-            )
-        val circularProgressIndicatorStrokeWidth =
-            getCircularProgressIndicatorTokens().strokeWidth(
-                getCircularProgressIndicatorInfo()
-            )
-        val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
-        Canvas(
-            modifier = modifier
-                .requiredSize(circularProgressIndicatorSize)
-                .progressSemantics(progress)
-        ) {
-            drawArc(
-                circularProgressIndicatorColor,
-                -90f,
-                currentProgress.value * 360,
-                false,
-                size = Size(
-                    indicatorSizeInPx,
-                    indicatorSizeInPx
-                ),
-                style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
-            )
-        }
     }
 }
 
@@ -119,37 +100,34 @@ fun CircularProgressIndicator(
 ) {
     val tokens = circularProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicator] as CircularProgressIndicatorTokens
-    CompositionLocalProvider(
-        LocalCircularProgressIndicatorTokens provides tokens,
-        LocalCircularProgressIndicatorInfo provides CircularProgressIndicatorInfo(
-            circularProgressIndicatorSize = size,
-            style = style
+    val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(
+        circularProgressIndicatorSize = size,
+        style = style
+    )
+    val circularProgressIndicatorColor =
+        tokens.color(
+            circularProgressIndicatorInfo
         )
-    ) {
-        val circularProgressIndicatorColor =
-            getCircularProgressIndicatorTokens().color(
-                getCircularProgressIndicatorInfo()
-            )
-        val circularProgressIndicatorSize =
-            getCircularProgressIndicatorTokens().size(
-                getCircularProgressIndicatorInfo()
-            )
-        val circularProgressIndicatorStrokeWidth =
-            getCircularProgressIndicatorTokens().strokeWidth(
-                getCircularProgressIndicatorInfo()
-            )
-        val infiniteTransition = rememberInfiniteTransition()
-        val startAngle by infiniteTransition.animateFloat(
-            0f,
-            360f,
-            infiniteRepeatable(
-                animation = tween(
-                    durationMillis = 1000,
-                    easing = LinearEasing
-                )
+    val circularProgressIndicatorSize =
+        tokens.size(
+            circularProgressIndicatorInfo
+        )
+    val circularProgressIndicatorStrokeWidth =
+        tokens.strokeWidth(
+            circularProgressIndicatorInfo
+        )
+    val infiniteTransition = rememberInfiniteTransition()
+    val startAngle by infiniteTransition.animateFloat(
+        0f,
+        360f,
+        infiniteRepeatable(
+            animation = tween(
+                durationMillis = 1000,
+                easing = LinearEasing
             )
         )
-        val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
+    )
+    val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
         Canvas(
             modifier = modifier
                 .requiredSize(circularProgressIndicatorSize)
