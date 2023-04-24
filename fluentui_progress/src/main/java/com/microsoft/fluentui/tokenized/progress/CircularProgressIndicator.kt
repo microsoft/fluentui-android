@@ -7,11 +7,7 @@ import androidx.compose.foundation.progressSemantics
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import com.microsoft.fluentui.theme.FluentTheme
@@ -133,28 +129,19 @@ fun CircularProgressIndicator(
     )
     val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
     Canvas(
-        modifier = modifier
-            .requiredSize(circularProgressIndicatorSize)
-            .progressSemantics()
-            .rotate(startAngle)
+            modifier = modifier
+                .requiredSize(circularProgressIndicatorSize)
+                .progressSemantics()
     ) {
         drawArc(
-            Brush.sweepGradient(
-                0f to Color.Transparent,
-                0.6f to circularProgressIndicatorColor
-            ),
-            0f,
+            circularProgressIndicatorColor,
+            startAngle,
             270f,
             false,
             size = Size(
                 indicatorSizeInPx, indicatorSizeInPx
             ),
-            style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth))
-        )
-        drawCircle(
-            color = circularProgressIndicatorColor,
-            radius = dpToPx(circularProgressIndicatorStrokeWidth) / 2,
-            center = Offset(indicatorSizeInPx / 2, 0f)
-        )
+            style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
+       )
     }
 }
