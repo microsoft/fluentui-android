@@ -128,21 +128,20 @@ fun CircularProgressIndicator(
         )
     )
     val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
-        Canvas(
+    Canvas(
             modifier = modifier
                 .requiredSize(circularProgressIndicatorSize)
                 .progressSemantics()
-        ) {
-            drawArc(
-                circularProgressIndicatorColor,
-                startAngle,
-                270f,
-                false,
-                size = Size(
-                    indicatorSizeInPx, indicatorSizeInPx
-                ),
-                style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
-            )
-        }
+    ) {
+        drawArc(
+            circularProgressIndicatorColor,
+            startAngle,
+            270f,
+            false,
+            size = Size(
+                indicatorSizeInPx, indicatorSizeInPx
+            ),
+            style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
+       )
     }
 }
