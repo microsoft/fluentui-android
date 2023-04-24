@@ -76,11 +76,11 @@ class V2ProgressIndicatorUITest {
     fun testShimmerBounds(){
         composeTestRule.setContent {
             FluentTheme {
-                Shimmer(ShimmerShape.Box, modifier = Modifier
+                Shimmer(shape = ShimmerShape.Box, modifier = Modifier
                     .height(50.dp)
                     .width(50.dp)
                     .testTag("shimmer"))
-                Shimmer(ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
+                Shimmer(shape= ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
             }
         }
         composeTestRule.onNodeWithTag("shimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
