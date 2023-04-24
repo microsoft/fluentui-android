@@ -11,8 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,9 +25,6 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipInfo
 import com.microsoft.fluentui.theme.token.controlTokens.SearchBarPersonaChipTokens
-
-private val LocalSearchBarPersonaChipTokens = compositionLocalOf { SearchBarPersonaChipTokens() }
-private val LocalSearchBarPersonaChipInfo = compositionLocalOf { SearchBarPersonaChipInfo() }
 
 /**
  * [SearchBarPersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
@@ -60,93 +55,79 @@ fun SearchBarPersonaChip(
 ) {
     val token = searchbarPersonaChipTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarPersonaChip] as SearchBarPersonaChipTokens
-    CompositionLocalProvider(
-        LocalSearchBarPersonaChipTokens provides token,
-        LocalSearchBarPersonaChipInfo provides SearchBarPersonaChipInfo(
-            style,
-            enabled,
-            size = size
-        )
-    ) {
-        val backgroundColor =
-            getSearchBarPersonaChipTokens().backgroundColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo())
-                .getColorByState(
-                    enabled = enabled, selected = selected, interactionSource = interactionSource
-                )
-        val textColor =
-            getSearchBarPersonaChipTokens().textColor(searchBarPersonaChipInfo = getSearchBarPersonaChipInfo())
-                .getColorByState(
-                    enabled = enabled, selected = selected, interactionSource = interactionSource
-                )
-        val fontStyle =
-            getSearchBarPersonaChipTokens().typography(personaChipInfo = getSearchBarPersonaChipInfo())
-        val avatarSize =
-            getSearchBarPersonaChipTokens().avatarSize(personaChipInfo = getSearchBarPersonaChipInfo())
-        val verticalPadding =
-            getSearchBarPersonaChipTokens().verticalPadding(personaChipInfo = getSearchBarPersonaChipInfo())
-        val horizontalPadding =
-            getSearchBarPersonaChipTokens().horizontalPadding(personaChipInfo = getSearchBarPersonaChipInfo())
-        val avatarToTextSpacing =
-            getSearchBarPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getSearchBarPersonaChipInfo())
-        val cornerRadius =
-            getSearchBarPersonaChipTokens().cornerRadius(personaChipInfo = getSearchBarPersonaChipInfo())
+    val searchBarPersonaChipInfo = SearchBarPersonaChipInfo(
+        style,
+        enabled,
+        size = size
+    )
+    val backgroundColor =
+        token.backgroundColor(searchBarPersonaChipInfo = searchBarPersonaChipInfo)
+            .getColorByState(
+                enabled = enabled, selected = selected, interactionSource = interactionSource
+            )
+    val textColor =
+        token.textColor(searchBarPersonaChipInfo = searchBarPersonaChipInfo)
+            .getColorByState(
+                enabled = enabled, selected = selected, interactionSource = interactionSource
+            )
+    val fontStyle =
+        token.typography(personaChipInfo = searchBarPersonaChipInfo)
+    val avatarSize =
+        token.avatarSize(personaChipInfo = searchBarPersonaChipInfo)
+    val verticalPadding =
+        token.verticalPadding(personaChipInfo = searchBarPersonaChipInfo)
+    val horizontalPadding =
+        token.horizontalPadding(personaChipInfo = searchBarPersonaChipInfo)
+    val avatarToTextSpacing =
+        token.avatarToTextSpacing(personaChipInfo = searchBarPersonaChipInfo)
+    val cornerRadius =
+        token.cornerRadius(personaChipInfo = searchBarPersonaChipInfo)
 
-        Box(
-            modifier = modifier
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(backgroundColor)
-                .clickable(
-                    enabled = enabled,
-                    onClick = onClick ?: {},
-                    interactionSource = interactionSource,
-                    indication = rememberRipple()
-                )
-        )
-        {
-            Row(
-                Modifier
-                    .padding(
-                        horizontal = horizontalPadding,
-                        vertical = verticalPadding
-                    ),
-                horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (size == PersonaChipSize.Medium) {
-                    if (onCloseClick != null && selected) {
-                        Icon(
-                            Icons.Filled.Close,
-                            modifier = Modifier
-                                .size(16.dp)
-                                .clickable(
-                                    enabled = true,
-                                    onClick = onCloseClick,
-                                    role = Role.Button
-                                ),
-                            contentDescription = LocalContext.current.resources.getString(R.string.fluentui_close),
-                            tint = textColor
-                        )
-                    } else {
-                        Avatar(person = person, size = avatarSize)
-                    }
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(cornerRadius))
+            .background(backgroundColor)
+            .clickable(
+                enabled = enabled,
+                onClick = onClick ?: {},
+                interactionSource = interactionSource,
+                indication = rememberRipple()
+            )
+    )
+    {
+        Row(
+            Modifier
+                .padding(
+                    horizontal = horizontalPadding,
+                    vertical = verticalPadding
+                ),
+            horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (size == PersonaChipSize.Medium) {
+                if (onCloseClick != null && selected) {
+                    Icon(
+                        Icons.Filled.Close,
+                        modifier = Modifier
+                            .size(16.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = onCloseClick,
+                                role = Role.Button
+                            ),
+                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_close),
+                        tint = textColor
+                    )
+                } else {
+                    Avatar(person = person, size = avatarSize)
                 }
-                Text(
-                    modifier = Modifier.padding(bottom = 2.dp),//Vertically center align text
-                    text = person.getLabel(),
-                    color = textColor,
-                    style = fontStyle
-                )
             }
+            Text(
+                modifier = Modifier.padding(bottom = 2.dp),//Vertically center align text
+                text = person.getLabel(),
+                color = textColor,
+                style = fontStyle
+            )
         }
     }
-}
-
-@Composable
-private fun getSearchBarPersonaChipTokens(): SearchBarPersonaChipTokens {
-    return LocalSearchBarPersonaChipTokens.current
-}
-
-@Composable
-private fun getSearchBarPersonaChipInfo(): SearchBarPersonaChipInfo {
-    return LocalSearchBarPersonaChipInfo.current
 }

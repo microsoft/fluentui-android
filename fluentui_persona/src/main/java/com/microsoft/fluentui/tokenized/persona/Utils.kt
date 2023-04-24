@@ -2,15 +2,8 @@ package com.microsoft.fluentui.tokenized.persona
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.interaction.InteractionSource
-import androidx.compose.foundation.interaction.collectIsFocusedAsState
-import androidx.compose.foundation.interaction.collectIsHoveredAsState
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
-import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import kotlinx.parcelize.Parcelize
