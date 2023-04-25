@@ -267,8 +267,8 @@ class V2TextFieldActivity : DemoActivity() {
                             hintText = if (hintText) resources.getString(R.string.fluentui_hint) else null,
                             label = if (label) resources.getString(R.string.fluentui_label) else null,
                             assistiveText = if (assistiveText) resources.getString(R.string.fluentui_assistive_text) else null,
-                            leadingPrimaryIcon = if (leftIcon) Icons.Outlined.Email else null,
-                            leadingSecondaryIcon = if (leftIcon) Icons.Filled.Email else null,
+                            leadingRestIcon = if (leftIcon) Icons.Outlined.Email else null,
+                            leadingFocusIcon = if (leftIcon) Icons.Filled.Email else null,
                             trailingAccessoryText = if (secondaryText) resources.getString(R.string.fluentui_secondary) else null,
                             errorString = if (errorText) resources.getString(R.string.fluentui_error_string) else null,
                             trailingAccessoryIcon = FluentIcon(

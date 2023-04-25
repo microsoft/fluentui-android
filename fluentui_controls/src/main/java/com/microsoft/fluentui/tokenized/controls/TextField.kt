@@ -83,8 +83,8 @@ fun TextField(
     assistiveText: String? = null,
     trailingAccessoryText: String? = null,
     errorString: String? = null,
-    leadingPrimaryIcon: ImageVector? = null,
-    leadingSecondaryIcon: ImageVector? = null,
+    leadingRestIcon: ImageVector? = null,
+    leadingFocusIcon: ImageVector? = null,
     leadingIconContentDescription: String? = null,
     trailingAccessoryIcon: FluentIcon? = FluentIcon(
         SearchBarIcons.Dismisscircle,
@@ -102,7 +102,7 @@ fun TextField(
 
     val textFieldInfo = TextFieldInfo(
         isStatusError = !errorString.isNullOrBlank(),
-        hasIcon = (leadingPrimaryIcon != null),
+        hasIcon = (leadingRestIcon != null),
         isFocused = isFocused,
         textAvailable = value.isNotEmpty()
     )
@@ -132,12 +132,12 @@ fun TextField(
             )
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            if (leadingPrimaryIcon != null) {
+            if (leadingRestIcon != null) {
                 Icon(
-                    if (isFocused && errorString.isNullOrBlank() && leadingSecondaryIcon != null)
-                        leadingSecondaryIcon
+                    if (isFocused && errorString.isNullOrBlank() && leadingFocusIcon != null)
+                        leadingFocusIcon
                     else
-                        leadingPrimaryIcon,
+                        leadingRestIcon,
                     leadingIconContentDescription,
                     modifier = Modifier.size(token.leadingIconSize(textFieldInfo)),
                     tint = token.leadingIconColor(textFieldInfo)
