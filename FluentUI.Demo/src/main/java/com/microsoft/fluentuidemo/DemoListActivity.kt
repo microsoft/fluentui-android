@@ -51,12 +51,12 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     private fun setupAppBar() {
-        demoListBinding.appBar.toolbar.subtitle = BuildConfig.VERSION_NAME
+        demoListBinding.appBar.toolbar.subtitle = "SDK Version: ${BuildConfig.VERSION_NAME}"
 
         searchbar = Searchbar(this)
         searchbar.onQueryTextListener = this
         demoListBinding.appBar.accessoryView = searchbar
-    }
+    }git
 
     override fun onQueryTextSubmit(query: String): Boolean {
         return false
