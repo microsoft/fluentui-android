@@ -1,15 +1,16 @@
-### Description of changes
 
-#### Problem 
+### Problem 
 
-#### Root cause 
+### Root cause 
 
-#### Fix
+### Fix
 
 
-### Verification
+### Validations
 
 (how the change was tested, including both manual and automated tests)
+
+### Screenshots
 
 | Before                                       | After                                      |
 |----------------------------------------------|--------------------------------------------|
@@ -19,6 +20,8 @@
 
 This PR has considered:
 - [ ] Light and Dark appearances
+- [ ] Automated Tests
+- [ ] Documentation and demo app examples
 - [ ] VoiceOver and Keyboard Accessibility
-- [ ] Internationalization and Right to Left layouts
+- [ ] Internationalization and RTL layouts
 - [ ] Size classes and window sizes (notched devices, multitasking, different window sizes, etc)
