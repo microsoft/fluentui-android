@@ -56,7 +56,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         searchbar = Searchbar(this)
         searchbar.onQueryTextListener = this
         demoListBinding.appBar.accessoryView = searchbar
-    }git
+    }
 
     override fun onQueryTextSubmit(query: String): Boolean {
         return false
