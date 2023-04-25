@@ -13,11 +13,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Email
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -27,6 +24,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
+import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
@@ -66,218 +64,222 @@ class V2TextFieldActivity : DemoActivity() {
 
             val resources = LocalContext.current.resources
 
-            Column {
-                ListItem.SectionHeader(
-                    title = getDemoAppString(DemoAppStrings.ModifiableParameters),
-                    enableChevron = true,
-                    enableContentOpenCloseTransition = true,
-                    chevronOrientation = ChevronOrientation(90f, 0f),
-                ) {
-                    LazyColumn(Modifier.fillMaxHeight(0.5F)) {
-                        item {
-                            PillBar(
-                                mutableListOf(
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_text),
-                                        onClick = { keyboardType = KeyboardType.Text },
-                                        selected = keyboardType == KeyboardType.Text
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_ascii),
-                                        onClick = { keyboardType = KeyboardType.Ascii },
-                                        selected = keyboardType == KeyboardType.Ascii
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_number),
-                                        onClick = { keyboardType = KeyboardType.Number },
-                                        selected = keyboardType == KeyboardType.Number
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_phone),
-                                        onClick = { keyboardType = KeyboardType.Phone },
-                                        selected = keyboardType == KeyboardType.Phone
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_uri),
-                                        onClick = { keyboardType = KeyboardType.Uri },
-                                        selected = keyboardType == KeyboardType.Uri
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_email),
-                                        onClick = { keyboardType = KeyboardType.Email },
-                                        selected = keyboardType == KeyboardType.Email
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_password),
-                                        onClick = { keyboardType = KeyboardType.Password },
-                                        selected = keyboardType == KeyboardType.Password
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_number_password),
-                                        onClick = { keyboardType = KeyboardType.NumberPassword },
-                                        selected = keyboardType == KeyboardType.NumberPassword
-                                    ),
-                                    PillMetaData(
-                                        text = resources.getString(R.string.fluentui_keyboard_decimal),
-                                        onClick = { keyboardType = KeyboardType.Decimal },
-                                        selected = keyboardType == KeyboardType.Decimal
+            FluentTheme {
+                Column {
+                    ListItem.SectionHeader(
+                        title = getDemoAppString(DemoAppStrings.ModifiableParameters),
+                        enableChevron = true,
+                        enableContentOpenCloseTransition = true,
+                        chevronOrientation = ChevronOrientation(90f, 0f),
+                    ) {
+                        LazyColumn(Modifier.fillMaxHeight(0.5F)) {
+                            item {
+                                PillBar(
+                                    mutableListOf(
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_text),
+                                            onClick = { keyboardType = KeyboardType.Text },
+                                            selected = keyboardType == KeyboardType.Text
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_ascii),
+                                            onClick = { keyboardType = KeyboardType.Ascii },
+                                            selected = keyboardType == KeyboardType.Ascii
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_number),
+                                            onClick = { keyboardType = KeyboardType.Number },
+                                            selected = keyboardType == KeyboardType.Number
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_phone),
+                                            onClick = { keyboardType = KeyboardType.Phone },
+                                            selected = keyboardType == KeyboardType.Phone
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_uri),
+                                            onClick = { keyboardType = KeyboardType.Uri },
+                                            selected = keyboardType == KeyboardType.Uri
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_email),
+                                            onClick = { keyboardType = KeyboardType.Email },
+                                            selected = keyboardType == KeyboardType.Email
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_password),
+                                            onClick = { keyboardType = KeyboardType.Password },
+                                            selected = keyboardType == KeyboardType.Password
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_number_password),
+                                            onClick = {
+                                                keyboardType = KeyboardType.NumberPassword
+                                            },
+                                            selected = keyboardType == KeyboardType.NumberPassword
+                                        ),
+                                        PillMetaData(
+                                            text = resources.getString(R.string.fluentui_keyboard_decimal),
+                                            onClick = { keyboardType = KeyboardType.Decimal },
+                                            selected = keyboardType == KeyboardType.Decimal
+                                        )
                                     )
                                 )
-                            )
-                        }
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_icon),
-                                subText = if (label)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            leftIcon = it
-                                        },
-                                        checkedState = leftIcon
-                                    )
-                                }
-                            )
-                        }
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_icon),
+                                    subText = if (label)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                leftIcon = it
+                                            },
+                                            checkedState = leftIcon
+                                        )
+                                    }
+                                )
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_hint),
-                                subText = if (hintText)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            hintText = it
-                                        },
-                                        checkedState = hintText
-                                    )
-                                }
-                            )
-                        }
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_hint),
+                                    subText = if (hintText)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                hintText = it
+                                            },
+                                            checkedState = hintText
+                                        )
+                                    }
+                                )
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_label),
-                                subText = if (label)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            label = it
-                                        },
-                                        checkedState = label
-                                    )
-                                }
-                            )
-                        }
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_label),
+                                    subText = if (label)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                label = it
+                                            },
+                                            checkedState = label
+                                        )
+                                    }
+                                )
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_assistive_text),
-                                subText = if (label)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            assistiveText = it
-                                        },
-                                        checkedState = assistiveText
-                                    )
-                                }
-                            )
-                        }
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_assistive_text),
+                                    subText = if (label)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                assistiveText = it
+                                            },
+                                            checkedState = assistiveText
+                                        )
+                                    }
+                                )
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_secondary),
-                                subText = if (label)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            secondaryText = it
-                                        },
-                                        checkedState = secondaryText
-                                    )
-                                }
-                            )
-                        }
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_secondary),
+                                    subText = if (label)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                secondaryText = it
+                                            },
+                                            checkedState = secondaryText
+                                        )
+                                    }
+                                )
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_password_mode),
-                                subText = if (label)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            passwordMode = it
-                                        },
-                                        checkedState = passwordMode
-                                    )
-                                }
-                            )
-                        }
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_password_mode),
+                                    subText = if (label)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                passwordMode = it
+                                            },
+                                            checkedState = passwordMode
+                                        )
+                                    }
+                                )
+                            }
 
-                        item {
-                            ListItem.Item(
-                                text = resources.getString(R.string.fluentui_error),
-                                subText = if (label)
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            errorText = it
-                                        },
-                                        checkedState = errorText
-                                    )
-                                }
-                            )
+                            item {
+                                ListItem.Item(
+                                    text = resources.getString(R.string.fluentui_error),
+                                    subText = if (label)
+                                        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                                    else
+                                        LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                                    trailingAccessoryView = {
+                                        ToggleSwitch(
+                                            onValueChange = {
+                                                errorText = it
+                                            },
+                                            checkedState = errorText
+                                        )
+                                    }
+                                )
+                            }
                         }
                     }
-                }
 
-                val focusManager = LocalFocusManager.current
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .clickable { focusManager.clearFocus() }) {
-                    TextField(
-                        value,
-                        { value = it },
-                        hintText = if (hintText) resources.getString(R.string.fluentui_hint) else null,
-                        label = if (label) resources.getString(R.string.fluentui_label) else null,
-                        assistiveText = if (assistiveText) resources.getString(R.string.fluentui_assistive_text) else null,
-                        leadingPrimaryIcon = if (leftIcon) Icons.Outlined.Email else null,
-                        leadingSecondaryIcon = if (leftIcon) Icons.Filled.Email else null,
-                        trailingAccessoryText = if (secondaryText) resources.getString(R.string.fluentui_secondary) else null,
-                        errorString = if (errorText) resources.getString(R.string.fluentui_error_string) else null,
-                        trailingAccessoryIcon = FluentIcon(
-                            SearchBarIcons.Dismisscircle,
-                            contentDescription = resources.getString(R.string.fluentui_clear_text)
-                        ),
-                        keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
-                        keyboardActions = KeyboardActions(onAny = { focusManager.clearFocus() }),
-                        visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None
-                    )
+                    val focusManager = LocalFocusManager.current
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .clickable { focusManager.clearFocus() }) {
+                        TextField(
+                            value,
+                            { value = it },
+                            hintText = if (hintText) resources.getString(R.string.fluentui_hint) else null,
+                            label = if (label) resources.getString(R.string.fluentui_label) else null,
+                            assistiveText = if (assistiveText) resources.getString(R.string.fluentui_assistive_text) else null,
+                            leadingPrimaryIcon = if (leftIcon) Icons.Outlined.Email else null,
+                            leadingSecondaryIcon = if (leftIcon) Icons.Filled.Email else null,
+                            trailingAccessoryText = if (secondaryText) resources.getString(R.string.fluentui_secondary) else null,
+                            errorString = if (errorText) resources.getString(R.string.fluentui_error_string) else null,
+                            trailingAccessoryIcon = FluentIcon(
+                                SearchBarIcons.Dismisscircle,
+                                contentDescription = resources.getString(R.string.fluentui_clear_text)
+                            ),
+                            keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
+                            keyboardActions = KeyboardActions(onAny = { focusManager.clearFocus() }),
+                            visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None
+                        )
+                    }
                 }
             }
         }

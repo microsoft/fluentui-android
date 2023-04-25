@@ -22,6 +22,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.LayoutDirection
@@ -39,6 +41,38 @@ import com.microsoft.fluentui.theme.token.controlTokens.TextFieldInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TextFieldTokens
 import com.microsoft.fluentui.tokenized.divider.Divider
 
+/**
+ * API to create a customized TextField for users to edit text via software and hardware keyboard
+ * which has support for label, assistive text, error strings.
+ *
+ * Whenever the user edits the text, onValueChange is called with the most up to date string
+ * with which developer is expected to update their state.
+ *
+ * It is crucial that the value provided in the onValueChange is fed back into BasicTextField
+ * in order to have the final state of the text being displayed.
+ *
+ * @param value Input String text to be shown in TextField
+ * @param onValueChange The callback that is triggered when the input service updates the text.
+ * An updated text comes as a parameter of the callback
+ * @param modifier Optional modifier for the TextField
+ * @param hintText Hint to be shown on TextField. Displayed when [value] is empty and TextField
+ * doesn't have focus.
+ * @param label String which acts as a description for the TextField.
+ * @param assistiveText String which assists users with the TextField
+ * @param trailingAccessoryText String to be placed towards the end of TextField as secondary text.
+ * @param errorString String to describe the error. TextField goes in error mode if this is provided.
+ * @param leadingRestIcon Icon which is displayed when the textField is in rest state.
+ * @param leadingFocusIcon Icon which is displayed when the textField is in focus state.
+ * @param leadingIconContentDescription String which acts as content description for leading icon.
+ * @param trailingAccessoryIcon Icon which is displayed towards the end of textField and mainly
+ * acts as dismiss icon.
+ * @param keyboardOptions software keyboard options that contains configuration such as [KeyboardType] and [ImeAction].
+ * @param keyboardActions when the input service emits an IME action, the corresponding callback is called.
+ * Note that this IME action may be different from what you specified in [KeyboardOptions.imeAction].
+ * @param visualTransformation he visual transformation filter for changing the visual representation
+ * of the input. By default no visual transformation is applied.
+ * @param textFieldTokens Optional Tokens to customize appearance of TextField.
+ */
 @Composable
 fun TextField(
     value: String,
@@ -59,8 +93,11 @@ fun TextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
     keyboardActions: KeyboardActions = KeyboardActions(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    textFieldTokens: TextFieldTokens = (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
+    textFieldTokens: TextFieldTokens? = null
 ) {
+    val token = textFieldTokens
+        ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
+
     var isFocused: Boolean by rememberSaveable { mutableStateOf(false) }
 
     val textFieldInfo = TextFieldInfo(
@@ -80,18 +117,18 @@ fun TextField(
                 }
             }
         }
-        .background(textFieldTokens.backgroundColor(textFieldInfo))
-        .padding(textFieldTokens.leftRightPadding(textFieldInfo))) {
+        .background(token.backgroundColor(textFieldInfo))
+        .padding(token.leftRightPadding(textFieldInfo))) {
         if (!label.isNullOrBlank()) {
             Spacer(Modifier.requiredHeight(12.dp))
             BasicText(
                 label,
-                style = textFieldTokens.labelTypography(textFieldInfo).merge(
+                style = token.labelTypography(textFieldInfo).merge(
                     TextStyle(
-                        color = textFieldTokens.labelColor(textFieldInfo)
+                        color = token.labelColor(textFieldInfo)
                     )
                 ),
-                modifier = Modifier.padding(textFieldTokens.labelPadding(textFieldInfo))
+                modifier = Modifier.padding(token.labelPadding(textFieldInfo))
             )
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -102,8 +139,8 @@ fun TextField(
                     else
                         leadingPrimaryIcon,
                     leadingIconContentDescription,
-                    modifier = Modifier.size(textFieldTokens.leadingIconSize(textFieldInfo)),
-                    tint = textFieldTokens.leadingIconColor(textFieldInfo)
+                    modifier = Modifier.size(token.leadingIconSize(textFieldInfo)),
+                    tint = token.leadingIconColor(textFieldInfo)
                 )
                 Spacer(Modifier.requiredWidth(16.dp))
             }
@@ -138,10 +175,10 @@ fun TextField(
                                 ) {
                                     BasicText(
                                         hintText,
-                                        style = textFieldTokens.hintTextTypography(textFieldInfo)
+                                        style = token.hintTextTypography(textFieldInfo)
                                             .merge(
                                                 TextStyle(
-                                                    color = textFieldTokens.hintColor(textFieldInfo)
+                                                    color = token.hintColor(textFieldInfo)
                                                 )
                                             )
                                     )
@@ -149,23 +186,23 @@ fun TextField(
                             }
                             innerTextField()
                         },
-                        textStyle = textFieldTokens.inputTextTypography(textFieldInfo).merge(
+                        textStyle = token.inputTextTypography(textFieldInfo).merge(
                             TextStyle(
-                                color = textFieldTokens.inputTextColor(textFieldInfo),
+                                color = token.inputTextColor(textFieldInfo),
                                 textDirection = TextDirection.ContentOrLtr
                             )
                         ),
-                        cursorBrush = textFieldTokens.cursorColor(textFieldInfo)
+                        cursorBrush = token.cursorColor(textFieldInfo)
                     )
                     if (!trailingAccessoryText.isNullOrBlank()) {
                         Spacer(Modifier.requiredWidth(8.dp))
                         BasicText(
                             trailingAccessoryText,
                             modifier = Modifier.padding(vertical = 12.dp),
-                            style = textFieldTokens.trailingAccessoryTextTypography(textFieldInfo)
+                            style = token.trailingAccessoryTextTypography(textFieldInfo)
                                 .merge(
                                     TextStyle(
-                                        color = textFieldTokens.trailingAccessoryTextColor(
+                                        color = token.trailingAccessoryTextColor(
                                             textFieldInfo
                                         )
                                     )
@@ -189,12 +226,12 @@ fun TextField(
                                         onValueChange("")
                                 }
                                 .padding(8.dp)
-                                .size(textFieldTokens.trailingIconSize(textFieldInfo))
+                                .size(token.trailingIconSize(textFieldInfo))
                         )
                     }
                 }
                 Divider(
-                    height = textFieldTokens.strokeWidth(textFieldInfo),
+                    height = token.strokeWidth(textFieldInfo),
                     dividerToken = object : DividerTokens() {
                         @Composable
                         override fun verticalPadding(dividerInfo: DividerInfo): PaddingValues {
@@ -203,7 +240,7 @@ fun TextField(
 
                         @Composable
                         override fun dividerColor(dividerInfo: DividerInfo): Color =
-                            textFieldTokens.dividerColor(textFieldInfo)
+                            token.dividerColor(textFieldInfo)
                     }
                 )
             }
@@ -211,12 +248,12 @@ fun TextField(
         if (!assistiveText.isNullOrBlank() || !errorString.isNullOrBlank()) {
             BasicText(
                 errorString ?: assistiveText!!,
-                style = textFieldTokens.assistiveTextTypography(textFieldInfo).merge(
+                style = token.assistiveTextTypography(textFieldInfo).merge(
                     TextStyle(
-                        color = textFieldTokens.assistiveTextColor(textFieldInfo)
+                        color = token.assistiveTextColor(textFieldInfo)
                     )
                 ),
-                modifier = Modifier.padding(textFieldTokens.assistiveTextPadding(textFieldInfo))
+                modifier = Modifier.padding(token.assistiveTextPadding(textFieldInfo))
             )
         }
     }
