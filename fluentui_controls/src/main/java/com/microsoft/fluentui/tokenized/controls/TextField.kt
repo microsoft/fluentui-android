@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.DividerInfo
@@ -45,25 +47,25 @@ fun TextField(
     hintText: String? = null,
     label: String? = null,
     assistiveText: String? = null,
-    rightAccessoryText: String? = null,
+    trailingAccessoryText: String? = null,
     errorString: String? = null,
-    leftPrimaryIcon: ImageVector? = null,
-    leftSecondaryIcon: ImageVector? = null,
-    leftIconContentDescription: String? = null,
-    rightAccessoryIcon: FluentIcon? = FluentIcon(
+    leadingPrimaryIcon: ImageVector? = null,
+    leadingSecondaryIcon: ImageVector? = null,
+    leadingIconContentDescription: String? = null,
+    trailingAccessoryIcon: FluentIcon? = FluentIcon(
         SearchBarIcons.Dismisscircle,
         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_clear_text)
     ),
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
     keyboardActions: KeyboardActions = KeyboardActions(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    textFieldTokens: TextFieldTokens = TextFieldTokens()
+    textFieldTokens: TextFieldTokens = (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
 ) {
     var isFocused: Boolean by rememberSaveable { mutableStateOf(false) }
 
     val textFieldInfo = TextFieldInfo(
         isStatusError = !errorString.isNullOrBlank(),
-        hasIcon = (leftPrimaryIcon != null),
+        hasIcon = (leadingPrimaryIcon != null),
         isFocused = isFocused,
         textAvailable = value.isNotEmpty()
     )
@@ -93,15 +95,15 @@ fun TextField(
             )
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            if (leftPrimaryIcon != null) {
+            if (leadingPrimaryIcon != null) {
                 Icon(
-                    if (isFocused && errorString.isNullOrBlank() && leftSecondaryIcon != null)
-                        leftSecondaryIcon
+                    if (isFocused && errorString.isNullOrBlank() && leadingSecondaryIcon != null)
+                        leadingSecondaryIcon
                     else
-                        leftPrimaryIcon,
-                    leftIconContentDescription,
-                    modifier = Modifier.size(textFieldTokens.leftIconSize(textFieldInfo)),
-                    tint = textFieldTokens.leftIconColor(textFieldInfo)
+                        leadingPrimaryIcon,
+                    leadingIconContentDescription,
+                    modifier = Modifier.size(textFieldTokens.leadingIconSize(textFieldInfo)),
+                    tint = textFieldTokens.leadingIconColor(textFieldInfo)
                 )
                 Spacer(Modifier.requiredWidth(16.dp))
             }
@@ -136,11 +138,12 @@ fun TextField(
                                 ) {
                                     BasicText(
                                         hintText,
-                                        style = textFieldTokens.hintTextTypography(textFieldInfo).merge(
-                                            TextStyle(
-                                                color = textFieldTokens.hintColor(textFieldInfo)
+                                        style = textFieldTokens.hintTextTypography(textFieldInfo)
+                                            .merge(
+                                                TextStyle(
+                                                    color = textFieldTokens.hintColor(textFieldInfo)
+                                                )
                                             )
-                                        )
                                     )
                                 }
                             }
@@ -154,36 +157,39 @@ fun TextField(
                         ),
                         cursorBrush = textFieldTokens.cursorColor(textFieldInfo)
                     )
-                    if (!rightAccessoryText.isNullOrBlank()) {
+                    if (!trailingAccessoryText.isNullOrBlank()) {
                         Spacer(Modifier.requiredWidth(8.dp))
                         BasicText(
-                            rightAccessoryText,
+                            trailingAccessoryText,
                             modifier = Modifier.padding(vertical = 12.dp),
-                            style = textFieldTokens.rightAccessoryTextTypography(textFieldInfo).merge(
-                                TextStyle(
-                                    color = textFieldTokens.rightAccessoryTextColor(textFieldInfo)
+                            style = textFieldTokens.trailingAccessoryTextTypography(textFieldInfo)
+                                .merge(
+                                    TextStyle(
+                                        color = textFieldTokens.trailingAccessoryTextColor(
+                                            textFieldInfo
+                                        )
+                                    )
                                 )
-                            )
                         )
                     }
-                    if (value.isNotBlank() && rightAccessoryIcon?.isIconAvailable() == true) {
+                    if (value.isNotBlank() && trailingAccessoryIcon?.isIconAvailable() == true) {
                         Icon(
-                            rightAccessoryIcon,
+                            trailingAccessoryIcon,
                             Modifier
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = LocalIndication.current,
                                     enabled = true,
-                                    onClickLabel = rightAccessoryIcon.contentDescription,
+                                    onClickLabel = trailingAccessoryIcon.contentDescription,
                                     role = Role.Button
                                 ) {
-                                    if (rightAccessoryIcon.onClick != null)
-                                        rightAccessoryIcon.onClick!!.invoke()
+                                    if (trailingAccessoryIcon.onClick != null)
+                                        trailingAccessoryIcon.onClick!!.invoke()
                                     else
                                         onValueChange("")
                                 }
                                 .padding(8.dp)
-                                .size(textFieldTokens.rightIconSize(textFieldInfo))
+                                .size(textFieldTokens.trailingIconSize(textFieldInfo))
                         )
                     }
                 }

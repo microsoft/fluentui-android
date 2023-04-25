@@ -31,7 +31,7 @@ open class TextFieldTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun leftIconColor(textFieldInfo: TextFieldInfo): Color {
+    open fun leadingIconColor(textFieldInfo: TextFieldInfo): Color {
         return if (textFieldInfo.isFocused && !textFieldInfo.isStatusError)
             FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value()
         else
@@ -104,12 +104,12 @@ open class TextFieldTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun rightAccessoryTextColor(textFieldInfo: TextFieldInfo): Color {
+    open fun trailingAccessoryTextColor(textFieldInfo: TextFieldInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value()
     }
 
     @Composable
-    open fun rightAccessoryTextTypography(textFieldInfo: TextFieldInfo): TextStyle {
+    open fun trailingAccessoryTextTypography(textFieldInfo: TextFieldInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
     }
 
@@ -125,7 +125,7 @@ open class TextFieldTokens : ControlToken, Parcelable {
     open fun labelPadding(textFieldInfo: TextFieldInfo): PaddingValues {
         return if (textFieldInfo.hasIcon)
             PaddingValues(
-                start = GlobalTokens.size(GlobalTokens.SizeTokens.Size160) + this.leftIconSize(
+                start = GlobalTokens.size(GlobalTokens.SizeTokens.Size160) + this.leadingIconSize(
                     textFieldInfo
                 )
             )
@@ -136,7 +136,7 @@ open class TextFieldTokens : ControlToken, Parcelable {
     open fun assistiveTextPadding(textFieldInfo: TextFieldInfo): PaddingValues {
         return if (textFieldInfo.hasIcon)
             PaddingValues(
-                start = GlobalTokens.size(GlobalTokens.SizeTokens.Size160) + this.leftIconSize(
+                start = GlobalTokens.size(GlobalTokens.SizeTokens.Size160) + this.leadingIconSize(
                     textFieldInfo
                 ),
                 top = GlobalTokens.size(GlobalTokens.SizeTokens.Size40),
@@ -149,11 +149,11 @@ open class TextFieldTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun leftIconSize(textFieldInfo: TextFieldInfo): Dp =
+    open fun leadingIconSize(textFieldInfo: TextFieldInfo): Dp =
         GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
 
     @Composable
-    open fun rightIconSize(textFieldInfo: TextFieldInfo): Dp =
+    open fun trailingIconSize(textFieldInfo: TextFieldInfo): Dp =
         GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
 
     @Composable

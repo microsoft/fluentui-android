@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -57,7 +58,7 @@ class V2TextFieldActivity : DemoActivity() {
             var leftIcon by rememberSaveable { mutableStateOf(true) }
             var hintText by rememberSaveable { mutableStateOf(true) }
             var label by rememberSaveable { mutableStateOf(true) }
-            var assisstiveText by rememberSaveable { mutableStateOf(true) }
+            var assistiveText by rememberSaveable { mutableStateOf(true) }
             var secondaryText by rememberSaveable { mutableStateOf(true) }
             var errorText by rememberSaveable { mutableStateOf(false) }
             var passwordMode by rememberSaveable { mutableStateOf(false) }
@@ -189,9 +190,9 @@ class V2TextFieldActivity : DemoActivity() {
                                 trailingAccessoryView = {
                                     ToggleSwitch(
                                         onValueChange = {
-                                            assisstiveText = it
+                                            assistiveText = it
                                         },
-                                        checkedState = assisstiveText
+                                        checkedState = assistiveText
                                     )
                                 }
                             )
@@ -254,18 +255,22 @@ class V2TextFieldActivity : DemoActivity() {
                 }
 
                 val focusManager = LocalFocusManager.current
-                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable { focusManager.clearFocus() }) {
                     TextField(
                         value,
                         { value = it },
                         hintText = if (hintText) resources.getString(R.string.fluentui_hint) else null,
                         label = if (label) resources.getString(R.string.fluentui_label) else null,
-                        assistiveText = if (assisstiveText) resources.getString(R.string.fluentui_assistive_text) else null,
-                        leftPrimaryIcon = if (leftIcon) Icons.Outlined.Email else null,
-                        leftSecondaryIcon = if (leftIcon) Icons.Filled.Email else null,
-                        rightAccessoryText = if (secondaryText) resources.getString(R.string.fluentui_secondary) else null,
+                        assistiveText = if (assistiveText) resources.getString(R.string.fluentui_assistive_text) else null,
+                        leadingPrimaryIcon = if (leftIcon) Icons.Outlined.Email else null,
+                        leadingSecondaryIcon = if (leftIcon) Icons.Filled.Email else null,
+                        trailingAccessoryText = if (secondaryText) resources.getString(R.string.fluentui_secondary) else null,
                         errorString = if (errorText) resources.getString(R.string.fluentui_error_string) else null,
-                        rightAccessoryIcon = FluentIcon(
+                        trailingAccessoryIcon = FluentIcon(
                             SearchBarIcons.Dismisscircle,
                             contentDescription = resources.getString(R.string.fluentui_clear_text)
                         ),
