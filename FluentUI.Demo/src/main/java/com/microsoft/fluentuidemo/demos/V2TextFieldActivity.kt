@@ -13,8 +13,11 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Email
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -130,7 +133,7 @@ class V2TextFieldActivity : DemoActivity() {
                             item {
                                 ListItem.Item(
                                     text = resources.getString(R.string.fluentui_icon),
-                                    subText = if (label)
+                                    subText = if (leftIcon)
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
@@ -184,7 +187,7 @@ class V2TextFieldActivity : DemoActivity() {
                             item {
                                 ListItem.Item(
                                     text = resources.getString(R.string.fluentui_assistive_text),
-                                    subText = if (label)
+                                    subText = if (assistiveText)
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
@@ -202,7 +205,7 @@ class V2TextFieldActivity : DemoActivity() {
                             item {
                                 ListItem.Item(
                                     text = resources.getString(R.string.fluentui_secondary),
-                                    subText = if (label)
+                                    subText = if (secondaryText)
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
@@ -220,7 +223,7 @@ class V2TextFieldActivity : DemoActivity() {
                             item {
                                 ListItem.Item(
                                     text = resources.getString(R.string.fluentui_password_mode),
-                                    subText = if (label)
+                                    subText = if (passwordMode)
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
@@ -238,7 +241,7 @@ class V2TextFieldActivity : DemoActivity() {
                             item {
                                 ListItem.Item(
                                     text = resources.getString(R.string.fluentui_error),
-                                    subText = if (label)
+                                    subText = if (errorText)
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
