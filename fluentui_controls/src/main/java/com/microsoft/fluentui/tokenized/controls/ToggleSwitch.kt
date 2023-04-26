@@ -123,7 +123,7 @@ fun ToggleSwitch(
     }
 
     // Toggle Logic
-    val toggleModifier = modifier.toggleable(
+    val toggleModifier = Modifier.toggleable(
         value = toggleSwitchInfo.checked,
         enabled = enabledSwitch,
         role = Role.Switch,
@@ -135,7 +135,7 @@ fun ToggleSwitch(
 
     // UI Implementation
     Box(
-        modifier = Modifier
+        modifier = modifier
             .swipeable(
                 state = swipeState,
                 anchors = mapOf(minBound to false, maxBound to true),
