@@ -1,5 +1,6 @@
 package com.microsoft.fluentui.tokenized.controls
 
+import android.view.KeyEvent.KEYCODE_ENTER
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateDpAsState
@@ -22,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.Role
@@ -33,6 +35,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
 import com.microsoft.fluentui.theme.token.controlTokens.ToggleSwitchInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ToggleSwitchTokens
+import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 /**
@@ -128,11 +131,11 @@ fun ToggleSwitch(
         interactionSource = interactionSource,
         indication = rememberRipple()
     )
+    val scope = rememberCoroutineScope()
 
     // UI Implementation
     Box(
         modifier = Modifier
-            .then(toggleModifier)
             .swipeable(
                 state = swipeState,
                 anchors = mapOf(minBound to false, maxBound to true),
@@ -142,15 +145,22 @@ fun ToggleSwitch(
                 reverseDirection = isRtl,
                 interactionSource = interactionSource,
                 resistance = null
-            ), contentAlignment = Alignment.CenterStart
+            )
+            .width(token.fixedTrackWidth)
+            .height(token.fixedTrackHeight)
+            .clip(CircleShape)
+            .background(backgroundColor)
+            .then(toggleModifier)
+            .onKeyEvent { keyEvent ->
+                when (keyEvent.nativeKeyEvent.keyCode) {
+                    KEYCODE_ENTER -> {
+                        scope.launch { swipeState.animateTo(!swipeState.currentValue) }
+                        true
+                    }
+                    else -> false
+                }
+            }, contentAlignment = Alignment.CenterStart
     ) {
-        Box(
-            modifier = Modifier
-                .width(token.fixedTrackWidth)
-                .height(token.fixedTrackHeight)
-                .clip(CircleShape)
-                .background(backgroundColor)
-        )
         Spacer(modifier = Modifier
             .offset { IntOffset(swipeState.offset.value.roundToInt(), 0) }
             .shadow(elevation, CircleShape)
