@@ -8,8 +8,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,9 +26,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.FABInfo
 import com.microsoft.fluentui.theme.token.controlTokens.FABSize
 import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.theme.token.controlTokens.FABTokens
-
-val LocalFABTokens = compositionLocalOf { FABTokens() }
-val LocalFABInfo = compositionLocalOf { FABInfo() }
 
 /**
  * API to create a Floating Action Button. This button has elevation and can be expanded and collapsed.
@@ -64,118 +59,103 @@ fun FloatingActionButton(
     val token = fabTokens
         ?: FluentTheme.controlTokens.tokens[ControlType.FloatingActionButton] as FABTokens
 
-    CompositionLocalProvider(
-        LocalFABTokens provides token,
-        LocalFABInfo provides FABInfo(state, size)
-    ) {
-        val clickAndSemanticsModifier = Modifier.clickable(
-            interactionSource = interactionSource,
-            indication = LocalIndication.current,
-            enabled = enabled,
-            onClickLabel = null,
-            role = Role.Button,
-            onClick = onClick
-        )
-        val isFabExpanded: Boolean =
-            (text != null && text != "" && getFABInfo().state == FABState.Expanded)
-        val backgroundColor = getFABToken().backgroundColor(fabInfo = getFABInfo()).getColorByState(
+    val fabInfo = FABInfo(state, size)
+    val clickAndSemanticsModifier = Modifier.clickable(
+        interactionSource = interactionSource,
+        indication = LocalIndication.current,
+        enabled = enabled,
+        onClickLabel = null,
+        role = Role.Button,
+        onClick = onClick
+    )
+    val isFabExpanded: Boolean =
+        (text != null && text != "" && fabInfo.state == FABState.Expanded)
+    val backgroundColor = token.backgroundColor(fabInfo = fabInfo).getColorByState(
+        enabled = enabled,
+        selected = false,
+        interactionSource = interactionSource
+    )
+    val contentPadding = if (isFabExpanded) token.textPadding(fabInfo)
+    else token.iconPadding(fabInfo)
+    val iconSpacing = if (isFabExpanded) token.spacing(fabInfo) else 0.dp
+    val shape = CircleShape
+    val borders: List<BorderStroke> =
+        token.borderStroke(fabInfo = fabInfo).getBorderStrokeByState(
             enabled = enabled,
             selected = false,
             interactionSource = interactionSource
         )
-        val contentPadding = if (isFabExpanded) getFABToken().textPadding(getFABInfo())
-        else getFABToken().iconPadding(getFABInfo())
-        val iconSpacing = if (isFabExpanded) getFABToken().spacing(getFABInfo()) else 0.dp
-        val shape = CircleShape
-        val borders: List<BorderStroke> =
-            getFABToken().borderStroke(fabInfo = getFABInfo()).getBorderStrokeByState(
-                enabled = enabled,
-                selected = false,
-                interactionSource = interactionSource
+
+    var borderModifier: Modifier = Modifier
+    var borderWidth = 0.dp
+    for (border in borders) {
+        borderWidth += border.width
+        borderModifier = borderModifier.border(borderWidth, border.brush, shape)
+    }
+
+    Box(
+        modifier
+            .height(token.fixedHeight(fabInfo))
+            .defaultMinSize(minWidth = token.minWidth(fabInfo))
+            .shadow(
+                elevation = token
+                    .elevation(fabInfo = fabInfo)
+                    .getElevationByState(
+                        enabled = enabled,
+                        selected = false,
+                        interactionSource = interactionSource
+                    ),
+                shape = CircleShape
             )
-
-        var borderModifier: Modifier = Modifier
-        var borderWidth = 0.dp
-        for (border in borders) {
-            borderWidth += border.width
-            borderModifier = borderModifier.border(borderWidth, border.brush, shape)
-        }
-
-        Box(
-            modifier
-                .height(getFABToken().fixedHeight(getFABInfo()))
-                .defaultMinSize(minWidth = getFABToken().minWidth(getFABInfo()))
-                .shadow(
-                    elevation = getFABToken()
-                        .elevation(fabInfo = getFABInfo())
-                        .getElevationByState(
-                            enabled = enabled,
-                            selected = false,
-                            interactionSource = interactionSource
-                        ),
-                    shape = CircleShape
-                )
-                .background(
-                    color = backgroundColor,
-                    shape = shape
-                )
-                .clip(shape)
-                .semantics(mergeDescendants = true) { contentDescription = text ?: "" }
-                .then(clickAndSemanticsModifier)
-                .then(borderModifier),
-            propagateMinConstraints = true
+            .background(
+                color = backgroundColor,
+                shape = shape
+            )
+            .clip(shape)
+            .semantics(mergeDescendants = true) { contentDescription = text ?: "" }
+            .then(clickAndSemanticsModifier)
+            .then(borderModifier),
+        propagateMinConstraints = true
+    ) {
+        Row(
+            Modifier.padding(contentPadding),
+            horizontalArrangement = Arrangement.spacedBy(
+                iconSpacing,
+                Alignment.CenterHorizontally
+            ),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                Modifier.padding(contentPadding),
-                horizontalArrangement = Arrangement.spacedBy(
-                    iconSpacing,
-                    Alignment.CenterHorizontally
-                ),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
 
-                if (icon != null)
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = text,
-                        modifier = Modifier
-                            .size(
-                                getFABToken().iconSize(getFABInfo())
-                            )
-                            .clearAndSetSemantics { },
-                        tint = getFABToken().iconColor(fabInfo = getFABInfo()).getColorByState(
-                            enabled = enabled,
-                            selected = false,
-                            interactionSource = interactionSource
+            if (icon != null)
+                Icon(
+                    imageVector = icon,
+                    contentDescription = text,
+                    modifier = Modifier
+                        .size(
+                            token.iconSize(fabInfo)
                         )
+                        .clearAndSetSemantics { },
+                    tint = token.iconColor(fabInfo = fabInfo).getColorByState(
+                        enabled = enabled,
+                        selected = false,
+                        interactionSource = interactionSource
                     )
+                )
 
-                AnimatedVisibility(isFabExpanded) {
-                    Text(
-                        text = text!!,
-                        modifier = Modifier.clearAndSetSemantics { },
-                        style = getFABToken().typography(getFABInfo()),
-                        color = getFABToken().textColor(fabInfo = getFABInfo()).getColorByState(
-                            enabled = enabled,
-                            selected = false,
-                            interactionSource = interactionSource
-                        ),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
+            AnimatedVisibility(isFabExpanded) {
+                Text(
+                    text = text!!,
+                    modifier = Modifier.clearAndSetSemantics { },
+                    style = token.typography(fabInfo),
+                    color = token.textColor(fabInfo = fabInfo).getColorByState(
+                        enabled = enabled,
+                        selected = false,
+                        interactionSource = interactionSource
+                    ),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
             }
         }
     }
-}
-
-
-@Composable
-fun getFABToken(): FABTokens {
-    return LocalFABTokens.current
-}
-
-@Composable
-fun getFABInfo(): FABInfo {
-    return LocalFABInfo.current
 }

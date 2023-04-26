@@ -17,7 +17,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicato
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
-import com.microsoft.fluentui.tokenized.progress.Shimmer
+import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import org.junit.Rule
 import org.junit.Test
 
@@ -76,11 +76,11 @@ class V2ProgressIndicatorUITest {
     fun testShimmerBounds(){
         composeTestRule.setContent {
             FluentTheme {
-                Shimmer(ShimmerShape.Box, modifier = Modifier
+                Shimmer(shape = ShimmerShape.Box, modifier = Modifier
                     .height(50.dp)
                     .width(50.dp)
                     .testTag("shimmer"))
-                Shimmer(ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
+                Shimmer(shape= ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
             }
         }
         composeTestRule.onNodeWithTag("shimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)

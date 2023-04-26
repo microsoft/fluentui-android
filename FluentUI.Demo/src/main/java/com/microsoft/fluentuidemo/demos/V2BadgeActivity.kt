@@ -61,31 +61,31 @@ class V2BadgeActivity : DemoActivity() {
                         LazyRow {
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("1", badgeType = BadgeType.Character)
+                                Badge(text = "1", badgeType = BadgeType.Character)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("2", badgeType = BadgeType.Character)
+                                Badge(text = "2", badgeType = BadgeType.Character)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("8", badgeType = BadgeType.Character)
+                                Badge(text = "8", badgeType = BadgeType.Character)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("12", badgeType = BadgeType.Character)
+                                Badge(text = "12", badgeType = BadgeType.Character)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("123", badgeType = BadgeType.Character)
+                                Badge(text = "123", badgeType = BadgeType.Character)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("12345678910", badgeType = BadgeType.Character)
+                                Badge(text = "12345678910", badgeType = BadgeType.Character)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("Badge", badgeType = BadgeType.Character)
+                                Badge(text = "Badge", badgeType = BadgeType.Character)
                             }
                         }
                     }
@@ -101,31 +101,31 @@ class V2BadgeActivity : DemoActivity() {
                         LazyRow {
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("1", badgeType = BadgeType.List)
+                                Badge(text = "1", badgeType = BadgeType.List)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("2", badgeType = BadgeType.List)
+                                Badge(text = "2", badgeType = BadgeType.List)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("8", badgeType = BadgeType.List)
+                                Badge(text = "8", badgeType = BadgeType.List)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("12", badgeType = BadgeType.List)
+                                Badge(text = "12", badgeType = BadgeType.List)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("123", badgeType = BadgeType.List)
+                                Badge(text = "123", badgeType = BadgeType.List)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("12345678910", badgeType = BadgeType.List)
+                                Badge(text = "12345678910", badgeType = BadgeType.List)
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge("Badge", badgeType = BadgeType.List)
+                                Badge(text = "Badge", badgeType = BadgeType.List)
                             }
                         }
                     }

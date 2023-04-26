@@ -8,8 +8,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -29,9 +27,6 @@ import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.*
-
-val LocalAvatarTokens = compositionLocalOf { AvatarTokens() }
-val LocalAvatarInfo = compositionLocalOf { AvatarInfo() }
 
 const val IMAGE_TEST_TAG = "Image"
 const val ICON_TEST_TAG = "Icon"
@@ -70,144 +65,139 @@ fun Avatar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
     val personInitials = person.getInitials()
+    val avatarInfo = AvatarInfo(
+        size, AvatarType.Person, person.isActive,
 
-    CompositionLocalProvider(
-        LocalAvatarTokens provides token,
-        LocalAvatarInfo provides AvatarInfo(
-            size, AvatarType.Person, person.isActive,
+        person.status, person.isOOO, person.isImageAvailable(),
+        personInitials.isNotEmpty(), person.getName(), cutoutStyle
+    )
+    val avatarSize = token.avatarSize(avatarInfo)
+    val backgroundColor = token.backgroundColor(avatarInfo)
+    val foregroundColor = token.foregroundColor(avatarInfo)
+    val borders = token.borderStroke(avatarInfo)
+    val fontTextStyle = token.fontTypography(avatarInfo)
+    val cutoutCornerRadius = token.cutoutCornerRadius(avatarInfo)
+    val cutoutBackgroundColor =
+        token.cutoutBackgroundColor(avatarInfo = avatarInfo)
+    val cutoutBorderColor = token.cutoutBorderColor(avatarInfo = avatarInfo)
+    val cutoutIconSize = token.cutoutIconSize(avatarInfo = avatarInfo)
+    val isCutoutEnabled = (cutoutIconDrawable != null || cutoutIconImageVector != null)
+    var isImageOrInitialsAvailable = true
 
-            person.status, person.isOOO, person.isImageAvailable(),
-            personInitials.isNotEmpty(), person.getName(), cutoutStyle
-        )
+    Box(modifier = Modifier
+        .semantics(mergeDescendants = true) {
+            contentDescription = "${person.getName()}. " +
+                    "${if (enablePresence) "Status, ${person.status}," else ""} " +
+                    "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " +
+                    if (enableActivityRings) {
+                        if (person.isActive) "Active" else "Inactive"
+                    } else ""
+        }
     ) {
-        val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
-        val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
-        val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
-        val borders = getAvatarTokens().borderStroke(getAvatarInfo())
-        val fontTextStyle = getAvatarTokens().fontTypography(getAvatarInfo())
-        val cutoutCornerRadius = getAvatarTokens().cutoutCornerRadius(getAvatarInfo())
-        val cutoutBackgroundColor =
-            getAvatarTokens().cutoutBackgroundColor(avatarInfo = getAvatarInfo())
-        val cutoutBorderColor = getAvatarTokens().cutoutBorderColor(avatarInfo = getAvatarInfo())
-        val cutoutIconSize = getAvatarTokens().cutoutIconSize(avatarInfo = getAvatarInfo())
-        val isCutoutEnabled = (cutoutIconDrawable != null || cutoutIconImageVector != null)
-        var isImageOrInitialsAvailable = true
-
-        Box(modifier = Modifier
-            .semantics(mergeDescendants = true) {
-                contentDescription = "${person.getName()}. " +
-                        "${if (enablePresence) "Status, ${person.status}," else ""} " +
-                        "${if (enablePresence && person.isOOO) "Out Of Office," else ""} " +
-                        if (enableActivityRings) {
-                            if (person.isActive) "Active" else "Inactive"
-                        } else ""
-            }
+        Box(
+            Modifier
+                .then(modifier)
+                .requiredSize(avatarSize)
+                .background(backgroundColor, CircleShape), contentAlignment = Alignment.Center
         ) {
-            Box(
-                Modifier
-                    .then(modifier)
-                    .requiredSize(avatarSize)
-                    .background(backgroundColor, CircleShape), contentAlignment = Alignment.Center
-            ) {
-                when {
-                    person.image != null -> {
-                        Image(
-                            painter = painterResource(person.image), null,
-                            modifier = Modifier
-                                .size(avatarSize)
-                                .clip(CircleShape)
-                                .semantics {
-                                    testTag = IMAGE_TEST_TAG
-                                }
-                        )
-                    }
-                    person.imageBitmap != null -> {
-                        Image(
-                            bitmap = person.imageBitmap, null,
-                            modifier = Modifier
-                                .size(avatarSize)
-                                .clip(CircleShape)
-                                .semantics {
-                                    testTag = IMAGE_TEST_TAG
-                                }
-                        )
-                    }
-                    personInitials.isNotEmpty() -> {
-                        Text(personInitials,
-                            style = fontTextStyle,
-                            color = foregroundColor,
-                            modifier = Modifier
-                                .clearAndSetSemantics { })
-                    }
-                    else -> {
-                        isImageOrInitialsAvailable = false
-                        Icon(
-                            getAvatarTokens().icon(getAvatarInfo()),
-                            null,
-                            modifier = Modifier
-                                .background(backgroundColor, CircleShape)
-                                .semantics {
-                                    testTag = ICON_TEST_TAG
-                                },
-                            tint = foregroundColor,
-                        )
-                    }
-                }
-
-                if (enableActivityRings)
-                    ActivityRing(radius = avatarSize / 2, borders)
-
-                if (isCutoutEnabled && isImageOrInitialsAvailable && cutoutIconSize > 0.dp) {
-                    Box(
-                        modifier = Modifier
-                            .offset(6.dp, 6.dp)
-                            .align(Alignment.BottomEnd)
-                            .clip(shape = RoundedCornerShape(size = cutoutCornerRadius))
-                    ) {
-                        if (cutoutIconDrawable != null) {
-                            Image(
-                                painter = painterResource(cutoutIconDrawable),
-                                modifier = Modifier
-                                    .background(cutoutBackgroundColor)
-                                    .border(
-                                        2.dp,
-                                        cutoutBorderColor,
-                                        RoundedCornerShape(cutoutCornerRadius)
-                                    )
-                                    .padding(4.dp)
-                                    .size(cutoutIconSize),
-                                contentDescription = cutoutContentDescription
-                            )
-                        } else if (cutoutIconImageVector != null) {
-                            Image(
-                                imageVector = cutoutIconImageVector,
-                                modifier = Modifier
-                                    .background(cutoutBackgroundColor)
-                                    .border(
-                                        2.dp,
-                                        cutoutBorderColor,
-                                        RoundedCornerShape(cutoutCornerRadius)
-                                    )
-                                    .padding(4.dp)
-                                    .size(cutoutIconSize),
-                                contentDescription = cutoutContentDescription
-                            )
-                        }
-                    }
-                }
-
-                if (!isCutoutEnabled && enablePresence) {
-                    val presenceOffset: DpOffset = getAvatarTokens().presenceOffset(getAvatarInfo())
-                    val image: FluentIcon = getAvatarTokens().presenceIcon(getAvatarInfo())
+            when {
+                person.image != null -> {
                     Image(
-                        image.value(themeMode),
-                        null,
-                        Modifier
-                            .align(Alignment.BottomEnd)
-                            // Adding 2.dp to both side to incorporate border which is an image in Fluent Android.
-                            .offset(presenceOffset.x + 2.dp, -presenceOffset.y + 2.dp)
+                        painter = painterResource(person.image), null,
+                        modifier = Modifier
+                            .size(avatarSize)
+                            .clip(CircleShape)
+                            .semantics {
+                                testTag = IMAGE_TEST_TAG
+                            }
                     )
                 }
+                person.imageBitmap != null -> {
+                    Image(
+                        bitmap = person.imageBitmap, null,
+                        modifier = Modifier
+                            .size(avatarSize)
+                            .clip(CircleShape)
+                            .semantics {
+                                testTag = IMAGE_TEST_TAG
+                            }
+                    )
+                }
+                personInitials.isNotEmpty() -> {
+                    Text(personInitials,
+                        style = fontTextStyle,
+                        color = foregroundColor,
+                        modifier = Modifier
+                            .clearAndSetSemantics { })
+                }
+                else -> {
+                    isImageOrInitialsAvailable = false
+                    Icon(
+                        token.icon(avatarInfo),
+                        null,
+                        modifier = Modifier
+                            .background(backgroundColor, CircleShape)
+                            .semantics {
+                                testTag = ICON_TEST_TAG
+                            },
+                        tint = foregroundColor,
+                    )
+                }
+            }
+
+            if (enableActivityRings)
+                ActivityRing(radius = avatarSize / 2, borders)
+
+            if (isCutoutEnabled && isImageOrInitialsAvailable && cutoutIconSize > 0.dp) {
+                Box(
+                    modifier = Modifier
+                        .offset(6.dp, 6.dp)
+                        .align(Alignment.BottomEnd)
+                        .clip(shape = RoundedCornerShape(size = cutoutCornerRadius))
+                ) {
+                    if (cutoutIconDrawable != null) {
+                        Image(
+                            painter = painterResource(cutoutIconDrawable),
+                            modifier = Modifier
+                                .background(cutoutBackgroundColor)
+                                .border(
+                                    2.dp,
+                                    cutoutBorderColor,
+                                    RoundedCornerShape(cutoutCornerRadius)
+                                )
+                                .padding(4.dp)
+                                .size(cutoutIconSize),
+                            contentDescription = cutoutContentDescription
+                        )
+                    } else if (cutoutIconImageVector != null) {
+                        Image(
+                            imageVector = cutoutIconImageVector,
+                            modifier = Modifier
+                                .background(cutoutBackgroundColor)
+                                .border(
+                                    2.dp,
+                                    cutoutBorderColor,
+                                    RoundedCornerShape(cutoutCornerRadius)
+                                )
+                                .padding(4.dp)
+                                .size(cutoutIconSize),
+                            contentDescription = cutoutContentDescription
+                        )
+                    }
+                }
+            }
+
+            if (!isCutoutEnabled && enablePresence) {
+                val presenceOffset: DpOffset = token.presenceOffset(avatarInfo)
+                val image: FluentIcon = token.presenceIcon(avatarInfo)
+                Image(
+                    image.value(themeMode),
+                    null,
+                    Modifier
+                        .align(Alignment.BottomEnd)
+                        // Adding 2.dp to both side to incorporate border which is an image in Fluent Android.
+                        .offset(presenceOffset.x + 2.dp, -presenceOffset.y + 2.dp)
+                )
             }
         }
     }
@@ -234,77 +224,73 @@ fun Avatar(
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
-    CompositionLocalProvider(
-        LocalAvatarTokens provides token,
-        LocalAvatarInfo provides AvatarInfo(
-            size, AvatarType.Group,
-            isImageAvailable = group.isImageAvailable(),
-            hasValidInitials = group.getInitials().isNotEmpty(),
-            calculatedColorKey = group.groupName
-        )
+    val avatarInfo = AvatarInfo(
+        size, AvatarType.Group,
+        isImageAvailable = group.isImageAvailable(),
+        hasValidInitials = group.getInitials().isNotEmpty(),
+        calculatedColorKey = group.groupName
+    )
+    val avatarSize = token.avatarSize(avatarInfo)
+    val cornerRadius = token.cornerRadius(avatarInfo)
+    val fontTextStyle = token.fontTypography(avatarInfo)
+    val backgroundColor = token.backgroundColor(avatarInfo)
+    val foregroundColor = token.foregroundColor(avatarInfo)
+
+    var membersList = ""
+    for (person in group.members)
+        membersList += (person.firstName + person.lastName + "\n")
+
+    Box(
+        modifier
+            .requiredSize(avatarSize)
+            .semantics(mergeDescendants = false) {
+                contentDescription =
+                    "Group Name ${group.getName()} ${group.members.size} members. $membersList"
+            }, contentAlignment = Alignment.Center
     ) {
-        val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
-        val cornerRadius = getAvatarTokens().cornerRadius(getAvatarInfo())
-        val fontTextStyle = getAvatarTokens().fontTypography(getAvatarInfo())
-        val backgroundColor = getAvatarTokens().backgroundColor(getAvatarInfo())
-        val foregroundColor = getAvatarTokens().foregroundColor(getAvatarInfo())
-
-        var membersList = ""
-        for (person in group.members)
-            membersList += (person.firstName + person.lastName + "\n")
-
         Box(
-            modifier
-                .requiredSize(avatarSize)
-                .semantics(mergeDescendants = false) {
-                    contentDescription =
-                        "Group Name ${group.getName()} ${group.members.size} members. $membersList"
-                }, contentAlignment = Alignment.Center
+            Modifier
+                .clip(RoundedCornerShape(cornerRadius))
+                .background(backgroundColor)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            Box(
-                Modifier
-                    .clip(RoundedCornerShape(cornerRadius))
-                    .background(backgroundColor)
-                    .fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                if (group.image != null) {
-                    Image(
-                        painter = painterResource(group.image),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(avatarSize)
-                            .clip(RoundedCornerShape(cornerRadius))
-                            .semantics {
-                                testTag = IMAGE_TEST_TAG
-                            }
-                    )
-                } else if (group.imageBitmap != null) {
-                    Image(
-                        bitmap = group.imageBitmap,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(avatarSize)
-                            .clip(RoundedCornerShape(cornerRadius))
-                            .semantics {
-                                testTag = IMAGE_TEST_TAG
-                            }
-                    )
-                } else if (group.groupName.isNotEmpty()) {
-                    Text(group.getInitials(),
-                        style = fontTextStyle,
-                        color = foregroundColor,
-                        modifier = Modifier.clearAndSetSemantics { })
-                } else {
-                    Icon(
-                        getAvatarTokens().icon(getAvatarInfo()),
-                        null,
-                        modifier = Modifier.semantics {
-                            testTag = ICON_TEST_TAG
-                        },
-                        tint = foregroundColor
-                    )
-                }
+            if (group.image != null) {
+                Image(
+                    painter = painterResource(group.image),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(avatarSize)
+                        .clip(RoundedCornerShape(cornerRadius))
+                        .semantics {
+                            testTag = IMAGE_TEST_TAG
+                        }
+                )
+            } else if (group.imageBitmap != null) {
+                Image(
+                    bitmap = group.imageBitmap,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(avatarSize)
+                        .clip(RoundedCornerShape(cornerRadius))
+                        .semantics {
+                            testTag = IMAGE_TEST_TAG
+                        }
+                )
+            } else if (group.groupName.isNotEmpty()) {
+                Text(group.getInitials(),
+                    style = fontTextStyle,
+                    color = foregroundColor,
+                    modifier = Modifier.clearAndSetSemantics { })
+            } else {
+                Icon(
+                    token.icon(avatarInfo),
+                    null,
+                    modifier = Modifier.semantics {
+                        testTag = ICON_TEST_TAG
+                    },
+                    tint = foregroundColor
+                )
             }
         }
     }
@@ -330,48 +316,34 @@ fun Avatar(
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
-    CompositionLocalProvider(
-        LocalAvatarTokens provides token,
-        LocalAvatarInfo provides AvatarInfo(size, AvatarType.Overflow)
+    val avatarInfo = AvatarInfo(size, AvatarType.Overflow)
+    val avatarSize = token.avatarSize(avatarInfo)
+    val borders = token.borderStroke(avatarInfo)
+    val fontTextStyle = token.fontTypography(avatarInfo)
+
+    Box(
+        modifier
+            .requiredSize(avatarSize)
+            .semantics(mergeDescendants = false) {
+                contentDescription = "+ $overflowCount Avatar More"
+            }, contentAlignment = Alignment.Center
     ) {
-        val avatarSize = getAvatarTokens().avatarSize(getAvatarInfo())
-        val borders = getAvatarTokens().borderStroke(getAvatarInfo())
-        val fontTextStyle = getAvatarTokens().fontTypography(getAvatarInfo())
-
         Box(
-            modifier
-                .requiredSize(avatarSize)
-                .semantics(mergeDescendants = false) {
-                    contentDescription = "+ $overflowCount Avatar More"
-                }, contentAlignment = Alignment.Center
+            Modifier
+                .clip(CircleShape)
+                .background(token.backgroundColor(avatarInfo))
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            Box(
-                Modifier
-                    .clip(CircleShape)
-                    .background(getAvatarTokens().backgroundColor(getAvatarInfo()))
-                    .fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                Text("+${overflowCount}",
-                    style = fontTextStyle,
-                    color = getAvatarTokens().foregroundColor(getAvatarInfo()),
-                    modifier = Modifier.clearAndSetSemantics { })
-            }
-
-            if (enableActivityRings)
-                ActivityRing(radius = avatarSize / 2, borders)
+            Text("+${overflowCount}",
+                style = fontTextStyle,
+                color = token.foregroundColor(avatarInfo),
+                modifier = Modifier.clearAndSetSemantics { })
         }
+
+        if (enableActivityRings)
+            ActivityRing(radius = avatarSize / 2, borders)
     }
-}
-
-@Composable
-fun getAvatarTokens(): AvatarTokens {
-    return LocalAvatarTokens.current
-}
-
-@Composable
-fun getAvatarInfo(): AvatarInfo {
-    return LocalAvatarInfo.current
 }
 
 @Composable

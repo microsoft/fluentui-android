@@ -44,7 +44,8 @@ class ControlTokens {
         Snackbar,
         TabBar,
         TabItem,
-        ToggleSwitch
+        TextField,
+        ToggleSwitch,
     }
 
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
@@ -79,6 +80,7 @@ class ControlTokens {
                 ControlType.Snackbar -> SnackBarTokens()
                 ControlType.TabBar -> TabBarTokens()
                 ControlType.TabItem -> TabItemTokens()
+                ControlType.TextField -> TextFieldTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
             }
         }

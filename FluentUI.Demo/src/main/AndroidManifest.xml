@@ -50,6 +50,9 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.V2TextFieldActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AvatarViewActivity" />

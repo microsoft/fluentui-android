@@ -32,15 +32,12 @@ import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
 import androidx.compose.material.Icon as MaterialIcon
 
-private val LocalSnackBarTokens = compositionLocalOf { SnackBarTokens() }
-private val LocalSnackBarInfo = compositionLocalOf { SnackBarInfo(SnackbarStyle.Neutral) }
-
 // TAGS FOR TESTING
-private val SNACKBAR = "Snackbar"
-private val ICON = "ICON"
-private val SUBTITLE = "Subtitle"
-private val ACTION_BUTTON = "Action Button"
-private val DISMISS_BUTTON = "Dismiss Button"
+private const val SNACKBAR = "Snackbar"
+private const val ICON = "ICON"
+private const val SUBTITLE = "Subtitle"
+private const val ACTION_BUTTON = "Action Button"
+private const val DISMISS_BUTTON = "Dismiss Button"
 
 class SnackbarMetadata(
     val message: String,
@@ -123,140 +120,126 @@ fun Snackbar(
     val token = snackbarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Snackbar] as SnackBarTokens
 
-    CompositionLocalProvider(
-        LocalSnackBarTokens provides token,
-        LocalSnackBarInfo provides SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
-    ) {
-        NotificationContainer(
-            notificationMetadata = metadata,
-            hasIcon = metadata.icon != null,
-            hasAction = metadata.actionText != null,
-            duration = metadata.duration
-        ) { alpha, scale ->
-            Row(
-                modifier
-                    .graphicsLayer(scaleX = scale.value, scaleY = scale.value, alpha = alpha.value)
-                    .padding(horizontal = 16.dp)
-                    .defaultMinSize(minHeight = 52.dp)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(getSnackBarTokens().backgroundColor(getSnackBarInfo()))
-                    .testTag(SNACKBAR),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (metadata.icon != null && metadata.icon.isIconAvailable()) {
-                    Box(
-                        modifier = Modifier
-                            .testTag(ICON)
-                            .then(
-                                if (metadata.icon.onClick != null) {
-                                    Modifier.clickable(
-                                        interactionSource = remember { MutableInteractionSource() },
-                                        indication = rememberRipple(),
-                                        enabled = true,
-                                        role = Role.Image,
-                                        onClick = metadata.icon.onClick!!
-                                    )
-                                } else Modifier
-                            )
-                    ) {
-                        Icon(
-                            metadata.icon,
-                            modifier = Modifier
-                                .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
-                                .size(getSnackBarTokens().leftIconSize(getSnackBarInfo())),
-                            tint = getSnackBarTokens().iconColor(getSnackBarInfo())
+    val snackBarInfo = SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
+    NotificationContainer(
+        notificationMetadata = metadata,
+        hasIcon = metadata.icon != null,
+        hasAction = metadata.actionText != null,
+        duration = metadata.duration
+    ) { alpha, scale ->
+        Row(
+            modifier
+                .graphicsLayer(scaleX = scale.value, scaleY = scale.value, alpha = alpha.value)
+                .padding(horizontal = 16.dp)
+                .defaultMinSize(minHeight = 52.dp)
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(token.backgroundColor(snackBarInfo))
+                .testTag(SNACKBAR),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (metadata.icon != null && metadata.icon.isIconAvailable()) {
+                Box(
+                    modifier = Modifier
+                        .testTag(ICON)
+                        .then(
+                            if (metadata.icon.onClick != null) {
+                                Modifier.clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = true,
+                                    role = Role.Image,
+                                    onClick = metadata.icon.onClick!!
+                                )
+                            } else Modifier
                         )
-                    }
+                ) {
+                    Icon(
+                        metadata.icon,
+                        modifier = Modifier
+                            .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
+                            .size(token.leftIconSize(snackBarInfo)),
+                        tint = token.iconColor(snackBarInfo)
+                    )
                 }
+            }
 
-                if (metadata.subTitle.isNullOrBlank()) {
+            if (metadata.subTitle.isNullOrBlank()) {
+                Text(
+                    text = metadata.message,
+                    modifier = Modifier
+                        .weight(1F)
+                        .padding(start = 16.dp, top = 12.dp, bottom = 12.dp),
+                    style = token.titleTypography(snackBarInfo)
+                )
+            } else {
+                Column(
+                    Modifier
+                        .weight(1F)
+                        .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
+                ) {
                     Text(
                         text = metadata.message,
-                        modifier = Modifier
-                            .weight(1F)
-                            .padding(start = 16.dp, top = 12.dp, bottom = 12.dp),
-                        style = getSnackBarTokens().titleTypography(getSnackBarInfo())
+                        style = token.titleTypography(snackBarInfo)
                     )
-                } else {
-                    Column(
-                        Modifier
-                            .weight(1F)
-                            .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
-                    ) {
-                        Text(
-                            text = metadata.message,
-                            style = getSnackBarTokens().titleTypography(getSnackBarInfo())
-                        )
-                        Text(
-                            text = metadata.subTitle,
-                            style = getSnackBarTokens().subtitleTypography(getSnackBarInfo()),
-                            modifier = Modifier.testTag(SUBTITLE)
-                        )
-                    }
-                }
-
-                if (metadata.actionText != null) {
-                    Button(
-                        onClick = { metadata.clicked() },
-                        modifier = Modifier
-                            .testTag(ACTION_BUTTON)
-                            .then(
-                                if (!metadata.enableDismiss)
-                                    Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
-                                else
-                                    Modifier.padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
-                            ),
-                        text = metadata.actionText,
-                        style = ButtonStyle.TextButton,
-                        size = ButtonSize.Small,
-                        buttonTokens = object : ButtonTokens() {
-                            @Composable
-                            override fun textColor(buttonInfo: ButtonInfo): StateColor {
-                                return StateColor(
-                                    rest = getSnackBarTokens().iconColor(getSnackBarInfo()),
-                                    pressed = getSnackBarTokens().iconColor(getSnackBarInfo()),
-                                    focused = getSnackBarTokens().iconColor(getSnackBarInfo()),
-                                )
-                            }
-                        }
+                    Text(
+                        text = metadata.subTitle,
+                        style = token.subtitleTypography(snackBarInfo),
+                        modifier = Modifier.testTag(SUBTITLE)
                     )
                 }
+            }
 
-                if (metadata.enableDismiss) {
-                    Box(
-                        modifier = Modifier
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(),
-                                enabled = true,
-                                role = Role.Image,
-                                onClickLabel = "Dismiss",
-                                onClick = { metadata.dismiss() }
+            if (metadata.actionText != null) {
+                Button(
+                    onClick = { metadata.clicked() },
+                    modifier = Modifier
+                        .testTag(ACTION_BUTTON)
+                        .then(
+                            if (!metadata.enableDismiss)
+                                Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                            else
+                                Modifier.padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
+                        ),
+                    text = metadata.actionText,
+                    style = ButtonStyle.TextButton,
+                    size = ButtonSize.Small,
+                    buttonTokens = object : ButtonTokens() {
+                        @Composable
+                        override fun textColor(buttonInfo: ButtonInfo): StateColor {
+                            return StateColor(
+                                rest = token.iconColor(snackBarInfo),
+                                pressed = token.iconColor(snackBarInfo),
+                                focused = token.iconColor(snackBarInfo),
                             )
-                            .testTag(DISMISS_BUTTON)
-                    ) {
-                        MaterialIcon(
-                            Icons.Filled.Close,
-                            "Dismiss",
-                            modifier = Modifier
-                                .padding(start = 12.dp, top = 12.dp, bottom = 12.dp, end = 16.dp)
-                                .size(getSnackBarTokens().dismissIconSize(getSnackBarInfo())),
-                            tint = getSnackBarTokens().iconColor(getSnackBarInfo())
-                        )
+                        }
                     }
+                )
+            }
+
+            if (metadata.enableDismiss) {
+                Box(
+                    modifier = Modifier
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(),
+                            enabled = true,
+                            role = Role.Image,
+                            onClickLabel = "Dismiss",
+                            onClick = { metadata.dismiss() }
+                        )
+                        .testTag(DISMISS_BUTTON)
+                ) {
+                    MaterialIcon(
+                        Icons.Filled.Close,
+                        "Dismiss",
+                        modifier = Modifier
+                            .padding(start = 12.dp, top = 12.dp, bottom = 12.dp, end = 16.dp)
+                            .size(token.dismissIconSize(snackBarInfo)),
+                        tint = token.iconColor(snackBarInfo)
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-private fun getSnackBarTokens(): SnackBarTokens {
-    return LocalSnackBarTokens.current
-}
-
-@Composable
-private fun getSnackBarInfo(): SnackBarInfo {
-    return LocalSnackBarInfo.current
 }

@@ -52,9 +52,6 @@ import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.topappbars.R
 
-private val LocalSearchBarTokens = compositionLocalOf { SearchBarTokens() }
-private val LocalSearchBarInfo = compositionLocalOf { SearchBarInfo(FluentStyle.Neutral) }
-
 /**
  * API to create a searchbar. This control takes input from user's keyboard and runs it against a lambda
  * function provided by user to generate results. It allows user to select a person and display in the form
@@ -99,326 +96,311 @@ fun SearchBar(
 
     val token = searchBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBar] as SearchBarTokens
+    val searchBarInfo = SearchBarInfo(style)
+    val focusManager = LocalFocusManager.current
+    val focusRequester = remember { FocusRequester() }
 
-    CompositionLocalProvider(
-        LocalSearchBarTokens provides token,
-        LocalSearchBarInfo provides SearchBarInfo(style)
+    var queryText by rememberSaveable { mutableStateOf("") }
+    var searchHasFocus by rememberSaveable { mutableStateOf(false) }
+
+    var personaChipSelected by rememberSaveable { mutableStateOf(false) }
+    var selectedPerson: Person? = selectedPerson
+
+    val scope = rememberCoroutineScope()
+
+    Row(
+        modifier = modifier
+            .background(token.backgroundColor(searchBarInfo))
+            .padding(token.searchBarPadding(searchBarInfo))
     ) {
-        val focusManager = LocalFocusManager.current
-        val focusRequester = remember { FocusRequester() }
-
-        var queryText by rememberSaveable { mutableStateOf("") }
-        var searchHasFocus by rememberSaveable { mutableStateOf(false) }
-
-        var personaChipSelected by rememberSaveable { mutableStateOf(false) }
-        var selectedPerson: Person? = selectedPerson
-
-        val scope = rememberCoroutineScope()
-
         Row(
-            modifier = modifier
-                .background(getSearchBarTokens().backgroundColor(getSearchBarInfo()))
-                .padding(getSearchBarTokens().searchBarPadding(getSearchBarInfo()))
+            Modifier
+                .requiredHeight(token.height(searchBarInfo))
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(8.dp))
+                .background(
+                    token.inputBackgroundColor(searchBarInfo),
+                    RoundedCornerShape(8.dp)
+                ),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                Modifier
-                    .requiredHeight(getSearchBarTokens().height(getSearchBarInfo()))
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(
-                        getSearchBarTokens().inputBackgroundColor(getSearchBarInfo()),
-                        RoundedCornerShape(8.dp)
-                    ),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                //Left Section
-                AnimatedContent(searchHasFocus) {
-                    var onClick: (() -> Unit)? = null
-                    var icon: ImageVector? = null
-                    var contentDescription: String? = null
+            //Left Section
+            AnimatedContent(searchHasFocus) {
+                var onClick: (() -> Unit)? = null
+                var icon: ImageVector? = null
+                var contentDescription: String? = null
 
-                    var mirrorImage = false
+                var mirrorImage = false
 
-                    when (it) {
-                        true -> {
-                            onClick = {
-                                queryText = ""
-                                selectedPerson = null
-
-                                onValueChange(queryText, selectedPerson)
-
-                                focusManager.clearFocus()
-                                searchHasFocus = false
-
-                                navigationIconCallback?.invoke()
-                            }
-                            icon = SearchBarIcons.Arrowback
-                            contentDescription =
-                                LocalContext.current.resources.getString(R.string.fluentui_back)
-                            if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                mirrorImage = true
-                        }
-                        false -> {
-                            onClick = {
-                                focusRequester.requestFocus()
-                            }
-                            icon = SearchBarIcons.Search
-                            contentDescription =
-                                LocalContext.current.resources.getString(R.string.fluentui_search)
-                            mirrorImage = false
-                        }
-                    }
-
-                    Box(
-                        modifier = Modifier
-                            .size(44.dp, 40.dp)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(),
-                                enabled = enabled,
-                                onClick = onClick,
-                                role = Role.Button
-                            ),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            FluentIcon(
-                                icon,
-                                contentDescription = contentDescription,
-                                tint = getSearchBarTokens().leftIconColor(getSearchBarInfo()),
-                                flipOnRtl = mirrorImage
-                            ),
-                            modifier = Modifier
-                                .size(getSearchBarTokens().leftIconSize(getSearchBarInfo())),
-                        )
-                    }
-                }
-
-                //Center Section
-                Row(
-                    modifier = Modifier
-                        .height(24.dp)
-                        .weight(1F)
-                        .onKeyEvent {
-                            if (it.key == Key.Backspace) {
-
-                                if (personaChipSelected) {
-                                    selectedPerson = null
-                                    personaChipSelected = false
-
-                                    onValueChange(queryText, selectedPerson)
-                                } else {
-                                    personaChipSelected = true
-                                }
-
-                            }
-                            true
-                        },
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    LaunchedEffect(selectedPerson) {
-                        queryText = ""
-                        if (personaChipSelected)
-                            personaChipSelected = false
-
-                        onValueChange(queryText, selectedPerson)
-                    }
-
-                    if (selectedPerson != null) {
-                        SearchBarPersonaChip(
-                            person = selectedPerson!!,
-                            modifier = Modifier.padding(end = 8.dp),
-                            style = style,
-                            enabled = enabled,
-                            selected = personaChipSelected,
-                            onClick = {
-                                personaChipSelected = !personaChipSelected
-                                personaChipOnClick?.invoke()
-                            },
-                            onCloseClick = {
-                                selectedPerson = null
-
-                                onValueChange(queryText, selectedPerson)
-                            }
-                        )
-                    }
-
-                    BasicTextField(
-                        value = queryText,
-                        onValueChange = {
-                            queryText = it
-                            personaChipSelected = false
+                when (it) {
+                    true -> {
+                        onClick = {
+                            queryText = ""
+                            selectedPerson = null
 
                             onValueChange(queryText, selectedPerson)
-                        },
-                        singleLine = true,
-                        keyboardOptions = keyboardOptions,
-                        keyboardActions = keyboardActions,
-                        modifier = Modifier
-                            .weight(1F)
-                            .focusRequester(focusRequester)
-                            .onFocusChanged { focusState ->
-                                when {
-                                    focusState.isFocused ->
-                                        searchHasFocus = true
-                                }
-                            }
-                            .padding(horizontal = 8.dp)
-                            .semantics {contentDescription = searchHint},
-                        textStyle = getSearchBarTokens().typography(getSearchBarInfo()).merge(
-                            TextStyle(
-                                color = getSearchBarTokens().textColor(getSearchBarInfo()),
-                                textDirection = TextDirection.ContentOrLtr
-                            )
-                        ),
-                        decorationBox = @Composable { innerTextField ->
-                            Box(
-                                Modifier.fillMaxWidth(),
-                                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                    Alignment.CenterEnd
-                                else
-                                    Alignment.CenterStart
-                            ) {
-                                if (queryText.isEmpty()) {
-                                    Text(
-                                        searchHint,
-                                        style = getSearchBarTokens().typography(getSearchBarInfo()),
-                                        color = getSearchBarTokens().textColor(getSearchBarInfo())
-                                    )
-                                }
-                            }
-                            innerTextField()
-                        },
-                        cursorBrush = getSearchBarTokens().cursorColor(getSearchBarInfo())
-                    )
-                }
-                LaunchedEffect(Unit) {
-                    if (focusByDefault)
-                        focusRequester.requestFocus()
+
+                            focusManager.clearFocus()
+                            searchHasFocus = false
+
+                            navigationIconCallback?.invoke()
+                        }
+                        icon = SearchBarIcons.Arrowback
+                        contentDescription =
+                            LocalContext.current.resources.getString(R.string.fluentui_back)
+                        if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                            mirrorImage = true
+                    }
+                    false -> {
+                        onClick = {
+                            focusRequester.requestFocus()
+                        }
+                        icon = SearchBarIcons.Search
+                        contentDescription =
+                            LocalContext.current.resources.getString(R.string.fluentui_search)
+                        mirrorImage = false
+                    }
                 }
 
-                //Right Section
-                AnimatedContent((queryText.isBlank() && selectedPerson == null)) {
-                    when (it) {
-                        true ->
-                            if (microphoneCallback != null) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(44.dp, 40.dp)
-                                        .clickable(
-                                            interactionSource = remember { MutableInteractionSource() },
-                                            indication = rememberRipple(),
-                                            enabled = enabled,
-                                            onClick = microphoneCallback,
-                                            role = Role.Button
-                                        ),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        FluentIcon(
-                                            SearchBarIcons.Microphone,
-                                            contentDescription = LocalContext.current.resources.getString(
-                                                R.string.fluentui_microphone
-                                            ),
-                                            tint = getSearchBarTokens().rightIconColor(
-                                                getSearchBarInfo()
-                                            )
-                                        ),
-                                        modifier = Modifier
-                                            .size(
-                                                getSearchBarTokens().rightIconSize(
-                                                    getSearchBarInfo()
-                                                )
-                                            )
-                                    )
-                                }
+                Box(
+                    modifier = Modifier
+                        .size(44.dp, 40.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(),
+                            enabled = enabled,
+                            onClick = onClick,
+                            role = Role.Button
+                        ),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        FluentIcon(
+                            icon,
+                            contentDescription = contentDescription,
+                            tint = token.leftIconColor(searchBarInfo),
+                            flipOnRtl = mirrorImage
+                        ),
+                        modifier = Modifier
+                            .size(token.leftIconSize(searchBarInfo)),
+                    )
+                }
+            }
+
+            //Center Section
+            Row(
+                modifier = Modifier
+                    .height(24.dp)
+                    .weight(1F)
+                    .onKeyEvent {
+                        if (it.key == Key.Backspace) {
+
+                            if (personaChipSelected) {
+                                selectedPerson = null
+                                personaChipSelected = false
+
+                                onValueChange(queryText, selectedPerson)
+                            } else {
+                                personaChipSelected = true
                             }
-                        false ->
+
+                        }
+                        true
+                    },
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                LaunchedEffect(selectedPerson) {
+                    queryText = ""
+                    if (personaChipSelected)
+                        personaChipSelected = false
+
+                    onValueChange(queryText, selectedPerson)
+                }
+
+                if (selectedPerson != null) {
+                    SearchBarPersonaChip(
+                        person = selectedPerson!!,
+                        modifier = Modifier.padding(end = 8.dp),
+                        style = style,
+                        enabled = enabled,
+                        selected = personaChipSelected,
+                        onClick = {
+                            personaChipSelected = !personaChipSelected
+                            personaChipOnClick?.invoke()
+                        },
+                        onCloseClick = {
+                            selectedPerson = null
+
+                            onValueChange(queryText, selectedPerson)
+                        }
+                    )
+                }
+
+                BasicTextField(
+                    value = queryText,
+                    onValueChange = {
+                        queryText = it
+                        personaChipSelected = false
+
+                        onValueChange(queryText, selectedPerson)
+                    },
+                    singleLine = true,
+                    keyboardOptions = keyboardOptions,
+                    keyboardActions = keyboardActions,
+                    modifier = Modifier
+                        .weight(1F)
+                        .focusRequester(focusRequester)
+                        .onFocusChanged { focusState ->
+                            when {
+                                focusState.isFocused ->
+                                    searchHasFocus = true
+                            }
+                        }
+                        .padding(horizontal = 8.dp)
+                        .semantics {contentDescription = searchHint},
+                    textStyle = token.typography(searchBarInfo).merge(
+                        TextStyle(
+                            color = token.textColor(searchBarInfo),
+                            textDirection = TextDirection.ContentOrLtr
+                        )
+                    ),
+                    decorationBox = @Composable { innerTextField ->
+                        Box(
+                            Modifier.fillMaxWidth(),
+                            contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                Alignment.CenterEnd
+                            else
+                                Alignment.CenterStart
+                        ) {
+                            if (queryText.isEmpty()) {
+                                Text(
+                                    searchHint,
+                                    style = token.typography(searchBarInfo),
+                                    color = token.textColor(searchBarInfo)
+                                )
+                            }
+                        }
+                        innerTextField()
+                    },
+                    cursorBrush = token.cursorColor(searchBarInfo)
+                )
+            }
+            LaunchedEffect(Unit) {
+                if (focusByDefault)
+                    focusRequester.requestFocus()
+            }
+
+            //Right Section
+            AnimatedContent((queryText.isBlank() && selectedPerson == null)) {
+                when (it) {
+                    true ->
+                        if (microphoneCallback != null) {
                             Box(
                                 modifier = Modifier
                                     .size(44.dp, 40.dp)
-                                    .padding(
-                                        getSearchBarTokens().progressIndicatorRightPadding(
-                                            getSearchBarInfo()
-                                        )
-                                    )
                                     .clickable(
                                         interactionSource = remember { MutableInteractionSource() },
                                         indication = rememberRipple(),
                                         enabled = enabled,
-                                        onClick = {
-                                            queryText = ""
-                                            selectedPerson = null
-
-                                            onValueChange(queryText, selectedPerson)
-                                        },
+                                        onClick = microphoneCallback,
                                         role = Role.Button
                                     ),
                                 contentAlignment = Alignment.Center
                             ) {
-                                if (loading) {
-                                    CircularProgressIndicator(
-                                        size = getSearchBarTokens().circularProgressIndicatorSize(
-                                            getSearchBarInfo()
-                                        )
-                                    )
-                                }
                                 Icon(
                                     FluentIcon(
-                                        SearchBarIcons.Dismisscircle,
+                                        SearchBarIcons.Microphone,
                                         contentDescription = LocalContext.current.resources.getString(
-                                            R.string.fluentui_clear_text
+                                            R.string.fluentui_microphone
                                         ),
-                                        tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
+                                        tint = token.rightIconColor(
+                                            searchBarInfo
+                                        )
                                     ),
                                     modifier = Modifier
-                                        .size(getSearchBarTokens().rightIconSize(getSearchBarInfo()))
+                                        .size(
+                                            token.rightIconSize(
+                                                searchBarInfo
+                                            )
+                                        )
                                 )
                             }
-                    }
-                }
-
-                if (rightAccessoryIcon?.isIconAvailable() == true && rightAccessoryIcon.onClick != null) {
-                    Row(
-                        modifier = Modifier
-                            .size(44.dp, 40.dp)
-                            .clickable(
-                                interactionSource = remember { MutableInteractionSource() },
-                                indication = rememberRipple(),
-                                enabled = enabled,
-                                onClick = rightAccessoryIcon.onClick!!,
-                                role = Role.Button
-                            ),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            rightAccessoryIcon,
+                        }
+                    false ->
+                        Box(
                             modifier = Modifier
-                                .size(getSearchBarTokens().rightIconSize(getSearchBarInfo())),
-                            tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
-                        )
-                        Icon(
-                            FluentIcon(
-                                ListItemIcons.Chevron,
-                                contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                                tint = getSearchBarTokens().rightIconColor(getSearchBarInfo())
-                            ),
-                            Modifier.rotate(90F)
-                        )
-                    }
+                                .size(44.dp, 40.dp)
+                                .padding(
+                                    token.progressIndicatorRightPadding(
+                                        searchBarInfo
+                                    )
+                                )
+                                .clickable(
+                                    interactionSource = remember { MutableInteractionSource() },
+                                    indication = rememberRipple(),
+                                    enabled = enabled,
+                                    onClick = {
+                                        queryText = ""
+                                        selectedPerson = null
+
+                                        onValueChange(queryText, selectedPerson)
+                                    },
+                                    role = Role.Button
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            if (loading) {
+                                CircularProgressIndicator(
+                                    size = token.circularProgressIndicatorSize(
+                                        searchBarInfo
+                                    )
+                                )
+                            }
+                            Icon(
+                                FluentIcon(
+                                    SearchBarIcons.Dismisscircle,
+                                    contentDescription = LocalContext.current.resources.getString(
+                                        R.string.fluentui_clear_text
+                                    ),
+                                    tint = token.rightIconColor(searchBarInfo)
+                                ),
+                                modifier = Modifier
+                                    .size(token.rightIconSize(searchBarInfo))
+                            )
+                        }
+                }
+            }
+
+            if (rightAccessoryIcon?.isIconAvailable() == true && rightAccessoryIcon.onClick != null) {
+                Row(
+                    modifier = Modifier
+                        .size(44.dp, 40.dp)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(),
+                            enabled = enabled,
+                            onClick = rightAccessoryIcon.onClick!!,
+                            role = Role.Button
+                        ),
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        rightAccessoryIcon,
+                        modifier = Modifier
+                            .size(token.rightIconSize(searchBarInfo)),
+                        tint = token.rightIconColor(searchBarInfo)
+                    )
+                    Icon(
+                        FluentIcon(
+                            ListItemIcons.Chevron,
+                            contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
+                            tint = token.rightIconColor(searchBarInfo)
+                        ),
+                        Modifier.rotate(90F)
+                    )
                 }
             }
         }
     }
-}
-
-@Composable
-private fun getSearchBarTokens(): SearchBarTokens {
-    return LocalSearchBarTokens.current
-}
-
-@Composable
-private fun getSearchBarInfo(): SearchBarInfo {
-    return LocalSearchBarInfo.current
 }

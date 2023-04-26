@@ -87,7 +87,7 @@ class V2ScaffoldActivity : DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_mail), context)
                         selectedIndex = 1
                     },
-                    badge = { Badge("123+", badgeType = BadgeType.Character) }
+                    badge = { Badge(text = "123+", badgeType = BadgeType.Character) }
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_settings),

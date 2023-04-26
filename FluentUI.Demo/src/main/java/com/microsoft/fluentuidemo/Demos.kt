@@ -30,6 +30,7 @@ const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
 const val V2SNACKBAR = "V2 Snackbar"
 const val V2TABBAR = "V2 TabBar"
+const val V2TEXTFIELD = "V2 TextField"
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
 const val V2APP_BAR_LAYOUT = "V2 AppBarLayout"
@@ -79,6 +80,7 @@ val DEMOS = arrayListOf(
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
+    Demo(V2TEXTFIELD, V2TextFieldActivity::class),
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(AVATAR_VIEW, AvatarViewActivity::class),

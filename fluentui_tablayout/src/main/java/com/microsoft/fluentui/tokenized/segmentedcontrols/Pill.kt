@@ -54,11 +54,6 @@ data class PillMetaData(
     var notificationDot: Boolean = false,
 )
 
-val LocalPillButtonTokens = compositionLocalOf { PillButtonTokens() }
-val LocalPillButtonInfo = compositionLocalOf { PillButtonInfo() }
-val LocalPillBarTokens = compositionLocalOf { PillBarTokens() }
-val LocalPillBarInfo = compositionLocalOf { PillBarInfo() }
-
 /**
  * API to create Pill shaped Button which will further be used in tabs and bars.
  *
@@ -78,154 +73,148 @@ fun PillButton(
 ) {
     val token = pillButtonTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillButton] as PillButtonTokens
+    val pillButtonInfo = PillButtonInfo(
+        style,
+        pillMetaData.enabled,
+        pillMetaData.selected
+    )
+    val shape = RoundedCornerShape(50)
+    val scaleBox = remember { Animatable(1.0F) }
 
-    CompositionLocalProvider(
-        LocalPillButtonTokens provides token,
-        LocalPillButtonInfo provides PillButtonInfo(
-            style,
-            pillMetaData.enabled,
-            pillMetaData.selected
-        )
-
-    ) {
-        val shape = RoundedCornerShape(50)
-        val scaleBox = remember { Animatable(1.0F) }
-
-        LaunchedEffect(key1 = pillMetaData.selected) {
-            if (pillMetaData.selected) {
-                launch {
-                    scaleBox.animateTo(
-                        targetValue = 0.95F,
-                        animationSpec = tween(
-                            durationMillis = 50
-                        )
+    LaunchedEffect(key1 = pillMetaData.selected) {
+        if (pillMetaData.selected) {
+            launch {
+                scaleBox.animateTo(
+                    targetValue = 0.95F,
+                    animationSpec = tween(
+                        durationMillis = 50
                     )
-                    scaleBox.animateTo(
-                        targetValue = 1.0F,
-                        animationSpec = spring(
-                            dampingRatio = Spring.DampingRatioLowBouncy,
-                            stiffness = Spring.StiffnessLow
-                        )
+                )
+                scaleBox.animateTo(
+                    targetValue = 1.0F,
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioLowBouncy,
+                        stiffness = Spring.StiffnessLow
                     )
-                }
+                )
             }
         }
+    }
 
-        val backgroundColor by animateColorAsState(
-            targetValue = getPillButtonTokens().backgroundColor(pillButtonInfo = getPillButtonInfo())
-                .getColorByState(
-                    enabled = pillMetaData.enabled,
-                    selected = pillMetaData.selected,
-                    interactionSource = interactionSource
-                ),
-            animationSpec = tween(200)
-        )
-        val iconColor =
-            getPillButtonTokens().iconColor(pillButtonInfo = getPillButtonInfo()).getColorByState(
+    val backgroundColor by animateColorAsState(
+        targetValue = token.backgroundColor(pillButtonInfo = pillButtonInfo)
+            .getColorByState(
                 enabled = pillMetaData.enabled,
                 selected = pillMetaData.selected,
                 interactionSource = interactionSource
-            )
-        val textColor =
-            getPillButtonTokens().textColor(pillButtonInfo = getPillButtonInfo()).getColorByState(
-                enabled = pillMetaData.enabled,
-                selected = pillMetaData.selected,
-                interactionSource = interactionSource
-            )
-
-        val fontStyle = getPillButtonTokens().typography(getPillButtonInfo())
-
-        val focusStroke = getPillButtonTokens().focusStroke(getPillButtonInfo())
-        var focusedBorderModifier: Modifier = Modifier
-        for (borderStroke in focusStroke) {
-            focusedBorderModifier =
-                focusedBorderModifier.border(borderStroke, shape)
-        }
-
-        val clickAndSemanticsModifier = modifier.clickable(
-            interactionSource = interactionSource,
-            indication = rememberRipple(),
+            ),
+        animationSpec = tween(200)
+    )
+    val iconColor =
+        token.iconColor(pillButtonInfo = pillButtonInfo).getColorByState(
             enabled = pillMetaData.enabled,
-            onClickLabel = null,
-            role = Role.Button,
-            onClick = pillMetaData.onClick
+            selected = pillMetaData.selected,
+            interactionSource = interactionSource
+        )
+    val textColor =
+        token.textColor(pillButtonInfo = pillButtonInfo).getColorByState(
+            enabled = pillMetaData.enabled,
+            selected = pillMetaData.selected,
+            interactionSource = interactionSource
         )
 
-        val selectedString = if (pillMetaData.selected)
-            LocalContext.current.resources.getString(R.string.fluentui_selected)
-        else
-            LocalContext.current.resources.getString(R.string.fluentui_not_selected)
+    val fontStyle = token.typography(pillButtonInfo)
 
-        val enabledString = if (pillMetaData.enabled)
-            LocalContext.current.resources.getString(R.string.fluentui_enabled)
-        else
-            LocalContext.current.resources.getString(R.string.fluentui_disabled)
+    val focusStroke = token.focusStroke(pillButtonInfo)
+    var focusedBorderModifier: Modifier = Modifier
+    for (borderStroke in focusStroke) {
+        focusedBorderModifier =
+            focusedBorderModifier.border(borderStroke, shape)
+    }
 
-        Box(
-            modifier
-                .scale(scaleBox.value)
-                .defaultMinSize(minHeight = getPillButtonTokens().minHeight(getPillButtonInfo()))
-                .clip(shape)
-                .background(backgroundColor, shape)
-                .padding(vertical = getPillButtonTokens().verticalPadding(getPillButtonInfo()))
-                .then(clickAndSemanticsModifier)
-                .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
-                .semantics(true) {
-                    contentDescription =
-                        "${pillMetaData.text} $selectedString $enabledString"
-                },
-            contentAlignment = Alignment.Center
-        ) {
-            Row(Modifier.width(IntrinsicSize.Max)) {
-                if (pillMetaData.icon != null) {
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size180)))
-                    Icon(
-                        pillMetaData.icon!!,
-                        pillMetaData.text,
-                        modifier = Modifier
-                            .size(getPillButtonTokens().iconSize(getPillButtonInfo()))
-                            .clearAndSetSemantics { },
-                        tint = iconColor
-                    )
-                } else {
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
-                    Text(
-                        pillMetaData.text,
-                        modifier = Modifier
-                            .weight(1F)
-                            .clearAndSetSemantics { },
-                        color = textColor,
-                        style = fontStyle,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
+    val clickAndSemanticsModifier = modifier.clickable(
+        interactionSource = interactionSource,
+        indication = rememberRipple(),
+        enabled = pillMetaData.enabled,
+        onClickLabel = null,
+        role = Role.Button,
+        onClick = pillMetaData.onClick
+    )
 
-                if (pillMetaData.notificationDot) {
-                    val notificationDotColor: Color =
-                        getPillButtonTokens().notificationDotColor(getPillButtonInfo())
-                            .getColorByState(
-                                enabled = pillMetaData.enabled,
-                                selected = pillMetaData.selected,
-                                interactionSource = interactionSource
-                            )
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size20)))
-                    Canvas(
-                        modifier = Modifier
-                            .padding(top = 2.dp, bottom = 12.dp)
-                            .sizeIn(minWidth = 6.dp, minHeight = 6.dp)
-                    ) {
-                        drawCircle(
-                            color = notificationDotColor, style = Fill, radius = dpToPx(3.dp)
+    val selectedString = if (pillMetaData.selected)
+        LocalContext.current.resources.getString(R.string.fluentui_selected)
+    else
+        LocalContext.current.resources.getString(R.string.fluentui_not_selected)
+
+    val enabledString = if (pillMetaData.enabled)
+        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+    else
+        LocalContext.current.resources.getString(R.string.fluentui_disabled)
+
+    Box(
+        modifier
+            .scale(scaleBox.value)
+            .defaultMinSize(minHeight = token.minHeight(pillButtonInfo))
+            .clip(shape)
+            .background(backgroundColor, shape)
+            .padding(vertical = token.verticalPadding(pillButtonInfo))
+            .then(clickAndSemanticsModifier)
+            .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
+            .semantics(true) {
+                contentDescription =
+                    "${pillMetaData.text} $selectedString $enabledString"
+            },
+        contentAlignment = Alignment.Center
+    ) {
+        Row(Modifier.width(IntrinsicSize.Max)) {
+            if (pillMetaData.icon != null) {
+                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size180)))
+                Icon(
+                    pillMetaData.icon!!,
+                    pillMetaData.text,
+                    modifier = Modifier
+                        .size(token.iconSize(pillButtonInfo))
+                        .clearAndSetSemantics { },
+                    tint = iconColor
+                )
+            } else {
+                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
+                Text(
+                    pillMetaData.text,
+                    modifier = Modifier
+                        .weight(1F)
+                        .clearAndSetSemantics { },
+                    color = textColor,
+                    style = fontStyle,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
+
+            if (pillMetaData.notificationDot) {
+                val notificationDotColor: Color =
+                    token.notificationDotColor(pillButtonInfo)
+                        .getColorByState(
+                            enabled = pillMetaData.enabled,
+                            selected = pillMetaData.selected,
+                            interactionSource = interactionSource
                         )
-                    }
-                    if (pillMetaData.icon != null)
-                        Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
-                    else
-                        Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size80)))
-                } else {
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
+                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size20)))
+                Canvas(
+                    modifier = Modifier
+                        .padding(top = 2.dp, bottom = 12.dp)
+                        .sizeIn(minWidth = 6.dp, minHeight = 6.dp)
+                ) {
+                    drawCircle(
+                        color = notificationDotColor, style = Fill, radius = dpToPx(3.dp)
+                    )
                 }
+                if (pillMetaData.icon != null)
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
+                else
+                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size80)))
+            } else {
+                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
             }
         }
     }
@@ -257,58 +246,34 @@ fun PillBar(
     val token = pillBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBar] as PillBarTokens
 
-    CompositionLocalProvider(
-        LocalPillBarTokens provides token,
-        LocalPillBarInfo provides PillBarInfo(style)
-    ) {
-        val lazyListState = rememberLazyListState()
-        val scope = rememberCoroutineScope()
+    val pillBarInfo = PillBarInfo(style)
+    val lazyListState = rememberLazyListState()
+    val scope = rememberCoroutineScope()
 
-        LazyRow(
-            modifier = modifier
-                .fillMaxWidth()
-                .background(if (showBackground) getPillBarTokens().background(getPillBarInfo()) else Color.Unspecified)
-                .focusable(enabled = false),
-            contentPadding = PaddingValues(horizontal = 16.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
-            state = lazyListState
-        ) {
-            metadataList.forEachIndexed { index, pillMetadata ->
-                item(index.toString()) {
-                    PillButton(
-                        pillMetadata,
-                        modifier = Modifier.onFocusEvent { focusState ->
-                            if (focusState.isFocused) {
-                                scope.launch {
-                                    lazyListState.animateScrollToItem(
-                                        max(0, index - 2)
-                                    )
-                                }
+    LazyRow(
+        modifier = modifier
+            .fillMaxWidth()
+            .background(if (showBackground) token.background(pillBarInfo) else Color.Unspecified)
+            .focusable(enabled = false),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
+        state = lazyListState
+    ) {
+        metadataList.forEachIndexed { index, pillMetadata ->
+            item(index.toString()) {
+                PillButton(
+                    pillMetadata,
+                    modifier = Modifier.onFocusEvent { focusState ->
+                        if (focusState.isFocused) {
+                            scope.launch {
+                                lazyListState.animateScrollToItem(
+                                    max(0, index - 2)
+                                )
                             }
-                        }, style = style, pillButtonTokens = pillButtonTokens
-                    )
-                }
+                        }
+                    }, style = style, pillButtonTokens = pillButtonTokens
+                )
             }
         }
     }
-}
-
-@Composable
-fun getPillButtonTokens(): PillButtonTokens {
-    return LocalPillButtonTokens.current
-}
-
-@Composable
-fun getPillButtonInfo(): PillButtonInfo {
-    return LocalPillButtonInfo.current
-}
-
-@Composable
-fun getPillBarTokens(): PillBarTokens {
-    return LocalPillBarTokens.current
-}
-
-@Composable
-fun getPillBarInfo(): PillBarInfo {
-    return LocalPillBarInfo.current
 }

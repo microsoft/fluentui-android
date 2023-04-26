@@ -13,7 +13,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -34,19 +36,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
 import com.microsoft.fluentui.util.getStringResource
 import kotlinx.coroutines.launch
 import kotlin.math.max
-
-val LocalAvatarCarouselTokens = compositionLocalOf { AvatarCarouselTokens() }
-val LocalAvatarCarouselInfo = compositionLocalOf { AvatarCarouselInfo() }
-
-@Composable
-fun getAvatarCarouselTokens(): AvatarCarouselTokens {
-    return LocalAvatarCarouselTokens.current
-}
-
-@Composable
-fun getAvatarCarouselInfo(): AvatarCarouselInfo {
-    return LocalAvatarCarouselInfo.current
-}
 
 /**
  * Generate an AvatarCarousel. This is a horizontally scrollable bar which is made up of [AvatarCarouselItem].
@@ -70,29 +59,27 @@ fun AvatarCarousel(
 ) {
     val token = avatarCarouselTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarCarousel] as AvatarCarouselTokens
-    CompositionLocalProvider(
-        LocalAvatarCarouselTokens provides token,
-        LocalAvatarCarouselInfo provides AvatarCarouselInfo(size)
-    ) {
-        val statusString = getStringResource(R.string.Status)
-        val outOfOfficeString = getStringResource(R.string.Out_Of_Office)
-        val activeString = getStringResource(R.string.Active)
-        val inActiveString = getStringResource(R.string.Inactive)
-        val scope = rememberCoroutineScope()
-        val lazyListState = rememberLazyListState()
-        val avatarSize = getAvatarCarouselTokens().avatarSize(getAvatarCarouselInfo())
-        val textStyle =
-            getAvatarCarouselTokens().textTypography(getAvatarCarouselInfo())
-        val subTextStyle =
-            getAvatarCarouselTokens().subTextTypography(getAvatarCarouselInfo())
-        val avatarTextPadding = getAvatarCarouselTokens().padding(getAvatarCarouselInfo())
-        val bottomPadding = if (size == AvatarCarouselSize.Small) 8.dp else 0.dp
-        val textColor = getAvatarCarouselTokens().textColor(getAvatarCarouselInfo())
-        val subTextColor =
-            getAvatarCarouselTokens().subTextColor(getAvatarCarouselInfo())
+    val avatarCarouselInfo = AvatarCarouselInfo(size)
+    val statusString = getStringResource(R.string.Status)
+    val outOfOfficeString = getStringResource(R.string.Out_Of_Office)
+    val activeString = getStringResource(R.string.Active)
+    val inActiveString = getStringResource(R.string.Inactive)
+    val scope = rememberCoroutineScope()
+    val lazyListState = rememberLazyListState()
+    val avatarSize = token.avatarSize(avatarCarouselInfo)
+    val textStyle =
+        token.textTypography(avatarCarouselInfo)
+    val subTextStyle =
+        token.subTextTypography(avatarCarouselInfo)
+    val avatarTextPadding = token.padding(avatarCarouselInfo)
+    val bottomPadding = if (size == AvatarCarouselSize.Small) 8.dp else 0.dp
+    val textColor = token.textColor(avatarCarouselInfo)
+    val subTextColor =
+        token.subTextColor(avatarCarouselInfo)
 
 
-        LazyRow(state = lazyListState,
+    LazyRow(
+        state = lazyListState,
         modifier = modifier.draggable(
             orientation = Orientation.Horizontal,
             state = rememberDraggableState { delta ->
@@ -100,99 +87,100 @@ fun AvatarCarousel(
                     lazyListState.scrollBy(-delta)
                 }
             },
-        )) {
-            itemsIndexed(avatarList) { index, item ->
-                val backgroundColor =
-                    getAvatarCarouselTokens().backgroundColor(getAvatarCarouselInfo())
-                        .getColorByState(
-                            enabled = item.enabled,
-                            selected = false,
-                            interactionSource = remember { MutableInteractionSource() }
-                        )
-                val nameString =
-                    if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
-                Column(
-                    Modifier
-                        .onFocusEvent { focusState ->
-                            if (focusState.isFocused) {
-                                scope.launch {
-                                    lazyListState.animateScrollToItem(
-                                        max(
-                                            0,
-                                            index - 2
-                                        )
+        )
+    ) {
+        itemsIndexed(avatarList) { index, item ->
+            val backgroundColor =
+                token.backgroundColor(avatarCarouselInfo)
+                    .getColorByState(
+                        enabled = item.enabled,
+                        selected = false,
+                        interactionSource = remember { MutableInteractionSource() }
+                    )
+            val nameString =
+                if (size == AvatarCarouselSize.Large) "${item.person.getName()}. " else "${item.person.firstName}. "
+            Column(
+                Modifier
+                    .onFocusEvent { focusState ->
+                        if (focusState.isFocused) {
+                            scope.launch {
+                                lazyListState.animateScrollToItem(
+                                    max(
+                                        0,
+                                        index - 2
                                     )
-                                }
+                                )
                             }
                         }
-                        .background(backgroundColor)
-                        .requiredWidth(88.dp)
-                        .alpha(if (item.enabled) 1f else 0.7f)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(),
-                            onClickLabel = null,
-                            enabled = item.enabled,
-                            onClick = item.onItemClick ?: {},
-                            role = Role.Button
-                        ).testTag("item $index")
-                        .clearAndSetSemantics {
-                            contentDescription =
-                                nameString + "${if (enablePresence) "${statusString}, ${item.person.status}," else ""} " +
-                                        "${if (enablePresence && item.person.isOOO) "${outOfOfficeString}," else ""} " +
-                                        if (item.enableActivityRing) {
-                                            if (item.person.isActive) activeString else inActiveString
-                                        } else ""
-                        },
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Avatar(
-                        modifier = Modifier
-                            .padding(top = 8.dp),
-                        person = item.person,
-                        size = avatarSize,
-                        avatarToken = avatarTokens,
-                        enablePresence = enablePresence,
-                        enableActivityRings = item.enableActivityRing
+                    }
+                    .background(backgroundColor)
+                    .requiredWidth(88.dp)
+                    .alpha(if (item.enabled) 1f else 0.7f)
+                    .clickable(
+                        interactionSource = remember { MutableInteractionSource() },
+                        indication = rememberRipple(),
+                        onClickLabel = null,
+                        enabled = item.enabled,
+                        onClick = item.onItemClick ?: {},
+                        role = Role.Button
                     )
+                    .testTag("item $index")
+                    .clearAndSetSemantics {
+                        contentDescription =
+                            nameString + "${if (enablePresence) "${statusString}, ${item.person.status}," else ""} " +
+                                    "${if (enablePresence && item.person.isOOO) "${outOfOfficeString}," else ""} " +
+                                    if (item.enableActivityRing) {
+                                        if (item.person.isActive) activeString else inActiveString
+                                    } else ""
+                    },
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Avatar(
+                    modifier = Modifier
+                        .padding(top = 8.dp),
+                    person = item.person,
+                    size = avatarSize,
+                    avatarToken = avatarTokens,
+                    enablePresence = enablePresence,
+                    enableActivityRings = item.enableActivityRing
+                )
+                Row(
+                    Modifier
+                        .padding(
+                            start = 2.dp,
+                            end = 2.dp,
+                            top = avatarTextPadding,
+                            bottom = bottomPadding
+                        )
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        modifier = Modifier.clearAndSetSemantics { },
+                        text = item.person.firstName,
+                        color = if (item.enabled) textColor.rest else textColor.disabled,
+                        style = textStyle,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
+                if (size == AvatarCarouselSize.Large) {
                     Row(
                         Modifier
-                            .padding(
-                                start = 2.dp,
-                                end = 2.dp,
-                                top = avatarTextPadding,
-                                bottom = bottomPadding
-                            )
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
+                            .padding(start = 2.dp, end = 2.dp, bottom = 8.dp),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
                             modifier = Modifier.clearAndSetSemantics { },
-                            text = item.person.firstName,
-                            color = if (item.enabled) textColor.rest else textColor.disabled,
-                            style = textStyle,
+                            text = item.person.lastName,
+                            color = if (item.enabled) subTextColor.rest else subTextColor.disabled,
+                            style = subTextStyle,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
-                    }
-                    if (size == AvatarCarouselSize.Large) {
-                        Row(
-                            Modifier
-                                .fillMaxWidth()
-                                .padding(start = 2.dp, end = 2.dp, bottom = 8.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Text(
-                                modifier = Modifier.clearAndSetSemantics { },
-                                text = item.person.lastName,
-                                color = if (item.enabled) subTextColor.rest else subTextColor.disabled,
-                                style = subTextStyle,
-                                maxLines = 1,
-                                overflow = TextOverflow.Ellipsis
-                            )
-                        }
                     }
                 }
             }

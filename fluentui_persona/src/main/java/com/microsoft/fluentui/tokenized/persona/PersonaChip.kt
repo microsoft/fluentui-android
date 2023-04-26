@@ -11,8 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -28,9 +26,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Medium
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipTokens
-
-private val LocalPersonaChipTokens = compositionLocalOf { PersonaChipTokens() }
-private val LocalPersonaChipInfo = compositionLocalOf { PersonaChipInfo() }
 
 /**
  * [PersonaChip] is a compact representations of entities(most commonly, people)that can be types in, deleted or dragged easily
@@ -61,89 +56,75 @@ fun PersonaChip(
 ) {
     val token = personaChipTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PersonaChip] as PersonaChipTokens
-    CompositionLocalProvider(
-        LocalPersonaChipTokens provides token,
-        LocalPersonaChipInfo provides PersonaChipInfo(
-            style,
-            enabled,
-            size
-        )
-    ) {
-        val backgroundColor =
-            getPersonaChipTokens().backgroundColor(personaChipInfo = getPersonaChipInfo())
-                .getColorByState(
-                    enabled = enabled, selected = selected, interactionSource = interactionSource
-                )
-        val textColor = getPersonaChipTokens().textColor(personaChipInfo = getPersonaChipInfo())
+    val personaChipInfo = PersonaChipInfo(
+        style,
+        enabled,
+        size
+    )
+    val backgroundColor =
+        token.backgroundColor(personaChipInfo = personaChipInfo)
             .getColorByState(
                 enabled = enabled, selected = selected, interactionSource = interactionSource
             )
-        val typography = getPersonaChipTokens().typography(personaChipInfo = getPersonaChipInfo())
-        val avatarSize = getPersonaChipTokens().avatarSize(personaChipInfo = getPersonaChipInfo())
-        val verticalPadding =
-            getPersonaChipTokens().verticalPadding(personaChipInfo = getPersonaChipInfo())
-        val horizontalPadding =
-            getPersonaChipTokens().horizontalPadding(personaChipInfo = getPersonaChipInfo())
-        val avatarToTextSpacing =
-            getPersonaChipTokens().avatarToTextSpacing(personaChipInfo = getPersonaChipInfo())
-        val cornerRadius =
-            getPersonaChipTokens().cornerRadius(personaChipInfo = getPersonaChipInfo())
-
-        Box(
-            modifier = modifier
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(backgroundColor)
-                .clickable(
-                    enabled = enabled,
-                    onClick = onClick ?: {},
-                    interactionSource = interactionSource,
-                    indication = rememberRipple()
-                )
+    val textColor = token.textColor(personaChipInfo = personaChipInfo)
+        .getColorByState(
+            enabled = enabled, selected = selected, interactionSource = interactionSource
         )
-        {
-            Row(
-                Modifier
-                    .padding(
-                        horizontal = horizontalPadding,
-                        vertical = verticalPadding
-                    ),
-                horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (size == Medium) {
-                    if (onCloseClick != null && selected) {
-                        Icon(
-                            Icons.Filled.Close,
-                            modifier = Modifier
-                                .size(16.dp)
-                                .clickable(
-                                    enabled = true,
-                                    onClick = onCloseClick,
-                                    role = Role.Button
-                                ),
-                            contentDescription = LocalContext.current.resources.getString(R.string.fluentui_close),
-                            tint = textColor
-                        )
-                    } else {
-                        Avatar(person = person, size = avatarSize)
-                    }
+    val typography = token.typography(personaChipInfo = personaChipInfo)
+    val avatarSize = token.avatarSize(personaChipInfo = personaChipInfo)
+    val verticalPadding =
+        token.verticalPadding(personaChipInfo = personaChipInfo)
+    val horizontalPadding =
+        token.horizontalPadding(personaChipInfo = personaChipInfo)
+    val avatarToTextSpacing =
+        token.avatarToTextSpacing(personaChipInfo = personaChipInfo)
+    val cornerRadius =
+        token.cornerRadius(personaChipInfo = personaChipInfo)
+
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(cornerRadius))
+            .background(backgroundColor)
+            .clickable(
+                enabled = enabled,
+                onClick = onClick ?: {},
+                interactionSource = interactionSource,
+                indication = rememberRipple()
+            )
+    )
+    {
+        Row(
+            Modifier
+                .padding(
+                    horizontal = horizontalPadding,
+                    vertical = verticalPadding
+                ),
+            horizontalArrangement = Arrangement.spacedBy(avatarToTextSpacing),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            if (size == Medium) {
+                if (onCloseClick != null && selected) {
+                    Icon(
+                        Icons.Filled.Close,
+                        modifier = Modifier
+                            .size(16.dp)
+                            .clickable(
+                                enabled = true,
+                                onClick = onCloseClick,
+                                role = Role.Button
+                            ),
+                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_close),
+                        tint = textColor
+                    )
+                } else {
+                    Avatar(person = person, size = avatarSize)
                 }
-                Text(
-                    text = person.getLabel(),
-                    color = textColor,
-                    style = typography
-                )
             }
+            Text(
+                text = person.getLabel(),
+                color = textColor,
+                style = typography
+            )
         }
     }
-}
-
-@Composable
-private fun getPersonaChipTokens(): PersonaChipTokens {
-    return LocalPersonaChipTokens.current
-}
-
-@Composable
-private fun getPersonaChipInfo(): PersonaChipInfo {
-    return LocalPersonaChipInfo.current
 }

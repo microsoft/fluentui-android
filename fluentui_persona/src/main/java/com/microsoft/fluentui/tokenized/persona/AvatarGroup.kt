@@ -2,8 +2,6 @@ package com.microsoft.fluentui.tokenized.persona
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.platform.LocalDensity
@@ -14,9 +12,6 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import java.lang.Math.max
-
-val LocalAvatarGroupTokens = compositionLocalOf { AvatarGroupTokens() }
-val LocalAvatarGroupInfo = compositionLocalOf { AvatarGroupInfo() }
 
 const val DEFAULT_MAX_AVATAR = 5
 
@@ -59,89 +54,75 @@ fun AvatarGroup(
     if (style == AvatarGroupStyle.Stack)
         enablePresence = false
 
-    CompositionLocalProvider(
-        LocalAvatarGroupTokens provides token,
-        LocalAvatarGroupInfo provides AvatarGroupInfo(size, style)
-    ) {
-        val spacing: MutableList<Int> = mutableListOf()
-        for (i in 0 until visibleAvatar) {
-            val person = group.members[i]
-            if (i != 0) {
-                spacing.add(with(LocalDensity.current) {
-                    getAvatarGroupTokens().spacing(getAvatarGroupInfo(), person.isActive)
-                        .roundToPx()
-                })
-            }
-        }
-        if (group.members.size > visibleAvatar || group.members.isEmpty()) {
+    val avatarGroupInfo = AvatarGroupInfo(size, style)
+    val spacing: MutableList<Int> = mutableListOf()
+    for (i in 0 until visibleAvatar) {
+        val person = group.members[i]
+        if (i != 0) {
             spacing.add(with(LocalDensity.current) {
-                getAvatarGroupTokens().spacing(getAvatarGroupInfo(), false).roundToPx()
+                token.spacing(avatarGroupInfo, person.isActive)
+                    .roundToPx()
             })
         }
+    }
+    if (group.members.size > visibleAvatar || group.members.isEmpty()) {
+        spacing.add(with(LocalDensity.current) {
+            token.spacing(avatarGroupInfo, false).roundToPx()
+        })
+    }
 
-        val semanticModifier: Modifier = Modifier.semantics(true) {
-            contentDescription =
-                "Group Name: ${group.groupName}. Total ${group.members.size} members. "
+    val semanticModifier: Modifier = Modifier.semantics(true) {
+        contentDescription =
+            "Group Name: ${group.groupName}. Total ${group.members.size} members. "
+    }
+
+    Layout(modifier = modifier
+        .padding(8.dp)
+        .then(semanticModifier), content = {
+        for (i in 0 until visibleAvatar) {
+            val person = group.members[i]
+
+            var paddingModifier: Modifier = Modifier
+            if (style == AvatarGroupStyle.Pile && person.isActive) {
+                val padding = token.pilePadding(avatarGroupInfo)
+                paddingModifier = paddingModifier.padding(start = padding, end = padding)
+            }
+
+            Avatar(
+                person,
+                modifier = paddingModifier,
+                size = size,
+                enableActivityRings = true,
+                enablePresence = enablePresence,
+                avatarToken = avatarToken
+            )
+        }
+        if (group.members.size > visibleAvatar || group.members.isEmpty()) {
+            Avatar(
+                group.members.size - visibleAvatar, size = size,
+                enableActivityRings = true, avatarToken = avatarToken
+            )
+        }
+    }) { measurables, constraints ->
+        val placeables = measurables.map { measurable ->
+            measurable.measure(constraints)
         }
 
-        Layout(modifier = modifier
-            .padding(8.dp)
-            .then(semanticModifier), content = {
-            for (i in 0 until visibleAvatar) {
-                val person = group.members[i]
+        var layoutHeight = 0
+        var layoutWidth = 0
+        placeables.forEach {
+            layoutHeight = max(layoutHeight, it.height)
+            layoutWidth += it.width
+        }
+        layoutWidth += spacing.sum()
 
-                var paddingModifier: Modifier = Modifier
-                if (style == AvatarGroupStyle.Pile && person.isActive) {
-                    val padding = getAvatarGroupTokens().pilePadding(getAvatarGroupInfo())
-                    paddingModifier = paddingModifier.padding(start = padding, end = padding)
-                }
-
-                Avatar(
-                    person,
-                    modifier = paddingModifier,
-                    size = size,
-                    enableActivityRings = true,
-                    enablePresence = enablePresence,
-                    avatarToken = avatarToken
-                )
-            }
-            if (group.members.size > visibleAvatar || group.members.isEmpty()) {
-                Avatar(
-                    group.members.size - visibleAvatar, size = size,
-                    enableActivityRings = true, avatarToken = avatarToken
-                )
-            }
-        }) { measurables, constraints ->
-            val placeables = measurables.map { measurable ->
-                measurable.measure(constraints)
-            }
-
-            var layoutHeight = 0
-            var layoutWidth = 0
-            placeables.forEach {
-                layoutHeight = max(layoutHeight, it.height)
-                layoutWidth += it.width
-            }
-            layoutWidth += spacing.sum()
-
-            layout(layoutWidth, layoutHeight) {
-                var xPosition = 0
-                placeables.forEach { placeable ->
-                    placeable.placeRelative(y = 0, x = xPosition)
-                    if (placeable != placeables.last())
-                        xPosition += placeable.width + spacing[placeables.indexOf(placeable)]
-                }
+        layout(layoutWidth, layoutHeight) {
+            var xPosition = 0
+            placeables.forEach { placeable ->
+                placeable.placeRelative(y = 0, x = xPosition)
+                if (placeable != placeables.last())
+                    xPosition += placeable.width + spacing[placeables.indexOf(placeable)]
             }
         }
     }
-}
-
-@Composable
-fun getAvatarGroupTokens(): AvatarGroupTokens {
-    return LocalAvatarGroupTokens.current
-}
-
-@Composable
-fun getAvatarGroupInfo(): AvatarGroupInfo {
-    return LocalAvatarGroupInfo.current
 }
