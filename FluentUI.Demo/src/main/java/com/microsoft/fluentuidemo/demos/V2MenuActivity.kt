@@ -11,13 +11,13 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
@@ -51,24 +51,24 @@ class V2MenuActivity : DemoActivity() {
 
 @Composable
 fun CreateMenuActivityUI(context: Context) {
-    val xOffsetState = remember { mutableStateOf("0") }
-    val yOffsetState = remember { mutableStateOf("0") }
-    val repeatContentTextCountState = remember { mutableStateOf("4") }
+    val xOffsetState = rememberSaveable { mutableStateOf("0") }
+    val yOffsetState = rememberSaveable { mutableStateOf("0") }
+    val repeatContentTextCountState = rememberSaveable { mutableStateOf("4") }
     val contentTextState =
-        remember { mutableStateOf(context.getString(R.string.menu_content_text_input)) }
+        rememberSaveable { mutableStateOf(context.getString(R.string.menu_content_text_input)) }
     Column {
         Column {
             ListItem.Header(title = context.getString(R.string.menu_xOffset),
                 trailingAccessoryView = {
                     BasicTextField(value = xOffsetState.value,
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { xOffsetState.value = it.trim() })
                 }
             )
             ListItem.Header(title = context.getString(R.string.menu_yOffset),
                 trailingAccessoryView = {
                     BasicTextField(value = yOffsetState.value,
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { yOffsetState.value = it.trim() })
                 })
             ListItem.Header(title = context.getString(R.string.menu_content_text),
@@ -80,7 +80,7 @@ fun CreateMenuActivityUI(context: Context) {
             ListItem.Header(title = context.getString(R.string.menu_repeat_content_text),
                 trailingAccessoryView = {
                     BasicTextField(value = repeatContentTextCountState.value,
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { repeatContentTextCountState.value = it.trim() })
                 })
             ListItem.SectionDescription(description = context.getString(R.string.menu_description))
@@ -92,8 +92,8 @@ fun CreateMenuActivityUI(context: Context) {
             if (yOffsetState.value == "" || yOffsetState.value.toFloatOrNull() == null) 0.dp else yOffsetState.value.toFloat()
                 .toInt().dp
         val repeat =
-            if (repeatContentTextCountState.value == "" || repeatContentTextCountState.value.toFloatOrNull() == null) 0 else repeatContentTextCountState.value.toFloat()
-                .toInt()
+            if (repeatContentTextCountState.value == "" || repeatContentTextCountState.value.toIntOrNull() == null) 0 else repeatContentTextCountState.value.toInt()
+
         Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxSize()) {
             MenuRow(context, xOffset, yOffset, contentTextState.value, repeat)
             if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_PORTRAIT) {
@@ -130,7 +130,7 @@ fun Menu(context: Context, xOffset: Dp, yOffset: Dp, contentText: String, count:
                 repeat(count) {
                     Text(
                         text = "$contentText ${it + 1}",
-                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )

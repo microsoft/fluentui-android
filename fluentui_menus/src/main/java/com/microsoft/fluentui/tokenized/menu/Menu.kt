@@ -73,8 +73,8 @@ fun Menu(
         val menuInfo = MenuInfo()
 
         val transformOriginState = remember { mutableStateOf(TransformOrigin.Center) }
+        val applyWidthModifier = remember { mutableStateOf(false) }
         val restrictWidth = remember { mutableStateOf(false) }
-        val flag = remember { mutableStateOf(false) }
         val density = LocalDensity.current
         val screenWidth = with(density) { LocalConfiguration.current.screenWidthDp.dp.roundToPx() }
         val popupPositionProvider = MenuPositionProvider(
@@ -84,7 +84,7 @@ fun Menu(
             token.sideMargin(menuInfo)
         ) { parentBounds, menuBounds ->
             transformOriginState.value = calculateTransformOrigin(parentBounds, menuBounds)
-            flag.value = menuBounds.size.width >= screenWidth * 0.75f
+            restrictWidth.value = menuBounds.size.width >= screenWidth * 0.75f
         }
 
         Popup(
@@ -96,7 +96,7 @@ fun Menu(
                 expandedStates = openedStates,
                 transformOriginState = transformOriginState,
                 modifier = modifier.then(
-                    if (restrictWidth.value) Modifier
+                    if (applyWidthModifier.value) Modifier
                         .fillMaxWidth(0.75f)
                     else Modifier
                 ),
@@ -108,7 +108,7 @@ fun Menu(
         }
 
         LaunchedEffect(Unit) {
-            restrictWidth.value = flag.value
+            applyWidthModifier.value = restrictWidth.value
         }
     }
 }
@@ -223,10 +223,7 @@ internal data class MenuPositionProvider(
 
         // Compute horizontal position.
         val toRight = maxOf(anchorBounds.left + contentOffsetX, horizontalMargin)
-        val calculatedLeft = anchorBounds.right - contentOffsetX - popupContentSize.width
-        val toLeft =
-            if (windowSize.width - (calculatedLeft + popupContentSize.width) > horizontalMargin)
-                calculatedLeft else calculatedLeft - horizontalMargin
+        val toLeft = anchorBounds.right - contentOffsetX - popupContentSize.width
         val toDisplayRight = windowSize.width - popupContentSize.width - horizontalMargin
         val toDisplayLeft = horizontalMargin
         val x = if (layoutDirection == LayoutDirection.Ltr) {
@@ -246,15 +243,15 @@ internal data class MenuPositionProvider(
                 if (anchorBounds.right <= windowSize.width) toDisplayLeft else toDisplayRight
             )
         }.firstOrNull {
-            it >= 0 && it + popupContentSize.width <= windowSize.width
-        } ?: toLeft
+            it >= horizontalMargin && it + popupContentSize.width + horizontalMargin <= windowSize.width
+        } ?: (if (layoutDirection == LayoutDirection.Ltr) toRight else toLeft)
 
         // Compute vertical position.
         val toBottom = anchorBounds.bottom + contentOffsetY
         val toTop = anchorBounds.top - contentOffsetY - popupContentSize.height
         val toCenter = anchorBounds.top - popupContentSize.height / 2
         val y = sequenceOf(toBottom, toTop, toCenter).firstOrNull {
-            it > 0 && it + popupContentSize.height <= windowSize.height - bottomMarginPx
+            it >= 0 && it + popupContentSize.height <= windowSize.height - bottomMarginPx
         } ?: toTop
 
         onPositionCalculated(
