@@ -51,7 +51,7 @@ class DemoListActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     }
 
     private fun setupAppBar() {
-        demoListBinding.appBar.toolbar.subtitle = "SDK Version: ${BuildConfig.VERSION_NAME}"
+        demoListBinding.appBar.toolbar.subtitle = String.format(getString(R.string.sdk_version, BuildConfig.VERSION_NAME))
 
         searchbar = Searchbar(this)
         searchbar.onQueryTextListener = this
