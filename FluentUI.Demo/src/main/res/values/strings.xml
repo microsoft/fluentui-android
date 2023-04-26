@@ -756,6 +756,8 @@
     <string name="caption">Caption is Regular 12sp</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
     <string name="common_list">Item %d</string>
     <!--UI Label for Toast message-->
