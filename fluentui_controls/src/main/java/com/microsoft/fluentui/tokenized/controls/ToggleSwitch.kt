@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.tokenized.controls
 
 import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.KeyEvent.KEYCODE_SPACE
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.TweenSpec
 import androidx.compose.animation.core.animateDpAsState
@@ -153,7 +154,7 @@ fun ToggleSwitch(
             .then(toggleModifier)
             .onKeyEvent { keyEvent ->
                 when (keyEvent.nativeKeyEvent.keyCode) {
-                    KEYCODE_ENTER -> {
+                    KEYCODE_ENTER, KEYCODE_SPACE -> {
                         scope.launch { swipeState.animateTo(!swipeState.currentValue) }
                         true
                     }
