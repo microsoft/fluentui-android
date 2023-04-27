@@ -1,19 +1,22 @@
-Release Version 0.1.23:
+Release Version 0.1.24:
 
 What's New:
 
 Fluent V2:
+    New Component:
+	V2 now has two additional components
+		TextField and PopUp-Menu
     Fix/Enhancement:
-        1.Added textAccessibiltyProperties variable for setting accessibilty properties to the text in Listitem
-        2.Added Scaffold, Snackbar and CardNudge
-        3.Fixed Token Parity for Pill Button, Button, FAB and Avatar
-        4.Fixed RTL issue for CCB Gradient
-        5.Fixed focused State in RadioButton, CheckBox and ToggleSwitch
-        6.Fixed Accessibility Insights Issue with Searchbar and Radio Button
-        7.Minor code fixes
-    Localization:
-        Updated strings in few modules
-        Added GH workflow to autotranslate and create PR for transalted strings
-    Build:
-        Upgrading hydra lab version to 1.1.4
-        Added UI tests to all the components
+      Toggle Switch indication overflows the clipped area.
+	ToggleSwitch doesn't work with Keyboard Enter press.
+	Pill Button Clickable area is reduced.
+	Role Announce for CCB Items
+	Snackbar Talkback annouce type of snackbar in button
+	
+    DemoApp:
+	Keyboard and Talkback focus is now synced with 'Template list' and 'Regular List' while navigate using tab key.
+	DemoApp Appbar talkback version id with description "SDK Version"
+	Talkback annnounce theme change in AppBarLayout Activity
+	Descriptive Talkback for Avatar Size Labels for Avatar View ActivityHeadings to be marked in Avatar Activity
+	Specify Role in Cell for TemplateView
+	Announce State Change in TemplateView Activity for Cell
