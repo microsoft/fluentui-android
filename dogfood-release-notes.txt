@@ -3,20 +3,20 @@ Release Version 0.1.24:
 What's New:
 
 Fluent V2:
-    New Component:
-	V2 now has two additional components
-		TextField and PopUp-Menu
-    Fix/Enhancement:
-      Toggle Switch indication overflows the clipped area.
-	ToggleSwitch doesn't work with Keyboard Enter press.
-	Pill Button Clickable area is reduced.
-	Role Announce for CCB Items
-	Snackbar Talkback annouce type of snackbar in button
+    New Component: TextField, Menu
 	
-    DemoApp:
-	Keyboard and Talkback focus is now synced with 'Template list' and 'Regular List' while navigate using tab key.
-	DemoApp Appbar talkback version id with description "SDK Version"
-	Talkback annnounce theme change in AppBarLayout Activity
-	Descriptive Talkback for Avatar Size Labels for Avatar View ActivityHeadings to be marked in Avatar Activity
-	Specify Role in Cell for TemplateView
-	Announce State Change in TemplateView Activity for Cell
+    Fix/Enhancement:
+		1) Fixed Toggle Switch ripple indication to clip to its boundary.
+		2) Fixed Toggle Switch to on/off with Keyboard Enter/Space press.
+		3) Fixed Pill Button to have a complete clickable area.		
+		4) Added padding & start indent token for divider.
+		5) Removed tail gradient on Circular progress indicators as per Fluent design.
+		6) Optimise recomposition in Cirular progress indicators.
+
+Fluent v-current:
+	Fix/Enhancement: 
+		1) Role Announce for CCB Items
+    
+	DemoApp:
+		1) Fixed accessibility bug.
+		2) DemoApp updated to use view binding instead of kotlin synthetic plugins.
