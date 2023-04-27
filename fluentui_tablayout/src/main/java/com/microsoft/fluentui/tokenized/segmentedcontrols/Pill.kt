@@ -157,9 +157,9 @@ fun PillButton(
             .defaultMinSize(minHeight = token.minHeight(pillButtonInfo))
             .clip(shape)
             .background(backgroundColor, shape)
-            .padding(vertical = token.verticalPadding(pillButtonInfo))
             .then(clickAndSemanticsModifier)
             .then(if (interactionSource.collectIsFocusedAsState().value || interactionSource.collectIsHoveredAsState().value) focusedBorderModifier else Modifier)
+            .padding(vertical = token.verticalPadding(pillButtonInfo))
             .semantics(true) {
                 contentDescription =
                     "${pillMetaData.text} $selectedString $enabledString"
