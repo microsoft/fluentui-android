@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">中</string>
     <string name="avatar_size_small">小</string>
     <string name="avatar_size_xsmall">非表示のアイコン</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -582,8 +586,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">スナックバーを表示</string>
+    <string name="fluentui_dismiss_snackbar">スナックバーを閉じる</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">アクション</string>
@@ -658,6 +662,8 @@
     <string name="regular_list">レギュラー リスト</string>
     <string name="cell_example_title">タイトル: セル</string>
     <string name="cell_example_description">説明: タップして向きを変更します</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -718,27 +724,28 @@
     <string name="caption">キャプションは標準 12sp です</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">アイテムの %d</string>
     <!--UI Label for Toast message-->
-    <string name="common_folder">Folder</string>
+    <string name="common_folder">フォルダー</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">クリック数</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
-    <string name="scaffold">Scaffold</string>
+    <string name="scaffold">足場</string>
     <!--UI Label for button-->
     <string name="scaffold_fab">FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">FAB 展開済み</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">FAB 折りたたみ済み</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">クリックして最新の情報に更新</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">引き出しを開ける</string>
 
 
 </resources>

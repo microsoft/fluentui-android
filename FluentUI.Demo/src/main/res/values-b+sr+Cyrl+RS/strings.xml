@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">Средња</string>
     <string name="avatar_size_small">Мала</string>
     <string name="avatar_size_xsmall">XSmall</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -584,8 +588,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">Прикажи Snackbar</string>
+    <string name="fluentui_dismiss_snackbar">Одбаци Snackbar</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">Радња</string>
@@ -660,6 +664,8 @@
     <string name="regular_list">Обична листа</string>
     <string name="cell_example_title">Наслов: Ћелија</string>
     <string name="cell_example_description">Опис: Додирните да бисте променили положај</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -720,12 +726,14 @@
     <string name="caption">Натпис је Обичан 12sp</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">Ставка %d</string>
     <!--UI Label for Toast message-->
-    <string name="common_folder">Folder</string>
+    <string name="common_folder">Фасцикла</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">Кликнуто</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
@@ -733,14 +741,13 @@
     <!--UI Label for button-->
     <string name="scaffold_fab">FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">FAB је проширен</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">FAB је скупљен</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">Кликните да бисте освежили листу</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">Отвори фиоку</string>
 
 
 </resources>

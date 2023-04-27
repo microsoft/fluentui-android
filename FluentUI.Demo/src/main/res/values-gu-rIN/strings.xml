@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">મધ્યમ</string>
     <string name="avatar_size_small">નાનું</string>
     <string name="avatar_size_xsmall">XSmall</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -583,8 +587,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">સ્નૅકબાર બતાવો</string>
+    <string name="fluentui_dismiss_snackbar">સ્નૅકબાર કાઢી નાખો</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">ક્રિયા</string>
@@ -659,6 +663,8 @@
     <string name="regular_list">નિયમિત સૂચી</string>
     <string name="cell_example_title">શીર્ષક: કોષ</string>
     <string name="cell_example_description">વર્ણન: ઑરિએન્ટેશનને બદલવા માટે ટૅપ કરો</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -719,27 +725,28 @@
     <string name="caption">કૅપ્શન રેગ્યુલર 12sp છે</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">આઇટમ %d</string>
     <!--UI Label for Toast message-->
-    <string name="common_folder">Folder</string>
+    <string name="common_folder">ફોલ્ડર</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">ક્લિક કર્યું</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
-    <string name="scaffold">Scaffold</string>
+    <string name="scaffold">સ્કેફોલ્ડ</string>
     <!--UI Label for button-->
     <string name="scaffold_fab">FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">FAB વિસ્તૃત કર્યું</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">FAB સંક્ષિપ્ત કર્યું</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">સૂચીને તાજી કરવા માટે ક્લિક કરો</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">ડ્રોઅર ખોલો</string>
 
 
 </resources>

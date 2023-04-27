@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">Vidutinis</string>
     <string name="avatar_size_small">Mažas</string>
     <string name="avatar_size_xsmall">XS</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -585,8 +589,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">Rodyti įspėjimo juostą</string>
+    <string name="fluentui_dismiss_snackbar">Išjungti įspėjimo juostą</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">Veiksmas</string>
@@ -661,6 +665,8 @@
     <string name="regular_list">Įprastas sąrašas</string>
     <string name="cell_example_title">Pavadinimas: langelis</string>
     <string name="cell_example_description">Aprašas: bakstelėkite norėdami pakeisti padėtį</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -721,27 +727,28 @@
     <string name="caption">Antraštė yra įprasta 12sp</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">Elemento %d</string>
     <!--UI Label for Toast message-->
-    <string name="common_folder">Folder</string>
+    <string name="common_folder">Aplankas</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">Spustelėjo</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
-    <string name="scaffold">Scaffold</string>
+    <string name="scaffold">Pastoliai</string>
     <!--UI Label for button-->
     <string name="scaffold_fab">FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">FAB išskleistas</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">FAB suskleistas</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">Spustelėkite, kad būtų atnaujintas sąrašas</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">Atidaryti skydelį</string>
 
 
 </resources>

@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">Średni</string>
     <string name="avatar_size_small">Mała</string>
     <string name="avatar_size_xsmall">XSmall</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -585,8 +589,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">Pokaż Snackbar</string>
+    <string name="fluentui_dismiss_snackbar">Odrzuć Snackbar</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">Akcja</string>
@@ -661,6 +665,8 @@
     <string name="regular_list">Zwykła lista</string>
     <string name="cell_example_title">Tytuł: komórka</string>
     <string name="cell_example_description">Opis: naciśnij, aby zmienić orientację</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -721,27 +727,28 @@
     <string name="caption">Podpis ma zwykły widok z rozmiarem czcionki 12sp</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">Element %d</string>
     <!--UI Label for Toast message-->
     <string name="common_folder">Folder</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">Kliknięto</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
-    <string name="scaffold">Scaffold</string>
+    <string name="scaffold">Wzorzec</string>
     <!--UI Label for button-->
     <string name="scaffold_fab">FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">Rozwinięto FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">Zwinięto FAB</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">Kliknij, aby odświeżyć listę</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">Otwórz szufladę</string>
 
 
 </resources>
