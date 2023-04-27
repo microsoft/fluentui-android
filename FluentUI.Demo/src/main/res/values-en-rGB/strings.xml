@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">Medium</string>
     <string name="avatar_size_small">Small</string>
     <string name="avatar_size_xsmall">XSmall</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -659,6 +663,8 @@
     <string name="regular_list">Regular List</string>
     <string name="cell_example_title">Title: Cell</string>
     <string name="cell_example_description">Description: Tap to change orientation</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -719,6 +725,8 @@
     <string name="caption">Caption is Regular 12sp</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
     <string name="common_list">Item %d</string>
     <!--UI Label for Toast message-->
@@ -739,7 +747,6 @@
     <string name="scaffold_refresh_list">Click to refresh list</string>
     <!--UI Label for button-->
     <string name="scaffold_open_drawer">Open Drawer</string>
-
 
 
 </resources>

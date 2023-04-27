@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">ປານກາງ</string>
     <string name="avatar_size_small">ນ້ອຍ</string>
     <string name="avatar_size_xsmall">XSmall</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -582,8 +586,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">ສະແດງ Snackbar</string>
+    <string name="fluentui_dismiss_snackbar">ປິດ Snackbar ໄວ້</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">ການດຳເນີນການ</string>
@@ -658,6 +662,8 @@
     <string name="regular_list">ລາຍການປົກກະຕິ</string>
     <string name="cell_example_title">ຫົວຂໍ້: ເຊລ</string>
     <string name="cell_example_description">ຄຳອະທິບາຍ: ແຕະເພື່ອປ່ຽນທິດທາງ</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -718,27 +724,28 @@
     <string name="caption">ຄຳ​ອະ​ທິ​ບາຍ​ພາບແມ່ນ 12sp ປົກກະຕິ</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">%d ລາຍການ</string>
     <!--UI Label for Toast message-->
-    <string name="common_folder">Folder</string>
+    <string name="common_folder">ໂຟນເດີ</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">ຄລິກແລ້ວ</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
-    <string name="scaffold">Scaffold</string>
+    <string name="scaffold">ບ່ອນນັ່ງ</string>
     <!--UI Label for button-->
     <string name="scaffold_fab">FAB</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">ຂະຫຍາຍ FAB ແລ້ວ</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">ຫຍໍ້ FAB ລົງແລ້ວ</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">ຄລິກເພື່ອລາຍການໂຫຼດຄືນໃໝ່</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">ເປີດແຖບ</string>
 
 
 </resources>
