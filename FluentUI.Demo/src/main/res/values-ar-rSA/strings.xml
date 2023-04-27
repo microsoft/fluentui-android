@@ -82,6 +82,10 @@
     <string name="avatar_size_medium">متوسط</string>
     <string name="avatar_size_small">صغير</string>
     <string name="avatar_size_xsmall">XSmall</string>
+    <!-- Accessibility -->
+    <string name="avatar_size_xxlarge_accessibility">Double Extra Large</string>
+    <string name="avatar_size_xlarge_accessibility">Extra Large</string>
+    <string name="avatar_size_xsmall_accessibility">Extra Small</string>
 
     <!--AvatarGroupView-->
     <!-- UI label to show maximum displayed avatars -->
@@ -587,8 +591,8 @@
 
     <!--Snackbar-->
     <!-- Snackbar Activity Buttons -->
-    <string name="fluentui_show_snackbar">Show Snackbar</string>
-    <string name="fluentui_dismiss_snackbar">Dismiss Snackbar</string>
+    <string name="fluentui_show_snackbar">إظهار شريط الإعلامات</string>
+    <string name="fluentui_dismiss_snackbar">تجاهل شريط الإعلامات</string>
 
     <!-- UI label descriptions -->
     <string name="snackbar_action">الإجراء</string>
@@ -663,6 +667,8 @@
     <string name="regular_list">قائمة عادية</string>
     <string name="cell_example_title">العنوان: خلية</string>
     <string name="cell_example_description">الوصف: اضغط لتغيير الاتجاه</string>
+    <string name="vertical_layout">Vertical Layout</string>
+    <string name="horizontal_layout">Horizontal Layout</string>
 
     <!--TabLayout-->
     <!-- Text for button that shows a Standard Tab 2-Segment -->
@@ -723,27 +729,28 @@
     <string name="caption">التسمية التوضيحية عادية 12sp</string>
 
     <!--Common-->
+    <!-- UI Label for SDK Version -->
+    <string name="sdk_version">SDK Version: %s</string>
     <!--UI Label for Toast message-->
-    <string name="common_list">Item %d</string>
+    <string name="common_list">العنصر %d</string>
     <!--UI Label for Toast message-->
-    <string name="common_folder">Folder</string>
+    <string name="common_folder">مجلد</string>
     <!--UI Label for Toast message-->
-    <string name="common_clicked">Clicked</string>
+    <string name="common_clicked">تم النقر</string>
 
     <!--V2 Scaffold -->
     <!--UI Label Scaffold Example-->
-    <string name="scaffold">Scaffold</string>
+    <string name="scaffold">الهيكل</string>
     <!--UI Label for button-->
-    <string name="scaffold_fab">FAB</string>
+    <string name="scaffold_fab">زر الإجراء العائم</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_expanded">FAB Expanded</string>
+    <string name="scaffold_fab_expanded">تم توسيع زر الإجراء العائم</string>
     <!--UI Label for Toast message-->
-    <string name="scaffold_fab_collapsed">FAB Collapsed</string>
+    <string name="scaffold_fab_collapsed">تم طي زر الإجراء العائم</string>
     <!--UI Label for button-->
-    <string name="scaffold_refresh_list">Click to refresh list</string>
+    <string name="scaffold_refresh_list">انقر لتحديث القائمة</string>
     <!--UI Label for button-->
-    <string name="scaffold_open_drawer">Open Drawer</string>
-
+    <string name="scaffold_open_drawer">فتح الدرج</string>
 
 
 </resources>
