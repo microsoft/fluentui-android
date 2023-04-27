@@ -5,8 +5,6 @@
 
 package com.microsoft.fluentuidemo
 
-import androidx.viewbinding.ViewBinding
-import com.microsoft.fluentuidemo.databinding.ActivityActionBarLayoutBinding
 import com.microsoft.fluentuidemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass
@@ -22,6 +20,7 @@ const val V2CARD_NUDGE = "V2 Card Nudge"
 const val V2CONTEXTUAL_COMMAND_BAR = "V2 ContextualCommandBar"
 const val V2DRAWER = "V2 Drawer"
 const val V2LIST_ITEM = "V2 ListItem"
+const val V2MENU = "V2 Menu"
 const val V2PERSONA = "V2 Persona"
 const val V2PERSONA_CHIP = "V2 PersonaChip"
 const val V2PERSONA_LIST = "V2 PersonaList"
@@ -71,6 +70,7 @@ val DEMOS = arrayListOf(
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
     Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
+    Demo(V2MENU, V2MenuActivity::class),
     Demo(V2PERSONA, V2PersonaActivity::class),
     Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
