@@ -86,11 +86,9 @@ fun CreateMenuActivityUI(context: Context) {
             ListItem.SectionDescription(description = context.getString(R.string.menu_description))
         }
         val xOffset =
-            if (xOffsetState.value == "" || xOffsetState.value.toFloatOrNull() == null) 0.dp else xOffsetState.value.toFloat()
-                .toInt().dp
+            if (xOffsetState.value.toFloatOrNull() == null) 0.dp else xOffsetState.value.toFloat().dp
         val yOffset =
-            if (yOffsetState.value == "" || yOffsetState.value.toFloatOrNull() == null) 0.dp else yOffsetState.value.toFloat()
-                .toInt().dp
+            if (yOffsetState.value.toFloatOrNull() == null) 0.dp else yOffsetState.value.toFloat().dp
         val repeat =
             if (repeatContentTextCountState.value == "" || repeatContentTextCountState.value.toIntOrNull() == null) 0 else repeatContentTextCountState.value.toInt()
 
