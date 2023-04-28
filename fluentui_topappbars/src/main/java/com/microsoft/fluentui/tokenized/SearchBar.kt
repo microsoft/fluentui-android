@@ -162,29 +162,20 @@ fun SearchBar(
                     }
                 }
 
-                Box(
+                Icon(
+                    icon,
+                    contentDescription = contentDescription,
                     modifier = Modifier
-                        .size(44.dp, 40.dp)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(),
-                            enabled = enabled,
-                            onClick = onClick,
-                            role = Role.Button
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        FluentIcon(
-                            icon,
-                            contentDescription = contentDescription,
-                            tint = token.leftIconColor(searchBarInfo),
-                            flipOnRtl = mirrorImage
-                        ),
-                        modifier = Modifier
-                            .size(token.leftIconSize(searchBarInfo)),
-                    )
-                }
+                        .padding(
+                            (44.dp - token.leftIconSize(searchBarInfo)) / 2,
+                            (40.dp - token.leftIconSize(searchBarInfo)) / 2
+                        )
+                        .size(token.leftIconSize(searchBarInfo)),
+                    tint = token.leftIconColor(searchBarInfo),
+                    flipOnRtl = mirrorImage,
+                    enabled = enabled,
+                    onClick = onClick
+                )
             }
 
             //Center Section
@@ -295,46 +286,28 @@ fun SearchBar(
                 when (it) {
                     true ->
                         if (microphoneCallback != null) {
-                            Box(
+                            Icon(
+                                SearchBarIcons.Microphone,
+                                contentDescription = LocalContext.current.resources.getString(
+                                    R.string.fluentui_microphone
+                                ),
                                 modifier = Modifier
-                                    .size(44.dp, 40.dp)
-                                    .clickable(
-                                        interactionSource = remember { MutableInteractionSource() },
-                                        indication = rememberRipple(),
-                                        enabled = enabled,
-                                        onClick = microphoneCallback,
-                                        role = Role.Button
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    FluentIcon(
-                                        SearchBarIcons.Microphone,
-                                        contentDescription = LocalContext.current.resources.getString(
-                                            R.string.fluentui_microphone
-                                        ),
-                                        tint = token.rightIconColor(
+                                    .padding(
+                                        (44.dp - token.leftIconSize(searchBarInfo)) / 2,
+                                        (40.dp - token.leftIconSize(searchBarInfo)) / 2
+                                    )
+                                    .size(
+                                        token.rightIconSize(
                                             searchBarInfo
                                         )
                                     ),
-                                    modifier = Modifier
-                                        .size(
-                                            token.rightIconSize(
-                                                searchBarInfo
-                                            )
-                                        )
-                                )
-                            }
+                                tint = token.rightIconColor(searchBarInfo),
+                                onClick = microphoneCallback
+                            )
                         }
                     false ->
                         Box(
                             modifier = Modifier
-                                .size(44.dp, 40.dp)
-                                .padding(
-                                    token.progressIndicatorRightPadding(
-                                        searchBarInfo
-                                    )
-                                )
                                 .clickable(
                                     interactionSource = remember { MutableInteractionSource() },
                                     indication = rememberRipple(),
@@ -346,7 +319,8 @@ fun SearchBar(
                                         onValueChange(queryText, selectedPerson)
                                     },
                                     role = Role.Button
-                                ),
+                                )
+                                .size(44.dp, 40.dp),
                             contentAlignment = Alignment.Center
                         ) {
                             if (loading) {
@@ -357,15 +331,13 @@ fun SearchBar(
                                 )
                             }
                             Icon(
-                                FluentIcon(
-                                    SearchBarIcons.Dismisscircle,
-                                    contentDescription = LocalContext.current.resources.getString(
-                                        R.string.fluentui_clear_text
-                                    ),
-                                    tint = token.rightIconColor(searchBarInfo)
+                                SearchBarIcons.Dismisscircle,
+                                contentDescription = LocalContext.current.resources.getString(
+                                    R.string.fluentui_clear_text
                                 ),
                                 modifier = Modifier
-                                    .size(token.rightIconSize(searchBarInfo))
+                                    .size(token.rightIconSize(searchBarInfo)),
+                                tint = token.rightIconColor(searchBarInfo)
                             )
                         }
                 }
@@ -386,18 +358,17 @@ fun SearchBar(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
-                        rightAccessoryIcon,
+                        rightAccessoryIcon.value(),
+                        contentDescription = rightAccessoryIcon.contentDescription,
                         modifier = Modifier
                             .size(token.rightIconSize(searchBarInfo)),
                         tint = token.rightIconColor(searchBarInfo)
                     )
                     Icon(
-                        FluentIcon(
-                            ListItemIcons.Chevron,
-                            contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
-                            tint = token.rightIconColor(searchBarInfo)
-                        ),
-                        Modifier.rotate(90F)
+                        ListItemIcons.Chevron,
+                        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_chevron),
+                        Modifier.rotate(90F),
+                        tint = token.rightIconColor(searchBarInfo)
                     )
                 }
             }

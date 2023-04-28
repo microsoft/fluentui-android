@@ -36,7 +36,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillButton
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import kotlin.math.roundToInt
-import androidx.compose.material.Icon as MaterialIcon
 
 // TAGS FOR TESTING
 private const val CARD_NUDGE = "CardNudge"
@@ -249,28 +248,15 @@ fun CardNudge(
             }
 
             if (metadata.dismissOnClick != null) {
-                Box(
+                Icon(
+                    Icons.Filled.Close,
+                    LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
                     modifier = Modifier
-                        .size(20.dp)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(),
-                            enabled = true,
-                            role = Role.Image,
-                            onClickLabel = "Dismiss",
-                            onClick = metadata.dismissOnClick
-                        )
-                        .testTag(DISMISS_BUTTON),
-                    contentAlignment = Alignment.Center
-                ) {
-                    MaterialIcon(
-                        Icons.Filled.Close,
-                        LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
-                        modifier = Modifier
-                            .size(token.dismissIconSize(cardNudgeInfo)),
-                        tint = token.iconColor(cardNudgeInfo)
-                    )
-                }
+                        .padding(10.dp)
+                        .size(token.dismissIconSize(cardNudgeInfo)),
+                    tint = token.iconColor(cardNudgeInfo),
+                    onClick = metadata.dismissOnClick
+                )
             }
         }
     }

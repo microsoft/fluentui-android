@@ -30,7 +30,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
-import androidx.compose.material.Icon as MaterialIcon
+import com.microsoft.fluentui.theme.token.Icon as MaterialIcon
 
 // TAGS FOR TESTING
 private const val SNACKBAR = "Snackbar"
