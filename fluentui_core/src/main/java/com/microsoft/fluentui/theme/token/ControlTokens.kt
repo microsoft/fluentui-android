@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.theme.token
 
+import android.service.controls.Control
 import androidx.compose.runtime.compositionLocalOf
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
@@ -30,11 +31,13 @@ interface IControlTokens {
  */
 open class ControlTokens : IControlTokens {
     enum class ControlType : IType {
+        AnnouncementCard,
         AppBar,
         Avatar,
         AvatarCarousel,
         AvatarGroup,
         Badge,
+        BasicCard,
         BottomSheet,
         Button,
         CardNudge,
@@ -43,6 +46,7 @@ open class ControlTokens : IControlTokens {
         ContextualCommandBar,
         Drawer,
         Divider,
+        FileCard,
         FloatingActionButton,
         LinearProgressIndicator,
         ListItem,
@@ -66,11 +70,13 @@ open class ControlTokens : IControlTokens {
     override val tokens: TokenSet<IType, IControlToken> by lazy {
         TokenSet { type ->
             when (type) {
+                ControlType.AnnouncementCard -> AnnouncementCardTokens()
                 ControlType.AppBar -> AppBarTokens()
                 ControlType.Avatar -> AvatarTokens()
                 ControlType.AvatarCarousel -> AvatarCarouselTokens()
                 ControlType.AvatarGroup -> AvatarGroupTokens()
                 ControlType.Badge -> BadgeTokens()
+                ControlType.BasicCard -> BasicCardTokens()
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CardNudge -> CardNudgeTokens()
@@ -79,6 +85,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.Divider -> DividerTokens()
+                ControlType.FileCard -> FileCardTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
