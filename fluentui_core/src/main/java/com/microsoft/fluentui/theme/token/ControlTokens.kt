@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentui.theme.token
 
+import android.service.controls.Control
 import androidx.compose.runtime.compositionLocalOf
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
@@ -15,11 +16,13 @@ interface ControlToken
 class ControlTokens {
 
     enum class ControlType {
+        AnnouncementCard,
         AppBar,
         Avatar,
         AvatarCarousel,
         AvatarGroup,
         Badge,
+        BasicCard,
         BottomSheet,
         Button,
         CardNudge,
@@ -28,6 +31,7 @@ class ControlTokens {
         ContextualCommandBar,
         Drawer,
         Divider,
+        FileCard,
         FloatingActionButton,
         LinearProgressIndicator,
         ListItem,
@@ -51,11 +55,13 @@ class ControlTokens {
     val tokens: TokenSet<ControlType, ControlToken> by lazy {
         TokenSet { token ->
             when (token) {
+                ControlType.AnnouncementCard -> AnnouncementCardTokens()
                 ControlType.AppBar -> AppBarTokens()
                 ControlType.Avatar -> AvatarTokens()
                 ControlType.AvatarCarousel -> AvatarCarouselTokens()
                 ControlType.AvatarGroup -> AvatarGroupTokens()
                 ControlType.Badge -> BadgeTokens()
+                ControlType.BasicCard -> BasicCardTokens()
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CardNudge -> CardNudgeTokens()
@@ -64,6 +70,7 @@ class ControlTokens {
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.Divider -> DividerTokens()
+                ControlType.FileCard -> FileCardTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
                 ControlType.ListItem -> ListItemTokens()
