@@ -56,7 +56,6 @@ class V2CardActivity : DemoActivity() {
         }
     }
 
-
     @Composable
     private fun CreateCardUI(context: Context) {
         var index by remember { mutableStateOf(1) }
