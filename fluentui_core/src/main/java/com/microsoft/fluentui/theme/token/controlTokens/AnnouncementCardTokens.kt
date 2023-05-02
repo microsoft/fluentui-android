@@ -84,7 +84,6 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     open fun previewCornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
     }
-
     @Composable
     override fun cornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
