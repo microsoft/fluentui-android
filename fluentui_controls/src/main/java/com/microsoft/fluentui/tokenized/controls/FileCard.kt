@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -148,7 +147,6 @@ fun FileCard(
                         )
                         .semantics(true, properties = {
                             role = Role.Button
-                            contentDescription = "Options"
                         })
                 ) {
                     Icon(
