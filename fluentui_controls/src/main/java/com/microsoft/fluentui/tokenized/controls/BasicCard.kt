@@ -63,9 +63,7 @@ fun BasicCard(
                     onClick = onClick,
                     role = Role.Button
                 ) else Modifier
-            )
-            .semantics(mergeDescendants = true) {},
-        propagateMinConstraints = true,
+            ),
     ) {
         content()
     }

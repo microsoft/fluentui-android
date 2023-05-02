@@ -13,11 +13,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
 @Composable
@@ -43,7 +46,6 @@ fun AnnouncementCard(
     val previewTitlePadding = token.previewTitlePadding(announcementCardInfo = announcementCardInfo)
     val titleTextPadding = token.titleTextPadding(announcementCardInfo = announcementCardInfo)
     val textButtonPadding = token.textButtonPadding(announcementCardInfo = announcementCardInfo)
-    val buttonPadding = token.buttonPadding(announcementCardInfo = announcementCardInfo)
     val textHorizontalPadding =
         token.textHorizontalPadding(announcementCardInfo = announcementCardInfo)
     val previewPadding = token.previewPadding(announcementCardInfo = announcementCardInfo)
@@ -58,13 +60,21 @@ fun AnnouncementCard(
             return token.elevation(announcementCardInfo = announcementCardInfo)
         }
     }
+    class CustomButtonTokens: ButtonTokens(){
+        @Composable
+        override fun textColor(buttonInfo: ButtonInfo): StateColor{
+            return token.buttonTextColor(announcementCardInfo = announcementCardInfo)
+        }
+    }
     BasicCard(
         modifier = modifier,
         onClick = onClick,
         basicCardTokens = CustomBasicCardTokens() as BasicCardTokens
     ) {
         Box(
-            modifier = modifier.padding(all = previewPadding),
+            modifier = modifier
+                .padding(all = previewPadding)
+                .semantics(mergeDescendants = true) {},
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -104,7 +114,7 @@ fun AnnouncementCard(
                                 .merge(TextStyle(textAlign = TextAlign.Center))
                         )
                     }
-                    Button(modifier = Modifier.fillMaxWidth(), text = buttonText, onClick = buttonOnClick, style = ButtonStyle.TextButton, size = ButtonSize.Large)
+                    Button(modifier = Modifier.fillMaxWidth(), text = buttonText, onClick = buttonOnClick, style = ButtonStyle.TextButton, size = ButtonSize.Large, buttonTokens = CustomButtonTokens())
                 }
             }
         }
