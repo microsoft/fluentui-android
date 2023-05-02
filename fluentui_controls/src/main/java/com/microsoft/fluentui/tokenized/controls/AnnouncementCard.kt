@@ -2,7 +2,6 @@ package com.microsoft.fluentui.tokenized.controls
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
@@ -10,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
@@ -18,7 +16,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.StateColor
 import com.microsoft.fluentui.theme.token.controlTokens.*
@@ -40,7 +37,6 @@ fun AnnouncementCard(
     val announcementCardInfo = AnnouncementCardInfo()
     val textColor = token.textColor(announcementCardInfo = announcementCardInfo)
     val titleColor = token.titleColor(announcementCardInfo = announcementCardInfo)
-    val buttonColor = token.buttonColor(announcementCardInfo = announcementCardInfo)
     val textSize = token.textSize(announcementCardInfo = announcementCardInfo)
     val titleSize = token.titleSize(announcementCardInfo = announcementCardInfo)
     val previewTitlePadding = token.previewTitlePadding(announcementCardInfo = announcementCardInfo)
@@ -50,19 +46,22 @@ fun AnnouncementCard(
         token.textHorizontalPadding(announcementCardInfo = announcementCardInfo)
     val previewPadding = token.previewPadding(announcementCardInfo = announcementCardInfo)
     val previewCornerRadius = token.previewCornerRadius(announcementCardInfo = announcementCardInfo)
-    class CustomBasicCardTokens: BasicCardTokens(){
+
+    class CustomBasicCardTokens : BasicCardTokens() {
         @Composable
         override fun cornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
             return token.cornerRadius(announcementCardInfo = announcementCardInfo)
         }
+
         @Composable
         override fun elevation(announcementCardInfo: BasicCardControlInfo): Dp {
             return token.elevation(announcementCardInfo = announcementCardInfo)
         }
     }
-    class CustomButtonTokens: ButtonTokens(){
+
+    class CustomButtonTokens : ButtonTokens() {
         @Composable
-        override fun textColor(buttonInfo: ButtonInfo): StateColor{
+        override fun textColor(buttonInfo: ButtonInfo): StateColor {
             return token.buttonTextColor(announcementCardInfo = announcementCardInfo)
         }
     }
@@ -114,7 +113,14 @@ fun AnnouncementCard(
                                 .merge(TextStyle(textAlign = TextAlign.Center))
                         )
                     }
-                    Button(modifier = Modifier.fillMaxWidth(), text = buttonText, onClick = buttonOnClick, style = ButtonStyle.TextButton, size = ButtonSize.Large, buttonTokens = CustomButtonTokens())
+                    Button(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = buttonText,
+                        onClick = buttonOnClick,
+                        style = ButtonStyle.TextButton,
+                        size = ButtonSize.Large,
+                        buttonTokens = CustomButtonTokens()
+                    )
                 }
             }
         }
