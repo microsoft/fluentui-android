@@ -18,6 +18,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -143,6 +146,10 @@ fun FileCard(
                             onClick = actionOverflowIcon.onClick ?: {},
                             role = Role.Button
                         )
+                        .semantics(true, properties = {
+                            role = Role.Button
+                            contentDescription = "Options"
+                        })
                 ) {
                     Icon(
                         modifier = Modifier.size(actionOverflowIconSize),
