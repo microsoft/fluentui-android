@@ -27,7 +27,6 @@ fun AnnouncementCard(
     buttonText: String,
     buttonOnClick: () -> Unit,
     modifier: Modifier = Modifier,
-    onClick: (() -> Unit)? = null,
     previewImageVector: ImageVector? = null,
     @DrawableRes previewImageDrawable: Int? = null,
     announcementCardTokens: AnnouncementCardTokens? = null
@@ -67,11 +66,10 @@ fun AnnouncementCard(
     }
     BasicCard(
         modifier = modifier,
-        onClick = onClick,
         basicCardTokens = CustomBasicCardTokens() as BasicCardTokens
     ) {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .padding(all = previewPadding)
                 .semantics(mergeDescendants = true) {},
             contentAlignment = Alignment.Center

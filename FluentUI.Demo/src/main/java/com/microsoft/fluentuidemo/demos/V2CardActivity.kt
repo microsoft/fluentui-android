@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -47,8 +48,12 @@ class V2CardActivity : DemoActivity() {
         }
     }
 
+
     @Composable
     private fun CreateCardUI() {
+        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            themeMode = FluentTheme.themeMode
+        )
         var index by remember { mutableStateOf(1) }
         Box {
             LazyColumn(
@@ -179,6 +184,9 @@ class V2CardActivity : DemoActivity() {
 
     @Composable
     private fun CardContent1() {
+        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            themeMode = FluentTheme.themeMode
+        )
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -186,11 +194,12 @@ class V2CardActivity : DemoActivity() {
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_fluent_flag_24_regular),
-                    contentDescription = "Flag"
+                    contentDescription = "Flag",
+                    tint = textColor
                 )
                 Column {
-                    Text(text = "Text")
-                    Text(text = "SubText")
+                    Text(text = "Text", color = textColor)
+                    Text(text = "SubText", color = textColor)
                 }
             }
         }
@@ -198,13 +207,16 @@ class V2CardActivity : DemoActivity() {
 
     @Composable
     private fun CardContent2() {
+        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            themeMode = FluentTheme.themeMode
+        )
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Column {
-                    Text(text = "Text")
+                    Text(text = "Text", color = textColor)
                 }
             }
         }
@@ -212,6 +224,9 @@ class V2CardActivity : DemoActivity() {
 
     @Composable
     private fun CardContent3() {
+        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            themeMode = FluentTheme.themeMode
+        )
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Column {
                 Image(
@@ -223,11 +238,12 @@ class V2CardActivity : DemoActivity() {
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_fluent_flag_24_regular),
-                        contentDescription = "Flag"
+                        contentDescription = "Flag",
+                        tint = textColor
                     )
                     Column {
-                        Text(text = "Text")
-                        Text(text = "SubText")
+                        Text(text = "Text", color = textColor)
+                        Text(text = "SubText", color = textColor)
                     }
                 }
             }
@@ -245,6 +261,9 @@ class V2CardActivity : DemoActivity() {
 
     @Composable
     private fun CardContent5() {
+        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            themeMode = FluentTheme.themeMode
+        )
         Box(modifier = Modifier.padding(end = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -254,8 +273,8 @@ class V2CardActivity : DemoActivity() {
                     painterResource(id = R.drawable.avatar_carlos_slattery), contentDescription = ""
                 )
                 Column {
-                    Text(text = "Text")
-                    Text(text = "SubText")
+                    Text(text = "Text", color = textColor)
+                    Text(text = "SubText", color = textColor)
                 }
             }
         }
