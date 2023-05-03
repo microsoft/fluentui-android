@@ -253,7 +253,8 @@ fun CardNudge(
                     LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
                     modifier = Modifier
                         .padding(10.dp)
-                        .size(token.dismissIconSize(cardNudgeInfo)),
+                        .size(token.dismissIconSize(cardNudgeInfo))
+                        .testTag(DISMISS_BUTTON),
                     tint = token.iconColor(cardNudgeInfo),
                     onClick = metadata.dismissOnClick
                 )
