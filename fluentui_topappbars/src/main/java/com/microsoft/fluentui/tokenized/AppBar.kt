@@ -4,8 +4,8 @@ import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -160,11 +160,11 @@ fun AppBar(
                                         Modifier
                                 ), verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text(
+                            BasicText(
                                 text = title,
-                                color = token.titleTextColor(appBarInfo),
                                 style = titleTextStyle.merge(
                                     TextStyle(
+                                        color = token.titleTextColor(appBarInfo),
                                         platformStyle = PlatformTextStyle(includeFontPadding = true)
                                     )
                                 ),
@@ -199,13 +199,13 @@ fun AppBar(
                                         ),
                                     tint = token.subtitleIconColor(appBarInfo)
                                 )
-                            Text(
+                            BasicText(
                                 subTitle,
-                                color = token.subtitleTextColor(
-                                    appBarInfo
-                                ),
                                 style = subtitleTextStyle.merge(
                                     TextStyle(
+                                        color = token.subtitleTextColor(
+                                            appBarInfo
+                                        ),
                                         platformStyle = PlatformTextStyle(includeFontPadding = true)
                                     )
                                 ),
@@ -226,14 +226,14 @@ fun AppBar(
                         }
                     }
                 } else {
-                    Text(
+                    BasicText(
                         text = title,
                         modifier = Modifier
                             .padding(token.textPadding(appBarInfo))
                             .weight(1F),
-                        color = token.titleTextColor(appBarInfo),
                         style = titleTextStyle.merge(
                             TextStyle(
+                                color = token.titleTextColor(appBarInfo),
                                 platformStyle = PlatformTextStyle(
                                     includeFontPadding = true
                                 )

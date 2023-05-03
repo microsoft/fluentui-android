@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -52,7 +52,11 @@ class V2ContextualCommandBarActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             val click: (() -> Unit) =
                 { Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show() }
@@ -231,7 +235,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                         CenterHorizontally
                     ), verticalAlignment = CenterVertically
                 ) {
-                    Text(text = "Action Button")
+                    BasicText(text = "Action Button")
                     ToggleSwitch(
                         onValueChange =
                         {
@@ -282,7 +286,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     TextField(
                         value = text,
                         onValueChange = { text = it },
-                        label = { Text("Type your text here") },
+                        label = { BasicText("Type your text here") },
                         modifier = Modifier
                             .onKeyEvent { keyEvent ->
                                 when (keyEvent.nativeKeyEvent.keyCode) {
@@ -320,7 +324,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -332,7 +336,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -344,7 +348,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title3]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -356,7 +360,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -401,7 +405,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -413,7 +417,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -425,7 +429,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title3]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
@@ -437,7 +441,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     item {
                                         val font =
                                             FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp

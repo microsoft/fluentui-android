@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Call
 import androidx.compose.material.icons.outlined.LocationOn
@@ -48,7 +48,11 @@ class V2CardNudgeActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 var swipeLeft: Boolean by rememberSaveable { mutableStateOf(false) }
@@ -271,9 +275,9 @@ class V2CardNudgeActivity : DemoActivity() {
                             outlineMode = outlineEnabled
                         )
                         if (swipeLeft)
-                            Text(leftSwiped)
+                            BasicText(leftSwiped)
                         else if (swipeRight)
-                            Text(rightSwiped)
+                            BasicText(rightSwiped)
                     }
                 }
             }

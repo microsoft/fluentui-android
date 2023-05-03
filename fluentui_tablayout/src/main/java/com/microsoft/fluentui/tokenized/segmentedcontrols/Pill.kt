@@ -13,8 +13,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,6 +30,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tablayout.R
@@ -179,13 +180,14 @@ fun PillButton(
                 )
             } else {
                 Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
-                Text(
+                BasicText(
                     pillMetaData.text,
                     modifier = Modifier
                         .weight(1F)
                         .clearAndSetSemantics { },
-                    color = textColor,
-                    style = fontStyle,
+                    style = fontStyle.merge(
+                        TextStyle(color = textColor)
+                    ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )

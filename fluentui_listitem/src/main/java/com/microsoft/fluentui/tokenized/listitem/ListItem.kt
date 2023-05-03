@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.*
@@ -135,7 +136,7 @@ object ListItem {
         backgroundColor: Color
     ) {
         PlaceholderForActionText(actionTextComposable = {
-            Text(
+            BasicText(
                 text = actionText,
                 style = actionTextTypography,
             )
@@ -169,15 +170,14 @@ object ListItem {
                     Surface(
                         onClick = onClick, color = backgroundColor
                     ) {
-                        Text(
+                        BasicText(
                             text = actionText,
-                            style = actionTextTypography,
-                            color = actionTextColor
+                            style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                         )
                     }
                 })
             )
-            Text(
+            BasicText(
                 text = text, inlineContent = inlineContent
             )
         }
@@ -341,10 +341,9 @@ object ListItem {
                             }
                         }
 
-                        Text(
+                        BasicText(
                             text = text,
-                            style = primaryTextTypography,
-                            color = primaryTextColor,
+                            style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                             maxLines = textMaxLines,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -357,10 +356,9 @@ object ListItem {
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
-                            Text(
+                            BasicText(
                                 text = subText,
-                                style = subTextTypography,
-                                color = subTextColor,
+                                style = subTextTypography.merge(TextStyle(color = subTextColor)),
                                 maxLines = subTextMaxLines,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -383,10 +381,9 @@ object ListItem {
                                     }
                                 }
                                 if (secondarySubText != null) {
-                                    Text(
+                                    BasicText(
                                         text = secondarySubText,
-                                        style = secondarySubTextTypography,
-                                        color = secondarySubTextColor,
+                                        style = secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor)),
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
@@ -541,10 +538,9 @@ object ListItem {
                                         .rotate(rotationState),
                                     tint = chevronTint)
                             }
-                            Text(
+                            BasicText(
                                 text = title,
-                                style = primaryTextTypography,
-                                color = primaryTextColor,
+                                style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                                 maxLines = titleMaxLines,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -553,12 +549,11 @@ object ListItem {
                     }
                     Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
                         if (accessoryTextTitle != null) {
-                            Text(
+                            BasicText(
                                 text = accessoryTextTitle,
                                 Modifier.clickable(role = Role.Button,
                                     onClick = accessoryTextOnClick ?: {}),
-                                color = actionTextColor,
-                                style = actionTextTypography
+                                style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                             )
                         }
                     }
@@ -702,10 +697,9 @@ object ListItem {
                         backgroundColor = backgroundColor
                     )
                 } else {
-                    Text(
+                    BasicText(
                         text = description,
-                        color = descriptionTextColor,
-                        style = descriptionTextTypography
+                        style = descriptionTextTypography.merge(TextStyle(color = descriptionTextColor))
                     )
                 }
             }
@@ -804,7 +798,7 @@ object ListItem {
                     .background(backgroundColor)
                     .focusable(true), verticalAlignment = Alignment.Bottom
             ) {
-                Text(
+                BasicText(
                     text = title,
                     modifier = Modifier
                         .padding(
@@ -813,14 +807,13 @@ object ListItem {
                             bottom = padding.calculateBottomPadding()
                         )
                         .weight(1f),
-                    style = primaryTextTypography,
-                    color = primaryTextColor,
+                    style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                     maxLines = titleMaxLines,
                     overflow = TextOverflow.Ellipsis
                 )
 
                 if (accessoryTextTitle != null) {
-                    Text(
+                    BasicText(
                         text = accessoryTextTitle,
                         Modifier
                             .padding(
@@ -830,8 +823,7 @@ object ListItem {
                             .clickable(
                                 role = Role.Button,
                                 onClick = accessoryTextOnClick ?: {}),
-                        color = actionTextColor,
-                        style = actionTextTypography
+                        style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                     )
                 }
                 if (trailingAccessoryView != null) {

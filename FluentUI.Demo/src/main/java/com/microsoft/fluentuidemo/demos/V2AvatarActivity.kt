@@ -3,8 +3,8 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.AnonymousAccentAvatarTokens
 import com.example.theme.token.AnonymousAvatarTokens
@@ -34,7 +35,11 @@ class V2AvatarActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 Column(
@@ -44,10 +49,10 @@ class V2AvatarActivity : DemoActivity() {
                     var isActive by rememberSaveable { mutableStateOf(true) }
                     var isOOO by rememberSaveable { mutableStateOf(false) }
 
-                    Text(
+                    BasicText(
                         modifier = Modifier.padding(start = 16.dp),
                         text = "Avatar Cutout",
-                        color = Color(0xFF2886DE)
+                        style = TextStyle(color = Color(0xFF2886DE))
                     )
                     Row(
                         modifier = Modifier.fillMaxWidth(),

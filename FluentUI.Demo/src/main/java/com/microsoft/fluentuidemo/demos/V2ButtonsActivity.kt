@@ -6,8 +6,8 @@ import android.widget.Toast
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.outlined.Favorite
@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyButtonTokens
@@ -42,7 +43,11 @@ class V2ButtonsActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
 
@@ -52,10 +57,12 @@ class V2ButtonsActivity : DemoActivity() {
             ) {
                 FluentTheme {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(
+                        BasicText(
                             "Button to update Theme via Global & Alias token",
-                            color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                themeMode
+                            style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    themeMode
+                                )
                             )
                         )
 
@@ -103,10 +110,12 @@ class V2ButtonsActivity : DemoActivity() {
 
                 LazyColumn(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     item {
-                        Text(
+                        BasicText(
                             "Activity level customization with Auto theme",
-                            color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                themeMode
+                            style = TextStyle(
+                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    themeMode
+                                )
                             )
                         )
 
@@ -144,10 +153,12 @@ class V2ButtonsActivity : DemoActivity() {
 
                     item {
                         FluentTheme {
-                            Text(
+                            BasicText(
                                 "Button with selected theme, auto mode and overridden control token",
-                                color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                    themeMode
+                                style = TextStyle(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                        themeMode
+                                    )
                                 )
                             )
                             CreateButtons(MyButtonTokens())
