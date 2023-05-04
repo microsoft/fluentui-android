@@ -23,7 +23,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 @Composable
 fun AnnouncementCard(
     title: String,
-    text: String,
+    description: String,
     buttonText: String,
     buttonOnClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -36,8 +36,9 @@ fun AnnouncementCard(
     val announcementCardInfo = AnnouncementCardInfo()
     val textColor = token.textColor(announcementCardInfo = announcementCardInfo)
     val titleColor = token.titleColor(announcementCardInfo = announcementCardInfo)
-    val textSize = token.textSize(announcementCardInfo = announcementCardInfo)
-    val titleSize = token.titleSize(announcementCardInfo = announcementCardInfo)
+    val descriptionTypography =
+        token.descriptionTypography(announcementCardInfo = announcementCardInfo)
+    val titleTypography = token.titleTypography(announcementCardInfo = announcementCardInfo)
     val previewTitlePadding = token.previewTitlePadding(announcementCardInfo = announcementCardInfo)
     val titleTextPadding = token.titleTextPadding(announcementCardInfo = announcementCardInfo)
     val textButtonPadding = token.textButtonPadding(announcementCardInfo = announcementCardInfo)
@@ -102,12 +103,12 @@ fun AnnouncementCard(
                     ) {
                         BasicText(
                             text = title,
-                            style = titleSize.merge(TextStyle(color = titleColor))
+                            style = titleTypography.merge(TextStyle(color = titleColor))
                                 .merge(TextStyle(textAlign = TextAlign.Center))
                         )
                         BasicText(
-                            text = text,
-                            style = textSize.merge(TextStyle(color = textColor))
+                            text = description,
+                            style = descriptionTypography.merge(TextStyle(color = textColor))
                                 .merge(TextStyle(textAlign = TextAlign.Center))
                         )
                     }

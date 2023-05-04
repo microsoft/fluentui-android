@@ -82,7 +82,7 @@ class V2CardUITest {
     fun testAnnouncementCard(){
         composeTestRule.setContent {
             FluentTheme {
-                AnnouncementCard(modifier = Modifier.testTag("announcementCard"), previewImageDrawable = R.drawable.avatar_allan_munger, title = "Title", text = "text", buttonText = "Button", buttonOnClick = {})
+                AnnouncementCard(modifier = Modifier.testTag("announcementCard"), previewImageDrawable = R.drawable.avatar_allan_munger, title = "Title", description = "text", buttonText = "Button", buttonOnClick = {})
             }
         }
         val announcementCard = composeTestRule.onNodeWithTag("announcementCard")

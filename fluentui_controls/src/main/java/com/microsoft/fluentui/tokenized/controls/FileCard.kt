@@ -52,8 +52,8 @@ fun FileCard(
         token.actionOverFlowBackgroundColor(fileCardInfo = fileCardInfo)
     val actionOverFlowIconColor = token.actionOverFlowIconColor(fileCardInfo = fileCardInfo)
     val iconSize = token.iconSize(fileCardInfo = fileCardInfo)
-    val textSize = token.textSize(fileCardInfo = fileCardInfo)
-    val subtextSize = token.subTextSize(fileCardInfo = fileCardInfo)
+    val textTypography = token.textTypography(fileCardInfo = fileCardInfo)
+    val subTextTypography = token.subTextTypography(fileCardInfo = fileCardInfo)
     val actionOverflowCornerRadius = token.actionOverflowCornerRadius(fileCardInfo = fileCardInfo)
     val actionOverflowIconSize = token.actionOverflowIconSize(fileCardInfo = fileCardInfo)
     val leadIconPadding = token.leadIconPadding(fileCardInfo = fileCardInfo)
@@ -65,8 +65,11 @@ fun FileCard(
         modifier = modifier,
         onClick = onClick
     ) {
-        Box {
-            Column {
+        Box(contentAlignment = Alignment.Center) {
+            Column(
+                modifier = Modifier.requiredWidth(IntrinsicSize.Min),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 if (previewImageDrawable != null) {
                     Image(
                         painterResource(id = previewImageDrawable), contentDescription = ""
@@ -80,6 +83,7 @@ fun FileCard(
                 Row(
                     modifier = Modifier.padding(
                         start = leadIconPadding,
+                        end = leadIconPadding,
                         top = textVerticalPadding.calculateTopPadding(),
                         bottom = textVerticalPadding.calculateBottomPadding()
                     ), verticalAlignment = Alignment.CenterVertically
@@ -89,10 +93,13 @@ fun FileCard(
                         modifier = Modifier.padding(start = iconTextPadding),
                         verticalArrangement = Arrangement.spacedBy(textSubTextPadding)
                     ) {
-                        BasicText(text = text, style = textSize.merge(TextStyle(color = textColor)))
+                        BasicText(
+                            text = text,
+                            style = textTypography.merge(TextStyle(color = textColor))
+                        )
                         BasicText(
                             text = subText,
-                            style = subtextSize.merge(TextStyle(color = subTextColor))
+                            style = subTextTypography.merge(TextStyle(color = subTextColor))
                         )
                     }
                 }
