@@ -1,5 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.Image
@@ -17,6 +18,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
+import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
@@ -43,17 +46,15 @@ class V2CardActivity : DemoActivity() {
         )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
-                CreateCardUI()
+                CreateCardUI(this)
             }
         }
     }
 
 
     @Composable
-    private fun CreateCardUI() {
-        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
+    private fun CreateCardUI(context: Context) {
+        val textColor = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         var index by remember { mutableStateOf(1) }
         Box {
             LazyColumn(
@@ -61,23 +62,43 @@ class V2CardActivity : DemoActivity() {
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 item {
-                    ListItem.Header(modifier = Modifier.wrapContentWidth(), title = "Basic Card")
+                    ListItem.Header(modifier = Modifier.wrapContentWidth(), title = context.getString(R.string.basic_card))
                 }
                 item {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(24.dp)
                     ) {
-                        BasicCard(onClick = {}, content = { getContent(index = index) })
+                        BasicCard {
+                            Box(Modifier.padding(all = 8.dp)){
+                                BasicCard() {
+                                    Box(modifier = Modifier.padding(end = 8.dp)) {
+                                        Row(
+                                            verticalAlignment = Alignment.CenterVertically,
+                                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                        ) {
+                                            Image(
+                                                painterResource(id = R.drawable.avatar_carlos_slattery), contentDescription = ""
+                                            )
+                                            Column {
+                                                Text(text = context.getString(R.string.card_text), color = textColor)
+                                                Text(text = context.getString(R.string.card_subtext), color = textColor)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        BasicCard(onClick = {}, content = { getContent(index = index, context = context) })
                         Button(
-                            text = "Randomize UI",
+                            text = context.getString(R.string.card_randomize),
                             size = ButtonSize.Small,
                             style = ButtonStyle.OutlinedButton,
                             onClick = { index = (1..5).random() })
                     }
                 }
                 item {
-                    ListItem.Header(title = "File Card")
+                    ListItem.Header(title = context.getString(R.string.file_card))
                 }
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -86,11 +107,11 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(
                                         Icons.Outlined.MoreVert,
-                                        contentDescription = "Options"
+                                        contentDescription = context.getString(R.string.card_options)
                                     ),
                                     onClick = {},
                                     text = "Carlos",
-                                    subText = "Slattery",
+                                    subText = context.getString(R.string.persona_name_carlos_slattery),
                                     textIcon = FluentIcon(Icons.Outlined.Call),
                                     previewImageDrawable = R.drawable.avatar_carlos_slattery
                                 )
@@ -99,8 +120,8 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
                                     onClick = {},
-                                    text = "Allan",
-                                    subText = "Munger",
+                                    text = context.getString(R.string.persona_name_allan_munger),
+                                    subText = context.getString(R.string.persona_email_allan_munger),
                                     textIcon = FluentIcon(Icons.Outlined.Call),
                                     previewImageDrawable = R.drawable.avatar_allan_munger
                                 )
@@ -109,10 +130,10 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
                                     onClick = {},
-                                    text = "Ashley",
-                                    subText = "McCarthy",
+                                    text = context.getString(R.string.persona_name_elvia_atkins),
+                                    subText = context.getString(R.string.persona_email_elvia_atkins),
                                     textIcon = FluentIcon(Icons.Outlined.Call),
-                                    previewImageDrawable = R.drawable.avatar_ashley_mccarthy
+                                    previewImageDrawable = R.drawable.avatar_elvia_atkins
                                 )
                             }
                         }
@@ -121,8 +142,8 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
                                     onClick = {},
-                                    text = "Amanda",
-                                    subText = "Brady",
+                                    text = context.getString(R.string.persona_name_amanda_brady),
+                                    subText = context.getString(R.string.persona_email_amanda_brady),
                                     textIcon = FluentIcon(Icons.Outlined.Call),
                                     previewImageDrawable = R.drawable.avatar_amanda_brady
                                 )
@@ -131,8 +152,8 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
                                     onClick = {},
-                                    text = "Kat",
-                                    subText = "Larsson",
+                                    text = context.getString(R.string.persona_name_kat_larsson),
+                                    subText = context.getString(R.string.persona_email_kat_larsson),
                                     textIcon = FluentIcon(Icons.Outlined.Call),
                                     previewImageDrawable = R.drawable.avatar_kat_larsson
                                 )
@@ -141,8 +162,8 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
                                     onClick = {},
-                                    text = "Cecil",
-                                    subText = "Folk",
+                                    text = context.getString(R.string.persona_name_cecil_folk),
+                                    subText = context.getString(R.string.persona_email_cecil_folk),
                                     textIcon = FluentIcon(Icons.Outlined.Call),
                                     previewImageDrawable = R.drawable.avatar_cecil_folk
                                 )
@@ -151,15 +172,15 @@ class V2CardActivity : DemoActivity() {
                     }
                 }
                 item {
-                    ListItem.Header(title = "Announcement Card")
+                    ListItem.Header(title = context.getString(R.string.announcement_card))
                 }
                 item {
                     AnnouncementCard(
-                        title = "Title",
-                        text = "Secondary copy for this banner can wrap to two lines if needed.",
-                        buttonText = "Button",
+                        title = context.getString(R.string.card_title),
+                        description = "779932818@7799328718",
+                        buttonText = context.getString(R.string.card_button),
                         buttonOnClick = {},
-                        previewImageDrawable = R.drawable.card_cover
+                        previewImageDrawable = R.drawable.avatar_colin_ballinger
                     )
                 }
                 item {
@@ -171,22 +192,20 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun getContent(index: Int): Unit {
+    private fun getContent(index: Int, context: Context): Unit {
         return when (index) {
-            1 -> CardContent1()
-            2 -> CardContent2()
-            3 -> CardContent3()
-            4 -> CardContent4()
-            5 -> CardContent5()
+            1 -> CardContent1(context)
+            2 -> CardContent2(context)
+            3 -> CardContent3(context)
+            4 -> CardContent4(context)
+            5 -> CardContent5(context)
             else -> {}
         }
     }
 
     @Composable
-    private fun CardContent1() {
-        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
+    private fun CardContent1(context: Context) {
+        val textColor = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -194,39 +213,35 @@ class V2CardActivity : DemoActivity() {
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_fluent_flag_24_regular),
-                    contentDescription = "Flag",
+                    contentDescription = "",
                     tint = textColor
                 )
                 Column {
-                    Text(text = "Text", color = textColor)
-                    Text(text = "SubText", color = textColor)
+                    Text(text = context.getString(R.string.card_text), color = textColor)
+                    Text(text = context.getString(R.string.card_subtext), color = textColor)
                 }
             }
         }
     }
 
     @Composable
-    private fun CardContent2() {
-        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
+    private fun CardContent2(context: Context) {
+        val textColor = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Column {
-                    Text(text = "Text", color = textColor)
+                    Text(text = context.getString(R.string.card_text), color = textColor)
                 }
             }
         }
     }
 
     @Composable
-    private fun CardContent3() {
-        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
+    private fun CardContent3(context: Context) {
+        val textColor = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Column {
                 Image(
@@ -238,12 +253,12 @@ class V2CardActivity : DemoActivity() {
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_fluent_flag_24_regular),
-                        contentDescription = "Flag",
+                        contentDescription = "",
                         tint = textColor
                     )
                     Column {
-                        Text(text = "Text", color = textColor)
-                        Text(text = "SubText", color = textColor)
+                        Text(text = context.getString(R.string.card_text), color = textColor)
+                        Text(text = context.getString(R.string.card_subtext), color = textColor)
                     }
                 }
             }
@@ -251,7 +266,7 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun CardContent4() {
+    private fun CardContent4(context: Context) {
         Box {
             Image(
                 painterResource(id = R.drawable.image_un), contentDescription = ""
@@ -260,10 +275,8 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun CardContent5() {
-        val textColor = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
+    private fun CardContent5(context: Context) {
+        val textColor = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(end = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -273,8 +286,8 @@ class V2CardActivity : DemoActivity() {
                     painterResource(id = R.drawable.avatar_carlos_slattery), contentDescription = ""
                 )
                 Column {
-                    Text(text = "Text", color = textColor)
-                    Text(text = "SubText", color = textColor)
+                    Text(text = context.getString(R.string.card_text), color = textColor)
+                    Text(text = context.getString(R.string.card_subtext), color = textColor)
                 }
             }
         }

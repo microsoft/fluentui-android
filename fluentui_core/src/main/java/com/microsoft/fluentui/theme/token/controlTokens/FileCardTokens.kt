@@ -56,12 +56,12 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun textSize(fileCardInfo: BasicCardControlInfo): TextStyle {
+    open fun textTypography(fileCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
     }
 
     @Composable
-    open fun subTextSize(fileCardInfo: BasicCardControlInfo): TextStyle {
+    open fun subTextTypography(fileCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
     }
 

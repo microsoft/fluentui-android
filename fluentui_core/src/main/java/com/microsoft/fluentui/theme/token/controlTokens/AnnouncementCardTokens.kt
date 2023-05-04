@@ -34,12 +34,12 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun titleSize(announcementCardInfo: BasicCardControlInfo): TextStyle {
+    open fun titleTypography(announcementCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
     }
 
     @Composable
-    open fun textSize(announcementCardInfo: BasicCardControlInfo): TextStyle {
+    open fun descriptionTypography(announcementCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
     }
 
