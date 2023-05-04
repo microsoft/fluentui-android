@@ -157,7 +157,7 @@ class V2CardActivity : DemoActivity() {
                         description = context.getString(R.string.card_description),
                         buttonText = context.getString(R.string.card_button),
                         buttonOnClick = {},
-                        previewImageDrawable = R.drawable.avatar_colin_ballinger
+                        previewImageDrawable = R.drawable.card_cover
                     )
                 }
                 item {
