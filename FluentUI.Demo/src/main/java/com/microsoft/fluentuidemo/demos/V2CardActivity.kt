@@ -157,7 +157,7 @@ class V2CardActivity : DemoActivity() {
                         description = context.getString(R.string.card_description),
                         buttonText = context.getString(R.string.card_button),
                         buttonOnClick = {},
-                        previewImageDrawable = R.drawable.card_cover
+                        previewImageDrawable = R.drawable.avatar_colin_ballinger
                     )
                 }
                 item {
@@ -271,7 +271,7 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun CardContent4() {
+    private fun CardContent4(context: Context) {
         Box {
             Image(
                 painterResource(id = R.drawable.image_un), contentDescription = ""
