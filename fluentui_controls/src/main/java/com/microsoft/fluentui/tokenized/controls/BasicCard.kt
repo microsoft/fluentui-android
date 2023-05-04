@@ -6,8 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.LocalAbsoluteElevation
-import androidx.compose.material.LocalElevationOverlay
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -38,16 +36,11 @@ fun BasicCard(
     val borderColor = token.borderColor(basicCardInfo = basicCardInfo)
     val borderStrokeWidth = token.borderStrokeWidth(basicCardInfo = basicCardInfo)
     val shape = RoundedCornerShape(cornerRadius)
-    val absoluteElevation = LocalAbsoluteElevation.current + elevation
-    val elevationOverlay = LocalElevationOverlay.current
-    val elevatedBackgroundColor =
-        elevationOverlay?.apply(color = backgroundColor, elevation = absoluteElevation)
-            ?: backgroundColor
     Box(
         modifier = modifier
             .shadow(elevation, shape, false)
             .background(
-                elevatedBackgroundColor,
+                backgroundColor,
                 shape
             )
             .border(
