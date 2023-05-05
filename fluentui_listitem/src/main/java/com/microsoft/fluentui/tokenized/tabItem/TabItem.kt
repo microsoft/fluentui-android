@@ -4,8 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.layoutId
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -107,7 +108,7 @@ fun TabItem(
                 iconContent()
             }
 
-            Text(
+            BasicText(
                 text = title,
                 modifier = Modifier
                     .constrainAs(textConstrain) {
@@ -116,8 +117,7 @@ fun TabItem(
                         width = Dimension.preferredWrapContent
                     }
                     .padding(start = 8.dp),
-                color = textColor,
-                textAlign = TextAlign.Center,
+                style = TextStyle(color = textColor, textAlign = TextAlign.Center),
                 overflow = TextOverflow.Ellipsis,
                 maxLines = 1
             )
@@ -201,10 +201,9 @@ fun TabItem(
             badgeWithIcon()
             if (textAlignment == TabTextAlignment.VERTICAL) {
                 Spacer(modifier = Modifier.height(2.dp))
-                Text(
+                BasicText(
                     text = title,
-                    color = textColor,
-                    textAlign = TextAlign.Center
+                    style = TextStyle(color = textColor, textAlign = TextAlign.Center)
                 )
             }
         }

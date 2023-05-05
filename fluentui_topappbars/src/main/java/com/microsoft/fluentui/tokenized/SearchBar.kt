@@ -7,10 +7,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -257,7 +257,7 @@ fun SearchBar(
                             }
                         }
                         .padding(horizontal = 8.dp)
-                        .semantics {contentDescription = searchHint},
+                        .semantics { contentDescription = searchHint },
                     textStyle = token.typography(searchBarInfo).merge(
                         TextStyle(
                             color = token.textColor(searchBarInfo),
@@ -273,10 +273,10 @@ fun SearchBar(
                                 Alignment.CenterStart
                         ) {
                             if (queryText.isEmpty()) {
-                                Text(
+                                BasicText(
                                     searchHint,
-                                    style = token.typography(searchBarInfo),
-                                    color = token.textColor(searchBarInfo)
+                                    style = token.typography(searchBarInfo)
+                                        .merge(TextStyle(color = token.textColor(searchBarInfo)))
                                 )
                             }
                         }

@@ -6,13 +6,14 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -35,7 +36,11 @@ class V2PersonaChipActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 createPersonaChipActivityUI()
@@ -132,10 +137,12 @@ class V2PersonaChipActivity : DemoActivity() {
                         horizontalArrangement = Arrangement.spacedBy(16.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
+                        BasicText(
                             text = "Enable/Disable close button on selected state",
-                            color = brandTextColor,
-                            fontSize = 10.sp
+                            style = TextStyle(
+                                color = brandTextColor,
+                                fontSize = 10.sp
+                            )
                         )
                         ToggleSwitch(
                             modifier = Modifier.testTag("switch"),
@@ -145,11 +152,17 @@ class V2PersonaChipActivity : DemoActivity() {
                     }
                 }
                 item {
-                    Text(text = "Basic Persona chip", color = brandTextColor, fontSize = 20.sp)
+                    BasicText(
+                        text = "Basic Persona chip",
+                        style = TextStyle(color = brandTextColor, fontSize = 20.sp)
+                    )
                 }
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(text = "Person Chip Neutral", color = textColor)
+                        BasicText(
+                            text = "Person Chip Neutral",
+                            style = TextStyle(color = textColor)
+                        )
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
                                 person = createPersonWithName(),
@@ -167,7 +180,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 } else null
                             )
                         }
-                        Text(text = "Person Chip Brand", color = textColor)
+                        BasicText(text = "Person Chip Brand", style = TextStyle(color = textColor))
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
                                 modifier = Modifier.testTag("small persona chip"),
@@ -187,7 +200,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 } else null
                             )
                         }
-                        Text(text = "Person Chip Danger", color = textColor)
+                        BasicText(text = "Person Chip Danger", style = TextStyle(color = textColor))
                         LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             item {
                                 PersonaChip(
@@ -209,7 +222,10 @@ class V2PersonaChipActivity : DemoActivity() {
                                 )
                             }
                         }
-                        Text(text = "Person Chip Severe Warning", color = textColor)
+                        BasicText(
+                            text = "Person Chip Severe Warning",
+                            style = TextStyle(color = textColor)
+                        )
                         LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             item {
                                 PersonaChip(
@@ -231,7 +247,10 @@ class V2PersonaChipActivity : DemoActivity() {
                                 )
                             }
                         }
-                        Text(text = "Person Chip Warning", color = textColor)
+                        BasicText(
+                            text = "Person Chip Warning",
+                            style = TextStyle(color = textColor)
+                        )
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
                                 modifier = Modifier.testTag("ann persona chip"),
@@ -250,7 +269,10 @@ class V2PersonaChipActivity : DemoActivity() {
                                 } else null
                             )
                         }
-                        Text(text = "Person Chip Success", color = textColor)
+                        BasicText(
+                            text = "Person Chip Success",
+                            style = TextStyle(color = textColor)
+                        )
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
                                 person = createPersonWithName(),
@@ -268,7 +290,10 @@ class V2PersonaChipActivity : DemoActivity() {
                                 } else null
                             )
                         }
-                        Text(text = "Person Chip Disabled", color = textColor)
+                        BasicText(
+                            text = "Person Chip Disabled",
+                            style = TextStyle(color = textColor)
+                        )
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
                                 person = createPersonWithName(),
@@ -296,15 +321,20 @@ class V2PersonaChipActivity : DemoActivity() {
                     }
                 }
                 item {
-                    Text(
+                    BasicText(
                         text = "SearchBox Basic Persona chip",
-                        color = brandTextColor,
-                        fontSize = 20.sp
+                        style = TextStyle(
+                            color = brandTextColor,
+                            fontSize = 20.sp
+                        )
                     )
                 }
                 item {
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(text = "Persona chip Neutral", color = textColor)
+                        BasicText(
+                            text = "Persona chip Neutral",
+                            style = TextStyle(color = textColor)
+                        )
                         SearchBarPersonaChip(
                             person = createPersonWithName(),
                             size = PersonaChipSize.Small,
@@ -314,7 +344,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 { onClickToast() }
                             } else null
                         )
-                        Text(text = "Persona chip Brand", color = textColor)
+                        BasicText(text = "Persona chip Brand", style = TextStyle(color = textColor))
                         SearchBarPersonaChip(
                             person = createPersonWithName(),
                             style = FluentStyle.Brand,

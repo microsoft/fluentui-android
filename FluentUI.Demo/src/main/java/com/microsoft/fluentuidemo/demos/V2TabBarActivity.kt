@@ -3,7 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.*
@@ -13,6 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
@@ -41,7 +42,11 @@ class V2TabBarActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
             var showHomeBadge by rememberSaveable { mutableStateOf(true) }
@@ -114,11 +119,13 @@ class V2TabBarActivity : DemoActivity() {
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(
+                            BasicText(
                                 text = resources.getString(R.string.tabBar_vertical),
                                 modifier = Modifier.weight(1F),
-                                color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                    themeMode = ThemeMode.Auto
+                                style = TextStyle(
+                                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                        themeMode = ThemeMode.Auto
+                                    )
                                 )
                             )
                             RadioButton(
@@ -134,11 +141,13 @@ class V2TabBarActivity : DemoActivity() {
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(
+                            BasicText(
                                 text = resources.getString(R.string.tabBar_horizontal),
                                 modifier = Modifier.weight(1F),
-                                color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                    themeMode = ThemeMode.Auto
+                                style = TextStyle(
+                                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                        themeMode = ThemeMode.Auto
+                                    )
                                 )
                             )
                             RadioButton(
@@ -154,11 +163,13 @@ class V2TabBarActivity : DemoActivity() {
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Text(
+                            BasicText(
                                 text = resources.getString(R.string.tabBar_no_text),
                                 modifier = Modifier.weight(1F),
-                                color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                                    themeMode = ThemeMode.Auto
+                                style = TextStyle(
+                                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                        themeMode = ThemeMode.Auto
+                                    )
                                 )
                             )
                             RadioButton(

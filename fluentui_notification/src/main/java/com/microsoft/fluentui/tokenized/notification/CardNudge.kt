@@ -9,7 +9,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
@@ -172,7 +172,7 @@ fun CardNudge(
                     .weight(1F)
                     .padding(start = 16.dp)
             ) {
-                Text(
+                BasicText(
                     metadata.message,
                     style = token.titleTypography(cardNudgeInfo),
                 )
@@ -196,7 +196,7 @@ fun CardNudge(
                         }
 
                         if (!metadata.accentText.isNullOrBlank()) {
-                            Text(
+                            BasicText(
                                 metadata.accentText,
                                 style = token.accentTypography(cardNudgeInfo),
                                 modifier = Modifier.testTag(ACCENT_TEXT)
@@ -204,7 +204,7 @@ fun CardNudge(
                         }
 
                         if (!metadata.subTitle.isNullOrBlank()) {
-                            Text(
+                            BasicText(
                                 metadata.subTitle,
                                 style = token.subtitleTypography(cardNudgeInfo),
                                 modifier = Modifier.testTag(SUBTITLE)
