@@ -7,8 +7,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -133,18 +133,21 @@ fun Button(
                 )
 
             if (text != null)
-                Text(
+                BasicText(
                     text = text,
                     modifier = Modifier.clearAndSetSemantics { },
-                    color = token.textColor(buttonInfo = buttonInfo)
-                        .getColorByState(
-                            enabled = enabled,
-                            selected = false,
-                            interactionSource = interactionSource
-                        ),
                     style = token.typography(buttonInfo).merge(
                         TextStyle(
                             platformStyle = PlatformTextStyle(includeFontPadding = false)
+                        )
+                    ).merge(
+                        TextStyle(
+                            color = token.textColor(buttonInfo = buttonInfo)
+                                .getColorByState(
+                                    enabled = enabled,
+                                    selected = false,
+                                    interactionSource = interactionSource
+                                )
                         )
                     ),
                     maxLines = 1,

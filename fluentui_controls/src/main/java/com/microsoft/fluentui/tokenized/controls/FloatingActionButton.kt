@@ -5,8 +5,8 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -18,6 +18,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -143,14 +144,17 @@ fun FloatingActionButton(
                 )
 
             AnimatedVisibility(isFabExpanded) {
-                Text(
+                BasicText(
                     text = text!!,
                     modifier = Modifier.clearAndSetSemantics { },
-                    style = token.typography(fabInfo),
-                    color = token.textColor(fabInfo = fabInfo).getColorByState(
-                        enabled = enabled,
-                        selected = false,
-                        interactionSource = interactionSource
+                    style = token.typography(fabInfo).merge(
+                        TextStyle(
+                            color = token.textColor(fabInfo = fabInfo).getColorByState(
+                                enabled = enabled,
+                                selected = false,
+                                interactionSource = interactionSource
+                            )
+                        )
                     ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis

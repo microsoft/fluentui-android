@@ -5,8 +5,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.theme.FluentTheme
@@ -120,10 +121,11 @@ fun PersonaChip(
                     Avatar(person = person, size = avatarSize)
                 }
             }
-            Text(
+            BasicText(
                 text = person.getLabel(),
-                color = textColor,
-                style = typography
+                style = typography.merge(
+                    TextStyle(color = textColor)
+                )
             )
         }
     }

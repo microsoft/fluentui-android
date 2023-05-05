@@ -6,14 +6,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
@@ -126,10 +127,12 @@ fun Menu(context: Context, xOffset: Dp, yOffset: Dp, contentText: String, count:
         ) {
             Column(Modifier.verticalScroll(rememberScrollState())) {
                 repeat(count) {
-                    Text(
+                    BasicText(
                         text = "$contentText ${it + 1}",
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
+                        style = TextStyle(
+                            color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                themeMode = ThemeMode.Auto
+                            )
                         )
                     )
                 }
