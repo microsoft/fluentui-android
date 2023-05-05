@@ -7,8 +7,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 enum class AvatarGroupStyle {
@@ -22,7 +22,7 @@ data class AvatarGroupInfo(
 ) : ControlInfo
 
 @Parcelize
-open class AvatarGroupTokens : ControlToken, Parcelable {
+open class AvatarGroupTokens : IControlToken, Parcelable {
 
     @Composable
     open fun avatarSize(avatarGroupInfo: AvatarGroupInfo): Dp {
@@ -43,37 +43,37 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
             AvatarSize.Size16 -> TextStyle(
                 fontSize = 9.sp,
                 lineHeight = 12.sp,
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size20 -> TextStyle(
                 fontSize = 9.sp,
                 lineHeight = 12.sp,
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size24 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size100),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size100),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size100),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size100),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size32 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size200),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size200),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size200),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size200),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size40 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size300),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size300),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size300),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size300),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size56 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size500),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size500),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size500),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size500),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium)
             )
             AvatarSize.Size72 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size700),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size700),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size700),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size700),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium)
             )
         }
     }
@@ -92,26 +92,26 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
             }
 
             AvatarGroupStyle.Pile -> when (avatarGroupInfo.size) {
-                AvatarSize.Size16 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size40
+                AvatarSize.Size16 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size40
                 )
-                AvatarSize.Size20 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size40
+                AvatarSize.Size20 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size40
                 )
-                AvatarSize.Size24 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size40
+                AvatarSize.Size24 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size40
                 )
-                AvatarSize.Size32 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size80
+                AvatarSize.Size32 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size80
                 )
-                AvatarSize.Size40 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size80
+                AvatarSize.Size40 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size80
                 )
-                AvatarSize.Size56 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size80
+                AvatarSize.Size56 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size80
                 )
-                AvatarSize.Size72 -> GlobalTokens.size(
-                    GlobalTokens.SizeTokens.Size80
+                AvatarSize.Size72 -> FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size80
                 )
             }
         }
@@ -120,26 +120,26 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
     @Composable
     open fun pilePadding(avatarGroupInfo: AvatarGroupInfo): Dp {
         return when (avatarGroupInfo.size) {
-            AvatarSize.Size16 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size40
+            AvatarSize.Size16 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size40
             )
-            AvatarSize.Size20 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size20
+            AvatarSize.Size20 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size20
             )
-            AvatarSize.Size24 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size20
+            AvatarSize.Size24 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size20
             )
-            AvatarSize.Size32 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size20
+            AvatarSize.Size32 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size20
             )
-            AvatarSize.Size40 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size20
+            AvatarSize.Size40 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size20
             )
-            AvatarSize.Size56 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size40
+            AvatarSize.Size56 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size40
             )
-            AvatarSize.Size72 -> GlobalTokens.size(
-                GlobalTokens.SizeTokens.Size80
+            AvatarSize.Size72 -> FluentGlobalTokens.size(
+                FluentGlobalTokens.SizeTokens.Size80
             )
         }
     }
@@ -147,13 +147,13 @@ open class AvatarGroupTokens : ControlToken, Parcelable {
     @Composable
     open fun avatarSize(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
-            AvatarSize.Size16 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize120)
-            AvatarSize.Size20 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
-            AvatarSize.Size24 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
-            AvatarSize.Size32 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
-            AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
-            AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize280)
-            AvatarSize.Size72 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize480)
+            AvatarSize.Size16 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize120)
+            AvatarSize.Size20 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
+            AvatarSize.Size24 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
+            AvatarSize.Size32 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+            AvatarSize.Size40 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
+            AvatarSize.Size56 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize280)
+            AvatarSize.Size72 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize480)
         }
     }
 }

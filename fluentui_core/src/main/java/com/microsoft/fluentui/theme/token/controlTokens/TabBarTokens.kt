@@ -5,24 +5,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 class TabBarInfo : ControlInfo
 
 @Parcelize
-open class TabBarTokens : ControlToken, Parcelable {
+open class TabBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun topBorderColor(tabBarInfo: TabBarInfo): Color {
-        return FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke2].value()
+        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
     }
 
     @Composable
     open fun topBorderWidth(tabBarInfo: TabBarInfo): Dp {
-        return GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth05)
+        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
     }
 }

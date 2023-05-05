@@ -24,10 +24,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.persona.PersonaListView
-import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
@@ -199,7 +198,7 @@ private fun CreateActivityUI() {
                     text = "Expandable",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -218,7 +217,7 @@ private fun CreateActivityUI() {
                     text = "Show Handle",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -237,7 +236,7 @@ private fun CreateActivityUI() {
                     text = "Slide Over",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -256,7 +255,7 @@ private fun CreateActivityUI() {
                     text = "Peek Height $peekHeightState",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -294,7 +293,7 @@ private fun CreateActivityUI() {
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
                         fontWeight = FontWeight.Bold,
-                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -306,7 +305,7 @@ private fun CreateActivityUI() {
                     text = "From ItemListContentBuilder",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -325,7 +324,7 @@ private fun CreateActivityUI() {
                     text = "Using AndroidView",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -344,7 +343,7 @@ private fun CreateActivityUI() {
                     text = "Compose Content",
                     modifier = Modifier.weight(1F),
                     style = TextStyle(
-                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )
@@ -409,7 +408,7 @@ private fun CreateActivityUI() {
                 BasicText(
                     text = context.resources.getString(R.string.large_scrollable_text),
                     style = TextStyle(
-                        color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                             themeMode = ThemeMode.Auto
                         )
                     )

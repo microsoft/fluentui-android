@@ -6,13 +6,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackground1
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForegroundTint
-import com.microsoft.fluentui.theme.token.AliasTokens.ErrorAndStatusColorTokens.*
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background5
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background5Selected
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.ErrorAndStatusColorTokens.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background5
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Medium
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize.Small
 import kotlinx.parcelize.Parcelize
@@ -43,7 +43,7 @@ data class PersonaChipInfo(
 ) : PersonaChipControlInfo()
 
 @Parcelize
-open class PersonaChipTokens : ControlToken, Parcelable {
+open class PersonaChipTokens : IControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(personaChipInfo: PersonaChipControlInfo): StateColor {
@@ -171,38 +171,38 @@ open class PersonaChipTokens : ControlToken, Parcelable {
     @Composable
     open fun cornerRadius(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
-            Medium -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            Small -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius20)
+            Medium -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
 
     @Composable
     open fun typography(personaChipInfo: PersonaChipControlInfo): TextStyle {
         return when (personaChipInfo.size) {
-            Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
-            Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
+            Small -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
+            Medium -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
         }
     }
 
     @Composable
     open fun verticalPadding(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
-            Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
+            Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
+            Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
         }
     }
 
     @Composable
     open fun horizontalPadding(personaChipInfo: PersonaChipControlInfo): Dp {
         return when (personaChipInfo.size) {
-            Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
-            Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+            Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
         }
     }
 
     @Composable
     open fun avatarToTextSpacing(personaChipInfo: PersonaChipControlInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
