@@ -1,10 +1,14 @@
 package com.microsoft.fluentui.theme.token
 
+import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.NonRestartableComposable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.scale
@@ -31,6 +35,7 @@ data class FluentIcon(
     val contentDescription: String? = null,
     val tint: Color? = null,
     val flipOnRtl: Boolean = false,
+    val enabled: Boolean = true,
     val onClick: (() -> Unit)? = null
 ) {
     @Composable
@@ -60,24 +65,21 @@ data class FluentIcon(
 fun Icon(
     icon: FluentIcon,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Unspecified
+    tint: Color = Color.Unspecified,
 ) {
     Icon(
-        icon.value(),
+        rememberVectorPainter(icon.value()),
         icon.contentDescription,
-        modifier
-            .then(
-                if (icon.flipOnRtl && LocalLayoutDirection.current == LayoutDirection.Rtl)
-                    Modifier.scale(-1F, -1F)
-                else
-                    Modifier
-            ),
-        tint = icon.tint ?: tint
+        modifier = modifier,
+        flipOnRtl = icon.flipOnRtl,
+        tint = icon.tint ?: tint,
+        enabled = icon.enabled,
+        onClick = icon.onClick
     )
 }
 
 /**
- * Icon component that draws [imageVector] using [tint].
+ * Icon component that draws [imageVector] using [Icon].
  *
  * @param imageVector [ImageVector] to draw inside this Icon
  * @param contentDescription text used by accessibility services to describe what this icon
@@ -85,8 +87,11 @@ fun Icon(
  * and does not represent a meaningful action that a user can take. This text should be
  * localized.
  * @param modifier optional [Modifier] for this Icon
- * @param tint tint to be applied to [imageVector]. If [Color.Unspecified] is provided, then no
- *  tint is applied
+ * @param flipOnRtl Boolean to specify if the icon is directional and needs flipping on layoout change
+ * @param tint tint to be applied to [painter]. If [Color.Unspecified] is provided, then no
+ * tint is applied
+ * @param enabled Boolean to define if icon is clickable or not
+ * @param onClick onClick Lambda to be invoked when icon is clicked.
  */
 @Composable
 @NonRestartableComposable
@@ -94,13 +99,19 @@ fun Icon(
     imageVector: ImageVector,
     contentDescription: String?,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Unspecified
+    flipOnRtl: Boolean = false,
+    tint: Color = Color.Unspecified,
+    enabled: Boolean = true,
+    onClick: (() -> Unit)? = null
 ) {
     Icon(
         painter = rememberVectorPainter(imageVector),
         contentDescription = contentDescription,
         modifier = modifier,
-        tint = tint
+        flipOnRtl = flipOnRtl,
+        tint = tint,
+        enabled = enabled,
+        onClick = onClick
     )
 }
 
@@ -113,17 +124,22 @@ fun Icon(
  * and does not represent a meaningful action that a user can take. This text should be
  * localized.
  * @param modifier optional [Modifier] for this Icon
+ * @param flipOnRtl Boolean to specify if the icon is directional and needs flipping on layoout change
  * @param tint tint to be applied to [painter]. If [Color.Unspecified] is provided, then no
  *  tint is applied
+ * @param enabled Boolean to define if icon is clickable or not
+ * @param onClick onClick Lambda to be invoked when icon is clicked.
  */
 @Composable
 fun Icon(
     painter: Painter,
     contentDescription: String?,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Unspecified
+    flipOnRtl: Boolean = false,
+    tint: Color = Color.Unspecified,
+    enabled: Boolean = true,
+    onClick: (() -> Unit)? = null
 ) {
-    // TODO: b/149735981 semantics for content description
     val colorFilter = if (tint == Color.Unspecified) null else ColorFilter.tint(tint)
     val semantics = if (contentDescription != null) {
         Modifier.semantics {
@@ -133,14 +149,32 @@ fun Icon(
     } else {
         Modifier
     }
+
+    val clickableModifier = Modifier.then(
+        if (onClick != null) Modifier.clickable(
+            interactionSource = remember { MutableInteractionSource() },
+            indication = LocalIndication.current,
+            enabled = enabled,
+            onClickLabel = contentDescription,
+            onClick = onClick
+        ) else Modifier
+    )
+
     Box(
-        modifier
+        clickableModifier
+            .then(modifier)
             .toolingGraphicsLayer()
             .defaultSizeFor(painter)
             .paint(
                 painter,
                 colorFilter = colorFilter,
                 contentScale = ContentScale.Fit
+            )
+            .then(
+                if (flipOnRtl && LocalLayoutDirection.current == LayoutDirection.Rtl)
+                    Modifier.scale(-1F, -1F)
+                else
+                    Modifier
             )
             .then(semantics)
     )

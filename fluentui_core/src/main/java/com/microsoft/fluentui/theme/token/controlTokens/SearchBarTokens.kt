@@ -161,11 +161,6 @@ open class SearchBarTokens : ControlToken, Parcelable {
     }
 
     @Composable
-    open fun progressIndicatorRightPadding(searchBarInfo: SearchBarInfo): PaddingValues {
-        return PaddingValues(end = GlobalTokens.size(GlobalTokens.SizeTokens.Size160))
-    }
-
-    @Composable
     open fun height(searchBarInfo: SearchBarInfo): Dp {
         return 40.dp
     }

@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
@@ -106,26 +105,13 @@ fun AppBar(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 if (appBarSize != AppBarSize.Large && navigationIcon.isIconAvailable()) {
-                    Box(
+                    Icon(
+                        navigationIcon,
                         modifier = Modifier
-                            .then(
-                                if (navigationIcon.onClick != null) {
-                                    Modifier.clickable(
-                                        role = Role.Button,
-                                        onClick = navigationIcon.onClick!!
-                                    )
-                                } else
-                                    Modifier
-                            ), contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            navigationIcon,
-                            modifier = Modifier
-                                .padding(token.navigationIconPadding(appBarInfo))
-                                .size(token.leftIconSize(appBarInfo)),
-                            tint = token.navigationIconColor(appBarInfo)
-                        )
-                    }
+                            .padding(token.navigationIconPadding(appBarInfo))
+                            .size(token.leftIconSize(appBarInfo)),
+                        tint = token.navigationIconColor(appBarInfo)
+                    )
                 }
 
                 if (appBarSize != AppBarSize.Medium) {
@@ -173,10 +159,11 @@ fun AppBar(
                             )
                             if (postTitleIcon.isIconAvailable() && appBarSize == AppBarSize.Small)
                                 Icon(
-                                    postTitleIcon,
+                                    postTitleIcon.value(),
+                                    postTitleIcon.contentDescription,
                                     modifier = Modifier
                                         .size(token.titleIconSize(appBarInfo)),
-                                    tint = token.titleIconColor(appBarInfo)
+                                    tint = token.titleIconColor(appBarInfo),
                                 )
                         }
                         Row(
@@ -214,7 +201,8 @@ fun AppBar(
                             )
                             if (postSubtitleIcon.isIconAvailable())
                                 Icon(
-                                    postSubtitleIcon,
+                                    postSubtitleIcon.value(),
+                                    contentDescription = postSubtitleIcon.contentDescription,
                                     modifier = Modifier
                                         .size(
                                             token.subtitleIconSize(
