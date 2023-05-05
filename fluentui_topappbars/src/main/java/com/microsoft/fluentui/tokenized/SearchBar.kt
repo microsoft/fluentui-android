@@ -293,8 +293,8 @@ fun SearchBar(
                                 ),
                                 modifier = Modifier
                                     .padding(
-                                        (44.dp - token.leftIconSize(searchBarInfo)) / 2,
-                                        (40.dp - token.leftIconSize(searchBarInfo)) / 2
+                                        (44.dp - token.rightIconSize(searchBarInfo)) / 2,
+                                        (40.dp - token.rightIconSize(searchBarInfo)) / 2
                                     )
                                     .size(
                                         token.rightIconSize(

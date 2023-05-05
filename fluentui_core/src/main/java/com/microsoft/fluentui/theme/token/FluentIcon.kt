@@ -90,6 +90,8 @@ fun Icon(
  * @param flipOnRtl Boolean to specify if the icon is directional and needs flipping on layoout change
  * @param tint tint to be applied to [painter]. If [Color.Unspecified] is provided, then no
  * tint is applied
+ * @param enabled Boolean to define if icon is clickable or not
+ * @param onClick onClick Lambda to be invoked when icon is clicked.
  */
 @Composable
 @NonRestartableComposable
@@ -125,6 +127,8 @@ fun Icon(
  * @param flipOnRtl Boolean to specify if the icon is directional and needs flipping on layoout change
  * @param tint tint to be applied to [painter]. If [Color.Unspecified] is provided, then no
  *  tint is applied
+ * @param enabled Boolean to define if icon is clickable or not
+ * @param onClick onClick Lambda to be invoked when icon is clicked.
  */
 @Composable
 fun Icon(
