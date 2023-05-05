@@ -2,7 +2,8 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
@@ -16,19 +17,23 @@ data class PillBarInfo(
 open class PillBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun background(pillBarInfo: PillBarInfo): Color {
+    open fun background(pillBarInfo: PillBarInfo): Brush {
         return when (pillBarInfo.style) {
-            FluentStyle.Neutral -> FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                FluentTheme.themeMode
-            )
-            FluentStyle.Brand -> FluentColor(
-                light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                    ThemeMode.Light
-                ),
-                dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                    ThemeMode.Dark
+            FluentStyle.Neutral -> SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                    FluentTheme.themeMode
                 )
-            ).value(FluentTheme.themeMode)
+            )
+            FluentStyle.Brand -> SolidColor(
+                FluentColor(
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                        ThemeMode.Dark
+                    )
+                ).value(FluentTheme.themeMode)
+            )
         }
     }
 }

@@ -4,7 +4,9 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -20,9 +22,11 @@ class ContextualCommandBarInfo : ControlInfo
 open class ContextualCommandBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun actionButtonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
-            themeMode = themeMode
+    open fun actionButtonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Brush {
+        return SolidColor(
+            aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                themeMode = themeMode
+            )
         )
     }
 
@@ -58,9 +62,11 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun contextualCommandBarBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
-            themeMode = themeMode
+    open fun contextualCommandBarBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Brush {
+        return SolidColor(
+            aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                themeMode = themeMode
+            )
         )
     }
 
@@ -120,35 +126,47 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun buttonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): StateColor {
-        return StateColor(
-            rest = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                themeMode = themeMode
-            ),
-            pressed = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(
-                themeMode = themeMode
-            ),
-            focused = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                themeMode = themeMode
-            ),
-            selected = FluentColor(
-                light = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
-                    themeMode = ThemeMode.Light
-                ),
-                dark = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
-                    themeMode = ThemeMode.Dark
+    open fun buttonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): StateBrush {
+        return StateBrush(
+            rest = SolidColor(
+                aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
                 )
-            ).value(themeMode = themeMode),
-            selectedFocused = FluentColor(
-                light = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
-                    themeMode = ThemeMode.Light
-                ),
-                dark = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
-                    themeMode = ThemeMode.Dark
+            ),
+            pressed = SolidColor(
+                aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(
+                    themeMode = themeMode
                 )
-            ).value(themeMode = themeMode),
-            disabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                themeMode = themeMode
+            ),
+            focused = SolidColor(
+                aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
+                )
+            ),
+            selected = SolidColor(
+                FluentColor(
+                    light = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
+                        themeMode = ThemeMode.Light
+                    ),
+                    dark = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                        themeMode = ThemeMode.Dark
+                    )
+                ).value(themeMode = themeMode)
+            ),
+            selectedFocused = SolidColor(
+                FluentColor(
+                    light = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
+                        themeMode = ThemeMode.Light
+                    ),
+                    dark = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                        themeMode = ThemeMode.Dark
+                    )
+                ).value(themeMode = themeMode)
+            ),
+            disabled = SolidColor(
+                aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
+                )
             )
         )
     }

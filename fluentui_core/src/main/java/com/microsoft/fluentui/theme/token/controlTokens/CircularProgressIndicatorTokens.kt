@@ -2,7 +2,8 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -56,18 +57,20 @@ open class CircularProgressIndicatorTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun color(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Color {
-        return if (circularProgressIndicatorInfo.style == FluentStyle.Neutral) {
-            FluentColor(
-                light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey56),
-                dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey72)
-            ).value(
-                themeMode = FluentTheme.themeMode
-            )
-        } else {
-            FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                themeMode = FluentTheme.themeMode
-            )
-        }
+    open fun color(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Brush {
+        return SolidColor(
+            if (circularProgressIndicatorInfo.style == FluentStyle.Neutral) {
+                FluentColor(
+                    light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey56),
+                    dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey72)
+                ).value(
+                    themeMode = FluentTheme.themeMode
+                )
+            } else {
+                FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            }
+        )
     }
 }

@@ -15,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusTarget
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -351,7 +352,7 @@ private fun HorizontalDrawer(
     drawerState: DrawerState,
     drawerShape: Shape,
     drawerElevation: Dp,
-    drawerBackgroundColor: Color,
+    drawerBackground: Brush,
     drawerContentColor: Color,
     scrimColor: Color,
     scrimVisible: Boolean,
@@ -425,6 +426,7 @@ private fun HorizontalDrawer(
                             }
                         }
                     }
+                    .background(drawerBackground)
                     .swipeable(
                         state = drawerState,
                         anchors = anchors,
@@ -436,7 +438,6 @@ private fun HorizontalDrawer(
                         resistance = null
                     ),
                 shape = drawerShape,
-                color = drawerBackgroundColor,
                 contentColor = drawerContentColor,
                 elevation = drawerElevation
             ) {
@@ -470,7 +471,7 @@ private fun TopDrawer(
     drawerState: DrawerState,
     drawerShape: Shape,
     drawerElevation: Dp,
-    drawerBackgroundColor: Color,
+    drawerBackground: Brush,
     drawerContentColor: Color,
     drawerHandleColor: Color,
     scrimColor: Color,
@@ -543,6 +544,7 @@ private fun TopDrawer(
                     .height(
                         pxToDp(drawerState.offset.value)
                     )
+                    .background(drawerBackground)
                     .swipeable(
                         state = drawerState,
                         anchors = anchors,
@@ -552,7 +554,6 @@ private fun TopDrawer(
                     )
                     .focusable(false),
                 shape = drawerShape,
-                color = drawerBackgroundColor,
                 contentColor = drawerContentColor,
                 elevation = drawerElevation
             ) {
@@ -611,7 +612,7 @@ private fun BottomDrawer(
     drawerState: DrawerState,
     drawerShape: Shape,
     drawerElevation: Dp,
-    drawerBackgroundColor: Color,
+    drawerBackground: Brush,
     drawerContentColor: Color,
     drawerHandleColor: Color,
     scrimColor: Color,
@@ -694,6 +695,7 @@ private fun BottomDrawer(
                     }
                 }
                 .drawerHeight(expandable, slideOver, maxOpenHeight, fullHeight, drawerState)
+                .background(drawerBackground)
                 .semantics {
                     if (drawerState.isOpen) {
                         dismiss {
@@ -719,7 +721,6 @@ private fun BottomDrawer(
                 }
                 .focusable(false),
             shape = drawerShape,
-            color = drawerBackgroundColor,
             contentColor = drawerContentColor,
             elevation = drawerElevation
         ) {
@@ -841,7 +842,7 @@ fun Drawer(
                     else -> RoundedCornerShape(tokens.borderRadius(drawerInfo))
                 }
             val drawerElevation: Dp = tokens.elevation(drawerInfo)
-            val drawerBackgroundColor: Color =
+            val drawerBackgroundColor: Brush =
                 tokens.backgroundColor(drawerInfo)
             val drawerContentColor: Color = Color.Transparent
             val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
@@ -855,7 +856,7 @@ fun Drawer(
                     drawerState = drawerState,
                     drawerShape = drawerShape,
                     drawerElevation = drawerElevation,
-                    drawerBackgroundColor = drawerBackgroundColor,
+                    drawerBackground = drawerBackgroundColor,
                     drawerContentColor = drawerContentColor,
                     drawerHandleColor = drawerHandleColor,
                     scrimColor = scrimColor,
@@ -870,7 +871,7 @@ fun Drawer(
                     drawerState = drawerState,
                     drawerShape = drawerShape,
                     drawerElevation = drawerElevation,
-                    drawerBackgroundColor = drawerBackgroundColor,
+                    drawerBackground = drawerBackgroundColor,
                     drawerContentColor = drawerContentColor,
                     drawerHandleColor = drawerHandleColor,
                     scrimColor = scrimColor,
@@ -885,7 +886,7 @@ fun Drawer(
                     drawerState = drawerState,
                     drawerShape = drawerShape,
                     drawerElevation = drawerElevation,
-                    drawerBackgroundColor = drawerBackgroundColor,
+                    drawerBackground = drawerBackgroundColor,
                     drawerContentColor = drawerContentColor,
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,

@@ -62,12 +62,12 @@ fun SearchBarPersonaChip(
         size = size
     )
     val backgroundColor =
-        token.backgroundColor(searchBarPersonaChipInfo = searchBarPersonaChipInfo)
-            .getColorByState(
+        token.backgroundColor(personaChipInfo = searchBarPersonaChipInfo)
+            .getBrushByState(
                 enabled = enabled, selected = selected, interactionSource = interactionSource
             )
     val textColor =
-        token.textColor(searchBarPersonaChipInfo = searchBarPersonaChipInfo)
+        token.textColor(personaChipInfo = searchBarPersonaChipInfo)
             .getColorByState(
                 enabled = enabled, selected = selected, interactionSource = interactionSource
             )

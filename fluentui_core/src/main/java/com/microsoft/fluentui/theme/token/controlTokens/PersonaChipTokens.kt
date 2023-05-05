@@ -2,6 +2,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -46,61 +47,89 @@ data class PersonaChipInfo(
 open class PersonaChipTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(personaChipInfo: PersonaChipControlInfo): StateColor {
+    open fun backgroundColor(personaChipInfo: PersonaChipControlInfo): StateBrush {
         personaChipInfo as PersonaChipInfo
         when (personaChipInfo.style) {
-            PersonaChipStyle.Neutral -> return StateColor(
-                rest = FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
-                    themeMode = FluentTheme.themeMode
+            PersonaChipStyle.Neutral -> return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                selected = FluentTheme.aliasTokens.neutralBackgroundColor[Background5Selected].value(
-                    themeMode = FluentTheme.themeMode
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background5Selected].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                disabled = FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
-                    themeMode = FluentTheme.themeMode
+                disabled = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 )
             )
-            PersonaChipStyle.Brand -> return StateColor(
-                rest = FluentTheme.aliasTokens.brandBackgroundColor[BrandBackgroundTint].value(
-                    themeMode = FluentTheme.themeMode
+            PersonaChipStyle.Brand -> return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.brandBackgroundColor[BrandBackgroundTint].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                selected = FluentTheme.aliasTokens.brandBackgroundColor[BrandBackground1].value(
-                    themeMode = FluentTheme.themeMode
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.brandBackgroundColor[BrandBackground1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                disabled = FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
-                    themeMode = FluentTheme.themeMode
+                disabled = SolidColor(
+                    FluentTheme.aliasTokens.neutralBackgroundColor[Background5].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 )
             )
-            PersonaChipStyle.Danger -> return StateColor(
-                rest = FluentTheme.aliasTokens.errorAndStatusColor[DangerBackground1].value(
-                    themeMode = FluentTheme.themeMode
+            PersonaChipStyle.Danger -> return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[DangerBackground1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                selected = FluentTheme.aliasTokens.errorAndStatusColor[DangerBackground2].value(
-                    themeMode = FluentTheme.themeMode
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[DangerBackground2].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 )
             )
-            PersonaChipStyle.SevereWarning -> return StateColor(
-                rest = FluentTheme.aliasTokens.errorAndStatusColor[SevereBackground1].value(
-                    themeMode = FluentTheme.themeMode
+            PersonaChipStyle.SevereWarning -> return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[SevereBackground1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                selected = FluentTheme.aliasTokens.errorAndStatusColor[SevereBackground2].value(
-                    themeMode = FluentTheme.themeMode
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[SevereBackground2].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 )
             )
-            PersonaChipStyle.Warning -> return StateColor(
-                rest = FluentTheme.aliasTokens.errorAndStatusColor[WarningBackground1].value(
-                    themeMode = FluentTheme.themeMode
+            PersonaChipStyle.Warning -> return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[WarningBackground1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                selected = FluentTheme.aliasTokens.errorAndStatusColor[WarningBackground2].value(
-                    themeMode = FluentTheme.themeMode
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[WarningBackground2].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 )
             )
-            PersonaChipStyle.Success -> return StateColor(
-                rest = FluentTheme.aliasTokens.errorAndStatusColor[SuccessBackground1].value(
-                    themeMode = FluentTheme.themeMode
+            PersonaChipStyle.Success -> return StateBrush(
+                rest = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[SuccessBackground1].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 ),
-                selected = FluentTheme.aliasTokens.errorAndStatusColor[SuccessBackground2].value(
-                    themeMode = FluentTheme.themeMode
+                selected = SolidColor(
+                    FluentTheme.aliasTokens.errorAndStatusColor[SuccessBackground2].value(
+                        themeMode = FluentTheme.themeMode
+                    )
                 )
             )
         }

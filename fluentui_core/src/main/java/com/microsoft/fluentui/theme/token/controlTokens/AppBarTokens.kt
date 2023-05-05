@@ -3,7 +3,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -28,22 +30,24 @@ data class AppBarInfo(
 open class AppBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(info: AppBarInfo): Color {
-        return when (info.style) {
-            FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            FluentStyle.Brand ->
-                FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        ThemeMode.Light
-                    ),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                        ThemeMode.Dark
+    open fun backgroundColor(info: AppBarInfo): Brush {
+        return SolidColor(
+            when (info.style) {
+                FluentStyle.Neutral ->
+                    FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                        themeMode = FluentTheme.themeMode
                     )
-                ).value(themeMode = FluentTheme.themeMode)
-        }
+                FluentStyle.Brand ->
+                    FluentColor(
+                        light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            ThemeMode.Light
+                        ),
+                        dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                            ThemeMode.Dark
+                        )
+                    ).value(themeMode = FluentTheme.themeMode)
+            }
+        )
     }
 
     @Composable

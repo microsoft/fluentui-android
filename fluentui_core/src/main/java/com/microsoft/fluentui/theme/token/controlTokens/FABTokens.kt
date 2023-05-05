@@ -9,6 +9,7 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -72,22 +73,32 @@ open class FABTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(fabInfo: FABInfo): StateColor {
-        return StateColor(
-            rest = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                themeMode = themeMode
+    open fun backgroundColor(fabInfo: FABInfo): StateBrush {
+        return StateBrush(
+            rest = SolidColor(
+                aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    themeMode = themeMode
+                )
             ),
-            pressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
-                themeMode = themeMode
+            pressed = SolidColor(
+                aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                    themeMode = themeMode
+                )
             ),
-            selected = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
-                themeMode = themeMode
+            selected = SolidColor(
+                aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                    themeMode = themeMode
+                )
             ),
-            focused = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                themeMode = themeMode
+            focused = SolidColor(
+                aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    themeMode = themeMode
+                )
             ),
-            disabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                themeMode = themeMode
+            disabled = SolidColor(
+                aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
+                )
             )
         )
     }

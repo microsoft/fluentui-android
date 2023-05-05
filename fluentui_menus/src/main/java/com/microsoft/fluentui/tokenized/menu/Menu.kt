@@ -8,7 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
@@ -103,7 +103,7 @@ fun Menu(
                 content = content,
                 elevation = token.elevation(menuInfo),
                 cornerRadius = token.cornerRadius(menuInfo),
-                color = token.backgroundColor(menuInfo)
+                background = token.backgroundColor(menuInfo)
             )
         }
 
@@ -123,7 +123,7 @@ internal fun MenuContent(
     transformOriginState: MutableState<TransformOrigin>,
     modifier: Modifier = Modifier,
     elevation: Dp,
-    color: Color,
+    background: Brush,
     cornerRadius: Dp,
     content: @Composable () -> Unit
 ) {
@@ -185,7 +185,7 @@ internal fun MenuContent(
                 transformOrigin = transformOriginState.value
             }
             .shadow(elevation, shape, clip = false)
-            .background(color = color, shape = shape)
+            .background(background, shape)
             .clip(shape)
             .semantics(mergeDescendants = false) {}
             .pointerInput(Unit) {}

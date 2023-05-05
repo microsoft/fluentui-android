@@ -2,7 +2,8 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlInfo
@@ -17,9 +18,11 @@ class MenuInfo : ControlInfo
 open class MenuTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(menuInfo: MenuInfo): Color =
-        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
-            themeMode = FluentTheme.themeMode
+    open fun backgroundColor(menuInfo: MenuInfo): Brush =
+        SolidColor(
+            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                themeMode = FluentTheme.themeMode
+            )
         )
 
     @Composable

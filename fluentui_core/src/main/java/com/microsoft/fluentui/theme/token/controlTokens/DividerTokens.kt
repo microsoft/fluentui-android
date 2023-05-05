@@ -3,7 +3,8 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -17,16 +18,20 @@ class DividerInfo : ControlInfo
 @Parcelize
 open class DividerTokens : IControlToken, Parcelable {
     @Composable
-    open fun background(dividerInfo: DividerInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-            FluentTheme.themeMode
+    open fun background(dividerInfo: DividerInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                FluentTheme.themeMode
+            )
         )
     }
 
     @Composable
-    open fun dividerColor(dividerInfo: DividerInfo): Color {
-        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value(
-            themeMode = FluentTheme.themeMode
+    open fun dividerColor(dividerInfo: DividerInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value(
+                themeMode = FluentTheme.themeMode
+            )
         )
     }
 
