@@ -3,24 +3,30 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Icon
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Call
-import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.controls.AnnouncementCard
@@ -53,13 +59,11 @@ class V2CardActivity : DemoActivity() {
 
     @Composable
     private fun CreateCardUI(context: Context) {
-        val textColor =
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         var index by remember { mutableStateOf(1) }
         Box {
             LazyColumn(
                 modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 item {
                     ListItem.Header(
@@ -68,18 +72,22 @@ class V2CardActivity : DemoActivity() {
                     )
                 }
                 item {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(24.dp)
+                    Column(
+                        modifier = Modifier.padding(start = 16.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        BasicCard(
-                            onClick = {},
-                            content = { getContent(index = index, context = context) })
                         Button(
                             text = context.getString(R.string.card_randomize),
                             size = ButtonSize.Small,
                             style = ButtonStyle.OutlinedButton,
                             onClick = { index = (1..5).random() })
+                        BasicCard(
+                            content = { GetContent(index = index, context = context) })
+                    }
+                }
+                item {
+                    BasicCard {
+                        basicCardUI(context)
                     }
                 }
                 item {
@@ -92,12 +100,19 @@ class V2CardActivity : DemoActivity() {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(
                                         Icons.Outlined.MoreVert,
+                                        onClick = {
+                                            Toast.makeText(
+                                                context,
+                                                "CLicked",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                        },
                                         contentDescription = context.getString(R.string.card_options)
                                     ),
                                     onClick = {},
                                     text = context.getString(R.string.persona_name_carlos_slattery),
                                     subText = context.getString(R.string.persona_subtitle_designer),
-                                    textIcon = FluentIcon(Icons.Outlined.Call),
+                                    textIcon = Icons.Outlined.Call,
                                     previewImageDrawable = R.drawable.avatar_carlos_slattery
                                 )
                             }
@@ -107,7 +122,7 @@ class V2CardActivity : DemoActivity() {
                                     onClick = {},
                                     text = context.getString(R.string.persona_name_allan_munger),
                                     subText = context.getString(R.string.persona_subtitle_manager),
-                                    textIcon = FluentIcon(Icons.Outlined.Call),
+                                    textIcon = Icons.Outlined.Call,
                                     previewImageDrawable = R.drawable.avatar_allan_munger
                                 )
                             }
@@ -117,7 +132,7 @@ class V2CardActivity : DemoActivity() {
                                     onClick = {},
                                     text = context.getString(R.string.persona_name_elvia_atkins),
                                     subText = context.getString(R.string.persona_subtitle_engineer),
-                                    textIcon = FluentIcon(Icons.Outlined.Call),
+                                    textIcon = Icons.Outlined.Call,
                                     previewImageDrawable = R.drawable.avatar_elvia_atkins
                                 )
                             }
@@ -127,7 +142,7 @@ class V2CardActivity : DemoActivity() {
                                     onClick = {},
                                     text = context.getString(R.string.persona_name_charlotte_waltson),
                                     subText = context.getString(R.string.persona_subtitle_researcher),
-                                    textIcon = FluentIcon(Icons.Outlined.Call),
+                                    textIcon = Icons.Outlined.Call,
                                     previewImageDrawable = R.drawable.avatar_charlotte_waltson
                                 )
                             }
@@ -147,7 +162,7 @@ class V2CardActivity : DemoActivity() {
                     )
                 }
                 item {
-                    Text(text = "")
+                    BasicText(text = "")
                 }
             }
         }
@@ -155,12 +170,12 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun getContent(index: Int, context: Context): Unit {
+    private fun GetContent(index: Int, context: Context) {
         return when (index) {
             1 -> CardContent1(context)
             2 -> CardContent2(context)
             3 -> CardContent3(context)
-            4 -> CardContent4(context)
+            4 -> CardContent4()
             5 -> CardContent5(context)
             else -> {}
         }
@@ -170,7 +185,17 @@ class V2CardActivity : DemoActivity() {
     private fun CardContent1(context: Context) {
         val textColor =
             aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
-        Box(modifier = Modifier.padding(all = 8.dp)) {
+        Box(
+            modifier = Modifier
+                .clickable(
+                    interactionSource = MutableInteractionSource(),
+                    indication = rememberRipple(),
+                    enabled = true,
+                    onClick = { },
+                    role = Role.Button
+                )
+                .padding(all = 8.dp)
+        ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -181,8 +206,14 @@ class V2CardActivity : DemoActivity() {
                     tint = textColor
                 )
                 Column {
-                    Text(text = context.getString(R.string.card_text), color = textColor)
-                    Text(text = context.getString(R.string.card_subtext), color = textColor)
+                    BasicText(
+                        text = context.getString(R.string.card_text),
+                        style = TextStyle(color = textColor)
+                    )
+                    BasicText(
+                        text = context.getString(R.string.card_subtext),
+                        style = TextStyle(color = textColor)
+                    )
                 }
             }
         }
@@ -198,7 +229,10 @@ class V2CardActivity : DemoActivity() {
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Column {
-                    Text(text = context.getString(R.string.card_text), color = textColor)
+                    BasicText(
+                        text = context.getString(R.string.card_text),
+                        style = TextStyle(color = textColor)
+                    )
                 }
             }
         }
@@ -223,8 +257,14 @@ class V2CardActivity : DemoActivity() {
                         tint = textColor
                     )
                     Column {
-                        Text(text = context.getString(R.string.card_text), color = textColor)
-                        Text(text = context.getString(R.string.card_subtext), color = textColor)
+                        BasicText(
+                            text = context.getString(R.string.card_text),
+                            style = TextStyle(color = textColor)
+                        )
+                        BasicText(
+                            text = context.getString(R.string.card_subtext),
+                            style = TextStyle(color = textColor)
+                        )
                     }
                 }
             }
@@ -232,7 +272,7 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun CardContent4(context: Context) {
+    private fun CardContent4() {
         Box {
             Image(
                 painterResource(id = R.drawable.image_un), contentDescription = ""
@@ -253,10 +293,49 @@ class V2CardActivity : DemoActivity() {
                     painterResource(id = R.drawable.avatar_carlos_slattery), contentDescription = ""
                 )
                 Column {
-                    Text(text = context.getString(R.string.card_text), color = textColor)
-                    Text(text = context.getString(R.string.card_subtext), color = textColor)
+                    BasicText(
+                        text = context.getString(R.string.card_text),
+                        style = TextStyle(color = textColor)
+                    )
+                    BasicText(
+                        text = context.getString(R.string.card_subtext),
+                        style = TextStyle(color = textColor)
+                    )
                 }
             }
+        }
+    }
+
+    @Composable
+    private fun basicCardUI(context: Context) {
+        Column {
+            ListItem.Header(
+                border = BorderType.Bottom,
+                title = context.getString(R.string.basic_card),
+                trailingAccessoryView = { Icon(Icons.Outlined.Refresh, "") })
+            ListItem.Item(
+                border = BorderType.Bottom,
+                text = context.getString(R.string.card_text),
+                subText = context.getString(R.string.card_subtext),
+                leadingAccessoryView = { Icon(Icons.Outlined.Home, "") },
+                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "") })
+            ListItem.Item(
+                border = BorderType.Bottom,
+                text = context.getString(R.string.card_text),
+                subText = context.getString(R.string.card_subtext),
+                leadingAccessoryView = { Icon(Icons.Outlined.AccountBox, "") },
+                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "") })
+            ListItem.Item(
+                border = BorderType.Bottom,
+                text = context.getString(R.string.card_text),
+                subText = context.getString(R.string.card_subtext),
+                leadingAccessoryView = { Icon(Icons.Outlined.Call, "") },
+                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "") })
+            ListItem.Item(
+                text = context.getString(R.string.card_text),
+                subText = context.getString(R.string.card_subtext),
+                leadingAccessoryView = { Icon(Icons.Outlined.Add, "") },
+                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "") })
         }
     }
 }
