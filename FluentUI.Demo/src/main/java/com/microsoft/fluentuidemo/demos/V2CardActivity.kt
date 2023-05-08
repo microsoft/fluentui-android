@@ -103,7 +103,7 @@ class V2CardActivity : DemoActivity() {
                                         onClick = {
                                             Toast.makeText(
                                                 context,
-                                                "CLicked",
+                                                "Clicked",
                                                 Toast.LENGTH_LONG
                                             ).show()
                                         },
@@ -139,7 +139,6 @@ class V2CardActivity : DemoActivity() {
                             item {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
-                                    onClick = {},
                                     text = context.getString(R.string.persona_name_charlotte_waltson),
                                     subText = context.getString(R.string.persona_subtitle_researcher),
                                     textIcon = Icons.Outlined.Call,
