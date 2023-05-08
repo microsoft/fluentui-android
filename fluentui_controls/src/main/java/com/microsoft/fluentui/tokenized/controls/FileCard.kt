@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
@@ -79,6 +80,7 @@ fun FileCard(
             Column(
                 modifier = Modifier
                     .requiredWidth(IntrinsicSize.Min)
+                    .testTag("Card")
                     .then(
                         if (onClick != null) Modifier.clickable(
                             interactionSource = interactionSource,
