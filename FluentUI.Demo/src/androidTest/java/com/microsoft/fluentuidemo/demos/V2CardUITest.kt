@@ -52,6 +52,7 @@ class V2CardUITest {
                 )
             }
         }
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("Tree")
         val fileCard = composeTestRule.onNodeWithTag("fileCard")
         fileCard.assertExists()
         fileCard.assertIsDisplayed()
@@ -77,6 +78,7 @@ class V2CardUITest {
                 )
             }
         }
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("Tree")
         val fileCard = composeTestRule.onNodeWithTag("fileCard")
         fileCard.assertExists()
         fileCard.assertIsDisplayed()
@@ -101,6 +103,7 @@ class V2CardUITest {
                     buttonOnClick = {})
             }
         }
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("Tree")
         val announcementCard = composeTestRule.onNodeWithTag("announcementCard")
         announcementCard.assertExists()
         announcementCard.assertIsDisplayed()
