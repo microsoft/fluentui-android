@@ -30,7 +30,6 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
-import androidx.compose.material.Icon as MaterialIcon
 
 // TAGS FOR TESTING
 private const val SNACKBAR = "Snackbar"
@@ -230,7 +229,7 @@ fun Snackbar(
                         )
                         .testTag(DISMISS_BUTTON)
                 ) {
-                    MaterialIcon(
+                    Icon(
                         Icons.Filled.Close,
                         "Dismiss",
                         modifier = Modifier

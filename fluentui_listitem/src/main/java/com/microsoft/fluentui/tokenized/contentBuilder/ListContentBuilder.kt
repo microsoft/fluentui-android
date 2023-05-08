@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.*
-import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -16,14 +15,15 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
 import kotlinx.coroutines.launch
+import kotlin.math.ceil
 import kotlin.math.max
 import kotlin.math.min
-import kotlin.math.ceil
 
 data class ItemData(
     var title: String,
@@ -306,7 +306,7 @@ class ListContentBuilder {
                     subText = item.subTitle,
                     leadingAccessoryView = {
                         if (item.icon != null) {
-                            Icon(item.icon!!, null, tint = token.iconColor(ListItemInfo()).rest)
+                            Icon(item.icon, null, tint = token.iconColor(ListItemInfo()).rest)
                         }
                     },
                     trailingAccessoryView = item.accessory,

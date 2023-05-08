@@ -6,12 +6,10 @@ import android.widget.Toast
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
@@ -19,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -300,51 +297,40 @@ class V2AppBarLayoutActivity : DemoActivity() {
                         appTitleDelta = appTitleDelta,
                         accessoryDelta = accessoryDelta,
                         rightAccessoryView = {
-                            Box(
-                                Modifier
-                                    .size(44.dp)
-                                    .clickable(
-                                        onClick = {
-                                            Toast
-                                                .makeText(
-                                                    context,
-                                                    "Navigation Icon 1 Pressed",
-                                                    Toast.LENGTH_SHORT
-                                                )
-                                                .show()
-                                        }
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    Icons.Filled.Add,
-                                    "Add",
-                                    tint = rightIconColor
-                                )
-                            }
-
-                            Box(
-                                Modifier
-                                    .size(44.dp)
-                                    .clickable(
-                                        onClick = {
-                                            Toast
-                                                .makeText(
-                                                    context,
-                                                    "Navigation Icon 2 Pressed",
-                                                    Toast.LENGTH_SHORT
-                                                )
-                                                .show()
-                                        }
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    Icons.Filled.Email,
-                                    "E-mail",
-                                    tint = rightIconColor
-                                )
-                            }
+                            Icon(
+                                Icons.Filled.Add,
+                                "Add",
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .requiredSize(24.dp),
+                                tint = rightIconColor,
+                                onClick = {
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "Navigation Icon 1 Pressed",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                }
+                            )
+                            Icon(
+                                Icons.Filled.Email,
+                                "E-mail",
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .requiredSize(24.dp),
+                                tint = rightIconColor,
+                                onClick = {
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "Navigation Icon 2 Pressed",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                }
+                            )
                         }
                     )
                 }
