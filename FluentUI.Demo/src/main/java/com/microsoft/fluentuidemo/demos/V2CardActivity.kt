@@ -271,7 +271,7 @@ class V2CardActivity : DemoActivity() {
     }
 
     @Composable
-    private fun CardContent4(context: Context) {
+    private fun CardContent4() {
         Box {
             Image(
                 painterResource(id = R.drawable.image_un), contentDescription = ""

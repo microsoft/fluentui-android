@@ -22,7 +22,11 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 
 /**
  * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
+<<<<<<< HEAD
  * An Announcement card is made of a preview image on the top and some text and a button below. The card is non-interactive except the button.
+=======
+ * The card is made of a preview image on the top and some text and a button below. The card in non-interactive except the button
+>>>>>>> e37d8b7c (review changes 2)
  *
  * @param title Primary text of the Card
  * @param description Secondary text of the card, usually an announcement
