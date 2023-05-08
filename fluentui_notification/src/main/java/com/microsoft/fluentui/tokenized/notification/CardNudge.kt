@@ -222,24 +222,24 @@ fun CardNudge(
                         @Composable
                         override fun backgroundColor(pillButtonInfo: PillButtonInfo): StateColor {
                             return StateColor(
-                                rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
-                                pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
-                                focused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
+                                rest = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
+                                pressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
+                                focused = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
                             )
                         }
 
                         @Composable
                         override fun textColor(pillButtonInfo: PillButtonInfo): StateColor {
                             return StateColor(
-                                rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
-                                pressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
-                                focused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
+                                rest = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
+                                pressed = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
+                                focused = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
                             )
                         }
 
                         @Composable
                         override fun typography(pillButtonInfo: PillButtonInfo): TextStyle {
-                            return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
+                            return aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
                         }
                     }
                 )

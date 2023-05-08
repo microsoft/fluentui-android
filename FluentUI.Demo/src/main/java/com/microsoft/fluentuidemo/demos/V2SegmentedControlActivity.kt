@@ -18,8 +18,8 @@ import com.microsoft.fluentui.icons.avataricons.icon.Anonymous
 import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -34,7 +34,11 @@ class V2SegmentedControlActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 LazyColumn(
@@ -338,8 +342,8 @@ class V2SegmentedControlActivity : DemoActivity() {
             Column(
                 modifier = Modifier.background(
                     FluentColor(
-                        light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey98),
-                        dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey8)
+                        light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey98),
+                        dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey8)
                     ).value(
                         FluentTheme.themeMode
                     )

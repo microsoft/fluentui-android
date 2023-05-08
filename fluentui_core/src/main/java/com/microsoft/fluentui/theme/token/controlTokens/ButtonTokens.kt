@@ -35,45 +35,45 @@ data class ButtonInfo(
 ) : ControlInfo
 
 @Parcelize
-open class ButtonTokens : ControlToken, Parcelable {
+open class ButtonTokens : IControlToken, Parcelable {
 
     @Composable
     open fun iconColor(buttonInfo: ButtonInfo): StateColor {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateColor(
-                    rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    rest = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                     ),
-                    pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    pressed = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                     ),
-                    selected = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    selected = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                     ),
-                    focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    focused = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                     ),
-                    disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                    disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         themeMode = themeMode
                     )
                 )
 
             ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
                 StateColor(
-                    rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    rest = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
                     ),
-                    pressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                    pressed = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
                         themeMode = themeMode
                     ),
-                    selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                    selected = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
                         themeMode = themeMode
                     ),
-                    focused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    focused = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
                     ),
-                    disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                    disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         themeMode = themeMode
                     )
                 )
@@ -84,37 +84,37 @@ open class ButtonTokens : ControlToken, Parcelable {
     open fun textColor(buttonInfo: ButtonInfo): StateColor {
         return when (buttonInfo.style) {
             ButtonStyle.Button -> StateColor(
-                rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                rest = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                     themeMode = themeMode
                 ),
-                pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                pressed = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                     themeMode = themeMode
                 ),
-                selected = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                selected = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                     themeMode = themeMode
                 ),
-                focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                focused = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                     themeMode = themeMode
                 ),
-                disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                     themeMode = themeMode
                 )
             )
             ButtonStyle.OutlinedButton, ButtonStyle.TextButton ->
                 StateColor(
-                    rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    rest = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
                     ),
-                    pressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                    pressed = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
                         themeMode = themeMode
                     ),
-                    selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                    selected = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
                         themeMode = themeMode
                     ),
-                    focused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    focused = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
                     ),
-                    disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                    disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         themeMode = themeMode
                     )
                 )
@@ -126,19 +126,19 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateColor(
-                    rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    rest = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                         themeMode = themeMode
                     ),
-                    pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
+                    pressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed].value(
                         themeMode = themeMode
                     ),
-                    selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
+                    selected = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected].value(
                         themeMode = themeMode
                     ),
-                    focused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    focused = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                         themeMode = themeMode
                     ),
-                    disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    disabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                         themeMode = themeMode
                     )
                 )
@@ -153,14 +153,14 @@ open class ButtonTokens : ControlToken, Parcelable {
             ButtonStyle.Button, ButtonStyle.TextButton -> StateBorderStroke(
                 focused = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                        aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                        aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                             themeMode = themeMode
                         )
                     ),
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                        aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                             themeMode = themeMode
                         )
                     )
@@ -170,38 +170,38 @@ open class ButtonTokens : ControlToken, Parcelable {
             ButtonStyle.OutlinedButton -> StateBorderStroke(
                 pressed = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                        aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed].value(
                             themeMode = themeMode
                         )
                     )
                 ),
                 rest = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                        aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
                             themeMode = themeMode
                         )
                     )
                 ),
                 disabled = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                        aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
                             themeMode = themeMode
                         )
                     )
                 ),
                 focused = listOf(
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                        aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                        aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                             themeMode = themeMode
                         )
                     ),
                     BorderStroke(
-                        GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                        aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                        aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                             themeMode = themeMode
                         )
                     )
@@ -213,9 +213,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun cornerRadius(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
-            ButtonSize.Medium -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            ButtonSize.Large -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            ButtonSize.Small -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+            ButtonSize.Medium -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            ButtonSize.Large -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
 
@@ -224,9 +224,9 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.style) {
             ButtonStyle.Button, ButtonStyle.TextButton, ButtonStyle.OutlinedButton ->
                 when (buttonInfo.size) {
-                    ButtonSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
-                    ButtonSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
-                    ButtonSize.Large -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
+                    ButtonSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
+                    ButtonSize.Medium -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+                    ButtonSize.Large -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
                 }
         }
     }
@@ -234,9 +234,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun typography(buttonInfo: ButtonInfo): TextStyle {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
-            ButtonSize.Medium -> aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
-            ButtonSize.Large -> aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
+            ButtonSize.Small -> aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
+            ButtonSize.Medium -> aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
+            ButtonSize.Large -> aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
         }
     }
 
@@ -245,16 +245,16 @@ open class ButtonTokens : ControlToken, Parcelable {
         return when (buttonInfo.size) {
             ButtonSize.Small ->
                 PaddingValues(
-                    horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size80),
-                    vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
+                    horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80),
+                    vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
                 )
             ButtonSize.Medium -> PaddingValues(
-                horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
-                vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+                horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
+                vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
             )
             ButtonSize.Large -> PaddingValues(
-                horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size200),
-                vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
+                horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size200),
+                vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
             )
         }
     }
@@ -262,9 +262,9 @@ open class ButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun spacing(buttonInfo: ButtonInfo): Dp {
         return when (buttonInfo.size) {
-            ButtonSize.Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
-            ButtonSize.Medium -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
-            ButtonSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            ButtonSize.Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+            ButtonSize.Medium -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+            ButtonSize.Large -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
         }
     }
 

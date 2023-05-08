@@ -19,21 +19,21 @@ data class SearchBarInfo(
 ) : ControlInfo
 
 @Parcelize
-open class SearchBarTokens : ControlToken, Parcelable {
+open class SearchBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun inputBackgroundColor(searchBarInfo: SearchBarInfo): Color {
         return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -44,15 +44,15 @@ open class SearchBarTokens : ControlToken, Parcelable {
     open fun backgroundColor(searchBarInfo: SearchBarInfo): Color {
         return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -63,15 +63,15 @@ open class SearchBarTokens : ControlToken, Parcelable {
     open fun textColor(searchBarInfo: SearchBarInfo): Color {
         return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -82,15 +82,15 @@ open class SearchBarTokens : ControlToken, Parcelable {
     open fun leftIconColor(searchBarInfo: SearchBarInfo): Color {
         return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -102,13 +102,13 @@ open class SearchBarTokens : ControlToken, Parcelable {
         return SolidColor(
             when (searchBarInfo.style) {
                 FluentStyle.Neutral ->
-                    FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value()
+                    FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value()
                 FluentStyle.Brand ->
                     FluentColor(
-                        light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                        light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                             ThemeMode.Light
                         ),
-                        dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                        dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                             ThemeMode.Dark
                         )
                     ).value()
@@ -120,15 +120,15 @@ open class SearchBarTokens : ControlToken, Parcelable {
     open fun rightIconColor(searchBarInfo: SearchBarInfo): Color {
         return when (searchBarInfo.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -137,17 +137,17 @@ open class SearchBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun typography(searchBarInfo: SearchBarInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
     }
 
     @Composable
     open fun leftIconSize(searchBarInfo: SearchBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
     }
 
     @Composable
     open fun rightIconSize(searchBarInfo: SearchBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize200)
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
     }
 
     @Composable
@@ -157,7 +157,7 @@ open class SearchBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun searchBarPadding(info: SearchBarInfo): PaddingValues {
-        return PaddingValues(horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
+        return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
     }
 
     @Composable

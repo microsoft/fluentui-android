@@ -10,14 +10,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForeground1
-import com.microsoft.fluentui.theme.token.AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralBackgroundColorTokens.Background1Pressed
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralForegroundColorTokens.*
-import com.microsoft.fluentui.theme.token.AliasTokens.NeutralStrokeColorTokens.Stroke2
-import com.microsoft.fluentui.theme.token.AliasTokens.TypographyTokens.*
-import com.microsoft.fluentui.theme.token.GlobalTokens.StrokeWidthTokens.StrokeWidth15
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralStrokeColorTokens.Stroke2
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens.*
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemType.*
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Bold
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
@@ -69,13 +69,13 @@ data class ListItemInfo(
     val listItemType: ListItemType = OneLine,
     val borderInset: BorderInset = BorderInset.None,
     val placement: TextPlacement = Top,
-    val horizontalSpacing: GlobalTokens.SizeTokens = GlobalTokens.SizeTokens.Size120,
-    val verticalSpacing: GlobalTokens.SizeTokens = GlobalTokens.SizeTokens.Size120,
+    val horizontalSpacing: FluentGlobalTokens.SizeTokens = FluentGlobalTokens.SizeTokens.Size120,
+    val verticalSpacing: FluentGlobalTokens.SizeTokens = FluentGlobalTokens.SizeTokens.Size120,
     val unreadDot: Boolean = false
 ) : ControlInfo
 
 @Parcelize
-open class ListItemTokens : ControlToken, Parcelable {
+open class ListItemTokens : IControlToken, Parcelable {
     @Composable
     open fun backgroundColor(listItemInfo: ListItemInfo): StateColor {
         return StateColor(
@@ -122,7 +122,7 @@ open class ListItemTokens : ControlToken, Parcelable {
 
     @Composable
     open fun unreadDotColor(listItemInfo: ListItemInfo): Color {
-        return FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+        return FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
             FluentTheme.themeMode
         )
     }
@@ -130,21 +130,21 @@ open class ListItemTokens : ControlToken, Parcelable {
     @Composable
     open fun padding(listItemInfo: ListItemInfo): PaddingValues {
         return PaddingValues(
-            start = GlobalTokens.size(listItemInfo.horizontalSpacing),
-            end = GlobalTokens.size(listItemInfo.horizontalSpacing),
-            top = GlobalTokens.size(listItemInfo.verticalSpacing),
-            bottom = GlobalTokens.size(listItemInfo.verticalSpacing)
+            start = FluentGlobalTokens.size(listItemInfo.horizontalSpacing),
+            end = FluentGlobalTokens.size(listItemInfo.horizontalSpacing),
+            top = FluentGlobalTokens.size(listItemInfo.verticalSpacing),
+            bottom = FluentGlobalTokens.size(listItemInfo.verticalSpacing)
         )
     }
 
     @Composable
     open fun borderSize(listItemInfo: ListItemInfo): Dp {
-        return GlobalTokens.strokeWidth(StrokeWidth15)
+        return FluentGlobalTokens.strokeWidth(StrokeWidth15)
     }
 
     @Composable
     open fun chevronTint(listItemInfo: ListItemInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             FluentTheme.themeMode
         )
     }
@@ -247,8 +247,8 @@ open class ListItemTokens : ControlToken, Parcelable {
     @Composable
     open fun rippleColor(listItemInfo: ListItemInfo): Color {
         return FluentColor(
-            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black),
-            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
+            light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black),
+            dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
         ).value(
             FluentTheme.themeMode
         )
@@ -257,9 +257,9 @@ open class ListItemTokens : ControlToken, Parcelable {
     @Composable
     open fun primaryTextTypography(listItemInfo: ListItemInfo): TextStyle {
         return if (listItemInfo.unreadDot) {
-            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
+            FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
         } else {
-            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
+            FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
         }
     }
 

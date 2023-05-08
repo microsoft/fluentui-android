@@ -21,7 +21,7 @@ import com.example.theme.token.AnonymousAvatarTokens
 import com.example.theme.token.StandardInvertedAvatarTokens
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarGroupStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -128,7 +128,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                             Row(horizontalArrangement = Arrangement.Center) {
                                 BasicText(
                                     "Stack Group Style",
-                                    style = aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
+                                    style = aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
                                 )
                             }
                         }
@@ -267,7 +267,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                             Row(horizontalArrangement = Arrangement.Center) {
                                 BasicText(
                                     "Pile Group Style",
-                                    style = aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
+                                    style = aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
                                 )
                             }
                         }
