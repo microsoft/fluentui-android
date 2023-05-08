@@ -9,14 +9,18 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-enum class CardType{
+enum class CardType {
     Elevated,
     Outlined
 }
-abstract class BasicCardControlInfo: ControlInfo {
+
+abstract class BasicCardControlInfo : ControlInfo {
     abstract val cardType: CardType
 }
-data class BasicCardInfo(override val cardType: CardType = CardType.Elevated): BasicCardControlInfo()
+
+data class BasicCardInfo(override val cardType: CardType = CardType.Elevated) :
+    BasicCardControlInfo()
+
 @Parcelize
 open class BasicCardTokens : IControlToken, Parcelable {
 
@@ -26,10 +30,12 @@ open class BasicCardTokens : IControlToken, Parcelable {
             themeMode = FluentTheme.themeMode
         )
     }
+
     @Composable
     open fun cornerRadius(basicCardInfo: BasicCardControlInfo): Dp{
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
     }
+
     @Composable
     open fun elevation(basicCardInfo: BasicCardControlInfo): Dp{
         return when(basicCardInfo.cardType){
@@ -37,12 +43,14 @@ open class BasicCardTokens : IControlToken, Parcelable {
             CardType.Outlined -> 0.dp
         }
     }
+
     @Composable
     open fun borderColor(basicCardInfo: BasicCardControlInfo): Color {
         return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
             themeMode = FluentTheme.themeMode
         )
     }
+
     @Composable
     open fun borderStrokeWidth(basicCardInfo: BasicCardControlInfo): Dp{
         return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
