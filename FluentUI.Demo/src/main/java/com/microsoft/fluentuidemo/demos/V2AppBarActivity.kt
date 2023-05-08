@@ -33,6 +33,7 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
