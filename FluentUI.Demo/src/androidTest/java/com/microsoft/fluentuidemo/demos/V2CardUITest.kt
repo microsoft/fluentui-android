@@ -13,16 +13,16 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.tokenized.controls.AnnouncementCard
 import com.microsoft.fluentui.tokenized.controls.BasicCard
 import com.microsoft.fluentui.tokenized.controls.FileCard
+import com.microsoft.fluentuidemo.R
 import org.junit.Rule
 import org.junit.Test
-import com.microsoft.fluentuidemo.R
 
 class V2CardUITest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testBasicCard(){
+    fun testBasicCard() {
         composeTestRule.setContent {
             FluentTheme {
                 BasicCard(modifier = Modifier.testTag("basicCard")) {
@@ -35,56 +35,75 @@ class V2CardUITest {
         basicCard.assertIsDisplayed()
         basicCard.assertHasNoClickAction()
     }
+
     @Test
-    fun testOnClickBasicCard(){
+    fun testFileCardWithoutPreview() {
         composeTestRule.setContent {
             FluentTheme {
-                BasicCard(modifier = Modifier.testTag("basicCard"), onClick = {}) {
-                    Text(text = "Text")
-                }
+                FileCard(
+                    modifier = Modifier.testTag("fileCard"),
+                    text = "Text",
+                    subText = "SubText",
+                    textIcon = Icons.Outlined.Call,
+                    actionOverflowIcon = FluentIcon(
+                        Icons.Outlined.MoreVert,
+                        contentDescription = "Options"
+                    )
+                )
             }
         }
-        val basicCard = composeTestRule.onNodeWithTag("basicCard")
-        basicCard.assertExists()
-        basicCard.assertIsDisplayed()
-        basicCard.assertHasClickAction()
-    }
-    @Test
-    fun testFileCardWithoutPreview(){
-        composeTestRule.setContent {
-            FluentTheme {
-                FileCard(modifier = Modifier.testTag("fileCard"), text = "Text", subText = "SubText", textIcon = FluentIcon(Icons.Outlined.Call), actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert, contentDescription = "Options"))
-            }
-        }
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("Tree")
         val fileCard = composeTestRule.onNodeWithTag("fileCard")
         fileCard.assertExists()
         fileCard.assertIsDisplayed()
         fileCard.assertHasNoClickAction()
         composeTestRule.onNodeWithContentDescription("Options").assertDoesNotExist()
     }
+
     @Test
-    fun testFileCardWithPreview(){
+    fun testFileCardWithPreview() {
         composeTestRule.setContent {
             FluentTheme {
-                FileCard(modifier = Modifier.testTag("fileCard"), onClick = {}, previewImageDrawable = R.drawable.avatar_allan_munger, text = "Text", subText = "SubText", textIcon = FluentIcon(Icons.Outlined.Call), actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert, contentDescription = "Options"), actionOverflowIconOnClick = {})
+                FileCard(
+                    modifier = Modifier.testTag("fileCard"),
+                    onClick = {},
+                    previewImageDrawable = R.drawable.avatar_allan_munger,
+                    text = "Text",
+                    subText = "SubText",
+                    textIcon = Icons.Outlined.Call,
+                    actionOverflowIcon = FluentIcon(
+                        Icons.Outlined.MoreVert,
+                        contentDescription = "Options"
+                    )
+                )
             }
         }
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("Tree")
         val fileCard = composeTestRule.onNodeWithTag("fileCard")
         fileCard.assertExists()
         fileCard.assertIsDisplayed()
-        fileCard.assertHasClickAction()
+        val card = composeTestRule.onNodeWithTag("Card")
+        card.assertHasClickAction()
         val optionButton = composeTestRule.onNodeWithContentDescription("Options")
         optionButton.assertExists()
         optionButton.assertIsDisplayed()
         optionButton.assertHasClickAction()
     }
+
     @Test
-    fun testAnnouncementCard(){
+    fun testAnnouncementCard() {
         composeTestRule.setContent {
             FluentTheme {
-                AnnouncementCard(modifier = Modifier.testTag("announcementCard"), previewImageDrawable = R.drawable.avatar_allan_munger, title = "Title", description = "text", buttonText = "Button", buttonOnClick = {})
+                AnnouncementCard(
+                    modifier = Modifier.testTag("announcementCard"),
+                    previewImageDrawable = R.drawable.avatar_allan_munger,
+                    title = "Title",
+                    description = "text",
+                    buttonText = "Button",
+                    buttonOnClick = {})
             }
         }
+        composeTestRule.onRoot(useUnmergedTree = true).printToLog("Tree")
         val announcementCard = composeTestRule.onNodeWithTag("announcementCard")
         announcementCard.assertExists()
         announcementCard.assertIsDisplayed()
