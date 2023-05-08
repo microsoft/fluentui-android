@@ -17,8 +17,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -27,6 +25,21 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.FileCardInfo
 import com.microsoft.fluentui.theme.token.controlTokens.FileCardTokens
 
+/**
+ * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
+ * A File card is generally used to refer a document. The card is made of a preview image on the top and some text below.
+ *
+ * @param text Primary text of the Card
+ * @param subText Secondary text of the card, usually a small description
+ * @param modifier Modifier for the card
+ * @param interactionSource Optional interaction source
+ * @param onClick onClick for the card
+ * @param previewImageVector Optional previewImage for the card
+ * @param previewImageDrawable Optional previewImage for the card
+ * @param textIcon Optional textIcon.
+ * @param actionOverflowIcon Optional actionOverflowIcon. If not provided there will be no button on top of the preview Image.
+ * @param fileCardTokens Optional tokens for customizing the card
+ */
 @Composable
 fun FileCard(
     text: String,
@@ -36,9 +49,8 @@ fun FileCard(
     onClick: (() -> Unit)? = null,
     previewImageVector: ImageVector? = null,
     @DrawableRes previewImageDrawable: Int? = null,
-    textIcon: FluentIcon,
+    textIcon: ImageVector,
     actionOverflowIcon: FluentIcon? = null,
-    actionOverflowIconOnClick: (() -> Unit)? = null,
     fileCardTokens: FileCardTokens? = null
 ) {
     val token = fileCardTokens
@@ -56,42 +68,52 @@ fun FileCard(
     val subTextTypography = token.subTextTypography(fileCardInfo = fileCardInfo)
     val actionOverflowCornerRadius = token.actionOverflowCornerRadius(fileCardInfo = fileCardInfo)
     val actionOverflowIconSize = token.actionOverflowIconSize(fileCardInfo = fileCardInfo)
-    val leadIconPadding = token.leadIconPadding(fileCardInfo = fileCardInfo)
     val iconTextPadding = token.iconTextPadding(fileCardInfo = fileCardInfo)
-    val textSubTextPadding = token.textSubTextPadding(fileCardInfo = fileCardInfo)
+    val textSubTextSpacing = token.textSubTextSpacing(fileCardInfo = fileCardInfo)
     val actionOverflowPadding = token.actionOverflowPadding(fileCardInfo = fileCardInfo)
-    val textVerticalPadding = token.textVerticalPadding(fileCardInfo = fileCardInfo)
+    val textContainerPadding = token.textContainerPadding(fileCardInfo = fileCardInfo)
     BasicCard(
-        modifier = modifier,
-        onClick = onClick
+        modifier = modifier
     ) {
         Box(contentAlignment = Alignment.Center) {
             Column(
-                modifier = Modifier.requiredWidth(IntrinsicSize.Min),
-                horizontalAlignment = Alignment.CenterHorizontally
+                modifier = Modifier
+                    .requiredWidth(IntrinsicSize.Min)
+                    .then(
+                        if (onClick != null) Modifier.clickable(
+                            interactionSource = interactionSource,
+                            indication = rememberRipple(),
+                            enabled = true,
+                            onClick = onClick,
+                            role = Role.Button
+                        ) else Modifier
+                    ),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 if (previewImageDrawable != null) {
                     Image(
-                        painterResource(id = previewImageDrawable), contentDescription = ""
+                        painterResource(id = previewImageDrawable), contentDescription = null
                     )
                 } else if (previewImageVector != null) {
                     Image(
                         imageVector = previewImageVector,
-                        contentDescription = ""
+                        contentDescription = null
                     )
                 }
                 Row(
                     modifier = Modifier.padding(
-                        start = leadIconPadding,
-                        end = leadIconPadding,
-                        top = textVerticalPadding.calculateTopPadding(),
-                        bottom = textVerticalPadding.calculateBottomPadding()
-                    ), verticalAlignment = Alignment.CenterVertically
+                        textContainerPadding
+                    ),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(iconTextPadding)
                 ) {
-                    Icon(modifier = Modifier.size(iconSize), icon = textIcon, tint = iconColor)
+                    Icon(
+                        modifier = Modifier.size(iconSize),
+                        icon = FluentIcon(textIcon),
+                        tint = iconColor
+                    )
                     Column(
-                        modifier = Modifier.padding(start = iconTextPadding),
-                        verticalArrangement = Arrangement.spacedBy(textSubTextPadding)
+                        verticalArrangement = Arrangement.spacedBy(textSubTextSpacing)
                     ) {
                         BasicText(
                             text = text,
@@ -108,21 +130,16 @@ fun FileCard(
                 Box(
                     modifier = Modifier
                         .align(Alignment.TopEnd)
-                        .padding(end = actionOverflowPadding, top = actionOverflowPadding)
+                        .padding(actionOverflowPadding)
                         .clip(RoundedCornerShape(actionOverflowCornerRadius))
                         .background(actionOverFlowBackgroundColor)
-                        .then(
-                            if (actionOverflowIconOnClick != null) Modifier.clickable(
-                                interactionSource = interactionSource,
-                                indication = rememberRipple(),
-                                enabled = true,
-                                onClick = actionOverflowIconOnClick,
-                                role = Role.Button
-                            ) else Modifier
-                        )
-                        .semantics(true, properties = {
+                        .clickable(
+                            interactionSource = MutableInteractionSource(),
+                            indication = rememberRipple(),
+                            enabled = true,
+                            onClick = actionOverflowIcon.onClick ?: {},
                             role = Role.Button
-                        })
+                        )
                 ) {
                     Icon(
                         modifier = Modifier.size(actionOverflowIconSize),

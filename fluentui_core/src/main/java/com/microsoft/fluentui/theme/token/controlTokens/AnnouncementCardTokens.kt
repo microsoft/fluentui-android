@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -14,7 +15,7 @@ import kotlinx.parcelize.Parcelize
 
 data class AnnouncementCardInfo(
     override val cardType: CardType = CardType.Elevated,
-    val buttonType: ButtonStyle = ButtonStyle.TextButton
+    val buttonStyle: ButtonStyle = ButtonStyle.TextButton
 ) : BasicCardControlInfo()
 
 @Parcelize
@@ -44,7 +45,7 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun previewTitlePadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun previewInfoPadding(announcementCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
     }
 
@@ -64,8 +65,8 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun previewPadding(announcementCardInfo: BasicCardControlInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+    open fun previewPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(all = GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
@@ -89,7 +90,7 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     @Composable
     open fun buttonTextColor(announcementCardInfo: BasicCardControlInfo): StateColor {
         announcementCardInfo as AnnouncementCardInfo
-        return when (announcementCardInfo.buttonType) {
+        return when (announcementCardInfo.buttonStyle) {
             ButtonStyle.Button -> StateColor()
             ButtonStyle.OutlinedButton -> StateColor()
             ButtonStyle.TextButton ->

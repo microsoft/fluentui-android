@@ -2,28 +2,29 @@ package com.microsoft.fluentui.tokenized.controls
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.semantics.Role
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BasicCardInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BasicCardTokens
 import com.microsoft.fluentui.theme.token.controlTokens.CardType
 
+/**
+ * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
+ * A Basic card is a card with an empty container and basic elevation and radius.
+ *
+ * @param modifier Modifier for the card
+ * @param basicCardTokens Optional tokens for customizing the card
+ * @param content Content for the card
+ */
 @Composable
 fun BasicCard(
-    onClick: (() -> Unit)? = null,
     modifier: Modifier = Modifier,
-    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     basicCardTokens: BasicCardTokens? = null,
     content: @Composable () -> Unit
 ) {
@@ -47,15 +48,6 @@ fun BasicCard(
                 borderStrokeWidth, borderColor, shape
             )
             .clip(shape)
-            .then(
-                if (onClick != null) Modifier.clickable(
-                    interactionSource = interactionSource,
-                    indication = rememberRipple(),
-                    enabled = true,
-                    onClick = onClick,
-                    role = Role.Button
-                ) else Modifier
-            ),
     ) {
         content()
     }

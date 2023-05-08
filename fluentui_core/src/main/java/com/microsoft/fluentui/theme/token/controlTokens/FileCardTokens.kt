@@ -12,7 +12,10 @@ import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.GlobalTokens
 import kotlinx.parcelize.Parcelize
 
-data class FileCardInfo(val isPreviewAvailable: Boolean = true, override val cardType: CardType = CardType.Elevated) : BasicCardControlInfo()
+data class FileCardInfo(
+    val isPreviewAvailable: Boolean = true,
+    override val cardType: CardType = CardType.Elevated
+) : BasicCardControlInfo()
 
 @Parcelize
 open class FileCardTokens : BasicCardTokens(), Parcelable {
@@ -22,6 +25,7 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
             themeMode = FluentTheme.themeMode
         )
     }
+
     @Composable
     open fun textColor(fileCardInfo: BasicCardControlInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
@@ -69,28 +73,32 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     open fun actionOverflowCornerRadius(fileCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
     }
+
     @Composable
     open fun actionOverflowIconSize(fileCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
     }
+
     @Composable
-    open fun leadIconPadding(fileCardInfo: BasicCardControlInfo): Dp{
+    open fun iconTextPadding(fileCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
     }
+
     @Composable
-    open fun iconTextPadding(fileCardInfo: BasicCardControlInfo): Dp{
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
-    }
-    @Composable
-    open fun textSubTextPadding(fileCardInfo: BasicCardControlInfo): Dp{
+    open fun textSubTextSpacing(fileCardInfo: BasicCardControlInfo): Dp {
         return 0.dp
     }
+
     @Composable
-    open fun actionOverflowPadding(fileCardInfo: BasicCardControlInfo): Dp{
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+    open fun actionOverflowPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(
+            top = GlobalTokens.size(GlobalTokens.SizeTokens.Size80),
+            end = GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+        )
     }
+
     @Composable
-    open fun textVerticalPadding(fileCardInfo: BasicCardControlInfo): PaddingValues{
-        return PaddingValues(vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size120))
+    open fun textContainerPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(all = GlobalTokens.size(GlobalTokens.SizeTokens.Size120))
     }
 }
