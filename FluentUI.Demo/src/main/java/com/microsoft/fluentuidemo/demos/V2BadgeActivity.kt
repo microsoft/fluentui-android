@@ -13,7 +13,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentuidemo.DemoActivity
@@ -35,21 +35,20 @@ class V2BadgeActivity : DemoActivity() {
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 val title1Font =
-                    FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
+                    FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
                 val title2Font =
-                    FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
+                    FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
 
                 Column(Modifier.background(Color.Gray)) {
                     BasicText(
                         text = resources.getString(R.string.badge_notification_badge),
-                        style = title1Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value())),
+                        style = title1Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value())),
                         modifier = Modifier.padding(8.dp)
-
                     )
                     Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                         BasicText(
                             text = resources.getString(R.string.badge_notification_dot),
-                            style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
+                            style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
                         )
                         Spacer(modifier = Modifier.width(16.dp))
                         Badge()
@@ -57,7 +56,7 @@ class V2BadgeActivity : DemoActivity() {
                     Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                         BasicText(
                             text = resources.getString(R.string.badge_notification_character),
-                            style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
+                            style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
                         )
                         Spacer(modifier = Modifier.width(16.dp))
                         LazyRow {
@@ -96,7 +95,7 @@ class V2BadgeActivity : DemoActivity() {
                             text = "List",
                             style = title2Font.merge(
                                 TextStyle(
-                                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                         themeMode = ThemeMode.Auto
                                     )
                                 )

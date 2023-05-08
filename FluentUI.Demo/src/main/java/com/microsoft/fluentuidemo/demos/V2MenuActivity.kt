@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Menu
 import com.microsoft.fluentuidemo.DemoActivity
@@ -130,7 +130,7 @@ fun Menu(context: Context, xOffset: Dp, yOffset: Dp, contentText: String, count:
                     BasicText(
                         text = "$contentText ${it + 1}",
                         style = TextStyle(
-                            color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                 themeMode = ThemeMode.Auto
                             )
                         )

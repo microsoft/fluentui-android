@@ -18,7 +18,7 @@ data class AvatarCarouselInfo(
 ) : ControlInfo
 
 @Parcelize
-open class AvatarCarouselTokens : ControlToken, Parcelable {
+open class AvatarCarouselTokens : IControlToken, Parcelable {
     @Composable
     open fun avatarSize(avatarCarouselInfo: AvatarCarouselInfo): AvatarSize {
         return when (avatarCarouselInfo.size) {
@@ -30,13 +30,13 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun backgroundColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
         return StateColor(
-            rest = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+            rest = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                 themeMode = FluentTheme.themeMode
             ),
-            pressed = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1Pressed].value(
+            pressed = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed].value(
                 themeMode = FluentTheme.themeMode
             ),
-            disabled = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+            disabled = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                 themeMode = FluentTheme.themeMode
             )
         )
@@ -45,13 +45,13 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun textColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
         return StateColor(
-            rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = FluentTheme.themeMode
             ),
-            pressed = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = FluentTheme.themeMode
             ),
-            disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = FluentTheme.themeMode
             )
         )
@@ -60,13 +60,13 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun subTextColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
         return StateColor(
-            rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+            rest = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                 themeMode = FluentTheme.themeMode
             ),
-            pressed = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+            pressed = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                 themeMode = FluentTheme.themeMode
             ),
-            disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = FluentTheme.themeMode
             )
         )
@@ -75,24 +75,24 @@ open class AvatarCarouselTokens : ControlToken, Parcelable {
     @Composable
     open fun textTypography(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
-            AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
+            AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
         }
     }
 
     @Composable
     open fun subTextTypography(avatarCarouselInfo: AvatarCarouselInfo): TextStyle {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
-            AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Small -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
+            AvatarCarouselSize.Large -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
         }
     }
 
     @Composable
     open fun padding(avatarCarouselInfo: AvatarCarouselInfo): Dp {
         return when (avatarCarouselInfo.size) {
-            AvatarCarouselSize.Small -> GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
-            AvatarCarouselSize.Large -> GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            AvatarCarouselSize.Small -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
+            AvatarCarouselSize.Large -> FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
         }
     }
 }

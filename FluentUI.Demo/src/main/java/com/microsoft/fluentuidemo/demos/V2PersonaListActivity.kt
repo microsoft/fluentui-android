@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.testTag
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
@@ -46,7 +46,7 @@ class V2PersonaListActivity : DemoActivity() {
         Icon(
             painter = rememberVectorPainter(image = ListItemIcons.Chevron),
             contentDescription = "Flag",
-            tint = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 FluentTheme.themeMode
             )
         )

@@ -22,7 +22,7 @@ class TabItemInfo(
 ) : ControlInfo
 
 @Parcelize
-open class TabItemTokens : ControlToken, Parcelable {
+open class TabItemTokens : IControlToken, Parcelable {
 
     @Composable
     open fun width(tabItemInfo: TabItemInfo): Dp {
@@ -31,7 +31,7 @@ open class TabItemTokens : ControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(tabItemInfo: TabItemInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
             FluentTheme.themeMode
         )
     }
@@ -39,8 +39,8 @@ open class TabItemTokens : ControlToken, Parcelable {
     @Composable
     open fun rippleColor(tabItemInfo: TabItemInfo): Color {
         return FluentColor(
-            light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black),
-            dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.White)
+            light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black),
+            dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.White)
         ).value(
             FluentTheme.themeMode
         )
@@ -50,40 +50,40 @@ open class TabItemTokens : ControlToken, Parcelable {
     open fun iconColor(tabItemInfo: TabItemInfo): StateColor {
         return when (tabItemInfo.fluentStyle) {
             FluentStyle.Neutral -> StateColor(
-                rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                rest = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                pressed = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                pressed = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
 
             FluentStyle.Brand -> StateColor(
                 rest = FluentColor(
-                    light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    light = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
                 pressed = FluentColor(
-                    light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                    light = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
-                selected = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(),
+                selected = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(),
                 disabled = FluentColor(
-                    light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
+                    light = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode)
@@ -95,40 +95,40 @@ open class TabItemTokens : ControlToken, Parcelable {
     open fun textColor(tabItemInfo: TabItemInfo): StateColor {
         return when (tabItemInfo.fluentStyle) {
             FluentStyle.Neutral -> StateColor(
-                rest = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                rest = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                pressed = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                pressed = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
-                disabled = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                     themeMode = FluentTheme.themeMode
                 )
             )
 
             FluentStyle.Brand -> StateColor(
                 rest = FluentColor(
-                    light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    light = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
                 pressed = FluentColor(
-                    light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                    light = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode),
-                selected = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(),
+                selected = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(),
                 disabled = FluentColor(
-                    light = FluentTheme.aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
+                    light = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                         ThemeMode.Dark
                     )
                 ).value(FluentTheme.themeMode)

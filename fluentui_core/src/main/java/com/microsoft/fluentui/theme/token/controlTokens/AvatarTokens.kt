@@ -194,7 +194,7 @@ data class AvatarInfo(
 
 @Parcelize
 open class AvatarTokens(private val activityRingToken: ActivityRingsToken = ActivityRingsToken()) :
-    ControlToken, Parcelable {
+    IControlToken, Parcelable {
 
     @Composable
     open fun avatarStyle(avatarInfo: AvatarInfo): AvatarStyle {
@@ -207,37 +207,37 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             AvatarSize.Size16 -> TextStyle(
                 fontSize = 9.sp,
                 lineHeight = 12.sp,
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size20 -> TextStyle(
                 fontSize = 9.sp,
                 lineHeight = 12.sp,
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size24 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size100),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size100),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size100),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size100),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size32 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size200),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size200),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size200),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size200),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size40 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size300),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size300),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Regular)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size300),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size300),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Regular)
             )
             AvatarSize.Size56 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size500),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size500),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size500),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size500),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium)
             )
             AvatarSize.Size72 -> TextStyle(
-                fontSize = GlobalTokens.fontSize(GlobalTokens.FontSizeTokens.Size700),
-                lineHeight = GlobalTokens.lineHeight(GlobalTokens.LineHeightTokens.Size700),
-                fontWeight = GlobalTokens.fontWeight(GlobalTokens.FontWeightTokens.Medium)
+                fontSize = FluentGlobalTokens.fontSize(FluentGlobalTokens.FontSizeTokens.Size700),
+                lineHeight = FluentGlobalTokens.lineHeight(FluentGlobalTokens.LineHeightTokens.Size700),
+                fontWeight = FluentGlobalTokens.fontWeight(FluentGlobalTokens.FontWeightTokens.Medium)
             )
         }
     }
@@ -288,35 +288,35 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             FluentColor(
                 light = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.Shade30
+                    FluentGlobalTokens.SharedColorsTokens.Shade30
                 ),
                 dark = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.Tint40
+                    FluentGlobalTokens.SharedColorsTokens.Tint40
                 )
             ).value(
                 themeMode = themeMode
             )
         } else if (avatarInfo.type == AvatarType.Overflow) {
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+            aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                 themeMode = themeMode
             )
         } else {
             when (avatarStyle(avatarInfo)) {
                 AvatarStyle.Standard ->
-                    aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         themeMode = themeMode
                     )
                 AvatarStyle.StandardInverted ->
-                    aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
                     )
                 AvatarStyle.Anonymous ->
-                    aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                    aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                         themeMode = themeMode
                     )
                 AvatarStyle.AnonymousAccent ->
-                    aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                    aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                         themeMode = themeMode
                     )
             }
@@ -329,35 +329,35 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             FluentColor(
                 light = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.Tint40
+                    FluentGlobalTokens.SharedColorsTokens.Tint40
                 ),
                 dark = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.Shade30
+                    FluentGlobalTokens.SharedColorsTokens.Shade30
                 )
             ).value(
                 themeMode = themeMode
             )
         } else if (avatarInfo.type == AvatarType.Overflow) {
-            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             )
         } else {
             when (avatarStyle(avatarInfo)) {
                 AvatarStyle.Standard ->
-                    aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                         themeMode = themeMode
                     )
                 AvatarStyle.StandardInverted ->
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 AvatarStyle.Anonymous ->
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                         themeMode = themeMode
                     )
                 AvatarStyle.AnonymousAccent ->
-                    aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
+                    aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
                         themeMode = themeMode
                     )
             }
@@ -622,13 +622,13 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun cornerRadius(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
-            AvatarSize.Size16 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius20)
-            AvatarSize.Size20 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            AvatarSize.Size24 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            AvatarSize.Size32 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
-            AvatarSize.Size40 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
-            AvatarSize.Size56 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius80)
-            AvatarSize.Size72 -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
+            AvatarSize.Size16 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius20)
+            AvatarSize.Size20 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size24 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size32 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+            AvatarSize.Size40 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+            AvatarSize.Size56 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
+            AvatarSize.Size72 -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
         }
     }
 
@@ -638,25 +638,25 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
             FluentColor(
                 light = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.Primary
+                    FluentGlobalTokens.SharedColorsTokens.Primary
                 ),
                 dark = calculatedColor(
                     avatarInfo.calculatedColorKey,
-                    GlobalTokens.SharedColorsTokens.Tint30
+                    FluentGlobalTokens.SharedColorsTokens.Tint30
                 )
             ).value(
                 themeMode = themeMode
             )
         } else if (avatarInfo.type == AvatarType.Overflow) {
-            aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+            aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
                 themeMode = themeMode
             )
         } else {
             when (avatarStyle(avatarInfo)) {
-                AvatarStyle.Standard, AvatarStyle.StandardInverted, AvatarStyle.AnonymousAccent -> aliasTokens.brandStroke[AliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
+                AvatarStyle.Standard, AvatarStyle.StandardInverted, AvatarStyle.AnonymousAccent -> aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1].value(
                     themeMode = themeMode
                 )
-                AvatarStyle.Anonymous -> aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                AvatarStyle.Anonymous -> aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
                     themeMode = themeMode
                 )
             }
@@ -708,21 +708,21 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     @Composable
     open fun cutoutCornerRadius(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.cutoutStyle) {
-            CutoutStyle.Circle -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusCircle)
-            CutoutStyle.Square -> GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+            CutoutStyle.Circle -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadiusCircle)
+            CutoutStyle.Square -> FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
 
     @Composable
     open fun cutoutBackgroundColor(avatarInfo: AvatarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
             themeMode = themeMode
         )
     }
 
     @Composable
     open fun cutoutBorderColor(avatarInfo: AvatarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
             themeMode = themeMode
         )
     }
@@ -731,50 +731,53 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     open fun cutoutIconSize(avatarInfo: AvatarInfo): Dp {
         return when (avatarInfo.size) {
             AvatarSize.Size16, AvatarSize.Size20, AvatarSize.Size24, AvatarSize.Size32, AvatarSize.Size72 -> 0.dp
-            AvatarSize.Size40 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
-            AvatarSize.Size56 -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+            AvatarSize.Size40 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
+            AvatarSize.Size56 -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
         }
     }
 
     @Composable
     private fun calculatedColor(
         avatarString: String,
-        token: GlobalTokens.SharedColorsTokens
+        token: FluentGlobalTokens.SharedColorsTokens
     ): Color {
         val colors = listOf(
-            GlobalTokens.SharedColorSets.DarkRed,
-            GlobalTokens.SharedColorSets.Cranberry,
-            GlobalTokens.SharedColorSets.Red,
-            GlobalTokens.SharedColorSets.Pumpkin,
-            GlobalTokens.SharedColorSets.Peach,
-            GlobalTokens.SharedColorSets.Marigold,
-            GlobalTokens.SharedColorSets.Gold,
-            GlobalTokens.SharedColorSets.Brass,
-            GlobalTokens.SharedColorSets.Brown,
-            GlobalTokens.SharedColorSets.Forest,
-            GlobalTokens.SharedColorSets.Seafoam,
-            GlobalTokens.SharedColorSets.DarkGreen,
-            GlobalTokens.SharedColorSets.LightTeal,
-            GlobalTokens.SharedColorSets.Teal,
-            GlobalTokens.SharedColorSets.Steel,
-            GlobalTokens.SharedColorSets.Blue,
-            GlobalTokens.SharedColorSets.RoyalBlue,
-            GlobalTokens.SharedColorSets.Cornflower,
-            GlobalTokens.SharedColorSets.Navy,
-            GlobalTokens.SharedColorSets.Lavender,
-            GlobalTokens.SharedColorSets.Purple,
-            GlobalTokens.SharedColorSets.Grape,
-            GlobalTokens.SharedColorSets.Lilac,
-            GlobalTokens.SharedColorSets.Pink,
-            GlobalTokens.SharedColorSets.Magenta,
-            GlobalTokens.SharedColorSets.Plum,
-            GlobalTokens.SharedColorSets.Beige,
-            GlobalTokens.SharedColorSets.Mink,
-            GlobalTokens.SharedColorSets.Platinum,
-            GlobalTokens.SharedColorSets.Anchor
+            FluentGlobalTokens.SharedColorSets.DarkRed,
+            FluentGlobalTokens.SharedColorSets.Cranberry,
+            FluentGlobalTokens.SharedColorSets.Red,
+            FluentGlobalTokens.SharedColorSets.Pumpkin,
+            FluentGlobalTokens.SharedColorSets.Peach,
+            FluentGlobalTokens.SharedColorSets.Marigold,
+            FluentGlobalTokens.SharedColorSets.Gold,
+            FluentGlobalTokens.SharedColorSets.Brass,
+            FluentGlobalTokens.SharedColorSets.Brown,
+            FluentGlobalTokens.SharedColorSets.Forest,
+            FluentGlobalTokens.SharedColorSets.Seafoam,
+            FluentGlobalTokens.SharedColorSets.DarkGreen,
+            FluentGlobalTokens.SharedColorSets.LightTeal,
+            FluentGlobalTokens.SharedColorSets.Teal,
+            FluentGlobalTokens.SharedColorSets.Steel,
+            FluentGlobalTokens.SharedColorSets.Blue,
+            FluentGlobalTokens.SharedColorSets.RoyalBlue,
+            FluentGlobalTokens.SharedColorSets.Cornflower,
+            FluentGlobalTokens.SharedColorSets.Navy,
+            FluentGlobalTokens.SharedColorSets.Lavender,
+            FluentGlobalTokens.SharedColorSets.Purple,
+            FluentGlobalTokens.SharedColorSets.Grape,
+            FluentGlobalTokens.SharedColorSets.Lilac,
+            FluentGlobalTokens.SharedColorSets.Pink,
+            FluentGlobalTokens.SharedColorSets.Magenta,
+            FluentGlobalTokens.SharedColorSets.Plum,
+            FluentGlobalTokens.SharedColorSets.Beige,
+            FluentGlobalTokens.SharedColorSets.Mink,
+            FluentGlobalTokens.SharedColorSets.Platinum,
+            FluentGlobalTokens.SharedColorSets.Anchor
         )
 
-        return GlobalTokens.sharedColors(colors[abs(avatarString.hashCode()) % colors.size], token)
+        return FluentGlobalTokens.sharedColors(
+            colors[abs(avatarString.hashCode()) % colors.size],
+            token
+        )
     }
 }
 
@@ -785,56 +788,56 @@ open class ActivityRingsToken : Parcelable {
         return when (activityRingSize) {
             ActivityRingSize.Size16 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size20 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size24 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size32 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size40 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size56 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size72 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
@@ -850,126 +853,126 @@ open class ActivityRingsToken : Parcelable {
         return when (activityRingSize) {
             ActivityRingSize.Size16 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size20 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth15),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth15),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size24 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size32 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size40 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size56 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )
             )
             ActivityRingSize.Size72 -> listOf(
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40),
                     glowColor
                 ),
                 BorderStroke(
-                    GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40),
-                    aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40),
+                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                         themeMode = themeMode
                     )
                 )

@@ -17,18 +17,18 @@ import kotlinx.parcelize.Parcelize
 class ContextualCommandBarInfo : ControlInfo
 
 @Parcelize
-open class ContextualCommandBarTokens : ControlToken, Parcelable {
+open class ContextualCommandBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun actionButtonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
+        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
             themeMode = themeMode
         )
     }
 
     @Composable
     open fun actionButtonIconColor(contextualCommandBarInfo: ContextualCommandBarInfo): Color {
-        return aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+        return aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
             themeMode = themeMode
         )
     }
@@ -36,18 +36,18 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     @Composable
     open fun actionButtonIconPadding(contextualCommandBarInfo: ContextualCommandBarInfo): PaddingValues {
         return PaddingValues(
-            horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size120),
-            vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
+            horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120),
+            vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
         )
     }
 
     @Composable
     open fun actionButtonGradient(contextualCommandBarInfo: ContextualCommandBarInfo): List<Color> {
         return listOf(
-            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
+            aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = themeMode
             ).copy(alpha = 0.0F),
-            aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
+            aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = themeMode
             ).copy(alpha = 1.0F)
         )
@@ -59,24 +59,24 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun contextualCommandBarBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Color {
-        return aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
+        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
             themeMode = themeMode
         )
     }
 
     @Composable
     open fun itemBorderRadius(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadiusNone)
+        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone)
     }
 
     @Composable
     open fun groupBorderRadius(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius120)
+        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
     }
 
     @Composable
     open fun buttonSpacing(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size20)
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)
     }
 
     @Composable
@@ -91,22 +91,22 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
 
     @Composable
     open fun groupSpacing(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
     }
 
     @Composable
     open fun iconSize(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
     }
 
     @Composable
     open fun iconVerticalPadding(contextualCommandBarInfo: ContextualCommandBarInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
     open fun typography(contextualCommandBarInfo: ContextualCommandBarInfo): TextStyle {
-        return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
+        return aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
     }
 
     @Composable
@@ -122,32 +122,32 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     @Composable
     open fun buttonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): StateColor {
         return StateColor(
-            rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            rest = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
-            pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(
+            pressed = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Pressed].value(
                 themeMode = themeMode
             ),
-            focused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            focused = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
             selected = FluentColor(
-                light = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
+                light = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
-                dark = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                dark = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
                     themeMode = ThemeMode.Dark
                 )
             ).value(themeMode = themeMode),
             selectedFocused = FluentColor(
-                light = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
+                light = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
-                dark = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
+                dark = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5Selected].value(
                     themeMode = ThemeMode.Dark
                 )
             ).value(themeMode = themeMode),
-            disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            disabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             )
         )
@@ -156,36 +156,36 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
     @Composable
     open fun iconColor(contextualCommandBarInfo: ContextualCommandBarInfo): StateColor {
         return StateColor(
-            rest = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            rest = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = themeMode
             ),
-            pressed = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            pressed = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = themeMode
             ),
-            focused = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            focused = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                 themeMode = themeMode
             ),
             selected = FluentColor(
-                light = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(
+                light = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
-                dark = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                dark = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = ThemeMode.Dark
                 )
             ).value(
                 themeMode = themeMode
             ),
             selectedFocused = FluentColor(
-                light = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(
+                light = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(
                     themeMode = ThemeMode.Light
                 ),
-                dark = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                dark = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = ThemeMode.Dark
                 )
             ).value(
                 themeMode = themeMode
             ),
-            disabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+            disabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
                 themeMode = themeMode
             )
         )
@@ -196,13 +196,13 @@ open class ContextualCommandBarTokens : ControlToken, Parcelable {
         return listOf(
             BorderStroke(
                 2.dp,
-                aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
+                aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus2].value(
                     themeMode
                 )
             ),
             BorderStroke(
                 3.dp,
-                aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
+                aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value(
                     themeMode
                 )
             )

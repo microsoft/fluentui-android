@@ -15,10 +15,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -60,7 +59,7 @@ class V2TabBarActivity : DemoActivity() {
                         selectedIndex = 0
                         showHomeBadge = false
                     },
-                    badge = { if (selectedIndex == 0 && showHomeBadge) Badge() else null }
+                    badge = { if (selectedIndex == 0 && showHomeBadge) Badge() }
                 ),
                 TabData(
                     title = resources.getString(R.string.tabBar_mail),
@@ -123,7 +122,7 @@ class V2TabBarActivity : DemoActivity() {
                                 text = resources.getString(R.string.tabBar_vertical),
                                 modifier = Modifier.weight(1F),
                                 style = TextStyle(
-                                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                         themeMode = ThemeMode.Auto
                                     )
                                 )
@@ -145,7 +144,7 @@ class V2TabBarActivity : DemoActivity() {
                                 text = resources.getString(R.string.tabBar_horizontal),
                                 modifier = Modifier.weight(1F),
                                 style = TextStyle(
-                                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                         themeMode = ThemeMode.Auto
                                     )
                                 )
@@ -167,7 +166,7 @@ class V2TabBarActivity : DemoActivity() {
                                 text = resources.getString(R.string.tabBar_no_text),
                                 modifier = Modifier.weight(1F),
                                 style = TextStyle(
-                                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                         themeMode = ThemeMode.Auto
                                     )
                                 )

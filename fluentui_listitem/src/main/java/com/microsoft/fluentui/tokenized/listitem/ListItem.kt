@@ -35,7 +35,7 @@ import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
@@ -249,8 +249,8 @@ object ListItem {
         val listItemInfo = ListItemInfo(
             listItemType = listItemType,
             borderInset = borderInset,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size160,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size160,
             unreadDot = unreadDot
         )
         val backgroundColor =
@@ -459,8 +459,8 @@ object ListItem {
         val listItemInfo = ListItemInfo(
             listItemType = SectionHeader,
             borderInset = borderInset,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size120,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size120,
             style = style
         )
         val backgroundColor =
@@ -622,8 +622,8 @@ object ListItem {
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = SectionDescription,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size80,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size80,
             borderInset = borderInset,
             placement = descriptionPlacement
         )
@@ -751,8 +751,8 @@ object ListItem {
         val listItemInfo = ListItemInfo(
             listItemType = OneLine,
             style = style,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size80,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size80,
             borderInset = borderInset
         )
         val backgroundColor =

@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
@@ -547,21 +547,21 @@ private fun LeftViewThreeIcon() {
         Icon(
             painter = painterResource(id = drawable.ic_fluent_flag_24_regular),
             contentDescription = "Flag",
-            tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode
             )
         )
         Icon(
             painter = painterResource(id = drawable.ic_fluent_reply_24_regular),
             contentDescription = "Reply",
-            tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode
             )
         )
         Icon(
             painter = painterResource(id = drawable.ic_fluent_forward_24_regular),
             contentDescription = "Forward",
-            tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode
             )
         )
@@ -649,7 +649,7 @@ private fun Icon16() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__16x16_checkmark),
         contentDescription = "Flag",
-        tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+        tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             themeMode
         )
     )
@@ -660,7 +660,7 @@ private fun Icon20() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__20x20_checkmark),
         contentDescription = "Flag",
-        tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+        tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             themeMode
         )
     )
