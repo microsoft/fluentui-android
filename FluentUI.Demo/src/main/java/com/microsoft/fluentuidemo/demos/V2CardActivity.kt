@@ -24,7 +24,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
@@ -183,7 +183,7 @@ class V2CardActivity : DemoActivity() {
     @Composable
     private fun CardContent1(context: Context) {
         val textColor =
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
+            aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(
             modifier = Modifier
                 .clickable(
@@ -221,7 +221,7 @@ class V2CardActivity : DemoActivity() {
     @Composable
     private fun CardContent2(context: Context) {
         val textColor =
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
+            aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -240,7 +240,7 @@ class V2CardActivity : DemoActivity() {
     @Composable
     private fun CardContent3(context: Context) {
         val textColor =
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
+            aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(all = 8.dp)) {
             Column {
                 Image(
@@ -282,7 +282,7 @@ class V2CardActivity : DemoActivity() {
     @Composable
     private fun CardContent5(context: Context) {
         val textColor =
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
+            aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Box(modifier = Modifier.padding(end = 8.dp)) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -308,7 +308,7 @@ class V2CardActivity : DemoActivity() {
     @Composable
     private fun BasicCardUI(context: Context) {
         val iconTint =
-            aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value()
+            aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
         Column {
             ListItem.Header(
                 border = BorderType.Bottom,
