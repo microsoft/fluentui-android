@@ -8,8 +8,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import kotlinx.parcelize.Parcelize
 
 data class FileCardInfo(
@@ -21,67 +21,67 @@ data class FileCardInfo(
 open class FileCardTokens : BasicCardTokens(), Parcelable {
     @Composable
     open fun iconColor(fileCardInfo: BasicCardControlInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
     open fun textColor(fileCardInfo: BasicCardControlInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
     open fun subTextColor(fileCardInfo: BasicCardControlInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
     open fun actionOverFlowBackgroundColor(fileCardInfo: BasicCardControlInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
     open fun actionOverFlowIconColor(fileCardInfo: BasicCardControlInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
     open fun iconSize(fileCardInfo: BasicCardControlInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
     }
 
     @Composable
     open fun textTypography(fileCardInfo: BasicCardControlInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body2]
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
     }
 
     @Composable
     open fun subTextTypography(fileCardInfo: BasicCardControlInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
     }
 
     @Composable
     open fun actionOverflowCornerRadius(fileCardInfo: BasicCardControlInfo): Dp {
-        return GlobalTokens.cornerRadius(GlobalTokens.CornerRadiusTokens.CornerRadius40)
+        return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
     }
 
     @Composable
     open fun actionOverflowIconSize(fileCardInfo: BasicCardControlInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
     }
 
     @Composable
     open fun iconTextSpacing(fileCardInfo: BasicCardControlInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size120)
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
     }
 
     @Composable
@@ -92,13 +92,13 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     @Composable
     open fun actionOverflowPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
         return PaddingValues(
-            top = GlobalTokens.size(GlobalTokens.SizeTokens.Size80),
-            end = GlobalTokens.size(GlobalTokens.SizeTokens.Size80)
+            top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80),
+            end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
         )
     }
 
     @Composable
     open fun textContainerPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
-        return PaddingValues(all = GlobalTokens.size(GlobalTokens.SizeTokens.Size120))
+        return PaddingValues(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
     }
 }
