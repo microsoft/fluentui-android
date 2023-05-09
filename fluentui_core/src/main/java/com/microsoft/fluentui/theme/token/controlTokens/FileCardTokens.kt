@@ -85,12 +85,7 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun iconTextPadding(fileCardInfo: BasicCardControlInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
-    }
-
-    @Composable
-    open fun textSubTextPadding(fileCardInfo: BasicCardControlInfo): Dp {
+    open fun textSubTextSpacing(fileCardInfo: BasicCardControlInfo): Dp {
         return 0.dp
     }
 

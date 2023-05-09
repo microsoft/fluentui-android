@@ -35,56 +35,45 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun titleSize(announcementCardInfo: BasicCardControlInfo): TextStyle {
+    open fun titleTypography(announcementCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
     }
 
     @Composable
-    open fun textSize(announcementCardInfo: BasicCardControlInfo): TextStyle {
+    open fun descriptionTypography(announcementCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
     }
 
     @Composable
-    open fun buttonColor(announcementCardInfo: BasicCardControlInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
-    }
-
-    @Composable
-    open fun previewTitlePadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun previewTextSPacing(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
     }
 
     @Composable
-    open fun titleTextPadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun titleTextSpacing(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
     }
 
     @Composable
-    open fun textButtonPadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun textButtonSpacing(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
     }
 
     @Composable
-    open fun buttonPadding(announcementCardInfo: BasicCardControlInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+    open fun textHorizontalPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
-    open fun textHorizontalPadding(announcementCardInfo: BasicCardControlInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
-    }
-
-    @Composable
-    open fun previewPadding(announcementCardInfo: BasicCardControlInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+    open fun cardPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
     open fun previewCornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
     }
+
     @Composable
     override fun cornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
@@ -97,6 +86,7 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
             CardType.Outlined -> 0.dp
         }
     }
+
     @Composable
     open fun buttonTextColor(announcementCardInfo: BasicCardControlInfo): StateColor {
         announcementCardInfo as AnnouncementCardInfo
