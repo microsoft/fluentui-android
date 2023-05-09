@@ -2,7 +2,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -29,14 +31,16 @@ data class SnackBarInfo(
 open class SnackBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(snackBarInfo: SnackBarInfo): Color {
-        return when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background4].value()
-            SnackbarStyle.Contrast -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundDarkStatic].value()
-            SnackbarStyle.Accent -> aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
-            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningBackground1].value()
-            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground1].value()
-        }
+    open fun backgroundColor(snackBarInfo: SnackBarInfo): Brush {
+        return SolidColor(
+            when (snackBarInfo.style) {
+                SnackbarStyle.Neutral -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background4].value()
+                SnackbarStyle.Contrast -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundDarkStatic].value()
+                SnackbarStyle.Accent -> aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
+                SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningBackground1].value()
+                SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground1].value()
+            }
+        )
     }
 
     @Composable

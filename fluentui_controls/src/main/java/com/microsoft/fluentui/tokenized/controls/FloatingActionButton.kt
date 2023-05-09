@@ -71,7 +71,7 @@ fun FloatingActionButton(
     )
     val isFabExpanded: Boolean =
         (text != null && text != "" && fabInfo.state == FABState.Expanded)
-    val backgroundColor = token.backgroundColor(fabInfo = fabInfo).getColorByState(
+    val backgroundColor = token.backgroundColor(fabInfo = fabInfo).getBrushByState(
         enabled = enabled,
         selected = false,
         interactionSource = interactionSource
@@ -109,7 +109,7 @@ fun FloatingActionButton(
                 shape = CircleShape
             )
             .background(
-                color = backgroundColor,
+                brush = backgroundColor,
                 shape = shape
             )
             .clip(shape)

@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -239,7 +239,7 @@ fun TextField(
                         }
 
                         @Composable
-                        override fun dividerColor(dividerInfo: DividerInfo): Color =
+                        override fun dividerColor(dividerInfo: DividerInfo): Brush =
                             token.dividerColor(textFieldInfo)
                     }
                 )

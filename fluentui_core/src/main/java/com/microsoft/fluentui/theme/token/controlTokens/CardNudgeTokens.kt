@@ -2,7 +2,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -20,8 +22,8 @@ class CardNudgeInfo : ControlInfo
 open class CardNudgeTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(cardNudgeInfo: CardNudgeInfo): Color {
-        return aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.CanvasBackground].value()
+    open fun backgroundColor(cardNudgeInfo: CardNudgeInfo): Brush {
+        return SolidColor(aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.CanvasBackground].value())
     }
 
     @Composable
@@ -35,8 +37,8 @@ open class CardNudgeTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun iconBackgroundColor(cardNudgeInfo: CardNudgeInfo): Color {
-        return aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
+    open fun iconBackgroundColor(cardNudgeInfo: CardNudgeInfo): Brush {
+        return SolidColor(aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value())
     }
 
     @Composable

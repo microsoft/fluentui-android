@@ -64,7 +64,7 @@ fun PersonaChip(
     )
     val backgroundColor =
         token.backgroundColor(personaChipInfo = personaChipInfo)
-            .getColorByState(
+            .getBrushByState(
                 enabled = enabled, selected = selected, interactionSource = interactionSource
             )
     val textColor = token.textColor(personaChipInfo = personaChipInfo)

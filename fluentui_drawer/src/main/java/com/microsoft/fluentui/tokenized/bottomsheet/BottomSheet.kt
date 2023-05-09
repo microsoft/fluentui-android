@@ -20,6 +20,7 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -231,7 +232,7 @@ fun BottomSheet(
         topEnd = tokens.cornerRadius(bottomSheetInfo)
     )
     val sheetElevation: Dp = tokens.elevation(bottomSheetInfo)
-    val sheetBackgroundColor: Color = tokens.backgroundColor(bottomSheetInfo)
+    val sheetBackgroundColor: Brush = tokens.backgroundColor(bottomSheetInfo)
     val sheetContentColor: Color = Color.Transparent
     val sheetHandleColor: Color = tokens.handleColor(bottomSheetInfo)
     val scrimOpacity: Float = tokens.scrimOpacity(bottomSheetInfo)
@@ -318,6 +319,7 @@ fun BottomSheet(
                     peekHeight,
                     sheetState
                 )
+                .background(sheetBackgroundColor)
                 .semantics(mergeDescendants = true) {
                     if (sheetState.isVisible) {
                         dismiss {
@@ -345,7 +347,6 @@ fun BottomSheet(
                 },
             shape = sheetShape,
             elevation = sheetElevation,
-            color = sheetBackgroundColor,
             contentColor = sheetContentColor
         ) {
             Column {

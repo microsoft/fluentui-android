@@ -26,8 +26,8 @@ data class TextFieldInfo(
 open class TextFieldTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(textFieldInfo: TextFieldInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value()
+    open fun backgroundColor(textFieldInfo: TextFieldInfo): Brush {
+        return SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
     }
 
     @Composable
@@ -45,14 +45,15 @@ open class TextFieldTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun dividerColor(textFieldInfo: TextFieldInfo): Color {
-        return if (textFieldInfo.isStatusError)
-            FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
-        else if (textFieldInfo.isFocused)
-            FluentTheme.aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1].value()
-        else
-            FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
-
+    open fun dividerColor(textFieldInfo: TextFieldInfo): Brush {
+        return SolidColor(
+            if (textFieldInfo.isStatusError)
+                FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+            else if (textFieldInfo.isFocused)
+                FluentTheme.aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1].value()
+            else
+                FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
+        )
     }
 
     @Composable

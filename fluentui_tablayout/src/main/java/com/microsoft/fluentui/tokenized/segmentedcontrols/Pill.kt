@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.segmentedcontrols
 
-import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -14,15 +13,18 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
-import com.microsoft.fluentui.theme.token.Icon
 import androidx.compose.material.ripple.rememberRipple
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -38,6 +40,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
@@ -102,15 +105,12 @@ fun PillButton(
         }
     }
 
-    val backgroundColor by animateColorAsState(
-        targetValue = token.backgroundColor(pillButtonInfo = pillButtonInfo)
-            .getColorByState(
-                enabled = pillMetaData.enabled,
-                selected = pillMetaData.selected,
-                interactionSource = interactionSource
-            ),
-        animationSpec = tween(200)
-    )
+    val backgroundColor = token.backgroundColor(pillButtonInfo = pillButtonInfo)
+        .getBrushByState(
+            enabled = pillMetaData.enabled,
+            selected = pillMetaData.selected,
+            interactionSource = interactionSource
+        )
     val iconColor =
         token.iconColor(pillButtonInfo = pillButtonInfo).getColorByState(
             enabled = pillMetaData.enabled,
@@ -255,7 +255,7 @@ fun PillBar(
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
-            .background(if (showBackground) token.background(pillBarInfo) else Color.Unspecified)
+            .background(if (showBackground) token.background(pillBarInfo) else SolidColor(Color.Unspecified))
             .focusable(enabled = false),
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
