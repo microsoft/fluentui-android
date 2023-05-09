@@ -69,7 +69,7 @@ fun FileCard(
     val subTextTypography = token.subTextTypography(fileCardInfo = fileCardInfo)
     val actionOverflowCornerRadius = token.actionOverflowCornerRadius(fileCardInfo = fileCardInfo)
     val actionOverflowIconSize = token.actionOverflowIconSize(fileCardInfo = fileCardInfo)
-    val iconTextPadding = token.iconTextPadding(fileCardInfo = fileCardInfo)
+    val iconTextSpacing = token.iconTextSpacing(fileCardInfo = fileCardInfo)
     val textSubTextSpacing = token.textSubTextSpacing(fileCardInfo = fileCardInfo)
     val actionOverflowPadding = token.actionOverflowPadding(fileCardInfo = fileCardInfo)
     val textContainerPadding = token.textContainerPadding(fileCardInfo = fileCardInfo)
@@ -106,21 +106,22 @@ fun FileCard(
                     modifier = Modifier.padding(
                         textContainerPadding
                     ),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(iconTextPadding)
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         modifier = Modifier.size(iconSize),
                         icon = FluentIcon(textIcon),
                         tint = iconColor
                     )
-                    Column(
-                        verticalArrangement = Arrangement.spacedBy(textSubTextSpacing)
-                    ) {
+                    Spacer(modifier = Modifier.width(iconTextSpacing))
+                    Column {
                         BasicText(
                             text = text,
                             style = textTypography.merge(TextStyle(color = textColor))
                         )
+                        Spacer(modifier = Modifier
+                            .fillMaxWidth()
+                            .height(textSubTextSpacing))
                         BasicText(
                             text = subText,
                             style = subTextTypography.merge(TextStyle(color = subTextColor))

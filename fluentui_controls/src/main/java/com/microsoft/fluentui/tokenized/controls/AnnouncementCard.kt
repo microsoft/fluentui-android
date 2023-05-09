@@ -22,7 +22,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 
 /**
  * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
- * The card is made of a preview image on the top and some text and a button below. The card in non-interactive except the button
+ * An Announcement card is made of a preview image on the top and some text and a button below. The card is non-interactive except the button.
  *
  * @param title Primary text of the Card
  * @param description Secondary text of the card, usually an announcement
@@ -54,12 +54,12 @@ fun AnnouncementCard(
     val descriptionTypography =
         token.descriptionTypography(announcementCardInfo = announcementCardInfo)
     val titleTypography = token.titleTypography(announcementCardInfo = announcementCardInfo)
-    val previewInfoPadding = token.previewInfoPadding(announcementCardInfo = announcementCardInfo)
-    val titleTextPadding = token.titleTextPadding(announcementCardInfo = announcementCardInfo)
-    val textButtonPadding = token.textButtonPadding(announcementCardInfo = announcementCardInfo)
+    val previewTextSpacing = token.previewTextSPacing(announcementCardInfo = announcementCardInfo)
+    val titleTextSpacing = token.titleTextSpacing(announcementCardInfo = announcementCardInfo)
+    val textButtonSpacing = token.textButtonSpacing(announcementCardInfo = announcementCardInfo)
     val textHorizontalPadding =
         token.textHorizontalPadding(announcementCardInfo = announcementCardInfo)
-    val previewPadding = token.previewPadding(announcementCardInfo = announcementCardInfo)
+    val cardPadding = token.cardPadding(announcementCardInfo = announcementCardInfo)
     val previewCornerRadius = token.previewCornerRadius(announcementCardInfo = announcementCardInfo)
 
     class CustomBasicCardTokens : BasicCardTokens() {
@@ -87,7 +87,7 @@ fun AnnouncementCard(
         Column(
             modifier = Modifier
                 .width(IntrinsicSize.Min)
-                .padding(previewPadding)
+                .padding(cardPadding)
                 .semantics(mergeDescendants = true) {},
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -95,7 +95,6 @@ fun AnnouncementCard(
             Box(
                 modifier = Modifier
                     .clip(RoundedCornerShape(previewCornerRadius))
-                    .padding(bottom = previewInfoPadding)
             ) {
                 if (previewImageDrawable != null) {
                     Image(
@@ -108,26 +107,27 @@ fun AnnouncementCard(
                     )
                 }
             }
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(previewTextSpacing))
             BasicText(
-                modifier = Modifier.padding(
-                    start = textHorizontalPadding,
-                    end = textHorizontalPadding,
-                    bottom = titleTextPadding
-                ),
+                modifier = Modifier.padding(textHorizontalPadding),
                 text = title,
                 style = titleTypography.merge(TextStyle(color = titleColor))
                     .merge(TextStyle(textAlign = TextAlign.Center))
             )
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(titleTextSpacing))
             BasicText(
-                modifier = Modifier.padding(
-                    start = textHorizontalPadding,
-                    end = textHorizontalPadding,
-                    bottom = textButtonPadding
-                ),
+                modifier = Modifier.padding(textHorizontalPadding),
                 text = description,
                 style = descriptionTypography.merge(TextStyle(color = textColor))
                     .merge(TextStyle(textAlign = TextAlign.Center))
             )
+            Spacer(modifier = Modifier
+                .fillMaxWidth()
+                .height(textButtonSpacing))
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 text = buttonText,
