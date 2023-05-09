@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.semantics
@@ -63,6 +65,12 @@ fun AnnouncementCard(
     val previewCornerRadius = token.previewCornerRadius(announcementCardInfo = announcementCardInfo)
 
     class CustomBasicCardTokens : BasicCardTokens() {
+
+        @Composable
+        override fun backgroundColor(basicCardInfo: BasicCardControlInfo): Brush {
+            return token.backgroundColor(announcementCardInfo = announcementCardInfo)
+        }
+
         @Composable
         override fun cornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
             return token.cornerRadius(announcementCardInfo = announcementCardInfo)
@@ -71,6 +79,16 @@ fun AnnouncementCard(
         @Composable
         override fun elevation(announcementCardInfo: BasicCardControlInfo): Dp {
             return token.elevation(announcementCardInfo = announcementCardInfo)
+        }
+
+        @Composable
+        override fun borderColor(basicCardInfo: BasicCardControlInfo): Color {
+            return token.borderColor(announcementCardInfo = announcementCardInfo)
+        }
+
+        @Composable
+        override fun borderStrokeWidth(basicCardInfo: BasicCardControlInfo): Dp {
+            return token.borderStrokeWidth(announcementCardInfo = announcementCardInfo)
         }
     }
 
@@ -107,27 +125,33 @@ fun AnnouncementCard(
                     )
                 }
             }
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(previewTextSpacing))
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(previewTextSpacing)
+            )
             BasicText(
                 modifier = Modifier.padding(textHorizontalPadding),
                 text = title,
                 style = titleTypography.merge(TextStyle(color = titleColor))
                     .merge(TextStyle(textAlign = TextAlign.Center))
             )
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(titleTextSpacing))
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(titleTextSpacing)
+            )
             BasicText(
                 modifier = Modifier.padding(textHorizontalPadding),
                 text = description,
                 style = descriptionTypography.merge(TextStyle(color = textColor))
                     .merge(TextStyle(textAlign = TextAlign.Center))
             )
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(textButtonSpacing))
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(textButtonSpacing)
+            )
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 text = buttonText,

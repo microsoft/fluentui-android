@@ -41,8 +41,7 @@ fun BasicCard(
         modifier = modifier
             .shadow(elevation, shape, false)
             .background(
-                backgroundColor,
-                shape
+                backgroundColor, shape
             )
             .border(
                 borderStrokeWidth, borderColor, shape

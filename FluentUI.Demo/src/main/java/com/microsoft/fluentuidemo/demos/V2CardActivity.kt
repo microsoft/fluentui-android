@@ -139,10 +139,10 @@ class V2CardActivity : DemoActivity() {
                             item {
                                 FileCard(
                                     actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
-                                    text = context.getString(R.string.persona_name_charlotte_waltson),
-                                    subText = context.getString(R.string.persona_subtitle_researcher),
+                                    text = context.getString(R.string.persona_name_kat_larsson),
+                                    subText = context.getString(R.string.persona_subtitle_engineer),
                                     textIcon = Icons.Outlined.Call,
-                                    previewImageDrawable = R.drawable.avatar_charlotte_waltson
+                                    previewImageDrawable = R.drawable.avatar_kat_larsson
                                 )
                             }
                         }

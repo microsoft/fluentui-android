@@ -3,7 +3,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -20,6 +22,16 @@ data class AnnouncementCardInfo(
 
 @Parcelize
 open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
+
+    @Composable
+    override fun backgroundColor(announcementCardInfo: BasicCardControlInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+
     @Composable
     open fun textColor(announcementCardInfo: BasicCardControlInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
@@ -85,6 +97,18 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
             CardType.Elevated -> FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow64)
             CardType.Outlined -> 0.dp
         }
+    }
+
+    @Composable
+    override fun borderColor(announcementCardInfo: BasicCardControlInfo): Color {
+        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+            themeMode = FluentTheme.themeMode
+        )
+    }
+
+    @Composable
+    override fun borderStrokeWidth(announcementCardInfo: BasicCardControlInfo): Dp {
+        return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
     }
 
     @Composable

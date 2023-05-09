@@ -14,6 +14,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -21,10 +23,13 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
+import com.microsoft.fluentui.theme.token.controlTokens.BasicCardControlInfo
+import com.microsoft.fluentui.theme.token.controlTokens.BasicCardTokens
 import com.microsoft.fluentui.theme.token.controlTokens.FileCardInfo
 import com.microsoft.fluentui.theme.token.controlTokens.FileCardTokens
 
@@ -54,7 +59,7 @@ fun FileCard(
     @DrawableRes previewImageDrawable: Int? = null,
     textIcon: ImageVector,
     actionOverflowIcon: FluentIcon? = null,
-fileCardTokens: FileCardTokens? = null
+    fileCardTokens: FileCardTokens? = null
 ) {
     val token = fileCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FileCard] as FileCardTokens
@@ -75,8 +80,37 @@ fileCardTokens: FileCardTokens? = null
     val textSubTextSpacing = token.textSubTextSpacing(fileCardInfo = fileCardInfo)
     val actionOverflowPadding = token.actionOverflowPadding(fileCardInfo = fileCardInfo)
     val textContainerPadding = token.textContainerPadding(fileCardInfo = fileCardInfo)
+
+    class CustomBasicCardTokens : BasicCardTokens() {
+
+        @Composable
+        override fun backgroundColor(fileCardInfo: BasicCardControlInfo): Brush {
+            return token.backgroundColor(fileCardInfo = fileCardInfo)
+        }
+
+        @Composable
+        override fun cornerRadius(fileCardInfo: BasicCardControlInfo): Dp {
+            return token.cornerRadius(fileCardInfo = fileCardInfo)
+        }
+
+        @Composable
+        override fun elevation(fileCardInfo: BasicCardControlInfo): Dp {
+            return token.elevation(fileCardInfo = fileCardInfo)
+        }
+
+        @Composable
+        override fun borderColor(fileCardInfo: BasicCardControlInfo): Color {
+            return token.borderColor(fileCardInfo = fileCardInfo)
+        }
+
+        @Composable
+        override fun borderStrokeWidth(fileCardInfo: BasicCardControlInfo): Dp {
+            return token.borderStrokeWidth(fileCardInfo = fileCardInfo)
+        }
+    }
     BasicCard(
-        modifier = modifier
+        modifier = modifier,
+        basicCardTokens = CustomBasicCardTokens() as BasicCardTokens
     ) {
         Box(contentAlignment = Alignment.Center) {
             Column(
@@ -105,9 +139,9 @@ fileCardTokens: FileCardTokens? = null
                     )
                 }
                 Row(
-                            modifier = Modifier.padding(
-                            textContainerPadding
-                            ),
+                    modifier = Modifier.padding(
+                        textContainerPadding
+                    ),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
@@ -121,9 +155,11 @@ fileCardTokens: FileCardTokens? = null
                             text = text,
                             style = textTypography.merge(TextStyle(color = textColor))
                         )
-                        Spacer(modifier = Modifier
-                            .fillMaxWidth()
-                            .height(textSubTextSpacing))
+                        Spacer(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(textSubTextSpacing)
+                        )
                         BasicText(
                             text = subText,
                             style = subTextTypography.merge(TextStyle(color = subTextColor))
