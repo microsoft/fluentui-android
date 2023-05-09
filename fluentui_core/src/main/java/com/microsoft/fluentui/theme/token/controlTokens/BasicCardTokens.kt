@@ -28,20 +28,20 @@ data class BasicCardInfo(override val cardType: CardType = CardType.Elevated) :
 open class BasicCardTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(basicCardInfo: BasicCardControlInfo): Color{
+    open fun backgroundColor(basicCardInfo: BasicCardControlInfo): Color {
         return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
-    open fun cornerRadius(basicCardInfo: BasicCardControlInfo): Dp{
+    open fun cornerRadius(basicCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius120)
     }
 
     @Composable
-    open fun elevation(basicCardInfo: BasicCardControlInfo): Dp{
-        return when(basicCardInfo.cardType){
+    open fun elevation(basicCardInfo: BasicCardControlInfo): Dp {
+        return when (basicCardInfo.cardType) {
             CardType.Elevated -> FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow02)
             CardType.Outlined -> 0.dp
         }
@@ -55,7 +55,7 @@ open class BasicCardTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderStrokeWidth(basicCardInfo: BasicCardControlInfo): Dp{
+    open fun borderStrokeWidth(basicCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
     }
 }
