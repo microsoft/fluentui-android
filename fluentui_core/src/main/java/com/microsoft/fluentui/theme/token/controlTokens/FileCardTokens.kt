@@ -60,12 +60,12 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun textSize(fileCardInfo: BasicCardControlInfo): TextStyle {
+    open fun textTypography(fileCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
     }
 
     @Composable
-    open fun subTextSize(fileCardInfo: BasicCardControlInfo): TextStyle {
+    open fun subTextTypography(fileCardInfo: BasicCardControlInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
     }
 
@@ -80,7 +80,7 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun leadIconPadding(fileCardInfo: BasicCardControlInfo): Dp {
+    open fun iconTextSpacing(fileCardInfo: BasicCardControlInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120)
     }
 
@@ -95,12 +95,15 @@ open class FileCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun actionOverflowPadding(fileCardInfo: BasicCardControlInfo): Dp {
-        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+    open fun actionOverflowPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(
+            top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80),
+            end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
+        )
     }
 
     @Composable
-    open fun textVerticalPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
-        return PaddingValues(vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
+    open fun textContainerPadding(fileCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
     }
 }
