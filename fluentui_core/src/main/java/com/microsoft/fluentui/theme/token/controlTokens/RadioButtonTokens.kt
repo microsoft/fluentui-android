@@ -5,9 +5,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
@@ -16,7 +16,7 @@ data class RadioButtonInfo(
 ) : ControlInfo
 
 @Parcelize
-open class RadioButtonTokens : ControlToken, Parcelable {
+open class RadioButtonTokens : IControlToken, Parcelable {
 
     open var innerCircleRadius = 5.dp
     open var outerCircleRadius = 10.dp
@@ -25,28 +25,28 @@ open class RadioButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun backgroundColor(radioButtonInfo: RadioButtonInfo): StateColor {
         return StateColor(
-            rest = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+            rest = aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                 themeMode = themeMode
             ),
-            focused = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+            focused = aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                 themeMode = themeMode
             ),
-            selectedFocused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selectedFocused = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selected = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selectedPressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selectedPressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            pressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+            selectedDisabled = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
                 themeMode = themeMode
             ),
-            disabled = aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+            disabled = aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
                 themeMode = themeMode
             )
         )
@@ -55,16 +55,16 @@ open class RadioButtonTokens : ControlToken, Parcelable {
     @Composable
     open fun iconColor(radioButtonInfo: RadioButtonInfo): StateColor {
         return StateColor(
-            selected = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+            selected = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                 themeMode = themeMode
             ),
-            selectedFocused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+            selectedFocused = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                 themeMode = themeMode
             ),
-            selectedPressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+            selectedPressed = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
+            selectedDisabled = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2].value(
                 themeMode = themeMode
             )
         )

@@ -17,4 +17,9 @@ open class MyButtonTokens : ButtonTokens() {
             ButtonSize.Large -> 60.dp
         }
     }
+
+    @Composable
+    override fun cornerRadius(buttonInfo: ButtonInfo): Dp {
+        return 0.dp
+    }
 }

@@ -10,11 +10,26 @@ import com.microsoft.fluentui.theme.token.controlTokens.*
 
 interface ControlInfo
 
-interface ControlToken
+interface IType
 
-class ControlTokens {
+interface IControlToken
 
-    enum class ControlType {
+interface IControlTokens {
+    /**
+     * Token set contains control token for each control used in scope of FluentTheme composable to support theming.
+     */
+    val tokens: TokenSet<IType, IControlToken>
+    fun updateToken(type: IType, updatedToken: IControlToken): IControlTokens {
+        tokens[type] = updatedToken
+        return this
+    }
+}
+
+/**
+ * Extend the ControlToken to add token for custom control or providing new token to existing Fluent Control. *
+ */
+open class ControlTokens : IControlTokens {
+    enum class ControlType : IType {
         AnnouncementCard,
         AppBar,
         Avatar,
@@ -51,9 +66,9 @@ class ControlTokens {
         ToggleSwitch,
     }
 
-    val tokens: TokenSet<ControlType, ControlToken> by lazy {
-        TokenSet { token ->
-            when (token) {
+    override val tokens: TokenSet<IType, IControlToken> by lazy {
+        TokenSet { type ->
+            when (type) {
                 ControlType.AnnouncementCard -> AnnouncementCardTokens()
                 ControlType.AppBar -> AppBarTokens()
                 ControlType.Avatar -> AvatarTokens()
@@ -88,15 +103,12 @@ class ControlTokens {
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.TextField -> TextFieldTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
+                else -> {
+                    throw java.lang.RuntimeException("$type not defined")
+                }
             }
         }
     }
-
-    fun updateTokens(type: ControlType, updatedToken: ControlToken): ControlTokens {
-        tokens[type] = updatedToken
-        return this
-    }
-
 }
 
-internal val LocalControlTokens = compositionLocalOf { ControlTokens() }
+internal val LocalControlTokens = compositionLocalOf<IControlTokens> { ControlTokens() }

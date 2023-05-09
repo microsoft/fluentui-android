@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
@@ -54,7 +54,11 @@ class V2SnackbarActivity : DemoActivity() {
         val DISMISS_BUTTON_PARAM = "Dismiss Button Param"
         val SHOW_SNACKBAR = "Show Snackbar"
         val DISMISS_SNACKBAR = "Dismiss Snackbar"
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 val snackbarState = remember { SnackbarState() }
@@ -117,7 +121,7 @@ class V2SnackbarActivity : DemoActivity() {
                                     Modifier
                                         .height(8.dp)
                                         .fillMaxWidth()
-                                        .background(aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value())
+                                        .background(aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
                                 )
                             }
 

@@ -9,7 +9,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
@@ -36,7 +36,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.PillButtonTokens
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillButton
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import kotlin.math.roundToInt
-import androidx.compose.material.Icon as MaterialIcon
 
 // TAGS FOR TESTING
 private const val CARD_NUDGE = "CardNudge"
@@ -172,7 +171,7 @@ fun CardNudge(
                     .weight(1F)
                     .padding(start = 16.dp)
             ) {
-                Text(
+                BasicText(
                     metadata.message,
                     style = token.titleTypography(cardNudgeInfo),
                 )
@@ -196,7 +195,7 @@ fun CardNudge(
                         }
 
                         if (!metadata.accentText.isNullOrBlank()) {
-                            Text(
+                            BasicText(
                                 metadata.accentText,
                                 style = token.accentTypography(cardNudgeInfo),
                                 modifier = Modifier.testTag(ACCENT_TEXT)
@@ -204,7 +203,7 @@ fun CardNudge(
                         }
 
                         if (!metadata.subTitle.isNullOrBlank()) {
-                            Text(
+                            BasicText(
                                 metadata.subTitle,
                                 style = token.subtitleTypography(cardNudgeInfo),
                                 modifier = Modifier.testTag(SUBTITLE)
@@ -223,24 +222,24 @@ fun CardNudge(
                         @Composable
                         override fun backgroundColor(pillButtonInfo: PillButtonInfo): StateColor {
                             return StateColor(
-                                rest = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
-                                pressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
-                                focused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
+                                rest = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
+                                pressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(),
+                                focused = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
                             )
                         }
 
                         @Composable
                         override fun textColor(pillButtonInfo: PillButtonInfo): StateColor {
                             return StateColor(
-                                rest = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
-                                pressed = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
-                                focused = aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
+                                rest = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
+                                pressed = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value(),
+                                focused = aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
                             )
                         }
 
                         @Composable
                         override fun typography(pillButtonInfo: PillButtonInfo): TextStyle {
-                            return aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong]
+                            return aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
                         }
                     }
                 )
@@ -249,28 +248,16 @@ fun CardNudge(
             }
 
             if (metadata.dismissOnClick != null) {
-                Box(
+                Icon(
+                    Icons.Filled.Close,
+                    LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
                     modifier = Modifier
-                        .size(20.dp)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(),
-                            enabled = true,
-                            role = Role.Image,
-                            onClickLabel = "Dismiss",
-                            onClick = metadata.dismissOnClick
-                        )
+                        .padding(10.dp)
+                        .size(token.dismissIconSize(cardNudgeInfo))
                         .testTag(DISMISS_BUTTON),
-                    contentAlignment = Alignment.Center
-                ) {
-                    MaterialIcon(
-                        Icons.Filled.Close,
-                        LocalContext.current.resources.getString(R.string.fluentui_dismiss_button),
-                        modifier = Modifier
-                            .size(token.dismissIconSize(cardNudgeInfo)),
-                        tint = token.iconColor(cardNudgeInfo)
-                    )
-                }
+                    tint = token.iconColor(cardNudgeInfo),
+                    onClick = metadata.dismissOnClick
+                )
             }
         }
     }

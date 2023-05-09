@@ -13,33 +13,33 @@ data class ToggleSwitchInfo(
 ) : ControlInfo
 
 @Parcelize
-open class ToggleSwitchTokens : ControlToken, Parcelable {
+open class ToggleSwitchTokens : IControlToken, Parcelable {
 
     @Composable
     open fun trackColor(switchInfo: ToggleSwitchInfo): StateColor {
         return StateColor(
-            rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            rest = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
-            pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            pressed = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
-            disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            disabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
-            focused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background5].value(
+            focused = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
                 themeMode = themeMode
             ),
-            selectedFocused = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selectedFocused = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selected = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selectedPressed = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selectedPressed = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+            selectedDisabled = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
                 themeMode = themeMode
             )
         )
@@ -48,28 +48,28 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
     @Composable
     open fun knobColor(switchInfo: ToggleSwitchInfo): StateColor {
         return StateColor(
-            rest = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+            rest = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            pressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+            pressed = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            disabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
+            disabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
                 themeMode = themeMode
             ),
-            focused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+            focused = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            selectedFocused = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+            selectedFocused = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            selected = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+            selected = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            selectedPressed = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
+            selectedPressed = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStatic].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
+            selectedDisabled = aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundLightStaticDisabled].value(
                 themeMode = themeMode
             )
         )
@@ -78,10 +78,10 @@ open class ToggleSwitchTokens : ControlToken, Parcelable {
     @Composable
     open fun elevation(switchInfo: ToggleSwitchInfo): StateElevation {
         return StateElevation(
-            rest = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
-            pressed = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
-            selected = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
-            focused = GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow08),
+            rest = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
+            pressed = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
+            selected = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
+            focused = FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow08),
             disabled = 0.dp
         )
     }

@@ -6,8 +6,7 @@ import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -15,7 +14,8 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
@@ -46,7 +46,11 @@ class V2ListItemActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateListActivityUI(this)
@@ -543,21 +547,21 @@ private fun LeftViewThreeIcon() {
         Icon(
             painter = painterResource(id = drawable.ic_fluent_flag_24_regular),
             contentDescription = "Flag",
-            tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode
             )
         )
         Icon(
             painter = painterResource(id = drawable.ic_fluent_reply_24_regular),
             contentDescription = "Reply",
-            tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode
             )
         )
         Icon(
             painter = painterResource(id = drawable.ic_fluent_forward_24_regular),
             contentDescription = "Forward",
-            tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode
             )
         )
@@ -645,7 +649,7 @@ private fun Icon16() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__16x16_checkmark),
         contentDescription = "Flag",
-        tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+        tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             themeMode
         )
     )
@@ -656,7 +660,7 @@ private fun Icon20() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__20x20_checkmark),
         contentDescription = "Flag",
-        tint = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+        tint = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
             themeMode
         )
     )
@@ -707,5 +711,5 @@ private fun GetAvatar(size: AvatarSize, image: Int) {
 
 @Composable
 private fun RightViewText(text: String) {
-    return Text(text = text)
+    return BasicText(text = text)
 }

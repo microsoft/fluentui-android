@@ -23,27 +23,35 @@ data class CircularProgressIndicatorInfo(
 ) : ControlInfo
 
 @Parcelize
-open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
+open class CircularProgressIndicatorTokens : IControlToken, Parcelable {
 
     @Composable
     open fun size(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
         return when (circularProgressIndicatorInfo.circularProgressIndicatorSize) {
-            CircularProgressIndicatorSize.XXSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize120)
-            CircularProgressIndicatorSize.XSmall -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
-            CircularProgressIndicatorSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+            CircularProgressIndicatorSize.XXSmall -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize120)
+            CircularProgressIndicatorSize.XSmall -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
+            CircularProgressIndicatorSize.Medium -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
             CircularProgressIndicatorSize.Large -> 32.dp
-            CircularProgressIndicatorSize.XLarge -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize400)
+            CircularProgressIndicatorSize.XLarge -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize400)
         }
     }
 
     @Composable
     open fun strokeWidth(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Dp {
         return when (circularProgressIndicatorInfo.circularProgressIndicatorSize) {
-            CircularProgressIndicatorSize.XXSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth10)
-            CircularProgressIndicatorSize.XSmall -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth10)
-            CircularProgressIndicatorSize.Medium -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth20)
-            CircularProgressIndicatorSize.Large -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth30)
-            CircularProgressIndicatorSize.XLarge -> GlobalTokens.strokeWidth(GlobalTokens.StrokeWidthTokens.StrokeWidth40)
+            CircularProgressIndicatorSize.XXSmall -> FluentGlobalTokens.strokeWidth(
+                FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10
+            )
+            CircularProgressIndicatorSize.XSmall -> FluentGlobalTokens.strokeWidth(
+                FluentGlobalTokens.StrokeWidthTokens.StrokeWidth10
+            )
+            CircularProgressIndicatorSize.Medium -> FluentGlobalTokens.strokeWidth(
+                FluentGlobalTokens.StrokeWidthTokens.StrokeWidth20
+            )
+            CircularProgressIndicatorSize.Large -> FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth30)
+            CircularProgressIndicatorSize.XLarge -> FluentGlobalTokens.strokeWidth(
+                FluentGlobalTokens.StrokeWidthTokens.StrokeWidth40
+            )
         }
     }
 
@@ -51,13 +59,13 @@ open class CircularProgressIndicatorTokens : ControlToken, Parcelable {
     open fun color(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Color {
         return if (circularProgressIndicatorInfo.style == FluentStyle.Neutral) {
             FluentColor(
-                light = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey56),
-                dark = GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Grey72)
+                light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey56),
+                dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey72)
             ).value(
                 themeMode = FluentTheme.themeMode
             )
         } else {
-            FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = FluentTheme.themeMode
             )
         }

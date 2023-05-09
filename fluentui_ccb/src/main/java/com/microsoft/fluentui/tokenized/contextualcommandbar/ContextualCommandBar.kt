@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -27,6 +27,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -569,11 +570,12 @@ private fun CommandItemComposable(
                     )
                 ), contentAlignment = Alignment.Center
         ) {
-            Text(
+            BasicText(
                 item.label,
                 modifier = Modifier.clearAndSetSemantics { },
-                style = fontTypography,
-                color = foregroundColor,
+                style = fontTypography.merge(
+                    TextStyle(color = foregroundColor)
+                ),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
             )

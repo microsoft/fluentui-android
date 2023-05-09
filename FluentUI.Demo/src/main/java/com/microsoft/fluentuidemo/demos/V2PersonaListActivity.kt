@@ -3,13 +3,13 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.testTag
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
@@ -29,7 +29,11 @@ class V2PersonaListActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreatePersonaListActivityUI(this)
@@ -42,7 +46,7 @@ class V2PersonaListActivity : DemoActivity() {
         Icon(
             painter = rememberVectorPainter(image = ListItemIcons.Chevron),
             contentDescription = "Flag",
-            tint = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 FluentTheme.themeMode
             )
         )

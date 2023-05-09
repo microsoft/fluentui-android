@@ -7,9 +7,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 enum class SnackbarStyle {
@@ -26,61 +26,65 @@ data class SnackBarInfo(
 ) : ControlInfo
 
 @Parcelize
-open class SnackBarTokens : ControlToken, Parcelable {
+open class SnackBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(snackBarInfo: SnackBarInfo): Color {
         return when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background4].value()
-            SnackbarStyle.Contrast -> aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.BackgroundDarkStatic].value()
-            SnackbarStyle.Accent -> aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
-            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.WarningBackground1].value()
-            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.DangerBackground1].value()
+            SnackbarStyle.Neutral -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background4].value()
+            SnackbarStyle.Contrast -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.BackgroundDarkStatic].value()
+            SnackbarStyle.Accent -> aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()
+            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningBackground1].value()
+            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground1].value()
         }
     }
 
     @Composable
     open fun iconColor(snackBarInfo: SnackBarInfo): Color {
         return when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value()
-            SnackbarStyle.Contrast -> aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
-            SnackbarStyle.Accent -> aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
-            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
-            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+            SnackbarStyle.Neutral -> aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+            SnackbarStyle.Contrast -> aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
+            SnackbarStyle.Accent -> aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
+            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
+            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
         }
     }
 
     @Composable
     open fun titleTypography(snackBarInfo: SnackBarInfo): TextStyle {
         val color: Color = when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value()
-            SnackbarStyle.Contrast -> aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
-            SnackbarStyle.Accent -> aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
-            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
-            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+            SnackbarStyle.Neutral -> aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+            SnackbarStyle.Contrast -> aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
+            SnackbarStyle.Accent -> aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
+            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
+            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
         }
 
         return if (snackBarInfo.subTitleAvailable)
-            aliasTokens.typography[AliasTokens.TypographyTokens.Body2Strong].merge(
+            aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong].merge(
                 TextStyle(
                     color = color
                 )
             )
         else
-            aliasTokens.typography[AliasTokens.TypographyTokens.Body2].merge(TextStyle(color = color))
+            aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2].merge(TextStyle(color = color))
     }
 
     @Composable
     open fun subtitleTypography(snackBarInfo: SnackBarInfo): TextStyle {
         val color: Color = when (snackBarInfo.style) {
-            SnackbarStyle.Neutral -> aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value()
-            SnackbarStyle.Contrast -> aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
-            SnackbarStyle.Accent -> aliasTokens.brandForegroundColor[AliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
-            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
-            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[AliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+            SnackbarStyle.Neutral -> aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+            SnackbarStyle.Contrast -> aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
+            SnackbarStyle.Accent -> aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint].value()
+            SnackbarStyle.Warning -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
+            SnackbarStyle.Danger -> aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
         }
 
-        return aliasTokens.typography[AliasTokens.TypographyTokens.Body2].merge(TextStyle(color = color))
+        return aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2].merge(
+            TextStyle(
+                color = color
+            )
+        )
     }
 
     @Composable

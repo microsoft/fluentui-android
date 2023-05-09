@@ -13,8 +13,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
+import com.microsoft.fluentui.theme.token.Icon
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -30,13 +30,14 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tablayout.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.GlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PillBarTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PillButtonInfo
@@ -168,7 +169,7 @@ fun PillButton(
     ) {
         Row(Modifier.width(IntrinsicSize.Max)) {
             if (pillMetaData.icon != null) {
-                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size180)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size180)))
                 Icon(
                     pillMetaData.icon!!,
                     pillMetaData.text,
@@ -178,14 +179,15 @@ fun PillButton(
                     tint = iconColor
                 )
             } else {
-                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
-                Text(
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)))
+                BasicText(
                     pillMetaData.text,
                     modifier = Modifier
                         .weight(1F)
                         .clearAndSetSemantics { },
-                    color = textColor,
-                    style = fontStyle,
+                    style = fontStyle.merge(
+                        TextStyle(color = textColor)
+                    ),
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
@@ -199,7 +201,7 @@ fun PillButton(
                             selected = pillMetaData.selected,
                             interactionSource = interactionSource
                         )
-                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size20)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size20)))
                 Canvas(
                     modifier = Modifier
                         .padding(top = 2.dp, bottom = 12.dp)
@@ -210,11 +212,11 @@ fun PillButton(
                     )
                 }
                 if (pillMetaData.icon != null)
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size100)))
+                    Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)))
                 else
-                    Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size80)))
+                    Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)))
             } else {
-                Spacer(Modifier.requiredWidth(GlobalTokens.size(GlobalTokens.SizeTokens.Size160)))
+                Spacer(Modifier.requiredWidth(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)))
             }
         }
     }

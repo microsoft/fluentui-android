@@ -5,10 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 /**
@@ -21,39 +21,39 @@ enum class BehaviorType {
 data class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : ControlInfo
 
 @Parcelize
-open class DrawerTokens : ControlToken, Parcelable {
+open class DrawerTokens : IControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(drawerInfo: DrawerInfo): Color =
-        FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background2].value(
+        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
             themeMode = FluentTheme.themeMode
         )
 
     @Composable
     open fun handleColor(drawerInfo: DrawerInfo): Color =
-        FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+        FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
             themeMode = FluentTheme.themeMode
         )
 
     @Composable
     open fun elevation(drawerInfo: DrawerInfo): Dp =
-        GlobalTokens.elevation(GlobalTokens.ShadowTokens.Shadow28)
+        FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow28)
 
     @Composable
     open fun borderRadius(drawerInfo: DrawerInfo): Dp {
         return when (drawerInfo.type) {
-            BehaviorType.TOP, BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> GlobalTokens.cornerRadius(
-                GlobalTokens.CornerRadiusTokens.CornerRadius120
+            BehaviorType.TOP, BehaviorType.BOTTOM, BehaviorType.BOTTOM_SLIDE_OVER -> FluentGlobalTokens.cornerRadius(
+                FluentGlobalTokens.CornerRadiusTokens.CornerRadius120
             )
-            BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> GlobalTokens.cornerRadius(
-                GlobalTokens.CornerRadiusTokens.CornerRadiusNone
+            BehaviorType.LEFT_SLIDE_OVER, BehaviorType.RIGHT_SLIDE_OVER -> FluentGlobalTokens.cornerRadius(
+                FluentGlobalTokens.CornerRadiusTokens.CornerRadiusNone
             )
         }
     }
 
     @Composable
     open fun scrimColor(drawerInfo: DrawerInfo): Color =
-        GlobalTokens.neutralColor(GlobalTokens.NeutralColorTokens.Black)
+        FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Black)
 
     @Composable
     open fun scrimOpacity(drawerInfo: DrawerInfo): Float = 0.32F

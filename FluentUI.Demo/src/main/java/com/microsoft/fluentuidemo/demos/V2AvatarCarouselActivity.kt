@@ -8,13 +8,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
@@ -30,7 +31,11 @@ class V2AvatarCarouselActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateAvatarCarouselActivityUI()
@@ -204,10 +209,10 @@ private fun CreateAvatarCarouselActivityUI() {
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.padding(top = 8.dp)
     ) {
-        Text(
+        BasicText(
             modifier = Modifier.padding(start = 8.dp),
             text = "Large Avatar Carousel",
-            color = Color(0xFF2886DE)
+            style = TextStyle(color = Color(0xFF2886DE))
         )
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
@@ -215,10 +220,10 @@ private fun CreateAvatarCarouselActivityUI() {
             modifier = Modifier.testTag("LargeCarousel")
         )
         Divider(Modifier.fillMaxWidth())
-        Text(
+        BasicText(
             modifier = Modifier.padding(start = 8.dp),
             text = "Medium Avatar Carousel with Presence indicator",
-            color = Color(0xFF2886DE)
+            style = TextStyle(color = Color(0xFF2886DE))
         )
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
