@@ -45,27 +45,27 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun previewInfoPadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun previewTextSPacing(announcementCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
     }
 
     @Composable
-    open fun titleTextPadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun titleTextSpacing(announcementCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
     }
 
     @Composable
-    open fun textButtonPadding(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun textButtonSpacing(announcementCardInfo: BasicCardControlInfo): Dp {
         return GlobalTokens.size(GlobalTokens.SizeTokens.Size40)
     }
 
     @Composable
-    open fun textHorizontalPadding(announcementCardInfo: BasicCardControlInfo): Dp {
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size160)
+    open fun textHorizontalPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+        return PaddingValues(horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
-    open fun previewPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+    open fun cardPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
         return PaddingValues(all = GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
     }
 
