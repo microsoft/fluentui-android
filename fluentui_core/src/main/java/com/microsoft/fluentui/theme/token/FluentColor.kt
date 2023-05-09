@@ -127,18 +127,3 @@ data class FluentColor(
         }
     }
 }
-
-data class FluentBrush(
-    val light: Brush,
-    val dark: Brush = light,
-) {
-
-    @Composable
-    fun value(themeMode: ThemeMode = com.microsoft.fluentui.theme.FluentTheme.themeMode): Brush {
-        return when (themeMode) {
-            ThemeMode.Light -> light
-            ThemeMode.Dark -> dark
-            ThemeMode.Auto -> if (isSystemInDarkTheme()) dark else light
-        }
-    }
-}

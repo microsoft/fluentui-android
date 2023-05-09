@@ -111,7 +111,7 @@ class V2ButtonsActivity : DemoActivity() {
                                 size = ButtonSize.Medium,
                                 onClick = {
                                     FluentTheme.updateControlTokens(
-                                        controlTokens.updateToken(
+                                        ControlTokens().updateToken(
                                             ControlTokens.ControlType.AppBar,
                                             MyAppBarToken()
                                         ).updateToken(
