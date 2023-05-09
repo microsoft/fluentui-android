@@ -25,21 +25,21 @@ data class AppBarInfo(
 ) : ControlInfo
 
 @Parcelize
-open class AppBarTokens : ControlToken, Parcelable {
+open class AppBarTokens : IControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -50,15 +50,15 @@ open class AppBarTokens : ControlToken, Parcelable {
     open fun navigationIconColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -69,15 +69,15 @@ open class AppBarTokens : ControlToken, Parcelable {
     open fun titleIconColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -88,35 +88,34 @@ open class AppBarTokens : ControlToken, Parcelable {
     open fun subtitleIconColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
         }
     }
 
-
     @Composable
     open fun titleTextColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -127,15 +126,15 @@ open class AppBarTokens : ControlToken, Parcelable {
     open fun subtitleTextColor(info: AppBarInfo): Color {
         return when (info.style) {
             FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
             FluentStyle.Brand ->
                 FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                         ThemeMode.Light
                     ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                         ThemeMode.Dark
                     )
                 ).value(themeMode = FluentTheme.themeMode)
@@ -145,27 +144,27 @@ open class AppBarTokens : ControlToken, Parcelable {
     @Composable
     open fun titleTypography(info: AppBarInfo): TextStyle {
         return when (info.appBarSize) {
-            AppBarSize.Large -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
-            AppBarSize.Medium -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
-            AppBarSize.Small -> FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1Strong]
+            AppBarSize.Large -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
+            AppBarSize.Medium -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
+            AppBarSize.Small -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
             else -> TextStyle(fontSize = 0.sp)
         }
     }
 
     @Composable
     open fun subtitleTypography(info: AppBarInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Caption1]
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
     }
 
     @Composable
     fun leftIconSize(info: AppBarInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize240)
     }
 
     @Composable
     fun titleIconSize(info: AppBarInfo): Dp {
         return when (info.appBarSize) {
-            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize160)
+            AppBarSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize160)
             else -> 0.dp
         }
     }
@@ -173,8 +172,8 @@ open class AppBarTokens : ControlToken, Parcelable {
     @Composable
     fun subtitleIconSize(info: AppBarInfo): Dp {
         return when (info.appBarSize) {
-            AppBarSize.Small -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize120)
-            AppBarSize.Medium -> GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize120)
+            AppBarSize.Small -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize120)
+            AppBarSize.Medium -> FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize120)
             else -> 0.dp
         }
     }

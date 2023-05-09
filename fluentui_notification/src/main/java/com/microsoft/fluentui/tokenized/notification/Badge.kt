@@ -6,7 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -82,12 +82,12 @@ fun Badge(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(
+            BasicText(
                 text,
                 modifier = Modifier.padding(paddingValues),
-                color = textColor,
                 style = typography.merge(
                     TextStyle(
+                        color = textColor,
                         platformStyle = PlatformTextStyle(
                             includeFontPadding = false
                         )

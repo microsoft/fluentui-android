@@ -7,8 +7,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.*
@@ -19,14 +19,14 @@ import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.persona.PersonaListView
-import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
@@ -52,7 +52,11 @@ class V2BottomSheetActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateActivityUI()
@@ -190,11 +194,13 @@ private fun CreateActivityUI() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
+                BasicText(
                     text = "Expandable",
                     modifier = Modifier.weight(1F),
-                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
                 ToggleSwitch(checkedState = expandableState,
@@ -207,11 +213,13 @@ private fun CreateActivityUI() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
+                BasicText(
                     text = "Show Handle",
                     modifier = Modifier.weight(1F),
-                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
                 ToggleSwitch(checkedState = showHandleState,
@@ -224,11 +232,13 @@ private fun CreateActivityUI() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
+                BasicText(
                     text = "Slide Over",
                     modifier = Modifier.weight(1F),
-                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
                 ToggleSwitch(checkedState = slideOverState,
@@ -241,11 +251,13 @@ private fun CreateActivityUI() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
+                BasicText(
                     text = "Peek Height $peekHeightState",
                     modifier = Modifier.weight(1F),
-                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
                 Button(
@@ -268,7 +280,7 @@ private fun CreateActivityUI() {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
+                BasicText(
                     text = "Note: When 'Slide Over' is On then Peek Height max limit is restricted to half of screen size. When 'Slide Over' is off then bottomSheet height does not vary with content height. It either open at peek height or expand to fullest or hide at bottom",
                     modifier = Modifier.weight(1F)
                 )
@@ -276,22 +288,26 @@ private fun CreateActivityUI() {
 
 
             Row {
-                Text(
+                BasicText(
                     text = "Select SheetContent",
-                    fontWeight = FontWeight.Bold,
                     modifier = Modifier.weight(1F),
-                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
             }
 
             Row {
-                Text(
+                BasicText(
                     text = "From ItemListContentBuilder",
                     modifier = Modifier.weight(1F),
-                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
 
@@ -304,11 +320,13 @@ private fun CreateActivityUI() {
                 )
             }
             Row {
-                Text(
+                BasicText(
                     text = "Using AndroidView",
                     modifier = Modifier.weight(1F),
-                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
 
@@ -321,11 +339,13 @@ private fun CreateActivityUI() {
                 )
             }
             Row {
-                Text(
+                BasicText(
                     text = "Compose Content",
                     modifier = Modifier.weight(1F),
-                    color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
 
@@ -385,10 +405,12 @@ private fun CreateActivityUI() {
 
             )
             {
-                Text(
+                BasicText(
                     text = context.resources.getString(R.string.large_scrollable_text),
-                    color = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                        themeMode = ThemeMode.Auto
+                    style = TextStyle(
+                        color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                            themeMode = ThemeMode.Auto
+                        )
                     )
                 )
             }
@@ -442,7 +464,7 @@ fun content2(bottomSheetState: BottomSheetState): @Composable () -> Unit = {
         repeat(no.value) {
             item {
                 Spacer(Modifier.height(10.dp))
-                Text("list item $it")
+                BasicText("list item $it")
             }
         }
     }

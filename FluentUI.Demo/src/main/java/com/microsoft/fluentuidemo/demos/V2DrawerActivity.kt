@@ -8,24 +8,24 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.persona.IPersona
 import com.microsoft.fluentui.persona.PersonaListView
-import com.microsoft.fluentui.theme.AppThemeController
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -48,7 +48,11 @@ class V2DrawerActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 CreateActivityUI()
@@ -358,10 +362,12 @@ private fun getDynamicDrawerContent(): @Composable ((close: () -> Unit) -> Unit)
             repeat(no.value) {
                 item {
                     Spacer(Modifier.height(10.dp))
-                    Text(
+                    BasicText(
                         text = "Item $it",
-                        color = AppThemeController.aliasTokens.value!!.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-                            themeMode = ThemeMode.Auto
+                        style = TextStyle(
+                            color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                themeMode = ThemeMode.Auto
+                            )
                         )
                     )
                 }
@@ -416,7 +422,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
             val drawerStateB = rememberDrawerState()
 
             var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
-            Text("Select Drawer Type", fontWeight = FontWeight.Bold)
+            BasicText("Select Drawer Type", style = TextStyle(fontWeight = FontWeight.Bold))
             Row(modifier = Modifier
                 .clickable { selectedBehaviorType = BehaviorType.TOP }
                 .clearAndSetSemantics { contentDescription = "Top" }
@@ -427,7 +433,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
                     },
                     selected = selectedBehaviorType == BehaviorType.TOP
                 )
-                Text(text = "Top")
+                BasicText(text = "Top")
             }
             Row(modifier = Modifier
                 .clickable { selectedBehaviorType = BehaviorType.BOTTOM }
@@ -439,7 +445,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
                     },
                     selected = selectedBehaviorType == BehaviorType.BOTTOM
                 )
-                Text(text = "Bottom")
+                BasicText(text = "Bottom")
             }
             Row(modifier = Modifier
                 .clickable { selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER }
@@ -451,7 +457,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
                     },
                     selected = selectedBehaviorType == BehaviorType.LEFT_SLIDE_OVER
                 )
-                Text(text = "Left Slide Over")
+                BasicText(text = "Left Slide Over")
             }
             Row(modifier = Modifier
                 .clickable { selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER }
@@ -463,7 +469,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
                     },
                     selected = selectedBehaviorType == BehaviorType.RIGHT_SLIDE_OVER
                 )
-                Text(text = "Right Slide Over")
+                BasicText(text = "Right Slide Over")
             }
             Row(modifier = Modifier
                 .clickable { selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER }
@@ -475,7 +481,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
                     },
                     selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
                 )
-                Text(text = "Bottom Slide Over")
+                BasicText(text = "Bottom Slide Over")
             }
 
             //Button on Outer Drawer Surface

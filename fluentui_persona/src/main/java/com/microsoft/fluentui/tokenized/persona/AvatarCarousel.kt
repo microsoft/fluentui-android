@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.persona.R
@@ -156,11 +157,14 @@ fun AvatarCarousel(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
                 ) {
-                    Text(
+                    BasicText(
                         modifier = Modifier.clearAndSetSemantics { },
                         text = item.person.firstName,
-                        color = if (item.enabled) textColor.rest else textColor.disabled,
-                        style = textStyle,
+                        style = textStyle.merge(
+                            TextStyle(
+                                color = if (item.enabled) textColor.rest else textColor.disabled
+                            )
+                        ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis
                     )
@@ -173,11 +177,14 @@ fun AvatarCarousel(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Text(
+                        BasicText(
                             modifier = Modifier.clearAndSetSemantics { },
                             text = item.person.lastName,
-                            color = if (item.enabled) subTextColor.rest else subTextColor.disabled,
-                            style = subTextStyle,
+                            style = subTextStyle.merge(
+                                TextStyle(
+                                    color = if (item.enabled) subTextColor.rest else subTextColor.disabled
+                                )
+                            ),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )

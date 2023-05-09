@@ -5,7 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.ripple.rememberRipple
@@ -30,7 +30,6 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
-import androidx.compose.material.Icon as MaterialIcon
 
 // TAGS FOR TESTING
 private const val SNACKBAR = "Snackbar"
@@ -165,7 +164,7 @@ fun Snackbar(
             }
 
             if (metadata.subTitle.isNullOrBlank()) {
-                Text(
+                BasicText(
                     text = metadata.message,
                     modifier = Modifier
                         .weight(1F)
@@ -178,11 +177,11 @@ fun Snackbar(
                         .weight(1F)
                         .padding(start = 16.dp, top = 12.dp, bottom = 12.dp)
                 ) {
-                    Text(
+                    BasicText(
                         text = metadata.message,
                         style = token.titleTypography(snackBarInfo)
                     )
-                    Text(
+                    BasicText(
                         text = metadata.subTitle,
                         style = token.subtitleTypography(snackBarInfo),
                         modifier = Modifier.testTag(SUBTITLE)
@@ -230,7 +229,7 @@ fun Snackbar(
                         )
                         .testTag(DISMISS_BUTTON)
                 ) {
-                    MaterialIcon(
+                    Icon(
                         Icons.Filled.Close,
                         "Dismiss",
                         modifier = Modifier

@@ -8,8 +8,8 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -28,7 +28,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -52,7 +52,11 @@ class V2ContextualCommandBarActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             val click: (() -> Unit) =
                 { Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show() }
@@ -231,7 +235,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                         CenterHorizontally
                     ), verticalAlignment = CenterVertically
                 ) {
-                    Text(text = "Action Button")
+                    BasicText(text = "Action Button")
                     ToggleSwitch(
                         onValueChange =
                         {
@@ -282,7 +286,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                     TextField(
                         value = text,
                         onValueChange = { text = it },
-                        label = { Text("Type your text here") },
+                        label = { BasicText("Type your text here") },
                         modifier = Modifier
                             .onKeyEvent { keyEvent ->
                                 when (keyEvent.nativeKeyEvent.keyCode) {
@@ -318,51 +322,44 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     verticalAlignment = CenterVertically
                                 ) {
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading1",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
                                         )
                                     }
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
-                                        Text(
+
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading2",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
                                         )
                                     }
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title3]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading3",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title3]
                                         )
                                     }
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Paragraph",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
                                         )
                                     }
                                 }
@@ -399,51 +396,43 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                                     verticalAlignment = CenterVertically
                                 ) {
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading1",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
                                         )
                                     }
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading2",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
                                         )
                                     }
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Title3]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Heading3",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title3]
                                         )
                                     }
                                     item {
-                                        val font =
-                                            FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
-                                        Text(
+                                        BasicText(
                                             modifier = Modifier.padding(
                                                 horizontal = 8.dp,
                                                 vertical = 4.dp
                                             ),
                                             text = "Paragraph",
-                                            style = font
+                                            style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
                                         )
                                     }
                                 }

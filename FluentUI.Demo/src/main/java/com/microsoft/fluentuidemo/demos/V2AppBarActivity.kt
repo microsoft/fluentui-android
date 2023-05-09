@@ -6,12 +6,10 @@ import android.widget.Toast
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.Icon
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
@@ -19,7 +17,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
@@ -32,10 +29,11 @@ import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -60,7 +58,11 @@ class V2AppBarLayoutActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
@@ -215,15 +217,15 @@ class V2AppBarLayoutActivity : DemoActivity() {
 
                     val accessoryDelta: Float by animateFloatAsState(yAxisDeltaCoerced)
                     val rightIconColor: Color = if (style == FluentStyle.Neutral)
-                        FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                        FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                             FluentTheme.themeMode
                         )
                     else
                         FluentColor(
-                            light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                                 ThemeMode.Light
                             ),
-                            dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                            dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                                 ThemeMode.Dark
                             )
                         ).value(FluentTheme.themeMode)
@@ -296,51 +298,40 @@ class V2AppBarLayoutActivity : DemoActivity() {
                         appTitleDelta = appTitleDelta,
                         accessoryDelta = accessoryDelta,
                         rightAccessoryView = {
-                            Box(
-                                Modifier
-                                    .size(44.dp)
-                                    .clickable(
-                                        onClick = {
-                                            Toast
-                                                .makeText(
-                                                    context,
-                                                    "Navigation Icon 1 Pressed",
-                                                    Toast.LENGTH_SHORT
-                                                )
-                                                .show()
-                                        }
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    Icons.Filled.Add,
-                                    "Add",
-                                    tint = rightIconColor
-                                )
-                            }
-
-                            Box(
-                                Modifier
-                                    .size(44.dp)
-                                    .clickable(
-                                        onClick = {
-                                            Toast
-                                                .makeText(
-                                                    context,
-                                                    "Navigation Icon 2 Pressed",
-                                                    Toast.LENGTH_SHORT
-                                                )
-                                                .show()
-                                        }
-                                    ),
-                                contentAlignment = Alignment.Center
-                            ) {
-                                Icon(
-                                    Icons.Filled.Email,
-                                    "E-mail",
-                                    tint = rightIconColor
-                                )
-                            }
+                            Icon(
+                                Icons.Filled.Add,
+                                "Add",
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .requiredSize(24.dp),
+                                tint = rightIconColor,
+                                onClick = {
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "Navigation Icon 1 Pressed",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                }
+                            )
+                            Icon(
+                                Icons.Filled.Email,
+                                "E-mail",
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .requiredSize(24.dp),
+                                tint = rightIconColor,
+                                onClick = {
+                                    Toast
+                                        .makeText(
+                                            context,
+                                            "Navigation Icon 2 Pressed",
+                                            Toast.LENGTH_SHORT
+                                        )
+                                        .show()
+                                }
+                            )
                         }
                     )
                 }

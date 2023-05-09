@@ -8,6 +8,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.material.*
@@ -34,7 +35,7 @@ import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens.ControlType
-import com.microsoft.fluentui.theme.token.GlobalTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
@@ -135,7 +136,7 @@ object ListItem {
         backgroundColor: Color
     ) {
         PlaceholderForActionText(actionTextComposable = {
-            Text(
+            BasicText(
                 text = actionText,
                 style = actionTextTypography,
             )
@@ -169,15 +170,14 @@ object ListItem {
                     Surface(
                         onClick = onClick, color = backgroundColor
                     ) {
-                        Text(
+                        BasicText(
                             text = actionText,
-                            style = actionTextTypography,
-                            color = actionTextColor
+                            style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                         )
                     }
                 })
             )
-            Text(
+            BasicText(
                 text = text, inlineContent = inlineContent
             )
         }
@@ -249,8 +249,8 @@ object ListItem {
         val listItemInfo = ListItemInfo(
             listItemType = listItemType,
             borderInset = borderInset,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size160,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size160,
             unreadDot = unreadDot
         )
         val backgroundColor =
@@ -341,10 +341,9 @@ object ListItem {
                             }
                         }
 
-                        Text(
+                        BasicText(
                             text = text,
-                            style = primaryTextTypography,
-                            color = primaryTextColor,
+                            style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                             maxLines = textMaxLines,
                             overflow = TextOverflow.Ellipsis
                         )
@@ -357,10 +356,9 @@ object ListItem {
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         if (subText != null && textAlignment == ListItemTextAlignment.Regular) {
-                            Text(
+                            BasicText(
                                 text = subText,
-                                style = subTextTypography,
-                                color = subTextColor,
+                                style = subTextTypography.merge(TextStyle(color = subTextColor)),
                                 maxLines = subTextMaxLines,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -383,10 +381,9 @@ object ListItem {
                                     }
                                 }
                                 if (secondarySubText != null) {
-                                    Text(
+                                    BasicText(
                                         text = secondarySubText,
-                                        style = secondarySubTextTypography,
-                                        color = secondarySubTextColor,
+                                        style = secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor)),
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
@@ -462,8 +459,8 @@ object ListItem {
         val listItemInfo = ListItemInfo(
             listItemType = SectionHeader,
             borderInset = borderInset,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size120,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size120,
             style = style
         )
         val backgroundColor =
@@ -541,10 +538,9 @@ object ListItem {
                                         .rotate(rotationState),
                                     tint = chevronTint)
                             }
-                            Text(
+                            BasicText(
                                 text = title,
-                                style = primaryTextTypography,
-                                color = primaryTextColor,
+                                style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                                 maxLines = titleMaxLines,
                                 overflow = TextOverflow.Ellipsis
                             )
@@ -553,12 +549,11 @@ object ListItem {
                     }
                     Row(Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current))) {
                         if (accessoryTextTitle != null) {
-                            Text(
+                            BasicText(
                                 text = accessoryTextTitle,
                                 Modifier.clickable(role = Role.Button,
                                     onClick = accessoryTextOnClick ?: {}),
-                                color = actionTextColor,
-                                style = actionTextTypography
+                                style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                             )
                         }
                     }
@@ -627,8 +622,8 @@ object ListItem {
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = SectionDescription,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size80,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size80,
             borderInset = borderInset,
             placement = descriptionPlacement
         )
@@ -702,10 +697,9 @@ object ListItem {
                         backgroundColor = backgroundColor
                     )
                 } else {
-                    Text(
+                    BasicText(
                         text = description,
-                        color = descriptionTextColor,
-                        style = descriptionTextTypography
+                        style = descriptionTextTypography.merge(TextStyle(color = descriptionTextColor))
                     )
                 }
             }
@@ -757,8 +751,8 @@ object ListItem {
         val listItemInfo = ListItemInfo(
             listItemType = OneLine,
             style = style,
-            horizontalSpacing = GlobalTokens.SizeTokens.Size160,
-            verticalSpacing = GlobalTokens.SizeTokens.Size80,
+            horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size80,
             borderInset = borderInset
         )
         val backgroundColor =
@@ -804,7 +798,7 @@ object ListItem {
                     .background(backgroundColor)
                     .focusable(true), verticalAlignment = Alignment.Bottom
             ) {
-                Text(
+                BasicText(
                     text = title,
                     modifier = Modifier
                         .padding(
@@ -813,14 +807,13 @@ object ListItem {
                             bottom = padding.calculateBottomPadding()
                         )
                         .weight(1f),
-                    style = primaryTextTypography,
-                    color = primaryTextColor,
+                    style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                     maxLines = titleMaxLines,
                     overflow = TextOverflow.Ellipsis
                 )
 
                 if (accessoryTextTitle != null) {
-                    Text(
+                    BasicText(
                         text = accessoryTextTitle,
                         Modifier
                             .padding(
@@ -830,8 +823,7 @@ object ListItem {
                             .clickable(
                                 role = Role.Button,
                                 onClick = accessoryTextOnClick ?: {}),
-                        color = actionTextColor,
-                        style = actionTextTypography
+                        style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                     )
                 }
                 if (trailingAccessoryView != null) {

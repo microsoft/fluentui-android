@@ -7,25 +7,25 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlInfo
-import com.microsoft.fluentui.theme.token.ControlToken
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 class DividerInfo : ControlInfo
 
 @Parcelize
-open class DividerTokens : ControlToken, Parcelable {
+open class DividerTokens : IControlToken, Parcelable {
     @Composable
     open fun background(dividerInfo: DividerInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
             FluentTheme.themeMode
         )
     }
 
     @Composable
     open fun dividerColor(dividerInfo: DividerInfo): Color {
-        return FluentTheme.aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.Stroke2].value(
+        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value(
             themeMode = FluentTheme.themeMode
         )
     }

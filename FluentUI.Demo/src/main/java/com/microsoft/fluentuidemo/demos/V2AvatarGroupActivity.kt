@@ -6,8 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
-import androidx.compose.material.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -21,7 +21,7 @@ import com.example.theme.token.AnonymousAvatarTokens
 import com.example.theme.token.StandardInvertedAvatarTokens
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
-import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarGroupStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -39,7 +39,11 @@ class V2AvatarGroupActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
+        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
+            LayoutInflater.from(container.context),
+            container,
+            true
+        )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
                 Column(
@@ -98,7 +102,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                             text = "-",
                             contentDescription = "Max Visible Avatar $maxVisibleAvatar"
                         )
-                        Text("$maxVisibleAvatar")
+                        BasicText("$maxVisibleAvatar")
                         Button(
                             onClick = { maxVisibleAvatar++ },
                             enabled = (maxVisibleAvatar < group.members.size),
@@ -122,9 +126,9 @@ class V2AvatarGroupActivity : DemoActivity() {
                     LazyColumn(modifier = Modifier.fillMaxWidth()) {
                         item {
                             Row(horizontalArrangement = Arrangement.Center) {
-                                Text(
+                                BasicText(
                                     "Stack Group Style",
-                                    style = aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
+                                    style = aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
                                 )
                             }
                         }
@@ -134,7 +138,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
                                 item {
-                                    Text("Size 16: ")
+                                    BasicText("Size 16: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -152,7 +156,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 20: ")
+                                    BasicText("Size 20: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -171,7 +175,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 24: ")
+                                    BasicText("Size 24: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -190,7 +194,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 32: ")
+                                    BasicText("Size 32: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -208,7 +212,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 40: ")
+                                    BasicText("Size 40: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -227,7 +231,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 56: ")
+                                    BasicText("Size 56: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -245,7 +249,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 72: ")
+                                    BasicText("Size 72: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -261,9 +265,9 @@ class V2AvatarGroupActivity : DemoActivity() {
 
                         item {
                             Row(horizontalArrangement = Arrangement.Center) {
-                                Text(
+                                BasicText(
                                     "Pile Group Style",
-                                    style = aliasTokens.typography[AliasTokens.TypographyTokens.Title2]
+                                    style = aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
                                 )
                             }
                         }
@@ -273,7 +277,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 16: ")
+                                    BasicText("Size 16: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -292,7 +296,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 20: ")
+                                    BasicText("Size 20: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -312,7 +316,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 24: ")
+                                    BasicText("Size 24: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -332,7 +336,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 32: ")
+                                    BasicText("Size 32: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -351,7 +355,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 40: ")
+                                    BasicText("Size 40: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -371,7 +375,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 modifier = Modifier.fillMaxSize()
                             ) {
                                 item {
-                                    Text("Size 56: ")
+                                    BasicText("Size 56: ")
                                 }
                                 item {
                                     AvatarGroup(
@@ -389,7 +393,7 @@ class V2AvatarGroupActivity : DemoActivity() {
                                 verticalAlignment = Alignment.CenterVertically,
                                 modifier = Modifier.fillMaxSize()
                             ) {
-                                item { Text("Size 72: ") }
+                                item { BasicText("Size 72: ") }
                                 item {
                                     AvatarGroup(
                                         group,

@@ -5,8 +5,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +18,7 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -26,6 +26,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
 const val IMAGE_TEST_TAG = "Image"
@@ -124,9 +125,10 @@ fun Avatar(
                     )
                 }
                 personInitials.isNotEmpty() -> {
-                    Text(personInitials,
-                        style = fontTextStyle,
-                        color = foregroundColor,
+                    BasicText(personInitials,
+                        style = fontTextStyle.merge(
+                            TextStyle(color = foregroundColor)
+                        ),
                         modifier = Modifier
                             .clearAndSetSemantics { })
                 }
@@ -278,9 +280,8 @@ fun Avatar(
                         }
                 )
             } else if (group.groupName.isNotEmpty()) {
-                Text(group.getInitials(),
-                    style = fontTextStyle,
-                    color = foregroundColor,
+                BasicText(group.getInitials(),
+                    style = fontTextStyle.merge(TextStyle(color = foregroundColor)),
                     modifier = Modifier.clearAndSetSemantics { })
             } else {
                 Icon(
@@ -335,9 +336,8 @@ fun Avatar(
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            Text("+${overflowCount}",
-                style = fontTextStyle,
-                color = token.foregroundColor(avatarInfo),
+            BasicText("+${overflowCount}",
+                style = fontTextStyle.merge(TextStyle(color = token.foregroundColor(avatarInfo))),
                 modifier = Modifier.clearAndSetSemantics { })
         }
 

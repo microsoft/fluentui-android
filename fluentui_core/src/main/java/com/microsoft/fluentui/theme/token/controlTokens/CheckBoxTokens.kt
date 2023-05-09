@@ -15,7 +15,7 @@ data class CheckBoxInfo(
 ) : ControlInfo
 
 @Parcelize
-open class CheckBoxTokens : ControlToken, Parcelable {
+open class CheckBoxTokens : IControlToken, Parcelable {
 
     val fixedSize: Dp = 20.dp
     val fixedIconSize: Dp = 12.dp
@@ -24,10 +24,10 @@ open class CheckBoxTokens : ControlToken, Parcelable {
     @Composable
     open fun backgroundColor(checkBoxInfo: CheckBoxInfo): StateColor {
         return StateColor(
-            selected = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+            selected = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.brandBackgroundColor[AliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+            selectedDisabled = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
                 themeMode = themeMode
             )
         )
@@ -36,10 +36,10 @@ open class CheckBoxTokens : ControlToken, Parcelable {
     @Composable
     open fun iconColor(checkBoxInfo: CheckBoxInfo): StateColor {
         return StateColor(
-            selected = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+            selected = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                 themeMode = themeMode
             ),
-            selectedDisabled = aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+            selectedDisabled = aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
                 themeMode = themeMode
             )
         )
@@ -51,7 +51,7 @@ open class CheckBoxTokens : ControlToken, Parcelable {
             rest = listOf(
                 BorderStroke(
                     1.5.dp,
-                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                    aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                         themeMode = themeMode
                     )
                 )
@@ -59,7 +59,7 @@ open class CheckBoxTokens : ControlToken, Parcelable {
             pressed = listOf(
                 BorderStroke(
                     1.5.dp,
-                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                    aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                         themeMode = themeMode
                     )
                 )
@@ -67,7 +67,7 @@ open class CheckBoxTokens : ControlToken, Parcelable {
             focused = listOf(
                 BorderStroke(
                     1.5.dp,
-                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                    aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                         themeMode = themeMode
                     )
                 )
@@ -75,7 +75,7 @@ open class CheckBoxTokens : ControlToken, Parcelable {
             selectedFocused = listOf(
                 BorderStroke(
                     1.5.dp,
-                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
+                    aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(
                         themeMode = themeMode
                     )
                 )
@@ -83,7 +83,7 @@ open class CheckBoxTokens : ControlToken, Parcelable {
             disabled = listOf(
                 BorderStroke(
                     1.5.dp,
-                    aliasTokens.neutralStrokeColor[AliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
+                    aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeDisabled].value(
                         themeMode = themeMode
                     )
                 )
