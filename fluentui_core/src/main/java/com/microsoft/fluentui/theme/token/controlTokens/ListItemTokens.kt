@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -77,13 +78,17 @@ data class ListItemInfo(
 @Parcelize
 open class ListItemTokens : IControlToken, Parcelable {
     @Composable
-    open fun backgroundColor(listItemInfo: ListItemInfo): StateColor {
-        return StateColor(
-            rest = FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
-                themeMode = FluentTheme.themeMode
+    open fun backgroundColor(listItemInfo: ListItemInfo): StateBrush {
+        return StateBrush(
+            rest = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(
+                    themeMode = FluentTheme.themeMode
+                )
             ),
-            pressed = FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
-                themeMode = FluentTheme.themeMode
+            pressed = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[Background1Pressed].value(
+                    themeMode = FluentTheme.themeMode
+                )
             )
         )
     }

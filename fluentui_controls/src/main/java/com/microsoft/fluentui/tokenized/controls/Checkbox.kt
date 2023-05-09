@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.semantics.Role
@@ -68,8 +69,8 @@ fun CheckBox(
             )
         )
 
-    val backgroundColor: Color =
-        token.backgroundColor(checkBoxInfo = checkBoxInfo).getColorByState(
+    val backgroundColor: Brush =
+        token.backgroundColor(checkBoxInfo = checkBoxInfo).getBrushByState(
             enabled = enabled,
             selected = checked,
             interactionSource = interactionSource

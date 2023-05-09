@@ -2,7 +2,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.ControlInfo
@@ -19,37 +21,41 @@ data class PillTabsInfo(
 open class PillTabsTokens : PillBarTokens(), Parcelable {
 
     @Composable
-    open fun background(pillTabsInfo: PillTabsInfo): Color {
-        return when (pillTabsInfo.style) {
-            FluentStyle.Neutral -> FluentColor(
-                light = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                    ThemeMode.Light
-                ),
-                dark = Color.Unspecified
-            ).value(FluentTheme.themeMode)
-            FluentStyle.Brand -> FluentColor(
-                light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                    ThemeMode.Light
-                ),
-                dark = Color.Unspecified
-            ).value(FluentTheme.themeMode)
-        }
+    open fun background(pillTabsInfo: PillTabsInfo): Brush {
+        return SolidColor(
+            when (pillTabsInfo.style) {
+                FluentStyle.Neutral -> FluentColor(
+                    light = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                        ThemeMode.Light
+                    ),
+                    dark = Color.Unspecified
+                ).value(FluentTheme.themeMode)
+                FluentStyle.Brand -> FluentColor(
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                        ThemeMode.Light
+                    ),
+                    dark = Color.Unspecified
+                ).value(FluentTheme.themeMode)
+            }
+        )
     }
 
     @Composable
-    open fun trackBackground(pillTabsInfo: PillTabsInfo): Color {
-        return when (pillTabsInfo.style) {
-            FluentStyle.Neutral -> FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                FluentTheme.themeMode
-            )
-            FluentStyle.Brand -> FluentColor(
-                light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
-                    ThemeMode.Light
-                ),
-                dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                    ThemeMode.Dark
+    open fun trackBackground(pillTabsInfo: PillTabsInfo): Brush {
+        return SolidColor(
+            when (pillTabsInfo.style) {
+                FluentStyle.Neutral -> FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    FluentTheme.themeMode
                 )
-            ).value(FluentTheme.themeMode)
-        }
+                FluentStyle.Brand -> FluentColor(
+                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
+                        ThemeMode.Light
+                    ),
+                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                        ThemeMode.Dark
+                    )
+                ).value(FluentTheme.themeMode)
+            }
+        )
     }
 }

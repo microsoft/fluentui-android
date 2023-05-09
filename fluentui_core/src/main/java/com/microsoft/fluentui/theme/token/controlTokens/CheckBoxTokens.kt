@@ -3,11 +3,13 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
 data class CheckBoxInfo(
@@ -17,18 +19,27 @@ data class CheckBoxInfo(
 @Parcelize
 open class CheckBoxTokens : IControlToken, Parcelable {
 
+    @IgnoredOnParcel
     val fixedSize: Dp = 20.dp
+
+    @IgnoredOnParcel
     val fixedIconSize: Dp = 12.dp
+
+    @IgnoredOnParcel
     val fixedBorderRadius: Dp = 4.dp
 
     @Composable
-    open fun backgroundColor(checkBoxInfo: CheckBoxInfo): StateColor {
-        return StateColor(
-            selected = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                themeMode = themeMode
+    open fun backgroundColor(checkBoxInfo: CheckBoxInfo): StateBrush {
+        return StateBrush(
+            selected = SolidColor(
+                aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                    themeMode = themeMode
+                )
             ),
-            selectedDisabled = aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
-                themeMode = themeMode
+            selectedDisabled = SolidColor(
+                aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled].value(
+                    themeMode = themeMode
+                )
             )
         )
     }

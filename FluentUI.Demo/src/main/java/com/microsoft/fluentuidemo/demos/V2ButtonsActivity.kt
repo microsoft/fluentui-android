@@ -23,7 +23,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
+import com.example.theme.token.MyAppBarToken
 import com.example.theme.token.MyButtonTokens
+import com.example.theme.token.MyFABToken
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
@@ -86,7 +88,7 @@ class V2ButtonsActivity : DemoActivity() {
                                         )
                                     )
                                 },
-                                text = "Set Default Theme"
+                                text = "Theme 1"
                             )
 
                             Button(
@@ -101,7 +103,24 @@ class V2ButtonsActivity : DemoActivity() {
                                         )
                                     )
                                 },
-                                text = "Set New Theme"
+                                text = "Theme 2"
+                            )
+
+                            Button(
+                                style = ButtonStyle.OutlinedButton,
+                                size = ButtonSize.Medium,
+                                onClick = {
+                                    FluentTheme.updateControlTokens(
+                                        ControlTokens().updateToken(
+                                            ControlTokens.ControlType.AppBar,
+                                            MyAppBarToken()
+                                        ).updateToken(
+                                            ControlTokens.ControlType.FloatingActionButton,
+                                            MyFABToken()
+                                        )
+                                    )
+                                },
+                                text = "Theme 3"
                             )
                         }
                     }
@@ -157,7 +176,7 @@ class V2ButtonsActivity : DemoActivity() {
                             BasicText(
                                 "Button with selected theme, auto mode and overridden control token",
                                 style = TextStyle(
-                                    color = FluentTheme.aliasTokens.neutralForegroundColor[com.microsoft.fluentui.theme.token.FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                    color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                                         themeMode
                                     )
                                 )
@@ -174,12 +193,12 @@ class V2ButtonsActivity : DemoActivity() {
                         .fillMaxSize()
                         .focusable(false)
                 ) {
-                    val fabText: String? = "FAB Text"
+                    val fabText = "FAB Text"
                     FloatingActionButton(
                         size = FABSize.Small,
                         state = fabState,
                         onClick = {
-                            var toastText = "No Text"
+                            val toastText: String
                             if (fabState == FABState.Expanded) {
                                 toastText = "FAB Collapsed"
                                 fabState = FABState.Collapsed

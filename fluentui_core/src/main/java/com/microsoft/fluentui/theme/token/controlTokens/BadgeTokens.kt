@@ -4,7 +4,9 @@ import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -25,8 +27,8 @@ class BadgeInfo(val type: BadgeType) : ControlInfo
 open class BadgeTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(badgeInfo: BadgeInfo): Color {
-        return FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground2].value()
+    open fun backgroundColor(badgeInfo: BadgeInfo): Brush {
+        return SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground2].value())
     }
 
     @Composable

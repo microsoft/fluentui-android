@@ -2,7 +2,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -30,9 +32,11 @@ open class TabItemTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(tabItemInfo: TabItemInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-            FluentTheme.themeMode
+    open fun backgroundColor(tabItemInfo: TabItemInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                FluentTheme.themeMode
+            )
         )
     }
 

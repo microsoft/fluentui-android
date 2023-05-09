@@ -21,6 +21,7 @@ import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
@@ -133,7 +134,7 @@ object ListItem {
         actionTextColor: Color,
         descriptionTextTypography: TextStyle,
         actionTextTypography: TextStyle,
-        backgroundColor: Color
+        backgroundColor: Brush
     ) {
         PlaceholderForActionText(actionTextComposable = {
             BasicText(
@@ -168,7 +169,7 @@ object ListItem {
                     )
                 ) {
                     Surface(
-                        onClick = onClick, color = backgroundColor
+                        onClick = onClick, Modifier.background(backgroundColor)
                     ) {
                         BasicText(
                             text = actionText,
@@ -254,7 +255,7 @@ object ListItem {
             unreadDot = unreadDot
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getColorByState(
+            token.backgroundColor(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)
@@ -464,7 +465,7 @@ object ListItem {
             style = style
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getColorByState(
+            token.backgroundColor(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)
@@ -628,7 +629,7 @@ object ListItem {
             placement = descriptionPlacement
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getColorByState(
+            token.backgroundColor(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)
@@ -756,7 +757,7 @@ object ListItem {
             borderInset = borderInset
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getColorByState(
+            token.backgroundColor(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)

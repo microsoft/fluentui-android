@@ -67,7 +67,7 @@ fun RadioButton(
 
     val outerStrokeColor =
         token.backgroundColor(radioButtonInfo = radioButtonInfo)
-            .getColorByState(
+            .getBrushByState(
                 enabled = enabled,
                 selected = selected,
                 interactionSource = interactionSource

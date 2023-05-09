@@ -2,6 +2,7 @@ package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -28,16 +29,22 @@ open class AvatarCarouselTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(avatarCarouselInfo: AvatarCarouselInfo): StateColor {
-        return StateColor(
-            rest = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                themeMode = FluentTheme.themeMode
+    open fun backgroundColor(avatarCarouselInfo: AvatarCarouselInfo): StateBrush {
+        return StateBrush(
+            rest = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    themeMode = FluentTheme.themeMode
+                )
             ),
-            pressed = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed].value(
-                themeMode = FluentTheme.themeMode
+            pressed = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed].value(
+                    themeMode = FluentTheme.themeMode
+                )
             ),
-            disabled = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                themeMode = FluentTheme.themeMode
+            disabled = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    themeMode = FluentTheme.themeMode
+                )
             )
         )
     }

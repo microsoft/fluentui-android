@@ -222,7 +222,7 @@ fun ContextualCommandBar(
                                                 .buttonBackgroundColor(
                                                     contextualCommandBarInfo
                                                 )
-                                                .getColorByState(
+                                                .getBrushByState(
                                                     enabled = item.enabled,
                                                     selected = item.selected,
                                                     interactionSource = interactionSource
@@ -349,7 +349,7 @@ fun ContextualCommandBar(
                                             .buttonBackgroundColor(
                                                 contextualCommandBarInfo
                                             )
-                                            .getColorByState(
+                                            .getBrushByState(
                                                 enabled = item.enabled,
                                                 selected = item.selected,
                                                 interactionSource = interactionSource

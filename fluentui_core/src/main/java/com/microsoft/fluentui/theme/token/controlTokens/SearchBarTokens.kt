@@ -22,41 +22,45 @@ data class SearchBarInfo(
 open class SearchBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun inputBackgroundColor(searchBarInfo: SearchBarInfo): Color {
-        return when (searchBarInfo.style) {
-            FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            FluentStyle.Brand ->
-                FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
-                        ThemeMode.Light
-                    ),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        ThemeMode.Dark
+    open fun inputBackgroundColor(searchBarInfo: SearchBarInfo): Brush {
+        return SolidColor(
+            when (searchBarInfo.style) {
+                FluentStyle.Neutral ->
+                    FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                        themeMode = FluentTheme.themeMode
                     )
-                ).value(themeMode = FluentTheme.themeMode)
-        }
+                FluentStyle.Brand ->
+                    FluentColor(
+                        light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2].value(
+                            ThemeMode.Light
+                        ),
+                        dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                            ThemeMode.Dark
+                        )
+                    ).value(themeMode = FluentTheme.themeMode)
+            }
+        )
     }
 
     @Composable
-    open fun backgroundColor(searchBarInfo: SearchBarInfo): Color {
-        return when (searchBarInfo.style) {
-            FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            FluentStyle.Brand ->
-                FluentColor(
-                    light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        ThemeMode.Light
-                    ),
-                    dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
-                        ThemeMode.Dark
+    open fun backgroundColor(searchBarInfo: SearchBarInfo): Brush {
+        return SolidColor(
+            when (searchBarInfo.style) {
+                FluentStyle.Neutral ->
+                    FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                        themeMode = FluentTheme.themeMode
                     )
-                ).value(themeMode = FluentTheme.themeMode)
-        }
+                FluentStyle.Brand ->
+                    FluentColor(
+                        light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            ThemeMode.Light
+                        ),
+                        dark = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
+                            ThemeMode.Dark
+                        )
+                    ).value(themeMode = FluentTheme.themeMode)
+            }
+        )
     }
 
     @Composable

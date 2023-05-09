@@ -60,7 +60,7 @@ fun Badge(
                     radius = dpToPx(borderStroke.width + 4.dp)
                 )
                 drawCircle(
-                    color = background,
+                    brush = background,
                     style = Fill,
                     radius = dpToPx(4.dp)
                 )

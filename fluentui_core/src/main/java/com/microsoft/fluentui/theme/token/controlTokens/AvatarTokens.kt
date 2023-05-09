@@ -3,7 +3,9 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
@@ -324,44 +326,46 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     }
 
     @Composable
-    open fun backgroundColor(avatarInfo: AvatarInfo): Color {
-        return if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
-            FluentColor(
-                light = calculatedColor(
-                    avatarInfo.calculatedColorKey,
-                    FluentGlobalTokens.SharedColorsTokens.Tint40
-                ),
-                dark = calculatedColor(
-                    avatarInfo.calculatedColorKey,
-                    FluentGlobalTokens.SharedColorsTokens.Shade30
+    open fun backgroundColor(avatarInfo: AvatarInfo): Brush {
+        return SolidColor(
+            if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
+                FluentColor(
+                    light = calculatedColor(
+                        avatarInfo.calculatedColorKey,
+                        FluentGlobalTokens.SharedColorsTokens.Tint40
+                    ),
+                    dark = calculatedColor(
+                        avatarInfo.calculatedColorKey,
+                        FluentGlobalTokens.SharedColorsTokens.Shade30
+                    )
+                ).value(
+                    themeMode = themeMode
                 )
-            ).value(
-                themeMode = themeMode
-            )
-        } else if (avatarInfo.type == AvatarType.Overflow) {
-            aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                themeMode = themeMode
-            )
-        } else {
-            when (avatarStyle(avatarInfo)) {
-                AvatarStyle.Standard ->
-                    aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
-                        themeMode = themeMode
-                    )
-                AvatarStyle.StandardInverted ->
-                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-                        themeMode = themeMode
-                    )
-                AvatarStyle.Anonymous ->
-                    aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
-                        themeMode = themeMode
-                    )
-                AvatarStyle.AnonymousAccent ->
-                    aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
-                        themeMode = themeMode
-                    )
+            } else if (avatarInfo.type == AvatarType.Overflow) {
+                aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                    themeMode = themeMode
+                )
+            } else {
+                when (avatarStyle(avatarInfo)) {
+                    AvatarStyle.Standard ->
+                        aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
+                            themeMode = themeMode
+                        )
+                    AvatarStyle.StandardInverted ->
+                        aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                            themeMode = themeMode
+                        )
+                    AvatarStyle.Anonymous ->
+                        aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(
+                            themeMode = themeMode
+                        )
+                    AvatarStyle.AnonymousAccent ->
+                        aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value(
+                            themeMode = themeMode
+                        )
+                }
             }
-        }
+        )
     }
 
     @Composable
