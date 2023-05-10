@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Describes the primary and secondary Strings -->
-    <string name="fluentui_primary">Primary</string>
-    <string name="fluentui_secondary">Secondary</string>
+    <string name="fluentui_primary">Nagusia</string>
+    <string name="fluentui_secondary">Bigarren mailakoa</string>
     <!-- Describes dismiss behaviour -->
     <string name="fluentui_dismiss">Baztertu</string>
     <!-- Describes selected action-->
@@ -50,10 +50,10 @@
     <!-- Describes the type - Danger-->
     <string name="fluentui_danger">Arriskua</string>
     <!-- Describes the error string -->
-    <string name="fluentui_error_string">There has been an error</string>
-    <string name="fluentui_error">Error</string>
+    <string name="fluentui_error_string">Errore bat gertatu da</string>
+    <string name="fluentui_error">Errorea</string>
     <!-- Describes the hint Text -->
-    <string name="fluentui_hint">Hint</string>
+    <string name="fluentui_hint">Aholkua</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">Xebroia</string>
     <!-- Describes the outline design of control -->
@@ -61,17 +61,17 @@
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">Aukera-botoia</string>
-    <string name="fluentui_label">Label</string>
+    <string name="fluentui_label">Etiketa</string>
 
     <!--types of control -->
     <string name="fluentui_large">Handia</string>
     <string name="fluentui_medium">Ertaina</string>
     <string name="fluentui_small">Txikia</string>
-    <string name="fluentui_password_mode">Password Mode</string>
+    <string name="fluentui_password_mode">Pasahitz modua</string>
 
     <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">Azpititulua</string>
-    <string name="fluentui_assistive_text">Assistive Text</string>
+    <string name="fluentui_assistive_text">Testu lagungarria</string>
 
     <!-- Decribes the title component of list -->
     <string name="fluentui_title">Izenburua</string>
@@ -89,13 +89,13 @@
     <string name="fluentui_right_swiped">Eskuinera aldatuta</string>
 
     <!-- Describes the Keyboard Types -->
-    <string name="fluentui_keyboard_text">Text</string>
+    <string name="fluentui_keyboard_text">Testua</string>
     <string name="fluentui_keyboard_ascii">ASCII</string>
-    <string name="fluentui_keyboard_number">Number</string>
-    <string name="fluentui_keyboard_phone">Phone</string>
+    <string name="fluentui_keyboard_number">Zenbakia</string>
+    <string name="fluentui_keyboard_phone">Telefonoa</string>
     <string name="fluentui_keyboard_uri">URI</string>
-    <string name="fluentui_keyboard_email">Email</string>
-    <string name="fluentui_keyboard_password">Password</string>
-    <string name="fluentui_keyboard_number_password">NumberPassword</string>
-    <string name="fluentui_keyboard_decimal">Decimal</string>
+    <string name="fluentui_keyboard_email">Posta elektronikoa</string>
+    <string name="fluentui_keyboard_password">Pasahitza</string>
+    <string name="fluentui_keyboard_number_password">ZenbakiakPasahitza</string>
+    <string name="fluentui_keyboard_decimal">Hamartarra</string>
 </resources>
