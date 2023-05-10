@@ -17,7 +17,6 @@ import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
 data class AnnouncementCardInfo(
-    val buttonStyle: ButtonStyle = ButtonStyle.TextButton,
     val cardType: CardType = CardType.Elevated
 )
 
@@ -114,27 +113,22 @@ open class AnnouncementCardTokens : IControlToken, Parcelable {
 
     @Composable
     open fun buttonTextColor(announcementCardInfo: AnnouncementCardInfo): StateColor {
-        return when (announcementCardInfo.buttonStyle) {
-            ButtonStyle.Button -> StateColor()
-            ButtonStyle.OutlinedButton -> StateColor()
-            ButtonStyle.TextButton ->
-                StateColor(
-                    rest = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    pressed = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    selected = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    focused = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
-                        themeMode = FluentTheme.themeMode
-                    ),
-                    disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
-                        themeMode = FluentTheme.themeMode
-                    )
-                )
-        }
+        return StateColor(
+            rest = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            pressed = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            selected = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            focused = FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                themeMode = FluentTheme.themeMode
+            ),
+            disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
     }
 }

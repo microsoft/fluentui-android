@@ -41,7 +41,6 @@ fun AnnouncementCard(
     title: String,
     description: String,
     buttonText: String,
-    buttonStyle: ButtonStyle = ButtonStyle.TextButton,
     buttonOnClick: () -> Unit,
     modifier: Modifier = Modifier,
     previewImageVector: ImageVector? = null,
@@ -50,7 +49,7 @@ fun AnnouncementCard(
 ) {
     val token = announcementCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AnnouncementCard] as AnnouncementCardTokens
-    val announcementCardInfo = AnnouncementCardInfo(buttonStyle = buttonStyle)
+    val announcementCardInfo = AnnouncementCardInfo()
     val textColor = token.textColor(announcementCardInfo = announcementCardInfo)
     val titleColor = token.titleColor(announcementCardInfo = announcementCardInfo)
     val descriptionTypography =
