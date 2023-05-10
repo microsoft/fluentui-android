@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Describes the primary and secondary Strings -->
-    <string name="fluentui_primary">Primary</string>
-    <string name="fluentui_secondary">Secondary</string>
+    <string name="fluentui_primary">Primær</string>
+    <string name="fluentui_secondary">Sekundær</string>
     <!-- Describes dismiss behaviour -->
     <string name="fluentui_dismiss">Lukk</string>
     <!-- Describes selected action-->
@@ -50,8 +50,8 @@
     <!-- Describes the type - Danger-->
     <string name="fluentui_danger">Fare</string>
     <!-- Describes the error string -->
-    <string name="fluentui_error_string">There has been an error</string>
-    <string name="fluentui_error">Error</string>
+    <string name="fluentui_error_string">Det har oppstått ein feil</string>
+    <string name="fluentui_error">Feil</string>
     <!-- Describes the hint Text -->
     <string name="fluentui_hint">Hint</string>
     <!--name of the icon -->
@@ -61,17 +61,17 @@
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">Alternativknapp</string>
-    <string name="fluentui_label">Label</string>
+    <string name="fluentui_label">Etikett</string>
 
     <!--types of control -->
     <string name="fluentui_large">Stor</string>
     <string name="fluentui_medium">Medium</string>
     <string name="fluentui_small">Liten</string>
-    <string name="fluentui_password_mode">Password Mode</string>
+    <string name="fluentui_password_mode">Passordmodus</string>
 
     <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">Undertittel</string>
-    <string name="fluentui_assistive_text">Assistive Text</string>
+    <string name="fluentui_assistive_text">Hjelpetekst</string>
 
     <!-- Decribes the title component of list -->
     <string name="fluentui_title">Tittel</string>
@@ -89,13 +89,13 @@
     <string name="fluentui_right_swiped">Sveipt til høgre</string>
 
     <!-- Describes the Keyboard Types -->
-    <string name="fluentui_keyboard_text">Text</string>
+    <string name="fluentui_keyboard_text">Tekst</string>
     <string name="fluentui_keyboard_ascii">ASCII</string>
-    <string name="fluentui_keyboard_number">Number</string>
-    <string name="fluentui_keyboard_phone">Phone</string>
+    <string name="fluentui_keyboard_number">Nummer</string>
+    <string name="fluentui_keyboard_phone">Telefon</string>
     <string name="fluentui_keyboard_uri">URI</string>
-    <string name="fluentui_keyboard_email">Email</string>
-    <string name="fluentui_keyboard_password">Password</string>
+    <string name="fluentui_keyboard_email">E-postadresse</string>
+    <string name="fluentui_keyboard_password">Passord</string>
     <string name="fluentui_keyboard_number_password">NumberPassword</string>
-    <string name="fluentui_keyboard_decimal">Decimal</string>
+    <string name="fluentui_keyboard_decimal">Desimal</string>
 </resources>

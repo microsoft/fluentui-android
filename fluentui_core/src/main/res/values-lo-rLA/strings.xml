@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Describes the primary and secondary Strings -->
-    <string name="fluentui_primary">Primary</string>
-    <string name="fluentui_secondary">Secondary</string>
+    <string name="fluentui_primary">ຫຼັກ</string>
+    <string name="fluentui_secondary">ສຳຮອງ</string>
     <!-- Describes dismiss behaviour -->
     <string name="fluentui_dismiss">ປ່ອຍໄປ</string>
     <!-- Describes selected action-->
@@ -50,10 +50,10 @@
     <!-- Describes the type - Danger-->
     <string name="fluentui_danger">ອັນຕະລາຍ</string>
     <!-- Describes the error string -->
-    <string name="fluentui_error_string">There has been an error</string>
-    <string name="fluentui_error">Error</string>
+    <string name="fluentui_error_string">ມີຂໍ້ຜິດພາດເກີດຂຶ້ນ</string>
+    <string name="fluentui_error">ຂໍ້ຜິດພາດ</string>
     <!-- Describes the hint Text -->
-    <string name="fluentui_hint">Hint</string>
+    <string name="fluentui_hint">ຄຳໃບ້</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">ເຄື່ອງ​ໝາຍ​ຮູບ​ຕົວ​ວີ</string>
     <!-- Describes the outline design of control -->
@@ -61,17 +61,17 @@
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">ປຸ່ມ​ວິ​ທະ​ຍຸ</string>
-    <string name="fluentui_label">Label</string>
+    <string name="fluentui_label">ປ້າຍ</string>
 
     <!--types of control -->
     <string name="fluentui_large">ໃຫຍ່</string>
     <string name="fluentui_medium">ປານກາງ</string>
     <string name="fluentui_small">ນ້ອຍ</string>
-    <string name="fluentui_password_mode">Password Mode</string>
+    <string name="fluentui_password_mode">ໂໝດລະຫັດຜ່ານ</string>
 
     <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">ຄຳແປ</string>
-    <string name="fluentui_assistive_text">Assistive Text</string>
+    <string name="fluentui_assistive_text">ຂໍ້ຄວາມຊ່ວຍເຫຼືອ</string>
 
     <!-- Decribes the title component of list -->
     <string name="fluentui_title">ຊື່</string>
@@ -89,13 +89,13 @@
     <string name="fluentui_right_swiped">ປັດຂວາ</string>
 
     <!-- Describes the Keyboard Types -->
-    <string name="fluentui_keyboard_text">Text</string>
+    <string name="fluentui_keyboard_text">ຂໍ້ຄວາມ</string>
     <string name="fluentui_keyboard_ascii">ASCII</string>
-    <string name="fluentui_keyboard_number">Number</string>
-    <string name="fluentui_keyboard_phone">Phone</string>
+    <string name="fluentui_keyboard_number">ຕົວເລກ</string>
+    <string name="fluentui_keyboard_phone">ໂທລະສັບ</string>
     <string name="fluentui_keyboard_uri">URI</string>
-    <string name="fluentui_keyboard_email">Email</string>
-    <string name="fluentui_keyboard_password">Password</string>
+    <string name="fluentui_keyboard_email">ອີເມວ</string>
+    <string name="fluentui_keyboard_password">ລະຫັດຜ່ານ</string>
     <string name="fluentui_keyboard_number_password">NumberPassword</string>
-    <string name="fluentui_keyboard_decimal">Decimal</string>
+    <string name="fluentui_keyboard_decimal">ເລກທົດສະນິຍົມ</string>
 </resources>
