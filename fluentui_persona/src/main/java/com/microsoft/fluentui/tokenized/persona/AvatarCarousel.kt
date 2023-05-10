@@ -92,7 +92,7 @@ fun AvatarCarousel(
     ) {
         itemsIndexed(avatarList) { index, item ->
             val backgroundColor =
-                token.backgroundColor(avatarCarouselInfo)
+                token.backgroundBrush(avatarCarouselInfo)
                     .getBrushByState(
                         enabled = item.enabled,
                         selected = false,

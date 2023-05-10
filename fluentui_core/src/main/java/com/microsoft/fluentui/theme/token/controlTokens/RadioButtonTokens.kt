@@ -27,7 +27,7 @@ open class RadioButtonTokens : IControlToken, Parcelable {
     open var strokeWidthInwards = 1.5.dp
 
     @Composable
-    open fun backgroundColor(radioButtonInfo: RadioButtonInfo): StateBrush {
+    open fun backgroundBrush(radioButtonInfo: RadioButtonInfo): StateBrush {
         return StateBrush(
             rest = SolidColor(
                 aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeAccessible].value(

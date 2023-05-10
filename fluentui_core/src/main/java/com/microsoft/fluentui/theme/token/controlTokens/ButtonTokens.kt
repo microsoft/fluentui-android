@@ -123,7 +123,7 @@ open class ButtonTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(buttonInfo: ButtonInfo): StateBrush {
+    open fun backgroundBrush(buttonInfo: ButtonInfo): StateBrush {
         return when (buttonInfo.style) {
             ButtonStyle.Button ->
                 StateBrush(

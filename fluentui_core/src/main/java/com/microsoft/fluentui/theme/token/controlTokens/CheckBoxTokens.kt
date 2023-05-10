@@ -29,7 +29,7 @@ open class CheckBoxTokens : IControlToken, Parcelable {
     val fixedBorderRadius: Dp = 4.dp
 
     @Composable
-    open fun backgroundColor(checkBoxInfo: CheckBoxInfo): StateBrush {
+    open fun backgroundBrush(checkBoxInfo: CheckBoxInfo): StateBrush {
         return StateBrush(
             selected = SolidColor(
                 aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(

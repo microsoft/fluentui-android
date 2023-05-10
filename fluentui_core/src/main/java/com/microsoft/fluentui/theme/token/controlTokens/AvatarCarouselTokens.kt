@@ -29,7 +29,7 @@ open class AvatarCarouselTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(avatarCarouselInfo: AvatarCarouselInfo): StateBrush {
+    open fun backgroundBrush(avatarCarouselInfo: AvatarCarouselInfo): StateBrush {
         return StateBrush(
             rest = SolidColor(
                 FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(

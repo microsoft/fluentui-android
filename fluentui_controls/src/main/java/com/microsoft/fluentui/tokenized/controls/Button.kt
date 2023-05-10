@@ -69,7 +69,7 @@ fun Button(
         onClick = onClick
     )
     val backgroundColor =
-        token.backgroundColor(buttonInfo = buttonInfo).getBrushByState(
+        token.backgroundBrush(buttonInfo = buttonInfo).getBrushByState(
             enabled = enabled,
             selected = false,
             interactionSource = interactionSource

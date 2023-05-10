@@ -255,7 +255,7 @@ object ListItem {
             unreadDot = unreadDot
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getBrushByState(
+            token.backgroundBrush(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)
@@ -465,7 +465,7 @@ object ListItem {
             style = style
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getBrushByState(
+            token.backgroundBrush(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)
@@ -629,7 +629,7 @@ object ListItem {
             placement = descriptionPlacement
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getBrushByState(
+            token.backgroundBrush(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)
@@ -757,7 +757,7 @@ object ListItem {
             borderInset = borderInset
         )
         val backgroundColor =
-            token.backgroundColor(listItemInfo).getBrushByState(
+            token.backgroundBrush(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
         val cellHeight = token.cellHeight(listItemInfo)

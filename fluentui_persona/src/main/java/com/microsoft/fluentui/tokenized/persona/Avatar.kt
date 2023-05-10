@@ -73,7 +73,7 @@ fun Avatar(
         personInitials.isNotEmpty(), person.getName(), cutoutStyle
     )
     val avatarSize = token.avatarSize(avatarInfo)
-    val backgroundColor = token.backgroundColor(avatarInfo)
+    val backgroundColor = token.backgroundBrush(avatarInfo)
     val foregroundColor = token.foregroundColor(avatarInfo)
     val borders = token.borderStroke(avatarInfo)
     val fontTextStyle = token.fontTypography(avatarInfo)
@@ -235,7 +235,7 @@ fun Avatar(
     val avatarSize = token.avatarSize(avatarInfo)
     val cornerRadius = token.cornerRadius(avatarInfo)
     val fontTextStyle = token.fontTypography(avatarInfo)
-    val backgroundColor = token.backgroundColor(avatarInfo)
+    val backgroundColor = token.backgroundBrush(avatarInfo)
     val foregroundColor = token.foregroundColor(avatarInfo)
 
     var membersList = ""
@@ -332,7 +332,7 @@ fun Avatar(
         Box(
             Modifier
                 .clip(CircleShape)
-                .background(token.backgroundColor(avatarInfo))
+                .background(token.backgroundBrush(avatarInfo))
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {

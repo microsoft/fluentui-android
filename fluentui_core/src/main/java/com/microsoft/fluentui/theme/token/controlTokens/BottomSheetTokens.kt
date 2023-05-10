@@ -19,7 +19,7 @@ class BottomSheetInfo : ControlInfo
 open class BottomSheetTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(bottomSheetInfo: BottomSheetInfo): Brush =
+    open fun backgroundBrush(bottomSheetInfo: BottomSheetInfo): Brush =
         SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode

@@ -43,7 +43,7 @@ fun Badge(
     val token = badgeTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Badge] as BadgeTokens
     val badgeInfo = BadgeInfo(badgeType)
-    val background = token.backgroundColor(badgeInfo = badgeInfo)
+    val background = token.backgroundBrush(badgeInfo = badgeInfo)
     val borderStroke = token.borderStroke(badgeInfo = badgeInfo)
     if (text.isNullOrEmpty()) {
         Box(

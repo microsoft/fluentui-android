@@ -105,7 +105,7 @@ fun PillButton(
         }
     }
 
-    val backgroundColor = token.backgroundColor(pillButtonInfo = pillButtonInfo)
+    val backgroundColor = token.backgroundBrush(pillButtonInfo = pillButtonInfo)
         .getBrushByState(
             enabled = pillMetaData.enabled,
             selected = pillMetaData.selected,
@@ -255,7 +255,7 @@ fun PillBar(
     LazyRow(
         modifier = modifier
             .fillMaxWidth()
-            .background(if (showBackground) token.background(pillBarInfo) else SolidColor(Color.Unspecified))
+            .background(if (showBackground) token.backgroundBrush(pillBarInfo) else SolidColor(Color.Unspecified))
             .focusable(enabled = false),
         contentPadding = PaddingValues(horizontal = 16.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterHorizontally),
