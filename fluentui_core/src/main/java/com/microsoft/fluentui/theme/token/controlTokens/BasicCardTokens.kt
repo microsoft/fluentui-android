@@ -26,7 +26,7 @@ data class BasicCardInfo(val cardType: CardType = CardType.Elevated) :
 open class BasicCardTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(basicCardInfo: BasicCardInfo): Brush {
+    open fun backgroundBrush(basicCardInfo: BasicCardInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode

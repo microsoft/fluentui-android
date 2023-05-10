@@ -67,8 +67,8 @@ fun AnnouncementCard(
     class CustomBasicCardTokens : BasicCardTokens() {
 
         @Composable
-        override fun backgroundColor(basicCardInfo: BasicCardInfo): Brush {
-            return token.backgroundColor(announcementCardInfo = announcementCardInfo)
+        override fun backgroundBrush(basicCardInfo: BasicCardInfo): Brush {
+            return token.backgroundBrush(announcementCardInfo = announcementCardInfo)
         }
 
         @Composable

@@ -20,8 +20,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.semantics.role
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -84,8 +82,8 @@ fun FileCard(
     class CustomBasicCardTokens : BasicCardTokens() {
 
         @Composable
-        override fun backgroundColor(basicCardInfo: BasicCardInfo): Brush {
-            return token.backgroundColor(fileCardInfo = fileCardInfo)
+        override fun backgroundBrush(basicCardInfo: BasicCardInfo): Brush {
+            return token.backgroundBrush(fileCardInfo = fileCardInfo)
         }
 
         @Composable
@@ -181,9 +179,6 @@ fun FileCard(
                             onClick = actionOverflowIcon.onClick ?: {},
                             role = Role.Button
                         )
-                        .semantics(true, properties = {
-                            role = Role.Button
-                        })
                 ) {
                     Icon(
                         modifier = Modifier.size(actionOverflowIconSize),

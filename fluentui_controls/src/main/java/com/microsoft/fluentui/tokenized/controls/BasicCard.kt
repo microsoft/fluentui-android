@@ -32,7 +32,7 @@ fun BasicCard(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCard] as BasicCardTokens
     val basicCardInfo = BasicCardInfo(CardType.Elevated)
     val cornerRadius = token.cornerRadius(basicCardInfo = basicCardInfo)
-    val backgroundColor = token.backgroundColor(basicCardInfo = basicCardInfo)
+    val backgroundBrush = token.backgroundBrush(basicCardInfo = basicCardInfo)
     val elevation = token.elevation(basicCardInfo = basicCardInfo)
     val borderColor = token.borderColor(basicCardInfo = basicCardInfo)
     val borderStrokeWidth = token.borderStrokeWidth(basicCardInfo = basicCardInfo)
@@ -41,7 +41,7 @@ fun BasicCard(
         modifier = modifier
             .shadow(elevation, shape, false)
             .background(
-                backgroundColor, shape
+                backgroundBrush, shape
             )
             .border(
                 borderStrokeWidth, borderColor, shape

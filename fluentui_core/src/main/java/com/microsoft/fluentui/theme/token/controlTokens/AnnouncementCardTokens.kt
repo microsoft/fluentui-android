@@ -25,7 +25,7 @@ data class AnnouncementCardInfo(
 open class AnnouncementCardTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(announcementCardInfo: AnnouncementCardInfo): Brush {
+    open fun backgroundBrush(announcementCardInfo: AnnouncementCardInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode

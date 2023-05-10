@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 data class FileCardInfo(
@@ -20,10 +21,10 @@ data class FileCardInfo(
 )
 
 @Parcelize
-open class FileCardTokens : BasicCardTokens(), Parcelable {
+open class FileCardTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(fileCardInfo: FileCardInfo): Brush {
+    open fun backgroundBrush(fileCardInfo: FileCardInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode
