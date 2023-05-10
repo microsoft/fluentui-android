@@ -12,6 +12,9 @@ import com.microsoft.fluentui.theme.token.controlTokens.TypographyTokens
 
 object Label {
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Display]
+     */
     @Composable
     fun Display(
         text: String,
@@ -30,6 +33,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.LargeTitle]
+     */
     @Composable
     fun LargeTitle(
         text: String,
@@ -48,6 +54,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Title1]
+     */
     @Composable
     fun Title1(
         text: String,
@@ -66,6 +75,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Title2]
+     */
     @Composable
     fun Title2(
         text: String,
@@ -84,6 +96,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Title3]
+     */
     @Composable
     fun Title3(
         text: String,
@@ -102,6 +117,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Body1Strong]
+     */
     @Composable
     fun Body1Strong(
         text: String,
@@ -120,6 +138,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Body1]
+     */
     @Composable
     fun Body1(
         text: String,
@@ -138,6 +159,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Body2Strong]
+     */
     @Composable
     fun Body2Strong(
         text: String,
@@ -156,6 +180,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Body2]
+     */
     @Composable
     fun Body2(
         text: String,
@@ -174,6 +201,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Caption1Strong]
+     */
     @Composable
     fun Caption1Strong(
         text: String,
@@ -192,6 +222,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Caption1]
+     */
     @Composable
     fun Caption1(
         text: String,
@@ -210,6 +243,9 @@ object Label {
         )
     }
 
+    /**
+     * A standard UI label consisting of a simple text. Design format [TypographyTokens.Caption2]
+     */
     @Composable
     fun Caption2(
         text: String,

@@ -3,7 +3,9 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.horizontalScroll
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -30,14 +32,17 @@ class V2LabelActivity : DemoActivity() {
             }
         }
     }
+
     @Composable
-    private fun CreateLabelUI(){
-        Column(modifier = Modifier
-            .padding(start = 16.dp, top = 16.dp)
-            .horizontalScroll(
-                rememberScrollState()
-            ),
-        verticalArrangement = Arrangement.spacedBy(16.dp)) {
+    private fun CreateLabelUI() {
+        Column(
+            modifier = Modifier
+                .padding(all = 16.dp)
+                .horizontalScroll(
+                    rememberScrollState()
+                ),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
             Label.Display(text = "Display is Regular 60sp")
             Label.LargeTitle(text = "LargeTitle is Regular 34sp")
             Label.Title1(text = "Title1 is Bold 24sp")
