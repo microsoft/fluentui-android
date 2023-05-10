@@ -1,22 +1,18 @@
-Release Version 0.1.24:
+Release Version 0.1.25:
 
 What's New:
 
 Fluent V2:
-    New Component: TextField, Menu
+    New Component: FileCard, Announcement Card, Basic Card.
 	
     Fix/Enhancement:
-		1) Fixed Toggle Switch ripple indication to clip to its boundary.
-		2) Fixed Toggle Switch to on/off with Keyboard Enter/Space press.
-		3) Fixed Pill Button to have a complete clickable area.		
-		4) Added padding & start indent token for divider.
-		5) Removed tail gradient on Circular progress indicators as per Fluent design.
-		6) Optimise recomposition in Cirular progress indicators.
+		1) Added support of custom Control token to leverage FluentTheme API.
+		2) Updated background controlToken to use Brush instead of Color to support gradient color.
+		3) Enhanced Fluent Icon & text to remove material dependency for these.
 
-Fluent v-current:
-	Fix/Enhancement: 
-		1) Role Announce for CCB Items
-    
-	DemoApp:
-		1) Fixed accessibility bug.
-		2) DemoApp updated to use view binding instead of kotlin synthetic plugins.
+Note: This release has breaking changes.
+    1) AliasTokens renamed to FluentAliasTokens.
+    2) GlobalTokens renamed to FluentGlobalTokens.
+    3) Removed AppThemeController & merge its functionality to FluentTheme singleton class.
+    4) FluentTheme function parameter changed from taking AliasTokens, ControlTokens objects to implementation of IAliasTokens, IControlTokens.
+    5) In control tokens, backgroundColor function renamed to backgroundBrush to support gradient.
