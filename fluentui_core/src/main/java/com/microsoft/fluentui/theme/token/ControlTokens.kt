@@ -47,6 +47,7 @@ open class ControlTokens : IControlTokens {
         Divider,
         FileCard,
         FloatingActionButton,
+        Label,
         LinearProgressIndicator,
         ListItem,
         Menu,
@@ -87,6 +88,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.FileCard -> FileCardTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
+                ControlType.Label -> LabelTokens()
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.Menu -> MenuTokens()
                 ControlType.PersonaChip -> PersonaChipTokens()
