@@ -12,19 +12,20 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
 data class AnnouncementCardInfo(
-    override val cardType: CardType = CardType.Elevated,
-    val buttonStyle: ButtonStyle = ButtonStyle.TextButton
-) : BasicCardControlInfo()
+    val buttonStyle: ButtonStyle = ButtonStyle.TextButton,
+    val cardType: CardType = CardType.Elevated
+)
 
 @Parcelize
-open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
+open class AnnouncementCardTokens : IControlToken, Parcelable {
 
     @Composable
-    override fun backgroundColor(announcementCardInfo: BasicCardControlInfo): Brush {
+    open fun backgroundColor(announcementCardInfo: AnnouncementCardInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode
@@ -33,66 +34,66 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    open fun textColor(announcementCardInfo: BasicCardControlInfo): Color {
+    open fun textColor(announcementCardInfo: AnnouncementCardInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
-    open fun titleColor(announcementCardInfo: BasicCardControlInfo): Color {
+    open fun titleColor(announcementCardInfo: AnnouncementCardInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
-    open fun titleTypography(announcementCardInfo: BasicCardControlInfo): TextStyle {
+    open fun titleTypography(announcementCardInfo: AnnouncementCardInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
     }
 
     @Composable
-    open fun descriptionTypography(announcementCardInfo: BasicCardControlInfo): TextStyle {
+    open fun descriptionTypography(announcementCardInfo: AnnouncementCardInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
     }
 
     @Composable
-    open fun previewTextSPacing(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun previewTextSPacing(announcementCardInfo: AnnouncementCardInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
     }
 
     @Composable
-    open fun titleTextSpacing(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun titleTextSpacing(announcementCardInfo: AnnouncementCardInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
     }
 
     @Composable
-    open fun textButtonSpacing(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun textButtonSpacing(announcementCardInfo: AnnouncementCardInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
     }
 
     @Composable
-    open fun textHorizontalPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+    open fun textHorizontalPadding(announcementCardInfo: AnnouncementCardInfo): PaddingValues {
         return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
-    open fun cardPadding(announcementCardInfo: BasicCardControlInfo): PaddingValues {
+    open fun cardPadding(announcementCardInfo: AnnouncementCardInfo): PaddingValues {
         return PaddingValues(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80))
     }
 
     @Composable
-    open fun previewCornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun previewCornerRadius(announcementCardInfo: AnnouncementCardInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
     }
 
     @Composable
-    override fun cornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun cornerRadius(announcementCardInfo: AnnouncementCardInfo): Dp {
         return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius80)
     }
 
     @Composable
-    override fun elevation(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun elevation(announcementCardInfo: AnnouncementCardInfo): Dp {
         return when (announcementCardInfo.cardType) {
             CardType.Elevated -> FluentGlobalTokens.elevation(FluentGlobalTokens.ShadowTokens.Shadow64)
             CardType.Outlined -> 0.dp
@@ -100,20 +101,19 @@ open class AnnouncementCardTokens : BasicCardTokens(), Parcelable {
     }
 
     @Composable
-    override fun borderColor(announcementCardInfo: BasicCardControlInfo): Color {
+    open fun borderColor(announcementCardInfo: AnnouncementCardInfo): Color {
         return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
-    override fun borderStrokeWidth(announcementCardInfo: BasicCardControlInfo): Dp {
+    open fun borderStrokeWidth(announcementCardInfo: AnnouncementCardInfo): Dp {
         return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
     }
 
     @Composable
-    open fun buttonTextColor(announcementCardInfo: BasicCardControlInfo): StateColor {
-        announcementCardInfo as AnnouncementCardInfo
+    open fun buttonTextColor(announcementCardInfo: AnnouncementCardInfo): StateColor {
         return when (announcementCardInfo.buttonStyle) {
             ButtonStyle.Button -> StateColor()
             ButtonStyle.OutlinedButton -> StateColor()

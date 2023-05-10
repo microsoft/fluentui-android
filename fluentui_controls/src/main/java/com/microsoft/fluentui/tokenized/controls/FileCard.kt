@@ -28,7 +28,7 @@ import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.theme.token.controlTokens.BasicCardControlInfo
+import com.microsoft.fluentui.theme.token.controlTokens.BasicCardInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BasicCardTokens
 import com.microsoft.fluentui.theme.token.controlTokens.FileCardInfo
 import com.microsoft.fluentui.theme.token.controlTokens.FileCardTokens
@@ -84,27 +84,27 @@ fun FileCard(
     class CustomBasicCardTokens : BasicCardTokens() {
 
         @Composable
-        override fun backgroundColor(fileCardInfo: BasicCardControlInfo): Brush {
+        override fun backgroundColor(basicCardInfo: BasicCardInfo): Brush {
             return token.backgroundColor(fileCardInfo = fileCardInfo)
         }
 
         @Composable
-        override fun cornerRadius(fileCardInfo: BasicCardControlInfo): Dp {
+        override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
             return token.cornerRadius(fileCardInfo = fileCardInfo)
         }
 
         @Composable
-        override fun elevation(fileCardInfo: BasicCardControlInfo): Dp {
+        override fun elevation(basicCardInfo: BasicCardInfo): Dp {
             return token.elevation(fileCardInfo = fileCardInfo)
         }
 
         @Composable
-        override fun borderColor(fileCardInfo: BasicCardControlInfo): Color {
+        override fun borderColor(basicCardInfo: BasicCardInfo): Color {
             return token.borderColor(fileCardInfo = fileCardInfo)
         }
 
         @Composable
-        override fun borderStrokeWidth(fileCardInfo: BasicCardControlInfo): Dp {
+        override fun borderStrokeWidth(basicCardInfo: BasicCardInfo): Dp {
             return token.borderStrokeWidth(fileCardInfo = fileCardInfo)
         }
     }

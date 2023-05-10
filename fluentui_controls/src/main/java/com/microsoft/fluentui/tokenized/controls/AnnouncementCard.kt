@@ -67,27 +67,27 @@ fun AnnouncementCard(
     class CustomBasicCardTokens : BasicCardTokens() {
 
         @Composable
-        override fun backgroundColor(basicCardInfo: BasicCardControlInfo): Brush {
+        override fun backgroundColor(basicCardInfo: BasicCardInfo): Brush {
             return token.backgroundColor(announcementCardInfo = announcementCardInfo)
         }
 
         @Composable
-        override fun cornerRadius(announcementCardInfo: BasicCardControlInfo): Dp {
+        override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
             return token.cornerRadius(announcementCardInfo = announcementCardInfo)
         }
 
         @Composable
-        override fun elevation(announcementCardInfo: BasicCardControlInfo): Dp {
+        override fun elevation(basicCardInfo: BasicCardInfo): Dp {
             return token.elevation(announcementCardInfo = announcementCardInfo)
         }
 
         @Composable
-        override fun borderColor(basicCardInfo: BasicCardControlInfo): Color {
+        override fun borderColor(basicCardInfo: BasicCardInfo): Color {
             return token.borderColor(announcementCardInfo = announcementCardInfo)
         }
 
         @Composable
-        override fun borderStrokeWidth(basicCardInfo: BasicCardControlInfo): Dp {
+        override fun borderStrokeWidth(basicCardInfo: BasicCardInfo): Dp {
             return token.borderStrokeWidth(announcementCardInfo = announcementCardInfo)
         }
     }
