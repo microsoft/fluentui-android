@@ -27,7 +27,7 @@ open class DividerTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun dividerColor(dividerInfo: DividerInfo): Brush {
+    open fun dividerBrush(dividerInfo: DividerInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value(
                 themeMode = FluentTheme.themeMode

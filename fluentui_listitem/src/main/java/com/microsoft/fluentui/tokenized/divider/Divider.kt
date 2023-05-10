@@ -33,7 +33,7 @@ fun Divider(
             Modifier
                 .fillMaxWidth()
                 .requiredHeight(height)
-                .background(token.dividerColor(dividerInfo))
+                .background(token.dividerBrush(dividerInfo))
                 .padding(start = token.startIndent(dividerInfo))
         )
     }

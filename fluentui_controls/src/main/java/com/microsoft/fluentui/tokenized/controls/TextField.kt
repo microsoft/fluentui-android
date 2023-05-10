@@ -239,7 +239,7 @@ fun TextField(
                         }
 
                         @Composable
-                        override fun dividerColor(dividerInfo: DividerInfo): Brush =
+                        override fun dividerBrush(dividerInfo: DividerInfo): Brush =
                             token.dividerColor(textFieldInfo)
                     }
                 )
