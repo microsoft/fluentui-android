@@ -10,6 +10,7 @@ import org.junit.runners.Suite
     AppBarLayoutActivityUITest::class,
     V2AvatarActivityUITest::class,
     V2AvatarGroupActivityUITest::class,
+    V2CardUITest::class,
     V2CardNudgeActivityUITest::class,
     V2DrawerActivityUITest::class,
     V2ListItemActivityUITest::class,
