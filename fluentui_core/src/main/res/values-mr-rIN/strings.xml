@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Describes the primary and secondary Strings -->
-    <string name="fluentui_primary">Primary</string>
-    <string name="fluentui_secondary">Secondary</string>
+    <string name="fluentui_primary">प्राथमिक</string>
+    <string name="fluentui_secondary">द्वितीय</string>
     <!-- Describes dismiss behaviour -->
     <string name="fluentui_dismiss">डिसमिस करा</string>
     <!-- Describes selected action-->
@@ -50,10 +50,10 @@
     <!-- Describes the type - Danger-->
     <string name="fluentui_danger">धोका</string>
     <!-- Describes the error string -->
-    <string name="fluentui_error_string">There has been an error</string>
-    <string name="fluentui_error">Error</string>
+    <string name="fluentui_error_string">एक त्रुटी आली आहे</string>
+    <string name="fluentui_error">त्रुटी</string>
     <!-- Describes the hint Text -->
-    <string name="fluentui_hint">Hint</string>
+    <string name="fluentui_hint">संकेत</string>
     <!--name of the icon -->
     <string name="fluentui_chevron">शेव्हरॉन</string>
     <!-- Describes the outline design of control -->
@@ -61,17 +61,17 @@
 
     <!--Describes the control -->
     <string name="fluentui_radio_button">रेडिओ बटण</string>
-    <string name="fluentui_label">Label</string>
+    <string name="fluentui_label">लेबल</string>
 
     <!--types of control -->
     <string name="fluentui_large">मोठा</string>
     <string name="fluentui_medium">मध्यम</string>
     <string name="fluentui_small">लहान</string>
-    <string name="fluentui_password_mode">Password Mode</string>
+    <string name="fluentui_password_mode">पासवर्ड मोड</string>
 
     <!-- Decribes the subtitle component of list -->
     <string name="fluentui_subtitle">उपशीर्षक</string>
-    <string name="fluentui_assistive_text">Assistive Text</string>
+    <string name="fluentui_assistive_text">सहाय्यक मजकूर</string>
 
     <!-- Decribes the title component of list -->
     <string name="fluentui_title">शीर्षक</string>
@@ -89,13 +89,13 @@
     <string name="fluentui_right_swiped">उजवीकडे स्वाइप केले</string>
 
     <!-- Describes the Keyboard Types -->
-    <string name="fluentui_keyboard_text">Text</string>
+    <string name="fluentui_keyboard_text">मजकूर</string>
     <string name="fluentui_keyboard_ascii">ASCII</string>
-    <string name="fluentui_keyboard_number">Number</string>
-    <string name="fluentui_keyboard_phone">Phone</string>
+    <string name="fluentui_keyboard_number">संख्या</string>
+    <string name="fluentui_keyboard_phone">फोन</string>
     <string name="fluentui_keyboard_uri">URI</string>
-    <string name="fluentui_keyboard_email">Email</string>
-    <string name="fluentui_keyboard_password">Password</string>
+    <string name="fluentui_keyboard_email">ईमेल</string>
+    <string name="fluentui_keyboard_password">पासवर्ड</string>
     <string name="fluentui_keyboard_number_password">NumberPassword</string>
-    <string name="fluentui_keyboard_decimal">Decimal</string>
+    <string name="fluentui_keyboard_decimal">दशांश</string>
 </resources>
