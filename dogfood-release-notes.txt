@@ -11,3 +11,8 @@ Fluent V2:
 		3) Enhanced Fluent Icon & text to remove material dependency for these.
 
 Note: This release has breaking changes.
+    1) AliasTokens renamed to FluentAliasTokens.
+    2) GlobalTokens renamed to FluentGlobalTokens.
+    3) Removed AppThemeController & merge its functionality to FluentTheme singleton class.
+    4) FluentTheme function parameter changed from taking AliasTokens, ControlTokens objects to implementation of IAliasTokens, IControlTokens.
+    5) In control tokens, backgroundColor function renamed to backgroundBrush to support gradient.
