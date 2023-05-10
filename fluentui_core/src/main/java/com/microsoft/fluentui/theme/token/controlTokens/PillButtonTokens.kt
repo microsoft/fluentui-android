@@ -33,7 +33,7 @@ open class PillButtonTokens : IControlToken, Parcelable {
         FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
 
     @Composable
-    open fun backgroundColor(pillButtonInfo: PillButtonInfo): StateBrush {
+    open fun backgroundBrush(pillButtonInfo: PillButtonInfo): StateBrush {
         when (pillButtonInfo.style) {
             FluentStyle.Neutral -> return StateBrush(
                 rest = SolidColor(

@@ -70,7 +70,7 @@ fun CheckBox(
         )
 
     val backgroundColor: Brush =
-        token.backgroundColor(checkBoxInfo = checkBoxInfo).getBrushByState(
+        token.backgroundBrush(checkBoxInfo = checkBoxInfo).getBrushByState(
             enabled = enabled,
             selected = checked,
             interactionSource = interactionSource

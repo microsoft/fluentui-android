@@ -20,7 +20,7 @@ data class PillSwitchInfo(
 open class PillSwitchTokens : PillBarTokens(), Parcelable {
 
     @Composable
-    open fun background(pillSwitchInfo: PillSwitchInfo): Brush {
+    open fun backgroundBrush(pillSwitchInfo: PillSwitchInfo): Brush {
         return when (pillSwitchInfo.style) {
             FluentStyle.Neutral -> SolidColor(
                 FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(

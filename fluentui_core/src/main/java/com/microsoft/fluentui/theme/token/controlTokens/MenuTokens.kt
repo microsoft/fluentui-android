@@ -18,7 +18,7 @@ class MenuInfo : ControlInfo
 open class MenuTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(menuInfo: MenuInfo): Brush =
+    open fun backgroundBrush(menuInfo: MenuInfo): Brush =
         SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode

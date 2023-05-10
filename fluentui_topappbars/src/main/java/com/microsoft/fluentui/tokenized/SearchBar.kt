@@ -110,7 +110,7 @@ fun SearchBar(
 
     Row(
         modifier = modifier
-            .background(token.backgroundColor(searchBarInfo))
+            .background(token.backgroundBrush(searchBarInfo))
             .padding(token.searchBarPadding(searchBarInfo))
     ) {
         Row(
@@ -119,7 +119,7 @@ fun SearchBar(
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
                 .background(
-                    token.inputBackgroundColor(searchBarInfo),
+                    token.inputBackgroundBrush(searchBarInfo),
                     RoundedCornerShape(8.dp)
                 ),
             verticalAlignment = Alignment.CenterVertically

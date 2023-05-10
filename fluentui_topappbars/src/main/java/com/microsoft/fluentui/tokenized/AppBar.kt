@@ -92,7 +92,7 @@ fun AppBar(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(token.backgroundColor(appBarInfo))
+                .background(token.backgroundBrush(appBarInfo))
         ) {
             Row(
                 Modifier

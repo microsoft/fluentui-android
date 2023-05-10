@@ -73,7 +73,7 @@ open class FABTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(fabInfo: FABInfo): StateBrush {
+    open fun backgroundBrush(fabInfo: FABInfo): StateBrush {
         return StateBrush(
             rest = SolidColor(
                 aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(

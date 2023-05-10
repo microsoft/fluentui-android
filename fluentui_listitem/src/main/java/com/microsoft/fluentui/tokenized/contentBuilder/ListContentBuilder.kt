@@ -174,7 +174,7 @@ class ListContentBuilder {
                 Layout(
                     modifier = Modifier
                         .background(
-                            token.backgroundColor(
+                            token.backgroundBrush(
                                 TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand
@@ -250,7 +250,7 @@ class ListContentBuilder {
                 LazyRow(
                     state = rowLazyListState, modifier = Modifier
                         .background(
-                            token.backgroundColor(
+                            token.backgroundBrush(
                                 TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand

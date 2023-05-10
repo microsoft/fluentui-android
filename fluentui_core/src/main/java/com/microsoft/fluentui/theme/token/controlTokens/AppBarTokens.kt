@@ -30,7 +30,7 @@ data class AppBarInfo(
 open class AppBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(info: AppBarInfo): Brush {
+    open fun backgroundBrush(info: AppBarInfo): Brush {
         return SolidColor(
             when (info.style) {
                 FluentStyle.Neutral ->

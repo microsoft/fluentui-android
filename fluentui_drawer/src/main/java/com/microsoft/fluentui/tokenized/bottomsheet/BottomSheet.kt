@@ -232,7 +232,7 @@ fun BottomSheet(
         topEnd = tokens.cornerRadius(bottomSheetInfo)
     )
     val sheetElevation: Dp = tokens.elevation(bottomSheetInfo)
-    val sheetBackgroundColor: Brush = tokens.backgroundColor(bottomSheetInfo)
+    val sheetBackgroundColor: Brush = tokens.backgroundBrush(bottomSheetInfo)
     val sheetContentColor: Color = Color.Transparent
     val sheetHandleColor: Color = tokens.handleColor(bottomSheetInfo)
     val scrimOpacity: Float = tokens.scrimOpacity(bottomSheetInfo)

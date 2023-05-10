@@ -47,7 +47,7 @@ data class PersonaChipInfo(
 open class PersonaChipTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(personaChipInfo: PersonaChipControlInfo): StateBrush {
+    open fun backgroundBrush(personaChipInfo: PersonaChipControlInfo): StateBrush {
         personaChipInfo as PersonaChipInfo
         when (personaChipInfo.style) {
             PersonaChipStyle.Neutral -> return StateBrush(

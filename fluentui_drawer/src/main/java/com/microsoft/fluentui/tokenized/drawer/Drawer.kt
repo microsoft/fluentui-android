@@ -843,7 +843,7 @@ fun Drawer(
                 }
             val drawerElevation: Dp = tokens.elevation(drawerInfo)
             val drawerBackgroundColor: Brush =
-                tokens.backgroundColor(drawerInfo)
+                tokens.backgroundBrush(drawerInfo)
             val drawerContentColor: Color = Color.Transparent
             val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
             val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)

@@ -31,7 +31,7 @@ data class SnackBarInfo(
 open class SnackBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(snackBarInfo: SnackBarInfo): Brush {
+    open fun backgroundBrush(snackBarInfo: SnackBarInfo): Brush {
         return SolidColor(
             when (snackBarInfo.style) {
                 SnackbarStyle.Neutral -> aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background4].value()

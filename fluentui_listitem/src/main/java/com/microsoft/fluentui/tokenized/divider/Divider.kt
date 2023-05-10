@@ -25,7 +25,7 @@ fun Divider(
     Column(
         Modifier
             .fillMaxWidth()
-            .background(token.background(dividerInfo))
+            .background(token.backgroundBrush(dividerInfo))
             .focusable(false)
             .padding(token.verticalPadding(dividerInfo))
     ) {

@@ -69,7 +69,7 @@ fun PillSwitch(
                 .padding(horizontal = 16.dp)
                 .focusable(enabled = false)
                 .clip(shape)
-                .background(token.background(pillSwitchInfo), shape),
+                .background(token.backgroundBrush(pillSwitchInfo), shape),
             state = lazyListState
         ) {
             metadataList.forEachIndexed { index, pillMetadata ->

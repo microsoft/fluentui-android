@@ -117,7 +117,7 @@ fun TextField(
                 }
             }
         }
-        .background(token.backgroundColor(textFieldInfo))
+        .background(token.backgroundBrush(textFieldInfo))
         .padding(token.leftRightPadding(textFieldInfo))) {
         if (!label.isNullOrBlank()) {
             Spacer(Modifier.requiredHeight(12.dp))

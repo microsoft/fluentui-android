@@ -51,7 +51,7 @@ fun CircularProgressIndicator(
         )
     )
     val circularProgressIndicatorColor =
-        tokens.color(
+        tokens.brush(
             circularProgressIndicatorInfo
         )
     val circularProgressIndicatorSize =
@@ -105,7 +105,7 @@ fun CircularProgressIndicator(
         style = style
     )
     val circularProgressIndicatorColor =
-        tokens.color(
+        tokens.brush(
             circularProgressIndicatorInfo
         )
     val circularProgressIndicatorSize =

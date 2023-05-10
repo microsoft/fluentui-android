@@ -22,7 +22,7 @@ data class SearchBarInfo(
 open class SearchBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun inputBackgroundColor(searchBarInfo: SearchBarInfo): Brush {
+    open fun inputBackgroundBrush(searchBarInfo: SearchBarInfo): Brush {
         return SolidColor(
             when (searchBarInfo.style) {
                 FluentStyle.Neutral ->
@@ -43,7 +43,7 @@ open class SearchBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundColor(searchBarInfo: SearchBarInfo): Brush {
+    open fun backgroundBrush(searchBarInfo: SearchBarInfo): Brush {
         return SolidColor(
             when (searchBarInfo.style) {
                 FluentStyle.Neutral ->

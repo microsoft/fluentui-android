@@ -21,14 +21,14 @@ private var gradient = Brush.linearGradient(
 
 class MyAppBarToken : AppBarTokens() {
     @Composable
-    override fun backgroundColor(info: AppBarInfo): Brush {
-        return if (info.style == FluentStyle.Brand) gradient else super.backgroundColor(info)
+    override fun backgroundBrush(info: AppBarInfo): Brush {
+        return if (info.style == FluentStyle.Brand) gradient else super.backgroundBrush(info)
     }
 }
 
 class MyFABToken : FABTokens() {
     @Composable
-    override fun backgroundColor(info: FABInfo): StateBrush {
+    override fun backgroundBrush(info: FABInfo): StateBrush {
         return StateBrush(
             rest = gradient,
             pressed = gradient,
