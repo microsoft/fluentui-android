@@ -121,7 +121,7 @@ fun ContextualCommandBar(
             .focusable(enabled = false)
             .fillMaxWidth()
             .background(
-                token.contextualCommandBarBackgroundColor(
+                token.contextualCommandBarBackgroundBrush(
                     contextualCommandBarInfo
                 )
             )
@@ -219,7 +219,7 @@ fun ContextualCommandBar(
                                         .clip(shape)
                                         .background(
                                             token
-                                                .buttonBackgroundColor(
+                                                .buttonBackgroundBrush(
                                                     contextualCommandBarInfo
                                                 )
                                                 .getBrushByState(
@@ -346,7 +346,7 @@ fun ContextualCommandBar(
                                     .clip(shape)
                                     .background(
                                         token
-                                            .buttonBackgroundColor(
+                                            .buttonBackgroundBrush(
                                                 contextualCommandBarInfo
                                             )
                                             .getBrushByState(
@@ -446,7 +446,7 @@ fun ContextualCommandBar(
                     modifier = Modifier
                         .then(actionButtonClickable)
                         .background(
-                            token.actionButtonBackgroundColor(
+                            token.actionButtonBackgroundBrush(
                                 contextualCommandBarInfo
                             )
                         )

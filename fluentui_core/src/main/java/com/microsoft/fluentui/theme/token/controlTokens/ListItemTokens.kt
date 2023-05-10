@@ -78,7 +78,7 @@ data class ListItemInfo(
 @Parcelize
 open class ListItemTokens : IControlToken, Parcelable {
     @Composable
-    open fun backgroundColor(listItemInfo: ListItemInfo): StateBrush {
+    open fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
         return StateBrush(
             rest = SolidColor(
                 FluentTheme.aliasTokens.neutralBackgroundColor[Background1].value(

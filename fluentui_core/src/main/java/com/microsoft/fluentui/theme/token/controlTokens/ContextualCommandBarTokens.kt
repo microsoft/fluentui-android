@@ -22,7 +22,7 @@ class ContextualCommandBarInfo : ControlInfo
 open class ContextualCommandBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun actionButtonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Brush {
+    open fun actionButtonBackgroundBrush(contextualCommandBarInfo: ContextualCommandBarInfo): Brush {
         return SolidColor(
             aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = themeMode
@@ -62,7 +62,7 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun contextualCommandBarBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): Brush {
+    open fun contextualCommandBarBackgroundBrush(contextualCommandBarInfo: ContextualCommandBarInfo): Brush {
         return SolidColor(
             aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = themeMode
@@ -126,7 +126,7 @@ open class ContextualCommandBarTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun buttonBackgroundColor(contextualCommandBarInfo: ContextualCommandBarInfo): StateBrush {
+    open fun buttonBackgroundBrush(contextualCommandBarInfo: ContextualCommandBarInfo): StateBrush {
         return StateBrush(
             rest = SolidColor(
                 aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(

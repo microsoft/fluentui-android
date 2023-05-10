@@ -99,7 +99,7 @@ fun CardNudge(
                 .fillMaxWidth()
                 .offset { IntOffset(state.offset.value.roundToInt(), 0) }
                 .background(
-                    token.backgroundColor(cardNudgeInfo),
+                    token.backgroundBrush(cardNudgeInfo),
                     shape
                 )
                 .then(
@@ -141,7 +141,7 @@ fun CardNudge(
                     modifier = Modifier
                         .size(token.leftIconBackgroundSize(cardNudgeInfo))
                         .background(
-                            token.iconBackgroundColor(cardNudgeInfo),
+                            token.iconBackgroundBrush(cardNudgeInfo),
                             CircleShape
                         )
                         .then(
@@ -221,7 +221,7 @@ fun CardNudge(
                     modifier = Modifier.testTag(ACTION_BUTTON),
                     pillButtonTokens = object : PillButtonTokens() {
                         @Composable
-                        override fun backgroundColor(pillButtonInfo: PillButtonInfo): StateBrush {
+                        override fun backgroundBrush(pillButtonInfo: PillButtonInfo): StateBrush {
                             return StateBrush(
                                 rest = SolidColor(aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()),
                                 pressed = SolidColor(aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value()),

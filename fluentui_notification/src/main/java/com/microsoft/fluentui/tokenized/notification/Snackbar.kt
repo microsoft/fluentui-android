@@ -133,7 +133,7 @@ fun Snackbar(
                 .defaultMinSize(minHeight = 52.dp)
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
-                .background(token.backgroundColor(snackBarInfo))
+                .background(token.backgroundBrush(snackBarInfo))
                 .testTag(SNACKBAR),
             verticalAlignment = Alignment.CenterVertically
         ) {

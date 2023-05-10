@@ -67,7 +67,7 @@ fun PillTabs(
             modifier = modifier
                 .clip(shape)
                 .padding(horizontal = 16.dp)
-                .background(token.trackBackground(pillTabsInfo), shape)
+                .background(token.trackBackgroundBrush(pillTabsInfo), shape)
         ) {
             metadataList.forEachIndexed { index, pillMetadata ->
                 pillMetadata.selected = (selectedIndex == index)

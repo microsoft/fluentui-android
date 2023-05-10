@@ -27,7 +27,7 @@ class BadgeInfo(val type: BadgeType) : ControlInfo
 open class BadgeTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(badgeInfo: BadgeInfo): Brush {
+    open fun backgroundBrush(badgeInfo: BadgeInfo): Brush {
         return SolidColor(FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerBackground2].value())
     }
 

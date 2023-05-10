@@ -57,7 +57,7 @@ open class CircularProgressIndicatorTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun color(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Brush {
+    open fun brush(circularProgressIndicatorInfo: CircularProgressIndicatorInfo): Brush {
         return SolidColor(
             if (circularProgressIndicatorInfo.style == FluentStyle.Neutral) {
                 FluentColor(

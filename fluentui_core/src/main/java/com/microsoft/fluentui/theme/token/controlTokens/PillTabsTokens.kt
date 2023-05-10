@@ -21,7 +21,7 @@ data class PillTabsInfo(
 open class PillTabsTokens : PillBarTokens(), Parcelable {
 
     @Composable
-    open fun background(pillTabsInfo: PillTabsInfo): Brush {
+    open fun backgroundBrush(pillTabsInfo: PillTabsInfo): Brush {
         return SolidColor(
             when (pillTabsInfo.style) {
                 FluentStyle.Neutral -> FluentColor(
@@ -41,7 +41,7 @@ open class PillTabsTokens : PillBarTokens(), Parcelable {
     }
 
     @Composable
-    open fun trackBackground(pillTabsInfo: PillTabsInfo): Brush {
+    open fun trackBackgroundBrush(pillTabsInfo: PillTabsInfo): Brush {
         return SolidColor(
             when (pillTabsInfo.style) {
                 FluentStyle.Neutral -> FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value(

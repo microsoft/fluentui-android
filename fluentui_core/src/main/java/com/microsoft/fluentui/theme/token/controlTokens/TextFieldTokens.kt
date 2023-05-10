@@ -26,7 +26,7 @@ data class TextFieldInfo(
 open class TextFieldTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(textFieldInfo: TextFieldInfo): Brush {
+    open fun backgroundBrush(textFieldInfo: TextFieldInfo): Brush {
         return SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
     }
 

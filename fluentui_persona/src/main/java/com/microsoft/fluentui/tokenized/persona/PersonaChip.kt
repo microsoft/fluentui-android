@@ -63,7 +63,7 @@ fun PersonaChip(
         size
     )
     val backgroundColor =
-        token.backgroundColor(personaChipInfo = personaChipInfo)
+        token.backgroundBrush(personaChipInfo = personaChipInfo)
             .getBrushByState(
                 enabled = enabled, selected = selected, interactionSource = interactionSource
             )

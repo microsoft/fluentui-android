@@ -117,7 +117,7 @@ fun TextField(
                 }
             }
         }
-        .background(token.backgroundColor(textFieldInfo))
+        .background(token.backgroundBrush(textFieldInfo))
         .padding(token.leftRightPadding(textFieldInfo))) {
         if (!label.isNullOrBlank()) {
             Spacer(Modifier.requiredHeight(12.dp))
@@ -239,7 +239,7 @@ fun TextField(
                         }
 
                         @Composable
-                        override fun dividerColor(dividerInfo: DividerInfo): Brush =
+                        override fun dividerBrush(dividerInfo: DividerInfo): Brush =
                             token.dividerColor(textFieldInfo)
                     }
                 )

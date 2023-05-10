@@ -62,7 +62,7 @@ fun TabItem(
             interactionSource = interactionSource
         )
 
-    val backgroundColor = token.backgroundColor(tabItemInfo = tabItemInfo)
+    val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo)
     val rippleColor = token.rippleColor(tabItemInfo = tabItemInfo)
 
     val clickableModifier = Modifier

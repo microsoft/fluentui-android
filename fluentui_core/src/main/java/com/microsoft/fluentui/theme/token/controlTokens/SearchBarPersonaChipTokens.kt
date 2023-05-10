@@ -18,7 +18,7 @@ data class SearchBarPersonaChipInfo(
 @Parcelize
 open class SearchBarPersonaChipTokens : PersonaChipTokens() {
     @Composable
-    override fun backgroundColor(personaChipInfo: PersonaChipControlInfo): StateBrush {
+    override fun backgroundBrush(personaChipInfo: PersonaChipControlInfo): StateBrush {
         personaChipInfo as SearchBarPersonaChipInfo
         when (personaChipInfo.style) {
             FluentStyle.Neutral -> return StateBrush(

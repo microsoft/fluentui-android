@@ -17,7 +17,7 @@ data class PillBarInfo(
 open class PillBarTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun background(pillBarInfo: PillBarInfo): Brush {
+    open fun backgroundBrush(pillBarInfo: PillBarInfo): Brush {
         return when (pillBarInfo.style) {
             FluentStyle.Neutral -> SolidColor(
                 FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(

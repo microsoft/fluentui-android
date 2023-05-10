@@ -26,7 +26,7 @@ data class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : C
 open class DrawerTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(drawerInfo: DrawerInfo): Brush =
+    open fun backgroundBrush(drawerInfo: DrawerInfo): Brush =
         SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
                 themeMode = FluentTheme.themeMode

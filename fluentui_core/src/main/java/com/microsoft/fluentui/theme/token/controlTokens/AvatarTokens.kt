@@ -326,7 +326,7 @@ open class AvatarTokens(private val activityRingToken: ActivityRingsToken = Acti
     }
 
     @Composable
-    open fun backgroundColor(avatarInfo: AvatarInfo): Brush {
+    open fun backgroundBrush(avatarInfo: AvatarInfo): Brush {
         return SolidColor(
             if (avatarInfo.isImageAvailable || avatarInfo.hasValidInitials) {
                 FluentColor(

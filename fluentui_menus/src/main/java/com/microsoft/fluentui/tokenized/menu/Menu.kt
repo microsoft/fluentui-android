@@ -103,7 +103,7 @@ fun Menu(
                 content = content,
                 elevation = token.elevation(menuInfo),
                 cornerRadius = token.cornerRadius(menuInfo),
-                background = token.backgroundColor(menuInfo)
+                background = token.backgroundBrush(menuInfo)
             )
         }
 

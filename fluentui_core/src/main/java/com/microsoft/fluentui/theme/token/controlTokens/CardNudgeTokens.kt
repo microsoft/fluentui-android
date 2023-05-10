@@ -22,7 +22,7 @@ class CardNudgeInfo : ControlInfo
 open class CardNudgeTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(cardNudgeInfo: CardNudgeInfo): Brush {
+    open fun backgroundBrush(cardNudgeInfo: CardNudgeInfo): Brush {
         return SolidColor(aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.CanvasBackground].value())
     }
 
@@ -37,7 +37,7 @@ open class CardNudgeTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun iconBackgroundColor(cardNudgeInfo: CardNudgeInfo): Brush {
+    open fun iconBackgroundBrush(cardNudgeInfo: CardNudgeInfo): Brush {
         return SolidColor(aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint].value())
     }
 
