@@ -10,7 +10,7 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-enum class TypographyTokens {
+enum class TextType {
     Display,
     LargeTitle,
     Title1,
@@ -25,8 +25,17 @@ enum class TypographyTokens {
     Caption2
 }
 
+enum class ColorStyle {
+    Primary,
+    Secondary,
+    White,
+    Brand,
+    Error
+}
+
 data class LabelInfo(
-    val labelType: TypographyTokens
+    val labelType: TextType,
+    val colorStyle: ColorStyle
 ) : ControlInfo
 
 @Parcelize
@@ -34,37 +43,51 @@ open class LabelTokens : IControlToken, Parcelable {
     @Composable
     fun typography(labelInfo: LabelInfo): TextStyle {
         return when (labelInfo.labelType) {
-            TypographyTokens.Display -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Display]
+            TextType.Display -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Display]
 
-            TypographyTokens.LargeTitle -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.LargeTitle]
+            TextType.LargeTitle -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.LargeTitle]
 
-            TypographyTokens.Title1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
+            TextType.Title1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
 
-            TypographyTokens.Title2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
+            TextType.Title2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
 
-            TypographyTokens.Title3 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title3]
+            TextType.Title3 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title3]
 
-            TypographyTokens.Body1Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
+            TextType.Body1Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
 
-            TypographyTokens.Body1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+            TextType.Body1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
 
-            TypographyTokens.Body2Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
+            TextType.Body2Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
 
-            TypographyTokens.Body2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
+            TextType.Body2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
 
-            TypographyTokens.Caption1Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1Strong]
+            TextType.Caption1Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1Strong]
 
-            TypographyTokens.Caption1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
+            TextType.Caption1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
 
-            TypographyTokens.Caption2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+            TextType.Caption2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
 
         }
     }
 
     @Composable
     fun textColor(labelInfo: LabelInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
-            themeMode = FluentTheme.themeMode
-        )
+        return when (labelInfo.colorStyle) {
+            ColorStyle.Primary -> FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                themeMode = FluentTheme.themeMode
+            )
+            ColorStyle.Secondary -> FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                themeMode = FluentTheme.themeMode
+            )
+            ColorStyle.White -> FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
+                themeMode = FluentTheme.themeMode
+            )
+            ColorStyle.Brand -> FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value(
+                themeMode = FluentTheme.themeMode
+            )
+            ColorStyle.Error -> FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value(
+                themeMode = FluentTheme.themeMode
+            )
+        }
     }
 }

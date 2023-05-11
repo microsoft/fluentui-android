@@ -8,6 +8,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.height
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TextType
 import com.microsoft.fluentui.tokenized.controls.Label
 import org.junit.Rule
 import org.junit.Test
@@ -21,7 +23,7 @@ class V2LabelUITest {
     fun testDisplayLabel() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Display(text = "Display")
+                Label(text = "Display", textStyle = TextType.Display)
                 BasicText(
                     text = "Display Basic text", style = TextStyle(
                         fontSize = 60.sp,
@@ -45,7 +47,7 @@ class V2LabelUITest {
     fun testLargeTitleLabel() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.LargeTitle(text = "LargeTitle")
+                Label(text = "LargeTitle", textStyle = TextType.LargeTitle)
                 BasicText(
                     text = "LargeTitle Basic text", style = TextStyle(
                         fontSize = 34.sp,
@@ -69,7 +71,7 @@ class V2LabelUITest {
     fun testTitle1Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Title1(text = "Title1")
+                Label(text = "Title1", textStyle = TextType.Title1)
                 BasicText(
                     text = "Title1 Basic text", style = TextStyle(
                         fontSize = 24.sp,
@@ -93,7 +95,7 @@ class V2LabelUITest {
     fun testTitle2Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Title2(text = "Title2")
+                Label(text = "Title2", textStyle = TextType.Title2)
                 BasicText(
                     text = "Title2 Basic text", style = TextStyle(
                         fontSize = 20.sp,
@@ -117,7 +119,7 @@ class V2LabelUITest {
     fun testTitle3Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Title3(text = "Title3")
+                Label(text = "Title3", textStyle = TextType.Title3)
                 BasicText(
                     text = "Title3 Basic text", style = TextStyle(
                         fontSize = 18.sp,
@@ -141,7 +143,7 @@ class V2LabelUITest {
     fun testBody1StrongLabel() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Body1Strong(text = "Body1Strong")
+                Label(text = "Body1Strong", textStyle = TextType.Body1Strong)
                 BasicText(
                     text = "Body1Strong Basic text", style = TextStyle(
                         fontSize = 16.sp,
@@ -165,7 +167,7 @@ class V2LabelUITest {
     fun testBody1Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Body1(text = "Body1")
+                Label(text = "Body1", textStyle = TextType.Body1)
                 BasicText(
                     text = "Body1 Basic text", style = TextStyle(
                         fontSize = 16.sp,
@@ -189,7 +191,7 @@ class V2LabelUITest {
     fun testBody2StrongLabel() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Body2Strong(text = "Body2Strong")
+                Label(text = "Body2Strong", textStyle = TextType.Body2Strong)
                 BasicText(
                     text = "Body2Strong Basic text", style = TextStyle(
                         fontSize = 14.sp,
@@ -213,7 +215,7 @@ class V2LabelUITest {
     fun testBody2Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Body2(text = "Body2")
+                Label(text = "Body2", textStyle = TextType.Body2)
                 BasicText(
                     text = "Body2 Basic text", style = TextStyle(
                         fontSize = 14.sp,
@@ -237,7 +239,7 @@ class V2LabelUITest {
     fun testCaption1StrongLabel() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Caption1Strong(text = "Caption1Strong")
+                Label(text = "Caption1Strong", textStyle = TextType.Caption1Strong)
                 BasicText(
                     text = "Caption1Strong Basic text", style = TextStyle(
                         fontSize = 13.sp,
@@ -261,7 +263,7 @@ class V2LabelUITest {
     fun testCaption1Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Caption1(text = "Caption1")
+                Label(text = "Caption1", textStyle = TextType.Caption1)
                 BasicText(
                     text = "Caption1 Basic text", style = TextStyle(
                         fontSize = 13.sp,
@@ -285,7 +287,7 @@ class V2LabelUITest {
     fun testCaption2Label() {
         composeTestRule.setContent {
             FluentTheme {
-                Label.Caption2(text = "Caption2")
+                Label(text = "Caption2", textStyle = TextType.Caption2)
                 BasicText(
                     text = "Caption2 Basic text", style = TextStyle(
                         fontSize = 12.sp,
