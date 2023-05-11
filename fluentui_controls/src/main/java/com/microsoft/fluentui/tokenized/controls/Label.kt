@@ -13,6 +13,11 @@ import com.microsoft.fluentui.theme.token.controlTokens.LabelTokens
 
 /**
  * A standard UI label consisting of a simple text.
+ * @param text Label text
+ * @param textStyle Text styling for the text. Default [TypographyTokens.Display]
+ * @param colorStyle Color styling for the text. Default [ColorStyle.Primary]
+ * @param modifier Optional modifier for Label
+ * @param labelTokens Option tokens for label styling
  */
 @Composable
 fun Label(
