@@ -7,23 +7,9 @@ import androidx.compose.ui.text.TextStyle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlInfo
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
-
-enum class TextType {
-    Display,
-    LargeTitle,
-    Title1,
-    Title2,
-    Title3,
-    Body1Strong,
-    Body1,
-    Body2Strong,
-    Body2,
-    Caption1Strong,
-    Caption1,
-    Caption2
-}
 
 enum class ColorStyle {
     Primary,
@@ -34,7 +20,7 @@ enum class ColorStyle {
 }
 
 data class LabelInfo(
-    val labelType: TextType,
+    val labelType: TypographyTokens,
     val colorStyle: ColorStyle
 ) : ControlInfo
 
@@ -43,29 +29,29 @@ open class LabelTokens : IControlToken, Parcelable {
     @Composable
     fun typography(labelInfo: LabelInfo): TextStyle {
         return when (labelInfo.labelType) {
-            TextType.Display -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Display]
+            TypographyTokens.Display -> FluentTheme.aliasTokens.typography[TypographyTokens.Display]
 
-            TextType.LargeTitle -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.LargeTitle]
+            TypographyTokens.LargeTitle -> FluentTheme.aliasTokens.typography[TypographyTokens.LargeTitle]
 
-            TextType.Title1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1]
+            TypographyTokens.Title1 -> FluentTheme.aliasTokens.typography[TypographyTokens.Title1]
 
-            TextType.Title2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
+            TypographyTokens.Title2 -> FluentTheme.aliasTokens.typography[TypographyTokens.Title2]
 
-            TextType.Title3 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title3]
+            TypographyTokens.Title3 -> FluentTheme.aliasTokens.typography[TypographyTokens.Title3]
 
-            TextType.Body1Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong]
+            TypographyTokens.Body1Strong -> FluentTheme.aliasTokens.typography[TypographyTokens.Body1Strong]
 
-            TextType.Body1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+            TypographyTokens.Body1 -> FluentTheme.aliasTokens.typography[TypographyTokens.Body1]
 
-            TextType.Body2Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2Strong]
+            TypographyTokens.Body2Strong -> FluentTheme.aliasTokens.typography[TypographyTokens.Body2Strong]
 
-            TextType.Body2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body2]
+            TypographyTokens.Body2 -> FluentTheme.aliasTokens.typography[TypographyTokens.Body2]
 
-            TextType.Caption1Strong -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1Strong]
+            TypographyTokens.Caption1Strong -> FluentTheme.aliasTokens.typography[TypographyTokens.Caption1Strong]
 
-            TextType.Caption1 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption1]
+            TypographyTokens.Caption1 -> FluentTheme.aliasTokens.typography[TypographyTokens.Caption1]
 
-            TextType.Caption2 -> FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+            TypographyTokens.Caption2 -> FluentTheme.aliasTokens.typography[TypographyTokens.Caption2]
 
         }
     }

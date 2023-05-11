@@ -6,15 +6,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens
+import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
+import com.microsoft.fluentui.theme.token.controlTokens.LabelInfo
+import com.microsoft.fluentui.theme.token.controlTokens.LabelTokens
 
 /**
- * A standard UI label consisting of a simple text. Design format [TypographyTokens.Display]
+ * A standard UI label consisting of a simple text.
  */
 @Composable
 fun Label(
     text: String,
-    textStyle: TextType = TextType.Display,
+    textStyle: TypographyTokens = TypographyTokens.Display,
     colorStyle: ColorStyle = ColorStyle.Primary,
     modifier: Modifier = Modifier,
     labelTokens: LabelTokens? = null
