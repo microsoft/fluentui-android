@@ -33,7 +33,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Display")
         label.assertExists()
         label.assertIsDisplayed()
@@ -58,7 +57,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("LargeTitle")
         label.assertExists()
         label.assertIsDisplayed()
@@ -83,7 +81,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Title1")
         label.assertExists()
         label.assertIsDisplayed()
@@ -108,7 +105,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Title2")
         label.assertExists()
         label.assertIsDisplayed()
@@ -133,7 +129,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Title3")
         label.assertExists()
         label.assertIsDisplayed()
@@ -158,7 +153,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Body1Strong")
         label.assertExists()
         label.assertIsDisplayed()
@@ -183,7 +177,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Body1")
         label.assertExists()
         label.assertIsDisplayed()
@@ -208,7 +201,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Body2Strong")
         label.assertExists()
         label.assertIsDisplayed()
@@ -233,7 +225,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Body2")
         label.assertExists()
         label.assertIsDisplayed()
@@ -258,7 +249,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Caption1Strong")
         label.assertExists()
         label.assertIsDisplayed()
@@ -283,7 +273,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Caption1")
         label.assertExists()
         label.assertIsDisplayed()
@@ -308,7 +297,6 @@ class V2LabelUITest {
                 )
             }
         }
-        composeTestRule.onRoot(true).printToLog("Tree")
         val label = composeTestRule.onNodeWithText("Caption2")
         label.assertExists()
         label.assertIsDisplayed()
