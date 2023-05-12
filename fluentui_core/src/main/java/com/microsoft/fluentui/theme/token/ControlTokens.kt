@@ -43,6 +43,7 @@ open class ControlTokens : IControlTokens {
         CheckBox,
         CircularProgressIndicator,
         ContextualCommandBar,
+        Dialog,
         Drawer,
         Divider,
         FileCard,
@@ -82,6 +83,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.CheckBox -> CheckBoxTokens()
                 ControlType.CircularProgressIndicator -> CircularProgressIndicatorTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
+                ControlType.Dialog -> DialogTokens()
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.Divider -> DividerTokens()
                 ControlType.FileCard -> FileCardTokens()

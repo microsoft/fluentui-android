@@ -19,6 +19,7 @@ const val V2BUTTON = "V2 Buttons"
 const val V2CARD = "V2 Card"
 const val V2CARD_NUDGE = "V2 Card Nudge"
 const val V2CONTEXTUAL_COMMAND_BAR = "V2 ContextualCommandBar"
+const val V2DIALOG = "V2 Dialog"
 const val V2DRAWER = "V2 Drawer"
 const val V2LIST_ITEM = "V2 ListItem"
 const val V2MENU = "V2 Menu"
@@ -70,6 +71,7 @@ val DEMOS = arrayListOf(
     Demo(V2CARD, V2CardActivity::class),
     Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
+    Demo(V2DIALOG, V2DialogActivity::class),
     Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
