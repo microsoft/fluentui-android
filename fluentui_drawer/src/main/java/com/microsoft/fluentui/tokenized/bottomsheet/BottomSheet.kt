@@ -20,6 +20,8 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -277,7 +279,7 @@ fun BottomSheet(
             }
         }
 
-        Surface(
+        Box(
             Modifier
                 .fillMaxWidth()
                 .nestedScroll(if (slideOver) sheetState.PreUpPostDownNestedScrollConnection else sheetState.PostDownNestedScrollConnection)
@@ -319,6 +321,8 @@ fun BottomSheet(
                     peekHeight,
                     sheetState
                 )
+                .shadow(sheetElevation)
+                .clip(sheetShape)
                 .background(sheetBackgroundColor)
                 .semantics(mergeDescendants = true) {
                     if (sheetState.isVisible) {
@@ -345,9 +349,6 @@ fun BottomSheet(
                         }
                     }
                 },
-            shape = sheetShape,
-            elevation = sheetElevation,
-            contentColor = sheetContentColor
         ) {
             Column {
                 if (showHandle) {

@@ -5,7 +5,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -85,7 +84,7 @@ fun AppBar(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBar] as AppBarTokens
 
     val appBarInfo = AppBarInfo(style, appBarSize)
-    Surface(
+    Box(
         modifier = modifier
             .fillMaxWidth()
     ) {

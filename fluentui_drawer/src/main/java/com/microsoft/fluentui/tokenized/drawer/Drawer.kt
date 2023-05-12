@@ -1,19 +1,23 @@
 package com.microsoft.fluentui.tokenized.drawer
 
 import androidx.compose.animation.core.TweenSpec
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.gestures.rememberDraggableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.focusTarget
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -42,7 +46,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DrawerTokens
 import com.microsoft.fluentui.tokenized.calculateFraction
-import com.microsoft.fluentui.util.*
+import com.microsoft.fluentui.util.dpToPx
+import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -337,10 +342,7 @@ private fun Modifier.bottomDrawerSwipeable(
  * @param drawerShape shape of the drawer sheet
  * @param drawerElevation drawer sheet elevation. This controls the size of the shadow below the
  * drawer sheet
- * @param drawerBackgroundColor background color to be used for the drawer sheet
- * @param drawerContentColor color of the content to use inside the drawer sheet. Defaults to
- * either the matching content color for [drawerBackgroundColor], or, if it is not a color from
- * the theme, this will keep the same value set above this Surface.
+ * @param drawerBackground background color to be used for the drawer sheet
  * @param scrimColor color of the scrim that obscures content when the drawer is open
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
@@ -353,7 +355,6 @@ private fun HorizontalDrawer(
     drawerShape: Shape,
     drawerElevation: Dp,
     drawerBackground: Brush,
-    drawerContentColor: Color,
     scrimColor: Color,
     scrimVisible: Boolean,
     onDismiss: () -> Unit,
@@ -403,7 +404,7 @@ private fun HorizontalDrawer(
                 color = if (scrimVisible) scrimColor else Color.Transparent,
             )
 
-            Surface(
+            Box(
                 modifier = with(LocalDensity.current) {
                     Modifier
                         .sizeIn(
@@ -426,6 +427,8 @@ private fun HorizontalDrawer(
                             }
                         }
                     }
+                    .shadow(drawerElevation)
+                    .clip(drawerShape)
                     .background(drawerBackground)
                     .swipeable(
                         state = drawerState,
@@ -437,9 +440,6 @@ private fun HorizontalDrawer(
                         velocityThreshold = DrawerVelocityThreshold,
                         resistance = null
                     ),
-                shape = drawerShape,
-                contentColor = drawerContentColor,
-                elevation = drawerElevation
             ) {
                 Column(
                     Modifier
@@ -472,7 +472,6 @@ private fun TopDrawer(
     drawerShape: Shape,
     drawerElevation: Dp,
     drawerBackground: Brush,
-    drawerContentColor: Color,
     drawerHandleColor: Color,
     scrimColor: Color,
     scrimVisible: Boolean,
@@ -530,7 +529,7 @@ private fun TopDrawer(
                 color = if (scrimVisible) scrimColor else Color.Transparent,
             )
 
-            Surface(
+            Box(
                 drawerConstraints
                     .offset { IntOffset(0, 0) }
                     .semantics {
@@ -544,6 +543,8 @@ private fun TopDrawer(
                     .height(
                         pxToDp(drawerState.offset.value)
                     )
+                    .shadow(drawerElevation)
+                    .clip(drawerShape)
                     .background(drawerBackground)
                     .swipeable(
                         state = drawerState,
@@ -553,9 +554,6 @@ private fun TopDrawer(
                         resistance = null
                     )
                     .focusable(false),
-                shape = drawerShape,
-                contentColor = drawerContentColor,
-                elevation = drawerElevation
             ) {
                 ConstraintLayout(modifier = Modifier.padding(bottom = 8.dp)) {
                     val (drawerContentConstrain, drawerHandleConstrain) = createRefs()
@@ -613,7 +611,6 @@ private fun BottomDrawer(
     drawerShape: Shape,
     drawerElevation: Dp,
     drawerBackground: Brush,
-    drawerContentColor: Color,
     drawerHandleColor: Color,
     scrimColor: Color,
     scrimVisible: Boolean,
@@ -655,7 +652,7 @@ private fun BottomDrawer(
             color = if (scrimVisible) scrimColor else Color.Transparent,
         )
 
-        Surface(
+        Box(
             drawerConstraints
                 .nestedScroll(if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection)
                 .offset {
@@ -695,6 +692,8 @@ private fun BottomDrawer(
                     }
                 }
                 .drawerHeight(expandable, slideOver, maxOpenHeight, fullHeight, drawerState)
+                .shadow(drawerElevation)
+                .clip(drawerShape)
                 .background(drawerBackground)
                 .semantics {
                     if (drawerState.isOpen) {
@@ -720,9 +719,6 @@ private fun BottomDrawer(
                     }
                 }
                 .focusable(false),
-            shape = drawerShape,
-            contentColor = drawerContentColor,
-            elevation = drawerElevation
         ) {
             Column {
                 Column(
@@ -795,7 +791,7 @@ private fun BottomDrawer(
  * @param expandable if true drawer would expand on drag else drawer open till fixed/wrapped height.
  * The default value is false
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
- * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [AppThemeController]
+ * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
  *
  * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
@@ -844,7 +840,6 @@ fun Drawer(
             val drawerElevation: Dp = tokens.elevation(drawerInfo)
             val drawerBackgroundColor: Brush =
                 tokens.backgroundBrush(drawerInfo)
-            val drawerContentColor: Color = Color.Transparent
             val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
             val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
             val scrimColor: Color =
@@ -857,7 +852,6 @@ fun Drawer(
                     drawerShape = drawerShape,
                     drawerElevation = drawerElevation,
                     drawerBackground = drawerBackgroundColor,
-                    drawerContentColor = drawerContentColor,
                     drawerHandleColor = drawerHandleColor,
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
@@ -872,7 +866,6 @@ fun Drawer(
                     drawerShape = drawerShape,
                     drawerElevation = drawerElevation,
                     drawerBackground = drawerBackgroundColor,
-                    drawerContentColor = drawerContentColor,
                     drawerHandleColor = drawerHandleColor,
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
@@ -887,7 +880,6 @@ fun Drawer(
                     drawerShape = drawerShape,
                     drawerElevation = drawerElevation,
                     drawerBackground = drawerBackgroundColor,
-                    drawerContentColor = drawerContentColor,
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
                     onDismiss = close,
