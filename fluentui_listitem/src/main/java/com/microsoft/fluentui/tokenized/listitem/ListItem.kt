@@ -168,8 +168,12 @@ object ListItem {
                         placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
                     )
                 ) {
-                    Surface(
-                        onClick = onClick, Modifier.background(backgroundColor)
+                    Box(
+                        Modifier
+                            .background(backgroundColor)
+                            .clickable(
+                                onClick = onClick
+                            )
                     ) {
                         BasicText(
                             text = actionText,
@@ -497,7 +501,7 @@ object ListItem {
         val rotationState by animateFloatAsState(
             targetValue = if (!enableContentOpenCloseTransition || expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
         )
-        Surface(
+        Box(
             modifier = modifier
                 .fillMaxWidth()
                 .heightIn(min = cellHeight)
@@ -784,7 +788,7 @@ object ListItem {
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
 
-        Surface(
+        Box(
             modifier = modifier
                 .fillMaxWidth()
                 .heightIn(min = cellHeight)
