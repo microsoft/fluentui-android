@@ -4,23 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
-import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
+import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
+import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
-import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.delay
@@ -65,16 +62,10 @@ private fun CreateProgressActivityUI() {
         LinearProgressIndicatorExample(brandTextColor = brandTextColor, textColor = textColor)
         CircularProgressIndicatorExamples(textColor = textColor)
         DeterminateProgressIndicatorExamples(
-            brandTextColor = brandTextColor,
-            textColor = textColor,
             linearProgress,
             circularProgress
         )
-        IndeterminateProgressIndicatorExamples(
-            brandTextColor = brandTextColor,
-            textColor = textColor
-        )
-        shimmerExamples(brandTextColor = brandTextColor, textColor = textColor)
+        IndeterminateProgressIndicatorExamples()
     }
     LaunchedEffect(key1 = linearProgress) {
         if (linearProgress >= 1.0) {
@@ -101,21 +92,18 @@ private fun CreateProgressActivityUI() {
 @Composable
 private fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-        BasicText(
-            modifier = Modifier.padding(top = 16.dp),
+        Label(
             text = "ProgressIndicators",
-            style = TextStyle(
-                color = brandTextColor,
-                fontSize = 20.sp
-            )
+            textStyle = FluentAliasTokens.TypographyTokens.Title2,
+            colorStyle = ColorStyle.Brand
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
-            BasicText(
+            Label(
                 text = "XXXSmall - 2dp",
-                style = TextStyle(color = textColor)
+                textStyle = FluentAliasTokens.TypographyTokens.Caption1
             )
             LinearProgressIndicator(modifier = Modifier.width(240.dp))
         }
@@ -128,11 +116,12 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
         Row(
             Modifier.height(42.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(32.dp)
+            horizontalArrangement = Arrangement.spacedBy(36.dp)
         ) {
-            BasicText(
-                text = "XSmall - 12dp", modifier = Modifier.width(100.dp),
-                style = TextStyle(color = textColor)
+            Label(
+                modifier = Modifier.width(100.dp),
+                text = "XSmall - 12dp",
+                textStyle = FluentAliasTokens.TypographyTokens.Caption1
             )
             CircularProgressIndicator(style = FluentStyle.Brand)
             CircularProgressIndicator()
@@ -142,9 +131,10 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
-            BasicText(
-                text = "Small - 16dp", modifier = Modifier.width(100.dp),
-                style = TextStyle(color = textColor)
+            Label(
+                modifier = Modifier.width(100.dp),
+                text = "Small - 16dp",
+                textStyle = FluentAliasTokens.TypographyTokens.Caption1
             )
             CircularProgressIndicator(
                 size = CircularProgressIndicatorSize.XSmall,
@@ -159,9 +149,10 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
-            BasicText(
-                text = "Medium - 24dp", modifier = Modifier.width(100.dp),
-                style = TextStyle(color = textColor)
+            Label(
+                modifier = Modifier.width(100.dp),
+                text = "Medium - 24dp",
+                textStyle = FluentAliasTokens.TypographyTokens.Caption1
             )
             CircularProgressIndicator(
                 size = CircularProgressIndicatorSize.Medium,
@@ -176,9 +167,10 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
-            BasicText(
-                text = "Large - 32dp", modifier = Modifier.width(100.dp),
-                style = TextStyle(color = textColor)
+            Label(
+                modifier = Modifier.width(100.dp),
+                text = "Large - 32dp",
+                textStyle = FluentAliasTokens.TypographyTokens.Caption1
             )
             CircularProgressIndicator(
                 size = CircularProgressIndicatorSize.Large,
@@ -193,9 +185,10 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(32.dp)
         ) {
-            BasicText(
-                text = "XLarge - 36dp", modifier = Modifier.width(100.dp),
-                style = TextStyle(color = textColor)
+            Label(
+                modifier = Modifier.width(100.dp),
+                text = "XLarge - 36dp",
+                textStyle = FluentAliasTokens.TypographyTokens.Caption1
             )
             CircularProgressIndicator(
                 CircularProgressIndicatorSize.XLarge,
@@ -210,23 +203,19 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
 
 @Composable
 private fun DeterminateProgressIndicatorExamples(
-    brandTextColor: Color,
-    textColor: Color,
     linearProgress: Float,
     circularProgress: Float
 ) {
-    BasicText(
+    Label(
         modifier = Modifier.padding(top = 16.dp),
         text = "Determinate ProgressIndicator",
-        style = TextStyle(
-            color = brandTextColor,
-            fontSize = 18.sp
-        )
+        textStyle = FluentAliasTokens.TypographyTokens.Title2,
+        colorStyle = ColorStyle.Brand
     )
-    BasicText(
+    Label(
         modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
         text = "Linear ProgressIndicator",
-        style = TextStyle(color = textColor)
+        textStyle = FluentAliasTokens.TypographyTokens.Caption1
     )
     Row(
         Modifier.height(24.dp),
@@ -234,15 +223,15 @@ private fun DeterminateProgressIndicatorExamples(
         horizontalArrangement = Arrangement.spacedBy(32.dp)
     ) {
         LinearProgressIndicator(linearProgress, modifier = Modifier.width(240.dp))
-        BasicText(
+        Label(
             text = "" + "%.0f".format(linearProgress * 100) + "%",
-            style = TextStyle(color = textColor)
+            textStyle = FluentAliasTokens.TypographyTokens.Caption1
         )
     }
-    BasicText(
+    Label(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
         text = "Circular ProgressIndicator",
-        style = TextStyle(color = textColor)
+        textStyle = FluentAliasTokens.TypographyTokens.Caption1
     )
     Row(
         Modifier.height(24.dp),
@@ -254,27 +243,25 @@ private fun DeterminateProgressIndicatorExamples(
             size = CircularProgressIndicatorSize.XLarge,
             style = FluentStyle.Brand
         )
-        BasicText(
+        Label(
             text = "" + "%.0f".format(circularProgress * 100) + "%",
-            style = TextStyle(color = textColor)
+            textStyle = FluentAliasTokens.TypographyTokens.Caption1
         )
     }
 }
 
 @Composable
-private fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textColor: Color) {
-    BasicText(
+private fun IndeterminateProgressIndicatorExamples() {
+    Label(
         modifier = Modifier.padding(top = 16.dp),
         text = "InDeterminate ProgressIndicator",
-        style = TextStyle(
-            color = brandTextColor,
-            fontSize = 18.sp
-        )
+        textStyle = FluentAliasTokens.TypographyTokens.Title2,
+        colorStyle = ColorStyle.Brand
     )
-    BasicText(
+    Label(
         modifier = Modifier.padding(top = 16.dp, bottom = 8.dp),
         text = "Linear ProgressIndicator",
-        style = TextStyle(color = textColor)
+        textStyle = FluentAliasTokens.TypographyTokens.Caption1
     )
     Row(
         Modifier.height(24.dp),
@@ -283,10 +270,10 @@ private fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textCo
     ) {
         LinearProgressIndicator(modifier = Modifier.width(240.dp))
     }
-    BasicText(
+    Label(
         modifier = Modifier.padding(top = 16.dp, bottom = 16.dp),
         text = "Circular ProgressIndicator",
-        style = TextStyle(color = textColor)
+        textStyle = FluentAliasTokens.TypographyTokens.Caption1
     )
     Row(
         Modifier.height(24.dp),
@@ -297,100 +284,5 @@ private fun IndeterminateProgressIndicatorExamples(brandTextColor: Color, textCo
             size = CircularProgressIndicatorSize.XLarge,
             style = FluentStyle.Brand
         )
-    }
-}
-
-@Composable
-private fun shimmerExamples(brandTextColor: Color, textColor: Color) {
-    BasicText(
-        modifier = Modifier.padding(top = 16.dp),
-        text = "Shimmer",
-        style = TextStyle(
-            color = brandTextColor,
-            fontSize = 18.sp
-        )
-    )
-    BasicText(
-        modifier = Modifier.padding(top = 16.dp),
-        text = "Box shimmer",
-        style = TextStyle(color = textColor)
-    )
-    Row(
-        modifier = Modifier
-            .padding(top = 8.dp, bottom = 16.dp)
-            .height(80.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Shimmer(modifier = Modifier.size(120.dp, 80.dp))
-        Column(
-            Modifier
-                .height(80.dp)
-                .padding(top = 10.dp, bottom = 10.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
-            Shimmer(modifier = Modifier.size(200.dp, 12.dp))
-        }
-    }
-    BasicText(
-        modifier = Modifier.padding(top = 16.dp),
-        text = "Circle shimmer",
-        style = TextStyle(color = textColor)
-    )
-    Row(
-        modifier = Modifier
-            .padding(top = 8.dp, bottom = 16.dp)
-            .height(60.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Shimmer(modifier = Modifier.size(60.dp, 60.dp), shape = ShimmerShape.Circle)
-        Column(
-            Modifier
-                .height(80.dp)
-                .padding(top = 10.dp, bottom = 10.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
-        }
-    }
-    Row(
-        modifier = Modifier
-            .padding(top = 8.dp, bottom = 16.dp)
-            .height(60.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Shimmer(modifier = Modifier.size(60.dp, 60.dp), shape = ShimmerShape.Circle)
-        Column(
-            Modifier
-                .height(80.dp)
-                .padding(top = 10.dp, bottom = 10.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
-        }
-    }
-    Row(
-        modifier = Modifier
-            .padding(top = 8.dp, bottom = 16.dp)
-            .height(60.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        Shimmer(modifier = Modifier.size(60.dp), shape = ShimmerShape.Circle)
-        Column(
-            Modifier
-                .height(80.dp)
-                .padding(top = 10.dp, bottom = 10.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-            Shimmer(modifier = Modifier.size(180.dp, 12.dp))
-        }
     }
 }

@@ -51,6 +51,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2ShimmerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
         <activity

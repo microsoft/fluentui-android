@@ -72,18 +72,4 @@ class V2ProgressIndicatorUITest {
         val progressIndicator = composeTestRule.onNodeWithTag("testPI")
         progressIndicator.assertRangeInfoEquals(ProgressBarRangeInfo(0.2f,0f..1f))
     }
-    @Test
-    fun testShimmerBounds(){
-        composeTestRule.setContent {
-            FluentTheme {
-                Shimmer(shape = ShimmerShape.Box, modifier = Modifier
-                    .height(50.dp)
-                    .width(50.dp)
-                    .testTag("shimmer"))
-                Shimmer(shape= ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
-            }
-        }
-        composeTestRule.onNodeWithTag("shimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
-        composeTestRule.onNodeWithTag("circleShimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
-    }
 }
