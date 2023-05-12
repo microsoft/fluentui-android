@@ -62,7 +62,6 @@ fun Dialog(
                     borderStrokeWidth, borderBrush, shape
                 )
                 .testTag(TEST_TAG)
-
         ) {
             content()
         }
