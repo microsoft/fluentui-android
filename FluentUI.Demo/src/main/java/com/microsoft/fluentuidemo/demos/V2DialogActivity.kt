@@ -5,15 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Dialog
@@ -42,8 +44,8 @@ class V2DialogActivity : DemoActivity() {
     @Composable
     private fun CreateDialogActivityUI(context: Context) {
         var showDialog by remember { mutableStateOf(false) }
-        var dismissOnClickOutside by remember { mutableStateOf(true) }
-        var dismissOnBackPress by remember { mutableStateOf(true) }
+        var dismissOnClickOutside by remember { mutableStateOf(false) }
+        var dismissOnBackPress by remember { mutableStateOf(false) }
         val resources = LocalContext.current.resources
         Column(
             modifier = Modifier.padding(all = 16.dp),
@@ -57,6 +59,7 @@ class V2DialogActivity : DemoActivity() {
                     resources.getString(R.string.fluentui_disabled),
                 trailingAccessoryView = {
                     ToggleSwitch(
+                        modifier = Modifier.testTag("outside press"),
                         onValueChange = {
                             dismissOnClickOutside = it
                         },
@@ -72,6 +75,7 @@ class V2DialogActivity : DemoActivity() {
                     resources.getString(R.string.fluentui_disabled),
                 trailingAccessoryView = {
                     ToggleSwitch(
+                        modifier = Modifier.testTag("back press"),
                         onValueChange = {
                             dismissOnBackPress = it
                         },
@@ -90,25 +94,46 @@ class V2DialogActivity : DemoActivity() {
                 Dialog(
                     onDismiss = {
                         showDialog = !showDialog
-                        Toast.makeText(context, resources.getString(R.string.dismiss_dialog), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            context,
+                            resources.getString(R.string.dismiss_dialog),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     },
                     dismissOnClickedOutside = dismissOnClickOutside,
                     dismissOnBackPress = dismissOnBackPress
                 ) {
                     Column(Modifier.padding(all = 16.dp)) {
-                        Text(text = resources.getString(R.string.dialog_description))
+                        Label(
+                            text = resources.getString(R.string.dialog_description),
+                            textStyle = FluentAliasTokens.TypographyTokens.Body1
+                        )
                         Spacer(modifier = Modifier.height(16.dp))
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
-                            Button(style = ButtonStyle.TextButton, text = resources.getString(R.string.cancel), onClick = {
-                                showDialog = !showDialog
-                                Toast.makeText(context, resources.getString(R.string.cancel), Toast.LENGTH_SHORT)
-                                    .show()
-                            })
+                            Button(
+                                style = ButtonStyle.TextButton,
+                                text = resources.getString(R.string.cancel),
+                                onClick = {
+                                    showDialog = false
+                                    Toast.makeText(
+                                        context,
+                                        resources.getString(R.string.cancel),
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                })
                             Spacer(modifier = Modifier.width(8.dp))
-                            Button(style = ButtonStyle.TextButton, text = resources.getString(R.string.ok), onClick = {
-                                showDialog = !showDialog
-                                Toast.makeText(context, resources.getString(R.string.ok), Toast.LENGTH_SHORT).show()
-                            })
+                            Button(
+                                style = ButtonStyle.TextButton,
+                                text = resources.getString(R.string.ok),
+                                onClick = {
+                                    showDialog = false
+                                    Toast.makeText(
+                                        context,
+                                        resources.getString(R.string.ok),
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                })
                         }
                     }
                 }

@@ -3,7 +3,6 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -37,9 +36,11 @@ open class DialogTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun borderColor(dialogInfo: DialogInfo): Color {
-        return FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
-            themeMode = FluentTheme.themeMode
+    open fun borderBrush(dialogInfo: DialogInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke1].value(
+                themeMode = FluentTheme.themeMode
+            )
         )
     }
 

@@ -8,12 +8,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.DialogInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DialogTokens
+
+const val TEST_TAG = "Dialog"
 
 /**
  * Create a dialog with the given content. The dialog does not fill the screen and is normally
@@ -37,7 +40,7 @@ fun Dialog(
     val dialogInfo = DialogInfo()
     val cornerRadius = token.cornerRadius(dialogInfo = dialogInfo)
     val backgroundBrush = token.backgroundBrush(dialogInfo = dialogInfo)
-    val borderColor = token.borderColor(dialogInfo = dialogInfo)
+    val borderBrush = token.borderBrush(dialogInfo = dialogInfo)
     val elevation = token.elevation(dialogInfo = dialogInfo)
     val borderStrokeWidth = token.borderStrokeWidth(dialogInfo = dialogInfo)
     val shape = RoundedCornerShape(cornerRadius)
@@ -51,13 +54,15 @@ fun Dialog(
         Box(
             modifier = Modifier
                 .shadow(elevation, shape, false)
+                .clip(shape)
                 .background(
-                    backgroundBrush, shape
+                    backgroundBrush
                 )
                 .border(
-                    borderStrokeWidth, borderColor, shape
+                    borderStrokeWidth, borderBrush, shape
                 )
-                .clip(shape)
+                .testTag(TEST_TAG)
+
         ) {
             content()
         }
