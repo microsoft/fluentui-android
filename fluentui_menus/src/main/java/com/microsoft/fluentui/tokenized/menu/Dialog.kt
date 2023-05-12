@@ -24,6 +24,7 @@ const val TEST_TAG = "Dialog"
  * @param onDismiss Execute any instruction when user tries to close the dialog.
  * @param dismissOnBackPress dismiss the dialog when back button is pressed.
  * @param dismissOnClickedOutside dismiss the dialog when clicked outside the dialog box.
+ * @param modifier Optional modifier for dialog
  * @param dialogTokens Optional tokens for customizing dialog's visual appearance
  * @param content content to be displayed inside the dialog
  */
@@ -32,6 +33,7 @@ fun Dialog(
     onDismiss: () -> Unit,
     dismissOnBackPress: Boolean = false,
     dismissOnClickedOutside: Boolean = false,
+    modifier: Modifier = Modifier,
     dialogTokens: DialogTokens? = null,
     content: @Composable () -> Unit
 ) {
@@ -52,7 +54,7 @@ fun Dialog(
         )
     ) {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .shadow(elevation, shape, false)
                 .clip(shape)
                 .background(
