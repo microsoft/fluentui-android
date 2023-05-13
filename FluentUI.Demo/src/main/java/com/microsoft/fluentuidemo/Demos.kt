@@ -30,6 +30,7 @@ const val V2PROGRESS = "V2 Progress"
 const val V2SCAFFOLD = "V2 Scaffold"
 const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
+const val V2SHIMMER = "V2 Shimmer"
 const val V2SNACKBAR = "V2 Snackbar"
 const val V2TABBAR = "V2 TabBar"
 const val V2TEXTFIELD = "V2 TextField"
@@ -84,6 +85,7 @@ val DEMOS = arrayListOf(
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SHIMMER, V2ShimmerActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
     Demo(V2TEXTFIELD, V2TextFieldActivity::class),
