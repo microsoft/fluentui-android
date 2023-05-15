@@ -102,5 +102,4 @@ open class ProgressTextTokens : IControlToken, Parcelable {
             )
         )
     }
-
 }

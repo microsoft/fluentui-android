@@ -1,7 +1,9 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -41,14 +43,14 @@ class V2ProgressActivity : DemoActivity() {
         )
         v2ActivityComposeBinding.composeHere.setContent {
             FluentTheme {
-                CreateProgressActivityUI()
+                CreateProgressActivityUI(this)
             }
         }
     }
 }
 
 @Composable
-private fun CreateProgressActivityUI() {
+private fun CreateProgressActivityUI(context: Context) {
     var linearProgress by remember { mutableStateOf(0f) }
     var circularProgress by remember { mutableStateOf(0f) }
     val textColor =
@@ -71,7 +73,7 @@ private fun CreateProgressActivityUI() {
             circularProgress
         )
         IndeterminateProgressIndicatorDemo()
-        ProgressTextDemo(linearProgress)
+        ProgressTextDemo(linearProgress, context)
     }
     LaunchedEffect(key1 = linearProgress) {
         if (linearProgress >= 1.0) {
@@ -294,7 +296,7 @@ private fun IndeterminateProgressIndicatorDemo() {
 }
 
 @Composable
-private fun ProgressTextDemo(linearProgress: Float) {
+private fun ProgressTextDemo(linearProgress: Float, context: Context) {
     Label(
         modifier = Modifier.padding(top = 16.dp),
         text = "Progress Text",
@@ -305,12 +307,14 @@ private fun ProgressTextDemo(linearProgress: Float) {
     ProgressText(
         text = "Generating the summary...",
         progress = linearProgress,
-        modifier = Modifier.width(300.dp)
+        onCancelClick = {},
+        modifier = Modifier.width(300.dp),
     )
     Spacer(modifier = Modifier.height(12.dp))
     ProgressText(
         text = "Ok... I'll summarize what you missed this morning",
         progress = linearProgress,
+        onCancelClick = { Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show() },
         modifier = Modifier.width(325.dp),
         progressTextTokens = GradientProgressTextToken()
     )
