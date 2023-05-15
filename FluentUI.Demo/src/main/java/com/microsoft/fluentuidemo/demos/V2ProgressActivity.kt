@@ -10,7 +10,6 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -53,6 +52,14 @@ class V2ProgressActivity : DemoActivity() {
 private fun CreateProgressActivityUI(context: Context) {
     var linearProgress by remember { mutableStateOf(0f) }
     var circularProgress by remember { mutableStateOf(0f) }
+    var progressString by remember {
+        mutableStateOf("Starting...")
+    }
+    var texts = ArrayList<String>()
+    texts.add("Starting...")
+    texts.add("Generating...")
+    texts.add("Publishing...")
+    texts.add("Completed...")
     val textColor =
         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
             themeMode = FluentTheme.themeMode
@@ -73,7 +80,7 @@ private fun CreateProgressActivityUI(context: Context) {
             circularProgress
         )
         IndeterminateProgressIndicatorDemo()
-        ProgressTextDemo(linearProgress, context)
+        ProgressTextDemo(linearProgress, context, progressString)
     }
     LaunchedEffect(key1 = linearProgress) {
         if (linearProgress >= 1.0) {
@@ -83,6 +90,15 @@ private fun CreateProgressActivityUI(context: Context) {
         } else {
             delay(500)
             linearProgress += Random.nextFloat() / 5
+            if (linearProgress < 0.2f) {
+                progressString = texts[0]
+            } else if (linearProgress > 0.20f && linearProgress < 0.5f) {
+                progressString = texts[1]
+            } else if (linearProgress > 0.5f && linearProgress < 0.9f) {
+                progressString = texts[2]
+            } else if (linearProgress > 0.9f) {
+                progressString = texts[3]
+            }
         }
     }
     LaunchedEffect(key1 = circularProgress) {
@@ -296,7 +312,7 @@ private fun IndeterminateProgressIndicatorDemo() {
 }
 
 @Composable
-private fun ProgressTextDemo(linearProgress: Float, context: Context) {
+private fun ProgressTextDemo(linearProgress: Float, context: Context, progressString: String) {
     Label(
         modifier = Modifier.padding(top = 16.dp),
         text = "Progress Text",
@@ -305,7 +321,7 @@ private fun ProgressTextDemo(linearProgress: Float, context: Context) {
     )
     Spacer(modifier = Modifier.height(12.dp))
     ProgressText(
-        text = "Generating the summary...",
+        text = progressString,
         progress = linearProgress,
         onCancelClick = {},
         modifier = Modifier.width(300.dp),
@@ -327,10 +343,8 @@ class GradientProgressTextToken : ProgressTextTokens() {
     }
 }
 
-private var gradient = Brush.linearGradient(
+private var gradient = Brush.horizontalGradient(
     0.0f to Color(0xFF464FEB),
     0.7f to Color(0xFF47CFFA),
-    0.92f to Color(0xFFB47CF8),
-    start = Offset.Zero,
-    end = Offset.Infinite
+    0.92f to Color(0xFFB47CF8)
 )

@@ -8,7 +8,6 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -17,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.LayoutDirection
@@ -26,6 +26,7 @@ import com.microsoft.fluentui.icons.progresstexticons.DismissCircle
 import com.microsoft.fluentui.progress.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.ProgressTextInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ProgressTextTokens
 import com.microsoft.fluentui.util.dpToPx
@@ -78,7 +79,6 @@ fun ProgressText(
                 .border(
                     border, borderColor, shape
                 )
-
         ) {
             Row(
                 modifier = Modifier.padding(padding),
@@ -109,6 +109,7 @@ fun ProgressText(
                     .fillMaxWidth()
                     .requiredHeight(progressIndicatorHeight)
                     .progressSemantics(progress)
+                    .testTag("progressBar")
             ) {
                 val strokeWidth = dpToPx(progressIndicatorHeight)
                 val yOffset = strokeWidth / 2

@@ -6,17 +6,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
-import androidx.compose.ui.test.assertHeightIsEqualTo
-import androidx.compose.ui.test.assertRangeInfoEquals
-import androidx.compose.ui.test.assertWidthIsEqualTo
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
+import com.microsoft.fluentui.tokenized.progress.ProgressText
 import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import org.junit.Rule
 import org.junit.Test
@@ -30,7 +28,9 @@ class V2ProgressIndicatorUITest {
     fun testLinearProgressIndicatorBounds(){
         composeTestRule.setContent {
             FluentTheme {
-                LinearProgressIndicator(modifier = Modifier.testTag("testPI").width(200.dp))
+                LinearProgressIndicator(modifier = Modifier
+                    .testTag("testPI")
+                    .width(200.dp))
             }
         }
         composeTestRule.onNodeWithTag("testPI").assertHeightIsEqualTo(2.dp).assertWidthIsEqualTo(200.dp)
@@ -71,5 +71,16 @@ class V2ProgressIndicatorUITest {
         }
         val progressIndicator = composeTestRule.onNodeWithTag("testPI")
         progressIndicator.assertRangeInfoEquals(ProgressBarRangeInfo(0.2f,0f..1f))
+    }
+    @Test
+    fun testProgressText(){
+        composeTestRule.setContent {
+            FluentTheme{
+                ProgressText(text = "Loading", progress = 0.5f, onCancelClick = { /*TODO*/ })
+            }
+        }
+        composeTestRule.onNodeWithText("Loading").assertExists().assertIsDisplayed()
+        composeTestRule.onNodeWithTag("progressBar").assertRangeInfoEquals(ProgressBarRangeInfo(0.5f, 0f..1f))
+        composeTestRule.onNodeWithContentDescription("Cancel").assertExists().assertIsDisplayed().assertHasClickAction()
     }
 }
