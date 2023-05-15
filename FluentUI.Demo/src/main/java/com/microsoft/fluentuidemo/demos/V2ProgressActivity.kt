@@ -8,6 +8,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -15,9 +17,12 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
+import com.microsoft.fluentui.theme.token.controlTokens.ProgressTextInfo
+import com.microsoft.fluentui.theme.token.controlTokens.ProgressTextTokens
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
+import com.microsoft.fluentui.tokenized.progress.ProgressText
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.delay
@@ -56,16 +61,17 @@ private fun CreateProgressActivityUI() {
         )
     Column(
         Modifier
-            .padding(start = 12.dp, top = 12.dp)
+            .padding(all = 16.dp)
             .verticalScroll(rememberScrollState())
     ) {
-        LinearProgressIndicatorExample(brandTextColor = brandTextColor, textColor = textColor)
-        CircularProgressIndicatorExamples(textColor = textColor)
-        DeterminateProgressIndicatorExamples(
+        LinearProgressIndicatorDemo(brandTextColor = brandTextColor, textColor = textColor)
+        CircularProgressIndicatorDemo(textColor = textColor)
+        DeterminateProgressIndicatorDemo(
             linearProgress,
             circularProgress
         )
-        IndeterminateProgressIndicatorExamples()
+        IndeterminateProgressIndicatorDemo()
+        ProgressTextDemo(linearProgress)
     }
     LaunchedEffect(key1 = linearProgress) {
         if (linearProgress >= 1.0) {
@@ -90,7 +96,7 @@ private fun CreateProgressActivityUI() {
 }
 
 @Composable
-private fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Color) {
+private fun LinearProgressIndicatorDemo(brandTextColor: Color, textColor: Color) {
     Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
         Label(
             text = "ProgressIndicators",
@@ -111,7 +117,7 @@ private fun LinearProgressIndicatorExample(brandTextColor: Color, textColor: Col
 }
 
 @Composable
-private fun CircularProgressIndicatorExamples(textColor: Color) {
+private fun CircularProgressIndicatorDemo(textColor: Color) {
     Column {
         Row(
             Modifier.height(42.dp),
@@ -202,7 +208,7 @@ private fun CircularProgressIndicatorExamples(textColor: Color) {
 }
 
 @Composable
-private fun DeterminateProgressIndicatorExamples(
+private fun DeterminateProgressIndicatorDemo(
     linearProgress: Float,
     circularProgress: Float
 ) {
@@ -251,7 +257,7 @@ private fun DeterminateProgressIndicatorExamples(
 }
 
 @Composable
-private fun IndeterminateProgressIndicatorExamples() {
+private fun IndeterminateProgressIndicatorDemo() {
     Label(
         modifier = Modifier.padding(top = 16.dp),
         text = "InDeterminate ProgressIndicator",
@@ -286,3 +292,41 @@ private fun IndeterminateProgressIndicatorExamples() {
         )
     }
 }
+
+@Composable
+private fun ProgressTextDemo(linearProgress: Float) {
+    Label(
+        modifier = Modifier.padding(top = 16.dp),
+        text = "Progress Text",
+        textStyle = FluentAliasTokens.TypographyTokens.Title2,
+        colorStyle = ColorStyle.Brand
+    )
+    Spacer(modifier = Modifier.height(12.dp))
+    ProgressText(
+        text = "Generating the summary...",
+        progress = linearProgress,
+        modifier = Modifier.width(300.dp)
+    )
+    Spacer(modifier = Modifier.height(12.dp))
+    ProgressText(
+        text = "Ok... I'll summarize what you missed this morning",
+        progress = linearProgress,
+        modifier = Modifier.width(325.dp),
+        progressTextTokens = GradientProgressTextToken()
+    )
+}
+
+class GradientProgressTextToken : ProgressTextTokens() {
+    @Composable
+    override fun progressbarBrush(progressTextInfo: ProgressTextInfo): Brush {
+        return gradient
+    }
+}
+
+private var gradient = Brush.linearGradient(
+    0.0f to Color(0xFF464FEB),
+    0.7f to Color(0xFF47CFFA),
+    0.92f to Color(0xFFB47CF8),
+    start = Offset.Zero,
+    end = Offset.Infinite
+)
