@@ -3,6 +3,8 @@ package com.microsoft.fluentuidemo.demos
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.ProgressBarRangeInfo
@@ -10,6 +12,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
@@ -76,11 +79,23 @@ class V2ProgressIndicatorUITest {
     fun testProgressText(){
         composeTestRule.setContent {
             FluentTheme{
-                ProgressText(text = "Loading", progress = 0.5f, onCancelClick = { /*TODO*/ })
+                ProgressText(text = "Loading", progress = 0.5f)
             }
         }
         composeTestRule.onNodeWithText("Loading").assertExists().assertIsDisplayed()
         composeTestRule.onNodeWithTag("progressBar").assertRangeInfoEquals(ProgressBarRangeInfo(0.5f, 0f..1f))
-        composeTestRule.onNodeWithContentDescription("Cancel").assertExists().assertIsDisplayed().assertHasClickAction()
+    }
+    @Test
+    fun testProgressTextIcon(){
+        composeTestRule.setContent {
+            FluentTheme{
+                ProgressText(text = "Loading", progress = 0.5f, leadingIconAccessory = FluentIcon(
+                    Icons.Default.Close, contentDescription = "Cancel1", onClick = {}))
+                ProgressText(text = "Loading", progress = 0.5f, leadingIconAccessory = FluentIcon(
+                    Icons.Default.Close, contentDescription = "Cancel2"))
+            }
+        }
+        composeTestRule.onNodeWithContentDescription("Cancel1").assertExists().assertIsDisplayed().assertHasClickAction()
+        composeTestRule.onNodeWithContentDescription("Cancel2").assertExists().assertIsDisplayed().assertHasNoClickAction()
     }
 }
