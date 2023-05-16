@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Clear
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -15,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
@@ -323,14 +326,13 @@ private fun ProgressTextDemo(linearProgress: Float, context: Context, progressSt
     ProgressText(
         text = progressString,
         progress = linearProgress,
-        onCancelClick = {},
         modifier = Modifier.width(300.dp),
     )
     Spacer(modifier = Modifier.height(12.dp))
     ProgressText(
         text = "Ok... I'll summarize what you missed this morning",
         progress = linearProgress,
-        onCancelClick = { Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show() },
+        leadingIconAccessory = FluentIcon(Icons.Outlined.Clear, onClick = { Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show() }),
         modifier = Modifier.width(325.dp),
         progressTextTokens = GradientProgressTextToken()
     )

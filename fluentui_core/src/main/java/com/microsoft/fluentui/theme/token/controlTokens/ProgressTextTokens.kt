@@ -15,7 +15,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-open class ProgressTextInfo : ControlInfo
+data class ProgressTextInfo(val progress: Float) : ControlInfo
 
 @Parcelize
 open class ProgressTextTokens : IControlToken, Parcelable {

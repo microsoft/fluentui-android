@@ -8,6 +8,7 @@ import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -26,6 +27,7 @@ import com.microsoft.fluentui.icons.progresstexticons.DismissCircle
 import com.microsoft.fluentui.progress.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.ProgressTextInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ProgressTextTokens
@@ -36,7 +38,7 @@ import com.microsoft.fluentui.util.dpToPx
  * A ProgressText consists of a Text and a progressbar.
  * @param text Text or info to display
  * @param progress Progress of the progress indicator. 0.0 represents no progress and 1.0 represents full progress.
- * @param onCancelClick onClick method to execute when cancel button is clicked
+ * @param leadingIconAccessory Add an optional leading icon.
  * @param modifier Modifier for the progress text
  * @param progressTextTokens Token values for the ProgressText
  */
@@ -44,13 +46,13 @@ import com.microsoft.fluentui.util.dpToPx
 fun ProgressText(
     text: String,
     progress: Float,
-    onCancelClick: () -> Unit,
+    leadingIconAccessory: FluentIcon? = null,
     modifier: Modifier = Modifier,
     progressTextTokens: ProgressTextTokens? = null
 ) {
     val tokens = progressTextTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ProgressText] as ProgressTextTokens
-    val progressTextInfo = ProgressTextInfo()
+    val progressTextInfo = ProgressTextInfo(progress)
     val currentProgress = animateFloatAsState(
         targetValue = progress.coerceIn(0f..1f), animationSpec = tween(
             delayMillis = 0, durationMillis = 1000, easing = LinearOutSlowInEasing
@@ -84,22 +86,10 @@ fun ProgressText(
                 modifier = Modifier.padding(padding),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Icon(
-                    ProgressTextIcons.DismissCircle,
-                    contentDescription = LocalContext.current.resources.getString(R.string.fluentui_cancel),
-                    modifier = Modifier
-                        .size(iconSize)
-                        .clickable(
-                            interactionSource = remember { MutableInteractionSource() },
-                            indication = LocalIndication.current,
-                            enabled = true,
-                            onClickLabel = null,
-                            role = Role.Button,
-                            onClick = onCancelClick
-                        ),
-                    tint = iconColor
-                )
-                Spacer(modifier = Modifier.width(iconTextSpacing))
+                if (leadingIconAccessory != null) {
+                    Icon(modifier = Modifier.size(iconSize), icon = leadingIconAccessory, tint = iconColor)
+                    Spacer(modifier = Modifier.width(iconTextSpacing))
+                }
                 BasicText(text = text, style = typography.merge(TextStyle(color = textColor)))
             }
         }
