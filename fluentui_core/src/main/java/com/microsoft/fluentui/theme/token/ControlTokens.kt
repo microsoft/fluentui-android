@@ -42,6 +42,7 @@ open class ControlTokens : IControlTokens {
         CardNudge,
         CheckBox,
         CircularProgressIndicator,
+        Citation,
         ContextualCommandBar,
         Dialog,
         Drawer,
@@ -83,6 +84,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.CardNudge -> CardNudgeTokens()
                 ControlType.CheckBox -> CheckBoxTokens()
                 ControlType.CircularProgressIndicator -> CircularProgressIndicatorTokens()
+                ControlType.Citation -> CitationTokens()
                 ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
                 ControlType.Dialog -> DialogTokens()
                 ControlType.Drawer -> DrawerTokens()
