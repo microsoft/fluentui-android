@@ -57,6 +57,7 @@ open class ControlTokens : IControlTokens {
         PillBar,
         PillSwitch,
         PillTabs,
+        ProgressText,
         RadioButton,
         SearchBarPersonaChip,
         SearchBar,
@@ -98,6 +99,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.PillSwitch -> PillSwitchTokens()
                 ControlType.PillTabs -> PillTabsTokens()
+                ControlType.ProgressText -> ProgressTextTokens()
                 ControlType.RadioButton -> RadioButtonTokens()
                 ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.SearchBar -> SearchBarTokens()
