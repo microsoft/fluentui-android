@@ -4,27 +4,19 @@ import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.icons.ProgressTextIcons
-import com.microsoft.fluentui.icons.progresstexticons.DismissCircle
-import com.microsoft.fluentui.progress.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
@@ -66,7 +58,7 @@ fun ProgressText(
     val progressIndicatorHeight = tokens.progressbarHeight(progressTextInfo = progressTextInfo)
     val progressIndicatorBackgroundColor =
         tokens.progressbarBackgroundColor(progressTextInfo = progressTextInfo)
-    val progressIndicatorColor = tokens.progressbarBrush(progressTextInfo = progressTextInfo)
+    val progressIndicatorBrush = tokens.progressbarBrush(progressTextInfo = progressTextInfo)
     val iconTextSpacing = tokens.iconTextSpacing(progressTextInfo = progressTextInfo)
     val padding = tokens.padding(progressTextInfo = progressTextInfo)
     val iconSize = tokens.iconSize(progressTextInfo = progressTextInfo)
@@ -116,7 +108,7 @@ fun ProgressText(
                 val indicatorLineEnd =
                     if (isLtr) progressIndicatorWidth else size.width - progressIndicatorWidth
                 drawLine(
-                    progressIndicatorColor,
+                    progressIndicatorBrush,
                     Offset(barStart, yOffset),
                     Offset(indicatorLineEnd, yOffset),
                     strokeWidth,
