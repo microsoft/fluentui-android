@@ -8,6 +8,7 @@ import androidx.compose.foundation.text.InlineTextContent
 import androidx.compose.foundation.text.appendInlineContent
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.*
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -21,6 +22,7 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.notification.Citation
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class V2CitationActivity : DemoActivity() {
@@ -58,11 +60,22 @@ class V2CitationActivity : DemoActivity() {
             color = textColor
         )
         var hidden by remember { mutableStateOf(true) }
+        var citation1Highlight by remember { mutableStateOf(false) }
         val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
 
         val scope = rememberCoroutineScope()
         val annotatedText = buildAnnotatedString {
-            append(AnnotatedString(text1, spanStyle = textSpanStyle))
+            append(
+                AnnotatedString(
+                    text1, spanStyle = textSpanStyle.plus(
+                        if (citation1Highlight) {
+                            SpanStyle(background = Color.Yellow)
+                        } else {
+                            SpanStyle()
+                        }
+                    )
+                )
+            )
             appendInlineContent("citation1")
             append(AnnotatedString(text2, spanStyle = textSpanStyle))
             appendInlineContent("citations")
@@ -81,6 +94,11 @@ class V2CitationActivity : DemoActivity() {
                 ) {
                     Citation(text = "1", onClick = {
                         hidden = false
+                        citation1Highlight = true
+                        scope.launch {
+                            delay(3000)
+                            citation1Highlight = false
+                        }
                         scope.launch { bottomSheetState.show() }
                     })
                 }),
