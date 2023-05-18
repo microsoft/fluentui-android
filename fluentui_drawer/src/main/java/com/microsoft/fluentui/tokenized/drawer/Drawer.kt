@@ -808,6 +808,7 @@ fun Drawer(
     drawerContent: @Composable () -> Unit
 ) {
     if (drawerState.enable) {
+        val themeID = FluentTheme.themeID
         val tokens = drawerTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
 

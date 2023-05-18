@@ -225,6 +225,7 @@ fun BottomSheet(
     bottomSheetTokens: BottomSheetTokens? = null,
     content: @Composable () -> Unit
 ) {
+    val themeID = FluentTheme.themeID
     val tokens = bottomSheetTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheet] as BottomSheetTokens
 

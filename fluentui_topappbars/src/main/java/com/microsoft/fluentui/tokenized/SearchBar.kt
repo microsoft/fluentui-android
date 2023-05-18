@@ -93,7 +93,7 @@ fun SearchBar(
     rightAccessoryIcon: FluentIcon? = null,
     searchBarTokens: SearchBarTokens? = null
 ) {
-
+    val themeID = FluentTheme.themeID
     val token = searchBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBar] as SearchBarTokens
     val searchBarInfo = SearchBarInfo(style)

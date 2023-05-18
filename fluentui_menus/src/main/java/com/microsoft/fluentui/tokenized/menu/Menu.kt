@@ -66,6 +66,7 @@ fun Menu(
     openedStates.targetState = opened
 
     if (openedStates.currentState || openedStates.targetState) {
+        val themeID = FluentTheme.themeID
         val token =
             menuTokens
                 ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Menu] as MenuTokens

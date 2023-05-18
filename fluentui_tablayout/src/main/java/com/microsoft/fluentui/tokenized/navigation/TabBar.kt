@@ -42,6 +42,7 @@ fun TabBar(
     tabItemTokens: TabItemTokens? = null,
     tabBarTokens: TabBarTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val token = tabBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBar] as TabBarTokens
 

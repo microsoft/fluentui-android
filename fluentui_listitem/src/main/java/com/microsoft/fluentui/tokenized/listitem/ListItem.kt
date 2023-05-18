@@ -249,7 +249,8 @@ object ListItem {
         } else {
             ThreeLine
         }
-        val token = listItemTokens
+        val themeID = FluentTheme.themeID
+	    val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = listItemType,
@@ -458,7 +459,7 @@ object ListItem {
         listItemTokens: ListItemTokens? = null,
         content: (@Composable () -> Unit)? = null
     ) {
-
+        val themeID = FluentTheme.themeID
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
@@ -623,6 +624,7 @@ object ListItem {
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
+        val themeID = FluentTheme.themeID
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
@@ -751,7 +753,8 @@ object ListItem {
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
-        val token = listItemTokens
+        val themeID = FluentTheme.themeID
+	    val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = OneLine,

@@ -58,6 +58,7 @@ fun AvatarCarousel(
     avatarTokens: AvatarTokens? = null,
     avatarCarouselTokens: AvatarCarouselTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val token = avatarCarouselTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarCarousel] as AvatarCarouselTokens
     val avatarCarouselInfo = AvatarCarouselInfo(size)

@@ -58,7 +58,8 @@ fun Button(
     contentDescription: String? = null,
     buttonTokens: ButtonTokens? = null
 ) {
-    val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
+    val themeID = FluentTheme.themeID
+	val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
     val buttonInfo = ButtonInfo(style, size)
     val clickAndSemanticsModifier = Modifier.clickable(
         interactionSource = interactionSource,

@@ -44,6 +44,7 @@ fun TabItem(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     tabItemTokens: TabItemTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val token =
         tabItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItem] as TabItemTokens

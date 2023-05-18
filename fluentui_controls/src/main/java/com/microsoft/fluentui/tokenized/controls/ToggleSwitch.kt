@@ -61,7 +61,8 @@ fun ToggleSwitch(
     switchTokens: ToggleSwitchTokens? = null
 ) {
 
-    val token = switchTokens
+    val themeID = FluentTheme.themeID
+	val token = switchTokens
         ?: FluentTheme.controlTokens.tokens[ControlType.ToggleSwitch] as ToggleSwitchTokens
     val toggleSwitchInfo = ToggleSwitchInfo(checkedState)
     val backgroundColor: Color = animateColorAsState(

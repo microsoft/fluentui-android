@@ -95,7 +95,8 @@ fun TextField(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     textFieldTokens: TextFieldTokens? = null
 ) {
-    val token = textFieldTokens
+    val themeID = FluentTheme.themeID
+	val token = textFieldTokens
         ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
 
     var isFocused: Boolean by rememberSaveable { mutableStateOf(false) }

@@ -299,7 +299,8 @@ class ListContentBuilder {
             }
 
             items(itemDataList) { item ->
-                val token = listItemTokens
+                val themeID = FluentTheme.themeID
+	            val token = listItemTokens
                     ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ListItem] as ListItemTokens
                 ListItem.Item(
                     text = item.title,

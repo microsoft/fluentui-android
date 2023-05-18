@@ -41,6 +41,7 @@ fun Shimmer(
     shape: ShimmerShape = ShimmerShape.Box,
     shimmerTokens: ShimmerTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val tokens = shimmerTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Shimmer] as ShimmerTokens
     val configuration = LocalConfiguration.current

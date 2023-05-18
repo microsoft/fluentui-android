@@ -62,7 +62,8 @@ fun Avatar(
     avatarToken: AvatarTokens? = null
 ) {
 
-    val token = avatarToken
+    val themeID = FluentTheme.themeID
+	val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
     val personInitials = person.getInitials()
@@ -223,6 +224,7 @@ fun Avatar(
     avatarToken: AvatarTokens? = null,
 ) {
 
+    val themeID = FluentTheme.themeID
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
@@ -314,7 +316,8 @@ fun Avatar(
     enableActivityRings: Boolean = false,
     avatarToken: AvatarTokens? = null
 ) {
-    val token = avatarToken
+    val themeID = FluentTheme.themeID
+	val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
     val avatarInfo = AvatarInfo(size, AvatarType.Overflow)

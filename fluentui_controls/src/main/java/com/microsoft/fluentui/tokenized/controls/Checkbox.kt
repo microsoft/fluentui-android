@@ -53,7 +53,8 @@ fun CheckBox(
     checkBoxToken: CheckBoxTokens? = null
 ) {
 
-    val token = checkBoxToken
+    val themeID = FluentTheme.themeID
+	val token = checkBoxToken
         ?: FluentTheme.controlTokens.tokens[ControlType.CheckBox] as CheckBoxTokens
     val checkBoxInfo = CheckBoxInfo(checked)
     val toggleModifier =

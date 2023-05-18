@@ -83,7 +83,8 @@ fun ContextualCommandBar(
     contextualCommandBarToken: ContextualCommandBarTokens? = null
 ) {
 
-    val token = contextualCommandBarToken
+    val themeID = FluentTheme.themeID
+	val token = contextualCommandBarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ContextualCommandBar] as ContextualCommandBarTokens
 
     val contextualCommandBarInfo = ContextualCommandBarInfo()

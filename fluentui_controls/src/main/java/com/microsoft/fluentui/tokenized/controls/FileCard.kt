@@ -59,7 +59,8 @@ fun FileCard(
     actionOverflowIcon: FluentIcon? = null,
     fileCardTokens: FileCardTokens? = null
 ) {
-    val token = fileCardTokens
+    val themeID = FluentTheme.themeID
+	val token = fileCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FileCard] as FileCardTokens
     val isPreviewAvailable = !(previewImageDrawable == null && previewImageVector == null)
     val fileCardInfo = FileCardInfo(isPreviewAvailable)

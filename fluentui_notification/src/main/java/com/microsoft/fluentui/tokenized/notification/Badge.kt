@@ -40,6 +40,7 @@ fun Badge(
     badgeType: BadgeType = BadgeType.List,
     badgeTokens: BadgeTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val token = badgeTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Badge] as BadgeTokens
     val badgeInfo = BadgeInfo(badgeType)

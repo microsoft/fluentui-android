@@ -45,7 +45,8 @@ fun RadioButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     radioButtonToken: RadioButtonTokens? = null
 ) {
-    val token = radioButtonToken
+    val themeID = FluentTheme.themeID
+	val token = radioButtonToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
     val radioButtonInfo = RadioButtonInfo(selected)
     val dotRadius = animateDpAsState(

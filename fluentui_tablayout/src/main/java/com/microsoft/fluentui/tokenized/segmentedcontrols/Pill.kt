@@ -75,6 +75,7 @@ fun PillButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     pillButtonTokens: PillButtonTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val token = pillButtonTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillButton] as PillButtonTokens
     val pillButtonInfo = PillButtonInfo(
@@ -245,7 +246,8 @@ fun PillBar(
     if (metadataList.size == 0)
         return
 
-    val token = pillBarTokens
+    val themeID = FluentTheme.themeID
+	val token = pillBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBar] as PillBarTokens
 
     val pillBarInfo = PillBarInfo(style)

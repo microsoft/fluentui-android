@@ -47,7 +47,8 @@ fun AnnouncementCard(
     @DrawableRes previewImageDrawable: Int? = null,
     announcementCardTokens: AnnouncementCardTokens? = null
 ) {
-    val token = announcementCardTokens
+    val themeID = FluentTheme.themeID
+	val token = announcementCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AnnouncementCard] as AnnouncementCardTokens
     val announcementCardInfo = AnnouncementCardInfo()
     val textColor = token.textColor(announcementCardInfo = announcementCardInfo)

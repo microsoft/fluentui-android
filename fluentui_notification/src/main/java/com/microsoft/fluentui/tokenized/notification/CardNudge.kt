@@ -83,6 +83,7 @@ fun CardNudge(
     outlineMode: Boolean = false,
     cardNudgeTokens: CardNudgeTokens? = null
 ) {
+    val themeID = FluentTheme.themeID
     val token = cardNudgeTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CardNudge] as CardNudgeTokens
 
