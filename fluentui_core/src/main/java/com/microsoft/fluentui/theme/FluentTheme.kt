@@ -13,6 +13,7 @@ enum class ThemeMode {
 }
 
 internal val LocalThemeMode = compositionLocalOf { ThemeMode.Auto }
+internal val LocalThemeID = compositionLocalOf { 1 }
 
 /**
  * FluentTheme function is a entry point for UI created using Fluent Control. Provide your UI Logic
@@ -44,11 +45,13 @@ fun FluentTheme(
     val appAliasTokens by FluentTheme.observeAliasToken(initial = AliasTokens())
     val appControlTokens by FluentTheme.observeControlToken(initial = ControlTokens())
     val appThemeMode by FluentTheme.observeThemeMode(initial = ThemeMode.Auto)
+    val appThemeID by FluentTheme.observeThemeID(initial = 1)
 
     CompositionLocalProvider(
         LocalAliasTokens provides (aliasTokens ?: appAliasTokens),
         LocalControlTokens provides (controlTokens ?: appControlTokens),
-        LocalThemeMode provides (themeMode ?: appThemeMode)
+        LocalThemeMode provides (themeMode ?: appThemeMode),
+        LocalThemeID provides appThemeID
     ) {
         content()
     }
@@ -82,15 +85,23 @@ object FluentTheme : ViewModel() {
         @ReadOnlyComposable
         get() = LocalThemeMode.current
 
+
+    val themeID: Int
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalThemeID.current
+
     private var aliasTokens_: MutableLiveData<IAliasTokens> = MutableLiveData(AliasTokens())
     private var controlTokens_: MutableLiveData<IControlTokens> = MutableLiveData(ControlTokens())
     private var themeMode_: MutableLiveData<ThemeMode> = MutableLiveData(ThemeMode.Auto)
+    private var themeID_: MutableLiveData<Int> = MutableLiveData(1)
 
     /**
      * Update aliasTokens across all FluentTheme scope where explicit values is not provided to it.
      */
     fun updateAliasTokens(overrideAliasTokens: IAliasTokens) {
         aliasTokens_.value = overrideAliasTokens
+        updateThemeID()
     }
 
     /**
@@ -98,6 +109,7 @@ object FluentTheme : ViewModel() {
      */
     fun updateControlTokens(overrideControlTokens: IControlTokens) {
         controlTokens_.value = overrideControlTokens
+        updateThemeID()
     }
 
     /**
@@ -105,16 +117,19 @@ object FluentTheme : ViewModel() {
      */
     fun updateThemeMode(overrideThemeMode: ThemeMode) {
         themeMode_.value = overrideThemeMode
+        updateThemeID()
+    }
+
+    /*
+     * Update ThemeID for a new combination of AliasTokens, ControlTokens and ThemeMode.
+     */
+    private fun updateThemeID() {
+        themeID_.value = themeID_.value?.plus(1)
     }
 
     @Composable
     internal fun observeAliasToken(initial: IAliasTokens): State<IAliasTokens> {
         return this.aliasTokens_.observeAsState(initial)
-    }
-
-    @Composable
-    internal fun observeAliasToken(): State<IAliasTokens?> {
-        return this.aliasTokens_.observeAsState()
     }
 
     @Composable
@@ -125,5 +140,10 @@ object FluentTheme : ViewModel() {
     @Composable
     internal fun observeThemeMode(initial: ThemeMode): State<ThemeMode> {
         return this.themeMode_.observeAsState(initial = initial)
+    }
+
+    @Composable
+    internal fun observeThemeID(initial: Int): State<Int> {
+        return this.themeID_.observeAsState(initial = initial)
     }
 }

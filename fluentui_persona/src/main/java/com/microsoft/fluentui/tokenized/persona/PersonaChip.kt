@@ -55,6 +55,8 @@ fun PersonaChip(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     personaChipTokens: PersonaChipTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = personaChipTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PersonaChip] as PersonaChipTokens
     val personaChipInfo = PersonaChipInfo(

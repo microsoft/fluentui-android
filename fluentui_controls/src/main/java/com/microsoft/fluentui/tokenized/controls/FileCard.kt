@@ -59,6 +59,8 @@ fun FileCard(
     actionOverflowIcon: FluentIcon? = null,
     fileCardTokens: FileCardTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = fileCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FileCard] as FileCardTokens
     val isPreviewAvailable = !(previewImageDrawable == null && previewImageVector == null)

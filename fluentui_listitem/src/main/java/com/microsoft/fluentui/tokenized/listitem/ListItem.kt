@@ -249,6 +249,8 @@ object ListItem {
         } else {
             ThreeLine
         }
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
@@ -458,7 +460,8 @@ object ListItem {
         listItemTokens: ListItemTokens? = null,
         content: (@Composable () -> Unit)? = null
     ) {
-
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
@@ -623,6 +626,8 @@ object ListItem {
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
@@ -751,6 +756,8 @@ object ListItem {
         trailingAccessoryView: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(

@@ -17,6 +17,8 @@ fun Divider(
     height: Dp = 1.dp,
     dividerToken: DividerTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token =
         dividerToken
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Divider] as DividerTokens

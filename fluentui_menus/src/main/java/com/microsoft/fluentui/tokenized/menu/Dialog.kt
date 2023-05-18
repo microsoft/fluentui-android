@@ -37,6 +37,8 @@ fun Dialog(
     dialogTokens: DialogTokens? = null,
     content: @Composable () -> Unit
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = dialogTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Dialog] as DialogTokens
     val dialogInfo = DialogInfo()
