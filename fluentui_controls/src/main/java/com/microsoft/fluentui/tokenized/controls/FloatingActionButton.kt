@@ -57,7 +57,8 @@ fun FloatingActionButton(
     if (icon == null && (text == null || text == ""))
         return
 
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = fabTokens
         ?: FluentTheme.controlTokens.tokens[ControlType.FloatingActionButton] as FABTokens
 

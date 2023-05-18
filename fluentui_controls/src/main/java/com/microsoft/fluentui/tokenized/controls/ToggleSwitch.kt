@@ -61,7 +61,8 @@ fun ToggleSwitch(
     switchTokens: ToggleSwitchTokens? = null
 ) {
 
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = switchTokens
         ?: FluentTheme.controlTokens.tokens[ControlType.ToggleSwitch] as ToggleSwitchTokens
     val toggleSwitchInfo = ToggleSwitchInfo(checkedState)

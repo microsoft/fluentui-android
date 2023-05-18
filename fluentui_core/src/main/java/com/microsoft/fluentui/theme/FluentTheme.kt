@@ -5,7 +5,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.microsoft.fluentui.theme.token.*
-import kotlin.random.Random
 
 enum class ThemeMode {
     Light,
@@ -121,11 +120,11 @@ object FluentTheme : ViewModel() {
         updateThemeID()
     }
 
+    /*
+     * Update ThemeID for a new combination of AliasTokens, ControlTokens and ThemeMode.
+     */
     private fun updateThemeID() {
-        var temp = Random.nextInt()
-        while (temp == themeID_.value)
-            temp = Random.nextInt()
-        themeID_.value = temp
+        themeID_.value = themeID_.value?.plus(1)
     }
 
     @Composable

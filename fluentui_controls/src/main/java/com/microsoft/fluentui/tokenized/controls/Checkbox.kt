@@ -53,7 +53,8 @@ fun CheckBox(
     checkBoxToken: CheckBoxTokens? = null
 ) {
 
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = checkBoxToken
         ?: FluentTheme.controlTokens.tokens[ControlType.CheckBox] as CheckBoxTokens
     val checkBoxInfo = CheckBoxInfo(checked)

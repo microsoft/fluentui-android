@@ -45,7 +45,8 @@ fun TabBar(
     tabItemTokens: TabItemTokens? = null,
     tabBarTokens: TabBarTokens? = null
 ) {
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = tabBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBar] as TabBarTokens
 

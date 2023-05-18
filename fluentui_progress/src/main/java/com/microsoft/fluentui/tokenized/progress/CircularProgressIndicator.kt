@@ -36,7 +36,8 @@ fun CircularProgressIndicator(
     style: FluentStyle = FluentStyle.Neutral,
     circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
 ) {
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = circularProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicator] as CircularProgressIndicatorTokens
     val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(
@@ -99,7 +100,8 @@ fun CircularProgressIndicator(
     style: FluentStyle = FluentStyle.Neutral,
     circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
 ) {
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = circularProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicator] as CircularProgressIndicatorTokens
     val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(

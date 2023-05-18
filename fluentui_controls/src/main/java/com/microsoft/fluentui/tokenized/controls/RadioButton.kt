@@ -45,7 +45,8 @@ fun RadioButton(
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     radioButtonToken: RadioButtonTokens? = null
 ) {
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = radioButtonToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
     val radioButtonInfo = RadioButtonInfo(selected)

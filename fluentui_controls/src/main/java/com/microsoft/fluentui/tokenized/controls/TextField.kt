@@ -95,7 +95,8 @@ fun TextField(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     textFieldTokens: TextFieldTokens? = null
 ) {
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = textFieldTokens
         ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
 

@@ -299,7 +299,8 @@ class ListContentBuilder {
             }
 
             items(itemDataList) { item ->
-                val themeID = FluentTheme.themeID
+                val themeID =
+                    FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
                 val token = listItemTokens
                     ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ListItem] as ListItemTokens
                 ListItem.Item(

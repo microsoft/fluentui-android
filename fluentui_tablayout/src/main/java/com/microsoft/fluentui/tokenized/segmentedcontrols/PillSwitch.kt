@@ -47,7 +47,8 @@ fun PillSwitch(
     if (metadataList.size == 0)
         return
 
-    val themeID = FluentTheme.themeID
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = pillSwitchTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillSwitch] as PillSwitchTokens
 
