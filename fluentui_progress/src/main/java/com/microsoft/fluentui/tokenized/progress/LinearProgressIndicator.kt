@@ -34,6 +34,8 @@ fun LinearProgressIndicator(
     linearProgressIndicatorHeight: LinearProgressIndicatorHeight = LinearProgressIndicatorHeight.XXXSmall,
     linearProgressIndicatorTokens: LinearProgressIndicatorTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = linearProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.LinearProgressIndicator] as LinearProgressIndicatorTokens
     val linearProgressIndicatorInfo = LinearProgressIndicatorInfo(
@@ -97,6 +99,8 @@ fun LinearProgressIndicator(
     linearProgressIndicatorHeight: LinearProgressIndicatorHeight = LinearProgressIndicatorHeight.XXXSmall,
     linearProgressIndicatorTokens: LinearProgressIndicatorTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = linearProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.LinearProgressIndicator] as LinearProgressIndicatorTokens
     val linearProgressIndicatorInfo = LinearProgressIndicatorInfo(

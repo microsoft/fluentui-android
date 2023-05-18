@@ -62,6 +62,8 @@ fun Avatar(
     avatarToken: AvatarTokens? = null
 ) {
 
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
@@ -223,6 +225,8 @@ fun Avatar(
     avatarToken: AvatarTokens? = null,
 ) {
 
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
@@ -314,6 +318,8 @@ fun Avatar(
     enableActivityRings: Boolean = false,
     avatarToken: AvatarTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 

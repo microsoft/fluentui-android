@@ -43,6 +43,8 @@ fun PillTabs(
     if (metadataList.size == 0)
         return
 
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token =
         tabsTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillTabs] as PillTabsTokens

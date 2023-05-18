@@ -27,6 +27,8 @@ fun Label(
     modifier: Modifier = Modifier,
     labelTokens: LabelTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = labelTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Label] as LabelTokens
     val labelInfo = LabelInfo(textStyle, colorStyle)

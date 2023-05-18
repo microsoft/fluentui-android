@@ -38,6 +38,8 @@ fun Citation(
     modifier: Modifier = Modifier,
     citationTokens: CitationTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = citationTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Citation] as CitationTokens
     val citationInfo = CitationInfo()

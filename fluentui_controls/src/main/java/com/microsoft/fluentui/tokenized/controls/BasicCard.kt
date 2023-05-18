@@ -28,6 +28,8 @@ fun BasicCard(
     basicCardTokens: BasicCardTokens? = null,
     content: @Composable () -> Unit
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = basicCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCard] as BasicCardTokens
     val basicCardInfo = BasicCardInfo(CardType.Elevated)

@@ -66,6 +66,8 @@ fun Menu(
     openedStates.targetState = opened
 
     if (openedStates.currentState || openedStates.targetState) {
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token =
             menuTokens
                 ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Menu] as MenuTokens

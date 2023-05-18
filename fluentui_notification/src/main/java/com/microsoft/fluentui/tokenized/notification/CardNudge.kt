@@ -83,6 +83,8 @@ fun CardNudge(
     outlineMode: Boolean = false,
     cardNudgeTokens: CardNudgeTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = cardNudgeTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CardNudge] as CardNudgeTokens
 

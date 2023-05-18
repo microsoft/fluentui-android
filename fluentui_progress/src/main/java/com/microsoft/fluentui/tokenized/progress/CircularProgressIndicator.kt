@@ -36,6 +36,8 @@ fun CircularProgressIndicator(
     style: FluentStyle = FluentStyle.Neutral,
     circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = circularProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicator] as CircularProgressIndicatorTokens
     val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(
@@ -98,6 +100,8 @@ fun CircularProgressIndicator(
     style: FluentStyle = FluentStyle.Neutral,
     circularProgressIndicatorTokens: CircularProgressIndicatorTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = circularProgressIndicatorTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CircularProgressIndicator] as CircularProgressIndicatorTokens
     val circularProgressIndicatorInfo = CircularProgressIndicatorInfo(
@@ -129,9 +133,9 @@ fun CircularProgressIndicator(
     )
     val indicatorSizeInPx = dpToPx(circularProgressIndicatorSize)
     Canvas(
-            modifier = modifier
-                .requiredSize(circularProgressIndicatorSize)
-                .progressSemantics()
+        modifier = modifier
+            .requiredSize(circularProgressIndicatorSize)
+            .progressSemantics()
     ) {
         drawArc(
             circularProgressIndicatorColor,
@@ -142,6 +146,6 @@ fun CircularProgressIndicator(
                 indicatorSizeInPx, indicatorSizeInPx
             ),
             style = Stroke(dpToPx(circularProgressIndicatorStrokeWidth), cap = StrokeCap.Round)
-       )
+        )
     }
 }

@@ -808,6 +808,8 @@ fun Drawer(
     drawerContent: @Composable () -> Unit
 ) {
     if (drawerState.enable) {
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val tokens = drawerTokens
             ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
 

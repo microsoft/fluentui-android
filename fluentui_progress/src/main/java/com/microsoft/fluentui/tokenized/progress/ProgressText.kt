@@ -42,6 +42,8 @@ fun ProgressText(
     modifier: Modifier = Modifier,
     progressTextTokens: ProgressTextTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = progressTextTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ProgressText] as ProgressTextTokens
     val progressTextInfo = ProgressTextInfo(progress)

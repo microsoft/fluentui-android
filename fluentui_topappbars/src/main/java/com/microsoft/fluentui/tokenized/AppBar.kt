@@ -80,6 +80,8 @@ fun AppBar(
     accessoryDelta: Float = 1.0F,
     appBarTokens: AppBarTokens? = null
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = appBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBar] as AppBarTokens
 

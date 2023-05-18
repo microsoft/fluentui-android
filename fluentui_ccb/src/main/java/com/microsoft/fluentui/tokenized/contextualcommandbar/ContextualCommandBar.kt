@@ -83,6 +83,8 @@ fun ContextualCommandBar(
     contextualCommandBarToken: ContextualCommandBarTokens? = null
 ) {
 
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = contextualCommandBarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ContextualCommandBar] as ContextualCommandBarTokens
 
