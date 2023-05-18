@@ -63,7 +63,7 @@ fun Avatar(
 ) {
 
     val themeID = FluentTheme.themeID
-	val token = avatarToken
+    val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
     val personInitials = person.getInitials()
@@ -317,7 +317,7 @@ fun Avatar(
     avatarToken: AvatarTokens? = null
 ) {
     val themeID = FluentTheme.themeID
-	val token = avatarToken
+    val token = avatarToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
 
     val avatarInfo = AvatarInfo(size, AvatarType.Overflow)

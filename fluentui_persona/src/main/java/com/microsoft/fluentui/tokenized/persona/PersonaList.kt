@@ -48,14 +48,16 @@ fun PersonaList(
 ) {
     val scope = rememberCoroutineScope()
     val lazyListState = rememberLazyListState()
-    LazyColumn(state = lazyListState, modifier = modifier.draggable(
-        orientation = Orientation.Vertical,
-        state = rememberDraggableState { delta ->
-            scope.launch {
-                lazyListState.scrollBy(-delta)
-            }
-        },
-    )) {
+    LazyColumn(
+        state = lazyListState, modifier = modifier.draggable(
+            orientation = Orientation.Vertical,
+            state = rememberDraggableState { delta ->
+                scope.launch {
+                    lazyListState.scrollBy(-delta)
+                }
+            },
+        )
+    ) {
         items(personas) { item ->
             ListItem.Item(
                 text = item.title,

@@ -247,7 +247,7 @@ fun PillBar(
         return
 
     val themeID = FluentTheme.themeID
-	val token = pillBarTokens
+    val token = pillBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBar] as PillBarTokens
 
     val pillBarInfo = PillBarInfo(style)

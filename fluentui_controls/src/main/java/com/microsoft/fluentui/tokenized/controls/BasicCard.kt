@@ -29,7 +29,7 @@ fun BasicCard(
     content: @Composable () -> Unit
 ) {
     val themeID = FluentTheme.themeID
-	val token = basicCardTokens
+    val token = basicCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCard] as BasicCardTokens
     val basicCardInfo = BasicCardInfo(CardType.Elevated)
     val cornerRadius = token.cornerRadius(basicCardInfo = basicCardInfo)

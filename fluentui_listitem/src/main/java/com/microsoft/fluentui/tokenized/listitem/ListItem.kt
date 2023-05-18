@@ -250,7 +250,7 @@ object ListItem {
             ThreeLine
         }
         val themeID = FluentTheme.themeID
-	    val token = listItemTokens
+        val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = listItemType,
@@ -754,7 +754,7 @@ object ListItem {
         listItemTokens: ListItemTokens? = null
     ) {
         val themeID = FluentTheme.themeID
-	    val token = listItemTokens
+        val token = listItemTokens
             ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = OneLine,

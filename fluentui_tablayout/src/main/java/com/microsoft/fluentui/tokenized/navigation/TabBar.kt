@@ -9,7 +9,10 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.TabBarInfo
+import com.microsoft.fluentui.theme.token.controlTokens.TabBarTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
+import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
 
 

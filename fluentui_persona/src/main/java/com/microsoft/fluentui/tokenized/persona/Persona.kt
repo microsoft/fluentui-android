@@ -2,11 +2,13 @@ package com.microsoft.fluentui.tokenized.persona
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarTokens
+import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.None
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType.NoBorder
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
-import com.microsoft.fluentui.tokenized.listitem.TextIcons
 
 /**
  * A customized  list item. Can be a Single or multiline Avatar item. Size of the persona is based on the texts provided

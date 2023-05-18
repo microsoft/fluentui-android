@@ -58,7 +58,7 @@ fun FloatingActionButton(
         return
 
     val themeID = FluentTheme.themeID
-	val token = fabTokens
+    val token = fabTokens
         ?: FluentTheme.controlTokens.tokens[ControlType.FloatingActionButton] as FABTokens
 
     val fabInfo = FABInfo(state, size)

@@ -60,7 +60,7 @@ fun FileCard(
     fileCardTokens: FileCardTokens? = null
 ) {
     val themeID = FluentTheme.themeID
-	val token = fileCardTokens
+    val token = fileCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FileCard] as FileCardTokens
     val isPreviewAvailable = !(previewImageDrawable == null && previewImageVector == null)
     val fileCardInfo = FileCardInfo(isPreviewAvailable)

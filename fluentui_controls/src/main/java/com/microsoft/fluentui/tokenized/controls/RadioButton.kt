@@ -46,7 +46,7 @@ fun RadioButton(
     radioButtonToken: RadioButtonTokens? = null
 ) {
     val themeID = FluentTheme.themeID
-	val token = radioButtonToken
+    val token = radioButtonToken
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.RadioButton] as RadioButtonTokens
     val radioButtonInfo = RadioButtonInfo(selected)
     val dotRadius = animateDpAsState(
