@@ -3,16 +3,10 @@ Release Version 0.1.25:
 What's New:
 
 Fluent V2:
-    New Component: FileCard, Announcement Card, Basic Card.
+    New Component: Label, Dialog, Progress Text, Citation.
 	
     Fix/Enhancement:
-		1) Added support of custom Control token to leverage FluentTheme API.
-		2) Updated background controlToken to use Brush instead of Color to support gradient color.
-		3) Enhanced Fluent Icon & text to remove material dependency for these.
+		1) Fix : Updating control Token in ControlToken object & providing the same to FluentTheme API will now recompose the controls & hence updates get applied immediately.
+		2) Replace material Surface control with Box
 
-Note: This release has breaking changes.
-    1) AliasTokens renamed to FluentAliasTokens.
-    2) GlobalTokens renamed to FluentGlobalTokens.
-    3) Removed AppThemeController & merge its functionality to FluentTheme singleton class.
-    4) FluentTheme function parameter changed from taking AliasTokens, ControlTokens objects to implementation of IAliasTokens, IControlTokens.
-    5) In control tokens, backgroundColor function renamed to backgroundBrush to support gradient.
+	Demo App: Moving Shimmer out of Progress Bar as V2 Progress Activity.
