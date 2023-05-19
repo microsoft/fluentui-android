@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Aizvērt lapu</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Aizvērt</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Meklēt</string>
     <!--name of the icon -->

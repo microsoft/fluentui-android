@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Zavřít list</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Zavřít</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Hledat</string>
     <!--name of the icon -->

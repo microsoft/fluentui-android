@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Lukk rekneark</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Lukk</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Søk</string>
     <!--name of the icon -->

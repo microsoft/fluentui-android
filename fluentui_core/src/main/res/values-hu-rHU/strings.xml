@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Lap bezárása</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Bezárás</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Keresés</string>
     <!--name of the icon -->

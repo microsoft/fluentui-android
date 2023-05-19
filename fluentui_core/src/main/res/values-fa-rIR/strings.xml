@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">بستن صفحه</string>
     <!-- Describes close action -->
     <string name="fluentui_close">بستن</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">جستجو</string>
     <!--name of the icon -->

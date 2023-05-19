@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">關閉工作表</string>
     <!-- Describes close action -->
     <string name="fluentui_close">關閉</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">搜尋</string>
     <!--name of the icon -->
