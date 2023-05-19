@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -78,7 +79,6 @@ private fun CreateActivityUI() {
     var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-            "Open Drawer",
             selectedBehaviorType,
             if (listContent)
                 getDrawerContent(selectedContent)
@@ -298,7 +298,6 @@ private fun CreateActivityUI() {
 
 @Composable
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-    primaryScreenButtonText: String,
     behaviorType: BehaviorType,
     drawerContent: @Composable ((() -> Unit) -> Unit),
     expandable: Boolean = true,
@@ -309,13 +308,24 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
     val open: () -> Unit = {
         scope.launch { drawerState.open() }
     }
+    val expand: () -> Unit = {
+        scope.launch { drawerState.expand() }
+    }
     val close: () -> Unit = {
         scope.launch { drawerState.close() }
     }
-    PrimarySurfaceContent(
-        open,
-        text = primaryScreenButtonText
-    )
+    Row {
+        PrimarySurfaceContent(
+            open,
+            text = stringResource(id = R.string.drawer_open)
+        )
+        Spacer(modifier = Modifier.width(10.dp))
+        PrimarySurfaceContent(
+            expand,
+            text = stringResource(id = R.string.drawer_expand)
+        )
+    }
+
     Drawer(
         drawerState = drawerState,
         drawerContent = { drawerContent(close) },
