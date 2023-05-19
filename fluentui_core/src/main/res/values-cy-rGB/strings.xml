@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Cau\'r Ddalen</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Cau</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Chwilio</string>
     <!--name of the icon -->
