@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">ປິດຊີດ</string>
     <!-- Describes close action -->
     <string name="fluentui_close">ປິດ</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">ຊອກຫາ</string>
     <!--name of the icon -->

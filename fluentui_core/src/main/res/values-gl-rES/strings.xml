@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Pechar folla</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Pechar</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Buscar</string>
     <!--name of the icon -->

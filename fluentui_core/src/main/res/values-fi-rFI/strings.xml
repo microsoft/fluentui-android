@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Sulje taulukko</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Sulje</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Haku</string>
     <!--name of the icon -->

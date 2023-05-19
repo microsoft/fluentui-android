@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Закрыть лист</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Закрыть</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Поиск</string>
     <!--name of the icon -->

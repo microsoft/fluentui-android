@@ -25,6 +25,8 @@
     <string name="fluentui_close_sheet">Varaqni yopish</string>
     <!-- Describes close action -->
     <string name="fluentui_close">Yopish</string>
+    <!-- Describes cancel action -->
+    <string name="fluentui_cancel">Cancel</string>
     <!--name of the icon -->
     <string name="fluentui_search">Qidiruv</string>
     <!--name of the icon -->
