@@ -161,7 +161,9 @@ class DrawerState(
      * @throws [CancellationException] if the animation is interrupted
      */
     suspend fun expand() {
+        enable = true
         animationInProgress = true
+        delay(50)
         val targetValue = when {
             hasExpandedState -> DrawerValue.Expanded
             else -> DrawerValue.Open
