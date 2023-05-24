@@ -7,7 +7,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -21,10 +25,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
-import com.microsoft.fluentui.tokenized.controls.Button
-import com.microsoft.fluentui.tokenized.controls.CheckBox
-import com.microsoft.fluentui.tokenized.controls.RadioButton
-import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
+import com.microsoft.fluentui.tokenized.controls.*
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.listitem.TextIcons
@@ -474,16 +475,15 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
 private fun ThreeLineListAccessoryViewContent(
     context: Context
 ) {
+    val seperator = " • "
     return Column {
         ListItem.Item(
-            text = primaryText,
-            subText = secondaryText,
-            secondarySubText = tertiaryText,
-            primaryTextLeadingIcons = twoTextIcons20(),
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextLeadingIcons = twoTextIcons16(),
-            secondarySubTextTailingIcons = twoTextIcons16(),
-            leadingAccessoryView = { LeftViewFolderIcon40() },
+            text = "Robert replied to your comment",
+            subText = "Wanda can you please update",
+            secondarySubText = "3 min ago"+ seperator + "FluentGuide V1.pptx",
+            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
+            trailingAccessoryView = {rightViewIconButton()},
+            textMaxLines = 2,
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -669,6 +669,13 @@ private fun Icon20() {
 @Composable
 private fun LeftViewFolderIcon40() {
     return Image(ListItemIcons.Folder40, "Folder")
+}
+
+@Composable
+private fun rightViewIconButton(){
+    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        Icon(Icons.Outlined.MoreVert, contentDescription = "")
+    }
 }
 
 @Composable
