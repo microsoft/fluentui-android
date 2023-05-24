@@ -124,7 +124,6 @@ object ListItem {
         }
     }
 
-    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     private fun InlineText(
         description: String,
@@ -239,6 +238,8 @@ object ListItem {
         bottomView: (@Composable () -> Unit)? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
@@ -255,14 +256,13 @@ object ListItem {
             listItemType = listItemType,
             borderInset = borderInset,
             horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
-            verticalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size120,
             unreadDot = unreadDot
         )
         val backgroundColor =
             token.backgroundBrush(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
-        val cellHeight = token.cellHeight(listItemInfo)
         val primaryTextTypography = token.primaryTextTypography(listItemInfo)
         val subTextTypography = token.subTextTypography(listItemInfo)
         val secondarySubTextTypography =
@@ -292,37 +292,53 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-
+        val leadingAccessoryAlignment = when(leadingAccessoryViewAlignment){
+            Alignment.Top -> Alignment.TopCenter
+            Alignment.Bottom -> Alignment.BottomCenter
+            else -> Alignment.Center
+        }
+        val trailingAccessoryAlignment = when(trailingAccessoryViewAlignment){
+            Alignment.Top -> Alignment.TopEnd
+            Alignment.Bottom -> Alignment.BottomEnd
+            else -> Alignment.CenterEnd
+        }
         Row(
             modifier
                 .background(backgroundColor)
                 .fillMaxWidth()
-                .heightIn(min = cellHeight)
+                .height(IntrinsicSize.Max)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .clickAndSemanticsModifier(
                     interactionSource, onClick = onClick ?: {}, enabled, rippleColor
                 ), verticalAlignment = Alignment.CenterVertically
         ) {
-            if (unreadDot) {
-                Canvas(
-                    modifier = Modifier
-                        .padding(start = 4.dp)
-                        .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
-                ) {
-                    drawCircle(
-                        color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
-                    )
-                }
-            }
             if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
-                    Modifier.padding(
-                        start = if (unreadDot) 4.dp else padding.calculateStartPadding(
-                            LocalLayoutDirection.current
+                    modifier = Modifier
+                        .padding(
+                            start = if (unreadDot) 4.dp else padding.calculateStartPadding(
+                                LocalLayoutDirection.current
+                            ),
+                            top = if(leadingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if(leadingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
                         )
-                    ), contentAlignment = Alignment.Center
+                        .fillMaxHeight(), contentAlignment = leadingAccessoryAlignment
                 ) {
-                    leadingAccessoryView()
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        if (unreadDot) {
+                            Canvas(
+                                modifier = Modifier
+                                    .padding(start = 4.dp)
+                                    .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
+                            ) {
+                                drawCircle(
+                                    color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
+                                )
+                            }
+                            Spacer(modifier = Modifier.width(4.dp))
+                        }
+                        leadingAccessoryView()
+                    }
                 }
             }
             val contentAlignment =
@@ -406,8 +422,10 @@ object ListItem {
             }
             if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
-                    Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
-                    contentAlignment = Alignment.CenterEnd
+                    Modifier.padding(top = if(trailingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                        bottom = if(trailingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
+                        end = padding.calculateEndPadding(LocalLayoutDirection.current)).fillMaxHeight(),
+                    contentAlignment = trailingAccessoryAlignment
                 ) {
                     trailingAccessoryView()
                 }
