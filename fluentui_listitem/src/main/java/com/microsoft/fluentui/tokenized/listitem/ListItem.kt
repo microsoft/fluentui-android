@@ -211,6 +211,8 @@ object ListItem {
      * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
      * @param leadingAccessoryView Optional composable leading accessory view.
      * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param leadingAccessoryViewAlignment Alignment for leading accessory view to align Top, Bottom or Center
+     * @param trailingAccessoryViewAlignment Alignment for trailing accessory view to align Top, Bottom or Center
      * @param textAccessibilityProperties Accessibility properties for the text in list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      *
