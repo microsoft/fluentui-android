@@ -195,6 +195,8 @@ object ListItem {
      * @param modifier Optional modifier for List item.
      * @param subText Optional secondaryText or a subtitle.
      * @param secondarySubText Optional tertiary text or a footer.
+     * @param secondarySubTextAnnotated Optional tertiary text (Annotated) or a footer. If [secondarySubText] is provided this will be ignored.
+     * @param secondarySubTextInlineContent Map of composables to replace certain ranges of text in [secondarySubTextAnnotated].
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
      * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
      * @param enabled Optional enable/disable List item
@@ -223,6 +225,8 @@ object ListItem {
         modifier: Modifier = Modifier,
         subText: String? = null,
         secondarySubText: String? = null,
+        secondarySubTextAnnotated: AnnotatedString? = null,
+        secondarySubTextInlineContent: Map<String, InlineTextContent> = mapOf(),
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
@@ -294,12 +298,12 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-        val leadingAccessoryAlignment = when(leadingAccessoryViewAlignment){
+        val leadingAccessoryAlignment = when (leadingAccessoryViewAlignment) {
             Alignment.Top -> Alignment.TopCenter
             Alignment.Bottom -> Alignment.BottomCenter
             else -> Alignment.Center
         }
-        val trailingAccessoryAlignment = when(trailingAccessoryViewAlignment){
+        val trailingAccessoryAlignment = when (trailingAccessoryViewAlignment) {
             Alignment.Top -> Alignment.TopEnd
             Alignment.Bottom -> Alignment.BottomEnd
             else -> Alignment.CenterEnd
@@ -321,8 +325,8 @@ object ListItem {
                             start = if (unreadDot) 4.dp else padding.calculateStartPadding(
                                 LocalLayoutDirection.current
                             ),
-                            top = if(leadingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
-                            bottom = if(leadingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
+                            top = if (leadingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (leadingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
                         )
                         .fillMaxHeight(), contentAlignment = leadingAccessoryAlignment
                 ) {
@@ -410,6 +414,13 @@ object ListItem {
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
+                                } else if (secondarySubTextAnnotated != null) {
+                                    BasicText(
+                                        text = secondarySubTextAnnotated,
+                                        inlineContent = secondarySubTextInlineContent,
+                                        maxLines = secondarySubTextMaxLines,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
                                 }
                                 if (secondarySubTextTailingIcons != null) {
                                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -424,9 +435,13 @@ object ListItem {
             }
             if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
-                    Modifier.padding(top = if(trailingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
-                        bottom = if(trailingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
-                        end = padding.calculateEndPadding(LocalLayoutDirection.current)).fillMaxHeight(),
+                    Modifier
+                        .padding(
+                            top = if (trailingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (trailingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
+                            end = padding.calculateEndPadding(LocalLayoutDirection.current)
+                        )
+                        .fillMaxHeight(),
                     contentAlignment = trailingAccessoryAlignment
                 ) {
                     trailingAccessoryView()
