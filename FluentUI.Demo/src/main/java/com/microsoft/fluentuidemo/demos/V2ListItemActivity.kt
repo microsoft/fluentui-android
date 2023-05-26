@@ -7,24 +7,31 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.MoreVert
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
-import com.microsoft.fluentui.tokenized.controls.Button
-import com.microsoft.fluentui.tokenized.controls.CheckBox
-import com.microsoft.fluentui.tokenized.controls.RadioButton
-import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
+import com.microsoft.fluentui.tokenized.controls.*
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.listitem.TextIcons
@@ -474,16 +481,25 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
 private fun ThreeLineListAccessoryViewContent(
     context: Context
 ) {
+    val separator = " • "
+    val footer = buildAnnotatedString {
+        withStyle(SpanStyle(color = Color.Blue)){
+            append("3 min ago")
+        }
+        append(separator)
+        append("FluentGuide V1.pptx")
+    }
     return Column {
         ListItem.Item(
-            text = primaryText,
-            subText = secondaryText,
-            secondarySubText = tertiaryText,
-            primaryTextLeadingIcons = twoTextIcons20(),
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextLeadingIcons = twoTextIcons16(),
-            secondarySubTextTailingIcons = twoTextIcons16(),
-            leadingAccessoryView = { LeftViewFolderIcon40() },
+            text = "Amanda Brady replied to your comment",
+            subText = "Wanda can you please update the file with comments",
+            secondarySubTextAnnotated = footer,
+            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
+            trailingAccessoryView = {rightViewIconButton()},
+            textMaxLines = 2,
+            leadingAccessoryViewAlignment = Alignment.Top,
+            trailingAccessoryViewAlignment = Alignment.Top,
+            unreadDot = true,
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -669,6 +685,21 @@ private fun Icon20() {
 @Composable
 private fun LeftViewFolderIcon40() {
     return Image(ListItemIcons.Folder40, "Folder")
+}
+
+@Composable
+private fun rightViewIconButton(){
+    class Tokens: BasicCardTokens(){
+        @Composable
+        override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
+            return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
+        }
+    }
+    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+        BasicCard(Modifier.padding(all = 4.dp), basicCardTokens = Tokens()) {
+            Icon(Icons.Outlined.MoreVert, contentDescription = "")
+        }
+    }
 }
 
 @Composable

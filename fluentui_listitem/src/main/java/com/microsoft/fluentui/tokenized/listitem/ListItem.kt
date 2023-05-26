@@ -124,7 +124,6 @@ object ListItem {
         }
     }
 
-    @OptIn(ExperimentalMaterialApi::class)
     @Composable
     private fun InlineText(
         description: String,
@@ -188,40 +187,14 @@ object ListItem {
         }
 
     }
-
-    /**
-     * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text
-     *
-     * @param text Primary text.
-     * @param modifier Optional modifier for List item.
-     * @param subText Optional secondaryText or a subtitle.
-     * @param secondarySubText Optional tertiary text or a footer.
-     * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
-     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
-     * @param enabled Optional enable/disable List item
-     * @param textMaxLines Optional max visible lines for primary text.
-     * @param subTextMaxLines Optional max visible lines for secondary text.
-     * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
-     * @param onClick Optional onClick action for list item.
-     * @param primaryTextLeadingIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
-     * @param primaryTextTrailingIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
-     * @param secondarySubTextLeadingIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
-     * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
-     * @param border [BorderType] Optional border for the list item.
-     * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
-     * @param leadingAccessoryView Optional composable leading accessory view.
-     * @param trailingAccessoryView Optional composable trailing accessory view.
-     * @param textAccessibilityProperties Accessibility properties for the text in list item.
-     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
-     *
-     */
     @Composable
-    fun Item(
+    internal fun InternalItem(
         text: String,
         modifier: Modifier = Modifier,
         subText: String? = null,
         secondarySubText: String? = null,
+        secondarySubTextAnnotated: AnnotatedString? = null,
+        secondarySubTextInlineContent: Map<String, InlineTextContent> = mapOf(),
         textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
         unreadDot: Boolean = false,
         enabled: Boolean = true,
@@ -239,6 +212,8 @@ object ListItem {
         bottomView: (@Composable () -> Unit)? = null,
         leadingAccessoryView: (@Composable () -> Unit)? = null,
         trailingAccessoryView: (@Composable () -> Unit)? = null,
+        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
@@ -257,14 +232,13 @@ object ListItem {
             listItemType = listItemType,
             borderInset = borderInset,
             horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
-            verticalSpacing = FluentGlobalTokens.SizeTokens.Size160,
+            verticalSpacing = FluentGlobalTokens.SizeTokens.Size120,
             unreadDot = unreadDot
         )
         val backgroundColor =
             token.backgroundBrush(listItemInfo).getBrushByState(
                 enabled = true, selected = false, interactionSource = interactionSource
             )
-        val cellHeight = token.cellHeight(listItemInfo)
         val primaryTextTypography = token.primaryTextTypography(listItemInfo)
         val subTextTypography = token.subTextTypography(listItemInfo)
         val secondarySubTextTypography =
@@ -294,37 +268,53 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-
+        val leadingAccessoryAlignment = when (leadingAccessoryViewAlignment) {
+            Alignment.Top -> Alignment.TopCenter
+            Alignment.Bottom -> Alignment.BottomCenter
+            else -> Alignment.Center
+        }
+        val trailingAccessoryAlignment = when (trailingAccessoryViewAlignment) {
+            Alignment.Top -> Alignment.TopEnd
+            Alignment.Bottom -> Alignment.BottomEnd
+            else -> Alignment.CenterEnd
+        }
         Row(
             modifier
                 .background(backgroundColor)
                 .fillMaxWidth()
-                .heightIn(min = cellHeight)
+                .height(IntrinsicSize.Max)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .clickAndSemanticsModifier(
                     interactionSource, onClick = onClick ?: {}, enabled, rippleColor
                 ), verticalAlignment = Alignment.CenterVertically
         ) {
-            if (unreadDot) {
-                Canvas(
-                    modifier = Modifier
-                        .padding(start = 4.dp)
-                        .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
-                ) {
-                    drawCircle(
-                        color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
-                    )
-                }
-            }
             if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
-                    Modifier.padding(
-                        start = if (unreadDot) 4.dp else padding.calculateStartPadding(
-                            LocalLayoutDirection.current
+                    modifier = Modifier
+                        .padding(
+                            start = if (unreadDot) 4.dp else padding.calculateStartPadding(
+                                LocalLayoutDirection.current
+                            ),
+                            top = if (leadingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (leadingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
                         )
-                    ), contentAlignment = Alignment.Center
+                        .fillMaxHeight(), contentAlignment = leadingAccessoryAlignment
                 ) {
-                    leadingAccessoryView()
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        if (unreadDot) {
+                            Canvas(
+                                modifier = Modifier
+                                    .padding(start = 4.dp)
+                                    .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
+                            ) {
+                                drawCircle(
+                                    color = unreadDotColor, style = Fill, radius = dpToPx(4.dp)
+                                )
+                            }
+                            Spacer(modifier = Modifier.width(4.dp))
+                        }
+                        leadingAccessoryView()
+                    }
                 }
             }
             val contentAlignment =
@@ -394,6 +384,13 @@ object ListItem {
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
+                                } else if (secondarySubTextAnnotated != null) {
+                                    BasicText(
+                                        text = secondarySubTextAnnotated,
+                                        inlineContent = secondarySubTextInlineContent,
+                                        maxLines = secondarySubTextMaxLines,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
                                 }
                                 if (secondarySubTextTailingIcons != null) {
                                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -408,13 +405,194 @@ object ListItem {
             }
             if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
-                    Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
-                    contentAlignment = Alignment.CenterEnd
+                    Modifier
+                        .padding(
+                            top = if (trailingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (trailingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
+                            end = padding.calculateEndPadding(LocalLayoutDirection.current)
+                        )
+                        .fillMaxHeight(),
+                    contentAlignment = trailingAccessoryAlignment
                 ) {
                     trailingAccessoryView()
                 }
             }
         }
+    }
+
+    /**
+     * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text. Use this if secondarySubText is a String
+     *
+     * @param text Primary text.
+     * @param modifier Optional modifier for List item.
+     * @param subText Optional secondaryText or a subtitle.
+     * @param secondarySubText Optional tertiary text or a footer.
+     * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
+     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
+     * @param enabled Optional enable/disable List item
+     * @param textMaxLines Optional max visible lines for primary text.
+     * @param subTextMaxLines Optional max visible lines for secondary text.
+     * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
+     * @param onClick Optional onClick action for list item.
+     * @param primaryTextLeadingIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
+     * @param primaryTextTrailingIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
+     * @param secondarySubTextLeadingIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
+     * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
+     * @param border [BorderType] Optional border for the list item.
+     * @param borderInset [BorderInset]Optional borderInset for list item.
+     * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
+     * @param leadingAccessoryView Optional composable leading accessory view.
+     * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param leadingAccessoryViewAlignment Alignment for leading accessory view to align Top, Bottom or Center
+     * @param trailingAccessoryViewAlignment Alignment for trailing accessory view to align Top, Bottom or Center
+     * @param textAccessibilityProperties Accessibility properties for the text in list item.
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
+     *
+     */
+    @Composable
+    fun Item(
+        text: String,
+        modifier: Modifier = Modifier,
+        subText: String? = null,
+        secondarySubText: String? = null,
+        textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
+        unreadDot: Boolean = false,
+        enabled: Boolean = true,
+        textMaxLines: Int = 1,
+        subTextMaxLines: Int = 1,
+        secondarySubTextMaxLines: Int = 1,
+        onClick: (() -> Unit)? = null,
+        primaryTextLeadingIcons: TextIcons? = null,
+        primaryTextTrailingIcons: TextIcons? = null,
+        secondarySubTextLeadingIcons: TextIcons? = null,
+        secondarySubTextTailingIcons: TextIcons? = null,
+        border: BorderType = NoBorder,
+        borderInset: BorderInset = None,
+        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        bottomView: (@Composable () -> Unit)? = null,
+        leadingAccessoryView: (@Composable () -> Unit)? = null,
+        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
+        listItemTokens: ListItemTokens? = null
+    ) {
+        InternalItem(
+            text = text,
+            modifier = modifier,
+            subText = subText,
+            secondarySubText = secondarySubText,
+            textAlignment = textAlignment,
+            unreadDot = unreadDot,
+            enabled = enabled,
+            textMaxLines = textMaxLines,
+            subTextMaxLines = subTextMaxLines,
+            secondarySubTextMaxLines = secondarySubTextMaxLines,
+            onClick = onClick,
+            primaryTextLeadingIcons = primaryTextLeadingIcons,
+            primaryTextTrailingIcons = primaryTextTrailingIcons,
+            secondarySubTextLeadingIcons = secondarySubTextLeadingIcons,
+            secondarySubTextTailingIcons = secondarySubTextTailingIcons,
+            border = border,
+            borderInset = borderInset,
+            interactionSource = interactionSource,
+            bottomView = bottomView,
+            leadingAccessoryView = leadingAccessoryView,
+            trailingAccessoryView = trailingAccessoryView,
+            leadingAccessoryViewAlignment = leadingAccessoryViewAlignment,
+            trailingAccessoryViewAlignment = trailingAccessoryViewAlignment,
+            textAccessibilityProperties = textAccessibilityProperties,
+            listItemTokens = listItemTokens
+        )
+    }
+
+    /**
+     * Create a Single line or a multi line List item. A multi line list can be formed by providing either a secondary text or a tertiary text. Use this if the secondarySubtext is an Annotated String
+     *
+     * @param text Primary text.
+     * @param modifier Optional modifier for List item.
+     * @param subText Optional secondaryText or a subtitle.
+     * @param secondarySubTextAnnotated Optional tertiary text (Annotated) or a footer.
+     * @param secondarySubTextInlineContent Map of composables to replace certain ranges of text in [secondarySubTextAnnotated].
+     * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
+     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
+     * @param enabled Optional enable/disable List item
+     * @param textMaxLines Optional max visible lines for primary text.
+     * @param subTextMaxLines Optional max visible lines for secondary text.
+     * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
+     * @param onClick Optional onClick action for list item.
+     * @param primaryTextLeadingIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
+     * @param primaryTextTrailingIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
+     * @param secondarySubTextLeadingIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
+     * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
+     * @param border [BorderType] Optional border for the list item.
+     * @param borderInset [BorderInset]Optional borderInset for list item.
+     * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
+     * @param leadingAccessoryView Optional composable leading accessory view.
+     * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param leadingAccessoryViewAlignment Alignment for leading accessory view to align Top, Bottom or Center
+     * @param trailingAccessoryViewAlignment Alignment for trailing accessory view to align Top, Bottom or Center
+     * @param textAccessibilityProperties Accessibility properties for the text in list item.
+     * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
+     *
+     */
+    @Composable
+    fun Item(
+        text: String,
+        modifier: Modifier = Modifier,
+        subText: String? = null,
+        secondarySubTextAnnotated: AnnotatedString? = null,
+        secondarySubTextInlineContent: Map<String, InlineTextContent> = mapOf(),
+        textAlignment: ListItemTextAlignment = ListItemTextAlignment.Regular,
+        unreadDot: Boolean = false,
+        enabled: Boolean = true,
+        textMaxLines: Int = 1,
+        subTextMaxLines: Int = 1,
+        secondarySubTextMaxLines: Int = 1,
+        onClick: (() -> Unit)? = null,
+        primaryTextLeadingIcons: TextIcons? = null,
+        primaryTextTrailingIcons: TextIcons? = null,
+        secondarySubTextLeadingIcons: TextIcons? = null,
+        secondarySubTextTailingIcons: TextIcons? = null,
+        border: BorderType = NoBorder,
+        borderInset: BorderInset = None,
+        interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+        bottomView: (@Composable () -> Unit)? = null,
+        leadingAccessoryView: (@Composable () -> Unit)? = null,
+        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
+        listItemTokens: ListItemTokens? = null
+    ) {
+        InternalItem(
+            text = text,
+            modifier = modifier,
+            subText = subText,
+            secondarySubTextAnnotated = secondarySubTextAnnotated,
+            secondarySubTextInlineContent = secondarySubTextInlineContent,
+            textAlignment = textAlignment,
+            unreadDot = unreadDot,
+            enabled = enabled,
+            textMaxLines = textMaxLines,
+            subTextMaxLines = subTextMaxLines,
+            secondarySubTextMaxLines = secondarySubTextMaxLines,
+            onClick = onClick,
+            primaryTextLeadingIcons = primaryTextLeadingIcons,
+            primaryTextTrailingIcons = primaryTextTrailingIcons,
+            secondarySubTextLeadingIcons = secondarySubTextLeadingIcons,
+            secondarySubTextTailingIcons = secondarySubTextTailingIcons,
+            border = border,
+            borderInset = borderInset,
+            interactionSource = interactionSource,
+            bottomView = bottomView,
+            leadingAccessoryView = leadingAccessoryView,
+            trailingAccessoryView = trailingAccessoryView,
+            leadingAccessoryViewAlignment = leadingAccessoryViewAlignment,
+            trailingAccessoryViewAlignment = trailingAccessoryViewAlignment,
+            textAccessibilityProperties = textAccessibilityProperties,
+            listItemTokens = listItemTokens
+        )
     }
 
     /**
