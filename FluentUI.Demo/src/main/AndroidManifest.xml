@@ -41,7 +41,8 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2LabelActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2MenuActivity"
+        <activity
+            android:name="com.microsoft.fluentuidemo.demos.V2MenuActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
@@ -55,6 +56,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ShimmerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2SuggestionPromptActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
         <activity
             android:name="com.microsoft.fluentuidemo.demos.V2TextFieldActivity"

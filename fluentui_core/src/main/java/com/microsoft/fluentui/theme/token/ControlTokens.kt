@@ -64,6 +64,7 @@ open class ControlTokens : IControlTokens {
         SearchBar,
         Shimmer,
         Snackbar,
+        SuggestionPrompt,
         TabBar,
         TabItem,
         TextField,
@@ -107,6 +108,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
                 ControlType.Snackbar -> SnackBarTokens()
+                ControlType.SuggestionPrompt -> SuggestionPromptTokens()
                 ControlType.TabBar -> TabBarTokens()
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.TextField -> TextFieldTokens()
