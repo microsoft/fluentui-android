@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
 import androidx.compose.material.icons.outlined.ThumbUp
@@ -79,172 +81,153 @@ private fun CreateListActivityUI(context: Context) {
         Modifier
             .fillMaxSize()
     ) {
-        LazyColumn {
-            item {
-                ListItem.Header(title = "One-Line list with Text icons")
-                OneLineListAccessoryViewContent(context)
-            }
-            item {
-                ListItem.Header(title = "Two-Line list with Text icons")
-                TwoLineListAccessoryViewContent(context)
-            }
-            item {
-                ListItem.Header(title = "Three-Line list with Text icons")
-                ThreeLineListAccessoryViewContent(context)
-            }
-            item {
-                ListItem.Header(title = "Text Only")
-                ListItem.Item(
-                    text = primaryText,
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge,
-                    primaryTextTrailingIcons = oneTextIcon20()
-                )
-                ListItem.Item(
-                    text = primaryText,
-                    subText = secondaryText,
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge,
-                    secondarySubTextLeadingIcons = oneTextIcon16()
-                )
-                ListItem.Item(
-                    text = primaryText,
-                    subText = secondaryText,
-                    secondarySubText = tertiaryText,
-                    border = BorderType.Bottom,
-                    secondarySubTextTailingIcons = twoTextIcons16()
-                )
-            }
-            item {
-                ListItem.Header(title = "Wrapped Text list")
-                ListItem.Item(
-                    text = sampleText,
-                    textMaxLines = 4,
-                    leadingAccessoryView = { LeftViewFolderIcon40() },
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.Item(
-                    text = sampleText,
-                    subText = sampleText,
-                    textMaxLines = 4,
-                    subTextMaxLines = 4,
-                    leadingAccessoryView = { LeftViewFolderIcon40() },
-                    trailingAccessoryView = {
-                        RightViewButton(
-                            ButtonSize.Small,
-                            context
-                        )
-                    },
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.Item(
-                    text = sampleText,
-                    subText = sampleText,
-                    secondarySubText = sampleText,
-                    textMaxLines = 4,
-                    subTextMaxLines = 4,
-                    secondarySubTextMaxLines = 4,
-                    leadingAccessoryView = { LeftViewFolderIcon40() },
-                    trailingAccessoryView = { RightViewText(text = "Value") },
-                    border = BorderType.Bottom
-                )
-            }
-            item {
-                ListItem.Header(title = "Section description")
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Top with no Action text and no icon",
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Bottom and no Action text",
-                    descriptionPlacement = Bottom,
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
-                    actionText = "Action",
-                    onActionClick = {},
-                    leadingAccessoryView = { Icon16() },
-                    border = BorderType.Bottom,
-                    borderInset = XXLarge
-                )
-                ListItem.SectionDescription(
-                    description = "Sample description with the description placed at the Bottom and Action text",
-                    actionText = "More",
-                    onActionClick = {},
-                    descriptionPlacement = Bottom,
-                    border = BorderType.Bottom
-                )
-            }
-            item {
-                ListItem.Header(title = "Section Headers with/without chevron")
-                Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
-                    ListItem.SectionHeader(
-                        title = "One-Line list",
-                        enableChevron = true,
-                        enableContentOpenCloseTransition = true,
-                        chevronOrientation = ChevronOrientation(90f, 0f),
-                        accessoryTextTitle = "Action",
-                        accessoryTextOnClick = {},
-                        trailingAccessoryView = { RightViewThreeButton() },
-                        content = { OneLineSimpleList() },
-                        border = BorderType.Bottom
+        Column(Modifier.verticalScroll(rememberScrollState())) {
+            ListItem.Header(title = "One-Line list with Text icons")
+            OneLineListAccessoryViewContent(context)
+            ListItem.Header(title = "Two-Line list with Text icons")
+            TwoLineListAccessoryViewContent(context)
+            ListItem.Header(title = "Three-Line list with Text icons")
+            ThreeLineListAccessoryViewContent(context)
+            ListItem.Header(title = "Text Only")
+            ListItem.Item(
+                text = primaryText,
+                border = BorderType.Bottom,
+                borderInset = XXLarge,
+                primaryTextTrailingIcons = oneTextIcon20()
+            )
+            ListItem.Item(
+                text = primaryText,
+                subText = secondaryText,
+                border = BorderType.Bottom,
+                borderInset = XXLarge,
+                secondarySubTextLeadingIcons = oneTextIcon16()
+            )
+            ListItem.Item(
+                text = primaryText,
+                subText = secondaryText,
+                secondarySubText = tertiaryText,
+                border = BorderType.Bottom,
+                secondarySubTextTailingIcons = twoTextIcons16()
+            )
+            ListItem.Header(title = "Wrapped Text list")
+            ListItem.Item(
+                text = sampleText,
+                textMaxLines = 4,
+                leadingAccessoryView = { LeftViewFolderIcon40() },
+                border = BorderType.Bottom,
+                borderInset = XXLarge
+            )
+            ListItem.Item(
+                text = sampleText,
+                subText = sampleText,
+                textMaxLines = 4,
+                subTextMaxLines = 4,
+                leadingAccessoryView = { LeftViewFolderIcon40() },
+                trailingAccessoryView = {
+                    RightViewButton(
+                        ButtonSize.Small,
+                        context
                     )
-                    ListItem.SectionHeader(
-                        title = "Two-Line list",
-                        style = Subtle,
-                        enableChevron = true,
-                        enableContentOpenCloseTransition = true,
-                        chevronOrientation = ChevronOrientation(90f, 0f),
-                        content = { TwoLineSimpleList() },
-                        border = BorderType.Bottom
-                    )
-                    ListItem.SectionHeader(
-                        title = "Two-Line list",
-                        enableChevron = false,
-                        enableContentOpenCloseTransition = true,
-                        trailingAccessoryView = { RightViewToggle() },
-                        content = { ThreeLineSimpleList() },
-                        border = BorderType.Bottom
-                    )
-                }
-
-            }
-            item {
-                ListItem.Header(title = "Headers")
-                ListItem.Header(
-                    title = "Standard heading",
+                },
+                border = BorderType.Bottom,
+                borderInset = XXLarge
+            )
+            ListItem.Item(
+                text = sampleText,
+                subText = sampleText,
+                secondarySubText = sampleText,
+                textMaxLines = 4,
+                subTextMaxLines = 4,
+                secondarySubTextMaxLines = 4,
+                leadingAccessoryView = { LeftViewFolderIcon40() },
+                trailingAccessoryView = { RightViewText(text = "Value") },
+                border = BorderType.Bottom
+            )
+            ListItem.Header(title = "Section description")
+            ListItem.SectionDescription(
+                description = "Sample description with the description placed at the Top with no Action text and no icon",
+                border = BorderType.Bottom,
+                borderInset = XXLarge
+            )
+            ListItem.SectionDescription(
+                description = "Sample description with the description placed at the Bottom and no Action text",
+                descriptionPlacement = Bottom,
+                border = BorderType.Bottom,
+                borderInset = XXLarge
+            )
+            ListItem.SectionDescription(
+                description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
+                actionText = "Action",
+                onActionClick = {},
+                leadingAccessoryView = { Icon16() },
+                border = BorderType.Bottom,
+                borderInset = XXLarge
+            )
+            ListItem.SectionDescription(
+                description = "Sample description with the description placed at the Bottom and Action text",
+                actionText = "More",
+                onActionClick = {},
+                descriptionPlacement = Bottom,
+                border = BorderType.Bottom
+            )
+            ListItem.Header(title = "Section Headers with/without chevron")
+            Column(Modifier.padding(top = 2.dp, bottom = 1.dp)) {
+                ListItem.SectionHeader(
+                    title = "One-Line list",
+                    enableChevron = true,
+                    enableContentOpenCloseTransition = true,
+                    chevronOrientation = ChevronOrientation(90f, 0f),
                     accessoryTextTitle = "Action",
                     accessoryTextOnClick = {},
                     trailingAccessoryView = { RightViewThreeButton() },
+                    content = { OneLineSimpleList() },
                     border = BorderType.Bottom
                 )
-                ListItem.Header(
-                    title = "Subtle heading",
-                    accessoryTextTitle = "Action",
-                    accessoryTextOnClick = {},
-                    style = Subtle
+                ListItem.SectionHeader(
+                    title = "Two-Line list",
+                    style = Subtle,
+                    enableChevron = true,
+                    enableContentOpenCloseTransition = true,
+                    chevronOrientation = ChevronOrientation(90f, 0f),
+                    content = { TwoLineSimpleList() },
+                    border = BorderType.Bottom
+                )
+                ListItem.SectionHeader(
+                    title = "Two-Line list",
+                    enableChevron = false,
+                    enableContentOpenCloseTransition = true,
+                    trailingAccessoryView = { RightViewToggle() },
+                    content = { ThreeLineSimpleList() },
+                    border = BorderType.Bottom
                 )
             }
-            item {
-                ListItem.Header(title = "Centered Action Text")
-                ListItem.Item(
-                    text = "Action",
-                    textAlignment = ListItemTextAlignment.Centered,
-                    border = BorderType.Bottom
-                )
-                ListItem.Item(
-                    text = "Disabled",
-                    enabled = false,
-                    textAlignment = ListItemTextAlignment.Centered,
-                    border = BorderType.Bottom
-                )
-                ListItem.SectionDescription(description = "Centered action text only supports primary text and ignores any given trailing or leading accessory views")
-            }
+            ListItem.Header(title = "Headers")
+            ListItem.Header(
+                title = "Standard heading",
+                accessoryTextTitle = "Action",
+                accessoryTextOnClick = {},
+                trailingAccessoryView = { RightViewThreeButton() },
+                border = BorderType.Bottom
+            )
+            ListItem.Header(
+                title = "Subtle heading",
+                accessoryTextTitle = "Action",
+                accessoryTextOnClick = {},
+                style = Subtle
+            )
+            ListItem.Header(title = "Centered Action Text")
+            ListItem.Item(
+                text = "Action",
+                textAlignment = ListItemTextAlignment.Centered,
+                border = BorderType.Bottom
+            )
+            ListItem.Item(
+                text = "Disabled",
+                enabled = false,
+                textAlignment = ListItemTextAlignment.Centered,
+                border = BorderType.Bottom
+            )
+            ListItem.SectionDescription(description = "Centered action text only supports primary text and ignores any given trailing or leading accessory views")
         }
     }
 }
