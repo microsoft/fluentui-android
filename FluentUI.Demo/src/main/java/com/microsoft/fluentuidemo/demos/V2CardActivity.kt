@@ -6,11 +6,14 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
@@ -60,109 +63,93 @@ class V2CardActivity : DemoActivity() {
     @Composable
     private fun CreateCardUI(context: Context) {
         var index by remember { mutableStateOf(1) }
-        Box {
-            LazyColumn(
+        Box(Modifier.verticalScroll(rememberScrollState())) {
+            Column(
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                item {
-                    ListItem.Header(
-                        modifier = Modifier.wrapContentWidth(),
-                        title = context.getString(R.string.basic_card)
-                    )
+                ListItem.Header(
+                    modifier = Modifier.wrapContentWidth(),
+                    title = context.getString(R.string.basic_card)
+                )
+                Column(
+                    modifier = Modifier.padding(start = 16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Button(
+                        text = context.getString(R.string.card_randomize),
+                        size = ButtonSize.Small,
+                        style = ButtonStyle.OutlinedButton,
+                        onClick = { index = (1..5).random() })
+                    BasicCard(
+                        content = { GetContent(index = index, context = context) })
                 }
-                item {
-                    Column(
-                        modifier = Modifier.padding(start = 16.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Button(
-                            text = context.getString(R.string.card_randomize),
-                            size = ButtonSize.Small,
-                            style = ButtonStyle.OutlinedButton,
-                            onClick = { index = (1..5).random() })
-                        BasicCard(
-                            content = { GetContent(index = index, context = context) })
-                    }
+                BasicCard {
+                    BasicCardUI(context)
                 }
-                item {
-                    BasicCard {
-                        BasicCardUI(context)
-                    }
-                }
-                item {
-                    ListItem.Header(title = context.getString(R.string.file_card))
-                }
-                item {
-                    Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                        LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                            item {
-                                FileCard(
-                                    actionOverflowIcon = FluentIcon(
-                                        Icons.Outlined.MoreVert,
-                                        onClick = {
-                                            Toast.makeText(
-                                                context,
-                                                "Clicked",
-                                                Toast.LENGTH_LONG
-                                            ).show()
-                                        },
-                                        contentDescription = context.getString(R.string.card_options)
-                                    ),
-                                    onClick = {},
-                                    text = context.getString(R.string.persona_name_carlos_slattery),
-                                    subText = context.getString(R.string.persona_subtitle_designer),
-                                    textIcon = Icons.Outlined.Call,
-                                    previewImageDrawable = R.drawable.avatar_carlos_slattery
-                                )
-                            }
-                            item {
-                                FileCard(
-                                    actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
-                                    onClick = {},
-                                    text = context.getString(R.string.persona_name_allan_munger),
-                                    subText = context.getString(R.string.persona_subtitle_manager),
-                                    textIcon = Icons.Outlined.Call,
-                                    previewImageDrawable = R.drawable.avatar_allan_munger
-                                )
-                            }
-                            item {
-                                FileCard(
-                                    actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
-                                    onClick = {},
-                                    text = context.getString(R.string.persona_name_elvia_atkins),
-                                    subText = context.getString(R.string.persona_subtitle_engineer),
-                                    textIcon = Icons.Outlined.Call,
-                                    previewImageDrawable = R.drawable.avatar_elvia_atkins
-                                )
-                            }
-                            item {
-                                FileCard(
-                                    actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
-                                    text = context.getString(R.string.persona_name_kat_larsson),
-                                    subText = context.getString(R.string.persona_subtitle_engineer),
-                                    textIcon = Icons.Outlined.Call,
-                                    previewImageDrawable = R.drawable.avatar_kat_larsson
-                                )
-                            }
+                ListItem.Header(title = context.getString(R.string.file_card))
+                Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        item {
+                            FileCard(
+                                actionOverflowIcon = FluentIcon(
+                                    Icons.Outlined.MoreVert,
+                                    onClick = {
+                                        Toast.makeText(
+                                            context,
+                                            "Clicked",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    },
+                                    contentDescription = context.getString(R.string.card_options)
+                                ),
+                                onClick = {},
+                                text = context.getString(R.string.persona_name_carlos_slattery),
+                                subText = context.getString(R.string.persona_subtitle_designer),
+                                textIcon = Icons.Outlined.Call,
+                                previewImageDrawable = R.drawable.avatar_carlos_slattery
+                            )
+                        }
+                        item {
+                            FileCard(
+                                actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
+                                onClick = {},
+                                text = context.getString(R.string.persona_name_allan_munger),
+                                subText = context.getString(R.string.persona_subtitle_manager),
+                                textIcon = Icons.Outlined.Call,
+                                previewImageDrawable = R.drawable.avatar_allan_munger
+                            )
+                        }
+                        item {
+                            FileCard(
+                                actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
+                                onClick = {},
+                                text = context.getString(R.string.persona_name_elvia_atkins),
+                                subText = context.getString(R.string.persona_subtitle_engineer),
+                                textIcon = Icons.Outlined.Call,
+                                previewImageDrawable = R.drawable.avatar_elvia_atkins
+                            )
+                        }
+                        item {
+                            FileCard(
+                                actionOverflowIcon = FluentIcon(Icons.Outlined.MoreVert),
+                                text = context.getString(R.string.persona_name_kat_larsson),
+                                subText = context.getString(R.string.persona_subtitle_engineer),
+                                textIcon = Icons.Outlined.Call,
+                                previewImageDrawable = R.drawable.avatar_kat_larsson
+                            )
                         }
                     }
                 }
-                item {
-                    ListItem.Header(title = context.getString(R.string.announcement_card))
-                }
-                item {
-                    AnnouncementCard(
-                        title = context.getString(R.string.card_title),
-                        description = context.getString(R.string.card_description),
-                        buttonText = context.getString(R.string.card_button),
-                        buttonOnClick = {},
-                        previewImageDrawable = R.drawable.card_cover
-                    )
-                }
-                item {
-                    BasicText(text = "")
-                }
+                ListItem.Header(title = context.getString(R.string.announcement_card))
+                AnnouncementCard(
+                    title = context.getString(R.string.card_title),
+                    description = context.getString(R.string.card_description),
+                    buttonText = context.getString(R.string.card_button),
+                    buttonOnClick = {},
+                    previewImageDrawable = R.drawable.card_cover
+                )
+                Spacer(Modifier.height(32.dp))
             }
         }
 
