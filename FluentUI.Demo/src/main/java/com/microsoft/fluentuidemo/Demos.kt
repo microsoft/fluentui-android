@@ -33,7 +33,7 @@ const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
 const val V2SHIMMER = "V2 Shimmer"
 const val V2SNACKBAR = "V2 Snackbar"
-const val V2SUGGESTIONPROMPT = "V2 Suggestion Prompt"
+const val V2SUGGESTION_PROMPT = "V2 Suggestion Prompt"
 const val V2TABBAR = "V2 TabBar"
 const val V2TEXTFIELD = "V2 TextField"
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
@@ -90,7 +90,7 @@ val DEMOS = arrayListOf(
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
     Demo(V2SHIMMER, V2ShimmerActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
-    Demo(V2SUGGESTIONPROMPT, V2SuggestionPromptActivity::class),
+    Demo(V2SUGGESTION_PROMPT, V2SuggestionPromptActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
     Demo(V2TEXTFIELD, V2TextFieldActivity::class),
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),

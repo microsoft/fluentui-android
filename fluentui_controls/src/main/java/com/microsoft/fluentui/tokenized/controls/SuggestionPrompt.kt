@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
@@ -29,6 +30,9 @@ data class Suggestions(
     val maxLines: Int = Int.MAX_VALUE,
     val onClick: (() -> Unit)? = null
 )
+
+//Tags for testing
+private const val ACTION_ICON = "Action Icon"
 
 @Composable
 fun SuggestionPrompt(
@@ -83,6 +87,7 @@ fun SuggestionPrompt(
                 Icon(
                     actionIcon.value(),
                     contentDescription = actionIcon.contentDescription,
+                    modifier = Modifier.testTag(ACTION_ICON)
                 )
             }
         }

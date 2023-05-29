@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.tokenized.controls.SuggestionPrompt
@@ -33,6 +34,10 @@ class V2SuggestionPromptActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Tags used for testing
+        val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
+        val ACTION_ICON_PARAM = "Action Icon Param"
 
         val context = this
         val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
@@ -59,6 +64,7 @@ class V2SuggestionPromptActivity : DemoActivity() {
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
                         chevronOrientation = ChevronOrientation(90f, 0f),
+                        modifier = Modifier.testTag(MODIFIABLE_PARAMETER_SECTION)
                     ) {
                         LazyColumn(Modifier.fillMaxHeight(0.5F)) {
                             item {
@@ -91,7 +97,8 @@ class V2SuggestionPromptActivity : DemoActivity() {
                                             onValueChange = {
                                                 actionIcon = it
                                             },
-                                            checkedState = actionIcon
+                                            checkedState = actionIcon,
+                                            modifier = Modifier.testTag(ACTION_ICON_PARAM)
                                         )
                                     }
                                 )
