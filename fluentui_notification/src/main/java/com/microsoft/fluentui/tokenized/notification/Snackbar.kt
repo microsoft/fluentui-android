@@ -15,7 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.LiveRegionMode
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -136,6 +139,9 @@ fun Snackbar(
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(8.dp))
                 .background(token.backgroundBrush(snackBarInfo))
+                .semantics {
+                    liveRegion = LiveRegionMode.Polite
+                }
                 .testTag(SNACKBAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
