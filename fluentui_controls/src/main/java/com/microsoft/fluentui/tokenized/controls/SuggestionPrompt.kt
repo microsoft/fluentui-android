@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.SuggestionPromptInfo
@@ -27,6 +28,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.SuggestionPromptTokens
 
 data class Suggestions(
     val text: String,
+    val icon: FluentIcon? = null,
     val maxLines: Int = Int.MAX_VALUE,
     val onClick: (() -> Unit)? = null
 )
@@ -34,6 +36,17 @@ data class Suggestions(
 //Tags for testing
 private const val ACTION_ICON = "Action Icon"
 
+
+/**
+ * API to render suggestions in a horizontally scrollable manner with provision of
+ * an Action Icon Button, which can be used for any onClick Behavior. Suggestions are
+ * equi-height boxes which may or may not be single line in nature.
+ *
+ * @param suggestions [MutableList] which encapsulates the [Suggestions] data.
+ * @param modifier Optional Modifier for SuggestionPrompt
+ * @param actionIcon Icon with onClick Property of type [FluentIcon]
+ * @param suggestionPromptToken Tokens to override default [SuggestionPromptTokens]
+ */
 @Composable
 fun SuggestionPrompt(
     suggestions: MutableList<Suggestions>,
@@ -62,6 +75,11 @@ fun SuggestionPrompt(
                 Modifier
                     .requiredSize(40.dp)
                     .clip(CircleShape)
+                    .background(token.backgroundBrush(suggestionPromptInfo).getBrushByState(
+                        enabled = true,
+                        selected = false,
+                        interactionSource = actionInteractionSource
+                    ), CircleShape)
                     .then(
                         if (actionIcon.onClick != null) {
                             Modifier.clickable(
@@ -87,7 +105,8 @@ fun SuggestionPrompt(
                 Icon(
                     actionIcon.value(),
                     contentDescription = actionIcon.contentDescription,
-                    modifier = Modifier.testTag(ACTION_ICON)
+                    modifier = Modifier.testTag(ACTION_ICON),
+                    tint = token.actionIconColor(suggestionPromptInfo)
                 )
             }
         }
@@ -102,6 +121,11 @@ fun SuggestionPrompt(
                         .fillMaxHeight()
                         .widthIn(0.dp, token.maxWidth(suggestionPromptInfo))
                         .clip(suggestionShape)
+                        .background(token.backgroundBrush(suggestionPromptInfo).getBrushByState(
+                            enabled = true,
+                            selected = false,
+                            interactionSource = suggestionInteractionSource
+                        ), suggestionShape)
                         .then(
                             if (suggestion.onClick != null)
                                 Modifier.clickable(
@@ -124,19 +148,32 @@ fun SuggestionPrompt(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    BasicText(
-                        text = suggestedString,
+                    Row(
                         modifier = Modifier
-                            .padding(token.textPadding(suggestionPromptInfo)),
-                        overflow = TextOverflow.Ellipsis,
-                        maxLines = suggestion.maxLines,
-                        softWrap = true,
-                        style = token.typography(suggestionPromptInfo).merge(
-                            TextStyle(
-                                color = token.textColor(suggestionPromptInfo),
+                            .padding(token.contentPadding(suggestionPromptInfo)),
+                        horizontalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if(suggestion.icon?.isIconAvailable() == true) {
+                            Icon(
+                                suggestion.icon,
+                                modifier = Modifier.size(token.imageSize(suggestionPromptInfo)),
+                                tint = token.textColor(suggestionPromptInfo)
+                            )
+                        }
+
+                        BasicText(
+                            text = suggestedString,
+                            overflow = TextOverflow.Ellipsis,
+                            maxLines = suggestion.maxLines,
+                            softWrap = true,
+                            style = token.typography(suggestionPromptInfo).merge(
+                                TextStyle(
+                                    color = token.textColor(suggestionPromptInfo),
+                                )
                             )
                         )
-                    )
+                    }
                 }
             }
         }

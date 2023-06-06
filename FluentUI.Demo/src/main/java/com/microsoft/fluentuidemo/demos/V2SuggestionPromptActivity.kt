@@ -7,6 +7,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -109,11 +112,13 @@ class V2SuggestionPromptActivity : DemoActivity() {
                         suggestions = mutableListOf(
                             Suggestions(
                                 "Suggestion 1",
+                                icon = FluentIcon(Icons.Filled.Add, contentDescription = "Add"),
                                 maxLines = if (singleLine) 1 else Int.MAX_VALUE,
                                 onClick = { onClickLambda("Suggestion Clicked") }
                             ),
                             Suggestions(
                                 "Suggestion 2. This is a very very long suggestion. Should be wrapped properly.",
+                                icon = FluentIcon(Icons.Filled.Create, contentDescription = "Create"),
                                 maxLines = if (singleLine) 1 else Int.MAX_VALUE,
                                 onClick = { onClickLambda("Suggestion Clicked") }
                             ),
@@ -124,6 +129,7 @@ class V2SuggestionPromptActivity : DemoActivity() {
                             ),
                             Suggestions(
                                 "Suggestion 4",
+                                icon = FluentIcon(Icons.Filled.Check, contentDescription = "Check"),
                                 maxLines = if (singleLine) 1 else Int.MAX_VALUE,
                                 onClick = { onClickLambda("Suggestion Clicked") }
                             ),

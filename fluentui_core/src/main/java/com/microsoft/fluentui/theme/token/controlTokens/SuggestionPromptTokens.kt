@@ -5,6 +5,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -36,6 +37,23 @@ open class SuggestionPromptTokens : IControlToken, Parcelable {
     }
 
     @Composable
+    open fun actionIconColor(suggestionPromptInfo: SuggestionPromptInfo): Color {
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+    }
+
+    @Composable
+    open fun backgroundBrush(suggestionPromptInfo: SuggestionPromptInfo): StateBrush {
+        return StateBrush(
+            pressed = SolidColor(FluentTheme.aliasTokens.brandColor[FluentAliasTokens.BrandColorTokens.Color120])
+        )
+    }
+
+    @Composable
+    open fun imageSize(suggestionPromptInfo: SuggestionPromptInfo): Dp {
+        return FluentGlobalTokens.iconSize(FluentGlobalTokens.IconSizeTokens.IconSize200)
+    }
+
+    @Composable
     open fun textColor(suggestionPromptInfo: SuggestionPromptInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()
     }
@@ -46,7 +64,7 @@ open class SuggestionPromptTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun textPadding(suggestionPromptInfo: SuggestionPromptInfo): PaddingValues {
+    open fun contentPadding(suggestionPromptInfo: SuggestionPromptInfo): PaddingValues {
         return PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     }
 
