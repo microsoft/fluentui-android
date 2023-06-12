@@ -1,6 +1,6 @@
 package com.microsoft.fluentui.tokenized.controls
 
-import androidx.compose.animation.*
+import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.*
@@ -17,7 +17,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.controlTokens.BasicCardTokens
 import com.microsoft.fluentui.theme.token.controlTokens.FlairCardTokens
 import kotlinx.coroutines.delay
 
@@ -55,7 +54,7 @@ fun FlairCard(
             }
 
         }, label = "color-2 transition") { state ->
-            when(state){
+            when (state) {
                 Flair.Rest -> Color.Transparent
                 Flair.Start -> Color.Transparent
             }
@@ -74,7 +73,7 @@ fun FlairCard(
                 else -> tween()
             }
         }, label = "color-1 transition") { state ->
-            when(state){
+            when (state) {
                 Flair.Rest -> Color.Transparent
                 Flair.Start -> Color.Transparent
             }
@@ -93,7 +92,7 @@ fun FlairCard(
                 else -> tween()
             }
         }, label = "color-0 transition") { state ->
-            when(state){
+            when (state) {
                 Flair.Rest -> Color.Transparent
                 Flair.Start -> Color.Transparent
             }
@@ -136,7 +135,7 @@ fun FlairCard(
                         RoundedCornerShape(12.dp)
                     )
                     .rotate(45f)
-                .rotate(angle)
+                    .rotate(angle)
             ) {
                 drawCircle(
                     gradient,
