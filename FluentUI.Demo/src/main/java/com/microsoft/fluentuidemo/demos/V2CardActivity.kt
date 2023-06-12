@@ -6,10 +6,8 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
@@ -32,10 +30,7 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
-import com.microsoft.fluentui.tokenized.controls.AnnouncementCard
-import com.microsoft.fluentui.tokenized.controls.BasicCard
-import com.microsoft.fluentui.tokenized.controls.Button
-import com.microsoft.fluentui.tokenized.controls.FileCard
+import com.microsoft.fluentui.tokenized.controls.*
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
@@ -62,7 +57,7 @@ class V2CardActivity : DemoActivity() {
 
     @Composable
     private fun CreateCardUI(context: Context) {
-        var index by remember { mutableStateOf(1) }
+        var index by remember { mutableStateOf(5) }
         Box(Modifier.verticalScroll(rememberScrollState())) {
             Column(
                 modifier = Modifier.padding(16.dp),
@@ -141,6 +136,17 @@ class V2CardActivity : DemoActivity() {
                         }
                     }
                 }
+                ListItem.Header(
+                    modifier = Modifier.wrapContentWidth(),
+                    title = "Flair Card"
+                )
+                var flair = rememberFlairState()
+                Button(onClick = {
+                    flair.start()
+                }, text = "Flair")
+                FlairCard(modifier = Modifier.fillMaxSize()) {
+                    BasicCardUI(context = context)
+                }
                 ListItem.Header(title = context.getString(R.string.announcement_card))
                 AnnouncementCard(
                     title = context.getString(R.string.card_title),
@@ -149,7 +155,7 @@ class V2CardActivity : DemoActivity() {
                     buttonOnClick = {},
                     previewImageDrawable = R.drawable.card_cover
                 )
-                Spacer(Modifier.height(32.dp))
+                Spacer(Modifier.height(24.dp))
             }
         }
 

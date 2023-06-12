@@ -48,6 +48,7 @@ open class ControlTokens : IControlTokens {
         Drawer,
         Divider,
         FileCard,
+        FlairCard,
         FloatingActionButton,
         Label,
         LinearProgressIndicator,
@@ -91,6 +92,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.Drawer -> DrawerTokens()
                 ControlType.Divider -> DividerTokens()
                 ControlType.FileCard -> FileCardTokens()
+                ControlType.FlairCard -> FlairCardTokens()
                 ControlType.FloatingActionButton -> FABTokens()
                 ControlType.Label -> LabelTokens()
                 ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
