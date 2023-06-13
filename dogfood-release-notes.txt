@@ -6,7 +6,7 @@ Fluent V2:
 	
     Fix/Enhancement:
 		1) Listitem accessory views can now be Top/Bottom/Center aligned
-		2) Lisitem tertiary text has annotated text support
+		2) Listitem tertiary text has annotated text support
 		3) Snackbar talkback is enabled and will be announced whenever Snackbar is displayed.
 
 
