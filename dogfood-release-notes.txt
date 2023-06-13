@@ -1,13 +1,15 @@
-Release Version 0.1.26:
+Release Version 0.1.27:
 
 What's New:
 
 Fluent V2:
-    New Component: Label, Dialog, Progress Text, Citation.
 	
     Fix/Enhancement:
-		1) Fix : Updating control Token in ControlToken object & providing the same to FluentTheme API will now recompose the controls & hence updates get applied immediately.
-		2) Replace material Surface control with Box
-		3) Fix: Drawer get enable when its state change to expand from close state.
+		1) Listitem accessory views can now be Top/Bottom/Center aligned
+		2) Listitem tertiary text has annotated text support
+		3) Snackbar talkback is enabled and will be announced whenever Snackbar is displayed.
 
-	Demo App: Moving Shimmer out of Progress Bar as V2 Progress Activity.
+
+	Demo App: 
+		1) Label Activity background fix.
+		2) Label, card, listitem activites are scrollable
