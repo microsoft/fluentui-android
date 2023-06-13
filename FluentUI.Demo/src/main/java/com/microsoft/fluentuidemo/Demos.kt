@@ -121,6 +121,65 @@ val DEMOS = arrayListOf(
     Demo(TYPOGRAPHY, TypographyActivity::class)
 )
 
+val V1DEMO = arrayListOf(
+    Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class, isNew = true),
+    Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
+    Demo(AVATAR_VIEW, AvatarViewActivity::class, isModified = true),
+    Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
+    Demo(BASIC_INPUTS, BasicInputsActivity::class),
+    Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
+    Demo(BOTTOM_SHEET, BottomSheetActivity::class),
+    Demo(CALENDAR_VIEW, CalendarViewActivity::class),
+    Demo(CONTEXTUAL_COMMAND_BAR, ContextualCommandBarActivity::class),
+    Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
+    Demo(DRAWER, DrawerActivity::class),
+    Demo(LIST_ITEM_VIEW, ListItemViewActivity::class),
+    Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
+    Demo(PERSISTENT_BOTTOM_SHEET, PersistentBottomSheetActivity::class),
+    Demo(PERSONA_CHIP_VIEW, PersonaChipViewActivity::class),
+    Demo(PERSONA_LIST_VIEW, PersonaListViewActivity::class),
+    Demo(PERSONA_VIEW, PersonaViewActivity::class),
+    Demo(POPUP_MENU, PopupMenuActivity::class),
+    Demo(PROGRESS, ProgressActivity::class),
+    Demo(SNACKBAR, SnackbarActivity::class),
+    Demo(TAB_LAYOUT, TabLayoutActivity::class),
+    Demo(TEMPLATE_VIEW, TemplateViewActivity::class),
+    Demo(TOOLTIP, TooltipActivity::class),
+    Demo(TYPOGRAPHY, TypographyActivity::class)
+)
+
+val V2DEMO = arrayListOf(
+    Demo(V2APP_BAR_LAYOUT, V2AppBarLayoutActivity::class),
+    Demo(V2AVATAR, V2AvatarActivity::class, isNew = true),
+    Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
+    Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
+    Demo(V2Badge, V2BadgeActivity::class),
+    Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
+    Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class, isModified = true),
+    Demo(V2BUTTON, V2ButtonsActivity::class),
+    Demo(V2CARD, V2CardActivity::class),
+    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
+    Demo(V2CITATION, V2CitationActivity::class),
+    Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
+    Demo(V2DIALOG, V2DialogActivity::class),
+    Demo(V2DRAWER, V2DrawerActivity::class),
+    Demo(V2LABEL, V2LabelActivity::class),
+    Demo(V2LIST_ITEM, V2ListItemActivity::class),
+    Demo(V2MENU, V2MenuActivity::class),
+    Demo(V2PERSONA, V2PersonaActivity::class),
+    Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
+    Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
+    Demo(V2PROGRESS, V2ProgressActivity::class),
+    Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
+    Demo(V2SEARCHBAR, V2SearchBarActivity::class),
+    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SHIMMER, V2ShimmerActivity::class),
+    Demo(V2SNACKBAR, V2SnackbarActivity::class),
+    Demo(V2TABBAR, V2TabBarActivity::class),
+    Demo(V2TEXTFIELD, V2TextFieldActivity::class),
+
+)
+
 val DUO_DEMOS = arrayListOf(
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
@@ -133,6 +192,7 @@ val DUO_DEMOS = arrayListOf(
     Demo(TOOLTIP, TooltipActivity::class)
 )
 
-data class Demo(val title: String, val demoClass: KClass<out DemoActivity>) {
+data class Demo(val title: String, val demoClass: KClass<out DemoActivity>,
+                val isNew: Boolean = false, val isModified: Boolean = false) {
     val id: UUID = UUID.randomUUID()
 }

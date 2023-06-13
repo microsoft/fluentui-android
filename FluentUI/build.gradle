@@ -9,7 +9,7 @@ apply from: '../config.gradle'
 apply from: '../publish.gradle'
 
 android {
-    compileSdkVersion constants.compileSdkVersion
+    compileSdk 31
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
@@ -22,6 +22,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildscript {
+        repositories {
+            mavenCentral()
         }
     }
 

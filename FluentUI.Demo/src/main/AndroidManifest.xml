@@ -4,23 +4,26 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/fluent_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/fluent_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!--Launch Screen: We use AppTheme.Launcher for the theme instead of AppTheme in order to load the app with a launch screen-->
         <activity
-            android:name="com.microsoft.fluentuidemo.DemoListActivity"
-            android:label="@string/app_title"
-            android:theme="@style/AppTheme.Launcher"
-            android:exported="true">
+            android:name=".V2DemoListActivity"
+            android:exported="true"
+            android:label="@string/app_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Launch Screen: We use AppTheme.Launcher for the theme instead of AppTheme in order to load the app with a launch screen -->
+        <activity
+            android:name=".DemoListActivity"
+            android:exported="true"
+            android:label="@string/app_title"
+            android:theme="@style/AppTheme.Launcher"/>
 
         <!-- Demo activities -->
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarLayoutActivity" />
@@ -36,7 +39,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CardNudgeActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2CitationActivity" />
         <activity
-            android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
+            android:name=".demos.V2ContextualCommandBarActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DialogActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
@@ -59,7 +62,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2SnackbarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2TabBarActivity" />
         <activity
-            android:name="com.microsoft.fluentuidemo.demos.V2TextFieldActivity"
+            android:name=".demos.V2TextFieldActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.AppBarLayoutActivity" />
