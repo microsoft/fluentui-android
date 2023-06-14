@@ -19,7 +19,7 @@ import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.theme.token.MyAliasTokens
+import com.example.theme.token.OneNoteAliasTokens
 import com.example.theme.token.MyControlTokens
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
@@ -108,7 +108,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                     FluentTheme.updateControlTokens(ControlTokens())
                                     selectedOption.value = themes[0]
                                 } else {
-                                    FluentTheme.updateAliasTokens(MyAliasTokens())
+                                    FluentTheme.updateAliasTokens(OneNoteAliasTokens())
                                     FluentTheme.updateControlTokens(MyControlTokens())
                                     selectedOption.value = themes[1]
                                 }
@@ -141,7 +141,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                 FluentTheme.updateControlTokens(ControlTokens())
                                 selectedOption.value = themes[0]
                             } else {
-                                FluentTheme.updateAliasTokens(MyAliasTokens())
+                                FluentTheme.updateAliasTokens(OneNoteAliasTokens())
                                 FluentTheme.updateControlTokens(MyControlTokens())
                                 selectedOption.value = themes[1]
                             }
@@ -183,7 +183,7 @@ class V2BasicControlsActivity : DemoActivity() {
                                         FluentTheme.updateControlTokens(ControlTokens())
                                         true
                                     } else {
-                                        FluentTheme.updateAliasTokens(MyAliasTokens())
+                                        FluentTheme.updateAliasTokens(OneNoteAliasTokens())
                                         FluentTheme.updateControlTokens(MyControlTokens())
                                         false
                                     }

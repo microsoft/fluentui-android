@@ -8,10 +8,14 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,12 +51,24 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.MutableLiveData
+import com.example.theme.token.ExcelAliasTokens
+import com.example.theme.token.M365AliasTokens
+import com.example.theme.token.MyAppBarToken
+import com.example.theme.token.MyButtonTokens
+import com.example.theme.token.MyFABToken
+import com.example.theme.token.OneNoteAliasTokens
+import com.example.theme.token.PowerPointAliasTokens
+import com.example.theme.token.WordAliasTokens
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.icons.searchbaricons.Search
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.FluentTheme.controlTokens
 import com.microsoft.fluentui.theme.ThemeMode
+import com.microsoft.fluentui.theme.token.AliasTokens
+import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
@@ -62,13 +78,18 @@ import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
+import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.theme.token.controlTokens.LabelTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
 import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.CheckBox
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.drawer.Drawer
@@ -84,6 +105,10 @@ import java.io.File
 import java.time.format.TextStyle
 import java.util.Locale
 
+enum class Components (val selected :Int) {
+    V1(0),
+    V2(1)
+}
 class V2DemoListActivity : ComponentActivity() {
     @Composable
     fun GetDrawerContent() {
@@ -92,8 +117,11 @@ class V2DemoListActivity : ComponentActivity() {
             verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320)),
             modifier = Modifier
                 .verticalScroll(scrollState)
-                .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
-                    FluentTheme.themeMode))
+                .background(
+                    color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                        FluentTheme.themeMode
+                    )
+                )
         ) {
 
             Column(
@@ -151,9 +179,6 @@ class V2DemoListActivity : ComponentActivity() {
 
             Column (
                 verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
-//                modifier = Modifier
-//                    .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
-//                        FluentTheme.themeMode))
             ) {
                 val uriHandler = LocalUriHandler.current
                 val listItemToken = object : ListItemTokens () {
@@ -202,6 +227,111 @@ class V2DemoListActivity : ComponentActivity() {
                 )
                 ListItem.Item(text = "Your Feedback", listItemTokens = listItemToken)
             }
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
+                modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
+            ) {
+                Label(
+                    text = "Theme",
+                    textStyle = FluentAliasTokens.TypographyTokens.Caption1Strong
+                )
+
+                val controlTokens = ControlTokens()
+                val horizontalScrollState = rememberScrollState()
+                Row (
+                    horizontalArrangement = Arrangement.spacedBy(
+                        FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size60),
+                        Alignment.CenterHorizontally
+                    ),
+
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+                        contentDescription = "Theme1" ,
+                        tint = AliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        modifier = Modifier.clickable (
+                            onClick = {
+                                FluentTheme.updateAliasTokens(AliasTokens())
+                            }
+                        )
+                    )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+                        contentDescription = "Theme2" ,
+                        tint = OneNoteAliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80 ],
+                        modifier = Modifier.clickable (
+                            onClick = {
+                                FluentTheme.updateAliasTokens(OneNoteAliasTokens())
+                            }
+                        )
+                    )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+                        contentDescription = "Theme3" ,
+                        tint = WordAliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80 ],
+                        modifier = Modifier.clickable (
+                            onClick = {
+                                FluentTheme.updateAliasTokens(WordAliasTokens())
+                            }
+                        )
+                    )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+                        contentDescription = "Theme4" ,
+                        tint = ExcelAliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80 ],
+                        modifier = Modifier.clickable (
+                            onClick = {
+                                FluentTheme.updateAliasTokens(ExcelAliasTokens())
+                            }
+                        )
+                    )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+                        contentDescription = "Theme5" ,
+                        tint = PowerPointAliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80 ],
+                        modifier = Modifier.clickable (
+                            onClick = {
+                                FluentTheme.updateAliasTokens(PowerPointAliasTokens())
+                            }
+                        )
+                    )
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+                        contentDescription = "Theme5" ,
+                        tint = M365AliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80 ],
+                        modifier = Modifier.clickable (
+                            onClick = {
+                                FluentTheme.updateAliasTokens(M365AliasTokens())
+                            }
+                        )
+                    )
+
+//                    Icon(
+//                        painter = painterResource(id = R.drawable.ic_fluent_circle_28_filled),
+//                        contentDescription = "Theme7" ,
+//                        tint = AliasTokens().brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+//                        modifier = Modifier.clickable (
+//                            onClick = {
+//                                FluentTheme.updateControlTokens(
+//                                    controlTokens.updateToken(
+//                                        ControlTokens.ControlType.AppBar,
+//                                        MyAppBarToken()
+//                                    ).updateToken(
+//                                        ControlTokens.ControlType.FloatingActionButton,
+//                                        MyFABToken()
+//                                    )
+//                                )
+//                            }
+//                        )
+//                    )
+                }
+            }
         }
     }
 
@@ -218,16 +348,16 @@ class V2DemoListActivity : ComponentActivity() {
                     scrimVisible = true
                 )
 
-                var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
-                var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(true) }
-                var selectedTab by rememberSaveable { mutableStateOf(1) }
-                var filteredDemoList by rememberSaveable { mutableStateOf(V2DEMO.toMutableList()) }
+                var searchModeEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
+                val enableButtonBar: Boolean by rememberSaveable { mutableStateOf(true) }
+                var selectedComponents by rememberSaveable { mutableStateOf(Components.V2.selected) }
+                var filteredDemoList by remember { mutableStateOf(V2DEMO.toMutableList()) }
                 var showDialog by remember { mutableStateOf(false) }
 
                 Scaffold(
                     topBar = {
                         val appTitleDelta: Float by animateFloatAsState(
-                            if (searchMode) 0F else 1F,
+                            if (searchModeEnabled) 0F else 1F,
                             animationSpec = tween(durationMillis = 150, easing = LinearEasing)
                         )
 
@@ -237,7 +367,7 @@ class V2DemoListActivity : ComponentActivity() {
                                 text = "V1 Components",
                                 enabled = true,
                                 onClick = {
-                                    selectedTab = 0
+                                    selectedComponents = Components.V1.selected
                                     filteredDemoList = V1DEMO.toMutableList()
                                 }
                             )
@@ -247,7 +377,7 @@ class V2DemoListActivity : ComponentActivity() {
                                 text = "V2 Components",
                                 enabled = true,
                                 onClick = {
-                                    selectedTab = 1
+                                    selectedComponents = Components.V2.selected
                                     filteredDemoList = V2DEMO.toMutableList()
                                 }
                             )
@@ -270,7 +400,7 @@ class V2DemoListActivity : ComponentActivity() {
                                         .clip(CircleShape)
                                 )
                             },
-                            searchMode = searchMode,
+                            searchMode = searchModeEnabled,
                             rightAccessoryView = {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
@@ -279,7 +409,7 @@ class V2DemoListActivity : ComponentActivity() {
                                         .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
                                         .clickable(
                                             onClick = {
-                                                searchMode = true
+                                                searchModeEnabled = true
                                             }
                                         ),
                                     tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
@@ -287,11 +417,11 @@ class V2DemoListActivity : ComponentActivity() {
                                     )
                                 )
                             },
-                            searchBar = if (searchMode) {
+                            searchBar = if (searchModeEnabled) {
                                 {
                                     SearchBar(
                                         onValueChange = { userInput, _ ->
-                                            val demo = if(selectedTab == 0) {V1DEMO.toMutableList()} else {V2DEMO.toMutableList()}
+                                            val demo = if(selectedComponents == 0) {V1DEMO.toMutableList()} else {V2DEMO.toMutableList()}
                                             //val demo = DEMOS.toMutableList()
                                             filteredDemoList = if (userInput.isEmpty()) {
                                                 demo
@@ -302,7 +432,7 @@ class V2DemoListActivity : ComponentActivity() {
                                                 }.toMutableList()
                                             }
                                         },
-                                        navigationIconCallback = { searchMode = false },
+                                        navigationIconCallback = { searchModeEnabled = false },
                                         focusByDefault = true
                                     )
                                 }
@@ -312,7 +442,7 @@ class V2DemoListActivity : ComponentActivity() {
                                 {
                                     PillTabs(
                                         metadataList = buttonBarList,
-                                        selectedIndex = selectedTab,
+                                        selectedIndex = selectedComponents,
                                     )
                                 }
                             } else null,
@@ -330,10 +460,27 @@ class V2DemoListActivity : ComponentActivity() {
                         )
                         if(showDialog) {
                             Dialog (
-                                onDismiss = {showDialog = !showDialog},
+                                dismissOnBackPress = true,
+                                dismissOnClickedOutside = true,
+                                onDismiss = { showDialog = !showDialog },
                                 content = {
-                                    BasicText(
-                                        text = File("dogfood-release-notes.txt").readText()
+                                    val scrollState = rememberScrollState()
+                                    Label (
+                                        modifier = Modifier
+                                            .verticalScroll(scrollState)
+                                            .padding(
+                                                all = FluentGlobalTokens.size(
+                                                    FluentGlobalTokens.SizeTokens.Size160
+                                                )
+                                            )
+                                            .background(
+                                                color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value(
+                                                    FluentTheme.themeMode
+                                                )
+                                            ),
+                                        text = application.assets.open("dogfood-release-notes.txt").bufferedReader().use {
+                                            it.readText() },
+                                        textStyle = FluentAliasTokens.TypographyTokens.Body2
                                     )
                                 }
                             )

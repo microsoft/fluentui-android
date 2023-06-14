@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.example.theme.token.MyAliasTokens
+import com.example.theme.token.OneNoteAliasTokens
 import com.example.theme.token.MyAppBarToken
 import com.example.theme.token.MyButtonTokens
 import com.example.theme.token.MyFABToken
@@ -95,7 +95,7 @@ class V2ButtonsActivity : DemoActivity() {
                                 style = ButtonStyle.OutlinedButton,
                                 size = ButtonSize.Medium,
                                 onClick = {
-                                    FluentTheme.updateAliasTokens(MyAliasTokens())
+                                    FluentTheme.updateAliasTokens(OneNoteAliasTokens())
                                     FluentTheme.updateControlTokens(
                                         controlTokens.updateToken(
                                             ControlTokens.ControlType.Button,
@@ -162,7 +162,7 @@ class V2ButtonsActivity : DemoActivity() {
                                         text = "Theme1"
                                     )
                                     Button(
-                                        onClick = { aliasTokens = MyAliasTokens() },
+                                        onClick = { aliasTokens = OneNoteAliasTokens() },
                                         text = "Theme2"
                                     )
                                 }
