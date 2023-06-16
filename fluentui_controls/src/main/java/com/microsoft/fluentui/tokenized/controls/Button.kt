@@ -152,6 +152,7 @@ fun Button(
                                 )
                         )
                     ),
+                    
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
