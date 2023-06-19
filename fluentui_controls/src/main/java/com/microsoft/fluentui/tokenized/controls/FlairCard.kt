@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.controlTokens.FlairCardInfo
 import com.microsoft.fluentui.theme.token.controlTokens.FlairCardTokens
 import kotlinx.coroutines.delay
 
@@ -27,9 +28,25 @@ enum class Flair {
 
 var currentFlairState: Flair by mutableStateOf(Flair.Rest)
 
+data class GradientColors(val color1: Color, val color2: Color, val color3: Color)
+
+/**
+ * Cards are flexible containers that group related content and actions together. They reveal more information upon interaction.
+ * A Flair card is a basic card with flair animation.
+ *
+ * @param modifier Modifier for the card
+ * @param gradientColors List of colors for the flair gradient. Use [GradientColors]
+ * @param flairCardTokens Optional tokens for customizing the card
+ * @param content Content for the card
+ */
 @Composable
 fun FlairCard(
     modifier: Modifier = Modifier,
+    gradientColors: GradientColors = GradientColors(
+        Color(0xFFB47CF8),
+        Color(0xFF47CFFA),
+        Color(0xFF464FEB)
+    ),
     flairCardTokens: FlairCardTokens? = null,
     content: @Composable () -> Unit,
 ) {
@@ -37,8 +54,9 @@ fun FlairCard(
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = flairCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FlairCard] as FlairCardTokens
+    val borderStrokeWidth = token.borderStrokeWidth(flairCardInfo = FlairCardInfo())
     val transition = updateTransition(currentFlairState, label = "Flair state")
-    var gradient = Brush.verticalGradient(
+    val gradient = Brush.verticalGradient(
         0.0f to transition.animateColor(transitionSpec = {
             when {
                 Flair.Rest isTransitioningTo Flair.Start ->
@@ -46,8 +64,8 @@ fun FlairCard(
                         durationMillis = 1600
                         Color.Transparent at 0
                         Color.Transparent at 600 with LinearOutSlowInEasing
-                        Color(0xFF464FEB) at 800
-                        Color(0xFF464FEB) at 1400 with LinearOutSlowInEasing
+                        gradientColors.color3 at 800
+                        gradientColors.color3 at 1400 with LinearOutSlowInEasing
                         Color.Transparent at 1600
                     }
                 else -> tween()
@@ -66,8 +84,8 @@ fun FlairCard(
                         durationMillis = 1600
                         Color.Transparent at 0
                         Color.Transparent at 400 with LinearOutSlowInEasing
-                        Color(0xFF47CFFA) at 600
-                        Color(0xFF47CFFA) at 1200 with LinearOutSlowInEasing
+                        gradientColors.color2 at 600
+                        gradientColors.color2 at 1200 with LinearOutSlowInEasing
                         Color.Transparent at 1400
                     }
                 else -> tween()
@@ -85,8 +103,8 @@ fun FlairCard(
                         durationMillis = 1600
                         Color.Transparent at 0
                         Color.Transparent at 200 with LinearOutSlowInEasing
-                        Color(0xFFB47CF8) at 400
-                        Color(0xFFB47CF8) at 1000 with LinearOutSlowInEasing
+                        gradientColors.color1 at 400
+                        gradientColors.color1 at 1000 with LinearOutSlowInEasing
                         Color.Transparent at 1200
                     }
                 else -> tween()
@@ -99,6 +117,17 @@ fun FlairCard(
         }.value
     )
 
+    val infiniteTransition = rememberInfiniteTransition()
+    val startAngle by infiniteTransition.animateFloat(
+        0f,
+        720f,
+        infiniteRepeatable(
+            animation = tween(
+                durationMillis = 2000,
+                easing = LinearEasing
+            )
+        )
+    )
     val angle by transition.animateFloat(transitionSpec = {
         when {
             Flair.Rest isTransitioningTo Flair.Start ->
@@ -126,7 +155,6 @@ fun FlairCard(
                 currentFlairState = Flair.Rest
             }
         })
-
         if (currentFlairState == Flair.Start) {
             Canvas(
                 modifier = Modifier
@@ -143,7 +171,10 @@ fun FlairCard(
                 )
             }
         }
-        BasicCard(modifier = Modifier.padding(2.dp), basicCardTokens = flairCardTokens) {
+        BasicCard(
+            modifier = Modifier.padding(borderStrokeWidth),
+            basicCardTokens = flairCardTokens
+        ) {
             content()
         }
     }
