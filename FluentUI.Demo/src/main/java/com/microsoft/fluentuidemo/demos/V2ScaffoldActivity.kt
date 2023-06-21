@@ -39,16 +39,14 @@ import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
-class V2ScaffoldActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
-
+class V2ScaffoldActivity : V2DemoActivity() {
     //Tag for Test
     private val TOP_BAR = "TopBar"
     private val BOTTOM_BAR = "BottomBar"
@@ -63,8 +61,8 @@ class V2ScaffoldActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
-        v2ActivityComposeBinding.composeHere.setContent {
+
+        setActivityContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
             var showHomeBadge by rememberSaveable { mutableStateOf(true) }
             val tabDataList = arrayListOf(

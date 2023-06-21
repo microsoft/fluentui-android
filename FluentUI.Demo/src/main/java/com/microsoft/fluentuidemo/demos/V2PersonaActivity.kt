@@ -19,24 +19,16 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.util.invokeToast
 
-class V2PersonaActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
-
+class V2PersonaActivity : V2DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
+
+        setActivityContent {
                 CreatePersonaActivityUI(this)
-            }
         }
     }
 

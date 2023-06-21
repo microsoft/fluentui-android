@@ -2,7 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.text.KeyboardActions
@@ -20,7 +19,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Office
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -32,72 +30,73 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class V2SearchBarActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
-
+class V2SearchBarActivity : V2DemoActivity() {
     @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val context: Context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
-                var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }
-                var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
-                var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
-                var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
+        setActivityContent {
+            var autoCorrectEnabled: Boolean by rememberSaveable { mutableStateOf(false) }
+            var enableMicrophoneCallback: Boolean by rememberSaveable { mutableStateOf(true) }
+            var searchBarStyle: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
+            var displayRightAccessory: Boolean by rememberSaveable { mutableStateOf(true) }
+            var induceDelay: Boolean by rememberSaveable { mutableStateOf(false) }
 
-                var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
+            var selectedPeople: Person? by rememberSaveable { mutableStateOf(null) }
 
-                val listofPeople = listOf(
-                    Person(
-                        "Allan", "Munger",
-                        image = R.drawable.avatar_allan_munger,
-                        isActive = true
-                    ),
-                    Person(
-                        "Amanda", "Brady",
-                        isActive = false, status = AvatarStatus.Offline
-                    ),
-                    Person(
-                        "Abhay", "Singh",
-                        isActive = true, status = AvatarStatus.DND, isOOO = true
-                    ),
-                    Person(
-                        "Carlos", "Slathery",
-                        isActive = false, status = AvatarStatus.Busy, isOOO = true
-                    ),
-                    Person(
-                        "Celeste", "Burton",
-                        image = R.drawable.avatar_celeste_burton,
-                        isActive = true, status = AvatarStatus.Away
-                    ),
-                    Person(
-                        "Ankit", "Gupta",
-                        isActive = true, status = AvatarStatus.Unknown
-                    ),
-                    Person(
-                        "Miguel", "Garcia",
-                        image = R.drawable.avatar_miguel_garcia,
-                        isActive = true, status = AvatarStatus.Blocked
-                    )
+            val listofPeople = listOf(
+                Person(
+                    "Allan", "Munger",
+                    image = R.drawable.avatar_allan_munger,
+                    isActive = true
+                ),
+                Person(
+                    "Amanda", "Brady",
+                    isActive = false, status = AvatarStatus.Offline
+                ),
+                Person(
+                    "Abhay", "Singh",
+                    isActive = true, status = AvatarStatus.DND, isOOO = true
+                ),
+                Person(
+                    "Carlos", "Slathery",
+                    isActive = false, status = AvatarStatus.Busy, isOOO = true
+                ),
+                Person(
+                    "Celeste", "Burton",
+                    image = R.drawable.avatar_celeste_burton,
+                    isActive = true, status = AvatarStatus.Away
+                ),
+                Person(
+                    "Ankit", "Gupta",
+                    isActive = true, status = AvatarStatus.Unknown
+                ),
+                Person(
+                    "Miguel", "Garcia",
+                    image = R.drawable.avatar_miguel_garcia,
+                    isActive = true, status = AvatarStatus.Blocked
                 )
-                var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
+            )
+            var filteredPeople by rememberSaveable { mutableStateOf(listofPeople.toMutableList()) }
 
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                ListItem.SectionHeader(
+                    title = getDemoAppString(DemoAppStrings.ModifiableParameters),
+                    enableChevron = true,
+                    enableContentOpenCloseTransition = true,
+                    chevronOrientation = ChevronOrientation(90f, 0f),
                 ) {
+
                     ListItem.SectionHeader(
                         title = getDemoAppString(DemoAppStrings.ModifiableParameters),
                         enableChevron = true,

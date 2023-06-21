@@ -5,6 +5,7 @@
 
 package com.microsoft.fluentuidemo
 
+import androidx.core.app.ComponentActivity
 import com.microsoft.fluentuidemo.demos.*
 import java.util.*
 import kotlin.reflect.KClass
@@ -122,11 +123,11 @@ val DEMOS = arrayListOf(
 )
 
 val V1DEMO = arrayListOf(
-    Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class, isNew = true),
+    Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
-    Demo(AVATAR_VIEW, AvatarViewActivity::class, isModified = true),
+    Demo(AVATAR_VIEW, AvatarViewActivity::class, isNew = true),
     Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
-    Demo(BASIC_INPUTS, BasicInputsActivity::class),
+    Demo(BASIC_INPUTS, BasicInputsActivity::class, isModified = true),
     Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),
@@ -192,7 +193,7 @@ val DUO_DEMOS = arrayListOf(
     Demo(TOOLTIP, TooltipActivity::class)
 )
 
-data class Demo(val title: String, val demoClass: KClass<out DemoActivity>,
+data class Demo(val title: String, val demoClass: KClass<out ComponentActivity>,
                 val isNew: Boolean = false, val isModified: Boolean = false) {
     val id: UUID = UUID.randomUUID()
 }

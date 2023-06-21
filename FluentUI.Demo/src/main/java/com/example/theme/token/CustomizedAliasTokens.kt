@@ -9,7 +9,6 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.TokenSet
 
-
 class OneNoteAliasTokens : AliasTokens() {
     override val brandColor: TokenSet<FluentAliasTokens.BrandColorTokens, Color> by lazy {
         TokenSet { token ->

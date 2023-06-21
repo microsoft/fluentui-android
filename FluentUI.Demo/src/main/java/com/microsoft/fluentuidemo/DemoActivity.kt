@@ -42,7 +42,7 @@ abstract class DemoActivity : AppCompatActivity() {
         val demo: Demo? = if (DuoSupportUtils.isDualScreenMode(this)) {
             DUO_DEMOS.find { it.id == demoID }
         } else {
-            DEMOS.find { it.id == demoID }
+            V1DEMO.find { it.id == demoID }
         }
         if (demo != null)
             title = demo.title
