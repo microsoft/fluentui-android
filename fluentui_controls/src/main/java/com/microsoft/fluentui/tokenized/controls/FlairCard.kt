@@ -26,8 +26,6 @@ enum class Flair {
     Rest
 }
 
-var currentFlairState: Flair by mutableStateOf(Flair.Rest)
-
 data class GradientColors(val color1: Color, val color2: Color, val color3: Color)
 
 /**
@@ -47,6 +45,7 @@ fun FlairCard(
         Color(0xFF47CFFA),
         Color(0xFF464FEB)
     ),
+    flairState: FlairState,
     flairCardTokens: FlairCardTokens? = null,
     content: @Composable () -> Unit,
 ) {
@@ -55,7 +54,7 @@ fun FlairCard(
     val token = flairCardTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FlairCard] as FlairCardTokens
     val borderStrokeWidth = token.borderStrokeWidth(flairCardInfo = FlairCardInfo())
-    val transition = updateTransition(currentFlairState, label = "Flair state")
+    val transition = updateTransition(flairState.currentFlairState, label = "Flair state")
     val gradient = Brush.verticalGradient(
         0.0f to transition.animateColor(transitionSpec = {
             when {
@@ -149,13 +148,13 @@ fun FlairCard(
             .height(IntrinsicSize.Max)
     ) {
 
-        LaunchedEffect(key1 = currentFlairState, block = {
-            if (currentFlairState == Flair.Start) {
+        LaunchedEffect(key1 = flairState.currentFlairState, block = {
+            if (flairState.currentFlairState == Flair.Start) {
                 delay(2000)
-                currentFlairState = Flair.Rest
+                flairState.currentFlairState = Flair.Rest
             }
         })
-        if (currentFlairState == Flair.Start) {
+        if (flairState.currentFlairState == Flair.Start) {
             Canvas(
                 modifier = Modifier
                     .fillMaxSize(1f)
@@ -183,20 +182,16 @@ fun FlairCard(
 class FlairState(
     initialValue: Flair = Flair.Rest,
 ) {
-    var currentValue: Flair by mutableStateOf(initialValue)
+    var currentFlairState: Flair by mutableStateOf(initialValue)
 
     fun start() {
-        currentFlairState = if (currentFlairState == Flair.Start) {
-            Flair.Rest
-        } else {
-            Flair.Start
-        }
+        currentFlairState = Flair.Start
     }
 
     companion object {
         fun Saver() =
             Saver<FlairState, Flair>(
-                save = { it.currentValue },
+                save = { it.currentFlairState },
                 restore = { FlairState(it) }
             )
     }

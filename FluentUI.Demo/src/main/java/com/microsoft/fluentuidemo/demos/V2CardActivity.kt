@@ -144,7 +144,7 @@ class V2CardActivity : DemoActivity() {
                 Button(onClick = {
                     flair.start()
                 }, text = "Flair")
-                FlairCard(modifier = Modifier.fillMaxSize()) {
+                FlairCard(modifier = Modifier.fillMaxSize(), flairState = flair) {
                     BasicCardUI(context = context)
                 }
                 ListItem.Header(title = context.getString(R.string.announcement_card))
