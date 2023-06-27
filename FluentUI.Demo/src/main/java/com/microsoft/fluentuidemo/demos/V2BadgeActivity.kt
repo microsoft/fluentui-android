@@ -21,7 +21,7 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 
 
 class V2BadgeActivity : V2DemoActivity() {
-    override val appBarSize = AppBarSize.Small
+    override val appBarSize = AppBarSize.Medium
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

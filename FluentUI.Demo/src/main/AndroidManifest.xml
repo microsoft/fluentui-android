@@ -42,6 +42,7 @@
             android:name=".demos.V2ContextualCommandBarActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DialogActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.V2DesignTokens" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2LabelActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />
