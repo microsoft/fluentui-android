@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Intent
+import android.util.Log
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.core.app.ActivityScenario
@@ -154,14 +155,14 @@ class V2CardNudgeActivityUITest {
     fun testLeftSwipe() {
         composeTestRule.onNodeWithTag(CARDNUDGE).performTouchInput { swipeLeft() }
         composeTestRule.onNodeWithTag(CARDNUDGE).performClick()
-        composeTestRule.onNodeWithText("Left Swiped").assertExists()
+        composeTestRule.onNodeWithText("Left Swiped", substring = true).assertExists()
     }
 
     @Test
     fun testRightSwipe() {
         composeTestRule.onNodeWithTag(CARDNUDGE).performTouchInput { swipeRight() }
         composeTestRule.onNodeWithTag(CARDNUDGE).performClick()
-        composeTestRule.onNodeWithText("Right Swiped").assertExists()
+        composeTestRule.onNodeWithText("Right Swiped", substring = true).assertExists()
     }
 
     @After

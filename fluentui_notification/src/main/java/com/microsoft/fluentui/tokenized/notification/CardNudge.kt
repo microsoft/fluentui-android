@@ -129,9 +129,9 @@ fun CardNudge(
             verticalAlignment = Alignment.CenterVertically
         ) {
             LaunchedEffect(state.offset.value) {
-                if (state.offset.value > 0F) {
+                if (state.offset.value > 0.1F) {
                     metadata.rightSwipeGesture?.invoke(state.offset.value / maxWidth)
-                } else if (state.offset.value < 0F) {
+                } else if (state.offset.value < -0.1F) {
                     metadata.leftSwipeGesture?.invoke(state.offset.value / maxWidth)
                 }
             }
