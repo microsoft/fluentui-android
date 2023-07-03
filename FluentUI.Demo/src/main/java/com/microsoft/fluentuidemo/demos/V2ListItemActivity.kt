@@ -4,15 +4,22 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.MoreVert
-import androidx.compose.material.icons.outlined.ThumbUp
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,15 +35,27 @@ import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.theme.token.controlTokens.*
-import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.*
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Size24
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Size40
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize.Size56
+import com.microsoft.fluentui.theme.token.controlTokens.BasicCardInfo
+import com.microsoft.fluentui.theme.token.controlTokens.BasicCardTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BorderInset.XXLarge
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.ListItemTextAlignment
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle.Subtle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement.Bottom
-import com.microsoft.fluentui.tokenized.controls.*
+import com.microsoft.fluentui.tokenized.controls.BasicCard
+import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.CheckBox
+import com.microsoft.fluentui.tokenized.controls.RadioButton
+import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
-import com.microsoft.fluentui.tokenized.listitem.TextIcons
+import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.persona.Avatar
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
@@ -82,32 +101,37 @@ private fun CreateListActivityUI(context: Context) {
             .fillMaxSize()
     ) {
         Column(Modifier.verticalScroll(rememberScrollState())) {
-            ListItem.Header(title = "One-Line list with Text icons")
+            ListItem.Header(title = "One-Line list")
             OneLineListAccessoryViewContent(context)
-            ListItem.Header(title = "Two-Line list with Text icons")
+            ListItem.Header(title = "Two-Line list")
             TwoLineListAccessoryViewContent(context)
-            ListItem.Header(title = "Three-Line list with Text icons")
+            ListItem.Header(title = "Three-Line list")
             ThreeLineListAccessoryViewContent(context)
             ListItem.Header(title = "Text Only")
             ListItem.Item(
                 text = primaryText,
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
-                primaryTextTrailingIcons = oneTextIcon20()
+                primaryTextTrailingView = { Icon20() }
             )
             ListItem.Item(
                 text = primaryText,
                 subText = secondaryText,
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
-                secondarySubTextLeadingIcons = oneTextIcon16()
+                secondarySubTextLeadingView = { Icon16() }
             )
             ListItem.Item(
                 text = primaryText,
                 subText = secondaryText,
                 secondarySubText = tertiaryText,
                 border = BorderType.Bottom,
-                secondarySubTextTailingIcons = twoTextIcons16()
+                secondarySubTextTrailingView = {
+                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        Icon16()
+                        Icon16()
+                    }
+                }
             )
             ListItem.Header(title = "Wrapped Text list")
             ListItem.Item(
@@ -337,8 +361,13 @@ private fun OneLineListAccessoryViewContent(context: Context) {
                     context
                 )
             },
-            primaryTextLeadingIcons = twoTextIcons20(),
-            primaryTextTrailingIcons = oneTextIcon20(),
+            primaryTextLeadingView = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon20()
+                    Icon20()
+                }
+            },
+            primaryTextTrailingView = { Icon20() },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -380,10 +409,11 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
             text = primaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewAvatar(size = Size40) },
+            trailingAccessoryView = { LeftViewAvatar(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
+            primaryTextTrailingView = { Icon20() },
+            secondarySubTextTrailingView = { Icon16() }
         )
         ListItem.Item(
             text = primaryText,
@@ -393,8 +423,8 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
             borderInset = XXLarge,
             unreadDot = unreadDot1,
             onClick = { unreadDot1 = !unreadDot1 },
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
+            primaryTextTrailingView = { Icon20() },
+            secondarySubTextTrailingView = { Icon16() }
         )
         ListItem.Item(
             text = primaryText,
@@ -404,16 +434,26 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
             borderInset = XXLarge,
             unreadDot = unreadDot2,
             onClick = { unreadDot2 = !unreadDot2 },
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = oneTextIcon16()
+            primaryTextTrailingView = { Icon20() },
+            secondarySubTextTrailingView = { Icon16() }
         )
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
-            primaryTextLeadingIcons = twoTextIcons20(),
-            primaryTextTrailingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = twoTextIcons16(),
+            primaryTextLeadingView = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon20()
+                    Icon20()
+                }
+            },
+            primaryTextTrailingView = { Icon20() },
+            secondarySubTextTrailingView = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon16()
+                    Icon16()
+                }
+            },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -429,8 +469,18 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
             text = primaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
-            secondarySubTextLeadingIcons = twoTextIcons16(),
-            secondarySubTextTailingIcons = twoTextIcons16(),
+            secondarySubTextLeadingView = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon16()
+                    Icon16()
+                }
+            },
+            secondarySubTextTrailingView = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon16()
+                    Icon16()
+                }
+            },
             trailingAccessoryView = {
                 RightViewButton(
                     ButtonSize.Small,
@@ -444,7 +494,7 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
             text = primaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
-            secondarySubTextTailingIcons = twoTextIcons16(),
+            secondarySubTextTrailingView = { Icon16() },
             trailingAccessoryView = { RightViewToggle() },
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -466,7 +516,7 @@ private fun ThreeLineListAccessoryViewContent(
 ) {
     val separator = " • "
     val footer = buildAnnotatedString {
-        withStyle(SpanStyle(color = Color.Blue)){
+        withStyle(SpanStyle(color = Color.Blue)) {
             append("3 min ago")
         }
         append(separator)
@@ -477,8 +527,9 @@ private fun ThreeLineListAccessoryViewContent(
             text = "Amanda Brady replied to your comment",
             subText = "Wanda can you please update the file with comments",
             secondarySubTextAnnotated = footer,
-            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
-            trailingAccessoryView = {rightViewIconButton()},
+            leadingAccessoryView = { LeftViewAvatar(size = Size56) },
+            trailingAccessoryView = { rightViewIconButton() },
+            primaryTextTrailingView = { Badge(text = "2") },
             textMaxLines = 2,
             leadingAccessoryViewAlignment = Alignment.Top,
             trailingAccessoryViewAlignment = Alignment.Top,
@@ -491,6 +542,7 @@ private fun ThreeLineListAccessoryViewContent(
             subText = secondaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryView = { LeftViewFolderIcon40() },
+            primaryTextTrailingView = { Badge(text = "Suggested") },
             trailingAccessoryView = {
                 RightViewButton(
                     ButtonSize.Small,
@@ -504,8 +556,13 @@ private fun ThreeLineListAccessoryViewContent(
             text = primaryText,
             subText = secondaryText,
             bottomView = { LinearProgressIndicator() },
-            primaryTextLeadingIcons = oneTextIcon20(),
-            secondarySubTextTailingIcons = twoTextIcons16(),
+            primaryTextLeadingView = { Icon20() },
+            secondarySubTextTrailingView = {
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Icon16()
+                    Icon16()
+                }
+            },
             leadingAccessoryView = { LeftViewAvatar(Size56) },
             trailingAccessoryView = { RightViewText(text = "Value") },
             border = BorderType.Bottom
@@ -624,26 +681,6 @@ private fun LeftViewThreeButton() {
 }
 
 @Composable
-private fun oneTextIcon16(): TextIcons {
-    return TextIcons({ Icon16() })
-}
-
-@Composable
-private fun twoTextIcons16(): TextIcons {
-    return TextIcons({ Icon16() }, { Icon16() })
-}
-
-@Composable
-private fun oneTextIcon20(): TextIcons {
-    return TextIcons({ Icon20() })
-}
-
-@Composable
-private fun twoTextIcons20(): TextIcons {
-    return TextIcons({ Icon20() }, { Icon20() })
-}
-
-@Composable
 private fun Icon16() {
     return Icon(
         painter = painterResource(id = drawable.ic_icon__16x16_checkmark),
@@ -671,14 +708,17 @@ private fun LeftViewFolderIcon40() {
 }
 
 @Composable
-private fun rightViewIconButton(){
-    class Tokens: BasicCardTokens(){
+private fun rightViewIconButton() {
+    class Tokens : BasicCardTokens() {
         @Composable
         override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
             return FluentGlobalTokens.cornerRadius(FluentGlobalTokens.CornerRadiusTokens.CornerRadius40)
         }
     }
-    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         BasicCard(Modifier.padding(all = 4.dp), basicCardTokens = Tokens()) {
             Icon(Icons.Outlined.MoreVert, contentDescription = "")
         }

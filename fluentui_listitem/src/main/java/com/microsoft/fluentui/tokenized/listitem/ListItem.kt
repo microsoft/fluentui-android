@@ -77,12 +77,14 @@ object ListItem {
             BorderType.Top -> drawLine(
                 borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
             )
+
             BorderType.Bottom -> drawLine(
                 borderColor,
                 Offset(borderInset, size.height),
                 Offset(size.width, size.height),
                 borderSize * density
             )
+
             BorderType.TopBottom -> {
                 drawLine(
                     borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
@@ -94,6 +96,7 @@ object ListItem {
                     borderSize * density
                 )
             }
+
             NoBorder -> {
 
             }
@@ -187,6 +190,7 @@ object ListItem {
         }
 
     }
+
     @Composable
     internal fun InternalItem(
         text: String,
@@ -202,10 +206,10 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
-        primaryTextLeadingIcons: TextIcons? = null,
-        primaryTextTrailingIcons: TextIcons? = null,
-        secondarySubTextLeadingIcons: TextIcons? = null,
-        secondarySubTextTailingIcons: TextIcons? = null,
+        primaryTextLeadingView: (@Composable () -> Unit)? = null,
+        primaryTextTrailingView: (@Composable () -> Unit)? = null,
+        secondarySubTextLeadingView: (@Composable () -> Unit)? = null,
+        secondarySubTextTrailingView: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -331,24 +335,19 @@ object ListItem {
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        if (primaryTextLeadingIcons != null) {
-                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                primaryTextLeadingIcons.icon1()
-                                primaryTextLeadingIcons.icon2?.let { it() }
-                            }
+                        if (primaryTextLeadingView != null) {
+                            primaryTextLeadingView()
                         }
 
                         BasicText(
+                            modifier = Modifier.weight(1f, false),
                             text = text,
                             style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                             maxLines = textMaxLines,
                             overflow = TextOverflow.Ellipsis
                         )
-                        if (primaryTextTrailingIcons != null) {
-                            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                primaryTextTrailingIcons.icon1()
-                                primaryTextTrailingIcons.icon2?.let { it() }
-                            }
+                        if (primaryTextTrailingView != null) {
+                            primaryTextTrailingView()
                         }
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -371,14 +370,12 @@ object ListItem {
                                     bottomView()
                                 }
                             } else {
-                                if (secondarySubTextLeadingIcons != null) {
-                                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        secondarySubTextLeadingIcons.icon1()
-                                        secondarySubTextLeadingIcons.icon2?.let { it() }
-                                    }
+                                if (secondarySubTextLeadingView != null) {
+                                    secondarySubTextLeadingView()
                                 }
                                 if (secondarySubText != null) {
                                     BasicText(
+                                        modifier = Modifier.weight(1f, false),
                                         text = secondarySubText,
                                         style = secondarySubTextTypography.merge(TextStyle(color = secondarySubTextColor)),
                                         maxLines = secondarySubTextMaxLines,
@@ -386,17 +383,15 @@ object ListItem {
                                     )
                                 } else if (secondarySubTextAnnotated != null) {
                                     BasicText(
+                                        modifier = Modifier.weight(1f, false),
                                         text = secondarySubTextAnnotated,
                                         inlineContent = secondarySubTextInlineContent,
                                         maxLines = secondarySubTextMaxLines,
                                         overflow = TextOverflow.Ellipsis
                                     )
                                 }
-                                if (secondarySubTextTailingIcons != null) {
-                                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                                        secondarySubTextTailingIcons.icon1()
-                                        secondarySubTextTailingIcons.icon2?.let { it() }
-                                    }
+                                if (secondarySubTextTrailingView != null) {
+                                    secondarySubTextTrailingView()
                                 }
                             }
                         }
@@ -434,10 +429,10 @@ object ListItem {
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
-     * @param primaryTextLeadingIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
-     * @param primaryTextTrailingIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
-     * @param secondarySubTextLeadingIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
-     * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
+     * @param primaryTextLeadingView Optional primary text leading view.
+     * @param primaryTextTrailingView Optional primary text trailing view.
+     * @param secondarySubTextLeadingView Optional secondary text leading view.
+     * @param secondarySubTextTrailingView Optional secondary text trailing view.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
      * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
@@ -462,10 +457,10 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
-        primaryTextLeadingIcons: TextIcons? = null,
-        primaryTextTrailingIcons: TextIcons? = null,
-        secondarySubTextLeadingIcons: TextIcons? = null,
-        secondarySubTextTailingIcons: TextIcons? = null,
+        primaryTextLeadingView: (@Composable () -> Unit)? = null,
+        primaryTextTrailingView: (@Composable () -> Unit)? = null,
+        secondarySubTextLeadingView: (@Composable () -> Unit)? = null,
+        secondarySubTextTrailingView: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -489,10 +484,10 @@ object ListItem {
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
-            primaryTextLeadingIcons = primaryTextLeadingIcons,
-            primaryTextTrailingIcons = primaryTextTrailingIcons,
-            secondarySubTextLeadingIcons = secondarySubTextLeadingIcons,
-            secondarySubTextTailingIcons = secondarySubTextTailingIcons,
+            primaryTextLeadingView = primaryTextLeadingView,
+            primaryTextTrailingView = primaryTextTrailingView,
+            secondarySubTextLeadingView = secondarySubTextLeadingView,
+            secondarySubTextTrailingView = secondarySubTextTrailingView,
             border = border,
             borderInset = borderInset,
             interactionSource = interactionSource,
@@ -521,10 +516,10 @@ object ListItem {
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
-     * @param primaryTextLeadingIcons Optional primary text leading icons(20X20). Supply text icons using [TextIcons]
-     * @param primaryTextTrailingIcons Optional primary text trailing icons(20X20). Supply text icons using [TextIcons]
-     * @param secondarySubTextLeadingIcons Optional secondary text leading icons(16X16). Supply text icons using [TextIcons]
-     * @param secondarySubTextTailingIcons Optional secondary text trailing icons(16X16). Supply text icons using [TextIcons]
+     * @param primaryTextLeadingView Optional primary text leading view.
+     * @param primaryTextTrailingView Optional primary text trailing view.
+     * @param secondarySubTextLeadingView Optional secondary text leading view.
+     * @param secondarySubTextTrailingView Optional secondary text trailing view.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
      * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
@@ -550,10 +545,10 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
-        primaryTextLeadingIcons: TextIcons? = null,
-        primaryTextTrailingIcons: TextIcons? = null,
-        secondarySubTextLeadingIcons: TextIcons? = null,
-        secondarySubTextTailingIcons: TextIcons? = null,
+        primaryTextLeadingView: (@Composable () -> Unit)? = null,
+        primaryTextTrailingView: (@Composable () -> Unit)? = null,
+        secondarySubTextLeadingView: (@Composable () -> Unit)? = null,
+        secondarySubTextTrailingView: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
@@ -578,10 +573,10 @@ object ListItem {
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
-            primaryTextLeadingIcons = primaryTextLeadingIcons,
-            primaryTextTrailingIcons = primaryTextTrailingIcons,
-            secondarySubTextLeadingIcons = secondarySubTextLeadingIcons,
-            secondarySubTextTailingIcons = secondarySubTextTailingIcons,
+            primaryTextLeadingView = primaryTextLeadingView,
+            primaryTextTrailingView = primaryTextTrailingView,
+            secondarySubTextLeadingView = secondarySubTextLeadingView,
+            secondarySubTextTrailingView = secondarySubTextTrailingView,
             border = border,
             borderInset = borderInset,
             interactionSource = interactionSource,
