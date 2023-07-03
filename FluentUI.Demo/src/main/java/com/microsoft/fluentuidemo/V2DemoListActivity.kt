@@ -40,7 +40,6 @@ import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
@@ -58,14 +57,11 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
-import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemInfo
-import com.microsoft.fluentui.theme.token.controlTokens.ListItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
@@ -89,15 +85,6 @@ enum class Components {
 }
 
 class V2DemoListActivity : ComponentActivity() {
-    private val listItemToken = object : ListItemTokens() {
-        @Composable
-        override fun backgroundBrush(listItemInfo: ListItemInfo): StateBrush {
-            return StateBrush(
-                rest = SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value()),
-                pressed = SolidColor(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2Pressed].value())
-            )
-        }
-    }
 
     @Composable
     fun GetDialogContent() {
@@ -173,6 +160,7 @@ class V2DemoListActivity : ComponentActivity() {
 
                 Label(
                     text = String.format(getString(R.string.sdk_version, BuildConfig.VERSION_NAME)),
+                    modifier = Modifier.background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value()),
                     textStyle = FluentAliasTokens.TypographyTokens.Caption1
                 )
             }
@@ -188,12 +176,12 @@ class V2DemoListActivity : ComponentActivity() {
                 val gradientColors = listOf(
                     FluentColor(
                         Color(0XFFD3CBE8),
-                        Color(0XFF524E5B)
+                        Color(0XFF756D88)
                     ).value(),
 
                     FluentColor(
                         Color(0xffE4CFDF),
-                        Color(0XFF3D373B)
+                        Color(0XFF877482)
                     ).value()
                 )
 
@@ -201,6 +189,7 @@ class V2DemoListActivity : ComponentActivity() {
                     text = "Open source cross platform Design System.",
                     textStyle = FluentAliasTokens.TypographyTokens.Title1,
                     modifier = Modifier
+                        .padding(end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size480))
                         .graphicsLayer(alpha = 0.99f)
                         .drawWithCache {
                             val brush = Brush.linearGradient(gradientColors)
@@ -240,47 +229,46 @@ class V2DemoListActivity : ComponentActivity() {
                     },
                     leadingAccessoryContent = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_color_20_regular),
+                            painter = painterResource(id = R.drawable.ic_fluent_fluent_24_regular),
                             contentDescription = "Design Tokens Icon",
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    listItemTokens = listItemToken
+                    listItemTokens = CustomizedTokens.listItemTokens
                 )
 
                 ListItem.Item(
                     text = "Release Notes",
                     leadingAccessoryContent = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_document_text_20_regular),
+                            painter = painterResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
                             contentDescription = "Release Notes Icon",
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
                     onClick = onRelNotepress,
-                    listItemTokens = listItemToken
+                    listItemTokens = CustomizedTokens.listItemTokens
                 )
 
                 val uriHandler = LocalUriHandler.current
                 ListItem.Item(
                     text = "Github Repo",
-                    trailingAccessoryContent = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_link_24_regular),
-                            contentDescription = "Fluent Link",
-                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                                FluentTheme.themeMode
-                            )
-                        )
-                    },
                     leadingAccessoryContent = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_code_20_regular),
+                            painter = painterResource(id = R.drawable.ic_fluent_book_number_24_regular),
                             contentDescription = "GitHub Repo Icon",
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    listItemTokens = listItemToken,
+                    trailingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_link_24_regular),
+                            contentDescription = "Fluent Link",
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                            modifier = Modifier.clickable { uriHandler.openUri("https://github.com/microsoft/fluentui-android") }
+                        )
+                    },
+                    listItemTokens = CustomizedTokens.listItemTokens,
                     onClick = { uriHandler.openUri("https://github.com/microsoft/fluentui-android") }
                 )
 
@@ -288,12 +276,12 @@ class V2DemoListActivity : ComponentActivity() {
                     text = "Your Feedback",
                     leadingAccessoryContent = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_mail_20_regular),
+                            painter = painterResource(id = R.drawable.ic_fluent_person_feedback_24_regular),
                             contentDescription = "Feedback Icon",
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    listItemTokens = listItemToken
+                    listItemTokens = CustomizedTokens.listItemTokens
                 )
             }
         }
@@ -358,7 +346,7 @@ class V2DemoListActivity : ComponentActivity() {
                             )
                         )
 
-                        val appThemeStyle by AppTheme.observeThemeStyle(initial = FluentStyle.Neutral)
+                        AppTheme.SetStatusBarColor()
                         AppBar(
                             title = "Fluent UI Demo",
                             navigationIcon = FluentIcon(
@@ -371,19 +359,19 @@ class V2DemoListActivity : ComponentActivity() {
                                     contentDescription = "Fluent Logo",
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
-                                        .clickable { scope.launch { drawerState.open() } }
-                                        .size(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320))
                                         .clip(CircleShape)
+                                        .size(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320))
+                                        .clickable { scope.launch { drawerState.open() } }
                                 )
                             },
                             searchMode = searchModeEnabled,
-                            style = appThemeStyle,
+                            style = AppTheme.appThemeStyle.value,
                             rightAccessoryView = {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
                                     contentDescription = "Search Icon",
                                     modifier = Modifier.clickable { searchModeEnabled = true },
-                                    tint = if (appThemeStyle == FluentStyle.Neutral) {
+                                    tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
                                     } else {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
@@ -398,7 +386,7 @@ class V2DemoListActivity : ComponentActivity() {
                                         modifier = Modifier
                                             .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
                                             .clickable { expandedMenu = true },
-                                        tint = if (appThemeStyle == FluentStyle.Neutral) {
+                                        tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
                                             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
                                         } else {
                                             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
@@ -425,18 +413,18 @@ class V2DemoListActivity : ComponentActivity() {
                                                                 )
                                                             }
                                                         },
-                                                        checkedState = appThemeStyle == FluentStyle.Brand,
+                                                        checkedState = AppTheme.appThemeStyle.value == FluentStyle.Brand,
                                                     )
                                                 },
                                                 border = BorderType.Bottom,
-                                                listItemTokens = listItemToken
+                                                listItemTokens = CustomizedTokens.listItemTokens
                                             )
 
                                             ListItem.SectionHeader(
                                                 title = "Choose your brand theme:",
                                                 enableChevron = false,
                                                 style = SectionHeaderStyle.Subtle,
-                                                listItemTokens = listItemToken
+                                                listItemTokens = CustomizedTokens.listItemTokens
                                             )
 
                                             Column {
@@ -465,7 +453,7 @@ class V2DemoListActivity : ComponentActivity() {
                                                 }.toMutableList()
                                             }
                                         },
-                                        style = appThemeStyle,
+                                        style = AppTheme.appThemeStyle.value,
                                         navigationIconCallback = { searchModeEnabled = false },
                                         focusByDefault = true
                                     )
@@ -474,7 +462,7 @@ class V2DemoListActivity : ComponentActivity() {
                             bottomBar = if (enableButtonBar) {
                                 {
                                     PillTabs(
-                                        style = appThemeStyle,
+                                        style = AppTheme.appThemeStyle.value,
                                         metadataList = buttonBarList,
                                         selectedIndex = selectedComponents.ordinal,
                                     )
@@ -486,7 +474,7 @@ class V2DemoListActivity : ComponentActivity() {
 
                     floatingActionButton = {
                         FloatingActionButton(
-                            icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_document_text_24_regular),
+                            icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
                             onClick = { showDialog = !showDialog }
                         )
                     }
@@ -518,7 +506,11 @@ class V2DemoListActivity : ComponentActivity() {
                                                     )
                                                 )
                                             )
-                                            Badge(text = "New", badgeType = BadgeType.List)
+
+                                            Badge(
+                                                text = "New",
+                                                badgeType = BadgeType.List,
+                                            )
                                         }
 
                                         if (it.isModified) {
@@ -529,7 +521,11 @@ class V2DemoListActivity : ComponentActivity() {
                                                     )
                                                 )
                                             )
-                                            Badge(text = "Modified", badgeType = BadgeType.List)
+
+                                            Badge(
+                                                text = "Modified",
+                                                badgeType = BadgeType.List,
+                                            )
                                         }
                                     }
                                 )
