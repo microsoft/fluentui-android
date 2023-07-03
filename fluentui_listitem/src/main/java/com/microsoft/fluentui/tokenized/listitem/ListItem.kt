@@ -77,12 +77,14 @@ object ListItem {
             BorderType.Top -> drawLine(
                 borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
             )
+
             BorderType.Bottom -> drawLine(
                 borderColor,
                 Offset(borderInset, size.height),
                 Offset(size.width, size.height),
                 borderSize * density
             )
+
             BorderType.TopBottom -> {
                 drawLine(
                     borderColor, Offset(0f, 0f), Offset(size.width, 0f), borderSize * density
@@ -94,6 +96,7 @@ object ListItem {
                     borderSize * density
                 )
             }
+
             NoBorder -> {
 
             }
@@ -187,6 +190,7 @@ object ListItem {
         }
 
     }
+
     @Composable
     internal fun InternalItem(
         text: String,
@@ -693,6 +697,11 @@ object ListItem {
                     enabled,
                     rippleColor
                 )
+                .semantics(mergeDescendants = true) {
+                    contentDescription =
+                        "{$title}." + "${if (!enableContentOpenCloseTransition || expandedState) "Expanded" else "Collapsed"}"
+                    role = Role.Button
+                }
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
         ) {
             Column {
@@ -717,14 +726,17 @@ object ListItem {
 
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             if (enableChevron) {
-                                Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
+                                Icon(
+                                    painter = rememberVectorPainter(image = ListItemIcons.Chevron),
                                     contentDescription = "Chevron",
                                     Modifier
-                                        .clickable { expandedState = !expandedState }
-                                        .rotate(rotationState),
-                                    tint = chevronTint)
+                                        .rotate(rotationState)
+                                        .clearAndSetSemantics { },
+                                    tint = chevronTint
+                                )
                             }
                             BasicText(
+                                modifier = Modifier.clearAndSetSemantics { },
                                 text = title,
                                 style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                                 maxLines = titleMaxLines,
