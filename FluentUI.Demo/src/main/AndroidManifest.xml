@@ -43,6 +43,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2MenuActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2PeoplePickerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2PersonaListActivity" />
