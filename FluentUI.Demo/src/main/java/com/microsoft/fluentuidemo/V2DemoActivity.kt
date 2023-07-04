@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -64,8 +66,8 @@ open class V2DemoActivity : ComponentActivity() {
         this@V2DemoActivity.bottomBar = bottomBar
     }
 
-    private var bottomSheetContent: @Composable (RowScope.() -> Unit)? = null
-    fun setBottomSheetContent(bottomSheetContent: @Composable (RowScope.() -> Unit)) {
+    private var bottomSheetContent: @Composable () -> Unit = {}
+    fun setBottomSheetContent(bottomSheetContent: @Composable () -> Unit) {
         this@V2DemoActivity.bottomSheetContent = bottomSheetContent
     }
 
@@ -78,8 +80,7 @@ open class V2DemoActivity : ComponentActivity() {
             FluentTheme {
                 AppTheme.SetStatusBarColor()
 
-                val peekHeightState by remember { mutableStateOf(0.dp) }
-                var bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
+                val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
                 val scope = rememberCoroutineScope()
 
                 Scaffold(
@@ -99,7 +100,7 @@ open class V2DemoActivity : ComponentActivity() {
                                     painter = painterResource(id = R.drawable.ic_fluent_info_24_regular),
                                     contentDescription = "Control Token Icon",
                                     modifier = Modifier.clickable {
-                                        bottomSheetState = BottomSheetState(BottomSheetValue.Shown)
+//                                        bottomSheetState = BottomSheetState(BottomSheetValue.Shown)
                                         scope.launch { bottomSheetState.expand() }
                                     },
                                     tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
@@ -198,30 +199,37 @@ open class V2DemoActivity : ComponentActivity() {
                         var selectedControl by remember { mutableStateOf(Controls.Params) }
                         BottomSheet(
                             sheetContent = {
-                                val controlsList = listOf(
-                                    PillMetaData(
-                                        text = "Params",
-                                        enabled = true,
-                                        onClick = {
-                                            selectedControl = Controls.Params
-                                        }
-                                    ),
-                                    PillMetaData(
-                                        text = "Alias Tokens",
-                                        enabled = true,
-                                        onClick = {
-                                            selectedControl = Controls.ControlTokens
-                                        }
-                                    )
-                                ) as MutableList<PillMetaData>
+                                    val controlsList = listOf(
+                                        PillMetaData(
+                                            text = "Params",
+                                            enabled = true,
+                                            onClick = {
+                                                selectedControl = Controls.Params
+                                            }
+                                        ),
+                                        PillMetaData(
+                                            text = "Control Tokens",
+                                            enabled = true,
+                                            onClick = {
+                                                selectedControl = Controls.ControlTokens
+                                            }
+                                        )
+                                    ) as MutableList<PillMetaData>
 
-                                PillTabs(
-                                    style = FluentStyle.Neutral,
-                                    metadataList = controlsList,
-                                    selectedIndex = selectedControl.ordinal
-                                )
+                                    PillTabs(
+                                        style = FluentStyle.Neutral,
+                                        metadataList = controlsList,
+                                        selectedIndex = selectedControl.ordinal
+                                    )
+
+                                Column(
+                                    modifier = Modifier
+                                        .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
+                                        .verticalScroll(rememberScrollState())
+                                ) {
+                                    bottomSheetContent()
+                                }
                             },
-                            peekHeight = peekHeightState,
                             sheetState = bottomSheetState,
                         ) {
                             content()

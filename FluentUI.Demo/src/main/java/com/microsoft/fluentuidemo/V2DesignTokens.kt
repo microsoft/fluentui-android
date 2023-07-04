@@ -1,6 +1,9 @@
 package com.microsoft.fluentuidemo
 
 import android.os.Bundle
+import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +28,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentColor
@@ -355,6 +360,22 @@ class V2DesignTokens : V2DemoActivity() {
                     }
                 }
             }
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#avatar"
+            AndroidView(factory = {
+                WebView(it).apply {
+                    layoutParams = ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                    )
+                    webViewClient = WebViewClient()
+                    loadUrl(mUrl)
+                }
+            }, update = {
+                it.loadUrl(mUrl)
+            })
         }
     }
 }
