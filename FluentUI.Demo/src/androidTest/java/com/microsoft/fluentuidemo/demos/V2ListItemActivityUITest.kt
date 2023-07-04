@@ -142,7 +142,7 @@ class V2ListItemActivityUITest {
             ListItem.Item(
                 text = PRIMARY_TEXT,
                 modifier = Modifier.testTag(ONE_LINE_ITEM_TAG),
-                leadingAccessoryView = {
+                leadingAccessoryContent = {
                     Row(modifier = Modifier.testTag(LEFT_VIEW_TAG)) {
                         Button(onClick = { }, text = BUTTON_TEXT)
                     }
@@ -160,7 +160,7 @@ class V2ListItemActivityUITest {
             ListItem.Item(
                 text = PRIMARY_TEXT,
                 modifier = Modifier.testTag(ONE_LINE_ITEM_TAG),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     Row(modifier = Modifier.testTag(RIGHT_VIEW_TAG)) {
                         Button(onClick = { }, text = BUTTON_TEXT)
                     }
