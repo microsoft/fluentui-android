@@ -722,7 +722,8 @@ private fun BottomDrawer(
                         }
                     }
                 }
-                .focusable(false),
+                .focusable(false)
+                ,
         ) {
             Column {
                 if (showHandle) {
