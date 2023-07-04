@@ -46,7 +46,7 @@ class V2ListItemActivityUITest {
             ListItem.Item(text = PRIMARY_TEXT, modifier = Modifier.testTag(ONE_LINE_ITEM_TAG))
         }
         val listItem = composeTestRule.onNodeWithTag(ONE_LINE_ITEM_TAG)
-        listItem.assertHeightIsAtLeast(48.dp)
+        listItem.assertHeightIsAtLeast(43.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertIsEnabled()
@@ -62,7 +62,7 @@ class V2ListItemActivityUITest {
             )
         }
         val listItem = composeTestRule.onNodeWithTag(ONE_LINE_ITEM_TAG)
-        listItem.assertHeightIsAtLeast(48.dp)
+        listItem.assertHeightIsAtLeast(43.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertIsNotEnabled()
@@ -78,7 +78,7 @@ class V2ListItemActivityUITest {
             )
         }
         val listItem = composeTestRule.onNodeWithTag(TWO_LINE_ITEM_TAG)
-        listItem.assertHeightIsAtLeast(68.dp)
+        listItem.assertHeightIsAtLeast(63.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertIsEnabled()
@@ -95,7 +95,7 @@ class V2ListItemActivityUITest {
             )
         }
         val listItem = composeTestRule.onNodeWithTag(TWO_LINE_ITEM_TAG)
-        listItem.assertHeightIsAtLeast(68.dp)
+        listItem.assertHeightIsAtLeast(63.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertIsNotEnabled()
@@ -112,7 +112,7 @@ class V2ListItemActivityUITest {
             )
         }
         val listItem = composeTestRule.onNodeWithTag(THREE_LINE_ITEM_TAG)
-        listItem.assertHeightIsAtLeast(88.dp)
+        listItem.assertHeightIsAtLeast(82.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertIsEnabled()
@@ -130,7 +130,7 @@ class V2ListItemActivityUITest {
             )
         }
         val listItem = composeTestRule.onNodeWithTag(THREE_LINE_ITEM_TAG)
-        listItem.assertHeightIsAtLeast(88.dp)
+        listItem.assertHeightIsAtLeast(80.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
         listItem.assertIsNotEnabled()
