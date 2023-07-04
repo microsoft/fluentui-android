@@ -1,7 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.content.Intent
-import android.util.Log
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.core.app.ActivityScenario
