@@ -102,31 +102,31 @@ private fun CreateListActivityUI(context: Context) {
     ) {
         Column(Modifier.verticalScroll(rememberScrollState())) {
             ListItem.Header(title = "One-Line list")
-            OneLineListAccessoryViewContent(context)
+            OneLineListAccessoryContentContent(context)
             ListItem.Header(title = "Two-Line list")
-            TwoLineListAccessoryViewContent(context)
+            TwoLineListAccessoryContentContent(context)
             ListItem.Header(title = "Three-Line list")
-            ThreeLineListAccessoryViewContent(context)
+            ThreeLineListAccessoryContentContent(context)
             ListItem.Header(title = "Text Only")
             ListItem.Item(
                 text = primaryText,
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
-                primaryTextTrailingView = { Icon20() }
+                primaryTextTrailingContent = { Icon20() }
             )
             ListItem.Item(
                 text = primaryText,
                 subText = secondaryText,
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
-                secondarySubTextLeadingView = { Icon16() }
+                secondarySubTextLeadingContent = { Icon16() }
             )
             ListItem.Item(
                 text = primaryText,
                 subText = secondaryText,
                 secondarySubText = tertiaryText,
                 border = BorderType.Bottom,
-                secondarySubTextTrailingView = {
+                secondarySubTextTrailingContent = {
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         Icon16()
                         Icon16()
@@ -137,7 +137,7 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Item(
                 text = sampleText,
                 textMaxLines = 4,
-                leadingAccessoryView = { LeftViewFolderIcon40() },
+                leadingAccessoryContent = { LeftContentFolderIcon40() },
                 border = BorderType.Bottom,
                 borderInset = XXLarge
             )
@@ -146,9 +146,9 @@ private fun CreateListActivityUI(context: Context) {
                 subText = sampleText,
                 textMaxLines = 4,
                 subTextMaxLines = 4,
-                leadingAccessoryView = { LeftViewFolderIcon40() },
-                trailingAccessoryView = {
-                    RightViewButton(
+                leadingAccessoryContent = { LeftContentFolderIcon40() },
+                trailingAccessoryContent = {
+                    RightContentButton(
                         ButtonSize.Small,
                         context
                     )
@@ -163,8 +163,8 @@ private fun CreateListActivityUI(context: Context) {
                 textMaxLines = 4,
                 subTextMaxLines = 4,
                 secondarySubTextMaxLines = 4,
-                leadingAccessoryView = { LeftViewFolderIcon40() },
-                trailingAccessoryView = { RightViewText(text = "Value") },
+                leadingAccessoryContent = { LeftContentFolderIcon40() },
+                trailingAccessoryContent = { RightContentText(text = "Value") },
                 border = BorderType.Bottom
             )
             ListItem.Header(title = "Section description")
@@ -183,7 +183,7 @@ private fun CreateListActivityUI(context: Context) {
                 description = "Sample description with the description placed at the Top, with Icon accessory and Action text",
                 actionText = "Action",
                 onActionClick = {},
-                leadingAccessoryView = { Icon16() },
+                leadingAccessoryContent = { Icon16() },
                 border = BorderType.Bottom,
                 borderInset = XXLarge
             )
@@ -203,7 +203,7 @@ private fun CreateListActivityUI(context: Context) {
                     chevronOrientation = ChevronOrientation(90f, 0f),
                     accessoryTextTitle = "Action",
                     accessoryTextOnClick = {},
-                    trailingAccessoryView = { RightViewThreeButton() },
+                    trailingAccessoryContent = { RightContentThreeButton() },
                     content = { OneLineSimpleList() },
                     border = BorderType.Bottom
                 )
@@ -220,7 +220,7 @@ private fun CreateListActivityUI(context: Context) {
                     title = "Two-Line list",
                     enableChevron = false,
                     enableContentOpenCloseTransition = true,
-                    trailingAccessoryView = { RightViewToggle() },
+                    trailingAccessoryContent = { RightContentToggle() },
                     content = { ThreeLineSimpleList() },
                     border = BorderType.Bottom
                 )
@@ -230,7 +230,7 @@ private fun CreateListActivityUI(context: Context) {
                 title = "Standard heading",
                 accessoryTextTitle = "Action",
                 accessoryTextOnClick = {},
-                trailingAccessoryView = { RightViewThreeButton() },
+                trailingAccessoryContent = { RightContentThreeButton() },
                 border = BorderType.Bottom
             )
             ListItem.Header(
@@ -251,7 +251,7 @@ private fun CreateListActivityUI(context: Context) {
                 textAlignment = ListItemTextAlignment.Centered,
                 border = BorderType.Bottom
             )
-            ListItem.SectionDescription(description = "Centered action text only supports primary text and ignores any given trailing or leading accessory views")
+            ListItem.SectionDescription(description = "Centered action text only supports primary text and ignores any given trailing or leading accessory Contents")
         }
     }
 }
@@ -261,19 +261,19 @@ private fun OneLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { GetAvatar(size = Size24, drawable.avatar_amanda_brady) },
+            leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_amanda_brady) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { GetAvatar(size = Size24, drawable.avatar_allan_munger) },
+            leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_allan_munger) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { GetAvatar(size = Size24, drawable.avatar_ashley_mccarthy) },
+            leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_ashley_mccarthy) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -286,21 +286,21 @@ private fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryView = { GetAvatar(size = Size40, drawable.avatar_daisy_phillips) },
+            leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryView = { GetAvatar(size = Size40, drawable.avatar_elliot_woodward) },
+            leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryView = { GetAvatar(size = Size40, drawable.avatar_charlotte_waltson) },
+            leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_charlotte_waltson) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -314,7 +314,7 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { GetAvatar(size = Size56, drawable.avatar_daisy_phillips) },
+            leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -322,7 +322,7 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { GetAvatar(size = Size56, drawable.avatar_elliot_woodward) },
+            leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -330,7 +330,7 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { GetAvatar(size = Size56, drawable.avatar_charlotte_waltson) },
+            leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_charlotte_waltson) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -338,13 +338,13 @@ private fun ThreeLineSimpleList() {
 }
 
 @Composable
-private fun OneLineListAccessoryViewContent(context: Context) {
+private fun OneLineListAccessoryContentContent(context: Context) {
     var checked by remember { mutableStateOf(true) }
     return Column {
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { LeftViewRadioButton() },
-            trailingAccessoryView = {
+            leadingAccessoryContent = { LeftContentRadioButton() },
+            trailingAccessoryContent = {
                 CheckBox(enabled = true, checked = !checked, onCheckedChanged = {
                     checked = !it
                 })
@@ -355,45 +355,45 @@ private fun OneLineListAccessoryViewContent(context: Context) {
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = {
-                RightViewButton(
+            leadingAccessoryContent = {
+                RightContentButton(
                     size = ButtonSize.Small,
                     context
                 )
             },
-            primaryTextLeadingView = {
+            primaryTextLeadingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon20()
                     Icon20()
                 }
             },
-            primaryTextTrailingView = { Icon20() },
+            primaryTextTrailingContent = { Icon20() },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Size24) },
+            leadingAccessoryContent = { LeftContentAvatar(size = Size24) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = "",
-            leadingAccessoryView = { LeftViewThreeIcon() },
+            leadingAccessoryContent = { LeftContentThreeIcon() },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { LeftViewRadioButton() },
-            trailingAccessoryView = { RightViewAvatarStack(Size24) },
+            leadingAccessoryContent = { LeftContentRadioButton() },
+            trailingAccessoryContent = { RightContentAvatarStack(Size24) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            leadingAccessoryView = { LeftViewThreeButton() },
-            trailingAccessoryView = { RightViewToggle() },
+            leadingAccessoryContent = { LeftContentThreeButton() },
+            trailingAccessoryContent = { RightContentToggle() },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -401,54 +401,54 @@ private fun OneLineListAccessoryViewContent(context: Context) {
 }
 
 @Composable
-private fun TwoLineListAccessoryViewContent(context: Context) {
+private fun TwoLineListAccessoryContentContent(context: Context) {
     var unreadDot1 by remember { mutableStateOf(true) }
     var unreadDot2 by remember { mutableStateOf(true) }
     return Column {
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
-            trailingAccessoryView = { LeftViewAvatar(size = Size40) },
+            leadingAccessoryContent = { LeftContentAvatar(size = Size40) },
+            trailingAccessoryContent = { LeftContentAvatar(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
-            primaryTextTrailingView = { Icon20() },
-            secondarySubTextTrailingView = { Icon16() }
+            primaryTextTrailingContent = { Icon20() },
+            secondarySubTextTrailingContent = { Icon16() }
         )
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatar(size = Size40) },
+            leadingAccessoryContent = { LeftContentAvatar(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
             unreadDot = unreadDot1,
             onClick = { unreadDot1 = !unreadDot1 },
-            primaryTextTrailingView = { Icon20() },
-            secondarySubTextTrailingView = { Icon16() }
+            primaryTextTrailingContent = { Icon20() },
+            secondarySubTextTrailingContent = { Icon16() }
         )
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewAvatarCutout(size = Size40) },
+            leadingAccessoryContent = { LeftContentAvatarCutout(size = Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge,
             unreadDot = unreadDot2,
             onClick = { unreadDot2 = !unreadDot2 },
-            primaryTextTrailingView = { Icon20() },
-            secondarySubTextTrailingView = { Icon16() }
+            primaryTextTrailingContent = { Icon20() },
+            secondarySubTextTrailingContent = { Icon16() }
         )
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewFolderIcon40() },
-            primaryTextLeadingView = {
+            leadingAccessoryContent = { LeftContentFolderIcon40() },
+            primaryTextLeadingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon20()
                     Icon20()
                 }
             },
-            primaryTextTrailingView = { Icon20() },
-            secondarySubTextTrailingView = {
+            primaryTextTrailingContent = { Icon20() },
+            secondarySubTextTrailingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon16()
                     Icon16()
@@ -460,29 +460,29 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
-            leadingAccessoryView = { LeftViewFolderIcon40() },
-            trailingAccessoryView = { RightViewAvatarStack(Size40) },
+            leadingAccessoryContent = { LeftContentFolderIcon40() },
+            trailingAccessoryContent = { RightContentAvatarStack(Size40) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewFolderIcon40() },
-            secondarySubTextLeadingView = {
+            leadingAccessoryContent = { LeftContentFolderIcon40() },
+            secondarySubTextLeadingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon16()
                     Icon16()
                 }
             },
-            secondarySubTextTrailingView = {
+            secondarySubTextTrailingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon16()
                     Icon16()
                 }
             },
-            trailingAccessoryView = {
-                RightViewButton(
+            trailingAccessoryContent = {
+                RightContentButton(
                     ButtonSize.Small,
                     context
                 )
@@ -493,17 +493,17 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewFolderIcon40() },
-            secondarySubTextTrailingView = { Icon16() },
-            trailingAccessoryView = { RightViewToggle() },
+            leadingAccessoryContent = { LeftContentFolderIcon40() },
+            secondarySubTextTrailingContent = { Icon16() },
+            trailingAccessoryContent = { RightContentToggle() },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
-            leadingAccessoryView = { LeftViewThreeButton() },
-            trailingAccessoryView = { RightViewText("Value") },
+            leadingAccessoryContent = { LeftContentThreeButton() },
+            trailingAccessoryContent = { RightContentText("Value") },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -511,7 +511,7 @@ private fun TwoLineListAccessoryViewContent(context: Context) {
 }
 
 @Composable
-private fun ThreeLineListAccessoryViewContent(
+private fun ThreeLineListAccessoryContentContent(
     context: Context
 ) {
     val separator = " • "
@@ -527,12 +527,12 @@ private fun ThreeLineListAccessoryViewContent(
             text = "Amanda Brady replied to your comment",
             subText = "Wanda can you please update the file with comments",
             secondarySubTextAnnotated = footer,
-            leadingAccessoryView = { LeftViewAvatar(size = Size56) },
-            trailingAccessoryView = { rightViewIconButton() },
-            primaryTextTrailingView = { Badge(text = "2") },
+            leadingAccessoryContent = { LeftContentAvatar(size = Size56) },
+            trailingAccessoryContent = { rightContentIconButton() },
+            primaryTextTrailingContent = { Badge(text = "2") },
             textMaxLines = 2,
-            leadingAccessoryViewAlignment = Alignment.Top,
-            trailingAccessoryViewAlignment = Alignment.Top,
+            leadingAccessoryContentAlignment = Alignment.Top,
+            trailingAccessoryContentAlignment = Alignment.Top,
             unreadDot = true,
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -541,10 +541,10 @@ private fun ThreeLineListAccessoryViewContent(
             text = primaryText,
             subText = secondaryText,
             secondarySubText = tertiaryText,
-            leadingAccessoryView = { LeftViewFolderIcon40() },
-            primaryTextTrailingView = { Badge(text = "Suggested") },
-            trailingAccessoryView = {
-                RightViewButton(
+            leadingAccessoryContent = { LeftContentFolderIcon40() },
+            primaryTextTrailingContent = { Badge(text = "Suggested") },
+            trailingAccessoryContent = {
+                RightContentButton(
                     ButtonSize.Small,
                     context
                 )
@@ -555,16 +555,16 @@ private fun ThreeLineListAccessoryViewContent(
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
-            bottomView = { LinearProgressIndicator() },
-            primaryTextLeadingView = { Icon20() },
-            secondarySubTextTrailingView = {
+            bottomContent = { LinearProgressIndicator() },
+            primaryTextLeadingContent = { Icon20() },
+            secondarySubTextTrailingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon16()
                     Icon16()
                 }
             },
-            leadingAccessoryView = { LeftViewAvatar(Size56) },
-            trailingAccessoryView = { RightViewText(text = "Value") },
+            leadingAccessoryContent = { LeftContentAvatar(Size56) },
+            trailingAccessoryContent = { RightContentText(text = "Value") },
             border = BorderType.Bottom
         )
     }
@@ -582,7 +582,7 @@ private fun groupAvatar(): Group {
 }
 
 @Composable
-private fun LeftViewRadioButton() {
+private fun LeftContentRadioButton() {
     var checked by remember { mutableStateOf(false) }
     return RadioButton(enabled = true,
         selected = checked,
@@ -593,12 +593,12 @@ private fun LeftViewRadioButton() {
 }
 
 @Composable
-private fun RightViewAvatarStack(size: AvatarSize) {
+private fun RightContentAvatarStack(size: AvatarSize) {
     return AvatarGroup(group = groupAvatar(), size = size)
 }
 
 @Composable
-private fun LeftViewThreeIcon() {
+private fun LeftContentThreeIcon() {
     Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
         Icon(
             painter = painterResource(id = drawable.ic_fluent_flag_24_regular),
@@ -625,7 +625,7 @@ private fun LeftViewThreeIcon() {
 }
 
 @Composable
-private fun RightViewToggle() {
+private fun RightContentToggle() {
     var enabled by remember { mutableStateOf(false) }
     return ToggleSwitch(onValueChange = {
         enabled = it
@@ -633,7 +633,7 @@ private fun RightViewToggle() {
 }
 
 @Composable
-private fun RightViewThreeButton() {
+private fun RightContentThreeButton() {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Button(
             onClick = { /*TODO*/ },
@@ -657,7 +657,7 @@ private fun RightViewThreeButton() {
 }
 
 @Composable
-private fun LeftViewThreeButton() {
+private fun LeftContentThreeButton() {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Button(
             onClick = { /*TODO*/ },
@@ -703,12 +703,12 @@ private fun Icon20() {
 }
 
 @Composable
-private fun LeftViewFolderIcon40() {
+private fun LeftContentFolderIcon40() {
     return Image(ListItemIcons.Folder40, "Folder")
 }
 
 @Composable
-private fun rightViewIconButton() {
+private fun rightContentIconButton() {
     class Tokens : BasicCardTokens() {
         @Composable
         override fun cornerRadius(basicCardInfo: BasicCardInfo): Dp {
@@ -726,7 +726,7 @@ private fun rightViewIconButton() {
 }
 
 @Composable
-private fun RightViewButton(
+private fun RightContentButton(
     size: ButtonSize,
     context: Context
 ) {
@@ -739,13 +739,13 @@ private fun RightViewButton(
 }
 
 @Composable
-private fun LeftViewAvatar(size: AvatarSize) {
+private fun LeftContentAvatar(size: AvatarSize) {
     val person = Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady)
     return Avatar(person = person, size = size, enablePresence = false)
 }
 
 @Composable
-private fun LeftViewAvatarCutout(size: AvatarSize) {
+private fun LeftContentAvatarCutout(size: AvatarSize) {
     val person =
         Person(firstName = "", lastName = "", image = drawable.avatar_amanda_brady, isActive = true)
     return Avatar(
@@ -764,6 +764,6 @@ private fun GetAvatar(size: AvatarSize, image: Int) {
 }
 
 @Composable
-private fun RightViewText(text: String) {
+private fun RightContentText(text: String) {
     return BasicText(text = text)
 }

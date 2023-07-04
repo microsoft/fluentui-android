@@ -337,7 +337,7 @@ class V2SegmentedControlActivity : DemoActivity() {
             enableChevron = true,
             enableContentOpenCloseTransition = true,
             chevronOrientation = ChevronOrientation(90f, 0f),
-            trailingAccessoryView = enableSwitch
+            trailingAccessoryContent = enableSwitch
         ) {
             Column(
                 modifier = Modifier.background(

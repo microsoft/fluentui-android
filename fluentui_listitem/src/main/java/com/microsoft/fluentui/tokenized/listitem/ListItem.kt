@@ -206,18 +206,18 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
-        primaryTextLeadingView: (@Composable () -> Unit)? = null,
-        primaryTextTrailingView: (@Composable () -> Unit)? = null,
-        secondarySubTextLeadingView: (@Composable () -> Unit)? = null,
-        secondarySubTextTrailingView: (@Composable () -> Unit)? = null,
+        primaryTextLeadingContent: (@Composable () -> Unit)? = null,
+        primaryTextTrailingContent: (@Composable () -> Unit)? = null,
+        secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
+        secondarySubTextTrailingContent: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        bottomView: (@Composable () -> Unit)? = null,
-        leadingAccessoryView: (@Composable () -> Unit)? = null,
-        trailingAccessoryView: (@Composable () -> Unit)? = null,
-        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
-        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        bottomContent: (@Composable () -> Unit)? = null,
+        leadingAccessoryContent: (@Composable () -> Unit)? = null,
+        trailingAccessoryContent: (@Composable () -> Unit)? = null,
+        leadingAccessoryContentAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryContentAlignment: Alignment.Vertical = Alignment.CenterVertically,
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
@@ -272,12 +272,12 @@ object ListItem {
         val borderColor = token.borderColor(listItemInfo).getColorByState(
             enabled = enabled, selected = false, interactionSource = interactionSource
         )
-        val leadingAccessoryAlignment = when (leadingAccessoryViewAlignment) {
+        val leadingAccessoryAlignment = when (leadingAccessoryContentAlignment) {
             Alignment.Top -> Alignment.TopCenter
             Alignment.Bottom -> Alignment.BottomCenter
             else -> Alignment.Center
         }
-        val trailingAccessoryAlignment = when (trailingAccessoryViewAlignment) {
+        val trailingAccessoryAlignment = when (trailingAccessoryContentAlignment) {
             Alignment.Top -> Alignment.TopEnd
             Alignment.Bottom -> Alignment.BottomEnd
             else -> Alignment.CenterEnd
@@ -292,15 +292,15 @@ object ListItem {
                     interactionSource, onClick = onClick ?: {}, enabled, rippleColor
                 ), verticalAlignment = Alignment.CenterVertically
         ) {
-            if (leadingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
+            if (leadingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
                     modifier = Modifier
                         .padding(
                             start = if (unreadDot) 4.dp else padding.calculateStartPadding(
                                 LocalLayoutDirection.current
                             ),
-                            top = if (leadingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
-                            bottom = if (leadingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
+                            top = if (leadingAccessoryContentAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (leadingAccessoryContentAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp
                         )
                         .fillMaxHeight(), contentAlignment = leadingAccessoryAlignment
                 ) {
@@ -317,7 +317,7 @@ object ListItem {
                             }
                             Spacer(modifier = Modifier.width(4.dp))
                         }
-                        leadingAccessoryView()
+                        leadingAccessoryContent()
                     }
                 }
             }
@@ -335,8 +335,8 @@ object ListItem {
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        if (primaryTextLeadingView != null) {
-                            primaryTextLeadingView()
+                        if (primaryTextLeadingContent != null) {
+                            primaryTextLeadingContent()
                         }
 
                         BasicText(
@@ -346,8 +346,8 @@ object ListItem {
                             maxLines = textMaxLines,
                             overflow = TextOverflow.Ellipsis
                         )
-                        if (primaryTextTrailingView != null) {
-                            primaryTextTrailingView()
+                        if (primaryTextTrailingContent != null) {
+                            primaryTextTrailingContent()
                         }
                     }
                     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -365,13 +365,13 @@ object ListItem {
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            if (bottomView != null) {
+                            if (bottomContent != null) {
                                 Row(modifier.padding(top = 7.dp, bottom = 7.dp)) {
-                                    bottomView()
+                                    bottomContent()
                                 }
                             } else {
-                                if (secondarySubTextLeadingView != null) {
-                                    secondarySubTextLeadingView()
+                                if (secondarySubTextLeadingContent != null) {
+                                    secondarySubTextLeadingContent()
                                 }
                                 if (secondarySubText != null) {
                                     BasicText(
@@ -390,26 +390,26 @@ object ListItem {
                                         overflow = TextOverflow.Ellipsis
                                     )
                                 }
-                                if (secondarySubTextTrailingView != null) {
-                                    secondarySubTextTrailingView()
+                                if (secondarySubTextTrailingContent != null) {
+                                    secondarySubTextTrailingContent()
                                 }
                             }
                         }
                     }
                 }
             }
-            if (bottomView == null && trailingAccessoryView != null && textAlignment == ListItemTextAlignment.Regular) {
+            if (bottomContent == null && trailingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
                     Modifier
                         .padding(
-                            top = if (trailingAccessoryViewAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
-                            bottom = if (trailingAccessoryViewAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
+                            top = if (trailingAccessoryContentAlignment == Alignment.Top) padding.calculateTopPadding() else 0.dp,
+                            bottom = if (trailingAccessoryContentAlignment == Alignment.Bottom) padding.calculateBottomPadding() else 0.dp,
                             end = padding.calculateEndPadding(LocalLayoutDirection.current)
                         )
                         .fillMaxHeight(),
                     contentAlignment = trailingAccessoryAlignment
                 ) {
-                    trailingAccessoryView()
+                    trailingAccessoryContent()
                 }
             }
         }
@@ -423,23 +423,23 @@ object ListItem {
      * @param subText Optional secondaryText or a subtitle.
      * @param secondarySubText Optional tertiary text or a footer.
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
-     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
+     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory Content and makes the primary text bold on true
      * @param enabled Optional enable/disable List item
      * @param textMaxLines Optional max visible lines for primary text.
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
-     * @param primaryTextLeadingView Optional primary text leading view.
-     * @param primaryTextTrailingView Optional primary text trailing view.
-     * @param secondarySubTextLeadingView Optional secondary text leading view.
-     * @param secondarySubTextTrailingView Optional secondary text trailing view.
+     * @param primaryTextLeadingContent Optional primary text leading Content.
+     * @param primaryTextTrailingContent Optional primary text trailing Content.
+     * @param secondarySubTextLeadingContent Optional secondary text leading Content.
+     * @param secondarySubTextTrailingContent Optional secondary text trailing Content.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
-     * @param leadingAccessoryView Optional composable leading accessory view.
-     * @param trailingAccessoryView Optional composable trailing accessory view.
-     * @param leadingAccessoryViewAlignment Alignment for leading accessory view to align Top, Bottom or Center
-     * @param trailingAccessoryViewAlignment Alignment for trailing accessory view to align Top, Bottom or Center
+     * @param bottomContent Optional bottom Content under Text field. If used, trailing Content will not be displayed
+     * @param leadingAccessoryContent Optional composable leading accessory Content.
+     * @param trailingAccessoryContent Optional composable trailing accessory Content.
+     * @param leadingAccessoryContentAlignment Alignment for leading accessory Content to align Top, Bottom or Center
+     * @param trailingAccessoryContentAlignment Alignment for trailing accessory Content to align Top, Bottom or Center
      * @param textAccessibilityProperties Accessibility properties for the text in list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      *
@@ -457,18 +457,18 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
-        primaryTextLeadingView: (@Composable () -> Unit)? = null,
-        primaryTextTrailingView: (@Composable () -> Unit)? = null,
-        secondarySubTextLeadingView: (@Composable () -> Unit)? = null,
-        secondarySubTextTrailingView: (@Composable () -> Unit)? = null,
+        primaryTextLeadingContent: (@Composable () -> Unit)? = null,
+        primaryTextTrailingContent: (@Composable () -> Unit)? = null,
+        secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
+        secondarySubTextTrailingContent: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        bottomView: (@Composable () -> Unit)? = null,
-        leadingAccessoryView: (@Composable () -> Unit)? = null,
-        trailingAccessoryView: (@Composable () -> Unit)? = null,
-        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
-        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        bottomContent: (@Composable () -> Unit)? = null,
+        leadingAccessoryContent: (@Composable () -> Unit)? = null,
+        trailingAccessoryContent: (@Composable () -> Unit)? = null,
+        leadingAccessoryContentAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryContentAlignment: Alignment.Vertical = Alignment.CenterVertically,
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
@@ -484,18 +484,18 @@ object ListItem {
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
-            primaryTextLeadingView = primaryTextLeadingView,
-            primaryTextTrailingView = primaryTextTrailingView,
-            secondarySubTextLeadingView = secondarySubTextLeadingView,
-            secondarySubTextTrailingView = secondarySubTextTrailingView,
+            primaryTextLeadingContent = primaryTextLeadingContent,
+            primaryTextTrailingContent = primaryTextTrailingContent,
+            secondarySubTextLeadingContent = secondarySubTextLeadingContent,
+            secondarySubTextTrailingContent = secondarySubTextTrailingContent,
             border = border,
             borderInset = borderInset,
             interactionSource = interactionSource,
-            bottomView = bottomView,
-            leadingAccessoryView = leadingAccessoryView,
-            trailingAccessoryView = trailingAccessoryView,
-            leadingAccessoryViewAlignment = leadingAccessoryViewAlignment,
-            trailingAccessoryViewAlignment = trailingAccessoryViewAlignment,
+            bottomContent = bottomContent,
+            leadingAccessoryContent = leadingAccessoryContent,
+            trailingAccessoryContent = trailingAccessoryContent,
+            leadingAccessoryContentAlignment = leadingAccessoryContentAlignment,
+            trailingAccessoryContentAlignment = trailingAccessoryContentAlignment,
             textAccessibilityProperties = textAccessibilityProperties,
             listItemTokens = listItemTokens
         )
@@ -510,23 +510,23 @@ object ListItem {
      * @param secondarySubTextAnnotated Optional tertiary text (Annotated) or a footer.
      * @param secondarySubTextInlineContent Map of composables to replace certain ranges of text in [secondarySubTextAnnotated].
      * @param textAlignment Optional [ListItemTextAlignment] to align text in the center or start at the lead.
-     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory view and makes the primary text bold on true
+     * @param unreadDot Option boolean value that display a dot on leading edge of the accessory Content and makes the primary text bold on true
      * @param enabled Optional enable/disable List item
      * @param textMaxLines Optional max visible lines for primary text.
      * @param subTextMaxLines Optional max visible lines for secondary text.
      * @param secondarySubTextMaxLines Optional max visible lines for tertiary text.
      * @param onClick Optional onClick action for list item.
-     * @param primaryTextLeadingView Optional primary text leading view.
-     * @param primaryTextTrailingView Optional primary text trailing view.
-     * @param secondarySubTextLeadingView Optional secondary text leading view.
-     * @param secondarySubTextTrailingView Optional secondary text trailing view.
+     * @param primaryTextLeadingContent Optional primary text leading Content.
+     * @param primaryTextTrailingContent Optional primary text trailing Content.
+     * @param secondarySubTextLeadingContent Optional secondary text leading Content.
+     * @param secondarySubTextTrailingContent Optional secondary text trailing Content.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param bottomView Optional bottom view under Text field. If used, trailing view will not be displayed
-     * @param leadingAccessoryView Optional composable leading accessory view.
-     * @param trailingAccessoryView Optional composable trailing accessory view.
-     * @param leadingAccessoryViewAlignment Alignment for leading accessory view to align Top, Bottom or Center
-     * @param trailingAccessoryViewAlignment Alignment for trailing accessory view to align Top, Bottom or Center
+     * @param bottomContent Optional bottom Content under Text field. If used, trailing Content will not be displayed
+     * @param leadingAccessoryContent Optional composable leading accessory Content.
+     * @param trailingAccessoryContent Optional composable trailing accessory Content.
+     * @param leadingAccessoryContentAlignment Alignment for leading accessory Content to align Top, Bottom or Center
+     * @param trailingAccessoryContentAlignment Alignment for trailing accessory Content to align Top, Bottom or Center
      * @param textAccessibilityProperties Accessibility properties for the text in list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list item tokens will be picked from [AppThemeController]
      *
@@ -545,18 +545,18 @@ object ListItem {
         subTextMaxLines: Int = 1,
         secondarySubTextMaxLines: Int = 1,
         onClick: (() -> Unit)? = null,
-        primaryTextLeadingView: (@Composable () -> Unit)? = null,
-        primaryTextTrailingView: (@Composable () -> Unit)? = null,
-        secondarySubTextLeadingView: (@Composable () -> Unit)? = null,
-        secondarySubTextTrailingView: (@Composable () -> Unit)? = null,
+        primaryTextLeadingContent: (@Composable () -> Unit)? = null,
+        primaryTextTrailingContent: (@Composable () -> Unit)? = null,
+        secondarySubTextLeadingContent: (@Composable () -> Unit)? = null,
+        secondarySubTextTrailingContent: (@Composable () -> Unit)? = null,
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        bottomView: (@Composable () -> Unit)? = null,
-        leadingAccessoryView: (@Composable () -> Unit)? = null,
-        trailingAccessoryView: (@Composable () -> Unit)? = null,
-        leadingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
-        trailingAccessoryViewAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        bottomContent: (@Composable () -> Unit)? = null,
+        leadingAccessoryContent: (@Composable () -> Unit)? = null,
+        trailingAccessoryContent: (@Composable () -> Unit)? = null,
+        leadingAccessoryContentAlignment: Alignment.Vertical = Alignment.CenterVertically,
+        trailingAccessoryContentAlignment: Alignment.Vertical = Alignment.CenterVertically,
         textAccessibilityProperties: (SemanticsPropertyReceiver.() -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
@@ -573,18 +573,18 @@ object ListItem {
             subTextMaxLines = subTextMaxLines,
             secondarySubTextMaxLines = secondarySubTextMaxLines,
             onClick = onClick,
-            primaryTextLeadingView = primaryTextLeadingView,
-            primaryTextTrailingView = primaryTextTrailingView,
-            secondarySubTextLeadingView = secondarySubTextLeadingView,
-            secondarySubTextTrailingView = secondarySubTextTrailingView,
+            primaryTextLeadingContent = primaryTextLeadingContent,
+            primaryTextTrailingContent = primaryTextTrailingContent,
+            secondarySubTextLeadingContent = secondarySubTextLeadingContent,
+            secondarySubTextTrailingContent = secondarySubTextTrailingContent,
             border = border,
             borderInset = borderInset,
             interactionSource = interactionSource,
-            bottomView = bottomView,
-            leadingAccessoryView = leadingAccessoryView,
-            trailingAccessoryView = trailingAccessoryView,
-            leadingAccessoryViewAlignment = leadingAccessoryViewAlignment,
-            trailingAccessoryViewAlignment = trailingAccessoryViewAlignment,
+            bottomContent = bottomContent,
+            leadingAccessoryContent = leadingAccessoryContent,
+            trailingAccessoryContent = trailingAccessoryContent,
+            leadingAccessoryContentAlignment = leadingAccessoryContentAlignment,
+            trailingAccessoryContentAlignment = trailingAccessoryContentAlignment,
             textAccessibilityProperties = textAccessibilityProperties,
             listItemTokens = listItemTokens
         )
@@ -607,7 +607,7 @@ object ListItem {
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list tokens will be picked from [AppThemeController]
      * @param enter [EnterTransition] used for content appearing transition
      * @param exit [ExitTransition] used for content disappearing transition
-     * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param trailingAccessoryContent Optional composable trailing accessory Content.
      * @param content Composable content to appear or disappear on clicking the list item
      *
      */
@@ -629,7 +629,7 @@ object ListItem {
         enter: EnterTransition = expandVertically(),
         exit: ExitTransition = shrinkVertically(),
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        trailingAccessoryContent: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null,
         content: (@Composable () -> Unit)? = null
     ) {
@@ -738,7 +738,7 @@ object ListItem {
                             )
                         }
                     }
-                    if (trailingAccessoryView != null) {
+                    if (trailingAccessoryContent != null) {
                         Box(
                             Modifier.padding(
                                 end = padding.calculateEndPadding(
@@ -746,7 +746,7 @@ object ListItem {
                                 )
                             ), contentAlignment = Alignment.BottomStart
                         ) {
-                            trailingAccessoryView()
+                            trailingAccessoryContent()
                         }
                     }
                 }
@@ -779,8 +779,8 @@ object ListItem {
      * @param onActionClick Optional onClick action for actionText.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset] Optional borderInset for list item.
-     * @param leadingAccessoryView Optional composable leading accessory view.
-     * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param leadingAccessoryContent Optional composable leading accessory Content.
+     * @param trailingAccessoryContent Optional composable trailing accessory Content.
      *
      */
     @Composable
@@ -795,8 +795,8 @@ object ListItem {
         onClick: (() -> Unit)? = null,
         onActionClick: (() -> Unit)? = null,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        leadingAccessoryView: (@Composable () -> Unit)? = null,
-        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        leadingAccessoryContent: (@Composable () -> Unit)? = null,
+        trailingAccessoryContent: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
         val themeID =
@@ -848,18 +848,18 @@ object ListItem {
                     interactionSource, onClick = onClick ?: {}, enabled, rippleColor
                 ), verticalAlignment = descriptionAlignment
         ) {
-            if (leadingAccessoryView != null && descriptionPlacement == Top) {
+            if (leadingAccessoryContent != null && descriptionPlacement == Top) {
                 Box(
                     Modifier.padding(padding.calculateStartPadding(LocalLayoutDirection.current)),
                     contentAlignment = Alignment.Center
                 ) {
-                    leadingAccessoryView()
+                    leadingAccessoryContent()
                 }
             }
             Box(
                 Modifier
                     .padding(
-                        start = if (leadingAccessoryView == null) padding.calculateStartPadding(
+                        start = if (leadingAccessoryContent == null) padding.calculateStartPadding(
                             LocalLayoutDirection.current
                         ) else 0.dp,
                         end = padding.calculateEndPadding(LocalLayoutDirection.current),
@@ -886,12 +886,12 @@ object ListItem {
                     )
                 }
             }
-            if (trailingAccessoryView != null) {
+            if (trailingAccessoryContent != null) {
                 Box(
                     Modifier.padding(end = padding.calculateEndPadding(LocalLayoutDirection.current)),
                     contentAlignment = Alignment.Center
                 ) {
-                    trailingAccessoryView()
+                    trailingAccessoryContent()
                 }
             }
         }
@@ -910,7 +910,7 @@ object ListItem {
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset] Optional borderInset for list item.
      * @param listItemTokens Optional list item tokens for list item appearance.If not provided then list tokens will be picked from [AppThemeController]
-     * @param trailingAccessoryView Optional composable trailing accessory view.
+     * @param trailingAccessoryContent Optional composable trailing accessory Content.
      *
      */
 
@@ -926,7 +926,7 @@ object ListItem {
         border: BorderType = NoBorder,
         borderInset: BorderInset = None,
         interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
-        trailingAccessoryView: (@Composable () -> Unit)? = null,
+        trailingAccessoryContent: (@Composable () -> Unit)? = null,
         listItemTokens: ListItemTokens? = null
     ) {
         val themeID =
@@ -1011,14 +1011,14 @@ object ListItem {
                         style = actionTextTypography.merge(TextStyle(color = actionTextColor))
                     )
                 }
-                if (trailingAccessoryView != null) {
+                if (trailingAccessoryContent != null) {
                     Box(
                         Modifier.padding(
                             end = padding.calculateEndPadding(LocalLayoutDirection.current),
                             bottom = padding.calculateBottomPadding()
                         ), contentAlignment = Alignment.BottomStart
                     ) {
-                        trailingAccessoryView()
+                        trailingAccessoryContent()
                     }
                 }
             }

@@ -182,7 +182,7 @@ class V2TabBarActivity : DemoActivity() {
 
                     }
                     ListItem.Header(title = resources.getString(R.string.tabBar_tab_items),
-                        trailingAccessoryView =
+                        trailingAccessoryContent =
                         {
                             Row(
                                 horizontalArrangement = Arrangement.spacedBy(16.dp),

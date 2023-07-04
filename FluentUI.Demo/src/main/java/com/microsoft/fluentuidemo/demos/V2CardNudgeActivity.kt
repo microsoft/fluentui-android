@@ -85,7 +85,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 icon = it
@@ -106,7 +106,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 if (subtitle.isNullOrBlank()) {
@@ -131,7 +131,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 if (accentText.isNullOrBlank()) {
@@ -154,7 +154,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 accentImage = it
@@ -173,7 +173,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 actionButton = it
@@ -192,7 +192,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 dismissEnabled = it
@@ -211,7 +211,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 outlineEnabled = it
