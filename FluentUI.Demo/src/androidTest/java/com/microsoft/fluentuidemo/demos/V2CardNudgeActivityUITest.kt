@@ -154,14 +154,14 @@ class V2CardNudgeActivityUITest {
     fun testLeftSwipe() {
         composeTestRule.onNodeWithTag(CARDNUDGE).performTouchInput { swipeLeft() }
         composeTestRule.onNodeWithTag(CARDNUDGE).performClick()
-        composeTestRule.onNodeWithText("Left Swiped").assertExists()
+        composeTestRule.onNodeWithText("Left Swiped", substring = true).assertExists()
     }
 
     @Test
     fun testRightSwipe() {
         composeTestRule.onNodeWithTag(CARDNUDGE).performTouchInput { swipeRight() }
         composeTestRule.onNodeWithTag(CARDNUDGE).performClick()
-        composeTestRule.onNodeWithText("Right Swiped").assertExists()
+        composeTestRule.onNodeWithText("Right Swiped", substring = true).assertExists()
     }
 
     @After

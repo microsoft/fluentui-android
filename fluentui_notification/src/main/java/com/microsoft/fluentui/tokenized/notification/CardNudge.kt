@@ -55,8 +55,8 @@ class CardNudgeMetaData(
     val accentText: String? = null,
     val accentIcon: FluentIcon? = null,
     val actionMetaData: PillMetaData? = null,
-    val leftSwipeGesture: (() -> Unit)? = null,
-    val rightSwipeGesture: (() -> Unit)? = null
+    val leftSwipeGesture: ((Float) -> Unit)? = null,
+    val rightSwipeGesture: ((Float) -> Unit)? = null
 )
 
 private enum class SwipeGesture {
@@ -128,14 +128,17 @@ fun CardNudge(
                 .testTag(CARD_NUDGE),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            LaunchedEffect(state.currentValue) {
-                if (state.currentValue == SwipeGesture.RIGHT) {
-                    metadata.rightSwipeGesture?.invoke()
-                    state.animateTo(SwipeGesture.NONE)
-                } else if (state.currentValue == SwipeGesture.LEFT) {
-                    metadata.leftSwipeGesture?.invoke()
-                    state.animateTo(SwipeGesture.NONE)
+            LaunchedEffect(state.offset.value) {
+                if (state.offset.value > 0.1F) {
+                    metadata.rightSwipeGesture?.invoke(state.offset.value / maxWidth)
+                } else if (state.offset.value < -0.1F) {
+                    metadata.leftSwipeGesture?.invoke(state.offset.value / maxWidth)
                 }
+            }
+
+            LaunchedEffect(state.currentValue) {
+                if (state.currentValue != SwipeGesture.NONE)
+                    state.animateTo(SwipeGesture.NONE)
             }
 
             if (metadata.icon != null && metadata.icon.isIconAvailable()) {
