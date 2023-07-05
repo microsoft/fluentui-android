@@ -699,8 +699,13 @@ object ListItem {
                 )
                 .semantics(mergeDescendants = true) {
                     contentDescription =
-                        "{$title}." + "${if (!enableContentOpenCloseTransition || expandedState) "Expanded" else "Collapsed"}"
-                    role = Role.Button
+                        "{$title}." + if (enableContentOpenCloseTransition) {
+                            if (expandedState) {
+                                "Expanded"
+                            } else {
+                                "Collapsed"
+                            }
+                        } else {""}
                 }
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
         ) {
