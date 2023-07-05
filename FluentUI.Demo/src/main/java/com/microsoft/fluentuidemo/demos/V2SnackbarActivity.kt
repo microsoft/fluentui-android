@@ -175,7 +175,7 @@ class V2SnackbarActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 icon = it
@@ -196,7 +196,7 @@ class V2SnackbarActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 if (subtitle.isNullOrBlank()) {
@@ -219,7 +219,7 @@ class V2SnackbarActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 actionLabel = it
@@ -238,7 +238,7 @@ class V2SnackbarActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 dismissEnabled = it

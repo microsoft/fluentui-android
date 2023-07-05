@@ -168,37 +168,37 @@ class V2CitationActivity : DemoActivity() {
     private fun bottomSheetOnCitation() {
         Column {
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "1") },
+                leadingAccessoryContent = { Citation(text = "1") },
                 text = "Reference",
                 border = BorderType.Bottom
             )
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "2") },
+                leadingAccessoryContent = { Citation(text = "2") },
                 text = "Reference",
                 border = BorderType.Bottom
             )
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "3") },
+                leadingAccessoryContent = { Citation(text = "3") },
                 text = "Reference",
                 border = BorderType.Bottom
             )
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "4") },
+                leadingAccessoryContent = { Citation(text = "4") },
                 text = "Reference",
                 border = BorderType.Bottom
             )
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "5") },
+                leadingAccessoryContent = { Citation(text = "5") },
                 text = "Reference",
                 border = BorderType.Bottom
             )
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "6") },
+                leadingAccessoryContent = { Citation(text = "6") },
                 text = "Reference",
                 border = BorderType.Bottom
             )
             ListItem.Item(
-                leadingAccessoryView = { Citation(text = "7") },
+                leadingAccessoryContent = { Citation(text = "7") },
                 text = "Reference",
                 border = BorderType.Bottom
             )

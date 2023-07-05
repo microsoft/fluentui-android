@@ -68,7 +68,7 @@ fun PersonaList(
                 borderInset = borderInset,
                 listItemTokens = personaListTokens,
                 enabled = item.enabled,
-                leadingAccessoryView = {
+                leadingAccessoryContent = {
                     Avatar(
                         person = item.person,
                         size = getAvatarSize(item.subTitle, item.footer),
@@ -77,7 +77,7 @@ fun PersonaList(
                         avatarToken = avatarTokens
                     )
                 },
-                trailingAccessoryView = item.trailingIcon,
+                trailingAccessoryContent = item.trailingIcon,
                 textAccessibilityProperties = textAccessibilityProperties
             )
         }
