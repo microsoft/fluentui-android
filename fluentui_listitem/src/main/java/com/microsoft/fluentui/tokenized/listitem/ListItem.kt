@@ -728,10 +728,9 @@ object ListItem {
                             if (enableChevron) {
                                 Icon(
                                     painter = rememberVectorPainter(image = ListItemIcons.Chevron),
-                                    contentDescription = "Chevron",
+                                    contentDescription = null,
                                     Modifier
-                                        .rotate(rotationState)
-                                        .clearAndSetSemantics { },
+                                        .rotate(rotationState),
                                     tint = chevronTint
                                 )
                             }
