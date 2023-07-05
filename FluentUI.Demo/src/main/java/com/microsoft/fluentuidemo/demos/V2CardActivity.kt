@@ -300,30 +300,30 @@ class V2CardActivity : DemoActivity() {
             ListItem.Header(
                 border = BorderType.Bottom,
                 title = context.getString(R.string.basic_card),
-                trailingAccessoryView = { Icon(Icons.Outlined.Refresh, "", tint = iconTint) })
+                trailingAccessoryContent = { Icon(Icons.Outlined.Refresh, "", tint = iconTint) })
             ListItem.Item(
                 border = BorderType.Bottom,
                 text = context.getString(R.string.card_text),
                 subText = context.getString(R.string.card_subtext),
-                leadingAccessoryView = { Icon(Icons.Outlined.Home, "", tint = iconTint) },
-                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
+                leadingAccessoryContent = { Icon(Icons.Outlined.Home, "", tint = iconTint) },
+                trailingAccessoryContent = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
             ListItem.Item(
                 border = BorderType.Bottom,
                 text = context.getString(R.string.card_text),
                 subText = context.getString(R.string.card_subtext),
-                leadingAccessoryView = { Icon(Icons.Outlined.AccountBox, "", tint = iconTint) },
-                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
+                leadingAccessoryContent = { Icon(Icons.Outlined.AccountBox, "", tint = iconTint) },
+                trailingAccessoryContent = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
             ListItem.Item(
                 border = BorderType.Bottom,
                 text = context.getString(R.string.card_text),
                 subText = context.getString(R.string.card_subtext),
-                leadingAccessoryView = { Icon(Icons.Outlined.Call, "", tint = iconTint) },
-                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
+                leadingAccessoryContent = { Icon(Icons.Outlined.Call, "", tint = iconTint) },
+                trailingAccessoryContent = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
             ListItem.Item(
                 text = context.getString(R.string.card_text),
                 subText = context.getString(R.string.card_subtext),
-                leadingAccessoryView = { Icon(Icons.Outlined.Add, "", tint = iconTint) },
-                trailingAccessoryView = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
+                leadingAccessoryContent = { Icon(Icons.Outlined.Add, "", tint = iconTint) },
+                trailingAccessoryContent = { Icon(Icons.Outlined.PlayArrow, "", tint = iconTint) })
         }
     }
 }

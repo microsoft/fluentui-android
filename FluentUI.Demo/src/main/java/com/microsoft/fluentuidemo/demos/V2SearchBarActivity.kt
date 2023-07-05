@@ -111,7 +111,7 @@ class V2SearchBarActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             autoCorrectEnabled = !autoCorrectEnabled
@@ -126,7 +126,7 @@ class V2SearchBarActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_activated)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_deactivated),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             enableMicrophoneCallback = !enableMicrophoneCallback
@@ -141,7 +141,7 @@ class V2SearchBarActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_neutral)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_brand),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             searchBarStyle =
@@ -160,7 +160,7 @@ class V2SearchBarActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             displayRightAccessory = !displayRightAccessory
@@ -176,7 +176,7 @@ class V2SearchBarActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             induceDelay = it

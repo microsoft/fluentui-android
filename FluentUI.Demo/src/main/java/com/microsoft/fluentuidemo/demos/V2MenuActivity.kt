@@ -60,26 +60,26 @@ fun CreateMenuActivityUI(context: Context) {
     Column {
         Column {
             ListItem.Header(title = context.getString(R.string.menu_xOffset),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     BasicTextField(value = xOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { xOffsetState.value = it.trim() })
                 }
             )
             ListItem.Header(title = context.getString(R.string.menu_yOffset),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     BasicTextField(value = yOffsetState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { yOffsetState.value = it.trim() })
                 })
             ListItem.Header(title = context.getString(R.string.menu_content_text),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     BasicTextField(
                         value = contentTextState.value,
                         onValueChange = { contentTextState.value = it })
                 })
             ListItem.Header(title = context.getString(R.string.menu_repeat_content_text),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     BasicTextField(value = repeatContentTextCountState.value,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { repeatContentTextCountState.value = it.trim() })

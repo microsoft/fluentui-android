@@ -56,7 +56,7 @@ fun Persona(
         borderInset = borderInset,
         listItemTokens = personaTokens,
         enabled = enabled,
-        leadingAccessoryView = {
+        leadingAccessoryContent = {
             Avatar(
                 person = person,
                 size = avatarSize,
