@@ -57,7 +57,7 @@ class V2DialogActivity : DemoActivity() {
                     resources.getString(R.string.fluentui_enabled)
                 else
                     resources.getString(R.string.fluentui_disabled),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     ToggleSwitch(
                         modifier = Modifier.testTag("outside press"),
                         onValueChange = {
@@ -73,7 +73,7 @@ class V2DialogActivity : DemoActivity() {
                     resources.getString(R.string.fluentui_enabled)
                 else
                     resources.getString(R.string.fluentui_disabled),
-                trailingAccessoryView = {
+                trailingAccessoryContent = {
                     ToggleSwitch(
                         modifier = Modifier.testTag("back press"),
                         onValueChange = {

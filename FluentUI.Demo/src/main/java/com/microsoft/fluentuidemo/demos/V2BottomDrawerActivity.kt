@@ -88,7 +88,7 @@ private fun CreateActivityUI() {
                     subText = stringResource(id = R.string.drawer_bottom_description),
                     subTextMaxLines = Int.MAX_VALUE,
                     onClick = { slideOver = false },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 slideOver = false
@@ -101,7 +101,7 @@ private fun CreateActivityUI() {
                     subText = stringResource(id = R.string.drawer_bottom_slide_over_description),
                     subTextMaxLines = Int.MAX_VALUE,
                     onClick = { slideOver = true },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 slideOver = true
@@ -121,7 +121,7 @@ private fun CreateActivityUI() {
                     )
                     .clearAndSetSemantics {
                         this.contentDescription = scrimVisibleText
-                    }, trailingAccessoryView = {
+                    }, trailingAccessoryContent = {
                     ToggleSwitch(
                         onValueChange = { scrimVisible = !scrimVisible },
                         checkedState = scrimVisible
@@ -141,7 +141,7 @@ private fun CreateActivityUI() {
                         .clearAndSetSemantics {
                             this.contentDescription = expandableText
                         },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         ToggleSwitch(
                             onValueChange = { expandable = it },
                             checkedState = expandable,
@@ -161,7 +161,7 @@ private fun CreateActivityUI() {
                         .clearAndSetSemantics {
                             this.contentDescription = showHandleText
                         },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         ToggleSwitch(
                             onValueChange = { showHandle = it },
                             checkedState = showHandle,
@@ -178,7 +178,7 @@ private fun CreateActivityUI() {
                         nestedDrawerContent = false
                         dynamicSizeContent = false
                     },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 selectedContent = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
@@ -197,7 +197,7 @@ private fun CreateActivityUI() {
                         nestedDrawerContent = false
                         dynamicSizeContent = false
                     },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 selectedContent = ContentType.EXPANDABLE_SIZE_CONTENT
@@ -216,7 +216,7 @@ private fun CreateActivityUI() {
                         dynamicSizeContent = false
                         nestedDrawerContent = false
                     },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 selectedContent = ContentType.WRAPPED_SIZE_CONTENT
@@ -234,7 +234,7 @@ private fun CreateActivityUI() {
                         nestedDrawerContent = false
                         listContent = false
                     },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 dynamicSizeContent = true
@@ -251,7 +251,7 @@ private fun CreateActivityUI() {
                         dynamicSizeContent = false
                         listContent = false
                     },
-                    trailingAccessoryView = {
+                    trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
                                 nestedDrawerContent = true
