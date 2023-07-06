@@ -618,6 +618,7 @@ private fun BottomDrawer(
     scrimVisible: Boolean,
     expandable: Boolean,
     slideOver: Boolean,
+    showHandle: Boolean,
     onDismiss: () -> Unit,
     drawerContent: @Composable () -> Unit
 ) {
@@ -656,6 +657,7 @@ private fun BottomDrawer(
 
         Box(
             drawerConstraints
+                .fillMaxWidth()
                 .nestedScroll(if (slideOver) drawerState.nestedScrollConnection else drawerState.PostDownNestedScrollConnection)
                 .offset {
                     val y = if (drawerState.anchors == null) {
@@ -723,57 +725,59 @@ private fun BottomDrawer(
                 .focusable(false),
         ) {
             Column {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .padding(vertical = 8.dp)
-                        .fillMaxWidth()
-                        .draggable(
-                            orientation = Orientation.Vertical,
-                            state = rememberDraggableState { delta ->
-                                drawerState.performDrag(delta)
-                            },
-                            onDragStopped = { velocity ->
-                                launch {
-                                    drawerState.performFling(
-                                        velocity
-                                    )
-                                    if (drawerState.isClosed) {
-                                        onDismiss()
-                                    }
-                                }
-                            },
-                        )
-                        .testTag(DRAWER_HANDLE_TAG)
-                ) {
-                    Icon(
-                        painterResource(id = R.drawable.ic_drawer_handle),
-                        contentDescription = LocalContext.current.resources.getString(R.string.drag_handle),
-                        tint = drawerHandleColor,
+                if(showHandle) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
-                            .clickable(
-                                enabled = drawerState.hasExpandedState,
-                                role = Role.Button,
-                                onClickLabel =
-                                if (drawerState.currentValue == DrawerValue.Expanded) {
-                                    LocalContext.current.resources.getString(R.string.collapse)
-                                } else {
-                                    if (drawerState.hasExpandedState && drawerState.isOpen) LocalContext.current.resources.getString(
-                                        R.string.expand
-                                    ) else null
-                                }
-                            ) {
-                                if (drawerState.currentValue == DrawerValue.Expanded) {
-                                    if (drawerState.confirmStateChange(DrawerValue.Open)) {
-                                        scope.launch { drawerState.open() }
+                            .padding(vertical = 8.dp)
+                            .fillMaxWidth()
+                            .draggable(
+                                orientation = Orientation.Vertical,
+                                state = rememberDraggableState { delta ->
+                                    drawerState.performDrag(delta)
+                                },
+                                onDragStopped = { velocity ->
+                                    launch {
+                                        drawerState.performFling(
+                                            velocity
+                                        )
+                                        if (drawerState.isClosed) {
+                                            onDismiss()
+                                        }
                                     }
-                                } else if (drawerState.hasExpandedState) {
-                                    if (drawerState.confirmStateChange(DrawerValue.Expanded)) {
-                                        scope.launch { drawerState.expand() }
+                                },
+                            )
+                            .testTag(DRAWER_HANDLE_TAG)
+                    ) {
+                        Icon(
+                            painterResource(id = R.drawable.ic_drawer_handle),
+                            contentDescription = LocalContext.current.resources.getString(R.string.drag_handle),
+                            tint = drawerHandleColor,
+                            modifier = Modifier
+                                .clickable(
+                                    enabled = drawerState.hasExpandedState,
+                                    role = Role.Button,
+                                    onClickLabel =
+                                    if (drawerState.currentValue == DrawerValue.Expanded) {
+                                        LocalContext.current.resources.getString(R.string.collapse)
+                                    } else {
+                                        if (drawerState.hasExpandedState && drawerState.isOpen) LocalContext.current.resources.getString(
+                                            R.string.expand
+                                        ) else null
+                                    }
+                                ) {
+                                    if (drawerState.currentValue == DrawerValue.Expanded) {
+                                        if (drawerState.confirmStateChange(DrawerValue.Open)) {
+                                            scope.launch { drawerState.open() }
+                                        }
+                                    } else if (drawerState.hasExpandedState) {
+                                        if (drawerState.confirmStateChange(DrawerValue.Expanded)) {
+                                            scope.launch { drawerState.expand() }
+                                        }
                                     }
                                 }
-                            }
-                    )
+                        )
+                    }
                 }
                 Column(modifier = Modifier
                     .testTag(DRAWER_CONTENT_TAG), content = { drawerContent() })
@@ -790,8 +794,6 @@ private fun BottomDrawer(
  * @param modifier optional modifier for the drawer
  * @param behaviorType opening behaviour of drawer. Default is BOTTOM
  * @param drawerState state of the drawer
- * @param expandable if true drawer would expand on drag else drawer open till fixed/wrapped height.
- * The default value is false
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
@@ -804,7 +806,6 @@ fun Drawer(
     modifier: Modifier = Modifier,
     behaviorType: BehaviorType = BehaviorType.BOTTOM,
     drawerState: DrawerState = rememberDrawerState(),
-    expandable: Boolean = false,
     scrimVisible: Boolean = true,
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
@@ -859,8 +860,9 @@ fun Drawer(
                     drawerHandleColor = drawerHandleColor,
                     scrimColor = scrimColor,
                     scrimVisible = scrimVisible,
-                    expandable = expandable,
+                    expandable = true,
                     slideOver = behaviorType == BehaviorType.BOTTOM_SLIDE_OVER,
+                    showHandle = true,
                     onDismiss = close,
                     drawerContent = drawerContent
                 )
@@ -890,6 +892,91 @@ fun Drawer(
                     drawerContent = drawerContent
                 )
             }
+        }
+    }
+}
+
+
+/**
+ *
+ * BottomDrawer block interaction with the rest of an app’s content with a scrim.
+ * They are elevated above most of the app’s UI and don’t affect the screen’s layout grid.
+ *
+ * @param modifier optional modifier for the drawer
+ * @param drawerState state of the drawer
+ * @param slideOver if true, then BottomDrawer would be drawn in full length & only covering up to half screen when open & it get slided more
+ * in the visible region on expand. If false then, the BottomDrawer end at the bottom & hence the content get only the visible region height to draw itself.The default value is true
+ * @param expandable if true drawer would expand on drag else drawer open till fixed/wrapped height.
+ * The default value is true
+ * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
+ * @param showHandle if true drawer handle would be visible. The default value is true
+ * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
+ * @param drawerContent composable that represents content inside the drawer
+ *
+ * @throws IllegalStateException when parent has [Float.POSITIVE_INFINITY] width
+ */
+
+@Composable
+fun BottomDrawer(
+    modifier: Modifier = Modifier,
+    drawerState: DrawerState = rememberDrawerState(),
+    slideOver: Boolean = true,
+    expandable: Boolean = true,
+    scrimVisible: Boolean = true,
+    showHandle:Boolean = true,
+    drawerTokens: DrawerTokens? = null,
+    drawerContent: @Composable () -> Unit
+    ) {
+    if (drawerState.enable) {
+        val themeID =
+            FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+        val tokens = drawerTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
+
+        val popupPositionProvider = DrawerPositionProvider()
+        val scope = rememberCoroutineScope()
+        val close: () -> Unit = {
+            if (drawerState.confirmStateChange(DrawerValue.Closed)) {
+                scope.launch { drawerState.close() }
+            }
+        }
+        val behaviorType =
+            if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
+        val drawerInfo = DrawerInfo(type = behaviorType)
+        Popup(
+            onDismissRequest = close,
+            popupPositionProvider = popupPositionProvider,
+            properties = PopupProperties(focusable = true)
+        )
+        {
+            val drawerShape: Shape =
+                RoundedCornerShape(
+                    topStart = tokens.borderRadius(drawerInfo),
+                    topEnd = tokens.borderRadius(drawerInfo)
+                )
+
+            val drawerElevation: Dp = tokens.elevation(drawerInfo)
+            val drawerBackgroundColor: Brush =
+                tokens.backgroundBrush(drawerInfo)
+            val drawerHandleColor: Color = tokens.handleColor(drawerInfo)
+            val scrimOpacity: Float = tokens.scrimOpacity(drawerInfo)
+            val scrimColor: Color =
+                tokens.scrimColor(drawerInfo).copy(alpha = scrimOpacity)
+            BottomDrawer(
+                modifier = modifier,
+                drawerState = drawerState,
+                drawerShape = drawerShape,
+                drawerElevation = drawerElevation,
+                drawerBackground = drawerBackgroundColor,
+                drawerHandleColor = drawerHandleColor,
+                scrimColor = scrimColor,
+                scrimVisible = scrimVisible,
+                expandable = expandable,
+                slideOver = slideOver,
+                showHandle = showHandle,
+                onDismiss = close,
+                drawerContent = drawerContent
+            )
         }
     }
 }
