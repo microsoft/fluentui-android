@@ -14,6 +14,7 @@ const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
 const val V2AVATAR_GROUP = "V2 Avatar Group"
 const val V2Badge = "V2 Badge"
 const val V2BASIC_CONTROLS = "V2 Basic Controls"
+const val V2BOTTOM_DRAWER = "V2 Bottom Drawer"
 const val V2BOTTOM_SHEET = "V2 BottomSheet"
 const val V2BUTTON = "V2 Buttons"
 const val V2CARD = "V2 Card"
@@ -69,6 +70,7 @@ val DEMOS = arrayListOf(
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
     Demo(V2Badge, V2BadgeActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
+    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class),
     Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
     Demo(V2BUTTON, V2ButtonsActivity::class),
     Demo(V2CARD, V2CardActivity::class),
