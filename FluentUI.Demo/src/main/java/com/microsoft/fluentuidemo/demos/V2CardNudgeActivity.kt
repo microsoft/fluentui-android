@@ -3,10 +3,15 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
@@ -18,10 +23,16 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
+import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
@@ -31,6 +42,7 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import kotlin.math.abs
 
 class V2CardNudgeActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
@@ -57,6 +69,7 @@ class V2CardNudgeActivity : DemoActivity() {
             FluentTheme {
                 var swipeLeft: Boolean by rememberSaveable { mutableStateOf(false) }
                 var swipeRight: Boolean by rememberSaveable { mutableStateOf(false) }
+                var swipeAmount: Float by rememberSaveable { mutableStateOf(0.0F) }
 
                 Column(
                     Modifier.fillMaxSize(),
@@ -85,7 +98,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 icon = it
@@ -106,7 +119,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 if (subtitle.isNullOrBlank()) {
@@ -131,7 +144,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 if (accentText.isNullOrBlank()) {
@@ -154,7 +167,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 accentImage = it
@@ -173,7 +186,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 actionButton = it
@@ -192,7 +205,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 dismissEnabled = it
@@ -211,7 +224,7 @@ class V2CardNudgeActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 outlineEnabled = it
@@ -234,50 +247,87 @@ class V2CardNudgeActivity : DemoActivity() {
                     val rightSwiped =
                         LocalContext.current.resources.getString(R.string.fluentui_right_swiped)
 
-                    Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
-                        CardNudge(
-                            metadata = CardNudgeMetaData(
-                                message = LocalContext.current.resources.getString(R.string.fluentui_title),
-                                icon = if (icon) FluentIcon(Icons.Outlined.Call) else null,
-                                subTitle = subtitle,
-                                accentText = accentText,
-                                accentIcon = if (accentImage) FluentIcon(Icons.Outlined.LocationOn) else null,
-                                actionMetaData = if (actionButton)
-                                    PillMetaData(
-                                        LocalContext.current.resources.getString(R.string.fluentui_action_button),
-                                        onClick = {
+                    Column(Modifier.fillMaxHeight(), verticalArrangement = Arrangement.Center) {
+                        Box(
+                            Modifier
+                                .wrapContentHeight()
+                                .fillMaxWidth()
+                                .background(
+                                    if (abs(swipeAmount) > 0.3)
+                                        FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningBackground1].value()
+                                    else
+                                        Color.Unspecified
+                                ),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            BasicText(
+                                "Hide",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)),
+                                style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1Strong].merge(
+                                    TextStyle(
+                                        textAlign = if (swipeAmount > 0) TextAlign.Left else TextAlign.Right,
+                                        color = if (abs(swipeAmount) > 0.3)
+                                            FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.WarningForeground1].value()
+                                        else
+                                            Color.Black
+                                    )
+                                )
+                            )
+                            CardNudge(
+                                metadata = CardNudgeMetaData(
+                                    message = LocalContext.current.resources.getString(R.string.fluentui_title),
+                                    icon = if (icon) FluentIcon(Icons.Outlined.Call) else null,
+                                    subTitle = subtitle,
+                                    accentText = accentText,
+                                    accentIcon = if (accentImage) FluentIcon(Icons.Outlined.LocationOn) else null,
+                                    actionMetaData = if (actionButton)
+                                        PillMetaData(
+                                            LocalContext.current.resources.getString(R.string.fluentui_action_button),
+                                            onClick = {
+                                                Toast.makeText(
+                                                    context,
+                                                    buttonPressed,
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                        ) else null,
+                                    dismissOnClick = if (dismissEnabled) {
+                                        {
                                             Toast.makeText(
                                                 context,
-                                                buttonPressed,
+                                                dismissPressed,
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         }
-                                    ) else null,
-                                dismissOnClick = if (dismissEnabled) {
-                                    {
-                                        Toast.makeText(
-                                            context,
-                                            dismissPressed,
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                    } else null,
+                                    leftSwipeGesture = {
+                                        swipeRight = false
+                                        swipeLeft = true
+                                        swipeAmount = it
+                                    },
+                                    rightSwipeGesture = {
+                                        swipeRight = true
+                                        swipeLeft = false
+                                        swipeAmount = it
                                     }
-                                } else null,
-                                leftSwipeGesture = {
-                                    swipeRight = false
-                                    swipeLeft = true
-                                },
-                                rightSwipeGesture = {
-                                    swipeRight = true
-                                    swipeLeft = false
-                                }
 
-                            ),
-                            outlineMode = outlineEnabled
-                        )
+                                ),
+                                outlineMode = outlineEnabled
+                            )
+
+                        }
                         if (swipeLeft)
-                            BasicText(leftSwiped)
+                            Label(
+                                leftSwiped + ": " + abs(swipeAmount).toString(),
+                                textStyle = FluentAliasTokens.TypographyTokens.Caption1Strong
+                            )
                         else if (swipeRight)
-                            BasicText(rightSwiped)
+                            Label(
+                                rightSwiped + ": " + abs(swipeAmount).toString(),
+                                textStyle = FluentAliasTokens.TypographyTokens.Caption1Strong
+                            )
                     }
                 }
             }

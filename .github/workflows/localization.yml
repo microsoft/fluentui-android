@@ -24,7 +24,7 @@ jobs:
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
         git config pull.rebase false
-        branch=testLocalize-$GITHUB_RUN_ID
+        branch=Localize-$GITHUB_RUN_ID
         message='TDBuild Localization'
         echo "Creating branch $branch"
         git branch $branch

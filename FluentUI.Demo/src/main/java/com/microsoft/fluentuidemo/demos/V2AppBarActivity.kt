@@ -122,7 +122,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             subtitle =
@@ -142,7 +142,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_neutral)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_brand),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             style =
@@ -162,7 +162,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     ToggleSwitch(
                                         onValueChange = {
                                             enableButtonBar = !enableButtonBar
@@ -178,7 +178,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                 else
                                     LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                trailingAccessoryView = {
+                                trailingAccessoryContent = {
                                     enableSearchBar = enableSearchBar || searchMode
                                     ToggleSwitch(
                                         onValueChange = {

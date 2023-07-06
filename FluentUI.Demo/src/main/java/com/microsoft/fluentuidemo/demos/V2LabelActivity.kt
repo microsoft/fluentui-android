@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -101,11 +102,13 @@ class V2LabelActivity : DemoActivity() {
         )
         Column(
             modifier = Modifier
-                .then(if (isBackgroundChange){
-                    Modifier.background(Color.Black)
-                }else{
-                    Modifier
-                })
+                .then(
+                    if (isBackgroundChange) {
+                        Modifier.background(Color.Black)
+                    } else {
+                        Modifier
+                    }
+                )
                 .padding(top = 16.dp)
         ) {
             PillTabs(metadataList = tabsList, scrollable = true, selectedIndex = selectedTab)
@@ -114,6 +117,8 @@ class V2LabelActivity : DemoActivity() {
                     .padding(all = 16.dp)
                     .horizontalScroll(
                         rememberScrollState()
+                    )
+                    .verticalScroll(rememberScrollState()
                     ),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {

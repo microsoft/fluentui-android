@@ -137,7 +137,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 leftIcon = it
@@ -155,7 +155,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 hintText = it
@@ -173,7 +173,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 label = it
@@ -191,7 +191,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 assistiveText = it
@@ -209,7 +209,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 secondaryText = it
@@ -227,7 +227,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 passwordMode = it
@@ -245,7 +245,7 @@ class V2TextFieldActivity : DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_enabled)
                                     else
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                                    trailingAccessoryView = {
+                                    trailingAccessoryContent = {
                                         ToggleSwitch(
                                             onValueChange = {
                                                 errorText = it

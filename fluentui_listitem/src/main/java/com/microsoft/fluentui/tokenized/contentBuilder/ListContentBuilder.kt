@@ -306,12 +306,12 @@ class ListContentBuilder {
                 ListItem.Item(
                     text = item.title,
                     subText = item.subTitle,
-                    leadingAccessoryView = {
+                    leadingAccessoryContent = {
                         if (item.icon != null) {
                             Icon(item.icon, null, tint = token.iconColor(ListItemInfo()).rest)
                         }
                     },
-                    trailingAccessoryView = item.accessory,
+                    trailingAccessoryContent = item.accessory,
                     enabled = item.enabled,
                     onClick = item.onClick,
                     listItemTokens = listItemTokens

@@ -246,7 +246,7 @@ class V2ScaffoldActivity : DemoActivity() {
                                 context
                             )
                         },
-                        leadingAccessoryView = {
+                        leadingAccessoryContent = {
                             Image(
                                 ListItemIcons.Folder40,
                                 context.resources.getString(R.string.common_folder)
