@@ -14,6 +14,7 @@ import org.junit.runners.Suite
     V2CardUITest::class,
     V2CardNudgeActivityUITest::class,
     V2CitationUITest::class,
+    V2BottomDrawerUITest::class,
     V2DrawerActivityUITest::class,
     V2LabelUITest::class,
     V2ListItemActivityUITest::class,
