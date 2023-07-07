@@ -26,12 +26,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.*
+import com.microsoft.fluentui.listitem.R
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.theme.FluentTheme
@@ -677,6 +679,8 @@ object ListItem {
         val rotationState by animateFloatAsState(
             targetValue = if (!enableContentOpenCloseTransition || expandedState) chevronOrientation.enterTransition else chevronOrientation.exitTransition
         )
+        val expandedString = LocalContext.current.resources.getString(R.string.fluentui_expanded)
+        val collapsedString = LocalContext.current.resources.getString(R.string.fluentui_collapsed)
         Box(
             modifier = modifier
                 .fillMaxWidth()
@@ -688,6 +692,16 @@ object ListItem {
                     enabled,
                     rippleColor
                 )
+                .semantics(mergeDescendants = true) {
+                    contentDescription =
+                        "{$title}." + if (enableContentOpenCloseTransition) {
+                            if (expandedState) {
+                                expandedString
+                            } else {
+                                collapsedString
+                            }
+                        } else {""}
+                }
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
         ) {
             Column {
@@ -712,14 +726,16 @@ object ListItem {
 
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             if (enableChevron) {
-                                Icon(painter = rememberVectorPainter(image = ListItemIcons.Chevron),
-                                    contentDescription = "Chevron",
+                                Icon(
+                                    painter = rememberVectorPainter(image = ListItemIcons.Chevron),
+                                    contentDescription = null,
                                     Modifier
-                                        .clickable { expandedState = !expandedState }
                                         .rotate(rotationState),
-                                    tint = chevronTint)
+                                    tint = chevronTint
+                                )
                             }
                             BasicText(
+                                modifier = Modifier.clearAndSetSemantics { },
                                 text = title,
                                 style = primaryTextTypography.merge(TextStyle(color = primaryTextColor)),
                                 maxLines = titleMaxLines,
