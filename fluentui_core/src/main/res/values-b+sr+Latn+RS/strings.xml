@@ -26,7 +26,7 @@
     <!-- Describes close action -->
     <string name="fluentui_close">Zatvori</string>
     <!-- Describes cancel action -->
-    <string name="fluentui_cancel">Cancel</string>
+    <string name="fluentui_cancel">Otkaži</string>
     <!--name of the icon -->
     <string name="fluentui_search">Pretraži</string>
     <!--name of the icon -->
@@ -64,6 +64,10 @@
     <!--Describes the control -->
     <string name="fluentui_radio_button">Radio dugme</string>
     <string name="fluentui_label">Oznaka</string>
+
+    <!-- Describes the expand/collapsed state of control -->
+    <string name="fluentui_expanded">Expanded</string>
+    <string name="fluentui_collapsed">Collapsed</string>
 
     <!--types of control -->
     <string name="fluentui_large">Veliki</string>

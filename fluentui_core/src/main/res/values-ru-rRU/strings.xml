@@ -26,7 +26,7 @@
     <!-- Describes close action -->
     <string name="fluentui_close">Закрыть</string>
     <!-- Describes cancel action -->
-    <string name="fluentui_cancel">Cancel</string>
+    <string name="fluentui_cancel">Отмена</string>
     <!--name of the icon -->
     <string name="fluentui_search">Поиск</string>
     <!--name of the icon -->
@@ -64,6 +64,10 @@
     <!--Describes the control -->
     <string name="fluentui_radio_button">Переключатель</string>
     <string name="fluentui_label">Метка</string>
+
+    <!-- Describes the expand/collapsed state of control -->
+    <string name="fluentui_expanded">Expanded</string>
+    <string name="fluentui_collapsed">Collapsed</string>
 
     <!--types of control -->
     <string name="fluentui_large">Большой</string>
