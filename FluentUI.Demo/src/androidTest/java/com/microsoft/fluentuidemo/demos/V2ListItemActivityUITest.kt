@@ -296,11 +296,11 @@ class V2ListItemActivityUITest {
         composeTestRule.onNodeWithTag(CONTENT_TAG, useUnmergedTree = true).assertExists()
             .assertIsDisplayed()
         composeTestRule.onNode(
-            hasContentDescription(CHEVRON_TAG).and(hasAnyAncestor(hasTestTag(BOLD_TAG))),
+            hasTestTag(CHEVRON_TAG).and(hasAnyAncestor(hasTestTag(BOLD_TAG))),
             true
         ).assertIsDisplayed()
         composeTestRule.onNode(
-            hasContentDescription(CHEVRON_TAG).and(hasAnyAncestor(hasTestTag(SUBTLE_TAG))),
+            hasTestTag(CHEVRON_TAG).and(hasAnyAncestor(hasTestTag(SUBTLE_TAG))),
             true
         ).assertDoesNotExist()
     }
