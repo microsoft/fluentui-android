@@ -29,6 +29,7 @@ import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.style.TextOverflow
@@ -730,7 +731,8 @@ object ListItem {
                                     painter = rememberVectorPainter(image = ListItemIcons.Chevron),
                                     contentDescription = null,
                                     Modifier
-                                        .rotate(rotationState),
+                                        .rotate(rotationState)
+                                        .testTag("Chevron"),
                                     tint = chevronTint
                                 )
                             }
