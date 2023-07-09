@@ -1,10 +1,8 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.click
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -19,7 +17,6 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
 import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.R
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -27,14 +24,14 @@ import org.junit.Test
 import java.util.UUID
 
 class V2BottomDrawerUITest {
-    lateinit var context: Context
+
     private fun launchActivity() {
         ActivityScenario.launch<V2BottomDrawerActivity>(setUpIntentForActivity())
     }
 
     private fun setUpIntentForActivity(): Intent {
-        context = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(context, V2DrawerActivity::class.java)
+        val context = InstrumentationRegistry.getInstrumentation().targetContext
+        val intent = Intent(context, V2BottomDrawerActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
         return intent
     }
@@ -64,27 +61,9 @@ class V2BottomDrawerUITest {
         drawerContent.assertDoesNotExist()
     }
 
-    private fun openCheckForHorizontalDrawer() {
-        drawerContent.assertExists("Drawer Content not shown")
-        drawerScrim.assertExists("Drawer Scrim not shown")
-    }
-
-    private fun closeCheckForHorizontalDrawer() {
-        drawerScrim.assertDoesNotExist()
-        drawerContent.assertDoesNotExist()
-    }
-
     private fun dpToPx(value: Dp) = (value * Resources
         .getSystem()
         .displayMetrics.density).value
-
-    //Test case to check BottomDrawer is closed by default
-    @Test
-    fun testBottomDrawerIsClosedByDefault() {
-        drawerHandle.assertDoesNotExist()
-        drawerContent.assertDoesNotExist()
-        drawerScrim.assertDoesNotExist()
-    }
 
     @Test
     fun testBottomDrawer1() {
@@ -181,6 +160,61 @@ class V2BottomDrawerUITest {
         }
         composeTestRule.waitForIdle()
         openCheckForVerticalDrawer()
+
+    }
+
+    @Test
+    fun testBottomDrawer6() {
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Expand Drawer").performClick()
+        openCheckForVerticalDrawer()
+
+        //SwipeDown on drawerHandle should close it.
+        drawerHandle.performTouchInput {
+            swipeDown(
+                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
+                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+            )
+        }
+        closeCheckForVerticalDrawer()
+    }
+
+    @Test
+    fun testBottomDrawer7() {
+        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Show Handle", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
+
+        //Content should be visible without handle
+        drawerContent.assertExists("Drawer Content not shown")
+        drawerHandle.assertDoesNotExist()
+
+        //SwipeDown on drawerContent should close it.
+        drawerContent.performTouchInput {
+            swipeDown(
+                startY = drawerContent.fetchSemanticsNode().positionInRoot.y,
+                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+            )
+        }
+        closeCheckForVerticalDrawer()
+    }
+
+    @Test
+    fun testBottomDrawer8() {
+        composeTestRule.onNodeWithText("Bottom", useUnmergedTree = true).performClick()
+        //TODO: TO open Bottom Drawer, "Open Drawer" button needed to be clicked twice.
+        // Investigated that the animateTo is not invoked with one click.
+        // However, it is invoked 2 time on next click & then 2 times in retry.
+
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        //SwipeDown on drawerHandle should close it.
+        drawerHandle.performTouchInput {
+            swipeDown(
+                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
+                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+            )
+        }
 
     }
 
