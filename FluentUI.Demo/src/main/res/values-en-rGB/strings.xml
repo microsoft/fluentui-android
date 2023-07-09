@@ -788,4 +788,67 @@
     <!-- UI Label Button -->
     <string name="card_button">Button</string>
 
+    <!-- V2 Dialog -->
+    <!-- UI Label to display the dialog -->
+    <string name="show_dialog">Show Dialogue</string>
+    <!-- UI label to close the dialog when clicked outside -->
+    <string name="dismiss_dialog_outside">Dismiss dialogue on clicking outside</string>
+    <!-- UI label to close the dialog when back button is pressed -->
+    <string name="dismiss_dialog_back">Dismiss dialogue on back press</string>
+    <!-- Text denoting a dialog is closed -->
+    <string name="dismiss_dialog">Dialogue dismissed</string>
+    <!-- UI Label Cancel -->
+    <string name="cancel">Cancel</string>
+    <!-- UI Label Ok -->
+    <string name="ok">Ok</string>
+    <!-- A sample description -->
+    <string name="dialog_description">A dialogue is a small window that prompts the user to make a decision or enter additional information.</string>
+
+    <!-- V2 Drawer -->
+    <!-- UI Label for Button which open Drawer-->
+    <string name="drawer_open">Open Drawer</string>
+    <!-- UI Label for Button which expand Drawer-->
+    <string name="drawer_expand">Expand Drawer</string>
+    <!-- UI Label for Button which close Drawer-->
+    <string name="drawer_close">Close Drawer</string>
+    <!-- UI Label for Drawer Type Heading -->
+    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <!-- UI Label for Top -->
+    <string name="drawer_top">Top</string>
+    <!-- UI Label for Top drawer description -->
+    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <!-- UI Label for Bottom -->
+    <string name="drawer_bottom">Bottom</string>
+    <!-- UI Label for Bottom drawer description -->
+    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <!-- UI Label for Left Slide Over -->
+    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <!-- UI Label for Left Slide Over drawer description -->
+    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <!-- UI Label for Right Slide Over -->
+    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <!-- UI Label for Right Slide Over drawer description -->
+    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <!-- UI Label for Bottom Slide Over -->
+    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <!-- UI Label for Bottom Slide Over drawer description -->
+    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <!-- UI Label for Scrim Visible -->
+    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <!-- UI Label for Select Drawer Content Heading-->
+    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <!-- UI Label for Full screen size scrollable content text-->
+    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <!-- UI Label for More than half screen content text-->
+    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <!-- UI Label for Less than half screen content text-->
+    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <!-- UI Label for Dynamic size content text-->
+    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <!-- UI Label for Nested drawer content text-->
+    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <!-- UI Label for Expandable -->
+    <string name="drawer_expandable">Expandable</string>
+    <!-- UI Label for Show Handle -->
+    <string name="drawer_show_handle">Show Handle</string>
 </resources>
