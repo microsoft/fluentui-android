@@ -22,10 +22,9 @@ import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
-import com.microsoft.fluentui.tokenized.drawer.Drawer
+import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentuidemo.DemoActivity
@@ -37,8 +36,7 @@ import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
 import kotlinx.coroutines.launch
 
-
-class V2DrawerActivity : DemoActivity() {
+class V2BottomDrawerActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
@@ -57,97 +55,58 @@ class V2DrawerActivity : DemoActivity() {
     }
 }
 
-enum class ContentType {
-    FULL_SCREEN_SCROLLABLE_CONTENT,
-    EXPANDABLE_SIZE_CONTENT,
-    WRAPPED_SIZE_CONTENT
-}
-
 @Composable
 private fun CreateActivityUI() {
     var scrimVisible by remember { mutableStateOf(true) }
     var dynamicSizeContent by remember { mutableStateOf(false) }
     var nestedDrawerContent by remember { mutableStateOf(false) }
     var listContent by remember { mutableStateOf(true) }
+    var expandable by remember { mutableStateOf(true) }
     var selectedContent by remember { mutableStateOf(ContentType.FULL_SCREEN_SCROLLABLE_CONTENT) }
-    var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
+    var slideOver by remember { mutableStateOf(false) }
+    var showHandle by remember { mutableStateOf(true) }
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-            selectedBehaviorType,
+            slideOver = slideOver,
+            scrimVisible = scrimVisible,
+            expandable = expandable,
+            showHandle = showHandle,
+            drawerContent =
             if (listContent)
                 getAndroidViewAsContent(selectedContent)
             else if (nestedDrawerContent) {
                 getDrawerAsContent()
             } else {
                 getDynamicListGeneratorAsContent()
-            },
-            scrimVisible = scrimVisible
+            }
         )
+        //Other content on Primary surface
         LazyColumn(horizontalAlignment = Alignment.CenterHorizontally) {
             item {
                 ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_type))
-                ListItem.Item(text = stringResource(id = R.string.drawer_top),
-                    subText = stringResource(id = R.string.drawer_top_description),
-                    subTextMaxLines = Int.MAX_VALUE,
-                    onClick = { selectedBehaviorType = BehaviorType.TOP },
-                    trailingAccessoryContent = {
-                        RadioButton(
-                            onClick = {
-                                selectedBehaviorType = BehaviorType.TOP
-                            },
-                            selected = selectedBehaviorType == BehaviorType.TOP
-                        )
-                    }
-                )
                 ListItem.Item(text = stringResource(id = R.string.drawer_bottom),
                     subText = stringResource(id = R.string.drawer_bottom_description),
                     subTextMaxLines = Int.MAX_VALUE,
-                    onClick = { selectedBehaviorType = BehaviorType.BOTTOM },
+                    onClick = { slideOver = false },
                     trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
-                                selectedBehaviorType = BehaviorType.BOTTOM
+                                slideOver = false
                             },
-                            selected = selectedBehaviorType == BehaviorType.BOTTOM
-                        )
-                    }
-                )
-                ListItem.Item(text = stringResource(id = R.string.drawer_left_slide_over),
-                    subText = stringResource(id = R.string.drawer_left_slide_over_description),
-                    subTextMaxLines = Int.MAX_VALUE,
-                    onClick = { selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER },
-                    trailingAccessoryContent = {
-                        RadioButton(
-                            onClick = {
-                                selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER
-                            },
-                            selected = selectedBehaviorType == BehaviorType.LEFT_SLIDE_OVER
-                        )
-                    }
-                )
-                ListItem.Item(text = stringResource(id = R.string.drawer_right_slide_over),
-                    subText = stringResource(id = R.string.drawer_right_slide_over_description),
-                    subTextMaxLines = Int.MAX_VALUE,
-                    onClick = { selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER },
-                    trailingAccessoryContent = {
-                        RadioButton(
-                            onClick = {
-                                selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER
-                            },
-                            selected = selectedBehaviorType == BehaviorType.RIGHT_SLIDE_OVER
+                            selected = !slideOver
                         )
                     }
                 )
                 ListItem.Item(text = stringResource(id = R.string.drawer_bottom_slide_over),
                     subText = stringResource(id = R.string.drawer_bottom_slide_over_description),
                     subTextMaxLines = Int.MAX_VALUE,
-                    onClick = { selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER },
+                    onClick = { slideOver = true },
                     trailingAccessoryContent = {
                         RadioButton(
                             onClick = {
-                                selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER
+                                slideOver = true
                             },
-                            selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
+                            selected = slideOver
                         )
                     }
                 )
@@ -170,7 +129,46 @@ private fun CreateActivityUI() {
                 }
                 )
             }
-
+            item {
+                val expandableText = stringResource(id = R.string.drawer_expandable)
+                ListItem.Header(title = expandableText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = expandable,
+                            role = Role.Switch,
+                            onValueChange = { expandable = !expandable }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = expandableText
+                        },
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { expandable = it },
+                            checkedState = expandable,
+                        )
+                    }
+                )
+            }
+            item {
+                val showHandleText = stringResource(id = R.string.drawer_show_handle)
+                ListItem.Header(title = showHandleText,
+                    modifier = Modifier
+                        .toggleable(
+                            value = showHandle,
+                            role = Role.Switch,
+                            onValueChange = { showHandle = !showHandle }
+                        )
+                        .clearAndSetSemantics {
+                            this.contentDescription = showHandleText
+                        },
+                    trailingAccessoryContent = {
+                        ToggleSwitch(
+                            onValueChange = { showHandle = it },
+                            checkedState = showHandle,
+                        )
+                    }
+                )
+            }
             item {
                 ListItem.Header(title = stringResource(id = R.string.drawer_select_drawer_content))
                 ListItem.Item(text = stringResource(id = R.string.drawer_full_screen_size_scrollable_content),
@@ -271,9 +269,11 @@ private fun CreateActivityUI() {
 
 @Composable
 private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
-    behaviorType: BehaviorType,
+    slideOver: Boolean,
+    expandable: Boolean,
+    scrimVisible: Boolean,
+    showHandle: Boolean,
     drawerContent: @Composable ((() -> Unit) -> Unit),
-    scrimVisible: Boolean = true
 ) {
     val scope = rememberCoroutineScope()
     val drawerState = rememberDrawerState()
@@ -298,10 +298,15 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         )
     }
 
-    Drawer(
+    BottomDrawer(
         drawerState = drawerState,
         drawerContent = { drawerContent(close) },
-        behaviorType = behaviorType,
-        scrimVisible = scrimVisible
+        expandable = expandable,
+        scrimVisible = scrimVisible,
+        slideOver = slideOver,
+        showHandle = showHandle
     )
 }
+
+
+

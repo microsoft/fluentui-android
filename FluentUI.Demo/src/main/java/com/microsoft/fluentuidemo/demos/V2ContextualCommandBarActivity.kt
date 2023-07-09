@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
-import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.contextualcommandbar.ActionButtonPosition
 import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandGroup
@@ -38,7 +37,7 @@ import com.microsoft.fluentui.tokenized.contextualcommandbar.CommandItem
 import com.microsoft.fluentui.tokenized.contextualcommandbar.ContextualCommandBar
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
-import com.microsoft.fluentui.tokenized.drawer.Drawer
+import com.microsoft.fluentui.tokenized.drawer.BottomDrawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
@@ -312,7 +311,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                 )
                 val configuration = LocalConfiguration.current
                 if (configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    Drawer(
+                    BottomDrawer(
                         drawerState = drawerState,
                         drawerContent = {
                             Column(modifier = Modifier.padding(horizontal = 16.dp)) {
@@ -381,12 +380,12 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                             }
 
                         },
-                        behaviorType = BehaviorType.BOTTOM,
+                        slideOver = false,
                         expandable = false,
                         scrimVisible = false
                     )
                 } else {
-                    Drawer(
+                    BottomDrawer(
                         drawerState = drawerState,
                         drawerContent = {
                             Column(horizontalAlignment = CenterHorizontally) {
@@ -452,7 +451,7 @@ class V2ContextualCommandBarActivity : DemoActivity() {
                             }
 
                         },
-                        behaviorType = BehaviorType.BOTTOM,
+                        slideOver = false,
                         expandable = false,
                         scrimVisible = false
                     )
