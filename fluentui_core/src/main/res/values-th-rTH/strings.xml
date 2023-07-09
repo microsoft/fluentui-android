@@ -26,7 +26,7 @@
     <!-- Describes close action -->
     <string name="fluentui_close">ปิด</string>
     <!-- Describes cancel action -->
-    <string name="fluentui_cancel">Cancel</string>
+    <string name="fluentui_cancel">ยกเลิก</string>
     <!--name of the icon -->
     <string name="fluentui_search">ค้นหา</string>
     <!--name of the icon -->
@@ -64,6 +64,10 @@
     <!--Describes the control -->
     <string name="fluentui_radio_button">ปุ่มตัวเลือก</string>
     <string name="fluentui_label">ป้ายชื่อ</string>
+
+    <!-- Describes the expand/collapsed state of control -->
+    <string name="fluentui_expanded">Expanded</string>
+    <string name="fluentui_collapsed">Collapsed</string>
 
     <!--types of control -->
     <string name="fluentui_large">ใหญ่</string>

@@ -750,42 +750,105 @@
 
     <!--V2 Menu-->
     <!-- UI Label for content text-->
-    <string name="menu_content_text_input">Menu Item</string>
+    <string name="menu_content_text_input">Menyu Elementi</string>
     <!-- UI Label for xOffset -->
-    <string name="menu_xOffset">Offset X (in dp)</string>
+    <string name="menu_xOffset">X üzrə yerdəyişmə (dp-də)</string>
     <!-- UI Label for yOffset -->
-    <string name="menu_yOffset">Offset Y (in dp)</string>
+    <string name="menu_yOffset">Y üzrə yerdəyişmə (dp-də)</string>
     <!-- UI Label for content text -->
-    <string name="menu_content_text">Content Text</string>
+    <string name="menu_content_text">Məzmun Mətni</string>
     <!-- UI Label for repeat content text -->
-    <string name="menu_repeat_content_text">Repeat Content Text</string>
+    <string name="menu_repeat_content_text">Məzmun Mətnini Təkrar Edin</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Menu width will change with respect to Content Text. The max
-        width is restricted to 75% of screen size. The content margin from side and bottom is govern by token. The same content text will repeat to vary
-        the height.</string>
+    <string name="menu_description">Menyu eni Məzmun Mətni ilə bağlı dəyişəcək. Maksimum
+        en ekran ölçüsünün 75%-i ilə məhdudlaşdırılır. Yandan və aşağıdan məzmunun kənar boşluğu nişan ilə idarə olunur. Eyni məzmun mətni hündürlüyü dəyişdirmək üçün
+        təkrarlanacaq.</string>
     <!-- UI Label for open menu button -->
-    <string name="menu_open_menu_button">Open Menu</string>
+    <string name="menu_open_menu_button">Menyunu Aç</string>
 
     <!--V2 Card-->
     <!-- UI Label for Card -->
-    <string name="basic_card">Basic Card</string>
+    <string name="basic_card">Əsas Kart</string>
     <!-- UI Label for Card -->
-    <string name="file_card">File Card</string>
+    <string name="file_card">Fayl Kartı</string>
     <!-- UI Label for Card -->
-    <string name="announcement_card">Announcement Card</string>
+    <string name="announcement_card">Elan Kartı</string>
     <!-- UI Label for button that generates random UI -->
-    <string name="card_randomize">Random UI</string>
+    <string name="card_randomize">Təsadüfi UI</string>
     <!-- UI Label for Options -->
-    <string name="card_options">Options</string>
+    <string name="card_options">Seçimlər</string>
     <!-- UI Label for Title -->
-    <string name="card_title">Title</string>
+    <string name="card_title">Başlıq</string>
     <!-- UI Label for text -->
-    <string name="card_text">Text</string>
+    <string name="card_text">Mətn</string>
     <!-- UI Label for sub text -->
-    <string name="card_subtext">Sub Text</string>
+    <string name="card_subtext">Alt Mətn</string>
     <!-- UI Label for a random description text -->
-    <string name="card_description">Secondary copy for this banner can wrap to two lines if needed.</string>
+    <string name="card_description">Lazım gələrsə, bu banner üçün ikinci nüsxə iki sətrə bükülə bilər.</string>
     <!-- UI Label Button -->
-    <string name="card_button">Button</string>
+    <string name="card_button">Düymə</string>
 
+    <!-- V2 Dialog -->
+    <!-- UI Label to display the dialog -->
+    <string name="show_dialog">Dialoqu Göstərin</string>
+    <!-- UI label to close the dialog when clicked outside -->
+    <string name="dismiss_dialog_outside">Kənarda klikləmə dialoqu bağlayın</string>
+    <!-- UI label to close the dialog when back button is pressed -->
+    <string name="dismiss_dialog_back">Arxa mətbuatda dialoqu bağlayın</string>
+    <!-- Text denoting a dialog is closed -->
+    <string name="dismiss_dialog">Dialoq bağlandı</string>
+    <!-- UI Label Cancel -->
+    <string name="cancel">İmtina edin</string>
+    <!-- UI Label Ok -->
+    <string name="ok">Ok</string>
+    <!-- A sample description -->
+    <string name="dialog_description">Dialoq istifadəçini qərar qəbul etməyə və ya əlavə məlumat daxil etməyə dəvət edən kiçik bir pəncərədir.</string>
+
+    <!-- V2 Drawer -->
+    <!-- UI Label for Button which open Drawer-->
+    <string name="drawer_open">Siyirməni Aç</string>
+    <!-- UI Label for Button which expand Drawer-->
+    <string name="drawer_expand">Siyirməni Genişləndir</string>
+    <!-- UI Label for Button which close Drawer-->
+    <string name="drawer_close">Close Drawer</string>
+    <!-- UI Label for Drawer Type Heading -->
+    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <!-- UI Label for Top -->
+    <string name="drawer_top">Top</string>
+    <!-- UI Label for Top drawer description -->
+    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <!-- UI Label for Bottom -->
+    <string name="drawer_bottom">Bottom</string>
+    <!-- UI Label for Bottom drawer description -->
+    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <!-- UI Label for Left Slide Over -->
+    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <!-- UI Label for Left Slide Over drawer description -->
+    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <!-- UI Label for Right Slide Over -->
+    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <!-- UI Label for Right Slide Over drawer description -->
+    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <!-- UI Label for Bottom Slide Over -->
+    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <!-- UI Label for Bottom Slide Over drawer description -->
+    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <!-- UI Label for Scrim Visible -->
+    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <!-- UI Label for Select Drawer Content Heading-->
+    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <!-- UI Label for Full screen size scrollable content text-->
+    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <!-- UI Label for More than half screen content text-->
+    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <!-- UI Label for Less than half screen content text-->
+    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <!-- UI Label for Dynamic size content text-->
+    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <!-- UI Label for Nested drawer content text-->
+    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <!-- UI Label for Expandable -->
+    <string name="drawer_expandable">Expandable</string>
+    <!-- UI Label for Show Handle -->
+    <string name="drawer_show_handle">Show Handle</string>
 </resources>

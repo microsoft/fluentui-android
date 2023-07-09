@@ -749,42 +749,105 @@
 
     <!--V2 Menu-->
     <!-- UI Label for content text-->
-    <string name="menu_content_text_input">Menu Item</string>
+    <string name="menu_content_text_input">メニュー アイテム</string>
     <!-- UI Label for xOffset -->
-    <string name="menu_xOffset">Offset X (in dp)</string>
+    <string name="menu_xOffset">オフセット X (in dp)</string>
     <!-- UI Label for yOffset -->
-    <string name="menu_yOffset">Offset Y (in dp)</string>
+    <string name="menu_yOffset">オフセット Y (in dp)</string>
     <!-- UI Label for content text -->
-    <string name="menu_content_text">Content Text</string>
+    <string name="menu_content_text">コンテンツ テキスト</string>
     <!-- UI Label for repeat content text -->
-    <string name="menu_repeat_content_text">Repeat Content Text</string>
+    <string name="menu_repeat_content_text">コンテンツ テキストの繰り返し</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Menu width will change with respect to Content Text. The max
-        width is restricted to 75% of screen size. The content margin from side and bottom is govern by token. The same content text will repeat to vary
-        the height.</string>
+    <string name="menu_description">メニューの幅はコンテンツ テキストに対して変更されます。最大値
+        幅は画面サイズの75%に制限されています。コンテンツの左右の余白はトークンによって管理されます。同じコンテンツ テキストが繰り返し異なります
+        高さ。</string>
     <!-- UI Label for open menu button -->
-    <string name="menu_open_menu_button">Open Menu</string>
+    <string name="menu_open_menu_button">メニューを開く</string>
 
     <!--V2 Card-->
     <!-- UI Label for Card -->
-    <string name="basic_card">Basic Card</string>
+    <string name="basic_card">ベーシックカード</string>
     <!-- UI Label for Card -->
-    <string name="file_card">File Card</string>
+    <string name="file_card">ファイルのカード</string>
     <!-- UI Label for Card -->
-    <string name="announcement_card">Announcement Card</string>
+    <string name="announcement_card">お知らせカード</string>
     <!-- UI Label for button that generates random UI -->
-    <string name="card_randomize">Random UI</string>
+    <string name="card_randomize">ランダム UI</string>
     <!-- UI Label for Options -->
-    <string name="card_options">Options</string>
+    <string name="card_options">オプション</string>
     <!-- UI Label for Title -->
-    <string name="card_title">Title</string>
+    <string name="card_title">タイトル</string>
     <!-- UI Label for text -->
-    <string name="card_text">Text</string>
+    <string name="card_text">テキスト</string>
     <!-- UI Label for sub text -->
-    <string name="card_subtext">Sub Text</string>
+    <string name="card_subtext">サブ テキスト</string>
     <!-- UI Label for a random description text -->
-    <string name="card_description">Secondary copy for this banner can wrap to two lines if needed.</string>
+    <string name="card_description">このバナーのセカンダリ コピーは、必要に応じて 2 行に折り返すことができます。</string>
     <!-- UI Label Button -->
-    <string name="card_button">Button</string>
+    <string name="card_button">ボタン</string>
 
+    <!-- V2 Dialog -->
+    <!-- UI Label to display the dialog -->
+    <string name="show_dialog">ダイアログを表示</string>
+    <!-- UI label to close the dialog when clicked outside -->
+    <string name="dismiss_dialog_outside">外側をクリックしてダイアログを閉じる</string>
+    <!-- UI label to close the dialog when back button is pressed -->
+    <string name="dismiss_dialog_back">バック プレス時にダイアログを閉じる</string>
+    <!-- Text denoting a dialog is closed -->
+    <string name="dismiss_dialog">ダイアログを閉じました</string>
+    <!-- UI Label Cancel -->
+    <string name="cancel">キャンセル</string>
+    <!-- UI Label Ok -->
+    <string name="ok">OK</string>
+    <!-- A sample description -->
+    <string name="dialog_description">ダイアログは、ユーザーに決定を求めたり、追加情報を入力したりするための小さなウィンドウです。</string>
+
+    <!-- V2 Drawer -->
+    <!-- UI Label for Button which open Drawer-->
+    <string name="drawer_open">引き出しを開ける</string>
+    <!-- UI Label for Button which expand Drawer-->
+    <string name="drawer_expand">引き出しを拡張する</string>
+    <!-- UI Label for Button which close Drawer-->
+    <string name="drawer_close">Close Drawer</string>
+    <!-- UI Label for Drawer Type Heading -->
+    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <!-- UI Label for Top -->
+    <string name="drawer_top">Top</string>
+    <!-- UI Label for Top drawer description -->
+    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <!-- UI Label for Bottom -->
+    <string name="drawer_bottom">Bottom</string>
+    <!-- UI Label for Bottom drawer description -->
+    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <!-- UI Label for Left Slide Over -->
+    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <!-- UI Label for Left Slide Over drawer description -->
+    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <!-- UI Label for Right Slide Over -->
+    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <!-- UI Label for Right Slide Over drawer description -->
+    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <!-- UI Label for Bottom Slide Over -->
+    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <!-- UI Label for Bottom Slide Over drawer description -->
+    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <!-- UI Label for Scrim Visible -->
+    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <!-- UI Label for Select Drawer Content Heading-->
+    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <!-- UI Label for Full screen size scrollable content text-->
+    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <!-- UI Label for More than half screen content text-->
+    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <!-- UI Label for Less than half screen content text-->
+    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <!-- UI Label for Dynamic size content text-->
+    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <!-- UI Label for Nested drawer content text-->
+    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <!-- UI Label for Expandable -->
+    <string name="drawer_expandable">Expandable</string>
+    <!-- UI Label for Show Handle -->
+    <string name="drawer_show_handle">Show Handle</string>
 </resources>
