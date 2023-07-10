@@ -9,7 +9,8 @@ Fluent V2:
 		1) [Breaking Change] ListItem texticons slot changed to composable slot. Suffix of parameter changed from "View" to "Content"
 		2) [Breaking Change] CardNugde leftSwipe and rightSwipe lambda functions will have a float parameter to depicting the fraction value for the swipe.
 		3) [Breaking Change] Drawer API will not have expandable boolean parameter.
-		4) Fix accessibility issue in ListItem SectionHeader
+		4) [Breaking Change] Updated Dialog API to accept DialogProperties instead of individual params.
+		5) Fix accessibility issue in ListItem SectionHeader
 
 
 	Demo App: 
