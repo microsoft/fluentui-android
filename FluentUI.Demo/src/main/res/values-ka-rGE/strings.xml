@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">შიგთავსის ტექსტის გამეორება</string>
     <!-- UI Label for description -->
-    <string name="menu_description">მენიუს სიგანე შეიცვლება შიგთავსის ტექსტთან მიმართებაში. მაქსიმალური
+    <string name="menu_description" formatted="false">მენიუს სიგანე შეიცვლება შიგთავსის ტექსტთან მიმართებაში. მაქსიმალური
         სიგანე შეზღუდულია ეკრანის ზომის 75%-მდე. შიგთავსის მინდორი გვერდიდან და ქვემოდან რეგულირდება ჟეტონით. იგივე შიგთავსის ტექსტი განმეორდება
         სიმაღლის შესაცვლელად.</string>
     <!-- UI Label for open menu button -->

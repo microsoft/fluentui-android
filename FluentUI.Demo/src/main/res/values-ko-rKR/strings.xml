@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">콘텐츠 텍스트 반복</string>
     <!-- UI Label for description -->
-    <string name="menu_description">콘텐츠 텍스트에 따라 메뉴 너비가 변경됩니다. 최대값
+    <string name="menu_description" formatted="false">콘텐츠 텍스트에 따라 메뉴 너비가 변경됩니다. 최대값
         너비는 화면 크기의 75% 제한됩니다. 측면과 아래쪽의 콘텐츠 여백은 토큰에 의해 제어됩니다. 동일한 콘텐츠 텍스트가 다르게 반복됩니다.
         높이를 지정합니다.</string>
     <!-- UI Label for open menu button -->

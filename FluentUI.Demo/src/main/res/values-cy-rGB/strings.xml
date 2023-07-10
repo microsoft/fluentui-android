@@ -764,7 +764,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Ailadrodd Testun y Cynnwys</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Bydd lled y ddewislen yn newid o ran Testun y Cynnwys. Y terfyn uchaf
+    <string name="menu_description" formatted="false">Bydd lled y ddewislen yn newid o ran Testun y Cynnwys. Y terfyn uchaf
         mae\'r lled wedi\'i gyfyngu iddo yw 75% maint y sgrin. Mae ymyl y cynnwys o\'r ochr a\'r gwaelod yn cael ei lywodraethu gan docyn. Bydd yr un testun cynnwys yn ailadrodd er mwyn amrywio
         yr uchder.</string>
     <!-- UI Label for open menu button -->

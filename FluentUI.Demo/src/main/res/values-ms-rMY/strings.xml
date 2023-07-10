@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Ulangi Teks Kandungan</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Lebar menu akan berubah berhubung dengan Teks Kandungan. Maks
+    <string name="menu_description" formatted="false">Lebar menu akan berubah berhubung dengan Teks Kandungan. Maks
         lebar dihadkan kepada 75% daripada saiz skrin. Jidar kandungan dari sisi dan bawah dikawal oleh token. Teks kandungan yang sama akan berulang untuk berbeza-beza
         ketinggian.</string>
     <!-- UI Label for open menu button -->

@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">コンテンツ テキストの繰り返し</string>
     <!-- UI Label for description -->
-    <string name="menu_description">メニューの幅はコンテンツ テキストに対して変更されます。最大値
+    <string name="menu_description" formatted="false">メニューの幅はコンテンツ テキストに対して変更されます。最大値
         幅は画面サイズの75%に制限されています。コンテンツの左右の余白はトークンによって管理されます。同じコンテンツ テキストが繰り返し異なります
         高さ。</string>
     <!-- UI Label for open menu button -->

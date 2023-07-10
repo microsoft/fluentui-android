@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Endurtaka efnistexta</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Breidd valmyndar mun breytast í samræmi við efnistexta. Hámarkið
+    <string name="menu_description" formatted="false">Breidd valmyndar mun breytast í samræmi við efnistexta. Hámarkið
         breidd er takmörkuð við 75% skjástærð. Efnisspássía frá hlið og neðst stjórnast með lykla. Sami efnistexti verður endurtekinn í breytilegan
         hæðina.</string>
     <!-- UI Label for open menu button -->

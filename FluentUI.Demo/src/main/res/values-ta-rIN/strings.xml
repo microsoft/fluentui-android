@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">உள்ளடக்க உரையை மீண்டும் செய்யவும்</string>
     <!-- UI Label for description -->
-    <string name="menu_description">உள்ளடக்க உரையைப் பொறுத்தவரை மெனு அகலம் மாறும். அதிகபட்சம்
+    <string name="menu_description" formatted="false">உள்ளடக்க உரையைப் பொறுத்தவரை மெனு அகலம் மாறும். அதிகபட்சம்
         அகலம் திரை அளவு 75% வரையறுக்கப்பட்டுள்ளது. பக்கத்திலிருந்தும் கீழேயும் உள்ள உள்ளடக்க விளிம்பு டோக்கனால் நிர்வகிக்கப்படுகிறது. அதே உள்ளடக்க உரை மீண்டும் மாறுபடும்
         உயரம்.</string>
     <!-- UI Label for open menu button -->

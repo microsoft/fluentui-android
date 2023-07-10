@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Məzmun Mətnini Təkrar Edin</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Menyu eni Məzmun Mətni ilə bağlı dəyişəcək. Maksimum
+    <string name="menu_description" formatted="false">Menyu eni Məzmun Mətni ilə bağlı dəyişəcək. Maksimum
         en ekran ölçüsünün 75%-i ilə məhdudlaşdırılır. Yandan və aşağıdan məzmunun kənar boşluğu nişan ilə idarə olunur. Eyni məzmun mətni hündürlüyü dəyişdirmək üçün
         təkrarlanacaq.</string>
     <!-- UI Label for open menu button -->

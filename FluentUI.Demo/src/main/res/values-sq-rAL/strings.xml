@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Përsëritja e tekstit të përmbajtjes</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Gjerësia e menysë do të ndryshojë sipas tekstit të përmbajtjes. Gjerësia maksimale
+    <string name="menu_description" formatted="false">Gjerësia e menysë do të ndryshojë sipas tekstit të përmbajtjes. Gjerësia maksimale
         kufizohet në 75% të madhësisë së ekranit. Kufizat anësore dhe e poshtme e përmbajtjes udhëhiqet nga shenja. I njëjti tekst përmbajtjeje do të përsëritet për të ndryshuar
         lartësinë.</string>
     <!-- UI Label for open menu button -->

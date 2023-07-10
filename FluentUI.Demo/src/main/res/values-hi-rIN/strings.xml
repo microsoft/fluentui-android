@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">कंटेंट टेक्स्ट दोहराएँ</string>
     <!-- UI Label for description -->
-    <string name="menu_description">सामग्री पाठ के संदर्भ में मेनू की चौड़ाई परिवर्तित हो जाएगी. अधिकतम
+    <string name="menu_description" formatted="false">सामग्री पाठ के संदर्भ में मेनू की चौड़ाई परिवर्तित हो जाएगी. अधिकतम
         स्क्रीन आकार के 75% तक चौड़ाई प्रतिबंधित है. पार्श्व और नीचे की सामग्री मार्जिन टोकन द्वारा नियंत्रित होती है. समान सामग्री पाठ भिन्न होने के लिए दोहराया जाएगा
         ऊँचाई.</string>
     <!-- UI Label for open menu button -->

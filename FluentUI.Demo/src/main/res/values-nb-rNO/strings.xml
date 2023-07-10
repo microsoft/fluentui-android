@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Gjenta innholdstekst</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Menybredden endres når det gjelder innholdstekst. Maksimal
+    <string name="menu_description" formatted="false">Menybredden endres når det gjelder innholdstekst. Maksimal
         bredde er begrenset til 75 % av skjermstørrelsen. Innholdsmargen fra side og bunn styres av token. Den samme innholdsteksten gjentas for å variere
         høyden.</string>
     <!-- UI Label for open menu button -->
