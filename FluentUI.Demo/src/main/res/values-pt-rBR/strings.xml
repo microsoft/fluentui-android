@@ -761,7 +761,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Repetir Texto do Conteúdo</string>
     <!-- UI Label for description -->
-    <string name="menu_description">A largura do menu será alterada em relação ao Texto do Conteúdo. A largura
+    <string name="menu_description" formatted="false">A largura do menu será alterada em relação ao Texto do Conteúdo. A largura
         máxima é restrita a 75% do tamanho da tela. A margem de conteúdo do lado e da parte inferior é governada por token. O mesmo texto de conteúdo será repetido para variar
         a altura.</string>
     <!-- UI Label for open menu button -->

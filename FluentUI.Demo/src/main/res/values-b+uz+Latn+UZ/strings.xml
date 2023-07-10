@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Kontent matnni takrorlash</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Menyu kengligi kontent matniga nisbatan oʻzgaradi. Maksimal
+    <string name="menu_description" formatted="false">Menyu kengligi kontent matniga nisbatan oʻzgaradi. Maksimal
         kenglik ekran oʻlchamining 75% bilan cheklangan. Yon va pastdan kontent chegarasi token bilan boshqariladi. Xuddi shu kontent matni balandlikni oʻzgartirish uchun
         takrorlanadi.</string>
     <!-- UI Label for open menu button -->

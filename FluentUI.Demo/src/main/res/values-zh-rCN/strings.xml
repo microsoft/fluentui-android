@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">重复内容文本</string>
     <!-- UI Label for description -->
-    <string name="menu_description">菜单宽度将随内容文本而变化。最大
+    <string name="menu_description" formatted="false">菜单宽度将随内容文本而变化。最大
         宽度限制为屏幕大小的 75%。侧面和底部的内容边距由标记控制。相同的内容文本将重复以改变
         高度。</string>
     <!-- UI Label for open menu button -->

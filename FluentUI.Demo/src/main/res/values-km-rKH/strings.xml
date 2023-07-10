@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">បង្ហាញអត្ថបទបង្ហាញឡើងវិញ</string>
     <!-- UI Label for description -->
-    <string name="menu_description">ទទឹងម៉ឺនុយនឹងផ្លាស់ប្ដូរស្របតាមអត្ថបទខ្លឹមសារ។ ទំហំ
+    <string name="menu_description" formatted="false">ទទឹងម៉ឺនុយនឹងផ្លាស់ប្ដូរស្របតាមអត្ថបទខ្លឹមសារ។ ទំហំ
         ទទឹងអតិបរមាត្រូវបានដាក់កំហិតនៅ 75% នៃទំហំអេក្រង់។ គែមខ្លឹមសារពីចំហៀង និងខាងក្រោមត្រូវបានគ្រប់គ្រងដោយកាក់។ អត្ថបទខ្លឹមសារដូចគ្នានឹងបង្ហាញឡើងវិញ ដើម្បីធ្វើឱ្យ
         កម្ពស់ខុសគ្នា។</string>
     <!-- UI Label for open menu button -->

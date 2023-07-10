@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">સામગ્રી ટેક્સ્ટ પુનરાવર્તિત કરો</string>
     <!-- UI Label for description -->
-    <string name="menu_description">સામગ્રી ટેક્સ્ટના સંબંધમાં મેનૂની પહોળાઈ બદલાશે. મહત્તમ પહોળાઈને
+    <string name="menu_description" formatted="false">સામગ્રી ટેક્સ્ટના સંબંધમાં મેનૂની પહોળાઈ બદલાશે. મહત્તમ પહોળાઈને
         સ્ક્રીનની સાઇઝના 75% પર પ્રતિબંધિત કરવામાં આવી છે. સાઇડ અને નીચેથી સામગ્રી હાંસિયો ટોકન દ્વારા સંચાલિત થાય છે. ઊંચાઈ અલગ કરવા માટે સમાન સામગ્રી ટેક્સ્ટ પુનરાવર્તિત
         થશે.</string>
     <!-- UI Label for open menu button -->

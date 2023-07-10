@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Herhaal inhoudteks</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Kieslys se wydte sal verander ten opsigte van inhoudteks. Die maksimum
+    <string name="menu_description" formatted="false">Kieslys se wydte sal verander ten opsigte van inhoudteks. Die maksimum
         wydte is beperk tot 75% skermgrootte. Die inhoudkantlyn van die kant en onderkant word deur die kenteken beheer. Dieselfde inhoudteks sal herhaal om die hoogte
         te wissel.</string>
     <!-- UI Label for open menu button -->

@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Tartalomszöveg ismétlése</string>
     <!-- UI Label for description -->
-    <string name="menu_description">A menü szélessége a tartalom szövegéhez képest változik. A maximális
+    <string name="menu_description" formatted="false">A menü szélessége a tartalom szövegéhez képest változik. A maximális
         szélesség a képernyőméret 75%-ára van korlátozva. Az oldalról és az alulról mért tartalommargót token szabályozza. Ugyanaz a tartalomszöveg ismétlődik, hogy változzon
         a magasság.</string>
     <!-- UI Label for open menu button -->

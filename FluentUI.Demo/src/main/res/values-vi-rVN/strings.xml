@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Văn bản nội dung lặp lại</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Độ rộng menu sẽ thay đổi đối với Văn bản Nội dung. Tối đa
+    <string name="menu_description" formatted="false">Độ rộng menu sẽ thay đổi đối với Văn bản Nội dung. Tối đa
         chiều rộng bị giới hạn 75% kích cỡ màn hình. Lề nội dung từ bên cạnh và dưới cùng được quản lý bởi mã thông báo. Cùng một văn bản nội dung sẽ lặp lại thành khác nhau
         chiều cao.</string>
     <!-- UI Label for open menu button -->

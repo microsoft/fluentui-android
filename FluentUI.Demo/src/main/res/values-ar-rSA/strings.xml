@@ -764,7 +764,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">تكرار نص المحتوى</string>
     <!-- UI Label for description -->
-    <string name="menu_description">سيتغير عرض القائمة فيما يتعلق بنص المحتوى. يقتصر الحد الأقصى
+    <string name="menu_description" formatted="false">سيتغير عرض القائمة فيما يتعلق بنص المحتوى. يقتصر الحد الأقصى
         للعرض على 75% من حجم الشاشة. يتم التحكم في هامش المحتوى من جانب وأسفل برمز مميز. سيتكرر نص المحتوى نفسه لتغيير
         الارتفاع.</string>
     <!-- UI Label for open menu button -->

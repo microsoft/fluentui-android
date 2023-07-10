@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">ವಿಷಯ ಪಠ್ಯವನ್ನು ಪುನರಾವರ್ತಿಸಿ</string>
     <!-- UI Label for description -->
-    <string name="menu_description">ಮೆನು ಅಗಲವು ವಿಷಯ ಪಠ್ಯಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಬದಲಾಗುತ್ತದೆ.
+    <string name="menu_description" formatted="false">ಮೆನು ಅಗಲವು ವಿಷಯ ಪಠ್ಯಕ್ಕೆ ಸಂಬಂಧಿಸಿದಂತೆ ಬದಲಾಗುತ್ತದೆ.
 ಗರಿಷ್ಠ
          ಗಾತ್ರವನ್ನು ಪರದೆ ಗಾತ್ರದ 75% ಗೆ ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ. ಟೋಕನ್ ಮೂಲಕ ಬದಿಯಿಂದ ಮತ್ತು ಕೆಳಗಿನಿಂದ ವಿಷಯ ಅಂಚು ನಿಯಂತ್ರಿಸಲಾಗುತ್ತದೆ. ಎತ್ತರವನ್ನು ಬದಲಿಸಲು ಒಂದೇ ವಿಷಯ ಪಠ್ಯವು ಪುನರಾವರ್ತಿಸುತ್ತದೆ.</string>
     <!-- UI Label for open menu button -->

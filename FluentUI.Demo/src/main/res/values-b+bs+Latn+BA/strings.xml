@@ -761,7 +761,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Ponovi tekst sadržaja</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Širina menija će se promijeniti u odnosu na tekst sadržaja. Maksimalna
+    <string name="menu_description" formatted="false">Širina menija će se promijeniti u odnosu na tekst sadržaja. Maksimalna
         širina je ograničena na 75% veličine ekrana. Marginom sadržaja s bočne i donje strane upravlja token. Isti tekst sadržaja će se ponoviti da bi se promijenila
         visina.</string>
     <!-- UI Label for open menu button -->
