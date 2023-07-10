@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">ทําซ้ำข้อความเนื้อหา</string>
     <!-- UI Label for description -->
-    <string name="menu_description">ความกว้างของเมนูจะเปลี่ยนตามข้อความเนื้อหา ค่าสูงสุด
+    <string name="menu_description" formatted="false">ความกว้างของเมนูจะเปลี่ยนตามข้อความเนื้อหา ค่าสูงสุด
         จํากัดความกว้างไว้ที่75% ขนาดหน้าจอ ระยะขอบของเนื้อหาจากด้านข้างและด้านล่างถูกควบคุมโดยโทเค็น ข้อความเนื้อหาเดียวกันจะทําซ้ําให้แตกต่างกัน
         ความสูง</string>
     <!-- UI Label for open menu button -->

@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Повтори го текстот на содржината</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Ширината на менито ќе се измени во однос на текстот на содржината. Максималната
+    <string name="menu_description" formatted="false">Ширината на менито ќе се измени во однос на текстот на содржината. Максималната
         ширината е ограничена на 75% со големина на екранот. Маргината на содржината од страна и од дното се управува со токен. Истиот текст на содржината ќе се повторува за да варира
         висината.</string>
     <!-- UI Label for open menu button -->

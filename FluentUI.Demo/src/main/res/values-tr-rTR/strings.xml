@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Yinelenen İçerik Metni</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Menü genişliği, İçerik Metnine uyacak şekilde değişiklik gösterir. Genişlik,
+    <string name="menu_description" formatted="false">Menü genişliği, İçerik Metnine uyacak şekilde değişiklik gösterir. Genişlik,
         ekran boyutunun en fazla %75\'iyle sınırlıdır. İçeriğin yan ve alt kenar boşluğu belirteç tarafından düzenlenir. Aynı içerik metni, yüksekliği değişiklik gösterecek şekilde
         yinelenir.</string>
     <!-- UI Label for open menu button -->

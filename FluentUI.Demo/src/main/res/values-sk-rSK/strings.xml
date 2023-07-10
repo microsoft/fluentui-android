@@ -762,7 +762,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Opakovať text obsahu</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Šírka ponuky sa zmení vzhľadom na text obsahu. Maximálna
+    <string name="menu_description" formatted="false">Šírka ponuky sa zmení vzhľadom na text obsahu. Maximálna
         šírka je obmedzená na 75 % veľkosti obrazovky. Okraj obsahu zo strany a zdola sa riadi tokenom. Rovnaký text obsahu sa bude opakovať, aby sa menila
         výška.</string>
     <!-- UI Label for open menu button -->

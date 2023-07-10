@@ -762,7 +762,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Повторить текст содержимого</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Ширина меню изменится по отношению к тексту содержимого. Максимальная ширина
+    <string name="menu_description" formatted="false">Ширина меню изменится по отношению к тексту содержимого. Максимальная ширина
         ограничена 75 % от размера экрана. Поля содержимого сбоку и снизу регулируются токеном. Текст содержимого будет повторяться для изменения
         высоты.</string>
     <!-- UI Label for open menu button -->

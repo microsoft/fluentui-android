@@ -761,7 +761,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Repetarea textului de conținut</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Lățimea meniului se va modifica în ceea ce privește textul de conținut. Maximul
+    <string name="menu_description" formatted="false">Lățimea meniului se va modifica în ceea ce privește textul de conținut. Maximul
         lățimea este restricționată la 75% dimensiunii ecranului. Marginea de conținut din partea laterală și de jos este guvernată de token. Același text de conținut se va repeta pentru a varia
         înălțimea.</string>
     <!-- UI Label for open menu button -->

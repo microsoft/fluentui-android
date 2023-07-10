@@ -762,7 +762,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Ponovi besedilo vsebine</string>
     <!-- UI Label for description -->
-    <string name="menu_description">Širina menija se bo spremenila glede na besedilo vsebine. Največja vrednost
+    <string name="menu_description" formatted="false">Širina menija se bo spremenila glede na besedilo vsebine. Največja vrednost
         širina je omejena na 75% velikosti zaslona. Rob vsebine od strani in spodaj ureja žeton. Ista vsebina besedila se bo ponavljala s spreminjanjem
         višino.</string>
     <!-- UI Label for open menu button -->

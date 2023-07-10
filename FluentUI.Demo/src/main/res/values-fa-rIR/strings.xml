@@ -760,7 +760,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">تکرار متن محتوا</string>
     <!-- UI Label for description -->
-    <string name="menu_description">عرض منو نسبت به «متن محتوا» تغییر می‌کند. حداکثر
+    <string name="menu_description" formatted="false">عرض منو نسبت به «متن محتوا» تغییر می‌کند. حداکثر
         عرض برای اندازه ۷۵٪ صفحه محدود شده است. حاشیه محتوا از کناره و پایین بر اساس نشانه اعمال می‌شود.همان متن محتوا برای تغییر
 ارتفاع تکرار می‌شود.</string>
     <!-- UI Label for open menu button -->

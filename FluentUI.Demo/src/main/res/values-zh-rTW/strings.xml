@@ -759,7 +759,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">重複內容文字</string>
     <!-- UI Label for description -->
-    <string name="menu_description">選單寬度會依循著內容文字而變更。寬度
+    <string name="menu_description" formatted="false">選單寬度會依循著內容文字而變更。寬度
         上限會限制在 75% 的畫面尺寸。在側邊和底部的內容頁面邊界是由權杖所控管。相同的內容文字將會重複以更改
         其高度。</string>
     <!-- UI Label for open menu button -->
