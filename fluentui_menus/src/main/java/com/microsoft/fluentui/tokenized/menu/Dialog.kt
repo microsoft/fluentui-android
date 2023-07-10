@@ -5,12 +5,14 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import androidx.compose.ui.window.SecureFlagPolicy
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.DialogInfo
@@ -28,11 +30,16 @@ const val TEST_TAG = "Dialog"
  * @param dialogTokens Optional tokens for customizing dialog's visual appearance
  * @param content content to be displayed inside the dialog
  */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun Dialog(
     onDismiss: () -> Unit,
-    dismissOnBackPress: Boolean = false,
-    dismissOnClickedOutside: Boolean = false,
+    dialogProperties: DialogProperties = DialogProperties(
+        dismissOnBackPress = false,
+        dismissOnClickOutside = false,
+        securePolicy = SecureFlagPolicy.Inherit,
+        usePlatformDefaultWidth = true
+    ),
     modifier: Modifier = Modifier,
     dialogTokens: DialogTokens? = null,
     content: @Composable () -> Unit
@@ -50,10 +57,7 @@ fun Dialog(
     val shape = RoundedCornerShape(cornerRadius)
     Dialog(
         onDismissRequest = onDismiss,
-        DialogProperties(
-            dismissOnBackPress = dismissOnBackPress,
-            dismissOnClickOutside = dismissOnClickedOutside
-        )
+        properties = dialogProperties
     ) {
         Box(
             modifier = modifier

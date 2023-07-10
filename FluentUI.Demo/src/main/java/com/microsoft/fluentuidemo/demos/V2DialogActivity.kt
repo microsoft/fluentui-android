@@ -7,10 +7,12 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.DialogProperties
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
@@ -41,6 +43,7 @@ class V2DialogActivity : DemoActivity() {
         }
     }
 
+    @OptIn(ExperimentalComposeUiApi::class)
     @Composable
     private fun CreateDialogActivityUI(context: Context) {
         var showDialog by remember { mutableStateOf(false) }
@@ -90,6 +93,7 @@ class V2DialogActivity : DemoActivity() {
                     onClick = { showDialog = !showDialog }
                 )
             }
+            var count by remember { mutableStateOf(1) }
             if (showDialog) {
                 Dialog(
                     onDismiss = {
@@ -100,27 +104,26 @@ class V2DialogActivity : DemoActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
                     },
-                    dismissOnClickedOutside = dismissOnClickOutside,
-                    dismissOnBackPress = dismissOnBackPress
+                    dialogProperties = DialogProperties(
+                        dismissOnClickOutside = dismissOnClickOutside,
+                        dismissOnBackPress = dismissOnBackPress,
+                        usePlatformDefaultWidth = false
+                    )
                 ) {
                     Column(Modifier.padding(all = 16.dp)) {
-                        Label(
-                            text = resources.getString(R.string.dialog_description),
-                            textStyle = FluentAliasTokens.TypographyTokens.Body1
-                        )
-                        Spacer(modifier = Modifier.height(16.dp))
+                        for (i in 0..count) {
+                            Label(
+                                text = resources.getString(R.string.dialog_description),
+                                textStyle = FluentAliasTokens.TypographyTokens.Body1
+                            )
+                            Spacer(modifier = Modifier.height(16.dp))
+                        }
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                             Button(
                                 style = ButtonStyle.TextButton,
-                                text = resources.getString(R.string.cancel),
+                                text = "Add Item",
                                 onClick = {
-                                    showDialog = false
-                                    Toast.makeText(
-                                        context,
-                                        resources.getString(R.string.cancel),
-                                        Toast.LENGTH_SHORT
-                                    )
-                                        .show()
+                                    count++
                                 })
                             Spacer(modifier = Modifier.width(8.dp))
                             Button(
