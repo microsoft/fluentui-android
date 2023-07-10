@@ -43,6 +43,8 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.abs
 
 class V2CardNudgeActivity : V2DemoActivity() {
+    override var demoActivityLink =
+        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2CardNudgeActivity.kt"
 
     // Tags used for testing
     private val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"

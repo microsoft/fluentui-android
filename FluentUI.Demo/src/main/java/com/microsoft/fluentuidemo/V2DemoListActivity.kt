@@ -14,11 +14,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
@@ -60,22 +62,20 @@ import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
-import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
-import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.controls.Label
-import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Dialog
-import com.microsoft.fluentui.tokenized.menu.Menu
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
+import com.microsoft.fluentuidemo.AppTheme.AppBarMenu
+import com.microsoft.fluentuidemo.CustomizedTokens.listItemTokens
 import kotlinx.coroutines.launch
 import java.util.Locale
 
@@ -88,12 +88,11 @@ class V2DemoListActivity : ComponentActivity() {
 
     @Composable
     fun GetDialogContent() {
-        val scrollState = rememberScrollState()
         Column(
             modifier = Modifier
                 .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value())
                 .padding(all = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160))
-                .verticalScroll(scrollState),
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.spacedBy(
                 FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)
             )
@@ -123,13 +122,11 @@ class V2DemoListActivity : ComponentActivity() {
 
     @Composable
     fun GetDrawerContent(onRelNotepress: () -> Unit) {
-        val scrollState = rememberScrollState()
-
         Column(
             verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320)),
             modifier = Modifier
                 .fillMaxHeight()
-                .verticalScroll(scrollState)
+                .verticalScroll(rememberScrollState())
                 .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background2].value())
         ) {
             Column(
@@ -234,7 +231,7 @@ class V2DemoListActivity : ComponentActivity() {
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    listItemTokens = CustomizedTokens.listItemTokens
+                    listItemTokens = listItemTokens
                 )
 
                 ListItem.Item(
@@ -247,7 +244,7 @@ class V2DemoListActivity : ComponentActivity() {
                         )
                     },
                     onClick = onRelNotepress,
-                    listItemTokens = CustomizedTokens.listItemTokens
+                    listItemTokens = listItemTokens
                 )
 
                 val uriHandler = LocalUriHandler.current
@@ -265,11 +262,10 @@ class V2DemoListActivity : ComponentActivity() {
                             painter = painterResource(id = R.drawable.ic_fluent_link_24_regular),
                             contentDescription = "Fluent Link",
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
-                            modifier = Modifier.clickable { uriHandler.openUri("https://github.com/microsoft/fluentui-android") }
                         )
                     },
-                    listItemTokens = CustomizedTokens.listItemTokens,
-                    onClick = { uriHandler.openUri("https://github.com/microsoft/fluentui-android") }
+                    onClick = { uriHandler.openUri("https://github.com/microsoft/fluentui-android") },
+                    listItemTokens = listItemTokens
                 )
 
                 ListItem.Item(
@@ -281,8 +277,34 @@ class V2DemoListActivity : ComponentActivity() {
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    listItemTokens = CustomizedTokens.listItemTokens
+                    listItemTokens = listItemTokens
                 )
+
+                var showAppearanceDialog by remember { mutableStateOf(false) }
+                ListItem.Item(
+                    text = "Appearance",
+                    leadingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_dark_theme_24_regular),
+                            contentDescription = "Appearance Icon",
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                        )
+                    },
+                    onClick = { showAppearanceDialog = !showAppearanceDialog },
+                    listItemTokens = listItemTokens
+                )
+
+                if (showAppearanceDialog) {
+                    Dialog(
+                        dialogProperties = DialogProperties(
+                            dismissOnClickOutside = true,
+                            dismissOnBackPress = true
+                        ),
+                        onDismiss = { showAppearanceDialog = !showAppearanceDialog },
+                    ) {
+                        AppTheme.SetAppThemeMode()
+                    }
+                }
             }
         }
     }
@@ -318,6 +340,7 @@ class V2DemoListActivity : ComponentActivity() {
                 var filteredDemoList by remember { mutableStateOf(V2DEMO.toMutableList()) }
 
                 Scaffold(
+                    contentWindowInsets = WindowInsets.statusBars,
                     topBar = {
                         val appTitleDelta: Float by animateFloatAsState(
                             if (searchModeEnabled) 0F else 1F,
@@ -370,7 +393,7 @@ class V2DemoListActivity : ComponentActivity() {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
                                     contentDescription = "Search Icon",
-                                    modifier = Modifier.clickable { searchModeEnabled = true },
+                                    onClick = { searchModeEnabled = true },
                                     tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
                                     } else {
@@ -378,60 +401,8 @@ class V2DemoListActivity : ComponentActivity() {
                                     }
                                 )
 
-                                var expandedMenu by remember { mutableStateOf(false) }
                                 Box {
-                                    Icon(
-                                        painter = painterResource(id = R.drawable.ic_fluent_more_vertical_24_regular),
-                                        contentDescription = "More",
-                                        modifier = Modifier
-                                            .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
-                                            .clickable { expandedMenu = true },
-                                        tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
-                                            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
-                                        } else {
-                                            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
-                                        }
-                                    )
-                                    Menu(
-                                        opened = expandedMenu,
-                                        onDismissRequest = { expandedMenu = false },
-                                    ) {
-                                        val scrollState = rememberScrollState()
-                                        Column(modifier = Modifier.verticalScroll(scrollState)) {
-                                            ListItem.Item(
-                                                text = "Brand",
-                                                trailingAccessoryContent = {
-                                                    ToggleSwitch(
-                                                        onValueChange = {
-                                                            if (it) {
-                                                                AppTheme.updateThemeStyle(
-                                                                    FluentStyle.Brand
-                                                                )
-                                                            } else {
-                                                                AppTheme.updateThemeStyle(
-                                                                    FluentStyle.Neutral
-                                                                )
-                                                            }
-                                                        },
-                                                        checkedState = AppTheme.appThemeStyle.value == FluentStyle.Brand,
-                                                    )
-                                                },
-                                                border = BorderType.Bottom,
-                                                listItemTokens = CustomizedTokens.listItemTokens
-                                            )
-
-                                            ListItem.SectionHeader(
-                                                title = "Choose your brand theme:",
-                                                enableChevron = false,
-                                                style = SectionHeaderStyle.Subtle,
-                                                listItemTokens = CustomizedTokens.listItemTokens
-                                            )
-
-                                            Column {
-                                                AppTheme.SetAppTheme()
-                                            }
-                                        }
-                                    }
+                                    AppBarMenu()
                                 }
                             },
                             searchBar = if (searchModeEnabled) {
@@ -464,7 +435,7 @@ class V2DemoListActivity : ComponentActivity() {
                                     PillTabs(
                                         style = AppTheme.appThemeStyle.value,
                                         metadataList = buttonBarList,
-                                        selectedIndex = selectedComponents.ordinal,
+                                        selectedIndex = selectedComponents.ordinal
                                     )
                                 }
                             } else null,
@@ -481,8 +452,8 @@ class V2DemoListActivity : ComponentActivity() {
                 ) {
                     LazyColumn(
                         Modifier
-                            .fillMaxSize()
                             .padding(it)
+                            .fillMaxSize()
                     ) {
                         filteredDemoList.forEach {
                             item {

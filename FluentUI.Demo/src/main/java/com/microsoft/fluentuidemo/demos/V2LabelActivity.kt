@@ -1,7 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -17,22 +16,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.V2DemoActivity
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 
 class V2LabelActivity : V2DemoActivity() {
+    override var demoActivityLink =
+        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2LabelActivity.kt"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
-                CreateLabelUI()
+            CreateLabelUI()
         }
     }
 
@@ -40,7 +39,7 @@ class V2LabelActivity : V2DemoActivity() {
     private fun CreateLabelUI() {
         var colorStyle by rememberSaveable { mutableStateOf(ColorStyle.Primary) }
         var selectedTab by rememberSaveable { mutableStateOf(0) }
-        var isBackgroundChange by rememberSaveable{ mutableStateOf(false) }
+        var isBackgroundChange by rememberSaveable { mutableStateOf(false) }
         var tabsList: MutableList<PillMetaData> = mutableListOf()
         tabsList.add(
             PillMetaData(
@@ -48,7 +47,7 @@ class V2LabelActivity : V2DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Primary
                     selectedTab = 0
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -58,7 +57,7 @@ class V2LabelActivity : V2DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Secondary
                     selectedTab = 1
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -67,7 +66,7 @@ class V2LabelActivity : V2DemoActivity() {
                 text = "White",
                 onClick = {
                     colorStyle = ColorStyle.White
-                    isBackgroundChange = true;
+                    isBackgroundChange = true
                     selectedTab = 2
                 }
             )
@@ -78,7 +77,7 @@ class V2LabelActivity : V2DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Brand
                     selectedTab = 3
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -88,7 +87,7 @@ class V2LabelActivity : V2DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Error
                     selectedTab = 4
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -110,7 +109,8 @@ class V2LabelActivity : V2DemoActivity() {
                     .horizontalScroll(
                         rememberScrollState()
                     )
-                    .verticalScroll(rememberScrollState()
+                    .verticalScroll(
+                        rememberScrollState()
                     ),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {

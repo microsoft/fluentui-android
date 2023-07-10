@@ -50,7 +50,7 @@ fun TabBar(
     val token = tabBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBar] as TabBarTokens
 
-    Column {
+    Column (modifier.fillMaxWidth()){
         Box(
             modifier
                 .fillMaxWidth()
@@ -59,9 +59,11 @@ fun TabBar(
         )
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+
         ) {
+//            Spacer(modifier = Modifier.width(16.dp).height(IntrinsicSize.Max))
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
                 TabItem(

@@ -2,7 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,7 +28,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.aliasTokens
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -61,20 +59,21 @@ import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.V2DemoActivity
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
 
 class V2ListItemActivity : V2DemoActivity() {
+    override var demoActivityLink =
+        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2ListItemActivity.kt"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
-                CreateListActivityUI(this)
+            CreateListActivityUI(this)
         }
     }
 }
@@ -292,7 +291,12 @@ private fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_charlotte_waltson) },
+            leadingAccessoryContent = {
+                GetAvatar(
+                    size = Size40,
+                    drawable.avatar_charlotte_waltson
+                )
+            },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -322,7 +326,12 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_charlotte_waltson) },
+            leadingAccessoryContent = {
+                GetAvatar(
+                    size = Size56,
+                    drawable.avatar_charlotte_waltson
+                )
+            },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )

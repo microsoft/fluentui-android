@@ -50,6 +50,8 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.max
 
 class V2AppBarLayoutActivity : V2DemoActivity() {
+    override var demoActivityLink =
+        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2AppBarActivity.kt"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -330,6 +332,10 @@ class V2AppBarLayoutActivity : V2DemoActivity() {
                 )
             }
         }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#appbar"
+            BottomSheetWebView(mUrl)
+        }
     }
 }
-

@@ -36,6 +36,9 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2SegmentedControlActivity : V2DemoActivity() {
+    override var demoActivityLink =
+        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2SegmentedControlActivity.kt"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this

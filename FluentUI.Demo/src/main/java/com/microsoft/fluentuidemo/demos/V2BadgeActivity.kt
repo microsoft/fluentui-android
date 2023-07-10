@@ -2,7 +2,12 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.ui.Alignment.Companion.CenterVertically
@@ -22,6 +27,9 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2BadgeActivity : V2DemoActivity() {
     override val appBarSize = AppBarSize.Medium
+    override var demoActivityLink =
+        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2BadgeActivity.kt"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,7 +39,10 @@ class V2BadgeActivity : V2DemoActivity() {
             val title2Font =
                 FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title2]
 
-            Column(Modifier.fillMaxHeight().background(Color.Gray)) {
+            Column(
+                Modifier
+                    .fillMaxHeight()
+                    .background(Color.Gray)) {
                 BasicText(
                     text = resources.getString(R.string.badge_notification_badge),
                     style = title1Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value())),
