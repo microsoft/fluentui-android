@@ -31,6 +31,7 @@ import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
@@ -107,7 +108,6 @@ open class V2DemoActivity : ComponentActivity() {
                     it.loadUrl(mUrl)
                 })
         }
-
     }
 
     open val appBarSize = AppBarSize.Medium
@@ -138,8 +138,13 @@ open class V2DemoActivity : ComponentActivity() {
                             rightAccessoryView = {
                                 val uriHandler = LocalUriHandler.current
                                 Icon(
-                                    painter = painterResource(id = R.drawable.ic_fluent_info_24_regular),
+                                    painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
                                     contentDescription = "Control Token Icon",
+                                    modifier = Modifier.padding(
+                                        FluentGlobalTokens.size(
+                                            FluentGlobalTokens.SizeTokens.Size100
+                                        )
+                                    ),
                                     tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                                             FluentTheme.themeMode
@@ -165,6 +170,7 @@ open class V2DemoActivity : ComponentActivity() {
                         var isHiddenBottomSheet by remember { mutableStateOf(true) }
                         FloatingActionButton(
                             icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_info_24_regular),
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             onClick = {
                                 isHiddenBottomSheet = if (isHiddenBottomSheet) {
                                     scope.launch { bottomSheetState.expand() }

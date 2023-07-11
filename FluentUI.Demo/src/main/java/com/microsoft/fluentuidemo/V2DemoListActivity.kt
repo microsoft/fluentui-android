@@ -121,7 +121,7 @@ class V2DemoListActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GetDrawerContent(onRelNotepress: () -> Unit) {
+    fun GetDrawerContent(onRelNotePress: () -> Unit) {
         Column(
             verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320)),
             modifier = Modifier
@@ -228,6 +228,7 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_fluent_24_regular),
                             contentDescription = "Design Tokens Icon",
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -240,10 +241,11 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
                             contentDescription = "Release Notes Icon",
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    onClick = onRelNotepress,
+                    onClick = onRelNotePress,
                     listItemTokens = listItemTokens
                 )
 
@@ -254,6 +256,7 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_book_number_24_regular),
                             contentDescription = "GitHub Repo Icon",
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -261,6 +264,7 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_link_24_regular),
                             contentDescription = "Fluent Link",
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -274,37 +278,12 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_person_feedback_24_regular),
                             contentDescription = "Feedback Icon",
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
                     listItemTokens = listItemTokens
                 )
-
-                var showAppearanceDialog by remember { mutableStateOf(false) }
-                ListItem.Item(
-                    text = "Appearance",
-                    leadingAccessoryContent = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_dark_theme_24_regular),
-                            contentDescription = "Appearance Icon",
-                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
-                        )
-                    },
-                    onClick = { showAppearanceDialog = !showAppearanceDialog },
-                    listItemTokens = listItemTokens
-                )
-
-                if (showAppearanceDialog) {
-                    Dialog(
-                        dialogProperties = DialogProperties(
-                            dismissOnClickOutside = true,
-                            dismissOnBackPress = true
-                        ),
-                        onDismiss = { showAppearanceDialog = !showAppearanceDialog },
-                    ) {
-                        AppTheme.SetAppThemeMode()
-                    }
-                }
             }
         }
     }
@@ -382,6 +361,7 @@ class V2DemoListActivity : ComponentActivity() {
                                     contentDescription = "Fluent Logo",
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
+                                        .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
                                         .clip(CircleShape)
                                         .size(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320))
                                         .clickable { scope.launch { drawerState.open() } }
@@ -393,6 +373,11 @@ class V2DemoListActivity : ComponentActivity() {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
                                     contentDescription = "Search Icon",
+                                    modifier = Modifier.padding(
+                                        FluentGlobalTokens.size(
+                                            FluentGlobalTokens.SizeTokens.Size100
+                                        )
+                                    ),
                                     onClick = { searchModeEnabled = true },
                                     tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
@@ -446,6 +431,7 @@ class V2DemoListActivity : ComponentActivity() {
                     floatingActionButton = {
                         FloatingActionButton(
                             icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
+                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             onClick = { showDialog = !showDialog }
                         )
                     }
