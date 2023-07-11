@@ -12,6 +12,7 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
@@ -83,11 +84,14 @@ fun PersonaChip(
         token.avatarToTextSpacing(personaChipInfo = personaChipInfo)
     val cornerRadius =
         token.cornerRadius(personaChipInfo = personaChipInfo)
+    val maxHeight =
+        token.maxHeight(personaChipInfo = personaChipInfo)
 
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(cornerRadius))
             .background(backgroundColor)
+            .heightIn(max = maxHeight)
             .clickable(
                 enabled = enabled,
                 onClick = onClick ?: {},

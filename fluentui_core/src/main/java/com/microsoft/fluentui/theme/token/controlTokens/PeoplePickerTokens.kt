@@ -3,78 +3,133 @@ package com.microsoft.fluentui.theme.token.controlTokens
 import android.os.Parcelable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import com.microsoft.fluentui.theme.FluentTheme
-import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 data class PeoplePickerInfo(
-    val style: FluentStyle
-):ControlInfo
+    val isStatusError: Boolean = false,
+    val isFocused: Boolean = false
+) : ControlInfo
+
 @Parcelize
 open class PeoplePickerTokens : IControlToken, Parcelable {
 
     @Composable
     open fun backgroundColor(peoplePickerInfo: PeoplePickerInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[AliasTokens.NeutralBackgroundColorTokens.Background1].value(
+        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
             themeMode = FluentTheme.themeMode
         )
     }
 
     @Composable
-    open fun accessoryPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues{
-        return PaddingValues(horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size160))
+    open fun leadingAccessorySpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160)
     }
 
     @Composable
-    open fun chipPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues{
-        return PaddingValues(vertical = GlobalTokens.size(GlobalTokens.SizeTokens.Size120), horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size80))
+    open fun chipTopPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues {
+        return PaddingValues(vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
     }
 
     @Composable
-    open fun trailingAccessoryEndPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues{
-        return PaddingValues(horizontal = GlobalTokens.size(GlobalTokens.SizeTokens.Size120))
+    open fun chipSpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
     }
 
     @Composable
-    open fun maxHeight(peoplePickerInfo: PeoplePickerInfo): Dp{
-        return GlobalTokens.size(GlobalTokens.SizeTokens.Size480)
+    open fun trailingAccessoryEndPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues {
+        return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
     }
 
     @Composable
-    open fun leadingIconSize(peoplePickerInfo: PeoplePickerInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
-    }
-
-    @Composable
-    open fun trailingIconSize(peoplePickerInfo: PeoplePickerInfo): Dp {
-        return GlobalTokens.iconSize(GlobalTokens.IconSizeTokens.IconSize240)
+    open fun minHeight(peoplePickerInfo: PeoplePickerInfo): Dp {
+        return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size480)
     }
 
     @Composable
     open fun textColor(peoplePickerInfo: PeoplePickerInfo): Color {
-        return when (peoplePickerInfo.style) {
-            FluentStyle.Neutral ->
-                FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                    themeMode = FluentTheme.themeMode
-                )
-            FluentStyle.Brand ->
-                FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        ThemeMode.Light
-                    ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[AliasTokens.NeutralForegroundColorTokens.Foreground3].value(
-                        ThemeMode.Dark
-                    )
-                ).value(themeMode = FluentTheme.themeMode)
-        }
-    }
-    @Composable
-    open fun typography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[AliasTokens.TypographyTokens.Body1]
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+            themeMode = FluentTheme.themeMode
+        )
     }
 
+    @Composable
+    open fun typography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+    }
+
+    @Composable
+    open fun cursorColor(peoplePickerInfo: PeoplePickerInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                themeMode = FluentTheme.themeMode
+            )
+        )
+    }
+    @Composable
+    open fun labelTypography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+    }
+    @Composable
+    open fun labelColor(peoplePickerInfo: PeoplePickerInfo): Color {
+        return if (peoplePickerInfo.isStatusError)
+            FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+        else if (peoplePickerInfo.isFocused)
+            FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value()
+        else
+            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+    }
+    @Composable
+    open fun assistiveTextColor(peoplePickerInfo: PeoplePickerInfo): Color {
+        return if (peoplePickerInfo.isStatusError)
+            FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+        else
+            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+    }
+
+    @Composable
+    open fun assistiveTextTypography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
+    }
+
+    @Composable
+    open fun assistiveTextPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues {
+        return PaddingValues(
+            top = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40),
+            bottom = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
+        )
+    }
+    @Composable
+    open fun hintColor(peoplePickerInfo: PeoplePickerInfo): Color {
+        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+    }
+
+    @Composable
+    open fun hintTextTypography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
+        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
+    }
+
+    open fun strokeWidth(peoplePickerInfo: PeoplePickerInfo): Dp =
+        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
+
+    @Composable
+    open fun dividerColor(peoplePickerInfo: PeoplePickerInfo): Brush {
+        return SolidColor(
+            if (peoplePickerInfo.isStatusError)
+                FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
+            else if (peoplePickerInfo.isFocused)
+                FluentTheme.aliasTokens.brandStroke[FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1].value()
+            else
+                FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
+        )
+    }
 }
