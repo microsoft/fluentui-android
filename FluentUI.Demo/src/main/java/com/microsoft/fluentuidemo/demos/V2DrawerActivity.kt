@@ -499,7 +499,7 @@ private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
                         }
                     }
 
-                },
+                }
             )
         }
     }
