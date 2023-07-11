@@ -3,7 +3,6 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,10 +11,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -36,8 +33,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerObject
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
+import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerObject
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -48,7 +45,7 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.launch
 
-class V2PeoplePickerActivity: DemoActivity() {
+class V2PeoplePickerActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
@@ -69,7 +66,7 @@ class V2PeoplePickerActivity: DemoActivity() {
     }
 
     @Composable
-    private fun CreatePeoplePickerActivity(){
+    private fun CreatePeoplePickerActivity() {
         val people = mutableListOf(
             Person(
                 "Allan", "Munger",
@@ -120,31 +117,29 @@ class V2PeoplePickerActivity: DemoActivity() {
         var assistiveText by rememberSaveable { mutableStateOf(true) }
         var errorText by rememberSaveable { mutableStateOf(false) }
 
-        Column() {
+        Column {
             Row(modifier = Modifier.padding(8.dp)) {
                 PeoplePicker(
                     onValueChange = { query, selectedPerson ->
-                    scope.launch {
-                        suggested = people.filter {
-                            it.firstName.lowercase().contains(query.lowercase()) ||
-                                    it.lastName.lowercase().contains(query.lowercase())
-                        } as MutableList<Person>
-                    }
-                },
+                        scope.launch {
+                            suggested = people.filter {
+                                it.firstName.lowercase().contains(query.lowercase()) ||
+                                        it.lastName.lowercase().contains(query.lowercase())
+                            } as MutableList<Person>
+                        }
+                    },
                     selectedPeople = selectedPeople,
-                    footerText = "This is a sample footer text",
                     chipValidation = {
-                        if(!it.email.isNullOrBlank()){
-                            if(it.email?.contains("@") == true)
+                        if (!it.email.isNullOrBlank()) {
+                            if (it.email?.contains("@") == true)
                                 PersonaChipStyle.Neutral
-                            else{
+                            else {
                                 errorText = true
                                 errorPeople.add(it)
                                 PersonaChipStyle.Danger
                             }
 
-                        }
-                        else {
+                        } else {
                             errorText = true
                             errorPeople.add(it)
                             PersonaChipStyle.Danger
@@ -159,26 +154,26 @@ class V2PeoplePickerActivity: DemoActivity() {
                     },
                     onChipCloseClick = {
                         selectedPeople.remove(it)
-                        errorPeople.forEach {errorPerson ->
-                            if(errorPerson == it.person)
+                        errorPeople.forEach { errorPerson ->
+                            if (errorPerson == it.person)
                                 errorPeople.remove(errorPerson)
                         }
-                        if(errorPeople.isEmpty())
+                        if (errorPeople.isEmpty())
                             errorText = false
                     },
                     onTextEntered = {
                         selectedPeople.add(PeoplePickerObject(Person(it, ""), false))
                     },
                     onBackPress = {
-                        if(!it.selected){
+                        if (!it.selected) {
                             it.selected = !it.selected
-                        }else{
+                        } else {
                             selectedPeople.remove(it)
-                            errorPeople.forEach {errorPerson ->
-                                if(errorPerson == it.person)
+                            errorPeople.forEach { errorPerson ->
+                                if (errorPerson == it.person)
                                     errorPeople.remove(errorPerson)
                             }
-                            if(errorPeople.isEmpty())
+                            if (errorPeople.isEmpty())
                                 errorText = false
                         }
                     },
@@ -190,12 +185,20 @@ class V2PeoplePickerActivity: DemoActivity() {
                                 .size(24.dp)
                         )
                     },
+                    trailingAccessoryContent = {
+                        Icon(
+                            Icons.Filled.Add,
+                            contentDescription = "Add",
+                            modifier = Modifier
+                                .size(24.dp)
+                        )
+                    },
                     label = "People Picker",
                     searchHint = "Search People",
                     assistiveText = if (assistiveText) "This is a sample Assistive Text" else null,
                     errorString = if (errorText) "This is a sample Error text" else null,
 
-                )
+                    )
             }
 
             suggested.forEach {
@@ -215,13 +218,17 @@ class V2PeoplePickerActivity: DemoActivity() {
                 )
             }
 
-            selectedPeople.forEach{
+            selectedPeople.forEach {
                 selectedPerson.add(it.person)
             }
             Column {
                 PersonaList(personas = suggestedPersona, modifier = Modifier.padding(8.dp))
                 Spacer(modifier = Modifier.height(8.dp))
-                Label(modifier = Modifier.padding(8.dp), text = "Selected People from people picker", textStyle = FluentAliasTokens.TypographyTokens.Body1)
+                Label(
+                    modifier = Modifier.padding(8.dp),
+                    text = "Selected People from people picker",
+                    textStyle = FluentAliasTokens.TypographyTokens.Body1
+                )
                 AvatarGroup(group = Group(selectedPerson), modifier = Modifier.padding(8.dp))
                 Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
                     Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))

@@ -1,6 +1,5 @@
 package com.microsoft.fluentui.tokenized.peoplepicker
 
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -8,20 +7,15 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
@@ -34,7 +28,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
-import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.DividerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DividerTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerInfo
@@ -47,22 +40,21 @@ import com.microsoft.fluentui.tokenized.persona.*
 @Composable
 fun PeoplePicker(
     onValueChange: (String, MutableList<PeoplePickerObject>) -> Unit,
+    modifier: Modifier = Modifier,
     selectedPeople: MutableList<PeoplePickerObject> = mutableStateListOf(),
-    footerText: String = "",
     onBackPress: ((PeoplePickerObject) -> Unit)? = null,
     onChipClick: ((PeoplePickerObject) -> Unit)? = null,
     onChipCloseClick: ((PeoplePickerObject) -> Unit)? = null,
     chipValidation: (Person) -> PersonaChipStyle = { PersonaChipStyle.Neutral },
     onTextEntered: ((String) -> Unit)? = null,
-    modifier: Modifier = Modifier,
     leadingAccessoryContent: (@Composable () -> Unit)? = null,
+    trailingAccessoryContent: (@Composable () -> Unit)? = null,
     label: String? = null,
     assistiveText: String? = null,
     errorString: String? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
     keyboardActions: KeyboardActions = KeyboardActions(),
     searchHint: String? = null,
-    scrollState: ScrollState = rememberScrollState(),
     peoplePickerTokens: PeoplePickerTokens? = null
 ) {
     val themeID =
@@ -76,7 +68,9 @@ fun PeoplePicker(
         isFocused = isFocused,
     )
     val leadingAccessorySpacing = token.leadingAccessorySpacing(peoplePickerInfo = peoplePickerInfo)
-    val chipSpacing = token.chipSpacing(peoplePickerInfo =peoplePickerInfo)
+    val trailingAccessoryPadding =
+        token.trailingAccessoryPadding(peoplePickerInfo = peoplePickerInfo)
+    val chipSpacing = token.chipSpacing(peoplePickerInfo = peoplePickerInfo)
     val textTypography = token.typography(peoplePickerInfo)
     val textColor = token.textColor(peoplePickerInfo = peoplePickerInfo)
     val cursorColor = token.cursorColor(peoplePickerInfo = peoplePickerInfo)
@@ -84,19 +78,21 @@ fun PeoplePicker(
     var searchHasFocus by rememberSaveable { mutableStateOf(false) }
     var queryText by rememberSaveable { mutableStateOf("") }
 
-    Row(modifier = modifier
-        .onFocusChanged { focusState ->
-            when {
-                focusState.isFocused -> {
-                    focusRequester.requestFocus()
+    Row(
+        modifier = modifier
+            .onFocusChanged { focusState ->
+                when {
+                    focusState.isFocused -> {
+                        focusRequester.requestFocus()
+                    }
                 }
-            }
-        }, verticalAlignment = Alignment.CenterVertically) {
+            }, verticalAlignment = Alignment.CenterVertically
+    ) {
         if (leadingAccessoryContent != null) {
             leadingAccessoryContent()
             Spacer(modifier = Modifier.width(leadingAccessorySpacing))
         }
-        Column() {
+        Column {
             if (!label.isNullOrBlank()) {
                 Spacer(Modifier.requiredHeight(12.dp))
                 BasicText(
@@ -108,99 +104,112 @@ fun PeoplePicker(
                     )
                 )
             }
-            Row(modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(scrollState)
-                .height(token.minHeight(peoplePickerInfo = peoplePickerInfo))
-                .onKeyEvent {
-                    if (it.key == Key.Backspace && queryText.isEmpty() && selectedPeople.isNotEmpty()) {
-                        if (onBackPress != null) {
-                            onBackPress.invoke(selectedPeople.last())
-                            onValueChange(queryText, selectedPeople)
-                        }
-                    }
-                    if (it.key == Key.Enter && queryText.isNotBlank() && queryText.isNotEmpty()) {
-                        if (onTextEntered != null) {
-                            onTextEntered.invoke(queryText)
-                            queryText = ""
-                            onValueChange(queryText, selectedPeople)
-                        }
-                    }
-                    true
-                },
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(token.minHeight(peoplePickerInfo = peoplePickerInfo)),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
 
-                if (selectedPeople.isNotEmpty()) {
-                    selectedPeople.forEach {
-                        PersonaChip(person = it.person, selected = it.selected,
-                            onCloseClick = if (onChipCloseClick != null) {
-                                {
-                                    onChipCloseClick.invoke(it)
+                Row(
+                    modifier = Modifier
+                        .weight(1f)
+                        .horizontalScroll(rememberScrollState())
+                        .onKeyEvent {
+                            if (it.key == Key.Backspace && queryText.isEmpty() && selectedPeople.isNotEmpty()) {
+                                if (onBackPress != null) {
+                                    onBackPress.invoke(selectedPeople.last())
                                     onValueChange(queryText, selectedPeople)
                                 }
-                            } else {
-                                null
-                            },
-                            onClick = {
-                                onChipClick?.invoke(it)
-                                onValueChange(queryText, selectedPeople)
-                            },
-                            style = chipValidation(it.person)
-                        )
-                        Spacer(modifier = Modifier.width(chipSpacing))
+                            }
+                            if (it.key == Key.Enter && queryText.isNotBlank() && queryText.isNotEmpty()) {
+                                if (onTextEntered != null) {
+                                    onTextEntered.invoke(queryText)
+                                    queryText = ""
+                                    onValueChange(queryText, selectedPeople)
+                                }
+                            }
+                            true
+                        },
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    if (selectedPeople.isNotEmpty()) {
+                        selectedPeople.forEach {
+                            PersonaChip(person = it.person, selected = it.selected,
+                                onCloseClick = if (onChipCloseClick != null) {
+                                    {
+                                        onChipCloseClick.invoke(it)
+                                        onValueChange(queryText, selectedPeople)
+                                    }
+                                } else {
+                                    null
+                                },
+                                onClick = {
+                                    onChipClick?.invoke(it)
+                                    onValueChange(queryText, selectedPeople)
+                                },
+                                style = chipValidation(it.person)
+                            )
+                            Spacer(modifier = Modifier.width(chipSpacing))
+                        }
+                    }
+                    BasicTextField(
+                        value = queryText,
+                        onValueChange = {
+                            queryText = it
+                            onValueChange(queryText, selectedPeople)
+                        },
+                        singleLine = true,
+                        keyboardOptions = keyboardOptions,
+                        keyboardActions = keyboardActions,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .focusRequester(focusRequester)
+                            .onFocusChanged { focusState ->
+                                when {
+                                    focusState.isFocused ->
+                                        searchHasFocus = true
+                                }
+                            }
+                            .semantics { contentDescription = searchHint ?: "" },
+                        textStyle = textTypography.merge(
+                            TextStyle(
+                                color = textColor,
+                                textDirection = TextDirection.ContentOrLtr
+                            )
+                        ),
+                        decorationBox = @Composable { innerTextField ->
+                            Box(
+                                Modifier
+                                    .fillMaxWidth(),
+                                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                    Alignment.CenterEnd
+                                else
+                                    Alignment.CenterStart
+                            ) {
+                                if (queryText.isEmpty()) {
+                                    BasicText(
+                                        searchHint ?: "",
+                                        style = token.hintTextTypography(peoplePickerInfo)
+                                            .merge(
+                                                TextStyle(
+                                                    color = token.hintColor(peoplePickerInfo)
+                                                )
+                                            )
+                                    )
+                                }
+
+                            }
+                            innerTextField()
+                        },
+                        cursorBrush = cursorColor
+                    )
+                }
+                if (trailingAccessoryContent != null) {
+                    Box(modifier = Modifier.padding(trailingAccessoryPadding)) {
+                        trailingAccessoryContent()
                     }
                 }
-                BasicTextField(
-                    value = queryText,
-                    onValueChange = {
-                        queryText = it
-                        onValueChange(queryText, selectedPeople)
-                    },
-                    singleLine = true,
-                    keyboardOptions = keyboardOptions,
-                    keyboardActions = keyboardActions,
-                    modifier = Modifier
-                        .focusRequester(focusRequester)
-                        .onFocusChanged { focusState ->
-                            when {
-                                focusState.isFocused ->
-                                    searchHasFocus = true
-                            }
-                        }
-                        .semantics { contentDescription = searchHint ?: "" },
-                    textStyle = textTypography.merge(
-                        TextStyle(
-                            color = textColor,
-                            textDirection = TextDirection.ContentOrLtr
-                        )
-                    ),
-                    decorationBox = @Composable { innerTextField ->
-                        Box(
-                            Modifier
-                                .fillMaxWidth(),
-                            contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                Alignment.CenterEnd
-                            else
-                                Alignment.CenterStart
-                        ) {
-                            if (queryText.isEmpty()) {
-                                BasicText(
-                                    searchHint ?: "",
-                                    style = token.hintTextTypography(peoplePickerInfo)
-                                        .merge(
-                                            TextStyle(
-                                                color = token.hintColor(peoplePickerInfo)
-                                            )
-                                        )
-                                )
-                            }
-
-                        }
-                        innerTextField()
-                    },
-                    cursorBrush = cursorColor
-                )
             }
             Divider(
                 height = token.strokeWidth(peoplePickerInfo),

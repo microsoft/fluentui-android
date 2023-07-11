@@ -36,8 +36,8 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun chipTopPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues {
-        return PaddingValues(vertical = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
+    open fun trailingAccessoryPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues {
+        return PaddingValues(end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size160))
     }
 
     @Composable
@@ -75,10 +75,12 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
             )
         )
     }
+
     @Composable
     open fun labelTypography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Caption2]
     }
+
     @Composable
     open fun labelColor(peoplePickerInfo: PeoplePickerInfo): Color {
         return if (peoplePickerInfo.isStatusError)
@@ -88,6 +90,7 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
         else
             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
     }
+
     @Composable
     open fun assistiveTextColor(peoplePickerInfo: PeoplePickerInfo): Color {
         return if (peoplePickerInfo.isStatusError)
@@ -108,6 +111,7 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
             bottom = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size40)
         )
     }
+
     @Composable
     open fun hintColor(peoplePickerInfo: PeoplePickerInfo): Color {
         return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
