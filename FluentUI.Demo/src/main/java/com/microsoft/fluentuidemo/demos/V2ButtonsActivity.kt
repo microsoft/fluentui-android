@@ -48,8 +48,9 @@ import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2ButtonsActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2ButtonsActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -220,6 +221,11 @@ class V2ButtonsActivity : V2DemoActivity() {
                     )
                 }
             }
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#button"
+            BottomSheetWebView(mUrl)
         }
     }
 

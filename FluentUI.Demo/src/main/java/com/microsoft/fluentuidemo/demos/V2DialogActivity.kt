@@ -35,14 +35,20 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2DialogActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2DialogActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
             CreateDialogActivityUI(this)
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
         }
     }
 

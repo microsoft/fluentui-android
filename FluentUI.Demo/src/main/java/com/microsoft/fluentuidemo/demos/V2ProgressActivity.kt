@@ -42,14 +42,20 @@ import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 class V2ProgressActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2ProgressActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
             CreateProgressActivityUI(this)
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
         }
     }
 }

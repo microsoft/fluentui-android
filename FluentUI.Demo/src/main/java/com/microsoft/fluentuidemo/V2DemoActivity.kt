@@ -36,13 +36,11 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
-import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetValue
 import com.microsoft.fluentui.tokenized.bottomsheet.rememberBottomSheetState
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
-import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
 import com.microsoft.fluentuidemo.AppTheme.AppBarMenu
@@ -56,6 +54,12 @@ enum class Controls {
 open class V2DemoActivity : ComponentActivity() {
     companion object {
         const val DEMO_TITLE = "demo_title"
+    }
+
+    private var activityUrl: String = ""
+    fun setupActivity(activityClass: ComponentActivity) {
+        activityUrl =
+            "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/${activityClass::class.simpleName}.kt"
     }
 
     private var content: @Composable () -> Unit = {}
@@ -80,13 +84,7 @@ open class V2DemoActivity : ComponentActivity() {
 
     @Composable
     fun BottomSheetWebView(mUrl: String) {
-        var isPageLoaded by remember { mutableStateOf(false) }
         Box(modifier = Modifier.fillMaxSize()) {
-            if (!isPageLoaded) {
-                CircularProgressIndicator(
-                    size = CircularProgressIndicatorSize.Large
-                )
-            }
             AndroidView(
                 factory = {
                     WebView(it).apply {
@@ -95,10 +93,7 @@ open class V2DemoActivity : ComponentActivity() {
                             ViewGroup.LayoutParams.MATCH_PARENT
                         )
                         webViewClient = object : WebViewClient() {
-                            override fun onPageFinished(view: WebView?, url: String?) {
-                                super.onPageFinished(view, url)
-                                isPageLoaded = true
-                            }
+
                         }
                         Thread.sleep(2000)
                         loadUrl(mUrl)
@@ -111,7 +106,6 @@ open class V2DemoActivity : ComponentActivity() {
     }
 
     open val appBarSize = AppBarSize.Medium
-    open lateinit var demoActivityLink: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -136,28 +130,30 @@ open class V2DemoActivity : ComponentActivity() {
                             appBarSize = appBarSize,
                             bottomBar = bottomAppBar,
                             rightAccessoryView = {
-                                val uriHandler = LocalUriHandler.current
-                                Icon(
-                                    painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
-                                    contentDescription = "Control Token Icon",
-                                    modifier = Modifier.padding(
-                                        FluentGlobalTokens.size(
-                                            FluentGlobalTokens.SizeTokens.Size100
-                                        )
-                                    ),
-                                    tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
-                                        FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                                            FluentTheme.themeMode
-                                        )
-                                    } else {
-                                        FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
-                                            FluentTheme.themeMode
-                                        )
-                                    },
-                                    onClick = {
-                                        uriHandler.openUri(demoActivityLink)
-                                    }
-                                )
+                                if (activityUrl.isNotEmpty()) {
+                                    val uriHandler = LocalUriHandler.current
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
+                                        contentDescription = "Control Token Icon",
+                                        modifier = Modifier.padding(
+                                            FluentGlobalTokens.size(
+                                                FluentGlobalTokens.SizeTokens.Size100
+                                            )
+                                        ),
+                                        tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
+                                            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                                                FluentTheme.themeMode
+                                            )
+                                        } else {
+                                            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
+                                                FluentTheme.themeMode
+                                            )
+                                        },
+                                        onClick = {
+                                            uriHandler.openUri(activityUrl)
+                                        }
+                                    )
+                                }
 
                                 Box {
                                     AppBarMenu()

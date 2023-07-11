@@ -49,17 +49,17 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.max
 
-class V2AppBarLayoutActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2AppBarActivity.kt"
+class V2AppBarActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
 
         setActivityContent {
-            val subtitleText =
-                LocalContext.current.resources.getString(R.string.app_bar_subtitle)
+
             var style: FluentStyle by rememberSaveable { mutableStateOf(FluentStyle.Neutral) }
             var appBarSize: AppBarSize by rememberSaveable { mutableStateOf(AppBarSize.Small) }
             var searchMode: Boolean by rememberSaveable { mutableStateOf(false) }
@@ -68,129 +68,14 @@ class V2AppBarLayoutActivity : V2DemoActivity() {
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
 
-            ListItem.Item(
-                text = subtitleText,
-                subText = if (subtitle.isNullOrBlank())
-                    LocalContext.current.resources.getString(R.string.fluentui_disabled)
-                else
-                    LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                trailingAccessoryContent = {
-                    ToggleSwitch(
-                        onValueChange = {
-                            subtitle =
-                                if (subtitle.isNullOrBlank())
-                                    subtitleText
-                                else
-                                    null
-                        },
-                        checkedState = !subtitle.isNullOrBlank()
-                    )
-                }
-            )
-
-            ListItem.Item(
-                text = LocalContext.current.resources.getString(R.string.app_bar_style),
-                subText = if (style == FluentStyle.Neutral)
-                    LocalContext.current.resources.getString(R.string.fluentui_neutral)
-                else
-                    LocalContext.current.resources.getString(R.string.fluentui_brand),
-                trailingAccessoryContent = {
-                    ToggleSwitch(
-                        onValueChange = {
-                            style =
-                                if (style == FluentStyle.Neutral)
-                                    FluentStyle.Brand
-                                else
-                                    FluentStyle.Neutral
-                        },
-                        checkedState = style == FluentStyle.Brand
-                    )
-                }
-            )
-
-            ListItem.Item(
-                text = LocalContext.current.resources.getString(R.string.buttonbar),
-                subText = if (enableButtonBar)
-                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                else
-                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                trailingAccessoryContent = {
-                    ToggleSwitch(
-                        onValueChange = {
-                            enableButtonBar = !enableButtonBar
-                        },
-                        checkedState = enableButtonBar
-                    )
-                }
-            )
-
-            ListItem.Item(
-                text = LocalContext.current.resources.getString(R.string.searchbar),
-                subText = if (enableSearchBar)
-                    LocalContext.current.resources.getString(R.string.fluentui_enabled)
-                else
-                    LocalContext.current.resources.getString(R.string.fluentui_disabled),
-                trailingAccessoryContent = {
-                    enableSearchBar = enableSearchBar || searchMode
-                    ToggleSwitch(
-                        onValueChange = {
-                            enableSearchBar = !enableSearchBar
-                        },
-                        checkedState = enableSearchBar,
-                        enabledSwitch = !searchMode
-                    )
-                }
-            )
-
-
-            val buttonBarList = mutableListOf<PillMetaData>()
-            for (idx in 1..6) {
-                buttonBarList.add(
-                    PillMetaData(
-                        "Button $idx",
-                        {
-                            Toast.makeText(
-                                context,
-                                "Button $idx pressed",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    )
-                )
-            }
-
-            val appTitleDelta: Float by animateFloatAsState(
-                if (searchMode) 0F else 1F,
-                animationSpec = tween(durationMillis = 150, easing = LinearEasing)
-            )
-
-            val yAxisDeltaCoerced = yAxisDelta.coerceIn(0F, 1F)
-
-            val accessoryDelta: Float by animateFloatAsState(yAxisDeltaCoerced)
-            val rightIconColor: Color = if (style == FluentStyle.Neutral)
-                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                    FluentTheme.themeMode
-                )
-            else
-                FluentColor(
-                    light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
-                        ThemeMode.Light
-                    ),
-                    dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                        ThemeMode.Dark
-                    )
-                ).value(FluentTheme.themeMode)
-
-            Column(modifier = Modifier.pointerInput(Unit)
-            {
+            Column(modifier = Modifier.pointerInput(Unit) {
                 detectDragGestures { _, distance ->
-                    yAxisDelta = if (searchMode)
-                        0F
+                    if (searchMode)
+                        yAxisDelta = 0F
                     else
-                        max(0F, distance.y + 10F) / 20F
+                        yAxisDelta = max(0F, distance.y + 10F) / 20F
                 }
-            })
-            {
+            }) {
                 ListItem.SectionHeader(
                     title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
                     enableChevron = true,
@@ -223,8 +108,122 @@ class V2AppBarLayoutActivity : V2DemoActivity() {
                             ), style = style,
                             showBackground = true
                         )
+
+                        val subtitleText =
+                            LocalContext.current.resources.getString(R.string.app_bar_subtitle)
+                        ListItem.Item(
+                            text = subtitleText,
+                            subText = if (subtitle.isNullOrBlank())
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        subtitle =
+                                            if (subtitle.isNullOrBlank())
+                                                subtitleText
+                                            else
+                                                null
+                                    },
+                                    checkedState = !subtitle.isNullOrBlank()
+                                )
+                            }
+                        )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.app_bar_style),
+                            subText = if (style == FluentStyle.Neutral)
+                                LocalContext.current.resources.getString(R.string.fluentui_neutral)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_brand),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        style =
+                                            if (style == FluentStyle.Neutral)
+                                                FluentStyle.Brand
+                                            else
+                                                FluentStyle.Neutral
+                                    },
+                                    checkedState = style == FluentStyle.Brand
+                                )
+                            }
+                        )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.buttonbar),
+                            subText = if (enableButtonBar)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableButtonBar = !enableButtonBar
+                                    },
+                                    checkedState = enableButtonBar
+                                )
+                            }
+                        )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.searchbar),
+                            subText = if (enableSearchBar)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                enableSearchBar = enableSearchBar || searchMode
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableSearchBar = !enableSearchBar
+                                    },
+                                    checkedState = enableSearchBar,
+                                    enabledSwitch = !searchMode
+                                )
+                            }
+                        )
                     }
                 }
+
+                val buttonBarList = mutableListOf<PillMetaData>()
+                for (idx in 1..6) {
+                    buttonBarList.add(
+                        PillMetaData(
+                            "Button $idx",
+                            {
+                                Toast.makeText(
+                                    context,
+                                    "Button $idx pressed",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        )
+                    )
+                }
+
+                val appTitleDelta: Float by animateFloatAsState(
+                    if (searchMode) 0F else 1F,
+                    animationSpec = tween(durationMillis = 150, easing = LinearEasing)
+                )
+
+                val yAxisDeltaCoerced = yAxisDelta.coerceIn(0F, 1F)
+
+                val accessoryDelta: Float by animateFloatAsState(yAxisDeltaCoerced)
+                val rightIconColor: Color = if (style == FluentStyle.Neutral)
+                    FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                        FluentTheme.themeMode
+                    )
+                else
+                    FluentColor(
+                        light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
+                            ThemeMode.Light
+                        ),
+                        dark = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                            ThemeMode.Dark
+                        )
+                    ).value(FluentTheme.themeMode)
 
                 AppBar(
                     title = "Fluent UI Demo",

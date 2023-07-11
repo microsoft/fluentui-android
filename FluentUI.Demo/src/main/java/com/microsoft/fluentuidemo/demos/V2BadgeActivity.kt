@@ -27,8 +27,10 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2BadgeActivity : V2DemoActivity() {
     override val appBarSize = AppBarSize.Medium
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2BadgeActivity.kt"
+
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +44,8 @@ class V2BadgeActivity : V2DemoActivity() {
             Column(
                 Modifier
                     .fillMaxHeight()
-                    .background(Color.Gray)) {
+                    .background(Color.Gray)
+            ) {
                 BasicText(
                     text = resources.getString(R.string.badge_notification_badge),
                     style = title1Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value())),
@@ -137,6 +140,11 @@ class V2BadgeActivity : V2DemoActivity() {
                     }
                 }
             }
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#badge"
+            BottomSheetWebView(mUrl)
         }
     }
 }

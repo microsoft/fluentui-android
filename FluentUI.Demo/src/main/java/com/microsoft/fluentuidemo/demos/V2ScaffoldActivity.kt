@@ -58,8 +58,9 @@ import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
 class V2ScaffoldActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2ScaffoldActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     //Tag for Test
     private val TOP_BAR = "TopBar"
@@ -169,6 +170,11 @@ class V2ScaffoldActivity : V2DemoActivity() {
                 }
             }
         }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
+        }
     }
 
     @Composable
@@ -263,11 +269,11 @@ class V2ScaffoldActivity : V2DemoActivity() {
                                 ListItemIcons.Folder40,
                                 context.resources.getString(R.string.common_folder)
                             )
-                        })
+                        }
+                    )
                 }
             }
         }
     }
-
 }
 

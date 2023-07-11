@@ -49,8 +49,9 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.launch
 
 class V2SnackbarActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2SnackbarActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -343,6 +344,11 @@ class V2SnackbarActivity : V2DemoActivity() {
                     Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))
                 }
             }
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
         }
     }
 }

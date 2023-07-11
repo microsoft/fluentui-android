@@ -1,13 +1,6 @@
-Release Version 0.1.26:
+Release Version 0.1.29:
 
 What's New:
 
 Fluent V2:
-    New Component: Label, Dialog, Progress Text, Citation.
-	
-    Fix/Enhancement:
-		1) Fix : Updating control Token in ControlToken object & providing the same to FluentTheme API will now recompose the controls & hence updates get applied immediately.
-		2) Replace material Surface control with Box
-		3) Fix: Drawer get enable when its state change to expand from close state.
-
-	Demo App: Moving Shimmer out of Progress Bar as V2 Progress Activity.
+	Components: V2 PeoplePicker

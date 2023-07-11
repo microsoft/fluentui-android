@@ -35,8 +35,9 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2BasicControlsActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2BasicControlsActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -195,5 +196,11 @@ class V2BasicControlsActivity : V2DemoActivity() {
                 }
             }
         }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
+        }
+
     }
 }

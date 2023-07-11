@@ -358,7 +358,7 @@ class V2DesignTokens : V2DemoActivity() {
         }
 
         setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#avatar"
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#overview"
             BottomSheetWebView(mUrl)
         }
     }

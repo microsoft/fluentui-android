@@ -37,8 +37,9 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 
 
 class V2MenuActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2MenuActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,11 @@ class V2MenuActivity : V2DemoActivity() {
 
         setActivityContent {
             CreateMenuActivityUI(context)
+        }
+
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
         }
     }
 }

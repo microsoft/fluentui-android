@@ -1,6 +1,0 @@
-Release Version 0.1.29:
-
-What's New:
-
-Fluent V2:
-	Components: V2 PeoplePicker

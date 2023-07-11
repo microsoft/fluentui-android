@@ -228,7 +228,6 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_fluent_24_regular),
                             contentDescription = "Design Tokens Icon",
-                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -241,7 +240,6 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
                             contentDescription = "Release Notes Icon",
-                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -256,7 +254,6 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_book_number_24_regular),
                             contentDescription = "GitHub Repo Icon",
-                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -264,7 +261,6 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_link_24_regular),
                             contentDescription = "Fluent Link",
-                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -278,7 +274,6 @@ class V2DemoListActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_person_feedback_24_regular),
                             contentDescription = "Feedback Icon",
-                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },

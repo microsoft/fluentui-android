@@ -20,15 +20,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Launch Screen: We use AppTheme.Launcher for the theme instead of AppTheme in order to load the app with a launch screen -->
-        <activity
-            android:name=".DemoListActivity"
-            android:exported="true"
-            android:label="@string/app_title"
-            android:theme="@style/AppTheme.Launcher"/>
 
         <!-- Demo activities -->
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarLayoutActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />

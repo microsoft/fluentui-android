@@ -2,6 +2,7 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,6 +25,9 @@ import com.microsoft.fluentui.icons.AvatarIcons
 import com.microsoft.fluentui.icons.avataricons.Icon
 import com.microsoft.fluentui.icons.avataricons.icon.Anonymous
 import com.microsoft.fluentui.icons.avataricons.icon.anonymous.Xxlarge
+import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
@@ -36,8 +40,9 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 class V2SegmentedControlActivity : V2DemoActivity() {
-    override var demoActivityLink =
-        "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/V2SegmentedControlActivity.kt"
+    init {
+        setupActivity(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -324,8 +329,12 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                 }
             }
         }
-    }
 
+        setBottomSheetContent {
+            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
+            BottomSheetWebView(mUrl)
+        }
+    }
 }
 
 @Composable
@@ -342,12 +351,15 @@ private fun template(
         chevronOrientation = ChevronOrientation(90f, 0f),
         trailingAccessoryContent = enableSwitch
     ) {
-        ListItem.SectionHeader(
-            title = label,
-            enableChevron = true,
-            enableContentOpenCloseTransition = true,
-            chevronOrientation = ChevronOrientation(90f, 0f),
-            trailingAccessoryContent = enableSwitch
+        Column(
+            modifier = Modifier.background(
+                FluentColor(
+                    light = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey98),
+                    dark = FluentGlobalTokens.neutralColor(FluentGlobalTokens.NeutralColorTokens.Grey8)
+                ).value(
+                    FluentTheme.themeMode
+                )
+            )
         ) {
             Row(
                 Modifier
