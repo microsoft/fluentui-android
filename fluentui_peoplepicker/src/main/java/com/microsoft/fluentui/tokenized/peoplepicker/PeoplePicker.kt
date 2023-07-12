@@ -39,12 +39,12 @@ import com.microsoft.fluentui.tokenized.persona.*
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun PeoplePicker(
-    onValueChange: (String, MutableList<PeoplePickerObject>) -> Unit,
+    onValueChange: (String, MutableList<PeoplePickerItemData>) -> Unit,
     modifier: Modifier = Modifier,
-    selectedPeople: MutableList<PeoplePickerObject> = mutableStateListOf(),
-    onBackPress: ((PeoplePickerObject) -> Unit)? = null,
-    onChipClick: ((PeoplePickerObject) -> Unit)? = null,
-    onChipCloseClick: ((PeoplePickerObject) -> Unit)? = null,
+    selectedPeople: MutableList<PeoplePickerItemData> = mutableStateListOf(),
+    onBackPress: ((PeoplePickerItemData) -> Unit)? = null,
+    onChipClick: ((PeoplePickerItemData) -> Unit)? = null,
+    onChipCloseClick: ((PeoplePickerItemData) -> Unit)? = null,
     chipValidation: (Person) -> PersonaChipStyle = { PersonaChipStyle.Neutral },
     onTextEntered: ((String) -> Unit)? = null,
     leadingAccessoryContent: (@Composable () -> Unit)? = null,
@@ -239,6 +239,6 @@ fun PeoplePicker(
     }
 }
 
-data class PeoplePickerObject(val person: Person, var initialSelected: Boolean = false) {
+data class PeoplePickerItemData(val person: Person, var initialSelected: Boolean = false) {
     var selected by mutableStateOf(initialSelected)
 }

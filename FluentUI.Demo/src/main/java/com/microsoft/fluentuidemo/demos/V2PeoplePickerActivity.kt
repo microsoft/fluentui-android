@@ -34,7 +34,7 @@ import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
-import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerObject
+import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerItemData
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -110,7 +110,7 @@ class V2PeoplePickerActivity : DemoActivity() {
         val snackbarState = remember { SnackbarState() }
         val scope = rememberCoroutineScope()
         var suggested by rememberSaveable { mutableStateOf(people) }
-        var selectedPeople = remember { mutableStateListOf<PeoplePickerObject>() }
+        var selectedPeople = remember { mutableStateListOf<PeoplePickerItemData>() }
         var suggestedPersona = mutableListOf<Persona>()
         var selectedPerson = mutableListOf<Person>()
         var errorPeople = mutableListOf<Person>()
@@ -162,7 +162,7 @@ class V2PeoplePickerActivity : DemoActivity() {
                             errorText = false
                     },
                     onTextEntered = {
-                        selectedPeople.add(PeoplePickerObject(Person(it, ""), false))
+                        selectedPeople.add(PeoplePickerItemData(Person(it, ""), false))
                     },
                     onBackPress = {
                         if (!it.selected) {
@@ -201,15 +201,20 @@ class V2PeoplePickerActivity : DemoActivity() {
                     )
             }
 
-            suggested.forEach {
+            suggested.forEach outer@{
                 var selected by mutableStateOf(false)
+                selectedPeople.forEach { selectedPerson ->
+                    if (selectedPerson.person.email == it.email){
+                        return@outer
+                    }
+                }
                 suggestedPersona.add(
                     Persona(
                         it,
                         "${it.firstName} ${it.lastName}",
                         subTitle = it.email,
                         onClick = {
-                            selectedPeople.add(PeoplePickerObject(it, selected))
+                            selectedPeople.add(PeoplePickerItemData(it, selected))
                             scope.launch {
                                 snackbarState.showSnackbar("Added ${it.firstName} ${it.lastName}")
                             }
