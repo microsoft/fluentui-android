@@ -16,7 +16,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -35,6 +34,7 @@ import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerItemData
+import com.microsoft.fluentui.tokenized.peoplepicker.rememberPeoplePickerState
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -107,10 +107,12 @@ class V2PeoplePickerActivity : DemoActivity() {
                 isActive = true, status = AvatarStatus.Blocked
             )
         )
+        var selectedPeople = rememberPeoplePickerState()
+
+
         val snackbarState = remember { SnackbarState() }
         val scope = rememberCoroutineScope()
         var suggested by rememberSaveable { mutableStateOf(people) }
-        var selectedPeople = remember { mutableStateListOf<PeoplePickerItemData>() }
         var suggestedPersona = mutableListOf<Persona>()
         var selectedPerson = mutableListOf<Person>()
         var errorPeople = mutableListOf<Person>()
@@ -148,25 +150,34 @@ class V2PeoplePickerActivity : DemoActivity() {
                     modifier = Modifier.weight(1f),
                     onChipClick = {
                         scope.launch {
-                            it.selected = !it.selected
+                            it.selected.value = !it.selected.value
                             snackbarState.showSnackbar("Clicked ${it.person.firstName} ${it.person.lastName}")
                         }
                     },
                     onChipCloseClick = {
                         selectedPeople.remove(it)
-                        errorPeople.forEach { errorPerson ->
-                            if (errorPerson == it.person)
-                                errorPeople.remove(errorPerson)
+                        run outer@{
+                            errorPeople.forEach { errorPerson ->
+                                if (errorPerson == it.person) {
+                                    errorPeople.remove(errorPerson)
+                                    return@outer
+                                }
+                            }
                         }
                         if (errorPeople.isEmpty())
                             errorText = false
                     },
                     onTextEntered = {
-                        selectedPeople.add(PeoplePickerItemData(Person(it, ""), false))
+                        selectedPeople.add(
+                            PeoplePickerItemData(
+                                Person(it, ""),
+                                mutableStateOf(false)
+                            )
+                        )
                     },
                     onBackPress = {
-                        if (!it.selected) {
-                            it.selected = !it.selected
+                        if (!it.selected.value) {
+                            it.selected.value = !it.selected.value
                         } else {
                             selectedPeople.remove(it)
                             errorPeople.forEach { errorPerson ->
@@ -202,9 +213,8 @@ class V2PeoplePickerActivity : DemoActivity() {
             }
 
             suggested.forEach outer@{
-                var selected by mutableStateOf(false)
                 selectedPeople.forEach { selectedPerson ->
-                    if (selectedPerson.person.email == it.email){
+                    if (selectedPerson.person.email == it.email) {
                         return@outer
                     }
                 }
@@ -214,9 +224,12 @@ class V2PeoplePickerActivity : DemoActivity() {
                         "${it.firstName} ${it.lastName}",
                         subTitle = it.email,
                         onClick = {
-                            selectedPeople.add(PeoplePickerItemData(it, selected))
+                            selectedPeople.add(PeoplePickerItemData(it, mutableStateOf(false)))
                             scope.launch {
-                                snackbarState.showSnackbar("Added ${it.firstName} ${it.lastName}")
+                                snackbarState.showSnackbar(
+                                    "Added ${it.firstName} ${it.lastName}",
+                                    enableDismiss = true
+                                )
                             }
                         }
                     )
