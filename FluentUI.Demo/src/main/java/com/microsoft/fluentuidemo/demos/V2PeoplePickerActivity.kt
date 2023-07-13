@@ -23,6 +23,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -118,6 +121,7 @@ class V2PeoplePickerActivity : DemoActivity() {
         var errorPeople = mutableListOf<Person>()
         var assistiveText by rememberSaveable { mutableStateOf(true) }
         var errorText by rememberSaveable { mutableStateOf(false) }
+        val focusManager = LocalFocusManager.current
 
         Column {
             Row(modifier = Modifier.padding(8.dp)) {
@@ -168,44 +172,34 @@ class V2PeoplePickerActivity : DemoActivity() {
                             errorText = false
                     },
                     onTextEntered = {
-                        selectedPeople.add(
-                            PeoplePickerItemData(
-                                Person(it, ""),
-                                mutableStateOf(false)
+                        if (it.isNotBlank() && it.isNotEmpty()) {
+                            selectedPeople.add(
+                                PeoplePickerItemData(
+                                    Person(it, ""),
+                                    mutableStateOf(false)
+                                )
                             )
-                        )
-                    },
-                    onBackPress = {
-                        if (!it.selected.value) {
-                            it.selected.value = !it.selected.value
-                        } else {
-                            selectedPeople.remove(it)
-                            errorPeople.forEach { errorPerson ->
-                                if (errorPerson == it.person)
-                                    errorPeople.remove(errorPerson)
-                            }
-                            if (errorPeople.isEmpty())
-                                errorText = false
+                        }else{
+                            focusManager.clearFocus()
                         }
                     },
-                    leadingAccessoryContent = {
-                        Icon(
-                            Icons.Filled.Person,
-                            contentDescription = "Person",
-                            modifier = Modifier
-                                .size(24.dp)
-                        )
-                    },
-                    trailingAccessoryContent = {
-                        Icon(
-                            Icons.Filled.Add,
-                            contentDescription = "Add",
-                            modifier = Modifier
-                                .size(24.dp)
-                        )
+                    onBackPress = {query, it->
+                        if(query.isEmpty() && it != null){
+                            if (!it.selected.value) {
+                                it.selected.value = !it.selected.value
+                            } else {
+                                selectedPeople.remove(it)
+                                errorPeople.forEach { errorPerson ->
+                                    if (errorPerson == it.person)
+                                        errorPeople.remove(errorPerson)
+                                }
+                                if (errorPeople.isEmpty())
+                                    errorText = false
+                            }
+                        }
                     },
                     label = "People Picker",
-                    searchHint = "Search People",
+                    searchHint = "Sea",
                     assistiveText = if (assistiveText) "This is a sample Assistive Text" else null,
                     errorString = if (errorText) "This is a sample Error text" else null,
 

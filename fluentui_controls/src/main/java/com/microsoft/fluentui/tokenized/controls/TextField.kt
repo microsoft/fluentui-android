@@ -1,10 +1,15 @@
 package com.microsoft.fluentui.tokenized.controls
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
@@ -16,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
@@ -40,6 +46,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.DividerTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TextFieldInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TextFieldTokens
 import com.microsoft.fluentui.tokenized.divider.Divider
+import kotlinx.coroutines.launch
 
 /**
  * API to create a customized TextField for users to edit text via software and hardware keyboard
@@ -73,6 +80,7 @@ import com.microsoft.fluentui.tokenized.divider.Divider
  * of the input. By default no visual transformation is applied.
  * @param textFieldTokens Optional Tokens to customize appearance of TextField.
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TextField(
     value: String,
@@ -81,6 +89,7 @@ fun TextField(
     hintText: String? = null,
     label: String? = null,
     assistiveText: String? = null,
+    leadingTextFieldComposable: @Composable (() -> Unit)? = null,
     trailingAccessoryText: String? = null,
     errorString: String? = null,
     leadingRestIcon: ImageVector? = null,
@@ -108,6 +117,10 @@ fun TextField(
         isFocused = isFocused,
         textAvailable = value.isNotEmpty()
     )
+
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
+
+    val scope = rememberCoroutineScope()
 
     val focusRequester = remember { FocusRequester() }
 
@@ -148,54 +161,72 @@ fun TextField(
             }
             Column(Modifier.weight(1F)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    BasicTextField(
-                        value = value,
-                        onValueChange = onValueChange,
+                    Row(
                         modifier = Modifier
-                            .padding(vertical = 12.dp)
-                            .weight(1F)
-                            .focusRequester(focusRequester)
-                            .onFocusChanged { state ->
-                                isFocused = false
-                                when {
-                                    state.isFocused ->
-                                        isFocused = true
+                            .weight(1f)
+                            .then(
+                                if (leadingTextFieldComposable != null) Modifier.horizontalScroll(
+                                    rememberScrollState()
+                                ) else Modifier
+                            ), verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        leadingTextFieldComposable?.invoke()
+                        BasicTextField(
+                            value = value,
+                            onValueChange = onValueChange,
+                            modifier = Modifier
+                                .padding(vertical = 12.dp)
+                                .focusRequester(focusRequester)
+                                .bringIntoViewRequester(bringIntoViewRequester)
+                                .onFocusEvent {
+                                    if (it.isFocused) {
+                                        scope.launch {
+                                            bringIntoViewRequester.bringIntoView()
+                                        }
+                                    }
                                 }
-                            },
-                        singleLine = true,
-                        keyboardOptions = keyboardOptions,
-                        keyboardActions = keyboardActions,
-                        visualTransformation = visualTransformation,
-                        decorationBox = @Composable { innerTextField ->
-                            if (value.isEmpty() && !hintText.isNullOrBlank()) {
-                                Box(
-                                    Modifier.fillMaxWidth(),
-                                    contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                        Alignment.CenterEnd
-                                    else
-                                        Alignment.CenterStart
-                                ) {
-                                    BasicText(
-                                        hintText,
-                                        style = token.hintTextTypography(textFieldInfo)
-                                            .merge(
-                                                TextStyle(
-                                                    color = token.hintColor(textFieldInfo)
+                                .onFocusChanged { state ->
+                                    isFocused = false
+                                    when {
+                                        state.isFocused ->
+                                            isFocused = true
+                                    }
+                                },
+                            singleLine = true,
+                            keyboardOptions = keyboardOptions,
+                            keyboardActions = keyboardActions,
+                            visualTransformation = visualTransformation,
+                            decorationBox = @Composable { innerTextField ->
+                                if (value.isEmpty() && !hintText.isNullOrBlank()) {
+                                    Box(
+                                        Modifier.fillMaxWidth(),
+                                        contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                                            Alignment.CenterEnd
+                                        else
+                                            Alignment.CenterStart
+                                    ) {
+                                        BasicText(
+                                            hintText,
+                                            style = token.hintTextTypography(textFieldInfo)
+                                                .merge(
+                                                    TextStyle(
+                                                        color = token.hintColor(textFieldInfo)
+                                                    )
                                                 )
-                                            )
-                                    )
+                                        )
+                                    }
                                 }
-                            }
-                            innerTextField()
-                        },
-                        textStyle = token.inputTextTypography(textFieldInfo).merge(
-                            TextStyle(
-                                color = token.inputTextColor(textFieldInfo),
-                                textDirection = TextDirection.ContentOrLtr
-                            )
-                        ),
-                        cursorBrush = token.cursorColor(textFieldInfo)
-                    )
+                                innerTextField()
+                            },
+                            textStyle = token.inputTextTypography(textFieldInfo).merge(
+                                TextStyle(
+                                    color = token.inputTextColor(textFieldInfo),
+                                    textDirection = TextDirection.ContentOrLtr
+                                )
+                            ),
+                            cursorBrush = token.cursorColor(textFieldInfo)
+                        )
+                    }
                     if (!trailingAccessoryText.isNullOrBlank()) {
                         Spacer(Modifier.requiredWidth(8.dp))
                         BasicText(
