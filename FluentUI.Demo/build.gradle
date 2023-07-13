@@ -116,9 +116,7 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${androidxRunner}"
     androidTestImplementation "androidx.test:rules:${androidxRunner}"
 
-
     implementation 'com.microsoft.design:fluent-system-icons:1.1.203@aar'
-
 
     //Robolectric
     testImplementation "org.robolectric:robolectric:${robolectric}"

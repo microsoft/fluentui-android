@@ -179,6 +179,18 @@ val V2DEMO = arrayListOf(
 
     )
 
+val DUO_DEMOS = arrayListOf(
+    Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
+    Demo(BOTTOM_SHEET, BottomSheetActivity::class),
+    Demo(CALENDAR_VIEW, CalendarViewActivity::class),
+    Demo(DRAWER, DrawerActivity::class),
+    Demo(PEOPLE_PICKER_VIEW, PeoplePickerViewActivity::class),
+    Demo(DATE_TIME_PICKER, DateTimePickerActivity::class),
+    Demo(POPUP_MENU, PopupMenuActivity::class),
+    Demo(SNACKBAR, SnackbarActivity::class),
+    Demo(TOOLTIP, TooltipActivity::class)
+)
+
 data class Demo(
     val title: String, val demoClass: KClass<out ComponentActivity>,
     val isNew: Boolean = false, val isModified: Boolean = false

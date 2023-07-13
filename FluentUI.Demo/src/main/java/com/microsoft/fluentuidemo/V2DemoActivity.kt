@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.viewinterop.AndroidView
 import com.microsoft.fluentui.compose.Scaffold
@@ -36,6 +37,7 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
+import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheet
 import com.microsoft.fluentui.tokenized.bottomsheet.BottomSheetValue
@@ -43,7 +45,6 @@ import com.microsoft.fluentui.tokenized.bottomsheet.rememberBottomSheetState
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
-import com.microsoft.fluentuidemo.AppTheme.AppBarMenu
 import kotlinx.coroutines.launch
 
 enum class Controls {
@@ -62,9 +63,9 @@ open class V2DemoActivity : ComponentActivity() {
             "https://github.com/microsoft/fluentui-android/blob/master/FluentUI.Demo/src/main/java/com/microsoft/fluentuidemo/demos/${activityClass::class.simpleName}.kt"
     }
 
-    private var content: @Composable () -> Unit = {}
-    fun setActivityContent(content: @Composable () -> Unit) {
-        this@V2DemoActivity.content = content
+    private var activityContent: @Composable () -> Unit = {}
+    fun setActivityContent(activityContent: @Composable () -> Unit) {
+        this@V2DemoActivity.activityContent = activityContent
     }
 
     private var bottomAppBar: @Composable (RowScope.() -> Unit)? = null
@@ -92,16 +93,14 @@ open class V2DemoActivity : ComponentActivity() {
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             ViewGroup.LayoutParams.MATCH_PARENT
                         )
-                        webViewClient = object : WebViewClient() {
-
-                        }
-                        Thread.sleep(2000)
+                        webViewClient = WebViewClient()
                         loadUrl(mUrl)
                     }
                 },
                 update = {
                     it.loadUrl(mUrl)
-                })
+                }
+            )
         }
     }
 
@@ -112,7 +111,7 @@ open class V2DemoActivity : ComponentActivity() {
         val demoTitle = intent.getSerializableExtra(DEMO_TITLE) as String
         setContent {
             FluentTheme {
-                AppTheme.SetStatusBarColor()
+                SetStatusBarColor()
 
                 val bottomSheetState = rememberBottomSheetState(BottomSheetValue.Hidden)
                 val scope = rememberCoroutineScope()
@@ -123,7 +122,7 @@ open class V2DemoActivity : ComponentActivity() {
                             title = demoTitle,
                             navigationIcon = FluentIcon(
                                 SearchBarIcons.Arrowback,
-                                contentDescription = "Navigate Back",
+                                contentDescription = stringResource(id = R.string.app_bar_layout_navigation_icon_clicked),
                                 onClick = { Navigation.backNavigation(this) }
                             ),
                             style = AppTheme.appThemeStyle.value,
@@ -134,7 +133,7 @@ open class V2DemoActivity : ComponentActivity() {
                                     val uriHandler = LocalUriHandler.current
                                     Icon(
                                         painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
-                                        contentDescription = "Control Token Icon",
+                                        contentDescription = stringResource(id = R.string.demo_activity_github_link),
                                         modifier = Modifier.padding(
                                             FluentGlobalTokens.size(
                                                 FluentGlobalTokens.SizeTokens.Size100
@@ -166,6 +165,8 @@ open class V2DemoActivity : ComponentActivity() {
                         var isHiddenBottomSheet by remember { mutableStateOf(true) }
                         FloatingActionButton(
                             icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_info_24_regular),
+                            text = stringResource(id = R.string.control_tokens_details),
+                            state = FABState.Collapsed,
                             modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             onClick = {
                                 isHiddenBottomSheet = if (isHiddenBottomSheet) {
@@ -189,14 +190,14 @@ open class V2DemoActivity : ComponentActivity() {
                             sheetContent = {
                                 val controlsList = listOf(
                                     PillMetaData(
-                                        text = "Params",
+                                        text = stringResource(id = R.string.parameters),
                                         enabled = true,
                                         onClick = {
                                             selectedControl = Controls.Params
                                         }
                                     ),
                                     PillMetaData(
-                                        text = "Control Tokens",
+                                        text = stringResource(id = R.string.control_tokens),
                                         enabled = true,
                                         onClick = {
                                             selectedControl = Controls.ControlTokens
@@ -219,7 +220,7 @@ open class V2DemoActivity : ComponentActivity() {
                             },
                             sheetState = bottomSheetState
                         ) {
-                            content()
+                            activityContent()
                         }
                     }
                 }

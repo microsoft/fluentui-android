@@ -2,11 +2,9 @@ package com.example.theme.token
 
 
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
-import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.TokenSet
 
 class OneNoteAliasTokens : AliasTokens() {
@@ -35,8 +33,133 @@ class OneNoteAliasTokens : AliasTokens() {
             }
         }
     }
-}
 
+    override val brandBackgroundColor: TokenSet<FluentAliasTokens.BrandBackgroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color100]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color150]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color50],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color30],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected ->
+                    FluentColor(
+                        light = Color.Black,
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground3 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color140],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color30]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color120],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color20]
+                    )
+            }
+        }
+    }
+
+    override val brandForegroundColor: TokenSet<FluentAliasTokens.BrandForegroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color100]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color150]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color100]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color130],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color110],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color30]
+                    )
+            }
+        }
+    }
+
+    override val brandStroke: TokenSet<FluentAliasTokens.BrandStrokeColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color100]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color10],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color150]
+                    )
+            }
+        }
+    }
+}
 
 class WordAliasTokens : AliasTokens() {
     override val brandColor: TokenSet<FluentAliasTokens.BrandColorTokens, Color> by lazy {
@@ -45,7 +168,7 @@ class WordAliasTokens : AliasTokens() {
                 FluentAliasTokens.BrandColorTokens.Color10 -> Color(0xFF071225)
                 FluentAliasTokens.BrandColorTokens.Color20 -> Color(0xFF0C2145)
                 FluentAliasTokens.BrandColorTokens.Color30 -> Color(0xFF0E336A)
-                FluentAliasTokens.BrandColorTokens.Color40 -> Color(0xFF1942BA)
+                FluentAliasTokens.BrandColorTokens.Color40 -> Color(0xFF19428A)
                 FluentAliasTokens.BrandColorTokens.Color50 -> Color(0xFF13458F)
                 FluentAliasTokens.BrandColorTokens.Color60 -> Color(0xFF1651AA)
                 FluentAliasTokens.BrandColorTokens.Color70 -> Color(0xFF2461CA)
@@ -61,6 +184,132 @@ class WordAliasTokens : AliasTokens() {
                 else -> {
                     super.brandColor[token]
                 }
+            }
+        }
+    }
+
+    override val brandBackgroundColor: TokenSet<FluentAliasTokens.BrandBackgroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color120]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color20],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground3 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color140],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color30]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color160],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color30]
+                    )
+            }
+        }
+    }
+
+    override val brandForegroundColor: TokenSet<FluentAliasTokens.BrandForegroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color120]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color110],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color90]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color150],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color40]
+                    )
+            }
+        }
+    }
+
+    override val brandStroke: TokenSet<FluentAliasTokens.BrandStrokeColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color120]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
             }
         }
     }
@@ -85,10 +334,136 @@ class ExcelAliasTokens : AliasTokens() {
                 FluentAliasTokens.BrandColorTokens.Color130 -> Color(0xFF55B17E)
                 FluentAliasTokens.BrandColorTokens.Color140 -> Color(0xFF60BD82)
                 FluentAliasTokens.BrandColorTokens.Color150 -> Color(0xFFA0D8B9)
-                FluentAliasTokens.BrandColorTokens.Color160 -> Color(0xFFCAEADB)
+                FluentAliasTokens.BrandColorTokens.Color160 -> Color(0xFFCAEAD8)
                 else -> {
                     super.brandColor[token]
                 }
+            }
+        }
+    }
+
+    override val brandBackgroundColor: TokenSet<FluentAliasTokens.BrandBackgroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color20],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground3 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color160],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color30]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color150],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color40]
+                    )
+            }
+        }
+    }
+
+    override val brandForegroundColor: TokenSet<FluentAliasTokens.BrandForegroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color50],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color120],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color90]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color160],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color60]
+                    )
+            }
+        }
+    }
+
+    override val brandStroke: TokenSet<FluentAliasTokens.BrandStrokeColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
             }
         }
     }
@@ -117,6 +492,132 @@ class PowerPointAliasTokens : AliasTokens() {
                 else -> {
                     super.brandColor[token]
                 }
+            }
+        }
+    }
+
+    override val brandBackgroundColor: TokenSet<FluentAliasTokens.BrandBackgroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color20],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground2Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground3 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = Color.Unspecified
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color160],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color40]
+                    )
+
+                FluentAliasTokens.BrandBackgroundColorTokens.BrandBackgroundDisabled ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color150],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color40]
+                    )
+            }
+        }
+    }
+
+    override val brandForegroundColor: TokenSet<FluentAliasTokens.BrandForegroundColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundTint ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color150]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color130],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color90]
+                    )
+
+                FluentAliasTokens.BrandForegroundColorTokens.BrandForegroundDisabled2 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color150],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color40]
+                    )
+            }
+        }
+    }
+
+    override val brandStroke: TokenSet<FluentAliasTokens.BrandStrokeColorTokens, FluentColor> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1 ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color80],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color130]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Pressed ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color40],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color160]
+                    )
+
+                FluentAliasTokens.BrandStrokeColorTokens.BrandStroke1Selected ->
+                    FluentColor(
+                        light = brandColor[FluentAliasTokens.BrandColorTokens.Color60],
+                        dark = brandColor[FluentAliasTokens.BrandColorTokens.Color140]
+                    )
             }
         }
     }
@@ -149,4 +650,3 @@ class M365AliasTokens : AliasTokens() {
         }
     }
 }
-

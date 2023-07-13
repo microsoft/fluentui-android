@@ -61,9 +61,7 @@ fun TabBar(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
                 .fillMaxWidth()
-
         ) {
-//            Spacer(modifier = Modifier.width(16.dp).height(IntrinsicSize.Max))
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex
                 TabItem(

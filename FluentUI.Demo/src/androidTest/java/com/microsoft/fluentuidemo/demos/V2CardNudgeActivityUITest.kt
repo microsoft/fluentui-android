@@ -9,6 +9,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import androidx.test.platform.app.InstrumentationRegistry
 import com.microsoft.fluentuidemo.DemoActivity
+import com.microsoft.fluentuidemo.V2DemoActivity
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -44,6 +45,7 @@ class V2CardNudgeActivityUITest {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
         val intent = Intent(targetContext, V2CardNudgeActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
+        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
         return intent
     }
 

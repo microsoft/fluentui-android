@@ -47,6 +47,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.window.DialogProperties
 import com.microsoft.fluentui.compose.Scaffold
@@ -63,6 +64,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
+import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
@@ -74,7 +76,6 @@ import com.microsoft.fluentui.tokenized.menu.Dialog
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
-import com.microsoft.fluentuidemo.AppTheme.AppBarMenu
 import com.microsoft.fluentuidemo.CustomizedTokens.listItemTokens
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -85,7 +86,6 @@ enum class Components {
 }
 
 class V2DemoListActivity : ComponentActivity() {
-
     @Composable
     fun GetDialogContent() {
         Column(
@@ -105,13 +105,13 @@ class V2DemoListActivity : ComponentActivity() {
 
             Row {
                 Label(
-                    text = "For updates on Release Notes, ",
+                    text = stringResource(id = R.string.release_notes_updates),
                     textStyle = FluentAliasTokens.TypographyTokens.Body2
                 )
 
                 val uriHandler = LocalUriHandler.current
                 Label(
-                    text = "click here.",
+                    text = stringResource(id = R.string.click_here),
                     modifier = Modifier.clickable { uriHandler.openUri("https://github.com/microsoft/fluentui-android/releases") },
                     textStyle = FluentAliasTokens.TypographyTokens.Body2,
                     colorStyle = ColorStyle.Brand
@@ -142,7 +142,7 @@ class V2DemoListActivity : ComponentActivity() {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.fluent_logo),
-                    contentDescription = "Fluent UI Demo",
+                    contentDescription = stringResource(id = R.string.app_name),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .size(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size560))
@@ -151,7 +151,7 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 Label(
-                    text = "Fluent UI Demo",
+                    text = stringResource(id = R.string.app_name),
                     textStyle = FluentAliasTokens.TypographyTokens.Title3
                 )
 
@@ -183,7 +183,7 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 Label(
-                    text = "Open source cross platform Design System.",
+                    text = stringResource(id = R.string.open_source_cross_platform),
                     textStyle = FluentAliasTokens.TypographyTokens.Title1,
                     modifier = Modifier
                         .padding(end = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size480))
@@ -198,7 +198,7 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 BasicText(
-                    text = "Intuitive & Powerful.",
+                    text = stringResource(id = R.string.intuitive_and_powerful),
                     style = FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Title1].copy(
                         color = FluentColor(Color(0XFF2F3441), Color(0XFFA8AEBC)).value()
                     )
@@ -215,7 +215,7 @@ class V2DemoListActivity : ComponentActivity() {
                 )
             ) {
                 ListItem.Item(
-                    text = "Design Tokens",
+                    text = stringResource(id = R.string.design_tokens),
                     onClick = {
                         val packageContext = this@V2DemoListActivity
                         Navigation.forwardNavigation(
@@ -227,7 +227,7 @@ class V2DemoListActivity : ComponentActivity() {
                     leadingAccessoryContent = {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_fluent_24_regular),
-                            contentDescription = "Design Tokens Icon",
+                            contentDescription = stringResource(id = R.string.design_tokens),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -235,11 +235,11 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 ListItem.Item(
-                    text = "Release Notes",
+                    text = stringResource(id = R.string.release_notes),
                     leadingAccessoryContent = {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
-                            contentDescription = "Release Notes Icon",
+                            contentDescription = stringResource(id = R.string.release_notes),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -249,18 +249,18 @@ class V2DemoListActivity : ComponentActivity() {
 
                 val uriHandler = LocalUriHandler.current
                 ListItem.Item(
-                    text = "Github Repo",
+                    text = stringResource(id = R.string.github_repo),
                     leadingAccessoryContent = {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_book_number_24_regular),
-                            contentDescription = "GitHub Repo Icon",
+                            contentDescription = stringResource(id = R.string.github_repo),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
                     trailingAccessoryContent = {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_link_24_regular),
-                            contentDescription = "Fluent Link",
+                            contentDescription = stringResource(id = R.string.github_repo_link),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -269,11 +269,11 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 ListItem.Item(
-                    text = "Your Feedback",
+                    text = stringResource(id = R.string.your_feedback),
                     leadingAccessoryContent = {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_person_feedback_24_regular),
-                            contentDescription = "Feedback Icon",
+                            contentDescription = stringResource(id = R.string.github_repo),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
@@ -324,7 +324,7 @@ class V2DemoListActivity : ComponentActivity() {
                         val buttonBarList = mutableListOf<PillMetaData>()
                         buttonBarList.add(
                             PillMetaData(
-                                text = "V1 Components",
+                                text = stringResource(id = R.string.v1_components),
                                 enabled = true,
                                 onClick = {
                                     selectedComponents = Components.V1
@@ -334,7 +334,7 @@ class V2DemoListActivity : ComponentActivity() {
                         )
                         buttonBarList.add(
                             PillMetaData(
-                                text = "V2 Components",
+                                text = stringResource(id = R.string.v2_components),
                                 enabled = true,
                                 onClick = {
                                     selectedComponents = Components.V2
@@ -343,17 +343,17 @@ class V2DemoListActivity : ComponentActivity() {
                             )
                         )
 
-                        AppTheme.SetStatusBarColor()
+                        SetStatusBarColor()
                         AppBar(
-                            title = "Fluent UI Demo",
+                            title = stringResource(id = R.string.app_name),
                             navigationIcon = FluentIcon(
                                 SearchBarIcons.Arrowback,
-                                contentDescription = "Navigate Back",
+                                contentDescription = stringResource(id = R.string.app_bar_layout_navigation_icon_clicked)
                             ),
                             appBarSize = AppBarSize.Large,
                             logo = {
                                 Image(painter = painterResource(id = R.drawable.fluent_logo),
-                                    contentDescription = "Fluent Logo",
+                                    contentDescription = stringResource(id = R.string.fluent_logo),
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
                                         .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100))
@@ -367,7 +367,7 @@ class V2DemoListActivity : ComponentActivity() {
                             rightAccessoryView = {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
-                                    contentDescription = "Search Icon",
+                                    contentDescription = stringResource(id = R.string.app_bar_layout_menu_search),
                                     modifier = Modifier.padding(
                                         FluentGlobalTokens.size(
                                             FluentGlobalTokens.SizeTokens.Size100
@@ -426,6 +426,8 @@ class V2DemoListActivity : ComponentActivity() {
                     floatingActionButton = {
                         FloatingActionButton(
                             icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
+                            text = stringResource(id = R.string.release_notes),
+                            state = FABState.Collapsed,
                             modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
                             onClick = { showDialog = !showDialog }
                         )
@@ -460,7 +462,7 @@ class V2DemoListActivity : ComponentActivity() {
                                             )
 
                                             Badge(
-                                                text = "New",
+                                                text = stringResource(id = R.string.new_badge),
                                                 badgeType = BadgeType.List,
                                             )
                                         }
@@ -475,7 +477,7 @@ class V2DemoListActivity : ComponentActivity() {
                                             )
 
                                             Badge(
-                                                text = "Modified",
+                                                text = stringResource(id = R.string.modified_badge),
                                                 badgeType = BadgeType.List,
                                             )
                                         }

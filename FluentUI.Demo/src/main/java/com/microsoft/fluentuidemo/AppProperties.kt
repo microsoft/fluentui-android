@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.window.DialogProperties
 import androidx.core.app.NavUtils.navigateUpTo
 import androidx.core.view.WindowCompat
@@ -53,10 +54,10 @@ import com.microsoft.fluentui.tokenized.menu.Menu
 object AppTheme : ViewModel() {
     lateinit var appThemeStyle: State<FluentStyle>
     private var themeStyle: MutableLiveData<FluentStyle> = MutableLiveData(FluentStyle.Neutral)
-    private var selectedThemeIndex_: MutableLiveData<Int> = MutableLiveData(0)
-    private var selectedThemeMode_: MutableLiveData<ThemeMode> = MutableLiveData(ThemeMode.Auto)
+    var selectedThemeIndex_: MutableLiveData<Int> = MutableLiveData(0)
+    var selectedThemeMode_: MutableLiveData<ThemeMode> = MutableLiveData(ThemeMode.Auto)
 
-    private fun updateThemeStyle(overrideThemeStyle: FluentStyle) {
+    fun updateThemeStyle(overrideThemeStyle: FluentStyle) {
         themeStyle.value = overrideThemeStyle
     }
 
@@ -64,231 +65,229 @@ object AppTheme : ViewModel() {
     fun observeThemeStyle(initial: FluentStyle): State<FluentStyle> {
         return this.themeStyle.observeAsState(initial)
     }
+}
 
-    @Composable
-    fun AppBarMenu() {
-        var expandedMenu by remember { mutableStateOf(false) }
-        Icon(
-            painter = painterResource(id = R.drawable.ic_fluent_more_vertical_24_regular),
-            contentDescription = "More",
-            modifier = Modifier
-                .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
-                .clickable { expandedMenu = true },
-            tint = if (appThemeStyle.value == FluentStyle.Neutral) {
-                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
-                    FluentTheme.themeMode
-                )
-            } else {
-                FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
-                    FluentTheme.themeMode
-                )
-            }
-        )
-        Menu(
-            opened = expandedMenu,
-            onDismissRequest = { expandedMenu = false },
-        ) {
-            Column(
-                modifier = Modifier.verticalScroll(rememberScrollState())
-            ) {
-                var accentEnabled by remember { mutableStateOf(false) }
-                ListItem.Item(
-                    text = "Accent",
-                    onClick = {
-                        accentEnabled = !accentEnabled
-                        if (accentEnabled) {
-                            updateThemeStyle(
-                                FluentStyle.Brand
-                            )
-                        } else {
-                            updateThemeStyle(
-                                FluentStyle.Neutral
-                            )
-                        }
-                    },
-                    trailingAccessoryContent = {
-                        ToggleSwitch(
-                            onValueChange = {
-                                accentEnabled = it
-                                if (it) {
-                                    updateThemeStyle(
-                                        FluentStyle.Brand
-                                    )
-                                } else {
-                                    updateThemeStyle(
-                                        FluentStyle.Neutral
-                                    )
-                                }
-                            },
-                            checkedState = appThemeStyle.value == FluentStyle.Brand,
-                        )
-                    },
-                    border = BorderType.Bottom,
-                    listItemTokens = CustomizedTokens.listItemTokens
-                )
-
-                var showAppearanceDialog by remember { mutableStateOf(false) }
-                ListItem.Item(
-                    text = "Appearance",
-                    leadingAccessoryContent = {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_dark_theme_24_regular),
-                            contentDescription = "Appearance Icon",
-                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
-                        )
-                    },
-                    onClick = { showAppearanceDialog = !showAppearanceDialog },
-                    listItemTokens = CustomizedTokens.listItemTokens
-                )
-
-                if (showAppearanceDialog) {
-                    Dialog(
-                        dialogProperties = DialogProperties(
-                            dismissOnClickOutside = true,
-                            dismissOnBackPress = true
-                        ),
-                        onDismiss = { showAppearanceDialog = !showAppearanceDialog },
-                    ) {
-                        SetAppThemeMode()
-                    }
-                }
-
-                ListItem.SectionHeader(
-                    title = "Choose your brand theme:",
-                    enableChevron = false,
-                    style = SectionHeaderStyle.Subtle,
-                    listItemTokens = CustomizedTokens.listItemTokens
-                )
-
-                SetAppTheme()
-            }
+@Composable
+fun AppBarMenu() {
+    var expandedMenu by remember { mutableStateOf(false) }
+    Icon(
+        painter = painterResource(id = R.drawable.ic_fluent_more_vertical_24_regular),
+        contentDescription = stringResource(id = R.string.app_bar_more),
+        modifier = Modifier
+            .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
+            .clickable { expandedMenu = true },
+        tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
+            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
+                FluentTheme.themeMode
+            )
+        } else {
+            FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value(
+                FluentTheme.themeMode
+            )
         }
-    }
-
-    @Composable
-    fun SetAppTheme() {
-        val selectedThemeIndex by selectedThemeIndex_.observeAsState()
-        val themesList = arrayOf(
-            Pair(AliasTokens(), "Fluent Brand"),
-            Pair(OneNoteAliasTokens(), "One Note"),
-            Pair(WordAliasTokens(), "Word"),
-            Pair(ExcelAliasTokens(), "Excel"),
-            Pair(PowerPointAliasTokens(), "PowerPoint"),
-            Pair(M365AliasTokens(), "M365")
-        )
-
-        themesList.forEachIndexed { index, theme ->
+    )
+    Menu(
+        opened = expandedMenu,
+        onDismissRequest = { expandedMenu = false },
+    ) {
+        Column(
+            modifier = Modifier.verticalScroll(rememberScrollState())
+        ) {
+            var accentEnabled by remember { mutableStateOf(false) }
             ListItem.Item(
+                text = stringResource(id = R.string.accent),
                 onClick = {
-                    FluentTheme.updateAliasTokens(theme.first)
-                    selectedThemeIndex_.value = index
+                    accentEnabled = !accentEnabled
+                    if (accentEnabled) {
+                        AppTheme.updateThemeStyle(
+                            FluentStyle.Brand
+                        )
+                    } else {
+                        AppTheme.updateThemeStyle(
+                            FluentStyle.Neutral
+                        )
+                    }
                 },
-                text = theme.second,
-                leadingAccessoryContent = {
-                    RadioButton(
-                        selected = selectedThemeIndex == index,
-                        onClick = {
-                            FluentTheme.updateAliasTokens(theme.first)
-                            selectedThemeIndex_.value = index
-                        },
-                        radioButtonToken = object : RadioButtonTokens() {
-                            @Composable
-                            override fun backgroundBrush(radioButtonInfo: RadioButtonInfo): StateBrush {
-                                return StateBrush(
-                                    rest = SolidColor(theme.first.brandColor[FluentAliasTokens.BrandColorTokens.Color80]),
-                                    selected = SolidColor(theme.first.brandColor[FluentAliasTokens.BrandColorTokens.Color80])
+                trailingAccessoryContent = {
+                    ToggleSwitch(
+                        onValueChange = {
+                            accentEnabled = it
+                            if (it) {
+                                AppTheme.updateThemeStyle(
+                                    FluentStyle.Brand
+                                )
+                            } else {
+                                AppTheme.updateThemeStyle(
+                                    FluentStyle.Neutral
                                 )
                             }
-                        }
+                        },
+                        checkedState = AppTheme.appThemeStyle.value == FluentStyle.Brand,
                     )
                 },
+                border = BorderType.Bottom,
                 listItemTokens = CustomizedTokens.listItemTokens
             )
-        }
-    }
 
-    @Composable
-    fun SetAppThemeMode() {
-        Column {
+            var showAppearanceDialog by remember { mutableStateOf(false) }
+            ListItem.Item(
+                text = stringResource(id = R.string.appearance),
+                leadingAccessoryContent = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_dark_theme_24_regular),
+                        contentDescription = stringResource(id = R.string.appearance),
+                        tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                    )
+                },
+                onClick = { showAppearanceDialog = !showAppearanceDialog },
+                listItemTokens = CustomizedTokens.listItemTokens
+            )
+
+            if (showAppearanceDialog) {
+                Dialog(
+                    dialogProperties = DialogProperties(
+                        dismissOnClickOutside = true,
+                        dismissOnBackPress = true
+                    ),
+                    onDismiss = { showAppearanceDialog = !showAppearanceDialog },
+                ) {
+                    SetAppThemeMode()
+                }
+            }
+
             ListItem.SectionHeader(
-                title = "Choose Appearance",
+                title = stringResource(id = R.string.choose_brand_theme),
                 enableChevron = false,
+                style = SectionHeaderStyle.Subtle,
                 listItemTokens = CustomizedTokens.listItemTokens
             )
-            val selectedThemeMode by selectedThemeMode_.observeAsState()
-            ListItem.Item(
-                text = "System Default",
-                onClick = {
-                    selectedThemeMode_.value = ThemeMode.Auto
-                    FluentTheme.updateThemeMode(ThemeMode.Auto)
-                },
-                leadingAccessoryContent = {
-                    RadioButton(
-                        selected = selectedThemeMode == ThemeMode.Auto,
-                        onClick = {
-                            selectedThemeMode_.value = ThemeMode.Auto
-                            FluentTheme.updateThemeMode(ThemeMode.Auto)
-                        },
-                    )
-                },
-                listItemTokens = CustomizedTokens.listItemTokens
-            )
-
-            ListItem.Item(
-                text = "Light",
-                onClick = {
-                    selectedThemeMode_.value = ThemeMode.Light
-                    FluentTheme.updateThemeMode(ThemeMode.Light)
-                },
-                leadingAccessoryContent = {
-                    RadioButton(
-                        selected = selectedThemeMode == ThemeMode.Light,
-                        onClick = {
-                            selectedThemeMode_.value = ThemeMode.Light
-                            FluentTheme.updateThemeMode(ThemeMode.Light)
-                        },
-                    )
-                },
-                listItemTokens = CustomizedTokens.listItemTokens
-            )
-
-            ListItem.Item(
-                text = "Dark",
-                onClick = {
-                    selectedThemeMode_.value = ThemeMode.Dark
-                    FluentTheme.updateThemeMode(ThemeMode.Dark)
-                },
-                leadingAccessoryContent = {
-                    RadioButton(
-                        selected = selectedThemeMode == ThemeMode.Dark,
-                        onClick = {
-                            selectedThemeMode_.value = ThemeMode.Dark
-                            FluentTheme.updateThemeMode(ThemeMode.Dark)
-                        },
-                    )
-                },
-                listItemTokens = CustomizedTokens.listItemTokens
-            )
+            SetAppTheme()
         }
-
     }
+}
 
-    @Composable
-    fun SetStatusBarColor() {
-        appThemeStyle = observeThemeStyle(initial = FluentStyle.Neutral)
-        val view = LocalView.current
-        val window = (view.context as Activity).window
-        val insets = WindowCompat.getInsetsController(window, view)
-        window.statusBarColor = if (appThemeStyle.value == FluentStyle.Brand)
-            FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value()
-                .toArgb()
-        else
-            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value()
-                .toArgb()
+@Composable
+fun SetAppTheme() {
+    val selectedThemeIndex by AppTheme.selectedThemeIndex_.observeAsState()
+    val themesList = arrayOf(
+        Pair(AliasTokens(), stringResource(id = R.string.fluent_brand_theme)),
+        Pair(OneNoteAliasTokens(), stringResource(id = R.string.one_note_theme)),
+        Pair(WordAliasTokens(), stringResource(id = R.string.word_theme)),
+        Pair(ExcelAliasTokens(), stringResource(id = R.string.excel_theme)),
+        Pair(PowerPointAliasTokens(), stringResource(id = R.string.powerpoint_theme)),
+        Pair(M365AliasTokens(), stringResource(id = R.string.m365_theme))
+    )
 
-        insets?.isAppearanceLightStatusBars =
-            (!isSystemInDarkTheme() && appThemeStyle.value != FluentStyle.Brand && selectedThemeMode_.value != ThemeMode.Dark) || (isSystemInDarkTheme() && selectedThemeMode_.value == ThemeMode.Light && appThemeStyle.value != FluentStyle.Brand)
+    themesList.forEachIndexed { index, theme ->
+        ListItem.Item(
+            onClick = {
+                FluentTheme.updateAliasTokens(theme.first)
+                AppTheme.selectedThemeIndex_.value = index
+            },
+            text = theme.second,
+            leadingAccessoryContent = {
+                RadioButton(
+                    selected = selectedThemeIndex == index,
+                    onClick = {
+                        FluentTheme.updateAliasTokens(theme.first)
+                        AppTheme.selectedThemeIndex_.value = index
+                    },
+                    radioButtonToken = object : RadioButtonTokens() {
+                        @Composable
+                        override fun backgroundBrush(radioButtonInfo: RadioButtonInfo): StateBrush {
+                            return StateBrush(
+                                rest = SolidColor(theme.first.brandColor[FluentAliasTokens.BrandColorTokens.Color80]),
+                                selected = SolidColor(theme.first.brandColor[FluentAliasTokens.BrandColorTokens.Color80])
+                            )
+                        }
+                    }
+                )
+            },
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
     }
+}
+
+@Composable
+fun SetAppThemeMode() {
+    Column {
+        ListItem.SectionHeader(
+            title = stringResource(id = R.string.choose_appearance),
+            enableChevron = false,
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+        val selectedThemeMode by AppTheme.selectedThemeMode_.observeAsState()
+        ListItem.Item(
+            text = stringResource(id = R.string.appearance_system_default),
+            onClick = {
+                AppTheme.selectedThemeMode_.value = ThemeMode.Auto
+                FluentTheme.updateThemeMode(ThemeMode.Auto)
+            },
+            leadingAccessoryContent = {
+                RadioButton(
+                    selected = selectedThemeMode == ThemeMode.Auto,
+                    onClick = {
+                        AppTheme.selectedThemeMode_.value = ThemeMode.Auto
+                        FluentTheme.updateThemeMode(ThemeMode.Auto)
+                    },
+                )
+            },
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+
+        ListItem.Item(
+            text = stringResource(id = R.string.appearance_light),
+            onClick = {
+                AppTheme.selectedThemeMode_.value = ThemeMode.Light
+                FluentTheme.updateThemeMode(ThemeMode.Light)
+            },
+            leadingAccessoryContent = {
+                RadioButton(
+                    selected = selectedThemeMode == ThemeMode.Light,
+                    onClick = {
+                        AppTheme.selectedThemeMode_.value = ThemeMode.Light
+                        FluentTheme.updateThemeMode(ThemeMode.Light)
+                    },
+                )
+            },
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+
+        ListItem.Item(
+            text = stringResource(id = R.string.appearance_dark),
+            onClick = {
+                AppTheme.selectedThemeMode_.value = ThemeMode.Dark
+                FluentTheme.updateThemeMode(ThemeMode.Dark)
+            },
+            leadingAccessoryContent = {
+                RadioButton(
+                    selected = selectedThemeMode == ThemeMode.Dark,
+                    onClick = {
+                        AppTheme.selectedThemeMode_.value = ThemeMode.Dark
+                        FluentTheme.updateThemeMode(ThemeMode.Dark)
+                    },
+                )
+            },
+            listItemTokens = CustomizedTokens.listItemTokens
+        )
+    }
+}
+
+@Composable
+fun SetStatusBarColor() {
+    AppTheme.appThemeStyle = AppTheme.observeThemeStyle(initial = FluentStyle.Neutral)
+    val view = LocalView.current
+    val window = (view.context as Activity).window
+    val insets = WindowCompat.getInsetsController(window, view)
+    window.statusBarColor = if (AppTheme.appThemeStyle.value == FluentStyle.Brand)
+        FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value()
+            .toArgb()
+    else
+        FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value()
+            .toArgb()
+
+    insets?.isAppearanceLightStatusBars =
+        (!isSystemInDarkTheme() && AppTheme.appThemeStyle.value != FluentStyle.Brand && AppTheme.selectedThemeMode_.value != ThemeMode.Dark) || (isSystemInDarkTheme() && AppTheme.selectedThemeMode_.value == ThemeMode.Light && AppTheme.appThemeStyle.value != FluentStyle.Brand)
 }
 
 
