@@ -157,7 +157,8 @@ class V2DemoListActivity : ComponentActivity() {
 
                 Label(
                     text = String.format(getString(R.string.sdk_version, BuildConfig.VERSION_NAME)),
-                    modifier = Modifier.background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value()),
+                    modifier = Modifier
+                        .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value()),
                     textStyle = FluentAliasTokens.TypographyTokens.Caption1
                 )
             }
@@ -220,7 +221,7 @@ class V2DemoListActivity : ComponentActivity() {
                         val packageContext = this@V2DemoListActivity
                         Navigation.forwardNavigation(
                             packageContext,
-                            V2DesignTokens::class.java,
+                            V2DesignTokensActivity::class.java,
                             Pair(V2DemoActivity.DEMO_TITLE, "V2 Design Token")
                         )
                     },
@@ -310,7 +311,7 @@ class V2DemoListActivity : ComponentActivity() {
 
                 var searchModeEnabled by rememberSaveable { mutableStateOf(false) }
                 val enableButtonBar by rememberSaveable { mutableStateOf(true) }
-                var selectedComponents by remember { mutableStateOf(Components.V2) }
+                var selectedComponents by rememberSaveable { mutableStateOf(Components.V2) }
                 var filteredDemoList by remember { mutableStateOf(V2DEMO.toMutableList()) }
 
                 Scaffold(
@@ -363,7 +364,7 @@ class V2DemoListActivity : ComponentActivity() {
                                 )
                             },
                             searchMode = searchModeEnabled,
-                            style = AppTheme.appThemeStyle.value,
+                            style = AppThemeViewModel.appThemeStyle.value,
                             rightAccessoryView = {
                                 Icon(
                                     painter = painterResource(id = R.drawable.ic_fluent_search_24_regular),
@@ -374,7 +375,7 @@ class V2DemoListActivity : ComponentActivity() {
                                         )
                                     ),
                                     onClick = { searchModeEnabled = true },
-                                    tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
+                                    tint = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Neutral) {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
                                     } else {
                                         FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundLightStatic].value()
@@ -404,7 +405,7 @@ class V2DemoListActivity : ComponentActivity() {
                                                 }.toMutableList()
                                             }
                                         },
-                                        style = AppTheme.appThemeStyle.value,
+                                        style = AppThemeViewModel.appThemeStyle.value,
                                         navigationIconCallback = { searchModeEnabled = false },
                                         focusByDefault = true
                                     )
@@ -413,23 +414,13 @@ class V2DemoListActivity : ComponentActivity() {
                             bottomBar = if (enableButtonBar) {
                                 {
                                     PillTabs(
-                                        style = AppTheme.appThemeStyle.value,
+                                        style = AppThemeViewModel.appThemeStyle.value,
                                         metadataList = buttonBarList,
                                         selectedIndex = selectedComponents.ordinal
                                     )
                                 }
                             } else null,
                             appTitleDelta = appTitleDelta
-                        )
-                    },
-
-                    floatingActionButton = {
-                        FloatingActionButton(
-                            icon = ImageVector.vectorResource(id = R.drawable.ic_fluent_document_chevron_double_24_regular),
-                            text = stringResource(id = R.string.release_notes),
-                            state = FABState.Collapsed,
-                            modifier = Modifier.padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size100)),
-                            onClick = { showDialog = !showDialog }
                         )
                     }
                 ) {

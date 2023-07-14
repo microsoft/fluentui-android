@@ -309,7 +309,6 @@ class V2ContextualCommandBarActivity : V2DemoActivity() {
                                         focusManager.moveFocus(FocusDirection.Down)
                                         true
                                     }
-
                                     else -> {
                                         false
                                     }

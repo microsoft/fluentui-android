@@ -125,7 +125,7 @@ open class V2DemoActivity : ComponentActivity() {
                                 contentDescription = stringResource(id = R.string.app_bar_layout_navigation_icon_clicked),
                                 onClick = { Navigation.backNavigation(this) }
                             ),
-                            style = AppTheme.appThemeStyle.value,
+                            style = AppThemeViewModel.appThemeStyle.value,
                             appBarSize = appBarSize,
                             bottomBar = bottomAppBar,
                             rightAccessoryView = {
@@ -139,7 +139,7 @@ open class V2DemoActivity : ComponentActivity() {
                                                 FluentGlobalTokens.SizeTokens.Size100
                                             )
                                         ),
-                                        tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
+                                        tint = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Neutral) {
                                             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                                                 FluentTheme.themeMode
                                             )

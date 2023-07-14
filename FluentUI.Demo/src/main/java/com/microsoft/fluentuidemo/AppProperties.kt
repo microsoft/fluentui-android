@@ -51,7 +51,7 @@ import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Dialog
 import com.microsoft.fluentui.tokenized.menu.Menu
 
-object AppTheme : ViewModel() {
+object AppThemeViewModel : ViewModel() {
     lateinit var appThemeStyle: State<FluentStyle>
     private var themeStyle: MutableLiveData<FluentStyle> = MutableLiveData(FluentStyle.Neutral)
     var selectedThemeIndex_: MutableLiveData<Int> = MutableLiveData(0)
@@ -76,7 +76,7 @@ fun AppBarMenu() {
         modifier = Modifier
             .padding(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
             .clickable { expandedMenu = true },
-        tint = if (AppTheme.appThemeStyle.value == FluentStyle.Neutral) {
+        tint = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Neutral) {
             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                 FluentTheme.themeMode
             )
@@ -99,11 +99,11 @@ fun AppBarMenu() {
                 onClick = {
                     accentEnabled = !accentEnabled
                     if (accentEnabled) {
-                        AppTheme.updateThemeStyle(
+                        AppThemeViewModel.updateThemeStyle(
                             FluentStyle.Brand
                         )
                     } else {
-                        AppTheme.updateThemeStyle(
+                        AppThemeViewModel.updateThemeStyle(
                             FluentStyle.Neutral
                         )
                     }
@@ -113,16 +113,16 @@ fun AppBarMenu() {
                         onValueChange = {
                             accentEnabled = it
                             if (it) {
-                                AppTheme.updateThemeStyle(
+                                AppThemeViewModel.updateThemeStyle(
                                     FluentStyle.Brand
                                 )
                             } else {
-                                AppTheme.updateThemeStyle(
+                                AppThemeViewModel.updateThemeStyle(
                                     FluentStyle.Neutral
                                 )
                             }
                         },
-                        checkedState = AppTheme.appThemeStyle.value == FluentStyle.Brand,
+                        checkedState = AppThemeViewModel.appThemeStyle.value == FluentStyle.Brand,
                     )
                 },
                 border = BorderType.Bottom,
@@ -168,7 +168,7 @@ fun AppBarMenu() {
 
 @Composable
 fun SetAppTheme() {
-    val selectedThemeIndex by AppTheme.selectedThemeIndex_.observeAsState()
+    val selectedThemeIndex by AppThemeViewModel.selectedThemeIndex_.observeAsState()
     val themesList = arrayOf(
         Pair(AliasTokens(), stringResource(id = R.string.fluent_brand_theme)),
         Pair(OneNoteAliasTokens(), stringResource(id = R.string.one_note_theme)),
@@ -182,7 +182,7 @@ fun SetAppTheme() {
         ListItem.Item(
             onClick = {
                 FluentTheme.updateAliasTokens(theme.first)
-                AppTheme.selectedThemeIndex_.value = index
+                AppThemeViewModel.selectedThemeIndex_.value = index
             },
             text = theme.second,
             leadingAccessoryContent = {
@@ -190,7 +190,7 @@ fun SetAppTheme() {
                     selected = selectedThemeIndex == index,
                     onClick = {
                         FluentTheme.updateAliasTokens(theme.first)
-                        AppTheme.selectedThemeIndex_.value = index
+                        AppThemeViewModel.selectedThemeIndex_.value = index
                     },
                     radioButtonToken = object : RadioButtonTokens() {
                         @Composable
@@ -216,18 +216,18 @@ fun SetAppThemeMode() {
             enableChevron = false,
             listItemTokens = CustomizedTokens.listItemTokens
         )
-        val selectedThemeMode by AppTheme.selectedThemeMode_.observeAsState()
+        val selectedThemeMode by AppThemeViewModel.selectedThemeMode_.observeAsState()
         ListItem.Item(
             text = stringResource(id = R.string.appearance_system_default),
             onClick = {
-                AppTheme.selectedThemeMode_.value = ThemeMode.Auto
+                AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Auto
                 FluentTheme.updateThemeMode(ThemeMode.Auto)
             },
             leadingAccessoryContent = {
                 RadioButton(
                     selected = selectedThemeMode == ThemeMode.Auto,
                     onClick = {
-                        AppTheme.selectedThemeMode_.value = ThemeMode.Auto
+                        AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Auto
                         FluentTheme.updateThemeMode(ThemeMode.Auto)
                     },
                 )
@@ -238,14 +238,14 @@ fun SetAppThemeMode() {
         ListItem.Item(
             text = stringResource(id = R.string.appearance_light),
             onClick = {
-                AppTheme.selectedThemeMode_.value = ThemeMode.Light
+                AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
                 FluentTheme.updateThemeMode(ThemeMode.Light)
             },
             leadingAccessoryContent = {
                 RadioButton(
                     selected = selectedThemeMode == ThemeMode.Light,
                     onClick = {
-                        AppTheme.selectedThemeMode_.value = ThemeMode.Light
+                        AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
                         FluentTheme.updateThemeMode(ThemeMode.Light)
                     },
                 )
@@ -256,14 +256,14 @@ fun SetAppThemeMode() {
         ListItem.Item(
             text = stringResource(id = R.string.appearance_dark),
             onClick = {
-                AppTheme.selectedThemeMode_.value = ThemeMode.Dark
+                AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
                 FluentTheme.updateThemeMode(ThemeMode.Dark)
             },
             leadingAccessoryContent = {
                 RadioButton(
                     selected = selectedThemeMode == ThemeMode.Dark,
                     onClick = {
-                        AppTheme.selectedThemeMode_.value = ThemeMode.Dark
+                        AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
                         FluentTheme.updateThemeMode(ThemeMode.Dark)
                     },
                 )
@@ -275,11 +275,11 @@ fun SetAppThemeMode() {
 
 @Composable
 fun SetStatusBarColor() {
-    AppTheme.appThemeStyle = AppTheme.observeThemeStyle(initial = FluentStyle.Neutral)
+    AppThemeViewModel.appThemeStyle = AppThemeViewModel.observeThemeStyle(initial = FluentStyle.Neutral)
     val view = LocalView.current
     val window = (view.context as Activity).window
     val insets = WindowCompat.getInsetsController(window, view)
-    window.statusBarColor = if (AppTheme.appThemeStyle.value == FluentStyle.Brand)
+    window.statusBarColor = if (AppThemeViewModel.appThemeStyle.value == FluentStyle.Brand)
         FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value()
             .toArgb()
     else
@@ -287,7 +287,7 @@ fun SetStatusBarColor() {
             .toArgb()
 
     insets?.isAppearanceLightStatusBars =
-        (!isSystemInDarkTheme() && AppTheme.appThemeStyle.value != FluentStyle.Brand && AppTheme.selectedThemeMode_.value != ThemeMode.Dark) || (isSystemInDarkTheme() && AppTheme.selectedThemeMode_.value == ThemeMode.Light && AppTheme.appThemeStyle.value != FluentStyle.Brand)
+        (!isSystemInDarkTheme() && AppThemeViewModel.appThemeStyle.value != FluentStyle.Brand && AppThemeViewModel.selectedThemeMode_.value != ThemeMode.Dark) || (isSystemInDarkTheme() && AppThemeViewModel.selectedThemeMode_.value == ThemeMode.Light && AppThemeViewModel.appThemeStyle.value != FluentStyle.Brand)
 }
 
 

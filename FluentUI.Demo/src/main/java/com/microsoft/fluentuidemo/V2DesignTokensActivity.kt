@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo
 
 import android.os.Bundle
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -55,7 +58,7 @@ enum class Tokens {
     AliasTokens
 }
 
-class V2DesignTokens : V2DemoActivity() {
+class V2DesignTokensActivity : V2DemoActivity() {
     private fun previewShadowToken(selectedToken: FluentGlobalTokens.ShadowTokens): BasicCardTokens {
         return object : BasicCardTokens() {
             @Composable
@@ -87,15 +90,16 @@ class V2DesignTokens : V2DemoActivity() {
         }
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun PreviewToken(tokenName: String, tokensList: Array<out Enum<*>>) {
         val tabsList = mutableListOf<PillMetaData>()
-        var selectedToken by remember { mutableStateOf(0) }
+        var selectedTokenIndex by remember { mutableStateOf(0) }
         tokensList.forEach {
             tabsList.add(
                 PillMetaData(
                     text = "$it",
-                    onClick = { selectedToken = tokensList.indexOf(it) }
+                    onClick = { selectedTokenIndex = tokensList.indexOf(it) }
                 )
             )
         }
@@ -106,21 +110,25 @@ class V2DesignTokens : V2DemoActivity() {
                     .size(width = 180.dp, height = 130.dp)
                     .padding(bottom = size(FluentGlobalTokens.SizeTokens.Size160)),
                 basicCardTokens = if (tokenName == stringResource(id = R.string.shadow_tokens)) previewShadowToken(
-                    tokensList[selectedToken] as FluentGlobalTokens.ShadowTokens
+                    tokensList[selectedTokenIndex] as FluentGlobalTokens.ShadowTokens
                 )
                 else if (tokenName == stringResource(id = R.string.corner_radius_tokens)) previewCornerRadiusToken(
-                    tokensList[selectedToken] as FluentGlobalTokens.CornerRadiusTokens
+                    tokensList[selectedTokenIndex] as FluentGlobalTokens.CornerRadiusTokens
                 )
                 else if (tokenName == stringResource(id = R.string.stroke_width_tokens)) previewStrokeWidthToken(
-                    tokensList[selectedToken] as FluentGlobalTokens.StrokeWidthTokens
+                    tokensList[selectedTokenIndex] as FluentGlobalTokens.StrokeWidthTokens
                 ) else null
             ) {
                 Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                    SetPreviewContent(tokenName, tokensList[selectedToken])
+                    SetPreviewContent(tokenName, tokensList[selectedTokenIndex])
                 }
             }
 
-            PillTabs(metadataList = tabsList, scrollable = true, selectedIndex = selectedToken)
+            PillTabs(
+                metadataList = tabsList,
+                scrollable = true,
+                selectedIndex = selectedTokenIndex
+            )
         }
     }
 
@@ -191,7 +199,7 @@ class V2DesignTokens : V2DemoActivity() {
         super.onCreate(savedInstanceState)
 
         setBottomAppBar {
-            val globalTokensList = mapOf(
+            val globalTokensMap = mapOf(
                 stringResource(id = R.string.neutral_color_tokens) to Pair(
                     FluentGlobalTokens.NeutralColorTokens.values(),
                     ::neutralColor
@@ -230,7 +238,7 @@ class V2DesignTokens : V2DemoActivity() {
                 ),
             )
 
-            val aliasTokensList = mapOf(
+            val aliasTokensMap = mapOf(
                 stringResource(id = R.string.brand_color_tokens) to Pair(
                     FluentAliasTokens.BrandColorTokens.values(),
                     FluentTheme.aliasTokens.brandColor
@@ -274,14 +282,14 @@ class V2DesignTokens : V2DemoActivity() {
             )
 
             selectedTokens = remember { mutableStateOf(Tokens.GlobalTokens) }
-            tokensList = remember { mutableStateOf(globalTokensList.toMutableMap()) }
+            tokensList = remember { mutableStateOf(globalTokensMap.toMutableMap()) }
             buttonBarList = listOf(
                 PillMetaData(
                     text = stringResource(id = R.string.global_tokens),
                     enabled = true,
                     onClick = {
                         selectedTokens.value = Tokens.GlobalTokens
-                        tokensList.value = globalTokensList.toMutableMap()
+                        tokensList.value = globalTokensMap.toMutableMap()
                     }
                 ),
                 PillMetaData(
@@ -289,13 +297,13 @@ class V2DesignTokens : V2DemoActivity() {
                     enabled = true,
                     onClick = {
                         selectedTokens.value = Tokens.AliasTokens
-                        tokensList.value = aliasTokensList.toMutableMap()
+                        tokensList.value = aliasTokensMap.toMutableMap()
                     }
                 )
             ) as MutableList<PillMetaData>
 
             PillTabs(
-                style = AppTheme.appThemeStyle.value,
+                style = AppThemeViewModel.appThemeStyle.value,
                 metadataList = buttonBarList,
                 selectedIndex = selectedTokens.value.ordinal,
             )
@@ -303,29 +311,29 @@ class V2DesignTokens : V2DemoActivity() {
 
         setActivityContent {
             Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                tokensList.value.forEach { (tokenName, tokenValue) ->
+                tokensList.value.forEach { (tokenType, tokenGetter) ->
                     ListItem.SectionHeader(
-                        title = tokenName,
+                        title = tokenType,
                         enableContentOpenCloseTransition = true,
                         chevronOrientation = ChevronOrientation(90f, 0f)
                     ) {
-                        if (tokenName.contains(stringResource(id = R.string.color))) {
+                        if (tokenType.contains(stringResource(id = R.string.color))) {
                             Column(
                                 modifier = Modifier
                                     .height(256.dp)
                                     .verticalScroll(rememberScrollState())
                             ) {
 
-                                tokenValue.first.forEach {
+                                tokenGetter.first.forEach {
                                     ListItem.Item(
                                         text = "$it",
                                         trailingAccessoryContent = {
-                                            when (tokenName) {
+                                            when (tokenType) {
                                                 stringResource(id = R.string.neutral_color_tokens) ->
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = stringResource(id = R.string.neutral_color_tokens),
-                                                        tint = (tokenValue.second as (Enum<*>) -> Color).invoke(
+                                                        tint = (tokenGetter.second as (Enum<*>) -> Color).invoke(
                                                             it
                                                         )
                                                     )
@@ -345,7 +353,7 @@ class V2DesignTokens : V2DemoActivity() {
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = "",
-                                                        tint = (tokenValue.second as TokenSet<Enum<*>, FluentColor>)[it].value()
+                                                        tint = (tokenGetter.second as TokenSet<Enum<*>, FluentColor>)[it].value()
                                                     )
 
                                                 stringResource(id = R.string.brand_background_color_tokens) ->
@@ -373,7 +381,7 @@ class V2DesignTokens : V2DemoActivity() {
                                     )
                                 }
                             }
-                        } else PreviewToken(tokenName, tokenValue.first)
+                        } else PreviewToken(tokenType, tokenGetter.first)
                     }
                 }
             }

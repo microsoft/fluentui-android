@@ -9,7 +9,7 @@ apply from: '../config.gradle'
 apply from: '../publish.gradle'
 
 android {
-    compileSdk 31
+    compileSdkVersion constants.compileSdkVersion
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion

@@ -121,9 +121,9 @@ const val TYPOGRAPHY = "Typography"
 val V1DEMO = arrayListOf(
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
-    Demo(AVATAR_VIEW, AvatarViewActivity::class, isNew = true),
+    Demo(AVATAR_VIEW, AvatarViewActivity::class),
     Demo(AVATAR_GROUP_VIEW, AvatarGroupViewActivity::class),
-    Demo(BASIC_INPUTS, BasicInputsActivity::class, isModified = true),
+    Demo(BASIC_INPUTS, BasicInputsActivity::class),
     Demo(BOTTOM_NAVIGATION, BottomNavigationActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
     Demo(CALENDAR_VIEW, CalendarViewActivity::class),

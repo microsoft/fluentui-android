@@ -194,25 +194,6 @@ class V2SnackbarActivity : V2DemoActivity() {
                         }
 
                         item {
-                            ListItem.Item(
-                                text = LocalContext.current.resources.getString(R.string.fluentui_icon),
-                                subText = if (!icon)
-                                    LocalContext.current.resources.getString(R.string.fluentui_disabled)
-                                else
-                                    LocalContext.current.resources.getString(R.string.fluentui_enabled),
-                                trailingAccessoryContent = {
-                                    ToggleSwitch(
-                                        onValueChange = {
-                                            icon = it
-                                        },
-                                        checkedState = icon,
-                                        modifier = Modifier.testTag(ICON_PARAM)
-                                    )
-                                }
-                            )
-                        }
-
-                        item {
                             val subTitleText =
                                 LocalContext.current.resources.getString(R.string.fluentui_subtitle)
                             ListItem.Item(
