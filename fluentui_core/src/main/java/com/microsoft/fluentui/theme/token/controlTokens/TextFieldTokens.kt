@@ -15,7 +15,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-open class TextFieldInfo(
+data class TextFieldInfo(
     val isStatusError: Boolean = false,
     val hasIcon: Boolean = true,
     val isFocused: Boolean = false,

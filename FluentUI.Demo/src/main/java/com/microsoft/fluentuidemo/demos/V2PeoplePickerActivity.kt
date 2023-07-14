@@ -25,7 +25,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -121,7 +120,7 @@ class V2PeoplePickerActivity : DemoActivity() {
         var errorPeople = mutableListOf<Person>()
         var assistiveText by rememberSaveable { mutableStateOf(true) }
         var errorText by rememberSaveable { mutableStateOf(false) }
-        val focusManager = LocalFocusManager.current
+        var queryText by rememberSaveable { mutableStateOf("") }
 
         Column {
             Row(modifier = Modifier.padding(8.dp)) {
@@ -171,20 +170,18 @@ class V2PeoplePickerActivity : DemoActivity() {
                         if (errorPeople.isEmpty())
                             errorText = false
                     },
-                    onTextEntered = {
-                        if (it.isNotBlank() && it.isNotEmpty()) {
+                    onTextEntered = {queryText ->
+                        if (queryText.isNotBlank() && queryText.isNotEmpty()) {
                             selectedPeople.add(
                                 PeoplePickerItemData(
-                                    Person(it, ""),
+                                    Person(queryText, ""),
                                     mutableStateOf(false)
                                 )
                             )
-                        }else{
-                            focusManager.clearFocus()
                         }
                     },
-                    onBackPress = {query, it->
-                        if(query.isEmpty() && it != null){
+                    onBackPress = {queryText, it ->
+                        if(queryText.isEmpty()&& it!=null){
                             if (!it.selected.value) {
                                 it.selected.value = !it.selected.value
                             } else {
@@ -198,11 +195,26 @@ class V2PeoplePickerActivity : DemoActivity() {
                             }
                         }
                     },
+                    leadingAccessoryContent = {
+                        Icon(
+                            Icons.Filled.Person,
+                            contentDescription = "Person",
+                            modifier = Modifier
+                                .size(24.dp)
+                        )
+                    },
+                    trailingAccessoryContent = {
+                        Icon(
+                            Icons.Filled.Add,
+                            contentDescription = "Add",
+                            modifier = Modifier
+                                .size(24.dp)
+                        )
+                    },
                     label = "People Picker",
-                    searchHint = "Sea",
+                    searchHint = "Search People",
                     assistiveText = if (assistiveText) "This is a sample Assistive Text" else null,
                     errorString = if (errorText) "This is a sample Error text" else null,
-
                     )
             }
 
