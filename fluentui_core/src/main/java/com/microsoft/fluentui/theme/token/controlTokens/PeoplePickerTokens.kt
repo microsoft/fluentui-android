@@ -126,7 +126,7 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
         FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
 
     @Composable
-    open fun dividerColor(peoplePickerInfo: PeoplePickerInfo): Brush {
+    open fun dividerBrush(peoplePickerInfo: PeoplePickerInfo): Brush {
         return SolidColor(
             if (peoplePickerInfo.isStatusError)
                 FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()

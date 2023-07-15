@@ -1,6 +1,5 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.compose.foundation.layout.Box
@@ -23,8 +22,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.key.Key
-import androidx.compose.ui.input.key.key
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
@@ -36,7 +33,7 @@ import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerItemData
-import com.microsoft.fluentui.tokenized.peoplepicker.rememberPeoplePickerState
+import com.microsoft.fluentui.tokenized.peoplepicker.rememberPeoplePickerItemDataList
 import com.microsoft.fluentui.tokenized.persona.AvatarGroup
 import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
@@ -108,15 +105,15 @@ class V2PeoplePickerActivity : DemoActivity() {
                 isActive = true, status = AvatarStatus.Blocked
             )
         )
-        var selectedPeople = rememberPeoplePickerState()
+        var selectedPeopleList = rememberPeoplePickerItemDataList()
 
 
         val snackbarState = remember { SnackbarState() }
         val scope = rememberCoroutineScope()
         var suggested by rememberSaveable { mutableStateOf(people) }
-        var suggestedPersona = mutableListOf<Persona>()
-        var selectedPerson = mutableListOf<Person>()
-        var errorPeople = mutableListOf<Person>()
+        var suggestedPersonaList = mutableListOf<Persona>()
+        var selectedPersonList = mutableListOf<Person>()
+        var errorPeopleList = mutableListOf<Person>()
         var assistiveText by rememberSaveable { mutableStateOf(true) }
         var errorText by rememberSaveable { mutableStateOf(false) }
 
@@ -131,20 +128,20 @@ class V2PeoplePickerActivity : DemoActivity() {
                             } as MutableList<Person>
                         }
                     },
-                    selectedPeople = selectedPeople,
+                    selectedPeopleList = selectedPeopleList,
                     chipValidation = {
                         if (!it.email.isNullOrBlank()) {
                             if (it.email?.contains("@") == true)
                                 PersonaChipStyle.Neutral
                             else {
                                 errorText = true
-                                errorPeople.add(it)
+                                errorPeopleList.add(it)
                                 PersonaChipStyle.Danger
                             }
 
                         } else {
                             errorText = true
-                            errorPeople.add(it)
+                            errorPeopleList.add(it)
                             PersonaChipStyle.Danger
                         }
                     },
@@ -156,21 +153,21 @@ class V2PeoplePickerActivity : DemoActivity() {
                         }
                     },
                     onChipCloseClick = {
-                        selectedPeople.remove(it)
+                        selectedPeopleList.remove(it)
                         run outer@{
-                            errorPeople.forEach { errorPerson ->
+                            errorPeopleList.forEach { errorPerson ->
                                 if (errorPerson == it.person) {
-                                    errorPeople.remove(errorPerson)
+                                    errorPeopleList.remove(errorPerson)
                                     return@outer
                                 }
                             }
                         }
-                        if (errorPeople.isEmpty())
+                        if (errorPeopleList.isEmpty())
                             errorText = false
                     },
-                    onTextEntered = {queryText ->
+                    onTextEntered = { queryText ->
                         if (queryText.isNotBlank() && queryText.isNotEmpty()) {
-                            selectedPeople.add(
+                            selectedPeopleList.add(
                                 PeoplePickerItemData(
                                     Person(queryText, ""),
                                     mutableStateOf(false)
@@ -178,17 +175,17 @@ class V2PeoplePickerActivity : DemoActivity() {
                             )
                         }
                     },
-                    onBackPress = {queryText, it ->
-                        if(queryText.isEmpty()&& it!=null){
+                    onBackPress = { queryText, it ->
+                        if (queryText.isEmpty() && it != null) {
                             if (!it.selected.value) {
                                 it.selected.value = !it.selected.value
                             } else {
-                                selectedPeople.remove(it)
-                                errorPeople.forEach { errorPerson ->
+                                selectedPeopleList.remove(it)
+                                errorPeopleList.forEach { errorPerson ->
                                     if (errorPerson == it.person)
-                                        errorPeople.remove(errorPerson)
+                                        errorPeopleList.remove(errorPerson)
                                 }
-                                if (errorPeople.isEmpty())
+                                if (errorPeopleList.isEmpty())
                                     errorText = false
                             }
                         }
@@ -213,22 +210,22 @@ class V2PeoplePickerActivity : DemoActivity() {
                     searchHint = "Search People",
                     assistiveText = if (assistiveText) "This is a sample Assistive Text" else null,
                     errorString = if (errorText) "This is a sample Error text" else null,
-                    )
+                )
             }
 
             suggested.forEach outer@{
-                selectedPeople.forEach { selectedPerson ->
+                selectedPeopleList.forEach { selectedPerson ->
                     if (selectedPerson.person.email == it.email) {
                         return@outer
                     }
                 }
-                suggestedPersona.add(
+                suggestedPersonaList.add(
                     Persona(
                         it,
                         "${it.firstName} ${it.lastName}",
                         subTitle = it.email,
                         onClick = {
-                            selectedPeople.add(PeoplePickerItemData(it, mutableStateOf(false)))
+                            selectedPeopleList.add(PeoplePickerItemData(it, mutableStateOf(false)))
                             scope.launch {
                                 snackbarState.showSnackbar(
                                     "Added ${it.firstName} ${it.lastName}",
@@ -240,18 +237,18 @@ class V2PeoplePickerActivity : DemoActivity() {
                 )
             }
 
-            selectedPeople.forEach {
-                selectedPerson.add(it.person)
+            selectedPeopleList.forEach {
+                selectedPersonList.add(it.person)
             }
             Column {
-                PersonaList(personas = suggestedPersona, modifier = Modifier.padding(8.dp))
+                PersonaList(personas = suggestedPersonaList, modifier = Modifier.padding(8.dp))
                 Spacer(modifier = Modifier.height(8.dp))
                 Label(
                     modifier = Modifier.padding(8.dp),
                     text = "Selected People from people picker",
                     textStyle = FluentAliasTokens.TypographyTokens.Body1
                 )
-                AvatarGroup(group = Group(selectedPerson), modifier = Modifier.padding(8.dp))
+                AvatarGroup(group = Group(selectedPersonList), modifier = Modifier.padding(8.dp))
                 Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
                     Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))
                 }

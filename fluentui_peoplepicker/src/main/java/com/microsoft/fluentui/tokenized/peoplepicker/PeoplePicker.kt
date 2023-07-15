@@ -44,6 +44,7 @@ import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
@@ -73,8 +74,8 @@ import kotlinx.coroutines.launch
  *
  * Note: Use rememberPeoplePickerState function on selectedPeople list to create a rememberSaveable state for PeoplePicker.
  *
- * @param selectedPeople List of PersonaChips to be shown in PeoplePicker.
- * @param onValueChange The callback that is triggered when the input service updates the text or [selectedPeople].
+ * @param selectedPeopleList List of PersonaChips to be shown in PeoplePicker.
+ * @param onValueChange The callback that is triggered when the input service updates the text or [selectedPeopleList].
  * An updated text and List of selectedPeople comes as a parameter of the callback
  * @param modifier Optional modifier for the TextField
  * @param onBackPress The callback that is triggered when the back button is pressed.
@@ -95,7 +96,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun PeoplePicker(
-    selectedPeople: MutableList<PeoplePickerItemData> = mutableStateListOf(),
+    selectedPeopleList: MutableList<PeoplePickerItemData> = mutableStateListOf(),
     onValueChange: (String, MutableList<PeoplePickerItemData>) -> Unit,
     modifier: Modifier = Modifier,
     onBackPress: ((String, PeoplePickerItemData?) -> Unit)? = null,
@@ -129,12 +130,10 @@ fun PeoplePicker(
     val textColor = token.textColor(peoplePickerInfo = peoplePickerInfo)
     val cursorColor = token.cursorColor(peoplePickerInfo = peoplePickerInfo)
     val focusRequester = remember { FocusRequester() }
-    var searchHasFocus by rememberSaveable { mutableStateOf(false) }
     val bringIntoViewRequester = remember { BringIntoViewRequester() }
     var queryText by rememberSaveable { mutableStateOf("") }
     var selectedPeopleListSize by rememberSaveable { mutableStateOf(0) }
     val scope = rememberCoroutineScope()
-    val focusManager = LocalFocusManager.current
 
     Row(
         modifier = modifier
@@ -176,44 +175,44 @@ fun PeoplePicker(
                         .onKeyEvent {
                             if (it.key == Key.Backspace) {
                                 if (onBackPress != null) {
-                                    onBackPress.invoke(queryText, selectedPeople.lastOrNull())
-                                    onValueChange(queryText, selectedPeople)
+                                    onBackPress.invoke(queryText, selectedPeopleList.lastOrNull())
+                                    onValueChange(queryText, selectedPeopleList)
                                 }
                             }
                             true
                         },
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    if (selectedPeople.isNotEmpty()) {
-                        selectedPeople.forEach {
+                    if (selectedPeopleList.isNotEmpty()) {
+                        selectedPeopleList.forEach {
                             PersonaChip(person = it.person, selected = it.selected.value,
                                 onCloseClick = if (onChipCloseClick != null) {
                                     {
                                         onChipCloseClick.invoke(it)
-                                        onValueChange(queryText, selectedPeople)
+                                        onValueChange(queryText, selectedPeopleList)
                                     }
                                 } else {
                                     null
                                 },
                                 onClick = {
                                     onChipClick?.invoke(it)
-                                    onValueChange(queryText, selectedPeople)
+                                    onValueChange(queryText, selectedPeopleList)
                                 },
                                 style = chipValidation(it.person)
                             )
                             Spacer(modifier = Modifier.width(chipSpacing))
                         }
                     }
-                    if (selectedPeopleListSize < selectedPeople.size) {
+                    if (selectedPeopleListSize < selectedPeopleList.size) {
                         queryText = ""
-                        onValueChange(queryText, selectedPeople)
+                        onValueChange(queryText, selectedPeopleList)
                     }
-                    selectedPeopleListSize = selectedPeople.size
+                    selectedPeopleListSize = selectedPeopleList.size
                     BasicTextField(
                         value = queryText,
                         onValueChange = {
                             queryText = it
-                            onValueChange(queryText, selectedPeople)
+                            onValueChange(queryText, selectedPeopleList)
                         },
                         singleLine = true,
                         keyboardOptions = KeyboardOptions(),
@@ -221,8 +220,7 @@ fun PeoplePicker(
                             if (onTextEntered != null) {
                                 onTextEntered.invoke(queryText)
                                 queryText = ""
-                                focusManager.clearFocus()
-                                onValueChange(queryText, selectedPeople)
+                                onValueChange(queryText, selectedPeopleList)
                             }
                         }),
                         modifier = Modifier
@@ -238,13 +236,8 @@ fun PeoplePicker(
                                     }
                                 }
                             }
-                            .onFocusChanged { focusState ->
-                                when {
-                                    focusState.isFocused ->
-                                        searchHasFocus = true
-                                }
-                            }
-                            .semantics { contentDescription = searchHint ?: "" },
+                            .semantics { contentDescription = searchHint ?: "" }
+                            .testTag("Text field"),
                         textStyle = textTypography.merge(
                             TextStyle(
                                 color = textColor,
@@ -294,7 +287,7 @@ fun PeoplePicker(
 
                     @Composable
                     override fun dividerBrush(dividerInfo: DividerInfo): Brush =
-                        token.dividerColor(peoplePickerInfo)
+                        token.dividerBrush(peoplePickerInfo)
                 }
             )
             if (!assistiveText.isNullOrBlank() || !errorString.isNullOrBlank()) {
@@ -318,7 +311,7 @@ data class PeoplePickerItemData(
 )
 
 @Composable
-fun rememberPeoplePickerState(
+fun rememberPeoplePickerItemDataList(
     initialValue: SnapshotStateList<PeoplePickerItemData> = mutableStateListOf(),
 ): SnapshotStateList<PeoplePickerItemData> {
     return rememberSaveable(
