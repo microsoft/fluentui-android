@@ -50,6 +50,9 @@ class V2TabBarActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
@@ -229,11 +232,6 @@ class V2TabBarActivity : V2DemoActivity() {
                 selectedIndex = selectedIndex,
                 tabTextAlignment = tabTextAlignment.value
             )
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
-            BottomSheetWebView(mUrl)
         }
     }
 }

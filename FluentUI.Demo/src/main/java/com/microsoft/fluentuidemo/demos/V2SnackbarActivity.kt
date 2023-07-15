@@ -53,6 +53,9 @@ class V2SnackbarActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
@@ -325,11 +328,6 @@ class V2SnackbarActivity : V2DemoActivity() {
                     Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))
                 }
             }
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
-            BottomSheetWebView(mUrl)
         }
     }
 }

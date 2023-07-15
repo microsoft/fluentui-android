@@ -73,16 +73,14 @@ class V2BottomSheetActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
             CreateActivityUI()
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
-            BottomSheetWebView(mUrl)
         }
     }
 }
@@ -453,7 +451,7 @@ fun content1(bottomSheetState: BottomSheetState): @Composable () -> Unit = {
             val view = LayoutInflater.from(context).inflate(
                 R.layout.demo_drawer_content,
                 null
-            )!!.rootView
+            ).rootView
             val personaList = createPersonaList(context)
             (view as PersonaListView).personas = personaList
             view

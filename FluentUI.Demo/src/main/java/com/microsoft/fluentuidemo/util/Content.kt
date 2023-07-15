@@ -103,7 +103,7 @@ fun getAndroidViewAsContent(
                 val view = LayoutInflater.from(it as Activity).inflate(
                     R.layout.demo_drawer_content,
                     null
-                )!!.rootView
+                ).rootView
                 val personaList = createPersonaList(it)
                 (view as PersonaListView).personas = when (contentType) {
                     ContentType.FULL_SCREEN_SCROLLABLE_CONTENT -> personaList

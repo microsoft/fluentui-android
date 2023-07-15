@@ -914,7 +914,7 @@
     <string name = "appearance_dark">Dark</string>
     <string name = "demo_activity_github_link">Demo Activity GitHub Link</string>
     <string name = "control_tokens_details">Control Tokens details</string>
-    <string name = "parameters">Params</string>
+    <string name = "parameters">Parameters</string>
     <string name = "control_tokens">Control Tokens</string>
     <string name = "global_tokens">Global Tokens</string>
     <string name = "alias_tokens">Alias Tokens</string>

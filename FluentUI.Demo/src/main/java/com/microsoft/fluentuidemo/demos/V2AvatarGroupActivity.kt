@@ -40,6 +40,9 @@ class V2AvatarGroupActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-3"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-3"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -406,11 +409,6 @@ class V2AvatarGroupActivity : V2DemoActivity() {
                     }
                 }
             }
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#avatar-group"
-            BottomSheetWebView(mUrl)
         }
     }
 }

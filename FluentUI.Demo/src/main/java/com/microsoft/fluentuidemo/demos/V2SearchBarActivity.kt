@@ -42,6 +42,9 @@ class V2SearchBarActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
+
     @OptIn(ExperimentalComposeUiApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -267,11 +270,6 @@ class V2SearchBarActivity : V2DemoActivity() {
                     border = BorderType.Bottom
                 )
             }
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls"
-            BottomSheetWebView(mUrl)
         }
     }
 }

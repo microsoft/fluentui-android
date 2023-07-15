@@ -5,7 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
@@ -32,6 +32,9 @@ class V2BadgeActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-4"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-4"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,7 +46,7 @@ class V2BadgeActivity : V2DemoActivity() {
 
             Column(
                 Modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
                     .background(Color.Gray)
             ) {
                 BasicText(
@@ -140,11 +143,6 @@ class V2BadgeActivity : V2DemoActivity() {
                     }
                 }
             }
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#badge"
-            BottomSheetWebView(mUrl)
         }
     }
 }

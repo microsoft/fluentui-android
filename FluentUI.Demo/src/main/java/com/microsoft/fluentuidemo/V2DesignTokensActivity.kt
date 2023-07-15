@@ -1,7 +1,6 @@
 package com.microsoft.fluentuidemo
 
 import android.os.Bundle
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -10,8 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.relocation.BringIntoViewRequester
-import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -90,7 +87,6 @@ class V2DesignTokensActivity : V2DemoActivity() {
         }
     }
 
-    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun PreviewToken(tokenName: String, tokensList: Array<out Enum<*>>) {
         val tabsList = mutableListOf<PillMetaData>()
@@ -195,6 +191,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
     private var buttonBarList = mutableListOf<PillMetaData>()
     private lateinit var selectedTokens: MutableState<Tokens>
     private lateinit var tokensList: MutableState<Map<String, Pair<Array<out Enum<*>>, Any>>>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -385,11 +382,6 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     }
                 }
             }
-        }
-
-        setBottomSheetContent {
-            val mUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#overview"
-            BottomSheetWebView(mUrl)
         }
     }
 }

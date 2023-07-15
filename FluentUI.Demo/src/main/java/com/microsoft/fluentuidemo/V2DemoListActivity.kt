@@ -43,12 +43,10 @@ import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.window.DialogProperties
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.icons.SearchBarIcons
@@ -64,10 +62,8 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
-import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
-import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.drawer.Drawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
@@ -222,7 +218,7 @@ class V2DemoListActivity : ComponentActivity() {
                         Navigation.forwardNavigation(
                             packageContext,
                             V2DesignTokensActivity::class.java,
-                            Pair(V2DemoActivity.DEMO_TITLE, "V2 Design Token")
+                            Pair(V2DemoActivity.DEMO_TITLE, "V2 Design Tokens")
                         )
                     },
                     leadingAccessoryContent = {
