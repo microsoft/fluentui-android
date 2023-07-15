@@ -54,7 +54,6 @@ class V2PeoplePickerActivity : DemoActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val context: Context = this
         val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
             LayoutInflater.from(container.context),
             container,
@@ -120,7 +119,6 @@ class V2PeoplePickerActivity : DemoActivity() {
         var errorPeople = mutableListOf<Person>()
         var assistiveText by rememberSaveable { mutableStateOf(true) }
         var errorText by rememberSaveable { mutableStateOf(false) }
-        var queryText by rememberSaveable { mutableStateOf("") }
 
         Column {
             Row(modifier = Modifier.padding(8.dp)) {

@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsEndWidth
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
@@ -64,6 +63,35 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
 import kotlinx.coroutines.launch
 
+/**
+ * API to create a customized PeoplePicker for users to add a list of PersonaChips
+ *
+ * Whenever the user edits the text or a new PersonaChip is added onValueChange is called with the most up to date data
+ * with which developer is expected to update their state.
+ *
+ * PeoplePicker uses [PeoplePickerItemData] to represent a PersonaChip. This is a wrapper around [Person].
+ *
+ * Note: Use rememberPeoplePickerState function on selectedPeople list to create a rememberSaveable state for PeoplePicker.
+ *
+ * @param selectedPeople List of PersonaChips to be shown in PeoplePicker.
+ * @param onValueChange The callback that is triggered when the input service updates the text or [selectedPeople].
+ * An updated text and List of selectedPeople comes as a parameter of the callback
+ * @param modifier Optional modifier for the TextField
+ * @param onBackPress The callback that is triggered when the back button is pressed.
+ * @param onChipClick The callback that is triggered when a PersonaChip is clicked.
+ * @param onChipCloseClick The callback that is triggered when the close button of a PersonaChip is clicked.
+ * Note: use this callback to show the cancel button for a persona chip. To disable/not show the close button leave this callback as null.
+ * @param chipValidation The callback that is triggered when a PersonaChip is added. This callback is used to validate
+ * the PersonaChip before adding it to the list of selectedPeople.
+ * @param onTextEntered The callback that is triggered when the user clicks done on the keyboard.
+ * @param leadingAccessoryContent The content to be placed towards the start of PeoplePicker.
+ * @param trailingAccessoryContent The content to be placed towards the end of PeoplePicker.
+ * @param label String which acts as a description for the PeoplePicker.
+ * @param assistiveText String which assists users with the PeoplePicker
+ * @param errorString String to describe the error. PeoplePicker goes in error mode if this is provided.
+ * @param searchHint String to be shown as hint when the PeoplePicker is in rest state.
+ * @param peoplePickerTokens Customization options for the PeoplePicker.
+ */
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun PeoplePicker(
@@ -104,6 +132,7 @@ fun PeoplePicker(
     var searchHasFocus by rememberSaveable { mutableStateOf(false) }
     val bringIntoViewRequester = remember { BringIntoViewRequester() }
     var queryText by rememberSaveable { mutableStateOf("") }
+    var selectedPeopleListSize by rememberSaveable { mutableStateOf(0) }
     val scope = rememberCoroutineScope()
     val focusManager = LocalFocusManager.current
 
@@ -175,6 +204,11 @@ fun PeoplePicker(
                             Spacer(modifier = Modifier.width(chipSpacing))
                         }
                     }
+                    if (selectedPeopleListSize < selectedPeople.size) {
+                        queryText = ""
+                        onValueChange(queryText, selectedPeople)
+                    }
+                    selectedPeopleListSize = selectedPeople.size
                     BasicTextField(
                         value = queryText,
                         onValueChange = {
