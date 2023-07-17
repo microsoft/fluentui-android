@@ -117,7 +117,7 @@ class V2DemoListActivity : ComponentActivity() {
     }
 
     @Composable
-    fun GetDrawerContent(onRelNotePress: () -> Unit) {
+    fun GetDrawerContent() {
         Column(
             verticalArrangement = Arrangement.spacedBy(FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size320)),
             modifier = Modifier
@@ -152,7 +152,7 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 Label(
-                    text = String.format(getString(R.string.sdk_version, BuildConfig.VERSION_NAME)),
+                    text = getString(R.string.sdk_version, BuildConfig.VERSION_NAME),
                     modifier = Modifier
                         .background(color = FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background5].value()),
                     textStyle = FluentAliasTokens.TypographyTokens.Caption1
@@ -231,6 +231,16 @@ class V2DemoListActivity : ComponentActivity() {
                     listItemTokens = listItemTokens
                 )
 
+                var showDialog by rememberSaveable { mutableStateOf(false) }
+                if (showDialog) {
+                    Dialog(
+                        dialogProperties = DialogProperties(
+                            dismissOnBackPress = true,
+                            dismissOnClickOutside = true
+                        ),
+                        onDismiss = { showDialog = !showDialog }
+                    ) { GetDialogContent() }
+                }
                 ListItem.Item(
                     text = stringResource(id = R.string.release_notes),
                     leadingAccessoryContent = {
@@ -240,10 +250,9 @@ class V2DemoListActivity : ComponentActivity() {
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
-                    onClick = onRelNotePress,
+                    onClick = { showDialog = !showDialog },
                     listItemTokens = listItemTokens
                 )
-
                 val uriHandler = LocalUriHandler.current
                 ListItem.Item(
                     text = stringResource(id = R.string.github_repo),
@@ -266,14 +275,15 @@ class V2DemoListActivity : ComponentActivity() {
                 )
 
                 ListItem.Item(
-                    text = stringResource(id = R.string.your_feedback),
+                    text = stringResource(id = R.string.report_issue),
                     leadingAccessoryContent = {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_fluent_person_feedback_24_regular),
+                            painter = painterResource(id = R.drawable.ic_fluent_warning_24_regular),
                             contentDescription = stringResource(id = R.string.github_repo),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
+                    onClick = { uriHandler.openUri("https://github.com/microsoft/fluentui-android/issues") },
                     listItemTokens = listItemTokens
                 )
             }
@@ -286,27 +296,15 @@ class V2DemoListActivity : ComponentActivity() {
             FluentTheme {
                 val drawerState = rememberDrawerState()
                 val scope = rememberCoroutineScope()
-                var showDialog by remember { mutableStateOf(false) }
-
-                if (showDialog) {
-                    Dialog(
-                        dialogProperties = DialogProperties(
-                            dismissOnBackPress = true,
-                            dismissOnClickOutside = true
-                        ),
-                        onDismiss = { showDialog = !showDialog }
-                    ) { GetDialogContent() }
-                }
 
                 Drawer(
                     drawerState = drawerState,
-                    drawerContent = { GetDrawerContent { showDialog = !showDialog } },
+                    drawerContent = { GetDrawerContent() },
                     behaviorType = BehaviorType.LEFT_SLIDE_OVER,
                     scrimVisible = true
                 )
 
                 var searchModeEnabled by rememberSaveable { mutableStateOf(false) }
-                val enableButtonBar by rememberSaveable { mutableStateOf(true) }
                 var selectedComponents by rememberSaveable { mutableStateOf(Components.V2) }
                 var filteredDemoList by remember { mutableStateOf(V2DEMO.toMutableList()) }
 
@@ -316,28 +314,6 @@ class V2DemoListActivity : ComponentActivity() {
                         val appTitleDelta: Float by animateFloatAsState(
                             if (searchModeEnabled) 0F else 1F,
                             animationSpec = tween(durationMillis = 150, easing = LinearEasing)
-                        )
-
-                        val buttonBarList = mutableListOf<PillMetaData>()
-                        buttonBarList.add(
-                            PillMetaData(
-                                text = stringResource(id = R.string.v1_components),
-                                enabled = true,
-                                onClick = {
-                                    selectedComponents = Components.V1
-                                    filteredDemoList = V1DEMO.toMutableList()
-                                }
-                            )
-                        )
-                        buttonBarList.add(
-                            PillMetaData(
-                                text = stringResource(id = R.string.v2_components),
-                                enabled = true,
-                                onClick = {
-                                    selectedComponents = Components.V2
-                                    filteredDemoList = V2DEMO.toMutableList()
-                                }
-                            )
                         )
 
                         SetStatusBarColor()
@@ -407,15 +383,34 @@ class V2DemoListActivity : ComponentActivity() {
                                     )
                                 }
                             } else null,
-                            bottomBar = if (enableButtonBar) {
-                                {
-                                    PillTabs(
-                                        style = AppThemeViewModel.appThemeStyle.value,
-                                        metadataList = buttonBarList,
-                                        selectedIndex = selectedComponents.ordinal
+                            bottomBar = {
+                                val buttonBarList = mutableListOf<PillMetaData>()
+                                buttonBarList.add(
+                                    PillMetaData(
+                                        text = stringResource(id = R.string.v1_components),
+                                        enabled = true,
+                                        onClick = {
+                                            selectedComponents = Components.V1
+                                            filteredDemoList = V1DEMO.toMutableList()
+                                        }
                                     )
-                                }
-                            } else null,
+                                )
+                                buttonBarList.add(
+                                    PillMetaData(
+                                        text = stringResource(id = R.string.v2_components),
+                                        enabled = true,
+                                        onClick = {
+                                            selectedComponents = Components.V2
+                                            filteredDemoList = V2DEMO.toMutableList()
+                                        }
+                                    )
+                                )
+                                PillTabs(
+                                    style = AppThemeViewModel.appThemeStyle.value,
+                                    metadataList = buttonBarList,
+                                    selectedIndex = selectedComponents.ordinal
+                                )
+                            },
                             appTitleDelta = appTitleDelta
                         )
                     }

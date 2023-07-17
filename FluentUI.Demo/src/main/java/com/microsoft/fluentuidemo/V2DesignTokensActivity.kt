@@ -188,13 +188,12 @@ class V2DesignTokensActivity : V2DemoActivity() {
         }
     }
 
-    private var buttonBarList = mutableListOf<PillMetaData>()
-    private lateinit var selectedTokens: MutableState<Tokens>
-    private lateinit var tokensList: MutableState<Map<String, Pair<Array<out Enum<*>>, Any>>>
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        var buttonBarList: MutableList<PillMetaData>
+        lateinit var selectedTokens: MutableState<Tokens>
+        lateinit var tokensMap: MutableState<Map<String, Pair<Array<out Enum<*>>, Any>>>
         setBottomAppBar {
             val globalTokensMap = mapOf(
                 stringResource(id = R.string.neutral_color_tokens) to Pair(
@@ -279,14 +278,14 @@ class V2DesignTokensActivity : V2DemoActivity() {
             )
 
             selectedTokens = remember { mutableStateOf(Tokens.GlobalTokens) }
-            tokensList = remember { mutableStateOf(globalTokensMap.toMutableMap()) }
+            tokensMap = remember { mutableStateOf(globalTokensMap.toMutableMap()) }
             buttonBarList = listOf(
                 PillMetaData(
                     text = stringResource(id = R.string.global_tokens),
                     enabled = true,
                     onClick = {
                         selectedTokens.value = Tokens.GlobalTokens
-                        tokensList.value = globalTokensMap.toMutableMap()
+                        tokensMap.value = globalTokensMap.toMutableMap()
                     }
                 ),
                 PillMetaData(
@@ -294,7 +293,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     enabled = true,
                     onClick = {
                         selectedTokens.value = Tokens.AliasTokens
-                        tokensList.value = aliasTokensMap.toMutableMap()
+                        tokensMap.value = aliasTokensMap.toMutableMap()
                     }
                 )
             ) as MutableList<PillMetaData>
@@ -308,7 +307,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
 
         setActivityContent {
             Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                tokensList.value.forEach { (tokenType, tokenGetter) ->
+                tokensMap.value.forEach { (tokenType, tokenGetter) ->
                     ListItem.SectionHeader(
                         title = tokenType,
                         enableContentOpenCloseTransition = true,
@@ -354,11 +353,18 @@ class V2DesignTokensActivity : V2DemoActivity() {
                                                     )
 
                                                 stringResource(id = R.string.brand_background_color_tokens) ->
-                                                    Icon(
-                                                        painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
-                                                        contentDescription = stringResource(id = R.string.brand_background_color_tokens),
-                                                        tint = FluentTheme.aliasTokens.brandBackgroundColor[it as FluentAliasTokens.BrandBackgroundColorTokens].value()
-                                                    )
+                                                    if ((tokenGetter.second as TokenSet<Enum<*>, FluentColor>)[it].value() == Color.Unspecified) {
+                                                        Label(
+                                                            text = stringResource(id = R.string.unspecified),
+                                                            textStyle = FluentAliasTokens.TypographyTokens.Caption1
+                                                        )
+                                                    } else {
+                                                        Icon(
+                                                            painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
+                                                            contentDescription = stringResource(id = R.string.brand_background_color_tokens),
+                                                            tint = FluentTheme.aliasTokens.brandBackgroundColor[it as FluentAliasTokens.BrandBackgroundColorTokens].value()
+                                                        )
+                                                    }
 
                                                 stringResource(id = R.string.brand_foreground_color_tokens) ->
                                                     Icon(

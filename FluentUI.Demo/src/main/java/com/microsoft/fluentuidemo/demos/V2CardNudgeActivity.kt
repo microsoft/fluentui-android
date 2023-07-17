@@ -47,9 +47,6 @@ class V2CardNudgeActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
-    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
-
     // Tags used for testing
     private val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
     private val ICON_PARAM = "Icon Param"

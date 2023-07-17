@@ -892,7 +892,7 @@
     <string name = "release_notes">Release Notes</string>
     <string name = "github_repo">GitHub Repo</string>
     <string name = "github_repo_link">GitHub Repo Link</string>
-    <string name = "your_feedback">Your Feedback</string>
+    <string name = "report_issue">Report Issue</string>
     <string name = "v1_components">V1 Components</string>
     <string name = "v2_components">V2 Components</string>
     <string name = "fluent_logo">Fluent Logo</string>
@@ -940,5 +940,6 @@
     <string name = "error_and_status_color_tokens">Error and Status Color Tokens</string>
     <string name = "presence_tokens">Presence Color Tokens</string>
     <string name = "typography_tokens">Typography Tokens</string>
+    <string name = "unspecified">Unspecified</string>
 
 </resources>

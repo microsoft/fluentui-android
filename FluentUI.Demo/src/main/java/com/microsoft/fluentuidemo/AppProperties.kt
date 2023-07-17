@@ -70,7 +70,8 @@ object AppThemeViewModel : ViewModel() {
 
 @Composable
 fun SetStatusBarColor() {
-    AppThemeViewModel.appThemeStyle = AppThemeViewModel.observeThemeStyle(initial = FluentStyle.Brand)
+    AppThemeViewModel.appThemeStyle =
+        AppThemeViewModel.observeThemeStyle(initial = FluentStyle.Brand)
     val view = LocalView.current
     val window = (view.context as Activity).window
     val insets = WindowCompat.getInsetsController(window, view)
@@ -169,7 +170,7 @@ fun AppBarMenu() {
                     ),
                     onDismiss = { showAppearanceDialog = !showAppearanceDialog },
                 ) {
-                    SetAppThemeMode()
+                    SetAppThemeMode { showAppearanceDialog = !showAppearanceDialog }
                 }
             }
 
@@ -185,7 +186,7 @@ fun AppBarMenu() {
 }
 
 @Composable
-fun SetAppThemeMode() {
+fun SetAppThemeMode(onThemeModeClick: () -> Unit) {
     Column {
         ListItem.SectionHeader(
             title = stringResource(id = R.string.choose_appearance),
@@ -199,6 +200,7 @@ fun SetAppThemeMode() {
             onClick = {
                 AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Auto
                 FluentTheme.updateThemeMode(ThemeMode.Auto)
+                onThemeModeClick()
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -206,6 +208,7 @@ fun SetAppThemeMode() {
                     onClick = {
                         AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Auto
                         FluentTheme.updateThemeMode(ThemeMode.Auto)
+                        onThemeModeClick()
                     },
                 )
             },
@@ -217,6 +220,7 @@ fun SetAppThemeMode() {
             onClick = {
                 AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
                 FluentTheme.updateThemeMode(ThemeMode.Light)
+                onThemeModeClick()
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -224,6 +228,7 @@ fun SetAppThemeMode() {
                     onClick = {
                         AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Light
                         FluentTheme.updateThemeMode(ThemeMode.Light)
+                        onThemeModeClick()
                     },
                 )
             },
@@ -235,6 +240,7 @@ fun SetAppThemeMode() {
             onClick = {
                 AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
                 FluentTheme.updateThemeMode(ThemeMode.Dark)
+                onThemeModeClick()
             },
             leadingAccessoryContent = {
                 RadioButton(
@@ -242,6 +248,7 @@ fun SetAppThemeMode() {
                     onClick = {
                         AppThemeViewModel.selectedThemeMode_.value = ThemeMode.Dark
                         FluentTheme.updateThemeMode(ThemeMode.Dark)
+                        onThemeModeClick()
                     },
                 )
             },

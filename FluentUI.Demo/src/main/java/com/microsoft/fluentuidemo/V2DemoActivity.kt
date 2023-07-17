@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.runtime.Composable
@@ -64,6 +65,65 @@ open class V2DemoActivity : ComponentActivity() {
 
     open val paramsUrl: String = ""
     open val controlTokensUrl: String = ""
+
+    @Composable
+    fun BottomDrawerContent() {
+        val uriHandler = LocalUriHandler.current
+        Column(
+            Modifier.padding(
+                top = FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size120
+                ),
+                bottom = FluentGlobalTokens.size(
+                    FluentGlobalTokens.SizeTokens.Size120
+                )
+            )
+        ) {
+            ListItem.Item(
+                text = "GitHub Page",
+                onClick = { uriHandler.openUri(activityUrl) },
+                leadingAccessoryContent = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_fluent_book_number_24_regular),
+                        contentDescription = stringResource(id = R.string.github_repo),
+                        tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                    )
+                },
+                listItemTokens = CustomizedTokens.listItemTokens
+            )
+
+            if (paramsUrl.isNotEmpty()) {
+                ListItem.Item(
+                    text = stringResource(id = R.string.parameters),
+                    onClick = { uriHandler.openUri(paramsUrl) },
+                    leadingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
+                            contentDescription = stringResource(id = R.string.parameters),
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                        )
+                    },
+                    listItemTokens = CustomizedTokens.listItemTokens
+                )
+            }
+
+            if (controlTokensUrl.isNotEmpty()) {
+                ListItem.Item(
+                    text = stringResource(id = R.string.control_tokens),
+                    onClick = { uriHandler.openUri(controlTokensUrl) },
+                    leadingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_edit_settings_24_regular),
+                            contentDescription = stringResource(id = R.string.control_tokens),
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                        )
+                    },
+                    listItemTokens = CustomizedTokens.listItemTokens
+                )
+            }
+        }
+    }
+
     open val appBarSize = AppBarSize.Medium
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -131,64 +191,18 @@ open class V2DemoActivity : ComponentActivity() {
                 ) {
                     Box(
                         modifier = Modifier
+                            .fillMaxSize()
                             .background(FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value())
                             .padding(it)
                     ) {
                         activityContent()
 
-                        val uriHandler = LocalUriHandler.current
                         BottomDrawer(
                             drawerContent = {
-                                Column(
-                                    Modifier.padding(
-                                        top = FluentGlobalTokens.size(
-                                            FluentGlobalTokens.SizeTokens.Size120
-                                        ),
-                                        bottom = FluentGlobalTokens.size(
-                                            FluentGlobalTokens.SizeTokens.Size120
-                                        )
-                                    )
-                                ) {
-                                    ListItem.Item(
-                                        text = "GitHub Page",
-                                        onClick = { uriHandler.openUri(activityUrl) },
-                                        leadingAccessoryContent = {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.ic_fluent_book_number_24_regular),
-                                                contentDescription = stringResource(id = R.string.github_repo),
-                                                tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
-                                            )
-                                        }
-                                    )
-
-                                    ListItem.Item(
-                                        text = stringResource(id = R.string.parameters),
-                                        onClick = { uriHandler.openUri(paramsUrl) },
-                                        leadingAccessoryContent = {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
-                                                contentDescription = stringResource(id = R.string.parameters),
-                                                tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
-                                            )
-                                        }
-                                    )
-
-                                    ListItem.Item(
-                                        text = stringResource(id = R.string.control_tokens),
-                                        onClick = { uriHandler.openUri(controlTokensUrl) },
-                                        leadingAccessoryContent = {
-                                            Icon(
-                                                painter = painterResource(id = R.drawable.ic_fluent_edit_settings_24_regular),
-                                                contentDescription = stringResource(id = R.string.control_tokens),
-                                                tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
-                                            )
-                                        }
-                                    )
-                                }
+                                BottomDrawerContent()
                             },
                             drawerState = bottomDrawerState
                         )
-
                     }
                 }
             }
