@@ -56,6 +56,13 @@ enum class Tokens {
 }
 
 class V2DesignTokensActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+    override val designTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#overview"
+    override val globalTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#global-tokens"
+    override val aliasTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#alias-token"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#control-token"
     private fun previewShadowToken(selectedToken: FluentGlobalTokens.ShadowTokens): BasicCardTokens {
         return object : BasicCardTokens() {
             @Composable

@@ -65,6 +65,9 @@ open class V2DemoActivity : ComponentActivity() {
 
     open val paramsUrl: String = ""
     open val controlTokensUrl: String = ""
+    open val designTokensUrl: String = ""
+    open val globalTokensUrl: String = ""
+    open val aliasTokensUrl: String = ""
 
     @Composable
     fun BottomDrawerContent() {
@@ -100,6 +103,51 @@ open class V2DemoActivity : ComponentActivity() {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_fluent_code_24_regular),
                             contentDescription = stringResource(id = R.string.parameters),
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                        )
+                    },
+                    listItemTokens = CustomizedTokens.listItemTokens
+                )
+            }
+
+            if (designTokensUrl.isNotEmpty()) {
+                ListItem.Item(
+                    text = stringResource(id = R.string.design_tokens),
+                    onClick = { uriHandler.openUri(designTokensUrl) },
+                    leadingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_design_ideas_24_regular),
+                            contentDescription = stringResource(id = R.string.design_tokens),
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                        )
+                    },
+                    listItemTokens = CustomizedTokens.listItemTokens
+                )
+            }
+
+            if (globalTokensUrl.isNotEmpty()) {
+                ListItem.Item(
+                    text = stringResource(id = R.string.global_tokens),
+                    onClick = { uriHandler.openUri(globalTokensUrl) },
+                    leadingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_book_globe_24_regular),
+                            contentDescription = stringResource(id = R.string.global_tokens),
+                            tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
+                        )
+                    },
+                    listItemTokens = CustomizedTokens.listItemTokens
+                )
+            }
+
+            if (aliasTokensUrl.isNotEmpty()) {
+                ListItem.Item(
+                    text = stringResource(id = R.string.alias_tokens),
+                    onClick = { uriHandler.openUri(aliasTokensUrl) },
+                    leadingAccessoryContent = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_fluent_paint_brush_24_regular),
+                            contentDescription = stringResource(id = R.string.alias_tokens),
                             tint = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(),
                         )
                     },
