@@ -1,17 +1,6 @@
-Release Version 0.1.27:
+Release Version 0.1.28:
 
 What's New:
 
 Fluent V2:
-	Components: BottomDrawer (Created separated API to support functionality wrt to Bottom Drawer scenarios for ex: showHandle, expandable options)
-
-    Fix/Enhancement:
-		1) [Breaking Change] ListItem texticons slot changed to composable slot. Suffix of parameter changed from "View" to "Content"
-		2) [Breaking Change] CardNugde leftSwipe and rightSwipe lambda functions will have a float parameter to depicting the fraction value for the swipe.
-		3) [Breaking Change] Drawer API will not have expandable boolean parameter.
-		4) [Breaking Change] Updated Dialog API to accept DialogProperties instead of individual params.
-		5) Fix accessibility issue in ListItem SectionHeader
-
-
-	Demo App: 
-		1) Fix accessibility issues in demo app
+	Components: V2 PeoplePicker
