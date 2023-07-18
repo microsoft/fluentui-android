@@ -18,6 +18,7 @@ import org.junit.runners.Suite
     V2DrawerActivityUITest::class,
     V2LabelUITest::class,
     V2ListItemActivityUITest::class,
+    V2PeoplePickerUITest::class,
     V2PersonaUITest::class,
     V2PersonaChipActivityUITest::class,
     V2PersonaListActivityUITest::class,
