@@ -77,7 +77,7 @@ class V2PeoplePickerUITest {
                 ),
             )
         }
-        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true)
+        val peoplePickerChip = composeTestRule.onNodeWithContentDescription("firstName", true)
         peoplePickerChip.assertExists()
         peoplePickerChip.assertIsDisplayed()
         peoplePickerChip.assertHasClickAction()
@@ -108,9 +108,9 @@ class V2PeoplePickerUITest {
             )
         }
 
-        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true)
-        composeTestRule.onNodeWithText("firstName", true).performClick()
-        val cancelButton = composeTestRule.onNodeWithContentDescription("Close")
+        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
+        peoplePickerChip.performClick()
+        val cancelButton = composeTestRule.onNodeWithContentDescription("Close", useUnmergedTree = true)
         cancelButton.assertExists()
         cancelButton.assertIsDisplayed()
         cancelButton.assertHasClickAction()
@@ -142,7 +142,7 @@ class V2PeoplePickerUITest {
         val textField = composeTestRule.onNodeWithTag("Text field")
         textField.assertExists()
         textField.assertIsDisplayed()
-        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true)
+        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
         peoplePickerChip.assertExists()
         peoplePickerChip.assertIsDisplayed()
         textField.performClick()

@@ -42,7 +42,6 @@ import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
@@ -126,9 +125,9 @@ fun PeoplePicker(
     val trailingAccessoryPadding =
         token.trailingAccessoryPadding(peoplePickerInfo = peoplePickerInfo)
     val chipSpacing = token.chipSpacing(peoplePickerInfo = peoplePickerInfo)
-    val textTypography = token.typography(peoplePickerInfo)
+    val textTypography = token.textFieldTypography(peoplePickerInfo)
     val textColor = token.textColor(peoplePickerInfo = peoplePickerInfo)
-    val cursorColor = token.cursorColor(peoplePickerInfo = peoplePickerInfo)
+    val cursorBrush = token.cursorBrush(peoplePickerInfo = peoplePickerInfo)
     val focusRequester = remember { FocusRequester() }
     val bringIntoViewRequester = remember { BringIntoViewRequester() }
     var queryText by rememberSaveable { mutableStateOf("") }
@@ -268,7 +267,7 @@ fun PeoplePicker(
                             }
                             innerTextField()
                         },
-                        cursorBrush = cursorColor
+                        cursorBrush = cursorBrush
                     )
                 }
                 if (trailingAccessoryContent != null) {
