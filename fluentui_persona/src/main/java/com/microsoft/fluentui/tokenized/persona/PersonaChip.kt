@@ -3,7 +3,12 @@ package com.microsoft.fluentui.tokenized.persona
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
@@ -12,11 +17,12 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.persona.R
@@ -98,6 +104,9 @@ fun PersonaChip(
                 interactionSource = interactionSource,
                 indication = rememberRipple()
             )
+            .then(if (onCloseClick != null && selected) Modifier else Modifier.clearAndSetSemantics {
+                this.contentDescription = person.getLabel()
+            })
     )
     {
         Row(
@@ -124,7 +133,7 @@ fun PersonaChip(
                         tint = textColor
                     )
                 } else {
-                    Avatar(person = person, size = avatarSize)
+                    Avatar(modifier = Modifier.clearAndSetSemantics {  }, person = person, size = avatarSize)
                 }
             }
             BasicText(
