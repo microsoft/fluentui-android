@@ -24,9 +24,11 @@ data class PeoplePickerInfo(
 open class PeoplePickerTokens : IControlToken, Parcelable {
 
     @Composable
-    open fun backgroundColor(peoplePickerInfo: PeoplePickerInfo): Color {
-        return FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
-            themeMode = FluentTheme.themeMode
+    open fun backgroundBrush(peoplePickerInfo: PeoplePickerInfo): Brush {
+        return SolidColor(
+            FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                themeMode = FluentTheme.themeMode
+            )
         )
     }
 
@@ -46,11 +48,6 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun trailingAccessoryEndPadding(peoplePickerInfo: PeoplePickerInfo): PaddingValues {
-        return PaddingValues(horizontal = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size120))
-    }
-
-    @Composable
     open fun minHeight(peoplePickerInfo: PeoplePickerInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size480)
     }
@@ -63,12 +60,12 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun typography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
+    open fun textFieldTypography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
         return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
     }
 
     @Composable
-    open fun cursorColor(peoplePickerInfo: PeoplePickerInfo): Brush {
+    open fun cursorBrush(peoplePickerInfo: PeoplePickerInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
                 themeMode = FluentTheme.themeMode
@@ -89,6 +86,7 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
             FluentTheme.aliasTokens.brandForegroundColor[FluentAliasTokens.BrandForegroundColorTokens.BrandForeground1].value()
         else
             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+
     }
 
     @Composable
@@ -97,6 +95,7 @@ open class PeoplePickerTokens : IControlToken, Parcelable {
             FluentTheme.aliasTokens.errorAndStatusColor[FluentAliasTokens.ErrorAndStatusColorTokens.DangerForeground1].value()
         else
             FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
+
     }
 
     @Composable
