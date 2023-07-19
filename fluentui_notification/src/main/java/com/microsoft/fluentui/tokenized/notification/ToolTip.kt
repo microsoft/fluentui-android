@@ -10,9 +10,16 @@ import androidx.compose.foundation.MutatorMutex
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.sizeIn
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
@@ -21,13 +28,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntRect
@@ -36,15 +46,19 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
+import androidx.compose.ui.window.PopupProperties
+import com.microsoft.fluentui.icons.ToolTipIcons
+import com.microsoft.fluentui.icons.tooltipicons.Tip
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.TooltipInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TooltipTokens
+import com.microsoft.fluentui.util.dpToPx
+import com.microsoft.fluentui.util.pxToDp
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withTimeout
 
 
 /**
@@ -150,28 +164,88 @@ fun rememberTooltipState(
 ): TooltipState =
     remember { TooltipStateImpl(mutatorMutex) }
 
+@Composable
+fun ToolTipBox(
+    title: String?,
+    text: String,
+    tooltipState: TooltipState,
+    modifier: Modifier = Modifier,
+    focusable: Boolean = true,
+    offset: DpOffset = DpOffset(0.dp, 0.dp),
+    onDismissRequest: (() -> Unit)? = null,
+    tooltipTokens: TooltipTokens? = null,
+    content: @Composable () -> Unit,
+) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
+    val token = tooltipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
+    val tooltipInfo = TooltipInfo()
+    ToolTipBox(
+        tooltipContent = {
+            Column(
+                modifier = Modifier
+                    .semantics(mergeDescendants = true) {}
+                    .padding(token.padding(tooltipInfo = tooltipInfo))
+                    .width(IntrinsicSize.Max),
+            ) {
+                if (!title.isNullOrBlank()) {
+                    BasicText(
+                        text = title,
+                        style = token.titleTypography(tooltipInfo = tooltipInfo).merge(
+                            TextStyle(color = token.titleColor(tooltipInfo = tooltipInfo))
+                        )
+                    )
+                    Spacer(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(
+                                token.spacingTitleText(
+                                    tooltipInfo = tooltipInfo
+                                )
+                            )
+                    )
+                }
+                BasicText(
+                    text = text, style = token.textTypography(tooltipInfo = tooltipInfo).merge(
+                        TextStyle(color = token.textColor(tooltipInfo = tooltipInfo))
+                    )
+                )
+            }
+        },
+        tooltipState = tooltipState,
+        modifier = modifier,
+        focusable = focusable,
+        offset = offset,
+        onDismissRequest = onDismissRequest,
+        tooltipTokens = token,
+        content = content
+    )
+}
 
 @Composable
 fun ToolTipBox(
     tooltipContent: @Composable () -> Unit,
     tooltipState: TooltipState,
-    onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
+    focusable: Boolean = true,
     offset: DpOffset = DpOffset(0.dp, 0.dp),
+    onDismissRequest: (() -> Unit)? = null,
     tooltipTokens: TooltipTokens? = null,
     content: @Composable () -> Unit,
 ) {
+    val themeID =
+        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     Box {
         content()
         if (tooltipState.isVisible) {
             Tooltip(
                 tooltipContent = tooltipContent,
-                tooltipState =tooltipState,
-                onDismissRequest = onDismissRequest,
+                tooltipState = tooltipState,
                 modifier = modifier,
-                enabled = enabled,
+                focusable = focusable,
                 offset = offset,
+                onDismissRequest = onDismissRequest,
                 tooltipTokens = tooltipTokens
             )
         }
@@ -179,65 +253,106 @@ fun ToolTipBox(
 }
 
 @Composable
-fun Tooltip(
+private fun Tooltip(
     tooltipContent: @Composable () -> Unit,
     tooltipState: TooltipState,
-    onDismissRequest: () -> Unit,
     modifier: Modifier = Modifier,
-    enabled: Boolean = true,
+    focusable: Boolean = true,
     offset: DpOffset = DpOffset(0.dp, 0.dp),
+    onDismissRequest: (() -> Unit)? = null,
     tooltipTokens: TooltipTokens? = null,
 ) {
-    val themeID =
-        FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
-    val token = tooltipTokens ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
+    val token = tooltipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
     val tooltipInfo = TooltipInfo()
+    var tipAlignment: Alignment = Alignment.TopStart
+    var tipOffsetX: Float = 0.0f
+
+    val tooltipPositionProvider =
+        TooltipPositionProvider(
+            offset,
+            token.margin(tooltipInfo)
+        ) { parentBounds, tooltipContentBounds ->
+            tipAlignment =
+                if (parentBounds.top + parentBounds.height / 2 <= tooltipContentBounds.top) {
+                    Alignment.TopStart
+                } else {
+                    Alignment.BottomStart
+                }
+            val parentCenter = parentBounds.left + parentBounds.width / 2
+            val tooltipCenter = tooltipContentBounds.left + tooltipContentBounds.width / 2
+            tipOffsetX = (parentCenter - tooltipCenter).toFloat()
+        }
 
     val coroutineScope = rememberCoroutineScope()
-    val tooltipPositionProvider = remember { TooltipPositionProvider(8) }
-    Box {
-        val transition = updateTransition(tooltipState.isVisible, label = "Tooltip transition")
-        if (transition.currentState || transition.targetState) {
-            val tooltipPaneDescription = "ToolTip"
-            Popup(
-                popupPositionProvider = tooltipPositionProvider,
-                onDismissRequest = {
-                    if (tooltipState.isVisible) {
-                        coroutineScope.launch { tooltipState.dismiss() }
+
+    val transition = updateTransition(tooltipState.isVisible, label = "Tooltip transition")
+    if (transition.currentState || transition.targetState) {
+        val tooltipPaneDescription = "ToolTip"
+        Popup(
+            popupPositionProvider = tooltipPositionProvider,
+            properties = PopupProperties(
+                focusable = focusable,
+                dismissOnClickOutside = true
+            ),
+            onDismissRequest = {
+                if (tooltipState.isVisible) {
+                    coroutineScope.launch { tooltipState.dismiss() }
+                    if (onDismissRequest != null) {
+                        onDismissRequest()
                     }
                 }
-            ) {
-                Column {
-                    Box(
-                        modifier = modifier
-                            .sizeIn(
-                                minWidth = 40.dp,
-                                maxWidth = 200.dp,
-                                minHeight = 24.dp
-                            )
-                            .animateTooltip(transition)
-                            .semantics { paneTitle = tooltipPaneDescription }
-                            .background(
-                                token.backgroundBrush(tooltipInfo),
-                                shape = RoundedCornerShape(token.cornerRadius(tooltipInfo))
-                            )
-                            .padding(8.dp)
+            }
+        ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                if (tipAlignment == Alignment.TopStart) {
+                    Icon(
+                        imageVector = ToolTipIcons.Tip,
+                        contentDescription = null,
+                        tint = token.tipColor(tooltipInfo),
+                        modifier = Modifier.offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
                     )
-                    {
-                        tooltipContent()
-                    }
+                }
+                Box(
+                    modifier = modifier
+                        .sizeIn(
+                            minWidth = 40.dp,
+                            maxWidth = token.maxWidth(tooltipInfo),
+                            minHeight = 24.dp
+                        )
+                        .animateTooltip(transition)
+                        .semantics { paneTitle = tooltipPaneDescription }
+                        .background(
+                            token.backgroundBrush(tooltipInfo),
+                            shape = RoundedCornerShape(token.cornerRadius(tooltipInfo))
+                        )
+                )
+                {
+                    tooltipContent()
+                }
+                if (tipAlignment == Alignment.BottomStart) {
+                    Icon(
+                        imageVector = ToolTipIcons.Tip, contentDescription = null,
+                        tint = token.tipColor(tooltipInfo),
+                        modifier = Modifier
+                            .offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
+                            .rotate(180f)
+                    )
                 }
             }
         }
     }
-
     DisposableEffect(tooltipState) {
-        onDispose { tooltipState.onDispose() }
+        onDispose {
+            tooltipState.onDispose()
+        }
     }
 }
 
 private class TooltipPositionProvider(
-    val tooltipAnchorPadding: Int
+    val tooltipAnchorOffset: DpOffset,
+    val margin: Dp = 0.dp,
+    val onPositionCalculated: (IntRect, IntRect) -> Unit = { _, _ -> }
 ) : PopupPositionProvider {
     override fun calculatePosition(
         anchorBounds: IntRect,
@@ -245,14 +360,22 @@ private class TooltipPositionProvider(
         layoutDirection: LayoutDirection,
         popupContentSize: IntSize
     ): IntOffset {
-        val x = anchorBounds.left + (anchorBounds.width - popupContentSize.width) / 2
-
-        // Tooltip prefers to be above the anchor,
-        // but if this causes the tooltip to overlap with the anchor
-        // then we place it below the anchor
-        var y = anchorBounds.top - popupContentSize.height - tooltipAnchorPadding
-        if (y < 0)
-            y = anchorBounds.bottom + tooltipAnchorPadding
+        val marginPx = dpToPx(margin).toInt()
+        var x = anchorBounds.left + ((anchorBounds.width - popupContentSize.width) / 2)
+        // If the tooltip goes out of window then we align it to the left or right
+        x = if (x < 0) marginPx //Left Align
+        else if (x + popupContentSize.width + marginPx < windowSize.width) x
+        else windowSize.width - marginPx - popupContentSize.width //Right Align
+        // Tooltip prefers to be below the anchor,
+        // but if this causes the tooltip to out from window bounds,
+        // then we place it above the anchor
+        var y = anchorBounds.bottom + dpToPx(tooltipAnchorOffset.y).toInt()
+        if (y + popupContentSize.height + marginPx > windowSize.height)
+            y = anchorBounds.top - popupContentSize.height - dpToPx(tooltipAnchorOffset.y).toInt()
+        onPositionCalculated(
+            anchorBounds,
+            IntRect(x, y, x + popupContentSize.width, y + popupContentSize.height)
+        )
         return IntOffset(x, y)
     }
 }
@@ -311,4 +434,3 @@ private fun Modifier.animateTooltip(
         alpha = alpha
     )
 }
-

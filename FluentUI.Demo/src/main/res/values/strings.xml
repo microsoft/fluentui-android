@@ -883,6 +883,26 @@
     <!-- UI Label for Show Handle -->
     <string name="drawer_show_handle">Show Handle</string>
 
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Title</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Tooltip Text</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Top Start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Top End </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Bottom Start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Bottom End </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Center </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Custom Center</string>
+
     <!-- V2 Demo App -->
     <string name = "release_notes_updates">For updates on Release Notes,&#160;</string>
     <string name = "click_here">click here.</string>

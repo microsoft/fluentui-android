@@ -384,7 +384,7 @@ private fun getDrawerContent(
         AndroidView(
             modifier = Modifier
 
-                    
+
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState()),
             factory = {
