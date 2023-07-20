@@ -24,7 +24,7 @@ class V2SnackbarActivityUITest {
     private val SHOW_SNACKBAR = "Show Snackbar"
     private val DISMISS_SNACKBAR = "Dismiss Snackbar"
     private val SNACKBAR = "Snackbar"
-    private val ICON = "ICON"
+    private val ICON = "Icon"
     private val SUBTITLE = "Subtitle"
     private val ACTION_BUTTON = "Action Button"
     private val DISMISS_BUTTON = "Dismiss Button"

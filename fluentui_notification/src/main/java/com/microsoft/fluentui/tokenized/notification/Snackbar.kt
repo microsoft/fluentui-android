@@ -36,7 +36,7 @@ import kotlin.coroutines.resume
 
 // TAGS FOR TESTING
 private const val SNACKBAR = "Snackbar"
-private const val ICON = "ICON"
+private const val ICON = "Icon"
 private const val SUBTITLE = "Subtitle"
 private const val ACTION_BUTTON = "Action Button"
 private const val DISMISS_BUTTON = "Dismiss Button"

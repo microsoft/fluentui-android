@@ -28,8 +28,8 @@ class V2CardNudgeActivityUITest {
     private val ACCENT_TEXT_PARAM = "Accent Text Param"
     private val ACTION_BUTTON_PARAM = "Action Button Param"
     private val DISMISS_BUTTON_PARAM = "Dismiss Button Param"
-    private val CARDNUDGE = "CardNudge"
-    private val ICON = "ICON"
+    private val CARD_NUDGE = "Card Nudge"
+    private val ICON = "Icon"
     private val ACCENT_ICON = "Accent Icon"
     private val ACCENT_TEXT = "Accent Text"
     private val SUBTITLE = "Subtitle"
@@ -59,7 +59,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeDisplay() {
-        composeTestRule.onNodeWithTag(CARDNUDGE).assertExists()
+        composeTestRule.onNodeWithTag(CARD_NUDGE).assertExists()
     }
 
     @Test
@@ -152,15 +152,15 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testLeftSwipe() {
-        composeTestRule.onNodeWithTag(CARDNUDGE).performTouchInput { swipeLeft() }
-        composeTestRule.onNodeWithTag(CARDNUDGE).performClick()
+        composeTestRule.onNodeWithTag(CARD_NUDGE).performTouchInput { swipeLeft() }
+        composeTestRule.onNodeWithTag(CARD_NUDGE).performClick()
         composeTestRule.onNodeWithText("Left Swiped", substring = true).assertExists()
     }
 
     @Test
     fun testRightSwipe() {
-        composeTestRule.onNodeWithTag(CARDNUDGE).performTouchInput { swipeRight() }
-        composeTestRule.onNodeWithTag(CARDNUDGE).performClick()
+        composeTestRule.onNodeWithTag(CARD_NUDGE).performTouchInput { swipeRight() }
+        composeTestRule.onNodeWithTag(CARD_NUDGE).performClick()
         composeTestRule.onNodeWithText("Right Swiped", substring = true).assertExists()
     }
 

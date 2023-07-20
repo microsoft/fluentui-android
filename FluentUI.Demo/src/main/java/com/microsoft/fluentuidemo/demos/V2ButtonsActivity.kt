@@ -20,6 +20,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.example.theme.token.MyAliasTokens
@@ -209,7 +210,8 @@ class V2ButtonsActivity : DemoActivity() {
                             Toast.makeText(context, toastText, Toast.LENGTH_SHORT).show()
                         },
                         icon = Icons.Filled.Email,
-                        modifier = Modifier.padding(16.dp),
+                        modifier = Modifier.padding(16.dp)
+                            .testTag("FAB"),
                         text = fabText,
                     )
                 }
@@ -231,6 +233,7 @@ class V2ButtonsActivity : DemoActivity() {
         Column {
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Button(
+                    modifier = Modifier.testTag("testButton"),
                     style = ButtonStyle.Button,
                     size = ButtonSize.Large,
                     buttonTokens = buttonToken,

@@ -3,7 +3,6 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Intent
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.unit.dp
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
@@ -14,14 +13,14 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
-class V2PersonaListActivityUITest {
+class V2BadgeActivityUITest {
     private fun launchActivity() {
-        ActivityScenario.launch<V2PersonaListActivity>(setUpIntentForActivity())
+        ActivityScenario.launch<V2BadgeActivity>(setUpIntentForActivity())
     }
 
     private fun setUpIntentForActivity(): Intent {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2PersonaListActivity::class.java)
+        val intent = Intent(targetContext, V2BadgeActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
         return intent
     }
@@ -36,19 +35,15 @@ class V2PersonaListActivityUITest {
     }
 
     @Test
-    fun testPersonaListBounds() {
-        val personaList = composeTestRule.onNodeWithTag("list")
-        personaList.onChildAt(0).assertHeightIsAtLeast(48.dp)
-    }
+    fun testRender() {
+        val dotBadge = composeTestRule.onNodeWithTag("Dot Badge")
+        dotBadge.assertExists("Badge did not load")
 
-    @Test
-    fun testPersonaList() {
-        composeTestRule.onRoot(true).printToLog("tree")
-        val personaList = composeTestRule.onNodeWithTag("list")
-        personaList.assertExists()
-        personaList.assertIsDisplayed()
-        personaList.assert(hasScrollAction())
-        personaList.onChildAt(0).assertHasClickAction()
+        val characterBadge = composeTestRule.onNodeWithTag("Dot Badge")
+        characterBadge.assertExists("Badge did not load")
+
+        val listBadge = composeTestRule.onNodeWithTag("Dot Badge")
+        listBadge.assertExists("Badge did not load")
     }
 
     @After

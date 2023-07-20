@@ -10,10 +10,10 @@ import org.junit.runners.Suite
     V2AvatarCarouselActivityUITest::class,
     V2AvatarGroupActivityUITest::class,
     V2CardUITest::class,
-    V2CardNudgeActivityUITest::class,
+    V2CardNudgeActivityUITest::class, //this
     V2CitationUITest::class,
-    V2BottomDrawerUITest::class,
-    V2DrawerActivityUITest::class,
+    V2BottomDrawerUITest::class, //this
+    V2DrawerActivityUITest::class, //this
     V2LabelUITest::class,
     V2ListItemActivityUITest::class,
     V2PersonaUITest::class,

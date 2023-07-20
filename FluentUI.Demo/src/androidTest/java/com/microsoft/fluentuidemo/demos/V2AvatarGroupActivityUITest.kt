@@ -39,7 +39,11 @@ class V2AvatarGroupActivityUITest {
     fun testIncreaseDecreaseMaxAvatar() {
         val plusButton = composeTestRule.onNodeWithText("+")
         val minusButton = composeTestRule.onNodeWithText("-")
-        val layout = composeTestRule.onAllNodesWithContentDescription("Group Name", substring = true, useUnmergedTree = true)[0]
+        val layout = composeTestRule.onAllNodesWithContentDescription(
+            "Group Name",
+            substring = true,
+            useUnmergedTree = true
+        )[0]
 
         layout.onChildren().assertCountEquals(2)
         plusButton.performClick()
@@ -63,12 +67,19 @@ class V2AvatarGroupActivityUITest {
 
         val plusButton = composeTestRule.onNodeWithText("+")
         val minusButton = composeTestRule.onNodeWithText("-")
-        val layout = composeTestRule.onAllNodesWithContentDescription("Group Name", substring = true, useUnmergedTree = true)[0]
+        val layout = composeTestRule.onAllNodesWithContentDescription(
+            "Group Name",
+            substring = true,
+            useUnmergedTree = true
+        )[0]
 
         layout.onChildren().onLast().printToLog("Test")
 
         if (maxAvatar < totalPeople)
-            layout.onChildren().onLast().assertContentDescriptionContains((totalPeople - maxAvatar).toString(), substring = true)
+            layout.onChildren().onLast().assertContentDescriptionContains(
+                (totalPeople - maxAvatar).toString(),
+                substring = true
+            )
 
         for (i in 1..(2..(totalPeople - 2)).random()) {
             plusButton.performClick()
@@ -76,7 +87,10 @@ class V2AvatarGroupActivityUITest {
         }
 
         if (maxAvatar < totalPeople)
-            layout.onChildren().onLast().assertContentDescriptionContains((totalPeople - maxAvatar).toString(), substring = true)
+            layout.onChildren().onLast().assertContentDescriptionContains(
+                (totalPeople - maxAvatar).toString(),
+                substring = true
+            )
 
         for (i in 1..(2..maxAvatar).random()) {
             minusButton.performClick()
@@ -84,7 +98,10 @@ class V2AvatarGroupActivityUITest {
         }
 
         if (maxAvatar < totalPeople)
-            layout.onChildren().onLast().assertContentDescriptionContains((totalPeople - maxAvatar).toString(), substring = true)
+            layout.onChildren().onLast().assertContentDescriptionContains(
+                (totalPeople - maxAvatar).toString(),
+                substring = true
+            )
 
     }
 
