@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
@@ -164,6 +165,19 @@ fun rememberTooltipState(
 ): TooltipState =
     remember { TooltipStateImpl(mutatorMutex) }
 
+/**
+ *  ToolTipBox is a composable that shows a tooltip box with a title and a text.
+ *  It is used to show a tooltip box on a control.
+ *  @param title The title of the tooltip box.
+ *  @param text The text of the tooltip box.
+ *  @param tooltipState The state of the tooltip box.
+ *  @param modifier The modifier to be applied to the tooltip box.
+ *  @param focusable Whether the tooltip box is focusable.
+ *  @param offset The offset of the tooltip box.
+ *  @param onDismissRequest The callback to be invoked when the tooltip box is dismissed.
+ *  @param tooltipTokens The tooltip tokens that are used to customize the tooltip box.
+ *  @param content The content of the tooltip box.*
+ */
 @Composable
 fun ToolTipBox(
     title: String?,
@@ -223,6 +237,18 @@ fun ToolTipBox(
     )
 }
 
+/**
+ * ToolTipBox is a composable that shows a tooltip box with a title and a text.
+ * It is used to show a tooltip box on a control.
+ * @param tooltipContent The content of the tooltip box.
+ * @param tooltipState The state of the tooltip box.
+ * @param modifier The modifier to be applied to the tooltip box.
+ * @param focusable Whether the tooltip box is focusable.
+ * @param offset The offset of the tooltip box.
+ * @param onDismissRequest The callback to be invoked when the tooltip box is dismissed.
+ * @param tooltipTokens The tooltip tokens that are used to customize the tooltip box.
+ * @param content The content of the tooltip box.*
+ */
 @Composable
 fun ToolTipBox(
     tooltipContent: @Composable () -> Unit,
@@ -266,7 +292,8 @@ private fun Tooltip(
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
     val tooltipInfo = TooltipInfo()
     var tipAlignment: Alignment = Alignment.TopStart
-    var tipOffsetX: Float = 0.0f
+    var tipOffsetX = 0.0f
+    val isRTL = LocalLayoutDirection.current == LayoutDirection.Rtl
 
     val tooltipPositionProvider =
         TooltipPositionProvider(
@@ -281,7 +308,9 @@ private fun Tooltip(
                 }
             val parentCenter = parentBounds.left + parentBounds.width / 2
             val tooltipCenter = tooltipContentBounds.left + tooltipContentBounds.width / 2
-            tipOffsetX = (parentCenter - tooltipCenter).toFloat()
+            tipOffsetX = if (isRTL) (tooltipCenter - parentCenter).toFloat() else
+                (parentCenter - tooltipCenter).toFloat()
+
         }
 
     val coroutineScope = rememberCoroutineScope()
