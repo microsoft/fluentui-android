@@ -21,17 +21,26 @@ class V2ShimmerUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testShimmerBounds(){
+    fun testShimmerBounds() {
         composeTestRule.setContent {
             FluentTheme {
-                Shimmer(shape = ShimmerShape.Box, modifier = Modifier
-                    .height(50.dp)
-                    .width(50.dp)
-                    .testTag("shimmer"))
-                Shimmer(shape= ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
+                Shimmer(
+                    shape = ShimmerShape.Box, modifier = Modifier
+                        .height(50.dp)
+                        .width(50.dp)
+                        .testTag("shimmer")
+                )
+                Shimmer(
+                    shape = ShimmerShape.Circle,
+                    modifier = Modifier
+                        .size(50.dp)
+                        .testTag("circleShimmer")
+                )
             }
         }
-        composeTestRule.onNodeWithTag("shimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
-        composeTestRule.onNodeWithTag("circleShimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
+        composeTestRule.onNodeWithTag("shimmer").assertHeightIsEqualTo(50.dp)
+            .assertWidthIsEqualTo(50.dp)
+        composeTestRule.onNodeWithTag("circleShimmer").assertHeightIsEqualTo(50.dp)
+            .assertWidthIsEqualTo(50.dp)
     }
 }

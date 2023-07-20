@@ -20,6 +20,7 @@ private const val ITEM_1_TAG = "item 1"
 private const val ITEM_2_TAG = "item 2"
 private const val LARGE_AVATAR_SIZE = 72
 private const val SMALL_AVATAR_SIZE = 56
+
 class V2AvatarCarouselActivityUITest {
     private fun launchActivity() {
         ActivityScenario.launch<V2AvatarCarouselActivity>(setUpIntentForActivity())
@@ -42,26 +43,49 @@ class V2AvatarCarouselActivityUITest {
     }
 
     @Test
-    fun testAvatarCarouselBounds(){
+    fun testAvatarCarouselBounds() {
         composeTestRule.onNodeWithTag(LARGE_CAROUSEL_TAG).onChildAt(0).assertWidthIsEqualTo(88.dp)
         composeTestRule.onNodeWithTag(SMALL_CAROUSEL_TAG).onChildAt(0).assertWidthIsEqualTo(88.dp)
     }
+
     @Test
-    fun testAvatarCarouselItemEnabledDisabled(){
-        composeTestRule.onNode(hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)), true).assertIsEnabled()
-        composeTestRule.onNode(hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_2_TAG)), true).assertIsNotEnabled()
-        composeTestRule.onNode(hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)), true).assertIsEnabled()
-        composeTestRule.onNode(hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_2_TAG)), true).assertIsNotEnabled()
+    fun testAvatarCarouselItemEnabledDisabled() {
+        composeTestRule.onNode(
+            hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            true
+        ).assertIsEnabled()
+        composeTestRule.onNode(
+            hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_2_TAG)),
+            true
+        ).assertIsNotEnabled()
+        composeTestRule.onNode(
+            hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            true
+        ).assertIsEnabled()
+        composeTestRule.onNode(
+            hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_2_TAG)),
+            true
+        ).assertIsNotEnabled()
     }
+
     @Test
-    fun testAvatarSize(){
-        composeTestRule.onNode(hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),true).onChildAt(0).assertWidthIsEqualTo(
-            LARGE_AVATAR_SIZE.dp)
-        composeTestRule.onNode(hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),true).onChildAt(0).assertWidthIsEqualTo(
-            SMALL_AVATAR_SIZE.dp)
+    fun testAvatarSize() {
+        composeTestRule.onNode(
+            hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            true
+        ).onChildAt(0).assertWidthIsEqualTo(
+            LARGE_AVATAR_SIZE.dp
+        )
+        composeTestRule.onNode(
+            hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            true
+        ).onChildAt(0).assertWidthIsEqualTo(
+            SMALL_AVATAR_SIZE.dp
+        )
     }
+
     @Test
-    fun testHorizontalScroll(){
+    fun testHorizontalScroll() {
         composeTestRule.onNodeWithTag(LARGE_CAROUSEL_TAG).assert(hasScrollAction())
         composeTestRule.onNodeWithTag(SMALL_CAROUSEL_TAG).assert(hasScrollAction())
     }

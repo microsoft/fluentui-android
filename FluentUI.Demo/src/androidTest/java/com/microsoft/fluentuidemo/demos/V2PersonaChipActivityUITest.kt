@@ -48,50 +48,115 @@ class V2PersonaChipActivityUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testPersonaChipBounds(){
+    fun testPersonaChipBounds() {
         composeTestRule.onNodeWithTag(MEDIUM_PERSONA_CHIP_TAG).assertHeightIsAtLeast(
-            PERSONA_CHIP_HEIGHT.dp)
+            PERSONA_CHIP_HEIGHT.dp
+        )
         composeTestRule.onNodeWithTag(SMALL_PERSONA_CHIP_TAG).assertHeightIsAtLeast(
-            PERSONA_CHIP_HEIGHT.dp)
+            PERSONA_CHIP_HEIGHT.dp
+        )
     }
+
     @Test
-    fun testPersonaChipAvatarAndIconSize(){
-        composeTestRule.onNode(hasTestTag(AVATAR_TAG).and(hasAnyAncestor(hasTestTag(
-            MEDIUM_PERSONA_CHIP_TAG))), true).assertHeightIsEqualTo(AVATAR_ICON_SIZE.dp)
+    fun testPersonaChipAvatarAndIconSize() {
+        composeTestRule.onNode(
+            hasTestTag(AVATAR_TAG).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        MEDIUM_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertHeightIsEqualTo(AVATAR_ICON_SIZE.dp)
         composeTestRule.onNodeWithTag(SWITCH_TAG).performClick()
         composeTestRule.onNodeWithTag(MEDIUM_PERSONA_CHIP_TAG).performClick()
-        composeTestRule.onNode(hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(hasAnyAncestor(hasTestTag(
-            MEDIUM_PERSONA_CHIP_TAG))), true).assertHeightIsEqualTo(AVATAR_ICON_SIZE.dp)
+        composeTestRule.onNode(
+            hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        MEDIUM_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertHeightIsEqualTo(AVATAR_ICON_SIZE.dp)
     }
+
     @Test
-    fun testMediumPersonaChip(){
-        composeTestRule.onNode(hasTestTag(AVATAR_TAG).and(hasAnyAncestor(hasTestTag(
-            MEDIUM_PERSONA_CHIP_TAG))), true).assertExists()
+    fun testMediumPersonaChip() {
+        composeTestRule.onNode(
+            hasTestTag(AVATAR_TAG).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        MEDIUM_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertExists()
         composeTestRule.onNodeWithTag(SWITCH_TAG).performClick()
         composeTestRule.onNodeWithTag(MEDIUM_PERSONA_CHIP_TAG).performClick()
-        composeTestRule.onNode(hasTestTag(AVATAR_TAG).and(hasAnyAncestor(hasTestTag(
-            MEDIUM_PERSONA_CHIP_TAG))), true).assertDoesNotExist()
-        composeTestRule.onNode(hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(hasAnyAncestor(hasTestTag(
-            MEDIUM_PERSONA_CHIP_TAG))), true).assertExists()
+        composeTestRule.onNode(
+            hasTestTag(AVATAR_TAG).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        MEDIUM_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertDoesNotExist()
+        composeTestRule.onNode(
+            hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        MEDIUM_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertExists()
     }
+
     @Test
-    fun testSmallPersonaChip(){
-        composeTestRule.onNode(hasTestTag(AVATAR_TAG).and(hasAnyAncestor(hasTestTag(
-            SMALL_PERSONA_CHIP_TAG))), true).assertDoesNotExist()
+    fun testSmallPersonaChip() {
+        composeTestRule.onNode(
+            hasTestTag(AVATAR_TAG).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        SMALL_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertDoesNotExist()
         composeTestRule.onNodeWithTag(SWITCH_TAG).performClick()
         composeTestRule.onNodeWithTag(SMALL_PERSONA_CHIP_TAG).performClick()
-        composeTestRule.onNode(hasTestTag(AVATAR_TAG).and(hasAnyAncestor(hasTestTag(
-            SMALL_PERSONA_CHIP_TAG))), true).assertDoesNotExist()
-        composeTestRule.onNode(hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(hasAnyAncestor(hasTestTag(
-            MEDIUM_PERSONA_CHIP_TAG))), true).assertDoesNotExist()
+        composeTestRule.onNode(
+            hasTestTag(AVATAR_TAG).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        SMALL_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertDoesNotExist()
+        composeTestRule.onNode(
+            hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
+                hasAnyAncestor(
+                    hasTestTag(
+                        MEDIUM_PERSONA_CHIP_TAG
+                    )
+                )
+            ), true
+        ).assertDoesNotExist()
     }
+
     @Test
-    fun testAnonymousPersonaChip(){
-        composeTestRule.onNode(hasParent(hasTestTag(ANONYMOUS_PERSONA_CHIP_TAG)), true).assertTextContains(
-            ANONYMOUS)
+    fun testAnonymousPersonaChip() {
+        composeTestRule.onNode(hasParent(hasTestTag(ANONYMOUS_PERSONA_CHIP_TAG)), true)
+            .assertTextContains(
+                ANONYMOUS
+            )
     }
+
     @Test
-    fun testDisabledPersonaChip(){
+    fun testDisabledPersonaChip() {
         composeTestRule.onNodeWithTag(DISABLED_PERSONA_CHIP_TAG).assertIsNotEnabled()
     }
 

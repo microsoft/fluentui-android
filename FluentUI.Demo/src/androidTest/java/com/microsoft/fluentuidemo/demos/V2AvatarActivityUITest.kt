@@ -43,7 +43,11 @@ class V2AvatarActivityUITest {
         val oooButton = composeTestRule.onNodeWithText("Toggle OOO")
         val activityButton = composeTestRule.onNodeWithText("Toggle Activity")
 
-        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription(useUnmergedTree = true, label = "Amanda Brady", substring = true)[0]
+        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription(
+            useUnmergedTree = true,
+            label = "Amanda Brady",
+            substring = true
+        )[0]
         amandaAvatar.onChild().assert(hasTestTag(IMAGE_TEST_TAG))
 
         //Action
@@ -61,7 +65,8 @@ class V2AvatarActivityUITest {
         //Check
         amandaAvatar.assertContentDescriptionContains("Active", substring = true)
 
-        composeTestRule.onAllNodesWithContentDescription("Anonymous").assertAll(hasAnyChild(hasTestTag(ICON_TEST_TAG)))
+        composeTestRule.onAllNodesWithContentDescription("Anonymous")
+            .assertAll(hasAnyChild(hasTestTag(ICON_TEST_TAG)))
     }
 
     @After

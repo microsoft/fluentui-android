@@ -9,6 +9,7 @@ import androidx.compose.foundation.text.BasicText
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -51,7 +52,7 @@ class V2BadgeActivity : DemoActivity() {
                             style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
                         )
                         Spacer(modifier = Modifier.width(16.dp))
-                        Badge()
+                        Badge(modifier = Modifier.testTag("Dot Badge"))
                     }
                     Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                         BasicText(
@@ -62,7 +63,11 @@ class V2BadgeActivity : DemoActivity() {
                         LazyRow {
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge(text = "1", badgeType = BadgeType.Character)
+                                Badge(
+                                    text = "1",
+                                    badgeType = BadgeType.Character,
+                                    modifier = Modifier.testTag("Character Badge")
+                                )
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
@@ -105,7 +110,7 @@ class V2BadgeActivity : DemoActivity() {
                         LazyRow {
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))
-                                Badge(text = "1", badgeType = BadgeType.List)
+                                Badge(text = "1", badgeType = BadgeType.List, modifier = Modifier.testTag("List Badge"))
                             }
                             item {
                                 Spacer(modifier = Modifier.width(8.dp))

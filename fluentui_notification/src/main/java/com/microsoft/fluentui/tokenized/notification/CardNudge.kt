@@ -39,8 +39,8 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import kotlin.math.roundToInt
 
 // TAGS FOR TESTING
-private const val CARD_NUDGE = "CardNudge"
-private const val ICON = "ICON"
+private const val CARD_NUDGE = "Card Nudge"
+private const val ICON = "Icon"
 private const val ACCENT_ICON = "Accent Icon"
 private const val ACCENT_TEXT = "Accent Text"
 private const val SUBTITLE = "Subtitle"

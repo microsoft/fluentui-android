@@ -1,7 +1,5 @@
 package com.microsoft.fluentuidemo.demos
 
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -14,11 +12,9 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.CircularProgressIndicatorSize
-import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.ProgressText
-import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import org.junit.Rule
 import org.junit.Test
 
@@ -28,25 +24,44 @@ class V2ProgressIndicatorUITest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testLinearProgressIndicatorBounds(){
+    fun testLinearProgressIndicatorBounds() {
         composeTestRule.setContent {
             FluentTheme {
-                LinearProgressIndicator(modifier = Modifier
-                    .testTag("testPI")
-                    .width(200.dp))
+                LinearProgressIndicator(
+                    modifier = Modifier
+                        .testTag("testPI")
+                        .width(200.dp)
+                )
             }
         }
-        composeTestRule.onNodeWithTag("testPI").assertHeightIsEqualTo(2.dp).assertWidthIsEqualTo(200.dp)
+        composeTestRule.onNodeWithTag("testPI").assertHeightIsEqualTo(2.dp)
+            .assertWidthIsEqualTo(200.dp)
     }
+
     @Test
-    fun testCircularProgressIndicatorSize(){
+    fun testCircularProgressIndicatorSize() {
         composeTestRule.setContent {
             FluentTheme {
-                CircularProgressIndicator(size = CircularProgressIndicatorSize.XXSmall, modifier = Modifier.testTag("12dp"))
-                CircularProgressIndicator(size = CircularProgressIndicatorSize.XSmall, modifier = Modifier.testTag("16dp"))
-                CircularProgressIndicator(size = CircularProgressIndicatorSize.Medium, modifier = Modifier.testTag("24dp"))
-                CircularProgressIndicator(size = CircularProgressIndicatorSize.Large, modifier = Modifier.testTag("32dp"))
-                CircularProgressIndicator(size = CircularProgressIndicatorSize.XLarge, modifier = Modifier.testTag("40dp"))
+                CircularProgressIndicator(
+                    size = CircularProgressIndicatorSize.XXSmall,
+                    modifier = Modifier.testTag("12dp")
+                )
+                CircularProgressIndicator(
+                    size = CircularProgressIndicatorSize.XSmall,
+                    modifier = Modifier.testTag("16dp")
+                )
+                CircularProgressIndicator(
+                    size = CircularProgressIndicatorSize.Medium,
+                    modifier = Modifier.testTag("24dp")
+                )
+                CircularProgressIndicator(
+                    size = CircularProgressIndicatorSize.Large,
+                    modifier = Modifier.testTag("32dp")
+                )
+                CircularProgressIndicator(
+                    size = CircularProgressIndicatorSize.XLarge,
+                    modifier = Modifier.testTag("40dp")
+                )
             }
         }
         composeTestRule.onNodeWithTag("12dp").assertExists().assertHeightIsEqualTo(12.dp)
@@ -55,47 +70,59 @@ class V2ProgressIndicatorUITest {
         composeTestRule.onNodeWithTag("32dp").assertExists().assertHeightIsEqualTo(32.dp)
         composeTestRule.onNodeWithTag("40dp").assertExists().assertHeightIsEqualTo(40.dp)
     }
+
     @Test
-    fun testLinearDeterminateIndicatorProgress(){
+    fun testLinearDeterminateIndicatorProgress() {
         composeTestRule.setContent {
             FluentTheme {
                 LinearProgressIndicator(progress = 0.2f, modifier = Modifier.testTag("testPI"))
             }
         }
         val progressIndicator = composeTestRule.onNodeWithTag("testPI")
-        progressIndicator.assertRangeInfoEquals(ProgressBarRangeInfo(0.2f,0f..1f))
+        progressIndicator.assertRangeInfoEquals(ProgressBarRangeInfo(0.2f, 0f..1f))
     }
+
     @Test
-    fun testCircularDeterminateIndicatorProgress(){
+    fun testCircularDeterminateIndicatorProgress() {
         composeTestRule.setContent {
             FluentTheme {
                 CircularProgressIndicator(progress = 0.2f, modifier = Modifier.testTag("testPI"))
             }
         }
         val progressIndicator = composeTestRule.onNodeWithTag("testPI")
-        progressIndicator.assertRangeInfoEquals(ProgressBarRangeInfo(0.2f,0f..1f))
+        progressIndicator.assertRangeInfoEquals(ProgressBarRangeInfo(0.2f, 0f..1f))
     }
+
     @Test
-    fun testProgressText(){
+    fun testProgressText() {
         composeTestRule.setContent {
-            FluentTheme{
+            FluentTheme {
                 ProgressText(text = "Loading", progress = 0.5f)
             }
         }
         composeTestRule.onNodeWithText("Loading").assertExists().assertIsDisplayed()
-        composeTestRule.onNodeWithTag("progressBar").assertRangeInfoEquals(ProgressBarRangeInfo(0.5f, 0f..1f))
+        composeTestRule.onNodeWithTag("progressBar")
+            .assertRangeInfoEquals(ProgressBarRangeInfo(0.5f, 0f..1f))
     }
+
     @Test
-    fun testProgressTextIcon(){
+    fun testProgressTextIcon() {
         composeTestRule.setContent {
-            FluentTheme{
-                ProgressText(text = "Loading", progress = 0.5f, leadingIconAccessory = FluentIcon(
-                    Icons.Default.Close, contentDescription = "Cancel1", onClick = {}))
-                ProgressText(text = "Loading", progress = 0.5f, leadingIconAccessory = FluentIcon(
-                    Icons.Default.Close, contentDescription = "Cancel2"))
+            FluentTheme {
+                ProgressText(
+                    text = "Loading", progress = 0.5f, leadingIconAccessory = FluentIcon(
+                        Icons.Default.Close, contentDescription = "Cancel1", onClick = {})
+                )
+                ProgressText(
+                    text = "Loading", progress = 0.5f, leadingIconAccessory = FluentIcon(
+                        Icons.Default.Close, contentDescription = "Cancel2"
+                    )
+                )
             }
         }
-        composeTestRule.onNodeWithContentDescription("Cancel1").assertExists().assertIsDisplayed().assertHasClickAction()
-        composeTestRule.onNodeWithContentDescription("Cancel2").assertExists().assertIsDisplayed().assertHasNoClickAction()
+        composeTestRule.onNodeWithContentDescription("Cancel1").assertExists().assertIsDisplayed()
+            .assertHasClickAction()
+        composeTestRule.onNodeWithContentDescription("Cancel2").assertExists().assertIsDisplayed()
+            .assertHasNoClickAction()
     }
 }
