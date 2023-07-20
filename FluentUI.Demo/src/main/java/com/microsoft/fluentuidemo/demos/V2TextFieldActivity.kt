@@ -283,7 +283,7 @@ class V2TextFieldActivity : V2DemoActivity() {
 
                     val focusManager = LocalFocusManager.current
                     Box(
-                        contentAlignment = Alignment.BottomCenter,
+                        contentAlignment = Alignment.Center,
                         modifier = Modifier
                             .fillMaxSize()
                             .clickable { focusManager.clearFocus() }) {
