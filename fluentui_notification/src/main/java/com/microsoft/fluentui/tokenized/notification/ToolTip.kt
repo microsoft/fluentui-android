@@ -291,7 +291,7 @@ private fun Tooltip(
     val token = tooltipTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
     val tooltipInfo = TooltipInfo()
-    var tipAlignment: Alignment = Alignment.TopStart
+    var tipAlignment: Alignment = Alignment.TopCenter
     var tipOffsetX = 0.0f
     val isRTL = LocalLayoutDirection.current == LayoutDirection.Rtl
 
@@ -302,9 +302,9 @@ private fun Tooltip(
         ) { parentBounds, tooltipContentBounds ->
             tipAlignment =
                 if (parentBounds.top + parentBounds.height / 2 <= tooltipContentBounds.top) {
-                    Alignment.TopStart
+                    Alignment.TopCenter
                 } else {
-                    Alignment.BottomStart
+                    Alignment.BottomCenter
                 }
             val parentCenter = parentBounds.left + parentBounds.width / 2
             val tooltipCenter = tooltipContentBounds.left + tooltipContentBounds.width / 2
@@ -334,7 +334,7 @@ private fun Tooltip(
             }
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                if (tipAlignment == Alignment.TopStart) {
+                if (tipAlignment == Alignment.TopCenter) {
                     Icon(
                         imageVector = ToolTipIcons.Tip,
                         contentDescription = null,
@@ -359,7 +359,7 @@ private fun Tooltip(
                 {
                     tooltipContent()
                 }
-                if (tipAlignment == Alignment.BottomStart) {
+                if (tipAlignment == Alignment.BottomCenter) {
                     Icon(
                         imageVector = ToolTipIcons.Tip, contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
