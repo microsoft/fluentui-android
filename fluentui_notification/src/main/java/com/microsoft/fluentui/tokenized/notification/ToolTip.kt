@@ -29,14 +29,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.debugInspectorInfo
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.paneTitle
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
@@ -152,6 +155,9 @@ object TooltipDefaults {
      */
     val GlobalMutatorMutex = MutatorMutex()
 }
+
+val TOOLTIP_TIP_TEST_TAG = "tooltip_tip_test_tag"
+val TOOLTIP_CONTENT_TEST_TAG = "tooltip_content_test_tag"
 
 /**
  * Create and remember the default [TooltipState].
@@ -278,6 +284,7 @@ fun ToolTipBox(
     }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun Tooltip(
     tooltipContent: @Composable () -> Unit,
@@ -333,13 +340,19 @@ private fun Tooltip(
                 }
             }
         ) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.semantics {
+                    testTagsAsResourceId = true
+                }) {
                 if (tipAlignment == Alignment.TopCenter) {
                     Icon(
                         imageVector = ToolTipIcons.Tip,
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
-                        modifier = Modifier.offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
+                        modifier = Modifier
+                            .offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
+                            .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
                 Box(
@@ -355,6 +368,7 @@ private fun Tooltip(
                             token.backgroundBrush(tooltipInfo),
                             shape = RoundedCornerShape(token.cornerRadius(tooltipInfo))
                         )
+                        .testTag(TOOLTIP_CONTENT_TEST_TAG)
                 )
                 {
                     tooltipContent()
@@ -366,6 +380,7 @@ private fun Tooltip(
                         modifier = Modifier
                             .offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
                             .rotate(180f)
+                            .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
             }
