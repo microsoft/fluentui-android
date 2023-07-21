@@ -20,6 +20,7 @@ import org.hamcrest.Matchers.*
 import org.junit.*
 import java.util.*
 import com.microsoft.fluentui.search.Searchbar
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.demos.list.ListSubHeader
 
 class AppBarLayoutActivityUITest {
@@ -31,6 +32,7 @@ class AppBarLayoutActivityUITest {
         var targetContext = InstrumentationRegistry.getInstrumentation().targetContext
         var intent = Intent(targetContext, AppBarLayoutActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
+        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
         return intent
     }
 

@@ -19,7 +19,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.LinearProgressIndicatorT
 import com.microsoft.fluentui.util.dpToPx
 
 /**
- * Create a Determinate Linear Progress Indicator
+ *
  *
  * @param progress Progress of the progress indicator. 0.0 represents no progress and 1.0 represents full progress.
  * @param linearProgressIndicatorHeight Optional width of the progress indicator

@@ -21,6 +21,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.microsoft.fluentui.actionbar.IndicatorView
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R.id
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.demos.actionbar.ActionBarDemoActivity
 import org.junit.*
 import org.junit.runner.*
@@ -151,6 +152,7 @@ class ActionBarLayoutActivityUITest {
         var targetContext = InstrumentationRegistry.getInstrumentation().targetContext
         var intent = Intent(targetContext, ActionBarLayoutActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
+        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
         return intent
     }
 }

@@ -7,14 +7,12 @@ package com.microsoft.fluentuidemo
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.microsoft.fluentui.util.DuoSupportUtils
 import com.microsoft.fluentuidemo.databinding.ActivityDemoDetailBinding
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
-import java.util.*
+import java.util.UUID
 
 abstract class DemoActivity : AppCompatActivity() {
     companion object {
@@ -42,7 +40,7 @@ abstract class DemoActivity : AppCompatActivity() {
         val demo: Demo? = if (DuoSupportUtils.isDualScreenMode(this)) {
             DUO_DEMOS.find { it.id == demoID }
         } else {
-            DEMOS.find { it.id == demoID }
+            V1DEMO.find { it.id == demoID }
         }
         if (demo != null)
             title = demo.title
@@ -54,9 +52,10 @@ abstract class DemoActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                navigateUpTo(Intent(this, DemoListActivity::class.java))
+                navigateUpTo(Intent(this, V2DemoListActivity::class.java))
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

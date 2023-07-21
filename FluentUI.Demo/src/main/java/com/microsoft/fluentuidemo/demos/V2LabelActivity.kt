@@ -1,7 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -17,30 +16,27 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens.TypographyTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
 import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
-import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
-class V2LabelActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2LabelActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-18"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-18"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                CreateLabelUI()
-            }
+
+        setActivityContent {
+            CreateLabelUI()
         }
     }
 
@@ -48,7 +44,7 @@ class V2LabelActivity : DemoActivity() {
     private fun CreateLabelUI() {
         var colorStyle by rememberSaveable { mutableStateOf(ColorStyle.Primary) }
         var selectedTab by rememberSaveable { mutableStateOf(0) }
-        var isBackgroundChange by rememberSaveable{ mutableStateOf(false) }
+        var isBackgroundChange by rememberSaveable { mutableStateOf(false) }
         var tabsList: MutableList<PillMetaData> = mutableListOf()
         tabsList.add(
             PillMetaData(
@@ -56,7 +52,7 @@ class V2LabelActivity : DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Primary
                     selectedTab = 0
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -66,7 +62,7 @@ class V2LabelActivity : DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Secondary
                     selectedTab = 1
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -75,7 +71,7 @@ class V2LabelActivity : DemoActivity() {
                 text = "White",
                 onClick = {
                     colorStyle = ColorStyle.White
-                    isBackgroundChange = true;
+                    isBackgroundChange = true
                     selectedTab = 2
                 }
             )
@@ -86,7 +82,7 @@ class V2LabelActivity : DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Brand
                     selectedTab = 3
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -96,7 +92,7 @@ class V2LabelActivity : DemoActivity() {
                 onClick = {
                     colorStyle = ColorStyle.Error
                     selectedTab = 4
-                    isBackgroundChange = false;
+                    isBackgroundChange = false
                 }
             )
         )
@@ -118,7 +114,8 @@ class V2LabelActivity : DemoActivity() {
                     .horizontalScroll(
                         rememberScrollState()
                     )
-                    .verticalScroll(rememberScrollState()
+                    .verticalScroll(
+                        rememberScrollState()
                     ),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {

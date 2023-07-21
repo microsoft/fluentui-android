@@ -1,13 +1,23 @@
 package com.microsoft.fluentuidemo.demos
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -20,39 +30,47 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import com.microsoft.fluentui.persona.IPersona
+import com.microsoft.fluentui.persona.PersonaListView
 import com.microsoft.fluentui.theme.FluentTheme
+import com.microsoft.fluentui.theme.ThemeMode
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BehaviorType
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.drawer.Drawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.PrimarySurfaceContent
+import com.microsoft.fluentuidemo.util.createPersonaList
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.getDrawerAsContent
 import com.microsoft.fluentuidemo.util.getDynamicListGeneratorAsContent
 import kotlinx.coroutines.launch
 
 
-class V2DrawerActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2DrawerActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-17"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-17"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                CreateActivityUI()
-            }
+
+        setActivityContent {
+            CreateActivityUI()
         }
     }
 }
@@ -304,4 +322,189 @@ private fun CreateDrawerWithButtonOnPrimarySurfaceToInvokeIt(
         behaviorType = behaviorType,
         scrimVisible = scrimVisible
     )
+}
+
+@Composable
+private fun PrimarySurfaceContent(
+    onClick: () -> Unit,
+    text: String,
+    height: Dp = 20.dp,
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Spacer(Modifier.height(height))
+        com.microsoft.fluentui.tokenized.controls.Button(
+            style = ButtonStyle.Button,
+            size = ButtonSize.Medium,
+            text = text,
+            onClick = onClick
+        )
+    }
+}
+
+@Composable
+private fun getDynamicDrawerContent(): @Composable ((close: () -> Unit) -> Unit) {
+    return { _ ->
+        val no = remember { mutableStateOf(0) }
+        LazyColumn(
+            horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            item {
+                com.microsoft.fluentui.tokenized.controls.Button(
+                    style = ButtonStyle.Button,
+                    size = ButtonSize.Medium,
+                    text = "Click to create random size list",
+                    onClick = { no.value = (40 * Math.random()).toInt() })
+            }
+            repeat(no.value) {
+                item {
+                    Spacer(Modifier.height(10.dp))
+                    BasicText(
+                        text = "Item $it",
+                        style = TextStyle(
+                            color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
+                                themeMode = ThemeMode.Auto
+                            )
+                        )
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun getDrawerContent(
+    contentType: ContentType = ContentType.FULL_SCREEN_SCROLLABLE_CONTENT
+): @Composable ((close: () -> Unit) -> Unit) {
+    return { _ ->
+        lateinit var context: Context
+        AndroidView(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(rememberScrollState()),
+            factory = {
+                context = it
+                val view = LayoutInflater.from(context as Activity).inflate(
+                    R.layout.demo_drawer_content,
+                    null
+                ).rootView
+                val personaList = createPersonaList(context)
+                (view as PersonaListView).personas = when (contentType) {
+                    ContentType.FULL_SCREEN_SCROLLABLE_CONTENT -> personaList
+                    ContentType.EXPANDABLE_SIZE_CONTENT -> personaList.take(9) as ArrayList<IPersona>
+                    ContentType.WRAPPED_SIZE_CONTENT -> personaList.take(2) as ArrayList<IPersona>
+                }
+                view
+            }
+        ) {}
+    }
+}
+
+@Composable
+private fun getDrawerInDrawerContent(): @Composable ((() -> Unit) -> Unit) {
+    return { close ->
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.padding(start = 8.dp)
+        ) {
+            com.microsoft.fluentui.tokenized.controls.Button(
+                style = ButtonStyle.Button,
+                size = ButtonSize.Medium,
+                text = "Close Drawer",
+                onClick = close
+            )
+
+            val scopeB = rememberCoroutineScope()
+            val drawerStateB = rememberDrawerState()
+
+            var selectedBehaviorType by remember { mutableStateOf(BehaviorType.BOTTOM_SLIDE_OVER) }
+            BasicText("Select Drawer Type", style = TextStyle(fontWeight = FontWeight.Bold))
+            Row(modifier = Modifier
+                .clickable { selectedBehaviorType = BehaviorType.TOP }
+                .clearAndSetSemantics { contentDescription = "Top" }
+            ) {
+                RadioButton(
+                    onClick = {
+                        selectedBehaviorType = BehaviorType.TOP
+                    },
+                    selected = selectedBehaviorType == BehaviorType.TOP
+                )
+                BasicText(text = "Top")
+            }
+            Row(modifier = Modifier
+                .clickable { selectedBehaviorType = BehaviorType.BOTTOM }
+                .clearAndSetSemantics { contentDescription = "Bottom" }
+            ) {
+                RadioButton(
+                    onClick = {
+                        selectedBehaviorType = BehaviorType.BOTTOM
+                    },
+                    selected = selectedBehaviorType == BehaviorType.BOTTOM
+                )
+                BasicText(text = "Bottom")
+            }
+            Row(modifier = Modifier
+                .clickable { selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER }
+                .clearAndSetSemantics { contentDescription = "Left Slide Over" }
+            ) {
+                RadioButton(
+                    onClick = {
+                        selectedBehaviorType = BehaviorType.LEFT_SLIDE_OVER
+                    },
+                    selected = selectedBehaviorType == BehaviorType.LEFT_SLIDE_OVER
+                )
+                BasicText(text = "Left Slide Over")
+            }
+            Row(modifier = Modifier
+                .clickable { selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER }
+                .clearAndSetSemantics { contentDescription = "Right Slide Over" }
+            ) {
+                RadioButton(
+                    onClick = {
+                        selectedBehaviorType = BehaviorType.RIGHT_SLIDE_OVER
+                    },
+                    selected = selectedBehaviorType == BehaviorType.RIGHT_SLIDE_OVER
+                )
+                BasicText(text = "Right Slide Over")
+            }
+            Row(modifier = Modifier
+                .clickable { selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER }
+                .clearAndSetSemantics { contentDescription = "Bottom Slide Over" }
+            ) {
+                RadioButton(
+                    onClick = {
+                        selectedBehaviorType = BehaviorType.BOTTOM_SLIDE_OVER
+                    },
+                    selected = selectedBehaviorType == BehaviorType.BOTTOM_SLIDE_OVER
+                )
+                BasicText(text = "Bottom Slide Over")
+            }
+
+            //Button on Outer Drawer Surface
+            PrimarySurfaceContent(
+                onClick = {
+                    scopeB.launch {
+                        drawerStateB.open()
+                    }
+                },
+                text = "Open Inner Drawer"
+            )
+            Drawer(
+                drawerState = drawerStateB,
+                behaviorType = selectedBehaviorType,
+                drawerContent = {
+                    getDrawerContent()()
+                    {
+                        scopeB.launch {
+                            drawerStateB.close()
+                        }
+                    }
+
+                }
+            )
+        }
+    }
 }

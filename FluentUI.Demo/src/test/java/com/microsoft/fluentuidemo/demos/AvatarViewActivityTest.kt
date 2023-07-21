@@ -6,7 +6,7 @@ import com.microsoft.fluentui.persona.AvatarBorderStyle
 import com.microsoft.fluentui.persona.AvatarSize
 import com.microsoft.fluentui.persona.AvatarStyle
 import com.microsoft.fluentui.persona.AvatarView
-import com.microsoft.fluentuidemo.DEMOS
+import com.microsoft.fluentuidemo.V1DEMO
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.squareup.picasso.Picasso
@@ -33,7 +33,7 @@ class AvatarViewActivityTest {
             Picasso.setSingletonInstance(Builder(context).build())
         }
         var intent = Intent(context, AvatarViewActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, DEMOS[2].id)
+        intent.putExtra(DemoActivity.DEMO_ID, V1DEMO[2].id)
         activity = Robolectric.buildActivity(AvatarViewActivity::class.java, intent).create().start().visible().get()
     }
 
