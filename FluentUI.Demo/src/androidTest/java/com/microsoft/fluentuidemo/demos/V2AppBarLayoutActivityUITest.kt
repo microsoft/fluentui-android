@@ -1,26 +1,18 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
-import androidx.compose.ui.test.*
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
+import androidx.compose.ui.test.onAllNodesWithTag
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
-import androidx.test.platform.app.InstrumentationRegistry
-import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.assertExistsAfterToggleOnly
-import com.microsoft.fluentuidemo.toggleControlToValue
-import org.junit.After
+import com.microsoft.fluentuidemo.BaseTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
-class V2AppBarLayoutActivityUITest {
+class V2AppBarLayoutActivityUITest : BaseTest() {
 
     // Tags used for testing
     private val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
@@ -33,26 +25,13 @@ class V2AppBarLayoutActivityUITest {
     private val BOTTOM_BAR = "Bottom bar"
     private val SEARCH_BAR = "Search bar"
 
-    private fun launchActivity() {
-        ActivityScenario.launch<V2AppBarLayoutActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2AppBarLayoutActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        return intent
-    }
-
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2AppBarLayoutActivity::class.java)
     }
 
-    @get:Rule
-    val composeTestRule = createComposeRule()
-    private val modifiableParametersButton = composeTestRule.onAllNodesWithTag(MODIFIABLE_PARAMETER_SECTION)[0]
+    private val modifiableParametersButton =
+        composeTestRule.onAllNodesWithTag(MODIFIABLE_PARAMETER_SECTION)[0]
 
     @Test
     fun testAppBarDisplay() {
@@ -88,13 +67,7 @@ class V2AppBarLayoutActivityUITest {
         modifiableParametersButton.performClick()
         val control = composeTestRule.onNodeWithTag(APPBAR_STYLE_PARAM)
         val component = composeTestRule.onNodeWithTag(APP_BAR)
-        toggleControlToValue(control,true)
+        toggleControlToValue(control, true)
         component.assertExists("App bar is not displayed in accent")
-    }
-
-
-    @After
-    fun tearDown() {
-        Intents.release()
     }
 }
