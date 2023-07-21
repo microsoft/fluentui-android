@@ -45,19 +45,19 @@ import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
+//Tag for Test
+const val SCAFFOLD_TOP_BAR = "TopBar"
+const val SCAFFOLD_BOTTOM_BAR = "BottomBar"
+const val SCAFFOLD_SNACKBAR = "SnackBar"
+const val SCAFFOLD_DRAWER = "Drawer"
+const val SCAFFOLD_FLOATING_ACTION_BUTTON = "FAB"
+const val SCAFFOLD_MAIN_CONTENT = "Main Content"
+const val SCAFFOLD_DRAWER_BUTTON = "Drawer Button"
+const val SCAFFOLD_SNACKBAR_BUTTON = "Snackbar Button"
+
 class V2ScaffoldActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
-
-    //Tag for Test
-    private val TOP_BAR = "TopBar"
-    private val BOTTOM_BAR = "BottomBar"
-    private val SNACKBAR = "SnackBar"
-    private val DRAWER = "Drawer"
-    private val FLOATING_ACTION_BUTTON = "FAB"
-    private val MAIN_CONTENT = "Main Content"
-    private val DRAWER_BUTTON = "Drawer Button"
-    private val SNACKBAR_BUTTON = "Snackbar Button"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,14 +108,14 @@ class V2ScaffoldActivity : DemoActivity() {
                         AppBar(
                             title = resources.getString(R.string.scaffold),
                             appBarSize = AppBarSize.Large,
-                            modifier = Modifier.testTag(TOP_BAR)
+                            modifier = Modifier.testTag(SCAFFOLD_TOP_BAR)
                         )
                     },
                     bottomBar = {
                         TabBar(
                             tabDataList = tabDataList,
                             selectedIndex = selectedIndex,
-                            modifier = Modifier.testTag(BOTTOM_BAR)
+                            modifier = Modifier.testTag(SCAFFOLD_BOTTOM_BAR)
                         )
                     },
                     floatingActionButton = {
@@ -137,20 +137,20 @@ class V2ScaffoldActivity : DemoActivity() {
                                     this
                                 )
                             },
-                            modifier = Modifier.testTag(FLOATING_ACTION_BUTTON)
+                            modifier = Modifier.testTag(SCAFFOLD_FLOATING_ACTION_BUTTON)
                         )
                     },
                     snackbar = {
                         Snackbar(
                             snackbarState = snackbarState,
-                            modifier = Modifier.testTag(SNACKBAR)
+                            modifier = Modifier.testTag(SCAFFOLD_SNACKBAR)
                         )
                     }
                 ) {
                     Box(
                         Modifier
                             .padding(it)
-                            .testTag(MAIN_CONTENT)
+                            .testTag(SCAFFOLD_MAIN_CONTENT)
                     ) {
                         GetContent(context, snackbarState)
                     }
@@ -166,7 +166,7 @@ class V2ScaffoldActivity : DemoActivity() {
         val scope = rememberCoroutineScope()
         Column {
             Drawer(
-                modifier = Modifier.testTag(DRAWER),
+                modifier = Modifier.testTag(SCAFFOLD_DRAWER),
                 drawerState = drawerState,
                 drawerContent = { CreateList(size = 20, context = context) }
             )
@@ -181,7 +181,7 @@ class V2ScaffoldActivity : DemoActivity() {
                     onClick = { size.value = (40 * Math.random()).toInt() })
 
                 Button(
-                    modifier = Modifier.testTag(DRAWER_BUTTON),
+                    modifier = Modifier.testTag(SCAFFOLD_DRAWER_BUTTON),
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = context.resources.getString(R.string.scaffold_open_drawer),
@@ -200,7 +200,7 @@ class V2ScaffoldActivity : DemoActivity() {
                         LocalContext.current.resources.getString(R.string.fluentui_timeout)
                     var displayString: String = ""
                     Button(
-                        modifier = Modifier.testTag(SNACKBAR_BUTTON),
+                        modifier = Modifier.testTag(SCAFFOLD_SNACKBAR_BUTTON),
                         style = ButtonStyle.OutlinedButton,
                         size = ButtonSize.Medium,
                         text = context.resources.getString(R.string.fluentui_show_snackbar),
