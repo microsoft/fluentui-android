@@ -438,7 +438,7 @@ object ListItem {
      * @param secondarySubTextTrailingContent Optional secondary text trailing Content.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param bottomContent Optional bottom Content under Text field. If used, trailing Content will not be displayed
+     * @param bottomContent Optional bottom Content under Text field.
      * @param leadingAccessoryContent Optional composable leading accessory Content.
      * @param trailingAccessoryContent Optional composable trailing accessory Content.
      * @param leadingAccessoryContentAlignment Alignment for leading accessory Content to align Top, Bottom or Center
@@ -525,7 +525,7 @@ object ListItem {
      * @param secondarySubTextTrailingContent Optional secondary text trailing Content.
      * @param border [BorderType] Optional border for the list item.
      * @param borderInset [BorderInset]Optional borderInset for list item.
-     * @param bottomContent Optional bottom Content under Text field. If used, trailing Content will not be displayed
+     * @param bottomContent Optional bottom Content under Text field.
      * @param leadingAccessoryContent Optional composable leading accessory Content.
      * @param trailingAccessoryContent Optional composable trailing accessory Content.
      * @param leadingAccessoryContentAlignment Alignment for leading accessory Content to align Top, Bottom or Center
