@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo
 
 import android.os.Bundle
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -17,9 +20,13 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -49,6 +56,7 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
+import kotlinx.coroutines.launch
 
 enum class Tokens {
     GlobalTokens,
@@ -59,10 +67,16 @@ class V2DesignTokensActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
-    override val designTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#overview"
-    override val globalTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#global-tokens"
-    override val aliasTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#alias-token"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#control-token"
+
+    override val designTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#overview"
+    override val globalTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#global-tokens"
+    override val aliasTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#alias-token"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Design-Tokens#control-token"
+
     private fun previewShadowToken(selectedToken: FluentGlobalTokens.ShadowTokens): BasicCardTokens {
         return object : BasicCardTokens() {
             @Composable
@@ -94,6 +108,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
         }
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable
     fun PreviewToken(tokenName: String, tokensList: Array<out Enum<*>>) {
         val tabsList = mutableListOf<PillMetaData>()
@@ -107,7 +122,22 @@ class V2DesignTokensActivity : V2DemoActivity() {
             )
         }
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+
+        val bringIntoViewRequester = remember { BringIntoViewRequester() }
+        val scope = rememberCoroutineScope()
+        val focusRequester = remember { FocusRequester() }
+        Column(horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .focusRequester(focusRequester)
+                .bringIntoViewRequester(bringIntoViewRequester)
+                .onFocusEvent {
+                    if (it.isFocused) {
+                        scope.launch {
+                            bringIntoViewRequester.bringIntoView()
+                        }
+                    }
+                }
+        ) {
             BasicCard(
                 modifier = Modifier
                     .size(width = 180.dp, height = 130.dp)

@@ -33,6 +33,7 @@ import com.example.theme.token.ExcelAliasTokens
 import com.example.theme.token.M365AliasTokens
 import com.example.theme.token.OneNoteAliasTokens
 import com.example.theme.token.PowerPointAliasTokens
+import com.example.theme.token.TeamsAliasTokens
 import com.example.theme.token.WordAliasTokens
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
@@ -266,7 +267,8 @@ fun SetAppTheme() {
         Pair(WordAliasTokens(), stringResource(id = R.string.word_theme)),
         Pair(ExcelAliasTokens(), stringResource(id = R.string.excel_theme)),
         Pair(PowerPointAliasTokens(), stringResource(id = R.string.powerpoint_theme)),
-        Pair(M365AliasTokens(), stringResource(id = R.string.m365_theme))
+        Pair(M365AliasTokens(), stringResource(id = R.string.m365_theme)),
+        Pair(TeamsAliasTokens(), stringResource(id = R.string.teams_theme))
     )
 
     themesList.forEachIndexed { index, theme ->

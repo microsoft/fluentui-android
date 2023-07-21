@@ -895,6 +895,7 @@
     <string name = "report_issue">Report Issue</string>
     <string name = "v1_components">V1 Components</string>
     <string name = "v2_components">V2 Components</string>
+    <string name = "all_components">All</string>
     <string name = "fluent_logo">Fluent Logo</string>
     <string name = "new_badge">New</string>
     <string name = "modified_badge">Modified</string>
@@ -908,6 +909,7 @@
     <string name = "excel_theme">Excel</string>
     <string name = "powerpoint_theme">PowerPoint</string>
     <string name = "m365_theme">M365</string>
+    <string name = "teams_theme">MS Teams</string>
     <string name = "choose_appearance">Choose Appearance</string>
     <string name = "appearance_system_default">System Default</string>
     <string name = "appearance_light">Light</string>

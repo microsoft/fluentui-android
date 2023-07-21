@@ -58,6 +58,9 @@ class V2CardActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-12"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-12"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

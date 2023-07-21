@@ -62,6 +62,9 @@ class V2ScaffoldActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-25"
+
     //Tag for Test
     private val TOP_BAR = "TopBar"
     private val BOTTOM_BAR = "BottomBar"

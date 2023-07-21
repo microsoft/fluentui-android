@@ -27,7 +27,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -65,11 +64,13 @@ import com.microsoft.fluentui.theme.token.controlTokens.ColorStyle
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.SearchBar
 import com.microsoft.fluentui.tokenized.controls.Label
+import com.microsoft.fluentui.tokenized.divider.Divider
 import com.microsoft.fluentui.tokenized.drawer.Drawer
 import com.microsoft.fluentui.tokenized.drawer.rememberDrawerState
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Dialog
 import com.microsoft.fluentui.tokenized.notification.Badge
+import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
 import com.microsoft.fluentuidemo.CustomizedTokens.listItemTokens
@@ -78,7 +79,8 @@ import java.util.Locale
 
 enum class Components {
     V1,
-    V2
+    V2,
+    All
 }
 
 class V2DemoListActivity : ComponentActivity() {
@@ -137,7 +139,7 @@ class V2DemoListActivity : ComponentActivity() {
                     .fillMaxWidth()
             ) {
                 Image(
-                    painter = painterResource(id = R.drawable.fluent_logo),
+                    painter = painterResource(id = R.mipmap.fluent_logo),
                     contentDescription = stringResource(id = R.string.app_name),
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
@@ -202,7 +204,7 @@ class V2DemoListActivity : ComponentActivity() {
                 )
             }
 
-            Divider(color = FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value())
+            Divider()
 
             Column(
                 verticalArrangement = Arrangement.spacedBy(
@@ -290,6 +292,36 @@ class V2DemoListActivity : ComponentActivity() {
         }
     }
 
+    private fun searchComponent(
+        userInput: String,
+        selectedSearchComponents: Components
+    ): MutableList<Demo> {
+        return if (userInput.isEmpty()) {
+            when (selectedSearchComponents) {
+                Components.V1 -> V1DEMO.toMutableList()
+                Components.V2 -> V2DEMO.toMutableList()
+                Components.All -> (V1DEMO + V2DEMO).toMutableList()
+            }
+        } else {
+            when (selectedSearchComponents) {
+                Components.V1 -> V1DEMO.filter {
+                    it.title.lowercase(Locale.getDefault())
+                        .contains(userInput.lowercase(Locale.getDefault()))
+                }.toMutableList()
+
+                Components.V2 -> V2DEMO.filter {
+                    it.title.lowercase(Locale.getDefault())
+                        .contains(userInput.lowercase(Locale.getDefault()))
+                }.toMutableList()
+
+                Components.All -> (V1DEMO + V2DEMO).filter {
+                    it.title.lowercase(Locale.getDefault())
+                        .contains(userInput.lowercase(Locale.getDefault()))
+                }.toMutableList()
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -306,7 +338,9 @@ class V2DemoListActivity : ComponentActivity() {
 
                 var searchModeEnabled by rememberSaveable { mutableStateOf(false) }
                 var selectedComponents by rememberSaveable { mutableStateOf(Components.V2) }
+                var selectedSearchComponents by rememberSaveable { mutableStateOf(Components.All) }
                 var filteredDemoList by remember { mutableStateOf(V2DEMO.toMutableList()) }
+                var inputString by rememberSaveable { mutableStateOf("") }
 
                 Scaffold(
                     contentWindowInsets = WindowInsets.statusBars,
@@ -317,15 +351,16 @@ class V2DemoListActivity : ComponentActivity() {
                         )
 
                         SetStatusBarColor()
+
                         AppBar(
                             title = stringResource(id = R.string.app_name),
                             navigationIcon = FluentIcon(
                                 SearchBarIcons.Arrowback,
-                                contentDescription = stringResource(id = R.string.app_bar_layout_navigation_icon_clicked)
+                                contentDescription = stringResource(id = R.string.app_bar_layout_navigation_icon_clicked),
                             ),
                             appBarSize = AppBarSize.Large,
                             logo = {
-                                Image(painter = painterResource(id = R.drawable.fluent_logo),
+                                Image(painter = painterResource(id = R.mipmap.fluent_logo),
                                     contentDescription = stringResource(id = R.string.fluent_logo),
                                     contentScale = ContentScale.Crop,
                                     modifier = Modifier
@@ -362,54 +397,102 @@ class V2DemoListActivity : ComponentActivity() {
                                 {
                                     SearchBar(
                                         onValueChange = { userInput, _ ->
-                                            val demo = if (selectedComponents == Components.V1) {
-                                                V1DEMO.toMutableList()
-                                            } else {
-                                                V2DEMO.toMutableList()
-                                            }
-
-                                            filteredDemoList = if (userInput.isEmpty()) {
-                                                demo
-                                            } else {
-                                                demo.filter {
-                                                    it.title.lowercase(Locale.getDefault())
-                                                        .contains(userInput.lowercase(Locale.getDefault()))
-                                                }.toMutableList()
+                                            scope.launch {
+                                                inputString = userInput
                                             }
                                         },
                                         style = AppThemeViewModel.appThemeStyle.value,
-                                        navigationIconCallback = { searchModeEnabled = false },
+                                        navigationIconCallback = {
+                                            searchModeEnabled = false
+                                            selectedSearchComponents = Components.V2
+                                            filteredDemoList = V2DEMO.toMutableList()
+                                        },
                                         focusByDefault = true
+                                    )
+                                    filteredDemoList = searchComponent(
+                                        userInput = inputString,
+                                        selectedSearchComponents = selectedSearchComponents
                                     )
                                 }
                             } else null,
                             bottomBar = {
-                                val buttonBarList = mutableListOf<PillMetaData>()
-                                buttonBarList.add(
-                                    PillMetaData(
-                                        text = stringResource(id = R.string.v1_components),
-                                        enabled = true,
-                                        onClick = {
-                                            selectedComponents = Components.V1
-                                            filteredDemoList = V1DEMO.toMutableList()
-                                        }
+                                if (!searchModeEnabled) {
+                                    val buttonBarList = mutableListOf<PillMetaData>()
+                                    buttonBarList.add(
+                                        PillMetaData(
+                                            text = stringResource(id = R.string.v1_components),
+                                            enabled = true,
+                                            onClick = {
+                                                selectedComponents = Components.V1
+                                                filteredDemoList = V1DEMO.toMutableList()
+                                            }
+                                        )
                                     )
-                                )
-                                buttonBarList.add(
-                                    PillMetaData(
-                                        text = stringResource(id = R.string.v2_components),
-                                        enabled = true,
-                                        onClick = {
-                                            selectedComponents = Components.V2
-                                            filteredDemoList = V2DEMO.toMutableList()
-                                        }
+                                    buttonBarList.add(
+                                        PillMetaData(
+                                            text = stringResource(id = R.string.v2_components),
+                                            enabled = true,
+                                            onClick = {
+                                                selectedComponents = Components.V2
+                                                filteredDemoList = V2DEMO.toMutableList()
+                                            }
+                                        )
                                     )
-                                )
-                                PillTabs(
-                                    style = AppThemeViewModel.appThemeStyle.value,
-                                    metadataList = buttonBarList,
-                                    selectedIndex = selectedComponents.ordinal
-                                )
+                                    PillTabs(
+                                        style = AppThemeViewModel.appThemeStyle.value,
+                                        metadataList = buttonBarList,
+                                        selectedIndex = selectedComponents.ordinal
+                                    )
+                                } else {
+                                    val searchList: MutableList<PillMetaData> = mutableListOf()
+
+                                    searchList.add(
+                                        PillMetaData(
+                                            text = stringResource(id = R.string.all_components),
+                                            onClick = {
+                                                selectedSearchComponents = Components.All
+                                                filteredDemoList = searchComponent(
+                                                    userInput = inputString,
+                                                    selectedSearchComponents = selectedSearchComponents
+                                                )
+                                            },
+                                            selected = selectedSearchComponents == Components.All,
+                                        )
+                                    )
+
+                                    searchList.add(
+                                        PillMetaData(
+                                            text = stringResource(id = R.string.v1_components),
+                                            onClick = {
+                                                selectedSearchComponents = Components.V1
+                                                filteredDemoList = searchComponent(
+                                                    userInput = inputString,
+                                                    selectedSearchComponents = selectedSearchComponents
+                                                )
+                                            },
+                                            selected = selectedSearchComponents == Components.V1,
+                                        )
+                                    )
+
+                                    searchList.add(
+                                        PillMetaData(
+                                            text = stringResource(id = R.string.v2_components),
+                                            onClick = {
+                                                selectedSearchComponents = Components.V2
+                                                filteredDemoList = searchComponent(
+                                                    userInput = inputString,
+                                                    selectedSearchComponents = selectedSearchComponents
+                                                )
+                                            },
+                                            selected = selectedSearchComponents == Components.V2,
+                                        )
+                                    )
+
+                                    PillBar(
+                                        metadataList = searchList,
+                                        style = AppThemeViewModel.appThemeStyle.value
+                                    )
+                                }
                             },
                             appTitleDelta = appTitleDelta
                         )
@@ -434,7 +517,7 @@ class V2DemoListActivity : ComponentActivity() {
                                         )
                                     },
                                     trailingAccessoryContent = {
-                                        if (it.isNew) {
+                                        if (it.badge == Badge.New) {
                                             Spacer(
                                                 modifier = Modifier.width(
                                                     FluentGlobalTokens.size(
@@ -449,7 +532,7 @@ class V2DemoListActivity : ComponentActivity() {
                                             )
                                         }
 
-                                        if (it.isModified) {
+                                        if (it.badge == Badge.Modified) {
                                             Spacer(
                                                 modifier = Modifier.width(
                                                     FluentGlobalTokens.size(

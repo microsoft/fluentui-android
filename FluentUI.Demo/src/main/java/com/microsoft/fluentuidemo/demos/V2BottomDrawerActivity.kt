@@ -38,6 +38,9 @@ class V2BottomDrawerActivity : V2DemoActivity() {
         setupActivity(this)
     }
 
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-8"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-8"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setActivityContent {

@@ -650,3 +650,31 @@ class M365AliasTokens : AliasTokens() {
         }
     }
 }
+
+class TeamsAliasTokens : AliasTokens() {
+    override val brandColor: TokenSet<FluentAliasTokens.BrandColorTokens, Color> by lazy {
+        TokenSet { token ->
+            when (token) {
+                FluentAliasTokens.BrandColorTokens.Color10 -> Color(0xFF2B2B40)
+                FluentAliasTokens.BrandColorTokens.Color20 -> Color(0xFF2F2F4A)
+                FluentAliasTokens.BrandColorTokens.Color30 -> Color(0xFF333357)
+                FluentAliasTokens.BrandColorTokens.Color40 -> Color(0xFF383966)
+                FluentAliasTokens.BrandColorTokens.Color50 -> Color(0xFF3D3E78)
+                FluentAliasTokens.BrandColorTokens.Color60 -> Color(0xFF444791)
+                FluentAliasTokens.BrandColorTokens.Color70 -> Color(0xFF4F52B2)
+                FluentAliasTokens.BrandColorTokens.Color80 -> Color(0xFF5B5FC7)
+                FluentAliasTokens.BrandColorTokens.Color90 -> Color(0xFF7579EB)
+                FluentAliasTokens.BrandColorTokens.Color100 -> Color(0xFF7F85F5)
+                FluentAliasTokens.BrandColorTokens.Color110 -> Color(0xFF9299F7)
+                FluentAliasTokens.BrandColorTokens.Color120 -> Color(0xFFAAB1FA)
+                FluentAliasTokens.BrandColorTokens.Color130 -> Color(0xFFB6BCFA)
+                FluentAliasTokens.BrandColorTokens.Color140 -> Color(0xFFC5CBFA)
+                FluentAliasTokens.BrandColorTokens.Color150 -> Color(0xFFDCE0FA)
+                FluentAliasTokens.BrandColorTokens.Color160 -> Color(0xFFE8EBFA)
+                else -> {
+                    super.brandColor[token]
+                }
+            }
+        }
+    }
+}

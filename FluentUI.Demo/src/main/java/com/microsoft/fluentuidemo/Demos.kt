@@ -63,6 +63,12 @@ import com.microsoft.fluentuidemo.demos.V2TextFieldActivity
 import java.util.UUID
 import kotlin.reflect.KClass
 
+enum class Badge {
+    None,
+    New,
+    Modified
+}
+
 const val V2AVATAR = "V2 Avatar"
 const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
 const val V2AVATAR_GROUP = "V2 Avatar Group"
@@ -152,17 +158,17 @@ val V2DEMO = arrayListOf(
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
     Demo(V2Badge, V2BadgeActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
-    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class, isNew = true),
+    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class, Badge.New),
     Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
     Demo(V2BUTTON, V2ButtonsActivity::class),
     Demo(V2CARD, V2CardActivity::class),
-    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class, isModified = true),
+    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class, Badge.Modified),
     Demo(V2CITATION, V2CitationActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
-    Demo(V2DIALOG, V2DialogActivity::class, isModified = true),
-    Demo(V2DRAWER, V2DrawerActivity::class, isModified = true),
+    Demo(V2DIALOG, V2DialogActivity::class, Badge.Modified),
+    Demo(V2DRAWER, V2DrawerActivity::class, Badge.Modified),
     Demo(V2LABEL, V2LabelActivity::class),
-    Demo(V2LIST_ITEM, V2ListItemActivity::class, isModified = true),
+    Demo(V2LIST_ITEM, V2ListItemActivity::class, Badge.Modified),
     Demo(V2MENU, V2MenuActivity::class),
     Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class),
     Demo(V2PERSONA, V2PersonaActivity::class),
@@ -193,7 +199,7 @@ val DUO_DEMOS = arrayListOf(
 
 data class Demo(
     val title: String, val demoClass: KClass<out ComponentActivity>,
-    val isNew: Boolean = false, val isModified: Boolean = false
+    val badge: Badge = Badge.None
 ) {
     val id: UUID = UUID.randomUUID()
 }
