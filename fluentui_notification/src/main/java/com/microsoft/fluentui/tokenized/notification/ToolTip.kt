@@ -172,8 +172,7 @@ fun rememberTooltipState(
     remember { TooltipStateImpl(mutatorMutex) }
 
 /**
- *  ToolTipBox is a composable that shows a tooltip box with a title and a text.
- *  It is used to show a tooltip box on a control.
+ *  ToolTipBox is a composable that shows a tooltip box with a title and a text anchor to its content.
  *  @param title The title of the tooltip box.
  *  @param text The text of the tooltip box.
  *  @param tooltipState The state of the tooltip box.
@@ -244,8 +243,7 @@ fun ToolTipBox(
 }
 
 /**
- * ToolTipBox is a composable that shows a tooltip box with a title and a text.
- * It is used to show a tooltip box on a control.
+ * ToolTipBox is a composable that shows a tooltipContent anchored to its content.
  * @param tooltipContent The content of the tooltip box.
  * @param tooltipState The state of the tooltip box.
  * @param modifier The modifier to be applied to the tooltip box.

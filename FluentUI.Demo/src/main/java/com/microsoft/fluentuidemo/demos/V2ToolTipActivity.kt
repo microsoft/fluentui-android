@@ -35,25 +35,25 @@ import com.microsoft.fluentui.tokenized.notification.rememberTooltipState
 import com.microsoft.fluentui.util.isAccessibilityEnabled
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import com.microsoft.fluentuidemo.util.getAndroidViewAsContent
 import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
-class V2ToolTipActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2ToolTipActivity : V2DemoActivity() {
+
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-35"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-
-        v2ActivityComposeBinding.composeHere.setContent {
+        setActivityContent {
             CreateToolTipActivityUI(this)
         }
     }

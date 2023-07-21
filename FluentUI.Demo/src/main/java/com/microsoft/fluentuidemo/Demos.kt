@@ -172,7 +172,6 @@ val V2DEMO = arrayListOf(
     Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LABEL, V2LabelActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
-    Demo(V2TOOL_TIP, V2ToolTipActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
     Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class, Badge.New),
     Demo(V2PERSONA, V2PersonaActivity::class),
@@ -186,7 +185,7 @@ val V2DEMO = arrayListOf(
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
     Demo(V2TEXTFIELD, V2TextFieldActivity::class),
-
+    Demo(V2TOOL_TIP, V2ToolTipActivity::class),
     )
 
 val DUO_DEMOS = arrayListOf(
