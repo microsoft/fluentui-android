@@ -2,7 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,29 +16,27 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarCarouselSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.tokenized.persona.AvatarCarousel
 import com.microsoft.fluentui.tokenized.persona.AvatarCarouselItem
 import com.microsoft.fluentui.tokenized.persona.Person
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
-class V2AvatarCarouselActivity : DemoActivity() {
+class V2AvatarCarouselActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-2"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                CreateAvatarCarouselActivityUI()
-            }
+
+        setActivityContent {
+            CreateAvatarCarouselActivityUI()
         }
     }
 }

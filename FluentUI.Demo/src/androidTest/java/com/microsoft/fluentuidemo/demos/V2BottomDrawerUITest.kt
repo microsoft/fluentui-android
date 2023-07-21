@@ -17,6 +17,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
 import com.microsoft.fluentuidemo.DemoActivity
+import com.microsoft.fluentuidemo.V2DemoActivity
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
@@ -33,6 +34,7 @@ class V2BottomDrawerUITest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val intent = Intent(context, V2BottomDrawerActivity::class.java)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
+        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
         return intent
     }
 

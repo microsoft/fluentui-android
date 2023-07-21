@@ -2,9 +2,12 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
@@ -15,8 +18,13 @@ import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -24,7 +32,12 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
+import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.FABState
+import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
@@ -37,17 +50,20 @@ import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
-class V2ScaffoldActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2ScaffoldActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-25"
 
     //Tag for Test
     private val TOP_BAR = "TopBar"
@@ -63,8 +79,8 @@ class V2ScaffoldActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
-        v2ActivityComposeBinding.composeHere.setContent {
+
+        setActivityContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
             var showHomeBadge by rememberSaveable { mutableStateOf(true) }
             val tabDataList = arrayListOf(
@@ -251,11 +267,11 @@ class V2ScaffoldActivity : DemoActivity() {
                                 ListItemIcons.Folder40,
                                 context.resources.getString(R.string.common_folder)
                             )
-                        })
+                        }
+                    )
                 }
             }
         }
     }
-
 }
 

@@ -1,7 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,26 +34,23 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
 
-class V2TextFieldActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2TextFieldActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-34"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-
-        v2ActivityComposeBinding.composeHere.setContent {
+        setActivityContent {
             var value by rememberSaveable { mutableStateOf("") }
             var leftIcon by rememberSaveable { mutableStateOf(true) }
             var hintText by rememberSaveable { mutableStateOf(true) }

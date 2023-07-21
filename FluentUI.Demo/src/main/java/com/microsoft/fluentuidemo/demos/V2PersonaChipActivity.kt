@@ -1,15 +1,24 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -21,30 +30,32 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.*
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Brand
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Danger
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Neutral
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.SevereWarning
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Success
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Warning
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R.drawable
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
-class V2PersonaChipActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2PersonaChipActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-21"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-21"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                createPersonaChipActivityUI()
-            }
+
+        setActivityContent {
+            createPersonaChipActivityUI()
         }
     }
 

@@ -41,25 +41,19 @@ import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
 import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.launch
 
-class V2PeoplePickerActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
-
+class V2PeoplePickerActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
+        setActivityContent {
                 CreatePeoplePickerActivity()
-            }
         }
     }
 

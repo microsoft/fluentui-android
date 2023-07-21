@@ -5,9 +5,70 @@
 
 package com.microsoft.fluentuidemo
 
-import com.microsoft.fluentuidemo.demos.*
-import java.util.*
+import androidx.core.app.ComponentActivity
+import com.microsoft.fluentuidemo.demos.ActionBarLayoutActivity
+import com.microsoft.fluentuidemo.demos.AppBarLayoutActivity
+import com.microsoft.fluentuidemo.demos.AvatarGroupViewActivity
+import com.microsoft.fluentuidemo.demos.AvatarViewActivity
+import com.microsoft.fluentuidemo.demos.BasicInputsActivity
+import com.microsoft.fluentuidemo.demos.BottomNavigationActivity
+import com.microsoft.fluentuidemo.demos.BottomSheetActivity
+import com.microsoft.fluentuidemo.demos.CalendarViewActivity
+import com.microsoft.fluentuidemo.demos.ContextualCommandBarActivity
+import com.microsoft.fluentuidemo.demos.DateTimePickerActivity
+import com.microsoft.fluentuidemo.demos.DrawerActivity
+import com.microsoft.fluentuidemo.demos.ListItemViewActivity
+import com.microsoft.fluentuidemo.demos.PeoplePickerViewActivity
+import com.microsoft.fluentuidemo.demos.PersistentBottomSheetActivity
+import com.microsoft.fluentuidemo.demos.PersonaChipViewActivity
+import com.microsoft.fluentuidemo.demos.PersonaListViewActivity
+import com.microsoft.fluentuidemo.demos.PersonaViewActivity
+import com.microsoft.fluentuidemo.demos.PopupMenuActivity
+import com.microsoft.fluentuidemo.demos.ProgressActivity
+import com.microsoft.fluentuidemo.demos.SnackbarActivity
+import com.microsoft.fluentuidemo.demos.TabLayoutActivity
+import com.microsoft.fluentuidemo.demos.TemplateViewActivity
+import com.microsoft.fluentuidemo.demos.TooltipActivity
+import com.microsoft.fluentuidemo.demos.TypographyActivity
+import com.microsoft.fluentuidemo.demos.V2AppBarActivity
+import com.microsoft.fluentuidemo.demos.V2AvatarActivity
+import com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity
+import com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity
+import com.microsoft.fluentuidemo.demos.V2BadgeActivity
+import com.microsoft.fluentuidemo.demos.V2BasicControlsActivity
+import com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity
+import com.microsoft.fluentuidemo.demos.V2BottomSheetActivity
+import com.microsoft.fluentuidemo.demos.V2ButtonsActivity
+import com.microsoft.fluentuidemo.demos.V2CardActivity
+import com.microsoft.fluentuidemo.demos.V2CardNudgeActivity
+import com.microsoft.fluentuidemo.demos.V2CitationActivity
+import com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity
+import com.microsoft.fluentuidemo.demos.V2DialogActivity
+import com.microsoft.fluentuidemo.demos.V2DrawerActivity
+import com.microsoft.fluentuidemo.demos.V2LabelActivity
+import com.microsoft.fluentuidemo.demos.V2ListItemActivity
+import com.microsoft.fluentuidemo.demos.V2MenuActivity
+import com.microsoft.fluentuidemo.demos.V2PeoplePickerActivity
+import com.microsoft.fluentuidemo.demos.V2PersonaActivity
+import com.microsoft.fluentuidemo.demos.V2PersonaChipActivity
+import com.microsoft.fluentuidemo.demos.V2PersonaListActivity
+import com.microsoft.fluentuidemo.demos.V2ProgressActivity
+import com.microsoft.fluentuidemo.demos.V2ScaffoldActivity
+import com.microsoft.fluentuidemo.demos.V2SearchBarActivity
+import com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity
+import com.microsoft.fluentuidemo.demos.V2ShimmerActivity
+import com.microsoft.fluentuidemo.demos.V2SnackbarActivity
+import com.microsoft.fluentuidemo.demos.V2TabBarActivity
+import com.microsoft.fluentuidemo.demos.V2TextFieldActivity
+import java.util.UUID
 import kotlin.reflect.KClass
+
+enum class Badge {
+    None,
+    New,
+    Modified,
+    APIBreak
+}
 
 const val V2AVATAR = "V2 Avatar"
 const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
@@ -64,37 +125,7 @@ const val TEMPLATE_VIEW = "TemplateView"
 const val TOOLTIP = "Tooltip"
 const val TYPOGRAPHY = "Typography"
 
-val DEMOS = arrayListOf(
-    Demo(V2APP_BAR_LAYOUT, V2AppBarLayoutActivity::class),
-    Demo(V2AVATAR, V2AvatarActivity::class),
-    Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
-    Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
-    Demo(V2Badge, V2BadgeActivity::class),
-    Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
-    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class),
-    Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
-    Demo(V2BUTTON, V2ButtonsActivity::class),
-    Demo(V2CARD, V2CardActivity::class),
-    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
-    Demo(V2CITATION, V2CitationActivity::class),
-    Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
-    Demo(V2DIALOG, V2DialogActivity::class),
-    Demo(V2DRAWER, V2DrawerActivity::class),
-    Demo(V2LABEL, V2LabelActivity::class),
-    Demo(V2LIST_ITEM, V2ListItemActivity::class),
-    Demo(V2MENU, V2MenuActivity::class),
-    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class),
-    Demo(V2PERSONA, V2PersonaActivity::class),
-    Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
-    Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
-    Demo(V2PROGRESS, V2ProgressActivity::class),
-    Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
-    Demo(V2SEARCHBAR, V2SearchBarActivity::class),
-    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
-    Demo(V2SHIMMER, V2ShimmerActivity::class),
-    Demo(V2SNACKBAR, V2SnackbarActivity::class),
-    Demo(V2TABBAR, V2TabBarActivity::class),
-    Demo(V2TEXTFIELD, V2TextFieldActivity::class),
+val V1DEMO = arrayListOf(
     Demo(ACTION_BAR_LAYOUT, ActionBarLayoutActivity::class),
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(AVATAR_VIEW, AvatarViewActivity::class),
@@ -121,6 +152,40 @@ val DEMOS = arrayListOf(
     Demo(TYPOGRAPHY, TypographyActivity::class)
 )
 
+val V2DEMO = arrayListOf(
+    Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
+    Demo(V2AVATAR, V2AvatarActivity::class),
+    Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
+    Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
+    Demo(V2Badge, V2BadgeActivity::class),
+    Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
+    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class),
+    Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
+    Demo(V2BUTTON, V2ButtonsActivity::class),
+    Demo(V2CARD, V2CardActivity::class),
+    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
+    Demo(V2CITATION, V2CitationActivity::class),
+    Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
+    Demo(V2DIALOG, V2DialogActivity::class),
+    Demo(V2DRAWER, V2DrawerActivity::class),
+    Demo(V2LABEL, V2LabelActivity::class),
+    Demo(V2LIST_ITEM, V2ListItemActivity::class),
+    Demo(V2MENU, V2MenuActivity::class),
+    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class, Badge.New),
+    Demo(V2PERSONA, V2PersonaActivity::class),
+    Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
+    Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
+    Demo(V2PROGRESS, V2ProgressActivity::class),
+    Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
+    Demo(V2SEARCHBAR, V2SearchBarActivity::class),
+    Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
+    Demo(V2SHIMMER, V2ShimmerActivity::class),
+    Demo(V2SNACKBAR, V2SnackbarActivity::class),
+    Demo(V2TABBAR, V2TabBarActivity::class),
+    Demo(V2TEXTFIELD, V2TextFieldActivity::class),
+
+    )
+
 val DUO_DEMOS = arrayListOf(
     Demo(APP_BAR_LAYOUT, AppBarLayoutActivity::class),
     Demo(BOTTOM_SHEET, BottomSheetActivity::class),
@@ -133,6 +198,9 @@ val DUO_DEMOS = arrayListOf(
     Demo(TOOLTIP, TooltipActivity::class)
 )
 
-data class Demo(val title: String, val demoClass: KClass<out DemoActivity>) {
+data class Demo(
+    val title: String, val demoClass: KClass<out ComponentActivity>,
+    val badge: Badge = Badge.None
+) {
     val id: UUID = UUID.randomUUID()
 }

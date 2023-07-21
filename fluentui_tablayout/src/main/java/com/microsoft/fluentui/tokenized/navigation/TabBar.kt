@@ -1,7 +1,12 @@
 package com.microsoft.fluentui.tokenized.navigation
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -50,7 +55,7 @@ fun TabBar(
     val token = tabBarTokens
         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBar] as TabBarTokens
 
-    Column {
+    Column(modifier.fillMaxWidth()) {
         Box(
             modifier
                 .fillMaxWidth()
@@ -59,8 +64,8 @@ fun TabBar(
         )
         Row(
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 16.dp)
+                .fillMaxWidth()
         ) {
             tabDataList.forEachIndexed { index, tabData ->
                 tabData.selected = index == selectedIndex

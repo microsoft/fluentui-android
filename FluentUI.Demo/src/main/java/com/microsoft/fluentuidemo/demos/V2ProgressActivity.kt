@@ -2,14 +2,24 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Clear
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -27,26 +37,23 @@ import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.progress.CircularProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.LinearProgressIndicator
 import com.microsoft.fluentui.tokenized.progress.ProgressText
-import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.delay
 import kotlin.random.Random
 
-class V2ProgressActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2ProgressActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-23"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-23"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                CreateProgressActivityUI(this)
-            }
+
+        setActivityContent {
+            CreateProgressActivityUI(this)
         }
     }
 }
@@ -332,7 +339,9 @@ private fun ProgressTextDemo(linearProgress: Float, context: Context, progressSt
     ProgressText(
         text = "Ok... I'll summarize what you missed this morning",
         progress = linearProgress,
-        leadingIconAccessory = FluentIcon(Icons.Outlined.Clear, onClick = { Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show() }),
+        leadingIconAccessory = FluentIcon(
+            Icons.Outlined.Clear,
+            onClick = { Toast.makeText(context, "Canceled", Toast.LENGTH_SHORT).show() }),
         modifier = Modifier.width(325.dp),
         progressTextTokens = GradientProgressTextToken()
     )
