@@ -27,6 +27,9 @@ import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 
+const val AVATAR_CAROUSEL_LARGE_CAROUSEL = "Large carousel"
+const val AVATAR_CAROUSEL_SMALL_CAROUSEL = "Small carousel"
+
 class V2AvatarCarouselActivity : DemoActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -217,7 +220,7 @@ private fun CreateAvatarCarouselActivityUI() {
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
             size = AvatarCarouselSize.Large,
-            modifier = Modifier.testTag("LargeCarousel")
+            modifier = Modifier.testTag(AVATAR_CAROUSEL_LARGE_CAROUSEL)
         )
         Divider(Modifier.fillMaxWidth())
         BasicText(
@@ -229,7 +232,7 @@ private fun CreateAvatarCarouselActivityUI() {
             avatarList = createAvatarPersons(mContext),
             size = AvatarCarouselSize.Small,
             enablePresence = true,
-            modifier = Modifier.testTag("SmallCarousel")
+            modifier = Modifier.testTag(AVATAR_CAROUSEL_SMALL_CAROUSEL)
         )
     }
 }

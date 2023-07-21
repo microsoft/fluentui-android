@@ -59,10 +59,10 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  */
 
 // TAGS FOR TESTING
-private const val APP_BAR = "App bar"
-private const val SUBTITLE = "Subtitle"
-private const val BOTTOM_BAR = "Bottom bar"
-private const val SEARCH_BAR = "Search bar"
+const val APP_BAR = "App bar"
+const val APP_BAR_SUBTITLE = "Subtitle"
+const val APP_BAR_BOTTOM_BAR = "Bottom bar"
+const val APP_BAR_SEARCH_BAR = "Search bar"
 
 @OptIn(ExperimentalTextApi::class)
 @Composable
@@ -146,7 +146,7 @@ fun AppBar(
                         modifier = Modifier
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
-                            .testTag(SUBTITLE)
+                            .testTag(APP_BAR_SUBTITLE)
                     ) {
                         Row(
                             modifier = Modifier
@@ -255,7 +255,7 @@ fun AppBar(
                         .fillMaxWidth()
                         .then(if (!searchMode) Modifier.height(56.dp * accessoryDelta) else Modifier)
                         .padding(vertical = 8.dp)
-                        .testTag(SEARCH_BAR),
+                        .testTag(APP_BAR_SEARCH_BAR),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     searchBar()
@@ -268,7 +268,7 @@ fun AppBar(
                         .fillMaxWidth()
                         .then(if (!searchMode) Modifier.height(48.dp * accessoryDelta) else Modifier)
                         .padding(vertical = 8.dp)
-                        .testTag(BOTTOM_BAR),
+                        .testTag(APP_BAR_BOTTOM_BAR),
                 ) {
                     bottomBar()
                 }
