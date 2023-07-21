@@ -899,6 +899,7 @@
     <string name = "fluent_logo">Fluent Logo</string>
     <string name = "new_badge">New</string>
     <string name = "modified_badge">Modified</string>
+    <string name = "api_break_badge">API Break</string>
     <string name = "app_bar_more">More</string>
     <string name = "accent">Accent</string>
     <string name = "appearance">Appearance</string>

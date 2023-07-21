@@ -66,7 +66,8 @@ import kotlin.reflect.KClass
 enum class Badge {
     None,
     New,
-    Modified
+    Modified,
+    APIBreak
 }
 
 const val V2AVATAR = "V2 Avatar"
@@ -158,19 +159,19 @@ val V2DEMO = arrayListOf(
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
     Demo(V2Badge, V2BadgeActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
-    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class, Badge.New),
+    Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class),
     Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
     Demo(V2BUTTON, V2ButtonsActivity::class),
     Demo(V2CARD, V2CardActivity::class),
-    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class, Badge.Modified),
+    Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
     Demo(V2CITATION, V2CitationActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
-    Demo(V2DIALOG, V2DialogActivity::class, Badge.Modified),
-    Demo(V2DRAWER, V2DrawerActivity::class, Badge.Modified),
+    Demo(V2DIALOG, V2DialogActivity::class),
+    Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LABEL, V2LabelActivity::class),
-    Demo(V2LIST_ITEM, V2ListItemActivity::class, Badge.Modified),
+    Demo(V2LIST_ITEM, V2ListItemActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
-    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class),
+    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class, Badge.New),
     Demo(V2PERSONA, V2PersonaActivity::class),
     Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),

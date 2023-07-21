@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.relocation.BringIntoViewRequester
-import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
@@ -20,13 +18,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -56,7 +50,6 @@ import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
-import kotlinx.coroutines.launch
 
 enum class Tokens {
     GlobalTokens,
@@ -110,7 +103,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
 
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
-    fun PreviewToken(tokenName: String, tokensList: Array<out Enum<*>>) {
+    fun PreviewToken(tokenName: Int, tokensList: Array<out Enum<*>>) {
         val tabsList = mutableListOf<PillMetaData>()
         var selectedTokenIndex by remember { mutableStateOf(0) }
         tokensList.forEach {
@@ -122,33 +115,20 @@ class V2DesignTokensActivity : V2DemoActivity() {
             )
         }
 
-
-        val bringIntoViewRequester = remember { BringIntoViewRequester() }
-        val scope = rememberCoroutineScope()
-        val focusRequester = remember { FocusRequester() }
-        Column(horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .focusRequester(focusRequester)
-                .bringIntoViewRequester(bringIntoViewRequester)
-                .onFocusEvent {
-                    if (it.isFocused) {
-                        scope.launch {
-                            bringIntoViewRequester.bringIntoView()
-                        }
-                    }
-                }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             BasicCard(
                 modifier = Modifier
                     .size(width = 180.dp, height = 130.dp)
                     .padding(bottom = size(FluentGlobalTokens.SizeTokens.Size160)),
-                basicCardTokens = if (tokenName == stringResource(id = R.string.shadow_tokens)) previewShadowToken(
+                basicCardTokens = if (tokenName == R.string.shadow_tokens) previewShadowToken(
                     tokensList[selectedTokenIndex] as FluentGlobalTokens.ShadowTokens
                 )
-                else if (tokenName == stringResource(id = R.string.corner_radius_tokens)) previewCornerRadiusToken(
+                else if (tokenName == R.string.corner_radius_tokens) previewCornerRadiusToken(
                     tokensList[selectedTokenIndex] as FluentGlobalTokens.CornerRadiusTokens
                 )
-                else if (tokenName == stringResource(id = R.string.stroke_width_tokens)) previewStrokeWidthToken(
+                else if (tokenName == R.string.stroke_width_tokens) previewStrokeWidthToken(
                     tokensList[selectedTokenIndex] as FluentGlobalTokens.StrokeWidthTokens
                 ) else null
             ) {
@@ -166,17 +146,17 @@ class V2DesignTokensActivity : V2DemoActivity() {
     }
 
     @Composable
-    fun SetPreviewContent(tokenName: String, selectedToken: Any) {
+    fun SetPreviewContent(tokenName: Int, selectedToken: Any) {
         val textColor: Color = FluentColor(light = Color.Black, dark = Color.White).value()
         when (tokenName) {
-            stringResource(id = R.string.font_size_tokens) ->
+            R.string.font_size_tokens ->
                 Text(
                     text = stringResource(id = R.string.sample_text),
                     color = textColor,
                     fontSize = fontSize(selectedToken as FluentGlobalTokens.FontSizeTokens)
                 )
 
-            stringResource(id = R.string.line_height_tokens) ->
+            R.string.line_height_tokens ->
                 Column {
                     Text(
                         text = "Text\nText",
@@ -185,7 +165,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     )
                 }
 
-            stringResource(id = R.string.font_weight_tokens) ->
+            R.string.font_weight_tokens ->
                 Text(
                     text = stringResource(id = R.string.sample_text),
                     color = textColor,
@@ -193,7 +173,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     fontWeight = fontWeight(selectedToken as FluentGlobalTokens.FontWeightTokens)
                 )
 
-            stringResource(id = R.string.icon_size_tokens) ->
+            R.string.icon_size_tokens ->
                 Icon(
                     painter = painterResource(id = R.drawable.ic_fluent_home_24_regular),
                     contentDescription = stringResource(id = R.string.sample_icon),
@@ -203,7 +183,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     modifier = Modifier.size(iconSize(selectedToken as FluentGlobalTokens.IconSizeTokens))
                 )
 
-            stringResource(id = R.string.size_tokens) ->
+            R.string.size_tokens ->
                 Row(horizontalArrangement = Arrangement.spacedBy(size(selectedToken as FluentGlobalTokens.SizeTokens))) {
                     Text(
                         text = stringResource(id = R.string.sample_text),
@@ -218,97 +198,98 @@ class V2DesignTokensActivity : V2DemoActivity() {
                     )
                 }
 
-            stringResource(id = R.string.typography_tokens) -> Label(
+            R.string.typography_tokens -> Label(
                 text = stringResource(id = R.string.sample_text),
                 textStyle = selectedToken as FluentAliasTokens.TypographyTokens
             )
         }
     }
 
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         var buttonBarList: MutableList<PillMetaData>
         lateinit var selectedTokens: MutableState<Tokens>
-        lateinit var tokensMap: MutableState<Map<String, Pair<Array<out Enum<*>>, Any>>>
+        lateinit var tokensMap: MutableState<Map<Int, Pair<Array<out Enum<*>>, Any>>>
         setBottomAppBar {
             val globalTokensMap = mapOf(
-                stringResource(id = R.string.neutral_color_tokens) to Pair(
+                R.string.neutral_color_tokens to Pair(
                     FluentGlobalTokens.NeutralColorTokens.values(),
                     ::neutralColor
                 ),
-                stringResource(id = R.string.font_size_tokens) to Pair(
+                R.string.font_size_tokens to Pair(
                     FluentGlobalTokens.FontSizeTokens.values(),
                     ::fontSize
                 ),
-                stringResource(id = R.string.line_height_tokens) to Pair(
+                R.string.line_height_tokens to Pair(
                     FluentGlobalTokens.LineHeightTokens.values(),
                     ::lineHeight
                 ),
-                stringResource(id = R.string.font_weight_tokens) to Pair(
+                R.string.font_weight_tokens to Pair(
                     FluentGlobalTokens.FontWeightTokens.values(),
                     ::fontWeight
                 ),
-                stringResource(id = R.string.icon_size_tokens) to Pair(
+                R.string.icon_size_tokens to Pair(
                     FluentGlobalTokens.IconSizeTokens.values(),
                     ::iconSize
                 ),
-                stringResource(id = R.string.size_tokens) to Pair(
+                R.string.size_tokens to Pair(
                     FluentGlobalTokens.SizeTokens.values(),
                     ::size
                 ),
-                stringResource(id = R.string.shadow_tokens) to Pair(
+                R.string.shadow_tokens to Pair(
                     FluentGlobalTokens.ShadowTokens.values(),
                     ::elevation
                 ),
-                stringResource(id = R.string.corner_radius_tokens) to Pair(
+                R.string.corner_radius_tokens to Pair(
                     FluentGlobalTokens.CornerRadiusTokens.values(),
                     ::cornerRadius
                 ),
-                stringResource(id = R.string.stroke_width_tokens) to Pair(
+                R.string.stroke_width_tokens to Pair(
                     FluentGlobalTokens.StrokeWidthTokens.values(),
                     ::strokeWidth
                 ),
             )
 
             val aliasTokensMap = mapOf(
-                stringResource(id = R.string.brand_color_tokens) to Pair(
+                R.string.brand_color_tokens to Pair(
                     FluentAliasTokens.BrandColorTokens.values(),
                     FluentTheme.aliasTokens.brandColor
                 ),
-                stringResource(id = R.string.neutral_background_color_tokens) to Pair(
+                R.string.neutral_background_color_tokens to Pair(
                     FluentAliasTokens.NeutralBackgroundColorTokens.values(),
                     FluentTheme.aliasTokens.neutralBackgroundColor
                 ),
-                stringResource(id = R.string.neutral_foreground_color_tokens) to Pair(
+                R.string.neutral_foreground_color_tokens to Pair(
                     FluentAliasTokens.NeutralForegroundColorTokens.values(),
                     FluentTheme.aliasTokens.neutralForegroundColor
                 ),
-                stringResource(id = R.string.neutral_stroke_color_tokens) to Pair(
+                R.string.neutral_stroke_color_tokens to Pair(
                     FluentAliasTokens.NeutralStrokeColorTokens.values(),
                     FluentTheme.aliasTokens.neutralStrokeColor
                 ),
-                stringResource(id = R.string.brand_background_color_tokens) to Pair(
+                R.string.brand_background_color_tokens to Pair(
                     FluentAliasTokens.BrandBackgroundColorTokens.values(),
                     FluentTheme.aliasTokens.brandBackgroundColor
                 ),
-                stringResource(id = R.string.brand_foreground_color_tokens) to Pair(
+                R.string.brand_foreground_color_tokens to Pair(
                     FluentAliasTokens.BrandForegroundColorTokens.values(),
                     FluentTheme.aliasTokens.brandForegroundColor
                 ),
-                stringResource(id = R.string.brand_stroke_color_tokens) to Pair(
+                R.string.brand_stroke_color_tokens to Pair(
                     FluentAliasTokens.BrandStrokeColorTokens.values(),
                     FluentTheme.aliasTokens.brandStroke
                 ),
-                stringResource(id = R.string.error_and_status_color_tokens) to Pair(
+                R.string.error_and_status_color_tokens to Pair(
                     FluentAliasTokens.ErrorAndStatusColorTokens.values(),
                     FluentTheme.aliasTokens.errorAndStatusColor
                 ),
-                stringResource(id = R.string.presence_tokens) to Pair(
+                R.string.presence_tokens to Pair(
                     FluentAliasTokens.PresenceColorTokens.values(),
                     FluentTheme.aliasTokens.presenceColor
                 ),
-                stringResource(id = R.string.typography_tokens) to Pair(
+                R.string.typography_tokens to Pair(
                     FluentAliasTokens.TypographyTokens.values(),
                     FluentTheme.aliasTokens.typography
                 )
@@ -346,11 +327,11 @@ class V2DesignTokensActivity : V2DemoActivity() {
             Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
                 tokensMap.value.forEach { (tokenType, tokenGetter) ->
                     ListItem.SectionHeader(
-                        title = tokenType,
+                        title = stringResource(id = tokenType),
                         enableContentOpenCloseTransition = true,
-                        chevronOrientation = ChevronOrientation(90f, 0f)
+                        chevronOrientation = ChevronOrientation(90f, 0f),
                     ) {
-                        if (tokenType.contains(stringResource(id = R.string.color))) {
+                        if (stringResource(id = tokenType).contains(stringResource(id = R.string.color))) {
                             Column(
                                 modifier = Modifier
                                     .height(256.dp)
@@ -362,7 +343,7 @@ class V2DesignTokensActivity : V2DemoActivity() {
                                         text = "$it",
                                         trailingAccessoryContent = {
                                             when (tokenType) {
-                                                stringResource(id = R.string.neutral_color_tokens) ->
+                                                R.string.neutral_color_tokens ->
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = stringResource(id = R.string.neutral_color_tokens),
@@ -371,25 +352,21 @@ class V2DesignTokensActivity : V2DemoActivity() {
                                                         )
                                                     )
 
-                                                stringResource(id = R.string.brand_color_tokens) ->
+                                                R.string.brand_color_tokens ->
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = stringResource(id = R.string.brand_color_tokens),
                                                         tint = FluentTheme.aliasTokens.brandColor[it as FluentAliasTokens.BrandColorTokens]
                                                     )
 
-                                                stringResource(id = R.string.neutral_background_color_tokens), stringResource(
-                                                    id = R.string.neutral_foreground_color_tokens
-                                                ), stringResource(id = R.string.neutral_stroke_color_tokens), stringResource(
-                                                    id = R.string.error_and_status_color_tokens
-                                                ), stringResource(id = R.string.presence_tokens) ->
+                                                R.string.neutral_background_color_tokens, R.string.neutral_foreground_color_tokens, R.string.neutral_stroke_color_tokens, R.string.error_and_status_color_tokens, R.string.presence_tokens ->
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = "",
                                                         tint = (tokenGetter.second as TokenSet<Enum<*>, FluentColor>)[it].value()
                                                     )
 
-                                                stringResource(id = R.string.brand_background_color_tokens) ->
+                                                R.string.brand_background_color_tokens ->
                                                     if ((tokenGetter.second as TokenSet<Enum<*>, FluentColor>)[it].value() == Color.Unspecified) {
                                                         Label(
                                                             text = stringResource(id = R.string.unspecified),
@@ -403,14 +380,14 @@ class V2DesignTokensActivity : V2DemoActivity() {
                                                         )
                                                     }
 
-                                                stringResource(id = R.string.brand_foreground_color_tokens) ->
+                                                R.string.brand_foreground_color_tokens ->
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = stringResource(id = R.string.brand_foreground_color_tokens),
                                                         tint = FluentTheme.aliasTokens.brandForegroundColor[it as FluentAliasTokens.BrandForegroundColorTokens].value()
                                                     )
 
-                                                stringResource(id = R.string.brand_stroke_color_tokens) ->
+                                                R.string.brand_stroke_color_tokens ->
                                                     Icon(
                                                         painter = painterResource(id = R.drawable.ic_fluent_square_24_filled),
                                                         contentDescription = stringResource(id = R.string.brand_stroke_color_tokens),

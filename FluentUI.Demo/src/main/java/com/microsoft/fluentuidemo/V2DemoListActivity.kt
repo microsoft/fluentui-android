@@ -73,6 +73,7 @@ import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
+import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import com.microsoft.fluentuidemo.CustomizedTokens.listItemTokens
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -516,37 +517,19 @@ class V2DemoListActivity : ComponentActivity() {
                                             Pair(V2DemoActivity.DEMO_TITLE, it.title)
                                         )
                                     },
-                                    trailingAccessoryContent = {
-                                        if (it.badge == Badge.New) {
-                                            Spacer(
-                                                modifier = Modifier.width(
-                                                    FluentGlobalTokens.size(
-                                                        FluentGlobalTokens.SizeTokens.Size80
-                                                    )
-                                                )
-                                            )
-
+                                    trailingAccessoryContent = if (it.badge != Badge.None) {
+                                        {
                                             Badge(
-                                                text = stringResource(id = R.string.new_badge),
+                                                text = when (it.badge) {
+                                                    Badge.New -> stringResource(id = R.string.new_badge)
+                                                    Badge.Modified -> stringResource(id = R.string.modified_badge)
+                                                    Badge.APIBreak -> stringResource(id = R.string.api_break_badge)
+                                                    else -> ""
+                                                },
                                                 badgeType = BadgeType.List,
                                             )
                                         }
-
-                                        if (it.badge == Badge.Modified) {
-                                            Spacer(
-                                                modifier = Modifier.width(
-                                                    FluentGlobalTokens.size(
-                                                        FluentGlobalTokens.SizeTokens.Size80
-                                                    )
-                                                )
-                                            )
-
-                                            Badge(
-                                                text = stringResource(id = R.string.modified_badge),
-                                                badgeType = BadgeType.List,
-                                            )
-                                        }
-                                    }
+                                    } else null
                                 )
                             }
                         }
