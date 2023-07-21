@@ -55,7 +55,7 @@ class V2CardNudgeActivityUITest {
 
     @get:Rule
     val composeTestRule = createComposeRule()
-    val modifiableParametersButton = composeTestRule.onAllNodesWithTag(MODIFIABLE_PARAMETER_SECTION)
+    private val modifiableParametersButton = composeTestRule.onAllNodesWithTag(MODIFIABLE_PARAMETER_SECTION)[0]
 
     @Test
     fun testCardNudgeDisplay() {
@@ -64,7 +64,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeIconDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         val control = composeTestRule.onNodeWithTag(ICON_PARAM)
         control.assertExists()
         for ((key, value) in control.fetchSemanticsNode().config) {
@@ -78,7 +78,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeSubtitleDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         val control = composeTestRule.onNodeWithTag(SUBTITLE_PARAM)
         control.assertExists()
         for ((key, value) in control.fetchSemanticsNode().config) {
@@ -92,7 +92,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeAccentIconDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         val control = composeTestRule.onNodeWithTag(ACCENT_ICON_PARAM)
         control.assertExists()
         for ((key, value) in control.fetchSemanticsNode().config) {
@@ -106,7 +106,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeAccentTextDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         val control = composeTestRule.onNodeWithTag(ACCENT_TEXT_PARAM)
         control.assertExists()
         for ((key, value) in control.fetchSemanticsNode().config) {
@@ -120,7 +120,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeActionDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         composeTestRule.onNodeWithTag(ICON_PARAM)
             .performTouchInput { swipeUp(durationMillis = 1000) }
         val control = composeTestRule.onNodeWithTag(ACTION_BUTTON_PARAM)
@@ -136,7 +136,7 @@ class V2CardNudgeActivityUITest {
 
     @Test
     fun testCardNudgeDismissDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         composeTestRule.onNodeWithTag(ICON_PARAM)
             .performTouchInput { swipeUp(durationMillis = 1000) }
         val control = composeTestRule.onNodeWithTag(DISMISS_BUTTON_PARAM)

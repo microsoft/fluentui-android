@@ -50,7 +50,7 @@ class V2SnackbarActivityUITest {
     val composeTestRule = createComposeRule()
     val showSnackBarButton = composeTestRule.onNodeWithTag(SHOW_SNACKBAR)
     val dismissSnackbarButton = composeTestRule.onNodeWithTag(DISMISS_SNACKBAR)
-    val modifiableParametersButton = composeTestRule.onAllNodesWithTag(MODIFIABLE_PARAMETER_SECTION)
+    val modifiableParametersButton = composeTestRule.onAllNodesWithTag(MODIFIABLE_PARAMETER_SECTION)[0]
 
     @Test
     fun testSnackbarDisplay() {
@@ -67,7 +67,7 @@ class V2SnackbarActivityUITest {
 
     @Test
     fun testSnackbarIconDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         composeTestRule.onNodeWithTag(ICON_PARAM).performClick()
         showSnackBarButton.performClick()
         composeTestRule.waitUntil(1000L) {
@@ -78,7 +78,7 @@ class V2SnackbarActivityUITest {
 
     @Test
     fun testSnackbarSubtitleDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         composeTestRule.onNodeWithTag(SUBTITLE_PARAM).performClick()
         showSnackBarButton.performClick()
         composeTestRule.waitUntil(1000L) {
@@ -89,7 +89,7 @@ class V2SnackbarActivityUITest {
 
     @Test
     fun testSnackbarActionDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         composeTestRule.onNodeWithTag(ACTION_BUTTON_PARAM).performClick()
         showSnackBarButton.performClick()
         composeTestRule.waitUntil(1000L) {
@@ -100,7 +100,7 @@ class V2SnackbarActivityUITest {
 
     @Test
     fun testSnackbarDismissDisplay() {
-        modifiableParametersButton[0].performClick()
+        modifiableParametersButton.performClick()
         composeTestRule.onNodeWithTag(ICON_PARAM)
             .performTouchInput { swipeUp(durationMillis = 1000L) }
         composeTestRule.onNodeWithTag(DISMISS_BUTTON_PARAM).performClick()
