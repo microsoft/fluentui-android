@@ -35,7 +35,7 @@ private const val BOLD_TAG = "Bold"
 private const val SUBTLE_TAG = "Subtle"
 private const val CHEVRON_TAG = "Chevron"
 
-class V2ListItemActivityUITest {
+class V2ListItemUITest {
 
     @get:Rule
     val composeTestRule = createComposeRule()

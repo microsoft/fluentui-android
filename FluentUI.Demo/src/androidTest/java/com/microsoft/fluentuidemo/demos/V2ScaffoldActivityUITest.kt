@@ -1,40 +1,17 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
-import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
-import androidx.test.platform.app.InstrumentationRegistry
-import com.microsoft.fluentuidemo.DemoActivity
-import org.junit.After
+import com.microsoft.fluentuidemo.BaseTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
-class V2ScaffoldActivityUITest {
-
-    private fun launchActivity() {
-        ActivityScenario.launch<V2ScaffoldActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2ScaffoldActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        return intent
-    }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
+class V2ScaffoldActivityUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2ScaffoldActivity::class.java)
     }
 
     //Tag for Test
@@ -73,8 +50,4 @@ class V2ScaffoldActivityUITest {
         }
     }
 
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
 }

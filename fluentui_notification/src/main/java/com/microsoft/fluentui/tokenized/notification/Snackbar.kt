@@ -35,11 +35,11 @@ import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
 
 // TAGS FOR TESTING
-private const val SNACKBAR = "Snackbar"
-private const val ICON = "Icon"
-private const val SUBTITLE = "Subtitle"
-private const val ACTION_BUTTON = "Action Button"
-private const val DISMISS_BUTTON = "Dismiss Button"
+const val SNACK_BAR = "Snack bar"
+const val SNACK_BAR_ICON = "Icon"
+const val SNACK_BAR_SUBTITLE = "Subtitle"
+const val SNACK_BAR_ACTION_BUTTON = "Action Button"
+const val SNACK_BAR_DISMISS_BUTTON = "Dismiss Button"
 
 class SnackbarMetadata(
     val message: String,
@@ -142,13 +142,13 @@ fun Snackbar(
                 .semantics {
                     liveRegion = LiveRegionMode.Polite
                 }
-                .testTag(SNACKBAR),
+                .testTag(SNACK_BAR),
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (metadata.icon != null && metadata.icon.isIconAvailable()) {
                 Box(
                     modifier = Modifier
-                        .testTag(ICON)
+                        .testTag(SNACK_BAR_ICON)
                         .then(
                             if (metadata.icon.onClick != null) {
                                 Modifier.clickable(
@@ -192,7 +192,7 @@ fun Snackbar(
                     BasicText(
                         text = metadata.subTitle,
                         style = token.subtitleTypography(snackBarInfo),
-                        modifier = Modifier.testTag(SUBTITLE)
+                        modifier = Modifier.testTag(SNACK_BAR_SUBTITLE)
                     )
                 }
             }
@@ -201,7 +201,7 @@ fun Snackbar(
                 Button(
                     onClick = { metadata.clicked() },
                     modifier = Modifier
-                        .testTag(ACTION_BUTTON)
+                        .testTag(SNACK_BAR_ACTION_BUTTON)
                         .then(
                             if (!metadata.enableDismiss)
                                 Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
@@ -235,7 +235,7 @@ fun Snackbar(
                             onClickLabel = "Dismiss",
                             onClick = { metadata.dismiss() }
                         )
-                        .testTag(DISMISS_BUTTON)
+                        .testTag(SNACK_BAR_DISMISS_BUTTON)
                 ) {
                     Icon(
                         Icons.Filled.Close,

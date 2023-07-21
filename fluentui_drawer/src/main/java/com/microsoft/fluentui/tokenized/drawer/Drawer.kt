@@ -243,9 +243,9 @@ private val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
 private const val DrawerOpenFraction = 0.5f
 
 //Tag use for testing
-private const val DRAWER_HANDLE_TAG = "Drawer Handle"
-private const val DRAWER_CONTENT_TAG = "Drawer Content"
-private const val DRAWER_SCRIM_TAG = "Drawer Scrim"
+const val DRAWER_HANDLE_TAG = "Drawer Handle"
+const val DRAWER_CONTENT_TAG = "Drawer Content"
+const val DRAWER_SCRIM_TAG = "Drawer Scrim"
 
 //Drawer Handle height + padding
 private val DrawerHandleHeightOffset = 20.dp
@@ -725,7 +725,7 @@ private fun BottomDrawer(
                 .focusable(false),
         ) {
             Column {
-                if(showHandle) {
+                if (showHandle) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
                         modifier = Modifier
@@ -923,10 +923,10 @@ fun BottomDrawer(
     slideOver: Boolean = true,
     expandable: Boolean = true,
     scrimVisible: Boolean = true,
-    showHandle:Boolean = true,
+    showHandle: Boolean = true,
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
-    ) {
+) {
     if (drawerState.enable) {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.

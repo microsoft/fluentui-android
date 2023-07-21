@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import androidx.compose.ui.test.*
+import com.microsoft.fluentui.tokenized.persona.ANONYMOUS
 import com.microsoft.fluentui.tokenized.persona.AVATAR_ICON
 import com.microsoft.fluentui.tokenized.persona.AVATAR_IMAGE
 import com.microsoft.fluentuidemo.BaseTest
@@ -41,7 +42,7 @@ class V2AvatarActivityUITest : BaseTest() {
         //Check
         amandaAvatar.assertContentDescriptionContains("Active", substring = true)
 
-        composeTestRule.onAllNodesWithContentDescription("Anonymous")
+        composeTestRule.onAllNodesWithContentDescription(ANONYMOUS)
             .assertAll(hasAnyChild(hasTestTag(AVATAR_ICON)))
     }
 

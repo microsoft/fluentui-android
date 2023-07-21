@@ -29,6 +29,7 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
+// Tags used for testing
 const val AVATAR_IMAGE = "Image"
 const val AVATAR_ICON = "Icon"
 

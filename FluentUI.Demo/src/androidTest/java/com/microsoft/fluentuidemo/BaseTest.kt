@@ -26,7 +26,6 @@ open class BaseTest {
         Intents.release()
     }
 
-    // TODO: Replace this everywhere else
     fun launchActivity(activity: Class<*>) {
         ActivityScenario.launch<DemoActivity>(setUpIntentForActivity(activity))
     }
