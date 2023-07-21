@@ -25,6 +25,7 @@ const val V2DIALOG = "V2 Dialog"
 const val V2DRAWER = "V2 Drawer"
 const val V2LIST_ITEM = "V2 ListItem"
 const val V2MENU = "V2 Menu"
+const val V2PEOPLE_PICKER = "V2 People Picker"
 const val V2PERSONA = "V2 Persona"
 const val V2PERSONA_CHIP = "V2 PersonaChip"
 const val V2PERSONA_LIST = "V2 PersonaList"
@@ -82,6 +83,7 @@ val DEMOS = arrayListOf(
     Demo(V2LABEL, V2LabelActivity::class),
     Demo(V2LIST_ITEM, V2ListItemActivity::class),
     Demo(V2MENU, V2MenuActivity::class),
+    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class),
     Demo(V2PERSONA, V2PersonaActivity::class),
     Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
