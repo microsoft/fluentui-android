@@ -401,7 +401,7 @@ object ListItem {
                     }
                 }
             }
-            if (bottomContent == null && trailingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
+            if (trailingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
                     Modifier
                         .padding(
