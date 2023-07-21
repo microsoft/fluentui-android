@@ -6,6 +6,7 @@ import org.junit.runners.Suite
 
 @RunWith(Suite::class)
 @Suite.SuiteClasses(
+    V2AppBarLayoutActivityUITest::class,
     V2AvatarActivityUITest::class,
     V2AvatarCarouselActivityUITest::class,
     V2AvatarGroupActivityUITest::class,

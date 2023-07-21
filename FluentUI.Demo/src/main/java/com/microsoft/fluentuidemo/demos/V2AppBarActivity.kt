@@ -22,6 +22,7 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
@@ -55,6 +56,13 @@ class V2AppBarLayoutActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
 
+    // Tags used for testing
+    private val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
+    private val SUBTITLE_PARAM = "Subtitle Param"
+    private val APPBAR_STYLE_PARAM = "AppBar Style Param"
+    private val BUTTONBAR_PARAM = "ButtonBar Param"
+    private val SEARCHBAR_PARAM = "SearchBar Param"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
@@ -83,6 +91,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                 }) {
                     ListItem.SectionHeader(
                         title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
+                        modifier = Modifier.testTag(MODIFIABLE_PARAMETER_SECTION),
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
                         chevronOrientation = ChevronOrientation(90f, 0f),
@@ -108,7 +117,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                     PillMetaData(
                                         text = LocalContext.current.resources.getString(R.string.fluentui_search),
                                         onClick = { searchMode = !searchMode },
-                                        selected = searchMode
+                                        selected = searchMode,
                                     )
                                 ), style = style,
                                 showBackground = true
@@ -131,6 +140,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                                 else
                                                     null
                                         },
+                                        modifier = Modifier.testTag(SUBTITLE_PARAM),
                                         checkedState = !subtitle.isNullOrBlank()
                                     )
                                 }
@@ -151,6 +161,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                                 else
                                                     FluentStyle.Neutral
                                         },
+                                        modifier = Modifier.testTag(APPBAR_STYLE_PARAM),
                                         checkedState = style == FluentStyle.Brand
                                     )
                                 }
@@ -167,6 +178,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                         onValueChange = {
                                             enableButtonBar = !enableButtonBar
                                         },
+                                        modifier = Modifier.testTag(BUTTONBAR_PARAM),
                                         checkedState = enableButtonBar
                                     )
                                 }
@@ -184,6 +196,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                         onValueChange = {
                                             enableSearchBar = !enableSearchBar
                                         },
+                                        modifier = Modifier.testTag(SEARCHBAR_PARAM),
                                         checkedState = enableSearchBar,
                                         enabledSwitch = !searchMode
                                     )
