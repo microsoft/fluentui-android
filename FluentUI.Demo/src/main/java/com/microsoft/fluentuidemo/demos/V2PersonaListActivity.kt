@@ -23,6 +23,9 @@ import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
 import com.microsoft.fluentuidemo.util.invokeToast
 
+// Tags used for testing
+const val PERSONA_LIST = "persona_list"
+
 class V2PersonaListActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
@@ -229,7 +232,7 @@ class V2PersonaListActivity : DemoActivity() {
     @Composable
     private fun CreatePersonaListActivityUI(context: Context) {
         PersonaList(
-            modifier = Modifier.testTag("list"),
+            modifier = Modifier.testTag(PERSONA_LIST),
             personas = createPersonasList(context),
             border = BorderType.Bottom,
             borderInset = BorderInset.XXLarge

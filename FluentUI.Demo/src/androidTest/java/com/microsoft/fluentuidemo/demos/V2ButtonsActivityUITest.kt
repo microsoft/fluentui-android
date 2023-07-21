@@ -6,6 +6,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
+import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.DemoActivity
 import org.junit.After
 import org.junit.Before
@@ -13,25 +14,11 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
-class V2ButtonsActivityUITest {
-    private fun launchActivity() {
-        ActivityScenario.launch<V2ButtonsActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2ButtonsActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        return intent
-    }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
+class V2ButtonsActivityUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2ButtonsActivity::class.java)
     }
 
     @Test
@@ -63,8 +50,4 @@ class V2ButtonsActivityUITest {
         theme2Button.assertExists("Theme change crashing")
     }
 
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
 }

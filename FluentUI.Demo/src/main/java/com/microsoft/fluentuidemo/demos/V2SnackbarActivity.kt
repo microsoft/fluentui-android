@@ -38,6 +38,15 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.launch
 
+// Tags used for testing
+const val SNACK_BAR_MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
+const val SNACK_BAR_ICON_PARAM = "Icon Param"
+const val SNACK_BAR_SUBTITLE_PARAM = "Subtitle Param"
+const val SNACK_BAR_ACTION_BUTTON_PARAM = "Action Button Param"
+const val SNACK_BAR_DISMISS_BUTTON_PARAM = "Dismiss Button Param"
+const val SNACK_BAR_SHOW_SNACKBAR = "Show Snackbar"
+const val SNACK_BAR_DISMISS_SNACKBAR = "Dismiss Snackbar"
+
 class V2SnackbarActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
@@ -46,14 +55,6 @@ class V2SnackbarActivity : DemoActivity() {
         super.onCreate(savedInstanceState)
         val context = this
 
-        // Tags used for testing
-        val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
-        val ICON_PARAM = "Icon Param"
-        val SUBTITLE_PARAM = "Subtitle Param"
-        val ACTION_BUTTON_PARAM = "Action Button Param"
-        val DISMISS_BUTTON_PARAM = "Dismiss Button Param"
-        val SHOW_SNACKBAR = "Show Snackbar"
-        val DISMISS_SNACKBAR = "Dismiss Snackbar"
         val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
             LayoutInflater.from(container.context),
             container,
@@ -84,7 +85,7 @@ class V2SnackbarActivity : DemoActivity() {
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
                         chevronOrientation = ChevronOrientation(90f, 0f),
-                        modifier = Modifier.testTag(MODIFIABLE_PARAMETER_SECTION)
+                        modifier = Modifier.testTag(SNACK_BAR_MODIFIABLE_PARAMETER_SECTION)
                     ) {
                         LazyColumn(Modifier.fillMaxHeight(0.5F)) {
                             item {
@@ -181,7 +182,7 @@ class V2SnackbarActivity : DemoActivity() {
                                                 icon = it
                                             },
                                             checkedState = icon,
-                                            modifier = Modifier.testTag(ICON_PARAM)
+                                            modifier = Modifier.testTag(SNACK_BAR_ICON_PARAM)
                                         )
                                     }
                                 )
@@ -206,7 +207,7 @@ class V2SnackbarActivity : DemoActivity() {
                                                 }
                                             },
                                             checkedState = !subtitle.isNullOrBlank(),
-                                            modifier = Modifier.testTag(SUBTITLE_PARAM)
+                                            modifier = Modifier.testTag(SNACK_BAR_SUBTITLE_PARAM)
                                         )
                                     }
                                 )
@@ -225,7 +226,7 @@ class V2SnackbarActivity : DemoActivity() {
                                                 actionLabel = it
                                             },
                                             checkedState = actionLabel,
-                                            modifier = Modifier.testTag(ACTION_BUTTON_PARAM)
+                                            modifier = Modifier.testTag(SNACK_BAR_ACTION_BUTTON_PARAM)
                                         )
                                     }
                                 )
@@ -244,7 +245,7 @@ class V2SnackbarActivity : DemoActivity() {
                                                 dismissEnabled = it
                                             },
                                             checkedState = dismissEnabled,
-                                            modifier = Modifier.testTag(DISMISS_BUTTON_PARAM)
+                                            modifier = Modifier.testTag(SNACK_BAR_DISMISS_BUTTON_PARAM)
                                         )
                                     }
                                 )
@@ -302,7 +303,7 @@ class V2SnackbarActivity : DemoActivity() {
                             text = LocalContext.current.resources.getString(R.string.fluentui_show_snackbar),
                             size = ButtonSize.Small,
                             style = ButtonStyle.OutlinedButton,
-                            modifier = Modifier.testTag(SHOW_SNACKBAR)
+                            modifier = Modifier.testTag(SNACK_BAR_SHOW_SNACKBAR)
                         )
 
                         Button(
@@ -312,7 +313,7 @@ class V2SnackbarActivity : DemoActivity() {
                             text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                             size = ButtonSize.Small,
                             style = ButtonStyle.OutlinedButton,
-                            modifier = Modifier.testTag(DISMISS_SNACKBAR)
+                            modifier = Modifier.testTag(SNACK_BAR_DISMISS_SNACKBAR)
                         )
                     }
                     Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {

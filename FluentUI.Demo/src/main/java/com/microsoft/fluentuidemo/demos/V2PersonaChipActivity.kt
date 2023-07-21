@@ -30,6 +30,14 @@ import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 
+// Tags used for testing
+const val PERSONA_CHIP_SMALL_CHIP = "small persona chip"
+const val PERSONA_CHIP_MEDIUM_CHIP = "medium persona chip"
+const val PERSONA_CHIP_ANONYMOUS = "ann persona chip"
+const val PERSONA_CHIP_DISABLED = "disabled persona chip"
+const val PERSONA_CHIP_SWITCH = "switch persona chip"
+
+
 class V2PersonaChipActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
@@ -145,7 +153,7 @@ class V2PersonaChipActivity : DemoActivity() {
                             )
                         )
                         ToggleSwitch(
-                            modifier = Modifier.testTag("switch"),
+                            modifier = Modifier.testTag(PERSONA_CHIP_SWITCH),
                             onValueChange = { showCloseButton = !showCloseButton },
                             checkedState = showCloseButton
                         )
@@ -183,14 +191,14 @@ class V2PersonaChipActivity : DemoActivity() {
                         BasicText(text = "Person Chip Brand", style = TextStyle(color = textColor))
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
-                                modifier = Modifier.testTag("small persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_SMALL_CHIP),
                                 person = createPersonWithName(),
                                 size = PersonaChipSize.Small,
                                 style = Brand,
                                 selected = selectedList[2],
                                 onClick = { selectedList[2] = !selectedList[2] })
                             PersonaChip(
-                                modifier = Modifier.testTag("medium persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_MEDIUM_CHIP),
                                 person = createPersonWithName(),
                                 style = Brand,
                                 selected = selectedList[3],
@@ -253,7 +261,7 @@ class V2PersonaChipActivity : DemoActivity() {
                         )
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
-                                modifier = Modifier.testTag("ann persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_ANONYMOUS),
                                 person = createPersonWithNothing(),
                                 size = PersonaChipSize.Small,
                                 style = Warning,
@@ -307,7 +315,7 @@ class V2PersonaChipActivity : DemoActivity() {
                                 } else null
                             )
                             PersonaChip(
-                                modifier = Modifier.testTag("disabled persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_DISABLED),
                                 person = createPersonWithName(),
                                 style = Neutral,
                                 enabled = false,

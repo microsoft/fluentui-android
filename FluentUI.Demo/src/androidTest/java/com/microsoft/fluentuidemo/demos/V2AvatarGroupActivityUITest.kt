@@ -1,39 +1,16 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
 import androidx.compose.ui.test.*
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
-import androidx.test.platform.app.InstrumentationRegistry
-import com.microsoft.fluentuidemo.DemoActivity
-import org.junit.After
+import com.microsoft.fluentuidemo.BaseTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
-class V2AvatarGroupActivityUITest {
-
-    private fun launchActivity() {
-        ActivityScenario.launch<V2AvatarGroupActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2AvatarGroupActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        return intent
-    }
+class V2AvatarGroupActivityUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2AvatarGroupActivity::class.java)
     }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
 
     @Test
     fun testIncreaseDecreaseMaxAvatar() {
@@ -104,9 +81,5 @@ class V2AvatarGroupActivityUITest {
             )
 
     }
-
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
+    
 }

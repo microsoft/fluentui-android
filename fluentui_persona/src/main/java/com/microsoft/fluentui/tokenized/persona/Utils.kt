@@ -21,6 +21,9 @@ import kotlinx.parcelize.RawValue
  * @property status Current Status of the person
  * @property isOOO Enable/Disable Out-Of-Office flag for person
  */
+
+const val ANONYMOUS = "Anonymous"
+
 @Parcelize
 class Person(
     val firstName: String = "",
@@ -36,7 +39,7 @@ class Person(
     fun getName(): String {
         val name = "$firstName $lastName"
         if (name.trim().isBlank())
-            return "Anonymous"
+            return ANONYMOUS
         return name
     }
 
@@ -46,7 +49,7 @@ class Person(
             return label
         if (!email.isNullOrBlank())
             return email
-        return "Anonymous"
+        return ANONYMOUS
     }
 
     fun isImageAvailable(): Boolean {
@@ -101,7 +104,7 @@ class Group(
 
     fun getName(): String {
         if (groupName.trim().isBlank())
-            return "Anonymous"
+            return ANONYMOUS
         return groupName
     }
 
