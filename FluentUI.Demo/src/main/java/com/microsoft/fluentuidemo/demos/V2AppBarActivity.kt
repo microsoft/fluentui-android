@@ -52,16 +52,16 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlin.math.max
 
+// Tags used for testing
+const val APP_BAR_MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
+const val APP_BAR_SUBTITLE_PARAM = "Subtitle Param"
+const val APP_BAR_STYLE_PARAM = "AppBar Style Param"
+const val APP_BAR_BUTTONBAR_PARAM = "ButtonBar Param"
+const val APP_BAR_SEARCHBAR_PARAM = "SearchBar Param"
+
 class V2AppBarLayoutActivity : DemoActivity() {
     override val contentNeedsScrollableContainer: Boolean
         get() = false
-
-    // Tags used for testing
-    private val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
-    private val SUBTITLE_PARAM = "Subtitle Param"
-    private val APPBAR_STYLE_PARAM = "AppBar Style Param"
-    private val BUTTONBAR_PARAM = "ButtonBar Param"
-    private val SEARCHBAR_PARAM = "SearchBar Param"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,7 +91,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                 }) {
                     ListItem.SectionHeader(
                         title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
-                        modifier = Modifier.testTag(MODIFIABLE_PARAMETER_SECTION),
+                        modifier = Modifier.testTag(APP_BAR_MODIFIABLE_PARAMETER_SECTION),
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
                         chevronOrientation = ChevronOrientation(90f, 0f),
@@ -140,7 +140,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                                 else
                                                     null
                                         },
-                                        modifier = Modifier.testTag(SUBTITLE_PARAM),
+                                        modifier = Modifier.testTag(APP_BAR_SUBTITLE_PARAM),
                                         checkedState = !subtitle.isNullOrBlank()
                                     )
                                 }
@@ -161,7 +161,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                                 else
                                                     FluentStyle.Neutral
                                         },
-                                        modifier = Modifier.testTag(APPBAR_STYLE_PARAM),
+                                        modifier = Modifier.testTag(APP_BAR_STYLE_PARAM),
                                         checkedState = style == FluentStyle.Brand
                                     )
                                 }
@@ -178,7 +178,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                         onValueChange = {
                                             enableButtonBar = !enableButtonBar
                                         },
-                                        modifier = Modifier.testTag(BUTTONBAR_PARAM),
+                                        modifier = Modifier.testTag(APP_BAR_BUTTONBAR_PARAM),
                                         checkedState = enableButtonBar
                                     )
                                 }
@@ -196,7 +196,7 @@ class V2AppBarLayoutActivity : DemoActivity() {
                                         onValueChange = {
                                             enableSearchBar = !enableSearchBar
                                         },
-                                        modifier = Modifier.testTag(SEARCHBAR_PARAM),
+                                        modifier = Modifier.testTag(APP_BAR_SEARCHBAR_PARAM),
                                         checkedState = enableSearchBar,
                                         enabledSwitch = !searchMode
                                     )

@@ -44,6 +44,7 @@ open class BaseTest {
         for ((key, value) in control.fetchSemanticsNode().config) {
             if (key.name == "ToggleableState" && value.toString() == if (!state) "On" else "Off") {
                 control.performClick()
+                assert(control.fetchSemanticsNode().config[key].toString() == if (state) "On" else "Off")
                 break
             }
         }

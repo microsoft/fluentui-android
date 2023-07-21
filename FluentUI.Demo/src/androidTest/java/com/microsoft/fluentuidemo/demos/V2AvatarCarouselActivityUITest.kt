@@ -14,8 +14,6 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
-private const val LARGE_CAROUSEL_TAG = "LargeCarousel"
-private const val SMALL_CAROUSEL_TAG = "SmallCarousel"
 private const val ITEM_1_TAG = "item 1"
 private const val ITEM_2_TAG = "item 2"
 private const val LARGE_AVATAR_SIZE = 72
@@ -44,26 +42,28 @@ class V2AvatarCarouselActivityUITest {
 
     @Test
     fun testAvatarCarouselBounds() {
-        composeTestRule.onNodeWithTag(LARGE_CAROUSEL_TAG).onChildAt(0).assertWidthIsEqualTo(88.dp)
-        composeTestRule.onNodeWithTag(SMALL_CAROUSEL_TAG).onChildAt(0).assertWidthIsEqualTo(88.dp)
+        composeTestRule.onNodeWithTag(AVATAR_CAROUSEL_LARGE_CAROUSEL).onChildAt(0)
+            .assertWidthIsEqualTo(88.dp)
+        composeTestRule.onNodeWithTag(AVATAR_CAROUSEL_SMALL_CAROUSEL).onChildAt(0)
+            .assertWidthIsEqualTo(88.dp)
     }
 
     @Test
     fun testAvatarCarouselItemEnabledDisabled() {
         composeTestRule.onNode(
-            hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            hasParent(hasTestTag(AVATAR_CAROUSEL_LARGE_CAROUSEL)).and(hasTestTag(ITEM_1_TAG)),
             true
         ).assertIsEnabled()
         composeTestRule.onNode(
-            hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_2_TAG)),
+            hasParent(hasTestTag(AVATAR_CAROUSEL_LARGE_CAROUSEL)).and(hasTestTag(ITEM_2_TAG)),
             true
         ).assertIsNotEnabled()
         composeTestRule.onNode(
-            hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            hasParent(hasTestTag(AVATAR_CAROUSEL_SMALL_CAROUSEL)).and(hasTestTag(ITEM_1_TAG)),
             true
         ).assertIsEnabled()
         composeTestRule.onNode(
-            hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_2_TAG)),
+            hasParent(hasTestTag(AVATAR_CAROUSEL_SMALL_CAROUSEL)).and(hasTestTag(ITEM_2_TAG)),
             true
         ).assertIsNotEnabled()
     }
@@ -71,13 +71,13 @@ class V2AvatarCarouselActivityUITest {
     @Test
     fun testAvatarSize() {
         composeTestRule.onNode(
-            hasParent(hasTestTag(LARGE_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            hasParent(hasTestTag(AVATAR_CAROUSEL_LARGE_CAROUSEL)).and(hasTestTag(ITEM_1_TAG)),
             true
         ).onChildAt(0).assertWidthIsEqualTo(
             LARGE_AVATAR_SIZE.dp
         )
         composeTestRule.onNode(
-            hasParent(hasTestTag(SMALL_CAROUSEL_TAG)).and(hasTestTag(ITEM_1_TAG)),
+            hasParent(hasTestTag(AVATAR_CAROUSEL_SMALL_CAROUSEL)).and(hasTestTag(ITEM_1_TAG)),
             true
         ).onChildAt(0).assertWidthIsEqualTo(
             SMALL_AVATAR_SIZE.dp
@@ -86,8 +86,8 @@ class V2AvatarCarouselActivityUITest {
 
     @Test
     fun testHorizontalScroll() {
-        composeTestRule.onNodeWithTag(LARGE_CAROUSEL_TAG).assert(hasScrollAction())
-        composeTestRule.onNodeWithTag(SMALL_CAROUSEL_TAG).assert(hasScrollAction())
+        composeTestRule.onNodeWithTag(AVATAR_CAROUSEL_LARGE_CAROUSEL).assert(hasScrollAction())
+        composeTestRule.onNodeWithTag(AVATAR_CAROUSEL_SMALL_CAROUSEL).assert(hasScrollAction())
     }
 
     @After
