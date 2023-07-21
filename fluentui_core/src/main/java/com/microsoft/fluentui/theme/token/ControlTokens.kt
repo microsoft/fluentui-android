@@ -53,6 +53,7 @@ open class ControlTokens : IControlTokens {
         LinearProgressIndicator,
         ListItem,
         Menu,
+        PeoplePicker,
         PersonaChip,
         PillButton,
         PillBar,
@@ -97,6 +98,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.ListItem -> ListItemTokens()
                 ControlType.Menu -> MenuTokens()
                 ControlType.PersonaChip -> PersonaChipTokens()
+                ControlType.PeoplePicker -> PeoplePickerTokens()
                 ControlType.PillButton -> PillButtonTokens()
                 ControlType.PillBar -> PillBarTokens()
                 ControlType.PillSwitch -> PillSwitchTokens()

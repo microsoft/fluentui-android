@@ -20,6 +20,7 @@ import org.junit.runners.Suite
     V2DrawerActivityUITest::class,
     V2LabelUITest::class,
     V2ListItemActivityUITest::class,
+    V2PeoplePickerUITest::class,
     V2PersonaChipActivityUITest::class,
     V2PersonaListActivityUITest::class,
     V2PersonaUITest::class,
