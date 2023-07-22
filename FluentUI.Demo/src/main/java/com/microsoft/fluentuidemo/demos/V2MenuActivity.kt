@@ -3,15 +3,23 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
@@ -24,28 +32,24 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Menu
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
 
-class V2MenuActivity : DemoActivity() {
+class V2MenuActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
 
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-19"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-19"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                CreateMenuActivityUI(context)
-            }
+
+        setActivityContent {
+            CreateMenuActivityUI(context)
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.microsoft.fluentuidemo.util
 
+import android.app.Activity
+import android.view.LayoutInflater
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -98,10 +100,10 @@ fun getAndroidViewAsContent(
                 .fillMaxWidth()
                 .verticalScroll(rememberScrollState()),
             factory = {
-                val view = it.activity!!.layoutInflater.inflate(
+                val view = LayoutInflater.from(it as Activity).inflate(
                     R.layout.demo_drawer_content,
                     null
-                )!!.rootView
+                ).rootView
                 val personaList = createPersonaList(it)
                 (view as PersonaListView).personas = when (contentType) {
                     ContentType.FULL_SCREEN_SCROLLABLE_CONTENT -> personaList

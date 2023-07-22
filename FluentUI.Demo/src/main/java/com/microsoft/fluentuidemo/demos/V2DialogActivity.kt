@@ -2,10 +2,21 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -13,7 +24,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.controls.Button
@@ -21,25 +31,22 @@ import com.microsoft.fluentui.tokenized.controls.Label
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.menu.Dialog
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
-class V2DialogActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2DialogActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-16"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-16"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                CreateDialogActivityUI(this)
-            }
+
+        setActivityContent {
+            CreateDialogActivityUI(this)
         }
     }
 

@@ -1,7 +1,6 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -26,9 +25,8 @@ import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
 import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R.drawable
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
 // Tags used for testing
 const val PERSONA_CHIP_SMALL_CHIP = "small persona chip"
@@ -37,22 +35,20 @@ const val PERSONA_CHIP_ANONYMOUS = "ann persona chip"
 const val PERSONA_CHIP_DISABLED = "disabled persona chip"
 const val PERSONA_CHIP_SWITCH = "switch persona chip"
 
+class V2PersonaChipActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
 
-class V2PersonaChipActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-21"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-21"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
-            FluentTheme {
-                createPersonaChipActivityUI()
-            }
+
+        setActivityContent {
+            createPersonaChipActivityUI()
         }
     }
 

@@ -8,10 +8,10 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class DemoListActivityUITest {
 
-    var activities = DEMOS
+    var activities = V2DEMO
 
     @get:Rule
-    val activityRule = ActivityScenarioRule(DemoListActivity::class.java)
+    val activityRule = ActivityScenarioRule(V2DemoListActivity::class.java)
 
 //    @Before
 //    fun initialize(){
