@@ -34,10 +34,10 @@ open class BaseTest {
         val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
         val intent = Intent(targetContext, activity)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
+        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
         return intent
     }
 
-    // TODO: Replace this everywhere else
     fun toggleControlToValue(control: SemanticsNodeInteraction, state: Boolean) {
         control.assertExists()
         for ((key, value) in control.fetchSemanticsNode().config) {

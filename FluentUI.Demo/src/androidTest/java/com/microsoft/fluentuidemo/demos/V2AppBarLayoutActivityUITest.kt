@@ -20,7 +20,7 @@ class V2AppBarLayoutActivityUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        launchActivity(V2AppBarLayoutActivity::class.java)
+        launchActivity(V2AppBarActivity::class.java)
     }
 
     private val modifiableParametersButton =
@@ -28,7 +28,8 @@ class V2AppBarLayoutActivityUITest : BaseTest() {
 
     @Test
     fun testAppBarDisplay() {
-        composeTestRule.onNodeWithTag(APP_BAR).assertExists()
+        // 1st app bar is displayed as part of the usual app and 2nd one is the one we are testing
+        composeTestRule.onAllNodesWithTag(APP_BAR)[1].assertExists()
     }
 
     @Test
@@ -59,7 +60,8 @@ class V2AppBarLayoutActivityUITest : BaseTest() {
     fun testAppBarStyleToggle() {
         modifiableParametersButton.performClick()
         val control = composeTestRule.onNodeWithTag(APP_BAR_STYLE_PARAM)
-        val component = composeTestRule.onNodeWithTag(APP_BAR)
+        // 1st app bar is displayed as part of the usual app and 2nd one is the one we are testing
+        val component = composeTestRule.onAllNodesWithTag(APP_BAR)[1]
         toggleControlToValue(control, true)
         component.assertExists("App bar is not displayed in accent")
     }
