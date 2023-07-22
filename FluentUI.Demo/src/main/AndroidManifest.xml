@@ -2,20 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.microsoft.fluentuidemo">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/fluent_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/fluent_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!--Launch Screen: We use AppTheme.Launcher for the theme instead of AppTheme in order to load the app with a launch screen-->
         <activity
-            android:name="com.microsoft.fluentuidemo.DemoListActivity"
-            android:label="@string/app_title"
-            android:theme="@style/AppTheme.Launcher"
-            android:exported="true">
+            android:name=".V2DemoListActivity"
+            android:exported="true"
+            android:label="@string/app_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,7 +22,7 @@
         </activity>
 
         <!-- Demo activities -->
-        <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarLayoutActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2AppBarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />
@@ -39,6 +38,7 @@
             android:name="com.microsoft.fluentuidemo.demos.V2ContextualCommandBarActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DialogActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.V2DesignTokensActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2DrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2LabelActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ListItemActivity" />

@@ -2,7 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -37,9 +36,8 @@ import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.notification.NotificationResult
 import com.microsoft.fluentui.tokenized.notification.Snackbar
 import com.microsoft.fluentui.tokenized.notification.SnackbarState
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
@@ -55,16 +53,21 @@ const val SCAFFOLD_MAIN_CONTENT = "Main Content"
 const val SCAFFOLD_DRAWER_BUTTON = "Drawer Button"
 const val SCAFFOLD_SNACKBAR_BUTTON = "Snackbar Button"
 
-class V2ScaffoldActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2ScaffoldActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-25"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(LayoutInflater.from(container.context), container,true)
-        v2ActivityComposeBinding.composeHere.setContent {
+
+        setActivityContent {
             var selectedIndex by rememberSaveable { mutableStateOf(0) }
             var showHomeBadge by rememberSaveable { mutableStateOf(true) }
             val tabDataList = arrayListOf(
@@ -251,11 +254,11 @@ class V2ScaffoldActivity : DemoActivity() {
                                 ListItemIcons.Folder40,
                                 context.resources.getString(R.string.common_folder)
                             )
-                        })
+                        }
+                    )
                 }
             }
         }
     }
-
 }
 

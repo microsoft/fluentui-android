@@ -1,10 +1,17 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
@@ -23,35 +30,38 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import com.example.theme.token.MyAliasTokens
 import com.example.theme.token.MyAppBarToken
 import com.example.theme.token.MyButtonTokens
 import com.example.theme.token.MyFABToken
+import com.example.theme.token.OneNoteAliasTokens
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.AliasTokens
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
-import com.microsoft.fluentui.theme.token.controlTokens.*
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
+import com.microsoft.fluentui.theme.token.controlTokens.ButtonTokens
+import com.microsoft.fluentui.theme.token.controlTokens.FABSize
+import com.microsoft.fluentui.theme.token.controlTokens.FABState
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
-import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
+import com.microsoft.fluentuidemo.V2DemoActivity
 
-class V2ButtonsActivity : DemoActivity() {
-    override val contentNeedsScrollableContainer: Boolean
-        get() = false
+class V2ButtonsActivity : V2DemoActivity() {
+    init {
+        setupActivity(this)
+    }
+
+    override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-10"
+    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-10"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val context = this
-        val v2ActivityComposeBinding = V2ActivityComposeBinding.inflate(
-            LayoutInflater.from(container.context),
-            container,
-            true
-        )
-        v2ActivityComposeBinding.composeHere.setContent {
+
+        setActivityContent {
             val controlTokens = ControlTokens()
             var fabState by rememberSaveable { mutableStateOf(FABState.Expanded) }
 
@@ -96,7 +106,7 @@ class V2ButtonsActivity : DemoActivity() {
                                 style = ButtonStyle.OutlinedButton,
                                 size = ButtonSize.Medium,
                                 onClick = {
-                                    FluentTheme.updateAliasTokens(MyAliasTokens())
+                                    FluentTheme.updateAliasTokens(OneNoteAliasTokens())
                                     FluentTheme.updateControlTokens(
                                         controlTokens.updateToken(
                                             ControlTokens.ControlType.Button,
@@ -163,7 +173,7 @@ class V2ButtonsActivity : DemoActivity() {
                                         text = "Theme1"
                                     )
                                     Button(
-                                        onClick = { aliasTokens = MyAliasTokens() },
+                                        onClick = { aliasTokens = OneNoteAliasTokens() },
                                         text = "Theme2"
                                     )
                                 }
