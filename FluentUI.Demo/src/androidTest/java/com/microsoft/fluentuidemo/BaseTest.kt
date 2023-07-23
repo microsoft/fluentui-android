@@ -38,6 +38,18 @@ open class BaseTest {
         return intent
     }
 
+    fun isEnabled(control: SemanticsNodeInteraction): Boolean {
+        control.assertExists()
+        for ((key, _) in control.fetchSemanticsNode().config) {
+            if (key.name == "Disabled") return false
+        }
+        return true
+    }
+
+    // This function is used to toggle the state of a control to a given value.
+    // The control can be a switch, checkbox, or radio button.
+    // Also verifies whether the state is achieved.
+    // Note - Not all components might be able to reach the state, eg: given radio button cannot be unselected by itself.
     fun toggleControlToValue(control: SemanticsNodeInteraction, state: Boolean) {
         control.assertExists()
         for ((key, value) in control.fetchSemanticsNode().config) {
@@ -45,10 +57,16 @@ open class BaseTest {
                 control.performClick()
                 assert(control.fetchSemanticsNode().config[key].toString() == if (state) "On" else "Off")
                 break
+            } else if (key.name == "Selected" && value.toString() == if (!state) "true" else "false") {
+                control.performClick()
+                assert(control.fetchSemanticsNode().config[key].toString() == if (state) "true" else "false")
+                break
             }
         }
     }
 
+    // This function is responsible for verifying that a component is displayed
+    // only when a param controller is toggled 'on', and not otherwise.
     fun assertExistsAfterToggleOnly(
         control: SemanticsNodeInteraction,
         component: SemanticsNodeInteraction,
@@ -64,6 +82,8 @@ open class BaseTest {
         component.assertExists(errorMessage)
     }
 
+    // This function is responsible for verifying that a component is displayed
+    // only when a param controller is toggled 'off', and not otherwise.
     fun assertExistsBeforeToggleOnly(
         control: SemanticsNodeInteraction,
         component: SemanticsNodeInteraction,

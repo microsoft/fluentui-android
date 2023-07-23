@@ -19,7 +19,7 @@ class V2CardNudgeActivityUITest : BaseTest() {
     }
 
     private val modifiableParametersButton =
-        composeTestRule.onAllNodesWithTag(CARD_NUDGE_MODIFIABLE_PARAMETER_SECTION)[0]
+        composeTestRule.onNodeWithTag(CARD_NUDGE_MODIFIABLE_PARAMETER_SECTION)
 
     @Test
     fun testCardNudgeDisplay() {

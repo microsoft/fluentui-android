@@ -3,23 +3,14 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.AvatarIcons
 import com.microsoft.fluentui.icons.avataricons.Icon
@@ -32,20 +23,32 @@ import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.listitem.ChevronOrientation
 import com.microsoft.fluentui.tokenized.listitem.ListItem
-import com.microsoft.fluentui.tokenized.segmentedcontrols.PillBar
-import com.microsoft.fluentui.tokenized.segmentedcontrols.PillButton
-import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
-import com.microsoft.fluentui.tokenized.segmentedcontrols.PillSwitch
-import com.microsoft.fluentui.tokenized.segmentedcontrols.PillTabs
+import com.microsoft.fluentui.tokenized.segmentedcontrols.*
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+// Tags used for testing
+const val SEGMENTED_CONTROL_PILL_BUTTON = "Pill Button"
+const val SEGMENTED_CONTROL_PILL_BAR = "Pill Bar"
+const val SEGMENTED_CONTROL_TABS = "Tabs"
+const val SEGMENTED_CONTROL_SWITCH = "Switch"
+const val SEGMENTED_CONTROL_PILL_BUTTON_TOGGLE = "Pill Button Toggle"
+const val SEGMENTED_CONTROL_PILL_BAR_TOGGLE = "Pill Bar Toggle"
+const val SEGMENTED_CONTROL_TABS_TOGGLE = "Tabs Toggle"
+const val SEGMENTED_CONTROL_SWITCH_TOGGLE = "Switch Toggle"
+const val SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT = "Pill Button Component"
+const val SEGMENTED_CONTROL_PILL_BAR_COMPONENT = "Pill Bar Component"
+const val SEGMENTED_CONTROL_TABS_COMPONENT = "Tabs Component"
+const val SEGMENTED_CONTROL_SWITCH_COMPONENT = "Switch Component"
+
 class V2SegmentedControlActivity : V2DemoActivity() {
+
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-27"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-27"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-27"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,9 +71,12 @@ class V2SegmentedControlActivity : V2DemoActivity() {
 
                     template(
                         "Pill Button",
+                        testTag = SEGMENTED_CONTROL_PILL_BUTTON,
                         enableSwitch = {
                             ToggleSwitch(
-                                Modifier.padding(vertical = 3.dp),
+                                Modifier
+                                    .padding(vertical = 3.dp)
+                                    .testTag(SEGMENTED_CONTROL_PILL_BUTTON_TOGGLE),
                                 onValueChange = { enabled = it },
                                 checkedState = enabled
                             )
@@ -85,16 +91,17 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     },
                                     selected = selected,
                                     enabled = enabled,
-                                    notificationDot = unread
+                                    notificationDot = unread,
                                 )
                             )
                             PillButton(
-                                PillMetaData(
+                                modifier = Modifier.testTag(SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT),
+                                pillMetaData = PillMetaData(
                                     "Neutral",
                                     { selectedIcon = !selectedIcon },
                                     icon = AvatarIcons.Icon.Anonymous.Xxlarge,
                                     selected = selectedIcon,
-                                    enabled = enabled
+                                    enabled = enabled,
                                 )
                             )
                         },
@@ -174,16 +181,20 @@ class V2SegmentedControlActivity : V2DemoActivity() {
 
                     template(
                         "Pill Bar",
+                        testTag = SEGMENTED_CONTROL_PILL_BAR,
                         enableSwitch = {
                             ToggleSwitch(
-                                Modifier.padding(vertical = 3.dp),
+                                Modifier
+                                    .padding(vertical = 3.dp)
+                                    .testTag(SEGMENTED_CONTROL_PILL_BAR_TOGGLE),
                                 onValueChange = { enableBar = it },
                                 checkedState = enableBar
                             )
                         },
                         neutralContent = {
                             PillBar(
-                                pillList
+                                modifier = Modifier.testTag(SEGMENTED_CONTROL_PILL_BAR_COMPONENT),
+                                metadataList = pillList
                             )
                         },
                         brandContent = {
@@ -223,9 +234,12 @@ class V2SegmentedControlActivity : V2DemoActivity() {
 
                     template(
                         "Tabs",
+                        testTag = SEGMENTED_CONTROL_TABS,
                         enableSwitch = {
                             ToggleSwitch(
-                                Modifier.padding(vertical = 3.dp),
+                                Modifier
+                                    .padding(vertical = 3.dp)
+                                    .testTag(SEGMENTED_CONTROL_TABS_TOGGLE),
                                 onValueChange = { enableTabs = it },
                                 checkedState = enableTabs
                             )
@@ -233,7 +247,8 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                         neutralContent = {
                             Column(verticalArrangement = Arrangement.spacedBy(5.dp)) {
                                 PillTabs(
-                                    tabsList.subList(0, 4),
+                                    modifier = Modifier.testTag(SEGMENTED_CONTROL_TABS_COMPONENT),
+                                    metadataList = tabsList.subList(0, 4),
                                     selectedIndex = selectedTab,
                                     scrollable = true
                                 )
@@ -291,9 +306,12 @@ class V2SegmentedControlActivity : V2DemoActivity() {
 
                     template(
                         "Switch",
+                        testTag = SEGMENTED_CONTROL_SWITCH,
                         enableSwitch = {
                             ToggleSwitch(
-                                Modifier.padding(vertical = 3.dp),
+                                Modifier
+                                    .padding(vertical = 3.dp)
+                                    .testTag(SEGMENTED_CONTROL_SWITCH_TOGGLE),
                                 onValueChange = { enableSwitch = it },
                                 checkedState = enableSwitch
                             )
@@ -307,7 +325,8 @@ class V2SegmentedControlActivity : V2DemoActivity() {
                                     selectedIndex = selectedSwitch
                                 )
                                 PillSwitch(
-                                    switchList.subList(0, 2),
+                                    modifier = Modifier.testTag(SEGMENTED_CONTROL_SWITCH_COMPONENT),
+                                    metadataList = switchList.subList(0, 2),
                                     style = FluentStyle.Brand,
                                     selectedIndex = selectedSwitch
                                 )
@@ -341,13 +360,15 @@ private fun template(
     enableSwitch: (@Composable () -> Unit),
     neutralContent: (@Composable RowScope.() -> Unit),
     brandContent: (@Composable RowScope.() -> Unit),
+    testTag: String = ""
 ) {
     ListItem.SectionHeader(
         title = label,
         enableChevron = true,
         enableContentOpenCloseTransition = true,
         chevronOrientation = ChevronOrientation(90f, 0f),
-        trailingAccessoryContent = enableSwitch
+        trailingAccessoryContent = enableSwitch,
+        modifier = Modifier.testTag(testTag)
     ) {
         Column(
             modifier = Modifier.background(

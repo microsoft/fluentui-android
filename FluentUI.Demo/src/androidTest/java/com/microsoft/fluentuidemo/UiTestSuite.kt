@@ -26,7 +26,10 @@ import org.junit.runners.Suite
     V2PersonaUITest::class,
     V2ProgressIndicatorUITest::class,
     V2ScaffoldActivityUITest::class,
+    V2SegmentedControlActivityUITest::class,
     V2ShimmerUITest::class,
-    V2SnackbarActivityUITest::class
+    V2SnackbarActivityUITest::class,
+    V2TabBarActivityUITest::class,
+    V2TextFieldActivityUITest::class,
 )
 class UiTestSuite

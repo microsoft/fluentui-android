@@ -1,23 +1,11 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Notifications
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material.icons.outlined.Email
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.List
-import androidx.compose.material.icons.outlined.Notifications
-import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -25,6 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
@@ -45,13 +34,21 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.invokeToast
 
+const val TAB_BAR_VERTICAL_RADIO = "tabBarVerticalRadio"
+const val TAB_BAR_HORIZONTAL_RADIO = "tabBarHorizontalRadio"
+const val TAB_BAR_NO_TEXT_RADIO = "tabBarItemsNoTextRadio"
+const val TAB_BAR_ADD_BUTTON = "tabBarAddButton"
+const val TAB_BAR_REMOVE_BUTTON = "tabBarRemoveButton"
+const val TAB_BAR = "tabBar"
+
 class V2TabBarActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-33"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-33"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-33"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +84,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             )
                         )
                         RadioButton(
+                            modifier = Modifier.testTag(TAB_BAR_VERTICAL_RADIO),
                             selected = (selectedOption == content[0]),
                             onClick = {
                                 selectedOption = content[0]
@@ -109,6 +107,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             )
                         )
                         RadioButton(
+                            modifier = Modifier.testTag(TAB_BAR_HORIZONTAL_RADIO),
                             selected = (selectedOption == content[1]),
                             onClick = {
                                 selectedOption = content[1]
@@ -131,6 +130,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             )
                         )
                         RadioButton(
+                            modifier = Modifier.testTag(TAB_BAR_NO_TEXT_RADIO),
                             selected = (selectedOption == content[2]),
                             onClick = {
                                 selectedOption = content[2]
@@ -148,6 +148,7 @@ class V2TabBarActivity : V2DemoActivity() {
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Button(
+                                modifier = Modifier.testTag(TAB_BAR_ADD_BUTTON),
                                 style = ButtonStyle.Button,
                                 size = ButtonSize.Medium,
                                 text = "+",
@@ -155,6 +156,7 @@ class V2TabBarActivity : V2DemoActivity() {
                                 onClick = { _tabItemsCount.value = tabItemsCount.value + 1 })
 
                             Button(
+                                modifier = Modifier.testTag(TAB_BAR_REMOVE_BUTTON),
                                 style = ButtonStyle.Button,
                                 size = ButtonSize.Medium,
                                 text = "-",
@@ -223,11 +225,12 @@ class V2TabBarActivity : V2DemoActivity() {
                         invokeToast(resources.getString(R.string.tabBar_more), context)
                         selectedIndex = 4
                     },
-                    badge = { Badge() }
+                    badge = { Badge() },
                 )
             )
 
             TabBar(
+                modifier = Modifier.testTag(TAB_BAR),
                 tabDataList = tabDataList.take(tabItemsCount.value),
                 selectedIndex = selectedIndex,
                 tabTextAlignment = tabTextAlignment.value

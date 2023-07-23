@@ -9,7 +9,6 @@ import org.junit.Before
 import org.junit.Test
 
 private const val CLOSE_ICON_CONTENT_DESCRIPTION = "Close"
-private const val PERSONA_CHIP_HEIGHT = 22
 private const val AVATAR_ICON_SIZE = 16
 
 class V2PersonaChipActivityUITest : BaseTest() {
@@ -30,7 +29,7 @@ class V2PersonaChipActivityUITest : BaseTest() {
                 )
             ), true
         ).assertHeightIsEqualTo(AVATAR_ICON_SIZE.dp)
-        composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH).performClick()
+        toggleControlToValue(composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH), true)
         composeTestRule.onNodeWithTag(PERSONA_CHIP_MEDIUM_CHIP).performClick()
         composeTestRule.onNode(
             hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
@@ -54,7 +53,7 @@ class V2PersonaChipActivityUITest : BaseTest() {
                 )
             ), true
         ).assertExists()
-        composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH).performClick()
+        toggleControlToValue(composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH), true)
         composeTestRule.onNodeWithTag(PERSONA_CHIP_MEDIUM_CHIP).performClick()
         composeTestRule.onNode(
             hasTestTag(AVATAR_IMAGE).and(
@@ -87,7 +86,7 @@ class V2PersonaChipActivityUITest : BaseTest() {
                 )
             ), true
         ).assertDoesNotExist()
-        composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH).performClick()
+        toggleControlToValue(composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH), true)
         composeTestRule.onNodeWithTag(PERSONA_CHIP_SMALL_CHIP).performClick()
         composeTestRule.onNode(
             hasTestTag(AVATAR_IMAGE).and(

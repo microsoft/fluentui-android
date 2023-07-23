@@ -16,9 +16,8 @@ class V2SnackbarActivityUITest : BaseTest() {
 
     private val showSnackBarButton = composeTestRule.onNodeWithTag(SNACK_BAR_SHOW_SNACKBAR)
     private val dismissSnackbarButton = composeTestRule.onNodeWithTag(SNACK_BAR_DISMISS_SNACKBAR)
-    private val modifiableParametersButton = composeTestRule.onAllNodesWithTag(
-        SNACK_BAR_MODIFIABLE_PARAMETER_SECTION
-    )[0]
+    private val modifiableParametersButton =
+        composeTestRule.onNodeWithTag(SNACK_BAR_MODIFIABLE_PARAMETER_SECTION)
 
     @Test
     fun testSnackbarDisplay() {
