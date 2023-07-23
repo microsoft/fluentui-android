@@ -41,10 +41,10 @@ class V2BasicControlsActivityUITest : BaseTest() {
         toggleControlToValue(enableSwitch, true)
         radio1.assertIsSelected()
         radio2.assertIsNotSelected()
-        radio2.performClick()
+        toggleControlToValue(radio2, true)
         radio1.assertIsNotSelected()
         radio2.assertIsSelected()
-        radio1.performClick()
+        toggleControlToValue(radio1, true)
         radio1.assertIsSelected()
         radio2.assertIsNotSelected()
     }

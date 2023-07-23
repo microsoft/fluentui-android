@@ -24,7 +24,7 @@ class V2AppBarLayoutActivityUITest : BaseTest() {
     }
 
     private val modifiableParametersButton =
-        composeTestRule.onAllNodesWithTag(APP_BAR_MODIFIABLE_PARAMETER_SECTION)[0]
+        composeTestRule.onNodeWithTag(APP_BAR_MODIFIABLE_PARAMETER_SECTION)
 
     @Test
     fun testAppBarDisplay() {
