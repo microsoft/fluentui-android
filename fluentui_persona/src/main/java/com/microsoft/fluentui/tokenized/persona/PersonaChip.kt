@@ -3,12 +3,7 @@ package com.microsoft.fluentui.tokenized.persona
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
@@ -92,6 +87,15 @@ fun PersonaChip(
         token.cornerRadius(personaChipInfo = personaChipInfo)
     val maxHeight =
         token.maxHeight(personaChipInfo = personaChipInfo)
+    val selectedString = if (selected)
+        LocalContext.current.resources.getString(R.string.fluentui_selected)
+    else
+        LocalContext.current.resources.getString(R.string.fluentui_not_selected)
+
+    val enabledString = if (enabled)
+        LocalContext.current.resources.getString(R.string.fluentui_enabled)
+    else
+        LocalContext.current.resources.getString(R.string.fluentui_disabled)
 
     Box(
         modifier = modifier
@@ -105,7 +109,7 @@ fun PersonaChip(
                 indication = rememberRipple()
             )
             .then(if (onCloseClick != null && selected) Modifier else Modifier.clearAndSetSemantics {
-                this.contentDescription = person.getLabel()
+                this.contentDescription = "${person.getLabel()} $selectedString $enabledString"
             })
     )
     {
@@ -133,7 +137,11 @@ fun PersonaChip(
                         tint = textColor
                     )
                 } else {
-                    Avatar(modifier = Modifier.clearAndSetSemantics {  }, person = person, size = avatarSize)
+                    Avatar(
+                        modifier = Modifier.clearAndSetSemantics { },
+                        person = person,
+                        size = avatarSize
+                    )
                 }
             }
             BasicText(
