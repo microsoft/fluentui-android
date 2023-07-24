@@ -60,7 +60,7 @@ jobs:
       - task: PublishTestResults@2
         displayName: "Publish Test Results"
         inputs:
-          testResultsFiles: "$(build.sourcesdirectory)/FluentUI.Demo/build/testResult/**/hydra_result_*.xml"
+          testResultsFiles: "$(build.sourcesdirectory)/build/testResult/**/hydra_result_*.xml"
           testRunTitle: "Test-Result"
           failTaskOnFailedTests: true
 
@@ -83,7 +83,7 @@ jobs:
       - task: PublishPipelineArtifact@1
         displayName: "Publish dogfood apk to pipeline"
         inputs:
-          targetPath: "$(build.sourcesdirectory)/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
+          targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
           artifact: "dogfood"
           publishLocation: "pipeline"
 
