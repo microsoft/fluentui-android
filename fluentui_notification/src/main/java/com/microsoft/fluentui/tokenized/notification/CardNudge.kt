@@ -39,13 +39,13 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import kotlin.math.roundToInt
 
 // TAGS FOR TESTING
-const val CARD_NUDGE_CARD_NUDGE = "Card Nudge"
-const val CARD_NUDGE_ICON = "Icon"
-const val CARD_NUDGE_ACCENT_ICON = "Accent Icon"
-const val CARD_NUDGE_ACCENT_TEXT = "Accent Text"
-const val CARD_NUDGE_SUBTITLE = "Subtitle"
-const val CARD_NUDGE_ACTION_BUTTON = "Action Button"
-const val CARD_NUDGE_DISMISS_BUTTON = "Dismiss Button"
+const val CARD_NUDGE_CARD_NUDGE = "Card Nudge Card Nudge"
+const val CARD_NUDGE_ICON = "Card Nudge Icon"
+const val CARD_NUDGE_ACCENT_ICON = "Card Nudge Accent Icon"
+const val CARD_NUDGE_ACCENT_TEXT = "Card Nudge Accent Text"
+const val CARD_NUDGE_SUBTITLE = "Card Nudge Subtitle"
+const val CARD_NUDGE_ACTION_BUTTON = "Card Nudge Action Button"
+const val CARD_NUDGE_DISMISS_BUTTON = "Card Nudge Dismiss Button"
 
 class CardNudgeMetaData(
     val message: String,
