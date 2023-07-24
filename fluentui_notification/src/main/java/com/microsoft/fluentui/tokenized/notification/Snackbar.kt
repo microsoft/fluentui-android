@@ -35,11 +35,11 @@ import kotlinx.coroutines.sync.withLock
 import kotlin.coroutines.resume
 
 // TAGS FOR TESTING
-const val SNACK_BAR = "Snack bar"
-const val SNACK_BAR_ICON = "Snack bar Icon"
-const val SNACK_BAR_SUBTITLE = "Snack bar Subtitle"
-const val SNACK_BAR_ACTION_BUTTON = "Snack bar Action Button"
-const val SNACK_BAR_DISMISS_BUTTON = "Snack bar Dismiss Button"
+const val SNACK_BAR = "Fluent Snack bar"
+const val SNACK_BAR_ICON = "Fluent Snack bar Icon"
+const val SNACK_BAR_SUBTITLE = "Fluent Snack bar Subtitle"
+const val SNACK_BAR_ACTION_BUTTON = "Fluent Snack bar Action Button"
+const val SNACK_BAR_DISMISS_BUTTON = "Fluent Snack bar Dismiss Button"
 
 class SnackbarMetadata(
     val message: String,

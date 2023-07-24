@@ -27,18 +27,18 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.*
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 // Tags used for testing
-const val SEGMENTED_CONTROL_PILL_BUTTON = "Pill Button"
-const val SEGMENTED_CONTROL_PILL_BAR = "Pill Bar"
-const val SEGMENTED_CONTROL_TABS = "Tabs"
-const val SEGMENTED_CONTROL_SWITCH = "Switch"
-const val SEGMENTED_CONTROL_PILL_BUTTON_TOGGLE = "Pill Button Toggle"
-const val SEGMENTED_CONTROL_PILL_BAR_TOGGLE = "Pill Bar Toggle"
-const val SEGMENTED_CONTROL_TABS_TOGGLE = "Tabs Toggle"
-const val SEGMENTED_CONTROL_SWITCH_TOGGLE = "Switch Toggle"
-const val SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT = "Pill Button Component"
-const val SEGMENTED_CONTROL_PILL_BAR_COMPONENT = "Pill Bar Component"
-const val SEGMENTED_CONTROL_TABS_COMPONENT = "Tabs Component"
-const val SEGMENTED_CONTROL_SWITCH_COMPONENT = "Switch Component"
+const val SEGMENTED_CONTROL_PILL_BUTTON = "Segmented Control Pill Button"
+const val SEGMENTED_CONTROL_PILL_BAR = "Segmented Control Pill Bar"
+const val SEGMENTED_CONTROL_TABS = "Segmented Control Tabs"
+const val SEGMENTED_CONTROL_SWITCH = "Segmented Control Switch"
+const val SEGMENTED_CONTROL_PILL_BUTTON_TOGGLE = "Segmented Control Pill Button Toggle"
+const val SEGMENTED_CONTROL_PILL_BAR_TOGGLE = "Segmented Control Pill Bar Toggle"
+const val SEGMENTED_CONTROL_TABS_TOGGLE = "Segmented Control Tabs Toggle"
+const val SEGMENTED_CONTROL_SWITCH_TOGGLE = "Segmented Control Switch Toggle"
+const val SEGMENTED_CONTROL_PILL_BUTTON_COMPONENT = "Segmented Control Pill Button Component"
+const val SEGMENTED_CONTROL_PILL_BAR_COMPONENT = "Segmented Control Pill Bar Component"
+const val SEGMENTED_CONTROL_TABS_COMPONENT = "Segmented Control Tabs Component"
+const val SEGMENTED_CONTROL_SWITCH_COMPONENT = "Segmented Control Switch Component"
 
 class V2SegmentedControlActivity : V2DemoActivity() {
 

@@ -243,9 +243,9 @@ private val AnimationSpec = TweenSpec<Float>(durationMillis = 256)
 private const val DrawerOpenFraction = 0.5f
 
 //Tag use for testing
-const val DRAWER_HANDLE_TAG = "Drawer Handle"
-const val DRAWER_CONTENT_TAG = "Drawer Content"
-const val DRAWER_SCRIM_TAG = "Drawer Scrim"
+const val DRAWER_HANDLE_TAG = "Fluent Drawer Handle"
+const val DRAWER_CONTENT_TAG = "Fluent Drawer Content"
+const val DRAWER_SCRIM_TAG = "Fluent Drawer Scrim"
 
 //Drawer Handle height + padding
 private val DrawerHandleHeightOffset = 20.dp
