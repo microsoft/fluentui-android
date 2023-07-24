@@ -53,3 +53,10 @@ jobs:
           javaHomeOption: "JDKVersion"
           jdkVersionOption: "$(jdkVersion)"
           publishJUnitResults: true
+
+      - task: PublishTestResults@2
+        displayName: "Publish Test Results $(build.sourcesdirectory)/FluentUI.Demo/build/testResult/**/hydra_result_*.xml"
+        inputs:
+        testResultsFiles: "$(build.sourcesdirectory)/FluentUI.Demo/build/testResult/**/hydra_result_*.xml"
+        testRunTitle: "Test-Result"
+        failTaskOnFailedTests: true
