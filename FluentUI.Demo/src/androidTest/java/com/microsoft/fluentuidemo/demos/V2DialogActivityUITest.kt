@@ -10,6 +10,7 @@ import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
+import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.DemoActivity
 import org.junit.After
 import org.junit.Before
@@ -17,32 +18,12 @@ import org.junit.Rule
 import org.junit.Test
 import java.util.*
 
-class V2DialogUITest {
-
-    private fun launchActivity() {
-        ActivityScenario.launch<V2DialogActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2DialogActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        return intent
-    }
+class V2DialogActivityUITest: BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2DialogActivity::class.java)
     }
-
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
 
     @Test
     fun testDialog() {

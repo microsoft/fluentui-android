@@ -1,52 +1,31 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
 import androidx.compose.ui.test.*
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
-import androidx.test.platform.app.InstrumentationRegistry
-import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.V2DemoActivity
-import org.junit.After
+import com.microsoft.fluentui.tokenized.persona.ANONYMOUS
+import com.microsoft.fluentui.tokenized.persona.AVATAR_ICON
+import com.microsoft.fluentui.tokenized.persona.AVATAR_IMAGE
+import com.microsoft.fluentuidemo.BaseTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
-const val IMAGE_TEST_TAG = "Image"
-const val ICON_TEST_TAG = "Icon"
-
-class V2AvatarActivityUITest {
-
-    private fun launchActivity() {
-        ActivityScenario.launch<V2AvatarActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2AvatarActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
-        return intent
-    }
+class V2AvatarActivityUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2AvatarActivity::class.java)
     }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
 
     @Test
     fun testToggleStates() {
         val oooButton = composeTestRule.onNodeWithText("Toggle OOO")
         val activityButton = composeTestRule.onNodeWithText("Toggle Activity")
 
-        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription(useUnmergedTree = true, label = "Amanda Brady", substring = true)[0]
-        amandaAvatar.onChild().assert(hasTestTag(IMAGE_TEST_TAG))
+        val amandaAvatar = composeTestRule.onAllNodesWithContentDescription(
+            useUnmergedTree = true,
+            label = "Amanda Brady",
+            substring = true
+        )[0]
+        amandaAvatar.onChild().assert(hasTestTag(AVATAR_IMAGE))
 
         //Action
         activityButton.performClick()
@@ -63,11 +42,8 @@ class V2AvatarActivityUITest {
         //Check
         amandaAvatar.assertContentDescriptionContains("Active", substring = true)
 
-        composeTestRule.onAllNodesWithContentDescription("Anonymous").assertAll(hasAnyChild(hasTestTag(ICON_TEST_TAG)))
+        composeTestRule.onAllNodesWithContentDescription(ANONYMOUS)
+            .assertAll(hasAnyChild(hasTestTag(AVATAR_ICON)))
     }
 
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
 }

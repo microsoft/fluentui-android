@@ -3,25 +3,12 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -48,26 +35,27 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.launch
 
+// Tags used for testing
+const val SNACK_BAR_MODIFIABLE_PARAMETER_SECTION = "Snack bar Modifiable Parameters"
+const val SNACK_BAR_ICON_PARAM = "Snack bar Icon Param"
+const val SNACK_BAR_SUBTITLE_PARAM = "Snack bar Subtitle Param"
+const val SNACK_BAR_ACTION_BUTTON_PARAM = "Snack bar Action Button Param"
+const val SNACK_BAR_DISMISS_BUTTON_PARAM = "Snack bar Dismiss Button Param"
+const val SNACK_BAR_SHOW_SNACKBAR = "Snack bar Show Snackbar"
+const val SNACK_BAR_DISMISS_SNACKBAR = "Snack bar Dismiss Snackbar"
+
 class V2SnackbarActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-32"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-32"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-32"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val context = this
-
-        // Tags used for testing
-        val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
-        val ICON_PARAM = "Icon Param"
-        val SUBTITLE_PARAM = "Subtitle Param"
-        val ACTION_BUTTON_PARAM = "Action Button Param"
-        val DISMISS_BUTTON_PARAM = "Dismiss Button Param"
-        val SHOW_SNACKBAR = "Show Snackbar"
-        val DISMISS_SNACKBAR = "Dismiss Snackbar"
 
         setActivityContent {
             val snackbarState = remember { SnackbarState() }
@@ -93,7 +81,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                     enableChevron = true,
                     enableContentOpenCloseTransition = true,
                     chevronOrientation = ChevronOrientation(90f, 0f),
-                    modifier = Modifier.testTag(MODIFIABLE_PARAMETER_SECTION)
+                    modifier = Modifier.testTag(SNACK_BAR_MODIFIABLE_PARAMETER_SECTION)
                 ) {
                     LazyColumn(Modifier.fillMaxHeight(0.5F)) {
                         item {
@@ -190,7 +178,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                                             icon = it
                                         },
                                         checkedState = icon,
-                                        modifier = Modifier.testTag(ICON_PARAM)
+                                        modifier = Modifier.testTag(SNACK_BAR_ICON_PARAM)
                                     )
                                 }
                             )
@@ -215,7 +203,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                                             }
                                         },
                                         checkedState = !subtitle.isNullOrBlank(),
-                                        modifier = Modifier.testTag(SUBTITLE_PARAM)
+                                        modifier = Modifier.testTag(SNACK_BAR_SUBTITLE_PARAM)
                                     )
                                 }
                             )
@@ -234,7 +222,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                                             actionLabel = it
                                         },
                                         checkedState = actionLabel,
-                                        modifier = Modifier.testTag(ACTION_BUTTON_PARAM)
+                                        modifier = Modifier.testTag(SNACK_BAR_ACTION_BUTTON_PARAM)
                                     )
                                 }
                             )
@@ -253,7 +241,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                                             dismissEnabled = it
                                         },
                                         checkedState = dismissEnabled,
-                                        modifier = Modifier.testTag(DISMISS_BUTTON_PARAM)
+                                        modifier = Modifier.testTag(SNACK_BAR_DISMISS_BUTTON_PARAM)
                                     )
                                 }
                             )
@@ -311,7 +299,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                         text = LocalContext.current.resources.getString(R.string.fluentui_show_snackbar),
                         size = ButtonSize.Small,
                         style = ButtonStyle.OutlinedButton,
-                        modifier = Modifier.testTag(SHOW_SNACKBAR)
+                        modifier = Modifier.testTag(SNACK_BAR_SHOW_SNACKBAR)
                     )
 
                     Button(
@@ -321,7 +309,7 @@ class V2SnackbarActivity : V2DemoActivity() {
                         text = LocalContext.current.resources.getString(R.string.fluentui_dismiss_snackbar),
                         size = ButtonSize.Small,
                         style = ButtonStyle.OutlinedButton,
-                        modifier = Modifier.testTag(DISMISS_SNACKBAR)
+                        modifier = Modifier.testTag(SNACK_BAR_DISMISS_SNACKBAR)
                     )
                 }
                 Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {

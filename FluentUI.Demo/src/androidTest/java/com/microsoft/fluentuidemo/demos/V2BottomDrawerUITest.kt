@@ -3,48 +3,29 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Intent
 import android.content.res.Resources
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.test.click
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithTag
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performTouchInput
-import androidx.compose.ui.test.swipeDown
-import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
+import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.V2DemoActivity
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.UUID
+import java.util.*
 
-class V2BottomDrawerUITest {
-
-    private fun launchActivity() {
-        ActivityScenario.launch<V2BottomDrawerActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(context, V2BottomDrawerActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
-        return intent
-    }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
+class V2BottomDrawerUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2BottomDrawerActivity::class.java)
     }
 
     private val drawerHandle = composeTestRule.onNodeWithTag(DRAWER_HANDLE_TAG)
@@ -218,11 +199,6 @@ class V2BottomDrawerUITest {
             )
         }
 
-    }
-
-    @After
-    fun tearDown() {
-        Intents.release()
     }
 
 }
