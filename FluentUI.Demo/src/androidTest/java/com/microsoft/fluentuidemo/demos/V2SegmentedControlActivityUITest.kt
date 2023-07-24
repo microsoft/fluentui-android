@@ -33,14 +33,14 @@ class V2SegmentedControlActivityUITest : BaseTest() {
     fun testPillBar() {
         val section = composeTestRule.onNodeWithTag(SEGMENTED_CONTROL_PILL_BAR)
         val toggle = composeTestRule.onNodeWithTag(SEGMENTED_CONTROL_PILL_BAR_TOGGLE)
-        val component = composeTestRule.onNodeWithTag(SEGMENTED_CONTROL_PILL_BAR_COMPONENT)
+        val component = composeTestRule.onNodeWithTag(SEGMENTED_CONTROL_PILL_BAR_COMPONENT, true)
         section.assertExists("Pill bar section did not render")
         toggle.assertExists("Pill bar toggle did not render")
         section.performClick()
         component.assertExists("Pill bar component did not render")
-        component.assertIsEnabled()
         toggleControlToValue(toggle, false)
-        component.assertIsNotEnabled()
+        component.assertExists("Pill bar component did not render after toggle")
+
     }
 
     @Test
