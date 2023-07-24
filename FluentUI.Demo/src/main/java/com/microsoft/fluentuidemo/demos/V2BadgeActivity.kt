@@ -20,6 +20,9 @@ import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+const val BADGE_DOT = "Dot Badge"
+const val BADGE_CHARACTER = "Character Badge"
+const val BADGE_LIST = "List Badge"
 
 class V2BadgeActivity : V2DemoActivity() {
     override val appBarSize = AppBarSize.Medium
@@ -57,7 +60,7 @@ class V2BadgeActivity : V2DemoActivity() {
                         style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
                     )
                     Spacer(modifier = Modifier.width(16.dp))
-                    Badge(modifier = Modifier.testTag("Dot Badge"))
+                    Badge(modifier = Modifier.testTag(BADGE_DOT))
                 }
                 Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                     BasicText(
@@ -71,7 +74,7 @@ class V2BadgeActivity : V2DemoActivity() {
                             Badge(
                                 text = "1",
                                 badgeType = BadgeType.Character,
-                                modifier = Modifier.testTag("Character Badge")
+                                modifier = Modifier.testTag(BADGE_CHARACTER)
                             )
                         }
                         item {
@@ -118,7 +121,7 @@ class V2BadgeActivity : V2DemoActivity() {
                             Badge(
                                 text = "1",
                                 badgeType = BadgeType.List,
-                                modifier = Modifier.testTag("List Badge")
+                                modifier = Modifier.testTag(BADGE_LIST)
                             )
                         }
                         item {

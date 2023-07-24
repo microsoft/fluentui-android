@@ -24,8 +24,8 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
-const val AVATAR_CAROUSEL_LARGE_CAROUSEL = "Large carousel"
-const val AVATAR_CAROUSEL_SMALL_CAROUSEL = "Small carousel"
+const val AVATAR_CAROUSEL_LARGE_CAROUSEL = "Avatar Large carousel"
+const val AVATAR_CAROUSEL_SMALL_CAROUSEL = "Avatar Small carousel"
 
 class V2AvatarCarouselActivity : V2DemoActivity() {
     init {

@@ -36,13 +36,13 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlinx.coroutines.launch
 
 // Tags used for testing
-const val SNACK_BAR_MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
-const val SNACK_BAR_ICON_PARAM = "Icon Param"
-const val SNACK_BAR_SUBTITLE_PARAM = "Subtitle Param"
-const val SNACK_BAR_ACTION_BUTTON_PARAM = "Action Button Param"
-const val SNACK_BAR_DISMISS_BUTTON_PARAM = "Dismiss Button Param"
-const val SNACK_BAR_SHOW_SNACKBAR = "Show Snackbar"
-const val SNACK_BAR_DISMISS_SNACKBAR = "Dismiss Snackbar"
+const val SNACK_BAR_MODIFIABLE_PARAMETER_SECTION = "Snackbar Modifiable Parameters"
+const val SNACK_BAR_ICON_PARAM = "Snackbar Icon Param"
+const val SNACK_BAR_SUBTITLE_PARAM = "Snackbar Subtitle Param"
+const val SNACK_BAR_ACTION_BUTTON_PARAM = "Snackbar Action Button Param"
+const val SNACK_BAR_DISMISS_BUTTON_PARAM = "Snackbar Dismiss Button Param"
+const val SNACK_BAR_SHOW_SNACKBAR = "Snackbar Show Snackbar"
+const val SNACK_BAR_DISMISS_SNACKBAR = "Snackbar Dismiss Snackbar"
 
 class V2SnackbarActivity : V2DemoActivity() {
     init {

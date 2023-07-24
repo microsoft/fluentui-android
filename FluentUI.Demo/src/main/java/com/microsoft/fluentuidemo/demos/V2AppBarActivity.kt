@@ -51,11 +51,11 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.max
 
 // Tags used for testing
-const val APP_BAR_MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
-const val APP_BAR_SUBTITLE_PARAM = "Subtitle Param"
-const val APP_BAR_STYLE_PARAM = "AppBar Style Param"
-const val APP_BAR_BUTTONBAR_PARAM = "ButtonBar Param"
-const val APP_BAR_SEARCHBAR_PARAM = "SearchBar Param"
+const val APP_BAR_MODIFIABLE_PARAMETER_SECTION = "App Bar Modifiable Parameters"
+const val APP_BAR_SUBTITLE_PARAM = "App Bar Subtitle Param"
+const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
+const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
+const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
 
 class V2AppBarActivity : V2DemoActivity() {
     init {

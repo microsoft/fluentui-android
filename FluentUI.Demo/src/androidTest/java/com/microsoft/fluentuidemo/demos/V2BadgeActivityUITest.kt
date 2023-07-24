@@ -14,13 +14,13 @@ class V2BadgeActivityUITest : BaseTest() {
 
     @Test
     fun testRender() {
-        val dotBadge = composeTestRule.onNodeWithTag("Dot Badge")
+        val dotBadge = composeTestRule.onNodeWithTag(BADGE_DOT)
         dotBadge.assertExists("Badge did not load")
 
-        val characterBadge = composeTestRule.onNodeWithTag("Dot Badge")
+        val characterBadge = composeTestRule.onNodeWithTag(BADGE_CHARACTER)
         characterBadge.assertExists("Badge did not load")
 
-        val listBadge = composeTestRule.onNodeWithTag("Dot Badge")
+        val listBadge = composeTestRule.onNodeWithTag(BADGE_LIST)
         listBadge.assertExists("Badge did not load")
     }
 
