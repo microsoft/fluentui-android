@@ -59,10 +59,10 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  */
 
 // TAGS FOR TESTING
-const val APP_BAR = "App bar"
-const val APP_BAR_SUBTITLE = "App bar Subtitle"
-const val APP_BAR_BOTTOM_BAR = "App bar Bottom bar"
-const val APP_BAR_SEARCH_BAR = "App bar Search bar"
+const val APP_BAR = "Fluent App bar"
+const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
+const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
+const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
 
 @OptIn(ExperimentalTextApi::class)
 @Composable
