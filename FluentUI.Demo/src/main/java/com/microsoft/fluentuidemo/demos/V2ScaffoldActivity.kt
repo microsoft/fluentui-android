@@ -3,11 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.content.Context
 import android.os.Bundle
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Create
@@ -18,13 +14,8 @@ import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.ShoppingCart
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
@@ -32,12 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentIcon
-import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
-import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
-import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
-import com.microsoft.fluentui.theme.token.controlTokens.FABState
-import com.microsoft.fluentui.theme.token.controlTokens.SnackbarStyle
+import com.microsoft.fluentui.theme.token.controlTokens.*
 import com.microsoft.fluentui.tokenized.AppBar
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
@@ -57,23 +43,24 @@ import com.microsoft.fluentuidemo.icons.listitemicons.Folder40
 import com.microsoft.fluentuidemo.util.invokeToast
 import kotlinx.coroutines.launch
 
+//Tag for Test
+const val SCAFFOLD_TOP_BAR = "TopBar"
+const val SCAFFOLD_BOTTOM_BAR = "BottomBar"
+const val SCAFFOLD_SNACKBAR = "SnackBar"
+const val SCAFFOLD_DRAWER = "Drawer"
+const val SCAFFOLD_FLOATING_ACTION_BUTTON = "FAB"
+const val SCAFFOLD_MAIN_CONTENT = "Main Content"
+const val SCAFFOLD_DRAWER_BUTTON = "Drawer Button"
+const val SCAFFOLD_SNACKBAR_BUTTON = "Snackbar Button"
+
 class V2ScaffoldActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-25"
-
-    //Tag for Test
-    private val TOP_BAR = "TopBar"
-    private val BOTTOM_BAR = "BottomBar"
-    private val SNACKBAR = "SnackBar"
-    private val DRAWER = "Drawer"
-    private val FLOATING_ACTION_BUTTON = "FAB"
-    private val MAIN_CONTENT = "Main Content"
-    private val DRAWER_BUTTON = "Drawer Button"
-    private val SNACKBAR_BUTTON = "Snackbar Button"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-25"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -124,14 +111,14 @@ class V2ScaffoldActivity : V2DemoActivity() {
                         AppBar(
                             title = resources.getString(R.string.scaffold),
                             appBarSize = AppBarSize.Large,
-                            modifier = Modifier.testTag(TOP_BAR)
+                            modifier = Modifier.testTag(SCAFFOLD_TOP_BAR)
                         )
                     },
                     bottomBar = {
                         TabBar(
                             tabDataList = tabDataList,
                             selectedIndex = selectedIndex,
-                            modifier = Modifier.testTag(BOTTOM_BAR)
+                            modifier = Modifier.testTag(SCAFFOLD_BOTTOM_BAR)
                         )
                     },
                     floatingActionButton = {
@@ -153,20 +140,20 @@ class V2ScaffoldActivity : V2DemoActivity() {
                                     this
                                 )
                             },
-                            modifier = Modifier.testTag(FLOATING_ACTION_BUTTON)
+                            modifier = Modifier.testTag(SCAFFOLD_FLOATING_ACTION_BUTTON)
                         )
                     },
                     snackbar = {
                         Snackbar(
                             snackbarState = snackbarState,
-                            modifier = Modifier.testTag(SNACKBAR)
+                            modifier = Modifier.testTag(SCAFFOLD_SNACKBAR)
                         )
                     }
                 ) {
                     Box(
                         Modifier
                             .padding(it)
-                            .testTag(MAIN_CONTENT)
+                            .testTag(SCAFFOLD_MAIN_CONTENT)
                     ) {
                         GetContent(context, snackbarState)
                     }
@@ -182,7 +169,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
         val scope = rememberCoroutineScope()
         Column {
             Drawer(
-                modifier = Modifier.testTag(DRAWER),
+                modifier = Modifier.testTag(SCAFFOLD_DRAWER),
                 drawerState = drawerState,
                 drawerContent = { CreateList(size = 20, context = context) }
             )
@@ -197,7 +184,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
                     onClick = { size.value = (40 * Math.random()).toInt() })
 
                 Button(
-                    modifier = Modifier.testTag(DRAWER_BUTTON),
+                    modifier = Modifier.testTag(SCAFFOLD_DRAWER_BUTTON),
                     style = ButtonStyle.OutlinedButton,
                     size = ButtonSize.Medium,
                     text = context.resources.getString(R.string.scaffold_open_drawer),
@@ -216,7 +203,7 @@ class V2ScaffoldActivity : V2DemoActivity() {
                         LocalContext.current.resources.getString(R.string.fluentui_timeout)
                     var displayString: String = ""
                     Button(
-                        modifier = Modifier.testTag(SNACKBAR_BUTTON),
+                        modifier = Modifier.testTag(SCAFFOLD_SNACKBAR_BUTTON),
                         style = ButtonStyle.OutlinedButton,
                         size = ButtonSize.Medium,
                         text = context.resources.getString(R.string.fluentui_show_snackbar),

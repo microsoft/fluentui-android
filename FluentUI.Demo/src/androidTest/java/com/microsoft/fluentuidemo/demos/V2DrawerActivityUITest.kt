@@ -1,49 +1,22 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
 import android.content.res.Resources
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.*
-import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
-import androidx.test.platform.app.InstrumentationRegistry
-import com.microsoft.fluentuidemo.DemoActivity
-import com.microsoft.fluentuidemo.V2DemoActivity
-import org.junit.After
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
+import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
+import com.microsoft.fluentuidemo.BaseTest
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
-//Below tag name used in Drawer component
-const val DRAWER_HANDLE_TAG = "Drawer Handle"
-const val DRAWER_CONTENT_TAG = "Drawer Content"
-const val DRAWER_SCRIM_TAG = "Drawer Scrim"
-
-
-class V2DrawerActivityUITest {
-    private fun launchActivity() {
-        ActivityScenario.launch<V2DrawerActivity>(setUpIntentForActivity())
-    }
-
-    private fun setUpIntentForActivity(): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, V2DrawerActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
-        return intent
-    }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
+class V2DrawerActivityUITest : BaseTest() {
 
     @Before
     fun initialize() {
-        Intents.init()
-        launchActivity()
+        launchActivity(V2DrawerActivity::class.java)
     }
 
     private val drawerHandle = composeTestRule.onNodeWithTag(DRAWER_HANDLE_TAG)
@@ -286,8 +259,4 @@ class V2DrawerActivityUITest {
         closeCheckForVerticalDrawer()
     }
 
-    @After
-    fun tearDown() {
-        Intents.release()
-    }
 }

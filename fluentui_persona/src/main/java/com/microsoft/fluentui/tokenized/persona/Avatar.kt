@@ -29,8 +29,9 @@ import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.*
 
-const val IMAGE_TEST_TAG = "Image"
-const val ICON_TEST_TAG = "Icon"
+// Tags used for testing
+const val AVATAR_IMAGE = "Fluent Avatar Image"
+const val AVATAR_ICON = "Fluent Avatar Icon"
 
 /**
  * API to generate an avatar for a [Person]. Avatar behavior uses person image(if available),
@@ -111,7 +112,7 @@ fun Avatar(
                             .size(avatarSize)
                             .clip(CircleShape)
                             .semantics {
-                                testTag = IMAGE_TEST_TAG
+                                testTag = AVATAR_IMAGE
                             }
                     )
                 }
@@ -122,7 +123,7 @@ fun Avatar(
                             .size(avatarSize)
                             .clip(CircleShape)
                             .semantics {
-                                testTag = IMAGE_TEST_TAG
+                                testTag = AVATAR_IMAGE
                             }
                     )
                 }
@@ -142,7 +143,7 @@ fun Avatar(
                         modifier = Modifier
                             .background(backgroundColor, CircleShape)
                             .semantics {
-                                testTag = ICON_TEST_TAG
+                                testTag = AVATAR_ICON
                             },
                         tint = foregroundColor,
                     )
@@ -269,7 +270,7 @@ fun Avatar(
                         .size(avatarSize)
                         .clip(RoundedCornerShape(cornerRadius))
                         .semantics {
-                            testTag = IMAGE_TEST_TAG
+                            testTag = AVATAR_IMAGE
                         }
                 )
             } else if (group.imageBitmap != null) {
@@ -280,7 +281,7 @@ fun Avatar(
                         .size(avatarSize)
                         .clip(RoundedCornerShape(cornerRadius))
                         .semantics {
-                            testTag = IMAGE_TEST_TAG
+                            testTag = AVATAR_IMAGE
                         }
                 )
             } else if (group.groupName.isNotEmpty()) {
@@ -292,7 +293,7 @@ fun Avatar(
                     token.icon(avatarInfo),
                     null,
                     modifier = Modifier.semantics {
-                        testTag = ICON_TEST_TAG
+                        testTag = AVATAR_ICON
                     },
                     tint = foregroundColor
                 )

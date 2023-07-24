@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -39,13 +40,25 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
 
+// Tags used for testing
+const val TEXT_FIELD_MODIFIABLE_PARAMETER_SECTION = "textFieldModifiableParameterSection"
+const val TEXT_FIELD_ICON_PARAM = "textFieldIconParam"
+const val TEXT_FIELD_HINT_TEXT_PARAM = "textFieldHintTextParam"
+const val TEXT_FIELD_LABEL_PARAM = "textFieldLabelParam"
+const val TEXT_FIELD_ASSISTIVE_TEXT_PARAM = "textFieldAssistiveTextParam"
+const val TEXT_FIELD_SECONDARY_TEXT_PARAM = "textFieldSecondaryTextParam"
+const val TEXT_FIELD_ERROR_PARAM = "textFieldErrorTextParam"
+const val TEXT_FIELD_PASSWORD_MODE_PARAM = "textFieldPasswordModeParam"
+
+
 class V2TextFieldActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-34"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-34"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +79,7 @@ class V2TextFieldActivity : V2DemoActivity() {
             FluentTheme {
                 Column {
                     ListItem.SectionHeader(
+                        modifier = Modifier.testTag(TEXT_FIELD_MODIFIABLE_PARAMETER_SECTION),
                         title = getDemoAppString(DemoAppStrings.ModifiableParameters),
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
@@ -135,6 +149,7 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(TEXT_FIELD_ICON_PARAM),
                                             onValueChange = {
                                                 leftIcon = it
                                             },
@@ -153,6 +168,7 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(TEXT_FIELD_HINT_TEXT_PARAM),
                                             onValueChange = {
                                                 hintText = it
                                             },
@@ -171,6 +187,7 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(TEXT_FIELD_LABEL_PARAM),
                                             onValueChange = {
                                                 label = it
                                             },
@@ -189,6 +206,9 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(
+                                                TEXT_FIELD_ASSISTIVE_TEXT_PARAM
+                                            ),
                                             onValueChange = {
                                                 assistiveText = it
                                             },
@@ -207,6 +227,9 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(
+                                                TEXT_FIELD_SECONDARY_TEXT_PARAM
+                                            ),
                                             onValueChange = {
                                                 secondaryText = it
                                             },
@@ -225,6 +248,9 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(
+                                                TEXT_FIELD_PASSWORD_MODE_PARAM
+                                            ),
                                             onValueChange = {
                                                 passwordMode = it
                                             },
@@ -243,6 +269,7 @@ class V2TextFieldActivity : V2DemoActivity() {
                                         LocalContext.current.resources.getString(R.string.fluentui_disabled),
                                     trailingAccessoryContent = {
                                         ToggleSwitch(
+                                            modifier = Modifier.testTag(TEXT_FIELD_ERROR_PARAM),
                                             onValueChange = {
                                                 errorText = it
                                             },

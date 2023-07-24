@@ -24,13 +24,17 @@ import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+const val AVATAR_CAROUSEL_LARGE_CAROUSEL = "Avatar Large carousel"
+const val AVATAR_CAROUSEL_SMALL_CAROUSEL = "Avatar Small carousel"
+
 class V2AvatarCarouselActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-2"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-2"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -214,7 +218,7 @@ private fun CreateAvatarCarouselActivityUI() {
         AvatarCarousel(
             avatarList = createAvatarPersons(mContext),
             size = AvatarCarouselSize.Large,
-            modifier = Modifier.testTag("LargeCarousel")
+            modifier = Modifier.testTag(AVATAR_CAROUSEL_LARGE_CAROUSEL)
         )
         Divider(Modifier.fillMaxWidth())
         BasicText(
@@ -226,7 +230,7 @@ private fun CreateAvatarCarouselActivityUI() {
             avatarList = createAvatarPersons(mContext),
             size = AvatarCarouselSize.Small,
             enablePresence = true,
-            modifier = Modifier.testTag("SmallCarousel")
+            modifier = Modifier.testTag(AVATAR_CAROUSEL_SMALL_CAROUSEL)
         )
     }
 }
