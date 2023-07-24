@@ -83,7 +83,7 @@ jobs:
       - task: PublishPipelineArtifact@1
         displayName: "Publish dogfood apk to pipeline"
         inputs:
-          targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
+          targetPath: "$(build.sourcesdirectory)/build/outputs/apk/dogfood/release/FluentUI.Demo-dogfood-release.apk"
           artifact: "dogfood"
           publishLocation: "pipeline"
 

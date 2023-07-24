@@ -57,6 +57,6 @@ jobs:
       - task: PublishTestResults@2
         displayName: "Publish Test Results $(build.sourcesdirectory)/FluentUI.Demo/build/testResult/**/hydra_result_*.xml"
         inputs:
-          testResultsFiles: "$(build.sourcesdirectory)/FluentUI.Demo/build/testResult/**/hydra_result_*.xml"
+          testResultsFiles: "$(build.sourcesdirectory)/build/testResult/**/hydra_result_*.xml"
           testRunTitle: "Test-Result"
           failTaskOnFailedTests: true
