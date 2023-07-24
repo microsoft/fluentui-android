@@ -39,13 +39,13 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import kotlin.math.roundToInt
 
 // TAGS FOR TESTING
-const val CARD_NUDGE_CARD_NUDGE = "Card Nudge Card Nudge"
-const val CARD_NUDGE_ICON = "Card Nudge Icon"
-const val CARD_NUDGE_ACCENT_ICON = "Card Nudge Accent Icon"
-const val CARD_NUDGE_ACCENT_TEXT = "Card Nudge Accent Text"
-const val CARD_NUDGE_SUBTITLE = "Card Nudge Subtitle"
-const val CARD_NUDGE_ACTION_BUTTON = "Card Nudge Action Button"
-const val CARD_NUDGE_DISMISS_BUTTON = "Card Nudge Dismiss Button"
+const val CARD_NUDGE = "Fluent Card Nudge"
+const val CARD_NUDGE_ICON = "Fluent Card Nudge Icon"
+const val CARD_NUDGE_ACCENT_ICON = "Fluent Card Nudge Accent Icon"
+const val CARD_NUDGE_ACCENT_TEXT = "Fluent Card Nudge Accent Text"
+const val CARD_NUDGE_SUBTITLE = "Fluent Card Nudge Subtitle"
+const val CARD_NUDGE_ACTION_BUTTON = "Fluent Card Nudge Action Button"
+const val CARD_NUDGE_DISMISS_BUTTON = "Fluent Card Nudge Dismiss Button"
 
 class CardNudgeMetaData(
     val message: String,
@@ -125,7 +125,7 @@ fun CardNudge(
                     thresholds = { _, _ -> FractionalThreshold(0.3F) },
                     orientation = Orientation.Horizontal,
                 )
-                .testTag(CARD_NUDGE_CARD_NUDGE),
+                .testTag(CARD_NUDGE),
             verticalAlignment = Alignment.CenterVertically
         ) {
             LaunchedEffect(state.offset.value) {

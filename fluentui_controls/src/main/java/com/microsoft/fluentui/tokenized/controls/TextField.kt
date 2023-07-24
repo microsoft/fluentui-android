@@ -43,12 +43,12 @@ import com.microsoft.fluentui.theme.token.controlTokens.TextFieldTokens
 import com.microsoft.fluentui.tokenized.divider.Divider
 
 // Tests used for testing
-const val TEXT_FIELD = "TEXT_FIELD"
-const val TEXT_FIELD_ICON = "TEXT_FIELD_ICON"
-const val TEXT_FIELD_LABEL = "TEXT_FIELD_LABEL"
-const val TEXT_FIELD_HINT_TEXT = "TEXT_FIELD_HINT_TEXT"
-const val TEXT_FIELD_ASSISTIVE_TEXT = "TEXT_FIELD_ASSISTIVE_TEXT"
-const val TEXT_FIELD_SECONDARY_TEXT = "TEXT_FIELD_TRAILING_ACCESSORY_TEXT"
+const val TEXT_FIELD = "Fluent TEXT_FIELD"
+const val TEXT_FIELD_ICON = "Fluent TEXT_FIELD_ICON"
+const val TEXT_FIELD_LABEL = "Fluent TEXT_FIELD_LABEL"
+const val TEXT_FIELD_HINT_TEXT = "Fluent TEXT_FIELD_HINT_TEXT"
+const val TEXT_FIELD_ASSISTIVE_TEXT = "Fluent TEXT_FIELD_ASSISTIVE_TEXT"
+const val TEXT_FIELD_SECONDARY_TEXT = "Fluent TEXT_FIELD_TRAILING_ACCESSORY_TEXT"
 
 /**
  * API to create a customized TextField for users to edit text via software and hardware keyboard

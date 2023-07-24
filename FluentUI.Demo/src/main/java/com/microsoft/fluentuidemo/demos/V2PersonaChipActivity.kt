@@ -29,11 +29,11 @@ import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.V2DemoActivity
 
 // Tags used for testing
-const val PERSONA_CHIP_SMALL_CHIP = "small persona chip"
-const val PERSONA_CHIP_MEDIUM_CHIP = "medium persona chip"
-const val PERSONA_CHIP_ANONYMOUS = "ann persona chip"
-const val PERSONA_CHIP_DISABLED = "disabled persona chip"
-const val PERSONA_CHIP_SWITCH = "switch persona chip"
+const val PERSONA_CHIP_SMALL_CHIP = "persona chip small"
+const val PERSONA_CHIP_MEDIUM_CHIP = "persona chip medium"
+const val PERSONA_CHIP_ANONYMOUS = "persona chip ann"
+const val PERSONA_CHIP_DISABLED = "persona chip disabled"
+const val PERSONA_CHIP_SWITCH = "persona chip switch"
 
 class V2PersonaChipActivity : V2DemoActivity() {
     init {

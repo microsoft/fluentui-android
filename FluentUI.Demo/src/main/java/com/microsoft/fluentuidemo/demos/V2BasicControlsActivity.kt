@@ -33,10 +33,10 @@ import com.microsoft.fluentuidemo.V2DemoActivity
 import androidx.compose.ui.platform.testTag
 
 // Tags used for testing
-const val BASIC_CONTROLS_TOGGLE_ENABLE = "Toggle Switch Enable"
-const val BASIC_CONTROLS_CHECK_BOX = "Check Box"
-const val BASIC_CONTROLS_RADIO_1 = "Radio Button 1"
-const val BASIC_CONTROLS_RADIO_2 = "Radio Button 2"
+const val BASIC_CONTROLS_TOGGLE_ENABLE = "Basic Controls Toggle Switch Enable"
+const val BASIC_CONTROLS_CHECK_BOX = "Basic Controls Check Box"
+const val BASIC_CONTROLS_RADIO_1 = "Basic Controls Radio Button 1"
+const val BASIC_CONTROLS_RADIO_2 = "Basic Controls Radio Button 2"
 
 class V2BasicControlsActivity : V2DemoActivity() {
     init {

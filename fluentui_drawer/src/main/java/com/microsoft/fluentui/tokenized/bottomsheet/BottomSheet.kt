@@ -179,9 +179,9 @@ fun rememberBottomSheetState(
 }
 
 //Tag use for testing
-private const val BOTTOMSHEET_HANDLE_TAG = "BottomSheet Handle"
-private const val BOTTOMSHEET_CONTENT_TAG = "BottomSheet Content"
-private const val BOTTOMSHEET_SCRIM_TAG = "BottomSheet Scrim"
+private const val BOTTOMSHEET_HANDLE_TAG = "Fluent Bottom Sheet Handle"
+private const val BOTTOMSHEET_CONTENT_TAG = "Fluent Bottom Sheet Content"
+private const val BOTTOMSHEET_SCRIM_TAG = "Fluent Bottom Sheet Scrim"
 
 private const val BottomSheetOpenFraction = 0.5f
 
