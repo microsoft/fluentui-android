@@ -9,6 +9,8 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
+        versionCode project.ext.fluentui_calendar_version_code
+        versionName project.ext.fluentui_calendar_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     lintOptions {

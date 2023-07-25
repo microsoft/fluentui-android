@@ -15,7 +15,6 @@ android {
         targetSdkVersion constants.targetSdkVersion
         versionCode project.ext.fluentui_ccb_version_code
         versionName project.ext.fluentui_ccb_versionid
-
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }

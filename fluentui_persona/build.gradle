@@ -18,7 +18,8 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-
+        versionCode project.ext.fluentui_persona_version_code
+        versionName project.ext.fluentui_persona_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
     }
