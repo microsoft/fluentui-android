@@ -129,10 +129,8 @@ fun PeoplePicker(
     val textColor = token.textColor(peoplePickerInfo = peoplePickerInfo)
     val cursorBrush = token.cursorBrush(peoplePickerInfo = peoplePickerInfo)
     val focusRequester = remember { FocusRequester() }
-    val bringIntoViewRequester = remember { BringIntoViewRequester() }
     var queryText by rememberSaveable { mutableStateOf("") }
     var selectedPeopleListSize by rememberSaveable { mutableStateOf(0) }
-    val scope = rememberCoroutineScope()
 
     Row(
         modifier = modifier
@@ -225,16 +223,6 @@ fun PeoplePicker(
                         modifier = Modifier
                             .fillMaxWidth()
                             .focusRequester(focusRequester)
-                            .bringIntoViewRequester(bringIntoViewRequester)
-                            .onFocusEvent { focusState ->
-                                when {
-                                    focusState.isFocused -> {
-                                        scope.launch {
-                                            bringIntoViewRequester.bringIntoView()
-                                        }
-                                    }
-                                }
-                            }
                             .semantics { contentDescription = searchHint ?: "" }
                             .testTag("Text field"),
                         textStyle = textTypography.merge(
