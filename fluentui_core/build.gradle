@@ -15,8 +15,6 @@ android {
     defaultConfig {
         minSdkVersion constants.minSdkVersion
         targetSdkVersion constants.targetSdkVersion
-        versionCode project.ext.fluentui_core_version_code
-        versionName project.ext.fluentui_core_versionid
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         vectorDrawables.useSupportLibrary = true
     }
@@ -38,7 +36,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-        useIR = true
     }
     testOptions {
         unitTests {
@@ -69,7 +66,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "com.microsoft.device:dualscreen-layout:$duoVersion"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation "androidx.compose.material:material:$composeVersion"
+    implementation "androidx.compose.material:material"
 
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.robolectric:robolectric:$roboelectricVersion"
@@ -77,16 +74,18 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 
-    implementation "androidx.compose.ui:ui-text:$composeVersion"
-    implementation "androidx.compose.ui:ui-graphics:$composeVersion"
-    implementation "androidx.compose.ui:ui-unit:$composeVersion"
-    implementation "androidx.compose.ui:ui-util:$composeVersion"
-    implementation "androidx.compose.runtime:runtime:$composeVersion"
-    implementation "androidx.compose.foundation:foundation:$composeVersion"
-    implementation "androidx.compose.material:material-icons-core:$composeVersion"
+    //Compose BOM
+    implementation platform("androidx.compose:compose-bom:$composeBomVersion")
+    implementation "androidx.compose.ui:ui-text"
+    implementation "androidx.compose.ui:ui-graphics"
+    implementation "androidx.compose.ui:ui-unit"
+    implementation "androidx.compose.ui:ui-util"
+    implementation "androidx.compose.runtime:runtime"
+    implementation "androidx.compose.foundation:foundation"
+    implementation "androidx.compose.material:material-icons-core"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:$lifecycleVersion"
-    implementation "androidx.compose.runtime:runtime-livedata:$composeVersion"
+    implementation "androidx.compose.runtime:runtime-livedata"
 }
 
 task sourceJar(type: Jar) {

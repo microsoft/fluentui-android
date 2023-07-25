@@ -125,6 +125,9 @@ class TabLayout : TemplateView {
                 updateMargin()
                 paddingHorizontalRight = 0
             }
+            else -> {
+                throw IllegalArgumentException("TabType not supported")
+            }
         }
         tabLayoutContainer?.setPadding(paddingHorizontalLeft, paddingVertical, paddingHorizontalRight, paddingVertical)
         setSelectorProperties(explicit)
@@ -155,7 +158,10 @@ class TabLayout : TemplateView {
             val tab = tabLayout.getTabAt(i)
             tab?.contentDescription = tab?.text?.toString() + context.getString(R.string.tab_content_description, (i + 1), tabLayout.tabCount)
             tabView.setAccessibilityDelegate(object : AccessibilityDelegate() {
-                override fun onInitializeAccessibilityNodeInfo(host: View?, info: AccessibilityNodeInfo?) {
+                override fun onInitializeAccessibilityNodeInfo(
+                    host: View,
+                    info: AccessibilityNodeInfo
+                ) {
                     super.onInitializeAccessibilityNodeInfo(host, info)
                     if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P) {
                         info?.tooltipText = ""
