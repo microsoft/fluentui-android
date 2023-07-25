@@ -3,14 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.icons.Icons
@@ -42,22 +35,23 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.abs
 
+// Tags used for testing
+const val CARD_NUDGE_MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
+const val CARD_NUDGE_ICON_PARAM = "Icon Param"
+const val CARD_NUDGE_SUBTITLE_PARAM = "Subtitle Param"
+const val CARD_NUDGE_ACCENT_ICON_PARAM = "Accent Icon Param"
+const val CARD_NUDGE_ACCENT_TEXT_PARAM = "Accent Text Param"
+const val CARD_NUDGE_ACTION_BUTTON_PARAM = "Action Button Param"
+const val CARD_NUDGE_DISMISS_BUTTON_PARAM = "Dismiss Button Param"
+
 class V2CardNudgeActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-13"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-13"
-
-    // Tags used for testing
-    private val MODIFIABLE_PARAMETER_SECTION = "Modifiable Parameters"
-    private val ICON_PARAM = "Icon Param"
-    private val SUBTITLE_PARAM = "Subtitle Param"
-    private val ACCENT_ICON_PARAM = "Accent Icon Param"
-    private val ACCENT_TEXT_PARAM = "Accent Text Param"
-    private val ACTION_BUTTON_PARAM = "Action Button Param"
-    private val DISMISS_BUTTON_PARAM = "Dismiss Button Param"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-13"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +78,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
 
                 ListItem.SectionHeader(
                     title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
-                    modifier = Modifier.testTag(MODIFIABLE_PARAMETER_SECTION),
+                    modifier = Modifier.testTag(CARD_NUDGE_MODIFIABLE_PARAMETER_SECTION),
                     enableChevron = true,
                     enableContentOpenCloseTransition = true,
                     chevronOrientation = ChevronOrientation(90f, 0f),
@@ -102,7 +96,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                         onValueChange = {
                                             icon = it
                                         },
-                                        modifier = Modifier.testTag(ICON_PARAM),
+                                        modifier = Modifier.testTag(CARD_NUDGE_ICON_PARAM),
                                         checkedState = icon
                                     )
                                 }
@@ -127,7 +121,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                                 null
                                             }
                                         },
-                                        modifier = Modifier.testTag(SUBTITLE_PARAM),
+                                        modifier = Modifier.testTag(CARD_NUDGE_SUBTITLE_PARAM),
                                         checkedState = !subtitle.isNullOrBlank()
                                     )
                                 }
@@ -152,7 +146,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                                 null
                                             }
                                         },
-                                        modifier = Modifier.testTag(ACCENT_TEXT_PARAM),
+                                        modifier = Modifier.testTag(CARD_NUDGE_ACCENT_TEXT_PARAM),
                                         checkedState = !accentText.isNullOrBlank()
                                     )
                                 }
@@ -171,7 +165,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                         onValueChange = {
                                             accentImage = it
                                         },
-                                        modifier = Modifier.testTag(ACCENT_ICON_PARAM),
+                                        modifier = Modifier.testTag(CARD_NUDGE_ACCENT_ICON_PARAM),
                                         checkedState = accentImage
                                     )
                                 }
@@ -190,7 +184,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                         onValueChange = {
                                             actionButton = it
                                         },
-                                        modifier = Modifier.testTag(ACTION_BUTTON_PARAM),
+                                        modifier = Modifier.testTag(CARD_NUDGE_ACTION_BUTTON_PARAM),
                                         checkedState = actionButton
                                     )
                                 }
@@ -209,7 +203,7 @@ class V2CardNudgeActivity : V2DemoActivity() {
                                         onValueChange = {
                                             dismissEnabled = it
                                         },
-                                        modifier = Modifier.testTag(DISMISS_BUTTON_PARAM),
+                                        modifier = Modifier.testTag(CARD_NUDGE_DISMISS_BUTTON_PARAM),
                                         checkedState = dismissEnabled
                                     )
                                 }

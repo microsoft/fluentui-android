@@ -4,11 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material.Divider
@@ -18,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +30,13 @@ import com.microsoft.fluentui.tokenized.controls.CheckBox
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentuidemo.V2DemoActivity
+import androidx.compose.ui.platform.testTag
+
+// Tags used for testing
+const val BASIC_CONTROLS_TOGGLE_ENABLE = "Basic Controls Toggle Switch Enable"
+const val BASIC_CONTROLS_CHECK_BOX = "Basic Controls Check Box"
+const val BASIC_CONTROLS_RADIO_1 = "Basic Controls Radio Button 1"
+const val BASIC_CONTROLS_RADIO_2 = "Basic Controls Radio Button 2"
 
 class V2BasicControlsActivity : V2DemoActivity() {
     init {
@@ -40,7 +44,8 @@ class V2BasicControlsActivity : V2DemoActivity() {
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-5"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-5"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-5"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,10 +79,14 @@ class V2BasicControlsActivity : V2DemoActivity() {
                             fontWeight = FontWeight.Bold
                         )
                     )
-                    ToggleSwitch(onValueChange = {
-                        enabled = it
-                        Toast.makeText(context, "Switch 1 Toggled", Toast.LENGTH_SHORT).show()
-                    }, enabledSwitch = true, checkedState = enabled)
+                    ToggleSwitch(
+                        onValueChange = {
+                            enabled = it
+                            Toast.makeText(context, "Switch 1 Toggled", Toast.LENGTH_SHORT).show()
+                        }, enabledSwitch = true,
+                        modifier = Modifier.testTag(BASIC_CONTROLS_TOGGLE_ENABLE),
+                        checkedState = enabled
+                    )
                 }
 
                 Divider()
@@ -135,21 +144,23 @@ class V2BasicControlsActivity : V2DemoActivity() {
                             )
                         )
                     )
-                    CheckBox(enabled = enabled, checked = !checked, onCheckedChanged = {
-                        checked = !it
-                        if (checked) {
-                            FluentTheme.updateAliasTokens(AliasTokens())
-                            FluentTheme.updateControlTokens(ControlTokens())
-                            selectedOption.value = themes[0]
-                        } else {
-                            FluentTheme.updateAliasTokens(OneNoteAliasTokens())
-                            FluentTheme.updateControlTokens(MyControlTokens())
-                            selectedOption.value = themes[1]
-                        }
-                    })
+                    CheckBox(enabled = enabled, checked = !checked,
+                        modifier = Modifier.testTag(BASIC_CONTROLS_CHECK_BOX),
+                        onCheckedChanged = {
+                            checked = !it
+                            if (checked) {
+                                FluentTheme.updateAliasTokens(AliasTokens())
+                                FluentTheme.updateControlTokens(ControlTokens())
+                                selectedOption.value = themes[0]
+                            } else {
+                                FluentTheme.updateAliasTokens(OneNoteAliasTokens())
+                                FluentTheme.updateControlTokens(MyControlTokens())
+                                selectedOption.value = themes[1]
+                            }
+                        })
                 }
 
-                themes.forEach { theme ->
+                themes.forEachIndexed { i, theme ->
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(30.dp),
                         verticalAlignment = Alignment.CenterVertically,
@@ -177,6 +188,7 @@ class V2BasicControlsActivity : V2DemoActivity() {
                         )
                         RadioButton(enabled = enabled,
                             selected = (selectedOption.value == theme),
+                            modifier = Modifier.testTag(if (i == 0) BASIC_CONTROLS_RADIO_1 else BASIC_CONTROLS_RADIO_2),
                             onClick = {
                                 selectedOption.value = theme
                                 checked = if (theme == "Theme 1") {

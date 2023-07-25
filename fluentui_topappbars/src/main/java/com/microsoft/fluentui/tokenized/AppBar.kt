@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
@@ -56,6 +57,13 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param accessoryDelta Ratio of opening of accessory View. Used for Shychrome and other animations. Default: [1.0F]
  * @param appBarTokens Optional Tokens for App Bar to customize it. Default: [null]
  */
+
+// TAGS FOR TESTING
+const val APP_BAR = "Fluent App bar"
+const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
+const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
+const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
+
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun AppBar(
@@ -89,6 +97,7 @@ fun AppBar(
     Box(
         modifier = modifier
             .fillMaxWidth()
+            .testTag(APP_BAR)
     ) {
         Column(
             modifier = Modifier
@@ -137,6 +146,7 @@ fun AppBar(
                         modifier = Modifier
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
+                            .testTag(APP_BAR_SUBTITLE)
                     ) {
                         Row(
                             modifier = Modifier
@@ -244,7 +254,8 @@ fun AppBar(
                         .animateContentSize()
                         .fillMaxWidth()
                         .then(if (!searchMode) Modifier.height(56.dp * accessoryDelta) else Modifier)
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp)
+                        .testTag(APP_BAR_SEARCH_BAR),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     searchBar()
@@ -257,6 +268,7 @@ fun AppBar(
                         .fillMaxWidth()
                         .then(if (!searchMode) Modifier.height(48.dp * accessoryDelta) else Modifier)
                         .padding(vertical = 8.dp)
+                        .testTag(APP_BAR_BOTTOM_BAR),
                 ) {
                     bottomBar()
                 }

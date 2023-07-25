@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
@@ -40,6 +41,14 @@ import com.microsoft.fluentui.theme.token.controlTokens.DividerTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TextFieldInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TextFieldTokens
 import com.microsoft.fluentui.tokenized.divider.Divider
+
+// Tests used for testing
+const val TEXT_FIELD = "Fluent TEXT_FIELD"
+const val TEXT_FIELD_ICON = "Fluent TEXT_FIELD_ICON"
+const val TEXT_FIELD_LABEL = "Fluent TEXT_FIELD_LABEL"
+const val TEXT_FIELD_HINT_TEXT = "Fluent TEXT_FIELD_HINT_TEXT"
+const val TEXT_FIELD_ASSISTIVE_TEXT = "Fluent TEXT_FIELD_ASSISTIVE_TEXT"
+const val TEXT_FIELD_SECONDARY_TEXT = "Fluent TEXT_FIELD_TRAILING_ACCESSORY_TEXT"
 
 /**
  * API to create a customized TextField for users to edit text via software and hardware keyboard
@@ -130,7 +139,9 @@ fun TextField(
                         color = token.labelColor(textFieldInfo)
                     )
                 ),
-                modifier = Modifier.padding(token.labelPadding(textFieldInfo))
+                modifier = Modifier
+                    .padding(token.labelPadding(textFieldInfo))
+                    .testTag(TEXT_FIELD_LABEL)
             )
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -141,7 +152,9 @@ fun TextField(
                     else
                         leadingRestIcon,
                     leadingIconContentDescription,
-                    modifier = Modifier.size(token.leadingIconSize(textFieldInfo)),
+                    modifier = Modifier
+                        .size(token.leadingIconSize(textFieldInfo))
+                        .testTag(TEXT_FIELD_ICON),
                     tint = token.leadingIconColor(textFieldInfo)
                 )
                 Spacer(Modifier.requiredWidth(16.dp))
@@ -152,6 +165,7 @@ fun TextField(
                         value = value,
                         onValueChange = onValueChange,
                         modifier = Modifier
+                            .testTag(TEXT_FIELD)
                             .padding(vertical = 12.dp)
                             .weight(1F)
                             .focusRequester(focusRequester)
@@ -177,6 +191,7 @@ fun TextField(
                                 ) {
                                     BasicText(
                                         hintText,
+                                        modifier = Modifier.testTag(TEXT_FIELD_HINT_TEXT),
                                         style = token.hintTextTypography(textFieldInfo)
                                             .merge(
                                                 TextStyle(
@@ -200,7 +215,9 @@ fun TextField(
                         Spacer(Modifier.requiredWidth(8.dp))
                         BasicText(
                             trailingAccessoryText,
-                            modifier = Modifier.padding(vertical = 12.dp),
+                            modifier = Modifier
+                                .padding(vertical = 12.dp)
+                                .testTag(TEXT_FIELD_SECONDARY_TEXT),
                             style = token.trailingAccessoryTextTypography(textFieldInfo)
                                 .merge(
                                     TextStyle(
@@ -255,7 +272,9 @@ fun TextField(
                         color = token.assistiveTextColor(textFieldInfo)
                     )
                 ),
-                modifier = Modifier.padding(token.assistiveTextPadding(textFieldInfo))
+                modifier = Modifier
+                    .padding(token.assistiveTextPadding(textFieldInfo))
+                    .testTag(TEXT_FIELD_ASSISTIVE_TEXT)
             )
         }
     }

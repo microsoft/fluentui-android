@@ -39,13 +39,13 @@ import com.microsoft.fluentui.tokenized.segmentedcontrols.PillMetaData
 import kotlin.math.roundToInt
 
 // TAGS FOR TESTING
-private const val CARD_NUDGE = "CardNudge"
-private const val ICON = "ICON"
-private const val ACCENT_ICON = "Accent Icon"
-private const val ACCENT_TEXT = "Accent Text"
-private const val SUBTITLE = "Subtitle"
-private const val ACTION_BUTTON = "Action Button"
-private const val DISMISS_BUTTON = "Dismiss Button"
+const val CARD_NUDGE = "Fluent Card Nudge"
+const val CARD_NUDGE_ICON = "Fluent Card Nudge Icon"
+const val CARD_NUDGE_ACCENT_ICON = "Fluent Card Nudge Accent Icon"
+const val CARD_NUDGE_ACCENT_TEXT = "Fluent Card Nudge Accent Text"
+const val CARD_NUDGE_SUBTITLE = "Fluent Card Nudge Subtitle"
+const val CARD_NUDGE_ACTION_BUTTON = "Fluent Card Nudge Action Button"
+const val CARD_NUDGE_DISMISS_BUTTON = "Fluent Card Nudge Dismiss Button"
 
 class CardNudgeMetaData(
     val message: String,
@@ -160,7 +160,7 @@ fun CardNudge(
                                 )
                             } else Modifier
                         )
-                        .testTag(ICON),
+                        .testTag(CARD_NUDGE_ICON),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
@@ -190,7 +190,7 @@ fun CardNudge(
                             Box(
                                 modifier = Modifier
                                     .size(12.dp)
-                                    .testTag(ACCENT_ICON),
+                                    .testTag(CARD_NUDGE_ACCENT_ICON),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
@@ -204,7 +204,7 @@ fun CardNudge(
                             BasicText(
                                 metadata.accentText,
                                 style = token.accentTypography(cardNudgeInfo),
-                                modifier = Modifier.testTag(ACCENT_TEXT)
+                                modifier = Modifier.testTag(CARD_NUDGE_ACCENT_TEXT)
                             )
                         }
 
@@ -212,7 +212,7 @@ fun CardNudge(
                             BasicText(
                                 metadata.subTitle,
                                 style = token.subtitleTypography(cardNudgeInfo),
-                                modifier = Modifier.testTag(SUBTITLE)
+                                modifier = Modifier.testTag(CARD_NUDGE_SUBTITLE)
                             )
                         }
                     }
@@ -223,7 +223,7 @@ fun CardNudge(
             if (metadata.actionMetaData != null) {
                 PillButton(
                     metadata.actionMetaData,
-                    modifier = Modifier.testTag(ACTION_BUTTON),
+                    modifier = Modifier.testTag(CARD_NUDGE_ACTION_BUTTON),
                     pillButtonTokens = object : PillButtonTokens() {
                         @Composable
                         override fun backgroundBrush(pillButtonInfo: PillButtonInfo): StateBrush {
@@ -260,7 +260,7 @@ fun CardNudge(
                     modifier = Modifier
                         .padding(10.dp)
                         .size(token.dismissIconSize(cardNudgeInfo))
-                        .testTag(DISMISS_BUTTON),
+                        .testTag(CARD_NUDGE_DISMISS_BUTTON),
                     tint = token.iconColor(cardNudgeInfo),
                     onClick = metadata.dismissOnClick
                 )
