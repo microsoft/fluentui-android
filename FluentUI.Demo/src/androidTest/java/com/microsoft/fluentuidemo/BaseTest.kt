@@ -38,6 +38,8 @@ open class BaseTest {
         return intent
     }
 
+    // This function is used to RETURN whether a control is enabled or not.
+    // As opposed to assertEnabled that just tests for the value.
     fun isEnabled(control: SemanticsNodeInteraction): Boolean {
         control.assertExists()
         for ((key, _) in control.fetchSemanticsNode().config) {
