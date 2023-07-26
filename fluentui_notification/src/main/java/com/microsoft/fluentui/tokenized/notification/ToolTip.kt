@@ -351,7 +351,7 @@ private fun Tooltip(
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
+                            .offset(y = 0.dp)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
