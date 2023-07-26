@@ -53,7 +53,7 @@ open class TooltipTokens : IControlToken, Parcelable {
         )
 
     @Composable
-    open fun spacingTitleText(tooltipInfo: TooltipInfo): Dp =
+    open fun titleTextSpacing(tooltipInfo: TooltipInfo): Dp =
         FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
 
     @Composable

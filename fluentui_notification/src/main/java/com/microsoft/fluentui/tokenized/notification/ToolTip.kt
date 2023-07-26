@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.platform.testTag
@@ -60,6 +61,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.TooltipInfo
 import com.microsoft.fluentui.theme.token.controlTokens.TooltipTokens
 import com.microsoft.fluentui.util.dpToPx
 import com.microsoft.fluentui.util.pxToDp
+import com.microsoft.fluentui.util.softNavBarOffsetX
 import kotlinx.coroutines.CancellableContinuation
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -117,7 +119,6 @@ internal class TooltipStateImpl(private val mutatorMutex: MutatorMutex) : Toolti
      * all of the other tooltips currently being shown will dismiss.
      */
     override suspend fun show() {
-//         Show associated tooltip for [TooltipDuration] amount of time.
         mutatorMutex.mutate {
             try {
                 suspendCancellableCoroutine { continuation: CancellableContinuation<Unit> ->
@@ -125,7 +126,7 @@ internal class TooltipStateImpl(private val mutatorMutex: MutatorMutex) : Toolti
                     job = continuation
                 }
             } finally {
-//                 timeout or cancellation has occurred
+//                 cancellation has occurred
 //                 and we close out the current tooltip.
                 isVisible = false
             }
@@ -219,7 +220,7 @@ fun ToolTipBox(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(
-                                token.spacingTitleText(
+                                token.titleTextSpacing(
                                     tooltipInfo = tooltipInfo
                                 )
                             )
@@ -303,7 +304,8 @@ private fun Tooltip(
     val tooltipPositionProvider =
         TooltipPositionProvider(
             offset,
-            token.margin(tooltipInfo)
+            token.margin(tooltipInfo),
+            LocalContext.current.softNavBarOffsetX,
         ) { parentBounds, tooltipContentBounds ->
             tipAlignment =
                 if (parentBounds.top + parentBounds.height / 2 <= tooltipContentBounds.top) {
@@ -349,7 +351,7 @@ private fun Tooltip(
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
+                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
@@ -394,6 +396,7 @@ private fun Tooltip(
 private class TooltipPositionProvider(
     val tooltipAnchorOffset: DpOffset,
     val margin: Dp = 0.dp,
+    val softNavBarOffsetX: Int,
     val onPositionCalculated: (IntRect, IntRect) -> Unit = { _, _ -> }
 ) : PopupPositionProvider {
     override fun calculatePosition(
@@ -403,11 +406,16 @@ private class TooltipPositionProvider(
         popupContentSize: IntSize
     ): IntOffset {
         val marginPx = dpToPx(margin).toInt()
-        var x = anchorBounds.left + ((anchorBounds.width - popupContentSize.width) / 2)
+        var x = anchorBounds.left + ((anchorBounds.width - popupContentSize.width) / 2) + dpToPx(
+            tooltipAnchorOffset.x
+        ).toInt()
         // If the tooltip goes out of window then we align it to the left or right
-        x = if (x < 0) marginPx //Left Align
-        else if (x + popupContentSize.width + marginPx < windowSize.width) x
-        else windowSize.width - marginPx - popupContentSize.width //Right Align
+        if (x < marginPx + softNavBarOffsetX) {
+            x = marginPx + softNavBarOffsetX //Left Align
+        } else if (x + popupContentSize.width + marginPx - softNavBarOffsetX > windowSize.width) {
+            x =
+                windowSize.width - marginPx - popupContentSize.width + softNavBarOffsetX //Right Align
+        }
         // Tooltip prefers to be below the anchor,
         // but if this causes the tooltip to out from window bounds,
         // then we place it above the anchor
