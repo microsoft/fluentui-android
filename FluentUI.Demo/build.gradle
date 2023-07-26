@@ -94,7 +94,7 @@ dependencies {
     implementation ("androidx.compose.foundation:foundation-layout")
     implementation ("androidx.compose.material:material")
     implementation ("androidx.activity:activity-compose:$composeActivityVersion")
-    implementation 'androidx.test.ext:junit-ktx:1.1.3'
+    implementation 'androidx.test.ext:junit-ktx:1.1.5'
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeTestVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation "androidx.test:monitor:1.6.1"
@@ -116,6 +116,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-intents:${espressoVersion}"
     androidTestImplementation "androidx.test:runner:${androidxRunner}"
     androidTestImplementation "androidx.test:rules:${androidxRunner}"
+    androidTestImplementation "org.hamcrest:hamcrest:2.2"
 
     implementation 'com.microsoft.design:fluent-system-icons:1.1.203@aar'
 

@@ -71,7 +71,7 @@ dependencies {
     implementation "androidx.compose.material:material"
 
     testImplementation "junit:junit:$junitVersion"
-    testImplementation "org.robolectric:robolectric:$roboelectricVersion"
+    testImplementation "org.robolectric:robolectric:$robolectric"
 
     androidTestImplementation "androidx.test.ext:junit:$extJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
