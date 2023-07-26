@@ -256,8 +256,7 @@ class Tooltip {
         if (secondScreen) positionY -= displayHeight + DuoSupportUtils.DUO_HINGE_WIDTH
 
         isAboveAnchor = context.activity?.let {
-            if (DuoSupportUtils.isDeviceSurfaceDuo(it)) positionY + contentHeight + margin > displayHeight
-            else positionY + contentHeight + margin - context.statusBarHeight > displayHeight
+            positionY + contentHeight + margin > displayHeight
         } ?: false
         if (isAboveAnchor) {
             positionY = anchor.top - contentHeight - offsetY
