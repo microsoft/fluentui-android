@@ -8,6 +8,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlInfo
@@ -52,6 +53,7 @@ open class BadgeTokens : IControlToken, Parcelable {
                     badgeInfo
                 ).width
             )
+
             BadgeType.List -> PaddingValues(
                 start = FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80) + borderStroke(
                     badgeInfo
@@ -72,4 +74,7 @@ open class BadgeTokens : IControlToken, Parcelable {
             FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.StrokeFocus1].value()
         )
     }
+
+    @Composable
+    open fun cornerRadius(badgeInfo: BadgeInfo): Dp = 100.dp
 }

@@ -18,7 +18,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.ExperimentalTextApi
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -139,10 +138,6 @@ fun Button(
                     text = text,
                     modifier = Modifier.clearAndSetSemantics { },
                     style = token.typography(buttonInfo).merge(
-                        TextStyle(
-                            platformStyle = PlatformTextStyle(includeFontPadding = false)
-                        )
-                    ).merge(
                         TextStyle(
                             color = token.textColor(buttonInfo = buttonInfo)
                                 .getColorByState(

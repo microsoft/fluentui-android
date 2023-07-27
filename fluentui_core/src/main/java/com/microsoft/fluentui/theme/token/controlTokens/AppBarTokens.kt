@@ -1,6 +1,8 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
@@ -12,7 +14,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.ControlInfo
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentGlobalTokens
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
 enum class AppBarSize {
@@ -37,6 +44,7 @@ open class AppBarTokens : IControlToken, Parcelable {
                     FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background3].value(
                         themeMode = FluentTheme.themeMode
                     )
+
                 FluentStyle.Brand ->
                     FluentColor(
                         light = FluentTheme.aliasTokens.brandBackgroundColor[FluentAliasTokens.BrandBackgroundColorTokens.BrandBackground1].value(
@@ -57,6 +65,7 @@ open class AppBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -76,6 +85,7 @@ open class AppBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -95,6 +105,7 @@ open class AppBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -114,6 +125,7 @@ open class AppBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -133,6 +145,7 @@ open class AppBarTokens : IControlToken, Parcelable {
                 FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value(
                     themeMode = FluentTheme.themeMode
                 )
+
             FluentStyle.Brand ->
                 FluentColor(
                     light = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundOnColor].value(
@@ -197,6 +210,29 @@ open class AppBarTokens : IControlToken, Parcelable {
             AppBarSize.Large -> PaddingValues(start = 12.dp)
             AppBarSize.Medium -> PaddingValues()
             AppBarSize.Small -> PaddingValues(start = 8.dp)
+        }
+    }
+
+    @Composable
+    open fun borderStroke(info: AppBarInfo): BorderStroke {
+        return when (info.style) {
+            FluentStyle.Neutral ->
+                if (FluentTheme.themeMode == ThemeMode.Dark || (FluentTheme.themeMode == ThemeMode.Auto && isSystemInDarkTheme())) {
+                    BorderStroke(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidthNone),
+                        Color.Unspecified
+                    )
+                } else {
+                    BorderStroke(
+                        FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05),
+                        FluentTheme.aliasTokens.neutralStrokeColor[FluentAliasTokens.NeutralStrokeColorTokens.Stroke2].value()
+                    )
+                }
+
+            else -> BorderStroke(
+                FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidthNone),
+                Color.Unspecified
+            )
         }
     }
 
