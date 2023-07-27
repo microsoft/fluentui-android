@@ -27,9 +27,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion composeVersion
-    }
     testOptions {
         unitTests {
             includeAndroidResources = true
