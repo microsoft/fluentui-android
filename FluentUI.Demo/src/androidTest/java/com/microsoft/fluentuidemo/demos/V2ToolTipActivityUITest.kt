@@ -1,6 +1,5 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.test.assertIsDisplayed
@@ -10,52 +9,32 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextInput
 import androidx.compose.ui.unit.dp
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
 import androidx.test.uiautomator.UiObject2
 import com.microsoft.fluentui.tokenized.controls.Button
-import com.microsoft.fluentui.tokenized.notification.TOOLTIP_TIP_TEST_TAG
 import com.microsoft.fluentui.tokenized.notification.TOOLTIP_CONTENT_TEST_TAG
+import com.microsoft.fluentui.tokenized.notification.TOOLTIP_TIP_TEST_TAG
 import com.microsoft.fluentui.tokenized.notification.ToolTipBox
 import com.microsoft.fluentui.tokenized.notification.rememberTooltipState
 import com.microsoft.fluentui.util.dpToPx
-import com.microsoft.fluentuidemo.DemoActivity
+import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import kotlinx.coroutines.launch
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.UUID
 
-class V2ToolTipActivityUITest {
-    private fun launchActivity() {
-        ActivityScenario.launch<V2ToolTipActivity>(setUpIntentForActivity())
+class V2ToolTipActivityUITest : BaseTest() {
+    @Before
+    fun initialize() {
+        launchActivity(V2ToolTipActivity::class.java)
     }
 
-    lateinit var context: android.content.Context
     val device = UiDevice.getInstance(getInstrumentation())
     val screenWidth = device.displayWidth
     val screenHeight = device.displayHeight
-
-    private fun setUpIntentForActivity(): Intent {
-        context = getInstrumentation().targetContext
-        val intent = Intent(context, V2ToolTipActivity::class.java)
-        intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
-        return intent
-    }
-
-    @Before
-    fun initialize() {
-        Intents.init()
-        launchActivity()
-    }
-
-    @get:Rule
-    val composeTestRule = createComposeRule()
 
     @Test
     fun testTooltipBoxNotVisible() {
@@ -163,11 +142,6 @@ class V2ToolTipActivityUITest {
                 .fetchSemanticsNode().boundsInWindow.center.x.toInt() + dpToPx(10.dp).toInt() <= tip.visibleBounds.centerX()
 
         assert(isXOffsetCorrect)
-    }
-
-    @After
-    fun tearDown() {
-        Intents.release()
     }
 }
 
