@@ -214,7 +214,6 @@ class V2AppBarActivity : V2DemoActivity() {
                                     onValueChange = {
                                         enableBottomBorder = !enableBottomBorder
                                     },
-                                    modifier = Modifier.testTag(APP_BAR_SEARCHBAR_PARAM),
                                     checkedState = enableBottomBorder,
                                 )
                             }
