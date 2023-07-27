@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar Style</string>
     <string name="app_bar_subtitle">Subtitle</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Bottom Border</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Navigation icon clicked.</string>
 
