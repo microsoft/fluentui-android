@@ -4,7 +4,6 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
@@ -72,15 +71,15 @@ fun Badge(
         val textColor = token.textColor(badgeInfo = badgeInfo)
         val typography = token.typography(badgeInfo = badgeInfo)
         val paddingValues = token.padding(badgeInfo = badgeInfo)
+        val shape = RoundedCornerShape(token.cornerRadius(badgeInfo = badgeInfo))
 
         Row(
             modifier
                 .requiredHeight(if (badgeType == BadgeType.Character) 20.dp else 27.dp)
-                .border(borderStroke.width, borderStroke.brush, CircleShape)
+                .border(borderStroke.width, borderStroke.brush, shape)
                 .padding(0.5.dp) //TODO to check fix for https://issuetracker.google.com/issues/228985905
-                .background(background, CircleShape)
-                .clip(RoundedCornerShape(100.dp)),
-
+                .background(background, shape)
+                .clip(shape),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
