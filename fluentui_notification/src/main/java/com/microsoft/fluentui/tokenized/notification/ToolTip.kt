@@ -315,9 +315,15 @@ private fun Tooltip(
                 }
             val parentCenter = parentBounds.left + parentBounds.width / 2
             val tooltipCenter = tooltipContentBounds.left + tooltipContentBounds.width / 2
-            tipOffsetX = if (isRTL) (tooltipCenter - parentCenter).toFloat() else
+            tipOffsetX = dpToPx(offset.x) + if (isRTL) (tooltipCenter - parentCenter).toFloat() else
                 (parentCenter - tooltipCenter).toFloat()
 
+            if(tipOffsetX + tooltipCenter > tooltipContentBounds.right){
+                tipOffsetX =  tooltipContentBounds.right - tooltipCenter - dpToPx(24.dp)
+            }
+            else if(tipOffsetX + tooltipCenter < tooltipContentBounds.left) {
+                tipOffsetX =  tooltipContentBounds.left - tooltipCenter + dpToPx(24.dp)
+            }
         }
 
     val coroutineScope = rememberCoroutineScope()
@@ -351,7 +357,7 @@ private fun Tooltip(
                         contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(y = 0.dp)
+                            .offset(x= pxToDp(tipOffsetX),y = 0.dp)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
                 }
@@ -378,7 +384,7 @@ private fun Tooltip(
                         imageVector = ToolTipIcons.Tip, contentDescription = null,
                         tint = token.tipColor(tooltipInfo),
                         modifier = Modifier
-                            .offset(x = offset.x + pxToDp(tipOffsetX), y = 0.dp)
+                            .offset(x = pxToDp(tipOffsetX), y = 0.dp)
                             .rotate(180f)
                             .testTag(TOOLTIP_TIP_TEST_TAG)
                     )
