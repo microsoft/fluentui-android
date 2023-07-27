@@ -51,7 +51,6 @@ import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
 
-
 /**
  * API to create a customized PeoplePicker for users to add a list of PersonaChips
  *

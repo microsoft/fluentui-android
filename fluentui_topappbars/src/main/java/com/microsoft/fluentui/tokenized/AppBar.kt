@@ -9,10 +9,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.ExperimentalTextApi
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -52,10 +55,18 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param rightAccessoryView Row Placeholder to be placed at right on AppTitle. Default: [null]
  * @param searchBar Composable to be placed as searchbar below appTitle. Default: [null]
  * @param bottomBar Composable to Be placed below appTitle. Displayed if searchbar is not provided or when in searchmode. Default: [null]
+ * @param bottomBorder Boolean to place a bottom border on AppBar. Applies only when searchBar and bottomBar are empty. Default: [true]
  * @param appTitleDelta Ratio of opening of appTitle. Used for Shychrome and other animations. Default: [1.0F]
  * @param accessoryDelta Ratio of opening of accessory View. Used for Shychrome and other animations. Default: [1.0F]
  * @param appBarTokens Optional Tokens for App Bar to customize it. Default: [null]
  */
+
+// TAGS FOR TESTING
+const val APP_BAR = "Fluent App bar"
+const val APP_BAR_SUBTITLE = "Fluent App bar Subtitle"
+const val APP_BAR_BOTTOM_BAR = "Fluent App bar Bottom bar"
+const val APP_BAR_SEARCH_BAR = "Fluent App bar Search bar"
+
 @OptIn(ExperimentalTextApi::class)
 @Composable
 fun AppBar(
@@ -76,6 +87,7 @@ fun AppBar(
     rightAccessoryView: @Composable (RowScope.() -> Unit)? = null,
     searchBar: @Composable (RowScope.() -> Unit)? = null,
     bottomBar: @Composable (RowScope.() -> Unit)? = null,
+    bottomBorder: Boolean = true,
     appTitleDelta: Float = 1.0F,
     accessoryDelta: Float = 1.0F,
     appBarTokens: AppBarTokens? = null
@@ -89,11 +101,30 @@ fun AppBar(
     Box(
         modifier = modifier
             .fillMaxWidth()
+            .testTag(APP_BAR)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(token.backgroundBrush(appBarInfo))
+                .then(
+                    if (bottomBorder && searchBar == null && bottomBar == null) {
+                        val strokeWidth =
+                            with(LocalDensity.current) { token.borderStroke(appBarInfo).width.toPx() }
+                        val strokeColor = token.borderStroke(appBarInfo).brush
+                        Modifier.drawBehind {
+                            val y = size.height - strokeWidth / 2
+                            drawLine(
+                                strokeColor,
+                                Offset(0f, y),
+                                Offset(size.width, y),
+                                strokeWidth
+                            )
+                        }
+                    } else {
+                        Modifier
+                    }
+                )
         ) {
             Row(
                 Modifier
@@ -137,6 +168,7 @@ fun AppBar(
                         modifier = Modifier
                             .weight(1F)
                             .padding(token.textPadding(appBarInfo))
+                            .testTag(APP_BAR_SUBTITLE)
                     ) {
                         Row(
                             modifier = Modifier
@@ -151,8 +183,7 @@ fun AppBar(
                                 text = title,
                                 style = titleTextStyle.merge(
                                     TextStyle(
-                                        color = token.titleTextColor(appBarInfo),
-                                        platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                        color = token.titleTextColor(appBarInfo)
                                     )
                                 ),
                                 maxLines = 1,
@@ -193,8 +224,7 @@ fun AppBar(
                                     TextStyle(
                                         color = token.subtitleTextColor(
                                             appBarInfo
-                                        ),
-                                        platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                        )
                                     )
                                 ),
                                 maxLines = 1,
@@ -222,10 +252,7 @@ fun AppBar(
                             .weight(1F),
                         style = titleTextStyle.merge(
                             TextStyle(
-                                color = token.titleTextColor(appBarInfo),
-                                platformStyle = PlatformTextStyle(
-                                    includeFontPadding = true
-                                )
+                                color = token.titleTextColor(appBarInfo)
                             )
                         ),
                         maxLines = 1,
@@ -244,7 +271,8 @@ fun AppBar(
                         .animateContentSize()
                         .fillMaxWidth()
                         .then(if (!searchMode) Modifier.height(56.dp * accessoryDelta) else Modifier)
-                        .padding(vertical = 8.dp),
+                        .padding(vertical = 8.dp)
+                        .testTag(APP_BAR_SEARCH_BAR),
                     horizontalArrangement = Arrangement.Center
                 ) {
                     searchBar()
@@ -257,6 +285,7 @@ fun AppBar(
                         .fillMaxWidth()
                         .then(if (!searchMode) Modifier.height(48.dp * accessoryDelta) else Modifier)
                         .padding(vertical = 8.dp)
+                        .testTag(APP_BAR_BOTTOM_BAR),
                 ) {
                     bottomBar()
                 }

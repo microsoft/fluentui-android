@@ -2,17 +2,13 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
@@ -24,6 +20,9 @@ import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+const val BADGE_DOT = "Dot Badge"
+const val BADGE_CHARACTER = "Character Badge"
+const val BADGE_LIST = "List Badge"
 
 class V2BadgeActivity : V2DemoActivity() {
     override val appBarSize = AppBarSize.Medium
@@ -33,7 +32,8 @@ class V2BadgeActivity : V2DemoActivity() {
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-4"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-4"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-4"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +60,7 @@ class V2BadgeActivity : V2DemoActivity() {
                         style = title2Font.merge(TextStyle(color = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value()))
                     )
                     Spacer(modifier = Modifier.width(16.dp))
-                    Badge()
+                    Badge(modifier = Modifier.testTag(BADGE_DOT))
                 }
                 Row(Modifier.padding(16.dp), verticalAlignment = CenterVertically) {
                     BasicText(
@@ -71,7 +71,11 @@ class V2BadgeActivity : V2DemoActivity() {
                     LazyRow {
                         item {
                             Spacer(modifier = Modifier.width(8.dp))
-                            Badge(text = "1", badgeType = BadgeType.Character)
+                            Badge(
+                                text = "1",
+                                badgeType = BadgeType.Character,
+                                modifier = Modifier.testTag(BADGE_CHARACTER)
+                            )
                         }
                         item {
                             Spacer(modifier = Modifier.width(8.dp))
@@ -114,7 +118,11 @@ class V2BadgeActivity : V2DemoActivity() {
                     LazyRow {
                         item {
                             Spacer(modifier = Modifier.width(8.dp))
-                            Badge(text = "1", badgeType = BadgeType.List)
+                            Badge(
+                                text = "1",
+                                badgeType = BadgeType.List,
+                                modifier = Modifier.testTag(BADGE_LIST)
+                            )
                         }
                         item {
                             Spacer(modifier = Modifier.width(8.dp))

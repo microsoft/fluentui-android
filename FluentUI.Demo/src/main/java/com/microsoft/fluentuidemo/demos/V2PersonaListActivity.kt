@@ -21,13 +21,17 @@ import com.microsoft.fluentuidemo.icons.ListItemIcons
 import com.microsoft.fluentuidemo.icons.listitemicons.Chevron
 import com.microsoft.fluentuidemo.util.invokeToast
 
+// Tags used for testing
+const val PERSONA_LIST = "persona_list"
+
 class V2PersonaListActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-22"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-22"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-22"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -225,7 +229,7 @@ class V2PersonaListActivity : V2DemoActivity() {
     @Composable
     private fun CreatePersonaListActivityUI(context: Context) {
         PersonaList(
-            modifier = Modifier.testTag("list"),
+            modifier = Modifier.testTag(PERSONA_LIST),
             personas = createPersonasList(context),
             border = BorderType.Bottom,
             borderInset = BorderInset.XXLarge

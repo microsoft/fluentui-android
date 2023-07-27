@@ -21,6 +21,7 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.icons.ListItemIcons
 import com.microsoft.fluentui.icons.SearchBarIcons
@@ -49,13 +50,21 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import kotlin.math.max
 
+// Tags used for testing
+const val APP_BAR_MODIFIABLE_PARAMETER_SECTION = "App Bar Modifiable Parameters"
+const val APP_BAR_SUBTITLE_PARAM = "App Bar Subtitle Param"
+const val APP_BAR_STYLE_PARAM = "App Bar AppBar Style Param"
+const val APP_BAR_BUTTONBAR_PARAM = "App Bar ButtonBar Param"
+const val APP_BAR_SEARCHBAR_PARAM = "App Bar SearchBar Param"
+
 class V2AppBarActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +78,7 @@ class V2AppBarActivity : V2DemoActivity() {
             var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
+            var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
 
             Column(modifier = Modifier.pointerInput(Unit) {
@@ -81,6 +91,7 @@ class V2AppBarActivity : V2DemoActivity() {
             }) {
                 ListItem.SectionHeader(
                     title = LocalContext.current.resources.getString(R.string.app_modifiable_parameters),
+                    modifier = Modifier.testTag(APP_BAR_MODIFIABLE_PARAMETER_SECTION),
                     enableChevron = true,
                     enableContentOpenCloseTransition = true,
                     chevronOrientation = ChevronOrientation(90f, 0f),
@@ -129,6 +140,7 @@ class V2AppBarActivity : V2DemoActivity() {
                                             else
                                                 null
                                     },
+                                    modifier = Modifier.testTag(APP_BAR_SUBTITLE_PARAM),
                                     checkedState = !subtitle.isNullOrBlank()
                                 )
                             }
@@ -149,6 +161,7 @@ class V2AppBarActivity : V2DemoActivity() {
                                             else
                                                 FluentStyle.Neutral
                                     },
+                                    modifier = Modifier.testTag(APP_BAR_STYLE_PARAM),
                                     checkedState = style == FluentStyle.Brand
                                 )
                             }
@@ -165,6 +178,7 @@ class V2AppBarActivity : V2DemoActivity() {
                                     onValueChange = {
                                         enableButtonBar = !enableButtonBar
                                     },
+                                    modifier = Modifier.testTag(APP_BAR_BUTTONBAR_PARAM),
                                     checkedState = enableButtonBar
                                 )
                             }
@@ -182,8 +196,25 @@ class V2AppBarActivity : V2DemoActivity() {
                                     onValueChange = {
                                         enableSearchBar = !enableSearchBar
                                     },
+                                    modifier = Modifier.testTag(APP_BAR_SEARCHBAR_PARAM),
                                     checkedState = enableSearchBar,
                                     enabledSwitch = !searchMode
+                                )
+                            }
+                        )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.app_bar_bottom_border),
+                            subText = if (enableBottomBorder)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableBottomBorder = !enableBottomBorder
+                                    },
+                                    checkedState = enableBottomBorder,
                                 )
                             }
                         )
@@ -274,6 +305,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     appBarSize = appBarSize,
                     style = style,
                     searchMode = searchMode,
+                    bottomBorder = enableBottomBorder,
                     searchBar = if (enableSearchBar) {
                         {
                             SearchBar(

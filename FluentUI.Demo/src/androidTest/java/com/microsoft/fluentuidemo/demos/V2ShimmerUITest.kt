@@ -16,22 +16,35 @@ import com.microsoft.fluentui.tokenized.shimmer.Shimmer
 import org.junit.Rule
 import org.junit.Test
 
+// Tags used for testing
+const val SHIMMER = "shimmer"
+const val SHIMMER_CIRCLE = "circleShimmer"
+
 class V2ShimmerUITest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
     @Test
-    fun testShimmerBounds(){
+    fun testShimmerBounds() {
         composeTestRule.setContent {
             FluentTheme {
-                Shimmer(shape = ShimmerShape.Box, modifier = Modifier
-                    .height(50.dp)
-                    .width(50.dp)
-                    .testTag("shimmer"))
-                Shimmer(shape= ShimmerShape.Circle, modifier = Modifier.size(50.dp).testTag("circleShimmer"))
+                Shimmer(
+                    shape = ShimmerShape.Box, modifier = Modifier
+                        .height(50.dp)
+                        .width(50.dp)
+                        .testTag(SHIMMER)
+                )
+                Shimmer(
+                    shape = ShimmerShape.Circle,
+                    modifier = Modifier
+                        .size(50.dp)
+                        .testTag(SHIMMER_CIRCLE)
+                )
             }
         }
-        composeTestRule.onNodeWithTag("shimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
-        composeTestRule.onNodeWithTag("circleShimmer").assertHeightIsEqualTo(50.dp).assertWidthIsEqualTo(50.dp)
+        composeTestRule.onNodeWithTag(SHIMMER).assertHeightIsEqualTo(50.dp)
+            .assertWidthIsEqualTo(50.dp)
+        composeTestRule.onNodeWithTag(SHIMMER_CIRCLE).assertHeightIsEqualTo(50.dp)
+            .assertWidthIsEqualTo(50.dp)
     }
 }

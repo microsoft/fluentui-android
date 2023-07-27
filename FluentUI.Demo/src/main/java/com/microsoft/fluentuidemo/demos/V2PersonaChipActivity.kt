@@ -2,23 +2,13 @@ package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -30,12 +20,7 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.FluentStyle
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus.Available
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipSize
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Brand
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Danger
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Neutral
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.SevereWarning
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Success
-import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.Warning
+import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle.*
 import com.microsoft.fluentui.tokenized.controls.ToggleSwitch
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
@@ -43,13 +28,21 @@ import com.microsoft.fluentui.tokenized.persona.SearchBarPersonaChip
 import com.microsoft.fluentuidemo.R.drawable
 import com.microsoft.fluentuidemo.V2DemoActivity
 
+// Tags used for testing
+const val PERSONA_CHIP_SMALL_CHIP = "persona chip small"
+const val PERSONA_CHIP_MEDIUM_CHIP = "persona chip medium"
+const val PERSONA_CHIP_ANONYMOUS = "persona chip ann"
+const val PERSONA_CHIP_DISABLED = "persona chip disabled"
+const val PERSONA_CHIP_SWITCH = "persona chip switch"
+
 class V2PersonaChipActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-21"
-    override val controlTokensUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-21"
+    override val controlTokensUrl =
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-21"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -156,7 +149,7 @@ class V2PersonaChipActivity : V2DemoActivity() {
                             )
                         )
                         ToggleSwitch(
-                            modifier = Modifier.testTag("switch"),
+                            modifier = Modifier.testTag(PERSONA_CHIP_SWITCH),
                             onValueChange = { showCloseButton = !showCloseButton },
                             checkedState = showCloseButton
                         )
@@ -194,14 +187,14 @@ class V2PersonaChipActivity : V2DemoActivity() {
                         BasicText(text = "Person Chip Brand", style = TextStyle(color = textColor))
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
-                                modifier = Modifier.testTag("small persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_SMALL_CHIP),
                                 person = createPersonWithName(),
                                 size = PersonaChipSize.Small,
                                 style = Brand,
                                 selected = selectedList[2],
                                 onClick = { selectedList[2] = !selectedList[2] })
                             PersonaChip(
-                                modifier = Modifier.testTag("medium persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_MEDIUM_CHIP),
                                 person = createPersonWithName(),
                                 style = Brand,
                                 selected = selectedList[3],
@@ -264,7 +257,7 @@ class V2PersonaChipActivity : V2DemoActivity() {
                         )
                         Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                             PersonaChip(
-                                modifier = Modifier.testTag("ann persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_ANONYMOUS),
                                 person = createPersonWithNothing(),
                                 size = PersonaChipSize.Small,
                                 style = Warning,
@@ -318,7 +311,7 @@ class V2PersonaChipActivity : V2DemoActivity() {
                                 } else null
                             )
                             PersonaChip(
-                                modifier = Modifier.testTag("disabled persona chip"),
+                                modifier = Modifier.testTag(PERSONA_CHIP_DISABLED),
                                 person = createPersonWithName(),
                                 style = Neutral,
                                 enabled = false,
