@@ -14,6 +14,7 @@ import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsFocused
 import androidx.compose.ui.test.assertIsNotFocused
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onChild
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -53,7 +54,7 @@ class V2PeoplePickerUITest {
             })
         }
         composeTestRule.onRoot().printToLog("testPeoplePickerChip")
-        val textField = composeTestRule.onNodeWithTag("Text field")
+        val textField = composeTestRule.onNodeWithTag("V2PeoplePicker").onChild()
         textField.assertExists()
         textField.assertIsDisplayed()
         textField.assertIsNotFocused()
@@ -139,7 +140,7 @@ class V2PeoplePickerUITest {
                 }
             )
         }
-        val textField = composeTestRule.onNodeWithTag("Text field")
+        val textField = composeTestRule.onNodeWithTag("V2PeoplePicker")
         textField.assertExists()
         textField.assertIsDisplayed()
         val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
