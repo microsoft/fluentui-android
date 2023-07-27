@@ -25,7 +25,7 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion composeVersion
+        kotlinCompilerExtensionVersion composeCompilerVersion
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -94,10 +94,10 @@ dependencies {
     implementation ("androidx.compose.foundation:foundation-layout")
     implementation ("androidx.compose.material:material")
     implementation ("androidx.activity:activity-compose:$composeActivityVersion")
-    implementation 'androidx.test.ext:junit-ktx:1.1.5'
+    implementation "androidx.test.ext:junit-ktx:$junitKtxVersion"
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeTestVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-    debugImplementation "androidx.test:monitor:1.6.1"
+    debugImplementation "androidx.test:monitor:$androidTestMonitor"
     implementation "androidx.compose.runtime:runtime-livedata"
 
     // App Center
@@ -116,7 +116,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-intents:${espressoVersion}"
     androidTestImplementation "androidx.test:runner:${androidxRunner}"
     androidTestImplementation "androidx.test:rules:${androidxRunner}"
-    androidTestImplementation "org.hamcrest:hamcrest:2.2"
+    androidTestImplementation "org.hamcrest:hamcrest:$hamcrestVersion"
 
     implementation 'com.microsoft.design:fluent-system-icons:1.1.203@aar'
 

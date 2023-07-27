@@ -14,7 +14,7 @@ android {
         viewBinding true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion composeVersion
+        kotlinCompilerExtensionVersion composeCompilerVersion
     }
     defaultConfig {
         minSdkVersion constants.minSdkVersion
