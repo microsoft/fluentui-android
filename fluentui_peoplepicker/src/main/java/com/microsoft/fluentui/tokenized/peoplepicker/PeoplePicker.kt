@@ -72,12 +72,16 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  * @param chipValidation The callback that is triggered when a PersonaChip is added. This callback is used to validate
  * the PersonaChip before adding it to the list of selectedPeople.
  * @param onTextEntered The callback that is triggered when the user clicks done on the keyboard.
- * @param leadingAccessoryContent The content to be placed towards the start of PeoplePicker.
- * @param trailingAccessoryContent The content to be placed towards the end of PeoplePicker.
- * @param label String which acts as a description for the PeoplePicker.
- * @param assistiveText String which assists users with the PeoplePicker
- * @param errorString String to describe the error. PeoplePicker goes in error mode if this is provided.
+ * @param label String which acts as a description for the TextField.
+ * @param assistiveText String which assists users with the TextField
+ * @param errorString String to describe the error. TextField goes in error mode if this is provided.
  * @param searchHint String to be shown as hint when the PeoplePicker is in rest state.
+ * @param leadingRestIcon Icon which is displayed when the textField is in rest state.
+ * @param leadingFocusIcon Icon which is displayed when the textField is in focus state.
+ * @param leadingIconContentDescription String which acts as content description for leading icon.
+ * @param trailingAccessoryIcon Icon which is displayed towards the end of textField and mainly
+ * acts as dismiss icon.
+ * @param contentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
  */
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
