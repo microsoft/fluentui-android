@@ -101,10 +101,9 @@ dependencies {
     implementation "androidx.compose.runtime:runtime-livedata"
 
     // App Center
-    def appCenterSdkVersion = '1.8.0'
-    dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    dogfoodImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-    dogfoodImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+    dogfoodImplementation "com.microsoft.appcenter:appcenter-analytics:$appCenterSdkVersion"
+    dogfoodImplementation "com.microsoft.appcenter:appcenter-crashes:$appCenterSdkVersion"
+    dogfoodImplementation "com.microsoft.appcenter:appcenter-distribute:$appCenterSdkVersion"
 
     //JUnit4 framework
     testImplementation "junit:junit:${junitVersion}"
