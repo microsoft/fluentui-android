@@ -9,8 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.PlatformTextStyle
@@ -53,6 +56,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.AppBarTokens
  * @param rightAccessoryView Row Placeholder to be placed at right on AppTitle. Default: [null]
  * @param searchBar Composable to be placed as searchbar below appTitle. Default: [null]
  * @param bottomBar Composable to Be placed below appTitle. Displayed if searchbar is not provided or when in searchmode. Default: [null]
+ * @param bottomBorder Boolean to place a bottom border on AppBar. Applies only when searchBar and bottomBar are empty. Default: [true]
  * @param appTitleDelta Ratio of opening of appTitle. Used for Shychrome and other animations. Default: [1.0F]
  * @param accessoryDelta Ratio of opening of accessory View. Used for Shychrome and other animations. Default: [1.0F]
  * @param appBarTokens Optional Tokens for App Bar to customize it. Default: [null]
@@ -84,6 +88,7 @@ fun AppBar(
     rightAccessoryView: @Composable (RowScope.() -> Unit)? = null,
     searchBar: @Composable (RowScope.() -> Unit)? = null,
     bottomBar: @Composable (RowScope.() -> Unit)? = null,
+    bottomBorder: Boolean = true,
     appTitleDelta: Float = 1.0F,
     accessoryDelta: Float = 1.0F,
     appBarTokens: AppBarTokens? = null
@@ -103,6 +108,24 @@ fun AppBar(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(token.backgroundBrush(appBarInfo))
+                .then(
+                    if (bottomBorder && searchBar == null && bottomBar == null) {
+                        val strokeWidth =
+                            with(LocalDensity.current) { token.borderStroke(appBarInfo).width.toPx() }
+                        val strokeColor = token.borderStroke(appBarInfo).brush
+                        Modifier.drawBehind {
+                            val y = size.height - strokeWidth / 2
+                            drawLine(
+                                strokeColor,
+                                Offset(0f, y),
+                                Offset(size.width, y),
+                                strokeWidth
+                            )
+                        }
+                    } else {
+                        Modifier
+                    }
+                )
         ) {
             Row(
                 Modifier
