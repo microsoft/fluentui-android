@@ -29,7 +29,11 @@ import com.microsoft.fluentui.icons.listitemicons.Chevron
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.ThemeMode
-import com.microsoft.fluentui.theme.token.*
+import com.microsoft.fluentui.theme.token.FluentAliasTokens
+import com.microsoft.fluentui.theme.token.FluentColor
+import com.microsoft.fluentui.theme.token.FluentIcon
+import com.microsoft.fluentui.theme.token.FluentStyle
+import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AppBarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -74,6 +78,7 @@ class V2AppBarActivity : V2DemoActivity() {
             var subtitle: String? by rememberSaveable { mutableStateOf("Subtitle") }
             var enableSearchBar: Boolean by rememberSaveable { mutableStateOf(false) }
             var enableButtonBar: Boolean by rememberSaveable { mutableStateOf(false) }
+            var enableBottomBorder: Boolean by rememberSaveable { mutableStateOf(true) }
             var yAxisDelta: Float by rememberSaveable { mutableStateOf(1.0F) }
 
             Column(modifier = Modifier.pointerInput(Unit) {
@@ -197,6 +202,23 @@ class V2AppBarActivity : V2DemoActivity() {
                                 )
                             }
                         )
+
+                        ListItem.Item(
+                            text = LocalContext.current.resources.getString(R.string.app_bar_bottom_border),
+                            subText = if (enableBottomBorder)
+                                LocalContext.current.resources.getString(R.string.fluentui_enabled)
+                            else
+                                LocalContext.current.resources.getString(R.string.fluentui_disabled),
+                            trailingAccessoryContent = {
+                                ToggleSwitch(
+                                    onValueChange = {
+                                        enableBottomBorder = !enableBottomBorder
+                                    },
+                                    modifier = Modifier.testTag(APP_BAR_SEARCHBAR_PARAM),
+                                    checkedState = enableBottomBorder,
+                                )
+                            }
+                        )
                     }
                 }
 
@@ -284,6 +306,7 @@ class V2AppBarActivity : V2DemoActivity() {
                     appBarSize = appBarSize,
                     style = style,
                     searchMode = searchMode,
+                    bottomBorder = enableBottomBorder,
                     searchBar = if (enableSearchBar) {
                         {
                             SearchBar(
