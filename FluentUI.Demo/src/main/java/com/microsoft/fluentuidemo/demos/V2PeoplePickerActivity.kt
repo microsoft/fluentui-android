@@ -1,36 +1,23 @@
 package com.microsoft.fluentuidemo.demos
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
-import com.microsoft.fluentui.theme.token.Icon
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.tokenized.controls.Label
-import com.microsoft.fluentui.tokenized.notification.Snackbar
-import com.microsoft.fluentui.tokenized.notification.SnackbarState
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerItemData
 import com.microsoft.fluentui.tokenized.peoplepicker.rememberPeoplePickerItemDataList
@@ -39,21 +26,20 @@ import com.microsoft.fluentui.tokenized.persona.Group
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.Persona
 import com.microsoft.fluentui.tokenized.persona.PersonaList
-import com.microsoft.fluentuidemo.DemoActivity
 import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
-import com.microsoft.fluentuidemo.databinding.V2ActivityComposeBinding
 import kotlinx.coroutines.launch
 
 class V2PeoplePickerActivity : V2DemoActivity() {
     init {
         setupActivity(this)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setActivityContent {
-                CreatePeoplePickerActivity()
+            CreatePeoplePickerActivity()
         }
     }
 
@@ -99,16 +85,13 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                 isActive = true, status = AvatarStatus.Blocked
             )
         )
-        var selectedPeopleList = rememberPeoplePickerItemDataList()
-
-
-        val snackbarState = remember { SnackbarState() }
+        val selectedPeopleList = rememberPeoplePickerItemDataList()
         val scope = rememberCoroutineScope()
-        var suggested by rememberSaveable { mutableStateOf(people) }
-        var suggestedPersonaList = mutableListOf<Persona>()
-        var selectedPersonList = mutableListOf<Person>()
-        var errorPeopleList = mutableListOf<Person>()
-        var assistiveText by rememberSaveable { mutableStateOf(true) }
+        var suggested by rememberSaveable { mutableStateOf(mutableListOf<Person>()) }
+        val suggestedPersonaList = mutableListOf<Persona>()
+        val selectedPersonList = mutableListOf<Person>()
+        val errorPeopleList = mutableListOf<Person>()
+        val assistiveText by rememberSaveable { mutableStateOf(true) }
         var errorText by rememberSaveable { mutableStateOf(false) }
 
         Column {
@@ -116,10 +99,14 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                 PeoplePicker(
                     onValueChange = { query, selectedPerson ->
                         scope.launch {
-                            suggested = people.filter {
-                                it.firstName.lowercase().contains(query.lowercase()) ||
-                                        it.lastName.lowercase().contains(query.lowercase())
-                            } as MutableList<Person>
+                            suggested = if (query.isEmpty()) {
+                                mutableListOf()
+                            } else {
+                                people.filter {
+                                    it.firstName.lowercase().contains(query.lowercase()) ||
+                                            it.lastName.lowercase().contains(query.lowercase())
+                                } as MutableList<Person>
+                            }
                         }
                     },
                     selectedPeopleList = selectedPeopleList,
@@ -143,7 +130,6 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                     onChipClick = {
                         scope.launch {
                             it.selected.value = !it.selected.value
-                            snackbarState.showSnackbar("Clicked ${it.person.firstName} ${it.person.lastName}")
                         }
                     },
                     onChipCloseClick = {
@@ -176,30 +162,17 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                             } else {
                                 selectedPeopleList.remove(it)
                                 errorPeopleList.forEach { errorPerson ->
-                                    if (errorPerson == it.person)
+                                    if (errorPerson == it.person) {
                                         errorPeopleList.remove(errorPerson)
+                                        return@PeoplePicker
+                                    }
                                 }
                                 if (errorPeopleList.isEmpty())
                                     errorText = false
                             }
                         }
                     },
-                    leadingAccessoryContent = {
-                        Icon(
-                            Icons.Filled.Person,
-                            contentDescription = "Person",
-                            modifier = Modifier
-                                .size(24.dp)
-                        )
-                    },
-                    trailingAccessoryContent = {
-                        Icon(
-                            Icons.Filled.Add,
-                            contentDescription = "Add",
-                            modifier = Modifier
-                                .size(24.dp)
-                        )
-                    },
+                    contentDescription = "Total recipients: ${selectedPeopleList.size}",
                     label = "People Picker",
                     searchHint = "Search People",
                     assistiveText = if (assistiveText) "This is a sample Assistive Text" else null,
@@ -220,12 +193,6 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                         subTitle = it.email,
                         onClick = {
                             selectedPeopleList.add(PeoplePickerItemData(it, mutableStateOf(false)))
-                            scope.launch {
-                                snackbarState.showSnackbar(
-                                    "Added ${it.firstName} ${it.lastName}",
-                                    enableDismiss = true
-                                )
-                            }
                         }
                     )
                 )
@@ -243,9 +210,6 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                     textStyle = FluentAliasTokens.TypographyTokens.Body1
                 )
                 AvatarGroup(group = Group(selectedPersonList), modifier = Modifier.padding(8.dp))
-                Box(Modifier.fillMaxHeight(), contentAlignment = Alignment.Center) {
-                    Snackbar(snackbarState, Modifier.padding(bottom = 12.dp))
-                }
             }
         }
     }
