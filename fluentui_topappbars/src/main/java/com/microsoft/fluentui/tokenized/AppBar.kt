@@ -13,7 +13,6 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.ExperimentalTextApi
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -161,8 +160,7 @@ fun AppBar(
                                 text = title,
                                 style = titleTextStyle.merge(
                                     TextStyle(
-                                        color = token.titleTextColor(appBarInfo),
-                                        platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                        color = token.titleTextColor(appBarInfo)
                                     )
                                 ),
                                 maxLines = 1,
@@ -203,8 +201,7 @@ fun AppBar(
                                     TextStyle(
                                         color = token.subtitleTextColor(
                                             appBarInfo
-                                        ),
-                                        platformStyle = PlatformTextStyle(includeFontPadding = true)
+                                        )
                                     )
                                 ),
                                 maxLines = 1,
@@ -232,10 +229,7 @@ fun AppBar(
                             .weight(1F),
                         style = titleTextStyle.merge(
                             TextStyle(
-                                color = token.titleTextColor(appBarInfo),
-                                platformStyle = PlatformTextStyle(
-                                    includeFontPadding = true
-                                )
+                                color = token.titleTextColor(appBarInfo)
                             )
                         ),
                         maxLines = 1,
