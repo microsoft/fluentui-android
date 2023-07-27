@@ -37,6 +37,7 @@ import kotlin.math.sqrt
  *
  * @param shape Shape of the shimmer. See [ShimmerShape] for shapes
  * @param modifier Modifier for shimmer
+ * @param content Composable content to be displayed. Note: This will be displayed only when shimmer color(Not knockOutEffect Color) is transparent.
  * @param shimmerTokens Token values for shimmer
  *
  */
