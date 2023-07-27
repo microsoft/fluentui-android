@@ -40,4 +40,9 @@ open class ShimmerTokens : IControlToken, Parcelable {
             themeMode = FluentTheme.themeMode
         )
     }
+
+    @Composable
+    open fun delay(shimmerInfo: ShimmerInfo): Int {
+        return 1000
+    }
 }

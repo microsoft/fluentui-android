@@ -1,12 +1,17 @@
 package com.microsoft.fluentui.tokenized.shimmer
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,10 +40,12 @@ import kotlin.math.sqrt
  * @param shimmerTokens Token values for shimmer
  *
  */
+
 @Composable
 fun Shimmer(
     modifier: Modifier = Modifier,
     shape: ShimmerShape = ShimmerShape.Box,
+    content: (@Composable () -> Unit)? = null,
     shimmerTokens: ShimmerTokens? = null
 ) {
     val themeID =
@@ -56,6 +63,7 @@ fun Shimmer(
     val shimmerKnockoutEffectColor = tokens.knockoutEffectColor(shimmerInfo)
     val cornerRadius =
         dpToPx(tokens.cornerRadius(shimmerInfo))
+    val shimmerDelay = tokens.delay(shimmerInfo)
     val infiniteTransition = rememberInfiniteTransition()
     val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
     val initialValue = if (isLtr) 0f else screenWidth
@@ -65,7 +73,7 @@ fun Shimmer(
         targetValue,
         infiniteRepeatable(
             animation = tween(
-                durationMillis = 1000,
+                durationMillis = shimmerDelay,
                 easing = LinearEasing
             )
         )
@@ -77,20 +85,26 @@ fun Shimmer(
         start = Offset.Zero,
         end = Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
     )
-    if (shape == ShimmerShape.Box) {
-        Spacer(
-            modifier = modifier
-                .width(240.dp)
-                .height(12.dp)
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(gradientColor)
-        )
+    if (content != null) {
+        Box(
+            Modifier
+                .width(IntrinsicSize.Max)
+                .height(IntrinsicSize.Max)
+        ) {
+            content()
+            Spacer(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(cornerRadius))
+                    .background(gradientColor)
+            )
+        }
     } else {
         Spacer(
             modifier = modifier
-                .size(60.dp)
-                .clip(CircleShape)
+                .clip(RoundedCornerShape(cornerRadius))
                 .background(gradientColor)
         )
     }
+
 }
