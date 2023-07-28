@@ -19,35 +19,84 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerInfo
-import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerTokens
 import com.microsoft.fluentui.util.dpToPx
 import kotlin.math.absoluteValue
 import kotlin.math.sqrt
 
+const val DEFAULT_WIDTH = 120
+const val DEFAULT_HEIGHT = 80
+const val DEFAULT_CORNER_RADIUS = 4
+
 /**
  * Create a Shimmer effect
  *
- * @param shape Shape of the shimmer. See [ShimmerShape] for shapes
+ * @param height Height of the shimmer
+ * @param width Width of the shimmer
+ * @param cornerRadius Corner radius of the shimmer
  * @param modifier Modifier for shimmer
- * @param content Composable content to be displayed. Note: This will be displayed only when shimmer color(Not knockOutEffect Color) is transparent.
  * @param shimmerTokens Token values for shimmer
  *
  */
-
 @Composable
 fun Shimmer(
+    height: Dp = DEFAULT_HEIGHT.dp,
+    width: Dp = DEFAULT_WIDTH.dp,
+    cornerRadius: Dp = DEFAULT_CORNER_RADIUS.dp,
     modifier: Modifier = Modifier,
-    shape: ShimmerShape = ShimmerShape.Box,
-    content: (@Composable () -> Unit)? = null,
     shimmerTokens: ShimmerTokens? = null
+) {
+    InternalShimmer(
+        height = height,
+        width = width,
+        cornerRadius = cornerRadius,
+        modifier = modifier,
+        shimmerTokens = shimmerTokens
+    )
+}
+
+/**
+ * Create a Shimmer effect
+ *
+ * @param content Content to be shimmered
+ * @param cornerRadius Corner radius of the shimmer
+ * @param modifier Modifier for shimmer
+ * @param shimmerTokens Token values for shimmer
+ *
+ */
+@Composable
+fun Shimmer(
+    cornerRadius: Dp = DEFAULT_CORNER_RADIUS.dp,
+    modifier: Modifier = Modifier,
+    shimmerTokens: ShimmerTokens? = null,
+    content: @Composable () -> Unit,
+) {
+    InternalShimmer(
+        cornerRadius = cornerRadius,
+        modifier = modifier,
+        shimmerTokens = shimmerTokens
+    ) {
+        content()
+    }
+}
+
+@Composable
+internal fun InternalShimmer(
+    height: Dp? = null,
+    width: Dp? = null,
+    cornerRadius: Dp,
+    modifier: Modifier = Modifier,
+    shimmerTokens: ShimmerTokens? = null,
+    content: (@Composable () -> Unit)? = null,
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -58,12 +107,15 @@ fun Shimmer(
     val screenWidth = dpToPx(configuration.screenWidthDp.dp)
     val diagonal =
         sqrt((screenHeight * screenHeight + screenWidth * screenWidth).toDouble()).toFloat()
-    val shimmerInfo = ShimmerInfo(shape = shape)
-    val shimmerBackgroundColor =
+    val shimmerInfo = ShimmerInfo()
+    val shimmerBackgroundColor = if (content != null) {
+        Color.Transparent
+    } else {
         tokens.color(shimmerInfo)
+    }
     val shimmerKnockoutEffectColor = tokens.knockoutEffectColor(shimmerInfo)
     val cornerRadius =
-        dpToPx(tokens.cornerRadius(shimmerInfo))
+        dpToPx(cornerRadius)
     val shimmerDelay = tokens.delay(shimmerInfo)
     val infiniteTransition = rememberInfiniteTransition()
     val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
@@ -103,6 +155,8 @@ fun Shimmer(
     } else {
         Spacer(
             modifier = modifier
+                .width(width ?: DEFAULT_WIDTH.dp)
+                .height(height ?: DEFAULT_HEIGHT.dp)
                 .clip(RoundedCornerShape(cornerRadius))
                 .background(gradientColor)
         )
