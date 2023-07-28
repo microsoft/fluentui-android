@@ -284,8 +284,3 @@ fun rememberPeoplePickerItemDataList(
         initialValue
     }
 }
-
-
-/*
-
- */
