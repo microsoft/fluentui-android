@@ -90,6 +90,6 @@ jobs:
       - task: PublishPipelineArtifact@1
         displayName: "Publish release notes to pipeline"
         inputs:
-          targetPath: "$(build.sourcesdirectory)/dogfood-release-notes.txt"
+          targetPath: "$(build.sourcesdirectory)/FluentUI.Demo/src/main/assets/dogfood-release-notes.txt"
           artifact: "notes"
           publishLocation: "pipeline"
