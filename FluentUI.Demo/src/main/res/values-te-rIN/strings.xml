@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar శైలి</string>
     <string name="app_bar_subtitle">ఉపశీర్షిక</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Bottom Border</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">నావిగేషన్ చిహ్నం క్లిక్ చేయబడింది.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">డ్రాయర్‌ని విస్తరించు</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">డ్రాయర్‌ని మూసివేయి</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">డ్రాయర్ రకం ఎంచుకోండి</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">ఎగువ</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">విజబుల్ రీజియన్‌లో మొత్తం డ్రాయర్ కనిపిస్తోంది.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">దిగువ</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">విజిబుల్ ప్రాంతంలో మొత్తం డ్రాయర్ కనిపిస్తుంది. మోషన్ స్క్రోల్ కంటెంట్‌ను స్వైప్ చేయండి. విస్తరించదగిన డ్రాయర్ అనేది డ్రాగ్ హ్యాండిల్ ద్వారా విస్తరించబడుతుంది.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">ఎడమ స్లైడ్ ఓవర్</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">ఎడమ వైపు నుండి కనిపించే ప్రాంతానికి డ్రాయర్ స్లైడ్ అవుతుంది.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">కుడి స్లైడ్ ఓవర్</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">కుడి వైపు నుండి కనిపించే ప్రాంతానికి డ్రాయర్ స్లైడ్ అవుతుంది.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">దిగువ స్లైడ్ ఓవర్</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">స్క్రీన్ దిగువ నుండి కనిపించే ప్రాంతానికి డ్రాయర్ స్లైడ్ అవుతుంది. విస్తరించదగిన డ్రాయర్ పై కదలికను స్వైప్ చేయండి, దాని మిగిలిన భాగాన్ని కనిపించే ప్రాంతానికి తీసుకురండి మరియు తరువాత స్క్రోల్ చేయండి.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">స్క్రిమ్ కనిపిస్తోంది</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">డ్రాయర్ కంటెంట్ ఎంచుకోండి</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">పూర్తి స్క్రీన్ పరిమాణం స్క్రోలబుల్ కంటెంట్</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">సగం కంటే ఎక్కువ స్క్రీన్ కంటెంట్</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">సగం కంటే తక్కువ స్క్రీన్ కంటెంట్</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">డైనమిక్ సైజ్ కంటెంట్</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">నెస్టెడ్ డ్రాయర్ కంటెంట్</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">విస్తరించదగినది</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">హ్యాండిల్‌ని చూపించు</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Title</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Tooltip Text</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Top Start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Top End </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Bottom Start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Bottom End </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Center </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Custom Center</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">For updates on Release Notes, </string>
+    <string name="click_here">click here.</string>
+    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
+    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
+    <string name="design_tokens">Design Tokens</string>
+    <string name="release_notes">Release Notes</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub Repo Link</string>
+    <string name="report_issue">Report Issue</string>
+    <string name="v1_components">V1 Components</string>
+    <string name="v2_components">V2 Components</string>
+    <string name="all_components">All</string>
+    <string name="fluent_logo">Fluent Logo</string>
+    <string name="new_badge">New</string>
+    <string name="modified_badge">Modified</string>
+    <string name="api_break_badge">API Break</string>
+    <string name="app_bar_more">More</string>
+    <string name="accent">Accent</string>
+    <string name="appearance">Appearance</string>
+    <string name="choose_brand_theme">Choose your brand theme:</string>
+    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Choose Appearance</string>
+    <string name="appearance_system_default">System Default</string>
+    <string name="appearance_light">Light</string>
+    <string name="appearance_dark">Dark</string>
+    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
+    <string name="control_tokens_details">Control Tokens details</string>
+    <string name="parameters">Parameters</string>
+    <string name="control_tokens">Control Tokens</string>
+    <string name="global_tokens">Global Tokens</string>
+    <string name="alias_tokens">Alias Tokens</string>
+    <string name="sample_text">Text</string>
+    <string name="sample_icon">Sample Icon</string>
+    <string name="color">Color</string>
+    <string name="neutral_color_tokens">Neutral Color Tokens</string>
+    <string name="font_size_tokens">Font Size Tokens</string>
+    <string name="line_height_tokens">Line Height Tokens</string>
+    <string name="font_weight_tokens">Font Weight Tokens</string>
+    <string name="icon_size_tokens">Icon Size Tokens</string>
+    <string name="size_tokens">Size Tokens</string>
+    <string name="shadow_tokens">Shadow Tokens</string>
+    <string name="corner_radius_tokens">Corner RadiusTokens</string>
+    <string name="stroke_width_tokens">Stroke Width Tokens</string>
+    <string name="brand_color_tokens">Brand Color Tokens</string>
+    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
+    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
+    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
+    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
+    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
+    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
+    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
+    <string name="presence_tokens">Presence Color Tokens</string>
+    <string name="typography_tokens">Typography Tokens</string>
+    <string name="unspecified">Unspecified</string>
+
 </resources>
