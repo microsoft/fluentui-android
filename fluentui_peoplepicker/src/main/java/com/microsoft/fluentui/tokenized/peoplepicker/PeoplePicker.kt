@@ -37,7 +37,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.LayoutDirection
-import com.microsoft.fluentui.core.R
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.theme.FluentTheme
@@ -50,6 +49,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
 import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
+import com.microsoft.fluentui.peoplepicker.R
 
 /**
  * API to create a customized PeoplePicker for users to add a list of PersonaChips
@@ -81,7 +81,7 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  * @param leadingIconContentDescription String which acts as content description for leading icon.
  * @param trailingAccessoryIcon Icon which is displayed towards the end of textField and mainly
  * acts as dismiss icon.
- * @param contentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
+ * @param peoplePickerContentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
  */
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
@@ -106,7 +106,7 @@ fun PeoplePicker(
         SearchBarIcons.Dismisscircle,
         contentDescription = LocalContext.current.resources.getString(R.string.fluentui_clear_text)
     ),
-    contentDescription: String? = null,
+    peoplePickerContentDescription: String? = null,
     peoplePickerTokens: PeoplePickerTokens? = null
 ) {
     val themeID =
@@ -157,7 +157,7 @@ fun PeoplePicker(
                 onValueChange(queryText, selectedPeopleList)
             }
         }),
-        textFieldContentDescription = contentDescription,
+        textFieldContentDescription = peoplePickerContentDescription,
         decorationBox = { innerTextField ->
             Box(
                 Modifier
@@ -198,15 +198,12 @@ fun PeoplePicker(
                         onValueChange(queryText, selectedPeopleList)
                         isAdded = selectedPeopleListSize < selectedPeopleList.size
                         lastAddedPerson = selectedPeopleList.lastOrNull()?.person ?: Person()
-                        if (isAdded) {
-                            accessibilityAnnouncement = " Last added "
-                            accessibilityAnnouncement += lastAddedPerson.getLabel()
-                            lastRemovedPerson = lastAddedPerson
+                        accessibilityAnnouncement = if (isAdded) {
+                            LocalContext.current.resources.getString(R.string.people_picker_accessibility_persona_added, lastAddedPerson.getLabel())
                         } else {
-                            accessibilityAnnouncement = " Last removed "
-                            accessibilityAnnouncement += lastRemovedPerson.getLabel()
-                            lastRemovedPerson = lastAddedPerson
+                            LocalContext.current.resources.getString(R.string.people_picker_accessibility_persona_removed, lastRemovedPerson.getLabel())
                         }
+                        lastRemovedPerson = lastAddedPerson
                     }
                     selectedPeopleListSize = selectedPeopleList.size
                     Box {
@@ -225,7 +222,8 @@ fun PeoplePicker(
                     }
                 }
             }
-        }
+        },
+        textFieldTokens = peoplePickerTokens
     )
 
 }

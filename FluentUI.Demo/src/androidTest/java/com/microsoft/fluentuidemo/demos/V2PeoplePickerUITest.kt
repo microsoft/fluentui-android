@@ -40,7 +40,6 @@ class V2PeoplePickerUITest {
 
             })
         }
-        composeTestRule.onRoot().printToLog("testPeoplePickerChip")
         val peoplePicker = composeTestRule.onNodeWithTag("V2PeoplePicker")
         peoplePicker.assertExists()
         peoplePicker.assertIsDisplayed()
@@ -53,7 +52,6 @@ class V2PeoplePickerUITest {
 
             })
         }
-        composeTestRule.onRoot().printToLog("testPeoplePickerChip")
         val textField = composeTestRule.onNodeWithTag("V2PeoplePicker").onChild()
         textField.assertExists()
         textField.assertIsDisplayed()

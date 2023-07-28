@@ -24,14 +24,4 @@ open class PeoplePickerTokens : TextFieldTokens() {
     open fun chipSpacing(peoplePickerInfo: PeoplePickerInfo): Dp {
         return FluentGlobalTokens.size(FluentGlobalTokens.SizeTokens.Size80)
     }
-
-    @Composable
-    open fun hintColor(peoplePickerInfo: PeoplePickerInfo): Color {
-        return FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground2].value()
-    }
-
-    @Composable
-    open fun hintTextTypography(peoplePickerInfo: PeoplePickerInfo): TextStyle {
-        return FluentTheme.aliasTokens.typography[FluentAliasTokens.TypographyTokens.Body1]
-    }
 }

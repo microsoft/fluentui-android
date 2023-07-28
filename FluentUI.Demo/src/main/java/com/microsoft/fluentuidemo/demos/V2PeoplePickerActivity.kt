@@ -12,7 +12,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.pluralStringResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
@@ -43,6 +46,7 @@ class V2PeoplePickerActivity : V2DemoActivity() {
         }
     }
 
+    @OptIn(ExperimentalComposeUiApi::class)
     @Composable
     private fun CreatePeoplePickerActivity() {
         val people = mutableListOf(
@@ -172,7 +176,7 @@ class V2PeoplePickerActivity : V2DemoActivity() {
                             }
                         }
                     },
-                    contentDescription = "Total recipients: ${selectedPeopleList.size}",
+                    peoplePickerContentDescription = pluralStringResource(R.plurals.people_picker_accessibility_text_view_example, selectedPeopleList.size, selectedPeopleList.size),
                     label = "People Picker",
                     searchHint = "Search People",
                     assistiveText = if (assistiveText) "This is a sample Assistive Text" else null,
