@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
@@ -68,7 +70,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(height = 80.dp, width = 120.dp, cornerRadius = 4.dp)
+                Shimmer(modifier = Modifier.size(120.dp, 80.dp))
                 Column(
                     Modifier
                         .height(80.dp)
@@ -76,7 +78,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
                     Shimmer(modifier = Modifier.size(140.dp, 12.dp))
-                    Shimmer(height = 12.dp, width = 180.dp)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
                     Shimmer(modifier = Modifier.size(200.dp, 12.dp))
                 }
             }
@@ -92,14 +94,14 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp), cornerRadius = 50.dp)
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)))
                 Column(
                     Modifier
                         .height(80.dp)
                         .padding(top = 10.dp, bottom = 10.dp),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Shimmer(width = 140.dp, height = 12.dp)
+                    Shimmer(modifier = Modifier.size(180.dp, 12.dp))
                     Shimmer(modifier = Modifier.size(180.dp, 12.dp))
                 }
             }
@@ -110,7 +112,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(modifier = Modifier.size(60.dp, 60.dp), cornerRadius = 50.dp)
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)))
                 Column(
                     Modifier
                         .height(80.dp)
@@ -128,7 +130,7 @@ class V2ShimmerActivity : V2DemoActivity() {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Shimmer(height = 60.dp, width = 60.dp, cornerRadius = 50.dp)
+                Shimmer(modifier = Modifier.size(60.dp, 60.dp).clip(RoundedCornerShape(50.dp)))
                 Column(
                     Modifier
                         .height(80.dp)

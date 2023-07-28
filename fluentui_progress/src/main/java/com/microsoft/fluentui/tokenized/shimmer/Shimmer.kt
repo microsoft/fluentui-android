@@ -33,32 +33,22 @@ import com.microsoft.fluentui.util.dpToPx
 import kotlin.math.absoluteValue
 import kotlin.math.sqrt
 
-private const val DEFAULT_WIDTH = 120
-private const val DEFAULT_HEIGHT = 80
 private const val DEFAULT_CORNER_RADIUS = 4
 
 /**
  * Create an empty Shimmer effect
  *
- * @param height Height of the shimmer
- * @param width Width of the shimmer
- * @param cornerRadius Corner radius of the shimmer
  * @param modifier Modifier for shimmer
  * @param shimmerTokens Token values for shimmer
  *
  */
 @Composable
 fun Shimmer(
-    height: Dp = DEFAULT_HEIGHT.dp,
-    width: Dp = DEFAULT_WIDTH.dp,
-    cornerRadius: Dp = DEFAULT_CORNER_RADIUS.dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null
 ) {
     InternalShimmer(
-        height = height,
-        width = width,
-        cornerRadius = cornerRadius,
+        cornerRadius = DEFAULT_CORNER_RADIUS.dp,
         modifier = modifier,
         shimmerTokens = shimmerTokens
     )
@@ -91,8 +81,6 @@ fun Shimmer(
 
 @Composable
 internal fun InternalShimmer(
-    height: Dp? = null,
-    width: Dp? = null,
     cornerRadius: Dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null,
@@ -140,7 +128,7 @@ internal fun InternalShimmer(
     )
     if (content != null) {
         Box(
-            Modifier
+            modifier
                 .width(IntrinsicSize.Max)
                 .height(IntrinsicSize.Max)
         ) {
@@ -155,11 +143,7 @@ internal fun InternalShimmer(
     } else {
         Spacer(
             modifier = modifier
-                .width(width ?: DEFAULT_WIDTH.dp)
-                .height(height ?: DEFAULT_HEIGHT.dp)
-                .clip(RoundedCornerShape(cornerRadius))
                 .background(gradientColor)
         )
     }
-
 }
