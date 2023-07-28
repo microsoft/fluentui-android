@@ -2,7 +2,6 @@ package com.microsoft.fluentuidemo.demos
 
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.printToLog
 import com.microsoft.fluentuidemo.BaseTest
 import org.junit.Before
 import org.junit.Test

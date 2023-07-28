@@ -59,8 +59,6 @@ class V2ScaffoldActivity : V2DemoActivity() {
     }
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-25"
-    override val controlTokensUrl =
-        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-25"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -100,4 +100,6 @@ open class BaseTest {
         // Verify component is displayed
         component.assertExists(errorMessage)
     }
+
+    fun getString(resId: Int) = context.resources.getString(resId)
 }

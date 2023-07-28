@@ -5,6 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.microsoft.fluentui.tokenized.notification.*
 import com.microsoft.fluentuidemo.BaseTest
+import com.microsoft.fluentuidemo.R
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -80,14 +81,16 @@ class V2CardNudgeActivityUITest : BaseTest() {
     fun testLeftSwipe() {
         composeTestRule.onNodeWithTag(CARD_NUDGE).performTouchInput { swipeLeft() }
         composeTestRule.onNodeWithTag(CARD_NUDGE).performClick()
-        composeTestRule.onNodeWithText("Left Swiped", substring = true).assertExists()
+        composeTestRule.onNodeWithText(getString(R.string.fluentui_left_swiped), substring = true)
+            .assertExists()
     }
 
     @Test
     fun testRightSwipe() {
         composeTestRule.onNodeWithTag(CARD_NUDGE).performTouchInput { swipeRight() }
         composeTestRule.onNodeWithTag(CARD_NUDGE).performClick()
-        composeTestRule.onNodeWithText("Right Swiped", substring = true).assertExists()
+        composeTestRule.onNodeWithText(getString(R.string.fluentui_right_swiped), substring = true)
+            .assertExists()
     }
 
 }
