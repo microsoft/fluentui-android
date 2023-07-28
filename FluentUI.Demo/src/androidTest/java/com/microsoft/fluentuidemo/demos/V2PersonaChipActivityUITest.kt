@@ -1,14 +1,22 @@
 package com.microsoft.fluentuidemo.demos
 
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.assertHeightIsEqualTo
+import androidx.compose.ui.test.assertIsNotEnabled
+import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.hasAnyAncestor
+import androidx.compose.ui.test.hasContentDescription
+import androidx.compose.ui.test.hasParent
+import androidx.compose.ui.test.hasTestTag
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.persona.ANONYMOUS
 import com.microsoft.fluentui.tokenized.persona.AVATAR_IMAGE
 import com.microsoft.fluentuidemo.BaseTest
+import com.microsoft.fluentuidemo.R
 import org.junit.Before
 import org.junit.Test
 
-private const val CLOSE_ICON_CONTENT_DESCRIPTION = "Close"
 private const val AVATAR_ICON_SIZE = 16
 
 class V2PersonaChipActivityUITest : BaseTest() {
@@ -32,7 +40,7 @@ class V2PersonaChipActivityUITest : BaseTest() {
         toggleControlToValue(composeTestRule.onNodeWithTag(PERSONA_CHIP_SWITCH), true)
         composeTestRule.onNodeWithTag(PERSONA_CHIP_MEDIUM_CHIP).performClick()
         composeTestRule.onNode(
-            hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
+            hasContentDescription(getString(R.string.fluentui_close)).and(
                 hasAnyAncestor(
                     hasTestTag(
                         PERSONA_CHIP_MEDIUM_CHIP
@@ -65,7 +73,7 @@ class V2PersonaChipActivityUITest : BaseTest() {
             ), true
         ).assertDoesNotExist()
         composeTestRule.onNode(
-            hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
+            hasContentDescription(getString(R.string.fluentui_close)).and(
                 hasAnyAncestor(
                     hasTestTag(
                         PERSONA_CHIP_MEDIUM_CHIP
@@ -98,7 +106,7 @@ class V2PersonaChipActivityUITest : BaseTest() {
             ), true
         ).assertDoesNotExist()
         composeTestRule.onNode(
-            hasContentDescription(CLOSE_ICON_CONTENT_DESCRIPTION).and(
+            hasContentDescription(getString(R.string.fluentui_close)).and(
                 hasAnyAncestor(
                     hasTestTag(
                         PERSONA_CHIP_MEDIUM_CHIP

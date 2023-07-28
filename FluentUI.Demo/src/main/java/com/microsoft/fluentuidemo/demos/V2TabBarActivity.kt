@@ -48,7 +48,7 @@ class V2TabBarActivity : V2DemoActivity() {
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-33"
     override val controlTokensUrl =
-        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-33"
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-32"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
