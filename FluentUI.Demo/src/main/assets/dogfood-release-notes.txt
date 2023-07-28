@@ -15,7 +15,10 @@ Fluent V2:
 		4. TextField: TextField now has decorationBox and content description parameter
 		5. Shimmer: Shimmer now supports adding content. This allows shimmer animation on any content
 		6. FileCard: FileCard now honour's incoming width measurements. max and min width can be set.
-		7. Improvements in UI test coverage
+		7. AppABr: Added parameter to enable bottom border
+		8. Badge: Added corner radius token
+		9. Improvements in UI test coverage
+		10. Fixed Appbar and Button crash
 
 
 	Demo App:
