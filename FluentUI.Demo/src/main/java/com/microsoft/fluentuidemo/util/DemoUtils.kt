@@ -19,10 +19,15 @@ fun createBitmapFromLayout(view: View): Bitmap {
     return bitmap
 }
 
-fun invokeToast(string: String, context: Context) {
+fun invokeToast(string: String, context: Context, action: String? = null) {
+    val message = if (action == null) {
+        "$string ${context.resources.getString(R.string.common_clicked)}"
+    } else {
+        "$string $action"
+    }
     Toast.makeText(
         context,
-        "$string ${context.resources.getString(R.string.common_clicked)}",
+        message,
         Toast.LENGTH_SHORT
     ).show()
 }

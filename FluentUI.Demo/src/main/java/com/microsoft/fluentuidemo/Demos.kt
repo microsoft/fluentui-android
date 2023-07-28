@@ -60,6 +60,7 @@ import com.microsoft.fluentuidemo.demos.V2ShimmerActivity
 import com.microsoft.fluentuidemo.demos.V2SnackbarActivity
 import com.microsoft.fluentuidemo.demos.V2TabBarActivity
 import com.microsoft.fluentuidemo.demos.V2TextFieldActivity
+import com.microsoft.fluentuidemo.demos.V2ToolTipActivity
 import java.util.UUID
 import kotlin.reflect.KClass
 
@@ -98,6 +99,7 @@ const val V2SHIMMER = "V2 Shimmer"
 const val V2SNACKBAR = "V2 Snackbar"
 const val V2TABBAR = "V2 TabBar"
 const val V2TEXTFIELD = "V2 TextField"
+const val V2TOOL_TIP = "V2 ToolTip"
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
 const val V2APP_BAR_LAYOUT = "V2 AppBarLayout"
@@ -183,7 +185,7 @@ val V2DEMO = arrayListOf(
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
     Demo(V2TABBAR, V2TabBarActivity::class),
     Demo(V2TEXTFIELD, V2TextFieldActivity::class),
-
+    Demo(V2TOOL_TIP, V2ToolTipActivity::class),
     )
 
 val DUO_DEMOS = arrayListOf(

@@ -16,6 +16,8 @@ open class BaseTest {
     @get:Rule
     val composeTestRule = createComposeRule()
 
+    lateinit var context: android.content.Context
+
     @Before
     fun initializeIntent() {
         Intents.init()
@@ -31,8 +33,8 @@ open class BaseTest {
     }
 
     private fun setUpIntentForActivity(activity: Class<*>): Intent {
-        val targetContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(targetContext, activity)
+        context = InstrumentationRegistry.getInstrumentation().targetContext
+        val intent = Intent(context, activity)
         intent.putExtra(DemoActivity.DEMO_ID, UUID.randomUUID())
         intent.putExtra(V2DemoActivity.DEMO_TITLE, "Demo Test")
         return intent
