@@ -1,6 +1,22 @@
-Release Version 0.1.29:
+Release Version 0.1.30:
 
 What's New:
 
 Fluent V2:
-	Components: V2 PeoplePicker
+	Components:
+		1. V2 ToolTip
+
+	Fix/Enahncement:
+		1. Listitem: Trailing accessory view is now shown when bottomContent parameter is used
+		2. PersonChip: Fixed talkback not announcing chip state
+		3. PeoplePicker: PeoplePicker now uses V2TextField internally
+						 Removed view requester that causes crash
+						 Replaced composable accessory views with Fluenticons (breaking change)
+		4. TextField: TextField now has decorationBox and content description parameter
+		5. Shimmer: Shimmer now supports adding content. This allows shimmer animation on any content
+		6. FileCard: FileCard now honour's incoming width measurements. max and min width can be set.
+		7. Improvements in UI test coverage
+
+
+	Demo App:
+		1. Demo app revamped 
