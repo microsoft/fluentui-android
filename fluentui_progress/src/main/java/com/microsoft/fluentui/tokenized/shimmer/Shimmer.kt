@@ -33,12 +33,12 @@ import com.microsoft.fluentui.util.dpToPx
 import kotlin.math.absoluteValue
 import kotlin.math.sqrt
 
-const val DEFAULT_WIDTH = 120
-const val DEFAULT_HEIGHT = 80
-const val DEFAULT_CORNER_RADIUS = 4
+private const val DEFAULT_WIDTH = 120
+private const val DEFAULT_HEIGHT = 80
+private const val DEFAULT_CORNER_RADIUS = 4
 
 /**
- * Create a Shimmer effect
+ * Create an empty Shimmer effect
  *
  * @param height Height of the shimmer
  * @param width Width of the shimmer
@@ -65,7 +65,7 @@ fun Shimmer(
 }
 
 /**
- * Create a Shimmer effect
+ * Create Shimmer effect on some content
  *
  * @param content Content to be shimmered
  * @param cornerRadius Corner radius of the shimmer
