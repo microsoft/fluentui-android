@@ -115,7 +115,7 @@ fun FileCard(
         Box(contentAlignment = Alignment.Center) {
             Column(
                 modifier = Modifier
-                    .requiredWidth(IntrinsicSize.Min)
+                    .width(IntrinsicSize.Min)
                     .testTag("Card")
                     .then(
                         if (onClick != null) Modifier.clickable(
