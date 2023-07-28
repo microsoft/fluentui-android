@@ -48,7 +48,7 @@ class V2SegmentedControlActivity : V2DemoActivity() {
 
     override val paramsUrl = "https://github.com/microsoft/fluentui-android/wiki/Controls#params-27"
     override val controlTokensUrl =
-        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-26"
+        "https://github.com/microsoft/fluentui-android/wiki/Controls#control-tokens-27"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
