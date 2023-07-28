@@ -57,15 +57,15 @@ fun Shimmer(
 /**
  * Create Shimmer effect on some content
  *
- * @param content Content to be shimmered
  * @param cornerRadius Corner radius of the shimmer
  * @param modifier Modifier for shimmer
  * @param shimmerTokens Token values for shimmer
+ * @param content Content to be shimmered
  *
  */
 @Composable
 fun Shimmer(
-    cornerRadius: Dp = DEFAULT_CORNER_RADIUS.dp,
+    cornerRadius: Dp,
     modifier: Modifier = Modifier,
     shimmerTokens: ShimmerTokens? = null,
     content: @Composable () -> Unit,
@@ -143,6 +143,7 @@ internal fun InternalShimmer(
     } else {
         Spacer(
             modifier = modifier
+                .clip(RoundedCornerShape(cornerRadius))
                 .background(gradientColor)
         )
     }

@@ -61,7 +61,7 @@ class V2ShimmerUITest {
                         .testTag(SHIMMER),
                     content = {
                         Avatar(modifier = Modifier.testTag("Avatar").clickable {  }, person = Person("TestName"), size = AvatarSize.Size40)
-                    }
+                    }, cornerRadius = 50.dp
                 )
             }
         }
