@@ -31,7 +31,6 @@ import com.microsoft.fluentui.util.dpToPx
  *
  */
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun Badge(
     modifier: Modifier = Modifier,
@@ -88,10 +87,7 @@ fun Badge(
                 modifier = Modifier.padding(paddingValues),
                 style = typography.merge(
                     TextStyle(
-                        color = textColor,
-                        platformStyle = PlatformTextStyle(
-                            includeFontPadding = false
-                        )
+                        color = textColor
                     )
                 )
             )

@@ -30,7 +30,6 @@ import com.microsoft.fluentui.theme.token.controlTokens.CitationTokens
  * @param modifier Optional modifier for the citation
  * @param citationTokens Optional tokens to customize appearance
  */
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun Citation(
     text: String,
@@ -76,9 +75,7 @@ fun Citation(
             text = text,
             style = typography.merge(
                 TextStyle(
-                    platformStyle = PlatformTextStyle(
-                        includeFontPadding = false
-                    ), color = textColor
+                    color = textColor
                 )
             )
         )
