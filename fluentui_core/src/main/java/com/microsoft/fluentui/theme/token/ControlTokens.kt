@@ -64,6 +64,7 @@ open class ControlTokens : IControlTokens {
         SearchBarPersonaChip,
         SearchBar,
         Shimmer,
+        SideRail,
         Snackbar,
         TabBar,
         TabItem,
@@ -108,6 +109,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
                 ControlType.SearchBar -> SearchBarTokens()
                 ControlType.Shimmer -> ShimmerTokens()
+                ControlType.SideRail -> SideRailTokens()
                 ControlType.Snackbar -> SnackBarTokens()
                 ControlType.TabBar -> TabBarTokens()
                 ControlType.TabItem -> TabItemTokens()

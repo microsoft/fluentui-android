@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.compose.Scaffold
 import com.microsoft.fluentui.icons.SearchBarIcons
 import com.microsoft.fluentui.icons.searchbaricons.Arrowback
@@ -61,6 +63,11 @@ open class V2DemoActivity : ComponentActivity() {
     private var bottomBar: @Composable () -> Unit = {}
     fun setBottomBar(bottomBar: @Composable () -> Unit = {}) {
         this@V2DemoActivity.bottomBar = bottomBar
+    }
+
+    private var sideBar: @Composable () -> Unit = {}
+    fun setSideBar(sideBar: @Composable () -> Unit = {}) {
+        this@V2DemoActivity.sideBar = sideBar
     }
 
     open val paramsUrl: String = ""
@@ -236,6 +243,7 @@ open class V2DemoActivity : ComponentActivity() {
                         )
                     },
                     bottomBar = bottomBar,
+                    sideBar = sideBar
                 ) {
                     Box(
                         modifier = Modifier

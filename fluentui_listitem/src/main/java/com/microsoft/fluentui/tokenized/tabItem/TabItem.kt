@@ -63,7 +63,7 @@ fun TabItem(
             selected = selected,
             interactionSource = interactionSource
         )
-
+    val padding = token.padding(tabItemInfo = tabItemInfo)
     val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo)
     val rippleColor = token.rippleColor(tabItemInfo = tabItemInfo)
 
@@ -96,7 +96,7 @@ fun TabItem(
             modifier = modifier
                 .then(clickableModifier)
                 .background(backgroundColor)
-                .padding(top = 8.dp, start = 4.dp, bottom = 4.dp, end = 8.dp)
+                .padding(padding)
                 .then(widthModifier)
         )
         {
@@ -196,8 +196,8 @@ fun TabItem(
             verticalArrangement = Arrangement.Center,
             modifier = modifier
                 .then(clickableModifier)
+                .padding(padding)
                 .background(backgroundColor)
-                .padding(top = 8.dp, start = 8.dp, bottom = 4.dp, end = 8.dp)
                 .then(widthModifier)
         ) {
             badgeWithIcon()
