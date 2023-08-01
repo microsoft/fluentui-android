@@ -31,5 +31,7 @@ import org.junit.runners.Suite
     V2SnackbarActivityUITest::class,
     V2TabBarActivityUITest::class,
     V2TextFieldActivityUITest::class,
+    V2ToolTipActivityUITest::class,
+    V2ToolTipUITest::class
 )
 class UiTestSuite
