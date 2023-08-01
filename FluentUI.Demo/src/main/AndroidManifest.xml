@@ -29,6 +29,7 @@
         <activity android:name="com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BadgeActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2ButtonsActivity" />
+        <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicChipActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BasicControlsActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity" />
         <activity android:name="com.microsoft.fluentuidemo.demos.V2BottomSheetActivity" />
