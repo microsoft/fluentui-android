@@ -19,13 +19,24 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.controls.R
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.BasicChipInfo
 import com.microsoft.fluentui.theme.token.controlTokens.BasicChipTokens
 
+/**
+ * [BasicChip] is a compact representations of entities(most commonly, people)that can be typed in, deleted or dragged easily
+ * @param label Label for the chip
+ * @param modifier Modifier for the chip
+ * @param enabled Whether chip is enabled or disabled. Enabled by default.
+ * @param selected Whether chip is selected or unselected. Unselected by default.
+ * @param leadingAccessory Leading accessory for the chip
+ * @param trailingAccessory Trailing accessory for the chip
+ * @param onClick onClick action for chip
+ * @param interactionSource Optional interactionSource
+ * @param basicChipTokens Optional tokens for chip
+ */
 @Composable
 fun BasicChip(
     label: String,
@@ -90,14 +101,14 @@ fun BasicChip(
             horizontalArrangement = Arrangement.spacedBy(horizontalSpacing),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            if (leadingAccessory != null){
+            if (leadingAccessory != null) {
                 leadingAccessory()
             }
             BasicText(
                 text = label,
                 style = typography.merge(TextStyle(color = textColor))
             )
-            if (trailingAccessory != null){
+            if (trailingAccessory != null) {
                 trailingAccessory()
             }
         }
