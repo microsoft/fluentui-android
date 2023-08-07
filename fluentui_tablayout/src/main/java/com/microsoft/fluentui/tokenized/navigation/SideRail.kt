@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material.NavigationRail
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,13 +24,27 @@ import com.microsoft.fluentui.theme.token.controlTokens.TabItemTokens
 import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 import com.microsoft.fluentui.tokenized.tabItem.TabItem
 
+/**
+ * Side rails provide access to multiple destinations in your app. Used mainly in tablets and wide screen devices
+ *
+ * @param topTabDataList provide list of [TabData] to create top tabs.
+ * @param modifier the [Modifier] to be applied to this item
+ * @param topTabSelectedIndex Index of selected top tab.
+ * @param bottomTabSelectedIndex Index of selected bottom tab.
+ * @param header [Composable] to provide header view.
+ * @param enableIconText whether to show text under icons in top and bottom tabs.
+ * @param bottomTabDataList provide list of [TabData] to create bottom tabs.
+ * @param tabItemTokens [TabItemTokens] to apply on tabs.
+ * @param sideRailTokens provide appearance values. If not provided then tokens will be picked from AppThemeController
+ *
+ */
 @Composable
 fun SideRail(
     topTabDataList: List<TabData>,
     modifier: Modifier = Modifier,
     topTabSelectedIndex: Int = 0,
     bottomTabSelectedIndex: Int = -1,
-    avatar: @Composable (() -> Unit)? = null,
+    header: @Composable (() -> Unit)? = null,
     enableIconText: Boolean = false,
     bottomTabDataList: List<TabData>? = null,
     tabItemTokens: TabItemTokens? = null,
@@ -47,7 +60,7 @@ fun SideRail(
     val borderWidth = token.borderWidth(sideRailInfo)
     val topMargin = token.topMargin(sideRailInfo)
     val bottomMargin = token.bottomMargin(sideRailInfo)
-    val avatarPadding = token.avatarPadding(sideRailInfo)
+    val headerPadding = token.headerPadding(sideRailInfo)
 
     Box(
         modifier = modifier
@@ -65,15 +78,15 @@ fun SideRail(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(topMargin))
-            Box(modifier = Modifier.padding(avatarPadding)) {
-                avatar?.invoke()
+            Box(modifier = Modifier.padding(headerPadding)) {
+                header?.invoke()
             }
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f).selectableGroup(), horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                SideRailTabData(
+                SideRailTabs(
                     tabDataList = topTabDataList,
                     selectedIndex = topTabSelectedIndex,
                     enableIconText = enableIconText,
@@ -82,7 +95,7 @@ fun SideRail(
             }
             if (bottomTabDataList != null) {
                 Column(modifier = Modifier.selectableGroup(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    SideRailTabData(
+                    SideRailTabs(
                         tabDataList = bottomTabDataList,
                         selectedIndex = bottomTabSelectedIndex,
                         enableIconText = enableIconText,
@@ -98,7 +111,7 @@ fun SideRail(
 }
 
 @Composable
-private fun SideRailTabData(
+private fun SideRailTabs(
     tabDataList: List<TabData>,
     selectedIndex: Int,
     enableIconText: Boolean,

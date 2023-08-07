@@ -35,7 +35,7 @@ open class SideRailTokens : IControlToken, Parcelable {
         return FluentGlobalTokens.strokeWidth(FluentGlobalTokens.StrokeWidthTokens.StrokeWidth05)
     }
     @Composable
-    open fun avatarPadding(sideRailInfo: SideRailInfo): PaddingValues {
+    open fun headerPadding(sideRailInfo: SideRailInfo): PaddingValues {
         return PaddingValues(16.dp)
     }
 }

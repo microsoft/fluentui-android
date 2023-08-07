@@ -11,12 +11,10 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.MoreVert
-import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
@@ -36,12 +34,10 @@ import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
 import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
-import com.microsoft.fluentui.theme.token.controlTokens.TabTextAlignment
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.navigation.SideRail
-import com.microsoft.fluentui.tokenized.navigation.TabBar
 import com.microsoft.fluentui.tokenized.navigation.TabData
 import com.microsoft.fluentui.tokenized.notification.Badge
 import com.microsoft.fluentui.tokenized.persona.Avatar
@@ -269,7 +265,7 @@ class V2SideRailActivity : V2DemoActivity() {
 
             SideRail(
                 modifier = Modifier.testTag(TAB_BAR),
-                avatar = {
+                header = {
                     Avatar(
                         person = Person(
                             "Amanda", "Brady",
