@@ -37,6 +37,7 @@ open class ControlTokens : IControlTokens {
         AvatarGroup,
         Badge,
         BasicCard,
+        BasicChip,
         BottomSheet,
         Button,
         CardNudge,
@@ -82,6 +83,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.AvatarGroup -> AvatarGroupTokens()
                 ControlType.Badge -> BadgeTokens()
                 ControlType.BasicCard -> BasicCardTokens()
+                ControlType.BasicChip -> BasicChipTokens()
                 ControlType.BottomSheet -> BottomSheetTokens()
                 ControlType.Button -> ButtonTokens()
                 ControlType.CardNudge -> CardNudgeTokens()
