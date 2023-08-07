@@ -32,7 +32,7 @@ import com.microsoft.fluentui.tokenized.tabItem.TabItem
  * @param topTabSelectedIndex Index of selected top tab.
  * @param bottomTabSelectedIndex Index of selected bottom tab.
  * @param header [Composable] to provide header view.
- * @param enableIconText whether to show text under icons in top and bottom tabs.
+ * @param showIconText whether to show text under icons in top and bottom tabs.
  * @param bottomTabDataList provide list of [TabData] to create bottom tabs.
  * @param tabItemTokens [TabItemTokens] to apply on tabs.
  * @param sideRailTokens provide appearance values. If not provided then tokens will be picked from AppThemeController
@@ -45,7 +45,7 @@ fun SideRail(
     topTabSelectedIndex: Int = 0,
     bottomTabSelectedIndex: Int = -1,
     header: @Composable (() -> Unit)? = null,
-    enableIconText: Boolean = false,
+    showIconText: Boolean = false,
     bottomTabDataList: List<TabData>? = null,
     tabItemTokens: TabItemTokens? = null,
     sideRailTokens: SideRailTokens? = null
@@ -89,7 +89,7 @@ fun SideRail(
                 SideRailTabs(
                     tabDataList = topTabDataList,
                     selectedIndex = topTabSelectedIndex,
-                    enableIconText = enableIconText,
+                    showIconText = showIconText,
                     tabItemTokens = tabItemTokens
                 )
             }
@@ -98,7 +98,7 @@ fun SideRail(
                     SideRailTabs(
                         tabDataList = bottomTabDataList,
                         selectedIndex = bottomTabSelectedIndex,
-                        enableIconText = enableIconText,
+                        showIconText = showIconText,
                         tabItemTokens = tabItemTokens
                     )
                 }
@@ -114,7 +114,7 @@ fun SideRail(
 private fun SideRailTabs(
     tabDataList: List<TabData>,
     selectedIndex: Int,
-    enableIconText: Boolean,
+    showIconText: Boolean,
     tabItemTokens: TabItemTokens? = null
 ) {
     class TabItemCustomTokens : TabItemTokens() {
@@ -128,7 +128,7 @@ private fun SideRailTabs(
         TabItem(
             title = tabData.title,
             icon = if (tabData.selected) tabData.selectedIcon else tabData.icon,
-            textAlignment = if (enableIconText) TabTextAlignment.VERTICAL else TabTextAlignment.NO_TEXT,
+            textAlignment = if (showIconText) TabTextAlignment.VERTICAL else TabTextAlignment.NO_TEXT,
             selected = tabData.selected,
             onClick = tabData.onClick,
             accessory = tabData.badge,

@@ -66,6 +66,11 @@ open class V2DemoActivity : ComponentActivity() {
     }
 
     private var sideBar: @Composable () -> Unit = {}
+    private var floatingActionButton: @Composable ()->Unit = {}
+    fun setFab(floatingActionButton: @Composable ()->Unit = {}) {
+        this@V2DemoActivity.floatingActionButton = floatingActionButton
+    }
+
     fun setSideBar(sideBar: @Composable () -> Unit = {}) {
         this@V2DemoActivity.sideBar = sideBar
     }
@@ -243,7 +248,8 @@ open class V2DemoActivity : ComponentActivity() {
                         )
                     },
                     bottomBar = bottomBar,
-                    sideBar = sideBar
+                    sideBar = sideBar,
+                    floatingActionButton = floatingActionButton
                 ) {
                     Box(
                         modifier = Modifier

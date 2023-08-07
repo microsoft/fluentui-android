@@ -35,6 +35,7 @@ import com.microsoft.fluentui.theme.token.controlTokens.BadgeType
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonSize
 import com.microsoft.fluentui.theme.token.controlTokens.ButtonStyle
 import com.microsoft.fluentui.tokenized.controls.Button
+import com.microsoft.fluentui.tokenized.controls.FloatingActionButton
 import com.microsoft.fluentui.tokenized.controls.RadioButton
 import com.microsoft.fluentui.tokenized.listitem.ListItem
 import com.microsoft.fluentui.tokenized.navigation.SideRail
@@ -180,7 +181,6 @@ class V2SideRailActivity : V2DemoActivity() {
                 )
             }
         }
-
         setSideBar {
             var topSelectedIndex by rememberSaveable { mutableStateOf(0) }
             var bottomSelectedIndex by rememberSaveable { mutableStateOf(0) }
@@ -278,8 +278,11 @@ class V2SideRailActivity : V2DemoActivity() {
                 bottomTabDataList = bottomTabDataList.take(bottomTabItemsCount.value),
                 topTabSelectedIndex = topSelectedIndex,
                 bottomTabSelectedIndex = bottomSelectedIndex,
-                enableIconText = enableText.value,
+                showIconText = enableText.value,
             )
+        }
+        setFab(){
+            FloatingActionButton(onClick = { /*TODO*/ }, icon = Icons.Filled.Email)
         }
     }
 }

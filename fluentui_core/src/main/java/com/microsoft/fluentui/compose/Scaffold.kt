@@ -257,7 +257,7 @@ private fun ScaffoldLayout(
             // Explicitly not using placeRelative here as `leftOffset` already accounts for RTL
             fabPlacement?.let { placement ->
                 fabPlaceables.forEach {
-                    it.placeRelative(placement.left, layoutHeight - fabOffsetFromBottom!!)
+                    it.place(placement.left, layoutHeight - fabOffsetFromBottom!!)
                 }
             }
         }
