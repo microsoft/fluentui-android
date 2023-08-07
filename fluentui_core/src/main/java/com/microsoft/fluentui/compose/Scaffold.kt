@@ -235,16 +235,16 @@ private fun ScaffoldLayout(
             // Placing to control drawing order to match default elevation of each placeable
 
             bodyContentPlaceables.forEach {
-                it.place(0, 0)
+                it.placeRelative(0, 0)
             }
             topBarPlaceables.forEach {
-                it.place(sideBarWidth, 0)
+                it.placeRelative(sideBarWidth, 0)
             }
             sideBarPlaceables.forEach {
-                it.place(0, 0)
+                it.placeRelative(0,0)
             }
             snackbarPlaceables.forEach {
-                it.place(
+                it.placeRelative(
                     (layoutWidth - snackbarWidth) / 2 +
                             contentWindowInsets.getLeft(this@SubcomposeLayout, layoutDirection),
                     layoutHeight - snackbarOffsetFromBottom
@@ -252,12 +252,12 @@ private fun ScaffoldLayout(
             }
             // The bottom bar is always at the bottom of the layout
             bottomBarPlaceables.forEach {
-                it.place(sideBarWidth, layoutHeight - (bottomBarHeight ?: 0))
+                it.placeRelative(sideBarWidth, layoutHeight - (bottomBarHeight ?: 0))
             }
             // Explicitly not using placeRelative here as `leftOffset` already accounts for RTL
             fabPlacement?.let { placement ->
                 fabPlaceables.forEach {
-                    it.place(placement.left, layoutHeight - fabOffsetFromBottom!!)
+                    it.placeRelative(placement.left, layoutHeight - fabOffsetFromBottom!!)
                 }
             }
         }
