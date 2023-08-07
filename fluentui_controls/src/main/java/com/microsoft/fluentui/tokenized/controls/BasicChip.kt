@@ -82,12 +82,16 @@ fun BasicChip(
         modifier = modifier
             .clip(RoundedCornerShape(cornerRadius))
             .background(backgroundColor)
-            .clickable(
-                enabled = enabled,
-                onClick = onClick ?: {},
-                interactionSource = interactionSource,
-                indication = rememberRipple()
-            )
+            .then(if(onClick!=null){
+                Modifier.clickable(
+                    enabled = enabled,
+                    onClick = onClick,
+                    interactionSource = interactionSource,
+                    indication = rememberRipple()
+                )
+            }else{
+                Modifier
+            })
             .clearAndSetSemantics {
                 this.contentDescription = "$label $selectedString $enabledString"
             }

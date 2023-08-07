@@ -146,7 +146,7 @@ class V2BasicChipActivity : V2DemoActivity() {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Label(text = "File Type", textStyle = FluentAliasTokens.TypographyTokens.Body1Strong)
+            Label(text = "Basic Chip", textStyle = FluentAliasTokens.TypographyTokens.Body1Strong)
             Row(horizontalArrangement = spacedBy(8.dp)) {
                 BasicChip(
                     label = "Word",
@@ -164,6 +164,21 @@ class V2BasicChipActivity : V2DemoActivity() {
                     label = "PDF",
                     selected = selectedList[3],
                     onClick = { selectedList[3] = !selectedList[3] })
+            }
+            Label(text = "Chip States", textStyle = FluentAliasTokens.TypographyTokens.Body1Strong)
+            Row(horizontalArrangement = spacedBy(8.dp)) {
+                BasicChip(
+                    label = "Enabled", onClick = {})
+                BasicChip(
+                    label = "Selected",
+                    selected = true, onClick = {})
+                BasicChip(
+                    label = "Disabled",
+                    enabled = false
+                )
+                BasicChip(
+                    label = "Static"
+                )
             }
             Label(
                 text = "Time (Custom Color)",
