@@ -58,6 +58,7 @@ import com.microsoft.fluentuidemo.demos.V2ScaffoldActivity
 import com.microsoft.fluentuidemo.demos.V2SearchBarActivity
 import com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity
 import com.microsoft.fluentuidemo.demos.V2ShimmerActivity
+import com.microsoft.fluentuidemo.demos.V2SideRailActivity
 import com.microsoft.fluentuidemo.demos.V2SnackbarActivity
 import com.microsoft.fluentuidemo.demos.V2TabBarActivity
 import com.microsoft.fluentuidemo.demos.V2TextFieldActivity
@@ -98,9 +99,10 @@ const val V2SCAFFOLD = "V2 Scaffold"
 const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
 const val V2SHIMMER = "V2 Shimmer"
+const val V2SIDE_RAIL = "V2 SideRail"
 const val V2SNACKBAR = "V2 Snackbar"
-const val V2TABBAR = "V2 TabBar"
-const val V2TEXTFIELD = "V2 TextField"
+const val V2TAB_BAR = "V2 TabBar"
+const val V2TEXT_FIELD = "V2 TextField"
 const val V2TOOL_TIP = "V2 ToolTip"
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
@@ -184,10 +186,11 @@ val V2DEMO = arrayListOf(
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
-    Demo(V2SHIMMER, V2ShimmerActivity::class, Badge.Modified),
+    Demo(V2SHIMMER, V2ShimmerActivity::class),
+    Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
-    Demo(V2TABBAR, V2TabBarActivity::class),
-    Demo(V2TEXTFIELD, V2TextFieldActivity::class, Badge.Modified),
+    Demo(V2TAB_BAR, V2TabBarActivity::class),
+    Demo(V2TEXT_FIELD, V2TextFieldActivity::class),
     Demo(V2TOOL_TIP, V2ToolTipActivity::class, Badge.New),
     )
 
