@@ -281,8 +281,5 @@ class V2SideRailActivity : V2DemoActivity() {
                 showIconText = enableText.value,
             )
         }
-        setFab(){
-            FloatingActionButton(onClick = { /*TODO*/ }, icon = Icons.Filled.Email)
-        }
     }
 }
