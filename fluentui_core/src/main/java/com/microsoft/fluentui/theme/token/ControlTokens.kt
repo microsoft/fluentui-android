@@ -70,6 +70,7 @@ open class ControlTokens : IControlTokens {
         TabItem,
         TextField,
         ToggleSwitch,
+        Tooltip,
     }
 
     override val tokens: TokenSet<IType, IControlToken> by lazy {
@@ -115,6 +116,7 @@ open class ControlTokens : IControlTokens {
                 ControlType.TabItem -> TabItemTokens()
                 ControlType.TextField -> TextFieldTokens()
                 ControlType.ToggleSwitch -> ToggleSwitchTokens()
+                ControlType.Tooltip -> TooltipTokens()
                 else -> {
                     throw java.lang.RuntimeException("$type not defined")
                 }

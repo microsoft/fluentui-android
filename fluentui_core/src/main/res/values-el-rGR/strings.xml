@@ -66,8 +66,8 @@
     <string name="fluentui_label">Ετικέτα</string>
 
     <!-- Describes the expand/collapsed state of control -->
-    <string name="fluentui_expanded">Expanded</string>
-    <string name="fluentui_collapsed">Collapsed</string>
+    <string name="fluentui_expanded">Σε ανάπτυξη</string>
+    <string name="fluentui_collapsed">Σε σύμπτυξη</string>
 
     <!--types of control -->
     <string name="fluentui_large">Μεγάλο</string>
