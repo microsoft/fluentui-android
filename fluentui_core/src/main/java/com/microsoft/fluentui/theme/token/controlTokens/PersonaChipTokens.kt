@@ -37,7 +37,7 @@ abstract class PersonaChipControlInfo : ControlInfo {
     abstract val enabled: Boolean
 }
 
-data class PersonaChipInfo(
+open class PersonaChipInfo(
     val style: PersonaChipStyle = PersonaChipStyle.Neutral,
     override val enabled: Boolean = true,
     override val size: PersonaChipSize = Small

@@ -20,7 +20,7 @@ enum class BehaviorType {
     TOP, BOTTOM, LEFT_SLIDE_OVER, RIGHT_SLIDE_OVER, BOTTOM_SLIDE_OVER
 }
 
-data class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : ControlInfo
+open class DrawerInfo(val type: BehaviorType = BehaviorType.LEFT_SLIDE_OVER) : ControlInfo
 
 @Parcelize
 open class DrawerTokens : IControlToken, Parcelable {

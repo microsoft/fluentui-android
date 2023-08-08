@@ -12,7 +12,7 @@ import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
-data class CheckBoxInfo(
+open class CheckBoxInfo(
     val checked: Boolean = false,
 ) : ControlInfo
 

@@ -78,7 +78,7 @@ fun PillButton(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = pillButtonTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillButton] as PillButtonTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillButtonControlType] as PillButtonTokens
     val pillButtonInfo = PillButtonInfo(
         style,
         pillMetaData.enabled,
@@ -250,7 +250,7 @@ fun PillBar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = pillBarTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBar] as PillBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillBarControlType] as PillBarTokens
 
     val pillBarInfo = PillBarInfo(style)
     val lazyListState = rememberLazyListState()

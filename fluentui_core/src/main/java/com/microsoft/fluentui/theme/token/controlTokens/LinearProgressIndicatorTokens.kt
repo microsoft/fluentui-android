@@ -15,7 +15,7 @@ enum class LinearProgressIndicatorHeight {
     XXXSmall
 }
 
-data class LinearProgressIndicatorInfo(
+open class LinearProgressIndicatorInfo(
     val linearProgressIndicatorHeight: LinearProgressIndicatorHeight = LinearProgressIndicatorHeight.XXXSmall,
 ) : ControlInfo
 

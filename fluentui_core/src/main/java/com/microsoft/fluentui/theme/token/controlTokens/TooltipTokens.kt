@@ -16,7 +16,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-class TooltipInfo : ControlInfo
+open class TooltipInfo : ControlInfo
 
 @Parcelize
 open class TooltipTokens : IControlToken, Parcelable {

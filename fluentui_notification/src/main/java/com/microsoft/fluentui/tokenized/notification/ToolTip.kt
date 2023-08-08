@@ -199,7 +199,7 @@ fun ToolTipBox(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = tooltipTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TooltipControlType] as TooltipTokens
     val tooltipInfo = TooltipInfo()
     ToolTipBox(
         tooltipContent = {
@@ -295,7 +295,7 @@ private fun Tooltip(
     tooltipTokens: TooltipTokens? = null,
 ) {
     val token = tooltipTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Tooltip] as TooltipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TooltipControlType] as TooltipTokens
     val tooltipInfo = TooltipInfo()
     var tipAlignment: Alignment = Alignment.TopCenter
     var tipOffsetX = 0.0f

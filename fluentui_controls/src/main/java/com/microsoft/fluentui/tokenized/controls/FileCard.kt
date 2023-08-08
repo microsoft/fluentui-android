@@ -62,7 +62,7 @@ fun FileCard(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = fileCardTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FileCard] as FileCardTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.FileCardControlType] as FileCardTokens
     val isPreviewAvailable = !(previewImageDrawable == null && previewImageVector == null)
     val fileCardInfo = FileCardInfo(isPreviewAvailable)
     val textColor = token.textColor(fileCardInfo = fileCardInfo)

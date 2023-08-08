@@ -22,7 +22,7 @@ enum class BadgeType {
     List
 }
 
-class BadgeInfo(val type: BadgeType) : ControlInfo
+open class BadgeInfo(val type: BadgeType) : ControlInfo
 
 @Parcelize
 open class BadgeTokens : IControlToken, Parcelable {

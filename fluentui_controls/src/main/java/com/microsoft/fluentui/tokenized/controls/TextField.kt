@@ -111,7 +111,7 @@ fun TextField(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = textFieldTokens
-        ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
+        ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextFieldControlType] as TextFieldTokens)
 
     var isFocused: Boolean by rememberSaveable { mutableStateOf(false) }
 

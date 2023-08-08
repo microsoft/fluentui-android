@@ -11,7 +11,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-class TabBarInfo : ControlInfo
+open class TabBarInfo : ControlInfo
 
 @Parcelize
 open class TabBarTokens : IControlToken, Parcelable {

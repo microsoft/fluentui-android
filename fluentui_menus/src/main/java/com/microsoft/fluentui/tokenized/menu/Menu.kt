@@ -70,7 +70,7 @@ fun Menu(
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token =
             menuTokens
-                ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Menu] as MenuTokens
+                ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.MenuControlType] as MenuTokens
 
         val menuInfo = MenuInfo()
 

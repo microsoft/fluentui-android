@@ -47,7 +47,7 @@ fun PillTabs(
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token =
         tabsTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillTabs] as PillTabsTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillTabsControlType] as PillTabsTokens
 
     val pillTabsInfo = PillTabsInfo(style)
     val shape = RoundedCornerShape(50)

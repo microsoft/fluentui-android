@@ -22,7 +22,7 @@ enum class SnackbarStyle {
     Danger
 }
 
-data class SnackBarInfo(
+open class SnackBarInfo(
     val style: SnackbarStyle = SnackbarStyle.Neutral,
     val subTitleAvailable: Boolean = false
 ) : ControlInfo

@@ -19,7 +19,7 @@ enum class TabTextAlignment {
     NO_TEXT
 }
 
-class TabItemInfo(
+open class TabItemInfo(
     val tabTextAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
     val fluentStyle: FluentStyle = FluentStyle.Neutral
 ) : ControlInfo

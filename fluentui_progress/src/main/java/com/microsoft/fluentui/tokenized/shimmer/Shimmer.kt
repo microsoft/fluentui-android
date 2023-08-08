@@ -89,7 +89,7 @@ internal fun InternalShimmer(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = shimmerTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Shimmer] as ShimmerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ShimmerControlType] as ShimmerTokens
     val configuration = LocalConfiguration.current
     val screenHeight = dpToPx(configuration.screenHeightDp.dp)
     val screenWidth = dpToPx(configuration.screenWidthDp.dp)

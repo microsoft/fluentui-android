@@ -60,7 +60,7 @@ fun FloatingActionButton(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = fabTokens
-        ?: FluentTheme.controlTokens.tokens[ControlType.FloatingActionButton] as FABTokens
+        ?: FluentTheme.controlTokens.tokens[ControlType.FloatingActionButtonControlType] as FABTokens
 
     val fabInfo = FABInfo(state, size)
     val clickAndSemanticsModifier = Modifier.clickable(

@@ -13,7 +13,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-class BottomSheetInfo : ControlInfo
+open class BottomSheetInfo : ControlInfo
 
 @Parcelize
 open class BottomSheetTokens : IControlToken, Parcelable {

@@ -814,7 +814,7 @@ fun Drawer(
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val tokens = drawerTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
 
         val popupPositionProvider = DrawerPositionProvider()
         val scope = rememberCoroutineScope()
@@ -931,7 +931,7 @@ fun BottomDrawer(
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val tokens = drawerTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
 
         val popupPositionProvider = DrawerPositionProvider()
         val scope = rememberCoroutineScope()

@@ -94,7 +94,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                                     FluentTheme.updateAliasTokens(AliasTokens())
                                     FluentTheme.updateControlTokens(
                                         controlTokens.updateToken(
-                                            ControlTokens.ControlType.Button,
+                                            ControlTokens.ControlType.ButtonControlType,
                                             ButtonTokens()
                                         )
                                     )
@@ -109,7 +109,7 @@ class V2ButtonsActivity : V2DemoActivity() {
                                     FluentTheme.updateAliasTokens(OneNoteAliasTokens())
                                     FluentTheme.updateControlTokens(
                                         controlTokens.updateToken(
-                                            ControlTokens.ControlType.Button,
+                                            ControlTokens.ControlType.ButtonControlType,
                                             MyButtonTokens()
                                         )
                                     )
@@ -123,10 +123,10 @@ class V2ButtonsActivity : V2DemoActivity() {
                                 onClick = {
                                     FluentTheme.updateControlTokens(
                                         controlTokens.updateToken(
-                                            ControlTokens.ControlType.AppBar,
+                                            ControlTokens.ControlType.AppBarControlType,
                                             MyAppBarToken()
                                         ).updateToken(
-                                            ControlTokens.ControlType.FloatingActionButton,
+                                            ControlTokens.ControlType.FloatingActionButtonControlType,
                                             MyFABToken()
                                         )
                                     )

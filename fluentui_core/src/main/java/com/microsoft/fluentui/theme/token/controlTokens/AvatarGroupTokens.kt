@@ -16,7 +16,7 @@ enum class AvatarGroupStyle {
     Pile
 }
 
-data class AvatarGroupInfo(
+open class AvatarGroupInfo(
     val size: AvatarSize = AvatarSize.Size32,
     val style: AvatarGroupStyle = AvatarGroupStyle.Stack
 ) : ControlInfo

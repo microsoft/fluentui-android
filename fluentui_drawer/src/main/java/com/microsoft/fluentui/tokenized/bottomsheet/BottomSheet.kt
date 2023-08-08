@@ -228,7 +228,7 @@ fun BottomSheet(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = bottomSheetTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheet] as BottomSheetTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BottomSheetControlType] as BottomSheetTokens
 
     val bottomSheetInfo = BottomSheetInfo()
     val sheetShape: Shape = RoundedCornerShape(

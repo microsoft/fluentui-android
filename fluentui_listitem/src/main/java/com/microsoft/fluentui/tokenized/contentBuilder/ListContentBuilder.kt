@@ -170,7 +170,7 @@ class ListContentBuilder {
             items(ceil(size * 1.0 / itemsInRow).toInt()) { row ->
                 val token =
                     tabItemTokens
-                        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItem] as TabItemTokens
+                        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens
                 Layout(
                     modifier = Modifier
                         .background(
@@ -246,7 +246,7 @@ class ListContentBuilder {
                 val rowLazyListState = rememberLazyListState()
                 val token =
                     tabItemTokens
-                        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItem] as TabItemTokens
+                        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens
                 LazyRow(
                     state = rowLazyListState, modifier = Modifier
                         .background(
@@ -302,7 +302,7 @@ class ListContentBuilder {
                 val themeID =
                     FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
                 val token = listItemTokens
-                    ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ListItem] as ListItemTokens
+                    ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ListItemControlType] as ListItemTokens
                 ListItem.Item(
                     text = item.title,
                     subText = item.subTitle,

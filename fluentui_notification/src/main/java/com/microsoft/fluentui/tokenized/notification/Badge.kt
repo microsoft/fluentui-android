@@ -42,7 +42,7 @@ fun Badge(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = badgeTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Badge] as BadgeTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BadgeControlType] as BadgeTokens
     val badgeInfo = BadgeInfo(badgeType)
     val background = token.backgroundBrush(badgeInfo = badgeInfo)
     val borderStroke = token.borderStroke(badgeInfo = badgeInfo)
