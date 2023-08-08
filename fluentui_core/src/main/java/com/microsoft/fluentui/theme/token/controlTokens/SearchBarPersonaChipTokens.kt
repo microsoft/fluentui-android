@@ -9,7 +9,7 @@ import com.microsoft.fluentui.theme.token.StateBrush
 import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
-data class SearchBarPersonaChipInfo(
+open class SearchBarPersonaChipInfo(
     val style: FluentStyle = FluentStyle.Neutral,
     override val enabled: Boolean = true,
     override val size: PersonaChipSize = PersonaChipSize.Small

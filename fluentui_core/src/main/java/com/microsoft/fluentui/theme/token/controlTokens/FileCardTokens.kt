@@ -15,7 +15,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-data class FileCardInfo(
+open class FileCardInfo(
     val isPreviewAvailable: Boolean = true,
     val cardType: CardType = CardType.Elevated
 )

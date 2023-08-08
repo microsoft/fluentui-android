@@ -66,7 +66,7 @@ fun Avatar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarToken
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
 
     val personInitials = person.getInitials()
     val avatarInfo = AvatarInfo(
@@ -229,7 +229,7 @@ fun Avatar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarToken
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
 
     val avatarInfo = AvatarInfo(
         size, AvatarType.Group,
@@ -322,7 +322,7 @@ fun Avatar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarToken
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Avatar] as AvatarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarControlType] as AvatarTokens
 
     val avatarInfo = AvatarInfo(size, AvatarType.Overflow)
     val avatarSize = token.avatarSize(avatarInfo)

@@ -50,7 +50,7 @@ fun PillSwitch(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = pillSwitchTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillSwitch] as PillSwitchTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PillSwitchControlType] as PillSwitchTokens
 
     val pillSwitchInfo = PillSwitchInfo(style)
     val shape = RoundedCornerShape(50)

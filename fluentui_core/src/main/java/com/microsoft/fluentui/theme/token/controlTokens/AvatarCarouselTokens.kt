@@ -14,7 +14,7 @@ enum class AvatarCarouselSize {
     Large
 }
 
-data class AvatarCarouselInfo(
+open class AvatarCarouselInfo(
     val size: AvatarCarouselSize = AvatarCarouselSize.Small
 ) : ControlInfo
 

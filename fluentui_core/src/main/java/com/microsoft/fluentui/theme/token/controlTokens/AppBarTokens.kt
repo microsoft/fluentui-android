@@ -28,7 +28,7 @@ enum class AppBarSize {
     Small
 }
 
-data class AppBarInfo(
+open class AppBarInfo(
     val style: FluentStyle = FluentStyle.Neutral,
     val appBarSize: AppBarSize = AppBarSize.Medium
 ) : ControlInfo

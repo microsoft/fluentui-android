@@ -19,7 +19,7 @@ enum class ColorStyle {
     Error
 }
 
-data class LabelInfo(
+open class LabelInfo(
     val labelType: TypographyTokens,
     val colorStyle: ColorStyle
 ) : ControlInfo

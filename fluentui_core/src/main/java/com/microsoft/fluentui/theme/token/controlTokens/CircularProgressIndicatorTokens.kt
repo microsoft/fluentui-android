@@ -18,7 +18,7 @@ enum class CircularProgressIndicatorSize {
     XLarge
 }
 
-data class CircularProgressIndicatorInfo(
+open class CircularProgressIndicatorInfo(
     val circularProgressIndicatorSize: CircularProgressIndicatorSize = CircularProgressIndicatorSize.XSmall,
     val style: FluentStyle = FluentStyle.Neutral
 ) : ControlInfo

@@ -50,7 +50,7 @@ fun AnnouncementCard(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = announcementCardTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AnnouncementCard] as AnnouncementCardTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AnnouncementCardControlType] as AnnouncementCardTokens
     val announcementCardInfo = AnnouncementCardInfo()
     val textColor = token.textColor(announcementCardInfo = announcementCardInfo)
     val titleColor = token.titleColor(announcementCardInfo = announcementCardInfo)

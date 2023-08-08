@@ -53,7 +53,7 @@ fun SideRail(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = sideRailTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SideRail] as SideRailTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SideRailControlType] as SideRailTokens
     val sideRailInfo = SideRailInfo()
 
     val borderColor = token.borderColor(sideRailInfo)

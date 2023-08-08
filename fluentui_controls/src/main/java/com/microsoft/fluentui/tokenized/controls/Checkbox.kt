@@ -56,7 +56,7 @@ fun CheckBox(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = checkBoxToken
-        ?: FluentTheme.controlTokens.tokens[ControlType.CheckBox] as CheckBoxTokens
+        ?: FluentTheme.controlTokens.tokens[ControlType.CheckBoxControlType] as CheckBoxTokens
     val checkBoxInfo = CheckBoxInfo(checked)
     val toggleModifier =
         modifier.triStateToggleable(

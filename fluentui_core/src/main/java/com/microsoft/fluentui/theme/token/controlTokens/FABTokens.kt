@@ -28,7 +28,7 @@ enum class FABSize {
     Large
 }
 
-data class FABInfo(
+open class FABInfo(
     val state: FABState = FABState.Expanded,
     val size: FABSize = FABSize.Large
 ) : ControlInfo

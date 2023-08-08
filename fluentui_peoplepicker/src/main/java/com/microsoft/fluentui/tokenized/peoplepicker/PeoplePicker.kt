@@ -112,7 +112,7 @@ fun PeoplePicker(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = peoplePickerTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PeoplePicker] as PeoplePickerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PeoplePickerControlType] as PeoplePickerTokens
 
     val peoplePickerInfo = PeoplePickerInfo()
     val chipSpacing = token.chipSpacing(peoplePickerInfo = peoplePickerInfo)

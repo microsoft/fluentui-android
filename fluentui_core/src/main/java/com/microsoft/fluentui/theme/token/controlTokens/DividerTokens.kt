@@ -13,7 +13,7 @@ import com.microsoft.fluentui.theme.token.FluentAliasTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-class DividerInfo : ControlInfo
+open class DividerInfo : ControlInfo
 
 @Parcelize
 open class DividerTokens : IControlToken, Parcelable {

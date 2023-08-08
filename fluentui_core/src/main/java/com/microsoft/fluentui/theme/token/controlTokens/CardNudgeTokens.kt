@@ -15,7 +15,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-class CardNudgeInfo : ControlInfo
+open class CardNudgeInfo : ControlInfo
 
 
 @Parcelize

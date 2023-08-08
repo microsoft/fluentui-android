@@ -21,7 +21,7 @@ fun Divider(
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token =
         dividerToken
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Divider] as DividerTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DividerControlType] as DividerTokens
     val dividerInfo = DividerInfo()
 
     Column(

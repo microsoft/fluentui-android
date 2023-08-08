@@ -57,7 +57,7 @@ fun SearchBarPersonaChip(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = searchbarPersonaChipTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarPersonaChip] as SearchBarPersonaChipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarPersonaChipControlType] as SearchBarPersonaChipTokens
     val searchBarPersonaChipInfo = SearchBarPersonaChipInfo(
         style,
         enabled,

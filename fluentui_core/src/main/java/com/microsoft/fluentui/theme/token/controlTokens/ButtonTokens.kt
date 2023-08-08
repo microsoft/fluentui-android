@@ -30,7 +30,7 @@ enum class ButtonSize {
     Large
 }
 
-data class ButtonInfo(
+open class ButtonInfo(
     val style: ButtonStyle = ButtonStyle.Button,
     val size: ButtonSize = ButtonSize.Medium
 ) : ControlInfo

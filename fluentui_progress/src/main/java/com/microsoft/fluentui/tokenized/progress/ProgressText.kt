@@ -45,7 +45,7 @@ fun ProgressText(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = progressTextTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ProgressText] as ProgressTextTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ProgressTextControlType] as ProgressTextTokens
     val progressTextInfo = ProgressTextInfo(progress)
     val currentProgress = animateFloatAsState(
         targetValue = progress.coerceIn(0f..1f), animationSpec = tween(

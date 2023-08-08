@@ -30,95 +30,95 @@ interface IControlTokens {
  */
 open class ControlTokens : IControlTokens {
     enum class ControlType : IType {
-        AnnouncementCard,
-        AppBar,
-        Avatar,
-        AvatarCarousel,
-        AvatarGroup,
-        Badge,
-        BasicCard,
-        BasicChip,
-        BottomSheet,
-        Button,
-        CardNudge,
-        CheckBox,
-        CircularProgressIndicator,
-        Citation,
-        ContextualCommandBar,
-        Dialog,
-        Drawer,
-        Divider,
-        FileCard,
-        FloatingActionButton,
-        Label,
-        LinearProgressIndicator,
-        ListItem,
-        Menu,
-        PeoplePicker,
-        PersonaChip,
-        PillButton,
-        PillBar,
-        PillSwitch,
-        PillTabs,
-        ProgressText,
-        RadioButton,
-        SearchBarPersonaChip,
-        SearchBar,
-        Shimmer,
-        SideRail,
-        Snackbar,
-        TabBar,
-        TabItem,
-        TextField,
-        ToggleSwitch,
-        Tooltip,
+        AnnouncementCardControlType,
+        AppBarControlType,
+        AvatarControlType,
+        AvatarCarouselControlType,
+        AvatarGroupControlType,
+        BadgeControlType,
+        BasicCardControlType,
+        BasicChipControlType,
+        BottomSheetControlType,
+        ButtonControlType,
+        CardNudgeControlType,
+        CheckBoxControlType,
+        CircularProgressIndicatorControlType,
+        CitationControlType,
+        ContextualCommandBarControlType,
+        DialogControlType,
+        DrawerControlType,
+        DividerControlType,
+        FileCardControlType,
+        FloatingActionButtonControlType,
+        LabelControlType,
+        LinearProgressIndicatorControlType,
+        ListItemControlType,
+        MenuControlType,
+        PeoplePickerControlType,
+        PersonaChipControlType,
+        PillButtonControlType,
+        PillBarControlType,
+        PillSwitchControlType,
+        PillTabsControlType,
+        ProgressTextControlType,
+        RadioButtonControlType,
+        SearchBarPersonaChipControlType,
+        SearchBarControlType,
+        ShimmerControlType,
+        SideRailControlType,
+        SnackbarControlType,
+        TabBarControlType,
+        TabItemControlType,
+        TextFieldControlType,
+        ToggleSwitchControlType,
+        TooltipControlType,
     }
 
     override val tokens: TokenSet<IType, IControlToken> by lazy {
         TokenSet { type ->
             when (type) {
-                ControlType.AnnouncementCard -> AnnouncementCardTokens()
-                ControlType.AppBar -> AppBarTokens()
-                ControlType.Avatar -> AvatarTokens()
-                ControlType.AvatarCarousel -> AvatarCarouselTokens()
-                ControlType.AvatarGroup -> AvatarGroupTokens()
-                ControlType.Badge -> BadgeTokens()
-                ControlType.BasicCard -> BasicCardTokens()
-                ControlType.BasicChip -> BasicChipTokens()
-                ControlType.BottomSheet -> BottomSheetTokens()
-                ControlType.Button -> ButtonTokens()
-                ControlType.CardNudge -> CardNudgeTokens()
-                ControlType.CheckBox -> CheckBoxTokens()
-                ControlType.CircularProgressIndicator -> CircularProgressIndicatorTokens()
-                ControlType.Citation -> CitationTokens()
-                ControlType.ContextualCommandBar -> ContextualCommandBarTokens()
-                ControlType.Dialog -> DialogTokens()
-                ControlType.Drawer -> DrawerTokens()
-                ControlType.Divider -> DividerTokens()
-                ControlType.FileCard -> FileCardTokens()
-                ControlType.FloatingActionButton -> FABTokens()
-                ControlType.Label -> LabelTokens()
-                ControlType.LinearProgressIndicator -> LinearProgressIndicatorTokens()
-                ControlType.ListItem -> ListItemTokens()
-                ControlType.Menu -> MenuTokens()
-                ControlType.PersonaChip -> PersonaChipTokens()
-                ControlType.PeoplePicker -> PeoplePickerTokens()
-                ControlType.PillButton -> PillButtonTokens()
-                ControlType.PillBar -> PillBarTokens()
-                ControlType.PillSwitch -> PillSwitchTokens()
-                ControlType.PillTabs -> PillTabsTokens()
-                ControlType.ProgressText -> ProgressTextTokens()
-                ControlType.RadioButton -> RadioButtonTokens()
-                ControlType.SearchBarPersonaChip -> SearchBarPersonaChipTokens()
-                ControlType.SearchBar -> SearchBarTokens()
-                ControlType.Shimmer -> ShimmerTokens()
-                ControlType.SideRail -> SideRailTokens()
-                ControlType.Snackbar -> SnackBarTokens()
-                ControlType.TabBar -> TabBarTokens()
-                ControlType.TabItem -> TabItemTokens()
-                ControlType.TextField -> TextFieldTokens()
-                ControlType.ToggleSwitch -> ToggleSwitchTokens()
-                ControlType.Tooltip -> TooltipTokens()
+                ControlType.AnnouncementCardControlType -> AnnouncementCardTokens()
+                ControlType.AppBarControlType -> AppBarTokens()
+                ControlType.AvatarControlType -> AvatarTokens()
+                ControlType.AvatarCarouselControlType -> AvatarCarouselTokens()
+                ControlType.AvatarGroupControlType -> AvatarGroupTokens()
+                ControlType.BadgeControlType -> BadgeTokens()
+                ControlType.BasicCardControlType -> BasicCardTokens()
+                ControlType.BasicChipControlType -> BasicChipTokens()
+                ControlType.BottomSheetControlType -> BottomSheetTokens()
+                ControlType.ButtonControlType -> ButtonTokens()
+                ControlType.CardNudgeControlType -> CardNudgeTokens()
+                ControlType.CheckBoxControlType -> CheckBoxTokens()
+                ControlType.CircularProgressIndicatorControlType -> CircularProgressIndicatorTokens()
+                ControlType.CitationControlType -> CitationTokens()
+                ControlType.ContextualCommandBarControlType -> ContextualCommandBarTokens()
+                ControlType.DialogControlType -> DialogTokens()
+                ControlType.DrawerControlType -> DrawerTokens()
+                ControlType.DividerControlType -> DividerTokens()
+                ControlType.FileCardControlType -> FileCardTokens()
+                ControlType.FloatingActionButtonControlType -> FABTokens()
+                ControlType.LabelControlType -> LabelTokens()
+                ControlType.LinearProgressIndicatorControlType -> LinearProgressIndicatorTokens()
+                ControlType.ListItemControlType -> ListItemTokens()
+                ControlType.MenuControlType -> MenuTokens()
+                ControlType.PersonaChipControlType -> PersonaChipTokens()
+                ControlType.PeoplePickerControlType -> PeoplePickerTokens()
+                ControlType.PillButtonControlType -> PillButtonTokens()
+                ControlType.PillBarControlType -> PillBarTokens()
+                ControlType.PillSwitchControlType -> PillSwitchTokens()
+                ControlType.PillTabsControlType -> PillTabsTokens()
+                ControlType.ProgressTextControlType -> ProgressTextTokens()
+                ControlType.RadioButtonControlType -> RadioButtonTokens()
+                ControlType.SearchBarPersonaChipControlType -> SearchBarPersonaChipTokens()
+                ControlType.SearchBarControlType -> SearchBarTokens()
+                ControlType.ShimmerControlType -> ShimmerTokens()
+                ControlType.SideRailControlType -> SideRailTokens()
+                ControlType.SnackbarControlType -> SnackBarTokens()
+                ControlType.TabBarControlType -> TabBarTokens()
+                ControlType.TabItemControlType -> TabItemTokens()
+                ControlType.TextFieldControlType -> TextFieldTokens()
+                ControlType.ToggleSwitchControlType -> ToggleSwitchTokens()
+                ControlType.TooltipControlType -> TooltipTokens()
                 else -> {
                     throw java.lang.RuntimeException("$type not defined")
                 }
