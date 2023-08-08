@@ -122,7 +122,7 @@ fun Snackbar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = snackbarTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Snackbar] as SnackBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SnackbarControlType] as SnackBarTokens
 
     val snackBarInfo = SnackBarInfo(metadata.style, !metadata.subTitle.isNullOrBlank())
     NotificationContainer(

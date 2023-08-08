@@ -52,7 +52,7 @@ fun BasicChip(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = basicChipTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicChip] as BasicChipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicChipControlType] as BasicChipTokens
     val basicChipInfo = BasicChipInfo()
     val backgroundColor =
         token.backgroundBrush(basicChipInfo)

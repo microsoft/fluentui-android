@@ -12,7 +12,7 @@ import com.microsoft.fluentui.theme.token.FluentGlobalTokens
 import com.microsoft.fluentui.theme.token.IControlToken
 import kotlinx.parcelize.Parcelize
 
-class MenuInfo : ControlInfo
+open class MenuInfo : ControlInfo
 
 @Parcelize
 open class MenuTokens : IControlToken, Parcelable {

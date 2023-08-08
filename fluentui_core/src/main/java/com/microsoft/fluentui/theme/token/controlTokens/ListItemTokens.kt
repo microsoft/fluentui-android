@@ -65,7 +65,7 @@ enum class ListItemTextAlignment {
     Centered
 }
 
-data class ListItemInfo(
+open class ListItemInfo(
     val style: SectionHeaderStyle = Bold,
     val listItemType: ListItemType = OneLine,
     val borderInset: BorderInset = BorderInset.None,

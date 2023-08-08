@@ -12,7 +12,7 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-data class PillButtonInfo(
+open class PillButtonInfo(
     val style: FluentStyle = FluentStyle.Neutral,
     val enabled: Boolean = true,
     val selected: Boolean = false

@@ -48,7 +48,7 @@ fun TabBar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = tabBarTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBar] as TabBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabBarControlType] as TabBarTokens
 
     Column(modifier.fillMaxWidth()) {
         Box(
@@ -75,7 +75,7 @@ fun TabBar(
                     onClick = tabData.onClick,
                     accessory = tabData.badge,
                     tabItemTokens = tabItemTokens
-                        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItem] as TabItemTokens,
+                        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens,
                     style = if (tabData.selected) FluentStyle.Brand else FluentStyle.Neutral
                 )
             }

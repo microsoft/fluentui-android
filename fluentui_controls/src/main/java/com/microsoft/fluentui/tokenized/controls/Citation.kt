@@ -41,7 +41,7 @@ fun Citation(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = citationTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Citation] as CitationTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CitationControlType] as CitationTokens
     val citationInfo = CitationInfo()
     val backgroundBrush = tokens.backgroundBrush(citationInfo = citationInfo)
     val cornerRadius = tokens.cornerRadius(citationInfo = citationInfo)

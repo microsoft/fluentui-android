@@ -43,7 +43,7 @@ fun AvatarGroup(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = avatarGroupToken
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroup] as AvatarGroupTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AvatarGroupControlType] as AvatarGroupTokens
 
     val visibleAvatar: Int = if (maxVisibleAvatar < 0)
         0

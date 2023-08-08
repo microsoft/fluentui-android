@@ -16,7 +16,7 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-class ContextualCommandBarInfo : ControlInfo
+open class ContextualCommandBarInfo : ControlInfo
 
 @Parcelize
 open class ContextualCommandBarTokens : IControlToken, Parcelable {

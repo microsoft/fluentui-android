@@ -182,7 +182,7 @@ enum class CutoutStyle {
     Circle
 }
 
-data class AvatarInfo(
+open class AvatarInfo(
     val size: AvatarSize = AvatarSize.Size40,
     val type: AvatarType = AvatarType.Person,
     val active: Boolean = false,

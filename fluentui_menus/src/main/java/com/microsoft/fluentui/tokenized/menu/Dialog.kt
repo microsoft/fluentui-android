@@ -47,7 +47,7 @@ fun Dialog(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = dialogTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Dialog] as DialogTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DialogControlType] as DialogTokens
     val dialogInfo = DialogInfo()
     val cornerRadius = token.cornerRadius(dialogInfo = dialogInfo)
     val backgroundBrush = token.backgroundBrush(dialogInfo = dialogInfo)

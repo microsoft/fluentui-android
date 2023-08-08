@@ -59,7 +59,7 @@ fun Button(
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
-    val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.Button] as ButtonTokens
+    val token = buttonTokens ?: FluentTheme.controlTokens.tokens[ControlType.ButtonControlType] as ButtonTokens
     val buttonInfo = ButtonInfo(style, size)
     val clickAndSemanticsModifier = Modifier.clickable(
         interactionSource = interactionSource,

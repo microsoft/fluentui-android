@@ -86,7 +86,7 @@ fun CardNudge(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = cardNudgeTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CardNudge] as CardNudgeTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.CardNudgeControlType] as CardNudgeTokens
 
     val cardNudgeInfo = CardNudgeInfo()
     val animationSpec = TweenSpec<Float>(durationMillis = 300)

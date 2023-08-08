@@ -14,7 +14,7 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-data class SearchBarInfo(
+open class SearchBarInfo(
     val style: FluentStyle
 ) : ControlInfo
 
