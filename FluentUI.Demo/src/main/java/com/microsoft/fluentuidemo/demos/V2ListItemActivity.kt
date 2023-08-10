@@ -102,12 +102,14 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Header(title = "Text Only")
             ListItem.Item(
                 text = primaryText,
+                onClick = {},
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
                 primaryTextTrailingContent = { Icon20() }
             )
             ListItem.Item(
                 text = primaryText,
+                onClick = {},
                 subText = secondaryText,
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
@@ -115,6 +117,7 @@ private fun CreateListActivityUI(context: Context) {
             )
             ListItem.Item(
                 text = primaryText,
+                onClick = {},
                 subText = secondaryText,
                 secondarySubText = tertiaryText,
                 border = BorderType.Bottom,
@@ -129,6 +132,7 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Item(
                 text = sampleText,
                 textMaxLines = 4,
+                onClick = {},
                 leadingAccessoryContent = { LeftContentFolderIcon40() },
                 border = BorderType.Bottom,
                 borderInset = XXLarge
@@ -136,6 +140,7 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Item(
                 text = sampleText,
                 subText = sampleText,
+                onClick = {},
                 textMaxLines = 4,
                 subTextMaxLines = 4,
                 leadingAccessoryContent = { LeftContentFolderIcon40() },
@@ -152,6 +157,7 @@ private fun CreateListActivityUI(context: Context) {
                 text = sampleText,
                 subText = sampleText,
                 secondarySubText = sampleText,
+                onClick = {},
                 textMaxLines = 4,
                 subTextMaxLines = 4,
                 secondarySubTextMaxLines = 4,
@@ -234,11 +240,13 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Header(title = "Centered Action Text")
             ListItem.Item(
                 text = "Action",
+                onClick = {},
                 textAlignment = ListItemTextAlignment.Centered,
                 border = BorderType.Bottom
             )
             ListItem.Item(
                 text = "Disabled",
+                onClick = {},
                 enabled = false,
                 textAlignment = ListItemTextAlignment.Centered,
                 border = BorderType.Bottom
@@ -253,18 +261,20 @@ private fun OneLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
+            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_amanda_brady) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
+            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_allan_munger) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
-            text = primaryText,
+            text = primaryText+" (unclickable)",
             leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_ashley_mccarthy) },
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -278,6 +288,7 @@ private fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
+            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -285,13 +296,14 @@ private fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
+            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            subText = "Subtitle",
+            subText = "Subtitle (Unclickable)",
             leadingAccessoryContent = {
                 GetAvatar(
                     size = Size40,
@@ -311,6 +323,7 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
+            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -319,12 +332,13 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
+            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
-            text = primaryText,
+            text = primaryText+"(Unclickable)",
             subText = "Subtitle",
             secondarySubText = tertiaryText,
             leadingAccessoryContent = {
@@ -357,6 +371,7 @@ private fun OneLineListAccessoryContentContent(context: Context) {
         )
         ListItem.Item(
             text = primaryText,
+            onClick = {},
             leadingAccessoryContent = {
                 RightContentButton(
                     size = ButtonSize.Small,
@@ -375,18 +390,27 @@ private fun OneLineListAccessoryContentContent(context: Context) {
         )
         ListItem.Item(
             text = primaryText,
+            onClick = {},
+            leadingAccessoryContent = { LeftContentAvatar(size = Size24) },
+            border = BorderType.Bottom,
+            borderInset = XXLarge
+        )
+        ListItem.Item(
+            text = "(UnClickable) $primaryText",
             leadingAccessoryContent = { LeftContentAvatar(size = Size24) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = "",
+            onClick = {},
             leadingAccessoryContent = { LeftContentThreeIcon() },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentRadioButton() },
             trailingAccessoryContent = { RightContentAvatarStack(Size24) },
             border = BorderType.Bottom,
@@ -394,6 +418,7 @@ private fun OneLineListAccessoryContentContent(context: Context) {
         )
         ListItem.Item(
             text = primaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentThreeButton() },
             trailingAccessoryContent = { RightContentToggle() },
             border = BorderType.Bottom,
@@ -410,6 +435,7 @@ private fun TwoLineListAccessoryContentContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentAvatar(size = Size40) },
             trailingAccessoryContent = { LeftContentAvatar(size = Size40) },
             border = BorderType.Bottom,
@@ -442,6 +468,7 @@ private fun TwoLineListAccessoryContentContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentFolderIcon40() },
             primaryTextLeadingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -462,6 +489,7 @@ private fun TwoLineListAccessoryContentContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentFolderIcon40() },
             trailingAccessoryContent = { RightContentAvatarStack(Size40) },
             border = BorderType.Bottom,
@@ -471,6 +499,7 @@ private fun TwoLineListAccessoryContentContent(context: Context) {
             text = primaryText,
             secondarySubText = tertiaryText,
             leadingAccessoryContent = { LeftContentFolderIcon40() },
+            onClick = {},
             secondarySubTextLeadingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     Icon16()
@@ -495,6 +524,7 @@ private fun TwoLineListAccessoryContentContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             secondarySubText = tertiaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentFolderIcon40() },
             secondarySubTextTrailingContent = { Icon16() },
             trailingAccessoryContent = { RightContentToggle() },
@@ -504,6 +534,7 @@ private fun TwoLineListAccessoryContentContent(context: Context) {
         ListItem.Item(
             text = primaryText,
             subText = secondaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentThreeButton() },
             trailingAccessoryContent = { RightContentText("Value") },
             border = BorderType.Bottom,
@@ -529,6 +560,7 @@ private fun ThreeLineListAccessoryContentContent(
             text = "Amanda Brady replied to your comment",
             subText = "Wanda can you please update the file with comments",
             secondarySubTextAnnotated = footer,
+            onClick = {},
             leadingAccessoryContent = { LeftContentAvatar(size = Size56) },
             trailingAccessoryContent = { rightContentIconButton() },
             primaryTextTrailingContent = { Badge(text = "2") },
@@ -543,6 +575,7 @@ private fun ThreeLineListAccessoryContentContent(
             text = primaryText,
             subText = secondaryText,
             secondarySubText = tertiaryText,
+            onClick = {},
             leadingAccessoryContent = { LeftContentFolderIcon40() },
             primaryTextTrailingContent = { Badge(text = "Suggested") },
             trailingAccessoryContent = {
@@ -558,6 +591,7 @@ private fun ThreeLineListAccessoryContentContent(
             text = primaryText,
             subText = secondaryText,
             bottomContent = { LinearProgressIndicator() },
+            onClick = {},
             primaryTextLeadingContent = { Icon20() },
             secondarySubTextTrailingContent = {
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {

@@ -285,6 +285,8 @@ object ListItem {
             Alignment.Bottom -> Alignment.BottomEnd
             else -> Alignment.CenterEnd
         }
+        val isClickable = onClick != null
+
         Row(
             modifier
                 .background(backgroundColor)
@@ -292,7 +294,7 @@ object ListItem {
                 .height(IntrinsicSize.Max)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
                 .clickAndSemanticsModifier(
-                    interactionSource, onClick = onClick ?: {}, enabled, rippleColor
+                    interactionSource, onClick = onClick ?: {}, enabled=isClickable, rippleColor
                 ), verticalAlignment = Alignment.CenterVertically
         ) {
             if (leadingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
