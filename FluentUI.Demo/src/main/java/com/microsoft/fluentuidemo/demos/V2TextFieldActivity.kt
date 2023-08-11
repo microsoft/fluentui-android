@@ -39,6 +39,7 @@ import com.microsoft.fluentuidemo.R
 import com.microsoft.fluentuidemo.V2DemoActivity
 import com.microsoft.fluentuidemo.util.DemoAppStrings
 import com.microsoft.fluentuidemo.util.getDemoAppString
+import java.io.Console
 
 // Tags used for testing
 const val TEXT_FIELD_MODIFIABLE_PARAMETER_SECTION = "textFieldModifiableParameterSection"
@@ -49,6 +50,8 @@ const val TEXT_FIELD_ASSISTIVE_TEXT_PARAM = "textFieldAssistiveTextParam"
 const val TEXT_FIELD_SECONDARY_TEXT_PARAM = "textFieldSecondaryTextParam"
 const val TEXT_FIELD_ERROR_PARAM = "textFieldErrorTextParam"
 const val TEXT_FIELD_PASSWORD_MODE_PARAM = "textFieldPasswordModeParam"
+const val TEXT_FIELD_READONLY_PARAM = "textFieldReadOnlyParam"
+const val TEXT_FIELD_ENABLED_PARAM = "textFieldEnabledParam"
 
 
 class V2TextFieldActivity : V2DemoActivity() {
@@ -73,6 +76,8 @@ class V2TextFieldActivity : V2DemoActivity() {
             var errorText by rememberSaveable { mutableStateOf(false) }
             var passwordMode by rememberSaveable { mutableStateOf(false) }
             var keyboardType by remember { mutableStateOf(KeyboardType.Text) }
+            var readOnly by rememberSaveable { mutableStateOf(false) }
+            var enabled by rememberSaveable { mutableStateOf(true) }
 
             val resources = LocalContext.current.resources
 
@@ -278,6 +283,42 @@ class V2TextFieldActivity : V2DemoActivity() {
                                     }
                                 )
                             }
+                            item {
+                                ListItem.Item(
+                                    text = "Read Only",
+                                    subText = if (readOnly)
+                                        "Enabled"
+                                    else
+                                        "Disabled",
+                                    trailingAccessoryContent = {
+                                        ToggleSwitch(
+                                            modifier = Modifier.testTag(TEXT_FIELD_READONLY_PARAM),
+                                            onValueChange = {
+                                                readOnly = it
+                                            },
+                                            checkedState = readOnly
+                                        )
+                                    }
+                                )
+                            }
+                            item {
+                                ListItem.Item(
+                                    text = "Enabled",
+                                    subText = if (enabled)
+                                        "Enabled"
+                                    else
+                                        "Disabled",
+                                    trailingAccessoryContent = {
+                                        ToggleSwitch(
+                                            modifier = Modifier.testTag(TEXT_FIELD_ENABLED_PARAM),
+                                            onValueChange = {
+                                                enabled = it
+                                            },
+                                            checkedState = enabled
+                                        )
+                                    }
+                                )
+                            }
                         }
                     }
 
@@ -290,6 +331,8 @@ class V2TextFieldActivity : V2DemoActivity() {
                         TextField(
                             value,
                             { value = it },
+                            readOnly = readOnly,
+                            enabled = enabled,
                             hintText = if (hintText) resources.getString(R.string.fluentui_hint) else null,
                             label = if (label) resources.getString(R.string.fluentui_label) else null,
                             assistiveText = if (assistiveText) resources.getString(R.string.fluentui_assistive_text) else null,
@@ -304,8 +347,6 @@ class V2TextFieldActivity : V2DemoActivity() {
                             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
                             keyboardActions = KeyboardActions(onAny = { focusManager.clearFocus() }),
                             visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None,
-                            readOnly = false,
-                            enabled = true,
                         )
                     }
                 }

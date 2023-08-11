@@ -89,6 +89,8 @@ fun TextField(
     value: String,
     onValueChange: ((String) -> Unit),
     modifier: Modifier = Modifier,
+    readOnly: Boolean = false,
+    enabled: Boolean = true,
     hintText: String? = null,
     label: String? = null,
     assistiveText: String? = null,
@@ -107,8 +109,6 @@ fun TextField(
     textFieldContentDescription: String? = null,
     decorationBox: (@Composable (innerTextField: @Composable () -> Unit) -> Unit)? = null,
     textFieldTokens: TextFieldTokens? = null,
-    readOnly: Boolean = false,
-    enabled: Boolean = true
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -183,6 +183,8 @@ fun TextField(
                                         isFocused = true
                                 }
                             },
+                        readOnly = readOnly,
+                        enabled = enabled,
                         singleLine = true,
                         keyboardOptions = keyboardOptions,
                         keyboardActions = keyboardActions,
@@ -217,8 +219,6 @@ fun TextField(
                             )
                         ),
                         cursorBrush = token.cursorColor(textFieldInfo),
-                        readOnly = readOnly,
-                        enabled = enabled,
                     )
                     if (!trailingAccessoryText.isNullOrBlank()) {
                         Spacer(Modifier.requiredWidth(8.dp))
