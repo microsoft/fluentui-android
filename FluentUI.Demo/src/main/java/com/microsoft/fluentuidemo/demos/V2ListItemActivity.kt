@@ -84,6 +84,7 @@ const val sampleText =
 const val primaryText = "Title, primary text"
 const val secondaryText = "Subtitle, secondary text"
 const val tertiaryText = "Footer, tertiary text"
+const val unclickableText = " (Unclickable) "
 
 
 @Composable
@@ -131,8 +132,8 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Header(title = "Wrapped Text list")
             ListItem.Item(
                 text = sampleText,
-                textMaxLines = 4,
                 onClick = {},
+                textMaxLines = 4,
                 leadingAccessoryContent = { LeftContentFolderIcon40() },
                 border = BorderType.Bottom,
                 borderInset = XXLarge
@@ -215,7 +216,7 @@ private fun CreateListActivityUI(context: Context) {
                     border = BorderType.Bottom
                 )
                 ListItem.SectionHeader(
-                    title = "Two-Line list",
+                    title = "Three-Line list",
                     enableChevron = false,
                     enableContentOpenCloseTransition = true,
                     trailingAccessoryContent = { RightContentToggle() },
@@ -261,21 +262,22 @@ private fun OneLineSimpleList() {
     return Column {
         ListItem.Item(
             text = primaryText,
-            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_amanda_brady) },
+            onClick={},
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            onClick = {},
             leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_allan_munger) },
+            onClick={},
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
-            text = primaryText+" (unclickable)",
+            text = primaryText,
             leadingAccessoryContent = { GetAvatar(size = Size24, drawable.avatar_ashley_mccarthy) },
+            onClick={},
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
@@ -288,7 +290,7 @@ private fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            onClick = {},
+            onClick={},
             leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -296,14 +298,15 @@ private fun TwoLineSimpleList() {
         ListItem.Item(
             text = primaryText,
             subText = "Subtitle",
-            onClick = {},
+            onClick={},
             leadingAccessoryContent = { GetAvatar(size = Size40, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
             text = primaryText,
-            subText = "Subtitle (Unclickable)",
+            subText = "Subtitle",
+            onClick={},
             leadingAccessoryContent = {
                 GetAvatar(
                     size = Size40,
@@ -323,7 +326,7 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            onClick = {},
+            onClick={},
             leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_daisy_phillips) },
             border = BorderType.Bottom,
             borderInset = XXLarge
@@ -332,15 +335,16 @@ private fun ThreeLineSimpleList() {
             text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
-            onClick = {},
+            onClick={},
             leadingAccessoryContent = { GetAvatar(size = Size56, drawable.avatar_elliot_woodward) },
             border = BorderType.Bottom,
             borderInset = XXLarge
         )
         ListItem.Item(
-            text = primaryText+"(Unclickable)",
+            text = primaryText,
             subText = "Subtitle",
             secondarySubText = tertiaryText,
+            onClick={},
             leadingAccessoryContent = {
                 GetAvatar(
                     size = Size56,
@@ -396,7 +400,7 @@ private fun OneLineListAccessoryContentContent(context: Context) {
             borderInset = XXLarge
         )
         ListItem.Item(
-            text = "(UnClickable) $primaryText",
+            text = primaryText + unclickableText,
             leadingAccessoryContent = { LeftContentAvatar(size = Size24) },
             border = BorderType.Bottom,
             borderInset = XXLarge
