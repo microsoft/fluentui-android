@@ -303,7 +303,9 @@ class V2TextFieldActivity : V2DemoActivity() {
                             ),
                             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
                             keyboardActions = KeyboardActions(onAny = { focusManager.clearFocus() }),
-                            visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None
+                            visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None,
+                            readOnly = false,
+                            enabled = true,
                         )
                     }
                 }

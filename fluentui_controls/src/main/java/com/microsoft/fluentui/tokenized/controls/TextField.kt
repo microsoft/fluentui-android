@@ -106,7 +106,9 @@ fun TextField(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     textFieldContentDescription: String? = null,
     decorationBox: (@Composable (innerTextField: @Composable () -> Unit) -> Unit)? = null,
-    textFieldTokens: TextFieldTokens? = null
+    textFieldTokens: TextFieldTokens? = null,
+    readOnly: Boolean = false,
+    enabled: Boolean = true
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
@@ -214,7 +216,9 @@ fun TextField(
                                 textDirection = TextDirection.ContentOrLtr
                             )
                         ),
-                        cursorBrush = token.cursorColor(textFieldInfo)
+                        cursorBrush = token.cursorColor(textFieldInfo),
+                        readOnly = readOnly,
+                        enabled = enabled,
                     )
                     if (!trailingAccessoryText.isNullOrBlank()) {
                         Spacer(Modifier.requiredWidth(8.dp))
