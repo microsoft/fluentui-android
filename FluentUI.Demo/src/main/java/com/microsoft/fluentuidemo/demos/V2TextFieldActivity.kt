@@ -88,7 +88,7 @@ class V2TextFieldActivity : V2DemoActivity() {
                         title = getDemoAppString(DemoAppStrings.ModifiableParameters),
                         enableChevron = true,
                         enableContentOpenCloseTransition = true,
-                        chevronOrientation = ChevronOrientation(90f, 0f),
+                        chevronOrientation = ChevronOrientation(90f, 0f)
                     ) {
                         LazyColumn(Modifier.fillMaxHeight(0.5F)) {
                             item {
@@ -346,7 +346,7 @@ class V2TextFieldActivity : V2DemoActivity() {
                             ),
                             keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
                             keyboardActions = KeyboardActions(onAny = { focusManager.clearFocus() }),
-                            visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None,
+                            visualTransformation = if (passwordMode) PasswordVisualTransformation() else VisualTransformation.None
                         )
                     }
                 }
