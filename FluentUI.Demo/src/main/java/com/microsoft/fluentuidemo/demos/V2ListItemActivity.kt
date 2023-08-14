@@ -103,7 +103,7 @@ private fun CreateListActivityUI(context: Context) {
             ListItem.Header(title = "Text Only")
             ListItem.Item(
                 text = primaryText,
-                onClick = {},
+                onClick = {}, 
                 border = BorderType.Bottom,
                 borderInset = XXLarge,
                 primaryTextTrailingContent = { Icon20() }
