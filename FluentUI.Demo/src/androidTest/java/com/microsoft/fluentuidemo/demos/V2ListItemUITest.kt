@@ -72,7 +72,7 @@ class V2ListItemUITest {
         listItem.assertHeightIsAtLeast(43.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
-        listItem.assertIsNotEnabled()
+        listItem.assertHasNoClickAction()
     }
 
     @Test
@@ -105,7 +105,7 @@ class V2ListItemUITest {
         listItem.assertHeightIsAtLeast(63.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
-        listItem.assertIsNotEnabled()
+        listItem.assertHasNoClickAction()
     }
 
     @Test
@@ -140,7 +140,7 @@ class V2ListItemUITest {
         listItem.assertHeightIsAtLeast(80.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
-        listItem.assertIsNotEnabled()
+        listItem.assertHasNoClickAction()
     }
 
     @Test
