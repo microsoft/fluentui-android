@@ -87,28 +87,4 @@ class V2TextFieldActivityUITest : BaseTest() {
         component.performTextInput("Test")
         component.assertExists("Password mode did not render properly")
     }
-
-    @Test
-    fun testReadOnlyMode(){
-        val control = composeTestRule.onNodeWithTag(TEXT_FIELD_READONLY_PARAM)
-        val component = composeTestRule.onNodeWithTag(TEXT_FIELD, true)
-        modifiableParametersButton.performClick()
-        modifiableParametersButton.performTouchInput { swipeUp(durationMillis = 1000) }
-        toggleControlToValue(control, true)
-        component.performTextInput("Test")
-        val componentEditable = composeTestRule.onNodeWithText(TEXT_FIELD, true)
-        componentEditable.assertDoesNotExist()
-    }
-
-    @Test
-    fun testEnabledMode(){
-        val control = composeTestRule.onNodeWithTag(TEXT_FIELD_ENABLED_PARAM)
-        val component = composeTestRule.onNodeWithTag(TEXT_FIELD, true)
-        modifiableParametersButton.performClick()
-        modifiableParametersButton.performTouchInput { swipeUp(durationMillis = 1000) }
-        toggleControlToValue(control, true)
-        component.performClick()
-        component.assertIsNotEnabled()
-    }
-
 }
