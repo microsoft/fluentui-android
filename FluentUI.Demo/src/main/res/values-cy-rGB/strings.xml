@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Is-deitl</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Border Isaf</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Wedi clicio ar eicon llywio.</string>
@@ -861,84 +861,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Teitl</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Testun Blwch Offer</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Tarwch i gael Cyngor Cynnwys Personol</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Dechrau Gorau </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Pen Uchaf</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Dechrau Gwaelod </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Pen Gwaelod</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Canoli </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Canolfan Bersonol</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">I gael diweddariadau ar Nodiadau Rhyddhau, </string>
+    <string name="click_here">glicio yma.</string>
+    <string name="open_source_cross_platform">Agor y System Dylunio ar draws llwyfannau ffynhonnell.</string>
+    <string name="intuitive_and_powerful">Deallus &amp; Pwerus.</string>
+    <string name="design_tokens">Tocynnau Dylunio</string>
+    <string name="release_notes">Nodiadau Rhyddhau</string>
+    <string name="github_repo">Ail-wneud GitHub</string>
+    <string name="github_repo_link">Dolen Ail-wneud GitHub</string>
+    <string name="report_issue">Riportio Problem</string>
+    <string name="v1_components">Cydrannau V1</string>
+    <string name="v2_components">Cydrannau V2</string>
+    <string name="all_components">Pob</string>
+    <string name="fluent_logo">Logo Fluent</string>
+    <string name="new_badge">Newydd</string>
+    <string name="modified_badge">Addaswyd</string>
+    <string name="api_break_badge">Toriad API</string>
+    <string name="app_bar_more">Mwy</string>
+    <string name="accent">Pwyslais</string>
+    <string name="appearance">Ymddangosiad</string>
+    <string name="choose_brand_theme">Dewiswch eich thema brand:</string>
+    <string name="fluent_brand_theme">Brand Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">Dewis Ymddangosiad</string>
+    <string name="appearance_system_default">Diofyn y System</string>
+    <string name="appearance_light">Golau</string>
+    <string name="appearance_dark">Tywyll</string>
+    <string name="demo_activity_github_link">Dolen GitHub Gweithgaredd Demo</string>
+    <string name="control_tokens_details">Manylion Tocynnau Rheoli</string>
+    <string name="parameters">Paramedrau</string>
+    <string name="control_tokens">Tocynnau Rheoli</string>
+    <string name="global_tokens">Tocynnau Cyffredinol</string>
+    <string name="alias_tokens">Tocynnau Enw Arall</string>
+    <string name="sample_text">Testun</string>
+    <string name="sample_icon">Eicon Sampl</string>
+    <string name="color">Lliw</string>
+    <string name="neutral_color_tokens">Tocynnau Lliw Niwtral</string>
+    <string name="font_size_tokens">Tocynnau Maint Ffont</string>
+    <string name="line_height_tokens">Tocynnau Uchder Llinell</string>
+    <string name="font_weight_tokens">Tocynnau Pwysau Ffont</string>
+    <string name="icon_size_tokens">Tocynnau Maint Eicon</string>
+    <string name="size_tokens">Maint Tocynnau</string>
+    <string name="shadow_tokens">Tocynnau Cysgod</string>
+    <string name="corner_radius_tokens">Tocynnau Radiws Cornel</string>
+    <string name="stroke_width_tokens">Tocynnau Lled Strôc</string>
+    <string name="brand_color_tokens">Tocynnau Lliw Brand</string>
+    <string name="neutral_background_color_tokens">Tocynnau Lliw Cefndir Niwtral</string>
+    <string name="neutral_foreground_color_tokens">Tocynnau Lliw Blaendir Niwtral</string>
+    <string name="neutral_stroke_color_tokens">Tocynnau Lliw Strôc Niwtral</string>
+    <string name="brand_background_color_tokens">Tocynnau Lliw Cefndir Brand</string>
+    <string name="brand_foreground_color_tokens">Tocynnau Lliw Blaendir y Brand</string>
+    <string name="brand_stroke_color_tokens">Tocynnau Lliw Strôc Brand</string>
+    <string name="error_and_status_color_tokens">Tocynnau Lliw Gwall a Statws</string>
+    <string name="presence_tokens">Tocynnau Lliw Presenoldeb</string>
+    <string name="typography_tokens">Tocynnau Teipograffeg</string>
+    <string name="unspecified">Amhenodol</string>
 
 </resources>

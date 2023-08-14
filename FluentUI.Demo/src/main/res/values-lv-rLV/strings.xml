@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Subtitrs</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Apakšējā apmale</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Noklikšķināts uz navigācijas ikonas.</string>
@@ -858,84 +858,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Virsraksts</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Rīka padoma teksts</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Pieskarieties, lai atvērtu pielāgota satura rīka padomu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Sākums augšā </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Augšpuses gals</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Apakšējais sākums</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Apakšpuses gals</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Centrā </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Pielāgots centrs</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">Lai iegūtu informāciju par laidienu piezīmēm,</string>
+    <string name="click_here">noklikšķiniet šeit.</string>
+    <string name="open_source_cross_platform">Atvērt avota starpplatformu noformēšanas sistēmu.</string>
+    <string name="intuitive_and_powerful">Intuitīvs &amp; jaudīgs.</string>
+    <string name="design_tokens">Noformējuma marķieri</string>
+    <string name="release_notes">Informācija par laidienu</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">GitHub Repo saite</string>
+    <string name="report_issue">Ziņot par problēmu</string>
+    <string name="v1_components">V1 komponenti</string>
+    <string name="v2_components">V2 komponenti</string>
+    <string name="all_components">Visi</string>
+    <string name="fluent_logo">Fluent logotips</string>
+    <string name="new_badge">Jauns</string>
+    <string name="modified_badge">Modificēts</string>
+    <string name="api_break_badge">API pārtraukums</string>
+    <string name="app_bar_more">Vairāk</string>
+    <string name="accent">Izcēlums</string>
+    <string name="appearance">Izskats</string>
+    <string name="choose_brand_theme">Izvēlieties zīmola dizainu:</string>
+    <string name="fluent_brand_theme">Fluent zīmols</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
-    <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="teams_theme">Microsoft Teams</string>
+    <string name="choose_appearance">Izskata izvēle</string>
+    <string name="appearance_system_default">Sistēmas noklusējums</string>
+    <string name="appearance_light">Gaiša</string>
+    <string name="appearance_dark">Tumša</string>
+    <string name="demo_activity_github_link">Demonstrācijas darbību GitHub saite</string>
+    <string name="control_tokens_details">Vadīklu marķieru detalizētā informācija</string>
+    <string name="parameters">Parametri</string>
+    <string name="control_tokens">Vadīklu marķieri</string>
+    <string name="global_tokens">Globālie marķieri</string>
+    <string name="alias_tokens">Aizstājvārdu marķieri</string>
+    <string name="sample_text">Teksts</string>
+    <string name="sample_icon">Ikonas paraugs</string>
+    <string name="color">Krāsa</string>
+    <string name="neutral_color_tokens">Neitrālas krāsas marķieri</string>
+    <string name="font_size_tokens">Fonta lieluma marķieri</string>
+    <string name="line_height_tokens">Rindiņas augstuma marķieri</string>
+    <string name="font_weight_tokens">Fonta biezuma marķieri</string>
+    <string name="icon_size_tokens">Ikonas lieluma marķieri</string>
+    <string name="size_tokens">Lieluma marķieri</string>
+    <string name="shadow_tokens">Ēnas marķieri</string>
+    <string name="corner_radius_tokens">Stūra rādiusa marķieri</string>
+    <string name="stroke_width_tokens">Vilkuma platuma marķieri</string>
+    <string name="brand_color_tokens">Zīmola krāsas marķieri</string>
+    <string name="neutral_background_color_tokens">Neitrālā fona krāsas marķieri</string>
+    <string name="neutral_foreground_color_tokens">Neitrāla priekšplāna krāsu marķieri</string>
+    <string name="neutral_stroke_color_tokens">Neitrālā vilkuma krāsas marķieri</string>
+    <string name="brand_background_color_tokens">Zīmola fona krāsas marķieri</string>
+    <string name="brand_foreground_color_tokens">Zīmola priekšplāna krāsu marķieri</string>
+    <string name="brand_stroke_color_tokens">Zīmola vilkuma krāsas marķieri</string>
+    <string name="error_and_status_color_tokens">Kļūdu un statusa krāsu marķieri</string>
+    <string name="presence_tokens">Klātbūtnes krāsu marķieri</string>
+    <string name="typography_tokens">Salikuma marķieri</string>
+    <string name="unspecified">Nenorādīts</string>
 
 </resources>

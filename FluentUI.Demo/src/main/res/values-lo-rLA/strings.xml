@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">ຄຳແປ</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">ເສັ້ນຂອບດ້ານລຸ່ມ</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">ຄລິກໄອຄອນການນຳທາງແລ້ວ</string>
@@ -856,84 +856,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">ຊື່</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">ຂໍ້ຄວາມຄຳແນະນຳເຄື່ອງມື</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">ແຕະສຳລັບຄຳແນະນຳເຄື່ອງມືເນື້ອຫາແບບກຳນົດເອງ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">ເລີ່ມຕົ້ນເທິງສຸດ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">ດ້ານເທິງສຸດ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">ເລີ່ມຕົ້ນດ້ານລຸ່ມ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">ດ້ານລຸ່ມສຸດ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">ເຄິ່ງກາງ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">ສູນແບບກຳນົດເອງ</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">ສຳລັບການອັບເດດກ່ຽວກັບບັນທຶກທີ່ອອກໃຫ້, </string>
+    <string name="click_here">ຄລິກບ່ອນນີ້.</string>
+    <string name="open_source_cross_platform">ລະບົບການອອກແບບຂ້າມແພລດຟອມແບບໂອເພນຊອດ.</string>
+    <string name="intuitive_and_powerful">ໃຊ້ງານງ່າຍ &amp; ມີປະສິດທິພາບ.</string>
+    <string name="design_tokens">ໂທເຄນການອອກແບບ</string>
+    <string name="release_notes">ບັນທຶກທີ່ອອກໃຫ້</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">ລິ້ງ GitHub Repo</string>
+    <string name="report_issue">ລາຍງານບັນຫາ</string>
+    <string name="v1_components">ອົງປະກອບ V1</string>
+    <string name="v2_components">ອົງປະກອບ V2</string>
+    <string name="all_components">ທັງໝົດ</string>
+    <string name="fluent_logo">ໂລໂກ້ Fluent</string>
+    <string name="new_badge">ໃໝ່</string>
+    <string name="modified_badge">ແກ້ໄຂແລ້ວ</string>
+    <string name="api_break_badge">ຕົວແບ່ງ API</string>
+    <string name="app_bar_more">ເພີ່ມເຕີມ</string>
+    <string name="accent">ໂທນສີ</string>
+    <string name="appearance">ລັກສະນະທີ່ປະກົດຂຶ້ນ</string>
+    <string name="choose_brand_theme">ເລືອກເທມຍີ່ຫໍ້ຂອງທ່ານ:</string>
+    <string name="fluent_brand_theme">ຍີ່ຫໍ້ Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">ເລືອກລັກສະນະທີ່ປະກົດຂຶ້ນ</string>
+    <string name="appearance_system_default">ຄ່າເລີ່ມຕົ້ນລະບົບ</string>
+    <string name="appearance_light">ສີອ່ອນ</string>
+    <string name="appearance_dark">ມືດ</string>
+    <string name="demo_activity_github_link">ລິ້ງ GitHub ສຳລັບກິດຈະກຳການສາທິດ</string>
+    <string name="control_tokens_details">ລາຍລະອຽດໂທເຄນການຄວບຄຸມ</string>
+    <string name="parameters">ພາຣາມິເຕີ</string>
+    <string name="control_tokens">ໂທເຄນຄວບຄຸມ</string>
+    <string name="global_tokens">ໂທເຄນທົ່ວໂລກ</string>
+    <string name="alias_tokens">ໂທເຄນນາມແຝງ</string>
+    <string name="sample_text">ຂໍ້ຄວາມ</string>
+    <string name="sample_icon">ໄອຄອນຕົວຢ່າງ</string>
+    <string name="color">ສີ</string>
+    <string name="neutral_color_tokens">ໂທເຄນສີປານກາງ</string>
+    <string name="font_size_tokens">ໂທເຄນຂະໜາດຕົວໜັງສື</string>
+    <string name="line_height_tokens">ໂທເຄນຄວາມສູງຂອງເສັ້ນ</string>
+    <string name="font_weight_tokens">ໂທເຄນນ້ຳໜັກຕົວໜັງສື</string>
+    <string name="icon_size_tokens">ໂທເຄນຂະໜາດໄອຄອນ</string>
+    <string name="size_tokens">ໂທເຄນຂະໜາດ</string>
+    <string name="shadow_tokens">ໂທເຄນເງົາ</string>
+    <string name="corner_radius_tokens">ໂທເຄນລັດສະໝີມຸມ</string>
+    <string name="stroke_width_tokens">ໂທເຄນຄວາມກວ້າງເສັ້ນຂີດ</string>
+    <string name="brand_color_tokens">ໂທເຄນສີຂອງຍີ່ຫໍ້</string>
+    <string name="neutral_background_color_tokens">ໂທເຄນສີພື້ນຫຼັງປານກາງ</string>
+    <string name="neutral_foreground_color_tokens">ໂທເຄນສີພື້ນໜ້າປານກາງ</string>
+    <string name="neutral_stroke_color_tokens">ໂທເຄນສີເສັ້ນຂີດປານກາງ</string>
+    <string name="brand_background_color_tokens">ໂທເຄນສີພື້ນຫຼັງຂອງຍີ່ຫໍ້</string>
+    <string name="brand_foreground_color_tokens">ໂທເຄນສີພື້ນໜ້າຂອງຍີ່ຫໍ້</string>
+    <string name="brand_stroke_color_tokens">ໂທເຄນສີເສັ້ນຂີດຂອງຍີ່ຫໍ້</string>
+    <string name="error_and_status_color_tokens">ໂທເຄນຂໍ້ຜິດພາດ ແລະ ສີສະຖານະ</string>
+    <string name="presence_tokens">ໂທເຄນສີຂອງສະຖານະ</string>
+    <string name="typography_tokens">ໂທເຄນຕົວພິມ</string>
+    <string name="unspecified">ບໍ່​ໄດ້ລະບຸ</string>
 
 </resources>
