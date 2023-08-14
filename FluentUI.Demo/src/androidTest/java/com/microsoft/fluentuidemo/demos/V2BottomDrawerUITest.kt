@@ -31,12 +31,14 @@ class V2BottomDrawerUITest : BaseTest() {
     private val drawerScrim = composeTestRule.onNodeWithTag(DRAWER_SCRIM_TAG)
 
     private fun openCheckForVerticalDrawer() {
+        composeTestRule.waitForIdle()
         drawerHandle.assertExists("Drawer Handle not shown")
         drawerContent.assertExists("Drawer Content not shown")
         drawerScrim.assertExists("Drawer Scrim not shown")
     }
 
     private fun closeCheckForVerticalDrawer() {
+        composeTestRule.waitForIdle()
         drawerHandle.assertDoesNotExist()
         drawerScrim.assertDoesNotExist()
         drawerContent.assertDoesNotExist()
@@ -57,13 +59,13 @@ class V2BottomDrawerUITest : BaseTest() {
 
         val scrimEnd = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
 
-        //Click on drawer should not close it.
+        //Click on scrim covered by drawer should not close it.
         drawerScrim.performTouchInput {
             click(Offset((0..width).random().toFloat(), (scrimEnd..height).random().toFloat()))
         }
         openCheckForVerticalDrawer()
 
-        //Click on scrim should close it.
+        //Click on scrim not covered by drawer should close it.
         drawerScrim.performTouchInput {
             click(Offset((0..width).random().toFloat(), (0..scrimEnd).random().toFloat()))
         }
@@ -82,7 +84,6 @@ class V2BottomDrawerUITest : BaseTest() {
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
@@ -100,7 +101,7 @@ class V2BottomDrawerUITest : BaseTest() {
 
         val drawerStart = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
 
-        //SwipeDown on drawerContent should close it.
+        //SwipeDown on scrollable drawerContent should close it.
 
         val swipeEnd = drawerScrim.fetchSemanticsNode().size.height
         val swipeStart = (drawerStart..((swipeEnd + drawerStart) / 2)).random()
@@ -131,7 +132,6 @@ class V2BottomDrawerUITest : BaseTest() {
         //SwipeDown of drawerHandle to bottom should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
@@ -150,11 +150,9 @@ class V2BottomDrawerUITest : BaseTest() {
         //SwipeDown a little should not close the drawer
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
-                endY = drawerHandle.fetchSemanticsNode().positionInRoot.y + (0..dpToPx(26.dp).toInt()).random()
+                endY = top + (0..dpToPx(26.dp).toInt()).random()
             )
         }
-        composeTestRule.waitForIdle()
         openCheckForVerticalDrawer()
 
     }
@@ -171,7 +169,6 @@ class V2BottomDrawerUITest : BaseTest() {
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
@@ -193,10 +190,7 @@ class V2BottomDrawerUITest : BaseTest() {
 
         //SwipeDown on drawerContent should close it.
         drawerContent.performTouchInput {
-            swipeDown(
-                startY = drawerContent.fetchSemanticsNode().positionInRoot.y,
-                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
-            )
+            swipeDown()
         }
         closeCheckForVerticalDrawer()
     }
@@ -213,11 +207,10 @@ class V2BottomDrawerUITest : BaseTest() {
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
-
+        closeCheckForVerticalDrawer()
     }
 
 }
