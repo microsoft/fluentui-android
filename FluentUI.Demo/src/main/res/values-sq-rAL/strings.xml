@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Nëntitull</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Kufizuesi i poshtëm</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ikona e navigacionit klikuar.</string>
@@ -857,84 +857,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Titulli</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Teksti i këshillës</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Trokit për këshillën e përmbajtjes së përshtatur</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Fillimi i sipërm </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Fundi i sipërm </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Fillimi i poshtëm </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Fundi i poshtëm </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Qendër </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Në qendër e përshtatur</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">Për përditësimet e shënimeve të versionit, </string>
+    <string name="click_here">kliko këtu.</string>
+    <string name="open_source_cross_platform">Sistemi i dizajnit të platformave të ndryshme me burim të hapur.</string>
+    <string name="intuitive_and_powerful">Intuitiv dhe i fuqishëm.</string>
+    <string name="design_tokens">Kodet e dizajnit</string>
+    <string name="release_notes">Shënimet e versionit</string>
+    <string name="github_repo">Depoja e GitHub</string>
+    <string name="github_repo_link">Lidhja e depos së GitHub</string>
+    <string name="report_issue">Raporto problemin</string>
+    <string name="v1_components">Komponentët e V1</string>
+    <string name="v2_components">Komponentët e V2</string>
+    <string name="all_components">Të gjithë</string>
+    <string name="fluent_logo">Logoja e Fluent</string>
+    <string name="new_badge">E re</string>
+    <string name="modified_badge">Modifikuar</string>
+    <string name="api_break_badge">Ndërprerje e API-së</string>
+    <string name="app_bar_more">Më shumë</string>
+    <string name="accent">Theksimi</string>
+    <string name="appearance">Pamja</string>
+    <string name="choose_brand_theme">Zgjidh temën e markës:</string>
+    <string name="fluent_brand_theme">Marka e Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">Zgjidh pamjen</string>
+    <string name="appearance_system_default">Parazgjedhja e sistemit</string>
+    <string name="appearance_light">E çelur</string>
+    <string name="appearance_dark">E errët</string>
+    <string name="demo_activity_github_link">Lidhja e GitHub për tek aktiviteti demonstrues</string>
+    <string name="control_tokens_details">Detajet e kodeve të kontrollit</string>
+    <string name="parameters">Parametrat</string>
+    <string name="control_tokens">Kodet e kontrollit</string>
+    <string name="global_tokens">Kodet globale</string>
+    <string name="alias_tokens">Kodet e pseudonimit</string>
+    <string name="sample_text">Teksti</string>
+    <string name="sample_icon">Ikona shembull</string>
+    <string name="color">Ngjyra</string>
+    <string name="neutral_color_tokens">Kodet e ngjyrave neutrale</string>
+    <string name="font_size_tokens">Kodet e madhësisë së fontit</string>
+    <string name="line_height_tokens">Kodet e lartësisë së vijave</string>
+    <string name="font_weight_tokens">Kodet e peshës së fontit</string>
+    <string name="icon_size_tokens">Kodet e madhësisë së ikonave</string>
+    <string name="size_tokens">Kodet e madhësisë</string>
+    <string name="shadow_tokens">Kodet e hijes</string>
+    <string name="corner_radius_tokens">Kodet e rrezes së këndeve</string>
+    <string name="stroke_width_tokens">Kodet e gjerësisë së vizave</string>
+    <string name="brand_color_tokens">Kodet e ngjyrave të markës</string>
+    <string name="neutral_background_color_tokens">Kodet e ngjyrave neutrale në sfond</string>
+    <string name="neutral_foreground_color_tokens">Kodet e ngjyrave neutrale të planit të parë</string>
+    <string name="neutral_stroke_color_tokens">Kodet e ngjyrave neutrale të vizave të markës</string>
+    <string name="brand_background_color_tokens">Kodet e ngjyrave në sfond të markës</string>
+    <string name="brand_foreground_color_tokens">Kodet e ngjyrave të planit të parë të markës</string>
+    <string name="brand_stroke_color_tokens">Kodet e ngjyrave të vizave të markës</string>
+    <string name="error_and_status_color_tokens">Kodet e gabimeve dhe të ngjyrave të statusit</string>
+    <string name="presence_tokens">Kodet e ngjyrave të pranisë</string>
+    <string name="typography_tokens">Kodet e tipografisë</string>
+    <string name="unspecified">I paspecifikuar</string>
 
 </resources>

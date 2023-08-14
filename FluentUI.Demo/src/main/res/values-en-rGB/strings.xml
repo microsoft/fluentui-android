@@ -861,7 +861,7 @@
     <!-- UI Label for ToolTip Text-->
     <string name="tooltip_text">Tooltip Text</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Tap for Customised Content Tooltip</string>
     <!--UI label showing tooltip message -->
     <string name="tooltip_top_start">Top Start </string>
     <!--UI label showing tooltip message -->
@@ -871,9 +871,9 @@
     <!--UI label showing tooltip message -->
     <string name="tooltip_bottom_end">Bottom End </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Centre </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Customised Centre</string>
 
     <!-- V2 Demo App -->
     <string name="release_notes_updates">For updates on Release Notes, </string>
@@ -915,8 +915,8 @@
     <string name="alias_tokens">Alias Tokens</string>
     <string name="sample_text">Text</string>
     <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
+    <string name="color">Colour</string>
+    <string name="neutral_color_tokens">Neutral Colour Tokens</string>
     <string name="font_size_tokens">Font Size Tokens</string>
     <string name="line_height_tokens">Line Height Tokens</string>
     <string name="font_weight_tokens">Font Weight Tokens</string>
@@ -925,15 +925,15 @@
     <string name="shadow_tokens">Shadow Tokens</string>
     <string name="corner_radius_tokens">Corner RadiusTokens</string>
     <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
+    <string name="brand_color_tokens">Brand Colour Tokens</string>
+    <string name="neutral_background_color_tokens">Neutral Background Colour Tokens</string>
+    <string name="neutral_foreground_color_tokens">Neutral Foreground Colour Tokens</string>
+    <string name="neutral_stroke_color_tokens">Neutral Stroke Colour Tokens</string>
+    <string name="brand_background_color_tokens">Brand Background Colour Tokens</string>
+    <string name="brand_foreground_color_tokens">Brand Foreground Colour Tokens</string>
+    <string name="brand_stroke_color_tokens">Brand Stroke Colour Tokens</string>
+    <string name="error_and_status_color_tokens">Error and Status Colour Tokens</string>
+    <string name="presence_tokens">Presence Colour Tokens</string>
     <string name="typography_tokens">Typography Tokens</string>
     <string name="unspecified">Unspecified</string>
 
