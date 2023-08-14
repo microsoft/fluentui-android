@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Undirtitill</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Rammi neðst</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Smellt á „Yfirlitstákn“.</string>
@@ -857,84 +857,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Titill</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Ábendingartexti</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Pikkaðu til að fá sérsniðna efnis ábendingu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Efst á upphafsskjá</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Efst á enda </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Neðst á upphafsskjá</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Neðst í enda </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Miðja </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Sérstillt fyrir miðju</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">Til að fá uppfærslur á um útgáfu,</string>
+    <string name="click_here">smella hér.</string>
+    <string name="open_source_cross_platform">Opinn hugbúnaður á milli mismunandi kerfa Design System.</string>
+    <string name="intuitive_and_powerful">Leiðandi &amp; Öflugt.</string>
+    <string name="design_tokens">Hönnunarlyklar</string>
+    <string name="release_notes">Um útgáfu</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">GitHub Repo-tengill</string>
+    <string name="report_issue">Tilkynna um vandamál</string>
+    <string name="v1_components">V1 Íhlutir</string>
+    <string name="v2_components">V2 Íhlutir</string>
+    <string name="all_components">Allt</string>
+    <string name="fluent_logo">Fluent-lógó</string>
+    <string name="new_badge">Nýtt</string>
+    <string name="modified_badge">Breytt</string>
+    <string name="api_break_badge">API-skil</string>
+    <string name="app_bar_more">Meira</string>
+    <string name="accent">Hreimur</string>
+    <string name="appearance">Útlit</string>
+    <string name="choose_brand_theme">Veldu vörumerkisþema:</string>
+    <string name="fluent_brand_theme">Fluent-vörumerki</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">Velja útlit</string>
+    <string name="appearance_system_default">Sjálfgefið kerfi</string>
+    <string name="appearance_light">Ljóst</string>
+    <string name="appearance_dark">Dökkt</string>
+    <string name="demo_activity_github_link">Sýniútgáfuvirkni GitHub-tengill</string>
+    <string name="control_tokens_details">Upplýsingar um stýringarlykla</string>
+    <string name="parameters">Breytur</string>
+    <string name="control_tokens">Stýringarlyklar</string>
+    <string name="global_tokens">Altækir lyklar</string>
+    <string name="alias_tokens">Samnefnislyklar</string>
+    <string name="sample_text">Texti</string>
+    <string name="sample_icon">Dæmi um tákn</string>
+    <string name="color">Litur</string>
+    <string name="neutral_color_tokens">Hlutlausir litalyklar</string>
+    <string name="font_size_tokens">Leturstærðarlyklar</string>
+    <string name="line_height_tokens">Línuhæðarlyklar</string>
+    <string name="font_weight_tokens">Þyngdarlyklar leturgerðar</string>
+    <string name="icon_size_tokens">Stærðarlyklar tákna</string>
+    <string name="size_tokens">Stærðarlyklar</string>
+    <string name="shadow_tokens">Skuggalyklar</string>
+    <string name="corner_radius_tokens">Horn radíuslyklar</string>
+    <string name="stroke_width_tokens">Strokubreiddarlyklar</string>
+    <string name="brand_color_tokens">Litalyklar vörumerkis</string>
+    <string name="neutral_background_color_tokens">Hlutlausir bakgrunnslitalyklar</string>
+    <string name="neutral_foreground_color_tokens">Hlutlausir forgrunnslitalyklar</string>
+    <string name="neutral_stroke_color_tokens">Hlutlausir litastrokulyklar</string>
+    <string name="brand_background_color_tokens">Bakgrunnslitalyklar vörumerkis</string>
+    <string name="brand_foreground_color_tokens">Forgrunnslitalyklar vörumerkis</string>
+    <string name="brand_stroke_color_tokens">Litastrokulyklar vörumerkis</string>
+    <string name="error_and_status_color_tokens">Villu og stöðu litalyklar</string>
+    <string name="presence_tokens">Viðverulitalyklar</string>
+    <string name="typography_tokens">Leturfræðilyklar</string>
+    <string name="unspecified">Ótilgreint</string>
 
 </resources>

@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Napisy</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Krawędź dolna</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Kliknięto ikonę nawigacji.</string>
@@ -859,84 +859,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Tytuł</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Tekst etykietki narzędzia</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Naciśnij, aby uzyskać etykietkę narzędzia zawartości niestandardowej</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Początek u góry </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Górny koniec </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Początek dolny </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Dolny koniec </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Do środka </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Centrum niestandardowe</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
+    <string name="release_notes_updates">Aby uzyskać aktualizacje dotyczące informacji o wersji, </string>
+    <string name="click_here">kliknij tutaj.</string>
+    <string name="open_source_cross_platform">Międzyplatformowy system projektowania typu open source.</string>
+    <string name="intuitive_and_powerful">Intuicyjne i zaawansowane.</string>
+    <string name="design_tokens">Tokeny projektu</string>
+    <string name="release_notes">Informacje o wersji</string>
+    <string name="github_repo">Repozytorium GitHub</string>
+    <string name="github_repo_link">Link repozytorium GitHub</string>
+    <string name="report_issue">Zgłoś problem</string>
+    <string name="v1_components">Składniki V1</string>
+    <string name="v2_components">Składniki V2</string>
+    <string name="all_components">Wszystkie</string>
     <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="new_badge">Nowy</string>
+    <string name="modified_badge">Zmodyfikowano</string>
+    <string name="api_break_badge">Przerwa interfejsu API</string>
+    <string name="app_bar_more">Więcej</string>
+    <string name="accent">Akcent</string>
+    <string name="appearance">Wygląd</string>
+    <string name="choose_brand_theme">Wybierz motyw marki:</string>
+    <string name="fluent_brand_theme">Marka Fluent</string>
     <string name="one_note_theme">OneNote</string>
-    <string name="word_theme">Word</string>
+    <string name="word_theme">Słowo</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">Wybierz wygląd</string>
+    <string name="appearance_system_default">Ustawienia domyślne systemu</string>
+    <string name="appearance_light">Jasny</string>
+    <string name="appearance_dark">Ciemny</string>
+    <string name="demo_activity_github_link">Link do działania demonstracyjnego w usłudze GitHub</string>
+    <string name="control_tokens_details">Szczegóły tokenów kontrolki</string>
+    <string name="parameters">Parametry</string>
+    <string name="control_tokens">Tokeny kontrolek</string>
+    <string name="global_tokens">Tokeny globalne</string>
+    <string name="alias_tokens">Tokeny aliasów</string>
+    <string name="sample_text">Tekst</string>
+    <string name="sample_icon">Ikona przykładu</string>
+    <string name="color">Kolor</string>
+    <string name="neutral_color_tokens">Neutralne tokeny kolorów</string>
+    <string name="font_size_tokens">Tokeny rozmiaru czcionki</string>
+    <string name="line_height_tokens">Tokeny wysokości linii</string>
+    <string name="font_weight_tokens">Tokeny wagi czcionki</string>
+    <string name="icon_size_tokens">Tokeny rozmiaru ikony</string>
+    <string name="size_tokens">Tokeny rozmiaru</string>
+    <string name="shadow_tokens">Tokeny w tle</string>
+    <string name="corner_radius_tokens">Narożny obiekt RadiusTokens</string>
+    <string name="stroke_width_tokens">Tokeny szerokości pociągnięć odręcznych</string>
+    <string name="brand_color_tokens">Tokeny koloru marki</string>
+    <string name="neutral_background_color_tokens">Tokeny neutralnych kolorów tła</string>
+    <string name="neutral_foreground_color_tokens">Neutralne tokeny kolorów pierwszego planu</string>
+    <string name="neutral_stroke_color_tokens">Tokeny neutralnych kolorów pociągnięć odręcznych</string>
+    <string name="brand_background_color_tokens">Tokeny koloru tła marki</string>
+    <string name="brand_foreground_color_tokens">Tokeny kolorów pierwszego planu marki</string>
+    <string name="brand_stroke_color_tokens">Tokeny koloru pociągnięcia odręcznego marki</string>
+    <string name="error_and_status_color_tokens">Tokeny koloru błędu i stanu</string>
+    <string name="presence_tokens">Tokeny kolorów obecności</string>
+    <string name="typography_tokens">Tokeny typografii</string>
+    <string name="unspecified">Nieokreślone</string>
 
 </resources>

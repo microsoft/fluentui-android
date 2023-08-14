@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Podtitul</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Dolné orámovanie</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Kliklo sa na ikonu Navigácia.</string>
@@ -859,84 +859,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Názov</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Text názvu tlačidla</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Ťuknutím zobrazíte popis vlastného obsahu</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Začiatok hore </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Horný koniec </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Dolný začiatok </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Dolný koniec </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Na stred </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Vlastný stred</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">Ak chcete aktualizovať poznámky k vydaniu, </string>
+    <string name="click_here">kliknite sem.</string>
+    <string name="open_source_cross_platform">Open source návrhový systém pre rôzne platformy.</string>
+    <string name="intuitive_and_powerful">Intuitívne a výkonné.</string>
+    <string name="design_tokens">Tokeny návrhu</string>
+    <string name="release_notes">Poznámky k vydaniu</string>
+    <string name="github_repo">Odkladací priestor GitHub</string>
+    <string name="github_repo_link">Prepojenie na odkladací priestor GitHub</string>
+    <string name="report_issue">Nahlásiť problém</string>
+    <string name="v1_components">Súčasti V1</string>
+    <string name="v2_components">Súčasti V2</string>
+    <string name="all_components">Všetky</string>
+    <string name="fluent_logo">Logo Fluent</string>
+    <string name="new_badge">Nové</string>
+    <string name="modified_badge">Upravené</string>
+    <string name="api_break_badge">Prerušenie rozhrania API</string>
+    <string name="app_bar_more">Viac</string>
+    <string name="accent">Zvýraznenie</string>
+    <string name="appearance">Vzhľad</string>
+    <string name="choose_brand_theme">Vyberte motív svojej značky:</string>
+    <string name="fluent_brand_theme">Značka Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
+    <string name="choose_appearance">Vybrať vzhľad</string>
+    <string name="appearance_system_default">Predvolené systémové nastavenie</string>
+    <string name="appearance_light">Svetlý</string>
+    <string name="appearance_dark">Tmavý</string>
+    <string name="demo_activity_github_link">Prepojenie na ukážkovú aktivitu v GitHube</string>
+    <string name="control_tokens_details">Podrobnosti o tokenoch ovládacieho prvku</string>
+    <string name="parameters">Parametre</string>
+    <string name="control_tokens">Tokeny ovládacieho prvku</string>
+    <string name="global_tokens">Globálne tokeny</string>
+    <string name="alias_tokens">Tokeny aliasu</string>
     <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="sample_icon">Ikona ukážky</string>
+    <string name="color">Farba</string>
+    <string name="neutral_color_tokens">Tokeny neutrálnej farby</string>
+    <string name="font_size_tokens">Tokeny veľkosti písma</string>
+    <string name="line_height_tokens">Tokeny výšky riadka</string>
+    <string name="font_weight_tokens">Tokeny hrúbky písma</string>
+    <string name="icon_size_tokens">Tokeny veľkosti ikon</string>
+    <string name="size_tokens">Tokeny veľkosti</string>
+    <string name="shadow_tokens">Tieňové tokeny</string>
+    <string name="corner_radius_tokens">Tokeny polomeru rohu</string>
+    <string name="stroke_width_tokens">Tokeny šírky ťahu</string>
+    <string name="brand_color_tokens">Tokeny farby značky</string>
+    <string name="neutral_background_color_tokens">Tokeny neutrálnej farby pozadia</string>
+    <string name="neutral_foreground_color_tokens">Tokeny neutrálnej farby popredia</string>
+    <string name="neutral_stroke_color_tokens">Tokeny neutrálnej farby ťahu</string>
+    <string name="brand_background_color_tokens">Tokeny farby pozadia značky</string>
+    <string name="brand_foreground_color_tokens">Tokeny farby popredia značky</string>
+    <string name="brand_stroke_color_tokens">Tokeny farby ťahu značky</string>
+    <string name="error_and_status_color_tokens">Tokeny chýb a stavu farieb</string>
+    <string name="presence_tokens">Tokeny farby prítomnosti</string>
+    <string name="typography_tokens">Tokeny typografie</string>
+    <string name="unspecified">Neurčené</string>
 
 </resources>

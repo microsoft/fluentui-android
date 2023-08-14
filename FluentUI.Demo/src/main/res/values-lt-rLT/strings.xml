@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Subtitrai</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Apatinė kraštinė</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Spustelėta naršymo piktograma.</string>
@@ -859,84 +859,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Pavadinimas</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Ekrano patarimo tekstas</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Bakstelėkite norėdami gauti pasirinktinio turinio patarimą</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Pradžios viršuje </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Viršuje pabaigoje </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Apačioje pradžioje </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Apačioje pabaigoje </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Centre </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Pasirinktinis centre</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">Jei reikia leidimo pastabų atnaujinimų, </string>
+    <string name="click_here">spustelėkite čia.</string>
+    <string name="open_source_cross_platform">Atvirojo kodo kelių platformų dizaino sistema.</string>
+    <string name="intuitive_and_powerful">Intuityvi ir galinga.</string>
+    <string name="design_tokens">Dizaino atpažinimo ženklai</string>
+    <string name="release_notes">Leidimo pastabos</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">„GitHub Repo“ saitas</string>
+    <string name="report_issue">Pranešti apie problemą</string>
+    <string name="v1_components">V1 komponentai</string>
+    <string name="v2_components">V2 komponentai</string>
+    <string name="all_components">Visi</string>
+    <string name="fluent_logo">„Fluent“ logotipas</string>
+    <string name="new_badge">Naujas</string>
+    <string name="modified_badge">Modifikuota</string>
+    <string name="api_break_badge">API lūžis</string>
+    <string name="app_bar_more">Daugiau</string>
+    <string name="accent">Akcentas</string>
+    <string name="appearance">Išvaizda</string>
+    <string name="choose_brand_theme">Pasirinkite savo prekės ženklo temą:</string>
+    <string name="fluent_brand_theme">„Fluent“ prekės ženklas</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">Pasirinkti išvaizdą</string>
+    <string name="appearance_system_default">Sistemos numatytoji</string>
+    <string name="appearance_light">Šviesi</string>
+    <string name="appearance_dark">Tamsi</string>
+    <string name="demo_activity_github_link">Demonstracinės veiklos „GitHub“ saitas</string>
+    <string name="control_tokens_details">Išsami valdiklio atpažinimo ženklų informacija</string>
+    <string name="parameters">Parametrai</string>
+    <string name="control_tokens">Valdiklio atpažinimo ženklai</string>
+    <string name="global_tokens">Visuotiniai atpažinimo ženklai</string>
+    <string name="alias_tokens">Pseudonimo atpažinimo ženklai</string>
+    <string name="sample_text">Tekstas</string>
+    <string name="sample_icon">Piktogramos pavyzdys</string>
+    <string name="color">Spalva</string>
+    <string name="neutral_color_tokens">Neutralios spalvos atpažinimo ženklai</string>
+    <string name="font_size_tokens">Šrifto dydžio atpažinimo ženklai</string>
+    <string name="line_height_tokens">Eilutės aukščio atpažinimo ženklai</string>
+    <string name="font_weight_tokens">Šrifto storio atpažinimo ženklai</string>
+    <string name="icon_size_tokens">Piktogramų dydžio atpažinimo ženklai</string>
+    <string name="size_tokens">Dydžio atpažinimo ženklai</string>
+    <string name="shadow_tokens">Šešėlio atpažinimo ženklai</string>
+    <string name="corner_radius_tokens">Kampo spindulio atpažinimo ženklai</string>
+    <string name="stroke_width_tokens">Brūkštelėjimo stiliumi atpažinimo ženklai</string>
+    <string name="brand_color_tokens">Prekės ženklo spalvos atpažinimo ženklai</string>
+    <string name="neutral_background_color_tokens">Neutralios fono spalvos atpažinimo ženklai</string>
+    <string name="neutral_foreground_color_tokens">Neutralios priekinio plano spalvos atpažinimo ženklai</string>
+    <string name="neutral_stroke_color_tokens">Neutralios brūkštelėjimo stiliumi spalvos atpažinimo ženklai</string>
+    <string name="brand_background_color_tokens">Prekės ženklo fono spalvos atpažinimo ženklai</string>
+    <string name="brand_foreground_color_tokens">Prekės ženklo priekinio plano spalvos atpažinimo ženklai</string>
+    <string name="brand_stroke_color_tokens">Prekės ženklo brūkštelėjimo stiliumi spalvos atpažinimo ženklai</string>
+    <string name="error_and_status_color_tokens">Klaidos ir būsenos spalvos atpažinimo ženklai</string>
+    <string name="presence_tokens">Buvimo spalvos atpažinimo ženklai</string>
+    <string name="typography_tokens">Tipografijos atpažinimo ženklai</string>
+    <string name="unspecified">Nenurodyta</string>
 
 </resources>

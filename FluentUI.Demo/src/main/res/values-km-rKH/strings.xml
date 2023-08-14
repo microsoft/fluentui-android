@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">ចំណងជើងរង</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">ស៊ុមខាងក្រោម</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">បានចុចរូបតំណាងប្រាប់ទិស។</string>
@@ -856,84 +856,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">ចំណងជើង</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">អត្ថបទ​ព័ត៌មានជំនួយ</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">ថេបសម្រាប់​ព័ត៌មានជំនួយខ្លឹមសារតាមតម្រូវការ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">ចាប់ផ្តើមខាងលើ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">ចុងខាងលើ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">ចាប់ផ្តើមខាងក្រោម </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">ចុងខាងក្រោម </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">កណ្តាល </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">ដាក់កណ្តាលតាមតម្រូវការ</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">សម្រាប់ការអាប់ដេតស្តីពីកំណត់ចំណាំការចេញផ្សាយ </string>
+    <string name="click_here">ចុចទីនេះ។</string>
+    <string name="open_source_cross_platform">ប្រព័ន្ធរចនាវេទិកាឆ្លងប្រភពបើកចំហ។</string>
+    <string name="intuitive_and_powerful">ងាយស្រួលប្រើ &amp; ខ្លាំង។</string>
+    <string name="design_tokens">ថូខិនការរចនា</string>
+    <string name="release_notes">កំណត់ចំណាំការចេញផ្សាយ</string>
+    <string name="github_repo">ឃ្លាំង GitHub</string>
+    <string name="github_repo_link">តំណឃ្លាំង GitHub</string>
+    <string name="report_issue">រាយការណ៍ពីបញ្ហា</string>
+    <string name="v1_components">សមាសភាគ V1</string>
+    <string name="v2_components">សមាសភាគ V2</string>
+    <string name="all_components">ទាំងអស់</string>
+    <string name="fluent_logo">និមិត្តសញ្ញា Fluent</string>
+    <string name="new_badge">ថ្មី</string>
+    <string name="modified_badge">បានកែប្រែ</string>
+    <string name="api_break_badge">ការបំបែក API</string>
+    <string name="app_bar_more">ច្រើនទៀត</string>
+    <string name="accent">សញ្ញា</string>
+    <string name="appearance">រូបរាង</string>
+    <string name="choose_brand_theme">ជ្រើសរើសរូបរាងម៉ាកយីហោរបស់អ្នក៖</string>
+    <string name="fluent_brand_theme">ម៉ាកយីហោ Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">ជ្រើសរើសរូបរាង</string>
+    <string name="appearance_system_default">លំនាំដើមប្រព័ន្ធ</string>
+    <string name="appearance_light">ភ្លឺ</string>
+    <string name="appearance_dark">ងងឹត</string>
+    <string name="demo_activity_github_link">តំណ GitHub នៃសកម្មភាពសាកល្បង</string>
+    <string name="control_tokens_details">ព័ត៌មានលម្អិតនៃថូខិនអង្គបញ្ជា</string>
+    <string name="parameters">ប៉ារ៉ាម៉ែត្រ</string>
+    <string name="control_tokens">ថូខិនអង្គបញ្ជា</string>
+    <string name="global_tokens">ថូខិនសកល</string>
+    <string name="alias_tokens">ថូខិនឈ្មោះតំណាង</string>
+    <string name="sample_text">អត្ថបទ</string>
+    <string name="sample_icon">រូបតំណាងគំរូ</string>
+    <string name="color">ពណ៌</string>
+    <string name="neutral_color_tokens">ថូខឹនពណ៌ធម្មតា</string>
+    <string name="font_size_tokens">ថូខិនទំហំពុម្ពអក្សរ</string>
+    <string name="line_height_tokens">ថូខិនកម្ពស់បន្ទាត់</string>
+    <string name="font_weight_tokens">ថូខិនកម្រាស់ពុម្ពអក្សរ</string>
+    <string name="icon_size_tokens">ថូខិនទំហំរូបតំណាង</string>
+    <string name="size_tokens">ថូខិនទំហំំ</string>
+    <string name="shadow_tokens">ថូខិនស្រមោល</string>
+    <string name="corner_radius_tokens">RadiusTokens ជ្រុង</string>
+    <string name="stroke_width_tokens">ថូខិនទទឹងគំនូស</string>
+    <string name="brand_color_tokens">ថូខិនពណ៌ម៉ាកយីហោ</string>
+    <string name="neutral_background_color_tokens">ថូខិនពណ៌ផ្ទាំងខាងក្រោយធម្មតា</string>
+    <string name="neutral_foreground_color_tokens">ថូខិនពណ៌ផ្ទៃខាងមុខធម្មតា</string>
+    <string name="neutral_stroke_color_tokens">ថូខិនពណ៌គំនូសធម្មតា</string>
+    <string name="brand_background_color_tokens">ថូខិនពណ៌ផ្ទាំងខាងក្រោយម៉ាកយីហោ</string>
+    <string name="brand_foreground_color_tokens">ថូខិនពណ៌ផ្ទៃខាងមុខម៉ាកយីហោ</string>
+    <string name="brand_stroke_color_tokens">ថូខិនពណ៌គំនូសម៉ាកយីហោ</string>
+    <string name="error_and_status_color_tokens">ថូខិនកំហុសនិងពណ៌ស្ថានភាព</string>
+    <string name="presence_tokens">ថូខិនពណ៌វត្តមាន</string>
+    <string name="typography_tokens">ថូខិនក្បាច់អក្សរ</string>
+    <string name="unspecified">មិនបានបញ្ជាក់</string>
 
 </resources>

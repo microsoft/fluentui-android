@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">ಉಪಶೀರ್ಷಿಕೆ</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">ಕೆಳಗಿನ ಅಂಚುಕಟ್ಟು</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">ನ್ಯಾವಿಗೇಶನ್ ಐಕಾನ್ ಕ್ಲಿಕ್ ಮಾಡಲಾಗಿದೆ.</string>
@@ -857,84 +857,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">ಶೀರ್ಷಿಕೆ</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">ಪರಿಕರಸೂಚಿ ಪಠ್ಯ</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">ಕಸ್ಟಮ್ ವಿಷಯ ಪರಿಕರಸೂಚಿಗಾಗಿ ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">ಮೇಲ್ಭಾಗದ ಪ್ರಾರಂಭ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">ಮೇಲಿನ ತುದಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">ಕೆಳಗಿನ ಪ್ರಾರಂಭ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">ಕೆಳಗಿನ ತುದಿ</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">ಮಧ್ಯೆ </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">ಕಸ್ಟಮ್ ಕೇಂದ್ರ</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿಗಳ ನವೀಕರಣಗಳಿಗಾಗಿ, </string>
+    <string name="click_here">ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ.</string>
+    <string name="open_source_cross_platform">ತೆರೆದ ಮೂಲದ ಕ್ರಾಸ್ ಪ್ಲಾಟ್‍ಫಾರ್ಮ್ ವಿನ್ಯಾಸ ಸಿಸ್ಟಂ.</string>
+    <string name="intuitive_and_powerful">ಅಂತರ್ಬೋಧೆಯ &amp; ಶಕ್ತಿಶಾಲಿ.</string>
+    <string name="design_tokens">ವಿನ್ಯಾಸ ಟೋಕನ್‌ಗಳು</string>
+    <string name="release_notes">ಬಿಡುಗಡೆ ಟಿಪ್ಪಣಿಗಳು</string>
+    <string name="github_repo">GitHub ರೆಪೋ</string>
+    <string name="github_repo_link">GitHub ರೆಪೋ ಲಿಂಕ್</string>
+    <string name="report_issue">ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ</string>
+    <string name="v1_components">V1 ಕಾಂಪೊನೆಂಟ್‌ಗಳು</string>
+    <string name="v2_components">V2 ಕಾಂಪೊನೆಂಟ್‌ಗಳು</string>
+    <string name="all_components">ಎಲ್ಲಾ</string>
+    <string name="fluent_logo">Fluent ಲೋಗೊ</string>
+    <string name="new_badge">ಹೊಸತು</string>
+    <string name="modified_badge">ಮಾರ್ಪಡಿಸಲಾಗಿದೆ</string>
+    <string name="api_break_badge">API ಬ್ರೇಕ್</string>
+    <string name="app_bar_more">ಇನ್ನಷ್ಟು</string>
+    <string name="accent">ಆಕ್ಸೆಂಟ್</string>
+    <string name="appearance">ನೋಟ</string>
+    <string name="choose_brand_theme">ನಿಮ್ಮ ಬ್ರ್ಯಾಂಡ್ ಥೀಮ್ ಆರಿಸಿ:</string>
+    <string name="fluent_brand_theme">Fluent ಬ್ರ್ಯಾಂಡ್</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">ನೋಟವನ್ನು ಆರಿಸಿ</string>
+    <string name="appearance_system_default">ಸಿಸ್ಟಂ ಡೀಫಾಲ್ಟ್</string>
+    <string name="appearance_light">ತಿಳಿ</string>
+    <string name="appearance_dark">ಗಾಢ</string>
+    <string name="demo_activity_github_link">ಪ್ರಾತ್ಯಕ್ಷಿಕೆ ಚಟುವಟಿಕೆ GitHub ಲಿಂಕ್</string>
+    <string name="control_tokens_details">ನಿಯಂತ್ರಣ ಟೋಕನ್‌ಗಳ ವಿವರಗಳು</string>
+    <string name="parameters">ಪ್ಯಾರಾಮೀಟರ್‌ಗಳು</string>
+    <string name="control_tokens">ನಿಯಂತ್ರಣ ಟೋಕನ್‌ಗಳು</string>
+    <string name="global_tokens">ಜಾಗತಿಕ ಟೋಕನ್‌ಗಳು</string>
+    <string name="alias_tokens">ಅಲಿಯಾಸ್ ಟೋಕನ್‌ಗಳು</string>
+    <string name="sample_text">ಪಠ್ಯ</string>
+    <string name="sample_icon">ಮಾದರಿ ಐಕಾನ್</string>
+    <string name="color">ಬಣ್ಣ</string>
+    <string name="neutral_color_tokens">ತಟಸ್ಥ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="font_size_tokens">ಫಾಂಟ್ ಗಾತ್ರ ಟೋಕನ್‌ಗಳು</string>
+    <string name="line_height_tokens">ಸಾಲಿನ ಎತ್ತರದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="font_weight_tokens">ಫಾಂಟ್ ತೂಕ ಟೋಕನ್‌ಗಳು</string>
+    <string name="icon_size_tokens">ಐಕಾನ್ ಗಾತ್ರ ಟೋಕನ್‌ಗಳು</string>
+    <string name="size_tokens">ಗಾತ್ರ ಟೋಕನ್‌ಗಳು</string>
+    <string name="shadow_tokens">ಶ್ಯಾಡೋ ಟೋಕನ್‌ಗಳು</string>
+    <string name="corner_radius_tokens">ಕಾರ್ನರ್ RadiusTokens</string>
+    <string name="stroke_width_tokens">ಸ್ಟ್ರೋಕ್ ಅಗಲ ಟೋಕನ್‌ಗಳು</string>
+    <string name="brand_color_tokens">ಬ್ರ್ಯಾಂಡ್ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="neutral_background_color_tokens">ತಟಸ್ಥ ಹಿನ್ನೆಲೆ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="neutral_foreground_color_tokens">ತಟಸ್ಥ ಮುನ್ನೆಲೆ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="neutral_stroke_color_tokens">ತಟಸ್ಥ ಸ್ಟ್ರೋಕ್ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="brand_background_color_tokens">ಬ್ರ್ಯಾಂಡ್ ಹಿನ್ನೆಲೆ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="brand_foreground_color_tokens">ಬ್ರ್ಯಾಂಡ್ ಮುನ್ನೆಲೆ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="brand_stroke_color_tokens">ಬ್ರ್ಯಾಂಡ್ ಸ್ಟ್ರೋಕ್ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="error_and_status_color_tokens">ದೋಷ ಮತ್ತು ಸ್ಥಿತಿ ಬಣ್ಣ ಟೋಕನ್‌ಗಳು</string>
+    <string name="presence_tokens">ಉಪಸ್ಥಿತಿ ಬಣ್ಣದ ಟೋಕನ್‌ಗಳು</string>
+    <string name="typography_tokens">ಟೈಪೋಗ್ರಾಫಿ ಟೋಕನ್‌ಗಳು</string>
+    <string name="unspecified">ನಿರ್ದಿಷ್ಟಪಡಿಸದ</string>
 
 </resources>

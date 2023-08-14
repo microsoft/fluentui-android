@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Subtítol</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Vora inferior</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">S\'ha fet clic a la icona de navegació.</string>
@@ -857,84 +857,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Títol</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Text de l\'indicador de funció</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Toqueu per mostrar l’indicador de funció del contingut personalitzat</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Inici superior </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Extrem superior </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Inici inferior </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Extrem inferior </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">Centre </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Centre personalitzat</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">Per obtenir actualitzacions sobre les notes de la versió, </string>
+    <string name="click_here">feu clic aquí.</string>
+    <string name="open_source_cross_platform">Sistema de disseny multiplataforma de codi obert.</string>
+    <string name="intuitive_and_powerful">Intuïtiu i eficaç.</string>
+    <string name="design_tokens">Testimonis de disseny</string>
+    <string name="release_notes">Notes de la versió</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">Enllaç a GitHub Repo</string>
+    <string name="report_issue">Informa d\'un problema</string>
+    <string name="v1_components">Components de V1</string>
+    <string name="v2_components">Components de V2</string>
+    <string name="all_components">Tot</string>
+    <string name="fluent_logo">Logotip Fluent</string>
+    <string name="new_badge">Nou</string>
+    <string name="modified_badge">Modificat</string>
+    <string name="api_break_badge">Error en l\'API</string>
+    <string name="app_bar_more">Més</string>
+    <string name="accent">Ressalta</string>
+    <string name="appearance">Aspecte</string>
+    <string name="choose_brand_theme">Trieu el tema de la vostra marca:</string>
+    <string name="fluent_brand_theme">Marca Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
+    <string name="choose_appearance">Trieu l\'aspecte</string>
+    <string name="appearance_system_default">Valor per defecte del sistema</string>
+    <string name="appearance_light">Clar</string>
+    <string name="appearance_dark">Fosc</string>
+    <string name="demo_activity_github_link">Enllaç del GitHub a l\'activitat de demostració</string>
+    <string name="control_tokens_details">Detalls dels testimonis de control</string>
+    <string name="parameters">Paràmetres</string>
+    <string name="control_tokens">Testimonis de control</string>
+    <string name="global_tokens">Testimonis globals</string>
+    <string name="alias_tokens">Testimonis d\'àlies</string>
     <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
+    <string name="sample_icon">Icona d\'exemple</string>
     <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="neutral_color_tokens">Testimonis de color neutre</string>
+    <string name="font_size_tokens">Testimonis de cos de lletra</string>
+    <string name="line_height_tokens">Testimonis d\'alçada de línia</string>
+    <string name="font_weight_tokens">Testimonis de gruix de tipus de lletra</string>
+    <string name="icon_size_tokens">Testimonis de mida d’icona</string>
+    <string name="size_tokens">Testimonis de mida</string>
+    <string name="shadow_tokens">Testimonis d\'ombra</string>
+    <string name="corner_radius_tokens">Testimonis de radi de cantonada</string>
+    <string name="stroke_width_tokens">Testimonis d\'amplada del traç</string>
+    <string name="brand_color_tokens">Testimonis de color de la marca</string>
+    <string name="neutral_background_color_tokens">Testimonis de color de fons neutre</string>
+    <string name="neutral_foreground_color_tokens">Testimonis de color de primer pla neutre</string>
+    <string name="neutral_stroke_color_tokens">Testimonis de color de traç neutre</string>
+    <string name="brand_background_color_tokens">Testimonis de color de fons de la marca</string>
+    <string name="brand_foreground_color_tokens">Testimonis de color de primer pla de la marca</string>
+    <string name="brand_stroke_color_tokens">Testimonis de color de traç de la marca</string>
+    <string name="error_and_status_color_tokens">Testimonis de color d\'estat i error</string>
+    <string name="presence_tokens">Testimonis de color de presència</string>
+    <string name="typography_tokens">Testimonis de tipografia</string>
+    <string name="unspecified">Sense especificar</string>
 
 </resources>

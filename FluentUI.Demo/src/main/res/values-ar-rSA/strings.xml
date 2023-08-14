@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">شريط الترجمة</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">الحد السفلي</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">تم النقر فوق أيقونة التنقل.</string>
@@ -861,84 +861,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">العنوان</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">نص تلميحات الشاشة</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">انقر للحصول على تعريف أدوات المحتوى المخصص</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">بداية الجزء العلوي </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">الطرف العلوي </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">البداية من أسفل </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">الطرف السفلي </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">يوسّط </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">توسيط مخصص</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
-    <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="release_notes_updates">للحصول على تحديثات حول ملاحظات حول الإصدار، </string>
+    <string name="click_here">انقر هنا.</string>
+    <string name="open_source_cross_platform">نظام تصميم مفتوح المصدر عبر منصة.</string>
+    <string name="intuitive_and_powerful">سهل &amp; قوي.</string>
+    <string name="design_tokens">رموز تصميم مميزة</string>
+    <string name="release_notes">ملاحظات حول الإصدار</string>
+    <string name="github_repo">إعادة تجزئة GitHub</string>
+    <string name="github_repo_link">ارتباط GitHub Repo</string>
+    <string name="report_issue">الإبلاغ عن مشكلة</string>
+    <string name="v1_components">مكونات V1</string>
+    <string name="v2_components">مكونات V2</string>
+    <string name="all_components">الكل</string>
+    <string name="fluent_logo">شعار Fluent</string>
+    <string name="new_badge">جديد</string>
+    <string name="modified_badge">تاريخ التعديل</string>
+    <string name="api_break_badge">فاصل واجهة برمجة التطبيقات</string>
+    <string name="app_bar_more">المزيد</string>
+    <string name="accent">التمييز</string>
+    <string name="appearance">المظهر</string>
+    <string name="choose_brand_theme">اختر نسق علامتك التجارية:</string>
+    <string name="fluent_brand_theme">علامة Fluent التجارية</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">اختيار المظهر</string>
+    <string name="appearance_system_default">الوضع الافتراضي للنظام</string>
+    <string name="appearance_light">فاتحة</string>
+    <string name="appearance_dark">داكنة</string>
+    <string name="demo_activity_github_link">ارتباط GitHub لنشاط العرض التوضيحي</string>
+    <string name="control_tokens_details">تفاصيل رموز التحكم المميزة</string>
+    <string name="parameters">المعلمات</string>
+    <string name="control_tokens">الرموز المميزة لعنصر التحكم</string>
+    <string name="global_tokens">الرموز المميزة للتخزين العمومي</string>
+    <string name="alias_tokens">رموز الاسم المستعار المميزة</string>
+    <string name="sample_text">النص</string>
+    <string name="sample_icon">أيقونة العينة</string>
+    <string name="color">اللون</string>
+    <string name="neutral_color_tokens">الرموز المميزة للألوان المحايدة</string>
+    <string name="font_size_tokens">الرموز المميزة لحجم الخط</string>
+    <string name="line_height_tokens">رموز مميزة لارتفاع السطر</string>
+    <string name="font_weight_tokens">الرموز المميزة لوزن الخط</string>
+    <string name="icon_size_tokens">الرموز المميزة لحجم الأيقونة</string>
+    <string name="size_tokens">الرموز المميزة للحجم</string>
+    <string name="shadow_tokens">رموز ظل مميزة</string>
+    <string name="corner_radius_tokens">RadiusTokens للزاوية</string>
+    <string name="stroke_width_tokens">الرموز المميزة لعرض الكتابة</string>
+    <string name="brand_color_tokens">الرموز المميزة للون العلامة التجارية</string>
+    <string name="neutral_background_color_tokens">رموز مميزة للون خلفية محايد</string>
+    <string name="neutral_foreground_color_tokens">الرموز المميزة للون الأمامي المحايد</string>
+    <string name="neutral_stroke_color_tokens">الرموز المميزة للون الكتابة المحايد</string>
+    <string name="brand_background_color_tokens">رموز مميزة للون خلفية العلامة التجارية</string>
+    <string name="brand_foreground_color_tokens">رموز مميزة للون الأمامي للماركة</string>
+    <string name="brand_stroke_color_tokens">الرموز المميزة للون كتابة العلامة التجارية</string>
+    <string name="error_and_status_color_tokens">الرموز المميزة للون الحالة والخطأ</string>
+    <string name="presence_tokens">رموز لون الحضور المميزة</string>
+    <string name="typography_tokens">رموز أسلوب الطباعة المميزة</string>
+    <string name="unspecified">غير محدد</string>
 
 </resources>

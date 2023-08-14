@@ -37,7 +37,7 @@
     <string name="app_bar_subtitle">Субтитр</string>
 
     <!-- Text to show the bottom border property of App bar .-->
-    <string name="app_bar_bottom_border">Bottom Border</string>
+    <string name="app_bar_bottom_border">Нижня межа</string>
 
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Піктограму навігації натиснуто.</string>
@@ -859,84 +859,84 @@
 
     <!--V2 ToolTip-->
     <!-- UI Label for ToolTip Title-->
-    <string name="tooltip_title">Title</string>
+    <string name="tooltip_title">Назва</string>
     <!-- UI Label for ToolTip Text-->
-    <string name="tooltip_text">Tooltip Text</string>
+    <string name="tooltip_text">Текст підказки</string>
     <!-- Text for button that shows Custom content Tooltip on tap -->
-    <string name="tooltip_custom_content">Tap for Custom Content Tooltip</string>
+    <string name="tooltip_custom_content">Торкніться, щоб переглянути підказку щодо користувацького вмісту</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_start">Top Start </string>
+    <string name="tooltip_top_start">Верхній початок</string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_top_end">Top End </string>
+    <string name="tooltip_top_end">Верхній кінець </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_start">Bottom Start </string>
+    <string name="tooltip_bottom_start">Нижній початок </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_bottom_end">Bottom End </string>
+    <string name="tooltip_bottom_end">Нижній кінець </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_center">Center </string>
+    <string name="tooltip_center">По центру </string>
     <!--UI label showing tooltip message -->
-    <string name="tooltip_custom_center">Custom Center</string>
+    <string name="tooltip_custom_center">Користувацький центр</string>
 
     <!-- V2 Demo App -->
-    <string name="release_notes_updates">For updates on Release Notes, </string>
-    <string name="click_here">click here.</string>
-    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
-    <string name="intuitive_and_powerful">Intuitive &amp; Powerful.</string>
-    <string name="design_tokens">Design Tokens</string>
-    <string name="release_notes">Release Notes</string>
+    <string name="release_notes_updates">Щоб отримувати оновлення нотаток про випуск,</string>
+    <string name="click_here">клацніть тут.</string>
+    <string name="open_source_cross_platform">Міжплатформна система розробки з відкритим кодом.</string>
+    <string name="intuitive_and_powerful">Інтуїтивна та потужна.</string>
+    <string name="design_tokens">Маркери оформлення</string>
+    <string name="release_notes">Нотатки про випуск</string>
     <string name="github_repo">GitHub Repo</string>
-    <string name="github_repo_link">GitHub Repo Link</string>
-    <string name="report_issue">Report Issue</string>
-    <string name="v1_components">V1 Components</string>
-    <string name="v2_components">V2 Components</string>
-    <string name="all_components">All</string>
-    <string name="fluent_logo">Fluent Logo</string>
-    <string name="new_badge">New</string>
-    <string name="modified_badge">Modified</string>
-    <string name="api_break_badge">API Break</string>
-    <string name="app_bar_more">More</string>
-    <string name="accent">Accent</string>
-    <string name="appearance">Appearance</string>
-    <string name="choose_brand_theme">Choose your brand theme:</string>
-    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="github_repo_link">Посилання GitHub Repo</string>
+    <string name="report_issue">Повідомити про проблему</string>
+    <string name="v1_components">Компоненти V1</string>
+    <string name="v2_components">Компоненти V2</string>
+    <string name="all_components">Усе</string>
+    <string name="fluent_logo">Емблема Fluent</string>
+    <string name="new_badge">Створити</string>
+    <string name="modified_badge">Змінено</string>
+    <string name="api_break_badge">Розрив API</string>
+    <string name="app_bar_more">Додатково</string>
+    <string name="accent">Акцент</string>
+    <string name="appearance">Вигляд</string>
+    <string name="choose_brand_theme">Виберіть тему свого бренда:</string>
+    <string name="fluent_brand_theme">Бренд Fluent</string>
     <string name="one_note_theme">OneNote</string>
     <string name="word_theme">Word</string>
     <string name="excel_theme">Excel</string>
     <string name="powerpoint_theme">PowerPoint</string>
     <string name="m365_theme">M365</string>
     <string name="teams_theme">MS Teams</string>
-    <string name="choose_appearance">Choose Appearance</string>
-    <string name="appearance_system_default">System Default</string>
-    <string name="appearance_light">Light</string>
-    <string name="appearance_dark">Dark</string>
-    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
-    <string name="control_tokens_details">Control Tokens details</string>
-    <string name="parameters">Parameters</string>
-    <string name="control_tokens">Control Tokens</string>
-    <string name="global_tokens">Global Tokens</string>
-    <string name="alias_tokens">Alias Tokens</string>
-    <string name="sample_text">Text</string>
-    <string name="sample_icon">Sample Icon</string>
-    <string name="color">Color</string>
-    <string name="neutral_color_tokens">Neutral Color Tokens</string>
-    <string name="font_size_tokens">Font Size Tokens</string>
-    <string name="line_height_tokens">Line Height Tokens</string>
-    <string name="font_weight_tokens">Font Weight Tokens</string>
-    <string name="icon_size_tokens">Icon Size Tokens</string>
-    <string name="size_tokens">Size Tokens</string>
-    <string name="shadow_tokens">Shadow Tokens</string>
-    <string name="corner_radius_tokens">Corner RadiusTokens</string>
-    <string name="stroke_width_tokens">Stroke Width Tokens</string>
-    <string name="brand_color_tokens">Brand Color Tokens</string>
-    <string name="neutral_background_color_tokens">Neutral Background Color Tokens</string>
-    <string name="neutral_foreground_color_tokens">Neutral Foreground Color Tokens</string>
-    <string name="neutral_stroke_color_tokens">Neutral Stroke Color Tokens</string>
-    <string name="brand_background_color_tokens">Brand Background Color Tokens</string>
-    <string name="brand_foreground_color_tokens">Brand Foreground Color Tokens</string>
-    <string name="brand_stroke_color_tokens">Brand Stroke Color Tokens</string>
-    <string name="error_and_status_color_tokens">Error and Status Color Tokens</string>
-    <string name="presence_tokens">Presence Color Tokens</string>
-    <string name="typography_tokens">Typography Tokens</string>
-    <string name="unspecified">Unspecified</string>
+    <string name="choose_appearance">Вибір вигляду</string>
+    <string name="appearance_system_default">Стандартні параметри системи</string>
+    <string name="appearance_light">Світле</string>
+    <string name="appearance_dark">Темне</string>
+    <string name="demo_activity_github_link">Посилання GitHub для демонстраційної діяльності</string>
+    <string name="control_tokens_details">Відомості про маркери керування</string>
+    <string name="parameters">Параметри</string>
+    <string name="control_tokens">Маркери керування</string>
+    <string name="global_tokens">Глобальні маркери</string>
+    <string name="alias_tokens">Маркери псевдонімів</string>
+    <string name="sample_text">Текст</string>
+    <string name="sample_icon">Зразок піктограми</string>
+    <string name="color">Колір</string>
+    <string name="neutral_color_tokens">Маркери нейтрального кольору</string>
+    <string name="font_size_tokens">Маркери розміру шрифту</string>
+    <string name="line_height_tokens">Маркери висоти рядка</string>
+    <string name="font_weight_tokens">Маркери товщини шрифту</string>
+    <string name="icon_size_tokens">Маркери розміру піктограми</string>
+    <string name="size_tokens">Маркери розміру</string>
+    <string name="shadow_tokens">Маркери тіні</string>
+    <string name="corner_radius_tokens">Маркери радіусу заокруглення кута</string>
+    <string name="stroke_width_tokens">Маркери ширини розчерку</string>
+    <string name="brand_color_tokens">Маркери кольору бренда</string>
+    <string name="neutral_background_color_tokens">Маркери нейтрального кольору тла</string>
+    <string name="neutral_foreground_color_tokens">Маркери нейтрального кольору переднього плану</string>
+    <string name="neutral_stroke_color_tokens">Маркери нейтрального кольору штриха</string>
+    <string name="brand_background_color_tokens">Маркери кольору тла бренда</string>
+    <string name="brand_foreground_color_tokens">Маркери кольору переднього плану бренда</string>
+    <string name="brand_stroke_color_tokens">Маркери кольору штриха бренда</string>
+    <string name="error_and_status_color_tokens">Маркери кольорів помилок і стану</string>
+    <string name="presence_tokens">Маркери кольору присутності</string>
+    <string name="typography_tokens">Маркери типографіки</string>
+    <string name="unspecified">Не вказано</string>
 
 </resources>
