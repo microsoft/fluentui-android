@@ -89,6 +89,8 @@ fun TextField(
     value: String,
     onValueChange: ((String) -> Unit),
     modifier: Modifier = Modifier,
+    readOnly: Boolean = false,
+    enabled: Boolean = true,
     hintText: String? = null,
     label: String? = null,
     assistiveText: String? = null,
@@ -181,6 +183,8 @@ fun TextField(
                                         isFocused = true
                                 }
                             },
+                        readOnly = readOnly,
+                        enabled = enabled,
                         singleLine = true,
                         keyboardOptions = keyboardOptions,
                         keyboardActions = keyboardActions,
