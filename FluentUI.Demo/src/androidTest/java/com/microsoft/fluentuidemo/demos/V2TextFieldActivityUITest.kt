@@ -1,8 +1,13 @@
 package com.microsoft.fluentuidemo.demos
 
+import androidx.compose.ui.semantics.SemanticsProperties
 import androidx.compose.ui.test.*
 import com.microsoft.fluentui.tokenized.controls.*
 import com.microsoft.fluentuidemo.BaseTest
+import junit.framework.TestCase.assertFalse
+import junit.framework.TestCase.assertNotSame
+import junit.framework.TestCase.assertTrue
+import junit.framework.TestCase.fail
 import org.junit.Before
 import org.junit.Test
 
@@ -86,5 +91,33 @@ class V2TextFieldActivityUITest : BaseTest() {
         component.assertExists("Text field did not render properly")
         component.performTextInput("Test")
         component.assertExists("Password mode did not render properly")
+    }
+    @Test
+    fun testReadOnlyMode() {
+        val control = composeTestRule.onNodeWithTag(TEXT_FIELD_READONLY_PARAM)
+        val component = composeTestRule.onNodeWithTag(TEXT_FIELD, true)
+        component.assertExists("Text field did not render properly")
+        modifiableParametersButton.performClick()
+        modifiableParametersButton.performTouchInput { swipeUp(durationMillis = 1000) }
+        toggleControlToValue(control, true)
+        component.performClick()
+        component.assertIsFocused()
+        try {
+            component.performTextInput("Test")
+            fail("Text field should not be editable")
+        } catch (e: Exception) {
+            //Test passed as exception was thrown
+        }
+    }
+
+    @Test
+    fun testEnabledMode(){
+        val control = composeTestRule.onNodeWithTag(TEXT_FIELD_ENABLED_PARAM)
+        val component = composeTestRule.onNodeWithTag(TEXT_FIELD, true)
+        component.assertExists("Text field did not render properly")
+        modifiableParametersButton.performClick()
+        modifiableParametersButton.performTouchInput { swipeUp(durationMillis = 1000) }
+        toggleControlToValue(control, false)
+        component.assertIsNotEnabled()
     }
 }
