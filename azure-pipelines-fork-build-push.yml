@@ -15,6 +15,16 @@ jobs:
     pool:
       vmImage: ubuntu-latest
     steps:
+      - task: Gradle@3
+        displayName: Lint Check
+        inputs:
+          gradleWrapperFile: 'gradlew'
+          tasks: 'lint'
+          publishJUnitResults: false
+          javaHomeOption: 'JDKVersion'
+          sonarQubeRunAnalysis: false
+          spotBugsAnalysis: false
+          
       - task: Gradle@2
         displayName: "gradlew build"
         inputs:
