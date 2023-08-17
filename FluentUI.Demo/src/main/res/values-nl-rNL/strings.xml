@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar-stijl</string>
     <string name="app_bar_subtitle">Ondertitel</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Onderrand</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Geklikt op navigatiepictogram.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Lade uitvouwen</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Lade sluiten</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Type lade selecteren</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Boven</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Hele lade wordt weergegeven in het zichtbare gebied.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Onder</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Hele lade wordt weergegeven in het zichtbare gebied. Schuifinhoud omhoog schuiven. Uitbreidbare lade uitvouwen via sleepgreep.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Links schuiven boven</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Lade schuiven vanaf de linkerkant naar zichtbaar gebied.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Rechts schuiven boven</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Lade schuiven vanaf de rechterkant naar zichtbaar gebied.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Onder schuiven over</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Schuiflade vanaf de onderkant van het scherm naar het zichtbare gebied. Veeg omhoog op de uitbreidbare lade en breng de rest van het deel naar het zichtbare gebied schuif vervolgens.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Scrim Zichtbaar</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Inhoud van lade selecteren</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Inhoud die kan worden geschoven op volledig schermformaat</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Meer dan de helft van de scherminhoud</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Minder dan de helft van de scherminhoud</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Inhoud van dynamische grootte</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Inhoud van geneste lade</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Uitvouwbaar</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Greep weergeven</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Titel</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Knopinfotekst</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Tik voor knopinfo voor aangepaste inhoud</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Begin bovenaan </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Bovenzijde </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Onderste start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Onderste uiteinde </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Centreren </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Aangepast centrum</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Voor updates over releaseopmerkingen, </string>
+    <string name="click_here">klikt u hier.</string>
+    <string name="open_source_cross_platform">Open source platformoverschrijdend ontwerpsysteem.</string>
+    <string name="intuitive_and_powerful">Intuïtief en krachtig.</string>
+    <string name="design_tokens">Ontwerptokens</string>
+    <string name="release_notes">Opmerkingen bij de release</string>
+    <string name="github_repo">GitHub-opslagplaats</string>
+    <string name="github_repo_link">Koppeling naar GitHub-opslagplaats</string>
+    <string name="report_issue">Probleem melden</string>
+    <string name="v1_components">V1-onderdelen</string>
+    <string name="v2_components">V2-onderdelen</string>
+    <string name="all_components">Alles</string>
+    <string name="fluent_logo">Fluent-logo</string>
+    <string name="new_badge">Nieuw</string>
+    <string name="modified_badge">Gewijzigd</string>
+    <string name="api_break_badge">API-einde</string>
+    <string name="app_bar_more">Meer</string>
+    <string name="accent">Accent</string>
+    <string name="appearance">Vormgeving</string>
+    <string name="choose_brand_theme">Kies uw merkthema:</string>
+    <string name="fluent_brand_theme">Fluent-merk</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Vormgeving kiezen</string>
+    <string name="appearance_system_default">Systeemstandaard</string>
+    <string name="appearance_light">Licht</string>
+    <string name="appearance_dark">Donker</string>
+    <string name="demo_activity_github_link">GitHub-koppeling voor demoactiviteit</string>
+    <string name="control_tokens_details">Details van beheertokens</string>
+    <string name="parameters">Parameters</string>
+    <string name="control_tokens">Controletokens</string>
+    <string name="global_tokens">Globale tokens</string>
+    <string name="alias_tokens">Aliastokens</string>
+    <string name="sample_text">Tekst</string>
+    <string name="sample_icon">Voorbeeldpictogram</string>
+    <string name="color">Kleur</string>
+    <string name="neutral_color_tokens">Neutrale kleurtokens</string>
+    <string name="font_size_tokens">Tokens voor tekengrootte</string>
+    <string name="line_height_tokens">Tokens voor lijnhoogte</string>
+    <string name="font_weight_tokens">Tokens voor tekengewicht</string>
+    <string name="icon_size_tokens">Tokens voor pictogramgrootte</string>
+    <string name="size_tokens">Groottetokens</string>
+    <string name="shadow_tokens">Schaduwtokens</string>
+    <string name="corner_radius_tokens">RadiusTokens in hoek</string>
+    <string name="stroke_width_tokens">Tokens voor streekbreedte</string>
+    <string name="brand_color_tokens">Tokens voor merkkleuren</string>
+    <string name="neutral_background_color_tokens">Neutrale achtergrondkleurtokens</string>
+    <string name="neutral_foreground_color_tokens">Neutrale voorgrondkleurtokens</string>
+    <string name="neutral_stroke_color_tokens">Kleurtokens voor neutrale streepjes</string>
+    <string name="brand_background_color_tokens">Kleurtokens voor merkachtergrond</string>
+    <string name="brand_foreground_color_tokens">Voorgrondkleurtokens voor merk</string>
+    <string name="brand_stroke_color_tokens">Kleurtokens voor merkstreken</string>
+    <string name="error_and_status_color_tokens">Fout- en statuskleurtokens</string>
+    <string name="presence_tokens">Kleurtokens voor aanwezigheid</string>
+    <string name="typography_tokens">Typografietokens</string>
+    <string name="unspecified">Niet opgegeven</string>
+
 </resources>

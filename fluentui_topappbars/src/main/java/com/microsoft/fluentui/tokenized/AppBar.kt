@@ -95,7 +95,7 @@ fun AppBar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = appBarTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBar] as AppBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.AppBarControlType] as AppBarTokens
 
     val appBarInfo = AppBarInfo(style, appBarSize)
     Box(

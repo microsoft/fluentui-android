@@ -36,6 +36,9 @@
     <string name="app_bar_style">अनुप्रयोग पट्टी शैली</string>
     <string name="app_bar_subtitle">उपशीर्षक</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">तळ सीमा</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">नेव्हिगेशन प्रतीक क्लिक केले.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">ड्रॉवर विस्तृत करा</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">ड्रॉवर बंद करा</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">ड्रॉवर प्रकार निवडा</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">शीर्ष</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">संपूर्ण ड्रॉवर दृश्यमान प्रदेशात दर्शवेल.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">तळ</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">संपूर्ण ड्रॉवर दृश्यमान प्रदेशात दर्शवतो. मोशन स्क्रोल सामुग्री स्वाइप करा. विस्तारण्यायोग्य ड्रॉवर ड्रॅग हँडलद्वारे विस्तृत करा.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">डावीकडून स्लाइड करा</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">ड्रॉवर डावीकडून दृश्यमान प्रदेशाकडे स्लाइड करा.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">उजवीकडून स्लाइड करा</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">ड्रॉवर उजवीकडून दृश्यमान प्रदेशाकडे स्लाइड करा.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">तळाकडून स्लाइड करा</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">ड्रॉवर स्क्रीनच्या तळापासून दृश्यमान प्रदेशावर स्लाइड करा. विस्तारण्यायोग्य ड्रॉवरवर स्वाइप अप मोशन त्याचा उर्वरित भाग दृश्यमान प्रदेशात आणा आणि नंतर स्क्रोल करा.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">स्क्रिम दृश्यमान</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">ड्रॉवर सामुग्री निवडा</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">संपूर्ण स्क्रीन आकार स्क्रोल करण्यायोग्य सामुग्री</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">अर्ध्याहून अधिक स्क्रीन सामुग्री</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">अर्ध्यापेक्षा कमी स्क्रीन सामुग्री</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">डायनॅमिक आकार असलेली सामुग्री</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">नेस्टेड ड्रॉवर सामुग्री</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">विस्तृत करण्यायोग्य</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">हँडल दर्शवा</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">शीर्षक</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">टूलटिप मजकूर</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">सानुकूल सामुग्री टूलटिपसाठी टॅप करा</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">शीर्ष प्रारंभ </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">शीर्ष शेवट </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">तळ प्रारंभ </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">तळ समाप्ती </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">मध्य </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">सानुकूल केंद्र</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">रीलिझ नोट्सवरील अद्यतनांसाठी, </string>
+    <string name="click_here">येथे क्लिक करा.</string>
+    <string name="open_source_cross_platform">ओपन सोर्स क्रॉस प्लॅटफॉर्म डिझाइन सिस्टम.</string>
+    <string name="intuitive_and_powerful">आवेदनशील &amp; प्रभावी.</string>
+    <string name="design_tokens">डिझाइन टोकन्स</string>
+    <string name="release_notes">रीलिझ नोट्‍स</string>
+    <string name="github_repo">GitHub रेपो</string>
+    <string name="github_repo_link">GitHub रेपोची लिंक</string>
+    <string name="report_issue">समस्येची तक्रार करा</string>
+    <string name="v1_components">V1 घटक</string>
+    <string name="v2_components">V2 घटक</string>
+    <string name="all_components">सर्व</string>
+    <string name="fluent_logo">Fluent लोगो</string>
+    <string name="new_badge">नवीन</string>
+    <string name="modified_badge">सुधारित</string>
+    <string name="api_break_badge">API ब्रेक</string>
+    <string name="app_bar_more">अधिक</string>
+    <string name="accent">ऍक्सेंट</string>
+    <string name="appearance">दृश्यस्वरूप</string>
+    <string name="choose_brand_theme">आपली ब्रँड थीम निवडा:</string>
+    <string name="fluent_brand_theme">Fluent ब्रँड</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">दृश्यस्वरूप निवडा</string>
+    <string name="appearance_system_default">सिस्टम डिफॉल्ट</string>
+    <string name="appearance_light">फिकट</string>
+    <string name="appearance_dark">गडद</string>
+    <string name="demo_activity_github_link">डेमो कार्यकलाप GitHub लिंक</string>
+    <string name="control_tokens_details">नियंत्रण टोकन तपशील</string>
+    <string name="parameters">परिमापने</string>
+    <string name="control_tokens">नियंत्रण टोकन्स</string>
+    <string name="global_tokens">ग्लोबल टोकन्स</string>
+    <string name="alias_tokens">उपनाम टोकन्स</string>
+    <string name="sample_text">मजकूर</string>
+    <string name="sample_icon">नमुना प्रतीक</string>
+    <string name="color">रंग</string>
+    <string name="neutral_color_tokens">तटस्थ रंग टोकन्स</string>
+    <string name="font_size_tokens">फॉन्ट आकार टोकन्स</string>
+    <string name="line_height_tokens">रेखा उंची टोकन्स</string>
+    <string name="font_weight_tokens">फॉन्ट वेट टोकन</string>
+    <string name="icon_size_tokens">प्रतीक आकार टोकन्स</string>
+    <string name="size_tokens">आकार टोकन्स</string>
+    <string name="shadow_tokens">शॅडो टोकन्स</string>
+    <string name="corner_radius_tokens">Corner RadiusTokens</string>
+    <string name="stroke_width_tokens">स्ट्रोक रुंदी टोकन</string>
+    <string name="brand_color_tokens">ब्रँड रंग टोकन्स</string>
+    <string name="neutral_background_color_tokens">तटस्थ पार्श्वभूमी रंग टोकन्स</string>
+    <string name="neutral_foreground_color_tokens">तटस्थ अग्रभूमी रंग टोकन्स</string>
+    <string name="neutral_stroke_color_tokens">तटस्थ स्ट्रोक रंग टोकन्स</string>
+    <string name="brand_background_color_tokens">ब्रँड पार्श्वभूमी रंग टोकन्स</string>
+    <string name="brand_foreground_color_tokens">ब्रँड अग्रभाग रंग टोकन्स</string>
+    <string name="brand_stroke_color_tokens">ब्रँड स्ट्रोक रंग टोकन्स</string>
+    <string name="error_and_status_color_tokens">त्रुटी आणि स्थिती रंग टोकन्स</string>
+    <string name="presence_tokens">उपस्थिती रंग टोकन्स</string>
+    <string name="typography_tokens">टायपोग्राफी टोकन्स</string>
+    <string name="unspecified">अनिर्दिष्ट</string>
+
 </resources>

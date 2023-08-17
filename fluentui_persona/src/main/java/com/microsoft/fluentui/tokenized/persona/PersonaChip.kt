@@ -60,7 +60,7 @@ fun PersonaChip(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = personaChipTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PersonaChip] as PersonaChipTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PersonaChipControlType] as PersonaChipTokens
     val personaChipInfo = PersonaChipInfo(
         style,
         enabled,

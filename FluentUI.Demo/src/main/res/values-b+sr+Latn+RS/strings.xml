@@ -36,6 +36,9 @@
     <string name="app_bar_style">Stil trake sa aplikacijama</string>
     <string name="app_bar_subtitle">Titl</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Donja ivica</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Kliknuto je na ikonu za navigaciju.</string>
 
@@ -811,45 +814,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Razvij panel</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Zatvori fioku</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Izbor tipa fioke</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Vrh</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Cela fioka se prikazuje u vidljivoj oblasti.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Dno</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Cela fioka se prikazuje u vidljivoj oblasti. Brzo prevucite nagore za pomeranje sadržaja. Fioka koja se može proširiti razvija se preko regulatora za prevlačenje.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Levi slajd preko</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Fioka klizi ka vidljivoj oblasti sa leve strane.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Desni slajd preko</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Fioka klizi ka vidljivoj oblasti sa desne strane.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Donji slajd preko</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Prevucite fioku do vidljive oblasti sa dna ekrana. Prevlačenjem nagore na proširivoj fioci dovedite njen ostatak u vidljivu oblast a zatim pomerite.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Vidljiv spoj</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Izbor sadržaja fioke</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Sadržaj veličine celog ekrana koji se može pomerati</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Više od polovine sadržaja ekrana</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Manje od pola sadržaja ekrana</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Sadržaj dinamičke veličine</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Sadržaj ugnežđene fioke</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Proširivo</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Prikaži regulator</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Naslov</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Tekst opisa alatke</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Dodirnite za opis alatke prilagođenog sadržaja</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Gornji početni ekran </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Gornji kraj </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Donji Start</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Donji kraj</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Po sredini </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Prilagođeni centar</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Za ispravke za napomene uz izdanje,</string>
+    <string name="click_here">kliknite ovde.</string>
+    <string name="open_source_cross_platform">Otvorite izvorni sistem dizajna na više platformi.</string>
+    <string name="intuitive_and_powerful">Intuitivno i moćno.</string>
+    <string name="design_tokens">Tokeni dizajna</string>
+    <string name="release_notes">Napomene uz izdanje</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">Veza za GitHub spremište</string>
+    <string name="report_issue">Prijavi problem</string>
+    <string name="v1_components">V1 komponente</string>
+    <string name="v2_components">V2 komponente</string>
+    <string name="all_components">Sve</string>
+    <string name="fluent_logo">Fluent logotip</string>
+    <string name="new_badge">Novo</string>
+    <string name="modified_badge">Izmenjeno</string>
+    <string name="api_break_badge">API pauza</string>
+    <string name="app_bar_more">Više</string>
+    <string name="accent">Naglašavanje</string>
+    <string name="appearance">Izgled</string>
+    <string name="choose_brand_theme">Odaberite temu brenda:</string>
+    <string name="fluent_brand_theme">Brend Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Odaberite izgled</string>
+    <string name="appearance_system_default">Podrazumevana vrednost sistema</string>
+    <string name="appearance_light">Svetlo</string>
+    <string name="appearance_dark">Tamno</string>
+    <string name="demo_activity_github_link">GitHub veza za aktivnosti demo verzije</string>
+    <string name="control_tokens_details">Detalji kontrolnih tokena</string>
+    <string name="parameters">Parametri</string>
+    <string name="control_tokens">Kontrolni tokeni</string>
+    <string name="global_tokens">Globalni tokeni</string>
+    <string name="alias_tokens">Tokeni pseudonima</string>
+    <string name="sample_text">Tekst</string>
+    <string name="sample_icon">Ikona uzorka</string>
+    <string name="color">Boja</string>
+    <string name="neutral_color_tokens">Neutralni tokeni u boji</string>
+    <string name="font_size_tokens">Tokeni veličine fonta</string>
+    <string name="line_height_tokens">Tokeni visine linije</string>
+    <string name="font_weight_tokens">Tokeni za debljinu fonta</string>
+    <string name="icon_size_tokens">Tokeni veličine ikona</string>
+    <string name="size_tokens">Tokeni veličine</string>
+    <string name="shadow_tokens">Tokeni u senci</string>
+    <string name="corner_radius_tokens">Corner RadiusTokens</string>
+    <string name="stroke_width_tokens">Tokeni širine poteza</string>
+    <string name="brand_color_tokens">Tokeni boje brenda</string>
+    <string name="neutral_background_color_tokens">Neutralni tokeni boja pozadine</string>
+    <string name="neutral_foreground_color_tokens">Neutralni tokeni boja u prednjem planu</string>
+    <string name="neutral_stroke_color_tokens">Neutralni tokeni poteza boja</string>
+    <string name="brand_background_color_tokens">Tokeni boje pozadine brenda</string>
+    <string name="brand_foreground_color_tokens">Tokeni brenda boja u prednjem planu</string>
+    <string name="brand_stroke_color_tokens">Tokeni brenda poteza boje</string>
+    <string name="error_and_status_color_tokens">Tokeni za grešku i status u boji</string>
+    <string name="presence_tokens">Tokeni boja prisutnosti</string>
+    <string name="typography_tokens">Tipografski tokeni</string>
+    <string name="unspecified">Neodređeno</string>
+
 </resources>

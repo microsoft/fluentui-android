@@ -3,18 +3,12 @@ package com.microsoft.fluentui.tokenized.peoplepicker
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.requiredHeight
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.runtime.Composable
@@ -32,31 +26,30 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.compose.ui.unit.dp
+import com.microsoft.fluentui.icons.SearchBarIcons
+import com.microsoft.fluentui.icons.searchbaricons.Dismisscircle
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
+import com.microsoft.fluentui.theme.token.FluentIcon
 import com.microsoft.fluentui.theme.token.controlTokens.AvatarStatus
-import com.microsoft.fluentui.theme.token.controlTokens.DividerInfo
-import com.microsoft.fluentui.theme.token.controlTokens.DividerTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerInfo
 import com.microsoft.fluentui.theme.token.controlTokens.PeoplePickerTokens
 import com.microsoft.fluentui.theme.token.controlTokens.PersonaChipStyle
-import com.microsoft.fluentui.tokenized.divider.Divider
+import com.microsoft.fluentui.tokenized.controls.TextField
 import com.microsoft.fluentui.tokenized.persona.Person
 import com.microsoft.fluentui.tokenized.persona.PersonaChip
+import com.microsoft.fluentui.peoplepicker.R
 
 /**
  * API to create a customized PeoplePicker for users to add a list of PersonaChips
@@ -79,12 +72,16 @@ import com.microsoft.fluentui.tokenized.persona.PersonaChip
  * @param chipValidation The callback that is triggered when a PersonaChip is added. This callback is used to validate
  * the PersonaChip before adding it to the list of selectedPeople.
  * @param onTextEntered The callback that is triggered when the user clicks done on the keyboard.
- * @param leadingAccessoryContent The content to be placed towards the start of PeoplePicker.
- * @param trailingAccessoryContent The content to be placed towards the end of PeoplePicker.
- * @param label String which acts as a description for the PeoplePicker.
- * @param assistiveText String which assists users with the PeoplePicker
- * @param errorString String to describe the error. PeoplePicker goes in error mode if this is provided.
+ * @param label String which acts as a description for the TextField.
+ * @param assistiveText String which assists users with the TextField
+ * @param errorString String to describe the error. TextField goes in error mode if this is provided.
  * @param searchHint String to be shown as hint when the PeoplePicker is in rest state.
+ * @param leadingRestIcon Icon which is displayed when the textField is in rest state.
+ * @param leadingFocusIcon Icon which is displayed when the textField is in focus state.
+ * @param leadingIconContentDescription String which acts as content description for leading icon.
+ * @param trailingAccessoryIcon Icon which is displayed towards the end of textField and mainly
+ * acts as dismiss icon.
+ * @param peoplePickerContentDescription String which acts as content description for the PeoplePicker. Add content description for accessibility description.
  * @param peoplePickerTokens Customization options for the PeoplePicker.
  */
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalFoundationApi::class)
@@ -98,86 +95,85 @@ fun PeoplePicker(
     onChipCloseClick: ((PeoplePickerItemData) -> Unit)? = null,
     chipValidation: (Person) -> PersonaChipStyle = { PersonaChipStyle.Neutral },
     onTextEntered: ((String) -> Unit)? = null,
-    leadingAccessoryContent: (@Composable () -> Unit)? = null,
-    trailingAccessoryContent: (@Composable () -> Unit)? = null,
     label: String? = null,
     assistiveText: String? = null,
     errorString: String? = null,
     searchHint: String? = null,
+    leadingRestIcon: ImageVector? = null,
+    leadingFocusIcon: ImageVector? = null,
+    leadingIconContentDescription: String? = null,
+    trailingAccessoryIcon: FluentIcon? = FluentIcon(
+        SearchBarIcons.Dismisscircle,
+        contentDescription = LocalContext.current.resources.getString(R.string.fluentui_clear_text)
+    ),
+    peoplePickerContentDescription: String? = null,
     peoplePickerTokens: PeoplePickerTokens? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = peoplePickerTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PeoplePicker] as PeoplePickerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.PeoplePickerControlType] as PeoplePickerTokens
 
-    var isFocused: Boolean by rememberSaveable { mutableStateOf(false) }
-    val peoplePickerInfo = PeoplePickerInfo(
-        isStatusError = !errorString.isNullOrBlank(),
-        isFocused = isFocused,
-    )
-    val leadingAccessorySpacing = token.leadingAccessorySpacing(peoplePickerInfo = peoplePickerInfo)
-    val trailingAccessoryPadding =
-        token.trailingAccessoryPadding(peoplePickerInfo = peoplePickerInfo)
+    val peoplePickerInfo = PeoplePickerInfo()
     val chipSpacing = token.chipSpacing(peoplePickerInfo = peoplePickerInfo)
-    val textTypography = token.textFieldTypography(peoplePickerInfo)
-    val textColor = token.textColor(peoplePickerInfo = peoplePickerInfo)
-    val cursorBrush = token.cursorBrush(peoplePickerInfo = peoplePickerInfo)
-    val focusRequester = remember { FocusRequester() }
     var queryText by rememberSaveable { mutableStateOf("") }
     var selectedPeopleListSize by rememberSaveable { mutableStateOf(0) }
+    var lastAddedPerson by rememberSaveable { mutableStateOf(Person()) }
+    var lastRemovedPerson by rememberSaveable { mutableStateOf(Person()) }
+    var isAdded: Boolean by rememberSaveable { mutableStateOf(true) }
+    var accessibilityAnnouncement by rememberSaveable { mutableStateOf("") }
+    val focusRequester = remember { FocusRequester() }
 
-    Row(
+    TextField(
         modifier = modifier
-            .onFocusChanged { focusState ->
-                when {
-                    focusState.isFocused -> {
-                        focusRequester.requestFocus()
+            .onKeyEvent {
+                if (it.key == Key.Backspace) {
+                    if (onBackPress != null) {
+                        onBackPress.invoke(queryText, selectedPeopleList.lastOrNull())
+                        onValueChange(queryText, selectedPeopleList)
                     }
                 }
-            }, verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (leadingAccessoryContent != null) {
-            leadingAccessoryContent()
-            Spacer(modifier = Modifier.width(leadingAccessorySpacing))
-        }
-        Column {
-            if (!label.isNullOrBlank()) {
-                Spacer(Modifier.requiredHeight(12.dp))
-                BasicText(
-                    label,
-                    style = token.labelTypography(peoplePickerInfo).merge(
-                        TextStyle(
-                            color = token.labelColor(peoplePickerInfo)
-                        )
-                    )
-                )
+                true
             }
-            Row(
-                modifier = Modifier
+            .focusRequester(focusRequester),
+        value = queryText,
+        onValueChange = {
+            queryText = it
+            onValueChange(queryText, selectedPeopleList)
+        },
+        hintText = searchHint,
+        label = label,
+        assistiveText = assistiveText,
+        errorString = errorString,
+        leadingFocusIcon = leadingFocusIcon,
+        leadingRestIcon = leadingRestIcon,
+        leadingIconContentDescription = leadingIconContentDescription,
+        trailingAccessoryIcon = trailingAccessoryIcon,
+        keyboardOptions = KeyboardOptions(),
+        keyboardActions = KeyboardActions(onDone = {
+            if (onTextEntered != null) {
+                onTextEntered.invoke(queryText)
+                queryText = ""
+                onValueChange(queryText, selectedPeopleList)
+            }
+        }),
+        textFieldContentDescription = peoplePickerContentDescription,
+        decorationBox = { innerTextField ->
+            Box(
+                Modifier
                     .fillMaxWidth()
-                    .height(token.minHeight(peoplePickerInfo = peoplePickerInfo)),
-                verticalAlignment = Alignment.CenterVertically,
+                    .horizontalScroll(rememberScrollState())
+                    .semantics { this.contentDescription = accessibilityAnnouncement },
+                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
+                    Alignment.CenterEnd
+                else
+                    Alignment.CenterStart
             ) {
-
-                Row(
-                    modifier = Modifier
-                        .weight(1f)
-                        .horizontalScroll(rememberScrollState())
-                        .onKeyEvent {
-                            if (it.key == Key.Backspace) {
-                                if (onBackPress != null) {
-                                    onBackPress.invoke(queryText, selectedPeopleList.lastOrNull())
-                                    onValueChange(queryText, selectedPeopleList)
-                                }
-                            }
-                            true
-                        },
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
+                Row {
                     if (selectedPeopleList.isNotEmpty()) {
                         selectedPeopleList.forEach {
-                            PersonaChip(person = it.person, selected = it.selected.value,
+                            PersonaChip(
+                                person = it.person, selected = it.selected.value,
                                 onCloseClick = if (onChipCloseClick != null) {
                                     {
                                         onChipCloseClick.invoke(it)
@@ -194,97 +190,42 @@ fun PeoplePicker(
                             )
                             Spacer(modifier = Modifier.width(chipSpacing))
                         }
+                        focusRequester.requestFocus()
                     }
-                    if (selectedPeopleListSize < selectedPeopleList.size) {
+
+                    if (selectedPeopleListSize != selectedPeopleList.size) {
                         queryText = ""
                         onValueChange(queryText, selectedPeopleList)
+                        isAdded = selectedPeopleListSize < selectedPeopleList.size
+                        lastAddedPerson = selectedPeopleList.lastOrNull()?.person ?: Person()
+                        accessibilityAnnouncement = if (isAdded) {
+                            LocalContext.current.resources.getString(R.string.people_picker_accessibility_persona_added, lastAddedPerson.getLabel())
+                        } else {
+                            LocalContext.current.resources.getString(R.string.people_picker_accessibility_persona_removed, lastRemovedPerson.getLabel())
+                        }
+                        lastRemovedPerson = lastAddedPerson
                     }
                     selectedPeopleListSize = selectedPeopleList.size
-                    BasicTextField(
-                        value = queryText,
-                        onValueChange = {
-                            queryText = it
-                            onValueChange(queryText, selectedPeopleList)
-                        },
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions(),
-                        keyboardActions = KeyboardActions(onDone = {
-                            if (onTextEntered != null) {
-                                onTextEntered.invoke(queryText)
-                                queryText = ""
-                                onValueChange(queryText, selectedPeopleList)
-                            }
-                        }),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .focusRequester(focusRequester)
-                            .semantics { contentDescription = searchHint ?: "" }
-                            .testTag("Text field"),
-                        textStyle = textTypography.merge(
-                            TextStyle(
-                                color = textColor,
-                                textDirection = TextDirection.ContentOrLtr
-                            )
-                        ),
-                        decorationBox = @Composable { innerTextField ->
-                            Box(
-                                Modifier
-                                    .fillMaxWidth(),
-                                contentAlignment = if (LocalLayoutDirection.current == LayoutDirection.Rtl)
-                                    Alignment.CenterEnd
-                                else
-                                    Alignment.CenterStart
-                            ) {
-                                if (queryText.isEmpty()) {
-                                    BasicText(
-                                        searchHint ?: "",
-                                        style = token.hintTextTypography(peoplePickerInfo)
-                                            .merge(
-                                                TextStyle(
-                                                    color = token.hintColor(peoplePickerInfo)
-                                                )
-                                            )
+                    Box {
+                        if (queryText.isEmpty()) {
+                            BasicText(
+                                searchHint ?: "",
+                                style = token.hintTextTypography(peoplePickerInfo)
+                                    .merge(
+                                        TextStyle(
+                                            color = token.hintColor(peoplePickerInfo)
+                                        )
                                     )
-                                }
-
-                            }
-                            innerTextField()
-                        },
-                        cursorBrush = cursorBrush
-                    )
-                }
-                if (trailingAccessoryContent != null) {
-                    Box(modifier = Modifier.padding(trailingAccessoryPadding)) {
-                        trailingAccessoryContent()
+                            )
+                        }
+                        innerTextField()
                     }
                 }
             }
-            Divider(
-                height = token.strokeWidth(peoplePickerInfo),
-                dividerToken = object : DividerTokens() {
-                    @Composable
-                    override fun verticalPadding(dividerInfo: DividerInfo): PaddingValues {
-                        return PaddingValues(0.dp)
-                    }
+        },
+        textFieldTokens = peoplePickerTokens
+    )
 
-                    @Composable
-                    override fun dividerBrush(dividerInfo: DividerInfo): Brush =
-                        token.dividerBrush(peoplePickerInfo)
-                }
-            )
-            if (!assistiveText.isNullOrBlank() || !errorString.isNullOrBlank()) {
-                BasicText(
-                    errorString ?: assistiveText!!,
-                    style = token.assistiveTextTypography(peoplePickerInfo).merge(
-                        TextStyle(
-                            color = token.assistiveTextColor(peoplePickerInfo)
-                        )
-                    ),
-                    modifier = Modifier.padding(token.assistiveTextPadding(peoplePickerInfo))
-                )
-            }
-        }
-    }
 }
 
 data class PeoplePickerItemData(
@@ -299,7 +240,7 @@ fun rememberPeoplePickerItemDataList(
     return rememberSaveable(
         saver = Saver(
             save = {
-                var saved = mutableListOf<Map<String, Any?>>()
+                val saved = mutableListOf<Map<String, Any?>>()
                 it.forEach { itemData ->
                     saved.add(
                         mapOf(

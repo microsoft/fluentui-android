@@ -36,6 +36,9 @@
     <string name="app_bar_style">Стил на лента с приложения</string>
     <string name="app_bar_subtitle">Подзаглавие</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Долна граница</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Иконата за навигация е щракната.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Разгъване на чекмеджето</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Затваряне на чекмеджето</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Избор на тип чекмедже</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Отгоре</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Цялото чекмедже се показва във видимата област.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Отдолу</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Цялото чекмедже се показва във видимата област. Плъзнете бързо нагоре съдържанието за превъртане при движение. Разширяемо чекмедже за разширяване чрез манипулатор за плъзгане.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Ляв слайд над</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Плъзгане на чекмеджето до видима област от лявата страна.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Плъзнете отляво над</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Плъзгане на чекмеджето до видима област от дясната страна.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">правилността отдолу над</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Плъзнете чекмеджето до видима област от долната част на екрана. Плъзнете нагоре движение върху разширяемото чекмедже, пренесете останалата част от нея във видимата област &amp; след това превъртете.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Scrim е видим</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Избор на съдържание на чекмеджето</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Съдържание, което може да се превърта на цял екран</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Съдържание, заемащо повече от половин екран</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Съдържание, заемащо по-малко от половин екран</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Съдържание с динамичен размер</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Съдържание на вложено чекмедже</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Разширяем</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Показване на манипулатора</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Заглавие</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Текст на пояснение</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Докоснете за пояснение за персонализирано съдържание</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Начало отгоре </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Горен край </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Долен старт </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Долен край </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Център </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Център по избор</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">За актуализации на бележките по изданието, </string>
+    <string name="click_here">щракнете тук.</string>
+    <string name="open_source_cross_platform">Система за проектиране на различни платформи с отворен код.</string>
+    <string name="intuitive_and_powerful">Интуитивно и мощно.</string>
+    <string name="design_tokens">Маркери за проектиране</string>
+    <string name="release_notes">Бележки по изданието</string>
+    <string name="github_repo">Хранилище в GitHub</string>
+    <string name="github_repo_link">Връзка към хранилище в GitHub</string>
+    <string name="report_issue">Съобщаване за проблем</string>
+    <string name="v1_components">Компоненти на V1</string>
+    <string name="v2_components">Компоненти на V2</string>
+    <string name="all_components">Всички</string>
+    <string name="fluent_logo">Емблема на Fluent</string>
+    <string name="new_badge">Нова</string>
+    <string name="modified_badge">Променени</string>
+    <string name="api_break_badge">Прекъсване на API</string>
+    <string name="app_bar_more">Още</string>
+    <string name="accent">Акцент</string>
+    <string name="appearance">Облик</string>
+    <string name="choose_brand_theme">Изберете темата на вашата марка:</string>
+    <string name="fluent_brand_theme">Марка Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Избор на облик</string>
+    <string name="appearance_system_default">По подразбиране за системата</string>
+    <string name="appearance_light">Светъл</string>
+    <string name="appearance_dark">Тъмен</string>
+    <string name="demo_activity_github_link">Връзка към GitHub за демонстрационна дейност</string>
+    <string name="control_tokens_details">Подробни данни за контролните маркери</string>
+    <string name="parameters">Параметри</string>
+    <string name="control_tokens">Контролни маркери</string>
+    <string name="global_tokens">Глобални маркери</string>
+    <string name="alias_tokens">Маркери за псевдоними</string>
+    <string name="sample_text">Текст</string>
+    <string name="sample_icon">Примерна икона</string>
+    <string name="color">Цвят</string>
+    <string name="neutral_color_tokens">Маркери за неутрален цвят</string>
+    <string name="font_size_tokens">Маркери за размер на шрифта</string>
+    <string name="line_height_tokens">Маркери за височина на линия</string>
+    <string name="font_weight_tokens">Маркери за тегло на шрифта</string>
+    <string name="icon_size_tokens">Маркери за размер на икона</string>
+    <string name="size_tokens">Маркери за размер</string>
+    <string name="shadow_tokens">Маркери за сянка</string>
+    <string name="corner_radius_tokens">Маркери за радиус на ъгъл</string>
+    <string name="stroke_width_tokens">Маркери за ширина на ръкописна линия</string>
+    <string name="brand_color_tokens">Маркери за цвят на марката</string>
+    <string name="neutral_background_color_tokens">Маркери за неутрален фонов цвят</string>
+    <string name="neutral_foreground_color_tokens">Маркери за неутрален цвят на преден план</string>
+    <string name="neutral_stroke_color_tokens">Маркери за неутрален цвят на ръкописна линия</string>
+    <string name="brand_background_color_tokens">Маркери за фонов цвят на марката</string>
+    <string name="brand_foreground_color_tokens">Маркери за цвят на преден план на марката</string>
+    <string name="brand_stroke_color_tokens">Маркери за цвят на ръкописна линия на марка</string>
+    <string name="error_and_status_color_tokens">Маркери за цвят на грешка и състояние</string>
+    <string name="presence_tokens">Маркери за цвят на присъствие</string>
+    <string name="typography_tokens">Маркери за типография</string>
+    <string name="unspecified">Незададено</string>
+
 </resources>

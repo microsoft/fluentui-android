@@ -19,7 +19,7 @@ enum class CardType {
     Outlined
 }
 
-data class BasicCardInfo(val cardType: CardType = CardType.Elevated) :
+open class BasicCardInfo(val cardType: CardType = CardType.Elevated) :
     ControlInfo
 
 @Parcelize

@@ -12,7 +12,7 @@ import com.microsoft.fluentui.theme.token.FluentColor
 import com.microsoft.fluentui.theme.token.FluentStyle
 import kotlinx.parcelize.Parcelize
 
-data class PillSwitchInfo(
+open class PillSwitchInfo(
     val style: FluentStyle = FluentStyle.Neutral
 ) : ControlInfo
 

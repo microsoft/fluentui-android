@@ -36,6 +36,9 @@
     <string name="app_bar_style">סגנון סרגל אפליקציות</string>
     <string name="app_bar_subtitle">כותרת משנה</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">גבול תחתון</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">בוצעה לחיצה על סמל ניווט.</string>
 
@@ -812,45 +815,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">הרחב מגירה</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">סגור מגירה</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">בחר סוג מגירה</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">עליון</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">המגירה כולה מוצגת באזור הגלוי.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">תחתון</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">המגירה כולה מוצגת באזור הגלוי. החלק במהירות כלפי מעלה את תוכן הגלילה. המגירה הניתנת להרחבה מתרחבת באמצעות נקודת אחיזה לגרירה.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">שקופית שמאלית מעל</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">החלק את המגירה לאזור הגלוי מצד שמאל.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">שקופית ימנית מעל</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">החלק את המגירה לאזור הגלוי מצד ימין.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">שקופית תחתונה מעל</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">החלק את המגירה לאזור הגלוי מתחתית המסך. החלק במהירות כלפי מעלה במגירה הניתנת להרחבה, הבא את שאר החלק לאזור הגלוי &amp; לאחר מכן גלול.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Scrim גלוי</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">בחר תוכן מגירה</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">תוכן הניתן לגלילה בגודל מסך מלא</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">יותר מחצי תוכן מסך</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">תוכן של פחות מחצי מסך</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">תוכן גודל דינאמי</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">תוכן מגירה מקונן</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">ניתן להרחבה</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">הצג נקודת אחיזה</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">כותרת</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">טקסט של תיאור כלי</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">הקש לקבלת תיאור כלי של תוכן מותאם אישית</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">התחלה עליונה </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">סוף עליון </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">התחלה תחתונה </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">סוף תחתון </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">מרכז </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">מרכז מותאם אישית</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">לקבלת עדכונים לגבי הערות מוצר, </string>
+    <string name="click_here">לחץ כאן.</string>
+    <string name="open_source_cross_platform">מערכת עיצוב חוצת פלטפורמות של קוד פתוח.</string>
+    <string name="intuitive_and_powerful">אינטואיטיבי וחזק.</string>
+    <string name="design_tokens">אסימוני עיצוב</string>
+    <string name="release_notes">הערות מוצר</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub Repo Link</string>
+    <string name="report_issue">דווח על בעיה</string>
+    <string name="v1_components">רכיבי V1</string>
+    <string name="v2_components">רכיבי V2</string>
+    <string name="all_components">הכול</string>
+    <string name="fluent_logo">סמל Fluent</string>
+    <string name="new_badge">חדש</string>
+    <string name="modified_badge">השתנה</string>
+    <string name="api_break_badge">מעבר API</string>
+    <string name="app_bar_more">עוד</string>
+    <string name="accent">הדגשה</string>
+    <string name="appearance">מראה</string>
+    <string name="choose_brand_theme">בחר את ערכת הנושא של המותג שלך:</string>
+    <string name="fluent_brand_theme">מותג Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">בחר מראה</string>
+    <string name="appearance_system_default">ברירת המחדל של המערכת</string>
+    <string name="appearance_light">בהיר</string>
+    <string name="appearance_dark">כהה</string>
+    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
+    <string name="control_tokens_details">פרטי אסימוני בקרה</string>
+    <string name="parameters">פרמטרים</string>
+    <string name="control_tokens">אסימוני פקד</string>
+    <string name="global_tokens">אסימונים כלליים</string>
+    <string name="alias_tokens">אסימוני כינוי</string>
+    <string name="sample_text">טקסט</string>
+    <string name="sample_icon">סמל לדוגמה</string>
+    <string name="color">צבע</string>
+    <string name="neutral_color_tokens">אסימוני צבע ניטרליים</string>
+    <string name="font_size_tokens">אסימוני גודל גופן</string>
+    <string name="line_height_tokens">אסימוני גובה שורה</string>
+    <string name="font_weight_tokens">אסימוני עובי גופן</string>
+    <string name="icon_size_tokens">אסימוני גודל סמל</string>
+    <string name="size_tokens">אסימוני גודל</string>
+    <string name="shadow_tokens">אסימוני הטלת צל</string>
+    <string name="corner_radius_tokens">Corner RadiusTokens</string>
+    <string name="stroke_width_tokens">אסימוני רוחב משיכה</string>
+    <string name="brand_color_tokens">אסימוני צבע של מותג</string>
+    <string name="neutral_background_color_tokens">אסימוני צבע של רקע ניטרלי</string>
+    <string name="neutral_foreground_color_tokens">אסימוני צבע בחזית ניטרלית</string>
+    <string name="neutral_stroke_color_tokens">אסימוני צבע של משיכת דיו ניטרלית</string>
+    <string name="brand_background_color_tokens">אסימוני צבע של רקע מותג</string>
+    <string name="brand_foreground_color_tokens">אסימוני צבע בחזית של מותג</string>
+    <string name="brand_stroke_color_tokens">אסימוני צבע משיכת דיו של מותג</string>
+    <string name="error_and_status_color_tokens">אסימוני צבע של שגיאה ומצב</string>
+    <string name="presence_tokens">אסימוני צבע של נוכחות</string>
+    <string name="typography_tokens">אסימוני טיפוגרפיה</string>
+    <string name="unspecified">לא צוין</string>
+
 </resources>

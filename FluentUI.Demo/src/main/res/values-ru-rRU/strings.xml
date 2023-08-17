@@ -36,6 +36,9 @@
     <string name="app_bar_style">Стиль AppBar</string>
     <string name="app_bar_subtitle">Подзаголовок</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Нижняя граница</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Значок навигации нажат.</string>
 
@@ -812,45 +815,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Развернуть панель</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Закрыть панель</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Выбор типа панели</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Сверху</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Целая панель отображается в видимой области.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Снизу</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Вся панель отображается в видимой области. Проведите пальцем вверх для прокрутки содержимого. Развертываемую панель можно развернуть с помощью маркера перетаскивания.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Всплывающее верхнее окно слева</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Всплывающая панель поверх видимой области слева.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Всплывающее верхнее окно справа</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Всплывающая панель поверх видимой области справа.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Всплывающее верхнее окно снизу</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Всплывающая панель поверх видимой области снизу экрана. Проведите пальцем вверх по развертываемой панели, чтобы отобразить ее остальную часть в видимой области, а затем прокрутите.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Видимое затенение</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Выбор содержимого панели</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Прокручиваемое содержимое во весь экран</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Содержимое размером более половины экрана</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Содержимое размером менее половины экрана</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Содержимое динамического размера</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Содержимое вложенной панели</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">С возможностью развертывания</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Показать маркер</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Название</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Текст всплывающей подсказки</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Нажмите, чтобы открыть всплывающую подсказку по настраиваемому содержимому</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Начать сверху </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Верхняя часть </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Начать снизу </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Нижняя часть </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">По центру </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Настраиваемый центр</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Для обновлений в заметках о выпуске </string>
+    <string name="click_here">щелкните здесь.</string>
+    <string name="open_source_cross_platform">Кроссплатформенная система проектирования с открытым исходным кодом.</string>
+    <string name="intuitive_and_powerful">Интуитивно понятный и мощный.</string>
+    <string name="design_tokens">Маркеры оформления</string>
+    <string name="release_notes">Заметки о выпуске</string>
+    <string name="github_repo">Репозитарий GitHub</string>
+    <string name="github_repo_link">Ссылка на репозиторий GitHub</string>
+    <string name="report_issue">Сообщить о проблеме</string>
+    <string name="v1_components">Компоненты версии 1</string>
+    <string name="v2_components">Компоненты версии 2</string>
+    <string name="all_components">Все</string>
+    <string name="fluent_logo">Логотип Fluent</string>
+    <string name="new_badge">Создать</string>
+    <string name="modified_badge">Изменено</string>
+    <string name="api_break_badge">Разрыв API</string>
+    <string name="app_bar_more">Больше</string>
+    <string name="accent">Акцент</string>
+    <string name="appearance">Вид</string>
+    <string name="choose_brand_theme">Выберите тему своей торговой марки:</string>
+    <string name="fluent_brand_theme">Торговая марка Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Выбор внешнего вида</string>
+    <string name="appearance_system_default">Системная по умолчанию</string>
+    <string name="appearance_light">Светлые</string>
+    <string name="appearance_dark">Темные</string>
+    <string name="demo_activity_github_link">Ссылка GitHub на демонстрацию действий</string>
+    <string name="control_tokens_details">Сведения о маркерах управления</string>
+    <string name="parameters">Параметры</string>
+    <string name="control_tokens">Маркеры управления</string>
+    <string name="global_tokens">Глобальные маркеры</string>
+    <string name="alias_tokens">Маркеры псевдонима</string>
+    <string name="sample_text">Текст</string>
+    <string name="sample_icon">Образец значка</string>
+    <string name="color">Цвет</string>
+    <string name="neutral_color_tokens">Маркеры нейтральных цветов</string>
+    <string name="font_size_tokens">Маркеры размера шрифта</string>
+    <string name="line_height_tokens">Маркеры высоты строки</string>
+    <string name="font_weight_tokens">Маркеры насыщенности шрифта</string>
+    <string name="icon_size_tokens">Маркеры размера значков</string>
+    <string name="size_tokens">Маркеры размера</string>
+    <string name="shadow_tokens">Маркеры тени</string>
+    <string name="corner_radius_tokens">Маркеры скругления угла</string>
+    <string name="stroke_width_tokens">Маркеры ширины росчерка пера</string>
+    <string name="brand_color_tokens">Маркеры цветов торговой марки</string>
+    <string name="neutral_background_color_tokens">Маркеры нейтральных цветов фона</string>
+    <string name="neutral_foreground_color_tokens">Маркеры нейтрального цвета переднего плана</string>
+    <string name="neutral_stroke_color_tokens">Маркеры нейтрального цвета росчерка пера</string>
+    <string name="brand_background_color_tokens">Маркеры цветов фона торговой марки</string>
+    <string name="brand_foreground_color_tokens">Маркеры цветов переднего плана для торговой марки</string>
+    <string name="brand_stroke_color_tokens">Маркеры цвета росчерка пера торговой марки</string>
+    <string name="error_and_status_color_tokens">Маркеры цвета ошибки и состояния</string>
+    <string name="presence_tokens">Маркеры цвета присутствия</string>
+    <string name="typography_tokens">Маркеры оформления</string>
+    <string name="unspecified">Нет данных</string>
+
 </resources>

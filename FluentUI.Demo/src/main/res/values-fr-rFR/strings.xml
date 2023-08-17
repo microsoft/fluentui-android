@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar Style</string>
     <string name="app_bar_subtitle">Sous-titre</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Bordure inférieure</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">L’icône de navigation a cliqué.</string>
 
@@ -811,45 +814,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Développer le tiroir</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Fermer le tiroir</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Sélectionner le type de tiroir</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Haut</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Le tiroir entier s’affiche dans la région visible.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Bas</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Le tiroir entier s’affiche dans la région visible. Balayez vers le haut le contenu du défilement de mouvement. Le tiroir extensible se développe via une poignée de glissement.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Déplacer vers la gauche</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Déplacer le tiroir vers la zone visible à partir de la gauche.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Glisser-déplacer vers la droite</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Déplacer le tiroir vers la zone visible à partir de la droite.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Faire glisser vers le bas</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Faites glisser le tiroir vers la zone visible à partir du bas de l’écran. Balayez le mouvement vers le haut sur le tiroir extensible pour placer son reste de partie dans la zone visible, puis faites défiler.</string>
     <!-- UI Label for Scrim Visible -->
     <string name="drawer_scrim_visible">Scrim Visible</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Sélectionner le contenu du tiroir</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Contenu défilant de taille plein écran</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Plus de la moitié du contenu de l’écran</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Moins de la moitié du contenu de l’écran</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Contenu de taille dynamique</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Contenu du tiroir imbriqué</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Extensible</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Afficher la poignée</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Titre</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Texte de l’info-bulle</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Appuyez pour l’info-bulle de contenu personnalisé</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Début supérieur </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Extrémité supérieure </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Début inférieur </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Fin inférieure </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Centré </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Centre personnalisé</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Pour les mises à jour sur les notes de publication, </string>
+    <string name="click_here">cliquez ici.</string>
+    <string name="open_source_cross_platform">Système de conception multiplateforme open source.</string>
+    <string name="intuitive_and_powerful">Intuitif &amp; puissant.</string>
+    <string name="design_tokens">Jetons de conception</string>
+    <string name="release_notes">Notes de publication</string>
+    <string name="github_repo">Dépôt GitHub</string>
+    <string name="github_repo_link">Lien vers le dépôt GitHub</string>
+    <string name="report_issue">Signaler un problème</string>
+    <string name="v1_components">Composants V1</string>
+    <string name="v2_components">Composants V2</string>
+    <string name="all_components">Tout</string>
+    <string name="fluent_logo">Logo fluent</string>
+    <string name="new_badge">Nouveau</string>
+    <string name="modified_badge">Modifié</string>
+    <string name="api_break_badge">Saut d’API</string>
+    <string name="app_bar_more">Plus</string>
+    <string name="accent">Accentuation</string>
+    <string name="appearance">Apparence</string>
+    <string name="choose_brand_theme">Choisissez le thème de votre marque :</string>
+    <string name="fluent_brand_theme">Marque fluente</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Choisir l’apparence</string>
+    <string name="appearance_system_default">Système par défaut</string>
+    <string name="appearance_light">Clair</string>
+    <string name="appearance_dark">Foncé</string>
+    <string name="demo_activity_github_link">Lien GitHub de l’activité de démonstration</string>
+    <string name="control_tokens_details">Détails des jetons de contrôle</string>
+    <string name="parameters">Paramètres</string>
+    <string name="control_tokens">Jetons de contrôle</string>
+    <string name="global_tokens">Jetons globaux</string>
+    <string name="alias_tokens">Jetons d’alias</string>
+    <string name="sample_text">Texte</string>
+    <string name="sample_icon">Exemple d’icône</string>
+    <string name="color">Couleur</string>
+    <string name="neutral_color_tokens">Jetons de couleur neutre</string>
+    <string name="font_size_tokens">Jetons de taille de police</string>
+    <string name="line_height_tokens">Jetons de hauteur de ligne</string>
+    <string name="font_weight_tokens">Jetons d’épaisseur de police</string>
+    <string name="icon_size_tokens">Jetons de taille d’icône</string>
+    <string name="size_tokens">Dimensionner les jetons</string>
+    <string name="shadow_tokens">Jetons de cliché instantané</string>
+    <string name="corner_radius_tokens">Angle radiusTokens</string>
+    <string name="stroke_width_tokens">Jetons de largeur de trait</string>
+    <string name="brand_color_tokens">Jetons de couleur de marque</string>
+    <string name="neutral_background_color_tokens">Jetons de couleur d’arrière-plan neutres</string>
+    <string name="neutral_foreground_color_tokens">Jetons de couleur de premier plan neutres</string>
+    <string name="neutral_stroke_color_tokens">Jetons de couleur de trait neutre</string>
+    <string name="brand_background_color_tokens">Jetons de couleur d’arrière-plan de la marque</string>
+    <string name="brand_foreground_color_tokens">Jetons de couleur de premier plan de la marque</string>
+    <string name="brand_stroke_color_tokens">Jetons de couleur de trait de marque</string>
+    <string name="error_and_status_color_tokens">Jetons de couleur d’erreur et d’état</string>
+    <string name="presence_tokens">Jetons de couleur de présence</string>
+    <string name="typography_tokens">Jetons typographiques</string>
+    <string name="unspecified">Non spécifié</string>
+
 </resources>

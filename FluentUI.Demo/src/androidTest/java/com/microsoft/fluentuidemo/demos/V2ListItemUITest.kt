@@ -1,6 +1,7 @@
 package com.microsoft.fluentuidemo.demos
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.*
@@ -8,10 +9,16 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.height
 import androidx.compose.ui.unit.width
+import com.microsoft.fluentui.theme.token.controlTokens.AvatarSize
+import com.microsoft.fluentui.theme.token.controlTokens.BorderInset
+import com.microsoft.fluentui.theme.token.controlTokens.BorderType
 import com.microsoft.fluentui.theme.token.controlTokens.SectionHeaderStyle
 import com.microsoft.fluentui.theme.token.controlTokens.TextPlacement
 import com.microsoft.fluentui.tokenized.controls.Button
 import com.microsoft.fluentui.tokenized.listitem.ListItem
+import com.microsoft.fluentui.tokenized.persona.Avatar
+import com.microsoft.fluentui.tokenized.persona.Person
+import com.microsoft.fluentuidemo.R
 import org.junit.Rule
 import org.junit.Test
 
@@ -65,7 +72,7 @@ class V2ListItemUITest {
         listItem.assertHeightIsAtLeast(43.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
-        listItem.assertIsNotEnabled()
+        listItem.assertHasNoClickAction()
     }
 
     @Test
@@ -98,7 +105,7 @@ class V2ListItemUITest {
         listItem.assertHeightIsAtLeast(63.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
-        listItem.assertIsNotEnabled()
+        listItem.assertHasNoClickAction()
     }
 
     @Test
@@ -133,7 +140,7 @@ class V2ListItemUITest {
         listItem.assertHeightIsAtLeast(80.dp)
         listItem.assertExists()
         listItem.assertIsDisplayed()
-        listItem.assertIsNotEnabled()
+        listItem.assertHasNoClickAction()
     }
 
     @Test
@@ -315,6 +322,24 @@ class V2ListItemUITest {
         listItem.assertIsDisplayed()
         listItem.assertHeightIsEqualTo(48.dp)
         listItem.assertIsEnabled()
+        listItem.assertHasNoClickAction()
+    }
+
+    @Test
+    fun testUnclickableOneLineListAccessoryContentContent(){
+        composeTestRule.setContent {
+            ListItem.Item(text = PRIMARY_TEXT,
+            leadingAccessoryContent = {
+                Avatar(
+                    person = Person(firstName = "", lastName = "", image = R.drawable.avatar_amanda_brady),
+                    size = AvatarSize.Size24, enablePresence = false
+                )
+             },
+            border = BorderType.Bottom,
+            borderInset = BorderInset.XXLarge
+            )
+        }
+        val listItem = composeTestRule.onNodeWithText(PRIMARY_TEXT)
         listItem.assertHasNoClickAction()
     }
 }

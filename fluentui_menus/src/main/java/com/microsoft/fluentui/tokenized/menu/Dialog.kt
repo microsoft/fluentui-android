@@ -18,7 +18,7 @@ import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.DialogInfo
 import com.microsoft.fluentui.theme.token.controlTokens.DialogTokens
 
-const val TEST_TAG = "Dialog"
+const val DIALOG_TEST_TAG = "Fluent Dialog"
 
 /**
  * Create a dialog with the given content. The dialog does not fill the screen and is normally
@@ -47,7 +47,7 @@ fun Dialog(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = dialogTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Dialog] as DialogTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DialogControlType] as DialogTokens
     val dialogInfo = DialogInfo()
     val cornerRadius = token.cornerRadius(dialogInfo = dialogInfo)
     val backgroundBrush = token.backgroundBrush(dialogInfo = dialogInfo)
@@ -69,7 +69,7 @@ fun Dialog(
                 .border(
                     borderStrokeWidth, borderBrush, shape
                 )
-                .testTag(TEST_TAG)
+                .testTag(DIALOG_TEST_TAG)
         ) {
             content()
         }

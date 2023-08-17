@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar 样式</string>
     <string name="app_bar_subtitle">副标题</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">下边框</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">已单击导航图标。</string>
 
@@ -809,45 +812,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">展开抽屉</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">关闭抽屉</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">选择抽屉类型</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">顶部</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">整个抽屉显示在可见区域中。</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">底部</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">整个抽屉显示在可见区域中。向上轻扫动作会滚动内容。通过拖动手柄扩展可扩展抽屉。</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">左侧滑过</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">抽屉从左侧滑向可见区域。</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">右侧滑过</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">抽屉从右侧滑向可见区域。</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">底部滑过</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">抽屉从屏幕底部滑向可见区域。在可扩展抽屉上的向上轻扫动作会将其剩余部分移到可见区域和然后滚动。</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">遮罩可见</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">选择抽屉内容</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">全屏大小可滚动内容</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">超过半屏内容</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">少于半屏内容</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">动态大小内容</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">嵌套抽屉内容</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">可扩展</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">显示手柄</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">标题</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">工具提示文本</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">点击以获取自定义内容工具提示</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">顶部开始时间 </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">顶端 </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">底部开始 </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">下边缘 </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">居中 </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">自定义中心</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">有关发行说明的更新， </string>
+    <string name="click_here">单击此处。</string>
+    <string name="open_source_cross_platform">开放源代码跨平台设计系统。</string>
+    <string name="intuitive_and_powerful">直观&amp;功能强大。</string>
+    <string name="design_tokens">设计标记</string>
+    <string name="release_notes">发行说明</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub Repo 链接</string>
+    <string name="report_issue">报告问题</string>
+    <string name="v1_components">V1 组件</string>
+    <string name="v2_components">V2 组件</string>
+    <string name="all_components">全部</string>
+    <string name="fluent_logo">Fluent 徽标</string>
+    <string name="new_badge">新建</string>
+    <string name="modified_badge">修改时间</string>
+    <string name="api_break_badge">API 中断</string>
+    <string name="app_bar_more">更多</string>
+    <string name="accent">突出</string>
+    <string name="appearance">外观</string>
+    <string name="choose_brand_theme">选择品牌主题:</string>
+    <string name="fluent_brand_theme">Fluent 品牌</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">选择外观</string>
+    <string name="appearance_system_default">系统默认</string>
+    <string name="appearance_light">浅色</string>
+    <string name="appearance_dark">深色</string>
+    <string name="demo_activity_github_link">演示活动 GitHub 链接</string>
+    <string name="control_tokens_details">控制令牌详细信息</string>
+    <string name="parameters">参数</string>
+    <string name="control_tokens">控制令牌</string>
+    <string name="global_tokens">全局标记</string>
+    <string name="alias_tokens">别名标记</string>
+    <string name="sample_text">文本</string>
+    <string name="sample_icon">示例图标</string>
+    <string name="color">颜色</string>
+    <string name="neutral_color_tokens">中性颜色标记</string>
+    <string name="font_size_tokens">字体大小令牌</string>
+    <string name="line_height_tokens">行高标记</string>
+    <string name="font_weight_tokens">字体粗细标记</string>
+    <string name="icon_size_tokens">图标大小令牌</string>
+    <string name="size_tokens">调整标记大小</string>
+    <string name="shadow_tokens">阴影标记</string>
+    <string name="corner_radius_tokens">圆角半径标记</string>
+    <string name="stroke_width_tokens">笔划墨迹宽度标记</string>
+    <string name="brand_color_tokens">品牌颜色标记</string>
+    <string name="neutral_background_color_tokens">中性背景色标记</string>
+    <string name="neutral_foreground_color_tokens">中性前景色标记</string>
+    <string name="neutral_stroke_color_tokens">中性笔划墨迹颜色标记</string>
+    <string name="brand_background_color_tokens">品牌背景色标记</string>
+    <string name="brand_foreground_color_tokens">品牌前景色标记</string>
+    <string name="brand_stroke_color_tokens">品牌笔划墨迹颜色标记</string>
+    <string name="error_and_status_color_tokens">错误和状态颜色标记</string>
+    <string name="presence_tokens">状态颜色标记</string>
+    <string name="typography_tokens">版式标记</string>
+    <string name="unspecified">未指定</string>
+
 </resources>

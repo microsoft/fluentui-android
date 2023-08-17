@@ -36,6 +36,9 @@
     <string name="app_bar_style">سبک نوار برنامه</string>
     <string name="app_bar_subtitle">زیرنویس</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">حاشیه پایین</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">نماد پیمایش کلیک شد.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">باز شدن کشو</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">بستن کشو</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">انتخاب نوع کشو</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">بالا</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">کل کشو در منطقه قابل رؤیت نشان داده می‌شود.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">پایین</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">کل کشو در منطقه قابل رؤیت نشان داده می‌شود. محتوای پیمایش حرکت را به بالا بکشید. کشوی قابل گسترش از طریق دستگیره کشیدن گسترش می‌یابد.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">اسلاید چپ روی</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">کشوی روی اسلاید تا منطقه قابل رؤیت از سمت چپ.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">اسلاید راست روی</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">کشوی روی اسلاید تا منطقه قابل رؤیت از سمت راست.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">اسلاید پایین روی</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">کشوی روی اسلاید تا منطقه قابل رؤیت از پایین صفحه نمایش. با کشیدن انگشت روی کشوی قابل گسترش، بقیه بخش‌های آن را به منطقه قابل روئیت می‌آورد و سپس پیمایش می‌کند.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">مشبک قابل رؤیت</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">انتخاب محتوای کشو</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">محتوای قابل پیمایش اندازه تمام صفحه</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">محتوای بیشتر از نیم صفحه</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">محتوای کمتر از نیم صفحه</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">محتوای اندازه پویا</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">محتوای کشوی تودرتو</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">قابل گسترش یافتن</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">نمایش دستگیره</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">عنوان</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">متن راهنمای ابزار</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">برای دسترسی به نوار ابزار محتوای سفارشی، ضربه بزنید</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">شروع بالا </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">انتهای بالا </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">شروع پایین </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">انتهای پایین </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">مرکز </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">مرکز سفارشی</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">برای به‌روزرسانی‌های مربوط به یادداشت‌های ترخیص، </string>
+    <string name="click_here">اینجا کلیک کنید.</string>
+    <string name="open_source_cross_platform">سیستم طراحی متقاطع منبع باز.</string>
+    <string name="intuitive_and_powerful">بصری و قدرتمند.</string>
+    <string name="design_tokens">نشانه‌های طراحی</string>
+    <string name="release_notes">يادداشت‌های ترخيص</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">پیوند GitHub Repo</string>
+    <string name="report_issue">گزارش مشکل</string>
+    <string name="v1_components">مؤلفه‌های V1</string>
+    <string name="v2_components">مؤلفه‌های V2</string>
+    <string name="all_components">همه موارد</string>
+    <string name="fluent_logo">آرم روان</string>
+    <string name="new_badge">جدید</string>
+    <string name="modified_badge">تغییر یافت</string>
+    <string name="api_break_badge">وقفه API</string>
+    <string name="app_bar_more">موارد بیشتر</string>
+    <string name="accent">آکسان</string>
+    <string name="appearance">ظاهر</string>
+    <string name="choose_brand_theme">طرح زمینه برند خود را انتخاب کنید:</string>
+    <string name="fluent_brand_theme">برند روان</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">انتخاب ظاهر</string>
+    <string name="appearance_system_default">پیش‌فرض سیستم</string>
+    <string name="appearance_light">روشن</string>
+    <string name="appearance_dark">تیره</string>
+    <string name="demo_activity_github_link">پیوند GitHub فعالیت نمایشی</string>
+    <string name="control_tokens_details">جزئیات نشانه‌های کنترل</string>
+    <string name="parameters">پارامترها</string>
+    <string name="control_tokens">نشانه‌های کنترل</string>
+    <string name="global_tokens">نشانه‌های عمومی</string>
+    <string name="alias_tokens">نشانه‌های نام مستعار</string>
+    <string name="sample_text">متن</string>
+    <string name="sample_icon">نماد نمونه</string>
+    <string name="color">رنگ</string>
+    <string name="neutral_color_tokens">نشانه‌های رنگ خنثی</string>
+    <string name="font_size_tokens">نشانه‌های اندازه قلم</string>
+    <string name="line_height_tokens">نشانه‌های ارتفاع خط</string>
+    <string name="font_weight_tokens">نشانه‌های وزن قلم</string>
+    <string name="icon_size_tokens">نشانه‌های اندازه نماد</string>
+    <string name="size_tokens">نشانه‌های اندازه</string>
+    <string name="shadow_tokens">نشانه‌های سایه</string>
+    <string name="corner_radius_tokens">نشانه‌های شعاع گوشه</string>
+    <string name="stroke_width_tokens">نشانه‌های عرض ضربه</string>
+    <string name="brand_color_tokens">نشانه‌های رنگ برند</string>
+    <string name="neutral_background_color_tokens">نشانه‌های رنگ پس‌زمینه خنثی</string>
+    <string name="neutral_foreground_color_tokens">نشانه‌های رنگ پیش‌زمینه خنثی</string>
+    <string name="neutral_stroke_color_tokens">نشانه‌های رنگ ضربه‌ای خنثی</string>
+    <string name="brand_background_color_tokens">نشانه‌های رنگ پس‌زمینه برند</string>
+    <string name="brand_foreground_color_tokens">نشانه‌های رنگ پیش‌زمینه برند</string>
+    <string name="brand_stroke_color_tokens">نشانه‌های رنگ ضربه‌ای برند</string>
+    <string name="error_and_status_color_tokens">نشانه‌های رنگ وضعیت و خطا</string>
+    <string name="presence_tokens">نشانه‌های رنگ حضور</string>
+    <string name="typography_tokens">نشانه‌های فن چاپ</string>
+    <string name="unspecified">نامشخص</string>
+
 </resources>

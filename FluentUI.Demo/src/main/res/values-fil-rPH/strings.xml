@@ -36,6 +36,9 @@
     <string name="app_bar_style">Estilo ng AppBar</string>
     <string name="app_bar_subtitle">Subtitle</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Bottom Border</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Na-click ang icon ng navigation.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Palawakin ang Drawer</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Isara ang Drawer</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Pumili ng Uri ng Drawer</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Itaas</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Ipinapakita ang buong drawer sa nakikitang rehiyon.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Ibaba</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Ang buong drawer ay nagpapakita sa nakikitang rehiyon. I-swipe pataas ang nilalaman ng pag-iskrol ng paggalaw. Lumalawak ang napapalawak na drawer sa pamamagitan ng hawakan sa pag-drag.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">I-slide Pakaliwa</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">I-slide ang drawer sa nakikitang rehiyon mula sa kaliwang bahagi.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">I-slide Pakanan</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">I-slide ang drawer sa nakikitang rehiyon mula sa kanang bahagi.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">I-slide Pababa</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">I-slide ang drawer sa nakikitang rehiyon mula sa ibaba ng screen. I-swipe pataas ang paggalaw sa napapalawak na drawer na dalhin ang natitirang bahagi nito sa nakikitang rehiyon &amp; pagkatapos ay mag-iskrol.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Nakikita ang Scrim</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Pumili ng Nilalaman ng Drawer</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Laki ng buong screen na naso-scroll na nilalaman</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Mahigit sa kalahating nilalaman ng screen</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Mas mababa sa nilalaman ng kalahating screen</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Dynamic na laki ng nilalaman</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Naka-nest na Nilalaman ng Drawer</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Napapalawak</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Ipakita ang Hawakan</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Pamagat</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Text ng Tooltip</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">I-tap para sa Custom na Content Tooltip</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Simula sa Itaas </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Itaas sa Dulo </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Start sa ibaba </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Sa bandang huli </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Gitna </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Custom Center</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Para sa mga update sa Mga Release Note, </string>
+    <string name="click_here">mag-click dito.</string>
+    <string name="open_source_cross_platform">Open source cross platform Design System.</string>
+    <string name="intuitive_and_powerful">Intuitive &amp; Makapangyarihan.</string>
+    <string name="design_tokens">Mag disenyo ng Tokens</string>
+    <string name="release_notes">Mga Release Note</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub Repo Link</string>
+    <string name="report_issue">Mag-ulat ng Isyu</string>
+    <string name="v1_components">Mga V1 Component</string>
+    <string name="v2_components">Mga V2 Component</string>
+    <string name="all_components">Lahat</string>
+    <string name="fluent_logo">Fluent na Logo</string>
+    <string name="new_badge">Bago</string>
+    <string name="modified_badge">Binago</string>
+    <string name="api_break_badge">API Break</string>
+    <string name="app_bar_more">Iba pa</string>
+    <string name="accent">Accent</string>
+    <string name="appearance">Itsura</string>
+    <string name="choose_brand_theme">Piliin ang tema ng iyong brand:</string>
+    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Pumili ng Hitsura</string>
+    <string name="appearance_system_default">Default ng System</string>
+    <string name="appearance_light">Maliwanag</string>
+    <string name="appearance_dark">Madilim</string>
+    <string name="demo_activity_github_link">Demo Activity GitHub Link</string>
+    <string name="control_tokens_details">Mga detalye ng Mga Control Token</string>
+    <string name="parameters">Mga Parameter</string>
+    <string name="control_tokens">Mga Control Token</string>
+    <string name="global_tokens">Mga Global Token</string>
+    <string name="alias_tokens">Mga Token ng Alyas</string>
+    <string name="sample_text">Teksto</string>
+    <string name="sample_icon">Halimbawang Icon</string>
+    <string name="color">Kulay</string>
+    <string name="neutral_color_tokens">Mga Neutral na Token ng Kulay</string>
+    <string name="font_size_tokens">Mga Token ng Laki ng Font</string>
+    <string name="line_height_tokens">Mga Token ng Taas ng Linya</string>
+    <string name="font_weight_tokens">Mga Token ng Timbang ng Font</string>
+    <string name="icon_size_tokens">Mga Token ng Laki ng Icon</string>
+    <string name="size_tokens">Mga Token ng Laki</string>
+    <string name="shadow_tokens">Mga Token ng Anino</string>
+    <string name="corner_radius_tokens">Mga RadiusTokens ng Corner</string>
+    <string name="stroke_width_tokens">Mga Token ng Lapad ng Stroke</string>
+    <string name="brand_color_tokens">Mga Token ng Kulay ng Brand</string>
+    <string name="neutral_background_color_tokens">Mga Token ng Kulay ng Neutral na Background</string>
+    <string name="neutral_foreground_color_tokens">Mga Token ng Neutral na Kulay ng Foreground</string>
+    <string name="neutral_stroke_color_tokens">Mga Token ng Kulay ng Neutral Stroke</string>
+    <string name="brand_background_color_tokens">Mga Token ng Kulay ng Background ng Brand</string>
+    <string name="brand_foreground_color_tokens">Mga Token ng Kulay ng Foreground ng Brand</string>
+    <string name="brand_stroke_color_tokens">Mga Token ng Kulay ng Stroke ng Brand</string>
+    <string name="error_and_status_color_tokens">Error at Mga Katayuan ng Kulay Token</string>
+    <string name="presence_tokens">Mga Token ng Kulay ng Presensya</string>
+    <string name="typography_tokens">Mga Token ng Typography</string>
+    <string name="unspecified">Hindi tinukoy</string>
+
 </resources>

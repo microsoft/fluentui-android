@@ -31,7 +31,7 @@ fun BasicCard(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = basicCardTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCard] as BasicCardTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.BasicCardControlType] as BasicCardTokens
     val basicCardInfo = BasicCardInfo(CardType.Elevated)
     val cornerRadius = token.cornerRadius(basicCardInfo = basicCardInfo)
     val backgroundBrush = token.backgroundBrush(basicCardInfo = basicCardInfo)

@@ -814,7 +814,7 @@ fun Drawer(
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val tokens = drawerTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
 
         val popupPositionProvider = DrawerPositionProvider()
         val scope = rememberCoroutineScope()
@@ -910,6 +910,7 @@ fun Drawer(
  * The default value is true
  * @param scrimVisible create obscures background when scrim visible set to true when the drawer is open. The default value is true
  * @param showHandle if true drawer handle would be visible. The default value is true
+ * @param windowInsets window insets to be passed to the bottom drawer window via PaddingValues params.
  * @param drawerTokens tokens to provide appearance values. If not provided then drawer tokens will be picked from [FluentTheme]
  * @param drawerContent composable that represents content inside the drawer
  *
@@ -924,6 +925,7 @@ fun BottomDrawer(
     expandable: Boolean = true,
     scrimVisible: Boolean = true,
     showHandle: Boolean = true,
+    windowInsets: WindowInsets = WindowInsets.systemBars,
     drawerTokens: DrawerTokens? = null,
     drawerContent: @Composable () -> Unit
 ) {
@@ -931,9 +933,8 @@ fun BottomDrawer(
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val tokens = drawerTokens
-            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Drawer] as DrawerTokens
+            ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.DrawerControlType] as DrawerTokens
 
-        val popupPositionProvider = DrawerPositionProvider()
         val scope = rememberCoroutineScope()
         val close: () -> Unit = {
             if (drawerState.confirmStateChange(DrawerValue.Closed)) {
@@ -943,10 +944,9 @@ fun BottomDrawer(
         val behaviorType =
             if (slideOver) BehaviorType.BOTTOM_SLIDE_OVER else BehaviorType.BOTTOM
         val drawerInfo = DrawerInfo(type = behaviorType)
-        Popup(
+        ModalPopup(
             onDismissRequest = close,
-            popupPositionProvider = popupPositionProvider,
-            properties = PopupProperties(focusable = true)
+            windowInsets = windowInsets
         )
         {
             val drawerShape: Shape =

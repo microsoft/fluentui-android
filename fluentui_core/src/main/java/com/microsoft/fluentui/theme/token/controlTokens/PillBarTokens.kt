@@ -9,7 +9,7 @@ import com.microsoft.fluentui.theme.ThemeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-data class PillBarInfo(
+open class PillBarInfo(
     val style: FluentStyle = FluentStyle.Neutral
 ) : ControlInfo
 

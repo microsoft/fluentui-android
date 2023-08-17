@@ -1,18 +1,15 @@
 package com.microsoft.fluentuidemo.demos
 
-import android.content.Intent
-import androidx.compose.ui.test.*
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.intent.Intents
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.compose.ui.test.assertHasClickAction
+import androidx.compose.ui.test.assertIsEnabled
+import androidx.compose.ui.test.assertIsNotEnabled
+import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import com.microsoft.fluentuidemo.BaseTest
-import com.microsoft.fluentuidemo.DemoActivity
-import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
 class V2ButtonsActivityUITest : BaseTest() {
 

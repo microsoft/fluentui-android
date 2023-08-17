@@ -36,6 +36,9 @@
     <string name="app_bar_style">Stili AppBar</string>
     <string name="app_bar_subtitle">Nëntitull</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Kufizuesi i poshtëm</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ikona e navigacionit klikuar.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Zgjero sirtarin</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Mbyll sirtarin</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Përzgjidh tipin e sirtarit</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Veshje e sipërme</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">I gjithë sirtari shfaq në rajonin e dukshëm.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Në fund</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">I gjithë sirtari shfaqet në rajonin e dukshëm. Rrëshqitja e shpejtë lart lëviz përmbajtjen. Sirtari i zgjerueshëm zgjerohet me anë të dorezës së zvarritjes.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Rrëshqitje majtas</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Sirtari rrëshqet mbi rajonin e dukshëm nga ana e majtë.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Rrëshqitje djathtas</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Sirtari rrëshqet mbi rajonin e dukshëm nga ana e djathtë.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Rrëshqitje nga fundi</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Sirtari rrëshqet në rajonin e dukshëm nga fundi i ekranit. Lëvizja e rrëshqitjes lart mbi sirtarin e zgjerueshëm sjell pjesën e tij të mbetur në rajonin e dukshëm &amp; e më pas e lëviz.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Veshja e dukshme</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Përzgjidh përmbajtjen e sirtarit</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Përmbajtje e lëvizshme në madhësinë e plotë të ekranit</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Më shumë se gjysma e përmbajtjes së ekranit</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Më pak se gjysma e përmbajtjes së ekranit</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Përmbajtje me madhësi dinamike</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Përmbajtje e folezuar e sirtarit</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">I zgjerueshëm</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Shfaq dorezën</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Titulli</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Teksti i këshillës</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Trokit për këshillën e përmbajtjes së përshtatur</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Fillimi i sipërm </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Fundi i sipërm </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Fillimi i poshtëm </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Fundi i poshtëm </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Qendër </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Në qendër e përshtatur</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Për përditësimet e shënimeve të versionit, </string>
+    <string name="click_here">kliko këtu.</string>
+    <string name="open_source_cross_platform">Sistemi i dizajnit të platformave të ndryshme me burim të hapur.</string>
+    <string name="intuitive_and_powerful">Intuitiv dhe i fuqishëm.</string>
+    <string name="design_tokens">Kodet e dizajnit</string>
+    <string name="release_notes">Shënimet e versionit</string>
+    <string name="github_repo">Depoja e GitHub</string>
+    <string name="github_repo_link">Lidhja e depos së GitHub</string>
+    <string name="report_issue">Raporto problemin</string>
+    <string name="v1_components">Komponentët e V1</string>
+    <string name="v2_components">Komponentët e V2</string>
+    <string name="all_components">Të gjithë</string>
+    <string name="fluent_logo">Logoja e Fluent</string>
+    <string name="new_badge">E re</string>
+    <string name="modified_badge">Modifikuar</string>
+    <string name="api_break_badge">Ndërprerje e API-së</string>
+    <string name="app_bar_more">Më shumë</string>
+    <string name="accent">Theksimi</string>
+    <string name="appearance">Pamja</string>
+    <string name="choose_brand_theme">Zgjidh temën e markës:</string>
+    <string name="fluent_brand_theme">Marka e Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Zgjidh pamjen</string>
+    <string name="appearance_system_default">Parazgjedhja e sistemit</string>
+    <string name="appearance_light">E çelur</string>
+    <string name="appearance_dark">E errët</string>
+    <string name="demo_activity_github_link">Lidhja e GitHub për tek aktiviteti demonstrues</string>
+    <string name="control_tokens_details">Detajet e kodeve të kontrollit</string>
+    <string name="parameters">Parametrat</string>
+    <string name="control_tokens">Kodet e kontrollit</string>
+    <string name="global_tokens">Kodet globale</string>
+    <string name="alias_tokens">Kodet e pseudonimit</string>
+    <string name="sample_text">Teksti</string>
+    <string name="sample_icon">Ikona shembull</string>
+    <string name="color">Ngjyra</string>
+    <string name="neutral_color_tokens">Kodet e ngjyrave neutrale</string>
+    <string name="font_size_tokens">Kodet e madhësisë së fontit</string>
+    <string name="line_height_tokens">Kodet e lartësisë së vijave</string>
+    <string name="font_weight_tokens">Kodet e peshës së fontit</string>
+    <string name="icon_size_tokens">Kodet e madhësisë së ikonave</string>
+    <string name="size_tokens">Kodet e madhësisë</string>
+    <string name="shadow_tokens">Kodet e hijes</string>
+    <string name="corner_radius_tokens">Kodet e rrezes së këndeve</string>
+    <string name="stroke_width_tokens">Kodet e gjerësisë së vizave</string>
+    <string name="brand_color_tokens">Kodet e ngjyrave të markës</string>
+    <string name="neutral_background_color_tokens">Kodet e ngjyrave neutrale në sfond</string>
+    <string name="neutral_foreground_color_tokens">Kodet e ngjyrave neutrale të planit të parë</string>
+    <string name="neutral_stroke_color_tokens">Kodet e ngjyrave neutrale të vizave të markës</string>
+    <string name="brand_background_color_tokens">Kodet e ngjyrave në sfond të markës</string>
+    <string name="brand_foreground_color_tokens">Kodet e ngjyrave të planit të parë të markës</string>
+    <string name="brand_stroke_color_tokens">Kodet e ngjyrave të vizave të markës</string>
+    <string name="error_and_status_color_tokens">Kodet e gabimeve dhe të ngjyrave të statusit</string>
+    <string name="presence_tokens">Kodet e ngjyrave të pranisë</string>
+    <string name="typography_tokens">Kodet e tipografisë</string>
+    <string name="unspecified">I paspecifikuar</string>
+
 </resources>

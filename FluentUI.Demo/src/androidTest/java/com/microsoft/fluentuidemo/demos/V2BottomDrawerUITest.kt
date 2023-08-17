@@ -2,16 +2,22 @@ package com.microsoft.fluentuidemo.demos
 
 import android.content.res.Resources
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.click
+import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTouchInput
+import androidx.compose.ui.test.swipeDown
+import androidx.compose.ui.test.swipeUp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
 import com.microsoft.fluentuidemo.BaseTest
+import com.microsoft.fluentuidemo.R
 import org.junit.Before
 import org.junit.Test
-import java.util.*
 
 class V2BottomDrawerUITest : BaseTest() {
 
@@ -54,19 +60,22 @@ class V2BottomDrawerUITest : BaseTest() {
 
     @Test
     fun testBottomDrawer1() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         openCheckForVerticalDrawer()
 
         val scrimEnd = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
 
-        //Click on drawer should not close it.
+        //Click on scrim covered by drawer should not close it.
         drawerScrim.performTouchInput {
             click(Offset((0..width).random().toFloat(), (scrimEnd..height).random().toFloat()))
         }
         openCheckForVerticalDrawer()
 
-        //Click on scrim should close it.
+        //Click on scrim not covered by drawer should close it.
         drawerScrim.performTouchInput {
             click(Offset((0..width).random().toFloat(), (0..scrimEnd).random().toFloat()))
         }
@@ -75,13 +84,15 @@ class V2BottomDrawerUITest : BaseTest() {
 
     @Test
     fun testBottomDrawer2() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         openCheckForVerticalDrawer()
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
@@ -90,13 +101,16 @@ class V2BottomDrawerUITest : BaseTest() {
 
     @Test
     fun testBottomDrawer3() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         openCheckForVerticalDrawer()
 
         val drawerStart = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
 
-        //SwipeDown on drawerContent should close it.
+        //SwipeDown on scrollable drawerContent should close it.
 
         val swipeEnd = drawerScrim.fetchSemanticsNode().size.height
         val swipeStart = (drawerStart..((swipeEnd + drawerStart) / 2)).random()
@@ -111,8 +125,11 @@ class V2BottomDrawerUITest : BaseTest() {
 
     @Test
     fun testBottomDrawer4() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         openCheckForVerticalDrawer()
 
         val scrimEnd = drawerHandle.fetchSemanticsNode().positionInRoot.y.toInt()
@@ -124,7 +141,6 @@ class V2BottomDrawerUITest : BaseTest() {
         //SwipeDown of drawerHandle to bottom should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
@@ -133,32 +149,35 @@ class V2BottomDrawerUITest : BaseTest() {
 
     @Test
     fun testBottomDrawer5() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         openCheckForVerticalDrawer()
 
         //SwipeDown a little should not close the drawer
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
-                endY = drawerHandle.fetchSemanticsNode().positionInRoot.y + (0..dpToPx(26.dp).toInt()).random()
+                endY = top + (0..dpToPx(26.dp).toInt()).random()
             )
         }
-        composeTestRule.waitForIdle()
         openCheckForVerticalDrawer()
 
     }
 
     @Test
     fun testBottomDrawer6() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
-        composeTestRule.onNodeWithText("Expand Drawer").performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_expand)).performClick()
         openCheckForVerticalDrawer()
 
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
@@ -167,7 +186,10 @@ class V2BottomDrawerUITest : BaseTest() {
 
     @Test
     fun testBottomDrawer7() {
-        composeTestRule.onNodeWithText("Bottom Slide Over", useUnmergedTree = true).performClick()
+        composeTestRule.onNodeWithText(
+            getString(R.string.drawer_bottom_slide_over),
+            useUnmergedTree = true
+        ).performClick()
         composeTestRule.onNodeWithText("Show Handle", useUnmergedTree = true).performClick()
         //TODO: TO open Drawer, "Open Drawer" button needed to be clicked twice.
         // Investigated that the animateTo is not invoked with one click.
@@ -183,10 +205,7 @@ class V2BottomDrawerUITest : BaseTest() {
         drawerScrim.printToLog("temp")
         //SwipeDown on drawerContent should close it.
         drawerContent.performTouchInput {
-            swipeDown(
-                startY = drawerContent.fetchSemanticsNode().positionInRoot.y,
-                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
-            )
+            swipeDown()
         }
         closeCheckForVerticalDrawer()
     }
@@ -198,16 +217,20 @@ class V2BottomDrawerUITest : BaseTest() {
         // Investigated that the animateTo is not invoked with one click.
         // However, it is invoked 2 time on next click & then 2 times in retry.
 
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
-        composeTestRule.onNodeWithText("Open Drawer").performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
+        composeTestRule.onNodeWithText(getString(R.string.drawer_open)).performClick()
         //SwipeDown on drawerHandle should close it.
         drawerHandle.performTouchInput {
             swipeDown(
-                startY = drawerHandle.fetchSemanticsNode().positionInRoot.y,
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
-
+        drawerHandle.performTouchInput {
+            swipeDown(
+                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+            )
+        }
+        closeCheckForVerticalDrawer()
     }
 
 }

@@ -36,6 +36,9 @@
     <string name="app_bar_style">Stil de bară de aplicații</string>
     <string name="app_bar_subtitle">Subtitlu</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Bordura de jos</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">S-a făcut clic pe pictograma de navigare.</string>
 
@@ -811,45 +814,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Extindeți sertarul</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Închideți sertarul</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Selectați tipul sertarului</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Sus</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Întregul sertar se afișează în regiunea vizibilă.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Jos</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Întregul sertar se afișează în regiunea vizibilă. Conținut de defilare în mișcare care se poate trage cu degetul în sus. Sertarul extensibil se extinde prin handle-ul de glisare.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Partea din stânga peste</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Sertarul se glisează spre regiunea vizibilă din partea stângă.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Partea din dreapta peste</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Sertarul se glisează spre regiunea vizibilă din partea dreaptă.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Partea de jos peste</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Sertarul se glisează spre regiunea vizibilă din partea de jos a ecranului. Mișcarea de tragere cu degetul în sus pe sertarul extensibil afișează restul părții în regiunea vizibilă, &amp; apoi defilați.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Scrim vizibil</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Selectați conținutul sertarului</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Conținut care se poate defila de dimensiune de ecran complet</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Mai mult de jumătate de conținut de ecran</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Mai puțin de jumătate de conținut de ecran</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Conținut cu dimensiune dinamică</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Conținut de sertar imbricat</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Extensibil</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Afișați handle-ul</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Titlu</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Text sfat ecran</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Atingeți pentru sfat ecran de conținut particularizat</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Începere de sus </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Capătul de sus </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Început de jos </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Capătul de jos </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Centrați </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Personalizați centrul</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Pentru actualizări privind notele de lansare, </string>
+    <string name="click_here">faceți clic aici.</string>
+    <string name="open_source_cross_platform">Sistemul de proiectare open-source pe mai multe platforme.</string>
+    <string name="intuitive_and_powerful">Intuitiv &amp; puternic.</string>
+    <string name="design_tokens">Proiectați tokenuri</string>
+    <string name="release_notes">Note de lansare</string>
+    <string name="github_repo">Depozitul GitHub</string>
+    <string name="github_repo_link">Link la depozitul GitHub</string>
+    <string name="report_issue">Raportați problema</string>
+    <string name="v1_components">Componente V1</string>
+    <string name="v2_components">Componente V2</string>
+    <string name="all_components">Toate</string>
+    <string name="fluent_logo">Sigla Fluent</string>
+    <string name="new_badge">Nou</string>
+    <string name="modified_badge">Modificat</string>
+    <string name="api_break_badge">Întrerupere API</string>
+    <string name="app_bar_more">Mai multe</string>
+    <string name="accent">Accent</string>
+    <string name="appearance">Aspect</string>
+    <string name="choose_brand_theme">Alegeți tema brandului:</string>
+    <string name="fluent_brand_theme">Marca Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Alegeți aspectul</string>
+    <string name="appearance_system_default">Valoare implicită a sistemului</string>
+    <string name="appearance_light">Luminos</string>
+    <string name="appearance_dark">Întunecat</string>
+    <string name="demo_activity_github_link">Link GitHub pentru activitate demonstrativă</string>
+    <string name="control_tokens_details">Detalii tokenuri de control</string>
+    <string name="parameters">Parametri</string>
+    <string name="control_tokens">Tokenuri de control</string>
+    <string name="global_tokens">Tokenuri globale</string>
+    <string name="alias_tokens">Tokenuri alias</string>
+    <string name="sample_text">Text</string>
+    <string name="sample_icon">Pictogramă eșantion</string>
+    <string name="color">Culoare</string>
+    <string name="neutral_color_tokens">Tokenuri de culori neutre</string>
+    <string name="font_size_tokens">Tokenuri dimensiune font</string>
+    <string name="line_height_tokens">Tokenuri de înălțime a liniei</string>
+    <string name="font_weight_tokens">Tokenuri de grosime font</string>
+    <string name="icon_size_tokens">Tokenuri dimensiune pictogramă</string>
+    <string name="size_tokens">Tokenuri de dimensiune</string>
+    <string name="shadow_tokens">Tokenuri de umbră</string>
+    <string name="corner_radius_tokens">Tonkenuri Rază de colț</string>
+    <string name="stroke_width_tokens">Tokenuri lățime urmă de cerneală</string>
+    <string name="brand_color_tokens">Tokenuri de culoare pentru marcă</string>
+    <string name="neutral_background_color_tokens">Tokenuri de culoare neutră de fundal</string>
+    <string name="neutral_foreground_color_tokens">Tokenuri de culoare neutre de prim-plan</string>
+    <string name="neutral_stroke_color_tokens">Tokenuri de culoare neutră pentru urma de cerneală</string>
+    <string name="brand_background_color_tokens">Tokenuri de culoare de fundal pentru marcă</string>
+    <string name="brand_foreground_color_tokens">Tokenuri de culoare de prim-plan al mărcii</string>
+    <string name="brand_stroke_color_tokens">Tokenuri de culoare pentru urma de cerneală a mărcii</string>
+    <string name="error_and_status_color_tokens">Tokenuri de culoare de stare și eroare</string>
+    <string name="presence_tokens">Tokenuri de culoare de prezență</string>
+    <string name="typography_tokens">Tokenuri tipografice</string>
+    <string name="unspecified">Nespecificat</string>
+
 </resources>

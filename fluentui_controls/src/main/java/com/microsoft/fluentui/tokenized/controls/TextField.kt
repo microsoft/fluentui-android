@@ -22,6 +22,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -87,6 +89,8 @@ fun TextField(
     value: String,
     onValueChange: ((String) -> Unit),
     modifier: Modifier = Modifier,
+    readOnly: Boolean = false,
+    enabled: Boolean = true,
     hintText: String? = null,
     label: String? = null,
     assistiveText: String? = null,
@@ -102,12 +106,14 @@ fun TextField(
     keyboardOptions: KeyboardOptions = KeyboardOptions(),
     keyboardActions: KeyboardActions = KeyboardActions(),
     visualTransformation: VisualTransformation = VisualTransformation.None,
+    textFieldContentDescription: String? = null,
+    decorationBox: (@Composable (innerTextField: @Composable () -> Unit) -> Unit)? = null,
     textFieldTokens: TextFieldTokens? = null
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = textFieldTokens
-        ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextField] as TextFieldTokens)
+        ?: (FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TextFieldControlType] as TextFieldTokens)
 
     var isFocused: Boolean by rememberSaveable { mutableStateOf(false) }
 
@@ -165,6 +171,7 @@ fun TextField(
                         value = value,
                         onValueChange = onValueChange,
                         modifier = Modifier
+                            .semantics { contentDescription = textFieldContentDescription ?: "" }
                             .testTag(TEXT_FIELD)
                             .padding(vertical = 12.dp)
                             .weight(1F)
@@ -176,11 +183,13 @@ fun TextField(
                                         isFocused = true
                                 }
                             },
+                        readOnly = readOnly,
+                        enabled = enabled,
                         singleLine = true,
                         keyboardOptions = keyboardOptions,
                         keyboardActions = keyboardActions,
                         visualTransformation = visualTransformation,
-                        decorationBox = @Composable { innerTextField ->
+                        decorationBox = decorationBox ?: { innerTextField ->
                             if (value.isEmpty() && !hintText.isNullOrBlank()) {
                                 Box(
                                     Modifier.fillMaxWidth(),

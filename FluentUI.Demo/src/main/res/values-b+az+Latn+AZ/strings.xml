@@ -36,6 +36,9 @@
     <string name="app_bar_style">Proqram Paneli Üslubu</string>
     <string name="app_bar_subtitle">Altyazı</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Aşağı Sərhəd</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Naviqasiya piktoqramı klikləndi.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Siyirməni Genişləndir</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Siyirməni Bağla</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Siyirmə Növü Seçin</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Yuxarı</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Bütün siyirmələri görünən regionda göstərir.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Aşağı</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Bütün siyirmələri görünən regionda göstərir. Hərəkətli sürüşdürmə məzmununu yuxarı sürüşdürün. Genişləndirilə bilən siyirmə sürükləmə tutacağı ilə genişləndirilir.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Sola Sürüşdürün</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Siyirməni sol tərəfdən görünən regiona sürüşdürün.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Sağa Sürüşdürün</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Siyirməni sağ tərəfdən görünən regiona sürüşdürün.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Aşağı Sürüşdürün</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Siyirməni ekranın altından görünən regiona sürüşdürün. Genişlənə bilən siyirmədə hərəkəti yuxarı sürüşdürün, qalan hissəsini görünən hissəyə gətirin &amp; sonra sürüşdürün.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Görünən Skrim</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Siyirmə Məzmunu Seçin</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Tam ekran ölçüsündə sürüşdürülə bilən məzmun</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Yarıdan çox ekran məzmunu</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Yarıdan az ekran məzmunu</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Dinamik ölçülü məzmun</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">İç-içə Siyirmə Məzmunu</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Genişlənə bilən</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Tutacağı Göstərin</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Başlıq</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Alət İzahı Mətni</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Xüsusi Məzmun üzrə Alət İzahı üçün Toxunun</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Üst Başlanğıc </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Üst Kənar </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Alt Başlanğıc </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Aşağı Kənar </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Mərkəz </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Xüsusi Mərkəz</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Buraxılış Qeydləri Yeniləmələri üçün, </string>
+    <string name="click_here">buraya klikləyin.</string>
+    <string name="open_source_cross_platform">Açıq mənbə çoxsaylı platforma Dizayn Sistemi.</string>
+    <string name="intuitive_and_powerful">İntuitiv və Effektiv.</string>
+    <string name="design_tokens">Dizayn Tokenləri</string>
+    <string name="release_notes">Buraxılış Qeydləri</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub Repo Keçidi</string>
+    <string name="report_issue">Problemi Bildirin</string>
+    <string name="v1_components">V1 Komponentləri</string>
+    <string name="v2_components">V2 Komponentləri</string>
+    <string name="all_components">Hamısı</string>
+    <string name="fluent_logo">Fluent Loqosu</string>
+    <string name="new_badge">Yeni</string>
+    <string name="modified_badge">Dəyişdirildi</string>
+    <string name="api_break_badge">API Fasiləsi</string>
+    <string name="app_bar_more">Davamı</string>
+    <string name="accent">Vurğulama</string>
+    <string name="appearance">Görünüş</string>
+    <string name="choose_brand_theme">Brendinizin mövzusunu seçin:</string>
+    <string name="fluent_brand_theme">Fluent Brendi</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Görünüşü Seçin</string>
+    <string name="appearance_system_default">Sistem Standartı</string>
+    <string name="appearance_light">Açıq</string>
+    <string name="appearance_dark">Tünd</string>
+    <string name="demo_activity_github_link">Demo Fəaliyyət GitHub Keçidi</string>
+    <string name="control_tokens_details">İdarəetmə Tokenləri təfərrüatları</string>
+    <string name="parameters">Parametrlər</string>
+    <string name="control_tokens">İdarəetmə Tokenləri</string>
+    <string name="global_tokens">Ümumi Tokenlər</string>
+    <string name="alias_tokens">Şərti Ad Tokenləri</string>
+    <string name="sample_text">Mətn</string>
+    <string name="sample_icon">Nümunə Piktoqramı</string>
+    <string name="color">Rəng</string>
+    <string name="neutral_color_tokens">Neytral Rəng Tokenləri</string>
+    <string name="font_size_tokens">Şrift Ölçüsü Tokenləri</string>
+    <string name="line_height_tokens">Xətt Hündürlüyü Tokenləri</string>
+    <string name="font_weight_tokens">Şrift Çəkisi Tokenləri</string>
+    <string name="icon_size_tokens">Piktoqram Ölçüsü Tokenləri</string>
+    <string name="size_tokens">Ölçü Tokenləri</string>
+    <string name="shadow_tokens">Kölgə Tokenləri</string>
+    <string name="corner_radius_tokens">Künc Radiusu Tokenləri</string>
+    <string name="stroke_width_tokens">Ştrix Eni Tokenləri</string>
+    <string name="brand_color_tokens">Brend Rəngi Tokenləri</string>
+    <string name="neutral_background_color_tokens">Neytral Fon Rəngi Tokenləri</string>
+    <string name="neutral_foreground_color_tokens">Neytral Ön Plan Rəngi Tokenləri</string>
+    <string name="neutral_stroke_color_tokens">Neytral Ştrix Rəngi Tokenləri</string>
+    <string name="brand_background_color_tokens">Brendin Fon Rəngi Tokenləri</string>
+    <string name="brand_foreground_color_tokens">Brendin Ön Plan Rəngi Tokenləri</string>
+    <string name="brand_stroke_color_tokens">Brend Ştrix Rəngi Tokenləri</string>
+    <string name="error_and_status_color_tokens">Səhv və Vəziyyət Rəngi Tokenləri</string>
+    <string name="presence_tokens">Mövcudluq Rəngi Tokenləri</string>
+    <string name="typography_tokens">Tipoqrafiya Tokenləri</string>
+    <string name="unspecified">Təyin olunmayıb</string>
+
 </resources>

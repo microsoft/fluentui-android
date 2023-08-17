@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar Style</string>
     <string name="app_bar_subtitle">Underrubrik</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Nedre kantlinje</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Klickade på navigeringsikonen.</string>
 
@@ -760,7 +763,7 @@
     <!-- UI Label for repeat content text -->
     <string name="menu_repeat_content_text">Upprepa innehållstext</string>
     <!-- UI Label for description -->
-    <string name="menu_description" formatted="false">Menybredden ändras vad gäller innehållstext.
+    <string name="menu_description" formatted="false">Menybredden ändras vad gäller innehållstext. 
         Maxbredden är begränsad till 75 % av skärmstorleken. Innehållsmarginalen från sidan och nederkanten styrs av token. Samma innehållstext upprepas för att variera
         höjden.</string>
     <!-- UI Label for open menu button -->
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Expandera lådan</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Stäng lådan</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Välj lådtyp</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Överkant</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">Hela lådan visas i det synliga området.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Nederkant</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">Hela lådan visas i det synliga området. Svep uppåt för att scrolla rullningsinnehåll. Expanderbar låda expanderas via draghandtag.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Vänster bild över</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Lådan skjuts över till synligt område från vänster sida.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Höger bild över</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Lådan skjuts över till synligt område från höger sida.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Nederkant bild över</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Lådan skjuts över till synligt område från skärmens nederkant. Svep uppåt på den expanderbara lådan så att resten av delen hamnar i ett synligt område och bläddra sedan.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Skrimsynlig</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Välj lådinnehåll</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Rullningsbart innehåll i helskärmsstorlek</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Mer än halvskärmsinnehåll</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Mindre än halvskärmsinnehåll</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Innehåll i dynamisk storlek</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Innehåll i staplad låda</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Utökningsbar</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Visa handtag</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Rubrik</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Knappbeskrivningstext</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Tryck för knappbeskrivning för anpassat innehåll</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Övre start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Övre ände </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Nedre start </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Nedre ände </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Centrera </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Anpassat center</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">För uppdateringar av Viktig information </string>
+    <string name="click_here">klickar du här.</string>
+    <string name="open_source_cross_platform">Designsystem med öppen källkod mellan plattformar.</string>
+    <string name="intuitive_and_powerful">Intuitivt och kraftfullt.</string>
+    <string name="design_tokens">Designtoken</string>
+    <string name="release_notes">Viktig information</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub-lagringsplatslänk</string>
+    <string name="report_issue">Rapportera problem</string>
+    <string name="v1_components">V1-komponenter</string>
+    <string name="v2_components">V2-komponenter</string>
+    <string name="all_components">Alla</string>
+    <string name="fluent_logo">Fluent-logotyp</string>
+    <string name="new_badge">Nytt</string>
+    <string name="modified_badge">Ändrades</string>
+    <string name="api_break_badge">API-avbrott</string>
+    <string name="app_bar_more">Mer</string>
+    <string name="accent">Accentfärg</string>
+    <string name="appearance">Utseende</string>
+    <string name="choose_brand_theme">Välj ditt varumärkestema:</string>
+    <string name="fluent_brand_theme">Fluent-varumärke</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Välj utseende</string>
+    <string name="appearance_system_default">Systemstandard</string>
+    <string name="appearance_light">Ljust</string>
+    <string name="appearance_dark">Mörkt</string>
+    <string name="demo_activity_github_link">GitHub-länk för demoaktivitet</string>
+    <string name="control_tokens_details">Information om kontrolltoken</string>
+    <string name="parameters">Parametrar</string>
+    <string name="control_tokens">Kontrolltoken</string>
+    <string name="global_tokens">Globala tokens</string>
+    <string name="alias_tokens">Aliastoken</string>
+    <string name="sample_text">Text</string>
+    <string name="sample_icon">Exempelikon</string>
+    <string name="color">Färg</string>
+    <string name="neutral_color_tokens">Neutrala färgtoken</string>
+    <string name="font_size_tokens">Token för teckenstorlek</string>
+    <string name="line_height_tokens">Linjehöjdstoken</string>
+    <string name="font_weight_tokens">Teckenviktstoken</string>
+    <string name="icon_size_tokens">Token för ikonstorlek</string>
+    <string name="size_tokens">Storlekstoken</string>
+    <string name="shadow_tokens">Skuggtoken</string>
+    <string name="corner_radius_tokens">RadiusTokens i hörn</string>
+    <string name="stroke_width_tokens">Token för streckbredd</string>
+    <string name="brand_color_tokens">Färgtoken för varumärke</string>
+    <string name="neutral_background_color_tokens">Neutral bakgrundsfärgtoken</string>
+    <string name="neutral_foreground_color_tokens">Neutrala färgtoken för förgrund</string>
+    <string name="neutral_stroke_color_tokens">Färgtoken för neutrala streck</string>
+    <string name="brand_background_color_tokens">Färgtoken för varumärkesbakgrund</string>
+    <string name="brand_foreground_color_tokens">Färgtoken för varumärkesförgrund</string>
+    <string name="brand_stroke_color_tokens">Färgtoken för varumärkesstreck</string>
+    <string name="error_and_status_color_tokens">Färgtoken för fel och status</string>
+    <string name="presence_tokens">Närvarofärgtoken</string>
+    <string name="typography_tokens">Typografitoken</string>
+    <string name="unspecified">Ospecificerad</string>
+
 </resources>

@@ -96,7 +96,7 @@ fun SearchBar(
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val token = searchBarTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBar] as SearchBarTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.SearchBarControlType] as SearchBarTokens
     val searchBarInfo = SearchBarInfo(style)
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }

@@ -36,6 +36,9 @@
     <string name="app_bar_style">Estilo da Barra de Aplicações</string>
     <string name="app_bar_subtitle">Subtítulo</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">Limite Inferior</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">Ícone de navegação clicado.</string>
 
@@ -811,45 +814,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">Expandir Gaveta</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">Fechar Gaveta</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">Selecionar Tipo de Gaveta</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">Parte Superior</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">A gaveta inteira é apresentada na região visível.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">Parte Inferior</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">A gaveta inteira é apresentada na região visível. O gesto de percorrer para cima desloca o conteúdo. A gaveta expansível é expandida através da alça de arrastar.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">Deslizar para a Esquerda</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">Deslizar a gaveta para a região visível do lado esquerdo.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">Deslizar para a Direita</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">Deslizar a gaveta para a região visível do lado direito.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">Deslizar para a Parte Inferior</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">Deslizar a gaveta para a região visível a partir da parte inferior do ecrã. O gesto de percorrer para cima na gaveta expansível traz a restante parte para a região visível e, em seguida, desloca.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">Scrim Visível</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">Selecionar Conteúdo da Gaveta</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">Conteúdo deslocável de ecrã inteiro</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">Conteúdo em mais de metade do ecrã</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">Conteúdo em menos de metade do ecrã</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">Conteúdo de tamanho dinâmico</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">Conteúdo da Gaveta Aninhada</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">Expansível</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">Mostrar Alça</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">Título</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">Texto de Descrição</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">Toque para obter descrições de conteúdo personalizado</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">Início Superior </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">Extremidade Superior </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">Início Inferior </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">Extremidade Inferior </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">Centro </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">Centro Personalizado</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">Para obter atualizações sobre Notas de Versão, </string>
+    <string name="click_here">clique aqui.</string>
+    <string name="open_source_cross_platform">Sistema de Design de código aberto para todas as plataformas.</string>
+    <string name="intuitive_and_powerful">Intuitivo &amp; Poderoso.</string>
+    <string name="design_tokens">Tokens de Design</string>
+    <string name="release_notes">Notas de Versão</string>
+    <string name="github_repo">Repositório do GitHub</string>
+    <string name="github_repo_link">Ligação do Repositório do GitHub</string>
+    <string name="report_issue">Comunicar Problema</string>
+    <string name="v1_components">Componentes V1</string>
+    <string name="v2_components">Componentes V2</string>
+    <string name="all_components">Tudo</string>
+    <string name="fluent_logo">Logótipo Fluent</string>
+    <string name="new_badge">Novos</string>
+    <string name="modified_badge">Modificado</string>
+    <string name="api_break_badge">Interrupção da API</string>
+    <string name="app_bar_more">Mais</string>
+    <string name="accent">Destaque</string>
+    <string name="appearance">Aspeto</string>
+    <string name="choose_brand_theme">Escolha o tema da sua marca:</string>
+    <string name="fluent_brand_theme">Marca Fluent</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">Escolher Aspeto</string>
+    <string name="appearance_system_default">Predefinição do Sistema</string>
+    <string name="appearance_light">Claro</string>
+    <string name="appearance_dark">Escuro</string>
+    <string name="demo_activity_github_link">Ligação do GitHub da Atividade de Demonstração</string>
+    <string name="control_tokens_details">Detalhes dos Tokens de Controlo</string>
+    <string name="parameters">Parâmetros</string>
+    <string name="control_tokens">Tokens de Controlo</string>
+    <string name="global_tokens">Tokens Globais</string>
+    <string name="alias_tokens">Tokens Alias</string>
+    <string name="sample_text">Texto</string>
+    <string name="sample_icon">Ícone de Exemplo</string>
+    <string name="color">Cor</string>
+    <string name="neutral_color_tokens">Tokens de Cor Neutros</string>
+    <string name="font_size_tokens">Tokens de Tamanho do Tipo de Letra</string>
+    <string name="line_height_tokens">Tokens de Altura da Linha</string>
+    <string name="font_weight_tokens">Tokens de Peso do Tipo de Letra</string>
+    <string name="icon_size_tokens">Tokens de Tamanho do Ícone</string>
+    <string name="size_tokens">Tokens de Tamanho</string>
+    <string name="shadow_tokens">Tokens de Sombra</string>
+    <string name="corner_radius_tokens">RadiusTokens de Canto</string>
+    <string name="stroke_width_tokens">Tokens de Largura do Traço</string>
+    <string name="brand_color_tokens">Tokens de Cores da Marca</string>
+    <string name="neutral_background_color_tokens">Tokens de Cor de Fundo Neutros</string>
+    <string name="neutral_foreground_color_tokens">Tokens de Cor de Primeiro Plano Neutros</string>
+    <string name="neutral_stroke_color_tokens">Tokens de Cor do Traço Neutro</string>
+    <string name="brand_background_color_tokens">Tokens de Cor de Fundo da Marca</string>
+    <string name="brand_foreground_color_tokens">Tokens de Cor de Primeiro Plano da Marca</string>
+    <string name="brand_stroke_color_tokens">Tokens de Cor do Traço Da Marca</string>
+    <string name="error_and_status_color_tokens">Tokens de Cores de Erro e Estado</string>
+    <string name="presence_tokens">Tokens de Cor de Presença</string>
+    <string name="typography_tokens">Tokens de Tipografia</string>
+    <string name="unspecified">Não Especificado</string>
+
 </resources>

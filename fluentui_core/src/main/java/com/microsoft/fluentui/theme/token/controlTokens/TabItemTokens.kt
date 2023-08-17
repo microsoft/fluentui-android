@@ -1,6 +1,7 @@
 package com.microsoft.fluentui.theme.token.controlTokens
 
 import android.os.Parcelable
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -18,7 +19,7 @@ enum class TabTextAlignment {
     NO_TEXT
 }
 
-class TabItemInfo(
+open class TabItemInfo(
     val tabTextAlignment: TabTextAlignment = TabTextAlignment.VERTICAL,
     val fluentStyle: FluentStyle = FluentStyle.Neutral
 ) : ControlInfo
@@ -137,6 +138,15 @@ open class TabItemTokens : IControlToken, Parcelable {
                     )
                 ).value(FluentTheme.themeMode)
             )
+        }
+    }
+
+    @Composable
+    open fun padding(tabItemInfo: TabItemInfo): PaddingValues {
+        return when(tabItemInfo.tabTextAlignment){
+            TabTextAlignment.HORIZONTAL -> PaddingValues(top = 8.dp, start = 4.dp, bottom = 4.dp, end = 8.dp)
+            TabTextAlignment.VERTICAL -> PaddingValues(top = 8.dp, start = 8.dp, bottom = 4.dp, end = 8.dp)
+            TabTextAlignment.NO_TEXT -> PaddingValues(top = 8.dp, start = 8.dp, bottom = 4.dp, end = 8.dp)
         }
     }
 }

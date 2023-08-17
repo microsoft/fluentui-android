@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar-ის სტილი</string>
     <string name="app_bar_subtitle">ქვესათაური</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">ქვედა საზღვარი</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">დააწკაპუნეს ნავიგაციის ხატულაზე.</string>
 
@@ -810,45 +813,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">უჯრის გაშლა</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">უჯრის დახურვა</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">აირჩიეთ უჯრის ტიპი</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">ზედა</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">მთელი უჯრა ჩანს ხილვად არეალში.</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">ქვედა</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">მთელი უჯრა ჩანს ხილვად არეალში. შიგთავსის დასათვალიერებლად გადაადგილება ხდება მაღლა ასრიალების მოძრაობით. გაშლადი უჯრა იშლება გადათრევის სახელურით.</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">მარცხნიდან გადაფურცვლა</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">უჯრა ხილვად არეალში მარცხნიდან გადაფურცვლით.</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">მარჯვნიდან გადაფურცვლა</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">უჯრა ხილვად არეალში მარჯვნიდან გადაფურცვლით.</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">ქვემოდან გადაფურცვლა</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">უჯრა ხილვად არეალში ეკრანის ქვედა ბოლოდან გადაფურცვლით. გაშლად უჯრაზე მაღლა ასრიალების მოძრაობით დარჩენილი ნაწილი ექცევა ხილვად არეალში, შემდეგ კი ხდება გადაადგილება.</string>
     <!-- UI Label for Scrim Visible -->
-    <string name="drawer_scrim_visible">Scrim Visible</string>
+    <string name="drawer_scrim_visible">ხილვადი შენიღბვა</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">აირჩიეთ უჯრის შიგთავსი</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">მთელი ეკრანის ზომის შიგთავსი გადაადგილების საშუალებით</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">ნახევარ ეკრანზე მეტი ზომის შიგთავსი</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">ნახევარ ეკრანზე ნაკლები ზომის შიგთავსი</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">დინამიკური ზომის შიგთავსი</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">უჯრის ჩადგმული შიგთავსი</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">გაშლადი</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">ჩვენების სახელური</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">სათაური</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">ეკრანის მინიშნების ტექსტი</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">შეეხეთ მორგებული შიგთავსის მინიშნებისთვის</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">ზედა დაწყება </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">ზედა დასასრული </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">ქვედა დაწყება </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">ქვედა დასასრული </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">ცენტრი </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">მორგებული ცენტრი</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">გამოშვების შენიშვნების განახლებებისთვის, </string>
+    <string name="click_here">დააწკაპუნეთ აქ.</string>
+    <string name="open_source_cross_platform">ღია წყაროს ჯვარედინი პლატფორმის დიზაინის სისტემა.</string>
+    <string name="intuitive_and_powerful">ინტუიციური და ძლიერი.</string>
+    <string name="design_tokens">დიზაინის ჟეტონები</string>
+    <string name="release_notes">გამოშვების შენიშვნები</string>
+    <string name="github_repo">GitHub Repo</string>
+    <string name="github_repo_link">GitHub Repo-ს ბმული</string>
+    <string name="report_issue">მოხსენება პრობლემის შესახებ</string>
+    <string name="v1_components">V1 კომპონენტები</string>
+    <string name="v2_components">V2 კომპონენტები</string>
+    <string name="all_components">ყველა</string>
+    <string name="fluent_logo">Fluent-ის ლოგო</string>
+    <string name="new_badge">ახალი</string>
+    <string name="modified_badge">შეცვლილია</string>
+    <string name="api_break_badge">API-ს გატეხვა</string>
+    <string name="app_bar_more">სხვა</string>
+    <string name="accent">აქცენტი</string>
+    <string name="appearance">იერსახე</string>
+    <string name="choose_brand_theme">აირჩიეთ თქვენი ბრენდის თემა:</string>
+    <string name="fluent_brand_theme">Fluent Brand</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">Microsoft Teams</string>
+    <string name="choose_appearance">აირჩიეთ იერსახე</string>
+    <string name="appearance_system_default">ნაგულისხმევი სისტემა</string>
+    <string name="appearance_light">ღია</string>
+    <string name="appearance_dark">მუქი</string>
+    <string name="demo_activity_github_link">ინტერაქტიული წარდგენის აქტივობის GitHub-ის ბმული</string>
+    <string name="control_tokens_details">კონტროლის ჟეტონების დეტალები</string>
+    <string name="parameters">პარამეტრები</string>
+    <string name="control_tokens">კონტროლის ჟეტონები</string>
+    <string name="global_tokens">გლობალური ჟეტონები</string>
+    <string name="alias_tokens">მეტსახელის ჟეტონები</string>
+    <string name="sample_text">ტექსტი</string>
+    <string name="sample_icon">ხატულას ნიმუში</string>
+    <string name="color">ფერი</string>
+    <string name="neutral_color_tokens">ნეიტრალური ფერის ჟეტონები</string>
+    <string name="font_size_tokens">შრიფტის ზომის ჟეტონები</string>
+    <string name="line_height_tokens">ხაზის სიმაღლის ჟეტონები</string>
+    <string name="font_weight_tokens">შრიფტის წონის ჟეტონები</string>
+    <string name="icon_size_tokens">ხატულის ზომის ჟეტონები</string>
+    <string name="size_tokens">ზომის ჟეტონები</string>
+    <string name="shadow_tokens">ჩრდილის ჟეტონები</string>
+    <string name="corner_radius_tokens">კუთხის RadiusTokens</string>
+    <string name="stroke_width_tokens">შტრიხის სიგანის ჟეტონები</string>
+    <string name="brand_color_tokens">ბრენდის ფერის ჟეტონები</string>
+    <string name="neutral_background_color_tokens">ნეიტრალური ფონის ფერის ჟეტონები</string>
+    <string name="neutral_foreground_color_tokens">ნეიტრალური წინა ფონის ფერის ჟეტონები</string>
+    <string name="neutral_stroke_color_tokens">ნეიტრალური შტრიხის ფერის ჟეტონები</string>
+    <string name="brand_background_color_tokens">ბრენდის ფონის ფერის ჟეტონები</string>
+    <string name="brand_foreground_color_tokens">ბრენდის წინა ფონის ფერის ჟეტონები</string>
+    <string name="brand_stroke_color_tokens">ბრენდის შტრიხის ფერის ჟეტონები</string>
+    <string name="error_and_status_color_tokens">შეცდომისა და სტატუსის ფერის ჟეტონები</string>
+    <string name="presence_tokens">დასწრების ფერის ჟეტონები</string>
+    <string name="typography_tokens">ტიპოგრაფიის ჟეტონები</string>
+    <string name="unspecified">განუსაზღვრელი</string>
+
 </resources>

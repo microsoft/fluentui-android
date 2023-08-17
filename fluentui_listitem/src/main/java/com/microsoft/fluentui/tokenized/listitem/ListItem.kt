@@ -234,7 +234,7 @@ object ListItem {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
-            ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            ?: FluentTheme.controlTokens.tokens[ControlType.ListItemControlType] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = listItemType,
             borderInset = borderInset,
@@ -291,9 +291,17 @@ object ListItem {
                 .fillMaxWidth()
                 .height(IntrinsicSize.Max)
                 .borderModifier(border, borderColor, borderSize, borderInsetToPx)
-                .clickAndSemanticsModifier(
-                    interactionSource, onClick = onClick ?: {}, enabled, rippleColor
-                ), verticalAlignment = Alignment.CenterVertically
+                .then(
+                    if(onClick != null){
+                        Modifier.clickAndSemanticsModifier(
+                            interactionSource,
+                            onClick = onClick,
+                            enabled,
+                            rippleColor
+                        )
+                    }
+                    else Modifier
+                )
         ) {
             if (leadingAccessoryContent != null && textAlignment == ListItemTextAlignment.Regular) {
                 Box(
@@ -311,7 +319,6 @@ object ListItem {
                         if (unreadDot) {
                             Canvas(
                                 modifier = Modifier
-                                    .padding(start = 4.dp)
                                     .sizeIn(minWidth = 8.dp, minHeight = 8.dp)
                             ) {
                                 drawCircle(
@@ -639,7 +646,7 @@ object ListItem {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
-            ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            ?: FluentTheme.controlTokens.tokens[ControlType.ListItemControlType] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = SectionHeader,
             borderInset = borderInset,
@@ -820,7 +827,7 @@ object ListItem {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
-            ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            ?: FluentTheme.controlTokens.tokens[ControlType.ListItemControlType] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = SectionDescription,
             horizontalSpacing = FluentGlobalTokens.SizeTokens.Size160,
@@ -950,7 +957,7 @@ object ListItem {
         val themeID =
             FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
         val token = listItemTokens
-            ?: FluentTheme.controlTokens.tokens[ControlType.ListItem] as ListItemTokens
+            ?: FluentTheme.controlTokens.tokens[ControlType.ListItemControlType] as ListItemTokens
         val listItemInfo = ListItemInfo(
             listItemType = OneLine,
             style = style,

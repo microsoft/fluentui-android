@@ -1,12 +1,17 @@
 package com.microsoft.fluentui.tokenized.shimmer
 
-import androidx.compose.animation.core.*
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,23 +19,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerInfo
-import com.microsoft.fluentui.theme.token.controlTokens.ShimmerShape
 import com.microsoft.fluentui.theme.token.controlTokens.ShimmerTokens
 import com.microsoft.fluentui.util.dpToPx
 import kotlin.math.absoluteValue
 import kotlin.math.sqrt
 
+private const val DEFAULT_CORNER_RADIUS = 4
+
 /**
- * Create a Shimmer effect
+ * Create an empty Shimmer effect
  *
- * @param shape Shape of the shimmer. See [ShimmerShape] for shapes
  * @param modifier Modifier for shimmer
  * @param shimmerTokens Token values for shimmer
  *
@@ -38,24 +45,66 @@ import kotlin.math.sqrt
 @Composable
 fun Shimmer(
     modifier: Modifier = Modifier,
-    shape: ShimmerShape = ShimmerShape.Box,
     shimmerTokens: ShimmerTokens? = null
+) {
+    InternalShimmer(
+        cornerRadius = DEFAULT_CORNER_RADIUS.dp,
+        modifier = modifier,
+        shimmerTokens = shimmerTokens
+    )
+}
+
+/**
+ * Create Shimmer effect on some content
+ *
+ * @param cornerRadius Corner radius of the shimmer
+ * @param modifier Modifier for shimmer
+ * @param shimmerTokens Token values for shimmer
+ * @param content Content to be shimmered
+ *
+ */
+@Composable
+fun Shimmer(
+    cornerRadius: Dp,
+    modifier: Modifier = Modifier,
+    shimmerTokens: ShimmerTokens? = null,
+    content: @Composable () -> Unit,
+) {
+    InternalShimmer(
+        cornerRadius = cornerRadius,
+        modifier = modifier,
+        shimmerTokens = shimmerTokens
+    ) {
+        content()
+    }
+}
+
+@Composable
+internal fun InternalShimmer(
+    cornerRadius: Dp,
+    modifier: Modifier = Modifier,
+    shimmerTokens: ShimmerTokens? = null,
+    content: (@Composable () -> Unit)? = null,
 ) {
     val themeID =
         FluentTheme.themeID    //Adding This only for recomposition in case of Token Updates. Unused otherwise.
     val tokens = shimmerTokens
-        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.Shimmer] as ShimmerTokens
+        ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.ShimmerControlType] as ShimmerTokens
     val configuration = LocalConfiguration.current
     val screenHeight = dpToPx(configuration.screenHeightDp.dp)
     val screenWidth = dpToPx(configuration.screenWidthDp.dp)
     val diagonal =
         sqrt((screenHeight * screenHeight + screenWidth * screenWidth).toDouble()).toFloat()
-    val shimmerInfo = ShimmerInfo(shape = shape)
-    val shimmerBackgroundColor =
+    val shimmerInfo = ShimmerInfo()
+    val shimmerBackgroundColor = if (content != null) {
+        Color.Transparent
+    } else {
         tokens.color(shimmerInfo)
+    }
     val shimmerKnockoutEffectColor = tokens.knockoutEffectColor(shimmerInfo)
     val cornerRadius =
-        dpToPx(tokens.cornerRadius(shimmerInfo))
+        dpToPx(cornerRadius)
+    val shimmerDelay = tokens.delay(shimmerInfo)
     val infiniteTransition = rememberInfiniteTransition()
     val isLtr = LocalLayoutDirection.current == LayoutDirection.Ltr
     val initialValue = if (isLtr) 0f else screenWidth
@@ -65,7 +114,7 @@ fun Shimmer(
         targetValue,
         infiniteRepeatable(
             animation = tween(
-                durationMillis = 1000,
+                durationMillis = shimmerDelay,
                 easing = LinearEasing
             )
         )
@@ -77,19 +126,24 @@ fun Shimmer(
         start = Offset.Zero,
         end = Offset(shimmerEffect.absoluteValue, shimmerEffect.absoluteValue)
     )
-    if (shape == ShimmerShape.Box) {
-        Spacer(
-            modifier = modifier
-                .width(240.dp)
-                .height(12.dp)
-                .clip(RoundedCornerShape(cornerRadius))
-                .background(gradientColor)
-        )
+    if (content != null) {
+        Box(
+            modifier
+                .width(IntrinsicSize.Max)
+                .height(IntrinsicSize.Max)
+        ) {
+            content()
+            Spacer(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(cornerRadius))
+                    .background(gradientColor)
+            )
+        }
     } else {
         Spacer(
             modifier = modifier
-                .size(60.dp)
-                .clip(CircleShape)
+                .clip(RoundedCornerShape(cornerRadius))
                 .background(gradientColor)
         )
     }

@@ -16,7 +16,7 @@ import com.microsoft.fluentui.theme.token.IControlToken
 import com.microsoft.fluentui.theme.token.StateColor
 import kotlinx.parcelize.Parcelize
 
-data class AnnouncementCardInfo(
+open class AnnouncementCardInfo(
     val cardType: CardType = CardType.Elevated
 )
 

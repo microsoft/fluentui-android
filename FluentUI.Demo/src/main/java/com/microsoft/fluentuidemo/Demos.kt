@@ -35,6 +35,7 @@ import com.microsoft.fluentuidemo.demos.V2AvatarActivity
 import com.microsoft.fluentuidemo.demos.V2AvatarCarouselActivity
 import com.microsoft.fluentuidemo.demos.V2AvatarGroupActivity
 import com.microsoft.fluentuidemo.demos.V2BadgeActivity
+import com.microsoft.fluentuidemo.demos.V2BasicChipActivity
 import com.microsoft.fluentuidemo.demos.V2BasicControlsActivity
 import com.microsoft.fluentuidemo.demos.V2BottomDrawerActivity
 import com.microsoft.fluentuidemo.demos.V2BottomSheetActivity
@@ -57,9 +58,11 @@ import com.microsoft.fluentuidemo.demos.V2ScaffoldActivity
 import com.microsoft.fluentuidemo.demos.V2SearchBarActivity
 import com.microsoft.fluentuidemo.demos.V2SegmentedControlActivity
 import com.microsoft.fluentuidemo.demos.V2ShimmerActivity
+import com.microsoft.fluentuidemo.demos.V2SideRailActivity
 import com.microsoft.fluentuidemo.demos.V2SnackbarActivity
 import com.microsoft.fluentuidemo.demos.V2TabBarActivity
 import com.microsoft.fluentuidemo.demos.V2TextFieldActivity
+import com.microsoft.fluentuidemo.demos.V2ToolTipActivity
 import java.util.UUID
 import kotlin.reflect.KClass
 
@@ -73,7 +76,8 @@ enum class Badge {
 const val V2AVATAR = "V2 Avatar"
 const val V2AVATAR_CAROUSEL = "V2 Avatar Carousel"
 const val V2AVATAR_GROUP = "V2 Avatar Group"
-const val V2Badge = "V2 Badge"
+const val V2BADGE = "V2 Badge"
+const val V2BASIC_CHIP = "V2 Basic Chip"
 const val V2BASIC_CONTROLS = "V2 Basic Controls"
 const val V2BOTTOM_DRAWER = "V2 Bottom Drawer"
 const val V2BOTTOM_SHEET = "V2 BottomSheet"
@@ -95,9 +99,11 @@ const val V2SCAFFOLD = "V2 Scaffold"
 const val V2SEARCHBAR = "V2 SearchBar"
 const val V2SEGMENTED_CONTROL = "V2 SegmentedControl"
 const val V2SHIMMER = "V2 Shimmer"
+const val V2SIDE_RAIL = "V2 SideRail"
 const val V2SNACKBAR = "V2 Snackbar"
-const val V2TABBAR = "V2 TabBar"
-const val V2TEXTFIELD = "V2 TextField"
+const val V2TAB_BAR = "V2 TabBar"
+const val V2TEXT_FIELD = "V2 TextField"
+const val V2TOOL_TIP = "V2 ToolTip"
 const val ACTION_BAR_LAYOUT = "ActionBarLayout"
 const val APP_BAR_LAYOUT = "AppBarLayout"
 const val V2APP_BAR_LAYOUT = "V2 AppBarLayout"
@@ -153,37 +159,39 @@ val V1DEMO = arrayListOf(
 )
 
 val V2DEMO = arrayListOf(
-    Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class),
+    Demo(V2APP_BAR_LAYOUT, V2AppBarActivity::class, Badge.Modified),
     Demo(V2AVATAR, V2AvatarActivity::class),
     Demo(V2AVATAR_CAROUSEL, V2AvatarCarouselActivity::class),
     Demo(V2AVATAR_GROUP, V2AvatarGroupActivity::class),
-    Demo(V2Badge, V2BadgeActivity::class),
+    Demo(V2BADGE, V2BadgeActivity::class),
+    Demo(V2BASIC_CHIP, V2BasicChipActivity::class),
     Demo(V2BASIC_CONTROLS, V2BasicControlsActivity::class),
     Demo(V2BOTTOM_DRAWER, V2BottomDrawerActivity::class),
     Demo(V2BOTTOM_SHEET, V2BottomSheetActivity::class),
     Demo(V2BUTTON, V2ButtonsActivity::class),
-    Demo(V2CARD, V2CardActivity::class),
+    Demo(V2CARD, V2CardActivity::class, Badge.Modified),
     Demo(V2CARD_NUDGE, V2CardNudgeActivity::class),
     Demo(V2CITATION, V2CitationActivity::class),
     Demo(V2CONTEXTUAL_COMMAND_BAR, V2ContextualCommandBarActivity::class),
     Demo(V2DIALOG, V2DialogActivity::class),
     Demo(V2DRAWER, V2DrawerActivity::class),
     Demo(V2LABEL, V2LabelActivity::class),
-    Demo(V2LIST_ITEM, V2ListItemActivity::class),
+    Demo(V2LIST_ITEM, V2ListItemActivity::class, Badge.Modified),
     Demo(V2MENU, V2MenuActivity::class),
-    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class, Badge.New),
+    Demo(V2PEOPLE_PICKER, V2PeoplePickerActivity::class, Badge.APIBreak),
     Demo(V2PERSONA, V2PersonaActivity::class),
-    Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class),
+    Demo(V2PERSONA_CHIP, V2PersonaChipActivity::class, Badge.Modified),
     Demo(V2PERSONA_LIST, V2PersonaListActivity::class),
     Demo(V2PROGRESS, V2ProgressActivity::class),
     Demo(V2SCAFFOLD, V2ScaffoldActivity::class),
     Demo(V2SEARCHBAR, V2SearchBarActivity::class),
     Demo(V2SEGMENTED_CONTROL, V2SegmentedControlActivity::class),
     Demo(V2SHIMMER, V2ShimmerActivity::class),
+    Demo(V2SIDE_RAIL, V2SideRailActivity::class),
     Demo(V2SNACKBAR, V2SnackbarActivity::class),
-    Demo(V2TABBAR, V2TabBarActivity::class),
-    Demo(V2TEXTFIELD, V2TextFieldActivity::class),
-
+    Demo(V2TAB_BAR, V2TabBarActivity::class),
+    Demo(V2TEXT_FIELD, V2TextFieldActivity::class),
+    Demo(V2TOOL_TIP, V2ToolTipActivity::class, Badge.New),
     )
 
 val DUO_DEMOS = arrayListOf(

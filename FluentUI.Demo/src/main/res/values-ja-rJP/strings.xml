@@ -36,6 +36,9 @@
     <string name="app_bar_style">AppBar スタイル</string>
     <string name="app_bar_subtitle">字幕</string>
 
+    <!-- Text to show the bottom border property of App bar .-->
+    <string name="app_bar_bottom_border">下罫線</string>
+
     <!-- Text that shows the action performed to the user -->
     <string name="app_bar_layout_navigation_icon_clicked">ナビゲーション アイコンがクリックされました。</string>
 
@@ -809,45 +812,128 @@
     <!-- UI Label for Button which expand Drawer-->
     <string name="drawer_expand">引き出しを拡張する</string>
     <!-- UI Label for Button which close Drawer-->
-    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_close">ドロワーを閉じる</string>
     <!-- UI Label for Drawer Type Heading -->
-    <string name="drawer_select_drawer_type">Select Drawer Type</string>
+    <string name="drawer_select_drawer_type">ドロワーの種類の選択</string>
     <!-- UI Label for Top -->
-    <string name="drawer_top">Top</string>
+    <string name="drawer_top">上</string>
     <!-- UI Label for Top drawer description -->
-    <string name="drawer_top_description">Whole drawer shows in the visible region.</string>
+    <string name="drawer_top_description">ドロワー全体が表示可能な領域に表示されます。</string>
     <!-- UI Label for Bottom -->
-    <string name="drawer_bottom">Bottom</string>
+    <string name="drawer_bottom">下</string>
     <!-- UI Label for Bottom drawer description -->
-    <string name="drawer_bottom_description">Whole drawer shows in the visible region. Swipe up motion scroll content. Expandable drawer expand via drag handle.</string>
+    <string name="drawer_bottom_description">ドロワー全体が表示可能な領域に表示されます。モーション スクロール コンテンツを上にスワイプします。 拡張可能なドロワーは、ドラッグ ハンドルを使用して拡張します。</string>
     <!-- UI Label for Left Slide Over -->
-    <string name="drawer_left_slide_over">Left Slide Over</string>
+    <string name="drawer_left_slide_over">左スライド オーバー</string>
     <!-- UI Label for Left Slide Over drawer description -->
-    <string name="drawer_left_slide_over_description">Drawer slide over to visible region from left side.</string>
+    <string name="drawer_left_slide_over_description">ドロワーは左側から表示可能な領域にスライドします。</string>
     <!-- UI Label for Right Slide Over -->
-    <string name="drawer_right_slide_over">Right Slide Over</string>
+    <string name="drawer_right_slide_over">右スライド オーバー</string>
     <!-- UI Label for Right Slide Over drawer description -->
-    <string name="drawer_right_slide_over_description">Drawer slide over to visible region from right side.</string>
+    <string name="drawer_right_slide_over_description">ドロワーは右側から表示可能な領域にスライドします。</string>
     <!-- UI Label for Bottom Slide Over -->
-    <string name="drawer_bottom_slide_over">Bottom Slide Over</string>
+    <string name="drawer_bottom_slide_over">下スライド オーバー</string>
     <!-- UI Label for Bottom Slide Over drawer description -->
-    <string name="drawer_bottom_slide_over_description">Drawer slide over to visible region from bottom of screen. Swipe up motion on expandable drawer bring its rest of part to visible region &amp; then scroll.</string>
+    <string name="drawer_bottom_slide_over_description">ドロワーは、画面の下部から表示可能な領域にスライドします。拡張可能なドロワーを上にスワイプすると、残りの部分が表示領域に移動してスクロールします。</string>
     <!-- UI Label for Scrim Visible -->
     <string name="drawer_scrim_visible">Scrim Visible</string>
     <!-- UI Label for Select Drawer Content Heading-->
-    <string name="drawer_select_drawer_content">Select Drawer Content</string>
+    <string name="drawer_select_drawer_content">ドロワー コンテンツの選択</string>
     <!-- UI Label for Full screen size scrollable content text-->
-    <string name="drawer_full_screen_size_scrollable_content">Full screen size scrollable content</string>
+    <string name="drawer_full_screen_size_scrollable_content">全画面表示サイズのスクロール可能なコンテンツ</string>
     <!-- UI Label for More than half screen content text-->
-    <string name="drawer_more_than_half_screen_content">More than half screen content</string>
+    <string name="drawer_more_than_half_screen_content">画面の半分を超えるコンテンツ</string>
     <!-- UI Label for Less than half screen content text-->
-    <string name="drawer_less_than_half_screen_content">Less than half screen content</string>
+    <string name="drawer_less_than_half_screen_content">画面の半分未満のコンテンツ</string>
     <!-- UI Label for Dynamic size content text-->
-    <string name="drawer_dynamic_size_content">Dynamic size content</string>
+    <string name="drawer_dynamic_size_content">動的サイズのコンテンツ</string>
     <!-- UI Label for Nested drawer content text-->
-    <string name="drawer_nested_drawer_content">Nested Drawer Content</string>
+    <string name="drawer_nested_drawer_content">入れ子になったドロワーのコンテンツ</string>
     <!-- UI Label for Expandable -->
-    <string name="drawer_expandable">Expandable</string>
+    <string name="drawer_expandable">拡張可能</string>
     <!-- UI Label for Show Handle -->
-    <string name="drawer_show_handle">Show Handle</string>
+    <string name="drawer_show_handle">ハンドルの表示</string>
+
+    <!--V2 ToolTip-->
+    <!-- UI Label for ToolTip Title-->
+    <string name="tooltip_title">タイトル</string>
+    <!-- UI Label for ToolTip Text-->
+    <string name="tooltip_text">ツールチップのテキスト</string>
+    <!-- Text for button that shows Custom content Tooltip on tap -->
+    <string name="tooltip_custom_content">タップしてカスタム コンテンツ ツールチップを表示</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_start">トップスタート</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_top_end">最上部</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_start">ボトム スタート</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_bottom_end">最下部</string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_center">中央揃え </string>
+    <!--UI label showing tooltip message -->
+    <string name="tooltip_custom_center">カスタム センター</string>
+
+    <!-- V2 Demo App -->
+    <string name="release_notes_updates">リリースノートの最新情報については、</string>
+    <string name="click_here">ここをクリックしてください。</string>
+    <string name="open_source_cross_platform">オープンソースのクロスプラットフォーム設計システム。</string>
+    <string name="intuitive_and_powerful">直感的 &amp; パワフル。</string>
+    <string name="design_tokens">デザイン トークン</string>
+    <string name="release_notes">リリース ノート</string>
+    <string name="github_repo">GitHub リポジトリ</string>
+    <string name="github_repo_link">GitHub リポジトリ リンク</string>
+    <string name="report_issue">問題の報告</string>
+    <string name="v1_components">V1 コンポーネント</string>
+    <string name="v2_components">V2 コンポーネント</string>
+    <string name="all_components">すべて</string>
+    <string name="fluent_logo">Fluentロゴ</string>
+    <string name="new_badge">新規</string>
+    <string name="modified_badge">更新日時</string>
+    <string name="api_break_badge">API ブレイク</string>
+    <string name="app_bar_more">表示数を増やす</string>
+    <string name="accent">アクセント</string>
+    <string name="appearance">外観</string>
+    <string name="choose_brand_theme">ブランドのテーマを選択してください:</string>
+    <string name="fluent_brand_theme">Fluentブランド</string>
+    <string name="one_note_theme">OneNote</string>
+    <string name="word_theme">Word</string>
+    <string name="excel_theme">Excel</string>
+    <string name="powerpoint_theme">PowerPoint</string>
+    <string name="m365_theme">M365</string>
+    <string name="teams_theme">MS Teams</string>
+    <string name="choose_appearance">外観の選択</string>
+    <string name="appearance_system_default">既定のシステム設定</string>
+    <string name="appearance_light">淡色</string>
+    <string name="appearance_dark">濃色</string>
+    <string name="demo_activity_github_link">デモアクティビティ GitHub リンク</string>
+    <string name="control_tokens_details">コントロール トークンの詳細</string>
+    <string name="parameters">パラメーター</string>
+    <string name="control_tokens">コントロール トークン</string>
+    <string name="global_tokens">グローバル トークン</string>
+    <string name="alias_tokens">エイリアス トークン</string>
+    <string name="sample_text">テキスト</string>
+    <string name="sample_icon">サンプル アイコン</string>
+    <string name="color">色</string>
+    <string name="neutral_color_tokens">ニュートラル カラー トークン</string>
+    <string name="font_size_tokens">フォントサイズトークン</string>
+    <string name="line_height_tokens">行の高さのトークン</string>
+    <string name="font_weight_tokens">フォント ウェイト トークン</string>
+    <string name="icon_size_tokens">アイコンサイズトークン</string>
+    <string name="size_tokens">サイズ トークン</string>
+    <string name="shadow_tokens">シャドウトークン</string>
+    <string name="corner_radius_tokens">コーナー半径トークン</string>
+    <string name="stroke_width_tokens">ストローク幅トークン</string>
+    <string name="brand_color_tokens">ブランド カラー トークン</string>
+    <string name="neutral_background_color_tokens">ニュートラル 背景色 トークン</string>
+    <string name="neutral_foreground_color_tokens">ニュートラル前景色トークン</string>
+    <string name="neutral_stroke_color_tokens">ニュートラル ストローク カラートークン</string>
+    <string name="brand_background_color_tokens">ブランド背景色のトークン</string>
+    <string name="brand_foreground_color_tokens">ブランド 前景色 トークン</string>
+    <string name="brand_stroke_color_tokens">ブランド ストローク カラー トークン</string>
+    <string name="error_and_status_color_tokens">エラーとステータスの色のトークン</string>
+    <string name="presence_tokens">プレゼンス カラー トークン</string>
+    <string name="typography_tokens">タイポグラフィー トークン</string>
+    <string name="unspecified">指定なし</string>
+
 </resources>

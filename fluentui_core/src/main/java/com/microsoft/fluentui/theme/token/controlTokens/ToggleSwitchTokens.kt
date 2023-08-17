@@ -8,7 +8,7 @@ import com.microsoft.fluentui.theme.FluentTheme.themeMode
 import com.microsoft.fluentui.theme.token.*
 import kotlinx.parcelize.Parcelize
 
-data class ToggleSwitchInfo(
+open class ToggleSwitchInfo(
     val checked: Boolean = true,
 ) : ControlInfo
 

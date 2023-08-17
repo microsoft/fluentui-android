@@ -9,11 +9,13 @@ import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.NativeKeyEvent
 import androidx.compose.ui.input.key.nativeKeyCode
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsFocused
 import androidx.compose.ui.test.assertIsNotFocused
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onChild
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
@@ -21,6 +23,7 @@ import androidx.compose.ui.test.onRoot
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performKeyPress
 import androidx.compose.ui.test.printToLog
+import com.microsoft.fluentui.persona.R
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePicker
 import com.microsoft.fluentui.tokenized.peoplepicker.PeoplePickerItemData
 import com.microsoft.fluentui.tokenized.peoplepicker.rememberPeoplePickerItemDataList
@@ -39,7 +42,6 @@ class V2PeoplePickerUITest {
 
             })
         }
-        composeTestRule.onRoot().printToLog("testPeoplePickerChip")
         val peoplePicker = composeTestRule.onNodeWithTag("V2PeoplePicker")
         peoplePicker.assertExists()
         peoplePicker.assertIsDisplayed()
@@ -52,8 +54,7 @@ class V2PeoplePickerUITest {
 
             })
         }
-        composeTestRule.onRoot().printToLog("testPeoplePickerChip")
-        val textField = composeTestRule.onNodeWithTag("Text field")
+        val textField = composeTestRule.onNodeWithTag("V2PeoplePicker").onChild()
         textField.assertExists()
         textField.assertIsDisplayed()
         textField.assertIsNotFocused()
@@ -85,9 +86,10 @@ class V2PeoplePickerUITest {
 
     @Test
     fun testPeoplePickerChipActions() {
-
+        lateinit var closeString: String
         composeTestRule.setContent {
             var selectedPeopleList = rememberPeoplePickerItemDataList()
+            closeString = stringResource(R.string.fluentui_close)
             selectedPeopleList.add(
                 PeoplePickerItemData(
                     Person("firstName"),
@@ -108,9 +110,11 @@ class V2PeoplePickerUITest {
             )
         }
 
-        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
+        val peoplePickerChip =
+            composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
         peoplePickerChip.performClick()
-        val cancelButton = composeTestRule.onNodeWithContentDescription("Close", useUnmergedTree = true)
+        val cancelButton =
+            composeTestRule.onNodeWithContentDescription(closeString, useUnmergedTree = true)
         cancelButton.assertExists()
         cancelButton.assertIsDisplayed()
         cancelButton.assertHasClickAction()
@@ -139,10 +143,11 @@ class V2PeoplePickerUITest {
                 }
             )
         }
-        val textField = composeTestRule.onNodeWithTag("Text field")
+        val textField = composeTestRule.onNodeWithTag("V2PeoplePicker")
         textField.assertExists()
         textField.assertIsDisplayed()
-        val peoplePickerChip = composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
+        val peoplePickerChip =
+            composeTestRule.onNodeWithText("firstName", true, useUnmergedTree = true)
         peoplePickerChip.assertExists()
         peoplePickerChip.assertIsDisplayed()
         textField.performClick()
