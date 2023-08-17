@@ -33,7 +33,27 @@ open class TabItemTokens : IControlToken, Parcelable {
     }
 
     @Composable
-    open fun backgroundBrush(tabItemInfo: TabItemInfo): Brush {
+    open fun backgroundBrush(tabItemInfo: TabItemInfo): StateBrush {
+        return StateBrush(
+            rest = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            ),
+            pressed = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1Pressed].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            ),
+            focused = SolidColor(
+                FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1Selected].value(
+                    themeMode = FluentTheme.themeMode
+                )
+            )
+        )
+    }
+    @Composable
+    open fun ListItemContainerLazyRowBackgroundBrush(tabItemInfo: TabItemInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                 FluentTheme.themeMode
@@ -59,6 +79,9 @@ open class TabItemTokens : IControlToken, Parcelable {
                     themeMode = FluentTheme.themeMode
                 ),
                 pressed = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground3].value(
+                    themeMode = FluentTheme.themeMode
+                ),
+                focused= FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.Foreground1].value(
                     themeMode = FluentTheme.themeMode
                 ),
                 disabled = FluentTheme.aliasTokens.neutralForegroundColor[FluentAliasTokens.NeutralForegroundColorTokens.ForegroundDisable1].value(

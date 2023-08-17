@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.unit.Dp
@@ -174,8 +175,8 @@ class ListContentBuilder {
                 Layout(
                     modifier = Modifier
                         .background(
-                            token.backgroundBrush(
-                                TabItemInfo(
+                            token.ListItemContainerLazyRowBackgroundBrush(
+                                tabItemInfo =TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand
                                 )
@@ -250,7 +251,7 @@ class ListContentBuilder {
                 LazyRow(
                     state = rowLazyListState, modifier = Modifier
                         .background(
-                            token.backgroundBrush(
+                            token.ListItemContainerLazyRowBackgroundBrush(
                                 TabItemInfo(
                                     TabTextAlignment.VERTICAL,
                                     FluentStyle.Brand

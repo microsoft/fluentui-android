@@ -64,17 +64,18 @@ fun TabItem(
             interactionSource = interactionSource
         )
     val padding = token.padding(tabItemInfo = tabItemInfo)
-    val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo)
+    val backgroundColor = token.backgroundBrush(tabItemInfo = tabItemInfo).getBrushByState(
+        enabled = enabled, selected = selected, interactionSource = interactionSource
+    )
     val rippleColor = token.rippleColor(tabItemInfo = tabItemInfo)
-
     val clickableModifier = Modifier
         .clickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = rememberRipple(color = rippleColor),
+            interactionSource = interactionSource,
+            indication =  rememberRipple(color = rippleColor),
             onClickLabel = null,
             enabled = enabled,
             onClick = onClick,
-            role = Role.Tab
+            role = Role.Tab,
         )
 
     val widthModifier = if (fixedWidth) {
@@ -94,9 +95,9 @@ fun TabItem(
     if (textAlignment == TabTextAlignment.HORIZONTAL) {
         ConstraintLayout(
             modifier = modifier
-                .then(clickableModifier)
-                .background(backgroundColor)
                 .padding(padding)
+                .background(backgroundColor)
+                .then(clickableModifier)
                 .then(widthModifier)
         )
         {
@@ -195,9 +196,9 @@ fun TabItem(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
             modifier = modifier
-                .then(clickableModifier)
                 .padding(padding)
                 .background(backgroundColor)
+                .then(clickableModifier)
                 .then(widthModifier)
         ) {
             badgeWithIcon()
