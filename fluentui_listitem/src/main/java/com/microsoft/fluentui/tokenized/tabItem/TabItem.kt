@@ -71,7 +71,7 @@ fun TabItem(
     val clickableModifier = Modifier
         .clickable(
             interactionSource = interactionSource,
-            indication =  rememberRipple(color = rippleColor),
+            indication = rememberRipple(color = rippleColor),
             onClickLabel = null,
             enabled = enabled,
             onClick = onClick,

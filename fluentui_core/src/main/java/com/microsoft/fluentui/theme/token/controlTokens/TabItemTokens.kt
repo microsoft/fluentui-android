@@ -53,7 +53,7 @@ open class TabItemTokens : IControlToken, Parcelable {
         )
     }
     @Composable
-    open fun ListItemContainerLazyRowBackgroundBrush(tabItemInfo: TabItemInfo): Brush {
+    open fun listItemContainerBackgroundBrush(tabItemInfo: TabItemInfo): Brush {
         return SolidColor(
             FluentTheme.aliasTokens.neutralBackgroundColor[FluentAliasTokens.NeutralBackgroundColorTokens.Background1].value(
                 FluentTheme.themeMode
