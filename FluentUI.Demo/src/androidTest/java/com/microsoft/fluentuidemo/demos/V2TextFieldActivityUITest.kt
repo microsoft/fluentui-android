@@ -3,7 +3,6 @@ package com.microsoft.fluentuidemo.demos
 import androidx.compose.ui.test.*
 import com.microsoft.fluentui.tokenized.controls.*
 import com.microsoft.fluentuidemo.BaseTest
-import junit.framework.TestCase.fail
 import org.junit.Before
 import org.junit.Test
 
