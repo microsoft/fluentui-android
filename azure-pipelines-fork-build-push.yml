@@ -20,8 +20,6 @@ jobs:
         inputs:
           gradleWrapperFile: 'gradlew'
           tasks: 'lint'
-          publishJUnitResults: true
-          testResultsFiles: '/lint-results.xml'
           javaHomeOption: 'JDKVersion'
           sonarQubeRunAnalysis: false
           spotBugsAnalysis: false
