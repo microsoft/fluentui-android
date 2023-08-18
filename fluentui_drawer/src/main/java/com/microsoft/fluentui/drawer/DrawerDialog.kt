@@ -237,7 +237,7 @@ open class DrawerDialog @JvmOverloads constructor(context: Context, val behavior
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
+        //super.onBackPressed()
         collapse()
     }
 
