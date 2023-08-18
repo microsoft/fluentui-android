@@ -98,6 +98,7 @@ dependencies {
     implementation ("androidx.compose.material:material")
     implementation ("androidx.activity:activity-compose:$composeActivityVersion")
     implementation "androidx.test.ext:junit-ktx:$junitKtxVersion"
+    implementation "androidx.test.uiautomator:uiautomator:$uiautomatorVersion"
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeTestVersion")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation "androidx.test:monitor:$androidTestMonitor"
