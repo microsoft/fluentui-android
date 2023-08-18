@@ -1,5 +1,4 @@
 package com.microsoft.fluentui.tokenized.contentBuilder
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -10,7 +9,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.Layout
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.theme.FluentTheme
 import com.microsoft.fluentui.theme.token.ControlTokens
@@ -117,7 +118,7 @@ class ListContentBuilder {
         //TODO As per the thread https://issuetracker.google.com/issues/184670295#comment34 focus
         // navigation issues should resolve with compose version 1.3.0.
         return {
-            LazyColumn {
+            LazyColumn{
                 for (contentData in listOfContentData) {
                     when (contentData) {
                         is HorizontalListContentData -> createHorizontalList(
@@ -248,7 +249,9 @@ class ListContentBuilder {
                     tabItemTokens
                         ?: FluentTheme.controlTokens.tokens[ControlTokens.ControlType.TabItemControlType] as TabItemTokens
                 LazyRow(
-                    state = rowLazyListState, modifier = Modifier
+                    reverseLayout = (LocalLayoutDirection.current == LayoutDirection.Rtl),
+                    state = rowLazyListState,
+                    modifier = Modifier
                         .background(
                             token.backgroundBrush(
                                 TabItemInfo(
@@ -262,7 +265,7 @@ class ListContentBuilder {
                 ) {
                     itemsIndexed(itemDataList) { index, item ->
                         TabItem(
-                            title = item.title,
+                            title = "${item.title} $index",
                             enabled = item.enabled,
                             fixedWidth = fixedWidth,
                             onClick = item.onClick,
