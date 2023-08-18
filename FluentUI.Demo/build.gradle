@@ -15,7 +15,7 @@ android {
         targetSdkVersion constants.targetSdkVersion
         versionCode 66
         versionName '0.1.31'
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     kotlinOptions {
         jvmTarget = '1.8'
