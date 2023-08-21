@@ -105,11 +105,6 @@ private class ModalWindow(
     private val windowManager =
         composeView.context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
-    private val displayWidth: Int
-        get() {
-            val density = context.resources.displayMetrics.density
-            return (context.resources.configuration.screenWidthDp * density).roundToInt()
-        }
 
     private val params: WindowManager.LayoutParams =
         WindowManager.LayoutParams().apply {
@@ -118,7 +113,7 @@ private class ModalWindow(
             // Application panel window
             type = WindowManager.LayoutParams.TYPE_APPLICATION_PANEL
             // Fill up the entire app view
-            width = displayWidth
+            width = WindowManager.LayoutParams.MATCH_PARENT
             height = WindowManager.LayoutParams.MATCH_PARENT
 
             // Format of screen pixels
