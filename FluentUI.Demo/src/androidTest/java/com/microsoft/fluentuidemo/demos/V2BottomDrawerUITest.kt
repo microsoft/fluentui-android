@@ -3,6 +3,7 @@ package com.microsoft.fluentuidemo.demos
 import android.content.res.Resources
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.test.click
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -14,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_CONTENT_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_HANDLE_TAG
 import com.microsoft.fluentui.tokenized.drawer.DRAWER_SCRIM_TAG
+import com.microsoft.fluentui.tokenized.notification.SNACK_BAR_ICON
 import com.microsoft.fluentuidemo.BaseTest
 import com.microsoft.fluentuidemo.R
 import org.junit.Before
@@ -210,12 +212,16 @@ class V2BottomDrawerUITest : BaseTest() {
                 endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
             )
         }
-        drawerHandle.performTouchInput {
-            swipeDown(
-                endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
-            )
+        composeTestRule.waitForIdle()
+        if (composeTestRule.onAllNodesWithTag(DRAWER_HANDLE_TAG).fetchSemanticsNodes()
+                .isNotEmpty()
+        ) {
+            drawerHandle.performTouchInput {
+                swipeDown(
+                    endY = drawerScrim.fetchSemanticsNode().size.height.toFloat()
+                )
+            }
         }
         closeCheckForVerticalDrawer()
     }
-
 }
